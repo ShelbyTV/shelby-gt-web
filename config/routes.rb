@@ -1,4 +1,6 @@
 ShelbyGtWeb::Application.routes.draw do
+  match '(*path)' => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
