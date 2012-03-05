@@ -20,5 +20,5 @@ javascripts:
 stylesheets:
   common:
     - public/stylesheets/screen.css
-  h5bp:
-    - public/stylesheets/h5bp/*.css
+  #h5bp:
+    #- public/stylesheets/h5bp/*.css
