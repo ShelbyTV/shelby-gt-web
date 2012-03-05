@@ -2,18 +2,17 @@
 // Dashboard Entry Model
 // ----------
 
-DashboardEntryModel = Backbone.Model.extend({
+DashboardEntryModel = Backbone.RelationalModel.extend({
 
-  initialize : function(attrs){
-    if (typeof attrs.frame !== 'FrameModel'){
-      var frame = FramesCollection.get(attrs.frame.id);
-      if (!frame){
-        frame = new FrameModel(attrs.frame);
-      }
-      this.set('frame', frame);
-    } else {
-      this.set('frame', attrs.frame);
-    }
+  relations : [{
+    type : Backbone.HasOne,
+    key : 'frame',
+    relatedModel : 'FrameModel',
+    createModels : true
+  }],
+
+  initialize : function(){
+    console.log('frame:', this.get('frame'));
   }
 
 });
