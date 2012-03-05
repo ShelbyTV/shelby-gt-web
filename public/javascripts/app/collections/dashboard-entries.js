@@ -4,7 +4,7 @@
 DashboardEntriesCollection = Backbone.Collection.extend({
 
   // Reference to this collection's model.
-  model: DashboardEntry, 
+  model: DashboardEntryModel, 
 
   // Filter down the list of all todo items that are finished.
   filterBy: function(attr) {

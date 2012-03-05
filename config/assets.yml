@@ -9,6 +9,7 @@ javascripts:
     # backbone && underscore
     - public/javascripts/backbone/underscore-min.js
     - public/javascripts/backbone/backbone-min.js
+    - public/javascripts/backbone/backbone-relational.js
     #underscore mixins
     - public/javascripts/underscore.inflection.js
     # shelby backbone app

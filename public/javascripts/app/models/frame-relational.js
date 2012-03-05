@@ -1,0 +1,2 @@
+FrameModelRelational = Backbone.RelationalModel.extend({
+});
