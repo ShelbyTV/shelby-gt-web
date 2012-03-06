@@ -12,7 +12,7 @@ FramesCollection = Backbone.Collection.extend({
   },
 
   comparator: function(frameA, frameB) {
-    // Frames are sorted by rank - higher scores are vertically higher (a lower collection index) 
+    // Frames are sorted by score - higher scores are vertically higher (a lower collection index) 
     return frameB.get('score') - frameA.get('score');
   }
 

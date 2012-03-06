@@ -2,7 +2,7 @@
 // ---------------
 
 RollsCollection = Backbone.Collection.extend({
-
+  url : 'http://localhost:3001/rolls.json',
   // Reference to this collection's model (FrameModel).
   model: RollModel, 
 

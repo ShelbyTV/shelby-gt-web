@@ -1,5 +1,4 @@
 FrameModel = Backbone.RelationalModel.extend({
-
   relations : [
     {
       type : Backbone.HasOne,
@@ -19,5 +18,4 @@ FrameModel = Backbone.RelationalModel.extend({
       relatedModel : 'RollModel'
     }
   ]
-
 });
