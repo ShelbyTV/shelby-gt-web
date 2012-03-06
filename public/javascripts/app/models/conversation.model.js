@@ -1,0 +1,3 @@
+ConversationModel = Backbone.RelationalModel.extend({
+  
+});

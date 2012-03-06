@@ -17,6 +17,7 @@ javascripts:
     - public/javascripts/app/models/*.js
     - public/javascripts/app/collections/*.js
     - public/javascripts/app/views/**/*.js
+    - public/javascripts/app/utils/*.js
 
 stylesheets:
   common:
