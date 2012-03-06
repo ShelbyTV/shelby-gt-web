@@ -8,7 +8,7 @@ var DataUtils = {
       }
     });
   },
-  setRollsJson : function(){
+  setRollJson : function(){
    this._getData('/roll/2.json', function(data){
      window.rollJson = data;
      console.log('done');
@@ -20,7 +20,7 @@ var DataUtils = {
       console.log('done');
     });
   },
-  getRollsJson : function(cb){
+  getRollJson : function(cb){
    this._getData('/roll/2.json', cb);
   },
   getDashboardJson : function(cb){
