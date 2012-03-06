@@ -1,11 +1,13 @@
 package_assets: on
-compress_assets: on #using YUI compressor by default see http://documentcloud.github.com/jammit/#compressors
+compress_assets: on
 template_function: _.template
 
 javascripts:
   common:
     - public/javascripts/common/**/*.js
   shelby:
+    # JSTs
+    - app/views/templates/**/*.jst
     # backbone && underscore
     - public/javascripts/backbone/underscore-min.js
     - public/javascripts/backbone/backbone-min.js

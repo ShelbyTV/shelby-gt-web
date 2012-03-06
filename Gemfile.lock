@@ -47,7 +47,7 @@ GEM
     fssm (0.2.8.1)
     hike (1.2.1)
     i18n (0.6.0)
-    jammit (0.6.5)
+    jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     journey (1.0.3)
     jquery-rails (2.0.1)
@@ -113,7 +113,7 @@ PLATFORMS
 
 DEPENDENCIES
   compass-rails
-  jammit
+  jammit (= 0.6.3)
   jquery-rails
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)

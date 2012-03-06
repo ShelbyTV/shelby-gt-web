@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 
 # Use Jammit
-gem 'jammit'
+gem 'jammit', '= 0.6.3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
