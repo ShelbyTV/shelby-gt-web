@@ -1,4 +1,4 @@
-RollView = Backbone.View.Extend({
+RollView = Backbone.View.extend({
 
   initialize : function(){
     this.model.get('frames').bind('add', this.addOne, this);
@@ -13,7 +13,7 @@ RollView = Backbone.View.Extend({
 
   addOne : function(frame){
     var frameView = new FrameView({model: frame});
-    this.$el.append(frameView.render().el);
+    $(this.el).append(frameView.render().el);
   },
 
   addAll: function(frames) {

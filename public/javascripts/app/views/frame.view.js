@@ -1,10 +1,12 @@
-FrameView = Backbone.View.Extend({
+FrameView = Backbone.View.extend({
 
   tagName : 'li',
 
   className : 'frame',
 
-  template : JST['frame'],
+  template : function(obj){
+    return JST['frame'](obj);
+  },
 
   initialize : function(){
     this.model.bind('change', this.render, this);
@@ -13,6 +15,7 @@ FrameView = Backbone.View.Extend({
 
   render : function(){
     $(this.el).html(this.template({frame : this.model.toJSON()}));
+    return this;
   }
 
 });
