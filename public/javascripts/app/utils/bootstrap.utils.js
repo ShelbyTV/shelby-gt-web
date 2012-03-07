@@ -12,12 +12,19 @@ var Bootstrap = {
     });
   },
   initApp : function(){
-    // meaning dashboard and rolls
-    DataUtils.getDashboardJson(function(dbJson){
-      DataUtils.getRollJson(function(rollsJson){
-        var app = new AppModel({dashboard:dbJson, rolls:rollsJson});  
-        console.log(app);
-      });
-    });
+    var dboard = new DashboardModel();
+    dboard.fetch();
+    app = new AppModel({dashboard : dboard});
+    return app;
+  },
+  getFirstRollModel : function(dboard){
+    return dboard.get('dashboard_entries').at(0).get('frame').get('roll');
+  },
+  setFirstRollModel : function(){
+    dboard = new DashboardModel();
+    var self = this;
+    dboard.fetch({success : function (){
+      firstRollModel = self.getFirstRollModel(dboard);
+    }});
   }
 };
