@@ -4,24 +4,27 @@ GuideView = Backbone.View.extend({
   //   return JST['frame'](obj);
   // },
 
-  _currentSubView: null,
+  _currentRollView: null, //TODO: make this a property of the guide model
 
   initialize : function(){
-    this.model.bind('change', this.render, this);
+    this.model.bind('change:displayedRoll', this.changeDisplayedRoll, this);
   },
 
   render : function(){
-    console.log('Rendering',this);
-    if (this._currentSubView) {
-      this._currentSubView.remove();
-    }    
-    this._currentSubView = new RollView({model : this.model.get('current_roll')});
-    $(this.el).html(this._currentSubView.el);
-    this.model.get('current_roll').fetch();
+    $(this.el).html(this._currentRollView.el);
+    this.model.get('displayedRoll').fetch();
   },
 
   selectRoll : function(model){
-	this.model.set('current_roll', model);
+	this.model.set('displayedRoll', model);
+  },
+
+  changeDisplayedRoll : function(guide, roll){
+    if (this._currentRollView) {
+      this._currentRollView.remove();
+    }
+    this._currentRollView = new RollView({model : roll});
+    this.render();
   }
 
 });

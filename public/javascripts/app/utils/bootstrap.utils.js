@@ -20,11 +20,19 @@ var Bootstrap = {
   getRollModel : function(i){
     return this.dboard.get('dashboard_entries').at(i).get('frame').get('roll');
   },
-  setFirstRollModel : function(){
+  setFirstRollModel : function(cb){
     this.dboard = new DashboardModel();
     var self = this;
     this.dboard.fetch({success : function (){
       firstRollModel = self.getRollModel(0);
+      cb();
     }});
+  },
+  setupGuideView : function(){
+    this.setFirstRollModel(function (){
+	  guideModel = new GuideModel({current_roll : firstRollModel});
+      guideView = new GuideView({model:guideModel});
+      $(document.body).html(guideView.el);
+    });
   }
 };
