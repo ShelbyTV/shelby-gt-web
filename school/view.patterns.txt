@@ -1,0 +1,35 @@
+window.ViewStateModel = Model({
+  
+});
+
+View1 = View({
+  
+  initialize : function(){
+    ViewStateModel.bind('change:x', this.render, this);
+  },
+
+  events : {
+    "click .button" : "changeX"
+  },
+
+  changeX : function(){
+    ViewStateModel.set('x', this.someModel);
+  }
+
+});
+
+View2 = View({
+
+  initialize : function(){
+    ViewStateModel.bind('change:x', this.render, this);
+  },
+
+  events : {
+    "click .icon" : "changeX"
+  },
+
+  changeX : function(){
+    ViewStateModel.set('x', this.someModel);
+  }
+
+});
