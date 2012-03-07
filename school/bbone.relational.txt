@@ -1,0 +1,4 @@
+Fetch
+-----
+> fetch({add:true}) triggers add event once per item
+> fetch() triggers reset with all items
