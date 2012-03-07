@@ -1,0 +1,3 @@
+GuideModel = Backbone.Model.extend({
+
+});

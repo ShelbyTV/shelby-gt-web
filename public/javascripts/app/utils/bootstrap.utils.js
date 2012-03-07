@@ -12,19 +12,19 @@ var Bootstrap = {
     });
   },
   initApp : function(){
-    var dboard = new DashboardModel();
-    dboard.fetch();
-    app = new AppModel({dashboard : dboard});
+    this.dboard = new DashboardModel();
+    this.dboard.fetch();
+    app = new AppModel({dashboard : this.dboard});
     return app;
   },
-  getFirstRollModel : function(dboard){
-    return dboard.get('dashboard_entries').at(0).get('frame').get('roll');
+  getRollModel : function(i){
+    return this.dboard.get('dashboard_entries').at(i).get('frame').get('roll');
   },
   setFirstRollModel : function(){
-    dboard = new DashboardModel();
+    this.dboard = new DashboardModel();
     var self = this;
-    dboard.fetch({success : function (){
-      firstRollModel = self.getFirstRollModel(dboard);
+    this.dboard.fetch({success : function (){
+      firstRollModel = self.getRollModel(0);
     }});
   }
 };
