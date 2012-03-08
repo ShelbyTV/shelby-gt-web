@@ -11,29 +11,28 @@ AppRouter = Backbone.Router.extend({
   //---
 
   initStatic : function(){
-    console.log('static');
-    this._navigate('static', url);
+    //init static router
+    this._reroute();
   },
 
   initEmbedded : function(){
-    this._navigate('embedded', url);
+    //init embed router
+    this._reroute();
   },
 
   initDynamic : function(url){
     console.log('init dynamic', url);
     shelby.router = new DynamicRouter();
     shelby.models.guide = new GuideModel();
-    Backbone.history.stop();
-    Backbone.history.start({pushState:true});
+    this._reroute(); 
   },
 
   //---
   //PRIVATE METHODS
   //---
 
-  _navigate : function(url, prefix){
-    prefix = prefix ? prefix+'/' : '';
-    console.log(prefix+url);
-    shelby.router.navigate(prefix+url, {trigger:true, replace:true}); //don't update history
-  },
+  _reroute : function(url, prefix){
+    Backbone.history.stop();
+    Backbone.history.start({pushState:true});
+  }
 });
