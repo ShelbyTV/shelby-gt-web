@@ -1,6 +1,10 @@
 ShelbyGtWeb::Application.routes.draw do
-  #match '(*path)' => 'home#index'
-  match '/' => 'home#index'
+  match "/#{Jammit.package_path}/:package.:extension",
+    :to => 'jammit#package', :as => :jammit, :constraints => {
+      # A hack to allow extension to include "."
+      :extension => /.+/
+    }
+  match '(*path)' => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,12 +9,13 @@ javascripts:
     # JSTs
     - app/views/templates/**/*.jst
     # backbone && underscore
-    - public/javascripts/backbone/underscore-min.js
-    - public/javascripts/backbone/backbone-min.js
+    - public/javascripts/backbone/underscore.js
+    - public/javascripts/backbone/backbone.js
     - public/javascripts/backbone/backbone-relational.js
     #underscore mixins
     - public/javascripts/underscore.inflection.js
     # shelby backbone app
+    - public/javascripts/app/app.js
     - public/javascripts/app/routers/*.js
     - public/javascripts/app/models/*.js
     - public/javascripts/app/collections/*.js

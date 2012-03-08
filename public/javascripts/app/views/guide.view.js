@@ -15,10 +15,6 @@ GuideView = Backbone.View.extend({
     this.model.get('displayedRoll').fetch();
   },
 
-  selectRoll : function(model){
-	  this.model.set('displayedRoll', model);
-  },
-
   changeDisplayedRoll : function(guide, roll){
     if (this._currentRollView) {
       this._currentRollView.remove();

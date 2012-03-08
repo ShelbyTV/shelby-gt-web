@@ -34,5 +34,8 @@ var Bootstrap = {
       guideView = new GuideView({model:guideModel});
       $(document.body).html(guideView.el);
     });
+  },
+  goToRoll : function(id){
+    shelby.router.navigate('/roll/'+id);
   }
 };
