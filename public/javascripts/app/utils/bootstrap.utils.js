@@ -36,6 +36,6 @@ var Bootstrap = {
     });
   },
   goToRoll : function(id){
-    shelby.router.navigate('/roll/'+id);
+    shelby.router.navigate('/rolls/'+id, {trigger:true});
   }
 };

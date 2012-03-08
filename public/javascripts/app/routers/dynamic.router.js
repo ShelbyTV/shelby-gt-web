@@ -1,11 +1,16 @@
-/*DynamicRouter = Backbone.Router.extend({
+DynamicRouter = Backbone.Router.extend({
   routes : {
     "rolls/:id" : "displayRoll",
-    "" : "displayDashboard"
+    "/" : "displayDashboard",
+    "*url" : "doNothing"
+  },
+
+  doNothing : function(){
+    console.log('bad url');
   },
 
   displayRoll : function(id){
-    console.log('displaying roll');
+    console.log('displaying roll', shelby.models.guide);
     shelby.views.guide = new GuideView({model:shelby.models.guide});
     $(document.body).html(shelby.views.guide.el);
     var roll = new RollModel({id:id});
@@ -15,4 +20,4 @@
   displayDashboard : function(){
   }
   
-});*/
+});

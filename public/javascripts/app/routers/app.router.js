@@ -1,7 +1,8 @@
-/*AppRouter = Backbone.Router.extend({
+AppRouter = Backbone.Router.extend({
   routes : {
-    "/static/:url" : "initStatic",
-    "embedded/*url" : "initEmbedded"
+    "static/*url" : "initStatic",
+    "embedded/*url" : "initEmbedded",
+    "*url" : "initDynamic"
   },
   _navigate : function(url, prefix){
     prefix = prefix ? prefix+'/' : '';
@@ -16,15 +17,10 @@
     this._navigate('embedded', url);
   },
   initDynamic : function(url){
-    console.log(arguments);
     console.log('init dynamic', url);
-    this.routes = {};
-    Backbone.history.stop();
     shelby.router = new DynamicRouter();
-    Backbone.history.start();
-    console.log('dynamic router initted');
     shelby.models.guide = new GuideModel();
-    console.log('init dynamic done, navving');
-    this._navigate(url);
+    Backbone.history.stop();
+    Backbone.history.start({pushState:true});
   }
-});*/
+});

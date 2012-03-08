@@ -1,0 +1,29 @@
+Routers
+-------
+> pushState : true (required to use non '#' urls)
+> navigate(url, {trigger:true}) to change URL & trigger router bindings
+
+A Pattern that works:
+--------------------
+
+RouterA = Router({
+  routes : {
+    "a" : "doStuffA"
+  }
+});
+
+RouterB = Router({
+  routes : {
+    "a" : "doStuffB"
+  }
+});
+
+rA = new RouterA();
+rB = new RouterB();
+Backbone.history.start({pushState:true})
+http://foo.com/a -> "doStuffB"
+
+rB = new RouterB();
+rA = new RouterA();
+Backbone.history.start({pushState:true})
+http://foo.com/a -> "doStuffA"
