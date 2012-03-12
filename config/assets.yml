@@ -15,14 +15,14 @@ javascripts:
     - public/javascripts/backbone/backbone-support/support.js
     - public/javascripts/backbone/backbone-support/swapping_router.js
     - public/javascripts/backbone/backbone-support/composite_view.js
-    #underscore mixins
+    # underscore mixins
     - public/javascripts/underscore.inflection.js
-    # hacked order
+    # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/views/list_item.view.js
     - public/javascripts/app/views/frame.view.js
     - public/javascripts/app/views/list.view.js
     - public/javascripts/app/views/dashboard.view.js
-    # shelby backbone app
+    # shelby backbone app - all other assets
     - public/javascripts/app/app.js
     - public/javascripts/app/routers/*.js
     - public/javascripts/app/models/*.js
