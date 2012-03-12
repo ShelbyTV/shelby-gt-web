@@ -12,7 +12,6 @@ DashboardView = ListView.extend({
     var self = this;
     this.options.collectionAttribute = 'dashboard_entries';
     this.options.listItemView = function(item){
-      console.log('ITEM', item);
       var mapResult = self.actionToViewMap[item.get('action')];
       return new mapResult.view({model:item.get(mapResult.model_attr)});
     };
