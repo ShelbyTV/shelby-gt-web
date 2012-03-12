@@ -12,6 +12,9 @@ javascripts:
     - public/javascripts/backbone/underscore.js
     - public/javascripts/backbone/backbone.js
     - public/javascripts/backbone/backbone-relational.js
+    - public/javascripts/backbone/backbone-support/support.js
+    - public/javascripts/backbone/backbone-support/swapping_router.js
+    - public/javascripts/backbone/backbone-support/composite_view.js
     #underscore mixins
     - public/javascripts/underscore.inflection.js
     # shelby backbone app
