@@ -1,6 +1,6 @@
-RollView = ListView.extend({
+DashboardView = ListView.extend({
 
-  initialize : function(){
+  /*initialize : function(){
     this.options.collectionAttribute = 'frames';
     this.options.listItemView = FrameView;
     ListView.prototype.initialize.call(this);
@@ -8,6 +8,6 @@ RollView = ListView.extend({
 
   _cleanup : function() {
     this.model.unbind('add:frames', this.addOne, this);
-  }
+  }*/
 
 });

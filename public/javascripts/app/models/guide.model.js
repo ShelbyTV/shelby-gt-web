@@ -1,5 +1,6 @@
 GuideModel = Backbone.Model.extend({
   defaults : {
-    'displayedRoll' : null
+    'childPane' : DashboardView, 
+    'displayedItem' : DashboardModel 
   }
 });

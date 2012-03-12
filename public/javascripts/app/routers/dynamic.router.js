@@ -12,14 +12,16 @@ DynamicRouter = Backbone.Router.extend({
 
   displayDashboard : function(){
     console.log('displaying dashboard');
+    this._setupGuideView();
     shelby.models.dashboard = new DashboardModel();
+    shelby.models.guide.set({'childPane': DashboardView, 'displayedItem': shelby.models.dashboard});
   },
 
   displayRoll : function(id){
-    console.log('displaying roll', shelby.models.guide);
+    console.log('displaying roll');
     this._setupGuideView();
     var roll = new RollModel({id:id});
-    shelby.models.guide.set('displayedRoll', roll);
+    shelby.models.guide.set({'childPane': RollView, 'displayedItem': roll});
   },
 
   doNothing : function(){
@@ -31,8 +33,7 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   _setupGuideView : function(){
-    if (shelby.views.guide) shelby.views.guide.leave();
-    shelby.views.guide = new GuideView({model:shelby.models.guide});
+    shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
     $(document.body).html(shelby.views.guide.el);
   }
   

@@ -5,17 +5,13 @@ GuideView = Support.CompositeView.extend({
   // },
 
   initialize : function(){
-    this.model.bind('change:displayedRoll', this.changeDisplayedRoll, this);
+    this.model.bind('change', this.updateChild, this);
   },
 
-  render : function(){
-    this.model.get('displayedRoll').fetch();
-  },
-
-  changeDisplayedRoll : function(guide, roll){
+  updateChild : function(guide, item){
     this._leaveChildren();
-    this.appendChild(new RollView({model: roll}));
-    this.render();
+    this.appendChild(new this.model.get('childPane')({model: item}));
+    this.model.get('displayedItem').fetch();
   },
 
   _cleanup : function() {

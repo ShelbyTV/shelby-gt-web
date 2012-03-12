@@ -6,12 +6,8 @@ ListView = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    this.model.bind(this.options.collectionAttribute+':add', this.addOne, this);
+    this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
   },
-
-  // render : function(){
-  // },
-  //
 
   addOne : function(item){
     console.log('myles');
