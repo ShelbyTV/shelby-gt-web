@@ -1,0 +1,3 @@
+ListItemView = Support.CompositeView.extend({
+
+});

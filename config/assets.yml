@@ -17,6 +17,8 @@ javascripts:
     - public/javascripts/backbone/backbone-support/composite_view.js
     #underscore mixins
     - public/javascripts/underscore.inflection.js
+    # hacked order
+    - public/javascripts/app/views/list_item.view.js
     # shelby backbone app
     - public/javascripts/app/app.js
     - public/javascripts/app/routers/*.js

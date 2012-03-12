@@ -1,8 +1,13 @@
-RollView = Support.CompositeView.extend({
+RollView = ListView.extend({
+
+  /*options : {
+    collectionAttribute : 'frames'
+  },*/
 
   initialize : function(){
-    this.model.bind('add:frames', this.addOne, this);
-    //this.model.get('frames').bind('all', this.render, this);
+    this.options.collectionAttribute = 'frames';
+    this.options.listItemView = FrameView;
+    ListView.prototype.initialize.call(this);
   },
 
   // render : function(){
@@ -12,7 +17,7 @@ RollView = Support.CompositeView.extend({
     console.log('myles');
     var frameView = new FrameView({model: frame});
     frameView.render();
-	this.$el.append(frameView.el);
+	  this.$el.append(frameView.el);
   },
 
   _cleanup : function() {

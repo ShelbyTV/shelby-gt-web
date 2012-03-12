@@ -1,4 +1,4 @@
-FrameView = Backbone.View.extend({
+FrameView = ListItemView.extend({
 
   tagName : 'li',
 
