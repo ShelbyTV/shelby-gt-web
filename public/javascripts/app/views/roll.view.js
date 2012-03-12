@@ -1,8 +1,7 @@
-RollView = Backbone.View.extend({
+RollView = Support.CompositeView.extend({
 
   initialize : function(){
-    this.model.get('frames').bind('add', this.addOne, this);
-    this.model.get('frames').bind('reset', this.addAll, this);
+    this.model.bind('add:frames', this.addOne, this);
     //this.model.get('frames').bind('all', this.render, this);
   },
 
@@ -10,16 +9,14 @@ RollView = Backbone.View.extend({
   // },
 
   addOne : function(frame){
-    console.log('Add one',this);
+    console.log('myles');
     var frameView = new FrameView({model: frame});
     frameView.render();
-	$(this.el).append(frameView.el);
+	this.$el.append(frameView.el);
   },
 
-  addAll: function(frames) {
-	console.log('Add all',arguments);
-	$(this.el).html('');
-	//frames.each(this.addOne);
+  _cleanup : function() {
+    this.model.unbind('add:frames', this.addOne, this);
   }
 
 });

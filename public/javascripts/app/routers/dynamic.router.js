@@ -31,6 +31,7 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   _setupGuideView : function(){
+    if (shelby.views.guide) shelby.views.guide.leave();
     shelby.views.guide = new GuideView({model:shelby.models.guide});
     $(document.body).html(shelby.views.guide.el);
   }

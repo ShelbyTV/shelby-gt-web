@@ -2,7 +2,7 @@ ListView = Backbone.View.extend({
   
   options : {
     collectionAttribute : 'listCollection',
-    listEntryView : FrameView
+    listItemView : FrameView
   },
   
   initialize : function(){
@@ -17,13 +17,13 @@ ListView = Backbone.View.extend({
 
   addOne : function(item){
     console.log(this.el);
-    var listEntryView = new this.options.listEntryView({model: item});
-    listEntryView.render();
-    $(this.el).append(listEntryView.el);
+    var listItemView = new this.options.listItemView({model: item});
+    listItemView.render();
+    this.$el.append(listItemView.el);
   },
 
   addAll: function(items) {
-    $(this.el).html('');
+    this.$el.html('');
     items.each(this.addOne);
   }
 

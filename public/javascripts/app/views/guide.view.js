@@ -1,4 +1,4 @@
-GuideView = Backbone.View.extend({
+GuideView = Support.CompositeView.extend({
 
   // template : function(obj){
   //   return JST['frame'](obj);
@@ -11,16 +11,20 @@ GuideView = Backbone.View.extend({
   },
 
   render : function(){
-    $(this.el).html(this._currentRollView.el);
+    this.$el.html(this._currentRollView.el);
     this.model.get('displayedRoll').fetch();
   },
 
   changeDisplayedRoll : function(guide, roll){
     if (this._currentRollView) {
-      this._currentRollView.remove();
+      this._currentRollView.leave();
     }
     this._currentRollView = new RollView({model : roll});
     this.render();
+  },
+
+  _cleanup : function() {
+	this.model.unbind('change:displayedRoll', this.changeDisplayedRoll, this);
   }
 
 });
