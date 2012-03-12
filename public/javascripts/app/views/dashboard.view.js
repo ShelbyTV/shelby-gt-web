@@ -1,12 +1,25 @@
 DashboardView = ListView.extend({
 
-  /*initialize : function(){
-    this.options.collectionAttribute = 'frames';
-    this.options.listItemView = FrameView;
+  actionToViewMap : {
+    '0' : {view: FrameView, model_attr:'frame'},
+    '1' : {view: FrameView, model_attr:'frame'},
+    '8' : {view: FrameView, model_attr:'frame'},
+    '9' : {view: FrameView, model_attr:'frame'},
+    '10' : {view: FrameView, model_attr:'frame'}
+  },
+
+  initialize : function(){
+    var self = this;
+    this.options.collectionAttribute = 'dashboard_entries';
+    this.options.listItemView = function(item){
+      console.log('ITEM', item);
+      var mapResult = self.actionToViewMap[item.get('action')];
+      return new mapResult.view({model:item.get(mapResult.model_attr)});
+    };
     ListView.prototype.initialize.call(this);
   },
 
-  _cleanup : function() {
+  /*_cleanup : function() {
     this.model.unbind('add:frames', this.addOne, this);
   }*/
 

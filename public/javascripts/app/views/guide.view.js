@@ -5,12 +5,16 @@ GuideView = Support.CompositeView.extend({
   // },
 
   initialize : function(){
+    console.log('guideview constructor', arguments);
     this.model.bind('change', this.updateChild, this);
+    console.log('bound');
   },
 
-  updateChild : function(guide, item){
+  updateChild : function(){
     this._leaveChildren();
-    this.appendChild(new this.model.get('childPane')({model: item}));
+    var childPaneProto = this.model.get('childPane');
+    this.appendChild(new childPaneProto({model: this.model.get('displayedItem')}));
+    //this.appendChild(new guide.get('childPane')({model: guide.get('displayedItem')}));
     this.model.get('displayedItem').fetch();
   },
 

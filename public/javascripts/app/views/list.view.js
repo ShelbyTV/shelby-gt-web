@@ -2,7 +2,7 @@ ListView = Support.CompositeView.extend({
   
   options : {
     collectionAttribute : 'listCollection',
-    listItemView : ListItemView
+    listItemView : 'ListItemView'
   },
   
   initialize : function(){
@@ -11,7 +11,20 @@ ListView = Support.CompositeView.extend({
 
   addOne : function(item){
     console.log('myles');
-    this.appendChild(new this.options.listItemView({model: item}));
+    this.appendChild(this._constructListItemView(item));
+  },
+
+  _cleanup : function(){
+    this.model.unbind('add:'+this.options.collectionAttribute, this.addOne, this);
+  },
+
+  _constructListItemView : function(item){
+    var proto;
+    if (typeof this.options.listItemView === 'function'){
+      return this.options.listItemView(item);
+    } else {
+      return new window[this.options.listItemView]({model:item});
+    }
   }
 
 });
