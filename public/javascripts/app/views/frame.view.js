@@ -1,5 +1,9 @@
 FrameView = ListItemView.extend({
 
+  events : {
+    "click .roll" : "goToRoll"
+  },
+
   tagName : 'li',
 
   className : 'frame',
@@ -15,6 +19,11 @@ FrameView = ListItemView.extend({
 
   render : function(){
     this.$el.html(this.template({frame : this.model.toJSON()}));
+  },
+
+  goToRoll : function(){
+    console.log('going to roll');
+    shelby.router.navigate('rolls/'+this.model.get('roll').id, {trigger:true});
   }
 
 });

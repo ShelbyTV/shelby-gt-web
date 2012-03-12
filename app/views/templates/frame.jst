@@ -1,3 +1,12 @@
 <% Object.keys(frame).forEach(function(k){ %>
+  <% if (k==='roll') {%>
+    <span class="roll">
+  <% } %>
+
   <%= k+':'+frame[k] %>
+
+  <% if (k==='roll') {%>
+    </span>
+  <% } %>
+
 <% }) %>
