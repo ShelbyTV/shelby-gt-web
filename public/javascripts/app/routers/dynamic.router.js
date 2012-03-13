@@ -13,13 +13,13 @@ DynamicRouter = Backbone.Router.extend({
   displayDashboard : function(){
     this._setupGuideView();
     shelby.models.dashboard = new DashboardModel();
-    shelby.models.guide.set({'childPane': DashboardView, 'displayedItem': shelby.models.dashboard});
+    shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
 
   displayRoll : function(id){
     this._setupGuideView();
     var roll = new RollModel({id:id});
-    shelby.models.guide.set({'childPane': RollView, 'displayedItem': roll});
+    shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
   },
 
   doNothing : function(){
