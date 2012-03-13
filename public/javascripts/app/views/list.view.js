@@ -10,7 +10,6 @@ ListView = Support.CompositeView.extend({
   },
 
   addOne : function(item){
-    console.log('myles');
     this.appendChild(this._constructListItemView(item));
   },
 

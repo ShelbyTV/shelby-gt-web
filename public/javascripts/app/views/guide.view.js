@@ -5,9 +5,7 @@ GuideView = Support.CompositeView.extend({
   // },
 
   initialize : function(){
-    console.log('guideview constructor', arguments);
     this.model.bind('change', this.updateChild, this);
-    console.log('bound');
   },
 
   updateChild : function(){
@@ -19,7 +17,7 @@ GuideView = Support.CompositeView.extend({
   },
 
   _cleanup : function() {
-	  this.model.unbind('change:displayedRoll', this.changeDisplayedRoll, this);
+    this.model.unbind('change:displayedRoll', this.changeDisplayedRoll, this);
   }
 
 });

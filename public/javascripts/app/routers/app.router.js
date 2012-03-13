@@ -21,7 +21,6 @@ AppRouter = Backbone.Router.extend({
   },
 
   initDynamic : function(url){
-    console.log('init dynamic', url);
     shelby.router = new DynamicRouter();
     shelby.models.guide = new GuideModel();
     this._reroute(); 

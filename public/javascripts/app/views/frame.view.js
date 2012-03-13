@@ -22,7 +22,6 @@ FrameView = ListItemView.extend({
   },
 
   goToRoll : function(){
-    console.log('going to roll');
     shelby.router.navigate('rolls/'+this.model.get('roll').id, {trigger:true});
   }
 
