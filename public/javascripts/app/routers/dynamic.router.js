@@ -1,8 +1,9 @@
 DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "" : "displayDashboard",
+    "rolls/:rollId/frame/:frameId" : "displayFrameInRoll",
     "rolls/:id" : "displayRoll",
+    "" : "displayDashboard",
     "*url" : "doNothing"
   },
 
@@ -10,16 +11,18 @@ DynamicRouter = Backbone.Router.extend({
   //ROUTE HANDLERS
   //---
 
+  displayFrameInRoll : function(rollId, frameId){
+    this._setupRollView(rollId, {activeFrameId:frameId});
+  },
+
+  displayRoll : function(id){
+    this._setupRollView(id);
+  },
+
   displayDashboard : function(){
     this._setupGuideView();
     shelby.models.dashboard = new DashboardModel();
     shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
-  },
-
-  displayRoll : function(id){
-    this._setupGuideView();
-    var roll = new RollModel({id:id});
-    shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
   },
 
   doNothing : function(){
@@ -33,6 +36,12 @@ DynamicRouter = Backbone.Router.extend({
   _setupGuideView : function(){
     shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
     $(document.body).html(shelby.views.guide.el);
-  }
+  },
   
+  _setupRollView : function(rollId, guideAttrs){
+    this._setupGuideView();
+    var roll = new RollModel({id:rollId});
+    shelby.models.guide.set(_.extend({'contentPaneView': RollView, 'contentPaneModel': roll}, guideAttrs));
+  }
+
 });

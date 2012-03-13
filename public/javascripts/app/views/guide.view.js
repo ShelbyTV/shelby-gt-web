@@ -8,7 +8,11 @@ GuideView = Support.CompositeView.extend({
     this.model.bind('change', this.updateChild, this);
   },
 
-  updateChild : function(){
+  updateChild : function(model){
+    var changedAttrs = _.keys(model.changedAttributes());
+    if (!_.include(changedAttrs, 'contentPaneView') && !_.include(changedAttrs, 'contentPaneView')) {
+      return;
+    }
     this._leaveChildren();
     var contentPaneProto = this.model.get('contentPaneView');
     var contentPaneModel = this.model.get('contentPaneModel');
@@ -17,7 +21,7 @@ GuideView = Support.CompositeView.extend({
   },
 
   _cleanup : function() {
-    this.model.unbind('change:displayedRoll', this.changeDisplayedRoll, this);
+    this.model.unbind('change', this.updateChild, this);
   }
 
 });

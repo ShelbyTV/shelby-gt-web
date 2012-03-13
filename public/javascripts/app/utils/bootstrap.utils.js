@@ -30,12 +30,16 @@ var Bootstrap = {
   },
   setupGuideView : function(){
     this.setFirstRollModel(function (){
-	  guideModel = new GuideModel({current_roll : firstRollModel});
+      guideModel = new GuideModel({current_roll : firstRollModel});
       guideView = new GuideView({model:guideModel});
       $(document.body).html(guideView.el);
     });
   },
   goToRoll : function(id){
     shelby.router.navigate('/rolls/'+id, {trigger:true});
+  },
+  goToFrameInCurrentRoll : function(id){
+    shelby.router.navigate('/rolls/'+shelby.models.guide.get('contentPaneModel').id+'/frame/'+id, {trigger:false});
+    shelby.models.guide.set('activeFrameId', id);
   }
 };

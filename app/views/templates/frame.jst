@@ -1,12 +1,17 @@
 <% Object.keys(frame).forEach(function(k){ %>
-  <% if (k==='roll') {%>
-    <span class="roll">
+  <% if (active) {%>
+    <span style="text-decoration:underline">
   <% } %>
+	  <% if (k==='roll') {%>
+	    <span class="roll">
+	  <% } %>
 
-  <%= k+':'+frame[k] %>
+	  <%= k+':'+frame[k] %>
 
-  <% if (k==='roll') {%>
+	  <% if (k==='roll') {%>
+	    </span>
+	  <% } %>
+  <% if (active) {%>
     </span>
   <% } %>
-
 <% }) %>

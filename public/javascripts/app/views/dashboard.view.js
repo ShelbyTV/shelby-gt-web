@@ -16,10 +16,6 @@ DashboardView = ListView.extend({
       return new mapResult.view({model:item.get(mapResult.model_attr)});
     };
     ListView.prototype.initialize.call(this);
-  },
-
-  /*_cleanup : function() {
-    this.model.unbind('add:frames', this.addOne, this);
-  }*/
+  }
 
 });
