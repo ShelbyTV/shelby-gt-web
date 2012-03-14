@@ -13,7 +13,7 @@
 //Events triggered:
 //
 
-window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
+window.libs.shelbyGT.PlayerView = Backbone.View.extend({
 	
 	//which specific PlaybackManager is currently handling playback (YouTube, Vimeo, Brightcove, etc...)
 	_currentPlaybackManager: null,
@@ -103,7 +103,7 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		//find next player
 		var nextPlaybackManager = this._playbackManagers[this.model.get('provider_name')];
 		console.log(nextPlaybackManager, this.model.get('provider_name'));
-
+		
 		//swap to new player only when necessary
 		if (nextPlaybackManager){
 			if (nextPlaybackManager != this._currentPlaybackManager ){
@@ -112,11 +112,11 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 					this._currentPlaybackManager.stop();
 					this._currentPlaybackManager.hide();
 					this._currentPlaybackManager.swapOutPlayer();
-					this._currentPlaybackManager._playbackState.setPlayerLoaded(false);
+           			this._currentPlaybackManager._playbackState.setPlayerLoaded(false);
 				}
 				this._currentPlaybackManager = nextPlaybackManager;
 				this._currentPlaybackManager.swapInPlayer();
-				this._currentPlaybackManager.show();
+				this._currentPlaybackManager.show();					
 			}
 			
 			//if we haven't played anything, and are in anIframe, don't autoplay (and make sure playback state is correct)
@@ -124,13 +124,13 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 			this._currentPlaybackManager._playbackState.setPlayable(true);
 			this._currentPlaybackManager.playVideo(this.model, shouldAutoplay );
 
-			if( !shouldAutoplay ){
-				shelby.models.playbackState.setPlaying(false);
+			if( !shouldAutoplay ){ 
+				shelby.models.playbackState.setPlaying(false); 
 				shelby.models.playbackState.setUserPaused(true);
-
+				
 				// showing a loading indicator until player is loaded
 				$("#paused-pane-wrapper").show().addClass('iframe-loading');
-
+				
 				var loadingTimer = setInterval(function(){
 					if (self._playbackState.isPlayerLoaded()){
 						$("#paused-pane-wrapper").addClass('iframe-loading-done');
@@ -144,9 +144,9 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		
 		// Event/Data Tracking
 		// App._trackingTimer = setTimeout(function(){ self._recordBroadcastPlay(currentBcast);}, self._vid_tracking_start_time*1000);				
-
+		
 		this._hasPlayed = true;
-
+		
 	},
 	
 

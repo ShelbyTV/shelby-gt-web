@@ -35,7 +35,7 @@ DynamicRouter = Backbone.Router.extend({
 
   _setupTopLevelViews : function(){
     shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
-    shelby.views.displayVideo = shelby.views.displayVideo || new window.libs.shelbyGT.VideoDisplayView();
+    // shelby.views.displayVideo = shelby.views.displayVideo || new window.libs.shelbyGT.VideoDisplayView();
     // $(document.body).html(shelby.views.guide.el);
   },
   

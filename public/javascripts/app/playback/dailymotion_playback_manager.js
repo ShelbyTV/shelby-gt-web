@@ -177,7 +177,7 @@ DailyMotionPlaybackManager.prototype._onVideoProgress = function(p){
 
 DailyMotionPlaybackManager.prototype._setCurrentPercent = function(){
 	this._percentPlayed = parseFloat((this._playbackState.getCurrentTime() / this._playbackState.getDuration() * 100).toFixed(0));
-	if (this._percentPlayed == App._openGraphPostingPercent  && !this._recordedProgress){
+	if (this._percentPlayed == this.options.ogPostAfterPct  && !this._recordedProgress){
 		this._recordedProgress = true;
 		Backbone.Events.trigger("video:progress", this._percentPlayed);
 	}

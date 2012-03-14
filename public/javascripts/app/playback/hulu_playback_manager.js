@@ -146,7 +146,7 @@ HuluPlaybackManager.prototype._maintainStatusBar = function(){
 
 			// for recording playhead progress
 			self._percentPlayed = parseFloat((self._player.getCurrentTime() / self._player.getProperties().duration * 100).toFixed(0));
-			if (self._percentPlayed == App._openGraphPostingPercent  && !self._recordedProgress){
+			if (self._percentPlayed == this.options.ogPostAfterPct  && !self._recordedProgress){
 				self._recordedProgress = true;
 				Backbone.Events.trigger("video:progress", self._percentPlayed);
 			}

@@ -1,22 +1,22 @@
 var AbstractPlaybackManager = function(){
-		//this._divId = opts.divId;
-		//this._playbackState = opts.playbackState;
+  this.options = {
+    ogPostAfterPct: 15
+  };
 };
-
 
 //------------------------------------------------------------
 // Abstract methods that must be implemented
 //------------------------------------------------------------
 
-AbstractPlaybackManager.prototype.playVideo = function(broadcast, shouldAutoplay){ alert("TODO: Play Broadcast"); };
+AbstractPlaybackManager.prototype.playVideo = function(video, shouldAutoplay){ alert("TODO: Play Video"); };
 
-AbstractPlaybackManager.prototype.stop = function(){ alert("TODO: Stop Broadcast"); };
+AbstractPlaybackManager.prototype.stop = function(){ alert("TODO: Stop Video"); };
 
-AbstractPlaybackManager.prototype.playPause = function(){ alert("TODO: Play/Pause Broadcast"); };
+AbstractPlaybackManager.prototype.playPause = function(){ alert("TODO: Play/Pause Video"); };
 
-AbstractPlaybackManager.prototype.play = function(){ alert("TODO: Play Broadcast"); };
+AbstractPlaybackManager.prototype.play = function(){ alert("TODO: Play Video"); };
 
-AbstractPlaybackManager.prototype.pause = function(){ alert("TODO: Pause Broadcast"); };
+AbstractPlaybackManager.prototype.pause = function(){ alert("TODO: Pause Video"); };
 
 AbstractPlaybackManager.prototype.getCurrentTime = function(){ return "?abstract?";  };
 
@@ -54,6 +54,7 @@ AbstractPlaybackManager.prototype.hide = function(){
 };
 
 AbstractPlaybackManager.prototype.show = function(){
+	console.log('showing player div');
 	$("#"+this._divId).css('visibility', 'visible').css('z-index', '0');
 	if( this._playerName ){ $("#main-pane").addClass(this._playerName+"-playing"); }
 };

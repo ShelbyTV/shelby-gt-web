@@ -13,11 +13,12 @@
 
 var YouTubeHTML5PlaybackManager = function(opts){
 	var self = this;
+	_.extend(this.options, opts);
 	this._divId = opts.divId;
 	this._playbackState = opts.playbackState;
 	
 	this._player = null;
-	this._currentBroadcast = null;
+	this._video = null;
 		
 	//should autoplay on initial creation?
 	this._shouldAutoplay = true;
@@ -46,19 +47,19 @@ YouTubeHTML5PlaybackManager.prototype = new AbstractPlaybackManager();
 
 YouTubeHTML5PlaybackManager.prototype._playerName = "you-tube-iframe";
 
-YouTubeHTML5PlaybackManager.prototype.playVideo = function(broadcast, shouldAutoplay){
-	this._currentBroadcast = broadcast;
+YouTubeHTML5PlaybackManager.prototype.playVideo = function(video, shouldAutoplay){
+	this._video = video;
 	this._shouldAutoplay = shouldAutoplay;
 	this._recordedProgress = false;
 	
 	if( this._player == null ){
 		this._bootstrapPlayer();
 	} else {
-		if (null == this._currentBroadcast.get('video_id_at_provider')){
+		if (null == this._video.get('provider_id')){
 			Backbone.Events.trigger("playback:next");
 		}
 		else{
-			this._playVideoWithId(this._currentBroadcast.get('video_id_at_provider'));
+			this._playVideoWithId(this._video.get('provider_id'));
 		}		
 	}
 };
@@ -203,9 +204,9 @@ YouTubeHTML5PlaybackManager.prototype.swapInPlayer = function(){
 //---------------------------------------------------
 
 YouTubeHTML5PlaybackManager.prototype._storeBroadcastDuration = function(){
-	if( this._player && (this._currentBroadcast.get('duration') <= 0.01) || typeof this._currentBroadcast.get('duration') !== "number" ){
+	if( this._player && (this._video.get('duration') <= 0.01) || typeof this._video.get('duration') !== "number" ){
 		var dur = this._player.getDuration();
-		if( typeof dur === "number" ){ this._currentBroadcast.set({'duration': dur}).save(); }
+		// if( typeof dur === "number" ){ this._video.save({'duration': dur}) }
 	}
 };
 
@@ -218,7 +219,7 @@ YouTubeHTML5PlaybackManager.prototype._maintainStatusBar = function(){
 			self._playbackState.setCurrentTime(self._player.getCurrentTime());
 			
 			self._percentPlayed = parseFloat((self._player.getCurrentTime() / self._player.getDuration() * 100).toFixed(0));
-			if (self._percentPlayed == App._openGraphPostingPercent  && !self._recordedProgress){
+			if (self._percentPlayed == self.options.ogPostAfterPct  && !self._recordedProgress){
 				self._recordedProgress = true;
 				Backbone.Events.trigger("video:progress", self._percentPlayed);
 			}
@@ -265,7 +266,7 @@ YouTubeHTML5PlaybackManager.prototype._onStateChange = function(event){
 			//not settings playbackState playing to FALSE as that causes glitch
 			//although it's *technically* true that we aren't playing back, we auto-advance to the next
 			//video at this point, and flashing the paused screen is not what we want to do.
-			Backbone.Events.trigger("video:ended", this._currentBroadcast);
+			Backbone.Events.trigger("video:ended", this._video);
 		  break;
 		case 1: //YT.PlayerState.PLAYING
 			this._playbackState.setPlaying(true);
@@ -335,7 +336,7 @@ YouTubeHTML5PlaybackManager.prototype._onPlayerAPIReady = function(){
 			'modestbranding': 1,
 			'origin': window.location.host
 		},
-		videoId: this._currentBroadcast.get('video_id_at_provider'),
+		videoId: this._video.get('provider_id'),
 		events: {
 			'onStateChange': function(e){ Backbone.Events.trigger("youtube:onStateChange", e); },
 			'onError': function(e){ Backbone.Events.trigger("youtube:onError", e); },
@@ -343,7 +344,7 @@ YouTubeHTML5PlaybackManager.prototype._onPlayerAPIReady = function(){
 	    }
 	});
 	
-	this._curVideoId = this._currentBroadcast.get('video_id_at_provider');
+	this._curVideoId = this._video.get('provider_id');
 };
 
 YouTubeHTML5PlaybackManager.prototype._onPlayerReady = function(e){
