@@ -1,5 +1,7 @@
 ListView = Support.CompositeView.extend({
   
+  className : 'list',
+
   options : {
     collectionAttribute : 'listCollection',
     listItemView : 'ListItemView'

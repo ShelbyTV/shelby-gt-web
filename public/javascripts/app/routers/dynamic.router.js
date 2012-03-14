@@ -20,7 +20,7 @@ DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(){
-    this._setupGuideView();
+    this._setupTopLevelViews();
     shelby.models.dashboard = new DashboardModel();
     shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
@@ -33,13 +33,14 @@ DynamicRouter = Backbone.Router.extend({
   //PRIVATE METHODS
   //---
 
-  _setupGuideView : function(){
+  _setupTopLevelViews : function(){
     shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
-    $(document.body).html(shelby.views.guide.el);
+    shelby.views.displayVideo = shelby.views.displayVideo || new window.libs.shelbyGT.VideoDisplayView();
+    // $(document.body).html(shelby.views.guide.el);
   },
   
   _setupRollView : function(rollId, guideAttrs){
-    this._setupGuideView();
+    this._setupTopLevelViews();
     var roll = new RollModel({id:rollId});
     shelby.models.guide.set(_.extend({'contentPaneView': RollView, 'contentPaneModel': roll}, guideAttrs));
   }

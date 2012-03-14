@@ -3,6 +3,7 @@ GuideView = Support.CompositeView.extend({
   // template : function(obj){
   //   return JST['frame'](obj);
   // },
+  el: '#guide',
 
   initialize : function(){
     this.model.bind('change', this.updateChild, this);

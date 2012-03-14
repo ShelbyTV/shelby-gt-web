@@ -1,5 +1,7 @@
 DashboardView = ListView.extend({
 
+  className : ListView.prototype.className + ' dashboard',
+
   actionToViewMap : {
     '0' : {view: FrameView, model_attr:'frame'},
     '1' : {view: FrameView, model_attr:'frame'},

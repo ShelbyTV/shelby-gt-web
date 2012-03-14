@@ -22,16 +22,16 @@ javascripts:
     - public/javascripts/app/views/frame.view.js
     - public/javascripts/app/views/list.view.js
     - public/javascripts/app/views/dashboard.view.js
+    - public/javascripts/app/browser.js
     # shelby backbone app - all other assets
     - public/javascripts/app/app.js
-    - public/javascripts/app/routers/*.js
+    - public/javascripts/app/playback/*.js
     - public/javascripts/app/models/*.js
     - public/javascripts/app/collections/*.js
     - public/javascripts/app/views/**/*.js
+    - public/javascripts/app/routers/*.js
     - public/javascripts/app/utils/*.js
 
 stylesheets:
   common:
     - public/stylesheets/screen.css
-  #h5bp:
-    #- public/stylesheets/h5bp/*.css
