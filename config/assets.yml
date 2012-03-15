@@ -17,6 +17,8 @@ javascripts:
     - public/javascripts/backbone/backbone-support/composite_view.js
     # underscore mixins
     - public/javascripts/underscore.inflection.js
+    # swf
+    - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/views/list_item.view.js
     - public/javascripts/app/views/frame.view.js
