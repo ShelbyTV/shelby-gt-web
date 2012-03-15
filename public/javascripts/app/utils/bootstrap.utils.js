@@ -40,7 +40,6 @@ var Bootstrap = {
   },
   goToFrameInCurrentRoll : function(id){
     shelby.router.navigate('/rolls/'+shelby.models.guide.get('contentPaneModel').id+'/frame/'+id, {trigger:false});
-    shelby.models.guide.set('activeFrameId', id);
   },
   playVideo : function(id){
     shelby.views.displayVideo = new window.libs.shelbyGT.VideoDisplayView({model:Backbone.Relational.store.find(VideoModel, id)});

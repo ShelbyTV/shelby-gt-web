@@ -39,7 +39,7 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 			hulu : new HuluPlaybackManager({ divId: "hulu-player-holder", playbackState: shelby.models.playbackState })
 		};
 
-    this.model.bind('change:activeFrameModel', this._displayVideo, this);
+		this.model.bind('change:activeFrameModel', this._displayVideo, this);
 		// //---------------------listen to public events
 		// Backbone.Events.bind("playback:restart", function() { self.render(); });
 		// Backbone.Events.bind("playback:playpause", function() { self.playPause(); });
@@ -71,7 +71,6 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		// 	false);
 		// }
 		
-		console.log('init!');
 		//this.render(); render is now an event handler
 	},
 	
@@ -96,16 +95,15 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		});
 	},
 	
-	_displayVideo: function(frame){
+	_displayVideo: function(guideModel, frame){
 		var self = this;
 		
 		/* Clear Timer set to track broadcast was played in case it was set already */
 		// clearTimeout(App._trackingTimer);
 		
 		//find next player
-    var video = frame.get('video');
+        var video = frame.get('video');
 		var nextPlaybackManager = this._playbackManagers[video.get('provider_name')];
-		console.log(nextPlaybackManager, video.get('provider_name'));
 
 		//swap to new player only when necessary
 		if (nextPlaybackManager){

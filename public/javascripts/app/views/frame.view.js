@@ -26,11 +26,11 @@ FrameView = ListItemView.extend({
     shelby.router.navigate('rolls/'+this.model.get('roll').id, {trigger:true});
   },
 
-  _onNewActiveFrame : function(model){
-    if (model.previous('activeFrameModel') == this.model) {
+  _onNewActiveFrame : function(guideModel, frame){
+    if (guideModel.previous('activeFrameModel') == this.model) {
       // un-highlight the previously active frame
       this.render(false);
-    } else if (model.get('activeFrameModel') == this.model) {
+    } else if (frame == this.model) {
       // highlight the new active frame
       this.render(true);
     }

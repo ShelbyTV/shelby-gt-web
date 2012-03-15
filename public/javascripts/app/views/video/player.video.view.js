@@ -69,7 +69,6 @@ window.libs.shelbyGT.PlayerView = Backbone.View.extend({
 		// 	false);
 		// }
 		
-		console.log('init!');
 		this.render();
 	},
 	
@@ -102,7 +101,6 @@ window.libs.shelbyGT.PlayerView = Backbone.View.extend({
 		
 		//find next player
 		var nextPlaybackManager = this._playbackManagers[this.model.get('provider_name')];
-		console.log(nextPlaybackManager, this.model.get('provider_name'));
 		
 		//swap to new player only when necessary
 		if (nextPlaybackManager){
