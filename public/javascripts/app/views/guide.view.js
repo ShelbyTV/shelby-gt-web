@@ -19,7 +19,7 @@ GuideView = Support.CompositeView.extend({
     var contentPaneProto = this.model.get('contentPaneView');
     var contentPaneModel = this.model.get('contentPaneModel');
     this.appendChild(new contentPaneProto({model: contentPaneModel}));
-    contentPaneModel.fetch();
+    //contentPaneModel.fetch();
   },
 
   _cleanup : function() {

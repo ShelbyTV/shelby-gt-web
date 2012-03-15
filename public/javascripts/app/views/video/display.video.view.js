@@ -37,7 +37,9 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 			ooyala : new OoyalaPlaybackManager({ divId: "ooyala-player-holder", playbackState: shelby.models.playbackState }),
 			'college humor' : new CollegehumorPlaybackManager({ divId: "collegehumor-player-holder", playbackState: shelby.models.playbackState }),
 			hulu : new HuluPlaybackManager({ divId: "hulu-player-holder", playbackState: shelby.models.playbackState })
-		}
+		};
+
+    this.model.bind('change:activeFrameModel', this._displayVideo, this);
 		// //---------------------listen to public events
 		// Backbone.Events.bind("playback:restart", function() { self.render(); });
 		// Backbone.Events.bind("playback:playpause", function() { self.playPause(); });
@@ -70,7 +72,7 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		// }
 		
 		console.log('init!');
-		this.render();
+		//this.render(); render is now an event handler
 	},
 	
 	// self.render(); ? ? ? ? ?
@@ -94,15 +96,16 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 		});
 	},
 	
-	render: function(){
+	_displayVideo: function(frame){
 		var self = this;
 		
 		/* Clear Timer set to track broadcast was played in case it was set already */
 		// clearTimeout(App._trackingTimer);
 		
 		//find next player
-		var nextPlaybackManager = this._playbackManagers[this.model.get('provider_name')];
-		console.log(nextPlaybackManager, this.model.get('provider_name'));
+    var video = frame.get('video');
+		var nextPlaybackManager = this._playbackManagers[video.get('provider_name')];
+		console.log(nextPlaybackManager, video.get('provider_name'));
 
 		//swap to new player only when necessary
 		if (nextPlaybackManager){
@@ -122,7 +125,7 @@ window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 			//if we haven't played anything, and are in anIframe, don't autoplay (and make sure playback state is correct)
 			var shouldAutoplay = !(Browser.isIframe() && !this._hasPlayed && !Browser.isFacebook());
 			this._currentPlaybackManager._playbackState.setPlayable(true);
-			this._currentPlaybackManager.playVideo(this.model, shouldAutoplay );
+			this._currentPlaybackManager.playVideo(video, shouldAutoplay );
 
 			if( !shouldAutoplay ){
 				shelby.models.playbackState.setPlaying(false);

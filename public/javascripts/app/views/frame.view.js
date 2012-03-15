@@ -15,7 +15,7 @@ FrameView = ListItemView.extend({
   initialize : function(){
     this.model.bind('change', this.render, this);
     this.model.bind('destroy', this.remove, this);
-    shelby.models.guide.bind('change:activeFrameId', this._onNewActiveFrame, this);
+    shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
   },
 
   render : function(active){
@@ -27,10 +27,10 @@ FrameView = ListItemView.extend({
   },
 
   _onNewActiveFrame : function(model){
-    if (model.previous('activeFrameId') == this.model.id) {
+    if (model.previous('activeFrameModel') == this.model) {
       // un-highlight the previously active frame
       this.render(false);
-    } else if (model.get('activeFrameId') == this.model.id) {
+    } else if (model.get('activeFrameModel') == this.model) {
       // highlight the new active frame
       this.render(true);
     }
