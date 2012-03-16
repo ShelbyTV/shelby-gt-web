@@ -11,12 +11,6 @@ var Bootstrap = {
       console.log('rolls coll', rolls);
     });
   },
-  initApp : function(){
-    this.dboard = new DashboardModel();
-    this.dboard.fetch();
-    app = new AppModel({dashboard : this.dboard});
-    return app;
-  },
   getRollModel : function(i){
     return this.dboard.get('dashboard_entries').at(i).get('frame').get('roll');
   },
