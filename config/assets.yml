@@ -28,7 +28,7 @@ javascripts:
     # shelby backbone app - all other assets
     - public/javascripts/app/app.js
     - public/javascripts/app/playback/*.js
-    - public/javascripts/app/models/*.js
+    - public/javascripts/app/models/**/*.js
     - public/javascripts/app/collections/*.js
     - public/javascripts/app/views/**/*.js
     - public/javascripts/app/routers/*.js
