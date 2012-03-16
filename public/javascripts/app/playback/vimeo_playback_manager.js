@@ -9,13 +9,14 @@
 
 var VimeoPlaybackManager = function(opts){
 	var self = this;
+	_.extend(this.options, opts);
 	this._divId = opts.divId;
 	this._playbackState = opts.playbackState;
 	
 	this._params = { allowScriptAccess: "always", wmode: "transparent" };
 	
 	this._player = null;
-	this._currentBroadcast = null;
+	this._video = null;
 	this._playing = false;
 	this._globalCallbackCalled = false;
 	
@@ -45,8 +46,8 @@ VimeoPlaybackManager.prototype = new AbstractPlaybackManager();
 
 VimeoPlaybackManager.prototype._playerName = "vimeo";
 
-VimeoPlaybackManager.prototype.playVideo = function(broadcast, shouldAutoplay){
-	this._currentBroadcast = broadcast;
+VimeoPlaybackManager.prototype.playVideo = function(video, shouldAutoplay){
+	this._video = video;
 	this._shouldAutoplay = shouldAutoplay;
 	this._recordedProgress = false;
 	
@@ -54,15 +55,13 @@ VimeoPlaybackManager.prototype.playVideo = function(broadcast, shouldAutoplay){
 	// there is some issue with this check on the boxee
 	if (!Browser.isBoxee()) { this._playableCheck(); }
 	
-	
 	if( this._player == null ){
 		this._bootstrapPlayer();
 	} else {
-		if (null == this._currentBroadcast.get('video_id_at_provider')){
+		if (null == this._video.get('provider_id')){
 			Backbone.Events.trigger("playback:next");
-		}
-		else{
-			this._playVideoWithId(this._currentBroadcast.get('video_id_at_provider'));
+		} else {
+			this._playVideoWithId(this._video.get('provider_id'));
 		}
 	}
 };
@@ -131,9 +130,9 @@ VimeoPlaybackManager.prototype.toggleMute = function(){
 };
 
 VimeoPlaybackManager.prototype.setBcastDuration = function(duration){
-	if (this._bcast_duration || this._currentBroadcast.get('duration') === 0){
-		this._bcast_duration = duration;
-		this._currentBroadcast.set({'duration':this._bcast_duration}).save();
+	if (this._video_duration || this._video.get('duration') === 0){
+		this._video_duration = duration;
+		// this._video.save({'duration':this._video_duration});
 	}
 	return null;
 };
@@ -159,8 +158,7 @@ VimeoPlaybackManager.prototype.swapOutPlayer = function(){
 	if (this._playing && this._player){
 		this._player.api_pause();
 		this._playing = false;
-	} 
-	else {
+	} else {
 		this._playing = false;
 	}
 };
@@ -199,7 +197,7 @@ VimeoPlaybackManager.prototype._updatePercentPlayed = function() {
 
 VimeoPlaybackManager.prototype._bootstrapPlayer = function(){
 	var flashvars = {
-		clip_id: this._currentBroadcast.get('video_id_at_provider'),
+		clip_id: this._video.get('provider_id'),
 		show_portrait: 0,
 		show_byline: 0,
 		show_title: 0,
@@ -209,9 +207,10 @@ VimeoPlaybackManager.prototype._bootstrapPlayer = function(){
 	};
 	var attributes = {};
 	
+	console.log(this._divId);
 	swfobject.embedSWF("http://vimeo.com/moogaloop.swf", this._divId, "100%", "100%", "9.0.0","expressInstall.swf", flashvars, this._params);
 	
-	this._curVideoId = this._currentBroadcast.get('video_id_at_provider');
+	this._curVideoId = this._video.get('provider_id');
 };
 
 VimeoPlaybackManager.prototype._isMuted = function(){
@@ -226,10 +225,9 @@ VimeoPlaybackManager.prototype._unMute = function(){ if(this._player){ this._pla
 VimeoPlaybackManager.prototype._playVideoWithId = function(id){
 	if( this._curVideoId == id){
 		this.play();
-	}
-	else {
+	} else {
 		//need to actually load new video
-		this._player.api_loadVideo(this._currentBroadcast.get('video_id_at_provider'));
+		this._player.api_loadVideo(id);
 		this._curVideoId = id;
 	}
 };
@@ -238,7 +236,7 @@ VimeoPlaybackManager.prototype._playableCheck = function(){
 	var self = this;
 	// make request to vimeo api to see if video is available, record if a video is returned
 	$.ajax({
-		url:"http://vimeo.com/api/v2/video/"+ this._currentBroadcast.get('video_id_at_provider') +".json",
+		url:"http://vimeo.com/api/v2/video/"+ this._video.get('provider_id') +".json",
 		dataType:"jsonp",
 		success: 
 			function(s){
@@ -268,8 +266,7 @@ VimeoPlaybackManager.prototype._onPlay = function(){
 		self._playing = true;
 		this._playbackState.setPlaying(true);
 		this._playbackState.setDuration(this._player.api_getDuration());
-	}
-	else {
+	} else {
 		// sadly, the player is in a bit of a glitchy state right now...
 		this._player.api_pause();
 	}
@@ -299,7 +296,7 @@ VimeoPlaybackManager.prototype._onReady = function(){
 VimeoPlaybackManager.prototype._onFinish = function(){
 	this._player.api_pause();
 	this._playing = false;
-	Backbone.Events.trigger("video:ended", this._currentBroadcast);
+	Backbone.Events.trigger("video:ended", this._video);
 };
 
 VimeoPlaybackManager.prototype._playerLoaded = function(){

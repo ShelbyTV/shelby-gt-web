@@ -11,12 +11,6 @@ var Bootstrap = {
       console.log('rolls coll', rolls);
     });
   },
-  initApp : function(){
-    this.dboard = new DashboardModel();
-    this.dboard.fetch();
-    app = new AppModel({dashboard : this.dboard});
-    return app;
-  },
   getRollModel : function(i){
     return this.dboard.get('dashboard_entries').at(i).get('frame').get('roll');
   },
@@ -40,7 +34,6 @@ var Bootstrap = {
   },
   goToFrameInCurrentRoll : function(id){
     shelby.router.navigate('/rolls/'+shelby.models.guide.get('contentPaneModel').id+'/frame/'+id, {trigger:false});
-    shelby.models.guide.set('activeFrameId', id);
   },
   playVideo : function(id){
     shelby.views.displayVideo = new window.libs.shelbyGT.VideoDisplayView({model:Backbone.Relational.store.find(VideoModel, id)});

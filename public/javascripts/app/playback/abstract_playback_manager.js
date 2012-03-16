@@ -54,7 +54,6 @@ AbstractPlaybackManager.prototype.hide = function(){
 };
 
 AbstractPlaybackManager.prototype.show = function(){
-	console.log('showing player div');
 	$("#"+this._divId).css('visibility', 'visible').css('z-index', '0');
 	if( this._playerName ){ $("#main-pane").addClass(this._playerName+"-playing"); }
 };

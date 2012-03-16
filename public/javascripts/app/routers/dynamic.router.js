@@ -12,18 +12,16 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   displayFrameInRoll : function(rollId, frameId){
-    //this._setupRollView(rollId, {activeFrameId:frameId});
-    //var frame = new FrameModel({id:frameId});
-    //this._setupRollView(rollId, {activeFrame:frame});
+    this._setupRollView(rollId, {activeFrameId:frameId});
   },
 
   displayRoll : function(id){
-    this._bindContentPaneModelChanges()
+    this._bindContentPaneModelChanges(this._activateFirstRollFrame);
     this._setupRollView(id);
   },
 
   displayDashboard : function(){
-    this._bindContentPaneModelChanges()
+    this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new DashboardModel();
     shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
@@ -37,14 +35,20 @@ DynamicRouter = Backbone.Router.extend({
   //PRIVATE METHODS
   //---
 
-  _bindContentPaneModelChanges : function(){
+  _bindContentPaneModelChanges : function(cb){
     shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
-      console.log('change fired', contentPaneModel);
-      contentPaneModel.bind('sync', function(){
-        console.log('FRAMES', contentPaneModel);
-      });
-      contentPaneModel.fetch();
+      contentPaneModel.fetch({success:cb});
     });
+  },
+
+  _activateFirstRollFrame : function(contentPaneModel, response) {
+	var firstFrame = contentPaneModel.get('frames').first();
+	shelby.models.guide.set('activeFrameModel', firstFrame);
+  },
+
+  _activateFirstDashboardFrame : function(contentPaneModel, response) {
+	var firstFrame = contentPaneModel.get('dashboard_entries').first().get('frame');
+	shelby.models.guide.set('activeFrameModel', firstFrame);
   },
 
   _setupTopLevelViews : function(){
