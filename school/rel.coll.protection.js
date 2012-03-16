@@ -11,6 +11,7 @@ var std = function(){
  relModel.get('myRelColl').bind('add', addOne);
  relModel.get('myRelColl').bind('reset', addAll);
  relModel.fetch();
+
  /*
   * What we expect (Bbone protocol)
   * ------------------------------
@@ -28,17 +29,15 @@ var std = function(){
 
 /*
  * When dealing w/ embedded relational collections
- * only bind to the 'add' event
- * When dealing w/ standard backbone collections
- * only bind to the 'add' event and only call 
- * collection.fetch({add:true})
+ * bind to the collection event on the containing moel
+ * using the following syntax pattern:
+ * <collectionEvent>:<relatedCollectionName> e.g. "reset:frames'
  * Don't re-fetch standard collections - create new Views
  */
 
 var condom = function(){
   var relModel = new SomeRelationalModel();
-
-  relModel.get('myRelColl').bind('add', addOne);
-  //relModel.get('myRelColl').bind('reset', addAll);
+  relModel.bind('reset:myRelColl', this.reset, this);
+  relModel.bind('add:myRelColl', this.addOne, this);
   relModel.fetch();
 };
