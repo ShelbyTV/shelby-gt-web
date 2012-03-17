@@ -36,19 +36,20 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   _bindContentPaneModelChanges : function(cb){
+    shelby.models.guide.unbind('change:contentPaneModel');
     shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
       contentPaneModel.fetch({success:cb});
     });
   },
 
   _activateFirstRollFrame : function(contentPaneModel, response) {
-	var firstFrame = contentPaneModel.get('frames').first();
-	shelby.models.guide.set('activeFrameModel', firstFrame);
+	  var firstFrame = contentPaneModel.get('frames').first();
+	  shelby.models.guide.set('activeFrameModel', firstFrame);
   },
 
   _activateFirstDashboardFrame : function(contentPaneModel, response) {
-	var firstFrame = contentPaneModel.get('dashboard_entries').first().get('frame');
-	shelby.models.guide.set('activeFrameModel', firstFrame);
+	  var firstFrame = contentPaneModel.get('dashboard_entries').first().get('frame');
+	  shelby.models.guide.set('activeFrameModel', firstFrame);
   },
 
   _setupTopLevelViews : function(){

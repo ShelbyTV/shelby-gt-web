@@ -2,7 +2,10 @@
 // ---------------
 
 RollsCollection = Backbone.Collection.extend({
-  url : 'http://localhost:3001/rolls.json',
+
+  //url : 'http://localhost:3001/rolls.json',
+  url : window.shelby.config.apiRoot+'/rolls.json',
+
   // Reference to this collection's model (FrameModel).
   model: RollModel, 
 

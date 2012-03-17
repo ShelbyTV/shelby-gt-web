@@ -3,7 +3,7 @@
 
 FramesCollection = Backbone.Collection.extend({
 
-  url : 'http://localhost:3001/roll/2/frames.json',
+  url : window.shelby.config.apiRoot+'/roll/2/frames.json',
 
   // Reference to this collection's model (FrameModel).
   model: FrameModel, 

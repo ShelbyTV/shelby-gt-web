@@ -1,4 +1,5 @@
 RollModel = Backbone.RelationalModel.extend({
+
   relations : [{
     type : Backbone.HasMany,
     key : 'frames',
@@ -7,6 +8,6 @@ RollModel = Backbone.RelationalModel.extend({
   }],
 
   url : function() {
-	return 'http://localhost:3001/roll/' + this.id + '.json';
+	  return window.shelby.config.apiRoot + '/roll/' + this.id + '.json';
   }
 });
