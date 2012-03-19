@@ -21,12 +21,18 @@ window.libs = {
 
 // global namespace for this app
 window.shelby = {
-	models : {},
+  models : {},
   views : {},
   config : {
     apiRoot : 'http://108.166.56.26/v1'
   }
 };
+
+// setup ajax defaults
+$.ajaxSetup({
+  xhrFields: {withCredentials: true},
+  data: {'cs_key': 'GoatsFTW'}
+});
 
 $(document).ready(function(){
   window.shelby.router = new AppRouter();

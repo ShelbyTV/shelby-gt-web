@@ -31,6 +31,3 @@ gem 'jammit', '= 0.6.3'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-# Devise
-gem 'devise'
