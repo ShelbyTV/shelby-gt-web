@@ -1,8 +1,8 @@
 DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "rolls/:rollId/frame/:frameId" : "displayFrameInRoll",
-    "rolls/:id" : "displayRoll",
+    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
+    "roll/:id" : "displayRoll",
     "" : "displayDashboard",
     "*url" : "doNothing"
   },
@@ -23,8 +23,8 @@ DynamicRouter = Backbone.Router.extend({
   displayDashboard : function(){
     this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
-    shelby.models.dashboard = new DashboardModel();
-    shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
+    window.shelby.models.dashboard = new DashboardModel();
+    window.shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': window.shelby.models.dashboard});
   },
 
   doNothing : function(){
@@ -36,31 +36,37 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   _bindContentPaneModelChanges : function(cb){
-    shelby.models.guide.unbind('change:contentPaneModel');
-    shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
-      contentPaneModel.fetch({success:cb});
+    window.shelby.models.guide.unbind('change:contentPaneModel');
+    window.shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
+      contentPaneModel.fetch({data:{include_children:true},success:cb});
     });
   },
 
   _activateFirstRollFrame : function(contentPaneModel, response) {
-	  var firstFrame = contentPaneModel.get('frames').first();
-	  shelby.models.guide.set('activeFrameModel', firstFrame);
+    var firstFrame = contentPaneModel.get('frames').first();
+    window.shelby.models.guide.set('activeFrameModel', firstFrame);
+  },
+
+  _activateFrameInRollById : function(rollModel, frameId) {
+    // implement later to lookup a frame in a roll for the /rolls/:id/frames/:id route
   },
 
   _activateFirstDashboardFrame : function(contentPaneModel, response) {
-	  var firstFrame = contentPaneModel.get('dashboard_entries').first().get('frame');
-	  shelby.models.guide.set('activeFrameModel', firstFrame);
+    var firstDashboardEntry;
+    if (firstDashboardEntry = contentPaneModel.get('dashboard_entries').first()) {
+      window.shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+    }
   },
 
   _setupTopLevelViews : function(){
-    shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
-    shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
+    window.shelby.views.guide = window.shelby.views.guide || new GuideView({model:window.shelby.models.guide});
+    window.shelby.views.video = window.shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:window.shelby.models.guide});
   },
   
   _setupRollView : function(rollId, guideAttrs){
     this._setupTopLevelViews();
     var roll = new RollModel({id:rollId});
-    shelby.models.guide.set(_.extend({'contentPaneView': RollView, 'contentPaneModel': roll}, guideAttrs)); //fetch will be called on roll
+    window.shelby.models.guide.set(_.extend({'contentPaneView': RollView, 'contentPaneModel': roll}, guideAttrs)); //fetch will be called on roll
   }
 
 });

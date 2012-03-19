@@ -23,7 +23,7 @@ FrameView = ListItemView.extend({
   },
 
   goToRoll : function(){
-    shelby.router.navigate('rolls/'+this.model.get('roll').id, {trigger:true});
+    shelby.router.navigate('roll/'+this.model.get('roll').id, {trigger:true});
   },
 
   _onNewActiveFrame : function(guideModel, frame){

@@ -1,4 +1,4 @@
-RollModel = Backbone.RelationalModel.extend({
+RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   relations : [{
     type : Backbone.HasMany,
@@ -8,6 +8,6 @@ RollModel = Backbone.RelationalModel.extend({
   }],
 
   url : function() {
-	  return window.shelby.config.apiRoot + '/roll/' + this.id + '.json';
+	  return window.shelby.config.apiRoot + '/roll/' + this.id + '/frames';
   }
 });

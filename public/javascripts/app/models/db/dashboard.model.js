@@ -6,6 +6,10 @@ DashboardModel = Backbone.RelationalModel.extend({
     collectionType : 'DashboardEntriesCollection'
   }],
 
+  parse : function(response) {
+    return ({dashboard_entries: response.result || []});
+  },
+
   //urlRoot : 'http://localhost:3001/dashboard.json'
-  url : window.shelby.config.apiRoot+'/dashboard.json'
+  url : window.shelby.config.apiRoot+'/dashboard'
 });

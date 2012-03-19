@@ -9,15 +9,11 @@ Backbone.sync = function(method, model, options) {
   return Backbone.___sync(method, model, options);
 }
 
-
-
 // global mechanism for including library prototypes
 window.libs = {
   shelbyGT : {},
   utils : {} 
 };
-
-
 
 // global namespace for this app
 window.shelby = {

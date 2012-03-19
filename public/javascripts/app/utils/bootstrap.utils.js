@@ -30,10 +30,10 @@ var Bootstrap = {
     });
   },
   goToRoll : function(id){
-    shelby.router.navigate('/rolls/'+id, {trigger:true});
+    shelby.router.navigate('/roll/'+id, {trigger:true});
   },
   goToFrameInCurrentRoll : function(id){
-    shelby.router.navigate('/rolls/'+shelby.models.guide.get('contentPaneModel').id+'/frame/'+id, {trigger:false});
+    shelby.router.navigate('/roll/'+shelby.models.guide.get('contentPaneModel').id+'/frame/'+id, {trigger:false});
   },
   playVideo : function(id){
     shelby.views.displayVideo = new window.libs.shelbyGT.VideoDisplayView({model:Backbone.Relational.store.find(VideoModel, id)});

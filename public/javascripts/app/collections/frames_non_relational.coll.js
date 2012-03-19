@@ -1,8 +1,6 @@
 // THIS COLLECTION IS FOR TESTING PURPOSES ONLY
 FramesNonRelationalCollection = Backbone.Collection.extend({
 
-  url : window.shelby.config.apiRoot+'/roll/2/frames.json',
-
   // Reference to this collection's model (FrameModel).
   model: FrameNonRelationalModel, 
 

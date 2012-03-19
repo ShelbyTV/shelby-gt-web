@@ -6,7 +6,7 @@ FrameModel = Backbone.RelationalModel.extend({
       relatedModel : 'UserModel'
     },{
       type : Backbone.HasOne,
-      key : 'conversation', 
+      key : 'conversation',
       relatedModel : 'ConversationModel'
     },{
       type : Backbone.HasOne,
