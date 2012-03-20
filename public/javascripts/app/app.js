@@ -1,14 +1,3 @@
-Backbone.___sync = Backbone.sync;
-Backbone.sync = function(method, model, options) {
-  if (!options) {
-    options = {};
-  }
-  if (!options.error) {
-    options.error = function(){alert('Something went wrong. Shelby apologizes.');};
-  }
-  return Backbone.___sync(method, model, options);
-}
-
 // global mechanism for including library prototypes
 window.libs = {
   shelbyGT : {},
@@ -28,6 +17,14 @@ window.shelby = {
 $.ajaxSetup({
   xhrFields: {withCredentials: true},
   data: {'cs_key': 'GoatsFTW'}
+});
+
+$(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
+  if (jqXHR.status == 401) {
+    alert("You're not authenticated with the Shelby API, we should redirect and authenticate you.");
+  } else {
+    alert("Something went wrong. Shelby apologizes.");
+  }
 });
 
 $(document).ready(function(){
