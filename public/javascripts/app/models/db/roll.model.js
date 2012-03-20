@@ -8,6 +8,6 @@ RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
   }],
 
   url : function() {
-	  return window.shelby.config.apiRoot + '/roll/' + this.id + '/frames';
+	  return shelby.config.apiRoot + '/roll/' + this.id + '/frames';
   }
 });

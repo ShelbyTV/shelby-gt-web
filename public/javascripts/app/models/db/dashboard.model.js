@@ -11,5 +11,5 @@ DashboardModel = Backbone.RelationalModel.extend({
   },
 
   //urlRoot : 'http://localhost:3001/dashboard.json'
-  url : window.shelby.config.apiRoot+'/dashboard'
+  url : shelby.config.apiRoot+'/dashboard'
 });

@@ -27,8 +27,8 @@ DynamicRouter = Backbone.Router.extend({
   displayDashboard : function(){
     this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
-    window.shelby.models.dashboard = new DashboardModel();
-    window.shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': window.shelby.models.dashboard});
+    shelby.models.dashboard = new DashboardModel();
+    shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
 
   doNothing : function(){
@@ -40,8 +40,8 @@ DynamicRouter = Backbone.Router.extend({
   //---
 
   _bindContentPaneModelChanges : function(cb){
-    window.shelby.models.guide.unbind('change:contentPaneModel');
-    window.shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
+    shelby.models.guide.unbind('change:contentPaneModel');
+    shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
       // whenever a new model (roll or dashboard) is set on the content pane, fetch (possibly re-loading) its contents
       // this way, the content pane will render with the latest contents of that roll or dashboard
       contentPaneModel.fetch({data:{include_children:true},success:cb});
@@ -50,13 +50,13 @@ DynamicRouter = Backbone.Router.extend({
 
   _activateFirstRollFrame : function(rollModel, response) {
     var firstFrame = rollModel.get('frames').first();
-    window.shelby.models.guide.set('activeFrameModel', firstFrame);
+    shelby.models.guide.set('activeFrameModel', firstFrame);
   },
 
   _activateFrameInRollById : function(rollModel, frameId) {
     var frame;
     if (frame = rollModel.get('frames').get(frameId)) {
-      window.shelby.models.guide.set('activeFrameModel', frame);
+      shelby.models.guide.set('activeFrameModel', frame);
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
       window.alert("Sorry, the video you were looking for doesn't exist.")
@@ -67,19 +67,19 @@ DynamicRouter = Backbone.Router.extend({
   _activateFirstDashboardFrame : function(dashboardModel, response) {
     var firstDashboardEntry;
     if (firstDashboardEntry = dashboardModel.get('dashboard_entries').first()) {
-      window.shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+      shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
     }
   },
 
   _setupTopLevelViews : function(){
-    window.shelby.views.guide = window.shelby.views.guide || new GuideView({model:window.shelby.models.guide});
-    window.shelby.views.video = window.shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:window.shelby.models.guide});
+    shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
+    shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
   _setupRollView : function(rollId){
     this._setupTopLevelViews();
     var roll = new RollModel({id:rollId});
-    window.shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
+    shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
   }
 
 });

@@ -1,11 +1,11 @@
 // global mechanism for including library prototypes
-window.libs = {
+libs = {
   shelbyGT : {},
   utils : {} 
 };
 
 // global namespace for this app
-window.shelby = {
+shelby = {
   models : {},
   views : {},
   config : {
@@ -28,6 +28,6 @@ $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
 });
 
 $(document).ready(function(){
-  window.shelby.router = new AppRouter();
+  shelby.router = new AppRouter();
   Backbone.history.start({pushState:true});
 });

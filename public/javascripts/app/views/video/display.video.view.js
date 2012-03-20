@@ -13,7 +13,7 @@
 //Events triggered:
 //
 
-window.libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
+libs.shelbyGT.VideoDisplayView = Backbone.View.extend({
 
   //which specific PlaybackManager is currently handling playback (YouTube, Vimeo, Brightcove, etc...)
   _currentPlaybackManager: null,

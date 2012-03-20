@@ -4,7 +4,7 @@
 //
 // N.B. This is not a "proper" Backbone model with a back end representation.  We're taking advantage of the model's event system.
 
-window.libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
+libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 
 	defaults: {
 		"playbackManager": null,
