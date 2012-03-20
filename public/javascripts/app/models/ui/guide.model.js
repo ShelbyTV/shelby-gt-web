@@ -1,7 +1,7 @@
-GuideModel = Backbone.Model.extend({
+libs.shelbyGT.GuideModel = Backbone.Model.extend({
   defaults : {
     'contentPaneView' : DashboardView,
-    'contentPaneModel' : DashboardModel,
+    'contentPaneModel' : libs.shelbyGT.DashboardModel,
     'activeFrameModel' : null
   }
 });

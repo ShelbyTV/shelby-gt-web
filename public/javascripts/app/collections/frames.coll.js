@@ -3,8 +3,7 @@
 
 FramesCollection = Backbone.Collection.extend({
 
-  // Reference to this collection's model (FrameModel).
-  model: FrameModel, 
+  model: libs.shelbyGT.FrameModel,
 
   // Return all frames that have attr : true.
   filterBy: function(attr) {

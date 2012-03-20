@@ -1,21 +1,21 @@
-FrameModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.FrameModel = Backbone.RelationalModel.extend({
   relations : [
     {
       type : Backbone.HasOne,
       key : 'creator',
-      relatedModel : 'UserModel'
+      relatedModel : 'libs.shelbyGT.UserModel'
     },{
       type : Backbone.HasOne,
       key : 'conversation',
-      relatedModel : 'ConversationModel'
+      relatedModel : 'libs.shelbyGT.ConversationModel'
     },{
       type : Backbone.HasOne,
       key : 'video',
-      relatedModel : 'VideoModel'
+      relatedModel : 'libs.shelbyGT.VideoModel'
     },{
       type : Backbone.HasOne,
       key : 'roll',
-      relatedModel : 'RollModel'
+      relatedModel : 'libs.shelbyGT.RollModel'
     }
   ]
 });

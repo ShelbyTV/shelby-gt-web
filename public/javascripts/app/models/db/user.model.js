@@ -1,3 +1,3 @@
-UserModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.UserModel = Backbone.RelationalModel.extend({
   
 });

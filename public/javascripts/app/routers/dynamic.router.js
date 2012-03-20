@@ -27,7 +27,7 @@ DynamicRouter = Backbone.Router.extend({
   displayDashboard : function(){
     this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
-    shelby.models.dashboard = new DashboardModel();
+    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
 
@@ -78,7 +78,7 @@ DynamicRouter = Backbone.Router.extend({
   
   _setupRollView : function(rollId){
     this._setupTopLevelViews();
-    var roll = new RollModel({id:rollId});
+    var roll = new libs.shelbyGT.RollModel({id:rollId});
     shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
   }
 

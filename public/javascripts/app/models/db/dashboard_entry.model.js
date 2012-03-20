@@ -1,11 +1,8 @@
-// Dashboard Entry Model
-// ----------
-
-DashboardEntryModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.DashboardEntryModel = Backbone.RelationalModel.extend({
   relations : [{
     type : Backbone.HasOne,
     key : 'frame',
-    relatedModel : 'FrameModel',
+    relatedModel : 'libs.shelbyGT.FrameModel',
     createModels : true
   }]
 });

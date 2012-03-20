@@ -1,9 +1,9 @@
-RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
+libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   relations : [{
     type : Backbone.HasMany,
     key : 'frames',
-    relatedModel : 'FrameModel',
+    relatedModel : 'libs.shelbyGT.FrameModel',
     collectionType : 'FramesCollection'
   }],
 
