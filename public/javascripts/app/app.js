@@ -28,6 +28,6 @@ $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
 });
 
 $(document).ready(function(){
-  shelby.router = new AppRouter();
+  shelby.router = new libs.shelbyGT.AppRouter();
   Backbone.history.start({pushState:true});
 });

@@ -1,4 +1,4 @@
-DynamicRouter = Backbone.Router.extend({
+libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
@@ -28,7 +28,7 @@ DynamicRouter = Backbone.Router.extend({
     this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
-    shelby.models.guide.set({'contentPaneView': DashboardView, 'contentPaneModel': shelby.models.dashboard});
+    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
 
   doNothing : function(){
@@ -72,14 +72,14 @@ DynamicRouter = Backbone.Router.extend({
   },
 
   _setupTopLevelViews : function(){
-    shelby.views.guide = shelby.views.guide || new GuideView({model:shelby.models.guide});
+    shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
   _setupRollView : function(rollId){
     this._setupTopLevelViews();
     var roll = new libs.shelbyGT.RollModel({id:rollId});
-    shelby.models.guide.set({'contentPaneView': RollView, 'contentPaneModel': roll});
+    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': roll});
   }
 
 });

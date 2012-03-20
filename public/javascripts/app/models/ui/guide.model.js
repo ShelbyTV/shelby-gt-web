@@ -1,6 +1,6 @@
 libs.shelbyGT.GuideModel = Backbone.Model.extend({
   defaults : {
-    'contentPaneView' : DashboardView,
+    'contentPaneView' : libs.shelbyGT.DashboardView,
     'contentPaneModel' : libs.shelbyGT.DashboardModel,
     'activeFrameModel' : null
   }

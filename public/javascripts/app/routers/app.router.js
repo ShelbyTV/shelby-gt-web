@@ -1,4 +1,4 @@
-AppRouter = Backbone.Router.extend({
+libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   routes : {
     "static/*url" : "initStatic",
@@ -21,7 +21,7 @@ AppRouter = Backbone.Router.extend({
   },
 
   initDynamic : function(url){
-    shelby.router = new DynamicRouter();
+    shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     this._reroute(); 

@@ -1,4 +1,4 @@
-FrameView = ListItemView.extend({
+libs.shelbyGT.FrameView = ListItemView.extend({
 
   events : {
     "click .roll" : "goToRoll"

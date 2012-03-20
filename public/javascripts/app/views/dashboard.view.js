@@ -1,13 +1,13 @@
-DashboardView = ListView.extend({
+libs.shelbyGT.DashboardView = ListView.extend({
 
   className : ListView.prototype.className + ' dashboard',
 
   actionToViewMap : {
-    '0' : {view: FrameView, model_attr:'frame'},
-    '1' : {view: FrameView, model_attr:'frame'},
-    '8' : {view: FrameView, model_attr:'frame'},
-    '9' : {view: FrameView, model_attr:'frame'},
-    '10' : {view: FrameView, model_attr:'frame'}
+    '0' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
+    '1' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
+    '8' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
+    '9' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
+    '10' : {view: libs.shelbyGT.FrameView, model_attr:'frame'}
   },
 
   initialize : function(){

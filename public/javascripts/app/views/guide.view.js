@@ -1,4 +1,4 @@
-GuideView = Support.CompositeView.extend({
+libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
   // template : function(obj){
   //   return JST['frame'](obj);
