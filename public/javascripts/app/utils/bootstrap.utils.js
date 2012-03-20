@@ -7,7 +7,7 @@ var Bootstrap = {
   },
   initRoll : function(){
     DataUtils.getRollJson(function(data){
-      var rolls = new RollsCollection(data);
+      var rolls = new libs.shelbyGT.RollsCollection(data);
       console.log('rolls coll', rolls);
     });
   },

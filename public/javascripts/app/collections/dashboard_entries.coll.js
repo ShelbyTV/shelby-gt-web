@@ -1,7 +1,4 @@
-// Dashboard Entry Collection
-// ---------------
-
-DashboardEntriesCollection = Backbone.Collection.extend({
+libs.shelbyGT.DashboardEntriesCollection = Backbone.Collection.extend({
 
   // Reference to this collection's model.
   model: libs.shelbyGT.DashboardEntryModel,

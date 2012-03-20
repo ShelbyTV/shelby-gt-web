@@ -3,7 +3,7 @@ libs.shelbyGT.DashboardModel = Backbone.RelationalModel.extend({
     type : Backbone.HasMany,
     key : 'dashboard_entries',
     relatedModel : 'libs.shelbyGT.DashboardEntryModel',
-    collectionType : 'DashboardEntriesCollection'
+    collectionType : 'libs.shelbyGT.DashboardEntriesCollection'
   }],
 
   parse : function(response) {
