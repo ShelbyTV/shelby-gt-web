@@ -1,0 +1,13 @@
+defaults: &defaults
+  cross_site_key: "GoatsFTW"
+  
+development:
+  <<: *defaults
+  url: "http://localhost:3000"
+  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  url: "http://api.gt.shelby.tv/v1"  

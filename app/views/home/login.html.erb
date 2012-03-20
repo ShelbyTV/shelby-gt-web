@@ -31,37 +31,25 @@
   <header>
 
   </header>
-  <div role="main">
-		<div id="player">
-			
-			<div id="youtube-player-holder"></div>
-			<div id="vimeo-player-holder"></div>
-			
-		</div>
-		<div id="guide"></div>
+  <div role="main" style="position: absolute; left: 300px; top: 300px; font-size: 33px;">
+
+		<%= link_to 'LOGIN w/ Twitter BITCH!', @twitter_login_url, :id => 'signout' %>
+
   </div>
 
 
   <footer>
-		<span style="position:fixed; bottom: 10px; font-size: 15px;"><%= link_to 'signout', '#', :id => 'signout' %></span>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('#signout').on('click', function(){
-					$.get('<%= Settings::ShelbyAPI.url + "/sign_out_user" %>', function(){
-						document.location = "http://localhost:4000";
-					});
-				});
-			});
-		</script>
+		
   </footer>
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-       mathiasbynens.be/notes/async-analytics-snippet -->
+       mathiasbynens.be/notes/async-analytics-snippet 
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
+	-->
 </body>
 </html>

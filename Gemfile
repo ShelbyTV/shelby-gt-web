@@ -2,6 +2,16 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+# Needed to decode the gt api server cookie
+gem 'bson_ext'
+gem 'bson'
+
+#
+# ---------- Config
+#
+gem "settingslogic"
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
