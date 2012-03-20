@@ -9,7 +9,7 @@ shelby = {
   models : {},
   views : {},
   config : {
-    apiRoot : 'http://108.166.56.26/v1'
+    apiRoot : 'http://api.gt.shelby.tv/v1'
   }
 };
 
