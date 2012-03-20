@@ -1,5 +1,7 @@
 ListView = Support.CompositeView.extend({
   
+  tagName : 'ul',
+
   className : 'list',
 
   options : {
