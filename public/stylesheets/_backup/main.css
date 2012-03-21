@@ -1,0 +1,12 @@
+/* line 1, ../../../app/stylesheets/_backup/main.scss */
+#player {
+  float: left;
+  border: 1px solid black;
+}
+
+/* line 6, ../../../app/stylesheets/_backup/main.scss */
+#guide {
+  float: right;
+  background-color: #CCCCCC;
+  width: 200px;
+}

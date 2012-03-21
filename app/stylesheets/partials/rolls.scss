@@ -1,0 +1,46 @@
+@import "base",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.rolls{
+	background:$myBlue;
+	margin: 0;
+	padding:0;
+	
+	a{
+		border:1px solid darkGreen;
+		display:block;
+	}
+
+	h1{
+		line-height:2.231;
+		position:relative;
+	}
+
+	img{
+		float:left;
+		margin-right:$defaultMargin;
+		width:50px;
+	}	
+	
+	li{
+		list-style-type:none;
+
+	}
+	.public{
+		h1:after{
+			content: "%";
+			padding-right:$defaultMargin/1.5;
+			float:right;
+		}
+
+	}
+	.private{
+		@extend .public;
+		
+		h1:after{
+			content: "&";
+		}
+	}
+
+}

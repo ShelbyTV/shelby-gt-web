@@ -1,0 +1,182 @@
+@import "base",
+		"compass",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+h1,h2,h3,h4,h5,h6{line-height:1.231;margin:0;}
+
+body{
+	@include fontcolor;
+	@include basefont;
+}
+
+a{
+	color: #a4a4a4;
+	
+	&:hover, 
+	&:visited,
+	&:active{
+		color: #a4a4a4;
+	}
+
+}
+
+.content{
+	float:right;
+	width:330px;
+}
+
+.main{
+	@extend .content;
+
+	background:pink;
+	font-size:1.3em;
+
+}
+
+.header{
+	@include softgradient;
+	
+	nav{
+		display:inline;
+
+	}
+}
+
+.logo{
+	display:block;
+	float:left;
+
+	h1 {
+		background:url('../images/assets/shelby_logo.png') center no-repeat transparent;
+		height:42px;
+		margin:0 12px;
+		width:115px;
+	}
+}
+
+.settings{
+	float:right;
+	line-height:2;
+	width:50%;
+
+	ul{
+		background:white;
+		position:absolute;
+	}
+	li{
+		width:50%;
+		display:block;
+		float:left;
+		position:relative;
+		
+		li{
+			display:block;
+			a:before{
+				content: none;
+			}
+		}
+		a{
+			text-decoration:none;
+
+			&:after {
+				content: "\25BC";
+				font-size: $font-size/1.5;
+				line-height:3;
+				margin-left:2px;
+				position:absolute;
+				text-align:right;
+			}
+			&:hover{
+				text-decoration:underline;
+			}
+		}
+	}
+}
+
+
+.subnav{
+	display:none;
+
+}
+
+.video-management{
+	background:lightBlue;
+	margin:0;
+	padding:0; 
+
+	li{
+		display:block;
+		float:left;
+		height:42px;
+		width:16.666667%;
+		&:nth-of-type(4){
+			width:50%;
+		}
+	}
+	a, a:visited{
+		@include box-shadow(inset 0px 0px 10px red);
+
+		@extend .notype;
+
+		background:lightYellow;
+		display:block;
+		height:inherit;
+
+		&:hover{
+			@include box-shadow(inset 0px 0px 10px maroon);
+		}
+		&:active{
+			@include box-shadow(inset 0px 0px 10px maroon);
+
+			background:yellow;
+		}
+
+	}
+	input{
+		display:block;
+		margin: $defaultMargin 0;
+		width:100%;
+	}
+}
+
+.dashboard-search{
+	margin:3px;
+	position:relative;
+
+	i{
+		background:(url('../images/assets/mag_glass.png') no-repeat center center);
+		height:12px;
+		margin:7px;
+		position:absolute;
+		width:12px; 
+	}
+	input[type="text"]{
+		@include border-radius($radius*4);
+
+		padding:3px 8px 3px 20px;
+	}
+}
+
+.filter{
+	background:yellow;
+	font-size:0.9em;
+	margin:0;
+	padding:0;
+	text-align:center;
+
+	li{
+		display:inline;
+
+	}
+	a{
+		text-decoration:none;
+	}
+}
+
+.content-body{
+	height:425px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+
+}
