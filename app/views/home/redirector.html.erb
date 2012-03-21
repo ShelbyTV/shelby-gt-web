@@ -1,0 +1,26 @@
+<h1 style="color: #111; text-align: center; margin-top: 100px; font-size: 80px; text-shadow: #555 0px 1px 0px" >hold on...</h1>
+<% if @opener_reload %>
+	<%= javascript_tag do -%>
+		// If we were opened as a popup, reload the opener and close ourselves
+		// otherwise, just reload ourselves
+		if(window.opener){
+			window.opener.location.reload(true);
+			window.close();
+		}
+		else {
+			window.location.reload(true);
+		}
+	<% end -%>
+<% else %>
+	<%= javascript_tag do -%>
+		// If we were opened as a popup, redirect the opener (so the user is signed in) and close ourselves
+		// otherwise, just redirect ourselves
+		if(window.opener){
+			window.opener.location = "<%= @opener_location %>";
+			window.close();
+		}
+		else {
+			window.location = "<%= @opener_location %>";
+		}
+	<% end -%>
+<% end -%>

@@ -11,8 +11,7 @@ class HomeController < ApplicationController
     else
       render 'app'
     end
-  end
-  
+  end  
   
   ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
