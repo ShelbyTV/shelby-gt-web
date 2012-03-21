@@ -3,6 +3,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   routes : {
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId" : "displayRoll",
+    "rolls" : "displayRollList",
+    "saves" : "displaySaves",
     "" : "displayDashboard",
     "*url" : "doNothing"
   },
@@ -29,6 +31,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
+  },
+
+  displayRollList : function(){
+    console.log('displaying roll list');
+  },
+
+  displaySaves : function(){
+    console.log('displaying saves');
   },
 
   doNothing : function(){

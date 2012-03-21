@@ -1,12 +1,10 @@
 libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
-  /*events : {
-    "click .roll" : "goToRoll"
+  events : {
+    "click .stream" : "goToStream",
+    "click .rolls" : "goToRolls",
+    "click .saves" : "goToSaves"
   },
-
-  tagName : 'li',
-
-  className : 'frame',*/
 
   el : '.menu',
 
@@ -15,15 +13,23 @@ libs.shelbyGT.MenuView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    /*this.model.bind('change', this.render, this);
-    this.model.bind('destroy', this.remove, this);
-    shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);*/
     this.render();
   },
 
   render : function(active){
-    //this.$el.html(this.template({frame : this.model.toJSON(), active : active}));
     this.$el.html(this.template());
+  },
+
+  goToStream : function(){
+    shelby.router.navigate('/', {trigger:true});
+  },
+
+  goToRolls : function(){
+    shelby.router.navigate('/rolls', {trigger:true});
+  },
+
+  goToSaves : function(){
+    shelby.router.navigate('/saves', {trigger:true});
   }
 
   /*_cleanup : function(){
