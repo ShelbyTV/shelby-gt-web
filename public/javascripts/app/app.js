@@ -19,12 +19,10 @@ $.ajaxSetup({
   data: {'cs_key': 'GoatsFTW'}
 });
 
+// global ajax error handling to handle users who are not authenticated and other unexpected errors
+// disable for more specific error handling by using the jQuery.ajax global:false option
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
-  if (jqXHR.status == 401) {
-    alert("You're not authenticated with the Shelby API, we should redirect and authenticate you.");
-  } else {
-    alert("Something went wrong. Shelby apologizes.");
-  }
+  libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError)
 });
 
 $(document).ready(function(){

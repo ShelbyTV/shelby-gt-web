@@ -1,3 +1,3 @@
-libs.shelbyGT.VideoModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.VideoModel = libs.shelbyGT.ShelbyBaseModel.extend({
   
 });
