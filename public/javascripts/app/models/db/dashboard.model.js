@@ -1,4 +1,4 @@
-libs.shelbyGT.DashboardModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.DashboardModel = libs.shelbyGT.ShelbyBaseModel.extend({
   relations : [{
     type : Backbone.HasMany,
     key : 'dashboard_entries',
