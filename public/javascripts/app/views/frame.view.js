@@ -23,7 +23,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   goToRoll : function(){
-    shelby.router.navigate('roll/'+this.model.get('roll').id, {trigger:true});
+    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
   },
 
   _onNewActiveFrame : function(guideModel, frame){
