@@ -1,4 +1,4 @@
-libs.shelbyGT.MenuView = Backbone.View.extend({
+libs.shelbyGT.GuideHeaderView = Backbone.View.extend({
 
   /*events : {
     "click .roll" : "goToRoll"
@@ -8,10 +8,10 @@ libs.shelbyGT.MenuView = Backbone.View.extend({
 
   className : 'frame',*/
 
-  el : '.menu',
+  el : '#header',
 
   template : function(obj){
-    return JST['menu'](obj);
+    return JST['guide-header'](obj);
   },
 
   initialize : function(){
