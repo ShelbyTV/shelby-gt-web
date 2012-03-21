@@ -18,6 +18,7 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
+    cookies[:locked_and_loaded] = "false"
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 

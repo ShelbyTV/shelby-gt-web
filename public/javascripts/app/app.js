@@ -13,12 +13,31 @@ shelby = {
   models : {},
   views : {},
   config : {
-    apiRoot : 'http://localhost:3000/v1'//'http://api.gt.shelby.tv/v1'
+    apiRoot : 'http://api.gt.shelby.tv/v1'
   },
 	
 	// Signed in convience function
 	userSignedIn: function(){
-		return cookies.get("locked_and_loaded") == "true" ? true : false;
+		var signedIn;
+		if (cookies.get("locked_and_loaded") == "true"){
+			signedIn = true;
+		}
+		else {
+			if (document.location.hostname == "localhost"){
+				$.get(this.config.apiRoot + '/user?cs_key=GoatsFTW', function(r){
+					if (r.status == 200){
+						cookies.set("locked_and_loaded", "true");
+						signedIn = true;
+					}
+					else {
+						cookies.set("locked_and_loaded", "false");
+						signedIn = false;
+					}
+				});
+			}
+			else { signedIn = false; }
+		}
+		return signedIn;
 	}
 };
 
@@ -30,12 +49,10 @@ $.ajaxSetup({
   data: {'cs_key': 'GoatsFTW'}
 });
 
+// global ajax error handling to handle users who are not authenticated and other unexpected errors
+// disable for more specific error handling by using the jQuery.ajax global:false option
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
-  if (jqXHR.status == 401) {
-		console.log("You're not authenticated with the Shelby API, we should redirect and authenticate you.");
-  } else {
-		console.log("Something went wrong. Shelby apologizes.", jqXHR.status);
-  }
+  libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
 });
 
 //---------------------------------------------------------
@@ -56,7 +73,7 @@ $(document).ready(function(){
 			console.log("Don't worry, be happy... You just not logged in mon!"); 
 			// start logged out experience baby!
 		}
-		shelby.router = new AppRouter();
+	  shelby.router = new libs.shelbyGT.AppRouter();
 	  Backbone.history.start({ pushState:true });
   }
 });

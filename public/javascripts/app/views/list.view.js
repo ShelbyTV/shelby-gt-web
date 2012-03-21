@@ -1,5 +1,7 @@
 ListView = Support.CompositeView.extend({
   
+  tagName : 'ul',
+
   className : 'list',
 
   options : {
@@ -25,7 +27,7 @@ ListView = Support.CompositeView.extend({
     if (typeof this.options.listItemView === 'function'){
       return this.options.listItemView(item);
     } else {
-      return new window[this.options.listItemView]({model:item});
+      return new libs.shelbyGT[this.options.listItemView]({model:item});
     }
   }
 

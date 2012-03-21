@@ -1,17 +1,57 @@
-<% Object.keys(frame).forEach(function(k){ %>
-  <% if (active) {%>
-    <span style="text-decoration:underline">
-  <% } %>
-	  <% if (k==='roll') {%>
-	    <span class="roll">
-	  <% } %>
+<% var author = frame.conversation.messages[0]; %>
+<article id="<%= frame.conversation_id %>" class="video-card">
+  <header class="video-card-header clearfix">
+    <a href="#">
+      <h1 title="<%= frame.video.title %>'">
+		<%= frame.video.title %>
+      </h1>
+    </a>  
+    <button class="video-score" type="button"><%= frame.upvoters.length %></button>
+  </header>
+  
+  <div class="video-thumbnail">
+    <ul class="video-controls" type="toolbar">
+      <li>
+        <button class="video-controls-button ir roll" type="button">Roll</button>
+      </li>
+      <li>
+        <button class="video-controls-button ir watch-later" type="button">Watch Later</button>
+      </li>
+    </ul>
+    <img src="<%= frame.video.thumbnail_url %>" alt="posted by @userhandle" title="posted by @userhandle">
+  </div>
+ 
+  <footer>
+   
+    <blockquote class="user video-author">
+      <div class="user-vcard">
+        <span class="user-avatar">
+          <img src="<%= author.user_image_url %>" alt="@userhandle" title="@userhandle" height="25" width="25">
+        </span>
+        
+        <span class="user-handle">
+          <a href="#userhandle"><%= author.realname %></a>
+        </span>
+        <span class="user-post-date">
+          <a href="#">19 hours ago</a>
+        </span>
+      </div>
+      <div class="user-video-text">
+          <p>
+            Godzilla king of the monsters and my childhood hero. He's actually a pretty good guy, check it out! <a href="http://t.co/oxKxGMDj">http://t.co/oxKxGMDj</a>
+          </p>
+      </div>
+    </blockquote>
+   
+    <section class="video-activity">
+    </section><!-- eo section.video-shares -->
+  
+    <div class="video-footer">
+      <a class="video-activity-toggle" href="#">See 12 shares</a>
+      <a class="video-source" href="#">Source: Userhandle's Roll</a>
+    </div> 
+  
+  </footer>
 
-	  <%= k+':'+frame[k] %>
-
-	  <% if (k==='roll') {%>
-	    </span>
-	  <% } %>
-  <% if (active) {%>
-    </span>
-  <% } %>
-<% }) %>
+</article><!-- eo #video-123.video-card -->
+<!-- END VIDEO CARD -->

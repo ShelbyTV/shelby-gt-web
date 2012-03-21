@@ -1,0 +1,269 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../../app/stylesheets/partials/video-card.scss */
+.list {
+  margin: 0;
+  padding: 0;
+}
+/* line 10, ../../../app/stylesheets/partials/video-card.scss */
+.list li {
+  list-style-type: none;
+}
+
+/* line 15, ../../../app/stylesheets/partials/video-card.scss */
+.video-card {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 13px;
+  margin: 10px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+/* line 25, ../../../app/stylesheets/partials/video-card.scss */
+.video-card footer {
+  -moz-box-shadow: 0px 4px 13px 4px #333333;
+  -webkit-box-shadow: 0px 4px 13px 4px #333333;
+  -o-box-shadow: 0px 4px 13px 4px #333333;
+  box-shadow: 0px 4px 13px 4px #333333;
+  border-top: 1px solid #252525;
+  z-index: 5;
+}
+
+/* line 32, ../../../app/stylesheets/partials/video-card.scss */
+.video-thumbnail {
+  background: #444;
+  line-height: 75px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+/* line 39, ../../../app/stylesheets/partials/video-card.scss */
+.video-thumbnail img {
+  display: inline-block;
+  margin: 0 auto 0;
+  overflow: hidden;
+  padding-top: 0;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* line 50, ../../../app/stylesheets/partials/video-card.scss */
+.video-card-header {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  padding: 6px 8px 8px;
+}
+/* line 56, ../../../app/stylesheets/partials/video-card.scss */
+.video-card-header a {
+  text-decoration: none;
+}
+/* line 59, ../../../app/stylesheets/partials/video-card.scss */
+.video-card-header a:active, .video-card-header a:visited {
+  text-decoration: none;
+}
+/* line 62, ../../../app/stylesheets/partials/video-card.scss */
+.video-card-header a:hover {
+  text-decoration: underline;
+}
+/* line 67, ../../../app/stylesheets/partials/video-card.scss */
+.video-card-header h1 {
+  float: left;
+  font-size: 1em;
+  height: 1.231em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+
+/* line 77, ../../../app/stylesheets/partials/video-card.scss */
+.video-score {
+  color: #efefef;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: transparent;
+  border: none;
+  float: right;
+  line-height: 1.231;
+  padding: 0;
+}
+/* line 87, ../../../app/stylesheets/partials/video-card.scss */
+.video-score:before {
+  content: url("../images/assets/favorite.png");
+  margin-right: 3px;
+}
+/* line 92, ../../../app/stylesheets/partials/video-card.scss */
+.video-score:hover:before {
+  color: red;
+}
+/* line 96, ../../../app/stylesheets/partials/video-card.scss */
+.video-score:active {
+  color: red;
+}
+
+/* line 115, ../../../app/stylesheets/partials/video-card.scss */
+.video-thumbnail {
+  height: 125px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 120, ../../../app/stylesheets/partials/video-card.scss */
+.video-controls {
+  margin: 5px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+/* line 126, ../../../app/stylesheets/partials/video-card.scss */
+.video-controls button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 2px solid #4e4e50;
+  display: block;
+  height: 50px;
+  margin: 5px;
+  outline: 0;
+  text-decoration: underline;
+  width: 50px;
+}
+/* line 138, ../../../app/stylesheets/partials/video-card.scss */
+.video-controls .roll {
+  background: url("../images/assets/roll.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
+  background: url("../images/assets/roll.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/roll.png") no-repeat center center, -moz-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/roll.png") no-repeat center center, -o-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/roll.png") no-repeat center center, -ms-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/roll.png") no-repeat center center, linear-gradient(top, #333333, #222222);
+}
+/* line 145, ../../../app/stylesheets/partials/video-card.scss */
+.video-controls .watch-later {
+  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
+  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -moz-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -o-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -ms-linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/watch_later.png") no-repeat center center, linear-gradient(top, #333333, #222222);
+}
+
+/* line 154, ../../../app/stylesheets/partials/video-card.scss */
+.video-footer {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  -moz-border-radius: 0 0 3px 3px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -khtml-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid #4f4d51;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 8px 7px;
+}
+
+/* line 164, ../../../app/stylesheets/partials/video-card.scss */
+.video-activity {
+  display: none;
+}
+
+/* line 173, ../../../app/stylesheets/partials/video-card.scss */
+.video-activity-list {
+  margin: 0;
+  padding-left: 0;
+}
+/* line 177, ../../../app/stylesheets/partials/video-card.scss */
+.video-activity-list li {
+  list-style-type: none;
+}
+
+/* line 183, ../../../app/stylesheets/partials/video-card.scss */
+.video-source {
+  float: right;
+}
+
+/* line 188, ../../../app/stylesheets/partials/video-card.scss */
+.video-author {
+  margin: 0;
+}
+
+/* line 193, ../../../app/stylesheets/partials/video-card.scss */
+.user {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+}
+
+/* line 198, ../../../app/stylesheets/partials/video-card.scss */
+.user-vcard {
+  border-top: 1px solid #4f4d51;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 9px 0;
+}
+/* line 203, ../../../app/stylesheets/partials/video-card.scss */
+.user-vcard a {
+  text-decoration: none;
+}
+
+/* line 210, ../../../app/stylesheets/partials/video-card.scss */
+.user-avatar img {
+  margin-right: 7px;
+  margin-top: 9px;
+}
+
+/* line 216, ../../../app/stylesheets/partials/video-card.scss */
+.user-post-date {
+  float: right;
+  margin-top: 9px;
+  padding-right: 3px;
+}
+/* line 221, ../../../app/stylesheets/partials/video-card.scss */
+.user-post-date a:before {
+  content: url('/images/../images/assets/twitter_stamp.png?1331921922');
+  float: left;
+  font-size: 0.75em;
+  margin: 0 2px;
+}
+
+/* line 229, ../../../app/stylesheets/partials/video-card.scss */
+.user-video-text {
+  border-bottom: 1px solid #252525;
+  margin-top: -10px;
+}
+/* line 233, ../../../app/stylesheets/partials/video-card.scss */
+.user-video-text p {
+  margin: 0 5px 10px 45px;
+}

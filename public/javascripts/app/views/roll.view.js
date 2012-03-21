@@ -1,4 +1,4 @@
-RollView = ListView.extend({
+libs.shelbyGT.RollView = ListView.extend({
 
   className : ListView.prototype.className + ' roll',
 

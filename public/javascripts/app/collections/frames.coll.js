@@ -1,7 +1,4 @@
-// Frames Collection
-// ---------------
-
-FramesCollection = Backbone.Collection.extend({
+libs.shelbyGT.FramesCollection = Backbone.Collection.extend({
 
   model: libs.shelbyGT.FrameModel,
 

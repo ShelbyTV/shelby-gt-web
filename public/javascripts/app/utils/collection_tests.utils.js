@@ -39,7 +39,7 @@ var CollectionTests = {
 
                     // now test a relational collection
                     console.log('---RELATIONAL COLLECTION---');
-                    var collection = new FramesCollection();
+                    var collection = new libs.shelbyGT.FramesCollection();
                     collection.bind('add', function(){console.log('event: collection standard add');});
                     collection.bind('reset', function(){console.log('event: collection standard reset');});
                     collection.bind('relational:add', function(){console.log('event: collection overidden add');});
