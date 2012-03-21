@@ -4,8 +4,9 @@
 
 .settings{
 	float:right;
+	font-weight:500;
 	line-height:2;
-	margin-top:2%;
+	margin:10px 5px 0 0;
 	width:50%;
 
 	ul{
@@ -13,9 +14,9 @@
 		position:absolute;
 	}
 	li{
-		width:50%;
+		width:44%;
 		display:block;
-		float:left;
+		float:right;
 		position:relative;
 		
 		li{
@@ -45,6 +46,11 @@
 .subnav{
 	display:none;
 
+}
+
+.you img{
+	float:left;
+	margin-right:5px;
 }
 
 .video-guide{
@@ -136,30 +142,36 @@
 		$softLinearGradient
 	);
 
-	font-size:0.9em;
+	border-top:1px solid #222;
+	font-size:11px;
+	font-weight:700;
 	margin:0;
-	padding:0;
+	padding:0 12px;
 	text-align:center;
 	width:100%;
 
 	li{
-		display:inline-block;
+		display:block;
 	}
 	a{
+		line-height:24px;
 		text-decoration:none;
 	}
 }
 
-.current-role{
-	width:60%;
+.current-roll{
+	float:left;
 	text-align:center;
+	width:60%;
 }
 
 .back{
-	width:20%;
+	float:left;
 	text-align:left;
+	width:20%;
 }
 .next{
-	width:20%;
+	float:right;
 	text-align:right;
+	width:20%;
 }

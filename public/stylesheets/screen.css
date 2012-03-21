@@ -453,18 +453,19 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
+  border-bottom: 1px solid #222;
 }
-/* line 46, ../../app/stylesheets/partials/main.scss */
+/* line 49, ../../app/stylesheets/partials/main.scss */
 .header nav {
   display: inline;
 }
 
-/* line 52, ../../app/stylesheets/partials/main.scss */
+/* line 55, ../../app/stylesheets/partials/main.scss */
 .logo {
   display: block;
   float: left;
 }
-/* line 56, ../../app/stylesheets/partials/main.scss */
+/* line 59, ../../app/stylesheets/partials/main.scss */
 .logo h1 {
   background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
   height: 42px;
@@ -472,7 +473,7 @@ a:hover, a:visited, a:active {
   width: 115px;
 }
 
-/* line 64, ../../app/stylesheets/partials/main.scss */
+/* line 67, ../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 425px;
   overflow-x: hidden;
@@ -490,35 +491,36 @@ a:hover, a:visited, a:active {
 /* line 5, ../../app/stylesheets/partials/video-guide.scss */
 .settings {
   float: right;
+  font-weight: 500;
   line-height: 2;
-  margin-top: 2%;
+  margin: 10px 5px 0 0;
   width: 50%;
 }
-/* line 11, ../../app/stylesheets/partials/video-guide.scss */
+/* line 12, ../../app/stylesheets/partials/video-guide.scss */
 .settings ul {
   background: white;
   position: absolute;
 }
-/* line 15, ../../app/stylesheets/partials/video-guide.scss */
+/* line 16, ../../app/stylesheets/partials/video-guide.scss */
 .settings li {
-  width: 50%;
+  width: 44%;
   display: block;
-  float: left;
+  float: right;
   position: relative;
 }
-/* line 21, ../../app/stylesheets/partials/video-guide.scss */
+/* line 22, ../../app/stylesheets/partials/video-guide.scss */
 .settings li li {
   display: block;
 }
-/* line 23, ../../app/stylesheets/partials/video-guide.scss */
+/* line 24, ../../app/stylesheets/partials/video-guide.scss */
 .settings li li a:before {
   content: none;
 }
-/* line 27, ../../app/stylesheets/partials/video-guide.scss */
+/* line 28, ../../app/stylesheets/partials/video-guide.scss */
 .settings li a {
   text-decoration: none;
 }
-/* line 30, ../../app/stylesheets/partials/video-guide.scss */
+/* line 31, ../../app/stylesheets/partials/video-guide.scss */
 .settings li a:after {
   content: "\25BC";
   font-size: 8.667px;
@@ -527,17 +529,23 @@ a:hover, a:visited, a:active {
   position: absolute;
   text-align: right;
 }
-/* line 38, ../../app/stylesheets/partials/video-guide.scss */
+/* line 39, ../../app/stylesheets/partials/video-guide.scss */
 .settings li a:hover {
   text-decoration: underline;
 }
 
-/* line 45, ../../app/stylesheets/partials/video-guide.scss */
+/* line 46, ../../app/stylesheets/partials/video-guide.scss */
 .subnav {
   display: none;
 }
 
-/* line 50, ../../app/stylesheets/partials/video-guide.scss */
+/* line 51, ../../app/stylesheets/partials/video-guide.scss */
+.you img {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 56, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
@@ -548,7 +556,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding: 0;
 }
-/* line 58, ../../app/stylesheets/partials/video-guide.scss */
+/* line 64, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li {
   border-right: 1px solid #222;
   display: block;
@@ -556,7 +564,7 @@ a:hover, a:visited, a:active {
   height: 42px;
   width: 16.666667%;
 }
-/* line 64, ../../app/stylesheets/partials/video-guide.scss */
+/* line 70, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -565,7 +573,7 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 70, ../../app/stylesheets/partials/video-guide.scss */
+/* line 76, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a, .video-guide a:visited {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -574,40 +582,40 @@ a:hover, a:visited, a:active {
   display: block;
   height: inherit;
 }
-/* line 78, ../../app/stylesheets/partials/video-guide.scss */
+/* line 84, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:hover, .video-guide a:visited:hover {
   -moz-box-shadow: inset 0px 0px 10px maroon;
   -webkit-box-shadow: inset 0px 0px 10px maroon;
   -o-box-shadow: inset 0px 0px 10px maroon;
   box-shadow: inset 0px 0px 10px maroon;
 }
-/* line 81, ../../app/stylesheets/partials/video-guide.scss */
+/* line 87, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:active, .video-guide a:visited:active {
   -moz-box-shadow: inset 0px 0px 10px maroon;
   -webkit-box-shadow: inset 0px 0px 10px maroon;
   -o-box-shadow: inset 0px 0px 10px maroon;
   box-shadow: inset 0px 0px 10px maroon;
 }
-/* line 86, ../../app/stylesheets/partials/video-guide.scss */
+/* line 92, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 92, ../../app/stylesheets/partials/video-guide.scss */
+/* line 98, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 96, ../../app/stylesheets/partials/video-guide.scss */
+/* line 102, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 100, ../../app/stylesheets/partials/video-guide.scss */
+/* line 106, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
 
-/* line 107, ../../app/stylesheets/partials/video-guide.scss */
+/* line 113, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -618,7 +626,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 113, ../../app/stylesheets/partials/video-guide.scss */
+/* line 119, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search i {
   background: url("../images/assets/mag_glass.png") no-repeat center center;
   height: 12px;
@@ -626,7 +634,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 120, ../../app/stylesheets/partials/video-guide.scss */
+/* line 126, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -637,7 +645,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 125, ../../app/stylesheets/partials/video-guide.scss */
+/* line 131, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -646,7 +654,7 @@ a:hover, a:visited, a:active {
   outline: none;
 }
 
-/* line 133, ../../app/stylesheets/partials/video-guide.scss */
+/* line 139, ../../app/stylesheets/partials/video-guide.scss */
 .filter {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
@@ -654,37 +662,43 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
-  font-size: 0.9em;
+  border-top: 1px solid #222;
+  font-size: 11px;
+  font-weight: 700;
   margin: 0;
-  padding: 0;
+  padding: 0 12px;
   text-align: center;
   width: 100%;
 }
-/* line 145, ../../app/stylesheets/partials/video-guide.scss */
+/* line 153, ../../app/stylesheets/partials/video-guide.scss */
 .filter li {
-  display: inline-block;
+  display: block;
 }
-/* line 148, ../../app/stylesheets/partials/video-guide.scss */
+/* line 156, ../../app/stylesheets/partials/video-guide.scss */
 .filter a {
+  line-height: 24px;
   text-decoration: none;
 }
 
-/* line 153, ../../app/stylesheets/partials/video-guide.scss */
-.current-role {
-  width: 60%;
-  text-align: center;
-}
-
-/* line 158, ../../app/stylesheets/partials/video-guide.scss */
-.back {
-  width: 20%;
-  text-align: left;
-}
-
 /* line 162, ../../app/stylesheets/partials/video-guide.scss */
-.next {
+.current-roll {
+  float: left;
+  text-align: center;
+  width: 60%;
+}
+
+/* line 168, ../../app/stylesheets/partials/video-guide.scss */
+.back {
+  float: left;
+  text-align: left;
   width: 20%;
+}
+
+/* line 173, ../../app/stylesheets/partials/video-guide.scss */
+.next {
+  float: right;
   text-align: right;
+  width: 20%;
 }
 
 /* Welcome to Compass.
@@ -941,7 +955,7 @@ a:hover, a:visited, a:active {
 }
 /* line 221, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1331921922');
+  content: url('/images/../images/assets/twitter_stamp.png?1332359946');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;

@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 54 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'
-        from line 54 of /shelbytv/app/stylesheets/partials/video-guide.scss
+        on line 60 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'
+        from line 60 of /shelbytv/app/stylesheets/partials/video-guide.scss
 
-49: 
-50: .video-guide{
-51: 	@include background(
-52: 		url('../images/assets/noise.png'),
-53: 		$softLinearGradient
-54: 	);
-55: 	margin:0;
-56: 	padding:0; 
-57: 
-58: 	li{
-59: 		border-right:1px solid #222;
+55: 
+56: .video-guide{
+57: 	@include background(
+58: 		url('../images/assets/noise.png'),
+59: 		$softLinearGradient
+60: 	);
+61: 	margin:0;
+62: 	padding:0; 
+63: 
+64: 	li{
+65: 		border-right:1px solid #222;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/video-guide.scss:54:in `background'
-/shelbytv/app/stylesheets/partials/video-guide.scss:54
+/shelbytv/app/stylesheets/partials/video-guide.scss:60:in `background'
+/shelbytv/app/stylesheets/partials/video-guide.scss:60
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -93,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 54 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'\A         from line 54 of /shelbytv/app/stylesheets/partials/video-guide.scss\A \A 49: \A 50: .video-guide{\A 51: 	@include background(\A 52: 		url('../images/assets/noise.png'),\A 53: 		$softLinearGradient\A 54: 	);\A 55: 	margin:0;\A 56: 	padding:0; \A 57: \A 58: 	li{\A 59: 		border-right:1px solid #222;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 60 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'\A         from line 60 of /shelbytv/app/stylesheets/partials/video-guide.scss\A \A 55: \A 56: .video-guide{\A 57: 	@include background(\A 58: 		url('../images/assets/noise.png'),\A 59: 		$softLinearGradient\A 60: 	);\A 61: 	margin:0;\A 62: 	padding:0; \A 63: \A 64: 	li{\A 65: 		border-right:1px solid #222;"; }
