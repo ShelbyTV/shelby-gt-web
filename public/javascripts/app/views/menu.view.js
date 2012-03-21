@@ -1,4 +1,4 @@
-libs.shelbyGT.MenuView = Backbone.View.extend({
+libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
   /*events : {
     "click .roll" : "goToRoll"
