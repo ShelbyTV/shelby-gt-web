@@ -1,20 +1,25 @@
 class HomeController < ApplicationController
 
+  ##
+  # We need to show the login page on the root path if the user IS NOT signed in
+  # We need to show the app page on the root path if the user IS signed in   ***AND***
+  #  when the user IS NOT signed in BUT should see 'non-logged in shelby'
+  #
   def index
-    Rails.logger.info "API cookie:  #{cookies.signed['_shelby_gt_api_session']}"
-    if @gt_api_cookie = cookies.signed['_shelby_gt_api_session'] and @gt_api_cookie['signed_in']
-      render 'app'
-    else
-      @twitter_login_url = Settings::ShelbyAPI.url + '/auth/twitter'
-      @facebook_login_url = Settings::ShelbyAPI.url + '/auth/facebook'
-      @tumblr_login_url = Settings::ShelbyAPI.url + '/auth/tumblr'
+    if !user_signed_in? and request.fullpath == '/'
       render 'login'
+    else
+      render 'app'
     end
   end
   
+  
+  ##
+  # GT API Server sets the appropriate cookie to let us know the user is signed out
+  #  in case something went wrong somewhere over the wire, it is not being set here.
+  #
   def signout
-    cookies.signed['_shelby_gt_api_session'] = nil
-    redirect_to root_path
+    redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
 end

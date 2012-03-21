@@ -33,7 +33,7 @@
   </header>
   <div role="main" style="position: absolute; left: 300px; top: 300px; font-size: 33px;">
 
-		<%= link_to 'LOGIN w/ Twitter BITCH!', @twitter_login_url, :id => 'signout' %>
+		<%= link_to 'login w/ twitter', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signout' %>
 
   </div>
 

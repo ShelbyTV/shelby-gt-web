@@ -5,7 +5,7 @@ ShelbyGtWeb::Application.routes.draw do
       :extension => /.+/
     }
 
-  get '/signout' => "home#signout", :as => :destroy_session
+  get '/signout' => "home#signout", :as => :signout
 
   get '(*path)' => 'home#index', :as => :root
 
