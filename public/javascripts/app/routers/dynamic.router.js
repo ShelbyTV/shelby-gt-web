@@ -2,6 +2,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
+    "roll/:rollId/:title" : "displayRoll",
+    "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
     "" : "displayDashboard",
     "*url" : "doNothing"
@@ -19,9 +21,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupRollView(rollId);
   },
 
-  displayRoll : function(rollId){
+  displayRoll : function(rollId, title){
     this._bindContentPaneModelChanges(this._activateFirstRollFrame);
-    this._setupRollView(rollId);
+    this._setupRollView(rollId, {updateRollTitle:true});
   },
 
   displayDashboard : function(){
@@ -33,6 +35,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   doNothing : function(){
     console.log('bad url');
+  },
+
+  //---
+  //NAVIGATION HELPERS
+  //---
+
+  // param: options -- accepts the same options as the Backbone.Router.navigate() param options
+  navigateToRoll : function (roll, options) {
+    var rollTitle = roll.get('title');
+    this.navigate('roll/'+roll.id+(rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   //---
@@ -60,7 +72,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
       window.alert("Sorry, the video you were looking for doesn't exist.")
-      shelby.router.navigate('/roll/'+rollModel.id, {trigger:true, replace:true});
+      this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
 
@@ -72,15 +84,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupTopLevelViews : function(){
+    // header & menu render on instantiation //
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView();
     shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
+    //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
-  _setupRollView : function(rollId){
+  _setupRollView : function(rollId, options){
+    var options = _({updateRollTitle:false}).extend(options);
+
     this._setupTopLevelViews();
     var roll = new libs.shelbyGT.RollModel({id:rollId});
+    if (options.updateRollTitle) {
+      // correct the roll title in the url if it changes (especially on first load of the roll)
+      roll.bind('change:title', function(){this.navigateToRoll(roll,{trigger:false,replace:true});}, this);
+    }
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': roll});
   }
 
