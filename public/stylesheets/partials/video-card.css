@@ -61,12 +61,12 @@
 
 /* line 50, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
   -moz-border-radius: 3px 3px 0 0;
   -webkit-border-radius: 3px 3px 0 0;
   -o-border-radius: 3px 3px 0 0;
@@ -154,31 +154,31 @@
 }
 /* line 138, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll {
-  background: url("../images/assets/roll.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background: url("../images/assets/roll.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/roll.png") no-repeat center center, -moz-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/roll.png") no-repeat center center, -o-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/roll.png") no-repeat center center, -ms-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/roll.png") no-repeat center center, linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/roll.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/roll.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/roll.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/roll.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/roll.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/roll.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
 /* line 145, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .watch-later {
-  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/watch_later.png") no-repeat center center, -moz-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/watch_later.png") no-repeat center center, -o-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/watch_later.png") no-repeat center center, -ms-linear-gradient(top, #333333, #222222);
-  background: url("../images/assets/watch_later.png") no-repeat center center, linear-gradient(top, #333333, #222222);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/watch_later.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/watch_later.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
 
 /* line 154, ../../../app/stylesheets/partials/video-card.scss */
 .video-footer {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
   -moz-border-radius: 0 0 3px 3px;
   -webkit-border-radius: 0 0 3px 3px;
   -o-border-radius: 0 0 3px 3px;
@@ -218,12 +218,12 @@
 
 /* line 193, ../../../app/stylesheets/partials/video-card.scss */
 .user {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
 }
 
 /* line 198, ../../../app/stylesheets/partials/video-card.scss */
