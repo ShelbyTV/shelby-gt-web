@@ -35,7 +35,7 @@ javascripts:
     - public/javascripts/app/views/**/*.js
     - public/javascripts/app/routers/*.js
     - public/javascripts/app/utils/*.js
-
+    
 stylesheets:
   common:
     - public/stylesheets/screen.css

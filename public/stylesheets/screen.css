@@ -475,7 +475,7 @@ a:hover, a:visited, a:active {
 
 /* line 67, ../../app/stylesheets/partials/main.scss */
 .content-body {
-  height: 425px;
+  height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -955,7 +955,7 @@ a:hover, a:visited, a:active {
 }
 /* line 221, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332359946');
+  content: url('/images/../images/assets/twitter_stamp.png?1332425256');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
