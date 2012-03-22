@@ -17,25 +17,28 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayFrameInRoll : function(rollId, frameId){
     var self = this;
-    this._bindContentPaneModelChanges(function(rollModel, response){
+    this._bindContentPaneModelChanges({include_children:true}, function(rollModel, response){
       self._activateFrameInRollById(rollModel, frameId);
     });
     this._setupRollView(rollId);
   },
 
   displayRoll : function(rollId, title){
-    this._bindContentPaneModelChanges(this._activateFirstRollFrame);
+    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstRollFrame);
     this._setupRollView(rollId, {updateRollTitle:true});
   },
 
   displayDashboard : function(){
-    this._bindContentPaneModelChanges(this._activateFirstDashboardFrame);
+    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
   },
 
   displayRollList : function(){
+    this._bindContentPaneModelChanges({include_rolls:true});
+    this._setupTopLevelViews();
+    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollListView, 'contentPaneModel': shelby.models.user});
     console.log('displaying roll list');
   },
 
@@ -60,14 +63,21 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
   //PRIVATE METHODS
   //---
-
-  _bindContentPaneModelChanges : function(cb){
-    shelby.models.guide.unbind('change:contentPaneModel');
-    shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
+  
+  _fetchModel : function(model, fetchParams, cb){
       // whenever a new model (roll or dashboard) is set on the content pane, fetch (possibly re-loading) its contents
       // this way, the content pane will render with the latest contents of that roll or dashboard
-      contentPaneModel.fetch({data:{include_children:true},success:cb});
+      model.fetch({data:fetchParams, success:cb});
+  },
+
+  _bindContentPaneModelChanges : function(fetchParams, cb){
+    var self = this;
+    shelby.models.guide.unbind('change:contentPaneModel');
+
+    shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
+      self._fetchModel(contentPaneModel, fetchParams, cb);
     });
+    
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
