@@ -11,8 +11,8 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
   updateChild : function(model){
     // only render a new content pane if the contentPane* attribtues have been updated
-    var changedAttrs = _.keys(model.changedAttributes());
-    if (!_.include(changedAttrs, 'contentPaneView') && !_.include(changedAttrs, 'contentPaneModel')) {
+    var changedAttrs = model.changedAttributes();
+    if (!changedAttrs.contentPaneView && !changedAttrs.contentPaneModel) {
       return;
     }
     this._leaveChildren();
