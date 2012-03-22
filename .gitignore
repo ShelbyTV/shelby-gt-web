@@ -15,3 +15,6 @@
 /tmp
 
 *.swp
+
+# Ignore .rvmrc
+.rvmrc

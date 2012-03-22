@@ -2,8 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# Needed to decode the gt api server cookie
+gem 'bson_ext'
+gem 'bson'
+
+#
+# ---------- Config
+#
+gem "settingslogic"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,15 +23,6 @@ end
 
 # Use Jammit
 gem 'jammit', '= 0.6.3'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

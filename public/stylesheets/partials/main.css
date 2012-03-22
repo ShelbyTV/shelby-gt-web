@@ -70,7 +70,7 @@ a:hover, a:visited, a:active {
 
 /* line 67, ../../../app/stylesheets/partials/main.scss */
 .content-body {
-  height: 425px;
+  height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
