@@ -23,11 +23,14 @@ shelby = {
 			signedIn = true;
 		}
 		else {
+			// HACK to get around cross domain cookie issues. we dont have the 'locked_and_loaded' cookie
+			//   from api.gt.shelby.tv so we are just hitting up /signed_in to see if we get true or false
 			if (document.location.hostname == "localhost"){
-				$.get(this.config.apiRoot + '/user?cs_key=GoatsFTW', function(r){
-					if (r.status == 200){
+				$.get(this.config.apiRoot + '/signed_in?cs_key=GoatsFTW', function(r){
+					if (r.result.signed_in == true){
 						cookies.set("locked_and_loaded", "true");
 						signedIn = true;
+						document.location.reload();
 					}
 					else {
 						cookies.set("locked_and_loaded", "false");
@@ -36,7 +39,9 @@ shelby = {
 				});
 			}
 			else { signedIn = false; }
+			// end HACK	
 		}
+		// signedIn = cookies.get("locked_and_loaded") == "true" ? true : false
 		return signedIn;
 	}
 };
