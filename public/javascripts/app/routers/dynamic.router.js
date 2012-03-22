@@ -95,7 +95,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _setupTopLevelViews : function(){
     // header & menu render on instantiation //
-    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView();
+    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});

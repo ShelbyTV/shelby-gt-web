@@ -17,8 +17,8 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     this.render();
   },
 
-  render : function(active){
-    this.$el.html(this.template());
+  render : function(){
+    this.$el.html(this.template({user:this.model}));
   },
 
   _showSubnav : function(subnavId){
