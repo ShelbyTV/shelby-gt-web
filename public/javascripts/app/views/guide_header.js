@@ -15,17 +15,29 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     /*this.model.bind('change', this.render, this);
     this.model.bind('destroy', this.remove, this);*/
     this.render();
+    this._setupSubnavBindings('#about-subnav', '.about');
+    this._setupSubnavBindings('#profile-subnav', '.profile');
   },
 
-  render : function(active){
-    this.$el.html(this.template());
+  render : function(){
+    this.$el.html(this.template({user:this.model}));
   },
 
   _showSubnav : function(subnavId){
-    this.$(subnavId).hover(null, function(){
+    this.$(subnavId).show();
+  },
+
+  _setupSubnavBindings : function(subnavId, handleId){
+    var self = this;
+    this.$(handleId).mouseleave(function(){
+      //self.$(subnavId).hide();
+    });
+    this.$(subnavId).mouseenter(function(){
+      $(this).show()
+    });
+    this.$(subnavId).mouseleave(function(){
       $(this).hide();
     });
-    this.$(subnavId).show();
   },
 
   showAboutSubnav : function(){

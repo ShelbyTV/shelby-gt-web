@@ -7,9 +7,9 @@
   <nav>
     <ul class="settings">
       <li>
-        <a class="profile you" href="#vincent">
-          <img src="images/assets/twitter_avatar.png">
-          You
+        <a class="profile you" href="/<%= user.get('nickname') %>">
+          <img src="<%= user.get('user_image') %>" />
+          <%= user.getFirstName() %>
         </a>
         <ul id="profile-subnav" class="subnav">
           <li>
