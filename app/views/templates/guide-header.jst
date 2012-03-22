@@ -8,7 +8,7 @@
     <ul class="settings">
       <li>
         <a class="profile you" href="#vincent">
-          <img src="images/assets/twitter_avatar.png">
+          <img src="<%= user.get('user_image') %>" />
           <%= user.getFirstName() %>
         </a>
         <ul id="profile-subnav" class="subnav">
