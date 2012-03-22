@@ -13,13 +13,14 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   initialize : function(){
+    //this.conversationView = new libs.shelbyGT.ConversationView({model : this.model.get('conversation')});
     this.model.bind('change', this.render, this);
     this.model.bind('destroy', this.remove, this);
     shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
   },
 
   render : function(active){
-    this.$el.html(this.template({frame : this.model.toJSON(), active : active}));
+    this.$el.html(this.template({frame : this.model, active : active}));
   },
 
   goToRoll : function(){
