@@ -25,7 +25,7 @@ shelby = {
 		else {
 			// HACK to get around cross domain cookie issues. we dont have the 'locked_and_loaded' cookie
 			//   from api.gt.shelby.tv so we are just hitting up /signed_in to see if we get true or false
-			if (document.location.hostname == "localhost"){
+			if (document.location.hostname == "localhost" || document.location.hostname == "33.33.33.10"){
 				$.get(this.config.apiRoot + '/signed_in?cs_key=GoatsFTW', function(r){
 					if (r.result.signed_in == true){
 						cookies.set("locked_and_loaded", "true");
