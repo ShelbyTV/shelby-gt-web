@@ -1,4 +1,4 @@
-libs.shelbyGT.FrameModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   relations : [
     {
       type : Backbone.HasOne,

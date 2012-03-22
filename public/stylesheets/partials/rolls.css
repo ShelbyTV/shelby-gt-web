@@ -1,0 +1,44 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 5, ../../../app/stylesheets/partials/rolls.scss */
+.rolls {
+  background: #6666ff;
+  margin: 0;
+  padding: 0;
+}
+/* line 10, ../../../app/stylesheets/partials/rolls.scss */
+.rolls a {
+  border: 1px solid darkGreen;
+  display: block;
+}
+/* line 15, ../../../app/stylesheets/partials/rolls.scss */
+.rolls h1 {
+  line-height: 2.231;
+  position: relative;
+}
+/* line 20, ../../../app/stylesheets/partials/rolls.scss */
+.rolls img {
+  float: left;
+  margin-right: 10px;
+  width: 50px;
+}
+/* line 26, ../../../app/stylesheets/partials/rolls.scss */
+.rolls li {
+  list-style-type: none;
+}
+/* line 31, ../../../app/stylesheets/partials/rolls.scss */
+.rolls .public h1:after, .rolls .private h1:after {
+  content: "%";
+  padding-right: 6.667px;
+  float: right;
+}
+/* line 41, ../../../app/stylesheets/partials/rolls.scss */
+.rolls .private h1:after {
+  content: "&";
+}

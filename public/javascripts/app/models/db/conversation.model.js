@@ -1,3 +1,3 @@
-libs.shelbyGT.ConversationModel = Backbone.RelationalModel.extend({
+libs.shelbyGT.ConversationModel = libs.shelbyGT.ShelbyBaseModel.extend({
   
 });

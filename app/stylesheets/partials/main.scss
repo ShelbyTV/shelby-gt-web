@@ -1,0 +1,72 @@
+@import "base",
+		"compass",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+h1,h2,h3,h4,h5,h6{line-height:1.231;margin:0;}
+
+body{
+	@include fontcolor;
+	@include basefont;
+
+	@include background(
+		url('../images/assets/noise.png') #005500
+	);
+}
+
+a{
+	color: #a4a4a4;
+	
+	&:hover, 
+	&:visited,
+	&:active{
+		color: #a4a4a4;
+	}
+
+}
+
+.content{
+	float:right;
+	width:330px;
+}
+
+.main{
+	@extend .content;
+
+	background:pink;
+	font-size:1.3em;
+
+}
+
+.header{
+	@include background(
+		url('../images/assets/noise.png'),
+		$softLinearGradient
+	);
+
+	border-bottom:1px solid #222;
+
+	nav{
+		display:inline;
+
+	}
+}
+
+.logo{
+	display:block;
+	float:left;
+
+	h1 {
+		background:url('../images/assets/shelby_logo.png') center 8px no-repeat transparent;
+		height:42px;
+		margin:0 12px;
+		width:115px;
+	}
+}
+
+.content-body{
+	height:425px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+
+}

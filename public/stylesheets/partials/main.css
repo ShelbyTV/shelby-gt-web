@@ -1,0 +1,76 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 6, ../../../app/stylesheets/partials/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.231;
+  margin: 0;
+}
+
+/* line 8, ../../../app/stylesheets/partials/main.scss */
+body {
+  color: #dcddde;
+  font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
+  background: url("../images/assets/noise.png") #005500;
+}
+
+/* line 17, ../../../app/stylesheets/partials/main.scss */
+a {
+  color: #a4a4a4;
+}
+/* line 22, ../../../app/stylesheets/partials/main.scss */
+a:hover, a:visited, a:active {
+  color: #a4a4a4;
+}
+
+/* line 28, ../../../app/stylesheets/partials/main.scss */
+.content, .main {
+  float: right;
+  width: 330px;
+}
+
+/* line 33, ../../../app/stylesheets/partials/main.scss */
+.main {
+  background: pink;
+  font-size: 1.3em;
+}
+
+/* line 41, ../../../app/stylesheets/partials/main.scss */
+.header {
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
+  border-bottom: 1px solid #222;
+}
+/* line 49, ../../../app/stylesheets/partials/main.scss */
+.header nav {
+  display: inline;
+}
+
+/* line 55, ../../../app/stylesheets/partials/main.scss */
+.logo {
+  display: block;
+  float: left;
+}
+/* line 59, ../../../app/stylesheets/partials/main.scss */
+.logo h1 {
+  background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
+  height: 42px;
+  margin: 0 12px;
+  width: 115px;
+}
+
+/* line 67, ../../../app/stylesheets/partials/main.scss */
+.content-body {
+  height: 425px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

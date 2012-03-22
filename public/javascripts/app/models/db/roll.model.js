@@ -4,7 +4,7 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
     type : Backbone.HasMany,
     key : 'frames',
     relatedModel : 'libs.shelbyGT.FrameModel',
-    collectionType : 'FramesCollection'
+    collectionType : 'libs.shelbyGT.FramesCollection'
   }],
 
   url : function() {

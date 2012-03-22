@@ -1,0 +1,66 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+
+//variables must be announced here.
+$font-size: 13px;
+$size: "62.5%" !default;
+//radius, for border-radius, etc.
+$radius: 5px;
+$radiusHeader: $radius - 2 $radius - 2 0 0;
+$radiusFooter: 0 0 $radius - 2 $radius - 2;
+//spacing
+$defaultMargin: 10px;
+$margin: 0.5em;
+
+//colors
+$text: #dcddde;
+
+$myBlue: #6666FF;
+$myGreen: #ddFFdd;
+
+$outset : #252525;
+$inset : #4f4d51;
+
+$save : #2291c2;
+
+//border styles
+$articleStroke : 1px solid black;
+$menuStroke : 2px solid #4e4e50;
+$saveStroke : 2px solid $save;
+
+//soft gradient vals
+$gradientDark : #303030;
+$gradientLight : #333;
+
+$softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
+
+@mixin softgradient {
+	@include background-image($softLinearGradient);
+}
+
+@mixin roundies{
+	@include border-radius($radius);
+
+}
+
+@mixin basefont{
+	font:300 normal 62.5%/1.231 'Ubuntu','Times New Roman';
+}
+
+@mixin buttonfont{
+	font:700 normal 100%/1.231 'Ubuntu','Times New Roman';
+}
+
+@mixin fontcolor {
+	color: $text;
+}
+@mixin fontcolorLight{
+	color: #efefef;
+}

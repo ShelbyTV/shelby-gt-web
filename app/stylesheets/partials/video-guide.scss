@@ -1,0 +1,177 @@
+@import "base",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.settings{
+	float:right;
+	font-weight:500;
+	line-height:2;
+	margin:10px 5px 0 0;
+	width:50%;
+
+	ul{
+		background:white;
+		position:absolute;
+	}
+	li{
+		width:44%;
+		display:block;
+		float:right;
+		position:relative;
+		
+		li{
+			display:block;
+			a:before{
+				content: none;
+			}
+		}
+		a{
+			text-decoration:none;
+
+			&:after {
+				content: "\25BC";
+				font-size: $font-size/1.5;
+				line-height:3;
+				margin-left:2px;
+				position:absolute;
+				text-align:right;
+			}
+			&:hover{
+				text-decoration:underline;
+			}
+		}
+	}
+}
+
+.subnav{
+	display:none;
+
+}
+
+.you img{
+	float:left;
+	margin-right:5px;
+}
+
+.video-guide{
+	@include background(
+		url('../images/assets/noise.png'),
+		$softLinearGradient
+	);
+	margin:0;
+	padding:0; 
+
+	li{
+		border-right:1px solid #222;
+		display:block;
+		float:left;
+		height:42px;
+		width:16.666667%;
+		&:nth-of-type(4){
+			@include box-shadow(inset 1px 1px 1px #4d4d4d);
+			border-right:none;
+			width:50%;
+		}
+	}
+	a, a:visited{
+		@include box-shadow(inset 1px 1px 1px #4d4d4d);
+
+		@extend .notype;
+
+		display:block;
+		height:inherit;
+
+		&:hover{
+			@include box-shadow(inset 0px 0px 10px maroon);
+		}
+		&:active{
+			@include box-shadow(inset 0px 0px 10px maroon);
+		}
+
+	}
+	input{
+		display:block;
+		margin: $defaultMargin 0;
+		width:100%;
+	}
+
+	.stream{
+		@include background(
+			url('../images/assets/stream.svg') no-repeat center center);
+	}
+	.rolls{
+		@include background(
+			url('../images/assets/rolls.svg') no-repeat center center);
+	}
+	.saves{
+		@include background(
+			url('../images/assets/saves.svg') no-repeat center center);
+	}
+}
+
+
+.dashboard-search{
+	@include border-radius($radius*4);
+
+	margin:0px 7px 3px;
+	position:relative;
+
+	i{
+		background: url('../images/assets/mag_glass.png') no-repeat center center;
+		height:12px;
+		margin:5px;
+		position:absolute;
+		width:12px; 
+	}
+	input[type="text"]{
+		@include border-radius($radius*4);
+		border:none;
+		padding:3px 8px 3px 20px;
+		
+		&:focus{
+			@include box-shadow(0px 0px 5px 3px #666);
+
+			outline:none;
+		}
+	}
+}
+
+.filter{
+	@include background(
+		url('../images/assets/noise.png'),
+		$softLinearGradient
+	);
+
+	border-top:1px solid #222;
+	font-size:11px;
+	font-weight:700;
+	margin:0;
+	padding:0 12px;
+	text-align:center;
+	width:100%;
+
+	li{
+		display:block;
+	}
+	a{
+		line-height:24px;
+		text-decoration:none;
+	}
+}
+
+.current-roll{
+	float:left;
+	text-align:center;
+	width:60%;
+}
+
+.back{
+	float:left;
+	text-align:left;
+	width:20%;
+}
+.next{
+	float:right;
+	text-align:right;
+	width:20%;
+}
