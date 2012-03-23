@@ -1,11 +1,11 @@
-libs.shelbyGT.RollListView = ListView.extend({
+libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
-  className : ListView.prototype.className + ' roll-list',
+  className : libs.shelbyGT.ListView.prototype.className + ' roll-list',
 
   initialize : function(){
     this.options.collectionAttribute = 'roll_followings';
     this.options.listItemView = 'RollItemView';
-    ListView.prototype.initialize.call(this);
+    libs.shelbyGT.ListView.prototype.initialize.call(this);
   }
 
 });
