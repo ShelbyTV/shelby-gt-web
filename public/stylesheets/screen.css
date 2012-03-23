@@ -477,7 +477,7 @@ a:hover, a:visited, a:active {
 }
 /* line 22, ../../app/stylesheets/partials/video-guide.scss */
 .logo h1 {
-  background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
+  background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
   height: 42px;
   margin: 0 12px;
   width: 115px;
@@ -700,7 +700,7 @@ a:hover, a:visited, a:active {
 }
 /* line 219, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search i {
-  background: url("../images/assets/mag_glass.png") no-repeat center center;
+  background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
   margin: 5px;
   position: absolute;
