@@ -105,7 +105,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(){
     // header & menu render on instantiation //
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
+    shelby.views.menu = new libs.shelbyGT.MenuView();
+    //shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
@@ -120,6 +121,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // correct the roll title in the url if it changes (especially on first load of the roll)
       roll.bind('change:title', function(){this.navigateToRoll(roll,{trigger:false,replace:true});}, this);
     }
+    shelby.views.rollHeader = new libs.shelbyGT.RollHeaderView();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': roll});
   }
 

@@ -6,7 +6,7 @@ libs.shelbyGT.RollItemView = ListItemView.extend({
 
   tagName : 'li',
 
-  className : 'roll-item',
+  className : 'roll-item clearfix',
 
   template : function(obj){
     return JST['roll-item'](obj);
