@@ -5,7 +5,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     "click .profile" : "showProfileSubnav"
   },*/
 
-  el : '#header',
+  el : '#roll-header',
 
   template : function(obj){
     return JST['roll-header'](obj);
@@ -16,7 +16,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({user:this.model}));
+    this.$el.html(this.template());
   },
 
   /*_cleanup : function(){
