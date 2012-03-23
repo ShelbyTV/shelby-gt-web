@@ -15,6 +15,7 @@ ListView = Support.CompositeView.extend({
   },
 
   addOne : function(item){
+    console.log('addOne fired');
     this.appendChild(this._constructListItemView(item));
   },
 
