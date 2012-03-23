@@ -1,3 +1,9 @@
-<p>
-  <span class="roll-item-button" style="color:black"><%= roll.get('title')%></span>
-</p> 
+<% /* parent:"roll-item" */ %>
+<a class="js-roll-item-button" style="color:black">
+	<span class="roll-item-thumbnail">
+		<img src="../images/avatar.jpg">
+	</span>
+	<h2>
+		<%= roll.get('title')%>
+	</h2>
+</a>

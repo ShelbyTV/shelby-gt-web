@@ -1,0 +1,21 @@
+@import "base",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.roll-item{
+	@include background(
+		$softLinearGradient
+	);
+}
+
+.roll-item-thumbnail{
+	display:block;
+	float:left;
+	height:36px;
+	overflow:hidden;
+	width:36px;
+
+	img{
+		width:100%;
+	}
+}

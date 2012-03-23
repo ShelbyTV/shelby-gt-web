@@ -1160,6 +1160,37 @@ a:hover, a:visited, a:active {
   content: "&";
 }
 
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 5, ../../app/stylesheets/partials/rolls-list.scss */
+.roll-item {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: -webkit-linear-gradient(top, #333333, #303030);
+  background: -moz-linear-gradient(top, #333333, #303030);
+  background: -o-linear-gradient(top, #333333, #303030);
+  background: -ms-linear-gradient(top, #333333, #303030);
+  background: linear-gradient(top, #333333, #303030);
+}
+
+/* line 11, ../../app/stylesheets/partials/rolls-list.scss */
+.roll-item-thumbnail {
+  display: block;
+  float: left;
+  height: 36px;
+  overflow: hidden;
+  width: 36px;
+}
+/* line 18, ../../app/stylesheets/partials/rolls-list.scss */
+.roll-item-thumbnail img {
+  width: 100%;
+}
+
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .ir {
   border: 0;
