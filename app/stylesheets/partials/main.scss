@@ -38,32 +38,6 @@ a{
 
 }
 
-.header{
-	@include background(
-		url('../images/assets/noise.png'),
-		$softLinearGradient
-	);
-
-	border-bottom:1px solid #222;
-
-	nav{
-		display:inline;
-
-	}
-}
-
-.logo{
-	display:block;
-	float:left;
-
-	h1 {
-		background:url('../images/assets/shelby_logo.png') center 8px no-repeat transparent;
-		height:42px;
-		margin:0 12px;
-		width:115px;
-	}
-}
-
 .content-body{
 	height:650px;
 	overflow-x:hidden;

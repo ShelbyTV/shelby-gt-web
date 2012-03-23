@@ -41,34 +41,6 @@ a:hover, a:visited, a:active {
 }
 
 /* line 41, ../../../app/stylesheets/partials/main.scss */
-.header {
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
-  border-bottom: 1px solid #222;
-}
-/* line 49, ../../../app/stylesheets/partials/main.scss */
-.header nav {
-  display: inline;
-}
-
-/* line 55, ../../../app/stylesheets/partials/main.scss */
-.logo {
-  display: block;
-  float: left;
-}
-/* line 59, ../../../app/stylesheets/partials/main.scss */
-.logo h1 {
-  background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
-  height: 42px;
-  margin: 0 12px;
-  width: 115px;
-}
-
-/* line 67, ../../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 650px;
   overflow-x: hidden;

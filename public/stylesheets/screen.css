@@ -446,34 +446,6 @@ a:hover, a:visited, a:active {
 }
 
 /* line 41, ../../app/stylesheets/partials/main.scss */
-.header {
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
-  border-bottom: 1px solid #222;
-}
-/* line 49, ../../app/stylesheets/partials/main.scss */
-.header nav {
-  display: inline;
-}
-
-/* line 55, ../../app/stylesheets/partials/main.scss */
-.logo {
-  display: block;
-  float: left;
-}
-/* line 59, ../../app/stylesheets/partials/main.scss */
-.logo h1 {
-  background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
-  height: 42px;
-  margin: 0 12px;
-  width: 115px;
-}
-
-/* line 67, ../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 650px;
   overflow-x: hidden;
@@ -489,63 +461,157 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 5, ../../app/stylesheets/partials/video-guide.scss */
+.header {
+  background: url("../images/assets/noise.png") #2b2a2a;
+  border-bottom: 1px solid #222;
+}
+/* line 12, ../../app/stylesheets/partials/video-guide.scss */
+.header nav {
+  display: inline;
+}
+
+/* line 18, ../../app/stylesheets/partials/video-guide.scss */
+.logo {
+  display: block;
+  float: left;
+}
+/* line 22, ../../app/stylesheets/partials/video-guide.scss */
+.logo h1 {
+  background: url("../images/assets/shelby_logo.png") center 8px no-repeat transparent;
+  height: 42px;
+  margin: 0 12px;
+  width: 115px;
+}
+
+/* line 30, ../../app/stylesheets/partials/video-guide.scss */
 .settings {
   float: right;
   font-weight: 500;
+  font-size: 13px;
   line-height: 2;
-  margin: 10px 5px 0 0;
+  margin: 0;
   width: 50%;
 }
-/* line 12, ../../app/stylesheets/partials/video-guide.scss */
-.settings ul {
-  background: white;
-  position: absolute;
-}
-/* line 16, ../../app/stylesheets/partials/video-guide.scss */
+/* line 38, ../../app/stylesheets/partials/video-guide.scss */
 .settings li {
-  width: 44%;
   display: block;
   float: right;
   position: relative;
 }
-/* line 22, ../../app/stylesheets/partials/video-guide.scss */
+/* line 43, ../../app/stylesheets/partials/video-guide.scss */
 .settings li li {
   display: block;
+  float: none;
+  height: 2em;
+  line-height: 2;
+  margin: 0;
+  padding-left: 0;
 }
-/* line 24, ../../app/stylesheets/partials/video-guide.scss */
-.settings li li a:before {
-  content: none;
-}
-/* line 28, ../../app/stylesheets/partials/video-guide.scss */
-.settings li a {
+/* line 51, ../../app/stylesheets/partials/video-guide.scss */
+.settings li li a {
+  height: 2em;
+  line-height: 2;
+  padding-left: 0.5em;
   text-decoration: none;
 }
-/* line 31, ../../app/stylesheets/partials/video-guide.scss */
-.settings li a:after {
-  content: "\25BC";
+/* line 58, ../../app/stylesheets/partials/video-guide.scss */
+.settings li li a:before, .settings li li a:after {
+  content: none;
+}
+/* line 63, ../../app/stylesheets/partials/video-guide.scss */
+.settings a {
+  background: #2b2a2a;
+  color: #d8d8d8;
+  display: block;
+  height: 42px;
+  line-height: 3.75;
+  text-decoration: none;
+}
+/* line 71, ../../app/stylesheets/partials/video-guide.scss */
+.settings a:after {
+  content: url("../images/assets/carrot.svg");
   font-size: 8.667px;
-  line-height: 3;
-  margin-left: 2px;
+  line-height: 5.5;
+  margin-left: 3px;
   position: absolute;
   text-align: right;
 }
-/* line 39, ../../app/stylesheets/partials/video-guide.scss */
-.settings li a:hover {
+/* line 79, ../../app/stylesheets/partials/video-guide.scss */
+.settings a:hover {
+  color: white;
   text-decoration: underline;
 }
 
-/* line 46, ../../app/stylesheets/partials/video-guide.scss */
-.subnav {
-  display: none;
+/* line 86, ../../app/stylesheets/partials/video-guide.scss */
+.about, .profile {
+  padding-left: 10px;
+  position: relative;
+  width: 61px;
+  z-index: 2;
+}
+/* line 92, ../../app/stylesheets/partials/video-guide.scss */
+.about:hover, .profile:hover {
+  color: white;
+  background: #549738;
 }
 
-/* line 51, ../../app/stylesheets/partials/video-guide.scss */
-.you img {
+/* line 97, ../../app/stylesheets/partials/video-guide.scss */
+.profile {
+  width: 85px;
+}
+/* line 102, ../../app/stylesheets/partials/video-guide.scss */
+.profile:hover {
+  background: #0f8db8;
+}
+
+/* line 108, ../../app/stylesheets/partials/video-guide.scss */
+.profile-subnav a:hover, .about-subnav a:hover {
+  background: #0f8db8;
+  text-decoration: none;
+}
+
+/* line 116, ../../app/stylesheets/partials/video-guide.scss */
+.about-subnav a:hover {
+  background: #549738;
+}
+
+/* line 122, ../../app/stylesheets/partials/video-guide.scss */
+.you span {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  height: 24px;
   float: left;
   margin-right: 5px;
+  width: 24px;
+}
+/* line 132, ../../app/stylesheets/partials/video-guide.scss */
+.you img {
+  width: 100%;
 }
 
-/* line 56, ../../app/stylesheets/partials/video-guide.scss */
+/* line 137, ../../app/stylesheets/partials/video-guide.scss */
+.subnav {
+  -moz-box-shadow: 0px 0px 5px 2px #222222;
+  -webkit-box-shadow: 0px 0px 5px 2px #222222;
+  -o-box-shadow: 0px 0px 5px 2px #222222;
+  box-shadow: 0px 0px 5px 2px #222222;
+  background: #2b2a2a;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 0px solid transparent;
+  display: none;
+  position: absolute;
+  width: 92px;
+  z-index: 1;
+}
+
+/* line 151, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
@@ -556,7 +622,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding: 0;
 }
-/* line 64, ../../app/stylesheets/partials/video-guide.scss */
+/* line 159, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li {
   border-right: 1px solid #222;
   display: block;
@@ -564,7 +630,7 @@ a:hover, a:visited, a:active {
   height: 42px;
   width: 16.666667%;
 }
-/* line 70, ../../app/stylesheets/partials/video-guide.scss */
+/* line 165, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -573,49 +639,55 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 76, ../../app/stylesheets/partials/video-guide.scss */
+/* line 171, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a, .video-guide a:visited {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
   -o-box-shadow: inset 1px 1px 1px #4d4d4d;
   box-shadow: inset 1px 1px 1px #4d4d4d;
+  color: #666;
   display: block;
+  font-size: 11px;
   height: inherit;
+  padding-top: 26px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: lowercase;
 }
-/* line 84, ../../app/stylesheets/partials/video-guide.scss */
+/* line 184, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:hover, .video-guide a:visited:hover {
   -moz-box-shadow: inset 0px 0px 10px maroon;
   -webkit-box-shadow: inset 0px 0px 10px maroon;
   -o-box-shadow: inset 0px 0px 10px maroon;
   box-shadow: inset 0px 0px 10px maroon;
 }
-/* line 87, ../../app/stylesheets/partials/video-guide.scss */
+/* line 187, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:active, .video-guide a:visited:active {
-  -moz-box-shadow: inset 0px 0px 10px maroon;
-  -webkit-box-shadow: inset 0px 0px 10px maroon;
-  -o-box-shadow: inset 0px 0px 10px maroon;
-  box-shadow: inset 0px 0px 10px maroon;
+  -moz-box-shadow: inset 0px 0px 10px blue;
+  -webkit-box-shadow: inset 0px 0px 10px blue;
+  -o-box-shadow: inset 0px 0px 10px blue;
+  box-shadow: inset 0px 0px 10px blue;
 }
-/* line 92, ../../app/stylesheets/partials/video-guide.scss */
+/* line 192, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 98, ../../app/stylesheets/partials/video-guide.scss */
+/* line 198, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 102, ../../app/stylesheets/partials/video-guide.scss */
+/* line 202, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 106, ../../app/stylesheets/partials/video-guide.scss */
+/* line 206, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
 
-/* line 113, ../../app/stylesheets/partials/video-guide.scss */
+/* line 213, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -626,7 +698,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 119, ../../app/stylesheets/partials/video-guide.scss */
+/* line 219, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search i {
   background: url("../images/assets/mag_glass.png") no-repeat center center;
   height: 12px;
@@ -634,7 +706,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 126, ../../app/stylesheets/partials/video-guide.scss */
+/* line 226, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -645,7 +717,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 131, ../../app/stylesheets/partials/video-guide.scss */
+/* line 231, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -654,14 +726,9 @@ a:hover, a:visited, a:active {
   outline: none;
 }
 
-/* line 139, ../../app/stylesheets/partials/video-guide.scss */
+/* line 239, ../../app/stylesheets/partials/video-guide.scss */
 .filter {
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/noise.png") #353535;
   border-top: 1px solid #222;
   font-size: 11px;
   font-weight: 700;
@@ -670,35 +737,91 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 153, ../../app/stylesheets/partials/video-guide.scss */
+/* line 252, ../../app/stylesheets/partials/video-guide.scss */
 .filter li {
   display: block;
 }
-/* line 156, ../../app/stylesheets/partials/video-guide.scss */
+/* line 255, ../../app/stylesheets/partials/video-guide.scss */
 .filter a {
   line-height: 24px;
   text-decoration: none;
 }
 
-/* line 162, ../../app/stylesheets/partials/video-guide.scss */
+/* line 261, ../../app/stylesheets/partials/video-guide.scss */
 .current-roll {
   float: left;
   text-align: center;
   width: 60%;
 }
 
-/* line 168, ../../app/stylesheets/partials/video-guide.scss */
+/* line 267, ../../app/stylesheets/partials/video-guide.scss */
 .back {
   float: left;
   text-align: left;
   width: 20%;
 }
 
-/* line 173, ../../app/stylesheets/partials/video-guide.scss */
+/* line 272, ../../app/stylesheets/partials/video-guide.scss */
 .next {
   float: right;
   text-align: right;
   width: 20%;
+}
+
+/* line 278, ../../app/stylesheets/partials/video-guide.scss */
+.rolls-menu {
+  background: #585858;
+  margin: 0;
+  padding: 0;
+}
+/* line 283, ../../app/stylesheets/partials/video-guide.scss */
+.rolls-menu .rolls-add, .rolls-menu .rolls-share {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0f8db8), color-stop(100%, #0b6989));
+  background: -webkit-linear-gradient(top, #0f8db8, #0b6989);
+  background: -moz-linear-gradient(top, #0f8db8, #0b6989);
+  background: -o-linear-gradient(top, #0f8db8, #0b6989);
+  background: -ms-linear-gradient(top, #0f8db8, #0b6989);
+  background: linear-gradient(top, #0f8db8, #0b6989);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  line-height: 2.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+/* line 300, ../../app/stylesheets/partials/video-guide.scss */
+.rolls-menu .rolls-share {
+  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  box-shadow: inset -1px 0px 1px 0px #85cc66;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+}
+/* line 308, ../../app/stylesheets/partials/video-guide.scss */
+.rolls-menu li {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  width: 50%;
 }
 
 /* Welcome to Compass.
@@ -955,7 +1078,7 @@ a:hover, a:visited, a:active {
 }
 /* line 221, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332425256');
+  content: url('/images/../images/assets/twitter_stamp.png?1332359946');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1096,7 +1219,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype, .video-guide a, .video-guide a:visited {
+.notype {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;

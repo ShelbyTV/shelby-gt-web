@@ -11,10 +11,12 @@
 //variables must be announced here.
 $font-size: 13px;
 $size: "62.5%" !default;
+
 //radius, for border-radius, etc.
 $radius: 5px;
 $radiusHeader: $radius - 2 $radius - 2 0 0;
 $radiusFooter: 0 0 $radius - 2 $radius - 2;
+
 //spacing
 $defaultMargin: 10px;
 $margin: 0.5em;
@@ -22,8 +24,16 @@ $margin: 0.5em;
 //colors
 $text: #dcddde;
 
+$headerNavLink: #d8d8d8;
+$settingsBG: #2b2a2a;
+
+$rollsBG: #585858;
+
 $myBlue: #6666FF;
 $myGreen: #ddFFdd;
+
+$shelbyGreen: #549738;
+$shelbyBlue: #0f8db8;
 
 $outset : #252525;
 $inset : #4f4d51;
@@ -40,6 +50,8 @@ $gradientDark : #303030;
 $gradientLight : #333;
 
 $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
+$softShelbyBlue: linear-gradient(top, $shelbyBlue, adjust-lightness($shelbyBlue, -10%));
+$softShelbyGreen: linear-gradient(top, $shelbyGreen, adjust-lightness($shelbyGreen,-10%));
 
 @mixin softgradient {
 	@include background-image($softLinearGradient);

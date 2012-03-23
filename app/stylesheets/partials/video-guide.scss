@@ -2,55 +2,150 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+.header{
+	@include background(
+		url('../images/assets/noise.png') $settingsBG
+	);
+
+	border-bottom:1px solid #222;
+
+	nav{
+		display:inline;
+
+	}
+}
+
+.logo{
+	display:block;
+	float:left;
+
+	h1 {
+		background:url('../images/assets/shelby_logo.png') center 8px no-repeat transparent;
+		height:42px;
+		margin:0 12px;
+		width:115px;
+	}
+}
+
 .settings{
 	float:right;
 	font-weight:500;
+	font-size:13px;
 	line-height:2;
-	margin:10px 5px 0 0;
+	margin:0;
 	width:50%;
 
-	ul{
-		background:white;
-		position:absolute;
-	}
 	li{
-		width:44%;
 		display:block;
 		float:right;
 		position:relative;
 		
 		li{
 			display:block;
-			a:before{
+			float:none;
+			height:2em;
+			line-height:2;
+			margin:0;
+			padding-left:0;
+
+			a{
+				height:2em;
+				line-height:2;
+				padding-left:$margin;
+				text-decoration:none;
+			}
+
+			a:before, a:after{
 				content: none;
 			}
-		}
-		a{
-			text-decoration:none;
+		}	
+	}
+	a{
+		background:$settingsBG;
+		color:$headerNavLink;
+		display:block;
+		height:42px;
+		line-height:3.75;
+		text-decoration:none;
 
-			&:after {
-				content: "\25BC";
-				font-size: $font-size/1.5;
-				line-height:3;
-				margin-left:2px;
-				position:absolute;
-				text-align:right;
-			}
-			&:hover{
-				text-decoration:underline;
-			}
+		&:after {
+			content: url('../images/assets/carrot.svg');
+			font-size: $font-size/1.5;
+			line-height:5.5;
+			margin-left:3px;
+			position:absolute;
+			text-align:right;
+		}
+		&:hover{
+			color:white;
+			text-decoration:underline;
 		}
 	}
 }
 
-.subnav{
-	display:none;
+.about{
+	padding-left:$defaultMargin;
+	position:relative;
+	width:61px;
+	z-index:2;
 
+	&:hover{
+		color:white;
+		background:$shelbyGreen;
+	}
+}
+.profile{
+	@extend .about;
+
+	width:85px;
+
+	&:hover{
+		background:$shelbyBlue;
+	}
 }
 
-.you img{
-	float:left;
-	margin-right:5px;
+.profile-subnav{
+	a:hover{
+		background:$shelbyBlue;
+		text-decoration:none;
+	}
+}
+
+.about-subnav{
+	@extend .profile-subnav;
+	a:hover{
+		background:$shelbyGreen;
+	}
+}
+
+.you{
+	span{
+		@include border-radius($radius);
+
+		display:block;
+		height:24px;
+		float:left;
+		margin-right:5px;
+		width:24px;
+
+	}
+	img{
+		width:100%;
+	}
+}
+
+.subnav{
+	@include box-shadow(0px 0px 5px 2px #222);
+
+	background:$settingsBG;
+	border-bottom:1px solid black;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	border-top:0px solid transparent;
+	display:none;
+	position:absolute;
+	width:92px;
+	z-index:1;
 }
 
 .video-guide{
@@ -76,16 +171,21 @@
 	a, a:visited{
 		@include box-shadow(inset 1px 1px 1px #4d4d4d);
 
-		@extend .notype;
-
+		color:#666;
 		display:block;
+		font-size:11px;
 		height:inherit;
+		padding-top:26px;
+		text-align:center;
+		text-decoration:none;
+		text-transform:lowercase;
+
 
 		&:hover{
 			@include box-shadow(inset 0px 0px 10px maroon);
 		}
 		&:active{
-			@include box-shadow(inset 0px 0px 10px maroon);
+			@include box-shadow(inset 0px 0px 10px blue);
 		}
 
 	}
@@ -138,8 +238,7 @@
 
 .filter{
 	@include background(
-		url('../images/assets/noise.png'),
-		$softLinearGradient
+		url('../images/assets/noise.png') #353535
 	);
 
 	border-top:1px solid #222;
@@ -174,4 +273,44 @@
 	float:right;
 	text-align:right;
 	width:20%;
+}
+
+.rolls-menu{
+	background:$rollsBG;
+	margin:0;
+	padding:0;
+
+	.rolls-add{
+		@include border-radius($radius);
+		@include buttonfont;
+		@include background(
+			$softShelbyBlue
+		);
+		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+
+		border:1px solid #222;
+		color:#efefef;
+		display:block;
+		line-height:2.5;
+		margin:0;
+		padding:0;
+		width:100%;
+
+	}
+	.rolls-share{
+		@extend .rolls-add;
+		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
+		@include background(
+			$softShelbyGreen
+		);
+	}
+
+	li {
+		display:block;
+		float:left;
+		list-style-type:none;
+		margin:0;
+		padding:$defaultMargin;
+		width:50%;
+	}
 }

@@ -7,11 +7,16 @@
   <nav>
     <ul class="settings">
       <li>
-        <a class="profile you" href="/<%= user.get('nickname') %>">
-          <img src="<%= user.get('user_image') %>" />
+        <a class="profile you" href="#/<% user.get('nickname') %>">
+          <span>
+            <img src="<%= user.get('user_image') %>" />
+          </span>
+          You
+          <!--
           <%= user.getFirstName() %>
+          -->
         </a>
-        <ul id="profile-subnav" class="subnav">
+        <ul id="profile-subnav" class="subnav profile-subnav">
           <li>
             <a href="#preferences">Preferences</a>
           </li>
@@ -28,7 +33,7 @@
       </li>
       <li>
         <a class="about" href="#about">About</a>
-        <ul id="about-subnav" class="subnav">
+        <ul id="about-subnav" class="subnav about-subnav">
           <li>
             <a href="#help">Help</a>
           </li>
