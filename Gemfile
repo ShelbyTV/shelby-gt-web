@@ -25,7 +25,7 @@ end
 gem 'jammit', '= 0.6.3'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
