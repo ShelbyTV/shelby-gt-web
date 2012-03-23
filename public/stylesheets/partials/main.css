@@ -46,3 +46,9 @@ a:hover, a:visited, a:active {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
+/* line 48, ../../../app/stylesheets/partials/main.scss */
+.menu {
+  position: relative;
+  overflow: hidden;
+}

@@ -6,9 +6,20 @@
 	@include background(
 		$softLinearGradient
 	);
+
+	padding:$defaultMargin/2;
+
+	h2{
+		float:left;
+		font-size:14px;
+		line-height:2.5;
+		margin-left:$margin;
+	}
 }
 
 .roll-item-thumbnail{
+	@include border-radius($radius);
+
 	display:block;
 	float:left;
 	height:36px;

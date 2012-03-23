@@ -452,6 +452,12 @@ a:hover, a:visited, a:active {
   overflow-y: scroll;
 }
 
+/* line 48, ../../app/stylesheets/partials/main.scss */
+.menu {
+  position: relative;
+  overflow: hidden;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -619,10 +625,15 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -o-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/noise.png"), linear-gradient(top, #333333, #303030);
+  -moz-box-shadow: 0px 1px 3px 1px #222222;
+  -webkit-box-shadow: 0px 1px 3px 1px #222222;
+  -o-box-shadow: 0px 1px 3px 1px #222222;
+  box-shadow: 0px 1px 3px 1px #222222;
   margin: 0;
   padding: 0;
+  position: relative;
 }
-/* line 159, ../../app/stylesheets/partials/video-guide.scss */
+/* line 162, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li {
   border-right: 1px solid #222;
   display: block;
@@ -630,7 +641,7 @@ a:hover, a:visited, a:active {
   height: 42px;
   width: 16.666667%;
 }
-/* line 165, ../../app/stylesheets/partials/video-guide.scss */
+/* line 168, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -639,7 +650,7 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 171, ../../app/stylesheets/partials/video-guide.scss */
+/* line 174, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a, .video-guide a:visited {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -654,40 +665,40 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   text-transform: lowercase;
 }
-/* line 184, ../../app/stylesheets/partials/video-guide.scss */
+/* line 187, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:hover, .video-guide a:visited:hover {
   -moz-box-shadow: inset 0px 0px 10px maroon;
   -webkit-box-shadow: inset 0px 0px 10px maroon;
   -o-box-shadow: inset 0px 0px 10px maroon;
   box-shadow: inset 0px 0px 10px maroon;
 }
-/* line 187, ../../app/stylesheets/partials/video-guide.scss */
+/* line 190, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide a:active, .video-guide a:visited:active {
   -moz-box-shadow: inset 0px 0px 10px blue;
   -webkit-box-shadow: inset 0px 0px 10px blue;
   -o-box-shadow: inset 0px 0px 10px blue;
   box-shadow: inset 0px 0px 10px blue;
 }
-/* line 192, ../../app/stylesheets/partials/video-guide.scss */
+/* line 195, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 198, ../../app/stylesheets/partials/video-guide.scss */
+/* line 201, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 202, ../../app/stylesheets/partials/video-guide.scss */
+/* line 205, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 206, ../../app/stylesheets/partials/video-guide.scss */
+/* line 209, ../../app/stylesheets/partials/video-guide.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
 
-/* line 213, ../../app/stylesheets/partials/video-guide.scss */
+/* line 216, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -698,7 +709,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 219, ../../app/stylesheets/partials/video-guide.scss */
+/* line 222, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -706,7 +717,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 226, ../../app/stylesheets/partials/video-guide.scss */
+/* line 229, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -717,7 +728,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 231, ../../app/stylesheets/partials/video-guide.scss */
+/* line 234, ../../app/stylesheets/partials/video-guide.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -726,10 +737,11 @@ a:hover, a:visited, a:active {
   outline: none;
 }
 
-/* line 239, ../../app/stylesheets/partials/video-guide.scss */
+/* line 242, ../../app/stylesheets/partials/video-guide.scss */
 .filter {
   background: url("../images/assets/noise.png") #353535;
   border-top: 1px solid #222;
+  border-bottom: 1px solid #303030;
   font-size: 11px;
   font-weight: 700;
   margin: 0;
@@ -737,44 +749,44 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 252, ../../app/stylesheets/partials/video-guide.scss */
+/* line 256, ../../app/stylesheets/partials/video-guide.scss */
 .filter li {
   display: block;
 }
-/* line 255, ../../app/stylesheets/partials/video-guide.scss */
+/* line 259, ../../app/stylesheets/partials/video-guide.scss */
 .filter a {
   line-height: 24px;
   text-decoration: none;
 }
 
-/* line 261, ../../app/stylesheets/partials/video-guide.scss */
+/* line 265, ../../app/stylesheets/partials/video-guide.scss */
 .current-roll {
   float: left;
   text-align: center;
   width: 60%;
 }
 
-/* line 267, ../../app/stylesheets/partials/video-guide.scss */
+/* line 271, ../../app/stylesheets/partials/video-guide.scss */
 .back {
   float: left;
   text-align: left;
   width: 20%;
 }
 
-/* line 272, ../../app/stylesheets/partials/video-guide.scss */
+/* line 276, ../../app/stylesheets/partials/video-guide.scss */
 .next {
   float: right;
   text-align: right;
   width: 20%;
 }
 
-/* line 278, ../../app/stylesheets/partials/video-guide.scss */
+/* line 282, ../../app/stylesheets/partials/video-guide.scss */
 .rolls-menu {
   background: #585858;
   margin: 0;
   padding: 0;
 }
-/* line 283, ../../app/stylesheets/partials/video-guide.scss */
+/* line 287, ../../app/stylesheets/partials/video-guide.scss */
 .rolls-menu .rolls-add, .rolls-menu .rolls-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -801,7 +813,7 @@ a:hover, a:visited, a:active {
   padding: 0;
   width: 100%;
 }
-/* line 300, ../../app/stylesheets/partials/video-guide.scss */
+/* line 304, ../../app/stylesheets/partials/video-guide.scss */
 .rolls-menu .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
@@ -814,7 +826,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #549738, #3f722a);
   background: linear-gradient(top, #549738, #3f722a);
 }
-/* line 308, ../../app/stylesheets/partials/video-guide.scss */
+/* line 312, ../../app/stylesheets/partials/video-guide.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -1176,17 +1188,31 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #333333, #303030);
   background: -ms-linear-gradient(top, #333333, #303030);
   background: linear-gradient(top, #333333, #303030);
+  padding: 5px;
+}
+/* line 12, ../../app/stylesheets/partials/rolls-list.scss */
+.roll-item h2 {
+  float: left;
+  font-size: 14px;
+  line-height: 2.5;
+  margin-left: 0.5em;
 }
 
-/* line 11, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 20, ../../app/stylesheets/partials/rolls-list.scss */
 .roll-item-thumbnail {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   display: block;
   float: left;
   height: 36px;
   overflow: hidden;
   width: 36px;
 }
-/* line 18, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 29, ../../app/stylesheets/partials/rolls-list.scss */
 .roll-item-thumbnail img {
   width: 100%;
 }
