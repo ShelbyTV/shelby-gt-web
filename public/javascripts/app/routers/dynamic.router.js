@@ -36,10 +36,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(){
-    this._bindContentPaneModelChanges({include_rolls:true});
+    this._bindContentPaneModelChanges({include_rolls:'true', include_children:true});
     this._setupTopLevelViews();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollListView, 'contentPaneModel': shelby.models.user});
-    console.log('displaying roll list');
   },
 
   displaySaves : function(){

@@ -2,7 +2,7 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   relations : [{
     type : Backbone.HasMany,
-    key : 'rolls_followings',
+    key : 'roll_followings',
     relatedModel : 'libs.shelbyGT.RollModel',
     collectionType : 'libs.shelbyGT.RollsCollection'
   }],
