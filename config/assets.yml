@@ -16,7 +16,9 @@ javascripts:
     - public/javascripts/backbone/backbone-support/swapping_router.js
     - public/javascripts/backbone/backbone-support/composite_view.js
     # underscore mixins
-    - public/javascripts/underscore.inflection.js
+    - public/javascripts/backbone/underscore.inflection.js
+    # jQuery plugins
+    - public/javascripts/jquery-plugins/jquery.scrollTo.js
     # swf
     - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order
@@ -26,7 +28,6 @@ javascripts:
     - public/javascripts/app/views/list.view.js
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/browser.js
-    - public/javascripts/app/views/settings.view.js
     # shelby backbone app - all other assets
     - public/javascripts/app/playback/*.js
     - public/javascripts/app/models/lib/*.js

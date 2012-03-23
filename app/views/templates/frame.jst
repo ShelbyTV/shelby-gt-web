@@ -2,9 +2,9 @@
 <% var creator = frame.get('creator') %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
   <header class="video-card-header clearfix">
-    <a href="#">
+    <a class="js-frame-activate" href="#">
       <h1 title="<%= frame.get('video').get('title') %>">
-		<%= frame.get('video').get('title') %>
+		    <%= frame.get('video').get('title') %>
       </h1>
     </a>  
     <button class="video-score" type="button"><%= frame.get('upvoters').length %></button>

@@ -10,6 +10,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
     this.remove();
     this._leaveChildren();
     this._removeFromParent();
+    this.undelegateEvents();
   },
 
   renderChild: function(view) {
