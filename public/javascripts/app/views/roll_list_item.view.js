@@ -1,8 +1,8 @@
 libs.shelbyGT.RollItemView = ListItemView.extend({
 
-  /*events : {
+  events : {
     "click .roll-item" : "goToRoll"
-  },*/
+  },
 
   tagName : 'li',
 
@@ -22,7 +22,7 @@ libs.shelbyGT.RollItemView = ListItemView.extend({
   },
 
   goToRoll : function(){
-    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+    shelby.router.navigateToRoll(this.model, {trigger:true});
   },
 
   _cleanup : function(){
