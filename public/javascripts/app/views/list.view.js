@@ -1,4 +1,4 @@
-ListView = Support.CompositeView.extend({
+libs.shelbyGT.ListView = Support.CompositeView.extend({
   
   tagName : 'ul',
 

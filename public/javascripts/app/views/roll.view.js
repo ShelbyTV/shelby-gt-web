@@ -1,11 +1,18 @@
-libs.shelbyGT.RollView = ListView.extend({
+( function(){
 
-  className : ListView.prototype.className + ' roll',
+  // shorten names of included library prototypes
+  var AutoScrollFrameListView = libs.shelbyGT.AutoScrollFrameListView;
 
-  initialize : function(){
-    this.options.collectionAttribute = 'frames';
-    this.options.listItemView = 'FrameView';
-    ListView.prototype.initialize.call(this);
-  }
+  libs.shelbyGT.RollView = AutoScrollFrameListView.extend({
 
-});
+    className : AutoScrollFrameListView.prototype.className + ' roll',
+
+    initialize : function(){
+      this.options.collectionAttribute = 'frames';
+      this.options.listItemView = 'FrameView';
+      AutoScrollFrameListView.prototype.initialize.call(this);
+    },
+
+  });
+
+} ) ();

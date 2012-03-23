@@ -3,10 +3,11 @@ libs.shelbyGT.Ajax = {
   defaultOnError : function(event, jqXHR, ajaxSettings, thrownError){
     if (jqXHR.status == 401) {
       // TODO: authenticate and redirect
+			$('#temp-signin').show();
       console.error("You're not authenticated with the Shelby API, we should redirect and authenticate you.");
     } else {
       // TODO: nicer looking notification of generic error message
       console.error("Something went wrong. Shelby apologizes.");
     }
-  },
+  }
  };
