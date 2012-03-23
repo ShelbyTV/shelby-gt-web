@@ -1,7 +1,7 @@
 libs.shelbyGT.RollItemView = ListItemView.extend({
 
   events : {
-    "click .roll-item" : "goToRoll"
+    "click .js-roll-item-button" : "goToRoll"
   },
 
   tagName : 'li',
