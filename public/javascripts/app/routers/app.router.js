@@ -34,9 +34,15 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       },
       error:function(event, jqXHR, ajaxSettings, thrownError) {
         if (jqXHR.status == 400) {
-          // no authenticated user, begin the logged-out user experience
-          // TODO: configure the logged out experience
-          console.log('You are not a logged in user, I should be configuring the logged out experience.');
+					if (cookies.get("locked_and_loaded") == "true"){
+						//something went wrong with the users session, let them re-authenticate
+						$('#temp-signin').show();
+					}
+					else{
+						// no authenticated user, begin the logged-out user experience
+						// TODO: configure the logged out experience
+	          console.log('You are not a logged in user, I should be configuring the logged out experience.');
+					}
         } else {
           // some other error, use the default ajax error handling
           libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
