@@ -19,6 +19,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _cleanup : function(){
+    console.log('cleaning list view');
     this.model.unbind('add:'+this.options.collectionAttribute, this.addOne, this);
   },
 

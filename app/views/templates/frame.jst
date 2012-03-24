@@ -37,7 +37,7 @@
           <a href="/userhandle"><%= msg.get('realname') %></a>
         </span>
         <span class="user-post-date">
-          <a href="#">19 hours ago</a>
+          <a href="#"><%= msg.get('created_at') %></a>
         </span>
       </div>
       <div class="user-video-text">
@@ -53,8 +53,10 @@
     </section><!-- eo section.video-shares -->
   
     <div class="video-footer">
-      <a class="video-activity-toggle" href="#">See 12 shares</a>
-      <a class="video-source" href="#">Source: Userhandle's Roll</a>
+      <% /*if (messages.length > 1) {*/ %>
+        <a class="video-activity-toggle" href="#">See <%= messages.length %> shares</a>
+      <% /*}*/ %>
+      <a class="video-source" href="#">Source: <%= frame.get('roll').get('title')%>'s Roll</a>
     </div> 
   
   </footer>
