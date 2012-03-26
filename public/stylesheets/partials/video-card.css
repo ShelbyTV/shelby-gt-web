@@ -11,12 +11,15 @@
   margin: 0;
   padding: 0;
 }
-/* line 10, ../../../app/stylesheets/partials/video-card.scss */
+/* line 11, ../../../app/stylesheets/partials/video-card.scss */
 .list li {
+  background: url("../images/assets/noise.png") #494949;
+  border-bottom: 1px solid #222;
   list-style-type: none;
+  padding: 10px 0;
 }
 
-/* line 15, ../../../app/stylesheets/partials/video-card.scss */
+/* line 23, ../../../app/stylesheets/partials/video-card.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -31,7 +34,7 @@
   padding: 0;
   position: relative;
 }
-/* line 25, ../../../app/stylesheets/partials/video-card.scss */
+/* line 33, ../../../app/stylesheets/partials/video-card.scss */
 .video-card footer {
   -moz-box-shadow: 0px 4px 13px 4px #333333;
   -webkit-box-shadow: 0px 4px 13px 4px #333333;
@@ -41,7 +44,7 @@
   z-index: 5;
 }
 
-/* line 32, ../../../app/stylesheets/partials/video-card.scss */
+/* line 40, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail {
   background: #444;
   line-height: 75px;
@@ -49,7 +52,7 @@
   text-align: center;
   width: 100%;
 }
-/* line 39, ../../../app/stylesheets/partials/video-card.scss */
+/* line 47, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail img {
   display: inline-block;
   margin: 0 auto 0;
@@ -59,7 +62,7 @@
   width: 100%;
 }
 
-/* line 50, ../../../app/stylesheets/partials/video-card.scss */
+/* line 58, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -75,19 +78,19 @@
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 8px;
 }
-/* line 56, ../../../app/stylesheets/partials/video-card.scss */
+/* line 64, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a {
   text-decoration: none;
 }
-/* line 59, ../../../app/stylesheets/partials/video-card.scss */
+/* line 67, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a:active, .video-card-header a:visited {
   text-decoration: none;
 }
-/* line 62, ../../../app/stylesheets/partials/video-card.scss */
+/* line 70, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a:hover {
   text-decoration: underline;
 }
-/* line 67, ../../../app/stylesheets/partials/video-card.scss */
+/* line 75, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header h1 {
   float: left;
   font-size: 1em;
@@ -98,7 +101,7 @@
   width: 80%;
 }
 
-/* line 77, ../../../app/stylesheets/partials/video-card.scss */
+/* line 85, ../../../app/stylesheets/partials/video-card.scss */
 .video-score {
   color: #efefef;
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
@@ -108,35 +111,35 @@
   line-height: 1.231;
   padding: 0;
 }
-/* line 87, ../../../app/stylesheets/partials/video-card.scss */
+/* line 95, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:before {
   content: url("../images/assets/favorite.png");
   margin-right: 3px;
 }
-/* line 92, ../../../app/stylesheets/partials/video-card.scss */
+/* line 100, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:hover:before {
   color: red;
 }
-/* line 96, ../../../app/stylesheets/partials/video-card.scss */
+/* line 104, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:active {
   color: red;
 }
 
-/* line 115, ../../../app/stylesheets/partials/video-card.scss */
+/* line 123, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 120, ../../../app/stylesheets/partials/video-card.scss */
+/* line 128, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls {
   margin: 5px;
   position: absolute;
   right: 0px;
   top: 0px;
 }
-/* line 126, ../../../app/stylesheets/partials/video-card.scss */
+/* line 134, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -152,7 +155,7 @@
   text-decoration: underline;
   width: 50px;
 }
-/* line 138, ../../../app/stylesheets/partials/video-card.scss */
+/* line 146, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll {
   background: url("../images/assets/roll.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/roll.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -161,7 +164,7 @@
   background: url("../images/assets/roll.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/roll.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
-/* line 145, ../../../app/stylesheets/partials/video-card.scss */
+/* line 153, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .watch-later {
   background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -171,7 +174,7 @@
   background: url("../images/assets/watch_later.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
 
-/* line 154, ../../../app/stylesheets/partials/video-card.scss */
+/* line 162, ../../../app/stylesheets/partials/video-card.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -188,35 +191,36 @@
   border-top: 1px solid #4f4d51;
   font-size: 11px;
   font-weight: 700;
+  height: 27px;
   padding: 6px 8px 7px;
 }
 
-/* line 164, ../../../app/stylesheets/partials/video-card.scss */
+/* line 173, ../../../app/stylesheets/partials/video-card.scss */
 .video-activity {
   display: none;
 }
 
-/* line 173, ../../../app/stylesheets/partials/video-card.scss */
+/* line 182, ../../../app/stylesheets/partials/video-card.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 177, ../../../app/stylesheets/partials/video-card.scss */
+/* line 186, ../../../app/stylesheets/partials/video-card.scss */
 .video-activity-list li {
   list-style-type: none;
 }
 
-/* line 183, ../../../app/stylesheets/partials/video-card.scss */
+/* line 192, ../../../app/stylesheets/partials/video-card.scss */
 .video-source {
   float: right;
 }
 
-/* line 188, ../../../app/stylesheets/partials/video-card.scss */
+/* line 197, ../../../app/stylesheets/partials/video-card.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 193, ../../../app/stylesheets/partials/video-card.scss */
+/* line 202, ../../../app/stylesheets/partials/video-card.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -226,44 +230,44 @@
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 198, ../../../app/stylesheets/partials/video-card.scss */
+/* line 207, ../../../app/stylesheets/partials/video-card.scss */
 .user-vcard {
   border-top: 1px solid #4f4d51;
   font-size: 11px;
   font-weight: 700;
   padding: 0 9px 0;
 }
-/* line 203, ../../../app/stylesheets/partials/video-card.scss */
+/* line 212, ../../../app/stylesheets/partials/video-card.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 210, ../../../app/stylesheets/partials/video-card.scss */
+/* line 219, ../../../app/stylesheets/partials/video-card.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 216, ../../../app/stylesheets/partials/video-card.scss */
+/* line 225, ../../../app/stylesheets/partials/video-card.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 221, ../../../app/stylesheets/partials/video-card.scss */
+/* line 230, ../../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332359946');
+  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
 }
 
-/* line 229, ../../../app/stylesheets/partials/video-card.scss */
+/* line 238, ../../../app/stylesheets/partials/video-card.scss */
 .user-video-text {
   border-bottom: 1px solid #252525;
   margin-top: -10px;
 }
-/* line 233, ../../../app/stylesheets/partials/video-card.scss */
+/* line 242, ../../../app/stylesheets/partials/video-card.scss */
 .user-video-text p {
   margin: 0 5px 10px 45px;
 }
