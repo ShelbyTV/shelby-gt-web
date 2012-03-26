@@ -24,32 +24,31 @@
  
   <footer>
 
+  <% firstMessage = messages.first() %>
   <!-- Should be done in a sub-view? -->
-  <% messages.forEach(function(msg, index){ %>
 
     <blockquote class="user video-author">
       <div class="user-vcard">
         <span class="user-avatar">
-          <img src="<%= msg.get('user_image_url') %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
+          <img src="<%= firstMessage.get('user_image_url') %>" alt="firstMessage.get('nickname')" title="firstMessage.get('nickname')" height="25" width="25">
         </span>
         
         <span class="user-handle">
-          <a href="/userhandle"><%= msg.get('realname') %></a>
+          <a href="/userhandle"><%= firstMessage.get('realname') %></a>
         </span>
         <span class="user-post-date">
-          <a href="#">19 hours ago</a>
+          <a href="#"><%= firstMessage.get('created_at') %></a>
         </span>
         <div class="user-video-text">
             <p>
-              <%= msg.getText() %>
+              <%= firstMessage.getText() %>
             </p>
         </div>
       </div>
     </blockquote>
 
-  <% }); %>
    
-    <section class="video-activity">
+    <section class="video-activity js-video-activity" style="display:none">
 
       <!-- sample build -->
       <ul class="video-activity-list">
@@ -102,7 +101,7 @@
     </section><!-- eo section.video-shares -->
   
     <div class="video-footer">
-      <a class="video-activity-toggle" href="#">See 12 shares</a>
+      <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> See </span> 12 shares</a>
       <a class="video-source" href="#">Source: Userhandle's Roll</a>
     </div> 
   
