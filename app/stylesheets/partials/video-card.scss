@@ -93,7 +93,7 @@
 	padding:0;
 
 	&:before{
-		content: url('../images/assets/favorite.png');
+		content: url('../images/assets/score.svg');
 		margin-right:3px;
 	}
 
@@ -152,14 +152,14 @@
 
 	.roll{
 		@include background(
-			url('../images/assets/roll.png') no-repeat center center,
+			url('../images/assets/roll_action.svg') no-repeat center center,
 			$softLinearGradient
 		);
 
 	}
-	.watch-later{
+	.saves{
 		@include background(
-			url('../images/assets/watch_later.png') no-repeat center center,
+			url('../images/assets/saved_action.svg') no-repeat center center,
 			$softLinearGradient
 		);
 
