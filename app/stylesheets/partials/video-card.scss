@@ -16,7 +16,7 @@
 
 		border-bottom:1px solid #222;
 		list-style-type:none;
-		padding:$defaultMargin 0;
+		padding:$defaultMargin;
 	}
 }
 
@@ -25,7 +25,7 @@
 
 	border:$articleStroke;
 	font-size: $font-size;
-	margin:$defaultMargin;
+	margin:0;
 	overflow:hidden;
 	padding:0;
 	position:relative;
