@@ -127,6 +127,7 @@
 }	
 .video-controls{
 	margin:$defaultMargin/2;
+	padding:0;
 	position:absolute;
 	right:0px;
 	top:0px;
@@ -214,10 +215,11 @@
 }
 
 .user-vcard{
+	border-bottom:1px solid $outset;
 	border-top:1px solid $inset;
-	font-size:11px;
-	font-weight:700;
-	padding: 0 9px 0;
+	font-size:13px;
+	font-weight:300;
+	padding: 0 9px 9px;
 	a{
 		text-decoration:none;
 	}
@@ -230,8 +232,13 @@
 		margin-top: 9px;
 	}
 }
+.user-handle{
+	font-size:11px;
+	font-weight:700;
+}
 
 .user-post-date{
+	@extend .user-handle;
 	float:right;
 	margin-top:9px;
 	padding-right:3px;
@@ -245,10 +252,9 @@
 }
 
 .user-video-text{
-	border-bottom:1px solid $outset;
-	margin-top:-10px;
+	margin-top:-7px;
 
 	p{
-		margin:0 $defaultMargin/2 $defaultMargin $defaultMargin*4+5  ;
+		margin:0 $defaultMargin/2 0 $defaultMargin*3+6;
 	}
 }

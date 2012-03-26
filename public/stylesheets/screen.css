@@ -973,11 +973,12 @@ a:hover, a:visited, a:active {
 /* line 128, ../../app/stylesheets/partials/video-card.scss */
 .video-controls {
   margin: 5px;
+  padding: 0;
   position: absolute;
   right: 0px;
   top: 0px;
 }
-/* line 134, ../../app/stylesheets/partials/video-card.scss */
+/* line 135, ../../app/stylesheets/partials/video-card.scss */
 .video-controls button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -993,13 +994,13 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 50px;
 }
-/* line 146, ../../app/stylesheets/partials/video-card.scss */
+/* line 147, ../../app/stylesheets/partials/video-card.scss */
 .video-controls li {
   background: none;
   border: none;
   padding: 0;
 }
-/* line 152, ../../app/stylesheets/partials/video-card.scss */
+/* line 153, ../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll {
   background: url("../images/assets/roll.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/roll.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -1008,7 +1009,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/roll.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/roll.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
-/* line 159, ../../app/stylesheets/partials/video-card.scss */
+/* line 160, ../../app/stylesheets/partials/video-card.scss */
 .video-controls .watch-later {
   background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/watch_later.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -1018,7 +1019,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/watch_later.png") no-repeat center center, linear-gradient(top, #333333, #303030);
 }
 
-/* line 168, ../../app/stylesheets/partials/video-card.scss */
+/* line 169, ../../app/stylesheets/partials/video-card.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1039,29 +1040,29 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 189, ../../app/stylesheets/partials/video-card.scss */
+/* line 190, ../../app/stylesheets/partials/video-card.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 193, ../../app/stylesheets/partials/video-card.scss */
+/* line 194, ../../app/stylesheets/partials/video-card.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 201, ../../app/stylesheets/partials/video-card.scss */
+/* line 202, ../../app/stylesheets/partials/video-card.scss */
 .video-source {
   float: right;
 }
 
-/* line 206, ../../app/stylesheets/partials/video-card.scss */
+/* line 207, ../../app/stylesheets/partials/video-card.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 211, ../../app/stylesheets/partials/video-card.scss */
+/* line 212, ../../app/stylesheets/partials/video-card.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1071,31 +1072,38 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 216, ../../app/stylesheets/partials/video-card.scss */
+/* line 217, ../../app/stylesheets/partials/video-card.scss */
 .user-vcard {
+  border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 0 9px 0;
+  font-size: 13px;
+  font-weight: 300;
+  padding: 0 9px 9px;
 }
-/* line 221, ../../app/stylesheets/partials/video-card.scss */
+/* line 223, ../../app/stylesheets/partials/video-card.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 228, ../../app/stylesheets/partials/video-card.scss */
+/* line 230, ../../app/stylesheets/partials/video-card.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 234, ../../app/stylesheets/partials/video-card.scss */
+/* line 235, ../../app/stylesheets/partials/video-card.scss */
+.user-handle, .user-post-date {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* line 240, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 239, ../../app/stylesheets/partials/video-card.scss */
+/* line 246, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -1103,14 +1111,13 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 247, ../../app/stylesheets/partials/video-card.scss */
+/* line 254, ../../app/stylesheets/partials/video-card.scss */
 .user-video-text {
-  border-bottom: 1px solid #252525;
-  margin-top: -10px;
+  margin-top: -7px;
 }
-/* line 251, ../../app/stylesheets/partials/video-card.scss */
+/* line 257, ../../app/stylesheets/partials/video-card.scss */
 .user-video-text p {
-  margin: 0 5px 10px 45px;
+  margin: 0 5px 0 36px;
 }
 
 /* Welcome to Compass.
