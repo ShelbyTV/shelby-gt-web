@@ -25,6 +25,28 @@ a{
 
 }
 
+#wrapper{}
+
+#lining{
+	float:left;
+	margin-right:-330px;
+	width:100%;
+
+}
+
+.video-player{
+	background: #333;
+	color:white;
+	height:520px;
+	margin-right:330px;
+
+	p{
+		background:black;
+		margin:0;
+	}
+}
+
+
 .content{
 	float:right;
 	width:330px;
@@ -33,7 +55,7 @@ a{
 .main{
 	@extend .content;
 
-	background:pink;
+	background:#494949;
 	font-size:1.3em;
 
 }
