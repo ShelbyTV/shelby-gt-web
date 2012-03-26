@@ -1039,32 +1039,29 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 179, ../../app/stylesheets/partials/video-card.scss */
-.video-activity {
-  display: none;
-}
-
-/* line 188, ../../app/stylesheets/partials/video-card.scss */
+/* line 189, ../../app/stylesheets/partials/video-card.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 192, ../../app/stylesheets/partials/video-card.scss */
+/* line 193, ../../app/stylesheets/partials/video-card.scss */
 .video-activity-list li {
+  border-bottom: 0;
   list-style-type: none;
+  padding: 0;
 }
 
-/* line 198, ../../app/stylesheets/partials/video-card.scss */
+/* line 201, ../../app/stylesheets/partials/video-card.scss */
 .video-source {
   float: right;
 }
 
-/* line 203, ../../app/stylesheets/partials/video-card.scss */
+/* line 206, ../../app/stylesheets/partials/video-card.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 208, ../../app/stylesheets/partials/video-card.scss */
+/* line 211, ../../app/stylesheets/partials/video-card.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1074,31 +1071,31 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 213, ../../app/stylesheets/partials/video-card.scss */
+/* line 216, ../../app/stylesheets/partials/video-card.scss */
 .user-vcard {
   border-top: 1px solid #4f4d51;
   font-size: 11px;
   font-weight: 700;
   padding: 0 9px 0;
 }
-/* line 218, ../../app/stylesheets/partials/video-card.scss */
+/* line 221, ../../app/stylesheets/partials/video-card.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 225, ../../app/stylesheets/partials/video-card.scss */
+/* line 228, ../../app/stylesheets/partials/video-card.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 231, ../../app/stylesheets/partials/video-card.scss */
+/* line 234, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 236, ../../app/stylesheets/partials/video-card.scss */
+/* line 239, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -1106,12 +1103,12 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 244, ../../app/stylesheets/partials/video-card.scss */
+/* line 247, ../../app/stylesheets/partials/video-card.scss */
 .user-video-text {
   border-bottom: 1px solid #252525;
   margin-top: -10px;
 }
-/* line 248, ../../app/stylesheets/partials/video-card.scss */
+/* line 251, ../../app/stylesheets/partials/video-card.scss */
 .user-video-text p {
   margin: 0 5px 10px 45px;
 }

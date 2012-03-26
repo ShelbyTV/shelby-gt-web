@@ -50,6 +50,29 @@
   <% }); %>
    
     <section class="video-activity">
+      <ul class="video-activity-list">
+        <li>
+          <blockquote class="user video-author">
+            <div class="user-vcard">
+              <span class="user-avatar">
+                <img src="<%= 'images/avatar.jpg' %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
+              </span>
+              
+              <span class="user-handle">
+                <a href="/userhandle"><%= 'sample name' %></a>
+              </span>
+              <span class="user-post-date">
+                <a href="#">19 hours ago</a>
+              </span>
+            </div>
+            <div class="user-video-text">
+                <p>
+                  <%= 'this is sample text' %>
+                </p>
+            </div>
+          </blockquote>
+        </li>
+      </ul>
     </section><!-- eo section.video-shares -->
   
     <div class="video-footer">

@@ -177,9 +177,10 @@
 }
 
 .video-activity{
-	display:none;
+	//display:none;
 
 }
+
 
 .video-activity-toggle{
 
@@ -190,7 +191,9 @@
 	padding-left:0;
 	
 	li{
+		border-bottom:0;
 		list-style-type:none;
+		padding:0;
 
 	}
 }
