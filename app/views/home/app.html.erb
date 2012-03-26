@@ -16,41 +16,43 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   
   <div id="wrapper" role="main">
+    <div id="lining">
+      <div id="player" class="video-player">
 
-    <div class="main">
+        <div id="youtube-player-holder"></div>
+        <div id="vimeo-player-holder"></div>
 
-      <header id="header" role="banner">
-        <!-- contents in guide-header.jst -->
-      </header>
-      <div class="menu">
-        <!-- contents in menu.jst -->
-      </div>
-      <!--<div id="roll-header">
-      </div>-->
-      <div id="guide" class="content-body">
-        <!-- guide contents dynamically rendered-->
-      </div>
+      </div> <!-- eo .video-player -->
+    </div><!-- eo #lining -->
 
-    </div><!-- eo .main -->
+      <div class="main clearfix">
 
-    <div id="player" class="video-player">
+        <header id="header" role="banner">
+          <!-- contents in guide-header.jst -->
+        </header>
+        <div class="menu">
+          <!-- contents in menu.jst -->
+        </div>
+        <!--<div id="roll-header">
+        </div>-->
+        <div id="guide" class="content-body">
+          <!-- guide contents dynamically rendered-->
+        </div>
 
-      <div id="youtube-player-holder"></div>
-      <div id="vimeo-player-holder"></div>
+      </div><!-- eo .main -->
 
-    </div> <!-- eo .video-player -->
+      <div style="height:0;clear:both;"></div>
 
-		<div id="temp-auth-related-links">
-			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
-				Sorry, you done appear to be signed in...
-				<%= link_to 'login w/ twitter', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
-			</div>
-			
-			<div style="position:fixed; bottom: 10px; font-size: 15px;">
-				<%= link_to 'signout', signout_path, :id => 'signout' %>
-			</div>			
-		</div>
-
+  		<div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
+  			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
+  				Sorry, you done appear to be signed in...
+  				<%= link_to 'login w/ twitter', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
+  			</div>
+  			
+  			<div style="position:fixed; bottom: 10px; font-size: 15px;">
+  				<%= link_to 'signout', signout_path, :id => 'signout' %>
+  			</div>			
+  		</div>
   </div> <!-- eo ~main -->
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.

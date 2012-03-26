@@ -6,15 +6,3 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../../app/stylesheets/partials/video-player.scss */
-.video-player {
-  background: #333;
-  color: white;
-  height: 520px;
-  width: 25%;
-}
-/* line 11, ../../../app/stylesheets/partials/video-player.scss */
-.video-player p {
-  background: black;
-  margin: 0;
-}

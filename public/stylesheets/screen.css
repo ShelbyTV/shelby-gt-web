@@ -433,26 +433,46 @@ a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 28, ../../app/stylesheets/partials/main.scss */
+/* line 30, ../../app/stylesheets/partials/main.scss */
+#lining {
+  float: left;
+  margin-right: -330px;
+  width: 100%;
+}
+
+/* line 37, ../../app/stylesheets/partials/main.scss */
+.video-player {
+  background: #333;
+  color: white;
+  height: 520px;
+  margin-right: 330px;
+}
+/* line 43, ../../app/stylesheets/partials/main.scss */
+.video-player p {
+  background: black;
+  margin: 0;
+}
+
+/* line 50, ../../app/stylesheets/partials/main.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 33, ../../app/stylesheets/partials/main.scss */
+/* line 55, ../../app/stylesheets/partials/main.scss */
 .main {
-  background: pink;
+  background: #494949;
   font-size: 1.3em;
 }
 
-/* line 41, ../../app/stylesheets/partials/main.scss */
+/* line 63, ../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 48, ../../app/stylesheets/partials/main.scss */
+/* line 70, ../../app/stylesheets/partials/main.scss */
 .menu {
   position: relative;
   overflow: hidden;
@@ -1128,19 +1148,6 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/video-player.scss */
-.video-player {
-  background: #333;
-  color: white;
-  height: 520px;
-  width: 25%;
-}
-/* line 11, ../../app/stylesheets/partials/video-player.scss */
-.video-player p {
-  background: black;
-  margin: 0;
-}
-
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
