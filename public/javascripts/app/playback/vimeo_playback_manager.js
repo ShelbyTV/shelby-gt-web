@@ -207,7 +207,6 @@ VimeoPlaybackManager.prototype._bootstrapPlayer = function(){
 	};
 	var attributes = {};
 	
-	console.log(this._divId);
 	swfobject.embedSWF("http://vimeo.com/moogaloop.swf", this._divId, "100%", "100%", "9.0.0","expressInstall.swf", flashvars, this._params);
 	
 	this._curVideoId = this._video.get('provider_id');

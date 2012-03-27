@@ -1,9 +1,12 @@
 libs.shelbyGT.FrameView = ListItemView.extend({
 
+  _conversationDisplayed : false,
+
   events : {
-    "click .js-frame-activate"  : "_activate",
-    "click .roll"               : "_goToRoll",
-    "click .saves"        : "_saveToWatchLater"
+    "click .js-frame-activate"        : "_activate",
+    "click .roll"                     : "_goToRoll",
+    "click .saves"                    : "_saveToWatchLater",
+    "click .js-video-activity-toggle" : "_toggleConversationDisplay"
   },
 
   tagName : 'li',
@@ -31,6 +34,12 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     frameToReroll.set('original_frame_id', this.model.id);
     frameToReroll.save();
+  },
+
+  _toggleConversationDisplay : function(){
+    this._conversationDisplayed = !this._conversationDisplayed;
+    this.$('.js-video-activity').slideToggle(200);
+    this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'See');
   }
 
 });

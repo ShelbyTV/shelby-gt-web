@@ -11,10 +11,18 @@
     },
 
     _onNewActiveFrame : function(guideModel, frame){
-      newActiveFrameView = this.children.find(function(view) {
+      var prevModelAttrs = guideModel.changedAttributes().activeFrameModel.attributes;
+      var oldActiveFrameView = this.children.find(function(view){
+        return view.model.attributes == prevModelAttrs;
+      });
+      var newActiveFrameView = this.children.find(function(view) {
         return view.model == frame;
       });
+      if (oldActiveFrameView){
+        oldActiveFrameView.$el.removeClass('active-frame');
+      }
       if (newActiveFrameView) {
+        newActiveFrameView.$el.addClass('active-frame');
         this.parent.$el.scrollTo(newActiveFrameView.$el, {duration:200, axis:'y', offset:-9});
       }
     },
