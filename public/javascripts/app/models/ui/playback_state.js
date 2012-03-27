@@ -22,7 +22,7 @@ libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 	},
 
 	initialize: function(){
-    this.playbackObserver();  
+    this.playbackObserver();
   },
 
   playbackObserver : function(){
@@ -63,7 +63,7 @@ libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 
   postParentMessage : function(message){
     message = {id:this.getIframeOptions('container'), state:message};
-    parent.postMessage(JSON.stringify(message), "*"); 
+    parent.postMessage(JSON.stringify(message), "*");
   },
 
 	url: function() { return null; },
@@ -82,7 +82,7 @@ libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 	setPlaybackManager: function(pbm){ this.set({'playbackManager': pbm}); },
 	getPlaybackManager: function(){ return this.get('playbackManager'); },
 
-	setIframeOptions: function(options){ 
+	setIframeOptions: function(options){
     this.set({'iframeOptions': options});
     Backbone.Events.trigger("iframe:renderOptions", options);
   },
@@ -100,8 +100,8 @@ libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 	//N.B. "playing" is defined in a very strict sense.  When a player is stopped to be swapped out, there is technically no video playing
 	// and this is set accordingly.  Whenever a player reports paused/stopped, for whatever reason, this is set to false.
 	// So... This should not be used if what you really care about is the user intentionally *pausing* playback.  See: userPaused
-	setPlaying: function(playing){ 
-		this.set({'playing': playing}); 
+	setPlaying: function(playing){
+		this.set({'playing': playing});
 		if(playing){ this.setUserPaused(false); }
 	},
 	isPlaying: function(){ return this.get('playing'); },
@@ -124,9 +124,6 @@ libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 	
 	setPlayable: function(p){ this.set({'playable': p}); },
 	isPlayable: function(){ return this.get('playable'); },
-	
-	setBuffering: function(b){ this.set({'buffering': b}); },
-	isBuffering: function(){ return this.get('buffering'); },
 		
 	//functionality support
 	setSupportsMute: function(s){ this.set({'supportsMute': s}); },
