@@ -15,7 +15,8 @@
       <li class="roll">
         <button class="video-controls-button ir" type="button">Roll</button>
       </li>
-      <li class="saves">
+      <% console.log ('roll',frame.get('roll'),'watch later roll',shelby.models.user.getWatchLaterRoll()) %>
+      <li class="<%= (frame.get('roll') == shelby.models.user.getWatchLaterRoll()) ? 'saves js-remove-save' : 'saves' %>">
         <button class="video-controls-button ir" type="button">Watch Later</button>
       </li>
     </ul>

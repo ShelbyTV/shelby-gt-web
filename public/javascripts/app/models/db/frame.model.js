@@ -19,6 +19,10 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
 
+  url : function() {
+    return shelby.config.apiRoot + '/frame/' + this.id;
+  },
+
   // when re-rolling/creating a frame, the roll to re-roll to will be determined
   // by the 'roll_id' attribute of the frame model
   sync : function(method, model, options) {

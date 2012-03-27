@@ -6,6 +6,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .js-frame-activate"        : "_activate",
     "click .roll"                     : "_goToRoll",
     "click .saves"                    : "_saveToWatchLater",
+    "click .saves.js-remove-save"     : "_removeFromWatchLater",
     "click .js-video-activity-toggle" : "_toggleConversationDisplay"
   },
 
@@ -34,6 +35,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     frameToReroll.set('original_frame_id', this.model.id);
     frameToReroll.save();
+  },
+
+  _removeFromWatchLater : function(){
+    // clone the frame and re-roll it to the watch later roll
+    this.model.destroy({wait:true});
   },
 
   _toggleConversationDisplay : function(){
