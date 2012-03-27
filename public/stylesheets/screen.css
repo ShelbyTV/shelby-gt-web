@@ -1158,6 +1158,7 @@ a:hover, a:visited, a:active {
 /* line 271, ../../app/stylesheets/partials/video-card.scss */
 .video-saved {
   background: rgba(0, 0, 0, 0.8);
+  display: none;
   height: 100%;
   left: 0;
   padding-top: 10px;
@@ -1166,11 +1167,11 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 282, ../../app/stylesheets/partials/video-card.scss */
+/* line 283, ../../app/stylesheets/partials/video-card.scss */
 .video-saved img {
   width: 40px;
 }
-/* line 286, ../../app/stylesheets/partials/video-card.scss */
+/* line 287, ../../app/stylesheets/partials/video-card.scss */
 .video-saved p {
   font-size: 24px;
   font-weight: 500;
