@@ -1,9 +1,8 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
-  /*events : {
-    "click .about" : "showAboutSubnav",
-    "click .profile" : "showProfileSubnav"
-  },*/
+  events : {
+    "click .js-share-roll" : "_showShareRoll",
+  },
 
   el : '#roll-header',
 
@@ -18,6 +17,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   render : function(){
     this.$el.html(this.template());
   },
+
+  _showShareRoll : function(){
+    shelby.views.shareRoll = new libs.shelbyGT.ShareRollView();
+  }
 
   /*_cleanup : function(){
     this.model.unbind('change', this.render, this);
