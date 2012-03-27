@@ -296,3 +296,26 @@
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
+
+/* line 271, ../../../app/stylesheets/partials/video-card.scss */
+.video-saved {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  left: 0;
+  padding-top: 10px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+/* line 282, ../../../app/stylesheets/partials/video-card.scss */
+.video-saved img {
+  width: 40px;
+}
+/* line 286, ../../../app/stylesheets/partials/video-card.scss */
+.video-saved p {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.231;
+  margin: 0;
+}

@@ -267,3 +267,27 @@
 		margin:0 $defaultMargin/2 0 $defaultMargin*3+6;
 	}
 }
+
+.video-saved{
+
+	background:hsla(0,0,0,0.8);
+	display:none;
+	height:100%;
+	left:0;
+	padding-top:10px;
+	position:absolute;
+	text-align:center;
+	top:0;
+	width:100%;
+
+	img{
+		width:40px;
+
+	}
+	p{
+		font-size:24px;	
+		font-weight:500;
+		line-height:1.231;
+		margin:0;
+	}
+}
