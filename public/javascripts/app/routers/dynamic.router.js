@@ -36,13 +36,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(){
-    this._bindContentPaneModelChanges({include_rolls:'true', include_children:true});
+    this._bindContentPaneModelChanges({include_rolls:true});
     this._setupTopLevelViews();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollListView, 'contentPaneModel': shelby.models.user});
   },
 
   displaySaves : function(){
-    console.log('displaying saves');
+    var watchLaterRoll = shelby.models.user.getWatchLaterRoll();
+    if (watchLaterRoll) {
+      this._bindContentPaneModelChanges({include_children:true});
+      this._setupRollView(watchLaterRoll.id);
+    } else {
+      alert("Sorry, you don't have a saves roll.");
+      this.navigate('', {trigger:true, replace:true});
+    }
   },
 
   doNothing : function(){
@@ -103,10 +110,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupTopLevelViews : function(){
+    shelby.views.rollHeader && shelby.views.rollHeader.hide();
     // header & menu render on instantiation //
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = new libs.shelbyGT.MenuView();
-    //shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
+    shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
@@ -121,7 +128,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // correct the roll title in the url if it changes (especially on first load of the roll)
       roll.bind('change:title', function(){this.navigateToRoll(roll,{trigger:false,replace:true});}, this);
     }
-    shelby.views.rollHeader = new libs.shelbyGT.RollHeaderView();
+    shelby.views.rollHeader =  shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView();
+    shelby.views.rollHeader.show();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': roll});
   }
 

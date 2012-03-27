@@ -16,10 +16,11 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-  },
+  }
 
   /*_cleanup : function(){
     this.model.unbind('change', this.render, this);
+
     this.model.unbind('destroy', this.remove, this);
     shelby.models.guide.unbind('change:activeFrameId', this._onNewActiveFrame, this);
   }*/

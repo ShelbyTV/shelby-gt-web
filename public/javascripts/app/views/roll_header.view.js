@@ -18,6 +18,14 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this.$el.html(this.template());
   },
 
+  hide : function(){
+    this.$el.hide();
+  },
+
+  show : function(){
+    this.$el.show();
+  },
+
   _showShareRoll : function(){
     shelby.views.shareRoll = new libs.shelbyGT.ShareRollView();
   }

@@ -32,81 +32,83 @@
  
   <footer>
 
-  <% firstMessage = messages.first() %>
-  <!-- Should be done in a sub-view? -->
+  <% var firstMessage = messages.first() %>
+  <% if (firstMessage) { %>
+    <!-- Should be done in a sub-view? -->
 
-    <blockquote class="user video-author">
-      <div class="user-vcard">
-        <span class="user-avatar">
-          <img src="<%= firstMessage.get('user_image_url') %>" alt="firstMessage.get('nickname')" title="firstMessage.get('nickname')" height="25" width="25">
-        </span>
-        
-        <span class="user-handle">
-          <a href="/userhandle"><%= firstMessage.get('realname') %></a>
-        </span>
-        <span class="user-post-date">
-          <a href="#"><%= firstMessage.get('created_at') %></a>
-        </span>
-        <div class="user-video-text">
-            <p>
-              <%= firstMessage.getText() %>
-            </p>
+      <blockquote class="user video-author">
+        <div class="user-vcard">
+          <span class="user-avatar">
+            <img src="<%= firstMessage.get('user_image_url') %>" alt="firstMessage.get('nickname')" title="firstMessage.get('nickname')" height="25" width="25">
+          </span>
+
+          <span class="user-handle">
+            <a href="/userhandle"><%= firstMessage.get('realname') %></a>
+          </span>
+          <span class="user-post-date">
+            <a href="#"><%= firstMessage.get('created_at') %></a>
+          </span>
+          <div class="user-video-text">
+              <p>
+                <%= firstMessage.getText() %>
+              </p>
+          </div>
         </div>
-      </div>
-    </blockquote>
+      </blockquote>
 
-   
-    <section class="video-activity js-video-activity" style="display:none">
 
-      <!-- sample build -->
-      <ul class="video-activity-list">
-        <li>
-          <blockquote class="user video-author">
-            <div class="user-vcard">
-              <span class="user-avatar">
-                <img src="<%= '/images/avatar.jpg' %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
-              </span>
-              
-              <span class="user-handle">
-                <a href="/userhandle"><%= 'sample name' %></a>
-              </span>
-              <span class="user-post-date">
-                <a href="#">19 hours ago</a>
-              </span>
-            
-              <div class="user-video-text">
-                  <p>
-                    <%= 'this is sample text' %>
-                  </p>
+      <section class="video-activity js-video-activity" style="display:none">
+
+        <!-- sample build -->
+        <ul class="video-activity-list">
+          <li>
+            <blockquote class="user video-author">
+              <div class="user-vcard">
+                <span class="user-avatar">
+                  <img src="<%= '/images/avatar.jpg' %>" alt="" title="" height="25" width="25">
+                </span>
+
+                <span class="user-handle">
+                  <a href="/userhandle"><%= 'sample name' %></a>
+                </span>
+                <span class="user-post-date">
+                  <a href="#">19 hours ago</a>
+                </span>
+
+                <div class="user-video-text">
+                    <p>
+                      <%= 'this is sample text' %>
+                    </p>
+                </div>
               </div>
-            </div>
-          </blockquote>
-        </li>
-        <li>
-          <blockquote class="user video-author">
-            <div class="user-vcard">
-              <span class="user-avatar">
-                <img src="<%= '/images/avatar.jpg' %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
-              </span>
-              
-              <span class="user-handle">
-                <a href="/userhandle"><%= 'sample name' %></a>
-              </span>
-              <span class="user-post-date">
-                <a href="#">19 hours ago</a>
-              </span>
+            </blockquote>
+          </li>
+          <li>
+            <blockquote class="user video-author">
+              <div class="user-vcard">
+                <span class="user-avatar">
+                  <img src="<%= '/images/avatar.jpg' %>" alt="" title="" height="25" width="25">
+                </span>
 
-              <div class="user-video-text">
-                  <p>
-                    <%= 'this is sample text' %>
-                  </p>
+                <span class="user-handle">
+                  <a href="/userhandle"><%= 'sample name' %></a>
+                </span>
+                <span class="user-post-date">
+                  <a href="#">19 hours ago</a>
+                </span>
+
+                <div class="user-video-text">
+                    <p>
+                      <%= 'this is sample text' %>
+                    </p>
+                </div>
               </div>
-            </div>
-          </blockquote>
-        </li>
-      </ul>
-      <!-- sample build -->
-    </section><!-- eo section.video-shares -->
+            </blockquote>
+          </li>
+        </ul>
+        <!-- sample build -->
+      </section><!-- eo section.video-shares -->
+    <% } %>
   
     <div class="video-footer">
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> See </span> 12 shares</a>
