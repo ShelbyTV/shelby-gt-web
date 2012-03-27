@@ -3,7 +3,8 @@ libs.shelbyGT.MenuView = Support.CompositeView.extend({
   events : {
     "click .stream" : "goToStream",
     "click .rolls" : "goToRolls",
-    "click .saves" : "goToSaves"
+    "click .saves" : "goToSaves",
+     
   },
 
   el : '.menu',
