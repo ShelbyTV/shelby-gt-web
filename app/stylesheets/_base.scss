@@ -42,7 +42,7 @@ $save : #2291c2;
 
 //border styles
 $articleStroke : 1px solid black;
-$menuStroke : 2px solid #4e4e50;
+$menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
 //soft gradient vals
@@ -50,8 +50,9 @@ $gradientDark : #303030;
 $gradientLight : #333;
 
 $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
-$softShelbyBlue: linear-gradient(top, $shelbyBlue, adjust-lightness($shelbyBlue, -10%));
+$softShelbyBlue: linear-gradient(top, #00a5cc, #007fb6);
 $softShelbyGreen: linear-gradient(top, $shelbyGreen, adjust-lightness($shelbyGreen,-10%));
+$softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
 
 @mixin softgradient {
 	@include background-image($softLinearGradient);
