@@ -26,7 +26,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       // perform some magic to hit a non-standard CRUD route for creating
       // a new frame (which we also call re-rolling)
       var defaults = {
-        url : shelby.config.apiRoot + '/roll/' + model.get('roll_id') + '/frames'
+        url : shelby.config.apiRoot + '/frame/' + model.get('original_frame_id') + '/add_to_watch_later'
       };
       _(options).defaults(defaults);
     }

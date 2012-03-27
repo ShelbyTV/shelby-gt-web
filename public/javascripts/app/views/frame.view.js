@@ -3,7 +3,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   events : {
     "click .js-frame-activate"  : "_activate",
     "click .roll"               : "_goToRoll",
-    "click .watch-later"        : "_saveToWatchLater"
+    "click .saves"        : "_saveToWatchLater"
   },
 
   tagName : 'li',
@@ -29,8 +29,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _saveToWatchLater : function(){
     // clone the frame and re-roll it to the watch later roll
     var frameToReroll = new libs.shelbyGT.FrameModel();
-    frameToReroll.set('frame_id', this.model.id);
-    frameToReroll.set('roll_id', shelby.models.user.getWatchLaterRoll().id);
+    frameToReroll.set('original_frame_id', this.model.id);
     frameToReroll.save();
   }
 
