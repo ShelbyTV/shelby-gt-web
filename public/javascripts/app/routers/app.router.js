@@ -30,7 +30,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userSignedIn()){
 			shelby.models.user.fetch({
 	      global: false,
-	      success:function() {
+	      data: {
+          include_rolls: true
+        },
+        success:function() {
 	        self._reroute();
 	      }
 			});

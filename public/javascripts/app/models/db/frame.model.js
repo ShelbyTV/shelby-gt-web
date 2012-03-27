@@ -17,5 +17,22 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       key : 'roll',
       relatedModel : 'libs.shelbyGT.RollModel'
     }
-  ]
+  ],
+
+  // when re-rolling/creating a frame, the roll to re-roll to will be determined
+  // by the 'roll_id' attribute of the frame model
+  sync : function(method, model, options) {
+    if (method == 'create') {
+      // perform some magic to hit a non-standard CRUD route for creating
+      // a new frame (which we also call re-rolling)
+      var defaults = {
+        url : shelby.config.apiRoot + '/roll/' + model.get('roll_id') + '/frames',
+        data : {frame_id : this.id}
+      };
+      _(options).defaults(defaults);
+      console.log('Re rolling!', options);
+    }
+
+    Backbone.sync.call(this, method, model, options);
+  }
 });
