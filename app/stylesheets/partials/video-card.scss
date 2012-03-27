@@ -132,37 +132,46 @@
 	right:0px;
 	top:0px;
 
-	button{
-		//@include softgradient;
-		@include roundies;
-		border:$menuStroke;
-		display:block;
-		height:50px;
-		margin:$defaultMargin/2;
-		outline:0;
-		text-decoration:underline;
-		width:50px;
-	}
-
-	li{
-		background:none;
-		border:none;
-		padding:0;
-	}
-
 	.roll{
+		@include roundies;
 		@include background(
-			url('../images/assets/roll_action.svg') no-repeat center center,
-			$softLinearGradient
+			url('../images/assets/noise.png'),
+			$softShelbyBlue
 		);
+		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/roll_action.svg') no-repeat center center
+			);
+			@include roundies;
+			display:block;
+			height:50px;
+			margin:0;
+			outline:0;
+			text-decoration:underline;
+			width:50px;
+
+		}
 
 	}
 	.saves{
+		@extend .roll;
 		@include background(
-			url('../images/assets/saved_action.svg') no-repeat center center,
-			$softLinearGradient
+			url('../images/assets/noise.png'),
+			$softShelbyGray
 		);
+		@include box-shadow(inset 0px 1px 1px 0px #8d8f90);
 
+		button{
+			@include background(
+				url('../images/assets/saved_action.svg') no-repeat center center
+			);
+		}	
 	}
 }
 
