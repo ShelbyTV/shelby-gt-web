@@ -53,11 +53,13 @@ $.ajaxSetup({
   xhrFields: {withCredentials: true},
   data: {'cs_key': 'GoatsFTW'}
 });
-// $.ajaxPrefilter(function(options, originalOptions, xhr) {
-//   var token = $('meta[name="csrf-token"]').attr('content');
-//   if (token) xhr.setRequestHeader('X-CSRF-Token', token);
-//   console.log(options.data);
-// });
+$.ajaxPrefilter(function(options, originalOptions, xhr) {
+  // attach the API's csrf token to the request for logged in users
+  if (options.type != 'GET' && shelby.models.user) {
+    var token = shelby.models.user.get('csrf_token');
+    if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+  }
+});
 
 // global ajax error handling to handle users who are not authenticated and other unexpected errors
 // disable for more specific error handling by using the jQuery.ajax global:false option

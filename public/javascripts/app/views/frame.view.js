@@ -27,10 +27,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _saveToWatchLater : function(){
-    // var watchLaterRoll = shelby.models.user.getWatchLaterRoll()
-    // watchLaterRoll.save(null, {data:{frame_id:this.model.id}});
     // clone the frame and re-roll it to the watch later roll
-    var frameToReroll = this.model.clone();
+    var frameToReroll = new libs.shelbyGT.FrameModel();
+    frameToReroll.set('frame_id', this.model.id);
     frameToReroll.set('roll_id', shelby.models.user.getWatchLaterRoll().id);
     frameToReroll.save();
   }

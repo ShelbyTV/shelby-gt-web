@@ -26,11 +26,9 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       // perform some magic to hit a non-standard CRUD route for creating
       // a new frame (which we also call re-rolling)
       var defaults = {
-        url : shelby.config.apiRoot + '/roll/' + model.get('roll_id') + '/frames',
-        data : {frame_id : this.id}
+        url : shelby.config.apiRoot + '/roll/' + model.get('roll_id') + '/frames'
       };
       _(options).defaults(defaults);
-      console.log('Re rolling!', options);
     }
 
     Backbone.sync.call(this, method, model, options);
