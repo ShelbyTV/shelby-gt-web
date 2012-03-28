@@ -36,5 +36,12 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
 
     Backbone.sync.call(this, method, model, options);
+  },
+
+  saveToWatchLater : function() {
+    var frameToReroll = new libs.shelbyGT.FrameModel();
+    frameToReroll.set('original_frame_id', this.id);
+    frameToReroll.save();
   }
+
 });

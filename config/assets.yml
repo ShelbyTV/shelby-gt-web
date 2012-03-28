@@ -27,6 +27,7 @@ javascripts:
     - public/javascripts/app/views/frame.view.js
     - public/javascripts/app/views/list.view.js
     - public/javascripts/app/views/auto_scroll_frame_list.view.js
+    - public/javascripts/app/views/reroll_entry.view.js
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/browser.js
     # shelby backbone app - all other assets

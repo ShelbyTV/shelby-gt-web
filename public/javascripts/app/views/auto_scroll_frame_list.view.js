@@ -10,6 +10,11 @@
       ListView.prototype.initialize.call(this);
     },
 
+    _cleanup : function(){
+      shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
+      ListView.prototype._cleanup.call(this);
+    },
+
     _onNewActiveFrame : function(guideModel, frame){
       var prevModelAttrs = guideModel.changedAttributes().activeFrameModel.attributes;
       var oldActiveFrameView = this.children.find(function(view){
@@ -25,10 +30,6 @@
         newActiveFrameView.$el.addClass('active-frame');
         this.parent.$el.scrollTo(newActiveFrameView.$el, {duration:200, axis:'y', offset:-9});
       }
-    },
-
-    _cleanup : function(){
-      shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
     }
 
   });

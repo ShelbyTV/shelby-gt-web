@@ -33,10 +33,4 @@ libs.shelbyGT.MenuView = Support.CompositeView.extend({
     shelby.router.navigate('/saves', {trigger:true});
   }
 
-  /*_cleanup : function(){
-    this.model.unbind('change', this.render, this);
-    this.model.unbind('destroy', this.remove, this);
-    shelby.models.guide.unbind('change:activeFrameId', this._onNewActiveFrame, this);
-  }*/
-
 });
