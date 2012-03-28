@@ -19,56 +19,63 @@ body {
   background: url("../images/assets/noise.png") #005500;
 }
 
-/* line 17, ../../../app/stylesheets/partials/main.scss */
+/* line 19, ../../../app/stylesheets/partials/main.scss */
 a {
   color: #a4a4a4;
 }
-/* line 22, ../../../app/stylesheets/partials/main.scss */
+/* line 24, ../../../app/stylesheets/partials/main.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 30, ../../../app/stylesheets/partials/main.scss */
+/* line 32, ../../../app/stylesheets/partials/main.scss */
 #lining {
   float: left;
   margin-right: -330px;
   width: 100%;
 }
 
-/* line 37, ../../../app/stylesheets/partials/main.scss */
+/* line 39, ../../../app/stylesheets/partials/main.scss */
 .video-player {
   background: #333;
   color: white;
   height: 520px;
   margin-right: 330px;
 }
-/* line 43, ../../../app/stylesheets/partials/main.scss */
+/* line 45, ../../../app/stylesheets/partials/main.scss */
 .video-player p {
   background: black;
   margin: 0;
 }
 
-/* line 50, ../../../app/stylesheets/partials/main.scss */
+/* line 52, ../../../app/stylesheets/partials/main.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 55, ../../../app/stylesheets/partials/main.scss */
+/* line 57, ../../../app/stylesheets/partials/main.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
+  overflow: hidden;
+  position: relative;
 }
 
-/* line 63, ../../../app/stylesheets/partials/main.scss */
+/* line 66, ../../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 70, ../../../app/stylesheets/partials/main.scss */
+/* line 73, ../../../app/stylesheets/partials/main.scss */
 .menu {
+  -moz-box-shadow: 0px 2px 5px 0px #333333;
+  -webkit-box-shadow: 0px 2px 5px 0px #333333;
+  -o-box-shadow: 0px 2px 5px 0px #333333;
+  box-shadow: 0px 2px 5px 0px #333333;
+  border-bottom: 1px solid #222;
   position: relative;
   overflow: hidden;
 }

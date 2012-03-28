@@ -1,6 +1,7 @@
 // blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
 @import "base",
 		"compass",
+		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
@@ -132,7 +133,7 @@
 	right:0px;
 	top:0px;
 
-	.roll{
+	.roll-frame{
 		@include roundies;
 		@include background(
 			url('../images/assets/noise.png'),
@@ -146,21 +147,21 @@
 	
 		button{
 			@include background(
-				url('../images/assets/roll_action.svg') no-repeat center center
+				url('../images/assets/roll_action.svg') no-repeat 0px -1px
 			);
 			@include roundies;
 			display:block;
-			height:50px;
+			height:44px;
 			margin:0;
 			outline:0;
 			text-decoration:underline;
-			width:50px;
+			width:44px;
 
 		}
 
 	}
-	.saves{
-		@extend .roll;
+	.save-frame{
+		@extend .roll-frame;
 		@include background(
 			url('../images/assets/noise.png'),
 			$softShelbyGray
@@ -170,6 +171,20 @@
 		button{
 			@include background(
 				url('../images/assets/saved_action.svg') no-repeat center center
+			);
+		}	
+	}
+	.remove-frame{
+		@extend .save-frame;
+		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
+		@include background(
+			url('../images/assets/noise.png'),
+			$softShelbyRed
+		);
+
+		button{
+			@include background(
+				url('../images/assets/remove.svg') no-repeat center center
 			);
 		}	
 	}
@@ -269,9 +284,12 @@
 }
 
 .video-saved{
+	@include transition-property(all);
+	@include transition-duration(1s);
+	@include transition-timing-function(ease-in);
+	@include transition-delay(2s);
 
 	background:hsla(0,0,0,0.8);
-	display:none;
 	height:100%;
 	left:0;
 	padding-top:10px;
@@ -290,4 +308,10 @@
 		line-height:1.231;
 		margin:0;
 	}
+}
+
+.video-saved-trans{
+
+	@include opacity(0.0);
+
 }

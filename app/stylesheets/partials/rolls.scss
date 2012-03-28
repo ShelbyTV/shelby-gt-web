@@ -2,45 +2,175 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-.rolls{
-	background:$myBlue;
-	margin: 0;
+#roll-header,.roll-header{
+	@include background(
+		url('../images/assets/noise.png') $rollsBG
+	);
+
+//	border-top:1px solid #222;
+}
+
+.rolls-menu{
+//	background:$rollsBG;
+	margin:0;
 	padding:0;
-	
-	a{
-		border:1px solid darkGreen;
+
+	.rolls-add{
+		@include border-radius($radius);
+		@include buttonfont;
+		@include background(
+			$softShelbyBlue
+		);
+		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+
+		border:1px solid #222;
+		color:#efefef;
 		display:block;
+		line-height:2.5;
+		margin:0;
+		padding:0;
+		width:100%;
+
+	}
+	.rolls-share{
+		@extend .rolls-add;
+		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
+		@include background(
+			$softShelbyGreen
+		);
 	}
 
-	h1{
-		line-height:2.231;
-		position:relative;
-	}
-
-	img{
+	li {
+		display:block;
 		float:left;
-		margin-right:$defaultMargin;
-		width:50px;
-	}	
-	
-	li{
 		list-style-type:none;
+		margin:0;
+		padding:$defaultMargin;
+		width:50%;
+	}
+}
 
-	}
-	.public{
-		h1:after{
-			content: "%";
-			padding-right:$defaultMargin/1.5;
-			float:right;
-		}
+.rolls-share-dialog{
 
-	}
-	.private{
-		@extend .public;
-		
-		h1:after{
-			content: "&";
-		}
-	}
+	background:#585858;
+	padding:0 $defaultMargin;
 
 }
+
+.rolls-share-comment{
+	textarea{
+		@include border-radius($radius);
+		
+		resize:none;
+		width:100%;
+	}
+}
+
+.rolls-networks{
+	float:left;
+	width:50%;
+}
+
+.rolls-networks-list{
+
+	margin:0;
+	padding:0;
+
+	li{
+		display:inline-block;
+		list-style-type:none;
+		margin:$defaultMargin $defaultMargin $defaultMargin 0;
+
+	}
+}
+
+.networks-twitter{
+	@extend .notype;
+	@include background(
+		url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center,
+		$softTwitterBlue
+	);
+	@include border-radius($radius/2);
+	@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
+
+//	background-size:80%;
+	border:1px solid black;
+	height:44px;
+	width:44px;
+
+}
+
+.networks-facebook{
+	@extend .networks-twitter;
+	@include background(
+		url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
+		$softFacebookBlue
+	);
+	@include box-shadow(inset 0px 1px 1px 0px #0179c1);
+
+}
+
+.rolls-submit{
+	float:right;
+	width:50%;
+
+	button{
+		@include border-radius($radius);
+		@include buttonfont;
+		@include background(
+			$softShelbyBlue
+		);
+		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+
+		border:1px solid #222;
+		color:#efefef;
+		display:block;
+		float:inherit;
+		line-height:2.5;
+		margin:$defaultMargin+4 0;
+		padding:0 10%;
+	//	width:100%;
+	}
+}
+//.rolls{
+//	background:$myBlue;
+//	margin: 0;
+//	padding:0;
+	
+//	a{
+//		border:1px solid darkGreen;
+//		display:block;
+//	}
+
+//	h1{
+//		line-height:2.231;
+//		position:relative;
+//	}
+
+//	img{
+//		float:left;
+//		margin-right:$defaultMargin;
+//		width:50px;
+//	}	
+	
+//	li{
+//		list-style-type:none;
+
+//	}
+//	.public{
+//		h1:after{
+//			content: "%";
+//			padding-right:$defaultMargin/1.5;
+//			float:right;
+//		}
+
+//	}
+//	.private{
+//		@extend .public;
+		
+//		h1:after{
+//			content: "&";
+//		}
+//	}
+
+//}

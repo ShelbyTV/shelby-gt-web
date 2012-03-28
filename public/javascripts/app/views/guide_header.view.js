@@ -12,8 +12,6 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    /*this.model.bind('change', this.render, this);
-    this.model.bind('destroy', this.remove, this);*/
     this.render();
     this._setupSubnavBindings('#about-subnav', '.about');
     this._setupSubnavBindings('#profile-subnav', '.profile');
@@ -47,11 +45,5 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   showProfileSubnav : function(){
     this._showSubnav('#profile-subnav');
   }
-
-  /*_cleanup : function(){
-    this.model.unbind('change', this.render, this);
-    this.model.unbind('destroy', this.remove, this);
-    shelby.models.guide.unbind('change:activeFrameId', this._onNewActiveFrame, this);
-  }*/
 
 });

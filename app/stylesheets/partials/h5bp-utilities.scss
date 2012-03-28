@@ -7,4 +7,4 @@
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 //non-h5bp:
-.notype{text-indent: 100%;white-space: nowrap;overflow: hidden;}
+.notype{color: transparent;font: 0/0 a; overflow: hidden;text-shadow: none; white-space: nowrap;}
