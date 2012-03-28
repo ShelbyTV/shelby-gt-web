@@ -1140,12 +1140,16 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 5, ../../app/stylesheets/partials/rolls.scss */
+#roll-header, .roll-header {
+  border-bottom: 1px solid #222;
+}
+
+/* line 9, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
-  background: #585858;
   margin: 0;
   padding: 0;
 }
-/* line 10, ../../app/stylesheets/partials/rolls.scss */
+/* line 15, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu .rolls-add, .rolls-menu .rolls-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1172,7 +1176,7 @@ a:hover, a:visited, a:active {
   padding: 0;
   width: 100%;
 }
-/* line 27, ../../app/stylesheets/partials/rolls.scss */
+/* line 32, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
@@ -1185,7 +1189,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #549738, #3f722a);
   background: linear-gradient(top, #549738, #3f722a);
 }
-/* line 35, ../../app/stylesheets/partials/rolls.scss */
+/* line 40, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -1195,13 +1199,13 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 45, ../../app/stylesheets/partials/rolls.scss */
+/* line 50, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-dialog {
   background: #585858;
-  padding: 10px;
+  padding: 0 10px;
 }
 
-/* line 53, ../../app/stylesheets/partials/rolls.scss */
+/* line 58, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1209,29 +1213,29 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  resize: none;
   width: 100%;
 }
 
-/* line 59, ../../app/stylesheets/partials/rolls.scss */
+/* line 66, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks {
   float: left;
   width: 50%;
 }
 
-/* line 64, ../../app/stylesheets/partials/rolls.scss */
+/* line 71, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 69, ../../app/stylesheets/partials/rolls.scss */
+/* line 76, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list li {
   display: inline-block;
   list-style-type: none;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 10px 10px 10px 0;
 }
 
-/* line 78, ../../app/stylesheets/partials/rolls.scss */
+/* line 84, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1254,7 +1258,7 @@ a:hover, a:visited, a:active {
   width: 44px;
 }
 
-/* line 94, ../../app/stylesheets/partials/rolls.scss */
+/* line 100, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1268,12 +1272,12 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 104, ../../app/stylesheets/partials/rolls.scss */
+/* line 110, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit {
   float: right;
   width: 50%;
 }
-/* line 108, ../../app/stylesheets/partials/rolls.scss */
+/* line 114, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1297,7 +1301,7 @@ a:hover, a:visited, a:active {
   display: block;
   float: inherit;
   line-height: 2.5;
-  margin: 15px 0;
+  margin: 14px 0;
   padding: 0 10%;
 }
 

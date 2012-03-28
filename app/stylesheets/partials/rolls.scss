@@ -2,8 +2,13 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+#roll-header,.roll-header{
+	border-bottom:1px solid #222;
+}
+
 .rolls-menu{
-	background:$rollsBG;
+
+//	background:$rollsBG;
 	margin:0;
 	padding:0;
 
@@ -45,13 +50,15 @@
 .rolls-share-dialog{
 
 	background:#585858;
-	padding:$defaultMargin;
+	padding:0 $defaultMargin;
 
 }
 
 .rolls-share-comment{
 	textarea{
 		@include border-radius($radius);
+		
+		resize:none;
 		width:100%;
 	}
 }
@@ -69,8 +76,7 @@
 	li{
 		display:inline-block;
 		list-style-type:none;
-		margin-right:$defaultMargin;
-		margin-top:$defaultMargin;
+		margin:$defaultMargin $defaultMargin $defaultMargin 0;
 
 	}
 }
@@ -118,7 +124,7 @@
 		display:block;
 		float:inherit;
 		line-height:2.5;
-		margin:$defaultMargin+5 0;
+		margin:$defaultMargin+4 0;
 		padding:0 10%;
 	//	width:100%;
 	}
