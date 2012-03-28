@@ -4,7 +4,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
     //"click .js-share-roll" : "_showShareRoll",
   },
 
-  el : '#share-roll',
+  el : '#js-share-roll',
 
   template : function(obj){
     return JST['share-roll'](obj);
