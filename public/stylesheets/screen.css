@@ -800,62 +800,6 @@ a:hover, a:visited, a:active {
   width: 20%;
 }
 
-/* line 282, ../../app/stylesheets/partials/video-guide.scss */
-.rolls-menu {
-  background: #585858;
-  margin: 0;
-  padding: 0;
-}
-/* line 287, ../../app/stylesheets/partials/video-guide.scss */
-.rolls-menu .rolls-add, .rolls-menu .rolls-share {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  line-height: 2.5;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-/* line 304, ../../app/stylesheets/partials/video-guide.scss */
-.rolls-menu .rolls-share {
-  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  box-shadow: inset -1px 0px 1px 0px #85cc66;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
-}
-/* line 312, ../../app/stylesheets/partials/video-guide.scss */
-.rolls-menu li {
-  display: block;
-  float: left;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  width: 50%;
-}
-
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -1196,40 +1140,165 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 5, ../../app/stylesheets/partials/rolls.scss */
-.rolls {
-  background: #6666ff;
+.rolls-menu {
+  background: #585858;
   margin: 0;
   padding: 0;
 }
 /* line 10, ../../app/stylesheets/partials/rolls.scss */
-.rolls a {
-  border: 1px solid darkGreen;
+.rolls-menu .rolls-add, .rolls-menu .rolls-share {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border: 1px solid #222;
+  color: #efefef;
   display: block;
+  line-height: 2.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-/* line 15, ../../app/stylesheets/partials/rolls.scss */
-.rolls h1 {
-  line-height: 2.231;
-  position: relative;
+/* line 27, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu .rolls-share {
+  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  box-shadow: inset -1px 0px 1px 0px #85cc66;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
 }
-/* line 20, ../../app/stylesheets/partials/rolls.scss */
-.rolls img {
+/* line 35, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu li {
+  display: block;
   float: left;
-  margin-right: 10px;
-  width: 50px;
-}
-/* line 26, ../../app/stylesheets/partials/rolls.scss */
-.rolls li {
   list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  width: 50%;
 }
-/* line 31, ../../app/stylesheets/partials/rolls.scss */
-.rolls .public h1:after, .rolls .private h1:after {
-  content: "%";
-  padding-right: 6.667px;
+
+/* line 45, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-dialog {
+  background: #585858;
+  padding: 10px;
+}
+
+/* line 53, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* line 59, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks {
+  float: left;
+  width: 50%;
+}
+
+/* line 64, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks-list {
+  margin: 0;
+  padding: 0;
+}
+/* line 69, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks-list li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+/* line 78, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter, .networks-facebook {
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
+  -moz-border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
+  -o-border-radius: 2.5px;
+  -ms-border-radius: 2.5px;
+  -khtml-border-radius: 2.5px;
+  border-radius: 2.5px;
+  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  border: 1px solid black;
+  height: 44px;
+  width: 44px;
+}
+
+/* line 94, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook {
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #01599e, #013e80);
+  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  box-shadow: inset 0px 1px 1px 0px #0179c1;
+}
+
+/* line 104, ../../app/stylesheets/partials/rolls.scss */
+.rolls-submit {
   float: right;
+  width: 50%;
 }
-/* line 41, ../../app/stylesheets/partials/rolls.scss */
-.rolls .private h1:after {
-  content: "&";
+/* line 108, ../../app/stylesheets/partials/rolls.scss */
+.rolls-submit button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  float: inherit;
+  line-height: 2.5;
+  margin: 15px 0;
+  padding: 0 10%;
 }
 
 /* Welcome to Compass.
@@ -1336,8 +1405,10 @@ a:hover, a:visited, a:active {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype {
-  text-indent: 100%;
-  white-space: nowrap;
+.notype, .networks-twitter, .networks-facebook {
+  color: transparent;
+  font: 0/0 a;
   overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
 }
