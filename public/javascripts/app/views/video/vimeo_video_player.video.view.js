@@ -34,7 +34,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 		//NB: If we decide to tear this down (ie. on low power devices) will need to do some more work in here and call super's leave()
 		
 		this.pause();
-		this.$el.hide();
+		this.$el.css('visibility', 'hidden');
 	},
 	
 	_cleanup: function(){
@@ -53,7 +53,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
-			this.$el.show();
+			this.$el.css('visibility', 'visible');
 			this.playerState.set({visible:true});
 		}
 	},
@@ -147,6 +147,9 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_onPlayerLoaded: function(){
+		//Vimeo replaces the div backbone is holding with it's own, so we need to update this view
+		this.setElement($('#'+this.id));
+		
 		this._player = $("#"+this.id)[0];	
 		
 		var self = this;

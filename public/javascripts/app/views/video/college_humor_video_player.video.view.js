@@ -124,7 +124,6 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 	},
 
 	_onStateChange: function(newState){
-		console.log("CH state change". newState);
 		switch(newState) {
 			case 'ended': 
 				// this marks the end of video, but an add plays after this, global callback function used is: detectEndVideo()
@@ -151,7 +150,9 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 	},
 
 	_playerReady: function(){
-		console.log("ch ready");
+		//CollegeHumor replaces the div backbone is holding with it's own, so we need to update this view
+		this.setElement($('#'+this.id));
+		
 		this._player = $("#"+this.id)[0];
 
 		this.playerState.set({playerLoaded: true});
@@ -161,7 +162,6 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_bootstrapPlayer: function(){
-		console.log("CH boot strap");
 		var url = "http://www.collegehumor.com/moogaloop/moogaloop.swf?use_node_id=true&fullscreen=0&clip_id="+this._video.get('provider_id');
 		swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" });
 	}
