@@ -1,54 +1,37 @@
-ViewStateModel = Model({
+// any view that will be used as a parent or child view (basically everything)
+// should extend from Support.CompositeView
+SampleView = Support.CompositeView.extend({
+
+  // DOM event binding comes first, if defined
+  events : {
+    "click .some-class" : "_someHandler" // DOM event handlers defined as private methods
+  },
+
+  // overidden attributes come next, if defined
+  tagName : 'div',
+
+  className : 'top-level-class',
+
+  // member functions come next, if defined
   
-});
-
-View1 = View({
-  
+  // initialize and _cleanup are always the first and second functions, if defined
+  // this helps us see at a glance that we are cleaning up all of our bindings correctly
   initialize : function(){
-    ViewStateModel.bind('change:x', this.render, this);
+    // Backbone event handlers defined as private methods
+    this.model.bind('change', this._onModelChange, this);
   },
 
-  events : {
-    "click .button" : "changeX" //here .button does not belong to any child Views
+  _cleanup : function(){
+    this.model.unbind('change', this._onModelChange, this);
   },
 
-  changeX : function(){
-    ViewStateModel.set('x', this.someModel);
-  }
-
-});
-
-View2 = View({
-
-  initialize : function(){
-    ViewStateModel.bind('change:x', this.render, this);
+  // private methods and event handlers come last
+  _someHandler : function(){
+    
   },
 
-  events : {
-    "click .button" : "changeX" //here .button does not belong to any child Views
-  },
-
-  changeX : function(){
-    ViewStateModel.set('x', this.someModel);
-  }
-
-});
-
-View3 = View({
-  /*
-   * Although I can affect ViewStateModels' state
-   * I don't render any of it
-   */
-
-  initialize : function(){
-  },
-
-  events : {
-    "click .button" : "changeX" //here .button does not belong to any child Views
-  },
-
-  changeX : function(){
-    ViewStateModel.set('x', this.someModel);
+  _onModelChange : function(){
+    
   }
 
 });
