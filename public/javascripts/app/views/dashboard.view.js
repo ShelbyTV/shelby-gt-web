@@ -10,7 +10,7 @@
     actionToViewMap : {
       '0' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
       '1' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '8' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
+      '8' : {view: libs.shelbyGT.RerollEntryView, model_attr:'frame'},
       '9' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
       '10' : {view: libs.shelbyGT.FrameView, model_attr:'frame'}
     },

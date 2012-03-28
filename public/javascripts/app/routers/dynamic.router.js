@@ -29,7 +29,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(){
-    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardFrame);
+    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardVideoFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
@@ -45,7 +45,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var watchLaterRoll = shelby.models.user.getWatchLaterRoll();
     if (watchLaterRoll) {
       this._bindContentPaneModelChanges({include_children:true});
-      this._setupRollView(watchLaterRoll.id);
+      this._setupRollView(watchLaterRoll);
     } else {
       alert("Sorry, you don't have a saves roll.");
       this.navigate('', {trigger:true, replace:true});
@@ -97,14 +97,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.guide.set('activeFrameModel', frame);
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-      window.alert("Sorry, the video you were looking for doesn't exist.")
+      window.alert("Sorry, the video you were looking for doesn't exist.");
       this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
 
-  _activateFirstDashboardFrame : function(dashboardModel, response) {
-    var firstDashboardEntry;
-    if (firstDashboardEntry = dashboardModel.get('dashboard_entries').first()) {
+  _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
+    var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
+      return entry.get('frame') && entry.get('frame').get('video');
+    });
+    if (firstDashboardEntry) {
       shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
     }
   },
@@ -119,18 +121,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
-  _setupRollView : function(rollId, options){
-    var options = _({updateRollTitle:false}).extend(options);
+  _setupRollView : function(roll, options){
+    if (options) {
+      _(options).defaults({updateRollTitle:false});
+    } else {
+      options = {updateRollTitle:false};
+    }
 
     this._setupTopLevelViews();
-    var roll = new libs.shelbyGT.RollModel({id:rollId});
+
+    var rollModel = (typeof(roll) === 'string') ? new libs.shelbyGT.RollModel({id:roll}) : roll;
     if (options.updateRollTitle) {
       // correct the roll title in the url if it changes (especially on first load of the roll)
-      roll.bind('change:title', function(){this.navigateToRoll(roll,{trigger:false,replace:true});}, this);
+      rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
     }
     shelby.views.rollHeader =  shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView();
     shelby.views.rollHeader.show();
-    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': roll});
+    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': rollModel});
   }
 
 });

@@ -37,5 +37,5 @@ var Bootstrap = {
   },
   playVideo : function(id){
     shelby.views.displayVideo = new libs.shelbyGT.VideoDisplayView({model:Backbone.Relational.store.find(libs.shelbyGT.VideoModel, id)});
-  },
+  }
 };
