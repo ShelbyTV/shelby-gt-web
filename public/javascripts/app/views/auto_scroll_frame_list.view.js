@@ -11,16 +11,17 @@
     },
 
     _onNewActiveFrame : function(guideModel, frame){
-      var prevModelAttrs = guideModel.changedAttributes().activeFrameModel.attributes;
-      var oldActiveFrameView = this.children.find(function(view){
-        return view.model.attributes == prevModelAttrs;
-      });
-      var newActiveFrameView = this.children.find(function(view) {
-        return view.model == frame;
+      // why is prevModel always null?
+      var oldModel = guideModel.previousAttributes().activeFrameModel;
+      /*var oldActiveFrameView = this.children.find(function(view){
+        return view.model == oldModel;
       });
       if (oldActiveFrameView){
         oldActiveFrameView.$el.removeClass('active-frame');
-      }
+      }*/
+      var newActiveFrameView = this.children.find(function(view) {
+        return view.model == frame;
+      });
       if (newActiveFrameView) {
         newActiveFrameView.$el.addClass('active-frame');
         this.parent.$el.scrollTo(newActiveFrameView.$el, {duration:200, axis:'y', offset:-9});
