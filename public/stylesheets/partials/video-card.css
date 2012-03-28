@@ -164,7 +164,7 @@
 }
 /* line 147, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
-  background: url("../images/assets/roll_action.svg") no-repeat center center;
+  background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -172,11 +172,11 @@
   -khtml-border-radius: 5px;
   border-radius: 5px;
   display: block;
-  height: 50px;
+  height: 44px;
   margin: 0;
   outline: 0;
   text-decoration: underline;
-  width: 50px;
+  width: 44px;
 }
 /* line 162, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .save-frame, .video-controls .remove-frame {

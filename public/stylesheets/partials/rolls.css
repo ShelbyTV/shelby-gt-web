@@ -10,7 +10,7 @@ Syntax error: Undefined mixin 'background'.
 7: 		url('../images/assets/noise.png') $rollsBG
 8: 	);
 9: 
-10: 	border-top:1px solid #222;
+10: //	border-top:1px solid #222;
 11: }
 12: 
 13: .rolls-menu{
@@ -93,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 8 of /shelbytv/app/stylesheets/partials/rolls.scss, in `background'\A         from line 8 of /shelbytv/app/stylesheets/partials/rolls.scss\A \A 3: 		\"compass/css3/box-shadow\";\A 4: \A 5: #roll-header,.roll-header{\A 6: 	@include background(\A 7: 		url('../images/assets/noise.png') $rollsBG\A 8: 	);\A 9: \A 10: 	border-top:1px solid #222;\A 11: }\A 12: \A 13: .rolls-menu{"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 8 of /shelbytv/app/stylesheets/partials/rolls.scss, in `background'\A         from line 8 of /shelbytv/app/stylesheets/partials/rolls.scss\A \A 3: 		\"compass/css3/box-shadow\";\A 4: \A 5: #roll-header,.roll-header{\A 6: 	@include background(\A 7: 		url('../images/assets/noise.png') $rollsBG\A 8: 	);\A 9: \A 10: //	border-top:1px solid #222;\A 11: }\A 12: \A 13: .rolls-menu{"; }

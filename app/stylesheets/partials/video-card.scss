@@ -146,15 +146,15 @@
 	
 		button{
 			@include background(
-				url('../images/assets/roll_action.svg') no-repeat center center
+				url('../images/assets/roll_action.svg') no-repeat 0px -1px
 			);
 			@include roundies;
 			display:block;
-			height:50px;
+			height:44px;
 			margin:0;
 			outline:0;
 			text-decoration:underline;
-			width:50px;
+			width:44px;
 
 		}
 
