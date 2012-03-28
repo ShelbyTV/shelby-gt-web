@@ -1137,6 +1137,10 @@ a:hover, a:visited, a:active {
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  -moz-transition-delay: 2s;
+  -webkit-transition-delay: 2s;
+  -o-transition-delay: 2s;
+  transition-delay: 2s;
   background: rgba(0, 0, 0, 0.8);
   height: 100%;
   left: 0;
@@ -1146,11 +1150,11 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 300, ../../app/stylesheets/partials/video-card.scss */
+/* line 301, ../../app/stylesheets/partials/video-card.scss */
 .video-saved img {
   width: 40px;
 }
-/* line 304, ../../app/stylesheets/partials/video-card.scss */
+/* line 305, ../../app/stylesheets/partials/video-card.scss */
 .video-saved p {
   font-size: 24px;
   font-weight: 500;
@@ -1158,7 +1162,7 @@ a:hover, a:visited, a:active {
   margin: 0;
 }
 
-/* line 312, ../../app/stylesheets/partials/video-card.scss */
+/* line 313, ../../app/stylesheets/partials/video-card.scss */
 .video-saved-trans {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
