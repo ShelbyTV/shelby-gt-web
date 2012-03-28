@@ -15,8 +15,8 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
 		//we swap between these player views
 		this._playerViews = {
-			youtube	:    new libs.shelbyGT.YouTubeVideoPlayerView({playbackState:this._playbackState})
-			//TODO: vimeo
+			youtube:    new libs.shelbyGT.YouTubeVideoPlayerView({playbackState:this._playbackState}),
+			vimeo:      new libs.shelbyGT.VimeoVideoPlayerView({playbackState:this._playbackState})
 			//TODO: dailymotion
 			//TODO: 'blip.tv'
 			//TODO: ooyala

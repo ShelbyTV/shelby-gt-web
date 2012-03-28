@@ -7,14 +7,16 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	
 	_playbackState: null,
 	
-	playerState: new libs.shelbyGT.PlayerStateModel({
-		supportsChromeless: true,
-		supportsMute: true,
-		supportsVolume: true
-		}),
+	playerState: null,
 		
 	initialize: function(opts){
 		this._playbackState = opts.playbackState;
+		
+		this.playerState = new libs.shelbyGT.PlayerStateModel({
+			supportsChromeless: true,
+			supportsMute: true,
+			supportsVolume: true
+			});
 		
 		//listen for the echo of events from YouTube (b/c it calls a global method)
 		Backbone.Events.bind("youtube:playerAPIReady", this._onPlayerAPIReady, this);
@@ -24,7 +26,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	leave: function(){
 		//NB: If we decide to tear this down (ie. on low power devices) will need to do some more work in here and call super's leave()
 		
-		this._player.pauseVideo();
+		this.pause();
 		this.$el.hide();
 		
 		this._playheadTrackingOff();
@@ -173,6 +175,10 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_onPlayerReady: function(e){
+		//YT replaces the div backbone is holding with it's own, so we need to update this view
+		//could use e.target.a but that's not documented, so I'm trying to be future-proof
+		this.setElement($('#'+this.id));
+		
 		this._player = e.target;
 		this.playerState.set({playerLoaded: true});
 		
