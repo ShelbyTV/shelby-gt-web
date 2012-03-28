@@ -9,6 +9,10 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
     this.model.bind('change', this.updateChild, this);
   },
 
+  _cleanup : function() {
+    this.model.unbind('change', this.updateChild, this);
+  },
+
   updateChild : function(model){
     // only render a new content pane if the contentPane* attribtues have been updated
     var changedAttrs = model.changedAttributes();
@@ -20,10 +24,6 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
     var contentPaneModel = this.model.get('contentPaneModel');
     this.appendChild(new contentPaneProto({model: contentPaneModel}));
     //contentPaneModel.fetch();
-  },
-
-  _cleanup : function() {
-    this.model.unbind('change', this.updateChild, this);
   }
 
 });

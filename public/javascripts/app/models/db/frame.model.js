@@ -19,6 +19,10 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
 
+  url : function() {
+    return shelby.config.apiRoot + '/frame/' + this.id;
+  },
+
   // when re-rolling/creating a frame, the roll to re-roll to will be determined
   // by the 'roll_id' attribute of the frame model
   sync : function(method, model, options) {
@@ -32,5 +36,12 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
 
     Backbone.sync.call(this, method, model, options);
+  },
+
+  saveToWatchLater : function() {
+    var frameToReroll = new libs.shelbyGT.FrameModel();
+    frameToReroll.set('original_frame_id', this.id);
+    frameToReroll.save();
   }
+
 });
