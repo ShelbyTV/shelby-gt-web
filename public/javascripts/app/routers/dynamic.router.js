@@ -29,7 +29,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(){
-    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardFrame);
+    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardVideoFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
@@ -102,9 +102,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateFirstDashboardFrame : function(dashboardModel, response) {
-    var firstDashboardEntry;
-    if (firstDashboardEntry = dashboardModel.get('dashboard_entries').first()) {
+  _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
+    var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
+      return entry.get('frame') && entry.get('frame').get('video');
+    });
+    if (firstDashboardEntry) {
       shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
     }
   },

@@ -24,10 +24,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   removeOne : function(item){
-    var viewToRemove = this.children.find(function(view){
-      return view.model == item;
-    });
-    viewToRemove.leave();
+    var viewToRemove = this.children.find(this._findViewByModel(item));
+    if (viewToRemove) {
+      viewToRemove.leave();
+    }
+  },
+
+  _findViewByModel : function(model){
+    return function(view){
+      return view.model == model;
+    };
   },
 
   _constructListItemView : function(item){

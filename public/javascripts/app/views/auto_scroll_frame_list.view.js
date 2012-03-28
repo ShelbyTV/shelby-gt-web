@@ -15,20 +15,23 @@
       ListView.prototype._cleanup.call(this);
     },
 
-    _onNewActiveFrame : function(guideModel, frame){
-      var prevModelAttrs = guideModel.changedAttributes().activeFrameModel.attributes;
-      var oldActiveFrameView = this.children.find(function(view){
-        return view.model.attributes == prevModelAttrs;
-      });
-      var newActiveFrameView = this.children.find(function(view) {
-        return view.model == frame;
-      });
-      if (oldActiveFrameView){
-        oldActiveFrameView.$el.removeClass('active-frame');
-      }
-      if (newActiveFrameView) {
-        newActiveFrameView.$el.addClass('active-frame');
-        this.parent.$el.scrollTo(newActiveFrameView.$el, {duration:200, axis:'y', offset:-9});
+    _onNewActiveFrame : function(guideModel, currentActiveFrameModel){
+      var frameViews = this._getActiveFrameViews(guideModel, currentActiveFrameModel);
+      this._switchActiveFrameViews(frameViews);
+    },
+
+    _getActiveFrameViews : function(guideModel, currentActiveFrameModel){
+      return {
+        current : this.children.find(this._findViewByModel(currentActiveFrameModel)),
+        old : this.children.find(this._findViewByModel(guideModel.previousAttributes().activeFrameModel))
+      };
+    },
+
+    _switchActiveFrameViews : function(frameViews){
+      frameViews.old && frameViews.old.$el.removeClass('active-frame');
+      if(frameViews.current) {
+        frameViews.current.$el.addClass('active-frame');
+        this.parent.$el.scrollTo(frameViews.current.$el, {duration:200, axis:'y', offset:-9});
       }
     }
 
