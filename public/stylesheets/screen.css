@@ -424,56 +424,63 @@ body {
   background: url("../images/assets/noise.png") #005500;
 }
 
-/* line 17, ../../app/stylesheets/partials/main.scss */
+/* line 19, ../../app/stylesheets/partials/main.scss */
 a {
   color: #a4a4a4;
 }
-/* line 22, ../../app/stylesheets/partials/main.scss */
+/* line 24, ../../app/stylesheets/partials/main.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 30, ../../app/stylesheets/partials/main.scss */
+/* line 32, ../../app/stylesheets/partials/main.scss */
 #lining {
   float: left;
   margin-right: -330px;
   width: 100%;
 }
 
-/* line 37, ../../app/stylesheets/partials/main.scss */
+/* line 39, ../../app/stylesheets/partials/main.scss */
 .video-player {
   background: #333;
   color: white;
   height: 520px;
   margin-right: 330px;
 }
-/* line 43, ../../app/stylesheets/partials/main.scss */
+/* line 45, ../../app/stylesheets/partials/main.scss */
 .video-player p {
   background: black;
   margin: 0;
 }
 
-/* line 50, ../../app/stylesheets/partials/main.scss */
+/* line 52, ../../app/stylesheets/partials/main.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 55, ../../app/stylesheets/partials/main.scss */
+/* line 57, ../../app/stylesheets/partials/main.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
+  overflow: hidden;
+  position: relative;
 }
 
-/* line 63, ../../app/stylesheets/partials/main.scss */
+/* line 66, ../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 650px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 70, ../../app/stylesheets/partials/main.scss */
+/* line 73, ../../app/stylesheets/partials/main.scss */
 .menu {
+  -moz-box-shadow: 0px 2px 5px 0px #333333;
+  -webkit-box-shadow: 0px 2px 5px 0px #333333;
+  -o-box-shadow: 0px 2px 5px 0px #333333;
+  box-shadow: 0px 2px 5px 0px #333333;
+  border-bottom: 1px solid #222;
   position: relative;
   overflow: hidden;
 }
@@ -759,7 +766,7 @@ a:hover, a:visited, a:active {
 
 /* line 242, ../../app/stylesheets/partials/video-guide.scss */
 .filter {
-  background: url("../images/assets/noise.png") #353535;
+  background: #353535;
   border-top: 1px solid #222;
   border-bottom: 1px solid #303030;
   font-size: 11px;
@@ -1158,15 +1165,16 @@ a:hover, a:visited, a:active {
  */
 /* line 5, ../../app/stylesheets/partials/rolls.scss */
 #roll-header, .roll-header {
-  border-bottom: 1px solid #222;
+  background: url("../images/assets/noise.png") #585858;
+  border-top: 1px solid #222;
 }
 
-/* line 9, ../../app/stylesheets/partials/rolls.scss */
+/* line 13, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
   margin: 0;
   padding: 0;
 }
-/* line 15, ../../app/stylesheets/partials/rolls.scss */
+/* line 18, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu .rolls-add, .rolls-menu .rolls-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1193,7 +1201,7 @@ a:hover, a:visited, a:active {
   padding: 0;
   width: 100%;
 }
-/* line 32, ../../app/stylesheets/partials/rolls.scss */
+/* line 35, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
@@ -1206,7 +1214,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #549738, #3f722a);
   background: linear-gradient(top, #549738, #3f722a);
 }
-/* line 40, ../../app/stylesheets/partials/rolls.scss */
+/* line 43, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -1216,13 +1224,13 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 50, ../../app/stylesheets/partials/rolls.scss */
+/* line 53, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-dialog {
   background: #585858;
   padding: 0 10px;
 }
 
-/* line 58, ../../app/stylesheets/partials/rolls.scss */
+/* line 61, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1234,25 +1242,25 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 66, ../../app/stylesheets/partials/rolls.scss */
+/* line 69, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks {
   float: left;
   width: 50%;
 }
 
-/* line 71, ../../app/stylesheets/partials/rolls.scss */
+/* line 74, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 76, ../../app/stylesheets/partials/rolls.scss */
+/* line 79, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 84, ../../app/stylesheets/partials/rolls.scss */
+/* line 87, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1275,7 +1283,7 @@ a:hover, a:visited, a:active {
   width: 44px;
 }
 
-/* line 100, ../../app/stylesheets/partials/rolls.scss */
+/* line 103, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1289,12 +1297,12 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 110, ../../app/stylesheets/partials/rolls.scss */
+/* line 113, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit {
   float: right;
   width: 50%;
 }
-/* line 114, ../../app/stylesheets/partials/rolls.scss */
+/* line 117, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

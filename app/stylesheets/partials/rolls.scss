@@ -3,11 +3,14 @@
 		"compass/css3/box-shadow";
 
 #roll-header,.roll-header{
-	border-bottom:1px solid #222;
+	@include background(
+		url('../images/assets/noise.png') $rollsBG
+	);
+
+	border-top:1px solid #222;
 }
 
 .rolls-menu{
-
 //	background:$rollsBG;
 	margin:0;
 	padding:0;
