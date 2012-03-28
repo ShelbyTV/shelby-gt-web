@@ -18,6 +18,16 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     return JST['frame'](obj);
   },
 
+  initialize : function() {
+    this.model.bind('destroy', this._onFrameSync, this);
+    ListItemView.prototype.initialize.call(this);
+  },
+
+  _cleanup : function(){
+    this.model.unbind('destroy', this._onFrameSync, this);
+    ListItemView.prototype._cleanup.call(this);
+  },
+
   render : function(){
     this.$el.html(this.template({frame : this.model}));
   },
@@ -31,11 +41,18 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _saveToWatchLater : function(){
-    this.model.saveToWatchLater();
+    var self = this;
+    this.model.saveToWatchLater(function(){
+      self.$('.video-thumbnail').append(JST['saved-indicator']());
+    });
   },
 
   _removeFromWatchLater : function(){
-    this.model.destroy({wait:true});
+    this.model.destroy();
+  },
+
+  _onFrameSync : function() {
+    console.log('destroy', arguments);
   },
 
   _toggleConversationDisplay : function(){
