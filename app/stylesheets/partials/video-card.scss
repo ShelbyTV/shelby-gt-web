@@ -1,6 +1,7 @@
 // blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
 @import "base",
 		"compass",
+		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
@@ -283,9 +284,11 @@
 }
 
 .video-saved{
-
+	@include transition-property(all);
+	@include transition-duration(1s);
+	@include transition-timing-function(ease-in);
+	
 	background:hsla(0,0,0,0.8);
-	display:none;
 	height:100%;
 	left:0;
 	padding-top:10px;
@@ -304,4 +307,10 @@
 		line-height:1.231;
 		margin:0;
 	}
+}
+
+.video-saved-trans{
+
+	@include opacity(0.0);
+
 }
