@@ -10,6 +10,8 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	playerState: null,
 		
 	initialize: function(opts){
+		var self = this;
+		
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
@@ -23,7 +25,6 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 		Backbone.Events.bind("vimeo:onPlay", this._onPlay, this);
 		Backbone.Events.bind("vimeo:onPause", this._onPause, this);
 		Backbone.Events.bind("vimeo:onFinish", this._onFinish, this);
-		var self = this;
 		Backbone.Events.bind("vimeo:updateCurrentTime", function(s) { self._updateCurrentTime(s); });
 		Backbone.Events.bind("vimeo:updateBufferTime", function(p) { self._updateBufferTime(p); });
 	},
@@ -38,6 +39,11 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	
 	_cleanup: function(){
 		Backbone.Events.unbind("vimeo:playerLoaded", this._onPlayerLoaded, this);
+		Backbone.Events.unbind("vimeo:onPlay", this._onPlay, this);
+		Backbone.Events.unbind("vimeo:onPause", this._onPause, this);
+		Backbone.Events.unbind("vimeo:onFinish", this._onFinish, this);
+		Backbone.Events.unbind("vimeo:updateCurrentTime");
+		Backbone.Events.unbind("vimeo:updateBufferTime");
 	},
 	
 	render: function(container, video){
@@ -132,12 +138,12 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_onReady: function(){
+		this.playerState.set({playerLoaded: true});
+		
 		//auto play is not a config option, need to press play meow...
 		if( this._playbackState.get('autoplayOnVideoDisplay') ){ this.play(); }
 
 		//TODO: set volume via this._playbackState.get('desiredVolume')
-
-		this.playerState.set({playerLoaded: true});
 	},
 	
 	_onPlayerLoaded: function(){
