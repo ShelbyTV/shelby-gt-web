@@ -15,9 +15,15 @@
       <li class="roll-frame">
         <button class="video-controls-button ir" type="button">Roll Frame</button>
       </li>
-      <li class="<%= (frame.get('roll') == shelby.models.user.getWatchLaterRoll()) ? 'save-frame js-remove-save' : 'save-frame' %>">
-        <button class="video-controls-button ir" type="button">Save Frame</button>
-      </li>
+      <% if (frame.get('roll') != shelby.models.user.getWatchLaterRoll()) { %>
+        <li class="save-frame">
+          <button class="video-controls-button ir" type="button">Save Frame</button>
+        </li>
+      <% } else { %>
+        <li class="remove-frame">
+          <button class="video-controls-button ir" type="button">Remove Frame</button>
+        </li>
+      <% } %>
     </ul>
     <img src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
     

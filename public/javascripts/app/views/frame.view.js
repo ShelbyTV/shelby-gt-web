@@ -5,8 +5,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   events : {
     "click .js-frame-activate"          : "_activate",
     "click .roll"                       : "_goToRoll",
-    "click .saves:not(.js-remove-save)" : "_saveToWatchLater",
-    "click .saves.js-remove-save"       : "_removeFromWatchLater",
+    "click .save-frame"                 : "_saveToWatchLater",
+    "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay"
   },
 

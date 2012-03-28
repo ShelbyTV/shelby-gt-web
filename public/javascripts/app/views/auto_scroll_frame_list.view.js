@@ -31,7 +31,7 @@
       frameViews.old && frameViews.old.$el.removeClass('active-frame');
       if(frameViews.current) {
         frameViews.current.$el.addClass('active-frame');
-        this.parent.$el.scrollTo(frameViews.current.$el, {duration:200, axis:'y', offset:-9});
+        this.parent.$el.scrollTo(frameViews.current.$el, {duration:200, axis:'y'});
       }
     }
 
