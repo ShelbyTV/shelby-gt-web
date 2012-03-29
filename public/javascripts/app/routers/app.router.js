@@ -28,25 +28,25 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     var self = this;
     shelby.models.user.bind('error', function(){console.log('error'); });
     if (shelby.userSignedIn()){
-			shelby.models.user.fetch({
-	      global: false,
-	      data: {
+      shelby.models.user.fetch({
+        global: false,
+        data: {
           include_rolls: true
         },
         success:function() {
-	        self._reroute();
-	      }
-			});
-		}
-		else{
-			// no authenticated user, begin the logged-out user experience
-			// TODO: configure the logged out experience
+          self._reroute();
+        }
+      });
+    }
+    else{
+      // no authenticated user, begin the logged-out user experience
+      // TODO: configure the logged out experience
       console.log('You are not a logged in user, I should be configuring the logged out experience.');
-			// TEMPORARY SOLUTION:
-			$('#temp-signin').show();
-		}
-	},
-	
+      // TEMPORARY SOLUTION:
+      $('#temp-signin').show();
+    }
+  },
+
   //---
   //PRIVATE METHODS
   //---
