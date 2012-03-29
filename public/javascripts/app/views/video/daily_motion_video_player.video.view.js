@@ -52,10 +52,9 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 		this._video = video;
 		
 		if( !this.playerState.get('playerLoaded') ){
-			container.append('<div id="'+this.id+'"></div>');
 			this._bootstrapPlayer();
 		}
-		//this player is torn down every time, no way to just flip it back visible
+		//this player is torn down if we've flipped to another player, no way to just flip it back visible
 	},
 	
 	playVideo: function(video){
