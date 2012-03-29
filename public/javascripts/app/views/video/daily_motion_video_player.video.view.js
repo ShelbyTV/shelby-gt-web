@@ -1,6 +1,6 @@
-libs.shelbyGT.DailyHumorVideoPlayerView = Support.CompositeView.extend({
+libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 
-	id: 'dailyhumor-player-holder',
+	id: 'dailymotion-player-holder',
 	
 	_video: null,
 	_player: null,
