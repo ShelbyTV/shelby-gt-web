@@ -1250,6 +1250,7 @@ a:hover, a:visited, a:active {
 .rolls-share-dialog {
   background: #585858;
   padding: 0 10px;
+  display: none;
 }
 
 /* line 62, ../../app/stylesheets/partials/rolls.scss */

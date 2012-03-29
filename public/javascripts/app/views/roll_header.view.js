@@ -1,10 +1,12 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
-    "click .js-share-roll" : "_showShareRoll"
+    "click .js-share-roll" : "_toggleShareRollVisibility"
   },
 
   el : '#roll-header',
+
+  _shareRollView: null,
 
   template : function(obj){
     return JST['roll-header'](obj);
@@ -21,17 +23,21 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
+    this._shareRollView = new libs.shelbyGT.ShareRollView();
+    this.renderChild(this._shareRollView);
     if (this.model.get('sharableRollDisplayed')) this.$el.show();
   },
 
-  _showShareRoll : function(){
-    shelby.views.shareRoll = new libs.shelbyGT.ShareRollView();
+  _toggleShareRollVisibility : function(){
+    this._shareRollView.$el.toggle();
   },
 
   _updateVisibility: function(guideModel, sharableRollDisplayed){
     if (sharableRollDisplayed) {
       this.$el.show();
     } else {
+      // collapse/hide child views
+      this._shareRollView.$el.hide();
       this.$el.hide();
     }
   }
