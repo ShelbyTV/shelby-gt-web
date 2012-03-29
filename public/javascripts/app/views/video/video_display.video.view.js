@@ -19,8 +19,8 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 			'vimeo':          new libs.shelbyGT.VimeoVideoPlayerView({playbackState:this._playbackState}),
 			'collegehumor':   new libs.shelbyGT.CollegeHumorVideoPlayerView({playbackState:this._playbackState}),
 			'dailymotion':    new libs.shelbyGT.DailyMotionVideoPlayerView({playbackState:this._playbackState}),
-			'bliptv':         new libs.shelbyGT.BlipTvVideoPlayerView({playbackState:this._playbackState})
-			//TODO: 'ooyala'
+			'bliptv':         new libs.shelbyGT.BlipTvVideoPlayerView({playbackState:this._playbackState}),
+			'ooyala':         new libs.shelbyGT.OoyalaVideoPlayerView({playbackState:this._playbackState})
 			//TODO: 'hulu'
 		};
 

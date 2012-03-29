@@ -60,11 +60,16 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	playVideo: function(video){
-		this._video = video;
-		
 		if( this.playerState.get('playerLoaded') ){
-			this._player.api_loadVideo(this._video.get('provider_id'));
+			if( this._video === video ){
+				this.play();
+			} else {
+				//load up new video
+				this._player.api_loadVideo(this._video.get('provider_id'));
+			}
 		}
+		
+		this._video = video;
 	},
 
 	play: function(){

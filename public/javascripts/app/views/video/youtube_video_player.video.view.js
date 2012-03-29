@@ -52,13 +52,20 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	playVideo: function(video){
-		this._video = video;
-		
 		if( this.playerState.get('playerLoaded') ){
-			//video id, start time, quality (https://developers.google.com/youtube/js_api_reference#loadVideoById)
-			// default: YouTube selects the appropriate playback quality. (https://developers.google.com/youtube/js_api_reference#Playback_quality)
-			this._player.loadVideoById(video.get('provider_id'), 0, 'default');
+			if( this._video === video ){
+				this.play();
+			} else {
+				//load up new video
+				
+				//video id, start time, quality (https://developers.google.com/youtube/js_api_reference#loadVideoById)
+				// default: YouTube selects the appropriate playback quality. (https://developers.google.com/youtube/js_api_reference#Playback_quality)
+				this._player.loadVideoById(video.get('provider_id'), 0, 'default');
+			}
 		}
+		
+		this._video = video;
+
 	},
 
 	play: function(){
