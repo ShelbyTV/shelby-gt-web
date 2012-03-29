@@ -11,7 +11,7 @@
       this.options.collectionAttribute = 'frames';
       this.options.listItemView = 'FrameView';
       AutoScrollFrameListView.prototype.initialize.call(this);
-    },
+    }
 
   });
 

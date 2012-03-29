@@ -16,29 +16,46 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
 
   displayFrameInRoll : function(rollId, frameId){
-    var self = this;
-    this._bindContentPaneModelChanges({include_children:true}, function(rollModel, response){
-      self._activateFrameInRollById(rollModel, frameId);
-    });
-    this._setupRollView(rollId);
+    if (rollId != shelby.models.user.getWatchLaterRoll().id) {
+      var self = this;
+      this._bindContentPaneModelChanges({include_children:true}, function(rollModel, response){
+        self._activateFrameInRollById(rollModel, frameId);
+      });
+      this._setupRollView(rollId);
+    } else {
+      // if this is the watch later roll, reroute to the special route for that roll
+      this.navigate('saves', {trigger:true,replace:true});
+    }
   },
 
   displayRoll : function(rollId, title){
-    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstRollFrame);
-    this._setupRollView(rollId, {updateRollTitle:true});
+    if (rollId != shelby.models.user.getWatchLaterRoll().id) {
+      this._bindContentPaneModelChanges({include_children:true}, this._activateFirstRollFrame);
+      this._setupRollView(rollId, {updateRollTitle:true});
+    } else {
+      // if this is the watch later roll, reroute to the special handling for that roll
+      this.navigate('saves', {trigger:true,replace:true});
+    }
   },
 
   displayDashboard : function(){
     this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardVideoFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
-    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.DashboardView, 'contentPaneModel': shelby.models.dashboard});
+    shelby.models.guide.set({
+      'contentPaneView': libs.shelbyGT.DashboardView,
+      'contentPaneModel': shelby.models.dashboard,
+      'sharableRollDisplayed': false
+    });
   },
 
   displayRollList : function(){
     this._bindContentPaneModelChanges({include_rolls:true});
     this._setupTopLevelViews();
-    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollListView, 'contentPaneModel': shelby.models.user});
+    shelby.models.guide.set({
+      'contentPaneView': libs.shelbyGT.RollListView,
+      'contentPaneModel': shelby.models.user,
+      'sharableRollDisplayed': false});
   },
 
   displaySaves : function(){
@@ -112,32 +129,37 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupTopLevelViews : function(){
-    shelby.views.rollHeader && shelby.views.rollHeader.hide();
     // header & menu render on instantiation //
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView();
+    shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView({model:shelby.models.guide});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
   _setupRollView : function(roll, options){
-    if (options) {
-      _(options).defaults({updateRollTitle:false});
-    } else {
-      options = {updateRollTitle:false};
+    if (!options) {
+      options = {};
     }
+    _(options).defaults({
+        updateRollTitle: false
+    });
 
     this._setupTopLevelViews();
-
     var rollModel = (typeof(roll) === 'string') ? new libs.shelbyGT.RollModel({id:roll}) : roll;
     if (options.updateRollTitle) {
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
     }
-    shelby.views.rollHeader =  shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView();
-    shelby.views.rollHeader.show();
-    shelby.models.guide.set({'contentPaneView': libs.shelbyGT.RollView, 'contentPaneModel': rollModel});
+
+    // the watch later roll is not sharable
+    var isSharableRoll = rollModel != shelby.models.user.getWatchLaterRoll();
+
+    shelby.models.guide.set({
+      'contentPaneView': libs.shelbyGT.RollView,
+      'contentPaneModel': rollModel,
+      'sharableRollDisplayed': isSharableRoll
+    });
   }
 
 });
