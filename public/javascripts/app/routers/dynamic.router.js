@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
 
   displayFrameInRoll : function(rollId, frameId){
-    if (rollId != shelby.models.user.getWatchLaterRoll().id) {
+    if (rollId != shelby.models.user.get('watch_later_roll').id) {
       var self = this;
       this._bindContentPaneModelChanges({include_children:true}, function(rollModel, response){
         self._activateFrameInRollById(rollModel, frameId);
@@ -29,7 +29,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRoll : function(rollId, title){
-    if (rollId != shelby.models.user.getWatchLaterRoll().id) {
+    if (rollId != shelby.models.user.get('watch_later_roll').id) {
       this._bindContentPaneModelChanges({include_children:true}, this._activateFirstRollFrame);
       this._setupRollView(rollId, {updateRollTitle:true});
     } else {
@@ -59,7 +59,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displaySaves : function(){
-    var watchLaterRoll = shelby.models.user.getWatchLaterRoll();
+    var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
       this._bindContentPaneModelChanges({include_children:true});
       this._setupRollView(watchLaterRoll);
@@ -153,7 +153,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     // the watch later roll is not sharable
-    var isSharableRoll = rollModel != shelby.models.user.getWatchLaterRoll();
+    var isSharableRoll = rollModel.id != shelby.models.user.get('watch_later_roll').id;
 
     shelby.models.guide.set({
       'contentPaneView': libs.shelbyGT.RollView,
