@@ -18,7 +18,8 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
-    #cookies.delete(:locked_and_loaded, :domain => '.shelby.tv')
+    # api.shelby.tv/sign_out_user will delete the hint cookie, but can't access it during dev (since the cookies domain is localhost)
+    cookies.delete(:locked_and_loaded) if Rails.env == "development"
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
