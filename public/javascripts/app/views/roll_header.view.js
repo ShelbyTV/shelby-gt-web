@@ -27,7 +27,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _showShareRoll : function(){
-    shelby.views.shareRoll = new libs.shelbyGT.ShareRollView();
+    shelby.views.shareRoll = new libs.shelbyGT.ShareRollView({ model: shelby.models.share });
   }
 
 });
