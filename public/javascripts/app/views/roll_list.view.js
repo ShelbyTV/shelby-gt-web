@@ -1,6 +1,6 @@
 libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
-  className : libs.shelbyGT.ListView.prototype.className + ' roll-list',
+  className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   initialize : function(){
     this.options.collectionAttribute = 'roll_followings';
