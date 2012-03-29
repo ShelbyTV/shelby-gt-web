@@ -1,24 +1,44 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 8 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'
-        from line 8 of /shelbytv/app/stylesheets/partials/rolls-list.scss
+        on line 18 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'
+        from line 18 of /shelbytv/app/stylesheets/partials/rolls-list.scss
 
-3: 		"compass/css3/box-shadow";
-4: 
-5: .roll-item{
-6: 	@include background(
-7: 		$softLinearGradient
-8: 	);
-9: 
-10: 	padding:$defaultMargin/2;
-11: 
-12: 	h2{
-13: 		float:left;
+13: 		display:block;
+14: 		padding:$defaultMargin;
+15: 		&:hover{
+16: 			@include background(
+17: 				url('../images/assets/noise.png') #6d6d6d
+18: 			);
+19: 		}
+20: 	}
+21: 	li{
+22: 		padding:0;
+23: 	}
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/rolls-list.scss:8:in `background'
-/shelbytv/app/stylesheets/partials/rolls-list.scss:8
+/shelbytv/app/stylesheets/partials/rolls-list.scss:18:in `background'
+/shelbytv/app/stylesheets/partials/rolls-list.scss:18
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -93,4 +113,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 8 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'\A         from line 8 of /shelbytv/app/stylesheets/partials/rolls-list.scss\A \A 3: 		\"compass/css3/box-shadow\";\A 4: \A 5: .roll-item{\A 6: 	@include background(\A 7: 		$softLinearGradient\A 8: 	);\A 9: \A 10: 	padding:$defaultMargin/2;\A 11: \A 12: 	h2{\A 13: 		float:left;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 18 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'\A         from line 18 of /shelbytv/app/stylesheets/partials/rolls-list.scss\A \A 13: 		display:block;\A 14: 		padding:$defaultMargin;\A 15: 		&:hover{\A 16: 			@include background(\A 17: 				url('../images/assets/noise.png') #6d6d6d\A 18: 			);\A 19: 		}\A 20: 	}\A 21: 	li{\A 22: 		padding:0;\A 23: 	}"; }

@@ -2,14 +2,39 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+.rolls-list{
+	@extend .list;
+
+	padding:0;
+	margin:0;
+
+	a{	
+		cursor:pointer;
+		display:block;
+		padding:$defaultMargin;
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png') #6d6d6d
+			);
+		}
+	}
+	li{
+		padding:0;
+	}
+}
+
 .roll-item{
 	@include background(
-		$softLinearGradient
+//		$softLinearGradient
+		red
 	);
 
-	padding:$defaultMargin/2;
+	display:block;
+	padding:0;
+	margin:0;
 
 	h2{
+		display:block;
 		float:left;
 		font-size:14px;
 		line-height:2.5;
@@ -27,6 +52,7 @@
 	width:36px;
 
 	img{
+		display:block;
 		width:100%;
 	}
 }

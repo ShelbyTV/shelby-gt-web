@@ -18,8 +18,12 @@
   list-style-type: none;
   padding: 10px;
 }
+/* line 22, ../../../app/stylesheets/partials/video-card.scss */
+.list .active-frame {
+  background: url("../assets/images/noise.png") #6d6d6d;
+}
 
-/* line 24, ../../../app/stylesheets/partials/video-card.scss */
+/* line 29, ../../../app/stylesheets/partials/video-card.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -34,7 +38,7 @@
   padding: 0;
   position: relative;
 }
-/* line 34, ../../../app/stylesheets/partials/video-card.scss */
+/* line 39, ../../../app/stylesheets/partials/video-card.scss */
 .video-card footer {
   -moz-box-shadow: 0px 4px 13px 4px #333333;
   -webkit-box-shadow: 0px 4px 13px 4px #333333;
@@ -44,7 +48,7 @@
   z-index: 5;
 }
 
-/* line 41, ../../../app/stylesheets/partials/video-card.scss */
+/* line 46, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail {
   background: #444;
   line-height: 75px;
@@ -52,7 +56,7 @@
   text-align: center;
   width: 100%;
 }
-/* line 48, ../../../app/stylesheets/partials/video-card.scss */
+/* line 53, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail img {
   display: inline-block;
   margin: 0 auto 0;
@@ -62,7 +66,7 @@
   width: 100%;
 }
 
-/* line 59, ../../../app/stylesheets/partials/video-card.scss */
+/* line 64, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -78,19 +82,19 @@
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 8px;
 }
-/* line 65, ../../../app/stylesheets/partials/video-card.scss */
+/* line 70, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a {
   text-decoration: none;
 }
-/* line 68, ../../../app/stylesheets/partials/video-card.scss */
+/* line 73, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a:active, .video-card-header a:visited {
   text-decoration: none;
 }
-/* line 71, ../../../app/stylesheets/partials/video-card.scss */
+/* line 76, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header a:hover {
   text-decoration: underline;
 }
-/* line 76, ../../../app/stylesheets/partials/video-card.scss */
+/* line 81, ../../../app/stylesheets/partials/video-card.scss */
 .video-card-header h1 {
   float: left;
   font-size: 1em;
@@ -101,7 +105,7 @@
   width: 80%;
 }
 
-/* line 86, ../../../app/stylesheets/partials/video-card.scss */
+/* line 91, ../../../app/stylesheets/partials/video-card.scss */
 .video-score {
   color: #efefef;
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
@@ -111,28 +115,28 @@
   line-height: 1.231;
   padding: 0;
 }
-/* line 96, ../../../app/stylesheets/partials/video-card.scss */
+/* line 101, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:before {
   content: url("../images/assets/score.svg");
   margin-right: 3px;
 }
-/* line 101, ../../../app/stylesheets/partials/video-card.scss */
+/* line 106, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:hover:before {
   color: red;
 }
-/* line 105, ../../../app/stylesheets/partials/video-card.scss */
+/* line 110, ../../../app/stylesheets/partials/video-card.scss */
 .video-score:active {
   color: red;
 }
 
-/* line 124, ../../../app/stylesheets/partials/video-card.scss */
+/* line 129, ../../../app/stylesheets/partials/video-card.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 129, ../../../app/stylesheets/partials/video-card.scss */
+/* line 134, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -140,7 +144,7 @@
   right: 0px;
   top: 0px;
 }
-/* line 136, ../../../app/stylesheets/partials/video-card.scss */
+/* line 141, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -162,7 +166,7 @@
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 148, ../../../app/stylesheets/partials/video-card.scss */
+/* line 153, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
   -moz-border-radius: 5px;
@@ -178,7 +182,7 @@
   text-decoration: underline;
   width: 44px;
 }
-/* line 163, ../../../app/stylesheets/partials/video-card.scss */
+/* line 168, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7b7b7b), color-stop(100%, #575757));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #7b7b7b, #575757);
@@ -191,11 +195,11 @@
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 171, ../../../app/stylesheets/partials/video-card.scss */
+/* line 176, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 177, ../../../app/stylesheets/partials/video-card.scss */
+/* line 182, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -208,12 +212,12 @@
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 185, ../../../app/stylesheets/partials/video-card.scss */
+/* line 190, ../../../app/stylesheets/partials/video-card.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/remove.svg") no-repeat center center;
 }
 
-/* line 193, ../../../app/stylesheets/partials/video-card.scss */
+/* line 198, ../../../app/stylesheets/partials/video-card.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -234,29 +238,29 @@
   padding: 6px 8px 7px;
 }
 
-/* line 214, ../../../app/stylesheets/partials/video-card.scss */
+/* line 219, ../../../app/stylesheets/partials/video-card.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 218, ../../../app/stylesheets/partials/video-card.scss */
+/* line 223, ../../../app/stylesheets/partials/video-card.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 226, ../../../app/stylesheets/partials/video-card.scss */
+/* line 231, ../../../app/stylesheets/partials/video-card.scss */
 .video-source {
   float: right;
 }
 
-/* line 231, ../../../app/stylesheets/partials/video-card.scss */
+/* line 236, ../../../app/stylesheets/partials/video-card.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 236, ../../../app/stylesheets/partials/video-card.scss */
+/* line 241, ../../../app/stylesheets/partials/video-card.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -266,7 +270,7 @@
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 241, ../../../app/stylesheets/partials/video-card.scss */
+/* line 246, ../../../app/stylesheets/partials/video-card.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -274,30 +278,30 @@
   font-weight: 300;
   padding: 0 9px 9px;
 }
-/* line 247, ../../../app/stylesheets/partials/video-card.scss */
+/* line 252, ../../../app/stylesheets/partials/video-card.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 254, ../../../app/stylesheets/partials/video-card.scss */
+/* line 259, ../../../app/stylesheets/partials/video-card.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 259, ../../../app/stylesheets/partials/video-card.scss */
+/* line 264, ../../../app/stylesheets/partials/video-card.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 264, ../../../app/stylesheets/partials/video-card.scss */
+/* line 269, ../../../app/stylesheets/partials/video-card.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 270, ../../../app/stylesheets/partials/video-card.scss */
+/* line 275, ../../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -305,16 +309,16 @@
   margin: 0 2px;
 }
 
-/* line 278, ../../../app/stylesheets/partials/video-card.scss */
+/* line 283, ../../../app/stylesheets/partials/video-card.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 281, ../../../app/stylesheets/partials/video-card.scss */
+/* line 286, ../../../app/stylesheets/partials/video-card.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
 
-/* line 286, ../../../app/stylesheets/partials/video-card.scss */
+/* line 291, ../../../app/stylesheets/partials/video-card.scss */
 .video-saved {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -341,11 +345,11 @@
   top: 0;
   width: 100%;
 }
-/* line 301, ../../../app/stylesheets/partials/video-card.scss */
+/* line 306, ../../../app/stylesheets/partials/video-card.scss */
 .video-saved img {
   width: 40px;
 }
-/* line 305, ../../../app/stylesheets/partials/video-card.scss */
+/* line 310, ../../../app/stylesheets/partials/video-card.scss */
 .video-saved p {
   font-size: 24px;
   font-weight: 500;
@@ -353,7 +357,7 @@
   margin: 0;
 }
 
-/* line 313, ../../../app/stylesheets/partials/video-card.scss */
+/* line 318, ../../../app/stylesheets/partials/video-card.scss */
 .video-saved-trans {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);

@@ -19,6 +19,11 @@
 		list-style-type:none;
 		padding:$defaultMargin;
 	}
+	.active-frame{
+		@include background(
+			url('../assets/images/noise.png') #6d6d6d
+		);
+	}
 }
 
 .video-card{
