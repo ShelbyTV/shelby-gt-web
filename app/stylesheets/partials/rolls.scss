@@ -87,26 +87,45 @@
 .networks-twitter{
 	@extend .notype;
 	@include background(
-		url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center,
-		$softTwitterBlue
+		url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center,
+		$softNetworksUnselected
+
 	);
 	@include border-radius($radius/2);
-	@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
+	@include box-shadow(inset 0px 1px 1px 0px #777);
 
 //	background-size:80%;
 	border:1px solid black;
-	height:44px;
-	width:44px;
+	height:34px;
+	width:34px;
+
+	&.active{
+		@include background(
+			url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center,
+			$softTwitterBlue
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
+
+	}
 
 }
 
 .networks-facebook{
 	@extend .networks-twitter;
 	@include background(
-		url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
-		$softFacebookBlue
-	);
-	@include box-shadow(inset 0px 1px 1px 0px #0179c1);
+		url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center,
+			$softNetworksUnselected
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #777);
+	
+	&.active{
+		@include background(
+			url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
+			$softFacebookBlue
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #0179c1);
+
+	}
 
 }
 
@@ -127,7 +146,7 @@
 		display:block;
 		float:inherit;
 		line-height:2.5;
-		margin:$defaultMargin+4 0;
+		margin:$defaultMargin 0;
 		padding:0 10%;
 	//	width:100%;
 	}
