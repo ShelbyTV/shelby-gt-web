@@ -35,6 +35,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.css('visibility', 'hidden');
+		this.playerState.set({visible:false});
 	},
 	
 	_cleanup: function(){
@@ -139,6 +140,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	
 	_onReady: function(){
 		this.playerState.set({playerLoaded: true});
+		this.playerState.set({visible:true});
 		
 		//auto play is not a config option, need to press play meow...
 		if( this._playbackState.get('autoplayOnVideoDisplay') ){ this.play(); }

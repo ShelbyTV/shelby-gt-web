@@ -28,6 +28,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.hide();
+		this.playerState.set({visible:false});
 		
 		this._playheadTrackingOff();
 	},
@@ -181,6 +182,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		
 		this._player = e.target;
 		this.playerState.set({playerLoaded: true});
+		this.playerState.set({visible:true});
 		
 		//TODO: set volume via this._playbackState.get('desiredVolume')
 	},

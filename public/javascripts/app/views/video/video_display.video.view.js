@@ -4,7 +4,7 @@
 
 libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
-  el: '#video',
+  id: 'player',
 
 	_curView: null,
 	_playbackState: shelby.models.playbackState,
@@ -50,7 +50,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 			
 			//render will bootstrap or just show itself
 			//on bootstrap, it *may* autoplay if this._playbackState.get('autoplayOnVideoDisplay')
-			view.render(this.el, video);
+			view.render(this.$el, video);
 			this._curView = view;
 			
 			this._playbackState.activePlayerState = view.playerState;

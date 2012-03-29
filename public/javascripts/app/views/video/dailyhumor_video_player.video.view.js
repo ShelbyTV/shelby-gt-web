@@ -30,9 +30,15 @@ libs.shelbyGT.DailyHumorVideoPlayerView = Support.CompositeView.extend({
 	leave: function(){
 		//daily motion gets torn down every time, don't need to _cleanup tho (those bindings are still good, don't want to re-bind)
 		this.pause();
+		
+		//remove will leave us w/o a holder div, so we clean up after it...
+		var container = this.$el.parent();
 		this.$el.remove();
+		container.append('<div id="'+this.id+'"></div>');
+		
 		this._player = null;
-		this.playerState.set({playerLoaded:true});
+		this.playerState.set({playerLoaded:false});
+		this.playerState.set({visible:false});
 	},
 	
 	_cleanup: function(){
@@ -46,19 +52,17 @@ libs.shelbyGT.DailyHumorVideoPlayerView = Support.CompositeView.extend({
 		this._video = video;
 		
 		if( !this.playerState.get('playerLoaded') ){
+			container.append('<div id="'+this.id+'"></div>');
 			this._bootstrapPlayer();
 		}
-		else if( !this.playerState.get('visible') ){
-			this.$el.css('visibility', 'visible');
-			this.playerState.set({visible:true});
-		}
+		//this player is torn down every time, no way to just flip it back visible
 	},
 	
 	playVideo: function(video){
 		this._video = video;
 		
 		if( this.playerState.get('playerLoaded') ){
-			this._player.api_loadVideo(this._video.get('provider_id'));
+			this._player.loadVideoById(this._video.get('provider_id'));
 		}
 	},
 
@@ -161,6 +165,7 @@ libs.shelbyGT.DailyHumorVideoPlayerView = Support.CompositeView.extend({
 		this._player.addEventListener("onVideoMetadata", "function(m){ Backbone.Events.trigger('dailymotion:onVideoMetadata', m) }");
 		
 		this.playerState.set({playerLoaded:true});
+		this.playerState.set({visible:true});
 	},
 	
 	_bootstrapPlayer: function(){
