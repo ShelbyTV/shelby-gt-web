@@ -29,7 +29,10 @@ javascripts:
     - public/javascripts/app/views/auto_scroll_frame_list.view.js
     - public/javascripts/app/views/reroll_entry.view.js
     - public/javascripts/app/views/dashboard.view.js
+    - public/javascripts/app/views/roll_list.view.js
+    - public/javascripts/app/views/roll.view.js
     - public/javascripts/app/browser.js
+    - public/javascripts/app/utils/display_state.utils.js
     # shelby backbone app - all other assets
     - public/javascripts/app/playback/*.js
     - public/javascripts/app/models/lib/*.js

@@ -10,4 +10,4 @@ libs.shelbyGT.Ajax = {
       console.error("Something went wrong. Shelby apologizes.");
     }
   }
- };
+};
