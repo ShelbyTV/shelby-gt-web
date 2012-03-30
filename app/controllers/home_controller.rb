@@ -18,7 +18,7 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
-    #cookies.delete(:locked_and_loaded, :domain => '.shelby.tv')
+    cookies.delete(:signed_in) if Rails.env == "development"
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
