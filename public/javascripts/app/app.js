@@ -50,7 +50,7 @@ shelby = {
 // setup ajax defaults
 //---------------------------------------------------------
 $.ajaxSetup({
-  xhrFields: {withCredentials: true}
+  xhrFields: {withCredentials: true},
   data: {'cs_key': 'GoatsFTW'}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
