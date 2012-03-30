@@ -31,10 +31,8 @@ libs.shelbyGT.SpinnerView = Backbone.View.extend({
     left: 'auto' // Left position relative to parent in px
   },
 
-  className : 'spinner',
-
   initialize : function(opts) {
-    opts.spinOpts && _.extend(this.spinOpts, opts.spinOpts);
+    (opts && opts.spinOpts) && _.extend(this.spinOpts, opts.spinOpts);
     this.spinner = new Spinner(this.spinOpts).spin();
   },
 
@@ -47,7 +45,7 @@ libs.shelbyGT.SpinnerView = Backbone.View.extend({
   },
 
   renderSilent : function(){
-    this.render(true);
+    return this.render(true);
   },
 
   render : function(silent){
