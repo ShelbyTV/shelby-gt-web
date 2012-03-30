@@ -20,9 +20,9 @@
 		@include border-radius($radius);
 		@include buttonfont;
 		@include background(
-			$softShelbyBlue
+			$softShelbyGreen
 		);
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
 
 		border:1px solid #222;
 		color:#efefef;
@@ -35,9 +35,9 @@
 	}
 	.rolls-share{
 		@extend .rolls-add;
-		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
+		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
 		@include background(
-			$softShelbyGreen
+			$softShelbyBlue
 		);
 	}
 

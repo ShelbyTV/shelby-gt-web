@@ -53,6 +53,7 @@ $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
 $softShelbyBlue: linear-gradient(top, #00a5cc, #007fb6);
 $softShelbyGreen: linear-gradient(top, $shelbyGreen, adjust-lightness($shelbyGreen,-10%));
 $softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
+$softShelbyDarkgray: linear-gradient(top, #333, #303030);
 $softShelbyRed: linear-gradient(top, #ba2046, #9e1632);
 
 $softTwitterBlue: linear-gradient(top, #00b5d7, #00a2d1);
