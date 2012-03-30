@@ -30,7 +30,8 @@ libs.shelbyGT.PlaybackStatus = {
 	buffering: 'buffering',
 	cued: 'cued',
 	error: {
+		generic: 'error:generic',
 		videoNotFound: 'error:video_not_found',
 		videoNotEmbeddable: 'error:video_not_embeddable'
 	}
-}
+};
