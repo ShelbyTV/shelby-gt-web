@@ -13,7 +13,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.render();
     this.model.bind('change:sharableRollDisplayed', this._updateVisibility, this);
   },
 
@@ -23,7 +22,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    this._shareRollView = new libs.shelbyGT.ShareRollView();
+    this._shareRollView = new libs.shelbyGT.ShareRollView({model:shelby.models.share});
     this.renderChild(this._shareRollView);
     if (this.model.get('sharableRollDisplayed')) this.$el.show();
   },

@@ -24,6 +24,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
+    shelby.models.share = new libs.shelbyGT.ShareModel();
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     var self = this;
     shelby.models.user.bind('error', function(){console.log('error'); });
