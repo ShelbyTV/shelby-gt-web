@@ -3,8 +3,7 @@ libs.shelbyGT.MenuView = Support.CompositeView.extend({
   events : {
     "click .stream" : "goToStream",
     "click .rolls" : "goToRolls",
-    "click .saves" : "goToSaves",
-     
+    "click .saves" : "goToSaves"
   },
 
   el : '.menu',
@@ -19,6 +18,7 @@ libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
   render : function(active){
     this.$el.html(this.template());
+    this.renderChild(new libs.shelbyGT.RollHeaderView({model:this.model}));
   },
 
   goToStream : function(){

@@ -1,3 +1,8 @@
+<%
+  var twitter_active = _.include(shareModel.get('destination'), 'twitter') ? true : false;
+  var facebook_active = _.include(shareModel.get('destination'), 'facebook') ? true : false;
+%>
+
 <form class="rolls-form clearfix">
 	<fieldset class="rolls-share-comment">
 		<textarea id="js-share-roll-textarea" rows="7"></textarea>
@@ -5,15 +10,24 @@
 	<fieldset class="rolls-networks">
 		<ul class="rolls-networks-list">
 			<li>
-				<button id="js-toggle-twitter-sharing" class="networks-twitter">Twitter</button>
+				<button onclick="return false;" id="js-toggle-twitter-sharing" class="networks-twitter <%= twitter_active ? 'active' : '' %>">Twitter</button>
 			</li>
 			<li>
-				<button id="js-toggle-facebook-sharing" class="networks-facebook">Facebook</button>
+				<button onclick="return false;" id="js-toggle-facebook-sharing" class="networks-facebook <%= facebook_active ? 'active' : '' %>">Facebook</button>
 			</li>
+      <li>
+        <span style="color:white;" id="js-share-comment-counter"></span>
+      </li>
+      <li>
+        <div id="js-share-spinner"></div>
+      </li>
+
 <!-- 				<li>
 				<button class="networks-tumblr ir">Tumblr</button>
 			</li>
--->			</ul>
+-->			
+    </ul>
+
 	</fieldset>
 	<fieldset class="rolls-submit">
 		<button onclick="return false;" id="js-submit-roll-share" type="submit">Post</button>
