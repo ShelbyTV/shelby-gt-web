@@ -1,6 +1,7 @@
 libs.shelbyGT.ShareModel = libs.shelbyGT.ShelbyBaseModel.extend({
   defaults : {
-    destination:[]
+    destination:[],
+    comment:''
   },
   url : function(){
     return shelby.config.apiRoot + '/roll/'+shelby.models.guide.get('contentPaneModel').id+'/share';
