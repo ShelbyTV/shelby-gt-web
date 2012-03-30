@@ -26,7 +26,7 @@ shelby = {
       // HACK to get around cross domain cookie issues. we dont have the 'signed_in' cookie
       //   from api.gt.shelby.tv so we are just hitting up /signed_in to see if we get true or false
       if (window.document.location.hostname == "localhost" || window.document.location.hostname == "33.33.33.10"){
-        $.get(this.config.apiRoot + '/signed_in', function(r){
+        $.get(this.config.apiRoot + '/signed_in?cs_key=GoatsFTW', function(r){
           if (r.result.signed_in === true){
             cookies.set("signed_in", "true");
             signedIn = true;
@@ -51,7 +51,7 @@ shelby = {
 //---------------------------------------------------------
 $.ajaxSetup({
   xhrFields: {withCredentials: true}
-  //data: {'cs_key': 'GoatsFTW'}
+  data: {'cs_key': 'GoatsFTW'}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   // attach the API's csrf token to the request for logged in users
