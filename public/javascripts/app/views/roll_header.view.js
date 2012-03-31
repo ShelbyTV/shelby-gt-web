@@ -13,12 +13,13 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.render();
     this.model.bind('change:displayState', this._updateVisibility, this);
+    this.model.bind('change:currentRollModel', this._hideShareRollView, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change:displayState', this._updateVisibility, this);
+    this.model.unbind('change:currentRollModel', this._hideShareRollView, this);
   },
 
   render : function(){
@@ -32,7 +33,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this._shareRollView.$el.toggle();
   },
 
-  _updateVisibility: function(guideModel, displayState){
+  _updateVisibility : function(guideModel, displayState){
     if (displayState == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     } else {
@@ -40,6 +41,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this._shareRollView.$el.hide();
       this.$el.hide();
     }
+  },
+
+  _hideShareRollView : function() {
+    this._shareRollView.$el.hide();
   }
 
 });

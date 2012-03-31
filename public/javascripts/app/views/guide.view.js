@@ -21,16 +21,14 @@
     updateChild : function(model){
       // only render a new content pane if the contentPane* attribtues have been updated
       var changedAttrs = model.changedAttributes();
-      console.log('changed',changedAttrs);
       if (!changedAttrs.displayState && !changedAttrs.currentRollModel) {
         return;
       }
       this._leaveChildren();
-      var displayComponents = this._mapDisplayState();
-      this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
+      this._mapAppendChildView();
     },
 
-    _mapDisplayState : function(){
+    _mapAppendChildView : function(){
       var displayComponents;
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
@@ -38,7 +36,7 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard
           };
-        break;
+         break;
         case libs.shelbyGT.DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
@@ -48,12 +46,13 @@
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
           displayComponents = {
-          viewProto : RollView,
-          model : this.model.get('currentRollModel')
-        };
-        break;
+            viewProto : RollView,
+            model : this.model.get('currentRollModel')
+          };
+          break;
       }
-      return displayComponents;
+
+      this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
     }
 
   });

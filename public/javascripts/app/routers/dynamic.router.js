@@ -51,7 +51,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
     shelby.models.dashboard.fetch({
       data: {include_children:true},
-      success: this._activateFirstDashboardFrameView
+      success: this._activateFirstDashboardVideoFrame
     });
   },
 
@@ -136,7 +136,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
 
     this._setupTopLevelViews();
-    var rollModel = (typeof(roll) === 'string') ? new libs.shelbyGT.RollModel({id:roll}) : roll;
+    var rollModel;
+    if (typeof(roll) === 'string') {
+      // if roll is a string, its the id of the roll to display, so get or construct a model for that id
+      var followedRoll = shelby.models.user.get('roll_followings').find(function(rollToCompare){
+        // if the roll is one the user follows, we want to use the existing model in the user's roll followings collection
+        return rollToCompare.id == roll;
+      });
+      rollModel = followedRoll || new libs.shelbyGT.RollModel({id:roll});
+    } else {
+      // if roll is a Model, just use it
+      rollModel = roll;
+    }
     if (options.updateRollTitle) {
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
