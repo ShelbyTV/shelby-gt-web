@@ -765,46 +765,54 @@ a:hover, a:visited, a:active {
 }
 
 /* line 242, ../../app/stylesheets/partials/video-guide.scss */
-.filter {
+.filter-controls {
   background: #353535;
   border-top: 1px solid #222;
   border-bottom: 1px solid #111;
   font-size: 11px;
   font-weight: 700;
   margin: 0;
-  padding: 0 12px;
+  padding: 0;
+  position: relative;
   text-align: center;
   width: 100%;
 }
-/* line 256, ../../app/stylesheets/partials/video-guide.scss */
-.filter li {
+/* line 257, ../../app/stylesheets/partials/video-guide.scss */
+.filter-controls li {
   display: block;
 }
-/* line 259, ../../app/stylesheets/partials/video-guide.scss */
-.filter a {
-  line-height: 24px;
+/* line 260, ../../app/stylesheets/partials/video-guide.scss */
+.filter-controls a {
   text-decoration: none;
 }
 
-/* line 265, ../../app/stylesheets/partials/video-guide.scss */
+/* line 266, ../../app/stylesheets/partials/video-guide.scss */
 .current-roll {
   float: left;
+  font-size: 1em;
+  padding: 5px;
   text-align: center;
-  width: 60%;
+  width: 100%;
 }
 
-/* line 271, ../../app/stylesheets/partials/video-guide.scss */
-.back {
-  float: left;
+/* line 281, ../../app/stylesheets/partials/video-guide.scss */
+.roll-back {
+  position: absolute;
+  padding: 5px 10px;
+  top: 0;
+  width: 25%;
+  left: 0;
   text-align: left;
-  width: 20%;
 }
 
-/* line 276, ../../app/stylesheets/partials/video-guide.scss */
-.next {
-  float: right;
+/* line 290, ../../app/stylesheets/partials/video-guide.scss */
+.roll-next {
+  position: absolute;
+  padding: 5px 10px;
+  top: 0;
+  width: 25%;
+  right: 0;
   text-align: right;
-  width: 20%;
 }
 
 /* Welcome to Compass.
@@ -816,19 +824,19 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 8, ../../app/stylesheets/partials/video-card.scss */
-.list, .rolls-list {
+.list, .rolls-list, .form-rolls-list {
   margin: 0;
   padding: 0;
 }
 /* line 12, ../../app/stylesheets/partials/video-card.scss */
-.list li, .rolls-list li {
+.list li, .rolls-list li, .form-rolls-list li {
   background: url("../images/assets/noise.png") #494949;
   border-bottom: 1px solid #222;
   list-style-type: none;
   padding: 10px;
 }
 /* line 22, ../../app/stylesheets/partials/video-card.scss */
-.list .active-frame, .rolls-list .active-frame {
+.list .active-frame, .rolls-list .active-frame, .form-rolls-list .active-frame {
   background: url("../images/assets/noise.png") #6d6d6d;
 }
 
@@ -1377,10 +1385,12 @@ a:hover, a:visited, a:active {
   border: 1px solid #222;
   color: #efefef;
   display: block;
+  height: 34px;
   float: inherit;
   line-height: 2.5;
   margin: 10px 0;
   padding: 0 10%;
+  width: 81px;
 }
 
 /* Welcome to Compass.
@@ -1445,6 +1455,40 @@ a:hover, a:visited, a:active {
 .roll-item-thumbnail img {
   display: block;
   width: 100%;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 10, ../../app/stylesheets/partials/form-roll-video.scss */
+.form-rolls-list a {
+  display: block;
+}
+/* line 15, ../../app/stylesheets/partials/form-roll-video.scss */
+.form-rolls-list .public-roll.new:before, .form-rolls-list .new.private-roll:before {
+  content: "+";
+}
+/* line 18, ../../app/stylesheets/partials/form-roll-video.scss */
+.form-rolls-list .public-roll:after, .form-rolls-list .private-roll:after {
+  content: url("../images/assets/rolls_public.svg");
+  float: right;
+}
+/* line 28, ../../app/stylesheets/partials/form-roll-video.scss */
+.form-rolls-list .private-roll:after {
+  content: url("../images/assets/rolls_private.svg");
+}
+
+/* line 38, ../../app/stylesheets/partials/form-roll-video.scss */
+.share-comment-counter {
+  color: white;
+  float: right;
+  line-height: 2.5;
+  margin: 10px;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */

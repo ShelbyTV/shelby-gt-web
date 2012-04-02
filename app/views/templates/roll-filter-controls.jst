@@ -1,9 +1,11 @@
-<li class="back">
-  <a href="#">Back</a>
-</li>
-<li class="current-roll">
-  <a href="#"><%= roll.get('title') %></a>
-</li>
-<li class="next">
-  <a href="#">Next Roll</a>
-</li>
+<a id="js-roll-back" class="roll-back" href="#">
+	Back
+</a>
+
+<h2 class="current-roll">
+	<%= roll.get('title') %>
+</h2>
+
+<a id="js-roll-next" class="roll-next" href="#">
+	Next Roll
+</a>
