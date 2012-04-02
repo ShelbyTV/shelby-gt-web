@@ -1,3 +1,75 @@
-Branch guide:
--------------
-subnavs - styles and z-index with search bar
+Week of 4/2 to 4/6
+------------------
+
+0-----------------
+------------------
+
+Matyus (2nd biggest dick)
+-------------------------
+> rolling a frame UI
+> player controls
+> comment overlay
+> preferences 'panel'/pane/view/div
+> team 'panel'/pane/view/div
+> help 'panel'/pane/view/div
+> commentary 'panel'/pane/view/div
+> landing page / logged out experience
+
+1-----------------
+------------------
+
+Menus (at top) (Josh)
+--------------
+|mkrecny    | < not clickable
+|preferences| < this needs to be done
+> kill all others in the You dropdown
+> implement routing on click of dropdown stuff(s)
+
+Share Roll View (Myles)
+----------------
+> success msg / popup / alert() / console.log
+
+2-----------------
+------------------
+
+frame View
+---------
+> dynamic rendering of conversation messages (Myles)
+> Roll source (name??) -> links to source roll (Myles)
+> clickable video thumbnail (Josh)
+> upvoting dynamically rendered and clickable (Josh)
+
+Roll List View (Josh)
+--------------
+> thumbnails in roll list view
+
+3-----------------
+------------------
+
+Rolling a Frame
+---------------
+> do it all
+
+Join Roll
+---------
+> do it all
+
+Video player stuffs (Dan)
+-------------------
+> Player Controls 
+> on video end
+> comment overlay on start
+
+MASSIVE PILE-UP OF SHIT
+-----------------------
+
+Search
+------
+> do it all (minus videoverse)
+
+Logged Out Experience
+---------------------
+> do it all
+
+DO IT ALL BY YESTERDAY, JUST COZ
+--------------------------------
