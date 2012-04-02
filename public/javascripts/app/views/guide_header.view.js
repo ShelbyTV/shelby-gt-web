@@ -31,7 +31,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
       //self.$(subnavId).hide();
     });
     this.$(subnavId).mouseenter(function(){
-      $(this).show()
+      $(this).show();
     });
     this.$(subnavId).mouseleave(function(){
       $(this).hide();
