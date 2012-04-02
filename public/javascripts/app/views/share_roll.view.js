@@ -18,6 +18,11 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
     this.model.bind("change:destination", this._updateDestinationButtons, this);
   },
 
+  _cleanup : function(){
+    this.model.unbind("change:comment", this._updateCommentLengthCounter, this);
+    this.model.unbind("change:destination", this._updateDestinationButtons, this);
+  },
+
   render : function(){
     this.$el.html(this.template({shareModel:this.model}));
     this.spinner = this._initSpinner();

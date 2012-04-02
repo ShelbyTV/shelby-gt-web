@@ -1,6 +1,6 @@
 var ShelbyBaseView = Support.CompositeView.extend({
   _cleanup : function(){
-    this.initialize(false);
+    SheblyBaseView.prototype.initialize.call(this, true) 
   }
   initialize : function(bind){
     var actions = bind ? 'bind' : 'unbind';
