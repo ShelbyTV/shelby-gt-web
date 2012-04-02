@@ -94,7 +94,7 @@
       <% if (messages.length>1){ %>
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> See </span> 12 shares</a>
       <% } %>
-      <a class="video-source" href="#">Source: Userhandle's Roll</a>
+      <a onclick="return false;" class="video-source" href="#">Source: <%= creator.get('nickname') %>'s Roll</a>
     </div> 
   
   </footer>

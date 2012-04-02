@@ -8,6 +8,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
+    "click .video-source"   : "_goToRoll",
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
