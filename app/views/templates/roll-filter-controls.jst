@@ -1,11 +1,15 @@
-<a id="js-roll-back" class="roll-back" href="#">
-	Back
-</a>
+<% if (guide.get('insideRollList')) { %>
+	<a id="js-roll-back" class="roll-back" href="#">
+		Back
+	</a>
+<% } %>
 
 <h2 class="current-roll">
 	<%= roll.get('title') %>
 </h2>
 
-<a id="js-roll-next" class="roll-next" href="#">
-	Next Roll
-</a>
+<% if (guide.get('insideRollList')) { %>
+	<a id="js-roll-next" class="roll-next" href="#">
+		Next Roll
+	</a>
+<% } %>

@@ -22,7 +22,7 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({roll:this.model}));
+    this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
   },
 
   _goBackToRollsList : function(){
