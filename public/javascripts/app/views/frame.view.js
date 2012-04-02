@@ -70,7 +70,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _onSavedTransitionComplete : function(){
     // when the saved indicator has completely faded out, remove it from the DOM
-    console.log('finished transition', arguments);
     this.$('.video-saved').remove();
   },
 

@@ -1,36 +1,45 @@
-libs.shelbyGT.MenuView = Support.CompositeView.extend({
+( function(){
 
-  events : {
-    "click .stream" : "goToStream",
-    "click .rolls" : "goToRolls",
-    "click .saves" : "goToSaves"
-  },
+  // shorten names of included library prototypes
+  var RollHeaderView = libs.shelbyGT.RollHeaderView;
+  var FilterControlsView = libs.shelbyGT.FilterControlsView;
 
-  el : '.menu',
+  libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
-  template : function(obj){
-    return JST['menu'](obj);
-  },
+    events : {
+      "click .stream" : "_goToStream",
+      "click .rolls" : "_goToRolls",
+      "click .saves" : "_goToSaves"
+    },
 
-  initialize : function(){
-    this.render();
-  },
+    el : '.menu',
 
-  render : function(active){
-    this.$el.html(this.template());
-    this.renderChild(new libs.shelbyGT.RollHeaderView({model:this.model}));
-  },
+    template : function(obj){
+      return JST['menu'](obj);
+    },
 
-  goToStream : function(){
-    shelby.router.navigate('/', {trigger:true});
-  },
+    initialize : function(){
+      this.render();
+    },
 
-  goToRolls : function(){
-    shelby.router.navigate('/rolls', {trigger:true});
-  },
+    render : function(active){
+      this.$el.html(this.template());
+      this.renderChild(new RollHeaderView({model:this.model}));
+      this.renderChild(new FilterControlsView({model:this.model}));
+    },
 
-  goToSaves : function(){
-    shelby.router.navigate('/saves', {trigger:true});
-  }
+    _goToStream : function(){
+      shelby.router.navigate('/', {trigger:true});
+    },
 
-});
+    _goToRolls : function(){
+      shelby.router.navigate('/rolls', {trigger:true});
+    },
+
+    _goToSaves : function(){
+      shelby.router.navigate('/saves', {trigger:true});
+    }
+
+  });
+
+} ) ();

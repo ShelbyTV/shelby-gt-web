@@ -30,7 +30,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
   },
 
   _onUpdateShareComment : function(event){
-    this.model.set('comment', this.$('#js-share-roll-textarea').val()); 
+    this.model.set('comment', this.$('#js-share-roll-textarea').val());
     (event.keyCode===13) && this._shareCurrentRoll();
   },
 
@@ -52,7 +52,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
 
   _updateCommentLengthCounter : function(shareModel, comment){
     var charsLeft = this._getCharsLeft(comment);
-    this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft); 
+    this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
   },
 
   _shareCurrentRoll : function(){
@@ -83,7 +83,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
   },
 
   _toggleSharingByNetwork : function(network){
-    var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference; 
+    var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference;
     this.model.set('destination', setOperation(this.model.get('destination'), [network]));
   },
 
