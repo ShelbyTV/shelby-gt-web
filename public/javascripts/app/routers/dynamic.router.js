@@ -5,6 +5,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
+    "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
+    "carousel/:rollId/:title" : "displayRollInCarousel",
+    "carousel/:rollId/" : "displayRollInCarousel",
+    "carousel/:rollId" : "displayRollInCarousel",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "" : "displayDashboard",
@@ -18,10 +22,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayFrameInRoll : function(rollId, frameId){
     if (rollId != shelby.models.user.get('watch_later_roll').id) {
       var self = this;
-      this._bindContentPaneModelChanges({include_children:true}, function(rollModel, response){
-        self._activateFrameInRollById(rollModel, frameId);
+      this._setupRollView(rollId, null, {
+        data: {include_children:true},
+        onRollFetch: function(rollModel, response){
+          self._activateFrameInRollById(rollModel, frameId);
+        }
       });
-      this._setupRollView(rollId);
     } else {
       // if this is the watch later roll, reroute to the special route for that roll
       this.navigate('saves', {trigger:true,replace:true});
@@ -30,39 +36,57 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRoll : function(rollId, title){
     if (rollId != shelby.models.user.get('watch_later_roll').id) {
-      this._bindContentPaneModelChanges({include_children:true}, this._activateFirstRollFrame);
-      this._setupRollView(rollId, {updateRollTitle:true});
+      this._setupRollView(rollId, title, {
+        updateRollTitle: true,
+        data: {include_children:true},
+        onRollFetch: this._activateFirstRollFrame
+      });
     } else {
       // if this is the watch later roll, reroute to the special handling for that roll
       this.navigate('saves', {trigger:true,replace:true});
     }
   },
 
+  displayFrameInRollInCarousel : function(rollId, frameId){
+    shelby.models.guide.set('insideRollList', true);
+    this.displayFrameInRoll(rollId, frameId);
+  },
+
+  displayRollInCarousel : function(rollId, title){
+    shelby.models.guide.set('insideRollList', true);
+    this.displayRoll(rollId, title);
+  },
+
   displayDashboard : function(){
-    this._bindContentPaneModelChanges({include_children:true}, this._activateFirstDashboardVideoFrame);
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
-      'contentPaneView': libs.shelbyGT.DashboardView,
-      'contentPaneModel': shelby.models.dashboard,
-      'sharableRollDisplayed': false
+      'displayState' : libs.shelbyGT.DisplayState.dashboard,
+      'insideRollList' : false
+    });
+    shelby.models.dashboard.fetch({
+      data: {include_children:true},
+      success: this._activateFirstDashboardVideoFrame
     });
   },
 
   displayRollList : function(){
-    this._bindContentPaneModelChanges({include_rolls:true});
     this._setupTopLevelViews();
     shelby.models.guide.set({
-      'contentPaneView': libs.shelbyGT.RollListView,
-      'contentPaneModel': shelby.models.user,
-      'sharableRollDisplayed': false});
+      'displayState' : libs.shelbyGT.DisplayState.rollList,
+      'insideRollList' : true
+    });
+    shelby.models.user.fetch({
+      data: {include_rolls:true}
+    });
   },
 
   displaySaves : function(){
     var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
-      this._bindContentPaneModelChanges({include_children:true});
-      this._setupRollView(watchLaterRoll);
+      this._setupRollView(watchLaterRoll, null, {
+        data: {include_children:true}
+      });
     } else {
       alert("Sorry, you don't have a saves roll.");
       this.navigate('', {trigger:true, replace:true});
@@ -80,32 +104,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    this.navigate('roll/'+roll.id+(rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
-  },
-
-  //---
-  //PRIVATE METHODS
-  //---
-  
-  _fetchModel : function(model, fetchParams, cb){
-      // whenever a new model (roll or dashboard) is set on the content pane, fetch (possibly re-loading) its contents
-      // this way, the content pane will render with the latest contents of that roll or dashboard
-      model.fetch({data:fetchParams, success:cb});
-  },
-
-  _bindContentPaneModelChanges : function(fetchParams, cb){
-    var self = this;
-    shelby.models.guide.unbind('change:contentPaneModel');
-
-    shelby.models.guide.bind('change:contentPaneModel', function(guideModel, contentPaneModel){
-      self._fetchModel(contentPaneModel, fetchParams, cb);
-    });
-    
+    var prefix = shelby.models.guide.get('insideRollList') ? 'carousel/' : 'roll/';
+    this.navigate(prefix + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
     var firstFrame = rollModel.get('frames').first();
-    shelby.models.guide.set('activeFrameModel', firstFrame);
+    if (firstFrame) {
+      shelby.models.guide.set('activeFrameModel', firstFrame);
+    }
   },
 
   _activateFrameInRollById : function(rollModel, frameId) {
@@ -134,31 +141,51 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView({model:shelby.models.guide});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
-    shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
+    shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState});
   },
   
-  _setupRollView : function(roll, options){
+  _setupRollView : function(roll, title, options){
     if (!options) {
       options = {};
     }
     _(options).defaults({
-        updateRollTitle: false
+        updateRollTitle: false,
+        onRollFetch: null,
+        data: null
     });
 
     this._setupTopLevelViews();
-    var rollModel = (typeof(roll) === 'string') ? new libs.shelbyGT.RollModel({id:roll}) : roll;
+    var rollModel;
+    if (typeof(roll) === 'string') {
+      // if roll is a string, its the id of the roll to display, so get or construct a model for that id
+      var followedRoll = shelby.models.user.get('roll_followings').find(function(rollToCompare){
+        // if the roll is one the user follows, we want to use the existing model in the user's roll followings collection
+        return rollToCompare.id == roll;
+      });
+      rollModel = followedRoll || new libs.shelbyGT.RollModel({id:roll});
+    } else {
+      // if roll is a Model, just use it
+      rollModel = roll;
+    }
     if (options.updateRollTitle) {
+      // if we already have a title for the roll, and it doesn't match the title in the url, correct the url
+      if (rollModel.get('title') && rollModel.get('title') != title) {
+        this.navigateToRoll(rollModel,{trigger:false,replace:true});
+      }
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
     }
 
     // the watch later roll is not sharable
-    var isSharableRoll = rollModel.id != shelby.models.user.get('watch_later_roll').id;
+    var displayState = rollModel.id != shelby.models.user.get('watch_later_roll').id ? 'standardRoll' : 'watchLaterRoll';
 
     shelby.models.guide.set({
-      'contentPaneView': libs.shelbyGT.RollView,
-      'contentPaneModel': rollModel,
-      'sharableRollDisplayed': isSharableRoll
+      'displayState': displayState,
+      'currentRollModel': rollModel
+    });
+    rollModel.fetch({
+      data: options.data,
+      success: options.onRollFetch
     });
   }
 
