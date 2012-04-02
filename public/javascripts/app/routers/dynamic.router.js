@@ -5,6 +5,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
+    "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
+    "carousel/:rollId/:title" : "displayRollInCarousel",
+    "carousel/:rollId/" : "displayRollInCarousel",
+    "carousel/:rollId" : "displayRollInCarousel",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "" : "displayDashboard",
@@ -18,7 +22,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayFrameInRoll : function(rollId, frameId){
     if (rollId != shelby.models.user.get('watch_later_roll').id) {
       var self = this;
-      this._setupRollView(rollId, {
+      this._setupRollView(rollId, null, {
         data: {include_children:true},
         onRollFetch: function(rollModel, response){
           self._activateFrameInRollById(rollModel, frameId);
@@ -32,7 +36,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRoll : function(rollId, title){
     if (rollId != shelby.models.user.get('watch_later_roll').id) {
-      this._setupRollView(rollId, {
+      this._setupRollView(rollId, title, {
         updateRollTitle: true,
         data: {include_children:true},
         onRollFetch: this._activateFirstRollFrame
@@ -43,11 +47,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
+  displayFrameInRollInCarousel : function(rollId, frameId){
+    shelby.models.guide.set('insideRollList', true);
+    this.displayFrameInRoll(rollId, frameId);
+  },
+
+  displayRollInCarousel : function(rollId, title){
+    shelby.models.guide.set('insideRollList', true);
+    this.displayRoll(rollId, title);
+  },
+
   displayDashboard : function(){
     this._setupTopLevelViews();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
-      'displayState': libs.shelbyGT.DisplayState.dashboard
+      'displayState' : libs.shelbyGT.DisplayState.dashboard,
+      'insideRollList' : false
     });
     shelby.models.dashboard.fetch({
       data: {include_children:true},
@@ -58,7 +73,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRollList : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set({
-      'displayState': libs.shelbyGT.DisplayState.rollList
+      'displayState' : libs.shelbyGT.DisplayState.rollList,
+      'insideRollList' : true
     });
     shelby.models.user.fetch({
       data: {include_rolls:true}
@@ -68,7 +84,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displaySaves : function(){
     var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
-      this._setupRollView(watchLaterRoll, {
+      this._setupRollView(watchLaterRoll, null, {
         data: {include_children:true}
       });
     } else {
@@ -88,12 +104,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    this.navigate('roll/'+roll.id+(rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
+    var prefix = shelby.models.guide.get('insideRollList') ? 'carousel/' : 'roll/';
+    this.navigate(prefix + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
     var firstFrame = rollModel.get('frames').first();
-    shelby.models.guide.set('activeFrameModel', firstFrame);
+    if (firstFrame) {
+      shelby.models.guide.set('activeFrameModel', firstFrame);
+    }
   },
 
   _activateFrameInRollById : function(rollModel, frameId) {
@@ -125,7 +144,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide});
   },
   
-  _setupRollView : function(roll, options){
+  _setupRollView : function(roll, title, options){
     if (!options) {
       options = {};
     }
@@ -149,6 +168,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       rollModel = roll;
     }
     if (options.updateRollTitle) {
+      // if we already have a title for the roll, and it doesn't match the title in the url, correct the url
+      if (rollModel.get('title') && rollModel.get('title') != title) {
+        this.navigateToRoll(rollModel,{trigger:false,replace:true});
+      }
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
     }
