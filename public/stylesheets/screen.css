@@ -541,7 +541,7 @@ a:hover, a:visited, a:active {
   padding-left: 0;
 }
 /* line 51, ../../app/stylesheets/partials/video-guide.scss */
-.settings li li a {
+.settings li li a, .settings li li span {
   height: 2em;
   line-height: 2;
   padding-left: 0.5em;
@@ -1120,7 +1120,7 @@ a:hover, a:visited, a:active {
 }
 /* line 275, ../../app/stylesheets/partials/video-card.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332344823');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
