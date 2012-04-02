@@ -1,8 +1,8 @@
 libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
 
   events : {
-    "click .js-back" : "_goBackToRollsList",
-    "click .js-next" : "_goToNextRoll"
+    "click #js-roll-back" : "_goBackToRollsList",
+    "click #js-roll-next" : "_goToNextRoll"
   },
 
   tagName : 'div',
