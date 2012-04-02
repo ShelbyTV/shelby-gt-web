@@ -1,11 +1,24 @@
 libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
-  events : {
-    "click .about" : "showAboutSubnav",
-    "click .profile" : "showProfileSubnav"
+  events : function(){
+    var self = this;
+    var events = {};
+
+    _(this._menus).each(function(menu){
+      events["click " + menu.anchor] = function(){self._selectMenu(menu);};
+      events["mouseenter " + menu.subnavId] = function(e){$(e.currentTarget).show();};
+      events["mouseleave " + menu.subnavId] = function(e){$(e.currentTarget).hide();};
+    });
+
+    return events;
   },
 
   el : '#header',
+
+  _menus : [
+    {anchor: '.about', subnavId: '#about-subnav'},
+    {anchor: '.profile', subnavId: '#profile-subnav'}
+  ],
 
   template : function(obj){
     return JST['guide-header'](obj);
@@ -13,37 +26,17 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
   initialize : function(){
     this.render();
-    this._setupSubnavBindings('#about-subnav', '.about');
-    this._setupSubnavBindings('#profile-subnav', '.profile');
   },
 
   render : function(){
     this.$el.html(this.template({user:this.model}));
   },
 
-  _showSubnav : function(subnavId){
-    this.$(subnavId).show();
-  },
-
-  _setupSubnavBindings : function(subnavId, handleId){
-    var self = this;
-    this.$(handleId).mouseleave(function(){
-      //self.$(subnavId).hide();
+  _selectMenu : function(menu){
+    _(this._menus).each(function(menu){
+      $(menu.subnavId).hide();
     });
-    this.$(subnavId).mouseenter(function(){
-      $(this).show();
-    });
-    this.$(subnavId).mouseleave(function(){
-      $(this).hide();
-    });
-  },
-
-  showAboutSubnav : function(){
-    this._showSubnav('#about-subnav');
-  },
-
-  showProfileSubnav : function(){
-    this._showSubnav('#profile-subnav');
+    $(menu.subnavId).show();
   }
 
 });
