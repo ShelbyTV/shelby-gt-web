@@ -1,0 +1,44 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.video-player-aside{
+
+	.video-activity-list{
+		border-left:1px solid black;
+		border-right:1px solid black;
+		height:67px;
+		width:100%;
+
+		li{
+			display:none;
+		}
+		.first{
+			display:block;
+		}
+	}
+
+	width:473px;
+
+}
+
+.aside-nav{
+	@include background(
+		url('../images/assets/comment_arrow_right.svg') #303030,
+		$softShelbyDarkGray
+	);
+	@include border-radius($radius);
+	@include box-shadow(inset 1px 1px 1px 1px lime);
+
+	width: 24px;
+	height: 67px;
+	
+	&.left{
+		@include background(
+			url('../images/assets/comment_arrow_left.svg') #303030
+		);
+	}
+
+}

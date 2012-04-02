@@ -1,0 +1,43 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.form-rolls-list{
+	@extend .list;
+	
+	a{
+		display:block;
+	}
+	
+	.public-roll{
+		&.new:before{
+			content:"+";
+		}
+		&:after{
+			content:url('../images/assets/rolls_public.svg');
+			float:right;
+
+		}
+	}
+
+	.private-roll{
+		@extend .public-roll;
+
+		&:after{
+			content:url('../images/assets/rolls_private.svg');
+		}
+
+	}
+	.share-roll{
+		//nothing yet
+	}
+}
+
+.share-comment-counter{
+	color:white;
+	float:right;
+	line-height:2.5;
+	margin:$defaultMargin;
+}
