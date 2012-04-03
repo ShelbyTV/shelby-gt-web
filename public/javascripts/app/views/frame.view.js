@@ -8,7 +8,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
-    "click .video-source"   : "_goToRoll",
+    "click .video-source"   						: "_goToRoll",
+		"click .video-score"								: "_upvote",
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -62,6 +63,15 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _removeFromWatchLater : function(){
     this.model.destroy();
   },
+
+	_upvote : function(){
+		var self = this;
+		if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
+			this.model.upvote(function(r){
+				self.$('.video-score').text(r.get('upvoters').length);
+			});						
+		}
+	},
 
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
