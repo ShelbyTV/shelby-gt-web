@@ -39,10 +39,6 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
     (event.keyCode===13) && this._shareCurrentRoll();
   },
 
-  _onShareSuccess : function(){
-
-  },
-
   _updateDestinationButtons : function(shareModel){
     var self = this;
     ['twitter', 'facebook'].forEach(function(network){
@@ -66,7 +62,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
     console.log('sharing', this.model.get('comment'), 'to', this.model.get('destination'));
     this._toggleSpinner();
     setTimeout(function(){
-      self._toggleSpinner();
+      self._onShareSuccess();
     }, 400);
     // now save the model
     /*this.model.save(null, {success:function(){
@@ -77,10 +73,15 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
     return false;
   },
 
+  _onShareSuccess : function(){
+    this._toggleSpinner();
+    this.$el.toggle();
+  },
+
   _toggleSpinner : function(){
     if (this.$('.spinner').length){
       console.log('resetting');
-      this.$('#js-submit-roll-share').html('Post');
+      this.$('#js-submit-roll-share').html('Share it');
     } else {
       console.log('spinning');
       this.$('#js-submit-roll-share').html(this.spinner.renderSilent());
