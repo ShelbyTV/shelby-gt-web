@@ -1,0 +1,57 @@
+.filter-controls{
+	@include background(
+		#353535
+	);
+
+	border-top:1px solid #222;
+	border-bottom:1px solid #111;
+	font-size:11px;
+	font-weight:700;
+	margin:0;
+	padding:0;
+	position:relative;
+	text-align:center;
+	width:100%;
+
+	li{
+		display:block;
+	}
+	a{
+//		line-height:24px;
+		text-decoration:none;
+	}
+}
+
+.current-roll{
+	float:left;
+	font-size:1em;
+	padding:$defaultMargin/2;
+	text-align:center;
+	width:100%;
+}
+
+@mixin backandforth{
+	position:absolute;
+	padding:$defaultMargin/2 $defaultMargin;
+	top:0;
+	width:25%;
+}
+
+.roll-back{
+	@include backandforth;
+	left:0;
+//	padding:$defaultMargin;
+//	position:absolute;
+	text-align:left;
+//	top:0;
+//	width:50%;
+}
+.roll-next{
+	@include backandforth;
+//	padding:$defaultMargin;
+//	position:absolute;
+	right:0;
+	text-align:right;
+//	top:0;
+//	width:50%;
+}

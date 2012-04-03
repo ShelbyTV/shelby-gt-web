@@ -1,22 +1,23 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'
-        from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss
+        on line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss, in `background'
+        from line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss
 
-1: .video-guide{
-2: 	@include background(
-3: 		url('../images/assets/noise.png'),
-4: 		$softLinearGradient
-5: 	);
-6: 	@include box-shadow(0px 1px 3px 1px #222);
-7: 
-8: 	margin:0;
-9: 	padding:0; 
-10: 	position:relative;
+3: 		"compass/css3/box-shadow";
+4: 
+5: .header{
+6: 	@include background(
+7: 		url('../images/assets/noise.png') $settingsBG
+8: 	);
+9: 
+10: 	border-bottom:1px solid #222;
+11: 
+12: 	nav{
+13: 		display:inline;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/video-guide.scss:5:in `background'
-/shelbytv/app/stylesheets/partials/video-guide.scss:5
+/shelbytv/app/stylesheets/partials/guide-header.scss:8:in `background'
+/shelbytv/app/stylesheets/partials/guide-header.scss:8
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -92,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss\A \A 1: .video-guide{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png'),\A 4: 		$softLinearGradient\A 5: 	);\A 6: 	@include box-shadow(0px 1px 3px 1px #222);\A 7: \A 8: 	margin:0;\A 9: 	padding:0; \A 10: 	position:relative;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss, in `background'\A         from line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss\A \A 3: 		\"compass/css3/box-shadow\";\A 4: \A 5: .header{\A 6: 	@include background(\A 7: 		url('../images/assets/noise.png') $settingsBG\A 8: 	);\A 9: \A 10: 	border-bottom:1px solid #222;\A 11: \A 12: 	nav{\A 13: 		display:inline;"; }

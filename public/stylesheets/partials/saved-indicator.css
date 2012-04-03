@@ -1,22 +1,19 @@
 /*
-Syntax error: Undefined mixin 'background'.
-        on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'
-        from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss
+Syntax error: Undefined mixin 'transition-property'.
+        on line 2 of /shelbytv/app/stylesheets/partials/saved-indicator.scss, in `transition-property'
+        from line 2 of /shelbytv/app/stylesheets/partials/saved-indicator.scss
 
-1: .video-guide{
-2: 	@include background(
-3: 		url('../images/assets/noise.png'),
-4: 		$softLinearGradient
-5: 	);
-6: 	@include box-shadow(0px 1px 3px 1px #222);
-7: 
-8: 	margin:0;
-9: 	padding:0; 
-10: 	position:relative;
+1: .video-saved{
+2: 	@include transition-property(all);
+3: 	@include transition-duration(1s);
+4: 	@include transition-timing-function(ease-in);
+5: 	@include transition-delay(2s);
+6: 
+7: 	background:hsla(0,0,0,0.8);
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/video-guide.scss:5:in `background'
-/shelbytv/app/stylesheets/partials/video-guide.scss:5
+/shelbytv/app/stylesheets/partials/saved-indicator.scss:2:in `transition-property'
+/shelbytv/app/stylesheets/partials/saved-indicator.scss:2
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -92,4 +89,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss\A \A 1: .video-guide{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png'),\A 4: 		$softLinearGradient\A 5: 	);\A 6: 	@include box-shadow(0px 1px 3px 1px #222);\A 7: \A 8: 	margin:0;\A 9: 	padding:0; \A 10: 	position:relative;"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 2 of /shelbytv/app/stylesheets/partials/saved-indicator.scss, in `transition-property'\A         from line 2 of /shelbytv/app/stylesheets/partials/saved-indicator.scss\A \A 1: .video-saved{\A 2: 	@include transition-property(all);\A 3: 	@include transition-duration(1s);\A 4: 	@include transition-timing-function(ease-in);\A 5: 	@include transition-delay(2s);\A 6: \A 7: 	background:hsla(0,0,0,0.8);"; }

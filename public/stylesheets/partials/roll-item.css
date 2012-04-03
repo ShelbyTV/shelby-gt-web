@@ -1,22 +1,22 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'
-        from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss
+        on line 5 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `background'
+        from line 5 of /shelbytv/app/stylesheets/partials/roll-item.scss
 
-1: .video-guide{
+1: .roll-item{
 2: 	@include background(
-3: 		url('../images/assets/noise.png'),
-4: 		$softLinearGradient
+3: //		$softLinearGradient
+4: 		red
 5: 	);
-6: 	@include box-shadow(0px 1px 3px 1px #222);
-7: 
-8: 	margin:0;
-9: 	padding:0; 
-10: 	position:relative;
+6: 
+7: 	display:block;
+8: 	padding:0;
+9: 	margin:0;
+10: 
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/video-guide.scss:5:in `background'
-/shelbytv/app/stylesheets/partials/video-guide.scss:5
+/shelbytv/app/stylesheets/partials/roll-item.scss:5:in `background'
+/shelbytv/app/stylesheets/partials/roll-item.scss:5
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -92,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/video-guide.scss\A \A 1: .video-guide{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png'),\A 4: 		$softLinearGradient\A 5: 	);\A 6: 	@include box-shadow(0px 1px 3px 1px #222);\A 7: \A 8: 	margin:0;\A 9: 	padding:0; \A 10: 	position:relative;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/roll-item.scss\A \A 1: .roll-item{\A 2: 	@include background(\A 3: //		$softLinearGradient\A 4: 		red\A 5: 	);\A 6: \A 7: 	display:block;\A 8: 	padding:0;\A 9: 	margin:0;\A 10: "; }

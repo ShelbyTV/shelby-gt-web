@@ -1,0 +1,32 @@
+.video-saved{
+	@include transition-property(all);
+	@include transition-duration(1s);
+	@include transition-timing-function(ease-in);
+	@include transition-delay(2s);
+
+	background:hsla(0,0,0,0.8);
+	height:100%;
+	left:0;
+	padding-top:10px;
+	position:absolute;
+	text-align:center;
+	top:0;
+	width:100%;
+
+	img{
+		width:40px;
+
+	}
+	p{
+		font-size:24px;	
+		font-weight:500;
+		line-height:1.231;
+		margin:0;
+	}
+}
+
+.video-saved-trans{
+
+	@include opacity(0.0);
+
+}

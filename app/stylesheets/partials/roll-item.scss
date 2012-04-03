@@ -1,0 +1,33 @@
+.roll-item{
+	@include background(
+//		$softLinearGradient
+		red
+	);
+
+	display:block;
+	padding:0;
+	margin:0;
+
+	h2{
+		display:block;
+		float:left;
+		font-size:14px;
+		line-height:2.5;
+		margin-left:$margin;
+	}
+}
+
+.roll-item-thumbnail{
+	@include border-radius($radius);
+
+	display:block;
+	float:left;
+	height:36px;
+	overflow:hidden;
+	width:36px;
+
+	img{
+		display:block;
+		height:100%;
+	}
+}
