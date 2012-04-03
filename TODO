@@ -6,14 +6,15 @@ Week of 4/2 to 4/6
 
 Matyus (2nd biggest dick)
 -------------------------
-> rolling a frame UI
-> player controls
-> comment overlay
-> preferences 'panel'/pane/view/div
-> team 'panel'/pane/view/div
-> help 'panel'/pane/view/div
-> commentary 'panel'/pane/view/div
-> landing page / logged out experience
+1.5> rolling a frame UI [started html]
+1> player controls [built in html, working on css]
+1> Dynamic Height (using JS? prefer css.)
+2> comment overlay [started html, css]
+
+3> preferences 'panel'/pane/view/div
+3> team 'panel'/pane/view/div
+3> help 'panel'/pane/view/div
+4> landing page / logged out experience
 
 1-----------------
 ------------------
@@ -24,48 +25,46 @@ Menus (at top) (Josh)
 
 Share Roll View (Myles)
 ----------------
+[waiting on transfer from V]
 > success msg / popup / alert() / console.log
 
 2-----------------
 ------------------
 
-frame View
+frame View (aka video card)
 ---------
 > dynamic rendering of conversation messages (Myles) -- done but not tested
-> Roll source (name??) -> links to source roll (Myles) -- done
-> upvoting dynamically rendered and clickable (Josh)
+LOW> upvoting dynamically rendered and clickable (Henron)
+HIGH> on "show comments" also display box to add new comment (Myles)
 
 3-----------------
 ------------------
 
-Rolling a Frame
+Rolling a Frame (Josh + Matyus)
 ---------------
-> do it all
+MED> do it all
 
-Join Roll
+Join Roll (Henron)
 ---------
-> do it all
+LOW> do it all
 
 Video player stuffs (Dan)
 -------------------
-> Player Controls 
+> Player Controls [do backbone view, dummy jst, tell Mike]
 > on video end
 > comment overlay on start
 
-MASSIVE PILE-UP OF SHIT
------------------------
 
-Dynamic Height (using JS)
--------------------------
-> do it all
+(LOW PRIORTY) LESS MASSIVE PILE-UP OF SHIT
+-----------------------
 
 Search
 ------
-> do it all (minus videoverse)
+NON-MVP > do it all (minus videoverse)
 
 Logged Out Experience
 ---------------------
-> do it all
+LOW > do it all
 
 DO IT ALL BY YESTERDAY, JUST COZ
 --------------------------------
