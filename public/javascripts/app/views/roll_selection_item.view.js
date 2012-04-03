@@ -1,7 +1,7 @@
 libs.shelbyGT.RollSelectionItemView = ListItemView.extend({
 
   events : {
-    "click" : "_rollTo"
+    "click" : "_reRollToThis"
   },
 
   tagName : 'li',
@@ -16,8 +16,10 @@ libs.shelbyGT.RollSelectionItemView = ListItemView.extend({
     this.$el.html(this.template({roll : this.model}));
   },
 
-  _rollTo : function(){
-    console.log('Roll',this.model,'frame',this.options.frame);
+  _reRollToThis : function(){
+    this.options.frame.reRoll(this.model, function(){
+      console.log('rolling successful');
+    });
   }
 
 });
