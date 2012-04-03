@@ -6,7 +6,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   options : {
     collectionAttribute : 'listCollection',
-    listItemView : 'ListItemView'
+    listItemView : 'ListItemView',
+    insert : {
+      position : 'append',
+      selector : null
+    }
   },
   
   initialize : function(){
@@ -20,7 +24,22 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   addOne : function(item){
-    this.appendChild(this._constructListItemView(item));
+    var childView = this._constructListItemView(item);
+    if (this.options.insert && this.options.insert.position) {
+      switch (this.options.insert.position) {
+        case 'append' :
+          this.appendChild(childView);
+          return;
+        case 'before' :
+          if (this.options.insert.selector) {
+            this.insertChildBefore(childView, this.options.insert.selector);
+            return;
+          }
+      }
+    }
+
+    // default behavior if not enough options were supplied
+    this.appendChild(childView);
   },
 
   removeOne : function(item){

@@ -4,7 +4,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   events : {
     "click .js-frame-activate"          : "_activate",
-    "click .roll"                       : "_goToRoll",
+    "click .roll-frame"                 : "_roll",
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
@@ -48,8 +48,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     console.log('adding', msg, 'to', this.model.get('conversation'));
   },
 
-  _goToRoll : function(){
-    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+  _roll : function(){
+    this.appendChildInto(new libs.shelbyGT.FrameRollingView({model:this.model}), 'article');
+    shelby.models.user.fetch({data:{include_rolls:true}});
   },
 
   _saveToWatchLater : function(){
@@ -89,15 +90,19 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     if (event.keyCode!==13) return false;
     var text = this.$('.js-add-message-input').val();
     if (!this._validateNewMessage(text)) return false;
-    var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});    
+    var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
     msg.save(null, {
       success:function(conversation){
-        self.model.set('conversation', conversation)
+        self.model.set('conversation', conversation);
       },
       error:function(){
         console.log('err', arguments);
       }
     });
+  },
+
+  _goToRoll : function(){
+    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
   },
 
   _onSavedTransitionComplete : function(){
