@@ -66,9 +66,16 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
 	_upvote : function(){
 		var self = this;
+		// check if they're already an upvoter
 		if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
 			this.model.upvote(function(r){
-				self.$('.video-score').text(r.get('upvoters').length);
+				var upvoters = r.get('upvoters');
+				// a little, possibly unnecessary, animation
+				self.$('.video-score').animate({'margin-top': '-=21'}, 100, function(){
+					$(this).css('margin-top','0px');
+				}).text(upvoters.length);
+				// set the returned upvoter attr to prevent user from being able to upvote again.
+				self.model.set('upvoters', upvoters);
 			});						
 		}
 	},
