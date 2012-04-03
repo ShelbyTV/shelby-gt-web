@@ -37,5 +37,17 @@ var Bootstrap = {
   },
   playVideo : function(id){
     shelby.views.displayVideo = new libs.shelbyGT.VideoDisplayView({model:Backbone.Relational.store.find(libs.shelbyGT.VideoModel, id)});
+  },
+  addMessageToActiveFrame : function(msg){
+    var frame = shelby.models.guide.get('activeFrameModel');
+    var msg = new libs.shelbyGT.MessageModel({text:msg, conversation_id:frame.get('conversation').id});    
+    msg.save(null, {
+      success:function(conversation){
+        frame.set('conversation', conversation)
+      },
+      error:function(){
+        console.log('err', arguments);
+      }
+    });
   }
 };

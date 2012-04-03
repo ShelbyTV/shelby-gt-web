@@ -8,7 +8,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
-    "click .video-source"   : "_goToRoll",
+    "click .video-source"               : "_goToRoll",
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -25,6 +25,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
+    this.model.get('conversation').on('change', this._onConversationChange, this);
     ListItemView.prototype.initialize.call(this);
   },
 
@@ -33,12 +34,16 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     ListItemView.prototype._cleanup.call(this);
   },
 
-  render : function(){
-    this.$el.html(this.template({frame : this.model}));
+  render : function(showConversation){
+    this.$el.html(this.template({frame : this.model, showConversation : showConversation}));
   },
 
   _activate : function(){
     shelby.models.guide.set('activeFrameModel', this.model);
+  },
+
+  _addMessageToConversation : function(msg){
+    console.log('adding', msg, 'to', this.model.get('conversation'));
   },
 
   _goToRoll : function(){
@@ -67,6 +72,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
     this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'See');
+  },
+
+  _onConversationChange : function(){
+    console.log('conversation changed', arguments);
+    this.render(true);
   },
 
   _onSavedTransitionComplete : function(){

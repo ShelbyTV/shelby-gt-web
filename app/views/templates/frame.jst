@@ -55,7 +55,7 @@
       </blockquote>
 
 
-      <section class="video-activity js-video-activity" style="display:none">
+      <section class="video-activity js-video-activity" style="<%= showConversation ? '' : 'display:none' %>">
 
         <!-- sample build -->
         <ul class="video-activity-list">
@@ -77,7 +77,7 @@
 
                 <div class="user-video-text">
                     <p>
-                      <%= firstMessage.getText() %>
+                      <%= msg.getText() %>
                     </p>
                 </div>
               </div>
@@ -87,13 +87,12 @@
         <% }); %>
         </ul>
         <!-- sample build -->
+        <input class="js-add-message-input" />
       </section><!-- eo section.video-shares -->
     <% } %>
   
     <div class="video-footer">
-      <% if (messages.length>1){ %>
-      <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> See </span> 12 shares</a>
-      <% } %>
+      <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation (<%= messages.length-1 %>)</a>
       <a onclick="return false;" class="video-source" href="#">Source: <%= creator.get('nickname') %>'s Roll</a>
     </div> 
   
