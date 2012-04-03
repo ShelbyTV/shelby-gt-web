@@ -13,6 +13,7 @@ body{
 		url('../images/assets/noise.png') #005500
 	);
 
+	overflow:hidden;
 
 }
 
@@ -27,19 +28,26 @@ a{
 
 }
 
-#wrapper{}
+.wrapper{
+	bottom:0;
+	left:0;
+	position:absolute;
+	right:0;
+	top:0;
+}
 
-#lining{
+.lining{
 	float:left;
 	margin-right:-330px;
+	height:100%;
 	width:100%;
 
 }
 
 .video-player{
-	background: #333;
+	background: #000;
 	color:white;
-	height:520px;
+	height:100%;
 	margin-right:330px;
 
 	p{
@@ -59,12 +67,13 @@ a{
 
 	background:#494949;
 	font-size:1.3em;
+	height:100%;
 	overflow:hidden;
 	position:relative;
 }
 
 .content-body{
-	height:650px;
+	height:100%;
 	overflow-x:hidden;
 	overflow-y:scroll;
 
