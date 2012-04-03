@@ -12,7 +12,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
-    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete"
+    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete",
+    "keyup .js-add-message-input"       : "_onAddMessageInputChange"
   },
 
   tagName : 'li',
@@ -31,6 +32,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
+    this.model.get('conversation').off('change', this._onConversationChange, this);
     ListItemView.prototype._cleanup.call(this);
   },
 
@@ -75,8 +77,27 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onConversationChange : function(){
-    console.log('conversation changed', arguments);
     this.render(true);
+  },
+
+  _validateNewMessage : function(msg){
+    return msg.length;
+  },
+
+  _onAddMessageInputChange : function(event){
+    var self = this;
+    if (event.keyCode!==13) return false;
+    var text = this.$('.js-add-message-input').val();
+    if (!this._validateNewMessage(text)) return false;
+    var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});    
+    msg.save(null, {
+      success:function(conversation){
+        self.model.set('conversation', conversation)
+      },
+      error:function(){
+        console.log('err', arguments);
+      }
+    });
   },
 
   _onSavedTransitionComplete : function(){
