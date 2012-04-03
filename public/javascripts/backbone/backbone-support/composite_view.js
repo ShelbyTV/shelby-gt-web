@@ -24,6 +24,11 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
     $(this.el).append(view.el);
   },
 
+  insertChildBefore: function(view, selector) {
+    this.renderChild(view);
+    this.$(selector).before(view.el);
+  },
+
   renderChildInto: function(view, container) {
     this.renderChild(view);
     $(container).empty().append(view.el);

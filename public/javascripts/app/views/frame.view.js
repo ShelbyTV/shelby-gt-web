@@ -4,11 +4,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   events : {
     "click .js-frame-activate"          : "_activate",
-    "click .roll"                       : "_goToRoll",
+    "click .roll-frame"                 : "_roll",
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
-    "click .video-source"   : "_goToRoll",
+    "click .video-source"               : "_goToRoll",
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -41,8 +41,10 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     shelby.models.guide.set('activeFrameModel', this.model);
   },
 
-  _goToRoll : function(){
-    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+  _roll : function(){
+    console.log('rolling');
+    this.appendChild(new libs.shelbyGT.RollingSelectionListView({model:shelby.models.user,frame:this.model}));
+    shelby.models.user.fetch({data:{include_rolls:true}});
   },
 
   _saveToWatchLater : function(){
@@ -67,6 +69,10 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
     this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'See');
+  },
+
+  _goToRoll : function(){
+    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
   },
 
   _onSavedTransitionComplete : function(){
