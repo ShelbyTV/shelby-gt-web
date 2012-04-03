@@ -42,8 +42,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _roll : function(){
-    console.log('rolling');
-    this.appendChild(new libs.shelbyGT.RollingSelectionListView({model:shelby.models.user,frame:this.model}));
+    this.appendChildInto(new libs.shelbyGT.FrameRollingView({model:this.model}), 'article');
     shelby.models.user.fetch({data:{include_rolls:true}});
   },
 

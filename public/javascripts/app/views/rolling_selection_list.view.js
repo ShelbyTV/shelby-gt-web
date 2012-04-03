@@ -2,17 +2,20 @@
 
   // shorten names of included library prototypes
   var ListView = libs.shelbyGT.ListView;
-  var RollItemView = libs.shelbyGT.RollItemView;
+  var RollSelectionItemView = libs.shelbyGT.RollSelectionItemView;
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
     template : function(obj){
-      return JST['roll-selection-items'](obj);
+      return JST['roll-selection-default-items'](obj);
     },
 
-    initialize : function() {
+    initialize : function(){
+      var self = this;
       this.options.collectionAttribute = 'roll_followings';
-      this.options.listItemView = 'RollItemView';
+      this.options.listItemView = function(item){
+        return new RollSelectionItemView({model:item,frame:self.options.frame});
+      };
       this.options.insert = {
         position : 'before',
         selector : '.js-social'
@@ -24,7 +27,7 @@
       ListView.prototype._cleanup.call(this);
     },
 
-    render : function() {
+    render : function(){
       this.$el.html(this.template());
     }
 
