@@ -422,59 +422,71 @@ body {
   color: #dcddde;
   font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
   background: url("../images/assets/noise.png") #005500;
+  overflow: hidden;
 }
 
-/* line 19, ../../app/stylesheets/partials/main.scss */
+/* line 20, ../../app/stylesheets/partials/main.scss */
 a {
   color: #a4a4a4;
 }
-/* line 24, ../../app/stylesheets/partials/main.scss */
+/* line 25, ../../app/stylesheets/partials/main.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 32, ../../app/stylesheets/partials/main.scss */
-#lining {
-  float: left;
-  margin-right: -330px;
-  width: 100%;
+/* line 31, ../../app/stylesheets/partials/main.scss */
+.wrapper {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 /* line 39, ../../app/stylesheets/partials/main.scss */
+.lining {
+  float: left;
+  margin-right: -330px;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 47, ../../app/stylesheets/partials/main.scss */
 .video-player {
-  background: #333;
+  background: #000;
   color: white;
-  height: 520px;
+  height: 100%;
   margin-right: 330px;
 }
-/* line 45, ../../app/stylesheets/partials/main.scss */
+/* line 53, ../../app/stylesheets/partials/main.scss */
 .video-player p {
   background: black;
   margin: 0;
 }
 
-/* line 52, ../../app/stylesheets/partials/main.scss */
+/* line 60, ../../app/stylesheets/partials/main.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 57, ../../app/stylesheets/partials/main.scss */
+/* line 65, ../../app/stylesheets/partials/main.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
 
-/* line 66, ../../app/stylesheets/partials/main.scss */
+/* line 75, ../../app/stylesheets/partials/main.scss */
 .content-body {
-  height: 650px;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 73, ../../app/stylesheets/partials/main.scss */
+/* line 82, ../../app/stylesheets/partials/main.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
