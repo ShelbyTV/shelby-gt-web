@@ -1514,7 +1514,6 @@ a:hover, a:visited, a:active {
 
 /* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }

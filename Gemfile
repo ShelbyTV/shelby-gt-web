@@ -16,7 +16,7 @@ gem "settingslogic"
 # in production environments by default.
 group :assets do
   # gem 'sass-rails',   '~> 3.2.3'
-  gem "compass", "0.11.3"
+  gem "compass", "0.11.7"
 end
 
 # gem 'jquery-rails'
