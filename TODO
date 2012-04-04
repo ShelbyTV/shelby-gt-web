@@ -9,6 +9,9 @@ Matyus (2nd biggest dick)
 1.5> rolling a frame UI [started html]
 1> player controls [built in html, working on css]
 1> Dynamic Height (using JS? prefer css.)
+	KNOWN ISSUE:
+	height of scrolling div might need to be dynamic 
+	since guide nav is not fixed at all times
 2> comment overlay [started html, css]
 
 3> preferences 'panel'/pane/view/div
@@ -29,9 +32,7 @@ Share Roll View (Myles)
 
 frame View (aka video card)
 ---------
-> dynamic rendering of conversation messages (Myles) -- done but not tested
 LOW> upvoting dynamically rendered and clickable (Henron)
-HIGH> on "show comments" also display box to add new comment (Myles)
 
 3-----------------
 ------------------

@@ -411,13 +411,19 @@ td {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../app/stylesheets/partials/main.scss */
+/* line 6, ../../app/stylesheets/partials/app.html.scss */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 8, ../../app/stylesheets/partials/main.scss */
+/* line 8, ../../app/stylesheets/partials/app.html.scss */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 13, ../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
   font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
@@ -425,16 +431,16 @@ body {
   overflow: hidden;
 }
 
-/* line 20, ../../app/stylesheets/partials/main.scss */
+/* line 25, ../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 25, ../../app/stylesheets/partials/main.scss */
+/* line 30, ../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 31, ../../app/stylesheets/partials/main.scss */
+/* line 36, ../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -443,7 +449,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 39, ../../app/stylesheets/partials/main.scss */
+/* line 44, ../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -451,26 +457,26 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 47, ../../app/stylesheets/partials/main.scss */
+/* line 52, ../../app/stylesheets/partials/app.html.scss */
 .video-player {
   background: #000;
   color: white;
   height: 100%;
   margin-right: 330px;
 }
-/* line 53, ../../app/stylesheets/partials/main.scss */
+/* line 58, ../../app/stylesheets/partials/app.html.scss */
 .video-player p {
   background: black;
   margin: 0;
 }
 
-/* line 60, ../../app/stylesheets/partials/main.scss */
+/* line 65, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 65, ../../app/stylesheets/partials/main.scss */
+/* line 70, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -479,14 +485,14 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 75, ../../app/stylesheets/partials/main.scss */
+/* line 80, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 82, ../../app/stylesheets/partials/main.scss */
+/* line 97, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -1169,7 +1175,7 @@ a:hover, a:visited, a:active {
 }
 /* line 276, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332344823');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1422,6 +1428,52 @@ a:hover, a:visited, a:active {
 /* line 21, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   padding: 0;
+}
+
+/* line 1, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -moz-transition-delay: 2s;
+  -webkit-transition-delay: 2s;
+  -o-transition-delay: 2s;
+  transition-delay: 2s;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  left: 0;
+  padding-top: 10px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+/* line 16, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved img {
+  width: 40px;
+}
+/* line 20, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved p {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.231;
+  margin: 0;
+}
+
+/* line 28, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved-trans {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
 }
 
 /* Welcome to Compass.

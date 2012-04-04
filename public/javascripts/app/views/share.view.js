@@ -1,5 +1,8 @@
-libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
+libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
+  events : function(){
+
+  },
   events : {
     "click #js-submit-roll-share" : "_shareCurrentRoll",
     "keyup #js-share-roll-textarea" : "_onUpdateShareComment",

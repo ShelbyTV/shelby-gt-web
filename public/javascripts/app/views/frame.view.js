@@ -4,7 +4,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   events : {
     "click .js-frame-activate"          : "_activate",
-    "click .roll"                       : "_goToRoll",
+    "click .roll-frame"                 : "_roll",
     "click .save-frame"                 : "_saveToWatchLater",
     "click .remove-frame"               : "_removeFromWatchLater",
     "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
@@ -13,7 +13,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "transitionend .video-saved"        : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
-    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete"
+    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete",
+    "keyup .js-add-message-input"       : "_onAddMessageInputChange"
   },
 
   tagName : 'li',
@@ -26,24 +27,31 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
+    this.model.get('conversation').on('change', this._onConversationChange, this);
     ListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
+    this.model.get('conversation').off('change', this._onConversationChange, this);
     ListItemView.prototype._cleanup.call(this);
   },
 
-  render : function(){
-    this.$el.html(this.template({frame : this.model}));
+  render : function(showConversation){
+    this.$el.html(this.template({frame : this.model, showConversation : showConversation}));
   },
 
   _activate : function(){
     shelby.models.guide.set('activeFrameModel', this.model);
   },
 
-  _goToRoll : function(){
-    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+  _addMessageToConversation : function(msg){
+    console.log('adding', msg, 'to', this.model.get('conversation'));
+  },
+
+  _roll : function(){
+    this.appendChildInto(new libs.shelbyGT.FrameRollingView({model:this.model}), 'article');
+    shelby.models.user.fetch({data:{include_rolls:true}});
   },
 
   _saveToWatchLater : function(){
@@ -84,6 +92,34 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
     this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'See');
+  },
+
+  _onConversationChange : function(){
+    this.render(true);
+  },
+
+  _validateNewMessage : function(msg){
+    return msg.length;
+  },
+
+  _onAddMessageInputChange : function(event){
+    var self = this;
+    if (event.keyCode!==13) return false;
+    var text = this.$('.js-add-message-input').val();
+    if (!this._validateNewMessage(text)) return false;
+    var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
+    msg.save(null, {
+      success:function(conversation){
+        self.model.set('conversation', conversation);
+      },
+      error:function(){
+        console.log('err', arguments);
+      }
+    });
+  },
+
+  _goToRoll : function(){
+    shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
   },
 
   _onSavedTransitionComplete : function(){
