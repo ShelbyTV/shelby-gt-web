@@ -1,0 +1,23 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.rolling-frame{
+	@include transition-property(all);
+	@include transition-duration(0.5s);
+	@include transition-timing-function(ease-in);
+
+	left:0;
+	position:absolute;
+	margin-left:100%;
+	top:0;
+	width:100%;
+
+}
+
+.rolling-frame-trans{
+	margin-left:0;
+	@include translateX(-100%,0,true);
+}

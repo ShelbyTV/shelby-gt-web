@@ -1175,7 +1175,7 @@ a:hover, a:visited, a:active {
 }
 /* line 276, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332344823');
+  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1430,7 +1430,50 @@ a:hover, a:visited, a:active {
   padding: 0;
 }
 
-/* line 1, ../../app/stylesheets/partials/saved-indicator.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  left: 0;
+  position: absolute;
+  margin-left: 100%;
+  top: 0;
+  width: 100%;
+}
+
+/* line 20, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame-trans {
+  -webkit-transform: perspective(0) translateX(-100%);
+  transform: perspective(0) translateX(-100%);
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -1457,11 +1500,11 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 16, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved img {
   width: 40px;
 }
-/* line 20, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved p {
   font-size: 24px;
   font-weight: 500;
@@ -1469,7 +1512,7 @@ a:hover, a:visited, a:active {
   margin: 0;
 }
 
-/* line 28, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -1483,25 +1526,34 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list a {
-  display: block;
+/* line 10, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li {
+  padding: 5px;
 }
-/* line 15, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .public-roll.new:before, .form-rolls-list .new.private-roll:before {
+/* line 14, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {
+  font-size: 16px;
+  line-height: 1.75;
+  position: relative;
+  text-align: center;
+}
+/* line 20, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before, .form-rolls-list .new.rolling-social:before {
   content: "+";
 }
-/* line 18, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .public-roll:after, .form-rolls-list .private-roll:after {
+/* line 23, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after, .form-rolls-list .rolling-social:after {
   content: url("../images/assets/rolls_public.svg");
-  float: right;
+  right: 9px;
+  position: absolute;
+  top: 4px;
 }
-/* line 28, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .private-roll:after {
+/* line 34, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 38, ../../app/stylesheets/partials/form-roll-video.scss */
+/* line 44, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   float: right;
