@@ -20,7 +20,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "webkitTransitionEnd .js-rolling-frame" : "_onFrameRollingTransitionComplete",
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
-    "keyup .js-add-message-input"           : "_onAddMessageInputChange"
+    "keyup .js-add-message-input"           : "_onAddMessageInputChange",
+    "click .js-message-submit"           : "_addMessage"
   },
 
   tagName : 'li',
@@ -129,8 +130,13 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onAddMessageInputChange : function(event){
-    var self = this;
+    /*var self = this;
     if (event.keyCode!==13) return false;
+    this._addMessage();*/
+  },
+
+  _addMessage : function(){
+    var self = this;
     var text = this.$('.js-add-message-input').val();
     if (!this._validateNewMessage(text)) return false;
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
