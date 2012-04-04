@@ -142,6 +142,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState});
+    shelby.views.videoControls = shelby.views.videoControls || new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState});
   },
   
   _setupRollView : function(roll, title, options){

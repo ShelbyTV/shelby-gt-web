@@ -53,7 +53,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 			view.render(this.$el, video);
 			this._curView = view;
 			
-			this._playbackState.activePlayerState = view.playerState;
+			this._playbackState.set({activePlayerState: view.playerState});
 		}
 		
 		if( this._playbackState.get('autoplayOnVideoDisplay') ){
