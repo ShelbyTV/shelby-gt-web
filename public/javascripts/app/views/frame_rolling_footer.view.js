@@ -1,8 +1,6 @@
 libs.shelbyGT.FrameRollingFooterView = Support.CompositeView.extend({
 
-  events : {
-    "click .js-back" : "_goBack"
-  },
+
 
   tagName : 'div',
 
@@ -17,7 +15,7 @@ libs.shelbyGT.FrameRollingFooterView = Support.CompositeView.extend({
   },
 
   _goBack : function(){
-    this.parent.$el.removeClass('rolling-frame-trans');
+    this.$el.removeClass('rolling-frame-trans');
   }
 
 });
