@@ -79,7 +79,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 			this.model.upvote(function(r){
 				var upvoters = r.get('upvoters');
 				// a little, possibly unnecessary, animation
-				self.$('.video-score').animate({'margin-top': '-=21'}, 100, function(){
+				self.$('.video-score').animate({'margin-top': '-=21'}, 500, function(){
 					$(this).css('margin-top','0px');
 				}).text(upvoters.length);
 				// set the returned upvoter attr to prevent user from being able to upvote again.
