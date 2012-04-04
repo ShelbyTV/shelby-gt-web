@@ -124,6 +124,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	// Internal events
 	//---------------------------------------------------
 	_onPlay: function(){ 
+	  this.playerState.set({duration:this._player.api_getDuration()});
 		this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
@@ -140,6 +141,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 
 	_updateBufferTime: function(p){ 
+	  this.playerState.set({duration:p.duration});
 		this.playerState.set({bufferTime:(p.duration * p.decimal)});
 	},
 	
