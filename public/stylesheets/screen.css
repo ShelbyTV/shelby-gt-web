@@ -782,6 +782,225 @@ a:hover, a:visited, a:active {
   outline: none;
 }
 
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/rolls.scss */
+#roll-header, .roll-header {
+  background: url("../images/assets/noise.png") #585858;
+  display: none;
+}
+
+/* line 16, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu {
+  margin: 0;
+  padding: 0;
+}
+/* line 21, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu .rolls-add, .rolls-menu .rolls-share {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  box-shadow: inset -1px 0px 1px 0px #85cc66;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  line-height: 2.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+/* line 38, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu .rolls-share {
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+}
+/* line 46, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu li {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  width: 50%;
+}
+
+/* line 56, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-dialog {
+  background: #585858;
+  padding: 0 10px;
+  display: none;
+}
+
+/* line 64, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment {
+  position: relative;
+}
+/* line 67, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  resize: none;
+  width: 100%;
+}
+/* line 74, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment .video-shared {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 15px;
+}
+
+/* line 81, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks {
+  float: left;
+  width: 50%;
+}
+
+/* line 86, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks-list {
+  margin: 0;
+  padding: 0;
+}
+/* line 91, ../../app/stylesheets/partials/rolls.scss */
+.rolls-networks-list li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px 10px 10px 0;
+}
+
+/* line 99, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter, .networks-facebook {
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
+  -moz-border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
+  -o-border-radius: 2.5px;
+  -ms-border-radius: 2.5px;
+  -khtml-border-radius: 2.5px;
+  border-radius: 2.5px;
+  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
+  -o-box-shadow: inset 0px 1px 1px 0px #777777;
+  box-shadow: inset 0px 1px 1px 0px #777777;
+  border: 1px solid black;
+  height: 34px;
+  width: 34px;
+}
+/* line 114, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter.active, .active.networks-facebook {
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
+  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  box-shadow: inset 0px 1px 1px 0px #00d0e5;
+}
+
+/* line 125, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook {
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
+  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
+  -o-box-shadow: inset 0px 1px 1px 0px #777777;
+  box-shadow: inset 0px 1px 1px 0px #777777;
+}
+/* line 133, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook.active {
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #01599e, #013e80);
+  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  box-shadow: inset 0px 1px 1px 0px #0179c1;
+}
+
+/* line 144, ../../app/stylesheets/partials/rolls.scss */
+.rolls-submit {
+  float: right;
+  width: 50%;
+}
+
+/* line 149, ../../app/stylesheets/partials/rolls.scss */
+.rolls-submit-button, .video-activity-comment .video-activity-comment-submit {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  height: 34px;
+  float: inherit;
+  line-height: 2.5;
+  margin: 10px 0;
+  padding: 0 10%;
+  width: 81px;
+}
+
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: #353535;
@@ -1110,29 +1329,50 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 220, ../../app/stylesheets/partials/frame.scss */
+/* line 215, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment {
+  padding: 10px;
+}
+/* line 217, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+}
+/* line 223, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment .video-activity-comment-submit {
+  float: right;
+  width: auto;
+}
+
+/* line 237, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 224, ../../app/stylesheets/partials/frame.scss */
+/* line 241, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 232, ../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 237, ../../app/stylesheets/partials/frame.scss */
+/* line 254, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 242, ../../app/stylesheets/partials/frame.scss */
+/* line 259, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1142,7 +1382,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 247, ../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1150,30 +1390,30 @@ a:hover, a:visited, a:active {
   font-weight: 300;
   padding: 0 9px 9px;
 }
-/* line 253, ../../app/stylesheets/partials/frame.scss */
+/* line 270, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 260, ../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 265, ../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 270, ../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 276, ../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -1181,11 +1421,11 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 284, ../../app/stylesheets/partials/frame.scss */
+/* line 301, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 287, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
@@ -1260,224 +1500,6 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/rolls.scss */
-#roll-header, .roll-header {
-  background: url("../images/assets/noise.png") #585858;
-  display: none;
-}
-
-/* line 14, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu {
-  margin: 0;
-  padding: 0;
-}
-/* line 19, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu .rolls-add, .rolls-menu .rolls-share {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
-  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  box-shadow: inset -1px 0px 1px 0px #85cc66;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  line-height: 2.5;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-/* line 36, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu .rolls-share {
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-}
-/* line 44, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu li {
-  display: block;
-  float: left;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  width: 50%;
-}
-
-/* line 54, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-dialog {
-  background: #585858;
-  padding: 0 10px;
-  display: none;
-}
-
-/* line 62, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment {
-  position: relative;
-}
-/* line 65, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment textarea {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  resize: none;
-  width: 100%;
-}
-/* line 72, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment .video-shared {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  padding-top: 15px;
-}
-
-/* line 79, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks {
-  float: left;
-  width: 50%;
-}
-
-/* line 84, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list {
-  margin: 0;
-  padding: 0;
-}
-/* line 89, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list li {
-  display: inline-block;
-  list-style-type: none;
-  margin: 10px 10px 10px 0;
-}
-
-/* line 97, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter, .networks-facebook {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid black;
-  height: 34px;
-  width: 34px;
-}
-/* line 112, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active, .active.networks-facebook {
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
-  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  box-shadow: inset 0px 1px 1px 0px #00d0e5;
-}
-
-/* line 123, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-}
-/* line 131, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active {
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #01599e, #013e80);
-  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  box-shadow: inset 0px 1px 1px 0px #0179c1;
-}
-
-/* line 142, ../../app/stylesheets/partials/rolls.scss */
-.rolls-submit {
-  float: right;
-  width: 50%;
-}
-/* line 146, ../../app/stylesheets/partials/rolls.scss */
-.rolls-submit button {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  height: 34px;
-  float: inherit;
-  line-height: 2.5;
-  margin: 10px 0;
-  padding: 0 10%;
-  width: 81px;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 5, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list {
   padding: 0;
@@ -1530,8 +1552,6 @@ a:hover, a:visited, a:active {
 /* line 20, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
-  -webkit-transform: perspective(0) translateX(-100%);
-  transform: perspective(0) translateX(-100%);
 }
 
 /* Welcome to Compass.

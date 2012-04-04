@@ -239,29 +239,50 @@
   padding: 6px 8px 7px;
 }
 
-/* line 220, ../../../app/stylesheets/partials/frame.scss */
+/* line 215, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment {
+  padding: 10px;
+}
+/* line 217, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+}
+/* line 223, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment .video-activity-comment-submit {
+  float: right;
+  width: auto;
+}
+
+/* line 237, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 224, ../../../app/stylesheets/partials/frame.scss */
+/* line 241, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 232, ../../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 237, ../../../app/stylesheets/partials/frame.scss */
+/* line 254, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 242, ../../../app/stylesheets/partials/frame.scss */
+/* line 259, ../../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -271,7 +292,7 @@
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 247, ../../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -279,30 +300,30 @@
   font-weight: 300;
   padding: 0 9px 9px;
 }
-/* line 253, ../../../app/stylesheets/partials/frame.scss */
+/* line 270, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 260, ../../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 265, ../../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 270, ../../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 276, ../../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -310,11 +331,11 @@
   margin: 0 2px;
 }
 
-/* line 284, ../../../app/stylesheets/partials/frame.scss */
+/* line 301, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 287, ../../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
