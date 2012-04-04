@@ -1,10 +1,7 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
-  events : function(){
-
-  },
   events : {
-    "click #js-submit-roll-share" : "_shareCurrentRoll",
+    "click #js-submit-roll-share" : "_share",
     "keyup #js-share-roll-textarea" : "_onUpdateShareComment",
     "click #js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click #js-toggle-facebook-sharing" : "_toggleFacebookSharing"
@@ -27,19 +24,22 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({shareModel:this.model}));
-    this.spinner = this._initSpinner();
-    this.twitterButton = this.$('#js-toggle-twitter-sharing');
-    this.facebookButton = this.$('#js-toggle-facebook-sharing');
+    this.$el.html(this.template({shareModel:this.model, components:this._components}));
+    if (this._components.spinner)  this.spinner = this._initSpinner();
+    if (this._components.networkToggles){
+      this.twitterButton = this.$('#js-toggle-twitter-sharing');
+      this.facebookButton = this.$('#js-toggle-facebook-sharing');
+    }
   },
 
-  _initSpinner : function(){
-    return new libs.shelbyGT.SpinnerView({ spinOpts: { lines: 11, length: 0, width: 3, radius: 7, rotate: 0, color: '#000', speed: 1.4, trail: 62, shadow: false, hwaccel: true, className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto' } });
+  _clearTextArea : function(){
+    this.$('#js-share-roll-textarea').val('');
+    this.model.set('comment', this.$('#js-share-roll-textarea').val());
   },
 
   _onUpdateShareComment : function(event){
     this.model.set('comment', this.$('#js-share-roll-textarea').val());
-    (event.keyCode===13) && this._shareCurrentRoll();
+    (event.keyCode===13) && this._share();
   },
 
   _updateDestinationButtons : function(shareModel){
@@ -57,38 +57,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   _updateCommentLengthCounter : function(shareModel, comment){
     var charsLeft = this._getCharsLeft(comment);
     this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
-  },
-
-  _shareCurrentRoll : function(){
-    var self = this;
-    if(!this._validateShare()) return false;
-    console.log('sharing', this.model.get('comment'), 'to', this.model.get('destination'));
-    this._toggleSpinner();
-    setTimeout(function(){
-      self._onShareSuccess();
-    }, 400);
-    // now save the model
-    /*this.model.save(null, {success:function(){
-      console.log('success', arguments);
-    }, error: function(){
-      console.log('error', arguments);
-    }});*/
-    return false;
-  },
-
-  _onShareSuccess : function(){
-    this._toggleSpinner();
-    this.$el.toggle();
-  },
-
-  _toggleSpinner : function(){
-    if (this.$('.spinner').length){
-      console.log('resetting');
-      this.$('#js-submit-roll-share').html('Share it');
-    } else {
-      console.log('spinning');
-      this.$('#js-submit-roll-share').html(this.spinner.renderSilent());
-    }
   },
 
   _toggleSharingByNetwork : function(network){

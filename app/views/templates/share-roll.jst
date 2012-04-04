@@ -7,6 +7,7 @@
 	<fieldset class="rolls-share-comment">
 		<textarea id="js-share-roll-textarea" rows="7"></textarea>
 	</fieldset>
+<% if (components.networkToggles) { %>
 	<fieldset class="rolls-networks">
 		<ul class="rolls-networks-list">
 			<li>
@@ -21,9 +22,12 @@
 	-->			
 	    </ul>
 	</fieldset>
+<% } %>
+<% if (components.shareButton) { %>
 	<fieldset class="rolls-submit">
 		<button onclick="return false;" id="js-submit-roll-share" type="submit">Share it</button>
        	<span id="js-share-comment-counter" class="share-comment-counter"></span>
 		<div id="js-share-spinner"></div>
 	</fieldset>
+<% } %>
 </form>
