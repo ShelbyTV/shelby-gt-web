@@ -63,7 +63,6 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   
   //callback to be called when fading is done
   _displayOverlay : function(cb){
-    console.log(JST);
     this.$('.rolls-share-comment').append(JST['shared-indicator']());
     setTimeout(function(){
       cb();
