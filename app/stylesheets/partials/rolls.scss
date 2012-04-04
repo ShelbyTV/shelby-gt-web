@@ -1,4 +1,6 @@
 @import "base",
+		"compass",
+		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
@@ -142,25 +144,10 @@
 .rolls-submit{
 	float:right;
 	width:50%;
+}
 
-	button{
-		@include border-radius($radius);
-		@include buttonfont;
-		@include background(
-			$softShelbyBlue
-		);
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-
-		border:1px solid #222;
-		color:#efefef;
-		display:block;
-		height:34px;
-		float:inherit;
-		line-height:2.5;
-		margin:$defaultMargin 0;
-		padding:0 10%;
-		width:81px;
-	}
+.rolls-submit-button{
+	@include form-submit-button;
 }
 //.rolls{
 //	background:$myBlue;

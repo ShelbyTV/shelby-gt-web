@@ -83,3 +83,22 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 @mixin fontcolorLight{
 	color: #efefef;
 }
+
+@mixin form-submit-button{
+	@include border-radius($radius);
+	@include buttonfont;
+	@include background(
+		$softShelbyBlue
+	);
+	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+	height:34px;
+	float:inherit;
+	line-height:2.5;
+	margin:$defaultMargin 0;
+	padding:0 10%;
+	width:81px;
+}
