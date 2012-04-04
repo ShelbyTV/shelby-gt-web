@@ -1206,6 +1206,60 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* line 7, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved, .rolls-share-comment .video-shared {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -moz-transition-delay: 2s;
+  -webkit-transition-delay: 2s;
+  -o-transition-delay: 2s;
+  transition-delay: 2s;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  left: 0;
+  padding-top: 10px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved img, .rolls-share-comment .video-shared img {
+  width: 40px;
+}
+/* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved p, .rolls-share-comment .video-shared p {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.231;
+  margin: 0;
+}
+
+/* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved-trans {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
 /* line 5, ../../app/stylesheets/partials/rolls.scss */
 #roll-header, .roll-header {
   background: url("../images/assets/noise.png") #585858;
@@ -1274,7 +1328,11 @@ a:hover, a:visited, a:active {
   display: none;
 }
 
-/* line 63, ../../app/stylesheets/partials/rolls.scss */
+/* line 62, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment {
+  position: relative;
+}
+/* line 65, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1285,26 +1343,36 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
+/* line 72, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share-comment .video-shared {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 15px;
+}
 
-/* line 71, ../../app/stylesheets/partials/rolls.scss */
+/* line 79, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks {
   float: left;
   width: 50%;
 }
 
-/* line 76, ../../app/stylesheets/partials/rolls.scss */
+/* line 84, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 81, ../../app/stylesheets/partials/rolls.scss */
+/* line 89, ../../app/stylesheets/partials/rolls.scss */
 .rolls-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 89, ../../app/stylesheets/partials/rolls.scss */
+/* line 97, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1326,7 +1394,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 104, ../../app/stylesheets/partials/rolls.scss */
+/* line 112, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1340,7 +1408,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 115, ../../app/stylesheets/partials/rolls.scss */
+/* line 123, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1353,7 +1421,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 123, ../../app/stylesheets/partials/rolls.scss */
+/* line 131, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1367,12 +1435,12 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 134, ../../app/stylesheets/partials/rolls.scss */
+/* line 142, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit {
   float: right;
   width: 50%;
 }
-/* line 138, ../../app/stylesheets/partials/rolls.scss */
+/* line 146, ../../app/stylesheets/partials/rolls.scss */
 .rolls-submit button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1461,61 +1529,9 @@ a:hover, a:visited, a:active {
 
 /* line 20, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
+  margin-left: 0;
   -webkit-transform: perspective(0) translateX(-100%);
   transform: perspective(0) translateX(-100%);
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
-/* line 7, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 1s;
-  -webkit-transition-duration: 1s;
-  -o-transition-duration: 1s;
-  transition-duration: 1s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  -moz-transition-delay: 2s;
-  -webkit-transition-delay: 2s;
-  -o-transition-delay: 2s;
-  transition-delay: 2s;
-  background: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  left: 0;
-  padding-top: 10px;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 100%;
-}
-/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved img {
-  width: 40px;
-}
-/* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved p {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.231;
-  margin: 0;
-}
-
-/* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved-trans {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
 }
 
 /* Welcome to Compass.
