@@ -23,6 +23,22 @@
       ListView.prototype.initialize.call(this);
     },
 
+    filter : function(item) {
+      // the user can only post to certain rolls
+      if (item.get('creator_id') == shelby.models.user.id) {
+        return true;
+      }
+      if (!item.get('collaborative')) {
+        return false;
+      }
+      if (item.get('public')) {
+        return true;
+      }
+
+      // if we got here, it's a private collaborative roll that I'm following, so I can post
+      return true;
+    },
+
     _cleanup : function(){
       ListView.prototype._cleanup.call(this);
     },
