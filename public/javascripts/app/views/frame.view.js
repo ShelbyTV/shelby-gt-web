@@ -5,18 +5,22 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _frameRollingView : null,
 
   events : {
-    "click .js-frame-activate"          : "_activate",
-    "click .roll-frame"                 : "_roll",
-    "click .save-frame"                 : "_saveToWatchLater",
-    "click .remove-frame"               : "_removeFromWatchLater",
-    "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
-    "click .video-source"   						: "_goToRoll",
-		"click .video-score"								: "_upvote",
-    "transitionend .video-saved"        : "_onSavedTransitionComplete",
-    "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
-    "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
-    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete",
-    "keyup .js-add-message-input"       : "_onAddMessageInputChange"
+    "click .js-frame-activate"              : "_activate",
+    "click .roll-frame"                     : "_roll",
+    "click .save-frame"                     : "_saveToWatchLater",
+    "click .remove-frame"                   : "_removeFromWatchLater",
+    "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
+    "click .video-source"                   : "_goToRoll",
+    "click .video-score"                    : "_upvote",
+    "transitionend .video-saved"            : "_onSavedTransitionComplete",
+    "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
+    "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
+    "oTransitionEnd .video-saved"           : "_onSavedTransitionComplete",
+    "transitionend .js-rolling-frame"       : "_onFrameRollingTransitionComplete",
+    "webkitTransitionEnd .js-rolling-frame" : "_onFrameRollingTransitionComplete",
+    "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
+    "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
+    "keyup .js-add-message-input"           : "_onAddMessageInputChange"
   },
 
   tagName : 'li',
@@ -89,26 +93,26 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.destroy();
   },
 
-	_upvote : function(){
-		var self = this;
-		// check if they're already an upvoter
-		if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
-			this.model.upvote(function(r){
-				var upvoters = r.get('upvoters');
-				// set the returned upvoter attr to prevent user from being able to upvote again.
-				self.model.set('upvoters', upvoters);
-			});						
-		}
-	},
-	
-	_onUpvoteChange : function(){
-		// a little animation
-		this.$('.video-score').animate({'margin-top': '-=21'}, 500, 
-			function(){
-				$(this).css('margin-top','0px');
-			})
-		.text(this.model.get('upvoters').length);
-	},
+  _upvote : function(){
+    var self = this;
+    // check if they're already an upvoter
+    if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
+      this.model.upvote(function(r){
+        var upvoters = r.get('upvoters');
+        // set the returned upvoter attr to prevent user from being able to upvote again.
+        self.model.set('upvoters', upvoters);
+      });
+    }
+  },
+
+  _onUpvoteChange : function(){
+    // a little animation
+    this.$('.video-score').animate({'margin-top': '-=21'}, 500,
+      function(){
+        $(this).css('margin-top','0px');
+      })
+    .text(this.model.get('upvoters').length);
+  },
 
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
@@ -147,6 +151,14 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _onSavedTransitionComplete : function(){
     // when the saved indicator has completely faded out, remove it from the DOM
     this.$('.video-saved').remove();
+  },
+
+  _onFrameRollingTransitionComplete : function(e){
+    // if the frame rolling view gets completely hidden, remove it
+    if (!$(e.currentTarget).hasClass('rolling-frame-trans')) {
+      this._frameRollingView.leave();
+      this._frameRollingView = null;
+    }
   },
 
   _onFrameRemove : function() {
