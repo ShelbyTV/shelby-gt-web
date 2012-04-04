@@ -103,7 +103,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	setVolume: function(pct){
 		if( this._player ){
 			this._player.setVolume(pct*100);
-			this.playerState.set({volume: this._player.getVolume()});
+			this.playerState.set({volume: pct});
 		}
 	},
 	

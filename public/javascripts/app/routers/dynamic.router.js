@@ -137,12 +137,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _setupTopLevelViews : function(){
     // header & menu render on instantiation //
-    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView({model:shelby.models.guide});
+    shelby.views.header = shelby.views.header || 
+        new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
+    shelby.views.menu = shelby.views.menu || 
+        new libs.shelbyGT.MenuView({model:shelby.models.guide});
     //--------------------------------------//
-    shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
-    shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState});
-    shelby.views.videoControls = shelby.views.videoControls || new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState});
+    shelby.views.guide = shelby.views.guide || 
+        new libs.shelbyGT.GuideView({model:shelby.models.guide});
+    shelby.views.video = shelby.views.video || 
+        new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
+    shelby.views.videoControls = shelby.views.videoControls || 
+        new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
   },
   
   _setupRollView : function(roll, title, options){
