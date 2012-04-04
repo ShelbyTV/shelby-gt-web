@@ -9,18 +9,20 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _shareRollView: null,
 
+  _rollModel: null,
+
   template : function(obj){
     return JST['roll-header'](obj);
   },
 
   initialize : function(){
     this.model.bind('change:displayState', this._updateVisibility, this);
-    this.model.bind('change:currentRollModel', this._updateView, this);
+    this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change:displayState', this._updateVisibility, this);
-    this.model.unbind('change:currentRollModel', this._updateView, this);
+    this.model.unbind('change:currentRollModel', this._updateRollHeaderView, this);
   },
 
   render : function(){
@@ -45,23 +47,31 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
 	_toggleJoinRoll : function() {
-		var _rollModel = this.model.get('currentRollModel');
-		// if user doesnt follow roll call:
-		if ( shelby.models.user.followsRoll(this.model.get('currentRollModel').id) ){
-			console.log("follows roll!");
-			_rollModel.leaveRoll(function(){ console.log("left roll!"); });
+		var self = this;
+		if ( shelby.models.user.followsRoll(this._rollModel.id) ){
+      this._rollModel.leaveRoll(function(){
+        self._updateJoinButton('Join');
+      });
 		}
 		else {
-			console.log("doesnt follows roll... yet");
-			_rollModel.joinRoll(function(){ console.log("joined roll!"); });
+      this._rollModel.joinRoll(function(){
+        self._updateJoinButton('Leave');
+      });
 		}
 	},
+	
+	_updateJoinButton : function(action){
+    this.$('.rolls-add').text(action+' Roll');
+		// refresh the user with roll_followings
+    shelby.models.user.fetch({ data: {include_rolls:true} });
+	},
 
-  _updateView : function() {
+  _updateRollHeaderView : function() {
     this._shareRollView.$el.hide();
+    // set roll model
+    this._rollModel = this.model.get('currentRollModel');
     // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(this.model.get('currentRollModel').id) ? 
-            'Leave Roll' : 'Join Roll';
+    var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave Roll' : 'Join Roll';
     this.$('.rolls-add').text(_buttonText);
   }
 
