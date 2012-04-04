@@ -46,6 +46,7 @@
     },
 
     render : function(){
+      this._leaveChildren();
       this.$el.html(this.template());
     }
 
