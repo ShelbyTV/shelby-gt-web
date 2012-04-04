@@ -49,8 +49,17 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _roll : function(){
-    this.appendChildInto(new libs.shelbyGT.FrameRollingView({model:this.model}), 'article');
-    shelby.models.user.fetch({data:{include_rolls:true}});
+    // the frame rolling view only needs to respond to an intial fetch of user roll followings,
+    // not to subsequent updates of the user model, so we pass it a private clone of the user model
+    // to bind to and fetch once
+    var privateUserModel = shelby.models.user.clone();
+    var frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model,user:privateUserModel});
+    this.appendChildInto(frameRollingView, 'article');
+    // dont reveal the frame rolling view until the rolls that can be posted to have been fetched via ajax
+    var self = this;
+    privateUserModel.fetch({data:{include_rolls:true},success:function(){
+      self.$('.js-rolling-frame').addClass('rolling-frame-trans');
+    }});
   },
 
   _saveToWatchLater : function(){

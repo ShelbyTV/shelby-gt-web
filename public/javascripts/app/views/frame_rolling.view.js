@@ -13,7 +13,7 @@
 
     render : function() {
       this.$el.html(this.template());
-      this.appendChildInto(new RollingSelectionListView({model:shelby.models.user,frame:this.model}), '.js-rolling-main');
+      this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
     }
 
   });
