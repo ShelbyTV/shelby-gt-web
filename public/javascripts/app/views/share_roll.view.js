@@ -52,7 +52,7 @@ libs.shelbyGT.ShareRollView = Support.CompositeView.extend({
   },
 
   _updateCommentLengthCounter : function(shareModel, comment){
-    var charsLeft = this._getCharsLeft(comment);
+    var charsLeft = this._getCharsLeft();
     this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
   },
 
