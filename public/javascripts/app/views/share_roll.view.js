@@ -23,9 +23,12 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   },
 
   _onShareSuccess : function(){
+    var self = this;
     this._clearTextArea(); //hmm this should be shared for all inheritors...
     this._components.spinner && this._toggleSpinner();
-    this.$el.toggle();
+    this._displayOverlay(function(){
+      self.$el.toggle(); 
+    });
   },
   
   // Compulsory if _components.spinner
@@ -56,6 +59,15 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
         console.log('sharing failed - bug fix needed')
       }
     };
+  },
+  
+  //callback to be called when fading is done
+  _displayOverlay : function(cb){
+    console.log(JST);
+    this.$('.rolls-share-comment').append(JST['shared-indicator']());
+    setTimeout(function(){
+      cb();
+    }, 2000);
   }
 
 });
