@@ -12,15 +12,24 @@
 
 .video-player-play{
 	@include background(
-		url('../images/assets/player_play.svg')
+		url('../images/assets/player_play.svg') center center no-repeat transparent
 	);
 
 	height:47px;
+	float:left;
 	width:47px;
 }
 
-.video-player-timeline{
+.video-player-progress{
+	background:#ddffdd;
+	position:absolute;
+	left:60px;
+	right:47*4.5px;
+	height:100%;
+}
 
+.video-player-timeline{
+	float:right;
 }
 .video-player-scrubber{
 	@include border-radius(50%);
@@ -34,11 +43,14 @@
 .video-player-volume{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_sound_on.svg')
+		url('../images/assets/player_sound_on.svg') center center no-repeat transparent
 	);
+
+	float:right;
+
 	&.mute{
 		@include background(
-			url('../images/assets/player_sound_off.svg')
+			url('../images/assets/player_sound_off.svg') center center no-repeat transparent
 		);
 	}
 }
@@ -46,13 +58,19 @@
 .video-player-fullscreen{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_fullscreen.svg')
+		url('../images/assets/player_fullscreen.svg') center center no-repeat transparent
 	);	
+
+	float:right;
+
 }
 
 .video-player-roll{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_roll.svg')
+		url('../images/assets/player_roll.svg') center center no-repeat transparent
 	);	
+
+	float:right;
+
 }
