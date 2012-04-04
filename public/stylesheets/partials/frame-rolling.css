@@ -29,6 +29,7 @@
 
 /* line 20, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
+  margin-left: 0;
   -webkit-transform: perspective(0) translateX(-100%);
   transform: perspective(0) translateX(-100%);
 }
