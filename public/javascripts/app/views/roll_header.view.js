@@ -15,12 +15,12 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind('change:displayState', this._updateVisibility, this);
-    this.model.bind('change:currentRollModel', this._hideShareRollView, this);
+    this.model.bind('change:currentRollModel', this._updateView, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change:displayState', this._updateVisibility, this);
-    this.model.unbind('change:currentRollModel', this._hideShareRollView, this);
+    this.model.unbind('change:currentRollModel', this._updateView, this);
   },
 
   render : function(){
@@ -45,15 +45,24 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
 	_toggleJoinRoll : function() {
+		var _rollModel = this.model.get('currentRollModel');
 		// if user doesnt follow roll call:
-		if (shelby.models.user.roll_followings)
-		// this.model.join(function(){ do stuff on success })
-		// else
-		// this.model.leave(function(){ do stuff on success })
+		if ( shelby.models.user.followsRoll(this.model.get('currentRollModel').id) ){
+			console.log("follows roll!");
+			_rollModel.leaveRoll(function(){ console.log("left roll!"); });
+		}
+		else {
+			console.log("doesnt follows roll... yet");
+			_rollModel.joinRoll(function(){ console.log("joined roll!"); });
+		}
 	},
 
-  _hideShareRollView : function() {
+  _updateView : function() {
     this._shareRollView.$el.hide();
+    // set text to leave/join roll
+    var _buttonText = shelby.models.user.followsRoll(this.model.get('currentRollModel').id) ? 
+            'Leave Roll' : 'Join Roll';
+    this.$('.rolls-add').text(_buttonText);
   }
 
 });
