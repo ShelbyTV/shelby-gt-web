@@ -2,6 +2,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _conversationDisplayed : false,
 
+  _frameRollingView : null,
+
   events : {
     "click .js-frame-activate"          : "_activate",
     "click .roll-frame"                 : "_roll",
@@ -52,12 +54,16 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     // the frame rolling view only needs to respond to an intial fetch of user roll followings,
     // not to subsequent updates of the user model, so we pass it a private clone of the user model
     // to bind to and fetch once
-    var privateUserModel = shelby.models.user.clone();
-    var frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model,user:privateUserModel});
-    this.appendChildInto(frameRollingView, 'article');
+    if (!this._frameRollingView) {
+      var privateUserModel = shelby.models.user.clone();
+      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model,user:privateUserModel});
+      this.appendChildInto(this._frameRollingView, 'article');
+    } else {
+      this._frameRollingView.render();
+    }
     // dont reveal the frame rolling view until the rolls that can be posted to have been fetched via ajax
     var self = this;
-    privateUserModel.fetch({data:{include_rolls:true},success:function(){
+    this._frameRollingView.options.user.fetch({data:{include_rolls:true},success:function(){
       self.$('.js-rolling-frame').addClass('rolling-frame-trans');
     }});
   },
