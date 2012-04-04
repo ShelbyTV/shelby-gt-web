@@ -60,11 +60,19 @@
 }
 
 .rolls-share-comment{
+	position:relative;
+
 	textarea{
 		@include border-radius($radius);
 		
 		resize:none;
 		width:100%;
+	}
+
+	.video-shared{
+		@extend .video-saved;
+		@include border-radius($radius);
+		padding-top:15px;
 	}
 }
 
