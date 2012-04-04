@@ -51,7 +51,8 @@ shelby = {
 //---------------------------------------------------------
 $.ajaxSetup({
   xhrFields: {withCredentials: true},
-  data: {'cs_key': 'GoatsFTW'}
+  data: {'cs_key': 'GoatsFTW'},
+  headers: {'X-Shelby-User-Agent': 'web/0.5'}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   // attach the API's csrf token to the request for logged in users
