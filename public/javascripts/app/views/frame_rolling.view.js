@@ -5,6 +5,8 @@
   
   libs.shelbyGT.FrameRollingView = Support.CompositeView.extend({
 
+    className : 'js-rolling-frame rolling-frame',
+
     template : function(obj){
       return JST['frame-rolling'](obj);
     },

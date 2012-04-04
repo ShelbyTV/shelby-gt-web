@@ -1,3 +1,9 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
 .video-saved{
 	@include transition-property(all);
 	@include transition-duration(1s);

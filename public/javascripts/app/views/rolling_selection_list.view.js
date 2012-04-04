@@ -6,6 +6,8 @@
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
+    className : 'form-rolls-list',
+
     template : function(obj){
       return JST['roll-selection-default-items'](obj);
     },

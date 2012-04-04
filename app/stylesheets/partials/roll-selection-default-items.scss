@@ -7,31 +7,37 @@
 .form-rolls-list{
 	@extend .list;
 	
-	a{
-		display:block;
+	li{
+		padding:$defaultMargin/2;
 	}
-	
-	.public-roll{
+
+	.rolling-public-roll{
+		font-size:16px;
+		line-height:1.75;
+		position:relative;
+		text-align:center;
+
 		&.new:before{
 			content:"+";
 		}
 		&:after{
 			content:url('../images/assets/rolls_public.svg');
-			float:right;
-
+			right:9px;
+			position:absolute;
+			top:4px;
 		}
 	}
 
-	.private-roll{
-		@extend .public-roll;
+	.rolling-private-roll{
+		@extend .rolling-public-roll;
 
 		&:after{
 			content:url('../images/assets/rolls_private.svg');
 		}
 
 	}
-	.share-roll{
-		//nothing yet
+	.rolling-social{
+		@extend .rolling-public-roll;
 	}
 }
 
