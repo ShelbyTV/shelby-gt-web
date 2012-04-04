@@ -1158,7 +1158,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 65, ../../app/stylesheets/partials/frame.scss */
-.video-card-header {
+.video-card-header, .frame-share-header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
   background-image: -moz-linear-gradient(top, #333333, #303030);
@@ -1174,19 +1174,19 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 8px;
 }
 /* line 71, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a {
+.video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
 /* line 74, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:active, .video-card-header a:visited {
+.video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
 /* line 77, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:hover {
+.video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
 /* line 82, ../../app/stylesheets/partials/frame.scss */
-.video-card-header h1 {
+.video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
   height: 1.231em;
@@ -1529,7 +1529,59 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame {
+.rolling-main {
+  border-bottom: 1px solid #222;
+  bottom: 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* line 17, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-footer {
+  background: url("../images/assets/noise.png") #555555;
+  border-top: 1px solid #4F4D51;
+  bottom: 0;
+  height: 40px;
+  left: 0;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 31, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-back {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
+  background: -moz-linear-gradient(top, #4a4a4a, #343434);
+  background: -o-linear-gradient(top, #4a4a4a, #343434);
+  background: -ms-linear-gradient(top, #4a4a4a, #343434);
+  background: linear-gradient(top, #4a4a4a, #343434);
+  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
+  -o-box-shadow: inset -1px 0px 1px 0px #444444;
+  box-shadow: inset -1px 0px 1px 0px #444444;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  height: 23px;
+  line-height: 1.5;
+  margin: 3px;
+  padding: 0 1px;
+  width: 48px;
+}
+
+/* line 35, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -1547,11 +1599,31 @@ a:hover, a:visited, a:active {
   margin-left: 100%;
   top: 0;
   width: 100%;
+  height: 100%;
 }
 
-/* line 20, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 48, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-share.scss */
+.frame-share {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+}
+
+/* line 14, ../../app/stylesheets/partials/frame-share.scss */
+.frame-share-content {
+  height: inherit;
 }
 
 /* Welcome to Compass.

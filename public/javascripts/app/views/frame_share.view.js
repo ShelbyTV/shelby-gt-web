@@ -6,7 +6,7 @@
 
   libs.shelbyGT.FrameShareView = Support.CompositeView.extend({
 
-    className : 'frame-share',
+    className : 'frame-share rolling-frame-trans',
 
     template : function(obj){
       return JST['frame-share'](obj);

@@ -7,6 +7,58 @@
  * @import "compass/reset";
  */
 /* line 7, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main {
+  border-bottom: 1px solid #222;
+  bottom: 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* line 17, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-footer {
+  background: url("../images/assets/noise.png") #555555;
+  border-top: 1px solid #4F4D51;
+  bottom: 0;
+  height: 40px;
+  left: 0;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 31, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-back {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
+  background: -moz-linear-gradient(top, #4a4a4a, #343434);
+  background: -o-linear-gradient(top, #4a4a4a, #343434);
+  background: -ms-linear-gradient(top, #4a4a4a, #343434);
+  background: linear-gradient(top, #4a4a4a, #343434);
+  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
+  -o-box-shadow: inset -1px 0px 1px 0px #444444;
+  box-shadow: inset -1px 0px 1px 0px #444444;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  height: 23px;
+  line-height: 1.5;
+  margin: 3px;
+  padding: 0 1px;
+  width: 48px;
+}
+
+/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -25,9 +77,10 @@
   margin-left: 100%;
   top: 0;
   width: 100%;
+  height: 100%;
 }
 
-/* line 20, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 48, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
