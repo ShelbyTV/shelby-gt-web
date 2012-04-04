@@ -24,22 +24,24 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   addOne : function(item){
-    var childView = this._constructListItemView(item);
-    if (this.options.insert && this.options.insert.position) {
-      switch (this.options.insert.position) {
-        case 'append' :
-          this.appendChild(childView);
-          return;
-        case 'before' :
-          if (this.options.insert.selector) {
-            this.insertChildBefore(childView, this.options.insert.selector);
+    if (!this.filter || this.filter(item)) {
+      var childView = this._constructListItemView(item);
+      if (this.options.insert && this.options.insert.position) {
+        switch (this.options.insert.position) {
+          case 'append' :
+            this.appendChild(childView);
             return;
-          }
+          case 'before' :
+            if (this.options.insert.selector) {
+              this.insertChildBefore(childView, this.options.insert.selector);
+              return;
+            }
+        }
       }
-    }
 
-    // default behavior if not enough options were supplied
-    this.appendChild(childView);
+      // default behavior if not enough options were supplied
+      this.appendChild(childView);
+    }
   },
 
   removeOne : function(item){
@@ -48,6 +50,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       viewToRemove.leave();
     }
   },
+
+  // sub-classes override for custom filtering
+  // this should be a function that returns true to include item in the list view, otherwise false
+  filter : null,
 
   _findViewByModel : function(model){
     return function(view){
