@@ -1,7 +1,8 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
-    "click .js-share-roll" : "_toggleShareRollVisibility"
+    "click .js-share-roll" : "_toggleShareRollVisibility",
+		"click .rolls-add" : "_toggleJoinRoll"
   },
 
   el : '#roll-header',
@@ -42,6 +43,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$el.hide();
     }
   },
+
+	_toggleJoinRoll : function() {
+		
+	},
 
   _hideShareRollView : function() {
     this._shareRollView.$el.hide();
