@@ -45,7 +45,11 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
 	_toggleJoinRoll : function() {
-		
+		// if user doesnt follow roll call:
+		if (shelby.models.user.roll_followings)
+		// this.model.join(function(){ do stuff on success })
+		// else
+		// this.model.leave(function(){ do stuff on success })
 	},
 
   _hideShareRollView : function() {
