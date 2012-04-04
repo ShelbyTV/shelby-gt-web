@@ -22,7 +22,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   url : function() {
     return shelby.config.apiRoot + '/frame/' + this.id;
   },
-
+	
   saveToWatchLater : function(onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
@@ -33,6 +33,12 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id;
     frameToReroll.save(null, {url:url,success:onSuccess});
-  }
+  },
+
+  upvote : function(onSuccess) {
+		var frameToUpvote = new libs.shelbyGT.FrameModel();
+    var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
+    frameToUpvote.save(null, {url:url, success:onSuccess});
+	}
 
 });

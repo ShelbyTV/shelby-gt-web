@@ -36,6 +36,7 @@ javascripts:
     - public/javascripts/app/views/filter_controls.view.js
     - public/javascripts/app/views/roll_selection_item.view.js
     - public/javascripts/app/views/rolling_selection_list.view.js
+    - public/javascripts/app/views/frame_rolling_footer.view.js
     - public/javascripts/app/browser.js
     - public/javascripts/app/utils/display_state.utils.js
     # shelby backbone app - all other assets
