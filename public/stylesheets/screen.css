@@ -1415,7 +1415,7 @@ a:hover, a:visited, a:active {
 }
 /* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332425256');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1487,7 +1487,6 @@ a:hover, a:visited, a:active {
 
 /* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
@@ -1723,11 +1722,12 @@ a:hover, a:visited, a:active {
 /* line 7, ../../app/stylesheets/partials/frame-share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
   height: 100%;
   top: 40px;
 }
 
-/* line 15, ../../app/stylesheets/partials/frame-share.scss */
+/* line 16, ../../app/stylesheets/partials/frame-share.scss */
 .frame-share-content {
   height: inherit;
 }
