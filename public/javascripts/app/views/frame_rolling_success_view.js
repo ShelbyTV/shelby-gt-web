@@ -17,7 +17,7 @@
     },
 
     render : function(){
-      this.$el.html(this.template({frame:this.options.oldFrame}));
+      this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
       this._frameShareView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
       this.appendChild(this._frameShareView);
     },
