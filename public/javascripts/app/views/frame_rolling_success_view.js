@@ -8,6 +8,8 @@
 
   libs.shelbyGT.FrameRollingSuccessView = Support.CompositeView.extend({
 
+    _frameShareView : null,
+
     className : 'frame-rolling-success',
 
     template : function(obj){
@@ -15,8 +17,13 @@
     },
 
     render : function(){
-      this.$el.html(this.template({frame:this.options.frame}));
-      this.appendChild(new FrameShareView({model:new ShareModel()}));
+      this.$el.html(this.template({frame:this.options.oldFrame}));
+      this._frameShareView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
+      this.appendChild(this._frameShareView);
+    },
+
+    share : function() {
+      this._frameShareView._share();
     }
 
   });
