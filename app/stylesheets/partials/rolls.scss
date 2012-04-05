@@ -18,31 +18,6 @@
 	margin:0;
 	padding:0;
 
-	.rolls-add{
-		@include border-radius($radius);
-		@include buttonfont;
-		@include background(
-			$softShelbyGreen
-		);
-		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
-
-		border:1px solid #222;
-		color:#efefef;
-		display:block;
-		line-height:2.5;
-		margin:0;
-		padding:0;
-		width:100%;
-
-	}
-	.rolls-share{
-		@extend .rolls-add;
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-		@include background(
-			$softShelbyBlue
-		);
-	}
-
 	li {
 		display:block;
 		float:left;
@@ -51,6 +26,30 @@
 		padding:$defaultMargin;
 		width:50%;
 	}
+}
+
+.rolls-add{
+	@include rolls-menu-button;
+}
+
+.rolls-invite{
+	@extend .rolls-add;	
+}
+
+.rolls-share{
+	@extend .rolls-add;
+	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+	@include background(
+		$softShelbyBlue
+	);
+}
+
+.rolls-leave{
+	@extend .rolls-add;
+	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($shelbyGreen,-30%));
+	@include background(
+		$softShelbyGreenDeboss
+	);	
 }
 
 .share-dialog{
@@ -62,7 +61,7 @@
 }
 
 .share-form{
-	
+
 }
 
 .share-comment{
