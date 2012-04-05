@@ -22,7 +22,7 @@
         this._shareSubView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
         this.appendChild(this._shareSubView);
       } else {
-        this.$el.append(JST['new-roll-options']({roll:this.options.roll}));
+        this.$el.append(JST['frame-rolling-options']({roll:this.options.roll}));
       }
     },
 
