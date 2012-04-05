@@ -8,7 +8,7 @@
 
   libs.shelbyGT.FrameRollingCompletionView = Support.CompositeView.extend({
 
-    _frameShareView : null,
+    _shareSubView : null,
 
     className : 'frame-rolling-completion',
 
@@ -19,13 +19,15 @@
     render : function(){
       this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
       if (!this.options.roll.isNew()) {
-        this._frameShareView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
-        this.appendChild(this._frameShareView);
+        this._shareSubView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
+        this.appendChild(this._shareSubView);
+      } else {
+        this.$el.append(JST['new-roll-options']({roll:this.options.roll}));
       }
     },
 
     share : function() {
-      this._frameShareView._share();
+      this._shareSubView._share();
     }
 
   });
