@@ -28,12 +28,7 @@
 
 /* line 27, ../../../app/stylesheets/partials/aside-comments.scss */
 .aside-nav {
-  background: url("../images/assets/comment_arrow_right.svg") #303030, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/comment_arrow_right.svg") #303030, -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/comment_arrow_right.svg") #303030, -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/comment_arrow_right.svg") #303030, -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/comment_arrow_right.svg") #303030, -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/comment_arrow_right.svg") #303030, linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/comment_arrow_right.svg") #303030;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
