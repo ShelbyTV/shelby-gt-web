@@ -5,14 +5,14 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   _share : function(){
     var self = this;
     if(!this._validateShare()) return false;
-    console.log('sharing', this.model.get('comment'), 'to', this.model.get('destination'));
+    console.log('sharing', this.model.get('text'), 'to', this.model.get('destination'));
     this._components.spinner && this._toggleSpinner();
     //fake sharing
-    setTimeout(function(){
+    /*setTimeout(function(){
       self._onShareSuccess();
-    }, 400);
+    }, 400);*/
     //uncomment for real sharing
-    //this.model.save(null, this._getSaveOpts());
+    this.model.save(null, this._getSaveOpts());
     return false;
   },
 

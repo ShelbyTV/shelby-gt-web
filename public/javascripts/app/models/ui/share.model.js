@@ -1,7 +1,7 @@
 libs.shelbyGT.ShareModel = libs.shelbyGT.ShelbyBaseModel.extend({
   defaults : {
     destination:[],
-    comment:''
+    text:''
   },
   initialize : function(){
     this._buildNetworkSharingState(shelby.models.user);

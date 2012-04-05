@@ -21,7 +21,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
     "keyup .js-add-message-input"           : "_onAddMessageInputChange",
-    "click .js-message-submit"           : "_addMessage"
+    "click .js-message-submit"              : "_addMessage"
   },
 
   tagName : 'li',
@@ -148,6 +148,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
         console.log('err', arguments);
       }
     });
+    return false;
   },
 
   _goToRoll : function(){
