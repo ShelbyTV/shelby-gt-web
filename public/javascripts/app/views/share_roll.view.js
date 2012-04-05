@@ -27,7 +27,9 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
     this._clearTextArea(); //hmm this should be shared for all inheritors...
     this._components.spinner && this._toggleSpinner();
     this._displayOverlay(function(){
-      self.$el.toggle(); 
+      self.$el.slideToggle(function(){
+        self.$('.video-shared').remove();
+      }); 
     });
   },
   
@@ -66,7 +68,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
     this.$('.rolls-share-comment').append(JST['shared-indicator']());
     setTimeout(function(){
       cb();
-    }, 2000);
+    }, 700);
   }
 
 });
