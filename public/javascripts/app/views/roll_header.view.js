@@ -63,7 +63,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 	},
 	
 	_updateJoinButton : function(action){
-    this.$('.rolls-add').text(action+' Roll');
+    this.$('.rolls-add').text(action+' Roll').toggleClass('rolls-leave');
 	},
 	
 	_refreshUser : function(){
