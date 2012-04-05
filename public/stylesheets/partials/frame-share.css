@@ -9,11 +9,12 @@
 /* line 7, ../../../app/stylesheets/partials/frame-share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
   height: 100%;
   top: 40px;
 }
 
-/* line 15, ../../../app/stylesheets/partials/frame-share.scss */
+/* line 16, ../../../app/stylesheets/partials/frame-share.scss */
 .frame-share-content {
   height: inherit;
 }

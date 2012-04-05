@@ -16,8 +16,31 @@
   top: 0;
   width: 100%;
 }
+/* line 18, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:first-child {
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+/* line 21, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:first-child h2 {
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+/* line 26, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:hover {
+  background: url("../images/assets/noise.png") #666666;
+  cursor: pointer;
+}
 
-/* line 17, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 33, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-footer {
   background: url("../images/assets/noise.png") #555555;
   border-top: 1px solid #4F4D51;
@@ -29,8 +52,8 @@
   width: 100%;
 }
 
-/* line 31, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back {
+/* line 47, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-back, .rolling-main-done {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -51,6 +74,7 @@
   border: 1px solid #222;
   color: #efefef;
   display: block;
+  float: left;
   font-size: 13px;
   height: 23px;
   line-height: 1.5;
@@ -59,7 +83,23 @@
   width: 48px;
 }
 
-/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 51, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+  -moz-box-shadow: inset -1px 0px 1px 0px #549537;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #549537;
+  -o-box-shadow: inset -1px 0px 1px 0px #549537;
+  box-shadow: inset -1px 0px 1px 0px #549537;
+  display: none;
+  float: right;
+}
+
+/* line 64, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -73,6 +113,12 @@
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
   background: url("../images/assets/noise.png") #494949;
   left: 0;
   position: absolute;
@@ -82,7 +128,7 @@
   height: 100%;
 }
 
-/* line 52, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 84, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
