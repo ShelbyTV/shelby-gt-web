@@ -51,17 +51,22 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 		if ( shelby.models.user.followsRoll(this._rollModel.id) ){
       this._rollModel.leaveRoll(function(){
         self._updateJoinButton('Join');
+        self._refreshUser();
       });
 		}
 		else {
       this._rollModel.joinRoll(function(){
         self._updateJoinButton('Leave');
+        self._refreshUser();
       });
 		}
 	},
 	
 	_updateJoinButton : function(action){
     this.$('.rolls-add').text(action+' Roll');
+	},
+	
+	_refreshUser : function(){
 		// refresh the user with roll_followings
     shelby.models.user.fetch({ data: {include_rolls:true} });
 	},
