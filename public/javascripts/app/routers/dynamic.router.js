@@ -143,7 +143,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState});
     if (!shelby.views.guideSpinner){
-      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:{className:'guide-spinner'}});
+      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:libs.shelbyGT.DisplayState.guideSpinnerOpts});
       shelby.views.guideSpinner.render();
     }
   },
