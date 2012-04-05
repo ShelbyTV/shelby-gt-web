@@ -54,7 +54,8 @@
 /* line 63, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
-  float: right;
   line-height: 2.5;
   margin: 10px;
+  position: absolute;
+  right: 82px;
 }
