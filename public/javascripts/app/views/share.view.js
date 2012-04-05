@@ -1,5 +1,6 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
+  shareBaseLength : 0,
   //Compulsory overrides - _share
 
   _components : {
@@ -57,7 +58,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _getCharsLeft : function(){
-    return 140 - this.model.get('comment').length;
+    return 140 - this.shareBaseLength - this.model.get('comment').length;
   },
 
   _updateCommentLengthCounter : function(shareModel, comment){
@@ -79,7 +80,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _validateShare : function(){
-    return (this._getCharsLeft() > -1);
+    return ((this._getCharsLeft() - this.shareBaseLength) < 140);
   },
 
   _share : function() {
