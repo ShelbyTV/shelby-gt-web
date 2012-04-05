@@ -22,6 +22,7 @@ libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
 
   _onShareSuccess : function(){
     var self = this;
+    console.log('share model ==', this.model);
     this._clearTextArea(); //hmm this should be shared for all inheritors...
     // this._displayOverlay(function(){
     //   self.$el.slideToggle(function(){
