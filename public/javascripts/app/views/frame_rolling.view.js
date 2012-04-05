@@ -10,7 +10,7 @@
 
     events : {
       "click .js-back"  : "_goBack",
-      "click .js-share" : "_share"
+      "click .js-done"  : "_share"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -27,7 +27,6 @@
     revealFrameRollingSuccessView : function(newFrame, oldFrame){
       this._frameRollingSuccessView = new libs.shelbyGT.FrameRollingSuccessView({newFrame:newFrame,oldFrame:oldFrame});
       this.insertChildBefore(this._frameRollingSuccessView, '.js-rolling-footer');
-      this.$('.js-rolling-footer').append('<div class="button" style="float:right"><button class="js-share">Done</button></div>');
     },
 
     _goBack : function(){
