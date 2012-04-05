@@ -4,7 +4,7 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-.frame-rolling-success{
+.frame-rolling-completion{
 	@extend .rolling-main;
 
 	.frame-share{
@@ -23,7 +23,7 @@
 	}
 }
 
-.frame-rolling-success-header{
+.frame-rolling-completion-header{
 	background:url("../images/assets/noise.png") #555;
 	border-bottom:1px solid #222;
 	height:40px;
