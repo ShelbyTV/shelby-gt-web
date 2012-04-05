@@ -34,9 +34,13 @@
 
 .rolling-frame{
 	@include transition-property(all);
-	@include transition-duration(0.5s);
+	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
-
+	@include background(
+		url('../images/assets/noise.png') 
+		#494949
+	);
+	
 	left:0;
 	position:absolute;
 	margin-left:100%;

@@ -51,6 +51,7 @@
   border: 1px solid #222;
   color: #efefef;
   display: block;
+  font-size: 13px;
   height: 23px;
   line-height: 1.5;
   margin: 3px;
@@ -64,14 +65,15 @@
   -webkit-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
   -moz-transition-timing-function: ease-in;
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  background: url("../images/assets/noise.png") #494949;
   left: 0;
   position: absolute;
   margin-left: 100%;
@@ -80,7 +82,7 @@
   height: 100%;
 }
 
-/* line 48, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 52, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
