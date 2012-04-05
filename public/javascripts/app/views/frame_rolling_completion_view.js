@@ -6,20 +6,22 @@
   var FrameShareView = libs.shelbyGT.FrameShareView;
   var ShareModel = libs.shelbyGT.ShareModel;
 
-  libs.shelbyGT.FrameRollingSuccessView = Support.CompositeView.extend({
+  libs.shelbyGT.FrameRollingCompletionView = Support.CompositeView.extend({
 
     _frameShareView : null,
 
-    className : 'frame-rolling-success',
+    className : 'frame-rolling-completion',
 
     template : function(obj){
-      return JST['frame-rolling-success'](obj);
+      return JST['frame-rolling-completion'](obj);
     },
 
     render : function(){
       this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
-      this._frameShareView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
-      this.appendChild(this._frameShareView);
+      if (!this.options.roll.isNew()) {
+        this._frameShareView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
+        this.appendChild(this._frameShareView);
+      }
     },
 
     share : function() {

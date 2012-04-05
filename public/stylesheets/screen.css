@@ -1415,7 +1415,7 @@ a:hover, a:visited, a:active {
 }
 /* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332344823');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1475,7 +1475,7 @@ a:hover, a:visited, a:active {
 }
 /* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved img, .share-comment .video-shared img {
-  width: 40px;
+  width: 30px;
 }
 /* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved p, .share-comment .video-shared p {
@@ -1487,7 +1487,6 @@ a:hover, a:visited, a:active {
 
 /* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
@@ -1529,7 +1528,7 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main, .frame-rolling-success {
+.rolling-main, .frame-rolling-completion {
   border-bottom: 1px solid #222;
   bottom: 40px;
   overflow-y: auto;
@@ -1539,7 +1538,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 /* line 18, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:first-child, .frame-rolling-success li:first-child {
+.rolling-main li:first-child, .frame-rolling-completion li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -1548,7 +1547,7 @@ a:hover, a:visited, a:active {
   border-radius: 4px 4px 0 0;
 }
 /* line 21, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:first-child h2, .frame-rolling-success li:first-child h2 {
+.rolling-main li:first-child h2, .frame-rolling-completion li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -1557,12 +1556,12 @@ a:hover, a:visited, a:active {
   border-radius: 4px 4px 0 0;
 }
 /* line 26, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:hover, .frame-rolling-success li:hover {
+.rolling-main li:hover, .frame-rolling-completion li:hover {
   background: url("../images/assets/noise.png") #666666;
   cursor: pointer;
 }
 /* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main .share-comment-counter, .frame-rolling-success .share-comment-counter {
+.rolling-main .share-comment-counter, .frame-rolling-completion .share-comment-counter {
   margin: 0;
   right: 0;
 }
@@ -1668,28 +1667,28 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success .frame-share {
+/* line 10, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share {
   background: url("../images/assets/noise.png") #454545;
   height: auto;
   padding: 10px 10px 0;
 }
-/* line 17, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success .share-networks-list li {
+/* line 17, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .share-networks-list li {
   background: none;
   border-bottom: none;
   margin-bottom: 0;
   padding: 0;
 }
 
-/* line 26, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success-header {
+/* line 26, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header {
   background: url("../images/assets/noise.png") #555555;
   border-bottom: 1px solid #222;
   height: 40px;
 }
-/* line 31, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success-header h1 {
+/* line 31, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1 {
   font-size: 13px;
   line-height: 3;
   overflow: hidden;
@@ -1697,18 +1696,18 @@ a:hover, a:visited, a:active {
   white-space: nowrap;
   width: 80%;
 }
-/* line 40, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success-header h1.roll-type-public:before, .frame-rolling-success-header h1.roll-type-private:before {
+/* line 40, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_public.svg");
   float: left;
   margin: 4px 10px;
 }
-/* line 50, ../../app/stylesheets/partials/frame-rolling-success.scss */
-.frame-rolling-success-header h1.roll-type-private:before {
+/* line 50, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 58, ../../app/stylesheets/partials/frame-rolling-success.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

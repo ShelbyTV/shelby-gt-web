@@ -35,7 +35,7 @@
 }
 /* line 22, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved img {
-  width: 40px;
+  width: 30px;
 }
 /* line 26, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved p {
@@ -47,7 +47,6 @@
 
 /* line 34, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
