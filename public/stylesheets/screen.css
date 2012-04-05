@@ -503,6 +503,13 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
+/* line 105, ../../app/stylesheets/partials/app.html.scss */
+.guide-spinner {
+  left: 50%;
+  margin-top: 26px;
+  position: absolute !important;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:

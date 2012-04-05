@@ -97,3 +97,10 @@ a:hover, a:visited, a:active {
   position: relative;
   overflow: hidden;
 }
+
+/* line 105, ../../../app/stylesheets/partials/app.html.scss */
+.guide-spinner {
+  left: 50%;
+  margin-top: 26px;
+  position: absolute !important;
+}
