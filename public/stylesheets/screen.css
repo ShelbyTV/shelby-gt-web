@@ -508,6 +508,7 @@ a:hover, a:visited, a:active {
   left: 50%;
   margin-top: 26px;
   position: absolute !important;
+  z-index: 0  !important;
 }
 
 /* Welcome to Compass.
