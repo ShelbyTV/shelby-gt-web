@@ -34,6 +34,13 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
   parse : function (response) {
     // extract the result property
     var result = libs.shelbyGT.ShelbyBaseModel.prototype.parse.call(this, response);
+    //remove the watch later roll from the roll follwings - THE API SHOULD DO THIS FOR US
+    if (result.roll_followings) {
+      var roll_follwings_filtered = _(result.roll_followings).reject(function(roll){
+        return roll.id == result.watch_later_roll;
+      });
+      result.roll_followings = roll_follwings_filtered;
+    }
     // wrap the watch later roll id in a model
     // seems like Backbone Relational should do this for us for lazy loading, but it seems to choke because
     // this is a HasOne relation and there is no model already in the Relational Store with a matching id
@@ -43,12 +50,11 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
 
   followsRoll : function(rollId) {
-	  if (_.find(shelby.models.user.get('roll_followings').models, function(n){ return n.id == rollId; })){
-		  return true;
-	  }
-	  else { 
-		  return false;
-		}
+    if (_.find(shelby.models.user.get('roll_followings').models, function(n){ return n.id == rollId; })){
+      return true;
+    } else {
+      return false;
+    }
   }
 
 });

@@ -39,8 +39,13 @@
   background: url("../images/assets/noise.png") #666666;
   cursor: pointer;
 }
+/* line 32, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main .share-comment-counter {
+  margin: 0;
+  right: 0;
+}
 
-/* line 33, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 38, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-footer {
   background: url("../images/assets/noise.png") #555555;
   border-top: 1px solid #4F4D51;
@@ -52,7 +57,7 @@
   width: 100%;
 }
 
-/* line 47, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 52, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-back, .rolling-main-done {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -83,7 +88,7 @@
   width: 48px;
 }
 
-/* line 51, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 56, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -99,7 +104,7 @@
   float: right;
 }
 
-/* line 64, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 69, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -128,7 +133,7 @@
   height: 100%;
 }
 
-/* line 84, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 89, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

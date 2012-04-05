@@ -5,7 +5,8 @@
 
 <form class="share-form clearfix">
 	<fieldset class="share-comment">
-		<textarea class="js-share-textarea" rows="7"></textarea>
+		<textarea class="js-share-textarea" rows="5"></textarea>
+       	<span id="js-share-comment-counter" class="share-comment-counter"></span>
 	</fieldset>
 <% if (components.networkToggles) { %>
 	<fieldset class="share-networks">
@@ -26,7 +27,6 @@
 <% if (components.shareButton) { %>
 	<fieldset class="share-submit">
 		<button onclick="return false;" class="js-submit-share share-submit-button" type="submit">Share it</button>
-       	<span id="js-share-comment-counter" class="share-comment-counter"></span>
 		<div id="js-share-spinner"></div>
 	</fieldset>
 <% } %>

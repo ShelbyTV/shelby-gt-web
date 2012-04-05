@@ -62,7 +62,8 @@
 
 .share-comment-counter{
 	color:white;
-	float:right;
 	line-height:2.5;
 	margin:$defaultMargin;
+	position:absolute;
+	right:82px;
 }
