@@ -10,10 +10,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   events : {
-    "click #js-submit-share" : "_share",
-    "keyup #js-share-textarea" : "_onUpdateShareComment",
-    "click #js-toggle-twitter-sharing" : "_toggleTwitterSharing",
-    "click #js-toggle-facebook-sharing" : "_toggleFacebookSharing"
+    "click .js-submit-share" : "_share",
+    "keyup .js-share-textarea" : "_onUpdateShareComment",
+    "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
+    "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
 
   template : function(obj){
@@ -34,18 +34,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
     if (this._components.spinner)  this.spinner = this._initSpinner();
     if (this._components.networkToggles){
-      this.twitterButton = this.$('#js-toggle-twitter-sharing');
-      this.facebookButton = this.$('#js-toggle-facebook-sharing');
+      this.twitterButton = this.$('.js-toggle-twitter-sharing');
+      this.facebookButton = this.$('.js-toggle-facebook-sharing');
     }
   },
 
   _clearTextArea : function(){
-    this.$('#js-share-textarea').val('');
-    this.model.set('comment', this.$('#js-share-textarea').val());
+    this.$('.js-share-textarea').val('');
+    this.model.set('comment', this.$('.js-share-textarea').val());
   },
 
   _onUpdateShareComment : function(event){
-    this.model.set('comment', this.$('#js-share-textarea').val());
+    this.model.set('comment', this.$('.js-share-textarea').val());
     (event.keyCode===13) && this._share();
   },
 

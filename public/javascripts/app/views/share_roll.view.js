@@ -35,9 +35,9 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
 
   _toggleSpinner : function(){
     if (this.$('.spinner').length){
-      this.$('#js-submit-share').html('Share it');
+      this.$('.js-submit-share').html('Share it');
     } else {
-      this.$('#js-submit-share').html(this.spinner.renderSilent());
+      this.$('.js-submit-share').html(this.spinner.renderSilent());
     }
   },
 
