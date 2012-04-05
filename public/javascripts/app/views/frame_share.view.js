@@ -1,6 +1,6 @@
 libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
 
-  id: '#js-share-frame',
+  id: 'js-share-frame',
 
   _components : {
     networkToggles : true,
