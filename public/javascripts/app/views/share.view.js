@@ -11,7 +11,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   events : {
     "click .js-submit-share" : "_share",
-    "keyup .js-share-textarea" : "_onUpdateShareComment",
+    "keyup .js-share-textarea" : "_onUpdateShareText",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
@@ -21,12 +21,12 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.model.bind("change:comment", this._updateCommentLengthCounter, this);
+    this.model.bind("change:text", this._updateTextLengthCounter, this);
     this.model.bind("change:destination", this._updateDestinationButtons, this);
   },
 
   _cleanup : function(){
-    this.model.unbind("change:comment", this._updateCommentLengthCounter, this);
+    this.model.unbind("change:text", this._updateTextLengthCounter, this);
     this.model.unbind("change:destination", this._updateDestinationButtons, this);
   },
 
@@ -41,11 +41,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _clearTextArea : function(){
     this.$('.js-share-textarea').val('');
-    this.model.set('comment', this.$('.js-share-textarea').val());
+    this.model.set('text', this.$('.js-share-textarea').val());
   },
 
-  _onUpdateShareComment : function(event){
-    this.model.set('comment', this.$('.js-share-textarea').val());
+  _onUpdateShareText : function(event){
+    this.model.set('text', this.$('.js-share-textarea').val());
     (event.keyCode===13) && this._share();
   },
 
@@ -58,11 +58,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _getCharsLeft : function(){
-    return 140 - this.shareBaseLength - this.model.get('comment').length;
+    return 140 - this.shareBaseLength - this.model.get('text').length;
   },
 
-  _updateCommentLengthCounter : function(shareModel, comment){
-    var charsLeft = this._getCharsLeft(comment);
+  _updateTextLengthCounter : function(shareModel, text){
+    var charsLeft = this._getCharsLeft(text);
     this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
   },
 

@@ -148,6 +148,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
         console.log('err', arguments);
       }
     });
+    return false;
   },
 
   _goToRoll : function(){
