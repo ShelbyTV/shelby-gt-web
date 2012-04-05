@@ -6,8 +6,11 @@
   
   libs.shelbyGT.FrameRollingView = Support.CompositeView.extend({
 
+    _frameRollingSuccessView : null,
+
     events : {
-      "click .js-back" : "_goBack"
+      "click .js-back"  : "_goBack",
+      "click .js-done"  : "_share"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -21,12 +24,17 @@
       this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
     },
 
-    revealFrameRollingSuccessView : function(){
-      this.insertChildBefore(new libs.shelbyGT.FrameRollingSuccessView({frame:this.model}), '.js-rolling-footer');
+    revealFrameRollingSuccessView : function(newFrame, oldFrame){
+      this._frameRollingSuccessView = new libs.shelbyGT.FrameRollingSuccessView({newFrame:newFrame,oldFrame:oldFrame});
+      this.insertChildBefore(this._frameRollingSuccessView, '.js-rolling-footer');
     },
 
     _goBack : function(){
       this.$el.removeClass('rolling-frame-trans');
+    },
+
+    _share : function(){
+      this._frameRollingSuccessView.share();
     }
 
   });

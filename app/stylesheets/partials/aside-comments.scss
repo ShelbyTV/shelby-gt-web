@@ -26,8 +26,8 @@
 
 .aside-nav{
 	@include background(
-		url('../images/assets/comment_arrow_right.svg') #303030,
-		$softShelbyDarkGray
+		url('../images/assets/comment_arrow_right.svg') #303030
+		//$softShelbyDarkGray
 	);
 	@include border-radius($radius);
 	@include box-shadow(inset 1px 1px 1px 1px lime);
