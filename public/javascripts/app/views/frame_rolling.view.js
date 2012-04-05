@@ -27,6 +27,7 @@
     revealFrameRollingSuccessView : function(newFrame, oldFrame, roll){
       this._frameRollingSuccessView = new libs.shelbyGT.FrameRollingSuccessView({newFrame:newFrame,oldFrame:oldFrame,roll:roll});
       this.insertChildBefore(this._frameRollingSuccessView, '.js-rolling-footer');
+      this.$('.js-done').show();
     },
 
     _goBack : function(){

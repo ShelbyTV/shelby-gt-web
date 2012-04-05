@@ -12,6 +12,22 @@
 	position:absolute;
 	top:0;
 	width:100%;
+
+	li{
+	//h2{ <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
+		&:first-child{
+			@include border-radius($radius - 1  $radius - 1 0 0);
+	
+			h2{
+				@include border-radius($radius - 1  $radius - 1 0 0);
+			}
+		}
+
+		&:hover{
+			@include background(url('../images/assets/noise.png') #666);
+			cursor:pointer;
+		}
+	}
 }
 
 .rolling-main-footer{
@@ -32,10 +48,26 @@
 	@include form-button-small;
 }
 
+.rolling-main-done{
+	@extend .rolling-main-back;
+	@include background(
+		$softShelbyGreen
+	);
+	@include box-shadow(
+		inset -1px 0px 1px 0px #549537
+	);
+
+	display:none;
+	float:right;
+}
+
 .rolling-frame{
 	@include transition-property(all);
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
+			//border-radii bug, experiment
+			@include border-radius($radius - 1  $radius - 1 0 0);
+
 	@include background(
 		url('../images/assets/noise.png') 
 		#494949
