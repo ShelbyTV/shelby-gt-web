@@ -21,8 +21,8 @@
       this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
     },
 
-    revealFrameShareView : function(){
-      this.insertChildBefore(new libs.shelbyGT.FrameShareView({frame:this.model}), '.footer');
+    revealFrameRollingSuccessView : function(){
+      this.insertChildBefore(new libs.shelbyGT.FrameRollingSuccessView({frame:this.model}), '.footer');
     },
 
     _goBack : function(){
