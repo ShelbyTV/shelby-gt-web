@@ -83,8 +83,8 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$('.rolls-add').show();
 		}
 	  // set text to leave/join roll
-		var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave Roll' : 'Join Roll';
-	  this.$('.rolls-add').text(_buttonText);			
+		var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave' : 'Join';
+		this._updateJoinButton(_buttonText);
   }
 
 });
