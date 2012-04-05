@@ -22,7 +22,7 @@
 }
 /* line 25, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
-  padding: 0;
+  padding: 5px;
 }
 /* line 29, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {

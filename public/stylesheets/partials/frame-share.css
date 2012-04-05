@@ -10,9 +10,10 @@
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
   height: 100%;
+  top: 40px;
 }
 
-/* line 14, ../../../app/stylesheets/partials/frame-share.scss */
+/* line 15, ../../../app/stylesheets/partials/frame-share.scss */
 .frame-share-content {
   height: inherit;
 }

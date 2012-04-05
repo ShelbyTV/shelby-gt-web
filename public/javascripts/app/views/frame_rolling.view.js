@@ -22,7 +22,7 @@
     },
 
     revealFrameRollingSuccessView : function(){
-      this.insertChildBefore(new libs.shelbyGT.FrameRollingSuccessView({frame:this.model}), '.footer');
+      this.insertChildBefore(new libs.shelbyGT.FrameRollingSuccessView({frame:this.model}), '.js-rolling-footer');
     },
 
     _goBack : function(){

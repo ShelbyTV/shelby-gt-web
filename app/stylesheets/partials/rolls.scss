@@ -61,8 +61,13 @@
 
 }
 
+.share-form{
+	
+}
+
 .share-comment{
 	position:relative;
+//	padding:$defaultMargin;
 
 	textarea{
 		@include border-radius($radius);

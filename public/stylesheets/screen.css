@@ -20,7 +20,7 @@
   src: url("../fonts/Ubuntu-B-webfont.eot");
   src: url("../fonts/Ubuntu-B-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Ubuntu-B-webfont.woff") format("woff"), url("../fonts/Ubuntu-B-webfont.ttf") format("truetype"), url("../fonts/Ubuntu-B-webfont.svg#UbuntuBold") format("svg");
   font-weight: 700;
-  font-style  el : '#js-share-roll',: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -858,11 +858,11 @@ a:hover, a:visited, a:active {
   display: none;
 }
 
-/* line 64, ../../app/stylesheets/partials/rolls.scss */
+/* line 68, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 67, ../../app/stylesheets/partials/rolls.scss */
+/* line 72, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -873,7 +873,7 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
-/* line 74, ../../app/stylesheets/partials/rolls.scss */
+/* line 79, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -884,25 +884,25 @@ a:hover, a:visited, a:active {
   padding-top: 15px;
 }
 
-/* line 81, ../../app/stylesheets/partials/rolls.scss */
+/* line 86, ../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 86, ../../app/stylesheets/partials/rolls.scss */
+/* line 91, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 91, ../../app/stylesheets/partials/rolls.scss */
+/* line 96, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 99, ../../app/stylesheets/partials/rolls.scss */
+/* line 104, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -924,7 +924,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 114, ../../app/stylesheets/partials/rolls.scss */
+/* line 119, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -938,7 +938,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 125, ../../app/stylesheets/partials/rolls.scss */
+/* line 130, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -951,7 +951,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 133, ../../app/stylesheets/partials/rolls.scss */
+/* line 138, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -965,13 +965,13 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 144, ../../app/stylesheets/partials/rolls.scss */
+/* line 149, ../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   float: right;
   width: 50%;
 }
 
-/* line 149, ../../app/stylesheets/partials/rolls.scss */
+/* line 154, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button, .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1529,10 +1529,10 @@ a:hover, a:visited, a:active {
  * @import "compass/reset";
  */
 /* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main {
+.rolling-main, .frame-rolling-success {
   border-bottom: 1px solid #222;
   bottom: 40px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   position: absolute;
   top: 0;
@@ -1617,13 +1617,67 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* line 10, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-rolling-success .frame-share {
+  background: url("../images/assets/noise.png") #454545;
+  height: auto;
+  padding: 10px 10px 0;
+}
+/* line 17, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-rolling-success .share-networks-list li {
+  background: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* line 26, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-rolling-success-header {
+  background: url("../images/assets/noise.png") #555555;
+  border-bottom: 1px solid #222;
+  height: 40px;
+}
+/* line 31, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-rolling-success-header h1 {
+  font-size: 13px;
+  line-height: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+/* line 38, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-rolling-success-header h1:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+
+/* line 46, ../../app/stylesheets/partials/frame-rolling-success.scss */
+.frame-share-undo {
+  line-height: 3;
+  margin: 0 5px;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
 /* line 7, ../../app/stylesheets/partials/frame-share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
   height: 100%;
+  top: 40px;
 }
 
-/* line 14, ../../app/stylesheets/partials/frame-share.scss */
+/* line 15, ../../app/stylesheets/partials/frame-share.scss */
 .frame-share-content {
   height: inherit;
 }
@@ -1652,7 +1706,7 @@ a:hover, a:visited, a:active {
 }
 /* line 25, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
-  padding: 0;
+  padding: 5px;
 }
 /* line 29, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {
