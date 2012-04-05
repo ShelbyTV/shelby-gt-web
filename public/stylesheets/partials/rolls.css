@@ -68,18 +68,18 @@
 }
 
 /* line 56, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share-dialog {
+.share-dialog {
   background: #585858;
   padding: 0 10px;
   display: none;
 }
 
 /* line 64, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment {
+.share-comment {
   position: relative;
 }
 /* line 67, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment textarea {
+.share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -90,7 +90,7 @@
   width: 100%;
 }
 /* line 74, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment .video-shared {
+.share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -101,18 +101,18 @@
 }
 
 /* line 81, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-networks {
+.share-networks {
   float: left;
   width: 50%;
 }
 
 /* line 86, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list {
+.share-networks-list {
   margin: 0;
   padding: 0;
 }
 /* line 91, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list li {
+.share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
@@ -182,13 +182,13 @@
 }
 
 /* line 144, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-submit {
+.share-submit {
   float: right;
   width: 50%;
 }
 
 /* line 149, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-submit-button {
+.share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;

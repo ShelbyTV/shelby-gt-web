@@ -3,23 +3,25 @@ libs.shelbyGT.ShareModel = libs.shelbyGT.ShelbyBaseModel.extend({
     destination:[],
     comment:''
   },
-  /*url : function(){
-    return shelby.config.apiRoot + '/roll/'+shelby.models.guide.get('contentPaneModel').id+'/share';
-  },*/
   initialize : function(){
-    shelby.models.user.bind('change', this._onUserChange, this);  
+    this._buildNetworkSharingState(shelby.models.user);
+    shelby.models.user.bind('change', this._onUserChange, this);
   },
   networkEnabled : function(network){
     var result = _.include(this.get('destination'), network);
     return result;
   },
   _onUserChange : function(user){
-    this._buildNetworkSharingState(user.get('authentications'));
+    this._buildNetworkSharingState(user);
   },
-  _buildNetworkSharingState : function(authentications){
+  _buildNetworkSharingState : function(user){
     var self = this;
-    authentications.forEach(function(auth){
-      self.get('destination').push(auth.provider);
-    });
+    this.get('destination').length = 0;
+    var authentications = user.get('authentications');
+    if (authentications) {
+      authentications.forEach(function(auth){
+        self.get('destination').push(auth.provider);
+      });
+    }
   }
 });

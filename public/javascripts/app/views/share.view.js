@@ -1,18 +1,23 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   shareBaseLength : 0,
+  //Compulsory overrides - _share
+
+  _components : {
+    networkToggles : true,
+    shareButton : true,
+    spinner : true
+  },
 
   events : {
-    "click #js-submit-roll-share" : "_share",
-    "keyup #js-share-roll-textarea" : "_onUpdateShareComment",
+    "click #js-submit-share" : "_share",
+    "keyup #js-share-textarea" : "_onUpdateShareComment",
     "click #js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click #js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
 
-  el : '#js-share-roll',
-
   template : function(obj){
-    return JST['share-roll'](obj);
+    return JST['share'](obj);
   },
 
   initialize : function(){
@@ -35,12 +40,12 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _clearTextArea : function(){
-    this.$('#js-share-roll-textarea').val('');
-    this.model.set('comment', this.$('#js-share-roll-textarea').val());
+    this.$('#js-share-textarea').val('');
+    this.model.set('comment', this.$('#js-share-textarea').val());
   },
 
   _onUpdateShareComment : function(event){
-    this.model.set('comment', this.$('#js-share-roll-textarea').val());
+    this.model.set('comment', this.$('#js-share-textarea').val());
     (event.keyCode===13) && this._share();
   },
 
@@ -76,6 +81,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _validateShare : function(){
     return ((this._getCharsLeft() - this.shareBaseLength) < 140);
+  },
+
+  _share : function() {
+    // must be overriden
+    console.log('Error, your class must override ShareView._share');
   }
 
 });

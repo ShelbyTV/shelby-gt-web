@@ -1,13 +1,7 @@
 libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
 
-  //Compulsory overrides - _components, _share and _onShareSuccess
+  el: '#js-share-roll',
 
-  _components : {
-    networkToggles : true,
-    shareButton : true,
-    spinner : true
-  },
-  
   _share : function(){
     var self = this;
     if(!this._validateShare()) return false;
@@ -41,9 +35,9 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
 
   _toggleSpinner : function(){
     if (this.$('.spinner').length){
-      this.$('#js-submit-roll-share').html('Share it');
+      this.$('#js-submit-share').html('Share it');
     } else {
-      this.$('#js-submit-roll-share').html(this.spinner.renderSilent());
+      this.$('#js-submit-share').html(this.spinner.renderSilent());
     }
   },
 
@@ -65,7 +59,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   
   //callback to be called when fading is done
   _displayOverlay : function(cb){
-    this.$('.rolls-share-comment').append(JST['shared-indicator']());
+    this.$('.share-comment').append(JST['shared-indicator']());
     setTimeout(function(){
       cb();
     }, 700);

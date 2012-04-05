@@ -53,7 +53,7 @@
 	}
 }
 
-.rolls-share-dialog{
+.share-dialog{
 
 	background:#585858;
 	padding:0 $defaultMargin;
@@ -61,7 +61,7 @@
 
 }
 
-.rolls-share-comment{
+.share-comment{
 	position:relative;
 
 	textarea{
@@ -78,12 +78,12 @@
 	}
 }
 
-.rolls-networks{
+.share-networks{
 	float:left;
 	width:50%;
 }
 
-.rolls-networks-list{
+.share-networks-list{
 
 	margin:0;
 	padding:0;
@@ -141,12 +141,12 @@
 
 }
 
-.rolls-submit{
+.share-submit{
 	float:right;
 	width:50%;
 }
 
-.rolls-submit-button{
+.share-submit-button{
 	@include form-submit-button;
 }
 //.rolls{
