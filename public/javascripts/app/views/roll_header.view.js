@@ -75,9 +75,16 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this._shareRollView.$el.hide();
     // set roll model
     this._rollModel = this.model.get('currentRollModel');
-    // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave Roll' : 'Join Roll';
-    this.$('.rolls-add').text(_buttonText);
+		// hide join/leave button if its users public roll
+		if (this._rollModel.id === shelby.models.user.get('public_roll').id){
+			this.$('.rolls-add').hide();
+		}
+		else{  
+      this.$('.rolls-add').show();
+		}
+	  // set text to leave/join roll
+		var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave Roll' : 'Join Roll';
+	  this.$('.rolls-add').text(_buttonText);			
   }
 
 });
