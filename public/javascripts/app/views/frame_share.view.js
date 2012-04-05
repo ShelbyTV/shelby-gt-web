@@ -23,6 +23,8 @@ libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
   _onShareSuccess : function(){
     var self = this;
     this._clearTextArea(); //hmm this should be shared for all inheritors...
+    this.$('.share-comment').append(JST['shared-indicator']());
+    this.parent.parent._goBack();
     // this._displayOverlay(function(){
     //   self.$el.slideToggle(function(){
     //     self.$('.video-shared').remove();
