@@ -21,7 +21,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
     "keyup .js-add-message-input"           : "_onAddMessageInputChange",
-    "click .js-message-submit"           : "_addMessage"
+    "click .js-message-submit"              : "_addMessage"
   },
 
   tagName : 'li',
