@@ -1,21 +1,13 @@
-( function(){
+libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
 
-  // shorten names of included library prototypes
-  var ListView = libs.shelbyGT.ListView;
-  var RollSelectionItemView = libs.shelbyGT.RollSelectionItemView;
+  id: 'js-share-frame',
 
-  libs.shelbyGT.FrameShareView = Support.CompositeView.extend({
+  className : 'frame-share rolling-frame-trans',
 
-    className : 'frame-share rolling-frame-trans',
+  _components : {
+    networkToggles : true,
+    shareButton : false,
+    spinner : false
+  }
 
-    template : function(obj){
-      return JST['frame-share'](obj);
-    },
-
-    render : function(){
-      this.$el.html(this.template({frame:this.options.frame}));
-    }
-
-  });
-
-} ) ();
+});
