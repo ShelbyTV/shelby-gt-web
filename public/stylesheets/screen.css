@@ -1617,6 +1617,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset -1px 0px 1px 0px #549537;
   -o-box-shadow: inset -1px 0px 1px 0px #549537;
   box-shadow: inset -1px 0px 1px 0px #549537;
+  display: none;
   float: right;
 }
 
