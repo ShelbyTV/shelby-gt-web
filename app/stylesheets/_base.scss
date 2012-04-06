@@ -52,8 +52,10 @@ $gradientLight : #333;
 $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
 $softShelbyBlue: linear-gradient(top, #00a5cc, #007fb6);
 $softShelbyGreen: linear-gradient(top, $shelbyGreen, adjust-lightness($shelbyGreen,-10%));
+$softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
 $softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
-$softShelbyDarkgray: linear-gradient(top, #333, #303030);
+$softShelbyGrayButton: linear-gradient(top, #4a4a4a, #343434);
+$softShelbyDarkGray: linear-gradient(top, #333, #303030);
 $softShelbyRed: linear-gradient(top, #ba2046, #9e1632);
 
 $softTwitterBlue: linear-gradient(top, #00b5d7, #00a2d1);
@@ -82,4 +84,61 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 }
 @mixin fontcolorLight{
 	color: #efefef;
+}
+
+@mixin rolls-menu-button{
+	@include border-radius($radius);
+	@include buttonfont;
+	@include background(
+		$softShelbyGreen
+	);
+	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
+
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+	line-height:2.5;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+
+@mixin form-submit-button{
+	@include border-radius($radius);
+	@include buttonfont;
+	@include background(
+		$softShelbyBlue
+	);
+	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+	height:34px;
+	float:inherit;
+	line-height:2.5;
+	margin:$defaultMargin 0;
+	padding:0 10%;
+	width:81px;
+}
+
+@mixin form-button-small{
+	@include border-radius($radius);
+	@include buttonfont;
+	@include background(
+		$softShelbyGrayButton
+	);
+	@include box-shadow(inset -1px 0px 1px 0px #444);
+	
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+	float:left;
+	font-size:13px;
+	height:23px;
+	line-height:1.5;
+	margin:3px;
+	padding:0 1px;
+	width:48px;	
 }

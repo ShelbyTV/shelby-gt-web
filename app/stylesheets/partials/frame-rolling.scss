@@ -1,0 +1,92 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.rolling-main{
+	border-bottom:1px solid #222;
+	bottom:40px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	position:absolute;
+	top:0;
+	width:100%;
+
+	li{
+	//h2{ <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
+		&:first-child{
+			@include border-radius($radius - 1  $radius - 1 0 0);
+	
+			h2{
+				@include border-radius($radius - 1  $radius - 1 0 0);
+			}
+		}
+
+		&:hover{
+			@include background(url('../images/assets/noise.png') #666);
+			cursor:pointer;
+		}
+	}
+
+	.share-comment-counter{
+		margin:0;
+		right:0;
+	}
+}
+
+.rolling-main-footer{
+	@include background(
+		url('../images/assets/noise.png') #555
+	);
+
+	border-top:1px solid #4F4D51;
+	bottom:0;
+	height:40px;
+	left:0;
+	padding:$defaultMargin/2;
+	position:absolute;
+	width:100%;
+}
+
+.rolling-main-back{
+	@include form-button-small;
+}
+
+.rolling-main-done{
+	@extend .rolling-main-back;
+	@include background(
+		$softShelbyGreen
+	);
+	@include box-shadow(
+		inset -1px 0px 1px 0px #549537
+	);
+
+	display:none;
+	float:right;
+}
+
+.rolling-frame{
+	@include transition-property(all);
+	@include transition-duration(0.25s);
+	@include transition-timing-function(ease-in);
+			//border-radii bug, experiment
+			@include border-radius($radius - 1  $radius - 1 0 0);
+
+	@include background(
+		url('../images/assets/noise.png') 
+		#494949
+	);
+	
+	left:0;
+	position:absolute;
+	margin-left:100%;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+.rolling-frame-trans{
+	margin-left:0;
+//	@include translateX(-100%,0,true);
+}

@@ -1,0 +1,33 @@
+<%
+  var twitter_active = _.include(shareModel.get('destination'), 'twitter') ? true : false;
+  var facebook_active = _.include(shareModel.get('destination'), 'facebook') ? true : false;
+%>
+
+<form class="share-form clearfix">
+	<fieldset class="share-comment">
+		<textarea class="js-share-textarea" rows="5"></textarea>
+       	<span id="js-share-comment-counter" class="share-comment-counter"></span>
+	</fieldset>
+<% if (components.networkToggles) { %>
+	<fieldset class="share-networks">
+		<ul class="share-networks-list">
+			<li>
+				<button onclick="return false;" class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %>">Twitter</button>
+			</li>
+			<li>
+				<button onclick="return false;" class="js-toggle-facebook-sharing networks-facebook <%= facebook_active ? 'active' : '' %>">Facebook</button>
+			</li>
+	<!-- 	<li>
+				<button class="networks-tumblr ir">Tumblr</button>
+			</li>
+	-->			
+	    </ul>
+	</fieldset>
+<% } %>
+<% if (components.shareButton) { %>
+	<fieldset class="share-submit">
+		<button onclick="return false;" class="js-submit-share share-submit-button" type="submit">Share it</button>
+		<div id="js-share-spinner"></div>
+	</fieldset>
+<% } %>
+</form>

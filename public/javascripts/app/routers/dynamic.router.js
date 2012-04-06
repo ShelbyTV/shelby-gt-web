@@ -143,17 +143,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guide = shelby.views.guide || new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.video = shelby.views.video || new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState});
     shelby.views.videoControls = shelby.views.videoControls || new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState});
+    if (!shelby.views.guideSpinner){
+      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:libs.shelbyGT.DisplayState.guideSpinnerOpts});
+      shelby.views.guideSpinner.render();
+    }
   },
   
   _setupRollView : function(roll, title, options){
+    var defaults = {
+      updateRollTitle: false,
+      onRollFetch: null,
+      data: null
+    };
     if (!options) {
-      options = {};
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
     }
-    _(options).defaults({
-        updateRollTitle: false,
-        onRollFetch: null,
-        data: null
-    });
 
     this._setupTopLevelViews();
     var rollModel;

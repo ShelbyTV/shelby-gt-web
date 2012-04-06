@@ -7,12 +7,27 @@
 .form-rolls-list{
 	@extend .list;
 	
+	a{
+		display:block;
+		padding:$defaultMargin/2;
+		text-decoration:none;
+
+		&:visited{
+			text-decoration:none;
+		}
+
+		&:hover,
+		&:active{
+			text-decoration:underline;
+		}
+	}
+
 	li{
 		padding:$defaultMargin/2;
 	}
 
 	.rolling-public-roll{
-		font-size:16px;
+		font-size:14px;
 		line-height:1.75;
 		position:relative;
 		text-align:center;
@@ -24,7 +39,7 @@
 			content:url('../images/assets/rolls_public.svg');
 			right:9px;
 			position:absolute;
-			top:4px;
+			top:1px;
 		}
 	}
 
@@ -38,12 +53,17 @@
 	}
 	.rolling-social{
 		@extend .rolling-public-roll;
+
+		&:after{
+			content:none;
+		}
 	}
 }
 
 .share-comment-counter{
 	color:white;
-	float:right;
 	line-height:2.5;
 	margin:$defaultMargin;
+	position:absolute;
+	right:82px;
 }

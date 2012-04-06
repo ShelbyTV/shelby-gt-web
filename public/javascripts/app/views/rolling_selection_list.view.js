@@ -6,6 +6,13 @@
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
+    events : {
+      "click .js-new-public-roll"  : "_rollToNewPublicRoll",
+      "click .js-new-private-roll" : "_rollToNewPrivateRoll"
+    },
+
+    className : 'form-rolls-list',
+
     template : function(obj){
       return JST['roll-selection-default-items'](obj);
     },
@@ -44,7 +51,16 @@
     },
 
     render : function(){
+      this._leaveChildren();
       this.$el.html(this.template());
+    },
+
+    _rollToNewPublicRoll : function(){
+      this.parent.revealFrameRollingCompletionView(null, null, null, {type:'public'});
+    },
+
+    _rollToNewPrivateRoll : function(){
+      this.parent.revealFrameRollingCompletionView(null, null, null, {type:'private'});
     }
 
   });

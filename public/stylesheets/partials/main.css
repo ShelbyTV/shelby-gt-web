@@ -13,12 +13,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 8, ../../../app/stylesheets/partials/main.scss */
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-/* line 13, ../../../app/stylesheets/partials/main.scss */
 body {
   color: #dcddde;
   font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
@@ -26,16 +20,16 @@ body {
   overflow: hidden;
 }
 
-/* line 25, ../../../app/stylesheets/partials/main.scss */
+/* line 20, ../../../app/stylesheets/partials/main.scss */
 a {
   color: #a4a4a4;
 }
-/* line 30, ../../../app/stylesheets/partials/main.scss */
+/* line 25, ../../../app/stylesheets/partials/main.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 36, ../../../app/stylesheets/partials/main.scss */
+/* line 31, ../../../app/stylesheets/partials/main.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -44,7 +38,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 44, ../../../app/stylesheets/partials/main.scss */
+/* line 39, ../../../app/stylesheets/partials/main.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -52,26 +46,26 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 52, ../../../app/stylesheets/partials/main.scss */
+/* line 47, ../../../app/stylesheets/partials/main.scss */
 .video-player {
   background: #000;
   color: white;
   height: 100%;
   margin-right: 330px;
 }
-/* line 58, ../../../app/stylesheets/partials/main.scss */
+/* line 53, ../../../app/stylesheets/partials/main.scss */
 .video-player p {
   background: black;
   margin: 0;
 }
 
-/* line 65, ../../../app/stylesheets/partials/main.scss */
+/* line 60, ../../../app/stylesheets/partials/main.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 70, ../../../app/stylesheets/partials/main.scss */
+/* line 65, ../../../app/stylesheets/partials/main.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -80,14 +74,14 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 80, ../../../app/stylesheets/partials/main.scss */
+/* line 75, ../../../app/stylesheets/partials/main.scss */
 .content-body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-/* line 97, ../../../app/stylesheets/partials/main.scss */
+/* line 82, ../../../app/stylesheets/partials/main.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;

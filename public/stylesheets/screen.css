@@ -503,6 +503,14 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
+/* line 105, ../../app/stylesheets/partials/app.html.scss */
+.guide-spinner {
+  left: 50%;
+  margin-top: 100px;
+  position: absolute !important;
+  z-index: 0  !important;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -782,6 +790,241 @@ a:hover, a:visited, a:active {
   outline: none;
 }
 
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/rolls.scss */
+#roll-header, .roll-header {
+  background: url("../images/assets/noise.png") #585858;
+  display: none;
+}
+
+/* line 16, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu {
+  margin: 0;
+  padding: 0;
+}
+/* line 21, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu li {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  width: 50%;
+}
+
+/* line 31, ../../app/stylesheets/partials/rolls.scss */
+.rolls-add, .rolls-invite, .rolls-share, .rolls-leave {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
+  box-shadow: inset -1px 0px 1px 0px #85cc66;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  line-height: 2.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 39, ../../app/stylesheets/partials/rolls.scss */
+.rolls-share {
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+}
+
+/* line 47, ../../app/stylesheets/partials/rolls.scss */
+.rolls-leave {
+  -moz-box-shadow: inset -1px 0px 1px 0px #16270f;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #16270f;
+  -o-box-shadow: inset -1px 0px 1px 0px #16270f;
+  box-shadow: inset -1px 0px 1px 0px #16270f;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #355f23), color-stop(100%, #203a16));
+  background: -webkit-linear-gradient(bottom, #355f23, #203a16);
+  background: -moz-linear-gradient(bottom, #355f23, #203a16);
+  background: -o-linear-gradient(bottom, #355f23, #203a16);
+  background: -ms-linear-gradient(bottom, #355f23, #203a16);
+  background: linear-gradient(bottom, #355f23, #203a16);
+}
+
+/* line 55, ../../app/stylesheets/partials/rolls.scss */
+.share-dialog {
+  background: #585858;
+  padding: 0 10px;
+  display: none;
+}
+
+/* line 67, ../../app/stylesheets/partials/rolls.scss */
+.share-comment {
+  position: relative;
+}
+/* line 71, ../../app/stylesheets/partials/rolls.scss */
+.share-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  resize: none;
+  width: 100%;
+}
+/* line 78, ../../app/stylesheets/partials/rolls.scss */
+.share-comment .video-shared {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 15px;
+}
+
+/* line 85, ../../app/stylesheets/partials/rolls.scss */
+.share-networks {
+  float: left;
+  width: 50%;
+}
+
+/* line 90, ../../app/stylesheets/partials/rolls.scss */
+.share-networks-list {
+  margin: 0;
+  padding: 0;
+}
+/* line 95, ../../app/stylesheets/partials/rolls.scss */
+.share-networks-list li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px 10px 10px 0;
+}
+
+/* line 103, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter, .networks-facebook {
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
+  -moz-border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
+  -o-border-radius: 2.5px;
+  -ms-border-radius: 2.5px;
+  -khtml-border-radius: 2.5px;
+  border-radius: 2.5px;
+  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
+  -o-box-shadow: inset 0px 1px 1px 0px #777777;
+  box-shadow: inset 0px 1px 1px 0px #777777;
+  border: 1px solid black;
+  height: 34px;
+  width: 34px;
+}
+/* line 118, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter.active, .active.networks-facebook {
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
+  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
+  box-shadow: inset 0px 1px 1px 0px #00d0e5;
+}
+
+/* line 129, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook {
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
+  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
+  -o-box-shadow: inset 0px 1px 1px 0px #777777;
+  box-shadow: inset 0px 1px 1px 0px #777777;
+}
+/* line 137, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook.active {
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #01599e, #013e80);
+  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
+  box-shadow: inset 0px 1px 1px 0px #0179c1;
+}
+
+/* line 148, ../../app/stylesheets/partials/rolls.scss */
+.share-submit {
+  float: right;
+  width: 50%;
+}
+
+/* line 153, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button, .video-activity-comment .video-activity-comment-submit {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  height: 34px;
+  float: inherit;
+  line-height: 2.5;
+  margin: 10px 0;
+  padding: 0 10%;
+  width: 81px;
+}
+
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: #353535;
@@ -939,7 +1182,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 65, ../../app/stylesheets/partials/frame.scss */
-.video-card-header {
+.video-card-header, .frame-share-header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
   background-image: -moz-linear-gradient(top, #333333, #303030);
@@ -955,19 +1198,19 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 8px;
 }
 /* line 71, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a {
+.video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
 /* line 74, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:active, .video-card-header a:visited {
+.video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
 /* line 77, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:hover {
+.video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
 /* line 82, ../../app/stylesheets/partials/frame.scss */
-.video-card-header h1 {
+.video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
   height: 1.231em;
@@ -1110,29 +1353,50 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 220, ../../app/stylesheets/partials/frame.scss */
+/* line 215, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment {
+  padding: 10px;
+}
+/* line 217, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+}
+/* line 223, ../../app/stylesheets/partials/frame.scss */
+.video-activity-comment .video-activity-comment-submit {
+  float: right;
+  width: auto;
+}
+
+/* line 237, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 224, ../../app/stylesheets/partials/frame.scss */
+/* line 241, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 232, ../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 237, ../../app/stylesheets/partials/frame.scss */
+/* line 254, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 242, ../../app/stylesheets/partials/frame.scss */
+/* line 259, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1142,7 +1406,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 247, ../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1150,30 +1414,30 @@ a:hover, a:visited, a:active {
   font-weight: 300;
   padding: 0 9px 9px;
 }
-/* line 253, ../../app/stylesheets/partials/frame.scss */
+/* line 270, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 260, ../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 265, ../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 270, ../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 276, ../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
   content: url('/images/../images/assets/twitter_stamp.png?1332539916');
   float: left;
@@ -1181,11 +1445,11 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 284, ../../app/stylesheets/partials/frame.scss */
+/* line 301, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 287, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
@@ -1206,232 +1470,8 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/rolls.scss */
-#roll-header, .roll-header {
-  background: url("../images/assets/noise.png") #585858;
-  display: none;
-}
-
-/* line 14, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu {
-  margin: 0;
-  padding: 0;
-}
-/* line 19, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu .rolls-add, .rolls-menu .rolls-share {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
-  -moz-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
-  box-shadow: inset -1px 0px 1px 0px #85cc66;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  line-height: 2.5;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-/* line 36, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu .rolls-share {
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-}
-/* line 44, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu li {
-  display: block;
-  float: left;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  width: 50%;
-}
-
-/* line 54, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-dialog {
-  background: #585858;
-  padding: 0 10px;
-  display: none;
-}
-
-/* line 63, ../../app/stylesheets/partials/rolls.scss */
-.rolls-share-comment textarea {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  resize: none;
-  width: 100%;
-}
-
-/* line 71, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks {
-  float: left;
-  width: 50%;
-}
-
-/* line 76, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list {
-  margin: 0;
-  padding: 0;
-}
-/* line 81, ../../app/stylesheets/partials/rolls.scss */
-.rolls-networks-list li {
-  display: inline-block;
-  list-style-type: none;
-  margin: 10px 10px 10px 0;
-}
-
-/* line 89, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter, .networks-facebook {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid black;
-  height: 34px;
-  width: 34px;
-}
-/* line 104, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active, .active.networks-facebook {
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
-  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  box-shadow: inset 0px 1px 1px 0px #00d0e5;
-}
-
-/* line 115, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #646464, #474747);
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-}
-/* line 123, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active {
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #01599e, #013e80);
-  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  box-shadow: inset 0px 1px 1px 0px #0179c1;
-}
-
-/* line 134, ../../app/stylesheets/partials/rolls.scss */
-.rolls-submit {
-  float: right;
-  width: 50%;
-}
-/* line 138, ../../app/stylesheets/partials/rolls.scss */
-.rolls-submit button {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  height: 34px;
-  float: inherit;
-  line-height: 2.5;
-  margin: 10px 0;
-  padding: 0 10%;
-  width: 81px;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
-/* line 5, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list {
-  padding: 0;
-  margin: 0;
-}
-/* line 11, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list a {
-  cursor: pointer;
-  display: block;
-  padding: 10px;
-}
-/* line 15, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list a:hover {
-  background: url("../images/assets/noise.png") #6d6d6d;
-}
-/* line 21, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li {
-  padding: 0;
-}
-
-/* line 1, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved {
+/* line 7, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved, .share-comment .video-shared {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -1457,19 +1497,19 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 16, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved img {
-  width: 40px;
+/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved img, .share-comment .video-shared img {
+  width: 30px;
 }
-/* line 20, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved p {
+/* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
+.video-saved p, .share-comment .video-shared p {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 28, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -1565,30 +1605,304 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list a {
+/* line 5, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list {
+  padding: 0;
+  position: relative;
+  margin: 0;
+}
+/* line 12, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a {
+  cursor: pointer;
   display: block;
+  padding: 10px;
 }
-/* line 15, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .public-roll.new:before, .form-rolls-list .new.private-roll:before {
-  content: "+";
+/* line 16, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a:hover {
+  background: url("../images/assets/noise.png") #6d6d6d;
 }
-/* line 18, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .public-roll:after, .form-rolls-list .private-roll:after {
-  content: url("../images/assets/rolls_public.svg");
+/* line 22, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li {
+  padding: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main, .frame-rolling-completion {
+  border-bottom: 1px solid #222;
+  bottom: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 18, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:first-child, .frame-rolling-completion li:first-child {
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+/* line 21, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:first-child h2, .frame-rolling-completion li:first-child h2 {
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+/* line 26, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main li:hover, .frame-rolling-completion li:hover {
+  background: url("../images/assets/noise.png") #666666;
+  cursor: pointer;
+}
+/* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main .share-comment-counter, .frame-rolling-completion .share-comment-counter {
+  margin: 0;
+  right: 0;
+}
+
+/* line 38, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-footer {
+  background: url("../images/assets/noise.png") #555555;
+  border-top: 1px solid #4F4D51;
+  bottom: 0;
+  height: 40px;
+  left: 0;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 52, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-back, .rolling-main-done {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
+  background: -moz-linear-gradient(top, #4a4a4a, #343434);
+  background: -o-linear-gradient(top, #4a4a4a, #343434);
+  background: -ms-linear-gradient(top, #4a4a4a, #343434);
+  background: linear-gradient(top, #4a4a4a, #343434);
+  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
+  -o-box-shadow: inset -1px 0px 1px 0px #444444;
+  box-shadow: inset -1px 0px 1px 0px #444444;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  float: left;
+  font-size: 13px;
+  height: 23px;
+  line-height: 1.5;
+  margin: 3px;
+  padding: 0 1px;
+  width: 48px;
+}
+
+/* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+  -moz-box-shadow: inset -1px 0px 1px 0px #549537;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #549537;
+  -o-box-shadow: inset -1px 0px 1px 0px #549537;
+  box-shadow: inset -1px 0px 1px 0px #549537;
+  display: none;
   float: right;
 }
-/* line 28, ../../app/stylesheets/partials/form-roll-video.scss */
-.form-rolls-list .private-roll:after {
+
+/* line 69, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame, .frame-share {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -khtml-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  background: url("../images/assets/noise.png") #494949;
+  left: 0;
+  position: absolute;
+  margin-left: 100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame-trans {
+  margin-left: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 10, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share {
+  background: url("../images/assets/noise.png") #494949;
+  height: auto;
+  padding: 10px 10px 0;
+}
+/* line 17, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .share-networks-list li {
+  background: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* line 26, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header {
+  background: url("../images/assets/noise.png") #555555;
+  border-bottom: 1px solid #222;
+  height: 40px;
+}
+/* line 31, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1 {
+  font-size: 13px;
+  line-height: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+/* line 40, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+/* line 50, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 38, ../../app/stylesheets/partials/form-roll-video.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-share-undo {
+  line-height: 3;
+  margin: 0 5px;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/share.scss */
+.frame-share {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  top: 40px;
+}
+
+/* line 16, ../../app/stylesheets/partials/share.scss */
+.frame-share-content {
+  height: inherit;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 10, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+/* line 15, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a:visited {
+  text-decoration: none;
+}
+/* line 20, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a:hover, .form-rolls-list a:active {
+  text-decoration: underline;
+}
+/* line 25, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li {
+  padding: 5px;
+}
+/* line 29, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {
+  font-size: 14px;
+  line-height: 1.75;
+  position: relative;
+  text-align: center;
+}
+/* line 35, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before, .form-rolls-list .new.rolling-social:before {
+  content: "+";
+}
+/* line 38, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after, .form-rolls-list .rolling-social:after {
+  content: url("../images/assets/rolls_public.svg");
+  right: 9px;
+  position: absolute;
+  top: 1px;
+}
+/* line 49, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_private.svg");
+}
+/* line 57, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-social:after {
+  content: none;
+}
+
+/* line 63, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
-  float: right;
   line-height: 2.5;
   margin: 10px;
+  position: absolute;
+  right: 82px;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */

@@ -1,3 +1,6 @@
+//		try to keep the list in ascending order of generic to specific styles
+//		due to some weird inheritance shit partials/frame is compiled before partials/rolls-list
+
 @import "partials/fonts",
 		"partials/h5bp", 
 		"partials/media-query-35em",	
@@ -5,17 +8,24 @@
 		"partials/app.html",
 		"partials/guide-header",
 		"partials/menu",
+		"partials/rolls",
 		"partials/roll-filter-controls",
 		"partials/roll-item",
 
 		"partials/frame",
 		"partials/video-player",
-		"partials/rolls",
-		"partials/rolls-list",
+
 		"partials/saved-indicator",
-
 		"partials/video-player-control",
-		
-		"partials/form-roll-video",
+		"partials/rolls-list",
 
+		"partials/frame-rolling",
+		"partials/frame-rolling-completion",
+		
+		"partials/share",
+
+		"partials/roll-selection-default-items",
+		
 		"partials/h5bp-utilities";
+
+		//		"partials/form-roll-video",

@@ -2,18 +2,26 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _conversationDisplayed : false,
 
+  _frameRollingView : null,
+
   events : {
-    "click .js-frame-activate"          : "_activate",
-    "click .roll-frame"                 : "_roll",
-    "click .save-frame"                 : "_saveToWatchLater",
-    "click .remove-frame"               : "_removeFromWatchLater",
-    "click .js-video-activity-toggle"   : "_toggleConversationDisplay",
-    "click .video-source"               : "_goToRoll",
-    "transitionend .video-saved"        : "_onSavedTransitionComplete",
-    "webkitTransitionEnd .video-saved"  : "_onSavedTransitionComplete",
-    "MSTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
-    "oTransitionEnd .video-saved"       : "_onSavedTransitionComplete",
-    "keyup .js-add-message-input"       : "_onAddMessageInputChange"
+    "click .js-frame-activate"              : "_activate",
+    "click .roll-frame"                     : "_roll",
+    "click .save-frame"                     : "_saveToWatchLater",
+    "click .remove-frame"                   : "_removeFromWatchLater",
+    "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
+    "click .video-source"                   : "_goToRoll",
+    "click .video-score"                    : "_upvote",
+    "transitionend .video-saved"            : "_onSavedTransitionComplete",
+    "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
+    "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
+    "oTransitionEnd .video-saved"           : "_onSavedTransitionComplete",
+    "transitionend .js-rolling-frame"       : "_onFrameRollingTransitionComplete",
+    "webkitTransitionEnd .js-rolling-frame" : "_onFrameRollingTransitionComplete",
+    "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
+    "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
+    "keyup .js-add-message-input"           : "_onAddMessageInputChange",
+    "click .js-message-submit"              : "_addMessage"
   },
 
   tagName : 'li',
@@ -26,12 +34,14 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
+    this.model.bind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').on('change', this._onConversationChange, this);
     ListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
+    this.model.unbind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').off('change', this._onConversationChange, this);
     ListItemView.prototype._cleanup.call(this);
   },
@@ -49,8 +59,21 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _roll : function(){
-    this.appendChildInto(new libs.shelbyGT.FrameRollingView({model:this.model}), 'article');
-    shelby.models.user.fetch({data:{include_rolls:true}});
+    // the frame rolling view only needs to respond to an intial fetch of user roll followings,
+    // not to subsequent updates of the user model, so we pass it a private clone of the user model
+    // to bind to and fetch once
+    if (!this._frameRollingView) {
+      var privateUserModel = shelby.models.user.clone();
+      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model,user:privateUserModel});
+      this.appendChildInto(this._frameRollingView, 'article');
+    } else {
+      this._frameRollingView.render();
+    }
+    // dont reveal the frame rolling view until the rolls that can be posted to have been fetched via ajax
+    var self = this;
+    this._frameRollingView.options.user.fetch({data:{include_rolls:true},success:function(){
+      self.$('.js-rolling-frame').addClass('rolling-frame-trans');
+    }});
   },
 
   _saveToWatchLater : function(){
@@ -71,6 +94,27 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.destroy();
   },
 
+  _upvote : function(){
+    var self = this;
+    // check if they're already an upvoter
+    if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
+      this.model.upvote(function(r){
+        var upvoters = r.get('upvoters');
+        // set the returned upvoter attr to prevent user from being able to upvote again.
+        self.model.set('upvoters', upvoters);
+      });
+    }
+  },
+
+  _onUpvoteChange : function(){
+    // a little animation
+    this.$('.video-score').animate({'margin-top': '-=21'}, 500,
+      function(){
+        $(this).css('margin-top','0px');
+      })
+    .text(this.model.get('upvoters').length);
+  },
+
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
@@ -86,8 +130,13 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onAddMessageInputChange : function(event){
-    var self = this;
+    /*var self = this;
     if (event.keyCode!==13) return false;
+    this._addMessage();*/
+  },
+
+  _addMessage : function(){
+    var self = this;
     var text = this.$('.js-add-message-input').val();
     if (!this._validateNewMessage(text)) return false;
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
@@ -99,6 +148,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
         console.log('err', arguments);
       }
     });
+    return false;
   },
 
   _goToRoll : function(){
@@ -108,6 +158,14 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _onSavedTransitionComplete : function(){
     // when the saved indicator has completely faded out, remove it from the DOM
     this.$('.video-saved').remove();
+  },
+
+  _onFrameRollingTransitionComplete : function(e){
+    // if the frame rolling view gets completely hidden, remove it
+    if (!$(e.currentTarget).hasClass('rolling-frame-trans')) {
+      this._frameRollingView.leave();
+      this._frameRollingView = null;
+    }
   },
 
   _onFrameRemove : function() {

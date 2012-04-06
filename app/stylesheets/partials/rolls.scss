@@ -1,4 +1,6 @@
 @import "base",
+		"compass",
+		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
@@ -16,31 +18,6 @@
 	margin:0;
 	padding:0;
 
-	.rolls-add{
-		@include border-radius($radius);
-		@include buttonfont;
-		@include background(
-			$softShelbyGreen
-		);
-		@include box-shadow(inset -1px 0px 1px 0px #85cc66);
-
-		border:1px solid #222;
-		color:#efefef;
-		display:block;
-		line-height:2.5;
-		margin:0;
-		padding:0;
-		width:100%;
-
-	}
-	.rolls-share{
-		@extend .rolls-add;
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-		@include background(
-			$softShelbyBlue
-		);
-	}
-
 	li {
 		display:block;
 		float:left;
@@ -51,7 +28,31 @@
 	}
 }
 
-.rolls-share-dialog{
+.rolls-add{
+	@include rolls-menu-button;
+}
+
+.rolls-invite{
+	@extend .rolls-add;	
+}
+
+.rolls-share{
+	@extend .rolls-add;
+	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+	@include background(
+		$softShelbyBlue
+	);
+}
+
+.rolls-leave{
+	@extend .rolls-add;
+	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($shelbyGreen,-30%));
+	@include background(
+		$softShelbyGreenDeboss
+	);	
+}
+
+.share-dialog{
 
 	background:#585858;
 	padding:0 $defaultMargin;
@@ -59,21 +60,34 @@
 
 }
 
-.rolls-share-comment{
+.share-form{
+
+}
+
+.share-comment{
+	position:relative;
+//	padding:$defaultMargin;
+
 	textarea{
 		@include border-radius($radius);
 		
 		resize:none;
 		width:100%;
 	}
+
+	.video-shared{
+		@extend .video-saved;
+		@include border-radius($radius);
+		padding-top:15px;
+	}
 }
 
-.rolls-networks{
+.share-networks{
 	float:left;
 	width:50%;
 }
 
-.rolls-networks-list{
+.share-networks-list{
 
 	margin:0;
 	padding:0;
@@ -131,28 +145,13 @@
 
 }
 
-.rolls-submit{
+.share-submit{
 	float:right;
 	width:50%;
+}
 
-	button{
-		@include border-radius($radius);
-		@include buttonfont;
-		@include background(
-			$softShelbyBlue
-		);
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-
-		border:1px solid #222;
-		color:#efefef;
-		display:block;
-		height:34px;
-		float:inherit;
-		line-height:2.5;
-		margin:$defaultMargin 0;
-		padding:0 10%;
-		width:81px;
-	}
+.share-submit-button{
+	@include form-submit-button;
 }
 //.rolls{
 //	background:$myBlue;

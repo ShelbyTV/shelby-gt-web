@@ -6,8 +6,8 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved {
+/* line 7, ../../../app/stylesheets/partials/frame_rolling.scss */
+.frame-rolling {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -20,33 +20,14 @@
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  -moz-transition-delay: 2s;
-  -webkit-transition-delay: 2s;
-  -o-transition-delay: 2s;
-  transition-delay: 2s;
-  background: rgba(0, 0, 0, 0.8);
-  height: 100%;
   left: 0;
-  padding-top: 10px;
   position: absolute;
-  text-align: center;
+  margin-left: 100%;
   top: 0;
   width: 100%;
 }
-/* line 22, ../../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved img {
-  width: 30px;
-}
-/* line 26, ../../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved p {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.231;
-  margin: 0;
-}
 
-/* line 34, ../../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved-trans {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+/* line 20, ../../../app/stylesheets/partials/frame_rolling.scss */
+.frame-rolling-trans {
+  margin-left: 0;
 }

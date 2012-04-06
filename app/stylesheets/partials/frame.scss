@@ -212,6 +212,23 @@
 
 }
 
+.video-activity-comment{
+	padding:$defaultMargin;
+	textarea{
+		@include border-radius($radius);
+		width:100%;
+		resize:none;
+	}
+
+	.video-activity-comment-submit{
+		@extend .share-submit-button;
+
+		float:right;
+		width:auto;
+	}
+
+
+}
 
 .video-activity-toggle{
 
