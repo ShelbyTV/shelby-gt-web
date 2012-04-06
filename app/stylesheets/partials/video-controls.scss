@@ -4,40 +4,82 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+.video-player-controls-wrapper{
+	bottom:0;
+	height:65px;
+	left:0;
+	position:absolute;
+	width:100%;
+}
+
+.video-player-controls{
+	@include background(
+		$softShelbyVideoPlayer
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 8px 2px black);
+
+	border:1px solid #202020;
+	height:45px;
+	margin:$defaultMargin $defaultMargin*34 $defaultMargin $defaultMargin;
+
+}
+
 .video-player-control{
 	@include border-radius($radius);
-	padding:$defaultMargin;
+
+	margin:0;
+	padding:0;
 	width:100%;
 }
 
 .video-player-play{
+
 	@include background(
 		url('../images/assets/player_play.svg') center center no-repeat transparent
 	);
 
-	height:47px;
+	border:none;
+	height:43px;
 	float:left;
 	width:47px;
 }
 
 .video-player-progress{
-	background:#ddffdd;
-	position:absolute;
+//	background:#ddffdd;
+	height:43px;
 	left:60px;
-	right:47*4.5px;
-	height:100%;
+	right:580px;
+	padding:18px 8px 0;
+	position:absolute;
+}
+
+.video-player-progress-load{
+	@include border-radius($radius*2);
+	@include background(
+		$softShelbyDarkGray
+	);
+
+	height:8px;
+}
+
+.video-player-scrubber{
+	@include border-radius(50%);
+	@include box-shadow(0px 0px 3px 1px black);
+
+	background:#efefef;
+	height:15px;
+	margin:-11px;
+	width:15px;
 }
 
 .video-player-timeline{
+	color:#b2b2b2;
 	float:right;
-}
-.video-player-scrubber{
-	@include border-radius(50%);
-	@include box-shadow(1px 1px 1px 1px black);
-
-	background:#efefef;
-	height:10px;
-	width:10px;
+	font-size:13px;
+	font-weight:500;
+	line-height:3.25;
+	margin:0 15px;
 }
 
 .video-player-volume{
@@ -68,7 +110,7 @@
 .video-player-roll{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_roll.svg') center center no-repeat transparent
+		url('../images/assets/player_roll.svg') center 6px no-repeat transparent
 	);	
 
 	float:right;
