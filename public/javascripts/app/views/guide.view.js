@@ -26,6 +26,11 @@
       }
       this._leaveChildren();
       this._mapAppendChildView();
+      this._setGuideTop();
+    },
+
+    _setGuideTop : function(){
+      this.$el.css('top', $('#js-header-guide').height());
     },
 
     _mapAppendChildView : function(){
