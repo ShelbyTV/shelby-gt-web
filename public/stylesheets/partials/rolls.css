@@ -86,15 +86,18 @@
 /* line 55, ../../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
+  border-bottom: 1px solid #222;
   padding: 0 10px;
   display: none;
+  position: relative;
+  z-index: 1;
 }
 
-/* line 67, ../../../app/stylesheets/partials/rolls.scss */
+/* line 70, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 71, ../../../app/stylesheets/partials/rolls.scss */
+/* line 74, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -105,7 +108,7 @@
   resize: none;
   width: 100%;
 }
-/* line 78, ../../../app/stylesheets/partials/rolls.scss */
+/* line 81, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -116,25 +119,25 @@
   padding-top: 15px;
 }
 
-/* line 85, ../../../app/stylesheets/partials/rolls.scss */
+/* line 88, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 90, ../../../app/stylesheets/partials/rolls.scss */
+/* line 93, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 95, ../../../app/stylesheets/partials/rolls.scss */
+/* line 98, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 103, ../../../app/stylesheets/partials/rolls.scss */
+/* line 106, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -156,7 +159,7 @@
   height: 34px;
   width: 34px;
 }
-/* line 118, ../../../app/stylesheets/partials/rolls.scss */
+/* line 121, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -170,7 +173,7 @@
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 129, ../../../app/stylesheets/partials/rolls.scss */
+/* line 132, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -183,7 +186,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 137, ../../../app/stylesheets/partials/rolls.scss */
+/* line 140, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -197,13 +200,13 @@
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 148, ../../../app/stylesheets/partials/rolls.scss */
+/* line 151, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   float: right;
   width: 50%;
 }
 
-/* line 153, ../../../app/stylesheets/partials/rolls.scss */
+/* line 156, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
