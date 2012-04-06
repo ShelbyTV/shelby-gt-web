@@ -42,6 +42,8 @@ javascripts:
     - public/javascripts/app/views/frame_share.view.js
     - public/javascripts/app/browser.js
     - public/javascripts/app/utils/display_state.utils.js
+    - public/javascripts/app/models/lib/shelby.base.model.js
+    - public/javascripts/app/models/db/user.model.js
     # shelby backbone app - all other assets
     - public/javascripts/app/playback/*.js
     - public/javascripts/app/models/lib/*.js
