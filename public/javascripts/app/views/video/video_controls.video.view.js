@@ -17,6 +17,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	initialize: function(opts){	
 		this._playbackState = opts.playbackState;
+		this._userDesires = opts.userDesires;
 
     this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
 
@@ -77,10 +78,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	_onCurrentTimeChange: function(attr, curTime){
 		var pct = (curTime / this._currentDuration) * 100;
 		//TODO
-		console.log("TODO: move scrubber to "+pct+"%");
+		//console.log("TODO: move scrubber to "+pct+"%");
 	},
 	
 	_onBufferTimeChange: function(attr, bufferTime){
+	  console.log("buffer time, cur duration", bufferTime, this._currentDuration);
 		var pct = (bufferTime / this._currentDuration) * 100;
 		//TODO
 		console.log("TODO: expand buffer width to "+pct+"%");
@@ -96,7 +98,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_onVolumeChange: function(attr, volPct){
 		//TODO
-		console.log("TODO: move volume slider to "+volPct+"%");
+		console.log("TODO: move volume slider to "+volPct*100+"%");
 	},
 	
 	_onSupportsMuteChange: function(attr, supportsMute){
@@ -113,24 +115,24 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
-		console.log("TODO: user desires play");
+		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
-		console.log("TODO: user desires pause");
+		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
 	_mute: function(el){
-		console.log("TODO: user desires mute");
+		this._userDesires.set({mute: true});
 	},
 	
 	_unMute: function(el){
-		console.log("TODO: user desires unmute");
+		this._userDesires.set({mute: false});
 	}
 	
-	//TODO: handle scrubbing
+	//TODO: handle scrubbing this._userDesires.set({currentTimePct: (clickPositionPct) })
 	
-	//TODO: handle volume change
+	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
 	
 
 });
