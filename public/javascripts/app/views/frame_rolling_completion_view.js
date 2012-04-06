@@ -2,7 +2,6 @@
 
   // shorten names of included library prototypes
   var ListView = libs.shelbyGT.ListView;
-  var RollSelectionItemView = libs.shelbyGT.RollSelectionItemView;
   var FrameShareView = libs.shelbyGT.FrameShareView;
   var ShareModel = libs.shelbyGT.ShareModel;
 
