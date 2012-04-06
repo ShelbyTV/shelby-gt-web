@@ -123,10 +123,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _handleShareSuccess : function(chainedUrls){
     if (chainedUrls.length) {
-      console.log('chaining next url');
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
-      console.log('no more urls');
       this._clearTextArea(); //hmm this should be shared for all inheritors...
       this._components.spinner && this._toggleSpinner();
       this.onShareSuccess();
