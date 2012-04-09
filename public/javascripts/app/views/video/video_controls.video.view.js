@@ -82,11 +82,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	_onCurrentTimeChange: function(attr, curTime){
 		var pct = (curTime / this._currentDuration) * 100;
 		this.$('.video-player-scrubber').css('margin-left',pct+"%");
-		// change current time
+    
 		var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
         curTimeS = parseInt(curTime % 60, 10);
-		
+
+		this.$('.video-player-progress-elapsed').width(pct+"%");
 		this.$('.video-player-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
 	},
 	
