@@ -17,8 +17,6 @@
 
     render : function(active){
       this.$el.html(this.template());
-      console.log(this.template(), 'temp');
-      console.log(this.$el);
       $('#wrapper').append(this.$el);
     }
 

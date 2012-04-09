@@ -57,6 +57,7 @@
           break;
       }
 
+      this.appendChild(new libs.shelbyGT.AnonGuideView());
       this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
     }
 
