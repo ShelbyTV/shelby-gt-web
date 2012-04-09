@@ -34,16 +34,22 @@
 }
 
 .video-player-play{
+	border:none;
+	height:43px;
+	float:left;
+	width:47px;
 
 	@include background(
 		url('../images/assets/player_play.svg') center center no-repeat transparent
 	);
 
-	border:none;
-	height:43px;
-	float:left;
-	width:47px;
+	&.pause{
+		@include background(
+			url('../images/assets/player_pause.svg') center center no-repeat transparent
+		);		
+	}
 }
+
 
 .video-player-progress{
 //	background:#ddffdd;

@@ -5,10 +5,11 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	events : {
-    "click .play" : "_play",
-    "click .pause" : "_pause",
+    "click .paused .video-player-play.pause" : "_play",
+    "click .playing .video-player-play" : "_pause",
     "click .unmute" : "_mute",
-    "click .mute" : "_unMute"
+    "click .mute" : "_unMute",
+    "click .video-player-fullscreen" : "_toggleFullscreen"
   },
 
   el: '#video-controls',
@@ -107,7 +108,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_onVolumeChange: function(attr, volPct){
 		//TODO
-		console.log("TODO: move volume slider to "+volPct*100+"%");
+		console.log("TODO: move volume slider to "+volPct+"%");
 	},
 	
 	_onSupportsMuteChange: function(attr, supportsMute){
@@ -124,19 +125,27 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
+		this.$('.video-player-play').toggleClass('play').toggleClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
+		this.$('.video-player-play').toggleClass('play').toggleClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
 	_mute: function(el){
 		this._userDesires.set({mute: true});
+		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
 	},
 	
 	_unMute: function(el){
 		this._userDesires.set({mute: false});
+		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
+	},
+	
+	_toggleFullscreen: function(){
+		$("#wrapper").addClass('fullscreen')[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
 	}
 	
 	//TODO: handle scrubbing this._userDesires.set({currentTimePct: (clickPositionPct) })

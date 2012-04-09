@@ -100,12 +100,13 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 	
 	_changeMute: function(attr, mute){
 		if( !this._curView ) return;
-		console.log("mute: ", mute);
+		
 		mute ? this._curView.mute() : this._curView.unMute();
 	},
 	
 	_changeVolume: function(attr, volPct){
 		if( !this._curView || !this._curView.setVolume ) return;
+		
 		this._curView.setVolume(volPct);
 	}
 
