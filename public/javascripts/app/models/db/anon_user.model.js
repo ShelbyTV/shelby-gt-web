@@ -4,7 +4,7 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       anon : true,
       authentications : [],
       csrf_token : '',
-      faux : 0,
+      faux : 1,
       id : '',
       nickname : 'anonymous',
       preferences : this._getPreferences(),
@@ -23,6 +23,7 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
   _getRollFollowings : function(){
     return [{
       id : "4f689ff1b415cc368c000006"
+      //id : "4f68a168b415cc368c000024"
     }]
   },
   _getPreferences : function(){
