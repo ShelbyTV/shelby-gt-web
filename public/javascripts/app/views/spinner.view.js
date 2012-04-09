@@ -10,7 +10,12 @@
  * $('#something').append(spinner.renderSilent());
  */
 
-libs.shelbyGT.SpinnerView = Backbone.View.extend({
+libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
+
+  options : {
+    // pass a view prototype or string of html to the constructor to override this
+    replacement: null // contents to be inserted in the view when the spinner is hidden
+  },
 
   // these will be applied by default
   // you can override individual options by passing opts.spinOpts
@@ -36,21 +41,47 @@ libs.shelbyGT.SpinnerView = Backbone.View.extend({
     this.spinner = new Spinner(this.spinOpts).spin();
   },
 
+  _cleanup : function() {
+    this.spinner.stop();
+  },
+
   show : function(){
-    $(this.spinner.el).removeClass('hidden');
+    if (this.options.replacement) {
+      // if we have something to replace the spinner with, completely remove the replacement
+      // from the DOM and replace it with the spinner
+      if (typeof(this.options.replacement) === 'string') {
+        this.$el.html(this.spinner.el);
+      } else {
+        // todo
+      }
+    } else {
+      // if we're not replacing the spinner with something else, just show it
+      $(this.spinner.el).removeClass('hidden');
+    }
+
   },
 
   hide : function(){
-    $(this.spinner.el).addClass('hidden');
+    if (this.options.replacement) {
+      // if we have something to replace the spinner with, completely remove the spinner
+      // from the DOM and replace it with the replacement
+      if (typeof(this.options.replacement) === 'string') {
+        this.$el.html(this.options.replacement);
+      } else {
+        // todo
+      }
+    } else {
+      // if we're not replacing the spinner with something else, just hide it
+      $(this.spinner.el).addClass('hidden');
+    }
   },
 
-  renderSilent : function(){
-    return this.render(true);
-  },
-
-  render : function(silent){
-    $(this.spinner.el).addClass(this.hidden ? 'hidden' : '');
-    return silent ? this.spinner.el : this.$el.append(this.spinner.el);
+  render : function(){
+    if (this.options.hidden) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
 });

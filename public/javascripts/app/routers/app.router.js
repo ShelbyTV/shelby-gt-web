@@ -27,25 +27,28 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.share = new libs.shelbyGT.ShareModel();
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     var self = this;
-    shelby.models.user.bind('error', function(){console.log('error'); });
-    if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         global: false,
         data: {
           include_rolls: true
         },
-        success:function() {
+        success: function() {
           self._reroute();
+        },
+        error: function(){
+          self.initAnonymous();
         }
       });
-    }
-    else{
-      // no authenticated user, begin the logged-out user experience
-      // TODO: configure the logged out experience
-      console.log('You are not a logged in user, I should be configuring the logged out experience.');
-      // TEMPORARY SOLUTION:
-      $('#temp-signin').show();
-    }
+  },
+
+  initAnonymous : function(){
+    console.log('initting anon user');
+    shelby.models.user = new libs.shelbyGT.AnonUserModel();
+    //set url to first anon roll and reroute
+    var firstRollId = shelby.models.user.get('roll_followings').first().id;
+    this.navigate('/roll/'+firstRollId, {trigger:false});
+    console.log('about to reroute', firstRollId);
+    this._reroute();
   },
 
   //---

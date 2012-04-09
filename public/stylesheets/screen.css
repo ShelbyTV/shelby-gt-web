@@ -522,22 +522,22 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/guide-header.scss */
+/* line 6, ../../app/stylesheets/partials/guide-header.scss */
 .header {
   background: url("../images/assets/noise.png") #2b2a2a;
   border-bottom: 1px solid #222;
 }
-/* line 12, ../../app/stylesheets/partials/guide-header.scss */
+/* line 13, ../../app/stylesheets/partials/guide-header.scss */
 .header nav {
   display: inline;
 }
 
-/* line 18, ../../app/stylesheets/partials/guide-header.scss */
+/* line 19, ../../app/stylesheets/partials/guide-header.scss */
 .logo {
   display: block;
   float: left;
 }
-/* line 22, ../../app/stylesheets/partials/guide-header.scss */
+/* line 23, ../../app/stylesheets/partials/guide-header.scss */
 .logo h1 {
   background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
   height: 42px;
@@ -545,7 +545,7 @@ a:hover, a:visited, a:active {
   width: 115px;
 }
 
-/* line 30, ../../app/stylesheets/partials/guide-header.scss */
+/* line 31, ../../app/stylesheets/partials/guide-header.scss */
 .settings {
   float: right;
   font-weight: 500;
@@ -554,13 +554,13 @@ a:hover, a:visited, a:active {
   margin: 0;
   width: 50%;
 }
-/* line 38, ../../app/stylesheets/partials/guide-header.scss */
+/* line 39, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   position: relative;
 }
-/* line 43, ../../app/stylesheets/partials/guide-header.scss */
+/* line 44, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   display: block;
   float: none;
@@ -569,18 +569,18 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 51, ../../app/stylesheets/partials/guide-header.scss */
+/* line 52, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li a, .settings li li span {
   height: 2em;
   line-height: 2;
   padding-left: 0.5em;
   text-decoration: none;
 }
-/* line 58, ../../app/stylesheets/partials/guide-header.scss */
+/* line 59, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li a:before, .settings li li a:after {
   content: none;
 }
-/* line 63, ../../app/stylesheets/partials/guide-header.scss */
+/* line 64, ../../app/stylesheets/partials/guide-header.scss */
 .settings a {
   background: #2b2a2a;
   color: #d8d8d8;
@@ -589,7 +589,7 @@ a:hover, a:visited, a:active {
   line-height: 3.75;
   text-decoration: none;
 }
-/* line 71, ../../app/stylesheets/partials/guide-header.scss */
+/* line 72, ../../app/stylesheets/partials/guide-header.scss */
 .settings a:after {
   content: url("../images/assets/carrot.svg");
   font-size: 8.667px;
@@ -598,46 +598,46 @@ a:hover, a:visited, a:active {
   position: absolute;
   text-align: right;
 }
-/* line 79, ../../app/stylesheets/partials/guide-header.scss */
+/* line 80, ../../app/stylesheets/partials/guide-header.scss */
 .settings a:hover {
   color: white;
   text-decoration: underline;
 }
 
-/* line 86, ../../app/stylesheets/partials/guide-header.scss */
+/* line 87, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   position: relative;
   width: 61px;
   z-index: 2;
 }
-/* line 92, ../../app/stylesheets/partials/guide-header.scss */
+/* line 93, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 97, ../../app/stylesheets/partials/guide-header.scss */
+/* line 98, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   width: 85px;
 }
-/* line 102, ../../app/stylesheets/partials/guide-header.scss */
+/* line 103, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 108, ../../app/stylesheets/partials/guide-header.scss */
+/* line 109, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 116, ../../app/stylesheets/partials/guide-header.scss */
+/* line 117, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 122, ../../app/stylesheets/partials/guide-header.scss */
+/* line 123, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -651,12 +651,12 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 132, ../../app/stylesheets/partials/guide-header.scss */
+/* line 133, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
 
-/* line 137, ../../app/stylesheets/partials/guide-header.scss */
+/* line 138, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -1530,23 +1530,23 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 6, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list {
   padding: 0;
   position: relative;
   margin: 0;
 }
-/* line 12, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 13, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a {
   cursor: pointer;
   display: block;
   padding: 10px;
 }
-/* line 16, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 17, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
   background: url("../images/assets/noise.png") #6d6d6d;
 }
-/* line 22, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 23, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   padding: 0;
 }
@@ -1704,8 +1704,10 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png") #494949;
   height: auto;
   padding: 10px 10px 0;
+  position: relative;
+  top: 0;
 }
-/* line 17, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 19, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   background: none;
   border-bottom: none;
@@ -1713,13 +1715,13 @@ a:hover, a:visited, a:active {
   padding: 0;
 }
 
-/* line 26, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 28, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   background: url("../images/assets/noise.png") #555555;
   border-bottom: 1px solid #222;
   height: 40px;
 }
-/* line 31, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 33, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   font-size: 13px;
   line-height: 3;
@@ -1728,24 +1730,57 @@ a:hover, a:visited, a:active {
   white-space: nowrap;
   width: 80%;
 }
-/* line 40, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_public.svg");
   float: left;
   margin: 4px 10px;
 }
-/* line 50, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 52, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 60, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
   position: absolute;
   right: 5px;
   top: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.frame-rolling-options {
+  background: url("../images/assets/noise.png") #494949;
+  padding: 10px 10px 0;
+}
+
+/* line 16, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-name-input, .new-roll-recipients {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #222;
+  display: block;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+/* line 26, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-recipients {
+  margin-bottom: 0;
 }
 
 /* Welcome to Compass.
