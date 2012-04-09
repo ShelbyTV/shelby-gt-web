@@ -38,7 +38,10 @@
       }
 
       if (!roll) {
-        roll = new RollModel({'public':(options.type == 'public')});
+        roll = new RollModel({
+          'public' : (options.type == 'public'),
+          collaborative : true
+        });
         this._showingNewRollView = true;
       }
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({newFrame:newFrame,oldFrame:oldFrame,roll:roll});
