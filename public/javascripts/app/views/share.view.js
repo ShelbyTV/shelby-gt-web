@@ -109,7 +109,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _getSaveOpts : function(urls){
     var self = this;
-    var nextUrl = urls.pop();
+    var nextUrl = urls.shift();
     return {
       url : nextUrl,
       success : function(){
