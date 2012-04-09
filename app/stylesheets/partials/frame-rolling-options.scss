@@ -1,0 +1,30 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.frame-rolling-options{
+	@include background(
+		url('../images/assets/noise.png') #494949
+	);
+
+	padding:$defaultMargin $defaultMargin 0;
+}
+
+
+.new-roll-name-input{
+	@include border-radius($radius);
+
+	border:1px solid #222;
+	display:block;
+	margin-bottom:$defaultMargin/2;
+	padding: $defaultMargin/2;
+
+}
+
+.new-roll-recipients{
+	@extend .new-roll-name-input;
+
+	margin-bottom:0;
+}
