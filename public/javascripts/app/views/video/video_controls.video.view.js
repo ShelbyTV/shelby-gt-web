@@ -145,7 +145,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	},
 	
 	_toggleFullscreen: function(){
-		$("#wrapper").addClass('fullscreen')[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		if (shelby.fullScreen.available()){
+			!shelby.fullScreen.activated() ? shelby.fullScreen.request() : shelby.fullScreen.cancel();
+		}
+		
 	}
 	
 	//TODO: handle scrubbing this._userDesires.set({currentTimePct: (clickPositionPct) })
