@@ -9,6 +9,11 @@
 
   libs.shelbyGT.FrameRollingCompletionView = Support.CompositeView.extend({
 
+    events : {
+      // this event only relevant when creating a new roll
+      'keyup .js-new-roll-name-input' : '_updateRollTitle'
+    },
+
     _shareSubView : null,
 
     className : 'frame-rolling-completion',
@@ -25,7 +30,8 @@
         this.$el.append(JST['frame-rolling-options']({roll:this.options.roll}));
         this._shareSubView = new FrameRollingNewRollView({
           model : new ShareModel(),
-          roll : this.options.roll
+          roll : this.options.roll,
+          frame : this.options.oldFrame
         });
       }
       this.appendChild(this._shareSubView);
@@ -33,6 +39,11 @@
 
     share : function() {
       this._shareSubView._share();
+    },
+
+    _updateRollTitle : function(e) {
+      console.log("get the text",$(e.currentTarget).val());
+      //
     }
 
   });
