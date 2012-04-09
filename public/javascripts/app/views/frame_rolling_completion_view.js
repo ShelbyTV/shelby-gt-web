@@ -42,8 +42,7 @@
     },
 
     _updateRollTitle : function(e) {
-      console.log("get the text",$(e.currentTarget).val());
-      //
+      this.options.roll.set('title',$(e.currentTarget).val());
     }
 
   });

@@ -56,12 +56,16 @@
         this.$('.js-done').hide();
         this._showingNewRollView = false;
       } else {
-        this.$el.removeClass('rolling-frame-trans');
+        this._hide();
       }
     },
 
     _share : function(){
       this._frameRollingCompletionView.share();
+    },
+
+    _hide : function(){
+      this.$el.removeClass('rolling-frame-trans');
     }
 
   });
