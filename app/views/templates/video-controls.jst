@@ -1,34 +1,35 @@
-<div style="background: red; width: 70%; height: 50px; position: absolute; bottom: 100px; left: 0;">
+<div class="video-player-controls">
 	<!-- added a wrapper div and styled inline so Mike can built this out however he sees fit -->
 	<!-- this is wrapped by #video-controls which is probably the element to style -->
 	<menu class="video-player-control">
-		<button class="video-player-play">
+		<button class="video-player-play ir">
 			Play
 		</button>
 
 		<div class="video-player-progress">
-			<span class="video-player-scrubber"></span>
+			<div class="video-player-progress-load"></div>
+			<div class="video-player-scrubber"></div>
 		</div>
 
-		<button class="video-player-roll">
+		<button class="video-player-roll ir">
 			Roll Video
 		</button>
 
-		<button class="video-player-fullscreen">
+		<button class="video-player-fullscreen ir">
 			Fullscreen
 		</button>
 
-		<button class="video-player-volume">
+		<button class="video-player-volume ir unmute">
 			Volume
 		</button>
 
 		<div class="video-player-timeline">
 			<span>
-				0:10
+				0:00
 			</span> 
 			/ 
 			<span>
-				21:08
+				0:00
 			</span>
 		</div>
 
