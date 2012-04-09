@@ -2,7 +2,7 @@
 
   // shorten names of included library prototypes
   var ListView = libs.shelbyGT.ListView;
-  var RollSelectionItemView = libs.shelbyGT.RollSelectionItemView;
+  var RollingSelectionItemView = libs.shelbyGT.RollingSelectionItemView;
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
@@ -21,7 +21,7 @@
       var self = this;
       this.options.collectionAttribute = 'roll_followings';
       this.options.listItemView = function(item){
-        return new RollSelectionItemView({model:item,frame:self.options.frame});
+        return new RollingSelectionItemView({model:item,frame:self.options.frame});
       };
       this.options.insert = {
         position : 'before',
