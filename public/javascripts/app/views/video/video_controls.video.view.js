@@ -5,10 +5,11 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	events : {
-    "click .paused .video-player-play.pause" : "_play",
-    "click .playing .video-player-play" : "_pause",
+    "click .js-paused button.video-player-play" : "_play",
+    "click .js-playing button.video-player-play" : "_pause",
     "click .unmute" : "_mute",
     "click .mute" : "_unMute",
+    "click .video-player-progress": "_scrub",
     "click .video-player-fullscreen" : "_toggleFullscreen"
   },
 
@@ -68,10 +69,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	_onPlaybackStatusChange: function(attr, curState){
 		switch(curState){
 			case libs.shelbyGT.PlaybackStatus.paused:
-				this.$el.removeClass('playing').addClass('paused');
+				this.$el.removeClass('js-playing').addClass('js-paused');
+				this.$('.video-player-play').addClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.playing:
-				this.$el.removeClass('paused').addClass('playing');
+				this.$el.removeClass('js-paused').addClass('js-playing');
+				this.$('.video-player-play').removeClass('pause');
 				break;
 		}
 	},
@@ -125,12 +128,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
-		this.$('.video-player-play').toggleClass('play').toggleClass('pause');
+		this.$('.video-player-play').removeClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
-		this.$('.video-player-play').toggleClass('play').toggleClass('pause');
+		this.$('.video-player-play').addClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
@@ -144,12 +147,19 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
 	},
 	
+	_scrub: function(el){
+    var scrubber = $(el.currentTarget);
+		var seekPct = ( (el.pageX - scrubber.offset().left) / scrubber.width() );
+		this._userDesires.set({currentTimePct: seekPct});
+  },
+	
 	_toggleFullscreen: function(){
-		$("#wrapper").addClass('fullscreen')[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		if (shelby.fullScreen.available()){
+			!shelby.fullScreen.activated() ? shelby.fullScreen.request() : shelby.fullScreen.cancel();
+		}
+		// TODO: change icon if fullscreen is activated
 	}
-	
-	//TODO: handle scrubbing this._userDesires.set({currentTimePct: (clickPositionPct) })
-	
+		
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
 	
 
