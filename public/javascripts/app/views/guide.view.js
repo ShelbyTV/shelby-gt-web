@@ -12,6 +12,7 @@
 
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
+      shelby.models.playbackState.bind('change:activePlayerState', this._videoEndState, shelby.models.playbackState.get('activePlayerState'));
     },
 
     _cleanup : function() {
@@ -58,8 +59,17 @@
       }
 
       this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
-    }
+    },
 
+    _videoEndState : function(newPlayerState){
+	    //console.log("np",newPlayerState);
+			shelby.models.playbackState.get('activePlayerState').bind('change:playbackStatus', this._onPlaybackStatusChange);
+    },
+
+    _onPlaybackStatusChange : function(r){
+			//console.log(shelby.models.playbackState.get('activePlayerState').get('playbackStatus'));
+	    console.log("change:", r);
+    }
   });
 
 } ) ();

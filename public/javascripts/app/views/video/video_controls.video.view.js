@@ -64,6 +64,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		newPlayerState.bind('change:volume', this._onVolumeChange, this);
 		newPlayerState.bind('change:supportsMute', this._onSupportsMuteChange, this);
 		newPlayerState.bind('change:supportsVolume', this._onSupportsVolumeChange, this);
+		
+		this.render();
 	},
 	
 	_onPlaybackStatusChange: function(attr, curState){
@@ -75,6 +77,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 			case libs.shelbyGT.PlaybackStatus.playing:
 				this.$el.removeClass('js-paused').addClass('js-playing');
 				this.$('.video-player-play').removeClass('pause');
+				break;
+			case libs.shelbyGT.PlaybackStatus.ended:
+				console.log("ended");
 				break;
 		}
 	},
