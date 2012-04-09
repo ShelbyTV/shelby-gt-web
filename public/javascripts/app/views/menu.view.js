@@ -3,6 +3,7 @@
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
   var FilterControlsView = libs.shelbyGT.FilterControlsView;
+  var AnonGuideView = libs.shelbyGT.AnonGuideView;
 
   libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
@@ -23,9 +24,11 @@
     },
 
     render : function(active){
+      console.log('rendering menu');
       this.$el.html(this.template());
       this.renderChild(new RollHeaderView({model:this.model}));
       this.renderChild(new FilterControlsView({model:this.model}));
+      //shelby.models.user.get('anon') && this.renderChild(new AnonGuideView({model:this.model}));
     },
 
     _goToStream : function(){
