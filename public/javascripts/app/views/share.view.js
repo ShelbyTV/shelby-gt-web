@@ -32,23 +32,46 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
-    if (this._components.spinner)  this.spinner = this._initSpinner();
+    if (this._components.spinner) {
+      this.spinner = new libs.shelbyGT.SpinnerView({
+        el: '.js-submit-share',
+        hidden : true,
+        replacement : 'Share It',
+        spinOpts : {
+          lines: 11,
+          length: 0,
+          width: 3,
+          radius: 7,
+          rotate: 0,
+          color: '#000',
+          speed: 1.4,
+          trail: 62,
+          shadow: false,
+          hwaccel: true,
+          className: 'spinner',
+          zIndex: 2e9,
+          top: 'auto',
+          left: 'auto',
+        }
+      });
+      this.renderChild(this.spinner);
+    }
     if (this._components.networkToggles){
       this.twitterButton = this.$('.js-toggle-twitter-sharing');
       this.facebookButton = this.$('.js-toggle-facebook-sharing');
     }
   },
 
-  _initSpinner : function(){
-    return new libs.shelbyGT.SpinnerView({ spinOpts: { lines: 11, length: 0, width: 3, radius: 7, rotate: 0, color: '#000', speed: 1.4, trail: 62, shadow: false, hwaccel: true, className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto' } });
+  _toggleSpinner : function(){
+    this.spinner.toggle();
   },
 
-  _toggleSpinner : function(){
-    if (this.$('.spinner').length){
-      this.$('.js-submit-share').html('Share it');
-    } else {
-      this.$('.js-submit-share').html(this.spinner.renderSilent());
-    }
+  _showSpinner : function(){
+    this.spinner.show();
+  },
+
+  _hideSpinner : function(){
+    this.spinner.hide();
   },
 
   _clearTextArea : function(){
@@ -98,7 +121,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   _share : function(){
     var self = this;
     if(!this._validateShare()) return false;
-    this._components.spinner && this._toggleSpinner();
+    this._components.spinner && this._showSpinner();
     var urls = typeof(this.saveUrl) === 'function' ? this.saveUrl() : this.saveUrl;
     if (!$.isArray(urls)) {
       urls = [urls];
@@ -126,7 +149,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
       this._clearTextArea(); //hmm this should be shared for all inheritors...
-      this._components.spinner && this._toggleSpinner();
+      this._components.spinner && this._hideSpinner();
       this.onShareSuccess();
     }
   },

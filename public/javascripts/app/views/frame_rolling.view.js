@@ -25,6 +25,28 @@
     render : function(){
       this.$el.html(this.template());
       this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
+      this.spinner = new libs.shelbyGT.SpinnerView({
+        el: '.js-done',
+        hidden : true,
+        replacement : 'Done',
+        spinOpts : {
+          lines: 11,
+          length: 0,
+          width: 3,
+          radius: 7,
+          rotate: 0,
+          color: '#000',
+          speed: 1.4,
+          trail: 62,
+          shadow: false,
+          hwaccel: true,
+          className: 'spinner',
+          zIndex: 2e9,
+          top: 'auto',
+          left: 'auto',
+        }
+      });
+      this.renderChild(this.spinner);
     },
 
     revealFrameRollingCompletionView : function(newFrame, oldFrame, roll, options){
