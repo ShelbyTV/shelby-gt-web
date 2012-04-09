@@ -52,11 +52,13 @@
 
 
 .video-player-progress{
-//	background:#ddffdd;
-	height:43px;
+	@include border-radius($radius*2);
+
+	background:black;
+	height:8px;
 	left:60px;
 	right:580px;
-	padding:18px 8px 0;
+	margin:18px 8px 0;
 	position:absolute;
 }
 
@@ -67,6 +69,16 @@
 	);
 
 	height:8px;
+	width:0;
+}
+
+.video-player-progress-elapsed{
+	@extend .video-player-progress-load;
+	@include background(
+		$shelbyProgressBlue
+	);
+
+	margin-top:-8px;
 }
 
 .video-player-scrubber{

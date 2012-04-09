@@ -66,15 +66,22 @@
 
 /* line 54, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
-  height: 43px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  background: black;
+  height: 8px;
   left: 60px;
   right: 580px;
-  padding: 18px 8px 0;
+  margin: 18px 8px 0;
   position: absolute;
 }
 
-/* line 63, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-progress-load {
+/* line 65, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -88,9 +95,16 @@
   background: -ms-linear-gradient(top, #333333, #303030);
   background: linear-gradient(top, #333333, #303030);
   height: 8px;
+  width: 0;
 }
 
-/* line 72, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 75, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-progress-elapsed {
+  background: #0092c1;
+  margin-top: -8px;
+}
+
+/* line 84, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -108,7 +122,7 @@
   width: 15px;
 }
 
-/* line 82, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 94, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -118,23 +132,23 @@
   margin: 0 15px;
 }
 
-/* line 91, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 103, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 99, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 111, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 106, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 118, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 116, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 128, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
