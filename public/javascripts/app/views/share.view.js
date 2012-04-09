@@ -39,6 +39,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
   },
 
+  _initSpinner : function(){
+    return new libs.shelbyGT.SpinnerView({ spinOpts: { lines: 11, length: 0, width: 3, radius: 7, rotate: 0, color: '#000', speed: 1.4, trail: 62, shadow: false, hwaccel: true, className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto' } });
+  },
+
+  _toggleSpinner : function(){
+    if (this.$('.spinner').length){
+      this.$('.js-submit-share').html('Share it');
+    } else {
+      this.$('.js-submit-share').html(this.spinner.renderSilent());
+    }
+  },
+
   _clearTextArea : function(){
     this.$('.js-share-textarea').val('');
     this.model.set('text', this.$('.js-share-textarea').val());
@@ -83,9 +95,52 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     return ((this._getCharsLeft() - this.shareBaseLength) < 140);
   },
 
-  _share : function() {
-    // must be overriden
-    console.log('Error, your class must override ShareView._share');
+  _share : function(){
+    var self = this;
+    if(!this._validateShare()) return false;
+    this._components.spinner && this._toggleSpinner();
+    var urls = typeof(this.saveUrl) === 'function' ? this.saveUrl() : this.saveUrl;
+    if (!$.isArray(urls)) {
+      urls = [urls];
+    }
+    this.model.save(null, this._getSaveOpts(urls));
+    return false;
+  },
+
+  _getSaveOpts : function(urls){
+    var self = this;
+    var nextUrl = urls.shift();
+    return {
+      url : nextUrl,
+      success : function(){
+        self._handleShareSuccess(urls);
+      },
+      error : function(){
+        console.log('sharing failed - bug fix needed');
+      }
+    };
+  },
+
+  _handleShareSuccess : function(chainedUrls){
+    if (chainedUrls.length) {
+      this.model.save(null, this._getSaveOpts(chainedUrls));
+    } else {
+      this._clearTextArea(); //hmm this should be shared for all inheritors...
+      this._components.spinner && this._toggleSpinner();
+      this.onShareSuccess();
+    }
+  },
+
+  onShareSuccess : function(){
+    // subclasses may optionally override to perform custom handling on share success
+  },
+
+  saveUrl : function(){
+    // subclasses must override with either a function or static value
+    // to generate a url to be used for sharing
+    console.log('Sorry, your ShareView subclass must override saveUrl');
+    // returns a single url as a string, or an array of urls to be saved to in sequence
+    // if returning an array, each subsequent save will wait for success of the previous one
   }
 
 });
