@@ -1,4 +1,4 @@
-libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
+libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
 
   id: 'js-share-frame',
 

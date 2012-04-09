@@ -7,18 +7,35 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
     collectionType : 'libs.shelbyGT.FramesCollection'
   }],
 
-  url : function() {
-    return shelby.config.apiRoot + '/roll/' + this.id + '/frames';
+  sync : function(method, model, options) {
+    if (!options.url) {
+      var url = shelby.config.apiRoot;
+      switch (method) {
+        case 'create' :
+          url += '/roll';
+          break;
+        case 'update' :
+        case 'delete' :
+          url += '/roll/' + this.id;
+          break;
+        case 'read' :
+          url += '/roll/' + this.id + '/frames';
+          break;
+      }
+      options.url = url;
+    }
+
+    return Backbone.sync(method, model, options);
   },
 
   joinRoll : function(onSuccess) {
-	  var rollToJoin = new libs.shelbyGT.RollModel();
+    var rollToJoin = new libs.shelbyGT.RollModel();
     var url = shelby.config.apiRoot + '/roll/' + this.id + '/join';
-    rollToJoin.save(null, {url:url, success:onSuccess});	  
+    rollToJoin.save(null, {url:url, success:onSuccess});
   },
 
   leaveRoll : function(onSuccess) {
-	  var rollToLeave = new libs.shelbyGT.RollModel();
+    var rollToLeave = new libs.shelbyGT.RollModel();
     var url = shelby.config.apiRoot + '/roll/' + this.id + '/leave';
     rollToLeave.save(null, {url:url, success:onSuccess});
   }

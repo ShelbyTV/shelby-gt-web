@@ -10,7 +10,7 @@
  * $('#something').append(spinner.renderSilent());
  */
 
-libs.shelbyGT.SpinnerView = Backbone.View.extend({
+libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
 
   // these will be applied by default
   // you can override individual options by passing opts.spinOpts
@@ -34,6 +34,10 @@ libs.shelbyGT.SpinnerView = Backbone.View.extend({
   initialize : function(opts) {
     (opts && opts.spinOpts) && _.extend(this.spinOpts, opts.spinOpts);
     this.spinner = new Spinner(this.spinOpts).spin();
+  },
+
+  _cleanup : function() {
+    this.spinner.stop();
   },
 
   show : function(){

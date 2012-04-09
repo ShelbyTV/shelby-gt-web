@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Syntax error: Undefined mixin 'background'.
         on line 19 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'
@@ -114,3 +115,33 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Syntax error: Undefined mixin 'background'.\A         on line 19 of /shelbytv/app/stylesheets/partials/rolls-list.scss, in `background'\A         from line 19 of /shelbytv/app/stylesheets/partials/rolls-list.scss\A \A 14: 		display:block;\A 15: 		padding:$defaultMargin;\A 16: 		&:hover{\A 17: 			@include background(\A 18: 				url('../images/assets/noise.png') #6d6d6d\A 19: 			);\A 20: 		}\A 21: 	}\A 22: 	li{\A 23: 		padding:0;\A 24: 	}"; }
+=======
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 6, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list {
+  padding: 0;
+  position: relative;
+  margin: 0;
+}
+/* line 13, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a {
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+}
+/* line 17, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a:hover {
+  background: url("../images/assets/noise.png") #6d6d6d;
+}
+/* line 23, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li {
+  padding: 0;
+}
+>>>>>>> d8e6bf86f00628e3e2ebfeed34415596825432c7

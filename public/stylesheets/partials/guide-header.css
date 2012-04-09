@@ -1,20 +1,42 @@
+<<<<<<< HEAD
 /*
 Syntax error: Undefined mixin 'background'.
         on line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss, in `background'
         from line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss
+=======
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 6, ../../../app/stylesheets/partials/guide-header.scss */
+.header {
+  background: url("../images/assets/noise.png") #2b2a2a;
+  border-bottom: 1px solid #222;
+}
+/* line 13, ../../../app/stylesheets/partials/guide-header.scss */
+.header nav {
+  display: inline;
+}
+>>>>>>> d8e6bf86f00628e3e2ebfeed34415596825432c7
 
-3: 		"compass/css3/box-shadow";
-4: 
-5: .header{
-6: 	@include background(
-7: 		url('../images/assets/noise.png') $settingsBG
-8: 	);
-9: 
-10: 	border-bottom:1px solid #222;
-11: 
-12: 	nav{
-13: 		display:inline;
+/* line 19, ../../../app/stylesheets/partials/guide-header.scss */
+.logo {
+  display: block;
+  float: left;
+}
+/* line 23, ../../../app/stylesheets/partials/guide-header.scss */
+.logo h1 {
+  background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
+  height: 42px;
+  margin: 0 12px;
+  width: 115px;
+}
 
+<<<<<<< HEAD
 Backtrace:
 /shelbytv/app/stylesheets/partials/guide-header.scss:8:in `background'
 /shelbytv/app/stylesheets/partials/guide-header.scss:8
@@ -94,3 +116,132 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Syntax error: Undefined mixin 'background'.\A         on line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss, in `background'\A         from line 8 of /shelbytv/app/stylesheets/partials/guide-header.scss\A \A 3: 		\"compass/css3/box-shadow\";\A 4: \A 5: .header{\A 6: 	@include background(\A 7: 		url('../images/assets/noise.png') $settingsBG\A 8: 	);\A 9: \A 10: 	border-bottom:1px solid #222;\A 11: \A 12: 	nav{\A 13: 		display:inline;"; }
+=======
+/* line 31, ../../../app/stylesheets/partials/guide-header.scss */
+.settings {
+  float: right;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 2;
+  margin: 0;
+  width: 50%;
+}
+/* line 39, ../../../app/stylesheets/partials/guide-header.scss */
+.settings li {
+  display: block;
+  float: right;
+  position: relative;
+}
+/* line 44, ../../../app/stylesheets/partials/guide-header.scss */
+.settings li li {
+  display: block;
+  float: none;
+  height: 2em;
+  line-height: 2;
+  margin: 0;
+  padding-left: 0;
+}
+/* line 52, ../../../app/stylesheets/partials/guide-header.scss */
+.settings li li a, .settings li li span {
+  height: 2em;
+  line-height: 2;
+  padding-left: 0.5em;
+  text-decoration: none;
+}
+/* line 59, ../../../app/stylesheets/partials/guide-header.scss */
+.settings li li a:before, .settings li li a:after {
+  content: none;
+}
+/* line 64, ../../../app/stylesheets/partials/guide-header.scss */
+.settings a {
+  background: #2b2a2a;
+  color: #d8d8d8;
+  display: block;
+  height: 42px;
+  line-height: 3.75;
+  text-decoration: none;
+}
+/* line 72, ../../../app/stylesheets/partials/guide-header.scss */
+.settings a:after {
+  content: url("../images/assets/carrot.svg");
+  font-size: 8.667px;
+  line-height: 5.5;
+  margin-left: 3px;
+  position: absolute;
+  text-align: right;
+}
+/* line 80, ../../../app/stylesheets/partials/guide-header.scss */
+.settings a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* line 87, ../../../app/stylesheets/partials/guide-header.scss */
+.about, .profile {
+  padding-left: 10px;
+  position: relative;
+  width: 61px;
+  z-index: 2;
+}
+/* line 93, ../../../app/stylesheets/partials/guide-header.scss */
+.about:hover, .profile:hover {
+  color: white;
+  background: #549738;
+}
+
+/* line 98, ../../../app/stylesheets/partials/guide-header.scss */
+.profile {
+  width: 85px;
+}
+/* line 103, ../../../app/stylesheets/partials/guide-header.scss */
+.profile:hover {
+  background: #0f8db8;
+}
+
+/* line 109, ../../../app/stylesheets/partials/guide-header.scss */
+.profile-subnav a:hover, .about-subnav a:hover {
+  background: #0f8db8;
+  text-decoration: none;
+}
+
+/* line 117, ../../../app/stylesheets/partials/guide-header.scss */
+.about-subnav a:hover {
+  background: #549738;
+}
+
+/* line 123, ../../../app/stylesheets/partials/guide-header.scss */
+.you span {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  height: 24px;
+  float: left;
+  margin-right: 5px;
+  width: 24px;
+}
+/* line 133, ../../../app/stylesheets/partials/guide-header.scss */
+.you img {
+  width: 100%;
+}
+
+/* line 138, ../../../app/stylesheets/partials/guide-header.scss */
+.subnav {
+  -moz-box-shadow: 0px 0px 5px 2px #222222;
+  -webkit-box-shadow: 0px 0px 5px 2px #222222;
+  -o-box-shadow: 0px 0px 5px 2px #222222;
+  box-shadow: 0px 0px 5px 2px #222222;
+  background: #2b2a2a;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 0px solid transparent;
+  display: none;
+  position: absolute;
+  width: 92px;
+  z-index: 1;
+}
+>>>>>>> d8e6bf86f00628e3e2ebfeed34415596825432c7
