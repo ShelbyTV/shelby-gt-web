@@ -7,7 +7,8 @@ class HomeController < ApplicationController
   #
   def index
     if !user_signed_in? and request.fullpath == '/'
-      render 'login'
+      #render 'login'
+      render 'app'
     else
       render 'app'
     end

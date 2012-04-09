@@ -73,17 +73,8 @@ $(document).ready(function(){
     If on splash page don't want to try and hit api for data, will just get 401.
     If trying to watch a public roll, want to show whether logged in or not.
   */
-  if ( !shelby.userSignedIn() && document.location.pathname == '/'){
-    /* Not Logged in and on splash page */
-  }
-  else {
-    /* not on splash page, could be logged in or not */
-    //TODO: the 'non-logged-in-user' functionality needs to built out
-    if ( !shelby.userSignedIn() ) {
-      console.log("Don't worry, be happy... You just not logged in mon!");
-      // start logged out experience baby!
-    }
-    shelby.router = new libs.shelbyGT.AppRouter();
-    Backbone.history.start({ pushState:true });
-  }
+  /* not on splash page, could be logged in or not */
+  //TODO: the 'non-logged-in-user' functionality needs to built out
+  shelby.router = new libs.shelbyGT.AppRouter();
+  Backbone.history.start({ pushState:true });
 });

@@ -8,10 +8,6 @@ Matyus (2nd biggest dick)
 -------------------------
 1.5> rolling a frame UI [started html]
 1> player controls [built in html, working on css]
-1> Dynamic Height (using JS? prefer css.)
-	KNOWN ISSUE:
-	height of scrolling div might need to be dynamic 
-	since guide nav is not fixed at all times
 2> comment overlay [started html, css]
 
 3> preferences 'panel'/pane/view/div
@@ -51,7 +47,6 @@ Video player stuffs (Dan)
 > on video end
 > comment overlay on start
 
-
 (LOW PRIORTY) LESS MASSIVE PILE-UP OF SHIT
 -----------------------
 
@@ -66,6 +61,3 @@ NON-MVP > do it all (minus videoverse)
 Logged Out Experience
 ---------------------
 LOW > do it all
-
-DO IT ALL BY YESTERDAY, JUST COZ
---------------------------------
