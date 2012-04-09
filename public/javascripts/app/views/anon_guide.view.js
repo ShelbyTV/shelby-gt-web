@@ -3,13 +3,12 @@
 
     events : {},
 
-    el : '#js-anon-guide',
-
     template : function(obj){
       return JST['anon-guide'](obj);
     },
 
     initialize : function(){
+      console.log('hizzle');
       this.render();
     },
 
