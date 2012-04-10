@@ -3,12 +3,14 @@
   // shorten names of included library prototypes
   var ListView = libs.shelbyGT.ListView;
   var RollingSelectionItemView = libs.shelbyGT.RollingSelectionItemView;
+  var RollModel = libs.shelbyGT.RollModel;
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
     events : {
       "click .js-new-public-roll"  : "_rollToNewPublicRoll",
-      "click .js-new-private-roll" : "_rollToNewPrivateRoll"
+      "click .js-new-private-roll" : "_rollToNewPrivateRoll",
+      "click .js-roll-social"      : "_rollToSocialRoll"
     },
 
     className : 'form-rolls-list',
@@ -61,6 +63,14 @@
 
     _rollToNewPrivateRoll : function(){
       this.parent.revealFrameRollingCompletionView(null, this.options.frame, null, {type:'private'});
+    },
+
+    _rollToSocialRoll : function(){
+      var self = this;
+      var socialRoll = shelby.models.user.get('public_roll');
+      this.options.frame.reRoll(socialRoll, function(newFrame){
+        self.parent.revealFrameRollingCompletionView(newFrame, self.options.frame, socialRoll);
+      });
     }
 
   });

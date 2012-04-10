@@ -43,7 +43,7 @@
           className: 'spinner',
           zIndex: 2e9,
           top: 'auto',
-          left: 'auto',
+          left: 'auto'
         }
       });
       this.renderChild(this.spinner);
