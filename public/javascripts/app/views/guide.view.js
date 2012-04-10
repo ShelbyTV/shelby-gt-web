@@ -1,10 +1,12 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var DisplayState = libs.shelbyGT.DisplayState;
   var GuideModel = libs.shelbyGT.ListView;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollView = libs.shelbyGT.RollView;
+  var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -36,23 +38,29 @@
     _mapAppendChildView : function(){
       var displayComponents;
       switch (this.model.get('displayState')) {
-        case libs.shelbyGT.DisplayState.dashboard :
+        case DisplayState.dashboard :
           displayComponents = {
             viewProto : DashboardView,
             model : shelby.models.dashboard
           };
          break;
-        case libs.shelbyGT.DisplayState.rollList :
+        case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
             model : shelby.models.user
           };
           break;
-        case libs.shelbyGT.DisplayState.standardRoll :
-        case libs.shelbyGT.DisplayState.watchLaterRoll :
+        case DisplayState.standardRoll :
+        case DisplayState.watchLaterRoll :
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel')
+          };
+          break;
+        case DisplayState.userPreferences :
+          displayComponents = {
+            viewProto : UserPreferencesView,
+            model : shelby.models.user
           };
           break;
       }

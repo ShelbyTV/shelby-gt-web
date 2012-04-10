@@ -32,6 +32,7 @@ javascripts:
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/views/roll_list.view.js
     - public/javascripts/app/views/roll.view.js
+    - public/javascripts/app/views/user_preferences.view.js
     - public/javascripts/app/views/roll_header.view.js
     - public/javascripts/app/views/roll_filter_controls.view.js
     - public/javascripts/app/views/filter_controls.view.js
