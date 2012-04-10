@@ -7,6 +7,14 @@ libs.shelbyGT.ShareModel = libs.shelbyGT.ShelbyBaseModel.extend({
     this._buildNetworkSharingState(shelby.models.user);
     shelby.models.user.bind('change', this._onUserChange, this);
   },
+  sync : function(method, model, options) {
+    // the share model is not persisted to the database directly, so there
+    // is no such thing as an update or delete for this model
+    if (method == 'update' || method == 'delete') {
+      method = 'create';
+    }
+    return Backbone.sync(method, model, options);
+  },
   networkEnabled : function(network){
     var result = _.include(this.get('destination'), network);
     return result;
