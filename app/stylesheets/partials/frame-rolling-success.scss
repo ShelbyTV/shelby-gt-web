@@ -1,0 +1,64 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.frame-rolling-success{
+	@extend .rolling-main;
+
+	.frame-share{
+		background: url('../images/assets/noise.png') #494949;
+		height:auto;
+		padding:$defaultMargin $defaultMargin 0;
+	}
+
+	.share-networks-list{
+		li{
+			background:none;
+			border-bottom:none;
+			margin-bottom:0;
+			padding:0;
+		}
+	}
+}
+
+.frame-rolling-success-header{
+	background:url("../images/assets/noise.png") #555;
+	border-bottom:1px solid #222;
+	height:40px;
+
+	h1{
+		font-size:13px;
+		line-height:3;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		width:80%;
+
+		&.roll-type-public{
+			&:before{
+				content:url('../images/assets/rolls_public.svg');
+				float:left;
+				margin: 4px 10px;
+			}
+		}
+
+		&.roll-type-private{
+			@extend .roll-type-public;
+			
+			&:before{
+				content:url('../images/assets/rolls_private.svg');
+			}		
+		}
+
+	}
+}
+
+.frame-share-undo{
+	line-height:3;
+	margin:0 5px;
+	position:absolute;
+	right:5px;
+	top:0;
+}

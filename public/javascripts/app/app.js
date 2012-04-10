@@ -19,9 +19,7 @@ shelby = {
   // Signed in convience function
   userSignedIn: function(){
     var signedIn;
-    if (cookies.get("signed_in") == "true"){
-      signedIn = true;
-    }
+    if (cookies.get("signed_in") == "true"){ signedIn = true; }
     else {
       // HACK to get around cross domain cookie issues. we dont have the 'signed_in' cookie
       //   from api.gt.shelby.tv so we are just hitting up /signed_in to see if we get true or false

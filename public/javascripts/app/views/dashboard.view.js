@@ -24,6 +24,10 @@
         return new mapResult.view({model:item.get(mapResult.model_attr)});
       };
       AutoScrollFrameListView.prototype.initialize.call(this);
+    },
+
+    filter : function(item){
+      return item.get('frame');
     }
 
   });

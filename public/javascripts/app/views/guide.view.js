@@ -14,6 +14,7 @@
 
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
+      Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
@@ -32,7 +33,11 @@
     },
 
     _setGuideTop : function(){
-      this.$el.css('top', $('#js-header-guide').height());
+      var self = this;
+      //biggest ugliest hack of the year:...
+      setTimeout(function(){
+        self.$el.css('top', $('#js-header-guide').height());
+      }, shelby.models.user.get('anon') ? 1000 : 0);
     },
 
     _mapAppendChildView : function(){
@@ -65,10 +70,35 @@
           break;
       }
 
-      this.appendChild(new libs.shelbyGT.AnonGuideView());
+      //this.appendChild(new libs.shelbyGT.AnonGuideView());
       this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
-    }
+    },
 
+    // appropriatly advances to the next video (in dashboard or a roll)
+    _nextVideo : function(){
+	    var _currentModel,
+					_frames,
+					_index,
+					_currentFrame = shelby.models.guide.get('activeFrameModel');
+
+			switch (this.model.get('displayState')) {
+        case libs.shelbyGT.DisplayState.dashboard :
+          _currentModel = shelby.models.dashboard;
+					_frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){ 
+						return c.get('frame'); 
+					});
+         break;
+        case libs.shelbyGT.DisplayState.standardRoll :
+        case libs.shelbyGT.DisplayState.watchLaterRoll :
+          _currentModel = this.model.get('currentRollModel');
+					_frames = _currentModel.get('frames').models;
+          break;
+      }
+			
+			_index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
+
+			shelby.models.guide.set('activeFrameModel', _frames[_index]);
+    }
   });
 
 } ) ();
