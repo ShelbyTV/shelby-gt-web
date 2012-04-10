@@ -1,0 +1,141 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.logged-out-banner-wrapper{
+		left:0;
+		padding-right:330px;
+		position:absolute;
+		top:0;
+		width:100%;
+}
+.logged-out-banner{
+		@include background(
+			url('../images/assets/noise.png') #585858
+		);
+		@include border-radius(0 0 $radius $radius);
+
+		margin:0 auto;
+		min-width:680px;
+		max-width:738px;
+}
+
+.logged-out-header{
+	background:url('../images/assets/noise.png') #303030;
+	border-bottom:1px solid #222;
+	padding:$defaultMargin;
+
+}
+
+.logged-out-nav{
+	float:left;
+	font-size:11px;
+
+	li{
+		display:inline;		
+		padding-right:$defaultMargin/2;
+	}
+	a{
+		color:#d3d3d3;
+		text-decoration:none;
+
+		&:hover{
+			color:white;
+			text-decoration:underline;
+		}
+		&:visited,
+		&:active{
+			color:white;
+		}
+	}
+}
+
+.logged-out-origin{
+	float:right;
+}
+
+.logged-out-tagline{
+	float:left;
+	font-weight:100;
+	font-size:17px;
+	margin-top:20px;
+	width:50%;
+
+	a{
+		text-decoration:none;
+		font-weight:500;
+		&:hover{
+			text-decoration:none;
+		}
+		&:active,
+		&:visited{
+			text-decoration:none;
+		}
+	}
+}
+
+.logged-out-networks{
+	float:left;
+	margin:12px 0;
+	padding:0;
+	width:50%;
+
+
+	li{
+		display:inline;
+		float:left;
+		width:50%;
+	}
+	button{
+		width:93%;
+	}
+}
+
+@mixin logged-out-network-buttons{
+	@include buttonfont;
+	@include border-radius($radius);
+
+	border:1px solid #222;
+	color:white;
+	font-size:11px;
+	line-height:2.5;
+	text-align:center;
+	margin-right:10px;
+	padding-left:30px;
+	position:relative;
+
+	&:before{
+		border-right:1px solid #222;
+		bottom:1px;
+		content:"\0020";
+		float:left;
+		left:0;
+		position:absolute;
+		top:1px;
+		width:30px;
+	}
+}
+
+.logged-out-twitter{
+	@include logged-out-network-buttons;
+	@include background(
+		$softTwitterBlue
+	);
+	
+	&:before{
+		background:url('../images/assets/rolls_share_twitter_on.svg') no-repeat center -3px transparent;
+	}
+}
+
+.logged-out-facebook{
+	@include logged-out-network-buttons;
+	@include background(
+		$softFacebookBlue
+	);
+
+	&:before{
+		background:url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center transparent;
+	}
+}
