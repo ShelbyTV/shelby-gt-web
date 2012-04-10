@@ -1030,6 +1030,10 @@ a:hover, a:visited, a:active {
   padding: 0 10%;
   width: 81px;
 }
+/* line 158, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button .share-spinner, .video-activity-comment .video-activity-comment-submit .share-spinner {
+  left: 50%;
+}
 
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
@@ -1445,7 +1449,7 @@ a:hover, a:visited, a:active {
 }
 /* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332344823');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1517,7 +1521,6 @@ a:hover, a:visited, a:active {
 
 /* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }

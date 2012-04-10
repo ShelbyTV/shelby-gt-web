@@ -48,7 +48,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
           trail: 62,
           shadow: false,
           hwaccel: true,
-          className: 'spinner',
+          className: 'share-spinner',
           zIndex: 2e9,
           top: 'auto',
           left: 'auto',
