@@ -30,7 +30,11 @@
     },
 
     _setGuideTop : function(){
-      this.$el.css('top', $('#js-header-guide').height());
+      var self = this;
+      //biggest ugliest hack of the year:...
+      setTimeout(function(){
+        self.$el.css('top', $('#js-header-guide').height());
+      }, shelby.models.user.get('anon') ? 1000 : 0);
     },
 
     _mapAppendChildView : function(){
