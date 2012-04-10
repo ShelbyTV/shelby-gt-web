@@ -3,7 +3,7 @@
 		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
-
+ 
 .video-player-controls-wrapper{
 	bottom:0;
 	height:65px;
@@ -34,23 +34,31 @@
 }
 
 .video-player-play{
+	border:none;
+	height:43px;
+	float:left;
+	width:47px;
 
 	@include background(
 		url('../images/assets/player_play.svg') center center no-repeat transparent
 	);
 
-	border:none;
-	height:43px;
-	float:left;
-	width:47px;
+	&.pause{
+		@include background(
+			url('../images/assets/player_pause.svg') center center no-repeat transparent
+		);		
+	}
 }
 
+
 .video-player-progress{
-//	background:#ddffdd;
-	height:43px;
+	@include border-radius($radius*2);
+
+	background:black;
+	height:8px;
 	left:60px;
 	right:580px;
-	padding:18px 8px 0;
+	margin:18px 8px 0;
 	position:absolute;
 }
 
@@ -61,6 +69,16 @@
 	);
 
 	height:8px;
+	width:0;
+}
+
+.video-player-progress-elapsed{
+	@extend .video-player-progress-load;
+	@include background(
+		$shelbyProgressBlue
+	);
+
+	margin-top:-8px;
 }
 
 .video-player-scrubber{

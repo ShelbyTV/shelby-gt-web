@@ -10,8 +10,8 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 	_playbackState: shelby.models.playbackState,
 
   initialize: function(opts){
-	
 		this._playbackState = opts.playbackState;
+		this._userDesires = opts.userDesires;
 
 		//we swap between these player views
 		this._playerViews = {
@@ -25,10 +25,20 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 		};
 
     this.model.bind('change:activeFrameModel', this._displayVideo, this);
+
+    this._userDesires.bind('change:playbackStatus', this._changePlaybackStatus, this);
+    this._userDesires.bind('change:currentTimePct', this._seekByPct, this);
+    this._userDesires.bind('change:mute', this._changeMute, this);
+    this._userDesires.bind('change:volume', this._changeVolume, this);
   },
 
 	_cleanup : function() {
     this.model.unbind('change:activeFrameModel', this._displayVideo, this);
+
+    this._userDesires.unbind('change:playbackStatus', this._changePlaybackStatus, this);
+    this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
+    this._userDesires.unbind('change:mute', this._changeMute, this);
+    this._userDesires.unbind('change:volume', this._changeVolume, this);
   },
 
 	//literally display the video (via a video player) and, unless autostart = false, start playing that video
@@ -53,7 +63,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 			view.render(this.$el, video);
 			this._curView = view;
 			
-			this._playbackState.activePlayerState = view.playerState;
+			this._playbackState.set({activePlayerState: view.playerState});
 		}
 		
 		if( this._playbackState.get('autoplayOnVideoDisplay') ){
@@ -62,6 +72,42 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 			this._curView.playVideo(video);
 		}
 
-  }
+  },
+
+
+	//--------------------------------------
+	// Handle user desires
+	//--------------------------------------
+	
+	_changePlaybackStatus: function(attr, state){
+		if( !this._curView ) return;
+		
+		switch(state){
+			case libs.shelbyGT.PlaybackStatus.paused:
+				this._curView.pause();
+				break;
+			case libs.shelbyGT.PlaybackStatus.playing:
+				this._curView.play();
+				break;
+		}
+	},
+	
+	_seekByPct: function(attr, seekPct){
+		if( !this._curView ) return;
+		
+		this._curView.seekByPct(seekPct);
+	},
+	
+	_changeMute: function(attr, mute){
+		if( !this._curView ) return;
+		
+		mute ? this._curView.mute() : this._curView.unMute();
+	},
+	
+	_changeVolume: function(attr, volPct){
+		if( !this._curView || !this._curView.setVolume ) return;
+		
+		this._curView.setVolume(volPct);
+	}
 
 });

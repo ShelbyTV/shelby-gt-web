@@ -20,12 +20,27 @@
 
 /* line 13, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
-  background: url("../images/assets/player_play.svg");
+  background: url("../images/assets/player_play.svg") center center no-repeat transparent;
   height: 47px;
+  float: left;
   width: 47px;
 }
 
-/* line 25, ../../../app/stylesheets/partials/video-player-control.scss */
+/* line 23, ../../../app/stylesheets/partials/video-player-control.scss */
+.video-player-progress {
+  background: #ddffdd;
+  position: absolute;
+  left: 60px;
+  right: 211.5px;
+  height: 100%;
+}
+
+/* line 31, ../../../app/stylesheets/partials/video-player-control.scss */
+.video-player-timeline {
+  float: right;
+}
+
+/* line 34, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -42,21 +57,24 @@
   width: 10px;
 }
 
-/* line 34, ../../../app/stylesheets/partials/video-player-control.scss */
+/* line 43, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-volume {
-  background: url("../images/assets/player_sound_on.svg");
+  background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
+  float: right;
 }
-/* line 39, ../../../app/stylesheets/partials/video-player-control.scss */
+/* line 51, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-volume.mute {
-  background: url("../images/assets/player_sound_off.svg");
+  background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 46, ../../../app/stylesheets/partials/video-player-control.scss */
+/* line 58, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-fullscreen {
-  background: url("../images/assets/player_fullscreen.svg");
+  background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
+  float: right;
 }
 
-/* line 53, ../../../app/stylesheets/partials/video-player-control.scss */
+/* line 68, ../../../app/stylesheets/partials/video-player-control.scss */
 .video-player-roll {
-  background: url("../images/assets/player_roll.svg");
+  background: url("../images/assets/player_roll.svg") center center no-repeat transparent;
+  float: right;
 }
