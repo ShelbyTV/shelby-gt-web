@@ -61,10 +61,11 @@
       this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
     },
 
+    // appropriatly advances to the next video (in dashboard or a roll)
     _nextVideo : function(){
 	    var _currentModel,
 					_frames,
-					_index
+					_index,
 					_currentFrame = shelby.models.guide.get('activeFrameModel');
 
 			switch (this.model.get('displayState')) {
@@ -82,11 +83,8 @@
       }
 			
 			_index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
-			console.log('_currentModel:', _currentModel, _frames[_index]);
 
 			shelby.models.guide.set('activeFrameModel', _frames[_index]);
-	    console.log("next vid...");
-	    //return roll_followings.at(index);
     }
   });
 

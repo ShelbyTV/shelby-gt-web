@@ -79,7 +79,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 				this.$('.video-player-play').removeClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.ended:
-			  console.log("video ended");
 				Backbone.Events.trigger('playback:next');
 				break;
 		}
