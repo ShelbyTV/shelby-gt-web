@@ -6,6 +6,7 @@
     },
 
     //el : '',
+    className: 'logged-out-banner-wrapper',
 
     template : function(obj){
       return JST['anon_banner'](obj);
