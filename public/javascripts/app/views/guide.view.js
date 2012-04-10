@@ -12,7 +12,7 @@
 
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
-      shelby.models.playbackState.bind('change:activePlayerState', this._videoEndState, shelby.models.playbackState.get('activePlayerState'));
+      Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
@@ -61,14 +61,32 @@
       this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
     },
 
-    _videoEndState : function(newPlayerState){
-	    //console.log("np",newPlayerState);
-			shelby.models.playbackState.get('activePlayerState').bind('change:playbackStatus', this._onPlaybackStatusChange);
-    },
+    _nextVideo : function(){
+	    var _currentModel,
+					_frames,
+					_index
+					_currentFrame = shelby.models.guide.get('activeFrameModel');
 
-    _onPlaybackStatusChange : function(r){
-			//console.log(shelby.models.playbackState.get('activePlayerState').get('playbackStatus'));
-	    console.log("change:", r);
+			switch (this.model.get('displayState')) {
+        case libs.shelbyGT.DisplayState.dashboard :
+          _currentModel = shelby.models.dashboard;
+					_frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){ 
+						return c.get('frame'); 
+					});
+         break;
+        case libs.shelbyGT.DisplayState.standardRoll :
+        case libs.shelbyGT.DisplayState.watchLaterRoll :
+          _currentModel = this.model.get('currentRollModel');
+					_frames = _currentModel.get('frames').models;
+          break;
+      }
+			
+			_index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
+			console.log('_currentModel:', _currentModel, _frames[_index]);
+
+			shelby.models.guide.set('activeFrameModel', _frames[_index]);
+	    console.log("next vid...");
+	    //return roll_followings.at(index);
     }
   });
 
