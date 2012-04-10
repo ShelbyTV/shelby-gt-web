@@ -3,6 +3,7 @@ libs.shelbyGT.DisplayState = {
   rollList : 'rollList',
   standardRoll : 'standardRoll',
   watchLaterRoll : 'watchLaterRoll',
+  userPreferences : 'userPreferences',
   none : 'none',
   guideSpinnerOpts : {
     lines: 13, // The number of lines to draw

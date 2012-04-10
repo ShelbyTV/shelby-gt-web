@@ -10,6 +10,10 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
       events["mouseleave " + menu.subnavId] = function(e){$(e.currentTarget).hide();};
     });
 
+    _(events).extend({
+      "click .js-preferences" : "_showUserPreferences"
+    });
+
     return events;
   },
 
@@ -37,6 +41,10 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
       $(menu.subnavId).hide();
     });
     $(menu.subnavId).show();
+  },
+
+  _showUserPreferences : function(){
+    shelby.router.navigate('/preferences', {trigger:true});
   }
 
 });
