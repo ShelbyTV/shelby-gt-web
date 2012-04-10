@@ -3,6 +3,7 @@
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
   var FilterControlsView = libs.shelbyGT.FilterControlsView;
+  var AnonGuideView = libs.shelbyGT.AnonGuideView;
 
   libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
@@ -17,8 +18,17 @@
     template : function(obj){
       return JST['menu'](obj);
     },
+    
+    //maps display states to tab menu tab jquery selectors
+    _activeTabSelectorMap : {
+      "dashboard" : ".stream",
+      "rollList" : ".rolls",
+      "standardRoll" : "",
+      "watchLaterRoll" : ".saves"
+    },
 
     initialize : function(){
+      this.model.bind('change:displayState', this._onDisplayStateChange, this);
       this.render();
     },
 
@@ -38,6 +48,20 @@
 
     _goToSaves : function(){
       shelby.router.navigate('/saves', {trigger:true});
+    },
+
+    _onDisplayStateChange : function(guide, newDisplayState){
+      this._renderActiveTab(newDisplayState);
+    },
+
+    _renderActiveTab : function(displayState){
+      var self = this;
+      //1. deactivate all (for the case of standardRoll which doesn't have a tab)
+      Object.keys(this._activeTabSelectorMap).forEach(function(_displayState){
+        self.$(self._activeTabSelectorMap[_displayState]).removeClass('active-tab');
+      });
+      //2. active displayState
+      self.$(self._activeTabSelectorMap[displayState]).addClass('active-tab');
     }
 
   });

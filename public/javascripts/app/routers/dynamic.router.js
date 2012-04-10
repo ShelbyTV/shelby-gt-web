@@ -167,7 +167,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupAnonUserViews : function(){ 
     // TODO define this view
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
-    console.log('setting up anon user views');
   },
   
   _setupRollView : function(roll, title, options){
