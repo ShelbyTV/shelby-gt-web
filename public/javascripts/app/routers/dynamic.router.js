@@ -11,6 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "carousel/:rollId" : "displayRollInCarousel",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
+    "preferences" : "displayUserPreferences",
     "" : "displayDashboard",
     "*url" : "doNothing"
   },
@@ -91,6 +92,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       alert("Sorry, you don't have a saves roll.");
       this.navigate('', {trigger:true, replace:true});
     }
+  },
+
+  displayUserPreferences : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set({
+      'displayState' : libs.shelbyGT.DisplayState.userPreferences,
+      'insideRollList' : false
+    });
   },
 
   doNothing : function(){
