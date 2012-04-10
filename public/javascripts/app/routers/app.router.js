@@ -42,12 +42,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   },
 
   initAnonymous : function(){
-    console.log('initting anon user');
     shelby.models.user = new libs.shelbyGT.AnonUserModel();
     //set url to first anon roll and reroute
     var firstRollId = shelby.models.user.get('roll_followings').first().id;
     this.navigate('/roll/'+firstRollId, {trigger:false});
-    console.log('about to reroute', firstRollId);
     this._reroute();
   },
 
