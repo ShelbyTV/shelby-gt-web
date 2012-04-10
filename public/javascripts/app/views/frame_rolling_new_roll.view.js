@@ -17,11 +17,28 @@ libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
     ];
   },
 
+  _share : function(){
+    var self = this;
+    var title = this.options.roll.get('title');
+    if(!(this._validateShare() && title && title.length)) return false;
+    this._components.spinner && this._showSpinner();
+    // have to create the roll and reroll the frame before we can share
+    this.options.roll.save(null, {
+      success : function(newRoll){
+        self.options.frame.reRoll(newRoll, function(newFrame){
+          self.options.frame = newFrame;
+          libs.shelbyGT.FrameShareView.prototype._share.call(self);
+        });
+      }});
+
+    return false;
+  },
+
   onShareSuccess: function(){
     var self = this;
     this.$('.share-comment').append(JST['shared-indicator']());
     setTimeout(function(){
-      self.parent.parent._goBack();
+      self.parent.parent._hide();
     }, 200);
   }
 
