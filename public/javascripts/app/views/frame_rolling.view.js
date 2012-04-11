@@ -28,9 +28,9 @@
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: '.js-done',
         hidden : true,
-        replacement : 'Done',
+        replacement : true,
         spinOpts : {
-          lines: 11,
+          lines: 13,
           length: 0,
           width: 3,
           radius: 7,

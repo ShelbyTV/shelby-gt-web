@@ -36,9 +36,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: '.js-submit-share',
         hidden : true,
-        replacement : 'Share It',
+        replacement : true,
         spinOpts : {
-          lines: 11,
+          lines: 13,
           length: 0,
           width: 3,
           radius: 7,
@@ -48,10 +48,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
           trail: 62,
           shadow: false,
           hwaccel: true,
-          className: 'share-spinner',
           zIndex: 2e9,
           top: 'auto',
-          left: 'auto',
+          left: 'auto'
         }
       });
       this.renderChild(this.spinner);

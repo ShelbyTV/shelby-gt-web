@@ -236,6 +236,7 @@
   width: 81px;
 }
 /* line 158, ../../../app/stylesheets/partials/rolls.scss */
-.share-submit-button .share-spinner {
-  left: 50%;
+.share-submit-button .spinner {
+  left: 278px;
+  top: 7px;
 }
