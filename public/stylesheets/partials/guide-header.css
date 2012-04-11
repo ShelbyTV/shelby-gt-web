@@ -114,18 +114,23 @@
   background: #0f8db8;
 }
 
+/* line 114, ../../../app/stylesheets/partials/guide-header.scss */
+.profile-subnav, .about-subnav {
+  left: -94px;
+  width: 174px;
+}
 /* line 115, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 123, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 125, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 129, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -139,12 +144,12 @@
   margin-right: 5px;
   width: 24px;
 }
-/* line 139, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 141, ../../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
 
-/* line 144, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 146, ../../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
