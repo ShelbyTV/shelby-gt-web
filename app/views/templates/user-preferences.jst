@@ -18,15 +18,6 @@
 					<input id="you-preferences-email" name="you-preferences-email" type="text" placeholder="youremail@address.com" value="<%= user.get('primary_email') %>" />
 				</li>
 			</ul>
-			<fieldset class="you-profile-actions">
-				<span id="response-message" class="js-response-message you-profile-response"></span>	
-				<button class="js-user-cancel" type="button">
-					Cancel
-				</button>
-				<button class="js-user-save" type="button">
-					Save
-				</button>
-			</fieldset>
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -86,6 +77,15 @@
 					<input id="you-preferences-email-watches" name="you-preferences-email-watches" type="checkbox">
 				</li>
 			</ul>
+		</fieldset>
+		<fieldset class="you-profile-actions">
+			<span id="response-message" class="js-response-message you-profile-response"></span>	
+			<button class="js-user-cancel" type="button">
+				Cancel
+			</button>
+			<button class="js-user-save" type="button">
+				Save
+			</button>
 		</fieldset>
 	</form>	
 </section>

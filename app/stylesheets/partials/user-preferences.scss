@@ -12,17 +12,23 @@
 .you-preferences-form{
 	margin:0 $defaultMargin;
 
-	legend{
-		font-size:16px;
-		font-weight:700;
-		line-height:3;
+	fieldset{
+		margin-bottom:1em;
 	}
 
 	input{
 		@include border-radius($radius);
 		@include inputfont;
 		border:1px solid #222;
+	}	
+
+	legend{
+		font-size:16px;
+		font-weight:700;
+		line-height:2.75;
 	}
+
+	
 }
 
 .you-preferences-list{
@@ -127,6 +133,19 @@
 	}
 	input{
 		margin-top:10px;
-		width:33%;
+		position:relative;
+		width:58%;
+
+		&:after{
+			color:#efefef;
+			content:"off";
+			position:absolute;
+			right:0;
+			top:-7px;
+		}
+
+		&:checked:after{
+			content:"on";
+		}
 	}
 }
