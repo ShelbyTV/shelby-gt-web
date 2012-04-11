@@ -1,7 +1,7 @@
 libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
 
   events : {
-    "click #js-roll-back" : "_goBackToRollsList",
+    "click #js-roll-back" : "_goToPreviousRoll",
     "click #js-roll-next" : "_goToNextRoll"
   },
 
@@ -27,6 +27,11 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
 
   _goBackToRollsList : function(){
     shelby.router.navigate("rolls", {trigger:true});
+  },
+
+  _goToPreviousRoll : function(){
+    var previousRoll = shelby.models.user.getPreviousRoll(this.model);
+    shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
   },
 
   _goToNextRoll : function(){
