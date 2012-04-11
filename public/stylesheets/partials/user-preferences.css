@@ -15,10 +15,18 @@
   margin-bottom: 1em;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 19, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 21, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 18, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-form fieldset:first-child, .you-preferences-form fieldset.you-profile-actions {
+  margin-bottom: 0;
+}
+/* line 24, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -29,7 +37,7 @@
   font: 300 normal 100%/1.231 "Ubuntu", "Times New Roman";
   border: 1px solid #222;
 }
-/* line 25, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 30, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form legend {
   font-size: 16px;
   font-weight: 700;
@@ -37,42 +45,58 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 34, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 27, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 39, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-list, .you-preferences-networks, .you-preferences-notifications {
   margin: 0;
   padding: 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 38, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 31, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 43, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-list li, .you-preferences-networks li, .you-preferences-notifications li {
   border-bottom: 1px solid #222;
   list-style-type: none;
   padding: 10px 5px 10px 10px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 43, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 36, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 48, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
-/* line 47, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 52, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
   margin-top: 1px;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 55, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 45, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 60, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-profile label,
 .you-profile input,
 .you-notifications label,
@@ -81,19 +105,27 @@
   line-height: 2;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 60, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 51, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 65, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-profile label,
 .you-notifications label {
   width: 25%;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 64, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 55, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 69, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-profile input,
 .you-notifications input {
   padding-left: 5px;
@@ -101,10 +133,16 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 70, ../../../app/stylesheets/partials/user-preferences.scss */
+=======
+/* line 75, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-profile-actions {
   float: right;
+  margin-top: 5px;
 }
+<<<<<<< HEAD
 /* line 72, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 60, ../../../app/stylesheets/partials/user-preferences.scss */
@@ -113,6 +151,9 @@
 }
 /* line 62, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 79, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-profile-actions button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -144,12 +185,18 @@
   padding: 0 5px;
   width: auto;
 }
-/* line 75, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 83, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-profile-actions .you-profile-cancel {
+  width: auto;
+  padding: 0 5px;
+}
+/* line 88, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* line 84, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
@@ -173,6 +220,8 @@
   width: 40%;
 }
 <<<<<<< HEAD
+=======
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 /* line 98, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 84, ../../../app/stylesheets/partials/user-preferences.scss */
@@ -237,28 +286,89 @@
   padding: 0;
   text-decoration: none;
 }
+/* line 125, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks h2 {
+  float: left;
+  font-size: 14px;
+  line-height: 2;
+  width: 40%;
+}
+/* line 132, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks h3 {
+  float: left;
+  font-size: 12px;
+  line-height: 2.5;
+  width: 40%;
+}
+/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks li {
+  padding-left: 0;
+}
 
+/* line 146, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
+  background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: -1px 0px 5px -1px #222222;
+  -webkit-box-shadow: -1px 0px 5px -1px #222222;
+  -o-box-shadow: -1px 0px 5px -1px #222222;
+  box-shadow: -1px 0px 5px -1px #222222;
+  border: 1px solid #222;
+  content: "\0020";
+  float: left;
+  height: 24px;
+  left: 0;
+  margin: 1px 5px 0 0;
+  top: 0;
+  width: 24px;
+}
+
+/* line 165, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-facebook:before {
+  background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
+  content: "\0020";
+}
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* line 129, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 115, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 175, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-tumblr:before {
+  background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
+  content: "\0020";
+}
+
+/* line 186, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
   width: 33%;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 134, ../../../app/stylesheets/partials/user-preferences.scss */
 =======
 /* line 120, ../../../app/stylesheets/partials/user-preferences.scss */
 >>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
+=======
+/* line 191, ../../../app/stylesheets/partials/user-preferences.scss */
+>>>>>>> f5402433b99190f8ca03dfdf69ecf009cdcd2008
 .you-preferences-notifications input {
   margin-top: 10px;
   position: relative;
   width: 58%;
 }
-/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 196, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:after {
   color: #efefef;
   content: "off";
@@ -266,7 +376,7 @@
   right: 0;
   top: -7px;
 }
-/* line 147, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 204, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked:after {
   content: "on";
 }

@@ -30,7 +30,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 		var _username = this.$('#you-preferences-username').val();
 		var info = {primary_email: _email, nickname: _username};
     this.model.save(info, {
-			success: function(model, resp){self._submitResponse(resp, "saved!");},
+			success: function(model, resp){self._updateResponse(resp, "saved!");},
 			error: function(model, resp){
 				var message = JSON.parse(resp.responseText).message;
 				if (message === "error while updating user: Validation failed: Primary email is invalid"){
