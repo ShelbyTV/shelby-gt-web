@@ -104,6 +104,15 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	color: #efefef;
 }
 
+@mixin button-basics($top,$bottom,$noise){
+	@include border-radius($radius);
+	@include buttonfont;
+
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+}
+
 @mixin rolls-menu-button{
 	@include border-radius($radius);
 	@include buttonfont;
@@ -162,3 +171,6 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	padding:0 1px;
 	width:48px;	
 }
+
+
+
