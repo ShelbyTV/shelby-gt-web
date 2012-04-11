@@ -1445,7 +1445,7 @@ a:hover, a:visited, a:active {
 }
 /* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1332539916');
+  content: url('/images/../images/assets/twitter_stamp.png?1332425256');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -2119,20 +2119,25 @@ a:hover, a:visited, a:active {
   padding: 0 1px;
   width: 48px;
 }
+/* line 66, ../../app/stylesheets/partials/user-preferences.scss */
+.you-profile-actions #response-message {
+  float: left;
+  margin: 6px;
+}
 
-/* line 71, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 75, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   width: 25%;
 }
-/* line 77, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 81, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   width: 40%;
 }
-/* line 83, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 87, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
   background: transparent;
@@ -2143,7 +2148,7 @@ a:hover, a:visited, a:active {
   font-weight: 300;
   text-decoration: underline;
 }
-/* line 94, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 98, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2189,13 +2194,13 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 114, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 118, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
   width: 33%;
 }
-/* line 119, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 123, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input {
   margin-top: 7px;
   width: 33%;

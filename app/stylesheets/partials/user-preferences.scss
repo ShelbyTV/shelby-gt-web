@@ -63,6 +63,10 @@
 	button{
 		@include form-button-small;
 	}
+	#response-message{
+		float: left;
+		margin: 6px;
+	}
 }
 
 .you-preferences-networks{

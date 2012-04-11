@@ -9,7 +9,7 @@
 					<label for="you-preferences-username">
 						Username
 					</label>
-						<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" disabled="disabled"/>
+						<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
 				</li>
 				<li class="clearfix">
 					<label for="you-preferences-email">
@@ -19,12 +19,13 @@
 				</li>
 			</ul>
 			<fieldset class="you-profile-actions">
-				<button class="js-user-cancel">
+				<span id="response-message" class="js-response-message"></span>	
+				<button class="js-user-cancel" type="button">
 					Cancel
-				</button>	
-				<button class="js-user-save">
+				</button>
+				<button class="js-user-save" type="button">
 					Save
-				</button>	
+				</button>
 			</fieldset>
 		</fieldset>
 		<fieldset>
@@ -34,35 +35,35 @@
 			<ul class="you-preferences-networks">
 				<li class="clearfix">
 					<h2>Twitter</h2>
-					<% var tw = _.find(shelby.models.user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
+					<% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
 					<% if (typeof tw !== 'undefined'){ %>
 						<h3>@<%= tw.nickname %></h3>
-						<button>Disconnect</button>
+						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
 						<h3></h3>
-						<button class="connected-network">Connect</button>						
+						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="http://api.gt.shelby.tv/auth/twitter">Connect</button>						
 					<% } %>
 				</li>
 				<li class="clearfix">
 					<h2>Facebook</h2>
-					<% var fb = _.find(shelby.models.user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
+					<% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
 					<% if (typeof fb !== 'undefined'){ %>
 						<h3><%= fb.nickname %></h3>
-						<button>Disconnect</button>
-					<% } else { %>
+						<!-- <button type="button">Disconnect</button> -->					<% } else { %>
 						<h3></h3>
-						<button class="connected-network">Connect</button>						
+						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="http://api.gt.shelby.tv/auth/facebook">Connect</button>						
+
 					<% } %>
 				</li>
 				<li class="clearfix">
 					<h2>Tumblr</h2>
-					<% var tu = _.find(shelby.models.user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
+					<% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
 					<% if (typeof tu !== 'undefined'){ %>
 						<h3><%= tu.nickname %></h3>
-						<button>Disconnect</button>
+						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
 						<h3></h3>
-						<button class="connected-network">Connect</button>						
+						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="http://api.gt.shelby.tv/auth/tumblr">Connect</button>						
 					<% } %>
 				</li>
 			</ul>
@@ -76,7 +77,7 @@
 					<label for="you-preferences-email-weekly">
 						Weekly email
 					</label>
-					<input id="you-preferences-email-weekly"name="you-preferences-email-weekly" type="checkbox">
+					<input id="you-preferences-email-weekly" name="you-preferences-email-weekly" type="checkbox" >
 				</li>
 				<li class="clearfix">
 					<label for="you-preferences-email-watches">
