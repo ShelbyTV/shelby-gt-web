@@ -3,12 +3,13 @@
 
 libs.shelbyGT.UserDesiresStateModel = Backbone.Model.extend({
 
-	defaults: {
-		// play/paused based on the constants in libs.shelbyGT.PlaybackStatus
-		playbackStatus: null,
-		currentTimePct: null,
-		mute: false,
-		volume: 1.0
-	}
+  defaults: {
+    // play/paused based on the constants in libs.shelbyGT.PlaybackStatus
+    playbackStatus: null,
+    currentTimePct: null,
+    mute: false,
+    volume: 1.0,
+    rollActiveFrame: false
+  }
 
 });

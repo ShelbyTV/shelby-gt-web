@@ -12,13 +12,18 @@
 
     el: '#guide',
 
+    _listView : null,
+
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
+      shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
       this.model.unbind('change', this.updateChild, this);
+      shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
+      Backbone.Events.unbind('playback:next', this._nextVideo, this);
     },
 
     updateChild : function(model){
@@ -70,34 +75,58 @@
           break;
       }
 
-      //this.appendChild(new libs.shelbyGT.AnonGuideView());
-      this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
+      this._listView = new displayComponents.viewProto({model: displayComponents.model});
+      this.appendChild(this._listView);
+    },
+
+    rollActiveFrame: function(userDesiresStateModel, rollActiveFrame){
+      if (rollActiveFrame) {
+        userDesiresStateModel.set('rollActiveFrame', false);
+        var currentDisplayState = this.model.get('displayState');
+        if (currentDisplayState == DisplayState.dashboard ||
+            currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
+          // try to find the active frame in the current list view and activate its
+          // rolling view
+          if (this._listView) {
+            if (this._listView.activateFrameRollingView(this.model.get('activeFrameModel'))) {
+              return;
+            }
+          }
+        }
+
+        // if no frame view for the active frame currently exists, reroute to the rerolling url
+        // for the frame, which will bring up the frame's source roll, activate the frame, then
+        // reveal is rolling view
+        var rollId = this.model.get('activeFrameModel').get('roll').id;
+        var frameId = this.model.get('activeFrameModel').id;
+        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+      }
     },
 
     // appropriatly advances to the next video (in dashboard or a roll)
     _nextVideo : function(){
-	    var _currentModel,
-					_frames,
-					_index,
-					_currentFrame = shelby.models.guide.get('activeFrameModel');
+      var _currentModel,
+          _frames,
+          _index,
+          _currentFrame = shelby.models.guide.get('activeFrameModel');
 
-			switch (this.model.get('displayState')) {
+      switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
           _currentModel = shelby.models.dashboard;
-					_frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){ 
-						return c.get('frame'); 
-					});
+          _frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){
+            return c.get('frame');
+          });
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
           _currentModel = this.model.get('currentRollModel');
-					_frames = _currentModel.get('frames').models;
+          _frames = _currentModel.get('frames').models;
           break;
       }
-			
-			_index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
+      
+      _index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
 
-			shelby.models.guide.set('activeFrameModel', _frames[_index]);
+      shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }
   });
 
