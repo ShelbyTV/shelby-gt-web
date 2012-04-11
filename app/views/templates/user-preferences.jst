@@ -77,13 +77,31 @@
 					<label for="you-preferences-email-weekly">
 						Weekly email
 					</label>
-					<input id="you-preferences-email-weekly" name="you-preferences-email-weekly" type="checkbox" >
+					<input id="you-preferences-email-weekly" name="you-preferences-email-weekly" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> >
 				</li>
 				<li class="clearfix">
 					<label for="you-preferences-email-watches">
 						Watches
 					</label>
-					<input id="you-preferences-email-watches" name="you-preferences-email-watches" type="checkbox">
+					<input id="you-preferences-email-watches" name="you-preferences-email-watches" type="checkbox" <% if (user.get('preferences').watched_notifications === true){ %> checked <% }%> >
+				</li>
+				<li class="clearfix">
+					<label for="you-preferences-email-upvotes">
+						Upvotes
+					</label>
+					<input id="you-preferences-email-upvotes" name="you-preferences-email-upvotes" type="checkbox" <% if (user.get('preferences').upvote_notifications === true){ %> checked <% }%> >
+				</li>
+				<li class="clearfix">
+					<label for="you-preferences-email-comment">
+						Comments
+					</label>
+					<input id="you-preferences-email-comments" name="you-preferences-email-comments" type="checkbox" <% if (user.get('preferences').comment_notifications === true){ %> checked <% }%> >
+				</li>
+				<li class="clearfix">
+					<label for="you-preferences-email-rerolls">
+						Re-rolls
+					</label>
+					<input id="you-preferences-email-rerolls" name="you-preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> >
 				</li>
 			</ul>
 		</fieldset>

@@ -3,7 +3,11 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   events: {
 	  "click .js-user-save": 	"_submitContactInfo",
 		"click .js-user-cancel": "_cancel",
-		"change #you-preferences-email-weekly": "_toggleWeeklyEmails"
+		"change #you-preferences-email-weekly": "_toggleWeeklyEmails",
+		"change #you-preferences-email-watches": "_toggleWatchEmails",
+		"change #you-preferences-email-upvotes": "_toggleUpvoteEmails",
+		"change #you-preferences-email-comments": "_toggleCommentEmails",
+		"change #you-preferences-email-rerolls": "_toggleRerollEmails"
   },
   
   template : function(obj){
@@ -38,20 +42,33 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 	},
 	
 	_toggleWeeklyEmails: function(){
-		var _val = this.$('#you-preferences-email-weekly').is(':checked') ? true : false;
-		this.model.save({preferences: {weekly_emails: _val}});
+		var _prefs = this.model.get('preferences');
+		_prefs.email_updates = this.$('#you-preferences-email-weekly').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
 	},
   
 	_toggleCommentEmails: function(){
-		this.model.save({preferences: {comment_emails: !this.model.get('preferences').comment_emails}});
+		var _prefs = this.model.get('preferences');
+		_prefs.comment_notifications = this.$('#you-preferences-email-comments').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
 	},
 	
 	_toggleUpvoteEmails: function(){
-		this.model.save({preferences: {upvote_emails: !this.model.get('preferences').upvote_emails}});
+		var _prefs = this.model.get('preferences');
+		_prefs.upvote_notifications = this.$('#you-preferences-email-upvotes').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
 	},
 	
+	_toggleWatchEmails: function(){
+		var _prefs = this.model.get('preferences');
+		_prefs.watched_notifications = this.$('#you-preferences-email-watches').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
+	},
+
 	_toggleRerollEmails: function(){
-		this.model.save({preferences: {reroll_emails: !this.model.get('preferences').reroll_emails}});
+		var _prefs = this.model.get('preferences');
+		_prefs.reroll_notifications = this.$('#you-preferences-email-rerolls').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
 	}
 
   // the future
