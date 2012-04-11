@@ -12,13 +12,18 @@
 
     el: '#guide',
 
+    _listView : null,
+
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
+      shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
       this.model.unbind('change', this.updateChild, this);
+      shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
+      Backbone.Events.unbind('playback:next', this._nextVideo, this);
     },
 
     updateChild : function(model){
@@ -66,7 +71,32 @@
           break;
       }
 
-      this.appendChild(new displayComponents.viewProto({model: displayComponents.model}));
+      this._listView = new displayComponents.viewProto({model: displayComponents.model});
+      this.appendChild(this._listView);
+    },
+
+    rollActiveFrame: function(userDesiresStateModel, rollActiveFrame){
+      if (rollActiveFrame) {
+        userDesiresStateModel.set('rollActiveFrame', false);
+        var currentDisplayState = this.model.get('displayState');
+        if (currentDisplayState == DisplayState.dashboard ||
+            currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
+          // try to find the active frame in the current list view and activate its
+          // rolling view
+          if (this._listView) {
+            if (this._listView.activateFrameRollingView(this.model.get('activeFrameModel'))) {
+              return;
+            }
+          }
+        }
+
+        // if no frame view for the active frame currently exists, reroute to the rerolling url
+        // for the frame, which will bring up the frame's source roll, activate the frame, then
+        // reveal is rolling view
+        var rollId = this.model.get('activeFrameModel').get('roll').id;
+        var frameId = this.model.get('activeFrameModel').id;
+        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+      }
     },
 
     // appropriatly advances to the next video (in dashboard or a roll)

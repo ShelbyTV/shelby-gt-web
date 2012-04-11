@@ -1,6 +1,7 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
+    "roll/:rollId/frame/:frameId/rollit" : "displayFrameAndActivateRollingView",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
@@ -20,32 +21,46 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //ROUTE HANDLERS
   //---
 
-  displayFrameInRoll : function(rollId, frameId){
-    if (rollId != shelby.models.user.get('watch_later_roll').id) {
-      var self = this;
-      this._setupRollView(rollId, null, {
-        data: {include_children:true},
-        onRollFetch: function(rollModel, response){
-          self._activateFrameInRollById(rollModel, frameId);
-        }
-      });
-    } else {
-      // if this is the watch later roll, reroute to the special route for that roll
-      this.navigate('saves', {trigger:true,replace:true});
-    }
+  displayFrameAndActivateRollingView : function(rollId, frameId){
+    this.displayFrameInRoll(rollId, frameId, {activateRollingView:true});
   },
 
-  displayRoll : function(rollId, title){
-    if (rollId != shelby.models.user.get('watch_later_roll').id) {
-      this._setupRollView(rollId, title, {
-        updateRollTitle: true,
-        data: {include_children:true},
-        onRollFetch: this._activateFirstRollFrame
-      });
+  displayFrameInRoll : function(rollId, frameId, options){
+    var defaults = {
+      activateRollingView : false
+    };
+    if (!options) {
+      options = defaults;
     } else {
-      // if this is the watch later roll, reroute to the special handling for that roll
-      this.navigate('saves', {trigger:true,replace:true});
+      _(options).defaults(defaults);
     }
+
+    var self = this;
+    this._setupRollView(rollId, null, {
+      data: {include_children:true},
+      onRollFetch: function(rollModel, response){
+        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+      }
+    });
+  },
+
+  displayRoll : function(rollId, title, options){
+    var defaults = {
+      updateRollTitle: true,
+      onRollFetch: this._activateFirstRollFrame,
+      data: {include_children:true}
+    };
+    if (!options) {
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
+    }
+
+    this._setupRollView(rollId, title, {
+      updateRollTitle: options.updateRollTitle,
+      data: options.data,
+      onRollFetch: options.onRollFetch
+    });
   },
 
   displayFrameInRollInCarousel : function(rollId, frameId){
@@ -85,8 +100,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displaySaves : function(){
     var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
-      this._setupRollView(watchLaterRoll, null, {
-        data: {include_children:true}
+      this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), {
+        updateRollTitle: false,
+        onRollFetch: 'none'
       });
     } else {
       alert("Sorry, you don't have a saves roll.");
@@ -124,10 +140,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateFrameInRollById : function(rollModel, frameId) {
+  _activateFrameInRollById : function(rollModel, frameId, activateRollingView) {
     var frame;
     if (frame = rollModel.get('frames').get(frameId)) {
       shelby.models.guide.set('activeFrameModel', frame);
+      if (activateRollingView) {
+        shelby.models.userDesires.set({rollActiveFrame: true});
+      }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
       window.alert("Sorry, the video you were looking for doesn't exist.");
@@ -147,16 +166,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(){
     shelby.models.user.get('anon') && this._setupAnonUserViews();
     // header & menu render on instantiation //
-    shelby.views.header = shelby.views.header || 
+    shelby.views.header = shelby.views.header ||
         new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu || 
+    shelby.views.menu = shelby.views.menu ||
         new libs.shelbyGT.MenuView({model:shelby.models.guide});
     //--------------------------------------//
-    shelby.views.guide = shelby.views.guide || 
+    shelby.views.guide = shelby.views.guide ||
         new libs.shelbyGT.GuideView({model:shelby.models.guide});
-    shelby.views.video = shelby.views.video || 
+    shelby.views.video = shelby.views.video ||
         new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
-    shelby.views.videoControls = shelby.views.videoControls || 
+    shelby.views.videoControls = shelby.views.videoControls ||
         new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
     if (!shelby.views.guideSpinner){
       shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:libs.shelbyGT.DisplayState.guideSpinnerOpts});
@@ -164,7 +183,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _setupAnonUserViews : function(){ 
+  _setupAnonUserViews : function(){
     // TODO define this view
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
     console.log('setting up anon user views');
@@ -211,10 +230,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'displayState': displayState,
       'currentRollModel': rollModel
     });
-    rollModel.fetch({
-      data: options.data,
-      success: options.onRollFetch
-    });
+    var fetchOptions = {data: options.data};
+    if (typeof(options.onRollFetch) === 'function') {
+      fetchOptions.success = options.onRollFetch;
+    }
+    rollModel.fetch(fetchOptions);
   }
 
 });
