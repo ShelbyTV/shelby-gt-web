@@ -105,11 +105,11 @@
 	}
 
 	&:hover:before{
-		color:red;
+		color:$flatShelbyBlue;
 	}
 
 	&:active{
-		color:red;
+		color:$flatShelbyBlue;
 
 	}
 }
@@ -162,9 +162,7 @@
 			outline:0;
 			text-decoration:underline;
 			width:44px;
-
 		}
-
 	}
 	.save-frame{
 		@extend .roll-frame;
@@ -226,8 +224,6 @@
 		float:right;
 		width:auto;
 	}
-
-
 }
 
 .video-activity-toggle{

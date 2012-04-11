@@ -101,6 +101,21 @@
 		background:$shelbyGreen;
 	}
 }
+
+.subnav{
+	@include box-shadow(0px 0px 5px 2px #222);
+
+	background:$settingsBG;
+	border-bottom:1px solid black;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	border-top:0px solid transparent;
+	display:none;
+	position:absolute;
+	width:92px;
+	z-index:1;
+}
+
 .profile{
 	@extend .about;
 
@@ -125,6 +140,8 @@
 	a:hover{
 		background:$shelbyGreen;
 	}
+	left:0;
+	width:92px;
 }
 
 .you{
@@ -141,18 +158,4 @@
 	img{
 		width:100%;
 	}
-}
-
-.subnav{
-	@include box-shadow(0px 0px 5px 2px #222);
-
-	background:$settingsBG;
-	border-bottom:1px solid black;
-	border-left:1px solid black;
-	border-right:1px solid black;
-	border-top:0px solid transparent;
-	display:none;
-	position:absolute;
-	width:92px;
-	z-index:1;
 }
