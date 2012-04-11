@@ -9,7 +9,7 @@
 					<label for="you-preferences-username">
 						Username
 					</label>
-						<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
+					<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" disabled="disabled" />
 				</li>
 				<li class="clearfix">
 					<label for="you-preferences-email">
@@ -18,15 +18,6 @@
 					<input id="you-preferences-email" name="you-preferences-email" type="text" placeholder="youremail@address.com" value="<%= user.get('primary_email') %>" />
 				</li>
 			</ul>
-			<fieldset class="you-profile-actions">
-				<span id="response-message" class="js-response-message"></span>	
-				<button class="js-user-cancel" type="button">
-					Cancel
-				</button>
-				<button class="js-user-save" type="button">
-					Save
-				</button>
-			</fieldset>
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -104,6 +95,15 @@
 					<input id="you-preferences-email-rerolls" name="you-preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> >
 				</li>
 			</ul>
+		</fieldset>
+		<fieldset class="you-profile-actions">
+			<span id="response-message" class="js-response-message you-profile-response"></span>	
+			<button class="js-user-cancel" type="button">
+				Cancel
+			</button>
+			<button class="js-user-save" type="button">
+				Save
+			</button>
 		</fieldset>
 	</form>	
 </section>

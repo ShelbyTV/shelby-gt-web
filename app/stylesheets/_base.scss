@@ -78,6 +78,10 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	font:300 normal 62.5%/1.231 'Ubuntu','Times New Roman';
 }
 
+@mixin inputfont{
+	font:300 normal 100%/1.231 'Ubuntu','Times New Roman';
+}
+
 @mixin buttonfont{
 	font:700 normal 100%/1.231 'Ubuntu','Times New Roman';
 }

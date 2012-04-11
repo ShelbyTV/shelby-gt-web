@@ -11,12 +11,10 @@
   margin: 0 10px;
 }
 /* line 15, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-form legend {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 3;
+.you-preferences-form fieldset {
+  margin-bottom: 1em;
 }
-/* line 22, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 19, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -24,50 +22,61 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  font: 300 normal 100%/1.231 "Ubuntu", "Times New Roman";
   border: 1px solid #222;
 }
+/* line 25, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-form legend {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 2.75;
+}
 
-/* line 28, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 34, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list, .you-preferences-networks, .you-preferences-notifications {
   margin: 0;
   padding: 0;
 }
-/* line 32, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 38, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list li, .you-preferences-networks li, .you-preferences-notifications li {
   border-bottom: 1px solid #222;
   list-style-type: none;
-  padding: 10px 5px;
+  padding: 10px 5px 10px 10px;
 }
-/* line 37, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 43, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
+/* line 47, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
+  margin-top: 1px;
+}
 
-/* line 46, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 55, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-profile input,
 .you-notifications label,
 .you-notifications input {
   float: left;
   line-height: 2;
-  padding-left: 5px;
 }
-/* line 52, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 60, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-notifications label {
   width: 25%;
 }
-/* line 56, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 64, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
+  padding-left: 5px;
   width: 75%;
 }
 
-/* line 61, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 70, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions {
   float: right;
 }
-/* line 63, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 72, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -97,25 +106,27 @@
   padding: 0 1px;
   width: 48px;
 }
-/* line 66, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 75, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 75, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 84, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
-  width: 25%;
+  line-height: 2;
+  width: 30%;
 }
-/* line 81, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 91, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
+  line-height: 2.5;
   width: 40%;
 }
-/* line 87, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 98, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
   background: transparent;
@@ -126,7 +137,7 @@
   font-weight: 300;
   text-decoration: underline;
 }
-/* line 98, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 109, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -172,14 +183,27 @@
   text-decoration: none;
 }
 
-/* line 118, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 129, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
   width: 33%;
 }
-/* line 123, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 134, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input {
-  margin-top: 7px;
-  width: 33%;
+  margin-top: 10px;
+  position: relative;
+  width: 58%;
+}
+/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input:after {
+  color: #efefef;
+  content: "off";
+  position: absolute;
+  right: 0;
+  top: -7px;
+}
+/* line 147, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input:checked:after {
+  content: "on";
 }
