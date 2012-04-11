@@ -507,7 +507,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 108, ../../app/stylesheets/partials/app.html.scss */
-.guide-spinner {
+.spinner {
   left: 50%;
   margin-top: 100px;
   position: absolute !important;
@@ -1060,6 +1060,11 @@ a:hover, a:visited, a:active {
   padding: 0 10%;
   width: 81px;
 }
+/* line 160, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button .spinner, .video-activity-comment .video-activity-comment-submit .spinner {
+  left: 278px;
+  top: 7px;
+}
 
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
@@ -1475,7 +1480,7 @@ a:hover, a:visited, a:active {
 }
 /* line 293, ../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1334166219');
+  content: url('/images/../images/assets/twitter_stamp.png?1334168110');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;

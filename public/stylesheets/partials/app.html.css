@@ -102,7 +102,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 108, ../../../app/stylesheets/partials/app.html.scss */
-.guide-spinner {
+.spinner {
   left: 50%;
   margin-top: 100px;
   position: absolute !important;

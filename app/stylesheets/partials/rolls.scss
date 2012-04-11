@@ -157,6 +157,10 @@
 
 .share-submit-button{
 	@include form-submit-button;
+	.spinner{
+		left:278px;
+		top:7px;
+	}
 }
 //.rolls{
 //	background:$myBlue;
