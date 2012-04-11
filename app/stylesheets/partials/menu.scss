@@ -35,10 +35,10 @@
 
 
 		&:hover{
-			@include box-shadow(inset 0px 0px 10px #999);
+			@include box-shadow(inset 0px 0px 5px #666);
 		}
 		&:active{
-			@include box-shadow(inset 0px 0px 10px blue);
+			@include box-shadow(inset 0px 0px 10px black);
 		}
 
 	}
@@ -48,17 +48,46 @@
 		width:100%;
 	}
 
+	.active-tab{
+			@include box-shadow(inset 0px 0px 10px black);
+	}
+
 	.stream{
 		@include background(
-			url('../images/assets/stream.svg') no-repeat center center);
+			url('../images/assets/stream.svg') no-repeat center center
+		);
+		
+		&.active-tab{
+			@include background(
+				url('../images/assets/stream_on.svg') no-repeat center center
+			);
+			color:#63BD57;
+		}
 	}
+
 	.rolls{
 		@include background(
-			url('../images/assets/rolls.svg') no-repeat center center);
+			url('../images/assets/rolls.svg') no-repeat center center
+		);
+		
+		&.active-tab{
+			@include background(
+				url('../images/assets/rolls_on.svg') no-repeat center center
+			);
+			color:#0092C1;
+		}
 	}
 	.saves{
 		@include background(
-			url('../images/assets/saves.svg') no-repeat center center);
+			url('../images/assets/saves.svg') no-repeat center center
+		);
+		
+		&.active-tab{
+			@include background(
+				url('../images/assets/saves_on.svg') no-repeat center center
+			);
+			color:#F0E84C;
+		}
 	}
 }
 

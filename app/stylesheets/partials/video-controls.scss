@@ -13,6 +13,7 @@
 }
 
 .video-player-controls{
+	background:$flatShelbyVideoPlayer;
 	@include background(
 		$softShelbyVideoPlayer
 	);
@@ -64,6 +65,7 @@
 
 .video-player-progress-load{
 	@include border-radius($radius*2);
+	background:$flatShelbyDarkGray;
 	@include background(
 		$softShelbyDarkGray
 	);
