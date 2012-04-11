@@ -39,6 +39,7 @@
 .rolls-share{
 	@extend .rolls-add;
 	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+	background:$flatShelbyBlue;
 	@include background(
 		$softShelbyBlue
 	);
@@ -47,6 +48,7 @@
 .rolls-leave{
 	@extend .rolls-add;
 	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($shelbyGreen,-30%));
+	background:$flatShelbyGreen;
 	@include background(
 		$softShelbyGreenDeboss
 	);	

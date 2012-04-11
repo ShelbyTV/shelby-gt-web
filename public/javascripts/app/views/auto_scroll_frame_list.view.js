@@ -10,6 +10,18 @@
       ListView.prototype.initialize.call(this);
     },
 
+    activateFrameRollingView : function(frame) {
+      var playingFrameView = this.children.find(this._findViewByModel(frame));
+      if (playingFrameView) {
+        this.parent.$el.scrollTo(playingFrameView.$el, {duration:200,axis:'y',onAfter:function(){
+          playingFrameView.roll();
+        }});
+        return true;
+      } else {
+        return false;
+      }
+    },
+
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
       ListView.prototype._cleanup.call(this);

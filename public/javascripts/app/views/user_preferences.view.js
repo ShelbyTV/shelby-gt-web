@@ -34,19 +34,19 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 			error: function(model, resp){
 				var message = JSON.parse(resp.responseText).message;
 				if (message === "error while updating user: Validation failed: Primary email is invalid"){
-					self._submitResponse(resp, "email not valid.");
+					self._updateResponse(resp, "email not valid.");
 				}
 				else if (message === "error while updating user: Validation failed: Nickname has already been taken"){
-					self._submitResponse(resp, "nickname is taken.");
+					self._updateResponse(resp, "nickname is taken.");
 				}
 				else {
-					self._submitResponse(resp, "error");
+					self._updateResponse(resp, "error");
 				}
 			}
     });
 	},
 	
-	_submitResponse: function(resp, msg){
+	_updateResponse: function(resp, msg){
 		var self = this;
    	this.$('.js-response-message').show().text(msg);
 		setTimeout(function(){

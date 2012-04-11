@@ -70,12 +70,18 @@
 		text-decoration:none;
 
 		&:after {
-			content: url('../images/assets/carrot.svg');
+			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
+			content:"\0020";
 			font-size: $font-size/1.5;
+			height:12px;
+//			left:0;
 			line-height:5.5;
 			margin-left:3px;
 			position:absolute;
 			text-align:right;
+			top:47%;
+			width:12px;
+
 		}
 		&:hover{
 			color:white;

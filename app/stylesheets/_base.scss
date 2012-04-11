@@ -51,18 +51,33 @@ $gradientDark : #303030;
 $gradientLight : #333;
 
 $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
-$softShelbyBlue: linear-gradient(top, #00a5cc, #007fb6);
-$softShelbyGreen: linear-gradient(top, $shelbyGreen, adjust-lightness($shelbyGreen,-10%));
+
+$flatShelbyBlue: #007fb6;
+$softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
+
+$flatShelbyGreen: #549738;
+$softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
+
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
+
 $softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
-$softShelbyGrayButton: linear-gradient(top, #4a4a4a, #343434);
-$softShelbyDarkGray: linear-gradient(top, #333, #303030);
-$softShelbyRed: linear-gradient(top, #ba2046, #9e1632);
 
-$softShelbyVideoPlayer:linear-gradient(top, #141414, #0e0e0e);
+$flatShelbyGrayButton: #343434;
+$softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
 
-$softTwitterBlue: linear-gradient(top, #00b5d7, #00a2d1);
-$softFacebookBlue: linear-gradient(top, #01599e, #013e80);
+$flatShelbyDarkGray: #303030;
+$softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
+
+$flatShelbyRed: #9e1632;
+$softShelbyRed: linear-gradient(top, #ba2046, $flatShelbyRed);
+
+$flatShelbyVideoPlayer: #0e0e0e;
+$softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);
+
+$twitterBlue: #00a2d1;
+$softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
+$facebookBlue: #013e80;
+$softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
 $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 
 @mixin softgradient {
@@ -93,9 +108,19 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	color: #efefef;
 }
 
+@mixin button-basics($top,$bottom,$noise){
+	@include border-radius($radius);
+	@include buttonfont;
+
+	border:1px solid #222;
+	color:#efefef;
+	display:block;
+}
+
 @mixin rolls-menu-button{
 	@include border-radius($radius);
 	@include buttonfont;
+	background:$flatShelbyGreen;
 	@include background(
 		$softShelbyGreen
 	);
@@ -114,6 +139,7 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 @mixin form-submit-button{
 	@include border-radius($radius);
 	@include buttonfont;
+	background: $flatShelbyBlue;
 	@include background(
 		$softShelbyBlue
 	);
@@ -149,3 +175,6 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	padding:0 1px;
 	width:48px;	
 }
+
+
+

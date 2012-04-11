@@ -120,6 +120,7 @@
 
 .logged-out-twitter{
 	@include logged-out-network-buttons;
+	background:$twitterBlue;
 	@include background(
 		$softTwitterBlue
 	);
@@ -131,6 +132,7 @@
 
 .logged-out-facebook{
 	@include logged-out-network-buttons;
+	background:$facebookBlue;
 	@include background(
 		$softFacebookBlue
 	);

@@ -325,7 +325,11 @@
 }
 /* line 293, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date a:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/twitter_stamp.png?1334155857');
+=======
+  content: url('/images/../images/assets/twitter_stamp.png?1333661413');
+>>>>>>> 366009ba0a97b350dc8150aafeedfb475ffe7565
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
