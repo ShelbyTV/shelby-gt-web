@@ -28,13 +28,14 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 		var _username = this.$('#you-preferences-username').val();
 		var info = {primary_email: _email, nickname: _username};
     this.model.save(info, {
-			success: function(){self._responseMessage("saved!");},
-			error: function(){self._responseMessage("error");}
+			success: function(resp){self._submitResponse(resp, "saved!");},
+			error: function(resp){self._submitResponse(resp, "error");}
     });
 	},
 	
-	_responseMessage: function(msg){
+	_submitResponse: function(resp, msg){
 		var self = this;
+		shelby.models.user = resp;
    	this.$('.js-response-message').show().text(msg);
 		setTimeout(function(){
 			self.$('.js-response-message').fadeOut('fast', function() { $(this).text(""); });
