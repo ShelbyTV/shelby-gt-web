@@ -507,7 +507,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 108, ../../app/stylesheets/partials/app.html.scss */
-.guide-spinner {
+.spinner {
   left: 50%;
   margin-top: 100px;
   position: absolute !important;
@@ -1065,6 +1065,11 @@ a:hover, a:visited, a:active {
   padding: 0 10%;
   width: 81px;
 }
+/* line 160, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button .spinner, .video-activity-comment .video-activity-comment-submit .spinner {
+  left: 278px;
+  top: 7px;
+}
 
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
@@ -1460,26 +1465,26 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 277, ../../app/stylesheets/partials/frame.scss */
+/* line 276, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 282, ../../app/stylesheets/partials/frame.scss */
+/* line 281, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 287, ../../app/stylesheets/partials/frame.scss */
+/* line 286, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 295, ../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1334167328');
   float: left;
@@ -1487,16 +1492,16 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 305, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1334167328');
 }
 
-/* line 309, ../../app/stylesheets/partials/frame.scss */
+/* line 308, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 312, ../../app/stylesheets/partials/frame.scss */
+/* line 311, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
