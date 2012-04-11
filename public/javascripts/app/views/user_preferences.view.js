@@ -19,6 +19,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
 	_cancel: function(){
+		//TODO: what should cancel really do?
+		// -1 (or .back) seems to bring us to the wrong place.
 		window.history.go(-2);
 	},
 
@@ -28,14 +30,24 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 		var _username = this.$('#you-preferences-username').val();
 		var info = {primary_email: _email, nickname: _username};
     this.model.save(info, {
-			success: function(resp){self._submitResponse(resp, "saved!");},
-			error: function(resp){self._submitResponse(resp, "error");}
+			success: function(model, resp){self._submitResponse(resp, "saved!");},
+			error: function(model, resp){
+				var message = JSON.parse(resp.responseText).message;
+				if (message === "error while updating user: Validation failed: Primary email is invalid"){
+					self._submitResponse(resp, "email not valid.");
+				}
+				else if (message === "error while updating user: Validation failed: Nickname has already been taken"){
+					self._submitResponse(resp, "nickname is taken.");
+				}
+				else {
+					self._submitResponse(resp, "error");
+				}
+			}
     });
 	},
 	
 	_submitResponse: function(resp, msg){
 		var self = this;
-		shelby.models.user = resp;
    	this.$('.js-response-message').show().text(msg);
 		setTimeout(function(){
 			self.$('.js-response-message').fadeOut('fast', function() { $(this).text(""); });
