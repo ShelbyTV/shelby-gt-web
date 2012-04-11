@@ -123,6 +123,41 @@
 	}
 }
 
+.you-preferences-networks-twitter{
+
+	&:before{
+		@include background(
+			url('../images/assets/twitter.svg') no-repeat center center #00a2d1
+		);
+		@include border-radius($radius);
+		border:1px solid #222;
+		content: "\0020";
+		float:left;
+		height:20px;
+		left:0;
+		top:0;
+		width:20px;
+	}
+}
+.you-preferences-networks-facebook{
+	@extend .you-preferences-networks-twitter;
+
+	&:before{
+		@include background(
+			url('../images/assets/facebook.svg') no-repeat center center #013e80
+		);
+		content: "\0020";
+	}	
+}
+.you-preferences-networks-tumblr{
+	&:before{
+		@include background(
+			url('../images/assets/twitter.svg') no-repeat center center #013e80
+		);
+		content: "\0020";
+	}
+}
+
 .you-preferences-notifications{
 	@extend .you-preferences-list;
 	

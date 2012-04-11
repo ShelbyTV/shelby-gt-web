@@ -25,7 +25,7 @@
 			</legend>
 			<ul class="you-preferences-networks">
 				<li class="clearfix">
-					<h2>Twitter</h2>
+					<h2 class="you-preferences-networks-twitter">Twitter</h2>
 					<% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
 					<% if (typeof tw !== 'undefined'){ %>
 						<h3>@<%= tw.nickname %></h3>
@@ -36,7 +36,7 @@
 					<% } %>
 				</li>
 				<li class="clearfix">
-					<h2>Facebook</h2>
+					<h2 class="you-preferences-networks-facebook">Facebook</h2>
 					<% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
 					<% if (typeof fb !== 'undefined'){ %>
 						<h3><%= fb.nickname %></h3>
@@ -47,7 +47,7 @@
 					<% } %>
 				</li>
 				<li class="clearfix">
-					<h2>Tumblr</h2>
+					<h2 class="you-preferences-networks-tumblr">Tumblr</h2>
 					<% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
 					<% if (typeof tu !== 'undefined'){ %>
 						<h3><%= tu.nickname %></h3>

@@ -183,19 +183,49 @@
   text-decoration: none;
 }
 
-/* line 129, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 128, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before {
+  background: url("../images/assets/twitter.svg") no-repeat center center #00a2d1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #222;
+  content: "\0020";
+  float: left;
+  height: 20px;
+  left: 0;
+  top: 0;
+  width: 20px;
+}
+
+/* line 145, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-facebook:before {
+  background: url("../images/assets/facebook.svg") no-repeat center center #013e80;
+  content: "\0020";
+}
+
+/* line 153, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-tumblr:before {
+  background: url("../images/assets/twitter.svg") no-repeat center center #013e80;
+  content: "\0020";
+}
+
+/* line 164, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
   width: 33%;
 }
-/* line 134, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 169, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input {
   margin-top: 10px;
   position: relative;
   width: 58%;
 }
-/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 174, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:after {
   color: #efefef;
   content: "off";
@@ -203,7 +233,7 @@
   right: 0;
   top: -7px;
 }
-/* line 147, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 182, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked:after {
   content: "on";
 }
