@@ -10,7 +10,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .unmute" : "_mute",
     "click .mute" : "_unMute",
     "click .video-player-progress": "_scrub",
-    "click .video-player-fullscreen" : "_toggleFullscreen"
+    "click .video-player-fullscreen" : "_toggleFullscreen",
+    "click .video-player-roll" : "_rollActiveFrame"
   },
 
   el: '#video-controls',
@@ -164,8 +165,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 			!shelby.fullScreen.activated() ? shelby.fullScreen.request() : shelby.fullScreen.cancel();
 		}
 		// TODO: change icon if fullscreen is activated
-	}
-		
+	},
+
+  _rollActiveFrame: function(){
+    this._userDesires.set({rollActiveFrame: true});
+  }
+
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
 	
 
