@@ -25,6 +25,15 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return this.get('name').split(' ')[0];
   },
 
+  getPreviousRoll : function(roll){
+    var roll_followings = this.get('roll_followings');
+    var index = (roll_followings.indexOf(roll) - 1);
+    if (index < 0) {
+      index = roll_followings.length - 1;
+    }
+    return roll_followings.at(index);
+  },
+
   getNextRoll : function(roll){
     var roll_followings = this.get('roll_followings');
     var index = (roll_followings.indexOf(roll) + 1) % roll_followings.length;
