@@ -14,6 +14,11 @@
 
 	fieldset{
 		margin-bottom:1em;
+		&:first-child,
+		&.you-profile-actions{
+			margin-bottom:0;
+		}
+
 	}
 
 	input{
@@ -69,31 +74,26 @@
 
 .you-profile-actions{
 	float:right;
+	margin-top: $defaultMargin/2;
+
 	button{
 		@include form-button-small;
 	}
+	
+	.you-profile-cancel{
+		width:auto;
+		padding:0 5px;
+	}
+
 	#response-message{
 		float: left;
 		margin: 6px;
 	}
 }
 
+
 .you-preferences-networks{
 	@extend .you-preferences-list;
-
-	h2{
-		float:left;
-		font-size:14px;
-		line-height:2;
-		width:30%;
-	}	
-
-	h3{
-		float:left;
-		font-size:12px;
-		line-height:2.5;
-		width:40%
-	}	
 
 	button{
 		@include buttonfont;
@@ -121,22 +121,42 @@
 			text-decoration:none;
 		}
 	}
+
+	h2{
+		float:left;
+		font-size:14px;
+		line-height:2;
+		width:40%;
+	}	
+
+	h3{
+		float:left;
+		font-size:12px;
+		line-height:2.5;
+		width:40%
+	}	
+
+	li{
+		padding-left:0;
+	}
 }
 
 .you-preferences-networks-twitter{
 
 	&:before{
 		@include background(
-			url('../images/assets/twitter.svg') no-repeat center center #00a2d1
+			url('../images/assets/rolls_twitter.svg') no-repeat center center #00a2d1
 		);
 		@include border-radius($radius);
+		@include box-shadow(-1px 0px 5px -1px #222);
 		border:1px solid #222;
 		content: "\0020";
 		float:left;
-		height:20px;
+		height:24px;
 		left:0;
+		margin: 1px 5px 0 0;
 		top:0;
-		width:20px;
+		width:24px;
 	}
 }
 .you-preferences-networks-facebook{
@@ -144,15 +164,17 @@
 
 	&:before{
 		@include background(
-			url('../images/assets/facebook.svg') no-repeat center center #013e80
+			url('../images/assets/rolls_facebook.svg') no-repeat center center #013e80
 		);
 		content: "\0020";
 	}	
 }
 .you-preferences-networks-tumblr{
+	@extend .you-preferences-networks-twitter;
+
 	&:before{
 		@include background(
-			url('../images/assets/twitter.svg') no-repeat center center #013e80
+			url('../images/assets/rolls_facebook.svg') no-repeat center center #013e80
 		);
 		content: "\0020";
 	}
