@@ -9,7 +9,7 @@
 					<label for="you-preferences-username">
 						Username
 					</label>
-						<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
+					<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" disabled="disabled" />
 				</li>
 				<li class="clearfix">
 					<label for="you-preferences-email">
@@ -19,7 +19,7 @@
 				</li>
 			</ul>
 			<fieldset class="you-profile-actions">
-				<span id="response-message" class="js-response-message"></span>	
+				<span id="response-message" class="js-response-message you-profile-response"></span>	
 				<button class="js-user-cancel" type="button">
 					Cancel
 				</button>

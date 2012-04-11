@@ -18,9 +18,9 @@
 		line-height:3;
 	}
 
-
 	input{
 		@include border-radius($radius);
+		@include inputfont;
 		border:1px solid #222;
 	}
 }
@@ -32,11 +32,14 @@
 	li{
 		border-bottom:1px solid #222;
 		list-style-type:none;
-		padding:$defaultMargin $defaultMargin/2;
+		padding:$defaultMargin $defaultMargin/2 $defaultMargin $defaultMargin;
 
 		&:first-child{
 			border-top:1px solid #222;
 		}
+	}
+	label{
+		margin-top:1px;
 	}
 }
 
@@ -46,7 +49,6 @@
 	input{
 		float:left;
 		line-height:2;
-		padding-left:$radius;
 	}
 
 	label{
@@ -54,6 +56,7 @@
 	}
 
 	input{
+		padding-left:$radius;
 		width:75%;
 	}
 }
@@ -75,12 +78,14 @@
 	h2{
 		float:left;
 		font-size:14px;
-		width:25%;
+		line-height:2;
+		width:30%;
 	}	
 
 	h3{
 		float:left;
 		font-size:12px;
+		line-height:2.5;
 		width:40%
 	}	
 
@@ -121,7 +126,7 @@
 		width:33%;
 	}
 	input{
-		margin-top:7px;
+		margin-top:10px;
 		width:33%;
 	}
 }
