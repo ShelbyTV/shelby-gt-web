@@ -33,6 +33,9 @@ javascripts:
     - public/javascripts/app/views/roll_list.view.js
     - public/javascripts/app/views/roll.view.js
     - public/javascripts/app/views/user_preferences.view.js
+    - public/javascripts/app/views/help.view.js
+    - public/javascripts/app/views/team.view.js
+    - public/javascripts/app/views/copyright.view.js
     - public/javascripts/app/views/roll_header.view.js
     - public/javascripts/app/views/roll_filter_controls.view.js
     - public/javascripts/app/views/filter_controls.view.js
