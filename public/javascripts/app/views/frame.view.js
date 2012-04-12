@@ -120,8 +120,12 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.render(true);
   },
 
-  _validateNewMessage : function(msg){
+  _isMessageValid : function(msg){
     return msg.length;
+  },
+
+  _renderError : function(msg){
+    this.$('.js-frame-comment-error-message').text(msg).show().fadeOut(1000);
   },
 
   _onAddMessageInputChange : function(event){
@@ -133,7 +137,10 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _addMessage : function(){
     var self = this;
     var text = this.$('.js-add-message-input').val();
-    if (!this._validateNewMessage(text)) return false;
+    if (!this._isMessageValid(text)) {
+      this._renderError('Why not say something?');
+      return false;
+    }
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
     msg.save(null, {
       success:function(conversation){

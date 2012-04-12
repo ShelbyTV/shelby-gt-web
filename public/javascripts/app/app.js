@@ -57,6 +57,7 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
     var token = shelby.models.user.get('csrf_token');
     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
   }
+  //TODO: block POST, PUT, DEL requests for anon users
 });
 
 // global ajax error handling to handle users who are not authenticated and other unexpected errors
