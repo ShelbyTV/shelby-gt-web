@@ -95,17 +95,18 @@
 /* line 93, ../../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
+  padding-right: 20px;
   position: relative;
-  width: 61px;
+  width: 68px;
   z-index: 2;
 }
-/* line 99, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 100, ../../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 105, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 106, ../../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -122,37 +123,38 @@
   z-index: 1;
 }
 
-/* line 119, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 120, ../../../app/stylesheets/partials/guide-header.scss */
 .profile {
+  padding-right: 10px;
   width: 85px;
 }
-/* line 124, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 126, ../../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 129, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 130, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 132, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 138, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 140, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 140, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 142, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 148, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 150, ../../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -166,7 +168,7 @@
   margin-right: 5px;
   width: 24px;
 }
-/* line 158, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 160, ../../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }

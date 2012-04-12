@@ -113,6 +113,11 @@
 
 	}
 }
+.video-score-upvoted{
+	&:before{
+		content:"\0020";
+	}
+}
 
 //.video-vote {
 //	float:right;

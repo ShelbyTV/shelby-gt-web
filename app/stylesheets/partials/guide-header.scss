@@ -92,8 +92,9 @@
 
 .about{
 	padding-left:$defaultMargin;
+	padding-right:$defaultMargin*2;
 	position:relative;
-	width:61px;
+	width:68px;
 	z-index:2;
 
 	&:hover{
@@ -119,6 +120,7 @@
 .profile{
 	@extend .about;
 
+	padding-right:10px;
 	width:85px;
 
 	&:hover{

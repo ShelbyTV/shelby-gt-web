@@ -611,17 +611,18 @@ a:hover, a:visited, a:active {
 /* line 93, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
+  padding-right: 20px;
   position: relative;
-  width: 61px;
+  width: 68px;
   z-index: 2;
 }
-/* line 99, ../../app/stylesheets/partials/guide-header.scss */
+/* line 100, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 105, ../../app/stylesheets/partials/guide-header.scss */
+/* line 106, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -638,37 +639,38 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 119, ../../app/stylesheets/partials/guide-header.scss */
+/* line 120, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
+  padding-right: 10px;
   width: 85px;
 }
-/* line 124, ../../app/stylesheets/partials/guide-header.scss */
+/* line 126, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 129, ../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 130, ../../app/stylesheets/partials/guide-header.scss */
+/* line 132, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 138, ../../app/stylesheets/partials/guide-header.scss */
+/* line 140, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 140, ../../app/stylesheets/partials/guide-header.scss */
+/* line 142, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 148, ../../app/stylesheets/partials/guide-header.scss */
+/* line 150, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -682,7 +684,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 158, ../../app/stylesheets/partials/guide-header.scss */
+/* line 160, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -884,6 +886,7 @@ a:hover, a:visited, a:active {
   line-height: 2.5;
   margin: 0;
   padding: 0;
+  text-shadow: 0px 1px 2px #222;
   width: 100%;
 }
 
@@ -1068,6 +1071,7 @@ a:hover, a:visited, a:active {
   line-height: 2.5;
   margin: 10px 0;
   padding: 0 10%;
+  text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
 /* line 160, ../../app/stylesheets/partials/rolls.scss */
@@ -1295,14 +1299,19 @@ a:hover, a:visited, a:active {
   color: #007fb6;
 }
 
-/* line 130, ../../app/stylesheets/partials/frame.scss */
+/* line 117, ../../app/stylesheets/partials/frame.scss */
+.video-score-upvoted:before {
+  content: "\0020";
+}
+
+/* line 135, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 135, ../../app/stylesheets/partials/frame.scss */
+/* line 140, ../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -1310,7 +1319,7 @@ a:hover, a:visited, a:active {
   right: 0px;
   top: 0px;
 }
-/* line 142, ../../app/stylesheets/partials/frame.scss */
+/* line 147, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1332,7 +1341,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 154, ../../app/stylesheets/partials/frame.scss */
+/* line 159, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
   -moz-border-radius: 5px;
@@ -1348,7 +1357,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 44px;
 }
-/* line 167, ../../app/stylesheets/partials/frame.scss */
+/* line 172, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7b7b7b), color-stop(100%, #575757));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #7b7b7b, #575757);
@@ -1361,11 +1370,11 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 175, ../../app/stylesheets/partials/frame.scss */
+/* line 180, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 181, ../../app/stylesheets/partials/frame.scss */
+/* line 186, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -1378,12 +1387,12 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 189, ../../app/stylesheets/partials/frame.scss */
+/* line 194, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/remove.svg") no-repeat center center;
 }
 
-/* line 197, ../../app/stylesheets/partials/frame.scss */
+/* line 202, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1404,11 +1413,11 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 213, ../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 215, ../../app/stylesheets/partials/frame.scss */
+/* line 220, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1419,35 +1428,35 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 221, ../../app/stylesheets/partials/frame.scss */
+/* line 226, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   float: right;
   width: auto;
 }
 
-/* line 233, ../../app/stylesheets/partials/frame.scss */
+/* line 238, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 237, ../../app/stylesheets/partials/frame.scss */
+/* line 242, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 245, ../../app/stylesheets/partials/frame.scss */
+/* line 250, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 250, ../../app/stylesheets/partials/frame.scss */
+/* line 255, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 255, ../../app/stylesheets/partials/frame.scss */
+/* line 260, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1457,7 +1466,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 260, ../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1465,31 +1474,31 @@ a:hover, a:visited, a:active {
   font-weight: 300;
   padding: 0 9px 9px;
 }
-/* line 266, ../../app/stylesheets/partials/frame.scss */
+/* line 271, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 272, ../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 277, ../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 282, ../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 290, ../../app/stylesheets/partials/frame.scss */
+/* line 295, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1334167328');
   float: left;
@@ -1497,16 +1506,16 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 300, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1334167328');
 }
 
-/* line 304, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 307, ../../app/stylesheets/partials/frame.scss */
+/* line 312, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
@@ -1846,6 +1855,7 @@ a:hover, a:visited, a:active {
   line-height: 1.5;
   margin: 3px;
   padding: 0 1px;
+  text-shadow: 0px 1px 2px #222;
   width: 48px;
 }
 
@@ -2184,6 +2194,7 @@ a:hover, a:visited, a:active {
   line-height: 1.5;
   margin: 3px;
   padding: 0 1px;
+  text-shadow: 0px 1px 2px #222;
   width: 48px;
   padding: 0 5px;
   width: auto;
@@ -2238,6 +2249,7 @@ a:hover, a:visited, a:active {
   line-height: 2.5;
   margin: 10px 0;
   padding: 0 10%;
+  text-shadow: 0px 1px 2px #222;
   width: 81px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);

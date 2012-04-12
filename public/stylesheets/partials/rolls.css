@@ -53,6 +53,7 @@
   line-height: 2.5;
   margin: 0;
   padding: 0;
+  text-shadow: 0px 1px 2px #222;
   width: 100%;
 }
 
@@ -237,9 +238,10 @@
   line-height: 2.5;
   margin: 10px 0;
   padding: 0 10%;
+  text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 158, ../../../app/stylesheets/partials/rolls.scss */
+/* line 160, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: 278px;
   top: 7px;
