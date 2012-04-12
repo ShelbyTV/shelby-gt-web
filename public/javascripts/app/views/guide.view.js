@@ -7,6 +7,9 @@
   var RollListView = libs.shelbyGT.RollListView;
   var RollView = libs.shelbyGT.RollView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
+  var HelpView = libs.shelbyGT.HelpView;
+  var TeamView = libs.shelbyGT.TeamView;
+  var CopyrightView = libs.shelbyGT.CopyrightView;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -70,6 +73,24 @@
         case DisplayState.userPreferences :
           displayComponents = {
             viewProto : UserPreferencesView,
+            model : shelby.models.user
+          };
+          break;
+        case DisplayState.help :
+          displayComponents = {
+            viewProto : HelpView,
+            model : shelby.models.user
+          };
+          break;
+        case DisplayState.team :
+          displayComponents = {
+            viewProto : TeamView,
+            model : shelby.models.user
+          };
+          break;
+        case DisplayState.copyright :
+          displayComponents = {
+            viewProto : CopyrightView,
             model : shelby.models.user
           };
           break;
