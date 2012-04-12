@@ -36,8 +36,9 @@
 
       <blockquote class="user video-author">
         <div class="user-vcard">
-          <span class="user-avatar">
-            <img src="<%= firstMessage.get('user_image_url') %>" alt="firstMessage.get('nickname')" title="firstMessage.get('nickname')" height="25" width="25">
+          <span class="user-avatar <%= shelby.models.user.get('anon') ? 'user-avatar-logged-out' : '' %>">
+            <% var userAvatarUrl = shelby.models.user.get('anon') ? '/images/assets/user_loggedout.svg' : firstMessage.get('user_image_url') %>
+            <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
           </span>
 
           <span class="user-handle">
