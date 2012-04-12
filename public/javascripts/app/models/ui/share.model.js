@@ -1,7 +1,7 @@
 ( function(){
 
   // the API may pass us authenticated networks/services in the user model that it doesn't yet
-  // support for sharing, so here we list all networks currently supported for sharing and exlude
+  // support for sharing, so here we list all networks currently supported for sharing and exclude
   // the others
   var supportedDestinations = ['twitter', 'facebook'];
 
