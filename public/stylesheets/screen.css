@@ -907,17 +907,17 @@ a:hover, a:visited, a:active {
 
 /* line 48, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave {
-  -moz-box-shadow: inset -1px 0px 1px 0px #16270f;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #16270f;
-  -o-box-shadow: inset -1px 0px 1px 0px #16270f;
-  box-shadow: inset -1px 0px 1px 0px #16270f;
-  background: #549738;
-  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #355f23), color-stop(100%, #203a16));
-  background: -webkit-linear-gradient(bottom, #355f23, #203a16);
-  background: -moz-linear-gradient(bottom, #355f23, #203a16);
-  background: -o-linear-gradient(bottom, #355f23, #203a16);
-  background: -ms-linear-gradient(bottom, #355f23, #203a16);
-  background: linear-gradient(bottom, #355f23, #203a16);
+  -moz-box-shadow: inset 0px 0px 1px 0px #111111;
+  -webkit-box-shadow: inset 0px 0px 1px 0px #111111;
+  -o-box-shadow: inset 0px 0px 1px 0px #111111;
+  box-shadow: inset 0px 0px 1px 0px #111111;
+  background: #303030;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #444444), color-stop(100%, #303030));
+  background: -webkit-linear-gradient(bottom, #444444, #303030);
+  background: -moz-linear-gradient(bottom, #444444, #303030);
+  background: -o-linear-gradient(bottom, #444444, #303030);
+  background: -ms-linear-gradient(bottom, #444444, #303030);
+  background: linear-gradient(bottom, #444444, #303030);
 }
 
 /* line 57, ../../app/stylesheets/partials/rolls.scss */
