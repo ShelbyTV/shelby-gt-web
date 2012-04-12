@@ -15,10 +15,14 @@
     initialize : function(){
       this.render();
     },
-
+    
     render : function(active){
       this.$el.html(this.template());
       $('#wrapper').append(this.$el);
+    },
+
+    displayOverlay : function(){
+      this.$('.js-logged-out-overlay').show().fadeOut(2000);
     }
   });
 

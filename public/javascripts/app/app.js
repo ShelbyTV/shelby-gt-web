@@ -52,12 +52,15 @@ $.ajaxSetup({
   data: {'cs_key': 'GoatsFTW'}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
+  //block POST, PUT, DEL requests for anon users
+  if (shelby.models.user.get('anon') && !libs.shelbyGT.Ajax.isAnonUrlValid(options)){
+    shelby.views.anonBanner.displayOverlay();
+  }
   // attach the API's csrf token to the request for logged in users
   if (options.type != 'GET' && shelby.models.user) {
     var token = shelby.models.user.get('csrf_token');
     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
   }
-  //TODO: block POST, PUT, DEL requests for anon users
 });
 
 // global ajax error handling to handle users who are not authenticated and other unexpected errors
