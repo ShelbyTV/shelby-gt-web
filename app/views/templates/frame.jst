@@ -7,7 +7,7 @@
 		    <%= frame.get('video').get('title') %>
       </h1>
     </a>  
-    <button class="video-score" type="button"><%= frame.get('upvoters').length %></button>
+    <button class="video-score <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %>" type="button"><%= frame.get('upvoters').length %></button>
   </header>
   
   <div class="video-thumbnail">

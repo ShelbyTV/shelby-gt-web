@@ -106,12 +106,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onUpvoteChange : function(){
-    // a little animation
-    this.$('.video-score').animate({'margin-top': '-=21'}, 500,
-      function(){
-        $(this).css('margin-top','0px');
-      })
-    .text(this.model.get('upvoters').length);
+    this.$('.video-score').addClass('video-score-upvoted');
+    this.$('.video-score').text(this.model.get('upvoters').length);
   },
 
   _toggleConversationDisplay : function(){
