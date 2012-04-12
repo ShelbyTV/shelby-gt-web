@@ -13,6 +13,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
+    "help" : "displayHelp",
+    "team" : "displayTeam",
+    "copyright" : "displayCopyright",
     "" : "displayDashboard",
     "*url" : "doNothing"
   },
@@ -114,6 +117,30 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.userPreferences,
+      'insideRollList' : false
+    });
+  },
+
+  displayHelp : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set({
+      'displayState' : libs.shelbyGT.DisplayState.help,
+      'insideRollList' : false
+    });
+  },
+
+  displayTeam : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set({
+      'displayState' : libs.shelbyGT.DisplayState.team,
+      'insideRollList' : false
+    });
+  },
+
+  displayCopyright : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set({
+      'displayState' : libs.shelbyGT.DisplayState.copyright,
       'insideRollList' : false
     });
   },

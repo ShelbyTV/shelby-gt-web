@@ -7,7 +7,7 @@
 		    <%= frame.get('video').get('title') %>
       </h1>
     </a>  
-    <button class="video-score" type="button"><%= frame.get('upvoters').length %></button>
+    <button class="video-score <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %>" type="button"><%= frame.get('upvoters').length %></button>
   </header>
   
   <div class="video-thumbnail">
@@ -36,8 +36,9 @@
 
       <blockquote class="user video-author">
         <div class="user-vcard">
-          <span class="user-avatar">
-            <img src="<%= firstMessage.get('user_image_url') %>" alt="firstMessage.get('nickname')" title="firstMessage.get('nickname')" height="25" width="25">
+          <span class="user-avatar <%= shelby.models.user.get('anon') ? 'user-avatar-logged-out' : '' %>">
+            <% var userAvatarUrl = shelby.models.user.get('anon') ? '/images/assets/user_loggedout.svg' : firstMessage.get('user_image_url') %>
+            <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
           </span>
 
           <span class="user-handle">
@@ -105,7 +106,9 @@
   
     <div class="video-footer">
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (messages.length) { %> (<%= messages.length-1 %>)<% } %></a>
-      <a onclick="return false;" class="video-source" href="#">Roll: <%= creator.get('nickname') %></a>
+      <% if (shelby.models.guide.get('displayState') !== 'standardRoll') { %>
+        <a onclick="return false;" class="video-source" href="#">Roll: <%= creator.get('nickname') %></a>
+      <% } %>
     </div> 
   
   </footer>
