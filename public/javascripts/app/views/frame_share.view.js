@@ -17,10 +17,12 @@
 
     initialize : function(){
       this.options.frameRollingState.bind('change:doShare', this._onDoShareChange, this);
+      libs.shelbyGT.ShareView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       this.options.frameRollingState.unbind('change:doShare', this._onDoShareChange, this);
+      libs.shelbyGT.ShareView.prototype._cleanup.call(this);
     },
 
     saveUrl: function(){
