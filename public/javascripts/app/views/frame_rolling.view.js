@@ -16,7 +16,7 @@
     _frameRollingState : null,
 
     events : {
-      "click .js-back"  : "_goBack",
+      "click .js-back:not(.js-busy)"  : "_goBack",
       "click .js-done"  : "_share"
     },
 
@@ -109,8 +109,16 @@
     },
 
     _onDoShareChange: function(shareActionStateModel, doShare){
-      if (doShare == ShareActionState.complete) {
-        this._hide();
+      switch (doShare) {
+        case ShareActionState.complete :
+          this._hide();
+          break;
+        case ShareActionState.share :
+          this.$('.js-back').addClass('js-busy');
+          break;
+        case ShareActionState.failed :
+          this.$('.js-back').removeClass('js-busy');
+          break;
       }
     }
 
