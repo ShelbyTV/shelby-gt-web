@@ -101,24 +101,27 @@
     },
 
     rollActiveFrame: function(){
-      var currentDisplayState = this.model.get('displayState');
-      if (currentDisplayState == DisplayState.dashboard ||
-          currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
-        // try to find the active frame in the current list view and activate its
-        // rolling view
-        if (this._listView) {
-          if (this._listView.activateFrameRollingView(this.model.get('activeFrameModel'))) {
-            return;
+      var activeFrameModel = this.model.get('activeFrameModel');
+      if (activeFrameModel) {
+        var currentDisplayState = this.model.get('displayState');
+        if (currentDisplayState == DisplayState.dashboard ||
+            currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
+          // try to find the active frame in the current list view and activate its
+          // rolling view
+          if (this._listView) {
+            if (this._listView.activateFrameRollingView(activeFrameModel)) {
+              return;
+            }
           }
         }
-      }
 
-      // if no frame view for the active frame currently exists, reroute to the rerolling url
-      // for the frame, which will bring up the frame's source roll, activate the frame, then
-      // reveal is rolling view
-      var rollId = this.model.get('activeFrameModel').get('roll').id;
-      var frameId = this.model.get('activeFrameModel').id;
-      shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+        // if no frame view for the active frame currently exists, reroute to the rerolling url
+        // for the frame, which will bring up the frame's source roll, activate the frame, then
+        // reveal is rolling view
+        var rollId = this.model.get('activeFrameModel').get('roll').id;
+        var frameId = this.model.get('activeFrameModel').id;
+        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+      }
     },
 
     // appropriatly advances to the next video (in dashboard or a roll)
