@@ -11,6 +11,10 @@ gem 'bson'
 #
 gem "settingslogic"
 
+#
+# ---------- Shelby API
+#
+gem 'httparty'
 
 # Gems used only for assets and not required
 # in production environments by default.
