@@ -2774,5 +2774,5 @@ a:hover, a:visited, a:active {
 
 /* line 11, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .error {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
