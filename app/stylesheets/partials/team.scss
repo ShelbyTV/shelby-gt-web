@@ -1,0 +1,87 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.team{
+
+}
+
+.team-header{
+	h1{
+		border-bottom:1px solid #222;
+		font-size:16px;
+		font-weight:700;
+		line-height:2.75;
+		margin:0 $defaultMargin $defaultMargin;
+	}
+}
+
+.team-nav{
+
+	margin:$defaultMargin;
+	padding:0;
+
+	a{
+		text-decoration:none;
+
+		&:hover,
+		&:active{
+			text-decoration:underline;
+		}
+		&:visited{
+			text-decoration:none;
+		}
+	}
+
+	li{
+		float:left;
+		list-style-type:none;
+		width:50%;
+	}
+
+	h2,
+	h3{
+		font-size:12px;
+		line-height:1.4;
+	}
+
+	h3{
+		font-weight:300;
+	}
+}
+
+.team-members{
+	dt{
+		font-weight:500;
+		margin:$defaultMargin $defaultMargin 0;
+		&:before{
+			background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+			border:1px solid black;
+			content:"\0020";
+			display:block;
+			height:172px;
+			margin-bottom:$defaultMargin;
+			width:100%;
+		}
+	}
+	dd{
+		margin:0 $defaultMargin;
+		padding:0;
+		&.team-member-bio{
+			margin-top:$defaultMargin;
+		}
+	}
+}
+
+.team-member-peripherals{
+	@extend .team-nav;
+	margin:$defaultMargin 0 $defaultMargin*2 0;
+
+	li{
+		float:none;
+		width:auto;
+	}
+}
+

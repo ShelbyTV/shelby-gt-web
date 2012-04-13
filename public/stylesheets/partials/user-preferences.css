@@ -70,8 +70,8 @@
   width: 25%;
 }
 /* line 69, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-profile input,
-.you-notifications input {
+.you-profile inputfont,
+.you-notifications inputfont {
   padding-left: 5px;
   width: 75%;
 }
@@ -241,23 +241,104 @@
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
-  width: 33%;
-}
-/* line 193, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-notifications input {
-  margin-top: 10px;
   position: relative;
-  width: 58%;
+  width: 100%;
+  z-index: 1;
 }
-/* line 198, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-notifications input:after {
+/* line 195, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input[type="checkbox"] {
+  margin-top: 10px;
+  position: absolute;
+  height: 0;
+  left: 50%;
+  visibility: hidden;
+  width: 50%;
+}
+/* line 204, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
   position: absolute;
-  right: 0;
+  right: 20px;
   top: -7px;
 }
-/* line 206, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-notifications input:checked:after {
+/* line 212, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
+}
+/* line 216, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input + span {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
+  background: -webkit-linear-gradient(top, #ba2046, #9e1632);
+  background: -moz-linear-gradient(top, #ba2046, #9e1632);
+  background: -o-linear-gradient(top, #ba2046, #9e1632);
+  background: -ms-linear-gradient(top, #ba2046, #9e1632);
+  background: linear-gradient(top, #ba2046, #9e1632);
+  border: 1px solid #222;
+  display: block;
+  height: 20px;
+  margin: 5px 0 0 38%;
+  position: relative;
+  width: 60px;
+}
+/* line 229, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input + span:after {
+  background: #fefefe;
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -moz-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #d7d7d7, #fefefe);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 0px 2px 1px #111111;
+  -webkit-box-shadow: 0px 0px 2px 1px #111111;
+  -o-box-shadow: 0px 0px 2px 1px #111111;
+  box-shadow: 0px 0px 2px 1px #111111;
+  content: "\0020";
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+/* line 246, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input:checked + span {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  display: block;
+  height: 20px;
+  position: relative;
+  width: 60px;
+}
+/* line 252, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input:checked + span:after {
+  left: 49%;
 }

@@ -64,3 +64,8 @@
   text-shadow: none;
   white-space: nowrap;
 }
+
+/* line 11, ../../../app/stylesheets/partials/h5bp-utilities.scss */
+.error {
+  border: 1px solid red;
+}

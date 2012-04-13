@@ -47,10 +47,10 @@
 
 .rolls-leave{
 	@extend .rolls-add;
-	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($shelbyGreen,-30%));
-	background:$flatShelbyGreen;
+	@include box-shadow(inset 0px 0px 1px 0px #111);
+	background:$flatShelbyGrayDeboss;
 	@include background(
-		$softShelbyGreenDeboss
+		$softShelbyGrayDeboss
 	);	
 }
 
