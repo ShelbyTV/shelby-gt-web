@@ -14,7 +14,7 @@
       var playingFrameView = this.children.find(this._findViewByModel(frame));
       if (playingFrameView) {
         this.parent.$el.scrollTo(playingFrameView.$el, {duration:200,axis:'y',onAfter:function(){
-          playingFrameView.roll();
+          playingFrameView.RequestFrameRollingView();
         }});
         return true;
       } else {

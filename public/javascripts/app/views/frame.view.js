@@ -4,9 +4,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _frameRollingView : null,
 
+  _frameViewState: null,
+
   events : {
     "click .js-frame-activate"              : "_activate",
-    "click .roll-frame"                     : "roll",
+    "click .roll-frame"                     : "RequestFrameRollingView",
     "click .save-frame"                     : "_saveToWatchLater",
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
@@ -36,6 +38,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.bind('destroy', this._onFrameRemove, this);
     this.model.bind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').on('change', this._onConversationChange, this);
+    this._frameViewState = new libs.shelbyGT.FrameViewStateModel();
+    this._frameViewState.bind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     ListItemView.prototype.initialize.call(this);
   },
 
@@ -43,6 +47,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').off('change', this._onConversationChange, this);
+    this._frameViewState.unbind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     ListItemView.prototype._cleanup.call(this);
   },
 
@@ -58,7 +63,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     console.log('adding', msg, 'to', this.model.get('conversation'));
   },
 
-  roll : function(){
+  RequestFrameRollingView : function(){
+    this._frameViewState.set('doFrameRolling', true);
+  },
+
+  _roll : function(){
     // the frame rolling view only needs to respond to an intial fetch of user roll followings,
     // not to subsequent updates of the user model, so we pass it a private clone of the user model
     // to bind to and fetch once
@@ -158,13 +167,21 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _onFrameRollingTransitionComplete : function(e){
     // if the frame rolling view gets completely hidden, remove it
     if (!$(e.currentTarget).hasClass('rolling-frame-trans')) {
-      this._frameRollingView.leave();
-      this._frameRollingView = null;
+      this._frameViewState.set('doFrameRolling', false);
     }
   },
 
   _onFrameRemove : function() {
     // TODO: perform some visually attractive removal animation for the frame
+  },
+
+  _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
+    if (doFrameRolling) {
+      this._roll();
+    } else {
+      this._frameRollingView.leave();
+      this._frameRollingView = null;
+    }
   }
 
 });

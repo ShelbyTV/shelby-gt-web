@@ -172,7 +172,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (frame = rollModel.get('frames').get(frameId)) {
       shelby.models.guide.set('activeFrameModel', frame);
       if (activateRollingView) {
-        shelby.models.userDesires.set({rollActiveFrame: true});
+        shelby.views.guide.rollActiveFrame();
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll

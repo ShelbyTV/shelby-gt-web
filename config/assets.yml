@@ -25,6 +25,7 @@ javascripts:
     - public/javascripts/app/app.js
     - public/javascripts/app/models/lib/shelby.base.model.js
     - public/javascripts/app/models/db/roll.model.js
+    - public/javascripts/app/models/ui/share_action_state.model.js
     - public/javascripts/app/views/list_item.view.js
     - public/javascripts/app/views/frame.view.js
     - public/javascripts/app/views/list.view.js
