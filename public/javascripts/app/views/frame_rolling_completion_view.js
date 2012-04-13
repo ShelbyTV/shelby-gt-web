@@ -25,20 +25,21 @@
     render : function(){
       this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
       if (!this.options.roll.isNew()) {
-        this._shareSubView = new FrameShareView({model:new ShareModel(),frame:this.options.newFrame});
+        this._shareSubView = new FrameShareView({
+          model : new ShareModel(),
+          frame : this.options.newFrame,
+          frameRollingState : this.options.frameRollingState
+        });
       } else {
         this.$el.append(JST['frame-rolling-options']({roll:this.options.roll}));
         this._shareSubView = new FrameRollingNewRollView({
           model : new ShareModel(),
           roll : this.options.roll,
-          frame : this.options.oldFrame
+          frame : this.options.oldFrame,
+          frameRollingState : this.options.frameRollingState
         });
       }
       this.appendChild(this._shareSubView);
-    },
-
-    share : function() {
-      this._shareSubView._share();
     },
 
     _updateRollTitle : function(e) {

@@ -1,28 +1,53 @@
-libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
+( function(){
 
-  id: 'js-share-frame',
+  // shorten names of included library prototypes
+  var ShareActionState = libs.shelbyGT.ShareActionState;
 
-  className : 'frame-share rolling-frame-trans',
+  libs.shelbyGT.FrameShareView = libs.shelbyGT.ShareView.extend({
 
-  _components : {
-    networkToggles : true,
-    shareButton : false,
-    spinner : false
-  },
+    id: 'js-share-frame',
 
-  saveUrl: function(){
-    return [
-      shelby.config.apiRoot + '/conversation/' + this.options.frame.get('conversation_id') + '/messages',
-      shelby.config.apiRoot + '/frame/' + this.options.frame.id + '/share'
-    ];
-  },
+    className : 'frame-share rolling-frame-trans',
 
-  onShareSuccess: function(){
-    var self = this;
-    this.$('.share-comment').append(JST['shared-indicator']());
-    setTimeout(function(){
-      self.parent.parent._goBack();
-    }, 200);
-  }
+    _components : {
+      networkToggles : true,
+      shareButton : false,
+      spinner : false
+    },
 
-});
+    initialize : function(){
+      this.options.frameRollingState.bind('change:doShare', this._onDoShareChange, this);
+    },
+
+    _cleanup : function(){
+      this.options.frameRollingState.unbind('change:doShare', this._onDoShareChange, this);
+    },
+
+    saveUrl: function(){
+      return [
+        shelby.config.apiRoot + '/conversation/' + this.options.frame.get('conversation_id') + '/messages',
+        shelby.config.apiRoot + '/frame/' + this.options.frame.id + '/share'
+      ];
+    },
+
+    onShareSuccess: function(){
+      var self = this;
+      this.$('.share-comment').append(JST['shared-indicator']());
+      setTimeout(function(){
+        self.options.frameRollingState.set('doShare', ShareActionState.complete);
+      }, 200);
+    },
+
+    onValidationFail : function(){
+      this.options.frameRollingState.set('doShare', ShareActionState.failed);
+    },
+
+    _onDoShareChange: function(frameRollingStateModel, doShare){
+      if (doShare == ShareActionState.share) {
+        this._share();
+      }
+    }
+
+  });
+
+} ) ();

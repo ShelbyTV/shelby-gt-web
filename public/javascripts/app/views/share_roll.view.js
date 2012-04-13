@@ -11,6 +11,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
     this._displayOverlay(function(){
       self.$el.slideToggle(function(){
         self.$('.video-shared').remove();
+        libs.shelbyGT.ShareView.prototype.onShareSuccess.call(self);
       });
     });
   },

@@ -10,7 +10,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   events : {
-    "click .js-submit-share" : "_share",
+    "click .js-submit-share:not(.js-sharing)" : "_share",
     "keyup .js-share-textarea" : "_onUpdateShareText",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
@@ -119,7 +119,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _share : function(){
     var self = this;
-    if(!this._validateShare()) return false;
+    if(!this._validateShare()) {
+      this.onValidationFail();
+      return false;
+    }
+    if (this._components.shareButton) {
+      this.$('.js-submit-share').addClass('js-sharing');
+    }
     this._components.spinner && this._showSpinner();
     var urls = typeof(this.saveUrl) === 'function' ? this.saveUrl() : this.saveUrl;
     if (!$.isArray(urls)) {
@@ -154,7 +160,16 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   onShareSuccess : function(){
-    // subclasses may optionally override to perform custom handling on share success
+    // subclasses may optionally override to perform custom handling on share success, but
+    // should always call the superclass's implementation as part of theirs if they have
+    // a share button
+    if (this._components.shareButton) {
+      this.$('.js-submit-share').removeClass('js-sharing');
+    }
+  },
+
+  onValidationFail : function(){
+    // subclasses may optionally override to perform custom handling on share validation failure
   },
 
   saveUrl : function(){
