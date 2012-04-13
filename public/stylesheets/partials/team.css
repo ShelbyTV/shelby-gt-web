@@ -1,0 +1,86 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 12, ../../../app/stylesheets/partials/team.scss */
+.team-header h1 {
+  border-bottom: 1px solid #222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 2.75;
+  margin: 0 10px 10px;
+}
+
+/* line 21, ../../../app/stylesheets/partials/team.scss */
+.team-nav, .team-member-peripherals {
+  margin: 10px;
+  padding: 0;
+}
+/* line 26, ../../../app/stylesheets/partials/team.scss */
+.team-nav a, .team-member-peripherals a {
+  text-decoration: none;
+}
+/* line 30, ../../../app/stylesheets/partials/team.scss */
+.team-nav a:hover, .team-member-peripherals a:hover, .team-nav a:active, .team-member-peripherals a:active {
+  text-decoration: underline;
+}
+/* line 33, ../../../app/stylesheets/partials/team.scss */
+.team-nav a:visited, .team-member-peripherals a:visited {
+  text-decoration: none;
+}
+/* line 38, ../../../app/stylesheets/partials/team.scss */
+.team-nav li, .team-member-peripherals li {
+  float: left;
+  list-style-type: none;
+  width: 50%;
+}
+/* line 45, ../../../app/stylesheets/partials/team.scss */
+.team-nav h2, .team-member-peripherals h2,
+.team-nav h3,
+.team-member-peripherals h3 {
+  font-size: 12px;
+  line-height: 1.4;
+}
+/* line 50, ../../../app/stylesheets/partials/team.scss */
+.team-nav h3, .team-member-peripherals h3 {
+  font-weight: 300;
+}
+
+/* line 56, ../../../app/stylesheets/partials/team.scss */
+.team-members dt {
+  font-weight: 500;
+  margin: 10px 10px 0;
+}
+/* line 59, ../../../app/stylesheets/partials/team.scss */
+.team-members dt:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  border: 1px solid black;
+  content: "\0020";
+  display: block;
+  height: 172px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+/* line 69, ../../../app/stylesheets/partials/team.scss */
+.team-members dd {
+  margin: 0 10px;
+  padding: 0;
+}
+/* line 72, ../../../app/stylesheets/partials/team.scss */
+.team-members dd.team-member-bio {
+  margin-top: 10px;
+}
+
+/* line 78, ../../../app/stylesheets/partials/team.scss */
+.team-member-peripherals {
+  margin: 10px 0 20px 0;
+}
+/* line 82, ../../../app/stylesheets/partials/team.scss */
+.team-member-peripherals li {
+  float: none;
+  width: auto;
+}

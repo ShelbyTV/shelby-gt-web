@@ -82,6 +82,9 @@ $softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
 $facebookBlue: #013e80;
 $softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
 
+$flatSwitchGray: #fefefe;
+$softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
+
 $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 
 @mixin softgradient {
