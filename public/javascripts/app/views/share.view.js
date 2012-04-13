@@ -12,6 +12,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   events : {
     "click .js-submit-share:not(.js-sharing)" : "_share",
     "keyup .js-share-textarea" : "_onUpdateShareText",
+    "focus .js-share-textarea" : "_onFocusShareText",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
@@ -75,12 +76,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _clearTextArea : function(){
     this.$('.js-share-textarea').val('');
+    this.$('.js-share-textarea').removeAttr('placeholder');
     this.model.set('text', this.$('.js-share-textarea').val());
   },
 
   _onUpdateShareText : function(event){
     this.model.set('text', this.$('.js-share-textarea').val());
     (event.keyCode===13) && this._share();
+  },
+
+  _onFocusShareText : function(event){
+    // remove the error highlight from this text area on focus if there is one
+    this.$('.js-share-textarea').removeClass('error');
   },
 
   _updateDestinationButtons : function(shareModel){
@@ -120,9 +127,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   _share : function(){
     var self = this;
     if(!this._validateShare()) {
+      $('.js-share-textarea').addClass('error');
       this.onValidationFail();
       return false;
     }
+    $('.js-share-textarea').removeClass('error');
     if (this._components.shareButton) {
       this.$('.js-submit-share').addClass('js-sharing');
     }
@@ -153,7 +162,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (chainedUrls.length) {
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
-      this._clearTextArea(); //hmm this should be shared for all inheritors...
+      this._clearTextArea();
       this._components.spinner && this._hideSpinner();
       this.onShareSuccess();
     }

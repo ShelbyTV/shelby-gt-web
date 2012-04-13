@@ -10,8 +10,9 @@
   libs.shelbyGT.FrameRollingCompletionView = Support.CompositeView.extend({
 
     events : {
-      // this event only relevant when creating a new roll
-      'keyup .js-new-roll-name-input' : '_updateRollTitle'
+      // these events only relevant when creating a new roll
+      "keyup .js-new-roll-name-input" : "_updateRollTitle",
+      "focus .js-new-roll-name-input" : "_onFocusRollTitle"
     },
 
     _shareSubView : null,
@@ -42,8 +43,13 @@
       this.appendChild(this._shareSubView);
     },
 
-    _updateRollTitle : function(e) {
+    _updateRollTitle : function(e){
       this.options.roll.set('title',$(e.currentTarget).val());
+    },
+
+    _onFocusRollTitle : function(){
+      // remove the error highlight from the roll title input on focus if there is one
+      this.$('.js-new-roll-name-input').removeClass('error');
     }
 
   });
