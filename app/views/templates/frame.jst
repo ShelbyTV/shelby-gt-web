@@ -42,14 +42,15 @@
           </span>
 
           <span class="user-handle">
-            <a href="/userhandle"><%= firstMessage.get('realname') %></a>
+            <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
+            <%= firstMessage.get('realname') %>
           </span>
           <%
             var timeStampClass = 'user-post-date';
             if (firstMessage.get('origin_network')) timeStampClass += ' user-post-origin-' + firstMessage.get('origin_network');
           %>
           <span class="<%= timeStampClass %>">
-            <a href="#"><%= firstMessage.get('created_at') %></a>
+            <%= firstMessage.get('created_at') %>
           </span>
           <div class="user-video-text">
               <p>
@@ -75,14 +76,15 @@
                 </span>
 
                 <span class="user-handle">
-                  <a href="<%= msg.get('realname') %>"><%= msg.get('realname') %></a>
+                  <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
+                  <%= msg.get('realname') %>
                 </span>
                 <%
                   var timeStampClass = 'user-post-date';
                   if (msg.get('origin_network')) timeStampClass += ' user-post-origin-' + msg.get('origin_network');
                 %>
                 <span class="<%= timeStampClass %>">
-                  <a href="#"><%= msg.get('created_at') %></a>
+                  <%= msg.get('created_at') %>
                 </span>
 
                 <div class="user-video-text">
