@@ -100,16 +100,16 @@
       this.appendChild(this._listView);
     },
 
-    rollActiveFrame: function(userDesiresStateModel, rollActiveFrame){
-      if (rollActiveFrame) {
-        userDesiresStateModel.set('rollActiveFrame', false);
+    rollActiveFrame: function(){
+      var activeFrameModel = this.model.get('activeFrameModel');
+      if (activeFrameModel) {
         var currentDisplayState = this.model.get('displayState');
         if (currentDisplayState == DisplayState.dashboard ||
             currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
           // try to find the active frame in the current list view and activate its
           // rolling view
           if (this._listView) {
-            if (this._listView.activateFrameRollingView(this.model.get('activeFrameModel'))) {
+            if (this._listView.activateFrameRollingView(activeFrameModel)) {
               return;
             }
           }

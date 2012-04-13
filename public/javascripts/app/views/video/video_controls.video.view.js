@@ -168,7 +168,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	},
 
   _rollActiveFrame: function(){
-    this._userDesires.set({rollActiveFrame: true});
+    shelby.views.guide.rollActiveFrame();
   }
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })

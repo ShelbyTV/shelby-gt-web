@@ -3,6 +3,8 @@
   // shorten names of included library prototypes
   var RollingSelectionListView = libs.shelbyGT.RollingSelectionListView;
   var FrameRollingFooterView = libs.shelbyGT.FrameRollingFooterView;
+  var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
+  var ShareActionState = libs.shelbyGT.ShareActionState;
   var RollModel = libs.shelbyGT.RollModel;
   
   libs.shelbyGT.FrameRollingView = Support.CompositeView.extend({
@@ -11,8 +13,10 @@
 
     _showingNewRollView : false,
 
+    _frameRollingState : null,
+
     events : {
-      "click .js-back"  : "_goBack",
+      "click .js-back:not(.js-busy)"  : "_goBack",
       "click .js-done"  : "_share"
     },
 
@@ -20,6 +24,15 @@
 
     template : function(obj){
       return JST['frame-rolling'](obj);
+    },
+
+    initialize : function(){
+      this._frameRollingState = new ShareActionStateModel();
+      this._frameRollingState.bind('change:doShare', this._onDoShareChange, this);
+    },
+
+    _cleanup : function(){
+      this._frameRollingState.unbind('change:doShare', this._onDoShareChange, this);
     },
 
     render : function(){
@@ -66,7 +79,12 @@
         });
         this._showingNewRollView = true;
       }
-      this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({newFrame:newFrame,oldFrame:oldFrame,roll:roll});
+      this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
+        newFrame:newFrame,
+        oldFrame:oldFrame,
+        roll:roll,
+        frameRollingState:this._frameRollingState
+      });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
       this.$('.js-done').show();
     },
@@ -83,11 +101,25 @@
     },
 
     _share : function(){
-      this._frameRollingCompletionView.share();
+      this._frameRollingState.set('doShare', ShareActionState.share);
     },
 
     _hide : function(){
       this.$el.removeClass('rolling-frame-trans');
+    },
+
+    _onDoShareChange: function(shareActionStateModel, doShare){
+      switch (doShare) {
+        case ShareActionState.complete :
+          this._hide();
+          break;
+        case ShareActionState.share :
+          this.$('.js-back').addClass('js-busy');
+          break;
+        case ShareActionState.failed :
+          this.$('.js-back').removeClass('js-busy');
+          break;
+      }
     }
 
   });

@@ -9,5 +9,23 @@ libs.shelbyGT.Ajax = {
       // TODO: nicer looking notification of generic error message
       console.error("Something went wrong. Shelby apologizes.");
     }
+  },
+  validAnonUrlStubs : [
+    '/user/',
+    '/roll/'
+  ],
+  isAnonUrlValid : function(opts){
+    var valid = false;
+    if (opts.type != 'GET') return valid;
+    this.validAnonUrlStubs.forEach(function(stub){
+      //for each of the valid stubs
+      if (opts.url.indexOf(shelby.config.apiRoot+stub)!==-1){
+        //if url contains the valid stub
+        valid = true;
+        //mark as valid
+      }
+    });
+    //by default return invalid
+    return valid;
   }
 };
