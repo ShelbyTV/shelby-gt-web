@@ -7,8 +7,12 @@ class HomeController < ApplicationController
   #
   def index
     #TODO: build me!
-    #render_meta_tags if /roll\/\w*\/frame\/(\w*)/.match(request.fullpath)
-    render 'app'
+    if frame_id = /roll\/\w*\/frame\/(\w*)/.match(request.fullpath)
+      @meta_info = Shelby::Metatags.get_meta_info(frame_id)
+      render 'app_with_metatags'
+    else
+      render 'app'
+    end
   end  
   
   ##
