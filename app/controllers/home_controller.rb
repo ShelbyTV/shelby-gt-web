@@ -6,12 +6,9 @@ class HomeController < ApplicationController
   #  when the user IS NOT signed in BUT should see 'non-logged in shelby'
   #
   def index
-    if !user_signed_in? and request.fullpath == '/'
-      #render 'login'
-      render 'app'
-    else
-      render 'app'
-    end
+    #TODO: build me!
+    #render_meta_tags if /roll\/\w*\/frame\/(\w*)/.match(request.fullpath)
+    render 'app'
   end  
   
   ##
