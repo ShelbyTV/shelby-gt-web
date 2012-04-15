@@ -1,0 +1,11 @@
+defaults: &defaults
+  url: "http://web.gt.shelby.tv"
+
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

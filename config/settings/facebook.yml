@@ -1,0 +1,11 @@
+defaults: &defaults
+  facebook_app_id: "115071338568035"
+  
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

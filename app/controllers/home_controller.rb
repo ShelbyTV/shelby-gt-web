@@ -8,11 +8,12 @@ class HomeController < ApplicationController
   def index
     #TODO: build me!
     if frame_id = /roll\/\w*\/frame\/(\w*)/.match(request.fullpath)
-      @meta_info = Shelby::Metatags.get_meta_info(frame_id)
-      render 'app_with_metatags'
+      @meta_info = Shelby::API.get_video_info(frame_id)
+      @permalink = Shelby::API.generate_route(@meta_info[:frame]['roll_id'], frame_id)
     else
-      render 'app'
+      @meta_info = nil
     end
+    render 'app'
   end  
   
   ##
