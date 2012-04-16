@@ -629,9 +629,9 @@ a:hover, a:visited, a:active {
   -o-box-shadow: 0px 0px 5px 2px #222222;
   box-shadow: 0px 0px 5px 2px #222222;
   background: #2b2a2a;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-bottom: 1px solid #222;
+  border-left: 1px solid #222;
+  border-right: 1px solid #222;
   border-top: 0px solid transparent;
   display: none;
   position: absolute;
@@ -711,9 +711,9 @@ a:hover, a:visited, a:active {
   display: block;
   float: left;
   height: 42px;
-  width: 16.666667%;
+  width: 33.333333%;
 }
-/* line 18, ../../app/stylesheets/partials/menu.scss */
+/* line 19, ../../app/stylesheets/partials/menu.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -722,7 +722,7 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 24, ../../app/stylesheets/partials/menu.scss */
+/* line 25, ../../app/stylesheets/partials/menu.scss */
 .video-guide a, .video-guide a:visited {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -737,62 +737,62 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   text-transform: lowercase;
 }
-/* line 37, ../../app/stylesheets/partials/menu.scss */
+/* line 38, ../../app/stylesheets/partials/menu.scss */
 .video-guide a:hover, .video-guide a:visited:hover {
   -moz-box-shadow: inset 0px 0px 5px #666666;
   -webkit-box-shadow: inset 0px 0px 5px #666666;
   -o-box-shadow: inset 0px 0px 5px #666666;
   box-shadow: inset 0px 0px 5px #666666;
 }
-/* line 40, ../../app/stylesheets/partials/menu.scss */
+/* line 41, ../../app/stylesheets/partials/menu.scss */
 .video-guide a:active, .video-guide a:visited:active {
   -moz-box-shadow: inset 0px 0px 10px black;
   -webkit-box-shadow: inset 0px 0px 10px black;
   -o-box-shadow: inset 0px 0px 10px black;
   box-shadow: inset 0px 0px 10px black;
 }
-/* line 45, ../../app/stylesheets/partials/menu.scss */
+/* line 46, ../../app/stylesheets/partials/menu.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 51, ../../app/stylesheets/partials/menu.scss */
+/* line 52, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab {
   -moz-box-shadow: inset 0px 6px 14px 0px #222222;
   -webkit-box-shadow: inset 0px 6px 14px 0px #222222;
   -o-box-shadow: inset 0px 6px 14px 0px #222222;
   box-shadow: inset 0px 6px 14px 0px #222222;
 }
-/* line 55, ../../app/stylesheets/partials/menu.scss */
+/* line 56, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 60, ../../app/stylesheets/partials/menu.scss */
+/* line 61, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.svg") no-repeat center center;
   color: #63BD57;
 }
-/* line 68, ../../app/stylesheets/partials/menu.scss */
+/* line 69, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 73, ../../app/stylesheets/partials/menu.scss */
+/* line 74, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center center;
   color: #0092C1;
 }
-/* line 80, ../../app/stylesheets/partials/menu.scss */
+/* line 81, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 85, ../../app/stylesheets/partials/menu.scss */
+/* line 86, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center center;
   color: #F0E84C;
 }
 
-/* line 95, ../../app/stylesheets/partials/menu.scss */
+/* line 96, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -803,7 +803,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 101, ../../app/stylesheets/partials/menu.scss */
+/* line 102, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -811,7 +811,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 108, ../../app/stylesheets/partials/menu.scss */
+/* line 109, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -822,7 +822,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 113, ../../app/stylesheets/partials/menu.scss */
+/* line 114, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -2463,58 +2463,8 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 12, ../../app/stylesheets/partials/team.scss */
-.team-header h1 {
-  border-bottom: 1px solid #222;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 2.75;
-  margin: 0 10px 10px;
-}
-
-/* line 21, ../../app/stylesheets/partials/team.scss */
-.team-nav, .team-member-peripherals {
-  margin: 10px;
-  padding: 0;
-}
-/* line 26, ../../app/stylesheets/partials/team.scss */
-.team-nav a, .team-member-peripherals a {
-  text-decoration: none;
-}
-/* line 30, ../../app/stylesheets/partials/team.scss */
-.team-nav a:hover, .team-member-peripherals a:hover, .team-nav a:active, .team-member-peripherals a:active {
-  text-decoration: underline;
-}
-/* line 33, ../../app/stylesheets/partials/team.scss */
-.team-nav a:visited, .team-member-peripherals a:visited {
-  text-decoration: none;
-}
-/* line 38, ../../app/stylesheets/partials/team.scss */
-.team-nav li, .team-member-peripherals li {
-  float: left;
-  list-style-type: none;
-  width: 50%;
-}
-/* line 45, ../../app/stylesheets/partials/team.scss */
-.team-nav h2, .team-member-peripherals h2,
-.team-nav h3,
-.team-member-peripherals h3 {
-  font-size: 12px;
-  line-height: 1.4;
-}
-/* line 50, ../../app/stylesheets/partials/team.scss */
-.team-nav h3, .team-member-peripherals h3 {
-  font-weight: 300;
-}
-
-/* line 56, ../../app/stylesheets/partials/team.scss */
-.team-members dt {
-  font-weight: 500;
-  margin: 10px 10px 0;
-}
-/* line 59, ../../app/stylesheets/partials/team.scss */
-.team-members dt:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+/* line 9, ../../app/stylesheets/partials/team.scss */
+.about-team dt:before {
   border: 1px solid black;
   content: "\0020";
   display: block;
@@ -2522,24 +2472,130 @@ a:hover, a:visited, a:active {
   margin-bottom: 10px;
   width: 100%;
 }
-/* line 69, ../../app/stylesheets/partials/team.scss */
-.team-members dd {
+
+/* line 21, ../../app/stylesheets/partials/team.scss */
+.about-team-nav li {
+  float: left;
+  list-style-type: none;
+  width: 50%;
+}
+
+/* line 29, ../../app/stylesheets/partials/team.scss */
+.about-header h1 {
+  border-bottom: 1px solid #222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 2.75;
+  margin: 0 10px 10px;
+}
+
+/* line 38, ../../app/stylesheets/partials/team.scss */
+.about-nav, .about-definition-peripherals {
+  margin: 10px;
+  padding: 0;
+}
+/* line 43, ../../app/stylesheets/partials/team.scss */
+.about-nav a, .about-definition-peripherals a {
+  text-decoration: none;
+}
+/* line 47, ../../app/stylesheets/partials/team.scss */
+.about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
+  text-decoration: underline;
+}
+/* line 50, ../../app/stylesheets/partials/team.scss */
+.about-nav a:visited, .about-definition-peripherals a:visited {
+  text-decoration: none;
+}
+/* line 56, ../../app/stylesheets/partials/team.scss */
+.about-nav h2, .about-definition-peripherals h2,
+.about-nav h3,
+.about-definition-peripherals h3 {
+  font-size: 12px;
+  line-height: 1.4;
+}
+/* line 61, ../../app/stylesheets/partials/team.scss */
+.about-nav h3, .about-definition-peripherals h3 {
+  font-weight: 300;
+}
+
+/* line 67, ../../app/stylesheets/partials/team.scss */
+.about-term-list dt {
+  font-weight: 500;
+  margin: 10px 10px 0;
+}
+/* line 71, ../../app/stylesheets/partials/team.scss */
+.about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 72, ../../app/stylesheets/partials/team.scss */
-.team-members dd.team-member-bio {
+/* line 74, ../../app/stylesheets/partials/team.scss */
+.about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 78, ../../app/stylesheets/partials/team.scss */
-.team-member-peripherals {
+/* line 80, ../../app/stylesheets/partials/team.scss */
+.about-definition-peripherals {
   margin: 10px 0 20px 0;
 }
-/* line 82, ../../app/stylesheets/partials/team.scss */
-.team-member-peripherals li {
+/* line 84, ../../app/stylesheets/partials/team.scss */
+.about-definition-peripherals li {
   float: none;
   width: auto;
+}
+
+/* line 90, ../../app/stylesheets/partials/team.scss */
+.pacheco:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 93, ../../app/stylesheets/partials/team.scss */
+.spinosa:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 96, ../../app/stylesheets/partials/team.scss */
+.stzul:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 99, ../../app/stylesheets/partials/team.scss */
+.recny:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 102, ../../app/stylesheets/partials/team.scss */
+.kurdziel:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 105, ../../app/stylesheets/partials/team.scss */
+.johnson:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 108, ../../app/stylesheets/partials/team.scss */
+.appelwick:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 111, ../../app/stylesheets/partials/team.scss */
+.samberg:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 114, ../../app/stylesheets/partials/team.scss */
+.iadevaia:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 117, ../../app/stylesheets/partials/team.scss */
+.matyus:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 120, ../../app/stylesheets/partials/team.scss */
+.sabintsev:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
 }
 
 /* Welcome to Compass.

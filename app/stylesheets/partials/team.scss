@@ -4,11 +4,28 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-.team{
-
+.about-team{
+	dt{
+		&:before{
+			border:1px solid black;
+			content:"\0020";
+			display:block;
+			height:172px;
+			margin-bottom:$defaultMargin;
+			width:100%;
+		}
+	}
 }
 
-.team-header{
+.about-team-nav{
+	li{
+		float:left;
+		list-style-type:none;
+		width:50%;
+	}
+}
+
+.about-header{
 	h1{
 		border-bottom:1px solid #222;
 		font-size:16px;
@@ -18,7 +35,7 @@
 	}
 }
 
-.team-nav{
+.about-nav{
 
 	margin:$defaultMargin;
 	padding:0;
@@ -35,12 +52,6 @@
 		}
 	}
 
-	li{
-		float:left;
-		list-style-type:none;
-		width:50%;
-	}
-
 	h2,
 	h3{
 		font-size:12px;
@@ -52,31 +63,22 @@
 	}
 }
 
-.team-members{
+.about-term-list{
 	dt{
 		font-weight:500;
 		margin:$defaultMargin $defaultMargin 0;
-		&:before{
-			background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
-			border:1px solid black;
-			content:"\0020";
-			display:block;
-			height:172px;
-			margin-bottom:$defaultMargin;
-			width:100%;
-		}
 	}
 	dd{
 		margin:0 $defaultMargin;
 		padding:0;
-		&.team-member-bio{
+		&.about-definition{
 			margin-top:$defaultMargin;
 		}
 	}
 }
 
-.team-member-peripherals{
-	@extend .team-nav;
+.about-definition-peripherals{
+	@extend .about-nav;
 	margin:$defaultMargin 0 $defaultMargin*2 0;
 
 	li{
@@ -85,3 +87,36 @@
 	}
 }
 
+.pacheco:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.spinosa:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.stzul:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.recny:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.kurdziel:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.johnson:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.appelwick:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.samberg:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.iadevaia:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.matyus:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.sabintsev:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
