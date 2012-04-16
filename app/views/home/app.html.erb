@@ -5,16 +5,12 @@
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
 	    <meta property="fb:app_id" 	content="<%= Settings::Facebook.facebook_app_id %>" /> 
 	    <meta property="og:type" 		content="video.other" />
-	    <meta property="og:url"			content="<%= @permalink %>" /> 
-	    <meta property="og:video:url" content="<%= @permalink %>" /> 
-	    <meta property="og:video:secure_url" content="<%= url_for(:id=> @broadcast.id, :action => 'show_meta', :controller => 'broadcasts', :only_path => false, :protocol => 'https') %>" /> 
-	    <meta property="og:title" content="<%= @broadcast.video_title %>" /> 
-	    <meta property="og:image" content="<%= @broadcast.video_thumbnail_url %>" />
-			<% if @broadcast.video_originator_user_image %>
-			    <meta property="og:description" content="<%= "shared by: " + @broadcast.video_originator_user_name %>" /> 
-			<% else %>
-			    <meta property="og:description" content="<%= "shared by: " + @broadcast.user.nickname %>" /> 
-	    <% end %>
+	    <meta property="og:url"			content="http://<%= @permalink %>" /> 
+	    <meta property="og:video:url" content="http://<%= @permalink %>" /> 
+	    <meta property="og:video:secure_url" content="https://<%= @permalink %>" /> 
+	    <meta property="og:title" content="<%= @meta_info[:video]['title'] %>" /> 
+	    <meta property="og:image" content="<%= @meta_info[:video]['thumbnail_url'] %>" />
+	    <meta property="og:description" content="<%= @meta_info[:video]['description'] %>" />
 	    <meta property="og:locale"      content="EN_us" />
 <% else %>
 	<head>
