@@ -58,7 +58,7 @@
 
 	background:#585858;
 	border-bottom:1px solid #222;
-	padding:0 $defaultMargin;
+	padding:0;
 	display:none;
 	position:relative;
 	z-index:1;
@@ -66,16 +66,23 @@
 }
 
 .share-form{
-
+	@include background(
+		url('../images/assets/noise.png')
+		#585858
+//		#454545
+	);
+	padding:$defaultMargin;
+	position:relative;
 }
 
 .share-comment{
 	position:relative;
-//	padding:$defaultMargin;
+	//padding:$defaultMargin/2;
 
 	textarea{
 		@include border-radius($radius);
 		
+		padding:$defaultMargin/2;
 		resize:none;
 		width:100%;
 	}
