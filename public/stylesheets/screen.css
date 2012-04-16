@@ -711,9 +711,9 @@ a:hover, a:visited, a:active {
   display: block;
   float: left;
   height: 42px;
-  width: 16.666667%;
+  width: 33.333333%;
 }
-/* line 18, ../../app/stylesheets/partials/menu.scss */
+/* line 19, ../../app/stylesheets/partials/menu.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -722,7 +722,7 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 24, ../../app/stylesheets/partials/menu.scss */
+/* line 25, ../../app/stylesheets/partials/menu.scss */
 .video-guide a, .video-guide a:visited {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -737,62 +737,62 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   text-transform: lowercase;
 }
-/* line 37, ../../app/stylesheets/partials/menu.scss */
+/* line 38, ../../app/stylesheets/partials/menu.scss */
 .video-guide a:hover, .video-guide a:visited:hover {
   -moz-box-shadow: inset 0px 0px 5px #666666;
   -webkit-box-shadow: inset 0px 0px 5px #666666;
   -o-box-shadow: inset 0px 0px 5px #666666;
   box-shadow: inset 0px 0px 5px #666666;
 }
-/* line 40, ../../app/stylesheets/partials/menu.scss */
+/* line 41, ../../app/stylesheets/partials/menu.scss */
 .video-guide a:active, .video-guide a:visited:active {
   -moz-box-shadow: inset 0px 0px 10px black;
   -webkit-box-shadow: inset 0px 0px 10px black;
   -o-box-shadow: inset 0px 0px 10px black;
   box-shadow: inset 0px 0px 10px black;
 }
-/* line 45, ../../app/stylesheets/partials/menu.scss */
+/* line 46, ../../app/stylesheets/partials/menu.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 51, ../../app/stylesheets/partials/menu.scss */
+/* line 52, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab {
   -moz-box-shadow: inset 0px 6px 14px 0px #222222;
   -webkit-box-shadow: inset 0px 6px 14px 0px #222222;
   -o-box-shadow: inset 0px 6px 14px 0px #222222;
   box-shadow: inset 0px 6px 14px 0px #222222;
 }
-/* line 55, ../../app/stylesheets/partials/menu.scss */
+/* line 56, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 60, ../../app/stylesheets/partials/menu.scss */
+/* line 61, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.svg") no-repeat center center;
   color: #63BD57;
 }
-/* line 68, ../../app/stylesheets/partials/menu.scss */
+/* line 69, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 73, ../../app/stylesheets/partials/menu.scss */
+/* line 74, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center center;
   color: #0092C1;
 }
-/* line 80, ../../app/stylesheets/partials/menu.scss */
+/* line 81, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 85, ../../app/stylesheets/partials/menu.scss */
+/* line 86, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center center;
   color: #F0E84C;
 }
 
-/* line 95, ../../app/stylesheets/partials/menu.scss */
+/* line 96, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -803,7 +803,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 101, ../../app/stylesheets/partials/menu.scss */
+/* line 102, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -811,7 +811,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 108, ../../app/stylesheets/partials/menu.scss */
+/* line 109, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -822,7 +822,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 113, ../../app/stylesheets/partials/menu.scss */
+/* line 114, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
