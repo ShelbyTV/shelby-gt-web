@@ -9,8 +9,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _shareRollView: null,
 
-  _rollModel: null,
-
   template : function(obj){
     return JST['roll-header'](obj);
   },
@@ -48,14 +46,15 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _toggleJoinRoll : function() {
     var self = this;
-    if ( shelby.models.user.followsRoll(this._rollModel.id) ){
-      this._rollModel.leaveRoll(function(){
+    var currentRollModel = this.model.get('currentRollModel');
+    if ( shelby.models.user.followsRoll(currentRollModel.id) ){
+      currentRollModel.leaveRoll(function(){
         self._updateJoinButton('Join');
         self._refreshUser();
       });
     }
     else {
-      this._rollModel.joinRoll(function(){
+      currentRollModel.joinRoll(function(){
         self._updateJoinButton('Leave');
         self._refreshUser();
       });
@@ -74,10 +73,8 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _updateRollHeaderView : function(guideModel, currentRollModel) {
     this._shareRollView.$el.hide();
-    // set roll model
-    this._rollModel = currentRollModel;
-    // hide join/leave button if its users public roll
-    if (this._rollModel.id === shelby.models.user.get('public_roll').id){
+    // hide join/leave button if the user is the roll's creator (includes the user's public roll)
+    if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$('.rolls-add').hide();
       //TODO: do this via html class assignment:
       this.$('#js-roll-header li:first').hide();
@@ -90,7 +87,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$('#js-roll-header li:last').css('width', '50%');
     }
     // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(this._rollModel.id) ? 'Leave' : 'Join';
+    var _buttonText = shelby.models.user.followsRoll(currentRollModel.id) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
   }
 
