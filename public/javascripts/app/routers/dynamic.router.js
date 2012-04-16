@@ -48,9 +48,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRoll : function(rollId, title, options){
+    var defaultOnRollFetch;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the roll that loads, scroll to it
+      defaultOnRollFetch = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the roll on load
+      defaultOnRollFetch = this._activateFirstRollFrame;
+    }
     var defaults = {
       updateRollTitle: true,
-      onRollFetch: this._activateFirstRollFrame,
+      onRollFetch: defaultOnRollFetch,
       data: {include_children:true}
     };
     if (!options) {
@@ -83,9 +91,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
       'insideRollList' : false
     });
+    var onSuccess;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the dashboard, scroll to it
+      onSuccess = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the dashboard on load
+      onSuccess = this._activateFirstDashboardVideoFrame;
+    }
     shelby.models.dashboard.fetch({
       data: {include_children:true},
-      success: this._activateFirstDashboardVideoFrame
+      success: onSuccess
     });
   },
 
@@ -104,8 +120,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
       this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), {
-        updateRollTitle: false,
-        onRollFetch: 'none'
+        updateRollTitle: false
       });
     } else {
       alert("Sorry, you don't have a saves roll.");
@@ -188,6 +203,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (firstDashboardEntry) {
       shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
     }
+  },
+
+  _scrollToActiveFrameView : function(){
+    shelby.views.guide.scrollToActiveFrameView();
   },
 
   _setupTopLevelViews : function(){
