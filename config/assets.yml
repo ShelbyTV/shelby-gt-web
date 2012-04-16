@@ -1,5 +1,6 @@
 package_assets: on
 compress_assets: on
+javascript_compressor: yui
 template_function: _.template
 
 javascripts:
