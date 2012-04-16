@@ -3,24 +3,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
-<% if @meta_info %>
-	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	    <meta property="fb:app_id" 	content="<%= Settings::Facebook.facebook_app_id %>" /> 
-	    <meta property="og:type" 		content="video.other" />
-	    <meta property="og:url"			content="http://<%= @permalink %>" /> 
-	    <meta property="og:video:url" content="http://<%= @permalink %>" /> 
-	    <meta property="og:video:secure_url" content="https://<%= @permalink %>" /> 
-	    <meta property="og:title" content="<%= @meta_info[:video]['title'] %>" /> 
-	    <meta property="og:image" content="<%= @meta_info[:video]['thumbnail_url'] %>" />
-	    <meta property="og:description" content="<%= @meta_info[:video]['description'] %>" />
-	    <meta property="og:locale"      content="EN_us" />
-<% else %>
-	<head>
-<% end %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+	<% if @fb_meta_info %>
+		<%= render :partial => "fb_meta_info", :locals => { :fb_meta_info => @fb_meta_info, :permalink => @permalink } %>
+	<% else %>
+		<meta name="description" content="<%= Settings::Application.meta_description %>">
+	<% end %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Shelby.tv</title>
-  <meta name="description" content="">
+  <title><%= Settings::Application.title %></title>
+  
   <meta name="viewport" content="width=device-width">
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">

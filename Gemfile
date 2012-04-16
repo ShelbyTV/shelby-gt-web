@@ -16,6 +16,12 @@ gem "settingslogic"
 #
 gem 'httparty'
 
+#
+# -- Quiet Logging
+#
+gem 'quiet_assets', :group => :development
+
+#
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

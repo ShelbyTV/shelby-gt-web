@@ -16,7 +16,7 @@ module Shelby
       v = get( "/video/#{video_id}" ).parsed_response
       return nil if v['status'] != 200
       
-      result = {:frame => f['result'], :video => v['result']}
+      result = {'frame' => f['result'], 'video' => v['result']}
     end
     
     def self.generate_route(roll_id, frame_id)

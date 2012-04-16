@@ -9,10 +9,10 @@ class HomeController < ApplicationController
   def index
     if frame_id = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = frame_id[1]
-      @meta_info = Shelby::API.get_video_info(frame_id)
-      @permalink = Shelby::API.generate_route(@meta_info[:frame]['roll_id'], frame_id) if @meta_info
+      @fb_meta_info = Shelby::API.get_video_info(frame_id)
+      @permalink = Shelby::API.generate_route(@fb_meta_info['frame']['roll_id'], frame_id) if @fb_meta_info
     else
-      @meta_info = nil
+      @fb_meta_info = nil
     end
     render 'app'
   end  

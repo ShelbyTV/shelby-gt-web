@@ -76,6 +76,8 @@ GEM
       net-ssh (>= 1.99.1)
     open4 (1.3.0)
     polyglot (0.3.3)
+    quiet_assets (1.0.0)
+      rails (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -126,5 +128,6 @@ DEPENDENCIES
   compass (= 0.11.7)
   httparty
   jammit (= 0.6.3)
+  quiet_assets
   rails (= 3.2.2)
   settingslogic

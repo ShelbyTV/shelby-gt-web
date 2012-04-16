@@ -1,5 +1,7 @@
 defaults: &defaults
   url: "web.gt.shelby.tv"
+  meta_description: "Shelby.tv - the best way to watch video online, pulling videos from your Facebook, Twitter, and Tumblr friends into free web and iOS apps for you to enjoy."
+  title: "shelby.tv | The best online video from Facebook, YouTube, and more! (And yeah, it's free.)"
 
 development:
   <<: *defaults
