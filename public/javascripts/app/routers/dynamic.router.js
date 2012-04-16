@@ -75,13 +75,25 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayFrameInRollInCarousel : function(rollId, frameId){
-    shelby.models.guide.set('insideRollList', true);
-    this.displayFrameInRoll(rollId, frameId);
+    if (shelby.models.user.followsRoll(rollId)) {
+      shelby.models.guide.set('insideRollList', true);
+      this.displayFrameInRoll(rollId, frameId);
+    } else {
+      // if the user doesn't follow this roll they can't see it inside the carousel,
+      // so just redirect to the normal roll/id/frame/id route
+      this.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true,replace:true});
+    }
   },
 
   displayRollInCarousel : function(rollId, title){
-    shelby.models.guide.set('insideRollList', true);
-    this.displayRoll(rollId, title);
+    if (shelby.models.user.followsRoll(rollId)) {
+      shelby.models.guide.set('insideRollList', true);
+      this.displayRoll(rollId, title);
+    } else {
+      // if the user doesn't follow this roll they can't see it inside the carousel,
+      // so just redirect to the normal roll route
+      this.navigate('roll/' + rollId + (title ? '/' + title : ''), {trigger:true,replace:true});
+    }
   },
 
   displayDashboard : function(){
