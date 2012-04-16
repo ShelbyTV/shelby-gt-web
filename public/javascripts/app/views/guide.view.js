@@ -124,6 +124,14 @@
       }
     },
 
+    scrollToActiveFrameView: function(){
+      this._listView.scrollToActiveFrameView();
+    },
+
+    scrollToChildElement: function(element){
+      this.$el.scrollTo(element, {duration:200, axis:'y'});
+    },
+
     // appropriatly advances to the next video (in dashboard or a roll)
     _nextVideo : function(){
       var _currentModel,
@@ -149,6 +157,7 @@
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }
+
   });
 
 } ) ();

@@ -53,6 +53,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   render : function(showConversation){
     this.$el.html(this.template({frame : this.model, showConversation : showConversation}));
+    if (this.model == shelby.models.guide.get('activeFrameModel')) {
+      this.$el.addClass('active-frame');
+    }
   },
 
   _activate : function(){
