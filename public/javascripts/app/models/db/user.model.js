@@ -50,11 +50,13 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       });
       result.roll_followings = roll_follwings_filtered;
     }
-    // wrap the watch later roll id in a model
+    // wrap the watch later and public roll ids in models
     // seems like Backbone Relational should do this for us for lazy loading, but it seems to choke because
     // this is a HasOne relation and there is no model already in the Relational Store with a matching id
-    var watchLaterRoll = new libs.shelbyGT.RollModel({id:result.watch_later_roll});
+    var watchLaterRoll = new libs.shelbyGT.RollModel({id:result.watch_later_roll_id});
     result.watch_later_roll = watchLaterRoll;
+    var publicRoll = new libs.shelbyGT.RollModel({id:result.public_roll_id});
+    result.public_roll = publicRoll;
     return result;
   },
 
