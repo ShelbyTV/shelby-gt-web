@@ -8,8 +8,13 @@
     className : AutoScrollFrameListView.prototype.className + ' roll',
 
     initialize : function(){
-      this.options.collectionAttribute = 'frames';
-      this.options.listItemView = 'FrameView';
+      _(this.options).extend({
+        collectionAttribute : 'frames',
+        listItemView : 'FrameView',
+        fetchParams : {
+          include_children : true
+        }
+      });
       AutoScrollFrameListView.prototype.initialize.call(this);
     }
 

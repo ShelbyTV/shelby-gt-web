@@ -1,18 +1,18 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var ListView = libs.shelbyGT.ListView;
+  var PagingListView = libs.shelbyGT.PagingListView;
 
-  libs.shelbyGT.AutoScrollFrameListView = ListView.extend({
+  libs.shelbyGT.AutoScrollFrameListView = PagingListView.extend({
 
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
-      ListView.prototype.initialize.call(this);
+      PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
-      ListView.prototype._cleanup.call(this);
+      PagingListView.prototype._cleanup.call(this);
     },
 
     activateFrameRollingView : function(frame) {

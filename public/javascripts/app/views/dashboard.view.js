@@ -18,11 +18,16 @@
 
     initialize : function(){
       var self = this;
-      this.options.collectionAttribute = 'dashboard_entries';
-      this.options.listItemView = function(item){
-        var mapResult = self.actionToViewMap[item.get('action')];
-        return new mapResult.view({model:item.get(mapResult.model_attr)});
-      };
+      _(this.options).extend({
+        collectionAttribute : 'dashboard_entries',
+        listItemView : function(item){
+          var mapResult = self.actionToViewMap[item.get('action')];
+          return new mapResult.view({model:item.get(mapResult.model_attr)});
+        },
+        fetchParams : {
+          include_children : true
+        }
+      });
       AutoScrollFrameListView.prototype.initialize.call(this);
     },
 
