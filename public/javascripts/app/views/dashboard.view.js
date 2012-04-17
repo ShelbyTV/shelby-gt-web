@@ -7,6 +7,13 @@
 
     className : AutoScrollFrameListView.prototype.className + ' dashboard',
 
+    options : _.extend({}, AutoScrollFrameListView.prototype.options, {
+      collectionAttribute : 'dashboard_entries',
+      fetchParams : {
+        include_children : true
+      }
+    }),
+
     actionToViewMap : {
       '0' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
       '1' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
@@ -18,11 +25,12 @@
 
     initialize : function(){
       var self = this;
-      this.options.collectionAttribute = 'dashboard_entries';
-      this.options.listItemView = function(item){
-        var mapResult = self.actionToViewMap[item.get('action')];
-        return new mapResult.view({model:item.get(mapResult.model_attr)});
-      };
+      _(this.options).extend({
+        listItemView : function(item){
+          var mapResult = self.actionToViewMap[item.get('action')];
+          return new mapResult.view({model:item.get(mapResult.model_attr)});
+        }
+      });
       AutoScrollFrameListView.prototype.initialize.call(this);
     },
 
