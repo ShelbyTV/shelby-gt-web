@@ -483,7 +483,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   overflow: hidden;
   position: relative;
-  z-index: 0;
+  z-index: 3;
 }
 
 /* line 81, ../../app/stylesheets/partials/app.html.scss */
@@ -772,35 +772,40 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 6px 10px 0px #111111;
   box-shadow: inset 0px 6px 10px 0px #111111;
 }
-/* line 61, ../../app/stylesheets/partials/menu.scss */
+/* line 60, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 66, ../../app/stylesheets/partials/menu.scss */
+/* line 65, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
-  background: url("../images/assets/stream_on.svg") no-repeat center center;
+  background: url("../images/assets/stream_on.svg") no-repeat center 1px;
   color: #63BD57;
 }
-/* line 74, ../../app/stylesheets/partials/menu.scss */
+/* line 70, ../../app/stylesheets/partials/menu.scss */
+.video-guide .stream.active-tab:hover {
+  background: url("../images/assets/stream_on.svg") no-repeat center 0px;
+  padding-top: 25px;
+}
+/* line 79, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 79, ../../app/stylesheets/partials/menu.scss */
+/* line 84, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
-  background: url("../images/assets/rolls_on.svg") no-repeat center center;
+  background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 86, ../../app/stylesheets/partials/menu.scss */
+/* line 91, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 91, ../../app/stylesheets/partials/menu.scss */
+/* line 96, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
-  background: url("../images/assets/saves_on.svg") no-repeat center center;
+  background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #F0E84C;
 }
 
-/* line 101, ../../app/stylesheets/partials/menu.scss */
+/* line 106, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -811,7 +816,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 107, ../../app/stylesheets/partials/menu.scss */
+/* line 112, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -819,7 +824,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 114, ../../app/stylesheets/partials/menu.scss */
+/* line 119, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -830,7 +835,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 119, ../../app/stylesheets/partials/menu.scss */
+/* line 124, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -1509,7 +1514,7 @@ a:hover, a:visited, a:active {
 
 /* line 290, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1517,7 +1522,7 @@ a:hover, a:visited, a:active {
 
 /* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
 }
 
 /* line 304, ../../app/stylesheets/partials/frame.scss */

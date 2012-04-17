@@ -78,7 +78,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   overflow: hidden;
   position: relative;
-  z-index: 0;
+  z-index: 3;
 }
 
 /* line 81, ../../../app/stylesheets/partials/app.html.scss */
