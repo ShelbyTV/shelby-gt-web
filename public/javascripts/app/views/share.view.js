@@ -63,11 +63,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _toggleSpinner : function(){
-    this.spinner.toggle();
+    !shelby.models.user.get('anon') && this.spinner.toggle();
   },
 
   _showSpinner : function(){
-    this.spinner.show();
+    !shelby.models.user.get('anon') && this.spinner.show();
   },
 
   _hideSpinner : function(){

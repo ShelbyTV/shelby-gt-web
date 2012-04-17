@@ -138,6 +138,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _renderError : function(msg){
     this.$('.js-frame-comment-error-message').text(msg).show().fadeOut(1000);
+    //this.$el('.js-add-message-input').addClass('error');
+    return false;
   },
 
   _onAddMessageInputChange : function(event){
