@@ -3,6 +3,9 @@
 libs.shelbyGT.PlayerStateModel = Backbone.Model.extend({
 
 	defaults: {
+	  //the player whose state this model tracks
+	  "playerView": null,
+	  
 		//is this player currently set to be visible
 		"visible": false,
 		

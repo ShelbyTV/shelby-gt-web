@@ -14,6 +14,7 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
+		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
 			supportsVolume: true
