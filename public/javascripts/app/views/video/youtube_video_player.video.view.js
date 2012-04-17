@@ -28,6 +28,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.hide();
+		this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
 		
 		this._playheadTrackingOff();
@@ -44,6 +45,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.show();
+			this.$el.css('z-index', '1');
 			this.playerState.set({visible:true});
 			//playVideo will be called by video display view
 		}
@@ -187,6 +189,8 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		this.setElement($('#'+this.id));
 		
 		this._player = e.target;
+		
+		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 		

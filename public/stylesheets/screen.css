@@ -1621,9 +1621,10 @@ a:hover, a:visited, a:active {
   left: 0;
   position: absolute;
   width: 100%;
+  z-index: 2;
 }
 
-/* line 15, ../../app/stylesheets/partials/video-controls.scss */
+/* line 16, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls {
   background: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
@@ -1647,7 +1648,7 @@ a:hover, a:visited, a:active {
   margin: 10px 340px 10px 10px;
 }
 
-/* line 29, ../../app/stylesheets/partials/video-controls.scss */
+/* line 30, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1660,7 +1661,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 37, ../../app/stylesheets/partials/video-controls.scss */
+/* line 38, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -1668,12 +1669,12 @@ a:hover, a:visited, a:active {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 47, ../../app/stylesheets/partials/video-controls.scss */
+/* line 48, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 55, ../../app/stylesheets/partials/video-controls.scss */
+/* line 56, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1689,7 +1690,7 @@ a:hover, a:visited, a:active {
   position: absolute;
 }
 
-/* line 66, ../../app/stylesheets/partials/video-controls.scss */
+/* line 67, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1708,13 +1709,13 @@ a:hover, a:visited, a:active {
   width: 0;
 }
 
-/* line 77, ../../app/stylesheets/partials/video-controls.scss */
+/* line 78, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 86, ../../app/stylesheets/partials/video-controls.scss */
+/* line 87, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -1732,7 +1733,7 @@ a:hover, a:visited, a:active {
   width: 15px;
 }
 
-/* line 96, ../../app/stylesheets/partials/video-controls.scss */
+/* line 97, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -1742,23 +1743,23 @@ a:hover, a:visited, a:active {
   margin: 0 15px;
 }
 
-/* line 105, ../../app/stylesheets/partials/video-controls.scss */
+/* line 106, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 113, ../../app/stylesheets/partials/video-controls.scss */
+/* line 114, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 120, ../../app/stylesheets/partials/video-controls.scss */
+/* line 121, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 130, ../../app/stylesheets/partials/video-controls.scss */
+/* line 131, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

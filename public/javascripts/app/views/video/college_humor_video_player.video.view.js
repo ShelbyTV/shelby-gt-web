@@ -35,6 +35,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
     this.$el.css('visibility', 'hidden');
+    this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
 	},
 	
@@ -53,6 +54,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		}
 		else if( !this.playerState.get('visible') ){
       this.$el.css('visibility', 'visible');
+      this.$el.css('z-index', '1');
 			this.playerState.set({visible:true});
 			//playVideo will be called by video display view
 		}
@@ -156,6 +158,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		
 		this._player = $("#"+this.id)[0];
 
+    this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 
