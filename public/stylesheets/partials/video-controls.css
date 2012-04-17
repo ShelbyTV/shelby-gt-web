@@ -114,10 +114,10 @@
   -ms-border-radius: 50%;
   -khtml-border-radius: 50%;
   border-radius: 50%;
-  -moz-box-shadow: 0px 0px 3px 1px black;
-  -webkit-box-shadow: 0px 0px 3px 1px black;
-  -o-box-shadow: 0px 0px 3px 1px black;
-  box-shadow: 0px 0px 3px 1px black;
+  -moz-box-shadow: 1px 0px 2px 1px black;
+  -webkit-box-shadow: 1px 0px 2px 1px black;
+  -o-box-shadow: 1px 0px 2px 1px black;
+  box-shadow: 1px 0px 2px 1px black;
   background: #efefef;
   height: 15px;
   margin: -11px;

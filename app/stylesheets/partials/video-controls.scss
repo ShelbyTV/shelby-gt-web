@@ -85,7 +85,7 @@
 
 .video-player-scrubber{
 	@include border-radius(50%);
-	@include box-shadow(0px 0px 3px 1px black);
+	@include box-shadow(1px 0px 2px 1px black);
 
 	background:#efefef;
 	height:15px;

@@ -1,6 +1,7 @@
 //		try to keep the list in ascending order of generic to specific styles
 //		due to some weird inheritance shit partials/frame is compiled before partials/rolls-list
-@import "partials/fonts",
+@import 
+		"partials/fonts",
 		"partials/h5bp", 
 		"partials/media-query-35em",	
 		
@@ -26,7 +27,7 @@
 		
 		"partials/share",
 
-		"partials/roll-selection-default-items.scss",
+		"partials/roll-selection-default-items",
 
 		"partials/user-preferences",
 		"partials/team",
