@@ -110,7 +110,7 @@
     <div class="video-footer">
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (messages.length) { %> (<%= messages.length-1 %>)<% } %></a>
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll') { %>
-        <a onclick="return false;" class="video-source" href="#">Roll: <%= creator.get('nickname') %></a>
+        <a onclick="return false;" class="video-source" href="#"><%= creator.get('nickname') %></a>
       <% } %>
     </div> 
   
