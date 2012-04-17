@@ -73,11 +73,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		switch(curState){
 			case libs.shelbyGT.PlaybackStatus.paused:
 				this.$el.removeClass('js-playing').addClass('js-paused');
-				this.$('.video-player-play').addClass('pause');
+				this.$('.video-player-play').removeClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.playing:
 				this.$el.removeClass('js-paused').addClass('js-playing');
-				this.$('.video-player-play').removeClass('pause');
+				this.$('.video-player-play').addClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.ended:
 				Backbone.Events.trigger('playback:next');
@@ -135,12 +135,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
-		this.$('.video-player-play').removeClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
-		this.$('.video-player-play').addClass('pause');
 		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
