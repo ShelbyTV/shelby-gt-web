@@ -54,7 +54,8 @@
         case DisplayState.dashboard :
           displayComponents = {
             viewProto : DashboardView,
-            model : shelby.models.dashboard
+            model : shelby.models.dashboard,
+            limit : shelby.config.pageLoadSizes.dashboard
           };
          break;
         case DisplayState.rollList :
@@ -67,7 +68,8 @@
         case DisplayState.watchLaterRoll :
           displayComponents = {
             viewProto : RollView,
-            model : this.model.get('currentRollModel')
+            model : this.model.get('currentRollModel'),
+            limit : shelby.config.pageLoadSizes.roll
           };
           break;
         case DisplayState.userPreferences :
@@ -96,7 +98,11 @@
           break;
       }
 
-      this._listView = new displayComponents.viewProto({model: displayComponents.model});
+      var options = {model:displayComponents.model}
+      if (displayComponents.limit) {
+        options.limit = displayComponents.limit;
+      }
+      this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);
     },
 
