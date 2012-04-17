@@ -30,6 +30,10 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.bind('change:mute', this._changeMute, this);
     this._userDesires.bind('change:volume', this._changeVolume, this);
+    
+    _.each(this._playerViews, function(playerView){
+      playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
+    }, this);
   },
 
 	_cleanup : function() {
@@ -39,6 +43,10 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.unbind('change:mute', this._changeMute, this);
     this._userDesires.unbind('change:volume', this._changeVolume, this);
+    
+    _.each(this._playerViews, function(playerView){
+      playerView.playerState.unbind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
+    }, this);
   },
 
 	//literally display the video (via a video player) and, unless autostart = false, start playing that video
@@ -108,6 +116,17 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 		if( !this._curView || !this._curView.setVolume ) return;
 		
 		this._curView.setVolume(volPct);
-	}
+	},
 
+  // A timing issue exists due to the fact that player bootstrapping is asynchronous...
+  // - player A is bootstrapped, and before it loads, player B starts.  player A.leave() doesn't
+  //   do anything b/c bootstrap isn't done yet.
+  // Fix:
+  // - When player A boostrap is done, it sets playerLoaded:true.  We listen for that, and if the player
+  //   reporting loaded isn't our current expected player, we ask it to leave() again.
+  _preventPlayerBootstrapGlitch: function(playerState, val){
+    if( this._curView !== playerState.get('playerView') ){
+      playerState.get('playerView').leave()
+    }
+  }
 });

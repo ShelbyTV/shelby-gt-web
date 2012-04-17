@@ -16,6 +16,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
+		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
 			supportsVolume: false
@@ -159,11 +160,12 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		this._player = $("#"+this.id)[0];
 
     this.$el.css('z-index', '1');
-		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 
 		//auto play is not a config option, need to press play meow...
 		if( this._playbackState.get('autoplayOnVideoDisplay') ){ this.play(); }
+		
+		this.playerState.set({playerLoaded: true});
 	},
 	
 	_bootstrapPlayer: function(){
