@@ -34,7 +34,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 		//NB: If we decide to tear this down (ie. on low power devices) will need to do some more work in here and call super's leave()
 		
 		this.pause();
-		this.$el.hide();
+    this.$el.css('visibility', 'hidden');
 		this.playerState.set({visible:false});
 	},
 	
@@ -53,7 +53,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
-			this.$el.show();
+      this.$el.css('visibility', 'visible');
 			this.playerState.set({visible:true});
 		}
 	},

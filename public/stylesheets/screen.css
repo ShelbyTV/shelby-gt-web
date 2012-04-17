@@ -1510,7 +1510,7 @@ a:hover, a:visited, a:active {
 
 /* line 296, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1518,7 +1518,7 @@ a:hover, a:visited, a:active {
 
 /* line 306, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
 }
 
 /* line 310, ../../app/stylesheets/partials/frame.scss */
@@ -1538,6 +1538,21 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* line 5, ../../app/stylesheets/partials/video-player.scss */
+#video-players-holder {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+/* line 9, ../../app/stylesheets/partials/video-player.scss */
+#video-players-holder > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
