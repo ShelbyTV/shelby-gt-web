@@ -483,9 +483,10 @@ a:hover, a:visited, a:active {
   height: 100%;
   overflow: hidden;
   position: relative;
+  z-index: 0;
 }
 
-/* line 80, ../../app/stylesheets/partials/app.html.scss */
+/* line 81, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -495,7 +496,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 100, ../../app/stylesheets/partials/app.html.scss */
+/* line 101, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -506,7 +507,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 108, ../../app/stylesheets/partials/app.html.scss */
+/* line 109, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-top: 100px;
@@ -1509,7 +1510,7 @@ a:hover, a:visited, a:active {
 
 /* line 296, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334589636');
+  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1517,7 +1518,7 @@ a:hover, a:visited, a:active {
 
 /* line 306, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334589636');
+  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
 /* line 310, ../../app/stylesheets/partials/frame.scss */
@@ -2608,6 +2609,7 @@ a:hover, a:visited, a:active {
  */
 /* line 7, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner-wrapper {
+  bottom: 0;
   left: 0;
   padding-right: 330px;
   position: absolute;
@@ -2615,7 +2617,30 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 14, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 16, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-overlay {
+  background: black;
+  bottom: 0;
+  display: none;
+  height: 100%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 0;
+}
+/* line 27, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-overlay p {
+  color: #efefef;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 25%;
+  padding-right: 330px;
+  top: 50%;
+}
+
+/* line 38, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 0 0 5px 5px;
@@ -2627,46 +2652,48 @@ a:hover, a:visited, a:active {
   margin: 0 auto;
   min-width: 680px;
   max-width: 738px;
+  position: relative;
+  z-index: 1;
 }
 
-/* line 25, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 51, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-header {
   background: url("../images/assets/noise.png") #303030;
   border-bottom: 1px solid #222;
   padding: 10px;
 }
 
-/* line 32, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 58, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav {
   float: left;
   font-size: 11px;
 }
-/* line 36, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 62, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav li {
   display: inline;
   padding-right: 5px;
 }
-/* line 40, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 66, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a {
   color: #d3d3d3;
   text-decoration: none;
 }
-/* line 44, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 70, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:hover {
   color: white;
   text-decoration: underline;
 }
-/* line 49, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 75, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:visited, .logged-out-nav a:active {
   color: white;
 }
 
-/* line 55, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 81, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-origin {
   float: right;
 }
 
-/* line 59, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 85, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline {
   float: left;
   font-weight: 100;
@@ -2674,39 +2701,39 @@ a:hover, a:visited, a:active {
   margin-top: 20px;
   width: 50%;
 }
-/* line 66, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 92, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a {
   text-decoration: none;
   font-weight: 500;
 }
-/* line 69, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 95, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:hover {
   text-decoration: none;
 }
-/* line 73, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 99, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:active, .logged-out-tagline a:visited {
   text-decoration: none;
 }
 
-/* line 79, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 105, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks {
   float: left;
   margin: 12px 0;
   padding: 0;
   width: 50%;
 }
-/* line 86, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 112, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks li {
   display: inline;
   float: left;
   width: 50%;
 }
-/* line 91, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 117, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks button {
   width: 93%;
 }
 
-/* line 121, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 147, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
   -moz-border-radius: 5px;
@@ -2731,7 +2758,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
-/* line 109, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 135, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -2742,12 +2769,12 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 128, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 154, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
-/* line 133, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 159, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
   -moz-border-radius: 5px;
@@ -2772,7 +2799,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #01599e, #013e80);
   background: linear-gradient(top, #01599e, #013e80);
 }
-/* line 109, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 135, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -2783,7 +2810,7 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 140, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 166, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }

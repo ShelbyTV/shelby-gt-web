@@ -5,21 +5,47 @@
 		"compass/css3/box-shadow";
 
 .logged-out-banner-wrapper{
-		left:0;
-		padding-right:330px;
-		position:absolute;
-		top:0;
-		width:100%;
+	bottom:0;
+	left:0;
+	padding-right:330px;
+	position:absolute;
+	top:0;
+	width:100%;
 }
-.logged-out-banner{
-		@include background(
-			url('../images/assets/noise.png') #585858
-		);
-		@include border-radius(0 0 $radius $radius);
 
-		margin:0 auto;
-		min-width:680px;
-		max-width:738px;
+.logged-out-overlay{
+	background:black;	
+	bottom:0;
+	display:none;
+	height:100%;
+	@include opacity(0.8);
+	position:absolute;
+	text-align:center;
+	width:100%;
+	z-index:0;
+
+	p{
+		color:#efefef;
+		font-size:40px;
+		font-weight:500;
+		margin-top:25%;
+		padding-right:330px;
+		top:50%;
+
+	}
+}
+
+.logged-out-banner{
+	@include background(
+		url('../images/assets/noise.png') #585858
+	);
+	@include border-radius(0 0 $radius $radius);
+
+	margin:0 auto;
+	min-width:680px;
+	max-width:738px;
+	position:relative;
+	z-index:1;
 }
 
 .logged-out-header{
