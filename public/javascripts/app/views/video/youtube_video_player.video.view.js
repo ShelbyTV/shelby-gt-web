@@ -51,9 +51,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		this._playheadTrackingOn();
 	},
 	
-	playVideo: function(video){
-	  console.log("YT: play video, this._video, ===", video, this._video, this._video === video);
-	  
+	playVideo: function(video){	  
 		if( this.playerState.get('playerLoaded') ){
 			if( this._video === video ){
 				this.play();
