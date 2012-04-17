@@ -46,14 +46,14 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.css('visibility', 'visible');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -63,7 +63,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.setQueryStringParameters({embedCode:this._video.get('provider_id'), autoplay:(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0)});
+				this._player.setQueryStringParameters({embedCode:video.get('provider_id'), autoplay:(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0)});
 			}
 		}
 		

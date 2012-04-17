@@ -48,14 +48,14 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.css('visibility', 'visible');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -65,7 +65,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.api_loadVideo(this._video.get('provider_id'));
+				this._player.api_loadVideo(video.get('provider_id'));
 			}
 		}
 		

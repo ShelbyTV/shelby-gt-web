@@ -33,14 +33,14 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this._player.show();
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -50,7 +50,7 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.playVideo(this._video.get('provider_id'));
+				this._player.playVideo(video.get('provider_id'));
 			}
 		}
 		

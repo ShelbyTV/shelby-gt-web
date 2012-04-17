@@ -49,9 +49,8 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		//this player is torn down if we've flipped to another player, no way to just flip it back visible
