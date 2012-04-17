@@ -23,6 +23,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
     "keyup .js-add-message-input"           : "_onAddMessageInputChange",
+    "focus .js-add-message-input"           : "_onAddMessageInputFocus",
     "click .js-message-submit"              : "_addMessage"
   },
 
@@ -138,7 +139,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _renderError : function(msg){
     this.$('.js-frame-comment-error-message').text(msg).show().fadeOut(1000);
-    this.$el('.js-add-message-input').addClass('error');
+    this.$('.js-add-message-input').addClass('error');
     return false;
   },
 
@@ -146,6 +147,10 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     /*var self = this;
     if (event.keyCode!==13) return false;
     this._addMessage();*/
+  },
+
+  _onAddMessageInputFocus : function(event){
+    this.$('.js-add-message-input').removeClass('error');
   },
 
   _addMessage : function(){
