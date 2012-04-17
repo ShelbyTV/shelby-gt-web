@@ -50,7 +50,12 @@
 	}
 
 	.active-tab{
-			@include box-shadow(inset 0px 6px 14px 0px #222);
+		@include box-shadow(inset 0px 6px 14px 0px #101010);
+
+		&:hover{
+		@include box-shadow(inset 0px 6px 10px 0px #111);
+
+		}
 	}
 
 	.stream{
