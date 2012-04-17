@@ -135,11 +135,15 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
-		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
+    //to make sure a change event is fired, first unset this attribute
+    this._userDesires.unset('playbackStatus');
+    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
-		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
+    //to make sure a change event is fired, first unset this attribute
+    this._userDesires.unset('playbackStatus');
+    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
 	_mute: function(el){
