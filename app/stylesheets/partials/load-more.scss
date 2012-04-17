@@ -1,0 +1,18 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.load-more{
+
+
+}
+.load-more-button{
+	@include rolls-menu-button;
+	@include background($softShelbyGray);
+	@include box-shadow(inset -1px 0px 1px 0px #666);
+	
+	margin:0 auto;
+
+}
