@@ -21,10 +21,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	initialize: function(opts){	
 		this._playbackState = opts.playbackState;
 		this._userDesires = opts.userDesires;
-
-    this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
-
-		this.render();
+		
+		this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
+		if( this._playbackState.get('activePlayerState') !== null ) {
+		  this._onNewPlayerState(this._playbackState, this._playbackState.get('activePlayerState'));
+		}
   },
 
 	_cleanup: function() {
@@ -37,6 +38,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	render: function(){
 		this.$el.html(this.template());
+		if( this._playbackState.get('activePlayerState') === null ) {
+		  this.$el.addClass('js-disabled');
+	  }
 	},
 
 
@@ -45,6 +49,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 
 	_onNewPlayerState: function(playbackState, newPlayerState){
+	  this.$el.removeClass('js-disabled');
+	  
 		var prevPlayerState = playbackState.previous('activePlayerState');
 		if( prevPlayerState ){
 			prevPlayerState.unbind('change:playbackStatus', this._onPlaybackStatusChange, this);

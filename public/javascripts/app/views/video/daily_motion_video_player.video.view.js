@@ -49,9 +49,8 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		//this player is torn down if we've flipped to another player, no way to just flip it back visible
@@ -163,6 +162,7 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 		this._player.addEventListener("onVideoProgress", "function(p){ Backbone.Events.trigger('dailymotion:onVideoProgress', p) }");
 		this._player.addEventListener("onVideoMetadata", "function(m){ Backbone.Events.trigger('dailymotion:onVideoMetadata', m) }");
 		
+		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded:true});
 		this.playerState.set({visible:true});
 	},

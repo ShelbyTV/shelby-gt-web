@@ -49,9 +49,8 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		//this player is torn down if we've flipped to another player, no way to just flip it back visible
@@ -176,6 +175,7 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 		this._player.addJScallback('current_time_change',   'function(t){Backbone.Events.trigger("bliptv:updateCurrentTime", t);}');	
 		this._player.addJScallback('player_state_change',   'function(s){Backbone.Events.trigger("bliptv:stateChange", s)}');	
 		
+		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded:true});
 		this.playerState.set({visible:true});
 	},

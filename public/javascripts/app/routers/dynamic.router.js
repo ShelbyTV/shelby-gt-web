@@ -112,7 +112,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       onSuccess = this._activateFirstDashboardVideoFrame;
     }
     shelby.models.dashboard.fetch({
-      data: {include_children:true},
+      data: {
+        include_children : true,
+        limit : shelby.config.pageLoadSizes.dashboard
+      },
       success: onSuccess
     });
   },
@@ -236,7 +239,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.videoControls = shelby.views.videoControls ||
         new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
     if (!shelby.views.guideSpinner){
-      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:libs.shelbyGT.DisplayState.guideSpinnerOpts});
+      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide'});
     }
     shelby.views.guideSpinner.show();
   },
@@ -288,6 +291,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'currentRollModel': rollModel
     });
     var fetchOptions = {data: options.data};
+    fetchOptions.data.limit = shelby.config.pageLoadSizes.roll;
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }

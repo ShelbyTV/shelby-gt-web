@@ -23,7 +23,7 @@
     _activeTabSelectorMap : {
       "dashboard" : ".stream",
       "rollList" : ".rolls",
-      "standardRoll" : "",
+      "standardRoll" : ".rolls",
       "watchLaterRoll" : ".saves"
     },
 

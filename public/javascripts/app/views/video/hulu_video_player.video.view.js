@@ -25,7 +25,7 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		//hulu's player knows how to hide itself, how kind
-		this._player.hide();
+		if( this._player ){ this._player.hide(); }
 		this.playerState.set({visible:false});
 	},
 	
@@ -33,14 +33,14 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this._player.show();
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -50,7 +50,7 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.playVideo(this._video.get('provider_id'));
+				this._player.playVideo(video.get('provider_id'));
 			}
 		}
 		
@@ -180,7 +180,7 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 	_onVideoAdBegin: function(){ this._adPlaying = true; },
 	_onVideoAdEnd: function(){ this._adPlaying = false; },
 
-	_onVideoStart: function(type){
+	_onVideoStart: function(type){	  
 		if( type === "ad" ){
 			this._adPlaying = true;
 		} else {
