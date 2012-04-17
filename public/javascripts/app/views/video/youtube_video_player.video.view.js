@@ -38,20 +38,22 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.show();
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 		
 		this._playheadTrackingOn();
 	},
 	
 	playVideo: function(video){
+	  console.log("YT: play video, this._video, ===", video, this._video, this._video === video);
+	  
 		if( this.playerState.get('playerLoaded') ){
 			if( this._video === video ){
 				this.play();
@@ -65,7 +67,6 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		}
 		
 		this._video = video;
-
 	},
 
 	play: function(){

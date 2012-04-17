@@ -47,14 +47,14 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
       this.$el.css('visibility', 'visible');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
