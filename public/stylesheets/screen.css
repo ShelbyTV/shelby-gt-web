@@ -1741,9 +1741,13 @@ a:hover, a:visited, a:active {
   height: 15px;
   margin: -11px;
   width: 15px;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  cursor: ew-resize;
 }
 
-/* line 97, ../../app/stylesheets/partials/video-controls.scss */
+/* line 103, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -1753,23 +1757,23 @@ a:hover, a:visited, a:active {
   margin: 0 15px;
 }
 
-/* line 106, ../../app/stylesheets/partials/video-controls.scss */
+/* line 112, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 114, ../../app/stylesheets/partials/video-controls.scss */
+/* line 120, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 121, ../../app/stylesheets/partials/video-controls.scss */
+/* line 127, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 131, ../../app/stylesheets/partials/video-controls.scss */
+/* line 137, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
