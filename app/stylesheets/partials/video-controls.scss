@@ -11,6 +11,16 @@
 	position:absolute;
 	width:100%;
 	z-index: 2;
+	opacity: 100;
+	
+	@include transition-property(opacity);
+	@include transition-duration(.25s);
+	@include transition-timing-function(ease-out);
+	@include transition-delay(0s);
+}
+
+body.user-inactive .video-player-controls-wrapper{
+  opacity: 0;
 }
 
 .video-player-controls{

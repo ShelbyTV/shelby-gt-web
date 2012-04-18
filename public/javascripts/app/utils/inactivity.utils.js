@@ -8,13 +8,13 @@ $.extend(shelby.userInactivity, {
 	//
 	// After X seconds of user inactivity, adds the class .user-inactive to the body element.
 	// Upon resumed user activity, removes the class .user-inactive from the body element.
-	// When the mouse is left within any div with class .inactivity-preemption, do not set inactivity on body
-	// When the mouse is active in any div with class .activity-ignore, do not count towards activity
+	// When the mouse is left within any div with class .js-inactivity-preemption, do not set inactivity on body
+	// When the mouse is active in any div with class .js-activity-ignore, do not count towards activity
 
 	_lastUserActivity: Date.now(),
 	_userActive: true,
 	_userInactivityTime: 2 * 1000,
-	_userInactivityBootLeniency: 2 * 1000,
+	_userInactivityBootLeniency: 7 * 1000,
 	_userActivityDetectionEnabled: true,
 	_userHoveringInactivityPreemption: false,
 	_userHoveringActivityIgnore: false,
@@ -47,8 +47,8 @@ $.extend(shelby.userInactivity, {
 			}
 		});
 
-		//after a 6 second bootup leniency period, start looking for user inactivity
-		//That is, don't hide the UI for the first 9 seconds after app load, no matter what.
+		//after a X second bootup leniency period, start looking for user inactivity
+		//That is, don't hide the UI for the first X+n seconds after app load, no matter what.
 		setTimeout( function(){
 			setInterval(function(){																									//set INACTIVE when...
 				if( self._userActivityDetectionEnabled && 														  // activity detection is enabled
@@ -63,11 +63,11 @@ $.extend(shelby.userInactivity, {
 		}, self._userInactivityBootLeniency);
 	
 		//When users' mouse is over a control, we don't hide the overlay UI
-		$('.inactivity-preemption').live('mouseenter', function(){ self._userHoveringInactivityPreemption = true; });
-		$('.inactivity-preemption').live('mouseleave', function(){ self._userHoveringInactivityPreemption = false; });
+		$('.js-inactivity-preemption').live('mouseenter', function(){ self._userHoveringInactivityPreemption = true; });
+		$('.js-inactivity-preemption').live('mouseleave', function(){ self._userHoveringInactivityPreemption = false; });
 		//When users' mosue is over the guide, we don't show the overlay UI
-		$('.activity-ignore').live('mouseenter', function(){ self._userHoveringActivityIgnore = true; });
-		$('.activity-ignore').live('mouseleave', function(){ self._userHoveringActivityIgnore = false; });
+		$('.js-activity-ignore').live('mouseenter', function(){ self._userHoveringActivityIgnore = true; });
+		$('.js-activity-ignore').live('mouseleave', function(){ self._userHoveringActivityIgnore = false; });
 		//leaving document doesn't register mouseleave for element, so catch it at the document level...
 		$(document).bind('mouseleave', function(){ 
 			self._userHoveringInactivityPreemption = false; 
