@@ -458,25 +458,12 @@ a:hover, a:visited, a:active {
 }
 
 /* line 52, ../../app/stylesheets/partials/app.html.scss */
-.video-player {
-  background: #000;
-  color: white;
-  height: 100%;
-  margin-right: 330px;
-}
-/* line 58, ../../app/stylesheets/partials/app.html.scss */
-.video-player p {
-  background: black;
-  margin: 0;
-}
-
-/* line 65, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 70, ../../app/stylesheets/partials/app.html.scss */
+/* line 57, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -485,10 +472,10 @@ a:hover, a:visited, a:active {
   position: relative;
   z-index: 3;
   opacity: 1;
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
+  -moz-transition-property: opacity, margin-right;
+  -webkit-transition-property: opacity, margin-right;
+  -o-transition-property: opacity, margin-right;
+  transition-property: opacity, margin-right;
   -moz-transition-duration: 0.5s;
   -webkit-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
@@ -503,12 +490,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 87, ../../app/stylesheets/partials/app.html.scss */
-.user-inactive .main {
-  opacity: .2;
+/* line 74, ../../app/stylesheets/partials/app.html.scss */
+.main.hide-guide {
+  margin-right: -330px;
 }
 
-/* line 91, ../../app/stylesheets/partials/app.html.scss */
+/* line 78, ../../app/stylesheets/partials/app.html.scss */
+.user-inactive .main {
+  opacity: .1;
+}
+
+/* line 82, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -518,7 +510,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 111, ../../app/stylesheets/partials/app.html.scss */
+/* line 102, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -529,7 +521,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 119, ../../app/stylesheets/partials/app.html.scss */
+/* line 110, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-top: 100px;
@@ -863,6 +855,162 @@ a:hover, a:visited, a:active {
   -o-box-shadow: 0px 0px 5px 3px #666666;
   box-shadow: 0px 0px 5px 3px #666666;
   outline: none;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+#guide-overlay-controls {
+  bottom: 10px;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+/* line 14, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: 2px 2px 5px 0px #333333;
+  -webkit-box-shadow: 2px 2px 5px 0px #333333;
+  -o-box-shadow: 2px 2px 5px 0px #333333;
+  box-shadow: 2px 2px 5px 0px #333333;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
+  background-image: -webkit-linear-gradient(top, #141414, #0e0e0e);
+  background-image: -moz-linear-gradient(top, #141414, #0e0e0e);
+  background-image: -o-linear-gradient(top, #141414, #0e0e0e);
+  background-image: -ms-linear-gradient(top, #141414, #0e0e0e);
+  background-image: linear-gradient(top, #141414, #0e0e0e);
+  -moz-transition-property: width, right;
+  -webkit-transition-property: width, right;
+  -o-transition-property: width, right;
+  transition-property: width, right;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  bottom: 0;
+  border: 1px solid #202020;
+  border-right: none;
+  cursor: pointer;
+  height: 45px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 34px;
+}
+/* line 36, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle .copy {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  right: 28px;
+  top: 13px;
+  width: 70px;
+}
+/* line 53, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle .icon {
+  -moz-transition-property: rotate;
+  -webkit-transition-property: rotate;
+  -o-transition-property: rotate;
+  transition-property: rotate;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  background: url("../images/assets/guide.svg") no-repeat center center transparent;
+  float: right;
+  height: 20px;
+  width: 20px;
+}
+
+/* line 65, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show {
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 68, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show .icon {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 72, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show .copy {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+/* line 77, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  width: 105px;
+}
+/* line 82, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -moz-transition-delay: 0.2s;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+/* line 88, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.show {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  right: -35px;
 }
 
 /* Welcome to Compass.
@@ -1669,7 +1817,7 @@ a:hover, a:visited, a:active {
 
 /* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1677,7 +1825,7 @@ a:hover, a:visited, a:active {
 
 /* line 310, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
 }
 
 /* line 314, ../../app/stylesheets/partials/frame.scss */
@@ -1697,14 +1845,48 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 5, ../../app/stylesheets/partials/video-player.scss */
+/* line 7, ../../app/stylesheets/partials/video-player.scss */
+.video-player {
+  background: #000;
+  color: white;
+  height: 100%;
+  margin-right: 330px;
+  -moz-transition-property: margin-right;
+  -webkit-transition-property: margin-right;
+  -o-transition-property: margin-right;
+  transition-property: margin-right;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 18, ../../app/stylesheets/partials/video-player.scss */
+.video-player p {
+  background: black;
+  margin: 0;
+}
+
+/* line 24, ../../app/stylesheets/partials/video-player.scss */
+.video-player.full-width {
+  margin-right: 0px;
+}
+
+/* line 29, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder {
   position: relative;
   height: 100%;
   width: 100%;
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
 }
-/* line 9, ../../app/stylesheets/partials/video-player.scss */
+/* line 33, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder > * {
   position: absolute;
   top: 0;
@@ -1712,7 +1894,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   height: 100%;
 }
-/* line 17, ../../app/stylesheets/partials/video-player.scss */
+/* line 41, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
   width: 100%!important;
   height: 100%!important;
@@ -1781,13 +1963,6 @@ a:hover, a:visited, a:active {
  */
 /* line 7, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls-wrapper {
-  bottom: 0;
-  height: 65px;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  opacity: 1;
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
   -o-transition-property: opacity;
@@ -1804,6 +1979,13 @@ a:hover, a:visited, a:active {
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  bottom: 0;
+  height: 65px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }
 
 /* line 22, ../../app/stylesheets/partials/video-controls.scss */
@@ -1813,7 +1995,6 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 26, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls {
-  background: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
   background: -webkit-linear-gradient(top, #141414, #0e0e0e);
   background: -moz-linear-gradient(top, #141414, #0e0e0e);
@@ -1833,10 +2014,32 @@ body.user-inactive .video-player-controls-wrapper {
   border: 1px solid #202020;
   height: 45px;
   margin: 10px 340px 10px 10px;
+  -moz-transition-property: margin;
+  -webkit-transition-property: margin;
+  -o-transition-property: margin;
+  transition-property: margin;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 
-/* line 40, ../../app/stylesheets/partials/video-controls.scss */
+/* line 41, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-controls.full-width {
+  margin: 10px 40px 10px 10px;
+}
+
+/* line 45, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
+  position: relative;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1848,7 +2051,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
 }
 
-/* line 48, ../../app/stylesheets/partials/video-controls.scss */
+/* line 55, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -1856,12 +2059,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 58, ../../app/stylesheets/partials/video-controls.scss */
+/* line 65, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 66, ../../app/stylesheets/partials/video-controls.scss */
+/* line 73, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1872,12 +2075,12 @@ body.user-inactive .video-player-controls-wrapper {
   background: black;
   height: 8px;
   left: 60px;
-  right: 580px;
+  right: 235px;
   margin: 18px 8px 0;
   position: absolute;
 }
 
-/* line 77, ../../app/stylesheets/partials/video-controls.scss */
+/* line 84, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1896,13 +2099,13 @@ body.user-inactive .video-player-controls-wrapper {
   width: 0;
 }
 
-/* line 88, ../../app/stylesheets/partials/video-controls.scss */
+/* line 95, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 97, ../../app/stylesheets/partials/video-controls.scss */
+/* line 104, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -1924,7 +2127,7 @@ body.user-inactive .video-player-controls-wrapper {
   cursor: ew-resize;
 }
 
-/* line 113, ../../app/stylesheets/partials/video-controls.scss */
+/* line 120, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -1934,23 +2137,23 @@ body.user-inactive .video-player-controls-wrapper {
   margin: 0 15px;
 }
 
-/* line 122, ../../app/stylesheets/partials/video-controls.scss */
+/* line 129, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 130, ../../app/stylesheets/partials/video-controls.scss */
+/* line 137, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 137, ../../app/stylesheets/partials/video-controls.scss */
+/* line 144, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 147, ../../app/stylesheets/partials/video-controls.scss */
+/* line 154, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

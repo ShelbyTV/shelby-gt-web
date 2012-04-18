@@ -91,6 +91,16 @@ $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 	@include background-image($softLinearGradient);
 }
 
+//dark gradient styles
+$darkGradientTop: #141414;
+$darkGradientBot: #0e0e0e;
+
+$darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
+
+@mixin darkgradient {
+  @include background-image($darkLinearGradient);
+}
+
 @mixin roundies{
 	@include border-radius($radius);
 

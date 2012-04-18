@@ -1,3 +1,7 @@
+// **********
+//   UNUSED
+// **********
+
 //don't need the DOM for this...
 BrowserDetect.init();
 
