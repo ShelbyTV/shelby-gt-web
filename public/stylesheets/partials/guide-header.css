@@ -46,25 +46,24 @@
 }
 /* line 44, ../../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
-  display: block;
   float: none;
   height: 2em;
   line-height: 2;
   margin: 0;
   padding-left: 0;
 }
-/* line 52, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 51, ../../../app/stylesheets/partials/guide-header.scss */
 .settings li li a, .settings li li span {
   height: 2em;
   line-height: 2;
   padding-left: 0.5em;
   text-decoration: none;
 }
-/* line 59, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 58, ../../../app/stylesheets/partials/guide-header.scss */
 .settings li li a:before, .settings li li a:after {
   content: none;
 }
-/* line 64, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 63, ../../../app/stylesheets/partials/guide-header.scss */
 .settings a {
   background: #2b2a2a;
   color: #d8d8d8;
@@ -73,7 +72,7 @@
   line-height: 3.75;
   text-decoration: none;
 }
-/* line 72, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 71, ../../../app/stylesheets/partials/guide-header.scss */
 .settings a:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -86,13 +85,13 @@
   top: 47%;
   width: 12px;
 }
-/* line 86, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 85, ../../../app/stylesheets/partials/guide-header.scss */
 .settings a:hover {
   color: white;
   text-decoration: underline;
 }
 
-/* line 93, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 92, ../../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -100,13 +99,13 @@
   width: 68px;
   z-index: 2;
 }
-/* line 100, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 99, ../../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 106, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 105, ../../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -123,38 +122,38 @@
   z-index: 1;
 }
 
-/* line 120, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 119, ../../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 126, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 125, ../../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 131, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 130, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 132, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 140, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 139, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 142, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 141, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 150, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 149, ../../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -168,7 +167,7 @@
   margin-right: 5px;
   width: 24px;
 }
-/* line 160, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 159, ../../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }

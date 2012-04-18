@@ -585,25 +585,24 @@ a:hover, a:visited, a:active {
 }
 /* line 44, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
-  display: block;
   float: none;
   height: 2em;
   line-height: 2;
   margin: 0;
   padding-left: 0;
 }
-/* line 52, ../../app/stylesheets/partials/guide-header.scss */
+/* line 51, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li a, .settings li li span {
   height: 2em;
   line-height: 2;
   padding-left: 0.5em;
   text-decoration: none;
 }
-/* line 59, ../../app/stylesheets/partials/guide-header.scss */
+/* line 58, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li a:before, .settings li li a:after {
   content: none;
 }
-/* line 64, ../../app/stylesheets/partials/guide-header.scss */
+/* line 63, ../../app/stylesheets/partials/guide-header.scss */
 .settings a {
   background: #2b2a2a;
   color: #d8d8d8;
@@ -612,7 +611,7 @@ a:hover, a:visited, a:active {
   line-height: 3.75;
   text-decoration: none;
 }
-/* line 72, ../../app/stylesheets/partials/guide-header.scss */
+/* line 71, ../../app/stylesheets/partials/guide-header.scss */
 .settings a:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -625,13 +624,13 @@ a:hover, a:visited, a:active {
   top: 47%;
   width: 12px;
 }
-/* line 86, ../../app/stylesheets/partials/guide-header.scss */
+/* line 85, ../../app/stylesheets/partials/guide-header.scss */
 .settings a:hover {
   color: white;
   text-decoration: underline;
 }
 
-/* line 93, ../../app/stylesheets/partials/guide-header.scss */
+/* line 92, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -639,13 +638,13 @@ a:hover, a:visited, a:active {
   width: 68px;
   z-index: 2;
 }
-/* line 100, ../../app/stylesheets/partials/guide-header.scss */
+/* line 99, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 106, ../../app/stylesheets/partials/guide-header.scss */
+/* line 105, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -662,38 +661,38 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 120, ../../app/stylesheets/partials/guide-header.scss */
+/* line 119, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 126, ../../app/stylesheets/partials/guide-header.scss */
+/* line 125, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 131, ../../app/stylesheets/partials/guide-header.scss */
+/* line 130, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 132, ../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav a:hover, .about-subnav a:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 140, ../../app/stylesheets/partials/guide-header.scss */
+/* line 139, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 142, ../../app/stylesheets/partials/guide-header.scss */
+/* line 141, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav a:hover {
   background: #549738;
 }
 
-/* line 150, ../../app/stylesheets/partials/guide-header.scss */
+/* line 149, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -707,7 +706,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 160, ../../app/stylesheets/partials/guide-header.scss */
+/* line 159, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -1573,7 +1572,7 @@ a:hover, a:visited, a:active {
 
 /* line 295, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
+  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1581,7 +1580,7 @@ a:hover, a:visited, a:active {
 
 /* line 305, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
+  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
 /* line 309, ../../app/stylesheets/partials/frame.scss */
@@ -2080,25 +2079,23 @@ body.user-inactive .video-player-controls-wrapper {
 }
 /* line 48, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
+  background: url("../images/assets/noise.png") #007fb6;
+  border-bottom: 1px solid #005b83;
   font-size: 13px;
+  height: 40px;
   line-height: 3;
+  padding-left: 10px;
   padding-right: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 57, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_public.svg");
-  float: left;
-  margin: 4px 10px;
-}
-/* line 67, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 82, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
