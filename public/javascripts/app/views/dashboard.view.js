@@ -36,6 +36,10 @@
 
     filter : function(item){
       return item.get('frame');
+    },
+
+    _doesResponseContainListCollection : function(response) {
+      return $.isArray(response.result);
     }
 
   });

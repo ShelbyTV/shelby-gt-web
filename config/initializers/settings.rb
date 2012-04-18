@@ -13,5 +13,16 @@ module Settings
     load!
   end
 
+  class Facebook < Settingslogic
+    source "#{Rails.root}/config/settings/facebook.yml"
+    namespace Rails.env
+    load!
+  end
+
+  class Application < Settingslogic
+    source "#{Rails.root}/config/settings/application.yml"
+    namespace Rails.env
+    load!
+  end
 
 end

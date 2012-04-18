@@ -11,6 +11,7 @@
   position: relative;
   height: 100%;
   width: 100%;
+  /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
 }
 /* line 9, ../../../app/stylesheets/partials/video-player.scss */
 #video-players-holder > * {
@@ -19,4 +20,9 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+/* line 17, ../../../app/stylesheets/partials/video-player.scss */
+#video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
+  width: 100%!important;
+  height: 100%!important;
 }

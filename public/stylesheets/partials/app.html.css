@@ -22,7 +22,7 @@ html, body {
 body {
   color: #dcddde;
   font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
-  background: url("../images/assets/noise.png") #005500;
+  background: url("../images/assets/noise.png") black;
   overflow: hidden;
 }
 
@@ -78,10 +78,32 @@ a:hover, a:visited, a:active {
   height: 100%;
   overflow: hidden;
   position: relative;
-  z-index: 0;
+  z-index: 3;
+  opacity: 1;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 
-/* line 81, ../../../app/stylesheets/partials/app.html.scss */
+/* line 87, ../../../app/stylesheets/partials/app.html.scss */
+.user-inactive .main {
+  opacity: .2;
+}
+
+/* line 91, ../../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -91,7 +113,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 101, ../../../app/stylesheets/partials/app.html.scss */
+/* line 111, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -102,7 +124,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 109, ../../../app/stylesheets/partials/app.html.scss */
+/* line 119, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-top: 100px;

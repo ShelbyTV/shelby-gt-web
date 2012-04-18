@@ -13,7 +13,11 @@
       fetchParams : {
         include_children : true
       }
-    })
+    }),
+
+    _doesResponseContainListCollection : function(response) {
+      return response.result.frames;
+    }
 
   });
 

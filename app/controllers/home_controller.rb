@@ -1,17 +1,20 @@
+require 'shelby_api'
+
 class HomeController < ApplicationController
 
   ##
-  # We need to show the login page on the root path if the user IS NOT signed in
-  # We need to show the app page on the root path if the user IS signed in   ***AND***
-  #  when the user IS NOT signed in BUT should see 'non-logged in shelby'
-  #
+  # If the request is made to a particular frame, then we should display the appropriate metatags
+  #  (primarily for fb og, but also for any other bots)
+  #TODO: If the request is made to a roll, also display some meta tags
   def index
-    if !user_signed_in? and request.fullpath == '/'
-      #render 'login'
-      render 'app'
+    if frame_id = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
+      frame_id = frame_id[1]
+      @fb_meta_info = Shelby::API.get_video_info(frame_id)
+      @permalink = Shelby::API.generate_route(@fb_meta_info['frame']['roll_id'], frame_id) if @fb_meta_info
     else
-      render 'app'
+      @fb_meta_info = nil
     end
+    render 'app'
   end  
   
   ##

@@ -9,7 +9,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-playing button.video-player-play" : "_pause",
     "click .unmute" : "_mute",
     "click .mute" : "_unMute",
-    "click .video-player-progress": "_scrub",
+    "click .video-player-progress": "_onScrubTrackClick",
     "click .video-player-fullscreen" : "_toggleFullscreen",
     "click .video-player-roll" : "_rollActiveFrame"
   },
@@ -17,6 +17,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   el: '#video-controls',
 
 	_currentDuration: 0,
+	
+	_shouldUpdateScrubHandle: true,
 
 	initialize: function(opts){	
 		this._playbackState = opts.playbackState;
@@ -41,6 +43,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		if( this._playbackState.get('activePlayerState') === null ) {
 		  this.$el.addClass('js-disabled');
 	  }
+	  
+	  var self = this;
+	  this.$('.video-player-scrubber').draggable({axis: 'x', containment: 'parent',
+	    start: function(event, ui){ self._onScrubberDragStart(event, ui); },
+	    stop:  function(event, ui){ self._onScrubberDragStop(event, ui); } });
 	},
 
 
@@ -93,7 +100,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_onCurrentTimeChange: function(attr, curTime){
 		var pct = (curTime / this._currentDuration) * 100;
-		this.$('.video-player-scrubber').css('margin-left',pct+"%");
+		if( this._shouldUpdateScrubHandle ){
+		  this.$('.video-player-scrubber').css('left',pct+"%");
+	  }
     
 		var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
@@ -124,7 +133,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_onVolumeChange: function(attr, volPct){
 		//TODO
-		console.log("TODO: move volume slider to "+volPct+"%");
+		//console.log("TODO: move volume slider to "+volPct+"%");
 	},
 	
 	_onSupportsMuteChange: function(attr, supportsMute){
@@ -162,10 +171,17 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
 	},
 	
-	_scrub: function(el){
-    var scrubber = $(el.currentTarget);
-		var seekPct = ( (el.pageX - scrubber.offset().left) / scrubber.width() );
-		this._userDesires.set({currentTimePct: seekPct});
+	_onScrubTrackClick: function(el){
+	  this._doRelativeSeek(el.pageX);
+  },
+  
+  _onScrubberDragStart: function(event, ui){
+    this._shouldUpdateScrubHandle = false;
+  },
+  
+  _onScrubberDragStop: function(event, ui){
+    this._shouldUpdateScrubHandle = true;
+    this._doRelativeSeek(event.pageX);
   },
 	
 	_toggleFullscreen: function(){
@@ -177,9 +193,20 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _rollActiveFrame: function(){
     shelby.views.guide.rollActiveFrame();
-  }
+  },
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
+	
+	//--------------------------------------
+	// helpers
+	//--------------------------------------
+	
+	_doRelativeSeek: function(pageX){
+    var scrubTrack = this.$('.video-player-progress');
+    var seekPct = ( (pageX - scrubTrack.offset().left) / scrubTrack.width() );
+    seekPct = Math.min(Math.max(seekPct, 0.0), 1.0);
+    this._userDesires.set({currentTimePct: seekPct});
+  }
 	
 
 });
