@@ -1,7 +1,8 @@
 <% if (guide.get('insideRollList')) { %>
-	<a id="js-roll-back" class="roll-back" href="#">
+	<button class="rolls-back">
+		<i></i>
 		Back
-	</a>
+	</button>
 <% } %>
 
 <h2 class="current-roll">
@@ -9,7 +10,16 @@
 </h2>
 
 <% if (guide.get('insideRollList')) { %>
-	<a id="js-roll-next" class="roll-next" href="#">
-		Next Roll
-	</a>
+	<ul class="rolls-list-nav clearfix">
+		<li>
+			<button id="js-roll-back" class="roll-back">
+				Previous Roll
+			</button>
+		</li>
+		<li>	
+			<button id="js-roll-next" class="roll-next">
+				Next Roll
+			</button>
+		</li>
+	</ul>
 <% } %>

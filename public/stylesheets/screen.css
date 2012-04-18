@@ -891,10 +891,15 @@ a:hover, a:visited, a:active {
   list-style-type: none;
   margin: 0;
   padding: 10px;
-  width: 50%;
+  width: 75%;
+}
+/* line 28, ../../app/stylesheets/partials/rolls.scss */
+.rolls-menu li:last-child {
+  padding-left: 0;
+  width: 25%;
 }
 
-/* line 31, ../../app/stylesheets/partials/rolls.scss */
+/* line 35, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite, .rolls-share, .rolls-leave {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -924,7 +929,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 39, ../../app/stylesheets/partials/rolls.scss */
+/* line 43, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
   -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
@@ -939,7 +944,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #00a5cc, #007fb6);
 }
 
-/* line 48, ../../app/stylesheets/partials/rolls.scss */
+/* line 52, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave {
   -moz-box-shadow: inset 0px 0px 1px 0px #111111;
   -webkit-box-shadow: inset 0px 0px 1px 0px #111111;
@@ -954,7 +959,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(bottom, #444444, #303030);
 }
 
-/* line 57, ../../app/stylesheets/partials/rolls.scss */
+/* line 61, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   border-bottom: 1px solid #222;
@@ -964,18 +969,18 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 68, ../../app/stylesheets/partials/rolls.scss */
+/* line 72, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: url("../images/assets/noise.png") #585858;
   padding: 10px;
   position: relative;
 }
 
-/* line 78, ../../app/stylesheets/partials/rolls.scss */
+/* line 82, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 82, ../../app/stylesheets/partials/rolls.scss */
+/* line 86, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -987,7 +992,7 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
-/* line 90, ../../app/stylesheets/partials/rolls.scss */
+/* line 94, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -998,25 +1003,25 @@ a:hover, a:visited, a:active {
   padding-top: 15px;
 }
 
-/* line 97, ../../app/stylesheets/partials/rolls.scss */
+/* line 101, ../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 102, ../../app/stylesheets/partials/rolls.scss */
+/* line 106, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 107, ../../app/stylesheets/partials/rolls.scss */
+/* line 111, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 115, ../../app/stylesheets/partials/rolls.scss */
+/* line 119, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1038,7 +1043,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 130, ../../app/stylesheets/partials/rolls.scss */
+/* line 134, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1052,7 +1057,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 141, ../../app/stylesheets/partials/rolls.scss */
+/* line 145, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1065,7 +1070,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 149, ../../app/stylesheets/partials/rolls.scss */
+/* line 153, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1079,13 +1084,13 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 160, ../../app/stylesheets/partials/rolls.scss */
+/* line 164, ../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   float: right;
   width: 50%;
 }
 
-/* line 165, ../../app/stylesheets/partials/rolls.scss */
+/* line 169, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1116,7 +1121,7 @@ a:hover, a:visited, a:active {
   text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 167, ../../app/stylesheets/partials/rolls.scss */
+/* line 171, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: 278px;
   top: 7px;
@@ -1139,37 +1144,126 @@ a:hover, a:visited, a:active {
 .filter-controls li {
   display: block;
 }
-/* line 19, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.filter-controls a {
-  text-decoration: none;
-}
 
-/* line 25, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 22, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
-  font-size: 1em;
+  font-size: 1.2em;
+  line-height: 2.75;
   padding: 5px;
   text-align: center;
   width: 100%;
 }
 
-/* line 40, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.roll-back {
-  position: absolute;
+/* line 38, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.rolls-back {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: -webkit-linear-gradient(top, #333333, #303030);
+  background: -moz-linear-gradient(top, #333333, #303030);
+  background: -o-linear-gradient(top, #333333, #303030);
+  background: -ms-linear-gradient(top, #333333, #303030);
+  background: linear-gradient(top, #333333, #303030);
+  float: left;
+  height: 20px;
   padding: 5px 10px;
+  width: 50%;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  border: 1px solid #222;
+  color: #efefef;
+  height: 26px;
+  left: 17px;
+  padding: 5px 10px 5px 5px;
+  position: absolute;
+  top: 10px;
+  width: auto;
+}
+/* line 51, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.rolls-back i {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: -webkit-linear-gradient(top, #333333, #303030);
+  background: -moz-linear-gradient(top, #333333, #303030);
+  background: -o-linear-gradient(top, #333333, #303030);
+  background: -ms-linear-gradient(top, #333333, #303030);
+  background: linear-gradient(top, #333333, #303030);
+  -moz-border-radius: 0 100% 0 5px;
+  -webkit-border-radius: 0 100% 0 5px;
+  -o-border-radius: 0 100% 0 5px;
+  -ms-border-radius: 0 100% 0 5px;
+  -khtml-border-radius: 0 100% 0 5px;
+  border-radius: 0 100% 0 5px;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-bottom: 1px solid #222;
+  border-left: 1px solid #222;
+  display: block;
+  height: 17px;
+  left: -8px;
+  position: absolute;
+  top: 4px;
+  width: 17px;
+}
+
+/* line 68, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.rolls-list-nav {
+  padding: 10px;
+  position: absolute;
+  right: 0;
   top: 0;
   width: 25%;
-  left: 0;
+}
+
+/* line 77, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-back {
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, linear-gradient(top, #333333, #303030);
+  float: left;
+  height: 20px;
+  padding: 5px 10px;
+  width: 50%;
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #222;
+  height: 26px;
   text-align: left;
 }
 
-/* line 49, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 88, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
-  position: absolute;
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, linear-gradient(top, #333333, #303030);
+  float: left;
+  height: 20px;
   padding: 5px 10px;
-  top: 0;
-  width: 25%;
-  right: 0;
+  width: 50%;
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #222;
+  height: 26px;
   text-align: right;
 }
 
@@ -3030,7 +3124,7 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype, .networks-twitter, .networks-facebook {
+.notype, .networks-twitter, .networks-facebook, .rolls-list-nav {
   color: transparent;
   font: 0/0 a;
   overflow: hidden;
