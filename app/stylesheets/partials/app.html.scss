@@ -15,7 +15,7 @@ body{
 	@include basefont;
 
 	@include background(
-		url('../images/assets/noise.png') #005500
+		url('../images/assets/noise.png') #000
 	);
 
 	overflow:hidden;
@@ -76,6 +76,16 @@ a{
 	overflow:hidden;
 	position:relative;
 	z-index:3;
+	
+	opacity: 1;
+	@include transition-property(opacity);
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(0s);
+}
+
+.user-inactive .main {
+  opacity: .2;
 }
 
 .content-body{

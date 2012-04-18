@@ -11,8 +11,8 @@
 	position:absolute;
 	width:100%;
 	z-index: 2;
-	opacity: 100;
 	
+	opacity: 1;
 	@include transition-property(opacity);
 	@include transition-duration(.25s);
 	@include transition-timing-function(ease-out);
