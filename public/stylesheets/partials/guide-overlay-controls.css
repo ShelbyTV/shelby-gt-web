@@ -60,6 +60,7 @@
 }
 /* line 36, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
+  font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -moz-transition-property: opacity;
@@ -81,11 +82,11 @@
   color: #fff;
   font-size: 14px;
   position: absolute;
-  right: 28px;
+  right: 33px;
   top: 13px;
   width: 70px;
 }
-/* line 53, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 54, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -105,14 +106,14 @@
   width: 20px;
 }
 
-/* line 65, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 66, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 68, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 69, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -120,21 +121,21 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 72, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 73, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 77, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 78, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
-  width: 105px;
+  width: 112px;
 }
-/* line 82, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 83, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -144,7 +145,7 @@
   transition-delay: 0.2s;
 }
 
-/* line 88, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 89, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;

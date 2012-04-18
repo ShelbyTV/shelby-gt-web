@@ -34,6 +34,7 @@
   width: 34px;
 	
 	.copy { 
+	  @include basefont;
 	  @include opacity(0.0);
     @include transition-property(opacity);
   	@include transition-duration(.5s);
@@ -44,7 +45,7 @@
     font-size: 14px;
     
     position: absolute;
-    right: 28px;
+    right: 33px;
     
     top: 13px;
     width: 70px;
@@ -77,7 +78,7 @@
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   @include transition-delay(0s);
     
-  width: 105px;
+  width: 112px;
   
   .copy {
     @include opacity(1.0);
