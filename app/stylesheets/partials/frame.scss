@@ -213,14 +213,19 @@
 	padding:$defaultMargin;
 	textarea{
 		@include border-radius($radius);
+		padding:$defaultMargin/2;
 		width:100%;
 		resize:none;
 	}
 
 	.video-activity-comment-submit{
-		@extend .share-submit-button;
+//		@extend .share-submit-button;
+		@include form-button-small;
+		@include background($softShelbyBlue);
 
 		float:right;
+		margin:3px 0;
+		padding:0 7px;
 		width:auto;
 	}
 }
