@@ -1,6 +1,7 @@
 .filter-controls{
 	@include background(
-		#353535
+		url('../images/assets/noise.png')
+		$rollsBG
 	);
 
 	border-top:1px solid #222;

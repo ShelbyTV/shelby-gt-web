@@ -10,6 +10,12 @@
 		);
 		list-style-type:none;
 		padding:$defaultMargin;
+	
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png') #555
+			);
+		}
 	}
 
 	.active-frame{

@@ -1,21 +1,22 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 4 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'
-        from line 4 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss
+        on line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'
+        from line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss
 
 1: .filter-controls{
 2: 	@include background(
-3: 		#353535
-4: 	);
-5: 
-6: 	border-top:1px solid #222;
-7: 	border-bottom:1px solid #111;
-8: 	font-size:11px;
-9: 	font-weight:700;
+3: 		url('../images/assets/noise.png')
+4: 		$rollsBG
+5: 	);
+6: 
+7: 	border-top:1px solid #222;
+8: 	border-bottom:1px solid #111;
+9: 	font-size:11px;
+10: 	font-weight:700;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/roll-filter-controls.scss:4:in `background'
-/shelbytv/app/stylesheets/partials/roll-filter-controls.scss:4
+/shelbytv/app/stylesheets/partials/roll-filter-controls.scss:5:in `background'
+/shelbytv/app/stylesheets/partials/roll-filter-controls.scss:5
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -92,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 4 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'\A         from line 4 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss\A \A 1: .filter-controls{\A 2: 	@include background(\A 3: 		#353535\A 4: 	);\A 5: \A 6: 	border-top:1px solid #222;\A 7: 	border-bottom:1px solid #111;\A 8: 	font-size:11px;\A 9: 	font-weight:700;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss\A \A 1: .filter-controls{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png')\A 4: 		$rollsBG\A 5: 	);\A 6: \A 7: 	border-top:1px solid #222;\A 8: 	border-bottom:1px solid #111;\A 9: 	font-size:11px;\A 10: 	font-weight:700;"; }
