@@ -5,18 +5,18 @@
 		"compass/css3/box-shadow";
  
 .video-player-controls-wrapper{
-	bottom:0;
-	height:65px;
-	left:0;
-	position:absolute;
-	width:100%;
-	z-index: 2;
-	
-	opacity: 1;
-	@include transition-property(opacity);
+  @include transition-property(opacity);
 	@include transition-duration(.25s);
 	@include transition-timing-function(ease-out);
 	@include transition-delay(0s);
+	
+	bottom:0;
+	height:65px;
+	left:0;
+	opacity: 1;
+	position:absolute;
+	width:100%;
+	z-index: 2;
 }
 
 body.user-inactive .video-player-controls-wrapper{
@@ -24,10 +24,7 @@ body.user-inactive .video-player-controls-wrapper{
 }
 
 .video-player-controls{
-	background:$flatShelbyVideoPlayer;
-	@include background(
-		$softShelbyVideoPlayer
-	);
+	@include background( $softShelbyVideoPlayer );
 	@include border-radius($radius);
 	@include box-shadow(0 0 8px 2px black);
 

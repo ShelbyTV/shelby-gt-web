@@ -5,59 +5,60 @@
 		"compass/css3/box-shadow";
 		
 #guide-overlay-controls {
-  position: absolute;
   bottom: 10px;
+  position: absolute;
   right: 0;
   z-index: 10;
 }
 
 .guide-toggle {
-  position:absolute;
-  right: 0; bottom: 0;
-  width: 34px;
-  height: 45px;
-  border: 1px solid #202020;
-  border-right: none;
-  cursor: pointer;
-  
   @include border-radius($radius 0 0 $radius);
   
-  @include darkgradient;
-  
   @include box-shadow(2px 2px 5px 0px #333);
+    
+  @include darkgradient;
   
   @include transition-property('width, right');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(.1s);
 	
+	bottom: 0;
+	border: 1px solid #202020;
+  border-right: none;
+  cursor: pointer;
+  height: 45px;
 	overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 34px;
 	
-	.icon {
-	  float: right;
-	  height: 20px; width: 20px;
-	  margin: 11px 5px 0 0;
-	  background:url('../images/assets/guide.svg') no-repeat center center transparent;
-	  
-    @include transition-property(rotate);
-  	@include transition-duration(.5s);
-  	@include transition-timing-function(ease-in-out);
-  }
-  
-  .copy { 
-    position: absolute;
-    left: 7px;
-    top: 13px;
-    width: 70px;
-    
-    @include basefont;
-    font-size: 14px;
-    
-    @include opacity(0.0);
+	.copy { 
+	  @include opacity(0.0);
     @include transition-property(opacity);
   	@include transition-duration(.5s);
   	@include transition-timing-function(ease-in-out);
   	@include transition-delay(0s);
+  	
+  	color: #fff;
+    font-size: 14px;
+    
+    position: absolute;
+    right: 28px;
+    
+    top: 13px;
+    width: 70px;
+  }
+  
+	.icon {
+	  @include transition-property(rotate);
+  	@include transition-duration(.5s);
+  	@include transition-timing-function(ease-in-out);
+    
+	  background:url('../images/assets/guide.svg') no-repeat center center transparent;
+	  float: right;
+	  height: 20px; 
+	  width: 20px;
   }
 }
 
@@ -68,12 +69,15 @@
     @include rotate(180deg);
   }
   
-  .copy { display: none; }
+  .copy { 
+    @include opacity(0.0);
+  }
 }
 
-.user-inactive .guide-toggle:not(.show), .guide-toggle:hover:not(.show) {
-  width: 105px;
+.user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   @include transition-delay(0s);
+    
+  width: 105px;
   
   .copy {
     @include opacity(1.0);
@@ -82,7 +86,8 @@
 }
 
 .user-inactive .guide-toggle.show {
-  right: -35px;
   @include box-shadow(none);
+  
   border: none;
+  right: -35px;
 }
