@@ -154,10 +154,8 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 				this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 				break;
 			case 'adStarted':
-				// Do we need a state for this?
-				break;
 			case 'adCompleted':
-				this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.ended});
+			  // ooyala fires "playComplete" which is handled by _onFinish above to signal end of video
 				break;
 		}
 	},
