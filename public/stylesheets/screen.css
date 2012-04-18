@@ -1514,7 +1514,7 @@ a:hover, a:visited, a:active {
 
 /* line 290, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1522,7 +1522,7 @@ a:hover, a:visited, a:active {
 
 /* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
 }
 
 /* line 304, ../../app/stylesheets/partials/frame.scss */
@@ -1547,6 +1547,7 @@ a:hover, a:visited, a:active {
   position: relative;
   height: 100%;
   width: 100%;
+  /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
 }
 /* line 9, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder > * {
@@ -1555,6 +1556,11 @@ a:hover, a:visited, a:active {
   left: 0;
   width: 100%;
   height: 100%;
+}
+/* line 17, ../../app/stylesheets/partials/video-player.scss */
+#video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
+  width: 100%!important;
+  height: 100%!important;
 }
 
 /* Welcome to Compass.
