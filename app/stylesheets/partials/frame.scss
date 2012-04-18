@@ -8,11 +8,10 @@
 			url('../images/assets/noise.png') 
 			#494949
 		);
-
-		border-bottom:1px solid #222;
 		list-style-type:none;
 		padding:$defaultMargin;
 	}
+
 	.active-frame{
 		@include background(
 			url('../images/assets/noise.png') #6d6d6d
