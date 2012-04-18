@@ -231,6 +231,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     shelby.views.menu = shelby.views.menu ||
         new libs.shelbyGT.MenuView({model:shelby.models.guide});
+    shelby.views.guideControls = shelby.views.guideControls ||
+        new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
         new libs.shelbyGT.GuideView({model:shelby.models.guide});

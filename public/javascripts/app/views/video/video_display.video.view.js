@@ -4,7 +4,7 @@
 
 libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
-  id: 'player',
+  el: '.video-player',
 
 	_curView: null,
 	_playbackState: shelby.models.playbackState,
@@ -30,6 +30,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.bind('change:mute', this._changeMute, this);
     this._userDesires.bind('change:volume', this._changeVolume, this);
+    this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
     
     _.each(this._playerViews, function(playerView){
       playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
@@ -43,6 +44,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.unbind('change:mute', this._changeMute, this);
     this._userDesires.unbind('change:volume', this._changeVolume, this);
+    this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
     
     _.each(this._playerViews, function(playerView){
       playerView.playerState.unbind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
@@ -117,6 +119,14 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 		
 		this._curView.setVolume(volPct);
 	},
+
+  _guideVisibilityChange: function(attr, guideShown){
+    if( guideShown ){
+      this.$el.removeClass("full-width");
+    } else {
+      this.$el.addClass("full-width");
+    }
+  },
 
   // A timing issue exists due to the fact that player bootstrapping is asynchronous...
   // - player A is bootstrapped, and before it loads, player B starts.  player A.leave() doesn't

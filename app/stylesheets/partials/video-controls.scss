@@ -35,9 +35,19 @@ body.user-inactive .video-player-controls-wrapper{
 	height:45px;
 	margin:$defaultMargin $defaultMargin*34 $defaultMargin $defaultMargin;
 
+  @include transition-property(margin);
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(0s);
+}
+
+.video-player-controls.full-width{
+  margin:$defaultMargin $defaultMargin*4 $defaultMargin $defaultMargin;
 }
 
 .video-player-control{
+  position: relative;
+  
 	@include border-radius($radius);
 
 	margin:0;
@@ -69,7 +79,7 @@ body.user-inactive .video-player-controls-wrapper{
 	background:black;
 	height:8px;
 	left:60px;
-	right:580px;
+	right:235px;
 	margin:18px 8px 0;
 	position:absolute;
 }

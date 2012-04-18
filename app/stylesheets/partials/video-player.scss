@@ -1,6 +1,30 @@
 @import "base",
+		"compass",
+		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
+
+.video-player{
+	background: #000;
+	color:white;
+	height:100%;
+	margin-right:330px;
+	
+	@include transition-property('margin-right');
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(0s);
+
+	p{
+		background:black;
+		margin:0;
+	}
+}
+
+.video-player.full-width {
+  margin-right:0px;
+}
+
 
 #video-players-holder {
   position: relative;

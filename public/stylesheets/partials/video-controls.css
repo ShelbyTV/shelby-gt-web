@@ -60,10 +60,32 @@ body.user-inactive .video-player-controls-wrapper {
   border: 1px solid #202020;
   height: 45px;
   margin: 10px 340px 10px 10px;
+  -moz-transition-property: margin;
+  -webkit-transition-property: margin;
+  -o-transition-property: margin;
+  transition-property: margin;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 
-/* line 40, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 44, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-controls.full-width {
+  margin: 10px 40px 10px 10px;
+}
+
+/* line 48, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
+  position: relative;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -75,7 +97,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
 }
 
-/* line 48, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 58, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -83,12 +105,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 58, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 68, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 66, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 76, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -99,12 +121,12 @@ body.user-inactive .video-player-controls-wrapper {
   background: black;
   height: 8px;
   left: 60px;
-  right: 580px;
+  right: 235px;
   margin: 18px 8px 0;
   position: absolute;
 }
 
-/* line 77, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 87, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -123,13 +145,13 @@ body.user-inactive .video-player-controls-wrapper {
   width: 0;
 }
 
-/* line 88, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 98, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 97, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 107, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -151,7 +173,7 @@ body.user-inactive .video-player-controls-wrapper {
   cursor: ew-resize;
 }
 
-/* line 113, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 123, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -161,23 +183,23 @@ body.user-inactive .video-player-controls-wrapper {
   margin: 0 15px;
 }
 
-/* line 122, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 132, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 130, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 140, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 137, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 147, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 147, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 157, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

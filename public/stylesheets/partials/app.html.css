@@ -53,25 +53,12 @@ a:hover, a:visited, a:active {
 }
 
 /* line 52, ../../../app/stylesheets/partials/app.html.scss */
-.video-player {
-  background: #000;
-  color: white;
-  height: 100%;
-  margin-right: 330px;
-}
-/* line 58, ../../../app/stylesheets/partials/app.html.scss */
-.video-player p {
-  background: black;
-  margin: 0;
-}
-
-/* line 65, ../../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 70, ../../../app/stylesheets/partials/app.html.scss */
+/* line 57, ../../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -80,10 +67,10 @@ a:hover, a:visited, a:active {
   position: relative;
   z-index: 3;
   opacity: 1;
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
+  -moz-transition-property: opacity, margin-right;
+  -webkit-transition-property: opacity, margin-right;
+  -o-transition-property: opacity, margin-right;
+  transition-property: opacity, margin-right;
   -moz-transition-duration: 0.5s;
   -webkit-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
@@ -98,12 +85,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 87, ../../../app/stylesheets/partials/app.html.scss */
-.user-inactive .main {
-  opacity: .2;
+/* line 74, ../../../app/stylesheets/partials/app.html.scss */
+.main.hide-guide {
+  margin-right: -330px;
 }
 
-/* line 91, ../../../app/stylesheets/partials/app.html.scss */
+/* line 78, ../../../app/stylesheets/partials/app.html.scss */
+.user-inactive .main {
+  opacity: .1;
+}
+
+/* line 82, ../../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -113,7 +105,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 111, ../../../app/stylesheets/partials/app.html.scss */
+/* line 102, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -124,7 +116,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 119, ../../../app/stylesheets/partials/app.html.scss */
+/* line 110, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-top: 100px;
