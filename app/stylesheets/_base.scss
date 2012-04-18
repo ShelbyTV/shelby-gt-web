@@ -65,6 +65,9 @@ $softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
 $flatShelbyGrayButton: #343434;
 $softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
 
+$flatShelbyGrayDeboss: #303030;
+$softShelbyGrayDeboss: linear-gradient(bottom,#444,$flatShelbyGrayDeboss);
+
 $flatShelbyDarkGray: #303030;
 $softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
 
@@ -78,6 +81,10 @@ $twitterBlue: #00a2d1;
 $softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
 $facebookBlue: #013e80;
 $softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
+
+$flatSwitchGray: #fefefe;
+$softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
+
 $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 
 @mixin softgradient {

@@ -54,7 +54,8 @@
         case DisplayState.dashboard :
           displayComponents = {
             viewProto : DashboardView,
-            model : shelby.models.dashboard
+            model : shelby.models.dashboard,
+            limit : shelby.config.pageLoadSizes.dashboard
           };
          break;
         case DisplayState.rollList :
@@ -67,7 +68,8 @@
         case DisplayState.watchLaterRoll :
           displayComponents = {
             viewProto : RollView,
-            model : this.model.get('currentRollModel')
+            model : this.model.get('currentRollModel'),
+            limit : shelby.config.pageLoadSizes.roll
           };
           break;
         case DisplayState.userPreferences :
@@ -96,20 +98,24 @@
           break;
       }
 
-      this._listView = new displayComponents.viewProto({model: displayComponents.model});
+      var options = {model:displayComponents.model}
+      if (displayComponents.limit) {
+        options.limit = displayComponents.limit;
+      }
+      this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);
     },
 
-    rollActiveFrame: function(userDesiresStateModel, rollActiveFrame){
-      if (rollActiveFrame) {
-        userDesiresStateModel.set('rollActiveFrame', false);
+    rollActiveFrame: function(){
+      var activeFrameModel = this.model.get('activeFrameModel');
+      if (activeFrameModel) {
         var currentDisplayState = this.model.get('displayState');
         if (currentDisplayState == DisplayState.dashboard ||
             currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
           // try to find the active frame in the current list view and activate its
           // rolling view
           if (this._listView) {
-            if (this._listView.activateFrameRollingView(this.model.get('activeFrameModel'))) {
+            if (this._listView.activateFrameRollingView(activeFrameModel)) {
               return;
             }
           }
@@ -122,6 +128,14 @@
         var frameId = this.model.get('activeFrameModel').id;
         shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
       }
+    },
+
+    scrollToActiveFrameView: function(){
+      this._listView.scrollToActiveFrameView();
+    },
+
+    scrollToChildElement: function(element){
+      this.$el.scrollTo(element, {duration:200, axis:'y'});
     },
 
     // appropriatly advances to the next video (in dashboard or a roll)
@@ -149,6 +163,7 @@
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }
+
   });
 
 } ) ();

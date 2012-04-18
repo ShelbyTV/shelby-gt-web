@@ -15,6 +15,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
+		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
 			supportsVolume: true
@@ -34,6 +35,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.css('visibility', 'hidden');
+		this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
 	},
 	
@@ -46,14 +48,15 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.css('visibility', 'visible');
+			this.$el.css('z-index', '1');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -63,7 +66,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.setQueryStringParameters({embedCode:this._video.get('provider_id'), autoplay:(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0)});
+				this._player.setQueryStringParameters({embedCode:video.get('provider_id'), autoplay:(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0)});
 			}
 		}
 		
@@ -166,6 +169,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 		//onApiReady is called everytime the embed changes, so only need to set _player the first time
 		if( this._player === null ){ this._player = $("#"+playerId)[0]; }
 		
+		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 		

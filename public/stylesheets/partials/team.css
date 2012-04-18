@@ -1,0 +1,142 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 9, ../../../app/stylesheets/partials/team.scss */
+.about-team dt:before {
+  border: 1px solid black;
+  content: "\0020";
+  display: block;
+  height: 172px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* line 21, ../../../app/stylesheets/partials/team.scss */
+.about-team-nav li {
+  float: left;
+  list-style-type: none;
+  width: 50%;
+}
+
+/* line 29, ../../../app/stylesheets/partials/team.scss */
+.about-header h1 {
+  border-bottom: 1px solid #222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 2.75;
+  margin: 0 10px 10px;
+}
+
+/* line 38, ../../../app/stylesheets/partials/team.scss */
+.about-nav, .about-definition-peripherals {
+  margin: 10px;
+  padding: 0;
+}
+/* line 43, ../../../app/stylesheets/partials/team.scss */
+.about-nav a, .about-definition-peripherals a {
+  text-decoration: none;
+}
+/* line 47, ../../../app/stylesheets/partials/team.scss */
+.about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
+  text-decoration: underline;
+}
+/* line 50, ../../../app/stylesheets/partials/team.scss */
+.about-nav a:visited, .about-definition-peripherals a:visited {
+  text-decoration: none;
+}
+/* line 56, ../../../app/stylesheets/partials/team.scss */
+.about-nav h2, .about-definition-peripherals h2,
+.about-nav h3,
+.about-definition-peripherals h3 {
+  font-size: 12px;
+  line-height: 1.4;
+}
+/* line 61, ../../../app/stylesheets/partials/team.scss */
+.about-nav h3, .about-definition-peripherals h3 {
+  font-weight: 300;
+}
+
+/* line 67, ../../../app/stylesheets/partials/team.scss */
+.about-term-list dt {
+  font-weight: 500;
+  margin: 10px 10px 0;
+}
+/* line 71, ../../../app/stylesheets/partials/team.scss */
+.about-term-list dd {
+  margin: 0 10px;
+  padding: 0;
+}
+/* line 74, ../../../app/stylesheets/partials/team.scss */
+.about-term-list dd.about-definition {
+  margin-top: 10px;
+}
+
+/* line 80, ../../../app/stylesheets/partials/team.scss */
+.about-definition-peripherals {
+  margin: 10px 0 20px 0;
+}
+/* line 84, ../../../app/stylesheets/partials/team.scss */
+.about-definition-peripherals li {
+  float: none;
+  width: auto;
+}
+
+/* line 90, ../../../app/stylesheets/partials/team.scss */
+.pacheco:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 93, ../../../app/stylesheets/partials/team.scss */
+.spinosa:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 96, ../../../app/stylesheets/partials/team.scss */
+.stzul:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 99, ../../../app/stylesheets/partials/team.scss */
+.recny:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 102, ../../../app/stylesheets/partials/team.scss */
+.kurdziel:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 105, ../../../app/stylesheets/partials/team.scss */
+.johnson:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 108, ../../../app/stylesheets/partials/team.scss */
+.appelwick:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 111, ../../../app/stylesheets/partials/team.scss */
+.samberg:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 114, ../../../app/stylesheets/partials/team.scss */
+.iadevaia:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 117, ../../../app/stylesheets/partials/team.scss */
+.matyus:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}
+
+/* line 120, ../../../app/stylesheets/partials/team.scss */
+.sabintsev:before {
+  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+}

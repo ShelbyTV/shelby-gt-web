@@ -10,8 +10,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   events : {
-    "click .js-submit-share" : "_share",
+    "click .js-submit-share:not(.js-sharing)" : "_share",
     "keyup .js-share-textarea" : "_onUpdateShareText",
+    "focus .js-share-textarea" : "_onFocusShareText",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
@@ -36,22 +37,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: '.js-submit-share',
         hidden : true,
-        replacement : true,
-        spinOpts : {
-          lines: 13,
-          length: 0,
-          width: 3,
-          radius: 7,
-          rotate: 0,
-          color: '#000',
-          speed: 1.4,
-          trail: 62,
-          shadow: false,
-          hwaccel: true,
-          zIndex: 2e9,
-          top: 'auto',
-          left: 'auto'
-        }
+        replacement : true
       });
       this.renderChild(this.spinner);
     }
@@ -62,11 +48,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _toggleSpinner : function(){
-    this.spinner.toggle();
+    !shelby.models.user.get('anon') && this.spinner.toggle();
   },
 
   _showSpinner : function(){
-    this.spinner.show();
+    !shelby.models.user.get('anon') && this.spinner.show();
   },
 
   _hideSpinner : function(){
@@ -75,12 +61,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _clearTextArea : function(){
     this.$('.js-share-textarea').val('');
+    this.$('.js-share-textarea').removeAttr('placeholder');
     this.model.set('text', this.$('.js-share-textarea').val());
   },
 
   _onUpdateShareText : function(event){
     this.model.set('text', this.$('.js-share-textarea').val());
     (event.keyCode===13) && this._share();
+  },
+
+  _onFocusShareText : function(event){
+    // remove the error highlight from this text area on focus if there is one
+    this.$('.js-share-textarea').removeClass('error');
   },
 
   _updateDestinationButtons : function(shareModel){
@@ -119,7 +111,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _share : function(){
     var self = this;
-    if(!this._validateShare()) return false;
+    if(!this._validateShare()) {
+      $('.js-share-textarea').addClass('error');
+      this.onValidationFail();
+      return false;
+    }
+    $('.js-share-textarea').removeClass('error');
+    if (this._components.shareButton) {
+      this.$('.js-submit-share').addClass('js-sharing');
+    }
     this._components.spinner && this._showSpinner();
     var urls = typeof(this.saveUrl) === 'function' ? this.saveUrl() : this.saveUrl;
     if (!$.isArray(urls)) {
@@ -147,14 +147,23 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (chainedUrls.length) {
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
-      this._clearTextArea(); //hmm this should be shared for all inheritors...
+      this._clearTextArea();
       this._components.spinner && this._hideSpinner();
       this.onShareSuccess();
     }
   },
 
   onShareSuccess : function(){
-    // subclasses may optionally override to perform custom handling on share success
+    // subclasses may optionally override to perform custom handling on share success, but
+    // should always call the superclass's implementation as part of theirs if they have
+    // a share button
+    if (this._components.shareButton) {
+      this.$('.js-submit-share').removeClass('js-sharing');
+    }
+  },
+
+  onValidationFail : function(){
+    // subclasses may optionally override to perform custom handling on share validation failure
   },
 
   saveUrl : function(){

@@ -1,5 +1,6 @@
 package_assets: on
 compress_assets: on
+javascript_compressor: yui
 template_function: _.template
 
 javascripts:
@@ -25,9 +26,11 @@ javascripts:
     - public/javascripts/app/app.js
     - public/javascripts/app/models/lib/shelby.base.model.js
     - public/javascripts/app/models/db/roll.model.js
+    - public/javascripts/app/models/ui/share_action_state.model.js
     - public/javascripts/app/views/list_item.view.js
     - public/javascripts/app/views/frame.view.js
     - public/javascripts/app/views/list.view.js
+    - public/javascripts/app/views/paging_list.view.js
     - public/javascripts/app/views/auto_scroll_frame_list.view.js
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/views/roll_list.view.js
@@ -48,6 +51,7 @@ javascripts:
     - public/javascripts/app/utils/display_state.utils.js
     - public/javascripts/app/models/db/user.model.js
     # shelby backbone app - all other assets
+    - public/javascripts/app/config/*.js
     - public/javascripts/app/models/lib/*.js
     - public/javascripts/app/models/**/*.js
     - public/javascripts/app/collections/*.js

@@ -14,7 +14,8 @@
 		display:block;
 		float:left;
 		height:42px;
-		width:16.666667%;
+//		width:16.666667%;
+		width:33.333333%;
 		&:nth-of-type(4){
 			@include box-shadow(inset 1px 1px 1px #4d4d4d);
 			border-right:none;
@@ -49,7 +50,11 @@
 	}
 
 	.active-tab{
-			@include box-shadow(inset 0px 6px 14px 0px #222);
+		@include box-shadow(inset 0px 6px 14px 0px #101010);
+
+		&:hover{
+		@include box-shadow(inset 0px 6px 10px 0px #111);
+		}
 	}
 
 	.stream{
@@ -59,9 +64,15 @@
 		
 		&.active-tab{
 			@include background(
-				url('../images/assets/stream_on.svg') no-repeat center center
+				url('../images/assets/stream_on.svg') no-repeat center 1px
 			);
 			color:#63BD57;
+			&:hover{
+				@include background(
+					url('../images/assets/stream_on.svg') no-repeat center 0px
+				);	
+				padding-top:25px;
+			}
 		}
 	}
 
@@ -72,7 +83,7 @@
 		
 		&.active-tab{
 			@include background(
-				url('../images/assets/rolls_on.svg') no-repeat center center
+				url('../images/assets/rolls_on.svg') no-repeat center 1px
 			);
 			color:#0092C1;
 		}
@@ -84,7 +95,7 @@
 		
 		&.active-tab{
 			@include background(
-				url('../images/assets/saves_on.svg') no-repeat center center
+				url('../images/assets/saves_on.svg') no-repeat center 1px
 			);
 			color:#F0E84C;
 		}

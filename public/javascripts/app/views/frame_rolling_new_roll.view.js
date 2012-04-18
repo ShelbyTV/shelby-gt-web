@@ -19,8 +19,23 @@ libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
 
   _share : function(){
     var self = this;
+    var formValid = true;
+    if(!this._validateShare()) {
+      $('.js-share-textarea').addClass('error');
+      formValid = false;
+    }
     var title = this.options.roll.get('title');
-    if(!(this._validateShare() && title && title.length)) return false;
+    if(!(title && title.length)) {
+      this.parent.$('.js-new-roll-name-input').addClass('error');
+      formValid = false;
+    }
+    if (!formValid) {
+      this.onValidationFail();
+      return false;
+    } else {
+      $('.js-share-textarea').removeClass('error');
+      this.parent.$('.js-new-roll-name-input').removeClass('error');
+    }
     this._components.spinner && this._showSpinner();
     // have to create the roll and reroll the frame before we can share
     this.options.roll.save(null, {
@@ -32,14 +47,6 @@ libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
       }});
 
     return false;
-  },
-
-  onShareSuccess: function(){
-    var self = this;
-    this.$('.share-comment').append(JST['shared-indicator']());
-    setTimeout(function(){
-      self.parent.parent._hide();
-    }, 200);
   }
 
 });

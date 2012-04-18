@@ -21,10 +21,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	initialize: function(opts){	
 		this._playbackState = opts.playbackState;
 		this._userDesires = opts.userDesires;
-
-    this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
-
-		this.render();
+		
+		this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
+		if( this._playbackState.get('activePlayerState') !== null ) {
+		  this._onNewPlayerState(this._playbackState, this._playbackState.get('activePlayerState'));
+		}
   },
 
 	_cleanup: function() {
@@ -37,6 +38,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	render: function(){
 		this.$el.html(this.template());
+		if( this._playbackState.get('activePlayerState') === null ) {
+		  this.$el.addClass('js-disabled');
+	  }
 	},
 
 
@@ -45,6 +49,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 
 	_onNewPlayerState: function(playbackState, newPlayerState){
+	  this.$el.removeClass('js-disabled');
+	  
 		var prevPlayerState = playbackState.previous('activePlayerState');
 		if( prevPlayerState ){
 			prevPlayerState.unbind('change:playbackStatus', this._onPlaybackStatusChange, this);
@@ -73,11 +79,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		switch(curState){
 			case libs.shelbyGT.PlaybackStatus.paused:
 				this.$el.removeClass('js-playing').addClass('js-paused');
-				this.$('.video-player-play').addClass('pause');
+				this.$('.video-player-play').removeClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.playing:
 				this.$el.removeClass('js-paused').addClass('js-playing');
-				this.$('.video-player-play').removeClass('pause');
+				this.$('.video-player-play').addClass('pause');
 				break;
 			case libs.shelbyGT.PlaybackStatus.ended:
 				Backbone.Events.trigger('playback:next');
@@ -135,13 +141,15 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_play: function(el){
-		this.$('.video-player-play').removeClass('pause');
-		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
+    //to make sure a change event is fired, first unset this attribute
+    this._userDesires.unset('playbackStatus');
+    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
 	},
 	
 	_pause: function(el){
-		this.$('.video-player-play').addClass('pause');
-		this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
+    //to make sure a change event is fired, first unset this attribute
+    this._userDesires.unset('playbackStatus');
+    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
 	_mute: function(el){
@@ -168,7 +176,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	},
 
   _rollActiveFrame: function(){
-    this._userDesires.set({rollActiveFrame: true});
+    shelby.views.guide.rollActiveFrame();
   }
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })

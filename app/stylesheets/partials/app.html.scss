@@ -54,7 +54,7 @@ a{
 	color:white;
 	height:100%;
 	margin-right:330px;
-
+  
 	p{
 		background:black;
 		margin:0;
@@ -75,6 +75,7 @@ a{
 	height:100%;
 	overflow:hidden;
 	position:relative;
+	z-index:3;
 }
 
 .content-body{

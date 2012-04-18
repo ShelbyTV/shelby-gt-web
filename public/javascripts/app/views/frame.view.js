@@ -4,9 +4,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _frameRollingView : null,
 
+  _frameViewState: null,
+
   events : {
     "click .js-frame-activate"              : "_activate",
-    "click .roll-frame"                     : "roll",
+    "click .roll-frame"                     : "RequestFrameRollingView",
     "click .save-frame"                     : "_saveToWatchLater",
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
@@ -21,6 +23,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
     "keyup .js-add-message-input"           : "_onAddMessageInputChange",
+    "focus .js-add-message-input"           : "_onAddMessageInputFocus",
     "click .js-message-submit"              : "_addMessage"
   },
 
@@ -36,6 +39,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.bind('destroy', this._onFrameRemove, this);
     this.model.bind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').on('change', this._onConversationChange, this);
+    this._frameViewState = new libs.shelbyGT.FrameViewStateModel();
+    this._frameViewState.bind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     ListItemView.prototype.initialize.call(this);
   },
 
@@ -43,11 +48,15 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').off('change', this._onConversationChange, this);
+    this._frameViewState.unbind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     ListItemView.prototype._cleanup.call(this);
   },
 
   render : function(showConversation){
     this.$el.html(this.template({frame : this.model, showConversation : showConversation}));
+    if (this.model == shelby.models.guide.get('activeFrameModel')) {
+      this.$el.addClass('active-frame');
+    }
   },
 
   _activate : function(){
@@ -58,7 +67,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     console.log('adding', msg, 'to', this.model.get('conversation'));
   },
 
-  roll : function(){
+  RequestFrameRollingView : function(){
+    this._frameViewState.set('doFrameRolling', true);
+  },
+
+  _roll : function(){
     // the frame rolling view only needs to respond to an intial fetch of user roll followings,
     // not to subsequent updates of the user model, so we pass it a private clone of the user model
     // to bind to and fetch once
@@ -120,8 +133,14 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.render(true);
   },
 
-  _validateNewMessage : function(msg){
+  _isMessageValid : function(msg){
     return msg.length;
+  },
+
+  _renderError : function(msg){
+    this.$('.js-frame-comment-error-message').text(msg).show().fadeOut(1000);
+    this.$('.js-add-message-input').addClass('error');
+    return false;
   },
 
   _onAddMessageInputChange : function(event){
@@ -130,10 +149,17 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._addMessage();*/
   },
 
+  _onAddMessageInputFocus : function(event){
+    this.$('.js-add-message-input').removeClass('error');
+  },
+
   _addMessage : function(){
     var self = this;
     var text = this.$('.js-add-message-input').val();
-    if (!this._validateNewMessage(text)) return false;
+    if (!this._isMessageValid(text)) {
+      this._renderError('Why not say something?');
+      return false;
+    }
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
     msg.save(null, {
       success:function(conversation){
@@ -158,13 +184,21 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _onFrameRollingTransitionComplete : function(e){
     // if the frame rolling view gets completely hidden, remove it
     if (!$(e.currentTarget).hasClass('rolling-frame-trans')) {
-      this._frameRollingView.leave();
-      this._frameRollingView = null;
+      this._frameViewState.set('doFrameRolling', false);
     }
   },
 
   _onFrameRemove : function() {
     // TODO: perform some visually attractive removal animation for the frame
+  },
+
+  _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
+    if (doFrameRolling) {
+      this._roll();
+    } else {
+      this._frameRollingView.leave();
+      this._frameRollingView = null;
+    }
   }
 
 });

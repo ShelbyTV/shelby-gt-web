@@ -15,6 +15,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
+		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
 			supportsVolume: true
@@ -35,6 +36,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.css('visibility', 'hidden');
+		this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
 	},
 	
@@ -48,14 +50,15 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.css('visibility', 'visible');
+			this.$el.css('z-index', '1');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 	},
 	
@@ -65,7 +68,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				this._player.api_loadVideo(this._video.get('provider_id'));
+				this._player.api_loadVideo(video.get('provider_id'));
 			}
 		}
 		
@@ -146,6 +149,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_onReady: function(){
+	  this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 		

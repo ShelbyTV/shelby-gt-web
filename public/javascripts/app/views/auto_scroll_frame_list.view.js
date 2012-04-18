@@ -1,20 +1,25 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var ListView = libs.shelbyGT.ListView;
+  var PagingListView = libs.shelbyGT.PagingListView;
 
-  libs.shelbyGT.AutoScrollFrameListView = ListView.extend({
+  libs.shelbyGT.AutoScrollFrameListView = PagingListView.extend({
 
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
-      ListView.prototype.initialize.call(this);
+      PagingListView.prototype.initialize.call(this);
+    },
+
+    _cleanup : function(){
+      shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
+      PagingListView.prototype._cleanup.call(this);
     },
 
     activateFrameRollingView : function(frame) {
       var playingFrameView = this.children.find(this._findViewByModel(frame));
       if (playingFrameView) {
         this.parent.$el.scrollTo(playingFrameView.$el, {duration:200,axis:'y',onAfter:function(){
-          playingFrameView.roll();
+          playingFrameView.RequestFrameRollingView();
         }});
         return true;
       } else {
@@ -22,9 +27,11 @@
       }
     },
 
-    _cleanup : function(){
-      shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
-      ListView.prototype._cleanup.call(this);
+    scrollToActiveFrameView : function() {
+      var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
+      if (activeFrameView) {
+        this._scrollTo(activeFrameView.el);
+      }
     },
 
     _onNewActiveFrame : function(guideModel, currentActiveFrameModel){
@@ -43,8 +50,12 @@
       frameViews.old && frameViews.old.$el.removeClass('active-frame');
       if(frameViews.current) {
         frameViews.current.$el.addClass('active-frame');
-        this.parent.$el.scrollTo(frameViews.current.$el, {duration:200, axis:'y'});
+        this._scrollTo(frameViews.current.el);
       }
+    },
+
+    _scrollTo : function(element) {
+      this.parent.scrollToChildElement(element);
     }
 
   });

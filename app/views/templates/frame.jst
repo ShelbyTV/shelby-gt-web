@@ -42,14 +42,15 @@
           </span>
 
           <span class="user-handle">
-            <a href="/userhandle"><%= firstMessage.get('realname') %></a>
+            <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
+            <%= firstMessage.get('realname') %>
           </span>
           <%
             var timeStampClass = 'user-post-date';
             if (firstMessage.get('origin_network')) timeStampClass += ' user-post-origin-' + firstMessage.get('origin_network');
           %>
           <span class="<%= timeStampClass %>">
-            <a href="#"><%= firstMessage.get('created_at') %></a>
+            <%= firstMessage.get('created_at') %>
           </span>
           <div class="user-video-text">
               <p>
@@ -75,14 +76,15 @@
                 </span>
 
                 <span class="user-handle">
-                  <a href="<%= msg.get('realname') %>"><%= msg.get('realname') %></a>
+                  <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
+                  <%= msg.get('realname') %>
                 </span>
                 <%
                   var timeStampClass = 'user-post-date';
                   if (msg.get('origin_network')) timeStampClass += ' user-post-origin-' + msg.get('origin_network');
                 %>
                 <span class="<%= timeStampClass %>">
-                  <a href="#"><%= msg.get('created_at') %></a>
+                  <%= msg.get('created_at') %>
                 </span>
 
                 <div class="user-video-text">
@@ -97,8 +99,9 @@
         <% }); %>
         </ul>
         <!-- sample build -->
-        <form class="video-activity-comment" stytle="display:none">
+        <form class="video-activity-comment">
           <textarea class="js-add-message-input" rows="5"></textarea>
+          <div class="js-frame-comment-error-message frame-comment-error-message"></div>
           <button class="js-message-submit video-activity-comment-submit">Comment</button>
         </form>
       </section><!-- eo section.video-shares -->
@@ -107,7 +110,7 @@
     <div class="video-footer">
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (messages.length) { %> (<%= messages.length-1 %>)<% } %></a>
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll') { %>
-        <a onclick="return false;" class="video-source" href="#">Roll: <%= creator.get('nickname') %></a>
+        <a onclick="return false;" class="video-source" href="#"><%= creator.get('nickname') %></a>
       <% } %>
     </div> 
   

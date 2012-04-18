@@ -13,6 +13,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
+		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
 			supportsVolume: true
@@ -28,6 +29,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		
 		this.pause();
 		this.$el.hide();
+		this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
 		
 		this._playheadTrackingOff();
@@ -38,20 +40,21 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	render: function(container, video){
-		this._video = video;
-		
 		if( !this.playerState.get('playerLoaded') ){
+		  this._video = video;
 			this._bootstrapPlayer();
 		}
 		else if( !this.playerState.get('visible') ){
 			this.$el.show();
+			this.$el.css('z-index', '1');
 			this.playerState.set({visible:true});
+			//playVideo will be called by video display view
 		}
 		
 		this._playheadTrackingOn();
 	},
 	
-	playVideo: function(video){
+	playVideo: function(video){	  
 		if( this.playerState.get('playerLoaded') ){
 			if( this._video === video ){
 				this.play();
@@ -65,7 +68,6 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		}
 		
 		this._video = video;
-
 	},
 
 	play: function(){
@@ -188,6 +190,8 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		this.setElement($('#'+this.id));
 		
 		this._player = e.target;
+		
+		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
 		

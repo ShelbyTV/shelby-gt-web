@@ -48,9 +48,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRoll : function(rollId, title, options){
+    var defaultOnRollFetch;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the roll that loads, scroll to it
+      defaultOnRollFetch = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the roll on load
+      defaultOnRollFetch = this._activateFirstRollFrame;
+    }
     var defaults = {
       updateRollTitle: true,
-      onRollFetch: this._activateFirstRollFrame,
+      onRollFetch: defaultOnRollFetch,
       data: {include_children:true}
     };
     if (!options) {
@@ -67,13 +75,25 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayFrameInRollInCarousel : function(rollId, frameId){
-    shelby.models.guide.set('insideRollList', true);
-    this.displayFrameInRoll(rollId, frameId);
+    if (shelby.models.user.followsRoll(rollId)) {
+      shelby.models.guide.set('insideRollList', true);
+      this.displayFrameInRoll(rollId, frameId);
+    } else {
+      // if the user doesn't follow this roll they can't see it inside the carousel,
+      // so just redirect to the normal roll/id/frame/id route
+      this.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true,replace:true});
+    }
   },
 
   displayRollInCarousel : function(rollId, title){
-    shelby.models.guide.set('insideRollList', true);
-    this.displayRoll(rollId, title);
+    if (shelby.models.user.followsRoll(rollId)) {
+      shelby.models.guide.set('insideRollList', true);
+      this.displayRoll(rollId, title);
+    } else {
+      // if the user doesn't follow this roll they can't see it inside the carousel,
+      // so just redirect to the normal roll route
+      this.navigate('roll/' + rollId + (title ? '/' + title : ''), {trigger:true,replace:true});
+    }
   },
 
   displayDashboard : function(){
@@ -83,9 +103,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
       'insideRollList' : false
     });
+    var onSuccess;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the dashboard, scroll to it
+      onSuccess = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the dashboard on load
+      onSuccess = this._activateFirstDashboardVideoFrame;
+    }
     shelby.models.dashboard.fetch({
-      data: {include_children:true},
-      success: this._activateFirstDashboardVideoFrame
+      data: {
+        include_children : true,
+        limit : shelby.config.pageLoadSizes.dashboard
+      },
+      success: onSuccess
     });
   },
 
@@ -104,8 +135,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var watchLaterRoll = shelby.models.user.get('watch_later_roll');
     if (watchLaterRoll) {
       this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), {
-        updateRollTitle: false,
-        onRollFetch: 'none'
+        updateRollTitle: false
       });
     } else {
       alert("Sorry, you don't have a saves roll.");
@@ -172,7 +202,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (frame = rollModel.get('frames').get(frameId)) {
       shelby.models.guide.set('activeFrameModel', frame);
       if (activateRollingView) {
-        shelby.models.userDesires.set({rollActiveFrame: true});
+        shelby.views.guide.rollActiveFrame();
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
@@ -190,6 +220,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
+  _scrollToActiveFrameView : function(){
+    shelby.views.guide.scrollToActiveFrameView();
+  },
+
   _setupTopLevelViews : function(){
     shelby.models.user.get('anon') && this._setupAnonUserViews();
     // header & menu render on instantiation //
@@ -205,7 +239,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.videoControls = shelby.views.videoControls ||
         new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
     if (!shelby.views.guideSpinner){
-      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide', spinOpts:libs.shelbyGT.DisplayState.guideSpinnerOpts});
+      shelby.views.guideSpinner = new libs.shelbyGT.SpinnerView({el:'#guide'});
     }
     shelby.views.guideSpinner.show();
   },
@@ -257,6 +291,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'currentRollModel': rollModel
     });
     var fetchOptions = {data: options.data};
+    fetchOptions.data.limit = shelby.config.pageLoadSizes.roll;
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }

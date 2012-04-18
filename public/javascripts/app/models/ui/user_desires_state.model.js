@@ -8,8 +8,7 @@ libs.shelbyGT.UserDesiresStateModel = Backbone.Model.extend({
     playbackStatus: null,
     currentTimePct: null,
     mute: false,
-    volume: 1.0,
-    rollActiveFrame: false
+    volume: 1.0
   }
 
 });

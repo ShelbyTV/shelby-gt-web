@@ -1,0 +1,122 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.about-team{
+	dt{
+		&:before{
+			border:1px solid black;
+			content:"\0020";
+			display:block;
+			height:172px;
+			margin-bottom:$defaultMargin;
+			width:100%;
+		}
+	}
+}
+
+.about-team-nav{
+	li{
+		float:left;
+		list-style-type:none;
+		width:50%;
+	}
+}
+
+.about-header{
+	h1{
+		border-bottom:1px solid #222;
+		font-size:16px;
+		font-weight:700;
+		line-height:2.75;
+		margin:0 $defaultMargin $defaultMargin;
+	}
+}
+
+.about-nav{
+
+	margin:$defaultMargin;
+	padding:0;
+
+	a{
+		text-decoration:none;
+
+		&:hover,
+		&:active{
+			text-decoration:underline;
+		}
+		&:visited{
+			text-decoration:none;
+		}
+	}
+
+	h2,
+	h3{
+		font-size:12px;
+		line-height:1.4;
+	}
+
+	h3{
+		font-weight:300;
+	}
+}
+
+.about-term-list{
+	dt{
+		font-weight:500;
+		margin:$defaultMargin $defaultMargin 0;
+	}
+	dd{
+		margin:0 $defaultMargin;
+		padding:0;
+		&.about-definition{
+			margin-top:$defaultMargin;
+		}
+	}
+}
+
+.about-definition-peripherals{
+	@extend .about-nav;
+	margin:$defaultMargin 0 $defaultMargin*2 0;
+
+	li{
+		float:none;
+		width:auto;
+	}
+}
+
+.pacheco:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.spinosa:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.stzul:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.recny:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.kurdziel:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.johnson:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.appelwick:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.samberg:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.iadevaia:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.matyus:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}
+.sabintsev:before{
+	background:url('../images/team/reece_portrait.png') no-repeat center center transparent;
+}

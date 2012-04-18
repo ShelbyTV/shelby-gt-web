@@ -66,7 +66,7 @@
 		width:25%;
 	}
 
-	input{
+	inputfont{
 		padding-left:$radius;
 		width:75%;
 	}
@@ -188,23 +188,69 @@
 	label {
 		font-size:14px;
 		font-weight:500;
-		width:33%;
-	}
-	input{
-		margin-top:10px;
 		position:relative;
-		width:58%;
+		width:100%;
+		z-index:1;
+	}
+	input[type="checkbox"]{
+
+		margin-top:10px;
+		position:absolute;
+		height:0;
+		left:50%;
+		visibility:hidden;
+		width:50%;
 
 		&:after{
 			color:#efefef;
 			content:"off";
 			position:absolute;
-			right:0;
+			right:$defaultMargin*2;
 			top:-7px;
 		}
 
 		&:checked:after{
 			content:"on";
 		}
+	}
+	input + span{
+		@include transition-property(all);
+	  	@include transition-duration(1s);
+		@include transition-timing-function(ease-in);
+		@include border-radius($radius - 1);
+  		@include background($softShelbyRed);
+  		border:1px solid #222;
+		display:block;
+		height:20px;
+		margin:5px 0 0 38%;
+		position:relative;
+		width:60px;
+
+		&:after{
+			background:$flatSwitchGray;
+			@include background(
+				url('../images/assets/switch.svg') no-repeat center center,
+				$softSwitchGray
+			);
+			@include border-radius($radius - 3);
+			@include box-shadow(0px 0px 2px 1px #111);
+			content:"\0020";
+			height:18px;
+			left:0;
+			position:absolute;
+			top:0;
+			width:30px;
+
+		}
+	}
+	input:checked + span{
+  		@include background($softShelbyBlue);
+		display:block;
+		height:20px;
+		position:relative;
+		width:60px;
+		&:after{
+			left:49%;
+		}	
 	}
 }

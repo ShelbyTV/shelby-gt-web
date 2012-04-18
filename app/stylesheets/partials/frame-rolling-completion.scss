@@ -6,13 +6,27 @@
 
 .frame-rolling-completion{
 	@extend .rolling-main;
-
+//		background:blue;
+//		@include opacity(0.9);
 	.frame-share{
-		background: url('../images/assets/noise.png') #494949;
+//		background: url('../images/assets/noise.png') #494949;
+		@include border-radius(0);
+		bottom:0;
 		height:auto;
-		padding:$defaultMargin $defaultMargin 0;
-		position:relative;
-		top:0;
+		margin:0;
+		padding:0;
+		position:absolute;
+		top:40px;	
+
+		&:before{
+			background:#222;
+			@include opacity(0.2);
+			bottom:0;
+			content:"\0020";
+			position:absolute;
+			top:0;
+			width:100%;
+		}
 	}
 
 	.share-networks-list{
@@ -26,6 +40,7 @@
 }
 
 .frame-rolling-completion-header{
+	
 	background:url("../images/assets/noise.png") #555;
 	border-bottom:1px solid #222;
 	height:40px;
@@ -33,10 +48,10 @@
 	h1{
 		font-size:13px;
 		line-height:3;
+		padding-right:$defaultMargin;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		white-space:nowrap;
-		width:80%;
 
 		&.roll-type-public{
 			&:before{
