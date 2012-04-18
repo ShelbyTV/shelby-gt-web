@@ -757,68 +757,69 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset 0px 0px 5px #666666;
   -o-box-shadow: inset 0px 0px 5px #666666;
   box-shadow: inset 0px 0px 5px #666666;
+  background-color: #444;
 }
-/* line 41, ../../app/stylesheets/partials/menu.scss */
+/* line 42, ../../app/stylesheets/partials/menu.scss */
 .video-guide a:active, .video-guide a:visited:active {
   -moz-box-shadow: inset 0px 0px 10px black;
   -webkit-box-shadow: inset 0px 0px 10px black;
   -o-box-shadow: inset 0px 0px 10px black;
   box-shadow: inset 0px 0px 10px black;
 }
-/* line 46, ../../app/stylesheets/partials/menu.scss */
+/* line 47, ../../app/stylesheets/partials/menu.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 52, ../../app/stylesheets/partials/menu.scss */
+/* line 53, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab {
-  -moz-box-shadow: inset 0px 6px 14px 0px #101010;
-  -webkit-box-shadow: inset 0px 6px 14px 0px #101010;
-  -o-box-shadow: inset 0px 6px 14px 0px #101010;
-  box-shadow: inset 0px 6px 14px 0px #101010;
+  -moz-box-shadow: inset 0px 6px 12px 0px #101010;
+  -webkit-box-shadow: inset 0px 6px 12px 0px #101010;
+  -o-box-shadow: inset 0px 6px 12px 0px #101010;
+  box-shadow: inset 0px 6px 12px 0px #101010;
 }
-/* line 55, ../../app/stylesheets/partials/menu.scss */
+/* line 56, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab:hover {
-  -moz-box-shadow: inset 0px 6px 10px 0px #111111;
-  -webkit-box-shadow: inset 0px 6px 10px 0px #111111;
-  -o-box-shadow: inset 0px 6px 10px 0px #111111;
-  box-shadow: inset 0px 6px 10px 0px #111111;
+  -moz-box-shadow: inset 0px 6px 8px 0px #111111;
+  -webkit-box-shadow: inset 0px 6px 8px 0px #111111;
+  -o-box-shadow: inset 0px 6px 8px 0px #111111;
+  box-shadow: inset 0px 6px 8px 0px #111111;
 }
-/* line 60, ../../app/stylesheets/partials/menu.scss */
+/* line 61, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 65, ../../app/stylesheets/partials/menu.scss */
+/* line 66, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.svg") no-repeat center 1px;
   color: #63BD57;
 }
-/* line 70, ../../app/stylesheets/partials/menu.scss */
+/* line 71, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
   background: url("../images/assets/stream_on.svg") no-repeat center 0px;
   padding-top: 25px;
 }
-/* line 79, ../../app/stylesheets/partials/menu.scss */
+/* line 80, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 84, ../../app/stylesheets/partials/menu.scss */
+/* line 85, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 91, ../../app/stylesheets/partials/menu.scss */
+/* line 92, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 96, ../../app/stylesheets/partials/menu.scss */
+/* line 97, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #F0E84C;
 }
 
-/* line 106, ../../app/stylesheets/partials/menu.scss */
+/* line 107, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -829,7 +830,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 112, ../../app/stylesheets/partials/menu.scss */
+/* line 113, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -837,7 +838,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 119, ../../app/stylesheets/partials/menu.scss */
+/* line 120, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -848,7 +849,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 124, ../../app/stylesheets/partials/menu.scss */
+/* line 125, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
