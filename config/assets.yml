@@ -21,6 +21,7 @@ javascripts:
     # jQuery plugins
     - public/javascripts/jquery-plugins/jquery-ui-1.8.19.core-draggable.min.js
     - public/javascripts/jquery-plugins/jquery.scrollTo.js
+    - public/javascripts/jquery-plugins/jquery.animateAuto.js
     # swf
     - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order
