@@ -227,6 +227,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(){
     shelby.models.user.get('anon') && this._setupAnonUserViews();
     // header & menu render on instantiation //
+    shelby.views.commentOverlay = shelby.views.commentOverlay ||
+        new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
     shelby.views.header = shelby.views.header ||
         new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     shelby.views.menu = shelby.views.menu ||
