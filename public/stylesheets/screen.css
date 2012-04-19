@@ -1688,17 +1688,21 @@ a:hover, a:visited, a:active {
   -khtml-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
   border-top: 1px solid #4f4d51;
+  bottom: 0;
   font-size: 11px;
   font-weight: 700;
   height: 27px;
+  left: 0;
   padding: 6px 8px 7px;
+  position: absolute;
+  width: 100%;
 }
 
-/* line 217, ../../app/stylesheets/partials/frame.scss */
+/* line 221, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
-  padding: 10px;
+  padding: 10px 10px 35px;
 }
-/* line 219, ../../app/stylesheets/partials/frame.scss */
+/* line 223, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1710,7 +1714,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 226, ../../app/stylesheets/partials/frame.scss */
+/* line 230, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1756,29 +1760,33 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 242, ../../app/stylesheets/partials/frame.scss */
+/* line 246, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 246, ../../app/stylesheets/partials/frame.scss */
+/* line 250, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
+/* line 256, ../../app/stylesheets/partials/frame.scss */
+.video-activity-list .user-vcard {
+  padding-bottom: 9px;
+}
 
-/* line 254, ../../app/stylesheets/partials/frame.scss */
+/* line 261, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 259, ../../app/stylesheets/partials/frame.scss */
+/* line 266, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 264, ../../app/stylesheets/partials/frame.scss */
+/* line 271, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1788,40 +1796,41 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 269, ../../app/stylesheets/partials/frame.scss */
+/* line 276, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
   font-size: 13px;
   font-weight: 300;
-  padding: 0 9px 9px;
+  height: 100%;
+  padding: 0 9px 36px;
 }
-/* line 275, ../../app/stylesheets/partials/frame.scss */
+/* line 283, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 281, ../../app/stylesheets/partials/frame.scss */
+/* line 289, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 286, ../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
   color: #a4a4a4;
 }
 
-/* line 292, ../../app/stylesheets/partials/frame.scss */
+/* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 300, ../../app/stylesheets/partials/frame.scss */
+/* line 308, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
   float: left;
@@ -1829,16 +1838,16 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 310, ../../app/stylesheets/partials/frame.scss */
+/* line 318, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
 }
 
-/* line 314, ../../app/stylesheets/partials/frame.scss */
+/* line 322, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 317, ../../app/stylesheets/partials/frame.scss */
+/* line 325, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
