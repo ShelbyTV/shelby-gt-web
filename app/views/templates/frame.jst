@@ -38,12 +38,15 @@
         <div class="user-vcard">
           <span class="user-avatar <%= shelby.models.user.get('anon') ? 'user-avatar-logged-out' : '' %>">
             <% var userAvatarUrl = shelby.models.user.get('anon') ? '/images/assets/user_loggedout.svg' : firstMessage.get('user_image_url') %>
-            <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
+            <a class="js-user-public-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
+              <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
+            </a>
           </span>
 
           <span class="user-handle">
-            <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
-            <%= firstMessage.get('realname') %>
+            <a class="js-user-public-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
+              <%= firstMessage.get('realname') %>
+            </a>
           </span>
           <%
             var timeStampClass = 'user-post-date';
@@ -72,12 +75,15 @@
             <blockquote class="user video-author">
               <div class="user-vcard">
                 <span class="user-avatar">
-                  <img src="<%= msg.get('user_image_url') %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
+                  <a class="js-user-public-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
+                    <img src="<%= msg.get('user_image_url') %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
+                  </a>
                 </span>
 
                 <span class="user-handle">
-                  <!-- TODO: make this a link when the API can give us the user's public roll to link to -->
-                  <%= msg.get('realname') %>
+                  <a class="js-user-public-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
+                    <%= msg.get('realname') %>
+                  </a>
                 </span>
                 <%
                   var timeStampClass = 'user-post-date';

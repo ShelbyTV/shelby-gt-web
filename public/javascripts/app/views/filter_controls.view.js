@@ -30,6 +30,7 @@
       this._leaveChildren();
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.standardRoll :
+        case libs.shelbyGT.DisplayState.userPublicRoll :
           this.appendChild(new RollFilterControlsView({model:this.model.get('currentRollModel')}));
           break;
         case libs.shelbyGT.DisplayState.dashboard :
