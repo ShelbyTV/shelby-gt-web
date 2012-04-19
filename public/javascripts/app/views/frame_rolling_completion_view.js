@@ -27,14 +27,14 @@
       this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
       if (!this.options.roll.isNew()) {
         this._shareSubView = new FrameShareView({
-          model : new ShareModel(),
+          model : this.options.frameRollingState.get('shareModel'),
           frame : this.options.newFrame,
           frameRollingState : this.options.frameRollingState
         });
       } else {
         this.$el.append(JST['frame-rolling-options']({roll:this.options.roll}));
         this._shareSubView = new FrameRollingNewRollView({
-          model : new ShareModel(),
+          model : this.options.frameRollingState.get('shareModel'),
           roll : this.options.roll,
           frame : this.options.oldFrame,
           frameRollingState : this.options.frameRollingState
