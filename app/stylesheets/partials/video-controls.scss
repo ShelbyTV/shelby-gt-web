@@ -5,7 +5,7 @@
 		"compass/css3/box-shadow";
  
 .video-player-controls-wrapper{
-  @include transition-property(opacity);
+	@include transition-property(opacity);
 	@include transition-duration(.25s);
 	@include transition-timing-function(ease-out);
 	@include transition-delay(0s);
@@ -26,7 +26,7 @@ body.user-inactive .video-player-controls-wrapper{
 .video-player-controls{
 	@include background( $softShelbyVideoPlayer );
 	@include border-radius($radius);
-	@include box-shadow(0 0 8px 2px black);
+//	@include box-shadow(0 0 8px 2px black);
 
 	border:1px solid #202020;
 	height:45px;
