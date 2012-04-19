@@ -1819,7 +1819,7 @@ a:hover, a:visited, a:active {
 
 /* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
@@ -1827,7 +1827,7 @@ a:hover, a:visited, a:active {
 
 /* line 310, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
 }
 
 /* line 314, ../../app/stylesheets/partials/frame.scss */
@@ -2280,9 +2280,10 @@ body.user-inactive .video-player-controls-wrapper {
   padding: 0 1px;
   text-shadow: 0px 1px 2px #222;
   width: 48px;
+  width: 58px;
 }
 
-/* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 57, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -2298,7 +2299,7 @@ body.user-inactive .video-player-controls-wrapper {
   float: right;
 }
 
-/* line 69, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 70, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2327,7 +2328,7 @@ body.user-inactive .video-player-controls-wrapper {
   height: 100%;
 }
 
-/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 90, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

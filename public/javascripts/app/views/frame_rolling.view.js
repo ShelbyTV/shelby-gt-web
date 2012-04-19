@@ -61,7 +61,10 @@
           'public' : (options.type == 'public'),
           collaborative : true
         });
+        this.$('.js-back').html('Back');
         this._showingNewRollView = true;
+      } else {
+        this.$('.js-back').html('Done');
       }
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
         newFrame:newFrame,
@@ -77,6 +80,7 @@
       if (this._showingNewRollView) {
         this._frameRollingCompletionView.leave();
         this._frameRollingCompletionView = null;
+        this.$('.js-back').html('Cancel');
         this.$('.js-done').hide();
         this._showingNewRollView = false;
       } else {
