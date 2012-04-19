@@ -1746,6 +1746,10 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #00a5cc, #007fb6);
   background: -ms-linear-gradient(top, #00a5cc, #007fb6);
   background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
   float: right;
   margin: 3px 0;
   padding: 0 7px;
@@ -2199,6 +2203,81 @@ body.user-inactive .video-player-controls-wrapper {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* line 11, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
+  bottom: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 40px;
+}
+/* line 21, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share:before {
+  background: #222;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  bottom: 0;
+  content: "\0020";
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 33, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .share-networks-list li {
+  background: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header {
+  background: url("../images/assets/noise.png") #555555;
+  border-bottom: 1px solid #222;
+  height: 40px;
+}
+/* line 48, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1 {
+  background: url("../images/assets/noise.png") #007fb6;
+  border-bottom: 1px solid #005b83;
+  font-size: 13px;
+  height: 40px;
+  line-height: 3;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
+}
+
+/* line 82, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-share-undo {
+  line-height: 3;
+  margin: 0 5px;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
 /* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main, .frame-rolling-completion {
   border-bottom: 1px solid #222;
@@ -2326,8 +2405,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
   height: 100%;
 }
+/* line 88, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame .frame-share, .frame-share .frame-share {
+  top: 80px;
+}
 
-/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 93, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2340,88 +2423,13 @@ body.user-inactive .video-player-controls-wrapper {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 11, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -o-border-radius: 0;
-  -ms-border-radius: 0;
-  -khtml-border-radius: 0;
-  border-radius: 0;
-  bottom: 0;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 40px;
-}
-/* line 21, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share:before {
-  background: #222;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
-  opacity: 0.2;
-  bottom: 0;
-  content: "\0020";
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-/* line 33, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .share-networks-list li {
-  background: none;
-  border-bottom: none;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header {
-  background: url("../images/assets/noise.png") #555555;
-  border-bottom: 1px solid #222;
-  height: 40px;
-}
-/* line 48, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1 {
-  background: url("../images/assets/noise.png") #007fb6;
-  border-bottom: 1px solid #005b83;
-  font-size: 13px;
-  height: 40px;
-  line-height: 3;
-  padding-left: 10px;
-  padding-right: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_private.svg");
-}
-
-/* line 82, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-share-undo {
-  line-height: 3;
-  margin: 0 5px;
-  position: absolute;
-  right: 5px;
-  top: 0;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 7, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
-  background: url("../images/assets/noise.png") #494949;
-  padding: 10px 10px 0;
+  background: url("../images/assets/noise.png") #585858;
+  padding: 10px;
 }
 
-/* line 16, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 15, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2435,7 +2443,7 @@ body.user-inactive .video-player-controls-wrapper {
   padding: 5px;
 }
 
-/* line 26, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 25, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-recipients {
   margin-bottom: 0;
 }
@@ -2484,36 +2492,37 @@ body.user-inactive .video-player-controls-wrapper {
 }
 /* line 25, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
+  border-bottom: 1px solid #222;
   padding: 5px;
 }
-/* line 29, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 30, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {
   font-size: 14px;
   line-height: 1.75;
   position: relative;
   text-align: center;
 }
-/* line 35, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 36, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before, .form-rolls-list .new.rolling-social:before {
   content: "+";
 }
-/* line 38, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 39, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after, .form-rolls-list .rolling-social:after {
   content: url("../images/assets/rolls_public.svg");
   right: 9px;
   position: absolute;
   top: 1px;
 }
-/* line 49, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 50, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
-/* line 57, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 58, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-social:after {
   content: none;
 }
 
-/* line 63, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 64, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   line-height: 2.5;
@@ -2957,57 +2966,57 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 90, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
 /* line 93, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
 /* line 96, ../../app/stylesheets/partials/team.scss */
 .stzul:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
 /* line 99, ../../app/stylesheets/partials/team.scss */
 .recny:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
 /* line 102, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
 /* line 105, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
 /* line 108, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
 /* line 111, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
 /* line 114, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
 /* line 117, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
 /* line 120, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
-  background: url("../images/team/reece_portrait.png") no-repeat center center transparent;
+  background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
 }
 
 /* Welcome to Compass.

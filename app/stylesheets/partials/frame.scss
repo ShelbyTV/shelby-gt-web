@@ -227,7 +227,7 @@
 //		@extend .share-submit-button;
 		@include form-button-small;
 		@include background($softShelbyBlue);
-
+		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
 		float:right;
 		margin:3px 0;
 		padding:0 7px;

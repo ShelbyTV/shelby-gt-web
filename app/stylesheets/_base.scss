@@ -54,6 +54,7 @@ $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
 
 $flatShelbyBlue: #007fb6;
 $softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
+$shelbyBlueHighlight: #79cae7;
 
 $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
