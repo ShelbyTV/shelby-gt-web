@@ -1,9 +1,8 @@
 libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
   
-  _loadCounts: {
-    total: 0,
-    requested: 0
-  },
+  _numItemsLoaded : 0,
+
+  _numItemsRequested : 0,
   
   events : {
     "click .js-load-more:not(.js-loading)" : "_loadMore"
@@ -24,7 +23,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
 
   initialize : function(){
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    this._loadCounts.requested = this.options.limit;
+    this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
     libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
@@ -37,7 +36,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
   _onItemsLoaded : function(rollModel, items){
     this.$('.js-load-more').removeClass('js-loading');
     this.$('.load-more-button').html('Load more');
-    if (!this.options.infinite && items.length < this._loadCounts.requested) {
+    if (!this.options.infinite && items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
       this._disableLoadMore();
@@ -70,7 +69,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
   },
 
   addOne : function(item){
-    this._loadCounts.total++;
+    this._numItemsLoaded++;
     libs.shelbyGT.ListView.prototype.addOne.call(this, item);
   },
 
@@ -78,10 +77,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     var self = this;
     var fetchData = {
       limit : this.options.limit,
-      skip : this._loadCounts.total
+      skip : this._numItemsLoaded
     };
     _(fetchData).extend(this.options.fetchParams);
-    this._loadCounts.requested = fetchData.limit;
+    this._numItemsRequested = fetchData.limit;
     this.$('.js-load-more').addClass('js-loading');
     this.$('.load-more-button').html('Loading...');
     this.model.fetch({
