@@ -29,14 +29,16 @@
     initialize : function(){
       this._frameRollingState = new ShareActionStateModel();
       this._frameRollingState.bind('change:doShare', this._onDoShareChange, this);
+      this._frameRollingState.get('shareModel').bind('change:destination', this._onShareDestinationChange, this);
     },
 
     _cleanup : function(){
       this._frameRollingState.unbind('change:doShare', this._onDoShareChange, this);
+      this._frameRollingState.get('shareModel').unbind('change:destination', this._onShareDestinationChange, this);
     },
 
     render : function(){
-      this.$el.html(this.template());
+      this.$el.html(this.template({share:this._frameRollingState.get('shareModel')}));
       this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: '.js-done',
@@ -107,6 +109,14 @@
         case ShareActionState.failed :
           this.$('.js-back').removeClass('js-busy');
           break;
+      }
+    },
+
+    _onShareDestinationChange: function(shareModel, destination){
+      if (destination.length) {
+        $('.js-done').html('Comment and Share');
+      } else {
+        $('.js-done').html('Comment');
       }
     }
 

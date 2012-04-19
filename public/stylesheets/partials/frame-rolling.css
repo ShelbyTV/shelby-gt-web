@@ -84,13 +84,12 @@
   height: 23px;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 1px;
+  padding: 0 5px;
   text-shadow: 0px 1px 2px #222;
-  width: 48px;
-  width: 58px;
+  width: auto;
 }
 
-/* line 57, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 56, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -106,7 +105,7 @@
   float: right;
 }
 
-/* line 70, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 69, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -135,7 +134,7 @@
   height: 100%;
 }
 
-/* line 90, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 89, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

@@ -1737,9 +1737,9 @@ a:hover, a:visited, a:active {
   height: 23px;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 1px;
+  padding: 0 5px;
   text-shadow: 0px 1px 2px #222;
-  width: 48px;
+  width: auto;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -2277,13 +2277,12 @@ body.user-inactive .video-player-controls-wrapper {
   height: 23px;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 1px;
+  padding: 0 5px;
   text-shadow: 0px 1px 2px #222;
-  width: 48px;
-  width: 58px;
+  width: auto;
 }
 
-/* line 57, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -2299,7 +2298,7 @@ body.user-inactive .video-player-controls-wrapper {
   float: right;
 }
 
-/* line 70, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 69, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2328,7 +2327,7 @@ body.user-inactive .video-player-controls-wrapper {
   height: 100%;
 }
 
-/* line 90, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2633,24 +2632,22 @@ body.user-inactive .video-player-controls-wrapper {
   height: 23px;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 1px;
-  text-shadow: 0px 1px 2px #222;
-  width: 48px;
   padding: 0 5px;
+  text-shadow: 0px 1px 2px #222;
   width: auto;
 }
-/* line 85, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 83, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   width: auto;
   padding: 0 5px;
 }
-/* line 90, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 88, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 100, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 98, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
   background: transparent;
@@ -2661,7 +2658,7 @@ body.user-inactive .video-player-controls-wrapper {
   font-weight: 300;
   text-decoration: underline;
 }
-/* line 111, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 109, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2708,26 +2705,26 @@ body.user-inactive .video-player-controls-wrapper {
   padding: 0;
   text-decoration: none;
 }
-/* line 127, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 125, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 134, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 132, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 141, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 139, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 148, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 146, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-border-radius: 5px;
@@ -2750,19 +2747,19 @@ body.user-inactive .video-player-controls-wrapper {
   width: 24px;
 }
 
-/* line 167, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 165, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   content: "\0020";
 }
 
-/* line 177, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 175, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   content: "\0020";
 }
 
-/* line 188, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 186, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -2770,7 +2767,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
   z-index: 1;
 }
-/* line 195, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 193, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   margin-top: 10px;
   position: absolute;
@@ -2779,7 +2776,7 @@ body.user-inactive .video-player-controls-wrapper {
   visibility: hidden;
   width: 50%;
 }
-/* line 204, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 202, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -2787,11 +2784,11 @@ body.user-inactive .video-player-controls-wrapper {
   right: 20px;
   top: -7px;
 }
-/* line 212, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 210, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 216, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 214, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2824,7 +2821,7 @@ body.user-inactive .video-player-controls-wrapper {
   position: relative;
   width: 60px;
 }
-/* line 229, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 227, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -2850,7 +2847,7 @@ body.user-inactive .video-player-controls-wrapper {
   top: 0;
   width: 30px;
 }
-/* line 246, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 244, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -2863,7 +2860,7 @@ body.user-inactive .video-player-controls-wrapper {
   position: relative;
   width: 60px;
 }
-/* line 252, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 250, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
