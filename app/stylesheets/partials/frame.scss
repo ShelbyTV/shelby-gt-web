@@ -203,10 +203,14 @@
 	@include border-radius($radiusFooter);
 
 	border-top:1px solid $inset;
+	bottom:0;
 	font-size:$font-size - 2;
 	font-weight:700;
 	height:27px;
+	left:0;
 	padding: 6px 8px 7px;
+	position: absolute;
+	width:100%;
 }
 
 .video-activity{
@@ -215,7 +219,7 @@
 }
 
 .video-activity-comment{
-	padding:$defaultMargin;
+	padding:$defaultMargin $defaultMargin 35px;
 	textarea{
 		@include border-radius($radius);
 		padding:$defaultMargin/2;
@@ -249,6 +253,9 @@
 		padding:0;
 
 	}
+	.user-vcard {
+		padding-bottom:9px;
+	}
 }
 
 .video-source{
@@ -271,7 +278,8 @@
 	border-top:1px solid $inset;
 	font-size:13px;
 	font-weight:300;
-	padding: 0 9px 9px;
+	height:100%;
+	padding: 0 9px 36px;
 	a{
 		text-decoration:none;
 	}
