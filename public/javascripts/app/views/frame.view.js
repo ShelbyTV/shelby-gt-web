@@ -184,13 +184,19 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onFrameRollingTransitionComplete : function(e){
+    var self = this;
     if ($(e.currentTarget).hasClass('rolling-frame-trans')) {
       // frame rolling view just rolled in
       // grow the view if it's too small to show the internal share view
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       if (this.$('article').height() < minHeight) {
-        this.$('article').animate({height:minHeight + 'px'}, 200);
+        this.$('article').animate({height:minHeight + 'px'}, 200, function(){
+          // don't enable scrolling until the animation is finished
+          self._frameRollingView.setMainPaneScrolling(true);
+        });
         this._grewForFrameRolling = true;
+      } else {
+        this._frameRollingView.setMainPaneScrolling(true);
       }
     } else {
       // frame rolling view just rolled out, remove it and shrink back to frame's original height

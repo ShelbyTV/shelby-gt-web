@@ -10,7 +10,7 @@
 .rolling-main {
   border-bottom: 1px solid #222;
   bottom: 40px;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   position: absolute;
   top: 0;
