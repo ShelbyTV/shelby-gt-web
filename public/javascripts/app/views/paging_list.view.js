@@ -34,7 +34,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
   },
 
   _onItemsLoaded : function(rollModel, items){
-    this.$('.js-load-more').removeClass('js-loading');
+    this.$('.js-load-more').removeClass('js-loading').show();
     this.$('.load-more-button').html('Load more');
     if (!this.options.infinite && items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
