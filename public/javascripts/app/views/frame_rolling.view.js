@@ -76,6 +76,7 @@
       });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
       this.$('.js-done').show();
+      this.$('.js-social').hide();
     },
 
     _goBack : function(){

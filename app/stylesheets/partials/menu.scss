@@ -88,7 +88,10 @@
 			);
 			color:#0092C1;
 			&:hover{
-				
+				@include background(
+					url('../images/assets/rolls_on.svg') no-repeat center 0px #3f3f3f
+				);	
+				padding-top:25px;
 			}
 		}
 	}
@@ -102,6 +105,12 @@
 				url('../images/assets/saves_on.svg') no-repeat center 1px
 			);
 			color:#F0E84C;
+			&:hover{
+				@include background(
+					url('../images/assets/saves_on.svg') no-repeat center 0px #3f3f3f
+				);	
+				padding-top:25px;
+			}
 		}
 	}
 }

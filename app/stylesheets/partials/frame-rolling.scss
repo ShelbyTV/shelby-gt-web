@@ -66,6 +66,25 @@
 	float:right;
 }
 
+.rolling-main-social {
+	@extend .rolling-main-done;
+
+	display:block;
+	float:right;
+	padding-left:0;
+
+	&:before{
+		background:url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center;
+		background-size:100%;
+		border-right:1px solid #222;
+		content:"\0020";
+		float:left;
+		margin:1px 6px 1px 2px;
+		width:20px;
+		height:19px;
+	}
+}
+
 .rolling-frame{
 	@include transition-property(all);
 	@include transition-duration(0.25s);
