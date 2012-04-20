@@ -24,5 +24,6 @@
 }
 /* line 23, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
+  border-bottom: 1px solid #222;
   padding: 0;
 }

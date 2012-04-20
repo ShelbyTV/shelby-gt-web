@@ -82,4 +82,6 @@ $(document).ready(function(){
   //TODO: the 'non-logged-in-user' functionality needs to built out
   shelby.router = new libs.shelbyGT.AppRouter();
   Backbone.history.start({ pushState:true });
+  
+  shelby.userInactivity.init();
 });

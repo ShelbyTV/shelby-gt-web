@@ -1,6 +1,7 @@
 .filter-controls{
 	@include background(
-		#353535
+		url('../images/assets/noise.png')
+		$rollsBG
 	);
 
 	border-top:1px solid #222;
@@ -16,42 +17,83 @@
 	li{
 		display:block;
 	}
-	a{
-//		line-height:24px;
-		text-decoration:none;
-	}
+
 }
 
 .current-roll{
 	float:left;
-	font-size:1em;
+	font-size:1.2em;
+	line-height:2.75;
 	padding:$defaultMargin/2;
 	text-align:center;
 	width:100%;
 }
 
 @mixin backandforth{
-	position:absolute;
+	float:left;
+	height:20px;
 	padding:$defaultMargin/2 $defaultMargin;
+	width:50%;
+}
+
+.rolls-back{
+	@include background($softShelbyDarkGray);
+	@include backandforth;
+	@include border-radius($radius);	
+	@include buttonfont;
+	border:1px solid #222;
+	color:#efefef;
+	height:26px;
+	left:$defaultMargin+7;
+	padding:$defaultMargin/2 $defaultMargin $defaultMargin/2 $defaultMargin/2;
+	position:absolute;
+	top:$defaultMargin;
+	width:auto;
+	i{
+		@include background(
+			$softShelbyDarkGray
+		);
+		@include border-radius(0 100% 0 5px);
+		@include rotate($default-rotate);
+		border-bottom:1px solid #222;
+		border-left:1px solid #222;
+		display:block;
+		height:17px;
+		left:-8px;
+		position:absolute;
+		top:4px;
+		width:17px;
+	}
+}
+
+.rolls-list-nav{
+	@extend .notype;
+	padding:$defaultMargin;
+	position:absolute;
+	right:0;
 	top:0;
 	width:25%;
 }
 
 .roll-back{
+	@include background(
+		url('../images/assets/navarrow_left.svg') no-repeat center center,
+		$softShelbyDarkGray
+	);
 	@include backandforth;
-	left:0;
-//	padding:$defaultMargin;
-//	position:absolute;
+	@include border-radius($radius 0 0 $radius);
+	border:1px solid #222;
+	height:26px;
 	text-align:left;
-//	top:0;
-//	width:50%;
 }
 .roll-next{
+	@include background(
+		url('../images/assets/navarrow_right.svg') no-repeat center center,
+		$softShelbyDarkGray
+	);
 	@include backandforth;
-//	padding:$defaultMargin;
-//	position:absolute;
-	right:0;
+	@include border-radius(0 $radius $radius 0);
+	border:1px solid #222;
+	height:26px;
 	text-align:right;
-//	top:0;
-//	width:50%;
 }

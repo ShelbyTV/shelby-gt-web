@@ -63,7 +63,8 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _updateJoinButton : function(action){
     var addOrRemoveClass = action == 'Leave' ? 'addClass' : 'removeClass';
-    this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
+    // this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
+    this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
   },
 
   _refreshUser : function(){
@@ -84,7 +85,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$('.rolls-add').show();
       //TODO: do this via html class assignment:
       this.$('#js-roll-header li:first').show();
-      this.$('#js-roll-header li:last').css('width', '50%');
+      this.$('#js-roll-header li:last').css('width', '25%');
     }
     // set text to leave/join roll
     var _buttonText = shelby.models.user.followsRoll(currentRollModel.id) ? 'Leave' : 'Join';

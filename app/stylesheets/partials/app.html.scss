@@ -15,7 +15,7 @@ body{
 	@include basefont;
 
 	@include background(
-		url('../images/assets/noise.png') #005500
+		url('../images/assets/noise.png') #000
 	);
 
 	overflow:hidden;
@@ -49,19 +49,6 @@ a{
 
 }
 
-.video-player{
-	background: #000;
-	color:white;
-	height:100%;
-	margin-right:330px;
-  
-	p{
-		background:black;
-		margin:0;
-	}
-}
-
-
 .content{
 	float:right;
 	width:330px;
@@ -76,6 +63,20 @@ a{
 	overflow:hidden;
 	position:relative;
 	z-index:3;
+	
+	opacity: 1;
+	@include transition-property('opacity, margin-right');
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(0s);
+}
+
+.main.hide-guide {
+  margin-right:-330px;
+}
+
+.user-inactive .main{
+  opacity: .1;
 }
 
 .content-body{

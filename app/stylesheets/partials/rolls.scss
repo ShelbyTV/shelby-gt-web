@@ -24,7 +24,11 @@
 		list-style-type:none;
 		margin:0;
 		padding:$defaultMargin;
-		width:50%;
+		width:75%;
+		&:last-child{
+			padding-left:0;
+			width:25%;
+		}
 	}
 }
 

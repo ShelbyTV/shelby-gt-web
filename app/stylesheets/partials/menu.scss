@@ -37,6 +37,7 @@
 
 		&:hover{
 			@include box-shadow(inset 0px 0px 5px #666);
+			background-color:#444;
 		}
 		&:active{
 			@include box-shadow(inset 0px 0px 10px black);
@@ -50,10 +51,10 @@
 	}
 
 	.active-tab{
-		@include box-shadow(inset 0px 6px 14px 0px #101010);
+		@include box-shadow(inset 0px 6px 12px 0px #101010);
 
 		&:hover{
-		@include box-shadow(inset 0px 6px 10px 0px #111);
+			@include box-shadow(inset 0px 6px 8px 0px #111);
 		}
 	}
 
@@ -64,12 +65,12 @@
 		
 		&.active-tab{
 			@include background(
-				url('../images/assets/stream_on.svg') no-repeat center 1px
+				url('../images/assets/stream_on.svg') no-repeat center 1px #3f3f3f
 			);
 			color:#63BD57;
 			&:hover{
 				@include background(
-					url('../images/assets/stream_on.svg') no-repeat center 0px
+					url('../images/assets/stream_on.svg') no-repeat center 0px #3f3f3f
 				);	
 				padding-top:25px;
 			}
@@ -86,6 +87,9 @@
 				url('../images/assets/rolls_on.svg') no-repeat center 1px
 			);
 			color:#0092C1;
+			&:hover{
+				
+			}
 		}
 	}
 	.saves{

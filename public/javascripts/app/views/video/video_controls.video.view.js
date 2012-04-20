@@ -24,6 +24,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		this._playbackState = opts.playbackState;
 		this._userDesires = opts.userDesires;
 		
+		this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
+		
 		this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
 		if( this._playbackState.get('activePlayerState') !== null ) {
 		  this._onNewPlayerState(this._playbackState, this._playbackState.get('activePlayerState'));
@@ -31,6 +33,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
 	_cleanup: function() {
+	  this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
+	  
     this.model.unbind('change:activePlayerState', this._onNewPlayerState, this);
   },
 
@@ -196,6 +200,19 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
+	
+	//--------------------------------------
+	// handle user desires
+	//--------------------------------------
+	
+	_guideVisibilityChange: function(attr, guideShown){
+    if( guideShown ){
+      this.$el.find('.video-player-controls').removeClass("full-width");
+    } else {
+      this.$el.find('.video-player-controls').addClass("full-width");
+    }
+  },
+	
 	
 	//--------------------------------------
 	// helpers

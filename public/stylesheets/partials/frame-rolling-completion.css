@@ -6,7 +6,11 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 11, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 7, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion {
+  overflow-y: hidden;
+}
+/* line 12, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -21,7 +25,7 @@
   position: absolute;
   top: 40px;
 }
-/* line 21, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 22, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   background: #222;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
@@ -32,7 +36,7 @@
   top: 0;
   width: 100%;
 }
-/* line 33, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 34, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   background: none;
   border-bottom: none;
@@ -40,33 +44,27 @@
   padding: 0;
 }
 
-/* line 42, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 43, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   background: url("../images/assets/noise.png") #555555;
   border-bottom: 1px solid #222;
   height: 40px;
 }
-/* line 48, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 49, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
+  background: url("../images/assets/noise.png") #007fb6;
+  border-bottom: 1px solid #005b83;
   font-size: 13px;
+  height: 40px;
   line-height: 3;
+  padding-left: 10px;
   padding-right: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 57, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_public.svg");
-  float: left;
-  margin: 4px 10px;
-}
-/* line 67, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_private.svg");
-}
 
-/* line 75, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 83, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

@@ -1,0 +1,11 @@
+<%  
+  var message = frame.get('conversation').get('messages').first()
+  , avatar_url = message.get('user_image_url')
+  , name = message.get('realname')
+  , text = message.get('text')
+  , created_at = message.get('created_at')
+  , network = message.get('origin_network');
+%>
+
+<!-- this JST will be appended to #wrapper inside <div class="comment-overlay"></div> -->
+xxx

@@ -8,11 +8,11 @@
  */
 /* line 7, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
-  background: url("../images/assets/noise.png") #494949;
-  padding: 10px 10px 0;
+  background: url("../images/assets/noise.png") #585858;
+  padding: 10px;
 }
 
-/* line 16, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 15, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -22,11 +22,12 @@
   border-radius: 5px;
   border: 1px solid #222;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 5px;
+  width: 100%;
 }
 
-/* line 26, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 25, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-recipients {
   margin-bottom: 0;
 }

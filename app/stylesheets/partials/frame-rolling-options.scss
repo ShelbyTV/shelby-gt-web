@@ -6,10 +6,9 @@
 
 .frame-rolling-options{
 	@include background(
-		url('../images/assets/noise.png') #494949
+		url('../images/assets/noise.png') #585858
 	);
-
-	padding:$defaultMargin $defaultMargin 0;
+	padding:$defaultMargin;
 }
 
 
@@ -18,9 +17,9 @@
 
 	border:1px solid #222;
 	display:block;
-	margin-bottom:$defaultMargin/2;
-	padding: $defaultMargin/2;
-
+	margin-bottom:$defaultMargin;
+	padding:$defaultMargin/2;
+	width:100%;
 }
 
 .new-roll-recipients{

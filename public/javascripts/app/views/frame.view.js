@@ -2,6 +2,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _conversationDisplayed : false,
 
+  _grewForFrameRolling : false,
+
   _frameRollingView : null,
 
   _frameViewState: null,
@@ -189,9 +191,22 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onFrameRollingTransitionComplete : function(e){
-    // if the frame rolling view gets completely hidden, remove it
-    if (!$(e.currentTarget).hasClass('rolling-frame-trans')) {
+    var self = this;
+    if ($(e.currentTarget).hasClass('rolling-frame-trans')) {
+      // frame rolling view just rolled in
+      // grow the view if it's too small to show the internal share view
+      var minHeight = shelby.config.animation.frameGrow.minHeight;
+      if (this.$('article').height() < minHeight) {
+        this.$('article').animate({height:minHeight + 'px'}, 200);
+        this._grewForFrameRolling = true;
+      }
+    } else {
+      // frame rolling view just rolled out, remove it and shrink back to frame's original height
       this._frameViewState.set('doFrameRolling', false);
+      if (this._grewForFrameRolling) {
+        this.$('article').animateAuto('height', 200);
+        this._grewForFrameRolling = false;
+      }
     }
   },
 

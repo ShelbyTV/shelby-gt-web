@@ -9,14 +9,6 @@
 
   libs.shelbyGT.FrameRollingCompletionView = Support.CompositeView.extend({
 
-    events : {
-      // these events only relevant when creating a new roll
-      "keyup .js-new-roll-name-input" : "_updateRollTitle",
-      "focus .js-new-roll-name-input" : "_onFocusRollTitle"
-    },
-
-    _shareSubView : null,
-
     className : 'frame-rolling-completion',
 
     template : function(obj){
@@ -25,31 +17,22 @@
 
     render : function(){
       this.$el.html(this.template({frame:this.options.oldFrame,roll:this.options.roll}));
+      var shareSubView;
       if (!this.options.roll.isNew()) {
-        this._shareSubView = new FrameShareView({
-          model : new ShareModel(),
+        shareSubView = new FrameShareView({
+          model : this.options.frameRollingState.get('shareModel'),
           frame : this.options.newFrame,
           frameRollingState : this.options.frameRollingState
         });
       } else {
-        this.$el.append(JST['frame-rolling-options']({roll:this.options.roll}));
-        this._shareSubView = new FrameRollingNewRollView({
-          model : new ShareModel(),
+        shareSubView = new FrameRollingNewRollView({
+          model : this.options.frameRollingState.get('shareModel'),
           roll : this.options.roll,
           frame : this.options.oldFrame,
           frameRollingState : this.options.frameRollingState
         });
       }
-      this.appendChild(this._shareSubView);
-    },
-
-    _updateRollTitle : function(e){
-      this.options.roll.set('title',$(e.currentTarget).val());
-    },
-
-    _onFocusRollTitle : function(){
-      // remove the error highlight from the roll title input on focus if there is one
-      this.$('.js-new-roll-name-input').removeClass('error');
+      this.appendChild(shareSubView);
     }
 
   });

@@ -6,8 +6,9 @@
 
 .frame-rolling-completion{
 	@extend .rolling-main;
-//		background:blue;
-//		@include opacity(0.9);
+//	background:blue;
+//	@include opacity(0.9);
+	overflow-y:hidden;
 	.frame-share{
 //		background: url('../images/assets/noise.png') #494949;
 		@include border-radius(0);
@@ -46,28 +47,35 @@
 	height:40px;
 
 	h1{
+		@include background(
+			url('../images/assets/noise.png')
+			$flatShelbyBlue
+		);
+		border-bottom:1px solid adjust-lightness($flatShelbyBlue,-10%);
 		font-size:13px;
+		height:40px;
 		line-height:3;
+		padding-left:$defaultMargin;
 		padding-right:$defaultMargin;
 		overflow:hidden;
 		text-overflow:ellipsis;
 		white-space:nowrap;
 
-		&.roll-type-public{
-			&:before{
-				content:url('../images/assets/rolls_public.svg');
-				float:left;
-				margin: 4px 10px;
-			}
-		}
+//		&.roll-type-public{
+//			&:before{
+//				content:url('../images/assets/rolls_public.svg');
+//				float:left;
+//				margin: 4px 10px;
+//			}
+//		}
 
-		&.roll-type-private{
-			@extend .roll-type-public;
+		// &.roll-type-private{
+		// 	@extend .roll-type-public;
 			
-			&:before{
-				content:url('../images/assets/rolls_private.svg');
-			}		
-		}
+		// 	&:before{
+		// 		content:url('../images/assets/rolls_private.svg');
+		// 	}
+		// }
 
 	}
 }

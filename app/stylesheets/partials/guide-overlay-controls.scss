@@ -1,0 +1,94 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+		
+#guide-overlay-controls {
+  bottom: 10px;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.guide-toggle {
+  @include border-radius($radius 0 0 $radius);
+  
+  @include box-shadow(2px 2px 5px 0px #333);
+    
+  @include darkgradient;
+  
+  @include transition-property('width, right');
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(.1s);
+	
+	bottom: 0;
+	border: 1px solid #202020;
+  border-right: none;
+  cursor: pointer;
+  height: 45px;
+	overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 34px;
+	
+	.copy { 
+	  @include basefont;
+	  @include opacity(0.0);
+    @include transition-property(opacity);
+  	@include transition-duration(.5s);
+  	@include transition-timing-function(ease-in-out);
+  	@include transition-delay(0s);
+  	
+  	color: #fff;
+    font-size: 14px;
+    
+    position: absolute;
+    right: 33px;
+    
+    top: 13px;
+    width: 70px;
+  }
+  
+	.icon {
+	  @include transition-property(rotate);
+  	@include transition-duration(.5s);
+  	@include transition-timing-function(ease-in-out);
+    
+	  background:url('../images/assets/guide.svg') no-repeat center center transparent;
+	  float: right;
+	  height: 20px; 
+	  width: 20px;
+  }
+}
+
+.guide-toggle.show {
+  @include transition-delay(0s);
+  
+  .icon {
+    @include rotate(180deg);
+  }
+  
+  .copy { 
+    @include opacity(0.0);
+  }
+}
+
+.user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
+  @include transition-delay(0s);
+    
+  width: 112px;
+  
+  .copy {
+    @include opacity(1.0);
+    @include transition-delay(.2s);
+  }
+}
+
+.user-inactive .guide-toggle.show {
+  @include box-shadow(none);
+  
+  border: none;
+  right: -35px;
+}
