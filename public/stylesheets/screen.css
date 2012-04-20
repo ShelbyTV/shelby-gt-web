@@ -1453,27 +1453,35 @@ a:hover, a:visited, a:active {
   height: 100%;
 }
 
-/* line 2, ../../app/stylesheets/partials/frame.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame.scss */
 .list, .rolls-list, .form-rolls-list {
   margin: 0;
   padding: 0;
 }
-/* line 6, ../../app/stylesheets/partials/frame.scss */
+/* line 11, ../../app/stylesheets/partials/frame.scss */
 .list li, .rolls-list li, .form-rolls-list li {
   background: url("../images/assets/noise.png") #494949;
   list-style-type: none;
   padding: 10px;
 }
-/* line 14, ../../app/stylesheets/partials/frame.scss */
+/* line 19, ../../app/stylesheets/partials/frame.scss */
 .list li:hover, .rolls-list li:hover, .form-rolls-list li:hover {
   background: url("../images/assets/noise.png") #555555;
 }
-/* line 21, ../../app/stylesheets/partials/frame.scss */
+/* line 26, ../../app/stylesheets/partials/frame.scss */
 .list .active-frame, .rolls-list .active-frame, .form-rolls-list .active-frame {
   background: url("../images/assets/noise.png") #6d6d6d;
 }
 
-/* line 28, ../../app/stylesheets/partials/frame.scss */
+/* line 33, ../../app/stylesheets/partials/frame.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1488,7 +1496,7 @@ a:hover, a:visited, a:active {
   padding: 0;
   position: relative;
 }
-/* line 38, ../../app/stylesheets/partials/frame.scss */
+/* line 43, ../../app/stylesheets/partials/frame.scss */
 .video-card footer {
   -moz-box-shadow: 0px 4px 13px 4px #333333;
   -webkit-box-shadow: 0px 4px 13px 4px #333333;
@@ -1498,7 +1506,7 @@ a:hover, a:visited, a:active {
   z-index: 5;
 }
 
-/* line 45, ../../app/stylesheets/partials/frame.scss */
+/* line 50, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #444;
   line-height: 75px;
@@ -1506,7 +1514,7 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 52, ../../app/stylesheets/partials/frame.scss */
+/* line 57, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail img {
   display: inline-block;
   margin: 0 auto 0;
@@ -1517,7 +1525,7 @@ a:hover, a:visited, a:active {
   cursor: pointer;
 }
 
-/* line 64, ../../app/stylesheets/partials/frame.scss */
+/* line 69, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1533,19 +1541,19 @@ a:hover, a:visited, a:active {
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 8px;
 }
-/* line 70, ../../app/stylesheets/partials/frame.scss */
+/* line 75, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 73, ../../app/stylesheets/partials/frame.scss */
+/* line 78, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 76, ../../app/stylesheets/partials/frame.scss */
+/* line 81, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
-/* line 81, ../../app/stylesheets/partials/frame.scss */
+/* line 86, ../../app/stylesheets/partials/frame.scss */
 .video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
@@ -1556,7 +1564,7 @@ a:hover, a:visited, a:active {
   width: 80%;
 }
 
-/* line 91, ../../app/stylesheets/partials/frame.scss */
+/* line 96, ../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
   font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
@@ -1566,33 +1574,33 @@ a:hover, a:visited, a:active {
   line-height: 1.231;
   padding: 0;
 }
-/* line 101, ../../app/stylesheets/partials/frame.scss */
+/* line 106, ../../app/stylesheets/partials/frame.scss */
 .video-score:before {
   content: url("../images/assets/score.svg");
   margin-right: 3px;
 }
-/* line 106, ../../app/stylesheets/partials/frame.scss */
+/* line 111, ../../app/stylesheets/partials/frame.scss */
 .video-score:hover:before {
   color: #007fb6;
 }
-/* line 110, ../../app/stylesheets/partials/frame.scss */
+/* line 115, ../../app/stylesheets/partials/frame.scss */
 .video-score:active {
   color: #007fb6;
 }
 
-/* line 116, ../../app/stylesheets/partials/frame.scss */
+/* line 121, ../../app/stylesheets/partials/frame.scss */
 .video-score-upvoted:before {
   content: "\0020";
 }
 
-/* line 134, ../../app/stylesheets/partials/frame.scss */
+/* line 139, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 139, ../../app/stylesheets/partials/frame.scss */
+/* line 144, ../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -1600,7 +1608,7 @@ a:hover, a:visited, a:active {
   right: 0px;
   top: 0px;
 }
-/* line 146, ../../app/stylesheets/partials/frame.scss */
+/* line 151, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1622,7 +1630,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 163, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
   -moz-border-radius: 5px;
@@ -1638,7 +1646,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 44px;
 }
-/* line 171, ../../app/stylesheets/partials/frame.scss */
+/* line 176, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7b7b7b), color-stop(100%, #575757));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #7b7b7b, #575757);
@@ -1651,11 +1659,11 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 179, ../../app/stylesheets/partials/frame.scss */
+/* line 184, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 185, ../../app/stylesheets/partials/frame.scss */
+/* line 190, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -1668,12 +1676,12 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 193, ../../app/stylesheets/partials/frame.scss */
+/* line 198, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/remove.svg") no-repeat center center;
 }
 
-/* line 201, ../../app/stylesheets/partials/frame.scss */
+/* line 206, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1698,11 +1706,11 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 221, ../../app/stylesheets/partials/frame.scss */
+/* line 226, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px 10px 35px;
 }
-/* line 223, ../../app/stylesheets/partials/frame.scss */
+/* line 228, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1714,7 +1722,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 230, ../../app/stylesheets/partials/frame.scss */
+/* line 235, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1760,33 +1768,33 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 246, ../../app/stylesheets/partials/frame.scss */
+/* line 251, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 250, ../../app/stylesheets/partials/frame.scss */
+/* line 255, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 256, ../../app/stylesheets/partials/frame.scss */
+/* line 261, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list .user-vcard {
   padding-bottom: 9px;
 }
 
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 266, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 266, ../../app/stylesheets/partials/frame.scss */
+/* line 271, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 271, ../../app/stylesheets/partials/frame.scss */
+/* line 276, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1796,7 +1804,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 276, ../../app/stylesheets/partials/frame.scss */
+/* line 281, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1805,32 +1813,32 @@ a:hover, a:visited, a:active {
   height: 100%;
   padding: 0 9px 36px;
 }
-/* line 283, ../../app/stylesheets/partials/frame.scss */
+/* line 288, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 289, ../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 294, ../../app/stylesheets/partials/frame.scss */
+/* line 299, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
   color: #a4a4a4;
 }
 
-/* line 300, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 313, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
   float: left;
@@ -1838,16 +1846,16 @@ a:hover, a:visited, a:active {
   margin: 0 2px;
 }
 
-/* line 318, ../../app/stylesheets/partials/frame.scss */
+/* line 323, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
 }
 
-/* line 322, ../../app/stylesheets/partials/frame.scss */
+/* line 327, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 325, ../../app/stylesheets/partials/frame.scss */
+/* line 330, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }

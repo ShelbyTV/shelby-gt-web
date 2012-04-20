@@ -1,107 +1,406 @@
-/*
-Syntax error: Undefined mixin 'background'.
-        on line 10 of /shelbytv/app/stylesheets/partials/frame.scss, in `background'
-        from line 10 of /shelbytv/app/stylesheets/partials/frame.scss
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../../app/stylesheets/partials/frame.scss */
+.list {
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../../../app/stylesheets/partials/frame.scss */
+.list li {
+  background: url("../images/assets/noise.png") #494949;
+  list-style-type: none;
+  padding: 10px;
+}
+/* line 19, ../../../app/stylesheets/partials/frame.scss */
+.list li:hover {
+  background: url("../images/assets/noise.png") #555555;
+}
+/* line 26, ../../../app/stylesheets/partials/frame.scss */
+.list .active-frame {
+  background: url("../images/assets/noise.png") #6d6d6d;
+}
 
-5: 
-6: 	li{
-7: 		@include background(
-8: 			url('../images/assets/noise.png') 
-9: 			#494949
-10: 		);
-11: 		list-style-type:none;
-12: 		padding:$defaultMargin;
-13: 	
-14: 		&:hover{
-15: 			@include background(
+/* line 33, ../../../app/stylesheets/partials/frame.scss */
+.video-card {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 13px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+/* line 43, ../../../app/stylesheets/partials/frame.scss */
+.video-card footer {
+  -moz-box-shadow: 0px 4px 13px 4px #333333;
+  -webkit-box-shadow: 0px 4px 13px 4px #333333;
+  -o-box-shadow: 0px 4px 13px 4px #333333;
+  box-shadow: 0px 4px 13px 4px #333333;
+  border-top: 1px solid #252525;
+  z-index: 5;
+}
 
-Backtrace:
-/shelbytv/app/stylesheets/partials/frame.scss:10:in `background'
-/shelbytv/app/stylesheets/partials/frame.scss:10
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/root_node.rb:20:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:299:in `_render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:247:in `block in render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/util.rb:310:in `silence_sass_warnings'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:247:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `each'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin.rb:81:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin.rb:54:in `check_for_updates'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/plugin/rack.rb:51:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2335247448093171934__call__1083416035699784406__callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.0/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 10 of /shelbytv/app/stylesheets/partials/frame.scss, in `background'\A         from line 10 of /shelbytv/app/stylesheets/partials/frame.scss\A \A 5: \A 6: 	li{\A 7: 		@include background(\A 8: 			url('../images/assets/noise.png') \A 9: 			#494949\A 10: 		);\A 11: 		list-style-type:none;\A 12: 		padding:$defaultMargin;\A 13: 	\A 14: 		&:hover{\A 15: 			@include background("; }
+/* line 50, ../../../app/stylesheets/partials/frame.scss */
+.video-thumbnail {
+  background: #444;
+  line-height: 75px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+/* line 57, ../../../app/stylesheets/partials/frame.scss */
+.video-thumbnail img {
+  display: inline-block;
+  margin: 0 auto 0;
+  overflow: hidden;
+  padding-top: 0;
+  vertical-align: middle;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* line 69, ../../../app/stylesheets/partials/frame.scss */
+.video-card-header {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  padding: 6px 8px 8px;
+}
+/* line 75, ../../../app/stylesheets/partials/frame.scss */
+.video-card-header a {
+  text-decoration: none;
+}
+/* line 78, ../../../app/stylesheets/partials/frame.scss */
+.video-card-header a:active, .video-card-header a:visited {
+  text-decoration: none;
+}
+/* line 81, ../../../app/stylesheets/partials/frame.scss */
+.video-card-header a:hover {
+  text-decoration: underline;
+}
+/* line 86, ../../../app/stylesheets/partials/frame.scss */
+.video-card-header h1 {
+  float: left;
+  font-size: 1em;
+  height: 1.231em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+
+/* line 96, ../../../app/stylesheets/partials/frame.scss */
+.video-score {
+  color: #efefef;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: transparent;
+  border: none;
+  float: right;
+  line-height: 1.231;
+  padding: 0;
+}
+/* line 106, ../../../app/stylesheets/partials/frame.scss */
+.video-score:before {
+  content: url("../images/assets/score.svg");
+  margin-right: 3px;
+}
+/* line 111, ../../../app/stylesheets/partials/frame.scss */
+.video-score:hover:before {
+  color: #007fb6;
+}
+/* line 115, ../../../app/stylesheets/partials/frame.scss */
+.video-score:active {
+  color: #007fb6;
+}
+
+/* line 121, ../../../app/stylesheets/partials/frame.scss */
+.video-score-upvoted:before {
+  content: "\0020";
+}
+
+/* line 139, ../../../app/stylesheets/partials/frame.scss */
+.video-thumbnail {
+  height: 125px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 144, ../../../app/stylesheets/partials/frame.scss */
+.video-controls {
+  margin: 5px;
+  padding: 0;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+/* line 151, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  box-shadow: inset 0px 1px 1px 0px #00c6de;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  padding: 0;
+}
+/* line 163, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
+  background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  height: 44px;
+  margin: 0;
+  outline: 0;
+  text-decoration: underline;
+  width: 44px;
+}
+/* line 176, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .save-frame, .video-controls .remove-frame {
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7b7b7b), color-stop(100%, #575757));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #7b7b7b, #575757);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #7b7b7b, #575757);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #7b7b7b, #575757);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #7b7b7b, #575757);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #7b7b7b, #575757);
+  -moz-box-shadow: inset 0px 1px 1px 0px #8d8f90;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #8d8f90;
+  -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
+  box-shadow: inset 0px 1px 1px 0px #8d8f90;
+}
+/* line 184, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .save-frame button, .video-controls .remove-frame button {
+  background: url("../images/assets/saved_action.svg") no-repeat center center;
+}
+/* line 190, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .remove-frame {
+  -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
+  -o-box-shadow: inset 0px 1px 1px 0px #c0224c;
+  box-shadow: inset 0px 1px 1px 0px #c0224c;
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
+}
+/* line 198, ../../../app/stylesheets/partials/frame.scss */
+.video-controls .remove-frame button {
+  background: url("../images/assets/remove.svg") no-repeat center center;
+}
+
+/* line 206, ../../../app/stylesheets/partials/frame.scss */
+.video-footer {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
+  -moz-border-radius: 0 0 3px 3px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -khtml-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid #4f4d51;
+  bottom: 0;
+  font-size: 11px;
+  font-weight: 700;
+  height: 27px;
+  left: 0;
+  padding: 6px 8px 7px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 226, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment {
+  padding: 10px 10px 35px;
+}
+/* line 228, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  resize: none;
+}
+/* line 235, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-comment .video-activity-comment-submit {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 700 normal 100%/1.231 "Ubuntu", "Times New Roman";
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
+  background: -moz-linear-gradient(top, #4a4a4a, #343434);
+  background: -o-linear-gradient(top, #4a4a4a, #343434);
+  background: -ms-linear-gradient(top, #4a4a4a, #343434);
+  background: linear-gradient(top, #4a4a4a, #343434);
+  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
+  -o-box-shadow: inset -1px 0px 1px 0px #444444;
+  box-shadow: inset -1px 0px 1px 0px #444444;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  float: left;
+  font-size: 13px;
+  height: 23px;
+  line-height: 1.5;
+  margin: 3px;
+  padding: 0 5px;
+  text-shadow: 0px 1px 2px #222;
+  width: auto;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
+  box-shadow: inset -1px 0px 1px 0px #79cae7;
+  float: right;
+  margin: 3px 0;
+  padding: 0 7px;
+  width: auto;
+}
+
+/* line 251, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-list {
+  margin: 0;
+  padding-left: 0;
+}
+/* line 255, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-list li {
+  border-bottom: 0;
+  list-style-type: none;
+  padding: 0;
+}
+/* line 261, ../../../app/stylesheets/partials/frame.scss */
+.video-activity-list .user-vcard {
+  padding-bottom: 9px;
+}
+
+/* line 266, ../../../app/stylesheets/partials/frame.scss */
+.video-source {
+  float: right;
+}
+
+/* line 271, ../../../app/stylesheets/partials/frame.scss */
+.video-author {
+  margin: 0;
+}
+
+/* line 276, ../../../app/stylesheets/partials/frame.scss */
+.user {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background-image: -webkit-linear-gradient(top, #333333, #303030);
+  background-image: -moz-linear-gradient(top, #333333, #303030);
+  background-image: -o-linear-gradient(top, #333333, #303030);
+  background-image: -ms-linear-gradient(top, #333333, #303030);
+  background-image: linear-gradient(top, #333333, #303030);
+}
+
+/* line 281, ../../../app/stylesheets/partials/frame.scss */
+.user-vcard {
+  border-bottom: 1px solid #252525;
+  border-top: 1px solid #4f4d51;
+  font-size: 13px;
+  font-weight: 300;
+  height: 100%;
+  padding: 0 9px 36px;
+}
+/* line 288, ../../../app/stylesheets/partials/frame.scss */
+.user-vcard a {
+  text-decoration: none;
+}
+
+/* line 294, ../../../app/stylesheets/partials/frame.scss */
+.user-avatar img {
+  margin-right: 7px;
+  margin-top: 9px;
+}
+
+/* line 299, ../../../app/stylesheets/partials/frame.scss */
+.user-handle, .user-post-date {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a4a4a4;
+}
+
+/* line 305, ../../../app/stylesheets/partials/frame.scss */
+.user-post-date {
+  float: right;
+  margin-top: 9px;
+  padding-right: 3px;
+}
+
+/* line 313, ../../../app/stylesheets/partials/frame.scss */
+.user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
+  content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
+  float: left;
+  font-size: 0.75em;
+  margin: 0 2px;
+}
+
+/* line 323, ../../../app/stylesheets/partials/frame.scss */
+.user-post-origin-facebook a:before {
+  content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
+}
+
+/* line 327, ../../../app/stylesheets/partials/frame.scss */
+.user-video-text {
+  margin-top: -7px;
+}
+/* line 330, ../../../app/stylesheets/partials/frame.scss */
+.user-video-text p {
+  margin: 0 5px 0 36px;
+}
