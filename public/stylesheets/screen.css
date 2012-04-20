@@ -2208,86 +2208,11 @@ body.user-inactive .video-player-controls-wrapper {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 11, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -o-border-radius: 0;
-  -ms-border-radius: 0;
-  -khtml-border-radius: 0;
-  border-radius: 0;
-  bottom: 0;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 40px;
-}
-/* line 21, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share:before {
-  background: #222;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
-  opacity: 0.2;
-  bottom: 0;
-  content: "\0020";
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-/* line 33, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .share-networks-list li {
-  background: none;
-  border-bottom: none;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header {
-  background: url("../images/assets/noise.png") #555555;
-  border-bottom: 1px solid #222;
-  height: 40px;
-}
-/* line 48, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1 {
-  background: url("../images/assets/noise.png") #007fb6;
-  border-bottom: 1px solid #005b83;
-  font-size: 13px;
-  height: 40px;
-  line-height: 3;
-  padding-left: 10px;
-  padding-right: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_private.svg");
-}
-
-/* line 82, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-share-undo {
-  line-height: 3;
-  margin: 0 5px;
-  position: absolute;
-  right: 5px;
-  top: 0;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main, .frame-rolling-completion {
   border-bottom: 1px solid #222;
   bottom: 40px;
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
   top: 0;
@@ -2418,6 +2343,85 @@ body.user-inactive .video-player-controls-wrapper {
 /* line 93, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion {
+  overflow-y: hidden;
+}
+/* line 12, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
+  bottom: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 40px;
+}
+/* line 22, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .frame-share:before {
+  background: #222;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  bottom: 0;
+  content: "\0020";
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 34, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion .share-networks-list li {
+  background: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* line 43, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header {
+  background: url("../images/assets/noise.png") #555555;
+  border-bottom: 1px solid #222;
+  height: 40px;
+}
+/* line 49, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1 {
+  background: url("../images/assets/noise.png") #007fb6;
+  border-bottom: 1px solid #005b83;
+  font-size: 13px;
+  height: 40px;
+  line-height: 3;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
+}
+
+/* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-share-undo {
+  line-height: 3;
+  margin: 0 5px;
+  position: absolute;
+  right: 5px;
+  top: 0;
 }
 
 /* Welcome to Compass.

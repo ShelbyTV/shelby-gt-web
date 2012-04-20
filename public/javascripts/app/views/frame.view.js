@@ -190,13 +190,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       // grow the view if it's too small to show the internal share view
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       if (this.$('article').height() < minHeight) {
-        this.$('article').animate({height:minHeight + 'px'}, 200, function(){
-          // don't enable scrolling until the animation is finished
-          self._frameRollingView.setMainPaneScrolling(true);
-        });
+        this.$('article').animate({height:minHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
-      } else {
-        this._frameRollingView.setMainPaneScrolling(true);
       }
     } else {
       // frame rolling view just rolled out, remove it and shrink back to frame's original height

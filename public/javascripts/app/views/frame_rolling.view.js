@@ -48,14 +48,6 @@
       this.renderChild(this.spinner);
     },
 
-    setMainPaneScrolling : function(enable) {
-      if (enable) {
-        this.$('.rolling-main').css({'overflow-y':'auto'});
-      } else {
-        this.$('.rolling-main').css({'overflow-y':'hidden'});
-      }
-    },
-
     revealFrameRollingCompletionView : function(newFrame, oldFrame, roll, options){
       var defaults = {
         type: 'public'
