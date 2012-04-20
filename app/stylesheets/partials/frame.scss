@@ -329,17 +329,17 @@
 }
 
 .user-post-origin-twitter{
-	a:before{
+	&:before{
 		content: image-url('../images/assets/twitter_stamp.svg');
 		float:left;
 		font-size:0.75em;
-		margin:0 2px;
+		margin:1px 3px;
 	}
 }
 
 .user-post-origin-facebook{
 	@extend .user-post-origin-twitter;
-	a:before{
+	&:before{
 		content: image-url('../images/assets/facebook_stamp.svg');
 	}
 }

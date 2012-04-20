@@ -1856,15 +1856,15 @@ a:hover, a:visited, a:active {
 }
 
 /* line 332, ../../app/stylesheets/partials/frame.scss */
-.user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
+.user-post-origin-twitter:before, .user-post-origin-facebook:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
   font-size: 0.75em;
-  margin: 0 2px;
+  margin: 1px 3px;
 }
 
 /* line 342, ../../app/stylesheets/partials/frame.scss */
-.user-post-origin-facebook a:before {
+.user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
