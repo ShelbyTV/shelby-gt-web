@@ -1305,7 +1305,27 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
+/* line 32, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.current-roll-avatar {
+  display: inline-block;
+  height: 30px;
+  left: -2px;
+  position: relative;
+  width: 30px;
+}
 /* line 39, ../../app/stylesheets/partials/roll-filter-controls.scss */
+.current-roll-avatar img {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* line 53, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1333,7 +1353,7 @@ a:hover, a:visited, a:active {
   top: 10px;
   width: auto;
 }
-/* line 52, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 66, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1362,7 +1382,7 @@ a:hover, a:visited, a:active {
   width: 17px;
 }
 
-/* line 69, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 83, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1371,7 +1391,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 78, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 92, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -1394,7 +1414,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 89, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 103, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
@@ -2393,12 +2413,12 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
   -moz-box-shadow: inset -1px 0px 1px 0px #549537;
   -webkit-box-shadow: inset -1px 0px 1px 0px #549537;
   -o-box-shadow: inset -1px 0px 1px 0px #549537;

@@ -29,6 +29,20 @@
 	width:100%;
 }
 
+.current-roll-avatar {
+	display:inline-block;
+	height:30px;
+	left:-2px;
+	position:relative;
+	width:30px;
+
+	img{
+		@include border-radius($radius);
+		overflow:hidden;
+		width:100%;
+	}
+}
+
 @mixin backandforth{
 	float:left;
 	height:20px;

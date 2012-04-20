@@ -6,6 +6,10 @@
 <% } %>
 
 <h2 class="current-roll">
+	<span class="current-roll-avatar">
+		<img src="<%= roll.get('thumbnail_url') || '../images/avatar.jpg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+	</span>
+
 	<%= roll.get('title') %>
 </h2>
 
