@@ -1,0 +1,48 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside {
+  width: 473px;
+}
+/* line 9, ../../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  height: 67px;
+  width: 100%;
+}
+/* line 15, ../../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list li {
+  display: none;
+}
+/* line 18, ../../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list .first {
+  display: block;
+}
+
+/* line 27, ../../../app/stylesheets/partials/comment-overlay.scss */
+.aside-nav {
+  background: url("../images/assets/comment_arrow_right.svg") #303030;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 1px 1px 1px 1px lime;
+  -webkit-box-shadow: inset 1px 1px 1px 1px lime;
+  -o-box-shadow: inset 1px 1px 1px 1px lime;
+  box-shadow: inset 1px 1px 1px 1px lime;
+  width: 24px;
+  height: 67px;
+}
+/* line 38, ../../../app/stylesheets/partials/comment-overlay.scss */
+.aside-nav.left {
+  background: url("../images/assets/comment_arrow_left.svg") #303030;
+}

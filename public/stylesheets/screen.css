@@ -600,7 +600,7 @@ a:hover, a:visited, a:active {
   color: #d8d8d8;
   display: block;
   height: 42px;
-  line-height: 3.75;
+  line-height: 3.25;
   text-decoration: none;
 }
 /* line 71, ../../app/stylesheets/partials/guide-header.scss */
@@ -613,7 +613,7 @@ a:hover, a:visited, a:active {
   margin-left: 3px;
   position: absolute;
   text-align: right;
-  top: 47%;
+  top: 40%;
   width: 12px;
 }
 /* line 85, ../../app/stylesheets/partials/guide-header.scss */
@@ -792,12 +792,12 @@ a:hover, a:visited, a:active {
 }
 /* line 66, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
-  background: url("../images/assets/stream_on.svg") no-repeat center 1px;
+  background: url("../images/assets/stream_on.svg") no-repeat center 1px #3f3f3f;
   color: #63BD57;
 }
 /* line 71, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
-  background: url("../images/assets/stream_on.svg") no-repeat center 0px;
+  background: url("../images/assets/stream_on.svg") no-repeat center 0px #3f3f3f;
   padding-top: 25px;
 }
 /* line 80, ../../app/stylesheets/partials/menu.scss */
@@ -809,17 +809,17 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 92, ../../app/stylesheets/partials/menu.scss */
+/* line 95, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 97, ../../app/stylesheets/partials/menu.scss */
+/* line 100, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #F0E84C;
 }
 
-/* line 107, ../../app/stylesheets/partials/menu.scss */
+/* line 110, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -830,7 +830,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 113, ../../app/stylesheets/partials/menu.scss */
+/* line 116, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -838,7 +838,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 120, ../../app/stylesheets/partials/menu.scss */
+/* line 123, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -849,7 +849,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 125, ../../app/stylesheets/partials/menu.scss */
+/* line 128, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -1490,10 +1490,6 @@ a:hover, a:visited, a:active {
 }
 /* line 38, ../../app/stylesheets/partials/frame.scss */
 .video-card footer {
-  -moz-box-shadow: 0px 4px 13px 4px #333333;
-  -webkit-box-shadow: 0px 4px 13px 4px #333333;
-  -o-box-shadow: 0px 4px 13px 4px #333333;
-  box-shadow: 0px 4px 13px 4px #333333;
   border-top: 1px solid #252525;
   z-index: 5;
 }
@@ -1509,7 +1505,7 @@ a:hover, a:visited, a:active {
 /* line 52, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail img {
   display: inline-block;
-  margin: 0 auto 0;
+  margin: -27px auto 0;
   overflow: hidden;
   padding-top: 0;
   vertical-align: middle;
@@ -1638,7 +1634,15 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 44px;
 }
-/* line 171, ../../app/stylesheets/partials/frame.scss */
+/* line 170, ../../app/stylesheets/partials/frame.scss */
+.video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
+  background: url("../images/assets/noise.png"), #0091d0;
+  -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
+  box-shadow: inset 0px 1px 1px 0px #00c6de;
+}
+/* line 178, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7b7b7b), color-stop(100%, #575757));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #7b7b7b, #575757);
@@ -1651,11 +1655,24 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 179, ../../app/stylesheets/partials/frame.scss */
+/* line 186, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
-  background: url("../images/assets/saved_action.svg") no-repeat center center;
+  background: url("../images/assets/saved_action.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dad450), color-stop(100%, #d5cd39));
+  background: url("../images/assets/saved_action.svg") no-repeat center center, -webkit-linear-gradient(top, #dad450, #d5cd39);
+  background: url("../images/assets/saved_action.svg") no-repeat center center, -moz-linear-gradient(top, #dad450, #d5cd39);
+  background: url("../images/assets/saved_action.svg") no-repeat center center, -o-linear-gradient(top, #dad450, #d5cd39);
+  background: url("../images/assets/saved_action.svg") no-repeat center center, -ms-linear-gradient(top, #dad450, #d5cd39);
+  background: url("../images/assets/saved_action.svg") no-repeat center center, linear-gradient(top, #dad450, #d5cd39);
 }
-/* line 185, ../../app/stylesheets/partials/frame.scss */
+/* line 193, ../../app/stylesheets/partials/frame.scss */
+.video-controls .save-frame:hover, .video-controls .remove-frame:hover {
+  background: url("../images/assets/noise.png"), white;
+  -moz-box-shadow: inset 0px 1px 1px 0px #ddd756;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #ddd756;
+  -o-box-shadow: inset 0px 1px 1px 0px #ddd756;
+  box-shadow: inset 0px 1px 1px 0px #ddd756;
+}
+/* line 201, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -1668,12 +1685,20 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 193, ../../app/stylesheets/partials/frame.scss */
+/* line 210, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
-  background: url("../images/assets/remove.svg") no-repeat center center;
+  background: url("../images/assets/saved_remove.svg") no-repeat center center;
+}
+/* line 215, ../../app/stylesheets/partials/frame.scss */
+.video-controls .remove-frame:hover {
+  background: url("../images/assets/noise.png"), #cb1c40;
+  -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #cb1c40;
+  -o-box-shadow: inset 0px 1px 1px 0px #cb1c40;
+  box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 201, ../../app/stylesheets/partials/frame.scss */
+/* line 225, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1698,11 +1723,11 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 221, ../../app/stylesheets/partials/frame.scss */
+/* line 245, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px 10px 35px;
 }
-/* line 223, ../../app/stylesheets/partials/frame.scss */
+/* line 247, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1714,7 +1739,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 230, ../../app/stylesheets/partials/frame.scss */
+/* line 254, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1760,33 +1785,33 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 246, ../../app/stylesheets/partials/frame.scss */
+/* line 270, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 250, ../../app/stylesheets/partials/frame.scss */
+/* line 274, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 256, ../../app/stylesheets/partials/frame.scss */
+/* line 280, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list .user-vcard {
   padding-bottom: 9px;
 }
 
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 285, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 266, ../../app/stylesheets/partials/frame.scss */
+/* line 290, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 271, ../../app/stylesheets/partials/frame.scss */
+/* line 295, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1796,7 +1821,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 276, ../../app/stylesheets/partials/frame.scss */
+/* line 300, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1805,49 +1830,49 @@ a:hover, a:visited, a:active {
   height: 100%;
   padding: 0 9px 36px;
 }
-/* line 283, ../../app/stylesheets/partials/frame.scss */
+/* line 307, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 289, ../../app/stylesheets/partials/frame.scss */
+/* line 313, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 294, ../../app/stylesheets/partials/frame.scss */
+/* line 318, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
   color: #a4a4a4;
 }
 
-/* line 300, ../../app/stylesheets/partials/frame.scss */
+/* line 324, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 332, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter a:before, .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334168110');
+  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
   font-size: 0.75em;
   margin: 0 2px;
 }
 
-/* line 318, ../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook a:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334168110');
+  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
-/* line 322, ../../app/stylesheets/partials/frame.scss */
+/* line 346, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 325, ../../app/stylesheets/partials/frame.scss */
+/* line 349, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
@@ -3285,6 +3310,55 @@ body.user-inactive .video-player-controls-wrapper {
   -o-box-shadow: inset -1px 0px 1px 0px #666666;
   box-shadow: inset -1px 0px 1px 0px #666666;
   margin: 0 auto;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside {
+  width: 473px;
+}
+/* line 9, ../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  height: 67px;
+  width: 100%;
+}
+/* line 15, ../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list li {
+  display: none;
+}
+/* line 18, ../../app/stylesheets/partials/comment-overlay.scss */
+.video-player-aside .video-activity-list .first {
+  display: block;
+}
+
+/* line 27, ../../app/stylesheets/partials/comment-overlay.scss */
+.aside-nav {
+  background: url("../images/assets/comment_arrow_right.svg") #303030;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 1px 1px 1px 1px lime;
+  -webkit-box-shadow: inset 1px 1px 1px 1px lime;
+  -o-box-shadow: inset 1px 1px 1px 1px lime;
+  box-shadow: inset 1px 1px 1px 1px lime;
+  width: 24px;
+  height: 67px;
+}
+/* line 38, ../../app/stylesheets/partials/comment-overlay.scss */
+.aside-nav.left {
+  background: url("../images/assets/comment_arrow_left.svg") #303030;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
