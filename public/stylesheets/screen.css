@@ -2410,10 +2410,6 @@ body.user-inactive .video-player-controls-wrapper {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  content: url("../images/assets/rolls_private.svg");
-}
 
 /* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
