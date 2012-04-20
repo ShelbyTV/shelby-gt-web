@@ -3,7 +3,7 @@ libs.shelbyGT.DisplayState = {
   rollList : 'rollList',
   standardRoll : 'standardRoll',
   watchLaterRoll : 'watchLaterRoll',
-  userPublicRoll : 'userPublicRoll',
+  userPersonalRoll : 'userPersonalRoll',
   userPreferences : 'userPreferences',
   help : 'help',
   team : 'team',

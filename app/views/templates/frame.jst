@@ -38,13 +38,13 @@
         <div class="user-vcard">
           <span class="user-avatar <%= shelby.models.user.get('anon') ? 'user-avatar-logged-out' : '' %>">
             <% var userAvatarUrl = shelby.models.user.get('anon') ? '/images/assets/user_loggedout.svg' : firstMessage.get('user_image_url') %>
-            <a class="js-user-public-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
+            <a class="js-user-personal-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
               <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
             </a>
           </span>
 
           <span class="user-handle">
-            <a class="js-user-public-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
+            <a class="js-user-personal-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
               <%= firstMessage.get('realname') %>
             </a>
           </span>
@@ -75,13 +75,13 @@
             <blockquote class="user video-author">
               <div class="user-vcard">
                 <span class="user-avatar">
-                  <a class="js-user-public-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
+                  <a class="js-user-personal-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
                     <img src="<%= msg.get('user_image_url') %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
                   </a>
                 </span>
 
                 <span class="user-handle">
-                  <a class="js-user-public-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
+                  <a class="js-user-personal-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
                     <%= msg.get('realname') %>
                   </a>
                 </span>
@@ -115,7 +115,8 @@
   
     <div class="video-footer">
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (messages.length) { %> (<%= messages.length-1 %>)<% } %></a>
-      <% if (shelby.models.guide.get('displayState') !== 'standardRoll') { %>
+      <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
+             shelby.models.guide.get('displayState') !== 'userPersonalRoll') { %>
         <a onclick="return false;" class="video-source" href="#"><%= creator.get('nickname') %></a>
       <% } %>
     </div> 

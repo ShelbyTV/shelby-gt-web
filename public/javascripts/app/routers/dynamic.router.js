@@ -6,7 +6,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
-    "user/:id/public_roll" : "displayUserPublicRoll",
+    "user/:id/personal_roll" : "displayUserPersonalRoll",
     "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
@@ -61,7 +61,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
       data: {include_children:true},
-      isUserPublicRoll: false
+      isUserPersonalRoll: false
     };
     if (!options) {
       options = defaults;
@@ -73,16 +73,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       updateRollTitle: options.updateRollTitle,
       data: options.data,
       onRollFetch: options.onRollFetch,
-      isUserPublicRoll: options.isUserPublicRoll
+      isUserPersonalRoll: options.isUserPersonalRoll
     });
   },
 
-  displayUserPublicRoll : function(userId){
-    var roll = new libs.shelbyGT.UserPublicRollModel({creator_id:userId});
+  displayUserPersonalRoll : function(userId){
+    var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
     shelby.models.guide.set('insideRollList', false);
-    this.displayRoll(roll, 'public_roll', {
+    this.displayRoll(roll, 'personal_roll', {
       updateRollTitle : false,
-      isUserPublicRoll : true
+      isUserPersonalRoll : true
     });
   },
 
@@ -270,7 +270,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       updateRollTitle: false,
       onRollFetch: null,
       data: null,
-      isUserPublicRoll: false
+      isUserPersonalRoll: false
     };
     if (!options) {
       options = defaults;
@@ -301,8 +301,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     var displayState;
-    if (options.isUserPublicRoll) {
-      displayState = 'userPublicRoll';
+    if (options.isUserPersonalRoll) {
+      displayState = 'userPersonalRoll';
     } else if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
       displayState = 'standardRoll';
     } else {
