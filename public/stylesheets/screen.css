@@ -2335,12 +2335,8 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
   height: 100%;
 }
-/* line 88, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame .frame-share, .frame-share .frame-share {
-  top: 80px;
-}
 
-/* line 93, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2446,6 +2442,7 @@ body.user-inactive .video-player-controls-wrapper {
   display: block;
   margin-bottom: 5px;
   padding: 5px;
+  width: 100%;
 }
 
 /* line 25, ../../app/stylesheets/partials/frame-rolling-options.scss */
