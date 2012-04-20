@@ -119,6 +119,7 @@ a:hover, a:visited, a:active {
 /* line 110, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
+  margin-left: -24px;
   margin-top: 100px;
   position: absolute !important;
   z-index: 0  !important;
