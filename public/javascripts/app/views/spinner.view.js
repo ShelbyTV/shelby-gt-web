@@ -1,12 +1,18 @@
-libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
+libs.shelbyGT.SpinnerView = Support.CompositeView.extend({ 
+  
+  options : { 
+    replacement: false,
+    size : 'small'
+  },
 
-  options : {
-    replacement: false
+  sizeToAssetMap : {
+    "small" :  "/images/assets/loading-small.png",
+    "large" :  "/images/assets/loading-large.gif"
   },
 
   _replacement : null,
 
-  initialize : function(opts) {
+  initialize : function() {
     if (this.options.replacement) {
       this._replacement = this.$el.html();
     }
@@ -16,7 +22,8 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
     if (this.options.replacement) {
       this._replacement = this.$el.html();
     }
-    this.$el.html('<div class="spinner">SPINNER</div>');
+    console.log(this.options.size, this.sizeToAssetMap[this.options.size]);
+    this.$el.html('<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />');
   },
 
   hide : function(){
