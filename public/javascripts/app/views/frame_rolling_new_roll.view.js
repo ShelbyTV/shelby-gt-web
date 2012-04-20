@@ -1,14 +1,9 @@
 libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
 
-  id: 'js-share-frame',
-
-  className : 'frame-share rolling-frame-trans',
-
-  _components : {
-    networkToggles : true,
-    shareButton : false,
-    spinner : false
-  },
+  events : _.extend({}, libs.shelbyGT.FrameShareView.prototype.events, {
+      "keyup .js-new-roll-name-input" : "_updateRollTitle",
+      "focus .js-new-roll-name-input" : "_onFocusRollTitle"
+  }),
 
   saveUrl: function(){
     return [
@@ -17,24 +12,29 @@ libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
     ];
   },
 
+  render : function(){
+    libs.shelbyGT.FrameShareView.prototype.render.call(this);
+    this.$('.share-comment').before(JST['frame-rolling-options']({roll:this.options.roll}));
+  },
+
   _share : function(){
     var self = this;
     var formValid = true;
     if(!this._validateShare()) {
-      $('.js-share-textarea').addClass('error');
+      this.$('.js-share-textarea').addClass('error');
       formValid = false;
     }
     var title = this.options.roll.get('title');
     if(!(title && title.length)) {
-      this.parent.$('.js-new-roll-name-input').addClass('error');
+      this.$('.js-new-roll-name-input').addClass('error');
       formValid = false;
     }
     if (!formValid) {
       this.onValidationFail();
       return false;
     } else {
-      $('.js-share-textarea').removeClass('error');
-      this.parent.$('.js-new-roll-name-input').removeClass('error');
+      this.$('.js-share-textarea').removeClass('error');
+      this.$('.js-new-roll-name-input').removeClass('error');
     }
     this._components.spinner && this._showSpinner();
     // have to create the roll and reroll the frame before we can share
@@ -47,6 +47,15 @@ libs.shelbyGT.FrameRollingNewRollView = libs.shelbyGT.FrameShareView.extend({
       }});
 
     return false;
+  },
+
+  _updateRollTitle : function(e){
+    this.options.roll.set('title',$(e.currentTarget).val());
+  },
+
+  _onFocusRollTitle : function(){
+    // remove the error highlight from the roll title input on focus if there is one
+    this.$('.js-new-roll-name-input').removeClass('error');
   }
 
 });

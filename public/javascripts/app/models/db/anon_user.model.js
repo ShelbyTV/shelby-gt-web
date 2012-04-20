@@ -15,7 +15,7 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       watch_later_roll : {
         id : 'anon'
       },
-      public_roll : {
+      personal_roll : {
         id : 'anon'
       }
     };

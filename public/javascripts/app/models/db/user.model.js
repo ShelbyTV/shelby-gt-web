@@ -12,7 +12,7 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       relatedModel : 'libs.shelbyGT.RollModel'
     },{
       type : Backbone.HasOne,
-      key : 'public_roll',
+      key : 'personal_roll',
       relatedModel : 'libs.shelbyGT.RollModel'
     }
   ],
@@ -55,8 +55,8 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     // this is a HasOne relation and there is no model already in the Relational Store with a matching id
     var watchLaterRoll = new libs.shelbyGT.RollModel({id:result.watch_later_roll_id});
     result.watch_later_roll = watchLaterRoll;
-    var publicRoll = new libs.shelbyGT.RollModel({id:result.public_roll_id});
-    result.public_roll = publicRoll;
+    var personalRoll = new libs.shelbyGT.RollModel({id:result.personal_roll_id});
+    result.personal_roll = personalRoll;
     return result;
   },
 

@@ -6,8 +6,9 @@
 
 .frame-rolling-completion{
 	@extend .rolling-main;
-//		background:blue;
-//		@include opacity(0.9);
+//	background:blue;
+//	@include opacity(0.9);
+	overflow-y:hidden;
 	.frame-share{
 //		background: url('../images/assets/noise.png') #494949;
 		@include border-radius(0);
@@ -68,13 +69,13 @@
 //			}
 //		}
 
-		&.roll-type-private{
-			@extend .roll-type-public;
+		// &.roll-type-private{
+		// 	@extend .roll-type-public;
 			
-			&:before{
-				content:url('../images/assets/rolls_private.svg');
-			}		
-		}
+		// 	&:before{
+		// 		content:url('../images/assets/rolls_private.svg');
+		// 	}
+		// }
 
 	}
 }

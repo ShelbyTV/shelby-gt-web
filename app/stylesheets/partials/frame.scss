@@ -1,3 +1,8 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
 // blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
 .list{
 	margin:0;
@@ -36,7 +41,7 @@
 	position:relative;
 
 	footer{
-		@include box-shadow(0px 4px 13px 4px #333);
+//		@include box-shadow(0px 4px 13px 4px #333);
 		border-top:1px solid $outset;
 		z-index:5;
 	}
@@ -52,7 +57,7 @@
 	img{
 		//@include border-radius(5px);
 		display:inline-block;
-		margin:0 auto 0;
+		margin:-27px auto 0;
 		overflow:hidden;
 		padding-top:0;
 		vertical-align:middle;
@@ -167,6 +172,13 @@
 			text-decoration:underline;
 			width:44px;
 		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$softShelbyBlueHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		}
 	}
 	.save-frame{
 		@extend .roll-frame;
@@ -178,23 +190,40 @@
 
 		button{
 			@include background(
-				url('../images/assets/saved_action.svg') no-repeat center center
+
+				url('../images/assets/saved_action.svg') no-repeat center center,
+				$softShelbyYellow
 			);
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				adjust-lightness($softShelbyYellowHighlight,50%)
+			);
+			@include box-shadow(inset 0px 1px 1px 0px $softShelbyYellowHighlight);			
 		}	
 	}
 	.remove-frame{
 		@extend .save-frame;
 		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
 		@include background(
+
 			url('../images/assets/noise.png'),
 			$softShelbyRed
 		);
 
 		button{
 			@include background(
-				url('../images/assets/remove.svg') no-repeat center center
+				url('../images/assets/saved_remove.svg') no-repeat center center
 			);
 		}	
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$softShelbyRedHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px $softShelbyRedHighlight);
+		}
 	}
 }
 
@@ -305,17 +334,17 @@
 }
 
 .user-post-origin-twitter{
-	a:before{
+	&:before{
 		content: image-url('../images/assets/twitter_stamp.svg');
 		float:left;
 		font-size:0.75em;
-		margin:0 2px;
+		margin:1px 3px;
 	}
 }
 
 .user-post-origin-facebook{
 	@extend .user-post-origin-twitter;
-	a:before{
+	&:before{
 		content: image-url('../images/assets/facebook_stamp.svg');
 	}
 }

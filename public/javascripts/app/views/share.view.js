@@ -1,7 +1,6 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   shareBaseLength : 0,
-  //Compulsory overrides - _share
 
   _components : {
     networkToggles : true,
@@ -112,11 +111,11 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   _share : function(){
     var self = this;
     if(!this._validateShare()) {
-      $('.js-share-textarea').addClass('error');
+      this.$('.js-share-textarea').addClass('error');
       this.onValidationFail();
       return false;
     }
-    $('.js-share-textarea').removeClass('error');
+    this.$('.js-share-textarea').removeClass('error');
     if (this._components.shareButton) {
       this.$('.js-submit-share').addClass('js-sharing');
     }

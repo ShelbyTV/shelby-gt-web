@@ -15,6 +15,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .video-source"                   : "_goToRoll",
+    "click .js-user-personal-roll"          : "_goToUserPersonalRoll",
     "click .video-score"                    : "_upvote",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -178,12 +179,19 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
   },
 
+  _goToUserPersonalRoll : function(e){
+    e.preventDefault();
+    var userId = $(e.currentTarget).attr('data-user-id');
+    shelby.router.navigate('/user/' + userId + '/personal_roll', {trigger:true});
+  },
+
   _onSavedTransitionComplete : function(){
     // when the saved indicator has completely faded out, remove it from the DOM
     this.$('.video-saved').remove();
   },
 
   _onFrameRollingTransitionComplete : function(e){
+    var self = this;
     if ($(e.currentTarget).hasClass('rolling-frame-trans')) {
       // frame rolling view just rolled in
       // grow the view if it's too small to show the internal share view

@@ -114,9 +114,9 @@
 
     _onShareDestinationChange: function(shareModel, destination){
       if (destination.length) {
-        $('.js-done').html('Comment and Share');
+        this.$('.js-done').html('Comment and Share');
       } else {
-        $('.js-done').html('Comment');
+        this.$('.js-done').html('Comment');
       }
     }
 

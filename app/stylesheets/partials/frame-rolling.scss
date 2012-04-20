@@ -7,7 +7,7 @@
 .rolling-main{
 	border-bottom:1px solid #222;
 	bottom:40px;
-	overflow-y:auto;
+	overflow-y:scroll;
 	overflow-x:hidden;
 	position:absolute;
 	top:0;
@@ -56,7 +56,7 @@
 .rolling-main-done{
 	@extend .rolling-main-back;
 	@include background(
-		$softShelbyGreen
+		$softShelbyBlue
 	);
 	@include box-shadow(
 		inset -1px 0px 1px 0px #549537
@@ -84,10 +84,6 @@
 	top:0;
 	width:100%;
 	height:100%;
-
-	.frame-share{
-		top:80px;
-	}
 }
 
 .rolling-frame-trans{

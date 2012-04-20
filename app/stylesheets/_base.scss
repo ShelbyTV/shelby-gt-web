@@ -55,11 +55,15 @@ $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
 $flatShelbyBlue: #007fb6;
 $softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
 $shelbyBlueHighlight: #79cae7;
+$softShelbyBlueHighlight: adjust-lightness($flatShelbyBlue,5%);
 
 $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
-
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
+
+$flatShelbyYellow: #d5cd39;
+$softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
+$softShelbyYellowHighlight: #ddd756;
 
 $softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
 
@@ -74,6 +78,7 @@ $softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
 
 $flatShelbyRed: #9e1632;
 $softShelbyRed: linear-gradient(top, #ba2046, $flatShelbyRed);
+$softShelbyRedHighlight: adjust-lightness($flatShelbyRed,10%);
 
 $flatShelbyVideoPlayer: #0e0e0e;
 $softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);

@@ -66,6 +66,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+        case DisplayState.userPersonalRoll :
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
@@ -111,7 +112,9 @@
       if (activeFrameModel) {
         var currentDisplayState = this.model.get('displayState');
         if (currentDisplayState == DisplayState.dashboard ||
-            currentDisplayState == DisplayState.standardRoll || currentDisplayState == DisplayState.watchLaterRoll) {
+            currentDisplayState == DisplayState.standardRoll ||
+            currentDisplayState == DisplayState.watchLaterRoll ||
+            currentDisplayState == DisplayState.userPersonalRoll) {
           // try to find the active frame in the current list view and activate its
           // rolling view
           if (this._listView) {
@@ -154,6 +157,7 @@
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
+        case libs.shelbyGT.DisplayState.userPersonalRoll :
           _currentModel = this.model.get('currentRollModel');
           _frames = _currentModel.get('frames').models;
           break;
