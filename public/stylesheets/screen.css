@@ -2378,13 +2378,13 @@ body.user-inactive .video-player-controls-wrapper {
 }
 /* line 76, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center;
-  background-size: 100%;
+  background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
+  background-size: 72%;
   border-right: 1px solid #222;
   content: "\0020";
   float: left;
-  margin: 1px 6px 1px 2px;
-  width: 20px;
+  margin: 1px 7px 1px 7px;
+  width: 40px;
   height: 19px;
 }
 
