@@ -184,6 +184,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onFrameRollingTransitionComplete : function(e){
+    var self = this;
     if ($(e.currentTarget).hasClass('rolling-frame-trans')) {
       // frame rolling view just rolled in
       // grow the view if it's too small to show the internal share view

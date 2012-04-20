@@ -22,8 +22,9 @@
   border-radius: 5px;
   border: 1px solid #222;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 5px;
+  width: 100%;
 }
 
 /* line 25, ../../../app/stylesheets/partials/frame-rolling-options.scss */

@@ -67,7 +67,8 @@
 
     _rollToSocialRoll : function(){
       var self = this;
-      var socialRoll = shelby.models.user.get('personal_roll');
+      var rollFollowings = shelby.models.user.get('roll_followings');
+      var socialRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
       this.options.frame.reRoll(socialRoll, function(newFrame){
         self.parent.revealFrameRollingCompletionView(newFrame, self.options.frame, socialRoll);
       });
