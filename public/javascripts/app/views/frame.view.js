@@ -15,6 +15,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .video-source"                   : "_goToRoll",
+    "click .js-user-personal-roll"          : "_goToUserPersonalRoll",
     "click .video-score"                    : "_upvote",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -176,6 +177,12 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _goToRoll : function(){
     shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+  },
+
+  _goToUserPersonalRoll : function(e){
+    e.preventDefault();
+    var userId = $(e.currentTarget).attr('data-user-id');
+    shelby.router.navigate('/user/' + userId + '/personal_roll', {trigger:true});
   },
 
   _onSavedTransitionComplete : function(){

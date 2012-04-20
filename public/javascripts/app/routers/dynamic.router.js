@@ -6,6 +6,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
+    "user/:id/personal_roll" : "displayUserPersonalRoll",
     "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
@@ -59,7 +60,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var defaults = {
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
-      data: {include_children:true}
+      data: {include_children:true},
+      isUserPersonalRoll: false
     };
     if (!options) {
       options = defaults;
@@ -70,7 +72,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
-      onRollFetch: options.onRollFetch
+      onRollFetch: options.onRollFetch,
+      isUserPersonalRoll: options.isUserPersonalRoll
+    });
+  },
+
+  displayUserPersonalRoll : function(userId){
+    var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
+    shelby.models.guide.set('insideRollList', false);
+    this.displayRoll(roll, 'personal_roll', {
+      updateRollTitle : false,
+      isUserPersonalRoll : true
     });
   },
 
@@ -257,7 +269,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var defaults = {
       updateRollTitle: false,
       onRollFetch: null,
-      data: null
+      data: null,
+      isUserPersonalRoll: false
     };
     if (!options) {
       options = defaults;
@@ -287,8 +300,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
     }
 
-    // the watch later roll is not sharable
-    var displayState = rollModel.id != shelby.models.user.get('watch_later_roll').id ? 'standardRoll' : 'watchLaterRoll';
+    var displayState;
+    if (options.isUserPersonalRoll) {
+      displayState = 'userPersonalRoll';
+    } else if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
+      displayState = 'standardRoll';
+    } else {
+     // the watch later roll is not sharable
+     displayState = 'watchLaterRoll';
+    }
 
     shelby.models.guide.set({
       'displayState': displayState,
