@@ -2448,7 +2448,7 @@ body.user-inactive .video-player-controls-wrapper {
   border-radius: 5px;
   border: 1px solid #222;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 5px;
   width: 100%;
 }
