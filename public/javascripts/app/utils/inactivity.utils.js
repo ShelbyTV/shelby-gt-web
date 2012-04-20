@@ -49,18 +49,18 @@ $.extend(shelby.userInactivity, {
 
 		//after a X second bootup leniency period, start looking for user inactivity
 		//That is, don't hide the UI for the first X+n seconds after app load, no matter what.
-		// setTimeout( function(){
-		// 	setInterval(function(){																									//set INACTIVE when...
-		// 		if( self._userActivityDetectionEnabled && 														  // activity detection is enabled
-		// 			(self._userActive || self._userHoveringActivityIgnore) && 					  // the user's current state is active OR we're ignoring their activity
-		// 			!self._userHoveringInactivityPreemption && 													  // the user is not hovering on a special div (i.e. play/pause) where we want to ignore inactivity
-		// 			(Date.now() - self._lastUserActivity > self._userInactivityTime) ){		// the user has been inactive for a long enough period of time
+		setTimeout( function(){
+			setInterval(function(){																									//set INACTIVE when...
+				if( self._userActivityDetectionEnabled && 														  // activity detection is enabled
+					(self._userActive || self._userHoveringActivityIgnore) && 					  // the user's current state is active OR we're ignoring their activity
+					!self._userHoveringInactivityPreemption && 													  // the user is not hovering on a special div (i.e. play/pause) where we want to ignore inactivity
+					(Date.now() - self._lastUserActivity > self._userInactivityTime) ){		// the user has been inactive for a long enough period of time
 				
-		// 			$('body').addClass(self._inactiveClass);
-		// 			self._userActive = false;
-		// 		}
-		// 	}, 500);
-		// }, self._userInactivityBootLeniency);
+					$('body').addClass(self._inactiveClass);
+					self._userActive = false;
+				}
+			}, 500);
+		}, self._userInactivityBootLeniency);
 	
 		//When users' mouse is over a control, we don't hide the overlay UI
 		$('.js-inactivity-preemption').live('mouseenter', function(){ self._userHoveringInactivityPreemption = true; });
