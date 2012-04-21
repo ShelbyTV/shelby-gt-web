@@ -1017,6 +1017,25 @@ a:hover, a:visited, a:active {
 }
 
 /* line 89, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.hide:hover {
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+/* line 91, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.hide:hover .copy {
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -moz-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+/* line 97, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -1896,7 +1915,7 @@ a:hover, a:visited, a:active {
 
 /* line 337, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1904,7 +1923,7 @@ a:hover, a:visited, a:active {
 
 /* line 347, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
 }
 
 /* line 351, ../../app/stylesheets/partials/frame.scss */
