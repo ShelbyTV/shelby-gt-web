@@ -86,6 +86,14 @@
   }
 }
 
+.guide-toggle.hide:hover {
+  @include transition-duration(.1s);
+  .copy {
+    @include transition-duration(.1s);
+    @include transition-delay(.1s);
+  }
+}
+
 .user-inactive .guide-toggle.show {
   @include box-shadow(none);
   
