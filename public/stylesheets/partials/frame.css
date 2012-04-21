@@ -34,7 +34,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #222222;
   font-size: 13px;
   margin: 0;
   overflow: hidden;
@@ -291,11 +291,12 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  border-color: #555;
   padding: 5px;
   width: 100%;
   resize: none;
 }
-/* line 261, ../../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -335,34 +336,35 @@
   -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
   -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
   box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border-color: #00597C;
   float: right;
   margin: 3px 0;
   padding: 0 7px;
   width: auto;
 }
 
-/* line 277, ../../../app/stylesheets/partials/frame.scss */
+/* line 279, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 281, ../../../app/stylesheets/partials/frame.scss */
+/* line 283, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 287, ../../../app/stylesheets/partials/frame.scss */
+/* line 289, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list .user-vcard {
   padding-bottom: 9px;
 }
 
-/* line 292, ../../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 297, ../../../app/stylesheets/partials/frame.scss */
+/* line 299, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -373,7 +375,7 @@
   margin: 0;
 }
 
-/* line 303, ../../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -383,7 +385,7 @@
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 308, ../../../app/stylesheets/partials/frame.scss */
+/* line 310, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -392,32 +394,32 @@
   height: 100%;
   padding: 0 9px 36px;
 }
-/* line 315, ../../../app/stylesheets/partials/frame.scss */
+/* line 317, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 321, ../../../app/stylesheets/partials/frame.scss */
+/* line 323, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 326, ../../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
   color: #a4a4a4;
 }
 
-/* line 332, ../../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 340, ../../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
@@ -425,16 +427,16 @@
   margin: 1px 3px;
 }
 
-/* line 350, ../../../app/stylesheets/partials/frame.scss */
+/* line 352, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
-/* line 354, ../../../app/stylesheets/partials/frame.scss */
+/* line 356, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 357, ../../../app/stylesheets/partials/frame.scss */
+/* line 359, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }

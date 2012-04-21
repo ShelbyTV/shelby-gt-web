@@ -181,6 +181,12 @@
 	width:92px;
 }
 
+.profile-subnav-userhandle{
+		color:#333;
+		background:#ddd;
+		border-bottom:1px solid #efefef;
+}
+
 .you{
 	span{
 		@include border-radius($radius);

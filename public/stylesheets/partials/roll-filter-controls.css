@@ -9,8 +9,8 @@ Syntax error: Undefined mixin 'background'.
 4: 		$rollsBG
 5: 	);
 6: 
-7: 	border-top:1px solid #222;
-8: 	border-bottom:1px solid #111;
+7: 	border-top:1px solid #333;
+8: 	border-bottom:1px solid #333;
 9: 	font-size:11px;
 10: 	font-weight:700;
 
@@ -93,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss\A \A 1: .filter-controls{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png')\A 4: 		$rollsBG\A 5: 	);\A 6: \A 7: 	border-top:1px solid #222;\A 8: 	border-bottom:1px solid #111;\A 9: 	font-size:11px;\A 10: 	font-weight:700;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/roll-filter-controls.scss\A \A 1: .filter-controls{\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png')\A 4: 		$rollsBG\A 5: 	);\A 6: \A 7: 	border-top:1px solid #333;\A 8: 	border-bottom:1px solid #333;\A 9: 	font-size:11px;\A 10: 	font-weight:700;"; }

@@ -717,7 +717,14 @@ a:hover, a:visited, a:active {
   background: #549738;
 }
 
-/* line 185, ../../app/stylesheets/partials/guide-header.scss */
+/* line 184, ../../app/stylesheets/partials/guide-header.scss */
+.profile-subnav-userhandle {
+  color: #333;
+  background: #ddd;
+  border-bottom: 1px solid #efefef;
+}
+
+/* line 191, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -731,7 +738,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 195, ../../app/stylesheets/partials/guide-header.scss */
+/* line 201, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -1131,7 +1138,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
   box-shadow: inset -1px 0px 1px 0px #85cc66;
-  border: 1px solid #222;
+  border: 1px solid #333;
   color: #efefef;
   display: block;
   line-height: 2.5;
@@ -1148,6 +1155,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
   box-shadow: inset -1px 0px 1px 0px #79cae7;
   background: #007fb6;
+  border-color: #00597C;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -1156,7 +1164,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #00a5cc, #007fb6);
 }
 
-/* line 52, ../../app/stylesheets/partials/rolls.scss */
+/* line 53, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave {
   -moz-box-shadow: inset 0px 0px 1px 0px #111111;
   -webkit-box-shadow: inset 0px 0px 1px 0px #111111;
@@ -1171,7 +1179,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(bottom, #444444, #303030);
 }
 
-/* line 61, ../../app/stylesheets/partials/rolls.scss */
+/* line 62, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   border-bottom: 1px solid #222;
@@ -1181,18 +1189,18 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 72, ../../app/stylesheets/partials/rolls.scss */
+/* line 73, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: url("../images/assets/noise.png") #585858;
   padding: 10px;
   position: relative;
 }
 
-/* line 82, ../../app/stylesheets/partials/rolls.scss */
+/* line 83, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 86, ../../app/stylesheets/partials/rolls.scss */
+/* line 87, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1204,7 +1212,7 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
-/* line 94, ../../app/stylesheets/partials/rolls.scss */
+/* line 95, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1215,25 +1223,25 @@ a:hover, a:visited, a:active {
   padding-top: 15px;
 }
 
-/* line 101, ../../app/stylesheets/partials/rolls.scss */
+/* line 102, ../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 106, ../../app/stylesheets/partials/rolls.scss */
+/* line 107, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding: 0;
 }
-/* line 111, ../../app/stylesheets/partials/rolls.scss */
+/* line 112, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 10px 10px 10px 0;
 }
 
-/* line 119, ../../app/stylesheets/partials/rolls.scss */
+/* line 120, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter, .networks-facebook {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1255,7 +1263,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 134, ../../app/stylesheets/partials/rolls.scss */
+/* line 135, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1269,7 +1277,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 145, ../../app/stylesheets/partials/rolls.scss */
+/* line 146, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1282,7 +1290,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 153, ../../app/stylesheets/partials/rolls.scss */
+/* line 154, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1296,13 +1304,13 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 164, ../../app/stylesheets/partials/rolls.scss */
+/* line 165, ../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   float: right;
   width: 50%;
 }
 
-/* line 169, ../../app/stylesheets/partials/rolls.scss */
+/* line 170, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1333,7 +1341,7 @@ a:hover, a:visited, a:active {
   text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 171, ../../app/stylesheets/partials/rolls.scss */
+/* line 172, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: 278px;
   top: 7px;
@@ -1342,8 +1350,8 @@ a:hover, a:visited, a:active {
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: url("../images/assets/noise.png") #585858;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #111;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
   font-size: 11px;
   font-weight: 700;
   margin: 0;
@@ -1566,7 +1574,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #222222;
   font-size: 13px;
   margin: 0;
   overflow: hidden;
@@ -1823,11 +1831,12 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  border-color: #555;
   padding: 5px;
   width: 100%;
   resize: none;
 }
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1867,34 +1876,35 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
   -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
   box-shadow: inset -1px 0px 1px 0px #79cae7;
+  border-color: #00597C;
   float: right;
   margin: 3px 0;
   padding: 0 7px;
   width: auto;
 }
 
-/* line 277, ../../app/stylesheets/partials/frame.scss */
+/* line 279, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 281, ../../app/stylesheets/partials/frame.scss */
+/* line 283, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 287, ../../app/stylesheets/partials/frame.scss */
+/* line 289, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list .user-vcard {
   padding-bottom: 9px;
 }
 
-/* line 292, ../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 297, ../../app/stylesheets/partials/frame.scss */
+/* line 299, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1905,7 +1915,7 @@ a:hover, a:visited, a:active {
   margin: 0;
 }
 
-/* line 303, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background-image: -webkit-linear-gradient(top, #333333, #303030);
@@ -1915,7 +1925,7 @@ a:hover, a:visited, a:active {
   background-image: linear-gradient(top, #333333, #303030);
 }
 
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 310, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
@@ -1924,32 +1934,32 @@ a:hover, a:visited, a:active {
   height: 100%;
   padding: 0 9px 36px;
 }
-/* line 315, ../../app/stylesheets/partials/frame.scss */
+/* line 317, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 321, ../../app/stylesheets/partials/frame.scss */
+/* line 323, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 326, ../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 700;
   color: #a4a4a4;
 }
 
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   margin-top: 9px;
   padding-right: 3px;
 }
 
-/* line 340, ../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
@@ -1957,16 +1967,16 @@ a:hover, a:visited, a:active {
   margin: 1px 3px;
 }
 
-/* line 350, ../../app/stylesheets/partials/frame.scss */
+/* line 352, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
-/* line 354, ../../app/stylesheets/partials/frame.scss */
+/* line 356, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 357, ../../app/stylesheets/partials/frame.scss */
+/* line 359, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 0 5px 0 36px;
 }
@@ -3409,7 +3419,7 @@ body.user-inactive .video-player-controls-wrapper {
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
   box-shadow: inset -1px 0px 1px 0px #85cc66;
-  border: 1px solid #222;
+  border: 1px solid #333;
   color: #efefef;
   display: block;
   line-height: 2.5;

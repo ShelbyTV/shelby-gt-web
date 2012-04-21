@@ -42,7 +42,7 @@ $inset : #4f4d51;
 $save : #2291c2;
 
 //border styles
-$articleStroke : 1px solid black;
+$articleStroke : 1px solid #222;
 $menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
@@ -156,7 +156,7 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 	);
 	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
 
-	border:1px solid #222;
+	border:1px solid #333;
 	color:#efefef;
 	display:block;
 	line-height:2.5;

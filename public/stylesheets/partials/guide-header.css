@@ -185,7 +185,14 @@
   background: #549738;
 }
 
-/* line 185, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 184, ../../../app/stylesheets/partials/guide-header.scss */
+.profile-subnav-userhandle {
+  color: #333;
+  background: #ddd;
+  border-bottom: 1px solid #efefef;
+}
+
+/* line 191, ../../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -199,7 +206,7 @@
   margin-right: 5px;
   width: 24px;
 }
-/* line 195, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 201, ../../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }

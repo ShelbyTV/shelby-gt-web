@@ -44,6 +44,7 @@
 	@extend .rolls-add;
 	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
 	background:$flatShelbyBlue;
+	border-color:#00597C;
 	@include background(
 		$softShelbyBlue
 	);
