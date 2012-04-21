@@ -29,17 +29,31 @@
 	width:100%;
 }
 
+
+//	GROSS HACKY WAY
+//	NEEDS TO BE CLEANED UP
+//	XXX
 .current-roll-avatar {
 	display:inline-block;
-	height:28px;
-	left:-2px;
+	height:15px;
+	left:-14px;
 	position:relative;
-	width:28px;
+	width:12px;
 	top:-2px;
+	span{
+		display:block;
+		height:25px;
+		overflow-x:hidden;
+		position:relative;
+		width:25px;
 
+	}
 	img{
 		overflow:hidden;
-		width:100%;
+		height:100%;
+		left:0;
+		position:absolute;
+		top:0;
 	}
 }
 
