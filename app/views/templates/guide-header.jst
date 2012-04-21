@@ -1,18 +1,18 @@
 <div class="header clearfix">
-  <a class="logo" href="/">
+  <button class="logo" href="/">
     <h1 class="ir">
       Shelby.tv
     </h1>
-  </a>
+  </button>
   <nav>
     <ul class="settings">
       <li>
-        <a class="profile you" href="#/<% user.get('nickname') %>">
+        <button class="profile you" href="#/<% user.get('nickname') %>">
           <span>
             <img src="<%= user.get('user_image') %>" />
           </span>
           You
-        </a>
+        </button>
         <ul id="profile-subnav" class="subnav profile-subnav">
           <li>
             <span>
@@ -20,30 +20,30 @@
             </span>
           </li>
           <li>
-            <a class="js-preferences" href="#">Preferences</a>
+            <button class="js-preferences" href="#">Preferences</button>
           </li>
 <!--           <li>
-            <a href="#copyright">Facebook Open Graph Off</a>
+            <button href="#copyright">Facebook Open Graph Off</button>
           </li>
  -->          <li>
-            <a href="/signout">Log Out</a>
+            <button href="/signout">Log Out</button>
           </li>
         </ul>          
       </li>
       <li>
-        <a class="about" href="#about">About</a>
+        <button class="about" href="#about">About</button>
         <ul id="about-subnav" class="subnav about-subnav">
           <li>
-            <a class="js-help" href="#help">Help</a>
+            <button class="js-help" href="#help">Help</button>
           </li>
           <li>
-            <a class="js-team" href="#team">Team</a>
+            <button class="js-team" href="#team">Team</button>
           </li>
           <li>
-            <a href="http://shelby.tv/blog" target="_blank">Blog</a>
+            <button href="http://shelby.tv/blog" target="_blank">Blog</button>
           </li>
           <li>
-            <a class="js-copyright" href="#copyright">Copyright</a>
+            <button class="js-copyright" href="#copyright">Copyright</button>
           </li>
         </ul>
       </li>

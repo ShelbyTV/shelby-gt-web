@@ -17,6 +17,8 @@
 }
 
 .logo{
+	background:transparent;
+	border:none;
 	display:block;
 	float:left;
 
@@ -30,15 +32,44 @@
 
 .settings{
 	float:right;
-	font-weight:500;
-	font-size:13px;
-	line-height:2;
 	margin:0;
+	padding:0;
 	width:50%;
+
+	button{
+		@include buttonfont;
+
+		background:transparent;
+		border:none;
+		color:#efefef;
+		line-height:3.25;
+		text-align:left;
+//		width:100%;
+		
+		&:after {
+			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
+			content:"\0020";
+			font-size: $font-size/1.5;
+			height:12px;
+//			left:0;
+			line-height:5.5;
+			margin-left:3px;
+			position:absolute;
+			text-align:right;
+			top:40%;
+			width:12px;
+
+		}
+		&:hover{
+			color:white;
+			text-decoration:underline;
+		}
+	}
 
 	li{
 		display:block;
 		float:right;
+		height:42px;
 		position:relative;
 		
 		li{
@@ -48,14 +79,14 @@
 			margin:0;
 			padding-left:0;
 
-			a,span{
+			button,span{
 				height:2em;
 				line-height:2;
 				padding-left:$margin;
 				text-decoration:none;
 			}
 
-			a:before, a:after{
+			button:before, button:after{
 				content: none;
 			}
 		}	
@@ -93,7 +124,7 @@
 	padding-left:$defaultMargin;
 	padding-right:$defaultMargin*2;
 	position:relative;
-	width:68px;
+	width:70px;
 	z-index:2;
 
 	&:hover{
@@ -128,9 +159,14 @@
 }
 
 .profile-subnav{
-	a:hover{
-		background:$shelbyBlue;
-		text-decoration:none;
+
+	button{
+
+		width:100%;
+		&:hover{
+			background:$shelbyBlue;
+			text-decoration:none;
+		}
 	}
 	left:-94px;
 	width:174px;
@@ -138,7 +174,7 @@
 
 .about-subnav{
 	@extend .profile-subnav;
-	a:hover{
+	button:hover{
 		background:$shelbyGreen;
 	}
 	left:0;

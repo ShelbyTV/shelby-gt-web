@@ -21,7 +21,7 @@ html, body {
 /* line 13, ../../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
-  font: 300 normal 62.5%/1.231 "Ubuntu", "Times New Roman";
+  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png") black;
   overflow: hidden;
 }

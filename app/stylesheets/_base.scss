@@ -87,6 +87,9 @@ $twitterBlue: #00a2d1;
 $softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
 $facebookBlue: #013e80;
 $softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
+$tumblrBlue: #2f445b;
+$softTumblrBlue: linear-gradient(top, #426180, $tumblrBlue);
+
 
 $flatSwitchGray: #fefefe;
 $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
@@ -113,15 +116,15 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 }
 
 @mixin basefont{
-	font:300 normal 62.5%/1.231 'Ubuntu','Times New Roman';
+	font:300 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
 }
 
 @mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu','Times New Roman';
+	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
 }
 
 @mixin buttonfont{
-	font:700 normal 100%/1.231 'Ubuntu','Times New Roman';
+	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
 }
 
 @mixin fontcolor {

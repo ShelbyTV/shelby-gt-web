@@ -31,13 +31,13 @@
 
 .current-roll-avatar {
 	display:inline-block;
-	height:30px;
+	height:28px;
 	left:-2px;
 	position:relative;
-	width:30px;
+	width:28px;
+	top:-2px;
 
 	img{
-		@include border-radius($radius);
 		overflow:hidden;
 		width:100%;
 	}

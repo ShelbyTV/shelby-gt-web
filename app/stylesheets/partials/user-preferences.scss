@@ -149,6 +149,8 @@
 		);
 		@include border-radius($radius);
 		@include box-shadow(-1px 0px 5px -1px #222);
+
+		background-size:76%;
 		border:1px solid #222;
 		content: "\0020";
 		float:left;
@@ -166,6 +168,8 @@
 		@include background(
 			url('../images/assets/rolls_facebook.svg') no-repeat center center #013e80
 		);
+		
+		background-size:28%;
 		content: "\0020";
 	}	
 }
@@ -174,8 +178,11 @@
 
 	&:before{
 		@include background(
-			url('../images/assets/rolls_facebook.svg') no-repeat center center #013e80
+			url('../images/assets/rolls_tumblr.svg') no-repeat center center,
+			$tumblrBlue
+
 		);
+		background-size:36%;
 		content: "\0020";
 	}
 }
