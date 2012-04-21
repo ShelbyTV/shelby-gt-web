@@ -39,12 +39,15 @@
 	overflow:hidden;
 	padding:0;
 	position:relative;
+}
 
-	footer{
+.video-card-footer{
 //		@include box-shadow(0px 4px 13px 4px #333);
-		border-top:1px solid $outset;
-		z-index:5;
-	}
+	@include border-radius(0 0 $radius $radius);
+	
+	border-top:1px solid $outset;
+	overflow:hidden;
+	z-index:5;
 }
 
 .video-thumbnail {
@@ -65,6 +68,8 @@
 		cursor:pointer;
 	}	
 }
+
+
 
 .video-card-header{
 	@include softgradient;
@@ -293,6 +298,7 @@
 }
 
 .video-author{
+	@include border-radius(0 0 $radius $radius);
 	margin:0;
 }
 

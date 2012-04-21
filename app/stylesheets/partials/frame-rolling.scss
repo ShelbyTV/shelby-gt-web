@@ -39,6 +39,7 @@
 	@include background(
 		url('../images/assets/noise.png') #555
 	);
+	@include border-radius(0 0 $radius - 1 $radius - 1);
 
 	border-top:1px solid #4F4D51;
 	bottom:0;
@@ -90,7 +91,7 @@
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
 			//border-radii bug, experiment
-			@include border-radius($radius - 1  $radius - 1 0 0);
+			@include border-radius($radius);
 
 	@include background(
 		url('../images/assets/noise.png') 
