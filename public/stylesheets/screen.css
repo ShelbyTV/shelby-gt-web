@@ -834,38 +834,35 @@ a:hover, a:visited, a:active {
 /* line 75, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
   background: url("../images/assets/stream_on.svg") no-repeat center 0px #3f3f3f;
-  padding-top: 25px;
 }
-/* line 84, ../../app/stylesheets/partials/menu.scss */
+/* line 83, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 89, ../../app/stylesheets/partials/menu.scss */
+/* line 88, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 94, ../../app/stylesheets/partials/menu.scss */
+/* line 93, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab:hover {
   background: url("../images/assets/rolls_on.svg") no-repeat center 0px #3f3f3f;
-  padding-top: 25px;
 }
-/* line 102, ../../app/stylesheets/partials/menu.scss */
+/* line 100, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 107, ../../app/stylesheets/partials/menu.scss */
+/* line 105, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #F0E84C;
 }
-/* line 112, ../../app/stylesheets/partials/menu.scss */
+/* line 110, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab:hover {
   background: url("../images/assets/saves_on.svg") no-repeat center 0px #3f3f3f;
-  padding-top: 25px;
 }
 
-/* line 123, ../../app/stylesheets/partials/menu.scss */
+/* line 120, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -876,7 +873,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 129, ../../app/stylesheets/partials/menu.scss */
+/* line 126, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -884,7 +881,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 136, ../../app/stylesheets/partials/menu.scss */
+/* line 133, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -895,7 +892,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 141, ../../app/stylesheets/partials/menu.scss */
+/* line 138, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
