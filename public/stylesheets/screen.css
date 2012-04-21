@@ -2447,20 +2447,22 @@ body.user-inactive .video-player-controls-wrapper {
   display: block;
   float: right;
   padding-left: 0;
+  padding-top: 1px;
+  padding-right: 8px;
 }
-/* line 77, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 79, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
   border-right: 1px solid #222;
   content: "\0020";
   float: left;
-  margin: 1px 7px 1px 7px;
-  width: 40px;
-  height: 19px;
+  margin: 1px 9px 1px 7px;
+  width: 38px;
+  height: 17px;
 }
 
-/* line 89, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 91, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2489,7 +2491,7 @@ body.user-inactive .video-player-controls-wrapper {
   height: 100%;
 }
 
-/* line 109, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 111, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

@@ -73,6 +73,8 @@
 	display:block;
 	float:right;
 	padding-left:0;
+	padding-top:1px;
+	padding-right:8px;
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
@@ -80,9 +82,9 @@
 		border-right:1px solid #222;
 		content:"\0020";
 		float:left;
-		margin:1px 7px 1px 7px;
-		width:40px;
-		height:19px;
+		margin:1px 9px 1px 7px;
+		width:38px;
+		height:17px;
 	}
 }
 
