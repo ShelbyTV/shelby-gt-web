@@ -92,7 +92,7 @@ a:hover, a:visited, a:active {
 
 /* line 78, ../../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
-  opacity: .1;
+  opacity: .5;
 }
 
 /* line 82, ../../../app/stylesheets/partials/app.html.scss */

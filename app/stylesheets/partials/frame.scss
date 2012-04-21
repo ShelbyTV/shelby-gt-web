@@ -189,30 +189,27 @@
 		@extend .roll-frame;
 		@include background(
 			url('../images/assets/noise.png'),
-			$softShelbyGray
+			$softShelbyPurple
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #8d8f90);
 
 		button{
 			@include background(
-
-				url('../images/assets/saved_action.svg') no-repeat center center,
-				$softShelbyYellow
+				url('../images/assets/saved_action.svg') no-repeat center center
 			);
 		}
 		&:hover{
 			@include background(
 				url('../images/assets/noise.png'),
-				adjust-lightness($softShelbyYellowHighlight,50%)
+				$softShelbyPurpleHighlight
 			);
-			@include box-shadow(inset 0px 1px 1px 0px $softShelbyYellowHighlight);			
+			@include box-shadow(inset 0px 1px 1px 0px $softShelbyPurpleHighlight);			
 		}	
 	}
 	.remove-frame{
 		@extend .save-frame;
 		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
 		@include background(
-
 			url('../images/assets/noise.png'),
 			$softShelbyRed
 		);

@@ -61,6 +61,10 @@ $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
 
+$flatShelbyPurple: #693a7b;
+$softShelbyPurple: linear-gradient(top, #8d539a, $flatShelbyPurple);
+$softShelbyPurpleHighlight: #9863a2;
+
 $flatShelbyYellow: #d5cd39;
 $softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
 $softShelbyYellowHighlight: #ddd756;

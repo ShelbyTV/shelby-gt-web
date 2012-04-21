@@ -106,7 +106,7 @@
 			@include background(
 				url('../images/assets/saves_on.svg') no-repeat center 1px
 			);
-			color:#F0E84C;
+			color:$softShelbyPurpleHighlight;
 			&:hover{
 				@include background(
 					url('../images/assets/saves_on.svg') no-repeat center 0px #3f3f3f
