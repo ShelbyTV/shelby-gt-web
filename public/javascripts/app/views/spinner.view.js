@@ -22,7 +22,6 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
     if (this.options.replacement) {
       this._replacement = this.$el.html();
     }
-    console.log(this.options.size, this.sizeToAssetMap[this.options.size]);
     this.$el.html('<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />');
   },
 

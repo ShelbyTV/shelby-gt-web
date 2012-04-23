@@ -109,7 +109,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(){
-    this._setupTopLevelViews();
+    this._setupTopLevelViews({showSpinner: true});
+    
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
@@ -123,24 +124,29 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the dashboard on load
       onSuccess = this._activateFirstDashboardVideoFrame;
     }
-    shelby.models.dashboard.fetch({
-      data: {
-        include_children : true,
-        limit : shelby.config.pageLoadSizes.dashboard
-      },
-      success: onSuccess
-    });
+    this._hideSpinnerAfter(
+      shelby.models.dashboard.fetch({
+        data: {
+          include_children : true,
+          limit : shelby.config.pageLoadSizes.dashboard
+        },
+        success: onSuccess
+      })
+    );
   },
 
   displayRollList : function(){
-    this._setupTopLevelViews();
+    this._setupTopLevelViews({showSpinner: true});
+    
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.rollList,
       'insideRollList' : true
     });
-    shelby.models.user.fetch({
-      data: {include_rolls:true}
-    });
+    this._hideSpinnerAfter(
+      shelby.models.user.fetch({
+        data: {include_rolls:true}
+      })
+    );
   },
 
   displaySaves : function(){
@@ -236,7 +242,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guide.scrollToActiveFrameView();
   },
 
-  _setupTopLevelViews : function(){
+  _setupTopLevelViews : function(opts){
+    opts = opts || {};
+    
     shelby.models.user.get('anon') && this._setupAnonUserViews();
     // header & menu render on instantiation //
     shelby.views.commentOverlay = shelby.views.commentOverlay ||
@@ -256,7 +264,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
-    shelby.views.guideSpinner.show();
+    if( opts.showSpinner ){ shelby.views.guideSpinner.show(); }
   },
 
   _setupAnonUserViews : function(){
@@ -277,7 +285,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       _(options).defaults(defaults);
     }
 
-    this._setupTopLevelViews();
+    this._setupTopLevelViews({showSpinner: true});
+    
     var rollModel;
     if (typeof(roll) === 'string') {
       // if roll is a string, its the id of the roll to display, so get or construct a model for that id
@@ -318,7 +327,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
-    rollModel.fetch(fetchOptions);
+    this._hideSpinnerAfter( rollModel.fetch(fetchOptions) );
+  },
+  
+  //---
+  //MISC HELPERS
+  //---
+  
+  _hideSpinnerAfter: function(xhr){
+    // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
+    // upon which we append another callback to hide the spinner shown earlier.
+    xhr.done(function(){ 
+      shelby.views.guideSpinner.hide(); 
+    });
   }
 
 });
