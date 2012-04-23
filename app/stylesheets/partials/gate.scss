@@ -1,0 +1,81 @@
+.email-gate{
+	
+}
+
+.email-gate-header{
+
+}
+
+.email-gate-logo {
+	@include background(
+		url('../images/assets/shelbylogo.svg') no-repeat center center transparent
+	);
+
+	float: left;
+	height:100px;
+	width: 50%;
+}
+
+.email-gate-slogan {
+	float: left;
+	width: 50%;
+}
+
+
+.email-gate-login{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.email-gate-networks{
+	@include background(
+		url('../images/assets/noise.png') #585858
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 0 lime);
+
+}
+
+.email-gate-networks-twitter {
+	//extend existing
+}
+
+.email-gate-networks-facebook {
+	//extend existing
+}
+
+.email-gate-error {
+	font-size: 11px;
+}
+
+.email-gate-signup {
+	margin: 0 auto;
+
+}
+
+.email-gate-caption { 
+	margin:0 auto;
+	text-align: center;
+
+}
+
+.email-gate-label {
+	float:left;
+	text-align: right;
+	width: 25%:
+}
+
+.email-gate-email {
+	@include border-radius($radius/2);
+	float:left;
+	width:75%;
+
+	//extend some inputs styles
+}
+
+.email-gate-signup-submit{
+	@extend .email-gate-email;
+	//extend the button style
+
+}
