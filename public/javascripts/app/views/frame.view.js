@@ -59,7 +59,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._leaveChildren();
 
     var firstMessage = this.model.get('conversation').get('messages').first();
-    var onWatchLaterRoll = this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id');
+    var onWatchLaterRoll = this.model.has('roll') && this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id');
     var firstMessageIsCreators = firstMessage && (firstMessage.get('user_id') == this.model.get('creator_id') || onWatchLaterRoll);
     this.$el.html(this.template({
       frame : this.model,
