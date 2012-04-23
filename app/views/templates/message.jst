@@ -1,0 +1,44 @@
+<%
+  var messageJSON;
+  if (message) {
+    messageJSON = message.toJSON();
+    messageJSON.text = message.getText();
+  } else {
+    /*
+      if there is no message, create something that looks like
+      a message so that the frame displays who created it and when
+    */
+    var creator = frame.get('creator');
+    messageJSON = {
+      created_at : frame.get('created_at'),
+      realname : creator.get('name'),
+      user_id : creator.id,
+      user_image_url : creator.get('user_image')
+    };
+  }
+%>
+<div class="user-vcard">
+  <span class="user-avatar">
+    <a class="js-user-personal-roll" href="#" data-user-id="<%= messageJSON.user_id %>">
+      <img src="<%= messageJSON.user_image_url %>" alt="" title="" height="25" width="25">
+    </a>
+  </span>
+
+  <span class="user-handle">
+    <a class="js-user-personal-roll" href="#" data-user-id="<%= messageJSON.user_id %>">
+      <%= messageJSON.realname %>
+    </a>
+  </span>
+  <%
+    var timeStampClass = 'user-post-date';
+    if (messageJSON.origin_network) timeStampClass += ' user-post-origin-' + messageJSON.origin_network;
+  %>
+  <span class="<%= timeStampClass %>">
+    <%= messageJSON.created_at %>
+  </span>
+  <div class="user-video-text">
+      <p>
+        <%= messageJSON.text %>
+      </p>
+  </div>
+</div>
