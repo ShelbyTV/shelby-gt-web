@@ -234,14 +234,14 @@
 	@include border-radius($radiusFooter);
 
 	border-top:1px solid $inset;
-	bottom:0;
+//	bottom:0;
 	font-size:$font-size - 2;
 	font-weight:700;
 	height:27px;
-	left:0;
+//	left:0;
 	padding: 6px 8px 7px;
-	position: absolute;
-	width:100%;
+//	position: absolute;
+//	width:100%;
 }
 
 .video-activity{
@@ -286,9 +286,9 @@
 		padding:0;
 
 	}
-	.user-vcard {
-		padding-bottom:9px;
-	}
+//	.user-vcard {
+//		padding-bottom:9px;
+//	}
 }
 
 .video-source{
@@ -297,7 +297,7 @@
 }
 
 .video-author{
-	@include border-radius(0 0 $radius $radius);
+//	@include border-radius(0 0 $radius $radius);
 	margin:0;
 }
 
@@ -313,14 +313,18 @@
 	font-size:13px;
 	font-weight:300;
 	height:100%;
-	padding: 0 9px 36px;
+	padding: 0 9px 9px;
 	a{
 		text-decoration:none;
 	}
 }
 
 .user-avatar{
+	display: block;
+	float: left;
+
 	img{
+		margin-bottom:7px;
 		margin-right:7px;
 		margin-top: 9px;
 	}
@@ -328,12 +332,14 @@
 .user-handle{
 	font-size:11px;
 	font-weight:700;
+	line-height:2.8;
 	color:#a4a4a4;
 }
 
 .user-post-date{
 	@extend .user-handle;
 	float:right;
+	line-height:1;
 	margin-top:9px;
 	padding-right:3px;
 }
@@ -357,6 +363,6 @@
 	margin-top:-7px;
 
 	p{
-		margin:0 $defaultMargin/2 0 $defaultMargin*3+6;
+		margin:2px $defaultMargin/2 0 $defaultMargin*3+2;
 	}
 }
