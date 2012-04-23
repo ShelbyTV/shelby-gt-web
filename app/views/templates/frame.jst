@@ -30,79 +30,13 @@
  
   <footer class="video-card-footer">
 
-  <% var firstMessage = messages.first() %>
-  <% if (firstMessage) { %>
-    <!-- Should be done in a sub-view? -->
-
-      <blockquote class="user video-author">
-        <div class="user-vcard">
-          <span class="user-avatar <%= shelby.models.user.get('anon') ? 'user-avatar-logged-out' : '' %>">
-            <% var userAvatarUrl = shelby.models.user.get('anon') ? '/images/assets/user_loggedout.svg' : firstMessage.get('user_image_url') %>
-            <a class="js-user-personal-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
-              <img src="<%= userAvatarUrl %>" alt="" title="" height="25" width="25">
-            </a>
-          </span>
-
-          <span class="user-handle">
-            <a class="js-user-personal-roll" href="#" data-user-id="<%= firstMessage.get('user_id') %>">
-              <%= firstMessage.get('realname') %>
-            </a>
-          </span>
-          <%
-            var timeStampClass = 'user-post-date';
-            if (firstMessage.get('origin_network')) timeStampClass += ' user-post-origin-' + firstMessage.get('origin_network');
-          %>
-          <span class="<%= timeStampClass %>">
-            <%= firstMessage.get('created_at') %>
-          </span>
-          <div class="user-video-text">
-              <p>
-                <%= firstMessage.getText() %>
-              </p>
-          </div>
-        </div>
-      </blockquote>
-    <% } %>
-
+    <!-- MessageView for the first message will be dynamically rendered here -->
 
       <section class="video-activity js-video-activity clearfix" style="<%= showConversation ? '' : 'display:none' %>">
 
         <!-- sample build -->
         <ul class="video-activity-list">
-          <% messages.each(function(msg, index){ %>
-        <% if (index>0){ %>
-          <li>
-            <blockquote class="user video-author">
-              <div class="user-vcard">
-                <span class="user-avatar">
-                  <a class="js-user-personal-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
-                    <img src="<%= msg.get('user_image_url') %>" alt="msg.get('nickname')" title="msg.get('nickname')" height="25" width="25">
-                  </a>
-                </span>
-
-                <span class="user-handle">
-                  <a class="js-user-personal-roll" href="#" data-user-id="<%= msg.get('user_id') %>">
-                    <%= msg.get('realname') %>
-                  </a>
-                </span>
-                <%
-                  var timeStampClass = 'user-post-date';
-                  if (msg.get('origin_network')) timeStampClass += ' user-post-origin-' + msg.get('origin_network');
-                %>
-                <span class="<%= timeStampClass %>">
-                  <%= msg.get('created_at') %>
-                </span>
-
-                <div class="user-video-text">
-                    <p>
-                      <%= msg.getText() %>
-                    </p>
-                </div>
-              </div>
-            </blockquote>
-          </li>
-        <% } %>
-        <% }); %>
+          <!-- MessageViews for the remaining messages are dynamically rendered here -->
         </ul>
         <!-- sample build -->
         <form class="video-activity-comment clearfix">
@@ -111,10 +45,10 @@
           <button class="js-message-submit video-activity-comment-submit">Comment</button>
         </form>
       </section><!-- eo section.video-shares -->
-    <% /*}*/ %>
   
     <div class="video-footer">
-      <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (messages.length) { %> (<%= messages.length-1 %>)<% } %></a>
+      <% var remainingMessageCount = messages.length - (firstMessageIsCreators ? 1 : 0) %>
+      <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
              shelby.models.guide.get('displayState') !== 'userPersonalRoll') { %>
         <a onclick="return false;" class="video-source" href="#"><%= creator.get('nickname') %></a>
