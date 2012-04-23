@@ -15,7 +15,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .video-source"                   : "_goToRoll",
-    "click .js-user-personal-roll"          : "_goToUserPersonalRoll",
     "click .video-score"                    : "_upvote",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
@@ -56,10 +55,34 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   render : function(showConversation){
-    this.$el.html(this.template({frame : this.model, showConversation : showConversation}));
+    var self = this;
+    this._leaveChildren();
+
+    var firstMessage = this.model.get('conversation').get('messages').first();
+    var firstMessageIsCreators = firstMessage && firstMessage.get('user_id') == this.model.get('creator_id');
+    this.$el.html(this.template({
+      frame : this.model,
+      showConversation : showConversation,
+      firstMessageIsCreators : firstMessageIsCreators
+    }));
     if (this.model == shelby.models.guide.get('activeFrameModel')) {
       this.$el.addClass('active-frame');
     }
+
+    // if there is a first message from the frame creator, render it, otherwise
+    // render the equivalent information about the frame's creator from the frame
+    var firstMessageViewParams = firstMessageIsCreators ? {model:firstMessage} :{frame:this.model};
+    var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
+    this.insertChildBefore(firstMessageView,'.js-video-activity');
+
+    // render all other messages that haven't already been rendered
+    var startIndex = firstMessageIsCreators ? 1 : 0;
+    var _remainingMessages = _(this.model.get('conversation').get('messages').rest(startIndex));
+    _remainingMessages.each(function(message){
+      var messageView = new libs.shelbyGT.MessageView({model:message});
+      self.renderChild(messageView);
+      self.$('.video-activity-list').append($('<li>').append(messageView.el));
+    });
   },
 
   _activate : function(){
@@ -129,7 +152,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
-    this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'See');
+    this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'Show');
   },
 
   _onConversationChange : function(){
@@ -141,7 +164,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _renderError : function(msg){
-    this.$('.js-frame-comment-error-message').text(msg).show().fadeOut(1000);
     this.$('.js-add-message-input').addClass('error');
     return false;
   },
@@ -177,12 +199,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _goToRoll : function(){
     shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
-  },
-
-  _goToUserPersonalRoll : function(e){
-    e.preventDefault();
-    var userId = $(e.currentTarget).attr('data-user-id');
-    shelby.router.navigate('/user/' + userId + '/personal_roll', {trigger:true});
   },
 
   _onSavedTransitionComplete : function(){
