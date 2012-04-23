@@ -29,7 +29,7 @@
     },
 
     _onActiveFrameModelChange : function(guide, newFrame){
-      this.render(newFrame);
+      this.model.get('activeFrameModel').get('conversation') && this.render(newFrame);
     }
 
   });
