@@ -14,7 +14,12 @@ class HomeController < ApplicationController
     else
       @fb_meta_info = nil
     end
-    render 'app'
+    
+    if user_signed_in?
+      render 'app'
+    else
+      render 'gate'
+    end
   end  
   
   ##
