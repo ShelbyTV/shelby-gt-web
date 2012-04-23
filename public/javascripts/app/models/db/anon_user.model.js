@@ -22,10 +22,8 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
   },
   _getRollFollowings : function(){
     return [{
-      //id : "4f689ff1b415cc368c000006"
-      //id : "4f68a168b415cc368c000024"
-      //@shelby:
-      id : "4f6bbf6c9a725b5fd70686fe"
+      //@vimeo
+      id : "4f900cf5b415cc466a0005bb"
     }]
   },
   _getPreferences : function(){
