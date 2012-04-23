@@ -15,6 +15,14 @@
       PagingListView.prototype._cleanup.call(this);
     },
 
+    addOne : function(item){
+      try {
+        PagingListView.prototype.addOne.call(this, item);
+      } catch (e) {
+        _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]);
+      }
+    },
+
     activateFrameRollingView : function(frame) {
       var playingFrameView = this.children.find(this._findViewByModel(frame));
       if (playingFrameView) {

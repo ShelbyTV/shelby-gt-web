@@ -39,8 +39,9 @@
       Login
     </button>
 
+
     <fieldset class="email-gate-networks">
-      <button class="email-gate-networks-twitter">
+      <button class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
       </button>   
       <button class="email-gate-networks-facebook">
@@ -71,6 +72,7 @@
     </button>
   </form>
 </div><!-- eo email-gate-wrapper -->
+
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
   <script>
     var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
