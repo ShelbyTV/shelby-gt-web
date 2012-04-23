@@ -14,7 +14,13 @@ libs.shelbyGT.GuideOverlayControls = Support.CompositeView.extend({
   
   initialize: function(opts){
     this._userDesires = opts.userDesires;
+    this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
+    
     this.render();
+  },
+  
+  _cleanup: function() {
+	  this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
   },
   
   template: function(){
@@ -30,17 +36,26 @@ libs.shelbyGT.GuideOverlayControls = Support.CompositeView.extend({
 	//--------------------------------------
 	
 	_hideGuide: function(e){
-	  this.$('.guide-toggle').removeClass("hide").addClass("show");
-	  //no view owns entire guide, setting class here
-	  $('.main').addClass("hide-guide");
-	  //other views bind to user desires
 	  this._userDesires.set({guideShown: false});
 	},
 	
 	_showGuide: function(el){
-	  this.$('.guide-toggle').removeClass("show").addClass("hide");
-	  $('.main').removeClass("hide-guide");
 	  this._userDesires.set({guideShown: true});
-	}
+	},
+	
+	//--------------------------------------
+	// handle user desires
+	//--------------------------------------
+	
+	_guideVisibilityChange: function(attr, guideShown){
+	  //no view owns entire guide, so I'm setting classes in here
+    if( guideShown ){
+      this.$('.guide-toggle').removeClass("show").addClass("hide");
+  	  $('.main').removeClass("hide-guide");
+    } else {
+      this.$('.guide-toggle').removeClass("hide").addClass("show");
+  	  $('.main').addClass("hide-guide");
+    }
+  }
 	
 });

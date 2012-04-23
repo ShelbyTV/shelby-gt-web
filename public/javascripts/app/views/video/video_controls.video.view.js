@@ -196,6 +196,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	},
 
   _rollActiveFrame: function(){
+    this._userDesires.set({guideShown: true});
     shelby.views.guide.rollActiveFrame();
   },
 
