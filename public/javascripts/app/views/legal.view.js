@@ -1,7 +1,7 @@
-libs.shelbyGT.CopyrightView = Support.CompositeView.extend({
+libs.shelbyGT.LegalView = Support.CompositeView.extend({
   
   template : function(obj){
-    return JST['copyright'](obj);
+    return JST['legal'](obj);
   },
 
   render : function(){

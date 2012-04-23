@@ -9,7 +9,7 @@
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
-  var CopyrightView = libs.shelbyGT.CopyrightView;
+  var LegalView = libs.shelbyGT.LegalView;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -91,9 +91,9 @@
             model : shelby.models.user
           };
           break;
-        case DisplayState.copyright :
+        case DisplayState.legal :
           displayComponents = {
-            viewProto : CopyrightView,
+            viewProto : LegalView,
             model : shelby.models.user
           };
           break;

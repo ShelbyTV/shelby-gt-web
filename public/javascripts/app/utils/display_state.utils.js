@@ -7,6 +7,6 @@ libs.shelbyGT.DisplayState = {
   userPreferences : 'userPreferences',
   help : 'help',
   team : 'team',
-  copyright : 'copyright',
+  legal : 'legal',
   none : 'none'
 };

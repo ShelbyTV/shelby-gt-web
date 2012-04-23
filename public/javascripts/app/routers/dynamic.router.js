@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "preferences" : "displayUserPreferences",
     "help" : "displayHelp",
     "team" : "displayTeam",
-    "copyright" : "displayCopyright",
+    "legal" : "displayLegal",
     "" : "displayDashboard",
     "*url" : "doNothing"
   },
@@ -179,10 +179,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
-  displayCopyright : function(){
+  displayLegal : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.copyright,
+      'displayState' : libs.shelbyGT.DisplayState.legal,
       'insideRollList' : false
     });
   },

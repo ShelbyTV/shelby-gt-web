@@ -15,7 +15,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
       "click .js-preferences" : "_showUserPreferences",
       "click .js-help"        : "_showHelp",
       "click .js-team"        : "_showTeam",
-      "click .js-copyright"   : "_showCopyright"
+      "click .js-legal"       : "_showLegal"
     });
 
     return events;
@@ -63,8 +63,8 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     shelby.router.navigate('/team', {trigger:true});
   },
 
-  _showCopyright : function(){
-    shelby.router.navigate('/copyright', {trigger:true});
+  _showLegal : function(){
+    shelby.router.navigate('/legal', {trigger:true});
   }
 
 });
