@@ -1,37 +1,46 @@
 /*
-Syntax error: Invalid CSS after "	width: 25%": expected ";", was ":"
-        on line 66 of /shelbytv/app/stylesheets/partials/gate.scss
+Syntax error: Undefined mixin 'background'.
+        on line 4 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'
+        from line 4 of /shelbytv/app/stylesheets/partials/gate.scss
 
-61: }
-62: 
-63: .email-gate-label {
-64: 	float:left;
-65: 	text-align: right;
-66: 	width: 25%:
-67: }
-68: 
-69: .email-gate-email {
-70: 	@include border-radius($radius/2);
-71: 	float:left;
+1: .email-gate {
+2: 	@include background(
+3: 		url('../images/email-gate/bg.png') no-repeat center center
+4: 	);
+5: 	@include background-size(cover);
+6: }
+7: 
+8: 
+9: .email-gate-wrapper {
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/gate.scss:66
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:928:in `expected'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:874:in `expected'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:869:in `tok!'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:430:in `block in declaration_or_ruleset'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:912:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:912:in `rethrow'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:436:in `declaration_or_ruleset'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:398:in `block_child'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:390:in `block_contents'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:379:in `block'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:373:in `ruleset'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:397:in `block_child'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:390:in `block_contents'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:58:in `stylesheet'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/scss/parser.rb:27:in `parse'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:326:in `_to_tree'
+/shelbytv/app/stylesheets/partials/gate.scss:4:in `background'
+/shelbytv/app/stylesheets/partials/gate.scss:4
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/tree/root_node.rb:20:in `render'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:299:in `_render'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/engine.rb:247:in `block in render'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.15/lib/sass/util.rb:310:in `silence_sass_warnings'
@@ -83,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"	width: 25%\": expected \";\", was \":\"\A         on line 66 of /shelbytv/app/stylesheets/partials/gate.scss\A \A 61: }\A 62: \A 63: .email-gate-label {\A 64: 	float:left;\A 65: 	text-align: right;\A 66: 	width: 25%:\A 67: }\A 68: \A 69: .email-gate-email {\A 70: 	@include border-radius($radius/2);\A 71: 	float:left;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 4 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'\A         from line 4 of /shelbytv/app/stylesheets/partials/gate.scss\A \A 1: .email-gate {\A 2: 	@include background(\A 3: 		url('../images/email-gate/bg.png') no-repeat center center\A 4: 	);\A 5: 	@include background-size(cover);\A 6: }\A 7: \A 8: \A 9: .email-gate-wrapper {"; }
