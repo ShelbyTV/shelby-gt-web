@@ -52,6 +52,9 @@ if ( typeof jQuery != "undefined" ) {
 
 /** And some dspinosa added prettyTime stuff **/
 function prettyTime(h, m, s){
+  h = h || 0
+  m = m || 0
+  s = s || 0
 	if(h > 0){
 		timeStr = h + ":";
 		m < 10 ? timeStr += "0"+m+":" : timeStr += m+":";
