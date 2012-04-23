@@ -28,6 +28,8 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 		//hulu's player knows how to hide itself, how kind
 		if( this._player ){ this._player.hide(); }
 		this.playerState.set({visible:false});
+		
+		$("#video-controls").show();
 	},
 	
 	_cleanup: function(){
@@ -43,6 +45,8 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 			this.playerState.set({visible:true});
 			//playVideo will be called by video display view
 		}
+		
+		$("#video-controls").hide();
 	},
 	
 	playVideo: function(video){
