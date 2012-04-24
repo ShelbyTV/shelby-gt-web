@@ -29,11 +29,6 @@
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 18, ../../../app/stylesheets/partials/video-player.scss */
-.video-player p {
-  background: black;
-  margin: 0;
-}
 
 /* line 24, ../../../app/stylesheets/partials/video-player.scss */
 .video-player.full-width {

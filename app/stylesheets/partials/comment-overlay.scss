@@ -5,12 +5,23 @@
 		"compass/css3/box-shadow";
 
 .comment-overlay-wrapper {
+
 	background: transparent;
-	height: 100px;
-	left: 0;
+	font-size: 12px;
+	left: $defaultMargin;
+	padding-right: 360px;
 	position: absolute;
-	top: 0;
-	width: 500px;
+	top: $defaultMargin;
+	width: 100%;
+
+	.user {
+		@include border-radius($radius);
+		max-width: 500px;
+
+	}
+	.user-vcard{
+		border: none;
+	}
 }
 
 .video-player-aside{
