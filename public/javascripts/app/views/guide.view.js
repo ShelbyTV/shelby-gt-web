@@ -55,7 +55,8 @@
           displayComponents = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
-            limit : shelby.config.pageLoadSizes.dashboard
+            limit : shelby.config.pageLoadSizes.dashboard,
+            sinceId : this.model.get('sinceId')
           };
          break;
         case DisplayState.rollList :
@@ -70,7 +71,8 @@
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
-            limit : shelby.config.pageLoadSizes.roll
+            limit : shelby.config.pageLoadSizes.roll,
+            sinceId : this.model.get('sinceId')
           };
           break;
         case DisplayState.userPreferences :
@@ -99,9 +101,15 @@
           break;
       }
 
-      var options = {model:displayComponents.model}
+      var options = {model:displayComponents.model};
       if (displayComponents.limit) {
         options.limit = displayComponents.limit;
+      }
+      if (displayComponents.sinceId) {
+        options.fetchParams = {
+          since_id : displayComponents.sinceId,
+          include_children : true
+        };
       }
       this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);

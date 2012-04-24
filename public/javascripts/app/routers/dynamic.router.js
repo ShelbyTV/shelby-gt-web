@@ -41,7 +41,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     var self = this;
     this._setupRollView(rollId, null, {
-      data: {include_children:true},
+      data: {
+        since_id : frameId,
+        include_children : true
+      },
       onRollFetch: function(rollModel, response){
         self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
       }
@@ -320,7 +323,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     shelby.models.guide.set({
       'displayState': displayState,
-      'currentRollModel': rollModel
+      'currentRollModel': rollModel,
+      'sinceId' : options.data.since_id ? options.data.since_id : null
     });
     var fetchOptions = {data: options.data};
     fetchOptions.data.limit = shelby.config.pageLoadSizes.roll;
@@ -337,8 +341,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _hideSpinnerAfter: function(xhr){
     // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
     // upon which we append another callback to hide the spinner shown earlier.
-    xhr.done(function(){ 
-      shelby.views.guideSpinner.hide(); 
+    xhr.done(function(){
+      shelby.views.guideSpinner.hide();
     });
   }
 
