@@ -28,7 +28,6 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
-    headers['HTTP_REFERRER'] = "http://#{request.host_with_port}"
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 

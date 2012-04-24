@@ -60,7 +60,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
     var firstMessage = this.model.get('conversation').get('messages').first();
     var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.model.get('creator_id');
-    var haveWatchLaterMessage = firstMessage && this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id');
+    var haveWatchLaterMessage = firstMessage && (this.model.has('roll') && this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id'));
     var useFrameCreatorInfo = !haveCreatorMessage && !haveWatchLaterMessage;
     this.$el.html(this.template({
       frame : this.model,
