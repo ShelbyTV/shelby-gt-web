@@ -1966,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 348, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
+  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1974,7 +1974,7 @@ a:hover, a:visited, a:active {
 
 /* line 358, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
+  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
 }
 
 /* line 362, ../../app/stylesheets/partials/frame.scss */
@@ -3317,7 +3317,7 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 147, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter, a.email-gate-networks-twitter {
+.logged-out-twitter, .email-gate-networks-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3342,7 +3342,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, a.email-gate-networks-twitter:before {
+.logged-out-twitter:before, .email-gate-networks-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3353,12 +3353,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 154, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, a.email-gate-networks-twitter:before {
+.logged-out-twitter:before, .email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
 /* line 159, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook, a.email-gate-networks-facebook {
+.logged-out-facebook, .email-gate-networks-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3383,7 +3383,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #01599e, #013e80);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, a.email-gate-networks-facebook:before {
+.logged-out-facebook:before, .email-gate-networks-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3394,7 +3394,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 166, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, a.email-gate-networks-facebook:before {
+.logged-out-facebook:before, .email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }
 
@@ -3617,36 +3617,60 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 104, ../../app/stylesheets/partials/gate.scss */
-a.email-gate-networks-twitter {
+.email-gate-networks-twitter {
   display: block;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
 }
+/* line 113, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:before {
+  width: 36px;
+}
+/* line 116, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:visited {
+  color: #efefef;
+}
 
-/* line 111, ../../app/stylesheets/partials/gate.scss */
-a.email-gate-networks-facebook {
+/* line 121, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
 }
+/* line 130, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:before {
+  width: 36px;
+}
+/* line 133, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:visited {
+  color: #efefef;
+}
 
-/* line 118, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 122, ../../app/stylesheets/partials/gate.scss */
+/* line 142, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
+  text-align: center;
 }
 
-/* line 127, ../../app/stylesheets/partials/gate.scss */
+/* line 147, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
   text-align: center;
+  width: 100%;
 }
 
-/* line 134, ../../app/stylesheets/partials/gate.scss */
+/* line 154, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -3654,7 +3678,7 @@ a.email-gate-networks-facebook {
   text-align: right;
 }
 
-/* line 141, ../../app/stylesheets/partials/gate.scss */
+/* line 161, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3671,7 +3695,7 @@ a.email-gate-networks-facebook {
   width: 50%;
 }
 
-/* line 158, ../../app/stylesheets/partials/gate.scss */
+/* line 178, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3697,9 +3721,10 @@ a.email-gate-networks-facebook {
   font-size: 13px;
   margin: 14px auto;
   padding: 7px 19px;
+  width: 17%;
 }
 
-/* line 176, ../../app/stylesheets/partials/gate.scss */
+/* line 197, ../../app/stylesheets/partials/gate.scss */
 .thank-you {
   display: none;
   margin-top: 10px;

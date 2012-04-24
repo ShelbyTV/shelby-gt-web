@@ -101,18 +101,38 @@
 
 }
 
-a.email-gate-networks-twitter {
+.email-gate-networks-twitter {
 	//extend existing
 	@extend .logged-out-twitter;
-	display:block;
-	width:100%;
+	display: block;
+	padding: 3px 3px 3px 36px;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+
+	&:before {
+		width: 36px;
+	}
+	&:visited {
+		color:#efefef;
+	}
 }
 
-a.email-gate-networks-facebook {
+.email-gate-networks-facebook {
 	@extend .logged-out-facebook;
-	display:block;
-	margin-top:$defaultMargin;
-	width:100%;
+	display: block;
+	margin-top: $defaultMargin;
+	padding: 3px 3px 3px 36px;
+	text-align: center;
+	text-decoration: none;
+
+	width: 100%;
+		&:before {
+		width: 36px;
+	}
+	&:visited {
+		color:#efefef;
+	}
 }
 
 .email-gate-error {
@@ -121,14 +141,14 @@ a.email-gate-networks-facebook {
 
 .email-gate-signup {
 	margin: 0 auto;
-
+	text-align:center;
 }
 
 .email-gate-caption { 
 	font-size:13px;
 	margin:5px auto 10px;
 	text-align: center;
-
+	width: 100%;
 }
 
 .email-gate-label {
@@ -171,6 +191,7 @@ a.email-gate-networks-facebook {
 	font-size:13px;
 	margin:$defaultMargin+4 auto;
 	padding:7px $defaultMargin+9px;
+	width: 17%;
 }
 
 .thank-you {
