@@ -32,8 +32,7 @@ shelby = {
 // setup ajax defaults
 //---------------------------------------------------------
 $.ajaxSetup({
-  xhrFields: {withCredentials: true},
-  data: {'cs_key': 'GoatsFTW'}
+  xhrFields: {withCredentials: true}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   //block POST, PUT, DEL requests for anon users
