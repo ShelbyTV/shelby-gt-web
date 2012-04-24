@@ -47,7 +47,7 @@
       </section><!-- eo section.video-shares -->
   
     <div class="video-footer">
-      <% var remainingMessageCount = messages.length - (firstMessageIsCreators ? 1 : 0) %>
+      <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
       <a class="video-activity-toggle js-video-activity-toggle" href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
              shelby.models.guide.get('displayState') !== 'userPersonalRoll') { %>

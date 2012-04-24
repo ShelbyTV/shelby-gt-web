@@ -1,0 +1,179 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.no-access {
+  margin-top: 30px;
+}
+
+.email-gate {
+	@include background(
+		url('../images/email-gate/bg.png') no-repeat center center
+	);
+	@include background-size(cover);
+}
+
+
+.email-gate-wrapper {
+	margin:15% auto 0;
+	width:535px;
+}
+
+.email-gate-header{
+
+}
+
+.email-gate-logo {
+	@include background(
+		url('../images/assets/shelbylogo.svg') no-repeat center center transparent
+	);
+
+	background-size:100%;
+
+	float: left;
+	height: 100px;
+	margin-right:18px;
+	width: 50%;
+}
+
+.email-gate-slogan {
+	float: left;
+	font-size: 11px;
+	line-height: 1.4;
+	margin-top:40px;
+	width: 33%;
+}
+
+
+.email-gate-login{
+	margin: $defaultMargin;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width:205px;
+}
+
+.email-gate-login-button {
+	@include buttonfont;
+	@include background(
+		url('../images/assets/noise.png'),
+		$softShelbyGreen
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 1px $softShelbyGreen);
+	@include text-shadow(0px 1px 2px #222);
+	border:none;
+	color:#efefef;
+	display:block;
+	float:right;
+	font-size:13px;
+	margin: 0 0 10px 20px;
+	padding:7px $defaultMargin+9px;
+}
+
+.email-gate-networks{
+	@include background(
+		url('../images/assets/noise.png') #585858
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 0 lime);
+
+  display: none;
+  
+	margin-top:45px;
+	padding: 10px;
+	position:relative;
+
+	&:before{
+		@include rotate(45deg);
+		background:#585858;
+		content:"\0020";
+		display:block;
+		height:10px;
+		position:absolute;
+		right:31px;
+		top:-5px;
+		width:10px;
+
+	}
+
+}
+
+a.email-gate-networks-twitter {
+	//extend existing
+	@extend .logged-out-twitter;
+	display:block;
+	width:100%;
+}
+
+a.email-gate-networks-facebook {
+	@extend .logged-out-facebook;
+	display:block;
+	margin-top:$defaultMargin;
+	width:100%;
+}
+
+.email-gate-error {
+	font-size: 11px;
+}
+
+.email-gate-signup {
+	margin: 0 auto;
+
+}
+
+.email-gate-caption { 
+	font-size:13px;
+	margin:5px auto 10px;
+	text-align: center;
+
+}
+
+.email-gate-label {
+	display:block;
+	font-size:14px;
+	line-height:3.8;
+	text-align: right;
+}
+
+.email-gate-email {
+	@include border-radius($radius/2);
+	border:none;
+	display:block;
+	float:right;
+	font-size:14px;
+	margin:5px 25% 5px $defaultMargin;
+	padding:$defaultMargin+2 $defaultMargin;
+	width:50%;
+
+	//extend some inputs styles
+}
+
+.email-gate-code {
+	@extend .email-gate-email;
+}
+
+.email-gate-signup-submit{
+	//extend the button style
+	@include buttonfont;
+	@include background(
+		url('../images/assets/noise.png'),
+		$softShelbyBlue
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 1px $softShelbyBlueHighlight);
+	@include text-shadow(0px 1px 2px #222);
+	border:none;
+	color:#efefef;
+	display:block;
+	font-size:13px;
+	margin:$defaultMargin+4 auto;
+	padding:7px $defaultMargin+9px;
+}
+
+.thank-you {
+  display: none;
+  margin-top: $defaultMargin;
+}

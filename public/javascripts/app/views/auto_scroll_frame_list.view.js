@@ -19,7 +19,9 @@
       try {
         PagingListView.prototype.addOne.call(this, item);
       } catch (e) {
-        _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]);
+				// We are not loading G. Analytics in development env so just log to console.
+				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]); }
+				catch(e) { console.log("_gaq not loaded in development env:", e.message); }
       }
     },
 

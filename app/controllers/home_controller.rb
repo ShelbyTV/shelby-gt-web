@@ -18,6 +18,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       render 'app'
     else
+      @show_error = params[:access] == "nos"
       render 'gate'
     end
   end  
@@ -27,7 +28,6 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
-    cookies.delete(:signed_in) if Rails.env == "development"
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 

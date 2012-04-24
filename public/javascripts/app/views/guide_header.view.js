@@ -13,6 +13,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
     _(events).extend({
       "click .js-preferences" : "_showUserPreferences",
+			"click .js-signout"			: "_signout",
       "click .js-help"        : "_showHelp",
       "click .js-team"        : "_showTeam",
       "click .js-legal"       : "_showLegal"
@@ -65,6 +66,10 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
   _showLegal : function(){
     shelby.router.navigate('/legal', {trigger:true});
-  }
+  },
+
+	_signout : function(){
+		document.location.href = "/signout";
+	}
 
 });

@@ -2,7 +2,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
 	<% if @fb_meta_info %>
 		<%= render :partial => "fb_meta_info", :locals => { :fb_meta_info => @fb_meta_info, :permalink => @permalink } %>
@@ -43,7 +43,7 @@
 				</div>
 
         <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
-
+        <div id="comment-overlay" class="comment-overlay-wrapper js-inactivity-preemption"></div>
       </div> <!-- eo .video-player -->
     </div><!-- eo #lining -->
 
@@ -76,12 +76,14 @@
   </div> <!-- eo ~main -->
 
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
-  <script>
-    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
-
+	<% if Rails.env == 'production' %>
+	  <script>
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>
+	<% end %>
+	
 </body>
 </html>

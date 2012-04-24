@@ -18,38 +18,21 @@ shelby = {
 
   // Signed in convience function
   userSignedIn: function(){
-    var signedIn;
-    if (cookies.get("signed_in") == "true"){ signedIn = true; }
-    else {
-      // HACK to get around cross domain cookie issues. we dont have the 'signed_in' cookie
-      //   from api.gt.shelby.tv so we are just hitting up /signed_in to see if we get true or false
-      if (window.document.location.hostname == "localhost" || window.document.location.hostname == "33.33.33.10"){
-        $.get(this.config.apiRoot + '/signed_in?cs_key=GoatsFTW', function(r){
-          if (r.result.signed_in === true){
-            cookies.set("signed_in", "true");
-            signedIn = true;
-            document.location.reload();
-          }
-          else {
-            cookies.set("signed_in", "false");
-            signedIn = false;
-          }
-        });
-      }
-      else { signedIn = false; }
-      // end HACK
-    }
-    // signedIn = cookies.get("signed_in") == "true" ? true : false
-    return signedIn;
-  }
+		var _cookie = cookies.get("_shelby_gt_common");
+		return _cookie.split("=").length == 2 ? _cookie.split("=")[1] !== "nil" ? true : false : false;
+  },
+	
+	signOut: function(){
+		document.location.href = "/sign_out";
+	}
+
 };
 
 //---------------------------------------------------------
 // setup ajax defaults
 //---------------------------------------------------------
 $.ajaxSetup({
-  xhrFields: {withCredentials: true},
-  data: {'cs_key': 'GoatsFTW'}
+  xhrFields: {withCredentials: true}
 });
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   //block POST, PUT, DEL requests for anon users

@@ -20,14 +20,85 @@
   <%= include_javascripts :common %>
 </head>
 
-<body>
+<body class="email-gate">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<div class="email-gate-wrapper">
+  <header class="email-gate-header clearfix">
+    <h1 class="email-gate-logo ir">
+      Shelby.tv
+    </h1>
+    <p class="email-gate-slogan">
+      The most amazing way to <br> discover and enjoy web videos.
+    </p>
+  </header>
 
-  <h1>THE GATE</h1>
+  <form class="email-gate-login">
+    <button class="email-gate-login-button">
+      Login
+    </button>
 
-	<%= link_to 'TWT SIGN IN', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
+
+    <fieldset class="email-gate-networks">
+      <a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+        Log In with Twitter
+      </a>   
+      <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+        Log In with Facebook
+      </a>
+    </fieldset>
+  </form>
+
+	<% if @show_error %>
+		<div class="no-access">
+			<h1>Sorry, you don't have access to Shelby GT just yet.</h1>
+			<h2>But we're working hard to get you in!</h2>
+		</div>
+	<% else %>
+		<form class="email-gate-signup">
+	    <legend class="email-gate-caption">
+	      Want to receive future beta invites?
+	    </legend>
+	    <label for="email-gate-email" class="email-gate-label">
+	      Email
+	    <input type="email" id="email-gate-email" class="email-gate-email" name="email" placeholder="Where can we reach you?" />
+	    </label>
+  
+	    <label for="email-gate-code" class="email-gate-label">
+	      Priority Code
+	    <input type="text" id="email-gate-code"  class="email-gate-code" name="priority_code" placeholder="Are you special?" />
+	    </label>
+  
+	    <button type="submit" class="email-gate-signup-submit">
+	      Submit
+	    </button>
+	  </form>
+
+		<div class="thank-you">
+			<h1>Thanks!</h1>
+			<h2>We hope to get you in soon :-]</h2>
+		</div>
+	<% end %>
+
+</div><!-- eo email-gate-wrapper -->
+
+	<script>
+		$(function(){
+			$("button.email-gate-login-button").click(function(){
+				$('.email-gate-networks').toggle();
+				return false;
+			});
+			
+			$('form.email-gate-signup').submit(function() {
+				$.post('//api.gt.shelby.tv/v1/gt_interest', $(this).serialize(), function(data) {
+					$("form.email-gate-signup").hide()
+					$(".thank-you").show();
+				});
+			  return false;
+			});
+		});
+	</script>
 
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
   <script>

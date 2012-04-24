@@ -59,25 +59,27 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this._leaveChildren();
 
     var firstMessage = this.model.get('conversation').get('messages').first();
-    var onWatchLaterRoll = this.model.has('roll') && this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id');
-    var firstMessageIsCreators = firstMessage && (firstMessage.get('user_id') == this.model.get('creator_id') || onWatchLaterRoll);
+    var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.model.get('creator_id');
+    var haveWatchLaterMessage = firstMessage && (this.model.has('roll') && this.model.get('roll').id == shelby.models.user.get('watch_later_roll_id'));
+    var useFrameCreatorInfo = !haveCreatorMessage && !haveWatchLaterMessage;
     this.$el.html(this.template({
       frame : this.model,
       showConversation : showConversation,
-      firstMessageIsCreators : firstMessageIsCreators
+      useFrameCreatorInfo : useFrameCreatorInfo
     }));
     if (this.model == shelby.models.guide.get('activeFrameModel')) {
       this.$el.addClass('active-frame');
     }
 
-    // if there is a first message from the frame creator, render it, otherwise
-    // render the equivalent information about the frame's creator from the frame
-    var firstMessageViewParams = firstMessageIsCreators ? {model:firstMessage} :{frame:this.model};
+    // if the first message is not from the frame's creator and we're not on the watch later roll,
+    // use equivalent info about the frame's creator as a simulated first message
+    // otherwise, just render the first message
+    var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:firstMessage};
     var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
     this.insertChildBefore(firstMessageView,'.js-video-activity');
 
     // render all other messages that haven't already been rendered
-    var startIndex = firstMessageIsCreators ? 1 : 0;
+    var startIndex = useFrameCreatorInfo ? 0 : 1;
     var _remainingMessages = _(this.model.get('conversation').get('messages').rest(startIndex));
     _remainingMessages.each(function(message){
       var messageView = new libs.shelbyGT.MessageView({model:message});
