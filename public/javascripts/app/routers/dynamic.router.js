@@ -11,6 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
     "carousel/:rollId" : "displayRollInCarousel",
+    "stream/frame/:frameId/rollIt" : "displayDashboardAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -27,6 +28,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayFrameAndActivateRollingView : function(rollId, frameId){
     this.displayFrameInRoll(rollId, frameId, {activateRollingView:true});
+  },
+
+  displayDashboardAndActivateRollingView : function(frameId){
+    this.displayFrameInDashboard(frameId, {activateRollingView:true});
   },
 
   displayFrameInRoll : function(rollId, frameId, options){
@@ -111,7 +116,49 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayDashboard : function(){
+  displayFrameInDashboard : function(frameId, options){
+   var defaults = {
+      activateRollingView : false
+    };
+    if (!options) {
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
+    }
+
+    var self = this;
+    this.displayDashboard({
+      data: {
+        since_id : frameId,
+        include_children : true
+      },
+      onDashboardFetch: function(dashboardModel, response){
+        self._activateFrameInDashboardById(dashboardModel, frameId, options.activateRollingView);
+      }
+    });
+  },
+
+  displayDashboard : function(options){
+    var defaultOnDashboardFetch;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the dashboard, scroll to it
+      defaultOnDashboardFetch = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the dashboard on load
+      defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
+    }
+    var defaults = {
+      onDashboardFetch: defaultOnDashboardFetch,
+      data: {
+          include_children : true
+      }
+    };
+    if (!options) {
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
+    }
+
     this._setupTopLevelViews({showSpinner: true});
     
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
@@ -119,23 +166,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
       'insideRollList' : false
     });
-    var onSuccess;
-    if (shelby.models.guide.get('activeFrameModel')) {
-      // if something is already playing and it is in the dashboard, scroll to it
-      onSuccess = this._scrollToActiveFrameView;
-    } else {
-      // if nothing is already playing, start playing the first frame in the dashboard on load
-      onSuccess = this._activateFirstDashboardVideoFrame;
-    }
-    this._hideSpinnerAfter(
-      shelby.models.dashboard.fetch({
-        data: {
-          include_children : true,
-          limit : shelby.config.pageLoadSizes.dashboard
-        },
-        success: onSuccess
-      })
-    );
+
+    var fetchOptions = {data: options.data};
+    fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
+    fetchOptions.success = options.onDashboardFetch;
+
+    this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
   },
 
   displayRollList : function(){
@@ -238,6 +274,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
     if (firstDashboardEntry) {
       shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+    }
+  },
+
+  _activateFrameInDashboardById : function(dashboardModel, frameId, activateRollingView) {
+    var _frames = _(dashboardModel.get('dashboard_entries').pluck('frame'));
+    var frame = _frames.find(function(frame){
+        return frame.id == frameId;
+    });
+    if (frame) {
+      shelby.models.guide.set('activeFrameModel', frame);
+      if (activateRollingView) {
+        shelby.views.guide.rollActiveFrame();
+      }
+    } else {
+      // url frame id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+      window.alert("Sorry, the video you were looking for doesn't exist in your stream.");
+      this.navigate("/", {trigger:true, replace:true});
     }
   },
 

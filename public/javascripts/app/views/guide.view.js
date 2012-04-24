@@ -132,12 +132,19 @@
           }
         }
 
-        // if no frame view for the active frame currently exists, reroute to the rerolling url
-        // for the frame, which will bring up the frame's source roll, activate the frame, then
-        // reveal is rolling view
-        var rollId = this.model.get('activeFrameModel').get('roll').id;
+        // no frame view for the active frame currently exists
         var frameId = this.model.get('activeFrameModel').id;
-        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+        if (this.model.get('activeFrameModel').has('roll')) {
+          // reroute to the frame in roll url for the frame, which will bring up the frame's source roll,
+          // activate the frame, then reveal is rolling view
+          var rollId = this.model.get('activeFrameModel').get('roll').id;
+          shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+        } else {
+          // the frame has no source roll, so
+          // reroute to the frame in stream url for the frame, which will bring up the dashboard,
+          // activate the frame, then reveal is rolling view
+          shelby.router.navigate('stream/frame/' + frameId + '/rollit', {trigger:true});
+        }
       }
     },
 
