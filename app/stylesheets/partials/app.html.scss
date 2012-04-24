@@ -12,6 +12,10 @@ h1,h2,h3,h4,h5,h6{
 html,body{
 	height:100%;
 	width:100%;
+	margin:0;
+	overflow:hidden;
+	padding:0;
+	position:relative;
 }
 
 body{
@@ -21,8 +25,6 @@ body{
 	@include background(
 		url('../images/assets/noise.png') #000
 	);
-
-	overflow:hidden;
 
 }
 
