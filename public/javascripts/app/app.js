@@ -23,7 +23,7 @@ shelby = {
   },
 	
 	signOut: function(){
-		document.location.href = "http://api.gt.shelby.tv/sign_out_user";
+		document.location.href = "/sign_out";
 	}
 
 };
