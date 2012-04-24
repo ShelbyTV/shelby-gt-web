@@ -195,3 +195,9 @@
   margin: 14px auto;
   padding: 7px 19px;
 }
+
+/* line 172, ../../../app/stylesheets/partials/gate.scss */
+.thank-you {
+  display: none;
+  margin-top: 10px;
+}

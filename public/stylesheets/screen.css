@@ -3694,6 +3694,12 @@ body.user-inactive .video-player-controls-wrapper {
   padding: 7px 19px;
 }
 
+/* line 172, ../../app/stylesheets/partials/gate.scss */
+.thank-you {
+  display: none;
+  margin-top: 10px;
+}
+
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .ir {
   border: 0;
