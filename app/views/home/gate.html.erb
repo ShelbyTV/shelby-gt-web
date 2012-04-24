@@ -73,6 +73,15 @@
   </form>
 </div><!-- eo email-gate-wrapper -->
 
+	<script>
+		$(function(){
+			$("button.email-gate-login-button").click(function(){
+				$('.email-gate-networks').toggle();
+				return false;
+			});
+		});
+	</script>
+
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
   <script>
     var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
