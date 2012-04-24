@@ -28,7 +28,7 @@
 
 /* line 28, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
-  background: url("../images/assets/shelbylogo.svg") no-repeat center center transparent;
+  background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
   float: left;
   height: 100px;
