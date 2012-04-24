@@ -3613,10 +3613,10 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 0 0 0 lime;
-  -webkit-box-shadow: 0 0 0 0 lime;
-  -o-box-shadow: 0 0 0 0 lime;
-  box-shadow: 0 0 0 0 lime;
+  -moz-box-shadow: inset 0 1px 2px -1px #999999;
+  -webkit-box-shadow: inset 0 1px 2px -1px #999999;
+  -o-box-shadow: inset 0 1px 2px -1px #999999;
+  box-shadow: inset 0 1px 2px -1px #999999;
   display: none;
   margin-top: 45px;
   padding: 10px;
@@ -3624,6 +3624,10 @@ body.user-inactive .video-player-controls-wrapper {
 }
 /* line 89, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
+  -moz-box-shadow: inset 1px 1px 2px -1px #999999;
+  -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
+  -o-box-shadow: inset 1px 1px 2px -1px #999999;
+  box-shadow: inset 1px 1px 2px -1px #999999;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -3639,7 +3643,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 10px;
 }
 
-/* line 104, ../../app/stylesheets/partials/gate.scss */
+/* line 105, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -3647,16 +3651,16 @@ body.user-inactive .video-player-controls-wrapper {
   text-decoration: none;
   width: 100%;
 }
-/* line 113, ../../app/stylesheets/partials/gate.scss */
+/* line 114, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 116, ../../app/stylesheets/partials/gate.scss */
+/* line 117, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 121, ../../app/stylesheets/partials/gate.scss */
+/* line 122, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -3665,27 +3669,27 @@ body.user-inactive .video-player-controls-wrapper {
   text-decoration: none;
   width: 100%;
 }
-/* line 130, ../../app/stylesheets/partials/gate.scss */
+/* line 131, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 133, ../../app/stylesheets/partials/gate.scss */
+/* line 134, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 138, ../../app/stylesheets/partials/gate.scss */
+/* line 139, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 142, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 147, ../../app/stylesheets/partials/gate.scss */
+/* line 148, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -3693,7 +3697,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
 }
 
-/* line 154, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -3701,7 +3705,7 @@ body.user-inactive .video-player-controls-wrapper {
   text-align: right;
 }
 
-/* line 161, ../../app/stylesheets/partials/gate.scss */
+/* line 162, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3718,7 +3722,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 50%;
 }
 
-/* line 178, ../../app/stylesheets/partials/gate.scss */
+/* line 179, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3747,7 +3751,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 17%;
 }
 
-/* line 197, ../../app/stylesheets/partials/gate.scss */
+/* line 198, ../../app/stylesheets/partials/gate.scss */
 .thank-you {
   display: none;
   margin-top: 10px;
