@@ -114,13 +114,13 @@
 }
 
 /* line 100, ../../../app/stylesheets/partials/gate.scss */
-.email-gate-networks-twitter {
+a.email-gate-networks-twitter {
   display: block;
   width: 100%;
 }
 
 /* line 107, ../../../app/stylesheets/partials/gate.scss */
-.email-gate-networks-facebook {
+a.email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
   width: 100%;

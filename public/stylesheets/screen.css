@@ -3317,7 +3317,7 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 147, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter, .email-gate-networks-twitter {
+.logged-out-twitter, a.email-gate-networks-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3342,7 +3342,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, .email-gate-networks-twitter:before {
+.logged-out-twitter:before, a.email-gate-networks-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3353,12 +3353,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 154, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, .email-gate-networks-twitter:before {
+.logged-out-twitter:before, a.email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
 /* line 159, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook, .email-gate-networks-facebook {
+.logged-out-facebook, a.email-gate-networks-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3383,7 +3383,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #01599e, #013e80);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, .email-gate-networks-facebook:before {
+.logged-out-facebook:before, a.email-gate-networks-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3394,7 +3394,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 166, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, .email-gate-networks-facebook:before {
+.logged-out-facebook:before, a.email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }
 
@@ -3612,13 +3612,13 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 100, ../../app/stylesheets/partials/gate.scss */
-.email-gate-networks-twitter {
+a.email-gate-networks-twitter {
   display: block;
   width: 100%;
 }
 
 /* line 107, ../../app/stylesheets/partials/gate.scss */
-.email-gate-networks-facebook {
+a.email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
   width: 100%;

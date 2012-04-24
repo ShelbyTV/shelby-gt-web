@@ -97,14 +97,14 @@
 
 }
 
-.email-gate-networks-twitter {
+a.email-gate-networks-twitter {
 	//extend existing
 	@extend .logged-out-twitter;
 	display:block;
 	width:100%;
 }
 
-.email-gate-networks-facebook {
+a.email-gate-networks-facebook {
 	@extend .logged-out-facebook;
 	display:block;
 	margin-top:$defaultMargin;
