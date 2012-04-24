@@ -420,31 +420,35 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 12, ../../app/stylesheets/partials/app.html.scss */
 html, body {
+  bottom: 0;
   height: 100%;
-  width: 100%;
+  left: 0;
   margin: 0;
   overflow: hidden;
   padding: 0;
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
 }
 
-/* line 21, ../../app/stylesheets/partials/app.html.scss */
+/* line 25, ../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png") black;
 }
 
-/* line 31, ../../app/stylesheets/partials/app.html.scss */
+/* line 35, ../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 36, ../../app/stylesheets/partials/app.html.scss */
+/* line 40, ../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 42, ../../app/stylesheets/partials/app.html.scss */
+/* line 46, ../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -453,7 +457,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 50, ../../app/stylesheets/partials/app.html.scss */
+/* line 54, ../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -461,13 +465,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 58, ../../app/stylesheets/partials/app.html.scss */
+/* line 62, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 63, ../../app/stylesheets/partials/app.html.scss */
+/* line 67, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -494,17 +498,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 80, ../../app/stylesheets/partials/app.html.scss */
+/* line 84, ../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 84, ../../app/stylesheets/partials/app.html.scss */
+/* line 88, ../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 88, ../../app/stylesheets/partials/app.html.scss */
+/* line 92, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -514,7 +518,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 108, ../../app/stylesheets/partials/app.html.scss */
+/* line 112, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -525,7 +529,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 116, ../../app/stylesheets/partials/app.html.scss */
+/* line 120, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
