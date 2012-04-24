@@ -18,6 +18,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       render 'app'
     else
+      @show_error = params[:access] == "nos"
       render 'gate'
     end
   end  

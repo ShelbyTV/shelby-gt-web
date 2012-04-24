@@ -1,3 +1,13 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.no-access {
+  margin-top: 30px;
+}
+
 .email-gate {
 	@include background(
 		url('../images/email-gate/bg.png') no-repeat center center
@@ -70,6 +80,8 @@
 	@include border-radius($radius);
 	@include box-shadow(0 0 0 0 lime);
 
+  display: none;
+  
 	margin-top:45px;
 	padding: 10px;
 	position:relative;
@@ -89,14 +101,14 @@
 
 }
 
-.email-gate-networks-twitter {
+a.email-gate-networks-twitter {
 	//extend existing
 	@extend .logged-out-twitter;
 	display:block;
 	width:100%;
 }
 
-.email-gate-networks-facebook {
+a.email-gate-networks-facebook {
 	@extend .logged-out-facebook;
 	display:block;
 	margin-top:$defaultMargin;
@@ -159,4 +171,9 @@
 	font-size:13px;
 	margin:$defaultMargin+4 auto;
 	padding:7px $defaultMargin+9px;
+}
+
+.thank-you {
+  display: none;
+  margin-top: $defaultMargin;
 }
