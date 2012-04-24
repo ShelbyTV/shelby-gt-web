@@ -4,6 +4,10 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+.no-access {
+  margin-top: 30px;
+}
+
 .email-gate {
 	@include background(
 		url('../images/email-gate/bg.png') no-repeat center center
