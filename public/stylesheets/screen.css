@@ -413,34 +413,35 @@ td {
  */
 /* line 6, ../../app/stylesheets/partials/app.html.scss */
 h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 8, ../../app/stylesheets/partials/app.html.scss */
+/* line 12, ../../app/stylesheets/partials/app.html.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 13, ../../app/stylesheets/partials/app.html.scss */
+/* line 17, ../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png") black;
   overflow: hidden;
 }
 
-/* line 25, ../../app/stylesheets/partials/app.html.scss */
+/* line 29, ../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 30, ../../app/stylesheets/partials/app.html.scss */
+/* line 34, ../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 36, ../../app/stylesheets/partials/app.html.scss */
+/* line 40, ../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -449,7 +450,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 44, ../../app/stylesheets/partials/app.html.scss */
+/* line 48, ../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -457,13 +458,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 52, ../../app/stylesheets/partials/app.html.scss */
+/* line 56, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 57, ../../app/stylesheets/partials/app.html.scss */
+/* line 61, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.3em;
@@ -490,17 +491,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 74, ../../app/stylesheets/partials/app.html.scss */
+/* line 78, ../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 78, ../../app/stylesheets/partials/app.html.scss */
+/* line 82, ../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 82, ../../app/stylesheets/partials/app.html.scss */
+/* line 86, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -510,7 +511,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 102, ../../app/stylesheets/partials/app.html.scss */
+/* line 106, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -521,7 +522,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 110, ../../app/stylesheets/partials/app.html.scss */
+/* line 114, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -572,7 +573,7 @@ a:hover, a:visited, a:active {
 }
 /* line 39, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -782,7 +783,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
   -o-box-shadow: inset 1px 1px 1px #4d4d4d;
   box-shadow: inset 1px 1px 1px #4d4d4d;
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   border: none;
   color: #666;
   display: block;
@@ -970,7 +971,7 @@ a:hover, a:visited, a:active {
 }
 /* line 36, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -moz-transition-property: opacity;
@@ -1126,7 +1127,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -1318,7 +1319,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -1398,7 +1399,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   left: 0;
   position: absolute;
-  top: 0;
+  top: 5px;
 }
 
 /* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
@@ -1419,7 +1420,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   border: 1px solid #222;
   color: #efefef;
   height: 26px;
@@ -1667,7 +1668,7 @@ a:hover, a:visited, a:active {
 /* line 101, ../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   float: right;
@@ -1821,7 +1822,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 0 3px 3px;
   border-top: 1px solid #4f4d51;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   height: 27px;
   padding: 6px 8px 7px;
 }
@@ -1851,7 +1852,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -1926,37 +1927,35 @@ a:hover, a:visited, a:active {
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
-  font-size: 13px;
-  font-weight: 300;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 317, ../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 322, ../../app/stylesheets/partials/frame.scss */
+/* line 324, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 326, ../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.8;
   color: #a4a4a4;
 }
 
-/* line 339, ../../app/stylesheets/partials/frame.scss */
+/* line 341, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1964,24 +1963,24 @@ a:hover, a:visited, a:active {
   padding-right: 3px;
 }
 
-/* line 348, ../../app/stylesheets/partials/frame.scss */
+/* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 358, ../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
 }
 
-/* line 362, ../../app/stylesheets/partials/frame.scss */
+/* line 364, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 365, ../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
@@ -2407,7 +2406,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -2727,7 +2726,7 @@ body.user-inactive .video-player-controls-wrapper {
 /* line 30, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form legend {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.75;
 }
 
@@ -2765,8 +2764,8 @@ body.user-inactive .video-player-controls-wrapper {
   width: 25%;
 }
 /* line 69, ../../app/stylesheets/partials/user-preferences.scss */
-.you-profile inputfont,
-.you-notifications inputfont {
+.you-profile input,
+.you-notifications input {
   padding-left: 5px;
   width: 75%;
 }
@@ -2784,7 +2783,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -2820,7 +2819,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 98, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -2837,7 +2836,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -3056,128 +3055,149 @@ body.user-inactive .video-player-controls-wrapper {
   margin-bottom: 10px;
   width: 100%;
 }
+/* line 18, ../../app/stylesheets/partials/team.scss */
+.about-team a {
+  color: #efefef;
+}
 
-/* line 21, ../../app/stylesheets/partials/team.scss */
+/* line 24, ../../app/stylesheets/partials/team.scss */
 .about-team-nav li {
   float: left;
   list-style-type: none;
   width: 50%;
 }
 
-/* line 29, ../../app/stylesheets/partials/team.scss */
+/* line 32, ../../app/stylesheets/partials/team.scss */
 .about-header h1 {
   border-bottom: 1px solid #222;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.75;
   margin: 0 10px 10px;
 }
 
-/* line 38, ../../app/stylesheets/partials/team.scss */
+/* line 41, ../../app/stylesheets/partials/team.scss */
 .about-nav, .about-definition-peripherals {
   margin: 10px;
   padding: 0;
 }
-/* line 43, ../../app/stylesheets/partials/team.scss */
+/* line 46, ../../app/stylesheets/partials/team.scss */
 .about-nav a, .about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 47, ../../app/stylesheets/partials/team.scss */
+/* line 50, ../../app/stylesheets/partials/team.scss */
 .about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 50, ../../app/stylesheets/partials/team.scss */
+/* line 53, ../../app/stylesheets/partials/team.scss */
 .about-nav a:visited, .about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 56, ../../app/stylesheets/partials/team.scss */
+/* line 59, ../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2,
 .about-nav h3,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 61, ../../app/stylesheets/partials/team.scss */
-.about-nav h3, .about-definition-peripherals h3 {
+/* line 63, ../../app/stylesheets/partials/team.scss */
+.about-nav h2, .about-definition-peripherals h2 {
   font-weight: 300;
 }
-
 /* line 67, ../../app/stylesheets/partials/team.scss */
+.about-nav h3, .about-definition-peripherals h3 {
+  font-weight: 100;
+}
+
+/* line 73, ../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 71, ../../app/stylesheets/partials/team.scss */
+/* line 77, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 74, ../../app/stylesheets/partials/team.scss */
+/* line 80, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 80, ../../app/stylesheets/partials/team.scss */
+/* line 86, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
+  line-height: 1.5;
   margin: 10px 0 20px 0;
 }
-/* line 84, ../../app/stylesheets/partials/team.scss */
+/* line 91, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   width: auto;
 }
 
-/* line 90, ../../app/stylesheets/partials/team.scss */
+/* line 98, ../../app/stylesheets/partials/team.scss */
+.about-external-twitter a {
+  background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
+  padding-left: 22px;
+}
+
+/* line 107, ../../app/stylesheets/partials/team.scss */
+.about-external-link a {
+  background: url("../images/assets/team_web.svg") no-repeat center left transparent;
+  padding-left: 22px;
+}
+
+/* line 115, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 93, ../../app/stylesheets/partials/team.scss */
+/* line 118, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 96, ../../app/stylesheets/partials/team.scss */
+/* line 121, ../../app/stylesheets/partials/team.scss */
 .stzul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 99, ../../app/stylesheets/partials/team.scss */
+/* line 124, ../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 102, ../../app/stylesheets/partials/team.scss */
+/* line 127, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 105, ../../app/stylesheets/partials/team.scss */
+/* line 130, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 108, ../../app/stylesheets/partials/team.scss */
+/* line 133, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 111, ../../app/stylesheets/partials/team.scss */
+/* line 136, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 114, ../../app/stylesheets/partials/team.scss */
+/* line 139, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 117, ../../app/stylesheets/partials/team.scss */
+/* line 142, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 120, ../../app/stylesheets/partials/team.scss */
+/* line 145, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
 }
@@ -3318,7 +3338,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 147, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter, .email-gate-networks-twitter {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3359,7 +3379,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 159, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook, .email-gate-networks-facebook {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3414,7 +3434,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -3554,7 +3574,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 58, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #549738, #3f722a);
@@ -3697,7 +3717,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 178, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);

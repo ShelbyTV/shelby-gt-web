@@ -32,7 +32,7 @@
 /* line 30, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form legend {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.75;
 }
 
@@ -70,8 +70,8 @@
   width: 25%;
 }
 /* line 69, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-profile inputfont,
-.you-notifications inputfont {
+.you-profile input,
+.you-notifications input {
   padding-left: 5px;
   width: 75%;
 }
@@ -89,7 +89,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -125,7 +125,7 @@
 
 /* line 98, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -142,7 +142,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
