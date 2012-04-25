@@ -101,7 +101,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       },
       error : function(frameModel, response, ajaxSettings) {
-        console.log('args',arguments);
         if (response.status == 404) {
           // if the frame doesn't have a roll, we consider it not accessible, so a 404 is returned
           // the frame doesn't have a roll, so navigate to the stream/dashboard which is its 'source'
