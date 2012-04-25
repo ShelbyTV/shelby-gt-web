@@ -20,6 +20,16 @@
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= include_stylesheets :common %>
+
+	<!-- Testing out this exception handler -->
+	<script>
+	    var _errs=["4f9837dac301559577161bc1"];(function(a,b){a.onerror=function(){_errs.push(arguments)};
+	    var d=function(){var a=b.createElement("script"),c=b.getElementsByTagName("script")[0];
+	    a.src="//d15qhc0lu1ghnk.cloudfront.net/beacon.js";a.async=!0;
+	    c.parentNode.insertBefore(a,c)};a.addEventListener?a.addEventListener("load",d,!1):
+	    a.attachEvent("onload",d)})(window,document);
+	</script>
+
   <%= include_javascripts :common, :shelby %>
 </head>
 
