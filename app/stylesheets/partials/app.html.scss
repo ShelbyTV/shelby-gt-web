@@ -10,21 +10,22 @@ h1,h2,h3,h4,h5,h6{
 }
 
 html,body{
-	bottom:0;
 	height:100%;
-	left:0;
 	margin:0;
 	overflow:hidden;
 	padding:0;
-	position:absolute;
-	right:0;
-	top:0;
 	width:100%;
 }
 
 body{
 	@include fontcolor;
 	@include basefont;
+
+	bottom:0;
+	left:0;
+	position:absolute;
+	right:0;
+	top:0;
 
 	@include background(
 		url('../images/assets/noise.png') #000

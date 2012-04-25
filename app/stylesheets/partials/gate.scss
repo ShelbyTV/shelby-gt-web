@@ -18,7 +18,7 @@
 
 .email-gate-wrapper {
 	margin:15% auto 0;
-	width:535px;
+	width:480px;
 }
 
 .email-gate-header{
@@ -155,6 +155,7 @@
 .email-gate-label {
 	display:block;
 	font-size:14px;
+	font-weight:300;
 	line-height:3.8;
 	text-align: right;
 }
@@ -195,10 +196,15 @@
 	width: 17%;
 }
 
-.thank-you {
+.email-gate-thank-you {
   display: none;
   margin-top: $defaultMargin;
   text-align:center;
+
+  h1{
+  	font-size:1em;
+  	margin-bottom:2em;
+  }
 }
 
 .detour{
