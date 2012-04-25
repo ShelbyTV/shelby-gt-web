@@ -41,123 +41,128 @@
   margin: 10px;
   padding: 0;
 }
-/* line 46, ../../../app/stylesheets/partials/team.scss */
+/* line 45, ../../../app/stylesheets/partials/team.scss */
 .about-nav a, .about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 50, ../../../app/stylesheets/partials/team.scss */
+/* line 49, ../../../app/stylesheets/partials/team.scss */
 .about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 53, ../../../app/stylesheets/partials/team.scss */
+/* line 52, ../../../app/stylesheets/partials/team.scss */
 .about-nav a:visited, .about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 59, ../../../app/stylesheets/partials/team.scss */
+/* line 58, ../../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2,
 .about-nav h3,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 63, ../../../app/stylesheets/partials/team.scss */
+/* line 62, ../../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2 {
   font-weight: 300;
 }
-/* line 67, ../../../app/stylesheets/partials/team.scss */
+/* line 66, ../../../app/stylesheets/partials/team.scss */
 .about-nav h3, .about-definition-peripherals h3 {
   font-weight: 100;
 }
+/* line 69, ../../../app/stylesheets/partials/team.scss */
+.about-nav li, .about-definition-peripherals li {
+  list-style-type: none;
+}
 
-/* line 73, ../../../app/stylesheets/partials/team.scss */
+/* line 75, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 77, ../../../app/stylesheets/partials/team.scss */
+/* line 79, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 80, ../../../app/stylesheets/partials/team.scss */
+/* line 82, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 86, ../../../app/stylesheets/partials/team.scss */
+/* line 88, ../../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
   line-height: 1.5;
+  list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 91, ../../../app/stylesheets/partials/team.scss */
+/* line 94, ../../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   width: auto;
 }
 
-/* line 98, ../../../app/stylesheets/partials/team.scss */
+/* line 101, ../../../app/stylesheets/partials/team.scss */
 .about-external-twitter a {
   background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 107, ../../../app/stylesheets/partials/team.scss */
+/* line 110, ../../../app/stylesheets/partials/team.scss */
 .about-external-link a {
   background: url("../images/assets/team_web.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 115, ../../../app/stylesheets/partials/team.scss */
+/* line 118, ../../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 118, ../../../app/stylesheets/partials/team.scss */
+/* line 121, ../../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 121, ../../../app/stylesheets/partials/team.scss */
+/* line 124, ../../../app/stylesheets/partials/team.scss */
 .stzul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 124, ../../../app/stylesheets/partials/team.scss */
+/* line 127, ../../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 127, ../../../app/stylesheets/partials/team.scss */
+/* line 130, ../../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 130, ../../../app/stylesheets/partials/team.scss */
+/* line 133, ../../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 133, ../../../app/stylesheets/partials/team.scss */
+/* line 136, ../../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 136, ../../../app/stylesheets/partials/team.scss */
+/* line 139, ../../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 139, ../../../app/stylesheets/partials/team.scss */
+/* line 142, ../../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 142, ../../../app/stylesheets/partials/team.scss */
+/* line 145, ../../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 145, ../../../app/stylesheets/partials/team.scss */
+/* line 148, ../../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
 }

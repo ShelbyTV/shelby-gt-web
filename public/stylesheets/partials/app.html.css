@@ -69,8 +69,9 @@ a:hover, a:visited, a:active {
 /* line 67, ../../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
-  font-size: 1.3em;
+  font-size: 1.2em;
   height: 100%;
+  line-height: 1.4;
   overflow: hidden;
   position: relative;
   z-index: 3;
@@ -93,17 +94,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 84, ../../../app/stylesheets/partials/app.html.scss */
+/* line 85, ../../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 88, ../../../app/stylesheets/partials/app.html.scss */
+/* line 89, ../../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 92, ../../../app/stylesheets/partials/app.html.scss */
+/* line 93, ../../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -113,7 +114,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 112, ../../../app/stylesheets/partials/app.html.scss */
+/* line 113, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -124,7 +125,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 120, ../../../app/stylesheets/partials/app.html.scss */
+/* line 121, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
