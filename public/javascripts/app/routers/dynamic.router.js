@@ -19,6 +19,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "team" : "displayTeam",
     "legal" : "displayLegal",
     "" : "displayDashboard",
+    "?*querystring" : "displayDashboardWithoutQuerystring",
     "*url" : "doNothing"
   },
 
@@ -233,8 +234,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
-  doNothing : function(){
-    console.log('bad url');
+  displayDashboardWithoutQuerystring: function(){
+    this.navigate("/", {trigger: true, replace: true});
+  },
+  
+  doNothing : function(url){
+    console.log('unhandled url', url);
   },
 
   //---
