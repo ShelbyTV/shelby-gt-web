@@ -18,6 +18,7 @@
 	position: absolute;
 	top: $defaultMargin;
 	width: 100%;
+	z-index:2;
 
 	.user {
 		@include border-radius($radius);
