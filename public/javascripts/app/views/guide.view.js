@@ -19,20 +19,22 @@
 
     initialize : function(){
       this.model.bind('change', this.updateChild, this);
+      this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
       this.model.unbind('change', this.updateChild, this);
+      this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
     },
 
     updateChild : function(model){
       // only render a new content pane if the contentPane* attribtues have been updated
-      var changedAttrs = model.changedAttributes();
-      if (!changedAttrs.displayState && !changedAttrs.currentRollModel) {
+      var _changedAttrs = _(model.changedAttributes());
+      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId')) {
         return;
       }
       this._leaveChildren();
@@ -55,7 +57,8 @@
           displayComponents = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
-            limit : shelby.config.pageLoadSizes.dashboard
+            limit : shelby.config.pageLoadSizes.dashboard,
+            sinceId : this.model.get('sinceId')
           };
          break;
         case DisplayState.rollList :
@@ -70,7 +73,8 @@
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
-            limit : shelby.config.pageLoadSizes.roll
+            limit : shelby.config.pageLoadSizes.roll,
+            sinceId : this.model.get('sinceId')
           };
           break;
         case DisplayState.userPreferences :
@@ -99,15 +103,21 @@
           break;
       }
 
-      var options = {model:displayComponents.model}
+      var options = {model:displayComponents.model};
       if (displayComponents.limit) {
         options.limit = displayComponents.limit;
+      }
+      if (displayComponents.sinceId) {
+        options.fetchParams = {
+          since_id : displayComponents.sinceId,
+          include_children : true
+        };
       }
       this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);
     },
 
-    rollActiveFrame: function(){
+    rollActiveFrame : function(){
       var activeFrameModel = this.model.get('activeFrameModel');
       if (activeFrameModel) {
         var currentDisplayState = this.model.get('displayState');
@@ -124,21 +134,36 @@
           }
         }
 
-        // if no frame view for the active frame currently exists, reroute to the rerolling url
-        // for the frame, which will bring up the frame's source roll, activate the frame, then
-        // reveal is rolling view
-        var rollId = this.model.get('activeFrameModel').get('roll').id;
-        var frameId = this.model.get('activeFrameModel').id;
-        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+        // no frame view for the active frame currently exists
+        if (this.model.get('activeFrameModel').has('roll')) {
+          // reroute to the frame in roll url for the frame, which will bring up the frame's source roll,
+          // activate the frame, then reveal is rolling view
+          var frameId = this.model.get('activeFrameModel').id;
+          var rollId = this.model.get('activeFrameModel').get('roll').id;
+          shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
+        } else {
+          // the frame has no source roll, so
+          // reroute to the entry in stream url for the frame, which will bring up the dashboard,
+          // activate the entry, then reveal is rolling view
+          shelby.router.navigate('stream/entry/' + this.model.get('activeDashboardEntryModel').id + '/rollit', {trigger:true});
+        }
       }
     },
 
-    scrollToActiveFrameView: function(){
+    scrollToActiveFrameView : function(){
       this._listView.scrollToActiveFrameView();
     },
 
-    scrollToChildElement: function(element){
+    scrollToChildElement : function(element){
       this.$el.scrollTo(element, {duration:200, axis:'y'});
+    },
+
+    _onActiveFrameModelChange : function(guideModel, activeFrameModel){
+      if (!activeFrameModel) {
+        // just for completeness, anytime we set the activeFrameModel to null, there is obviously no
+        // activeDashboardEntryModel either
+        this.model.set('activeDashboardEntryModel', null);
+      }
     },
 
     // appropriatly advances to the next video (in dashboard or a roll)

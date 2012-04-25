@@ -11,6 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
     "carousel/:rollId" : "displayRollInCarousel",
+    "stream/entry/:entryId/rollIt" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -29,6 +30,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayFrameInRoll(rollId, frameId, {activateRollingView:true});
   },
 
+  displayEntryAndActivateRollingView : function(entryId){
+    this.displayEntryInDashboard(entryId, {activateRollingView:true});
+  },
+
   displayFrameInRoll : function(rollId, frameId, options){
     var defaults = {
       activateRollingView : false
@@ -41,7 +46,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     var self = this;
     this._setupRollView(rollId, null, {
-      data: {include_children:true},
+      data: {
+        since_id : frameId,
+        include_children : true
+      },
       onRollFetch: function(rollModel, response){
         self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
       }
@@ -108,31 +116,63 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayDashboard : function(){
+  displayEntryInDashboard : function(entryId, options){
+   var defaults = {
+      activateRollingView : false
+    };
+    if (!options) {
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
+    }
+
+    var self = this;
+    this.displayDashboard({
+      data: {
+        since_id : entryId,
+        include_children : true
+      },
+      onDashboardFetch: function(dashboardModel, response){
+        self._activateEntryInDashboardById(dashboardModel, entryId, options.activateRollingView);
+      }
+    });
+  },
+
+  displayDashboard : function(options){
+    var defaultOnDashboardFetch;
+    if (shelby.models.guide.get('activeFrameModel')) {
+      // if something is already playing and it is in the dashboard, scroll to it
+      defaultOnDashboardFetch = this._scrollToActiveFrameView;
+    } else {
+      // if nothing is already playing, start playing the first frame in the dashboard on load
+      defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
+    }
+    var defaults = {
+      onDashboardFetch: defaultOnDashboardFetch,
+      data: {
+          include_children : true
+      }
+    };
+    if (!options) {
+      options = defaults;
+    } else {
+      _(options).defaults(defaults);
+    }
+
     this._setupTopLevelViews({showSpinner: true});
     
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
-      'insideRollList' : false
+      'insideRollList' : false,
+      'sinceId' : options.data.since_id ? options.data.since_id : null
     });
-    var onSuccess;
-    if (shelby.models.guide.get('activeFrameModel')) {
-      // if something is already playing and it is in the dashboard, scroll to it
-      onSuccess = this._scrollToActiveFrameView;
-    } else {
-      // if nothing is already playing, start playing the first frame in the dashboard on load
-      onSuccess = this._activateFirstDashboardVideoFrame;
-    }
-    this._hideSpinnerAfter(
-      shelby.models.dashboard.fetch({
-        data: {
-          include_children : true,
-          limit : shelby.config.pageLoadSizes.dashboard
-        },
-        success: onSuccess
-      })
-    );
+
+    var fetchOptions = {data: options.data};
+    fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
+    fetchOptions.success = options.onDashboardFetch;
+
+    this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
   },
 
   displayRollList : function(){
@@ -238,6 +278,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
+  _activateEntryInDashboardById : function(dashboardModel, entryId, activateRollingView) {
+    var entry;
+    if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
+      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
+      if (activateRollingView) {
+        shelby.views.guide.rollActiveFrame();
+      }
+    } else {
+      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+      window.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+      this.navigate("/", {trigger:true, replace:true});
+    }
+  },
+
   _scrollToActiveFrameView : function(){
     shelby.views.guide.scrollToActiveFrameView();
   },
@@ -320,7 +374,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     shelby.models.guide.set({
       'displayState': displayState,
-      'currentRollModel': rollModel
+      'currentRollModel': rollModel,
+      'sinceId' : options.data.since_id ? options.data.since_id : null
     });
     var fetchOptions = {data: options.data};
     fetchOptions.data.limit = shelby.config.pageLoadSizes.roll;
@@ -337,8 +392,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _hideSpinnerAfter: function(xhr){
     // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
     // upon which we append another callback to hide the spinner shown earlier.
-    xhr.done(function(){ 
-      shelby.views.guideSpinner.hide(); 
+    xhr.done(function(){
+      shelby.views.guideSpinner.hide();
     });
   }
 
