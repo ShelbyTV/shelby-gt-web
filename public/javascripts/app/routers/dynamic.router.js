@@ -11,7 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
     "carousel/:rollId" : "displayRollInCarousel",
-    "stream/entry/:entryId/rollIt" : "displayEntryAndActivateRollingView",
+    "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
