@@ -6,6 +6,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
+    "rollFromFrame/:frameId" : "displayRollFromFrame",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
     "carousel/:rollId/:title" : "displayRollInCarousel",
@@ -82,6 +83,32 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch,
       isUserPersonalRoll: options.isUserPersonalRoll
+    });
+  },
+
+  displayRollFromFrame : function(frameId) {
+    var self = this;
+    var frameModel = new libs.shelbyGT.FrameModel({id:frameId});
+    frameModel.fetch({
+      global : false,
+      success : function(frameModel, response) {
+        if (frameModel.has('roll_id')) {
+          self.navigate('roll/' + frameModel.get('roll_id'), {trigger:true,replace:true});
+        } else {
+          // the frame doesn't have a roll, so navigate to the stream/dashboard which is its 'source'
+          self.navigate('', {trigger:true,replace:true});
+        }
+      },
+      error : function(frameModel, response, ajaxSettings) {
+        console.log('args',arguments);
+        if (response.status == 404) {
+          // if the frame doesn't have a roll, we consider it not accessible, so a 404 is returned
+          // the frame doesn't have a roll, so navigate to the stream/dashboard which is its 'source'
+          self.navigate('', {trigger:true,replace:true});
+        } else {
+          libs.shelbyGT.Ajax.defaultOnError(null, response, ajaxSettings, null);
+        }
+      }
     });
   },
 
