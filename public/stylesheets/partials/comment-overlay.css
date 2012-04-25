@@ -32,8 +32,9 @@
   position: absolute;
   top: 10px;
   width: 100%;
+  z-index: 2;
 }
-/* line 22, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 23, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -43,32 +44,32 @@
   border-radius: 5px;
   max-width: 500px;
 }
-/* line 27, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 28, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
 
-/* line 32, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 33, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside {
   width: 473px;
 }
-/* line 34, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 35, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list {
   border-left: 1px solid black;
   border-right: 1px solid black;
   height: 67px;
   width: 100%;
 }
-/* line 40, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 41, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list li {
   display: none;
 }
-/* line 43, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 44, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list .first {
   display: block;
 }
 
-/* line 52, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 53, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav {
   background: url("../images/assets/comment_arrow_right.svg") #303030;
   -moz-border-radius: 5px;
@@ -84,7 +85,7 @@
   width: 24px;
   height: 67px;
 }
-/* line 63, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 64, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav.left {
   background: url("../images/assets/comment_arrow_left.svg") #303030;
 }
