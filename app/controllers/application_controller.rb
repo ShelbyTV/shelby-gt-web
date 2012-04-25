@@ -5,19 +5,25 @@ class ApplicationController < ActionController::Base
   # Simple helper to let us know if user is signed in:
   #  the _shelby_gt_common cookie is being set/cleared on the api server
   def user_signed_in?
-    if c = cookies[:_shelby_gt_common].split(',')[0]
-      c.split("=")[1] == "nil" ? false : true
-    else
-      false
-    end
+    id = cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
+    id ? id != "nil" : false
   end
   
   def csrf_token_from_cookie
-    if c = cookies[:_shelby_gt_common].split(',')[1]
-      csrf_token = c[(c.index("=") + 1)..-1]
-    else
-      csrf_token = nil
+    cookie_to_hash(cookies[:_shelby_gt_common])[:csrf_token]
+  end
+  
+  def cookie_to_hash(c, delim=",", split="=")
+    entries = c.blank? ? nil : c.split(delim)
+    h = {}
+    return h if entries.blank?
+    
+    entries.each do |entry|
+      key, val = entry.split("=", 2)
+      h[key.to_sym] = val
     end
+    
+    h
   end
   
 end

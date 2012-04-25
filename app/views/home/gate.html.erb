@@ -56,6 +56,19 @@
 			<h2>But we're working hard to get you in!</h2>
       <h2 class="detour">In the meantime, visit our <a href="http://shelby.tv">current website</a>!</h2>
 		</div>
+	<% elsif @has_access_token %>
+		<div class="private-beta-access">
+			<h1>Welcome the Shelby GT private beta!</h1>
+			<h2>Sign up, we don't auto-post anything:</h2>
+			<p class="login">
+				<a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+	        Sign Up with Twitter
+	      </a>   
+	      <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+	        Sign Up with Facebook
+	      </a>
+			</p>
+		</div>
 	<% else %>
 		<form class="email-gate-signup">
 	    <legend class="email-gate-caption">
