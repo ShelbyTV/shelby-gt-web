@@ -20,8 +20,8 @@
     },
 
     _updateChild : function(guideModel){
-      var changedAttrs = guideModel.changedAttributes();
-      if (changedAttrs.displayState || changedAttrs.currentRollModel) {
+      var _changedAttrs = _(guideModel.changedAttributes());
+      if (_changedAttrs.has('displayState') || _changedAttrs.has('currentRollModel')) {
         this.render();
       }
     },

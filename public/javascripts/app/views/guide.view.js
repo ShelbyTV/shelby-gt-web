@@ -31,8 +31,8 @@
 
     updateChild : function(model){
       // only render a new content pane if the contentPane* attribtues have been updated
-      var changedAttrs = model.changedAttributes();
-      if (!changedAttrs.displayState && !changedAttrs.currentRollModel) {
+      var _changedAttrs = _(model.changedAttributes());
+      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId')) {
         return;
       }
       this._leaveChildren();

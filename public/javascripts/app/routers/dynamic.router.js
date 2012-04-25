@@ -11,7 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "carousel/:rollId/:title" : "displayRollInCarousel",
     "carousel/:rollId/" : "displayRollInCarousel",
     "carousel/:rollId" : "displayRollInCarousel",
-    "stream/frame/:frameId/rollIt" : "displayDashboardAndActivateRollingView",
+    "stream/entry/:entryId/rollIt" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -30,8 +30,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayFrameInRoll(rollId, frameId, {activateRollingView:true});
   },
 
-  displayDashboardAndActivateRollingView : function(frameId){
-    this.displayFrameInDashboard(frameId, {activateRollingView:true});
+  displayEntryAndActivateRollingView : function(entryId){
+    this.displayEntryInDashboard(entryId, {activateRollingView:true});
   },
 
   displayFrameInRoll : function(rollId, frameId, options){
@@ -116,7 +116,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayFrameInDashboard : function(frameId, options){
+  displayEntryInDashboard : function(entryId, options){
    var defaults = {
       activateRollingView : false
     };
@@ -129,11 +129,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var self = this;
     this.displayDashboard({
       data: {
-        since_id : frameId,
+        since_id : entryId,
         include_children : true
       },
       onDashboardFetch: function(dashboardModel, response){
-        self._activateFrameInDashboardById(dashboardModel, frameId, options.activateRollingView);
+        self._activateEntryInDashboardById(dashboardModel, entryId, options.activateRollingView);
       }
     });
   },
@@ -164,7 +164,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
-      'insideRollList' : false
+      'insideRollList' : false,
+      'sinceId' : options.data.since_id ? options.data.since_id : null
     });
 
     var fetchOptions = {data: options.data};
@@ -277,19 +278,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateFrameInDashboardById : function(dashboardModel, frameId, activateRollingView) {
-    var _frames = _(dashboardModel.get('dashboard_entries').pluck('frame'));
-    var frame = _frames.find(function(frame){
-        return frame.id == frameId;
-    });
-    if (frame) {
-      shelby.models.guide.set('activeFrameModel', frame);
+  _activateEntryInDashboardById : function(dashboardModel, entryId, activateRollingView) {
+    var entry;
+    if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
+      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
       if (activateRollingView) {
         shelby.views.guide.rollActiveFrame();
       }
     } else {
-      // url frame id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-      window.alert("Sorry, the video you were looking for doesn't exist in your stream.");
+      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+      window.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
       this.navigate("/", {trigger:true, replace:true});
     }
   },
