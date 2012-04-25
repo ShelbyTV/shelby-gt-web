@@ -8,6 +8,22 @@
  */
 /* line 7, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
   background: transparent;
   font-size: 12px;
   left: 10px;
@@ -17,7 +33,7 @@
   top: 10px;
   width: 100%;
 }
-/* line 18, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 22, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -27,32 +43,32 @@
   border-radius: 5px;
   max-width: 500px;
 }
-/* line 23, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 27, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
 
-/* line 28, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside {
   width: 473px;
 }
-/* line 30, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 34, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list {
   border-left: 1px solid black;
   border-right: 1px solid black;
   height: 67px;
   width: 100%;
 }
-/* line 36, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 40, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list li {
   display: none;
 }
-/* line 39, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 43, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list .first {
   display: block;
 }
 
-/* line 48, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 52, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav {
   background: url("../images/assets/comment_arrow_right.svg") #303030;
   -moz-border-radius: 5px;
@@ -68,7 +84,7 @@
   width: 24px;
   height: 67px;
 }
-/* line 59, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 63, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav.left {
   background: url("../images/assets/comment_arrow_left.svg") #303030;
 }

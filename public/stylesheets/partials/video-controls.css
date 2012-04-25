@@ -33,12 +33,13 @@
   z-index: 2;
 }
 
-/* line 22, ../../../app/stylesheets/partials/video-controls.scss */
-body.user-inactive .video-player-controls-wrapper {
+/* line 23, ../../../app/stylesheets/partials/video-controls.scss */
+.user-inactive .video-player-controls-wrapper,
+.user-inactive .comment-overlay-wrapper {
   opacity: 0;
 }
 
-/* line 26, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 27, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
   background: -webkit-linear-gradient(top, #141414, #0e0e0e);
@@ -73,12 +74,12 @@ body.user-inactive .video-player-controls-wrapper {
   transition-delay: 0s;
 }
 
-/* line 41, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 42, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls.full-width {
   margin: 10px 40px 10px 10px;
 }
 
-/* line 45, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 46, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
   position: relative;
   -moz-border-radius: 5px;
@@ -92,7 +93,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 100%;
 }
 
-/* line 55, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 56, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -100,12 +101,12 @@ body.user-inactive .video-player-controls-wrapper {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 65, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 66, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 73, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 74, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -121,7 +122,7 @@ body.user-inactive .video-player-controls-wrapper {
   position: absolute;
 }
 
-/* line 84, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 85, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -140,13 +141,13 @@ body.user-inactive .video-player-controls-wrapper {
   width: 0;
 }
 
-/* line 95, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 96, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 104, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 105, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -168,7 +169,7 @@ body.user-inactive .video-player-controls-wrapper {
   cursor: ew-resize;
 }
 
-/* line 120, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 121, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -178,23 +179,23 @@ body.user-inactive .video-player-controls-wrapper {
   margin: 0 15px;
 }
 
-/* line 129, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 130, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 137, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 138, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 144, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 145, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 154, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 155, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

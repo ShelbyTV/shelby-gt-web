@@ -19,7 +19,8 @@
 	z-index: 2;
 }
 
-body.user-inactive .video-player-controls-wrapper{
+.user-inactive .video-player-controls-wrapper,
+.user-inactive .comment-overlay-wrapper{
   opacity: 0;
 }
 

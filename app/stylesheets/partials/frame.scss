@@ -250,7 +250,7 @@
 }
 
 .video-activity-comment{
-	padding:$defaultMargin $defaultMargin 35px;
+	padding:$defaultMargin;
 	textarea{
 		@include border-radius($radius);
 		border-color:#555;

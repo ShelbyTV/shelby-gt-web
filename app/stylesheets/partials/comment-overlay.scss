@@ -5,6 +5,10 @@
 		"compass/css3/box-shadow";
 
 .comment-overlay-wrapper {
+	@include transition-property(opacity);
+	@include transition-duration(.25s);
+	@include transition-timing-function(ease-out);
+	@include transition-delay(0s);
 
 	background: transparent;
 	font-size: 12px;
