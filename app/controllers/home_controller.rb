@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     end
     
     if user_signed_in?
+      @csrf_token = csrf_token_from_cookie
       render 'app'
     else
       @show_error = params[:access] == "nos"

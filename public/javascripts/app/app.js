@@ -19,7 +19,8 @@ shelby = {
   // Signed in convience function
   userSignedIn: function(){
 		var _cookie = cookies.get("_shelby_gt_common");
-		return _cookie.split("=").length == 2 ? _cookie.split("=")[1] !== "nil" ? true : false : false;
+		var _pieces = _cookie.split(',');
+		return _pieces[0].split("=").length == 2 ? _cookie.split("=")[1] !== "nil" ? true : false : false;
   },
 	
 	signOut: function(){
@@ -42,7 +43,7 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
   }
   // attach the API's csrf token to the request for logged in users
   if (options.type != 'GET' && shelby.models.user) {
-    var token = shelby.models.user.get('csrf_token');
+    var token = $('meta[name=csrf-token]').attr('content');
     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
   }
 });

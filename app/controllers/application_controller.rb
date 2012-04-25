@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def csrf_token_from_cookie
+    if c = cookies[:_shelby_gt_common].split(',')[1]
+      csrf_token = c[(c.index("=") + 1)..-1]
+    else
+      csrf_token = nil
+    end
+  end
+  
 end
