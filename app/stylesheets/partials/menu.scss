@@ -74,7 +74,7 @@
 			color:#63BD57;
 			&:hover{
 				@include background(
-					url('../images/assets/stream_on.svg') no-repeat center 0px #3f3f3f
+					url('../images/assets/stream_on.svg') no-repeat center center #3f3f3f
 				);	
 			}
 		}
@@ -92,7 +92,7 @@
 			color:#0092C1;
 			&:hover{
 				@include background(
-					url('../images/assets/rolls_on.svg') no-repeat center 0px #3f3f3f
+					url('../images/assets/rolls_on.svg') no-repeat center center #3f3f3f
 				);	
 			}
 		}
@@ -109,7 +109,7 @@
 			color:$softShelbyPurpleHighlight;
 			&:hover{
 				@include background(
-					url('../images/assets/saves_on.svg') no-repeat center 0px #3f3f3f
+					url('../images/assets/saves_on.svg') no-repeat center center #3f3f3f
 				);	
 			}
 		}

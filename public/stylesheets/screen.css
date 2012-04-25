@@ -114,20 +114,6 @@ body {
   line-height: 1.4;
 }
 
-/* line 12, ../../app/stylesheets/partials/h5bp.scss */
-::-moz-selection {
-  background: #fe57a1;
-  color: #fff;
-  text-shadow: none;
-}
-
-/* line 13, ../../app/stylesheets/partials/h5bp.scss */
-::selection {
-  background: #fe57a1;
-  color: #fff;
-  text-shadow: none;
-}
-
 /* line 15, ../../app/stylesheets/partials/h5bp.scss */
 a {
   color: #00e;
@@ -849,7 +835,7 @@ a:hover, a:visited, a:active {
 }
 /* line 75, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
-  background: url("../images/assets/stream_on.svg") no-repeat center 0px #3f3f3f;
+  background: url("../images/assets/stream_on.svg") no-repeat center center #3f3f3f;
 }
 /* line 83, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
@@ -862,7 +848,7 @@ a:hover, a:visited, a:active {
 }
 /* line 93, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab:hover {
-  background: url("../images/assets/rolls_on.svg") no-repeat center 0px #3f3f3f;
+  background: url("../images/assets/rolls_on.svg") no-repeat center center #3f3f3f;
 }
 /* line 100, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
@@ -875,7 +861,7 @@ a:hover, a:visited, a:active {
 }
 /* line 110, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab:hover {
-  background: url("../images/assets/saves_on.svg") no-repeat center 0px #3f3f3f;
+  background: url("../images/assets/saves_on.svg") no-repeat center center #3f3f3f;
 }
 
 /* line 120, ../../app/stylesheets/partials/menu.scss */
@@ -1972,7 +1958,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1980,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -2763,7 +2749,7 @@ body.user-inactive .video-player-controls-wrapper {
 .you-notifications label {
   float: left;
   font-weight: 500;
-  font-size: 1.4em;
+  font-size: 14px;
   line-height: 2;
   width: 25%;
 }
