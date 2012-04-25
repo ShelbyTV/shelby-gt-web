@@ -264,7 +264,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-      window.alert("Sorry, the video you were looking for doesn't exist.");
+      window.alert("Sorry, the video you were looking for doesn't exist in this roll.");
       this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
