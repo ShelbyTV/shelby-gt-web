@@ -18,7 +18,7 @@
 
 .email-gate-wrapper {
 	margin:15% auto 0;
-	width:535px;
+	width:480px;
 }
 
 .email-gate-header{
@@ -27,7 +27,7 @@
 
 .email-gate-logo {
 	@include background(
-		url('../images/assets/shelbylogo.svg') no-repeat center center transparent
+		url('../images/email-gate/landing_logo.svg') no-repeat center center transparent
 	);
 
 	background-size:100%;
@@ -78,7 +78,7 @@
 		url('../images/assets/noise.png') #585858
 	);
 	@include border-radius($radius);
-	@include box-shadow(0 0 0 0 lime);
+	@include box-shadow(inset 0 1px 2px -1px #999);
 
   display: none;
   
@@ -87,6 +87,7 @@
 	position:relative;
 
 	&:before{
+		@include box-shadow(inset 1px 1px 2px -1px #999);
 		@include rotate(45deg);
 		background:#585858;
 		content:"\0020";
@@ -101,18 +102,38 @@
 
 }
 
-a.email-gate-networks-twitter {
+.email-gate-networks-twitter {
 	//extend existing
 	@extend .logged-out-twitter;
-	display:block;
-	width:100%;
+	display: block;
+	padding: 3px 3px 3px 36px;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+
+	&:before {
+		width: 36px;
+	}
+	&:visited {
+		color:#efefef;
+	}
 }
 
-a.email-gate-networks-facebook {
+.email-gate-networks-facebook {
 	@extend .logged-out-facebook;
-	display:block;
-	margin-top:$defaultMargin;
-	width:100%;
+	display: block;
+	margin-top: $defaultMargin;
+	padding: 3px 3px 3px 36px;
+	text-align: center;
+	text-decoration: none;
+
+	width: 100%;
+		&:before {
+		width: 36px;
+	}
+	&:visited {
+		color:#efefef;
+	}
 }
 
 .email-gate-error {
@@ -121,19 +142,20 @@ a.email-gate-networks-facebook {
 
 .email-gate-signup {
 	margin: 0 auto;
-
+	text-align:center;
 }
 
 .email-gate-caption { 
 	font-size:13px;
 	margin:5px auto 10px;
 	text-align: center;
-
+	width: 100%;
 }
 
 .email-gate-label {
 	display:block;
 	font-size:14px;
+	font-weight:300;
 	line-height:3.8;
 	text-align: right;
 }
@@ -171,9 +193,20 @@ a.email-gate-networks-facebook {
 	font-size:13px;
 	margin:$defaultMargin+4 auto;
 	padding:7px $defaultMargin+9px;
+	width: 17%;
 }
 
-.thank-you {
+.email-gate-thank-you {
   display: none;
   margin-top: $defaultMargin;
+  text-align:center;
+
+  h1{
+  	font-size:1em;
+  	margin-bottom:2em;
+  }
+}
+
+.detour{
+	margin-top:1.231em;
 }

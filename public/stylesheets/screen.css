@@ -413,34 +413,42 @@ td {
  */
 /* line 6, ../../app/stylesheets/partials/app.html.scss */
 h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 8, ../../app/stylesheets/partials/app.html.scss */
+/* line 12, ../../app/stylesheets/partials/app.html.scss */
 html, body {
   height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
   width: 100%;
 }
 
-/* line 13, ../../app/stylesheets/partials/app.html.scss */
+/* line 20, ../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   background: url("../images/assets/noise.png") black;
-  overflow: hidden;
 }
 
-/* line 25, ../../app/stylesheets/partials/app.html.scss */
+/* line 36, ../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 30, ../../app/stylesheets/partials/app.html.scss */
+/* line 41, ../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 36, ../../app/stylesheets/partials/app.html.scss */
+/* line 47, ../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -449,7 +457,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 44, ../../app/stylesheets/partials/app.html.scss */
+/* line 55, ../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -457,17 +465,18 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 52, ../../app/stylesheets/partials/app.html.scss */
+/* line 63, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 57, ../../app/stylesheets/partials/app.html.scss */
+/* line 68, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
-  font-size: 1.3em;
+  font-size: 1.2em;
   height: 100%;
+  line-height: 1.4;
   overflow: hidden;
   position: relative;
   z-index: 3;
@@ -490,17 +499,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 74, ../../app/stylesheets/partials/app.html.scss */
+/* line 86, ../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 78, ../../app/stylesheets/partials/app.html.scss */
+/* line 90, ../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 82, ../../app/stylesheets/partials/app.html.scss */
+/* line 94, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -510,7 +519,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 102, ../../app/stylesheets/partials/app.html.scss */
+/* line 114, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -521,7 +530,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 110, ../../app/stylesheets/partials/app.html.scss */
+/* line 122, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -572,7 +581,7 @@ a:hover, a:visited, a:active {
 }
 /* line 39, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -782,7 +791,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
   -o-box-shadow: inset 1px 1px 1px #4d4d4d;
   box-shadow: inset 1px 1px 1px #4d4d4d;
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   border: none;
   color: #666;
   display: block;
@@ -970,7 +979,7 @@ a:hover, a:visited, a:active {
 }
 /* line 36, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
-  font: 300 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -moz-transition-property: opacity;
@@ -1126,7 +1135,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -1318,7 +1327,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -1388,7 +1397,7 @@ a:hover, a:visited, a:active {
 .current-roll-avatar span {
   display: block;
   height: 25px;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
   width: 25px;
 }
@@ -1398,7 +1407,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   left: 0;
   position: absolute;
-  top: 0;
+  top: 5px;
 }
 
 /* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
@@ -1419,7 +1428,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   border: 1px solid #222;
   color: #efefef;
   height: 26px;
@@ -1667,7 +1676,7 @@ a:hover, a:visited, a:active {
 /* line 101, ../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   float: right;
@@ -1821,7 +1830,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 0 3px 3px;
   border-top: 1px solid #4f4d51;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   height: 27px;
   padding: 6px 8px 7px;
 }
@@ -1851,7 +1860,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -1926,37 +1935,35 @@ a:hover, a:visited, a:active {
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
-  font-size: 13px;
-  font-weight: 300;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 317, ../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 322, ../../app/stylesheets/partials/frame.scss */
+/* line 324, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 326, ../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.8;
   color: #a4a4a4;
 }
 
-/* line 339, ../../app/stylesheets/partials/frame.scss */
+/* line 341, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1964,24 +1971,24 @@ a:hover, a:visited, a:active {
   padding-right: 3px;
 }
 
-/* line 348, ../../app/stylesheets/partials/frame.scss */
+/* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334669268');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 358, ../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334669268');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
 }
 
-/* line 362, ../../app/stylesheets/partials/frame.scss */
+/* line 364, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 365, ../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
@@ -2016,11 +2023,6 @@ a:hover, a:visited, a:active {
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
-}
-/* line 18, ../../app/stylesheets/partials/video-player.scss */
-.video-player p {
-  background: black;
-  margin: 0;
 }
 
 /* line 24, ../../app/stylesheets/partials/video-player.scss */
@@ -2407,7 +2409,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -2727,7 +2729,7 @@ body.user-inactive .video-player-controls-wrapper {
 /* line 30, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form legend {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.75;
 }
 
@@ -2757,7 +2759,7 @@ body.user-inactive .video-player-controls-wrapper {
 .you-notifications label,
 .you-notifications input {
   float: left;
-  line-height: 2;
+  line-height: 1.4;
 }
 /* line 65, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
@@ -2765,9 +2767,9 @@ body.user-inactive .video-player-controls-wrapper {
   width: 25%;
 }
 /* line 69, ../../app/stylesheets/partials/user-preferences.scss */
-.you-profile inputfont,
-.you-notifications inputfont {
-  padding-left: 5px;
+.you-profile input,
+.you-notifications input {
+  padding: 5px;
   width: 75%;
 }
 
@@ -2784,7 +2786,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -2820,7 +2822,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 98, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -2837,7 +2839,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -2947,7 +2949,6 @@ body.user-inactive .video-player-controls-wrapper {
   position: absolute;
   height: 0;
   left: 50%;
-  visibility: hidden;
   width: 50%;
 }
 /* line 209, ../../app/stylesheets/partials/user-preferences.scss */
@@ -2991,7 +2992,7 @@ body.user-inactive .video-player-controls-wrapper {
   border: 1px solid #222;
   display: block;
   height: 20px;
-  margin: 5px 0 0 38%;
+  margin: 5px 0 0 49%;
   position: relative;
   width: 60px;
 }
@@ -3038,6 +3039,11 @@ body.user-inactive .video-player-controls-wrapper {
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
+/* line 261, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-notifications input:focus {
+  outline: none;
+  border: none;
+}
 
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
@@ -3056,128 +3062,154 @@ body.user-inactive .video-player-controls-wrapper {
   margin-bottom: 10px;
   width: 100%;
 }
+/* line 18, ../../app/stylesheets/partials/team.scss */
+.about-team a {
+  color: #efefef;
+}
 
-/* line 21, ../../app/stylesheets/partials/team.scss */
+/* line 24, ../../app/stylesheets/partials/team.scss */
 .about-team-nav li {
   float: left;
   list-style-type: none;
   width: 50%;
 }
 
-/* line 29, ../../app/stylesheets/partials/team.scss */
+/* line 32, ../../app/stylesheets/partials/team.scss */
 .about-header h1 {
   border-bottom: 1px solid #222;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.75;
   margin: 0 10px 10px;
 }
 
-/* line 38, ../../app/stylesheets/partials/team.scss */
+/* line 41, ../../app/stylesheets/partials/team.scss */
 .about-nav, .about-definition-peripherals {
   margin: 10px;
   padding: 0;
 }
-/* line 43, ../../app/stylesheets/partials/team.scss */
+/* line 45, ../../app/stylesheets/partials/team.scss */
 .about-nav a, .about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 47, ../../app/stylesheets/partials/team.scss */
+/* line 49, ../../app/stylesheets/partials/team.scss */
 .about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 50, ../../app/stylesheets/partials/team.scss */
+/* line 52, ../../app/stylesheets/partials/team.scss */
 .about-nav a:visited, .about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 56, ../../app/stylesheets/partials/team.scss */
+/* line 58, ../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2,
 .about-nav h3,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 61, ../../app/stylesheets/partials/team.scss */
-.about-nav h3, .about-definition-peripherals h3 {
+/* line 62, ../../app/stylesheets/partials/team.scss */
+.about-nav h2, .about-definition-peripherals h2 {
   font-weight: 300;
 }
+/* line 66, ../../app/stylesheets/partials/team.scss */
+.about-nav h3, .about-definition-peripherals h3 {
+  font-weight: 100;
+}
+/* line 69, ../../app/stylesheets/partials/team.scss */
+.about-nav li, .about-definition-peripherals li {
+  list-style-type: none;
+}
 
-/* line 67, ../../app/stylesheets/partials/team.scss */
+/* line 75, ../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 71, ../../app/stylesheets/partials/team.scss */
+/* line 79, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 74, ../../app/stylesheets/partials/team.scss */
+/* line 82, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 80, ../../app/stylesheets/partials/team.scss */
+/* line 88, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
+  line-height: 1.5;
+  list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 84, ../../app/stylesheets/partials/team.scss */
+/* line 94, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   width: auto;
 }
 
-/* line 90, ../../app/stylesheets/partials/team.scss */
+/* line 101, ../../app/stylesheets/partials/team.scss */
+.about-external-twitter a {
+  background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
+  padding-left: 22px;
+}
+
+/* line 110, ../../app/stylesheets/partials/team.scss */
+.about-external-link a {
+  background: url("../images/assets/team_web.svg") no-repeat center left transparent;
+  padding-left: 22px;
+}
+
+/* line 118, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 93, ../../app/stylesheets/partials/team.scss */
+/* line 121, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 96, ../../app/stylesheets/partials/team.scss */
+/* line 124, ../../app/stylesheets/partials/team.scss */
 .stzul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 99, ../../app/stylesheets/partials/team.scss */
+/* line 127, ../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 102, ../../app/stylesheets/partials/team.scss */
+/* line 130, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 105, ../../app/stylesheets/partials/team.scss */
+/* line 133, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 108, ../../app/stylesheets/partials/team.scss */
+/* line 136, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 111, ../../app/stylesheets/partials/team.scss */
+/* line 139, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 114, ../../app/stylesheets/partials/team.scss */
+/* line 142, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 117, ../../app/stylesheets/partials/team.scss */
+/* line 145, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 120, ../../app/stylesheets/partials/team.scss */
+/* line 148, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
 }
@@ -3317,8 +3349,8 @@ body.user-inactive .video-player-controls-wrapper {
 }
 
 /* line 147, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter, a.email-gate-networks-twitter {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+.logged-out-twitter, .email-gate-networks-twitter {
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3342,7 +3374,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, a.email-gate-networks-twitter:before {
+.logged-out-twitter:before, .email-gate-networks-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3353,13 +3385,13 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 154, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, a.email-gate-networks-twitter:before {
+.logged-out-twitter:before, .email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
 /* line 159, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook, a.email-gate-networks-facebook {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+.logged-out-facebook, .email-gate-networks-facebook {
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3383,7 +3415,7 @@ body.user-inactive .video-player-controls-wrapper {
   background: linear-gradient(top, #01599e, #013e80);
 }
 /* line 135, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, a.email-gate-networks-facebook:before {
+.logged-out-facebook:before, .email-gate-networks-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
   content: "\0020";
@@ -3394,7 +3426,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 30px;
 }
 /* line 166, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, a.email-gate-networks-facebook:before {
+.logged-out-facebook:before, .email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }
 
@@ -3414,7 +3446,7 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -3456,26 +3488,52 @@ body.user-inactive .video-player-controls-wrapper {
  * @import "compass/reset";
  */
 /* line 7, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper {
+  background: transparent;
+  font-size: 12px;
+  left: 10px;
+  line-height: 1.4;
+  padding-right: 360px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+/* line 18, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  max-width: 500px;
+}
+/* line 23, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user-vcard {
+  border: none;
+}
+
+/* line 28, ../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside {
   width: 473px;
 }
-/* line 9, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 30, ../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list {
   border-left: 1px solid black;
   border-right: 1px solid black;
   height: 67px;
   width: 100%;
 }
-/* line 15, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 36, ../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list li {
   display: none;
 }
-/* line 18, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 39, ../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list .first {
   display: block;
 }
 
-/* line 27, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 48, ../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav {
   background: url("../images/assets/comment_arrow_right.svg") #303030;
   -moz-border-radius: 5px;
@@ -3491,7 +3549,7 @@ body.user-inactive .video-player-controls-wrapper {
   width: 24px;
   height: 67px;
 }
-/* line 38, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 59, ../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav.left {
   background: url("../images/assets/comment_arrow_left.svg") #303030;
 }
@@ -3521,12 +3579,12 @@ body.user-inactive .video-player-controls-wrapper {
 /* line 19, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
   margin: 15% auto 0;
-  width: 535px;
+  width: 480px;
 }
 
 /* line 28, ../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
-  background: url("../images/assets/shelbylogo.svg") no-repeat center center transparent;
+  background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
   float: left;
   height: 100px;
@@ -3554,7 +3612,7 @@ body.user-inactive .video-player-controls-wrapper {
 
 /* line 58, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #549738, #3f722a);
@@ -3590,10 +3648,10 @@ body.user-inactive .video-player-controls-wrapper {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 0 0 0 lime;
-  -webkit-box-shadow: 0 0 0 0 lime;
-  -o-box-shadow: 0 0 0 0 lime;
-  box-shadow: 0 0 0 0 lime;
+  -moz-box-shadow: inset 0 1px 2px -1px #999999;
+  -webkit-box-shadow: inset 0 1px 2px -1px #999999;
+  -o-box-shadow: inset 0 1px 2px -1px #999999;
+  box-shadow: inset 0 1px 2px -1px #999999;
   display: none;
   margin-top: 45px;
   padding: 10px;
@@ -3601,6 +3659,10 @@ body.user-inactive .video-player-controls-wrapper {
 }
 /* line 89, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
+  -moz-box-shadow: inset 1px 1px 2px -1px #999999;
+  -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
+  -o-box-shadow: inset 1px 1px 2px -1px #999999;
+  box-shadow: inset 1px 1px 2px -1px #999999;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -3616,45 +3678,70 @@ body.user-inactive .video-player-controls-wrapper {
   width: 10px;
 }
 
-/* line 104, ../../app/stylesheets/partials/gate.scss */
-a.email-gate-networks-twitter {
+/* line 105, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter {
   display: block;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
 }
+/* line 114, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:before {
+  width: 36px;
+}
+/* line 117, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:visited {
+  color: #efefef;
+}
 
-/* line 111, ../../app/stylesheets/partials/gate.scss */
-a.email-gate-networks-facebook {
+/* line 122, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
 }
+/* line 131, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:before {
+  width: 36px;
+}
+/* line 134, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:visited {
+  color: #efefef;
+}
 
-/* line 118, ../../app/stylesheets/partials/gate.scss */
+/* line 139, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 122, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
+  text-align: center;
 }
 
-/* line 127, ../../app/stylesheets/partials/gate.scss */
+/* line 148, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
   text-align: center;
+  width: 100%;
 }
 
-/* line 134, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
+  font-weight: 300;
   line-height: 3.8;
   text-align: right;
 }
 
-/* line 141, ../../app/stylesheets/partials/gate.scss */
+/* line 163, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3671,9 +3758,9 @@ a.email-gate-networks-facebook {
   width: 50%;
 }
 
-/* line 158, ../../app/stylesheets/partials/gate.scss */
+/* line 180, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -3697,12 +3784,24 @@ a.email-gate-networks-facebook {
   font-size: 13px;
   margin: 14px auto;
   padding: 7px 19px;
+  width: 17%;
 }
 
-/* line 176, ../../app/stylesheets/partials/gate.scss */
-.thank-you {
+/* line 199, ../../app/stylesheets/partials/gate.scss */
+.email-gate-thank-you {
   display: none;
   margin-top: 10px;
+  text-align: center;
+}
+/* line 204, ../../app/stylesheets/partials/gate.scss */
+.email-gate-thank-you h1 {
+  font-size: 1em;
+  margin-bottom: 2em;
+}
+
+/* line 210, ../../app/stylesheets/partials/gate.scss */
+.detour {
+  margin-top: 1.231em;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */

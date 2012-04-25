@@ -116,7 +116,7 @@
 /* line 101, ../../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   float: right;
@@ -270,7 +270,7 @@
   border-radius: 0 0 3px 3px;
   border-top: 1px solid #4f4d51;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   height: 27px;
   padding: 6px 8px 7px;
 }
@@ -300,7 +300,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -375,37 +375,35 @@
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
-  font-size: 13px;
-  font-weight: 300;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 317, ../../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 322, ../../../app/stylesheets/partials/frame.scss */
+/* line 324, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 326, ../../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 332, ../../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2.8;
   color: #a4a4a4;
 }
 
-/* line 339, ../../../app/stylesheets/partials/frame.scss */
+/* line 341, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -413,24 +411,24 @@
   padding-right: 3px;
 }
 
-/* line 348, ../../../app/stylesheets/partials/frame.scss */
+/* line 350, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1333661320');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 358, ../../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1333661455');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
 }
 
-/* line 362, ../../../app/stylesheets/partials/frame.scss */
+/* line 364, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 365, ../../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }

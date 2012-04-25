@@ -7,26 +7,52 @@
  * @import "compass/reset";
  */
 /* line 7, ../../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper {
+  background: transparent;
+  font-size: 12px;
+  left: 10px;
+  line-height: 1.4;
+  padding-right: 360px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+/* line 18, ../../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  max-width: 500px;
+}
+/* line 23, ../../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user-vcard {
+  border: none;
+}
+
+/* line 28, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside {
   width: 473px;
 }
-/* line 9, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 30, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list {
   border-left: 1px solid black;
   border-right: 1px solid black;
   height: 67px;
   width: 100%;
 }
-/* line 15, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 36, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list li {
   display: none;
 }
-/* line 18, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 39, ../../../app/stylesheets/partials/comment-overlay.scss */
 .video-player-aside .video-activity-list .first {
   display: block;
 }
 
-/* line 27, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 48, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav {
   background: url("../images/assets/comment_arrow_right.svg") #303030;
   -moz-border-radius: 5px;
@@ -42,7 +68,7 @@
   width: 24px;
   height: 67px;
 }
-/* line 38, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 59, ../../../app/stylesheets/partials/comment-overlay.scss */
 .aside-nav.left {
   background: url("../images/assets/comment_arrow_left.svg") #303030;
 }

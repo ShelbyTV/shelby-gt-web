@@ -12,10 +12,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><%= Settings::Application.title %></title>
-  
-  <meta name="viewport" content="width=device-width">
-	
+
 	<meta name="csrf-token" content="<%= @csrf_token %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
 
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
@@ -46,7 +46,7 @@
 				</div>
 
         <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
-
+        <aside id="comment-overlay" class="comment-overlay-wrapper js-inactivity-preemption"></aside>
       </div> <!-- eo .video-player -->
     </div><!-- eo #lining -->
 

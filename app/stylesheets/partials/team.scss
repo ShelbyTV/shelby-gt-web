@@ -15,6 +15,9 @@
 			width:100%;
 		}
 	}
+	a{
+		color: #efefef;
+	}
 }
 
 .about-team-nav{
@@ -29,14 +32,13 @@
 	h1{
 		border-bottom:1px solid #222;
 		font-size:16px;
-		font-weight:700;
+		font-weight:500;
 		line-height:2.75;
 		margin:0 $defaultMargin $defaultMargin;
 	}
 }
 
 .about-nav{
-
 	margin:$defaultMargin;
 	padding:0;
 
@@ -57,9 +59,15 @@
 		font-size:12px;
 		line-height:1.4;
 	}
+	h2{
+		font-weight:300;
+	}
 
 	h3{
-		font-weight:300;
+		font-weight:100;
+	}
+	li{
+		list-style-type:none;
 	}
 }
 
@@ -79,11 +87,31 @@
 
 .about-definition-peripherals{
 	@extend .about-nav;
+	line-height: 1.5;
+	list-style-type:none;
 	margin:$defaultMargin 0 $defaultMargin*2 0;
 
 	li{
 		float:none;
 		width:auto;
+	}
+}
+
+.about-external-twitter {
+	a{
+		@include background(
+			url('../images/assets/team_twitter.svg') no-repeat center left transparent
+		);
+		padding-left:22px;
+	}
+}
+
+.about-external-link {
+	a{
+		@include background(
+			url('../images/assets/team_web.svg') no-repeat center left transparent
+		);
+		padding-left:22px;
 	}
 }
 

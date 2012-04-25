@@ -4,6 +4,27 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
+.comment-overlay-wrapper {
+
+	background: transparent;
+	font-size: 12px;
+	left: $defaultMargin;
+	line-height: 1.4;
+	padding-right: 360px;
+	position: absolute;
+	top: $defaultMargin;
+	width: 100%;
+
+	.user {
+		@include border-radius($radius);
+		max-width: 500px;
+
+	}
+	.user-vcard{
+		border: none;
+	}
+}
+
 .video-player-aside{
 
 	.video-activity-list{

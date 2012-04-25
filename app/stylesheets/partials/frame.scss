@@ -236,7 +236,7 @@
 	border-top:1px solid $inset;
 //	bottom:0;
 	font-size:$font-size - 2;
-	font-weight:700;
+	font-weight:500;
 	height:27px;
 //	left:0;
 	padding: 6px 8px 7px;
@@ -310,8 +310,10 @@
 .user-vcard{
 	border-bottom:1px solid $outset;
 	border-top:1px solid $inset;
-	font-size:13px;
-	font-weight:300;
+//	font-size:13px;
+//	font-weight:300;
+//	xxx
+
 	height:100%;
 	padding: 0 9px 9px;
 	a{
@@ -331,7 +333,7 @@
 }
 .user-handle{
 	font-size:11px;
-	font-weight:700;
+	font-weight:500;
 	line-height:2.8;
 	color:#a4a4a4;
 }

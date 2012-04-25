@@ -54,6 +54,7 @@
 		<div class="no-access">
 			<h1>Sorry, you don't have access to Shelby GT just yet.</h1>
 			<h2>But we're working hard to get you in!</h2>
+      <h2 class="detour">In the meantime, visit our <a href="http://shelby.tv">current website</a>!</h2>
 		</div>
 	<% else %>
 		<form class="email-gate-signup">
@@ -75,9 +76,9 @@
 	    </button>
 	  </form>
 
-		<div class="thank-you">
+		<div class="email-gate-thank-you">
 			<h1>Thanks!</h1>
-			<h2>We hope to get you in soon :-]</h2>
+			<h2>In the meantime, visit our <a href="http://shelby.tv">current website</a>!</h2>
 		</div>
 	<% end %>
 
@@ -85,15 +86,15 @@
 
 	<script>
 		$(function(){
-			$("button.email-gate-login-button").click(function(){
+			$('.email-gate-login-button').click(function(){
 				$('.email-gate-networks').toggle();
 				return false;
 			});
 			
-			$('form.email-gate-signup').submit(function() {
+			$('.email-gate-signup').submit(function() {
 				$.post('//api.gt.shelby.tv/v1/gt_interest', $(this).serialize(), function(data) {
-					$("form.email-gate-signup").hide()
-					$(".thank-you").show();
+					$('.email-gate-signup').hide()
+					$('.email-gate-thank-you').show();
 				});
 			  return false;
 			});

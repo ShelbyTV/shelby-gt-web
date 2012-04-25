@@ -43,7 +43,7 @@
 	span{
 		display:block;
 		height:25px;
-		overflow-x:hidden;
+		overflow:hidden;
 		position:relative;
 		width:25px;
 
@@ -53,7 +53,7 @@
 		height:100%;
 		left:0;
 		position:absolute;
-		top:0;
+		top:5px;
 	}
 }
 
