@@ -20,7 +20,7 @@ shelby = {
   userSignedIn: function(){
 		var _cookie = cookies.get("_shelby_gt_common");
 		var _pieces = _cookie.split(',');
-		return _pieces[0].split("=").length == 2 ? _cookie.split("=")[1] !== "nil" ? true : false : false;
+		return _pieces[0].split("=").length == 2 ? _pieces[0].split("=")[1] !== "nil" ? true : false : false;
   },
 	
 	signOut: function(){
