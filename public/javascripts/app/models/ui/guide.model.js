@@ -5,8 +5,7 @@ libs.shelbyGT.GuideModel = Backbone.Model.extend({
     'currentRollModel' : null,
     'sinceId'          : null,
     'activeFrameModel' : null,
-    'activeDashboardEntryModel' : null,
-    'insideRollList' : false
+    'activeDashboardEntryModel' : null
   }
 
 });

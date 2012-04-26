@@ -60,8 +60,8 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return result;
   },
 
-  followsRoll : function(rollId) {
-    if (_.find(shelby.models.user.get('roll_followings').models, function(n){ return n.id == rollId; })){
+  followsRoll : function(roll) {
+    if (_.find(shelby.models.user.get('roll_followings').models, function(n){ return n.id == roll.id; })){
       return true;
     } else {
       return false;

@@ -8,10 +8,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
-    "carousel/:rollId/frame/:frameId" : "displayFrameInRollInCarousel",
-    "carousel/:rollId/:title" : "displayRollInCarousel",
-    "carousel/:rollId/" : "displayRollInCarousel",
-    "carousel/:rollId" : "displayRollInCarousel",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
@@ -104,33 +100,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayUserPersonalRoll : function(userId){
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
-    shelby.models.guide.set('insideRollList', false);
     this.displayRoll(roll, 'personal_roll', {
       updateRollTitle : false,
       isUserPersonalRoll : true
     });
-  },
-
-  displayFrameInRollInCarousel : function(rollId, frameId){
-    if (shelby.models.user.followsRoll(rollId)) {
-      shelby.models.guide.set('insideRollList', true);
-      this.displayFrameInRoll(rollId, frameId);
-    } else {
-      // if the user doesn't follow this roll they can't see it inside the carousel,
-      // so just redirect to the normal roll/id/frame/id route
-      this.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true,replace:true});
-    }
-  },
-
-  displayRollInCarousel : function(rollId, title){
-    if (shelby.models.user.followsRoll(rollId)) {
-      shelby.models.guide.set('insideRollList', true);
-      this.displayRoll(rollId, title);
-    } else {
-      // if the user doesn't follow this roll they can't see it inside the carousel,
-      // so just redirect to the normal roll route
-      this.navigate('roll/' + rollId + (title ? '/' + title : ''), {trigger:true,replace:true});
-    }
   },
 
   displayEntryInDashboard : function(entryId, options){
@@ -181,7 +154,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
-      'insideRollList' : false,
       'sinceId' : options.data.since_id ? options.data.since_id : null
     });
 
@@ -195,10 +167,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRollList : function(){
     this._setupTopLevelViews({showSpinner: true});
     
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.rollList,
-      'insideRollList' : true
-    });
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
     this._hideSpinnerAfter(
       shelby.models.user.fetch({
         data: {include_rolls:true}
@@ -220,34 +189,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayUserPreferences : function(){
     this._setupTopLevelViews();
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.userPreferences,
-      'insideRollList' : false
-    });
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.userPreferences);
   },
 
   displayHelp : function(){
     this._setupTopLevelViews();
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.help,
-      'insideRollList' : false
-    });
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.help);
   },
 
   displayTeam : function(){
     this._setupTopLevelViews();
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.team,
-      'insideRollList' : false
-    });
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.team);
   },
 
   displayLegal : function(){
     this._setupTopLevelViews();
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.legal,
-      'insideRollList' : false
-    });
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.legal);
   },
 
   displayDashboardWithoutQuerystring: function(){
@@ -265,8 +222,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    var prefix = shelby.models.guide.get('insideRollList') ? 'carousel/' : 'roll/';
-    this.navigate(prefix + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
+    this.navigate('roll/' + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {

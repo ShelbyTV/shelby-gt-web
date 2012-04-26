@@ -1,4 +1,5 @@
-<% if (guide.get('insideRollList')) { %>
+<% var userFollowsRoll = shelby.models.user.followsRoll(roll); %>
+<% if (userFollowsRoll) { %>
 	<button id="js-rolls-back" class="rolls-back">
 		<i></i>
 		Back
@@ -15,7 +16,7 @@
 	<%= roll.get('title') %>
 </h2>
 
-<% if (guide.get('insideRollList')) { %>
+<% if (userFollowsRoll) { %>
 	<ul class="rolls-list-nav clearfix">
 		<li>
 			<button id="js-roll-back" class="roll-back">
