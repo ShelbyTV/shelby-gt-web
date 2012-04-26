@@ -17,7 +17,8 @@
 
     events : {
       "click .js-back:not(.js-busy)"  : "_goBack",
-      "click .js-done"  : "_share"
+      "click .js-done"  : "_share",
+      "click .js-social"  : "_rollToPersonalRoll"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -85,6 +86,7 @@
         this._frameRollingCompletionView = null;
         this.$('.js-back').html('Cancel');
         this.$('.js-done').hide();
+        this.$('.js-social').show();
         this._showingNewRollView = false;
       } else {
         this._hide();
@@ -93,6 +95,15 @@
 
     _share : function(){
       this._frameRollingState.set('doShare', ShareActionState.share);
+    },
+
+    _rollToPersonalRoll : function(){
+      var self = this;
+      var rollFollowings = shelby.models.user.get('roll_followings');
+      var personalRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
+      this.model.reRoll(personalRoll, function(newFrame){
+        self.revealFrameRollingCompletionView(newFrame, self.model, personalRoll);
+      });
     },
 
     _hide : function(){
