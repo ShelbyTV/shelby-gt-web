@@ -91,22 +91,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var self = this;
     var frameModel = new libs.shelbyGT.FrameModel({id:frameId});
     frameModel.fetch({
-      global : false,
       success : function(frameModel, response) {
         if (frameModel.has('roll_id')) {
           self.navigate('roll/' + frameModel.get('roll_id'), {trigger:true,replace:true});
         } else {
           // the frame doesn't have a roll, so navigate to the stream/dashboard which is its 'source'
           self.navigate('', {trigger:true,replace:true});
-        }
-      },
-      error : function(frameModel, response, ajaxSettings) {
-        if (response.status == 404) {
-          // if the frame doesn't have a roll, we consider it not accessible, so a 404 is returned
-          // the frame doesn't have a roll, so navigate to the stream/dashboard which is its 'source'
-          self.navigate('', {trigger:true,replace:true});
-        } else {
-          libs.shelbyGT.Ajax.defaultOnError(null, response, ajaxSettings, null);
         }
       }
     });
