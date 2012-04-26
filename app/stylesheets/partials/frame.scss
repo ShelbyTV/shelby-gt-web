@@ -75,7 +75,7 @@
 	@include softgradient;
 	@include border-radius($radiusHeader);
 
-	padding:$defaultMargin - 4 $defaultMargin - 2 $defaultMargin - 2;
+	padding:$defaultMargin - 4 $defaultMargin - 2 $defaultMargin - 3;
 
 	a{
 		text-decoration:none;

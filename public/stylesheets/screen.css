@@ -1633,7 +1633,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 3px 3px 0 0;
   -khtml-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
-  padding: 6px 8px 8px;
+  padding: 6px 8px 7px;
 }
 /* line 80, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
@@ -1958,7 +1958,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335371388');
+  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1966,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335371388');
+  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */

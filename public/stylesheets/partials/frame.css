@@ -87,7 +87,7 @@
   -ms-border-radius: 3px 3px 0 0;
   -khtml-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
-  padding: 6px 8px 8px;
+  padding: 6px 8px 7px;
 }
 /* line 80, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a {
