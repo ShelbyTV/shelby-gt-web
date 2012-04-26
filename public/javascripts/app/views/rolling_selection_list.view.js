@@ -9,8 +9,7 @@
 
     events : {
       "click .js-new-public-roll"  : "_rollToNewPublicRoll",
-      "click .js-new-private-roll" : "_rollToNewPrivateRoll",
-      "click .js-roll-social"      : "_rollToSocialRoll"
+      "click .js-new-private-roll" : "_rollToNewPrivateRoll"
     },
 
     className : 'form-rolls-list',
@@ -24,10 +23,6 @@
       this.options.collectionAttribute = 'roll_followings';
       this.options.listItemView = function(item){
         return new RollingSelectionItemView({model:item,frame:self.options.frame});
-      };
-      this.options.insert = {
-        position : 'before',
-        selector : '.js-social'
       };
       ListView.prototype.initialize.call(this);
     },
@@ -63,15 +58,6 @@
 
     _rollToNewPrivateRoll : function(){
       this.parent.revealFrameRollingCompletionView(null, this.options.frame, null, {type:'private'});
-    },
-
-    _rollToSocialRoll : function(){
-      var self = this;
-      var rollFollowings = shelby.models.user.get('roll_followings');
-      var socialRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
-      this.options.frame.reRoll(socialRoll, function(newFrame){
-        self.parent.revealFrameRollingCompletionView(newFrame, self.options.frame, socialRoll);
-      });
     }
 
   });

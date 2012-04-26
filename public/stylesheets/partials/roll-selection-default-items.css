@@ -26,18 +26,18 @@
   padding: 5px;
 }
 /* line 30, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll, .form-rolls-list .rolling-social {
+.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
   font-size: 14px;
   line-height: 1.75;
   position: relative;
   text-align: center;
 }
 /* line 36, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before, .form-rolls-list .new.rolling-social:before {
+.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
   content: "+";
 }
 /* line 39, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after, .form-rolls-list .rolling-social:after {
+.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_public.svg");
   right: 9px;
   position: absolute;
@@ -47,12 +47,8 @@
 .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
-/* line 58, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-social:after {
-  content: none;
-}
 
-/* line 64, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 57, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   line-height: 2.5;
