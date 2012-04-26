@@ -20,7 +20,7 @@
       var firstMessageViewParams = useFrameCreatorInfo ? {frame:activeFrameModel} : {model:firstMessage};
       var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
       this._leaveChildren();
-      this.appendChild(firstMessageView);
+      this.insertChildBefore(firstMessageView, '.comment-overlay-next');
     }
 
   });
