@@ -58,10 +58,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     var self = this;
     this._leaveChildren();
 
-    var firstMessage = this.model.get('conversation').get('messages').first();
-    var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.model.get('creator_id');
-    var haveWatchLaterMessage = firstMessage && (this.model.isOnRoll(shelby.models.user.get('watch_later_roll')));
-    var useFrameCreatorInfo = !haveCreatorMessage && !haveWatchLaterMessage;
+    var useFrameCreatorInfo = this.model.conversationUsesCreatorInfo(shelby.models.user);
     this.$el.html(this.template({
       frame : this.model,
       showConversation : showConversation,
@@ -74,7 +71,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     // if the first message is not from the frame's creator and we're not on the watch later roll,
     // use equivalent info about the frame's creator as a simulated first message
     // otherwise, just render the first message
-    var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:firstMessage};
+    var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:this.model.get('conversation').get('messages').first()};
     var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
     this.insertChildBefore(firstMessageView,'.js-video-activity');
 
