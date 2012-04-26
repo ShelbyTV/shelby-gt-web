@@ -51,7 +51,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   _toggleJoinRoll : function() {
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
-    if ( shelby.models.user.followsRoll(currentRollModel.id) ){
+    if ( shelby.models.user.followsRoll(currentRollModel) ){
       currentRollModel.leaveRoll(function(){
         self._updateJoinButton('Join');
         self._refreshUser();
@@ -88,7 +88,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$('#js-roll-header .js-share-roll').css('width', '100%');
     }
     // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(currentRollModel.id) ? 'Leave' : 'Join';
+    var _buttonText = shelby.models.user.followsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
   }
 

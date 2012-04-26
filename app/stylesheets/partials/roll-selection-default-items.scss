@@ -52,13 +52,6 @@
 		}
 
 	}
-	.rolling-social{
-		@extend .rolling-public-roll;
-
-		&:after{
-			content:none;
-		}
-	}
 }
 
 .share-comment-counter{
