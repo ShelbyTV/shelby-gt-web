@@ -80,16 +80,12 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this._shareRollView.$el.hide();
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
-      this.$('.rolls-add').hide();
-      //TODO: do this via html class assignment:
-      this.$('#js-roll-header li:first').hide();
-      this.$('#js-roll-header li:last').css('width', '100%');
+      this.$('#js-roll-header .js-share-roll').css('width', '137%');
+      this.$('#js-roll-header .js-leave-roll').hide();
     }
     else{
-      this.$('.rolls-add').show();
-      //TODO: do this via html class assignment:
-      this.$('#js-roll-header li:first').show();
-      this.$('#js-roll-header li:last').css('width', '25%');
+      this.$('#js-roll-header .js-leave-roll').show();
+      this.$('#js-roll-header .js-share-roll').css('width', '100%');
     }
     // set text to leave/join roll
     var _buttonText = shelby.models.user.followsRoll(currentRollModel.id) ? 'Leave' : 'Join';
