@@ -222,15 +222,18 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       // frame rolling view just rolled in
       // grow the view if it's too small to show the internal share view
       var minHeight = shelby.config.animation.frameGrow.minHeight;
-      if (this.$('article').height() < minHeight) {
-        this.$('article').animate({height:minHeight + 'px'}, 200);
+      var distance = minHeight - this.$('article').height();
+      if (distance > 0) {
+        var $user = this.$('.user')
+        var targetHeight = $user.height() + distance;
+        $user.animate({height:targetHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
       }
     } else {
       // frame rolling view just rolled out, remove it and shrink back to frame's original height
       this._frameViewState.set('doFrameRolling', false);
       if (this._grewForFrameRolling) {
-        this.$('article').animateAuto('height', 200);
+        this.$('.user').animateAuto('height', 200);
         this._grewForFrameRolling = false;
       }
     }
