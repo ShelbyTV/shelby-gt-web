@@ -71,7 +71,9 @@
 	top: 0;
 	width: 24px;
 
-	
+	&.message-terminus {
+		background-image:none;
+	}	
 }
 
 .comment-overlay-prev {
@@ -90,4 +92,6 @@
 	);
 	@include border-radius(0 $radius $radius 0);
 	right: 0;
+
 }
+
