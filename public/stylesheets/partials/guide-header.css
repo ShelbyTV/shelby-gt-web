@@ -63,7 +63,7 @@
 /* line 63, ../../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
 /* line 69, ../../../app/stylesheets/partials/guide-header.scss */
 .settings li {

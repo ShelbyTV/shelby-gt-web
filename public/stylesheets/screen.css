@@ -590,7 +590,7 @@ a:hover, a:visited, a:active {
 /* line 63, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
 /* line 69, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
@@ -2265,7 +2265,7 @@ a:hover, a:visited, a:active {
   color: #b2b2b2;
   float: right;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 3.25;
   margin: 0 15px;
 }
