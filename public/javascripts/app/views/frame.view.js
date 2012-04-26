@@ -92,10 +92,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     shelby.models.guide.set('activeFrameModel', this.model);
   },
 
-  _addMessageToConversation : function(msg){
-    console.log('adding', msg, 'to', this.model.get('conversation'));
-  },
-
   RequestFrameRollingView : function(){
     this._frameViewState.set('doFrameRolling', true);
   },

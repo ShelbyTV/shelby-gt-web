@@ -43,6 +43,13 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   isOnRoll : function(rollModel) {
     return this.has('roll') && this.get('roll').id == rollModel.id;
+  },
+
+  conversationUsesCreatorInfo : function(viewingUser) {
+      var firstMessage = this.get('conversation').get('messages').first();
+      var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.get('creator_id');
+      var haveWatchLaterMessage = firstMessage && (this.isOnRoll(viewingUser.get('watch_later_roll')));
+      return !haveCreatorMessage && !haveWatchLaterMessage;
   }
 
 });

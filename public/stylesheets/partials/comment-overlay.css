@@ -52,7 +52,7 @@
   position: relative;
 }
 
-/* line 79, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -75,9 +75,10 @@
 /* line 74, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
+  cursor: default;
 }
 
-/* line 88, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 89, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -100,4 +101,5 @@
 /* line 74, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
+  cursor: default;
 }

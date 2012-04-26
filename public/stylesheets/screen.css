@@ -1958,7 +1958,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1334948496');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335371388');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1966,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1334948620');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335371388');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -3517,7 +3517,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 79, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3540,9 +3540,10 @@ a:hover, a:visited, a:active {
 /* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
+  cursor: default;
 }
 
-/* line 88, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 89, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3565,6 +3566,7 @@ a:hover, a:visited, a:active {
 /* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
+  cursor: default;
 }
 
 /* Welcome to Compass.
