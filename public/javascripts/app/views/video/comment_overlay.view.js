@@ -2,7 +2,7 @@
 
   libs.shelbyGT.CommentOverlayView = Support.CompositeView.extend({
 
-    el: '#comment-overlay',
+    el: '#js-comment-overlay',
 
     initialize : function(){
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);

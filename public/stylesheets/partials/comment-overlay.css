@@ -36,28 +36,32 @@
 }
 /* line 23, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
+  height: inherit;
   margin-left: 25px;
-  margin-right: 25px;
   max-width: 500px;
 }
-/* line 30, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 31, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
 
-/* line 35, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 37, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
+  height: 67px;
   max-width: 550px;
+  position: relative;
 }
 
-/* line 70, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 77, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
   -o-box-shadow: inset 0px 0px 1px 0px #333333;
   box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
-  height: 67px;
+  height: inherit;
+  position: absolute;
+  top: 0;
   width: 24px;
   background: url("../images/assets/comment_arrow_left.svg") no-repeat center center #303030;
   -moz-border-radius: 5px 0 0 5px;
@@ -66,17 +70,19 @@
   -ms-border-radius: 5px 0 0 5px;
   -khtml-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
-  float: left;
+  left: 0;
 }
 
-/* line 79, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 86, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
   -o-box-shadow: inset 0px 0px 1px 0px #333333;
   box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
-  height: 67px;
+  height: inherit;
+  position: absolute;
+  top: 0;
   width: 24px;
   background: url("../images/assets/comment_arrow_right.svg") no-repeat center center #303030;
   -moz-border-radius: 0 5px 5px 0;
@@ -85,5 +91,5 @@
   -ms-border-radius: 0 5px 5px 0;
   -khtml-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
-  float: right;
+  right: 0;
 }

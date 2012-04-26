@@ -22,19 +22,23 @@
 
 	.user {
 //		@include border-radius($radius);
+		height: inherit;
 		margin-left: 25px;
-		margin-right: 25px;
+//		margin-right: 25px;
 		max-width: 500px;
 
 	}
 	.user-vcard{
 		border: none;
 	}
+
 }
 
 .comment-overlay-lining {
 //	border: 1px solid red;
+	height: 67px;
 	max-width: 550px;
+	position: relative;
 }
 
 //.video-player-aside{
@@ -62,8 +66,11 @@
 	@include box-shadow(inset 0px 0px 1px 0px #333);
 
 	border: none;
-	height: 67px;
+	height: inherit;
+	position: absolute;
+	top: 0;
 	width: 24px;
+
 	
 }
 
@@ -74,7 +81,7 @@
 		//$softShelbyDarkGray
 	);
 	@include border-radius($radius 0 0 $radius);
-	float: left;
+	left: 0;
 }
 .comment-overlay-next {
 	@include comment-overlay-buttons;
@@ -82,5 +89,5 @@
 		url('../images/assets/comment_arrow_right.svg') no-repeat center center #303030
 	);
 	@include border-radius(0 $radius $radius 0);
-	float: right;
+	right: 0;
 }
