@@ -59,6 +59,13 @@
         });
       }
       this.$('.js-back').html('Back');
+      
+      if (options.type == 'public') {
+        this._frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
+      } else {
+        this._frameRollingState.get('shareModel').set('destination',['email']);
+      }
+      
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
         frame:frame,
         roll:roll,

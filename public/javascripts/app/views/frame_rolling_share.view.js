@@ -8,7 +8,9 @@
 
     events : _.extend({}, ShareView.prototype.events, {
         "keyup .js-new-roll-name-input" : "_updateRollTitle",
-        "focus .js-new-roll-name-input" : "_onFocusRollTitle"
+        "focus .js-new-roll-name-input" : "_onFocusRollTitle",
+        "keyup .js-new-roll-recipients" : "_updateRollRecipients",
+        "focus .js-new-roll-recipients" : "_onFocusRollRecipients"
     }),
 
     id: 'js-share-frame',
@@ -39,6 +41,7 @@
     },
 
     render : function(){
+      this._components.networkToggles = this.options.roll.get('public');
       ShareView.prototype.render.call(this);
       if (this.options.roll.isNew()) {
         // when creating a new roll there are some additional options to be displayed
@@ -85,12 +88,17 @@
         this.$('.js-new-roll-name-input').addClass('error');
         formValid = false;
       }
+      if(!this.options.roll.get('public') && !this.model.get('addresses').length) {
+        this.$('.js-new-roll-recipients').addClass('error');
+        formValid = false;
+      }
       if (!formValid) {
         this.onValidationFail();
         return false;
       } else {
         this.$('.js-share-textarea').removeClass('error');
         this.$('.js-new-roll-name-input').removeClass('error');
+        this.$('.js-new-roll-recipients').removeClass('error');
       }
       this._components.spinner && this._showSpinner();
       // have to create the new roll and reroll the frame before we can share
@@ -130,6 +138,15 @@
     _onFocusRollTitle : function(){
       // remove the error highlight from the roll title input on focus if there is one
       this.$('.js-new-roll-name-input').removeClass('error');
+    },
+
+    _updateRollRecipients : function(e){
+      this.model.set('addresses',$(e.currentTarget).val());
+    },
+
+    _onFocusRollRecipients : function(){
+      // remove the error highlight from the roll title input on focus if there is one
+      this.$('.js-new-roll-recipients').removeClass('error');
     }
 
   });
