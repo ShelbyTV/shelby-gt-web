@@ -3516,15 +3516,20 @@ a:hover, a:visited, a:active {
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
+/* line 36, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user-video-text p {
+  max-height: 2.5em;
+  overflow: hidden;
+}
 
-/* line 38, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 43, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   height: 67px;
   max-width: 550px;
   position: relative;
 }
 
-/* line 81, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 86, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3544,13 +3549,13 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 75, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 90, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 95, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3570,7 +3575,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 75, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

@@ -33,6 +33,11 @@
 		border: none;
 	}
 
+	.user-video-text p {
+		max-height: 2.5em;
+		overflow: hidden;
+	}
+
 }
 
 .comment-overlay-lining {
