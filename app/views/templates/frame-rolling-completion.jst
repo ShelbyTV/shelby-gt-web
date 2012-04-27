@@ -1,7 +1,9 @@
 <div class="frame-rolling-completion-header">
 	<h1 class="<%= roll.get('public') ? 'roll-type-public' : 'roll-type-private' %>">
-    <% if (!roll.isNew()) { %>
-      You rolled <%= frame.get('video').get('title') %>
+    <% if (social) { %>
+      Share <%= frame.get('video').get('title') %>
+    <% } else if (!roll.isNew()) { %>
+      Roll to <%= roll.get('title') %>
     <% } else { %>
       <%= roll.get('public') ? 'New Public Roll' : 'New Private Roll' %>
     <% } %>
