@@ -19,6 +19,13 @@ module Shelby
       result = {'frame' => f['result'], 'video' => v['result']}
     end
     
+    def self.get_first_frame_on_roll(roll_id)
+      r = get( "/roll/#{roll_id}/frames?include_children=true&limit=1" ).parsed_response
+      return nil if r['status'] != 200
+      f0 = r['result']['frames'][0]
+      {'frame' => f0, 'video' => f0['video']}
+    end
+    
     def self.generate_route(roll_id, frame_id)
       return "#{Settings::Application.url}/roll/#{roll_id}/frame/#{frame_id}"
     end
