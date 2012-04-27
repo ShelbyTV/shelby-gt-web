@@ -15,7 +15,11 @@
     },
 
     render : function(){
-      this.$el.html(this.template({roll:this.options.roll}));
+      this.$el.html(this.template({
+        roll : this.options.roll,
+        frame : this.options.frame,
+        social : this.options.social
+      }));
       var shareSubView = new FrameRollingShareView({
         model : this.options.frameRollingState.get('shareModel'),
         roll : this.options.roll,

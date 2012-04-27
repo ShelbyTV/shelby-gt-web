@@ -46,14 +46,11 @@
     },
 
     revealFrameRollingCompletionView : function(frame, roll, options){
-      var defaults = {
-        type: 'public'
-      };
-      if (!options) {
-        options = defaults;
-      } else {
-        _(options).defaults(defaults);
-      }
+      // default options
+      options = _.chain({}).extend(options).defaults({
+        type: 'public',
+        social: false
+      }).value();
 
       if (!roll) {
         roll = new RollModel({
@@ -65,10 +62,12 @@
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
         frame:frame,
         roll:roll,
-        frameRollingState:this._frameRollingState
+        frameRollingState:this._frameRollingState,
+        social:options.social
       });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
-      this.$('.js-done').show();
+      var doneButtonText = options.social ? 'Share' : 'Roll It';
+      this.$('.js-done').text(doneButtonText).show();
       this.$('.js-social').hide();
     },
 
@@ -91,7 +90,7 @@
     _rollToPersonalRoll : function(){
       var rollFollowings = shelby.models.user.get('roll_followings');
       var personalRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
-      this.revealFrameRollingCompletionView(this.model, personalRoll);
+      this.revealFrameRollingCompletionView(this.model, personalRoll, {social:true});
     },
 
     _hide : function(){
