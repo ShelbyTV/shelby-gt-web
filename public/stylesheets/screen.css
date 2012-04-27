@@ -2539,14 +2539,21 @@ a:hover, a:visited, a:active {
   margin-bottom: 0;
   padding: 0;
 }
-
 /* line 43, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion.frame-rolling-private .share-comment-counter {
+  display: block;
+  float: right;
+  height: 30px;
+  position: relative;
+}
+
+/* line 52, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   background: url("../images/assets/noise.png") #555555;
   border-bottom: 1px solid #222;
   height: 40px;
 }
-/* line 49, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   background: url("../images/assets/noise.png") #007fb6;
   border-bottom: 1px solid #005b83;
@@ -2559,18 +2566,18 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 65, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_public.svg");
   float: left;
   margin: 4px 10px;
 }
-/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 84, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 92, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
@@ -2606,11 +2613,6 @@ a:hover, a:visited, a:active {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
-}
-
-/* line 25, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-recipients {
-  margin-bottom: 0;
 }
 
 /* Welcome to Compass.

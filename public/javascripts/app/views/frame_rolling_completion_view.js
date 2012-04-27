@@ -20,6 +20,9 @@
         frame : this.options.frame,
         social : this.options.social
       }));
+      if (!this.options.roll.get('public')) {
+        this.$el.addClass('frame-rolling-private');
+      }
       var shareSubView = new FrameRollingShareView({
         model : this.options.frameRollingState.get('shareModel'),
         roll : this.options.roll,

@@ -38,6 +38,15 @@
 			padding:0;
 		}
 	}
+
+	&.frame-rolling-private {
+		.share-comment-counter {
+			display: block;
+			float: right;
+			height:30px;
+			position: relative;
+		}
+	}
 }
 
 .frame-rolling-completion-header{
