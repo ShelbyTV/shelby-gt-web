@@ -1,5 +1,15 @@
 <div class="frame-rolling-completion-header">
-	<h1 class="<%= roll.get('public') ? 'roll-type-public' : 'roll-type-private' %>">
+  <%
+    var headerClass;
+    if (social) {
+      headerClass = 'roll-type-social';
+    } else if (roll.get('public')) {
+      headerClass = 'roll-type-public';
+    } else {
+      headerClass = 'roll-type-private';
+    }
+  %>
+  <h1 class="<%= headerClass %>">
     <% if (social) { %>
       Share <%= frame.get('video').get('title') %>
     <% } else if (!roll.isNew()) { %>
@@ -8,5 +18,5 @@
       <%= roll.get('public') ? 'New Public Roll' : 'New Private Roll' %>
     <% } %>
   </h1>
-	<!-- <a class="frame-share-undo" href="#">Undo</a> -->
+  <!-- <a class="frame-share-undo" href="#">Undo</a> -->
 </div>

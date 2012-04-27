@@ -1958,7 +1958,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335371388');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335488134');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1966,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335371388');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335488133');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -2553,6 +2553,16 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+/* line 65, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
 }
 
 /* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
