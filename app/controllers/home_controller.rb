@@ -7,12 +7,14 @@ class HomeController < ApplicationController
   #  (primarily for fb og, but also for any other bots)
   #TODO: If the request is made to a roll, also display some meta tags
   def index
+    puts params[:path]
     if frame_id = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = frame_id[1]
-      @fb_meta_info = Shelby::API.get_video_info(frame_id)
-      @permalink = Shelby::API.generate_route(@fb_meta_info['frame']['roll_id'], frame_id) if @fb_meta_info
+      @video_info = Shelby::API.get_video_info(frame_id)
+      @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], frame_id) if @video_info
+      puts @video_info
     else
-      @fb_meta_info = nil
+      @video_info = nil
     end
     
     if user_signed_in?

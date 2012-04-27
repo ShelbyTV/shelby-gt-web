@@ -4,8 +4,8 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	<% if @fb_meta_info %>
-		<%= render :partial => "fb_meta_info", :locals => { :fb_meta_info => @fb_meta_info, :permalink => @permalink } %>
+	<% if @video_info %>
+		<%= render :partial => "fb_meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
 	<% else %>
 		<meta name="description" content="<%= Settings::Application.meta_description %>">
 	<% end %>
