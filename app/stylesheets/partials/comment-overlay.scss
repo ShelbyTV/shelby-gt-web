@@ -24,8 +24,9 @@
 //		@include border-radius($radius);
 		height: inherit;
 		margin-left: 25px;
-//		margin-right: 25px;
+		margin-right: 25px;
 		max-width: 500px;
+		overflow-y: hidden;
 
 	}
 	.user-vcard{

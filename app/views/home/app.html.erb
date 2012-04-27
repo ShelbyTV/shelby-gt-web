@@ -16,7 +16,9 @@
 	<meta name="csrf-token" content="<%= @csrf_token %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
-
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= include_stylesheets :common %>
@@ -81,8 +83,10 @@
             <!-- contents in menu.jst -->
           </div>
         </header>
-        <div id="guide" class="content-body">
+        <div id="js-guide-wrapper" class="content-body">
+          <div id="guide">
             <!-- guide contents dynamically rendered-->
+          </div>
         </div>
       </div><!-- eo .main -->
 
@@ -99,7 +103,19 @@
   			</div>
   		</div>
   </div> <!-- eo ~main -->
+  <script>
+    if(Modernizr.touch){
+      var scroll = new iScroll('js-guide-wrapper');
+      var refresh = function(e){
+        setTimeout(function(){
+            scroll.refresh();
+        },0);
+      }
 
+      var guide = document.getElementById('guide');
+      guide.addEventListener('DOMSubtreeModified', refresh, false);
+    }
+  </script>
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
 	<% if Rails.env == 'production' %>
 	  <script>
