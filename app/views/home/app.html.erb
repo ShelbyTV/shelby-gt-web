@@ -103,19 +103,6 @@
   			</div>
   		</div>
   </div> <!-- eo ~main -->
-  <script>
-    if(Modernizr.touch){
-      var scroll = new iScroll('js-guide-wrapper');
-      var refresh = function(e){
-        setTimeout(function(){
-            scroll.refresh();
-        },0);
-      }
-
-      var guide = document.getElementById('guide');
-      guide.addEventListener('DOMSubtreeModified', refresh, false);
-    }
-  </script>
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
 	<% if Rails.env == 'production' %>
 	  <script>

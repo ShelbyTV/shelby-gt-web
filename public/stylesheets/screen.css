@@ -2559,6 +2559,16 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* line 65, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
+}
 
 /* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
