@@ -60,10 +60,12 @@
       }
       this.$('.js-back').html('Back');
       
-      if (options.type == 'public') {
+      if (roll.get('public')) {
         this._frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
-      } else {
+      } else if (roll.isNew()) {
         this._frameRollingState.get('shareModel').set('destination',['email']);
+      } else {
+        this._frameRollingState.get('shareModel').set('destination',[]);
       }
       
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
