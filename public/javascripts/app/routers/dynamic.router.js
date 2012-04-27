@@ -128,7 +128,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
-  displayDashboard : function(options){
+  displayDashboard : function(options, pollAttempts){
     var defaultOnDashboardFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
       // if something is already playing and it is in the dashboard, scroll to it
@@ -137,8 +137,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }
+    var self = this;
     var defaults = {
-      onDashboardFetch: defaultOnDashboardFetch,
+      onDashboardFetch: function(dashboardModel, response){
+        if (response.result.length) { 
+          return defaultOnDashboardFetch.call(self, dashboardModel, response);
+        }
+
+        setTimeout(function(){
+          self.displayDashboard(options);
+        }, 400);
+
+      },
       data: {
           include_children : true
       }
@@ -161,6 +171,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
     fetchOptions.success = options.onDashboardFetch;
 
+    //uncomment to emulate a new user sign-up w/ no data
+    //fetchOptions.data.limit = Math.random() < 0.3 ? 20 : 0;
+    shelby.models.guide.set({
+      'displayState' : libs.shelbyGT.DisplayState.dashboard,
+      'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
+    });
     this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
   },
 
