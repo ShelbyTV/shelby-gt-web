@@ -4,9 +4,9 @@
 <meta property="og:url"			content="http://<%= @permalink %>" /> 
 <meta property="og:video:url" content="http://<%= @permalink %>" /> 
 <meta property="og:video:secure_url" content="https://<%= @permalink %>" /> 
-<meta property="og:title" content="<%= @fb_meta_info['video']['title'] %>" /> 
-<meta property="og:image" content="<%= @fb_meta_info['video']['thumbnail_url'] %>" />
-<meta property="og:description" content="<%= @fb_meta_info['video']['description'] %>" />
+<meta property="og:title" content="<%= @video_info['video']['title'] %>" /> 
+<meta property="og:image" content="<%= @video_info['video']['thumbnail_url'] %>" />
+<meta property="og:description" content="<%= @video_info['video']['description'] %>" />
 <meta property="og:locale"      content="EN_us" />
 <!-- General -->		
-<meta name="description" content="<%= @fb_meta_info['video']['title'] %>: <%= @fb_meta_info['video']['description'] %>">
+<meta name="description" content="<%= @video_info['video']['title'] %>: <%= @video_info['video']['description'] %>">

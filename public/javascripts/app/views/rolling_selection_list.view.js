@@ -53,11 +53,11 @@
     },
 
     _rollToNewPublicRoll : function(){
-      this.parent.revealFrameRollingCompletionView(null, this.options.frame, null, {type:'public'});
+      this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'public'});
     },
 
     _rollToNewPrivateRoll : function(){
-      this.parent.revealFrameRollingCompletionView(null, this.options.frame, null, {type:'private'});
+      this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'private'});
     }
 
   });

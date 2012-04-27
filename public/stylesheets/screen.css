@@ -505,7 +505,12 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 114, ../../app/stylesheets/partials/app.html.scss */
+/* line 103, ../../app/stylesheets/partials/app.html.scss */
+.touch .content-body {
+  overflow: hidden;
+}
+
+/* line 117, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -516,7 +521,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 122, ../../app/stylesheets/partials/app.html.scss */
+/* line 125, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -1958,7 +1963,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335371388');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1966,7 +1971,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335371388');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -2553,6 +2558,16 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+/* line 65, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+/* line 75, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
 }
 
 /* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
@@ -3503,21 +3518,28 @@ a:hover, a:visited, a:active {
 .comment-overlay-wrapper .user {
   height: inherit;
   margin-left: 25px;
+  margin-right: 25px;
   max-width: 500px;
+  overflow-y: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
+/* line 36, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user-video-text p {
+  max-height: 2.5em;
+  overflow: hidden;
+}
 
-/* line 37, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 43, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   height: 67px;
   max-width: 550px;
   position: relative;
 }
 
-/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 86, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3537,13 +3559,13 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 89, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 95, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3563,7 +3585,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

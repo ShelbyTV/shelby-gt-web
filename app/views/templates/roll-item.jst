@@ -1,7 +1,7 @@
 <% /* parent:"roll-item" */ %>
 <a class="js-roll-item-button clearfix">
 	<span class="roll-item-thumbnail">
-		<img src="<%= roll.get('thumbnail_url') || '../images/avatar.jpg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
 	</span>
 	<h2>
 		<%= roll.get('title')%>

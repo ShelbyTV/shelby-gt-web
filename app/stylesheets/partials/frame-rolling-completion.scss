@@ -61,21 +61,21 @@
 		text-overflow:ellipsis;
 		white-space:nowrap;
 
-//		&.roll-type-public{
-//			&:before{
-//				content:url('../images/assets/rolls_public.svg');
-//				float:left;
-//				margin: 4px 10px;
-//			}
-//		}
+		&.roll-type-public{
+			&:before{
+				content:url('../images/assets/rolls_public.svg');
+				float:left;
+				margin: 4px 10px;
+			}
+		}
 
-		// &.roll-type-private{
-		// 	@extend .roll-type-public;
+		&.roll-type-private{
+			@extend .roll-type-public;
 			
-		// 	&:before{
-		// 		content:url('../images/assets/rolls_private.svg');
-		// 	}
-		// }
+			&:before{
+				content:url('../images/assets/rolls_private.svg');
+			}
+		}
 
 	}
 }
