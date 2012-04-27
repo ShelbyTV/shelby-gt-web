@@ -17,10 +17,7 @@ libs.shelbyGT.RollingSelectionItemView = ListItemView.extend({
   },
 
   _reRollToThis : function(){
-    var self = this;
-    this.options.frame.reRoll(this.model, function(newFrame){
-      self.parent.parent.revealFrameRollingCompletionView(newFrame, self.options.frame, self.model);
-    });
+    this.parent.parent.revealFrameRollingCompletionView(this.options.frame, this.model);
   }
 
 });
