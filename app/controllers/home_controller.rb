@@ -20,6 +20,7 @@ class HomeController < ApplicationController
       render 'app'
     else
       @show_error = params[:access] == "nos"
+      @gt_enabled_redirect = params[:access] == "gt"
       if params[:gt_access_token]
         @has_access_token = true
         cookies[:gt_access_token] = {:value => params[:gt_access_token], :domain => ".shelby.tv"}
