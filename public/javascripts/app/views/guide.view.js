@@ -34,7 +34,7 @@
     updateChild : function(model){
       // only render a new content pane if the contentPane* attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
-      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId')) {
+      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId') && !_changedAttrs.has('pollAttempts')) {
         return;
       }
       this._leaveChildren();
@@ -43,11 +43,7 @@
     },
 
     _setGuideTop : function(){
-      var self = this;
-      //biggest ugliest hack of the year:...
-      setTimeout(function(){
-        self.$el.css('top', $('#js-header-guide').height());
-      }, shelby.models.user.get('anon') ? 1000 : 0);
+      $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
     },
 
     _mapAppendChildView : function(){

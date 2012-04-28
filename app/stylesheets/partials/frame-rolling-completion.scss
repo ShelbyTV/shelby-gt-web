@@ -38,6 +38,15 @@
 			padding:0;
 		}
 	}
+
+	&.frame-rolling-private {
+		.share-comment-counter {
+			display: block;
+			float: right;
+			height:30px;
+			position: relative;
+		}
+	}
 }
 
 .frame-rolling-completion-header{
@@ -61,21 +70,21 @@
 		text-overflow:ellipsis;
 		white-space:nowrap;
 
-//		&.roll-type-public{
-//			&:before{
-//				content:url('../images/assets/rolls_public.svg');
-//				float:left;
-//				margin: 4px 10px;
-//			}
-//		}
+		&.roll-type-public{
+			&:before{
+				content:url('../images/assets/rolls_public.svg');
+				float:left;
+				margin: 4px 10px;
+			}
+		}
 
-		// &.roll-type-private{
-		// 	@extend .roll-type-public;
+		&.roll-type-private{
+			@extend .roll-type-public;
 			
-		// 	&:before{
-		// 		content:url('../images/assets/rolls_private.svg');
-		// 	}
-		// }
+			&:before{
+				content:url('../images/assets/rolls_private.svg');
+			}
+		}
 
 	}
 }

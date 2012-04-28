@@ -505,7 +505,12 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 114, ../../app/stylesheets/partials/app.html.scss */
+/* line 103, ../../app/stylesheets/partials/app.html.scss */
+.touch .content-body {
+  overflow: hidden;
+}
+
+/* line 117, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -516,7 +521,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 122, ../../app/stylesheets/partials/app.html.scss */
+/* line 125, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -1958,7 +1963,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335371388');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1966,7 +1971,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335371388');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -2534,14 +2539,21 @@ a:hover, a:visited, a:active {
   margin-bottom: 0;
   padding: 0;
 }
-
 /* line 43, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion.frame-rolling-private .share-comment-counter {
+  display: block;
+  float: right;
+  height: 30px;
+  position: relative;
+}
+
+/* line 52, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   background: url("../images/assets/noise.png") #555555;
   border-bottom: 1px solid #222;
   height: 40px;
 }
-/* line 49, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   background: url("../images/assets/noise.png") #007fb6;
   border-bottom: 1px solid #005b83;
@@ -2554,8 +2566,18 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* line 74, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_public.svg");
+  float: left;
+  margin: 4px 10px;
+}
+/* line 84, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.svg");
+}
 
-/* line 83, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 92, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
@@ -2591,11 +2613,6 @@ a:hover, a:visited, a:active {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
-}
-
-/* line 25, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-recipients {
-  margin-bottom: 0;
 }
 
 /* Welcome to Compass.
@@ -3503,21 +3520,28 @@ a:hover, a:visited, a:active {
 .comment-overlay-wrapper .user {
   height: inherit;
   margin-left: 25px;
+  margin-right: 25px;
   max-width: 500px;
+  overflow-y: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
+/* line 36, ../../app/stylesheets/partials/comment-overlay.scss */
+.comment-overlay-wrapper .user-video-text p {
+  max-height: 2.5em;
+  overflow: hidden;
+}
 
-/* line 37, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 43, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   height: 67px;
   max-width: 550px;
   position: relative;
 }
 
-/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 86, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3537,13 +3561,13 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 89, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 95, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3563,7 +3587,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 74, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 80, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -3602,11 +3626,34 @@ a:hover, a:visited, a:active {
 
 /* line 28, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
-  margin: 15% auto 0;
+  margin: 0 auto;
   width: 480px;
 }
 
-/* line 37, ../../app/stylesheets/partials/gate.scss */
+/* line 33, ../../app/stylesheets/partials/gate.scss */
+.content-wrapper {
+  margin: 15% auto 0;
+  width: 1020px;
+}
+
+/* line 38, ../../app/stylesheets/partials/gate.scss */
+.embed-gate-wrapper {
+  float: left;
+  width: 500px;
+}
+
+/* line 42, ../../app/stylesheets/partials/gate.scss */
+.embed-gate-wrapper iframe {
+  width: 500px;
+}
+
+/* line 45, ../../app/stylesheets/partials/gate.scss */
+.email-gate-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+/* line 54, ../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -3616,7 +3663,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 50, ../../app/stylesheets/partials/gate.scss */
+/* line 67, ../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -3625,7 +3672,7 @@ a:hover, a:visited, a:active {
   width: 33%;
 }
 
-/* line 59, ../../app/stylesheets/partials/gate.scss */
+/* line 76, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -3634,7 +3681,7 @@ a:hover, a:visited, a:active {
   width: 205px;
 }
 
-/* line 67, ../../app/stylesheets/partials/gate.scss */
+/* line 84, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
@@ -3663,7 +3710,7 @@ a:hover, a:visited, a:active {
   padding: 7px 19px;
 }
 
-/* line 85, ../../app/stylesheets/partials/gate.scss */
+/* line 102, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 5px;
@@ -3681,7 +3728,7 @@ a:hover, a:visited, a:active {
   padding: 10px;
   position: relative;
 }
-/* line 98, ../../app/stylesheets/partials/gate.scss */
+/* line 115, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -3702,7 +3749,7 @@ a:hover, a:visited, a:active {
   width: 10px;
 }
 
-/* line 114, ../../app/stylesheets/partials/gate.scss */
+/* line 131, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -3710,16 +3757,16 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 123, ../../app/stylesheets/partials/gate.scss */
+/* line 140, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 126, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 131, ../../app/stylesheets/partials/gate.scss */
+/* line 148, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -3728,27 +3775,27 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 140, ../../app/stylesheets/partials/gate.scss */
+/* line 157, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 143, ../../app/stylesheets/partials/gate.scss */
+/* line 160, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 148, ../../app/stylesheets/partials/gate.scss */
+/* line 165, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 152, ../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 157, ../../app/stylesheets/partials/gate.scss */
+/* line 174, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -3756,7 +3803,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 164, ../../app/stylesheets/partials/gate.scss */
+/* line 181, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -3765,7 +3812,7 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 172, ../../app/stylesheets/partials/gate.scss */
+/* line 189, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3782,7 +3829,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 189, ../../app/stylesheets/partials/gate.scss */
+/* line 206, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3811,19 +3858,19 @@ a:hover, a:visited, a:active {
   width: 17%;
 }
 
-/* line 208, ../../app/stylesheets/partials/gate.scss */
+/* line 225, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 213, ../../app/stylesheets/partials/gate.scss */
+/* line 230, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 219, ../../app/stylesheets/partials/gate.scss */
+/* line 236, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
