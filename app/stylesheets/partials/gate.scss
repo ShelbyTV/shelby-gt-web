@@ -83,6 +83,7 @@
 
 .email-gate-login-button {
 	@include buttonfont;
+	background: $flatShelbyGreen;
 	@include background(
 		url('../images/assets/noise.png'),
 		$softShelbyGreen
@@ -206,6 +207,7 @@
 .email-gate-signup-submit{
 	//extend the button style
 	@include buttonfont;
+	background: $flatShelbyBlue;
 	@include background(
 		url('../images/assets/noise.png'),
 		$softShelbyBlue

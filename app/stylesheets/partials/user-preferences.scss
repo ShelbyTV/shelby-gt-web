@@ -226,7 +226,8 @@
 	  	@include transition-duration(1s);
 		@include transition-timing-function(ease-in);
 		@include border-radius($radius - 1);
-  		@include background($softShelbyRed);
+		background: $flatShelbyRed;
+		@include background($softShelbyRed);
   		border:1px solid #222;
 		display:block;
 		height:20px;
@@ -252,7 +253,8 @@
 		}
 	}
 	input:checked + span{
-  		@include background($softShelbyBlue);
+		background: $flatShelbyBlue;
+		@include background($softShelbyBlue);
 		display:block;
 		height:20px;
 		position:relative;

@@ -1403,6 +1403,7 @@ a:hover, a:visited, a:active {
 
 /* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
+  background: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
   background: -moz-linear-gradient(top, #333333, #303030);
@@ -1429,7 +1430,7 @@ a:hover, a:visited, a:active {
   top: 10px;
   width: auto;
 }
-/* line 80, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 81, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1458,7 +1459,7 @@ a:hover, a:visited, a:active {
   width: 17px;
 }
 
-/* line 97, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 98, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1467,8 +1468,9 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 106, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 107, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
+  background: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
@@ -1490,8 +1492,9 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 117, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 119, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
+  background: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
@@ -1963,7 +1966,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1971,7 +1974,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -2984,6 +2987,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
+  background: #9e1632;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
   background: -webkit-linear-gradient(top, #ba2046, #9e1632);
   background: -moz-linear-gradient(top, #ba2046, #9e1632);
@@ -2997,7 +3001,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 237, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 238, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -3023,8 +3027,9 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 254, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 255, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
+  background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -3036,11 +3041,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 260, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 262, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 264, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 266, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -3684,6 +3689,7 @@ a:hover, a:visited, a:active {
 /* line 84, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  background: #549738;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #549738, #3f722a);
@@ -3710,7 +3716,7 @@ a:hover, a:visited, a:active {
   padding: 7px 19px;
 }
 
-/* line 102, ../../app/stylesheets/partials/gate.scss */
+/* line 103, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 5px;
@@ -3728,7 +3734,7 @@ a:hover, a:visited, a:active {
   padding: 10px;
   position: relative;
 }
-/* line 115, ../../app/stylesheets/partials/gate.scss */
+/* line 116, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -3749,7 +3755,7 @@ a:hover, a:visited, a:active {
   width: 10px;
 }
 
-/* line 131, ../../app/stylesheets/partials/gate.scss */
+/* line 132, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -3757,16 +3763,16 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 140, ../../app/stylesheets/partials/gate.scss */
+/* line 141, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 143, ../../app/stylesheets/partials/gate.scss */
+/* line 144, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 148, ../../app/stylesheets/partials/gate.scss */
+/* line 149, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -3775,27 +3781,27 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 157, ../../app/stylesheets/partials/gate.scss */
+/* line 158, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 160, ../../app/stylesheets/partials/gate.scss */
+/* line 161, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 165, ../../app/stylesheets/partials/gate.scss */
+/* line 166, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 169, ../../app/stylesheets/partials/gate.scss */
+/* line 170, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 174, ../../app/stylesheets/partials/gate.scss */
+/* line 175, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -3803,7 +3809,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 181, ../../app/stylesheets/partials/gate.scss */
+/* line 182, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -3812,7 +3818,7 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 189, ../../app/stylesheets/partials/gate.scss */
+/* line 190, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3829,9 +3835,10 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 206, ../../app/stylesheets/partials/gate.scss */
+/* line 207, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  background: #007fb6;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -3858,19 +3865,19 @@ a:hover, a:visited, a:active {
   width: 17%;
 }
 
-/* line 225, ../../app/stylesheets/partials/gate.scss */
+/* line 227, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 230, ../../app/stylesheets/partials/gate.scss */
+/* line 232, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 236, ../../app/stylesheets/partials/gate.scss */
+/* line 238, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
