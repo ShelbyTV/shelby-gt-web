@@ -111,6 +111,7 @@ $darkGradientBot: #0e0e0e;
 $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 
 @mixin darkgradient {
+	background: $darkGradientBot;
   @include background-image($darkLinearGradient);
 }
 

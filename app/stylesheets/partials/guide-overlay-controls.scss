@@ -12,10 +12,9 @@
 }
 
 .guide-toggle {
-  @include border-radius($radius 0 0 $radius);
-  
+  @include border-radius($radius 0 0 $radius);  
   @include box-shadow(2px 2px 5px 0px #333);
-    
+  
   @include darkgradient;
   
   @include transition-property('width, right');
