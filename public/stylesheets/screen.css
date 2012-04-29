@@ -1403,6 +1403,7 @@ a:hover, a:visited, a:active {
 
 /* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
+  background: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
   background: -moz-linear-gradient(top, #333333, #303030);
@@ -1429,7 +1430,7 @@ a:hover, a:visited, a:active {
   top: 10px;
   width: auto;
 }
-/* line 80, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 81, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1458,7 +1459,7 @@ a:hover, a:visited, a:active {
   width: 17px;
 }
 
-/* line 97, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 98, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1467,7 +1468,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 106, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 107, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1491,8 +1492,9 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 118, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 119, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
+  background: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
@@ -2985,6 +2987,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
+  background: #9e1632;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
   background: -webkit-linear-gradient(top, #ba2046, #9e1632);
   background: -moz-linear-gradient(top, #ba2046, #9e1632);
@@ -2998,7 +3001,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 237, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 238, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -3024,8 +3027,9 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 254, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 255, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
+  background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
   background: -moz-linear-gradient(top, #00a5cc, #007fb6);
@@ -3037,11 +3041,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 260, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 262, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 264, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 266, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
