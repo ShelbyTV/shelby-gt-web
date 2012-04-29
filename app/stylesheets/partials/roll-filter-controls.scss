@@ -65,6 +65,7 @@
 }
 
 .rolls-back{
+	background: $flatShelbyDarkGray;
 	@include background($softShelbyDarkGray);
 	@include backandforth;
 	@include border-radius($radius);	
@@ -104,6 +105,7 @@
 }
 
 .roll-back{
+	background: $flatShelbyDarkGray;
 	@include background(
 		url('../images/assets/navarrow_left.svg') no-repeat center center,
 		$softShelbyDarkGray
@@ -115,6 +117,7 @@
 	text-align:left;
 }
 .roll-next{
+	background: $flatShelbyDarkGray;
 	@include background(
 		url('../images/assets/navarrow_right.svg') no-repeat center center,
 		$softShelbyDarkGray
