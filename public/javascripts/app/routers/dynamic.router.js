@@ -19,6 +19,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "preferences" : "displayUserPreferences",
     "preferences?:params" : "displayUserPreferences",
     "help" : "displayHelp",
+    "help?:params" : "displayHelp",
     "team" : "displayTeam",
     "legal" : "displayLegal",
     "" : "displayDashboard",
