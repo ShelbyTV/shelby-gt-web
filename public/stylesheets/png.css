@@ -1,0 +1,258 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* Welcome to Compass. Use this file to write IE specific override styles.
+ * Import this file using the following HTML or equivalent:
+ * <!--[if IE]>
+ *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ * <![endif]--> */
+/* line 15, ../../app/stylesheets/png.scss */
+.lt-ie9 .guide-toggle .copy {
+  top: 1px;
+}
+
+/* line 28, ../../app/stylesheets/png.scss */
+.no-svg .logo-header {
+  background: url("../images/assets/shelbylogo.png") center 8px no-repeat transparent;
+}
+/* line 33, ../../app/stylesheets/png.scss */
+.no-svg .top-level:after {
+  background: url("../images/assets/carrot.png") no-repeat center center transparent;
+}
+/* line 42, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .stream {
+  background: url("../images/assets/stream.png") no-repeat center center;
+}
+/* line 47, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .stream.active-tab {
+  background: url("../images/assets/stream_on.png") no-repeat center 1px #3f3f3f;
+  color: #63BD57;
+}
+/* line 52, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .stream.active-tab:hover {
+  background: url("../images/assets/stream_on.png") no-repeat center center #3f3f3f;
+}
+/* line 60, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .rolls {
+  background: url("../images/assets/rolls.png") no-repeat center center;
+}
+/* line 65, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .rolls.active-tab {
+  background: url("../images/assets/rolls_on.png") no-repeat center 1px;
+  color: #0092C1;
+}
+/* line 70, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .rolls.active-tab:hover {
+  background: url("../images/assets/rolls_on.png") no-repeat center center #3f3f3f;
+}
+/* line 77, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .saves {
+  background: url("../images/assets/saves.png") no-repeat center center;
+}
+/* line 82, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .saves.active-tab {
+  background: url("../images/assets/saves_on.png") no-repeat center 1px;
+  color: #9863a2;
+}
+/* line 87, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .saves.active-tab:hover {
+  background: url("../images/assets/saves_on.png[") no-repeat center center #3f3f3f;
+}
+/* line 97, ../../app/stylesheets/png.scss */
+.no-svg .dashboard-search i {
+  background: url("../images/assets/search.png") no-repeat center center;
+}
+/* line 105, ../../app/stylesheets/png.scss */
+.no-svg .guide-toggle .icon {
+  background: url("../images/assets/guide.png") no-repeat center center transparent;
+}
+/* line 112, ../../app/stylesheets/png.scss */
+.no-svg .networks-twitter {
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, linear-gradient(top, #646464, #474747);
+}
+/* line 117, ../../app/stylesheets/png.scss */
+.no-svg .networks-twitter.active {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -moz-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -o-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
+}
+/* line 125, ../../app/stylesheets/png.scss */
+.no-svg .networks-facebook {
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -moz-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -o-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, linear-gradient(top, #646464, #474747);
+}
+/* line 131, ../../app/stylesheets/png.scss */
+.no-svg .networks-facebook.active {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -moz-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -o-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, linear-gradient(top, #01599e, #013e80);
+}
+/* line 141, ../../app/stylesheets/png.scss */
+.no-svg .roll-back {
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.png") no-repeat center center, linear-gradient(top, #333333, #303030);
+}
+/* line 147, ../../app/stylesheets/png.scss */
+.no-svg .roll-next {
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.png") no-repeat center center, linear-gradient(top, #333333, #303030);
+}
+/* line 157, ../../app/stylesheets/png.scss */
+.no-svg .video-score:before {
+  content: url("../images/assets/score.png");
+}
+/* line 164, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .roll-frame button {
+  background: url("../images/assets/roll_action.png") no-repeat 0px -1px;
+}
+/* line 171, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .save-frame button {
+  background: url("../images/assets/saved_action.png") no-repeat center center;
+}
+/* line 178, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .remove-frame button {
+  background: url("../images/assets/saved_remove.png") no-repeat center center;
+}
+/* line 187, ../../app/stylesheets/png.scss */
+.no-svg .user-post-origin-twitter:before {
+  content: url('/images/../images/assets/twitter_stamp.png?1335815212');
+}
+/* line 193, ../../app/stylesheets/png.scss */
+.no-svg .user-post-origin-facebook:before {
+  content: url('/images/../images/assets/facebook_stamp.png?1335813888');
+}
+/* line 199, ../../app/stylesheets/png.scss */
+.no-svg .video-player-play {
+  background: url("../images/assets/player_play.png") center center no-repeat transparent;
+}
+/* line 204, ../../app/stylesheets/png.scss */
+.no-svg .video-player-play.pause {
+  background: url("../images/assets/player_pause.png") center center no-repeat transparent;
+}
+/* line 211, ../../app/stylesheets/png.scss */
+.no-svg .video-player-volume {
+  background: url("../images/assets/player_sound_on.png") center center no-repeat transparent;
+}
+/* line 215, ../../app/stylesheets/png.scss */
+.no-svg .video-player-volume.mute {
+  background: url("../images/assets/player_sound_off.png") center center no-repeat transparent;
+}
+/* line 222, ../../app/stylesheets/png.scss */
+.no-svg .video-player-fullscreen {
+  background: url("../images/assets/player_fullscreen.png") center center no-repeat transparent;
+}
+/* line 228, ../../app/stylesheets/png.scss */
+.no-svg .video-player-roll {
+  background: url("../images/assets/player_roll.png") center 6px no-repeat transparent;
+}
+/* line 237, ../../app/stylesheets/png.scss */
+.no-svg .rolling-main-social:before {
+  background: url("../images/assets/sharebutton_icons.png") no-repeat 0px center;
+}
+/* line 247, ../../app/stylesheets/png.scss */
+.no-svg .frame-rolling-completion-header h1.roll-type-public:before {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 252, ../../app/stylesheets/png.scss */
+.no-svg .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 264, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-public-roll.new:before {
+  content: "+";
+}
+/* line 267, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-public-roll:after {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 273, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 283, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-twitter:before {
+  background: url("../images/assets/rolls_twitter.png") no-repeat center center #00a2d1;
+}
+/* line 290, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-facebook:before {
+  background: url("../images/assets/rolls_facebook.png") no-repeat center center #013e80;
+}
+/* line 297, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-tumblr:before {
+  background: url("../images/assets/rolls_tumblr.png") no-repeat center center, #2f445b;
+}
+/* line 306, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-notifications input + span:after {
+  background: url("../images/assets/switch.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
+  background: url("../images/assets/switch.png") no-repeat center center, -webkit-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.png") no-repeat center center, -moz-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.png") no-repeat center center, -o-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.png") no-repeat center center, -ms-linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.png") no-repeat center center, linear-gradient(top, #d7d7d7, #fefefe);
+}
+/* line 318, ../../app/stylesheets/png.scss */
+.no-svg .about-external-twitter a {
+  background: url("../images/assets/team_twitter.png") no-repeat center left transparent;
+}
+/* line 326, ../../app/stylesheets/png.scss */
+.no-svg .about-external-link a {
+  background: url("../images/assets/team_web.png") no-repeat center left transparent;
+}
+/* line 336, ../../app/stylesheets/png.scss */
+.no-svg .logged-out-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 1px 2px transparent;
+}
+/* line 342, ../../app/stylesheets/png.scss */
+.no-svg .logged-out-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center transparent;
+}
+/* line 349, ../../app/stylesheets/png.scss */
+.no-svg .comment-overlay-prev {
+  background: url("../images/assets/comment_arrow_left.png") no-repeat center center #303030;
+}
+/* line 354, ../../app/stylesheets/png.scss */
+.no-svg .comment-overlay-next {
+  background: url("../images/assets/comment_arrow_right.png") no-repeat center center #303030;
+}
+/* line 362, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-logo {
+  background: url("../images/email-gate/landing_logo.png") no-repeat center center transparent;
+}
+
+/* line 367, ../../app/stylesheets/png.scss */
+.email-gate-networks-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 2px 4px transparent;
+}
+
+/* line 373, ../../app/stylesheets/png.scss */
+.email-gate-networks-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat -1px center transparent;
+}

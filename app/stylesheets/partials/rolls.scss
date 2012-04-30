@@ -122,7 +122,6 @@
 	@include background(
 		url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center,
 		$softNetworksUnselected
-
 	);
 	@include border-radius($radius/2);
 	@include box-shadow(inset 0px 1px 1px 0px #777);

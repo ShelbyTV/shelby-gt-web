@@ -555,8 +555,9 @@ a:hover, a:visited, a:active {
   display: block;
   float: left;
 }
-/* line 25, ../../app/stylesheets/partials/guide-header.scss */
-.logo h1 {
+
+/* line 26, ../../app/stylesheets/partials/guide-header.scss */
+.logo-header {
   background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
   height: 42px;
   margin: 0 12px;
@@ -579,32 +580,19 @@ a:hover, a:visited, a:active {
   line-height: 3.25;
   text-align: left;
 }
-/* line 49, ../../app/stylesheets/partials/guide-header.scss */
-.settings button:after {
-  background: url("../images/assets/carrot.svg") no-repeat center center transparent;
-  content: "\0020";
-  font-size: 8.667px;
-  height: 12px;
-  line-height: 5.5;
-  margin-left: 3px;
-  position: absolute;
-  text-align: right;
-  top: 40%;
-  width: 12px;
-}
-/* line 63, ../../app/stylesheets/partials/guide-header.scss */
+/* line 48, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
   text-decoration: none;
 }
-/* line 69, ../../app/stylesheets/partials/guide-header.scss */
+/* line 54, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   height: 42px;
   position: relative;
 }
-/* line 75, ../../app/stylesheets/partials/guide-header.scss */
+/* line 60, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   float: none;
   height: 2em;
@@ -612,28 +600,16 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 82, ../../app/stylesheets/partials/guide-header.scss */
+/* line 67, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li button, .settings li li span {
   height: 2em;
   line-height: 2;
   padding-left: 0.5em;
   text-decoration: none;
 }
-/* line 89, ../../app/stylesheets/partials/guide-header.scss */
-.settings li li button:before, .settings li li button:after {
-  content: none;
-}
-/* line 94, ../../app/stylesheets/partials/guide-header.scss */
-.settings a {
-  background: #2b2a2a;
-  color: #d8d8d8;
-  display: block;
-  height: 42px;
-  line-height: 3.25;
-  text-decoration: none;
-}
-/* line 102, ../../app/stylesheets/partials/guide-header.scss */
-.settings a:after {
+
+/* line 79, ../../app/stylesheets/partials/guide-header.scss */
+.top-level:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
   font-size: 8.667px;
@@ -645,13 +621,8 @@ a:hover, a:visited, a:active {
   top: 40%;
   width: 12px;
 }
-/* line 116, ../../app/stylesheets/partials/guide-header.scss */
-.settings a:hover {
-  color: white;
-  text-decoration: underline;
-}
 
-/* line 123, ../../app/stylesheets/partials/guide-header.scss */
+/* line 94, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -659,13 +630,13 @@ a:hover, a:visited, a:active {
   width: 70px;
   z-index: 2;
 }
-/* line 130, ../../app/stylesheets/partials/guide-header.scss */
+/* line 101, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 136, ../../app/stylesheets/partials/guide-header.scss */
+/* line 107, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -682,49 +653,49 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 150, ../../app/stylesheets/partials/guide-header.scss */
+/* line 121, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 156, ../../app/stylesheets/partials/guide-header.scss */
+/* line 127, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 161, ../../app/stylesheets/partials/guide-header.scss */
+/* line 132, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 163, ../../app/stylesheets/partials/guide-header.scss */
+/* line 134, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 166, ../../app/stylesheets/partials/guide-header.scss */
+/* line 137, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 175, ../../app/stylesheets/partials/guide-header.scss */
+/* line 146, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 177, ../../app/stylesheets/partials/guide-header.scss */
+/* line 148, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 184, ../../app/stylesheets/partials/guide-header.scss */
+/* line 155, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 191, ../../app/stylesheets/partials/guide-header.scss */
+/* line 162, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -738,7 +709,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 201, ../../app/stylesheets/partials/guide-header.scss */
+/* line 172, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -829,47 +800,47 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 6px 8px 0px #111111;
   box-shadow: inset 0px 6px 8px 0px #111111;
 }
-/* line 65, ../../app/stylesheets/partials/menu.scss */
+/* line 66, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 70, ../../app/stylesheets/partials/menu.scss */
+/* line 71, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.svg") no-repeat center 1px #3f3f3f;
   color: #63BD57;
 }
-/* line 75, ../../app/stylesheets/partials/menu.scss */
+/* line 76, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
-  background: url("../images/assets/stream_on.svg") no-repeat center center #3f3f3f;
+  background-color: #3f3f3f;
 }
-/* line 83, ../../app/stylesheets/partials/menu.scss */
+/* line 82, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 88, ../../app/stylesheets/partials/menu.scss */
+/* line 87, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 93, ../../app/stylesheets/partials/menu.scss */
+/* line 92, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab:hover {
-  background: url("../images/assets/rolls_on.svg") no-repeat center center #3f3f3f;
+  background-color: #3f3f3f;
 }
-/* line 100, ../../app/stylesheets/partials/menu.scss */
+/* line 97, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 105, ../../app/stylesheets/partials/menu.scss */
+/* line 102, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #9863a2;
 }
-/* line 110, ../../app/stylesheets/partials/menu.scss */
+/* line 107, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab:hover {
-  background: url("../images/assets/saves_on.svg") no-repeat center center #3f3f3f;
+  background-color: #3f3f3f;
 }
 
-/* line 120, ../../app/stylesheets/partials/menu.scss */
+/* line 115, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -880,7 +851,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 126, ../../app/stylesheets/partials/menu.scss */
+/* line 121, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -888,7 +859,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 133, ../../app/stylesheets/partials/menu.scss */
+/* line 128, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -899,7 +870,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 138, ../../app/stylesheets/partials/menu.scss */
+/* line 133, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -1264,7 +1235,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 135, ../../app/stylesheets/partials/rolls.scss */
+/* line 134, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active, .active.networks-facebook {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center, -webkit-linear-gradient(top, #00b5d7, #00a2d1);
@@ -1278,7 +1249,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
 
-/* line 146, ../../app/stylesheets/partials/rolls.scss */
+/* line 145, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #646464, #474747);
@@ -1291,7 +1262,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #777777;
   box-shadow: inset 0px 1px 1px 0px #777777;
 }
-/* line 154, ../../app/stylesheets/partials/rolls.scss */
+/* line 153, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #01599e, #013e80);
@@ -1305,13 +1276,13 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
 
-/* line 165, ../../app/stylesheets/partials/rolls.scss */
+/* line 164, ../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   float: right;
   width: 50%;
 }
 
-/* line 170, ../../app/stylesheets/partials/rolls.scss */
+/* line 169, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1342,7 +1313,7 @@ a:hover, a:visited, a:active {
   text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 172, ../../app/stylesheets/partials/rolls.scss */
+/* line 171, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: 278px;
   top: 7px;
@@ -1519,7 +1490,6 @@ a:hover, a:visited, a:active {
 
 /* line 1, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item {
-  background: red;
   display: block;
   padding: 0;
   margin: 0;
@@ -3624,43 +3594,43 @@ a:hover, a:visited, a:active {
 
 /* line 20, ../../app/stylesheets/partials/gate.scss */
 .email-gate {
-  background: url("../images/email-gate/bg.png") no-repeat center center;
+  background-color: #101010;
+  background: url("../images/email-gate/bg.png") no-repeat center center #101010;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-/* line 27, ../../app/stylesheets/partials/gate.scss */
+/* line 28, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
   margin: 0 auto;
   width: 480px;
 }
 
-/* line 32, ../../app/stylesheets/partials/gate.scss */
+/* line 33, ../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
-  width: 1020px;
 }
 
-/* line 37, ../../app/stylesheets/partials/gate.scss */
+/* line 38, ../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper {
   float: left;
   width: 500px;
 }
 
-/* line 41, ../../app/stylesheets/partials/gate.scss */
+/* line 42, ../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
 }
 
-/* line 44, ../../app/stylesheets/partials/gate.scss */
+/* line 45, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 53, ../../app/stylesheets/partials/gate.scss */
+/* line 54, ../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -3670,12 +3640,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 67, ../../app/stylesheets/partials/gate.scss */
-.lt-ie9 .email-gate-logo {
-  background: url("../images/email-gate/landing_logo.png") no-repeat center center transparent;
-}
-
-/* line 73, ../../app/stylesheets/partials/gate.scss */
+/* line 68, ../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -3684,7 +3649,7 @@ a:hover, a:visited, a:active {
   width: 33%;
 }
 
-/* line 82, ../../app/stylesheets/partials/gate.scss */
+/* line 77, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -3693,7 +3658,7 @@ a:hover, a:visited, a:active {
   width: 205px;
 }
 
-/* line 90, ../../app/stylesheets/partials/gate.scss */
+/* line 85, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #549738;
@@ -3723,7 +3688,7 @@ a:hover, a:visited, a:active {
   padding: 7px 19px;
 }
 
-/* line 109, ../../app/stylesheets/partials/gate.scss */
+/* line 104, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 5px;
@@ -3741,7 +3706,7 @@ a:hover, a:visited, a:active {
   padding: 10px;
   position: relative;
 }
-/* line 122, ../../app/stylesheets/partials/gate.scss */
+/* line 117, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -3762,7 +3727,7 @@ a:hover, a:visited, a:active {
   width: 10px;
 }
 
-/* line 138, ../../app/stylesheets/partials/gate.scss */
+/* line 133, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -3770,16 +3735,16 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 147, ../../app/stylesheets/partials/gate.scss */
+/* line 142, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 150, ../../app/stylesheets/partials/gate.scss */
+/* line 145, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 155, ../../app/stylesheets/partials/gate.scss */
+/* line 150, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -3788,27 +3753,27 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 164, ../../app/stylesheets/partials/gate.scss */
+/* line 159, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 167, ../../app/stylesheets/partials/gate.scss */
+/* line 162, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 172, ../../app/stylesheets/partials/gate.scss */
+/* line 167, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 176, ../../app/stylesheets/partials/gate.scss */
+/* line 171, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 181, ../../app/stylesheets/partials/gate.scss */
+/* line 176, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -3816,7 +3781,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 188, ../../app/stylesheets/partials/gate.scss */
+/* line 183, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -3825,7 +3790,7 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 196, ../../app/stylesheets/partials/gate.scss */
+/* line 191, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -3842,7 +3807,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 213, ../../app/stylesheets/partials/gate.scss */
+/* line 208, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: #007fb6;
@@ -3872,19 +3837,19 @@ a:hover, a:visited, a:active {
   width: 17%;
 }
 
-/* line 233, ../../app/stylesheets/partials/gate.scss */
+/* line 228, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 238, ../../app/stylesheets/partials/gate.scss */
+/* line 233, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 244, ../../app/stylesheets/partials/gate.scss */
+/* line 239, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
