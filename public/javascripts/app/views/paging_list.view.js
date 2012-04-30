@@ -25,7 +25,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
-    this._initInfiniteScrolling();
+    //this._initInfiniteScrolling();
     libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
