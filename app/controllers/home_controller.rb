@@ -10,8 +10,13 @@ class HomeController < ApplicationController
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = path_match[1]
       @video_info = Shelby::API.get_video_info(frame_id)
-      @video_embed = @video_info['video']['embed_url']
-      @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], frame_id) if @video_info
+      if @video_info
+        @video_embed = @video_info['video']['embed_url']
+        @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], frame_id)
+      else
+        @video_embed = nil
+        @permalink = nil
+      end
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(params[:path])
       roll_id = path_match[1]
       @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
