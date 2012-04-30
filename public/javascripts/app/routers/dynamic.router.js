@@ -48,6 +48,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       _(options).defaults(defaults);
     }
+		
+		frameId = frameId.split("?")[0];
 
     var self = this;
     this._setupRollView(rollId, null, {
