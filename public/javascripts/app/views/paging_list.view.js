@@ -25,12 +25,23 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
+    //this._initInfiniteScrolling();
     libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     libs.shelbyGT.ListView.prototype._cleanup.call(this);
+  },
+
+  _initInfiniteScrolling : function(){
+    var self = this;
+    var wrapper = $('#js-guide-wrapper');
+    wrapper.scroll(function () {
+      if (wrapper[0].scrollHeight - wrapper.scrollTop() == wrapper.outerHeight()) {
+        self._loadMore();
+      }
+    });
   },
 
   _onItemsLoaded : function(rollModel, items){

@@ -105,6 +105,10 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       // via ajax
       var self = this;
       privateUserModel.fetch({data:{include_rolls:true},success:function(){
+        /*
+         * the relevant list view needs to scroll to this._frameRollingView.el
+         */
+        shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
         self.$('.js-rolling-frame').addClass('rolling-frame-trans');
       }});
     }

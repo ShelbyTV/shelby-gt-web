@@ -14,8 +14,4 @@ $(function(){
     }
   }
 
-  //if browser does NOT support SVG
-  if(!Modernizr.svg){
-    console.log('svg not supported');
-  }
 });
