@@ -4,10 +4,10 @@
 </div>
 
 <div class="js-rolling-footer rolling-main-footer">
-    <button class="js-back rolling-main-back">
+    <button class="js-back rolling-main-back js-track-event" data-ga_category="Rolling" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Cancel
     </button>
-    <button class="js-social rolling-main-social">
+    <button class="js-social rolling-main-social js-track-event" data-ga_category="Rolling" data-ga_action="share button" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
     	Share
     </button>
     <button class="js-done rolling-main-done">

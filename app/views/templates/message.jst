@@ -19,13 +19,13 @@
 %>
 <div class="user-vcard clearfix">
   <span class="user-avatar">
-    <a class="js-user-personal-roll" href="#" data-user-id="<%= messageJSON.user_id %>">
+    <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
       <img src="<%= messageJSON.user_image_url %>" alt="" title="" height="25" width="25">
     </a>
   </span>
 
   <span class="user-handle">
-    <a class="js-user-personal-roll" href="#" data-user-id="<%= messageJSON.user_id %>">
+    <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
       <%= messageJSON.realname %>
     </a>
   </span>
