@@ -24,7 +24,6 @@
 	@include background-size(cover);
 }
 
-
 .email-gate-wrapper {
 	margin:0 auto;
 	width:480px;
@@ -63,6 +62,13 @@
 	margin-right:18px;
 	width: 50%;
 }
+
+.lt-ie9 {
+	.email-gate-logo {
+		@include background(url('../images/email-gate/landing_logo.png') no-repeat center center transparent);
+	}
+}
+
 
 .email-gate-slogan {
 	float: left;
