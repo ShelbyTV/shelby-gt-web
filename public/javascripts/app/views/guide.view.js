@@ -151,7 +151,9 @@
     },
 
     scrollToChildElement : function(element){
-      this.$el.scrollTo(element, {duration:200, axis:'y'});
+      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
+      //this.$el.scrollTo(element, {duration:200, axis:'y'});
+
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){

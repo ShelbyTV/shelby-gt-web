@@ -7,6 +7,7 @@
 
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
+      shelby.models.guide.bind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
       PagingListView.prototype.initialize.call(this);
     },
 
@@ -40,6 +41,7 @@
     scrollToActiveFrameView : function() {
       var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
       if (activeFrameView) {
+        console.log('acive frame view', activeFrameView.el);
         this._scrollTo(activeFrameView.el);
       }
     },
@@ -47,6 +49,10 @@
     _onNewActiveFrame : function(guideModel, currentActiveFrameModel){
       var frameViews = this._getActiveFrameViews(guideModel, currentActiveFrameModel);
       this._switchActiveFrameViews(frameViews);
+    },
+
+    _onNewActiveFrameRollingView : function(guideModel, currentActiveFrameRollingView){
+      this.parent.scrollToChildElement(currentActiveFrameRollingView.el);
     },
 
     _getActiveFrameViews : function(guideModel, currentActiveFrameModel){
