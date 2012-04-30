@@ -2,7 +2,7 @@
 	<!-- added a wrapper div and styled inline so Mike can built this out however he sees fit -->
 	<!-- this is wrapped by #video-controls which is probably the element to style -->
 	<menu class="video-player-control">
-		<button class="video-player-play ir pause">
+		<button class="video-player-play ir pause js-track-event" data-ga_category="Player" data-ga_action="play/pause" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 			Play
 		</button>
 
@@ -12,15 +12,15 @@
 			<div class="video-player-scrubber"></div>
 		</div>
 
-		<button class="video-player-roll ir">
+		<button class="video-player-roll ir js-track-event" data-ga_category="Player" data-ga_action="roll video" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 			Roll Video
 		</button>
 
-		<button class="video-player-fullscreen ir">
+		<button class="video-player-fullscreen ir js-track-event" data-ga_category="Player" data-ga_action="fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 			Fullscreen
 		</button>
 
-		<button class="video-player-volume ir unmute">
+		<button class="video-player-volume ir unmute js-track-event" data-ga_category="Player" data-ga_action="mute" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 			Volume
 		</button>
 

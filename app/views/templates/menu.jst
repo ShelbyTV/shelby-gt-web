@@ -1,12 +1,12 @@
   <ul class="video-guide clearfix">
     <li>
-      <button class="stream" href="#">Stream</button>
+      <button class="stream js-track-event" data-ga_category="Menu" data-ga_action="stream" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">Stream</button>
     </li>
     <li>
-      <button class="rolls" href="#">Rolls</button>
+      <button class="rolls js-track-event" data-ga_category="Menu" data-ga_action="rolls" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">Rolls</button>
     </li>
     <li>
-      <button class="saves" href="#">Saves</button>
+      <button class="saves js-track-event" data-ga_category="Menu" data-ga_action="saves" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">Saves</button>
     </li>
 <!--     <li>
       <form class="dashboard-search">
