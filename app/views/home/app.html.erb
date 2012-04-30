@@ -11,7 +11,11 @@
 	<% end %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><%= Settings::Application.title %></title>
+	<% if @video_info %>
+	  <title>a shelby.tv video: <%= @video_info['video']['title'] %></title>
+	<% else %>
+		<title><%= Settings::Application.title %></title>
+	<% end %>
 
 	<meta name="csrf-token" content="<%= @csrf_token %>">
 

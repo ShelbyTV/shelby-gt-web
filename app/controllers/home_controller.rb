@@ -10,8 +10,13 @@ class HomeController < ApplicationController
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = path_match[1]
       @video_info = Shelby::API.get_video_info(frame_id)
-      @video_embed = @video_info['video']['embed_url']
-      @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], frame_id) if @video_info
+      if @video_info
+        @video_embed = @video_info['video']['embed_url']
+        @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], frame_id)
+      else
+        @video_embed = nil
+        @permalink = nil
+      end
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(params[:path])
       roll_id = path_match[1]
       @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
@@ -31,6 +36,10 @@ class HomeController < ApplicationController
       if params[:gt_access_token]
         @has_access_token = true
         cookies[:gt_access_token] = {:value => params[:gt_access_token], :domain => ".shelby.tv"}
+      elsif params[:gt_ref_uid] and params[:gt_ref_email] and params[:gt_ref_roll]
+        @has_access_token = true
+        val = "#{params[:gt_ref_uid]},#{params[:gt_ref_email]},#{params[:gt_ref_roll]}"
+        cookies[:gt_roll_invite] = {:value => val, :domain => ".shelby.tv"}
       end
       render 'gate'
     end
