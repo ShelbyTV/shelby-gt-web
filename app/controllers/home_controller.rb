@@ -20,15 +20,17 @@ class HomeController < ApplicationController
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(params[:path])
       roll_id = path_match[1]
       @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
-      @video_embed = @video_info['video']['embed_url']
-      @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], @video_info['frame']['id']) if @video_info
+      if @video_info
+        @video_embed = @video_info['video']['embed_url']
+        @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], @video_info['frame']['id']) if @video_info
+      end
     else
       @roll_info = nil
       @video_info = nil
     end
     
     if user_signed_in?
-      @csrf_token = csrf_token_from_cookie
+      @csrf_token = csrf_token_from_cookie      
       render 'app'
     else
       @show_error = params[:access] == "nos"
