@@ -2,24 +2,24 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 	
   routes : {
     "roll/:rollId/frame/:frameId/rollit" : "displayFrameAndActivateRollingView",
-    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/frame/:frameId?:params" : "displayFrameInRoll",
-    "roll/:rollId/:title" : "displayRoll",
+    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title?:params" : "displayRoll",
-    "roll/:rollId/" : "displayRoll",
+    "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/?:params" : "displayRoll",
-    "roll/:rollId" : "displayRoll",
+    "roll/:rollId/" : "displayRoll",
     "roll/:rollId?:params" : "displayRoll",
+    "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
-    "user/:id/personal_roll" : "displayUserPersonalRoll",
     "user/:id/personal_roll?:params" : "displayUserPersonalRoll",
+    "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
-    "preferences" : "displayUserPreferences",
     "preferences?:params" : "displayUserPreferences",
-    "help" : "displayHelp",
+    "preferences" : "displayUserPreferences",
     "help?:params" : "displayHelp",
+    "help" : "displayHelp",
     "team" : "displayTeam",
     "legal" : "displayLegal",
     "" : "displayDashboard",
@@ -43,24 +43,50 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var defaults = {
       activateRollingView : false
     };
+
     if (!options) {
       options = defaults;
-    } else {
+    } 
+		else {
       _(options).defaults(defaults);
-    }
+
+			// pull potential url query params into a _params object
+			_.each(options.split("&"), function(o){ 
+				var _p = o.split("=");
+				defaults[_p[0]] = _p[1];
+			});
 		
-		frameId = frameId.split("?")[0];
+    }
 
     var self = this;
-    this._setupRollView(rollId, null, {
-      data: {
-        since_id : frameId,
-        include_children : true
-      },
-      onRollFetch: function(rollModel, response){
-        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
-      }
-    });
+		// if there are params that specify this was a roll invite...
+		//  make the call to add the user to the roll...
+		//  then show them the roll
+		// otherwise just show the roll view
+		if (shelby.userSignedIn() && defaults['gt_ref_roll']){
+			shelby.models.user.addUserToRoll(defaults['gt_ref_roll'], function(){
+				self._setupRollView(rollId, null, {
+		      data: {
+		        since_id : frameId,
+		        include_children : true
+		      },
+		      onRollFetch: function(rollModel, response){
+		        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+		      }
+		    });
+			});
+		}
+		else {
+			self._setupRollView(rollId, null, {
+	      data: {
+	        since_id : frameId,
+	        include_children : true
+	      },
+	      onRollFetch: function(rollModel, response){
+	        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+	      }
+	    });
+		}
   },
 
   displayRoll : function(rollId, title, options){
@@ -192,13 +218,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRollList : function(){
     this._setupTopLevelViews({showSpinner: true});
-    
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
-    this._hideSpinnerAfter(
-      shelby.models.user.fetch({
+    var self = this;
+    this._hideSpinnerAfter((function(){
+      self._addHotRolls();
+      return shelby.models.user.fetch({
         data: {include_rolls:true}
       })
+    })()
     );
+  },
+
+  _addHotRolls : function(){
+    libs.utils.HotRollsJson.forEach(function(rollJson){
+      shelby.models.user.get('roll_followings').add(new libs.shelbyGT.RollModel(rollJson));
+      //console.log(rollJson);
+    });
   },
 
   displaySaves : function(){

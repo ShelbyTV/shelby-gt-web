@@ -66,6 +66,12 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     } else {
       return false;
     }
-  }
+  },
+	
+	addUserToRoll: function(roll_id, onSuccess){
+		var rollToJoin = new libs.shelbyGT.RollModel();
+    var url = shelby.config.apiRoot + '/roll/' + roll_id + '/join';
+    rollToJoin.save(null, {url:url, success:onSuccess});
+	}
 
 });
