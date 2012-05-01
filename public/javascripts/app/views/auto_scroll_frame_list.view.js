@@ -51,7 +51,8 @@
     },
 
     _onNewActiveFrameRollingView : function(guideModel, currentActiveFrameRollingView){
-      this.parent.scrollToChildElement(currentActiveFrameRollingView.el);
+      // a bit ugly
+      this.parent.scrollToChildElement($(currentActiveFrameRollingView.el).parent().parent());
     },
 
     _getActiveFrameViews : function(guideModel, currentActiveFrameModel){
