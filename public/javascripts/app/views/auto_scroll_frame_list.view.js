@@ -41,7 +41,6 @@
     scrollToActiveFrameView : function() {
       var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
       if (activeFrameView) {
-        console.log('acive frame view', activeFrameView.el);
         this._scrollTo(activeFrameView.el);
       }
     },
