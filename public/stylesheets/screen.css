@@ -3611,6 +3611,7 @@ a:hover, a:visited, a:active {
 /* line 33, ../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
+  width: 1020px;
 }
 
 /* line 38, ../../app/stylesheets/partials/gate.scss */
