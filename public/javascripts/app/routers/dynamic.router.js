@@ -197,10 +197,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews({showSpinner: true});
     
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
-    shelby.models.guide.set({
+    /*shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
       'sinceId' : options.data.since_id ? options.data.since_id : null
-    });
+    });*/
 
     var fetchOptions = {data: options.data};
     fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
@@ -210,6 +210,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //fetchOptions.data.limit = Math.random() < 0.3 ? 20 : 0;
     shelby.models.guide.set({
       'displayState' : libs.shelbyGT.DisplayState.dashboard,
+      'sinceId' : options.data.since_id ? options.data.since_id : null,
       'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
     });
     this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );

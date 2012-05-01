@@ -13,5 +13,11 @@ $(function(){
       guide.addEventListener('DOMSubtreeModified', refresh, false);
     }
   }
-
+  //opera returns the "opera" object,
+  //exploiting this because Opera's SVG background support is shaky,
+  //so, load the png fallback css and enable the proper class.
+  if(window.opera){
+    $('head').append('<link href="/stylesheets/png.css" media="screen" rel="stylesheet" type="text/css"/>');
+    $('html').removeClass('svg').addClass('no-svg');
+  }
 });
