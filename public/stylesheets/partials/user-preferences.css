@@ -250,6 +250,7 @@
 }
 /* line 203, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
+  border: none;
   margin-top: 10px;
   position: absolute;
   height: 0;

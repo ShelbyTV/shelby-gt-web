@@ -21,13 +21,13 @@
 	border:none;
 	display:block;
 	float:left;
+}
 
-	h1 {
-		background:url('../images/assets/shelbylogo.svg') center 8px no-repeat transparent;
-		height:42px;
-		margin:0 12px;
-		width:115px;
-	}
+.logo-header {
+	background:url('../images/assets/shelbylogo.svg') center 8px no-repeat transparent;
+	height:42px;
+	margin:0 12px;
+	width:115px;
 }
 
 .settings{
@@ -44,22 +44,7 @@
 		color:#efefef;
 		line-height:3.25;
 		text-align:left;
-//		width:100%;
-		
-		&:after {
-			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
-			content:"\0020";
-			font-size: $font-size/1.5;
-			height:12px;
-//			left:0;
-			line-height:5.5;
-			margin-left:3px;
-			position:absolute;
-			text-align:right;
-			top:40%;
-			width:12px;
 
-		}
 		&:hover{
 			color:white;
 			text-decoration:none;
@@ -85,20 +70,12 @@
 				padding-left:$margin;
 				text-decoration:none;
 			}
-
-			button:before, button:after{
-				content: none;
-			}
 		}	
 	}
-	a{
-		background:$settingsBG;
-		color:$headerNavLink;
-		display:block;
-		height:42px;
-		line-height:3.25;
-		text-decoration:none;
 
+}
+
+.top-level {
 		&:after {
 			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
 			content:"\0020";
@@ -111,14 +88,8 @@
 			text-align:right;
 			top:40%;
 			width:12px;
-
-		}
-		&:hover{
-			color:white;
-			text-decoration:underline;
 		}
 	}
-}
 
 .about{
 	padding-left:$defaultMargin;

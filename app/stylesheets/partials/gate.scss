@@ -18,12 +18,12 @@
 }
 
 .email-gate {
+	background-color:#101010;
 	@include background(
-		url('../images/email-gate/bg.png') no-repeat center center
+		url('../images/email-gate/bg.png') no-repeat center center #101010
 	);
 	@include background-size(cover);
 }
-
 
 .email-gate-wrapper {
 	margin:0 auto;
@@ -63,6 +63,7 @@
 	margin-right:18px;
 	width: 50%;
 }
+
 
 .email-gate-slogan {
 	float: left;

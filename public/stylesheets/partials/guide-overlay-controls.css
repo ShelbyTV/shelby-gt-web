@@ -26,6 +26,7 @@
   -webkit-box-shadow: 2px 2px 5px 0px #333333;
   -o-box-shadow: 2px 2px 5px 0px #333333;
   box-shadow: 2px 2px 5px 0px #333333;
+  background: #0e0e0e;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
   background-image: -webkit-linear-gradient(top, #141414, #0e0e0e);
   background-image: -moz-linear-gradient(top, #141414, #0e0e0e);
@@ -58,7 +59,7 @@
   right: 0;
   width: 34px;
 }
-/* line 36, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 35, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -86,7 +87,7 @@
   top: 13px;
   width: 70px;
 }
-/* line 54, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 53, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -106,14 +107,14 @@
   width: 20px;
 }
 
-/* line 66, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 65, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 69, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 68, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -121,13 +122,13 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 73, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 72, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 78, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 77, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -135,7 +136,7 @@
   transition-delay: 0s;
   width: 112px;
 }
-/* line 83, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 82, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -145,14 +146,14 @@
   transition-delay: 0.2s;
 }
 
-/* line 89, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 88, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 91, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 90, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -164,7 +165,7 @@
   transition-delay: 0.1s;
 }
 
-/* line 97, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 96, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;

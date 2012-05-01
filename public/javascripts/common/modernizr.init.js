@@ -13,4 +13,5 @@ $(function(){
       guide.addEventListener('DOMSubtreeModified', refresh, false);
     }
   }
+
 });

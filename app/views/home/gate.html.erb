@@ -18,6 +18,7 @@
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= include_stylesheets :common %>
   <%= include_javascripts :common %>
+  <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
 </head>
 
 <body class="email-gate">
@@ -30,11 +31,13 @@
 	<% if @video_embed %>
 		<div class="embed-gate-wrapper">
 			<%=raw @video_embed %>
-			<h1 style="margin: 10px 0 5px">Want the full Shelby GT experience?</h1>
+			<h1 style="margin: 15px 0 10px;">Your friend discovered this video with Shelby.tv</h1>
 			<h2>
-				Just leave your email and we'll let you know when Shelby GT is revved and ready. 
-				Until then, enjoy <a href="http://shelby.tv">Shelby 1.0</a>.
+				You have a very cool friend, because they have access to Shelby GT, our latest version, which delivers personalized streams of video curated by your friends. 
 			</h2>
+			<h3 style="margin: 10px 0 0 0;">
+				P.S. "GT" is just the project code name. Our CTO really likes cars.
+			</h3>
 		</div>
 	<% end -%>
 

@@ -1,13 +1,13 @@
 <div class="header clearfix">
   <button class="logo" href="/">
-    <h1 class="ir">
+    <h1 class="logo-header ir">
       Shelby.tv
     </h1>
   </button>
   <nav>
     <ul class="settings">
       <li>
-        <button class="profile you" href="#/<% user.get('nickname') %>">
+        <button class="profile you top-level">
           <span>
             <img src="<%= user.get('user_image') %>" />
           </span>
@@ -20,7 +20,7 @@
             </span>
           </li>
           <li>
-            <button class="js-preferences" href="#">Preferences</button>
+            <button class="js-preferences">Preferences</button>
           </li>
 <!--           <li>
             <button href="#copyright">Facebook Open Graph Off</button>
@@ -31,19 +31,19 @@
         </ul>          
       </li>
       <li>
-        <button class="about" href="#about">About</button>
+        <button class="about top-level" href="#about">About</button>
         <ul id="about-subnav" class="subnav about-subnav">
           <li>
-            <button class="js-help" href="#help">Help</button>
+            <button class="js-help">Help</button>
           </li>
           <li>
-            <button class="js-team" href="#team">Team</button>
+            <button class="js-team">Team</button>
           </li>
           <li>
-            <button href="http://shelby.tv/blog" target="_blank">Blog</button>
+            <button data-href="http://shelby.tv/blog" data-target="_blank">Blog</button>
           </li>
           <li>
-            <button class="js-legal" href="#legal">Legal</button>
+            <button class="js-legal">Legal</button>
           </li>
         </ul>
       </li>
