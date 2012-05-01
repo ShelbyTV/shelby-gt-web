@@ -1,4 +1,5 @@
-<% var userFollowsRoll = shelby.models.user.followsRoll(roll); %>
+<% /*var userFollowsRoll = shelby.models.user.followsRoll(roll);*/ %>
+<% var userFollowsRoll = true; %>
 <% if (userFollowsRoll) { %>
 	<button id="js-rolls-back" class="rolls-back js-track-event" data-ga_category="Roll List" data-ga_action="back" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 		<i></i>
