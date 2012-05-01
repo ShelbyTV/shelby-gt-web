@@ -1937,7 +1937,7 @@ a:hover, a:visited, a:active {
 
 /* line 350, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335359808');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1945,7 +1945,7 @@ a:hover, a:visited, a:active {
 
 /* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335359808');
 }
 
 /* line 364, ../../app/stylesheets/partials/frame.scss */
@@ -3148,7 +3148,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 124, ../../app/stylesheets/partials/team.scss */
-.stzul:before {
+.sztul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
@@ -3611,6 +3611,7 @@ a:hover, a:visited, a:active {
 /* line 33, ../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
+  width: 1020px;
 }
 
 /* line 38, ../../app/stylesheets/partials/gate.scss */
