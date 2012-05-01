@@ -26,7 +26,11 @@
         </li>
       <% } %>
     </ul>
-    <img class="js-frame-activate" src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
+    <% if(frame.get('video').get('thumbnail_url')) { %>
+      <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
+    <% } else { %>
+      <img class="js-frame-activate video-thumbnail-missing" src="<%= '/images/assets/missing_thumb.svg' %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
+    <% } %>
   </div>
  
   <footer class="video-card-footer">

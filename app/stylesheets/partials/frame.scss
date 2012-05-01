@@ -56,17 +56,23 @@
 	margin:0;
 	text-align:center;
 	width:100%;
+}
 
-	img{
-		//@include border-radius(5px);
-		display:inline-block;
-		margin:-27px auto 0;
-		overflow:hidden;
-		padding-top:0;
-		vertical-align:middle;
-		width:100%;
-		cursor:pointer;
-	}	
+.video-thumbnail-image{
+	//@include border-radius(5px);
+	display:inline-block;
+	margin:-27px auto 0;
+	overflow:hidden;
+	padding-top:0;
+	vertical-align:middle;
+	width:100%;
+	cursor:pointer;
+}	
+
+.video-thumbnail-missing {
+		height: 70%;
+		margin: 20px auto 0;
+		width: auto; 
 }
 
 
