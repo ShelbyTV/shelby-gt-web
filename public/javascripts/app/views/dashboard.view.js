@@ -32,6 +32,7 @@
         }
       });
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this._initInfiniteScrolling();
       AutoScrollFrameListView.prototype.initialize.call(this);
     },
 

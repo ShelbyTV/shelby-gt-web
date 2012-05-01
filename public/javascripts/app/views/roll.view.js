@@ -7,6 +7,11 @@
 
     className : AutoScrollFrameListView.prototype.className + ' roll',
 
+    initialize : function(){
+      this._initInfiniteScrolling();
+      AutoScrollFrameListView.prototype.initialize.call(this);
+    },
+
     options : _.extend({}, AutoScrollFrameListView.prototype.options, {
       collectionAttribute : 'frames',
       listItemView : 'FrameView',
