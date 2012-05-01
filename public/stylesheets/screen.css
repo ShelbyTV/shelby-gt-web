@@ -1429,9 +1429,10 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 4px;
   width: 17px;
+  z-index: 1000;
 }
 
-/* line 98, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 99, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1440,7 +1441,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 109, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 110, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1460,7 +1461,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 122, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 123, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
