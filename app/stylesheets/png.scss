@@ -140,14 +140,14 @@
 
 .roll-back{
 	@include background(
-		url('../images/assets/navarrow_left.png') no-repeat center center,
-		$softShelbyDarkGray
+		url('../images/assets/navarrow_left.png') no-repeat center center
+		$flatShelbyDarkGray
 	);
 }
 .roll-next{
 	@include background(
-		url('../images/assets/navarrow_right.png') no-repeat center center,
-		$softShelbyDarkGray
+		url('../images/assets/navarrow_right.png') no-repeat center center
+		$flatShelbyDarkGray
 	);
 }
 

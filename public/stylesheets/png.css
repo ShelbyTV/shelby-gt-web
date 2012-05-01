@@ -109,21 +109,11 @@
 }
 /* line 141, ../../app/stylesheets/png.scss */
 .no-svg .roll-back {
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_left.png") no-repeat center center, linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_left.png") no-repeat center center #303030;
 }
 /* line 147, ../../app/stylesheets/png.scss */
 .no-svg .roll-next {
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, -webkit-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, -moz-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, -o-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, -ms-linear-gradient(top, #333333, #303030);
-  background: url("../images/assets/navarrow_right.png") no-repeat center center, linear-gradient(top, #333333, #303030);
+  background: url("../images/assets/navarrow_right.png") no-repeat center center #303030;
 }
 /* line 157, ../../app/stylesheets/png.scss */
 .no-svg .video-score:before {

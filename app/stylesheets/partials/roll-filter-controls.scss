@@ -97,6 +97,8 @@
 
 .rolls-list-nav{
 	@extend .notype;
+//	background-color: $flatShelbyDarkGray;
+//	@include background($softShelbyDarkGray);
 	padding:$defaultMargin;
 	position:absolute;
 	right:0;
@@ -107,20 +109,21 @@
 .roll-back{
 	background-color: $flatShelbyDarkGray;
 	@include background(
-		url('../images/assets/navarrow_left.svg') no-repeat center center,
-		$softShelbyDarkGray
+		url('../images/assets/navarrow_left.svg') no-repeat center center
+		$flatShelbyDarkGray
 	);
 	@include backandforth;
 	@include border-radius($radius 0 0 $radius);
 	border:1px solid #222;
 	height:26px;
+	margin-right: -1px;
 	text-align:left;
 }
 .roll-next{
 	background-color: $flatShelbyDarkGray;
 	@include background(
-		url('../images/assets/navarrow_right.svg') no-repeat center center,
-		$softShelbyDarkGray
+		url('../images/assets/navarrow_right.svg') no-repeat center center
+		$flatShelbyDarkGray
 	);
 	@include backandforth;
 	@include border-radius(0 $radius $radius 0);
