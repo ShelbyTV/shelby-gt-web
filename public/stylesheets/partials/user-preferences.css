@@ -86,12 +86,12 @@
 /* line 82, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background: #4a4a4a;
-  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #b3b3b3), color-stop(100%, #4a4a4a));
-  background: -webkit-linear-gradient(bottom, #b3b3b3, #4a4a4a);
-  background: -moz-linear-gradient(bottom, #b3b3b3, #4a4a4a);
-  background: -o-linear-gradient(bottom, #b3b3b3, #4a4a4a);
-  background: -ms-linear-gradient(bottom, #b3b3b3, #4a4a4a);
-  background: linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5a5a5a), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(top, #5a5a5a, #4a4a4a);
+  background: -moz-linear-gradient(top, #5a5a5a, #4a4a4a);
+  background: -o-linear-gradient(top, #5a5a5a, #4a4a4a);
+  background: -ms-linear-gradient(top, #5a5a5a, #4a4a4a);
+  background: linear-gradient(top, #5a5a5a, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -108,10 +108,10 @@
   display: block;
   font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 5px;
+  padding: 1px 8px;
   text-shadow: 0px 1px 2px #222;
 }
 /* line 87, ../../../app/stylesheets/partials/user-preferences.scss */
