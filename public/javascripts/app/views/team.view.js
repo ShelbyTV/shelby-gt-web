@@ -1,7 +1,7 @@
 libs.shelbyGT.TeamView = Support.CompositeView.extend({
 
 	events : {
-		"click .js-about-team-employee" : "_scrollToElement"
+		"click .js-about-nav-item" : "_scrollToElement"
 	},
   
   template : function(obj){
@@ -12,6 +12,7 @@ libs.shelbyGT.TeamView = Support.CompositeView.extend({
     this.$el.html(this.template({user:this.model}));
   },
 
+//un-DRY: duplication in help.view.js
   _scrollToElement : function(e){
     e.preventDefault();
   	$('#js-guide-wrapper').scrollTo(
