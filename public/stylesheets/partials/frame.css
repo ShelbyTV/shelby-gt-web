@@ -420,7 +420,7 @@
 
 /* line 356, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335551765');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -428,7 +428,7 @@
 
 /* line 366, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335551765');
 }
 
 /* line 370, ../../../app/stylesheets/partials/frame.scss */
