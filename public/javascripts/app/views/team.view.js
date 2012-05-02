@@ -13,6 +13,7 @@ libs.shelbyGT.TeamView = Support.CompositeView.extend({
   },
 
   _scrollToElement : function(e){
+    e.preventDefault();
   	$('#js-guide-wrapper').scrollTo(
   			$(e.currentTarget.hash.replace('#','.')),
 	  			{
