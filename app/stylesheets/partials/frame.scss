@@ -10,7 +10,7 @@
 
 	li{
 		@include background(
-			url('../images/assets/noise.png') 
+//			url('../images/assets/noise.png') 
 			#494949
 		);
 		list-style-type:none;
@@ -18,14 +18,16 @@
 	
 		&:hover{
 			@include background(
-				url('../images/assets/noise.png') #555
+//				url('../images/assets/noise.png') 
+				#555
 			);
 		}
 	}
 
 	.active-frame{
 		@include background(
-			url('../images/assets/noise.png') #6d6d6d
+//			url('../images/assets/noise.png') 
+			#6d6d6d
 		);
 	}
 }
