@@ -38,7 +38,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     var self = this;
     var wrapper = $('#js-guide-wrapper');
     wrapper.scroll(function () {
-      console.log('scroll');
       if (wrapper[0].scrollHeight - wrapper.scrollTop() == wrapper.outerHeight()) {
         var coll = self.model.get('frames') || self.model.get('dashboard_entries');
         if (coll.length > 9){
