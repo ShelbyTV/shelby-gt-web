@@ -579,21 +579,22 @@ a:hover, a:visited, a:active {
   border: none;
   color: #efefef;
   line-height: 3.75;
+  padding-bottom: 0;
   text-align: left;
 }
-/* line 49, ../../app/stylesheets/partials/guide-header.scss */
+/* line 50, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
   text-decoration: none;
 }
-/* line 55, ../../app/stylesheets/partials/guide-header.scss */
+/* line 56, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   height: 42px;
   position: relative;
 }
-/* line 61, ../../app/stylesheets/partials/guide-header.scss */
+/* line 62, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   float: none;
   height: 2em;
@@ -601,7 +602,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 68, ../../app/stylesheets/partials/guide-header.scss */
+/* line 69, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li button, .settings li li span {
   height: 2em;
   line-height: 2;
@@ -609,7 +610,7 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 80, ../../app/stylesheets/partials/guide-header.scss */
+/* line 81, ../../app/stylesheets/partials/guide-header.scss */
 .top-level:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -623,7 +624,7 @@ a:hover, a:visited, a:active {
   width: 12px;
 }
 
-/* line 95, ../../app/stylesheets/partials/guide-header.scss */
+/* line 96, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -631,13 +632,13 @@ a:hover, a:visited, a:active {
   width: 70px;
   z-index: 2;
 }
-/* line 102, ../../app/stylesheets/partials/guide-header.scss */
+/* line 103, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 108, ../../app/stylesheets/partials/guide-header.scss */
+/* line 109, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -654,49 +655,49 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 122, ../../app/stylesheets/partials/guide-header.scss */
+/* line 123, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 128, ../../app/stylesheets/partials/guide-header.scss */
+/* line 129, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 133, ../../app/stylesheets/partials/guide-header.scss */
+/* line 134, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 135, ../../app/stylesheets/partials/guide-header.scss */
+/* line 136, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 138, ../../app/stylesheets/partials/guide-header.scss */
+/* line 139, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 147, ../../app/stylesheets/partials/guide-header.scss */
+/* line 148, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 149, ../../app/stylesheets/partials/guide-header.scss */
+/* line 150, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 156, ../../app/stylesheets/partials/guide-header.scss */
+/* line 157, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 163, ../../app/stylesheets/partials/guide-header.scss */
+/* line 164, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -710,7 +711,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 173, ../../app/stylesheets/partials/guide-header.scss */
+/* line 174, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -1348,33 +1349,27 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 36, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 32, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
-  height: 15px;
-  left: -14px;
+  height: 20px;
+  left: 0;
+  margin: 0 0 0 -20px;
+  overflow: hidden;
   position: relative;
-  width: 12px;
   top: -2px;
+  vertical-align: middle;
+  width: 20px;
 }
 /* line 43, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.current-roll-avatar span {
-  display: block;
-  height: 25px;
-  overflow: hidden;
-  position: relative;
-  width: 25px;
-}
-/* line 51, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.current-roll-avatar img {
-  overflow: hidden;
+.current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
   position: absolute;
-  top: 5px;
+  top: 0;
 }
 
-/* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 59, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1403,7 +1398,7 @@ a:hover, a:visited, a:active {
   top: 10px;
   width: auto;
 }
-/* line 81, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 73, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1433,7 +1428,7 @@ a:hover, a:visited, a:active {
   z-index: 1000;
 }
 
-/* line 99, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 91, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1442,7 +1437,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 110, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 102, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1462,7 +1457,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 123, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 115, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
