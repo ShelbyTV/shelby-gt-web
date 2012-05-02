@@ -13,8 +13,14 @@ libs.shelbyGT.TeamView = Support.CompositeView.extend({
   },
 
   _scrollToElement : function(e){
-  	$('#js-guide-wrapper').scrollTo($(e.currentTarget.hash.replace('#','.')),{duration: 200, axis: 'y', offset:{top: -10}});
-
+  	$('#js-guide-wrapper').scrollTo(
+  			$(e.currentTarget.hash.replace('#','.')),
+	  			{
+						duration : 200, 
+						axis : 'y', 
+						offset : { top : -10 }
+					}
+  			);
   }
 
 });
