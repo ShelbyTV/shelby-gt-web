@@ -24,6 +24,46 @@
       'public': true,
       thumbnail_url: null,
       title: "Hipster Sounds"
+    },
+    {
+      collaborative: false,
+      creator_id: "4da893daf6db247a90000049",
+      id: "4f8f7f08b415cc4762000172",
+      'public': true,
+      thumbnail_url: "http://graph.facebook.com/503357744/picture",
+      title: "soupsoup"
+    },
+    {
+      collaborative: false,
+      creator_id: "4d8ccf30f6db24591f000002",
+      id: "4f8f7f17b415cc4762000262",
+      'public': true,
+      thumbnail_url: "http://a2.twimg.com/profile_images/1249159520/Photo_on_2011-02-19_at_14.57__4_normal.jpg",
+      title: "kmaverick"
+    },
+    {
+      collaborative: false,
+      creator_id: "4ebd66b0ad9f11206f0008a5",
+      id: "4f8fac9ab415cc661401317b",
+      'public': true,
+      thumbnail_url: "http://a0.twimg.com/profile_images/1595049792/Pics_-_June_2010_017_normal.JPG",
+      title: "SeanMichaelMc"
+    },
+    {
+      collaborative: false,
+      creator_id: "4f90223bb415cc466a00091a",
+      id: "4f90223bb415cc466a00091c",
+      public: true,
+      thumbnail_url: "http://b.vimeocdn.com/ts/121/946/121946024_295.jpg",
+      title: "lindseyweber"
+    },
+    {
+      collaborative: false,
+      creator_id: "4f9d5d0a9a725b3d5f002c12",
+      id: "4f9d5d0a9a725b3d5f002c14",
+      public: true,
+      thumbnail_url: "http://a0.twimg.com/profile_images/1911354249/120216_GigaOM_0612_MathewI-crop2_normal.jpg",
+      title: "mathewi"
     }
   ];
 })();
