@@ -86,12 +86,12 @@
 /* line 82, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background: #4a4a4a;
-  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #343434), color-stop(100%, #4a4a4a));
-  background: -webkit-linear-gradient(bottom, #343434, #4a4a4a);
-  background: -moz-linear-gradient(bottom, #343434, #4a4a4a);
-  background: -o-linear-gradient(bottom, #343434, #4a4a4a);
-  background: -ms-linear-gradient(bottom, #343434, #4a4a4a);
-  background: linear-gradient(bottom, #343434, #4a4a4a);
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #b3b3b3), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -moz-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -o-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -ms-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: linear-gradient(bottom, #b3b3b3, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
