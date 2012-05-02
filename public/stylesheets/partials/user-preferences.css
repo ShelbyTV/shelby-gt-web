@@ -85,6 +85,13 @@
 }
 /* line 82, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
+  background: #4a4a4a;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #b3b3b3), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -moz-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -o-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -ms-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: linear-gradient(bottom, #b3b3b3, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -92,12 +99,6 @@
   -khtml-border-radius: 5px;
   border-radius: 5px;
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
-  background: -moz-linear-gradient(top, #4a4a4a, #343434);
-  background: -o-linear-gradient(top, #4a4a4a, #343434);
-  background: -ms-linear-gradient(top, #4a4a4a, #343434);
-  background: linear-gradient(top, #4a4a4a, #343434);
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -105,27 +106,25 @@
   border: 1px solid #222;
   color: #efefef;
   display: block;
-  float: left;
+  font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
   font-size: 13px;
-  height: 23px;
+  font-weight: 500;
   line-height: 1.5;
   margin: 3px;
   padding: 0 5px;
   text-shadow: 0px 1px 2px #222;
-  width: auto;
 }
-/* line 86, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 87, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
-  width: auto;
-  padding: 0 5px;
+  float: left;
 }
-/* line 91, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 93, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 101, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 103, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
@@ -136,7 +135,7 @@
   font-weight: 300;
   text-decoration: underline;
 }
-/* line 112, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 114, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -183,26 +182,26 @@
   padding: 0;
   text-decoration: none;
 }
-/* line 128, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 130, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 135, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 137, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 142, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 144, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 149, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 151, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-border-radius: 5px;
@@ -226,21 +225,21 @@
   width: 24px;
 }
 
-/* line 170, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 172, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   background-size: 28%;
   content: "\0020";
 }
 
-/* line 182, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 184, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
   background-size: 36%;
   content: "\0020";
 }
 
-/* line 196, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 198, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -248,7 +247,7 @@
   width: 100%;
   z-index: 1;
 }
-/* line 203, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 205, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -257,7 +256,7 @@
   left: 50%;
   width: 50%;
 }
-/* line 212, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 214, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -265,11 +264,11 @@
   right: 20px;
   top: -7px;
 }
-/* line 220, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 222, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 224, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 226, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -303,7 +302,7 @@
   position: relative;
   width: 60px;
 }
-/* line 238, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 240, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -329,7 +328,7 @@
   top: 0;
   width: 30px;
 }
-/* line 255, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 257, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -343,11 +342,11 @@
   position: relative;
   width: 60px;
 }
-/* line 262, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 264, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 266, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 268, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;

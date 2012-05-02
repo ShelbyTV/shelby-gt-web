@@ -139,6 +139,35 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 	color: #efefef;
 }
 
+
+//button primer, for consistency's sake
+
+$top-color: #343434 !default;
+$bottom-color: #4a4a4a !default;
+
+@mixin button-primer($bottom-color){
+	background: $bottom-color;
+	@include background(linear-gradient(bottom, adjust-lightness($top-color,50%), $bottom-color));
+	@include border-radius($radius);
+	@include buttonfont;
+	@include box-shadow(inset -1px 0px 1px 0px #444);
+	
+	border: 1px solid #222;
+	color: #efefef;
+	display: block;
+//	float:left;
+	font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font-size: $font-size;
+	font-weight: 500;
+//	height:23px;
+	line-height:1.5;
+	margin:3px;
+	padding:0 5px;
+	text-shadow:0px 1px 2px #222;
+//	width:auto;
+}
+
+
 @mixin button-basics($top,$bottom,$noise){
 	@include border-radius($radius);
 	@include buttonfont;

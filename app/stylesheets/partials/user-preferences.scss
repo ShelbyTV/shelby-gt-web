@@ -80,12 +80,14 @@
 	margin-top: $defaultMargin/2;
 
 	button{
-		@include form-button-small;
+//		@include form-button-small;
+		@include button-primer;
 	}
 	
 	.you-profile-cancel{
-		width:auto;
-		padding:0 5px;
+//		width:auto;
+//		padding:0 5px;
+		float: left;
 	}
 
 	#response-message{

@@ -558,41 +558,43 @@ a:hover, a:visited, a:active {
 
 /* line 26, ../../app/stylesheets/partials/guide-header.scss */
 .logo-header {
-  background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
+  background: url("../images/assets/shelbylogo.svg") center 11px no-repeat transparent;
+  background-size: 100%;
   height: 42px;
-  margin: 0 12px;
-  width: 115px;
+  margin: 0 9px;
+  width: 95px;
 }
 
-/* line 33, ../../app/stylesheets/partials/guide-header.scss */
+/* line 34, ../../app/stylesheets/partials/guide-header.scss */
 .settings {
   float: right;
   margin: 0;
   padding: 0;
   width: 50%;
 }
-/* line 39, ../../app/stylesheets/partials/guide-header.scss */
+/* line 40, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
-  line-height: 3.25;
+  line-height: 3.75;
+  padding-bottom: 0;
   text-align: left;
 }
-/* line 48, ../../app/stylesheets/partials/guide-header.scss */
+/* line 50, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
   text-decoration: none;
 }
-/* line 54, ../../app/stylesheets/partials/guide-header.scss */
+/* line 56, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   height: 42px;
   position: relative;
 }
-/* line 60, ../../app/stylesheets/partials/guide-header.scss */
+/* line 62, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   float: none;
   height: 2em;
@@ -600,7 +602,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 67, ../../app/stylesheets/partials/guide-header.scss */
+/* line 69, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li button, .settings li li span {
   height: 2em;
   line-height: 2;
@@ -608,7 +610,7 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 79, ../../app/stylesheets/partials/guide-header.scss */
+/* line 81, ../../app/stylesheets/partials/guide-header.scss */
 .top-level:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -622,7 +624,7 @@ a:hover, a:visited, a:active {
   width: 12px;
 }
 
-/* line 94, ../../app/stylesheets/partials/guide-header.scss */
+/* line 96, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -630,13 +632,13 @@ a:hover, a:visited, a:active {
   width: 70px;
   z-index: 2;
 }
-/* line 101, ../../app/stylesheets/partials/guide-header.scss */
+/* line 103, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 107, ../../app/stylesheets/partials/guide-header.scss */
+/* line 109, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -653,49 +655,49 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 121, ../../app/stylesheets/partials/guide-header.scss */
+/* line 123, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 127, ../../app/stylesheets/partials/guide-header.scss */
+/* line 129, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 132, ../../app/stylesheets/partials/guide-header.scss */
+/* line 134, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 134, ../../app/stylesheets/partials/guide-header.scss */
+/* line 136, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 137, ../../app/stylesheets/partials/guide-header.scss */
+/* line 139, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 146, ../../app/stylesheets/partials/guide-header.scss */
+/* line 148, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 148, ../../app/stylesheets/partials/guide-header.scss */
+/* line 150, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 155, ../../app/stylesheets/partials/guide-header.scss */
+/* line 157, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 162, ../../app/stylesheets/partials/guide-header.scss */
+/* line 164, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -709,7 +711,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 172, ../../app/stylesheets/partials/guide-header.scss */
+/* line 174, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -1347,33 +1349,27 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 36, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 32, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
-  height: 15px;
-  left: -14px;
+  height: 20px;
+  left: 0;
+  margin: 0 0 0 -20px;
+  overflow: hidden;
   position: relative;
-  width: 12px;
   top: -2px;
+  vertical-align: middle;
+  width: 20px;
 }
 /* line 43, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.current-roll-avatar span {
-  display: block;
-  height: 25px;
-  overflow: hidden;
-  position: relative;
-  width: 25px;
-}
-/* line 51, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.current-roll-avatar img {
-  overflow: hidden;
+.current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
   position: absolute;
-  top: 5px;
+  top: 0;
 }
 
-/* line 67, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 59, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1402,7 +1398,7 @@ a:hover, a:visited, a:active {
   top: 10px;
   width: auto;
 }
-/* line 81, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 73, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1432,7 +1428,7 @@ a:hover, a:visited, a:active {
   z-index: 1000;
 }
 
-/* line 99, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 91, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 10px;
   position: absolute;
@@ -1441,7 +1437,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 110, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 102, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1461,7 +1457,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 123, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 115, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
@@ -2755,6 +2751,13 @@ a:hover, a:visited, a:active {
 }
 /* line 82, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
+  background: #4a4a4a;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #b3b3b3), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -moz-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -o-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: -ms-linear-gradient(bottom, #b3b3b3, #4a4a4a);
+  background: linear-gradient(bottom, #b3b3b3, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -2762,12 +2765,6 @@ a:hover, a:visited, a:active {
   -khtml-border-radius: 5px;
   border-radius: 5px;
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
-  background: -moz-linear-gradient(top, #4a4a4a, #343434);
-  background: -o-linear-gradient(top, #4a4a4a, #343434);
-  background: -ms-linear-gradient(top, #4a4a4a, #343434);
-  background: linear-gradient(top, #4a4a4a, #343434);
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -2775,27 +2772,25 @@ a:hover, a:visited, a:active {
   border: 1px solid #222;
   color: #efefef;
   display: block;
-  float: left;
+  font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
   font-size: 13px;
-  height: 23px;
+  font-weight: 500;
   line-height: 1.5;
   margin: 3px;
   padding: 0 5px;
   text-shadow: 0px 1px 2px #222;
-  width: auto;
 }
-/* line 86, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 87, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
-  width: auto;
-  padding: 0 5px;
+  float: left;
 }
-/* line 91, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 93, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 101, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 103, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
@@ -2806,7 +2801,7 @@ a:hover, a:visited, a:active {
   font-weight: 300;
   text-decoration: underline;
 }
-/* line 112, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 114, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2853,26 +2848,26 @@ a:hover, a:visited, a:active {
   padding: 0;
   text-decoration: none;
 }
-/* line 128, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 130, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 135, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 137, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 142, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 144, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 149, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 151, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-border-radius: 5px;
@@ -2896,21 +2891,21 @@ a:hover, a:visited, a:active {
   width: 24px;
 }
 
-/* line 170, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 172, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   background-size: 28%;
   content: "\0020";
 }
 
-/* line 182, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 184, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
   background-size: 36%;
   content: "\0020";
 }
 
-/* line 196, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 198, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -2918,7 +2913,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 1;
 }
-/* line 203, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 205, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -2927,7 +2922,7 @@ a:hover, a:visited, a:active {
   left: 50%;
   width: 50%;
 }
-/* line 212, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 214, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -2935,11 +2930,11 @@ a:hover, a:visited, a:active {
   right: 20px;
   top: -7px;
 }
-/* line 220, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 222, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 224, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 226, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2973,7 +2968,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 238, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 240, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -2999,7 +2994,7 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 255, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 257, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3013,11 +3008,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 262, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 264, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 266, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 268, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -3189,7 +3184,7 @@ a:hover, a:visited, a:active {
 
 /* line 148, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
-  background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
+  background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }
 
 /* Welcome to Compass.
