@@ -559,19 +559,20 @@ a:hover, a:visited, a:active {
 /* line 26, ../../app/stylesheets/partials/guide-header.scss */
 .logo-header {
   background: url("../images/assets/shelbylogo.svg") center 8px no-repeat transparent;
+  background-size: 100%;
   height: 42px;
   margin: 0 12px;
   width: 115px;
 }
 
-/* line 33, ../../app/stylesheets/partials/guide-header.scss */
+/* line 34, ../../app/stylesheets/partials/guide-header.scss */
 .settings {
   float: right;
   margin: 0;
   padding: 0;
   width: 50%;
 }
-/* line 39, ../../app/stylesheets/partials/guide-header.scss */
+/* line 40, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
   background: transparent;
@@ -580,19 +581,19 @@ a:hover, a:visited, a:active {
   line-height: 3.5;
   text-align: left;
 }
-/* line 48, ../../app/stylesheets/partials/guide-header.scss */
+/* line 49, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
   text-decoration: none;
 }
-/* line 54, ../../app/stylesheets/partials/guide-header.scss */
+/* line 55, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   height: 42px;
   position: relative;
 }
-/* line 60, ../../app/stylesheets/partials/guide-header.scss */
+/* line 61, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   float: none;
   height: 2em;
@@ -600,7 +601,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 67, ../../app/stylesheets/partials/guide-header.scss */
+/* line 68, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li button, .settings li li span {
   height: 2em;
   line-height: 2;
@@ -608,7 +609,7 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 79, ../../app/stylesheets/partials/guide-header.scss */
+/* line 80, ../../app/stylesheets/partials/guide-header.scss */
 .top-level:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -622,7 +623,7 @@ a:hover, a:visited, a:active {
   width: 12px;
 }
 
-/* line 94, ../../app/stylesheets/partials/guide-header.scss */
+/* line 95, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -630,13 +631,13 @@ a:hover, a:visited, a:active {
   width: 70px;
   z-index: 2;
 }
-/* line 101, ../../app/stylesheets/partials/guide-header.scss */
+/* line 102, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 107, ../../app/stylesheets/partials/guide-header.scss */
+/* line 108, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -653,49 +654,49 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 121, ../../app/stylesheets/partials/guide-header.scss */
+/* line 122, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 127, ../../app/stylesheets/partials/guide-header.scss */
+/* line 128, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 132, ../../app/stylesheets/partials/guide-header.scss */
+/* line 133, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 134, ../../app/stylesheets/partials/guide-header.scss */
+/* line 135, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 137, ../../app/stylesheets/partials/guide-header.scss */
+/* line 138, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 146, ../../app/stylesheets/partials/guide-header.scss */
+/* line 147, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 148, ../../app/stylesheets/partials/guide-header.scss */
+/* line 149, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 155, ../../app/stylesheets/partials/guide-header.scss */
+/* line 156, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 162, ../../app/stylesheets/partials/guide-header.scss */
+/* line 163, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -709,7 +710,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 172, ../../app/stylesheets/partials/guide-header.scss */
+/* line 173, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -3188,7 +3189,7 @@ a:hover, a:visited, a:active {
 
 /* line 148, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
-  background: url("../images/team/reece_portrait.gif") no-repeat center center transparent;
+  background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }
 
 /* Welcome to Compass.
