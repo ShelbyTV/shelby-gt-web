@@ -16,7 +16,8 @@
 		padding:$defaultMargin;
 		&:hover{
 			@include background(
-				url('../images/assets/noise.png') #6d6d6d
+//				url('../images/assets/noise.png') 
+					#6d6d6d
 			);
 		}
 	}

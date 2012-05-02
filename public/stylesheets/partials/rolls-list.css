@@ -20,9 +20,9 @@
 }
 /* line 17, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
-  background: url("../images/assets/noise.png") #6d6d6d;
+  background: #6d6d6d;
 }
-/* line 23, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 24, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid #222;
   padding: 0;
