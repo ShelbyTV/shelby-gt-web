@@ -65,27 +65,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 		// otherwise just show the roll view
 		if (shelby.userSignedIn() && defaults['gt_ref_roll']){
 			shelby.models.user.addUserToRoll(defaults['gt_ref_roll'], function(){
-				self._setupRollView(rollId, null, {
-		      data: {
-		        since_id : frameId,
-		        include_children : true
-		      },
-		      onRollFetch: function(rollModel, response){
-		        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
-		      }
-		    });
+				$('.rolls-add').text('Leave')['addClass']('rolls-leave');
+				self._setupRollViewWithCallback(rollId, frameId, options);
 			});
 		}
 		else {
-			self._setupRollView(rollId, null, {
-	      data: {
-	        since_id : frameId,
-	        include_children : true
-	      },
-	      onRollFetch: function(rollModel, response){
-	        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
-	      }
-	    });
+			self._setupRollViewWithCallback(rollId, frameId, options);
 		}
   },
 
@@ -423,6 +408,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._hideSpinnerAfter( rollModel.fetch(fetchOptions) );
   },
   
+	_setupRollViewWithCallback : function(rollId, frameId, options){
+		var self = this;
+		this._setupRollView(rollId, null, {
+      data: {
+        since_id : frameId,
+        include_children : true
+      },
+      onRollFetch: function(rollModel, response){
+        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+      }
+    });	
+	},
+	
   //---
   //MISC HELPERS
   //---
