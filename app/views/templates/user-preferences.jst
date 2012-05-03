@@ -108,6 +108,13 @@
 					<input id="you-preferences-email-rerolls" name="you-preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> >
 					<span></span>
 				</li>
+				<li class="clearfix">
+					<label for="you-preferences-email-joinrolls">
+						Roll activity
+					</label>
+					<input id="you-preferences-email-joinrolls" name="you-preferences-email-joinrolls" type="checkbox" <% if (user.get('preferences').roll_activity_notifications === true){ %> checked <% }%> >
+					<span></span>
+				</li>
 			</ul>
 		</fieldset>
 	</form>	
