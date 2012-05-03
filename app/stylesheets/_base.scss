@@ -54,6 +54,7 @@ $softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
 
 $flatShelbyBlue: #007fb6;
 $softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
+
 $shelbyBlueHighlight: #79cae7;
 $softShelbyBlueHighlight: adjust-lightness($flatShelbyBlue,5%);
 
@@ -69,7 +70,8 @@ $flatShelbyYellow: #d5cd39;
 $softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
 $softShelbyYellowHighlight: #ddd756;
 
-$softShelbyGray: linear-gradient(top, #7b7b7b, #575757);
+$flatShelbyGray: #575757;
+$softShelbyGray: linear-gradient(top, #7b7b7b, $flatShelbyGray);
 
 $flatShelbyGrayButton: #343434;
 $softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
@@ -89,8 +91,10 @@ $softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);
 
 $twitterBlue: #00a2d1;
 $softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
+
 $facebookBlue: #013e80;
 $softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
+
 $tumblrBlue: #2f445b;
 $softTumblrBlue: linear-gradient(top, #426180, $tumblrBlue);
 
@@ -101,7 +105,8 @@ $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
 $softNetworksUnselected: linear-gradient(top, #646464, #474747);
 
 @mixin softgradient {
-	@include background-image($softLinearGradient);
+	background-color: $gradientDark;
+	@include background($softLinearGradient);
 }
 
 //dark gradient styles
@@ -152,7 +157,8 @@ $color: #4a4a4a !default;
 	@include buttonfont;
 	@include box-shadow(inset -1px 0px 1px 0px #444);
 	
-	border: 1px solid adjust-lightness($color,-10%);
+//	border: 1px solid adjust-lightness($color,-20%);
+	border: 1px solid #222;
 	color: #efefef;
 	display: block;
 //	float:left;

@@ -10,6 +10,7 @@
 }
 .load-more-button{
 	@include rolls-menu-button;
+	background-color: $flatShelbyGray;
 	@include background($softShelbyGray);
 	@include box-shadow(inset -1px 0px 1px 0px #666);
 	
