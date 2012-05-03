@@ -21,7 +21,7 @@
       if (method == 'update' || method == 'delete') {
         method = 'create';
       }
-      return Backbone.sync(method, model, options);
+      return libs.shelbyGT.ShelbyBaseModel.prototype.sync.call(this, method, model, options);
     },
     networkEnabled : function(network){
       var result = _.include(this.get('destination'), network);
