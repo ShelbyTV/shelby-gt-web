@@ -53,7 +53,7 @@
       collaborative: false,
       creator_id: "4f90223bb415cc466a00091a",
       id: "4f90223bb415cc466a00091c",
-      public: true,
+      'public': true,
       thumbnail_url: "http://b.vimeocdn.com/ts/121/946/121946024_295.jpg",
       title: "lindseyweber"
     },
@@ -61,7 +61,7 @@
       collaborative: false,
       creator_id: "4f9d5d0a9a725b3d5f002c12",
       id: "4f9d5d0a9a725b3d5f002c14",
-      public: true,
+      'public': true,
       thumbnail_url: "http://a0.twimg.com/profile_images/1911354249/120216_GigaOM_0612_MathewI-crop2_normal.jpg",
       title: "mathewi"
     }
