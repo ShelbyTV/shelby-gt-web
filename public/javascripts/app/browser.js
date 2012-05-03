@@ -74,6 +74,15 @@ var Browser = {
 	
 	supportsAuthPopup: function(){
 		return !(this.isBoxee() || this.isMobile() || this.isIframe());
+	},
+	
+	_corsSupport: null,
+	
+	supportsCORS: function(){
+	  if( this._corsSupport == null ){
+	    this._corsSupport = ('withCredentials' in new XMLHttpRequest());
+    }
+	  return this._corsSupport;
 	}
 	
 };
