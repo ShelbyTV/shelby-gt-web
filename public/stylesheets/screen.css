@@ -3091,98 +3091,99 @@ a:hover, a:visited, a:active {
 /* line 69, ../../app/stylesheets/partials/team.scss */
 .about-nav li, .about-definition-peripherals li {
   list-style-type: none;
+  margin-bottom: .5em;
 }
 
-/* line 75, ../../app/stylesheets/partials/team.scss */
+/* line 76, ../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 79, ../../app/stylesheets/partials/team.scss */
+/* line 80, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 82, ../../app/stylesheets/partials/team.scss */
+/* line 83, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 88, ../../app/stylesheets/partials/team.scss */
+/* line 89, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
   line-height: 1.5;
   list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 94, ../../app/stylesheets/partials/team.scss */
+/* line 95, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   width: auto;
 }
 
-/* line 101, ../../app/stylesheets/partials/team.scss */
+/* line 102, ../../app/stylesheets/partials/team.scss */
 .about-external-twitter a {
   background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 110, ../../app/stylesheets/partials/team.scss */
+/* line 111, ../../app/stylesheets/partials/team.scss */
 .about-external-link a {
   background: url("../images/assets/team_web.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 118, ../../app/stylesheets/partials/team.scss */
+/* line 119, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 121, ../../app/stylesheets/partials/team.scss */
+/* line 122, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 124, ../../app/stylesheets/partials/team.scss */
+/* line 125, ../../app/stylesheets/partials/team.scss */
 .sztul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 127, ../../app/stylesheets/partials/team.scss */
+/* line 128, ../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 130, ../../app/stylesheets/partials/team.scss */
+/* line 131, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 133, ../../app/stylesheets/partials/team.scss */
+/* line 134, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 136, ../../app/stylesheets/partials/team.scss */
+/* line 137, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 139, ../../app/stylesheets/partials/team.scss */
+/* line 140, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 142, ../../app/stylesheets/partials/team.scss */
+/* line 143, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 145, ../../app/stylesheets/partials/team.scss */
+/* line 146, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 148, ../../app/stylesheets/partials/team.scss */
+/* line 149, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }
