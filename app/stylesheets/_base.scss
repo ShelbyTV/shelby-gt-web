@@ -102,7 +102,8 @@ $softTumblrBlue: linear-gradient(top, #426180, $tumblrBlue);
 $flatSwitchGray: #fefefe;
 $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
 
-$softNetworksUnselected: linear-gradient(top, #646464, #474747);
+$flatNetworksUnselected: #474747;
+$softNetworksUnselected: linear-gradient(top, #646464, $flatNetworksUnselected);
 
 @mixin softgradient {
 	background-color: $gradientDark;

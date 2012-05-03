@@ -110,11 +110,13 @@
 //rolls
 
 .networks-twitter {
+	background: $flatNetworksUnselected;
 	@include background(
 		url('../images/assets/rolls_share_twitter_off.png') no-repeat center center,
 		$softNetworksUnselected
 	);
 	&.active{
+		background: $twitterBlue;
 		@include background(
 			url('../images/assets/rolls_share_twitter_on.png') no-repeat center center,
 			$softTwitterBlue
@@ -123,12 +125,14 @@
 }
 
 .networks-facebook{
+	background: $flatNetworksUnselected;
 	@include background(
 		url('../images/assets/rolls_share_facebook_off.png') no-repeat center center,
 			$softNetworksUnselected
 		);
 	
 	&.active{
+		background: $facebookBlue;
 		@include background(
 			url('../images/assets/rolls_share_facebook_on.png') no-repeat center center,
 			$softFacebookBlue
@@ -153,6 +157,7 @@
 
 //frame
 
+.video-score{
 .video-score{
 	&:before{
 		content: url('../images/assets/score.png');
