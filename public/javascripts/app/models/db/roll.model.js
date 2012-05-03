@@ -25,7 +25,7 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
       options.url = url;
     }
 
-    return Backbone.sync(method, model, options);
+    return libs.shelbyGT.ShelbyBaseModel.prototype.sync.call(this, method, model, options);
   },
 
   joinRoll : function(onSuccess) {
