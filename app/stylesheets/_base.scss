@@ -143,16 +143,16 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 //button primer, for consistency's sake
 
 $top-color: #343434 !default;
-$bottom-color: #4a4a4a !default;
+$color: #4a4a4a !default;
 
-@mixin button-primer($bottom-color){
-	background: $bottom-color;
-	@include background(linear-gradient(top, adjust-lightness($top-color,15%), $bottom-color));
+@mixin button-primer($color){
+	background: $color;
+	@include background(linear-gradient(top, adjust-lightness($color,5%), $color));
 	@include border-radius($radius);
 	@include buttonfont;
 	@include box-shadow(inset -1px 0px 1px 0px #444);
 	
-	border: 1px solid #222;
+	border: 1px solid adjust-lightness($color,-10%);
 	color: #efefef;
 	display: block;
 //	float:left;

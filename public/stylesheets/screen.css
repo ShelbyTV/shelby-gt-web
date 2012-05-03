@@ -2752,12 +2752,12 @@ a:hover, a:visited, a:active {
 /* line 82, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background: #4a4a4a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5a5a5a), color-stop(100%, #4a4a4a));
-  background: -webkit-linear-gradient(top, #5a5a5a, #4a4a4a);
-  background: -moz-linear-gradient(top, #5a5a5a, #4a4a4a);
-  background: -o-linear-gradient(top, #5a5a5a, #4a4a4a);
-  background: -ms-linear-gradient(top, #5a5a5a, #4a4a4a);
-  background: linear-gradient(top, #5a5a5a, #4a4a4a);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(top, #575757, #4a4a4a);
+  background: -moz-linear-gradient(top, #575757, #4a4a4a);
+  background: -o-linear-gradient(top, #575757, #4a4a4a);
+  background: -ms-linear-gradient(top, #575757, #4a4a4a);
+  background: linear-gradient(top, #575757, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -2769,7 +2769,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
   box-shadow: inset -1px 0px 1px 0px #444444;
-  border: 1px solid #222;
+  border: 1px solid #313131;
   color: #efefef;
   display: block;
   font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
