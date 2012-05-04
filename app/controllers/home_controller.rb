@@ -52,6 +52,7 @@ class HomeController < ApplicationController
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
   def signout
+    flash[:error] = params[:error]
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 

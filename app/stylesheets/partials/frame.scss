@@ -77,8 +77,6 @@
 		width: auto; 
 }
 
-
-
 .video-card-header{
 	@include softgradient;
 	@include border-radius($radiusHeader);
@@ -163,6 +161,7 @@
 
 	.roll-frame{
 		@include roundies;
+		background-color: $flatShelbyBlue;
 		@include background(
 			url('../images/assets/noise.png'),
 			$softShelbyBlue
@@ -195,6 +194,7 @@
 	}
 	.save-frame{
 		@extend .roll-frame;
+		background-color: $flatShelbyPurple;
 		@include background(
 			url('../images/assets/noise.png'),
 			$softShelbyPurple
@@ -217,6 +217,7 @@
 	.remove-frame{
 		@extend .save-frame;
 		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
+		background-color: $flatShelbyRed;
 		@include background(
 			url('../images/assets/noise.png'),
 			$softShelbyRed

@@ -51,17 +51,21 @@
 }
 
 .rolling-main-back{
-	@include form-button-small;
+//	@include form-button-small;
+		@include button-primer;
+		float: left;
 }
 
 .rolling-main-done{
-	@extend .rolling-main-back;
-	@include background(
-		$softShelbyBlue
-	);
-	@include box-shadow(
-		inset -1px 0px 1px 0px #549537
-	);
+//	@extend .rolling-main-back;
+	@include button-primer($flatShelbyBlue);
+//	background-color: $flatShelbyBlue;
+//	@include background(
+//		$softShelbyBlue
+//	);
+//	@include box-shadow(
+//		inset -1px 0px 1px 0px #549537
+//	);
 
 	display:none;
 	float:right;
@@ -73,13 +77,13 @@
 	display:block;
 	float:right;
 	padding-left:0;
-	padding-top:1px;
-	padding-right:8px;
+//	padding-top:1px;
+//	padding-right:8px;
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
 		background-size:72%;
-		border-right:1px solid #222;
+		border-right:1px solid adjust-lightness($flatShelbyBlue,-5%);
 		content:"\0020";
 		float:left;
 		margin:1px 9px 1px 7px;

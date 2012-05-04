@@ -1,19 +1,26 @@
 libs.shelbyGT.Ajax = {
   // default error handling for ajax calls in the Shelby app
   defaultOnError : function(event, jqXHR, ajaxSettings, thrownError){
-    if (jqXHR.status == 401) {
-      // TODO: authenticate and redirect
-			$('#temp-signin').show();
-      console.error("You're not authenticated with the Shelby API, we should redirect and authenticate you.");
-    } else {
-      // TODO: nicer looking notification of generic error message
-      console.error("Something went wrong. Shelby apologizes.");
+    switch(jqXHR.status){
+      case 401:
+        //user is not authenticated, tried to take action requiring auth
+        document.location = "/signout?error=401";
+        break;
+      case 403:
+        //TODO: nicer looking notification of authorization error message
+        alert("You are not authorized to do that");
+        break;
+      default:
+        // TODO: nicer looking notification of generic error message
+        alert("Something went wrong. Shelby apologizes.");
     }
   },
+  
   validAnonUrlStubs : [
     '/user/',
     '/roll/'
   ],
+  
   isAnonUrlValid : function(opts){
     var valid = false;
     if (opts.type != 'GET') return valid;

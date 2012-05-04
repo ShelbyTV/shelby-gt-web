@@ -64,7 +64,14 @@
 }
 
 /* line 53, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back, .rolling-main-done, .rolling-main-social {
+.rolling-main-back {
+  background: #4a4a4a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
+  background: -webkit-linear-gradient(top, #575757, #4a4a4a);
+  background: -moz-linear-gradient(top, #575757, #4a4a4a);
+  background: -o-linear-gradient(top, #575757, #4a4a4a);
+  background: -ms-linear-gradient(top, #575757, #4a4a4a);
+  background: linear-gradient(top, #575757, #4a4a4a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -72,12 +79,6 @@
   -khtml-border-radius: 5px;
   border-radius: 5px;
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
-  background: -moz-linear-gradient(top, #4a4a4a, #343434);
-  background: -o-linear-gradient(top, #4a4a4a, #343434);
-  background: -ms-linear-gradient(top, #4a4a4a, #343434);
-  background: linear-gradient(top, #4a4a4a, #343434);
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -85,45 +86,61 @@
   border: 1px solid #222;
   color: #efefef;
   display: block;
-  float: left;
+  font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
   font-size: 13px;
-  height: 23px;
+  font-weight: 300;
   line-height: 1.5;
   margin: 3px;
-  padding: 0 5px;
+  padding: 1px 8px;
   text-shadow: 0px 1px 2px #222;
-  width: auto;
+  float: left;
 }
 
-/* line 57, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 59, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #549537;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #549537;
-  -o-box-shadow: inset -1px 0px 1px 0px #549537;
-  box-shadow: inset -1px 0px 1px 0px #549537;
+  background: #007fb6;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0091d0), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #0091d0, #007fb6);
+  background: -moz-linear-gradient(top, #0091d0, #007fb6);
+  background: -o-linear-gradient(top, #0091d0, #007fb6);
+  background: -ms-linear-gradient(top, #0091d0, #007fb6);
+  background: linear-gradient(top, #0091d0, #007fb6);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
+  -o-box-shadow: inset -1px 0px 1px 0px #444444;
+  box-shadow: inset -1px 0px 1px 0px #444444;
+  border: 1px solid #222;
+  color: #efefef;
+  display: block;
+  font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 3px;
+  padding: 1px 8px;
+  text-shadow: 0px 1px 2px #222;
   display: none;
   float: right;
 }
 
-/* line 70, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 74, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   display: block;
   float: right;
   padding-left: 0;
-  padding-top: 1px;
-  padding-right: 8px;
 }
-/* line 79, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 83, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
-  border-right: 1px solid #222;
+  border-right: 1px solid #006d9d;
   content: "\0020";
   float: left;
   margin: 1px 9px 1px 7px;
@@ -131,7 +148,7 @@
   height: 17px;
 }
 
-/* line 91, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 95, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -160,7 +177,7 @@
   height: 100%;
 }
 
-/* line 111, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 115, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

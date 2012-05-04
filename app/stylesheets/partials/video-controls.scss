@@ -25,6 +25,7 @@
 }
 
 .video-player-controls{
+	background-color: $flatShelbyVideoPlayer;
 	@include background( $softShelbyVideoPlayer );
 	@include border-radius($radius);
 //	@include box-shadow(0 0 8px 2px black);

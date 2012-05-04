@@ -64,7 +64,7 @@
 		font-size:13px;
 		height:40px;
 		line-height:3;
-		padding-left:$defaultMargin;
+//		padding-left:$defaultMargin;
 		padding-right:$defaultMargin;
 		overflow:hidden;
 		text-overflow:ellipsis;
@@ -72,9 +72,12 @@
 
 		&.roll-type-public{
 			&:before{
-				content:url('../images/assets/rolls_public.svg');
+				content: "\0020";
+				background: url('../images/assets/rolls_public.svg') no-repeat center center transparent;
 				float:left;
-				margin: 4px 10px;
+				height: 21px;
+				margin: 8px;
+				width: 20px;
 			}
 		}
 
@@ -82,7 +85,7 @@
 			@extend .roll-type-public;
 			
 			&:before{
-				content:url('../images/assets/rolls_private.svg');
+				background-image:url('../images/assets/rolls_private.svg');
 			}
 		}
 

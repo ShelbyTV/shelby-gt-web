@@ -119,6 +119,7 @@
 
 .networks-twitter{
 	@extend .notype;
+	background: $flatNetworksUnselected;
 	@include background(
 		url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center,
 		$softNetworksUnselected
@@ -132,6 +133,7 @@
 	width:34px;
 
 	&.active{
+		background: $twitterBlue;
 		@include background(
 			url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center,
 			$softTwitterBlue
@@ -151,6 +153,7 @@
 		@include box-shadow(inset 0px 1px 1px 0px #777);
 	
 	&.active{
+		background: $facebookBlue;
 		@include background(
 			url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
 			$softFacebookBlue
