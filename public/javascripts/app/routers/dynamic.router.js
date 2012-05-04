@@ -178,7 +178,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (!options) {
       options = defaults;
     } else {			
-			// pull potential url query params into a _params object
+			// pull potential url query params into the defaults object
 			_.each(options.split("&"), function(o){ 
 				var _p = o.split("=");
 				defaults.query_params[_p[0]] = _p[1];
