@@ -34,7 +34,13 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   className : 'frame',
 
   template : function(obj){
-    return JST['frame'](obj);
+		if (shelby.upvote_test){
+			// render new template or set class in template ??
+		}
+		else if (shelby.comment_test){
+			// render new template or set class in template ??
+		}
+		else { return JST['frame'](obj); }
   },
 
   initialize : function() {
@@ -221,7 +227,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       var distance = minHeight - this.$('article').height();
       if (distance > 0) {
-        var $user = this.$('.user')
+        var $user = this.$('.user');
         var targetHeight = $user.height() + distance;
         $user.animate({height:targetHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
