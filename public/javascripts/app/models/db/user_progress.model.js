@@ -16,7 +16,6 @@
 
     // display states
     _onDisplayStateChange : function(guide, displayState){
-      console.log('_onDisplayStateChange', displayState+'Nav');
       this.set(displayState+'Nav', true);
     },
     

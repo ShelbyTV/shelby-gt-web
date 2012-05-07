@@ -26,7 +26,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _educationMsgMap : {
-    'rollList' : 'These are all your rolls and stuff!'
+    'rollList' : 'These are all your rolls and stuff!',
+    'dashboard' : 'These are all your dashboard entries and stuff!',
+    'standardRoll' : 'This is a roll -- woweewawa!',
+    'watchLaterRoll' : 'I fucking hate beards'
   },
 
   _renderEducation : function(){
