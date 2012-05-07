@@ -52,6 +52,7 @@ javascripts:
     - public/javascripts/app/views/frame_rolling_share.view.js
     - public/javascripts/app/browser.js
     - public/javascripts/app/utils/display_state.utils.js
+    - public/javascripts/app/utils/video_playback_events.utils.js
     - public/javascripts/app/models/db/user.model.js
     # shelby backbone app - all other assets
     - public/javascripts/app/config/*.js

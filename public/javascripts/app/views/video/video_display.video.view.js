@@ -35,6 +35,9 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     _.each(this._playerViews, function(playerView){
       playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
     }, this);
+    
+    //playback event tracking
+    libs.utils.VideoPlaybackEvents.initialize(this._playbackState, this.model, this._userDesires);
   },
 
 	_cleanup : function() {
@@ -136,7 +139,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
   //   reporting loaded isn't our current expected player, we ask it to leave() again.
   _preventPlayerBootstrapGlitch: function(playerState, val){
     if( this._curView !== playerState.get('playerView') ){
-      playerState.get('playerView').leave()
+      playerState.get('playerView').leave();
     }
   }
 });
