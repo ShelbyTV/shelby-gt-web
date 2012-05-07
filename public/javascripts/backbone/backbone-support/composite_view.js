@@ -29,6 +29,11 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
     this.$(selector).before(view.el);
   },
 
+  prependChild : function(view){
+    this.renderChild(view);
+    this.$el.prepend(view.el);
+  },
+
   appendChildInto: function(view, selector) {
     this.renderChild(view);
     this.$(selector).append(view.el);

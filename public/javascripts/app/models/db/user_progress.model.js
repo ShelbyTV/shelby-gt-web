@@ -2,22 +2,32 @@
 
   libs.shelbyGT.UserProgressModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
+    defaults : {
+      'rollEducated' : false,
+      'rollListEducated' : false,
+      'streamEducated' : false,
+      'savesEducated' : false
+    },
+
     initialize : function(){
-      console.log('init user prog');
       shelby.models.guide.bind('change:displayState', this._onDisplayStateChange, this);
       shelby.models.guide.bind('change:activeFrameRollingView', this._onActiveFrameRollingViewChange, this);
-      this.bind('change', function(){
-        console.log('set');
-      });
     },
 
+    // display states
     _onDisplayStateChange : function(guide, displayState){
-      this.set(displayState+'_nav', true);
+      console.log('_onDisplayStateChange', displayState+'Nav');
+      this.set(displayState+'Nav', true);
     },
-
+    
+    // rolling initialized
     _onActiveFrameRollingViewChange : function(guide, frameRollingView){
-      this.set('rollFrame_init', true);
+      console.log('_onActiveFrameRollingViewChange');
+      this.set('rollFrameInit', true);
     }
+
+    // rolling complete
+
 
   });
 

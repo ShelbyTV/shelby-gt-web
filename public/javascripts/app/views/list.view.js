@@ -16,6 +16,30 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
     this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
+    if (!this._userHasBeenEducated()){
+      this._renderEducation();
+    }
+  },
+
+  _userHasBeenEducated : function(){
+    return shelby.models.userProgress.get(shelby.models.guide.get('displayState')+'Educated');
+  },
+
+  _educationMsgMap : {
+    'rollList' : 'These are all your rolls and stuff!'
+  },
+
+  _renderEducation : function(){
+    var msg = this._educationMsgMap[shelby.models.guide.get('displayState')];
+    if (msg) {
+      var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState'), msg:msg});
+      this.prependChild(educationView);
+    }
+  },
+
+
+  _displayListEducationView : function(){
+    console.log('_displayListEducationView', arguments);
   },
 
   _cleanup : function(){
