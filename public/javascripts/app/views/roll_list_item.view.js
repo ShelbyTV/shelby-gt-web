@@ -13,13 +13,14 @@ libs.shelbyGT.RollItemView = ListItemView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change', this.render, this);
-    this.model.bind('destroy', this.remove, this);
+    this.render();
+    /*this.model.bind('change', this.render, this);
+    this.model.bind('destroy', this.remove, this);*/
   },
 
   _cleanup : function(){
-    this.model.unbind('change', this.render, this);
-    this.model.unbind('destroy', this.remove, this);
+    /*this.model.unbind('change', this.render, this);
+    this.model.unbind('destroy', this.remove, this);*/
   },
 
   render : function(){

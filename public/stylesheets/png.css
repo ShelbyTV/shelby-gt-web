@@ -24,15 +24,24 @@
 .no-svg .top-level:after {
   background: url("../images/assets/carrot.png") no-repeat center center transparent;
 }
+<<<<<<< HEAD
 /* line 43, ../../app/stylesheets/png.scss */
 .no-svg .video-guide .stream {
   background: url("../images/assets/stream.png") no-repeat center center;
 }
 /* line 48, ../../app/stylesheets/png.scss */
+=======
+/* line 42, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .stream {
+  background: url("../images/assets/stream.png") no-repeat center center;
+}
+/* line 47, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.png") no-repeat center 1px #3f3f3f;
   color: #63BD57;
 }
+<<<<<<< HEAD
 /* line 53, ../../app/stylesheets/png.scss */
 .no-svg .video-guide .stream.active-tab:hover {
   background: url("../images/assets/stream_on.png") no-repeat center center #3f3f3f;
@@ -42,10 +51,22 @@
   background: url("../images/assets/rolls.png") no-repeat center center;
 }
 /* line 66, ../../app/stylesheets/png.scss */
+=======
+/* line 52, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .stream.active-tab:hover {
+  background: url("../images/assets/stream_on.png") no-repeat center center #3f3f3f;
+}
+/* line 60, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .rolls {
+  background: url("../images/assets/rolls.png") no-repeat center center;
+}
+/* line 65, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.png") no-repeat center 1px;
   color: #0092C1;
 }
+<<<<<<< HEAD
 /* line 71, ../../app/stylesheets/png.scss */
 .no-svg .video-guide .rolls.active-tab:hover {
   background: url("../images/assets/rolls_on.png") no-repeat center center #3f3f3f;
@@ -55,10 +76,22 @@
   background: url("../images/assets/saves.png") no-repeat center center;
 }
 /* line 83, ../../app/stylesheets/png.scss */
+=======
+/* line 70, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .rolls.active-tab:hover {
+  background: url("../images/assets/rolls_on.png") no-repeat center center #3f3f3f;
+}
+/* line 77, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .saves {
+  background: url("../images/assets/saves.png") no-repeat center center;
+}
+/* line 82, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.png") no-repeat center 1px;
   color: #9863a2;
 }
+<<<<<<< HEAD
 /* line 88, ../../app/stylesheets/png.scss */
 .no-svg .video-guide .saves.active-tab:hover {
   background: url("../images/assets/saves_on.png[") no-repeat center center #3f3f3f;
@@ -72,6 +105,21 @@
   background: url("../images/assets/guide.png") no-repeat center center transparent;
 }
 /* line 113, ../../app/stylesheets/png.scss */
+=======
+/* line 87, ../../app/stylesheets/png.scss */
+.no-svg .video-guide .saves.active-tab:hover {
+  background: url("../images/assets/saves_on.png[") no-repeat center center #3f3f3f;
+}
+/* line 97, ../../app/stylesheets/png.scss */
+.no-svg .dashboard-search i {
+  background: url("../images/assets/search.png") no-repeat center center;
+}
+/* line 105, ../../app/stylesheets/png.scss */
+.no-svg .guide-toggle .icon {
+  background: url("../images/assets/guide.png") no-repeat center center transparent;
+}
+/* line 112, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .networks-twitter {
   background: #474747;
   background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -81,7 +129,11 @@
   background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
   background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, linear-gradient(top, #646464, #474747);
 }
+<<<<<<< HEAD
 /* line 119, ../../app/stylesheets/png.scss */
+=======
+/* line 118, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .networks-twitter.active {
   background: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
@@ -91,7 +143,11 @@
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #00b5d7, #00a2d1);
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #00b5d7, #00a2d1);
 }
+<<<<<<< HEAD
 /* line 128, ../../app/stylesheets/png.scss */
+=======
+/* line 127, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .networks-facebook {
   background: #474747;
   background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -101,7 +157,11 @@
   background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, -ms-linear-gradient(top, #646464, #474747);
   background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, linear-gradient(top, #646464, #474747);
 }
+<<<<<<< HEAD
 /* line 135, ../../app/stylesheets/png.scss */
+=======
+/* line 134, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .networks-facebook.active {
   background: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
@@ -111,6 +171,7 @@
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -ms-linear-gradient(top, #01599e, #013e80);
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, linear-gradient(top, #01599e, #013e80);
 }
+<<<<<<< HEAD
 /* line 146, ../../app/stylesheets/png.scss */
 .no-svg .roll-back {
   background: url("../images/assets/navarrow_left.png") no-repeat center center #303030;
@@ -204,6 +265,101 @@
   background: url("../images/assets/rolls_tumblr.png") no-repeat center center, #2f445b;
 }
 /* line 312, ../../app/stylesheets/png.scss */
+=======
+/* line 145, ../../app/stylesheets/png.scss */
+.no-svg .roll-back {
+  background: url("../images/assets/navarrow_left.png") no-repeat center center #303030;
+}
+/* line 151, ../../app/stylesheets/png.scss */
+.no-svg .roll-next {
+  background: url("../images/assets/navarrow_right.png") no-repeat center center #303030;
+}
+/* line 162, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-score:before {
+  content: url("../images/assets/score.png");
+}
+/* line 169, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-controls .roll-frame button {
+  background: url("../images/assets/roll_action.png") no-repeat 0px -1px;
+}
+/* line 176, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-controls .save-frame button {
+  background: url("../images/assets/saved_action.png") no-repeat center center;
+}
+/* line 183, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-controls .remove-frame button {
+  background: url("../images/assets/saved_remove.png") no-repeat center center;
+}
+/* line 192, ../../app/stylesheets/png.scss */
+.no-svg .video-score .user-post-origin-twitter:before {
+  content: url('/images/../images/assets/twitter_stamp.png?1335815212');
+}
+/* line 198, ../../app/stylesheets/png.scss */
+.no-svg .video-score .user-post-origin-facebook:before {
+  content: url('/images/../images/assets/facebook_stamp.png?1335813888');
+}
+/* line 204, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-play {
+  background: url("../images/assets/player_play.png") center center no-repeat transparent;
+}
+/* line 209, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-play.pause {
+  background: url("../images/assets/player_pause.png") center center no-repeat transparent;
+}
+/* line 216, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-volume {
+  background: url("../images/assets/player_sound_on.png") center center no-repeat transparent;
+}
+/* line 220, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-volume.mute {
+  background: url("../images/assets/player_sound_off.png") center center no-repeat transparent;
+}
+/* line 227, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-fullscreen {
+  background: url("../images/assets/player_fullscreen.png") center center no-repeat transparent;
+}
+/* line 233, ../../app/stylesheets/png.scss */
+.no-svg .video-score .video-player-roll {
+  background: url("../images/assets/player_roll.png") center 6px no-repeat transparent;
+}
+/* line 242, ../../app/stylesheets/png.scss */
+.no-svg .video-score .rolling-main-social:before {
+  background: url("../images/assets/sharebutton_icons.png") no-repeat 0px center;
+}
+/* line 252, ../../app/stylesheets/png.scss */
+.no-svg .video-score .frame-rolling-completion-header h1.roll-type-public:before {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 257, ../../app/stylesheets/png.scss */
+.no-svg .video-score .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 269, ../../app/stylesheets/png.scss */
+.no-svg .video-score .form-rolls-list .rolling-public-roll.new:before {
+  content: "+";
+}
+/* line 272, ../../app/stylesheets/png.scss */
+.no-svg .video-score .form-rolls-list .rolling-public-roll:after {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 278, ../../app/stylesheets/png.scss */
+.no-svg .video-score .form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 288, ../../app/stylesheets/png.scss */
+.no-svg .video-score .you-preferences-networks-twitter:before {
+  background: url("../images/assets/rolls_twitter.png") no-repeat center center #00a2d1;
+}
+/* line 295, ../../app/stylesheets/png.scss */
+.no-svg .video-score .you-preferences-networks-facebook:before {
+  background: url("../images/assets/rolls_facebook.png") no-repeat center center #013e80;
+}
+/* line 302, ../../app/stylesheets/png.scss */
+.no-svg .video-score .you-preferences-networks-tumblr:before {
+  background: url("../images/assets/rolls_tumblr.png") no-repeat center center, #2f445b;
+}
+/* line 311, ../../app/stylesheets/png.scss */
+>>>>>>> edu
 .no-svg .video-score .you-preferences-notifications input + span:after {
   background: url("../images/assets/switch.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
   background: url("../images/assets/switch.png") no-repeat center center, -webkit-linear-gradient(top, #d7d7d7, #fefefe);
@@ -212,6 +368,7 @@
   background: url("../images/assets/switch.png") no-repeat center center, -ms-linear-gradient(top, #d7d7d7, #fefefe);
   background: url("../images/assets/switch.png") no-repeat center center, linear-gradient(top, #d7d7d7, #fefefe);
 }
+<<<<<<< HEAD
 /* line 324, ../../app/stylesheets/png.scss */
 .no-svg .video-score .about-external-twitter a {
   background: url("../images/assets/team_twitter.png") no-repeat center left transparent;
@@ -250,3 +407,41 @@
 }
 
 /* /.no-svg */
+=======
+/* line 323, ../../app/stylesheets/png.scss */
+.no-svg .video-score .about-external-twitter a {
+  background: url("../images/assets/team_twitter.png") no-repeat center left transparent;
+}
+/* line 331, ../../app/stylesheets/png.scss */
+.no-svg .video-score .about-external-link a {
+  background: url("../images/assets/team_web.png") no-repeat center left transparent;
+}
+/* line 341, ../../app/stylesheets/png.scss */
+.no-svg .video-score .logged-out-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 1px 2px transparent;
+}
+/* line 347, ../../app/stylesheets/png.scss */
+.no-svg .video-score .logged-out-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center transparent;
+}
+/* line 354, ../../app/stylesheets/png.scss */
+.no-svg .video-score .comment-overlay-prev {
+  background: url("../images/assets/comment_arrow_left.png") no-repeat center center #303030;
+}
+/* line 359, ../../app/stylesheets/png.scss */
+.no-svg .video-score .comment-overlay-next {
+  background: url("../images/assets/comment_arrow_right.png") no-repeat center center #303030;
+}
+/* line 367, ../../app/stylesheets/png.scss */
+.no-svg .video-score .email-gate-logo {
+  background: url("../images/email-gate/landing_logo.png") no-repeat center center transparent;
+}
+/* line 372, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-networks-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 2px 4px transparent;
+}
+/* line 378, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-networks-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat -1px center transparent;
+}
+>>>>>>> edu

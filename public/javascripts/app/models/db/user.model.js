@@ -14,7 +14,11 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'personal_roll',
       relatedModel : 'libs.shelbyGT.RollModel'
-    }
+    }/*,{ we can't do this right now as navving to the rollList re-fetches the user
+      type : Backbone.HasOne,
+      key : 'app_progress',
+      relatedModel : 'libs.shelbyGT.UserProgressModel'
+    }*/
   ],
   
   url : function() {
