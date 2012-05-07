@@ -3624,14 +3624,16 @@ a:hover, a:visited, a:active {
 .guide-education-lining p {
   color: #333;
   margin-left: 10px;
+  margin-right: 48px;
 }
 
-/* line 20, ../../app/stylesheets/partials/guide-education.scss */
+/* line 21, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
   background: url("../images/assets/remove.svg") no-repeat center center transparent;
   background-size: 100%;
   border: none;
   color: #333;
+  cursor: pointer;
   height: 10px;
   float: right;
   margin: 10px;
