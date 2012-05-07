@@ -33,6 +33,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _renderEducation : function(){
+    //if (!shelby.models.user.get('is_admin')) return false;
     var msg = this._educationMsgMap[shelby.models.guide.get('displayState')];
     if (msg) {
       var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState'), msg:msg});
