@@ -22,8 +22,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help" : "displayHelp",
     "team" : "displayTeam",
     "legal" : "displayLegal",
+    "?:params" : "displayDashboard", //displayDashboard now handles query params
     "" : "displayDashboard",
-    "?*querystring" : "displayDashboardWithoutQuerystring",
     "*url" : "doNothing"
   },
 
@@ -171,12 +171,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       },
       data: {
           include_children : true
-      }
+      },
+			query_params: {}
     };
+		
     if (!options) {
       options = defaults;
-    } else {
-      _(options).defaults(defaults);
+    } else {			
+			// pull potential url query params into a _params object
+			_.each(options.split("&"), function(o){ 
+				var _p = o.split("=");
+				defaults.query_params[_p[0]] = _p[1];
+			});
+	
+      options = defaults;
     }
 
     this._setupTopLevelViews({showSpinner: true});
@@ -209,7 +217,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       self._addHotRolls();
       return shelby.models.user.fetch({
         data: {include_rolls:true}
-      })
+      });
     })()
     );
   },

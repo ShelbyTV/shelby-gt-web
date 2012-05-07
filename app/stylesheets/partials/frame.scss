@@ -370,6 +370,14 @@
 		content: image-url('../images/assets/facebook_stamp.svg');
 	}
 }
+
+.user-post-origin-tumblr{
+	@extend .user-post-origin-twitter;
+	&:before{
+		content: image-url('../images/assets/tumblr_stamp.svg');
+	}
+}
+
 .user-video-text{
 	margin-top:-7px;
 
