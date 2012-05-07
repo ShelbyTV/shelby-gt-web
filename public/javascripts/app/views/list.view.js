@@ -26,10 +26,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _educationMsgMap : {
-    'rollList' : 'These are all your rolls and stuff!',
-    'dashboard' : 'These are all your dashboard entries and stuff!',
-    'standardRoll' : 'This is a roll -- woweewawa!',
-    'watchLaterRoll' : 'I fucking hate beards'
+    'rollList' : 'Here is a list of your rolls. We\'ve created a few to get you started.',
+    'dashboard' : 'Your stream is a feed of activity from all your allowed networks.',
+    'standardRoll' : 'These are the videos for a single roll.',
+    'watchLaterRoll' : 'If you clicked the "saves" icon on a particular video, it gets saved here!'  
   },
 
   _renderEducation : function(){

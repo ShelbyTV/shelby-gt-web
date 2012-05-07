@@ -2,8 +2,10 @@
 
   libs.shelbyGT.GuideEducationView = Support.CompositeView.extend({
 
+    tagName : 'li',
+
     events : {
-      "click span.close" : "_onClickClose"
+      "click .js-guide-education-close" : "_onClickClose"
     },
 
     template : function(obj){
