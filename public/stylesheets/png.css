@@ -40,7 +40,7 @@ Backtrace:
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4353509225209931074__call__4473495935085577899__callbacks'
+/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__657108462120977687__call__45722736074830456__callbacks'
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'

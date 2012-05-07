@@ -34,13 +34,15 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   className : 'frame',
 
   template : function(obj){
+		var _tmplt;
 		if (shelby.upvote_test){
-			// render new template or set class in template ??
+		 _tmplt = JST['ui-tests/frame-upvote-test'](obj);
 		}
 		else if (shelby.comment_test){
-			// render new template or set class in template ??
+			_tmplt = JST['ui-tests/frame-comment-test'](obj);
 		}
-		else { return JST['frame'](obj); }
+		else { _tmplt = JST['frame'](obj); }
+		return _tmplt;
   },
 
   initialize : function() {

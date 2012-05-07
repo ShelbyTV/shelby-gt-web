@@ -189,7 +189,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 		
 		// FOR IN PERSON USER TESTING
 		// This is to alter ui of things like upvote, roll and comment elements
-		this._alterUIfromQueryParams(defaults.query_params);
+		this._testSwitchingfromQueryParams(defaults.query_params);
 		
     this._setupTopLevelViews({showSpinner: true});
     
@@ -437,7 +437,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //MISC HELPERS
   //---
   
-	_alterUIfromQueryParams: function(params){
+	_testSwitchingfromQueryParams: function(params){
 		// set shelby level setting establishing a "new" version of a ui el
 		_.each(params, function(v, k){
 			if (k == "upvote") {
