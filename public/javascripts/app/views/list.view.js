@@ -16,7 +16,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
     this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
-    if (!this._userHasBeenEducated()){
+    if (!this._userHasBeenEducated() && this._isEducationDisplayState()){
       var self = this;
       setTimeout(function(){
         self._renderEducation();
@@ -26,6 +26,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _userHasBeenEducated : function(){
     return shelby.models.userProgress.get(shelby.models.guide.get('displayState')+'Educated');
+  },
+
+  _isEducationDisplayState : function(){
+    return shelby.models.userProgress.get('framesRolled')===0;
+    //return true;
   },
 
   // delay before displaying education view 
@@ -47,6 +52,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _cleanup : function(){
+    shelby.models.userProgress.set('framesRolled', 0);
     this.model.unbind('add:'+this.options.collectionAttribute, this.addOne, this);
     this.model.unbind('remove:'+this.options.collectionAttribute, this.removeOne, this);
   },

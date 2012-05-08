@@ -172,11 +172,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews({showSpinner: true});
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
     var self = this;
+    //shelby.collections.rollFollowings = new libs.shelbyGT.RollFollowingsCollection();
     this._hideSpinnerAfter((function(){
       self._addHotRolls();
       return shelby.models.user.fetch({
         data: {include_rolls:true}
       });
+      //return shelby.collections.rollFollowings.fetch();
     })()
     );
   },

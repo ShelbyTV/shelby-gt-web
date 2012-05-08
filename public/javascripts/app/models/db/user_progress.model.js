@@ -6,7 +6,8 @@
       'rollEducated' : false,
       'rollListEducated' : false,
       'streamEducated' : false,
-      'savesEducated' : false
+      'savesEducated' : false,
+      'framesRolled' : 0
     },
 
     initialize : function(){
@@ -21,7 +22,6 @@
     
     // rolling initialized
     _onActiveFrameRollingViewChange : function(guide, frameRollingView){
-      console.log('_onActiveFrameRollingViewChange');
       this.set('rollFrameInit', true);
     }
 
