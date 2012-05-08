@@ -210,8 +210,10 @@
 .share-submit-button{
 	@include form-submit-button;
 	.spinner{
-		left:278px;
-		top:7px;
+		left:auto;
+		margin-left:auto;
+		margin-top:auto;
+		position:static;
 	}
 }
 //.rolls{
