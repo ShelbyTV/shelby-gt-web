@@ -17,7 +17,7 @@
   width: 100%;
 }
 /* line 18, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:first-child {
+.rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -26,7 +26,7 @@
   border-radius: 4px 4px 0 0;
 }
 /* line 21, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:first-child h2 {
+.rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -35,7 +35,7 @@
   border-radius: 4px 4px 0 0;
 }
 /* line 26, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main li:hover {
+.rolling-main > li:hover {
   background: url("../images/assets/noise.png") #666666;
   cursor: pointer;
 }
@@ -126,6 +126,11 @@
   margin: 3px;
   padding: 1px 8px;
   text-shadow: 0px 1px 2px #222;
+  -moz-box-shadow: inset -1px 0px 1px 0px #00a3e9;
+  -webkit-box-shadow: inset -1px 0px 1px 0px #00a3e9;
+  -o-box-shadow: inset -1px 0px 1px 0px #00a3e9;
+  box-shadow: inset -1px 0px 1px 0px #00a3e9;
+  border: 1px solid #004a6a;
   display: none;
   float: right;
 }
