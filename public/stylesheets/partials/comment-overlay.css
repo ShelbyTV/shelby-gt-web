@@ -54,12 +54,13 @@
 
 /* line 43, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
+  display: none;
   height: 67px;
   max-width: 550px;
   position: relative;
 }
 
-/* line 86, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 87, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -79,13 +80,13 @@
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 80, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 81, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 95, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 96, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -105,7 +106,7 @@
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 80, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 81, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

@@ -118,48 +118,86 @@
 }
 
 .networks-twitter{
-	@extend .notype;
 	background: $flatNetworksUnselected;
+
 	@include background(
-		url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center,
 		$softNetworksUnselected
 	);
 	@include border-radius($radius/2);
 	@include box-shadow(inset 0px 1px 1px 0px #777);
 
-//	background-size:80%;
-	border:1px solid black;
+	border:1px solid #222;
 	height:34px;
 	width:34px;
 
+	.networks-twitter-button{
+		@extend .notype;
+		@include background(
+			url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center
+		);
+//		background-size:80%;
+		border: none;
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+	
 	&.active{
 		background: $twitterBlue;
-		@include background(
-			url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center,
-			$softTwitterBlue
-		);
+		@include background($softTwitterBlue);
 		@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
-
+	
+		.networks-twitter-button {
+			@include background(
+				url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center
+			);
+		}
+		&:hover {
+			@include background($twitterBlue);
+		}
 	}
 
 }
 
 .networks-facebook{
-	@extend .networks-twitter;
+
+	background: $flatNetworksUnselected;
+
 	@include background(
-		url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center,
-			$softNetworksUnselected
+		$softNetworksUnselected
+	);
+	@include border-radius($radius/2);
+	@include box-shadow(inset 0px 1px 1px 0px #777);
+
+	border:1px solid #222;
+	height:34px;
+	width:34px;
+
+	.networks-facebook-button{
+		@extend .notype;
+		@include background(
+			url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center
 		);
-		@include box-shadow(inset 0px 1px 1px 0px #777);
+//		background-size:80%;
+		border: none;
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
 	
 	&.active{
 		background: $facebookBlue;
-		@include background(
-			url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
-			$softFacebookBlue
-		);
+		@include background($softFacebookBlue);
 		@include box-shadow(inset 0px 1px 1px 0px #0179c1);
-
+	
+		.networks-facebook-button {
+			@include background(
+				url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center
+			);
+		}
+		&:hover {
+			@include background($facebookBlue);
+		}
 	}
 
 }

@@ -11,11 +11,11 @@
 <% if (components.networkToggles) { %>
 	<fieldset class="share-networks">
 		<ul class="share-networks-list">
-			<li>
-				<button onclick="return false;" class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %>">Twitter</button>
+			<li class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %>">
+				<button onclick="return false;" class="networks-twitter-button">Twitter</button>
 			</li>
-			<li>
-				<button onclick="return false;" class="js-toggle-facebook-sharing networks-facebook <%= facebook_active ? 'active' : '' %>">Facebook</button>
+			<li class="js-toggle-facebook-sharing networks-facebook <%= facebook_active ? 'active' : '' %>">
+				<button onclick="return false;" class="networks-facebook-button">Facebook</button>
 			</li>
 	<!-- 	<li>
 				<button class="networks-tumblr ir">Tumblr</button>

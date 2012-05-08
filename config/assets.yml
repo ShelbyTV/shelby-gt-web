@@ -13,6 +13,7 @@ javascripts:
     - public/javascripts/backbone/underscore.js
     - public/javascripts/backbone/backbone.js
     - public/javascripts/backbone/backbone-relational.js
+    - public/javascripts/backbone/backbone.queryparams.js
     - public/javascripts/backbone/backbone-support/support.js
     - public/javascripts/backbone/backbone-support/swapping_router.js
     - public/javascripts/backbone/backbone-support/composite_view.js
@@ -27,6 +28,7 @@ javascripts:
     # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/app.js
     - public/javascripts/app/models/lib/shelby.base.model.js
+    - public/javascripts/app/models/db/user_progress.model.js
     - public/javascripts/app/models/db/roll.model.js
     - public/javascripts/app/models/ui/share.model.js
     - public/javascripts/app/models/ui/share_action_state.model.js
@@ -52,6 +54,7 @@ javascripts:
     - public/javascripts/app/views/frame_rolling_share.view.js
     - public/javascripts/app/browser.js
     - public/javascripts/app/utils/display_state.utils.js
+    - public/javascripts/app/utils/video_playback_events.utils.js
     - public/javascripts/app/models/db/user.model.js
     # shelby backbone app - all other assets
     - public/javascripts/app/config/*.js
