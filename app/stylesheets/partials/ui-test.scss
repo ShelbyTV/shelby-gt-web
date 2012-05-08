@@ -1,0 +1,54 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+
+.ui-test {
+
+	.video-saves {
+		background: url('../images/assets/saved_big.svg') no-repeat center center transparent;
+		background-size: 100%;
+		display:block;
+		float: right;
+		height: 14px;
+		margin: 0;
+		padding: 0;
+		width: 10px;
+
+		&:before {
+			content: "";
+		}	
+
+	}
+
+	.upvote-frame {
+		.video-controls-button {
+			@include background(
+				url('../images/assets/upvote_large.svg') no-repeat center center
+			);
+			background-size: 50%;
+		}
+	}
+
+	.video-controls {
+		.save-frame {
+			display: none;
+		}
+		.upvote-frame {
+			display:block;
+		}
+	}
+	
+	.video-footer {
+		height: auto;
+	}
+
+	.video-activity-comment {
+		padding: 2px 0 0;
+	}
+	
+}
+
+

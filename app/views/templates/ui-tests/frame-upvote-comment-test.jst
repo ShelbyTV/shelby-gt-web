@@ -1,20 +1,28 @@
 <% var messages = frame.get('conversation').get('messages') %>
 <% var creator = frame.get('creator') %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
-<article id="<%= frame.get('conversation_id') %>" class="video-card">
+<article id="<%= frame.get('conversation_id') %>" class="video-card ui-test">
   <header class="video-card-header clearfix">
     <a class="js-frame-activate" href="#">
       <h1 title="<%= frame.get('video').get('title') %>">
 		    <%= frame.get('video').get('title') %>
       </h1>
     </a>  
-    <button class="video-score <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button"><%= frame.get('upvoters').length %></button>
+   <!-- <button class="video-score <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button"><%= frame.get('upvoters').length %></button>--> 
+    <button class="video-saves save-frame ir">
+      Save
+    </button> 
   </header>
   
   <div class="video-thumbnail">
     <ul class="video-controls" type="toolbar">
       <li class="roll-frame">
         <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Roll Frame</button>
+      </li>
+      <li class="upvote-frame remove-frame">
+        <button class="video-controls-button ir">
+          Upvote
+        </button>
       </li>
       <% if (!frameIsOnWatchLaterRoll) { %>
         <li class="save-frame">
@@ -66,7 +74,7 @@
 	      <% } %>
 			<% } else { %>
 				<form class="video-activity-comment clearfix">
-          <textarea class="js-add-message-input" rows="1" placeholder="write a comment..."></textarea>
+          <textarea class="js-add-message-input" rows="1" placeholder="Write a comment..."></textarea>
           <div class="js-frame-comment-error-message frame-comment-error-message"></div>
         </form>
 			<% } %>

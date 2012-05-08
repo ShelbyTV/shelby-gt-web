@@ -3882,6 +3882,51 @@ a:hover, a:visited, a:active {
   margin-top: 1.231em;
 }
 
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 10, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-saves {
+  background: url("../images/assets/saved_big.svg") no-repeat center center transparent;
+  background-size: 100%;
+  display: block;
+  float: right;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  width: 10px;
+}
+/* line 20, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-saves:before {
+  content: "";
+}
+/* line 27, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .upvote-frame .video-controls-button {
+  background: url("../images/assets/upvote_large.svg") no-repeat center center;
+  background-size: 50%;
+}
+/* line 36, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-controls .save-frame, .ui-test .video-controls .remove-frame {
+  display: none;
+}
+/* line 39, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-controls .upvote-frame {
+  display: block;
+}
+/* line 44, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-footer {
+  height: auto;
+}
+/* line 48, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .video-activity-comment {
+  padding: 2px 0 0;
+}
+
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .ir {
   border: 0;
