@@ -1521,22 +1521,30 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 1, ../../app/stylesheets/partials/roll-item.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 8, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item {
   display: block;
   padding: 0;
   margin: 0;
 }
-/* line 11, ../../app/stylesheets/partials/roll-item.scss */
+/* line 13, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item h2 {
   display: block;
   float: left;
   font-size: 14px;
   line-height: 2.5;
-  margin-left: 0.5em;
+  margin-left: 10px;
 }
 
-/* line 20, ../../app/stylesheets/partials/roll-item.scss */
+/* line 23, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1550,7 +1558,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   width: 36px;
 }
-/* line 29, ../../app/stylesheets/partials/roll-item.scss */
+/* line 32, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail img {
   display: block;
   height: 100%;
@@ -1984,7 +1992,7 @@ a:hover, a:visited, a:active {
 
 /* line 359, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335488134');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1992,12 +2000,12 @@ a:hover, a:visited, a:active {
 
 /* line 369, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335488133');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
 /* line 376, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336417968');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
 }
 
 /* line 381, ../../app/stylesheets/partials/frame.scss */
@@ -2625,8 +2633,12 @@ a:hover, a:visited, a:active {
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
+/* line 91, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-social {
+  padding-left: 10px;
+}
 
-/* line 95, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 97, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

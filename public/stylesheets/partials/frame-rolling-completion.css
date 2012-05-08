@@ -80,8 +80,12 @@
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
+/* line 91, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-social {
+  padding-left: 10px;
+}
 
-/* line 95, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 97, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

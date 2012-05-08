@@ -1,19 +1,22 @@
-.roll-item{
-//	@include background(
-////		$softLinearGradient
-//		red
-//	);
+@import
+    "base",
+    "compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
 
+.roll-item{ 
 	display:block;
 	padding:0;
 	margin:0;
 
 	h2{
 		display:block;
-		float:left;
+    float:left;
 		font-size:14px;
 		line-height:2.5;
-		margin-left:$margin;
+
+		margin-left: 10px;
 	}
 }
 

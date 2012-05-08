@@ -88,7 +88,9 @@
 				background-image:url('../images/assets/rolls_private.svg');
 			}
 		}
-
+    &.roll-type-social {
+      padding-left: $defaultMargin;
+    }
 	}
 }
 
