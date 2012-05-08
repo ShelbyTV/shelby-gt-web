@@ -186,7 +186,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _addHotRolls : function(){
     libs.utils.HotRollsJson.forEach(function(rollJson){
       shelby.models.user.get('roll_followings').add(new libs.shelbyGT.RollModel(rollJson));
-      //console.log(rollJson);
     });
   },
 

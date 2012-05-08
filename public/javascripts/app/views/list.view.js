@@ -29,8 +29,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _isEducationDisplayState : function(){
+    // if we're rolling a frame, we don't want education
     return shelby.models.userProgress.get('framesRolled')===0;
-    //return true;
   },
 
   // delay before displaying education view 
