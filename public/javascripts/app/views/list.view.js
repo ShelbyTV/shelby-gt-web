@@ -17,12 +17,25 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
     this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
     if (!this._userHasBeenEducated()){
-      this._renderEducation();
+      var self = this;
+      setTimeout(function(){
+        self._renderEducation();
+      }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
     }
   },
 
   _userHasBeenEducated : function(){
     return shelby.models.userProgress.get(shelby.models.guide.get('displayState')+'Educated');
+  },
+
+
+  //TODO: move these maps to the guide education view
+
+  _educationTimeoutMap : {
+    'rollList' : 1000,
+    'dashboard' : 2000,
+    'standardRoll' : 1000,
+    'watchLaterRoll' : 1000
   },
 
   _educationMsgMap : {
@@ -37,7 +50,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var msg = this._educationMsgMap[shelby.models.guide.get('displayState')];
     if (msg) {
       var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState'), msg:msg});
-      this.prependChild(educationView);
+      this.prependChild(educationView, 'slideToggle');
     }
   },
 
