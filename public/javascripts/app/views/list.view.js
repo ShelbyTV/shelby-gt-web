@@ -37,7 +37,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _educationTimeoutMap : {
     'rollList' : 1000,
     'dashboard' : 2000,
-    'standardRoll' : 1000,
+    'standardRoll' : 2000,
     'watchLaterRoll' : 1000
   },
 
