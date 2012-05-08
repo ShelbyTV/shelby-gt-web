@@ -69,6 +69,12 @@
 	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
 	display:none;
 	float:right;
+	.spinner{
+		left:auto;
+		margin-left:auto;
+		margin-top:auto;
+		position:static;
+	}
 }
 
 .rolling-main-social {

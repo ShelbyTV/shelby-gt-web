@@ -134,14 +134,21 @@
   display: none;
   float: right;
 }
+/* line 72, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done .spinner, .rolling-main-social .spinner {
+  left: auto;
+  margin-left: auto;
+  margin-top: auto;
+  position: static;
+}
 
-/* line 74, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 80, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   display: block;
   float: right;
   padding-left: 0;
 }
-/* line 83, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 89, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
@@ -153,7 +160,7 @@
   height: 17px;
 }
 
-/* line 95, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 101, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -182,7 +189,7 @@
   height: 100%;
 }
 
-/* line 115, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 121, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
