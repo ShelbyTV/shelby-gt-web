@@ -1,0 +1,37 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.guide-education {
+	padding: 0;
+}
+
+.guide-education-lining {
+	background: lightyellow;
+	border: 1px solid yellow;
+	p {
+		color: #333;
+		margin-left: 10px;
+		margin-right: 48px;
+	}
+}
+
+.guide-education-close {
+	@include background(
+		url('../images/assets/remove.svg') no-repeat center center transparent
+	);
+	background-size: 100%;
+	border: none;
+	color: #333;
+	cursor: pointer;
+	height: 10px;
+	float: right;
+	margin: 10px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 10px;
+}
+

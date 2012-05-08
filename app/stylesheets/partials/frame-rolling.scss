@@ -13,7 +13,7 @@
 	top:0;
 	width:100%;
 
-	li{
+	& > li{
 	//h2{ <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
 		&:first-child{
 			@include border-radius($radius - 1  $radius - 1 0 0);
@@ -63,10 +63,10 @@
 //	@include background(
 //		$softShelbyBlue
 //	);
-//	@include box-shadow(
-//		inset -1px 0px 1px 0px #549537
-//	);
-
+	@include box-shadow(
+		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
+	);
+	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
 	display:none;
 	float:right;
 }

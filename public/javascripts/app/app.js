@@ -12,6 +12,7 @@ libs = {
 shelby = {
   models : {},
   views : {},
+  collections : {},
   config : {
     apiRoot : 'http://api.gt.shelby.tv/v1'
   },
