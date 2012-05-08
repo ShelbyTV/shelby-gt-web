@@ -440,10 +440,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 	_testSwitchingfromQueryParams: function(params){
 		// set shelby level setting establishing a "new" version of a ui el
 		_.each(params, function(v, k){
-			if (k == "uitest" && v) {
+			if (k == "uitest" && v == 'true') {
 				shelby.commentUpvoteUITest = true;
 			}
-			else { console.log("key:", k); }
 		});
 	},
 

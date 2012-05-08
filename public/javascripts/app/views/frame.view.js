@@ -186,6 +186,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _addMessage : function(){
     var self = this;
     var text = this.$('.js-add-message-input').val();
+		
     if (!this._isMessageValid(text)) {
       this._renderError('Why not say something?');
       return false;
@@ -193,6 +194,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
     msg.save(null, {
       success:function(conversation){
+				if (!self._conversationDisplayed){
+					self._toggleConversationDisplay();
+				}
         self.model.set('conversation', conversation);
       },
       error:function(){

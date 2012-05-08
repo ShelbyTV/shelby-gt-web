@@ -32,7 +32,8 @@
       <img class="js-frame-activate video-thumbnail-missing" src="<%= '/images/assets/missing_thumb.svg' %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
     <% } %>
   </div>
- 
+  
+	<% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
   <footer class="video-card-footer">
 
     <!-- MessageView for the first message will be dynamically rendered here -->
@@ -44,16 +45,16 @@
           <!-- MessageViews for the remaining messages are dynamically rendered here -->
         </ul>
         <!-- sample build -->
-        <form class="video-activity-comment clearfix">
-          <textarea class="js-add-message-input" rows="1"></textarea>
-          <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-          <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label='<%= shelby.models.user.get('nickname') %>'>Comment</button>
-        </form>
+				<% if (remainingMessageCount && remainingMessageCount > 0) { %>
+	        <form class="video-activity-comment clearfix">
+	          <textarea class="js-add-message-input" rows="1"></textarea>
+	          <div class="js-frame-comment-error-message frame-comment-error-message"></div>
+	          <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label='<%= shelby.models.user.get('nickname') %>'>Comment</button>
+	        </form>
+				<% } %>
       </section><!-- eo section.video-shares -->
   
     <div class="video-footer">
-      <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
-
 			<!-- if no messages show text input field, otherwise show link to open conversation -->
 			<% if (remainingMessageCount && remainingMessageCount > 0) { %>
 	      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>
