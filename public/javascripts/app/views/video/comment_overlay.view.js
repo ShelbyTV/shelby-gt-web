@@ -21,14 +21,17 @@
         this.model.get('activeFrameModel').get('conversation').off('change', this._onConversationChange, this);
       }
     },
-    
-    render : function(frame){
-      this.$el.html(this.template({frame:frame}));
-    },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (guideModel.previous('activeFrameModel')) {
         guideModel.previous('activeFrameModel').get('conversation').off('change', this._onConversationChange, this);
+        if (!activeFrameModel) {
+          //if there is no longer an active frame, hide the overlay
+          this.$el.hide();
+        }
+      } else {
+        //if there was previously no active frame, the overlay was hidden, so reveal it now
+        this.$el.show();
       }
       activeFrameModel.get('conversation').on('change', this._onConversationChange, this);
       this._messageIndex = 0;
