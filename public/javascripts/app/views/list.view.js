@@ -28,9 +28,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     return shelby.models.userProgress.get(shelby.models.guide.get('displayState')+'Educated');
   },
 
-
-  //TODO: move these maps to the guide education view
-
+  // delay before displaying education view 
   _educationTimeoutMap : {
     'rollList' : 1000,
     'dashboard' : 2000,
@@ -38,20 +36,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     'watchLaterRoll' : 1000
   },
 
-  _educationMsgMap : {
-    'rollList' : 'Here is a list of your rolls. We\'ve created a few to get you started.',
-    'dashboard' : 'Your stream is a feed of activity from all your allowed networks.',
-    'standardRoll' : 'These are the videos for a single roll.',
-    'watchLaterRoll' : 'If you clicked the "saves" icon on a particular video, it gets saved here!'  
-  },
-
   _renderEducation : function(){
-    //if (!shelby.models.user.get('is_admin')) return false;
-    var msg = this._educationMsgMap[shelby.models.guide.get('displayState')];
-    if (msg) {
-      var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState'), msg:msg});
-      this.prependChild(educationView, 'slideToggle');
-    }
+    var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState')});
+    this.prependChild(educationView, 'slideToggle');
   },
 
 

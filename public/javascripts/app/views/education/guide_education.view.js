@@ -24,7 +24,15 @@
     },
 
     render : function(){
-      return this.$el.html(this.template(this.options));
+      // only thing needed here is msg
+      return this.$el.html(this.template({msg:this._educationMsgMap[this.options.type]}));
+    },
+
+    _educationMsgMap : {
+      'rollList' : 'Here is a list of your rolls. We\'ve created a few to get you started.',
+      'dashboard' : 'Your stream is a feed of activity from all your allowed networks.',
+      'standardRoll' : 'These are the videos for a single roll.',
+      'watchLaterRoll' : 'If you clicked the "saves" icon on a particular video, it gets saved here!'  
     },
 
     _onEducationStatusChange : function(userProgressModel, hasBeenEducated){
