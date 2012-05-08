@@ -302,6 +302,8 @@
 }
 /* line 212, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
-  left: 278px;
-  top: 7px;
+  left: auto;
+  margin-left: auto;
+  margin-top: auto;
+  position: static;
 }
