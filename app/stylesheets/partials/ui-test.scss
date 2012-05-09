@@ -22,15 +22,23 @@
 		}	
 
 	}
-
+	
 	.upvote-frame {
 		.video-controls-button {
 			@include background(
 				url('../images/assets/upvote_large.svg') no-repeat center center
 			);
-			background-size: 50%;
+			background-size: 40%;
+			background-position-y: 3px;
+			padding-top: 24px;
+			text-decoration: none;
+			font-size: 125%;
+			color: lightgray;
 		}
-	}
+		.video-score-upvoted{
+			color: black;
+		}
+	}	
 
 	.video-controls {
 		.save-frame {

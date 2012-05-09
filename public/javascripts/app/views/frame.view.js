@@ -134,7 +134,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _removeFromWatchLater : function(){
-    this.model.destroy();
+		// For UI Test workaround:
+		if (shelby.commentUpvoteUITest){ this._upvote(); }
+		else { this.model.destroy(); }
   },
 
   _upvote : function(){
@@ -150,8 +152,15 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onUpvoteChange : function(){
-    this.$('.video-score').addClass('video-score-upvoted');
-    this.$('.video-score').text(this.model.get('upvoters').length);
+		// For UI Test workaround:
+		if (shelby.commentUpvoteUITest){ 
+	    this.$('.upvote-test').addClass('video-score-upvoted');
+	    this.$('.upvote-test').text(this.model.get('upvoters').length);						
+		}
+		else {
+	    this.$('.video-score').addClass('video-score-upvoted');
+	    this.$('.video-score').text(this.model.get('upvoters').length);			
+		}
   },
 
   _toggleConversationDisplay : function(){

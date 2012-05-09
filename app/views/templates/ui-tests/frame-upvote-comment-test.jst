@@ -20,8 +20,8 @@
         <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Roll Frame</button>
       </li>
       <li class="upvote-frame remove-frame">
-        <button class="video-controls-button ir">
-          Upvote
+        <button class="video-controls-button upvote-test <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %>">
+          <%= frame.get('upvoters').length %>
         </button>
       </li>
       <% if (!frameIsOnWatchLaterRoll) { %>

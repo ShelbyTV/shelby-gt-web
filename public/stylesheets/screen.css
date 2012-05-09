@@ -1997,7 +1997,7 @@ a:hover, a:visited, a:active {
 
 /* line 376, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336504049');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
 }
 
 /* line 381, ../../app/stylesheets/partials/frame.scss */
@@ -4000,21 +4000,30 @@ a:hover, a:visited, a:active {
 /* line 27, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
   background: url("../images/assets/upvote_large.svg") no-repeat center center;
-  background-size: 50%;
+  background-size: 40%;
+  background-position-y: 3px;
+  padding-top: 24px;
+  text-decoration: none;
+  font-size: 125%;
+  color: lightgray;
 }
-/* line 36, ../../app/stylesheets/partials/ui-test.scss */
+/* line 38, ../../app/stylesheets/partials/ui-test.scss */
+.ui-test .upvote-frame .video-score-upvoted {
+  color: black;
+}
+/* line 44, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame, .ui-test .video-controls .remove-frame {
   display: none;
 }
-/* line 39, ../../app/stylesheets/partials/ui-test.scss */
+/* line 47, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 44, ../../app/stylesheets/partials/ui-test.scss */
+/* line 52, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-footer {
   height: auto;
 }
-/* line 48, ../../app/stylesheets/partials/ui-test.scss */
+/* line 56, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }
