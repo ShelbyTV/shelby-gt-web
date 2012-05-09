@@ -27,27 +27,27 @@
   background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
   background-size: 35%;
   border: none;
-  color: #efefef;
+  color: #cfcfcf;
   padding-top: 27px;
   text-decoration: none;
 }
-/* line 41, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 38, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-score-upvoted {
   color: #333;
 }
-/* line 47, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 44, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame {
   display: none;
 }
-/* line 50, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 47, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 55, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 52, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-footer {
   height: auto;
 }
-/* line 59, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 56, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }
