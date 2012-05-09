@@ -121,6 +121,10 @@
       }, 200);
     },
 
+    onShareError : function(){
+      this.options.frameRollingState.set('doShare', ShareActionState.failed);
+    },
+
     onValidationFail : function(){
       this.options.frameRollingState.set('doShare', ShareActionState.failed);
     },
