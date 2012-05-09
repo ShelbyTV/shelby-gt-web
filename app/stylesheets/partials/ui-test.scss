@@ -25,18 +25,21 @@
 	
 	.upvote-frame {
 		.video-controls-button {
-			@include background(
-				url('../images/assets/upvote_large.svg') no-repeat center center
+		  @include buttonfont;
+      @include background(
+				url('../images/assets/upvote_large.svg') no-repeat center 5px
 			);
-			background-size: 40%;
-			background-position-y: 3px;
-			padding-top: 24px;
+			background-size: 35%;
+      border: none;
+      color: #efefef;
+			padding-top: 27px;
 			text-decoration: none;
-			font-size: 125%;
-			color: lightgray;
+			//font-size: 100%;
+      //font-weight: 500;
+			//color: lightgray;
 		}
 		.video-score-upvoted{
-			color: black;
+      color:#333; 
 		}
 	}	
 

@@ -23,31 +23,31 @@
 }
 /* line 27, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
-  background: url("../images/assets/upvote_large.svg") no-repeat center center;
-  background-size: 40%;
-  background-position-y: 3px;
-  padding-top: 24px;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
+  background-size: 35%;
+  border: none;
+  color: #efefef;
+  padding-top: 27px;
   text-decoration: none;
-  font-size: 125%;
-  color: lightgray;
 }
-/* line 38, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 41, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-score-upvoted {
-  color: black;
+  color: #333;
 }
-/* line 44, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 47, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame {
   display: none;
 }
-/* line 47, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 50, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 52, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 55, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-footer {
   height: auto;
 }
-/* line 56, ../../../app/stylesheets/partials/ui-test.scss */
+/* line 59, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }

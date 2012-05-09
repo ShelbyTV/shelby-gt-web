@@ -1984,7 +1984,7 @@ a:hover, a:visited, a:active {
 
 /* line 359, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1336346030');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1992,12 +1992,12 @@ a:hover, a:visited, a:active {
 
 /* line 369, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1336346030');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
 /* line 376, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
 }
 
 /* line 381, ../../app/stylesheets/partials/frame.scss */
@@ -3999,31 +3999,31 @@ a:hover, a:visited, a:active {
 }
 /* line 27, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
-  background: url("../images/assets/upvote_large.svg") no-repeat center center;
-  background-size: 40%;
-  background-position-y: 3px;
-  padding-top: 24px;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
+  background-size: 35%;
+  border: none;
+  color: #efefef;
+  padding-top: 27px;
   text-decoration: none;
-  font-size: 125%;
-  color: lightgray;
 }
-/* line 38, ../../app/stylesheets/partials/ui-test.scss */
+/* line 41, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-score-upvoted {
-  color: black;
+  color: #333;
 }
-/* line 44, ../../app/stylesheets/partials/ui-test.scss */
+/* line 47, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame, .ui-test .video-controls .remove-frame {
   display: none;
 }
-/* line 47, ../../app/stylesheets/partials/ui-test.scss */
+/* line 50, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 52, ../../app/stylesheets/partials/ui-test.scss */
+/* line 55, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-footer {
   height: auto;
 }
-/* line 56, ../../app/stylesheets/partials/ui-test.scss */
+/* line 59, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }
