@@ -526,8 +526,8 @@ a:hover, a:visited, a:active {
   left: 50%;
   margin-left: -24px;
   margin-top: 100px;
-  position: absolute !important;
-  z-index: 0  !important;
+  position: absolute;
+  z-index: 0;
 }
 
 /* Welcome to Compass.
@@ -1362,8 +1362,10 @@ a:hover, a:visited, a:active {
 }
 /* line 212, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
-  left: 278px;
-  top: 7px;
+  left: auto;
+  margin-left: auto;
+  margin-top: auto;
+  position: static;
 }
 
 /* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
@@ -1521,22 +1523,30 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 1, ../../app/stylesheets/partials/roll-item.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 8, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item {
   display: block;
   padding: 0;
   margin: 0;
 }
-/* line 11, ../../app/stylesheets/partials/roll-item.scss */
+/* line 13, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item h2 {
   display: block;
   float: left;
   font-size: 14px;
   line-height: 2.5;
-  margin-left: 0.5em;
+  margin-left: 10px;
 }
 
-/* line 20, ../../app/stylesheets/partials/roll-item.scss */
+/* line 23, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1550,7 +1560,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   width: 36px;
 }
-/* line 29, ../../app/stylesheets/partials/roll-item.scss */
+/* line 32, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail img {
   display: block;
   height: 100%;
@@ -1564,27 +1574,27 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/frame.scss */
+/* line 8, ../../app/stylesheets/partials/frame.scss */
 .list, .rolls-list, .form-rolls-list {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../app/stylesheets/partials/frame.scss */
+/* line 12, ../../app/stylesheets/partials/frame.scss */
 .list li, .rolls-list li, .form-rolls-list li {
   background: #494949;
   list-style-type: none;
   padding: 10px;
 }
-/* line 19, ../../app/stylesheets/partials/frame.scss */
+/* line 20, ../../app/stylesheets/partials/frame.scss */
 .list li:hover, .rolls-list li:hover, .form-rolls-list li:hover {
   background: #555555;
 }
-/* line 27, ../../app/stylesheets/partials/frame.scss */
+/* line 28, ../../app/stylesheets/partials/frame.scss */
 .list .active-frame, .rolls-list .active-frame, .form-rolls-list .active-frame {
   background: #6d6d6d;
 }
 
-/* line 35, ../../app/stylesheets/partials/frame.scss */
+/* line 36, ../../app/stylesheets/partials/frame.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1599,7 +1609,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 46, ../../app/stylesheets/partials/frame.scss */
+/* line 47, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1612,7 +1622,7 @@ a:hover, a:visited, a:active {
   z-index: 5;
 }
 
-/* line 55, ../../app/stylesheets/partials/frame.scss */
+/* line 56, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #444;
   line-height: 75px;
@@ -1621,7 +1631,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 63, ../../app/stylesheets/partials/frame.scss */
+/* line 64, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   display: inline-block;
   margin: -27px auto 0;
@@ -1632,14 +1642,14 @@ a:hover, a:visited, a:active {
   cursor: pointer;
 }
 
-/* line 74, ../../app/stylesheets/partials/frame.scss */
+/* line 75, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
   height: 70%;
   margin: 20px auto 0;
   width: auto;
 }
 
-/* line 80, ../../app/stylesheets/partials/frame.scss */
+/* line 81, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1656,19 +1666,19 @@ a:hover, a:visited, a:active {
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 7px;
 }
-/* line 86, ../../app/stylesheets/partials/frame.scss */
+/* line 87, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 89, ../../app/stylesheets/partials/frame.scss */
+/* line 90, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 93, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
-/* line 97, ../../app/stylesheets/partials/frame.scss */
+/* line 98, ../../app/stylesheets/partials/frame.scss */
 .video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
@@ -1679,7 +1689,7 @@ a:hover, a:visited, a:active {
   width: 80%;
 }
 
-/* line 107, ../../app/stylesheets/partials/frame.scss */
+/* line 108, ../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
   font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
@@ -1689,33 +1699,33 @@ a:hover, a:visited, a:active {
   line-height: 1.231;
   padding: 0;
 }
-/* line 117, ../../app/stylesheets/partials/frame.scss */
+/* line 118, ../../app/stylesheets/partials/frame.scss */
 .video-score:before {
   content: url("../images/assets/score.svg");
   margin-right: 3px;
 }
-/* line 122, ../../app/stylesheets/partials/frame.scss */
+/* line 123, ../../app/stylesheets/partials/frame.scss */
 .video-score:hover:before {
   color: #007fb6;
 }
-/* line 126, ../../app/stylesheets/partials/frame.scss */
+/* line 127, ../../app/stylesheets/partials/frame.scss */
 .video-score:active {
   color: #007fb6;
 }
 
-/* line 132, ../../app/stylesheets/partials/frame.scss */
+/* line 133, ../../app/stylesheets/partials/frame.scss */
 .video-score-upvoted:before {
   content: "\0020";
 }
 
-/* line 150, ../../app/stylesheets/partials/frame.scss */
+/* line 151, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 155, ../../app/stylesheets/partials/frame.scss */
+/* line 156, ../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -1723,7 +1733,7 @@ a:hover, a:visited, a:active {
   right: 0px;
   top: 0px;
 }
-/* line 162, ../../app/stylesheets/partials/frame.scss */
+/* line 163, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1746,7 +1756,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 175, ../../app/stylesheets/partials/frame.scss */
+/* line 176, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/roll_action.svg") no-repeat 0px -1px;
   -moz-border-radius: 5px;
@@ -1762,7 +1772,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 44px;
 }
-/* line 187, ../../app/stylesheets/partials/frame.scss */
+/* line 188, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #0091d0;
   -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
@@ -1770,7 +1780,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
   box-shadow: inset 0px 1px 1px 0px #00c6de;
 }
-/* line 195, ../../app/stylesheets/partials/frame.scss */
+/* line 196, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #693a7b;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
@@ -1784,11 +1794,11 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 204, ../../app/stylesheets/partials/frame.scss */
+/* line 205, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 209, ../../app/stylesheets/partials/frame.scss */
+/* line 210, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #9863a2;
   -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
@@ -1796,7 +1806,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
   box-shadow: inset 0px 1px 1px 0px #9863a2;
 }
-/* line 217, ../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -1810,11 +1820,11 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 226, ../../app/stylesheets/partials/frame.scss */
+/* line 227, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.svg") no-repeat center center;
 }
-/* line 231, ../../app/stylesheets/partials/frame.scss */
+/* line 232, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #cb1c40;
   -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
@@ -1823,7 +1833,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 241, ../../app/stylesheets/partials/frame.scss */
+/* line 242, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1845,11 +1855,11 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 263, ../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1862,7 +1872,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 271, ../../app/stylesheets/partials/frame.scss */
+/* line 272, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1909,29 +1919,29 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 288, ../../app/stylesheets/partials/frame.scss */
+/* line 289, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 292, ../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 303, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 314, ../../app/stylesheets/partials/frame.scss */
+/* line 315, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1942,31 +1952,31 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #333333, #303030);
 }
 
-/* line 319, ../../app/stylesheets/partials/frame.scss */
+/* line 320, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 328, ../../app/stylesheets/partials/frame.scss */
+/* line 329, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 333, ../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 337, ../../app/stylesheets/partials/frame.scss */
+/* line 338, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 343, ../../app/stylesheets/partials/frame.scss */
+/* line 344, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 500;
@@ -1974,7 +1984,7 @@ a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 350, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1982,7 +1992,7 @@ a:hover, a:visited, a:active {
   padding-right: 3px;
 }
 
-/* line 359, ../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1336346030');
   float: left;
@@ -1990,21 +2000,21 @@ a:hover, a:visited, a:active {
   margin: 1px 3px;
 }
 
-/* line 369, ../../app/stylesheets/partials/frame.scss */
+/* line 370, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1336346030');
 }
 
-/* line 376, ../../app/stylesheets/partials/frame.scss */
+/* line 377, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336504049');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
 }
 
-/* line 381, ../../app/stylesheets/partials/frame.scss */
+/* line 382, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 384, ../../app/stylesheets/partials/frame.scss */
+/* line 385, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
@@ -2490,14 +2500,31 @@ a:hover, a:visited, a:active {
   display: none;
   float: right;
 }
+/* line 72, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done .spinner, .rolling-main-social .spinner {
+  left: auto;
+  margin-left: auto;
+  margin-top: auto;
+  position: static;
+}
 
-/* line 74, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 80, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done.roll-it, .roll-it.rolling-main-social {
+  width: 53px;
+}
+
+/* line 84, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done.share, .share.rolling-main-social {
+  width: 51px;
+}
+
+/* line 88, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   display: block;
   float: right;
   padding-left: 0;
 }
-/* line 83, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 97, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
@@ -2509,7 +2536,7 @@ a:hover, a:visited, a:active {
   height: 17px;
 }
 
-/* line 95, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 109, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2538,7 +2565,7 @@ a:hover, a:visited, a:active {
   height: 100%;
 }
 
-/* line 115, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 129, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2625,8 +2652,12 @@ a:hover, a:visited, a:active {
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
+/* line 91, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+.frame-rolling-completion-header h1.roll-type-social {
+  padding-left: 10px;
+}
 
-/* line 95, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 97, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

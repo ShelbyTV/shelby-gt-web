@@ -11,6 +11,8 @@
 
     _frameRollingCompletionView : null,
 
+    _buttonSpinnerView : null,
+
     _frameRollingState : null,
 
     events : {
@@ -37,12 +39,6 @@
     render : function(){
       this.$el.html(this.template({share:this._frameRollingState.get('shareModel')}));
       this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
-      this.spinner = new libs.shelbyGT.SpinnerView({
-        el: '.js-done',
-        hidden : true,
-        replacement : true
-      });
-      this.renderChild(this.spinner);
     },
 
     revealFrameRollingCompletionView : function(frame, roll, options){
@@ -76,7 +72,8 @@
       });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
       var doneButtonText = options.social ? 'Share' : 'Roll It';
-      this.$('.js-done').text(doneButtonText).show();
+      var doneButtonClass = options.social ? 'share' : 'roll-it';
+      this.$('.js-done').text(doneButtonText).addClass(doneButtonClass).show();
       this.$('.js-social').hide();
     },
 
@@ -109,12 +106,19 @@
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
+          this._buttonSpinnerView.hide();
           this._hide();
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');
+          this._buttonSpinnerView = this._buttonSpinnerView || new libs.shelbyGT.SpinnerView({
+            el: '.js-done',
+            replacement : true
+          });
+          this.renderChild(this._buttonSpinnerView);
           break;
         case ShareActionState.failed :
+          this._buttonSpinnerView.hide();
           this.$('.js-back').removeClass('js-busy');
           break;
       }

@@ -29,10 +29,10 @@
     },
 
     _educationMsgMap : {
-      'rollList' : 'Here is a list of your rolls. We\'ve created a few to get you started.',
-      'dashboard' : 'Your stream is a feed of activity from all your allowed networks.',
-      'standardRoll' : 'These are the videos for a single roll.',
-      'watchLaterRoll' : 'If you clicked the "saves" icon on a particular video, it gets saved here!'  
+      'rollList' : 'A roll is a living group of videos. Most of the rolls you see here automatically collect what each of your friends share--but I also added a few I like. You can leave a roll at any time, or create your own. Just click the film tape icon on any video to get started.',
+      'dashboard' : 'Your stream shows the videos your friends are sharing.',
+      'standardRoll' : 'This is what a roll of videos looks like. You can tweet/post/etc. any of these videos, or save them to a personal roll by clicking the blue film tape icon.',
+      'watchLaterRoll' : 'If you click the purple "save" icon on any video, I\'ll keep it here for you.'  
     },
 
     _onEducationStatusChange : function(userProgressModel, hasBeenEducated){

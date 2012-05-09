@@ -36,7 +36,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: '.js-submit-share',
         hidden : true,
-        replacement : true
+        replacement : true,
+        size : 'medium'
       });
       this.renderChild(this.spinner);
     }
@@ -137,7 +138,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
         self._handleShareSuccess(urls);
       },
       error : function(){
-        console.log('sharing failed - bug fix needed');
+        self._handleShareError();
       }
     };
   },
@@ -152,6 +153,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
   },
 
+  _handleShareError : function(){
+    console.log('sharing failed - bug fix needed');
+    this._components.spinner && this._hideSpinner();
+    if (this._components.shareButton) {
+      this.$('.js-submit-share').removeClass('js-sharing');
+    }
+    this.onShareError();
+  },
+
   onShareSuccess : function(){
     // subclasses may optionally override to perform custom handling on share success, but
     // should always call the superclass's implementation as part of theirs if they have
@@ -159,6 +169,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (this._components.shareButton) {
       this.$('.js-submit-share').removeClass('js-sharing');
     }
+  },
+
+  onShareError : function(){
+    // subclasses may optionally override to perform custom handling on share error
   },
 
   onValidationFail : function(){
