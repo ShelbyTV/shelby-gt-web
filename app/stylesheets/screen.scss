@@ -1,5 +1,6 @@
 //		try to keep the list in ascending order of generic to specific styles 
 //		due to some weird inheritance shit partials/frame is compiled before partials/rolls-list
+
 @import 
 		"partials/fonts",
 		"partials/h5bp", 
@@ -43,6 +44,7 @@
 		"partials/guide-education",
 
 		"partials/gate.scss",
+		"partials/ui-test.scss",
 
 		"partials/h5bp-utilities";
 

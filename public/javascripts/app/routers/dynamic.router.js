@@ -146,6 +146,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     }).value();
 
+		// FOR IN PERSON USER TESTING
+		// This is to alter ui of things like upvote, roll and comment elements
+		this._testSwitchingfromQueryParams(params);
+
     this._setupTopLevelViews({showSpinner: true});
     
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
@@ -385,6 +389,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //MISC HELPERS
   //---
   
+	_testSwitchingfromQueryParams: function(params){
+		// set shelby level setting establishing a "new" version of a ui el
+		if (params && params.uitest == 'true') {
+				shelby.commentUpvoteUITest = true;
+		}
+	},
+
   _hideSpinnerAfter: function(xhr){
     // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
     // upon which we append another callback to hide the spinner shown earlier.

@@ -24,7 +24,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "webkitTransitionEnd .js-rolling-frame" : "_onFrameRollingTransitionComplete",
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
-    "keyup .js-add-message-input"           : "_onAddMessageInputChange",
+    "keypress .js-add-message-input"        : "_onAddMessageInputChange",
     "focus .js-add-message-input"           : "_onAddMessageInputFocus",
     "click .js-message-submit"              : "_addMessage"
   },
@@ -34,7 +34,12 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   className : 'frame',
 
   template : function(obj){
-    return JST['frame'](obj);
+		var _tmplt;
+		if (shelby.commentUpvoteUITest){
+		 _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
+		}
+		else { _tmplt = JST['frame'](obj); }
+		return _tmplt;
   },
 
   initialize : function() {
@@ -129,7 +134,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _removeFromWatchLater : function(){
-    this.model.destroy();
+		// For UI Test workaround:
+		if (shelby.commentUpvoteUITest){ this._upvote(); }
+		else { this.model.destroy(); }
   },
 
   _upvote : function(){
@@ -145,8 +152,15 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onUpvoteChange : function(){
-    this.$('.video-score').addClass('video-score-upvoted');
-    this.$('.video-score').text(this.model.get('upvoters').length);
+		// For UI Test workaround:
+		if (shelby.commentUpvoteUITest){ 
+	    this.$('.upvote-test').addClass('video-score-upvoted');
+	    this.$('.upvote-test').text(this.model.get('upvoters').length);						
+		}
+		else {
+	    this.$('.video-score').addClass('video-score-upvoted');
+	    this.$('.video-score').text(this.model.get('upvoters').length);			
+		}
   },
 
   _toggleConversationDisplay : function(){
@@ -169,9 +183,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onAddMessageInputChange : function(event){
-    /*var self = this;
-    if (event.keyCode!==13) return false;
-    this._addMessage();*/
+    if (event.keyCode==13){
+			return this._addMessage();
+		};
   },
 
   _onAddMessageInputFocus : function(event){
@@ -181,6 +195,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _addMessage : function(){
     var self = this;
     var text = this.$('.js-add-message-input').val();
+		
     if (!this._isMessageValid(text)) {
       this._renderError('Why not say something?');
       return false;
@@ -188,6 +203,9 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
     msg.save(null, {
       success:function(conversation){
+				if (!self._conversationDisplayed){
+					self._toggleConversationDisplay();
+				}
         self.model.set('conversation', conversation);
       },
       error:function(){
@@ -221,7 +239,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       var distance = minHeight - this.$('article').height();
       if (distance > 0) {
-        var $user = this.$('.user')
+        var $user = this.$('.user');
         var targetHeight = $user.height() + distance;
         $user.animate({height:targetHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
