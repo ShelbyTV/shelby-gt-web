@@ -188,10 +188,10 @@
 	}
 	.share-frame{
 		@include roundies;
-		background-color: $flatShelbyBlue;
+		background-color: $sharingShelbyBlue;
 		@include background(
 			url('../images/assets/noise.png'),
-			$softShelbyBlue
+			$sharingShelbyBlueButton
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
 		
@@ -214,7 +214,7 @@
 		&:hover{
 			@include background(
 				url('../images/assets/noise.png'),
-				$softShelbyBlueHighlight
+				$sharingShelbyBlueHighlight
 			);
 			@include box-shadow(inset 0px 1px 1px 0px #077dba);
 		}

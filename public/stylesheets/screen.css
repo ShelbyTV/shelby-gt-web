@@ -1809,13 +1809,13 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-color: #007fb6;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #00a5cc, #007fb6);
+  background-color: #143caf;
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #077cb9), color-stop(100%, #143caf));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #077cb9, #143caf);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #077cb9, #143caf);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #077cb9, #143caf);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #077cb9, #143caf);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #077cb9, #143caf);
   -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
   -webkit-box-shadow: inset 0px 1px 1px 0px #00c6de;
   -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
@@ -1842,7 +1842,7 @@ a:hover, a:visited, a:active {
 }
 /* line 214, ../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame:hover {
-  background: url("../images/assets/noise.png"), #0091d0;
+  background: url("../images/assets/noise.png"), #1744c6;
   -moz-box-shadow: inset 0px 1px 1px 0px #077dba;
   -webkit-box-shadow: inset 0px 1px 1px 0px #077dba;
   -o-box-shadow: inset 0px 1px 1px 0px #077dba;

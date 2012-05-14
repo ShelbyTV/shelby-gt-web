@@ -58,6 +58,10 @@ $softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
 $shelbyBlueHighlight: #79cae7;
 $softShelbyBlueHighlight: adjust-lightness($flatShelbyBlue,5%);
 
+$sharingShelbyBlue: #143caf;
+$sharingShelbyBlueButton: linear-gradient(top, #077cb9, $sharingShelbyBlue);
+$sharingShelbyBlueHighlight: adjust-lightness($sharingShelbyBlue,5%);
+
 $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
