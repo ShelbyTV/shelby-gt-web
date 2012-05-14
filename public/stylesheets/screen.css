@@ -1644,12 +1644,11 @@ a:hover, a:visited, a:active {
 
 /* line 74, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
-  height: 70%;
-  margin: 20px auto 0;
+  margin: 36px auto 0;
   width: auto;
 }
 
-/* line 80, ../../app/stylesheets/partials/frame.scss */
+/* line 79, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1666,19 +1665,19 @@ a:hover, a:visited, a:active {
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 7px;
 }
-/* line 86, ../../app/stylesheets/partials/frame.scss */
+/* line 85, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 89, ../../app/stylesheets/partials/frame.scss */
+/* line 88, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 91, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
-/* line 97, ../../app/stylesheets/partials/frame.scss */
+/* line 96, ../../app/stylesheets/partials/frame.scss */
 .video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
@@ -1689,14 +1688,14 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 121, ../../app/stylesheets/partials/frame.scss */
+/* line 120, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 126, ../../app/stylesheets/partials/frame.scss */
+/* line 125, ../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -1704,7 +1703,7 @@ a:hover, a:visited, a:active {
   right: 0px;
   top: 0px;
 }
-/* line 133, ../../app/stylesheets/partials/frame.scss */
+/* line 132, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1727,7 +1726,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 146, ../../app/stylesheets/partials/frame.scss */
+/* line 145, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/action_roll.svg") no-repeat 8px 4px;
   -moz-border-radius: 5px;
@@ -1743,7 +1742,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 32px;
 }
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 157, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #63c43a;
   -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
@@ -1751,7 +1750,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #69f034;
   box-shadow: inset 0px 1px 1px 0px #69f034;
 }
-/* line 167, ../../app/stylesheets/partials/frame.scss */
+/* line 166, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1774,7 +1773,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 180, ../../app/stylesheets/partials/frame.scss */
+/* line 179, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame button {
   background: url("../images/assets/action_heart_white.svg") no-repeat 9px 4px;
   -moz-border-radius: 5px;
@@ -1793,7 +1792,7 @@ a:hover, a:visited, a:active {
   padding-top: 16px;
   width: 32px;
 }
-/* line 195, ../../app/stylesheets/partials/frame.scss */
+/* line 194, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame:hover {
   background: url("../images/assets/noise.png"), #535353;
   -moz-box-shadow: inset 0px 1px 1px 0px #888888;
@@ -1801,7 +1800,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #888888;
   box-shadow: inset 0px 1px 1px 0px #888888;
 }
-/* line 203, ../../app/stylesheets/partials/frame.scss */
+/* line 202, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted {
   background-color: #9e1632;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
@@ -1815,12 +1814,12 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #ef2f74;
   box-shadow: inset 0px 1px 1px 0px #ef2f74;
 }
-/* line 211, ../../app/stylesheets/partials/frame.scss */
+/* line 210, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted button {
   background: url("../images/assets/action_heart.svg") no-repeat 9px 4px;
   color: #222;
 }
-/* line 219, ../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #693a7b;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
@@ -1834,11 +1833,11 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 228, ../../app/stylesheets/partials/frame.scss */
+/* line 227, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 233, ../../app/stylesheets/partials/frame.scss */
+/* line 232, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #9863a2;
   -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
@@ -1846,7 +1845,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
   box-shadow: inset 0px 1px 1px 0px #9863a2;
 }
-/* line 241, ../../app/stylesheets/partials/frame.scss */
+/* line 240, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -1860,11 +1859,11 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 250, ../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.svg") no-repeat center center;
 }
-/* line 255, ../../app/stylesheets/partials/frame.scss */
+/* line 254, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #cb1c40;
   -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
@@ -1873,7 +1872,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 265, ../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1895,11 +1894,11 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 285, ../../app/stylesheets/partials/frame.scss */
+/* line 284, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 287, ../../app/stylesheets/partials/frame.scss */
+/* line 286, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1912,7 +1911,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 295, ../../app/stylesheets/partials/frame.scss */
+/* line 294, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1959,29 +1958,29 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 312, ../../app/stylesheets/partials/frame.scss */
+/* line 311, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 316, ../../app/stylesheets/partials/frame.scss */
+/* line 315, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 327, ../../app/stylesheets/partials/frame.scss */
+/* line 326, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
 }
 
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 331, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 338, ../../app/stylesheets/partials/frame.scss */
+/* line 337, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1992,31 +1991,31 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #333333, #303030);
 }
 
-/* line 343, ../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 352, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 357, ../../app/stylesheets/partials/frame.scss */
+/* line 356, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 361, ../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 367, ../../app/stylesheets/partials/frame.scss */
+/* line 366, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 500;
@@ -2024,7 +2023,7 @@ a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 374, ../../app/stylesheets/partials/frame.scss */
+/* line 373, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -2032,7 +2031,7 @@ a:hover, a:visited, a:active {
   padding-right: 3px;
 }
 
-/* line 383, ../../app/stylesheets/partials/frame.scss */
+/* line 382, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
   float: left;
@@ -2040,21 +2039,21 @@ a:hover, a:visited, a:active {
   margin: 1px 3px;
 }
 
-/* line 393, ../../app/stylesheets/partials/frame.scss */
+/* line 392, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
 }
 
-/* line 400, ../../app/stylesheets/partials/frame.scss */
+/* line 399, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
-/* line 405, ../../app/stylesheets/partials/frame.scss */
+/* line 404, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 408, ../../app/stylesheets/partials/frame.scss */
+/* line 407, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
@@ -3777,35 +3776,41 @@ a:hover, a:visited, a:active {
  */
 /* line 7, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education {
-  padding: 0;
+  padding: 0 !important;
 }
 
 /* line 11, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining {
-  background: lightyellow;
-  border: 1px solid yellow;
+  background: #f9f15c;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbf58d), color-stop(100%, #f9f15c));
+  background: -webkit-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -moz-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -o-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -ms-linear-gradient(top, #fbf58d, #f9f15c);
+  background: linear-gradient(top, #fbf58d, #f9f15c);
+  border: 1px solid #f8ef43;
+  position: relative;
 }
-/* line 14, ../../app/stylesheets/partials/guide-education.scss */
+/* line 17, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
   color: #000;
   font-size: 14px;
   margin-left: 10px;
   margin-right: 48px;
+  margin-top: 11px;
 }
 
-/* line 22, ../../app/stylesheets/partials/guide-education.scss */
+/* line 26, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
-  background: url("../images/assets/remove.svg") no-repeat center center transparent;
-  background-size: 100%;
+  background: url("../images/assets/remove_notification.svg") no-repeat center center transparent;
   border: none;
   color: #333;
   cursor: pointer;
   height: 10px;
-  float: right;
   margin: 10px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0;
+  top: 0;
   width: 10px;
 }
 

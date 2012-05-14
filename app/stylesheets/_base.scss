@@ -74,6 +74,9 @@ $flatShelbyYellow: #d5cd39;
 $softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
 $softShelbyYellowHighlight: #ddd756;
 
+$flatEducationYellow: #f9f15c;
+$softEducationYellow: linear-gradient(top, adjust-lightness($flatEducationYellow,10%), $flatEducationYellow);
+
 $flatShelbyGray: #575757;
 $softShelbyGray: linear-gradient(top, #7b7b7b, $flatShelbyGray);
 

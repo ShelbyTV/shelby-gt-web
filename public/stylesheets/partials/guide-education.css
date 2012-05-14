@@ -8,34 +8,40 @@
  */
 /* line 7, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education {
-  padding: 0;
+  padding: 0 !important;
 }
 
 /* line 11, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining {
-  background: lightyellow;
-  border: 1px solid yellow;
+  background: #f9f15c;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbf58d), color-stop(100%, #f9f15c));
+  background: -webkit-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -moz-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -o-linear-gradient(top, #fbf58d, #f9f15c);
+  background: -ms-linear-gradient(top, #fbf58d, #f9f15c);
+  background: linear-gradient(top, #fbf58d, #f9f15c);
+  border: 1px solid #f8ef43;
+  position: relative;
 }
-/* line 14, ../../../app/stylesheets/partials/guide-education.scss */
+/* line 17, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
   color: #000;
   font-size: 14px;
   margin-left: 10px;
   margin-right: 48px;
+  margin-top: 11px;
 }
 
-/* line 22, ../../../app/stylesheets/partials/guide-education.scss */
+/* line 26, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
-  background: url("../images/assets/remove.svg") no-repeat center center transparent;
-  background-size: 100%;
+  background: url("../images/assets/remove_notification.svg") no-repeat center center transparent;
   border: none;
   color: #333;
   cursor: pointer;
   height: 10px;
-  float: right;
   margin: 10px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0;
+  top: 0;
   width: 10px;
 }
