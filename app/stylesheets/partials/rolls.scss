@@ -77,8 +77,16 @@
 		#585858
 //		#454545
 	);
-	padding:$defaultMargin;
+	padding: 0 $defaultMargin $defaultMargin;
 	position:relative;
+
+	legend,
+	label {
+		float: left;
+		font-weight: 500;
+		margin: $defaultMargin 0 $defaultMargin/2;
+		width: 100%;
+	}
 }
 
 .share-comment{
@@ -107,14 +115,14 @@
 }
 
 .share-networks-list{
-
-	margin:0;
-	padding:0;
+	float: left;
+	margin: 0;
+	padding: 0;
 
 	li{
-		display:inline-block;
-		list-style-type:none;
-		margin:$defaultMargin $defaultMargin $defaultMargin 0;
+		display: inline-block;
+		list-style-type: none;
+		margin: 0 $defaultMargin $defaultMargin 0;
 
 	}
 }

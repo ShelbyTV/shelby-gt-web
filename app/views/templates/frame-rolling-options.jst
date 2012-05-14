@@ -1,6 +1,8 @@
 <fieldset class="roll-options">
-  <input class="js-new-roll-name-input new-roll-name-input" placeholder="Roll name..." type="text">
+  <label for="new-roll-name">Roll Name</label>
+  <input name="new-roll-name" id="new-roll-name" class="js-new-roll-name-input new-roll-name-input" placeholder="Roll name..." type="text">
   <% if (!roll.get('public')) { %>
-    <input class="js-new-roll-recipients new-roll-recipients" placeholder="Email Addresses..." type="email" multiple="multiple">
+    <label for="new-roll-recipients">Recipients</label>
+    <input name="new-roll-recipients" id="new-roll-name" class="js-new-roll-recipients new-roll-recipients" placeholder="Email Addresses..." type="email" multiple="multiple">
   <% } %>
 </fieldset>
