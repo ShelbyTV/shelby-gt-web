@@ -100,41 +100,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-<<<<<<< HEAD
-		width: 80%;
-	}
-}
-
-.video-score{
-	@include fontcolorLight;
-	@include buttonfont;
-
-	background:transparent;
-	border:none;
-	float:right;
-	line-height:1.231;
-	padding:0;
-
-	&:before{
-		content: url('../images/assets/score.svg');
-		margin-right:3px;
-	}
-
-	&:hover:before{
-		color:$flatShelbyBlue;
-	}
-
-	&:active{
-		color:$flatShelbyBlue;
-
-	}
-}
-.video-score-upvoted{
-	&:before{
-		content:"\0020";
-=======
 		width: 100%;
->>>>>>> af6629e127ef25f0bdfbeec3bb38b361e44f5f33
 	}
 }
 
@@ -220,7 +186,6 @@
 			@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		}
 	}
-<<<<<<< HEAD
 	.share-frame{
 		@include roundies;
 		background-color: $flatShelbyBlue;
@@ -229,7 +194,32 @@
 			$softShelbyBlue
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
-=======
+		
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/action_share.svg') no-repeat 2px 9px
+			);
+			@include roundies;
+			display:block;
+			height:32px;
+			margin:0;
+			outline:0;
+			text-decoration:underline;
+			width:32px;
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$softShelbyBlueHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #077dba);
+		}
+
+	}
 	
 	.upvote-frame{
 	  @include roundies;
@@ -239,7 +229,6 @@
 			$lightShelbyGrayButton
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #888);
->>>>>>> af6629e127ef25f0bdfbeec3bb38b361e44f5f33
 
 		border:$menuStroke;
 		margin-bottom:5px;
@@ -247,16 +236,6 @@
 	
 		button{
 			@include background(
-<<<<<<< HEAD
-				url('../images/assets/action_share.svg') no-repeat 0px -1px
-			);
-			@include roundies;
-			display:block;
-			height:32px;
-			margin:0;
-			outline:0;
-			text-decoration:underline;
-=======
 				url('../images/assets/action_heart_white.svg') no-repeat 9px 4px
 			);
 			@include roundies;
@@ -268,19 +247,11 @@
 			margin:0;
 			outline:0;
 			padding-top:16px;
->>>>>>> af6629e127ef25f0bdfbeec3bb38b361e44f5f33
 			width:32px;
 		}
 		&:hover{
 			@include background(
 				url('../images/assets/noise.png'),
-<<<<<<< HEAD
-				$softShelbyBlueHighlight
-			);
-			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
-		}
-	}
-=======
 				$lightShelbyGrayButtonHighlight
 			);
 			@include box-shadow(inset 0px 1px 1px 0px #888);
@@ -302,7 +273,6 @@
 	  }
   }
 	
->>>>>>> af6629e127ef25f0bdfbeec3bb38b361e44f5f33
 	.save-frame{
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;
@@ -406,9 +376,9 @@
 		padding:0;
 
 	}
-//	.user-vcard {
-//		padding-bottom:9px;
-//	}
+	//	.user-vcard {
+		//		padding-bottom:9px;
+		//	}
 }
 
 .video-source{
