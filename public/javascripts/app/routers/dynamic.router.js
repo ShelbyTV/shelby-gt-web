@@ -9,6 +9,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rollFromFrame/:frameId" : "displayRollFromFrame",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
+    "stream" : "displayDashboard",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
