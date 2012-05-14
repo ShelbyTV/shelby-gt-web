@@ -8,23 +8,19 @@
 		    <%= frame.get('video').get('title') %>
       </h1>
     </a>  
-    <button class="video-score <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'video-score-upvoted' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button"><%= frame.get('upvoters').length %></button>
   </header>
   
   <div class="video-thumbnail">
     <ul class="video-controls" type="toolbar">
+      <li class="upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button"><%= frame.get('upvoters').length %></button>
+      </li>
       <li class="roll-frame">
         <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Roll Frame</button>
       </li>
-      <% if (!frameIsOnWatchLaterRoll) { %>
-        <li class="save-frame">
-          <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="save" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Save Frame</button>
-        </li>
-      <% } else { %>
-        <li class="remove-frame">
-          <button class="video-controls-button ir" type="button">Remove Frame</button>
-        </li>
-      <% } %>
+			<li class="share-frame">
+				<button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label='<%= shelby.models.user.get('nickname') %>'></button>
+			</li>
     </ul>
     <% if(frame.get('video').get('thumbnail_url')) { %>
       <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
@@ -53,7 +49,7 @@
   
     <div class="video-footer">
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
-      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>
+      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>			
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
              shelby.models.guide.get('displayState') !== 'userPersonalRoll' &&
              frame.has('roll')) { %>

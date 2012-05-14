@@ -26,13 +26,14 @@
 /* line 17, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
   color: #000;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
   margin-left: 10px;
   margin-right: 48px;
-  margin-top: 11px;
+  margin-top: 10px;
 }
 
-/* line 26, ../../../app/stylesheets/partials/guide-education.scss */
+/* line 27, ../../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
   background: url("../images/assets/remove_notification.svg") no-repeat center center transparent;
   border: none;
