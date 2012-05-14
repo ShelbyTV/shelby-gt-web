@@ -217,6 +217,39 @@
 			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
 		}
 	}
+	.share-frame{
+		@include roundies;
+		background-color: $flatShelbyBlue;
+		@include background(
+			url('../images/assets/noise.png'),
+			$softShelbyBlue
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/action_share.svg') no-repeat 0px -1px
+			);
+			@include roundies;
+			display:block;
+			height:32px;
+			margin:0;
+			outline:0;
+			text-decoration:underline;
+			width:32px;
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$softShelbyBlueHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		}
+	}
 	.save-frame{
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;

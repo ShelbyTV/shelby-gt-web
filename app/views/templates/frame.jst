@@ -15,6 +15,9 @@
       <li class="roll-frame">
         <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Roll Frame</button>
       </li>
+			<li class="share-frame">
+				<button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label='<%= shelby.models.user.get('nickname') %>'></button>
+			</li>
     </ul>
     <% if(frame.get('video').get('thumbnail_url')) { %>
       <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
@@ -44,7 +47,6 @@
     <div class="video-footer">
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
       <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>			
-			<button class="js-share-frame frame-main-social js-track-event" data-ga_category="Frame" data-ga_action="share button" data-ga_label='<%= shelby.models.user.get('nickname') %>'></button>
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
              shelby.models.guide.get('displayState') !== 'userPersonalRoll' &&
              frame.has('roll')) { %>
