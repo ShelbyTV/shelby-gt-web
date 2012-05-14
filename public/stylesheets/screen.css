@@ -3747,12 +3747,13 @@ a:hover, a:visited, a:active {
 }
 /* line 14, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
-  color: #333;
+  color: #000;
+  font-size: 14px;
   margin-left: 10px;
   margin-right: 48px;
 }
 
-/* line 21, ../../app/stylesheets/partials/guide-education.scss */
+/* line 22, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
   background: url("../images/assets/remove.svg") no-repeat center center transparent;
   background-size: 100%;
