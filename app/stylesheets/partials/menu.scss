@@ -14,8 +14,7 @@
 		display:block;
 		float:left;
 		height:42px;
-//		width:16.666667%;
-		width:33.333333%;
+		width:50%;
 		&:nth-of-type(4){
 			@include box-shadow(inset 1px 1px 1px #4d4d4d);
 			border-right:none;

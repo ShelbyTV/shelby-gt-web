@@ -104,6 +104,7 @@
 		width: 80%;
 	}
 }
+
 .video-score{
 	@include fontcolorLight;
 	@include buttonfont;
@@ -131,6 +132,30 @@
 .video-score-upvoted{
 	&:before{
 		content:"\0020";
+	}
+}
+
+.frame-main-social {
+	//@extend .rolling-main-done;
+	@include button-primer($flatShelbyBlue);
+	@include box-shadow(
+		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
+	);
+	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
+	
+	display:block;
+	float:right;
+	padding:0px;
+	margin: -4px -3px;
+
+	&:before{
+		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+		background-size:72%;
+		content:"\0020";
+		float:left;
+		margin:1px 2px 1px 7px;
+		width:38px;
+		height:17px;
 	}
 }
 
@@ -302,7 +327,7 @@
 
 .video-source{
 	float:right;
-
+	padding-right: 10px;
 }
 
 .video-author{
