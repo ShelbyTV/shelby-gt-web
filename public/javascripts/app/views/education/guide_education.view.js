@@ -29,10 +29,10 @@
     },
 
     _educationMsgMap : {
-      'rollList' : 'A roll is a living group of videos. Most of the rolls you see here automatically collect what each of your friends share--but I also added a few I like. You can leave a roll at any time, or create your own. Just click the film tape icon on any video to get started.',
-      'dashboard' : 'Your stream shows the videos your friends are sharing.',
-      'standardRoll' : 'This is what a roll of videos looks like. You can tweet/post/etc. any of these videos, or save them to a personal roll by clicking the blue film tape icon.',
-      'watchLaterRoll' : 'If you click the purple "save" icon on any video, I\'ll keep it here for you.'  
+      'rollList' : 'These are <b>Rolls.</b>  People post video in them.',
+      'dashboard' : '<b>Stream</b> shows all the videos from your <b>Rolls</b>',
+      'standardRoll' : 'Try <b>hearting</b> the second video in this Roll.',
+      'watchLaterRoll' : 'Use <b>saves</a> for "watch later" or to remember your favorites.'
     },
 
     _onEducationStatusChange : function(userProgressModel, hasBeenEducated){

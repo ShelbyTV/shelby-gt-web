@@ -72,8 +72,7 @@
 }	
 
 .video-thumbnail-missing {
-		height: 70%;
-		margin: 20px auto 0;
+		margin: 36px auto 0;
 		width: auto; 
 }
 
@@ -101,36 +100,31 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: 80%;
+		width: 100%;
 	}
 }
-.video-score{
-	@include fontcolorLight;
-	@include buttonfont;
 
-	background:transparent;
-	border:none;
+.frame-main-social {
+	//@extend .rolling-main-done;
+	@include button-primer($flatShelbyBlue);
+	@include box-shadow(
+		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
+	);
+	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
+	
+	display:block;
 	float:right;
-	line-height:1.231;
-	padding:0;
+	padding:0px;
+	margin: -4px -3px;
 
 	&:before{
-		content: url('../images/assets/score.svg');
-		margin-right:3px;
-	}
-
-	&:hover:before{
-		color:$flatShelbyBlue;
-	}
-
-	&:active{
-		color:$flatShelbyBlue;
-
-	}
-}
-.video-score-upvoted{
-	&:before{
+		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+		background-size:72%;
 		content:"\0020";
+		float:left;
+		margin:1px 2px 1px 7px;
+		width:38px;
+		height:17px;
 	}
 }
 
@@ -161,12 +155,12 @@
 
 	.roll-frame{
 		@include roundies;
-		background-color: $flatShelbyBlue;
+		background-color: $flatShelbyGreenButton;
 		@include background(
 			url('../images/assets/noise.png'),
-			$softShelbyBlue
+			$softShelbyGreenButton
 		);
-		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		@include box-shadow(inset 0px 1px 1px 0px #69f034);
 
 		border:$menuStroke;
 		margin-bottom:5px;
@@ -174,24 +168,111 @@
 	
 		button{
 			@include background(
-				url('../images/assets/roll_action.svg') no-repeat 0px -1px
+				url('../images/assets/action_roll.svg') no-repeat 8px 4px
 			);
 			@include roundies;
 			display:block;
-			height:44px;
+			height:32px;
 			margin:0;
 			outline:0;
 			text-decoration:underline;
-			width:44px;
+			width:32px;
 		}
 		&:hover{
 			@include background(
 				url('../images/assets/noise.png'),
-				$softShelbyBlueHighlight
+				$softShelbyGreenButtonHighlight
 			);
-			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+			@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		}
 	}
+	.share-frame{
+		@include roundies;
+		background-color: $sharingShelbyBlue;
+		@include background(
+			url('../images/assets/noise.png'),
+			$sharingShelbyBlueButton
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/action_share.svg') no-repeat 2px 9px
+			);
+			@include roundies;
+			display:block;
+			height:32px;
+			margin:0;
+			outline:0;
+			text-decoration:underline;
+			width:32px;
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$sharingShelbyBlueHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #077dba);
+		}
+
+	}
+	
+	.upvote-frame{
+	  @include roundies;
+		background-color: $flatLightShelbyGrayButton;
+		@include background(
+			url('../images/assets/noise.png'),
+			$lightShelbyGrayButton
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #888);
+
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/action_heart_white.svg') no-repeat 9px 4px
+			);
+			@include roundies;
+			@include buttonfont;
+			color: #fff;
+			display:block;
+			font-weight: bold;
+			height:32px;
+			margin:0;
+			outline:0;
+			padding-top:16px;
+			width:32px;
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$lightShelbyGrayButtonHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #888);
+		}
+  }
+  .upvote-frame.upvoted{
+  	background-color: $flatShelbyRed;
+		@include background(
+			url('../images/assets/noise.png'),
+			$softShelbyRed
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
+		
+		button {
+		  @include background(
+				url('../images/assets/action_heart.svg') no-repeat 9px 4px
+			);
+		  color: #222;
+	  }
+  }
+	
 	.save-frame{
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;
@@ -295,14 +376,14 @@
 		padding:0;
 
 	}
-//	.user-vcard {
-//		padding-bottom:9px;
-//	}
+	//	.user-vcard {
+		//		padding-bottom:9px;
+		//	}
 }
 
 .video-source{
 	float:right;
-
+	padding-right: 10px;
 }
 
 .video-author{

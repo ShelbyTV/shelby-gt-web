@@ -54,7 +54,14 @@
           collaborative : true
         });
       }
-      this.$('.js-back').html('Back');
+
+			if (options.sharing){
+				this._isFrameSharing = true;
+				this.$('.js-back').html('Cancel');
+			} else {
+				this.$('.js-back').html('Back');
+			}
+      
       
       if (roll.get('public')) {
         this._frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
@@ -78,7 +85,16 @@
     },
 
     _goBack : function(){
-      if (this._frameRollingCompletionView) {
+			if (this._isFrameSharing){
+				// this is meant to be just a social share, not a rolling action, 
+				//  so cancel should bring back to original frame view.
+				this._frameRollingCompletionView.leave();
+        this._frameRollingCompletionView = null;
+        this.$('.js-back').html('Cancel');
+        this.$('.js-done').hide();
+				this._hide();
+			}
+      else if (this._frameRollingCompletionView) {
         this._frameRollingCompletionView.leave();
         this._frameRollingCompletionView = null;
         this.$('.js-back').html('Cancel');
