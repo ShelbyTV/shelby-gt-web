@@ -62,6 +62,10 @@ $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
 
+$flatShelbyGreenButton: #59b034;
+$softShelbyGreenButton: linear-gradient(top, #79c758, $flatShelbyGreenButton);
+$softShelbyGreenButtonHighlight: adjust-lightness($flatShelbyGreenButton,5%);
+
 $flatShelbyPurple: #693a7b;
 $softShelbyPurple: linear-gradient(top, #8d539a, $flatShelbyPurple);
 $softShelbyPurpleHighlight: #9863a2;
@@ -70,11 +74,18 @@ $flatShelbyYellow: #d5cd39;
 $softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
 $softShelbyYellowHighlight: #ddd756;
 
+$flatEducationYellow: #f9f15c;
+$softEducationYellow: linear-gradient(top, adjust-lightness($flatEducationYellow,10%), $flatEducationYellow);
+
 $flatShelbyGray: #575757;
 $softShelbyGray: linear-gradient(top, #7b7b7b, $flatShelbyGray);
 
 $flatShelbyGrayButton: #343434;
 $softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
+
+$flatLightShelbyGrayButton: #464646;
+$lightShelbyGrayButton: linear-gradient(top, #646464, $flatLightShelbyGrayButton);
+$lightShelbyGrayButtonHighlight: adjust-lightness($flatLightShelbyGrayButton,5%);
 
 $flatShelbyGrayDeboss: #303030;
 $softShelbyGrayDeboss: linear-gradient(bottom,#444,$flatShelbyGrayDeboss);
