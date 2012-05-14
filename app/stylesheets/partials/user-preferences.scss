@@ -101,22 +101,23 @@
 	@extend .you-preferences-list;
 
 	button{
-		@include buttonfont;
-
-		background:transparent;
-		border:none;
-		color:#efefef;
-		float:right;
-		font-size:11px;
-		font-weight:300;
-		text-decoration:underline;
+//		THE BELOW STYLES ARE COMMENTED OUT BECAUSE THEY PERTAIN TO SOMETHING
+//		THAT ISN'T CURRENTLY BEING RENDERED ANYWHERE ON THE SITE
+//		@include buttonfont;
+//		background:transparent;
+//		border:none;
+//		color:#efefef;
+//		float:right;
+//		font-size:11px;
+//		font-weight:300;
+//		text-decoration:underline;
 
 		&.connected-network{
-			@include form-submit-button;
-			@include background(
-				$softShelbyGreen
-			);
-			@include box-shadow(inset -1px 0px 1px 0px #85cc66);
+			@include form-submit-button($flatShelbyGreen);
+//			@include background(
+//				$softShelbyGreen
+//			);
+//			@include box-shadow(inset -1px 0px 1px 0px #85cc66);
 
 			float:right;
 			height:26px;

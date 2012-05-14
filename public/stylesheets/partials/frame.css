@@ -123,7 +123,7 @@
 /* line 106, ../../../app/stylesheets/partials/frame.scss */
 .video-score {
   color: #efefef;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
   border: none;
   float: right;
@@ -311,7 +311,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);

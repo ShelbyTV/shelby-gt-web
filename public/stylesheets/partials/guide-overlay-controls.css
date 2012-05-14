@@ -61,7 +61,7 @@
 }
 /* line 35, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -moz-transition-property: opacity;

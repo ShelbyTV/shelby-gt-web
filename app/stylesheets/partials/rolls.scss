@@ -52,15 +52,15 @@
 
 .rolls-leave{
 	@extend .rolls-add;
-	@include box-shadow(inset 0px 0px 1px 0px #111);
 	background:$flatShelbyGrayDeboss;
 	@include background(
 		$softShelbyGrayDeboss
 	);	
+	@include box-shadow(inset 0px 0px 1px 0px #111);
+	border:1px solid transparent;
 }
 
 .share-dialog{
-
 	background:#585858;
 	border-bottom:1px solid #222;
 	padding:0;
@@ -95,6 +95,7 @@
 	.video-shared{
 		@extend .video-saved;
 		@include border-radius($radius);
+		
 		padding-top:15px;
 	}
 }
@@ -208,7 +209,7 @@
 }
 
 .share-submit-button{
-	@include form-submit-button;
+	@include form-submit-button($flatShelbyBlue);
 	.spinner{
 		left:auto;
 		margin-left:auto;
