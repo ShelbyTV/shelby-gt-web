@@ -25,8 +25,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "webkitTransitionEnd .js-rolling-frame" : "_onFrameRollingTransitionComplete",
     "MSTransitionEnd .js-rolling-frame"     : "_onFrameRollingTransitionComplete",
     "oTransitionEnd .js-rolling-frame"      : "_onFrameRollingTransitionComplete",
-    "keypress .js-add-message-input"        : "_onAddMessageInputChange",
-    "focus .js-add-message-input"           : "_onAddMessageInputFocus",
     "click .js-message-submit"              : "_addMessage"
   },
 
