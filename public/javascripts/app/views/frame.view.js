@@ -15,7 +15,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     "click .remove-frame"                   : "_removeFromWatchLater",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .video-source"                   : "_goToRoll",
-    "click .video-score"                    : "_upvote",
+    "click .upvote-frame"                   : "_upvote",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
@@ -158,8 +158,8 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 	    this.$('.upvote-test').text(this.model.get('upvoters').length);						
 		}
 		else {
-	    this.$('.video-score').addClass('video-score-upvoted');
-	    this.$('.video-score').text(this.model.get('upvoters').length);			
+	    this.$('.upvote-frame').addClass('upvoted');
+	    this.$('.upvote-frame button').text(this.model.get('upvoters').length);
 		}
   },
 

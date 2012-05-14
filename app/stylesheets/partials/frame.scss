@@ -101,36 +101,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: 80%;
-	}
-}
-.video-score{
-	@include fontcolorLight;
-	@include buttonfont;
-
-	background:transparent;
-	border:none;
-	float:right;
-	line-height:1.231;
-	padding:0;
-
-	&:before{
-		content: url('../images/assets/score.svg');
-		margin-right:3px;
-	}
-
-	&:hover:before{
-		color:$flatShelbyBlue;
-	}
-
-	&:active{
-		color:$flatShelbyBlue;
-
-	}
-}
-.video-score-upvoted{
-	&:before{
-		content:"\0020";
+		width: 100%;
 	}
 }
 
@@ -161,12 +132,12 @@
 
 	.roll-frame{
 		@include roundies;
-		background-color: $flatShelbyBlue;
+		background-color: $flatShelbyGreenButton;
 		@include background(
 			url('../images/assets/noise.png'),
-			$softShelbyBlue
+			$softShelbyGreenButton
 		);
-		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		@include box-shadow(inset 0px 1px 1px 0px #69f034);
 
 		border:$menuStroke;
 		margin-bottom:5px;
@@ -174,24 +145,77 @@
 	
 		button{
 			@include background(
-				url('../images/assets/roll_action.svg') no-repeat 0px -1px
+				url('../images/assets/action_roll.svg') no-repeat 8px 4px
 			);
 			@include roundies;
 			display:block;
-			height:44px;
+			height:32px;
 			margin:0;
 			outline:0;
 			text-decoration:underline;
-			width:44px;
+			width:32px;
 		}
 		&:hover{
 			@include background(
 				url('../images/assets/noise.png'),
-				$softShelbyBlueHighlight
+				$softShelbyGreenButtonHighlight
 			);
-			@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+			@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		}
 	}
+	
+	.upvote-frame{
+	  @include roundies;
+		background-color: $flatLightShelbyGrayButton;
+		@include background(
+			url('../images/assets/noise.png'),
+			$lightShelbyGrayButton
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #888);
+
+		border:$menuStroke;
+		margin-bottom:5px;
+		padding:0;
+	
+		button{
+			@include background(
+				url('../images/assets/action_heart_white.svg') no-repeat 9px 4px
+			);
+			@include roundies;
+			@include buttonfont;
+			color: #fff;
+			display:block;
+			font-weight: bold;
+			height:32px;
+			margin:0;
+			outline:0;
+			padding-top:16px;
+			width:32px;
+		}
+		&:hover{
+			@include background(
+				url('../images/assets/noise.png'),
+				$lightShelbyGrayButtonHighlight
+			);
+			@include box-shadow(inset 0px 1px 1px 0px #888);
+		}
+  }
+  .upvote-frame.upvoted{
+  	background-color: $flatShelbyRed;
+		@include background(
+			url('../images/assets/noise.png'),
+			$softShelbyRed
+		);
+		@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
+		
+		button {
+		  @include background(
+				url('../images/assets/action_heart.svg') no-repeat 9px 4px
+			);
+		  color: #222;
+	  }
+  }
+	
 	.save-frame{
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;
