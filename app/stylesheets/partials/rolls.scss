@@ -61,12 +61,18 @@
 	margin: 1px;
 }
 
+.rolls-share-cancel{
+	@extend .rolls-leave;
+	border-color:#333;
+}
+
 .share-dialog{
 	background:#585858;
 	border-bottom:1px solid #222;
 	padding:0;
 	display:none;
 	position:relative;
+	width:100%;
 	z-index:1;
 
 }
