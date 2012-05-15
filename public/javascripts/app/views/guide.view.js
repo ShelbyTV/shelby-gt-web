@@ -60,8 +60,8 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.user
-            //model : shelby.collections.rollFollowings
+            //model : shelby.models.user
+            model : shelby.models.rollFollowings
           };
           break;
         case DisplayState.standardRoll :

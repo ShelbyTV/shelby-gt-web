@@ -28,6 +28,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
 
+    shelby.models.rollFollowings = new libs.shelbyGT.RollFollowingsModel();
+
     //TODO: refactor so this is a user.model relation //
     shelby.models.userProgress = new libs.shelbyGT.UserProgressModel();
     //----------------------------------------------//
