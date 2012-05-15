@@ -90,7 +90,8 @@
 	label {
 		float: left;
 		font-weight: 500;
-		margin: $defaultMargin 0 $defaultMargin/2;
+//		font-size: 10px;
+		margin: $defaultMargin - 2 0 $defaultMargin - 8;
 		width: 100%;
 	}
 }
