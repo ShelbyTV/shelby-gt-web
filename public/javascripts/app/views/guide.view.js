@@ -174,6 +174,7 @@
 
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
+        case libs.shelbyGT.DisplayState.rollList :
           _currentModel = shelby.models.dashboard;
           _frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){
             return c.get('frame');

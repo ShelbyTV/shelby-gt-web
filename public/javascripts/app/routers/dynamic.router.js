@@ -1,5 +1,5 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
-	
+
   routes : {
     "roll/:rollId/frame/:frameId/rollit" : "displayFrameAndActivateRollingView",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help" : "displayHelp",
     "team" : "displayTeam",
     "legal" : "displayLegal",
-    "" : "displayDashboard",
+    "" : "displayRollListAndPlayStream",
     "*url" : "doNothing"
   },
 
@@ -121,6 +121,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
+    // FOR IN PERSON USER TESTING
+    // This is to alter ui of things like upvote, roll and comment elements
+    this._testSwitchingfromQueryParams(params);
+
+    this._setupTopLevelViews({showSpinner: true});
+    this._fetchDashboard(options);
+  },
+
+  _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
@@ -138,39 +147,33 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
 
         setTimeout(function(){
-          self.displayDashboard(params, options);
+          self._fetchDashboard(options);
         }, 400);
 
       },
       data: {
           include_children : true
-      }
+      },
+      displayInGuide : true
     }).value();
-
-		// FOR IN PERSON USER TESTING
-		// This is to alter ui of things like upvote, roll and comment elements
-		this._testSwitchingfromQueryParams(params);
-
-    this._setupTopLevelViews({showSpinner: true});
-    
-    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
-    /*shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.dashboard,
-      'sinceId' : options.data.since_id ? options.data.since_id : null
-    });*/
 
     var fetchOptions = {data: options.data};
     fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
     fetchOptions.success = options.onDashboardFetch;
+    // uncomment to emulate a new user sign-up w/ no data
+    // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
-    //uncomment to emulate a new user sign-up w/ no data
-    //fetchOptions.data.limit = Math.random() < 0.3 ? 20 : 0;
-    shelby.models.guide.set({
-      'displayState' : libs.shelbyGT.DisplayState.dashboard,
-      'sinceId' : options.data.since_id ? options.data.since_id : null,
-      'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
-    });
-    this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
+    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
+    if (options.displayInGuide) {
+      shelby.models.guide.set({
+        'displayState' : libs.shelbyGT.DisplayState.dashboard,
+        'sinceId' : options.data.since_id ? options.data.since_id : null,
+        'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
+      });
+      this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
+    } else {
+      shelby.models.dashboard.fetch(fetchOptions);
+    }
   },
 
   displayRollList : function(params){
@@ -228,6 +231,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   
   doNothing : function(url){
     console.log('unhandled url', url);
+  },
+
+  displayRollListAndPlayStream : function(params){
+    this.displayRollList();
+    this._fetchDashboard({displayInGuide:false});
   },
 
   //---
@@ -377,9 +385,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._hideSpinnerAfter( rollModel.fetch(fetchOptions) );
   },
   
-	_setupRollViewWithCallback : function(rollId, frameId, options){
-		var self = this;
-		this._setupRollView(rollId, null, {
+  _setupRollViewWithCallback : function(rollId, frameId, options){
+    var self = this;
+    this._setupRollView(rollId, null, {
       data: {
         since_id : frameId,
         include_children : true
@@ -388,18 +396,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
       }
     });
-	},
-	
+  },
+
   //---
   //MISC HELPERS
   //---
   
-	_testSwitchingfromQueryParams: function(params){
-		// set shelby level setting establishing a "new" version of a ui el
-		if (params && params.uitest == 'true') {
-				shelby.commentUpvoteUITest = true;
-		}
-	},
+  _testSwitchingfromQueryParams: function(params){
+    // set shelby level setting establishing a "new" version of a ui el
+    if (params && params.uitest == 'true') {
+        shelby.commentUpvoteUITest = true;
+    }
+  },
 
   _hideSpinnerAfter: function(xhr){
     // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
