@@ -19,10 +19,12 @@
     addOne : function(item){
       try {
         PagingListView.prototype.addOne.call(this, item);
-      } catch (e) {
+      } catch (error) {
 				// We are not loading G. Analytics in development env so just log to console.
 				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]); }
-				catch(e) { console.log("_gaq not loaded in development env:", e.message); }
+				catch(e) {
+          console.log("_gaq not loaded in development env:", error.message);
+        }
       }
     },
 
@@ -63,9 +65,7 @@
     },
 
     _switchActiveFrameViews : function(frameViews){
-      frameViews.old && frameViews.old.$el.removeClass('active-frame');
       if(frameViews.current) {
-        frameViews.current.$el.addClass('active-frame');
         this._scrollTo(frameViews.current.el);
       }
     },
