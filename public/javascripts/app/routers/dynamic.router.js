@@ -199,20 +199,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews({showSpinner: true});
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
     var self = this;
-    //shelby.collections.rollFollowings = new libs.shelbyGT.RollFollowingsCollection();
     this._hideSpinnerAfter((function(){
       self._addHotRolls();
-      return shelby.models.user.fetch({
-        data: {include_rolls:true}
-      });
-      //return shelby.collections.rollFollowings.fetch();
-    })()
-    );
+      return shelby.models.rollFollowings.fetch();
+    })());
   },
 
   _addHotRolls : function(){
     libs.utils.HotRollsJson.forEach(function(rollJson){
-      shelby.models.user.get('roll_followings').add(new libs.shelbyGT.RollModel(rollJson));
+      shelby.models.rollFollowings.get('roll_followings').add(new libs.shelbyGT.RollModel(rollJson));
     });
   },
 

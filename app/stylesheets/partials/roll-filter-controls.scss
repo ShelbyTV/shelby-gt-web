@@ -27,6 +27,11 @@
 	padding:$defaultMargin/2;
 	text-align:center;
 	width:100%;
+	
+	input {
+		margin: 3px;
+		padding: 4px;
+	}
 }
 
 .current-roll-avatar {
