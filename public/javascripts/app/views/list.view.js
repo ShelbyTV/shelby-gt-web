@@ -6,7 +6,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   options : {
     collectionAttribute : 'listCollection',
-    listItemView : 'ListItemView',
+    listItemView : 'libs.shelbyGT.ListItemView',
     insert : {
       position : 'append',
       selector : null
@@ -97,7 +97,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _findViewByModel : function(model){
     return function(view){
-      return view.model == model;
+      return model && view.model.id == model.id;
     };
   },
 

@@ -1651,7 +1651,7 @@ body.isolated-roll .guide-education {
   background: #555555;
 }
 /* line 27, ../../app/stylesheets/partials/frame.scss */
-.list .active-frame, .rolls-list .active-frame, .form-rolls-list .active-frame {
+.list .active-list-item, .rolls-list .active-list-item, .form-rolls-list .active-list-item {
   background: #6d6d6d;
 }
 
@@ -2603,7 +2603,7 @@ body.isolated-roll .guide-education {
 }
 /* line 17, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
-  background: #6d6d6d;
+  background: #555555;
 }
 /* line 24, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {

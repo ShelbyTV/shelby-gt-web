@@ -1,3 +1,3 @@
-ListItemView = Support.CompositeView.extend({
+libs.shelbyGT.ListItemView = Support.CompositeView.extend({
 
 });
