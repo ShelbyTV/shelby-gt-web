@@ -1,4 +1,4 @@
-libs.shelbyGT.RollingSelectionItemView = ListItemView.extend({
+libs.shelbyGT.RollingSelectionItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
     "click" : "_reRollToThis"

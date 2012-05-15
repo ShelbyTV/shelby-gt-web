@@ -1,4 +1,9 @@
-libs.shelbyGT.RollItemView = ListItemView.extend({
+libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
+
+  options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
+      activationStateModel : 'shelby.models.guide',
+      activationStateProperty : 'activeFrameModel'
+  }),
 
   events : {
     "click .js-roll-item-button" : "goToRoll"
@@ -12,30 +17,25 @@ libs.shelbyGT.RollItemView = ListItemView.extend({
     return JST['roll-item'](obj);
   },
 
-  initialize : function(){
-    this.render();
-    /*this.model.bind('change', this.render, this);
-    this.model.bind('destroy', this.remove, this);*/
-  },
-
-  _cleanup : function(){
-    /*this.model.unbind('change', this.render, this);
-    this.model.unbind('destroy', this.remove, this);*/
-  },
-
   render : function(){
     this.$el.html(this.template({roll : this.model}));
-    var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-    if (activeFrameModel) {
-      var roll = activeFrameModel.get('roll');
-      if (roll && this.model.id == roll.id) {
-        this.$el.addClass('active-list-item');
-      }
-    }
+    libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
   goToRoll : function(){
     shelby.router.navigateToRoll(this.model, {trigger:true});
+  },
+
+  // override ActiveHighlightListItemView abstract method
+  doActivateThisItem : function(guideModel){
+    var activeFrameModel = guideModel.get('activeFrameModel');
+    if (activeFrameModel) {
+      var roll = activeFrameModel.get('roll');
+      if (roll && this.model.id == roll.id) {
+        return true;
+      }
+    }
+    return false;
   }
 
 });

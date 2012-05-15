@@ -1,4 +1,4 @@
-libs.shelbyGT.FrameView = ListItemView.extend({
+libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _conversationDisplayed : false,
 
@@ -7,6 +7,11 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   _frameRollingView : null,
 
   _frameViewState: null,
+
+  options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
+      activationStateModel : 'shelby.models.guide',
+      activationStateProperty : 'activeFrameModel'
+  }),
 
   events : {
     "click .js-frame-activate"              : "_activate",
@@ -45,22 +50,19 @@ libs.shelbyGT.FrameView = ListItemView.extend({
     this.model.bind('destroy', this._onFrameRemove, this);
     this.model.bind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').on('change', this._onConversationChange, this);
-    shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this._frameViewState = new libs.shelbyGT.FrameViewStateModel();
     this._frameViewState.bind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     this._frameViewState.bind('change:doFrameSharing', this._onDoFrameSharingChange, this);
-    ListItemView.prototype.initialize.call(this);
+    libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').off('change', this._onConversationChange, this);
-    shelby.models.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-    shelby.models.guide.unbind('change:activeFrameModel', this._onThisFrameDeactivate, this);
     this._frameViewState.unbind('change:doFrameRolling', this._onDoFrameRollingChange, this);
     this._frameViewState.unbind('change:doFrameSharing', this._onDoFrameSharingChange, this);
-    ListItemView.prototype._cleanup.call(this);
+    libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
   render : function(showConversation){
@@ -73,9 +75,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       showConversation : showConversation,
       useFrameCreatorInfo : useFrameCreatorInfo
     }));
-    if (shelby.models.guide.get('activeFrameModel') && this.model.id == shelby.models.guide.get('activeFrameModel').id) {
-      this.$el.addClass('active-list-item');
-    }
 
     // if the first message is not from the frame's creator and we're not on the watch later roll,
     // use equivalent info about the frame's creator as a simulated first message
@@ -92,10 +91,18 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       self.renderChild(messageView);
       self.$('.video-activity-list').append($('<li>').append(messageView.el));
     });
+
+    libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
   _activate : function(){
     shelby.models.guide.set('activeFrameModel', this.model);
+  },
+
+  // override ActiveHighlightListItemView abstract method
+  doActivateThisItem : function(guideModel){
+    var activeFrameModel = guideModel.get('activeFrameModel');
+    return activeFrameModel && activeFrameModel.id == this.model.id;
   },
 
   RequestFrameRollingView : function(share){
@@ -186,19 +193,6 @@ libs.shelbyGT.FrameView = ListItemView.extend({
 
   _onConversationChange : function(){
     this.render(true);
-  },
-
-  _onActiveFrameModelChange : function(guideModel, activeFrameModel){
-    if (activeFrameModel && activeFrameModel.id == this.model.id) {
-      this.$el.addClass('active-list-item');
-      //bind a handler to remove the active state when this frame is deactivated
-      shelby.models.guide.bind('change:activeFrameModel', this._onThisFrameDeactivate, this);
-    }
-  },
-
-  _onThisFrameDeactivate : function() {
-    this.$el.removeClass('active-list-item');
-    shelby.models.guide.unbind('change:activeFrameModel', this._onThisFrameDeactivate, this);
   },
 
   _isMessageValid : function(msg){

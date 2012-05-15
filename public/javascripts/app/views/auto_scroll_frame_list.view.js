@@ -22,7 +22,9 @@
       } catch (error) {
 				// We are not loading G. Analytics in development env so just log to console.
 				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]); }
-				catch(e) { console.log("_gaq not loaded in development env:", error.message); }
+				catch(e) {
+          console.log("_gaq not loaded in development env:", error.message);
+        }
       }
     },
 
