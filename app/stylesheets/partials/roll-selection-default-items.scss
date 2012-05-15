@@ -6,6 +6,8 @@
 
 .form-rolls-list {
 	@extend .list;
+
+	cursor: pointer;
 	
 	a {
 		display: block;

@@ -1392,7 +1392,15 @@ a:hover, a:visited, a:active {
   position: static;
 }
 
-/* line 1, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: #585858;
   border-top: 1px solid #333;
@@ -1405,26 +1413,26 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 17, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 23, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls li {
   display: block;
 }
 
-/* line 23, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 29, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
-  line-height: 2.75;
+  line-height: 2.55;
   padding: 5px;
   text-align: center;
   width: 100%;
 }
 
-/* line 32, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 38, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
-  left: 0;
+  left: -2px;
   margin: 0 0 0 -20px;
   overflow: hidden;
   position: relative;
@@ -1432,7 +1440,7 @@ a:hover, a:visited, a:active {
   vertical-align: middle;
   width: 20px;
 }
-/* line 43, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 49, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1440,7 +1448,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 59, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 65, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1466,10 +1474,10 @@ a:hover, a:visited, a:active {
   left: 17px;
   padding: 5px 10px 5px 5px;
   position: absolute;
-  top: 10px;
+  top: 9px;
   width: auto;
 }
-/* line 73, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 79, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1499,16 +1507,16 @@ a:hover, a:visited, a:active {
   z-index: 1000;
 }
 
-/* line 91, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 97, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
-  padding: 10px;
+  padding: 9px 10px;
   position: absolute;
   right: 0;
   top: 0;
   width: 25%;
 }
 
-/* line 102, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 108, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1528,7 +1536,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 115, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 121, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
@@ -2829,7 +2837,7 @@ a:hover, a:visited, a:active {
   border-radius: 5px 5px 0 0;
   font-size: 16px;
   height: 40px;
-  line-height: 2.5;
+  line-height: 2.4;
   padding-right: 10px;
   overflow: hidden;
   text-align: center;
@@ -2920,58 +2928,62 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 7, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list {
+  cursor: pointer;
+}
+/* line 12, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a {
   display: block;
   padding: 5px;
   text-decoration: none;
 }
-/* line 15, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 17, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:visited {
   text-decoration: none;
 }
-/* line 20, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 22, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:hover, .form-rolls-list a:active {
   text-decoration: underline;
 }
-/* line 25, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 27, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
   border-bottom: 1px solid #333333;
   border-top: 1px solid #555555;
   padding: 5px;
 }
-/* line 30, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 32, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li:first-child {
   border-top: none;
 }
-/* line 33, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 35, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 38, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 40, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
   font-size: 14px;
   line-height: 1.75;
   position: relative;
   text-align: center;
 }
-/* line 44, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 46, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
   content: "+";
 }
-/* line 47, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 49, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_public.svg");
   right: 9px;
   position: absolute;
   top: 1px;
 }
-/* line 58, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 60, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 65, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 67, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   line-height: 2.5;

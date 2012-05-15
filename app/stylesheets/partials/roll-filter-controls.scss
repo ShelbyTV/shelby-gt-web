@@ -1,38 +1,44 @@
-.filter-controls{
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.filter-controls {
 	@include background(
 //		url('../images/assets/noise.png')
 		$rollsBG
 	);
 
-	border-top:1px solid #333;
-	border-bottom:1px solid #333;
-	font-size:11px;
-	font-weight:700;
-	margin:0;
-	padding:0;
-	position:relative;
-	text-align:center;
-	width:100%;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	font-size: 11px;
+	font-weight: 700;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
 
-	li{
+	li {
 		display:block;
 	}
 
 }
 
-.current-roll{
-	float:left;
-	font-size:1.2em;
-	line-height:2.75;
-	padding:$defaultMargin/2;
-	text-align:center;
-	width:100%;
+.current-roll {
+	float: left;
+	font-size: 1.2em;
+	line-height: 2.55;
+	padding: $defaultMargin/2;
+	text-align: center;
+	width: 100%;
 }
 
-.current-roll-avatar {
+.current-roll-avatar  {
 	display: inline-block;
 	height: 20px;
-	left: 0;
+	left: -2px;
 	margin: 0 0 0 -20px;
 	overflow: hidden;
 	position: relative;
@@ -40,7 +46,7 @@
 	vertical-align: middle;
 	width: 20px;
 
-	img, span {
+	img, span  {
 		height: 100%;
 		left: 0;
 		position: absolute;
@@ -49,57 +55,57 @@
 	
 }
 
-@mixin backandforth{
-	float:left;
-	height:20px;
-	padding:$defaultMargin/2 $defaultMargin;
-	width:50%;
+@mixin backandforth {
+	float: left;
+	height: 20px;
+	padding: $defaultMargin/2 $defaultMargin;
+	width: 50%;
 }
 
-.rolls-back{
-	background-color: $flatShelbyDarkGray;
+.rolls-back {
+	background-color:  $flatShelbyDarkGray;
 	@include background($softShelbyDarkGray);
 	@include backandforth;
 	@include border-radius($radius);	
 	@include buttonfont;
-	border:1px solid #222;
-	color:#efefef;
-	height:26px;
-	left:$defaultMargin+7;
-	padding:$defaultMargin/2 $defaultMargin $defaultMargin/2 $defaultMargin/2;
-	position:absolute;
-	top:$defaultMargin;
-	width:auto;
-	i{
+	border: 1px solid #222;
+	color: #efefef;
+	height: 26px;
+	left: $defaultMargin+7;
+	padding: $defaultMargin/2 $defaultMargin $defaultMargin/2 $defaultMargin/2;
+	position: absolute;
+	top: $defaultMargin - 1;
+	width: auto;
+	i {
 		@include background(
 			$softShelbyDarkGray
 		);
 		@include border-radius(0 100% 0 5px);
 		@include rotate($default-rotate);
-		border-bottom:1px solid #222;
-		border-left:1px solid #222;
-		display:block;
-		height:17px;
-		left:-8px;
-		position:absolute;
-		top:4px;
-		width:17px;
-		z-index:1000;
+		border-bottom: 1px solid #222;
+		border-left: 1px solid #222;
+		display: block;
+		height: 17px;
+		left: -8px;
+		position: absolute;
+		top: 4px;
+		width: 17px;
+		z-index: 1000;
 	}
 }
 
-.rolls-list-nav{
+.rolls-list-nav {
 	@extend .notype;
-//	background-color: $flatShelbyDarkGray;
+//	background-color:  $flatShelbyDarkGray;
 //	@include background($softShelbyDarkGray);
-	padding:$defaultMargin;
-	position:absolute;
-	right:0;
-	top:0;
-	width:25%;
+	padding: $defaultMargin - 1 $defaultMargin;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 25%;
 }
 
-.roll-back{
+.roll-back {
 	background-color: $flatShelbyDarkGray;
 	@include background(
 		url('../images/assets/navarrow_left.svg') no-repeat center center
@@ -107,12 +113,12 @@
 	);
 	@include backandforth;
 	@include border-radius($radius 0 0 $radius);
-	border:1px solid #222;
-	height:26px;
+	border: 1px solid #222;
+	height: 26px;
 	margin-right: -1px;
-	text-align:left;
+	text-align: left;
 }
-.roll-next{
+.roll-next {
 	background-color: $flatShelbyDarkGray;
 	@include background(
 		url('../images/assets/navarrow_right.svg') no-repeat center center
@@ -120,7 +126,7 @@
 	);
 	@include backandforth;
 	@include border-radius(0 $radius $radius 0);
-	border:1px solid #222;
-	height:26px;
-	text-align:right;
+	border: 1px solid #222;
+	height: 26px;
+	text-align: right;
 }
