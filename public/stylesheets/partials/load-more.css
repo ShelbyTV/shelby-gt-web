@@ -14,7 +14,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -26,7 +26,7 @@
   -webkit-box-shadow: inset -1px 0px 1px 0px #85cc66;
   -o-box-shadow: inset -1px 0px 1px 0px #85cc66;
   box-shadow: inset -1px 0px 1px 0px #85cc66;
-  border: 1px solid #333;
+  border: 1px solid #4a8431;
   color: #efefef;
   display: block;
   line-height: 2.5;

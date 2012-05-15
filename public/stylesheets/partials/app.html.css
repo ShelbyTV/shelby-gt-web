@@ -25,7 +25,7 @@ html, body {
 /* line 20, ../../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   bottom: 0;
   left: 0;
   position: absolute;

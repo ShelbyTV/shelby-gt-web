@@ -23,7 +23,7 @@
 }
 /* line 27, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
   background-size: 35%;
   border: none;

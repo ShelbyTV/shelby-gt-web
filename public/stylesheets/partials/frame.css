@@ -135,7 +135,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -143,7 +143,7 @@
   border: 1px solid #222;
   color: #efefef;
   display: block;
-  font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+  font-family: 'Ubuntu',Trebuchet MS,sans-serif;
   font-size: 13px;
   font-weight: 300;
   line-height: 1.5;
@@ -312,7 +312,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   color: #fff;
   display: block;
   font-weight: bold;
@@ -449,7 +449,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -564,7 +564,7 @@
 
 /* line 440, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1336346030');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -572,12 +572,12 @@
 
 /* line 450, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1336346030');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
 /* line 457, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
 }
 
 /* line 462, ../../../app/stylesheets/partials/frame.scss */

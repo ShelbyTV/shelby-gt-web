@@ -134,7 +134,7 @@
 
 /* line 147, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -175,7 +175,7 @@
 
 /* line 159, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;

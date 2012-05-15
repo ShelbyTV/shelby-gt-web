@@ -42,7 +42,7 @@
 }
 /* line 40, ../../../app/stylesheets/partials/guide-header.scss */
 .settings button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, "Times New Roman", sans-serif;
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
   border: none;
   color: #efefef;

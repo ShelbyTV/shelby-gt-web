@@ -142,15 +142,15 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 }
 
 @mixin basefont{
-	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin buttonfont{
-	font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin fontcolor {
@@ -178,7 +178,7 @@ $color: #4a4a4a !default;
 	color: #efefef;
 	display: block;
 //	float:left;
-	font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font-family: 'Ubuntu',Trebuchet MS,sans-serif;
 	font-size: $font-size;
 	font-weight: 300;
 //	height:23px;
@@ -208,7 +208,7 @@ $color: #4a4a4a !default;
 	);
 	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
 
-	border:1px solid #333;
+	border:1px solid adjust-lightness($flatShelbyGreen, -5%);
 	color:#efefef;
 	display:block;
 	line-height:2.5;
@@ -218,17 +218,18 @@ $color: #4a4a4a !default;
 	width:100%;
 }
 
+$color: red !default;
 
-@mixin form-submit-button{
+@mixin form-submit-button($color){
 	@include border-radius($radius);
 	@include buttonfont;
-	background: $flatShelbyBlue;
+	background: $color;
 	@include background(
-		$softShelbyBlue
+		linear-gradient(top, adjust-lightness($color, 15%), $color)
 	);
-	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($color, 20%));
 
-	border:1px solid #222;
+	border:1px solid adjust-lightness($color, -15%);
 	color:#efefef;
 	display:block;
 	height:34px;

@@ -5,11 +5,13 @@
 
 <form class="share-form clearfix">
 	<fieldset class="share-comment">
-		<textarea class="js-share-textarea" placeholder="Add a message..." rows="5"></textarea>
+		<label for="share-textarea">Comment</label>
+		<textarea name="share-textarea" id="share-textarea" class="js-share-textarea" placeholder="Add a message..." rows="2"></textarea>
        	<span id="js-share-comment-counter" class="share-comment-counter"></span>
 	</fieldset>
 <% if (components.networkToggles) { %>
 	<fieldset class="share-networks">
+			<legend>Share to</legend>
 		<ul class="share-networks-list">
 			<li class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %>">
 				<button onclick="return false;" class="networks-twitter-button">Twitter</button>

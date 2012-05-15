@@ -311,6 +311,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.MiniVideoProgress({playbackState:shelby.models.playbackState});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
+    shelby.views.keyboardControls = shelby.views.keyboardControls ||
+        new libs.shelbyGT.KeyboardControlsView();
     if( opts.showSpinner ){ shelby.views.guideSpinner.show(); }
   },
 

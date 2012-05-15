@@ -67,5 +67,6 @@
 
 /* line 11, ../../../app/stylesheets/partials/h5bp-utilities.scss */
 .error {
+  background: #fdd;
   border: 1px solid red !important;
 }
