@@ -183,8 +183,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         data: {include_rolls:true}
       });
       //return shelby.collections.rollFollowings.fetch();
-    })()
-    );
+    })());
   },
 
   _addHotRolls : function(){
