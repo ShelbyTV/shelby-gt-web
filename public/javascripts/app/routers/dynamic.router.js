@@ -28,10 +28,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayFrameInRoll(rollId, frameId, params, {activateRollingView:true});
   },
 
-  displayEntryAndActivateRollingView : function(entryId, params){
-    this.displayEntryInDashboard(entryId, params, {activateRollingView:true});
-  },
-
   displayFrameInRoll : function(rollId, frameId, params, options){
     // default options
     options = _.chain({}).extend(options).defaults({
@@ -39,19 +35,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }).value();
 
     var self = this;
-		// if there are params that specify this was a roll invite...
-		//  make the call to add the user to the roll...
-		//  then show them the roll
-		// otherwise just show the roll view
-		if (shelby.userSignedIn() && params && params.gt_ref_roll){
-			shelby.models.user.addUserToRoll(params.gt_ref_roll, function(){
-				$('.rolls-add').text('Leave')['addClass']('rolls-leave');
-				self._setupRollViewWithCallback(rollId, frameId, options);
-			});
-		}
-		else {
-			self._setupRollViewWithCallback(rollId, frameId, options);
-		}
+    // if there are params that specify this was a roll invite...
+    //  make the call to add the user to the roll...
+    //  then show them the roll
+    // otherwise just show the roll view
+    if (shelby.userSignedIn() && params && params.gt_ref_roll){
+      shelby.models.user.addUserToRoll(params.gt_ref_roll, function(){
+        $('.rolls-add').text('Leave')['addClass']('rolls-leave');
+        self._setupRollViewWithCallback(rollId, frameId, options);
+      });
+    }
+    else {
+      self._setupRollViewWithCallback(rollId, frameId, options);
+    }
   },
 
   displayRoll : function(rollId, title, params, options){
@@ -102,7 +98,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
-  displayEntryInDashboard : function(entryId, params, options){
+  displayEntryAndActivateRollingView : function(entryId, params){
+    this._displayEntryInDashboard(entryId, params, {activateRollingView:true});
+  },
+
+  _displayEntryInDashboard : function(entryId, params, options){
     // default options
     options = _.chain({}).extend(options).defaults({
       activateRollingView : false
