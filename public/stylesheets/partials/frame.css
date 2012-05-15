@@ -242,12 +242,12 @@
   -khtml-border-radius: 5px;
   border-radius: 5px;
   background-color: #143caf;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #077cb9), color-stop(100%, #143caf));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #077cb9, #143caf);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #077cb9, #143caf);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #077cb9, #143caf);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #077cb9, #143caf);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #077cb9, #143caf);
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0087c0), color-stop(100%, #143caf));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #0087c0, #143caf);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #0087c0, #143caf);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #0087c0, #143caf);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #0087c0, #143caf);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #0087c0, #143caf);
   -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
   -webkit-box-shadow: inset 0px 1px 1px 0px #00c6de;
   -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
