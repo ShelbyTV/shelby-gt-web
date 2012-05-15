@@ -91,7 +91,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _findViewByModel : function(model){
     return function(view){
-      return view.model == model;
+      return model && view.model.id == model.id;
     };
   },
 

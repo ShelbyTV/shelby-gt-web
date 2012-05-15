@@ -70,7 +70,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
       showConversation : showConversation,
       useFrameCreatorInfo : useFrameCreatorInfo
     }));
-    if (this.model == shelby.models.guide.get('activeFrameModel')) {
+    if (shelby.models.guide.get('activeFrameModel') && this.model.id == shelby.models.guide.get('activeFrameModel').id) {
       this.$el.addClass('active-frame');
     }
 
