@@ -20,6 +20,8 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    
+    this.render();
   },
 
   _cleanup : function(){

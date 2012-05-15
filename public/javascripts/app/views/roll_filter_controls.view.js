@@ -14,7 +14,8 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
     return JST['roll-filter-controls'](obj);
   },
 
-  initialize : function(){
+  initialize : function(opts){
+    this._options = opts.options || {};
     this.model.bind('change:title', this.render, this);
   },
 
@@ -23,7 +24,7 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
+    this.$el.html(this.template({roll:this.model,guide:shelby.models.guide,options:this._options}));
   },
 
   _goBackToRollsList : function(){

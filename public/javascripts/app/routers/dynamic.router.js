@@ -7,6 +7,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
+    "isolated_roll/:rollId" : "displayIsolatedRoll",
+    "isolated_roll/:rollId/*params" : "displayIsolatedRoll",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "rolls" : "displayRollList",
@@ -53,7 +55,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 		}
   },
 
-  displayRoll : function(rollId, title, params, options){
+  displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
     var defaultOnRollFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
@@ -75,7 +77,28 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch,
       isUserPersonalRoll: options.isUserPersonalRoll
-    });
+    }, topLevelViewsOptions);
+  },
+  
+  displayIsolatedRoll : function(rollId){
+    // Adjust *how* a few details are displayed via CSS
+    $('body').addClass('isolated-roll');
+    
+    // Adjust *what* is displayed
+    this.displayRoll(
+      rollId, 
+      null, 
+      null, 
+      {updateRollTitle:false}, 
+      { hideGuideHeader:true, 
+        hideMenu:true, 
+        hideAnonUserView:true,
+        hideRollHeader:true,
+        filterControlsOptions:{rollFilterControlsViewOptions:{hideNav:true}}
+      });
+      
+    // N.B. We are hiding Frame's tool bar and conversation via CSS.
+    // Doing so programatically seemed overly involved and complex when a few CSS rules would do
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -290,16 +313,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(opts){
     opts = opts || {};
     
-    shelby.models.user.get('anon') && this._setupAnonUserViews();
+    if(shelby.models.user.get('anon') && !opts.hideAnonUserView){ this._setupAnonUserViews(); }
     // header & menu render on instantiation //
-    shelby.views.commentOverlay = shelby.views.commentOverlay ||
-        new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
-    shelby.views.header = shelby.views.header ||
-        new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu ||
-        new libs.shelbyGT.MenuView({model:shelby.models.guide});
-    shelby.views.guideControls = shelby.views.guideControls ||
-        new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
+    shelby.views.commentOverlay = shelby.views.commentOverlay || new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
+    if(!opts.hideGuideHeader){
+      shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
+    }
+    if(!opts.hideMenu){
+      shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView({model:shelby.models.guide});
+    }
+    if(!opts.hideRollHeader){
+      shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
+    }
+    shelby.views.filterControls = shelby.views.filterControls || new libs.shelbyGT.FilterControlsView({model:shelby.models.guide, options:opts.filterControlsOptions});
+    shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
         new libs.shelbyGT.GuideView({model:shelby.models.guide});
@@ -321,7 +348,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
   },
   
-  _setupRollView : function(roll, title, options){
+  _setupRollView : function(roll, title, options, topLevelViewsOptions){
+    // default top-level views options
+    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
+      showSpinner: true
+    }).value();
+
+    this._setupTopLevelViews(topLevelViewsOptions);
+    
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
@@ -329,8 +363,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: null,
       isUserPersonalRoll: false
     }).value();
-
-    this._setupTopLevelViews({showSpinner: true});
     
     var rollModel;
     if (typeof(roll) === 'string') {

@@ -1,0 +1,23 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+/* non-programatic changes to app display */
+body.isolated-roll {
+  
+  /* adjust the name and avatar of the visible isolated roll */
+  .current-roll {
+    font-size: 2.2em;
+    line-height: 1;
+  }
+  .current-roll-avatar {
+    height: 40px;
+    width: 40px;
+  }
+  
+  /* hide the frame's tool-bar and new-conversation */
+  .video-controls, .video-activity-comment { display: none; }
+  
+}

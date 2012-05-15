@@ -1,6 +1,6 @@
 <% /*var userFollowsRoll = shelby.models.user.followsRoll(roll);*/ %>
 <% var userFollowsRoll = true; %>
-<% if (userFollowsRoll) { %>
+<% if (userFollowsRoll && !options.hideNav) { %>
 	<button id="js-rolls-back" class="rolls-back js-track-event" data-ga_category="Roll List" data-ga_action="back" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 		<i></i>
 		Back
@@ -17,7 +17,7 @@
 	<%= roll.get('title') %>
 </h2>
 
-<% if (userFollowsRoll) { %>
+<% if (userFollowsRoll && !options.hideNav) { %>
 	<ul class="rolls-list-nav clearfix">
 		<li>
 			<button id="js-roll-back" class="roll-back js-track-event" data-ga_category="Roll List" data-ga_action="previous roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>

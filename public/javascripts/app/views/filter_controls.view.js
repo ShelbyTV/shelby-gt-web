@@ -7,7 +7,8 @@
 
     el : '#js-filter-controls',
 
-    initialize : function(){
+    initialize : function(opts){
+      this._options = opts.options || {};
       this.model.bind('change', this._updateChild, this);
     },
 
@@ -31,7 +32,7 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.userPersonalRoll :
-          this.appendChild(new RollFilterControlsView({model:this.model.get('currentRollModel')}));
+          this.appendChild(new RollFilterControlsView({model:this.model.get('currentRollModel'), options:this._options.rollFilterControlsViewOptions}));
           break;
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :

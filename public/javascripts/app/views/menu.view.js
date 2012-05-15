@@ -1,8 +1,6 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var RollHeaderView = libs.shelbyGT.RollHeaderView;
-  var FilterControlsView = libs.shelbyGT.FilterControlsView;
   var AnonGuideView = libs.shelbyGT.AnonGuideView;
 
   libs.shelbyGT.MenuView = Support.CompositeView.extend({
@@ -13,7 +11,7 @@
       "click .saves" : "_goToSaves"
     },
 
-    el : '.menu',
+    el : '.menu .video-guide',
 
     template : function(obj){
       return JST['menu'](obj);
@@ -35,8 +33,6 @@
 
     render : function(active){
       this.$el.html(this.template());
-      this.renderChild(new RollHeaderView({model:this.model}));
-      this.renderChild(new FilterControlsView({model:this.model}));
     },
 
     _goToStream : function(){

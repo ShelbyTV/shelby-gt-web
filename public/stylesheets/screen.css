@@ -1591,6 +1591,35 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* non-programatic changes to app display */
+/* line 8, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll {
+  /* adjust the name and avatar of the visible isolated roll */
+  /* hide the frame's tool-bar and new-conversation */
+}
+/* line 11, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .current-roll {
+  font-size: 2.2em;
+  line-height: 1;
+}
+/* line 15, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .current-roll-avatar {
+  height: 40px;
+  width: 40px;
+}
+/* line 21, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .video-controls, body.isolated-roll .video-activity-comment {
+  display: none;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
 /* line 7, ../../app/stylesheets/partials/frame.scss */
 .list, .rolls-list, .form-rolls-list {
   margin: 0;
@@ -2149,7 +2178,7 @@ a:hover, a:visited, a:active {
 
 /* line 440, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -2157,12 +2186,12 @@ a:hover, a:visited, a:active {
 
 /* line 450, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
 }
 
 /* line 457, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 462, ../../app/stylesheets/partials/frame.scss */
