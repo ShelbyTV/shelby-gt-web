@@ -63,9 +63,7 @@
     },
 
     _switchActiveFrameViews : function(frameViews){
-      frameViews.old && frameViews.old.$el.removeClass('active-frame');
       if(frameViews.current) {
-        frameViews.current.$el.addClass('active-frame');
         this._scrollTo(frameViews.current.el);
       }
     },

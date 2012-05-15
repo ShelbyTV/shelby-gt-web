@@ -25,6 +25,13 @@ libs.shelbyGT.RollItemView = ListItemView.extend({
 
   render : function(){
     this.$el.html(this.template({roll : this.model}));
+    var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+    if (activeFrameModel) {
+      var roll = activeFrameModel.get('roll');
+      if (roll && this.model.id == roll.id) {
+        this.$el.addClass('active-list-item');
+      }
+    }
   },
 
   goToRoll : function(){
