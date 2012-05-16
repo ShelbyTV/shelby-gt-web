@@ -1530,7 +1530,7 @@ a:hover, a:visited, a:active {
   font-weight: 600;
   color: #EFEFEF;
   background-color: linear-gradient(top, #ba2046, #9e1632);
-  border: 1px solid #BA2011;
+  border: 1px solid black;
   height: 26px;
   padding: 5px;
   position: absolute;
