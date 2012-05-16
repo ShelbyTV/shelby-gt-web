@@ -8,9 +8,18 @@
  */
 /* line 7, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion {
+  border-top: none;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
   overflow-y: hidden;
+  top: 0;
+  z-index: 1;
 }
-/* line 12, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 17, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -25,7 +34,7 @@
   position: absolute;
   top: 40px;
 }
-/* line 22, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 27, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   background: #222;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
@@ -36,56 +45,53 @@
   top: 0;
   width: 100%;
 }
-/* line 34, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 39, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 43, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 48, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion.frame-rolling-private .share-comment-counter {
   display: block;
   float: right;
-  height: 30px;
+  height: 20px;
   position: relative;
 }
 
-/* line 52, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 57, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
-  background: url("../images/assets/noise.png") #555555;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #333333;
   height: 40px;
 }
-/* line 58, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 62, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
-  background: url("../images/assets/noise.png") #007fb6;
-  border-bottom: 1px solid #005b83;
-  font-size: 13px;
+  background: url("../images/assets/noise.png") #666666;
+  border-bottom: 1px solid #333333;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -khtml-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  font-size: 16px;
   height: 40px;
-  line-height: 3;
+  line-height: 2.4;
   padding-right: 10px;
   overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 74, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
-  content: "\0020";
-  background: url("../images/assets/rolls_public.svg") no-repeat center center transparent;
-  float: left;
-  height: 21px;
-  margin: 8px;
-  width: 20px;
-}
-/* line 87, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 94, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
-/* line 91, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 98, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-social {
   padding-left: 10px;
 }
 
-/* line 97, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 104, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

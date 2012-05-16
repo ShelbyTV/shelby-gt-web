@@ -6,49 +6,62 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 7, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list {
+  cursor: pointer;
+}
+/* line 12, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a {
   display: block;
   padding: 5px;
   text-decoration: none;
 }
-/* line 15, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 17, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:visited {
   text-decoration: none;
 }
-/* line 20, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 22, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:hover, .form-rolls-list a:active {
   text-decoration: underline;
 }
-/* line 25, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 27, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #333333;
+  border-top: 1px solid #555555;
   padding: 5px;
 }
-/* line 30, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 32, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li:first-child {
+  border-top: none;
+}
+/* line 35, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li:last-child {
+  border-bottom: none;
+}
+/* line 40, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
   font-size: 14px;
   line-height: 1.75;
   position: relative;
   text-align: center;
 }
-/* line 36, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 46, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
   content: "+";
 }
-/* line 39, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 49, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_public.svg");
   right: 9px;
   position: absolute;
   top: 1px;
 }
-/* line 50, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 60, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 57, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 67, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   line-height: 2.5;

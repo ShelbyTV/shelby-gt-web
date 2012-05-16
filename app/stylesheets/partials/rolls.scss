@@ -4,7 +4,7 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-#roll-header,.roll-header{
+#roll-header,.roll-header {
 	@include background(
 		url('../images/assets/noise.png') $rollsBG
 	);
@@ -13,7 +13,7 @@
 //	border-top:1px solid #222;
 }
 
-.rolls-menu{
+.rolls-menu {
 //	background:$rollsBG;
 	margin:0;
 	padding:0;
@@ -25,7 +25,7 @@
 		margin:0;
 		padding:$defaultMargin;
 		width:75%;
-		&:last-child{
+		&:last-child {
 			padding-left:0;
 			width:25%;
 		}
@@ -38,15 +38,15 @@
 	}
 }
 
-.rolls-add{
+.rolls-add {
 	@include rolls-menu-button;
 }
 
-.rolls-invite{
+.rolls-invite {
 	@extend .rolls-add;	
 }
 
-.rolls-share{
+.rolls-share {
 	@extend .rolls-add;
 	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
 	background:$flatShelbyBlue;
@@ -56,7 +56,7 @@
 	);
 }
 
-.rolls-leave{
+.rolls-leave {
 	@extend .rolls-add;
 	background:$flatShelbyGrayDeboss;
 	@include background(
@@ -71,12 +71,12 @@
 	@extend .rolls-leave;
 }
 
-.rolls-share-cancel{
+.rolls-share-cancel {
 	@extend .rolls-leave;
 	border-color:#333;
 }
 
-.share-dialog{
+.share-dialog {
 	background:#585858;
 	border-bottom:1px solid #222;
 	padding:0;
@@ -87,30 +87,39 @@
 
 }
 
-.share-form{
-	@include background(
-		url('../images/assets/noise.png')
-		#585858
-//		#454545
-	);
-	padding: 0 $defaultMargin $defaultMargin;
-	position:relative;
+.share-form {
+	background: #494949;
+	padding: 0;
+	position: relative;
+
+	fieldset {
+		border-top: 1px solid $rolls-outset;
+		border-bottom: 1px solid $rolls-inset;
+		padding: 0 $defaultMargin $defaultMargin;
+
+		&:first-child {
+			border-top: none;
+		}
+		&:last-child {
+			border-bottom: none;
+		}
+	}
 
 	legend,
 	label {
 		float: left;
 		font-weight: 500;
 //		font-size: 10px;
-		margin: $defaultMargin - 2 0 $defaultMargin - 8;
+		margin: $defaultMargin - 2 0 $defaultMargin - 5;
 		width: 100%;
 	}
 }
 
-.share-comment{
+.share-comment {
 	position:relative;
 	//padding:$defaultMargin/2;
 
-	textarea{
+	textarea {
 		@include border-radius($radius);
 		
 		padding:$defaultMargin/2;
@@ -118,7 +127,7 @@
 		width:100%;
 	}
 
-	.video-shared{
+	.video-shared {
 		@extend .video-saved;
 		@include border-radius($radius);
 		
@@ -126,17 +135,17 @@
 	}
 }
 
-.share-networks{
-	float:left;
-	width:50%;
+.share-networks {
+//	float:left;
+//	width:50%;
 }
 
-.share-networks-list{
+.share-networks-list {
 	float: left;
 	margin: 0;
 	padding: 0;
 
-	li{
+	li {
 		display: inline-block;
 		list-style-type: none;
 		margin: 0 $defaultMargin $defaultMargin 0;
@@ -144,7 +153,7 @@
 	}
 }
 
-.networks-twitter{
+.networks-twitter {
 	background: $flatNetworksUnselected;
 
 	@include background(
@@ -153,23 +162,23 @@
 	@include border-radius($radius/2);
 	@include box-shadow(inset 0px 1px 1px 0px #777);
 
-	border:1px solid #222;
-	height:34px;
-	width:34px;
+	border: 1px solid #222;
+	height: 34px;
+	width: 34px;
 
-	.networks-twitter-button{
+	.networks-twitter-button {
 		@extend .notype;
 		@include background(
 			url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center
 		);
-//		background-size:80%;
+//		background-size: 80%;
 		border: none;
 		display: block;
 		height: 100%;
 		width: 100%;
 	}
 	
-	&.active{
+	&.active {
 		background: $twitterBlue;
 		@include background($softTwitterBlue);
 		@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
@@ -186,7 +195,7 @@
 
 }
 
-.networks-facebook{
+.networks-facebook {
 
 	background: $flatNetworksUnselected;
 
@@ -200,7 +209,7 @@
 	height:34px;
 	width:34px;
 
-	.networks-facebook-button{
+	.networks-facebook-button {
 		@extend .notype;
 		@include background(
 			url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center
@@ -212,7 +221,7 @@
 		width: 100%;
 	}
 	
-	&.active{
+	&.active {
 		background: $facebookBlue;
 		@include background($softFacebookBlue);
 		@include box-shadow(inset 0px 1px 1px 0px #0179c1);
@@ -229,57 +238,63 @@
 
 }
 
-.share-submit{
-	float:right;
-	width:50%;
+.share-submit {
+	display: block;
+//	float:right;
+//	width:50%;
+//	button {
+//		margin: $defaultMargin 0;
+//		position: relative;
+//		width: 100%;
+//	}
 }
 
-.share-submit-button{
+.share-submit-button {
 	@include form-submit-button($flatShelbyBlue);
-	.spinner{
+	.spinner {
 		left:auto;
 		margin-left:auto;
 		margin-top:auto;
 		position:static;
 	}
 }
-//.rolls{
+//.rolls {
 //	background:$myBlue;
 //	margin: 0;
 //	padding:0;
 	
-//	a{
+//	a {
 //		border:1px solid darkGreen;
 //		display:block;
 //	}
 
-//	h1{
+//	h1 {
 //		line-height:2.231;
 //		position:relative;
 //	}
 
-//	img{
+//	img {
 //		float:left;
 //		margin-right:$defaultMargin;
 //		width:50px;
 //	}	
 	
-//	li{
+//	li {
 //		list-style-type:none;
 
 //	}
-//	.public{
-//		h1:after{
+//	.public {
+//		h1:after {
 //			content: "%";
 //			padding-right:$defaultMargin/1.5;
 //			float:right;
 //		}
 
 //	}
-//	.private{
+//	.private {
 //		@extend .public;
 		
-//		h1:after{
+//		h1:after {
 //			content: "&";
 //		}
 //	}

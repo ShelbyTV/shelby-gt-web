@@ -23,8 +23,9 @@
 			);
 		}
 	}
-
-	.active-list-item {
+}
+.active-list-item {
+	.active-frame {
 		@include background(
 //			url('../images/assets/noise.png') 
 			#6d6d6d
