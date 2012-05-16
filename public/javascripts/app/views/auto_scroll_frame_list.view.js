@@ -48,26 +48,15 @@
     },
 
     _onNewActiveFrame : function(guideModel, currentActiveFrameModel){
-      var frameViews = this._getActiveFrameViews(guideModel, currentActiveFrameModel);
-      this._switchActiveFrameViews(frameViews);
+      var currentActiveFrameView = this.children.find(this._findViewByModel(currentActiveFrameModel));
+      if(currentActiveFrameView) {
+        this._scrollTo(currentActiveFrameView.el);
+      }
     },
 
     _onNewActiveFrameRollingView : function(guideModel, currentActiveFrameRollingView){
       // a bit ugly
       this.parent.scrollToChildElement($(currentActiveFrameRollingView.el).parent().parent());
-    },
-
-    _getActiveFrameViews : function(guideModel, currentActiveFrameModel){
-      return {
-        current : this.children.find(this._findViewByModel(currentActiveFrameModel)),
-        old : this.children.find(this._findViewByModel(guideModel.previousAttributes().activeFrameModel))
-      };
-    },
-
-    _switchActiveFrameViews : function(frameViews){
-      if(frameViews.current) {
-        this._scrollTo(frameViews.current.el);
-      }
     },
 
     _scrollTo : function(element) {
