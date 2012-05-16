@@ -26,12 +26,7 @@
 	line-height:2.75;
 	padding:$defaultMargin/2;
 	text-align:center;
-	width:100%;
-	
-	input {
-		margin: 3px;
-		padding: 4px;
-	}
+	width:100%;	
 }
 
 .current-roll-avatar {
@@ -52,6 +47,14 @@
 		top: 0;
 	}
 	
+}
+
+.roll-name-change {
+	display: none;
+	input {
+		margin: 3px;
+		padding: 4px;
+	}
 }
 
 @mixin backandforth{
@@ -91,6 +94,28 @@
 		width:17px;
 		z-index:1000;
 	}
+}
+
+.roll-delete{
+	@include border-radius($radius);
+	@include background(
+		url('../images/assets/noise.png'),
+		$softShelbyRed
+	);
+	@include box-shadow(inset 0px 1px 1px 0px #888);
+	@include buttonfont;
+	font-weight: 600;
+	color: #EFEFEF;
+	background-color: $softShelbyRed;	
+	border:1px solid #BA2011;
+	height:26px;
+	padding:$defaultMargin/2;
+	position:absolute;
+	top:$defaultMargin;
+	right: $defaultMargin+5;
+	float: right;
+	width: 62px;
+	display: none;
 }
 
 .rolls-list-nav{
