@@ -8,11 +8,14 @@
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
       shelby.models.guide.bind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
+      shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
+      shelby.models.guide.unbind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
+      shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype._cleanup.call(this);
     },
 
@@ -40,10 +43,13 @@
       }
     },
 
-    scrollToActiveFrameView : function() {
-      var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
-      if (activeFrameView) {
-        this._scrollTo(activeFrameView.el);
+    _scrollToActiveFrameView : function(guideModel, tryAutoScroll) {
+      if (tryAutoScroll) {
+        var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
+        if (activeFrameView) {
+          this._scrollTo(activeFrameView.el);
+        }
+        guideModel.set('tryAutoScroll', false);
       }
     },
 
