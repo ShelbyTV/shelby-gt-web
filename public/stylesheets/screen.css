@@ -1099,7 +1099,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 41, ../../app/stylesheets/partials/rolls.scss */
-.rolls-add, .rolls-invite, .rolls-share, .rolls-edit, .rolls-leave, .rolls-share-cancel {
+.rolls-add, .rolls-invite, .rolls-share, .rolls-leave, .rolls-edit, .rolls-share-cancel {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1144,8 +1144,8 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #00a5cc, #007fb6);
 }
 
-/* line 63, ../../app/stylesheets/partials/rolls.scss */
-.rolls-leave, .rolls-share-cancel {
+/* line 59, ../../app/stylesheets/partials/rolls.scss */
+.rolls-leave, .rolls-edit, .rolls-share-cancel {
   background: #303030;
   background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #444444), color-stop(100%, #303030));
   background: -webkit-linear-gradient(bottom, #444444, #303030);

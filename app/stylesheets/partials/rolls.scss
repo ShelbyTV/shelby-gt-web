@@ -56,10 +56,6 @@
 	);
 }
 
-.rolls-edit{
-	@extend .rolls-add;
-}
-
 .rolls-leave{
 	@extend .rolls-add;
 	background:$flatShelbyGrayDeboss;
@@ -69,6 +65,10 @@
 	@include box-shadow(inset 0px 0px 1px 0px #111);
 	border: none;
 	margin: 1px;
+}
+
+.rolls-edit{
+	@extend .rolls-leave;
 }
 
 .rolls-share-cancel{
