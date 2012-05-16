@@ -5,6 +5,8 @@ ShelbyGtWeb::Application.routes.draw do
       :extension => /.+/
     }
 
+  get '/genius' => 'genius#index'
+
   get '/signout' => "home#signout", :as => :signout
 
   get '(*path)' => 'home#index', :as => :root
