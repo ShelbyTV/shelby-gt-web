@@ -21,7 +21,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
   _goToUserPersonalRoll : function(e){
     e.preventDefault();
     var userId = $(e.currentTarget).attr('data-user-id');
-    shelby.router.navigate('/user/' + userId + '/personal_roll', {trigger:true});
+    shelby.router.navigate('user/' + userId + '/personal_roll', {trigger:true});
   }
 
 });
