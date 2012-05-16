@@ -57,7 +57,7 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
 		}
 	},
 	
-	editRollName : function(){
+	_editRollName : function(){
 		var self = this;
 		var _newTitle = this.$('.roll-name-change input').val();
     this.model.save({title: _newTitle});

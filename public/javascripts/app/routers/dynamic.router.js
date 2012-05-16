@@ -55,7 +55,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var defaultOnRollFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
       // if something is already playing and it is in the roll that loads, scroll to it
-      defaultOnRollFetch = this._scrollToActiveFrameView;
+      defaultOnRollFetch = this._scrollToActiveGuideListItemView;
     } else {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
@@ -134,7 +134,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var defaultOnDashboardFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
       // if something is already playing and it is in the dashboard, scroll to it
-      defaultOnDashboardFetch = this._scrollToActiveFrameView;
+      defaultOnDashboardFetch = this._scrollToActiveGuideListItemView;
     } else {
       // if nothing is already playing, start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
@@ -182,7 +182,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var self = this;
     this._hideSpinnerAfter((function(){
       self._addHotRolls();
-      return shelby.models.rollFollowings.fetch();
+      return shelby.models.rollFollowings.fetch({success:function(){
+        self._scrollToActiveGuideListItemView();
+      }});
     })());
   },
 
@@ -229,8 +231,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollListAndPlayStream : function(params){
+    var self = this;
     this.displayRollList();
-    this._fetchDashboard({displayInGuide:false});
+    this._fetchDashboard({
+      displayInGuide:false,
+      onDashboardFetch: function(dashboardModel, response){
+        self._activateFirstDashboardVideoFrame(dashboardModel, response);
+        self._scrollToActiveGuideListItemView();
+      }});
   },
 
   //---
@@ -287,8 +295,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _scrollToActiveFrameView : function(){
-    shelby.views.guide.scrollToActiveFrameView();
+  _scrollToActiveGuideListItemView : function(){
+    shelby.models.guide.set('tryAutoScroll', true);
   },
 
   _setupTopLevelViews : function(opts){
