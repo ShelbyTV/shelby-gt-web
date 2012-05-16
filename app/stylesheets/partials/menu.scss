@@ -1,138 +1,138 @@
-.video-guide{
+.video-guide {
 	@include background(
 		url('../images/assets/noise.png'),
 		$softLinearGradient
 	);
 	@include box-shadow(0px 1px 3px 1px #222);
 
-	margin:0;
-	padding:0; 
-	position:relative;
+	margin: 0;
+	padding: 0; 
+	position: relative;
 
-	li{
-		border-right:1px solid #222;
-		display:block;
-		float:left;
-		height:42px;
-		width:50%;
-		&:nth-of-type(4){
+	li {
+		border-right: 1px solid #222;
+		display: block;
+		float: left;
+		height: 42px;
+		width: 50%;
+		&:nth-of-type(4) {
 			@include box-shadow(inset 1px 1px 1px #4d4d4d);
-			border-right:none;
-			width:50%;
+			border-right: none;
+			width: 50%;
 		}
 	}
-	button, button:visited{
+	button, button:visited {
 		@include box-shadow(inset 1px 1px 1px #4d4d4d);
 		@include basefont;
 
-		border:none;
-		color:#666;
-		display:block;
-		font-size:11px;
-		height:inherit;
-		line-height:5.5;
-//		padding-top:26px;
-		text-align:center;
-		text-decoration:none;
-		text-transform:lowercase;
-		width:100%;
+		border: none;
+		color: #666;
+		display: block;
+		font-size: 11px;
+		height: inherit;
+		line-height: 5.5;
+//		padding-top: 26px;
+		text-align: center;
+		text-decoration: none;
+		text-transform: lowercase;
+		width: 100%;
 
 
-		&:hover{
+		&:hover {
 			@include box-shadow(inset 0px 0px 5px #666);
-			background-color:#444;
+			background-color: #444;
 		}
-		&:active{
+		&:active {
 			@include box-shadow(inset 0px 0px 10px black);
 		}
 
 	}
-	input{
-		display:block;
-		margin: $defaultMargin 0;
-		width:100%;
+	input {
+		display: block;
+		margin:  $defaultMargin 0;
+		width: 100%;
 	}
 
-	.active-tab{
-		@include box-shadow(inset 0px 6px 12px 0px #101010);
+	.active-tab {
+		@include box-shadow(inset 0px 2px 6px 0px #101010);
 
-		&:hover{
-			@include box-shadow(inset 0px 6px 8px 0px #111);
-//			background-color:green;
+		&:hover {
+			@include box-shadow(inset 0px 1px 4px 0px #111);
+//			background-color: green;
 		}
 	}
 
-	.stream{
+	.stream {
 		@include background(
 			url('../images/assets/stream.svg') no-repeat center center
 		);
 		
-		&.active-tab{
+		&.active-tab {
 			@include background(
 				url('../images/assets/stream_on.svg') no-repeat center 1px #3f3f3f
 			);
-			color:#63BD57;
-			&:hover{
-				background-color:#3f3f3f;
+			color: #63BD57;
+			&:hover {
+				background-color: #3f3f3f;
 			}
 		}
 	}
 
-	.rolls{
+	.rolls {
 		@include background(
 			url('../images/assets/rolls.svg') no-repeat center center
 		);
 		
-		&.active-tab{
+		&.active-tab {
 			@include background(
 				url('../images/assets/rolls_on.svg') no-repeat center 1px
 			);
-			color:#0092C1;
-			&:hover{
-				background-color:#3f3f3f;
+			color: #0092C1;
+			&:hover {
+				background-color: #3f3f3f;
 			}
 		}
 	}
-	.saves{
+	.saves {
 		@include background(
 			url('../images/assets/saves.svg') no-repeat center center
 		);
 		
-		&.active-tab{
+		&.active-tab {
 			@include background(
 				url('../images/assets/saves_on.svg') no-repeat center 1px
 			);
-			color:$softShelbyPurpleHighlight;
-			&:hover{
-				background-color:#3f3f3f;	
+			color: $softShelbyPurpleHighlight;
+			&:hover {
+				background-color: #3f3f3f;	
 			}
 		}
 	}
 }
 
 
-.dashboard-search{
+.dashboard-search {
 	@include border-radius($radius*4);
 
-	margin:0px 7px 3px;
-	position:relative;
+	margin: 0px 7px 3px;
+	position: relative;
 
-	i{
-		background: url('../images/assets/search.svg') no-repeat center center;
-		height:12px;
-		margin:5px;
-		position:absolute;
-		width:12px; 
+	i {
+		background:  url('../images/assets/search.svg') no-repeat center center;
+		height: 12px;
+		margin: 5px;
+		position: absolute;
+		width: 12px; 
 	}
-	input[type="text"]{
+	input[type="text"] {
 		@include border-radius($radius*4);
-		border:none;
-		padding:3px 8px 3px 20px;
+		border: none;
+		padding: 3px 8px 3px 20px;
 		
-		&:focus{
+		&:focus {
 			@include box-shadow(0px 0px 5px 3px #666);
 
-			outline:none;
+			outline: none;
 		}
 	}
 }

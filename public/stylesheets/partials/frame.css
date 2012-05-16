@@ -424,11 +424,11 @@
   padding: 6px 8px 7px;
 }
 
-/* line 342, ../../../app/stylesheets/partials/frame.scss */
+/* line 343, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 344, ../../../app/stylesheets/partials/frame.scss */
+/* line 345, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -441,7 +441,7 @@
   width: 100%;
   resize: none;
 }
-/* line 352, ../../../app/stylesheets/partials/frame.scss */
+/* line 353, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -488,30 +488,33 @@
   width: auto;
 }
 
-/* line 369, ../../../app/stylesheets/partials/frame.scss */
+/* line 370, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 373, ../../../app/stylesheets/partials/frame.scss */
+/* line 374, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 384, ../../../app/stylesheets/partials/frame.scss */
+/* line 385, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
-  padding-right: 10px;
+  height: 1.231em;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* line 389, ../../../app/stylesheets/partials/frame.scss */
+/* line 393, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 395, ../../../app/stylesheets/partials/frame.scss */
+/* line 399, ../../../app/stylesheets/partials/frame.scss */
 .user {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -522,31 +525,31 @@
   background: linear-gradient(top, #333333, #303030);
 }
 
-/* line 400, ../../../app/stylesheets/partials/frame.scss */
+/* line 404, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 409, ../../../app/stylesheets/partials/frame.scss */
+/* line 413, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 414, ../../../app/stylesheets/partials/frame.scss */
+/* line 418, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 418, ../../../app/stylesheets/partials/frame.scss */
+/* line 422, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 424, ../../../app/stylesheets/partials/frame.scss */
+/* line 428, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 500;
@@ -554,7 +557,7 @@
   color: #a4a4a4;
 }
 
-/* line 431, ../../../app/stylesheets/partials/frame.scss */
+/* line 435, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -562,29 +565,29 @@
   padding-right: 3px;
 }
 
-/* line 440, ../../../app/stylesheets/partials/frame.scss */
+/* line 444, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335488134');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 450, ../../../app/stylesheets/partials/frame.scss */
+/* line 454, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335488133');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
 }
 
-/* line 457, ../../../app/stylesheets/partials/frame.scss */
+/* line 461, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336417968');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
 }
 
-/* line 462, ../../../app/stylesheets/partials/frame.scss */
+/* line 466, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 465, ../../../app/stylesheets/partials/frame.scss */
+/* line 469, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
