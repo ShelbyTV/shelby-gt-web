@@ -272,7 +272,7 @@ libs.shelbyGT.FrameView = ListItemView.extend({
   },
 
   _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
-    shelby.models.userProgress.set('framesRolled', shelby.models.userProgress.get('framesRolled') + (doFrameRolling ? 1 : -1));
+    shelby.models.user.get('app_progress').set('framesRolled', shelby.models.userProgress.get('framesRolled') + (doFrameRolling ? 1 : -1));
     if (doFrameRolling) {
 			// hard core rolling action
       this._roll();
