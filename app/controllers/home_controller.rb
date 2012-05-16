@@ -8,17 +8,6 @@ class HomeController < ApplicationController
   #TODO: If the request is made to a roll, also display some meta tags
   def index
     
-    #XXX
-    # HACKING redirect based on domain
-    # TODO: want this to be transparent to end user, so probably going to use some other mechanism than URL
-    @isolated_roll_id = case request.domain(100)
-      when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
-      when "localhost.shelby.tv" then "4f8f7ef2b415cc4762000002"
-      else false
-    end
-    redirect_to "/isolated_roll/#{@isolated_roll_id}" and return if @isolated_roll_id and params[:path].blank?
-    #XXX
-    
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = path_match[1]
       @video_info = Shelby::API.get_video_info(frame_id)
@@ -41,8 +30,19 @@ class HomeController < ApplicationController
       @video_info = nil
     end
     
-    #XXX REDIRECT ISOLATED ROLL HACK TEST
-    if user_signed_in? or @isolated_roll_id
+    
+    #XXX ISOLATED_ROLL - HACKING MAPPING based on domain
+    #TODO: pull this mapping from API
+    @isolated_roll_id = case request.domain(100)
+      when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      else false
+    end
+    render 'isolated_roll' and return if @isolated_roll_id
+    #TODO: need to make sure we render stuff for SEO on the isolated_roll page
+
+    #XXX ISOLATED_ROLL - HACKING allowing viewing
+    if user_signed_in? or /isolated_roll\//.match(params[:path])
       @csrf_token = csrf_token_from_cookie      
       render 'app'
     else

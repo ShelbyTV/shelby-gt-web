@@ -1,0 +1,38 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+	<% if @video_info %>
+		<%= render :partial => "fb_meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
+	<% else %>
+		<meta name="description" content="<%= Settings::Application.meta_description %>">
+	<% end %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<% if @video_info %>
+	  <title>a shelby.tv video: <%= @video_info['video']['title'] %></title>
+	<% else %>
+		<title><%= Settings::Application.title %></title>
+	<% end %>
+
+	<meta name="csrf-token" content="<%= @csrf_token %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon"type="image/png" href="/favicon.png">
+
+	<style>
+		body { margin: 0; padding: 0; background: black; width: 100%; height: 100%; overflow: hidden; }
+		iframe { border: none; width: 100%; height: 100%; }
+	</style>
+</head>
+
+<body>
+	<iframe src="http://<%= Rails.env == 'development' ? 'localhost.shelby.tv:3000' : 'gt.shelby.tv' %>/isolated_roll/<%= @isolated_roll_id %>"></iframe>
+</body>
+</html>
