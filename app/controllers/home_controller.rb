@@ -30,10 +30,9 @@ class HomeController < ApplicationController
       @video_info = nil
     end
     
-    
     #XXX ISOLATED_ROLL - HACKING MAPPING based on domain
     #TODO: pull this mapping from API
-    @isolated_roll_id = case request.domain(100)
+    @isolated_roll_id = case request.host
       when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
       else false
