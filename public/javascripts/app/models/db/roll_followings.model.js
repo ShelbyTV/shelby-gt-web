@@ -13,5 +13,5 @@ libs.shelbyGT.RollFollowingsModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   url : function(){
     return shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
-  },
+  }
 });

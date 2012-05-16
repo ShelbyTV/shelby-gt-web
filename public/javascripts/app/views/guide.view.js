@@ -147,10 +147,6 @@
       }
     },
 
-    scrollToActiveFrameView : function(){
-      this._listView.scrollToActiveFrameView();
-    },
-
     scrollToChildElement : function(element){
       $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
       //this.$el.scrollTo(element, {duration:200, axis:'y'});
