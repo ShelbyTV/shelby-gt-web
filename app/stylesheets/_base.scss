@@ -100,6 +100,7 @@ $softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
 $flatShelbyRed: #9e1632;
 $softShelbyRed: linear-gradient(top, #ba2046, $flatShelbyRed);
 $softShelbyRedHighlight: adjust-lightness($flatShelbyRed,10%);
+$softShelbyRedDeboss: adjust-lightness($flatShelbyRed,-10%);
 
 $flatShelbyVideoPlayer: #0e0e0e;
 $softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);

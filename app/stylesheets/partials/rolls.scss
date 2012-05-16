@@ -29,6 +29,12 @@
 			padding-left:0;
 			width:25%;
 		}
+		&:nth-last-child(2){ 
+			display: none;
+			padding-left:0;
+			width:25%;
+		}
+		
 	}
 }
 
@@ -48,6 +54,10 @@
 	@include background(
 		$softShelbyBlue
 	);
+}
+
+.rolls-edit{
+	@extend .rolls-add;
 }
 
 .rolls-leave{
