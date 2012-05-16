@@ -7,6 +7,17 @@ class HomeController < ApplicationController
   #  (primarily for fb og, but also for any other bots)
   #TODO: If the request is made to a roll, also display some meta tags
   def index
+    
+    #XXX
+    # HACKING redirect based on domain
+    # TODO: want this to be transparent to end user, so probably going to use some other mechanism than URL
+    @isolated_roll_id = case request.domain(100)
+      when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      else false
+    end
+    redirect_to "/isolated_roll/#{@isolated_roll_id}" and return if @isolated_roll_id and params[:path].blank?
+    #XXX
+    
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = path_match[1]
       @video_info = Shelby::API.get_video_info(frame_id)
