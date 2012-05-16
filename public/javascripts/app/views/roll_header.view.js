@@ -142,6 +142,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 				$('#js-roll-name-change input').focus();
 			}
 			else {
+				var _rollTitle = $('#js-roll-name-change input').val();
+				if (_rollTitle !== _currentRollModel.get('title')){
+					this._saveRollName(_rollTitle);
+				}
 				this.$('.js-edit-roll').text('Edit');
 				$('.roll-title-text').show();
 				$('.rolls-list-nav').show();
@@ -149,6 +153,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 				$('#js-roll-delete').hide();
 			}
 		}
+	},
+	
+	_saveRollName : function(newTitle){
+		this.model.get('currentRollModel').save({title: newTitle});
 	}
 
 });
