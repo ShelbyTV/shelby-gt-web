@@ -27,3 +27,30 @@
   border-bottom: 1px solid #222;
   padding: 0;
 }
+/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item {
+  background: #5fa256;
+  position: relative;
+}
+/* line 36, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item a {
+  color: #000;
+}
+/* line 39, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item h2 {
+  height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 160px;
+}
+/* line 45, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item h2:after {
+  content: "Now Playing";
+  color: #FFF;
+  padding-top: 10px;
+  padding-right: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

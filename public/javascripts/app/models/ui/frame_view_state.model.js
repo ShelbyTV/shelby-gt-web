@@ -1,7 +1,7 @@
 libs.shelbyGT.FrameViewStateModel = Backbone.Model.extend({
-
+	
   defaults: {
-    doFrameRolling: false
+    doFrameAction: null // or roll or share
   }
 
 });

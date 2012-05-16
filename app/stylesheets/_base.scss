@@ -21,6 +21,8 @@ $radiusFooter: 0 0 $radius - 2 $radius - 2;
 $defaultMargin: 10px;
 $margin: 0.5em;
 
+$outline : #333;
+
 //colors
 $text: #dcddde;
 
@@ -39,10 +41,13 @@ $shelbyProgressBlue: #0092c1;
 $outset : #252525;
 $inset : #4f4d51;
 
+$rolls-inset : #333;
+$rolls-outset : #555;
+
 $save : #2291c2;
 
 //border styles
-$articleStroke : 1px solid #222;
+$articleStroke : 1px solid $outline;
 $menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
@@ -100,6 +105,7 @@ $softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
 $flatShelbyRed: #9e1632;
 $softShelbyRed: linear-gradient(top, #ba2046, $flatShelbyRed);
 $softShelbyRedHighlight: adjust-lightness($flatShelbyRed,10%);
+$softShelbyRedDeboss: adjust-lightness($flatShelbyRed,-10%);
 
 $flatShelbyVideoPlayer: #0e0e0e;
 $softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);

@@ -77,7 +77,8 @@
         frameRollingState:this._frameRollingState,
         social:options.social
       });
-      this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
+      this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-main');
+      // this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
       var doneButtonText = options.social ? 'Share' : 'Roll It';
       var doneButtonClass = options.social ? 'share' : 'roll-it';
       this.$('.js-done').text(doneButtonText).addClass(doneButtonClass).show();
@@ -124,6 +125,8 @@
         case ShareActionState.complete :
           this._buttonSpinnerView.hide();
           this._hide();
+					// set app progress
+					shelby.models.userProgress.set('framesRolled', shelby.models.userProgress.get('framesRolled') + 1);
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');

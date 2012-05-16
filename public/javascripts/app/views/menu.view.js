@@ -40,15 +40,15 @@
     },
 
     _goToStream : function(){
-      shelby.router.navigate('/', {trigger:true});
+      shelby.router.navigate('stream', {trigger:true});
     },
 
     _goToRolls : function(){
-      shelby.router.navigate('/rolls', {trigger:true});
+      shelby.router.navigate('rolls', {trigger:true});
     },
 
     _goToSaves : function(){
-      shelby.router.navigate('/saves', {trigger:true});
+      shelby.router.navigate('saves', {trigger:true});
     },
 
     _onDisplayStateChange : function(guide, newDisplayState){
