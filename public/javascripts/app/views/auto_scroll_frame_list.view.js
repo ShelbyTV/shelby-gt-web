@@ -8,11 +8,14 @@
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
       shelby.models.guide.bind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
+      shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
+      shelby.models.guide.unbind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
+      shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype._cleanup.call(this);
     },
 
@@ -40,34 +43,26 @@
       }
     },
 
-    scrollToActiveFrameView : function() {
-      var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
-      if (activeFrameView) {
-        this._scrollTo(activeFrameView.el);
+    _scrollToActiveFrameView : function(guideModel, tryAutoScroll) {
+      if (tryAutoScroll) {
+        var activeFrameView = this.children.find(this._findViewByModel(shelby.models.guide.get('activeFrameModel')));
+        if (activeFrameView) {
+          this._scrollTo(activeFrameView.el);
+        }
+        guideModel.set('tryAutoScroll', false);
       }
     },
 
     _onNewActiveFrame : function(guideModel, currentActiveFrameModel){
-      var frameViews = this._getActiveFrameViews(guideModel, currentActiveFrameModel);
-      this._switchActiveFrameViews(frameViews);
+      var currentActiveFrameView = this.children.find(this._findViewByModel(currentActiveFrameModel));
+      if(currentActiveFrameView) {
+        this._scrollTo(currentActiveFrameView.el);
+      }
     },
 
     _onNewActiveFrameRollingView : function(guideModel, currentActiveFrameRollingView){
       // a bit ugly
       this.parent.scrollToChildElement($(currentActiveFrameRollingView.el).parent().parent());
-    },
-
-    _getActiveFrameViews : function(guideModel, currentActiveFrameModel){
-      return {
-        current : this.children.find(this._findViewByModel(currentActiveFrameModel)),
-        old : this.children.find(this._findViewByModel(guideModel.previousAttributes().activeFrameModel))
-      };
-    },
-
-    _switchActiveFrameViews : function(frameViews){
-      if(frameViews.current) {
-        this._scrollTo(frameViews.current.el);
-      }
     },
 
     _scrollTo : function(element) {
