@@ -9,11 +9,17 @@
 /* line 7, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion {
   border-top: none;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
   overflow-y: hidden;
   top: 0;
   z-index: 1;
 }
-/* line 16, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 17, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -28,7 +34,7 @@
   position: absolute;
   top: 40px;
 }
-/* line 26, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 27, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   background: #222;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
@@ -39,12 +45,12 @@
   top: 0;
   width: 100%;
 }
-/* line 38, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 39, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 47, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 48, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion.frame-rolling-private .share-comment-counter {
   display: block;
   float: right;
@@ -52,10 +58,9 @@
   position: relative;
 }
 
-/* line 56, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 57, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
-  background: url("../images/assets/noise.png") #555555;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #333333;
   height: 40px;
 }
 /* line 62, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
@@ -76,16 +81,6 @@
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-/* line 80, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-public:before, .frame-rolling-completion-header h1.roll-type-private:before {
-  content: "\0020";
-  background: url("../images/assets/rolls_public.svg") no-repeat center center transparent;
-  float: left;
-  height: 21px;
-  margin: 8px;
-  position: absolute;
-  width: 20px;
 }
 /* line 94, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {

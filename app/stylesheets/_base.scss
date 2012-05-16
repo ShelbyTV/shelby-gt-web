@@ -21,6 +21,8 @@ $radiusFooter: 0 0 $radius - 2 $radius - 2;
 $defaultMargin: 10px;
 $margin: 0.5em;
 
+$outline : #333;
+
 //colors
 $text: #dcddde;
 
@@ -45,7 +47,7 @@ $rolls-outset : #555;
 $save : #2291c2;
 
 //border styles
-$articleStroke : 1px solid #222;
+$articleStroke : 1px solid $outline;
 $menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
