@@ -9,5 +9,5 @@ role :app, "50.57.52.126"
 #	Git
 #############################################################
 
-set :repository,  "git@github.com:ShelbyTV/shelby_gt.git"
+set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
 set :branch, "isolated_roll"

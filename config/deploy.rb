@@ -1,17 +1,25 @@
 set :application, "shelby-gt-web"
 set :user, "gt"
-
-# version control
-set :scm, :git
-
-# Use developer's local ssh keys when git clone/updating on the remote server
-ssh_options[:forward_agent] = true
-#keep a local cache to speed up deploys
-set :deploy_via, :remote_cache
 set :deploy_to, "/home/gt/web"
+
 default_run_options[:pty] = true
 
-# Passenger setup
+#############################################################
+#	Git
+#############################################################
+
+set :scm, :git
+
+#keep a local cache to speed up deploys
+set :deploy_via, :remote_cache
+# Use developer's local ssh keys when git clone/updating on the remote server
+ssh_options[:forward_agent] = true
+
+
+#############################################################
+#	Passenger
+#############################################################
+
 namespace :deploy do
  task :start do ; end
  task :stop do ; end
