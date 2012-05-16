@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     # TODO: want this to be transparent to end user, so probably going to use some other mechanism than URL
     @isolated_roll_id = case request.domain(100)
       when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "localhost.shelby.tv" then "4f8f7ef2b415cc4762000002"
       else false
     end
     redirect_to "/isolated_roll/#{@isolated_roll_id}" and return if @isolated_roll_id and params[:path].blank?
@@ -40,7 +41,8 @@ class HomeController < ApplicationController
       @video_info = nil
     end
     
-    if user_signed_in?
+    #XXX REDIRECT ISOLATED ROLL HACK TEST
+    if user_signed_in? or @isolated_roll_id
       @csrf_token = csrf_token_from_cookie      
       render 'app'
     else
