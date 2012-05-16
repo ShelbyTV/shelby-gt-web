@@ -23,6 +23,14 @@
           libs.shelbyGT.PlaybackStatus.paused :
           libs.shelbyGT.PlaybackStatus.playing;
         }
+      },
+      
+      192 : {
+        model : 'userDesires',
+        attr : 'guideShown',
+        val : function(){
+          return !shelby.models.userDesires.get('guideShown');
+        }
       }
 
     },
@@ -57,6 +65,7 @@
     _setupKeyboardBindings : function(){
       var self = this;
       $(document).on('keyup', function(event){
+        console.log(event.keyCode);//expose keyCode!
         if(shelby.models.userDesires.get('typing')) return false;
         var actionData = self._getActionData(event.keyCode);
         if(!actionData) return false;
