@@ -64,6 +64,15 @@
       'public': true,
       thumbnail_url: "http://a0.twimg.com/profile_images/1911354249/120216_GigaOM_0612_MathewI-crop2_normal.jpg",
       title: "mathewi"
+    },
+    {
+      collaborative: true,
+      creator_id: "4f60e32cad9f11573c0003a4",
+      id: "4faae1f7b415cc2cc9001658",
+      origin_network: null,
+      'public': true,
+      thumbnail_url: "http://i4.ytimg.com/vi/GapR198Ut_k/hqdefault.jpg",
+      title: "Hotness"
     }
   ];
 })();

@@ -26,9 +26,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guidePresentation = new libs.shelbyGT.GuidePresentationModel();
 
-    shelby.models.share = new libs.shelbyGT.ShareModel();
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
+
+    shelby.models.rollFollowings = new libs.shelbyGT.RollFollowingsModel();
 
     //TODO: refactor so this is a user.model relation //
     shelby.models.userProgress = new libs.shelbyGT.UserProgressModel();
@@ -38,7 +39,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       shelby.models.user.fetch({
         global: false,
         data: {
-          include_rolls: true
+          //include_rolls: true
         },
         success: function() {
           self._reroute();

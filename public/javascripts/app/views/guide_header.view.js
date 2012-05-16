@@ -55,19 +55,19 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   },
 
   _showUserPreferences : function(){
-    shelby.router.navigate('/preferences', {trigger:true});
+    shelby.router.navigate('preferences', {trigger:true});
   },
 
   _showHelp : function(){
-    shelby.router.navigate('/help', {trigger:true});
+    shelby.router.navigate('help', {trigger:true});
   },
 
   _showTeam : function(){
-    shelby.router.navigate('/team', {trigger:true});
+    shelby.router.navigate('team', {trigger:true});
   },
 
   _showLegal : function(){
-    shelby.router.navigate('/legal', {trigger:true});
+    shelby.router.navigate('legal', {trigger:true});
   },
 
 	_signout : function(){

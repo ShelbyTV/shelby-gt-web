@@ -6,7 +6,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   options : {
     collectionAttribute : 'listCollection',
-    listItemView : 'ListItemView',
+    listItemView : 'libs.shelbyGT.ListItemView',
     insert : {
       position : 'append',
       selector : null
@@ -16,12 +16,18 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
     this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
+    this._initializeEducation();
+  },
+
+  _initializeEducation : function(){
+    var self = this;
     if (!this._userHasBeenEducated() && this._isEducationDisplayState()){
       var self = this;
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
     }
+
   },
 
   _userHasBeenEducated : function(){
@@ -91,7 +97,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _findViewByModel : function(model){
     return function(view){
-      return view.model == model;
+      return model && view.model.id == model.id;
     };
   },
 

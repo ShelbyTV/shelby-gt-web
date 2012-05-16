@@ -1,0 +1,30 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+#mini-video-progress {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  z-index: 1;
+  opacity: 0.0;
+  
+  @include transition-property('opacity');
+	@include transition-duration(.3s);
+	@include transition-timing-function(ease-in-out);
+	@include transition-delay(0s);
+}
+
+.user-inactive #mini-video-progress {
+  opacity: 1.0;
+}
+
+.mini-video-player-progress {
+  margin-right: 330px;
+  > div {
+    border-radius: 0;
+  }
+}

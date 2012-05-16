@@ -52,20 +52,27 @@
 
 .rolls-leave{
 	@extend .rolls-add;
-	@include box-shadow(inset 0px 0px 1px 0px #111);
 	background:$flatShelbyGrayDeboss;
 	@include background(
 		$softShelbyGrayDeboss
 	);	
+	@include box-shadow(inset 0px 0px 1px 0px #111);
+	border: none;
+	margin: 1px;
+}
+
+.rolls-share-cancel{
+	@extend .rolls-leave;
+	border-color:#333;
 }
 
 .share-dialog{
-
 	background:#585858;
 	border-bottom:1px solid #222;
 	padding:0;
 	display:none;
 	position:relative;
+	width:100%;
 	z-index:1;
 
 }
@@ -76,8 +83,17 @@
 		#585858
 //		#454545
 	);
-	padding:$defaultMargin;
+	padding: 0 $defaultMargin $defaultMargin;
 	position:relative;
+
+	legend,
+	label {
+		float: left;
+		font-weight: 500;
+//		font-size: 10px;
+		margin: $defaultMargin - 2 0 $defaultMargin - 8;
+		width: 100%;
+	}
 }
 
 .share-comment{
@@ -95,6 +111,7 @@
 	.video-shared{
 		@extend .video-saved;
 		@include border-radius($radius);
+		
 		padding-top:15px;
 	}
 }
@@ -105,14 +122,14 @@
 }
 
 .share-networks-list{
-
-	margin:0;
-	padding:0;
+	float: left;
+	margin: 0;
+	padding: 0;
 
 	li{
-		display:inline-block;
-		list-style-type:none;
-		margin:$defaultMargin $defaultMargin $defaultMargin 0;
+		display: inline-block;
+		list-style-type: none;
+		margin: 0 $defaultMargin $defaultMargin 0;
 
 	}
 }
@@ -208,7 +225,7 @@
 }
 
 .share-submit-button{
-	@include form-submit-button;
+	@include form-submit-button($flatShelbyBlue);
 	.spinner{
 		left:auto;
 		margin-left:auto;

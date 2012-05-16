@@ -1,13 +1,15 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
-    "click .js-share-roll" : "_toggleShareRollVisibility",
+    "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll"
   },
 
   el : '#roll-header',
 
   _shareRollView: null,
+
+  _shareRollViewState: null,
 
   template : function(obj){
     return JST['roll-header'](obj);
@@ -16,25 +18,58 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change:displayState', this._updateVisibility, this);
     this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
+    this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
+    this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change:displayState', this._updateVisibility, this);
     this.model.unbind('change:currentRollModel', this._updateRollHeaderView, this);
+    this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
   },
 
   render : function(){
     this.$el.html(this.template());
-    this._shareRollView = new libs.shelbyGT.ShareRollView({model:shelby.models.share});
-    this.renderChild(this._shareRollView);
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll ||
         this.model.get('displayState') == libs.shelbyGT.DisplayState.userPersonalRoll) {
       this.$el.show();
     }
   },
 
-  _toggleShareRollVisibility : function(){
-    this._shareRollView.$el.toggle();
+  _onShareRoll : function() {
+    this._shareRollViewState.toggleVisibility();
+  },
+
+  _immediateShowHideShareRollView : function(visible) {
+    this._shareRollViewState.set('slide', false);
+    this._shareRollViewState.set('visible', visible);
+  },
+
+  _onUpdateShareRollViewVisibility : function(shareRollViewStateModel, visible) {
+    var self = this;
+    this.$('.js-share-roll').addClass('js-busy');
+    // the share roll subview is recreated for each time it will be displayed
+    // this causes it to be reset to a clean state and helps to make sure that
+    // stale callbacks don't affect it
+    if (visible) {
+      this._shareRollView = new libs.shelbyGT.ShareRollView({
+        model : new libs.shelbyGT.ShareModel(),
+        viewState : this._shareRollViewState
+      });
+      this.appendChild(this._shareRollView);
+    }
+    this._shareRollView.updateVisibility(visible, shareRollViewStateModel.get('slide'), function(){
+      if(self._shareRollView) {
+        if (self._shareRollView.$el.is(':visible')) {
+          this.$('.js-share-roll').text('Cancel').addClass('rolls-share-cancel');
+        } else {
+          self._shareRollView.leave();
+          self._shareRollView = null;
+          this.$('.js-share-roll').text('Share Roll').removeClass('rolls-share-cancel');
+        }
+        self.$('.js-share-roll').removeClass('js-busy');
+      }
+    });
   },
 
   _updateVisibility : function(guideModel, displayState){
@@ -43,7 +78,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this.$el.show();
     } else {
       // collapse/hide child views
-      this._shareRollView.$el.hide();
+      this._immediateShowHideShareRollView(false);
       this.$el.hide();
     }
   },
@@ -77,7 +112,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _updateRollHeaderView : function(guideModel, currentRollModel) {
-    this._shareRollView.$el.hide();
+    this._immediateShowHideShareRollView(false);
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$('#js-roll-header .js-share-roll').css('width', '137%');

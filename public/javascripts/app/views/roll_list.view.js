@@ -7,14 +7,34 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
     listItemView : 'RollItemView'
   }),
 
-  initialize : function(){
-    shelby.models.guidePresentation.bind('change:content', this._onContentChanged, this);
-    libs.shelbyGT.ListView.prototype.initialize.call(this);
+  initialize : function() {
+      shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
+      shelby.models.guidePresentation.bind('change:content', this._onContentChanged, this);
+      libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
-  _cleanup : function(){
-    shelby.models.guidePresentation.unbind('change:content', this._onContentChanged, this);
-    libs.shelbyGT.ListView.prototype._cleanup.call(this);
+  _cleanup : function() {
+      shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
+      shelby.models.guidePresentation.unbind('change:content', this._onContentChanged, this);
+      libs.shelbyGT.ListView.prototype._cleanup.call(this);
+  },
+
+  _scrollToActiveRollItemView : function(guideModel, tryAutoScroll) {
+    if (tryAutoScroll) {
+      var activeRollItemView = this.children.find(function(childView){
+        var activeFrameModel = guideModel.get('activeFrameModel');
+        if (activeFrameModel) {
+          var roll = activeFrameModel.get('roll');
+          if (roll && childView.model.id == roll.id) {
+            return true;
+          }
+        }
+      });
+      if (activeRollItemView) {
+        this._scrollTo(activeRollItemView.el);
+      }
+      guideModel.set('tryAutoScroll', false);
+    }
   },
 
   _onContentChanged : function(guidePresentationModel, content){
@@ -22,6 +42,10 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
       default:
         console.log("what was that?", content);
     }
+  },
+
+  _scrollTo : function(element) {
+    this.parent.scrollToChildElement(element);
   }
 
 });

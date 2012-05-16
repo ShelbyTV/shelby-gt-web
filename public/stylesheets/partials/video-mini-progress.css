@@ -1,0 +1,47 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../../app/stylesheets/partials/video-mini-progress.scss */
+#mini-video-progress {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  z-index: 1;
+  opacity: 0.0;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+/* line 21, ../../../app/stylesheets/partials/video-mini-progress.scss */
+.user-inactive #mini-video-progress {
+  opacity: 1.0;
+}
+
+/* line 25, ../../../app/stylesheets/partials/video-mini-progress.scss */
+.mini-video-player-progress {
+  margin-right: 330px;
+}
+/* line 27, ../../../app/stylesheets/partials/video-mini-progress.scss */
+.mini-video-player-progress > div {
+  border-radius: 0;
+}

@@ -58,9 +58,17 @@ $softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
 $shelbyBlueHighlight: #79cae7;
 $softShelbyBlueHighlight: adjust-lightness($flatShelbyBlue,5%);
 
+$sharingShelbyBlue: #143caf;
+$sharingShelbyBlueButton: linear-gradient(top, #0087c0, $sharingShelbyBlue);
+$sharingShelbyBlueHighlight: adjust-lightness($sharingShelbyBlue,5%);
+
 $flatShelbyGreen: #549738;
 $softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
 $softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
+
+$flatShelbyGreenButton: #59b034;
+$softShelbyGreenButton: linear-gradient(top, #79c758, $flatShelbyGreenButton);
+$softShelbyGreenButtonHighlight: adjust-lightness($flatShelbyGreenButton,5%);
 
 $flatShelbyPurple: #693a7b;
 $softShelbyPurple: linear-gradient(top, #8d539a, $flatShelbyPurple);
@@ -70,11 +78,18 @@ $flatShelbyYellow: #d5cd39;
 $softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
 $softShelbyYellowHighlight: #ddd756;
 
+$flatEducationYellow: #f9f15c;
+$softEducationYellow: linear-gradient(top, adjust-lightness($flatEducationYellow,10%), $flatEducationYellow);
+
 $flatShelbyGray: #575757;
 $softShelbyGray: linear-gradient(top, #7b7b7b, $flatShelbyGray);
 
 $flatShelbyGrayButton: #343434;
 $softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
+
+$flatLightShelbyGrayButton: #464646;
+$lightShelbyGrayButton: linear-gradient(top, #646464, $flatLightShelbyGrayButton);
+$lightShelbyGrayButtonHighlight: adjust-lightness($flatLightShelbyGrayButton,5%);
 
 $flatShelbyGrayDeboss: #303030;
 $softShelbyGrayDeboss: linear-gradient(bottom,#444,$flatShelbyGrayDeboss);
@@ -127,15 +142,15 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 }
 
 @mixin basefont{
-	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin buttonfont{
-	font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin fontcolor {
@@ -163,7 +178,7 @@ $color: #4a4a4a !default;
 	color: #efefef;
 	display: block;
 //	float:left;
-	font-family: 'Ubuntu',Trebuchet MS,'Times New Roman',sans-serif;
+	font-family: 'Ubuntu',Trebuchet MS,sans-serif;
 	font-size: $font-size;
 	font-weight: 300;
 //	height:23px;
@@ -193,7 +208,7 @@ $color: #4a4a4a !default;
 	);
 	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
 
-	border:1px solid #333;
+	border:1px solid adjust-lightness($flatShelbyGreen, -5%);
 	color:#efefef;
 	display:block;
 	line-height:2.5;
@@ -203,17 +218,18 @@ $color: #4a4a4a !default;
 	width:100%;
 }
 
+$color: red !default;
 
-@mixin form-submit-button{
+@mixin form-submit-button($color){
 	@include border-radius($radius);
 	@include buttonfont;
-	background: $flatShelbyBlue;
+	background: $color;
 	@include background(
-		$softShelbyBlue
+		linear-gradient(top, adjust-lightness($color, 15%), $color)
 	);
-	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($color, 20%));
 
-	border:1px solid #222;
+	border:1px solid adjust-lightness($color, -15%);
 	color:#efefef;
 	display:block;
 	height:34px;

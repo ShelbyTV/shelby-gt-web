@@ -3,6 +3,7 @@
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
   var GuideModel = libs.shelbyGT.ListView;
+  var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollView = libs.shelbyGT.RollView;
@@ -60,8 +61,8 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.user
-            //model : shelby.collections.rollFollowings
+            //model : shelby.models.user
+            model : shelby.models.rollFollowings
           };
           break;
         case DisplayState.standardRoll :
@@ -147,10 +148,6 @@
       }
     },
 
-    scrollToActiveFrameView : function(){
-      this._listView.scrollToActiveFrameView();
-    },
-
     scrollToChildElement : function(element){
       $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
       //this.$el.scrollTo(element, {duration:200, axis:'y'});
@@ -167,13 +164,31 @@
 
     // appropriatly advances to the next video (in dashboard or a roll)
     _nextVideo : function(){
-      var _currentModel,
+      var self = this,
+          _currentModel,
           _frames,
           _index,
           _currentFrame = shelby.models.guide.get('activeFrameModel');
 
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
+        case libs.shelbyGT.DisplayState.rollList :
+          // if the dashboard model hasn't been created yet, fetch it
+          // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
+          // as opposed to from what is currently displyed in the guide
+          if (!shelby.models.dashboard) {
+            shelby.models.dashboard = new DashboardModel();
+            shelby.models.dashboard.fetch({
+              data: {
+                include_children : true,
+                limit : shelby.config.pageLoadSizes.dashboard
+              },
+              success: function(model, response){
+                self._nextVideo();
+              }
+            });
+            return;
+          }
           _currentModel = shelby.models.dashboard;
           _frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){
             return c.get('frame');
