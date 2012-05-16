@@ -25,6 +25,7 @@
         }
       },
       
+      // ~ tilda (192)
       192 : {
         model : 'userDesires',
         attr : 'guideShown',
@@ -33,6 +34,7 @@
         }
       },
 
+      // m 
       77 : {
         model : 'userDesires',
         attr : 'mute',
