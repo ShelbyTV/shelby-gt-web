@@ -1419,12 +1419,12 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 23, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 20, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls li {
   display: block;
 }
 
-/* line 29, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 26, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
@@ -1434,7 +1434,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 38, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 35, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
@@ -1446,7 +1446,7 @@ a:hover, a:visited, a:active {
   vertical-align: middle;
   width: 20px;
 }
-/* line 49, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 46, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1454,17 +1454,17 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 58, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 55, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change {
   display: none;
 }
-/* line 60, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 57, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change input {
   margin: 3px;
   padding: 4px;
 }
 
-/* line 73, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 70, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1493,7 +1493,7 @@ a:hover, a:visited, a:active {
   top: 9px;
   width: auto;
 }
-/* line 87, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 84, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1523,7 +1523,7 @@ a:hover, a:visited, a:active {
   z-index: 1000;
 }
 
-/* line 105, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 102, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-delete {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1556,7 +1556,7 @@ a:hover, a:visited, a:active {
   display: none;
 }
 
-/* line 127, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 124, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 9px 10px;
   position: absolute;
@@ -1565,7 +1565,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 138, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 135, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1585,7 +1585,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 151, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 148, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;

@@ -3,10 +3,10 @@
   libs.shelbyGT.KeyboardControlsView = Backbone.View.extend({
 
     events : {
-      "focus input" : "_onTypeableFocus",
+      "focus input"    : "_onTypeableFocus",
       "focus textarea" : "_onTypeableFocus",
-      "blur input" : "_onTypeableBlur",
-      "blur textarea" : "_onTypeableBlur"
+      "blur input"     : "_onTypeableBlur",
+      "blur textarea"  : "_onTypeableBlur"
     },
 
     el : 'body',
@@ -30,6 +30,14 @@
         attr : 'guideShown',
         val : function(){
           return !shelby.models.userDesires.get('guideShown');
+        }
+      },
+
+      77 : {
+        model : 'userDesires',
+        attr : 'mute',
+        val : function(){
+          return !shelby.models.userDesires.get('mute');
         }
       }
 
