@@ -41,10 +41,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       });
       this.renderChild(this.spinner);
     }
-    if (this._components.networkToggles){
-      this.twitterButton = this.$('.js-toggle-twitter-sharing');
-      this.facebookButton = this.$('.js-toggle-facebook-sharing');
-    }
   },
 
   _toggleSpinner : function(){
@@ -76,11 +72,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _updateDestinationButtons : function(shareModel){
-    var self = this;
-    ['twitter', 'facebook'].forEach(function(network){
-      var btn = self[network+'Button'];
-      shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
-    });
+    if (this._components.networkToggles) {
+      var self = this;
+      ['twitter', 'facebook'].forEach(function(network){
+        var btn = this.$('.js-toggle-' + network + '-sharing');
+        shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
+      });
+    }
   },
 
   _getCharsLeft : function(){
