@@ -574,7 +574,7 @@ a:hover, a:visited, a:active {
 }
 /* line 40, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
   border: none;
   color: #efefef;
@@ -1106,7 +1106,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -1367,7 +1367,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #03b3ff), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #03b3ff, #007fb6);
@@ -1483,7 +1483,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border: 1px solid #222;
   color: #efefef;
   height: 26px;
@@ -1541,7 +1541,7 @@ a:hover, a:visited, a:active {
   -webkit-box-shadow: inset 0px 1px 1px 0px #888888;
   -o-box-shadow: inset 0px 1px 1px 0px #888888;
   box-shadow: inset 0px 1px 1px 0px #888888;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   font-weight: 600;
   color: #EFEFEF;
   background-color: linear-gradient(top, #ba2046, #9e1632);
@@ -1785,7 +1785,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -1962,7 +1962,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   color: #fff;
   display: block;
   font-weight: bold;
@@ -2099,7 +2099,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4a4a4a, #343434);
   background: -moz-linear-gradient(top, #4a4a4a, #343434);
@@ -2631,19 +2631,28 @@ a:hover, a:visited, a:active {
 }
 /* line 24, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #333;
+  border-top: 1px solid #666;
   padding: 0;
 }
 /* line 28, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li:first-child {
+  border-top: none;
+}
+/* line 31, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li:last-child {
+  border-bottom: none;
+}
+/* line 35, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
   background: #5fa256;
   position: relative;
 }
-/* line 36, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 43, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item a {
   color: #000;
 }
-/* line 39, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 46, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
   height: 36px;
   overflow: hidden;
@@ -2651,7 +2660,7 @@ a:hover, a:visited, a:active {
   white-space: nowrap;
   width: 160px;
 }
-/* line 45, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 52, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
   color: #FFF;
@@ -2749,7 +2758,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -3168,7 +3177,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -3202,7 +3211,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #78c25a), color-stop(100%, #549738));
   background: -webkit-linear-gradient(top, #78c25a, #549738);
@@ -3708,7 +3717,7 @@ a:hover, a:visited, a:active {
 
 /* line 147, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter, .email-gate-networks-twitter {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3749,7 +3758,7 @@ a:hover, a:visited, a:active {
 
 /* line 159, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook, .email-gate-networks-facebook {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -3804,7 +3813,7 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);
@@ -4092,7 +4101,7 @@ a:hover, a:visited, a:active {
 
 /* line 85, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
@@ -4241,7 +4250,7 @@ a:hover, a:visited, a:active {
 
 /* line 208, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -4311,7 +4320,7 @@ a:hover, a:visited, a:active {
 }
 /* line 27, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
   background-size: 35%;
   border: none;
