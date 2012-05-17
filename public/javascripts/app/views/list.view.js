@@ -1,5 +1,5 @@
 libs.shelbyGT.ListView = Support.CompositeView.extend({
-  
+
   tagName : 'ul',
 
   className : 'list',
@@ -14,9 +14,20 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
-    this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
+    this.model.bind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
+    this.model.bind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
+    this._internalCollection = new Backbone.Collection();
+    this._internalCollection.bind('add', this.internalAddOne, this);
+    this._internalCollection.bind('reset', this.internalReset, this);
     this._initializeEducation();
+  },
+
+  _cleanup : function(){
+    shelby.models.userProgress.set('framesRolled', 0);
+    this.model.unbind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
+    this.model.unbind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
+    this._internalCollection.unbind('add', this.internalAddOne, this);
+    this._internalCollection.unbind('reset', this.internalReset, this);
   },
 
   _initializeEducation : function(){
@@ -57,43 +68,63 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     console.log('_displayListEducationView', arguments);
   },
 
-  _cleanup : function(){
-    shelby.models.userProgress.set('framesRolled', 0);
-    this.model.unbind('add:'+this.options.collectionAttribute, this.addOne, this);
-    this.model.unbind('remove:'+this.options.collectionAttribute, this.removeOne, this);
-  },
-
-  addOne : function(item){
-    if (!this.filter || this.filter(item)) {
-      var childView = this._constructListItemView(item);
-      if (this.options.insert && this.options.insert.position) {
-        switch (this.options.insert.position) {
-          case 'append' :
-            this.appendChild(childView);
-            return;
-          case 'before' :
-            if (this.options.insert.selector) {
-              this.insertChildBefore(childView, this.options.insert.selector);
-              return;
-            }
-        }
-      }
-
-      // default behavior if not enough options were supplied
-      this.appendChild(childView);
+  relationalAddOne : function(item){
+    if (!this._filter || this._filter(item)) {
+      this._internalCollection.add(item);
     }
   },
 
-  removeOne : function(item){
+  relationalRemoveOne : function(item){
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
     }
   },
 
+  internalAddOne : function(item){
+    var childView = this._constructListItemView(item);
+    if (this.options.insert && this.options.insert.position) {
+      switch (this.options.insert.position) {
+        case 'append' :
+          this.appendChild(childView);
+          return;
+        case 'before' :
+          if (this.options.insert.selector) {
+            this.insertChildBefore(childView, this.options.insert.selector);
+            return;
+          }
+      }
+    }
+
+    // default behavior if not enough options were supplied
+    this.appendChild(childView);
+  },
+
+  internalReset : function(){
+    var self = this;
+    this._leaveChildren();
+    this._internalCollection.each(function(item){
+      self.internalAddOne(item);
+    });
+  },
+
   // sub-classes override for custom filtering
   // this should be a function that returns true to include item in the list view, otherwise false
-  filter : null,
+  _filter : null,
+
+  // can also update the filter dynamically at run-time
+  updateFilter : function(filterFunction) {
+    this._filter = filterFunction;
+    if (this._internalCollection) {
+      var newContents;
+      if (filterFunction) {
+        newContents = this.model.get(this.options.collectionAttribute).filter(filterFunction);
+      } else {
+        newContents = this.model.get(this.options.collectionAttribute).models;
+      }
+      this._internalCollection.reset(newContents);
+    }
+  },
 
   _findViewByModel : function(model){
     return function(view){

@@ -10,6 +10,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   initialize : function() {
       shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
       shelby.models.guidePresentation.bind('change:content', this._onContentChanged, this);
+      this._filterContent(shelby.models.guidePresentation.get('content'));
       libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
@@ -38,9 +39,28 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   },
 
   _onContentChanged : function(guidePresentationModel, content){
-    switch(content){
+    this._filterContent(content);
+  },
+
+  _filterContent : function(guidePresentationContent){
+    switch(guidePresentationContent){
+      case libs.shelbyGT.GuidePresentation.content.rolls.people:
+        this.updateFilter(function(model){
+          var creator_id = model.get('creator_id');
+          return model.get('public') && !model.get('collaborative') && (!creator_id || creator_id != shelby.models.user.id);
+        });
+        break;
+      case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+        this.updateFilter(function(model){
+          var creator_id = model.get('creator_id');
+          return !model.get('public') || model.get('collaborative');
+        });
+        break;
+      case null:
+        this.updateFilter(null);
+        break;
       default:
-        console.log("what was that?", content);
+        console.log("what was that?", guidePresentationContent);
     }
   },
 
