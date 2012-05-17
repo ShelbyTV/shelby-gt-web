@@ -32,6 +32,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   reRoll : function(roll, onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id;
+    console.log(frameToReroll, url);
     frameToReroll.save(null, {url:url,success:onSuccess});
   },
 
