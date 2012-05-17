@@ -98,7 +98,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-box-shadow: inset -1px 0px 1px 0px #444444;
   -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
   -o-box-shadow: inset -1px 0px 1px 0px #444444;
@@ -132,7 +132,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #78c25a), color-stop(100%, #549738));
   background: -webkit-linear-gradient(top, #78c25a, #549738);

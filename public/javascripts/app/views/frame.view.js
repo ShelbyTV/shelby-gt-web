@@ -279,12 +279,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     // TODO: perform some visually attractive removal animation for the frame
   },
 
-  _onDoFrameActionChange : function(frameStateModel, doFrameAction) {
+  _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
     if (doFrameAction == "roll") {
       // hard core rolling action
       this._roll();
-    }
-		else if (doFrameAction == "share"){
+    } else if (doFrameAction == "share"){
 			// only perform a social share
       this._roll(true);
 		}

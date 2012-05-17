@@ -89,7 +89,7 @@
 
 /* line 85, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
@@ -238,7 +238,7 @@
 
 /* line 208, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
