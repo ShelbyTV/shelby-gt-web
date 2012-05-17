@@ -108,6 +108,7 @@
 
     _share : function(){
       this._frameRollingState.set('doShare', ShareActionState.share);
+			return false;
     },
 
     _rollToPersonalRoll : function(){
@@ -126,7 +127,7 @@
           this._buttonSpinnerView.hide();
           this._hide();
 					// set app progress
-					shelby.models.userProgress.set('framesRolled', shelby.models.userProgress.get('framesRolled') + 1);
+					//shelby.models.userProgress.set('framesRolled', shelby.models.userProgress.get('framesRolled') + 1);
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');
