@@ -13,7 +13,7 @@
 
     _keyCodeActionMap : {
 
-      // Space Bar (32)
+      //  spacebar 
       32 : {
         model : 'userDesires',
         attr : 'playbackStatus',
@@ -24,15 +24,15 @@
           libs.shelbyGT.PlaybackStatus.playing;
         }
       },
-      
-      192 : {
+      // (g)uide      
+      71 : {
         model : 'userDesires',
         attr : 'guideShown',
         val : function(){
           return !shelby.models.userDesires.get('guideShown');
         }
       },
-
+      // (m)ute
       77 : {
         model : 'userDesires',
         attr : 'mute',
