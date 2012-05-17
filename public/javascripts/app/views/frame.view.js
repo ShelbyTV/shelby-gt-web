@@ -279,7 +279,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     // TODO: perform some visually attractive removal animation for the frame
   },
 
-  _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
+  _onDoFrameActionChange : function(frameStateModel, doFrameAction) {
     if (doFrameAction == "roll") {
       // hard core rolling action
       this._roll();
@@ -288,7 +288,6 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this._roll(true);
 		}
     else {
-			
       this._frameRollingView.leave();
       this._frameRollingView = null;
     }
