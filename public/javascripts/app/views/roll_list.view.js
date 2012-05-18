@@ -52,8 +52,10 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
         break;
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
         this.updateFilter(function(model){
+          var isNotPersonRoll = !model.get('public') || model.get('collaborative');
           var creator_id = model.get('creator_id');
-          return !model.get('public') || model.get('collaborative');
+          var isMyPublicRoll = model.get('public') && !model.get('collaborative') && creator_id && creator_id == shelby.models.user.id;
+          return isNotPersonRoll || isMyPublicRoll;
         });
         break;
       case null:

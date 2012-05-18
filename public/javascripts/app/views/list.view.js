@@ -5,6 +5,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   className : 'list',
 
   options : {
+    simulateAddTrue : true,
     collectionAttribute : 'listCollection',
     listItemView : 'libs.shelbyGT.ListItemView',
     insert : {
@@ -16,9 +17,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
     this.model.bind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
-    this._internalCollection = new Backbone.Collection();
-    this._internalCollection.bind('add', this.internalAddOne, this);
-    this._internalCollection.bind('reset', this.internalReset, this);
+    this._displayCollection = new Backbone.Collection();
+    this._displayCollection.bind('add', this.internalAddOne, this);
+    this._displayCollection.bind('reset', this.internalReset, this);
+    if (this.options.simulateAddTrue) {
+      this._simulatedMasterCollection = new Backbone.Collection();
+    }
     this._initializeEducation();
   },
 
@@ -26,8 +30,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     shelby.models.userProgress.set('framesRolled', 0);
     this.model.unbind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
     this.model.unbind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
-    this._internalCollection.unbind('add', this.internalAddOne, this);
-    this._internalCollection.unbind('reset', this.internalReset, this);
+    this._displayCollection.unbind('add', this.internalAddOne, this);
+    this._displayCollection.unbind('reset', this.internalReset, this);
   },
 
   _initializeEducation : function(){
@@ -70,7 +74,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   relationalAddOne : function(item){
     if (!this._filter || this._filter(item)) {
-      this._internalCollection.add(item);
+      this._displayCollection.add(item);
+    }
+    // there's no way to effectively specify add:true for a Backbone Relational collection
+    // we can simulate it by storing all of the contents the relational collection ever loaded,
+    // and using this as a surrogate for the relational collection itself when re-filtering
+    if (this.options.simulateAddTrue) {
+      this._simulatedMasterCollection.add(item);
     }
   },
 
@@ -103,7 +113,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   internalReset : function(){
     var self = this;
     this._leaveChildren();
-    this._internalCollection.each(function(item){
+    this._displayCollection.each(function(item){
       self.internalAddOne(item);
     });
   },
@@ -115,14 +125,19 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   // can also update the filter dynamically at run-time
   updateFilter : function(filterFunction) {
     this._filter = filterFunction;
-    if (this._internalCollection) {
+    if (this._displayCollection) {
+      // if we're re-filtering we need to start with the full contents of the underlying collection
+      // In Backbone Relational, these get overwritten with each progressive-loading fetch, so we
+      // have the option of keeping a full copy of the collection within this list view as our "master copy"
+      // to revert to before changing the filter
+      var masterCollection = this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
       var newContents;
       if (filterFunction) {
-        newContents = this.model.get(this.options.collectionAttribute).filter(filterFunction);
+        newContents = masterCollection.filter(filterFunction);
       } else {
-        newContents = this.model.get(this.options.collectionAttribute).models;
+        newContents = masterCollection.models;
       }
-      this._internalCollection.reset(newContents);
+      this._displayCollection.reset(newContents);
     }
   },
 
