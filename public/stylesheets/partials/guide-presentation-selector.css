@@ -7,6 +7,11 @@
  * @import "compass/reset";
  */
 /* line 6, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-selection {
+  cursor: pointer;
+}
+
+/* line 10, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .content-selector-selected {
   font-size: 150%;
   font-weight: bold;
