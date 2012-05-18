@@ -30,7 +30,6 @@
     
     // save all state changes
     _onStateChange : function(){
-      console.log('_onStateChange', arguments);  
       shelby.models.user.save({app_progress:this.toJSON()});
     },
 

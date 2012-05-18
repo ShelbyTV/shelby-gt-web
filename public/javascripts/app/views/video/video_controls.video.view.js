@@ -165,6 +165,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
 	},
 	
+
+  //TODO: make this properly backboney
 	_mute: function(el){
 		this._userDesires.set({mute: true});
 		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
