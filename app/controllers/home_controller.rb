@@ -34,6 +34,8 @@ class HomeController < ApplicationController
     #TODO: pull this mapping from API
     @isolated_roll_id = case request.host
       when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
+      when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
       else false
     end
