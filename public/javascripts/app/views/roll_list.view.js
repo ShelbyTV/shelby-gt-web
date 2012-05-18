@@ -61,8 +61,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
       case null:
         this.updateFilter(null);
         break;
-      default:
-        console.log("what was that?", guidePresentationContent);
     }
   },
 
