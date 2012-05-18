@@ -14,11 +14,11 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'personal_roll',
       relatedModel : 'libs.shelbyGT.RollModel'
-    }/*,{ we can't do this right now as navving to the rollList re-fetches the user
+    },{
       type : Backbone.HasOne,
       key : 'app_progress',
-      relatedModel : 'libs.shelbyGT.UserProgressModel'
-    }*/
+      relatedModel : 'libs.shelbyGT.AppProgressModel'
+    }
   ],
   
   url : function() {
@@ -47,6 +47,10 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
   parse : function (response) {
     // extract the result property
     var result = libs.shelbyGT.ShelbyBaseModel.prototype.parse.call(this, response);
+    //remove the id property from app_progress - THE API SHOULD DO THIS FOR US
+    if (result.app_progress && result.app_progress.id){
+      delete result.app_progress.id;
+    }
     //remove the watch later roll from the roll follwings - THE API SHOULD DO THIS FOR US
     if (result.roll_followings) {
       var roll_follwings_filtered = _(result.roll_followings).reject(function(roll){

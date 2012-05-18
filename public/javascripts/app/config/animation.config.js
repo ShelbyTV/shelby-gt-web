@@ -1,5 +1,5 @@
 shelby.config.animation = {
 	frameGrow : {
-    minHeight : 281
+    minHeight : 330
   }
 }

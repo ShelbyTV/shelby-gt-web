@@ -2,7 +2,8 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
-    "click .rolls-add" : "_toggleJoinRoll"
+    "click .rolls-add" : "_toggleJoinRoll",
+		"click .js-edit-roll" : "_toggleRollEditFunctions"
   },
 
   el : '#roll-header',
@@ -117,16 +118,47 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this._immediateShowHideShareRollView(false);
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
-      this.$('#js-roll-header .js-share-roll').css('width', '137%');
-      this.$('#js-roll-header .js-leave-roll').hide();
+      //this.$('#js-roll-header .js-share-roll').css('width', '137%');
+      this.$('#js-roll-header li:last-child').hide();
+			this.$('#js-roll-header li:nth-child(2)').show();
     }
     else{
-      this.$('#js-roll-header .js-leave-roll').show();
-      this.$('#js-roll-header .js-share-roll').css('width', '100%');
+      this.$('#js-roll-header li:last-child').show();
+			this.$('#js-roll-header li:nth-child(2)').hide();
     }
     // set text to leave/join roll
     var _buttonText = shelby.models.user.followsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
-  }
+  },
+
+	_toggleRollEditFunctions : function(){
+		var _currentRollModel = this.model.get('currentRollModel');
+		if (_currentRollModel.get('creator_id') == shelby.models.user.id){
+			var rollName = _currentRollModel.get('title');
+			if (this.$('.js-edit-roll').text() == "Edit"){
+				this.$('.js-edit-roll').text('Done');
+				$('.roll-title-text').hide();
+				$('.rolls-list-nav').hide();
+				$('#js-roll-name-change').show();
+				$('#js-roll-delete').show();
+				$('#js-roll-name-change input').focus();
+			}
+			else {
+				var _rollTitle = $('#js-roll-name-change input').val();
+				if (_rollTitle !== _currentRollModel.get('title')){
+					this._saveRollName(_rollTitle);
+				}
+				this.$('.js-edit-roll').text('Edit');
+				$('.roll-title-text').show();
+				$('.rolls-list-nav').show();
+				$('#js-roll-name-change').hide();
+				$('#js-roll-delete').hide();
+			}
+		}
+	},
+	
+	_saveRollName : function(newTitle){
+		this.model.get('currentRollModel').save({title: newTitle});
+	}
 
 });

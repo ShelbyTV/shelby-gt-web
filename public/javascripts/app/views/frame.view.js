@@ -51,8 +51,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     this.model.bind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').on('change', this._onConversationChange, this);
     this._frameViewState = new libs.shelbyGT.FrameViewStateModel();
-    this._frameViewState.bind('change:doFrameRolling', this._onDoFrameRollingChange, this);
-    this._frameViewState.bind('change:doFrameSharing', this._onDoFrameSharingChange, this);
+    this._frameViewState.bind('change:doFrameAction', this._onDoFrameActionChange, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
@@ -60,8 +59,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change:upvoters', this._onUpvoteChange, this);
     this.model.get('conversation').off('change', this._onConversationChange, this);
-    this._frameViewState.unbind('change:doFrameRolling', this._onDoFrameRollingChange, this);
-    this._frameViewState.unbind('change:doFrameSharing', this._onDoFrameSharingChange, this);
+    this._frameViewState.unbind('change:doFrameAction', this._onDoFrameActionChange, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -107,10 +105,10 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   RequestFrameRollingView : function(share){
     if (share === true) {
-      this._frameViewState.set('doFrameSharing', true);
+      this._frameViewState.set('doFrameAction', 'share');
     }
     else {
-      this._frameViewState.set('doFrameRolling', true);
+      this._frameViewState.set('doFrameAction', 'roll');
     }
   },
 
@@ -268,8 +266,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       }
     } else {
       // frame rolling view just rolled out, remove it and shrink back to frame's original height
-      this._frameViewState.set('doFrameRolling', false);
-      this._frameViewState.set('doFrameSharing', false);
+      this._frameViewState.set('doFrameAction', null);
+			
       if (this._grewForFrameRolling) {
         this.$('.user').animateAuto('height', 200);
         this._grewForFrameRolling = false;
@@ -281,23 +279,14 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     // TODO: perform some visually attractive removal animation for the frame
   },
 
-  _onDoFrameRollingChange : function(frameStateModel, doFrameRolling) {
-    shelby.models.userProgress.set('framesRolled', shelby.models.userProgress.get('framesRolled') + (doFrameRolling ? 1 : -1));
-    if (doFrameRolling) {
+  _onDoFrameActionChange : function(frameStateModel, doFrameAction) {
+    if (doFrameAction == "roll") {
       // hard core rolling action
       this._roll();
-    }
-    else {
-      this._frameRollingView.leave();
-      this._frameRollingView = null;
-    }
-  },
-
-  _onDoFrameSharingChange: function(frameStateModel, doFrameSharing){
-    if (doFrameSharing){
-      // only perform a social share
+    } else if (doFrameAction == "share"){
+			// only perform a social share
       this._roll(true);
-    }
+		}
     else {
       this._frameRollingView.leave();
       this._frameRollingView = null;
@@ -308,7 +297,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     this.RequestFrameRollingView(true);
     var rollFollowings = shelby.models.user.get('roll_followings');
     var personalRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
-    this._frameRollingView.revealFrameRollingCompletionView(this.model, personalRoll, {social:true, sharing: this._frameViewState.get('doFrameSharing')});
+    this._frameRollingView.revealFrameRollingCompletionView(this.model, personalRoll, {social:true, sharing:true});
   }
 
 });

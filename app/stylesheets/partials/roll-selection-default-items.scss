@@ -4,43 +4,53 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-.form-rolls-list{
+.form-rolls-list {
 	@extend .list;
+
+	cursor: pointer;
 	
-	a{
-		display:block;
-		padding:$defaultMargin/2;
-		text-decoration:none;
+	a {
+		display: block;
+		padding: $defaultMargin/2;
+		text-decoration: none;
 
 		&:visited{
-			text-decoration:none;
+			text-decoration: none;
 		}
 
 		&:hover,
 		&:active{
-			text-decoration:underline;
+			text-decoration: underline;
 		}
 	}
 
-	li{
-		border-bottom:1px solid #222;
-		padding:$defaultMargin/2;
+	li {
+		border-bottom:  1px solid $rolls-inset;
+		border-top:  1px solid $rolls-outset;
+		padding: $defaultMargin/2;
+
+		&:first-child { 
+			border-top: none;
+		}
+		&:last-child {
+			border-bottom: none;
+		}
 	}
 
 	.rolling-public-roll{
-		font-size:14px;
-		line-height:1.75;
-		position:relative;
-		text-align:center;
+		font-size: 14px;
+		line-height: 1.75;
+		position: relative;
+		text-align: center;
 
 		&.new:before{
-			content:"+";
+			content: "+";
 		}
 		&:after{
-			content:url('../images/assets/rolls_public.svg');
-			right:9px;
-			position:absolute;
-			top:1px;
+			content: url('../images/assets/rolls_public.svg');
+			right: 9px;
+			position: absolute;
+			top: 1px;
 		}
 	}
 
@@ -48,16 +58,16 @@
 		@extend .rolling-public-roll;
 
 		&:after{
-			content:url('../images/assets/rolls_private.svg');
+			content: url('../images/assets/rolls_private.svg');
 		}
 
 	}
 }
 
 .share-comment-counter{
-	color:white;
-	line-height:2.5;
-	margin:$defaultMargin;
-	position:absolute;
-	right:82px;
+	color: white;
+	line-height: 2.5;
+	margin: $defaultMargin;
+	position: absolute;
+	right: 82px;
 }

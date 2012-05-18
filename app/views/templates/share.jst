@@ -31,4 +31,13 @@
 		<button onclick="return false;" class="js-submit-share share-submit-button" type="submit">Share it</button>
 	</fieldset>
 <% } %>
+
+	<fieldset class="share-submit">
+		<button class="js-social rolling-main-social js-track-event" data-ga_category="Rolling" data-ga_action="share button" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+	    Share
+	  </button>
+	  <button class="js-done rolling-main-done">
+	    Roll it
+	  </button>
+	</fieldset>
 </form>

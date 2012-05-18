@@ -13,8 +13,11 @@
 		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
 		<!-- </span> -->
 	</span>
-	<span class="js-roll-title-text">
+	<span class="roll-title-text">
 		<%= roll.get('title') %>
+	</span>
+	<span id="js-roll-name-change" class="roll-name-change">
+		<input value="<%= roll.get('title') %>" size="15"/>
 	</span>
 </h2>
 
@@ -31,4 +34,8 @@
 			</button>
 		</li>
 	</ul>
+	
+	<button id="js-roll-delete" class="roll-delete js-track-event" data-ga_category="Roll List" data-ga_action="delete" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+		Delete
+	</button>
 <% } %>

@@ -4,27 +4,28 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 // blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
-.list{
-	margin:0;
-	padding:0;
+.list {
+	margin: 0;
+	padding: 0;
 
-	li{
+	li {
 		@include background(
 //			url('../images/assets/noise.png') 
 			#494949
 		);
-		list-style-type:none;
-		padding:$defaultMargin;
+		list-style-type: none;
+		padding: $defaultMargin;
 	
-		&:hover{
+		&:hover {
 			@include background(
 //				url('../images/assets/noise.png') 
 				#555
 			);
 		}
 	}
-
-	.active-list-item{
+}
+.active-list-item {
+	.active-frame {
 		@include background(
 //			url('../images/assets/noise.png') 
 			#6d6d6d
@@ -32,43 +33,43 @@
 	}
 }
 
-.video-card{
+.video-card {
 	@include border-radius($radius);
 
-	border:$articleStroke;
+	border: $articleStroke;
 //	font-size: $font-size;
-	margin:0;
-	overflow:hidden;
-	padding:0;
-	position:relative;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
 }
 
-.video-card-footer{
+.video-card-footer {
 //		@include box-shadow(0px 4px 13px 4px #333);
 	@include border-radius(0 0 $radius $radius);
 	
-	border-top:1px solid $outset;
-	overflow:hidden;
-	z-index:5;
+	border-top: 1px solid $outset;
+	overflow: hidden;
+	z-index: 5;
 }
 
 .video-thumbnail {
-	background:#444;
-	line-height:75px;
-	margin:0;
-	text-align:center;
-	width:100%;
+	background: #444;
+	line-height: 75px;
+	margin: 0;
+	text-align: center;
+	width: 100%;
 }
 
-.video-thumbnail-image{
+.video-thumbnail-image {
 	//@include border-radius(5px);
-	display:inline-block;
-	margin:-27px auto 0;
-	overflow:hidden;
-	padding-top:0;
-	vertical-align:middle;
-	width:100%;
-	cursor:pointer;
+	display: inline-block;
+	margin: -27px auto 0;
+	overflow: hidden;
+	padding-top: 0;
+	vertical-align: middle;
+	width: 100%;
+	cursor: pointer;
 }	
 
 .video-thumbnail-missing {
@@ -76,27 +77,27 @@
 		width: auto; 
 }
 
-.video-card-header{
+.video-card-header {
 	@include softgradient;
 	@include border-radius($radiusHeader);
 
-	padding:$defaultMargin - 4 $defaultMargin - 2 $defaultMargin - 3;
+	padding: $defaultMargin - 4 $defaultMargin - 2 $defaultMargin - 3;
 
-	a{
-		text-decoration:none;
+	a {
+		text-decoration: none;
 		&:active,
-		&:visited{
-			text-decoration:none;
+		&:visited {
+			text-decoration: none;
 		}
-		&:hover{
-			text-decoration:underline;
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 
-	h1{
+	h1 {
 		float: left;
-		font-size:1em;
-		height:1.231em;
+		font-size: 1em;
+		height: 1.231em;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -112,27 +113,27 @@
 	);
 	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
 	
-	display:block;
-	float:right;
-	padding:0px;
+	display: block;
+	float: right;
+	padding: 0px;
 	margin: -4px -3px;
 
-	&:before{
-		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size:72%;
-		content:"\0020";
-		float:left;
-		margin:1px 2px 1px 7px;
-		width:38px;
-		height:17px;
+	&:before {
+		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+		background-size: 72%;
+		content: "\0020";
+		float: left;
+		margin: 1px 2px 1px 7px;
+		width: 38px;
+		height: 17px;
 	}
 }
 
 //.video-vote {
-//	float:right;
-//	font-size:1em;
-//	margin:0;		
-//	padding-left:0;
+//	float: right;
+//	font-size: 1em;
+//	margin: 0;		
+//	padding-left: 0;
 
 //	button {
 
@@ -141,19 +142,19 @@
 
 //}
 
-.video-thumbnail{
-	height:125px;
-	overflow:hidden;
-	position:relative;
+.video-thumbnail {
+	height: 125px;
+	overflow: hidden;
+	position: relative;
 }	
-.video-controls{
-	margin:$defaultMargin/2;
-	padding:0;
-	position:absolute;
-	right:0px;
-	top:0px;
+.video-controls {
+	margin: $defaultMargin/2;
+	padding: 0;
+	position: absolute;
+	right: 0px;
+	top: 0px;
 
-	.roll-frame{
+	.roll-frame {
 		@include roundies;
 		background-color: $flatShelbyGreenButton;
 		@include background(
@@ -162,23 +163,23 @@
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #69f034);
 
-		border:$menuStroke;
-		margin-bottom:5px;
-		padding:0;
+		border: $menuStroke;
+		margin-bottom: 5px;
+		padding: 0;
 	
-		button{
+		button {
 			@include background(
 				url('../images/assets/action_roll.svg') no-repeat 8px 4px
 			);
 			@include roundies;
-			display:block;
-			height:32px;
-			margin:0;
-			outline:0;
-			text-decoration:underline;
-			width:32px;
+			display: block;
+			height: 32px;
+			margin: 0;
+			outline: 0;
+			text-decoration: underline;
+			width: 32px;
 		}
-		&:hover{
+		&:hover {
 			@include background(
 				url('../images/assets/noise.png'),
 				$softShelbyGreenButtonHighlight
@@ -186,7 +187,7 @@
 			@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		}
 	}
-	.share-frame{
+	.share-frame {
 		@include roundies;
 		background-color: $sharingShelbyBlue;
 		@include background(
@@ -195,23 +196,23 @@
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
 		
-		border:$menuStroke;
-		margin-bottom:5px;
-		padding:0;
+		border: $menuStroke;
+		margin-bottom: 5px;
+		padding: 0;
 	
-		button{
+		button {
 			@include background(
 				url('../images/assets/action_share.svg') no-repeat 2px 9px
 			);
 			@include roundies;
-			display:block;
-			height:32px;
-			margin:0;
-			outline:0;
-			text-decoration:underline;
-			width:32px;
+			display: block;
+			height: 32px;
+			margin: 0;
+			outline: 0;
+			text-decoration: underline;
+			width: 32px;
 		}
-		&:hover{
+		&:hover {
 			@include background(
 				url('../images/assets/noise.png'),
 				$sharingShelbyBlueHighlight
@@ -221,8 +222,8 @@
 
 	}
 	
-	.upvote-frame{
-	  @include roundies;
+	.upvote-frame {
+	 @include roundies;
 		background-color: $flatLightShelbyGrayButton;
 		@include background(
 			url('../images/assets/noise.png'),
@@ -230,35 +231,35 @@
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #888);
 
-		border:$menuStroke;
-		margin-bottom:5px;
-		padding:0;
+		border: $menuStroke;
+		margin-bottom: 5px;
+		padding: 0;
 	
-		button{
+		button {
 			@include background(
 				url('../images/assets/action_heart_white.svg') no-repeat 9px 4px
 			);
 			@include roundies;
 			@include buttonfont;
 			color: #fff;
-			display:block;
+			display: block;
 			font-weight: bold;
-			height:32px;
-			margin:0;
-			outline:0;
-			padding-top:16px;
-			width:32px;
+			height: 32px;
+			margin: 0;
+			outline: 0;
+			padding-top: 16px;
+			width: 32px;
 		}
-		&:hover{
+		&:hover {
 			@include background(
 				url('../images/assets/noise.png'),
 				$lightShelbyGrayButtonHighlight
 			);
 			@include box-shadow(inset 0px 1px 1px 0px #888);
 		}
-  }
-  .upvote-frame.upvoted{
-  	background-color: $flatShelbyRed;
+ }
+ .upvote-frame.upvoted {
+ 	background-color: $flatShelbyRed;
 		@include background(
 			url('../images/assets/noise.png'),
 			$softShelbyRed
@@ -266,14 +267,14 @@
 		@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
 		
 		button {
-		  @include background(
+		 @include background(
 				url('../images/assets/action_heart.svg') no-repeat 9px 4px
 			);
-		  color: #222;
-	  }
-  }
+		 color: #222;
+	 }
+ }
 	
-	.save-frame{
+	.save-frame {
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;
 		@include background(
@@ -282,12 +283,12 @@
 		);
 		@include box-shadow(inset 0px 1px 1px 0px #8d8f90);
 
-		button{
+		button {
 			@include background(
 				url('../images/assets/saved_action.svg') no-repeat center center
 			);
 		}
-		&:hover{
+		&:hover {
 			@include background(
 				url('../images/assets/noise.png'),
 				$softShelbyPurpleHighlight
@@ -295,7 +296,7 @@
 			@include box-shadow(inset 0px 1px 1px 0px $softShelbyPurpleHighlight);			
 		}	
 	}
-	.remove-frame{
+	.remove-frame {
 		@extend .save-frame;
 		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
 		background-color: $flatShelbyRed;
@@ -304,12 +305,12 @@
 			$softShelbyRed
 		);
 
-		button{
+		button {
 			@include background(
 				url('../images/assets/saved_remove.svg') no-repeat center center
 			);
 		}	
-		&:hover{
+		&:hover {
 			@include background(
 				url('../images/assets/noise.png'),
 				$softShelbyRedHighlight
@@ -319,150 +320,154 @@
 	}
 }
 
-.video-footer{
+.video-footer {
 	@include softgradient;
 	@include border-radius($radiusFooter);
 
-	border-top:1px solid $inset;
-//	bottom:0;
-	font-size:$font-size - 2;
-	font-weight:500;
-	height:27px;
-//	left:0;
+	border-top: 1px solid $inset;
+//	bottom: 0;
+	font-size: $font-size - 2;
+	font-weight: 500;
+	height: 27px;
+//	left: 0;
 	padding: 6px 8px 7px;
 //	position: absolute;
-//	width:100%;
+//	width: 100%;
 }
 
-.video-activity{
-	//display:none;
+.video-activity {
+	//display: none;
 
 }
 
-.video-activity-comment{
-	padding:$defaultMargin;
-	textarea{
+
+.video-activity-comment {
+	padding: $defaultMargin;
+	textarea {
 		@include border-radius($radius);
-		border-color:#555;
-		padding:$defaultMargin/2;
-		width:100%;
-		resize:none;
+		border-color: #555;
+		padding: $defaultMargin/2;
+		width: 100%;
+		resize: none;
 	}
 
-	.video-activity-comment-submit{
+	.video-activity-comment-submit {
 //		@extend .share-submit-button;
 		@include form-button-small;
 		@include background($softShelbyBlue);
 		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-		border-color:#00597C;
-		float:right;
-		margin:3px 0;
-		padding:0 7px;
-		width:auto;
+		border-color: #00597C;
+		float: right;
+		margin: 3px 0;
+		padding: 0 7px;
+		width: auto;
 	}
 }
 
-.video-activity-toggle{
+.video-activity-toggle {
 
 }
 
-.video-activity-list{
-	margin:0;
-	padding-left:0;
+.video-activity-list {
+	margin: 0;
+	padding-left: 0;
 	
-	li{
-		border-bottom:0;
-		list-style-type:none;
-		padding:0;
+	li {
+		border-bottom: 0;
+		list-style-type: none;
+		padding: 0;
 
 	}
 	//	.user-vcard {
-		//		padding-bottom:9px;
+		//		padding-bottom: 9px;
 		//	}
 }
 
-.video-source{
-	float:right;
-	padding-right: 10px;
+.video-source {
+	float: right;
+	height: 1.231em;
+	max-width: 50%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-.video-author{
+.video-author {
 //	@include border-radius(0 0 $radius $radius);
-	margin:0;
+	margin: 0;
 }
 
 
-.user{
-//	background:pink;
+.user {
+//	background: pink;
 	@include softgradient;
 }
 
-.user-vcard{
-	border-bottom:1px solid $outset;
-	border-top:1px solid $inset;
-//	font-size:13px;
-//	font-weight:300;
+.user-vcard {
+	border-bottom: 1px solid $outset;
+	border-top: 1px solid $inset;
+//	font-size: 13px;
+//	font-weight: 300;
 //	xxx
 
-	height:100%;
+	height: 100%;
 	padding: 0 9px 9px;
-	a{
-		text-decoration:none;
+	a {
+		text-decoration: none;
 	}
 }
 
-.user-avatar{
+.user-avatar {
 	display: block;
 	float: left;
 
-	img{
-		margin-bottom:7px;
-		margin-right:7px;
+	img {
+		margin-bottom: 7px;
+		margin-right: 7px;
 		margin-top: 9px;
 	}
 }
-.user-handle{
-	font-size:11px;
-	font-weight:500;
-	line-height:2.8;
-	color:#a4a4a4;
+.user-handle {
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 2.8;
+	color: #a4a4a4;
 }
 
-.user-post-date{
+.user-post-date {
 	@extend .user-handle;
-	float:right;
-	line-height:1;
-	margin-top:9px;
-	padding-right:3px;
+	float: right;
+	line-height: 1;
+	margin-top: 9px;
+	padding-right: 3px;
 }
 
-.user-post-origin-twitter{
-	&:before{
+.user-post-origin-twitter {
+	&:before {
 		content: image-url('../images/assets/twitter_stamp.svg');
-		float:left;
-		font-size:0.75em;
-		margin:1px 3px;
+		float: left;
+		font-size: 0.75em;
+		margin: 1px 3px;
 	}
 }
 
-.user-post-origin-facebook{
+.user-post-origin-facebook {
 	@extend .user-post-origin-twitter;
-	&:before{
+	&:before {
 		content: image-url('../images/assets/facebook_stamp.svg');
 	}
 }
 
-.user-post-origin-tumblr{
+.user-post-origin-tumblr {
 	@extend .user-post-origin-twitter;
-	&:before{
+	&:before {
 		content: image-url('../images/assets/tumblr_stamp.svg');
 	}
 }
 
-.user-video-text{
-	margin-top:-7px;
+.user-video-text {
+	margin-top: -7px;
 
-	p{
-		margin:2px $defaultMargin/2 0 $defaultMargin*3+2;
+	p {
+		margin: 2px $defaultMargin/2 0 $defaultMargin*3+2;
 	}
 }
