@@ -56,7 +56,18 @@
 	text-align: center;
 }
 
-.rolling-main-back{
+.rolling-main-back {
+	@extend .rolls-back;
+}
+
+.rolling-main-cancel {
+	@include x-button-primer;
+	position: absolute;
+	top: -4px;
+	left: 7px;
+}
+
+.xrolling-main-back{
 //	@include form-button-small;
 		@include button-primer;
 
@@ -66,7 +77,11 @@
 		top: 0;
 }
 
-.rolling-main-done{
+.rolling-main-done {
+	@include x-button-primer($shelby-blue);
+}
+
+.xrolling-main-done{
 //	@extend .rolling-main-back;
 //	@include button-primer($flatShelbyBlue);
 
@@ -107,7 +122,6 @@
 .rolling-main-social {
 	@extend .rolling-main-done;
 
-	display:block;
 	float:right;
 	padding-left:0;
 //	padding-top:1px;
@@ -115,13 +129,13 @@
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size:72%;
+		background-size:71%;
 		border-right:1px solid adjust-lightness($flatShelbyBlue,-5%);
 		content:"\0020";
 		float:left;
-		margin:1px 9px 1px 7px;
-		width:38px;
-		height:17px;
+		margin:0px 9px;
+		width:36px;
+		height:15px;
 	}
 }
 

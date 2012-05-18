@@ -4,11 +4,8 @@
 		"compass/css3/box-shadow";
 
 .header{
-	@include background(
-		url('../images/assets/noise.png') $settingsBG
-	);
-
-	border-bottom:1px solid #222;
+	background-color: $header-bg-color;
+	border-bottom:1px solid $header-outline;
 
 	nav{
 		display:inline;
@@ -94,7 +91,7 @@
 	}
 
 .about{
-	padding-left:$defaultMargin;
+	padding-left:$defaultMargin+2;
 	padding-right:$defaultMargin*2;
 	position:relative;
 	width:70px;

@@ -9,10 +9,7 @@
 	padding: 0;
 
 	li {
-		@include background(
-//			url('../images/assets/noise.png') 
-			#494949
-		);
+		background-color: $base-bg-color;
 		list-style-type: none;
 		padding: $defaultMargin;
 	
@@ -34,6 +31,7 @@
 }
 
 .video-card {
+	background-color: $video-card-color;
 	@include border-radius($radius);
 
 	border: $articleStroke;
@@ -44,17 +42,9 @@
 	position: relative;
 }
 
-.video-card-footer {
-//		@include box-shadow(0px 4px 13px 4px #333);
-	@include border-radius(0 0 $radius $radius);
-	
-	border-top: 1px solid $outset;
-	overflow: hidden;
-	z-index: 5;
-}
-
 .video-thumbnail {
-	background: #444;
+	background: $video-card-thumbnail;
+//	border-top: 1px solid $outset;
 	line-height: 75px;
 	margin: 0;
 	text-align: center;
@@ -78,10 +68,9 @@
 }
 
 .video-card-header {
-	@include softgradient;
-	@include border-radius($radiusHeader);
-
-	padding: $defaultMargin - 4 $defaultMargin - 2 $defaultMargin - 3;
+//	@include border-radius($radiusHeader);
+	border-bottom: 1px solid $inset;
+	padding: $defaultMargin - 4 $defaultMargin - 2;
 
 	a {
 		text-decoration: none;
@@ -103,6 +92,15 @@
 		white-space: nowrap;
 		width: 100%;
 	}
+}
+
+.video-card-footer {
+//		@include box-shadow(0px 4px 13px 4px #333);
+	@include border-radius(0 0 $radius $radius);
+	
+//	border-top: 1px solid $inset;
+	overflow: hidden;
+	z-index: 5;
 }
 
 .frame-main-social {
@@ -321,10 +319,10 @@
 }
 
 .video-footer {
-	@include softgradient;
-	@include border-radius($radiusFooter);
+//	@include softgradient;
+//	@include border-radius($radiusFooter);
 
-	border-top: 1px solid $inset;
+	border-top: 1px solid $outset;
 //	bottom: 0;
 	font-size: $font-size - 2;
 	font-weight: 500;
@@ -344,7 +342,7 @@
 .video-activity-comment {
 	padding: $defaultMargin;
 	textarea {
-		@include border-radius($radius);
+		@include border-radius($input-radius);
 		border-color: #555;
 		padding: $defaultMargin/2;
 		width: 100%;
@@ -352,6 +350,11 @@
 	}
 
 	.video-activity-comment-submit {
+		@extend .rolling-main-done;
+		float: right;
+	}
+
+	.xvideo-activity-comment-submit {
 //		@extend .share-submit-button;
 		@include form-button-small;
 		@include background($softShelbyBlue);
@@ -396,15 +399,9 @@
 	margin: 0;
 }
 
-
-.user {
-//	background: pink;
-	@include softgradient;
-}
-
 .user-vcard {
-	border-bottom: 1px solid $outset;
-	border-top: 1px solid $inset;
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid $outset;
 //	font-size: 13px;
 //	font-weight: 300;
 //	xxx

@@ -112,14 +112,15 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 88px;
   width: 100%;
+  z-index: -1;
 }
 
-/* line 103, ../../../app/stylesheets/partials/app.html.scss */
+/* line 104, ../../../app/stylesheets/partials/app.html.scss */
 .touch .content-body {
   overflow: hidden;
 }
 
-/* line 117, ../../../app/stylesheets/partials/app.html.scss */
+/* line 118, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -130,7 +131,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 125, ../../../app/stylesheets/partials/app.html.scss */
+/* line 126, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;

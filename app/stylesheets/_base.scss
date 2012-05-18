@@ -9,27 +9,108 @@
  */
 
 //variables must be announced here.
-$font-size: 13px;
-$size: "62.5%" !default;
+$font-size : 13px;
+$size      : "62.5%" !default;
+$button-size : large !default;
 
 //radius, for border-radius, etc.
-$radius: 5px;
-$radiusHeader: $radius - 2 $radius - 2 0 0;
-$radiusFooter: 0 0 $radius - 2 $radius - 2;
-
+$radius       : 5px;
+$radiusHeader : $radius - 2 $radius - 2 0 0;
+$radiusFooter : 0 0 $radius - 2 $radius - 2;
+$button-radius: 5px;
+$input-radius : 3px;
 //spacing
-$defaultMargin: 10px;
-$margin: 0.5em;
+$defaultMargin  : 10px;
+$default-margin : 10px;
+$margin         : 0.5em;
 
+//border colors
 $outline : #333;
+$inset   : #333;
+$outset  : #555;
 
-//colors
+//background colors
+$base-bg-color        : #494949;
+$header-bg-color      : #2c2c2c;
+$header-outline       : #202020;
+$video-card-color     : #404040;
+$video-card-thumbnail : #494949;
+
 $text: #dcddde;
-
 $headerNavLink: #d8d8d8;
 $settingsBG: #2b2a2a;
 
 $rollsBG: #585858;
+
+$primer-color: #343434 !default;
+
+$shelby-blue  : #0071a3;
+$shelby-green : #428e3a;
+$shelby-red   : #cc1235;
+$shelby-gray  : #343434;
+
+@mixin x-tab-primer($primer-color){
+	background-color: $primer-color;
+	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include buttonfont;
+	@include text-shadow(0px -1px 0px #333);
+
+	border: 1px solid adjust-lightness($primer-color,-20%);
+	color: #efefef;
+	float: left;
+	height: 20px;
+	padding: 13px 13px;
+	width:50%;
+}
+
+@mixin x-button-primer($primer-color,$button-size){
+	background-color: $primer-color;
+	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+	@include border-radius($button-radius);
+	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include buttonfont;
+		@include text-shadow(0px -1px 0px #333);
+	border: 1px solid adjust-lightness($primer-color,-20%);
+	color: #efefef;
+	@if $button-size == small {
+		padding: 4px 8px;
+	} @else {
+		padding: 6px 13px;
+	}
+}
+
+@mixin x-back-button-primer($primer-color){
+	@include x-button-primer($primer-color);
+
+	border-left: none;
+	padding-left: 9px;
+	position: relative;
+
+	&:before {
+		background-color: $primer-color;
+		@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
+		@include border-radius(1px 13px 0 4px);
+		@include box-shadow(inset 1px 0 0 0 adjust-lightness($primer-color,25%));
+		@include rotate($default-rotate);
+
+		border-bottom: 1px solid adjust-lightness($primer-color,-20%);
+		border-left: 1px solid adjust-lightness($primer-color,-20%);
+		content: "\0020";
+		display: block;
+		height: 18px;
+		left: -8px;
+		position: absolute;
+		top: 3.75px;
+		width: 18px;
+//		z-index:1000;
+	}
+}
+
+
+
+
+
+
 
 $myBlue: #6666FF;
 $myGreen: #ddFFdd;
@@ -38,8 +119,8 @@ $shelbyGreen: #549738;
 $shelbyBlue: #0f8db8;
 $shelbyProgressBlue: #0092c1;
 
-$outset : #252525;
-$inset : #4f4d51;
+//$outset : #252525;
+//$inset : #4f4d51;
 
 $rolls-inset : #333;
 $rolls-outset : #555;

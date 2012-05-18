@@ -70,8 +70,37 @@
   text-align: center;
 }
 
-/* line 59, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back {
+/* line 63, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-cancel {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  padding: 6px 13px;
+  position: absolute;
+  top: -4px;
+  left: 7px;
+}
+
+/* line 70, ../../../app/stylesheets/partials/frame-rolling.scss */
+.xrolling-main-back {
   background: #4a4a4a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
   background: -webkit-linear-gradient(top, #575757, #4a4a4a);
@@ -106,8 +135,34 @@
   top: 0;
 }
 
-/* line 69, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 80, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 6px 13px;
+}
+
+/* line 84, ../../../app/stylesheets/partials/frame-rolling.scss */
+.xrolling-main-done {
   background-color: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
   background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
@@ -122,33 +177,32 @@
   border: 1px solid #004a6a;
   margin-top: 10px;
 }
-/* line 91, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-done .spinner, .rolling-main-social .spinner {
+/* line 106, ../../../app/stylesheets/partials/frame-rolling.scss */
+.xrolling-main-done .spinner {
   left: auto;
   margin-left: auto;
   margin-top: auto;
   position: static;
 }
 
-/* line 107, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 122, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
-  display: block;
   float: right;
   padding-left: 0;
 }
-/* line 116, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 130, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
-  background-size: 72%;
+  background-size: 71%;
   border-right: 1px solid #006d9d;
   content: "\0020";
   float: left;
-  margin: 1px 9px 1px 7px;
-  width: 38px;
-  height: 17px;
+  margin: 0px 9px;
+  width: 36px;
+  height: 15px;
 }
 
-/* line 128, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 142, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -177,7 +231,7 @@
   height: 100%;
 }
 
-/* line 148, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 162, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

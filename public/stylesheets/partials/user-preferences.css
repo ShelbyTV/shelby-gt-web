@@ -85,47 +85,68 @@
 }
 /* line 82, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
-  background: #4a4a4a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
-  background: -webkit-linear-gradient(top, #575757, #4a4a4a);
-  background: -moz-linear-gradient(top, #575757, #4a4a4a);
-  background: -o-linear-gradient(top, #575757, #4a4a4a);
-  background: -ms-linear-gradient(top, #575757, #4a4a4a);
-  background: linear-gradient(top, #575757, #4a4a4a);
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
-  -o-box-shadow: inset -1px 0px 1px 0px #444444;
-  box-shadow: inset -1px 0px 1px 0px #444444;
-  border: 1px solid #222;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
   color: #efefef;
-  display: block;
-  font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.5;
-  margin: 3px;
-  padding: 1px 8px;
-  text-shadow: 0px 1px 2px #222;
+  padding: 6px 13px;
+  margin-left: 6px;
 }
-/* line 87, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 92, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   float: left;
 }
-/* line 93, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 98, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 115, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 121, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
+  background-color: #428e3a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
+  background: -webkit-linear-gradient(top, #53b249, #428e3a);
+  background: -moz-linear-gradient(top, #53b249, #428e3a);
+  background: -o-linear-gradient(top, #53b249, #428e3a);
+  background: -ms-linear-gradient(top, #53b249, #428e3a);
+  background: linear-gradient(top, #53b249, #428e3a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #20461c;
+  color: #efefef;
+  padding: 6px 13px;
+  float: right;
+}
+/* line 126, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks button.xconnected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -161,26 +182,26 @@
   padding: 0;
   text-decoration: none;
 }
-/* line 131, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 142, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 138, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 149, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 145, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 156, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 152, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 163, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-border-radius: 5px;
@@ -204,21 +225,21 @@
   width: 24px;
 }
 
-/* line 173, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 184, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   background-size: 28%;
   content: "\0020";
 }
 
-/* line 185, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 196, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
   background-size: 36%;
   content: "\0020";
 }
 
-/* line 199, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 210, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -226,7 +247,7 @@
   width: 100%;
   z-index: 1;
 }
-/* line 206, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 217, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -235,7 +256,7 @@
   left: 50%;
   width: 50%;
 }
-/* line 215, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 226, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -243,11 +264,11 @@
   right: 20px;
   top: -7px;
 }
-/* line 223, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 234, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 227, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 238, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -281,7 +302,7 @@
   position: relative;
   width: 60px;
 }
-/* line 241, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 252, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -307,7 +328,7 @@
   top: 0;
   width: 30px;
 }
-/* line 258, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 269, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -321,11 +342,11 @@
   position: relative;
   width: 60px;
 }
-/* line 265, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 276, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 269, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 280, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;

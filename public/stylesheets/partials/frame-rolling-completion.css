@@ -88,10 +88,11 @@
 }
 /* line 98, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-social {
-  padding-left: 10px;
+  padding: 0 10px 0 78px;
+  padding: 0 10px 0 78px;
 }
 
-/* line 104, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 105, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
