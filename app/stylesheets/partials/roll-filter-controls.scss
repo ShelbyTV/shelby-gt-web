@@ -111,11 +111,11 @@
 //}
 
 .roll-delete{
-	@include x-button-primer($shelby-red,small);
+	@include x-button-primer($shelby-red);
 
 	display: none;
 	float: right;
-	margin: 10px 11px;
+	margin: 8px 11px;
 	position: absolute;
 	right: 0;
 	top: 0;

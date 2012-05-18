@@ -99,7 +99,7 @@
   padding-left: 9px;
   position: relative;
 }
-/* line 89, ../../../app/stylesheets/_base.scss */
+/* line 90, ../../../app/stylesheets/_base.scss */
 .rolls-back:before {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -157,10 +157,10 @@
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #6e0a1d;
   color: #efefef;
-  padding: 4px 8px;
+  padding: 6px 13px;
   display: none;
   float: right;
-  margin: 10px 11px;
+  margin: 8px 11px;
   position: absolute;
   right: 0;
   top: 0;
@@ -220,8 +220,9 @@
   border: 1px solid #010101;
   color: #efefef;
   float: left;
-  height: 20px;
-  padding: 13px 13px;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
   width: 50%;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
@@ -251,8 +252,9 @@
   border: 1px solid #010101;
   color: #efefef;
   float: left;
-  height: 20px;
-  padding: 13px 13px;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
   width: 50%;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
