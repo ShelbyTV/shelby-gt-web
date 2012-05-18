@@ -58,7 +58,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           return isNotPersonRoll || isMyPublicRoll;
         });
         break;
-      case null:
+      default:
         this.updateFilter(null);
         break;
     }

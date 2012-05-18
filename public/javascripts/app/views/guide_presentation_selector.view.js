@@ -29,6 +29,7 @@
 
     render : function(){
       this.$el.html(this.template({ config: this.model, guide: shelby.models.guide }));
+      this._setSelected();
       this._updateVisibility();
     },
     
@@ -45,23 +46,39 @@
     _filterPeople : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.people);
       this._clearSelected();
-      this.$('.js-people').addClass('selected');
+      this._setSelected();
     },
     
     _filterMyRolls : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
       this._clearSelected();
-      this.$('.js-my-rolls').addClass('selected');
+      this._setSelected();
     },
     
     _browseRolls : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.browse);
       this._clearSelected();
-      this.$('.js-browse').addClass('selected');
+      this._setSelected();
+    },
+
+    _setSelected : function(){
+      var $setSelectedClassOn;
+      switch (this.model.get('content')) {
+        case libs.shelbyGT.GuidePresentation.content.rolls.people :
+          $setSelectedClassOn = this.$('.js-people');
+          break;
+        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
+          $setSelectedClassOn = this.$('.js-my-rolls');
+          break;
+        case libs.shelbyGT.GuidePresentation.content.rolls.browse :
+          $setSelectedClassOn = this.$('.js-browse');
+          break;
+      }
+      $setSelectedClassOn.addClass('content-selector-selected');
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector li').removeClass('selected');
+      this.$('.js-content-selector li').removeClass('content-selector-selected');
     }
 
   });
