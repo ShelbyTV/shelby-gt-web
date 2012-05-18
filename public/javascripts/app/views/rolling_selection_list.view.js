@@ -58,6 +58,11 @@
 
     _rollToNewPrivateRoll : function(){
       this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'private'});
+    },
+
+    //override of ListView._renderEducation
+    _renderEducation : function(){
+      // do nothing, we don't want education in this particular list view
     }
 
   });

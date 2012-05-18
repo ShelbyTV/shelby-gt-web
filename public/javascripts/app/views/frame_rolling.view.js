@@ -126,8 +126,6 @@
         case ShareActionState.complete :
           this._buttonSpinnerView.hide();
           this._hide();
-					// set app progress
-					shelby.models.user.get('app_progress').set('framesRolled', shelby.models.user.get('app_progress').get('framesRolled') + 1);
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');
