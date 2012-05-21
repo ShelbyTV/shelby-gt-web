@@ -34,10 +34,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
     if (this._components.spinner) {
       this.spinner = new libs.shelbyGT.SpinnerView({
-        el: '.js-submit-share',
+        el: this.$('.js-submit-share')[0],
         hidden : true,
         replacement : true,
-        size : 'medium'
+        size : 'small'
       });
       this.renderChild(this.spinner);
     }
@@ -45,10 +45,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.twitterButton = this.$('.js-toggle-twitter-sharing');
       this.facebookButton = this.$('.js-toggle-facebook-sharing');
     }
-  },
-
-  _toggleSpinner : function(){
-    !shelby.models.user.get('anon') && this.spinner.toggle();
   },
 
   _showSpinner : function(){
