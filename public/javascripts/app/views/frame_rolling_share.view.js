@@ -19,8 +19,8 @@
 
     _components : {
       networkToggles : true,
-      shareButton : false,
-      spinner : false
+      shareButton : true,
+      spinner : true
     },
 
     initialize : function(){
