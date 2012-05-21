@@ -23,8 +23,15 @@
 .filter-controls li {
   display: block;
 }
+/* line 20, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.filter-controls .rolls-back {
+  left: 0;
+  margin: 8px 20px 0;
+  position: absolute;
+  top: 0;
+}
 
-/* line 22, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 29, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
@@ -34,7 +41,7 @@
   width: 100%;
 }
 
-/* line 31, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 38, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
@@ -46,7 +53,7 @@
   vertical-align: middle;
   width: 20px;
 }
-/* line 42, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 49, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -54,77 +61,114 @@
   top: 0;
 }
 
-/* line 51, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 58, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change {
   display: none;
 }
-/* line 53, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 60, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change input {
   margin: 3px;
   padding: 4px;
 }
 
-/* line 66, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 73, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
-  background-color: #303030;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: -webkit-linear-gradient(top, #333333, #303030);
-  background: -moz-linear-gradient(top, #333333, #303030);
-  background: -o-linear-gradient(top, #333333, #303030);
-  background: -ms-linear-gradient(top, #333333, #303030);
-  background: linear-gradient(top, #333333, #303030);
-  float: left;
-  height: 20px;
-  padding: 5px 10px;
-  width: 50%;
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  border: 1px solid #222;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
   color: #efefef;
-  height: 26px;
-  left: 17px;
-  padding: 5px 10px 5px 5px;
+  padding: 6px 13px;
+  left: 0;
+  margin: 6px 15px;
   position: absolute;
-  top: 9px;
-  width: auto;
+  top: 0;
 }
-/* line 80, ../../../app/stylesheets/partials/roll-filter-controls.scss */
-.rolls-back i {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: -webkit-linear-gradient(top, #333333, #303030);
-  background: -moz-linear-gradient(top, #333333, #303030);
-  background: -o-linear-gradient(top, #333333, #303030);
-  background: -ms-linear-gradient(top, #333333, #303030);
-  background: linear-gradient(top, #333333, #303030);
-  -moz-border-radius: 0 100% 0 5px;
-  -webkit-border-radius: 0 100% 0 5px;
-  -o-border-radius: 0 100% 0 5px;
-  -ms-border-radius: 0 100% 0 5px;
-  -khtml-border-radius: 0 100% 0 5px;
-  border-radius: 0 100% 0 5px;
+/* line 87, ../../../app/stylesheets/_base.scss */
+.rolls-back:before {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(left top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(left top, #4e4e4e, #343434);
+  background: -o-linear-gradient(left top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(left top, #4e4e4e, #343434);
+  background: linear-gradient(left top, #4e4e4e, #343434);
+  -moz-border-radius: 1px 13px 0 4px;
+  -webkit-border-radius: 1px 13px 0 4px;
+  -o-border-radius: 1px 13px 0 4px;
+  -ms-border-radius: 1px 13px 0 4px;
+  -khtml-border-radius: 1px 13px 0 4px;
+  border-radius: 1px 13px 0 4px;
+  -moz-box-shadow: inset 1px 0 0 0 #747474;
+  -webkit-box-shadow: inset 1px 0 0 0 #747474;
+  -o-box-shadow: inset 1px 0 0 0 #747474;
+  box-shadow: inset 1px 0 0 0 #747474;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  border-bottom: 1px solid #222;
-  border-left: 1px solid #222;
+  border-bottom: 1px solid #010101;
+  border-left: 1px solid #010101;
+  content: "\0020";
   display: block;
-  height: 17px;
+  height: 18px;
   left: -8px;
   position: absolute;
-  top: 4px;
-  width: 17px;
-  z-index: 1000;
+  top: 3.75px;
+  width: 18px;
 }
 
-/* line 98, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 113, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-delete {
+  background-color: #cc1235;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
+  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
+  background: -moz-linear-gradient(top, #ec254b, #cc1235);
+  background: -o-linear-gradient(top, #ec254b, #cc1235);
+  background: -ms-linear-gradient(top, #ec254b, #cc1235);
+  background: linear-gradient(top, #ec254b, #cc1235);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  box-shadow: inset 0px 1px 0px 0px #f26c85;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #6e0a1d;
+  color: #efefef;
+  padding: 6px 13px;
+  display: none;
+  float: right;
+  margin: 8px 11px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* line 124, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-delete {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -156,17 +200,80 @@
   display: none;
 }
 
-/* line 120, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 146, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
-  padding: 9px 10px;
+  padding: 8px 10px;
   position: absolute;
   right: 0;
   top: 0;
   width: 25%;
 }
 
-/* line 131, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 157, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
+  background-color: #343434;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
+  width: 50%;
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  margin-right: -1px;
+  text-align: left;
+}
+
+/* line 168, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-next {
+  background-color: #343434;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
+  width: 50%;
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  text-align: right;
+}
+
+/* line 179, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
   float: left;
@@ -185,8 +292,8 @@
   text-align: left;
 }
 
-/* line 144, ../../../app/stylesheets/partials/roll-filter-controls.scss */
-.roll-next {
+/* line 192, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
   float: left;

@@ -35,41 +35,63 @@
 }
 
 .rolls-add {
-	@include rolls-menu-button;
+	@include x-button-primer($shelby-green);
+	
+	float:right;
+	margin-top: 0;
+	width: 100%;
 }
+
+//.xrolls-add {
+//	@include rolls-menu-button;
+//}
 
 .rolls-invite {
 	@extend .rolls-add;	
 }
 
 .rolls-share {
-	@extend .rolls-add;
-	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-	background:$flatShelbyBlue;
-	border-color:#00597C;
-	@include background(
-		$softShelbyBlue
-	);
+	@extend .rolling-main-done;
+	float: left;
+	margin-top: 0 !important;
+	width: 100%;
 }
 
+//.xrolls-share {
+//	@extend .rolls-add;
+//	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
+//	background:$flatShelbyBlue;
+//	border-color:#00597C;
+//	@include background(
+//		$softShelbyBlue
+//	);
+//}
+
 .rolls-leave {
-	@extend .rolls-add;
-	background:$flatShelbyGrayDeboss;
-	@include background(
-		$softShelbyGrayDeboss
-	);	
-	@include box-shadow(inset 0px 0px 1px 0px #111);
-	border: none;
-	margin: 1px;
+	@include x-button-primer;
+	float: right;
+	margin-top: 0;
 }
+
+//.xrolls-leave {
+//	@extend .rolls-add;
+//	background:$flatShelbyGrayDeboss;
+//	@include background(
+//		$softShelbyGrayDeboss
+//	);	
+//	@include box-shadow(inset 0px 0px 1px 0px #111);
+//	border: none;
+//	margin: 1px;
+//}
 
 .rolls-edit{
 	@extend .rolls-leave;
+	width: 100%;
 }
 
 .rolls-share-cancel {
 	@extend .rolls-leave;
-	border-color:#333;
+	margin-top: 0;
 }
 
 .share-dialog {
@@ -116,7 +138,7 @@
 	//padding:$defaultMargin/2;
 
 	textarea {
-		@include border-radius($radius);
+		@include border-radius($input-radius);
 		
 		padding:$defaultMargin/2;
 		resize:none;
@@ -246,7 +268,12 @@
 }
 
 .share-submit-button {
-	@include form-submit-button($flatShelbyBlue);
+//	@include form-submit-button($flatShelbyBlue);
+	@include x-button-primer($shelby-blue);
+
+	margin-top: 10px;
+	width: 100%;
+
 	.spinner {
 		left:auto;
 		margin-left:auto;

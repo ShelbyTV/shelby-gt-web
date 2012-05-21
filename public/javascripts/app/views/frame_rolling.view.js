@@ -11,14 +11,10 @@
 
     _frameRollingCompletionView : null,
 
-    _buttonSpinnerView : null,
-
     _frameRollingState : null,
 
     events : {
-      "click .js-back:not(.js-busy)"  : "_goBack",
-      "click .js-done"  : "_share",
-      "click .js-social"  : "_rollToPersonalRoll"
+      "click .js-back:not(.js-busy)"  : "_goBack"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -55,12 +51,12 @@
         });
       }
 
-			if (options.sharing){
-				this._isFrameSharing = true;
-				this.$('.js-back').html('Cancel');
-			} else {
-				this.$('.js-back').html('Back');
-			}
+      if (options.sharing){
+        this._isFrameSharing = true;
+        this.$('.js-back').html('Cancel');
+      } else {
+        this.$('.js-back').html('Back');
+      }
       
       
       if (roll.get('public')) {
@@ -72,35 +68,28 @@
       }
       
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
-        frame:frame,
-        roll:roll,
-        frameRollingState:this._frameRollingState,
-        social:options.social
+        frame : frame,
+        roll : roll,
+        frameRollingState : this._frameRollingState,
+        social : options.social,
+        sharing : options.sharing
       });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-main');
-      // this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-footer');
-      var doneButtonText = options.social ? 'Share' : 'Roll It';
-      var doneButtonClass = options.social ? 'share' : 'roll-it';
-      this.$('.js-done').text(doneButtonText).addClass(doneButtonClass).show();
-      this.$('.js-social').hide();
     },
 
     _goBack : function(){
-			if (this._isFrameSharing){
-				// this is meant to be just a social share, not a rolling action, 
-				//  so cancel should bring back to original frame view.
-				this._frameRollingCompletionView.leave();
+      if (this._isFrameSharing){
+        // this is meant to be just a social share, not a rolling action,
+        //  so cancel should bring back to original frame view.
+        this._frameRollingCompletionView.leave();
         this._frameRollingCompletionView = null;
         this.$('.js-back').html('Cancel');
-        this.$('.js-done').hide();
-				this._hide();
-			}
+        this._hide();
+      }
       else if (this._frameRollingCompletionView) {
         this._frameRollingCompletionView.leave();
         this._frameRollingCompletionView = null;
         this.$('.js-back').html('Cancel');
-        this.$('.js-done').hide();
-        this.$('.js-social').show();
       } else {
         this._hide();
       }
@@ -124,19 +113,12 @@
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
-          this._buttonSpinnerView.hide();
           this._hide();
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');
-          this._buttonSpinnerView = this._buttonSpinnerView || new libs.shelbyGT.SpinnerView({
-            el: '.js-done',
-            replacement : true
-          });
-          this.renderChild(this._buttonSpinnerView);
           break;
         case ShareActionState.failed :
-          this._buttonSpinnerView.hide();
           this.$('.js-back').removeClass('js-busy');
           break;
       }
