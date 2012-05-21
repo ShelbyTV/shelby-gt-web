@@ -27,7 +27,7 @@
       ListView.prototype.initialize.call(this);
     },
 
-    filter : function(item) {
+    _filter : function(item) {
       // the user can only post to certain rolls
       if (item.get('creator_id') == shelby.models.user.id) {
         return true;

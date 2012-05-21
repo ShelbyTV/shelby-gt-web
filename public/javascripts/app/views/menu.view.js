@@ -4,6 +4,7 @@
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
   var FilterControlsView = libs.shelbyGT.FilterControlsView;
   var AnonGuideView = libs.shelbyGT.AnonGuideView;
+  var GuidePresentationSelectorView = libs.shelbyGT.GuidePresentationSelectorView;
 
   libs.shelbyGT.MenuView = Support.CompositeView.extend({
 
@@ -37,6 +38,7 @@
       this.$el.html(this.template());
       this.renderChild(new RollHeaderView({model:this.model}));
       this.renderChild(new FilterControlsView({model:this.model}));
+      this.renderChild(new GuidePresentationSelectorView({model:shelby.models.guidePresentation}));
     },
 
     _goToStream : function(){

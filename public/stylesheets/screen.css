@@ -890,6 +890,67 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
+/* line 3, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter {
+  margin: 9px 4px 7px 7px;
+  padding: 0;
+}
+
+/* line 8, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter-item {
+  list-style-type: none;
+}
+/* line 11, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter-item button {
+  background-color: #343434;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
+  padding: 6px;
+  width: 33%;
+}
+/* line 17, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter-item:first-child button {
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+/* line 24, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter-item:last-child button {
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+}
+/* line 31, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-filter-item.guide-presentation-filter-selected button {
+  background-color: #777;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
 /* line 3, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
   bottom: 10px;
@@ -1161,7 +1222,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 0;
 }
-/* line 87, ../../app/stylesheets/_base.scss */
+/* line 86, ../../app/stylesheets/_base.scss */
 .rolls-back:before, .rolling-main-back:before {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -1285,7 +1346,6 @@ a:hover, a:visited, a:active {
   height: 27px;
   margin-top: 1px;
   padding: 10px 10px;
-  width: 50%;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
   background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
@@ -1300,9 +1360,10 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   margin-right: -1px;
   text-align: left;
+  width: 50%;
 }
 
-/* line 168, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 169, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -1317,7 +1378,6 @@ a:hover, a:visited, a:active {
   height: 27px;
   margin-top: 1px;
   padding: 10px 10px;
-  width: 50%;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
   background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
@@ -1331,9 +1391,10 @@ a:hover, a:visited, a:active {
   -khtml-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
   text-align: right;
+  width: 50%;
 }
 
-/* line 179, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 181, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .xroll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1353,7 +1414,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 192, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 194, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .xroll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
@@ -4041,23 +4102,24 @@ a:hover, a:visited, a:active {
 }
 /* line 19, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
+  background-color: #303030;
   height: inherit;
   margin-left: 25px;
   margin-right: 25px;
   max-width: 500px;
   overflow-y: hidden;
 }
-/* line 28, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 29, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
-/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 33, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-video-text p {
   max-height: 2.5em;
   overflow: hidden;
 }
 
-/* line 39, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 40, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   display: none;
   height: 67px;
@@ -4065,7 +4127,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 83, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 84, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -4085,13 +4147,13 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 77, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 78, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 92, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 93, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -4111,7 +4173,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 77, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 78, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

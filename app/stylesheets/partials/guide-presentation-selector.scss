@@ -1,0 +1,35 @@
+@import "base";
+
+.guide-presentation-filter {
+  margin: 9px 4px 7px 7px;
+  padding: 0;
+}
+
+.guide-presentation-filter-item {
+  list-style-type: none;
+
+  button {
+    @include x-tab-primer;
+    padding: 6px;
+    width: 33%;
+  }
+  &:first-child{
+    button {
+      //left rounded
+      @include border-radius($radius 0 0 $radius);
+      border-right: none;
+    }
+  }
+  &:last-child {
+    button {
+      //right rounded
+      @include border-radius(0 $radius $radius 0);  
+      border-left: none;    
+    }
+  }
+  &.guide-presentation-filter-selected{
+    button {
+      background-color: #777;
+    }
+  }
+}

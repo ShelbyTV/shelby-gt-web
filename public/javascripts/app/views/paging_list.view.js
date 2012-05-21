@@ -82,9 +82,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     this.$('.js-load-more').hide();
   },
 
-  addOne : function(item){
+  relationalAddOne : function(item){
     this._numItemsLoaded++;
-    libs.shelbyGT.ListView.prototype.addOne.call(this, item);
+    libs.shelbyGT.ListView.prototype.relationalAddOne.call(this, item);
   },
 
   _loadMore : function(){

@@ -54,7 +54,7 @@
       }
     },
 
-    filter : function(item){
+    _filter : function(item){
       return item.get('frame');
     },
 

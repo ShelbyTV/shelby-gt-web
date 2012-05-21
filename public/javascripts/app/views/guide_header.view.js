@@ -1,3 +1,5 @@
+//TODO: change my name to "app_header.view.js"
+
 libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
   events : function(){
