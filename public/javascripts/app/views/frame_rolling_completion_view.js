@@ -27,7 +27,8 @@
         model : this.options.frameRollingState.get('shareModel'),
         roll : this.options.roll,
         frame : this.options.frame,
-        frameRollingState : this.options.frameRollingState
+        frameRollingState : this.options.frameRollingState,
+        sharing : this.options.sharing
       });
       this.appendChild(shareSubView);
     }

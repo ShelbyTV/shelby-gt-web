@@ -43,6 +43,9 @@
     render : function(){
       this._components.networkToggles = this.options.roll.get('public');
       ShareView.prototype.render.call(this);
+      if (!this.options.sharing) {
+        this.$('.js-submit-share').text('Roll it');
+      }
       if (this.options.roll.isNew()) {
         // when creating a new roll there are some additional options to be displayed
         this.$('.share-comment').before(JST['frame-rolling-options']({roll:this.options.roll}));

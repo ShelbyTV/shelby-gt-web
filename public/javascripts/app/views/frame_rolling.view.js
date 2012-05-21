@@ -68,10 +68,11 @@
       }
       
       this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
-        frame:frame,
-        roll:roll,
-        frameRollingState:this._frameRollingState,
-        social:options.social
+        frame : frame,
+        roll : roll,
+        frameRollingState : this._frameRollingState,
+        social : options.social,
+        sharing : options.sharing
       });
       this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-main');
     },
