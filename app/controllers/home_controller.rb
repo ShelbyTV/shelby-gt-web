@@ -37,6 +37,7 @@ class HomeController < ApplicationController
       when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
       when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
       when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+      when "reecepacheco.tv" then "4f900d56b415cc6614056681"
       when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
       else false
