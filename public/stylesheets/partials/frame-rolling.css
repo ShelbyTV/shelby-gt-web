@@ -94,12 +94,13 @@
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
+  left: 0;
+  margin: 6px;
   position: absolute;
-  top: -4px;
-  left: 7px;
+  top: 0;
 }
 
-/* line 70, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 72, ../../../app/stylesheets/partials/frame-rolling.scss */
 .xrolling-main-back {
   background: #4a4a4a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
@@ -135,7 +136,7 @@
   top: 0;
 }
 
-/* line 80, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 82, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -161,7 +162,7 @@
   padding: 6px 13px;
 }
 
-/* line 84, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 86, ../../../app/stylesheets/partials/frame-rolling.scss */
 .xrolling-main-done {
   background-color: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -177,7 +178,7 @@
   border: 1px solid #004a6a;
   margin-top: 10px;
 }
-/* line 106, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 108, ../../../app/stylesheets/partials/frame-rolling.scss */
 .xrolling-main-done .spinner {
   left: auto;
   margin-left: auto;
@@ -185,12 +186,12 @@
   position: static;
 }
 
-/* line 122, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 124, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 130, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 132, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -202,7 +203,7 @@
   height: 15px;
 }
 
-/* line 142, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 144, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -231,7 +232,7 @@
   height: 100%;
 }
 
-/* line 162, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 164, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

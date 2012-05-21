@@ -76,6 +76,10 @@
 
 .rolls-back {
 	@include x-back-button-primer;
+	left: 0;
+	margin: 6px 15px;
+	position: absolute;
+	top: 0;
 }
 
 //.xrolls-back {

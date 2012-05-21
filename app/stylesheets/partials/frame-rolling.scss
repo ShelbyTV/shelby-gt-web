@@ -62,9 +62,11 @@
 
 .rolling-main-cancel {
 	@include x-button-primer;
+	left: 0;
+	margin: 6px;
 	position: absolute;
-	top: -4px;
-	left: 7px;
+	top: 0;
+	
 }
 
 .xrolling-main-back{

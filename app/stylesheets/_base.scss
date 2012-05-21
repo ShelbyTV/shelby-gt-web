@@ -83,9 +83,6 @@ $shelby-gray  : #343434;
 @mixin x-back-button-primer($primer-color){
 	@include x-button-primer($primer-color);
 
-	border-left: none;
-	padding-left: 9px;
-	position: relative;
 
 	&:before {
 		background-color: $primer-color;

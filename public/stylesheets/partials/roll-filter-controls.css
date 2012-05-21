@@ -95,11 +95,12 @@
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
-  border-left: none;
-  padding-left: 9px;
-  position: relative;
+  left: 0;
+  margin: 6px 15px;
+  position: absolute;
+  top: 0;
 }
-/* line 90, ../../../app/stylesheets/_base.scss */
+/* line 87, ../../../app/stylesheets/_base.scss */
 .rolls-back:before {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -134,7 +135,7 @@
   width: 18px;
 }
 
-/* line 113, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 117, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-delete {
   background-color: #cc1235;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
@@ -166,7 +167,7 @@
   top: 0;
 }
 
-/* line 124, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 128, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .xroll-delete {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -199,7 +200,7 @@
   display: none;
 }
 
-/* line 146, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 150, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 8px 10px;
   position: absolute;
@@ -208,7 +209,7 @@
   width: 25%;
 }
 
-/* line 157, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 161, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -240,7 +241,7 @@
   text-align: left;
 }
 
-/* line 168, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 172, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -271,7 +272,7 @@
   text-align: right;
 }
 
-/* line 179, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 183, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .xroll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -291,7 +292,7 @@
   text-align: left;
 }
 
-/* line 192, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 196, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .xroll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
