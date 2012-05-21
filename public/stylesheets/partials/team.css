@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 9, ../../../app/stylesheets/partials/team.scss */
+/* line 5, ../../../app/stylesheets/partials/team.scss */
 .about-team dt:before {
   border: 1px solid black;
   content: "\0020";
@@ -15,19 +15,19 @@
   margin-bottom: 10px;
   width: 100%;
 }
-/* line 18, ../../../app/stylesheets/partials/team.scss */
+/* line 14, ../../../app/stylesheets/partials/team.scss */
 .about-team a {
   color: #efefef;
 }
 
-/* line 24, ../../../app/stylesheets/partials/team.scss */
+/* line 20, ../../../app/stylesheets/partials/team.scss */
 .about-team-nav li {
   float: left;
   list-style-type: none;
   width: 50%;
 }
 
-/* line 32, ../../../app/stylesheets/partials/team.scss */
+/* line 28, ../../../app/stylesheets/partials/team.scss */
 .about-header h1 {
   border-bottom: 1px solid #222;
   font-size: 16px;
@@ -36,135 +36,135 @@
   margin: 0 10px 10px;
 }
 
-/* line 41, ../../../app/stylesheets/partials/team.scss */
+/* line 37, ../../../app/stylesheets/partials/team.scss */
 .about-nav, .about-definition-peripherals {
   margin: 10px;
   padding: 0;
 }
-/* line 45, ../../../app/stylesheets/partials/team.scss */
+/* line 41, ../../../app/stylesheets/partials/team.scss */
 .about-nav a, .about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 49, ../../../app/stylesheets/partials/team.scss */
+/* line 45, ../../../app/stylesheets/partials/team.scss */
 .about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 52, ../../../app/stylesheets/partials/team.scss */
+/* line 48, ../../../app/stylesheets/partials/team.scss */
 .about-nav a:visited, .about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 58, ../../../app/stylesheets/partials/team.scss */
+/* line 54, ../../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2,
 .about-nav h3,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 62, ../../../app/stylesheets/partials/team.scss */
+/* line 58, ../../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2 {
   font-weight: 300;
 }
-/* line 66, ../../../app/stylesheets/partials/team.scss */
+/* line 62, ../../../app/stylesheets/partials/team.scss */
 .about-nav h3, .about-definition-peripherals h3 {
   font-weight: 100;
 }
-/* line 69, ../../../app/stylesheets/partials/team.scss */
+/* line 65, ../../../app/stylesheets/partials/team.scss */
 .about-nav li, .about-definition-peripherals li {
   list-style-type: none;
   margin-bottom: .5em;
 }
 
-/* line 76, ../../../app/stylesheets/partials/team.scss */
+/* line 72, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 80, ../../../app/stylesheets/partials/team.scss */
+/* line 76, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 83, ../../../app/stylesheets/partials/team.scss */
+/* line 79, ../../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 89, ../../../app/stylesheets/partials/team.scss */
+/* line 85, ../../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
   line-height: 1.5;
   list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 95, ../../../app/stylesheets/partials/team.scss */
+/* line 91, ../../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   margin-bottom: 0;
   width: auto;
 }
 
-/* line 103, ../../../app/stylesheets/partials/team.scss */
+/* line 99, ../../../app/stylesheets/partials/team.scss */
 .about-external-twitter a {
   background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 112, ../../../app/stylesheets/partials/team.scss */
+/* line 108, ../../../app/stylesheets/partials/team.scss */
 .about-external-link a {
   background: url("../images/assets/team_web.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 120, ../../../app/stylesheets/partials/team.scss */
+/* line 116, ../../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 123, ../../../app/stylesheets/partials/team.scss */
+/* line 119, ../../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 126, ../../../app/stylesheets/partials/team.scss */
+/* line 122, ../../../app/stylesheets/partials/team.scss */
 .sztul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 129, ../../../app/stylesheets/partials/team.scss */
+/* line 125, ../../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 132, ../../../app/stylesheets/partials/team.scss */
+/* line 128, ../../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 135, ../../../app/stylesheets/partials/team.scss */
+/* line 131, ../../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 138, ../../../app/stylesheets/partials/team.scss */
+/* line 134, ../../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 141, ../../../app/stylesheets/partials/team.scss */
+/* line 137, ../../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 144, ../../../app/stylesheets/partials/team.scss */
+/* line 140, ../../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 147, ../../../app/stylesheets/partials/team.scss */
+/* line 143, ../../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 150, ../../../app/stylesheets/partials/team.scss */
+/* line 146, ../../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }

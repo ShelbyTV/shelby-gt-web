@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/video-player.scss */
+/* line 3, ../../../app/stylesheets/partials/video-player.scss */
 .video-player {
   background: #000;
   color: white;
@@ -30,19 +30,19 @@
   transition-delay: 0s;
 }
 
-/* line 24, ../../../app/stylesheets/partials/video-player.scss */
+/* line 20, ../../../app/stylesheets/partials/video-player.scss */
 .video-player.full-width {
   margin-right: 0px;
 }
 
-/* line 29, ../../../app/stylesheets/partials/video-player.scss */
+/* line 25, ../../../app/stylesheets/partials/video-player.scss */
 #video-players-holder {
   position: relative;
   height: 100%;
   width: 100%;
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
 }
-/* line 33, ../../../app/stylesheets/partials/video-player.scss */
+/* line 29, ../../../app/stylesheets/partials/video-player.scss */
 #video-players-holder > * {
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@
   width: 100%;
   height: 100%;
 }
-/* line 41, ../../../app/stylesheets/partials/video-player.scss */
+/* line 37, ../../../app/stylesheets/partials/video-player.scss */
 #video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
   width: 100%!important;
   height: 100%!important;

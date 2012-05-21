@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/saved-indicator.scss */
+/* line 3, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -33,11 +33,11 @@
   top: 0;
   width: 100%;
 }
-/* line 22, ../../../app/stylesheets/partials/saved-indicator.scss */
+/* line 18, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved img {
   width: 30px;
 }
-/* line 26, ../../../app/stylesheets/partials/saved-indicator.scss */
+/* line 22, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved p {
   font-size: 24px;
   font-weight: 500;
@@ -45,7 +45,7 @@
   margin: 0;
 }
 
-/* line 34, ../../../app/stylesheets/partials/saved-indicator.scss */
+/* line 30, ../../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;

@@ -1,17 +1,13 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .rolling-main{
-	border-bottom:1px solid #222;
-	bottom:40px;
-	overflow-y:scroll;
-	overflow-x:hidden;
-	position:absolute;
-	top:0;
-	width:100%;
+	border-top: 1px solid $outline;
+	bottom: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: absolute;
+	top: 39px;
+	width: 100%;
 
 	& > li{
 	//h2{ <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
@@ -35,40 +31,76 @@
 	}
 }
 
+.rolling-main-header,
 .rolling-main-footer{
 	@include background(
 		url('../images/assets/noise.png') #555
 	);
-	@include border-radius(0 0 $radius - 1 $radius - 1);
+	@include border-radius($radius - 1 $radius - 1 0 0);
 
-	border-top:1px solid #4F4D51;
-	bottom:0;
+	border-bottom:1px solid #4F4D51;
 	height:40px;
 	left:0;
 	padding:$defaultMargin/2;
 	position:absolute;
+	top: 0;
 	width:100%;
 }
 
-.rolling-main-back{
-//	@include form-button-small;
-		@include button-primer;
-		float: left;
+.rolling-main-header-title {
+	line-height: 1.75;
+	text-align: center;
 }
 
-.rolling-main-done{
+.rolling-main-back {
+	@extend .rolls-back;
+}
+
+.rolling-main-cancel {
+	@include x-button-primer;
+	left: 0;
+	margin: 6px;
+	position: absolute;
+	top: 0;
+	
+}
+
+.xrolling-main-back{
+//	@include form-button-small;
+		@include button-primer;
+
+		left: 0;
+		margin: $defaultMargin - 2 $defaultMargin;
+		position: absolute;
+		top: 0;
+}
+
+.rolling-main-done {
+	@include x-button-primer($shelby-blue);
+}
+
+.xrolling-main-done{
 //	@extend .rolling-main-back;
-	@include button-primer($flatShelbyBlue);
-//	background-color: $flatShelbyBlue;
-//	@include background(
-//		$softShelbyBlue
-//	);
+//	@include button-primer($flatShelbyBlue);
+
+	@extend .rolls-add;
+
+	background-color: $flatShelbyBlue;
+	@include background(
+		$softShelbyBlue
+	);
 	@include box-shadow(
 		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
 	);
 	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
-	display:none;
-	float:right;
+//	display:none;
+//	margin: $defaultMargin - 2 $defaultMargin;
+	margin-top: $defaultMargin;
+//	position: absolute;
+//	right: 0;
+//	top: 0;
+//	width: 100%;
+
 	.spinner{
 		left:auto;
 		margin-left:auto;
@@ -78,17 +110,16 @@
 }
 
 .rolling-main-done.roll-it{
-	width:53px;
+//	width:53px;
 }
 
 .rolling-main-done.share{
-	width:51px;
+//	width:51px;
 }
 
 .rolling-main-social {
 	@extend .rolling-main-done;
 
-	display:block;
 	float:right;
 	padding-left:0;
 //	padding-top:1px;
@@ -96,13 +127,13 @@
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size:72%;
+		background-size:71%;
 		border-right:1px solid adjust-lightness($flatShelbyBlue,-5%);
 		content:"\0020";
 		float:left;
-		margin:1px 9px 1px 7px;
-		width:38px;
-		height:17px;
+		margin:0px 9px;
+		width:36px;
+		height:15px;
 	}
 }
 

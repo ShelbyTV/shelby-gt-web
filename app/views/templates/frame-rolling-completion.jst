@@ -9,6 +9,7 @@
       headerClass = 'roll-type-private';
     }
   %>
+
   <h1 class="<%= headerClass %>">
     <% if (social) { %>
       Share <%= frame.get('video').get('title') %>
@@ -18,5 +19,10 @@
       <%= roll.get('public') ? 'New Public Roll' : 'New Private Roll' %>
     <% } %>
   </h1>
+
+  <button class="js-back rolling-main-back js-track-event" data-ga_category="Rolling" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    Back
+  </button>
+
   <!-- <a class="frame-share-undo" href="#">Undo</a> -->
 </div>

@@ -31,16 +31,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollFollowingsModel();
 
-    //TODO: refactor so this is a user.model relation //
-    shelby.models.userProgress = new libs.shelbyGT.UserProgressModel();
-    //----------------------------------------------//
-
     var self = this;
       shelby.models.user.fetch({
         global: false,
-        data: {
-          //include_rolls: true
-        },
         success: function() {
           self._reroute();
         },

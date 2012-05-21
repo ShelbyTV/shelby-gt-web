@@ -28,7 +28,6 @@ javascripts:
     # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/app.js
     - public/javascripts/app/models/lib/shelby.base.model.js
-    - public/javascripts/app/models/db/user_progress.model.js
     - public/javascripts/app/models/db/roll.model.js
     - public/javascripts/app/models/ui/share.model.js
     - public/javascripts/app/models/ui/share_action_state.model.js

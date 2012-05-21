@@ -34,21 +34,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
     if (this._components.spinner) {
       this.spinner = new libs.shelbyGT.SpinnerView({
-        el: '.js-submit-share',
+        el: this.$('.js-submit-share')[0],
         hidden : true,
         replacement : true,
-        size : 'medium'
+        size : 'small'
       });
       this.renderChild(this.spinner);
     }
-    if (this._components.networkToggles){
-      this.twitterButton = this.$('.js-toggle-twitter-sharing');
-      this.facebookButton = this.$('.js-toggle-facebook-sharing');
-    }
-  },
-
-  _toggleSpinner : function(){
-    !shelby.models.user.get('anon') && this.spinner.toggle();
   },
 
   _showSpinner : function(){
@@ -76,11 +68,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _updateDestinationButtons : function(shareModel){
-    var self = this;
-    ['twitter', 'facebook'].forEach(function(network){
-      var btn = self[network+'Button'];
-      shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
-    });
+    if (this._components.networkToggles) {
+      var self = this;
+      ['twitter', 'facebook'].forEach(function(network){
+        var btn = this.$('.js-toggle-' + network + '-sharing');
+        shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
+      });
+    }
   },
 
   _getCharsLeft : function(){

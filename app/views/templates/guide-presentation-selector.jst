@@ -7,12 +7,23 @@
     big
   </li>
 </ul> -->
-
-<ul class="js-content-selector">
+<ul class="js-content-selector guide-presentation-filter clearfix">
   <% switch(guide.get('displayState')){
       case libs.shelbyGT.DisplayState.rollList: %>
-        <li class="guide-presentation-selection js-people">people</li>
-        <li class="guide-presentation-selection js-my-rolls">my rolls</li>
-        <li class="guide-presentation-selection js-browse">browse</li>
+        <li class="guide-presentation-filter-item js-people">
+          <button>
+            People
+          </button
+        </li>
+        <li class="guide-presentation-filter-item js-my-rolls">
+          <button>
+            My Rolls
+          </button>
+        </li>
+        <li class="guide-presentation-filter-item js-browse">
+          <button>
+            Browse
+          </button>
+        </li>
   <%  break; } %>
 </ul>

@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 11, ../../../app/stylesheets/partials/load-more.scss */
+/* line 7, ../../../app/stylesheets/partials/load-more.scss */
 .load-more-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -14,7 +14,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
   background: -webkit-linear-gradient(top, #549738, #3f722a);

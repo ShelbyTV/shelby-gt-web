@@ -1,96 +1,312 @@
-/*
-Syntax error: Undefined mixin 'background'.
-        on line 5 of /Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss, in `background'
-        from line 5 of /Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.filter-controls {
+  background: #585858;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+/* line 16, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.filter-controls li {
+  display: block;
+}
+/* line 20, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.filter-controls .rolls-back {
+  left: 0;
+  margin: 8px 20px 0;
+  position: absolute;
+  top: 0;
+}
 
-1: .filter-controls{
-2: 	@include background(
-3: //		url('../images/assets/noise.png')
-4: 		$rollsBG
-5: 	);
-6: 
-7: 	border-top:1px solid #333;
-8: 	border-bottom:1px solid #333;
-9: 	font-size:11px;
-10: 	font-weight:700;
+/* line 29, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.current-roll {
+  float: left;
+  font-size: 1.2em;
+  line-height: 2.55;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
 
-Backtrace:
-/Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss:5:in `background'
-/Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss:5
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/tree/root_node.rb:20:in `render'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/engine.rb:299:in `_render'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/engine.rb:247:in `block in render'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/util.rb:310:in `silence_sass_warnings'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/engine.rb:247:in `render'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `each'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin.rb:81:in `update_stylesheets'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin.rb:54:in `check_for_updates'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/sass-3.1.15/lib/sass/plugin/rack.rb:51:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__657108462120977687__call__45722736074830456__callbacks'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/quiet_assets-1.0.0/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/Henry/.rvm/gems/ruby-1.9.3-p125@gt-web/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/Users/Henry/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/Users/Henry/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/Users/Henry/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss, in `background'\A         from line 5 of /Users/Henry/Documents/Shelby/shelby-gt-web/app/stylesheets/partials/roll-filter-controls.scss\A \A 1: .filter-controls{\A 2: 	@include background(\A 3: //		url('../images/assets/noise.png')\A 4: 		$rollsBG\A 5: 	);\A 6: \A 7: 	border-top:1px solid #333;\A 8: 	border-bottom:1px solid #333;\A 9: 	font-size:11px;\A 10: 	font-weight:700;"; }
+/* line 38, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.current-roll-avatar {
+  display: inline-block;
+  height: 20px;
+  left: -2px;
+  margin: 0 0 0 -20px;
+  overflow: hidden;
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
+  width: 20px;
+}
+/* line 49, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.current-roll-avatar img, .current-roll-avatar span {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* line 58, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-name-change {
+  display: none;
+}
+/* line 60, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-name-change input {
+  margin: 3px;
+  padding: 4px;
+}
+
+/* line 73, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.rolls-back {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  padding: 6px 13px;
+  left: 0;
+  margin: 6px 15px;
+  position: absolute;
+  top: 0;
+}
+/* line 86, ../../../app/stylesheets/_base.scss */
+.rolls-back:before {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(left top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(left top, #4e4e4e, #343434);
+  background: -o-linear-gradient(left top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(left top, #4e4e4e, #343434);
+  background: linear-gradient(left top, #4e4e4e, #343434);
+  -moz-border-radius: 1px 13px 0 4px;
+  -webkit-border-radius: 1px 13px 0 4px;
+  -o-border-radius: 1px 13px 0 4px;
+  -ms-border-radius: 1px 13px 0 4px;
+  -khtml-border-radius: 1px 13px 0 4px;
+  border-radius: 1px 13px 0 4px;
+  -moz-box-shadow: inset 1px 0 0 0 #747474;
+  -webkit-box-shadow: inset 1px 0 0 0 #747474;
+  -o-box-shadow: inset 1px 0 0 0 #747474;
+  box-shadow: inset 1px 0 0 0 #747474;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-bottom: 1px solid #010101;
+  border-left: 1px solid #010101;
+  content: "\0020";
+  display: block;
+  height: 18px;
+  left: -8px;
+  position: absolute;
+  top: 3.75px;
+  width: 18px;
+}
+
+/* line 113, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-delete {
+  background-color: #cc1235;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
+  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
+  background: -moz-linear-gradient(top, #ec254b, #cc1235);
+  background: -o-linear-gradient(top, #ec254b, #cc1235);
+  background: -ms-linear-gradient(top, #ec254b, #cc1235);
+  background: linear-gradient(top, #ec254b, #cc1235);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  box-shadow: inset 0px 1px 0px 0px #f26c85;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #6e0a1d;
+  color: #efefef;
+  padding: 6px 13px;
+  display: none;
+  float: right;
+  margin: 8px 11px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* line 124, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-delete {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
+  -moz-box-shadow: inset 0px 1px 1px 0px #888888;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #888888;
+  -o-box-shadow: inset 0px 1px 1px 0px #888888;
+  box-shadow: inset 0px 1px 1px 0px #888888;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  font-weight: 600;
+  color: #EFEFEF;
+  background-color: linear-gradient(top, #ba2046, #9e1632);
+  border: 1px solid #711024;
+  height: 26px;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  float: right;
+  width: 62px;
+  display: none;
+}
+
+/* line 146, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.rolls-list-nav {
+  padding: 8px 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25%;
+}
+
+/* line 157, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-back {
+  background-color: #343434;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  margin-right: -1px;
+  text-align: left;
+  width: 50%;
+}
+
+/* line 169, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.roll-next {
+  background-color: #343434;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  text-align: right;
+  width: 50%;
+}
+
+/* line 181, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-back {
+  background-color: #303030;
+  background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
+  float: left;
+  height: 20px;
+  padding: 5px 10px;
+  width: 50%;
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #222;
+  height: 26px;
+  margin-right: -1px;
+  text-align: left;
+}
+
+/* line 194, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+.xroll-next {
+  background-color: #303030;
+  background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
+  float: left;
+  height: 20px;
+  padding: 5px 10px;
+  width: 50%;
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -khtml-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #222;
+  height: 26px;
+  text-align: right;
+}

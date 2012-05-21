@@ -27,7 +27,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _cleanup : function(){
-    shelby.models.userProgress.set('framesRolled', 0);
     this.model.unbind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
     this.model.unbind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
     this._displayCollection.unbind('add', this.internalAddOne, this);
@@ -36,7 +35,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _initializeEducation : function(){
     var self = this;
-    if (!this._userHasBeenEducated() && this._isEducationDisplayState()){
+    if (!this._userHasBeenEducated()){
+      var self = this;
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
@@ -45,12 +45,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _userHasBeenEducated : function(){
-    return shelby.models.userProgress.get(shelby.models.guide.get('displayState')+'Educated');
-  },
-
-  _isEducationDisplayState : function(){
-    // if we're rolling a frame, we don't want education
-    return shelby.models.userProgress.get('framesRolled')===0;
+    return shelby.models.user.get('app_progress').get(shelby.models.guide.get('displayState')+'Educated');
   },
 
   // delay before displaying education view 
@@ -62,7 +57,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _renderEducation : function(){
-    var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.userProgress, type:shelby.models.guide.get('displayState')});
+    var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.user.get('app_progress'), type:shelby.models.guide.get('displayState')});
     this.prependChild(educationView, 'slideToggle');
   },
 

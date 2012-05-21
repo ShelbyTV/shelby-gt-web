@@ -74,11 +74,11 @@
           $setSelectedClassOn = this.$('.js-browse');
           break;
       }
-      $setSelectedClassOn.addClass('content-selector-selected');
+      $setSelectedClassOn.addClass('guide-presentation-filter-selected');
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector li').removeClass('content-selector-selected');
+      this.$('.js-content-selector li').removeClass('guide-presentation-filter-selected');
     }
 
   });

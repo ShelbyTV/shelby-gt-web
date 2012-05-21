@@ -1,14 +1,15 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .frame-rolling-completion{
 	@extend .rolling-main;
 //	background:blue;
 //	@include opacity(0.9);
+	border-top: none;
+	@include border-radius($radiusHeader);
 	overflow-y:hidden;
+	top: 0;
+	z-index: 1;
+
 	.frame-share{
 //		background: url('../images/assets/noise.png') #494949;
 		@include border-radius(0);
@@ -43,61 +44,61 @@
 		.share-comment-counter {
 			display: block;
 			float: right;
-			height:30px;
+			height:20px;
 			position: relative;
 		}
 	}
 }
 
 .frame-rolling-completion-header{
-	
-	background:url("../images/assets/noise.png") #555;
-	border-bottom:1px solid #222;
-	height:40px;
+	@include border-radius($radiusHeader);
+	background-color: #666;
+	border-bottom: 1px solid $outline;
+	height: 40px;
 
 	h1{
-		@include background(
-			url('../images/assets/noise.png')
-			$flatShelbyBlue
-		);
-		border-bottom:1px solid adjust-lightness($flatShelbyBlue,-10%);
-		font-size:13px;
-		height:40px;
-		line-height:3;
-//		padding-left:$defaultMargin;
-		padding-right:$defaultMargin;
-		overflow:hidden;
-		text-overflow:ellipsis;
-		white-space:nowrap;
+		border-bottom: 1px solid $rolls-inset;
+		font-size: 16px;
+		height: 40px;
+		line-height: 2.4;
+		margin: 0 auto;
+		max-width: 145px;
+//		padding-left: $defaultMargin;
+		padding-right: $defaultMargin;
+		overflow: hidden;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 
-		&.roll-type-public{
-			&:before{
-				content: "\0020";
-				background: url('../images/assets/rolls_public.svg') no-repeat center center transparent;
-				float:left;
-				height: 21px;
-				margin: 8px;
-				width: 20px;
-			}
-		}
+//		&.roll-type-public{
+//			&:before{
+//				content: "\0020";
+//				background: url('../images/assets/rolls_public.svg') no-repeat center center transparent;
+//				float: left;
+//				height: 21px;
+//				margin: 8px;
+//				position: absolute;
+//				width: 20px;
+//			}
+//		}
 
 		&.roll-type-private{
 			@extend .roll-type-public;
 			
 			&:before{
-				background-image:url('../images/assets/rolls_private.svg');
+				background-image: url('../images/assets/rolls_private.svg');
 			}
 		}
-    &.roll-type-social {
-      padding-left: $defaultMargin;
+   &.roll-type-social {
+      padding: 0;
     }
 	}
 }
 
-.frame-share-undo{
-	line-height:3;
-	margin:0 5px;
-	position:absolute;
-	right:5px;
-	top:0;
+.frame-share-undo {
+	line-height: 3;
+	margin: 0 5px;
+	position: absolute;
+	right: 5px;
+	top: 0;
 }
