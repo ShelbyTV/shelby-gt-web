@@ -1,9 +1,7 @@
 @import "base";
 
 #roll-header,.roll-header {
-	@include background(
-		url('../images/assets/noise.png') $rollsBG
-	);
+	background-color: $rolls-bg-color;
 	display:none;
 
 //	border-top:1px solid #222;
@@ -96,7 +94,6 @@
 
 .share-dialog {
 	background:#585858;
-	border-bottom:1px solid #222;
 	padding:0;
 	display:none;
 	position:relative;
