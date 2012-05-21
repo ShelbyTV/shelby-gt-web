@@ -6,18 +6,18 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/rolls.scss */
+/* line 3, ../../../app/stylesheets/partials/rolls.scss */
 #roll-header, .roll-header {
   background: url("../images/assets/noise.png") #585858;
   display: none;
 }
 
-/* line 16, ../../../app/stylesheets/partials/rolls.scss */
+/* line 12, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
   margin: 0;
   padding: 0;
 }
-/* line 21, ../../../app/stylesheets/partials/rolls.scss */
+/* line 17, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -26,19 +26,19 @@
   padding: 10px;
   width: 75%;
 }
-/* line 28, ../../../app/stylesheets/partials/rolls.scss */
+/* line 24, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:last-child {
   padding-left: 0;
   width: 25%;
 }
-/* line 32, ../../../app/stylesheets/partials/rolls.scss */
+/* line 28, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:nth-last-child(2) {
   display: none;
   padding-left: 0;
   width: 25%;
 }
 
-/* line 41, ../../../app/stylesheets/partials/rolls.scss */
+/* line 37, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite, .rolls-share, .rolls-leave, .rolls-edit, .rolls-share-cancel {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -68,7 +68,7 @@
   width: 100%;
 }
 
-/* line 49, ../../../app/stylesheets/partials/rolls.scss */
+/* line 45, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
   -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
@@ -84,7 +84,7 @@
   background: linear-gradient(top, #00a5cc, #007fb6);
 }
 
-/* line 59, ../../../app/stylesheets/partials/rolls.scss */
+/* line 55, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background: #303030;
   background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #444444), color-stop(100%, #303030));
@@ -101,12 +101,12 @@
   margin: 1px;
 }
 
-/* line 74, ../../../app/stylesheets/partials/rolls.scss */
+/* line 70, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   border-color: #333;
 }
 
-/* line 79, ../../../app/stylesheets/partials/rolls.scss */
+/* line 75, ../../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   border-bottom: 1px solid #222;
@@ -117,27 +117,27 @@
   z-index: 1;
 }
 
-/* line 90, ../../../app/stylesheets/partials/rolls.scss */
+/* line 86, ../../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 95, ../../../app/stylesheets/partials/rolls.scss */
+/* line 91, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 100, ../../../app/stylesheets/partials/rolls.scss */
+/* line 96, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 103, ../../../app/stylesheets/partials/rolls.scss */
+/* line 99, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 109, ../../../app/stylesheets/partials/rolls.scss */
+/* line 105, ../../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -146,11 +146,11 @@
   width: 100%;
 }
 
-/* line 118, ../../../app/stylesheets/partials/rolls.scss */
+/* line 114, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 122, ../../../app/stylesheets/partials/rolls.scss */
+/* line 118, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -162,7 +162,7 @@
   resize: none;
   width: 100%;
 }
-/* line 130, ../../../app/stylesheets/partials/rolls.scss */
+/* line 126, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -173,20 +173,20 @@
   padding-top: 15px;
 }
 
-/* line 143, ../../../app/stylesheets/partials/rolls.scss */
+/* line 139, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 148, ../../../app/stylesheets/partials/rolls.scss */
+/* line 144, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 0 10px 10px 0;
 }
 
-/* line 156, ../../../app/stylesheets/partials/rolls.scss */
+/* line 152, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter {
   background: #474747;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -209,7 +209,7 @@
   height: 34px;
   width: 34px;
 }
-/* line 169, ../../../app/stylesheets/partials/rolls.scss */
+/* line 165, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter .networks-twitter-button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center;
   border: none;
@@ -217,7 +217,7 @@
   height: 100%;
   width: 100%;
 }
-/* line 181, ../../../app/stylesheets/partials/rolls.scss */
+/* line 177, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active {
   background: #00a2d1;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
@@ -231,16 +231,16 @@
   -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
-/* line 186, ../../../app/stylesheets/partials/rolls.scss */
+/* line 182, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active .networks-twitter-button {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center;
 }
-/* line 191, ../../../app/stylesheets/partials/rolls.scss */
+/* line 187, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active:hover {
   background: #00a2d1;
 }
 
-/* line 198, ../../../app/stylesheets/partials/rolls.scss */
+/* line 194, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: #474747;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -263,7 +263,7 @@
   height: 34px;
   width: 34px;
 }
-/* line 212, ../../../app/stylesheets/partials/rolls.scss */
+/* line 208, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook .networks-facebook-button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center;
   border: none;
@@ -271,7 +271,7 @@
   height: 100%;
   width: 100%;
 }
-/* line 224, ../../../app/stylesheets/partials/rolls.scss */
+/* line 220, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
@@ -285,21 +285,21 @@
   -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
-/* line 229, ../../../app/stylesheets/partials/rolls.scss */
+/* line 225, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active .networks-facebook-button {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center;
 }
-/* line 234, ../../../app/stylesheets/partials/rolls.scss */
+/* line 230, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active:hover {
   background: #013e80;
 }
 
-/* line 241, ../../../app/stylesheets/partials/rolls.scss */
+/* line 237, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   display: block;
 }
 
-/* line 252, ../../../app/stylesheets/partials/rolls.scss */
+/* line 248, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -330,7 +330,7 @@
   text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 254, ../../../app/stylesheets/partials/rolls.scss */
+/* line 250, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;

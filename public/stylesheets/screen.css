@@ -397,14 +397,14 @@ td {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../app/stylesheets/partials/app.html.scss */
+/* line 3, ../../app/stylesheets/partials/app.html.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 12, ../../app/stylesheets/partials/app.html.scss */
+/* line 9, ../../app/stylesheets/partials/app.html.scss */
 html, body {
   height: 100%;
   margin: 0;
@@ -413,7 +413,7 @@ html, body {
   width: 100%;
 }
 
-/* line 20, ../../app/stylesheets/partials/app.html.scss */
+/* line 17, ../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
@@ -425,16 +425,16 @@ body {
   background: url("../images/assets/noise.png") black;
 }
 
-/* line 36, ../../app/stylesheets/partials/app.html.scss */
+/* line 33, ../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 41, ../../app/stylesheets/partials/app.html.scss */
+/* line 38, ../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 47, ../../app/stylesheets/partials/app.html.scss */
+/* line 44, ../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -443,7 +443,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 55, ../../app/stylesheets/partials/app.html.scss */
+/* line 52, ../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -451,13 +451,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 63, ../../app/stylesheets/partials/app.html.scss */
+/* line 60, ../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 68, ../../app/stylesheets/partials/app.html.scss */
+/* line 65, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.2em;
@@ -485,17 +485,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 86, ../../app/stylesheets/partials/app.html.scss */
+/* line 83, ../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 90, ../../app/stylesheets/partials/app.html.scss */
+/* line 87, ../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 94, ../../app/stylesheets/partials/app.html.scss */
+/* line 91, ../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -505,12 +505,12 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 103, ../../app/stylesheets/partials/app.html.scss */
+/* line 100, ../../app/stylesheets/partials/app.html.scss */
 .touch .content-body {
   overflow: hidden;
 }
 
-/* line 117, ../../app/stylesheets/partials/app.html.scss */
+/* line 114, ../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -521,7 +521,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 125, ../../app/stylesheets/partials/app.html.scss */
+/* line 122, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -538,17 +538,17 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../app/stylesheets/partials/guide-header.scss */
+/* line 3, ../../app/stylesheets/partials/guide-header.scss */
 .header {
   background: url("../images/assets/noise.png") #2b2a2a;
   border-bottom: 1px solid #222;
 }
-/* line 13, ../../app/stylesheets/partials/guide-header.scss */
+/* line 10, ../../app/stylesheets/partials/guide-header.scss */
 .header nav {
   display: inline;
 }
 
-/* line 19, ../../app/stylesheets/partials/guide-header.scss */
+/* line 16, ../../app/stylesheets/partials/guide-header.scss */
 .logo {
   background: transparent;
   border: none;
@@ -556,7 +556,7 @@ a:hover, a:visited, a:active {
   float: left;
 }
 
-/* line 26, ../../app/stylesheets/partials/guide-header.scss */
+/* line 23, ../../app/stylesheets/partials/guide-header.scss */
 .logo-header {
   background: url("../images/assets/shelbylogo.svg") center 11px no-repeat transparent;
   background-size: 100%;
@@ -565,14 +565,14 @@ a:hover, a:visited, a:active {
   width: 95px;
 }
 
-/* line 34, ../../app/stylesheets/partials/guide-header.scss */
+/* line 31, ../../app/stylesheets/partials/guide-header.scss */
 .settings {
   float: right;
   margin: 0;
   padding: 0;
   width: 50%;
 }
-/* line 40, ../../app/stylesheets/partials/guide-header.scss */
+/* line 37, ../../app/stylesheets/partials/guide-header.scss */
 .settings button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -582,19 +582,19 @@ a:hover, a:visited, a:active {
   padding-bottom: 0;
   text-align: left;
 }
-/* line 50, ../../app/stylesheets/partials/guide-header.scss */
+/* line 47, ../../app/stylesheets/partials/guide-header.scss */
 .settings button:hover {
   color: white;
   text-decoration: none;
 }
-/* line 56, ../../app/stylesheets/partials/guide-header.scss */
+/* line 53, ../../app/stylesheets/partials/guide-header.scss */
 .settings li {
   display: block;
   float: right;
   height: 42px;
   position: relative;
 }
-/* line 62, ../../app/stylesheets/partials/guide-header.scss */
+/* line 59, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li {
   float: none;
   height: 2em;
@@ -602,7 +602,7 @@ a:hover, a:visited, a:active {
   margin: 0;
   padding-left: 0;
 }
-/* line 69, ../../app/stylesheets/partials/guide-header.scss */
+/* line 66, ../../app/stylesheets/partials/guide-header.scss */
 .settings li li button, .settings li li span {
   height: 2em;
   line-height: 2;
@@ -610,7 +610,7 @@ a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
-/* line 81, ../../app/stylesheets/partials/guide-header.scss */
+/* line 78, ../../app/stylesheets/partials/guide-header.scss */
 .top-level:after {
   background: url("../images/assets/carrot.svg") no-repeat center center transparent;
   content: "\0020";
@@ -624,7 +624,7 @@ a:hover, a:visited, a:active {
   width: 12px;
 }
 
-/* line 96, ../../app/stylesheets/partials/guide-header.scss */
+/* line 93, ../../app/stylesheets/partials/guide-header.scss */
 .about, .profile {
   padding-left: 10px;
   padding-right: 20px;
@@ -632,13 +632,13 @@ a:hover, a:visited, a:active {
   width: 70px;
   z-index: 2;
 }
-/* line 103, ../../app/stylesheets/partials/guide-header.scss */
+/* line 100, ../../app/stylesheets/partials/guide-header.scss */
 .about:hover, .profile:hover {
   color: white;
   background: #549738;
 }
 
-/* line 109, ../../app/stylesheets/partials/guide-header.scss */
+/* line 106, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
   -moz-box-shadow: 0px 0px 5px 2px #222222;
   -webkit-box-shadow: 0px 0px 5px 2px #222222;
@@ -655,49 +655,49 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 123, ../../app/stylesheets/partials/guide-header.scss */
+/* line 120, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 129, ../../app/stylesheets/partials/guide-header.scss */
+/* line 126, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   background: #0f8db8;
 }
 
-/* line 134, ../../app/stylesheets/partials/guide-header.scss */
+/* line 131, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 136, ../../app/stylesheets/partials/guide-header.scss */
+/* line 133, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 139, ../../app/stylesheets/partials/guide-header.scss */
+/* line 136, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 148, ../../app/stylesheets/partials/guide-header.scss */
+/* line 145, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 150, ../../app/stylesheets/partials/guide-header.scss */
+/* line 147, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 157, ../../app/stylesheets/partials/guide-header.scss */
+/* line 154, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 164, ../../app/stylesheets/partials/guide-header.scss */
+/* line 161, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -711,7 +711,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 174, ../../app/stylesheets/partials/guide-header.scss */
+/* line 171, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -889,7 +889,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 3, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
   bottom: 10px;
   position: absolute;
@@ -897,7 +897,7 @@ a:hover, a:visited, a:active {
   z-index: 10;
 }
 
-/* line 14, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 10, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle {
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
@@ -942,7 +942,7 @@ a:hover, a:visited, a:active {
   right: 0;
   width: 34px;
 }
-/* line 35, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 31, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -970,7 +970,7 @@ a:hover, a:visited, a:active {
   top: 13px;
   width: 70px;
 }
-/* line 53, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 49, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -990,14 +990,14 @@ a:hover, a:visited, a:active {
   width: 20px;
 }
 
-/* line 65, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 61, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 68, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 64, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -1005,13 +1005,13 @@ a:hover, a:visited, a:active {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 72, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 68, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 77, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 73, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -1019,7 +1019,7 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
   width: 112px;
 }
-/* line 82, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 78, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -1029,14 +1029,14 @@ a:hover, a:visited, a:active {
   transition-delay: 0.2s;
 }
 
-/* line 88, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 84, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 90, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 86, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -1048,7 +1048,7 @@ a:hover, a:visited, a:active {
   transition-delay: 0.1s;
 }
 
-/* line 96, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 92, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -1066,18 +1066,18 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/rolls.scss */
+/* line 3, ../../app/stylesheets/partials/rolls.scss */
 #roll-header, .roll-header {
   background: url("../images/assets/noise.png") #585858;
   display: none;
 }
 
-/* line 16, ../../app/stylesheets/partials/rolls.scss */
+/* line 12, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
   margin: 0;
   padding: 0;
 }
-/* line 21, ../../app/stylesheets/partials/rolls.scss */
+/* line 17, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -1086,19 +1086,19 @@ a:hover, a:visited, a:active {
   padding: 10px;
   width: 75%;
 }
-/* line 28, ../../app/stylesheets/partials/rolls.scss */
+/* line 24, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:last-child {
   padding-left: 0;
   width: 25%;
 }
-/* line 32, ../../app/stylesheets/partials/rolls.scss */
+/* line 28, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:nth-last-child(2) {
   display: none;
   padding-left: 0;
   width: 25%;
 }
 
-/* line 41, ../../app/stylesheets/partials/rolls.scss */
+/* line 37, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite, .rolls-share, .rolls-leave, .rolls-edit, .rolls-share-cancel, .rolling-main-done, .rolling-main-social {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1128,7 +1128,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 49, ../../app/stylesheets/partials/rolls.scss */
+/* line 45, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
   -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
@@ -1144,7 +1144,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #00a5cc, #007fb6);
 }
 
-/* line 59, ../../app/stylesheets/partials/rolls.scss */
+/* line 55, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background: #303030;
   background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #444444), color-stop(100%, #303030));
@@ -1161,12 +1161,12 @@ a:hover, a:visited, a:active {
   margin: 1px;
 }
 
-/* line 74, ../../app/stylesheets/partials/rolls.scss */
+/* line 70, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   border-color: #333;
 }
 
-/* line 79, ../../app/stylesheets/partials/rolls.scss */
+/* line 75, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   border-bottom: 1px solid #222;
@@ -1177,27 +1177,27 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 90, ../../app/stylesheets/partials/rolls.scss */
+/* line 86, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 95, ../../app/stylesheets/partials/rolls.scss */
+/* line 91, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 100, ../../app/stylesheets/partials/rolls.scss */
+/* line 96, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 103, ../../app/stylesheets/partials/rolls.scss */
+/* line 99, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 109, ../../app/stylesheets/partials/rolls.scss */
+/* line 105, ../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -1206,11 +1206,11 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 118, ../../app/stylesheets/partials/rolls.scss */
+/* line 114, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 122, ../../app/stylesheets/partials/rolls.scss */
+/* line 118, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1222,7 +1222,7 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
-/* line 130, ../../app/stylesheets/partials/rolls.scss */
+/* line 126, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1233,20 +1233,20 @@ a:hover, a:visited, a:active {
   padding-top: 15px;
 }
 
-/* line 143, ../../app/stylesheets/partials/rolls.scss */
+/* line 139, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 148, ../../app/stylesheets/partials/rolls.scss */
+/* line 144, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 0 10px 10px 0;
 }
 
-/* line 156, ../../app/stylesheets/partials/rolls.scss */
+/* line 152, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter {
   background: #474747;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -1269,7 +1269,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 169, ../../app/stylesheets/partials/rolls.scss */
+/* line 165, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter .networks-twitter-button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center;
   border: none;
@@ -1277,7 +1277,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   width: 100%;
 }
-/* line 181, ../../app/stylesheets/partials/rolls.scss */
+/* line 177, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active {
   background: #00a2d1;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
@@ -1291,16 +1291,16 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
   box-shadow: inset 0px 1px 1px 0px #00d0e5;
 }
-/* line 186, ../../app/stylesheets/partials/rolls.scss */
+/* line 182, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active .networks-twitter-button {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center;
 }
-/* line 191, ../../app/stylesheets/partials/rolls.scss */
+/* line 187, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active:hover {
   background: #00a2d1;
 }
 
-/* line 198, ../../app/stylesheets/partials/rolls.scss */
+/* line 194, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook {
   background: #474747;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
@@ -1323,7 +1323,7 @@ a:hover, a:visited, a:active {
   height: 34px;
   width: 34px;
 }
-/* line 212, ../../app/stylesheets/partials/rolls.scss */
+/* line 208, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook .networks-facebook-button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center;
   border: none;
@@ -1331,7 +1331,7 @@ a:hover, a:visited, a:active {
   height: 100%;
   width: 100%;
 }
-/* line 224, ../../app/stylesheets/partials/rolls.scss */
+/* line 220, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active {
   background: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
@@ -1345,21 +1345,21 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
   box-shadow: inset 0px 1px 1px 0px #0179c1;
 }
-/* line 229, ../../app/stylesheets/partials/rolls.scss */
+/* line 225, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active .networks-facebook-button {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center;
 }
-/* line 234, ../../app/stylesheets/partials/rolls.scss */
+/* line 230, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active:hover {
   background: #013e80;
 }
 
-/* line 241, ../../app/stylesheets/partials/rolls.scss */
+/* line 237, ../../app/stylesheets/partials/rolls.scss */
 .share-submit {
   display: block;
 }
 
-/* line 252, ../../app/stylesheets/partials/rolls.scss */
+/* line 248, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1390,7 +1390,7 @@ a:hover, a:visited, a:active {
   text-shadow: 0px 1px 2px #222;
   width: 81px;
 }
-/* line 254, ../../app/stylesheets/partials/rolls.scss */
+/* line 250, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;
@@ -1406,7 +1406,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 3, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: #585858;
   border-top: 1px solid #333;
@@ -1419,12 +1419,12 @@ a:hover, a:visited, a:active {
   text-align: center;
   width: 100%;
 }
-/* line 20, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 16, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls li {
   display: block;
 }
 
-/* line 26, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 22, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
@@ -1434,7 +1434,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 35, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 31, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
@@ -1446,7 +1446,7 @@ a:hover, a:visited, a:active {
   vertical-align: middle;
   width: 20px;
 }
-/* line 46, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 42, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1454,17 +1454,17 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 55, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 51, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change {
   display: none;
 }
-/* line 57, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 53, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change input {
   margin: 3px;
   padding: 4px;
 }
 
-/* line 70, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 66, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1493,7 +1493,7 @@ a:hover, a:visited, a:active {
   top: 9px;
   width: auto;
 }
-/* line 84, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 80, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -1523,7 +1523,7 @@ a:hover, a:visited, a:active {
   z-index: 1000;
 }
 
-/* line 102, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 98, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-delete {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1556,7 +1556,7 @@ a:hover, a:visited, a:active {
   display: none;
 }
 
-/* line 124, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 120, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 9px 10px;
   position: absolute;
@@ -1565,7 +1565,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 135, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 131, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -1585,7 +1585,7 @@ a:hover, a:visited, a:active {
   text-align: left;
 }
 
-/* line 148, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 144, ../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
@@ -1655,28 +1655,28 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/frame.scss */
+/* line 3, ../../app/stylesheets/partials/frame.scss */
 .list, .rolls-list, .form-rolls-list {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../app/stylesheets/partials/frame.scss */
+/* line 7, ../../app/stylesheets/partials/frame.scss */
 .list li, .rolls-list li, .form-rolls-list li {
   background: #494949;
   list-style-type: none;
   padding: 10px;
 }
-/* line 19, ../../app/stylesheets/partials/frame.scss */
+/* line 15, ../../app/stylesheets/partials/frame.scss */
 .list li:hover, .rolls-list li:hover, .form-rolls-list li:hover {
   background: #555555;
 }
 
-/* line 28, ../../app/stylesheets/partials/frame.scss */
+/* line 24, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .active-frame {
   background: #6d6d6d;
 }
 
-/* line 36, ../../app/stylesheets/partials/frame.scss */
+/* line 32, ../../app/stylesheets/partials/frame.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1691,7 +1691,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 47, ../../app/stylesheets/partials/frame.scss */
+/* line 43, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1704,7 +1704,7 @@ a:hover, a:visited, a:active {
   z-index: 5;
 }
 
-/* line 56, ../../app/stylesheets/partials/frame.scss */
+/* line 52, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #444;
   line-height: 75px;
@@ -1713,7 +1713,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 64, ../../app/stylesheets/partials/frame.scss */
+/* line 60, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   display: inline-block;
   margin: -27px auto 0;
@@ -1724,13 +1724,13 @@ a:hover, a:visited, a:active {
   cursor: pointer;
 }
 
-/* line 75, ../../app/stylesheets/partials/frame.scss */
+/* line 71, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
   margin: 36px auto 0;
   width: auto;
 }
 
-/* line 80, ../../app/stylesheets/partials/frame.scss */
+/* line 76, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -1747,19 +1747,19 @@ a:hover, a:visited, a:active {
   border-radius: 3px 3px 0 0;
   padding: 6px 8px 7px;
 }
-/* line 86, ../../app/stylesheets/partials/frame.scss */
+/* line 82, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 89, ../../app/stylesheets/partials/frame.scss */
+/* line 85, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 88, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
-/* line 97, ../../app/stylesheets/partials/frame.scss */
+/* line 93, ../../app/stylesheets/partials/frame.scss */
 .video-card-header h1, .frame-share-header h1 {
   float: left;
   font-size: 1em;
@@ -1770,7 +1770,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 108, ../../app/stylesheets/partials/frame.scss */
+/* line 104, ../../app/stylesheets/partials/frame.scss */
 .frame-main-social {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0091d0), color-stop(100%, #007fb6));
@@ -1810,7 +1810,7 @@ a:hover, a:visited, a:active {
   padding: 0px;
   margin: -4px -3px;
 }
-/* line 121, ../../app/stylesheets/partials/frame.scss */
+/* line 117, ../../app/stylesheets/partials/frame.scss */
 .frame-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
@@ -1821,14 +1821,14 @@ a:hover, a:visited, a:active {
   height: 17px;
 }
 
-/* line 145, ../../app/stylesheets/partials/frame.scss */
+/* line 141, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 150, ../../app/stylesheets/partials/frame.scss */
+/* line 146, ../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -1836,7 +1836,7 @@ a:hover, a:visited, a:active {
   right: 0px;
   top: 0px;
 }
-/* line 157, ../../app/stylesheets/partials/frame.scss */
+/* line 153, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1859,7 +1859,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 170, ../../app/stylesheets/partials/frame.scss */
+/* line 166, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/action_roll.svg") no-repeat 8px 4px;
   -moz-border-radius: 5px;
@@ -1875,7 +1875,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 32px;
 }
-/* line 182, ../../app/stylesheets/partials/frame.scss */
+/* line 178, ../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #63c43a;
   -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
@@ -1883,7 +1883,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #69f034;
   box-shadow: inset 0px 1px 1px 0px #69f034;
 }
-/* line 190, ../../app/stylesheets/partials/frame.scss */
+/* line 186, ../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1906,7 +1906,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 203, ../../app/stylesheets/partials/frame.scss */
+/* line 199, ../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame button {
   background: url("../images/assets/action_share.svg") no-repeat 2px 9px;
   -moz-border-radius: 5px;
@@ -1922,7 +1922,7 @@ a:hover, a:visited, a:active {
   text-decoration: underline;
   width: 32px;
 }
-/* line 215, ../../app/stylesheets/partials/frame.scss */
+/* line 211, ../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame:hover {
   background: url("../images/assets/noise.png"), #1744c6;
   -moz-box-shadow: inset 0px 1px 1px 0px #077dba;
@@ -1930,7 +1930,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #077dba;
   box-shadow: inset 0px 1px 1px 0px #077dba;
 }
-/* line 225, ../../app/stylesheets/partials/frame.scss */
+/* line 221, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1953,7 +1953,7 @@ a:hover, a:visited, a:active {
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 238, ../../app/stylesheets/partials/frame.scss */
+/* line 234, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame button {
   background: url("../images/assets/action_heart_white.svg") no-repeat 9px 4px;
   -moz-border-radius: 5px;
@@ -1972,7 +1972,7 @@ a:hover, a:visited, a:active {
   padding-top: 16px;
   width: 32px;
 }
-/* line 253, ../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame:hover {
   background: url("../images/assets/noise.png"), #535353;
   -moz-box-shadow: inset 0px 1px 1px 0px #888888;
@@ -1980,7 +1980,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #888888;
   box-shadow: inset 0px 1px 1px 0px #888888;
 }
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 257, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted {
   background-color: #9e1632;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
@@ -1994,12 +1994,12 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #ef2f74;
   box-shadow: inset 0px 1px 1px 0px #ef2f74;
 }
-/* line 269, ../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted button {
   background: url("../images/assets/action_heart.svg") no-repeat 9px 4px;
   color: #222;
 }
-/* line 277, ../../app/stylesheets/partials/frame.scss */
+/* line 273, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #693a7b;
   background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
@@ -2013,11 +2013,11 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 286, ../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 291, ../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #9863a2;
   -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
@@ -2025,7 +2025,7 @@ a:hover, a:visited, a:active {
   -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
   box-shadow: inset 0px 1px 1px 0px #9863a2;
 }
-/* line 299, ../../app/stylesheets/partials/frame.scss */
+/* line 295, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -2039,11 +2039,11 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
   background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.svg") no-repeat center center;
 }
-/* line 313, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame:hover {
   background: url("../images/assets/noise.png"), #cb1c40;
   -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
@@ -2052,7 +2052,7 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 323, ../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../app/stylesheets/partials/frame.scss */
 .video-footer {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -2074,11 +2074,11 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 7px;
 }
 
-/* line 344, ../../app/stylesheets/partials/frame.scss */
+/* line 340, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 346, ../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2091,7 +2091,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   resize: none;
 }
-/* line 354, ../../app/stylesheets/partials/frame.scss */
+/* line 350, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2138,19 +2138,19 @@ a:hover, a:visited, a:active {
   width: auto;
 }
 
-/* line 371, ../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 375, ../../app/stylesheets/partials/frame.scss */
+/* line 371, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 386, ../../app/stylesheets/partials/frame.scss */
+/* line 382, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -2159,12 +2159,12 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
 }
 
-/* line 394, ../../app/stylesheets/partials/frame.scss */
+/* line 390, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 400, ../../app/stylesheets/partials/frame.scss */
+/* line 396, ../../app/stylesheets/partials/frame.scss */
 .user {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -2175,31 +2175,31 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #333333, #303030);
 }
 
-/* line 405, ../../app/stylesheets/partials/frame.scss */
+/* line 401, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #252525;
   border-top: 1px solid #4f4d51;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 414, ../../app/stylesheets/partials/frame.scss */
+/* line 410, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 419, ../../app/stylesheets/partials/frame.scss */
+/* line 415, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 423, ../../app/stylesheets/partials/frame.scss */
+/* line 419, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 429, ../../app/stylesheets/partials/frame.scss */
+/* line 425, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   font-size: 11px;
   font-weight: 500;
@@ -2207,7 +2207,7 @@ a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 436, ../../app/stylesheets/partials/frame.scss */
+/* line 432, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -2215,29 +2215,29 @@ a:hover, a:visited, a:active {
   padding-right: 3px;
 }
 
-/* line 445, ../../app/stylesheets/partials/frame.scss */
+/* line 441, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335488134');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 455, ../../app/stylesheets/partials/frame.scss */
+/* line 451, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335488133');
 }
 
-/* line 462, ../../app/stylesheets/partials/frame.scss */
+/* line 458, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336417968');
 }
 
-/* line 467, ../../app/stylesheets/partials/frame.scss */
+/* line 463, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 470, ../../app/stylesheets/partials/frame.scss */
+/* line 466, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
@@ -2250,7 +2250,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/video-player.scss */
+/* line 3, ../../app/stylesheets/partials/video-player.scss */
 .video-player {
   background: #000;
   color: white;
@@ -2274,19 +2274,19 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 24, ../../app/stylesheets/partials/video-player.scss */
+/* line 20, ../../app/stylesheets/partials/video-player.scss */
 .video-player.full-width {
   margin-right: 0px;
 }
 
-/* line 29, ../../app/stylesheets/partials/video-player.scss */
+/* line 25, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder {
   position: relative;
   height: 100%;
   width: 100%;
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
 }
-/* line 33, ../../app/stylesheets/partials/video-player.scss */
+/* line 29, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder > * {
   position: absolute;
   top: 0;
@@ -2294,7 +2294,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   height: 100%;
 }
-/* line 41, ../../app/stylesheets/partials/video-player.scss */
+/* line 37, ../../app/stylesheets/partials/video-player.scss */
 #video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
   width: 100%!important;
   height: 100%!important;
@@ -2308,7 +2308,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 3, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved, .share-comment .video-shared {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2335,11 +2335,11 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 18, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved img, .share-comment .video-shared img {
   width: 30px;
 }
-/* line 26, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved p, .share-comment .video-shared p {
   font-size: 24px;
   font-weight: 500;
@@ -2347,7 +2347,7 @@ a:hover, a:visited, a:active {
   margin: 0;
 }
 
-/* line 34, ../../app/stylesheets/partials/saved-indicator.scss */
+/* line 30, ../../app/stylesheets/partials/saved-indicator.scss */
 .video-saved-trans {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -2361,7 +2361,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/video-controls.scss */
+/* line 3, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls-wrapper {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2388,13 +2388,13 @@ a:hover, a:visited, a:active {
   z-index: 2;
 }
 
-/* line 23, ../../app/stylesheets/partials/video-controls.scss */
+/* line 19, ../../app/stylesheets/partials/video-controls.scss */
 .user-inactive .video-player-controls-wrapper,
 .user-inactive .comment-overlay-wrapper {
   opacity: 0;
 }
 
-/* line 27, ../../app/stylesheets/partials/video-controls.scss */
+/* line 23, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls {
   background-color: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
@@ -2430,12 +2430,12 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 43, ../../app/stylesheets/partials/video-controls.scss */
+/* line 39, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls.full-width {
   margin: 10px 40px 10px 10px;
 }
 
-/* line 47, ../../app/stylesheets/partials/video-controls.scss */
+/* line 43, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
   position: relative;
   -moz-border-radius: 5px;
@@ -2449,7 +2449,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 57, ../../app/stylesheets/partials/video-controls.scss */
+/* line 53, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -2457,12 +2457,12 @@ a:hover, a:visited, a:active {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 67, ../../app/stylesheets/partials/video-controls.scss */
+/* line 63, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 75, ../../app/stylesheets/partials/video-controls.scss */
+/* line 71, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -2478,7 +2478,7 @@ a:hover, a:visited, a:active {
   position: absolute;
 }
 
-/* line 86, ../../app/stylesheets/partials/video-controls.scss */
+/* line 82, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -2497,13 +2497,13 @@ a:hover, a:visited, a:active {
   width: 0;
 }
 
-/* line 97, ../../app/stylesheets/partials/video-controls.scss */
+/* line 93, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 106, ../../app/stylesheets/partials/video-controls.scss */
+/* line 102, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -2525,7 +2525,7 @@ a:hover, a:visited, a:active {
   cursor: ew-resize;
 }
 
-/* line 122, ../../app/stylesheets/partials/video-controls.scss */
+/* line 118, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -2535,23 +2535,23 @@ a:hover, a:visited, a:active {
   margin: 0 15px;
 }
 
-/* line 131, ../../app/stylesheets/partials/video-controls.scss */
+/* line 127, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 139, ../../app/stylesheets/partials/video-controls.scss */
+/* line 135, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 146, ../../app/stylesheets/partials/video-controls.scss */
+/* line 142, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 156, ../../app/stylesheets/partials/video-controls.scss */
+/* line 152, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
@@ -2565,7 +2565,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/video-mini-progress.scss */
+/* line 3, ../../app/stylesheets/partials/video-mini-progress.scss */
 #mini-video-progress {
   bottom: 0;
   width: 100%;
@@ -2591,16 +2591,16 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 21, ../../app/stylesheets/partials/video-mini-progress.scss */
+/* line 17, ../../app/stylesheets/partials/video-mini-progress.scss */
 .user-inactive #mini-video-progress {
   opacity: 1.0;
 }
 
-/* line 25, ../../app/stylesheets/partials/video-mini-progress.scss */
+/* line 21, ../../app/stylesheets/partials/video-mini-progress.scss */
 .mini-video-player-progress {
   margin-right: 330px;
 }
-/* line 27, ../../app/stylesheets/partials/video-mini-progress.scss */
+/* line 23, ../../app/stylesheets/partials/video-mini-progress.scss */
 .mini-video-player-progress > div {
   border-radius: 0;
 }
@@ -2613,46 +2613,46 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 3, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list {
   padding: 0;
   position: relative;
   margin: 0;
 }
-/* line 13, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 10, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a {
   cursor: pointer;
   display: block;
   padding: 10px;
 }
-/* line 17, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 14, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
   background: #6d6d6d;
 }
-/* line 24, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 21, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid #333;
   border-top: 1px solid #666;
   padding: 0;
 }
-/* line 28, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 25, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li:first-child {
   border-top: none;
 }
-/* line 31, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 28, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 35, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 32, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
   background: #5fa256;
   position: relative;
 }
-/* line 43, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 40, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item a {
   color: #000;
 }
-/* line 46, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 43, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
   height: 36px;
   overflow: hidden;
@@ -2660,7 +2660,7 @@ a:hover, a:visited, a:active {
   white-space: nowrap;
   width: 160px;
 }
-/* line 52, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 49, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
   color: #FFF;
@@ -2679,7 +2679,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 3, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main, .frame-rolling-completion {
   border-top: 1px solid #333333;
   bottom: 0;
@@ -2689,7 +2689,7 @@ a:hover, a:visited, a:active {
   top: 39px;
   width: 100%;
 }
-/* line 18, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 14, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child, .frame-rolling-completion > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -2698,7 +2698,7 @@ a:hover, a:visited, a:active {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 21, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 17, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child h2, .frame-rolling-completion > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -2707,18 +2707,18 @@ a:hover, a:visited, a:active {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 26, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 22, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover, .frame-rolling-completion > li:hover {
   background: url("../images/assets/noise.png") #666666;
   cursor: pointer;
 }
-/* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 28, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main .share-comment-counter, .frame-rolling-completion .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 39, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 35, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header,
 .rolling-main-footer {
   background: url("../images/assets/noise.png") #555555;
@@ -2737,13 +2737,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 54, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 50, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header-title {
   line-height: 1.75;
   text-align: center;
 }
 
-/* line 59, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 55, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-back {
   background: #4a4a4a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
@@ -2779,7 +2779,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 69, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 65, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -2795,7 +2795,7 @@ a:hover, a:visited, a:active {
   border: 1px solid #004a6a;
   margin-top: 10px;
 }
-/* line 91, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 87, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done .spinner, .rolling-main-social .spinner {
   left: auto;
   margin-left: auto;
@@ -2803,13 +2803,13 @@ a:hover, a:visited, a:active {
   position: static;
 }
 
-/* line 107, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 103, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   display: block;
   float: right;
   padding-left: 0;
 }
-/* line 116, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 112, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
@@ -2821,7 +2821,7 @@ a:hover, a:visited, a:active {
   height: 17px;
 }
 
-/* line 128, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 124, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2850,7 +2850,7 @@ a:hover, a:visited, a:active {
   height: 100%;
 }
 
-/* line 148, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 144, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2863,7 +2863,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 3, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion {
   border-top: none;
   -moz-border-radius: 3px 3px 0 0;
@@ -2876,7 +2876,7 @@ a:hover, a:visited, a:active {
   top: 0;
   z-index: 1;
 }
-/* line 17, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 13, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -2891,7 +2891,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 40px;
 }
-/* line 27, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 23, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   background: #222;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
@@ -2902,12 +2902,12 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 100%;
 }
-/* line 39, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 35, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 48, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 44, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion.frame-rolling-private .share-comment-counter {
   display: block;
   float: right;
@@ -2915,12 +2915,12 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 57, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 53, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   border-bottom: 1px solid #333333;
   height: 40px;
 }
-/* line 62, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   background: url("../images/assets/noise.png") #666666;
   border-bottom: 1px solid #333333;
@@ -2939,16 +2939,16 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 94, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 90, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
-/* line 98, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 94, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-social {
   padding-left: 10px;
 }
 
-/* line 104, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 100, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
@@ -2965,13 +2965,13 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 3, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
   background: url("../images/assets/noise.png") #585858;
   padding: 10px;
 }
 
-/* line 15, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2993,14 +2993,14 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/share.scss */
+/* line 3, ../../app/stylesheets/partials/share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
   height: 100%;
   top: 40px;
 }
 
-/* line 16, ../../app/stylesheets/partials/share.scss */
+/* line 12, ../../app/stylesheets/partials/share.scss */
 .frame-share-content {
   height: inherit;
 }
@@ -3013,62 +3013,62 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 3, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list {
   cursor: pointer;
 }
-/* line 12, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 8, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a {
   display: block;
   padding: 5px;
   text-decoration: none;
 }
-/* line 17, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 13, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:visited {
   text-decoration: none;
 }
-/* line 22, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 18, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list a:hover, .form-rolls-list a:active {
   text-decoration: underline;
 }
-/* line 27, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 23, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li {
   border-bottom: 1px solid #333333;
   border-top: 1px solid #555555;
   padding: 5px;
 }
-/* line 32, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 28, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li:first-child {
   border-top: none;
 }
-/* line 35, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 31, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 40, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 36, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
   font-size: 14px;
   line-height: 1.75;
   position: relative;
   text-align: center;
 }
-/* line 46, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 42, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
   content: "+";
 }
-/* line 49, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 45, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_public.svg");
   right: 9px;
   position: absolute;
   top: 1px;
 }
-/* line 60, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 56, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.svg");
 }
 
-/* line 67, ../../app/stylesheets/partials/roll-selection-default-items.scss */
+/* line 63, ../../app/stylesheets/partials/roll-selection-default-items.scss */
 .share-comment-counter {
   color: white;
   line-height: 2.5;
@@ -3085,19 +3085,19 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 12, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 8, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form {
   margin: 0 10px;
 }
-/* line 15, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 11, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form fieldset {
   margin-bottom: 1em;
 }
-/* line 18, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 14, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form fieldset:first-child, .you-preferences-form fieldset.you-profile-actions {
   margin-bottom: 0;
 }
-/* line 24, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 20, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3108,40 +3108,40 @@ a:hover, a:visited, a:active {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border: 1px solid #222;
 }
-/* line 30, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 26, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form legend {
   font-size: 16px;
   font-weight: 500;
   line-height: 2.75;
 }
 
-/* line 39, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 35, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list, .you-preferences-networks, .you-preferences-notifications {
   margin: 0;
   padding: 0;
 }
-/* line 43, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 39, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list li, .you-preferences-networks li, .you-preferences-notifications li {
   border-bottom: 1px solid #222;
   list-style-type: none;
   padding: 10px 5px 10px 10px;
 }
-/* line 48, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 44, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
-/* line 52, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 48, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
   margin-top: 1px;
 }
 
-/* line 59, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 55, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   float: left;
   line-height: 1.4;
 }
-/* line 64, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 60, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-notifications label {
   float: left;
@@ -3150,19 +3150,19 @@ a:hover, a:visited, a:active {
   line-height: 2;
   width: 25%;
 }
-/* line 72, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 68, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   padding: 5px;
   width: 75%;
 }
 
-/* line 78, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 74, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions {
   float: right;
   margin-top: 5px;
 }
-/* line 82, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 78, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background: #4a4a4a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
@@ -3193,17 +3193,17 @@ a:hover, a:visited, a:active {
   padding: 1px 8px;
   text-shadow: 0px 1px 2px #222;
 }
-/* line 87, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 83, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   float: left;
 }
-/* line 93, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 89, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 115, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 111, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3240,26 +3240,26 @@ a:hover, a:visited, a:active {
   padding: 0;
   text-decoration: none;
 }
-/* line 131, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 127, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 138, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 134, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 145, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 141, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 152, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 148, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-border-radius: 5px;
@@ -3283,21 +3283,21 @@ a:hover, a:visited, a:active {
   width: 24px;
 }
 
-/* line 173, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 169, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   background-size: 28%;
   content: "\0020";
 }
 
-/* line 185, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 181, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
   background-size: 36%;
   content: "\0020";
 }
 
-/* line 199, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 195, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -3305,7 +3305,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 1;
 }
-/* line 206, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 202, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -3314,7 +3314,7 @@ a:hover, a:visited, a:active {
   left: 50%;
   width: 50%;
 }
-/* line 215, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 211, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -3322,11 +3322,11 @@ a:hover, a:visited, a:active {
   right: 20px;
   top: -7px;
 }
-/* line 223, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 219, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 227, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 223, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -3360,7 +3360,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 241, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 237, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -3386,7 +3386,7 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 258, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 254, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3400,11 +3400,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 265, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 261, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 269, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 265, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -3418,7 +3418,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 9, ../../app/stylesheets/partials/team.scss */
+/* line 5, ../../app/stylesheets/partials/team.scss */
 .about-team dt:before {
   border: 1px solid black;
   content: "\0020";
@@ -3427,19 +3427,19 @@ a:hover, a:visited, a:active {
   margin-bottom: 10px;
   width: 100%;
 }
-/* line 18, ../../app/stylesheets/partials/team.scss */
+/* line 14, ../../app/stylesheets/partials/team.scss */
 .about-team a {
   color: #efefef;
 }
 
-/* line 24, ../../app/stylesheets/partials/team.scss */
+/* line 20, ../../app/stylesheets/partials/team.scss */
 .about-team-nav li {
   float: left;
   list-style-type: none;
   width: 50%;
 }
 
-/* line 32, ../../app/stylesheets/partials/team.scss */
+/* line 28, ../../app/stylesheets/partials/team.scss */
 .about-header h1 {
   border-bottom: 1px solid #222;
   font-size: 16px;
@@ -3448,135 +3448,135 @@ a:hover, a:visited, a:active {
   margin: 0 10px 10px;
 }
 
-/* line 41, ../../app/stylesheets/partials/team.scss */
+/* line 37, ../../app/stylesheets/partials/team.scss */
 .about-nav, .about-definition-peripherals {
   margin: 10px;
   padding: 0;
 }
-/* line 45, ../../app/stylesheets/partials/team.scss */
+/* line 41, ../../app/stylesheets/partials/team.scss */
 .about-nav a, .about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 49, ../../app/stylesheets/partials/team.scss */
+/* line 45, ../../app/stylesheets/partials/team.scss */
 .about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 52, ../../app/stylesheets/partials/team.scss */
+/* line 48, ../../app/stylesheets/partials/team.scss */
 .about-nav a:visited, .about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 58, ../../app/stylesheets/partials/team.scss */
+/* line 54, ../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2,
 .about-nav h3,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 62, ../../app/stylesheets/partials/team.scss */
+/* line 58, ../../app/stylesheets/partials/team.scss */
 .about-nav h2, .about-definition-peripherals h2 {
   font-weight: 300;
 }
-/* line 66, ../../app/stylesheets/partials/team.scss */
+/* line 62, ../../app/stylesheets/partials/team.scss */
 .about-nav h3, .about-definition-peripherals h3 {
   font-weight: 100;
 }
-/* line 69, ../../app/stylesheets/partials/team.scss */
+/* line 65, ../../app/stylesheets/partials/team.scss */
 .about-nav li, .about-definition-peripherals li {
   list-style-type: none;
   margin-bottom: .5em;
 }
 
-/* line 76, ../../app/stylesheets/partials/team.scss */
+/* line 72, ../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 80, ../../app/stylesheets/partials/team.scss */
+/* line 76, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 83, ../../app/stylesheets/partials/team.scss */
+/* line 79, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 89, ../../app/stylesheets/partials/team.scss */
+/* line 85, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
   line-height: 1.5;
   list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 95, ../../app/stylesheets/partials/team.scss */
+/* line 91, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   margin-bottom: 0;
   width: auto;
 }
 
-/* line 103, ../../app/stylesheets/partials/team.scss */
+/* line 99, ../../app/stylesheets/partials/team.scss */
 .about-external-twitter a {
   background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 112, ../../app/stylesheets/partials/team.scss */
+/* line 108, ../../app/stylesheets/partials/team.scss */
 .about-external-link a {
   background: url("../images/assets/team_web.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 120, ../../app/stylesheets/partials/team.scss */
+/* line 116, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 123, ../../app/stylesheets/partials/team.scss */
+/* line 119, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 126, ../../app/stylesheets/partials/team.scss */
+/* line 122, ../../app/stylesheets/partials/team.scss */
 .sztul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 129, ../../app/stylesheets/partials/team.scss */
+/* line 125, ../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 132, ../../app/stylesheets/partials/team.scss */
+/* line 128, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 135, ../../app/stylesheets/partials/team.scss */
+/* line 131, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 138, ../../app/stylesheets/partials/team.scss */
+/* line 134, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 141, ../../app/stylesheets/partials/team.scss */
+/* line 137, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 144, ../../app/stylesheets/partials/team.scss */
+/* line 140, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 147, ../../app/stylesheets/partials/team.scss */
+/* line 143, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 150, ../../app/stylesheets/partials/team.scss */
+/* line 146, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }
@@ -3589,7 +3589,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 3, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner-wrapper {
   bottom: 0;
   left: 0;
@@ -3599,7 +3599,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 16, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 12, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-overlay {
   background: black;
   bottom: 0;
@@ -3612,7 +3612,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 0;
 }
-/* line 27, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 23, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-overlay p {
   color: #efefef;
   font-size: 40px;
@@ -3622,7 +3622,7 @@ a:hover, a:visited, a:active {
   top: 50%;
 }
 
-/* line 38, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 34, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 0 0 5px 5px;
@@ -3638,44 +3638,44 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 51, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 47, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-header {
   background: url("../images/assets/noise.png") #303030;
   border-bottom: 1px solid #222;
   padding: 10px;
 }
 
-/* line 58, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 54, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav {
   float: left;
   font-size: 11px;
 }
-/* line 62, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 58, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav li {
   display: inline;
   padding-right: 5px;
 }
-/* line 66, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 62, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a {
   color: #d3d3d3;
   text-decoration: none;
 }
-/* line 70, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 66, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:hover {
   color: white;
   text-decoration: underline;
 }
-/* line 75, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 71, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:visited, .logged-out-nav a:active {
   color: white;
 }
 
-/* line 81, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 77, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-origin {
   float: right;
 }
 
-/* line 85, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 81, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline {
   float: left;
   font-weight: 100;
@@ -3683,39 +3683,39 @@ a:hover, a:visited, a:active {
   margin-top: 20px;
   width: 50%;
 }
-/* line 92, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 88, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a {
   text-decoration: none;
   font-weight: 500;
 }
-/* line 95, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 91, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:hover {
   text-decoration: none;
 }
-/* line 99, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 95, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:active, .logged-out-tagline a:visited {
   text-decoration: none;
 }
 
-/* line 105, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 101, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks {
   float: left;
   margin: 12px 0;
   padding: 0;
   width: 50%;
 }
-/* line 112, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 108, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks li {
   display: inline;
   float: left;
   width: 50%;
 }
-/* line 117, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 113, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks button {
   width: 93%;
 }
 
-/* line 147, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 143, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter, .email-gate-networks-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -3740,7 +3740,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
-/* line 135, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 131, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before, .email-gate-networks-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -3751,12 +3751,12 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 154, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 150, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before, .email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
-/* line 159, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 155, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook, .email-gate-networks-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -3781,7 +3781,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #01599e, #013e80);
   background: linear-gradient(top, #01599e, #013e80);
 }
-/* line 135, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 131, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before, .email-gate-networks-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -3792,7 +3792,7 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 166, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 162, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before, .email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }
@@ -3805,7 +3805,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 11, ../../app/stylesheets/partials/load-more.scss */
+/* line 7, ../../app/stylesheets/partials/load-more.scss */
 .load-more-button {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3855,7 +3855,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 3, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -3883,7 +3883,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 2;
 }
-/* line 23, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 19, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
   height: inherit;
   margin-left: 25px;
@@ -3891,17 +3891,17 @@ a:hover, a:visited, a:active {
   max-width: 500px;
   overflow-y: hidden;
 }
-/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 28, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
-/* line 36, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-video-text p {
   max-height: 2.5em;
   overflow: hidden;
 }
 
-/* line 43, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 39, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   display: none;
   height: 67px;
@@ -3909,7 +3909,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 87, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 83, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3929,13 +3929,13 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 81, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 77, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 96, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 92, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -3955,7 +3955,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 81, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 77, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -3969,12 +3969,12 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/guide-education.scss */
+/* line 3, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education {
   padding: 0 !important;
 }
 
-/* line 11, ../../app/stylesheets/partials/guide-education.scss */
+/* line 7, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining {
   background: #f9f15c;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbf58d), color-stop(100%, #f9f15c));
@@ -3986,7 +3986,7 @@ a:hover, a:visited, a:active {
   border: 1px solid #f8ef43;
   position: relative;
 }
-/* line 17, ../../app/stylesheets/partials/guide-education.scss */
+/* line 13, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
   color: #000;
   font-size: 12px;
@@ -3996,7 +3996,7 @@ a:hover, a:visited, a:active {
   margin-top: 10px;
 }
 
-/* line 27, ../../app/stylesheets/partials/guide-education.scss */
+/* line 23, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
   background: url("../images/assets/remove_notification.svg") no-repeat center center transparent;
   border: none;
@@ -4018,21 +4018,21 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/gate.scss */
+/* line 3, ../../app/stylesheets/partials/gate.scss */
 .no-access {
   margin-top: 30px;
 }
 
-/* line 12, ../../app/stylesheets/partials/gate.scss */
+/* line 8, ../../app/stylesheets/partials/gate.scss */
 .private-beta-access h2 {
   margin: 10px 0;
 }
-/* line 15, ../../app/stylesheets/partials/gate.scss */
+/* line 11, ../../app/stylesheets/partials/gate.scss */
 .private-beta-access p.login {
   width: 205px;
 }
 
-/* line 20, ../../app/stylesheets/partials/gate.scss */
+/* line 16, ../../app/stylesheets/partials/gate.scss */
 .email-gate {
   background-color: #101010;
   background: url("../images/email-gate/bg.png") no-repeat center center #101010;
@@ -4042,36 +4042,36 @@ a:hover, a:visited, a:active {
   background-size: cover;
 }
 
-/* line 28, ../../app/stylesheets/partials/gate.scss */
+/* line 24, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
   margin: 0 auto;
   width: 480px;
 }
 
-/* line 33, ../../app/stylesheets/partials/gate.scss */
+/* line 29, ../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
   width: 1020px;
 }
 
-/* line 38, ../../app/stylesheets/partials/gate.scss */
+/* line 34, ../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper {
   float: left;
   width: 500px;
 }
 
-/* line 42, ../../app/stylesheets/partials/gate.scss */
+/* line 38, ../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
 }
 
-/* line 45, ../../app/stylesheets/partials/gate.scss */
+/* line 41, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 54, ../../app/stylesheets/partials/gate.scss */
+/* line 50, ../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -4081,7 +4081,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 68, ../../app/stylesheets/partials/gate.scss */
+/* line 64, ../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -4090,7 +4090,7 @@ a:hover, a:visited, a:active {
   width: 33%;
 }
 
-/* line 77, ../../app/stylesheets/partials/gate.scss */
+/* line 73, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -4099,7 +4099,7 @@ a:hover, a:visited, a:active {
   width: 205px;
 }
 
-/* line 85, ../../app/stylesheets/partials/gate.scss */
+/* line 81, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
@@ -4129,7 +4129,7 @@ a:hover, a:visited, a:active {
   padding: 7px 19px;
 }
 
-/* line 104, ../../app/stylesheets/partials/gate.scss */
+/* line 100, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 5px;
@@ -4147,7 +4147,7 @@ a:hover, a:visited, a:active {
   padding: 10px;
   position: relative;
 }
-/* line 117, ../../app/stylesheets/partials/gate.scss */
+/* line 113, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -4168,7 +4168,7 @@ a:hover, a:visited, a:active {
   width: 10px;
 }
 
-/* line 133, ../../app/stylesheets/partials/gate.scss */
+/* line 129, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -4176,16 +4176,16 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 142, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 145, ../../app/stylesheets/partials/gate.scss */
+/* line 141, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 150, ../../app/stylesheets/partials/gate.scss */
+/* line 146, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -4194,27 +4194,27 @@ a:hover, a:visited, a:active {
   text-decoration: none;
   width: 100%;
 }
-/* line 159, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 162, ../../app/stylesheets/partials/gate.scss */
+/* line 158, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 167, ../../app/stylesheets/partials/gate.scss */
+/* line 163, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 171, ../../app/stylesheets/partials/gate.scss */
+/* line 167, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 176, ../../app/stylesheets/partials/gate.scss */
+/* line 172, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4222,7 +4222,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 183, ../../app/stylesheets/partials/gate.scss */
+/* line 179, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -4231,7 +4231,7 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 191, ../../app/stylesheets/partials/gate.scss */
+/* line 187, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -4248,7 +4248,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 208, ../../app/stylesheets/partials/gate.scss */
+/* line 204, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
@@ -4278,19 +4278,19 @@ a:hover, a:visited, a:active {
   width: 17%;
 }
 
-/* line 228, ../../app/stylesheets/partials/gate.scss */
+/* line 224, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 233, ../../app/stylesheets/partials/gate.scss */
+/* line 229, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 239, ../../app/stylesheets/partials/gate.scss */
+/* line 235, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
@@ -4303,7 +4303,7 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 10, ../../app/stylesheets/partials/ui-test.scss */
+/* line 6, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-saves {
   background: url("../images/assets/saved_big.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -4314,11 +4314,11 @@ a:hover, a:visited, a:active {
   padding: 0;
   width: 10px;
 }
-/* line 20, ../../app/stylesheets/partials/ui-test.scss */
+/* line 16, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-saves:before {
   content: "";
 }
-/* line 27, ../../app/stylesheets/partials/ui-test.scss */
+/* line 23, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
@@ -4328,23 +4328,23 @@ a:hover, a:visited, a:active {
   padding-top: 27px;
   text-decoration: none;
 }
-/* line 38, ../../app/stylesheets/partials/ui-test.scss */
+/* line 34, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-score-upvoted {
   color: #333;
 }
-/* line 44, ../../app/stylesheets/partials/ui-test.scss */
+/* line 40, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame, .ui-test .video-controls .remove-frame {
   display: none;
 }
-/* line 47, ../../app/stylesheets/partials/ui-test.scss */
+/* line 43, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 52, ../../app/stylesheets/partials/ui-test.scss */
+/* line 48, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-footer {
   height: auto;
 }
-/* line 56, ../../app/stylesheets/partials/ui-test.scss */
+/* line 52, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }

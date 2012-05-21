@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 3, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls {
   background: #585858;
   border-top: 1px solid #333;
@@ -19,12 +19,12 @@
   text-align: center;
   width: 100%;
 }
-/* line 20, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 16, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .filter-controls li {
   display: block;
 }
 
-/* line 26, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 22, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
@@ -34,7 +34,7 @@
   width: 100%;
 }
 
-/* line 35, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 31, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
@@ -46,7 +46,7 @@
   vertical-align: middle;
   width: 20px;
 }
-/* line 46, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 42, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -54,17 +54,17 @@
   top: 0;
 }
 
-/* line 55, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 51, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change {
   display: none;
 }
-/* line 57, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 53, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-name-change input {
   margin: 3px;
   padding: 4px;
 }
 
-/* line 70, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 66, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back {
   background-color: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
@@ -93,7 +93,7 @@
   top: 9px;
   width: auto;
 }
-/* line 84, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 80, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-back i {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -123,7 +123,7 @@
   z-index: 1000;
 }
 
-/* line 102, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 98, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-delete {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -156,7 +156,7 @@
   display: none;
 }
 
-/* line 124, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 120, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .rolls-list-nav {
   padding: 9px 10px;
   position: absolute;
@@ -165,7 +165,7 @@
   width: 25%;
 }
 
-/* line 135, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 131, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-back {
   background-color: #303030;
   background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
@@ -185,7 +185,7 @@
   text-align: left;
 }
 
-/* line 148, ../../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 144, ../../../app/stylesheets/partials/roll-filter-controls.scss */
 .roll-next {
   background-color: #303030;
   background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;

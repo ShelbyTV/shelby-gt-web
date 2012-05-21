@@ -6,14 +6,14 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/share.scss */
+/* line 3, ../../../app/stylesheets/partials/share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
   height: 100%;
   top: 40px;
 }
 
-/* line 16, ../../../app/stylesheets/partials/share.scss */
+/* line 12, ../../../app/stylesheets/partials/share.scss */
 .frame-share-content {
   height: inherit;
 }

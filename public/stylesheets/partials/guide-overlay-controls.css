@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 3, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
   bottom: 10px;
   position: absolute;
@@ -14,7 +14,7 @@
   z-index: 10;
 }
 
-/* line 14, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 10, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle {
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
@@ -59,7 +59,7 @@
   right: 0;
   width: 34px;
 }
-/* line 35, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 31, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -87,7 +87,7 @@
   top: 13px;
   width: 70px;
 }
-/* line 53, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 49, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -107,14 +107,14 @@
   width: 20px;
 }
 
-/* line 65, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 61, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 68, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 64, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -122,13 +122,13 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 72, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 68, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 77, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 73, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -136,7 +136,7 @@
   transition-delay: 0s;
   width: 112px;
 }
-/* line 82, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 78, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -146,14 +146,14 @@
   transition-delay: 0.2s;
 }
 
-/* line 88, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 84, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 90, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 86, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -165,7 +165,7 @@
   transition-delay: 0.1s;
 }
 
-/* line 96, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 92, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;

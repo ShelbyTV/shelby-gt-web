@@ -6,13 +6,13 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 3, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
   background: url("../images/assets/noise.png") #585858;
   padding: 10px;
 }
 
-/* line 15, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 11, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

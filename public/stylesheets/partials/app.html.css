@@ -6,14 +6,14 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../../app/stylesheets/partials/app.html.scss */
+/* line 3, ../../../app/stylesheets/partials/app.html.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1.231;
   margin: 0;
 }
 
-/* line 12, ../../../app/stylesheets/partials/app.html.scss */
+/* line 9, ../../../app/stylesheets/partials/app.html.scss */
 html, body {
   height: 100%;
   margin: 0;
@@ -22,7 +22,7 @@ html, body {
   width: 100%;
 }
 
-/* line 20, ../../../app/stylesheets/partials/app.html.scss */
+/* line 17, ../../../app/stylesheets/partials/app.html.scss */
 body {
   color: #dcddde;
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
@@ -34,16 +34,16 @@ body {
   background: url("../images/assets/noise.png") black;
 }
 
-/* line 36, ../../../app/stylesheets/partials/app.html.scss */
+/* line 33, ../../../app/stylesheets/partials/app.html.scss */
 a {
   color: #a4a4a4;
 }
-/* line 41, ../../../app/stylesheets/partials/app.html.scss */
+/* line 38, ../../../app/stylesheets/partials/app.html.scss */
 a:hover, a:visited, a:active {
   color: #a4a4a4;
 }
 
-/* line 47, ../../../app/stylesheets/partials/app.html.scss */
+/* line 44, ../../../app/stylesheets/partials/app.html.scss */
 .wrapper {
   bottom: 0;
   left: 0;
@@ -52,7 +52,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 55, ../../../app/stylesheets/partials/app.html.scss */
+/* line 52, ../../../app/stylesheets/partials/app.html.scss */
 .lining {
   float: left;
   margin-right: -330px;
@@ -60,13 +60,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 63, ../../../app/stylesheets/partials/app.html.scss */
+/* line 60, ../../../app/stylesheets/partials/app.html.scss */
 .content, .main {
   float: right;
   width: 330px;
 }
 
-/* line 68, ../../../app/stylesheets/partials/app.html.scss */
+/* line 65, ../../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #494949;
   font-size: 1.2em;
@@ -94,17 +94,17 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
 }
 
-/* line 86, ../../../app/stylesheets/partials/app.html.scss */
+/* line 83, ../../../app/stylesheets/partials/app.html.scss */
 .main.hide-guide {
   margin-right: -330px;
 }
 
-/* line 90, ../../../app/stylesheets/partials/app.html.scss */
+/* line 87, ../../../app/stylesheets/partials/app.html.scss */
 .user-inactive .main {
   opacity: .5;
 }
 
-/* line 94, ../../../app/stylesheets/partials/app.html.scss */
+/* line 91, ../../../app/stylesheets/partials/app.html.scss */
 .content-body {
   bottom: 0;
   overflow-x: hidden;
@@ -114,12 +114,12 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 103, ../../../app/stylesheets/partials/app.html.scss */
+/* line 100, ../../../app/stylesheets/partials/app.html.scss */
 .touch .content-body {
   overflow: hidden;
 }
 
-/* line 117, ../../../app/stylesheets/partials/app.html.scss */
+/* line 114, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
   -moz-box-shadow: 0px 2px 5px 0px #333333;
   -webkit-box-shadow: 0px 2px 5px 0px #333333;
@@ -130,7 +130,7 @@ a:hover, a:visited, a:active {
   overflow: hidden;
 }
 
-/* line 125, ../../../app/stylesheets/partials/app.html.scss */
+/* line 122, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;

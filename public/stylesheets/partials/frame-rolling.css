@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 3, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main {
   border-top: 1px solid #333333;
   bottom: 0;
@@ -16,7 +16,7 @@
   top: 39px;
   width: 100%;
 }
-/* line 18, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 14, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -25,7 +25,7 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 21, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 17, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -34,18 +34,18 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 26, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 22, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover {
   background: url("../images/assets/noise.png") #666666;
   cursor: pointer;
 }
-/* line 32, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 28, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 39, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header,
 .rolling-main-footer {
   background: url("../images/assets/noise.png") #555555;
@@ -64,13 +64,13 @@
   width: 100%;
 }
 
-/* line 54, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 50, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header-title {
   line-height: 1.75;
   text-align: center;
 }
 
-/* line 59, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 55, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-back {
   background: #4a4a4a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
@@ -106,7 +106,7 @@
   top: 0;
 }
 
-/* line 69, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 65, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -122,7 +122,7 @@
   border: 1px solid #004a6a;
   margin-top: 10px;
 }
-/* line 91, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 87, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done .spinner, .rolling-main-social .spinner {
   left: auto;
   margin-left: auto;
@@ -130,13 +130,13 @@
   position: static;
 }
 
-/* line 107, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 103, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   display: block;
   float: right;
   padding-left: 0;
 }
-/* line 116, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 112, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 72%;
@@ -148,7 +148,7 @@
   height: 17px;
 }
 
-/* line 128, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 124, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -177,7 +177,7 @@
   height: 100%;
 }
 
-/* line 148, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 144, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
