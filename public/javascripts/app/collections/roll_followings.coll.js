@@ -1,8 +1,15 @@
 libs.shelbyGT.RollFollowingsCollection = Backbone.Collection.extend({
 
-  // Return all frames that have attr : true.
-  filterBy: function(attr) {
-    return this.filter(function(frame){ return frame.get(attr); });
+  parse : function(response) {
+    if (response.result) {
+        return response.result.roll_followings || response.result;
+    } else {
+      return [];
+    }
+  },
+
+  url : function(){
+    return shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
   }
 
 });
