@@ -5,15 +5,19 @@
 	padding: 0;
 
 	li {
-		background-color: $base-bg-color;
-		list-style-type: none;
-		padding: $defaultMargin;
-	
-		&:hover {
-			@include background(#555);
-		}
+		list-style-type: none;	
 	}
 }
+
+.frame {
+	background-color: $base-bg-color;
+	padding: $defaultMargin;
+
+	&:hover {
+		@include background(#555);
+	}
+}
+
 .active-list-item {
 	.active-frame {
 		@include background(#6d6d6d);
@@ -56,7 +60,8 @@
 
 .video-card-header {
 	border-bottom: 1px solid $inset;
-	padding: $defaultMargin - 4 $defaultMargin - 2;
+//	padding: $defaultMargin - 4 $defaultMargin - 2;
+	padding: 0;
 
 	a {
 		text-decoration: none;
@@ -68,16 +73,40 @@
 			text-decoration: underline;
 		}
 	}
+}
 
-	h1 {
-		float: left;
-		font-size: 1em;
-		height: 1.231em;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		width: 100%;
-	}
+.frame-creator-avatar {
+	@include border-radius($radius 0 0 0);
+
+	float: left;
+	height: 46px;
+	width: 46px;
+}
+
+.frame-creator-name {
+	float: left;
+	font-size: 1em;
+	height: 1.231em;
+	padding: $defaultMargin - 4 $defaultMargin - 2 0;
+}
+
+.frame-timestamp {
+	float:right;
+	font-size: 0.875em;
+	padding: $defaultMargin - 4 $defaultMargin - 2 0;
+}
+
+.frame-title {
+	clear: right; 
+	float: left;
+  font-size: 1.1em;
+  height: 1.75em;
+  line-height: 1.3;
+	overflow: hidden;
+  padding: 6px 8px 2px;
+  text-overflow: ellipsis;
+	white-space: nowrap; 
+	width: 83%; 
 }
 
 .video-card-footer {
@@ -125,6 +154,7 @@
 }	
 
 .video-controls {
+	display: none;
 	margin: $defaultMargin/2;
 	padding: 0;
 	position: absolute;
@@ -261,7 +291,10 @@
 	}
 }
 
+
+
 .video-footer {
+	border-bottom: 1px solid $inset;
 	border-top: 1px solid $outset;
 	font-size: $font-size - 2;
 	font-weight: 500;
@@ -382,5 +415,83 @@
 
 	p {
 		margin: 2px $defaultMargin/2 0 $defaultMargin*3+2;
+	}
+}
+
+.frame-controls {
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: block;
+		float: left;
+		list-style-type: none;
+		width: 25%;
+
+		&:first-child {
+			button {
+				border-left: none;
+			}
+		}
+
+		&:last-child {
+			button {
+				border-right: none;
+			}
+		}
+	}
+	button {
+		background: transparent;
+		border-bottom: none;
+		border-left: 1px solid $outset;
+		border-right: 1px solid $inset;
+		border-top: 1px solid $outset;
+		display: block;
+		height: 42px;
+		width: 100%;
+	}
+}
+
+.frame-controls-like {
+
+	i{
+		color: #efefef;
+		font-style: normal;
+
+		&:before {
+			background: url("../images/assets/action_heart_white.svg") no-repeat center 120% transparent;
+			content: "\0020";
+			display: inline-block;
+			height:	1.231em;
+			width: 1.231em;
+		}
+	}
+}
+
+.frame-controls-comments {
+	i{
+		font-style: normal;
+		
+		&:before {
+			background:url('../images/assets/action_heart.svg') no-repeat center 120% transparent;
+			content: "\0020";
+			display: inline-block;
+			height:	1.231em;
+			width: 1.231em;
+		}
+	}
+}
+
+.frame-controls-roll {
+	button {
+		@extend .notype;
+		background:url('../images/assets/action_heart.svg') no-repeat center center transparent;
+	}
+}
+
+.frame-controls-share {
+	button {
+		@extend .notype;
+		background:url('../images/assets/action_share.svg') no-repeat center center transparent;
 	}
 }

@@ -2,14 +2,27 @@
 <% var creator = frame.get('creator') %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
+
   <header class="video-card-header clearfix">
-    <a class="js-frame-activate" href="#">
-      <h1 title="<%= frame.get('video').get('title') %>">
-		    <%= frame.get('video').get('title') %>
-      </h1>
-    </a>  
+    <img class="frame-creator-avatar" src="/images/avatar.jpg">
+    <h1 class="frame-creator-name">
+      <%= frame.get('creator').get('nickname') %> 
+    </h1>
+    <h2 class="frame-timestamp">
+      3min ago
+    </h2>
+    <h3 class="frame-title">
+      <%= frame.get('video').get('title') %>
+    </h3>
   </header>
   
+
+<!--       <h1 title="<%= frame.get('video').get('title') %>">
+	    <%= frame.get('video').get('title') %>
+    </h1>
+ -->      
+
+
   <div class="video-thumbnail">
     <ul class="video-controls" type="toolbar">
       <li class="upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
@@ -58,6 +71,30 @@
         </a>
       <% } %>
     </div> 
+
+    <ul class="frame-controls" type="toolbar">
+      <li class="frame-controls-like">
+        <button type="button">
+          <i>123</i>
+        </button>
+      </li>
+      <li class="frame-controls-comments">
+        <button type="button">
+          <i>123</i>
+        </button>
+      </li>
+      <li class="frame-controls-roll">
+        <button type="button">
+          Roll it
+        </button>
+      </li>
+      <li class="frame-controls-share">
+        <button type="button">
+          Share it
+        </button>
+      </li>
+
+    </ul>
   
   </footer>
 

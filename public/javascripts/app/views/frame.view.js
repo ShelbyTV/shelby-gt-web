@@ -79,7 +79,10 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     // otherwise, just render the first message
     var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:this.model.get('conversation').get('messages').first()};
     var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
-    this.insertChildBefore(firstMessageView,'.js-video-activity');
+
+//  COMMENTING THIS OUT OBVIOUSLY DOESN'T SOLVE ANYTHING
+//  DOING THIS FOR TESTING PURPOSES
+//    this.insertChildBefore(firstMessageView,'.js-video-activity');
 
     // render all other messages that haven't already been rendered
     var startIndex = useFrameCreatorInfo ? 0 : 1;
