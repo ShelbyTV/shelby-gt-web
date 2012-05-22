@@ -64,6 +64,12 @@
             collection : shelby.collections.rollFollowings
           };
           break;
+        case DisplayState.browseRollList :
+          displayComponents = {
+            viewProto : RollListView,
+            collection : shelby.collections.browseRolls
+          };
+          break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
         case DisplayState.userPersonalRoll :
@@ -175,6 +181,7 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
+        case libs.shelbyGT.DisplayState.browseRollList :
           // if the dashboard model hasn't been created yet, fetch it
           // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
           // as opposed to from what is currently displyed in the guide

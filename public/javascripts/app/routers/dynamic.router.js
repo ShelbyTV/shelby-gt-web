@@ -177,15 +177,37 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(params){
+
     this._setupTopLevelViews({showSpinner: true});
-    shelby.collections.rollFollowings.reset();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+
+    var doBrowseRolls = shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+    var displayState, rollCollection, fetchUrl;
+
+    if (doBrowseRolls) {
+      displayState = libs.shelbyGT.DisplayState.browseRollList;
+      rollCollection = shelby.collections.browseRolls;
+      fetchUrl = shelby.config.apiRoot + '/roll/browse';
+    } else {
+      displayState = libs.shelbyGT.DisplayState.rollList;
+      rollCollection = shelby.collections.rollFollowings;
+      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
+    }
+
+    shelby.models.guide.set('displayState', displayState);
+
+    rollCollection.reset();
     var self = this;
     this._hideSpinnerAfter((function(){
-      self._addHotRolls();
-      return shelby.collections.rollFollowings.fetch({add:true,success:function(){
-        self._scrollToActiveGuideListItemView();
-      }});
+      if (!doBrowseRolls) {
+        self._addHotRolls();
+      }
+      return rollCollection.fetch({
+        add : true,
+        success : function(){
+          self._scrollToActiveGuideListItemView();
+        },
+        url : fetchUrl
+      });
     })());
   },
 

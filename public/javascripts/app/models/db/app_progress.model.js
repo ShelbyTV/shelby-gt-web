@@ -6,6 +6,7 @@
       'dashboardEducated' : false,
       'rollEducated' : false,
       'rollListEducated' : false,
+      'browseRollListEducated' : false,
       'standardRollEducated' : false,
       'streamEducated' : false,
       'rollNav' : false,

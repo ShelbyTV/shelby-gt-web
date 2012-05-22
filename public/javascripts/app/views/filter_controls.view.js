@@ -35,6 +35,7 @@
           break;
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
+        case libs.shelbyGT.DisplayState.browseRollList :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
           break;
       }

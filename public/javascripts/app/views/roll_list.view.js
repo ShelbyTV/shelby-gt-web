@@ -22,24 +22,33 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   _scrollToActiveRollItemView : function(guideModel, tryAutoScroll) {
     if (tryAutoScroll) {
-      var activeRollItemView = this.children.find(function(childView){
-        var activeFrameModel = guideModel.get('activeFrameModel');
-        if (activeFrameModel) {
-          var roll = activeFrameModel.get('roll');
-          if (roll && childView.model.id == roll.id) {
-            return true;
+      var activeFrameModel = guideModel.get('activeFrameModel');
+      if (activeFrameModel) {
+        var roll = activeFrameModel.get('roll');
+        if (roll) {
+          var activeRollItemView = this.children.find(function(childView){
+              if (childView.model.id == roll.id) {
+                return true;
+              }
+          }).value();
+          if (activeRollItemView) {
+            this._scrollTo(activeRollItemView.el);
           }
         }
-      });
-      if (activeRollItemView) {
-        this._scrollTo(activeRollItemView.el);
       }
       guideModel.set('tryAutoScroll', false);
     }
   },
 
   _onContentChanged : function(guidePresentationModel, content){
-    this._filterContent(content);
+    var filterOnlyStates = libs.shelbyGT.GuidePresentation.content.rolls.filterOnlyStates;
+    //only do something if we can reach our desired state by filtering alone
+    //otherwise, the guide presentation selector view will cause a rerouting
+    //to display a different set of rolls in response to this same event
+    if (_(filterOnlyStates).include(content) &&
+        _(filterOnlyStates).include(guidePresentationModel.previous('content'))) {
+      this._filterContent(content);
+    }
   },
 
   _filterContent : function(guidePresentationContent){
@@ -57,9 +66,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           var isMyPublicRoll = model.get('public') && !model.get('collaborative') && creator_id && creator_id == shelby.models.user.id;
           return isNotPersonRoll || isMyPublicRoll;
         });
-        break;
-      default:
-        this.updateFilter(null);
         break;
     }
   },

@@ -29,7 +29,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
 
-    shelby.collections.rollFollowings = new libs.shelbyGT.RollFollowingsCollection();
+    shelby.collections.rollFollowings = new libs.shelbyGT.RollsCollection();
+    shelby.collections.browseRolls = new libs.shelbyGT.RollsCollection();
 
     var self = this;
       shelby.models.user.fetch({

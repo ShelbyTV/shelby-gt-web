@@ -7,7 +7,8 @@ libs.shelbyGT.GuidePresentation = {
     rolls : {
       people:'people',
       myRolls:'myRolls',
-      browse:'browse'
+      browse:'browse',
+      filterOnlyStates:['people','myRolls']
     }
   }
 };

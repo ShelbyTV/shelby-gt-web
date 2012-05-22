@@ -78,6 +78,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   // delay before displaying education view
   _educationTimeoutMap : {
     'rollList' : 1000,
+    'browseRollList' : 1000,
     'dashboard' : 2000,
     'standardRoll' : 2000,
     'watchLaterRoll' : 1000
