@@ -90,9 +90,10 @@ $shelby-gray  : #343434;
 	@include border-radius($button-radius);
 	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
 	@include buttonfont;
-		@include text-shadow(0px -1px 0px #333);
+	@include text-shadow(0px -1px 0px #333);
 	border: 1px solid adjust-lightness($primer-color,-20%);
 	color: #efefef;
+
 	@if $button-back != back {
 	
 		@if $button-size == small {
@@ -103,12 +104,18 @@ $shelby-gray  : #343434;
 
 	} @else {
 
+		i {
+			font-style: normal;
+			position: relative;
+			z-index: 1;
+		}
+
 		padding: 6px 13px 6px 8px;
 
 		&:after {
 			background-color: $primer-color;
 			@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
-			@include border-radius(1px 13px 0 4px);
+			@include border-radius(1px 0 0 4px);
 			@include box-shadow(inset 1px 0 0 0 adjust-lightness($primer-color,25%));
 			@include rotate($default-rotate);
 
