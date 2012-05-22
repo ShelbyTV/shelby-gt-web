@@ -138,34 +138,34 @@
   left: -94px;
   width: 174px;
 }
-/* line 130, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 132, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 133, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 134, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   background: #0f8db8;
   text-decoration: none;
 }
 
-/* line 142, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 141, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 144, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 147, ../../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   background: #549738;
 }
 
-/* line 151, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 152, ../../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 158, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 159, ../../../app/stylesheets/partials/guide-header.scss */
 .you span {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -179,7 +179,7 @@
   margin-right: 5px;
   width: 24px;
 }
-/* line 168, ../../../app/stylesheets/partials/guide-header.scss */
+/* line 169, ../../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }

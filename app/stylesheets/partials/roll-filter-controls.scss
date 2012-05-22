@@ -123,27 +123,27 @@
 	top: 0;
 }
 
-.xroll-delete{
-	@include border-radius($radius);
-	@include background(
-		url('../images/assets/noise.png'),
-		$softShelbyRed
-	);
-	@include box-shadow(inset 0px 1px 1px 0px #888);
-	@include buttonfont;
-	font-weight: 600;
-	color: #EFEFEF;
-	background-color: $softShelbyRed;	
-	border:1px solid $softShelbyRedDeboss;
-	height:26px;
-	padding:$defaultMargin/2;
-	position:absolute;
-	top:$defaultMargin;
-	right: $defaultMargin+5;
-	float: right;
-	width: 62px;
-	display: none;
-}
+//.xroll-delete{
+//	@include border-radius($radius);
+//	@include background(
+//		url('../images/assets/noise.png'),
+//		$softShelbyRed
+//	);
+//	@include box-shadow(inset 0px 1px 1px 0px #888);
+//	@include buttonfont;
+//	font-weight: 600;
+//	color: #EFEFEF;
+//	background-color: $softShelbyRed;	
+//	border:1px solid $softShelbyRedDeboss;
+//	height:26px;
+//	padding:$defaultMargin/2;
+//	position:absolute;
+//	top:$defaultMargin;
+//	right: $defaultMargin+5;
+//	float: right;
+//	width: 62px;
+//	display: none;
+//}
 
 .rolls-list-nav {
 	@extend .notype;
@@ -180,28 +180,28 @@
 }
 
 
-.xroll-back {
-	background-color: $flatShelbyDarkGray;
-	@include background(
-		url('../images/assets/navarrow_left.svg') no-repeat center center
-		$flatShelbyDarkGray
-	);
-	@include backandforth;
-	@include border-radius($radius 0 0 $radius);
-	border: 1px solid #222;
-	height: 26px;
-	margin-right: -1px;
-	text-align: left;
-}
-.xroll-next {
-	background-color: $flatShelbyDarkGray;
-	@include background(
-		url('../images/assets/navarrow_right.svg') no-repeat center center
-		$flatShelbyDarkGray
-	);
-	@include backandforth;
-	@include border-radius(0 $radius $radius 0);
-	border: 1px solid #222;
-	height: 26px;
-	text-align: right;
-}
+//.xroll-back {
+//	background-color: $flatShelbyDarkGray;
+//	@include background(
+//		url('../images/assets/navarrow_left.svg') no-repeat center center
+//		$flatShelbyDarkGray
+//	);
+//	@include backandforth;
+//	@include border-radius($radius 0 0 $radius);
+//	border: 1px solid #222;
+//	height: 26px;
+//	margin-right: -1px;
+//	text-align: left;
+//}
+//.xroll-next {
+//	background-color: $flatShelbyDarkGray;
+//	@include background(
+//		url('../images/assets/navarrow_right.svg') no-repeat center center
+//		$flatShelbyDarkGray
+//	);
+//	@include backandforth;
+//	@include border-radius(0 $radius $radius 0);
+//	border: 1px solid #222;
+//	height: 26px;
+//	text-align: right;
+//}

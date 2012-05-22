@@ -9,8 +9,8 @@
  */
 
 //variables must be announced here.
-$font-size : 13px;
-$size      : "62.5%" !default;
+$font-size   : 13px;
+$size        : "62.5%" !default;
 $button-size : large !default;
 $button-back : normal !default;
 
@@ -20,6 +20,7 @@ $radiusHeader : $radius - 2 $radius - 2 0 0;
 $radiusFooter : 0 0 $radius - 2 $radius - 2;
 $button-radius: 5px;
 $input-radius : 3px;
+
 //spacing
 $defaultMargin  : 10px;
 $default-margin : 10px;
@@ -39,10 +40,11 @@ $video-card-color     : #404040;
 $video-card-thumbnail : #494949;
 $rolls-bg-color 			: #585858;
 
+//text-level colors
 $text: #dcddde;
 $headerNavLink: #d8d8d8;
-$settingsBG: #2b2a2a;
 
+$settingsBG: #2b2a2a;
 $rollsBG: #585858;
 
 $primer-color: #343434 !default;
@@ -51,6 +53,22 @@ $shelby-blue  : #0071a3;
 $shelby-green : #428e3a;
 $shelby-red   : #cc1235;
 $shelby-gray  : #343434;
+
+@mixin x-comment-overlay-buttons {
+	@extend .notype;
+	@include box-shadow(inset 0px 0px 1px 0px #333);
+
+	border: none;
+	height: inherit;
+	position: absolute;
+	top: 0;
+	width: 24px;
+
+	&.message-terminus {
+		background-image:none;
+		cursor:default;
+	}	
+}
 
 @mixin x-tab-primer($primer-color){
 	background-color: $primer-color;
@@ -132,6 +150,22 @@ $shelby-gray  : #343434;
 //	}
 //}
 
+$roundies-type : normal !default;
+
+@mixin roundies($roundies-type){
+	@if $roundies-type == normal {
+		@include border-radius($radius);
+	} @else if $roundies-type == input {
+		@include border-radius($radius - 2);
+	}
+}
+
+
+
+
+
+
+//ABSORBING BELOW INTO REWLY REFACTORED SASS ABOVE
 
 
 
@@ -249,11 +283,6 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
   @include background-image($darkLinearGradient);
 }
 
-@mixin roundies{
-	@include border-radius($radius);
-
-}
-
 @mixin basefont{
 	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
@@ -266,9 +295,6 @@ $darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
-@mixin fontcolor {
-	color: $text;
-}
 @mixin fontcolorLight{
 	color: #efefef;
 }

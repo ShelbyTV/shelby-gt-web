@@ -80,21 +80,11 @@
 }
 
 .xrolling-main-done{
-//	@extend .rolling-main-back;
-//	@include button-primer($flatShelbyBlue);
-
 	@extend .rolls-add;
-
 	background-color: $flatShelbyBlue;
-	@include background(
-		$softShelbyBlue
-	);
-	@include box-shadow(
-		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
-	);
+	@include background($softShelbyBlue);
+	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%));
 	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
-//	display:none;
-//	margin: $defaultMargin - 2 $defaultMargin;
 	margin-top: $defaultMargin;
 //	position: absolute;
 //	right: 0;
@@ -122,8 +112,6 @@
 
 	float:right;
 	padding-left:0;
-//	padding-top:1px;
-//	padding-right:8px;
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
@@ -141,14 +129,9 @@
 	@include transition-property(all);
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
-			//border-radii bug, experiment
-			@include border-radius($radius);
+	@include roundies;
 
-	@include background(
-		url('../images/assets/noise.png') 
-		#494949
-	);
-	
+	background-color: #494949;	
 	left:0;
 	position:absolute;
 	margin-left:100%;

@@ -104,7 +104,7 @@
   position: absolute;
   top: 0;
 }
-/* line 90, ../../../app/stylesheets/_base.scss */
+/* line 108, ../../../app/stylesheets/_base.scss */
 .rolls-back:after {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -169,39 +169,6 @@
   position: absolute;
   right: 0;
   top: 0;
-}
-
-/* line 126, ../../../app/stylesheets/partials/roll-filter-controls.scss */
-.xroll-delete {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #ba2046, #9e1632);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #ba2046, #9e1632);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #ba2046, #9e1632);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #ba2046, #9e1632);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #ba2046, #9e1632);
-  -moz-box-shadow: inset 0px 1px 1px 0px #888888;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #888888;
-  -o-box-shadow: inset 0px 1px 1px 0px #888888;
-  box-shadow: inset 0px 1px 1px 0px #888888;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  font-weight: 600;
-  color: #EFEFEF;
-  background-color: linear-gradient(top, #ba2046, #9e1632);
-  border: 1px solid #711024;
-  height: 26px;
-  padding: 5px;
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  float: right;
-  width: 62px;
-  display: none;
 }
 
 /* line 148, ../../../app/stylesheets/partials/roll-filter-controls.scss */
@@ -274,43 +241,4 @@
   border-radius: 0 5px 5px 0;
   text-align: right;
   width: 50%;
-}
-
-/* line 183, ../../../app/stylesheets/partials/roll-filter-controls.scss */
-.xroll-back {
-  background-color: #303030;
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center #303030;
-  float: left;
-  height: 20px;
-  padding: 5px 10px;
-  width: 50%;
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -khtml-border-radius: 5px 0 0 5px;
-  border-radius: 5px 0 0 5px;
-  border: 1px solid #222;
-  height: 26px;
-  margin-right: -1px;
-  text-align: left;
-}
-
-/* line 196, ../../../app/stylesheets/partials/roll-filter-controls.scss */
-.xroll-next {
-  background-color: #303030;
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center #303030;
-  float: left;
-  height: 20px;
-  padding: 5px 10px;
-  width: 50%;
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
-  border-radius: 0 5px 5px 0;
-  border: 1px solid #222;
-  height: 26px;
-  text-align: right;
 }

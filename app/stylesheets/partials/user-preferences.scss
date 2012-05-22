@@ -18,7 +18,7 @@
 	}
 
 	input{
-		@include border-radius($radius);
+		@include roundies;
 		@include inputfont;
 		border:1px solid #222;
 	}	
@@ -160,8 +160,8 @@
 		@include background(
 			url('../images/assets/rolls_twitter.svg') no-repeat center center #00a2d1
 		);
-		@include border-radius($radius);
 		@include box-shadow(-1px 0px 5px -1px #222);
+		@include roundies;
 
 		background-size:76%;
 		border:1px solid #222;
