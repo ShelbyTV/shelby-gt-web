@@ -1,11 +1,7 @@
 libs.shelbyGT.RollFollowingsCollection = Backbone.Collection.extend({
 
   parse : function(response) {
-    if (response.result) {
-        return response.result.roll_followings || response.result;
-    } else {
-      return [];
-    }
+    return (response.result || []);
   },
 
   url : function(){
