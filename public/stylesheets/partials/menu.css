@@ -1,19 +1,13 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 2 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'
-        from line 2 of /shelbytv/app/stylesheets/partials/menu.scss
+        on line 2 of /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss, in `background'
+        from line 2 of /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss
 
-1: .video-guide {
-2: 	@include background($softLinearGradient);
-3: 
-4: 	margin: 0;
-5: 	padding: 0; 
-6: 	position: relative;
-7: 
+1: /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/menu.scss:2:in `background'
-/shelbytv/app/stylesheets/partials/menu.scss:2
+/shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss:2:in `background'
+/shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss:2
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -40,54 +34,30 @@ Backtrace:
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4119723056610884488__call__4211590130088194820__callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:246:in `render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:136:in `block (2 levels) in compile'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:122:in `timed'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:135:in `block in compile'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/logger.rb:45:in `red'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:134:in `compile'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:114:in `compile_if_required'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:99:in `block (2 levels) in run'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:97:in `each'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:97:in `block in run'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:122:in `timed'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/compiler.rb:96:in `run'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/commands/update_project.rb:37:in `perform'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/commands/base.rb:18:in `execute'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/commands/project_base.rb:19:in `execute'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/bin/compass:25:in `block in <top (required)>'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/bin/compass:39:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/bin/compass:39:in `<top (required)>'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/bin/compass:19:in `load'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/bin/compass:19:in `<main>'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 2 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'\A         from line 2 of /shelbytv/app/stylesheets/partials/menu.scss\A \A 1: .video-guide {\A 2: 	@include background($softLinearGradient);\A 3: \A 4: 	margin: 0;\A 5: 	padding: 0; \A 6: 	position: relative;\A 7: "; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 2 of /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss, in `background'\A         from line 2 of /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss\A \A 1: /shelbytv/shelby-gt-web/app/stylesheets/partials/menu.scss"; }
