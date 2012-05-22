@@ -28,15 +28,27 @@
 //variables must be announced here.
 $font-size   : 13px;
 $size        : "62.5%" !default;
-$button-size : large !default;
-$button-back : normal !default;
+$button-size : large !default; 		//see @mixin x-button-primer()
+$button-back : normal !default; 	//see @mixin x-button-primer()
 
 //radius, for border-radius, etc.
-$radius       : 5px;
-$radiusHeader : $radius - 2 $radius - 2 0 0;
-$radiusFooter : 0 0 $radius - 2 $radius - 2;
-$button-radius: 5px;
-$input-radius : 3px;
+$radius        : 5px;
+$button-radius : 5px;
+$input-radius  : 3px;
+$roundies-type : normal !default;  //see @mixin roundies()
+
+@mixin roundies($roundies-type){
+	@if $roundies-type == normal {
+		@include border-radius($radius);	
+	} 
+	@else if $roundies-type == input {
+		@include border-radius($radius - 2);
+	} 
+	@else if $roundies-type == header {
+		@include border-radius($radius $radius 0 0);
+	}
+}
+
 
 //spacing
 $defaultMargin  : 10px;
@@ -51,6 +63,9 @@ $outset  : #555;
 //border styles
 $frame-stroke : 1px solid $outline;
 
+//text-level colors
+$text: #dcddde;
+$headerNavLink: #d8d8d8;
 
 //background colors
 $base-bg-color           : #494949;
@@ -62,19 +77,24 @@ $video-card-thumbnail    : #494949;
 $rolling-header-bg-color : #555;
 $rolls-bg-color 			   : #585858;
 
-//text-level colors
-$text: #dcddde;
-$headerNavLink: #d8d8d8;
-
 $settingsBG: #2b2a2a;
 $rollsBG: #585858;
 
-$primer-color: #343434 !default;
+//special colors
+$primer-color     : #343434 !default;
+$shelby-blue      : #0071a3;
+$shelby-gray      : #343434;
+$shelby-green     : #428e3a;
+$shelby-purple    : #693a7b;
+$shelby-red       : #cc1235;
+$shelby-yellow    : #d5cd39;
 
-$shelby-blue  : #0071a3;
-$shelby-green : #428e3a;
-$shelby-red   : #cc1235;
-$shelby-gray  : #343434;
+$education-yellow : #f9f15c;
+
+$facebook-blue    : #013e80;
+$twitter-blue     : #00a2d1;
+$tumblr-blue      : #2f445b;
+
 
 @mixin x-comment-overlay-buttons {
 	@extend .notype;
@@ -117,7 +137,8 @@ $shelby-gray  : #343434;
 	color: #efefef;
 
 	@if $button-back != back {
-	
+		
+		//for non-back buttons, there are two sizes:	
 		@if $button-size == small {
 			padding: 4px 8px;
 		} @else {
@@ -126,6 +147,8 @@ $shelby-gray  : #343434;
 
 	} @else {
 
+		//the button's text should be inside this <i> element
+		//it fixes the z-index so that the :after element doesn't hide the text
 		i {
 			font-style: normal;
 			position: relative;
@@ -150,58 +173,11 @@ $shelby-gray  : #343434;
 			position: absolute;
 			top: 3.75px;
 			width: 18px;
-	//		z-index:1000;
 		}		
 	}
 }
 
-//@mixin x-back-button-primer($primer-color){
-//	@include x-button-primer($primer-color);
-
-
-//	&:after {
-//		background-color: $primer-color;
-//		@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
-//		@include border-radius(1px 13px 0 4px);
-//		@include box-shadow(inset 1px 0 0 0 adjust-lightness($primer-color,25%));
-//		@include rotate($default-rotate);
-
-//		border-bottom: 1px solid adjust-lightness($primer-color,-20%);
-//		border-left: 1px solid adjust-lightness($primer-color,-20%);
-//		content: "\0020";
-//		display: block;
-//		height: 18px;
-//		left: -8px;
-//		position: absolute;
-//		top: 3.75px;
-//		width: 18px;
-////		z-index:1000;
-//	}
-//}
-
-$roundies-type : normal !default;
-
-@mixin roundies($roundies-type){
-	@if $roundies-type == normal {
-		@include border-radius($radius);
-	} @else if $roundies-type == input {
-		@include border-radius($radius - 2);
-	} @else if $roundies-type == header {
-		@include border-radius($radius $radius 0 0);
-	}
-}
-
-
-
-
-
-
 //ABSORBING BELOW INTO REWLY REFACTORED SASS ABOVE
-
-
-
-
-
 
 $myBlue: #6666FF;
 $myGreen: #ddFFdd;
@@ -296,42 +272,5 @@ $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
 
 $flatNetworksUnselected: #474747;
 $softNetworksUnselected: linear-gradient(top, #646464, $flatNetworksUnselected);
-
-//@mixin softgradient {
-//	background-color: $gradientDark;
-//	@include background($softLinearGradient);
-//}
-
-////dark gradient styles
-//$darkGradientTop: #141414;
-//$darkGradientBot: #0e0e0e;
-
-//$darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
-
-
-//button primer, for consistency's sake
-
-$color: red !default;
-
-@mixin form-submit-button($color){
-	@include border-radius($radius);
-	@include buttonfont;
-	background: $color;
-	@include background(
-		linear-gradient(top, adjust-lightness($color, 15%), $color)
-	);
-	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($color, 20%));
-
-	border:1px solid adjust-lightness($color, -15%);
-	color:#efefef;
-	display:block;
-	height:34px;
-	float:inherit;
-	line-height:2.5;
-	margin:$defaultMargin 0;
-	padding:0 10%;
-	text-shadow:0px 1px 2px #222;
-	width:81px;
-}
 
 @import "compass/css3";

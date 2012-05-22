@@ -81,13 +81,13 @@
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 89, ../../../app/stylesheets/_base.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 54, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 55, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -107,7 +107,7 @@
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 89, ../../../app/stylesheets/_base.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

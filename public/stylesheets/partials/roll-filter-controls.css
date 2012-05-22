@@ -102,13 +102,13 @@
   position: absolute;
   top: 0;
 }
-/* line 129, ../../../app/stylesheets/_base.scss */
+/* line 152, ../../../app/stylesheets/_base.scss */
 .rolls-back i {
   font-style: normal;
   position: relative;
   z-index: 1;
 }
-/* line 137, ../../../app/stylesheets/_base.scss */
+/* line 160, ../../../app/stylesheets/_base.scss */
 .rolls-back:after {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
