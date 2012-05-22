@@ -4,8 +4,24 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   className : 'list',
 
+  /*
+    The source data for the list view can come from either a standard Backbone collection
+    or a collection (created by a Relation) that is an attribute of a Relational model
+
+    Specify a standard backbone collection by creating the list view as follows:
+
+    listView = new ListView({collection:someBackboneCollection});
+
+    Specify a collection that is an attribute of a Relational model as follows:
+
+    listView = new ListView({model:someRelationalModel, collectionAttribute:'someAttributeName'});
+
+    NOTE: If both collection and collectionAttribute are specified, collection will take precedence.
+  */
+
   options : {
     simulateAddTrue : true,
+    collection : null,
     collectionAttribute : 'listCollection',
     listItemView : 'libs.shelbyGT.ListItemView',
     insert : {
@@ -15,20 +31,32 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    this.model.bind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
-    this.model.bind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
+    if (this.options.collection) {
+      this.options.collection.bind('add', this.sourceAddOne, this);
+      this.options.collection.bind('remove', this.sourceRemoveOne, this);
+      this.options.collection.bind('reset', this.sourceReset, this);
+    } else {
+      this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+      this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+      if (this.options.simulateAddTrue) {
+        this._simulatedMasterCollection = new Backbone.Collection();
+      }
+    }
     this._displayCollection = new Backbone.Collection();
     this._displayCollection.bind('add', this.internalAddOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);
-    if (this.options.simulateAddTrue) {
-      this._simulatedMasterCollection = new Backbone.Collection();
-    }
     this._initializeEducation();
   },
 
   _cleanup : function(){
-    this.model.unbind('add:'+this.options.collectionAttribute, this.relationalAddOne, this);
-    this.model.unbind('remove:'+this.options.collectionAttribute, this.relationalRemoveOne, this);
+    if (this.options.collection) {
+      this.options.collection.unbind('add', this.sourceAddOne, this);
+      this.options.collection.unbind('remove', this.sourceRemoveOne, this);
+      this.options.collection.unbind('reset', this.sourceReset, this);
+    } else {
+      this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+      this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+    }
     this._displayCollection.unbind('add', this.internalAddOne, this);
     this._displayCollection.unbind('reset', this.internalReset, this);
   },
@@ -36,7 +64,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _initializeEducation : function(){
     var self = this;
     if (!this._userHasBeenEducated()){
-      var self = this;
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
@@ -48,7 +75,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     return shelby.models.user.get('app_progress').get(shelby.models.guide.get('displayState')+'Educated');
   },
 
-  // delay before displaying education view 
+  // delay before displaying education view
   _educationTimeoutMap : {
     'rollList' : 1000,
     'dashboard' : 2000,
@@ -66,23 +93,29 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     console.log('_displayListEducationView', arguments);
   },
 
-  relationalAddOne : function(item){
+  sourceAddOne : function(item){
     if (!this._filter || this._filter(item)) {
       this._displayCollection.add(item);
     }
     // there's no way to effectively specify add:true for a Backbone Relational collection
     // we can simulate it by storing all of the contents the relational collection ever loaded,
     // and using this as a surrogate for the relational collection itself when re-filtering
-    if (this.options.simulateAddTrue) {
+    if (!this.options.collection && this.options.simulateAddTrue) {
       this._simulatedMasterCollection.add(item);
     }
   },
 
-  relationalRemoveOne : function(item){
+  sourceRemoveOne : function(item){
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
     }
+  },
+
+  sourceReset : function(sourceCollection){
+    //only happens when our source collection is a standard backbone collection
+    //and not a collection inside a Relational Model
+    this._displayCollection.reset(sourceCollection.models);
   },
 
   internalAddOne : function(item){
@@ -120,16 +153,21 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   updateFilter : function(filterFunction) {
     this._filter = filterFunction;
     if (this._displayCollection) {
-      // if we're re-filtering we need to start with the full contents of the underlying collection
-      // In Backbone Relational, these get overwritten with each progressive-loading fetch, so we
-      // have the option of keeping a full copy of the collection within this list view as our "master copy"
-      // to revert to before changing the filter
-      var masterCollection = this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
+      var sourceCollection;
+      if (this.options.collection) {
+        sourceCollection = this.options.collection;
+      } else {
+        // if we're re-filtering we need to start with the full contents of the source collection
+        // In Backbone Relational, these get overwritten with each progressive-loading fetch, so we
+        // have the option of keeping a full copy of the collection within this list view as our "master copy"
+        // to revert to before changing the filter
+        sourceCollection = this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
+      }
       var newContents;
       if (filterFunction) {
-        newContents = masterCollection.filter(filterFunction);
+        newContents = sourceCollection.filter(filterFunction);
       } else {
-        newContents = masterCollection.models;
+        newContents = sourceCollection.models;
       }
       this._displayCollection.reset(newContents);
     }
