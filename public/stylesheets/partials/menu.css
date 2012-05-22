@@ -1,22 +1,19 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 5 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'
-        from line 5 of /shelbytv/app/stylesheets/partials/menu.scss
+        on line 2 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'
+        from line 2 of /shelbytv/app/stylesheets/partials/menu.scss
 
 1: .video-guide {
-2: 	@include background(
-3: 		url('../images/assets/noise.png'),
-4: 		$softLinearGradient
-5: 	);
-6: 	@include box-shadow(0px 1px 3px 1px #222);
+2: 	@include background($softLinearGradient);
+3: 
+4: 	margin: 0;
+5: 	padding: 0; 
+6: 	position: relative;
 7: 
-8: 	margin: 0;
-9: 	padding: 0; 
-10: 	position: relative;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/menu.scss:5:in `background'
-/shelbytv/app/stylesheets/partials/menu.scss:5
+/shelbytv/app/stylesheets/partials/menu.scss:2:in `background'
+/shelbytv/app/stylesheets/partials/menu.scss:2
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -63,7 +60,7 @@ Backtrace:
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__826466101110570540__call__1798323099162748720__callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__429327950209009771__call__1605683385884652165__callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
@@ -93,4 +90,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/menu.scss\A \A 1: .video-guide {\A 2: 	@include background(\A 3: 		url('../images/assets/noise.png'),\A 4: 		$softLinearGradient\A 5: 	);\A 6: 	@include box-shadow(0px 1px 3px 1px #222);\A 7: \A 8: 	margin: 0;\A 9: 	padding: 0; \A 10: 	position: relative;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 2 of /shelbytv/app/stylesheets/partials/menu.scss, in `background'\A         from line 2 of /shelbytv/app/stylesheets/partials/menu.scss\A \A 1: .video-guide {\A 2: 	@include background($softLinearGradient);\A 3: \A 4: 	margin: 0;\A 5: 	padding: 0; \A 6: 	position: relative;\A 7: "; }

@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .you-preferences{
 //		background:red;
@@ -79,10 +75,15 @@
 	float:right;
 	margin-top: $defaultMargin/2;
 
-	button{
-//		@include form-button-small;
-		@include button-primer;
+	button {
+		@include x-button-primer($shelby-gray);
+
+		margin-left: 6px;
 	}
+
+//	button{
+//		@include button-primer;
+//	}
 	
 	.you-profile-cancel{
 //		width:auto;
@@ -112,7 +113,13 @@
 //		font-weight:300;
 //		text-decoration:underline;
 
-		&.connected-network{
+
+		&.connected-network {
+			@include x-button-primer($shelby-green);
+			float: right;
+		}
+
+		&.xconnected-network{
 			@include form-submit-button($flatShelbyGreen);
 //			@include background(
 //				$softShelbyGreen

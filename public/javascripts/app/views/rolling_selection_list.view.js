@@ -27,7 +27,7 @@
       ListView.prototype.initialize.call(this);
     },
 
-    filter : function(item) {
+    _filter : function(item) {
       // the user can only post to certain rolls
       if (item.get('creator_id') == shelby.models.user.id) {
         return true;
@@ -58,6 +58,11 @@
 
     _rollToNewPrivateRoll : function(){
       this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'private'});
+    },
+
+    //override of ListView._renderEducation
+    _renderEducation : function(){
+      // do nothing, we don't want education in this particular list view
     }
 
   });

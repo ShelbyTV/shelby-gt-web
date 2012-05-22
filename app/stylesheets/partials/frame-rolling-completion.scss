@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .frame-rolling-completion{
 	@extend .rolling-main;
@@ -55,20 +51,18 @@
 }
 
 .frame-rolling-completion-header{
-	
+	@include border-radius($radiusHeader);
+	background-color: #666;
 	border-bottom: 1px solid $outline;
 	height: 40px;
 
 	h1{
-		@include background(
-			url('../images/assets/noise.png')
-			#666
-		);
 		border-bottom: 1px solid $rolls-inset;
-		@include border-radius($radius $radius 0 0);
 		font-size: 16px;
 		height: 40px;
 		line-height: 2.4;
+		margin: 0 auto;
+		max-width: 145px;
 //		padding-left: $defaultMargin;
 		padding-right: $defaultMargin;
 		overflow: hidden;
@@ -96,7 +90,7 @@
 			}
 		}
    &.roll-type-social {
-      padding-left: $defaultMargin;
+      padding: 0;
     }
 	}
 }

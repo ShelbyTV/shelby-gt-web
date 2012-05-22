@@ -10,8 +10,7 @@
       'streamEducated' : false,
       'rollNav' : false,
       'rollListNav' : false,
-      'streamNav' : false,
-      'framesRolled' : 0
+      'streamNav' : false
     },
 
     initialize : function(){

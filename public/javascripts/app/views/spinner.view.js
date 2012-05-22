@@ -14,6 +14,8 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
 
   _replacement : null,
 
+  _isSpinning : true,
+
   initialize : function() {
     if (this.options.replacement) {
       this._replacement = this.$el.html();
@@ -21,18 +23,24 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
   },
 
   show : function(){
-    if (this.options.replacement) {
-      this._replacement = this.$el.html();
+    if (!this._isSpinning) {
+      if (this.options.replacement) {
+        this._replacement = this.$el.html();
+      }
+      this.$el.html('<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />');
     }
-    this.$el.html('<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />');
+    this._isSpinning = true;
   },
 
   hide : function(){
-    this.$('.spinner').remove();
-    if (this.options.replacement) {
-      // if we have something to replace the spinner with, show it
-      this.$el.html(this._replacement);
+    if (this._isSpinning) {
+      this.$('.spinner').remove();
+      if (this.options.replacement) {
+        // if we have something to replace the spinner with, show it
+        this.$el.html(this._replacement);
+      }
     }
+    this._isSpinning = false;
   },
 
   render : function(){

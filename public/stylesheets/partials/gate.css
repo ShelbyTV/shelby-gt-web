@@ -6,21 +6,21 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/gate.scss */
+/* line 3, ../../../app/stylesheets/partials/gate.scss */
 .no-access {
   margin-top: 30px;
 }
 
-/* line 12, ../../../app/stylesheets/partials/gate.scss */
+/* line 8, ../../../app/stylesheets/partials/gate.scss */
 .private-beta-access h2 {
   margin: 10px 0;
 }
-/* line 15, ../../../app/stylesheets/partials/gate.scss */
+/* line 11, ../../../app/stylesheets/partials/gate.scss */
 .private-beta-access p.login {
   width: 205px;
 }
 
-/* line 20, ../../../app/stylesheets/partials/gate.scss */
+/* line 16, ../../../app/stylesheets/partials/gate.scss */
 .email-gate {
   background-color: #101010;
   background: url("../images/email-gate/bg.png") no-repeat center center #101010;
@@ -30,36 +30,36 @@
   background-size: cover;
 }
 
-/* line 28, ../../../app/stylesheets/partials/gate.scss */
+/* line 24, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
   margin: 0 auto;
   width: 480px;
 }
 
-/* line 33, ../../../app/stylesheets/partials/gate.scss */
+/* line 29, ../../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
   width: 1020px;
 }
 
-/* line 38, ../../../app/stylesheets/partials/gate.scss */
+/* line 34, ../../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper {
   float: left;
   width: 500px;
 }
 
-/* line 42, ../../../app/stylesheets/partials/gate.scss */
+/* line 38, ../../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
 }
 
-/* line 45, ../../../app/stylesheets/partials/gate.scss */
+/* line 41, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 54, ../../../app/stylesheets/partials/gate.scss */
+/* line 50, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -69,7 +69,7 @@
   width: 50%;
 }
 
-/* line 68, ../../../app/stylesheets/partials/gate.scss */
+/* line 64, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -78,7 +78,7 @@
   width: 33%;
 }
 
-/* line 77, ../../../app/stylesheets/partials/gate.scss */
+/* line 73, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -87,7 +87,7 @@
   width: 205px;
 }
 
-/* line 85, ../../../app/stylesheets/partials/gate.scss */
+/* line 81, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
@@ -117,7 +117,7 @@
   padding: 7px 19px;
 }
 
-/* line 104, ../../../app/stylesheets/partials/gate.scss */
+/* line 100, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 5px;
@@ -135,7 +135,7 @@
   padding: 10px;
   position: relative;
 }
-/* line 117, ../../../app/stylesheets/partials/gate.scss */
+/* line 113, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -156,7 +156,7 @@
   width: 10px;
 }
 
-/* line 133, ../../../app/stylesheets/partials/gate.scss */
+/* line 129, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -164,16 +164,16 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 142, ../../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 145, ../../../app/stylesheets/partials/gate.scss */
+/* line 141, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 150, ../../../app/stylesheets/partials/gate.scss */
+/* line 146, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -182,27 +182,27 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 159, ../../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 162, ../../../app/stylesheets/partials/gate.scss */
+/* line 158, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 167, ../../../app/stylesheets/partials/gate.scss */
+/* line 163, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 171, ../../../app/stylesheets/partials/gate.scss */
+/* line 167, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 176, ../../../app/stylesheets/partials/gate.scss */
+/* line 172, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -210,7 +210,7 @@
   width: 100%;
 }
 
-/* line 183, ../../../app/stylesheets/partials/gate.scss */
+/* line 179, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -219,7 +219,7 @@
   text-align: right;
 }
 
-/* line 191, ../../../app/stylesheets/partials/gate.scss */
+/* line 187, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -236,7 +236,7 @@
   width: 50%;
 }
 
-/* line 208, ../../../app/stylesheets/partials/gate.scss */
+/* line 204, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
@@ -266,19 +266,19 @@
   width: 17%;
 }
 
-/* line 228, ../../../app/stylesheets/partials/gate.scss */
+/* line 224, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 233, ../../../app/stylesheets/partials/gate.scss */
+/* line 229, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 239, ../../../app/stylesheets/partials/gate.scss */
+/* line 235, ../../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
