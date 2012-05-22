@@ -8,6 +8,23 @@
  * @import "compass/reset";
  */
 
+@mixin darkgradient {
+	background: $darkGradientBot;
+  @include background-image($darkLinearGradient);
+}
+
+@mixin basefont{
+	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+@mixin inputfont{
+	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+@mixin buttonfont{
+	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
 //variables must be announced here.
 $font-size   : 13px;
 $size        : "62.5%" !default;
@@ -31,14 +48,19 @@ $outline : #333;
 $inset   : #333;
 $outset  : #555;
 
+//border styles
+$frame-stroke : 1px solid $outline;
+
+
 //background colors
-$base-bg-color        : #494949;
-$header-bg-color      : #2c2c2c;
-$header-outline       : #202020;
-$filter-bg-color			: #585858;
-$video-card-color     : #404040;
-$video-card-thumbnail : #494949;
-$rolls-bg-color 			: #585858;
+$base-bg-color           : #494949;
+$header-bg-color         : #2c2c2c;
+$header-outline          : #202020;
+$filter-bg-color			   : #585858;
+$video-card-color        : #404040;
+$video-card-thumbnail    : #494949;
+$rolling-header-bg-color : #555;
+$rolls-bg-color 			   : #585858;
 
 //text-level colors
 $text: #dcddde;
@@ -164,6 +186,8 @@ $roundies-type : normal !default;
 		@include border-radius($radius);
 	} @else if $roundies-type == input {
 		@include border-radius($radius - 2);
+	} @else if $roundies-type == header {
+		@include border-radius($radius $radius 0 0);
 	}
 }
 
@@ -195,7 +219,6 @@ $rolls-outset : #555;
 $save : #2291c2;
 
 //border styles
-$articleStroke : 1px solid $outline;
 $menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
@@ -274,95 +297,19 @@ $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
 $flatNetworksUnselected: #474747;
 $softNetworksUnselected: linear-gradient(top, #646464, $flatNetworksUnselected);
 
-@mixin softgradient {
-	background-color: $gradientDark;
-	@include background($softLinearGradient);
-}
+//@mixin softgradient {
+//	background-color: $gradientDark;
+//	@include background($softLinearGradient);
+//}
 
-//dark gradient styles
-$darkGradientTop: #141414;
-$darkGradientBot: #0e0e0e;
+////dark gradient styles
+//$darkGradientTop: #141414;
+//$darkGradientBot: #0e0e0e;
 
-$darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
-
-@mixin darkgradient {
-	background: $darkGradientBot;
-  @include background-image($darkLinearGradient);
-}
-
-@mixin basefont{
-	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin buttonfont{
-	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin fontcolorLight{
-	color: #efefef;
-}
+//$darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
 
 
 //button primer, for consistency's sake
-
-$top-color: #343434 !default;
-$color: #4a4a4a !default;
-
-@mixin button-primer($color){
-	background: $color;
-	@include background(linear-gradient(top, adjust-lightness($color,5%), $color));
-	@include border-radius($radius);
-	@include buttonfont;
-	@include box-shadow(inset -1px 0px 1px 0px #444);
-	
-//	border: 1px solid adjust-lightness($color,-20%);
-	border: 1px solid #222;
-	color: #efefef;
-	display: block;
-//	float:left;
-	font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-	font-size: $font-size;
-	font-weight: 300;
-//	height:23px;
-	line-height:1.5;
-	margin:3px;
-	padding:1px 8px;
-	text-shadow:0px 1px 2px #222;
-//	width:auto;
-}
-
-
-@mixin button-basics($top,$bottom,$noise){
-	@include border-radius($radius);
-	@include buttonfont;
-
-	border:1px solid #222;
-	color:#efefef;
-	display:block;
-}
-
-@mixin rolls-menu-button{
-	@include border-radius($radius);
-	@include buttonfont;
-	background:$flatShelbyGreen;
-	@include background(
-		$softShelbyGreen
-	);
-	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
-
-	border:1px solid adjust-lightness($flatShelbyGreen, -5%);
-	color:#efefef;
-	display:block;
-	line-height:2.5;
-	margin:0;
-	padding:0;
-	text-shadow:0px 1px 2px #222;
-	width:100%;
-}
 
 $color: red !default;
 
@@ -385,27 +332,6 @@ $color: red !default;
 	padding:0 10%;
 	text-shadow:0px 1px 2px #222;
 	width:81px;
-}
-
-@mixin form-button-small{
-	@include border-radius($radius);
-	@include buttonfont;
-	@include background(
-		$softShelbyGrayButton
-	);
-	@include box-shadow(inset -1px 0px 1px 0px #444);
-	
-	border:1px solid #222;
-	color:#efefef;
-	display:block;
-	float:left;
-	font-size:13px;
-	height:23px;
-	line-height:1.5;
-	margin:3px;
-	padding:0 5px;
-	text-shadow:0px 1px 2px #222;
-	width:auto;
 }
 
 @import "compass/css3";
