@@ -21,8 +21,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _initializeEducation : function(){
     var self = this;
-    if (!this._userHasBeenEducated() && this._isEducationDisplayState()){
-      var self = this;
+    if (shelby.userSignedIn() && !this._userHasBeenEducated() && this._isEducationDisplayState()){
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);

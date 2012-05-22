@@ -18,6 +18,7 @@ class HomeController < ApplicationController
         @video_embed = nil
         @permalink = nil
       end
+=begin
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(params[:path])
       roll_id = path_match[1]
       @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
@@ -25,6 +26,7 @@ class HomeController < ApplicationController
         @video_embed = @video_info['video']['embed_url']
         @permalink = Shelby::API.generate_route(@video_info['frame']['roll_id'], @video_info['frame']['id']) if @video_info
       end
+=end
     else
       @roll_info = nil
       @video_info = nil
@@ -40,6 +42,7 @@ class HomeController < ApplicationController
       when "reecepacheco.tv" then "4f900d56b415cc6614056681"
       when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
       else false
     end
     render 'isolated_roll' and return if @isolated_roll_id
