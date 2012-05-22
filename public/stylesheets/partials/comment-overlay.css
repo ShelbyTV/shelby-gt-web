@@ -43,17 +43,17 @@
   max-width: 500px;
   overflow-y: hidden;
 }
-/* line 29, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 28, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
-/* line 33, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-video-text p {
   max-height: 2.5em;
   overflow: hidden;
 }
 
-/* line 40, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 38, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   display: none;
   height: 67px;
@@ -61,7 +61,7 @@
   position: relative;
 }
 
-/* line 84, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 45, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -81,13 +81,13 @@
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 78, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 93, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 55, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -107,7 +107,7 @@
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 78, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

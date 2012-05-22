@@ -48,7 +48,7 @@
 /* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header,
 .rolling-main-footer {
-  background: url("../images/assets/noise.png") #555555;
+  background: #555555;
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -64,13 +64,13 @@
   width: 100%;
 }
 
-/* line 50, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 48, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header-title {
   line-height: 1.75;
   text-align: center;
 }
 
-/* line 59, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 57, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -100,43 +100,7 @@
   top: 0;
 }
 
-/* line 68, ../../../app/stylesheets/partials/frame-rolling.scss */
-.xrolling-main-back {
-  background: #4a4a4a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #575757), color-stop(100%, #4a4a4a));
-  background: -webkit-linear-gradient(top, #575757, #4a4a4a);
-  background: -moz-linear-gradient(top, #575757, #4a4a4a);
-  background: -o-linear-gradient(top, #575757, #4a4a4a);
-  background: -ms-linear-gradient(top, #575757, #4a4a4a);
-  background: linear-gradient(top, #575757, #4a4a4a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
-  -o-box-shadow: inset -1px 0px 1px 0px #444444;
-  box-shadow: inset -1px 0px 1px 0px #444444;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.5;
-  margin: 3px;
-  padding: 1px 8px;
-  text-shadow: 0px 1px 2px #222;
-  left: 0;
-  margin: 8px 10px;
-  position: absolute;
-  top: 0;
-}
-
-/* line 78, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 65, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -162,36 +126,12 @@
   padding: 6px 13px;
 }
 
-/* line 82, ../../../app/stylesheets/partials/frame-rolling.scss */
-.xrolling-main-done {
-  background-color: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  -o-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  border: 1px solid #004a6a;
-  margin-top: 10px;
-}
-/* line 104, ../../../app/stylesheets/partials/frame-rolling.scss */
-.xrolling-main-done .spinner {
-  left: auto;
-  margin-left: auto;
-  margin-top: auto;
-  position: static;
-}
-
-/* line 120, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 77, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 128, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 83, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -203,7 +143,7 @@
   height: 15px;
 }
 
-/* line 140, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 95, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -223,7 +163,7 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background: url("../images/assets/noise.png") #494949;
+  background-color: #494949;
   left: 0;
   position: absolute;
   margin-left: 100%;
@@ -232,7 +172,7 @@
   height: 100%;
 }
 
-/* line 160, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 110, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }

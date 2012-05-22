@@ -17,15 +17,12 @@
 		position: absolute;
 		top: 0;
 	}
-
 }
 
 .filter {
   background: $filter-bg-color;
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .current-roll {
@@ -54,7 +51,6 @@
 		position: absolute;
 		top: 0;
 	}
-	
 }
 
 .roll-name-change {
@@ -74,43 +70,12 @@
 
 .rolls-back {
 	@include x-button-primer($shelby-gray,large,back);
+
 	left: 0;
 	margin: 6px 15px;
 	position: absolute;
 	top: 0;
 }
-
-//.xrolls-back {
-//	background-color:  $flatShelbyDarkGray;
-//	@include background($softShelbyDarkGray);
-//	@include backandforth;
-//	@include border-radius($radius);	
-//	@include buttonfont;
-//	border: 1px solid #222;
-//	color: #efefef;
-//	height: 26px;
-//	left: $defaultMargin+7;
-//	padding: $defaultMargin/2 $defaultMargin $defaultMargin/2 $defaultMargin/2;
-//	position: absolute;
-//	top: $defaultMargin - 1;
-//	width: auto;
-//	i {
-//		@include background(
-//			$softShelbyDarkGray
-//		);
-//		@include border-radius(0 100% 0 5px);
-//		@include rotate($default-rotate);
-//		border-bottom: 1px solid #222;
-//		border-left: 1px solid #222;
-//		display: block;
-//		height: 17px;
-//		left: -8px;
-//		position: absolute;
-//		top: 4px;
-//		width: 17px;
-//		z-index: 1000;
-//	}
-//}
 
 .roll-delete{
 	@include x-button-primer($shelby-red);
@@ -122,33 +87,9 @@
 	right: 0;
 	top: 0;
 }
-
-.xroll-delete{
-	@include border-radius($radius);
-	@include background(
-		url('../images/assets/noise.png'),
-		$softShelbyRed
-	);
-	@include box-shadow(inset 0px 1px 1px 0px #888);
-	@include buttonfont;
-	font-weight: 600;
-	color: #EFEFEF;
-	background-color: $softShelbyRed;	
-	border:1px solid $softShelbyRedDeboss;
-	height:26px;
-	padding:$defaultMargin/2;
-	position:absolute;
-	top:$defaultMargin;
-	right: $defaultMargin+5;
-	float: right;
-	width: 62px;
-	display: none;
-}
-
 .rolls-list-nav {
 	@extend .notype;
-//	background-color:  $flatShelbyDarkGray;
-//	@include background($softShelbyDarkGray);
+
 	padding: $defaultMargin - 2 $defaultMargin;
 	position: absolute;
 	right: 0;
@@ -163,6 +104,7 @@
 		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
 	);
 	@include border-radius($button-radius 0 0 $button-radius);	
+
 	margin-right: -1px;
 	text-align: left;
 	width: 50%;
@@ -174,34 +116,8 @@
 		url('../images/assets/navarrow_right.svg') no-repeat center center,
 		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
 	);
-		@include border-radius(0 $button-radius $button-radius 0);	
+	@include border-radius(0 $button-radius $button-radius 0);	
+
 	text-align: right;
 	width: 50%;
-}
-
-
-.xroll-back {
-	background-color: $flatShelbyDarkGray;
-	@include background(
-		url('../images/assets/navarrow_left.svg') no-repeat center center
-		$flatShelbyDarkGray
-	);
-	@include backandforth;
-	@include border-radius($radius 0 0 $radius);
-	border: 1px solid #222;
-	height: 26px;
-	margin-right: -1px;
-	text-align: left;
-}
-.xroll-next {
-	background-color: $flatShelbyDarkGray;
-	@include background(
-		url('../images/assets/navarrow_right.svg') no-repeat center center
-		$flatShelbyDarkGray
-	);
-	@include backandforth;
-	@include border-radius(0 $radius $radius 0);
-	border: 1px solid #222;
-	height: 26px;
-	text-align: right;
 }

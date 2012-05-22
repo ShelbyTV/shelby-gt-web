@@ -61,8 +61,7 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            //model : shelby.models.user
-            model : shelby.models.rollFollowings
+            collection : shelby.collections.rollFollowings
           };
           break;
         case DisplayState.standardRoll :
@@ -101,7 +100,10 @@
           break;
       }
 
-      var options = {model:displayComponents.model};
+      var options = {
+        model : displayComponents.model,
+        collection : displayComponents.collection
+      };
       if (displayComponents.limit) {
         options.limit = displayComponents.limit;
       }

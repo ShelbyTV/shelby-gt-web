@@ -1,70 +1,70 @@
 @import "base";
 
-.header{
+.header {
 	background-color: $header-bg-color;
-	border-bottom:1px solid $header-outline;
+	border-bottom: 1px solid $header-outline;
 
-	nav{
-		display:inline;
+	nav {
+		display: inline;
 
 	}
 }
 
-.logo{
-	background:transparent;
-	border:none;
-	display:block;
-	float:left;
+.logo {
+	background: transparent;
+	border: none;
+	display: block;
+	float: left;
 }
 
 .logo-header {
-	background:url('../images/assets/shelbylogo.svg') center 11px no-repeat transparent;
+	background: url('../images/assets/shelbylogo.svg') center 11px no-repeat transparent;
 	background-size: 100%;
-	height:42px;
-	margin:0 9px;
-	width:95px;
+	height: 42px;
+	margin: 0 9px;
+	width: 95px;
 }
 
-.settings{
-	float:right;
-	margin:0;
-	padding:0;
-	width:50%;
+.settings {
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: 50%;
 
-	button{
+	button {
 		@include buttonfont;
 
-		background:transparent;
-		border:none;
-		color:#efefef;
-		line-height:3.75;
+		background: transparent;
+		border: none;
+		color: #efefef;
+		line-height: 3.75;
 		padding-bottom: 0;
-		text-align:left;
+		text-align: left;
 
-		&:hover{
-			color:white;
-			text-decoration:none;
+		&:hover {
+			color: white;
+			text-decoration: none;
 		}
 	}
 
-	li{
-		display:block;
-		float:right;
-		height:42px;
-		position:relative;
+	li {
+		display: block;
+		float: right;
+		height: 42px;
+		position: relative;
 		
-		li{
-			float:none;
-			height:2em;
-			line-height:2;
-			margin:0;
-			padding-left:0;
+		li {
+			float: none;
+			height: 2em;
+			line-height: 2;
+			margin: 0;
+			padding-left: 0;
 
-			button,span{
-				height:2em;
-				line-height:2;
-				padding-left:$margin;
-				text-decoration:none;
+			button,span {
+				height: 2em;
+				line-height: 2;
+				padding-left: $margin;
+				text-decoration: none;
 			}
 		}	
 	}
@@ -74,98 +74,99 @@
 .top-level {
 		&:after {
 			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
-			content:"\0020";
+			content: "\0020";
 			font-size: $font-size/1.5;
-			height:12px;
-//			left:0;
-			line-height:5.5;
-			margin-left:3px;
-			position:absolute;
-			text-align:right;
-			top:40%;
-			width:12px;
+			height: 12px;
+//			left: 0;
+			line-height: 5.5;
+			margin-left: 3px;
+			position: absolute;
+			text-align: right;
+			top: 40%;
+			width: 12px;
 		}
 	}
 
-.about{
-	padding-left:$defaultMargin+2;
-	padding-right:$defaultMargin*2;
-	position:relative;
-	width:70px;
-	z-index:2;
+.about {
+	padding-left: $defaultMargin+2;
+	padding-right: $defaultMargin*2;
+	position: relative;
+	width: 70px;
+	z-index: 2;
 
-	&:hover{
-		color:white;
-		background:$shelbyGreen;
+	&:hover {
+		color: white;
+		background: $shelbyGreen;
 	}
 }
 
-.subnav{
+.subnav {
 	@include box-shadow(0px 0px 5px 2px #222);
 
-	background:$settingsBG;
-	border-bottom:1px solid #222;
-	border-left:1px solid #222;
-	border-right:1px solid #222;
-	border-top:0px solid transparent;
-	display:none;
-	position:absolute;
-	width:92px;
-	z-index:1;
+	background: $settingsBG;
+	border-bottom: 1px solid #222;
+	border-left: 1px solid #222;
+	border-right: 1px solid #222;
+	border-top: 0px solid transparent;
+	display: none;
+	position: absolute;
+	width: 92px;
+	z-index: 1;
 }
 
-.profile{
+.profile {
 	@extend .about;
 
-	padding-right:10px;
-	width:85px;
+	padding-right: 10px;
+	width: 85px;
 
-	&:hover{
-		background:$shelbyBlue;
+	&:hover {
+		background: $shelbyBlue;
 	}
 }
 
-.profile-subnav{
+.profile-subnav {
+	left: -94px;
+	width: 174px;
 
-	button{
-
-		width:100%;
-		&:hover{
-			background:$shelbyBlue;
-			text-decoration:none;
+	button {
+		width: 100%;
+		&:hover {
+			background: $shelbyBlue;
+			text-decoration: none;
 		}
 	}
-	left:-94px;
-	width:174px;
 }
 
-.about-subnav{
+.about-subnav {
 	@extend .profile-subnav;
-	button:hover{
-		background:$shelbyGreen;
+
+	left: 0;
+	width: 92px;
+	
+	button:hover {
+		background: $shelbyGreen;
 	}
-	left:0;
-	width:92px;
 }
 
-.profile-subnav-userhandle{
-		color:#333;
-		background:#ddd;
-		border-bottom:1px solid #efefef;
+.profile-subnav-userhandle {
+	color: #333;
+	background: #ddd;
+	border-bottom: 1px solid #efefef;
 }
 
-.you{
-	span{
-		@include border-radius($radius);
+.you {
+	span {
+		@include roundies;
 
-		display:block;
-		height:24px;
-		float:left;
-		margin-right:5px;
-		width:24px;
+		display: block;
+		height: 24px;
+		float: left;
+		margin-right: 5px;
+		width: 24px;
 
 	}
-	img{
-		width:100%;
+	img {
+		width: 100%;
 	}
 }

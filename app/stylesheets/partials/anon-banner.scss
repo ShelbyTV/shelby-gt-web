@@ -117,7 +117,7 @@
 
 @mixin logged-out-network-buttons{
 	@include buttonfont;
-	@include border-radius($radius);
+	@include roundies;
 
 	border:1px solid #222;
 	color:white;

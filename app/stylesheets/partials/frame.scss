@@ -10,28 +10,21 @@
 		padding: $defaultMargin;
 	
 		&:hover {
-			@include background(
-//				url('../images/assets/noise.png') 
-				#555
-			);
+			@include background(#555);
 		}
 	}
 }
 .active-list-item {
 	.active-frame {
-		@include background(
-//			url('../images/assets/noise.png') 
-			#6d6d6d
-		);
+		@include background(#6d6d6d);
 	}
 }
 
 .video-card {
-	background-color: $video-card-color;
-	@include border-radius($radius);
+	@include roundies;
 
-	border: $articleStroke;
-//	font-size: $font-size;
+	background-color: $video-card-color;
+	border: $frame-stroke;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -40,22 +33,20 @@
 
 .video-thumbnail {
 	background: $video-card-thumbnail;
-//	border-top: 1px solid $outset;
 	line-height: 75px;
 	margin: 0;
 	text-align: center;
-	width: 100%;
+//	width: 100%;
 }
 
 .video-thumbnail-image {
-	//@include border-radius(5px);
+	cursor: pointer;
 	display: inline-block;
 	margin: -27px auto 0;
 	overflow: hidden;
 	padding-top: 0;
 	vertical-align: middle;
 	width: 100%;
-	cursor: pointer;
 }	
 
 .video-thumbnail-missing {
@@ -64,7 +55,6 @@
 }
 
 .video-card-header {
-//	@include border-radius($radiusHeader);
 	border-bottom: 1px solid $inset;
 	padding: $defaultMargin - 4 $defaultMargin - 2;
 
@@ -91,49 +81,41 @@
 }
 
 .video-card-footer {
-//		@include box-shadow(0px 4px 13px 4px #333);
 	@include border-radius(0 0 $radius $radius);
 	
-//	border-top: 1px solid $inset;
 	overflow: hidden;
 	z-index: 5;
 }
 
-.frame-main-social {
-	//@extend .rolling-main-done;
-	@include button-primer($flatShelbyBlue);
-	@include box-shadow(
-		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
-	);
-	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
+//OBSOLETE? 
+//.frame-main-social {
+//	@include button-primer($flatShelbyBlue);
+//	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%));
+//	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
 	
-	display: block;
-	float: right;
-	padding: 0px;
-	margin: -4px -3px;
+//	display: block;
+//	float: right;
+//	margin: -4px -3px;
+//	padding: 0px;
 
-	&:before {
-		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size: 72%;
-		content: "\0020";
-		float: left;
-		margin: 1px 2px 1px 7px;
-		width: 38px;
-		height: 17px;
-	}
-}
+//	&:before {
+//		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+//		background-size: 72%;
+//		content: "\0020";
+//		float: left;
+//		margin: 1px 2px 1px 7px;
+//		width: 38px;
+//		height: 17px;
+//	}
+//}
 
 //.video-vote {
 //	float: right;
 //	font-size: 1em;
 //	margin: 0;		
 //	padding-left: 0;
-
 //	button {
-
-			
 //	}
-
 //}
 
 .video-thumbnail {
@@ -141,6 +123,7 @@
 	overflow: hidden;
 	position: relative;
 }	
+
 .video-controls {
 	margin: $defaultMargin/2;
 	padding: 0;
@@ -149,15 +132,12 @@
 	top: 0px;
 
 	.roll-frame {
-		@include roundies;
 		background-color: $flatShelbyGreenButton;
-		@include background(
-			url('../images/assets/noise.png'),
-			$softShelbyGreenButton
-		);
+		@include background($softShelbyGreenButton);
 		@include box-shadow(inset 0px 1px 1px 0px #69f034);
+		@include roundies;
 
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
@@ -174,31 +154,24 @@
 			width: 32px;
 		}
 		&:hover {
-			@include background(
-				url('../images/assets/noise.png'),
-				$softShelbyGreenButtonHighlight
-			);
+			@include background($softShelbyGreenButtonHighlight);
 			@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		}
 	}
 	.share-frame {
-		@include roundies;
 		background-color: $sharingShelbyBlue;
-		@include background(
-			url('../images/assets/noise.png'),
-			$sharingShelbyBlueButton
-		);
+		@include background($sharingShelbyBlueButton);
 		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
+		@include roundies;
 		
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
 		button {
-			@include background(
-				url('../images/assets/action_share.svg') no-repeat 2px 9px
-			);
+			@include background(url('../images/assets/action_share.svg') no-repeat 2px 9px);
 			@include roundies;
+
 			display: block;
 			height: 32px;
 			margin: 0;
@@ -207,34 +180,26 @@
 			width: 32px;
 		}
 		&:hover {
-			@include background(
-				url('../images/assets/noise.png'),
-				$sharingShelbyBlueHighlight
-			);
+			@include background($sharingShelbyBlueHighlight);
 			@include box-shadow(inset 0px 1px 1px 0px #077dba);
 		}
 
 	}
 	
 	.upvote-frame {
-	 @include roundies;
 		background-color: $flatLightShelbyGrayButton;
-		@include background(
-			url('../images/assets/noise.png'),
-			$lightShelbyGrayButton
-		);
+		@include background($lightShelbyGrayButton);
 		@include box-shadow(inset 0px 1px 1px 0px #888);
+		@include roundies;
 
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
 		button {
-			@include background(
-				url('../images/assets/action_heart_white.svg') no-repeat 9px 4px
-			);
-			@include roundies;
+			@include background(url('../images/assets/action_heart_white.svg') no-repeat 9px 4px);
 			@include buttonfont;
+			@include roundies;
 			color: #fff;
 			display: block;
 			font-weight: bold;
@@ -245,19 +210,13 @@
 			width: 32px;
 		}
 		&:hover {
-			@include background(
-				url('../images/assets/noise.png'),
-				$lightShelbyGrayButtonHighlight
-			);
+			@include background($lightShelbyGrayButtonHighlight);
 			@include box-shadow(inset 0px 1px 1px 0px #888);
 		}
  }
  .upvote-frame.upvoted {
  	background-color: $flatShelbyRed;
-		@include background(
-			url('../images/assets/noise.png'),
-			$softShelbyRed
-		);
+		@include background($softShelbyRed);
 		@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
 		
 		button {
@@ -271,10 +230,7 @@
 	.save-frame {
 		@extend .roll-frame;
 		background-color: $flatShelbyPurple;
-		@include background(
-			url('../images/assets/noise.png'),
-			$softShelbyPurple
-		);
+		@include background($softShelbyPurple);
 		@include box-shadow(inset 0px 1px 1px 0px #8d8f90);
 
 		button {
@@ -283,10 +239,7 @@
 			);
 		}
 		&:hover {
-			@include background(
-				url('../images/assets/noise.png'),
-				$softShelbyPurpleHighlight
-			);
+			@include background($softShelbyPurpleHighlight);
 			@include box-shadow(inset 0px 1px 1px 0px $softShelbyPurpleHighlight);			
 		}	
 	}
@@ -294,10 +247,7 @@
 		@extend .save-frame;
 		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
 		background-color: $flatShelbyRed;
-		@include background(
-			url('../images/assets/noise.png'),
-			$softShelbyRed
-		);
+		@include background($softShelbyRed);
 
 		button {
 			@include background(
@@ -305,61 +255,39 @@
 			);
 		}	
 		&:hover {
-			@include background(
-				url('../images/assets/noise.png'),
-				$softShelbyRedHighlight
-			);
+			@include background($softShelbyRedHighlight);
 			@include box-shadow(inset 0px 1px 1px 0px $softShelbyRedHighlight);
 		}
 	}
 }
 
 .video-footer {
-//	@include softgradient;
-//	@include border-radius($radiusFooter);
-
 	border-top: 1px solid $outset;
-//	bottom: 0;
 	font-size: $font-size - 2;
 	font-weight: 500;
 	height: 27px;
-//	left: 0;
 	padding: 6px 8px 7px;
-//	position: absolute;
-//	width: 100%;
 }
 
 .video-activity {
 	//display: none;
-
 }
 
 
 .video-activity-comment {
 	padding: $defaultMargin;
+
 	textarea {
 		@include border-radius($input-radius);
 		border-color: #555;
 		padding: $defaultMargin/2;
-		width: 100%;
 		resize: none;
+		width: 100%;
 	}
 
 	.video-activity-comment-submit {
 		@extend .rolling-main-done;
 		float: right;
-	}
-
-	.xvideo-activity-comment-submit {
-//		@extend .share-submit-button;
-		@include form-button-small;
-		@include background($softShelbyBlue);
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-		border-color: #00597C;
-		float: right;
-		margin: 3px 0;
-		padding: 0 7px;
-		width: auto;
 	}
 }
 
@@ -375,11 +303,7 @@
 		border-bottom: 0;
 		list-style-type: none;
 		padding: 0;
-
 	}
-	//	.user-vcard {
-		//		padding-bottom: 9px;
-		//	}
 }
 
 .video-source {
@@ -391,19 +315,15 @@
 }
 
 .video-author {
-//	@include border-radius(0 0 $radius $radius);
 	margin: 0;
 }
 
 .user-vcard {
 	border-bottom: 1px solid $inset;
 	border-top: 1px solid $outset;
-//	font-size: 13px;
-//	font-weight: 300;
-//	xxx
-
 	height: 100%;
 	padding: 0 9px 9px;
+
 	a {
 		text-decoration: none;
 	}
@@ -420,10 +340,10 @@
 	}
 }
 .user-handle {
+	color: #a4a4a4;
 	font-size: 11px;
 	font-weight: 500;
 	line-height: 2.8;
-	color: #a4a4a4;
 }
 
 .user-post-date {

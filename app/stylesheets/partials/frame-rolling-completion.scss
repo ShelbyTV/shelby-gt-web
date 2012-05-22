@@ -2,17 +2,16 @@
 
 .frame-rolling-completion{
 	@extend .rolling-main;
-//	background:blue;
-//	@include opacity(0.9);
+	@include roundies(header);
+
 	border-top: none;
-	@include border-radius($radiusHeader);
 	overflow-y:hidden;
 	top: 0;
 	z-index: 1;
 
 	.frame-share{
-//		background: url('../images/assets/noise.png') #494949;
 		@include border-radius(0);
+
 		bottom:0;
 		height:auto;
 		margin:0;
@@ -21,8 +20,9 @@
 		top:40px;	
 
 		&:before{
-			background:#222;
 			@include opacity(0.2);
+		
+			background:#222;
 			bottom:0;
 			content:"\0020";
 			position:absolute;
@@ -33,8 +33,6 @@
 
 	.share-networks-list{
 		li{
-//			background:none;
-//			border-bottom:none;
 			margin-bottom:0;
 			padding:0;
 		}
@@ -51,8 +49,9 @@
 }
 
 .frame-rolling-completion-header{
-	@include border-radius($radiusHeader);
-	background-color: #666;
+	@include roundies(header);
+
+	background-color: $rolling-header-bg-color;
 	border-bottom: 1px solid $outline;
 	height: 40px;
 
@@ -63,7 +62,6 @@
 		line-height: 2.4;
 		margin: 0 auto;
 		max-width: 145px;
-//		padding-left: $defaultMargin;
 		padding-right: $defaultMargin;
 		overflow: hidden;
 		text-align: center;

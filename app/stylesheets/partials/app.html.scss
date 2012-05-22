@@ -15,18 +15,15 @@ html,body{
 }
 
 body{
-	@include fontcolor;
 	@include basefont;
 
+	background-color: #000;
 	bottom:0;
+	color: $text;
 	left:0;
 	position:absolute;
 	right:0;
 	top:0;
-
-	@include background(
-		url('../images/assets/noise.png') #000
-	);
 
 }
 
@@ -101,16 +98,6 @@ a{
 .touch .content-body {
 	overflow: hidden;	
 }
-
-//.content-body{
-//	bottom:0;
-//	left:0;
-//	position:absolute;
-//	right:0;
-//	top:88px;
-//	overflow-y:scroll;
-//}
-
 
 .menu{
 	border-bottom:1px solid #222;
