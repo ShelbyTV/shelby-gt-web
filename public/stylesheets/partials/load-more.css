@@ -6,7 +6,12 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../../app/stylesheets/partials/load-more.scss */
+/* line 3, ../../../app/stylesheets/partials/load-more.scss */
+.load-more {
+  text-align: center;
+}
+
+/* line 7, ../../../app/stylesheets/partials/load-more.scss */
 .load-more-button {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -31,4 +36,5 @@
   color: #efefef;
   padding: 6px 13px;
   margin: 0 auto;
+  width: 110px;
 }
