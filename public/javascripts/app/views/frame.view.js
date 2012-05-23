@@ -9,7 +9,6 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   _frameViewState: null,
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateModel : 'shelby.models.guide',
       activationStateProperty : 'activeFrameModel'
   }),
 

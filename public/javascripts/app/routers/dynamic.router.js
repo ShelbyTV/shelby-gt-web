@@ -180,41 +180,28 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     this._setupTopLevelViews({showSpinner: true});
 
-    var doBrowseRolls = shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
     var displayState, rollCollection, fetchUrl;
-
-    if (doBrowseRolls) {
+    if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
       displayState = libs.shelbyGT.DisplayState.browseRollList;
-      rollCollection = shelby.collections.browseRolls;
+      rollCollection = shelby.models.browseRolls;
       fetchUrl = shelby.config.apiRoot + '/roll/browse';
     } else {
       displayState = libs.shelbyGT.DisplayState.rollList;
-      rollCollection = shelby.collections.rollFollowings;
+      rollCollection = shelby.models.rollFollowings;
       fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
     }
 
     shelby.models.guide.set('displayState', displayState);
 
-    rollCollection.reset();
     var self = this;
     this._hideSpinnerAfter((function(){
-      if (!doBrowseRolls) {
-        self._addHotRolls();
-      }
       return rollCollection.fetch({
-        add : true,
         success : function(){
           self._scrollToActiveGuideListItemView();
         },
         url : fetchUrl
       });
     })());
-  },
-
-  _addHotRolls : function(){
-    libs.utils.HotRollsJson.forEach(function(rollJson){
-      shelby.collections.rollFollowings.add(new libs.shelbyGT.RollModel(rollJson));
-    });
   },
 
   displaySaves : function(){

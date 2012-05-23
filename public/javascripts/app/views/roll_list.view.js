@@ -3,7 +3,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    collectionAttribute : 'roll_followings',
+    collectionAttribute : 'rolls',
     listItemView : 'RollItemView'
   }),
 
@@ -30,7 +30,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
               if (childView.model.id == roll.id) {
                 return true;
               }
-          }).value();
+          });
           if (activeRollItemView) {
             this._scrollTo(activeRollItemView.el);
           }
@@ -72,6 +72,11 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   _scrollTo : function(element) {
     this.parent.scrollToChildElement(element);
+  },
+
+  //ListView overrides
+  _listItemViewAdditionalParams : function() {
+    return {activationStateModel:shelby.models.guide};
   }
 
 });
