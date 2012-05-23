@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   #TODO: If the request is made to a roll, also display some meta tags
   def index
     
+    #TODO this needs to be cleaned the fuck up
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
       frame_id = path_match[1]
       @video_info = Shelby::API.get_video_info(frame_id)
@@ -42,8 +43,10 @@ class HomeController < ApplicationController
       when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
       when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
       when "reecepacheco.tv" then "4f900d56b415cc6614056681"
+      when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
       when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
       else false
     end
     render 'isolated_roll' and return if @isolated_roll_id

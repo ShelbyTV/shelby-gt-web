@@ -33,15 +33,19 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
 
     var self = this;
-      shelby.models.user.fetch({
-        global: false,
-        success: function() {
-          self._reroute();
-        },
-        error: function(){
-          self.initAnonymous(url);
-        }
-      });
+		
+		if (!shelby.userSignedIn()){ this.initAnonymous(url); }
+		else {
+			shelby.models.user.fetch({
+	      global: false,
+	      success: function() {
+	        self._reroute();
+	      },
+	      error: function(){
+	        self.initAnonymous(url);
+	      }
+	    });
+		}
   },
 
   initAnonymous : function(url){
