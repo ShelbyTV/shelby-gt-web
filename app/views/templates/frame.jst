@@ -1,5 +1,6 @@
 <% var messages = frame.get('conversation').get('messages') %>
 <% var creator = frame.get('creator') %>
+<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
   <header class="video-card-header clearfix">
@@ -23,9 +24,9 @@
 			</li>
     </ul>
     <% if(frame.get('video').get('thumbnail_url')) { %>
-      <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
+      <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
     <% } else { %>
-      <img class="js-frame-activate video-thumbnail-missing" src="<%= '/images/assets/missing_thumb.svg' %>" alt="posted by <%= creator.get('nickname') %>" title="posted by <%= creator.get('nickname') %>">
+      <img class="js-frame-activate video-thumbnail-missing" src="<%= '/images/assets/missing_thumb.svg' %>" alt="posted by <%= thumbnailText %>" title="<%= thumbnailText %>">
     <% } %>
   </div>
  

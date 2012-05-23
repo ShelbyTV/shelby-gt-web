@@ -1,15 +1,11 @@
 @import "base";
 
 .load-more{
-
-
+  text-align: center;
 }
-.load-more-button{
-	@include rolls-menu-button;
-	background-color: $flatShelbyGray;
-	@include background($softShelbyGray);
-	@include box-shadow(inset -1px 0px 1px 0px #666);
-	
-	margin:0 auto;
 
+.load-more-button{
+		@include x-button-primer;
+    margin: 0 auto;
+    width: 110px;
 }

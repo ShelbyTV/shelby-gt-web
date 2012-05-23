@@ -11,7 +11,7 @@
 		float: left;
 		height: 42px;
 		width: 50%;
-		
+
 		&:nth-of-type(4) {
 			@include box-shadow(inset 1px 1px 1px #4d4d4d);
 			border-right: none;
@@ -28,7 +28,6 @@
 		font-size: 11px;
 		height: inherit;
 		line-height: 5.5;
-//		padding-top: 26px;
 		text-align: center;
 		text-decoration: none;
 		text-transform: lowercase;

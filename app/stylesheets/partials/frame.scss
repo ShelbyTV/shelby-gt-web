@@ -22,8 +22,9 @@
 
 .video-card {
 	@include roundies;
+
 	background-color: $video-card-color;
-	border: $articleStroke;
+	border: $frame-stroke;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -35,7 +36,7 @@
 	line-height: 75px;
 	margin: 0;
 	text-align: center;
-	width: 100%;
+//	width: 100%;
 }
 
 .video-thumbnail-image {
@@ -86,38 +87,35 @@
 	z-index: 5;
 }
 
-.frame-main-social {
-	@include button-primer($flatShelbyBlue);
-	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%));
-	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
+//OBSOLETE? 
+//.frame-main-social {
+//	@include button-primer($flatShelbyBlue);
+//	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%));
+//	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
 	
-	display: block;
-	float: right;
-	margin: -4px -3px;
-	padding: 0px;
+//	display: block;
+//	float: right;
+//	margin: -4px -3px;
+//	padding: 0px;
 
-	&:before {
-		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size: 72%;
-		content: "\0020";
-		float: left;
-		margin: 1px 2px 1px 7px;
-		width: 38px;
-		height: 17px;
-	}
-}
+//	&:before {
+//		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+//		background-size: 72%;
+//		content: "\0020";
+//		float: left;
+//		margin: 1px 2px 1px 7px;
+//		width: 38px;
+//		height: 17px;
+//	}
+//}
 
 //.video-vote {
 //	float: right;
 //	font-size: 1em;
 //	margin: 0;		
 //	padding-left: 0;
-
 //	button {
-
-			
 //	}
-
 //}
 
 .video-thumbnail {
@@ -139,7 +137,7 @@
 		@include box-shadow(inset 0px 1px 1px 0px #69f034);
 		@include roundies;
 
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
@@ -166,7 +164,7 @@
 		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
 		@include roundies;
 		
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
@@ -194,7 +192,7 @@
 		@include box-shadow(inset 0px 1px 1px 0px #888);
 		@include roundies;
 
-		border: $menuStroke;
+		border: $frame-stroke;
 		margin-bottom: 5px;
 		padding: 0;
 	
@@ -278,6 +276,7 @@
 
 .video-activity-comment {
 	padding: $defaultMargin;
+
 	textarea {
 		@include border-radius($input-radius);
 		border-color: #555;
@@ -289,17 +288,6 @@
 	.video-activity-comment-submit {
 		@extend .rolling-main-done;
 		float: right;
-	}
-
-	.xvideo-activity-comment-submit {
-		@include form-button-small;
-		@include background($softShelbyBlue);
-		@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-		border-color: #00597C;
-		float: right;
-		margin: 3px 0;
-		padding: 0 7px;
-		width: auto;
 	}
 }
 

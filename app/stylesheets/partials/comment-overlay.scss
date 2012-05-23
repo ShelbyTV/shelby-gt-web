@@ -51,6 +51,7 @@
 	@include border-radius($radius 0 0 $radius);
 	left: 0;
 }
+
 .comment-overlay-next {
 	@include x-comment-overlay-buttons;
 	@include background(

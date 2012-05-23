@@ -43,16 +43,15 @@
   position: relative;
 }
 
-/* line 33, ../../../app/stylesheets/partials/frame.scss */
+/* line 34, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #494949;
   line-height: 75px;
   margin: 0;
   text-align: center;
-  width: 100%;
 }
 
-/* line 41, ../../../app/stylesheets/partials/frame.scss */
+/* line 42, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   cursor: pointer;
   display: inline-block;
@@ -63,30 +62,30 @@
   width: 100%;
 }
 
-/* line 51, ../../../app/stylesheets/partials/frame.scss */
+/* line 52, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
   margin: 36px auto 0;
   width: auto;
 }
 
-/* line 56, ../../../app/stylesheets/partials/frame.scss */
+/* line 57, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header {
   border-bottom: 1px solid #333333;
   padding: 6px 8px;
 }
-/* line 60, ../../../app/stylesheets/partials/frame.scss */
+/* line 61, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a {
   text-decoration: none;
 }
-/* line 63, ../../../app/stylesheets/partials/frame.scss */
+/* line 64, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .video-card-header a:visited {
   text-decoration: none;
 }
-/* line 66, ../../../app/stylesheets/partials/frame.scss */
+/* line 67, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover {
   text-decoration: underline;
 }
-/* line 71, ../../../app/stylesheets/partials/frame.scss */
+/* line 72, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header h1 {
   float: left;
   font-size: 1em;
@@ -97,7 +96,7 @@
   width: 100%;
 }
 
-/* line 82, ../../../app/stylesheets/partials/frame.scss */
+/* line 83, ../../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -109,65 +108,14 @@
   z-index: 5;
 }
 
-/* line 89, ../../../app/stylesheets/partials/frame.scss */
-.frame-main-social {
-  background: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0091d0), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #0091d0, #007fb6);
-  background: -moz-linear-gradient(top, #0091d0, #007fb6);
-  background: -o-linear-gradient(top, #0091d0, #007fb6);
-  background: -ms-linear-gradient(top, #0091d0, #007fb6);
-  background: linear-gradient(top, #0091d0, #007fb6);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
-  -o-box-shadow: inset -1px 0px 1px 0px #444444;
-  box-shadow: inset -1px 0px 1px 0px #444444;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.5;
-  margin: 3px;
-  padding: 1px 8px;
-  text-shadow: 0px 1px 2px #222;
-  -moz-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  -o-box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  box-shadow: inset -1px 0px 1px 0px #00a3e9;
-  border: 1px solid #004a6a;
-  display: block;
-  float: right;
-  margin: -4px -3px;
-  padding: 0px;
-}
-/* line 99, ../../../app/stylesheets/partials/frame.scss */
-.frame-main-social:before {
-  background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
-  background-size: 72%;
-  content: "\0020";
-  float: left;
-  margin: 1px 2px 1px 7px;
-  width: 38px;
-  height: 17px;
-}
-
-/* line 123, ../../../app/stylesheets/partials/frame.scss */
+/* line 121, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 129, ../../../app/stylesheets/partials/frame.scss */
+/* line 127, ../../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -175,7 +123,7 @@
   right: 0px;
   top: 0px;
 }
-/* line 136, ../../../app/stylesheets/partials/frame.scss */
+/* line 134, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #59b034;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #79c758), color-stop(100%, #59b034));
@@ -194,11 +142,11 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #333333;
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 146, ../../../app/stylesheets/partials/frame.scss */
+/* line 144, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/action_roll.svg") no-repeat 8px 4px;
   -moz-border-radius: 5px;
@@ -214,7 +162,7 @@
   text-decoration: underline;
   width: 32px;
 }
-/* line 158, ../../../app/stylesheets/partials/frame.scss */
+/* line 156, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: #63c43a;
   -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
@@ -222,7 +170,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #69f034;
   box-shadow: inset 0px 1px 1px 0px #69f034;
 }
-/* line 163, ../../../app/stylesheets/partials/frame.scss */
+/* line 161, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame {
   background-color: #143caf;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0087c0), color-stop(100%, #143caf));
@@ -241,11 +189,11 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #333333;
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 173, ../../../app/stylesheets/partials/frame.scss */
+/* line 171, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame button {
   background: url("../images/assets/action_share.svg") no-repeat 2px 9px;
   -moz-border-radius: 5px;
@@ -261,7 +209,7 @@
   text-decoration: underline;
   width: 32px;
 }
-/* line 184, ../../../app/stylesheets/partials/frame.scss */
+/* line 182, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame:hover {
   background: #1744c6;
   -moz-box-shadow: inset 0px 1px 1px 0px #077dba;
@@ -269,7 +217,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #077dba;
   box-shadow: inset 0px 1px 1px 0px #077dba;
 }
-/* line 191, ../../../app/stylesheets/partials/frame.scss */
+/* line 189, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame {
   background-color: #464646;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #464646));
@@ -288,11 +236,11 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #333333;
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 201, ../../../app/stylesheets/partials/frame.scss */
+/* line 199, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame button {
   background: url("../images/assets/action_heart_white.svg") no-repeat 9px 4px;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
@@ -311,7 +259,7 @@
   padding-top: 16px;
   width: 32px;
 }
-/* line 214, ../../../app/stylesheets/partials/frame.scss */
+/* line 212, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame:hover {
   background: #535353;
   -moz-box-shadow: inset 0px 1px 1px 0px #888888;
@@ -319,7 +267,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #888888;
   box-shadow: inset 0px 1px 1px 0px #888888;
 }
-/* line 219, ../../../app/stylesheets/partials/frame.scss */
+/* line 217, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted {
   background-color: #9e1632;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
@@ -333,12 +281,12 @@
   -o-box-shadow: inset 0px 1px 1px 0px #ef2f74;
   box-shadow: inset 0px 1px 1px 0px #ef2f74;
 }
-/* line 224, ../../../app/stylesheets/partials/frame.scss */
+/* line 222, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted button {
   background: url("../images/assets/action_heart.svg") no-repeat 9px 4px;
   color: #222;
 }
-/* line 232, ../../../app/stylesheets/partials/frame.scss */
+/* line 230, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #693a7b;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
@@ -352,11 +300,11 @@
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 238, ../../../app/stylesheets/partials/frame.scss */
+/* line 236, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 243, ../../../app/stylesheets/partials/frame.scss */
+/* line 241, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: #9863a2;
   -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
@@ -364,7 +312,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
   box-shadow: inset 0px 1px 1px 0px #9863a2;
 }
-/* line 248, ../../../app/stylesheets/partials/frame.scss */
+/* line 246, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -378,11 +326,11 @@
   background: -ms-linear-gradient(top, #ba2046, #9e1632);
   background: linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 254, ../../../app/stylesheets/partials/frame.scss */
+/* line 252, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.svg") no-repeat center center;
 }
-/* line 259, ../../../app/stylesheets/partials/frame.scss */
+/* line 257, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame:hover {
   background: #cb1c40;
   -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
@@ -391,7 +339,7 @@
   box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 266, ../../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../../app/stylesheets/partials/frame.scss */
 .video-footer {
   border-top: 1px solid #555555;
   font-size: 11px;
@@ -400,11 +348,11 @@
   padding: 6px 8px 7px;
 }
 
-/* line 279, ../../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 281, ../../../app/stylesheets/partials/frame.scss */
+/* line 280, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -417,70 +365,24 @@
   resize: none;
   width: 100%;
 }
-/* line 289, ../../../app/stylesheets/partials/frame.scss */
+/* line 288, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   float: right;
 }
-/* line 294, ../../../app/stylesheets/partials/frame.scss */
-.video-activity-comment .xvideo-activity-comment-submit {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4a4a4a), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4a4a4a, #343434);
-  background: -moz-linear-gradient(top, #4a4a4a, #343434);
-  background: -o-linear-gradient(top, #4a4a4a, #343434);
-  background: -ms-linear-gradient(top, #4a4a4a, #343434);
-  background: linear-gradient(top, #4a4a4a, #343434);
-  -moz-box-shadow: inset -1px 0px 1px 0px #444444;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #444444;
-  -o-box-shadow: inset -1px 0px 1px 0px #444444;
-  box-shadow: inset -1px 0px 1px 0px #444444;
-  border: 1px solid #222;
-  color: #efefef;
-  display: block;
-  float: left;
-  font-size: 13px;
-  height: 23px;
-  line-height: 1.5;
-  margin: 3px;
-  padding: 0 5px;
-  text-shadow: 0px 1px 2px #222;
-  width: auto;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -webkit-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  -o-box-shadow: inset -1px 0px 1px 0px #79cae7;
-  box-shadow: inset -1px 0px 1px 0px #79cae7;
-  border-color: #00597C;
-  float: right;
-  margin: 3px 0;
-  padding: 0 7px;
-  width: auto;
-}
 
-/* line 310, ../../../app/stylesheets/partials/frame.scss */
+/* line 298, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 314, ../../../app/stylesheets/partials/frame.scss */
+/* line 302, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 321, ../../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -489,36 +391,36 @@
   text-overflow: ellipsis;
 }
 
-/* line 329, ../../../app/stylesheets/partials/frame.scss */
+/* line 317, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 333, ../../../app/stylesheets/partials/frame.scss */
+/* line 321, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #333333;
   border-top: 1px solid #555555;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 339, ../../../app/stylesheets/partials/frame.scss */
+/* line 327, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 344, ../../../app/stylesheets/partials/frame.scss */
+/* line 332, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 348, ../../../app/stylesheets/partials/frame.scss */
+/* line 336, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 354, ../../../app/stylesheets/partials/frame.scss */
+/* line 342, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -526,7 +428,7 @@
   line-height: 2.8;
 }
 
-/* line 361, ../../../app/stylesheets/partials/frame.scss */
+/* line 349, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -534,29 +436,29 @@
   padding-right: 3px;
 }
 
-/* line 370, ../../../app/stylesheets/partials/frame.scss */
+/* line 358, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335552092');
+  content: url('/images/../images/assets/twitter_stamp.svg?1336694545');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 380, ../../../app/stylesheets/partials/frame.scss */
+/* line 368, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335552092');
+  content: url('/images/../images/assets/facebook_stamp.svg?1336694545');
 }
 
-/* line 387, ../../../app/stylesheets/partials/frame.scss */
+/* line 375, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336509537');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336694545');
 }
 
-/* line 392, ../../../app/stylesheets/partials/frame.scss */
+/* line 380, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 395, ../../../app/stylesheets/partials/frame.scss */
+/* line 383, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }

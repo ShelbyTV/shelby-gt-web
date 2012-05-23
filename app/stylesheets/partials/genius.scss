@@ -1,0 +1,112 @@
+@import "base",
+		"compass",
+		"compass/css3",
+		"compass/css3/border-radius",
+		"compass/css3/box-shadow";
+
+.genius {
+	background-color:#101010;
+	@include background(
+		url('../images/genius/bg.png') no-repeat center center #101010
+	);
+	@include background-size(cover);
+}
+
+.genius-wrapper {
+	margin:0 auto;
+	width:400px;
+}
+
+.content-wrapper {
+  margin: 15% auto 0;
+  width: 1020px;
+  
+}
+.embed-gate-wrapper {
+  float: left;
+  width: 500px;
+}
+.embed-gate-wrapper iframe { 
+  width: 500px; 
+}
+.genius-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+.genius-header{
+
+}
+
+.genius-logo {
+	@include background(
+		url('../images/genius/landing_logo.svg') no-repeat center center transparent
+	);
+
+	background-size:100%;
+
+	float: left;
+	height: 100px;
+	margin-right:18px;
+	width: 50%;
+}
+
+
+.genius-slogan {
+	float: left;
+	font-size: 11px;
+	line-height: 1.4;
+	margin-top:35px;
+}
+
+.genius-search-form {
+	margin: 0 auto;
+	text-align:center;
+}
+
+.genius-caption { 
+	font-size:13px;
+	margin:5px auto 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.genius-label {
+	display:block;
+	font-size:14px;
+	font-weight:300;
+	line-height:3.8;
+	text-align: right;
+}
+
+.genius-search-input {
+	@include border-radius($radius/2);
+	border:none;
+	display:block;
+	font-size:14px;
+	margin:0px auto;
+	padding:$defaultMargin+2 $defaultMargin;
+	width:50%;
+
+	//extend some inputs styles
+}
+
+.genius-search-submit{
+	//extend the button style
+	@include buttonfont;
+	background: $flatShelbyBlue;
+	@include background(
+		url('../images/assets/noise.png'),
+		$softShelbyBlue
+	);
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 1px $softShelbyBlueHighlight);
+	@include text-shadow(0px 1px 2px #222);
+	border:none;
+	color:#efefef;
+	display:block;
+	font-size:13px;
+	margin:$defaultMargin+4 auto;
+	padding:7px $defaultMargin+9px;
+	width: 17%;
+}

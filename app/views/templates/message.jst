@@ -11,9 +11,9 @@
     var creator = frame.get('creator');
     messageJSON = {
       created_at : frame.get('created_at'),
-      realname : creator.get('name'),
-      user_id : creator.id,
-      user_image_url : creator.get('user_image')
+      realname : (creator ? creator.get('name') : ""),
+      user_id : (creator? creator.id : ""),
+      user_image_url : (creator ? creator.get('user_image') : "")
     };
   }
 %>
