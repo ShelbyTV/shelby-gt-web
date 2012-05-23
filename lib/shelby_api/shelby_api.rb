@@ -3,10 +3,15 @@ module Shelby
     include HTTParty
     base_uri 'api.gt.shelby.tv/v1'
   
+    def self.get_user_info(nickname)
+      u = get("/user/#{nickname}").parsed_response
+      r = (u['status'] == 200) ? u['result'] : nil
+    end
+    
     def self.get_roll(id)
       r = get( "/roll/#{id}" ).parsed_response
     end
-
+    
     def self.get_video_info(frame_id)
       result = {}
       f = get( "/frame/#{frame_id}" ).parsed_response
@@ -25,9 +30,13 @@ module Shelby
       f0 = r['result']['frames'][0]
       {'frame' => f0, 'video' => f0['video']}
     end
-    
-    def self.generate_route(roll_id, frame_id)
+        
+    def self.generate_frame_route(roll_id, frame_id)
       return "#{Settings::Application.url}/roll/#{roll_id}/frame/#{frame_id}"
+    end
+
+    def self.generate_user_route(user_nickname)
+      return "#{Settings::Application.url}/user/#{user_nickname}/personal_roll"
     end
   
   end

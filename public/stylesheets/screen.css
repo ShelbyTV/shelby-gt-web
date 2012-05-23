@@ -3855,7 +3855,12 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 6, ../../app/stylesheets/partials/load-more.scss */
+/* line 3, ../../app/stylesheets/partials/load-more.scss */
+.load-more {
+  text-align: center;
+}
+
+/* line 7, ../../app/stylesheets/partials/load-more.scss */
 .load-more-button {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -3880,6 +3885,7 @@ a:hover, a:visited, a:active {
   color: #efefef;
   padding: 6px 13px;
   margin: 0 auto;
+  width: 110px;
 }
 
 /* Welcome to Compass.
@@ -4329,6 +4335,140 @@ a:hover, a:visited, a:active {
 /* line 220, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/genius.scss */
+.genius {
+  background-color: #101010;
+  background: url("../images/genius/bg.png") no-repeat center center #101010;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 15, ../../app/stylesheets/partials/genius.scss */
+.genius-wrapper {
+  margin: 0 auto;
+  width: 400px;
+}
+
+/* line 20, ../../app/stylesheets/partials/genius.scss */
+.content-wrapper {
+  margin: 15% auto 0;
+  width: 1020px;
+}
+
+/* line 25, ../../app/stylesheets/partials/genius.scss */
+.embed-gate-wrapper {
+  float: left;
+  width: 500px;
+}
+
+/* line 29, ../../app/stylesheets/partials/genius.scss */
+.embed-gate-wrapper iframe {
+  width: 500px;
+}
+
+/* line 32, ../../app/stylesheets/partials/genius.scss */
+.genius-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+/* line 41, ../../app/stylesheets/partials/genius.scss */
+.genius-logo {
+  background: url("../images/genius/landing_logo.svg") no-repeat center center transparent;
+  background-size: 100%;
+  float: left;
+  height: 100px;
+  margin-right: 18px;
+  width: 50%;
+}
+
+/* line 55, ../../app/stylesheets/partials/genius.scss */
+.genius-slogan {
+  float: left;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 35px;
+}
+
+/* line 62, ../../app/stylesheets/partials/genius.scss */
+.genius-search-form {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 67, ../../app/stylesheets/partials/genius.scss */
+.genius-caption {
+  font-size: 13px;
+  margin: 5px auto 10px;
+  text-align: center;
+  width: 100%;
+}
+
+/* line 74, ../../app/stylesheets/partials/genius.scss */
+.genius-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 3.8;
+  text-align: right;
+}
+
+/* line 82, ../../app/stylesheets/partials/genius.scss */
+.genius-search-input {
+  -moz-border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
+  -o-border-radius: 2.5px;
+  -ms-border-radius: 2.5px;
+  -khtml-border-radius: 2.5px;
+  border-radius: 2.5px;
+  border: none;
+  display: block;
+  font-size: 14px;
+  margin: 0px auto;
+  padding: 12px 10px;
+  width: 50%;
+}
+
+/* line 94, ../../app/stylesheets/partials/genius.scss */
+.genius-search-submit {
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background: #007fb6;
+  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: url("../images/assets/noise.png"), linear-gradient(top, #00a5cc, #007fb6);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 0 1px #0091d0;
+  -webkit-box-shadow: 0 0 0 1px #0091d0;
+  -o-box-shadow: 0 0 0 1px #0091d0;
+  box-shadow: 0 0 0 1px #0091d0;
+  text-shadow: 0px 1px 2px #222222;
+  border: none;
+  color: #efefef;
+  display: block;
+  font-size: 13px;
+  margin: 14px auto;
+  padding: 7px 19px;
+  width: 17%;
 }
 
 /* Welcome to Compass.

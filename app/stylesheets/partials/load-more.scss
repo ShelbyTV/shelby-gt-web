@@ -1,9 +1,11 @@
 @import "base";
 
 .load-more{
+  text-align: center;
 }
 
 .load-more-button{
 		@include x-button-primer;
     margin: 0 auto;
+    width: 110px;
 }
