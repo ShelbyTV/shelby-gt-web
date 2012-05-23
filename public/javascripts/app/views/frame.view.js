@@ -15,13 +15,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-frame-activate"              : "_activate",
-    "click .roll-frame"                     : "RequestFrameRollingView",
-    "click .save-frame"                     : "_saveToWatchLater",
-    "click .remove-frame"                   : "_removeFromWatchLater",
-    "click .share-frame"                    : "_shareFrame",
+    "click .js-roll-frame"                  : "RequestFrameRollingView",
+    "click .js-save-frame"                  : "_saveToWatchLater",
+    "click .js-remove-frame"                : "_removeFromWatchLater",
+    "click .js-share-frame"                 : "_shareFrame",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
-    "click .video-source"                   : "_goToRoll",
-    "click .upvote-frame"                   : "_upvote",
+    "click .js-frame-source"                : "_goToRoll",
+    "click .js-upvote-frame"                : "_upvote",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
@@ -181,15 +181,16 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this.$('.upvote-test').text(this.model.get('upvoters').length);
     }
     else {
-      this.$('.upvote-frame').addClass('upvoted');
-      this.$('.upvote-frame button').text(this.model.get('upvoters').length);
+      this.$('.js-upvote-frame').addClass('upvoted');
+      this.$('.js-upvote-frame-lining').text(this.model.get('upvoters').length);
     }
   },
 
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
-    this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'Show');
+    // this.$('.js-video-activity-toggle-comment').text(this._conversationDisplayed ? ' frame-comments-eopn' : '');
+    this.$('.js-video-activity-toggle-comment').toggleClass('frame-comments-open');
   },
 
   _onConversationChange : function(){

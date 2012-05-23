@@ -5,24 +5,26 @@
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
 
   <header class="video-card-header clearfix">
-    <img class="frame-creator-avatar" src="/images/avatar.jpg">
-    <h1 class="frame-creator-name">
-      <%= frame.get('creator').get('nickname') %> 
-    </h1>
-    <h2 class="frame-timestamp">
+    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+      <img class="frame-creator-avatar" src="/images/avatar.jpg">
+      <h1 class="frame-creator-roll">
+        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>
+      </h1>
+    </a>
+    <h2 class="frame-timestamp frame-creator-origin-twitter">
       3min ago
     </h2>
-    <h3 class="frame-title">
-      <%= frame.get('video').get('title') %>
-    </h3>
+    <a onclick="return false;" class="js-frame-activate" href="#"> 
+      <h3 class="frame-title">
+        <%= frame.get('video').get('title') %>
+      </h3>
+    </a>
   </header>
-  
 
 <!--       <h1 title="<%= frame.get('video').get('title') %>">
 	    <%= frame.get('video').get('title') %>
     </h1>
  -->      
-
 
   <div class="video-thumbnail">
     <ul class="video-controls" type="toolbar">
@@ -57,13 +59,13 @@
         <form class="video-activity-comment clearfix">
           <textarea class="js-add-message-input" rows="1"></textarea>
           <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-          <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label='<%= shelby.models.user.get('nickname') %>'>Comment</button>
+          <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
         </form>
       </section><!-- eo section.video-shares -->
   
-    <div class="video-footer">
+    <div class="video-footer" style="display:none;">
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
-      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>			
+      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %></a>			
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
              shelby.models.guide.get('displayState') !== 'userPersonalRoll' &&
              frame.has('roll')) { %>
@@ -74,23 +76,27 @@
     </div> 
 
     <ul class="frame-controls" type="toolbar">
-      <li class="frame-controls-like">
-        <button type="button">
-          <i>123</i>
+      <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
+        <button class="js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          <i class="js-upvote-frame-lining">
+            <%= frame.get('upvoters').length %>
+          </i>
         </button>
       </li>
       <li class="frame-controls-comments">
-        <button type="button">
-          <i>123</i>
+        <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          <i class="comments-frame-lining">
+            <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %>&nbsp;
+          </i>
         </button>
       </li>
-      <li class="frame-controls-roll">
-        <button type="button">
+      <li class="frame-controls-roll js-roll-frame">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           Roll it
         </button>
       </li>
-      <li class="frame-controls-share">
-        <button type="button">
+      <li class="frame-controls-share js-share-frame">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           Share it
         </button>
       </li>
