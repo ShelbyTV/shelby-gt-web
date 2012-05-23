@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 3, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -34,25 +34,26 @@
   width: 100%;
   z-index: 2;
 }
-/* line 23, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 19, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user {
+  background-color: #303030;
   height: inherit;
   margin-left: 25px;
   margin-right: 25px;
   max-width: 500px;
   overflow-y: hidden;
 }
-/* line 32, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 28, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-vcard {
   border: none;
 }
-/* line 36, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 32, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-wrapper .user-video-text p {
   max-height: 2.5em;
   overflow: hidden;
 }
 
-/* line 43, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 38, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-lining {
   display: none;
   height: 67px;
@@ -60,7 +61,7 @@
   position: relative;
 }
 
-/* line 87, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 45, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -80,13 +81,13 @@
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 81, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 96, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 55, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -106,7 +107,7 @@
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 81, ../../../app/stylesheets/partials/comment-overlay.scss */
+/* line 109, ../../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

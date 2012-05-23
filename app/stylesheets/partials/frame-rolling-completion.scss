@@ -1,22 +1,17 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .frame-rolling-completion{
 	@extend .rolling-main;
-//	background:blue;
-//	@include opacity(0.9);
+	@include roundies(header);
+
 	border-top: none;
-	@include border-radius($radiusHeader);
 	overflow-y:hidden;
 	top: 0;
 	z-index: 1;
 
 	.frame-share{
-//		background: url('../images/assets/noise.png') #494949;
 		@include border-radius(0);
+
 		bottom:0;
 		height:auto;
 		margin:0;
@@ -25,8 +20,9 @@
 		top:40px;	
 
 		&:before{
-			background:#222;
 			@include opacity(0.2);
+		
+			background:#222;
 			bottom:0;
 			content:"\0020";
 			position:absolute;
@@ -37,8 +33,6 @@
 
 	.share-networks-list{
 		li{
-//			background:none;
-//			border-bottom:none;
 			margin-bottom:0;
 			padding:0;
 		}
@@ -55,21 +49,19 @@
 }
 
 .frame-rolling-completion-header{
-	
+	@include roundies(header);
+
+	background-color: $rolling-header-bg-color;
 	border-bottom: 1px solid $outline;
 	height: 40px;
 
 	h1{
-		@include background(
-			url('../images/assets/noise.png')
-			#666
-		);
 		border-bottom: 1px solid $rolls-inset;
-		@include border-radius($radius $radius 0 0);
 		font-size: 16px;
 		height: 40px;
 		line-height: 2.4;
-//		padding-left: $defaultMargin;
+		margin: 0 auto;
+		max-width: 145px;
 		padding-right: $defaultMargin;
 		overflow: hidden;
 		text-align: center;
@@ -96,7 +88,7 @@
 			}
 		}
    &.roll-type-social {
-      padding-left: $defaultMargin;
+      padding: 0;
     }
 	}
 }

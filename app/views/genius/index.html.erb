@@ -1,0 +1,104 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <meta name="description" content="<%= Settings::Application.meta_description %>">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= Settings::Application.title %></title>
+  
+  <meta name="viewport" content="width=device-width">
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon"type="image/png" href="/favicon.png">
+  <%= include_stylesheets :common %>
+  <%= include_javascripts :common %>
+  <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
+</head>
+
+<body class="genius">
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+<div class="content-wrapper">
+	
+	<div class="genius-wrapper">
+	  <header class="genius-header clearfix">
+	    <h1 class="genius-logo ir">
+	      Shelby.tv
+	    </h1>
+	    <p class="genius-slogan">
+	      An amazing way to <br> discover and enjoy videos.
+	    </p>
+	  </header>
+	</div><!-- eo genius-wrapper -->
+
+	<form class="genius-search-form">
+	  <legend class="genius-caption">
+	    Generate a Genius Roll of videos by searching a topic, a celebrity, or anything else!
+	  </legend>
+
+	  <input type="text" id="genius-search-input" class="genius-search-input" name="search" placeholder="Arnold Schwarzenegger" />
+  
+	  <button type="submit" class="genius-search-submit">
+	    Create Roll
+	  </button>
+	</form>
+
+</div><!-- eo content-wrapper -->
+
+	<script>
+		$(function(){
+			$('.genius-search-form').submit(function() {
+
+				var search = $('.genius-search-form').children('.genius-search-input').val();
+
+				var params = {
+                        	  "q" : search,
+                        	  "max-results" : "50",
+                        	  "orderby" : "relevance"
+                        	};
+
+                        	// Create a callback
+                        	var cb = function(res){
+
+                                	// Create array of returned YouTube video URLs
+                                	var urls = new Array()
+					res.forEach(function(r){
+						if (r.link != undefined) {
+						  r.link.forEach(function(l){
+						  	if(l.rel != undefined && l.rel == "alternate") {
+							  if(l.href != undefined) {
+							    urls.push(l.href);
+							  }
+						  	}
+						  	});	
+						}
+						});
+
+					// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
+					$.post('//api.gt.shelby.tv/v1/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){ 
+						window.location.href = "http://gt.shelby.tv/roll/" + data.result.id;
+						});
+                        		};
+                        	
+                        	// Call ytQuery.query, passing params and your callback
+                        	ytQuery.query(params, cb); 
+
+				return false;
+			});
+		});
+	</script>
+
+  <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
+  <script>
+    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+</body>
+</html>

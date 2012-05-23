@@ -6,21 +6,21 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/gate.scss */
+/* line 3, ../../../app/stylesheets/partials/gate.scss */
 .no-access {
   margin-top: 30px;
 }
 
-/* line 12, ../../../app/stylesheets/partials/gate.scss */
+/* line 8, ../../../app/stylesheets/partials/gate.scss */
 .private-beta-access h2 {
   margin: 10px 0;
 }
-/* line 15, ../../../app/stylesheets/partials/gate.scss */
+/* line 11, ../../../app/stylesheets/partials/gate.scss */
 .private-beta-access p.login {
   width: 205px;
 }
 
-/* line 20, ../../../app/stylesheets/partials/gate.scss */
+/* line 16, ../../../app/stylesheets/partials/gate.scss */
 .email-gate {
   background-color: #101010;
   background: url("../images/email-gate/bg.png") no-repeat center center #101010;
@@ -30,36 +30,36 @@
   background-size: cover;
 }
 
-/* line 28, ../../../app/stylesheets/partials/gate.scss */
+/* line 22, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper {
   margin: 0 auto;
   width: 480px;
 }
 
-/* line 33, ../../../app/stylesheets/partials/gate.scss */
+/* line 27, ../../../app/stylesheets/partials/gate.scss */
 .content-wrapper {
   margin: 15% auto 0;
   width: 1020px;
 }
 
-/* line 38, ../../../app/stylesheets/partials/gate.scss */
+/* line 32, ../../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper {
   float: left;
   width: 500px;
 }
 
-/* line 42, ../../../app/stylesheets/partials/gate.scss */
+/* line 36, ../../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
 }
 
-/* line 45, ../../../app/stylesheets/partials/gate.scss */
+/* line 39, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 54, ../../../app/stylesheets/partials/gate.scss */
+/* line 48, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -69,7 +69,7 @@
   width: 50%;
 }
 
-/* line 68, ../../../app/stylesheets/partials/gate.scss */
+/* line 60, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -78,7 +78,7 @@
   width: 33%;
 }
 
-/* line 77, ../../../app/stylesheets/partials/gate.scss */
+/* line 69, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -87,26 +87,26 @@
   width: 205px;
 }
 
-/* line 85, ../../../app/stylesheets/partials/gate.scss */
+/* line 77, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #549738;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #549738, #3f722a);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #549738, #3f722a);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #549738, #3f722a);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #549738, #3f722a);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #549738, #3f722a);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
+  background: -webkit-linear-gradient(top, #549738, #3f722a);
+  background: -moz-linear-gradient(top, #549738, #3f722a);
+  background: -o-linear-gradient(top, #549738, #3f722a);
+  background: -ms-linear-gradient(top, #549738, #3f722a);
+  background: linear-gradient(top, #549738, #3f722a);
+  -moz-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
+  -webkit-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
+  -o-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
+  box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -webkit-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -o-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
   text-shadow: 0px 1px 2px #222222;
   border: none;
   color: #efefef;
@@ -117,9 +117,9 @@
   padding: 7px 19px;
 }
 
-/* line 104, ../../../app/stylesheets/partials/gate.scss */
+/* line 93, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
-  background: url("../images/assets/noise.png") #585858;
+  background: #585858;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -135,7 +135,7 @@
   padding: 10px;
   position: relative;
 }
-/* line 117, ../../../app/stylesheets/partials/gate.scss */
+/* line 104, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -156,7 +156,7 @@
   width: 10px;
 }
 
-/* line 133, ../../../app/stylesheets/partials/gate.scss */
+/* line 120, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -164,16 +164,16 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 142, ../../../app/stylesheets/partials/gate.scss */
+/* line 129, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 145, ../../../app/stylesheets/partials/gate.scss */
+/* line 132, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 150, ../../../app/stylesheets/partials/gate.scss */
+/* line 137, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -182,27 +182,27 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 159, ../../../app/stylesheets/partials/gate.scss */
+/* line 146, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 162, ../../../app/stylesheets/partials/gate.scss */
+/* line 149, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 167, ../../../app/stylesheets/partials/gate.scss */
+/* line 154, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 171, ../../../app/stylesheets/partials/gate.scss */
+/* line 158, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 176, ../../../app/stylesheets/partials/gate.scss */
+/* line 163, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -210,7 +210,7 @@
   width: 100%;
 }
 
-/* line 183, ../../../app/stylesheets/partials/gate.scss */
+/* line 170, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -219,14 +219,14 @@
   text-align: right;
 }
 
-/* line 191, ../../../app/stylesheets/partials/gate.scss */
+/* line 178, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
   border: none;
   display: block;
   float: right;
@@ -236,26 +236,26 @@
   width: 50%;
 }
 
-/* line 208, ../../../app/stylesheets/partials/gate.scss */
+/* line 193, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #007fb6;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #00a5cc, #007fb6);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
+  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
+  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
+  background: -o-linear-gradient(top, #00a5cc, #007fb6);
+  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
+  background: linear-gradient(top, #00a5cc, #007fb6);
+  -moz-box-shadow: 0 0 0 1px #0091d0;
+  -webkit-box-shadow: 0 0 0 1px #0091d0;
+  -o-box-shadow: 0 0 0 1px #0091d0;
+  box-shadow: 0 0 0 1px #0091d0;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 0 0 1px #0091d0;
-  -webkit-box-shadow: 0 0 0 1px #0091d0;
-  -o-box-shadow: 0 0 0 1px #0091d0;
-  box-shadow: 0 0 0 1px #0091d0;
   text-shadow: 0px 1px 2px #222222;
   border: none;
   color: #efefef;
@@ -266,19 +266,19 @@
   width: 17%;
 }
 
-/* line 228, ../../../app/stylesheets/partials/gate.scss */
+/* line 209, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 233, ../../../app/stylesheets/partials/gate.scss */
+/* line 214, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 239, ../../../app/stylesheets/partials/gate.scss */
+/* line 220, ../../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }

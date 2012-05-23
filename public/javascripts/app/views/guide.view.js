@@ -61,8 +61,13 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            //model : shelby.models.user
             model : shelby.models.rollFollowings
+          };
+          break;
+        case DisplayState.browseRollList :
+          displayComponents = {
+            viewProto : RollListView,
+            model : shelby.models.browseRolls
           };
           break;
         case DisplayState.standardRoll :
@@ -101,7 +106,10 @@
           break;
       }
 
-      var options = {model:displayComponents.model};
+      var options = {
+        model : displayComponents.model,
+        collection : displayComponents.collection
+      };
       if (displayComponents.limit) {
         options.limit = displayComponents.limit;
       }
@@ -173,6 +181,7 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
+        case libs.shelbyGT.DisplayState.browseRollList :
           // if the dashboard model hasn't been created yet, fetch it
           // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
           // as opposed to from what is currently displyed in the guide

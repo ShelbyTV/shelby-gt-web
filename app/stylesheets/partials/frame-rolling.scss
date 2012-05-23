@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .rolling-main{
 	border-top: 1px solid $outline;
@@ -37,9 +33,7 @@
 
 .rolling-main-header,
 .rolling-main-footer{
-	@include background(
-		url('../images/assets/noise.png') #555
-	);
+	@include background($rolling-header-bg-color);
 	@include border-radius($radius - 1 $radius - 1 0 0);
 
 	border-bottom:1px solid #4F4D51;
@@ -56,44 +50,20 @@
 	text-align: center;
 }
 
-.rolling-main-back{
-//	@include form-button-small;
-		@include button-primer;
-
-		left: 0;
-		margin: $defaultMargin - 2 $defaultMargin;
-		position: absolute;
-		top: 0;
+.rolling-main-back {
+	@extend .rolls-back;
 }
 
-.rolling-main-done{
-//	@extend .rolling-main-back;
-//	@include button-primer($flatShelbyBlue);
+.rolling-main-cancel {
+	@include x-button-primer;
+	left: 0;
+	margin: 6px;
+	position: absolute;
+	top: 0;	
+}
 
-	@extend .rolls-add;
-
-	background-color: $flatShelbyBlue;
-	@include background(
-		$softShelbyBlue
-	);
-	@include box-shadow(
-		inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%)
-	);
-	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
-//	display:none;
-//	margin: $defaultMargin - 2 $defaultMargin;
-	margin-top: $defaultMargin;
-//	position: absolute;
-//	right: 0;
-//	top: 0;
-//	width: 100%;
-
-	.spinner{
-		left:auto;
-		margin-left:auto;
-		margin-top:auto;
-		position:static;
-	}
+.rolling-main-done {
+	@include x-button-primer($shelby-blue);
 }
 
 .rolling-main-done.roll-it{
@@ -107,21 +77,18 @@
 .rolling-main-social {
 	@extend .rolling-main-done;
 
-	display:block;
 	float:right;
 	padding-left:0;
-//	padding-top:1px;
-//	padding-right:8px;
 
 	&:before{
 		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size:72%;
+		background-size:71%;
 		border-right:1px solid adjust-lightness($flatShelbyBlue,-5%);
 		content:"\0020";
 		float:left;
-		margin:1px 9px 1px 7px;
-		width:38px;
-		height:17px;
+		margin:0px 9px;
+		width:36px;
+		height:15px;
 	}
 }
 
@@ -129,14 +96,9 @@
 	@include transition-property(all);
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
-			//border-radii bug, experiment
-			@include border-radius($radius);
+	@include roundies;
 
-	@include background(
-		url('../images/assets/noise.png') 
-		#494949
-	);
-	
+	background-color: #494949;	
 	left:0;
 	position:absolute;
 	margin-left:100%;

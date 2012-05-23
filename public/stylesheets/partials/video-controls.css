@@ -6,7 +6,7 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 3, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls-wrapper {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -33,13 +33,13 @@
   z-index: 2;
 }
 
-/* line 23, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 19, ../../../app/stylesheets/partials/video-controls.scss */
 .user-inactive .video-player-controls-wrapper,
 .user-inactive .comment-overlay-wrapper {
   opacity: 0;
 }
 
-/* line 27, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 23, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls {
   background-color: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
@@ -75,14 +75,13 @@
   transition-delay: 0s;
 }
 
-/* line 43, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 38, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-controls.full-width {
   margin: 10px 40px 10px 10px;
 }
 
-/* line 47, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 42, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-control {
-  position: relative;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -91,10 +90,11 @@
   border-radius: 5px;
   margin: 0;
   padding: 0;
+  position: relative;
   width: 100%;
 }
 
-/* line 57, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 50, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
   border: none;
   height: 43px;
@@ -102,12 +102,12 @@
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 67, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 60, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 75, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 68, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -123,7 +123,7 @@
   position: absolute;
 }
 
-/* line 86, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 79, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -142,13 +142,13 @@
   width: 0;
 }
 
-/* line 97, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 90, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0092c1;
   margin-top: -8px;
 }
 
-/* line 106, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 97, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -161,16 +161,16 @@
   -o-box-shadow: 1px 0px 2px 1px black;
   box-shadow: 1px 0px 2px 1px black;
   background: #efefef;
-  height: 15px;
-  margin: -11px;
-  width: 15px;
-  position: absolute;
-  left: 0;
   cursor: pointer;
   cursor: ew-resize;
+  height: 15px;
+  left: 0;
+  margin: -11px;
+  position: absolute;
+  width: 15px;
 }
 
-/* line 122, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 111, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -180,23 +180,23 @@
   margin: 0 15px;
 }
 
-/* line 131, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 120, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 139, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 128, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 146, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 135, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 156, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 145, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

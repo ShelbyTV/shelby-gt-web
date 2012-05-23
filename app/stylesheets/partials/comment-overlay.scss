@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .comment-overlay-wrapper {
 	@include transition-property(opacity);
@@ -21,14 +17,14 @@
 	z-index:2;
 
 	.user {
-//		@include border-radius($radius);
+		background-color: #303030;
 		height: inherit;
 		margin-left: 25px;
 		margin-right: 25px;
 		max-width: 500px;
 		overflow-y: hidden;
-
 	}
+
 	.user-vcard{
 		border: none;
 	}
@@ -37,55 +33,17 @@
 		max-height: 2.5em;
 		overflow: hidden;
 	}
-
 }
 
 .comment-overlay-lining {
-//	border: 1px solid red;
 	display: none;
 	height: 67px;
 	max-width: 550px;
 	position: relative;
 }
 
-//.video-player-aside{
-
-//	.video-activity-list{
-//		border-left:1px solid black;
-//		border-right:1px solid black;
-//		height:67px;
-//		width:100%;
-
-//		li{
-//			display:none;
-//		}
-//		.first{
-//			display:block;
-//		}
-//	}
-
-//	width:473px;
-
-//}
-
-@mixin comment-overlay-buttons {
-	@extend .notype;
-	@include box-shadow(inset 0px 0px 1px 0px #333);
-
-	border: none;
-	height: inherit;
-	position: absolute;
-	top: 0;
-	width: 24px;
-
-	&.message-terminus {
-		background-image:none;
-		cursor:default;
-	}	
-}
-
 .comment-overlay-prev {
-	@include comment-overlay-buttons;
+	@include x-comment-overlay-buttons;
 	@include background(
 		url('../images/assets/comment_arrow_left.svg') no-repeat center center #303030 
 		//$softShelbyDarkGray
@@ -93,8 +51,9 @@
 	@include border-radius($radius 0 0 $radius);
 	left: 0;
 }
+
 .comment-overlay-next {
-	@include comment-overlay-buttons;
+	@include x-comment-overlay-buttons;
 	@include background(
 		url('../images/assets/comment_arrow_right.svg') no-repeat center center #303030
 	);

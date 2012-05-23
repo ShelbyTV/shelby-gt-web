@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 .logged-out-banner-wrapper{
 	bottom:0;
@@ -121,7 +117,7 @@
 
 @mixin logged-out-network-buttons{
 	@include buttonfont;
-	@include border-radius($radius);
+	@include roundies;
 
 	border:1px solid #222;
 	color:white;

@@ -1,8 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 		
 #guide-overlay-controls {
   bottom: 10px;
@@ -12,16 +8,15 @@
 }
 
 .guide-toggle {
-  @include border-radius($radius 0 0 $radius);  
-  @include box-shadow(2px 2px 5px 0px #333);
-  
-  @include darkgradient;
-  
   @include transition-property('width, right');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(.1s);
+
+  @include border-radius($radius 0 0 $radius);  
+  @include box-shadow(2px 2px 5px 0px #333);  
 	
+  background-color: #0e0e0e;
 	bottom: 0;
 	border: 1px solid #202020;
   border-right: none;
@@ -33,12 +28,13 @@
   width: 34px;
 	
 	.copy { 
-	  @include basefont;
-	  @include opacity(0.0);
     @include transition-property(opacity);
   	@include transition-duration(.5s);
   	@include transition-timing-function(ease-in-out);
   	@include transition-delay(0s);
+
+    @include basefont;
+    @include opacity(0.0);
   	
   	color: #fff;
     font-size: 14px;

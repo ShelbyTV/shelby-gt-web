@@ -1,45 +1,40 @@
-@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
-#roll-header,.roll-header {
-	@include background(
-		url('../images/assets/noise.png') $rollsBG
-	);
-	display:none;
-
-//	border-top:1px solid #222;
+#roll-header,
+.roll-header {
+	background-color: $rolls-bg-color;
+	display: none;
 }
 
 .rolls-menu {
-//	background:$rollsBG;
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 
 	li {
-		display:block;
-		float:left;
-		list-style-type:none;
-		margin:0;
-		padding:$defaultMargin;
-		width:75%;
+		display: block;
+		float: left;
+		list-style-type: none;
+		margin: 0;
+		padding: $defaultMargin;
+		width: 75%;
 		&:last-child {
-			padding-left:0;
-			width:25%;
+			padding-left: 0;
+			width: 25%;
 		}
 		&:nth-last-child(2){ 
 			display: none;
-			padding-left:0;
-			width:25%;
+			padding-left: 0;
+			width: 25%;
 		}
-		
 	}
 }
 
 .rolls-add {
-	@include rolls-menu-button;
+	@include x-button-primer($shelby-green);
+	
+	float: right;
+	margin-top: 0;
+	width: 100%;
 }
 
 .rolls-invite {
@@ -47,44 +42,35 @@
 }
 
 .rolls-share {
-	@extend .rolls-add;
-	@include box-shadow(inset -1px 0px 1px 0px #79cae7);
-	background:$flatShelbyBlue;
-	border-color:#00597C;
-	@include background(
-		$softShelbyBlue
-	);
+	@extend .rolling-main-done;
+	float: left;
+	margin-top: 0 !important;
+	width: 100%;
 }
 
 .rolls-leave {
-	@extend .rolls-add;
-	background:$flatShelbyGrayDeboss;
-	@include background(
-		$softShelbyGrayDeboss
-	);	
-	@include box-shadow(inset 0px 0px 1px 0px #111);
-	border: none;
-	margin: 1px;
+	@include x-button-primer;
+	float: right;
+	margin-top: 0;
 }
 
 .rolls-edit{
 	@extend .rolls-leave;
+	width: 100%;
 }
 
 .rolls-share-cancel {
 	@extend .rolls-leave;
-	border-color:#333;
+	margin-top: 0;
 }
 
 .share-dialog {
 	background:#585858;
-	border-bottom:1px solid #222;
 	padding:0;
 	display:none;
 	position:relative;
 	width:100%;
 	z-index:1;
-
 }
 
 .share-form {
@@ -109,7 +95,6 @@
 	label {
 		float: left;
 		font-weight: 500;
-//		font-size: 10px;
 		margin: $defaultMargin - 2 0 $defaultMargin - 5;
 		width: 100%;
 	}
@@ -117,10 +102,9 @@
 
 .share-comment {
 	position:relative;
-	//padding:$defaultMargin/2;
 
 	textarea {
-		@include border-radius($radius);
+		@include roundies(input);
 		
 		padding:$defaultMargin/2;
 		resize:none;
@@ -129,15 +113,14 @@
 
 	.video-shared {
 		@extend .video-saved;
-		@include border-radius($radius);
+		@include roundies;
 		
 		padding-top:15px;
 	}
 }
 
 .share-networks {
-//	float:left;
-//	width:50%;
+
 }
 
 .share-networks-list {
@@ -156,9 +139,7 @@
 .networks-twitter {
 	background: $flatNetworksUnselected;
 
-	@include background(
-		$softNetworksUnselected
-	);
+	@include background($softNetworksUnselected);
 	@include border-radius($radius/2);
 	@include box-shadow(inset 0px 1px 1px 0px #777);
 
@@ -168,10 +149,7 @@
 
 	.networks-twitter-button {
 		@extend .notype;
-		@include background(
-			url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center
-		);
-//		background-size: 80%;
+		@include background(url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center);
 		border: none;
 		display: block;
 		height: 100%;
@@ -184,24 +162,19 @@
 		@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
 	
 		.networks-twitter-button {
-			@include background(
-				url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center
-			);
+			@include background(url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center);
 		}
 		&:hover {
 			@include background($twitterBlue);
 		}
 	}
-
 }
 
 .networks-facebook {
 
 	background: $flatNetworksUnselected;
 
-	@include background(
-		$softNetworksUnselected
-	);
+	@include background($softNetworksUnselected);
 	@include border-radius($radius/2);
 	@include box-shadow(inset 0px 1px 1px 0px #777);
 
@@ -211,10 +184,7 @@
 
 	.networks-facebook-button {
 		@extend .notype;
-		@include background(
-			url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center
-		);
-//		background-size:80%;
+		@include background(url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center);
 		border: none;
 		display: block;
 		height: 100%;
@@ -227,9 +197,7 @@
 		@include box-shadow(inset 0px 1px 1px 0px #0179c1);
 	
 		.networks-facebook-button {
-			@include background(
-				url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center
-			);
+			@include background(url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center);
 		}
 		&:hover {
 			@include background($facebookBlue);
@@ -239,64 +207,18 @@
 }
 
 .share-submit {
-	display: block;
-//	float:right;
-//	width:50%;
-//	button {
-//		margin: $defaultMargin 0;
-//		position: relative;
-//		width: 100%;
-//	}
 }
 
 .share-submit-button {
-	@include form-submit-button($flatShelbyBlue);
+	@include x-button-primer($shelby-blue);
+
+	margin-top: 10px;
+	width: 100%;
+
 	.spinner {
-		left:auto;
-		margin-left:auto;
-		margin-top:auto;
-		position:static;
+		left: auto;
+		margin-left: auto;
+		margin-top: auto;
+		position: static;
 	}
 }
-//.rolls {
-//	background:$myBlue;
-//	margin: 0;
-//	padding:0;
-	
-//	a {
-//		border:1px solid darkGreen;
-//		display:block;
-//	}
-
-//	h1 {
-//		line-height:2.231;
-//		position:relative;
-//	}
-
-//	img {
-//		float:left;
-//		margin-right:$defaultMargin;
-//		width:50px;
-//	}	
-	
-//	li {
-//		list-style-type:none;
-
-//	}
-//	.public {
-//		h1:after {
-//			content: "%";
-//			padding-right:$defaultMargin/1.5;
-//			float:right;
-//		}
-
-//	}
-//	.private {
-//		@extend .public;
-		
-//		h1:after {
-//			content: "&";
-//		}
-//	}
-
-//}

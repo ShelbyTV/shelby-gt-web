@@ -21,7 +21,7 @@
   margin-left: 10px;
 }
 
-/* line 23, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 22, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -35,7 +35,7 @@
   overflow: hidden;
   width: 36px;
 }
-/* line 32, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 31, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail img {
   display: block;
   height: 100%;

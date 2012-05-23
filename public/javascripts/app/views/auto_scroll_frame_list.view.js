@@ -19,12 +19,12 @@
       PagingListView.prototype._cleanup.call(this);
     },
 
-    addOne : function(item){
+    internalAddOne : function(item){
       try {
-        PagingListView.prototype.addOne.call(this, item);
+        PagingListView.prototype.internalAddOne.call(this, item);
       } catch (error) {
 				// We are not loading G. Analytics in development env so just log to console.
-				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.addOne', e.message]); }
+				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', e.message]); }
 				catch(e) {
           console.log("_gaq not loaded in development env:", error.message);
         }
@@ -67,6 +67,11 @@
 
     _scrollTo : function(element) {
       this.parent.scrollToChildElement(element);
+    },
+
+    //ListView overrides
+    _listItemViewAdditionalParams : function() {
+      return {activationStateModel:shelby.models.guide};
     }
 
   });

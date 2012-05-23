@@ -200,21 +200,31 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(params){
+
     this._setupTopLevelViews({showSpinner: true});
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+
+    var displayState, rollCollection, fetchUrl;
+    if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
+      displayState = libs.shelbyGT.DisplayState.browseRollList;
+      rollCollection = shelby.models.browseRolls;
+      fetchUrl = shelby.config.apiRoot + '/roll/browse';
+    } else {
+      displayState = libs.shelbyGT.DisplayState.rollList;
+      rollCollection = shelby.models.rollFollowings;
+      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
+    }
+
+    shelby.models.guide.set('displayState', displayState);
+
     var self = this;
     this._hideSpinnerAfter((function(){
-      self._addHotRolls();
-      return shelby.models.rollFollowings.fetch({success:function(){
-        self._scrollToActiveGuideListItemView();
-      }});
+      return rollCollection.fetch({
+        success : function(){
+          self._scrollToActiveGuideListItemView();
+        },
+        url : fetchUrl
+      });
     })());
-  },
-
-  _addHotRolls : function(){
-    libs.utils.HotRollsJson.forEach(function(rollJson){
-      shelby.models.rollFollowings.get('roll_followings').add(new libs.shelbyGT.RollModel(rollJson));
-    });
   },
 
   displaySaves : function(){
@@ -336,6 +346,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     if(!opts.hideRollHeader){
       shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
+    }
+    if(!opts.hideGuidePresentationSelector){
+      shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guidePresentation});
     }
     shelby.views.filterControls = shelby.views.filterControls || new libs.shelbyGT.FilterControlsView({model:shelby.models.guide, options:opts.filterControlsOptions});
     shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});

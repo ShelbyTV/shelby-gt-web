@@ -1,7 +1,4 @@
-@import "base",
-		"compass",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
 h1,h2,h3,h4,h5,h6{
 	font-weight:500;
@@ -18,18 +15,15 @@ html,body{
 }
 
 body{
-	@include fontcolor;
 	@include basefont;
 
+	background-color: #000;
 	bottom:0;
+	color: $text;
 	left:0;
 	position:absolute;
 	right:0;
 	top:0;
-
-	@include background(
-		url('../images/assets/noise.png') #000
-	);
 
 }
 
@@ -98,25 +92,14 @@ a{
 	position:absolute;
 	top:88px;
 	width:100%;
+	z-index: -1;
 }
 
 .touch .content-body {
 	overflow: hidden;	
 }
 
-//.content-body{
-//	bottom:0;
-//	left:0;
-//	position:absolute;
-//	right:0;
-//	top:88px;
-//	overflow-y:scroll;
-//}
-
-
 .menu{
-	@include box-shadow(0px 2px 5px 0px #333);
-
 	border-bottom:1px solid #222;
 	position:relative;
 	overflow:hidden;

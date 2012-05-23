@@ -11,7 +11,7 @@
 	</fieldset>
 <% if (components.networkToggles) { %>
 	<fieldset class="share-networks">
-			<legend>Share to</legend>
+			<legend>Also share on…</legend>
 		<ul class="share-networks-list">
 			<li class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %>">
 				<button onclick="return false;" class="networks-twitter-button">Twitter</button>
@@ -32,12 +32,12 @@
 	</fieldset>
 <% } %>
 
-	<fieldset class="share-submit">
+<!-- 	<fieldset class="share-submit">
 		<button class="js-social rolling-main-social js-track-event" data-ga_category="Rolling" data-ga_action="share button" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 	    Share
 	  </button>
 	  <button class="js-done rolling-main-done">
 	    Roll it
 	  </button>
-	</fieldset>
+	</fieldset> -->
 </form>

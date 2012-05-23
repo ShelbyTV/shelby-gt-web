@@ -6,12 +6,12 @@
       'dashboardEducated' : false,
       'rollEducated' : false,
       'rollListEducated' : false,
+      'browseRollListEducated' : false,
       'standardRollEducated' : false,
       'streamEducated' : false,
       'rollNav' : false,
       'rollListNav' : false,
-      'streamNav' : false,
-      'framesRolled' : 0
+      'streamNav' : false
     },
 
     initialize : function(){

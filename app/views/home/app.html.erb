@@ -4,18 +4,12 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	<% if @video_info %>
-		<%= render :partial => "fb_meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
-	<% else %>
-		<meta name="description" content="<%= Settings::Application.meta_description %>">
-	<% end %>
+  <%= render :partial => "meta_info", :locals => { :video_info => @video_info, :user_info => @user_info, :permalink => @permalink } %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<% if @video_info %>
-	  <title>a shelby.tv video: <%= @video_info['video']['title'] %></title>
-	<% else %>
-		<title><%= Settings::Application.title %></title>
-	<% end %>
+  <title>
+    <%= render :partial => "title_tag", :locals => { :video_info => @video_info, :user_info => @user_info} %>
+  </title>
 
 	<meta name="csrf-token" content="<%= @csrf_token %>">
 
@@ -28,7 +22,7 @@
   <%= include_stylesheets :common %>
   <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
   
-	<!-- Testing out this exception handler -->
+	<!-- Testing out this exception handler
 	<script>
 	    var _errs=["4f9837dac301559577161bc1"];(function(a,b){a.onerror=function(){_errs.push(arguments)};
 	    var d=function(){var a=b.createElement("script"),c=b.getElementsByTagName("script")[0];
@@ -36,6 +30,7 @@
 	    c.parentNode.insertBefore(a,c)};a.addEventListener?a.addEventListener("load",d,!1):
 	    a.attachEvent("onload",d)})(window,document);
 	</script>
+	-->
 
   <%= include_javascripts :common, :shelby %>
 </head>
@@ -56,6 +51,7 @@
 	        <div id="dailymotion-player-holder"></div>
 	        <div id="bliptv-player-holder"></div>
 	        <div id="ooyala-player-holder"></div>
+	        <div id="espn-player-holder"></div>	
 	        <div id="hulu-player-holder">
 	          <div id="videoPlayerComponent"></div>
 	          <div id="adComponent"></div>
@@ -95,6 +91,9 @@
 						<ul class="video-guide clearfix">
 							<!-- contents in menu.jst -->
 						</ul>
+						<div id="js-guide-presentation-selector" class="guide-presentation-selector">
+					    <!-- content filled in by GuidePresentationSelctorView -->
+					  </div>
 						<div id="js-filter-controls" class="filter-controls">
 					    <!-- content filled in by FilterControlsView -->
 					  </div>

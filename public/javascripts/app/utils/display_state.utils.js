@@ -1,6 +1,7 @@
 libs.shelbyGT.DisplayState = {
   dashboard : 'dashboard',
   rollList : 'rollList',
+  browseRollList : 'browseRollList',
   standardRoll : 'standardRoll',
   watchLaterRoll : 'watchLaterRoll',
   userPersonalRoll : 'userPersonalRoll',

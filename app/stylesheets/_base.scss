@@ -8,28 +8,176 @@
  * @import "compass/reset";
  */
 
+@mixin darkgradient {
+	background: $darkGradientBot;
+  @include background-image($darkLinearGradient);
+}
+
+@mixin basefont{
+	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+@mixin inputfont{
+	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+@mixin buttonfont{
+	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
 //variables must be announced here.
-$font-size: 13px;
-$size: "62.5%" !default;
+$font-size   : 13px;
+$size        : "62.5%" !default;
+$button-size : large !default; 		//see @mixin x-button-primer()
+$button-back : normal !default; 	//see @mixin x-button-primer()
 
 //radius, for border-radius, etc.
-$radius: 5px;
-$radiusHeader: $radius - 2 $radius - 2 0 0;
-$radiusFooter: 0 0 $radius - 2 $radius - 2;
+$radius        : 5px;
+$button-radius : 5px;
+$input-radius  : 3px;
+$roundies-type : normal !default;  //see @mixin roundies()
+
+@mixin roundies($roundies-type){
+	@if $roundies-type == normal {
+		@include border-radius($radius);	
+	} 
+	@else if $roundies-type == input {
+		@include border-radius($radius - 2);
+	} 
+	@else if $roundies-type == header {
+		@include border-radius($radius $radius 0 0);
+	}
+}
+
 
 //spacing
-$defaultMargin: 10px;
-$margin: 0.5em;
+$defaultMargin  : 10px;
+$default-margin : 10px;
+$margin         : 0.5em;
 
+//border colors
 $outline : #333;
+$inset   : #333;
+$outset  : #555;
 
-//colors
+//border styles
+$frame-stroke : 1px solid $outline;
+
+//text-level colors
 $text: #dcddde;
-
 $headerNavLink: #d8d8d8;
-$settingsBG: #2b2a2a;
 
+//background colors
+$base-bg-color           : #494949;
+$header-bg-color         : #2c2c2c;
+$header-outline          : #202020;
+$filter-bg-color			   : #585858;
+$video-card-color        : #404040;
+$video-card-thumbnail    : #494949;
+$rolling-header-bg-color : #555;
+$rolls-bg-color 			   : #585858;
+
+$settingsBG: #2b2a2a;
 $rollsBG: #585858;
+
+//special colors
+$primer-color     : #343434 !default;
+$shelby-blue      : #0071a3;
+$shelby-gray      : #343434;
+$shelby-green     : #428e3a;
+$shelby-purple    : #693a7b;
+$shelby-red       : #cc1235;
+$shelby-yellow    : #d5cd39;
+
+$education-yellow : #f9f15c;
+
+$facebook-blue    : #013e80;
+$twitter-blue     : #00a2d1;
+$tumblr-blue      : #2f445b;
+
+
+@mixin x-comment-overlay-buttons {
+	@extend .notype;
+	@include box-shadow(inset 0px 0px 1px 0px #333);
+
+	border: none;
+	height: inherit;
+	position: absolute;
+	top: 0;
+	width: 24px;
+
+	&.message-terminus {
+		background-image:none;
+		cursor:default;
+	}	
+}
+
+@mixin x-tab-primer($primer-color){
+	background-color: $primer-color;
+	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include buttonfont;
+	@include text-shadow(0px -1px 0px #333);
+
+	border: 1px solid adjust-lightness($primer-color,-20%);
+	color: #efefef;
+	float: left;
+	height: 27px;
+	margin-top: 1px;
+	padding: 10px 10px;
+}
+
+@mixin x-button-primer($primer-color,$button-size,$button-back){
+	background-color: $primer-color;
+	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+	@include border-radius($button-radius);
+	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include buttonfont;
+	@include text-shadow(0px -1px 0px #333);
+	border: 1px solid adjust-lightness($primer-color,-20%);
+	color: #efefef;
+
+	@if $button-back != back {
+		
+		//for non-back buttons, there are two sizes:	
+		@if $button-size == small {
+			padding: 4px 8px;
+		} @else {
+			padding: 6px 13px
+		}
+
+	} @else {
+
+		//the button's text should be inside this <i> element
+		//it fixes the z-index so that the :after element doesn't hide the text
+		i {
+			font-style: normal;
+			position: relative;
+			z-index: 1;
+		}
+
+		padding: 6px 13px 6px 8px;
+
+		&:after {
+			background-color: $primer-color;
+			@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
+			@include border-radius(1px 0 0 4px);
+			@include box-shadow(inset 1px 0 0 0 adjust-lightness($primer-color,25%));
+			@include rotate($default-rotate);
+
+			border-bottom: 1px solid adjust-lightness($primer-color,-20%);
+			border-left: 1px solid adjust-lightness($primer-color,-20%);
+			content: "\0020";
+			display: block;
+			height: 18px;
+			left: -8px;
+			position: absolute;
+			top: 3.75px;
+			width: 18px;
+		}		
+	}
+}
+
+//ABSORBING BELOW INTO REWLY REFACTORED SASS ABOVE
 
 $myBlue: #6666FF;
 $myGreen: #ddFFdd;
@@ -38,8 +186,8 @@ $shelbyGreen: #549738;
 $shelbyBlue: #0f8db8;
 $shelbyProgressBlue: #0092c1;
 
-$outset : #252525;
-$inset : #4f4d51;
+//$outset : #252525;
+//$inset : #4f4d51;
 
 $rolls-inset : #333;
 $rolls-outset : #555;
@@ -47,7 +195,6 @@ $rolls-outset : #555;
 $save : #2291c2;
 
 //border styles
-$articleStroke : 1px solid $outline;
 $menuStroke : 1px solid black;
 $saveStroke : 2px solid $save;
 
@@ -126,147 +273,4 @@ $softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
 $flatNetworksUnselected: #474747;
 $softNetworksUnselected: linear-gradient(top, #646464, $flatNetworksUnselected);
 
-@mixin softgradient {
-	background-color: $gradientDark;
-	@include background($softLinearGradient);
-}
-
-//dark gradient styles
-$darkGradientTop: #141414;
-$darkGradientBot: #0e0e0e;
-
-$darkLinearGradient : linear-gradient(top, $darkGradientTop, $darkGradientBot);
-
-@mixin darkgradient {
-	background: $darkGradientBot;
-  @include background-image($darkLinearGradient);
-}
-
-@mixin roundies{
-	@include border-radius($radius);
-
-}
-
-@mixin basefont{
-	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin buttonfont{
-	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-}
-
-@mixin fontcolor {
-	color: $text;
-}
-@mixin fontcolorLight{
-	color: #efefef;
-}
-
-
-//button primer, for consistency's sake
-
-$top-color: #343434 !default;
-$color: #4a4a4a !default;
-
-@mixin button-primer($color){
-	background: $color;
-	@include background(linear-gradient(top, adjust-lightness($color,5%), $color));
-	@include border-radius($radius);
-	@include buttonfont;
-	@include box-shadow(inset -1px 0px 1px 0px #444);
-	
-//	border: 1px solid adjust-lightness($color,-20%);
-	border: 1px solid #222;
-	color: #efefef;
-	display: block;
-//	float:left;
-	font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-	font-size: $font-size;
-	font-weight: 300;
-//	height:23px;
-	line-height:1.5;
-	margin:3px;
-	padding:1px 8px;
-	text-shadow:0px 1px 2px #222;
-//	width:auto;
-}
-
-
-@mixin button-basics($top,$bottom,$noise){
-	@include border-radius($radius);
-	@include buttonfont;
-
-	border:1px solid #222;
-	color:#efefef;
-	display:block;
-}
-
-@mixin rolls-menu-button{
-	@include border-radius($radius);
-	@include buttonfont;
-	background:$flatShelbyGreen;
-	@include background(
-		$softShelbyGreen
-	);
-	@include box-shadow(inset -1px 0px 1px 0px #85cc66);
-
-	border:1px solid adjust-lightness($flatShelbyGreen, -5%);
-	color:#efefef;
-	display:block;
-	line-height:2.5;
-	margin:0;
-	padding:0;
-	text-shadow:0px 1px 2px #222;
-	width:100%;
-}
-
-$color: red !default;
-
-@mixin form-submit-button($color){
-	@include border-radius($radius);
-	@include buttonfont;
-	background: $color;
-	@include background(
-		linear-gradient(top, adjust-lightness($color, 15%), $color)
-	);
-	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($color, 20%));
-
-	border:1px solid adjust-lightness($color, -15%);
-	color:#efefef;
-	display:block;
-	height:34px;
-	float:inherit;
-	line-height:2.5;
-	margin:$defaultMargin 0;
-	padding:0 10%;
-	text-shadow:0px 1px 2px #222;
-	width:81px;
-}
-
-@mixin form-button-small{
-	@include border-radius($radius);
-	@include buttonfont;
-	@include background(
-		$softShelbyGrayButton
-	);
-	@include box-shadow(inset -1px 0px 1px 0px #444);
-	
-	border:1px solid #222;
-	color:#efefef;
-	display:block;
-	float:left;
-	font-size:13px;
-	height:23px;
-	line-height:1.5;
-	margin:3px;
-	padding:0 5px;
-	text-shadow:0px 1px 2px #222;
-	width:auto;
-}
-
-
-
+@import "compass/css3";

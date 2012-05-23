@@ -15,13 +15,12 @@
     float:left;
 		font-size:14px;
 		line-height:2.5;
-
 		margin-left: 10px;
 	}
 }
 
 .roll-item-thumbnail{
-	@include border-radius($radius);
+	@include roundies;
 
 	display:block;
 	float:left;

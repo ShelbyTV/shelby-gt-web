@@ -1,9 +1,5 @@
 .video-guide {
-	@include background(
-		url('../images/assets/noise.png'),
-		$softLinearGradient
-	);
-	@include box-shadow(0px 1px 3px 1px #222);
+	@include background($softLinearGradient);
 
 	margin: 0;
 	padding: 0; 
@@ -15,6 +11,7 @@
 		float: left;
 		height: 42px;
 		width: 50%;
+
 		&:nth-of-type(4) {
 			@include box-shadow(inset 1px 1px 1px #4d4d4d);
 			border-right: none;
@@ -22,7 +19,7 @@
 		}
 	}
 	button, button:visited {
-		@include box-shadow(inset 1px 1px 1px #4d4d4d);
+		@include box-shadow(inset 0px 1px 0px #4d4d4d);
 		@include basefont;
 
 		border: none;
@@ -31,7 +28,6 @@
 		font-size: 11px;
 		height: inherit;
 		line-height: 5.5;
-//		padding-top: 26px;
 		text-align: center;
 		text-decoration: none;
 		text-transform: lowercase;
@@ -39,11 +35,11 @@
 
 
 		&:hover {
-			@include box-shadow(inset 0px 0px 5px #666);
+			@include box-shadow(inset 0px 1px 0px #666);
 			background-color: #444;
 		}
 		&:active {
-			@include box-shadow(inset 0px 0px 10px black);
+			@include box-shadow(inset 0px 0px 10px #222);
 		}
 
 	}
@@ -54,10 +50,10 @@
 	}
 
 	.active-tab {
-		@include box-shadow(inset 0px 2px 6px 0px #101010);
+		@include box-shadow(inset 0px 1px 7px 0px #202020);
 
 		&:hover {
-			@include box-shadow(inset 0px 1px 4px 0px #111);
+			@include box-shadow(inset 0px 1px 7px 0px #111);
 //			background-color: green;
 		}
 	}

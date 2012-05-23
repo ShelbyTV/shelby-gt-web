@@ -1,12 +1,39 @@
 libs.shelbyGT.ListView = Support.CompositeView.extend({
-  
+
+  _listItemViews : [],
+
   tagName : 'ul',
 
   className : 'list',
 
+  /*
+    The source data for the list view can come from either a standard Backbone collection
+    or a collection (created by a Relation) that is an attribute of a Relational model
+
+    Specify a standard backbone collection by creating the list view as follows:
+
+    listView = new ListView({collection:someBackboneCollection});
+
+    Specify a collection that is an attribute of a Relational model as follows:
+
+    listView = new ListView({model:someRelationalModel, collectionAttribute:'someAttributeName'});
+
+    NOTE: If both collection and collectionAttribute are specified, collection will take precedence.
+  */
+
   options : {
+    simulateAddTrue : true,
+    collection : null,
     collectionAttribute : 'listCollection',
-    listItemView : 'libs.shelbyGT.ListItemView',
+    /*
+      listItemView - a factory method for creating the view for each individual list item given its model
+      this can be either:
+        1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
+        2) a callback of the form function(item, params) which creates and returns a view, where
+          item is the model for the view to be created
+          params are any additional parameters to be passed to the new view's constructor
+    */
+    listItemView : 'ListItemView',
     insert : {
       position : 'append',
       selector : null
@@ -14,15 +41,39 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    this.model.bind('add:'+this.options.collectionAttribute, this.addOne, this);
-    this.model.bind('remove:'+this.options.collectionAttribute, this.removeOne, this);
+    if (this.options.collection) {
+      this.options.collection.bind('add', this.sourceAddOne, this);
+      this.options.collection.bind('remove', this.sourceRemoveOne, this);
+      this.options.collection.bind('reset', this.sourceReset, this);
+    } else {
+      this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+      this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+      if (this.options.simulateAddTrue) {
+        this._simulatedMasterCollection = new Backbone.Collection();
+      }
+    }
+    this._displayCollection = new Backbone.Collection();
+    this._displayCollection.bind('add', this.internalAddOne, this);
+    this._displayCollection.bind('reset', this.internalReset, this);
     this._initializeEducation();
+  },
+
+  _cleanup : function(){
+    if (this.options.collection) {
+      this.options.collection.unbind('add', this.sourceAddOne, this);
+      this.options.collection.unbind('remove', this.sourceRemoveOne, this);
+      this.options.collection.unbind('reset', this.sourceReset, this);
+    } else {
+      this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+      this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+    }
+    this._displayCollection.unbind('add', this.internalAddOne, this);
+    this._displayCollection.unbind('reset', this.internalReset, this);
   },
 
   _initializeEducation : function(){
     var self = this;
-    if (!this._userHasBeenEducated() && this._isEducationDisplayState()){
-      var self = this;
+    if (!this._userHasBeenEducated()){
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
@@ -34,14 +85,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     return shelby.models.user.get('app_progress').get(shelby.models.guide.get('displayState')+'Educated');
   },
 
-  _isEducationDisplayState : function(){
-    // if we're rolling a frame, we don't want education
-    return shelby.models.user.get('app_progress').get('framesRolled')===0;
-  },
-
-  // delay before displaying education view 
+  // delay before displaying education view
   _educationTimeoutMap : {
     'rollList' : 1000,
+    'browseRollList' : 1000,
     'dashboard' : 2000,
     'standardRoll' : 2000,
     'watchLaterRoll' : 1000
@@ -57,43 +104,94 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     console.log('_displayListEducationView', arguments);
   },
 
-  _cleanup : function(){
-    shelby.models.user.get('app_progress').set('framesRolled', 0);
-    this.model.unbind('add:'+this.options.collectionAttribute, this.addOne, this);
-    this.model.unbind('remove:'+this.options.collectionAttribute, this.removeOne, this);
-  },
-
-  addOne : function(item){
-    if (!this.filter || this.filter(item)) {
-      var childView = this._constructListItemView(item);
-      if (this.options.insert && this.options.insert.position) {
-        switch (this.options.insert.position) {
-          case 'append' :
-            this.appendChild(childView);
-            return;
-          case 'before' :
-            if (this.options.insert.selector) {
-              this.insertChildBefore(childView, this.options.insert.selector);
-              return;
-            }
-        }
-      }
-
-      // default behavior if not enough options were supplied
-      this.appendChild(childView);
+  sourceAddOne : function(item){
+    if (!this._filter || this._filter(item)) {
+      this._displayCollection.add(item);
+    }
+    // there's no way to effectively specify add:true for a Backbone Relational collection
+    // we can simulate it by storing all of the contents the relational collection ever loaded,
+    // and using this as a surrogate for the relational collection itself when re-filtering
+    if (!this.options.collection && this.options.simulateAddTrue) {
+      this._simulatedMasterCollection.add(item);
     }
   },
 
-  removeOne : function(item){
+  sourceRemoveOne : function(item){
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
     }
   },
 
+  sourceReset : function(sourceCollection){
+    //only happens when our source collection is a standard backbone collection
+    //and not a collection inside a Relational Model
+    this._displayCollection.reset(sourceCollection.models);
+  },
+
+  internalAddOne : function(item){
+    var childView = this._constructListItemView(item);
+    //store a reference to all list item child views so they can be removed/left without
+    //removing any other child views
+    this._listItemViews.push(childView);
+    if (this.options.insert && this.options.insert.position) {
+      switch (this.options.insert.position) {
+        case 'append' :
+          this.appendChild(childView);
+          return;
+        case 'before' :
+          if (this.options.insert.selector) {
+            this.insertChildBefore(childView, this.options.insert.selector);
+            return;
+          }
+      }
+    }
+
+    // default behavior if not enough options were supplied
+    this.appendChild(childView);
+  },
+
+  internalReset : function(){
+    var self = this;
+    //we have to completely repopulate the contents of the view, so remove
+    //all the existing list items
+    _(this._listItemViews).each(function(view) {
+        view.leave();
+    });
+    this._listItemViews.length = 0;
+    //refill the view with the new contents
+    this._displayCollection.each(function(item){
+      self.internalAddOne(item);
+    });
+  },
+
   // sub-classes override for custom filtering
   // this should be a function that returns true to include item in the list view, otherwise false
-  filter : null,
+  _filter : null,
+
+  // can also update the filter dynamically at run-time
+  updateFilter : function(filterFunction) {
+    this._filter = filterFunction;
+    if (this._displayCollection) {
+      var sourceCollection;
+      if (this.options.collection) {
+        sourceCollection = this.options.collection;
+      } else {
+        // if we're re-filtering we need to start with the full contents of the source collection
+        // In Backbone Relational, these get overwritten with each progressive-loading fetch, so we
+        // have the option of keeping a full copy of the collection within this list view as our "master copy"
+        // to revert to before changing the filter
+        sourceCollection = this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
+      }
+      var newContents;
+      if (filterFunction) {
+        newContents = sourceCollection.filter(filterFunction);
+      } else {
+        newContents = sourceCollection.models;
+      }
+      this._displayCollection.reset(newContents);
+    }
+  },
 
   _findViewByModel : function(model){
     return function(view){
@@ -102,12 +200,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _constructListItemView : function(item){
-    var proto;
+    var params = _(this).result('_listItemViewAdditionalParams');
     if (typeof this.options.listItemView === 'function'){
-      return this.options.listItemView(item);
+      return this.options.listItemView(item, params);
     } else {
-      return new libs.shelbyGT[this.options.listItemView]({model:item});
+      return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
-  }
+  },
+
+  // sub-classes override to pass additional parameters to the constructors of the list item views
+  // this can be an object or a function that returns an object
+  _listItemViewAdditionalParams : {}
 
 });
