@@ -22,7 +22,7 @@ class HomeController < ApplicationController
       @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
       if @video_info
         @video_embed = @video_info['video']['embed_url']
-        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], @video_info['frame']['id']) if @video_info
+        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], @video_info['frame']['id'])
       end
     elsif path_match = /user\/(\w*)\/personal_roll/.match(params[:path])
       user_nickname = path_match[1]
