@@ -35,7 +35,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (this._components.spinner) {
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: this.$('.js-submit-share')[0],
-        hidden : true,
         replacement : true,
         size : 'small'
       });

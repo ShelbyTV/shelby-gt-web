@@ -1,7 +1,6 @@
 libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
   
   options : {
-    hidden: false,
     replacement: false,
     size : 'small'
   },
@@ -14,7 +13,7 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
 
   _replacement : null,
 
-  _isSpinning : true,
+  _isSpinning : false,
 
   initialize : function() {
     if (this.options.replacement) {
@@ -41,14 +40,6 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
       }
     }
     this._isSpinning = false;
-  },
-
-  render : function(){
-    if (this.options.hidden) {
-      this.hide();
-    } else {
-      this.show();
-    }
   }
 
 });

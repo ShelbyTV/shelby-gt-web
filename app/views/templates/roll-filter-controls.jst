@@ -8,13 +8,15 @@
 <% } %>
 
 <h2 class="current-roll">
+	<% var rollTitle = roll.get('title') %>
 	<span class="current-roll-avatar">
-		<!-- <span> -->
-		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
-		<!-- </span> -->
+		<% if (rollTitle) { %>
+			<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
+			alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+		<% } %>
 	</span>
 	<span class="roll-title-text">
-		<%= roll.get('title') %>
+		<%= rollTitle || '' %>
 	</span>
 	<span id="js-roll-name-change" class="roll-name-change">
 		<input value="<%= roll.get('title') %>" size="15"/>

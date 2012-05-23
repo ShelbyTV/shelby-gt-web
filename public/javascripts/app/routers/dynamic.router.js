@@ -357,10 +357,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var rollModel;
     if (typeof(roll) === 'string') {
       // if roll is a string, its the id of the roll to display, so get or construct a model for that id
-      var followedRoll = shelby.models.user.get('roll_followings').find(function(rollToCompare){
-        // if the roll is one the user follows, we want to use the existing model in the user's roll followings collection
-        return rollToCompare.id == roll;
-      });
+      // if the roll has been loaded previously, we can find it in the Backbone Relational Store
+      var followedRoll = Backbone.Relational.store.find(libs.shelbyGT.RollModel, roll);
       rollModel = followedRoll || new libs.shelbyGT.RollModel({id:roll});
     } else {
       // if roll is a Model, just use it
