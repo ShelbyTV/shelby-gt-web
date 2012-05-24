@@ -36,7 +36,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       shelby.models.user.fetch({
         global: false,
         success: function() {
-          self._reroute();
+          shelby.models.rollFollowings.fetch({
+            success : function() {
+              self._reroute();
+            }
+          });
         },
         error: function(){
           self.initAnonymous(url);
@@ -47,7 +51,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   initAnonymous : function(url){
     // init anon user -> nav to featured roll or url specified roll
     shelby.models.user = new libs.shelbyGT.AnonUserModel();
-    this.navigate(url ? '/'+url : '/roll/'+shelby.models.user.get('roll_followings').first().id, {trigger:false});
+    this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
     this._reroute();
   },
 

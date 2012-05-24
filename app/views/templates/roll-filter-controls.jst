@@ -1,11 +1,6 @@
-<% /*var userFollowsRoll = shelby.models.user.followsRoll(roll);*/ %>
-<% var userFollowsRoll = true; %>
-<% if (userFollowsRoll) { %>
-	<button id="js-rolls-back" class="rolls-back js-track-event" data-ga_category="Roll List" data-ga_action="back" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-<!-- 		<i></i>
- -->		<i>Back</i>
-	</button>
-<% } %>
+<button id="js-rolls-back" class="rolls-back js-track-event" data-ga_category="Roll List" data-ga_action="back" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+  <i>Back</i>
+</button>
 
 <h2 class="current-roll">
 	<% var rollTitle = roll.get('title') %>
@@ -23,21 +18,19 @@
 	</span>
 </h2>
 
-<% if (userFollowsRoll) { %>
-	<ul class="rolls-list-nav clearfix">
-		<li>
-			<button id="js-roll-back" class="roll-back js-track-event" data-ga_category="Roll List" data-ga_action="previous roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-				Previous Roll
-			</button>
-		</li>
-		<li>	
-			<button id="js-roll-next" class="roll-next js-track-event" data-ga_category="Roll List" data-ga_action="next roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-				Next Roll
-			</button>
-		</li>
-	</ul>
-	
-	<button id="js-roll-delete" class="roll-delete js-track-event" data-ga_category="Roll List" data-ga_action="delete" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-		Delete
-	</button>
-<% } %>
+<ul class="rolls-list-nav clearfix">
+	<li>
+		<button id="js-roll-back" class="roll-back js-track-event" data-ga_category="Roll List" data-ga_action="previous roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+			Previous Roll
+		</button>
+	</li>
+	<li>
+		<button id="js-roll-next" class="roll-next js-track-event" data-ga_category="Roll List" data-ga_action="next roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+			Next Roll
+		</button>
+	</li>
+</ul>
+
+<button id="js-roll-delete" class="roll-delete js-track-event" data-ga_category="Roll List" data-ga_action="delete" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+	Delete
+</button>

@@ -112,12 +112,9 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   _roll : function(socialShare){
-    // the frame rolling view only needs to respond to an intial fetch of user roll followings,
-    // not to subsequent updates of the user model, so we pass it a private clone of the user model
-    // to bind to and fetch once
     if (!this._frameRollingView) {
       var privateUserModel = shelby.models.user.clone();
-      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model,user:privateUserModel});
+      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this.appendChildInto(this._frameRollingView, 'article');
       // dont reveal the frame rolling view until the rolls that can be posted to have been fetched
       // via ajax
@@ -127,7 +124,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
         self.$('.js-rolling-frame').addClass('rolling-frame-trans');
       }
       else {
-        privateUserModel.fetch({data:{include_rolls:true},success:function(){
+        shelby.models.rollFollowings.fetch({success:function(){
           /*
            * the relevant list view needs to scroll to this._frameRollingView.el
            */
@@ -294,8 +291,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _shareFrame : function(){
     this.RequestFrameRollingView(true);
-    var rollFollowings = shelby.models.user.get('roll_followings');
-    var personalRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
+    var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
     this._frameRollingView.revealFrameRollingCompletionView(this.model, personalRoll, {social:true, sharing:true});
   }
 
