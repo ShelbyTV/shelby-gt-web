@@ -1,7 +1,18 @@
 @import "base";
 
+.guide-presentation-stream {
+  @extend .notype;
+  @include x-button-primer;
+
+  background: url("../images/assets/stream.svg") no-repeat -7px -1px;
+  float:left;
+  margin-left: $default-margin;
+  margin-top: 1px;
+  padding: 13px 19px;
+}
+
 .guide-presentation-filter {
-  margin: 9px 4px 7px 7px;
+  margin: 7px 4px 7px 60px;
   padding: 0;
 }
 
