@@ -4,7 +4,6 @@ libs.shelbyGT.DisplayState = {
   browseRollList : 'browseRollList',
   standardRoll : 'standardRoll',
   watchLaterRoll : 'watchLaterRoll',
-  userPersonalRoll : 'userPersonalRoll',
   userPreferences : 'userPreferences',
   help : 'help',
   team : 'team',

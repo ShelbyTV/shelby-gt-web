@@ -31,8 +31,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll ||
-        this.model.get('displayState') == libs.shelbyGT.DisplayState.userPersonalRoll) {
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     }
   },
@@ -74,8 +73,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(guideModel, displayState){
-    if (displayState == libs.shelbyGT.DisplayState.standardRoll ||
-        displayState == libs.shelbyGT.DisplayState.userPersonalRoll) {
+    if (displayState == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     } else {
       // collapse/hide child views
