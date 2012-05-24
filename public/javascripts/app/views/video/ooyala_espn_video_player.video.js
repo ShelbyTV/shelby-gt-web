@@ -9,16 +9,10 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 	
 	playerState: null,
 	
-	_playerParams: {
-		callback: window.receiveEspnEvent,
-		playerBrandingId: "",
-    pcode: "",
-    hasModuleParams: "1"
-	},
+	_playerParams: null,
 		
 	initialize: function(opts){
 		var self = this;
-		
 		this._playbackState = opts.playbackState;
 		
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
@@ -27,6 +21,13 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 			supportsMute: true,
 			supportsVolume: true
 			});
+			
+		this._playerParams = 	{
+				callback: window.receiveEspnEvent,
+				playerBrandingId: "4ef8000cbaf34c1687a7d9a26fe0e89e",
+		    pcode: "1kNG061cgaoolOncv54OAO1ceO-I",
+		    hasModuleParams: "1"
+			};
 		
 		//listen to private events
 		Backbone.Events.bind("espn:onFinish", this._onFinish, this);
@@ -73,9 +74,9 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 				this.play();
 			} else {
 				//load up new video
-				_playerParams.externalId = "espn:"+video.get('provider_id');
-				_playerParams.autoplay = this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0;
-				this._player.setQueryStringParameters(_playerParams);
+				this._playerParams.externalId = "espn:"+video.get('provider_id');
+				this._playerParams.autoplay = this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0;
+				this._player.setQueryStringParameters(this._playerParams);
 			}
 		}
 		
@@ -164,7 +165,7 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 				break;
 			case 'adStarted':
 				//this works, but messes with the video duration length displayed in player controls...
-				//this._player.skipAd();
+				this._player.skipAd();
 			case 'adCompleted':
 			  // ooyala fires "playComplete" which is handled by _onFinish above to signal end of video
 				break;
