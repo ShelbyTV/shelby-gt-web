@@ -1,17 +1,24 @@
 <% var messages = frame.get('conversation').get('messages') %>
 <% var creator = frame.get('creator') %>
+<% var creatorThumbnail = creator.get('user_image_original') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
 
   <header class="video-card-header clearfix">
     <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-      <img class="frame-creator-avatar" src="/images/avatar.jpg">
+      <% if(creatorThumbnail){ %>
+        <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creator.get('nickname') %>'s avatar" title="<%= creator.get('nickname') %>">
+      <% } else { %>
+        <div class="frame-creator-avatar-missing"></div>
+      <% } %>  
+
+      <% console.log(creator, frame.get('creator'), frame); %>
       <h1 class="frame-creator-roll">
         <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>
       </h1>
     </a>
-    <h2 class="frame-timestamp frame-creator-origin-twitter">
+    <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
       3min ago
     </h2>
     <a onclick="return false;" class="js-frame-activate" href="#"> 
@@ -62,7 +69,41 @@
           <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
         </form>
       </section><!-- eo section.video-shares -->
-  
+    <div class="js-frame-flexible-height frame-activity">
+      <ul class="frame-activity-favorites clearfix">
+        <!-- 
+          DUMMY DATA FOR WHAT IT LOOKS LIKE 
+          WHEN THE USER CAN SEE THAT 
+          OTHER USERS HAVE LIKED A VIDEO
+        -->
+        <li>
+          <a href="#">
+            <img src="/images/avatar.jpg">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="/images/avatar.jpg">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="/images/avatar.jpg">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="/images/avatar.jpg">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="/images/avatar.jpg">
+          </a>
+        </li>
+      </ul>
+      <!-- heartz -->
+    </div>
     <div class="video-footer" style="display:none;">
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
       <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %></a>			
@@ -86,7 +127,7 @@
       <li class="frame-controls-comments">
         <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="comments-frame-lining">
-            <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %>&nbsp;
+            <% /*if (remainingMessageCount) { */%> <%= remainingMessageCount %> <%/* } */%>
           </i>
         </button>
       </li>

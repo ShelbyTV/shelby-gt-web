@@ -263,7 +263,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       var distance = minHeight - this.$('article').height();
       if (distance > 0) {
-        var $user = this.$('.user');
+        var $user = this.$('.js-frame-flexible-height');
         var targetHeight = $user.height() + distance;
         $user.animate({height:targetHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
@@ -273,7 +273,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this._frameViewState.set('doFrameAction', null);
 			
       if (this._grewForFrameRolling) {
-        this.$('.user').animateAuto('height', 200);
+        this.$('.js-frame-flexible-height').animateAuto('height', 200);
         this._grewForFrameRolling = false;
       }
     }
