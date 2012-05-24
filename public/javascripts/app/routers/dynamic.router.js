@@ -63,15 +63,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
-      data: {include_children:true},
-      isUserPersonalRoll: false
+      data: {include_children:true}
     }).value();
 
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
-      onRollFetch: options.onRollFetch,
-      isUserPersonalRoll: options.isUserPersonalRoll
+      onRollFetch: options.onRollFetch
     });
   },
 
@@ -91,10 +89,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayUserPersonalRoll : function(userId, params){
+    var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
-    this.displayRoll(roll, 'personal_roll', params, {
-      updateRollTitle : false,
-      isUserPersonalRoll : true
+    //we don't have enough information about the roll to proceed, so we have to do a preliminary fetch of
+    //the roll info before we can continue
+    roll.fetchWithoutFrames({
+      success : function() {
+        self.displayRoll(roll, 'personal_roll', params, {
+          updateRollTitle : false
+        });
+      }
     });
   },
 
@@ -348,8 +352,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
-      data: null,
-      isUserPersonalRoll: false
+      data: null
     }).value();
 
     this._setupTopLevelViews({showSpinner: true});
@@ -374,9 +377,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     var displayState;
-    if (options.isUserPersonalRoll) {
-      displayState = 'userPersonalRoll';
-    } else if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
+    if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
       displayState = 'standardRoll';
     } else {
      // the watch later roll is not sharable
