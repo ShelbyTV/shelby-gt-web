@@ -73,7 +73,7 @@
 	margin-top: $defaultMargin/2;
 
 	button {
-		@include x-button-primer($shelby-gray);
+		@include x-button-primer($shelby-gray,small);
 
 		margin-left: 6px;
 	}
@@ -129,49 +129,28 @@
 	}
 }
 
+.you-preferences-networks-twitter,
+.you-preferences-networks-tumblr,
+.you-preferences-networks-facebook {
+	@include x-networks-badge;
+}
+
 .you-preferences-networks-twitter{
-
 	&:before{
-		@include background(
-			url('../images/assets/rolls_twitter.svg') no-repeat center center #00a2d1
-		);
-		@include box-shadow(-1px 0px 5px -1px #222);
-		@include roundies;
-
+		@include preferences-networks(twitter);
 		background-size:76%;
-		border:1px solid #222;
-		content: "\0020";
-		float:left;
-		height:24px;
-		left:0;
-		margin: 1px 5px 0 0;
-		top:0;
-		width:24px;
 	}
 }
 .you-preferences-networks-facebook{
-	@extend .you-preferences-networks-twitter;
-
 	&:before{
-		@include background(
-			url('../images/assets/rolls_facebook.svg') no-repeat center center #013e80
-		);
-		
+		@include preferences-networks(facebook);
 		background-size:28%;
-		content: "\0020";
 	}	
 }
 .you-preferences-networks-tumblr{
-	@extend .you-preferences-networks-twitter;
-
 	&:before{
-		@include background(
-			url('../images/assets/rolls_tumblr.svg') no-repeat center center,
-			$tumblrBlue
-
-		);
+		@include preferences-networks(tumblr);
 		background-size:36%;
-		content: "\0020";
 	}
 }
 

@@ -49,7 +49,6 @@ $roundies-type : normal !default;  //see @mixin roundies()
 	}
 }
 
-
 //spacing
 $defaultMargin  : 10px;
 $default-margin : 10px;
@@ -64,6 +63,7 @@ $outset  : #555;
 $frame-stroke : 1px solid $outline;
 
 //text-level colors
+$button-color: #efefef;
 $text: #dcddde;
 $headerNavLink: #d8d8d8;
 
@@ -95,6 +95,17 @@ $facebook-blue    : #013e80;
 $twitter-blue     : #00a2d1;
 $tumblr-blue      : #2f445b;
 
+$facebook-color    : #013e80;
+$twitter-color     : #00a2d1;
+$tumblr-color      : #2f445b;
+
+$networks-unselected : #474747;
+
+$highlight-amount : 25% !default; 
+
+@mixin box-highlight($primer-color, $highlight-amount) { //ref: x-button-primer, preferences-networks
+	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color, $highlight-amount));
+}
 
 @mixin x-comment-overlay-buttons {
 	@extend .notype;
@@ -114,12 +125,12 @@ $tumblr-blue      : #2f445b;
 
 @mixin x-tab-primer($primer-color){
 	background-color: $primer-color;
-	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include box-highlight($primer-color);
 	@include buttonfont;
 	@include text-shadow(0px -1px 0px #333);
 
 	border: 1px solid adjust-lightness($primer-color,-20%);
-	color: #efefef;
+	color: $button-color;
 	float: left;
 	height: 27px;
 	margin-top: 1px;
@@ -130,11 +141,11 @@ $tumblr-blue      : #2f445b;
 	background-color: $primer-color;
 	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
 	@include border-radius($button-radius);
-	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color,25%));
+	@include box-highlight($primer-color);
 	@include buttonfont;
 	@include text-shadow(0px -1px 0px #333);
 	border: 1px solid adjust-lightness($primer-color,-20%);
-	color: #efefef;
+	color: $button-color;
 
 	@if $button-back != back {
 		
@@ -147,6 +158,8 @@ $tumblr-blue      : #2f445b;
 
 	} @else {
 
+		padding: 6px 13px 6px 8px;
+
 		//the button's text should be inside this <i> element
 		//it fixes the z-index so that the :after element doesn't hide the text
 		i {
@@ -155,13 +168,11 @@ $tumblr-blue      : #2f445b;
 			z-index: 1;
 		}
 
-		padding: 6px 13px 6px 8px;
-
 		&:after {
 			background-color: $primer-color;
 			@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
 			@include border-radius(1px 0 0 4px);
-			@include box-shadow(inset 1px 0 0 0 adjust-lightness($primer-color,25%));
+			@include box-shadow(inset 1px 0 0 adjust-lightness($primer-color, 20%));
 			@include rotate($default-rotate);
 
 			border-bottom: 1px solid adjust-lightness($primer-color,-20%);
@@ -174,6 +185,53 @@ $tumblr-blue      : #2f445b;
 			top: 3.75px;
 			width: 18px;
 		}		
+	}
+}
+
+$preferences-network : twitter !default;
+
+@mixin preferences-networks($preferences-network){
+		@if $preferences-network == twitter {
+			@include background(url('../images/assets/rolls_twitter.svg') no-repeat center center $twitter-color);
+			@include box-highlight($twitter-color);
+			border:1px solid adjust-lightness($twitter-color, -20%);	
+		}
+		@else if $preferences-network == tumblr {
+			@include background(url('../images/assets/rolls_tumblr.svg') no-repeat center center $tumblr-color);
+			@include box-highlight($tumblr-color, 20%);
+			border:1px solid adjust-lightness($tumblr-color, -5%);				
+		}
+		@else if $preferences-network == facebook {
+			@include background(url('../images/assets/rolls_facebook.svg') no-repeat center center $facebook-color);
+			@include box-highlight($facebook-color, 20%);
+			border:1px solid adjust-lightness($facebook-color, -5%);				
+		}
+}
+
+@mixin x-networks-badge {
+	&:before {
+		@include roundies;
+
+		content: "\0020";
+		float:left;
+		height:24px;
+		left:0;
+		margin: 1px 5px 0 0;
+		top:0;
+		width:24px;
+	}
+}
+
+@mixin share-networks-buttons{
+	button {
+		@extend .notype;
+		@include roundies(input);
+		
+		background-color: $networks-unselected;
+		border: 1px solid adjust-lightness($networks-unselected, -5%); 
+		display: block;
+		height: 34px;
+		width: 34px;
 	}
 }
 

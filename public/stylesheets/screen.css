@@ -1245,13 +1245,13 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 0;
 }
-/* line 152, ../../app/stylesheets/_base.scss */
+/* line 165, ../../app/stylesheets/_base.scss */
 .rolls-back i, .rolling-main-back i {
   font-style: normal;
   position: relative;
   z-index: 1;
 }
-/* line 160, ../../app/stylesheets/_base.scss */
+/* line 171, ../../app/stylesheets/_base.scss */
 .rolls-back:after, .rolling-main-back:after {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -1266,10 +1266,10 @@ a:hover, a:visited, a:active {
   -ms-border-radius: 1px 0 0 4px;
   -khtml-border-radius: 1px 0 0 4px;
   border-radius: 1px 0 0 4px;
-  -moz-box-shadow: inset 1px 0 0 0 #747474;
-  -webkit-box-shadow: inset 1px 0 0 0 #747474;
-  -o-box-shadow: inset 1px 0 0 0 #747474;
-  box-shadow: inset 1px 0 0 0 #747474;
+  -moz-box-shadow: inset 1px 0 0 #676767;
+  -webkit-box-shadow: inset 1px 0 0 #676767;
+  -o-box-shadow: inset 1px 0 0 #676767;
+  box-shadow: inset 1px 0 0 #676767;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -1912,7 +1912,7 @@ a:hover, a:visited, a:active {
 
 /* line 398, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1337894826');
+  content: url('/images/../images/assets/twitter_stamp.svg?1337959514');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1920,7 +1920,7 @@ a:hover, a:visited, a:active {
 
 /* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1337894826');
+  content: url('/images/../images/assets/facebook_stamp.svg?1337959514');
 }
 
 /* line 415, ../../app/stylesheets/partials/frame.scss */
@@ -2523,7 +2523,7 @@ a:hover, a:visited, a:active {
 }
 /* line 22, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover, .frame-rolling-completion > li:hover {
-  background: url("../images/assets/noise.png") #666666;
+  background-color: #666;
   cursor: pointer;
 }
 /* line 28, ../../app/stylesheets/partials/frame-rolling.scss */
@@ -2990,115 +2990,63 @@ a:hover, a:visited, a:active {
   margin: 0 10px 10px 0;
 }
 
-/* line 139, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter {
-  background: #474747;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: -webkit-linear-gradient(top, #646464, #474747);
-  background: -moz-linear-gradient(top, #646464, #474747);
-  background: -o-linear-gradient(top, #646464, #474747);
-  background: -ms-linear-gradient(top, #646464, #474747);
-  background: linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid #222;
+/* line 226, ../../app/stylesheets/_base.scss */
+.networks-twitter button,
+.networks-facebook button {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #474747;
+  border: 1px solid #3a3a3a;
+  display: block;
   height: 34px;
   width: 34px;
 }
-/* line 150, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter .networks-twitter-button {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center;
-  border: none;
-  display: block;
-  height: 100%;
-  width: 100%;
+
+/* line 145, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter button {
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 159, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active {
-  background: #00a2d1;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
-  background: -webkit-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -moz-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -o-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
-  background: linear-gradient(top, #00b5d7, #00a2d1);
-  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  box-shadow: inset 0px 1px 1px 0px #00d0e5;
+/* line 153, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter.active button {
+  background-color: #00a2d1;
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
+
 /* line 164, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active .networks-twitter-button {
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center;
+.networks-facebook button {
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 167, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active:hover {
-  background: #00a2d1;
+/* line 172, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook.active button {
+  background-color: #013e80;
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 173, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook {
-  background: #474747;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: -webkit-linear-gradient(top, #646464, #474747);
-  background: -moz-linear-gradient(top, #646464, #474747);
-  background: -o-linear-gradient(top, #646464, #474747);
-  background: -ms-linear-gradient(top, #646464, #474747);
-  background: linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid #222;
-  height: 34px;
-  width: 34px;
-}
 /* line 185, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook .networks-facebook-button {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center;
-  border: none;
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-/* line 194, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active {
-  background: #013e80;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
-  background: -webkit-linear-gradient(top, #01599e, #013e80);
-  background: -moz-linear-gradient(top, #01599e, #013e80);
-  background: -o-linear-gradient(top, #01599e, #013e80);
-  background: -ms-linear-gradient(top, #01599e, #013e80);
-  background: linear-gradient(top, #01599e, #013e80);
-  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  box-shadow: inset 0px 1px 1px 0px #0179c1;
-}
-/* line 199, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active .networks-facebook-button {
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center;
-}
-/* line 202, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active:hover {
-  background: #013e80;
-}
-
-/* line 212, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3125,7 +3073,7 @@ a:hover, a:visited, a:active {
   margin-top: 10px;
   width: 100%;
 }
-/* line 218, ../../app/stylesheets/partials/rolls.scss */
+/* line 191, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;
@@ -3333,7 +3281,7 @@ a:hover, a:visited, a:active {
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #010101;
   color: #efefef;
-  padding: 6px 13px;
+  padding: 4px 8px;
   margin-left: 6px;
 }
 /* line 81, ../../app/stylesheets/partials/user-preferences.scss */
@@ -3391,21 +3339,16 @@ a:hover, a:visited, a:active {
   padding-left: 0;
 }
 
-/* line 134, ../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
-  background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
-  -moz-box-shadow: -1px 0px 5px -1px #222222;
-  -webkit-box-shadow: -1px 0px 5px -1px #222222;
-  -o-box-shadow: -1px 0px 5px -1px #222222;
-  box-shadow: -1px 0px 5px -1px #222222;
+/* line 212, ../../app/stylesheets/_base.scss */
+.you-preferences-networks-twitter:before,
+.you-preferences-networks-tumblr:before,
+.you-preferences-networks-facebook:before {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-size: 76%;
-  border: 1px solid #222;
   content: "\0020";
   float: left;
   height: 24px;
@@ -3415,21 +3358,40 @@ a:hover, a:visited, a:active {
   width: 24px;
 }
 
-/* line 155, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 139, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-twitter:before {
+  background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
+  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  border: 1px solid #00536b;
+  background-size: 76%;
+}
+
+/* line 145, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
+  -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  -o-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  box-shadow: inset 0px 1px 0px 0px #026fe5;
+  border: 1px solid #013267;
   background-size: 28%;
-  content: "\0020";
 }
 
-/* line 167, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 151, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
-  background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
+  background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
+  -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #52769e;
+  -o-box-shadow: inset 0px 1px 0px 0px #52769e;
+  box-shadow: inset 0px 1px 0px 0px #52769e;
+  border: 1px solid #26374a;
   background-size: 36%;
-  content: "\0020";
 }
 
-/* line 181, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 160, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -3437,7 +3399,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 1;
 }
-/* line 188, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 167, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -3446,7 +3408,7 @@ a:hover, a:visited, a:active {
   left: 50%;
   width: 50%;
 }
-/* line 196, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 175, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -3454,11 +3416,11 @@ a:hover, a:visited, a:active {
   right: 20px;
   top: -7px;
 }
-/* line 204, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 183, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 208, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 187, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -3492,7 +3454,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 224, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 203, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -3518,7 +3480,7 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 242, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 221, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3532,11 +3494,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 251, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 230, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 256, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 235, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -4053,7 +4015,7 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 109, ../../app/stylesheets/_base.scss */
+/* line 120, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -4079,7 +4041,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 109, ../../app/stylesheets/_base.scss */
+/* line 120, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -4666,7 +4628,8 @@ a:hover, a:visited, a:active {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype, .guide-presentation-stream, .rolls-list-nav, .frame-controls-roll button, .frame-controls-share button, .networks-twitter .networks-twitter-button, .networks-facebook .networks-facebook-button, .comment-overlay-prev, .comment-overlay-next {
+.notype, .guide-presentation-stream, .rolls-list-nav, .frame-controls-roll button, .frame-controls-share button, .networks-twitter button,
+.networks-facebook button, .comment-overlay-prev, .comment-overlay-next {
   color: transparent;
   font: 0/0 a;
   overflow: hidden;

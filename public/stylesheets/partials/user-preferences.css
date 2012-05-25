@@ -106,7 +106,7 @@
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #010101;
   color: #efefef;
-  padding: 6px 13px;
+  padding: 4px 8px;
   margin-left: 6px;
 }
 /* line 81, ../../../app/stylesheets/partials/user-preferences.scss */
@@ -164,21 +164,16 @@
   padding-left: 0;
 }
 
-/* line 134, ../../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-networks-twitter:before, .you-preferences-networks-facebook:before, .you-preferences-networks-tumblr:before {
-  background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
-  -moz-box-shadow: -1px 0px 5px -1px #222222;
-  -webkit-box-shadow: -1px 0px 5px -1px #222222;
-  -o-box-shadow: -1px 0px 5px -1px #222222;
-  box-shadow: -1px 0px 5px -1px #222222;
+/* line 212, ../../../app/stylesheets/_base.scss */
+.you-preferences-networks-twitter:before,
+.you-preferences-networks-tumblr:before,
+.you-preferences-networks-facebook:before {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-size: 76%;
-  border: 1px solid #222;
   content: "\0020";
   float: left;
   height: 24px;
@@ -188,21 +183,40 @@
   width: 24px;
 }
 
-/* line 155, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-networks-twitter:before {
+  background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
+  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  box-shadow: inset 0px 1px 0px 0px #51d8ff;
+  border: 1px solid #00536b;
+  background-size: 76%;
+}
+
+/* line 145, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
+  -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  -o-box-shadow: inset 0px 1px 0px 0px #026fe5;
+  box-shadow: inset 0px 1px 0px 0px #026fe5;
+  border: 1px solid #013267;
   background-size: 28%;
-  content: "\0020";
 }
 
-/* line 167, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 151, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
-  background: url("../images/assets/rolls_tumblr.svg") no-repeat center center, #2f445b;
+  background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
+  -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #52769e;
+  -o-box-shadow: inset 0px 1px 0px 0px #52769e;
+  box-shadow: inset 0px 1px 0px 0px #52769e;
+  border: 1px solid #26374a;
   background-size: 36%;
-  content: "\0020";
 }
 
-/* line 181, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 160, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -210,7 +224,7 @@
   width: 100%;
   z-index: 1;
 }
-/* line 188, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 167, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -219,7 +233,7 @@
   left: 50%;
   width: 50%;
 }
-/* line 196, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 175, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -227,11 +241,11 @@
   right: 20px;
   top: -7px;
 }
-/* line 204, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 183, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 208, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 187, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -265,7 +279,7 @@
   position: relative;
   width: 60px;
 }
-/* line 224, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 203, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -291,7 +305,7 @@
   top: 0;
   width: 30px;
 }
-/* line 242, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 221, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -305,11 +319,11 @@
   position: relative;
   width: 60px;
 }
-/* line 251, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 230, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 256, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 235, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;

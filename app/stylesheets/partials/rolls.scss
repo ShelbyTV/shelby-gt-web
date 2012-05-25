@@ -136,74 +136,47 @@
 	}
 }
 
+.networks-twitter,
+.networks-facebook {
+	@include share-networks-buttons;
+}
+
 .networks-twitter {
-	background: $flatNetworksUnselected;
+	button {
+		@include background(
+			url('../images/assets/rolls_share_twitter_off.svg') no-repeat 1px 5px,
+			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
+		);
 
-	@include background($softNetworksUnselected);
-	@include border-radius($radius/2);
-	@include box-shadow(inset 0px 1px 1px 0px #777);
-
-	border: 1px solid #222;
-	height: 34px;
-	width: 34px;
-
-	.networks-twitter-button {
-		@extend .notype;
-		@include background(url('../images/assets/rolls_share_twitter_off.svg') no-repeat center center);
-		border: none;
-		display: block;
-		height: 100%;
-		width: 100%;
 	}
-	
 	&.active {
-		background: $twitterBlue;
-		@include background($softTwitterBlue);
-		@include box-shadow(inset 0px 1px 1px 0px #00d0e5);
-	
-		.networks-twitter-button {
-			@include background(url('../images/assets/rolls_share_twitter_on.svg') no-repeat center center);
-		}
-		&:hover {
-			@include background($twitterBlue);
+		button {
+			background-color: $twitter-blue;
+			@include background(
+				url('../images/assets/rolls_share_twitter_on.svg') no-repeat 1px 5px,
+				linear-gradient(top, adjust-lightness($twitter-blue, 20%),$twitter-blue)
+			);
 		}
 	}
 }
 
 .networks-facebook {
+	button {
+		@include background(
+			url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center,
+			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
+		);
 
-	background: $flatNetworksUnselected;
-
-	@include background($softNetworksUnselected);
-	@include border-radius($radius/2);
-	@include box-shadow(inset 0px 1px 1px 0px #777);
-
-	border:1px solid #222;
-	height:34px;
-	width:34px;
-
-	.networks-facebook-button {
-		@extend .notype;
-		@include background(url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center);
-		border: none;
-		display: block;
-		height: 100%;
-		width: 100%;
 	}
-	
 	&.active {
-		background: $facebookBlue;
-		@include background($softFacebookBlue);
-		@include box-shadow(inset 0px 1px 1px 0px #0179c1);
-	
-		.networks-facebook-button {
-			@include background(url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center);
-		}
-		&:hover {
-			@include background($facebookBlue);
+		button {
+			background-color: $facebook-blue;
+			@include background(
+				url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
+				linear-gradient(top, adjust-lightness($facebook-blue, 20%),$facebook-blue)
+			);
 		}
 	}
-
 }
 
 .share-submit {

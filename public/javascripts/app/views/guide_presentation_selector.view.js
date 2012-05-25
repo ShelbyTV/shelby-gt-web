@@ -8,6 +8,7 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
     
     events : {
+      "click .js-stream" : "_goToStream",
       "click .js-people" : "_filterPeople",
       "click .js-my-rolls" : "_filterMyRolls",
       "click .js-browse" : "_browseRolls"
@@ -41,6 +42,11 @@
         default:
           this.$el.hide();
       }
+    },
+
+    _goToStream : function(){
+      shelby.router.navigate('stream', {trigger: true});
+
     },
     
     _filterPeople : function(){
