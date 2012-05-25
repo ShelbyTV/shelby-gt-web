@@ -5,7 +5,7 @@
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
 	<% if @video_info %>
-		<%= render :partial => "fb_meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
+		<%= render :partial => "meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
 	<% else %>
 		<meta name="description" content="<%= Settings::Application.meta_description %>">
 	<% end %>
@@ -31,6 +31,6 @@
 </head>
 
 <body>
-	<iframe src="http://<%= Rails.env == 'development' ? 'localhost.shelby.tv:3000' : 'isoroll.shelby.tv' %>/isolated_roll/<%= @isolated_roll_id %>"></iframe>
+  <iframe src="http://<%= Rails.env == 'development' ? 'localhost.shelby.tv:3000' : 'isoroll.shelby.tv' %>/isolated_roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
 </body>
 </html>
