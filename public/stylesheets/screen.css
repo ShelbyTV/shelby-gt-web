@@ -1841,7 +1841,7 @@ a:hover, a:visited, a:active {
 
 /* line 357, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1337611867');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335297177');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1849,12 +1849,12 @@ a:hover, a:visited, a:active {
 
 /* line 367, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1337611867');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335297177');
 }
 
 /* line 374, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 379, ../../app/stylesheets/partials/frame.scss */
@@ -2074,7 +2074,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 50, ../../app/stylesheets/partials/video-controls.scss */
-.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
+.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-quality, .video-player-roll {
   border: none;
   height: 43px;
   float: left;
@@ -2082,7 +2082,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
 /* line 60, ../../app/stylesheets/partials/video-controls.scss */
-.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
+.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-quality, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
@@ -2097,7 +2097,7 @@ a:hover, a:visited, a:active {
   background: black;
   height: 8px;
   left: 60px;
-  right: 188px;
+  right: 230px;
   margin: 18px 8px 0;
   position: absolute;
 }
@@ -2176,6 +2176,21 @@ a:hover, a:visited, a:active {
 }
 
 /* line 145, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality {
+  background: url("../images/assets/player_play.svg") center center no-repeat transparent;
+  float: right;
+}
+/* line 154, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality.hd-on {
+  background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
+}
+
+/* line 162, ../../app/stylesheets/partials/video-controls.scss */
+.disable-video-quality .video-player-quality {
+  background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
+}
+
+/* line 169, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
