@@ -11,17 +11,17 @@
 		cursor:pointer;
 		display:block;
 		padding:$defaultMargin;
+
 		&:hover{
-			@include background(
-//				url('../images/assets/noise.png') 
-				#6d6d6d
-			);
+			background-color: #6d6d6d;
 		}
 	}
+
 	li{
 		border-bottom: 1px solid #333;
 		border-top: 1px solid #666;
 		padding:0;
+		
 		&:first-child{
 			border-top:none;
 		}
@@ -29,23 +29,22 @@
 			border-bottom: none;
 		}
 	}
-	.active-list-item{
-		@include background(
-//			url('../images/assets/noise.png')
-			#5fa256
-		);
 
+	.active-list-item{
+		background-color: #5fa256;
 		position:relative;
 
 		a{
 			color:#000;
 		}
+
 		h2{
 			height:36px;
 			overflow:hidden;
 			text-overflow:ellipsis;
 			white-space:nowrap;
 			width:160px;
+
 			&:after {
 			  content: "Now Playing";
 			  color: #FFF;

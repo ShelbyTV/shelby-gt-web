@@ -126,6 +126,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._testSwitchingfromQueryParams(params);
 
     this._setupTopLevelViews({showSpinner: true});
+    shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.stream);
     this._fetchDashboard(options);
   },
 

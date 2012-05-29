@@ -18,11 +18,11 @@
   display: block;
   padding: 10px;
 }
-/* line 14, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 15, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
-  background: #6d6d6d;
+  background-color: #6d6d6d;
 }
-/* line 21, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 20, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid #333;
   border-top: 1px solid #666;
@@ -36,16 +36,16 @@
 .rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 32, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 33, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
-  background: #5fa256;
+  background-color: #5fa256;
   position: relative;
 }
-/* line 40, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 37, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item a {
   color: #000;
 }
-/* line 43, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 41, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
   height: 36px;
   overflow: hidden;
@@ -53,7 +53,7 @@
   white-space: nowrap;
   width: 160px;
 }
-/* line 49, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 48, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
   color: #FFF;

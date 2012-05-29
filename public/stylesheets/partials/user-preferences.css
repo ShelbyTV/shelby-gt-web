@@ -14,7 +14,7 @@
 .you-preferences-form fieldset {
   margin-bottom: 1em;
 }
-/* line 13, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 14, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form fieldset:first-child, .you-preferences-form fieldset.you-profile-actions {
   margin-bottom: 0;
 }
@@ -51,18 +51,18 @@
 .you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
-/* line 45, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 46, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
   margin-top: 1px;
 }
 
-/* line 52, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 53, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   float: left;
   line-height: 1.4;
 }
-/* line 57, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 58, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-notifications label {
   float: left;
@@ -71,19 +71,19 @@
   line-height: 2;
   width: 25%;
 }
-/* line 65, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 66, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   padding: 5px;
   width: 75%;
 }
 
-/* line 71, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 72, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions {
   float: right;
   margin-top: 5px;
 }
-/* line 75, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 76, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -109,17 +109,17 @@
   padding: 4px 8px;
   margin-left: 6px;
 }
-/* line 81, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 82, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   float: left;
 }
-/* line 85, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 86, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 107, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 108, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -145,21 +145,21 @@
   padding: 6px 13px;
   float: right;
 }
-/* line 113, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 114, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 120, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 121, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 127, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 128, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
@@ -183,7 +183,7 @@
   width: 24px;
 }
 
-/* line 139, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 140, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
@@ -194,7 +194,7 @@
   background-size: 76%;
 }
 
-/* line 145, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 147, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
@@ -205,7 +205,7 @@
   background-size: 28%;
 }
 
-/* line 151, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 154, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
   -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
@@ -216,7 +216,7 @@
   background-size: 36%;
 }
 
-/* line 160, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 163, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -224,7 +224,7 @@
   width: 100%;
   z-index: 1;
 }
-/* line 167, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 171, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -233,7 +233,7 @@
   left: 50%;
   width: 50%;
 }
-/* line 175, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 179, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -241,11 +241,11 @@
   right: 20px;
   top: -7px;
 }
-/* line 183, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 187, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 187, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 192, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -279,7 +279,7 @@
   position: relative;
   width: 60px;
 }
-/* line 203, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 208, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -305,7 +305,7 @@
   top: 0;
   width: 30px;
 }
-/* line 221, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 226, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -319,11 +319,11 @@
   position: relative;
   width: 60px;
 }
-/* line 230, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 235, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 235, ../../../app/stylesheets/partials/user-preferences.scss */
+/* line 240, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;

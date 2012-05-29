@@ -906,7 +906,7 @@ a:hover, a:visited, a:active {
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
-  background: url("../images/assets/stream.svg") no-repeat -7px -1px;
+  background: url("../images/assets/stream.svg") no-repeat -7px -1px #343434;
   float: left;
   margin-left: 10px;
   margin-top: 1px;
@@ -924,7 +924,7 @@ a:hover, a:visited, a:active {
   list-style-type: none;
 }
 /* line 22, ../../app/stylesheets/partials/guide-presentation-selector.scss */
-.guide-presentation-filter-item button {
+.guide-presentation-filter-item .guide-presentation-button {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
   -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -941,7 +941,7 @@ a:hover, a:visited, a:active {
   padding: 6px;
   width: 33%;
 }
-/* line 28, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 29, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:first-child button {
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
@@ -951,7 +951,7 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
-/* line 35, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 36, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:last-child button {
   -moz-border-radius: 0 5px 5px 0;
   -webkit-border-radius: 0 5px 5px 0;
@@ -961,8 +961,9 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   border-left: none;
 }
-/* line 42, ../../app/stylesheets/partials/guide-presentation-selector.scss */
-.guide-presentation-filter-item.guide-presentation-filter-selected button {
+
+/* line 45, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-button.guide-presentation-content-selected {
   background-color: #777;
   -moz-box-shadow: inset 0 1px 0 0 #b7b7b7;
   -webkit-box-shadow: inset 0 1px 0 0 #b7b7b7;
@@ -1149,34 +1150,30 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 3, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.filter-controls {
+/* line 3, ../../app/stylesheets/partials/roll-header.scss */
+.roll-header {
+  background: #585858;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
   margin: 0;
   padding: 0;
   position: relative;
   text-align: center;
   width: 100%;
 }
-/* line 10, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.filter-controls li {
+/* line 13, ../../app/stylesheets/partials/roll-header.scss */
+.roll-header li {
   display: block;
 }
-/* line 14, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.filter-controls .rolls-back, .filter-controls .rolling-main-back {
+/* line 17, ../../app/stylesheets/partials/roll-header.scss */
+.roll-header .rolls-back, .roll-header .rolling-main-back {
   left: 0;
   margin: 8px 20px 0;
   position: absolute;
   top: 0;
 }
 
-/* line 22, ../../app/stylesheets/partials/roll-filter-controls.scss */
-.filter {
-  background: #585858;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-}
-
-/* line 28, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 29, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll {
   float: left;
   font-size: 1.2em;
@@ -1186,7 +1183,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 37, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 38, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar {
   display: inline-block;
   height: 20px;
@@ -1198,7 +1195,7 @@ a:hover, a:visited, a:active {
   vertical-align: middle;
   width: 20px;
 }
-/* line 48, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 49, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1206,17 +1203,17 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 56, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 57, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 58, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 59, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: 3px;
   padding: 4px;
 }
 
-/* line 71, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 72, ../../app/stylesheets/partials/roll-header.scss */
 .rolls-back, .rolling-main-back {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -1286,7 +1283,7 @@ a:hover, a:visited, a:active {
   width: 18px;
 }
 
-/* line 80, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 81, ../../app/stylesheets/partials/roll-header.scss */
 .roll-delete {
   background-color: #cc1235;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
@@ -1318,7 +1315,7 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 90, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 91, ../../app/stylesheets/partials/roll-header.scss */
 .rolls-list-nav {
   padding: 8px 10px;
   position: absolute;
@@ -1327,7 +1324,7 @@ a:hover, a:visited, a:active {
   width: 25%;
 }
 
-/* line 100, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 101, ../../app/stylesheets/partials/roll-header.scss */
 .roll-back {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -1359,7 +1356,7 @@ a:hover, a:visited, a:active {
   width: 50%;
 }
 
-/* line 113, ../../app/stylesheets/partials/roll-filter-controls.scss */
+/* line 114, ../../app/stylesheets/partials/roll-header.scss */
 .roll-next {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -1912,7 +1909,7 @@ a:hover, a:visited, a:active {
 
 /* line 398, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1337959514');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338304288');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1920,7 +1917,7 @@ a:hover, a:visited, a:active {
 
 /* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1337959514');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338304288');
 }
 
 /* line 415, ../../app/stylesheets/partials/frame.scss */
@@ -2439,11 +2436,11 @@ a:hover, a:visited, a:active {
   display: block;
   padding: 10px;
 }
-/* line 14, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 15, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
-  background: #6d6d6d;
+  background-color: #6d6d6d;
 }
-/* line 21, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 20, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid #333;
   border-top: 1px solid #666;
@@ -2457,16 +2454,16 @@ a:hover, a:visited, a:active {
 .rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 32, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 33, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
-  background: #5fa256;
+  background-color: #5fa256;
   position: relative;
 }
-/* line 40, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 37, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item a {
   color: #000;
 }
-/* line 43, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 41, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
   height: 36px;
   overflow: hidden;
@@ -2474,7 +2471,7 @@ a:hover, a:visited, a:active {
   white-space: nowrap;
   width: 160px;
 }
-/* line 49, ../../app/stylesheets/partials/rolls-list.scss */
+/* line 48, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
   color: #FFF;
@@ -2778,11 +2775,11 @@ a:hover, a:visited, a:active {
  */
 /* line 3, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
-  background: url("../images/assets/noise.png") #585858;
+  background-color: #585858;
   padding: 10px;
 }
 
-/* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 8, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -2804,19 +2801,18 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 4, ../../app/stylesheets/partials/rolls.scss */
-#roll-header,
-.roll-header {
+/* line 3, ../../app/stylesheets/partials/rolls.scss */
+.roll-action-menu {
   background-color: #585858;
   display: none;
 }
 
-/* line 9, ../../app/stylesheets/partials/rolls.scss */
+/* line 8, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
   margin: 0;
   padding: 0;
 }
-/* line 13, ../../app/stylesheets/partials/rolls.scss */
+/* line 12, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -2825,19 +2821,19 @@ a:hover, a:visited, a:active {
   padding: 10px;
   width: 75%;
 }
-/* line 20, ../../app/stylesheets/partials/rolls.scss */
+/* line 19, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:last-child {
   padding-left: 0;
   width: 25%;
 }
-/* line 24, ../../app/stylesheets/partials/rolls.scss */
+/* line 23, ../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:nth-last-child(2) {
   display: none;
   padding-left: 0;
   width: 25%;
 }
 
-/* line 32, ../../app/stylesheets/partials/rolls.scss */
+/* line 31, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -2866,14 +2862,14 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 44, ../../app/stylesheets/partials/rolls.scss */
+/* line 43, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   float: left;
   margin-top: 0 !important;
   width: 100%;
 }
 
-/* line 51, ../../app/stylesheets/partials/rolls.scss */
+/* line 50, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2901,17 +2897,17 @@ a:hover, a:visited, a:active {
   margin-top: 0;
 }
 
-/* line 57, ../../app/stylesheets/partials/rolls.scss */
+/* line 56, ../../app/stylesheets/partials/rolls.scss */
 .rolls-edit {
   width: 100%;
 }
 
-/* line 62, ../../app/stylesheets/partials/rolls.scss */
+/* line 61, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   margin-top: 0;
 }
 
-/* line 67, ../../app/stylesheets/partials/rolls.scss */
+/* line 66, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   padding: 0;
@@ -2921,27 +2917,27 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 76, ../../app/stylesheets/partials/rolls.scss */
+/* line 75, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 81, ../../app/stylesheets/partials/rolls.scss */
+/* line 80, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 86, ../../app/stylesheets/partials/rolls.scss */
+/* line 85, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 89, ../../app/stylesheets/partials/rolls.scss */
+/* line 88, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 95, ../../app/stylesheets/partials/rolls.scss */
+/* line 94, ../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -2950,11 +2946,11 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 103, ../../app/stylesheets/partials/rolls.scss */
+/* line 102, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 106, ../../app/stylesheets/partials/rolls.scss */
+/* line 105, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -2966,7 +2962,7 @@ a:hover, a:visited, a:active {
   resize: none;
   width: 100%;
 }
-/* line 114, ../../app/stylesheets/partials/rolls.scss */
+/* line 113, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2977,13 +2973,13 @@ a:hover, a:visited, a:active {
   padding-top: 15px;
 }
 
-/* line 126, ../../app/stylesheets/partials/rolls.scss */
+/* line 125, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 131, ../../app/stylesheets/partials/rolls.scss */
+/* line 130, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
@@ -3006,7 +3002,7 @@ a:hover, a:visited, a:active {
   width: 34px;
 }
 
-/* line 145, ../../app/stylesheets/partials/rolls.scss */
+/* line 144, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3015,7 +3011,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 153, ../../app/stylesheets/partials/rolls.scss */
+/* line 152, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3026,7 +3022,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 164, ../../app/stylesheets/partials/rolls.scss */
+/* line 163, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3035,7 +3031,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 172, ../../app/stylesheets/partials/rolls.scss */
+/* line 171, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -3046,7 +3042,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 185, ../../app/stylesheets/partials/rolls.scss */
+/* line 184, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3073,7 +3069,7 @@ a:hover, a:visited, a:active {
   margin-top: 10px;
   width: 100%;
 }
-/* line 191, ../../app/stylesheets/partials/rolls.scss */
+/* line 190, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;
@@ -3189,7 +3185,7 @@ a:hover, a:visited, a:active {
 .you-preferences-form fieldset {
   margin-bottom: 1em;
 }
-/* line 13, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 14, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form fieldset:first-child, .you-preferences-form fieldset.you-profile-actions {
   margin-bottom: 0;
 }
@@ -3226,18 +3222,18 @@ a:hover, a:visited, a:active {
 .you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
-/* line 45, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 46, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
   margin-top: 1px;
 }
 
-/* line 52, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 53, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   float: left;
   line-height: 1.4;
 }
-/* line 57, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 58, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-notifications label {
   float: left;
@@ -3246,19 +3242,19 @@ a:hover, a:visited, a:active {
   line-height: 2;
   width: 25%;
 }
-/* line 65, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 66, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   padding: 5px;
   width: 75%;
 }
 
-/* line 71, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 72, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions {
   float: right;
   margin-top: 5px;
 }
-/* line 75, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 76, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -3284,17 +3280,17 @@ a:hover, a:visited, a:active {
   padding: 4px 8px;
   margin-left: 6px;
 }
-/* line 81, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 82, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   float: left;
 }
-/* line 85, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 86, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 107, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 108, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -3320,21 +3316,21 @@ a:hover, a:visited, a:active {
   padding: 6px 13px;
   float: right;
 }
-/* line 113, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 114, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 120, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 121, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 127, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 128, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
@@ -3358,7 +3354,7 @@ a:hover, a:visited, a:active {
   width: 24px;
 }
 
-/* line 139, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 140, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
@@ -3369,7 +3365,7 @@ a:hover, a:visited, a:active {
   background-size: 76%;
 }
 
-/* line 145, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 147, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
@@ -3380,7 +3376,7 @@ a:hover, a:visited, a:active {
   background-size: 28%;
 }
 
-/* line 151, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 154, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
   -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
@@ -3391,7 +3387,7 @@ a:hover, a:visited, a:active {
   background-size: 36%;
 }
 
-/* line 160, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 163, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -3399,7 +3395,7 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 1;
 }
-/* line 167, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 171, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -3408,7 +3404,7 @@ a:hover, a:visited, a:active {
   left: 50%;
   width: 50%;
 }
-/* line 175, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 179, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -3416,11 +3412,11 @@ a:hover, a:visited, a:active {
   right: 20px;
   top: -7px;
 }
-/* line 183, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 187, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 187, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 192, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -3454,7 +3450,7 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 203, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 208, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
@@ -3480,7 +3476,7 @@ a:hover, a:visited, a:active {
   top: 0;
   width: 30px;
 }
-/* line 221, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 226, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #007fb6;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
@@ -3494,11 +3490,11 @@ a:hover, a:visited, a:active {
   position: relative;
   width: 60px;
 }
-/* line 230, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 235, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 235, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 240, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -3716,15 +3712,15 @@ a:hover, a:visited, a:active {
   top: 50%;
 }
 
-/* line 34, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 33, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner {
-  background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
   -ms-border-radius: 0 0 5px 5px;
   -khtml-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
+  background-color: #585858;
   margin: 0 auto;
   min-width: 680px;
   max-width: 738px;
@@ -3732,44 +3728,44 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 47, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 44, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-header {
-  background: url("../images/assets/noise.png") #303030;
+  background-color: #303030;
   border-bottom: 1px solid #222;
   padding: 10px;
 }
 
-/* line 54, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 51, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav {
   float: left;
   font-size: 11px;
 }
-/* line 58, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 55, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav li {
   display: inline;
   padding-right: 5px;
 }
-/* line 62, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 59, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a {
   color: #d3d3d3;
   text-decoration: none;
 }
-/* line 66, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 63, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:hover {
   color: white;
   text-decoration: underline;
 }
-/* line 71, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 68, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:visited, .logged-out-nav a:active {
   color: white;
 }
 
-/* line 77, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 74, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-origin {
   float: right;
 }
 
-/* line 81, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 78, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline {
   float: left;
   font-weight: 100;
@@ -3777,39 +3773,39 @@ a:hover, a:visited, a:active {
   margin-top: 20px;
   width: 50%;
 }
-/* line 88, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 85, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a {
   text-decoration: none;
   font-weight: 500;
 }
-/* line 91, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 88, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:hover {
   text-decoration: none;
 }
-/* line 95, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 92, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:active, .logged-out-tagline a:visited {
   text-decoration: none;
 }
 
-/* line 101, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 98, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks {
   float: left;
   margin: 12px 0;
   padding: 0;
   width: 50%;
 }
-/* line 108, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 104, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks li {
   display: inline;
   float: left;
   width: 50%;
 }
-/* line 113, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 109, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks button {
   width: 93%;
 }
 
-/* line 143, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 139, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter, .email-gate-networks-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -3834,7 +3830,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
-/* line 131, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 127, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before, .email-gate-networks-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -3845,12 +3841,12 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 150, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 146, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before, .email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
-/* line 155, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 151, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook, .email-gate-networks-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -3875,7 +3871,7 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #01599e, #013e80);
   background: linear-gradient(top, #01599e, #013e80);
 }
-/* line 131, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 127, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before, .email-gate-networks-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -3886,7 +3882,7 @@ a:hover, a:visited, a:active {
   top: 1px;
   width: 30px;
 }
-/* line 162, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 158, ../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before, .email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }

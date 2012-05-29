@@ -8,6 +8,7 @@ libs.shelbyGT.GuidePresentation = {
       people:'people',
       myRolls:'myRolls',
       browse:'browse'
-    }
+    },
+    stream:'stream'
   }
 };

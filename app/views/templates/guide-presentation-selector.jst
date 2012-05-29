@@ -1,33 +1,21 @@
-<!-- TODO:: implement small and big views of the roll list and uncomment -->
-<!-- <ul>
-  <li class="small">
-    small
-  </li>
-  <li class="big">
-    big
-  </li>
-</ul> -->
-<button class="js-stream guide-presentation-stream">
+<button class="js-stream guide-presentation-button guide-presentation-stream">
   Stream
 </button>
 
 <ul class="js-content-selector guide-presentation-filter clearfix">
-  <% switch(guide.get('displayState')){
-      case libs.shelbyGT.DisplayState.rollList: %>
-        <li class="guide-presentation-filter-item js-people">
-          <button>
-            People
-          </button
-        </li>
-        <li class="guide-presentation-filter-item js-my-rolls">
-          <button>
-            My Rolls
-          </button>
-        </li>
-        <li class="guide-presentation-filter-item js-browse">
-          <button>
-            Browse
-          </button>
-        </li>
-  <%  break; } %>
+  <li class="guide-presentation-filter-item js-people">
+    <button class="guide-presentation-button">
+      People
+    </button>
+  </li>
+  <li class="guide-presentation-filter-item js-my-rolls">
+    <button class="guide-presentation-button">
+      My Rolls
+    </button>
+  </li>
+  <li class="guide-presentation-filter-item js-browse">
+    <button class="guide-presentation-button">
+      Browse
+    </button>
+  </li>
 </ul>

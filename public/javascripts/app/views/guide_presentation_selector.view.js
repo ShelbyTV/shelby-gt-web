@@ -8,10 +8,10 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
     
     events : {
-      "click .js-stream" : "_goToStream",
-      "click .js-people" : "_filterPeople",
+      "click .js-stream"   : "_goToStream",
+      "click .js-people"   : "_filterPeople",
       "click .js-my-rolls" : "_filterMyRolls",
-      "click .js-browse" : "_browseRolls"
+      "click .js-browse"   : "_browseRolls"
     },
 
     el : '#js-guide-presentation-selector',
@@ -31,60 +31,50 @@
     render : function(){
       this.$el.html(this.template({ config: this.model, guide: shelby.models.guide }));
       this._setSelected();
-      this._updateVisibility();
     },
     
-    _updateVisibility : function(){
-      switch(shelby.models.guide.get('displayState')){
-        case libs.shelbyGT.DisplayState.rollList:
-          this.$el.show();
-          break;
-        default:
-          this.$el.hide();
-      }
-    },
-
     _goToStream : function(){
       shelby.router.navigate('stream', {trigger: true});
-
     },
     
     _filterPeople : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.people);
-      this._clearSelected();
       this._setSelected();
     },
     
     _filterMyRolls : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
-      this._clearSelected();
       this._setSelected();
     },
     
     _browseRolls : function(){
       this.model.set('content', libs.shelbyGT.GuidePresentation.content.rolls.browse);
-      this._clearSelected();
       this._setSelected();
     },
 
     _setSelected : function(){
+      this._clearSelected();
+
       var $setSelectedClassOn;
       switch (this.model.get('content')) {
         case libs.shelbyGT.GuidePresentation.content.rolls.people :
-          $setSelectedClassOn = this.$('.js-people');
+          $setSelectedClassOn = this.$('.js-people').children('button');
           break;
         case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-          $setSelectedClassOn = this.$('.js-my-rolls');
+          $setSelectedClassOn = this.$('.js-my-rolls').children('button');
           break;
         case libs.shelbyGT.GuidePresentation.content.rolls.browse :
-          $setSelectedClassOn = this.$('.js-browse');
+          $setSelectedClassOn = this.$('.js-browse').children('button');
           break;
+        case libs.shelbyGT.GuidePresentation.content.stream :
+          $setSelectedClassOn = this.$('.js-stream');
+          break;        
       }
-      $setSelectedClassOn.addClass('guide-presentation-filter-selected');
+      $setSelectedClassOn.addClass('guide-presentation-content-selected');
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector li').removeClass('guide-presentation-filter-selected');
+      this.$('.js-content-selector button, .js-stream').removeClass('guide-presentation-content-selected');
     }
 
   });

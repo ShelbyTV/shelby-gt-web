@@ -30,7 +30,7 @@
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
-  background: url("../images/assets/stream.svg") no-repeat -7px -1px;
+  background: url("../images/assets/stream.svg") no-repeat -7px -1px #343434;
   float: left;
   margin-left: 10px;
   margin-top: 1px;
@@ -48,7 +48,7 @@
   list-style-type: none;
 }
 /* line 22, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
-.guide-presentation-filter-item button {
+.guide-presentation-filter-item .guide-presentation-button {
   background-color: #343434;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
   -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -65,7 +65,7 @@
   padding: 6px;
   width: 33%;
 }
-/* line 28, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 29, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:first-child button {
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
@@ -75,7 +75,7 @@
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
-/* line 35, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 36, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:last-child button {
   -moz-border-radius: 0 5px 5px 0;
   -webkit-border-radius: 0 5px 5px 0;
@@ -85,8 +85,9 @@
   border-radius: 0 5px 5px 0;
   border-left: none;
 }
-/* line 42, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
-.guide-presentation-filter-item.guide-presentation-filter-selected button {
+
+/* line 45, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-button.guide-presentation-content-selected {
   background-color: #777;
   -moz-box-shadow: inset 0 1px 0 0 #b7b7b7;
   -webkit-box-shadow: inset 0 1px 0 0 #b7b7b7;

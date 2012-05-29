@@ -9,11 +9,11 @@
 
 	fieldset{
 		margin-bottom:1em;
+
 		&:first-child,
 		&.you-profile-actions{
 			margin-bottom:0;
 		}
-
 	}
 
 	input{
@@ -42,7 +42,8 @@
 			border-top:1px solid #222;
 		}
 	}
-	label{
+	
+ label{
 		margin-top:1px;
 	}
 }
@@ -141,12 +142,14 @@
 		background-size:76%;
 	}
 }
+
 .you-preferences-networks-facebook{
 	&:before{
 		@include preferences-networks(facebook);
 		background-size:28%;
 	}	
 }
+
 .you-preferences-networks-tumblr{
 	&:before{
 		@include preferences-networks(tumblr);
@@ -164,6 +167,7 @@
 		width:100%;
 		z-index:1;
 	}
+
 	input[type="checkbox"]{
 		border: none;
 		margin-top:10px;
@@ -184,6 +188,7 @@
 			content:"on";
 		}
 	}
+
 	input + span{
 		@include transition-property(all);
 	  @include transition-duration(1s);

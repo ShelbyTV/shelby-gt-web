@@ -58,7 +58,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           return isNotPersonRoll || isMyPublicRoll;
         });
         break;
-      default:
+      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
         this.updateFilter(null);
         break;
     }

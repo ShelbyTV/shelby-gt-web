@@ -4,7 +4,7 @@
   @extend .notype;
   @include x-button-primer;
 
-  background: url("../images/assets/stream.svg") no-repeat -7px -1px;
+  background: url("../images/assets/stream.svg") no-repeat -7px -1px $primer-color;
   float:left;
   margin-left: $default-margin;
   margin-top: 1px;
@@ -18,12 +18,13 @@
 
 .guide-presentation-filter-item {
   list-style-type: none;
-
-  button {
+ 
+ .guide-presentation-button {
     @include x-tab-primer;
     padding: 6px;
     width: 33%;
-  }
+ }
+
   &:first-child{
     button {
       //left rounded
@@ -38,10 +39,11 @@
       border-left: none;    
     }
   }
-  &.guide-presentation-filter-selected{
-    button {
-      background-color: #777;
-      @include box-shadow(inset 0 1px 0 0 adjust-lightness(#777,25%));
-    }
+}
+
+.guide-presentation-button {
+   &.guide-presentation-content-selected{
+    background-color: #777;
+    @include box-shadow(inset 0 1px 0 0 adjust-lightness(#777,25%));
   }
 }
