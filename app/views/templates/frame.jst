@@ -32,6 +32,8 @@
  
   <footer class="video-card-footer">
 
+    <% if(!frame.isOnRollTypeGenius()) { %>
+
     <!-- MessageView for the first message will be dynamically rendered here -->
 
       <section class="video-activity js-video-activity clearfix" style="<%= showConversation ? '' : 'display:none' %>">
@@ -59,6 +61,7 @@
       <% } %>
     </div> 
   
+    <% } %>
   </footer>
 
 </article><!-- eo #video-123.video-card -->

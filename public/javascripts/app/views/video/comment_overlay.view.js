@@ -25,12 +25,13 @@
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (guideModel.previous('activeFrameModel')) {
         guideModel.previous('activeFrameModel').get('conversation').off('change', this._onConversationChange, this);
-        if (!activeFrameModel) {
+      }
+      if (!activeFrameModel || activeFrameModel.isOnRollTypeGenius()) {
           //if there is no longer an active frame, hide the overlay
           this.$el.hide();
-        }
-      } else {
-        //if there was previously no active frame, the overlay was hidden, so reveal it now
+       }
+      else {
+        //reveal the overlay in case it was previously hidden
         this.$el.show();
       }
       activeFrameModel.get('conversation').on('change', this._onConversationChange, this);
