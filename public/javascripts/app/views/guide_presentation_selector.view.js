@@ -20,10 +20,12 @@
     },
 
     initialize : function(){
+      this.model.bind('change:content', this._onContentChange, this);
       shelby.models.guide.bind('change:displayState', this.render, this);
     },
 
     _cleanup : function(){
+      this.model.unbind('change:content', this._onContentChange, this);
       shelby.models.guide.unbind('change:displayState', this.render, this);
     },
 
@@ -36,6 +38,7 @@
     _updateVisibility : function(){
       switch(shelby.models.guide.get('displayState')){
         case libs.shelbyGT.DisplayState.rollList:
+        case libs.shelbyGT.DisplayState.browseRollList:
           this.$el.show();
           break;
         default:
@@ -79,6 +82,19 @@
 
     _clearSelected : function(){
       this.$('.js-content-selector li').removeClass('guide-presentation-filter-selected');
+    },
+
+    _onContentChange : function(guidePresentationModel, content){
+      var filterOnlyStates = libs.shelbyGT.GuidePresentation.content.rolls.filterOnlyStates;
+      //only do something if we can't reach our desired state by filtering alone, in
+      //which case we need to reroute to display a different list of rolls in the guide
+      if (_(filterOnlyStates).include(guidePresentationModel.previous('content')) &&
+          !_(filterOnlyStates).include(content)) {
+        shelby.router.displayRollList();
+      } else if (!_(filterOnlyStates).include(guidePresentationModel.previous('content')) &&
+          _(filterOnlyStates).include(content)) {
+        shelby.router.displayRollList();
+      }
     }
 
   });

@@ -61,12 +61,17 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            collection : shelby.collections.rollFollowings
+            model : shelby.models.rollFollowings
+          };
+          break;
+        case DisplayState.browseRollList :
+          displayComponents = {
+            viewProto : RollListView,
+            model : shelby.models.browseRolls
           };
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
-        case DisplayState.userPersonalRoll :
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
@@ -123,8 +128,7 @@
         var currentDisplayState = this.model.get('displayState');
         if (currentDisplayState == DisplayState.dashboard ||
             currentDisplayState == DisplayState.standardRoll ||
-            currentDisplayState == DisplayState.watchLaterRoll ||
-            currentDisplayState == DisplayState.userPersonalRoll) {
+            currentDisplayState == DisplayState.watchLaterRoll) {
           // try to find the active frame in the current list view and activate its
           // rolling view
           if (this._listView) {
@@ -175,6 +179,7 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
+        case libs.shelbyGT.DisplayState.browseRollList :
           // if the dashboard model hasn't been created yet, fetch it
           // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
           // as opposed to from what is currently displyed in the guide
@@ -198,7 +203,6 @@
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
-        case libs.shelbyGT.DisplayState.userPersonalRoll :
           _currentModel = this.model.get('currentRollModel');
           _frames = _currentModel.get('frames').models;
           break;

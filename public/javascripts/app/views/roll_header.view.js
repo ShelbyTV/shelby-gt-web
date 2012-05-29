@@ -31,8 +31,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll ||
-        this.model.get('displayState') == libs.shelbyGT.DisplayState.userPersonalRoll) {
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     }
   },
@@ -74,8 +73,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(guideModel, displayState){
-    if (displayState == libs.shelbyGT.DisplayState.standardRoll ||
-        displayState == libs.shelbyGT.DisplayState.userPersonalRoll) {
+    if (displayState == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     } else {
       // collapse/hide child views
@@ -87,16 +85,14 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   _toggleJoinRoll : function() {
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
-    if ( shelby.models.user.followsRoll(currentRollModel) ){
+    if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
       currentRollModel.leaveRoll(function(){
         self._updateJoinButton('Join');
-        self._refreshUser();
       });
     }
     else {
       currentRollModel.joinRoll(function(){
         self._updateJoinButton('Leave');
-        self._refreshUser();
       });
     }
   },
@@ -105,11 +101,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     var addOrRemoveClass = action == 'Leave' ? 'addClass' : 'removeClass';
     // this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
     this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
-  },
-
-  _refreshUser : function(){
-    // refresh the user with roll_followings
-    shelby.models.user.fetch({ data: {include_rolls:true} });
   },
 
   _updateRollHeaderView : function(guideModel, currentRollModel) {
@@ -125,7 +116,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 			this.$('#js-roll-header li:nth-child(2)').hide();
     }
     // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(currentRollModel) ? 'Leave' : 'Join';
+    var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
   },
 

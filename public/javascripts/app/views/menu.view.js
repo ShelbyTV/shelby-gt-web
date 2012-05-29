@@ -24,8 +24,8 @@
     _activeTabSelectorMap : {
       "dashboard" : ".stream",
       "rollList" : ".rolls",
+      "browseRollList" : ".rolls",
       "standardRoll" : ".rolls",
-      "userPersonalRoll" : ".rolls",
       "watchLaterRoll" : ".saves"
     },
 

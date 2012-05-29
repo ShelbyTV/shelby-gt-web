@@ -12,11 +12,10 @@
 		&:hover {
 			@include background(#555);
 		}
-	}
-}
-.active-list-item {
-	.active-frame {
-		@include background(#6d6d6d);
+
+		&.active-list-item {
+			@include background(#6d6d6d);
+		}
 	}
 }
 

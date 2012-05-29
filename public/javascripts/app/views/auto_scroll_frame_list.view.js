@@ -67,6 +67,11 @@
 
     _scrollTo : function(element) {
       this.parent.scrollToChildElement(element);
+    },
+
+    //ListView overrides
+    _listItemViewAdditionalParams : function() {
+      return {activationStateModel:shelby.models.guide};
     }
 
   });

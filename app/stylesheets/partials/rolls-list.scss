@@ -12,10 +12,7 @@
 		display:block;
 		padding:$defaultMargin;
 		&:hover{
-			@include background(
-//				url('../images/assets/noise.png') 
-				#6d6d6d
-			);
+			@include background(#6d6d6d);
 		}
 	}
 	li{
@@ -28,32 +25,29 @@
 		&:last-child{
 			border-bottom: none;
 		}
-	}
-	.active-list-item{
-		@include background(
-//			url('../images/assets/noise.png')
-			#5fa256
-		);
+		&.active-list-item{
+			@include background(#5fa256);
 
-		position:relative;
+			position:relative;
 
-		a{
-			color:#000;
-		}
-		h2{
-			height:36px;
-			overflow:hidden;
-			text-overflow:ellipsis;
-			white-space:nowrap;
-			width:160px;
-			&:after {
-			  content: "Now Playing";
-			  color: #FFF;
-			  padding-top: 10px;
-			  padding-right: 10px;
-			  position: absolute;
-			  right: 0;
-			  top: 0;
+			a{
+				color:#000;
+			}
+			h2{
+				height:36px;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+				width:160px;
+				&:after {
+				  content: "Now Playing";
+				  color: #FFF;
+				  padding-top: 10px;
+				  padding-right: 10px;
+				  position: absolute;
+				  right: 0;
+				  top: 0;
+				}
 			}
 		}
 	}

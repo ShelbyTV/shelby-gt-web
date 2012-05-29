@@ -3,7 +3,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    collectionAttribute : 'roll_followings',
+    collectionAttribute : 'rolls',
     listItemView : 'RollItemView'
   }),
 
@@ -22,24 +22,33 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   _scrollToActiveRollItemView : function(guideModel, tryAutoScroll) {
     if (tryAutoScroll) {
-      var activeRollItemView = this.children.find(function(childView){
-        var activeFrameModel = guideModel.get('activeFrameModel');
-        if (activeFrameModel) {
-          var roll = activeFrameModel.get('roll');
-          if (roll && childView.model.id == roll.id) {
-            return true;
+      var activeFrameModel = guideModel.get('activeFrameModel');
+      if (activeFrameModel) {
+        var roll = activeFrameModel.get('roll');
+        if (roll) {
+          var activeRollItemView = this.children.find(function(childView){
+              if (childView.model.id == roll.id) {
+                return true;
+              }
+          });
+          if (activeRollItemView) {
+            this._scrollTo(activeRollItemView.el);
           }
         }
-      });
-      if (activeRollItemView) {
-        this._scrollTo(activeRollItemView.el);
       }
       guideModel.set('tryAutoScroll', false);
     }
   },
 
   _onContentChanged : function(guidePresentationModel, content){
-    this._filterContent(content);
+    var filterOnlyStates = libs.shelbyGT.GuidePresentation.content.rolls.filterOnlyStates;
+    //only do something if we can reach our desired state by filtering alone
+    //otherwise, the guide presentation selector view will cause a rerouting
+    //to display a different set of rolls in response to this same event
+    if (_(filterOnlyStates).include(content) &&
+        _(filterOnlyStates).include(guidePresentationModel.previous('content'))) {
+      this._filterContent(content);
+    }
   },
 
   _filterContent : function(guidePresentationContent){
@@ -58,14 +67,16 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           return isNotPersonRoll || isMyPublicRoll;
         });
         break;
-      default:
-        this.updateFilter(null);
-        break;
     }
   },
 
   _scrollTo : function(element) {
     this.parent.scrollToChildElement(element);
+  },
+
+  //ListView overrides
+  _listItemViewAdditionalParams : function() {
+    return {activationStateModel:shelby.models.guide};
   }
 
 });

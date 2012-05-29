@@ -5,20 +5,21 @@
 
   libs.shelbyGT.ActiveHighlightListItemView = ListItemView.extend({
 
+    // NOTE: you must pass an activationStateModel to this class's constructor
     options : _.extend({}, ListItemView.prototype.options, {
-      activationStateModel : new Backbone.Model(), //the model to listen to for changes in activation state
-      activationStateProperty : 'active', //the model property to listen for changes to
+      activationStateModel : null, //the model to listen to for changes in activation state
+      activationStateProperty : 'active', //the model property to listen to for changes in activation state
       activeClassName : 'active-list-item' //the class to add to the el when it's activated/highlighted
     }),
 
     initialize : function(){
-      eval(this.options.activationStateModel).bind('change:' + this.options.activationStateProperty, this._checkAndHighlight, this);
+      this.options.activationStateModel.bind('change:' + this.options.activationStateProperty, this._checkAndHighlight, this);
       ListItemView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
-      eval(this.options.activationStateModel).unbind('change:' + this.options.activationStateProperty, this._checkAndHighlight, this);
-      eval(this.options.activationStateModel).unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._checkAndHighlight, this);
+      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
       ListItemView.prototype._cleanup.call(this);
     },
 
@@ -27,16 +28,16 @@
     },
 
     _checkAndHighlight : function(){
-      if (this.doActivateThisItem(eval(this.options.activationStateModel))) {
+      if (this.doActivateThisItem(this.options.activationStateModel)) {
         this.$el.addClass(this.options.activeClassName);
         //bind a handler to remove the active state when this frame is deactivated
-        eval(this.options.activationStateModel).bind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+        this.options.activationStateModel.bind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
       }
     },
 
     _onThisItemDeactivate : function() {
       this.$el.removeClass(this.options.activeClassName);
-      eval(this.options.activationStateModel).unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
     },
 
     doActivateThisItem : function(model) {

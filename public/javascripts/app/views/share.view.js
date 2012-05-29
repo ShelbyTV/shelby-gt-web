@@ -1,6 +1,7 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
-  shareBaseLength : 0,
+  // <your text>… http://shl.by/xyz1234
+  shareBaseLength : 23,
 
   _components : {
     networkToggles : true,
@@ -35,7 +36,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (this._components.spinner) {
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: this.$('.js-submit-share')[0],
-        hidden : true,
         replacement : true,
         size : 'small'
       });

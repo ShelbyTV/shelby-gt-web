@@ -54,7 +54,6 @@
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>
       <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> (<%= remainingMessageCount %>)<% } %></a>			
       <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
-             shelby.models.guide.get('displayState') !== 'userPersonalRoll' &&
              frame.has('roll')) { %>
         <a onclick="return false;" class="video-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
           <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>

@@ -21,13 +21,12 @@
 .list li:hover {
   background: #555555;
 }
-
-/* line 18, ../../../app/stylesheets/partials/frame.scss */
-.active-list-item .active-frame {
+/* line 16, ../../../app/stylesheets/partials/frame.scss */
+.list li.active-list-item {
   background: #6d6d6d;
 }
 
-/* line 23, ../../../app/stylesheets/partials/frame.scss */
+/* line 22, ../../../app/stylesheets/partials/frame.scss */
 .video-card {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -43,7 +42,7 @@
   position: relative;
 }
 
-/* line 34, ../../../app/stylesheets/partials/frame.scss */
+/* line 33, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #494949;
   line-height: 75px;
@@ -51,7 +50,7 @@
   text-align: center;
 }
 
-/* line 42, ../../../app/stylesheets/partials/frame.scss */
+/* line 41, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   cursor: pointer;
   display: inline-block;
@@ -62,30 +61,30 @@
   width: 100%;
 }
 
-/* line 52, ../../../app/stylesheets/partials/frame.scss */
+/* line 51, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
   margin: 36px auto 0;
   width: auto;
 }
 
-/* line 57, ../../../app/stylesheets/partials/frame.scss */
+/* line 56, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header {
   border-bottom: 1px solid #333333;
   padding: 6px 8px;
 }
-/* line 61, ../../../app/stylesheets/partials/frame.scss */
+/* line 60, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a {
   text-decoration: none;
 }
-/* line 64, ../../../app/stylesheets/partials/frame.scss */
+/* line 63, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .video-card-header a:visited {
   text-decoration: none;
 }
-/* line 67, ../../../app/stylesheets/partials/frame.scss */
+/* line 66, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover {
   text-decoration: underline;
 }
-/* line 72, ../../../app/stylesheets/partials/frame.scss */
+/* line 71, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header h1 {
   float: left;
   font-size: 1em;
@@ -96,7 +95,7 @@
   width: 100%;
 }
 
-/* line 83, ../../../app/stylesheets/partials/frame.scss */
+/* line 82, ../../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -108,14 +107,14 @@
   z-index: 5;
 }
 
-/* line 121, ../../../app/stylesheets/partials/frame.scss */
+/* line 120, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 127, ../../../app/stylesheets/partials/frame.scss */
+/* line 126, ../../../app/stylesheets/partials/frame.scss */
 .video-controls {
   margin: 5px;
   padding: 0;
@@ -123,7 +122,7 @@
   right: 0px;
   top: 0px;
 }
-/* line 134, ../../../app/stylesheets/partials/frame.scss */
+/* line 133, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #59b034;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #79c758), color-stop(100%, #59b034));
@@ -146,7 +145,7 @@
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 144, ../../../app/stylesheets/partials/frame.scss */
+/* line 143, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/action_roll.svg") no-repeat 8px 4px;
   -moz-border-radius: 5px;
@@ -162,7 +161,7 @@
   text-decoration: underline;
   width: 32px;
 }
-/* line 156, ../../../app/stylesheets/partials/frame.scss */
+/* line 155, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: #63c43a;
   -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
@@ -170,7 +169,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #69f034;
   box-shadow: inset 0px 1px 1px 0px #69f034;
 }
-/* line 161, ../../../app/stylesheets/partials/frame.scss */
+/* line 160, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame {
   background-color: #143caf;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0087c0), color-stop(100%, #143caf));
@@ -193,7 +192,7 @@
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 171, ../../../app/stylesheets/partials/frame.scss */
+/* line 170, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame button {
   background: url("../images/assets/action_share.svg") no-repeat 2px 9px;
   -moz-border-radius: 5px;
@@ -209,7 +208,7 @@
   text-decoration: underline;
   width: 32px;
 }
-/* line 182, ../../../app/stylesheets/partials/frame.scss */
+/* line 181, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .share-frame:hover {
   background: #1744c6;
   -moz-box-shadow: inset 0px 1px 1px 0px #077dba;
@@ -217,7 +216,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #077dba;
   box-shadow: inset 0px 1px 1px 0px #077dba;
 }
-/* line 189, ../../../app/stylesheets/partials/frame.scss */
+/* line 188, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame {
   background-color: #464646;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #464646));
@@ -240,7 +239,7 @@
   margin-bottom: 5px;
   padding: 0;
 }
-/* line 199, ../../../app/stylesheets/partials/frame.scss */
+/* line 198, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame button {
   background: url("../images/assets/action_heart_white.svg") no-repeat 9px 4px;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
@@ -259,7 +258,7 @@
   padding-top: 16px;
   width: 32px;
 }
-/* line 212, ../../../app/stylesheets/partials/frame.scss */
+/* line 211, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame:hover {
   background: #535353;
   -moz-box-shadow: inset 0px 1px 1px 0px #888888;
@@ -267,7 +266,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #888888;
   box-shadow: inset 0px 1px 1px 0px #888888;
 }
-/* line 217, ../../../app/stylesheets/partials/frame.scss */
+/* line 216, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted {
   background-color: #9e1632;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
@@ -281,12 +280,12 @@
   -o-box-shadow: inset 0px 1px 1px 0px #ef2f74;
   box-shadow: inset 0px 1px 1px 0px #ef2f74;
 }
-/* line 222, ../../../app/stylesheets/partials/frame.scss */
+/* line 221, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .upvote-frame.upvoted button {
   background: url("../images/assets/action_heart.svg") no-repeat 9px 4px;
   color: #222;
 }
-/* line 230, ../../../app/stylesheets/partials/frame.scss */
+/* line 229, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame, .video-controls .remove-frame {
   background-color: #693a7b;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
@@ -300,11 +299,11 @@
   -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
   box-shadow: inset 0px 1px 1px 0px #8d8f90;
 }
-/* line 236, ../../../app/stylesheets/partials/frame.scss */
+/* line 235, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame button, .video-controls .remove-frame button {
   background: url("../images/assets/saved_action.svg") no-repeat center center;
 }
-/* line 241, ../../../app/stylesheets/partials/frame.scss */
+/* line 240, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
   background: #9863a2;
   -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
@@ -312,7 +311,7 @@
   -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
   box-shadow: inset 0px 1px 1px 0px #9863a2;
 }
-/* line 246, ../../../app/stylesheets/partials/frame.scss */
+/* line 245, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame {
   -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
   -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
@@ -326,11 +325,11 @@
   background: -ms-linear-gradient(top, #ba2046, #9e1632);
   background: linear-gradient(top, #ba2046, #9e1632);
 }
-/* line 252, ../../../app/stylesheets/partials/frame.scss */
+/* line 251, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.svg") no-repeat center center;
 }
-/* line 257, ../../../app/stylesheets/partials/frame.scss */
+/* line 256, ../../../app/stylesheets/partials/frame.scss */
 .video-controls .remove-frame:hover {
   background: #cb1c40;
   -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
@@ -339,7 +338,7 @@
   box-shadow: inset 0px 1px 1px 0px #cb1c40;
 }
 
-/* line 264, ../../../app/stylesheets/partials/frame.scss */
+/* line 263, ../../../app/stylesheets/partials/frame.scss */
 .video-footer {
   border-top: 1px solid #555555;
   font-size: 11px;
@@ -348,11 +347,11 @@
   padding: 6px 8px 7px;
 }
 
-/* line 277, ../../../app/stylesheets/partials/frame.scss */
+/* line 276, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   padding: 10px;
 }
-/* line 280, ../../../app/stylesheets/partials/frame.scss */
+/* line 279, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -365,24 +364,24 @@
   resize: none;
   width: 100%;
 }
-/* line 288, ../../../app/stylesheets/partials/frame.scss */
+/* line 287, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   float: right;
 }
 
-/* line 298, ../../../app/stylesheets/partials/frame.scss */
+/* line 297, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 302, ../../../app/stylesheets/partials/frame.scss */
+/* line 301, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 309, ../../../app/stylesheets/partials/frame.scss */
+/* line 308, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -391,36 +390,36 @@
   text-overflow: ellipsis;
 }
 
-/* line 317, ../../../app/stylesheets/partials/frame.scss */
+/* line 316, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 321, ../../../app/stylesheets/partials/frame.scss */
+/* line 320, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid #333333;
   border-top: 1px solid #555555;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 327, ../../../app/stylesheets/partials/frame.scss */
+/* line 326, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 332, ../../../app/stylesheets/partials/frame.scss */
+/* line 331, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 336, ../../../app/stylesheets/partials/frame.scss */
+/* line 335, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 342, ../../../app/stylesheets/partials/frame.scss */
+/* line 341, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -428,7 +427,7 @@
   line-height: 2.8;
 }
 
-/* line 349, ../../../app/stylesheets/partials/frame.scss */
+/* line 348, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -436,29 +435,29 @@
   padding-right: 3px;
 }
 
-/* line 358, ../../../app/stylesheets/partials/frame.scss */
+/* line 357, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1336694545');
+  content: url('/images/../images/assets/twitter_stamp.svg?1337611867');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 368, ../../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1336694545');
+  content: url('/images/../images/assets/facebook_stamp.svg?1337611867');
 }
 
-/* line 375, ../../../app/stylesheets/partials/frame.scss */
+/* line 374, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336694545');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
 }
 
-/* line 380, ../../../app/stylesheets/partials/frame.scss */
+/* line 379, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 383, ../../../app/stylesheets/partials/frame.scss */
+/* line 382, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }

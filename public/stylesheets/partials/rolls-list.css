@@ -22,39 +22,39 @@
 .rolls-list a:hover {
   background: #6d6d6d;
 }
-/* line 21, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 18, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid #333;
   border-top: 1px solid #666;
   padding: 0;
 }
-/* line 25, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 22, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li:first-child {
   border-top: none;
 }
-/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 25, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li:last-child {
   border-bottom: none;
 }
-/* line 32, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item {
+/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li.active-list-item {
   background: #5fa256;
   position: relative;
 }
-/* line 40, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item a {
+/* line 33, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li.active-list-item a {
   color: #000;
 }
-/* line 43, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item h2 {
+/* line 36, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li.active-list-item h2 {
   height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 160px;
 }
-/* line 49, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item h2:after {
+/* line 42, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li.active-list-item h2:after {
   content: "Now Playing";
   color: #FFF;
   padding-top: 10px;
