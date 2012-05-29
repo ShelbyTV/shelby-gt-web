@@ -173,33 +173,34 @@
 
 }
 
-.video-player-nav-buttons-wrapper{
-  @include transition-property(opacity);
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
-	opacity: 1.0;
-	
+.video-player-nav-buttons-wrapper{	
   .video-player-prev{
     @include background(
   		url('../images/assets/arrow_left.svg') center center no-repeat #777
   	);
+  	
+  	@include transition-property(opacity);
+  	@include transition-duration(.25s);
+  	@include transition-timing-function(ease-out);
+  	@include transition-delay(0s);
     
-  	left: 20px;
+  	left: $defaultMargin*2;
+  	opacity: 1.0;
   }
 
   .video-player-next{
     @include background(
   		url('../images/assets/arrow_right.svg') center center no-repeat #777
   	);
-
-  	margin-right: $defaultMargin*33;
-  	right: 20px;
   	
-  	@include transition-property(margin-right);
-  	@include transition-duration(.5s);
-  	@include transition-timing-function(ease-in-out);
-  	@include transition-delay(0s);
+  	@include transition-property('opacity, margin-right');
+  	@include transition-duration('.25s, .5s');
+  	@include transition-timing-function('ease-out, ease-in-out');
+  	@include transition-delay('0s, 0s');
+  	
+  	margin-right: $defaultMargin*33;
+  	opacity: 1.0;
+  	right: $defaultMargin*2;
   	
   	&.full-width {
   	  margin-right: 0;
@@ -212,7 +213,6 @@
   	@include border-radius($radius);
 
   	height:40px;
-  	opacity: 1.0;
   	position:absolute;
   	top: 45%;
   	width: 40px;
@@ -221,5 +221,7 @@
 }
 
 .user-inactive .video-player-nav-buttons-wrapper {
-  opacity: 0.0;
+  .video-player-prev, .video-player-next {
+    opacity: 0.0;
+  }
 }
