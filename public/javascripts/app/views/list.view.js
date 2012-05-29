@@ -71,6 +71,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._displayCollection.unbind('reset', this.internalReset, this);
   },
 
+  _isEducationDisplayState : function(){
+    //defaults to false
+    return false;
+  },
+
   _initializeEducation : function(){
     var self = this;
     if (shelby.userSignedIn() && !this._userHasBeenEducated() && this._isEducationDisplayState()){
