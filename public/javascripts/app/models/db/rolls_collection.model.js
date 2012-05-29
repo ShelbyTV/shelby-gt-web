@@ -10,7 +10,7 @@ libs.shelbyGT.RollsCollectionModel = libs.shelbyGT.ShelbyBaseModel.extend({
   ],
 
   url : function() {
-    return shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
+    return shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
   },
 
   parse : function(response) {

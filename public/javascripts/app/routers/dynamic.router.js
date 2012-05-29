@@ -192,7 +192,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       displayState = libs.shelbyGT.DisplayState.rollList;
       rollCollection = shelby.models.rollFollowings;
-      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
+      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
     }
 
     shelby.models.guide.set('displayState', displayState);

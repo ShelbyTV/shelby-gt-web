@@ -107,6 +107,7 @@
       // have to create the new roll and reroll the frame before we can share
       this.options.roll.save(null, {
         success : function(newRoll){
+          shelby.models.rollFollowings.add(newRoll);
           self.options.frame.reRoll(newRoll, function(newFrame){
             self.options.frame = newFrame;
             ShareView.prototype._share.call(self);
