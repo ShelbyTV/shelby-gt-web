@@ -131,7 +131,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._testSwitchingfromQueryParams(params);
 
     this._setupTopLevelViews({showSpinner: true});
-    shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.stream);
     this._fetchDashboard(options);
   },
 
@@ -199,6 +198,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           this.navigate('rolls',{trigger:true,replace:true});
           return;
       }
+    } else {
+      shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
     }
 
     this._setupTopLevelViews({showSpinner: true});

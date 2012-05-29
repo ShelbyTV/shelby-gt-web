@@ -19,25 +19,32 @@
     _listView : null,
 
     initialize : function(){
-      this.model.bind('change', this.updateChild, this);
+      this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.guidePresentation.bind('change:content', this._updateChild, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
     },
 
     _cleanup : function() {
-      this.model.unbind('change', this.updateChild, this);
+      this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.guidePresentation.unbind('change:content', this._updateChild, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
     },
 
-    updateChild : function(model){
+    _onGuideModelChange : function(model){
       // only render a new content pane if the contentPane* attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
       if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId') && !_changedAttrs.has('pollAttempts')) {
         return;
       }
+      this._updateChild();
+    },
+
+    _updateChild : function() {
+      console.log('updating child');
       this._leaveChildren();
       this._mapAppendChildView();
       this._setGuideTop();
@@ -61,7 +68,8 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.rollFollowings
+            model : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
+              shelby.models.browseRolls : shelby.models.rollFollowings
           };
           break;
         case DisplayState.standardRoll :

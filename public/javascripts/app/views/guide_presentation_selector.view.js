@@ -57,20 +57,22 @@
       if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
           shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
         var $setSelectedClassOn;
-        switch (this.model.get('content')) {
-          case libs.shelbyGT.GuidePresentation.content.rolls.people :
-            $setSelectedClassOn = this.$('.js-people').children('button');
-            break;
-          case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-            $setSelectedClassOn = this.$('.js-my-rolls').children('button');
-            break;
-          case libs.shelbyGT.GuidePresentation.content.rolls.browse :
-            $setSelectedClassOn = this.$('.js-browse').children('button');
-            break;
-          case libs.shelbyGT.GuidePresentation.content.stream :
+        if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+          switch (this.model.get('content')) {
+            case libs.shelbyGT.GuidePresentation.content.rolls.people :
+              $setSelectedClassOn = this.$('.js-people').children('button');
+              break;
+            case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
+              $setSelectedClassOn = this.$('.js-my-rolls').children('button');
+              break;
+            case libs.shelbyGT.GuidePresentation.content.rolls.browse :
+              $setSelectedClassOn = this.$('.js-browse').children('button');
+              break;
+          }
+        } else {
             $setSelectedClassOn = this.$('.js-stream');
-            break;        
         }
+
         $setSelectedClassOn.addClass('guide-presentation-content-selected');
       }
     },
