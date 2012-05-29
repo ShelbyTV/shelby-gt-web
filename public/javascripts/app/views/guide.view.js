@@ -23,6 +23,7 @@
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
+      Backbone.Events.bind('playback:prev', this._prevVideo, this);
     },
 
     _cleanup : function() {
@@ -30,6 +31,7 @@
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
+      Backbone.Events.unbind('playback:prev', this._prevVideo, this);
     },
 
     updateChild : function(model){
@@ -167,9 +169,17 @@
         this.model.set('activeDashboardEntryModel', null);
       }
     },
-
-    // appropriatly advances to the next video (in dashboard or a roll)
+    
+    _prevVideo : function(){
+      this._skipVideo(-1);
+    },
+    
     _nextVideo : function(){
+      this._skipVideo(1);
+    },
+
+    // appropriatly changes the next video (in dashboard or a roll)
+    _skipVideo : function(skip){
       var self = this,
           _currentModel,
           _frames,
@@ -208,7 +218,7 @@
           break;
       }
       
-      _index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
+      _index = (_frames.indexOf(_currentFrame) + skip) % _frames.length;
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }
