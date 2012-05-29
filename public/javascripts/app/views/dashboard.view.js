@@ -26,9 +26,9 @@
     initialize : function(){
       var self = this;
       _(this.options).extend({
-        listItemView : function(item){
+        listItemView : function(item, params){
           var mapResult = self.actionToViewMap[item.get('action')];
-          return new mapResult.view({model:item.get(mapResult.model_attr)});
+          return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
         }
       });
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);

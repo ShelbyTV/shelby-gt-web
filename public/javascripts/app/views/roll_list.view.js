@@ -3,7 +3,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    collectionAttribute : 'roll_followings',
+    collectionAttribute : 'rolls',
     listItemView : 'RollItemView'
   }),
 
@@ -22,24 +22,22 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   _scrollToActiveRollItemView : function(guideModel, tryAutoScroll) {
     if (tryAutoScroll) {
-      var activeRollItemView = this.children.find(function(childView){
-        var activeFrameModel = guideModel.get('activeFrameModel');
-        if (activeFrameModel) {
-          var roll = activeFrameModel.get('roll');
-          if (roll && childView.model.id == roll.id) {
-            return true;
+      var activeFrameModel = guideModel.get('activeFrameModel');
+      if (activeFrameModel) {
+        var roll = activeFrameModel.get('roll');
+        if (roll) {
+          var activeRollItemView = this.children.find(function(childView){
+              if (childView.model.id == roll.id) {
+                return true;
+              }
+          });
+          if (activeRollItemView) {
+            this._scrollTo(activeRollItemView.el);
           }
         }
-      });
-      if (activeRollItemView) {
-        this._scrollTo(activeRollItemView.el);
       }
       guideModel.set('tryAutoScroll', false);
     }
-  },
-
-  _onContentChanged : function(guidePresentationModel, content){
-    this._filterContent(content);
   },
 
   _filterContent : function(guidePresentationContent){
@@ -64,8 +62,17 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
     }
   },
 
+  _onContentChanged : function(guidePresentationModel, content){
+    this._filterContent(content);
+  },
+
   _scrollTo : function(element) {
     this.parent.scrollToChildElement(element);
+  },
+
+  //ListView overrides
+  _listItemViewAdditionalParams : function() {
+    return {activationStateModel:shelby.models.guide};
   }
 
 });

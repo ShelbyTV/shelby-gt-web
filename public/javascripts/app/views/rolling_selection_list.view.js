@@ -7,6 +7,10 @@
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
+    options : _.extend({}, ListView.prototype.options, {
+      collectionAttribute : 'rolls'
+    }),
+
     events : {
       "click .js-new-public-roll"  : "_rollToNewPublicRoll",
       "click .js-new-private-roll" : "_rollToNewPrivateRoll"
@@ -20,9 +24,8 @@
 
     initialize : function(){
       var self = this;
-      this.options.collectionAttribute = 'roll_followings';
-      this.options.listItemView = function(item){
-        return new RollingSelectionItemView({model:item,frame:self.options.frame});
+      this.options.listItemView = function(item, params){
+        return new RollingSelectionItemView(_(params).extend({model:item,frame:self.options.frame}));
       };
       ListView.prototype.initialize.call(this);
     },

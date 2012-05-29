@@ -1,5 +1,7 @@
 libs.shelbyGT.ListView = Support.CompositeView.extend({
 
+  _listItemViews : [],
+
   tagName : 'ul',
 
   className : 'list',
@@ -23,7 +25,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     simulateAddTrue : true,
     collection : null,
     collectionAttribute : 'listCollection',
-    listItemView : 'libs.shelbyGT.ListItemView',
+    /*
+      listItemView - a factory method for creating the view for each individual list item given its model
+      this can be either:
+        1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
+        2) a callback of the form function(item, params) which creates and returns a view, where
+          item is the model for the view to be created
+          params are any additional parameters to be passed to the new view's constructor
+    */
+    listItemView : 'ListItemView',
     insert : {
       position : 'append',
       selector : null
@@ -33,7 +43,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     if (this.options.collection) {
       this.options.collection.bind('add', this.sourceAddOne, this);
-      this.options.collection.bind('remove', this.sourceRemoveOne, this);
+      this.options.collection.bind('destroy', this.sourceRemoveOne, this);
       this.options.collection.bind('reset', this.sourceReset, this);
     } else {
       this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
@@ -51,7 +61,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _cleanup : function(){
     if (this.options.collection) {
       this.options.collection.unbind('add', this.sourceAddOne, this);
-      this.options.collection.unbind('remove', this.sourceRemoveOne, this);
+      this.options.collection.unbind('destroy', this.sourceRemoveOne, this);
       this.options.collection.unbind('reset', this.sourceReset, this);
     } else {
       this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
@@ -78,6 +88,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   // delay before displaying education view
   _educationTimeoutMap : {
     'rollList' : 1000,
+    'browseRollList' : 1000,
     'dashboard' : 2000,
     'standardRoll' : 2000,
     'watchLaterRoll' : 1000
@@ -109,6 +120,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
+      var index = this._listItemViews.indexOf(viewToRemove);
+      if (index > -1) {
+        this._listItemViews.splice(index,1);
+      }
     }
   },
 
@@ -120,6 +135,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   internalAddOne : function(item){
     var childView = this._constructListItemView(item);
+    //store a reference to all list item child views so they can be removed/left without
+    //removing any other child views
+    this._listItemViews.push(childView);
     if (this.options.insert && this.options.insert.position) {
       switch (this.options.insert.position) {
         case 'append' :
@@ -139,7 +157,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   internalReset : function(){
     var self = this;
-    this._leaveChildren();
+    //we have to completely repopulate the contents of the view, so remove
+    //all the existing list items
+    _(this._listItemViews).each(function(view) {
+        view.leave();
+    });
+    this._listItemViews.length = 0;
+    //refill the view with the new contents
     this._displayCollection.each(function(item){
       self.internalAddOne(item);
     });
@@ -180,12 +204,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _constructListItemView : function(item){
-    var proto;
+    var params = _(this).result('_listItemViewAdditionalParams');
     if (typeof this.options.listItemView === 'function'){
-      return this.options.listItemView(item);
+      return this.options.listItemView(item, params);
     } else {
-      return new libs.shelbyGT[this.options.listItemView]({model:item});
+      return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
-  }
+  },
+
+  // sub-classes override to pass additional parameters to the constructors of the list item views
+  // this can be an object or a function that returns an object
+  _listItemViewAdditionalParams : {}
 
 });

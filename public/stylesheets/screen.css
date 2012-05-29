@@ -1909,7 +1909,7 @@ a:hover, a:visited, a:active {
 
 /* line 398, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338304288');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338321489');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1917,7 +1917,7 @@ a:hover, a:visited, a:active {
 
 /* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338304288');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338321489');
 }
 
 /* line 415, ../../app/stylesheets/partials/frame.scss */
@@ -2261,7 +2261,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 50, ../../app/stylesheets/partials/video-controls.scss */
-.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
+.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-quality, .video-player-roll {
   border: none;
   height: 43px;
   float: left;
@@ -2269,7 +2269,7 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
 /* line 60, ../../app/stylesheets/partials/video-controls.scss */
-.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
+.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-quality, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
@@ -2284,7 +2284,7 @@ a:hover, a:visited, a:active {
   background: black;
   height: 8px;
   left: 60px;
-  right: 188px;
+  right: 230px;
   margin: 18px 8px 0;
   position: absolute;
 }
@@ -2363,6 +2363,21 @@ a:hover, a:visited, a:active {
 }
 
 /* line 145, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality {
+  background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
+  float: right;
+}
+/* line 153, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality.hd-on {
+  background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
+}
+
+/* line 160, ../../app/stylesheets/partials/video-controls.scss */
+.disable-video-quality .video-player-quality {
+  background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
+}
+
+/* line 166, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

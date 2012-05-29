@@ -87,7 +87,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   _toggleJoinRoll : function() {
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
-    if ( shelby.models.user.followsRoll(currentRollModel) ){
+    if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
       currentRollModel.leaveRoll(function(){
         self._updateJoinButton('Join');
         self._refreshUser();
@@ -125,7 +125,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 			this.$('#js-roll-action-menu li:nth-child(2)').hide();
     }
     // set text to leave/join roll
-    var _buttonText = shelby.models.user.followsRoll(currentRollModel) ? 'Leave' : 'Join';
+    var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
   },
 

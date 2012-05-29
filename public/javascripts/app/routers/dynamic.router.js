@@ -10,6 +10,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
+    "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -63,15 +64,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
-      data: {include_children:true},
-      isUserPersonalRoll: false
+      data: {include_children:true}
     }).value();
 
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
-      onRollFetch: options.onRollFetch,
-      isUserPersonalRoll: options.isUserPersonalRoll
+      onRollFetch: options.onRollFetch
     });
   },
 
@@ -91,10 +90,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayUserPersonalRoll : function(userId, params){
+    var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
-    this.displayRoll(roll, 'personal_roll', params, {
-      updateRollTitle : false,
-      isUserPersonalRoll : true
+    //we don't have enough information about the roll to proceed, so we have to do a preliminary fetch of
+    //the roll info before we can continue
+    roll.fetchWithoutFrames({
+      success : function() {
+        self.displayRoll(roll, 'personal_roll', params, {
+          updateRollTitle : false
+        });
+      }
     });
   },
 
@@ -177,23 +182,47 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRollList : function(params){
+  displayRollList : function(content){
+
+    if (content) {
+      switch (content) {
+        case 'people':
+          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.people)
+          break;
+        case 'my_rolls':
+          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls)
+          break;
+        case 'browse':
+          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.browse)
+          break;
+        default:
+          this.navigate('rolls',{trigger:true,replace:true});
+          return;
+      }
+    }
+
     this._setupTopLevelViews({showSpinner: true});
-    shelby.collections.rollFollowings.reset();
+
+    var displayState, rollCollection, fetchUrl;
+    if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
+      rollCollection = shelby.models.browseRolls;
+      fetchUrl = shelby.config.apiRoot + '/roll/browse';
+    } else {
+      rollCollection = shelby.models.rollFollowings;
+      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
+    }
+
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+
     var self = this;
     this._hideSpinnerAfter((function(){
-      self._addHotRolls();
-      return shelby.collections.rollFollowings.fetch({add:true,success:function(){
-        self._scrollToActiveGuideListItemView();
-      }});
+      return rollCollection.fetch({
+        success : function(){
+          self._scrollToActiveGuideListItemView();
+        },
+        url : fetchUrl
+      });
     })());
-  },
-
-  _addHotRolls : function(){
-    libs.utils.HotRollsJson.forEach(function(rollJson){
-      shelby.collections.rollFollowings.add(new libs.shelbyGT.RollModel(rollJson));
-    });
   },
 
   displaySaves : function(){
@@ -340,8 +369,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
-      data: null,
-      isUserPersonalRoll: false
+      data: null
     }).value();
 
     this._setupTopLevelViews({showSpinner: true});
@@ -349,10 +377,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var rollModel;
     if (typeof(roll) === 'string') {
       // if roll is a string, its the id of the roll to display, so get or construct a model for that id
-      var followedRoll = shelby.models.user.get('roll_followings').find(function(rollToCompare){
-        // if the roll is one the user follows, we want to use the existing model in the user's roll followings collection
-        return rollToCompare.id == roll;
-      });
+      // if the roll has been loaded previously, we can find it in the Backbone Relational Store
+      var followedRoll = Backbone.Relational.store.find(libs.shelbyGT.RollModel, roll);
       rollModel = followedRoll || new libs.shelbyGT.RollModel({id:roll});
     } else {
       // if roll is a Model, just use it
@@ -368,9 +394,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     var displayState;
-    if (options.isUserPersonalRoll) {
-      displayState = 'userPersonalRoll';
-    } else if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
+    if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
       displayState = 'standardRoll';
     } else {
      // the watch later roll is not sharable

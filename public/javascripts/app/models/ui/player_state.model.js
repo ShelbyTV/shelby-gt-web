@@ -13,6 +13,7 @@ libs.shelbyGT.PlayerStateModel = Backbone.Model.extend({
 		"supportsChromeless": true,
 		"supportsMute": true,
 		"supportsVolume": false,
+		"supportsVideoQuality": false,
 		
 		//player's state
     "playerLoaded": false,
@@ -21,7 +22,8 @@ libs.shelbyGT.PlayerStateModel = Backbone.Model.extend({
 		"bufferTime": 0,
 		"duration": 0,
 		"muted": false,
-		"volume": null
+		"volume": null,
+		"hdVideo": false
 	}
 	
 });

@@ -95,7 +95,7 @@
 }
 
 /* line 50, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-roll {
+.video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-quality, .video-player-roll {
   border: none;
   height: 43px;
   float: left;
@@ -103,7 +103,7 @@
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
 /* line 60, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-roll {
+.video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-quality, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
@@ -118,7 +118,7 @@
   background: black;
   height: 8px;
   left: 60px;
-  right: 188px;
+  right: 230px;
   margin: 18px 8px 0;
   position: absolute;
 }
@@ -197,6 +197,21 @@
 }
 
 /* line 145, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality {
+  background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
+  float: right;
+}
+/* line 153, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-quality.hd-on {
+  background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
+}
+
+/* line 160, ../../../app/stylesheets/partials/video-controls.scss */
+.disable-video-quality .video-player-quality {
+  background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
+}
+
+/* line 166, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

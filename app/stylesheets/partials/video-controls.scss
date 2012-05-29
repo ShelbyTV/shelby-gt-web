@@ -71,7 +71,7 @@
 	background:black;
 	height:8px;
 	left:60px;
-	right:188px;
+	right:230px;
 	margin:18px 8px 0;
 	position:absolute;
 }
@@ -140,6 +140,27 @@
 
 	float:right;
 
+}
+
+.video-player-quality{
+	@extend .video-player-play;
+	@include background(
+		url('../images/assets/player_hd_off.svg') center center no-repeat transparent
+	);
+
+	float:right;
+
+	&.hd-on{
+		@include background(
+			url('../images/assets/player_hd_on.svg') center center no-repeat transparent
+		);
+	}
+}
+
+.disable-video-quality .video-player-quality{
+  @include background(
+		url('../images/assets/player_hd_disabled.svg') center center no-repeat transparent
+	);
 }
 
 .video-player-roll{

@@ -30,6 +30,7 @@
 
     _educationMsgMap : {
       'rollList' : 'These are <b>Rolls.</b>  People post video in them.',
+      'browseRollList' : 'These are <b>Rolls.</b>  People post video in them.',
       'dashboard' : '<b>Stream</b> shows all the videos from your <b>Rolls</b>',
       'standardRoll' : 'Try <b>hearting</b> the second video in this Roll.',
       'watchLaterRoll' : 'Use <b>saves</a> for "watch later" or to remember your favorites.'
