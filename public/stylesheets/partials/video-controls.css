@@ -198,20 +198,20 @@
 
 /* line 145, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
-  background: url("../images/assets/player_play.svg") center center no-repeat transparent;
+  background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 154, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 153, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
-  background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
+  background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 162, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 160, ../../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
-  background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
+  background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 169, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 166, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;

@@ -145,24 +145,21 @@
 .video-player-quality{
 	@extend .video-player-play;
 	@include background(
-	  /* TODO: make this TURN ON hd image */
-		url('../images/assets/player_play.svg') center center no-repeat transparent
+		url('../images/assets/player_hd_off.svg') center center no-repeat transparent
 	);
 
 	float:right;
 
 	&.hd-on{
 		@include background(
-		  /* TODO: make this TURN OFF hd image */
-			url('../images/assets/player_pause.svg') center center no-repeat transparent
+			url('../images/assets/player_hd_on.svg') center center no-repeat transparent
 		);
 	}
 }
 
 .disable-video-quality .video-player-quality{
   @include background(
-    /* TODO: make this HD IS DISABLED image */
-		url('../images/assets/player_fullscreen.svg') center center no-repeat transparent
+		url('../images/assets/player_hd_disabled.svg') center center no-repeat transparent
 	);
 }
 
