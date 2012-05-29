@@ -8,7 +8,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
     "isolated_roll/:rollId" : "displayIsolatedRoll",
-    "isolated_roll/:rollId/*params" : "displayIsolatedRoll",
+    "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
@@ -77,7 +77,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }, topLevelViewsOptions);
   },
   
-  displayIsolatedRoll : function(rollId){
+  displayIsolatedRoll : function(rollId, frameId){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
     
@@ -93,6 +93,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         hideRollHeader:true,
         filterControlsOptions:{rollFilterControlsViewOptions:{hideNav:true}}
       });
+
+    if (!frameId) return;
+
+    var self = this;
+
+    setTimeout(function(){
+      self.displayFrameInRoll(rollId, frameId);
+    }, 700);
       
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
