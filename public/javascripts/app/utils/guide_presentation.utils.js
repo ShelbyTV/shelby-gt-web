@@ -6,7 +6,7 @@ libs.shelbyGT.GuidePresentation = {
   content : {
     rolls : {
       people:'people',
-      myRolls:'myRolls',
+      myRolls:'my_rolls',
       browse:'browse'
     },
     stream:'stream'
