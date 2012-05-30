@@ -33,25 +33,26 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
 
     var self = this;
-		
-		if (!shelby.userSignedIn()){ this.initAnonymous(url); }
-		else {
-			shelby.models.user.fetch({
-	      global: false,
-	      success: function() {
-	        self._reroute();
-	      },
-	      error: function(){
-	        self.initAnonymous(url);
-	      }
-	    });
-		}
+
+    shelby.models.user.fetch({
+      global: false,
+      success: function() {
+        shelby.models.rollFollowings.fetch({
+          success : function() {
+            self._reroute();
+          }
+        });
+      },
+      error: function(){
+        self.initAnonymous(url);
+      }
+    });
   },
 
   initAnonymous : function(url){
     // init anon user -> nav to featured roll or url specified roll
     shelby.models.user = new libs.shelbyGT.AnonUserModel();
-    this.navigate(url ? '/'+url : '/roll/'+shelby.models.user.get('roll_followings').first().id, {trigger:false});
+    this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
     this._reroute();
   },
 

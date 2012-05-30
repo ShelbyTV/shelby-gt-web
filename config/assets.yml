@@ -45,9 +45,9 @@ javascripts:
     - public/javascripts/app/views/help.view.js
     - public/javascripts/app/views/team.view.js
     - public/javascripts/app/views/legal.view.js
+    - public/javascripts/app/views/roll_action_menu.view.js
     - public/javascripts/app/views/roll_header.view.js
-    - public/javascripts/app/views/roll_filter_controls.view.js
-    - public/javascripts/app/views/filter_controls.view.js
+    - public/javascripts/app/views/item_header.view.js
     - public/javascripts/app/views/rolling_selection_item.view.js
     - public/javascripts/app/views/rolling_selection_list.view.js
     - public/javascripts/app/views/share.view.js

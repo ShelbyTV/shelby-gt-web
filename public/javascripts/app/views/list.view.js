@@ -43,7 +43,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   initialize : function(){
     if (this.options.collection) {
       this.options.collection.bind('add', this.sourceAddOne, this);
-      this.options.collection.bind('remove', this.sourceRemoveOne, this);
+      this.options.collection.bind('destroy', this.sourceRemoveOne, this);
       this.options.collection.bind('reset', this.sourceReset, this);
     } else {
       this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
@@ -61,7 +61,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _cleanup : function(){
     if (this.options.collection) {
       this.options.collection.unbind('add', this.sourceAddOne, this);
-      this.options.collection.unbind('remove', this.sourceRemoveOne, this);
+      this.options.collection.unbind('destroy', this.sourceRemoveOne, this);
       this.options.collection.unbind('reset', this.sourceReset, this);
     } else {
       this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
@@ -125,6 +125,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
+      var index = this._listItemViews.indexOf(viewToRemove);
+      if (index > -1) {
+        this._listItemViews.splice(index,1);
+      }
     }
   },
 

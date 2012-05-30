@@ -27,16 +27,13 @@
 		margin-top:25%;
 		padding-right:330px;
 		top:50%;
-
 	}
 }
 
 .logged-out-banner{
-	@include background(
-		url('../images/assets/noise.png') #585858
-	);
 	@include border-radius(0 0 $radius $radius);
 
+	background-color: #585858;
 	margin:0 auto;
 	min-width:680px;
 	max-width:738px;
@@ -45,7 +42,7 @@
 }
 
 .logged-out-header{
-	background:url('../images/assets/noise.png') #303030;
+	background-color: #303030;
 	border-bottom:1px solid #222;
 	padding:$defaultMargin;
 
@@ -103,7 +100,6 @@
 	margin:12px 0;
 	padding:0;
 	width:50%;
-
 
 	li{
 		display:inline;

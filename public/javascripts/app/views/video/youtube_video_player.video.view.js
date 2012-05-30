@@ -16,7 +16,8 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		  playerView: this,
 			supportsChromeless: true,
 			supportsMute: true,
-			supportsVolume: true
+			supportsVolume: true,
+			supportsVideoQuality: true,
 			});
 		
 		//listen for the echo of events from YouTube (b/c it calls a global method)
@@ -63,7 +64,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 				
 				//video id, start time, quality (https://developers.google.com/youtube/js_api_reference#loadVideoById)
 				// default: YouTube selects the appropriate playback quality. (https://developers.google.com/youtube/js_api_reference#Playback_quality)
-				this._player.loadVideoById(video.get('provider_id'), 0, 'default');
+				this._player.loadVideoById(video.get('provider_id'), 0, this._videoQuality);
 			}
 		}
 		
@@ -107,6 +108,14 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			this._player.setVolume(pct*100);
 			this.playerState.set({volume: pct});
 		}
+	},
+	
+	setVideoQuality: function(hd){
+	  //see https://developers.google.com/youtube/js_api_reference#Playback_quality
+	  this._videoQuality = (hd ? 'default' : 'large');
+	  if(this._player){
+	    this._player.setPlaybackQuality(this._videoQuality);
+	  }
 	},
 	
 	//---------------------------------------------------
@@ -166,6 +175,18 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 		}
 	},
 	
+	_onPlaybackQualityChange: function(event){
+	  switch(event.data) {
+	    case 'small':
+	    case 'medium':
+	    case 'large':
+	      this.playerState.set({hdVideo:false});
+	      break;
+	    default:
+	      this.playerState.set({hdVideo:true});
+	  }
+	},
+	
 	_onError: function(event){
 		switch(event.data) {
 			case 2: // error code is broadcast when a request contains an invalid parameter
@@ -219,7 +240,8 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			events: {
 				'onStateChange': function(e){ self._onStateChange(e); },
 				'onError': function(e){ self._onError(e); },
-				'onReady': function(e){ self._onPlayerReady(e); }
+				'onReady': function(e){ self._onPlayerReady(e); },
+				'onPlaybackQualityChange': function(e){ self._onPlaybackQualityChange(e); }
 				}
 		});
 	},
