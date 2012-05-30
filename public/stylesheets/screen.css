@@ -713,7 +713,15 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 1, ../../app/stylesheets/partials/menu.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../app/stylesheets/partials/menu.scss */
 .video-guide {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #333333, #303030);
@@ -725,7 +733,7 @@ a:hover, a:visited, a:active {
   padding: 0;
   position: relative;
 }
-/* line 8, ../../app/stylesheets/partials/menu.scss */
+/* line 10, ../../app/stylesheets/partials/menu.scss */
 .video-guide li {
   border-right: 1px solid #222;
   display: block;
@@ -733,7 +741,7 @@ a:hover, a:visited, a:active {
   height: 42px;
   width: 50%;
 }
-/* line 15, ../../app/stylesheets/partials/menu.scss */
+/* line 17, ../../app/stylesheets/partials/menu.scss */
 .video-guide li:nth-of-type(4) {
   -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
   -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
@@ -742,7 +750,7 @@ a:hover, a:visited, a:active {
   border-right: none;
   width: 50%;
 }
-/* line 21, ../../app/stylesheets/partials/menu.scss */
+/* line 23, ../../app/stylesheets/partials/menu.scss */
 .video-guide button, .video-guide button:visited {
   -moz-box-shadow: inset 0px 1px 0px #4d4d4d;
   -webkit-box-shadow: inset 0px 1px 0px #4d4d4d;
@@ -760,7 +768,7 @@ a:hover, a:visited, a:active {
   text-transform: lowercase;
   width: 100%;
 }
-/* line 37, ../../app/stylesheets/partials/menu.scss */
+/* line 39, ../../app/stylesheets/partials/menu.scss */
 .video-guide button:hover, .video-guide button:visited:hover {
   -moz-box-shadow: inset 0px 1px 0px #666666;
   -webkit-box-shadow: inset 0px 1px 0px #666666;
@@ -768,74 +776,74 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0px 1px 0px #666666;
   background-color: #444;
 }
-/* line 41, ../../app/stylesheets/partials/menu.scss */
+/* line 43, ../../app/stylesheets/partials/menu.scss */
 .video-guide button:active, .video-guide button:visited:active {
   -moz-box-shadow: inset 0px 0px 10px #222222;
   -webkit-box-shadow: inset 0px 0px 10px #222222;
   -o-box-shadow: inset 0px 0px 10px #222222;
   box-shadow: inset 0px 0px 10px #222222;
 }
-/* line 46, ../../app/stylesheets/partials/menu.scss */
+/* line 48, ../../app/stylesheets/partials/menu.scss */
 .video-guide input {
   display: block;
   margin: 10px 0;
   width: 100%;
 }
-/* line 52, ../../app/stylesheets/partials/menu.scss */
+/* line 54, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab {
   -moz-box-shadow: inset 0px 1px 7px 0px #202020;
   -webkit-box-shadow: inset 0px 1px 7px 0px #202020;
   -o-box-shadow: inset 0px 1px 7px 0px #202020;
   box-shadow: inset 0px 1px 7px 0px #202020;
 }
-/* line 55, ../../app/stylesheets/partials/menu.scss */
+/* line 57, ../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab:hover {
   -moz-box-shadow: inset 0px 1px 7px 0px #111111;
   -webkit-box-shadow: inset 0px 1px 7px 0px #111111;
   -o-box-shadow: inset 0px 1px 7px 0px #111111;
   box-shadow: inset 0px 1px 7px 0px #111111;
 }
-/* line 61, ../../app/stylesheets/partials/menu.scss */
+/* line 63, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
   background: url("../images/assets/stream.svg") no-repeat center center;
 }
-/* line 66, ../../app/stylesheets/partials/menu.scss */
+/* line 68, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab {
   background: url("../images/assets/stream_on.svg") no-repeat center 1px #3f3f3f;
   color: #63BD57;
 }
-/* line 71, ../../app/stylesheets/partials/menu.scss */
+/* line 73, ../../app/stylesheets/partials/menu.scss */
 .video-guide .stream.active-tab:hover {
   background-color: #3f3f3f;
 }
-/* line 77, ../../app/stylesheets/partials/menu.scss */
+/* line 79, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls {
   background: url("../images/assets/rolls.svg") no-repeat center center;
 }
-/* line 82, ../../app/stylesheets/partials/menu.scss */
+/* line 84, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab {
   background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
   color: #0092C1;
 }
-/* line 87, ../../app/stylesheets/partials/menu.scss */
+/* line 89, ../../app/stylesheets/partials/menu.scss */
 .video-guide .rolls.active-tab:hover {
   background-color: #3f3f3f;
 }
-/* line 92, ../../app/stylesheets/partials/menu.scss */
+/* line 94, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves {
   background: url("../images/assets/saves.svg") no-repeat center center;
 }
-/* line 97, ../../app/stylesheets/partials/menu.scss */
+/* line 99, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab {
   background: url("../images/assets/saves_on.svg") no-repeat center 1px;
   color: #9863a2;
 }
-/* line 102, ../../app/stylesheets/partials/menu.scss */
+/* line 104, ../../app/stylesheets/partials/menu.scss */
 .video-guide .saves.active-tab:hover {
   background-color: #3f3f3f;
 }
 
-/* line 110, ../../app/stylesheets/partials/menu.scss */
+/* line 112, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -846,7 +854,7 @@ a:hover, a:visited, a:active {
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 116, ../../app/stylesheets/partials/menu.scss */
+/* line 118, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -854,7 +862,7 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 12px;
 }
-/* line 123, ../../app/stylesheets/partials/menu.scss */
+/* line 125, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -865,7 +873,7 @@ a:hover, a:visited, a:active {
   border: none;
   padding: 3px 8px 3px 20px;
 }
-/* line 128, ../../app/stylesheets/partials/menu.scss */
+/* line 130, ../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;
@@ -1242,13 +1250,13 @@ a:hover, a:visited, a:active {
   position: absolute;
   top: 0;
 }
-/* line 165, ../../app/stylesheets/_base.scss */
+/* line 254, ../../app/stylesheets/_base.scss */
 .rolls-back i, .rolling-main-back i {
   font-style: normal;
   position: relative;
   z-index: 1;
 }
-/* line 171, ../../app/stylesheets/_base.scss */
+/* line 260, ../../app/stylesheets/_base.scss */
 .rolls-back:after, .rolling-main-back:after {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -1909,7 +1917,7 @@ a:hover, a:visited, a:active {
 
 /* line 398, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338330352');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338321489');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1917,12 +1925,12 @@ a:hover, a:visited, a:active {
 
 /* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338330352');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338321489');
 }
 
 /* line 415, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
 }
 
 /* line 420, ../../app/stylesheets/partials/frame.scss */
@@ -3001,7 +3009,7 @@ a:hover, a:visited, a:active {
   margin: 0 10px 10px 0;
 }
 
-/* line 226, ../../app/stylesheets/_base.scss */
+/* line 315, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   -moz-border-radius: 3px;
@@ -3350,7 +3358,7 @@ a:hover, a:visited, a:active {
   padding-left: 0;
 }
 
-/* line 212, ../../app/stylesheets/_base.scss */
+/* line 301, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -4026,7 +4034,7 @@ a:hover, a:visited, a:active {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 120, ../../app/stylesheets/_base.scss */
+/* line 209, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -4052,7 +4060,7 @@ a:hover, a:visited, a:active {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 120, ../../app/stylesheets/_base.scss */
+/* line 209, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
