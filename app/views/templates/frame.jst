@@ -1,6 +1,6 @@
 <% var messages = frame.get('conversation').get('messages') %>
 <% var creator = frame.get('creator') %>
-<% var creatorThumbnail = creator.get('user_image_original') %>
+<% var creatorThumbnail = creator ? creator.get('user_image_original') : undefined %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
