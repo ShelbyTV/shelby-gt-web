@@ -387,7 +387,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         this.navigateToRoll(rollModel,{trigger:false,replace:true});
       }
       // correct the roll title in the url if it changes (especially on first load of the roll)
-      rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
+      rollModel.bind('change:title', function(){
+        rollModel.unbind('change:title'),
+        this.navigateToRoll(rollModel,{trigger:false,replace:true});
+      }, this);
     }
 
     var displayState;
