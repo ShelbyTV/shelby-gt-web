@@ -8,11 +8,11 @@
  */
 /* line 3, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .frame-rolling-options {
-  background: url("../images/assets/noise.png") #585858;
+  background-color: #585858;
   padding: 10px;
 }
 
-/* line 11, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 8, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-name-input, .new-roll-recipients {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;

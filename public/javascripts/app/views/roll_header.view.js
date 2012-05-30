@@ -1,153 +1,81 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
-    "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
-    "click .rolls-add" : "_toggleJoinRoll",
-		"click .js-edit-roll" : "_toggleRollEditFunctions"
+    "click #js-rolls-back" : "_goBackToRollsList",
+    "click #js-roll-back" : "_goToPreviousRoll",
+    "click #js-roll-next" : "_goToNextRoll",
+		"keypress #js-roll-name-change input" : "_onEnterInInputArea",
+		"click #js-roll-delete" : "_confirmRollDelete"
   },
 
-  el : '#roll-header',
-
-  _shareRollView: null,
-
-  _shareRollViewState: null,
+  className : 'roll-header clearfix',
 
   template : function(obj){
     return JST['roll-header'](obj);
   },
 
   initialize : function(){
-    this.model.bind('change:displayState', this._updateVisibility, this);
-    this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
-    this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
-    this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    this.model.bind('change:title', this.render, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change:displayState', this._updateVisibility, this);
-    this.model.unbind('change:currentRollModel', this._updateRollHeaderView, this);
-    this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    this.model.unbind('change:title', this.render, this);
   },
 
   render : function(){
-    this.$el.html(this.template());
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll) {
-      this.$el.show();
-    }
+    this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
   },
 
-  _onShareRoll : function() {
-    this._shareRollViewState.toggleVisibility();
+  _goBackToRollsList : function(){
+    shelby.router.navigate("rolls/" + shelby.models.guidePresentation.get('content'), {trigger:true});
   },
 
-  _immediateShowHideShareRollView : function(visible) {
-    this._shareRollViewState.set('slide', false);
-    this._shareRollViewState.set('visible', visible);
+  _goToPreviousRoll : function(){
+    var previousRoll = shelby.models.user.getPreviousRoll(this.model);
+    shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
   },
 
-  _onUpdateShareRollViewVisibility : function(shareRollViewStateModel, visible) {
-    var self = this;
-    this.$('.js-share-roll').addClass('js-busy');
-    // the share roll subview is recreated for each time it will be displayed
-    // this causes it to be reset to a clean state and helps to make sure that
-    // stale callbacks don't affect it
-    if (visible) {
-      this._shareRollView = new libs.shelbyGT.ShareRollView({
-        model : new libs.shelbyGT.ShareModel(),
-        viewState : this._shareRollViewState
-      });
-      this.appendChild(this._shareRollView);
-    }
-    this._shareRollView.updateVisibility(visible, shareRollViewStateModel.get('slide'), function(){
-      if(self._shareRollView) {
-        if (self._shareRollView.$el.is(':visible')) {
-          this.$('.js-share-roll').text('Cancel').addClass('rolls-share-cancel');
-        } else {
-          self._shareRollView.leave();
-          self._shareRollView = null;
-          this.$('.js-share-roll').text('Share Roll').removeClass('rolls-share-cancel');
-        }
-        self.$('.js-share-roll').removeClass('js-busy');
-      }
-    });
+  _goToNextRoll : function(){
+    var nextRoll = shelby.models.user.getNextRoll(this.model);
+    shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
   },
 
-  _updateVisibility : function(guideModel, displayState){
-    if (displayState == libs.shelbyGT.DisplayState.standardRoll) {
-      this.$el.show();
-    } else {
-      // collapse/hide child views
-      this._immediateShowHideShareRollView(false);
-      this.$el.hide();
-    }
-  },
-
-  _toggleJoinRoll : function() {
-    var self = this;
-    var currentRollModel = this.model.get('currentRollModel');
-    if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
-      currentRollModel.leaveRoll(function(){
-        self._updateJoinButton('Join');
-      });
-    }
-    else {
-      currentRollModel.joinRoll(function(){
-        self._updateJoinButton('Leave');
-      });
-    }
-  },
-
-  _updateJoinButton : function(action){
-    var addOrRemoveClass = action == 'Leave' ? 'addClass' : 'removeClass';
-    // this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
-    this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
-  },
-
-  _updateRollHeaderView : function(guideModel, currentRollModel) {
-    this._immediateShowHideShareRollView(false);
-    // hide join/leave button if the user is the roll's creator (includes the user's public roll)
-    if (currentRollModel.get('creator_id') === shelby.models.user.id){
-      //this.$('#js-roll-header .js-share-roll').css('width', '137%');
-      this.$('#js-roll-header li:last-child').hide();
-			this.$('#js-roll-header li:nth-child(2)').show();
-    }
-    else{
-      this.$('#js-roll-header li:last-child').show();
-			this.$('#js-roll-header li:nth-child(2)').hide();
-    }
-    // set text to leave/join roll
-    var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
-    this._updateJoinButton(_buttonText);
-  },
-
-	_toggleRollEditFunctions : function(){
-		var _currentRollModel = this.model.get('currentRollModel');
-		if (_currentRollModel.get('creator_id') == shelby.models.user.id){
-			var rollName = _currentRollModel.get('title');
-			if (this.$('.js-edit-roll').text() == "Edit"){
-				this.$('.js-edit-roll').text('Done');
-				$('.roll-title-text').hide();
-				$('.rolls-list-nav').hide();
-				$('#js-roll-name-change').show();
-				$('#js-roll-delete').show();
-				$('#js-roll-name-change input').focus();
-			}
-			else {
-				var _rollTitle = $('#js-roll-name-change input').val();
-				if (_rollTitle !== _currentRollModel.get('title')){
-					this._saveRollName(_rollTitle);
-				}
-				this.$('.js-edit-roll').text('Edit');
-				$('.roll-title-text').show();
-				$('.rolls-list-nav').show();
-				$('#js-roll-name-change').hide();
-				$('#js-roll-delete').hide();
-			}
+	_showRollNameEditInput : function(){
+		if (this.model.get('creator_id') == shelby.models.user.id){
+			var rollName = this.model.get('title');
+			this.$('#js-roll-name-change').show();
+			this.$('.roll-title-text').hide();
+			this.$('#js-roll-name-change input').focus();
 		}
 	},
 	
-	_saveRollName : function(newTitle){
-		this.model.get('currentRollModel').save({title: newTitle});
+	_onEnterInInputArea : function(){
+		if (event.keyCode==13){
+			return this._editRollName();
+		}
+	},
+	
+	_editRollName : function(){
+		var self = this;
+		var _newTitle = this.$('.roll-name-change input').val();
+    this.model.save({title: _newTitle});
+		$('.js-edit-roll').text('Edit');
+		$('.roll-title-text').show();
+		$('#js-roll-name-change').hide();
+	},
+
+	_confirmRollDelete : function(){
+		// TODO: when we have a nice ui for confiming things. use that here. GH Issue #200
+		if (confirm("Are you sure you want to delete this roll?") === true){
+			this._deleteRoll();
+		}
+	},
+
+	_deleteRoll : function(){
+		this.model.destroy({success: function(m,r){
+			$('.js-edit-roll').text('Edit');
+			shelby.router.navigate('rolls', {trigger:true});
+		}});
 	}
 
 });

@@ -4,7 +4,7 @@
 	@extend .rolling-main;
 
 	.frame-share{
-		background: url('../images/assets/noise.png') #494949;
+		background-color: #494949;
 		height:auto;
 		padding:$defaultMargin $defaultMargin 0;
 	}
@@ -20,7 +20,7 @@
 }
 
 .frame-rolling-success-header{
-	background:url("../images/assets/noise.png") #555;
+	background-color: #555;
 	border-bottom:1px solid #222;
 	height:40px;
 

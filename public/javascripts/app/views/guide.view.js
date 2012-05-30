@@ -19,30 +19,41 @@
     _listView : null,
 
     initialize : function(){
-      this.model.bind('change', this.updateChild, this);
+      this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.guidePresentation.bind('change:content', this._updateChild, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
       Backbone.Events.bind('playback:prev', this._prevVideo, this);
     },
 
     _cleanup : function() {
-      this.model.unbind('change', this.updateChild, this);
+      this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.guidePresentation.unbind('change:content', this._updateChild, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
       Backbone.Events.unbind('playback:prev', this._prevVideo, this);
     },
 
-    updateChild : function(model){
-      // only render a new content pane if the contentPane* attribtues have been updated
+    _onGuideModelChange : function(model){
+      // only render a new content pane if relevant attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
-      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId') && !_changedAttrs.has('pollAttempts')) {
+      if (!_changedAttrs.has('displayState') &&
+          !_changedAttrs.has('currentRollModel') &&
+          !_changedAttrs.has('sinceId') &&
+          !_changedAttrs.has('pollAttempts')) {
         return;
       }
-      this._leaveChildren();
-      this._mapAppendChildView();
-      this._setGuideTop();
+      this._updateChild();
+    },
+
+    _updateChild : function() {
+      if (this.model.get('displayState') != DisplayState.none) {
+        this._leaveChildren();
+        this._mapAppendChildView();
+        this._setGuideTop();
+      }
     },
 
     _setGuideTop : function(){
@@ -63,13 +74,8 @@
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.rollFollowings
-          };
-          break;
-        case DisplayState.browseRollList :
-          displayComponents = {
-            viewProto : RollListView,
-            model : shelby.models.browseRolls
+            model : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
+              shelby.models.browseRolls : shelby.models.rollFollowings
           };
           break;
         case DisplayState.standardRoll :
@@ -189,7 +195,6 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
-        case libs.shelbyGT.DisplayState.browseRollList :
           // if the dashboard model hasn't been created yet, fetch it
           // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
           // as opposed to from what is currently displyed in the guide
