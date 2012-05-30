@@ -62,6 +62,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
     }
+    if (!options.startPlaying && options.defaultOnRollFetch){
+      defaultOnRollFetch = options.defaultOnRollFetch;
+    }
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
@@ -81,13 +84,31 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
     
+    var self = this;
     // Adjust *what* is displayed
+    var options = {
+      updateRollTitle:false,
+      startPlaying : frameId ? false : true 
+    };
+    if (frameId){
+      options.defaultOnRollFetch = function(){
+        self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
+      }
+    }
     this.displayRoll(
       rollId, 
       null, 
       null, 
-      {updateRollTitle:false}, 
-      { hideGuideHeader:true, 
+      options,
+      /*{
+        updateRollTitle:false,
+        startPlaying : frameId ? false : true 
+        defaultOnRollFetch :  frameId ? function(){
+          self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
+        } : false
+      }, */
+      { 
+        hideGuideHeader:true, 
         hideMenu:true, 
         hideAnonUserView:true,
         hideRollHeader:true,
@@ -96,11 +117,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if (!frameId) return;
 
-    var self = this;
-
+    /*var self = this;
     setTimeout(function(){
-      self.displayFrameInRoll(rollId, frameId);
-    }, 700);
+      self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
+    }, 5000);*/
       
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
