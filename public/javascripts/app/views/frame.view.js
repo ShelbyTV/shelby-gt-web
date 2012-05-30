@@ -116,25 +116,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _roll : function(socialShare){
     if (!this._frameRollingView) {
-      var privateUserModel = shelby.models.user.clone();
       this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this.appendChildInto(this._frameRollingView, 'article');
       // dont reveal the frame rolling view until the rolls that can be posted to have been fetched
       // via ajax
       var self = this;
-      if (socialShare){
-        shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-        self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-      }
-      else {
-        shelby.models.rollFollowings.fetch({success:function(){
-          /*
-           * the relevant list view needs to scroll to this._frameRollingView.el
-           */
-          shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-          self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-        }});
-      }
+      shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
+      self.$('.js-rolling-frame').addClass('rolling-frame-trans');
     }
   },
 
