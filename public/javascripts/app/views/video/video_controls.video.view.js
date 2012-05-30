@@ -13,7 +13,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .video-player-quality.hd-off" : "_hdOn",
     "click .video-player-progress": "_onScrubTrackClick",
     "click .video-player-fullscreen" : "_toggleFullscreen",
-    "click .video-player-roll" : "_rollActiveFrame"
+    "click .video-player-roll" : "_rollActiveFrame",
+    "click .video-player-next" : "_nextVideo",
+    "click .video-player-prev" : "_prevVideo"
   },
 
   el: '#video-controls',
@@ -233,6 +235,14 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     this._userDesires.set({guideShown: true});
     shelby.views.guide.rollActiveFrame();
   },
+  
+  _nextVideo: function(){
+    Backbone.Events.trigger('playback:next');
+  },
+  
+  _prevVideo: function(){
+    Backbone.Events.trigger('playback:prev');
+  },
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
 	
@@ -242,9 +252,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      this.$el.find('.video-player-controls').removeClass("full-width");
+      this.$el.find('.video-player-tools').removeClass("full-width");
+      this.$el.find('.video-player-next').removeClass("full-width");
     } else {
-      this.$el.find('.video-player-controls').addClass("full-width");
+      this.$el.find('.video-player-tools').addClass("full-width");
+      this.$el.find('.video-player-next').addClass("full-width");
     }
   },
 	

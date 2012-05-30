@@ -5,17 +5,22 @@
 	padding: 0;
 
 	li {
-		background-color: $base-bg-color;
-		list-style-type: none;
-		padding: $defaultMargin;
-	
-		&:hover {
-			@include background(#555);
-		}
+		list-style-type: none;	
+	}
+}
 
-		&.active-list-item {
-			@include background(#6d6d6d);
-		}
+.frame {
+	background-color: $base-bg-color;
+	padding: $defaultMargin;
+
+	&:hover {
+		@include background(#555);
+	}
+}
+
+.active-list-item {
+	.active-frame {
+		@include background(#6d6d6d);
 	}
 }
 
@@ -41,7 +46,7 @@
 .video-thumbnail-image {
 	cursor: pointer;
 	display: inline-block;
-	margin: -27px auto 0;
+	margin: -29px auto 0;
 	overflow: hidden;
 	padding-top: 0;
 	vertical-align: middle;
@@ -55,7 +60,8 @@
 
 .video-card-header {
 	border-bottom: 1px solid $inset;
-	padding: $defaultMargin - 4 $defaultMargin - 2;
+//	padding: $defaultMargin - 4 $defaultMargin - 2;
+	padding: 0;
 
 	a {
 		text-decoration: none;
@@ -67,16 +73,59 @@
 			text-decoration: underline;
 		}
 	}
+}
 
-	h1 {
-		float: left;
-		font-size: 1em;
-		height: 1.231em;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		width: 100%;
-	}
+.frame-creator-avatar {
+	@include border-radius($radius 0 0 0);
+
+	float: left;
+	height: 40px;
+	width: 40px;
+}
+
+.frame-creator-avatar-missing{
+	@extend .frame-creator-avatar;
+
+	background: url('/images/assets/missing_thumb.svg') no-repeat center center #454545;
+	background-size: 50%;
+}
+
+@mixin frame-header-smalltype{
+	color: #999;
+	font-size: 11px;
+	font-weight: 300;
+	height: 1.9em;
+	padding: 5px 8px 0;
+}
+
+//see .frame-creator-roll, .frame-timestamp
+
+.frame-creator-roll {
+	@include frame-header-smalltype;
+	float: left;
+}
+
+.frame-creator-origin-twitter{
+	@extend .user-post-origin-twitter;
+}
+
+.frame-timestamp {
+	@include frame-header-smalltype;
+	float:right;
+}
+
+.frame-title {
+	clear: right; 
+	color: #bfbfbf;
+	float: left;
+  font-size: 13px;
+  height: 19px;
+  line-height: 17px;
+	overflow: hidden;
+  padding: 0 8px 0;
+  text-overflow: ellipsis;
+	white-space: nowrap; 
+	width: 83%; 
 }
 
 .video-card-footer {
@@ -124,6 +173,7 @@
 }	
 
 .video-controls {
+	display: none;
 	margin: $defaultMargin/2;
 	padding: 0;
 	position: absolute;
@@ -214,15 +264,14 @@
 		}
  }
  .upvote-frame.upvoted {
- 	background-color: $flatShelbyRed;
-		@include background($softShelbyRed);
-		@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
-		
-		button {
-		 @include background(
-				url('../images/assets/action_heart.svg') no-repeat 9px 4px
-			);
-		 color: #222;
+	background-color: $flatShelbyRed;
+	@include background($softShelbyRed);
+	@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
+	
+	button {
+		i {
+				background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
+			}
 	 }
  }
 	
@@ -260,17 +309,9 @@
 	}
 }
 
-.video-footer {
-	border-top: 1px solid $outset;
-	font-size: $font-size - 2;
-	font-weight: 500;
-	height: 27px;
-	padding: 6px 8px 7px;
-}
 
-.video-activity {
-	//display: none;
-}
+
+
 
 
 .video-activity-comment {
@@ -381,5 +422,140 @@
 
 	p {
 		margin: 2px $defaultMargin/2 0 $defaultMargin*3+2;
+	}
+}
+
+.frame-controls {
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: block;
+		float: left;
+		list-style-type: none;
+		width: 25%;
+
+		&:first-child {
+			button {
+				border-left: none;
+			}
+		}
+
+		&:last-child {
+			button {
+				border-right: none;
+			}
+		}
+	}
+	button {
+		@include buttonfont;
+		background: transparent;
+		border-bottom: none;
+		border-left: 1px solid $outset;
+		border-right: 1px solid $inset;
+		border-top: 1px solid $outset;
+		display: block;
+		height: 42px;
+		width: 100%;
+	}
+}
+
+.frame-activity,
+.video-footer {
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid $outset;
+	font-size: $font-size - 2;
+	font-weight: 500;
+//	height: 27px;
+	padding: 4px;
+}
+
+.frame-activity-favorites {
+	// TODO:fix and turn back on
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	
+	li {
+		display: block;
+		float: left;
+		height: 24px;
+		list-style-type: none;
+		overflow: hidden;
+		margin-right: 3px;
+		width: 24px;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	&:before {
+		background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
+		background-size: 55%;
+		content: "\0020";
+		float: left;
+		height: 24px;
+		width: 22px;
+	}
+}
+
+.frame-controls-like {
+	i{
+		background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
+		color: #efefef;
+		font-style: normal;
+		padding-bottom: 2px;
+		padding-left: 19px;
+	}
+	&.upvoted,
+	&:hover {
+		i {
+			background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
+		}
+	}
+}
+
+
+
+.frame-controls-comments {
+	i{
+		background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
+		color: #efefef;
+		font-style: normal;
+		padding-bottom: 2px;
+		padding-left: 21px;
+	}
+	.frame-comments-open,
+	&:hover {
+		i {
+			background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
+		}
+	}
+}
+
+.frame-controls-roll {
+	button {
+		@extend .notype;
+		background:url('../images/assets/videocard_roll_off.svg') no-repeat center center transparent;
+	}
+	&:hover {
+		button {
+			background:url('../images/assets/videocard_roll_on.svg') no-repeat center center transparent;		
+		}
+	}
+}
+
+.frame-controls-share {
+	button {
+		@extend .notype;
+		background:url('../images/assets/videocard_share_off.svg') no-repeat center center transparent;
+	}
+	&:hover {
+		button {
+			background:url('../images/assets/videocard_share_on.svg') no-repeat center center transparent;		
+		}
 	}
 }

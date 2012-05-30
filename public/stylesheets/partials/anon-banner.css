@@ -39,15 +39,15 @@
   top: 50%;
 }
 
-/* line 34, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 33, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner {
-  background: url("../images/assets/noise.png") #585858;
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
   -ms-border-radius: 0 0 5px 5px;
   -khtml-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
+  background-color: #585858;
   margin: 0 auto;
   min-width: 680px;
   max-width: 738px;
@@ -55,44 +55,44 @@
   z-index: 1;
 }
 
-/* line 47, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 44, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-header {
-  background: url("../images/assets/noise.png") #303030;
+  background-color: #303030;
   border-bottom: 1px solid #222;
   padding: 10px;
 }
 
-/* line 54, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 51, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav {
   float: left;
   font-size: 11px;
 }
-/* line 58, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 55, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav li {
   display: inline;
   padding-right: 5px;
 }
-/* line 62, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 59, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a {
   color: #d3d3d3;
   text-decoration: none;
 }
-/* line 66, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 63, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:hover {
   color: white;
   text-decoration: underline;
 }
-/* line 71, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 68, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-nav a:visited, .logged-out-nav a:active {
   color: white;
 }
 
-/* line 77, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 74, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-origin {
   float: right;
 }
 
-/* line 81, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 78, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline {
   float: left;
   font-weight: 100;
@@ -100,39 +100,39 @@
   margin-top: 20px;
   width: 50%;
 }
-/* line 88, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 85, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a {
   text-decoration: none;
   font-weight: 500;
 }
-/* line 91, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 88, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:hover {
   text-decoration: none;
 }
-/* line 95, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 92, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-tagline a:active, .logged-out-tagline a:visited {
   text-decoration: none;
 }
 
-/* line 101, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 98, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks {
   float: left;
   margin: 12px 0;
   padding: 0;
   width: 50%;
 }
-/* line 108, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 104, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks li {
   display: inline;
   float: left;
   width: 50%;
 }
-/* line 113, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 109, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-networks button {
   width: 93%;
 }
 
-/* line 143, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 139, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -157,7 +157,7 @@
   background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
   background: linear-gradient(top, #00b5d7, #00a2d1);
 }
-/* line 131, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 127, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -168,12 +168,12 @@
   top: 1px;
   width: 30px;
 }
-/* line 150, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 146, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center -3px transparent;
 }
 
-/* line 155, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 151, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -198,7 +198,7 @@
   background: -ms-linear-gradient(top, #01599e, #013e80);
   background: linear-gradient(top, #01599e, #013e80);
 }
-/* line 131, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 127, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before {
   border-right: 1px solid #222;
   bottom: 1px;
@@ -209,7 +209,7 @@
   top: 1px;
   width: 30px;
 }
-/* line 162, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 158, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }

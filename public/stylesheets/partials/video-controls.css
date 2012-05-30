@@ -7,7 +7,7 @@
  * @import "compass/reset";
  */
 /* line 3, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-controls-wrapper {
+.video-player-tools-wrapper {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
   -o-transition-property: opacity;
@@ -34,13 +34,13 @@
 }
 
 /* line 19, ../../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-controls-wrapper,
+.user-inactive .video-player-tools-wrapper,
 .user-inactive .comment-overlay-wrapper {
   opacity: 0;
 }
 
 /* line 23, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-controls {
+.video-player-tools {
   background-color: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
   background: -webkit-linear-gradient(top, #141414, #0e0e0e);
@@ -76,12 +76,12 @@
 }
 
 /* line 38, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-controls.full-width {
+.video-player-tools.full-width {
   margin: 10px 40px 10px 10px;
 }
 
 /* line 42, ../../../app/stylesheets/partials/video-controls.scss */
-.video-player-control {
+.video-player-tools-inner {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -215,4 +215,77 @@
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
+}
+
+/* line 177, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-nav-buttons-wrapper .video-player-prev {
+  background: url("../images/assets/arrow_left.svg") center center no-repeat #777777;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  left: 20px;
+  opacity: 1.0;
+}
+/* line 191, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-nav-buttons-wrapper .video-player-next {
+  background: url("../images/assets/arrow_right.svg") center center no-repeat #777777;
+  -moz-transition-property: opacity, margin-right;
+  -webkit-transition-property: opacity, margin-right;
+  -o-transition-property: opacity, margin-right;
+  transition-property: opacity, margin-right;
+  -moz-transition-duration: .25s, .5s;
+  -webkit-transition-duration: .25s, .5s;
+  -o-transition-duration: .25s, .5s;
+  transition-duration: .25s, .5s;
+  -moz-transition-timing-function: ease-out, ease-in-out;
+  -webkit-transition-timing-function: ease-out, ease-in-out;
+  -o-transition-timing-function: ease-out, ease-in-out;
+  transition-timing-function: ease-out, ease-in-out;
+  -moz-transition-delay: 0s, 0s;
+  -webkit-transition-delay: 0s, 0s;
+  -o-transition-delay: 0s, 0s;
+  transition-delay: 0s, 0s;
+  margin-right: 330px;
+  opacity: 1.0;
+  right: 20px;
+}
+/* line 205, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-nav-buttons-wrapper .video-player-next.full-width {
+  margin-right: 0;
+}
+/* line 210, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
+  -moz-box-shadow: inset 0 1px 0 0 #b7b7b7;
+  -webkit-box-shadow: inset 0 1px 0 0 #b7b7b7;
+  -o-box-shadow: inset 0 1px 0 0 #b7b7b7;
+  box-shadow: inset 0 1px 0 0 #b7b7b7;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  height: 40px;
+  position: absolute;
+  top: 45%;
+  width: 40px;
+  z-index: 2;
+}
+
+/* line 224, ../../../app/stylesheets/partials/video-controls.scss */
+.user-inactive .video-player-nav-buttons-wrapper .video-player-prev, .user-inactive .video-player-nav-buttons-wrapper .video-player-next {
+  opacity: 0.0;
 }

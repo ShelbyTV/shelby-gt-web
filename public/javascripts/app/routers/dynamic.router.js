@@ -10,6 +10,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
+    "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -180,22 +181,35 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRollList : function(params){
+  displayRollList : function(content){
 
     this._setupTopLevelViews({showSpinner: true});
 
+    if (content) {
+      switch (content) {
+        case libs.shelbyGT.GuidePresentation.content.rolls.people:
+        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+        case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+          shelby.models.guidePresentation.set('content', content);
+          break;
+        default:
+          this.navigate('rolls',{trigger:true,replace:true});
+          return;
+      }
+    } else {
+      shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
+    }
+
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+
     var displayState, rollCollection, fetchUrl;
     if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
-      displayState = libs.shelbyGT.DisplayState.browseRollList;
       rollCollection = shelby.models.browseRolls;
       fetchUrl = shelby.config.apiRoot + '/roll/browse';
     } else {
-      displayState = libs.shelbyGT.DisplayState.rollList;
       rollCollection = shelby.models.rollFollowings;
       fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
     }
-
-    shelby.models.guide.set('displayState', displayState);
 
     var self = this;
     this._hideSpinnerAfter((function(){
@@ -373,7 +387,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         this.navigateToRoll(rollModel,{trigger:false,replace:true});
       }
       // correct the roll title in the url if it changes (especially on first load of the roll)
-      rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
+      rollModel.bind('change:title', function(){
+        rollModel.unbind('change:title'),
+        this.navigateToRoll(rollModel,{trigger:false,replace:true});
+      }, this);
     }
 
     var displayState;

@@ -6,19 +6,18 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 4, ../../../app/stylesheets/partials/rolls.scss */
-#roll-header,
-.roll-header {
+/* line 3, ../../../app/stylesheets/partials/rolls.scss */
+.roll-action-menu {
   background-color: #585858;
   display: none;
 }
 
-/* line 9, ../../../app/stylesheets/partials/rolls.scss */
+/* line 8, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu {
   margin: 0;
   padding: 0;
 }
-/* line 13, ../../../app/stylesheets/partials/rolls.scss */
+/* line 12, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li {
   display: block;
   float: left;
@@ -27,19 +26,19 @@
   padding: 10px;
   width: 75%;
 }
-/* line 20, ../../../app/stylesheets/partials/rolls.scss */
+/* line 19, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:last-child {
   padding-left: 0;
   width: 25%;
 }
-/* line 24, ../../../app/stylesheets/partials/rolls.scss */
+/* line 23, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-menu li:nth-last-child(2) {
   display: none;
   padding-left: 0;
   width: 25%;
 }
 
-/* line 32, ../../../app/stylesheets/partials/rolls.scss */
+/* line 31, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -68,14 +67,14 @@
   width: 100%;
 }
 
-/* line 44, ../../../app/stylesheets/partials/rolls.scss */
+/* line 43, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   float: left;
   margin-top: 0 !important;
   width: 100%;
 }
 
-/* line 51, ../../../app/stylesheets/partials/rolls.scss */
+/* line 50, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -103,17 +102,17 @@
   margin-top: 0;
 }
 
-/* line 57, ../../../app/stylesheets/partials/rolls.scss */
+/* line 56, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-edit {
   width: 100%;
 }
 
-/* line 62, ../../../app/stylesheets/partials/rolls.scss */
+/* line 61, ../../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   margin-top: 0;
 }
 
-/* line 67, ../../../app/stylesheets/partials/rolls.scss */
+/* line 66, ../../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   padding: 0;
@@ -123,27 +122,27 @@
   z-index: 1;
 }
 
-/* line 76, ../../../app/stylesheets/partials/rolls.scss */
+/* line 75, ../../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 81, ../../../app/stylesheets/partials/rolls.scss */
+/* line 80, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 86, ../../../app/stylesheets/partials/rolls.scss */
+/* line 85, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 89, ../../../app/stylesheets/partials/rolls.scss */
+/* line 88, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 95, ../../../app/stylesheets/partials/rolls.scss */
+/* line 94, ../../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -152,11 +151,11 @@
   width: 100%;
 }
 
-/* line 103, ../../../app/stylesheets/partials/rolls.scss */
+/* line 102, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 106, ../../../app/stylesheets/partials/rolls.scss */
+/* line 105, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -168,7 +167,7 @@
   resize: none;
   width: 100%;
 }
-/* line 114, ../../../app/stylesheets/partials/rolls.scss */
+/* line 113, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -179,128 +178,76 @@
   padding-top: 15px;
 }
 
-/* line 126, ../../../app/stylesheets/partials/rolls.scss */
+/* line 125, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 131, ../../../app/stylesheets/partials/rolls.scss */
+/* line 130, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
   margin: 0 10px 10px 0;
 }
 
-/* line 139, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter {
-  background: #474747;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: -webkit-linear-gradient(top, #646464, #474747);
-  background: -moz-linear-gradient(top, #646464, #474747);
-  background: -o-linear-gradient(top, #646464, #474747);
-  background: -ms-linear-gradient(top, #646464, #474747);
-  background: linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid #222;
+/* line 315, ../../../app/stylesheets/_base.scss */
+.networks-twitter button,
+.networks-facebook button {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #474747;
+  border: 1px solid #3a3a3a;
+  display: block;
   height: 34px;
   width: 34px;
 }
-/* line 150, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter .networks-twitter-button {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat center center;
-  border: none;
-  display: block;
-  height: 100%;
-  width: 100%;
+
+/* line 144, ../../../app/stylesheets/partials/rolls.scss */
+.networks-twitter button {
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 159, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active {
-  background: #00a2d1;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
-  background: -webkit-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -moz-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -o-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
-  background: linear-gradient(top, #00b5d7, #00a2d1);
-  -moz-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  -o-box-shadow: inset 0px 1px 1px 0px #00d0e5;
-  box-shadow: inset 0px 1px 1px 0px #00d0e5;
-}
-/* line 164, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active .networks-twitter-button {
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat center center;
-}
-/* line 167, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active:hover {
-  background: #00a2d1;
+/* line 152, ../../../app/stylesheets/partials/rolls.scss */
+.networks-twitter.active button {
+  background-color: #00a2d1;
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 173, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook {
-  background: #474747;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #474747));
-  background: -webkit-linear-gradient(top, #646464, #474747);
-  background: -moz-linear-gradient(top, #646464, #474747);
-  background: -o-linear-gradient(top, #646464, #474747);
-  background: -ms-linear-gradient(top, #646464, #474747);
-  background: linear-gradient(top, #646464, #474747);
-  -moz-border-radius: 2.5px;
-  -webkit-border-radius: 2.5px;
-  -o-border-radius: 2.5px;
-  -ms-border-radius: 2.5px;
-  -khtml-border-radius: 2.5px;
-  border-radius: 2.5px;
-  -moz-box-shadow: inset 0px 1px 1px 0px #777777;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #777777;
-  -o-box-shadow: inset 0px 1px 1px 0px #777777;
-  box-shadow: inset 0px 1px 1px 0px #777777;
-  border: 1px solid #222;
-  height: 34px;
-  width: 34px;
+/* line 163, ../../../app/stylesheets/partials/rolls.scss */
+.networks-facebook button {
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 185, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook .networks-facebook-button {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center;
-  border: none;
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-/* line 194, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active {
-  background: #013e80;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
-  background: -webkit-linear-gradient(top, #01599e, #013e80);
-  background: -moz-linear-gradient(top, #01599e, #013e80);
-  background: -o-linear-gradient(top, #01599e, #013e80);
-  background: -ms-linear-gradient(top, #01599e, #013e80);
-  background: linear-gradient(top, #01599e, #013e80);
-  -moz-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  -o-box-shadow: inset 0px 1px 1px 0px #0179c1;
-  box-shadow: inset 0px 1px 1px 0px #0179c1;
-}
-/* line 199, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active .networks-facebook-button {
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center;
-}
-/* line 202, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active:hover {
-  background: #013e80;
+/* line 171, ../../../app/stylesheets/partials/rolls.scss */
+.networks-facebook.active button {
+  background-color: #013e80;
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 212, ../../../app/stylesheets/partials/rolls.scss */
+/* line 184, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -327,7 +274,7 @@
   margin-top: 10px;
   width: 100%;
 }
-/* line 218, ../../../app/stylesheets/partials/rolls.scss */
+/* line 190, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;

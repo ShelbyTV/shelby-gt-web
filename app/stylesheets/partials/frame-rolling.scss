@@ -1,6 +1,6 @@
 @import "base";
 
-.rolling-main{
+.rolling-main {
 	border-top: 1px solid $outline;
 	bottom: 0;
 	overflow-y: scroll;
@@ -9,52 +9,52 @@
 	top: 39px;
 	width: 100%;
 
-	& > li{
-	//h2{ <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
-		&:first-child{
-			@include border-radius($radius - 1  $radius - 1 0 0);
+	& > li {
+	//h2 { <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
+		&:first-child {
+			@include border-radius($radius - 1 $radius - 1 0 0);
 	
-			h2{
-				@include border-radius($radius - 1  $radius - 1 0 0);
+			h2 {
+				@include border-radius($radius - 1 $radius - 1 0 0);
 			}
 		}
 
-		&:hover{
-			@include background(url('../images/assets/noise.png') #666);
-			cursor:pointer;
+		&:hover {
+			background-color: #666;
+			cursor: pointer;
 		}
 	}
 
-	.share-comment-counter{
-		margin:0;
-		right:0;
+	.share-comment-counter {
+		margin: 0;
+		right: 0;
 	}
 }
 
 .rolling-main-header,
-.rolling-main-footer{
+.rolling-main-footer {
 	@include background($rolling-header-bg-color);
 	@include border-radius($radius - 1 $radius - 1 0 0);
 
-	border-bottom:1px solid #4F4D51;
-	height:40px;
-	left:0;
-	padding:$defaultMargin/2;
-	position:absolute;
+	border-bottom: 1px solid #4F4D51;
+	height: 40px;
+	left: 0;
+	padding: $defaultMargin/2;
+	position: absolute;
 	top: 0;
-	width:100%;
+	width: 100%;
 }
 
-.rolling-main-header-title {
+.rolling-main-header-title  {
 	line-height: 1.75;
 	text-align: center;
 }
 
-.rolling-main-back {
+.rolling-main-back  {
 	@extend .rolls-back;
 }
 
-.rolling-main-cancel {
+.rolling-main-cancel  {
 	@include x-button-primer;
 	left: 0;
 	margin: 6px;
@@ -62,52 +62,52 @@
 	top: 0;	
 }
 
-.rolling-main-done {
+.rolling-main-done  {
 	@include x-button-primer($shelby-blue);
 }
 
-.rolling-main-done.roll-it{
-//	width:53px;
+.rolling-main-done.roll-it {
+//	width: 53px;
 }
 
-.rolling-main-done.share{
-//	width:51px;
+.rolling-main-done.share {
+//	width: 51px;
 }
 
-.rolling-main-social {
+.rolling-main-social  {
 	@extend .rolling-main-done;
 
-	float:right;
-	padding-left:0;
+	float: right;
+	padding-left: 0;
 
-	&:before{
-		background:url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-		background-size:71%;
-		border-right:1px solid adjust-lightness($flatShelbyBlue,-5%);
-		content:"\0020";
-		float:left;
-		margin:0px 9px;
-		width:36px;
-		height:15px;
+	&:before {
+		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
+		background-size: 71%;
+		border-right: 1px solid adjust-lightness($flatShelbyBlue,-5%);
+		content: "\0020";
+		float: left;
+		margin: 0px 9px;
+		width: 36px;
+		height: 15px;
 	}
 }
 
-.rolling-frame{
+.rolling-frame {
 	@include transition-property(all);
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
 	@include roundies;
 
 	background-color: #494949;	
-	left:0;
-	position:absolute;
-	margin-left:100%;
-	top:0;
-	width:100%;
-	height:100%;
+	left: 0;
+	position: absolute;
+	margin-left: 100%;
+	top: 0;
+	width: 100%;
+	height: 100%;
 }
 
-.rolling-frame-trans{
-	margin-left:0;
+.rolling-frame-trans {
+	margin-left: 0;
 //	@include translateX(-100%,0,true);
 }
