@@ -31,12 +31,12 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _goToPreviousRoll : function(){
-    var previousRoll = shelby.models.user.getPreviousRoll(this.model);
+    var previousRoll = shelby.models.rollFollowings.getPreviousRoll(this.model);
     shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
   },
 
   _goToNextRoll : function(){
-    var nextRoll = shelby.models.user.getNextRoll(this.model);
+    var nextRoll = shelby.models.rollFollowings.getNextRoll(this.model);
     shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
   },
 
