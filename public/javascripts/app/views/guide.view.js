@@ -35,19 +35,23 @@
     },
 
     _onGuideModelChange : function(model){
-      // only render a new content pane if the contentPane* attribtues have been updated
+      // only render a new content pane if relevant attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
-      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId') && !_changedAttrs.has('pollAttempts')) {
+      if (!_changedAttrs.has('displayState') &&
+          !_changedAttrs.has('currentRollModel') &&
+          !_changedAttrs.has('sinceId') &&
+          !_changedAttrs.has('pollAttempts')) {
         return;
       }
       this._updateChild();
     },
 
     _updateChild : function() {
-      console.log('updating child');
-      this._leaveChildren();
-      this._mapAppendChildView();
-      this._setGuideTop();
+      if (this.model.get('displayState') != DisplayState.none) {
+        this._leaveChildren();
+        this._mapAppendChildView();
+        this._setGuideTop();
+      }
     },
 
     _setGuideTop : function(){

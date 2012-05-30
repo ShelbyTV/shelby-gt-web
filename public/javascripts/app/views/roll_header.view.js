@@ -27,7 +27,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   _goBackToRollsList : function(){
-    shelby.router.navigate("rolls", {trigger:true});
+    shelby.router.navigate("rolls/" + shelby.models.guidePresentation.get('content'), {trigger:true});
   },
 
   _goToPreviousRoll : function(){

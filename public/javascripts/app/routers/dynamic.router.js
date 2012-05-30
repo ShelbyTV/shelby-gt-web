@@ -183,16 +183,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRollList : function(content){
 
+    this._setupTopLevelViews({showSpinner: true});
+
     if (content) {
       switch (content) {
-        case 'people':
-          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.people)
-          break;
-        case 'my_rolls':
-          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls)
-          break;
-        case 'browse':
-          shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.browse)
+        case libs.shelbyGT.GuidePresentation.content.rolls.people:
+        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+        case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+          shelby.models.guidePresentation.set('content', content);
           break;
         default:
           this.navigate('rolls',{trigger:true,replace:true});
@@ -202,7 +200,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
     }
 
-    this._setupTopLevelViews({showSpinner: true});
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
 
     var displayState, rollCollection, fetchUrl;
     if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
@@ -212,8 +210,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       rollCollection = shelby.models.rollFollowings;
       fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
     }
-
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
 
     var self = this;
     this._hideSpinnerAfter((function(){
