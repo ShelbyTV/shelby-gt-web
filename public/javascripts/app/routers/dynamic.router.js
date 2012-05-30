@@ -183,7 +183,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRollList : function(content){
 
-    this._setupTopLevelViews({showSpinner: true});
+    //we are only going to fetch the browse rolls once per front-end 'session'
+    //otherwise, the roll list will be rendered from the already fetched data
+    var contentIsBrowseRolls = content == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+    var doFetchRolls = !contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched');
+
+    this._setupTopLevelViews({showSpinner: doFetchRolls});
 
     if (content) {
       switch (content) {
@@ -202,24 +207,32 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
 
-    var displayState, rollCollection, fetchUrl;
-    if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
-      rollCollection = shelby.models.browseRolls;
-      fetchUrl = shelby.config.apiRoot + '/roll/browse';
-    } else {
-      rollCollection = shelby.models.rollFollowings;
-      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
-    }
+    if (doFetchRolls) {
+      var rollCollection, fetchUrl;
+      if (contentIsBrowseRolls) {
+        rollCollection = shelby.models.browseRolls;
+        fetchUrl = shelby.config.apiRoot + '/roll/browse';
+      } else {
+        rollCollection = shelby.models.rollFollowings;
+        fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
+      }
 
-    var self = this;
-    this._hideSpinnerAfter((function(){
-      return rollCollection.fetch({
-        success : function(){
-          self._scrollToActiveGuideListItemView();
-        },
-        url : fetchUrl
-      });
-    })());
+      var self = this;
+      this._hideSpinnerAfter((function(){
+        return rollCollection.fetch({
+          success : function(){
+            if (contentIsBrowseRolls) {
+              // mark the browse rolls as fetched so we know we don't need to do it again
+              shelby.models.fetchState.set('browseRollsFetched', true);
+            }
+            self._scrollToActiveGuideListItemView();
+          },
+          url : fetchUrl
+        });
+      })());
+    } else {
+      this._scrollToActiveGuideListItemView();
+    }
   },
 
   displaySaves : function(){

@@ -67,15 +67,22 @@
           displayComponents = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
-            limit : shelby.config.pageLoadSizes.dashboard,
-            sinceId : this.model.get('sinceId')
+            options : {
+              fetchParams : {
+                include_children : true,
+                sinceId : this.model.get('sinceId')
+              },
+              limit : shelby.config.pageLoadSizes.dashboard
+            }
           };
          break;
         case DisplayState.rollList :
           displayComponents = {
             viewProto : RollListView,
             model : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
-              shelby.models.browseRolls : shelby.models.rollFollowings
+              shelby.models.browseRolls : shelby.models.rollFollowings,
+            options : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
+              {doStaticRender:true} : null
           };
           break;
         case DisplayState.standardRoll :
@@ -83,8 +90,13 @@
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
-            limit : shelby.config.pageLoadSizes.roll,
-            sinceId : this.model.get('sinceId')
+            options : {
+              fetchParams : {
+                include_children : true,
+                sinceId : this.model.get('sinceId')
+              },
+              limit : shelby.config.pageLoadSizes.roll
+            }
           };
           break;
         case DisplayState.userPreferences :
@@ -117,15 +129,7 @@
         model : displayComponents.model,
         collection : displayComponents.collection
       };
-      if (displayComponents.limit) {
-        options.limit = displayComponents.limit;
-      }
-      if (displayComponents.sinceId) {
-        options.fetchParams = {
-          since_id : displayComponents.sinceId,
-          include_children : true
-        };
-      }
+      _(options).extend(displayComponents.options);
       this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);
     },

@@ -8,10 +8,10 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
     
     events : {
-      "click .js-stream"   : "_goToStream",
-      "click .js-people"   : "_filterPeople",
-      "click .js-my-rolls" : "_filterMyRolls",
-      "click .js-browse"   : "_browseRolls"
+      "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
+      "click .js-people:not(.guide-presentation-content-selected)"   : "_filterPeople",
+      "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
+      "click .js-browse:not(.guide-presentation-content-selected)"   : "_browseRolls"
     },
 
     el : '#js-guide-presentation-selector',
@@ -60,13 +60,13 @@
         if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
           switch (this.model.get('content')) {
             case libs.shelbyGT.GuidePresentation.content.rolls.people :
-              $setSelectedClassOn = this.$('.js-people').children('button');
+              $setSelectedClassOn = this.$('.js-people');
               break;
             case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-              $setSelectedClassOn = this.$('.js-my-rolls').children('button');
+              $setSelectedClassOn = this.$('.js-my-rolls');
               break;
             case libs.shelbyGT.GuidePresentation.content.rolls.browse :
-              $setSelectedClassOn = this.$('.js-browse').children('button');
+              $setSelectedClassOn = this.$('.js-browse');
               break;
           }
         } else {

@@ -25,6 +25,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guidePresentation = new libs.shelbyGT.GuidePresentationModel();
+    shelby.models.fetchState = new libs.shelbyGT.FetchStateModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
