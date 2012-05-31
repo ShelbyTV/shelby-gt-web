@@ -3,7 +3,6 @@
 libs.shelbyGT.GuidePresentationModel = Backbone.Model.extend({
 
   defaults : {
-    size : libs.shelbyGT.GuidePresentation.size.small,
     content : null
   }
 

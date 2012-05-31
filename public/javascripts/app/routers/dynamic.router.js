@@ -182,27 +182,27 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(content){
+    //default parameters
+    if (!content) {
+      content = libs.shelbyGT.GuidePresentation.content.rolls.myRolls;
+    }
 
-    //we are only going to fetch the browse rolls once per front-end 'session'
-    //otherwise, the roll list will be rendered from the already fetched data
-    var contentIsBrowseRolls = content == libs.shelbyGT.GuidePresentation.content.rolls.browse;
-    var doFetchRolls = !contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched');
-
+    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(shelby.models.guidePresentation.get('content'), content);
     this._setupTopLevelViews({showSpinner: doFetchRolls});
 
-    if (content) {
-      switch (content) {
-        case libs.shelbyGT.GuidePresentation.content.rolls.people:
-        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-        case libs.shelbyGT.GuidePresentation.content.rolls.browse:
-          shelby.models.guidePresentation.set('content', content);
-          break;
-        default:
-          this.navigate('rolls',{trigger:true,replace:true});
-          return;
-      }
-    } else {
-      shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
+    var contentIsBrowseRolls = false;
+    switch (content) {
+      case libs.shelbyGT.GuidePresentation.content.rolls.people:
+      case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+        shelby.models.guidePresentation.set('content', content);
+        break;
+      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+        shelby.models.guidePresentation.set('content', content);
+        contentIsBrowseRolls = true;
+        break;
+      default:
+        this.navigate('rolls',{trigger:true,replace:true});
+        return;
     }
 
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);

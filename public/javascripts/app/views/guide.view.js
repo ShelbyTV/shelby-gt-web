@@ -2,7 +2,6 @@
 
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
-  var GuideModel = libs.shelbyGT.ListView;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
@@ -11,6 +10,7 @@
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
+  var GuidePresentation = libs.shelbyGT.GuidePresentation;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -21,7 +21,7 @@
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.guidePresentation.bind('change:content', this._updateChild, this);
+      shelby.models.guidePresentation.bind('change:content', this._onGuidePresentationModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
       Backbone.Events.bind('playback:prev', this._prevVideo, this);
@@ -30,7 +30,7 @@
     _cleanup : function() {
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.guidePresentation.unbind('change:content', this._updateChild, this);
+      shelby.models.guidePresentation.unbind('change:content', this._onGuidePresentationModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
       Backbone.Events.unbind('playback:prev', this._prevVideo, this);
@@ -48,10 +48,14 @@
       this._updateChild();
     },
 
-    _updateChild : function() {
+    _onGuidePresentationModelChange : function(model){
+      this._updateChild(true);
+    },
+
+    _updateChild : function(contentChanged) {
       if (this.model.get('displayState') != DisplayState.none) {
         this._leaveChildren();
-        this._mapAppendChildView();
+        this._mapAppendChildView(contentChanged);
         this._setGuideTop();
       }
     },
@@ -60,7 +64,7 @@
       $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
     },
 
-    _mapAppendChildView : function(){
+    _mapAppendChildView : function(contentChanged){
       var displayComponents;
       switch (this.model.get('displayState')) {
         case DisplayState.dashboard :
@@ -77,12 +81,22 @@
           };
          break;
         case DisplayState.rollList :
+          var sourceModel;
+          if (shelby.models.guidePresentation.get('content') == GuidePresentation.content.rolls.browse) {
+            sourceModel = shelby.models.browseRolls;
+          } else {
+            sourceModel = shelby.models.rollFollowings;
+          }
+          var viewOptions;
+          if (contentChanged && !GuidePresentation.shouldFetchRolls(shelby.models.guidePresentation.previous('content'), shelby.models.guidePresentation.get('content'))) {
+            viewOptions = {doStaticRender:true};
+          } else {
+            viewOptions = null;
+          }
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
-              shelby.models.browseRolls : shelby.models.rollFollowings,
-            options : shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse ?
-              {doStaticRender:true} : null
+            model : sourceModel,
+            options : viewOptions
           };
           break;
         case DisplayState.standardRoll :

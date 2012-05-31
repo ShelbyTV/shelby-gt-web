@@ -65,7 +65,6 @@
         this.$('.js-back').html('Back');
       }
       
-      
       if (roll.get('public')) {
         this._frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
       } else if (roll.isNew()) {
