@@ -14,7 +14,7 @@
       <% } %>  
 
       <h1 class="frame-creator-roll">
-        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>
+        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
     <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
