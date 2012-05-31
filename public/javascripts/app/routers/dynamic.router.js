@@ -62,7 +62,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
     }
-    if (!options.startPlaying && options.defaultOnRollFetch){
+    if (options && !options.startPlaying && options.defaultOnRollFetch){
       defaultOnRollFetch = options.defaultOnRollFetch;
     }
     options = _.chain({}).extend(options).defaults({
