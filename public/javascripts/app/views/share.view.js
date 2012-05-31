@@ -1,6 +1,7 @@
 libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
-  shareBaseLength : 0,
+  // <your text>… http://shl.by/xyz1234
+  shareBaseLength : 23,
 
   _components : {
     networkToggles : true,

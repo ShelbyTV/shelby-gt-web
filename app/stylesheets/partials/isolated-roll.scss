@@ -17,11 +17,14 @@ body.isolated-roll {
     width: 40px;
   }
   
+  /* hide the roll nav buttons */
+  .rolls-list-nav, .rolls-back { display: none; }
+  
   /* don't need a border above/below the roll title */
   .filter-controls { border: none; }
   
   /* hide the frame's tool-bar and new-conversation */
-  .video-controls, .video-activity-comment { display: none; }
+  .frame-controls { display: none; }
   
   /* don't show any education */
   .guide-education { display: none!important; }

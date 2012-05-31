@@ -7,6 +7,15 @@ libs.shelbyGT.UserPersonalRollModel = libs.shelbyGT.RollModel.extend({
     } else {
       return libs.shelbyGT.RollModel.prototype.sync.call(this, method, model, options);
     }
+  },
+
+  fetchWithoutFrames : function(options) {
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      url : shelby.config.apiRoot + '/user/' + this.get('creator_id') + '/personal_roll'
+    }).value();
+
+    return this.fetch(options);
   }
 
 });

@@ -4,8 +4,8 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
     "click #js-rolls-back" : "_goBackToRollsList",
     "click #js-roll-back" : "_goToPreviousRoll",
     "click #js-roll-next" : "_goToNextRoll",
-		"keypress #js-roll-name-change input" : "_onEnterInInputArea",
-		"click #js-roll-delete" : "_confirmRollDelete"
+    "keypress #js-roll-name-change input" : "_onEnterInInputArea",
+    "click #js-roll-delete" : "_confirmRollDelete"
   },
 
   tagName : 'div',
@@ -34,51 +34,51 @@ libs.shelbyGT.RollFilterControlsView = Support.CompositeView.extend({
   },
 
   _goToPreviousRoll : function(){
-    var previousRoll = shelby.models.user.getPreviousRoll(this.model);
+    var previousRoll = shelby.models.rollFollowings.getPreviousRoll(this.model);
     shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
   },
 
   _goToNextRoll : function(){
-    var nextRoll = shelby.models.user.getNextRoll(this.model);
+    var nextRoll = shelby.models.rollFollowings.getNextRoll(this.model);
     shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
   },
 
-	_showRollNameEditInput : function(){
-		if (this.model.get('creator_id') == shelby.models.user.id){
-			var rollName = this.model.get('title');
-			this.$('#js-roll-name-change').show();
-			this.$('.roll-title-text').hide();
-			this.$('#js-roll-name-change input').focus();
-		}
-	},
-	
-	_onEnterInInputArea : function(){
-		if (event.keyCode==13){
-			return this._editRollName();
-		}
-	},
-	
-	_editRollName : function(){
-		var self = this;
-		var _newTitle = this.$('.roll-name-change input').val();
+  _showRollNameEditInput : function(){
+    if (this.model.get('creator_id') == shelby.models.user.id){
+      var rollName = this.model.get('title');
+      this.$('#js-roll-name-change').show();
+      this.$('.roll-title-text').hide();
+      this.$('#js-roll-name-change input').focus();
+    }
+  },
+
+  _onEnterInInputArea : function(){
+    if (event.keyCode==13){
+      return this._editRollName();
+    }
+  },
+
+  _editRollName : function(){
+    var self = this;
+    var _newTitle = this.$('.roll-name-change input').val();
     this.model.save({title: _newTitle});
-		$('.js-edit-roll').text('Edit');
-		$('.roll-title-text').show();
-		$('#js-roll-name-change').hide();
-	},
+    $('.js-edit-roll').text('Edit');
+    $('.roll-title-text').show();
+    $('#js-roll-name-change').hide();
+  },
 
-	_confirmRollDelete : function(){
-		// TODO: when we have a nice ui for confiming things. use that here. GH Issue #200
-		if (confirm("Are you sure you want to delete this roll?") === true){
-			this._deleteRoll();
-		}
-	},
+  _confirmRollDelete : function(){
+    // TODO: when we have a nice ui for confiming things. use that here. GH Issue #200
+    if (confirm("Are you sure you want to delete this roll?") === true){
+      this._deleteRoll();
+    }
+  },
 
-	_deleteRoll : function(){
-		this.model.destroy({success: function(m,r){
-			$('.js-edit-roll').text('Edit');
-			shelby.router.navigate('rolls', {trigger:true});
-		}});
-	}
+  _deleteRoll : function(){
+    this.model.destroy({success: function(m,r){
+      $('.js-edit-roll').text('Edit');
+      shelby.router.navigate('rolls', {trigger:true});
+    }});
+  }
 
 });

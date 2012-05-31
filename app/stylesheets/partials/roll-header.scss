@@ -1,6 +1,9 @@
 @import "base";
 
-.filter-controls {
+.roll-header {
+  background: $filter-bg-color;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -20,9 +23,7 @@
 }
 
 .filter {
-  background: $filter-bg-color;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+//for posterity
 }
 
 .current-roll {

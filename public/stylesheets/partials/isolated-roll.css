@@ -10,6 +10,7 @@
 /* line 8, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll {
   /* adjust the name and avatar of the visible isolated roll */
+  /* hide the roll nav buttons */
   /* don't need a border above/below the roll title */
   /* hide the frame's tool-bar and new-conversation */
   /* don't show any education */
@@ -25,14 +26,18 @@ body.isolated-roll .current-roll-avatar {
   width: 40px;
 }
 /* line 21, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back {
+  display: none;
+}
+/* line 24, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .filter-controls {
   border: none;
 }
-/* line 24, ../../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .video-controls, body.isolated-roll .video-activity-comment {
+/* line 27, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .frame-controls {
   display: none;
 }
-/* line 27, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 30, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .guide-education {
   display: none!important;
 }

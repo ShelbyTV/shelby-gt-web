@@ -34,7 +34,7 @@
 
     render : function(){
       this.$el.html(this.template({share:this._frameRollingState.get('shareModel')}));
-      this.appendChildInto(new RollingSelectionListView({model:this.options.user,frame:this.model}), '.js-rolling-main');
+      this.appendChildInto(new RollingSelectionListView({model:shelby.models.rollFollowings,frame:this.model}), '.js-rolling-main');
     },
 
     revealFrameRollingCompletionView : function(frame, roll, options){
@@ -98,12 +98,6 @@
     _share : function(){
       this._frameRollingState.set('doShare', ShareActionState.share);
       return false;
-    },
-
-    _rollToPersonalRoll : function(){
-      var rollFollowings = shelby.models.user.get('roll_followings');
-      var personalRoll = rollFollowings.get(shelby.models.user.get('personal_roll').id);
-      this.revealFrameRollingCompletionView(this.model, personalRoll, {social:true});
     },
 
     _hide : function(){

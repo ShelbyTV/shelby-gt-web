@@ -31,13 +31,29 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
   joinRoll : function(onSuccess) {
     var rollToJoin = new libs.shelbyGT.RollModel();
     var url = shelby.config.apiRoot + '/roll/' + this.id + '/join';
-    rollToJoin.save(null, {url:url, success:onSuccess});
+    rollToJoin.save(null,
+      {
+        url : url,
+        success : function(rollModel, response){
+          shelby.models.rollFollowings.add(rollModel);
+          onSuccess(rollModel, response);
+        }
+      }
+    );
   },
 
   leaveRoll : function(onSuccess) {
     var rollToLeave = new libs.shelbyGT.RollModel();
     var url = shelby.config.apiRoot + '/roll/' + this.id + '/leave';
-    rollToLeave.save(null, {url:url, success:onSuccess});
+    rollToLeave.save(null,
+      {
+        url : url,
+        success : function(rollModel, response){
+          shelby.models.rollFollowings.remove(rollModel);
+          onSuccess(rollModel, response);
+        }
+      }
+    );
   }
 
 });

@@ -9,6 +9,7 @@ libs.shelbyGT.UserDesiresStateModel = Backbone.Model.extend({
     currentTimePct: null,
     mute: false,
     volume: 1.0,
+    hdVideo: true,
     
     guideShown: true
   }

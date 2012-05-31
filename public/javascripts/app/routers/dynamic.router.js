@@ -12,6 +12,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
+    "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -62,21 +63,21 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
     }
+
     if (options && !options.startPlaying && options.defaultOnRollFetch){
       defaultOnRollFetch = options.defaultOnRollFetch;
     }
+    
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
-      data: {include_children:true},
-      isUserPersonalRoll: false
+      data: {include_children:true}
     }).value();
 
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
       onRollFetch: options.onRollFetch,
-      isUserPersonalRoll: options.isUserPersonalRoll
     }, topLevelViewsOptions);
   },
   
@@ -93,34 +94,21 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (frameId){
       options.defaultOnRollFetch = function(){
         self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
-      }
+      };
     }
     this.displayRoll(
       rollId, 
       null, 
       null, 
       options,
-      /*{
-        updateRollTitle:false,
-        startPlaying : frameId ? false : true 
-        defaultOnRollFetch :  frameId ? function(){
-          self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
-        } : false
-      }, */
       { 
-        hideGuideHeader:true, 
-        hideMenu:true, 
+        hideGuideHeader:true,
+        hideGuidePresentationSelector:true,
         hideAnonUserView:true,
         hideRollHeader:true,
-        filterControlsOptions:{rollFilterControlsViewOptions:{hideNav:true}}
       });
 
     if (!frameId) return;
-
-    /*var self = this;
-    setTimeout(function(){
-      self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
-    }, 5000);*/
       
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
@@ -142,10 +130,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayUserPersonalRoll : function(userId, params){
+    var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
-    this.displayRoll(roll, 'personal_roll', params, {
-      updateRollTitle : false,
-      isUserPersonalRoll : true
+    //we don't have enough information about the roll to proceed, so we have to do a preliminary fetch of
+    //the roll info before we can continue
+    roll.fetchWithoutFrames({
+      success : function() {
+        self.displayRoll(roll, 'personal_roll', params, {
+          updateRollTitle : false
+        });
+      }
     });
   },
 
@@ -227,22 +221,35 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRollList : function(params){
+  displayRollList : function(content){
 
     this._setupTopLevelViews({showSpinner: true});
 
+    if (content) {
+      switch (content) {
+        case libs.shelbyGT.GuidePresentation.content.rolls.people:
+        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+        case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+          shelby.models.guidePresentation.set('content', content);
+          break;
+        default:
+          this.navigate('rolls',{trigger:true,replace:true});
+          return;
+      }
+    } else {
+      shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
+    }
+
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+
     var displayState, rollCollection, fetchUrl;
     if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
-      displayState = libs.shelbyGT.DisplayState.browseRollList;
       rollCollection = shelby.models.browseRolls;
       fetchUrl = shelby.config.apiRoot + '/roll/browse';
     } else {
-      displayState = libs.shelbyGT.DisplayState.rollList;
       rollCollection = shelby.models.rollFollowings;
-      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll_followings';
+      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
     }
-
-    shelby.models.guide.set('displayState', displayState);
 
     var self = this;
     this._hideSpinnerAfter((function(){
@@ -369,16 +376,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if(!opts.hideGuideHeader){
       shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     }
-    if(!opts.hideMenu){
-      shelby.views.menu = shelby.views.menu || new libs.shelbyGT.MenuView({model:shelby.models.guide});
-    }
     if(!opts.hideRollHeader){
       shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
     }
     if(!opts.hideGuidePresentationSelector){
       shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guidePresentation});
     }
-    shelby.views.filterControls = shelby.views.filterControls || new libs.shelbyGT.FilterControlsView({model:shelby.models.guide, options:opts.filterControlsOptions});
+    shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
+    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide});
     shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
@@ -413,8 +418,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
-      data: null,
-      isUserPersonalRoll: false
+      data: null
     }).value();
     
     var rollModel;
@@ -433,13 +437,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         this.navigateToRoll(rollModel,{trigger:false,replace:true});
       }
       // correct the roll title in the url if it changes (especially on first load of the roll)
-      rollModel.bind('change:title', function(){this.navigateToRoll(rollModel,{trigger:false,replace:true});}, this);
+      rollModel.bind('change:title', function(){
+        rollModel.unbind('change:title'),
+        this.navigateToRoll(rollModel,{trigger:false,replace:true});
+      }, this);
     }
 
     var displayState;
-    if (options.isUserPersonalRoll) {
-      displayState = 'userPersonalRoll';
-    } else if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
+    if (rollModel.id != shelby.models.user.get('watch_later_roll').id) {
       displayState = 'standardRoll';
     } else {
      // the watch later roll is not sharable
