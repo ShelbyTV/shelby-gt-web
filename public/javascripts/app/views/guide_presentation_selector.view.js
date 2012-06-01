@@ -51,7 +51,7 @@
     },
 
     _onGuideModelChanged : function(model){
-      //hide is we're showing only a roll
+      //hide if we're showing only a roll
       if(model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll){
         this.$el.hide();
         return
