@@ -7,12 +7,14 @@ class HomeController < ApplicationController
   #  (primarily for fb og, but also for any other bots)
   #TODO: If the request is made to a roll, also display some meta tags
   def index
+    
+    #TODO this needs to be cleaned the fuck up
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
-      frame_id = path_match[1]
-      @video_info = Shelby::API.get_video_info(frame_id)
+      @frame_id = path_match[1]
+      @video_info = Shelby::API.get_video_info(@frame_id)
       if @video_info
         @video_embed = @video_info['video']['embed_url']
-        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], frame_id)
+        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], @frame_id)
       else
         @video_embed = nil
         @permalink = nil
@@ -33,7 +35,26 @@ class HomeController < ApplicationController
       @video_info = nil
     end
     
-    if user_signed_in?
+    #XXX ISOLATED_ROLL - HACKING MAPPING based on domain
+    #TODO: pull this mapping from API
+    @isolated_roll_id = case request.host
+      when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
+      when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
+      when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+      when "reecepacheco.tv" then "4f900d56b415cc6614056681"
+      when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
+      when "chriskurdziel.tv" then "4f901d4bb415cc661405fde9"
+      when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+      when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+      when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
+      else false
+    end
+    render 'isolated_roll' and return if @isolated_roll_id
+    #TODO: need to make sure we render stuff for SEO on the isolated_roll page
+
+    #XXX ISOLATED_ROLL - HACKING allowing viewing
+    if user_signed_in? or /isolated_roll\//.match(params[:path])
       @csrf_token = csrf_token_from_cookie      
       render 'app'
     else

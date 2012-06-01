@@ -21,6 +21,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .js-frame-source"                : "_goToRoll",
     "click .js-upvote-frame"                : "_upvote",
+    "click .js-go-to-roll-by-id"            : "_goToRollById",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
@@ -40,8 +41,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var _tmplt;
     if (shelby.commentUpvoteUITest){
      _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
+    } else { 
+      try {
+        _tmplt = JST['frame'](obj); 
+      } catch(e){
+        console.log(e.message, e.stack);
+      }
     }
-    else { _tmplt = JST['frame'](obj); }
     return _tmplt;
   },
 
@@ -116,25 +122,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _roll : function(socialShare){
     if (!this._frameRollingView) {
-      var privateUserModel = shelby.models.user.clone();
       this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this.appendChildInto(this._frameRollingView, 'article');
       // dont reveal the frame rolling view until the rolls that can be posted to have been fetched
       // via ajax
       var self = this;
-      if (socialShare){
-        shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-        self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-      }
-      else {
-        shelby.models.rollFollowings.fetch({success:function(){
-          /*
-           * the relevant list view needs to scroll to this._frameRollingView.el
-           */
-          shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-          self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-        }});
-      }
+      shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
+      self.$('.js-rolling-frame').addClass('rolling-frame-trans');
     }
   },
 
@@ -244,6 +238,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       var ancestorId = _(this.model.get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
+  },
+  
+  _goToRollById : function(e){
+    shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
+    return false;
   },
 
   _onSavedTransitionComplete : function(){

@@ -8,7 +8,8 @@
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
     options : _.extend({}, ListView.prototype.options, {
-      collectionAttribute : 'rolls'
+      collectionAttribute : 'rolls',
+      simulateAddTrue : false
     }),
 
     events : {
@@ -53,6 +54,7 @@
     render : function(){
       this._leaveChildren();
       this.$el.html(this.template());
+      ListView.prototype.render.call(this);
     },
 
     _rollToNewPublicRoll : function(){
