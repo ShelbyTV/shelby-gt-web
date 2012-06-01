@@ -7,7 +7,8 @@
 
     el : '#js-item-header',
 
-    initialize : function(){
+    initialize : function(opts){
+      this._options = opts.options || {};
       this.model.bind('change', this._updateChild, this);
     },
 

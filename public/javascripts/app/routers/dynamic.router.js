@@ -7,6 +7,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
+    "isolated_roll/:rollId" : "displayIsolatedRoll",
+    "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
@@ -51,7 +53,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRoll : function(rollId, title, params, options){
+  displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
     var defaultOnRollFetch;
     if (shelby.models.guide.get('activeFrameModel')) {
@@ -61,6 +63,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
     }
+
+    if (options && !options.startPlaying && options.defaultOnRollFetch){
+      defaultOnRollFetch = options.defaultOnRollFetch;
+    }
+    
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
@@ -70,8 +77,41 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
-      onRollFetch: options.onRollFetch
-    });
+      onRollFetch: options.onRollFetch,
+    }, topLevelViewsOptions);
+  },
+  
+  displayIsolatedRoll : function(rollId, frameId){
+    // Adjust *how* a few details are displayed via CSS
+    $('body').addClass('isolated-roll');
+    
+    var self = this;
+    // Adjust *what* is displayed
+    var options = {
+      updateRollTitle:false,
+      startPlaying : frameId ? false : true 
+    };
+    if (frameId){
+      options.defaultOnRollFetch = function(){
+        self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
+      };
+    }
+    this.displayRoll(
+      rollId, 
+      null, 
+      null, 
+      options,
+      { 
+        hideGuideHeader:true,
+        hideGuidePresentationSelector:true,
+        hideAnonUserView:true,
+        hideRollHeader:true,
+      });
+
+    if (!frameId) return;
+      
+    // N.B. We are hiding Frame's tool bar and conversation via CSS.
+    // Doing so programatically seemed overly involved and complex when a few CSS rules would do
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -330,16 +370,21 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(opts){
     opts = opts || {};
     
-    shelby.models.user.get('anon') && this._setupAnonUserViews();
+    if(shelby.models.user.get('anon') && !opts.hideAnonUserView){ this._setupAnonUserViews(); }
     // header & menu render on instantiation //
-    shelby.views.commentOverlay = shelby.views.commentOverlay ||
-        new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
-    shelby.views.header = shelby.views.header ||
-        new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    shelby.views.menu = shelby.views.menu ||
-        new libs.shelbyGT.MenuView({model:shelby.models.guide});
-    shelby.views.guideControls = shelby.views.guideControls ||
-        new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
+    shelby.views.commentOverlay = shelby.views.commentOverlay || new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
+    if(!opts.hideGuideHeader){
+      shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
+    }
+    if(!opts.hideRollHeader){
+      shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
+    }
+    if(!opts.hideGuidePresentationSelector){
+      shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guidePresentation});
+    }
+    shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
+    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide});
+    shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
         new libs.shelbyGT.GuideView({model:shelby.models.guide});
@@ -361,15 +406,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
   },
   
-  _setupRollView : function(roll, title, options){
+  _setupRollView : function(roll, title, options, topLevelViewsOptions){
+    // default top-level views options
+    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
+      showSpinner: true
+    }).value();
+
+    this._setupTopLevelViews(topLevelViewsOptions);
+    
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
-
-    this._setupTopLevelViews({showSpinner: true});
     
     var rollModel;
     if (typeof(roll) === 'string') {

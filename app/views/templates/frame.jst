@@ -1,6 +1,6 @@
 <% var messages = frame.get('conversation').get('messages') %>
 <% var creator = frame.get('creator') %>
-<% var creatorThumbnail = creator.get('user_image_original') %>
+<% var creatorThumbnail = creator ? creator.get('user_image_original') : undefined %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
@@ -13,13 +13,12 @@
         <div class="frame-creator-avatar-missing"></div>
       <% } %>  
 
-      <% console.log(creator, frame.get('creator'), frame); %>
       <h1 class="frame-creator-roll">
-        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>
+        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
     <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-      3min ago
+      <%= frame.get('created_at') %>
     </h2>
     <a onclick="return false;" class="js-frame-activate" href="#"> 
       <h3 class="frame-title">

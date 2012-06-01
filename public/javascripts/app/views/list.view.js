@@ -71,9 +71,14 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._displayCollection.unbind('reset', this.internalReset, this);
   },
 
+  _isEducationDisplayState : function(){
+    //defaults to false
+    return false;
+  },
+
   _initializeEducation : function(){
     var self = this;
-    if (!this._userHasBeenEducated()){
+    if (shelby.userSignedIn() && !this._userHasBeenEducated() && this._isEducationDisplayState()){
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);

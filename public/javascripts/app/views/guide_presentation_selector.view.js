@@ -23,6 +23,8 @@
     initialize : function(){
       this.model.bind('change:content', this._setSelected, this);
       shelby.models.guide.bind('change:displayState', this._setSelected, this);
+      
+      this.render();
     },
 
     _cleanup : function(){

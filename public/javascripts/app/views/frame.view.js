@@ -40,8 +40,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var _tmplt;
     if (shelby.commentUpvoteUITest){
      _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
+    } else { 
+      try {
+        _tmplt = JST['frame'](obj); 
+      } catch(e){
+        console.log(e.message);
+      }
     }
-    else { _tmplt = JST['frame'](obj); }
     return _tmplt;
   },
 

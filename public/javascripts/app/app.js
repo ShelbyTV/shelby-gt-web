@@ -39,7 +39,7 @@ $.ajaxSetup({
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   //block POST, PUT, DEL requests for anon users
   if (shelby.models.user.get('anon') && !libs.shelbyGT.Ajax.isAnonUrlValid(options)){
-    shelby.views.anonBanner.displayOverlay();
+    //shelby.views.anonBanner.displayOverlay();
     xhr.abort();
   }
   // attach the API's csrf token to the request for logged in users
