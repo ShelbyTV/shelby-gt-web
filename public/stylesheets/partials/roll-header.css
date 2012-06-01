@@ -98,13 +98,13 @@
   position: absolute;
   top: 0;
 }
-/* line 254, ../../../app/stylesheets/_base.scss */
+/* line 264, ../../../app/stylesheets/_base.scss */
 .rolls-back i {
   font-style: normal;
   position: relative;
   z-index: 1;
 }
-/* line 260, ../../../app/stylesheets/_base.scss */
+/* line 270, ../../../app/stylesheets/_base.scss */
 .rolls-back:after {
   background-color: #343434;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -183,12 +183,18 @@
 /* line 101, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-back {
   background-color: #343434;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  -webkit-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  -o-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  box-shadow: inset 0 1px 1px 0 #5a5a5a;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
+  text-shadow: 0px -1px 0px black;
   border: 1px solid #010101;
   color: #efefef;
   float: left;
@@ -215,12 +221,18 @@
 /* line 114, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-next {
   background-color: #343434;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  -webkit-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  -o-box-shadow: inset 0 1px 1px 0 #5a5a5a;
+  box-shadow: inset 0 1px 1px 0 #5a5a5a;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
+  text-shadow: 0px -1px 0px black;
   border: 1px solid #010101;
   color: #efefef;
   float: left;

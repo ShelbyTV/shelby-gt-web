@@ -8,7 +8,7 @@
  */
 /* line 3, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main {
-  border-top: 1px solid #333333;
+  border-top: 1px solid #222222;
   bottom: 0;
   overflow-y: scroll;
   overflow-x: hidden;
