@@ -28,19 +28,18 @@
 }
 
 .title {
-  float: left;
+  margin-left: 35px;
   padding-left: 12px;
 }
 
 .current-roll-owner-nickname {
   color: #999;
-  float: left;
   font-size: 11px;
-  width: 100%;
 }
 
 .current-roll {
-	float: left;
+  @include ellipsis();
+  
 	font-size: 1.2em;
 	line-height: 1.5;
 	width: 100%;

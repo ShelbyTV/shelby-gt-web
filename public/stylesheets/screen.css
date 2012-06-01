@@ -1189,31 +1189,33 @@ a:hover, a:visited, a:active {
 
 /* line 30, ../../app/stylesheets/partials/roll-header.scss */
 .title {
-  float: left;
+  margin-left: 35px;
   padding-left: 12px;
 }
 
 /* line 35, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-owner-nickname {
   color: #999;
-  float: left;
   font-size: 11px;
-  width: 100%;
 }
 
-/* line 42, ../../app/stylesheets/partials/roll-header.scss */
+/* line 40, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll {
-  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   font-size: 1.2em;
   line-height: 1.5;
   width: 100%;
 }
 
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 50, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -2786,17 +2788,17 @@ body.isolated-roll .guide-education {
   list-style-type: none;
   margin: 0;
 }
-/* line 19, ../../app/stylesheets/partials/rolls.scss */
+/* line 18, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.left {
   margin-left: 12px;
   width: 47px;
 }
-/* line 23, ../../app/stylesheets/partials/rolls.scss */
+/* line 22, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.middle {
   margin-left: 8px;
   width: 161px;
 }
-/* line 27, ../../app/stylesheets/partials/rolls.scss */
+/* line 26, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.right {
   margin-left: 8px;
   width: 85px;

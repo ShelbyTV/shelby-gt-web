@@ -24,17 +24,17 @@
   list-style-type: none;
   margin: 0;
 }
-/* line 19, ../../../app/stylesheets/partials/rolls.scss */
+/* line 18, ../../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.left {
   margin-left: 12px;
   width: 47px;
 }
-/* line 23, ../../../app/stylesheets/partials/rolls.scss */
+/* line 22, ../../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.middle {
   margin-left: 8px;
   width: 161px;
 }
-/* line 27, ../../../app/stylesheets/partials/rolls.scss */
+/* line 26, ../../../app/stylesheets/partials/rolls.scss */
 .roll-menu li.right {
   margin-left: 8px;
   width: 85px;

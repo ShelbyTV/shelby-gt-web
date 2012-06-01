@@ -37,31 +37,33 @@
 
 /* line 30, ../../../app/stylesheets/partials/roll-header.scss */
 .title {
-  float: left;
+  margin-left: 35px;
   padding-left: 12px;
 }
 
 /* line 35, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll-owner-nickname {
   color: #999;
-  float: left;
   font-size: 11px;
-  width: 100%;
 }
 
-/* line 42, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 40, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll {
-  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   font-size: 1.2em;
   line-height: 1.5;
   width: 100%;
 }
 
-/* line 49, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 51, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 50, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;

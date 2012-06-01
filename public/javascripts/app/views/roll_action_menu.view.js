@@ -5,7 +5,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     "click #js-roll-back" : "_goToPreviousRoll",
     "click #js-roll-next" : "_goToNextRoll",
     "click #js-roll-delete" : "_confirmRollDelete",
-        
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll",
 		"click .js-edit-roll" : "_toggleRollEditFunctions"
