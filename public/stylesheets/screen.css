@@ -1162,48 +1162,24 @@ a:hover, a:visited, a:active {
 .roll-header {
   background: #585858;
   border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
   margin: 0;
+  padding: 12px 0 0 12px;
+  position: relative;
+  width: 100%;
+}
+
+/* line 12, ../../app/stylesheets/partials/roll-header.scss */
+.current-roll-avatar {
+  float: left;
+  height: 35px;
+  margin: 0;
+  overflow: hidden;
   padding: 0;
   position: relative;
-  text-align: center;
-  width: 100%;
-}
-/* line 13, ../../app/stylesheets/partials/roll-header.scss */
-.roll-header li {
-  display: block;
-}
-/* line 17, ../../app/stylesheets/partials/roll-header.scss */
-.roll-header .rolls-back, .roll-header .rolling-main-back {
-  left: 0;
-  margin: 8px 20px 0;
-  position: absolute;
-  top: 0;
-}
-
-/* line 29, ../../app/stylesheets/partials/roll-header.scss */
-.current-roll {
-  float: left;
-  font-size: 1.2em;
-  line-height: 2.55;
-  padding: 5px;
-  text-align: center;
-  width: 100%;
-}
-
-/* line 38, ../../app/stylesheets/partials/roll-header.scss */
-.current-roll-avatar {
-  display: inline-block;
-  height: 20px;
-  left: -2px;
-  margin: 0 0 0 -20px;
-  overflow: hidden;
-  position: relative;
-  top: -2px;
   vertical-align: middle;
-  width: 20px;
+  width: 35px;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 22, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1211,188 +1187,38 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 57, ../../app/stylesheets/partials/roll-header.scss */
+/* line 30, ../../app/stylesheets/partials/roll-header.scss */
+.title {
+  margin-left: 35px;
+  padding-left: 12px;
+}
+
+/* line 35, ../../app/stylesheets/partials/roll-header.scss */
+.current-roll-owner-nickname {
+  color: #999;
+  font-size: 11px;
+}
+
+/* line 40, ../../app/stylesheets/partials/roll-header.scss */
+.current-roll {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1.2em;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 59, ../../app/stylesheets/partials/roll-header.scss */
+/* line 50, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
-  margin: 3px;
-  padding: 4px;
-}
-
-/* line 72, ../../app/stylesheets/partials/roll-header.scss */
-.rolls-back, .rolling-main-back {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  padding: 6px 13px 6px 8px;
-  left: 0;
-  margin: 6px 15px;
-  position: absolute;
-  top: 0;
-}
-/* line 254, ../../app/stylesheets/_base.scss */
-.rolls-back i, .rolling-main-back i {
-  font-style: normal;
-  position: relative;
-  z-index: 1;
-}
-/* line 260, ../../app/stylesheets/_base.scss */
-.rolls-back:after, .rolling-main-back:after {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(left top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(left top, #4e4e4e, #343434);
-  background: -o-linear-gradient(left top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(left top, #4e4e4e, #343434);
-  background: linear-gradient(left top, #4e4e4e, #343434);
-  -moz-border-radius: 1px 0 0 4px;
-  -webkit-border-radius: 1px 0 0 4px;
-  -o-border-radius: 1px 0 0 4px;
-  -ms-border-radius: 1px 0 0 4px;
-  -khtml-border-radius: 1px 0 0 4px;
-  border-radius: 1px 0 0 4px;
-  -moz-box-shadow: inset 1px 0 0 #676767;
-  -webkit-box-shadow: inset 1px 0 0 #676767;
-  -o-box-shadow: inset 1px 0 0 #676767;
-  box-shadow: inset 1px 0 0 #676767;
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  border-bottom: 1px solid #010101;
-  border-left: 1px solid #010101;
-  content: "\0020";
-  display: block;
-  height: 18px;
-  left: -8px;
-  position: absolute;
-  top: 3.75px;
-  width: 18px;
-}
-
-/* line 81, ../../app/stylesheets/partials/roll-header.scss */
-.roll-delete {
-  background-color: #cc1235;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
-  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
-  background: -moz-linear-gradient(top, #ec254b, #cc1235);
-  background: -o-linear-gradient(top, #ec254b, #cc1235);
-  background: -ms-linear-gradient(top, #ec254b, #cc1235);
-  background: linear-gradient(top, #ec254b, #cc1235);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  box-shadow: inset 0px 1px 0px 0px #f26c85;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #6e0a1d;
-  color: #efefef;
-  padding: 6px 13px;
-  display: none;
-  float: right;
-  margin: 8px 11px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-/* line 91, ../../app/stylesheets/partials/roll-header.scss */
-.rolls-list-nav {
-  padding: 8px 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 25%;
-}
-
-/* line 101, ../../app/stylesheets/partials/roll-header.scss */
-.roll-back {
-  background-color: #343434;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  float: left;
-  height: 27px;
-  margin-top: 1px;
-  padding: 10px 10px;
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_left.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -khtml-border-radius: 5px 0 0 5px;
-  border-radius: 5px 0 0 5px;
-  margin-right: -1px;
-  text-align: left;
-  width: 50%;
-}
-
-/* line 114, ../../app/stylesheets/partials/roll-header.scss */
-.roll-next {
-  background-color: #343434;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  float: left;
-  height: 27px;
-  margin-top: 1px;
-  padding: 10px 10px;
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -o-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: url("../images/assets/navarrow_right.svg") no-repeat center center, linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
-  border-radius: 0 5px 5px 0;
-  text-align: right;
-  width: 50%;
+  margin: -4px 0 0 -4px;
+  padding: 2px;
 }
 
 /* Welcome to Compass.
@@ -2951,32 +2777,34 @@ body.isolated-roll .guide-education {
 }
 
 /* line 8, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu {
+.roll-menu {
   margin: 0;
-  padding: 0;
+  padding: 11px 0 9px;
 }
 /* line 12, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu li {
+.roll-menu li {
   display: block;
   float: left;
   list-style-type: none;
   margin: 0;
-  padding: 10px;
-  width: 75%;
 }
-/* line 19, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu li:last-child {
-  padding-left: 0;
-  width: 25%;
+/* line 18, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu li.left {
+  margin-left: 12px;
+  width: 47px;
 }
-/* line 23, ../../app/stylesheets/partials/rolls.scss */
-.rolls-menu li:nth-last-child(2) {
-  display: none;
-  padding-left: 0;
-  width: 25%;
+/* line 22, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu li.middle {
+  margin-left: 8px;
+  width: 161px;
+}
+/* line 26, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu li.right {
+  margin-left: 8px;
+  width: 85px;
 }
 
-/* line 31, ../../app/stylesheets/partials/rolls.scss */
+/* line 33, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -3000,14 +2828,12 @@ body.isolated-roll .guide-education {
   border: 1px solid #20461c;
   color: #efefef;
   padding: 6px 13px;
-  float: right;
   margin-top: 0;
   width: 100%;
 }
 
-/* line 43, ../../app/stylesheets/partials/rolls.scss */
+/* line 44, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
-  float: left;
   margin-top: 0 !important;
   width: 100%;
 }
@@ -3036,21 +2862,116 @@ body.isolated-roll .guide-education {
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
-  float: right;
   margin-top: 0;
 }
 
-/* line 56, ../../app/stylesheets/partials/rolls.scss */
+/* line 55, ../../app/stylesheets/partials/rolls.scss */
 .rolls-edit {
   width: 100%;
 }
 
-/* line 61, ../../app/stylesheets/partials/rolls.scss */
+/* line 60, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   margin-top: 0;
 }
 
-/* line 66, ../../app/stylesheets/partials/rolls.scss */
+/* line 65, ../../app/stylesheets/partials/rolls.scss */
+.rolls-back, .rolling-main-back {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  padding: 6px 13px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+/* line 72, ../../app/stylesheets/partials/rolls.scss */
+.roll-delete {
+  background-color: #cc1235;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
+  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
+  background: -moz-linear-gradient(top, #ec254b, #cc1235);
+  background: -o-linear-gradient(top, #ec254b, #cc1235);
+  background: -ms-linear-gradient(top, #ec254b, #cc1235);
+  background: linear-gradient(top, #ec254b, #cc1235);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
+  box-shadow: inset 0px 1px 0px 0px #f26c85;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #6e0a1d;
+  color: #efefef;
+  padding: 6px 13px;
+  display: none;
+  position: absolute;
+  right: 9px;
+  top: 22px;
+}
+
+/* unused
+.rolls-list-nav {
+	@extend .notype;
+
+	padding: $defaultMargin - 2 $defaultMargin;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 25%;
+}
+
+.roll-back {
+	@include x-tab-primer;	
+	@include background(
+		url('../images/assets/navarrow_left.svg') no-repeat center center,
+		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
+	);
+	@include border-radius($button-radius 0 0 $button-radius);	
+
+	margin-right: -1px;
+	text-align: left;
+	width: 50%;
+}
+
+.roll-next {
+	@include x-tab-primer;
+	@include background(
+		url('../images/assets/navarrow_right.svg') no-repeat center center,
+		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
+	);
+	@include border-radius(0 $button-radius $button-radius 0);	
+
+	text-align: right;
+	width: 50%;
+}
+*/
+/*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
+/* line 119, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   padding: 0;
@@ -3060,27 +2981,27 @@ body.isolated-roll .guide-education {
   z-index: 1;
 }
 
-/* line 75, ../../app/stylesheets/partials/rolls.scss */
+/* line 128, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 80, ../../app/stylesheets/partials/rolls.scss */
+/* line 133, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 85, ../../app/stylesheets/partials/rolls.scss */
+/* line 138, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 88, ../../app/stylesheets/partials/rolls.scss */
+/* line 141, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 94, ../../app/stylesheets/partials/rolls.scss */
+/* line 147, ../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -3089,11 +3010,11 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 102, ../../app/stylesheets/partials/rolls.scss */
+/* line 155, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 105, ../../app/stylesheets/partials/rolls.scss */
+/* line 158, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -3105,7 +3026,7 @@ body.isolated-roll .guide-education {
   resize: none;
   width: 100%;
 }
-/* line 113, ../../app/stylesheets/partials/rolls.scss */
+/* line 166, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3116,13 +3037,13 @@ body.isolated-roll .guide-education {
   padding-top: 15px;
 }
 
-/* line 125, ../../app/stylesheets/partials/rolls.scss */
+/* line 178, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 130, ../../app/stylesheets/partials/rolls.scss */
+/* line 183, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
@@ -3145,7 +3066,7 @@ body.isolated-roll .guide-education {
   width: 34px;
 }
 
-/* line 144, ../../app/stylesheets/partials/rolls.scss */
+/* line 197, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3154,7 +3075,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 152, ../../app/stylesheets/partials/rolls.scss */
+/* line 205, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3165,7 +3086,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 163, ../../app/stylesheets/partials/rolls.scss */
+/* line 216, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3174,7 +3095,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 171, ../../app/stylesheets/partials/rolls.scss */
+/* line 224, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -3185,7 +3106,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 184, ../../app/stylesheets/partials/rolls.scss */
+/* line 237, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3212,7 +3133,7 @@ body.isolated-roll .guide-education {
   margin-top: 10px;
   width: 100%;
 }
-/* line 190, ../../app/stylesheets/partials/rolls.scss */
+/* line 243, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;
@@ -4785,7 +4706,7 @@ body.isolated-roll .guide-education {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype, .guide-presentation-stream, .rolls-list-nav, .frame-controls-roll button, .frame-controls-share button, .networks-twitter button,
+.notype, .guide-presentation-stream, .frame-controls-roll button, .frame-controls-share button, .networks-twitter button,
 .networks-facebook button, .comment-overlay-prev, .comment-overlay-next {
   color: transparent;
   font: 0/0 a;

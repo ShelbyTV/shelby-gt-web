@@ -51,6 +51,14 @@
     },
 
     _onGuideModelChanged : function(model){
+      //hide if we're showing only a roll
+      if(model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll){
+        this.$el.hide();
+        return
+      } else {
+        this.$el.show();
+      }
+      
       // only update selection rendering if relevant attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
       if (!_changedAttrs.has('displayState') &&
