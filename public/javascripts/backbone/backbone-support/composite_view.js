@@ -55,7 +55,8 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   },
 
   _leaveChildren: function() {
-    this.children.chain().clone().each(function(view) {
+    var childrenCopy = _(this.children.clone());
+    childrenCopy.each(function(view) {
       if (view.leave)
         view.leave();
     });
