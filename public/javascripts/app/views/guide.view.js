@@ -21,7 +21,6 @@
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.guidePresentation.bind('change:content', this._onGuidePresentationModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.bind('playback:next', this._nextVideo, this);
       Backbone.Events.bind('playback:prev', this._prevVideo, this);
@@ -30,7 +29,6 @@
     _cleanup : function() {
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.guidePresentation.unbind('change:content', this._onGuidePresentationModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       Backbone.Events.unbind('playback:next', this._nextVideo, this);
       Backbone.Events.unbind('playback:prev', this._prevVideo, this);
@@ -42,29 +40,24 @@
       if (!_changedAttrs.has('displayState') &&
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
-          !_changedAttrs.has('pollAttempts')) {
+          !_changedAttrs.has('pollAttempts') &&
+          !_changedAttrs.has('rollListContent')) {
         return;
       }
       this._updateChild();
     },
 
-    _onGuidePresentationModelChange : function(model){
-      this._updateChild(true);
-    },
-
-    _updateChild : function(contentChanged) {
-      if (this.model.get('displayState') != DisplayState.none) {
+    _updateChild : function() {
         this._leaveChildren();
-        this._mapAppendChildView(contentChanged);
+        this._mapAppendChildView();
         this._setGuideTop();
-      }
     },
 
     _setGuideTop : function(){
       $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
     },
 
-    _mapAppendChildView : function(contentChanged){
+    _mapAppendChildView : function(){
       var displayComponents;
       switch (this.model.get('displayState')) {
         case DisplayState.dashboard :
@@ -82,13 +75,13 @@
          break;
         case DisplayState.rollList :
           var sourceModel;
-          if (shelby.models.guidePresentation.get('content') == GuidePresentation.content.rolls.browse) {
+          if (this.model.get('rollListContent') == GuidePresentation.content.rolls.browse) {
             sourceModel = shelby.models.browseRolls;
           } else {
             sourceModel = shelby.models.rollFollowings;
           }
           var viewOptions;
-          if (contentChanged && !GuidePresentation.shouldFetchRolls(shelby.models.guidePresentation.previous('content'), shelby.models.guidePresentation.get('content'))) {
+          if (!GuidePresentation.shouldFetchRolls(this.model)) {
             viewOptions = {doStaticRender:true};
           } else {
             viewOptions = null;

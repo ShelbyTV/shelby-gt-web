@@ -20,7 +20,7 @@
 
     render : function(active){
       this.$el.html(this.template());
-      this.renderChild(new GuidePresentationSelectorView({model:shelby.models.guidePresentation}));
+      this.renderChild(new GuidePresentationSelectorView({model:shelby.models.guide}));
       this.renderChild(new ItemHeaderView({model:this.model}));
       this.renderChild(new RollActionMenuView({model:this.model}));
     }

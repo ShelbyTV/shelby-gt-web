@@ -7,12 +7,15 @@ libs.shelbyGT.GuidePresentation = {
       switchFilterOnlyStates : ['people', 'my_rolls']
     }
   },
-  shouldFetchRolls : function(oldContent, newContent){
+  shouldFetchRolls : function(guideModel){
     //we are only going to fetch the browse rolls once per front-end 'session'
     //otherwise, the roll list will be rendered from the already fetched data
-    var contentIsBrowseRolls = newContent == libs.shelbyGT.GuidePresentation.content.rolls.browse;
-    var switchingBetweenFilters = this._switchContentFilterOnly(oldContent, newContent);
-    return !switchingBetweenFilters && (!contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched'));
+    var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+    var _changedAttrs = _(guideModel.changedAttributes());
+    var switchingBetweenFilters = _changedAttrs.has('rollListContent') &&
+                                  this._switchContentFilterOnly(guideModel.previous('rollListContent'), guideModel.get('rollListContent'));
+    var notSwitchingDisplayState = !_changedAttrs.has('displayState');
+    return !(switchingBetweenFilters && notSwitchingDisplayState) && (!contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched'));
   },
   _switchContentFilterOnly : function(oldContent, newContent){
     var _switchFilterOnlyStates = _(this.content.rolls.switchFilterOnlyStates);

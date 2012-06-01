@@ -187,27 +187,30 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       content = libs.shelbyGT.GuidePresentation.content.rolls.myRolls;
     }
 
-    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(shelby.models.guidePresentation.get('content'), content);
-    this._setupTopLevelViews({showSpinner: doFetchRolls});
+    this._setupTopLevelViews();
 
-    var contentIsBrowseRolls = false;
     switch (content) {
       case libs.shelbyGT.GuidePresentation.content.rolls.people:
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-        shelby.models.guidePresentation.set('content', content);
-        break;
       case libs.shelbyGT.GuidePresentation.content.rolls.browse:
-        shelby.models.guidePresentation.set('content', content);
-        contentIsBrowseRolls = true;
+        shelby.models.guide.set({'rollListContent':content}, {silent:true});
         break;
       default:
         this.navigate('rolls',{trigger:true,replace:true});
         return;
     }
 
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
+    shelby.models.guide.bind('change', this.finishDisplayRollList, this);
+    shelby.models.guide.change();
+  },
+
+  finishDisplayRollList : function(guideModel) {
+    var self = this;
+    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(guideModel);
 
     if (doFetchRolls) {
+      var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
       var rollCollection, fetchUrl;
       if (contentIsBrowseRolls) {
         rollCollection = shelby.models.browseRolls;
@@ -217,7 +220,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
       }
 
-      var self = this;
+      shelby.views.guideSpinner.show();
       this._hideSpinnerAfter((function(){
         return rollCollection.fetch({
           success : function(){
@@ -233,6 +236,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this._scrollToActiveGuideListItemView();
     }
+    shelby.models.guide.unbind('change', this.finishDisplayRollList, this);
   },
 
   displaySaves : function(){

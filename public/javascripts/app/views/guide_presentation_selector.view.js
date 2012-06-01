@@ -21,17 +21,15 @@
     },
 
     initialize : function(){
-      this.model.bind('change:content', this._setSelected, this);
-      shelby.models.guide.bind('change:displayState', this._setSelected, this);
+      this.model.bind('change', this._onGuideModelChanged, this);
     },
 
     _cleanup : function(){
-      this.model.unbind('change:content', this._setSelected, this);
-      shelby.models.guide.unbind('change:displayState', this._setSelected, this);
+      this.model.unbind('change', this._onGuideModelChanged, this);
     },
 
     render : function(){
-      this.$el.html(this.template({ config: this.model, guide: shelby.models.guide }));
+      this.$el.html(this.template());
       this._setSelected();
     },
     
@@ -51,14 +49,24 @@
       shelby.router.navigate('rolls/browse',{trigger:true});
     },
 
+    _onGuideModelChanged : function(model){
+      // only update selection rendering if relevant attribtues have been updated
+      var _changedAttrs = _(model.changedAttributes());
+      if (!_changedAttrs.has('displayState') &&
+          !_changedAttrs.has('rollListContent')) {
+        return;
+      }
+      this._setSelected();
+    },
+
     _setSelected : function(){
       this._clearSelected();
 
-      if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-          shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+      if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+          this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
         var $setSelectedClassOn;
-        if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-          switch (this.model.get('content')) {
+        if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+          switch (this.model.get('rollListContent')) {
             case libs.shelbyGT.GuidePresentation.content.rolls.people :
               $setSelectedClassOn = this.$('.js-people');
               break;
