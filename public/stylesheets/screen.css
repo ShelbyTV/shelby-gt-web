@@ -1917,7 +1917,7 @@ a:hover, a:visited, a:active {
 
 /* line 398, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338321489');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338408245');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1925,12 +1925,12 @@ a:hover, a:visited, a:active {
 
 /* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338321489');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338408245');
 }
 
 /* line 415, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1337125276');
 }
 
 /* line 420, ../../app/stylesheets/partials/frame.scss */
@@ -4605,6 +4605,24 @@ a:hover, a:visited, a:active {
   margin: 14px auto;
   padding: 7px 19px;
   width: 17%;
+}
+/* line 113, ../../app/stylesheets/partials/genius.scss */
+.genius-search-submit.disabled, .genius-search-submit[disabled] {
+  background: #343434;
+  background: url("../images/assets/noise.png"), #343434;
+  -moz-box-shadow: 0 0 0 1px #343434;
+  -webkit-box-shadow: 0 0 0 1px #343434;
+  -o-box-shadow: 0 0 0 1px #343434;
+  box-shadow: 0 0 0 1px #343434;
+  text-shadow: 0px 1px 2px black;
+  color: gray;
+}
+
+/* line 125, ../../app/stylesheets/partials/genius.scss */
+.genius-search-spinner {
+  height: 30px;
+  width: 30px;
+  margin: 0 auto;
 }
 
 /* Welcome to Compass.
