@@ -1,6 +1,10 @@
 libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   events : {
+    "click #js-rolls-back" : "_goBackToRollsList",
+    "click #js-roll-back" : "_goToPreviousRoll",
+    "click #js-roll-next" : "_goToNextRoll",
+    "click #js-roll-delete" : "_confirmRollDelete",
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll",
 		"click .js-edit-roll" : "_toggleRollEditFunctions"
@@ -21,6 +25,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    
+    this.render();
   },
 
   _cleanup : function(){
@@ -36,8 +42,36 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }
   },
 
+  _goBackToRollsList : function(){
+    shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
+  },
+
+  _goToPreviousRoll : function(){
+    var previousRoll = shelby.models.rollFollowings.getPreviousRoll(this.model);
+    shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
+  },
+
+  _goToNextRoll : function(){
+    var nextRoll = shelby.models.rollFollowings.getNextRoll(this.model);
+    shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
+  },
+  
   _onShareRoll : function() {
     this._shareRollViewState.toggleVisibility();
+  },
+  
+  _confirmRollDelete : function(){
+    // TODO: when we have a nice ui for confiming things. use that here. GH Issue #200
+    if (confirm("Are you sure you want to delete this roll?") === true){
+      this._deleteRoll();
+    }
+  },
+
+  _deleteRoll : function(){
+    this.model.destroy({success: function(m,r){
+      $('.js-edit-roll').text('Edit');
+      shelby.router.navigate('rolls', {trigger:true});
+    }});
   },
 
   _immediateShowHideShareRollView : function(visible) {
@@ -103,17 +137,16 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
   },
 
-  _updateRollHeaderView : function(guideModel, currentRollModel) {
+  _updateRollHeaderView : function(guideModel, currentRollModel) {    
     this._immediateShowHideShareRollView(false);
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
-      //this.$('#js-roll-action-menu .js-share-roll').css('width', '137%');
-      this.$('#js-roll-action-menu li:last-child').hide();
-			this.$('#js-roll-action-menu li:nth-child(2)').show();
+      this.$el.find('.js-roll-add-leave-button').hide();
+			this.$el.find('.rolls-edit').show();
     }
     else{
-      this.$('#js-roll-action-menu li:last-child').show();
-			this.$('#js-roll-action-menu li:nth-child(2)').hide();
+      this.$el.find('.js-roll-add-leave-button').show();
+			this.$el.find('.rolls-edit').hide();
     }
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
