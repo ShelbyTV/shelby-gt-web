@@ -21,6 +21,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
     "click .js-frame-source"                : "_goToRoll",
     "click .js-upvote-frame"                : "_upvote",
+    "click .js-go-to-roll-by-id"            : "_goToRollById",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
@@ -44,7 +45,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       try {
         _tmplt = JST['frame'](obj); 
       } catch(e){
-        console.log(e.message);
+        console.log(e.message, e.stack);
       }
     }
     return _tmplt;
@@ -249,6 +250,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       var ancestorId = _(this.model.get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
+  },
+  
+  _goToRollById : function(e){
+    shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
+    return false;
   },
 
   _onSavedTransitionComplete : function(){

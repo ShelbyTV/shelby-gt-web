@@ -71,39 +71,22 @@
         </form>
       </section><!-- eo section.video-shares -->
     <div class="js-frame-flexible-height frame-activity">
-      <ul class="frame-activity-favorites clearfix">
-        <!-- 
-          DUMMY DATA FOR WHAT IT LOOKS LIKE 
-          WHEN THE USER CAN SEE THAT 
-          OTHER USERS HAVE LIKED A VIDEO
-        -->
-        <li>
-          <a href="#">
-            <img src="/images/avatar.jpg">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="/images/avatar.jpg">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="/images/avatar.jpg">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="/images/avatar.jpg">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="/images/avatar.jpg">
-          </a>
-        </li>
-      </ul>
-      <!-- heartz -->
+    
+      <!-- hearts -->
+      <% if(frame.get('upvote_users').length > 0){ %>
+        <ul class="frame-activity-favorites clearfix">
+          <% _.each(frame.get('upvote_users'), function(u){ %>
+            <li>
+              <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
+                <% users_image =  u.user_image_original || u.user_image %>
+                <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+      <!-- /hearts -->
+      
     </div>
     <div class="video-footer" style="display:none;">
       <% var remainingMessageCount = messages.length - (useFrameCreatorInfo ? 0 : 1) %>

@@ -471,8 +471,6 @@
 }
 
 .frame-activity-favorites {
-	// TODO:fix and turn back on
-	display: none;
 	margin: 0;
 	padding: 0;
 	width: auto;
@@ -485,6 +483,10 @@
 		overflow: hidden;
 		margin-right: 3px;
 		width: 24px;
+	}
+	
+	a { 
+	  display: block;
 	}
 
 	img {
