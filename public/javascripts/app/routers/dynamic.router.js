@@ -241,42 +241,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
-    shelby.models.guide.bind('change', this.finishDisplayRollList, this);
     shelby.models.guide.change();
-  },
-
-  finishDisplayRollList : function(guideModel) {
-    var self = this;
-    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(guideModel);
-
-    if (doFetchRolls) {
-      var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
-      var rollCollection, fetchUrl;
-      if (contentIsBrowseRolls) {
-        rollCollection = shelby.models.browseRolls;
-        fetchUrl = shelby.config.apiRoot + '/roll/browse';
-      } else {
-        rollCollection = shelby.models.rollFollowings;
-        fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
-      }
-
-      shelby.views.guideSpinner.show();
-      this._hideSpinnerAfter((function(){
-        return rollCollection.fetch({
-          success : function(){
-            if (contentIsBrowseRolls) {
-              // mark the browse rolls as fetched so we know we don't need to do it again
-              shelby.models.fetchState.set('browseRollsFetched', true);
-            }
-            self._scrollToActiveGuideListItemView();
-          },
-          url : fetchUrl
-        });
-      })());
-    } else {
-      this._scrollToActiveGuideListItemView();
-    }
-    shelby.models.guide.unbind('change', this.finishDisplayRollList, this);
   },
 
   displaySaves : function(){
@@ -381,7 +346,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _scrollToActiveGuideListItemView : function(){
-    shelby.models.guide.set('tryAutoScroll', true);
+    shelby.models.autoScrollState.set('tryAutoScroll', true);
   },
 
   _setupTopLevelViews : function(opts){

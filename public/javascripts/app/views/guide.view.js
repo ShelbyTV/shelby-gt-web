@@ -44,12 +44,12 @@
           !_changedAttrs.has('rollListContent')) {
         return;
       }
-      this._updateChild();
+      this._updateChild(model);
     },
 
-    _updateChild : function() {
+    _updateChild : function(guideModel) {
         this._leaveChildren();
-        this._mapAppendChildView();
+        this._mapAppendChildView(guideModel);
         this._setGuideTop();
     },
 
@@ -57,11 +57,10 @@
       $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
     },
 
-    _mapAppendChildView : function(){
-      var displayComponents;
+    _mapAppendChildView : function(guideModel){
       switch (this.model.get('displayState')) {
         case DisplayState.dashboard :
-          displayComponents = {
+          displayParams = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
@@ -80,21 +79,23 @@
           } else {
             sourceModel = shelby.models.rollFollowings;
           }
-          var viewOptions;
-          if (!GuidePresentation.shouldFetchRolls(this.model)) {
+          var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
+          if (!shouldFetch) {
             viewOptions = {doStaticRender:true};
           } else {
             viewOptions = null;
           }
-          displayComponents = {
+          displayParams = {
             viewProto : RollListView,
             model : sourceModel,
-            options : viewOptions
+            onAppendChild : this._populateRollList,
+            options : viewOptions,
+            shouldFetch : shouldFetch
           };
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
-          displayComponents = {
+          displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
@@ -107,38 +108,75 @@
           };
           break;
         case DisplayState.userPreferences :
-          displayComponents = {
+          displayParams = {
             viewProto : UserPreferencesView,
             model : shelby.models.user
           };
           break;
         case DisplayState.help :
-          displayComponents = {
+          displayParams = {
             viewProto : HelpView,
             model : shelby.models.user
           };
           break;
         case DisplayState.team :
-          displayComponents = {
+          displayParams = {
             viewProto : TeamView,
             model : shelby.models.user
           };
           break;
         case DisplayState.legal :
-          displayComponents = {
+          displayParams = {
             viewProto : LegalView,
             model : shelby.models.user
           };
           break;
       }
 
-      var options = {
-        model : displayComponents.model,
-        collection : displayComponents.collection
+      var childViewOptions = {
+        model : displayParams.model,
+        collection : displayParams.collection
       };
-      _(options).extend(displayComponents.options);
-      this._listView = new displayComponents.viewProto(options);
+      _(childViewOptions).extend(displayParams.options);
+
+      this._listView = new displayParams.viewProto(childViewOptions);
+
       this.appendChild(this._listView);
+      if (displayParams.onAppendChild) {
+        displayParams.onAppendChild.call(this, guideModel, displayParams.shouldFetch);
+      }
+    },
+
+    _populateRollList : function(guideModel, shouldFetch) {
+      var self = this;
+
+      if (shouldFetch) {
+        var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+        var rollCollection, fetchUrl;
+        if (contentIsBrowseRolls) {
+          rollCollection = shelby.models.browseRolls;
+          fetchUrl = shelby.config.apiRoot + '/roll/browse';
+        } else {
+          rollCollection = shelby.models.rollFollowings;
+          fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
+        }
+
+        shelby.views.guideSpinner.show();
+        this._hideSpinnerAfter((function(){
+          return rollCollection.fetch({
+            success : function(){
+              if (contentIsBrowseRolls) {
+                // mark the browse rolls as fetched so we know we don't need to do it again
+                shelby.models.fetchState.set('browseRollsFetched', true);
+              }
+              shelby.models.autoScrollState.set('tryAutoScroll', true);
+            },
+            url : fetchUrl
+          });
+        })());
+      } else {
+        shelby.models.autoScrollState.set('tryAutoScroll', true);
+      }
     },
 
     rollActiveFrame : function(){
@@ -177,6 +215,14 @@
       $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
       //this.$el.scrollTo(element, {duration:200, axis:'y'});
 
+    },
+
+    _hideSpinnerAfter: function(xhr){
+      // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
+      // upon which we append another callback to hide the spinner shown earlier.
+      xhr.done(function(){
+        shelby.views.guideSpinner.hide();
+      });
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
