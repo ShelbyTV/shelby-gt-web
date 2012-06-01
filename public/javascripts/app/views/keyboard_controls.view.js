@@ -44,9 +44,6 @@
     },
     
     initialize : function(){
-      shelby.models.userDesires.bind('change:typing', function(){
-        console.log('typing changed', arguments);
-      });
       this._setupKeyboardBindings();
       this._disableSpacebarScrolling();
     },
