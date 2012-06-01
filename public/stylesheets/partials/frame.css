@@ -477,7 +477,11 @@
 
 /* line 398, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
+=======
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
+>>>>>>> a100638e088f972d6494dc4ef7d99eea363e086c
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -485,12 +489,16 @@
 
 /* line 408, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
+=======
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
+>>>>>>> a100638e088f972d6494dc4ef7d99eea363e086c
 }
 
 /* line 415, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 420, ../../../app/stylesheets/partials/frame.scss */
@@ -547,12 +555,11 @@
 
 /* line 473, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
-  display: none;
   margin: 0;
   padding: 0;
   width: auto;
 }
-/* line 480, ../../../app/stylesheets/partials/frame.scss */
+/* line 478, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -562,12 +569,16 @@
   margin-right: 3px;
   width: 24px;
 }
-/* line 490, ../../../app/stylesheets/partials/frame.scss */
+/* line 488, ../../../app/stylesheets/partials/frame.scss */
+.frame-activity-favorites a {
+  display: block;
+}
+/* line 492, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 495, ../../../app/stylesheets/partials/frame.scss */
+/* line 497, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -577,7 +588,7 @@
   width: 22px;
 }
 
-/* line 506, ../../../app/stylesheets/partials/frame.scss */
+/* line 508, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -585,12 +596,12 @@
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 515, ../../../app/stylesheets/partials/frame.scss */
+/* line 517, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 524, ../../../app/stylesheets/partials/frame.scss */
+/* line 526, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -598,25 +609,25 @@
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 533, ../../../app/stylesheets/partials/frame.scss */
+/* line 535, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 540, ../../../app/stylesheets/partials/frame.scss */
+/* line 542, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 545, ../../../app/stylesheets/partials/frame.scss */
+/* line 547, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 552, ../../../app/stylesheets/partials/frame.scss */
+/* line 554, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 557, ../../../app/stylesheets/partials/frame.scss */
+/* line 559, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
