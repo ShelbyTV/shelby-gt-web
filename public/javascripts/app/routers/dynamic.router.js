@@ -393,9 +393,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if(!opts.hideGuideHeader){
       shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     }
+    //XXX isolated_roll and master collision
+    // this is loaded as a child view of ItemHeaderView (which is loaded below)
+    /*
     if(!opts.hideRollHeader){
       shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
     }
+    */
     if(!opts.hideGuidePresentationSelector){
       shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     }

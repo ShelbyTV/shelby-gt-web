@@ -1,11 +1,7 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
-    "click #js-rolls-back" : "_goBackToRollsList",
-    "click #js-roll-back" : "_goToPreviousRoll",
-    "click #js-roll-next" : "_goToNextRoll",
-    "keypress #js-roll-name-change input" : "_onEnterInInputArea",
-    "click #js-roll-delete" : "_confirmRollDelete"
+    "keypress #js-roll-name-change input" : "_onEnterInInputArea"
   },
 
   className : 'roll-header clearfix',
@@ -24,20 +20,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
-  },
-
-  _goBackToRollsList : function(){
-    shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
-  },
-
-  _goToPreviousRoll : function(){
-    var previousRoll = shelby.models.rollFollowings.getPreviousRoll(this.model);
-    shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
-  },
-
-  _goToNextRoll : function(){
-    var nextRoll = shelby.models.rollFollowings.getNextRoll(this.model);
-    shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
   },
 
   _showRollNameEditInput : function(){
@@ -62,20 +44,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     $('.js-edit-roll').text('Edit');
     $('.roll-title-text').show();
     $('#js-roll-name-change').hide();
-  },
-
-  _confirmRollDelete : function(){
-    // TODO: when we have a nice ui for confiming things. use that here. GH Issue #200
-    if (confirm("Are you sure you want to delete this roll?") === true){
-      this._deleteRoll();
-    }
-  },
-
-  _deleteRoll : function(){
-    this.model.destroy({success: function(m,r){
-      $('.js-edit-roll').text('Edit');
-      shelby.router.navigate('rolls', {trigger:true});
-    }});
   }
 
 });
