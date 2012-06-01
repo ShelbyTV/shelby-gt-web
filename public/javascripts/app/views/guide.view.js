@@ -78,16 +78,11 @@
             sourceModel = shelby.models.rollFollowings;
           }
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
-          if (!shouldFetch) {
-            viewOptions = {doStaticRender:true};
-          } else {
-            viewOptions = null;
-          }
           displayParams = {
             viewProto : RollListView,
             model : sourceModel,
             onAppendChild : this._populateRollList,
-            options : viewOptions,
+            options : {doStaticRender:true},
             shouldFetch : shouldFetch
           };
           break;
