@@ -1,7 +1,5 @@
 libs.shelbyGT.ListView = Support.CompositeView.extend({
 
-  _listItemViews : [],
-
   tagName : 'ul',
 
   className : 'list',
@@ -22,9 +20,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   */
 
   options : {
-    simulateAddTrue : true,
     collection : null,
     collectionAttribute : 'listCollection',
+    doStaticRender : false,
+    insert : {
+      position : 'append',
+      selector : null
+    },
     /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
@@ -34,10 +36,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
           params are any additional parameters to be passed to the new view's constructor
     */
     listItemView : 'ListItemView',
-    insert : {
-      position : 'append',
-      selector : null
-    }
+    simulateAddTrue : true
   },
   
   initialize : function(){
@@ -50,11 +49,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       if (this.options.simulateAddTrue) {
         this._simulatedMasterCollection = new Backbone.Collection();
+        if (this.options.doStaticRender) {
+          this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
+        }
       }
     }
     this._displayCollection = new Backbone.Collection();
     this._displayCollection.bind('add', this.internalAddOne, this);
+    this._displayCollection.bind('remove', this.internalRemoveOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);
+    this._listItemViews = [];
     this._initializeEducation();
   },
 
@@ -68,17 +72,26 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
     }
     this._displayCollection.unbind('add', this.internalAddOne, this);
+    this._displayCollection.unbind('remove', this.internalRemoveOne, this);
     this._displayCollection.unbind('reset', this.internalReset, this);
   },
 
-  _isEducationDisplayState : function(){
-    //defaults to false
-    return false;
+  render : function(forceReRender){
+    if (forceReRender || this.options.doStaticRender) {
+      var sourceCollection = this._getSourceCollection();
+      var newContents;
+      if (this._filter) {
+        newContents = sourceCollection.filter(this._filter);
+      } else {
+        newContents = sourceCollection.models;
+      }
+      this._displayCollection.reset(newContents);
+    }
   },
 
   _initializeEducation : function(){
     var self = this;
-    if (shelby.userSignedIn() && !this._userHasBeenEducated() && this._isEducationDisplayState()){
+    if (shelby.userSignedIn() && !this._userHasBeenEducated()){
       setTimeout(function(){
         self._renderEducation();
       }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
@@ -122,6 +135,19 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   sourceRemoveOne : function(item){
+    this._displayCollection.remove(item);
+    if (!this.options.collection && this.options.simulateAddTrue) {
+      this._simulatedMasterCollection.remove(item);
+    }
+  },
+
+  sourceReset : function(sourceCollection){
+    //only happens when our source collection is a standard backbone collection
+    //and not a collection inside a Relational Model
+    this._displayCollection.reset(sourceCollection.models);
+  },
+
+  internalRemoveOne : function(item){
     var viewToRemove = this.children.find(this._findViewByModel(item));
     if (viewToRemove) {
       viewToRemove.leave();
@@ -130,12 +156,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         this._listItemViews.splice(index,1);
       }
     }
-  },
-
-  sourceReset : function(sourceCollection){
-    //only happens when our source collection is a standard backbone collection
-    //and not a collection inside a Relational Model
-    this._displayCollection.reset(sourceCollection.models);
   },
 
   internalAddOne : function(item){
@@ -182,23 +202,17 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   updateFilter : function(filterFunction) {
     this._filter = filterFunction;
     if (this._displayCollection) {
-      var sourceCollection;
-      if (this.options.collection) {
-        sourceCollection = this.options.collection;
-      } else {
-        // if we're re-filtering we need to start with the full contents of the source collection
-        // In Backbone Relational, these get overwritten with each progressive-loading fetch, so we
-        // have the option of keeping a full copy of the collection within this list view as our "master copy"
-        // to revert to before changing the filter
-        sourceCollection = this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
-      }
-      var newContents;
-      if (filterFunction) {
-        newContents = sourceCollection.filter(filterFunction);
-      } else {
-        newContents = sourceCollection.models;
-      }
-      this._displayCollection.reset(newContents);
+      this.render(true);
+    }
+  },
+
+  _getSourceCollection : function() {
+    if (this.options.collection) {
+        return this.options.collection;
+    } else {
+        // In Backbone Relational, the source collection contents get overwritten with each progressive-loading fetch,
+        // so we have the option of keeping a full copy of the collection within this list view as our "master copy"
+        return this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
     }
   },
 

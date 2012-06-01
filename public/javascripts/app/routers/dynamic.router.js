@@ -222,44 +222,61 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRollList : function(content){
-
-    this._setupTopLevelViews({showSpinner: true});
-
-    if (content) {
-      switch (content) {
-        case libs.shelbyGT.GuidePresentation.content.rolls.people:
-        case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-        case libs.shelbyGT.GuidePresentation.content.rolls.browse:
-          shelby.models.guidePresentation.set('content', content);
-          break;
-        default:
-          this.navigate('rolls',{trigger:true,replace:true});
-          return;
-      }
-    } else {
-      shelby.models.guidePresentation.set('content', libs.shelbyGT.GuidePresentation.content.rolls.myRolls);
+    //default parameters
+    if (!content) {
+      content = libs.shelbyGT.GuidePresentation.content.rolls.myRolls;
     }
 
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.rollList);
+    this._setupTopLevelViews();
 
-    var displayState, rollCollection, fetchUrl;
-    if (shelby.models.guidePresentation.get('content') == libs.shelbyGT.GuidePresentation.content.rolls.browse) {
-      rollCollection = shelby.models.browseRolls;
-      fetchUrl = shelby.config.apiRoot + '/roll/browse';
-    } else {
-      rollCollection = shelby.models.rollFollowings;
-      fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
+    switch (content) {
+      case libs.shelbyGT.GuidePresentation.content.rolls.people:
+      case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
+      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+        shelby.models.guide.set({'rollListContent':content}, {silent:true});
+        break;
+      default:
+        this.navigate('rolls',{trigger:true,replace:true});
+        return;
     }
 
+    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
+    shelby.models.guide.bind('change', this.finishDisplayRollList, this);
+    shelby.models.guide.change();
+  },
+
+  finishDisplayRollList : function(guideModel) {
     var self = this;
-    this._hideSpinnerAfter((function(){
-      return rollCollection.fetch({
-        success : function(){
-          self._scrollToActiveGuideListItemView();
-        },
-        url : fetchUrl
-      });
-    })());
+    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(guideModel);
+
+    if (doFetchRolls) {
+      var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+      var rollCollection, fetchUrl;
+      if (contentIsBrowseRolls) {
+        rollCollection = shelby.models.browseRolls;
+        fetchUrl = shelby.config.apiRoot + '/roll/browse';
+      } else {
+        rollCollection = shelby.models.rollFollowings;
+        fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
+      }
+
+      shelby.views.guideSpinner.show();
+      this._hideSpinnerAfter((function(){
+        return rollCollection.fetch({
+          success : function(){
+            if (contentIsBrowseRolls) {
+              // mark the browse rolls as fetched so we know we don't need to do it again
+              shelby.models.fetchState.set('browseRollsFetched', true);
+            }
+            self._scrollToActiveGuideListItemView();
+          },
+          url : fetchUrl
+        });
+      })());
+    } else {
+      this._scrollToActiveGuideListItemView();
+    }
+    shelby.models.guide.unbind('change', this.finishDisplayRollList, this);
   },
 
   displaySaves : function(){
@@ -380,7 +397,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
     }
     if(!opts.hideGuidePresentationSelector){
-      shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guidePresentation});
+      shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     }
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
     shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide});

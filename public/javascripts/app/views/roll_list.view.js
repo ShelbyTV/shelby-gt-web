@@ -9,14 +9,12 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   initialize : function() {
       shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
-      // shelby.models.guidePresentation.bind('change:content', this._onContentChanged, this);
-      this._filterContent(shelby.models.guidePresentation.get('content'));
+      this._filterContent(shelby.models.guide.get('rollListContent'));
       libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
       shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
-      // shelby.models.guidePresentation.unbind('change:content', this._onContentChanged, this);
       libs.shelbyGT.ListView.prototype._cleanup.call(this);
   },
 
@@ -61,10 +59,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
         break;
     }
   },
-
-  // _onContentChanged : function(guidePresentationModel, content){
-  //   this._filterContent(content);
-  // },
 
   _scrollTo : function(element) {
     this.parent.scrollToChildElement(element);
