@@ -109,4 +109,21 @@
 	margin:$defaultMargin+4 auto;
 	padding:7px $defaultMargin+9px;
 	width: 17%;
+
+	&.disabled, &[disabled] {
+		background: $shelby-gray;
+		@include background(
+			url('../images/assets/noise.png'),
+			$shelby-gray
+		);
+		@include box-shadow(0 0 0 1px $shelby-gray);
+		@include text-shadow(0px 1px 2px black);
+		color:gray;
+        }
+}
+
+.genius-search-spinner{
+	height: 30px;
+	width: 30px;
+	margin: 0 auto;
 }
