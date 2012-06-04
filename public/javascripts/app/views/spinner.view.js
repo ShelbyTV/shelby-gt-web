@@ -22,14 +22,15 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
   },
 
   show : function(){
-    if (!this._isSpinning) {
-      var spinnerHtml = '<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />';
-      if (this.options.replacement) {
+    var spinnerHtml = '<img class="spinner" src="'+this.sizeToAssetMap[this.options.size]+'" />';
+    if (this.options.replacement) {
+      if (!this._isSpinning) {
         this._replacement = this.$el.html();
         this.$el.html(spinnerHtml);
-      } else {
-        this.$el.append(spinnerHtml);
       }
+    } else {
+      this.$('.spinner').remove();
+      this.$el.append(spinnerHtml);
     }
     this._isSpinning = true;
   },

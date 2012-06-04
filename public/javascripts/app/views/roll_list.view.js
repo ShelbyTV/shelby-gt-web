@@ -1,11 +1,11 @@
-libs.shelbyGT.RollListView = libs.shelbyGT.SmartUpdateListView.extend({
+libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
     collectionAttribute : 'rolls',
     listItemView : 'RollItemView',
-    doSmartUpdate : true
+    doSmartRefresh : true
   }),
 
   initialize : function() {

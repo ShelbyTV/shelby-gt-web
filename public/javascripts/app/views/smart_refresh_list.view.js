@@ -1,13 +1,13 @@
-libs.shelbyGT.SmartUpdateListView = libs.shelbyGT.ListView.extend({
+libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
 
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    doSmartUpdate : false
+    doSmartRefresh : false
   }),
 
   sourceAddOne : function(item){
-    if (this.options.doSmartUpdate) {
+    if (this.options.doSmartRefresh) {
       // there's no way to effectively specify add:true for a Backbone Relational collection
       // we can simulate it by storing all of the contents the relational collection ever loaded,
       // and using this as a surrogate for the relational collection itself when re-filtering

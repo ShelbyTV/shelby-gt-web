@@ -155,8 +155,7 @@
         }
 
         shelby.views.guideSpinner.show();
-        this._hideSpinnerAfter((function(){
-          return rollCollection.fetch({
+        $.when(rollCollection.fetch({
             success : function(){
               if (contentIsBrowseRolls) {
                 // mark the browse rolls as fetched so we know we don't need to do it again
@@ -165,8 +164,7 @@
               shelby.models.autoScrollState.set('tryAutoScroll', true);
             },
             url : fetchUrl
-          });
-        })());
+        })).done(this._hideGuideSpinner);
       } else {
         shelby.models.autoScrollState.set('tryAutoScroll', true);
       }
@@ -210,12 +208,8 @@
 
     },
 
-    _hideSpinnerAfter: function(xhr){
-      // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
-      // upon which we append another callback to hide the spinner shown earlier.
-      xhr.done(function(){
-        shelby.views.guideSpinner.hide();
-      });
+    _hideGuideSpinner: function(){
+      shelby.views.guideSpinner.hide();
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){

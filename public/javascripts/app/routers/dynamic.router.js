@@ -215,7 +215,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         'sinceId' : options.data.since_id ? options.data.since_id : null,
         'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
-      this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(this._hideGuideSpinner);
     } else {
       shelby.models.dashboard.fetch(fetchOptions);
     }
@@ -380,6 +380,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
     shelby.views.miniVideoProgress = shelby.views.miniVideoProgress ||
         new libs.shelbyGT.MiniVideoProgress({playbackState:shelby.models.playbackState});
+    if (shelby.views.guideSpinner) {
+      shelby.views.guideSpinner.hide();
+    }
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
@@ -447,7 +450,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
-    this._hideSpinnerAfter( rollModel.fetch(fetchOptions) );
+    $.when(rollModel.fetch(fetchOptions)).done(this._hideGuideSpinner);
   },
   
   _setupRollViewWithCallback : function(rollId, frameId, options){
@@ -474,12 +477,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _hideSpinnerAfter: function(xhr){
-    // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
-    // upon which we append another callback to hide the spinner shown earlier.
-    xhr.done(function(){
-      shelby.views.guideSpinner.hide();
-    });
+  _hideGuideSpinner: function(){
+    shelby.views.guideSpinner.hide();
   }
 
 });
