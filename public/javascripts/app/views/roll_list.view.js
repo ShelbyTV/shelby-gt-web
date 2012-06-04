@@ -9,14 +9,12 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   initialize : function() {
       shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
-      shelby.models.guidePresentation.bind('change:content', this._onContentChanged, this);
-      this._filterContent(shelby.models.guidePresentation.get('content'));
+      this._filterContent(shelby.models.guide.get('rollListContent'));
       libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
       shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
-      shelby.models.guidePresentation.unbind('change:content', this._onContentChanged, this);
       libs.shelbyGT.ListView.prototype._cleanup.call(this);
   },
 
@@ -40,17 +38,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
     }
   },
 
-  _onContentChanged : function(guidePresentationModel, content){
-    var filterOnlyStates = libs.shelbyGT.GuidePresentation.content.rolls.filterOnlyStates;
-    //only do something if we can reach our desired state by filtering alone
-    //otherwise, the guide presentation selector view will cause a rerouting
-    //to display a different set of rolls in response to this same event
-    if (_(filterOnlyStates).include(content) &&
-        _(filterOnlyStates).include(guidePresentationModel.previous('content'))) {
-      this._filterContent(content);
-    }
-  },
-
   _filterContent : function(guidePresentationContent){
     switch(guidePresentationContent){
       case libs.shelbyGT.GuidePresentation.content.rolls.people:
@@ -66,6 +53,9 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           var isMyPublicRoll = model.get('public') && !model.get('collaborative') && creator_id && creator_id == shelby.models.user.id;
           return isNotPersonRoll || isMyPublicRoll;
         });
+        break;
+      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
+        this.updateFilter(null);
         break;
     }
   },

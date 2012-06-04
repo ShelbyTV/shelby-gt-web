@@ -1,19 +1,15 @@
 @import "base";
 
 .frame-rolling-options{
-	@include background(
-		url('../images/assets/noise.png') #585858
-	);
+	background-color: #585858;
 	padding:$defaultMargin;
 }
-
 
 .new-roll-name-input{
 	@include border-radius($input-radius);
 
 	border:1px solid #222;
 	display:block;
-//	margin-bottom:$defaultMargin;
 	padding:$defaultMargin/2;
 	width:100%;
 }

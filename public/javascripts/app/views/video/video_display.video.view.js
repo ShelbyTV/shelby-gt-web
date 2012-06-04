@@ -31,6 +31,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.bind('change:mute', this._changeMute, this);
     this._userDesires.bind('change:volume', this._changeVolume, this);
+    this._userDesires.bind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
     
     _.each(this._playerViews, function(playerView){
@@ -48,6 +49,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.unbind('change:mute', this._changeMute, this);
     this._userDesires.unbind('change:volume', this._changeVolume, this);
+    this._userDesires.unvind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
     
     _.each(this._playerViews, function(playerView){
@@ -122,6 +124,12 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 		if( !this._curView || !this._curView.setVolume ) return;
 		
 		this._curView.setVolume(volPct);
+	},
+	
+	_changeVideoQuality: function(attr, hd){
+	  if( !this._curView || !this._curView.setVideoQuality ) return;
+	  
+	  this._curView.setVideoQuality(hd);
 	},
 
   _guideVisibilityChange: function(attr, guideShown){

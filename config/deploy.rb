@@ -1,24 +1,25 @@
 set :application, "shelby-gt-web"
 set :user, "gt"
-
-# version control
-set :scm, :git
-set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
-set :branch, :master
-
-# Use developer's local ssh keys when git clone/updating on the remote server
-ssh_options[:forward_agent] = true
-#keep a local cache to speed up deploys
-set :deploy_via, :remote_cache
 set :deploy_to, "/home/gt/web"
+
 default_run_options[:pty] = true
 
-# Your HTTP server, Apache/etc
-role :web, "108.171.161.62"
-# This may be the same as your `Web` server
-role :app, "108.171.161.62"
+#############################################################
+#	Git
+#############################################################
 
-# Passenger setup
+set :scm, :git
+
+#keep a local cache to speed up deploys
+set :deploy_via, :remote_cache
+# Use developer's local ssh keys when git clone/updating on the remote server
+ssh_options[:forward_agent] = true
+
+
+#############################################################
+#	Passenger
+#############################################################
+
 namespace :deploy do
  task :start do ; end
  task :stop do ; end
@@ -55,3 +56,11 @@ end
 after "deploy:update_code" do
   bundler.bundle_new_release
 end
+
+#############################################################
+#	Multistage Deploy via capistrano-ext
+#############################################################
+
+set :stages, %w(production iso_roll)
+set :default_stage, 'production'
+require 'capistrano/ext/multistage'

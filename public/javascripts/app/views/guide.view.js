@@ -2,7 +2,6 @@
 
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
-  var GuideModel = libs.shelbyGT.ListView;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
@@ -11,6 +10,7 @@
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
+  var GuidePresentation = libs.shelbyGT.GuidePresentation;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -19,28 +19,36 @@
     _listView : null,
 
     initialize : function(){
-      this.model.bind('change', this.updateChild, this);
+      this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
-      Backbone.Events.bind('playback:next', this._nextVideo, this);
+      shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
     },
 
     _cleanup : function() {
-      this.model.unbind('change', this.updateChild, this);
+      this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
-      Backbone.Events.unbind('playback:next', this._nextVideo, this);
+      shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
     },
 
-    updateChild : function(model){
-      // only render a new content pane if the contentPane* attribtues have been updated
+    _onGuideModelChange : function(model){
+      // only render a new content pane if relevant attribtues have been updated
       var _changedAttrs = _(model.changedAttributes());
-      if (!_changedAttrs.has('displayState') && !_changedAttrs.has('currentRollModel') && !_changedAttrs.has('sinceId') && !_changedAttrs.has('pollAttempts')) {
+      if (!_changedAttrs.has('displayState') &&
+          !_changedAttrs.has('currentRollModel') &&
+          !_changedAttrs.has('sinceId') &&
+          !_changedAttrs.has('pollAttempts') &&
+          !_changedAttrs.has('rollListContent')) {
         return;
       }
-      this._leaveChildren();
-      this._mapAppendChildView();
-      this._setGuideTop();
+      this._updateChild();
+    },
+
+    _updateChild : function() {
+        this._leaveChildren();
+        this._mapAppendChildView();
+        this._setGuideTop();
     },
 
     _setGuideTop : function(){
@@ -54,20 +62,32 @@
           displayComponents = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
-            limit : shelby.config.pageLoadSizes.dashboard,
-            sinceId : this.model.get('sinceId')
+            options : {
+              fetchParams : {
+                include_children : true,
+                sinceId : this.model.get('sinceId')
+              },
+              limit : shelby.config.pageLoadSizes.dashboard
+            }
           };
          break;
         case DisplayState.rollList :
+          var sourceModel;
+          if (this.model.get('rollListContent') == GuidePresentation.content.rolls.browse) {
+            sourceModel = shelby.models.browseRolls;
+          } else {
+            sourceModel = shelby.models.rollFollowings;
+          }
+          var viewOptions;
+          if (!GuidePresentation.shouldFetchRolls(this.model)) {
+            viewOptions = {doStaticRender:true};
+          } else {
+            viewOptions = null;
+          }
           displayComponents = {
             viewProto : RollListView,
-            model : shelby.models.rollFollowings
-          };
-          break;
-        case DisplayState.browseRollList :
-          displayComponents = {
-            viewProto : RollListView,
-            model : shelby.models.browseRolls
+            model : sourceModel,
+            options : viewOptions
           };
           break;
         case DisplayState.standardRoll :
@@ -75,8 +95,13 @@
           displayComponents = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
-            limit : shelby.config.pageLoadSizes.roll,
-            sinceId : this.model.get('sinceId')
+            options : {
+              fetchParams : {
+                include_children : true,
+                sinceId : this.model.get('sinceId')
+              },
+              limit : shelby.config.pageLoadSizes.roll
+            }
           };
           break;
         case DisplayState.userPreferences :
@@ -109,15 +134,7 @@
         model : displayComponents.model,
         collection : displayComponents.collection
       };
-      if (displayComponents.limit) {
-        options.limit = displayComponents.limit;
-      }
-      if (displayComponents.sinceId) {
-        options.fetchParams = {
-          since_id : displayComponents.sinceId,
-          include_children : true
-        };
-      }
+      _(options).extend(displayComponents.options);
       this._listView = new displayComponents.viewProto(options);
       this.appendChild(this._listView);
     },
@@ -168,8 +185,13 @@
       }
     },
 
-    // appropriatly advances to the next video (in dashboard or a roll)
-    _nextVideo : function(){
+    _onChangeVideo : function(userDesiresModel, videoChangeValue){
+      if (typeof videoChangeValue==='undefined') return false;
+      this._skipVideo(videoChangeValue);
+    },
+
+    // appropriatly changes the next video (in dashboard or a roll)
+    _skipVideo : function(skip){
       var self = this,
           _currentModel,
           _frames,
@@ -179,7 +201,6 @@
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
-        case libs.shelbyGT.DisplayState.browseRollList :
           // if the dashboard model hasn't been created yet, fetch it
           // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
           // as opposed to from what is currently displyed in the guide
@@ -208,7 +229,7 @@
           break;
       }
       
-      _index = (_frames.indexOf(_currentFrame) + 1) % _frames.length;
+      _index = (_frames.indexOf(_currentFrame) + skip) % _frames.length;
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }

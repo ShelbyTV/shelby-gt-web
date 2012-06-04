@@ -1,0 +1,43 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* non-programatic changes to app display */
+/* line 8, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll {
+  /* adjust the name and avatar of the visible isolated roll */
+  /* hide the roll nav buttons */
+  /* don't need a border above/below the roll title */
+  /* hide the frame's tool-bar and new-conversation */
+  /* don't show any education */
+}
+/* line 11, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .current-roll {
+  font-size: 2.2em;
+  line-height: 1.75;
+}
+/* line 15, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .current-roll-avatar {
+  height: 40px;
+  width: 40px;
+}
+/* line 21, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back {
+  display: none;
+}
+/* line 24, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .filter-controls {
+  border: none;
+}
+/* line 27, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .frame-controls {
+  display: none;
+}
+/* line 30, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .guide-education {
+  display: none!important;
+}

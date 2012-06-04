@@ -24,7 +24,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
-    shelby.models.guidePresentation = new libs.shelbyGT.GuidePresentationModel();
+    shelby.models.fetchState = new libs.shelbyGT.FetchStateModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -33,19 +33,20 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
 
     var self = this;
-      shelby.models.user.fetch({
-        global: false,
-        success: function() {
-          shelby.models.rollFollowings.fetch({
-            success : function() {
-              self._reroute();
-            }
-          });
-        },
-        error: function(){
-          self.initAnonymous(url);
-        }
-      });
+
+    shelby.models.user.fetch({
+      global: false,
+      success: function() {
+        shelby.models.rollFollowings.fetch({
+          success : function() {
+            self._reroute();
+          }
+        });
+      },
+      error: function(){
+        self.initAnonymous(url);
+      }
+    });
   },
 
   initAnonymous : function(url){

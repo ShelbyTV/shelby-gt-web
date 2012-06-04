@@ -1,0 +1,61 @@
+@import "base";
+
+.roll-header {
+  background: $filter-bg-color;
+  border-top: 1px solid #333;
+	margin: 0;
+	padding: 12px 0 0 12px;
+	position: relative;
+	width: 100%;
+}
+
+.current-roll-avatar  {
+  float: left;
+	height: 35px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	vertical-align: middle;
+	width: 35px;
+
+	img, span  {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+}
+
+.title {
+  margin-left: 35px;
+  padding-left: 12px;
+}
+
+.current-roll-owner-nickname {
+  color: #999;
+  font-size: 11px;
+}
+
+.current-roll {
+  @include ellipsis();
+  
+	font-size: 1.2em;
+	line-height: 1.5;
+	width: 100%;
+}
+
+.roll-name-change {
+	display: none;
+	input {
+		margin: -4px 0 0 -4px;
+		padding: 2px;
+	}
+}
+
+@mixin backandforth {
+	float: left;
+	height: 20px;
+	padding: $defaultMargin/2 $defaultMargin;
+	width: 50%;
+}

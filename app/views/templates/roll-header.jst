@@ -1,11 +1,23 @@
-<ul id="js-roll-header" class="rolls-menu clearfix"> 
-  <li>
-    <button class="rolls-share js-share-roll">Share Roll</button>
-  </li>
-  <li>
-    <button class="rolls-edit js-edit-roll">Edit</button>
-  </li>
-  <li>
-    <button class="rolls-add js-leave-roll"></button>
-  </li>
-</ul>
+<% var rollTitle = roll.get('title') %>
+
+<div class="current-roll-avatar">
+	<% if (rollTitle) { %>
+		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
+		alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+	<% } %>
+</div>
+
+<div class="title">
+  <h3 class="current-roll-owner-nickname">
+    <%= roll.get('creator_nickname') %>
+  </h3>
+
+  <h2 class="current-roll">
+  	<span class="roll-title-text">
+  		<%= rollTitle || '' %>
+  	</span>
+  	<span id="js-roll-name-change" class="roll-name-change">
+  		<input value="<%= roll.get('title') %>" size="15"/>
+  	</span>
+  </h2>
+</div>

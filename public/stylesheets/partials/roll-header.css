@@ -1,0 +1,70 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../../app/stylesheets/partials/roll-header.scss */
+.roll-header {
+  background: #585858;
+  border-top: 1px solid #333;
+  margin: 0;
+  padding: 12px 0 0 12px;
+  position: relative;
+  width: 100%;
+}
+
+/* line 12, ../../../app/stylesheets/partials/roll-header.scss */
+.current-roll-avatar {
+  float: left;
+  height: 35px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 35px;
+}
+/* line 22, ../../../app/stylesheets/partials/roll-header.scss */
+.current-roll-avatar img, .current-roll-avatar span {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* line 30, ../../../app/stylesheets/partials/roll-header.scss */
+.title {
+  margin-left: 35px;
+  padding-left: 12px;
+}
+
+/* line 35, ../../../app/stylesheets/partials/roll-header.scss */
+.current-roll-owner-nickname {
+  color: #999;
+  font-size: 11px;
+}
+
+/* line 40, ../../../app/stylesheets/partials/roll-header.scss */
+.current-roll {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1.2em;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* line 48, ../../../app/stylesheets/partials/roll-header.scss */
+.roll-name-change {
+  display: none;
+}
+/* line 50, ../../../app/stylesheets/partials/roll-header.scss */
+.roll-name-change input {
+  margin: -4px 0 0 -4px;
+  padding: 2px;
+}

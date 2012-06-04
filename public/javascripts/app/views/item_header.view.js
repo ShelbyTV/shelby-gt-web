@@ -1,13 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var RollFilterControlsView = libs.shelbyGT.RollFilterControlsView;
+  var RollHeaderView = libs.shelbyGT.RollHeaderView;
 
-  libs.shelbyGT.FilterControlsView = Support.CompositeView.extend({
+  libs.shelbyGT.ItemHeaderView = Support.CompositeView.extend({
 
-    el : '#js-filter-controls',
+    el : '#js-item-header',
 
-    initialize : function(){
+    initialize : function(opts){
+      this._options = opts.options || {};
       this.model.bind('change', this._updateChild, this);
     },
 
@@ -30,11 +31,10 @@
       this._leaveChildren();
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.standardRoll :
-          this.appendChild(new RollFilterControlsView({model:this.model.get('currentRollModel')}));
+          this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
           break;
         case libs.shelbyGT.DisplayState.dashboard :
         case libs.shelbyGT.DisplayState.rollList :
-        case libs.shelbyGT.DisplayState.browseRollList :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
           break;
       }

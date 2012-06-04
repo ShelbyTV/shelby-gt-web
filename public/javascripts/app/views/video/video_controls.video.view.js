@@ -5,13 +5,15 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
 	events : {
-    "click .js-paused button.video-player-play" : "_play",
-    "click .js-playing button.video-player-play" : "_pause",
-    "click .unmute" : "_mute",
-    "click .mute" : "_unMute",
+    "click .js-playback" : "_togglePlayback",
+    "click .js-mute" : "_toggleMute",
+    "click .video-player-quality.hd-on" : "_hdOff",
+    "click .video-player-quality.hd-off" : "_hdOn",
     "click .video-player-progress": "_onScrubTrackClick",
     "click .video-player-fullscreen" : "_toggleFullscreen",
-    "click .video-player-roll" : "_rollActiveFrame"
+    "click .video-player-roll" : "_rollActiveFrame",
+    "click .js-video-player-next" : "_nextVideo",
+    "click .js-video-player-prev" : "_prevVideo"
   },
 
   el: '#video-controls',
@@ -25,6 +27,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		this._userDesires = opts.userDesires;
 		
 		this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
+		this._userDesires.bind('change:mute', this._onUserDesiresMuteChange, this);
 		
 		this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
 		if( this._playbackState.get('activePlayerState') !== null ) {
@@ -70,8 +73,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 			prevPlayerState.unbind('change:duration', this._onDurationChange, this);
 			prevPlayerState.unbind('change:muted', this._onMutedChange, this);
 			prevPlayerState.unbind('change:volume', this._onVolumeChange, this);
+			prevPlayerState.unbind('change:hdVideo', this._onHdVideoChange, this);
 			prevPlayerState.unbind('change:supportsMute', this._onSupportsMuteChange, this);
 			prevPlayerState.unbind('change:supportsVolume', this._onSupportsVolumeChange, this);
+			prevPlayerState.unbind('change:supportsVideoQuality', this._onSupportsVideoQualityChange, this);
 		}
 		
 		newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
@@ -80,10 +85,19 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		newPlayerState.bind('change:duration', this._onDurationChange, this);
 		newPlayerState.bind('change:muted', this._onMutedChange, this);
 		newPlayerState.bind('change:volume', this._onVolumeChange, this);
+		newPlayerState.bind('change:hdVideo', this._onHdVideoChange, this);
 		newPlayerState.bind('change:supportsMute', this._onSupportsMuteChange, this);
 		newPlayerState.bind('change:supportsVolume', this._onSupportsVolumeChange, this);
+		newPlayerState.bind('change:supportsVideoQuality', this._onSupportsVideoQualityChange, this);
 		
 		this.render();
+		
+		//need to fake-fire some change events since they don't actually change when swapping players
+		this._onMutedChange('muted', newPlayerState.get('muted'));
+		this._onHdVideoChange('hdVideo', newPlayerState.get('hdVideo'));
+		this._onSupportsMuteChange('supportsMute', newPlayerState.get('supportsMute'));
+		this._onSupportsVolumeChange('supportsVolume', newPlayerState.get('supportsVolume'));
+		this._onSupportsVideoQualityChange('supportsVideoQuality', newPlayerState.get('supportsVideoQuality'));
 	},
 	
 	_onPlaybackStatusChange: function(attr, curState){
@@ -140,6 +154,14 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		//console.log("TODO: move volume slider to "+volPct+"%");
 	},
 	
+	_onHdVideoChange: function(attr, hd){
+	  if(hd){
+	    this.$('.video-player-quality').addClass('hd-on').removeClass('hd-off');
+	  } else {
+	    this.$('.video-player-quality').removeClass('hd-on').addClass('hd-off');
+	  }
+	},
+	
 	_onSupportsMuteChange: function(attr, supportsMute){
 		supportsMute ? this.$el.removeClass('disable-mute') : this.$el.addClass('disable-mute');
 	},
@@ -148,33 +170,34 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		supportsVolume ? this.$el.removeClass('disable-volume') : this.$el.addClass('disable-volume');
 	},
 	
+	_onSupportsVideoQualityChange: function(attr, supportsVideoQuality){
+	  supportsVideoQuality ? this.$el.removeClass('disable-video-quality') : this.$el.addClass('disable-video-quality');
+	},
 	
 	//--------------------------------------
 	// Handle user events on the player controls
 	//--------------------------------------
 	
-	_play: function(el){
-    //to make sure a change event is fired, first unset this attribute
+  _togglePlayback : function(){
+    var _newPlaybackStatus = (this._userDesires.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
     this._userDesires.unset('playbackStatus');
-    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
+    this._userDesires.set('playbackStatus', _newPlaybackStatus);
+  },
+  
+  _onUserDesiresMuteChange : function(){
+		this.$('.js-mute').toggleClass('mute').toggleClass('unmute');
+  },
+	
+  _toggleMute : function(){
+		this._userDesires.set({mute: !this._userDesires.get('mute')});
+  },
+	
+	_hdOn: function(el){
+	  this._userDesires.set({hdVideo: true});
 	},
 	
-	_pause: function(el){
-    //to make sure a change event is fired, first unset this attribute
-    this._userDesires.unset('playbackStatus');
-    this._userDesires.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
-	},
-	
-
-  //TODO: make this properly backboney
-	_mute: function(el){
-		this._userDesires.set({mute: true});
-		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
-	},
-	
-	_unMute: function(el){
-		this._userDesires.set({mute: false});
-		this.$('.video-player-volume').toggleClass('mute').toggleClass('unmute');
+	_hdOff: function(el){
+	  this._userDesires.set({hdVideo: false});
 	},
 	
 	_onScrubTrackClick: function(el){
@@ -201,6 +224,16 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     this._userDesires.set({guideShown: true});
     shelby.views.guide.rollActiveFrame();
   },
+  
+  _nextVideo: function(){
+    this._userDesires.set('changeVideo', 1);
+    this._userDesires.unset('changeVideo');
+  },
+  
+  _prevVideo: function(){
+    this._userDesires.set('changeVideo', -1);
+    this._userDesires.unset('changeVideo');
+  },
 
 	//TODO: handle volume change this._userDesires.set({volume: (clickPositionPct) })
 	
@@ -210,9 +243,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      this.$el.find('.video-player-controls').removeClass("full-width");
+      this.$el.find('.video-player-tools').removeClass("full-width");
+      this.$el.find('.video-player-next').removeClass("full-width");
     } else {
-      this.$el.find('.video-player-controls').addClass("full-width");
+      this.$el.find('.video-player-tools').addClass("full-width");
+      this.$el.find('.video-player-next').addClass("full-width");
     }
   },
 	

@@ -14,13 +14,14 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-frame-activate"              : "_activate",
-    "click .roll-frame"                     : "RequestFrameRollingView",
-    "click .save-frame"                     : "_saveToWatchLater",
-    "click .remove-frame"                   : "_removeFromWatchLater",
-    "click .share-frame"                    : "_shareFrame",
+    "click .js-roll-frame"                  : "RequestFrameRollingView",
+    "click .js-save-frame"                  : "_saveToWatchLater",
+    "click .js-remove-frame"                : "_removeFromWatchLater",
+    "click .js-share-frame"                 : "_shareFrame",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
-    "click .video-source"                   : "_goToRoll",
-    "click .upvote-frame"                   : "_upvote",
+    "click .js-frame-source"                : "_goToRoll",
+    "click .js-upvote-frame"                : "_upvote",
+    "click .js-go-to-roll-by-id"            : "_goToRollById",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
     "webkitTransitionEnd .video-saved"      : "_onSavedTransitionComplete",
     "MSTransitionEnd .video-saved"          : "_onSavedTransitionComplete",
@@ -40,8 +41,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var _tmplt;
     if (shelby.commentUpvoteUITest){
      _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
+    } else { 
+      try {
+        _tmplt = JST['frame'](obj); 
+      } catch(e){
+        console.log(e.message, e.stack);
+      }
     }
-    else { _tmplt = JST['frame'](obj); }
     return _tmplt;
   },
 
@@ -78,7 +84,10 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     // otherwise, just render the first message
     var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:this.model.get('conversation').get('messages').first()};
     var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
-    this.insertChildBefore(firstMessageView,'.js-video-activity');
+
+//  COMMENTING THIS OUT OBVIOUSLY DOESN'T SOLVE ANYTHING
+//  DOING THIS FOR TESTING PURPOSES
+//    this.insertChildBefore(firstMessageView,'.js-video-activity');
 
     // render all other messages that haven't already been rendered
     var startIndex = useFrameCreatorInfo ? 0 : 1;
@@ -113,25 +122,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _roll : function(socialShare){
     if (!this._frameRollingView) {
-      var privateUserModel = shelby.models.user.clone();
       this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this.appendChildInto(this._frameRollingView, 'article');
       // dont reveal the frame rolling view until the rolls that can be posted to have been fetched
       // via ajax
       var self = this;
-      if (socialShare){
-        shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-        self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-      }
-      else {
-        shelby.models.rollFollowings.fetch({success:function(){
-          /*
-           * the relevant list view needs to scroll to this._frameRollingView.el
-           */
-          shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
-          self.$('.js-rolling-frame').addClass('rolling-frame-trans');
-        }});
-      }
+      shelby.models.guide.set('activeFrameRollingView', self._frameRollingView);
+      self.$('.js-rolling-frame').addClass('rolling-frame-trans');
     }
   },
 
@@ -174,15 +171,16 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this.$('.upvote-test').text(this.model.get('upvoters').length);
     }
     else {
-      this.$('.upvote-frame').addClass('upvoted');
-      this.$('.upvote-frame button').text(this.model.get('upvoters').length);
+      this.$('.js-upvote-frame').addClass('upvoted');
+      this.$('.js-upvote-frame-lining').text(this.model.get('upvoters').length);
     }
   },
 
   _toggleConversationDisplay : function(){
     this._conversationDisplayed = !this._conversationDisplayed;
     this.$('.js-video-activity').slideToggle(200);
-    this.$('.js-video-activity-toggle-verb').text(this._conversationDisplayed ? 'Hide' : 'Show');
+    // this.$('.js-video-activity-toggle-comment').text(this._conversationDisplayed ? ' frame-comments-eopn' : '');
+    this.$('.js-video-activity-toggle-comment').toggleClass('frame-comments-open');
   },
 
   _onConversationChange : function(){
@@ -241,6 +239,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
   },
+  
+  _goToRollById : function(e){
+    shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
+    return false;
+  },
 
   _onSavedTransitionComplete : function(){
     // when the saved indicator has completely faded out, remove it from the DOM
@@ -255,7 +258,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       var minHeight = shelby.config.animation.frameGrow.minHeight;
       var distance = minHeight - this.$('article').height();
       if (distance > 0) {
-        var $user = this.$('.user');
+        var $user = this.$('.js-frame-flexible-height');
         var targetHeight = $user.height() + distance;
         $user.animate({height:targetHeight + 'px'}, 200);
         this._grewForFrameRolling = true;
@@ -265,7 +268,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this._frameViewState.set('doFrameAction', null);
 			
       if (this._grewForFrameRolling) {
-        this.$('.user').animateAuto('height', 200);
+        this.$('.js-frame-flexible-height').animateAuto('height', 200);
         this._grewForFrameRolling = false;
       }
     }
