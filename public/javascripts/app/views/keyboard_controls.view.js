@@ -40,14 +40,12 @@
           return !shelby.models.userDesires.get('mute');
         }
       },
-
       // (->) right
       39 : {
         model : 'userDesires',
         attr : 'changeVideo',
         val : 1
       },
-
       // (<-) left 
       37 : {
         model : 'userDesires',
