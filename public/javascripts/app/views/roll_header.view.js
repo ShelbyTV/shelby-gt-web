@@ -11,15 +11,27 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change:title', this.render, this);
+    this.model.bind('change', this._onRollChange, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change:title', this.render, this);
+    this.model.unbind('change', this._onRollChange, this);
   },
 
   render : function(){
     this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
+  },
+
+  _onRollChange : function(model) {
+    // only re-render if relevant attribtues have been updated
+    var _changedAttrs = _(model.changedAttributes());
+    if (!_changedAttrs.has('title') &&
+        !_changedAttrs.has('thumbnail_url') &&
+        !_changedAttrs.has('creator_nickname') &&
+        !_changedAttrs.has('title')) {
+      return;
+    }
+    this.render();
   },
 
   _showRollNameEditInput : function(){
