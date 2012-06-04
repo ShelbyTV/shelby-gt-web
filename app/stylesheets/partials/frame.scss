@@ -19,6 +19,12 @@
 }
 
 .active-list-item {
+	background-color: #ddd;
+
+	&:hover{
+		background-color: #aaa;
+	}
+
 	.active-frame {
 		@include background(#6d6d6d);
 	}
@@ -103,7 +109,10 @@
 
 .frame-creator-roll {
 	@include frame-header-smalltype;
+	@include ellipsis();
+
 	float: left;
+	width: 66%;
 }
 
 .frame-creator-origin-twitter{
@@ -316,6 +325,8 @@
 
 
 .video-activity-comment {
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid adjust-lightness($outset, 10%);
 	padding: $defaultMargin;
 
 	textarea {
@@ -361,7 +372,7 @@
 
 .user-vcard {
 	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
+	border-top: 1px solid adjust-lightness($outset, 10%);
 	height: 100%;
 	padding: 0 9px 9px;
 
@@ -464,7 +475,7 @@
 .frame-activity,
 .video-footer {
 	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
+	border-top: 1px solid adjust-lightness($outset, 10%);
 	font-size: $font-size - 2;
 	font-weight: 500;
 //	height: 27px;

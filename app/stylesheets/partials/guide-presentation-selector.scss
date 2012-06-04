@@ -6,15 +6,13 @@
 
 .guide-presentation-stream {
   @extend .notype;
-  @include x-button-primer($guide-presentation-tab-bg-color);
-
+  @include x-tab-primer($guide-presentation-tab-bg-color);
   @include background(
     url("../images/assets/stream.svg") no-repeat center -1px,
     linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-color, 10%), $guide-presentation-tab-bg-color)
   );
-  float:left;
+  @include roundies;
   margin-left: $default-margin;
-  margin-top: 1px;
   padding: 13px 33px;
 }
 
@@ -50,7 +48,6 @@
 
 .guide-presentation-button {
    &.guide-presentation-content-selected{
-//    background-color: #777;
     @include background(    
       linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
     );

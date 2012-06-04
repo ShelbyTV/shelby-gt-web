@@ -15,44 +15,45 @@
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -moz-box-shadow: inset 0 1px 1px 0 #4c5052;
+  -webkit-box-shadow: inset 0 1px 1px 0 #4c5052;
+  -o-box-shadow: inset 0 1px 1px 0 #4c5052;
+  box-shadow: inset 0 1px 1px 0 #4c5052;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
+  text-shadow: 0px -1px 0px black;
   border: 1px solid black;
   color: #efefef;
-  padding: 6px 13px;
+  float: left;
+  height: 27px;
+  margin-top: 1px;
+  padding: 10px 10px;
   background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
   background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat center -1px, -moz-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat center -1px, -o-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat center -1px, -ms-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat center -1px, linear-gradient(top, #404344, #27292a);
-  float: left;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   margin-left: 10px;
-  margin-top: 1px;
   padding: 13px 33px;
 }
 
-/* line 21, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 19, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter {
   margin: 7px 4px 7px 85px;
   padding: 0;
 }
 
-/* line 26, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 24, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item {
   list-style-type: none;
 }
-/* line 29, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 27, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item .guide-presentation-button {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -76,7 +77,7 @@
   padding: 6px;
   width: 33%;
 }
-/* line 36, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 34, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:first-child button {
   -moz-border-radius: 5px 0 0 5px;
   -webkit-border-radius: 5px 0 0 5px;
@@ -86,7 +87,7 @@
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
-/* line 43, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 41, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:last-child button {
   -moz-border-radius: 0 5px 5px 0;
   -webkit-border-radius: 0 5px 5px 0;
@@ -97,7 +98,7 @@
   border-left: none;
 }
 
-/* line 52, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 50, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-button.guide-presentation-content-selected {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
   background: -webkit-linear-gradient(top, #2b2b2b, #111111);
@@ -110,7 +111,7 @@
   -o-box-shadow: inset 0 1px 1px 0 #161616;
   box-shadow: inset 0 1px 1px 0 #161616;
 }
-/* line 59, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 56, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-button.guide-presentation-content-selected.guide-presentation-stream {
   background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
   background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-linear-gradient(top, #2b2b2b, #111111);

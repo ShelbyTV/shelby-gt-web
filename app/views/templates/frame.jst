@@ -33,17 +33,6 @@
  -->      
 
   <div class="video-thumbnail">
-    <ul class="video-controls" type="toolbar">
-      <li class="upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button"><%= frame.get('upvoters').length %></button>
-      </li>
-      <li class="roll-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label='<%= shelby.models.user.get('nickname') %>' type="button">Roll Frame</button>
-      </li>
-			<li class="share-frame">
-				<button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label='<%= shelby.models.user.get('nickname') %>'></button>
-			</li>
-    </ul>
     <% if(frame.get('video').get('thumbnail_url')) { %>
       <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
     <% } else { %>
