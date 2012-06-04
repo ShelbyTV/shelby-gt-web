@@ -1,40 +1,23 @@
-<% /*var userFollowsRoll = shelby.models.user.followsRoll(roll);*/ %>
-<% var userFollowsRoll = true; %>
-<% if (userFollowsRoll) { %>
-	<button id="js-rolls-back" class="rolls-back js-track-event" data-ga_category="Roll List" data-ga_action="back" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-		<i>Back</i>
-	</button>
-<% } %>
+<% var rollTitle = roll.get('title') %>
 
-<h2 class="current-roll">
-	<span class="current-roll-avatar">
-		<!-- <span> -->
-		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
-		<!-- </span> -->
-	</span>
-	<span class="roll-title-text">
-		<%= roll.get('title') %>
-	</span>
-	<span id="js-roll-name-change" class="roll-name-change">
-		<input value="<%= roll.get('title') %>" size="15"/>
-	</span>
-</h2>
+<div class="current-roll-avatar">
+	<% if (rollTitle) { %>
+		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
+		alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+	<% } %>
+</div>
 
-<% if (userFollowsRoll) { %>
-	<ul class="rolls-list-nav clearfix">
-		<li>
-			<button id="js-roll-back" class="roll-back js-track-event" data-ga_category="Roll List" data-ga_action="previous roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-				Previous Roll
-			</button>
-		</li>
-		<li>	
-			<button id="js-roll-next" class="roll-next js-track-event" data-ga_category="Roll List" data-ga_action="next roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-				Next Roll
-			</button>
-		</li>
-	</ul>
-	
-	<button id="js-roll-delete" class="roll-delete js-track-event" data-ga_category="Roll List" data-ga_action="delete" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-		Delete
-	</button>
-<% } %>
+<div class="title">
+  <h3 class="current-roll-owner-nickname">
+    <%= roll.get('creator_nickname') %>
+  </h3>
+
+  <h2 class="current-roll">
+  	<span class="roll-title-text">
+  		<%= rollTitle || '' %>
+  	</span>
+  	<span id="js-roll-name-change" class="roll-name-change">
+  		<input value="<%= roll.get('title') %>" size="15"/>
+  	</span>
+  </h2>
+</div>

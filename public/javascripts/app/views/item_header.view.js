@@ -31,7 +31,6 @@
       this._leaveChildren();
       switch (this.model.get('displayState')) {
         case libs.shelbyGT.DisplayState.standardRoll :
-        case libs.shelbyGT.DisplayState.userPersonalRoll :
           this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
           break;
         case libs.shelbyGT.DisplayState.dashboard :
