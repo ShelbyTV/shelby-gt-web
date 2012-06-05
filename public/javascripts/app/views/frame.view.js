@@ -75,8 +75,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var useFrameCreatorInfo = this.model.conversationUsesCreatorInfo(shelby.models.user);
     this.$el.html(this.template({
       frame : this.model,
-      showConversation : showConversation,
-      useFrameCreatorInfo : useFrameCreatorInfo
+      showConversation : showConversation
     }));
 
     // if the first message is not from the frame's creator and we're not on the watch later roll,
