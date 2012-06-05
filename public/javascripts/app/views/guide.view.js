@@ -18,11 +18,14 @@
 
     _listView : null,
 
+    _dashboardMasterCollection : null,
+
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
+      this._dashboardMasterCollection = new Backbone.Collection();
     },
 
     _cleanup : function() {
@@ -62,11 +65,13 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doStaticRender : true,
               fetchParams : {
                 include_children : true,
                 sinceId : this.model.get('sinceId')
               },
-              limit : shelby.config.pageLoadSizes.dashboard
+              limit : shelby.config.pageLoadSizes.dashboard,
+              masterCollection : this._dashboardMasterCollection
             },
             spinner : true
           };

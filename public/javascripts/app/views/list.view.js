@@ -36,6 +36,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
           params are any additional parameters to be passed to the new view's constructor
     */
     listItemView : 'ListItemView',
+    masterCollection : null,
     simulateAddTrue : true
   },
   
@@ -48,9 +49,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
       this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       if (this.options.simulateAddTrue) {
-        this._simulatedMasterCollection = new Backbone.Collection();
-        if (this.options.doStaticRender) {
-          this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
+        if (this.options.masterCollection) {
+          this._simulatedMasterCollection = this.options.masterCollection;
+        } else {
+          this._simulatedMasterCollection = new Backbone.Collection(this.model.get(this.options.collectionAttribute).models);
         }
       }
     }
@@ -159,6 +161,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   internalAddOne : function(item){
+    console.log('internal',arguments);
     var childView = this._constructListItemView(item);
     //store a reference to all list item child views so they can be removed/left without
     //removing any other child views

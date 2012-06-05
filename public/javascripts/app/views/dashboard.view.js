@@ -9,9 +9,12 @@
 
     options : _.extend({}, AutoScrollFrameListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
+      doCheckHead : true,
+      doSmartRefresh : true,
       fetchParams : {
         include_children : true
-      }
+      },
+      sortOrder : -1
     }),
 
     actionToViewMap : {
