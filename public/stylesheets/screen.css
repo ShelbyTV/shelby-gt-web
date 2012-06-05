@@ -1204,15 +1204,14 @@ a:hover, a:visited, a:active {
  */
 /* line 3, ../../app/stylesheets/partials/roll-header.scss */
 .roll-header {
-  background: #585858;
-  border-top: 1px solid #333;
+  border-top: 1px solid #4e4e4e;
   margin: 0;
   padding: 12px 0 0 12px;
   position: relative;
   width: 100%;
 }
 
-/* line 12, ../../app/stylesheets/partials/roll-header.scss */
+/* line 11, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar {
   float: left;
   height: 35px;
@@ -1223,7 +1222,7 @@ a:hover, a:visited, a:active {
   vertical-align: middle;
   width: 35px;
 }
-/* line 22, ../../app/stylesheets/partials/roll-header.scss */
+/* line 21, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -1231,13 +1230,13 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 
-/* line 30, ../../app/stylesheets/partials/roll-header.scss */
+/* line 29, ../../app/stylesheets/partials/roll-header.scss */
 .title {
   margin-left: 35px;
   padding-left: 12px;
 }
 
-/* line 35, ../../app/stylesheets/partials/roll-header.scss */
+/* line 34, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll-owner-nickname {
   white-space: nowrap;
   overflow: hidden;
@@ -1248,7 +1247,7 @@ a:hover, a:visited, a:active {
   font-size: 11px;
 }
 
-/* line 42, ../../app/stylesheets/partials/roll-header.scss */
+/* line 41, ../../app/stylesheets/partials/roll-header.scss */
 .current-roll {
   white-space: nowrap;
   overflow: hidden;
@@ -1260,11 +1259,11 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 50, ../../app/stylesheets/partials/roll-header.scss */
+/* line 49, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 52, ../../app/stylesheets/partials/roll-header.scss */
+/* line 51, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -1341,7 +1340,7 @@ body.isolated-roll .current-roll-avatar {
   width: 40px;
 }
 /* line 21, ../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back, body.isolated-roll .rolling-main-back {
+body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back {
   display: none;
 }
 /* line 24, ../../app/stylesheets/partials/isolated-roll.scss */
@@ -1438,7 +1437,7 @@ body.isolated-roll .guide-education {
 
 /* line 63, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
-  margin: 36px auto 0;
+  margin: 24px auto;
   width: auto;
 }
 
@@ -1916,39 +1915,38 @@ body.isolated-roll .guide-education {
 /* line 476, ../../app/stylesheets/partials/frame.scss */
 .frame-activity,
 .video-footer {
+  font-weight: 500;
+}
+
+/* line 481, ../../app/stylesheets/partials/frame.scss */
+.frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #4e4e4e;
   font-size: 11px;
-  font-weight: 500;
-  padding: 4px;
-}
-
-/* line 485, ../../app/stylesheets/partials/frame.scss */
-.frame-activity-favorites {
   margin: 0;
-  padding: 0;
+  padding: 4px;
   width: auto;
 }
-/* line 490, ../../app/stylesheets/partials/frame.scss */
+/* line 489, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
-  float: left;
+  float: border-left;
   height: 24px;
   list-style-type: none;
   overflow: hidden;
   margin-right: 3px;
   width: 24px;
 }
-/* line 500, ../../app/stylesheets/partials/frame.scss */
+/* line 499, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 504, ../../app/stylesheets/partials/frame.scss */
+/* line 503, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 509, ../../app/stylesheets/partials/frame.scss */
+/* line 508, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1958,7 +1956,7 @@ body.isolated-roll .guide-education {
   width: 22px;
 }
 
-/* line 520, ../../app/stylesheets/partials/frame.scss */
+/* line 519, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1966,12 +1964,12 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 529, ../../app/stylesheets/partials/frame.scss */
+/* line 528, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 538, ../../app/stylesheets/partials/frame.scss */
+/* line 537, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1979,25 +1977,25 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 547, ../../app/stylesheets/partials/frame.scss */
+/* line 546, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 554, ../../app/stylesheets/partials/frame.scss */
+/* line 553, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 559, ../../app/stylesheets/partials/frame.scss */
+/* line 558, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 566, ../../app/stylesheets/partials/frame.scss */
+/* line 565, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 571, ../../app/stylesheets/partials/frame.scss */
+/* line 570, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -2480,7 +2478,7 @@ body.isolated-roll .guide-education {
 /* line 20, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #4e4e4e;
   padding: 0;
 }
 /* line 25, ../../app/stylesheets/partials/rolls-list.scss */
@@ -2591,7 +2589,39 @@ body.isolated-roll .guide-education {
   text-align: center;
 }
 
-/* line 57, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 53, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-back {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  left: 0;
+  padding: 6px 9px;
+  position: absolute;
+  margin: 6px;
+  top: 0;
+  width: auto;
+}
+
+/* line 64, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2621,7 +2651,7 @@ body.isolated-roll .guide-education {
   top: 0;
 }
 
-/* line 65, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 72, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .video-activity-comment .video-activity-comment-submit, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2647,12 +2677,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 77, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 84, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 83, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 90, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2664,7 +2694,7 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 95, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 102, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2693,7 +2723,7 @@ body.isolated-roll .guide-education {
   height: 100%;
 }
 
-/* line 110, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 117, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame-trans {
   margin-left: 0;
 }
@@ -2840,39 +2870,38 @@ body.isolated-roll .guide-education {
  */
 /* line 3, ../../app/stylesheets/partials/rolls.scss */
 .roll-action-menu {
-  background-color: #585858;
   display: none;
 }
 
-/* line 8, ../../app/stylesheets/partials/rolls.scss */
+/* line 7, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu {
   margin: 0;
   padding: 11px 0 9px;
 }
-/* line 12, ../../app/stylesheets/partials/rolls.scss */
+/* line 11, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu li {
   display: block;
   float: left;
   list-style-type: none;
   margin: 0;
 }
-/* line 18, ../../app/stylesheets/partials/rolls.scss */
-.roll-menu li.left {
+/* line 17, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu .left {
   margin-left: 12px;
   width: 47px;
 }
-/* line 22, ../../app/stylesheets/partials/rolls.scss */
-.roll-menu li.middle {
+/* line 21, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu .middle {
   margin-left: 8px;
   width: 161px;
 }
-/* line 26, ../../app/stylesheets/partials/rolls.scss */
-.roll-menu li.right {
+/* line 25, ../../app/stylesheets/partials/rolls.scss */
+.roll-menu .right {
   margin-left: 8px;
   width: 85px;
 }
 
-/* line 33, ../../app/stylesheets/partials/rolls.scss */
+/* line 31, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -2900,13 +2929,13 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 44, ../../app/stylesheets/partials/rolls.scss */
+/* line 42, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   margin-top: 0 !important;
   width: 100%;
 }
 
-/* line 50, ../../app/stylesheets/partials/rolls.scss */
+/* line 48, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2933,18 +2962,18 @@ body.isolated-roll .guide-education {
   margin-top: 0;
 }
 
-/* line 55, ../../app/stylesheets/partials/rolls.scss */
+/* line 53, ../../app/stylesheets/partials/rolls.scss */
 .rolls-edit {
   width: 100%;
 }
 
-/* line 60, ../../app/stylesheets/partials/rolls.scss */
+/* line 58, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   margin-top: 0;
 }
 
-/* line 65, ../../app/stylesheets/partials/rolls.scss */
-.rolls-back, .rolling-main-back {
+/* line 63, ../../app/stylesheets/partials/rolls.scss */
+.rolls-back {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
   background: -webkit-linear-gradient(top, #404344, #27292a);
@@ -2972,7 +3001,7 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 72, ../../app/stylesheets/partials/rolls.scss */
+/* line 70, ../../app/stylesheets/partials/rolls.scss */
 .roll-delete {
   background-color: #cc1235;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
@@ -3039,7 +3068,7 @@ body.isolated-roll .guide-education {
 }
 */
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
-/* line 119, ../../app/stylesheets/partials/rolls.scss */
+/* line 117, ../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   padding: 0;
@@ -3049,27 +3078,27 @@ body.isolated-roll .guide-education {
   z-index: 1;
 }
 
-/* line 128, ../../app/stylesheets/partials/rolls.scss */
+/* line 126, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 133, ../../app/stylesheets/partials/rolls.scss */
+/* line 131, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 138, ../../app/stylesheets/partials/rolls.scss */
+/* line 136, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 141, ../../app/stylesheets/partials/rolls.scss */
+/* line 139, ../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 147, ../../app/stylesheets/partials/rolls.scss */
+/* line 145, ../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -3078,11 +3107,11 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 155, ../../app/stylesheets/partials/rolls.scss */
+/* line 153, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 158, ../../app/stylesheets/partials/rolls.scss */
+/* line 156, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -3094,7 +3123,7 @@ body.isolated-roll .guide-education {
   resize: none;
   width: 100%;
 }
-/* line 166, ../../app/stylesheets/partials/rolls.scss */
+/* line 164, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -3105,13 +3134,13 @@ body.isolated-roll .guide-education {
   padding-top: 15px;
 }
 
-/* line 178, ../../app/stylesheets/partials/rolls.scss */
+/* line 176, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 183, ../../app/stylesheets/partials/rolls.scss */
+/* line 181, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
@@ -3134,7 +3163,7 @@ body.isolated-roll .guide-education {
   width: 34px;
 }
 
-/* line 197, ../../app/stylesheets/partials/rolls.scss */
+/* line 195, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3143,7 +3172,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 205, ../../app/stylesheets/partials/rolls.scss */
+/* line 203, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3154,7 +3183,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 216, ../../app/stylesheets/partials/rolls.scss */
+/* line 214, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3163,7 +3192,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 224, ../../app/stylesheets/partials/rolls.scss */
+/* line 222, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -3174,7 +3203,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 237, ../../app/stylesheets/partials/rolls.scss */
+/* line 235, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3201,7 +3230,7 @@ body.isolated-roll .guide-education {
   margin-top: 10px;
   width: 100%;
 }
-/* line 243, ../../app/stylesheets/partials/rolls.scss */
+/* line 241, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;

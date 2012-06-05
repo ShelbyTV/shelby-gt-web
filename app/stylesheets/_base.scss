@@ -147,7 +147,7 @@ $margin         : 0.5em;
 //border colors
 $outline : #222;
 $inset   : #000;
-$outset  : #343434;
+$outset  : adjust-lightness(#343434, 10%);
 
 //border styles
 $frame-stroke : 1px solid $outline;

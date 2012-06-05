@@ -31,7 +31,7 @@
 }
 
 .video-card {
-	@include box-shadow(inset 0 1px 0 0 adjust-lightness($outset, 10%));
+	@include box-shadow(inset 0 1px 0 0 $outset);
 	@include roundies;
 
 	background-color: $video-card-bg-color;
@@ -61,7 +61,7 @@
 }	
 
 .video-thumbnail-missing {
-		margin: 36px auto 0;
+		margin: 24px auto;
 		width: auto; 
 }
 
@@ -326,7 +326,7 @@
 
 .video-activity-comment {
 	border-bottom: 1px solid $inset;
-	border-top: 1px solid adjust-lightness($outset, 10%);
+	border-top: 1px solid $outset;
 	padding: $defaultMargin;
 
 	textarea {
@@ -372,7 +372,7 @@
 
 .user-vcard {
 	border-bottom: 1px solid $inset;
-	border-top: 1px solid adjust-lightness($outset, 10%);
+	border-top: 1px solid $outset;
 	height: 100%;
 	padding: 0 9px 9px;
 
@@ -463,9 +463,9 @@
 		@include buttonfont;
 		background: transparent;
 		border-bottom: none;
-		border-left: 1px solid adjust-lightness($outset, 10%);
+		border-left: 1px solid $outset;
 		border-right: 1px solid $inset;
-		border-top: 1px solid adjust-lightness($outset, 10%);
+		border-top: 1px solid $outset;
 		display: block;
 		height: 42px;
 		width: 100%;
@@ -474,22 +474,21 @@
 
 .frame-activity,
 .video-footer {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid adjust-lightness($outset, 10%);
-	font-size: $font-size - 2;
 	font-weight: 500;
 //	height: 27px;
-	padding: 4px;
 }
 
 .frame-activity-favorites {
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid $outset;
+	font-size: $font-size - 2;
 	margin: 0;
-	padding: 0;
+	padding: 4px;
 	width: auto;
 	
 	li {
 		display: block;
-		float: left;
+		float: border-left;
 		height: 24px;
 		list-style-type: none;
 		overflow: hidden;

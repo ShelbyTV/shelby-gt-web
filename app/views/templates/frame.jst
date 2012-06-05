@@ -59,24 +59,24 @@
           <button class="js-message-submit video-activity-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
         </form>
       </section><!-- eo section.video-shares -->
-    <div class="js-frame-flexible-height frame-activity">
-    
       <!-- hearts -->
-      <% if(frame.get('upvote_users').length > 0){ %>
-        <ul class="frame-activity-favorites clearfix">
-          <% _.each(frame.get('upvote_users'), function(u){ %>
-            <li>
-              <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
-                <% users_image =  u.user_image_original || u.user_image %>
-                <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
-              </a>
-            </li>
-          <% }) %>
-        </ul>
-      <% } %>
+        <div class="js-frame-flexible-height frame-activity">
+          <% if(frame.get('upvote_users').length > 0){ %>
+        
+            <ul class="frame-activity-favorites clearfix">
+              <% _.each(frame.get('upvote_users'), function(u){ %>
+                <li>
+                  <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
+                    <% users_image =  u.user_image_original || u.user_image %>
+                    <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+            
+          <% } %>
+        </div>
       <!-- /hearts -->
-      
-    </div>
     <div class="video-footer" style="display:none;">
       <% var remainingMessageCount = messages.length %>
       <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %></a>			

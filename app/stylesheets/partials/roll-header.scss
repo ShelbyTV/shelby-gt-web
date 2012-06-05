@@ -1,8 +1,7 @@
 @import "base";
 
 .roll-header {
-  background: $filter-bg-color;
-  border-top: 1px solid #333;
+  border-top: 1px solid $outset;
 	margin: 0;
 	padding: 12px 0 0 12px;
 	position: relative;
@@ -53,11 +52,4 @@
 		margin: -4px 0 0 -4px;
 		padding: 2px;
 	}
-}
-
-@mixin backandforth {
-	float: left;
-	height: 20px;
-	padding: $defaultMargin/2 $defaultMargin;
-	width: 50%;
 }
