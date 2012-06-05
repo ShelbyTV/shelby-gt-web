@@ -19,6 +19,38 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
     if (this.options.replacement) {
       this._replacement = this.$el.html();
     }
+    if (this.model) {
+      if (this.model.get('show')) {
+        this.show();
+      }
+      this.model.bind('change:show', this._onShowChange, this);
+    }
+  },
+
+  _cleanup : function() {
+    if (this.model) {
+      this.model.unbind('change:show', this._onShowChange, this);
+    }
+  },
+
+  setModel : function(spinnerStateModel) {
+    if (this.model) {
+      this.model.unbind('change:show', this._onShowChange, this);
+      this.model = null;
+    }
+    if (spinnerStateModel) {
+      this.model = spinnerStateModel;
+      this.model.set('show', this._isSpinning);
+      this.model.bind('change:show', this._onShowChange, this);
+    }
+  },
+
+  _onShowChange : function (spinnerStateModel, show) {
+    if (show) {
+      this.show();
+    } else {
+      this.hide();
+    }
   },
 
   show : function(){
@@ -33,6 +65,9 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
       this.$el.append(spinnerHtml);
     }
     this._isSpinning = true;
+    if (this.model) {
+      this.model.set({show:true},{silent:true});
+    }
   },
 
   hide : function(){
@@ -44,6 +79,9 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
       }
     }
     this._isSpinning = false;
+    if (this.model) {
+      this.model.set({show:false},{silent:true});
+    }
   }
 
 });

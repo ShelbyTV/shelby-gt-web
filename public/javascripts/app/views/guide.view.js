@@ -67,7 +67,8 @@
                 sinceId : this.model.get('sinceId')
               },
               limit : shelby.config.pageLoadSizes.dashboard
-            }
+            },
+            spinner : true
           };
          break;
         case DisplayState.rollList :
@@ -83,7 +84,8 @@
             model : sourceModel,
             onAppendChild : this._populateRollList,
             options : {doStaticRender:true},
-            shouldFetch : shouldFetch
+            shouldFetch : shouldFetch,
+            spinner : shouldFetch
           };
           break;
         case DisplayState.standardRoll :
@@ -97,7 +99,8 @@
                 sinceId : this.model.get('sinceId')
               },
               limit : shelby.config.pageLoadSizes.roll
-            }
+            },
+            spinner : true
           };
           break;
         case DisplayState.userPreferences :
@@ -134,7 +137,19 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
+      // cancel any other previous ajax requests' ability to hide the spinner and hide it ourselves
+      shelby.views.guideSpinner.setModel(null);
+      shelby.views.guideSpinner.hide();
+
+      // display the new child list view constructed appropriately for the display state
       this.appendChild(this._listView);
+
+      // show the spinner if applicable
+      if (displayParams.spinner) {
+        shelby.views.guideSpinner.show();
+      }
+
+      // perform any additional handling, if specified
       if (displayParams.onAppendChild) {
         displayParams.onAppendChild.call(this, guideModel, displayParams.shouldFetch);
       }
@@ -154,7 +169,8 @@
           fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
         }
 
-        shelby.views.guideSpinner.show();
+        var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
+        shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
         $.when(rollCollection.fetch({
             success : function(){
               if (contentIsBrowseRolls) {
@@ -164,7 +180,7 @@
               shelby.models.autoScrollState.set('tryAutoScroll', true);
             },
             url : fetchUrl
-        })).done(this._hideGuideSpinner);
+        })).done(function(){oneTimeSpinnerState.set('show', false);});
       } else {
         shelby.models.autoScrollState.set('tryAutoScroll', true);
       }
