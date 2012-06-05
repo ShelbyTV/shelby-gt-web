@@ -19,6 +19,29 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
 
+  sync : function(method, model, options) {
+    if (!options.url) {
+      var url = shelby.config.apiRoot;
+      switch (method) {
+        case 'create' :
+          url += '/frame?include_children=true';
+          break;
+        case 'update' :
+        case 'delete' :
+          url += '/frame/' + this.id;
+          break;
+        case 'read' :
+          url += '/frame/' + this.id /*+ '/frames'*/;
+          break;
+      }
+      options.url = url;
+    }
+    if (method==='create' && options.url.indexOf('/watched')===-1){
+      options.url+='&include_children=true';
+    }
+    return libs.shelbyGT.ShelbyBaseModel.prototype.sync.call(this, method, model, options);
+  },
+
   url : function() {
     return shelby.config.apiRoot + '/frame/' + this.id;
   },
@@ -32,7 +55,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   reRoll : function(roll, onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id;
-    console.log(frameToReroll, url);
     frameToReroll.save(null, {url:url,success:onSuccess});
   },
 
