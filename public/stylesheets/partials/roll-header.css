@@ -8,15 +8,14 @@
  */
 /* line 3, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-header {
-  background: #585858;
-  border-top: 1px solid #333;
+  border-top: 1px solid #4e4e4e;
   margin: 0;
   padding: 12px 0 0 12px;
   position: relative;
   width: 100%;
 }
 
-/* line 12, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 11, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar {
   float: left;
   height: 35px;
@@ -27,7 +26,7 @@
   vertical-align: middle;
   width: 35px;
 }
-/* line 22, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 21, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll-avatar img, .current-roll-avatar span {
   height: 100%;
   left: 0;
@@ -35,19 +34,24 @@
   top: 0;
 }
 
-/* line 30, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 29, ../../../app/stylesheets/partials/roll-header.scss */
 .title {
   margin-left: 35px;
   padding-left: 12px;
 }
 
-/* line 35, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 34, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll-owner-nickname {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   color: #999;
   font-size: 11px;
 }
 
-/* line 40, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 41, ../../../app/stylesheets/partials/roll-header.scss */
 .current-roll {
   white-space: nowrap;
   overflow: hidden;
@@ -59,11 +63,11 @@
   width: 100%;
 }
 
-/* line 48, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 49, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 50, ../../../app/stylesheets/partials/roll-header.scss */
+/* line 51, ../../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;

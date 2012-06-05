@@ -51,7 +51,14 @@
 }
 
 .rolling-main-back  {
-	@extend .rolls-back;
+	@include x-button-primer($shelby-gray,large);
+	
+	left: 0; 
+	padding: 6px 9px;
+	position: absolute; 
+	margin: 6px; 
+	top: 0; 
+	width: auto; 
 }
 
 .rolling-main-cancel  {

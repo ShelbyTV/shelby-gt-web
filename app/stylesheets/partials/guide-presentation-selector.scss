@@ -1,18 +1,23 @@
 @import "base";
 
+.guide-presentation-selector {
+//  background-color: $guide-presentation-bg-color;
+}
+
 .guide-presentation-stream {
   @extend .notype;
-  @include x-button-primer;
-
-  background: url("../images/assets/stream.svg") no-repeat -7px -1px $primer-color;
-  float:left;
+  @include x-tab-primer($guide-presentation-tab-bg-color);
+  @include background(
+    url("../images/assets/stream.svg") no-repeat center -1px,
+    linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-color, 10%), $guide-presentation-tab-bg-color)
+  );
+  @include roundies;
   margin-left: $default-margin;
-  margin-top: 1px;
-  padding: 13px 19px;
+  padding: 13px 33px;
 }
 
 .guide-presentation-filter {
-  margin: 7px 4px 7px 60px;
+  margin: 7px 4px 7px 85px;
   padding: 0;
 }
 
@@ -20,7 +25,7 @@
   list-style-type: none;
  
  .guide-presentation-button {
-    @include x-tab-primer;
+    @include x-tab-primer($guide-presentation-tab-bg-color);
     padding: 6px;
     width: 33%;
  }
@@ -43,7 +48,17 @@
 
 .guide-presentation-button {
    &.guide-presentation-content-selected{
-    background-color: #777;
-    @include box-shadow(inset 0 1px 0 0 adjust-lightness(#777,25%));
+    @include background(    
+      linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
+    );
+    @include box-shadow(inset 0 1px 1px 0 adjust-lightness($guide-presentation-tab-bg-selected,2%));
+    
+    &.guide-presentation-stream {
+      @include background(
+        url("../images/assets/stream.svg") no-repeat center -1px,
+        linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
+      );
+      @include box-shadow(inset 0 1px 1px 0 adjust-lightness($guide-presentation-tab-bg-selected,2%));
+    }
   }
 }

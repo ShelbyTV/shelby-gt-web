@@ -1,26 +1,27 @@
-libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
+libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   className : /*libs.shelbyGT.ListView.prototype.className +*/ 'rolls-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
     collectionAttribute : 'rolls',
-    listItemView : 'RollItemView'
+    listItemView : 'RollItemView',
+    doSmartRefresh : true
   }),
 
   initialize : function() {
-      shelby.models.guide.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
+      shelby.models.autoScrollState.bind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
       this._filterContent(shelby.models.guide.get('rollListContent'));
       libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
-      shelby.models.guide.unbind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
+      shelby.models.autoScrollState.unbind('change:tryAutoScroll', this._scrollToActiveRollItemView, this);
       libs.shelbyGT.ListView.prototype._cleanup.call(this);
   },
 
-  _scrollToActiveRollItemView : function(guideModel, tryAutoScroll) {
+  _scrollToActiveRollItemView : function(autoScrollStateModel, tryAutoScroll) {
     if (tryAutoScroll) {
-      var activeFrameModel = guideModel.get('activeFrameModel');
+      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       if (activeFrameModel) {
         var roll = activeFrameModel.get('roll');
         if (roll) {
@@ -34,7 +35,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
           }
         }
       }
-      guideModel.set('tryAutoScroll', false);
+      shelby.models.autoScrollState.set('tryAutoScroll', false);
     }
   },
 

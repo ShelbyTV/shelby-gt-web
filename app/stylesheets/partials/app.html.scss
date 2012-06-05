@@ -62,7 +62,7 @@ a{
 .main{
 	@extend .content;
 
-	background:#494949;
+	background: $guide-bg-color;
 	font-size:1.2em;
 	height:100%;
 	line-height:1.4;
@@ -100,6 +100,9 @@ a{
 }
 
 .menu{
+	@include box-shadow(0 1px 4px 0px #101010);
+	
+	background-color: $guide-presentation-bg-color;
 	border-bottom:1px solid #222;
 	position:relative;
 	overflow:hidden;

@@ -136,7 +136,54 @@
 	}
 }
 
-.logged-out-twitter{
+$network-image : $icon-rolls-share-twitter-on !default;
+
+@mixin x-logged-out-networks-buttons($primer-color, $network-image){
+	background-color: $primer-color;
+	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+	@include border-radius($button-radius);
+	@include box-highlight($primer-color);
+	@include buttonfont;
+	@include text-shadow(0px -1px 0px #333);
+	border: 1px solid adjust-lightness($primer-color,-20%);
+	color: $button-color;
+	font-size: 11px;
+	line-height: 2.5;
+	position: relative;
+
+	&:before{
+		border-right: 1px solid adjust-lightness($primer-color, 20%);
+		bottom: 1px;
+		content: "\0020";
+		float: left;
+		left: 0;
+		position: absolute;
+		top: 1px;
+		width: 30px;
+	}
+}
+
+
+.logged-out-twitter {
+	@include x-logged-out-networks-buttons($twitter-blue);
+	&:before{
+		background-image: url($icon-rolls-share-twitter-on);
+		background-position-x: 3px;
+		background-position-y: 4px;
+	}
+}
+
+.logged-out-facebook {
+	@include x-logged-out-networks-buttons($facebook-blue);
+	&:before{
+		background-image: url($icon-rolls-share-facebook-on);
+		background-position-x: 1px;
+		background-position-y: -1px;
+	}
+}
+
+
+.xlogged-out-twitter{
 	@include logged-out-network-buttons;
 	background:$twitterBlue;
 	@include background(
@@ -144,11 +191,11 @@
 	);
 	
 	&:before{
-		background:url('../images/assets/rolls_share_twitter_on.svg') no-repeat center -3px transparent;
+		background:url($icon-rolls-share-twitter-on) no-repeat 2px 4px transparent;
 	}
 }
 
-.logged-out-facebook{
+.xlogged-out-facebook{
 	@include logged-out-network-buttons;
 	background:$facebookBlue;
 	@include background(

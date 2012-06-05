@@ -77,7 +77,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupRollView(rollId, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
-      onRollFetch: options.onRollFetch,
+      onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
   },
   
@@ -89,7 +89,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // Adjust *what* is displayed
     var options = {
       updateRollTitle:false,
-      startPlaying : frameId ? false : true 
+      startPlaying : frameId ? false : true
     };
     if (frameId){
       options.defaultOnRollFetch = function(){
@@ -97,15 +97,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       };
     }
     this.displayRoll(
-      rollId, 
-      null, 
-      null, 
+      rollId,
+      null,
+      null,
       options,
-      { 
+      {
         hideGuideHeader:true,
         hideGuidePresentationSelector:true,
         hideAnonUserView:true,
-        hideRollHeader:true,
+        hideRollHeader:true
       });
 
     if (!frameId) return;
@@ -170,7 +170,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // This is to alter ui of things like upvote, roll and comment elements
     this._testSwitchingfromQueryParams(params);
 
-    this._setupTopLevelViews({showSpinner: true});
+    this._setupTopLevelViews();
     this._fetchDashboard(options);
   },
 
@@ -215,7 +215,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         'sinceId' : options.data.since_id ? options.data.since_id : null,
         'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
-      this._hideSpinnerAfter( shelby.models.dashboard.fetch(fetchOptions) );
+      var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
+      shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){oneTimeSpinnerState.set('show', false);});
     } else {
       shelby.models.dashboard.fetch(fetchOptions);
     }
@@ -241,42 +243,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
-    shelby.models.guide.bind('change', this.finishDisplayRollList, this);
     shelby.models.guide.change();
-  },
-
-  finishDisplayRollList : function(guideModel) {
-    var self = this;
-    var doFetchRolls = libs.shelbyGT.GuidePresentation.shouldFetchRolls(guideModel);
-
-    if (doFetchRolls) {
-      var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
-      var rollCollection, fetchUrl;
-      if (contentIsBrowseRolls) {
-        rollCollection = shelby.models.browseRolls;
-        fetchUrl = shelby.config.apiRoot + '/roll/browse';
-      } else {
-        rollCollection = shelby.models.rollFollowings;
-        fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
-      }
-
-      shelby.views.guideSpinner.show();
-      this._hideSpinnerAfter((function(){
-        return rollCollection.fetch({
-          success : function(){
-            if (contentIsBrowseRolls) {
-              // mark the browse rolls as fetched so we know we don't need to do it again
-              shelby.models.fetchState.set('browseRollsFetched', true);
-            }
-            self._scrollToActiveGuideListItemView();
-          },
-          url : fetchUrl
-        });
-      })());
-    } else {
-      this._scrollToActiveGuideListItemView();
-    }
-    shelby.models.guide.unbind('change', this.finishDisplayRollList, this);
   },
 
   displaySaves : function(){
@@ -381,7 +348,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _scrollToActiveGuideListItemView : function(){
-    shelby.models.guide.set('tryAutoScroll', true);
+    shelby.models.autoScrollState.set('tryAutoScroll', true);
   },
 
   _setupTopLevelViews : function(opts){
@@ -419,7 +386,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
         new libs.shelbyGT.KeyboardControlsView();
-    if( opts.showSpinner ){ shelby.views.guideSpinner.show(); }
   },
 
   _setupAnonUserViews : function(){
@@ -428,11 +394,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
   
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
-    // default top-level views options
-    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
-      showSpinner: true
-    }).value();
-
     this._setupTopLevelViews(topLevelViewsOptions);
     
     // default options
@@ -482,7 +443,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
-    this._hideSpinnerAfter( rollModel.fetch(fetchOptions) );
+    var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
+    shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
+    $.when(rollModel.fetch(fetchOptions)).done(function(){oneTimeSpinnerState.set('show', false);});
   },
   
   _setupRollViewWithCallback : function(rollId, frameId, options){
@@ -507,14 +470,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (params && params.uitest == 'true') {
         shelby.commentUpvoteUITest = true;
     }
-  },
-
-  _hideSpinnerAfter: function(xhr){
-    // Backbone's .fetch() calls & returns jQuery's .ajax which returns a jqXHR object: http://api.jquery.com/jQuery.ajax/#jqXHR
-    // upon which we append another callback to hide the spinner shown earlier.
-    xhr.done(function(){
-      shelby.views.guideSpinner.hide();
-    });
   }
 
 });

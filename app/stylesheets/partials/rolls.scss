@@ -1,7 +1,6 @@
 @import "base";
 
 .roll-action-menu {
-	background-color: $rolls-bg-color;
 	display: none;
 }
 
@@ -13,20 +12,19 @@
 		display: block;
 		float: left;
 		list-style-type: none;
-		margin: 0;
-		
-		&.left {
-  	  margin-left: 12px;
-  	  width: 47px;
-  	}
-  	&.middle {
-  	  margin-left: 8px;
-  	  width: 161px;
-  	}
-  	&.right {
-  	  margin-left: 8px;
-  	  width: 85px;
-  	}
+		margin: 0;		
+	}
+	.left {
+	  margin-left: 12px;
+	  width: 47px;
+	}
+	.middle {
+	  margin-left: 8px;
+	  width: 161px;
+	}
+	.right {
+	  margin-left: 8px;
+	  width: 85px;
 	}
 }
 
