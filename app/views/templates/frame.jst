@@ -36,7 +36,7 @@
     <% if(frame.get('video').get('thumbnail_url')) { %>
       <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
     <% } else { %>
-      <img class="js-frame-activate video-thumbnail-missing" src="<%= '/images/assets/missing_thumb.svg' %>" alt="posted by <%= thumbnailText %>" title="<%= thumbnailText %>">
+      <img class="js-frame-activate video-thumbnail-missing" src="/images/assets/missing_thumb.svg" alt="posted by <%= thumbnailText %>" title="Thumbnail for video <%= thumbnailText %> is missing">
     <% } %>
   </div>
  

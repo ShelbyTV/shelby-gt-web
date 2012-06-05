@@ -69,7 +69,7 @@
   width: 50%;
 }
 
-/* line 60, ../../../app/stylesheets/partials/gate.scss */
+/* line 59, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -78,7 +78,7 @@
   width: 33%;
 }
 
-/* line 69, ../../../app/stylesheets/partials/gate.scss */
+/* line 68, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -87,20 +87,20 @@
   width: 205px;
 }
 
-/* line 77, ../../../app/stylesheets/partials/gate.scss */
+/* line 76, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: #549738;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
-  -moz-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -webkit-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -o-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
+  background: #428e3a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
+  background: -webkit-linear-gradient(top, #53b249, #428e3a);
+  background: -moz-linear-gradient(top, #53b249, #428e3a);
+  background: -o-linear-gradient(top, #53b249, #428e3a);
+  background: -ms-linear-gradient(top, #53b249, #428e3a);
+  background: linear-gradient(top, #53b249, #428e3a);
+  -moz-box-shadow: 0 0 0 1px #428e3a;
+  -webkit-box-shadow: 0 0 0 1px #428e3a;
+  -o-box-shadow: 0 0 0 1px #428e3a;
+  box-shadow: 0 0 0 1px #428e3a;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -117,7 +117,7 @@
   padding: 7px 19px;
 }
 
-/* line 93, ../../../app/stylesheets/partials/gate.scss */
+/* line 92, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: #585858;
   -moz-border-radius: 5px;
@@ -135,7 +135,7 @@
   padding: 10px;
   position: relative;
 }
-/* line 104, ../../../app/stylesheets/partials/gate.scss */
+/* line 103, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -156,7 +156,7 @@
   width: 10px;
 }
 
-/* line 120, ../../../app/stylesheets/partials/gate.scss */
+/* line 119, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -164,16 +164,16 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 129, ../../../app/stylesheets/partials/gate.scss */
+/* line 128, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 132, ../../../app/stylesheets/partials/gate.scss */
+/* line 131, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 137, ../../../app/stylesheets/partials/gate.scss */
+/* line 136, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -182,27 +182,27 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 146, ../../../app/stylesheets/partials/gate.scss */
+/* line 145, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 149, ../../../app/stylesheets/partials/gate.scss */
+/* line 148, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 154, ../../../app/stylesheets/partials/gate.scss */
+/* line 153, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 158, ../../../app/stylesheets/partials/gate.scss */
+/* line 157, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 163, ../../../app/stylesheets/partials/gate.scss */
+/* line 162, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -210,7 +210,7 @@
   width: 100%;
 }
 
-/* line 170, ../../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -219,7 +219,7 @@
   text-align: right;
 }
 
-/* line 178, ../../../app/stylesheets/partials/gate.scss */
+/* line 177, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -236,20 +236,20 @@
   width: 50%;
 }
 
-/* line 193, ../../../app/stylesheets/partials/gate.scss */
+/* line 192, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: 0 0 0 1px #0091d0;
-  -webkit-box-shadow: 0 0 0 1px #0091d0;
-  -o-box-shadow: 0 0 0 1px #0091d0;
-  box-shadow: 0 0 0 1px #0091d0;
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-box-shadow: 0 0 0 1px #0071a3;
+  -webkit-box-shadow: 0 0 0 1px #0071a3;
+  -o-box-shadow: 0 0 0 1px #0071a3;
+  box-shadow: 0 0 0 1px #0071a3;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -266,19 +266,19 @@
   width: 17%;
 }
 
-/* line 209, ../../../app/stylesheets/partials/gate.scss */
+/* line 208, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 214, ../../../app/stylesheets/partials/gate.scss */
+/* line 213, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 220, ../../../app/stylesheets/partials/gate.scss */
+/* line 219, ../../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
