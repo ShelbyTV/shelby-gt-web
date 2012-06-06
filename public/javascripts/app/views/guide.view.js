@@ -52,7 +52,8 @@
     },
 
     _setGuideTop : function(){
-      $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
+      var allHeadersHeight = _.reduce($(".main > header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-wrapper').css('top', allHeadersHeight);
     },
 
     _mapAppendChildView : function(guideModel){
