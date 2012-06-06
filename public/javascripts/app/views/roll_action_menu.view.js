@@ -151,6 +151,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
+    
+    
   },
 
 	_toggleRollEditFunctions : function(){
@@ -162,7 +164,13 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 				$('.roll-title-text').hide();
 				$('.rolls-list-nav').hide();
 				$('#js-roll-name-change').show();
-				$('#js-roll-delete').show();
+				
+				if(shelby.models.user.get('public_roll_id') != _currentRollModel.id &&
+				    shelby.models.user.get('watch_later_roll_id') != _currentRollModel.id &&
+				    shelby.models.user.get('heart_roll_id') != _currentRollModel.id){
+				  $('#js-roll-delete').show();
+			  }
+				
 				$('#js-roll-name-change input').focus();
 			}
 			else {
