@@ -171,22 +171,29 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
   },
 
-  internalAddOne : function(item){
-    console.log('internal',arguments);
+  internalAddOne : function(item, collection, options){
     var childView = this._constructListItemView(item);
-    //store a reference to all list item child views so they can be removed/left without
-    //removing any other child views
-    this._listItemViews.push(childView);
-    if (this.options.insert && this.options.insert.position) {
-      switch (this.options.insert.position) {
-        case 'append' :
-          this.appendChild(childView);
-          return;
-        case 'before' :
-          if (this.options.insert.selector) {
-            this.insertChildBefore(childView, this.options.insert.selector);
+
+    //special handling if the item was not added to the end of the collection
+    if (options && _(options).has('at') && options.at != collection.length) {
+      console.log('head insert!!');
+      this._listItemViews.splice(options.at, 0, childView);
+      this.insertChildAt(childView, options.at);
+    } else {
+      //store a reference to all list item child views so they can be removed/left without
+      //removing any other child views
+      this._listItemViews.push(childView);
+      if (this.options.insert && this.options.insert.position) {
+        switch (this.options.insert.position) {
+          case 'append' :
+            this.appendChild(childView);
             return;
-          }
+          case 'before' :
+            if (this.options.insert.selector) {
+              this.insertChildBefore(childView, this.options.insert.selector);
+              return;
+            }
+        }
       }
     }
 

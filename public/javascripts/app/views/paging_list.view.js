@@ -95,9 +95,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this.$('.js-load-more').hide();
   },
 
-  _addItem : function(item){
+  _addItem : function(item, options){
     this._numItemsLoaded++;
-    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item);
+    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, options);
   },
 
   _loadMore : function(){

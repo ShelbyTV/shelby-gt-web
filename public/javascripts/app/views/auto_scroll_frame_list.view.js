@@ -19,9 +19,9 @@
       PagingListView.prototype._cleanup.call(this);
     },
 
-    internalAddOne : function(item){
+    internalAddOne : function(item, collection, options){
       try {
-        PagingListView.prototype.internalAddOne.call(this, item);
+        PagingListView.prototype.internalAddOne.call(this, item, collection, options);
       } catch (error) {
         error.message
 				// We are not loading G. Analytics in development env so just log to console.
