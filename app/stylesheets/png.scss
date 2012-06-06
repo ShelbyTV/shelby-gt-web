@@ -1,14 +1,4 @@
-	@import "base",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
-/* Welcome to Compass. Use this file to write IE specific override styles.
- * Import this file using the following HTML or equivalent:
- * <!--[if IE]>
- *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
- * <![endif]--> */
-
+	@import "base";
 
 .lt-ie9 {
 
@@ -35,64 +25,7 @@
     	}
     }
 
-
   //menu
-
-  .video-guide{
-
-  	.stream{
-  		@include background(
-  			url('../images/assets/stream.png') no-repeat center center
-  		);
-		
-  		&.active-tab{
-  			@include background(
-  				url('../images/assets/stream_on.png') no-repeat center 1px #3f3f3f
-  			);
-  			color:#63BD57;
-  			&:hover{
-  				@include background(
-  					url('../images/assets/stream_on.png') no-repeat center center #3f3f3f
-  				);	
-  			}
-  		}
-  	}
-
-  	.rolls{
-  		@include background(
-  			url('../images/assets/rolls.png') no-repeat center center
-  		);
-		
-  		&.active-tab{
-  			@include background(
-  				url('../images/assets/rolls_on.png') no-repeat center 1px
-  			);
-  			color:#0092C1;
-  			&:hover{
-  				@include background(
-  					url('../images/assets/rolls_on.png') no-repeat center center #3f3f3f
-  				);	
-  			}
-  		}
-  	}
-  	.saves{
-  		@include background(
-  			url('../images/assets/saves.png') no-repeat center center
-  		);
-		
-  		&.active-tab{
-  			@include background(
-  				url('../images/assets/saves_on.png') no-repeat center 1px
-  			);
-  			color:$softShelbyPurpleHighlight;
-  			&:hover{
-  				@include background(
-  					url('../images/assets/saves_on.png[') no-repeat center center #3f3f3f
-  				);	
-  			}
-  		}
-  	}
-  }
 
   .dashboard-search {
   	i {
@@ -110,6 +43,10 @@
 
   //rolls
 
+//hax, need to get these variables out of here.
+$flatNetworksUnselected : #666;
+$softNetworksUnselected : #666;
+
   .networks-twitter {
   	background: $flatNetworksUnselected;
   	@include background(
@@ -117,10 +54,10 @@
   		$softNetworksUnselected
   	);
   	&.active{
-  		background: $twitterBlue;
+  		background: $twitter-blue;
   		@include background(
   			url('../images/assets/rolls_share_twitter_on.png') no-repeat center center,
-  			$softTwitterBlue
+  			linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue)
   		);
   	}
   }
@@ -133,32 +70,16 @@
   		);
 	
   	&.active{
-  		background: $facebookBlue;
+  		background: $facebook-blue;
   		@include background(
   			url('../images/assets/rolls_share_facebook_on.png') no-repeat center center,
-  			$softFacebookBlue
+        linear-gradient(top, adjust-lightness($facebook-blue, 10%), $facebook-blue)
   		);
   	}
   }
 
-  //roll-roll-header
-
-  .roll-back{
-  	@include background(
-  		url('../images/assets/navarrow_left.png') no-repeat center center
-  		$flatShelbyDarkGray
-  	);
-  }
-  .roll-next{
-  	@include background(
-  		url('../images/assets/navarrow_right.png') no-repeat center center
-  		$flatShelbyDarkGray
-  	);
-  }
-
   //frame
 
-  .video-score{
   .video-score{
   	&:before{
   		content: url('../images/assets/score.png');
@@ -303,7 +224,7 @@
   	&:before{
   		@include background(
   			url('../images/assets/rolls_tumblr.png') no-repeat center center,
-  			$tumblrBlue
+  			$tumblr-blue
   		);
   	}
   }
@@ -312,7 +233,7 @@
   		&:after{
   			@include background(
   				url('../images/assets/switch.png') no-repeat center center,
-  				$softSwitchGray
+  				$toggle-switch-gray
   			);
   		}
   	}
@@ -367,8 +288,8 @@
 
   .email-gate-logo {
   		@include background(url('../images/email-gate/landing_logo.png') no-repeat center center transparent);
-  	}
   }
+
   .email-gate-networks-twitter {
   	&:before {
   		background:url('../images/assets/rolls_share_twitter_on.png') no-repeat 2px 4px transparent;

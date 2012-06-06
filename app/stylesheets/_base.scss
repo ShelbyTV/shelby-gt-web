@@ -147,7 +147,10 @@ $margin         : 0.5em;
 //border colors
 $outline : #222;
 $inset   : #000;
-$outset  : adjust-lightness(#343434, 10%);
+$outset  : #343434;
+
+$rolls-inset : #333; //possibly obselete after new rolling pages are done
+$rolls-outset : #555; //possibly obselete after new rolling pages are done
 
 //border styles
 $frame-stroke : 1px solid $outline;
@@ -158,19 +161,22 @@ $text          : #dcddde;
 $headerNavLink : #d8d8d8;
 
 //background colors
-$base-bg-color           : #494949;
-$guide-bg-color 				 : #232526;
-$guide-presentation-bg-color :#35383a;
-$guide-presentation-tab-bg-color: #27292a;
-$guide-presentation-tab-bg-selected: #111;
-$header-bg-color         : #2c2c2c;
-$header-outline          : #202020;
-$filter-bg-color			   : #585858;
-$video-card-color        : #404040;
-$video-card-bg-color     : #35383a;
-$video-card-thumbnail    : #494949;
-$rolling-header-bg-color : #555;
-$rolls-bg-color 			   : #585858;
+$base-bg-color                      : #494949;
+$guide-bg-color 				            : #232526;
+$guide-presentation-bg-color        : #35383a;
+$guide-presentation-tab-bg-color    : #27292a;
+$guide-presentation-tab-bg-selected : #111;
+$header-bg-color                    : #2c2c2c;
+$header-outline                     : #202020;
+$filter-bg-color			              : #585858;
+$video-card-color                   : #404040;
+$video-card-bg-color                : #35383a;
+$video-card-thumbnail               : #494949;
+$video-controls-progress-load       : #303030;
+$video-player 											: #0e0e0e;
+$rolling-header-bg-color            : #555;
+$rolls-bg-color 			              : #585858;
+$toggle-switch-gray                 : #fefefe;
 
 $settingsBG : #2b2a2a;
 $rollsBG    : #585858;
@@ -334,102 +340,6 @@ $preferences-network : twitter !default;
 		width: 34px;
 	}
 }
-
-//ABSORBING BELOW INTO REWLY REFACTORED SASS ABOVE
-
-$myBlue: #6666FF;
-$myGreen: #ddFFdd;
-
-$shelbyGreen: #549738;
-$shelbyBlue: #0f8db8;
-$shelbyProgressBlue: #0092c1;
-
-//$outset : #252525;
-//$inset : #4f4d51;
-
-$rolls-inset : #333;
-$rolls-outset : #555;
-
-$save : #2291c2;
-
-//border styles
-$menuStroke : 1px solid black;
-$saveStroke : 2px solid $save;
-
-//soft gradient vals
-$gradientDark : #303030;
-$gradientLight : #333;
-
-$softLinearGradient : linear-gradient(top, $gradientLight, $gradientDark);
-
-$flatShelbyBlue: #007fb6;
-$softShelbyBlue: linear-gradient(top, #00a5cc, $flatShelbyBlue);
-
-$shelbyBlueHighlight: #79cae7;
-$softShelbyBlueHighlight: adjust-lightness($flatShelbyBlue,5%);
-
-$sharingShelbyBlue: #143caf;
-$sharingShelbyBlueButton: linear-gradient(top, #0087c0, $sharingShelbyBlue);
-$sharingShelbyBlueHighlight: adjust-lightness($sharingShelbyBlue,5%);
-
-$flatShelbyGreen: #549738;
-$softShelbyGreen: linear-gradient(top, $flatShelbyGreen, adjust-lightness($flatShelbyGreen,-10%));
-$softShelbyGreenDeboss: linear-gradient(bottom, adjust-lightness($shelbyGreen,-15%), adjust-lightness($shelbyGreen,-25%));
-
-$flatShelbyGreenButton: #59b034;
-$softShelbyGreenButton: linear-gradient(top, #79c758, $flatShelbyGreenButton);
-$softShelbyGreenButtonHighlight: adjust-lightness($flatShelbyGreenButton,5%);
-
-$flatShelbyPurple: #693a7b;
-$softShelbyPurple: linear-gradient(top, #8d539a, $flatShelbyPurple);
-$softShelbyPurpleHighlight: #9863a2;
-
-$flatShelbyYellow: #d5cd39;
-$softShelbyYellow: linear-gradient(top, #dad450, $flatShelbyYellow);
-$softShelbyYellowHighlight: #ddd756;
-
-$flatEducationYellow: #f9f15c;
-$softEducationYellow: linear-gradient(top, adjust-lightness($flatEducationYellow,10%), $flatEducationYellow);
-
-$flatShelbyGray: #575757;
-$softShelbyGray: linear-gradient(top, #7b7b7b, $flatShelbyGray);
-
-$flatShelbyGrayButton: #343434;
-$softShelbyGrayButton: linear-gradient(top, #4a4a4a, $flatShelbyGrayButton);
-
-$flatLightShelbyGrayButton: #464646;
-$lightShelbyGrayButton: linear-gradient(top, #646464, $flatLightShelbyGrayButton);
-$lightShelbyGrayButtonHighlight: adjust-lightness($flatLightShelbyGrayButton,5%);
-
-$flatShelbyGrayDeboss: #303030;
-$softShelbyGrayDeboss: linear-gradient(bottom,#444,$flatShelbyGrayDeboss);
-
-$flatShelbyDarkGray: #303030;
-$softShelbyDarkGray: linear-gradient(top, #333, $flatShelbyDarkGray);
-
-$flatShelbyRed: #9e1632;
-$softShelbyRed: linear-gradient(top, #ba2046, $flatShelbyRed);
-$softShelbyRedHighlight: adjust-lightness($flatShelbyRed,10%);
-$softShelbyRedDeboss: adjust-lightness($flatShelbyRed,-10%);
-
-$flatShelbyVideoPlayer: #0e0e0e;
-$softShelbyVideoPlayer:linear-gradient(top, #141414, $flatShelbyVideoPlayer);
-
-$twitterBlue: #00a2d1;
-$softTwitterBlue: linear-gradient(top, #00b5d7, $twitterBlue);
-
-$facebookBlue: #013e80;
-$softFacebookBlue: linear-gradient(top, #01599e, $facebookBlue);
-
-$tumblrBlue: #2f445b;
-$softTumblrBlue: linear-gradient(top, #426180, $tumblrBlue);
-
-
-$flatSwitchGray: #fefefe;
-$softSwitchGray: linear-gradient(top, #d7d7d7, $flatSwitchGray);
-
-$flatNetworksUnselected: #474747;
-$softNetworksUnselected: linear-gradient(top, #646464, $flatNetworksUnselected);
 
 @import "compass/css3";
 @import "compass/utilities/text/ellipsis";

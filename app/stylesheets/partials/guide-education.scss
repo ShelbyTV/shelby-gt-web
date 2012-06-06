@@ -5,9 +5,9 @@
 }
 
 .guide-education-lining {
-	background: $flatEducationYellow;
-	@include background($softEducationYellow);
-	border: 1px solid adjust-lightness($flatEducationYellow,-5%);
+	background: $education-yellow;
+	@include background( linear-gradient(top, adjust-lightness($education-yellow, 10%), $education-yellow) );
+	border: 1px solid adjust-lightness($education-yellow, -5%);
 	position:relative;
 
 	p {

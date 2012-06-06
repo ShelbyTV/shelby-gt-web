@@ -735,175 +735,6 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 3, ../../app/stylesheets/partials/menu.scss */
-.video-guide {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: -webkit-linear-gradient(top, #333333, #303030);
-  background: -moz-linear-gradient(top, #333333, #303030);
-  background: -o-linear-gradient(top, #333333, #303030);
-  background: -ms-linear-gradient(top, #333333, #303030);
-  background: linear-gradient(top, #333333, #303030);
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-/* line 10, ../../app/stylesheets/partials/menu.scss */
-.video-guide li {
-  border-right: 1px solid #222;
-  display: block;
-  float: left;
-  height: 42px;
-  width: 50%;
-}
-/* line 17, ../../app/stylesheets/partials/menu.scss */
-.video-guide li:nth-of-type(4) {
-  -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
-  -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
-  -o-box-shadow: inset 1px 1px 1px #4d4d4d;
-  box-shadow: inset 1px 1px 1px #4d4d4d;
-  border-right: none;
-  width: 50%;
-}
-/* line 23, ../../app/stylesheets/partials/menu.scss */
-.video-guide button, .video-guide button:visited {
-  -moz-box-shadow: inset 0px 1px 0px #4d4d4d;
-  -webkit-box-shadow: inset 0px 1px 0px #4d4d4d;
-  -o-box-shadow: inset 0px 1px 0px #4d4d4d;
-  box-shadow: inset 0px 1px 0px #4d4d4d;
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  border: none;
-  color: #666;
-  display: block;
-  font-size: 11px;
-  height: inherit;
-  line-height: 5.5;
-  text-align: center;
-  text-decoration: none;
-  text-transform: lowercase;
-  width: 100%;
-}
-/* line 39, ../../app/stylesheets/partials/menu.scss */
-.video-guide button:hover, .video-guide button:visited:hover {
-  -moz-box-shadow: inset 0px 1px 0px #666666;
-  -webkit-box-shadow: inset 0px 1px 0px #666666;
-  -o-box-shadow: inset 0px 1px 0px #666666;
-  box-shadow: inset 0px 1px 0px #666666;
-  background-color: #444;
-}
-/* line 43, ../../app/stylesheets/partials/menu.scss */
-.video-guide button:active, .video-guide button:visited:active {
-  -moz-box-shadow: inset 0px 0px 10px #222222;
-  -webkit-box-shadow: inset 0px 0px 10px #222222;
-  -o-box-shadow: inset 0px 0px 10px #222222;
-  box-shadow: inset 0px 0px 10px #222222;
-}
-/* line 48, ../../app/stylesheets/partials/menu.scss */
-.video-guide input {
-  display: block;
-  margin: 10px 0;
-  width: 100%;
-}
-/* line 54, ../../app/stylesheets/partials/menu.scss */
-.video-guide .active-tab {
-  -moz-box-shadow: inset 0px 1px 7px 0px #202020;
-  -webkit-box-shadow: inset 0px 1px 7px 0px #202020;
-  -o-box-shadow: inset 0px 1px 7px 0px #202020;
-  box-shadow: inset 0px 1px 7px 0px #202020;
-}
-/* line 57, ../../app/stylesheets/partials/menu.scss */
-.video-guide .active-tab:hover {
-  -moz-box-shadow: inset 0px 1px 7px 0px #111111;
-  -webkit-box-shadow: inset 0px 1px 7px 0px #111111;
-  -o-box-shadow: inset 0px 1px 7px 0px #111111;
-  box-shadow: inset 0px 1px 7px 0px #111111;
-}
-/* line 63, ../../app/stylesheets/partials/menu.scss */
-.video-guide .stream {
-  background: url("../images/assets/stream.svg") no-repeat center center;
-}
-/* line 68, ../../app/stylesheets/partials/menu.scss */
-.video-guide .stream.active-tab {
-  background: url("../images/assets/stream_on.svg") no-repeat center 1px #3f3f3f;
-  color: #63BD57;
-}
-/* line 73, ../../app/stylesheets/partials/menu.scss */
-.video-guide .stream.active-tab:hover {
-  background-color: #3f3f3f;
-}
-/* line 79, ../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls {
-  background: url("../images/assets/rolls.svg") no-repeat center center;
-}
-/* line 84, ../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls.active-tab {
-  background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
-  color: #0092C1;
-}
-/* line 89, ../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls.active-tab:hover {
-  background-color: #3f3f3f;
-}
-/* line 94, ../../app/stylesheets/partials/menu.scss */
-.video-guide .saves {
-  background: url("../images/assets/saves.svg") no-repeat center center;
-}
-/* line 99, ../../app/stylesheets/partials/menu.scss */
-.video-guide .saves.active-tab {
-  background: url("../images/assets/saves_on.svg") no-repeat center 1px;
-  color: #9863a2;
-}
-/* line 104, ../../app/stylesheets/partials/menu.scss */
-.video-guide .saves.active-tab:hover {
-  background-color: #3f3f3f;
-}
-
-/* line 112, ../../app/stylesheets/partials/menu.scss */
-.dashboard-search {
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
-  margin: 0px 7px 3px;
-  position: relative;
-}
-/* line 118, ../../app/stylesheets/partials/menu.scss */
-.dashboard-search i {
-  background: url("../images/assets/search.svg") no-repeat center center;
-  height: 12px;
-  margin: 5px;
-  position: absolute;
-  width: 12px;
-}
-/* line 125, ../../app/stylesheets/partials/menu.scss */
-.dashboard-search input[type="text"] {
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
-  border: none;
-  padding: 3px 8px 3px 20px;
-}
-/* line 130, ../../app/stylesheets/partials/menu.scss */
-.dashboard-search input[type="text"]:focus {
-  -moz-box-shadow: 0px 0px 5px 3px #666666;
-  -webkit-box-shadow: 0px 0px 5px 3px #666666;
-  -o-box-shadow: 0px 0px 5px 3px #666666;
-  box-shadow: 0px 0px 5px 3px #666666;
-  outline: none;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 7, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-stream {
   background-color: #27292a;
@@ -925,12 +756,12 @@ a:hover, a:visited, a:active {
   height: 27px;
   margin-top: 1px;
   padding: 10px 10px;
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-linear-gradient(top, #404344, #27292a);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -moz-linear-gradient(top, #404344, #27292a);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -o-linear-gradient(top, #404344, #27292a);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -ms-linear-gradient(top, #404344, #27292a);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, linear-gradient(top, #404344, #27292a);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-linear-gradient(top, #404344, #27292a);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -moz-linear-gradient(top, #404344, #27292a);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -o-linear-gradient(top, #404344, #27292a);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -ms-linear-gradient(top, #404344, #27292a);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, linear-gradient(top, #404344, #27292a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1011,12 +842,12 @@ a:hover, a:visited, a:active {
 }
 /* line 56, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-button.guide-presentation-content-selected.guide-presentation-stream {
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -webkit-linear-gradient(top, #2b2b2b, #111111);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -moz-linear-gradient(top, #2b2b2b, #111111);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -o-linear-gradient(top, #2b2b2b, #111111);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, -ms-linear-gradient(top, #2b2b2b, #111111);
-  background: url("../images/assets/stream.svg") no-repeat center -1px, linear-gradient(top, #2b2b2b, #111111);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-linear-gradient(top, #2b2b2b, #111111);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -moz-linear-gradient(top, #2b2b2b, #111111);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -o-linear-gradient(top, #2b2b2b, #111111);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, -ms-linear-gradient(top, #2b2b2b, #111111);
+  background: url("../images/assets/stream.svg") no-repeat 7px -1px, linear-gradient(top, #2b2b2b, #111111);
   -moz-box-shadow: inset 0 1px 1px 0 #161616;
   -webkit-box-shadow: inset 0 1px 1px 0 #161616;
   -o-box-shadow: inset 0 1px 1px 0 #161616;
@@ -1204,7 +1035,7 @@ a:hover, a:visited, a:active {
  */
 /* line 3, ../../app/stylesheets/partials/roll-header.scss */
 .roll-header {
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #343434;
   margin: 0;
   padding: 12px 0 0 12px;
   position: relative;
@@ -1378,30 +1209,30 @@ body.isolated-roll .guide-education {
 .frame {
   padding: 10px;
 }
-/* line 16, ../../app/stylesheets/partials/frame.scss */
+/* line 15, ../../app/stylesheets/partials/frame.scss */
 .frame:hover {
   background: #292b2d;
 }
 
-/* line 21, ../../app/stylesheets/partials/frame.scss */
+/* line 20, ../../app/stylesheets/partials/frame.scss */
 .active-list-item {
   background-color: #ddd;
 }
-/* line 24, ../../app/stylesheets/partials/frame.scss */
+/* line 23, ../../app/stylesheets/partials/frame.scss */
 .active-list-item:hover {
   background-color: #aaa;
 }
-/* line 28, ../../app/stylesheets/partials/frame.scss */
+/* line 27, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .active-frame {
   background: #6d6d6d;
 }
 
-/* line 33, ../../app/stylesheets/partials/frame.scss */
+/* line 32, ../../app/stylesheets/partials/frame.scss */
 .video-card {
-  -moz-box-shadow: inset 0 1px 0 0 #4e4e4e;
-  -webkit-box-shadow: inset 0 1px 0 0 #4e4e4e;
-  -o-box-shadow: inset 0 1px 0 0 #4e4e4e;
-  box-shadow: inset 0 1px 0 0 #4e4e4e;
+  -moz-box-shadow: inset 0 1px 0 0 #414141;
+  -webkit-box-shadow: inset 0 1px 0 0 #414141;
+  -o-box-shadow: inset 0 1px 0 0 #414141;
+  box-shadow: inset 0 1px 0 0 #414141;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1416,7 +1247,7 @@ body.isolated-roll .guide-education {
   position: relative;
 }
 
-/* line 45, ../../app/stylesheets/partials/frame.scss */
+/* line 44, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background: #494949;
   line-height: 75px;
@@ -1424,7 +1255,7 @@ body.isolated-roll .guide-education {
   text-align: center;
 }
 
-/* line 53, ../../app/stylesheets/partials/frame.scss */
+/* line 52, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   cursor: pointer;
   display: inline-block;
@@ -1435,31 +1266,31 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 63, ../../app/stylesheets/partials/frame.scss */
+/* line 62, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
-  margin: 24px auto;
+  margin: 36px auto 0;
   width: auto;
 }
 
-/* line 68, ../../app/stylesheets/partials/frame.scss */
+/* line 67, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   border-bottom: 1px solid black;
   padding: 0;
 }
-/* line 73, ../../app/stylesheets/partials/frame.scss */
+/* line 72, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 76, ../../app/stylesheets/partials/frame.scss */
+/* line 75, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/frame.scss */
+/* line 78, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
 
-/* line 85, ../../app/stylesheets/partials/frame.scss */
+/* line 84, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar, .frame-creator-avatar-missing {
   -moz-border-radius: 5px 0 0 0;
   -webkit-border-radius: 5px 0 0 0;
@@ -1472,13 +1303,13 @@ body.isolated-roll .guide-education {
   width: 40px;
 }
 
-/* line 93, ../../app/stylesheets/partials/frame.scss */
+/* line 92, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
 
-/* line 110, ../../app/stylesheets/partials/frame.scss */
+/* line 109, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll {
   color: #999;
   font-size: 11px;
@@ -1494,7 +1325,7 @@ body.isolated-roll .guide-education {
   width: 66%;
 }
 
-/* line 122, ../../app/stylesheets/partials/frame.scss */
+/* line 121, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp {
   color: #999;
   font-size: 11px;
@@ -1504,7 +1335,7 @@ body.isolated-roll .guide-education {
   float: right;
 }
 
-/* line 127, ../../app/stylesheets/partials/frame.scss */
+/* line 126, ../../app/stylesheets/partials/frame.scss */
 .frame-title {
   clear: right;
   color: #bfbfbf;
@@ -1519,7 +1350,7 @@ body.isolated-roll .guide-education {
   width: 83%;
 }
 
-/* line 141, ../../app/stylesheets/partials/frame.scss */
+/* line 140, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1531,244 +1362,20 @@ body.isolated-roll .guide-education {
   z-index: 5;
 }
 
-/* line 179, ../../app/stylesheets/partials/frame.scss */
+/* line 147, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 185, ../../app/stylesheets/partials/frame.scss */
-.video-controls {
-  display: none;
-  margin: 5px;
-  padding: 0;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-/* line 193, ../../app/stylesheets/partials/frame.scss */
-.video-controls .roll-frame, .video-controls .save-frame, .video-controls .remove-frame {
-  background-color: #59b034;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #79c758), color-stop(100%, #59b034));
-  background: -webkit-linear-gradient(top, #79c758, #59b034);
-  background: -moz-linear-gradient(top, #79c758, #59b034);
-  background: -o-linear-gradient(top, #79c758, #59b034);
-  background: -ms-linear-gradient(top, #79c758, #59b034);
-  background: linear-gradient(top, #79c758, #59b034);
-  -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #69f034;
-  -o-box-shadow: inset 0px 1px 1px 0px #69f034;
-  box-shadow: inset 0px 1px 1px 0px #69f034;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #222222;
-  margin-bottom: 5px;
-  padding: 0;
-}
-/* line 203, ../../app/stylesheets/partials/frame.scss */
-.video-controls .roll-frame button, .video-controls .save-frame button, .video-controls .remove-frame button {
-  background: url("../images/assets/action_roll.svg") no-repeat 8px 4px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  height: 32px;
-  margin: 0;
-  outline: 0;
-  text-decoration: underline;
-  width: 32px;
-}
-/* line 215, ../../app/stylesheets/partials/frame.scss */
-.video-controls .roll-frame:hover, .video-controls .save-frame:hover, .video-controls .remove-frame:hover {
-  background: #63c43a;
-  -moz-box-shadow: inset 0px 1px 1px 0px #69f034;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #69f034;
-  -o-box-shadow: inset 0px 1px 1px 0px #69f034;
-  box-shadow: inset 0px 1px 1px 0px #69f034;
-}
-/* line 220, ../../app/stylesheets/partials/frame.scss */
-.video-controls .share-frame {
-  background-color: #143caf;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0087c0), color-stop(100%, #143caf));
-  background: -webkit-linear-gradient(top, #0087c0, #143caf);
-  background: -moz-linear-gradient(top, #0087c0, #143caf);
-  background: -o-linear-gradient(top, #0087c0, #143caf);
-  background: -ms-linear-gradient(top, #0087c0, #143caf);
-  background: linear-gradient(top, #0087c0, #143caf);
-  -moz-box-shadow: inset 0px 1px 1px 0px #00c6de;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #00c6de;
-  -o-box-shadow: inset 0px 1px 1px 0px #00c6de;
-  box-shadow: inset 0px 1px 1px 0px #00c6de;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #222222;
-  margin-bottom: 5px;
-  padding: 0;
-}
-/* line 230, ../../app/stylesheets/partials/frame.scss */
-.video-controls .share-frame button {
-  background: url("../images/assets/action_share.svg") no-repeat 2px 9px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  height: 32px;
-  margin: 0;
-  outline: 0;
-  text-decoration: underline;
-  width: 32px;
-}
-/* line 241, ../../app/stylesheets/partials/frame.scss */
-.video-controls .share-frame:hover {
-  background: #1744c6;
-  -moz-box-shadow: inset 0px 1px 1px 0px #077dba;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #077dba;
-  -o-box-shadow: inset 0px 1px 1px 0px #077dba;
-  box-shadow: inset 0px 1px 1px 0px #077dba;
-}
-/* line 248, ../../app/stylesheets/partials/frame.scss */
-.video-controls .upvote-frame {
-  background-color: #464646;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #646464), color-stop(100%, #464646));
-  background: -webkit-linear-gradient(top, #646464, #464646);
-  background: -moz-linear-gradient(top, #646464, #464646);
-  background: -o-linear-gradient(top, #646464, #464646);
-  background: -ms-linear-gradient(top, #646464, #464646);
-  background: linear-gradient(top, #646464, #464646);
-  -moz-box-shadow: inset 0px 1px 1px 0px #888888;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #888888;
-  -o-box-shadow: inset 0px 1px 1px 0px #888888;
-  box-shadow: inset 0px 1px 1px 0px #888888;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #222222;
-  margin-bottom: 5px;
-  padding: 0;
-}
-/* line 258, ../../app/stylesheets/partials/frame.scss */
-.video-controls .upvote-frame button {
-  background: url("../images/assets/action_heart_white.svg") no-repeat 9px 4px;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  height: 32px;
-  margin: 0;
-  outline: 0;
-  padding-top: 16px;
-  width: 32px;
-}
-/* line 271, ../../app/stylesheets/partials/frame.scss */
-.video-controls .upvote-frame:hover {
-  background: #535353;
-  -moz-box-shadow: inset 0px 1px 1px 0px #888888;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #888888;
-  -o-box-shadow: inset 0px 1px 1px 0px #888888;
-  box-shadow: inset 0px 1px 1px 0px #888888;
-}
-/* line 276, ../../app/stylesheets/partials/frame.scss */
-.video-controls .upvote-frame.upvoted {
-  background-color: #9e1632;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
-  background: -webkit-linear-gradient(top, #ba2046, #9e1632);
-  background: -moz-linear-gradient(top, #ba2046, #9e1632);
-  background: -o-linear-gradient(top, #ba2046, #9e1632);
-  background: -ms-linear-gradient(top, #ba2046, #9e1632);
-  background: linear-gradient(top, #ba2046, #9e1632);
-  -moz-box-shadow: inset 0px 1px 1px 0px #ef2f74;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #ef2f74;
-  -o-box-shadow: inset 0px 1px 1px 0px #ef2f74;
-  box-shadow: inset 0px 1px 1px 0px #ef2f74;
-}
-/* line 282, ../../app/stylesheets/partials/frame.scss */
-.video-controls .upvote-frame.upvoted button i {
-  background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
-}
-/* line 288, ../../app/stylesheets/partials/frame.scss */
-.video-controls .save-frame, .video-controls .remove-frame {
-  background-color: #693a7b;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8d539a), color-stop(100%, #693a7b));
-  background: -webkit-linear-gradient(top, #8d539a, #693a7b);
-  background: -moz-linear-gradient(top, #8d539a, #693a7b);
-  background: -o-linear-gradient(top, #8d539a, #693a7b);
-  background: -ms-linear-gradient(top, #8d539a, #693a7b);
-  background: linear-gradient(top, #8d539a, #693a7b);
-  -moz-box-shadow: inset 0px 1px 1px 0px #8d8f90;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #8d8f90;
-  -o-box-shadow: inset 0px 1px 1px 0px #8d8f90;
-  box-shadow: inset 0px 1px 1px 0px #8d8f90;
-}
-/* line 294, ../../app/stylesheets/partials/frame.scss */
-.video-controls .save-frame button, .video-controls .remove-frame button {
-  background: url("../images/assets/saved_action.svg") no-repeat center center;
-}
-/* line 299, ../../app/stylesheets/partials/frame.scss */
-.video-controls .save-frame:hover, .video-controls .remove-frame:hover {
-  background: #9863a2;
-  -moz-box-shadow: inset 0px 1px 1px 0px #9863a2;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #9863a2;
-  -o-box-shadow: inset 0px 1px 1px 0px #9863a2;
-  box-shadow: inset 0px 1px 1px 0px #9863a2;
-}
-/* line 304, ../../app/stylesheets/partials/frame.scss */
-.video-controls .remove-frame {
-  -moz-box-shadow: inset 0px 1px 1px 0px #c0224c;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #c0224c;
-  -o-box-shadow: inset 0px 1px 1px 0px #c0224c;
-  box-shadow: inset 0px 1px 1px 0px #c0224c;
-  background-color: #9e1632;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
-  background: -webkit-linear-gradient(top, #ba2046, #9e1632);
-  background: -moz-linear-gradient(top, #ba2046, #9e1632);
-  background: -o-linear-gradient(top, #ba2046, #9e1632);
-  background: -ms-linear-gradient(top, #ba2046, #9e1632);
-  background: linear-gradient(top, #ba2046, #9e1632);
-}
-/* line 310, ../../app/stylesheets/partials/frame.scss */
-.video-controls .remove-frame button {
-  background: url("../images/assets/saved_remove.svg") no-repeat center center;
-}
-/* line 315, ../../app/stylesheets/partials/frame.scss */
-.video-controls .remove-frame:hover {
-  background: #cb1c40;
-  -moz-box-shadow: inset 0px 1px 1px 0px #cb1c40;
-  -webkit-box-shadow: inset 0px 1px 1px 0px #cb1c40;
-  -o-box-shadow: inset 0px 1px 1px 0px #cb1c40;
-  box-shadow: inset 0px 1px 1px 0px #cb1c40;
-}
-
-/* line 327, ../../app/stylesheets/partials/frame.scss */
+/* line 153, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 158, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -1781,24 +1388,47 @@ body.isolated-roll .guide-education {
   resize: none;
   width: 100%;
 }
-/* line 340, ../../app/stylesheets/partials/frame.scss */
+/* line 166, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 4px 8px;
   float: right;
+  margin-top: 5px;
 }
 
-/* line 350, ../../app/stylesheets/partials/frame.scss */
+/* line 179, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 354, ../../app/stylesheets/partials/frame.scss */
+/* line 183, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 361, ../../app/stylesheets/partials/frame.scss */
+/* line 190, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -1807,36 +1437,36 @@ body.isolated-roll .guide-education {
   text-overflow: ellipsis;
 }
 
-/* line 369, ../../app/stylesheets/partials/frame.scss */
+/* line 198, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 373, ../../app/stylesheets/partials/frame.scss */
+/* line 202, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 379, ../../app/stylesheets/partials/frame.scss */
+/* line 208, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 384, ../../app/stylesheets/partials/frame.scss */
+/* line 213, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 388, ../../app/stylesheets/partials/frame.scss */
+/* line 217, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 394, ../../app/stylesheets/partials/frame.scss */
+/* line 223, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -1844,7 +1474,7 @@ body.isolated-roll .guide-education {
   line-height: 2.8;
 }
 
-/* line 401, ../../app/stylesheets/partials/frame.scss */
+/* line 230, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1852,7 +1482,7 @@ body.isolated-roll .guide-education {
   padding-right: 3px;
 }
 
-/* line 410, ../../app/stylesheets/partials/frame.scss */
+/* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
   float: left;
@@ -1860,93 +1490,93 @@ body.isolated-roll .guide-education {
   margin: 1px 3px;
 }
 
-/* line 420, ../../app/stylesheets/partials/frame.scss */
+/* line 249, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
 }
 
-/* line 427, ../../app/stylesheets/partials/frame.scss */
+/* line 256, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
 }
 
-/* line 432, ../../app/stylesheets/partials/frame.scss */
+/* line 261, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 435, ../../app/stylesheets/partials/frame.scss */
+/* line 264, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
-/* line 440, ../../app/stylesheets/partials/frame.scss */
+/* line 269, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 444, ../../app/stylesheets/partials/frame.scss */
+/* line 273, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 451, ../../app/stylesheets/partials/frame.scss */
+/* line 280, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 457, ../../app/stylesheets/partials/frame.scss */
+/* line 286, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 462, ../../app/stylesheets/partials/frame.scss */
+/* line 291, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
   border-bottom: none;
-  border-left: 1px solid #4e4e4e;
+  border-left: 1px solid #414141;
   border-right: 1px solid black;
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #414141;
   display: block;
   height: 42px;
   width: 100%;
 }
 
-/* line 476, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .frame-activity,
 .video-footer {
   font-weight: 500;
 }
 
-/* line 481, ../../app/stylesheets/partials/frame.scss */
+/* line 310, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #414141;
   font-size: 11px;
   margin: 0;
   padding: 4px;
   width: auto;
 }
-/* line 489, ../../app/stylesheets/partials/frame.scss */
+/* line 318, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
-  float: border-left;
+  float: left;
   height: 24px;
   list-style-type: none;
   overflow: hidden;
   margin-right: 3px;
   width: 24px;
 }
-/* line 499, ../../app/stylesheets/partials/frame.scss */
+/* line 328, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 503, ../../app/stylesheets/partials/frame.scss */
+/* line 332, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 508, ../../app/stylesheets/partials/frame.scss */
+/* line 337, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1956,7 +1586,7 @@ body.isolated-roll .guide-education {
   width: 22px;
 }
 
-/* line 519, ../../app/stylesheets/partials/frame.scss */
+/* line 348, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1964,12 +1594,12 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 528, ../../app/stylesheets/partials/frame.scss */
+/* line 357, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 537, ../../app/stylesheets/partials/frame.scss */
+/* line 364, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1977,25 +1607,25 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 546, ../../app/stylesheets/partials/frame.scss */
+/* line 373, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 553, ../../app/stylesheets/partials/frame.scss */
+/* line 380, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 558, ../../app/stylesheets/partials/frame.scss */
+/* line 385, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 565, ../../app/stylesheets/partials/frame.scss */
+/* line 392, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 570, ../../app/stylesheets/partials/frame.scss */
+/* line 397, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -2155,12 +1785,12 @@ body.isolated-roll .guide-education {
 /* line 23, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools {
   background-color: #0e0e0e;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #141414), color-stop(100%, #0e0e0e));
-  background: -webkit-linear-gradient(top, #141414, #0e0e0e);
-  background: -moz-linear-gradient(top, #141414, #0e0e0e);
-  background: -o-linear-gradient(top, #141414, #0e0e0e);
-  background: -ms-linear-gradient(top, #141414, #0e0e0e);
-  background: linear-gradient(top, #141414, #0e0e0e);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1b1b1b), color-stop(100%, #0e0e0e));
+  background: -webkit-linear-gradient(top, #1b1b1b, #0e0e0e);
+  background: -moz-linear-gradient(top, #1b1b1b, #0e0e0e);
+  background: -o-linear-gradient(top, #1b1b1b, #0e0e0e);
+  background: -ms-linear-gradient(top, #1b1b1b, #0e0e0e);
+  background: linear-gradient(top, #1b1b1b, #0e0e0e);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -2238,30 +1868,30 @@ body.isolated-roll .guide-education {
 
 /* line 79, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
+  background: #303030;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3d3d3d), color-stop(100%, #303030));
+  background: -webkit-linear-gradient(top, #3d3d3d, #303030);
+  background: -moz-linear-gradient(top, #3d3d3d, #303030);
+  background: -o-linear-gradient(top, #3d3d3d, #303030);
+  background: -ms-linear-gradient(top, #3d3d3d, #303030);
+  background: linear-gradient(top, #3d3d3d, #303030);
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  background: #303030;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #303030));
-  background: -webkit-linear-gradient(top, #333333, #303030);
-  background: -moz-linear-gradient(top, #333333, #303030);
-  background: -o-linear-gradient(top, #333333, #303030);
-  background: -ms-linear-gradient(top, #333333, #303030);
-  background: linear-gradient(top, #333333, #303030);
   height: 8px;
   width: 0;
 }
 
-/* line 90, ../../app/stylesheets/partials/video-controls.scss */
+/* line 88, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
-  background: #0092c1;
+  background: #0071a3;
   margin-top: -8px;
 }
 
-/* line 97, ../../app/stylesheets/partials/video-controls.scss */
+/* line 95, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -2283,7 +1913,7 @@ body.isolated-roll .guide-education {
   width: 15px;
 }
 
-/* line 111, ../../app/stylesheets/partials/video-controls.scss */
+/* line 109, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -2293,44 +1923,44 @@ body.isolated-roll .guide-education {
   margin: 0 15px;
 }
 
-/* line 120, ../../app/stylesheets/partials/video-controls.scss */
+/* line 118, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 128, ../../app/stylesheets/partials/video-controls.scss */
+/* line 126, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 135, ../../app/stylesheets/partials/video-controls.scss */
+/* line 133, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 145, ../../app/stylesheets/partials/video-controls.scss */
+/* line 143, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 153, ../../app/stylesheets/partials/video-controls.scss */
+/* line 151, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 160, ../../app/stylesheets/partials/video-controls.scss */
+/* line 158, ../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 166, ../../app/stylesheets/partials/video-controls.scss */
+/* line 164, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 177, ../../app/stylesheets/partials/video-controls.scss */
+/* line 175, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -2352,7 +1982,7 @@ body.isolated-roll .guide-education {
   left: 20px;
   opacity: 1.0;
 }
-/* line 191, ../../app/stylesheets/partials/video-controls.scss */
+/* line 189, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -2375,11 +2005,11 @@ body.isolated-roll .guide-education {
   opacity: 1.0;
   right: 20px;
 }
-/* line 205, ../../app/stylesheets/partials/video-controls.scss */
+/* line 203, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 210, ../../app/stylesheets/partials/video-controls.scss */
+/* line 208, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   -moz-box-shadow: inset 0 1px 0 0 #848484;
   -webkit-box-shadow: inset 0 1px 0 0 #848484;
@@ -2398,7 +2028,7 @@ body.isolated-roll .guide-education {
   z-index: 2;
 }
 
-/* line 224, ../../app/stylesheets/partials/video-controls.scss */
+/* line 222, ../../app/stylesheets/partials/video-controls.scss */
 .user-inactive .video-player-nav-buttons-wrapper .video-player-prev, .user-inactive .video-player-nav-buttons-wrapper .video-player-next {
   opacity: 0.0;
 }
@@ -2478,7 +2108,7 @@ body.isolated-roll .guide-education {
 /* line 20, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   border-bottom: 1px solid black;
-  border-top: 1px solid #4e4e4e;
+  border-top: 1px solid #343434;
   padding: 0;
 }
 /* line 25, ../../app/stylesheets/partials/rolls-list.scss */
@@ -2652,7 +2282,7 @@ body.isolated-roll .guide-education {
 }
 
 /* line 72, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-done, .video-activity-comment .video-activity-comment-submit, .rolling-main-social, .rolls-share {
+.rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
   background: -webkit-linear-gradient(top, #0094d6, #0071a3);
@@ -2686,7 +2316,7 @@ body.isolated-roll .guide-education {
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
-  border-right: 1px solid #006d9d;
+  border-right: 1px solid #005f8a;
   content: "\0020";
   float: left;
   margin: 0px 9px;
@@ -3147,7 +2777,7 @@ body.isolated-roll .guide-education {
   margin: 0 10px 10px 0;
 }
 
-/* line 326, ../../app/stylesheets/_base.scss */
+/* line 332, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   -moz-border-radius: 3px;
@@ -3496,7 +3126,7 @@ body.isolated-roll .guide-education {
   padding-left: 0;
 }
 
-/* line 312, ../../app/stylesheets/_base.scss */
+/* line 318, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -3591,13 +3221,13 @@ body.isolated-roll .guide-education {
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  background: #9e1632;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
-  background: -webkit-linear-gradient(top, #ba2046, #9e1632);
-  background: -moz-linear-gradient(top, #ba2046, #9e1632);
-  background: -o-linear-gradient(top, #ba2046, #9e1632);
-  background: -ms-linear-gradient(top, #ba2046, #9e1632);
-  background: linear-gradient(top, #ba2046, #9e1632);
+  background: #cc1235;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
+  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
+  background: -moz-linear-gradient(top, #ec254b, #cc1235);
+  background: -o-linear-gradient(top, #ec254b, #cc1235);
+  background: -ms-linear-gradient(top, #ec254b, #cc1235);
+  background: linear-gradient(top, #ec254b, #cc1235);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -3614,12 +3244,12 @@ body.isolated-roll .guide-education {
 /* line 208, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
-  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
-  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -moz-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #fefefe));
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -moz-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #ffffff, #fefefe);
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -3639,13 +3269,13 @@ body.isolated-roll .guide-education {
 }
 /* line 226, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
-  background: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
   display: block;
   height: 20px;
   position: relative;
@@ -4074,12 +3704,12 @@ body.isolated-roll .guide-education {
   padding-left: 30px;
   position: relative;
   background: #00a2d1;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b5d7), color-stop(100%, #00a2d1));
-  background: -webkit-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -moz-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -o-linear-gradient(top, #00b5d7, #00a2d1);
-  background: -ms-linear-gradient(top, #00b5d7, #00a2d1);
-  background: linear-gradient(top, #00b5d7, #00a2d1);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #05c7ff), color-stop(100%, #00a2d1));
+  background: -webkit-linear-gradient(top, #05c7ff, #00a2d1);
+  background: -moz-linear-gradient(top, #05c7ff, #00a2d1);
+  background: -o-linear-gradient(top, #05c7ff, #00a2d1);
+  background: -ms-linear-gradient(top, #05c7ff, #00a2d1);
+  background: linear-gradient(top, #05c7ff, #00a2d1);
 }
 /* line 127, ../../app/stylesheets/partials/anon-banner.scss */
 .xlogged-out-twitter:before {
@@ -4092,12 +3722,12 @@ body.isolated-roll .guide-education {
   top: 1px;
   width: 30px;
 }
-/* line 193, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 191, ../../app/stylesheets/partials/anon-banner.scss */
 .xlogged-out-twitter:before {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M26.74%2C10.224c-0.862%2C0.146-2.114-0.005-2.775-0.279c1.378-0.114%2C2.309-0.733%2C2.666-1.576%0A%09c-0.495%2C0.303-2.035%2C0.632-2.882%2C0.318c-0.043-0.198-0.089-0.386-0.138-0.556c-0.646-2.362-2.863-4.267-5.188-4.036%0A%09c0.188-0.075%2C0.377-0.144%2C0.568-0.208c0.254-0.09%2C1.755-0.335%2C1.52-0.86c-0.201-0.464-2.035%2C0.347-2.38%2C0.456%0A%09c0.456-0.17%2C1.209-0.463%2C1.292-0.984c-0.699%2C0.095-1.386%2C0.423-1.914%2C0.9c0.19-0.203%2C0.338-0.453%2C0.367-0.721%0A%09c-1.861%2C1.182-2.95%2C3.563-3.831%2C5.875c-0.689-0.666-1.304-1.19-1.855-1.482c-1.538-0.82-3.384-1.676-6.277-2.745%0A%09c-0.089%2C0.95%2C0.471%2C2.217%2C2.092%2C3.057C7.655%2C7.335%2C7.015%2C7.442%2C6.501%2C7.562c0.21%2C1.091%2C0.895%2C1.987%2C2.741%2C2.42%0A%09c-0.846%2C0.055-1.283%2C0.249-1.68%2C0.66c0.385%2C0.759%2C1.324%2C1.649%2C3.015%2C1.466c-1.879%2C0.806-0.767%2C2.294%2C0.762%2C2.072%0A%09c-2.606%2C2.676-6.717%2C2.479-9.079%2C0.242c6.165%2C8.344%2C19.563%2C4.932%2C21.561-3.104C25.314%2C11.33%2C26.195%2C10.805%2C26.74%2C10.224z%22/%3E%0A%3C/svg%3E") no-repeat 2px 4px transparent;
 }
 
-/* line 198, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 196, ../../app/stylesheets/partials/anon-banner.scss */
 .xlogged-out-facebook {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 5px;
@@ -4115,12 +3745,12 @@ body.isolated-roll .guide-education {
   padding-left: 30px;
   position: relative;
   background: #013e80;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01599e), color-stop(100%, #013e80));
-  background: -webkit-linear-gradient(top, #01599e, #013e80);
-  background: -moz-linear-gradient(top, #01599e, #013e80);
-  background: -o-linear-gradient(top, #01599e, #013e80);
-  background: -ms-linear-gradient(top, #01599e, #013e80);
-  background: linear-gradient(top, #01599e, #013e80);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
+  background: -webkit-linear-gradient(top, #0157b3, #013e80);
+  background: -moz-linear-gradient(top, #0157b3, #013e80);
+  background: -o-linear-gradient(top, #0157b3, #013e80);
+  background: -ms-linear-gradient(top, #0157b3, #013e80);
+  background: linear-gradient(top, #0157b3, #013e80);
 }
 /* line 127, ../../app/stylesheets/partials/anon-banner.scss */
 .xlogged-out-facebook:before {
@@ -4133,7 +3763,7 @@ body.isolated-roll .guide-education {
   top: 1px;
   width: 30px;
 }
-/* line 205, ../../app/stylesheets/partials/anon-banner.scss */
+/* line 201, ../../app/stylesheets/partials/anon-banner.scss */
 .xlogged-out-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center transparent;
 }
@@ -4262,13 +3892,13 @@ body.isolated-roll .guide-education {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 216, ../../app/stylesheets/_base.scss */
+/* line 222, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
 }
 
-/* line 55, ../../app/stylesheets/partials/comment-overlay.scss */
+/* line 53, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
   -moz-box-shadow: inset 0px 0px 1px 0px #333333;
   -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
@@ -4288,7 +3918,7 @@ body.isolated-roll .guide-education {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 216, ../../app/stylesheets/_base.scss */
+/* line 222, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -4414,7 +4044,7 @@ body.isolated-roll .guide-education {
   width: 50%;
 }
 
-/* line 60, ../../app/stylesheets/partials/gate.scss */
+/* line 59, ../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -4423,7 +4053,7 @@ body.isolated-roll .guide-education {
   width: 33%;
 }
 
-/* line 69, ../../app/stylesheets/partials/gate.scss */
+/* line 68, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -4432,20 +4062,20 @@ body.isolated-roll .guide-education {
   width: 205px;
 }
 
-/* line 77, ../../app/stylesheets/partials/gate.scss */
+/* line 76, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: #549738;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #549738), color-stop(100%, #3f722a));
-  background: -webkit-linear-gradient(top, #549738, #3f722a);
-  background: -moz-linear-gradient(top, #549738, #3f722a);
-  background: -o-linear-gradient(top, #549738, #3f722a);
-  background: -ms-linear-gradient(top, #549738, #3f722a);
-  background: linear-gradient(top, #549738, #3f722a);
-  -moz-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -webkit-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  -o-box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
-  box-shadow: 0 0 0 1px linear-gradient(top, #549738, #3f722a);
+  background: #428e3a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
+  background: -webkit-linear-gradient(top, #53b249, #428e3a);
+  background: -moz-linear-gradient(top, #53b249, #428e3a);
+  background: -o-linear-gradient(top, #53b249, #428e3a);
+  background: -ms-linear-gradient(top, #53b249, #428e3a);
+  background: linear-gradient(top, #53b249, #428e3a);
+  -moz-box-shadow: 0 0 0 1px #428e3a;
+  -webkit-box-shadow: 0 0 0 1px #428e3a;
+  -o-box-shadow: 0 0 0 1px #428e3a;
+  box-shadow: 0 0 0 1px #428e3a;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -4462,7 +4092,7 @@ body.isolated-roll .guide-education {
   padding: 7px 19px;
 }
 
-/* line 93, ../../app/stylesheets/partials/gate.scss */
+/* line 92, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: #585858;
   -moz-border-radius: 5px;
@@ -4480,7 +4110,7 @@ body.isolated-roll .guide-education {
   padding: 10px;
   position: relative;
 }
-/* line 104, ../../app/stylesheets/partials/gate.scss */
+/* line 103, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-box-shadow: inset 1px 1px 2px -1px #999999;
   -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
@@ -4501,7 +4131,7 @@ body.isolated-roll .guide-education {
   width: 10px;
 }
 
-/* line 120, ../../app/stylesheets/partials/gate.scss */
+/* line 119, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -4509,16 +4139,16 @@ body.isolated-roll .guide-education {
   text-decoration: none;
   width: 100%;
 }
-/* line 129, ../../app/stylesheets/partials/gate.scss */
+/* line 128, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 132, ../../app/stylesheets/partials/gate.scss */
+/* line 131, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 137, ../../app/stylesheets/partials/gate.scss */
+/* line 136, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -4527,27 +4157,27 @@ body.isolated-roll .guide-education {
   text-decoration: none;
   width: 100%;
 }
-/* line 146, ../../app/stylesheets/partials/gate.scss */
+/* line 145, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 149, ../../app/stylesheets/partials/gate.scss */
+/* line 148, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 154, ../../app/stylesheets/partials/gate.scss */
+/* line 153, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 158, ../../app/stylesheets/partials/gate.scss */
+/* line 157, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 163, ../../app/stylesheets/partials/gate.scss */
+/* line 162, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4555,7 +4185,7 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 170, ../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -4564,7 +4194,7 @@ body.isolated-roll .guide-education {
   text-align: right;
 }
 
-/* line 178, ../../app/stylesheets/partials/gate.scss */
+/* line 177, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -4581,20 +4211,20 @@ body.isolated-roll .guide-education {
   width: 50%;
 }
 
-/* line 193, ../../app/stylesheets/partials/gate.scss */
+/* line 192, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
-  -moz-box-shadow: 0 0 0 1px #0091d0;
-  -webkit-box-shadow: 0 0 0 1px #0091d0;
-  -o-box-shadow: 0 0 0 1px #0091d0;
-  box-shadow: 0 0 0 1px #0091d0;
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-box-shadow: 0 0 0 1px #0071a3;
+  -webkit-box-shadow: 0 0 0 1px #0071a3;
+  -o-box-shadow: 0 0 0 1px #0071a3;
+  box-shadow: 0 0 0 1px #0071a3;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -4611,19 +4241,19 @@ body.isolated-roll .guide-education {
   width: 17%;
 }
 
-/* line 209, ../../app/stylesheets/partials/gate.scss */
+/* line 208, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 214, ../../app/stylesheets/partials/gate.scss */
+/* line 213, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 220, ../../app/stylesheets/partials/gate.scss */
+/* line 219, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
@@ -4636,7 +4266,7 @@ body.isolated-roll .guide-education {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 7, ../../app/stylesheets/partials/genius.scss */
+/* line 3, ../../app/stylesheets/partials/genius.scss */
 .genius {
   background-color: #101010;
   background: url("../images/genius/bg.png") no-repeat center center #101010;
@@ -4646,36 +4276,36 @@ body.isolated-roll .guide-education {
   background-size: cover;
 }
 
-/* line 15, ../../app/stylesheets/partials/genius.scss */
+/* line 11, ../../app/stylesheets/partials/genius.scss */
 .genius-wrapper {
   margin: 0 auto;
   width: 400px;
 }
 
-/* line 20, ../../app/stylesheets/partials/genius.scss */
+/* line 16, ../../app/stylesheets/partials/genius.scss */
 .content-wrapper {
   margin: 15% auto 0;
   width: 1020px;
 }
 
-/* line 25, ../../app/stylesheets/partials/genius.scss */
+/* line 21, ../../app/stylesheets/partials/genius.scss */
 .embed-gate-wrapper {
   float: left;
   width: 500px;
 }
 
-/* line 29, ../../app/stylesheets/partials/genius.scss */
+/* line 25, ../../app/stylesheets/partials/genius.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
 }
 
-/* line 32, ../../app/stylesheets/partials/genius.scss */
+/* line 28, ../../app/stylesheets/partials/genius.scss */
 .genius-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 41, ../../app/stylesheets/partials/genius.scss */
+/* line 37, ../../app/stylesheets/partials/genius.scss */
 .genius-logo {
   background: url("../images/genius/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -4685,7 +4315,7 @@ body.isolated-roll .guide-education {
   width: 50%;
 }
 
-/* line 55, ../../app/stylesheets/partials/genius.scss */
+/* line 51, ../../app/stylesheets/partials/genius.scss */
 .genius-slogan {
   float: left;
   font-size: 11px;
@@ -4693,13 +4323,13 @@ body.isolated-roll .guide-education {
   margin-top: 35px;
 }
 
-/* line 62, ../../app/stylesheets/partials/genius.scss */
+/* line 58, ../../app/stylesheets/partials/genius.scss */
 .genius-search-form {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 67, ../../app/stylesheets/partials/genius.scss */
+/* line 63, ../../app/stylesheets/partials/genius.scss */
 .genius-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4707,7 +4337,7 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 74, ../../app/stylesheets/partials/genius.scss */
+/* line 70, ../../app/stylesheets/partials/genius.scss */
 .genius-label {
   display: block;
   font-size: 14px;
@@ -4716,7 +4346,7 @@ body.isolated-roll .guide-education {
   text-align: right;
 }
 
-/* line 82, ../../app/stylesheets/partials/genius.scss */
+/* line 78, ../../app/stylesheets/partials/genius.scss */
 .genius-search-input {
   -moz-border-radius: 2.5px;
   -webkit-border-radius: 2.5px;
@@ -4732,26 +4362,26 @@ body.isolated-roll .guide-education {
   width: 50%;
 }
 
-/* line 94, ../../app/stylesheets/partials/genius.scss */
+/* line 90, ../../app/stylesheets/partials/genius.scss */
 .genius-search-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: #007fb6;
-  background: url("../images/assets/noise.png"), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: url("../images/assets/noise.png"), -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: url("../images/assets/noise.png"), linear-gradient(top, #00a5cc, #007fb6);
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 0 0 1px #0091d0;
-  -webkit-box-shadow: 0 0 0 1px #0091d0;
-  -o-box-shadow: 0 0 0 1px #0091d0;
-  box-shadow: 0 0 0 1px #0091d0;
+  -moz-box-shadow: 0 0 0 1px #0071a3;
+  -webkit-box-shadow: 0 0 0 1px #0071a3;
+  -o-box-shadow: 0 0 0 1px #0071a3;
+  box-shadow: 0 0 0 1px #0071a3;
   text-shadow: 0px 1px 2px #222222;
   border: none;
   color: #efefef;
@@ -4761,7 +4391,7 @@ body.isolated-roll .guide-education {
   padding: 7px 19px;
   width: 17%;
 }
-/* line 113, ../../app/stylesheets/partials/genius.scss */
+/* line 106, ../../app/stylesheets/partials/genius.scss */
 .genius-search-submit.disabled, .genius-search-submit[disabled] {
   background: #27292a;
   background: url("../images/assets/noise.png"), #27292a;
@@ -4773,7 +4403,7 @@ body.isolated-roll .guide-education {
   color: gray;
 }
 
-/* line 125, ../../app/stylesheets/partials/genius.scss */
+/* line 118, ../../app/stylesheets/partials/genius.scss */
 .genius-search-spinner {
   height: 30px;
   width: 30px;
@@ -4818,7 +4448,7 @@ body.isolated-roll .guide-education {
   color: #333;
 }
 /* line 40, ../../app/stylesheets/partials/ui-test.scss */
-.ui-test .video-controls .save-frame, .ui-test .video-controls .remove-frame {
+.ui-test .video-controls .save-frame {
   display: none;
 }
 /* line 43, ../../app/stylesheets/partials/ui-test.scss */
