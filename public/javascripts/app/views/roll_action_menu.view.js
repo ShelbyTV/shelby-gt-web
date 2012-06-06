@@ -68,7 +68,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _deleteRoll : function(){
-    this.model.destroy({success: function(m,r){
+    this.model.get('currentRollModel').destroy({success: function(m,r){
       $('.js-edit-roll').text('Edit');
       shelby.router.navigate('rolls', {trigger:true});
     }});
