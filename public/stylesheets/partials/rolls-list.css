@@ -16,7 +16,6 @@
 .rolls-list a {
   cursor: pointer;
   display: block;
-  padding: 10px;
 }
 /* line 15, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
@@ -24,17 +23,7 @@
 }
 /* line 20, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
   padding: 0;
-}
-/* line 25, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:first-child {
-  border-top: none;
-}
-/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:last-child {
-  border-bottom: none;
 }
 /* line 33, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {

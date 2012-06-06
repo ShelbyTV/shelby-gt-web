@@ -6,37 +6,50 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 8, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item {
-  display: block;
-  padding: 0;
-  margin: 0;
-}
-/* line 13, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item h2 {
-  display: block;
-  float: left;
-  font-size: 14px;
-  line-height: 2.5;
-  margin-left: 10px;
+/* line 5, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item:last-child .roll-item-lining {
+  border-bottom: none;
 }
 
-/* line 22, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  float: left;
-  height: 36px;
-  overflow: hidden;
-  width: 36px;
+/* line 12, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-lining {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
 }
-/* line 31, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail img {
-  display: block;
-  height: 100%;
+
+/* line 17, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header {
+  padding: 0;
+}
+/* line 20, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a {
+  text-decoration: none;
+}
+/* line 23, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:active, .roll-item-header a:visited {
+  text-decoration: none;
+}
+/* line 26, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:hover {
+  text-decoration: underline;
+}
+
+/* line 40, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-people {
+  margin-top: 12px;
+}
+
+/* line 46, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-avatar {
+  float: left;
+  height: 40px;
+  width: 40px;
+}
+
+/* line 56, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail {
+  background-color: #111;
+  height: 127px;
+  margin: 10px;
+  width: 270px;
 }

@@ -1108,39 +1108,52 @@ a:hover, a:visited, a:active {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 8, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item {
-  display: block;
-  padding: 0;
-  margin: 0;
-}
-/* line 13, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item h2 {
-  display: block;
-  float: left;
-  font-size: 14px;
-  line-height: 2.5;
-  margin-left: 10px;
+/* line 5, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item:last-child .roll-item-lining {
+  border-bottom: none;
 }
 
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  float: left;
-  height: 36px;
-  overflow: hidden;
-  width: 36px;
+/* line 12, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-lining {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail img {
-  display: block;
-  height: 100%;
+
+/* line 17, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header {
+  padding: 0;
+}
+/* line 20, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a {
+  text-decoration: none;
+}
+/* line 23, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:active, .roll-item-header a:visited {
+  text-decoration: none;
+}
+/* line 26, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:hover {
+  text-decoration: underline;
+}
+
+/* line 40, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-people {
+  margin-top: 12px;
+}
+
+/* line 46, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-avatar {
+  float: left;
+  height: 40px;
+  width: 40px;
+}
+
+/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail {
+  background-color: #111;
+  height: 127px;
+  margin: 10px;
+  width: 270px;
 }
 
 /* Welcome to Compass.
@@ -1310,7 +1323,7 @@ body.isolated-roll .guide-education {
 }
 
 /* line 109, ../../app/stylesheets/partials/frame.scss */
-.frame-creator-roll {
+.frame-creator-roll, .roll-item-creator {
   color: #999;
   font-size: 11px;
   font-weight: 300;
@@ -1336,7 +1349,7 @@ body.isolated-roll .guide-education {
 }
 
 /* line 126, ../../app/stylesheets/partials/frame.scss */
-.frame-title {
+.frame-title, .roll-item-title, .roll-item-people {
   clear: right;
   color: #bfbfbf;
   float: left;
@@ -1484,7 +1497,7 @@ body.isolated-roll .guide-education {
 
 /* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1492,12 +1505,12 @@ body.isolated-roll .guide-education {
 
 /* line 249, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 256, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 261, ../../app/stylesheets/partials/frame.scss */
@@ -2099,7 +2112,6 @@ body.isolated-roll .guide-education {
 .rolls-list a {
   cursor: pointer;
   display: block;
-  padding: 10px;
 }
 /* line 15, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
@@ -2107,17 +2119,7 @@ body.isolated-roll .guide-education {
 }
 /* line 20, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
   padding: 0;
-}
-/* line 25, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:first-child {
-  border-top: none;
-}
-/* line 28, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:last-child {
-  border-bottom: none;
 }
 /* line 33, ../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
