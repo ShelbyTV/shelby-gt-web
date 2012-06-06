@@ -23,15 +23,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   initialize : function(){
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    if (this.options.simulateAddTrue) {
-        if (this.options.masterCollection) {
-          this._numItemsLoaded = this.options.masterCollection.length;
-        } else {
-          this._numItemsLoaded = this.model.get(this.options.collectionAttribute).models.length;
-        }
-    } else {
-      this._numItemsLoaded = 0;
-    }
+    this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
@@ -41,6 +33,18 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     $('#js-guide-wrapper').unbind('scroll');
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
+  },
+
+  _attachMasterCollection : function(){
+    libs.shelbyGT.SmartRefreshListView.prototype._attachMasterCollection.call(this);
+    this._numItemsLoaded = this.options.masterCollection.length;
+  },
+
+  _prepareMasterCollection : function() {
+    libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
+    if (this.options.doStaticRender) {
+      this._numItemsLoaded = this.model.get(this.options.collectionAttribute).models.length;
+    }
   },
 
   _initInfiniteScrolling : function(){
