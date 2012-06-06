@@ -10,7 +10,7 @@
     // this fn needs to be called and passed the 'just rolled' frame -- how do we get a ref to that?
     publishFrameAddition : function(frame){
       var self = this;
-      //if (window.location.host.indexOf('localhost')===-1) return;
+      if (window.location.host.indexOf('localhost')!==-1) return;
       jQuery.ajax({
         type : 'POST',
         url : self.apiRoot+'/roll/'+frame.get('roll_id')+'/publish',
