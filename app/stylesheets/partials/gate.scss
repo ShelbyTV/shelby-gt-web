@@ -49,7 +49,6 @@
 	@include background(url('../images/email-gate/landing_logo.svg') no-repeat center center transparent);
 
 	background-size: 100%;
-
 	float: left;
 	height: 100px;
 	margin-right: 18px;
@@ -76,9 +75,9 @@
 
 .email-gate-login-button {
 	@include buttonfont;
-	background: $flatShelbyGreen;
-	@include background($softShelbyGreen);
-	@include box-shadow(0 0 0 1px $softShelbyGreen);
+	background: $shelby-green;
+	@include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
+	@include box-shadow(0 0 0 1px $shelby-green);
 	@include roundies;
 	@include text-shadow(0px 1px 2px #222);
 	border: none;
@@ -192,9 +191,9 @@
 
 .email-gate-signup-submit{
 	@include buttonfont;
-	background: $flatShelbyBlue;
-	@include background($softShelbyBlue);
-	@include box-shadow(0 0 0 1px $softShelbyBlueHighlight);
+	background: $shelby-blue;
+	@include background( linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue) );
+	@include box-shadow(0 0 0 1px $shelby-blue);
 	@include roundies;
 	@include text-shadow(0px 1px 2px #222);
 	border: none;

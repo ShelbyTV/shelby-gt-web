@@ -3,7 +3,6 @@
   shelby.models.user.get('authentications').forEach(function(auth){
     active_networks.push(auth.provider);
   });
-  console.log('AN', active_networks);
   var twitter_active = _.include(shareModel.get('destination'), 'twitter') ? true : false;
   var facebook_active = _.include(shareModel.get('destination'), 'facebook') ? true : false;
 %>

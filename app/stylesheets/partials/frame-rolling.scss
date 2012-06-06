@@ -51,7 +51,14 @@
 }
 
 .rolling-main-back  {
-	@extend .rolls-back;
+	@include x-button-primer($shelby-gray,large);
+	
+	left: 0; 
+	padding: 6px 9px;
+	position: absolute; 
+	margin: 6px; 
+	top: 0; 
+	width: auto; 
 }
 
 .rolling-main-cancel  {
@@ -83,7 +90,7 @@
 	&:before {
 		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
 		background-size: 71%;
-		border-right: 1px solid adjust-lightness($flatShelbyBlue,-5%);
+		border-right: 1px solid adjust-lightness($shelby-blue,-5%);
 		content: "\0020";
 		float: left;
 		margin: 0px 9px;

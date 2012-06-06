@@ -7,7 +7,6 @@ libs.shelbyGT.GuideModel = Backbone.Model.extend({
     'activeFrameModel' : null,
     'activeDashboardEntryModel' : null,
     'activeFrameRollingView' : null,
-    'tryAutoScroll' : false,
     'rollListContent' : null
   }
 

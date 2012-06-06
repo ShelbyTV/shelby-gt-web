@@ -10,24 +10,30 @@
 }
 
 .frame {
-	background-color: $base-bg-color;
 	padding: $defaultMargin;
 
 	&:hover {
-		@include background(#555);
+		@include background(#292b2d);
 	}
 }
 
 .active-list-item {
+	background-color: #ddd;
+
+	&:hover{
+		background-color: #aaa;
+	}
+
 	.active-frame {
 		@include background(#6d6d6d);
 	}
 }
 
 .video-card {
+	@include box-shadow(inset 0 1px 0 0 adjust-lightness($outset, 5%));
 	@include roundies;
 
-	background-color: $video-card-color;
+	background-color: $video-card-bg-color;
 	border: $frame-stroke;
 	margin: 0;
 	overflow: hidden;
@@ -95,14 +101,17 @@
 	font-size: 11px;
 	font-weight: 300;
 	height: 1.9em;
-	padding: 5px 8px 0;
+	padding: 6px 8px 0;
 }
 
 //see .frame-creator-roll, .frame-timestamp
 
 .frame-creator-roll {
 	@include frame-header-smalltype;
+	@include ellipsis();
+
 	float: left;
+	width: 66%;
 }
 
 .frame-creator-origin-twitter{
@@ -135,186 +144,15 @@
 	z-index: 5;
 }
 
-//OBSOLETE? 
-//.frame-main-social {
-//	@include button-primer($flatShelbyBlue);
-//	@include box-shadow(inset -1px 0px 1px 0px adjust-lightness($flatShelbyBlue, 10%));
-//	border: 1px solid adjust-lightness($flatShelbyBlue, -15%);
-	
-//	display: block;
-//	float: right;
-//	margin: -4px -3px;
-//	padding: 0px;
-
-//	&:before {
-//		background: url('../images/assets/sharebutton_icons.svg') no-repeat 0px center;
-//		background-size: 72%;
-//		content: "\0020";
-//		float: left;
-//		margin: 1px 2px 1px 7px;
-//		width: 38px;
-//		height: 17px;
-//	}
-//}
-
-//.video-vote {
-//	float: right;
-//	font-size: 1em;
-//	margin: 0;		
-//	padding-left: 0;
-//	button {
-//	}
-//}
-
 .video-thumbnail {
 	height: 125px;
 	overflow: hidden;
 	position: relative;
 }	
 
-.video-controls {
-	display: none;
-	margin: $defaultMargin/2;
-	padding: 0;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-
-	.roll-frame {
-		background-color: $flatShelbyGreenButton;
-		@include background($softShelbyGreenButton);
-		@include box-shadow(inset 0px 1px 1px 0px #69f034);
-		@include roundies;
-
-		border: $frame-stroke;
-		margin-bottom: 5px;
-		padding: 0;
-	
-		button {
-			@include background(
-				url('../images/assets/action_roll.svg') no-repeat 8px 4px
-			);
-			@include roundies;
-			display: block;
-			height: 32px;
-			margin: 0;
-			outline: 0;
-			text-decoration: underline;
-			width: 32px;
-		}
-		&:hover {
-			@include background($softShelbyGreenButtonHighlight);
-			@include box-shadow(inset 0px 1px 1px 0px #69f034);
-		}
-	}
-	.share-frame {
-		background-color: $sharingShelbyBlue;
-		@include background($sharingShelbyBlueButton);
-		@include box-shadow(inset 0px 1px 1px 0px #00C6DE);
-		@include roundies;
-		
-		border: $frame-stroke;
-		margin-bottom: 5px;
-		padding: 0;
-	
-		button {
-			@include background(url('../images/assets/action_share.svg') no-repeat 2px 9px);
-			@include roundies;
-
-			display: block;
-			height: 32px;
-			margin: 0;
-			outline: 0;
-			text-decoration: underline;
-			width: 32px;
-		}
-		&:hover {
-			@include background($sharingShelbyBlueHighlight);
-			@include box-shadow(inset 0px 1px 1px 0px #077dba);
-		}
-
-	}
-	
-	.upvote-frame {
-		background-color: $flatLightShelbyGrayButton;
-		@include background($lightShelbyGrayButton);
-		@include box-shadow(inset 0px 1px 1px 0px #888);
-		@include roundies;
-
-		border: $frame-stroke;
-		margin-bottom: 5px;
-		padding: 0;
-	
-		button {
-			@include background(url('../images/assets/action_heart_white.svg') no-repeat 9px 4px);
-			@include buttonfont;
-			@include roundies;
-			color: #fff;
-			display: block;
-			font-weight: bold;
-			height: 32px;
-			margin: 0;
-			outline: 0;
-			padding-top: 16px;
-			width: 32px;
-		}
-		&:hover {
-			@include background($lightShelbyGrayButtonHighlight);
-			@include box-shadow(inset 0px 1px 1px 0px #888);
-		}
- }
- .upvote-frame.upvoted {
-	background-color: $flatShelbyRed;
-	@include background($softShelbyRed);
-	@include box-shadow(inset 0px 1px 1px 0px #ef2f74);
-	
-	button {
-		i {
-				background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
-			}
-	 }
- }
-	
-	.save-frame {
-		@extend .roll-frame;
-		background-color: $flatShelbyPurple;
-		@include background($softShelbyPurple);
-		@include box-shadow(inset 0px 1px 1px 0px #8d8f90);
-
-		button {
-			@include background(
-				url('../images/assets/saved_action.svg') no-repeat center center
-			);
-		}
-		&:hover {
-			@include background($softShelbyPurpleHighlight);
-			@include box-shadow(inset 0px 1px 1px 0px $softShelbyPurpleHighlight);			
-		}	
-	}
-	.remove-frame {
-		@extend .save-frame;
-		@include box-shadow(inset 0px 1px 1px 0px #c0224c);
-		background-color: $flatShelbyRed;
-		@include background($softShelbyRed);
-
-		button {
-			@include background(
-				url('../images/assets/saved_remove.svg') no-repeat center center
-			);
-		}	
-		&:hover {
-			@include background($softShelbyRedHighlight);
-			@include box-shadow(inset 0px 1px 1px 0px $softShelbyRedHighlight);
-		}
-	}
-}
-
-
-
-
-
-
 .video-activity-comment {
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid $outset;
 	padding: $defaultMargin;
 
 	textarea {
@@ -326,8 +164,11 @@
 	}
 
 	.video-activity-comment-submit {
-		@extend .rolling-main-done;
+//		@extend .rolling-main-done;
+		@include x-button-primer($shelby-blue,small);
+
 		float: right;
+		margin-top: 5px;
 	}
 }
 
@@ -451,9 +292,9 @@
 		@include buttonfont;
 		background: transparent;
 		border-bottom: none;
-		border-left: 1px solid $outset;
+		border-left: 1px solid adjust-lightness($outset, 5%);
 		border-right: 1px solid $inset;
-		border-top: 1px solid $outset;
+		border-top: 1px solid adjust-lightness($outset, 5%);
 		display: block;
 		height: 42px;
 		width: 100%;
@@ -462,17 +303,16 @@
 
 .frame-activity,
 .video-footer {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
-	font-size: $font-size - 2;
 	font-weight: 500;
 //	height: 27px;
-	padding: 4px;
 }
 
 .frame-activity-favorites {
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid adjust-lightness($outset, 5%);
+	font-size: $font-size - 2;
 	margin: 0;
-	padding: 0;
+	padding: 4px;
 	width: auto;
 	
 	li {
@@ -519,8 +359,6 @@
 		}
 	}
 }
-
-
 
 .frame-controls-comments {
 	i{

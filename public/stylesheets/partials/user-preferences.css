@@ -85,26 +85,26 @@
 }
 /* line 76, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
+  border: 1px solid black;
   color: #efefef;
   padding: 4px 8px;
   margin-left: 6px;
@@ -164,7 +164,7 @@
   padding-left: 0;
 }
 
-/* line 301, ../../../app/stylesheets/_base.scss */
+/* line 318, ../../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -259,13 +259,13 @@
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  background: #9e1632;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ba2046), color-stop(100%, #9e1632));
-  background: -webkit-linear-gradient(top, #ba2046, #9e1632);
-  background: -moz-linear-gradient(top, #ba2046, #9e1632);
-  background: -o-linear-gradient(top, #ba2046, #9e1632);
-  background: -ms-linear-gradient(top, #ba2046, #9e1632);
-  background: linear-gradient(top, #ba2046, #9e1632);
+  background: #cc1235;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
+  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
+  background: -moz-linear-gradient(top, #ec254b, #cc1235);
+  background: -o-linear-gradient(top, #ec254b, #cc1235);
+  background: -ms-linear-gradient(top, #ec254b, #cc1235);
+  background: linear-gradient(top, #ec254b, #cc1235);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -282,12 +282,12 @@
 /* line 208, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
-  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d7d7d7), color-stop(100%, #fefefe));
-  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -moz-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #d7d7d7, #fefefe);
-  background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #d7d7d7, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #fefefe));
+  background: url("../images/assets/switch.svg") no-repeat center center, -webkit-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -moz-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #ffffff, #fefefe);
+  background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #ffffff, #fefefe);
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -307,13 +307,13 @@
 }
 /* line 226, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
-  background: #007fb6;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a5cc), color-stop(100%, #007fb6));
-  background: -webkit-linear-gradient(top, #00a5cc, #007fb6);
-  background: -moz-linear-gradient(top, #00a5cc, #007fb6);
-  background: -o-linear-gradient(top, #00a5cc, #007fb6);
-  background: -ms-linear-gradient(top, #00a5cc, #007fb6);
-  background: linear-gradient(top, #00a5cc, #007fb6);
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
   display: block;
   height: 20px;
   position: relative;

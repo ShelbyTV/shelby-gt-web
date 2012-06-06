@@ -1,7 +1,7 @@
 @import "base";
 
 .header {
-	background-color: $header-bg-color;
+	background-color: $guide-bg-color;
 	border-bottom: 1px solid $header-outline;
 
 	nav {
@@ -15,13 +15,14 @@
 	border: none;
 	display: block;
 	float: left;
+	padding: 0;
 }
 
 .logo-header {
-	background: url('../images/assets/shelbylogo.svg') center 11px no-repeat transparent;
-	background-size: 100%;
-	height: 42px;
-	margin: 0 9px;
+	background: url('../images/assets/shelbylogo.svg') center 9px no-repeat transparent;
+	background-size: 85%;
+	height: 35px;
+	margin: 0 1px;
 	width: 95px;
 }
 
@@ -32,25 +33,25 @@
 	width: 50%;
 
 	button {
-		@include buttonfont;
+		@include inputfont;
 
 		background: transparent;
 		border: none;
-		color: #efefef;
-		line-height: 3.75;
+		color: #adadad;
+		line-height: 2.9;
 		padding-bottom: 0;
 		text-align: left;
 
 		&:hover {
 			color: white;
-			text-decoration: none;
+			text-decoration: underline;
 		}
 	}
 
 	li {
 		display: block;
 		float: right;
-		height: 42px;
+		height: 35px;
 		position: relative;
 		
 		li {
@@ -96,14 +97,14 @@
 
 	&:hover {
 		color: white;
-		background: $shelbyGreen;
+		text-decoration: underline;
 	}
 }
 
 .subnav {
 	@include box-shadow(0px 0px 5px 2px #222);
 
-	background: $settingsBG;
+	background: $guide-bg-color;
 	border-bottom: 1px solid #222;
 	border-left: 1px solid #222;
 	border-right: 1px solid #222;
@@ -121,7 +122,7 @@
 	width: 85px;
 
 	&:hover {
-		background: $shelbyBlue;
+		text-decoration: underline;
 	}
 }
 
@@ -132,7 +133,6 @@
 	button {
 		width: 100%;
 		&:hover {
-			background: $shelbyBlue;
 			text-decoration: none;
 		}
 	}
@@ -145,7 +145,7 @@
 	width: 92px;
 	
 	button:hover {
-		background: $shelbyGreen;
+		text-decoration: underline;
 	}
 }
 
@@ -156,6 +156,16 @@
 }
 
 .you {
+
+	&:after {
+		@include background(url($icon-settings) no-repeat center center transparent);
+		content: "\0020";
+		float: right;
+		height: 19px;
+		margin-top: -4px;
+		width: 20px;
+	}
+
 	span {
 		@include roundies;
 
