@@ -22,8 +22,16 @@
 	}
 
 	.active-list-item{
-//		background-color: #5fa256;
 		position:relative;
+
+		.roll-item-creator {
+			color: $rolls-inset;
+		}
+
+		.roll-item-title,
+		.roll-item-people {
+			color: $rolls-inset;
+		}
 
 		a{
 			color:#000;
@@ -38,7 +46,7 @@
 
 			&:after {
 			  content: "Now Playing";
-			  color: #FFF;
+			  color: $inset;
 			  padding-top: 10px;
 			  padding-right: 10px;
 			  position: absolute;
