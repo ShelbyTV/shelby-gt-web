@@ -197,7 +197,6 @@
   	@include transition-delay('0s, 0s');
   	
   	margin-right: $defaultMargin*33;
-  	opacity: 1.0;
   	right: $defaultMargin*2;
   	
   	&.full-width {
@@ -207,6 +206,8 @@
   
   .video-player-prev, .video-player-next {
   	@include box-shadow(inset 0 1px 0 0 adjust-lightness(#444,25%));
+	
+	  @include opacity(0.5);
 	
   	@include border-radius($radius);
 
