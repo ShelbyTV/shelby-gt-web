@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var AutoScrollFrameListView = libs.shelbyGT.AutoScrollFrameListView;
+  var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
   libs.shelbyGT.DashboardView = AutoScrollFrameListView.extend({
 
@@ -9,8 +10,9 @@
 
     options : _.extend({}, AutoScrollFrameListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
-      doCheckHead : true,
+      doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
+      initFixedHead : true,
       fetchParams : {
         include_children : true
       },

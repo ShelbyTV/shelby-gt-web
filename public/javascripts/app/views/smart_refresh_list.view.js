@@ -1,12 +1,27 @@
+libs.shelbyGT.SmartRefreshCheckType = {
+  head : 'head',
+  headAndTail : 'headAndTail',
+  tail : 'tail'
+};
+
 libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
 
+  _fixedHeadItem : null,
+
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    doCheckHead : false,
-    doCheckTail : true,
+    doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
     doSmartRefresh : false,
+    initFixedHead : false,
     sortOrder : 1,
     sortAttribute : 'id'
   }),
+
+  initialize : function() {
+    libs.shelbyGT.ListView.prototype.initialize.call(this);
+    if (this.options.initFixedHead) {
+      this._fixedHeadItem = this._simulatedMasterCollection.first();
+    }
+  },
 
   sourceAddOne : function(item){
     if (this.options.doSmartRefresh) {
@@ -22,20 +37,34 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   },
 
   _addIfNew : function(item) {
-    if (this.options.doCheckTail) {
-      var tailItem = this._simulatedMasterCollection.last();
-      var doAddToTail = this._shouldAdd(item, tailItem);
-      if (doAddToTail) {
-        this._addItem(item);
-        return;
-      }
-    }
-    if (this.options.doCheckHead) {
-      var headItem = this._simulatedMasterCollection.first();
-      var doAddToHead = this._shouldAdd(item, headItem, true);
-      if (doAddToHead) {
-        this._addItem(item, {at:0});
-      }
+    switch (this.options.doCheck) {
+      case libs.shelbyGT.SmartRefreshCheckType.tail :
+        var tailItem = this._simulatedMasterCollection.last();
+        var doAddToTail = this._shouldAdd(item, tailItem);
+        if (doAddToTail) {
+          this._addItem(item);
+        }
+        break;
+      case libs.shelbyGT.SmartRefreshCheckType.head :
+        var headItem = this.options.initFixedHead ? this._fixedHeadItem : this._simulatedMasterCollection.first();
+        var doAddToHead = this._shouldAdd(item, headItem, true);
+        if (doAddToHead) {
+          this._addItem(item, {at:0});
+        }
+        break;
+      case libs.shelbyGT.SmartRefreshCheckType.headAndTail :
+        var compareItem = this._simulatedMasterCollection.last();
+        var doAdd = this._shouldAdd(item, compareItem);
+        if (doAdd) {
+          this._addItem(item);
+          return;
+        }
+        compareItem = this.options.initFixedHead ? this._fixedHeadItem : this._simulatedMasterCollection.first();
+        doAdd = this._shouldAdd(item, compareItem, true);
+        if (doAdd) {
+          this._addItem(item, {at:0});
+        }
+        break;
     }
 
   },

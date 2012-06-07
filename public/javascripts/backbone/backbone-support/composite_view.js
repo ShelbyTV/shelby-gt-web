@@ -16,9 +16,9 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   renderChild: function(view, childIndex) {
     view.render();
     if (childIndex) {
-      this.children.push(view);
-    } else {
       this.children.splice(childIndex, 0, view);
+    } else {
+      this.children.push(view);
     }
     view.parent = this;
   },
@@ -36,7 +36,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   },
 
   insertChildAt : function(view, childIndex) {
-    var insertBeforeThis = this.children[childIndex].el;
+    var insertBeforeThis = this.children.value()[childIndex].el;
     this.renderChild(view, childIndex);
     this.$(insertBeforeThis).before(view.el);
   },

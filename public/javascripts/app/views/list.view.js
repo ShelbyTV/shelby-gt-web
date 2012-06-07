@@ -195,10 +195,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
             }
         }
       }
-    }
 
-    // default behavior if not enough options were supplied
-    this.appendChild(childView);
+      // default behavior if not enough options were supplied
+      this.appendChild(childView);
+    }
   },
 
   internalReset : function(){
