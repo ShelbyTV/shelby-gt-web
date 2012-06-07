@@ -1,0 +1,14 @@
+.guide-overlay {
+  @include transition-property('margin-left');
+	@include transition-duration(0.25s);
+	@include transition-timing-function(ease-in);
+	
+	bottom: 0;
+	position: absolute;
+	margin-left: 100%;
+	width: 100%;
+}
+
+.guide-overlay.showing {
+  margin-left: 0; 
+}

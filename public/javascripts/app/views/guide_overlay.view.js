@@ -3,22 +3,17 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   
   insertIntoDom: function(reveal){
     $(".main").append(this.el);
+    this.$el.addClass("guide-overlay");
     this._doPosition();
     if(reveal!==false){ this.reveal(); }
   },
   
   reveal: function(){
-    //TODO: this should become a class just for guide-overlay (and removed from frame-rolling.scss)
-    
-    //TODO: confusing class name "rolling-frame-trans" -- it means "this view is showing" but doesn't say that
-    // yes, the movement happens to be animated, but the class represents that it's showing, not that it's transitioning
-    // so chanage it when we move it into
-    
-    this.$el.addClass('rolling-frame-trans');
+    this.$el.addClass('showing');
   },
   
   hide: function(){
-    this.$el.removeClass('rolling-frame-trans');
+    this.$el.removeClass('showing');
   },
   
   _doPosition: function(){

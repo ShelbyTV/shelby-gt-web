@@ -177,18 +177,6 @@
 
 /* line 102, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
-  -moz-transition-property: margin-left;
-  -webkit-transition-property: margin-left;
-  -o-transition-property: margin-left;
-  transition-property: margin-left;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -196,15 +184,4 @@
   -khtml-border-radius: 5px;
   border-radius: 5px;
   background-color: #494949;
-  left: 0;
-  position: absolute;
-  margin-left: 100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 117, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame-trans {
-  margin-left: 0;
 }

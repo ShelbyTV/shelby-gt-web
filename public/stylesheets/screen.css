@@ -854,6 +854,31 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0 1px 1px 0 #161616;
 }
 
+/* line 1, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay {
+  -moz-transition-property: margin-left;
+  -webkit-transition-property: margin-left;
+  -o-transition-property: margin-left;
+  transition-property: margin-left;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  bottom: 0;
+  position: absolute;
+  margin-left: 100%;
+  width: 100%;
+}
+
+/* line 12, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay.showing {
+  margin-left: 0;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -2326,18 +2351,6 @@ body.isolated-roll .guide-education {
 
 /* line 102, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
-  -moz-transition-property: margin-left;
-  -webkit-transition-property: margin-left;
-  -o-transition-property: margin-left;
-  transition-property: margin-left;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -2345,17 +2358,6 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 5px;
   border-radius: 5px;
   background-color: #494949;
-  left: 0;
-  position: absolute;
-  margin-left: 100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 117, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame-trans {
-  margin-left: 0;
 }
 
 /* Welcome to Compass.
@@ -2393,8 +2395,9 @@ body.isolated-roll .guide-education {
   padding: 0;
   position: absolute;
   top: 40px;
+  width: 100%;
 }
-/* line 22, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 23, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
   opacity: 0.2;
@@ -2405,12 +2408,12 @@ body.isolated-roll .guide-education {
   top: 0;
   width: 100%;
 }
-/* line 35, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 36, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 43, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion.frame-rolling-private .share-comment-counter {
   display: block;
   float: right;
@@ -2418,7 +2421,7 @@ body.isolated-roll .guide-education {
   position: relative;
 }
 
-/* line 51, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 52, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
@@ -2430,7 +2433,7 @@ body.isolated-roll .guide-education {
   border-bottom: 1px solid #222222;
   height: 40px;
 }
-/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 59, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   border-bottom: 1px solid #333333;
   font-size: 16px;
@@ -2444,16 +2447,16 @@ body.isolated-roll .guide-education {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 86, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 87, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
-/* line 90, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 91, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-social {
   padding: 0;
 }
 
-/* line 96, ../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 97, ../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;
