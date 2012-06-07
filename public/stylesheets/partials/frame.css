@@ -253,31 +253,32 @@
   margin: 0;
 }
 
-/* line 202, ../../../app/stylesheets/partials/frame.scss */
+/* XXX BELOW still needed for context overlay, but not for conversation within guide  */
+/* line 203, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 208, ../../../app/stylesheets/partials/frame.scss */
+/* line 209, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 213, ../../../app/stylesheets/partials/frame.scss */
+/* line 214, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 217, ../../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 223, ../../../app/stylesheets/partials/frame.scss */
+/* line 224, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -285,7 +286,7 @@
   line-height: 2.8;
 }
 
-/* line 230, ../../../app/stylesheets/partials/frame.scss */
+/* line 231, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -293,54 +294,55 @@
   padding-right: 3px;
 }
 
-/* line 239, ../../../app/stylesheets/partials/frame.scss */
+/* line 240, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
 }
 
-/* line 249, ../../../app/stylesheets/partials/frame.scss */
+/* line 250, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 
-/* line 256, ../../../app/stylesheets/partials/frame.scss */
+/* line 257, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
-/* line 261, ../../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 264, ../../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
-/* line 269, ../../../app/stylesheets/partials/frame.scss */
+/* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
+/* line 271, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 273, ../../../app/stylesheets/partials/frame.scss */
+/* line 275, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 280, ../../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 286, ../../../app/stylesheets/partials/frame.scss */
+/* line 288, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 291, ../../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -353,13 +355,12 @@
   width: 100%;
 }
 
-/* line 305, ../../../app/stylesheets/partials/frame.scss */
-.frame-activity,
-.video-footer {
+/* line 306, ../../../app/stylesheets/partials/frame.scss */
+.frame-activity {
   font-weight: 500;
 }
 
-/* line 310, ../../../app/stylesheets/partials/frame.scss */
+/* line 311, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -368,7 +369,7 @@
   padding: 4px;
   width: auto;
 }
-/* line 318, ../../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -378,16 +379,16 @@
   margin-right: 3px;
   width: 24px;
 }
-/* line 328, ../../../app/stylesheets/partials/frame.scss */
+/* line 329, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 332, ../../../app/stylesheets/partials/frame.scss */
+/* line 333, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 337, ../../../app/stylesheets/partials/frame.scss */
+/* line 338, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -397,7 +398,7 @@
   width: 22px;
 }
 
-/* line 348, ../../../app/stylesheets/partials/frame.scss */
+/* line 349, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -405,12 +406,12 @@
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 357, ../../../app/stylesheets/partials/frame.scss */
+/* line 358, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 364, ../../../app/stylesheets/partials/frame.scss */
+/* line 365, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -418,25 +419,25 @@
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 373, ../../../app/stylesheets/partials/frame.scss */
+/* line 374, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 380, ../../../app/stylesheets/partials/frame.scss */
+/* line 381, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 385, ../../../app/stylesheets/partials/frame.scss */
+/* line 386, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 392, ../../../app/stylesheets/partials/frame.scss */
+/* line 393, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 397, ../../../app/stylesheets/partials/frame.scss */
+/* line 398, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }

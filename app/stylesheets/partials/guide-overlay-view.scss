@@ -1,8 +1,11 @@
+@import "base";
+
 .guide-overlay {
   @include transition-property('margin-left');
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
 	
+	background-color: #232526;
 	bottom: 0;
 	position: absolute;
 	margin-left: 100%;
@@ -11,4 +14,64 @@
 
 .guide-overlay.showing {
   margin-left: 0; 
+}
+
+/* common to many guide overlays */
+.guide-overlay .overlay-title-bar {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 46px;
+  
+  .back {
+  	@include x-button-primer($shelby-gray);
+  	left: 0;
+  	margin: 8px;
+  	position: absolute;
+  	top: 0;	
+  }
+  
+  h2 {
+    line-height: 2.25;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.guide-overlay .context {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 64px;
+  padding: 11px 0 0 8px;
+  
+  .frame-thumbnail {
+    float: left;
+    max-height: 42px;
+    overflow: hidden;
+    width: 74px;
+    
+    img {
+      max-width: 74px;
+    }
+  }
+  
+  .copy {
+    margin-left: 74px;
+    padding: 5px 0 0 10px;
+    
+    .frame-creator {
+      color: #999;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    
+    .frame-title {
+      color: #ccc;
+      font-size: 14px;
+      font-weight: bold;
+      width: 100%;
+      padding: 0;
+    }
+  }
 }

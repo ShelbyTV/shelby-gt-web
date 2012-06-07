@@ -1,0 +1,81 @@
+@import "base";
+
+.conversation-scroller {
+  height: 100%;
+  padding-bottom: 110px; /* take into account height of the guide-overlay-header */
+  overflow-y: scroll;
+}
+
+ul.conversation {
+  @include no-bullets();
+  
+  margin: 0;
+  padding: 0;
+  
+  li.message {
+    border-bottom: 1px solid black;
+    border-top:  1px solid $rolls-outset;
+    padding: 10px 0 10px 10px;
+    
+    .image {
+      float: left;
+      max-height: 50px;
+      overflow: hidden;
+      width: 50px;
+    }
+    
+    .copy {
+      margin-left: 60px;
+      
+      .user-name, .user-message {
+        color: #efefef;
+        font-size: 12px;
+      }
+      
+      .user-name {
+        color: #999;
+        display: block;
+        font-size: 11px;
+        font-weight: bold;
+        margin-bottom: 6px;
+        text-decoration: none;
+      }
+      .user-message {
+        margin: 0 0 5px 0;
+      }
+      
+      .timestamp, .reply {
+        color: #efefef;
+        font-size: 10px;
+      }
+      
+      .reply {
+        margin-left: 12px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.new-comment {
+  background-color: #35383a;
+  height: 52px;
+	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
+  position: relative;
+  
+  textarea {
+    @include roundies(input);
+    
+    height: 28px;
+    margin: 10px 61px 0 8px;
+    width: 222px;
+  }
+  
+  .new-comment-submit {
+    @include x-button-primer($shelby-gray);
+  	right: 0;
+  	margin: 8px;
+  	position: absolute;
+  	top: 2px;	
+  }
+}

@@ -1,4 +1,4 @@
-libs.shelbyGT.MessageView = Support.CompositeView.extend({
+libs.shelbyGT.CommentOverlayMessageView = Support.CompositeView.extend({
 
   _conversationDisplayed : false,
 
@@ -6,12 +6,12 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
     "click .js-user-personal-roll" : "_goToUserPersonalRoll"
   },
 
-  tagName : 'li',
+  tagName : 'blockquote',
 
-  className : 'message clearfix',
+  className : 'user video-author',
 
   template : function(obj){
-    return JST['message'](obj);
+    return JST['comment-overlay-message'](obj);
   },
 
   render : function(showConversation){
@@ -20,10 +20,8 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
 
   _goToUserPersonalRoll : function(e){
     e.preventDefault();
-    var userId = $(e.currentTarget).data('user-id');
+    var userId = $(e.currentTarget).attr('data-user-id');
     shelby.router.navigate('user/' + userId + '/personal_roll', {trigger:true});
-    
-    this.parent.hide();
   }
 
 });

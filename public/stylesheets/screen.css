@@ -854,7 +854,15 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0 1px 1px 0 #161616;
 }
 
-/* line 1, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay {
   -moz-transition-property: margin-left;
   -webkit-transition-property: margin-left;
@@ -868,15 +876,99 @@ a:hover, a:visited, a:active {
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  background-color: #232526;
   bottom: 0;
   position: absolute;
   margin-left: 100%;
   width: 100%;
 }
 
-/* line 12, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 15, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay.showing {
   margin-left: 0;
+}
+
+/* common to many guide overlays */
+/* line 20, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .overlay-title-bar {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 46px;
+}
+/* line 25, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .overlay-title-bar .back {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  left: 0;
+  margin: 8px;
+  position: absolute;
+  top: 0;
+}
+/* line 33, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .overlay-title-bar h2 {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 41, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 64px;
+  padding: 11px 0 0 8px;
+}
+/* line 47, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context .frame-thumbnail {
+  float: left;
+  max-height: 42px;
+  overflow: hidden;
+  width: 74px;
+}
+/* line 53, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context .frame-thumbnail img {
+  max-width: 74px;
+}
+/* line 58, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context .copy {
+  margin-left: 74px;
+  padding: 5px 0 0 10px;
+}
+/* line 62, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context .copy .frame-creator {
+  color: #999;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+/* line 69, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay .context .copy .frame-title {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  padding: 0;
 }
 
 /* Welcome to Compass.
@@ -1467,31 +1559,32 @@ body.isolated-roll .guide-education {
   margin: 0;
 }
 
-/* line 202, ../../app/stylesheets/partials/frame.scss */
+/* XXX BELOW still needed for context overlay, but not for conversation within guide  */
+/* line 203, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 208, ../../app/stylesheets/partials/frame.scss */
+/* line 209, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 213, ../../app/stylesheets/partials/frame.scss */
+/* line 214, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 217, ../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 223, ../../app/stylesheets/partials/frame.scss */
+/* line 224, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -1499,7 +1592,7 @@ body.isolated-roll .guide-education {
   line-height: 2.8;
 }
 
-/* line 230, ../../app/stylesheets/partials/frame.scss */
+/* line 231, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1507,7 +1600,7 @@ body.isolated-roll .guide-education {
   padding-right: 3px;
 }
 
-/* line 239, ../../app/stylesheets/partials/frame.scss */
+/* line 240, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
@@ -1515,46 +1608,47 @@ body.isolated-roll .guide-education {
   margin: 1px 3px;
 }
 
-/* line 249, ../../app/stylesheets/partials/frame.scss */
+/* line 250, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 
-/* line 256, ../../app/stylesheets/partials/frame.scss */
+/* line 257, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 264, ../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
-/* line 269, ../../app/stylesheets/partials/frame.scss */
+/* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
+/* line 271, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 273, ../../app/stylesheets/partials/frame.scss */
+/* line 275, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 280, ../../app/stylesheets/partials/frame.scss */
+/* line 282, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 286, ../../app/stylesheets/partials/frame.scss */
+/* line 288, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 291, ../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -1567,13 +1661,12 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 305, ../../app/stylesheets/partials/frame.scss */
-.frame-activity,
-.video-footer {
+/* line 306, ../../app/stylesheets/partials/frame.scss */
+.frame-activity {
   font-weight: 500;
 }
 
-/* line 310, ../../app/stylesheets/partials/frame.scss */
+/* line 311, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -1582,7 +1675,7 @@ body.isolated-roll .guide-education {
   padding: 4px;
   width: auto;
 }
-/* line 318, ../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -1592,16 +1685,16 @@ body.isolated-roll .guide-education {
   margin-right: 3px;
   width: 24px;
 }
-/* line 328, ../../app/stylesheets/partials/frame.scss */
+/* line 329, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 333, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 337, ../../app/stylesheets/partials/frame.scss */
+/* line 338, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1611,7 +1704,7 @@ body.isolated-roll .guide-education {
   width: 22px;
 }
 
-/* line 348, ../../app/stylesheets/partials/frame.scss */
+/* line 349, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1619,12 +1712,12 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 357, ../../app/stylesheets/partials/frame.scss */
+/* line 358, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 364, ../../app/stylesheets/partials/frame.scss */
+/* line 365, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1632,25 +1725,25 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 373, ../../app/stylesheets/partials/frame.scss */
+/* line 374, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 380, ../../app/stylesheets/partials/frame.scss */
+/* line 381, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 385, ../../app/stylesheets/partials/frame.scss */
+/* line 386, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 392, ../../app/stylesheets/partials/frame.scss */
+/* line 393, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 397, ../../app/stylesheets/partials/frame.scss */
+/* line 398, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -2491,6 +2584,130 @@ body.isolated-roll .guide-education {
   display: block;
   padding: 5px;
   width: 100%;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../app/stylesheets/partials/frame-conversation.scss */
+.conversation-scroller {
+  height: 100%;
+  padding-bottom: 110px;
+  /* take into account height of the guide-overlay-header */
+  overflow-y: scroll;
+}
+
+/* line 9, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+ul.conversation li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+/* line 15, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #555555;
+  padding: 10px 0 10px 10px;
+}
+/* line 20, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .image {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
+}
+/* line 27, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy {
+  margin-left: 60px;
+}
+/* line 30, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy .user-name, ul.conversation li.message .copy .user-message {
+  color: #efefef;
+  font-size: 12px;
+}
+/* line 35, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy .user-name {
+  color: #999;
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+/* line 43, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy .user-message {
+  margin: 0 0 5px 0;
+}
+/* line 47, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy .timestamp, ul.conversation li.message .copy .reply {
+  color: #efefef;
+  font-size: 10px;
+}
+/* line 52, ../../app/stylesheets/partials/frame-conversation.scss */
+ul.conversation li.message .copy .reply {
+  margin-left: 12px;
+  text-decoration: none;
+}
+
+/* line 60, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment {
+  background-color: #35383a;
+  height: 52px;
+  margin-bottom: 65px;
+  /* b/c the "hide guide" overlay can interfere w/ our elements */
+  position: relative;
+}
+/* line 66, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment textarea {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  height: 28px;
+  margin: 10px 61px 0 8px;
+  width: 222px;
+}
+/* line 74, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment .new-comment-submit {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  right: 0;
+  margin: 8px;
+  position: absolute;
+  top: 2px;
 }
 
 /* Welcome to Compass.
@@ -4459,10 +4676,6 @@ body.isolated-roll .guide-education {
   display: block;
 }
 /* line 48, ../../app/stylesheets/partials/ui-test.scss */
-.ui-test .video-footer {
-  height: auto;
-}
-/* line 52, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }

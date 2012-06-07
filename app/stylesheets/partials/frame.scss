@@ -199,6 +199,7 @@
 	margin: 0;
 }
 
+/* XXX BELOW still needed for context overlay, but not for conversation within guide  */
 .user-vcard {
 	border-bottom: 1px solid $inset;
 	border-top: 1px solid $outset;
@@ -265,6 +266,7 @@
 		margin: 2px $defaultMargin/2 0 $defaultMargin*3+2;
 	}
 }
+/* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
 
 .frame-controls {
 	margin: 0;
@@ -301,8 +303,7 @@
 	}
 }
 
-.frame-activity,
-.video-footer {
+.frame-activity {
 	font-weight: 500;
 //	height: 27px;
 }

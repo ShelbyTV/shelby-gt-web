@@ -44,10 +44,6 @@
   display: block;
 }
 /* line 48, ../../../app/stylesheets/partials/ui-test.scss */
-.ui-test .video-footer {
-  height: auto;
-}
-/* line 52, ../../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }
