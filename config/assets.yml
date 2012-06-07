@@ -39,6 +39,7 @@ javascripts:
     - public/javascripts/app/views/auto_scroll_frame_list.view.js
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/views/smart_refresh_list.view.js
+    - public/javascripts/app/views/guide_overlay.view.js
     - public/javascripts/app/views/roll_list.view.js
     - public/javascripts/app/views/roll.view.js
     - public/javascripts/app/views/user_preferences.view.js

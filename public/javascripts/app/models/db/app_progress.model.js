@@ -16,7 +16,6 @@
 
     initialize : function(){
       shelby.models.guide.bind('change:displayState', this._onDisplayStateChange, this);
-      shelby.models.guide.bind('change:activeFrameRollingView', this._onActiveFrameRollingViewChange, this);
       this.bind('change', this._onStateChange, this);
     },
 
@@ -38,10 +37,8 @@
       this.set(displayState+'Nav', true);
     },
     
-    // rolling initialized
-    _onActiveFrameRollingViewChange : function(guide, frameRollingView){
-      this.set('rollFrameInit', true);
-    }
+    // rolling initialized 
+    // XXX Rolling has been simplified, no longer tracking the views that old way
 
   });
 

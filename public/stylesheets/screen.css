@@ -1484,7 +1484,7 @@ body.isolated-roll .guide-education {
 
 /* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1492,12 +1492,12 @@ body.isolated-roll .guide-education {
 
 /* line 249, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 
 /* line 256, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 261, ../../app/stylesheets/partials/frame.scss */
@@ -2326,10 +2326,10 @@ body.isolated-roll .guide-education {
 
 /* line 102, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
+  -moz-transition-property: margin-left;
+  -webkit-transition-property: margin-left;
+  -o-transition-property: margin-left;
+  transition-property: margin-left;
   -moz-transition-duration: 0.25s;
   -webkit-transition-duration: 0.25s;
   -o-transition-duration: 0.25s;

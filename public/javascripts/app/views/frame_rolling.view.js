@@ -7,7 +7,7 @@
   var ShareActionState = libs.shelbyGT.ShareActionState;
   var RollModel = libs.shelbyGT.RollModel;
   
-  libs.shelbyGT.FrameRollingView = Support.CompositeView.extend({
+  libs.shelbyGT.FrameRollingView = libs.shelbyGT.GuideOverlayView.extend({
 
     _frameRollingCompletionView : null,
 
@@ -34,6 +34,7 @@
 
     render : function(){
       this.$el.html(this.template({share:this._frameRollingState.get('shareModel')}));
+      
       var rollsListView = new RollingSelectionListView(
         {
           model : shelby.models.rollFollowings,
@@ -41,10 +42,13 @@
           doStaticRender : true
         }
       );
+      
       this.appendChildInto(rollsListView, '.js-rolling-main');
+      
+      this.insertIntoDom(false);
     },
 
-    revealFrameRollingCompletionView : function(frame, roll, options){
+    revealFrameRollingCompletionView : function(frame, roll, options){      
       // default options
       options = _.chain({}).extend(options).defaults({
         type: 'public',
@@ -60,9 +64,6 @@
 
       if (options.sharing){
         this._isFrameSharing = true;
-        this.$('.js-back').html('Cancel');
-      } else {
-        this.$('.js-back').html('Back');
       }
       
       if (roll.get('public')) {
@@ -87,17 +88,13 @@
       if (this._isFrameSharing){
         // this is meant to be just a social share, not a rolling action,
         //  so cancel should bring back to original frame view.
-        this._frameRollingCompletionView.leave();
-        this._frameRollingCompletionView = null;
-        this.$('.js-back').html('Cancel');
-        this._hide();
+        this._resetAndHide();
       }
       else if (this._frameRollingCompletionView) {
         this._frameRollingCompletionView.leave();
         this._frameRollingCompletionView = null;
-        this.$('.js-back').html('Cancel');
       } else {
-        this._hide();
+        this._resetAndHide();
       }
     },
 
@@ -106,14 +103,10 @@
       return false;
     },
 
-    _hide : function(){
-      this.$el.removeClass('rolling-frame-trans');
-    },
-
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
-          this._hide();
+          this._resetAndHide();
           break;
         case ShareActionState.share :
           this.$('.js-back').addClass('js-busy');
@@ -122,6 +115,14 @@
           this.$('.js-back').removeClass('js-busy');
           break;
       }
+    },
+    
+    _resetAndHide: function(){
+      this._frameRollingCompletionView && this._frameRollingCompletionView.leave();
+      this._frameRollingCompletionView = null;
+      this._isFrameSharing = false;
+      
+      this.hide();
     }
 
   });

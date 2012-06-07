@@ -7,14 +7,12 @@
 
     initialize : function() {
       shelby.models.guide.bind('change:activeFrameModel', this._onNewActiveFrame, this);
-      shelby.models.guide.bind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
       shelby.models.autoScrollState.bind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onNewActiveFrame, this);
-      shelby.models.guide.unbind('change:activeFrameRollingView', this._onNewActiveFrameRollingView, this);
       shelby.models.autoScrollState.unbind('change:tryAutoScroll', this._scrollToActiveFrameView, this);
       PagingListView.prototype._cleanup.call(this);
     },
@@ -23,21 +21,19 @@
       try {
         PagingListView.prototype.internalAddOne.call(this, item);
       } catch (error) {
-        error.message
 				// We are not loading G. Analytics in development env so just log to console.
-				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', e.message]); }
-				catch(e) {
-          console.log("_gaq not loaded in development env:", e.message);
-        }
+				if(typeof(_gaq)!=="undefined" && _gaq.push){
+				  _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', error.message]);
+				} else {
+				  console.log("ERROR:", error.message, error.stack);
+				}
       }
     },
 
     activateFrameRollingView : function(frame) {
       var playingFrameView = this.children.find(this._findViewByModel(frame));
       if (playingFrameView) {
-        this.parent.$el.scrollTo(playingFrameView.$el, {duration:200,axis:'y',onAfter:function(){
-          playingFrameView.RequestFrameRollingView();
-        }});
+        playingFrameView.requestFrameRollView();
         return true;
       } else {
         return false;
@@ -59,11 +55,6 @@
       if(currentActiveFrameView) {
         this._scrollTo(currentActiveFrameView.el);
       }
-    },
-
-    _onNewActiveFrameRollingView : function(guideModel, currentActiveFrameRollingView){
-      // a bit ugly
-      this.parent.scrollToChildElement($(currentActiveFrameRollingView.el).parent().parent());
     },
 
     _scrollTo : function(element) {

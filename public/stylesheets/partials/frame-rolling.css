@@ -177,10 +177,10 @@
 
 /* line 102, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
+  -moz-transition-property: margin-left;
+  -webkit-transition-property: margin-left;
+  -o-transition-property: margin-left;
+  transition-property: margin-left;
   -moz-transition-duration: 0.25s;
   -webkit-transition-duration: 0.25s;
   -o-transition-duration: 0.25s;

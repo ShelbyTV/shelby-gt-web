@@ -100,7 +100,7 @@
 }
 
 .rolling-frame {
-	@include transition-property(all);
+	@include transition-property('margin-left');
 	@include transition-duration(0.25s);
 	@include transition-timing-function(ease-in);
 	@include roundies;

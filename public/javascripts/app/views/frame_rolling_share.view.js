@@ -15,6 +15,7 @@
 
     id: 'js-share-frame',
 
+    //XXX: why does this have that class name?
     className : 'frame-share rolling-frame-trans',
 
     _components : {
