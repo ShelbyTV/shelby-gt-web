@@ -10,7 +10,7 @@
 	a{	
 		cursor:pointer;
 		display:block;
-//		padding:$defaultMargin;
+		padding: 5px;
 
 		&:hover{
 			background-color: #6d6d6d;
@@ -18,20 +18,11 @@
 	}
 
 	li{
-//		border-bottom: 1px solid $inset;
-//		border-top: 1px solid $outset;
 		padding:0;
-		
-//		&:first-child{
-//			border-top:none;
-//		}
-//		&:last-child{
-//			border-bottom: none;
-//		}
 	}
 
 	.active-list-item{
-		background-color: #5fa256;
+//		background-color: #5fa256;
 		position:relative;
 
 		a{

@@ -5,7 +5,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   }),
 
   events : {
-    "click .js-roll-item-button" : "goToRoll"
+    "click .js-roll-item-button" : "goToRoll",
   },
 
   tagName : 'li',
@@ -36,5 +36,4 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     return false;
   }
-
 });

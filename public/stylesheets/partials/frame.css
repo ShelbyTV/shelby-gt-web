@@ -1,11 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 3, ../../../app/stylesheets/partials/frame.scss */
 .list {
   margin: 0;
@@ -295,7 +287,7 @@
 
 /* line 239, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338399074');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -303,12 +295,12 @@
 
 /* line 249, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338399074');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 256, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 261, ../../../app/stylesheets/partials/frame.scss */
