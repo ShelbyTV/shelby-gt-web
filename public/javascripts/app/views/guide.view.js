@@ -26,6 +26,9 @@
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       this._dashboardMasterCollection = new Backbone.Collection();
+      if (shelby.models.dashboard) {
+        this._dashboardMasterCollection.reset(shelby.models.dashboard.get('dashboard_entries').models);
+      }
     },
 
     _cleanup : function() {
@@ -249,7 +252,6 @@
     // appropriatly changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
       var self = this,
-          _currentModel,
           _frames,
           _index,
           _currentFrame = shelby.models.guide.get('activeFrameModel');
@@ -268,24 +270,34 @@
                 limit : shelby.config.pageLoadSizes.dashboard
               },
               success: function(model, response){
-                self._nextVideo();
+                this._dashboardMasterCollection.reset(model.get('dashboard_entries').models);
+                self._skipVideo();
               }
             });
             return;
           }
-          _currentModel = shelby.models.dashboard;
-          _frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){
+          var dashboardSourceCollection;
+          if (this._dashboardMasterCollection.isEmpty()) {
+            dashboardSourceCollection = _(shelby.models.dashboard.get('dashboard_entries').models);
+          } else {
+            dashboardSourceCollection = this._dashboardMasterCollection;
+          }
+          _frames = dashboardSourceCollection.map(function(c){
             return c.get('frame');
           });
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
-          _currentModel = this.model.get('currentRollModel');
-          _frames = _currentModel.get('frames').models;
+          _frames = this.model.get('currentRollModel').get('frames').models;
           break;
       }
       
-      _index = (_frames.indexOf(_currentFrame) + skip) % _frames.length;
+      _index = _frames.indexOf(_currentFrame) + skip;
+      if (_index < 0) {
+        _index = _frames.length - 1;
+      } else {
+       _index = _index % _frames.length;
+      }
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }

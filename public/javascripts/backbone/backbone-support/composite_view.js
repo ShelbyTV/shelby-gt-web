@@ -15,7 +15,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
 
   renderChild: function(view, childIndex) {
     view.render();
-    if (childIndex) {
+    if (typeof(childIndex) !== 'undefined'){
       this.children.splice(childIndex, 0, view);
     } else {
       this.children.push(view);

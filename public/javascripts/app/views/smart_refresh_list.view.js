@@ -8,6 +8,8 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
 
   _fixedHeadItem : null,
 
+  _fixedHeadIndex : 0,
+
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
     doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
     doSmartRefresh : false,
@@ -20,6 +22,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     libs.shelbyGT.ListView.prototype.initialize.call(this);
     if (this.options.initFixedHead) {
       this._fixedHeadItem = this._simulatedMasterCollection.first();
+      this._fixedHeadIndex = 0;
     }
   },
 
@@ -49,7 +52,11 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         var headItem = this.options.initFixedHead ? this._fixedHeadItem : this._simulatedMasterCollection.first();
         var doAddToHead = this._shouldAdd(item, headItem, true);
         if (doAddToHead) {
-          this._addItem(item, {at:0});
+          var headAddIndex = this.options.initFixedHead ? this._fixedHeadIndex : 0;
+          this._addItem(item, {at:headAddIndex});
+          if (this.options.initFixedHead) {
+            this._updateFixedHeadIndex();
+          }
         }
         break;
       case libs.shelbyGT.SmartRefreshCheckType.headAndTail :
@@ -62,7 +69,11 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         compareItem = this.options.initFixedHead ? this._fixedHeadItem : this._simulatedMasterCollection.first();
         doAdd = this._shouldAdd(item, compareItem, true);
         if (doAdd) {
-          this._addItem(item, {at:0});
+          var addIndex = this.options.initFixedHead ? this._fixedHeadIndex : 0;
+          this._addItem(item, {at:addIndex});
+          if (this.options.initFixedHead) {
+            this._updateFixedHeadIndex();
+          }
         }
         break;
     }
@@ -96,6 +107,10 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     } else {
       libs.shelbyGT.ListView.prototype.sourceAddOne.call(this, item);
     }
+  },
+
+  _updateFixedHeadIndex : function() {
+    this._fixedHeadIndex = this._simulatedMasterCollection.indexOf(this._fixedHeadItem);
   }
 
 });
