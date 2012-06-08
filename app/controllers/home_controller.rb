@@ -1,5 +1,3 @@
-require 'shelby_api'
-
 class HomeController < ApplicationController
 
   ##
@@ -8,32 +6,8 @@ class HomeController < ApplicationController
   #TODO: If the request is made to a roll, also display some meta tags
   def index
     
-    #TODO this needs to be cleaned the fuck up
-    if path_match = /roll\/\w*\/frame\/(\w*)/.match(params[:path])
-      @frame_id = path_match[1]
-      @video_info = Shelby::API.get_video_info(@frame_id)
-      if @video_info
-        @video_embed = @video_info['video']['embed_url']
-        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], @frame_id)
-      else
-        @video_embed = nil
-        @permalink = nil
-      end
-    elsif path_match = /roll\/(\w*)(\/.*)*/.match(params[:path])
-      roll_id = path_match[1]
-      @video_info = Shelby::API.get_first_frame_on_roll(roll_id)
-      if @video_info
-        @video_embed = @video_info['video']['embed_url']
-        @permalink = Shelby::API.generate_frame_route(@video_info['frame']['roll_id'], @video_info['frame']['id'])
-      end
-    elsif path_match = /user\/(\w*)\/personal_roll/.match(params[:path])
-      user_nickname = path_match[1]
-      @user_info = Shelby::API.get_user_info(user_nickname)
-      @permalink = Shelby::API.generate_user_route(user_nickname)
-    else
-      @roll_info = nil
-      @video_info = nil
-    end
+    # Get video and user info from shelby api for meta tags
+    @meta_info = get_video_info(params[:path])
     
     #XXX ISOLATED_ROLL - HACKING MAPPING based on domain
     #TODO: pull this mapping from API
