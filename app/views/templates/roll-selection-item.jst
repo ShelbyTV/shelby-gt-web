@@ -1,3 +1,3 @@
-<h2 class="<%= roll.get('public') ? 'rolling-public-roll' : 'rolling-private-roll' %> js-track-event" data-ga_category="Rolling" data-ga_action="adding to roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+<a href="#" class="<%= roll.get('public') ? 'rolling-public-roll' : 'rolling-private-roll' %> js-track-event" data-ga_category="Rolling" data-ga_action="adding to roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
 	<%= roll.get('title')%>
-</h2>
+</a>

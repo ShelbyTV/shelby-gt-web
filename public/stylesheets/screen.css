@@ -1313,12 +1313,12 @@ body.isolated-roll .guide-education {
  * @import "compass/reset";
  */
 /* line 3, ../../app/stylesheets/partials/frame.scss */
-.list, .rolls-list, .form-rolls-list {
+.list, .rolls-list, .existing-rolls-list ul {
   margin: 0;
   padding: 0;
 }
 /* line 7, ../../app/stylesheets/partials/frame.scss */
-.list li, .rolls-list li, .form-rolls-list li {
+.list li, .rolls-list li, .existing-rolls-list ul li {
   list-style-type: none;
 }
 
@@ -2275,17 +2275,12 @@ body.isolated-roll .guide-education {
  * @import "compass/reset";
  */
 /* line 3, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main, .frame-rolling-completion {
-  border-top: 1px solid #222222;
-  bottom: 0;
+.rolling-main {
+  height: 100%;
   overflow-y: scroll;
-  overflow-x: hidden;
-  position: absolute;
-  top: 39px;
-  width: 100%;
 }
-/* line 14, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:first-child, .frame-rolling-completion > li:first-child {
+/* line 10, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -2293,8 +2288,8 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 17, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:first-child h2, .frame-rolling-completion > li:first-child h2 {
+/* line 13, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -2302,105 +2297,18 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 22, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:hover, .frame-rolling-completion > li:hover {
+/* line 18, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:hover {
   background-color: #666;
   cursor: pointer;
 }
-/* line 28, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main .share-comment-counter, .frame-rolling-completion .share-comment-counter {
+/* line 24, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 35, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header,
-.rolling-main-footer {
-  background: #555555;
-  -moz-border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
-  -o-border-radius: 4px 4px 0 0;
-  -ms-border-radius: 4px 4px 0 0;
-  -khtml-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid #4F4D51;
-  height: 40px;
-  left: 0;
-  padding: 5px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-/* line 48, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header-title {
-  line-height: 1.75;
-  text-align: center;
-}
-
-/* line 53, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  padding: 6px 9px;
-  position: absolute;
-  margin: 6px;
-  top: 0;
-  width: auto;
-}
-
-/* line 64, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-cancel {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  margin: 6px;
-  position: absolute;
-  top: 0;
-}
-
-/* line 72, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 30, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2426,12 +2334,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 84, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 34, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 90, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 40, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2443,7 +2351,7 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 102, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 52, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2452,139 +2360,6 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 5px;
   border-radius: 5px;
   background-color: #494949;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
-/* line 3, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion {
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  -o-border-radius: 5px 5px 0 0;
-  -ms-border-radius: 5px 5px 0 0;
-  -khtml-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  border-top: none;
-  overflow-y: hidden;
-  top: 0;
-  z-index: 1;
-}
-/* line 12, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -o-border-radius: 0;
-  -ms-border-radius: 0;
-  -khtml-border-radius: 0;
-  border-radius: 0;
-  bottom: 0;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 40px;
-  width: 100%;
-}
-/* line 23, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share:before {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
-  opacity: 0.2;
-  background: #222;
-  bottom: 0;
-  content: "\0020";
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-/* line 36, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .share-networks-list li {
-  margin-bottom: 0;
-  padding: 0;
-}
-/* line 43, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion.frame-rolling-private .share-comment-counter {
-  display: block;
-  float: right;
-  height: 20px;
-  position: relative;
-}
-
-/* line 52, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header {
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  -o-border-radius: 5px 5px 0 0;
-  -ms-border-radius: 5px 5px 0 0;
-  -khtml-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  background-color: #555555;
-  border-bottom: 1px solid #222222;
-  height: 40px;
-}
-/* line 59, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1 {
-  border-bottom: 1px solid #333333;
-  font-size: 16px;
-  height: 40px;
-  line-height: 2.4;
-  margin: 0 auto;
-  max-width: 145px;
-  padding-right: 10px;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 87, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  background-image: url("../images/assets/rolls_private.svg");
-}
-/* line 91, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-social {
-  padding: 0;
-}
-
-/* line 97, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-share-undo {
-  line-height: 3;
-  margin: 0 5px;
-  position: absolute;
-  right: 5px;
-  top: 0;
-}
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
-/* line 3, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.frame-rolling-options {
-  background-color: #585858;
-  padding: 10px;
-}
-
-/* line 8, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-name-input, .new-roll-recipients {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
-  border: 1px solid #222;
-  display: block;
-  padding: 5px;
-  width: 100%;
 }
 
 /* Welcome to Compass.
@@ -3117,68 +2892,29 @@ ul.conversation li.message .copy .reply {
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 3, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list {
+/* line 3, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul {
   cursor: pointer;
 }
-/* line 8, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a {
+/* line 8, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a {
   display: block;
   padding: 5px;
   text-decoration: none;
 }
-/* line 13, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a:visited {
+/* line 13, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a:visited {
   text-decoration: none;
 }
-/* line 18, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a:hover, .form-rolls-list a:active {
+/* line 18, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a:hover, .existing-rolls-list ul a:active {
   text-decoration: underline;
 }
-/* line 23, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li {
+/* line 23, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul li {
   border-bottom: 1px solid #333333;
   border-top: 1px solid #555555;
   padding: 5px;
-}
-/* line 28, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li:first-child {
-  border-top: none;
-}
-/* line 31, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li:last-child {
-  border-bottom: none;
-}
-/* line 36, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
-  font-size: 14px;
-  line-height: 1.75;
-  position: relative;
-  text-align: center;
-}
-/* line 42, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
-  content: "+";
-}
-/* line 45, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_public.svg");
-  right: 9px;
-  position: absolute;
-  top: 1px;
-}
-/* line 56, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_private.svg");
-}
-
-/* line 63, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.share-comment-counter {
-  color: white;
-  line-height: 2.5;
-  margin: 10px;
-  position: absolute;
-  right: 82px;
 }
 
 /* Welcome to Compass.

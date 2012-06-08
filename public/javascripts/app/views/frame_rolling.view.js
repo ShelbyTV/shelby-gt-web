@@ -1,20 +1,17 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var RollingCreateRollView = libs.shelbyGT.RollingCreateRollView;
   var RollingSelectionListView = libs.shelbyGT.RollingSelectionListView;
-  var FrameRollingFooterView = libs.shelbyGT.FrameRollingFooterView;
   var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
-  var RollModel = libs.shelbyGT.RollModel;
   
   libs.shelbyGT.FrameRollingView = libs.shelbyGT.GuideOverlayView.extend({
-
-    _frameRollingCompletionView : null,
 
     _frameRollingState : null,
 
     events : {
-      "click .js-back:not(.js-busy)"  : "_goBack"
+      "click .back:not(.js-busy)"  : "_cancel"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -33,74 +30,33 @@
     },
 
     render : function(){
-      this.$el.html(this.template({share:this._frameRollingState.get('shareModel')}));
+      this.$el.html(this.template({frame:this.model, share:this._frameRollingState.get('shareModel')}));
       
+      //new Roll
+      var newRollView = new RollingCreateRollView(
+        {
+          frame : this.model,
+          frameRollingState : this._frameRollingState
+        }
+      );
+      this.appendChildInto(newRollView, '.new-roll');
+      
+      //existing Rolls
       var rollsListView = new RollingSelectionListView(
         {
           model : shelby.models.rollFollowings,
           frame : this.model,
+          frameRollingState : this._frameRollingState,
           doStaticRender : true
         }
       );
-      
-      this.appendChildInto(rollsListView, '.js-rolling-main');
-      
+      this.appendChildInto(rollsListView, '.existing-rolls-list');
+
       this.insertIntoDom(false);
     },
 
-    revealFrameRollingCompletionView : function(frame, roll, options){      
-      // default options
-      options = _.chain({}).extend(options).defaults({
-        type: 'public',
-        social: false
-      }).value();
-
-      if (!roll) {
-        roll = new RollModel({
-          'public' : (options.type == 'public'),
-          collaborative : true
-        });
-      }
-
-      if (options.sharing){
-        this._isFrameSharing = true;
-      }
-      
-      if (roll.get('public')) {
-        this._frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
-      } else if (roll.isNew()) {
-        this._frameRollingState.get('shareModel').set('destination',['email']);
-      } else {
-        this._frameRollingState.get('shareModel').set('destination',[]);
-      }
-      
-      this._frameRollingCompletionView = new libs.shelbyGT.FrameRollingCompletionView({
-        frame : frame,
-        roll : roll,
-        frameRollingState : this._frameRollingState,
-        social : options.social,
-        sharing : options.sharing
-      });
-      this.insertChildBefore(this._frameRollingCompletionView, '.js-rolling-main');
-    },
-
-    _goBack : function(){
-      if (this._isFrameSharing){
-        // this is meant to be just a social share, not a rolling action,
-        //  so cancel should bring back to original frame view.
-        this._resetAndHide();
-      }
-      else if (this._frameRollingCompletionView) {
-        this._frameRollingCompletionView.leave();
-        this._frameRollingCompletionView = null;
-      } else {
-        this._resetAndHide();
-      }
-    },
-
-    _share : function(){
-      this._frameRollingState.set('doShare', ShareActionState.share);
-      return false;
+    _cancel : function(){
+      this._resetAndHide();
     },
 
     _onDoShareChange: function(shareActionStateModel, doShare){
@@ -109,18 +65,18 @@
           this._resetAndHide();
           break;
         case ShareActionState.share :
-          this.$('.js-back').addClass('js-busy');
+          //TODO: show spinner (via GuideOverlay?)
+          this.$('.back').addClass('js-busy');
           break;
         case ShareActionState.failed :
-          this.$('.js-back').removeClass('js-busy');
+          //TODO: hide spinner (via GuideOverlay?)
+          this.$('.back').removeClass('js-busy');
           break;
       }
     },
     
-    _resetAndHide: function(){
-      this._frameRollingCompletionView && this._frameRollingCompletionView.leave();
-      this._frameRollingCompletionView = null;
-      this._isFrameSharing = false;
+    _resetAndHide: function(){      
+      //TODO: hide spinner (via GuideOverlay?)
       
       this.hide();
     }

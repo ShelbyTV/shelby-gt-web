@@ -1,0 +1,32 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul {
+  cursor: pointer;
+}
+/* line 8, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+/* line 13, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a:visited {
+  text-decoration: none;
+}
+/* line 18, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul a:hover, .existing-rolls-list ul a:active {
+  text-decoration: underline;
+}
+/* line 23, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul li {
+  border-bottom: 1px solid #333333;
+  border-top: 1px solid #555555;
+  padding: 5px;
+}

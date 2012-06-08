@@ -75,10 +75,13 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
   
   requestFrameShareView: function(){
-    //TODO: Better to pass options to FrameRollingView initializer than have it glitch-initialize as Roll then change it to share below
-    this.requestFrameRollView();
-    var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
-    this._frameRollingView.revealFrameRollingCompletionView(this.model, personalRoll, {social:true, sharing:true});
+    if (!this._frameSharingInGuideView) {
+      var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
+      
+      this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model, roll:personalRoll});
+      this._frameSharingInGuideView.render();
+    }
+    this._frameSharingInGuideView.reveal();
   },
   
   requestFrameRollView : function(){

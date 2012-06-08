@@ -50,6 +50,7 @@ javascripts:
     - public/javascripts/app/views/roll_action_menu.view.js
     - public/javascripts/app/views/roll_header.view.js
     - public/javascripts/app/views/item_header.view.js
+    - public/javascripts/app/views/rolling_create_roll_view.js
     - public/javascripts/app/views/rolling_selection_item.view.js
     - public/javascripts/app/views/rolling_selection_list.view.js
     - public/javascripts/app/views/share.view.js
