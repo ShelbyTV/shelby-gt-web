@@ -282,9 +282,7 @@
           } else {
             dashboardSourceCollection = this._dashboardMasterCollection;
           }
-          _frames = dashboardSourceCollection.map(function(c){
-            return c.get('frame');
-          });
+          _frames = dashboardSourceCollection.pluck('frame');
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
@@ -292,11 +290,16 @@
           break;
       }
       
-      _index = _frames.indexOf(_currentFrame) + skip;
-      if (_index < 0) {
-        _index = _frames.length - 1;
+      var _frameInCollection = _(_frames).find(function(frame){return frame.id == _currentFrame.id;});
+      if (_frameInCollection) {
+        _index = _frames.indexOf(_frameInCollection) + skip;
+        if (_index < 0) {
+          _index = _frames.length - 1;
+        } else {
+         _index = _index % _frames.length;
+        }
       } else {
-       _index = _index % _frames.length;
+        index = 0;
       }
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
