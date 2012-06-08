@@ -176,7 +176,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
     //special handling if the item was not added to the end of the collection
     if (options && _(options).has('at') && options.at != collection.length) {
-      console.log('head insert!!');
       this._listItemViews.splice(options.at, 0, childView);
       this.insertChildAt(childView, options.at);
     } else {
