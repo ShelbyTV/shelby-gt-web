@@ -36,6 +36,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
           params are any additional parameters to be passed to the new view's constructor
     */
     listItemView : 'ListItemView',
+    masterCollection : null,
     simulateAddTrue : true
   },
   
@@ -48,9 +49,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
       this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       if (this.options.simulateAddTrue) {
-        this._simulatedMasterCollection = new Backbone.Collection();
-        if (this.options.doStaticRender) {
-          this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
+        if (this.options.masterCollection && this.options.doStaticRender) {
+          this._attachMasterCollection();
+        } else {
+          this._prepareMasterCollection();
         }
       }
     }
@@ -86,6 +88,17 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         newContents = sourceCollection.models;
       }
       this._displayCollection.reset(newContents);
+    }
+  },
+
+  _attachMasterCollection : function() {
+    this._simulatedMasterCollection = this.options.masterCollection;
+  },
+
+  _prepareMasterCollection : function() {
+    this._simulatedMasterCollection = new Backbone.Collection();
+    if (this.options.doStaticRender) {
+      this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
     }
   },
 
@@ -158,26 +171,34 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
   },
 
-  internalAddOne : function(item){
+  internalAddOne : function(item, collection, options){
     var childView = this._constructListItemView(item);
-    //store a reference to all list item child views so they can be removed/left without
-    //removing any other child views
-    this._listItemViews.push(childView);
-    if (this.options.insert && this.options.insert.position) {
-      switch (this.options.insert.position) {
-        case 'append' :
-          this.appendChild(childView);
-          return;
-        case 'before' :
-          if (this.options.insert.selector) {
-            this.insertChildBefore(childView, this.options.insert.selector);
-            return;
-          }
-      }
-    }
 
-    // default behavior if not enough options were supplied
-    this.appendChild(childView);
+    //special handling if the item was not added to the end of the collection
+    if (options && _(options).has('at') && options.at != collection.length) {
+      console.log('head insert!!');
+      this._listItemViews.splice(options.at, 0, childView);
+      this.insertChildAt(childView, options.at);
+    } else {
+      //store a reference to all list item child views so they can be removed/left without
+      //removing any other child views
+      this._listItemViews.push(childView);
+      if (this.options.insert && this.options.insert.position) {
+        switch (this.options.insert.position) {
+          case 'append' :
+            this.appendChild(childView);
+            return;
+          case 'before' :
+            if (this.options.insert.selector) {
+              this.insertChildBefore(childView, this.options.insert.selector);
+              return;
+            }
+        }
+      }
+
+      // default behavior if not enough options were supplied
+      this.appendChild(childView);
+    }
   },
 
   internalReset : function(){
