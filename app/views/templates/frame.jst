@@ -29,11 +29,6 @@
     </a>
   </header>
 
-<!--       <h1 title="<%= frame.get('video').get('title') %>">
-	    <%= frame.get('video').get('title') %>
-    </h1>
- -->      
-
   <div class="video-thumbnail">
     <% if(frame.get('video').get('thumbnail_url')) { %>
       <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
@@ -46,15 +41,10 @@
 
     <% if(!frame.isOnRollTypeGenius()) { %>
 
-    <!-- MessageView for the first message will be dynamically rendered here -->
-
       <section class="video-activity js-video-activity clearfix" style="<%= showConversation ? '' : 'display:none' %>">
-
-        <!-- sample build -->
         <ul class="video-activity-list">
-          <!-- MessageViews for the remaining messages are dynamically rendered here -->
+          <!-- MessageViews for the messages are dynamically rendered here -->
         </ul>
-        <!-- sample build -->
         <form class="video-activity-comment clearfix">
           <textarea class="js-add-message-input" rows="1"></textarea>
           <div class="js-frame-comment-error-message frame-comment-error-message"></div>
