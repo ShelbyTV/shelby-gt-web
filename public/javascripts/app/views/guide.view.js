@@ -23,6 +23,7 @@
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
+      Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
     },
 
     _cleanup : function() {
@@ -30,6 +31,7 @@
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
+      Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
 
     _onGuideModelChange : function(model){
@@ -240,6 +242,10 @@
     _onChangeVideo : function(userDesiresModel, videoChangeValue){
       if (typeof videoChangeValue==='undefined') return false;
       this._skipVideo(videoChangeValue);
+    },
+
+    _onPlaybackNext : function(){
+      this._skipVideo(1);
     },
 
     // appropriatly changes the next video (in dashboard or a roll)
