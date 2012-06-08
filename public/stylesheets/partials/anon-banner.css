@@ -167,12 +167,11 @@
 /* line 171, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-twitter:before {
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M26.74%2C10.224c-0.862%2C0.146-2.114-0.005-2.775-0.279c1.378-0.114%2C2.309-0.733%2C2.666-1.576%0A%09c-0.495%2C0.303-2.035%2C0.632-2.882%2C0.318c-0.043-0.198-0.089-0.386-0.138-0.556c-0.646-2.362-2.863-4.267-5.188-4.036%0A%09c0.188-0.075%2C0.377-0.144%2C0.568-0.208c0.254-0.09%2C1.755-0.335%2C1.52-0.86c-0.201-0.464-2.035%2C0.347-2.38%2C0.456%0A%09c0.456-0.17%2C1.209-0.463%2C1.292-0.984c-0.699%2C0.095-1.386%2C0.423-1.914%2C0.9c0.19-0.203%2C0.338-0.453%2C0.367-0.721%0A%09c-1.861%2C1.182-2.95%2C3.563-3.831%2C5.875c-0.689-0.666-1.304-1.19-1.855-1.482c-1.538-0.82-3.384-1.676-6.277-2.745%0A%09c-0.089%2C0.95%2C0.471%2C2.217%2C2.092%2C3.057C7.655%2C7.335%2C7.015%2C7.442%2C6.501%2C7.562c0.21%2C1.091%2C0.895%2C1.987%2C2.741%2C2.42%0A%09c-0.846%2C0.055-1.283%2C0.249-1.68%2C0.66c0.385%2C0.759%2C1.324%2C1.649%2C3.015%2C1.466c-1.879%2C0.806-0.767%2C2.294%2C0.762%2C2.072%0A%09c-2.606%2C2.676-6.717%2C2.479-9.079%2C0.242c6.165%2C8.344%2C19.563%2C4.932%2C21.561-3.104C25.314%2C11.33%2C26.195%2C10.805%2C26.74%2C10.224z%22/%3E%0A%3C/svg%3E");
-  background-position-x: 3px;
-  background-position-y: 5px;
+  background-position: 3px 5px;
   background-size: 97%;
 }
 
-/* line 179, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 178, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook {
   background-color: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
@@ -212,10 +211,9 @@
   top: 1px;
   width: 30px;
 }
-/* line 181, ../../../app/stylesheets/partials/anon-banner.scss */
+/* line 180, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-facebook:before {
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M14.367%2C26.995V16.987h-2.18V13.47h2.159c0%2C0%2C0-1.125%2C0-3.192c0-2.068%2C1.49-3.273%2C4.11-3.273%0A%09c2.619%2C0%2C3.312%2C0%2C3.312%2C0l-0.004%2C3.396c0%2C0-1.693%2C0-2.322%2C0s-0.902%2C0.573-0.902%2C0.88c0%2C0.306%2C0%2C2.25%2C0%2C2.25h3.271l-0.377%2C3.457%0A%09h-2.791l-0.031%2C10.005L14.367%2C26.995z%22/%3E%0A%3C/svg%3E");
-  background-position-x: 1px;
-  background-position-y: 0px;
+  background-position: 1px 0px;
   background-size: 95%;
 }

@@ -5,26 +5,27 @@
 
 /* line 18, ../../app/stylesheets/png.scss */
 .no-svg .logo-header {
-  background: url("../images/assets/shelbylogo.png") center 8px no-repeat transparent;
+  background: url("../images/assets/shelbylogo.png") center 9px no-repeat transparent;
+  background-size: 79%;
 }
-/* line 23, ../../app/stylesheets/png.scss */
+/* line 24, ../../app/stylesheets/png.scss */
 .no-svg .top-level:after {
   background: url("../images/assets/carrot.png") no-repeat center center transparent;
 }
-/* line 31, ../../app/stylesheets/png.scss */
+/* line 32, ../../app/stylesheets/png.scss */
 .no-svg .dashboard-search i {
   background: url("../images/assets/search.png") no-repeat center center;
 }
-/* line 39, ../../app/stylesheets/png.scss */
+/* line 40, ../../app/stylesheets/png.scss */
 .no-svg .guide-toggle .icon {
   background: url("../images/assets/guide.png") no-repeat center center transparent;
 }
-/* line 50, ../../app/stylesheets/png.scss */
+/* line 51, ../../app/stylesheets/png.scss */
 .no-svg .networks-twitter {
   background: #666666;
   background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, #666666;
 }
-/* line 56, ../../app/stylesheets/png.scss */
+/* line 57, ../../app/stylesheets/png.scss */
 .no-svg .networks-twitter.active {
   background: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #05c7ff), color-stop(100%, #00a2d1));
@@ -34,12 +35,12 @@
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #05c7ff, #00a2d1);
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #05c7ff, #00a2d1);
 }
-/* line 65, ../../app/stylesheets/png.scss */
+/* line 66, ../../app/stylesheets/png.scss */
 .no-svg .networks-facebook {
   background: #666666;
   background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, #666666;
 }
-/* line 72, ../../app/stylesheets/png.scss */
+/* line 73, ../../app/stylesheets/png.scss */
 .no-svg .networks-facebook.active {
   background: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
@@ -49,127 +50,127 @@
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -ms-linear-gradient(top, #0157b3, #013e80);
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, linear-gradient(top, #0157b3, #013e80);
 }
-/* line 84, ../../app/stylesheets/png.scss */
+/* line 85, ../../app/stylesheets/png.scss */
 .no-svg .video-score:before {
   content: url("../images/assets/score.png");
 }
-/* line 91, ../../app/stylesheets/png.scss */
+/* line 92, ../../app/stylesheets/png.scss */
 .no-svg .video-controls .roll-frame button {
   background: url("../images/assets/roll_action.png") no-repeat 0px -1px;
 }
-/* line 98, ../../app/stylesheets/png.scss */
+/* line 99, ../../app/stylesheets/png.scss */
 .no-svg .video-controls .save-frame button {
   background: url("../images/assets/saved_action.png") no-repeat center center;
 }
-/* line 105, ../../app/stylesheets/png.scss */
+/* line 106, ../../app/stylesheets/png.scss */
 .no-svg .video-controls .remove-frame button {
   background: url("../images/assets/saved_remove.png") no-repeat center center;
 }
-/* line 114, ../../app/stylesheets/png.scss */
+/* line 115, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-twitter:before {
   content: url('/images/../images/assets/twitter_stamp.png?1338995882');
 }
-/* line 120, ../../app/stylesheets/png.scss */
+/* line 121, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.png?1338995882');
 }
-/* line 126, ../../app/stylesheets/png.scss */
+/* line 127, ../../app/stylesheets/png.scss */
 .no-svg .video-player-play {
   background: url("../images/assets/player_play.png") center center no-repeat transparent;
 }
-/* line 131, ../../app/stylesheets/png.scss */
+/* line 132, ../../app/stylesheets/png.scss */
 .no-svg .video-player-play.pause {
   background: url("../images/assets/player_pause.png") center center no-repeat transparent;
 }
-/* line 138, ../../app/stylesheets/png.scss */
+/* line 139, ../../app/stylesheets/png.scss */
 .no-svg .video-player-volume {
   background: url("../images/assets/player_sound_on.png") center center no-repeat transparent;
 }
-/* line 142, ../../app/stylesheets/png.scss */
+/* line 143, ../../app/stylesheets/png.scss */
 .no-svg .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.png") center center no-repeat transparent;
 }
-/* line 149, ../../app/stylesheets/png.scss */
+/* line 150, ../../app/stylesheets/png.scss */
 .no-svg .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.png") center center no-repeat transparent;
 }
-/* line 155, ../../app/stylesheets/png.scss */
+/* line 156, ../../app/stylesheets/png.scss */
 .no-svg .video-player-roll {
   background: url("../images/assets/player_roll.png") center 6px no-repeat transparent;
 }
-/* line 164, ../../app/stylesheets/png.scss */
+/* line 165, ../../app/stylesheets/png.scss */
 .no-svg .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.png") no-repeat 0px center;
 }
-/* line 174, ../../app/stylesheets/png.scss */
+/* line 175, ../../app/stylesheets/png.scss */
 .no-svg .frame-rolling-completion-header h1.roll-type-public:before {
   content: url("../images/assets/rolls_public.png");
 }
-/* line 179, ../../app/stylesheets/png.scss */
+/* line 180, ../../app/stylesheets/png.scss */
 .no-svg .frame-rolling-completion-header h1.roll-type-private:before {
   content: url("../images/assets/rolls_private.png");
 }
-/* line 191, ../../app/stylesheets/png.scss */
+/* line 192, ../../app/stylesheets/png.scss */
 .no-svg .form-rolls-list .rolling-public-roll.new:before {
   content: "+";
 }
-/* line 194, ../../app/stylesheets/png.scss */
+/* line 195, ../../app/stylesheets/png.scss */
 .no-svg .form-rolls-list .rolling-public-roll:after {
   content: url("../images/assets/rolls_public.png");
 }
-/* line 200, ../../app/stylesheets/png.scss */
+/* line 201, ../../app/stylesheets/png.scss */
 .no-svg .form-rolls-list .rolling-private-roll:after {
   content: url("../images/assets/rolls_private.png");
 }
-/* line 210, ../../app/stylesheets/png.scss */
+/* line 211, ../../app/stylesheets/png.scss */
 .no-svg .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.png") no-repeat center center #00a2d1;
 }
-/* line 217, ../../app/stylesheets/png.scss */
+/* line 218, ../../app/stylesheets/png.scss */
 .no-svg .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.png") no-repeat center center #013e80;
 }
-/* line 224, ../../app/stylesheets/png.scss */
+/* line 225, ../../app/stylesheets/png.scss */
 .no-svg .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.png") no-repeat center center, #2f445b;
 }
-/* line 233, ../../app/stylesheets/png.scss */
+/* line 234, ../../app/stylesheets/png.scss */
 .no-svg .you-preferences-notifications input + span:after {
   background: url("../images/assets/switch.png") no-repeat center center, #fefefe;
 }
-/* line 245, ../../app/stylesheets/png.scss */
+/* line 246, ../../app/stylesheets/png.scss */
 .no-svg .about-external-twitter a {
   background: url("../images/assets/team_twitter.png") no-repeat center left transparent;
 }
-/* line 253, ../../app/stylesheets/png.scss */
+/* line 254, ../../app/stylesheets/png.scss */
 .no-svg .about-external-link a {
   background: url("../images/assets/team_web.png") no-repeat center left transparent;
 }
-/* line 263, ../../app/stylesheets/png.scss */
+/* line 264, ../../app/stylesheets/png.scss */
 .no-svg .logged-out-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 1px 2px transparent;
 }
-/* line 269, ../../app/stylesheets/png.scss */
+/* line 270, ../../app/stylesheets/png.scss */
 .no-svg .logged-out-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center transparent;
 }
-/* line 276, ../../app/stylesheets/png.scss */
+/* line 277, ../../app/stylesheets/png.scss */
 .no-svg .comment-overlay-prev {
   background: url("../images/assets/comment_arrow_left.png") no-repeat center center #303030;
 }
-/* line 281, ../../app/stylesheets/png.scss */
+/* line 282, ../../app/stylesheets/png.scss */
 .no-svg .comment-overlay-next {
   background: url("../images/assets/comment_arrow_right.png") no-repeat center center #303030;
 }
-/* line 289, ../../app/stylesheets/png.scss */
+/* line 290, ../../app/stylesheets/png.scss */
 .no-svg .email-gate-logo {
   background: url("../images/email-gate/landing_logo.png") no-repeat center center transparent;
 }
-/* line 294, ../../app/stylesheets/png.scss */
+/* line 295, ../../app/stylesheets/png.scss */
 .no-svg .email-gate-networks-twitter:before {
   background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 2px 4px transparent;
 }
-/* line 300, ../../app/stylesheets/png.scss */
+/* line 301, ../../app/stylesheets/png.scss */
 .no-svg .email-gate-networks-facebook:before {
   background: url("../images/assets/rolls_share_facebook_on.png") no-repeat -1px center transparent;
 }

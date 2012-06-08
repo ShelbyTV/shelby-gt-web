@@ -23,7 +23,7 @@
 }
 /* line 23, ../../../app/stylesheets/partials/frame.scss */
 .active-list-item:hover {
-  background-color: #aaa;
+  background-color: white;
 }
 /* line 27, ../../../app/stylesheets/partials/frame.scss */
 .active-list-item .active-frame {

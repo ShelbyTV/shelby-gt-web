@@ -170,8 +170,7 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include x-logged-out-networks-buttons($twitter-blue);
 	&:before{
 		background-image: url($icon-rolls-share-twitter-on);
-		background-position-x: 3px;
-		background-position-y: 5px;
+		background-position: 3px 5px;
 		background-size: 97%;
 	}
 }
@@ -180,8 +179,7 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include x-logged-out-networks-buttons($facebook-blue);
 	&:before{
 		background-image: url($icon-rolls-share-facebook-on);
-		background-position-x: 1px;
-		background-position-y: 0px;
+		background-position: 1px 0px;
 		background-size: 95%;
 	}
 }
