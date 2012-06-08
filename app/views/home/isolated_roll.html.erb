@@ -4,18 +4,14 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	<% if @video_info %>
-		<%= render :partial => "meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
-	<% else %>
-		<meta name="description" content="<%= Settings::Application.meta_description %>">
+	<% if @meta_info[:video_info] %>
+		<%= render :partial => "meta_info", :locals => { :meta_info => @meta_info} %>
 	<% end %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<% if @video_info %>
-	  <title>a shelby.tv video: <%= @video_info['video']['title'] %></title>
-	<% else %>
-		<title><%= Settings::Application.title %></title>
-	<% end %>
+  <title>
+    <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
+  </title>
 	
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">

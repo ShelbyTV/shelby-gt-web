@@ -4,11 +4,11 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <%= render :partial => "meta_info", :locals => { :video_info => @video_info, :user_info => @user_info, :permalink => @permalink } %>
+  <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>
-    <%= render :partial => "title_tag", :locals => { :video_info => @video_info, :user_info => @user_info} %>
+    <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
   </title>
 
 	<meta name="csrf-token" content="<%= @csrf_token %>">
@@ -83,21 +83,21 @@
     </div><!-- eo #lining -->
 
       <div class="main clearfix js-inactivity-preemption" role="sidebar">
-        <header id="js-header-guide" class="header-guide">
+        <header id="js-app-header" class="header-guide">
           <div id="header" role="banner">
             <!-- contents in guide-header.jst -->
           </div>
-          <div class="menu">
-						<div id="js-guide-presentation-selector" class="guide-presentation-selector">
-						  <!-- content filled in by GuidePresentationSelctorView -->
-						</div>
-						<div id="js-item-header">
-						  <!-- content filled in by ItemHeaderView -->
-						</div>
-						<div id="js-roll-action-menu" class="roll-action-menu">
-						  <!-- content filled in by RollActionMenuView -->
-						</div>
-          </div>
+				</header>
+        <header id="js-guide-header" class="menu">
+					<div id="js-guide-presentation-selector" class="guide-presentation-selector">
+					  <!-- content filled in by GuidePresentationSelctorView -->
+					</div>
+					<div id="js-item-header">
+					  <!-- content filled in by ItemHeaderView -->
+					</div>
+					<div id="js-roll-action-menu" class="roll-action-menu">
+					  <!-- content filled in by RollActionMenuView -->
+					</div>
         </header>
         <div id="js-guide-wrapper" class="content-body">
           <div id="guide">
