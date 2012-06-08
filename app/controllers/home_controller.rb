@@ -3,7 +3,6 @@ class HomeController < ApplicationController
   ##
   # If the request is made to a particular frame, then we should display the appropriate metatags
   #  (primarily for fb og, but also for any other bots)
-  #TODO: If the request is made to a roll, also display some meta tags
   def index
     
     # Get video and user info from shelby api for meta tags
@@ -25,7 +24,6 @@ class HomeController < ApplicationController
       else false
     end
     render 'isolated_roll' and return if @isolated_roll_id
-    #TODO: need to make sure we render stuff for SEO on the isolated_roll page
 
     #XXX ISOLATED_ROLL - HACKING allowing viewing
     if user_signed_in? or /isolated_roll\//.match(params[:path])
