@@ -2,19 +2,21 @@
 <% var creator = frame.get('creator') %>
 <% var creatorThumbnail = creator ? creator.get('user_image_original') : undefined %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
+<% var frameIsOnHeartedRoll = frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
 
   <header class="video-card-header clearfix">
-    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+    <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
       <% if(creatorThumbnail){ %>
         <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creator.get('nickname') %>'s avatar" title="<%= creator.get('nickname') %>">
       <% } else { %>
         <div class="frame-creator-avatar-missing"></div>
       <% } %>  
-
+    </a>
+    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
       <h1 class="frame-creator-roll">
-        <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+        <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
     <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
@@ -77,17 +79,6 @@
           <% } %>
         </div>
       <!-- /hearts -->
-    <div class="video-footer" style="display:none;">
-      <% var remainingMessageCount = messages.length %>
-      <a class="video-activity-toggle js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#"><span class="js-video-activity-toggle-verb"> Show</span> conversation <% if (remainingMessageCount) { %> <%= remainingMessageCount %> <% } %></a>			
-      <% if (shelby.models.guide.get('displayState') !== 'standardRoll' &&
-             frame.has('roll')) { %>
-        <a onclick="return false;" class="video-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-          <%= frameIsOnWatchLaterRoll ? 'Source' : frame.get('roll').get('title') %>
-        </a>
-      <% } %>
-    </div> 
-
     <ul class="frame-controls" type="toolbar">
       <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
@@ -99,7 +90,7 @@
       <li class="frame-controls-comments">
         <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="comments-frame-lining">
-            <% /*if (remainingMessageCount) { */%> <%= remainingMessageCount %> <%/* } */%>
+            <%= messages.length %>
           </i>
         </button>
       </li>

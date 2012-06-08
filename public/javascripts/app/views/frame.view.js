@@ -19,7 +19,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-remove-frame"                : "_removeFromWatchLater",
     "click .js-share-frame"                 : "_shareFrame",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
-    "click .js-frame-source"                : "_goToRoll",
+    "click .js-creator-personal-roll"       : "_goToCreatorPersonalRoll",
+    "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-upvote-frame"                : "_upvote",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
@@ -228,12 +229,21 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     return false;
   },
 
-  _goToRoll : function(){
-    if (!this.model.isOnRoll(shelby.models.user.get('watch_later_roll'))) {
+  _goToCreatorPersonalRoll : function(){
+    var creator = this.model.get('creator');
+
+    if (creator) {
+      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+    }
+
+  },
+
+  _goToSourceRoll : function(){
+    if (!this.model.isOnRoll(shelby.models.user.get('heart_roll_id'))) {
       shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
     } else {
-      // if the frame is on the watch later roll we actually want to go the roll
-      // that this frame was saved FROM
+      // if the frame is on the heart roll we actually want to go the roll
+      // that this frame was hearted FROM
       var ancestorId = _(this.model.get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
