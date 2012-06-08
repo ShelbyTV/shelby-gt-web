@@ -7,7 +7,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     "click #js-roll-delete" : "_confirmRollDelete",
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll",
-		"click .js-edit-roll" : "_toggleRollEditFunctions"
+		"click .js-edit-roll" : "_toggleRollEditFunctions",
+		"click #js-add-video" : "_addVideoViaURL"
   },
 
   el : '#js-roll-action-menu',
@@ -143,10 +144,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$el.find('.js-roll-add-leave-button').hide();
 			this.$el.find('.rolls-edit').show();
+			this.$el.find('#js-roll-add-video-area').show();
     }
     else{
       this.$el.find('.js-roll-add-leave-button').show();
 			this.$el.find('.rolls-edit').hide();
+			this.$el.find('#js-roll-add-video-area').hide();
     }
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
@@ -189,6 +192,15 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 	
 	_saveRollName : function(newTitle){
 		this.model.get('currentRollModel').save({title: newTitle});
+	},
+	
+	_addVideoViaURL : function(){
+		var _url = this.$('input#js-video-url-input').val();
+		// TODO: check that _url is a valid url, return error if not
+		this.model.get('currentRollModel').collection.create(
+			{url: _url, source: 'webapp'}, 
+			{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames'}
+		);
 	}
 
 });
