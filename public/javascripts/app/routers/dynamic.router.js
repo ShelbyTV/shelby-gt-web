@@ -217,7 +217,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       });
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
-      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){oneTimeSpinnerState.set('show', false);});
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){
+        oneTimeSpinnerState.set('show', false);
+        shelby.models.guide.set('disableSmartRefresh', true);
+      });
     } else {
       shelby.models.dashboard.fetch(fetchOptions);
     }
