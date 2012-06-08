@@ -306,7 +306,7 @@
          _index = _index % _frames.length;
         }
       } else {
-        index = 0;
+        _index = 0;
       }
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
