@@ -1,7 +1,7 @@
-<% if @video_info %>
-	a shelby.tv video: <%= @video_info['video']['title'] %>
-<% elsif @user_info %>
-	<%= @user_info['name'] %>'s Personal Video Roll on Shelby.tv
+<% if @meta_info[:video_info] %>
+	a shelby.tv video: <%= @meta_info[:video_info]['video']['title'] %>
+<% elsif @meta_info[:user_info] %>
+	<%= @meta_info[:user_info]['name'] %>'s Personal Video Roll on Shelby.tv
 <% else %>
 	<%= Settings::Application.title %>
 <% end %>

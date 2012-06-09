@@ -4,14 +4,12 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	<% if @video_info %>
-		<%= render :partial => "meta_info", :locals => { :video_info => @video_info, :permalink => @permalink } %>
-	<% else %>
-		<meta name="description" content="<%= Settings::Application.meta_description %>">
-	<% end %>
+  <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><%= Settings::Application.title %></title>
+  <title>
+    <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
+  </title>
   
   <meta name="viewport" content="width=device-width">
   <head profile="http://www.w3.org/2005/10/profile">
@@ -33,9 +31,9 @@
 
 <div class="content-wrapper <%= 'with-embed' if @video_embed %>">
 	
-	<% if @video_embed %>
+	<% if @meta_info[:video_embed] %>
 		<div class="embed-gate-wrapper">
-			<%=raw @video_embed %>
+			<%=raw @meta_info[:video_embed] %>
 			<h1 style="margin: 15px 0 10px;">Your friend discovered this video with Shelby.tv</h1>
 			<h2>
 				You have a very cool friend, because they have access to Shelby GT, our latest version, which delivers personalized streams of video curated by your friends. 
@@ -46,7 +44,7 @@
 		</div>
 	<% end -%>
 
-	<div class="email-gate-wrapper <%= 'with-embed' if @video_embed %>">
+	<div class="email-gate-wrapper <%= 'with-embed' if @meta_info[:video_embed] %>">
 	  <header class="email-gate-header clearfix">
 	    <h1 class="email-gate-logo ir">
 	      Shelby.tv
