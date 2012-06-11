@@ -84,6 +84,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       var haveWatchLaterMessage = firstMessage && (this.isOnRoll(viewingUser.get('watch_later_roll')));
       //true only if the first message of the "conversation uses creator info"
       return !haveCreatorMessage && !haveWatchLaterMessage;
+  },
+
+  getVideoThumbnailUrl : function() {
+    var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
+    return url ? url : null;
   }
 
 });

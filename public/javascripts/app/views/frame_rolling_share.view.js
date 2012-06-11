@@ -110,6 +110,9 @@
           shelby.models.rollFollowings.add(newRoll);
           self.options.frame.reRoll(newRoll, function(newFrame){
             self.options.frame = newFrame;
+            // the backend will later assign a thumbnail to the new roll, but we won't see that
+            // until the next roll followings refresh, so set it ourselves on the new roll model
+            newRoll.set('thumbnail_url', self.options.frame.getVideoThumbnailUrl());
             ShareView.prototype._share.call(self);
           });
         }});
