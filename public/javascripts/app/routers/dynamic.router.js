@@ -43,12 +43,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //  then show them the roll
     // otherwise just show the roll view
     if (shelby.userSignedIn() && params && params.gt_ref_roll){
-      shelby.models.user.addUserToRoll(params.gt_ref_roll, function(){
-        $('.rolls-add').text('Leave')['addClass']('rolls-leave');
+      var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
+      rollToJoin.joinRoll(function(){
         self._setupRollViewWithCallback(rollId, frameId, options);
       });
-    }
-    else {
+    } else {
       self._setupRollViewWithCallback(rollId, frameId, options);
     }
   },
