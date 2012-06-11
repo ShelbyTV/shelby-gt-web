@@ -47,6 +47,8 @@ class HomeController < ApplicationController
       when "chriskurdziel.tv" then "4f901d4bb415cc661405fde9"
       when "bohrmann.tv" then "4f8f81bbb415cc4762002d7a"
       when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
+      when "syria.shelby.tv" then "4fccffc188ba6b7a82000b92"
+      when "nowplaying.shelby.tv" then "4fcd0ca888ba6b07e30001d7"
       when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
       when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
       when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
