@@ -17,15 +17,15 @@
       PagingListView.prototype._cleanup.call(this);
     },
 
-    internalAddOne : function(item){
+    internalAddOne : function(item, collection, options){
       try {
-        PagingListView.prototype.internalAddOne.call(this, item);
+        PagingListView.prototype.internalAddOne.call(this, item, collection, options);
       } catch (error) {
 				// We are not loading G. Analytics in development env so just log to console.
 				if(typeof(_gaq)!=="undefined" && _gaq.push){
-				  _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', error.message]);
+          _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', error.message]);
 				} else {
-				  console.log("ERROR:", error.message, error.stack);
+          console.log("ERROR:", error.message, error.stack);
 				}
       }
     },

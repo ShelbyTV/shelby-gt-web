@@ -13,9 +13,13 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
     this.undelegateEvents();
   },
 
-  renderChild: function(view) {
+  renderChild: function(view, childIndex) {
     view.render();
-    this.children.push(view);
+    if (typeof(childIndex) !== 'undefined'){
+      this.children.splice(childIndex, 0, view);
+    } else {
+      this.children.push(view);
+    }
     view.parent = this;
   },
 
@@ -29,6 +33,12 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   insertChildBefore: function(view, selector) {
     this.renderChild(view);
     this.$(selector).before(view.el);
+  },
+
+  insertChildAt : function(view, childIndex) {
+    var insertBeforeThis = this.children.value()[childIndex].el;
+    this.renderChild(view, childIndex);
+    this.$(insertBeforeThis).before(view.el);
   },
 
   prependChild : function(view, showFn){

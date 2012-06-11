@@ -1,24 +1,24 @@
-<% if @video_info or @user_info %>
+<% if @meta_info[:video_info] or @meta_info[:user_info] %>
 	<!-- For FB -->
 	<meta property="fb:app_id" 	content="<%= Settings::Facebook.facebook_app_id %>" /> 
 	<meta property="og:type" 		content="video.other" />
-	<meta property="og:url"			content="http://<%= @permalink %>" /> 
-	<meta property="og:video:url" content="http://<%= @permalink %>" /> 
-	<meta property="og:video:secure_url" content="https://<%= @permalink %>" /> 
+	<meta property="og:url"			content="http://<%= @meta_info[:permalink] %>" /> 
+	<meta property="og:video:url" content="http://<%= @meta_info[:permalink] %>" /> 
+	<meta property="og:video:secure_url" content="https://<%= @meta_info[:permalink] %>" /> 
 	<meta property="og:locale"      content="EN_us" />
 <% end %>
 
-<% if @video_info %>
-	<meta property="og:title" content="<%= @video_info['video']['title'] %>" /> 
-	<meta property="og:image" content="<%= @video_info['video']['thumbnail_url'] %>" />
-	<meta property="og:description" content="<%= @video_info['video']['description'] %>" />
-	<meta name="description" content="<%= @video_info['video']['title'] %>: <%= @video_info['video']['description'] %>">
-<% elsif @user_info %>
-	<% user_roll_title = "#{@user_info['name']}'s Personal Video Roll on Shelby.tv" %>
-	<% user_roll_description = "#{@user_info['name']}'s Personal Video Roll is the video that they've shared online | Shelby.tv - the best way to watch video on the web and iOS." %>
+<% if @meta_info[:video_info] %>
+	<meta property="og:title" content="<%= @meta_info[:video_info]['video']['title'] %>" /> 
+	<meta property="og:image" content="<%= @meta_info[:video_info]['video']['thumbnail_url'] %>" />
+	<meta property="og:description" content="<%= @meta_info[:video_info]['video']['title'] %>: <%= @meta_info[:video_info]['video']['description'] %> | Shelby.tv - the best way to watch video on the web and iOS." />
+	<meta name="description" content="<%= @meta_info[:video_info]['video']['title'] %>: <%= @meta_info[:video_info]['video']['description'] %> | Shelby.tv - the best way to watch video on the web and iOS.">
+<% elsif @meta_info[:user_info] %>
+	<% user_roll_title = "#{@meta_info[:user_info]['name']}'s Personal Video Roll on Shelby.tv" %>
+	<% user_roll_description = "#{@meta_info[:user_info]['name']}'s Personal Video Roll is the video that they've shared online | Shelby.tv - the best way to watch video on the web and iOS." %>
 	<meta property="og:title" content="<%= user_roll_title %>" /> 
 	<meta property="og:description" content="<%= user_roll_description %>" />	
-	<meta property="og:image" content="<%= @user_info['user_image_original'] %>" />
+	<meta property="og:image" content="<%= @meta_info[:user_info]['user_image_original'] %>" />
 	<meta name="description" content="<%= user_roll_description %>" />	
 <% else %>
  	<meta name="description" content="<%= Settings::Application.meta_description %>">	 

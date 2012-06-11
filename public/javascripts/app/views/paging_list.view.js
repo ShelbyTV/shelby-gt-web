@@ -1,4 +1,4 @@
-libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
+libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   
   _numItemsLoaded : 0,
 
@@ -8,7 +8,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     "click .js-load-more:not(.js-loading)" : "_loadMore"
   },
 
-  options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
+  options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     insert : {
       position : 'before',
       selector : '.js-load-more'
@@ -23,15 +23,28 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
 
   initialize : function(){
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
-    libs.shelbyGT.ListView.prototype.initialize.call(this);
+    libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     $('#js-guide-wrapper').unbind('scroll');
-    libs.shelbyGT.ListView.prototype._cleanup.call(this);
+    libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
+  },
+
+  _attachMasterCollection : function(){
+    libs.shelbyGT.SmartRefreshListView.prototype._attachMasterCollection.call(this);
+    this._numItemsLoaded = this.options.masterCollection.length;
+  },
+
+  _prepareMasterCollection : function() {
+    libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
+    if (this.options.doStaticRender) {
+      this._numItemsLoaded = this.model.get(this.options.collectionAttribute).models.length;
+    }
   },
 
   _initInfiniteScrolling : function(){
@@ -82,9 +95,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.ListView.extend({
     this.$('.js-load-more').hide();
   },
 
-  sourceAddOne : function(item){
+  _addItem : function(item, options){
     this._numItemsLoaded++;
-    libs.shelbyGT.ListView.prototype.sourceAddOne.call(this, item);
+    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, options);
   },
 
   _loadMore : function(){
