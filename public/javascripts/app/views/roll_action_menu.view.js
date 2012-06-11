@@ -196,11 +196,9 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 	
 	_addVideoViaURL : function(){
 		var _url = this.$('input#js-video-url-input').val();
-		// TODO: check that _url is a valid url, return error if not
-		//
 		var regex = new RegExp(/[\-a-zA-Z0-9@:%_\+.~#?&\/=]{2,256}\.[a-z]{2,4}\b(\/[\-a-zA-Z0-9@:%_\+.~#?&\/=]*)?/gi);
     
-		if (urls = regex.exec(_url)) {
+		if (regex.test(_url)) {
 			var self = this;
 			var frame = new libs.shelbyGT.FrameModel();
 			frame.save(
@@ -209,16 +207,22 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 				wait: true,
 				global: false,
 				success: function(frame){
-					self.model.get('currentRollModel').get('frames').add(frame,{at:0});
+					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
+					this.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
 				},
-				error: function(){
-					console.log("args:",arguments);
+				error: function(a,b,c){
+					if (b.status == 404) {
+						self._addVideoError("sorry, something went wrong with that one");
+					} else { alert("sorry, something went wrong.") };
 				}
 			});
     } else {
-			// show error in ui
-      console.log("not a good url :/");
+			this._addVideoError("that's not a valid url");
     }
+	},
+	
+	_addVideoError: function(message){
+		this.$('#js-video-url-input').addClass('error').attr('placeholder', message);
 	}
 
 });

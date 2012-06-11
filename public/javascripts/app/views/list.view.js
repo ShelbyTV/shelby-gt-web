@@ -136,7 +136,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   sourceAddOne : function(item, collection, options){
-		console.log("adding one", arguments);
     if (!this._filter || this._filter(item)) {
       this._displayCollection.add(item, options);
     }
