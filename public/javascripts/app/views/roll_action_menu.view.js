@@ -197,10 +197,28 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 	_addVideoViaURL : function(){
 		var _url = this.$('input#js-video-url-input').val();
 		// TODO: check that _url is a valid url, return error if not
-		this.model.get('currentRollModel').collection.create(
-			{url: _url, source: 'webapp'}, 
-			{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames'}
-		);
+		//
+		var regex = new RegExp(/[\-a-zA-Z0-9@:%_\+.~#?&\/=]{2,256}\.[a-z]{2,4}\b(\/[\-a-zA-Z0-9@:%_\+.~#?&\/=]*)?/gi);
+    
+		if (urls = regex.exec(_url)) {
+			var self = this;
+			var frame = new libs.shelbyGT.FrameModel();
+			frame.save(
+				{url: _url, source: 'webapp'},
+				{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames', 
+				wait: true,
+				global: false,
+				success: function(frame){
+					self.model.get('currentRollModel').get('frames').add(frame,{at:0});
+				},
+				error: function(){
+					console.log("args:",arguments);
+				}
+			});
+    } else {
+			// show error in ui
+      console.log("not a good url :/");
+    }
 	}
 
 });

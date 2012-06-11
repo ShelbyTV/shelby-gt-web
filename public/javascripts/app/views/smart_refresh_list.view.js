@@ -26,26 +26,26 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     }
   },
 
-  sourceAddOne : function(item){
+  sourceAddOne : function(item, collection, options){
     if (this.options.doSmartRefresh) {
       // there's no way to effectively specify add:true for a Backbone Relational collection
       // we can simulate it by storing all of the contents the relational collection ever loaded,
       // and using this as a surrogate for the relational collection itself when re-filtering
       if (!this.options.collection && this.options.simulateAddTrue) {
-        this._addIfNew(item);
+        this._addIfNew(item, collection);
       }
     } else {
-      this._addItem(item);
+      this._addItem(item, collection, options);
     }
   },
 
-  _addIfNew : function(item) {
+  _addIfNew : function(item, collection) {
     switch (this.options.doCheck) {
       case libs.shelbyGT.SmartRefreshCheckType.tail :
         var tailItem = this._simulatedMasterCollection.last();
         var doAddToTail = this._shouldAdd(item, tailItem);
         if (doAddToTail) {
-          this._addItem(item);
+          this._addItem(item, collection);
         }
         break;
       case libs.shelbyGT.SmartRefreshCheckType.head :
@@ -53,7 +53,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         var doAddToHead = this._shouldAdd(item, headItem, true);
         if (doAddToHead) {
           var headAddIndex = this.options.initFixedHead ? this._fixedHeadIndex : 0;
-          this._addItem(item, {at:headAddIndex});
+          this._addItem(item, collection, {at:headAddIndex});
           if (this.options.initFixedHead) {
             this._updateFixedHeadIndex();
           }
@@ -63,14 +63,14 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         var compareItem = this._simulatedMasterCollection.last();
         var doAdd = this._shouldAdd(item, compareItem);
         if (doAdd) {
-          this._addItem(item);
+          this._addItem(item, collection);
           return;
         }
         compareItem = this.options.initFixedHead ? this._fixedHeadItem : this._simulatedMasterCollection.first();
         doAdd = this._shouldAdd(item, compareItem, true);
         if (doAdd) {
           var addIndex = this.options.initFixedHead ? this._fixedHeadIndex : 0;
-          this._addItem(item, {at:addIndex});
+          this._addItem(item, collection, {at:addIndex});
           if (this.options.initFixedHead) {
             this._updateFixedHeadIndex();
           }
@@ -98,14 +98,14 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
       return doAdd;
   },
 
-  _addItem : function(item, options) {
+  _addItem : function(item, collection, options) {
     if (this.options.doSmartRefresh) {
       this._simulatedMasterCollection.add(item, options);
       if (!this._filter || this._filter(item)) {
         this._displayCollection.add(item, options);
       }
     } else {
-      libs.shelbyGT.ListView.prototype.sourceAddOne.call(this, item);
+      libs.shelbyGT.ListView.prototype.sourceAddOne.call(this, item, collection, options);
     }
   },
 
