@@ -76,6 +76,21 @@
 	top: 22px;
 }
 
+/* ------ Roll Add Area */
+.roll-add-video-area {
+	display: none; 
+	input {
+		width: 78%;
+		margin: 0px 13px 10px;
+		padding: 4px;
+	}
+	.add-video {
+		@include x-button-primer;
+		margin-top: 0;
+	}
+}
+
+
 /* unused
 .rolls-list-nav {
 	@extend .notype;
