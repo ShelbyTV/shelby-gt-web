@@ -7,7 +7,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     "click #js-roll-delete" : "_confirmRollDelete",
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll",
-    "click .js-edit-roll" : "_toggleRollEditFunctions"
+		"click .js-edit-roll" : "_toggleRollEditFunctions",
+		"click #js-add-video" : "_addVideoViaURL"
   },
 
   el : '#js-roll-action-menu',
@@ -153,6 +154,14 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$el.find('.js-roll-add-leave-button').show();
       this.$el.find('.rolls-edit').hide();
     }
+		// hide add video area if roll is collaboritive or if user is creator
+		if ((currentRollModel.get('creator_id') === shelby.models.user.id) || currentRollModel.get('collaborative')) {
+			this.$el.find('#js-roll-add-video-area').show();
+		}
+		else {
+			this.$el.find('#js-roll-add-video-area').hide();
+		}
+		
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
@@ -197,6 +206,41 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   _saveRollName : function(newTitle){
     this.model.get('currentRollModel').save({title: newTitle});
-  }
+  },
+	
+	_addVideoViaURL : function(){
+		var _url = this.$('input#js-video-url-input').val();
+		
+		// check if url given is valid
+		var regex = new RegExp(/^(https?):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i);
+		if (regex.test(_url)) {
+			var self = this;
+			var frame = new libs.shelbyGT.FrameModel();
+			frame.save(
+				{url: _url, source: 'webapp'},
+				{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames', 
+				wait: true,
+				global: false,
+				success: function(frame){
+					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
+					this.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
+				},
+				error: function(a,b,c){
+					if (b.status == 404) {
+						self._addVideoError("sorry, something went wrong with that one");
+					} 
+					else { 
+						alert("sorry, something went wrong.");
+					};
+				}
+			});
+    } else {
+			this._addVideoError("that's not a valid url");
+    }
+	},
+	
+	_addVideoError: function(message){
+		this.$('#js-video-url-input').addClass('error').attr('placeholder', message).val('');
+	}
 
 });
