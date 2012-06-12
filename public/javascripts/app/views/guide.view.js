@@ -18,18 +18,28 @@
 
     _listView : null,
 
+    _dashboardMasterCollection : null,
+
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
+      Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
+      this._dashboardMasterCollection = new Backbone.Collection();
+      if (shelby.models.dashboard) {
+        this._dashboardMasterCollection.reset(shelby.models.dashboard.get('dashboard_entries').models);
+      }
     },
 
     _cleanup : function() {
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
+      Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
 
     _onGuideModelChange : function(model){
@@ -52,7 +62,8 @@
     },
 
     _setGuideTop : function(){
-      $('#js-guide-wrapper').css('top', $('#js-header-guide').height());
+      var allHeadersHeight = _.reduce($(".main > header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-wrapper').css('top', allHeadersHeight);
     },
 
     _mapAppendChildView : function(guideModel){
@@ -62,11 +73,13 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doStaticRender : true,
               fetchParams : {
                 include_children : true,
                 sinceId : this.model.get('sinceId')
               },
-              limit : shelby.config.pageLoadSizes.dashboard
+              limit : shelby.config.pageLoadSizes.dashboard,
+              masterCollection : this._dashboardMasterCollection
             },
             spinner : true
           };
@@ -236,15 +249,27 @@
       }
     },
 
+    _onDisableSmartRefresh : function(guideModel, disableSmartRefresh){
+      if (disableSmartRefresh) {
+        if (this._listView) {
+          this._listView.options.doSmartRefresh = false;
+        }
+        guideModel.set('disableSmartRefresh', false);
+      }
+    },
+
     _onChangeVideo : function(userDesiresModel, videoChangeValue){
       if (typeof videoChangeValue==='undefined') return false;
       this._skipVideo(videoChangeValue);
     },
 
+    _onPlaybackNext : function(){
+      this._skipVideo(1);
+    },
+
     // appropriatly changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
       var self = this,
-          _currentModel,
           _frames,
           _index,
           _currentFrame = shelby.models.guide.get('activeFrameModel');
@@ -263,24 +288,37 @@
                 limit : shelby.config.pageLoadSizes.dashboard
               },
               success: function(model, response){
-                self._nextVideo();
+                this._dashboardMasterCollection.reset(model.get('dashboard_entries').models);
+                self._skipVideo();
               }
             });
             return;
           }
-          _currentModel = shelby.models.dashboard;
-          _frames = _.map(shelby.models.dashboard.get('dashboard_entries').models, function(c){
-            return c.get('frame');
-          });
+          var dashboardSourceCollection;
+          if (this._dashboardMasterCollection.isEmpty()) {
+            dashboardSourceCollection = _(shelby.models.dashboard.get('dashboard_entries').models);
+          } else {
+            dashboardSourceCollection = this._dashboardMasterCollection;
+          }
+          _frames = dashboardSourceCollection.pluck('frame');
          break;
         case libs.shelbyGT.DisplayState.standardRoll :
         case libs.shelbyGT.DisplayState.watchLaterRoll :
-          _currentModel = this.model.get('currentRollModel');
-          _frames = _currentModel.get('frames').models;
+          _frames = this.model.get('currentRollModel').get('frames').models;
           break;
       }
       
-      _index = (_frames.indexOf(_currentFrame) + skip) % _frames.length;
+      var _frameInCollection = _(_frames).find(function(frame){return frame.id == _currentFrame.id;});
+      if (_frameInCollection) {
+        _index = _frames.indexOf(_frameInCollection) + skip;
+        if (_index < 0) {
+          _index = _frames.length - 1;
+        } else {
+         _index = _index % _frames.length;
+        }
+      } else {
+        _index = 0;
+      }
 
       shelby.models.guide.set('activeFrameModel', _frames[_index]);
     }

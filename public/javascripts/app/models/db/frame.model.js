@@ -36,9 +36,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       }
       options.url = url;
     }
-    if (method==='create' && options.url.indexOf('/watched')===-1){
-      options.url+='&include_children=true';
-    }
     return libs.shelbyGT.ShelbyBaseModel.prototype.sync.call(this, method, model, options);
   },
 
@@ -54,7 +51,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   reRoll : function(roll, onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
-    var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id;
+    var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id+'&include_children=true';
     frameToReroll.save(null, {url:url,success:onSuccess});
   },
 
@@ -88,6 +85,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       var haveWatchLaterMessage = firstMessage && (this.isOnRoll(viewingUser.get('watch_later_roll')));
       //true only if the first message of the "conversation uses creator info"
       return !haveCreatorMessage && !haveWatchLaterMessage;
+  },
+
+  getVideoThumbnailUrl : function() {
+    var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
+    return url ? url : null;
   }
 
 });

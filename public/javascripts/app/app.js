@@ -43,7 +43,7 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
     xhr.abort();
   }
   // attach the API's csrf token to the request for logged in users
-  if (options.type != 'GET' && shelby.models.user) {
+  if (options.type != 'GET' && shelby.models.user && !options.no_csrf) {
     var token = $('meta[name=csrf-token]').attr('content');
     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
   }
@@ -52,7 +52,13 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
 // global ajax error handling to handle users who are not authenticated and other unexpected errors
 // disable for more specific error handling by using the jQuery.ajax global:false option
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
-  libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
+  var exec = ajaxSettings.error || libs.shelbyGT.defaultOnError;
+  exec(event, jqXHR, ajaxSettings, thrownError);
+  /*if (ajaxSettings.error) { //we should allow overrides
+    ajaxSettings.error(event, jqXH);
+  } else {
+    libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
+  }*/
 });
 
 //---------------------------------------------------------
