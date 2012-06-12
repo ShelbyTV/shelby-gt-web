@@ -5,20 +5,22 @@
   libs.utils.rhombus = {
 
     _api_root : function(){
-      return window.location.host.indexOf('localhost')!==-1 ? 'http://localhost:3010' : 'http://localhost:3010';
+      return window.location.host.indexOf('localhost')!==-1 ? 'http://localhost.shelby.tv:3010' : 'http://localhost.shelby.tv:3010';
     }, 
     
     _post : function(cmd, args){
 
-      var data = [];
+      var data = {
+        args : []
+      };
 
       Object.keys(args).forEach(function(k){
-        data.push(args[k]);
+        data.args.push(args[k]);
       });
 
       var opts = {
         type : 'POST',
-        url : this.api_root()+'/'+cmd,
+        url : this._api_root()+'/'+cmd,
         data : data,
         error : function(){
           console.log(arguments);

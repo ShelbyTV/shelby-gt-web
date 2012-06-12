@@ -1,7 +1,13 @@
 require 'shelby_api'
 
 class ApplicationController < ActionController::Base
+  before_filter :setup_rhombus_auth
   protect_from_forgery
+
+  def setup_rhombus_auth
+    puts 'SETTING UP RHOMBUS'
+    cookies[:_rhombus_auth] = Base64.encode64('shelby_rhombus')
+  end
   
   ##
   # Simple helper to let us know if user is signed in:
