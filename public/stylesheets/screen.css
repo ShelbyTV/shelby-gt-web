@@ -1117,10 +1117,11 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #7f8789, #4e5354);
   float: right;
   height: inherit;
+  cursor: pointer;
   width: 46px;
 }
 
-/* line 64, ../../app/stylesheets/partials/roll-item.scss */
+/* line 65, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1131,7 +1132,7 @@ a:hover, a:visited, a:active {
   margin: 0 3px;
   text-align: center;
 }
-/* line 73, ../../app/stylesheets/partials/roll-item.scss */
+/* line 74, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -1140,13 +1141,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 82, ../../app/stylesheets/partials/roll-item.scss */
+/* line 83, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
 
-/* line 87, ../../app/stylesheets/partials/roll-item.scss */
+/* line 88, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-list {
   height: inherit;
   margin: 0;
@@ -1154,7 +1155,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+/* line 95, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail {
   background-color: #111;
   height: inherit;
