@@ -1,0 +1,41 @@
+@import "base";
+
+.frame-rolling-options{
+  
+}
+
+.roll-options {
+  padding: 0 10px 10px;
+}
+
+.roll-options-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.roll-options-input {
+  @include inputfont;
+  @include opacity(0.8);
+  @include roundies(input);
+
+  border: 1px solid $inset;
+  display:block;
+  padding: 5px;
+  margin-bottom:5px;
+  width: 100%;
+
+  &:focus{
+    @include transition-property('opacity');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+    @include opacity(1);
+  }
+}
+
+.roll-options-submit {
+  @include x-button-primer($shelby-blue);
+
+  float: right;
+  width: 33%;
+}

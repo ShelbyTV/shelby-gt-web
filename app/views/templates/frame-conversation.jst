@@ -5,24 +5,28 @@
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 
 <div class="guide-overlay-header conversation-header">
-  <div class="overlay-title-bar">
+  <div class="guide-overlay-title">
     <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Back
     </button>
     <h2>Comments</h2>
   </div>
   
-  <div class="context">
-    <div class="frame-thumbnail">
+  <div class="guide-overlay-context">
+    <div class="guide-overlay-context-thumbnail">
       <% if(frame.get('video').get('thumbnail_url')) { %>
         <img class="" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
       <% } else { %>
         <img class="video-thumbnail-missing" src="/images/assets/missing_thumb.svg" alt="posted by <%= thumbnailText %>" title="Thumbnail for video <%= thumbnailText %> is missing">
       <% } %>
     </div>
-    <div class="copy">
-      <h3 class="frame-creator"><%= creator.get('nickname') %></h3>
-      <h2 class="frame-title"><%= frame.get('video').get('title') %></h2>
+    <div class="guide-overlay-context-overview">
+      <h3 class="guide-overlay-context-creator">
+        <%= creator.get('nickname') %>
+      </h3>
+      <h2 class="guide-overlay-context-title">
+        <%= frame.get('video').get('title') %>
+      </h2>
     </div>
   </div>
   

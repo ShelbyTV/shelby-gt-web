@@ -21,9 +21,13 @@
 	}
 
 	li {
-		border-bottom:  1px solid $rolls-inset;
-		border-top:  1px solid $rolls-outset;
+		border-bottom:  1px solid $inset;
+		border-top:  1px solid $outset;
 		padding: $defaultMargin/2;
+
+		&:last-child {
+			border-bottom: none;
+		}
 	}
 
 }

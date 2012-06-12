@@ -1,15 +1,22 @@
 <form class="clearfix">
-
   <fieldset class="roll-options">
-    <label for="new-roll-name">Roll Name</label>
-    <input name="new-roll-name" id="new-roll-name" class="" placeholder="Roll name..." type="text">
-  
-    <label for="new-roll-recipients">Share With</label>
-    <input name="new-roll-recipients" id="new-roll-receipients" class="" placeholder="Email Addresses..." type="email" multiple="multiple">
+    <label for="new-roll-name" class="roll-options-label">Roll Name</label>
+    <input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="Roll name..." type="text">
+
+    <label for="new-roll-recipients" class="roll-options-label">Share With</label>
+    <input name="new-roll-recipients" id="new-roll-receipients" class="roll-options-input" placeholder="Separate email addresses with commas..." type="email" multiple="multiple">
   </fieldset>
   
-  <input id="new-roll-public" name="new-roll-public" type="checkbox" checked> public?
-  
-  <button onclick="return false;" id="new-roll-create" type="submit">Roll It</button>
-
+  <fieldset class="roll-options">
+    <label class="roll-options-label">Status</label><br>
+    <input id="new-roll-public" name="new-roll-status" type="radio" checked>    
+    <label for="new-roll-public" class="roll-options-label">Public</label> - Lets everyone see this roll.
+    <br>
+    <input id="new-roll-private" name="new-roll-status" type="radio">    
+    <label for="new-roll-private" class="roll-options-label">Private</label> - Only people you invite see this roll.
+  </fieldset>
+    
+  <fieldset class="roll-options">    
+    <button onclick="return false;" id="new-roll-create" class="roll-options-submit" type="submit">Roll It</button>
+  </fieldset>
 </form>

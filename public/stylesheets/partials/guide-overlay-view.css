@@ -34,13 +34,13 @@
 
 /* common to many guide overlays */
 /* line 20, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar {
+.guide-overlay-title {
   background-color: #35383a;
   border-bottom: 1px solid black;
   height: 46px;
 }
 /* line 25, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar .back {
+.guide-overlay-title .back {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
   background: -webkit-linear-gradient(top, #404344, #27292a);
@@ -69,48 +69,91 @@
   top: 0;
 }
 /* line 33, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar h2 {
+.guide-overlay-title h2 {
   line-height: 2.25;
   text-align: center;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 /* line 41, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context {
+.guide-overlay-context {
   background-color: #35383a;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-bottom: 1px solid black;
-  height: 64px;
-  padding: 11px 0 0 8px;
-}
-/* line 47, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .frame-thumbnail {
-  float: left;
-  max-height: 42px;
+  border-top: 1px solid #343434;
+  height: 150px;
+  position: relative;
   overflow: hidden;
-  width: 74px;
 }
 /* line 53, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .frame-thumbnail img {
-  max-width: 74px;
+.guide-overlay-context:after {
+  -moz-box-shadow: 0 0 139px 31px black;
+  -webkit-box-shadow: 0 0 139px 31px black;
+  -o-box-shadow: 0 0 139px 31px black;
+  box-shadow: 0 0 139px 31px black;
+  bottom: 0;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
 }
-/* line 58, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy {
-  margin-left: 74px;
-  padding: 5px 0 0 10px;
+
+/* line 64, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
-/* line 62, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy .frame-creator {
+/* line 71, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview:after {
+  -moz-box-shadow: 0 0 86px 59px black;
+  -webkit-box-shadow: 0 0 86px 59px black;
+  -o-box-shadow: 0 0 86px 59px black;
+  box-shadow: 0 0 86px 59px black;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 80, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator {
   color: #999;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 3px;
 }
-/* line 69, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy .frame-title {
+
+/* line 87, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   color: #ccc;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
+  width: inherit;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* line 98, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail {
+  height: inherit;
+  overflow: hidden;
+}
+/* line 103, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail img {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
+  margin-top: -25%;
   width: 100%;
-  padding: 0;
 }

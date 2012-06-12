@@ -17,7 +17,7 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   },
   
   _doPosition: function(){
-    var allHeadersHeight = _.reduce($("#js-app-header"), function(memo, el){ return memo + $(el).height(); }, 0);
+    var allHeadersHeight = _.reduce($(".js-app-header"), function(memo, el){ return memo + $(el).height(); }, 0);
     this.$el.css({top:allHeadersHeight, bottom:0});
   }
   

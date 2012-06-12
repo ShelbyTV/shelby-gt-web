@@ -39,7 +39,7 @@
           frameRollingState : this._frameRollingState
         }
       );
-      this.appendChildInto(newRollView, '.new-roll');
+      this.appendChildInto(newRollView, '.js-rolling-main-new-roll');
       
       //existing Rolls
       var rollsListView = new RollingSelectionListView(
@@ -50,7 +50,7 @@
           doStaticRender : true
         }
       );
-      this.appendChildInto(rollsListView, '.existing-rolls-list');
+      this.appendChildInto(rollsListView, '.js-existing-rolls-list');
 
       this.insertIntoDom(false);
     },

@@ -6,7 +6,6 @@
 	overflow-y: scroll;
 
 	& > li {
-	//h2 { <<< HOVER HACK, SHOULD BE AN ANCHOR ELEMENT, EVENTUALLY
 		&:first-child {
 			@include border-radius($radius - 1 $radius - 1 0 0);
 	
@@ -27,9 +26,14 @@
 	}
 }
 
+.rolling-main-header {
+	padding: 10px;
+}
+
 .rolling-main-done  {
 	@include x-button-primer($shelby-blue);
 }
+
 
 .rolling-main-social  {
 	@extend .rolling-main-done;
@@ -52,5 +56,5 @@
 .rolling-frame {
 	@include roundies;
 
-	background-color: #494949;	
+//	background-color: #494949;	
 }

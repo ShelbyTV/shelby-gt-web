@@ -890,13 +890,13 @@ a:hover, a:visited, a:active {
 
 /* common to many guide overlays */
 /* line 20, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar {
+.guide-overlay-title {
   background-color: #35383a;
   border-bottom: 1px solid black;
   height: 46px;
 }
 /* line 25, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar .back {
+.guide-overlay-title .back {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
   background: -webkit-linear-gradient(top, #404344, #27292a);
@@ -925,50 +925,93 @@ a:hover, a:visited, a:active {
   top: 0;
 }
 /* line 33, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .overlay-title-bar h2 {
+.guide-overlay-title h2 {
   line-height: 2.25;
   text-align: center;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 /* line 41, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context {
+.guide-overlay-context {
   background-color: #35383a;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-bottom: 1px solid black;
-  height: 64px;
-  padding: 11px 0 0 8px;
-}
-/* line 47, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .frame-thumbnail {
-  float: left;
-  max-height: 42px;
+  border-top: 1px solid #343434;
+  height: 150px;
+  position: relative;
   overflow: hidden;
-  width: 74px;
 }
 /* line 53, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .frame-thumbnail img {
-  max-width: 74px;
+.guide-overlay-context:after {
+  -moz-box-shadow: 0 0 139px 31px black;
+  -webkit-box-shadow: 0 0 139px 31px black;
+  -o-box-shadow: 0 0 139px 31px black;
+  box-shadow: 0 0 139px 31px black;
+  bottom: 0;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
 }
-/* line 58, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy {
-  margin-left: 74px;
-  padding: 5px 0 0 10px;
+
+/* line 64, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
-/* line 62, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy .frame-creator {
+/* line 71, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview:after {
+  -moz-box-shadow: 0 0 86px 59px black;
+  -webkit-box-shadow: 0 0 86px 59px black;
+  -o-box-shadow: 0 0 86px 59px black;
+  box-shadow: 0 0 86px 59px black;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 80, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator {
   color: #999;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 3px;
 }
-/* line 69, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay .context .copy .frame-title {
+
+/* line 87, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   color: #ccc;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
+  width: inherit;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* line 98, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail {
+  height: inherit;
+  overflow: hidden;
+}
+/* line 103, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail img {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
+  margin-top: -25%;
   width: 100%;
-  padding: 0;
 }
 
 /* Welcome to Compass.
@@ -1602,7 +1645,7 @@ body.isolated-roll .guide-education {
 
 /* line 240, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1610,12 +1653,12 @@ body.isolated-roll .guide-education {
 
 /* line 250, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 257, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 262, ../../app/stylesheets/partials/frame.scss */
@@ -2280,7 +2323,7 @@ body.isolated-roll .guide-education {
   height: 100%;
   overflow-y: scroll;
 }
-/* line 10, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 9, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -2289,7 +2332,7 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 13, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 12, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -2298,18 +2341,23 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 18, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 17, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover {
   background-color: #666;
   cursor: pointer;
 }
-/* line 24, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 23, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 30, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 29, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-header {
+  padding: 10px;
+}
+
+/* line 33, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2335,12 +2383,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 34, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 38, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 40, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 44, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2352,7 +2400,7 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 52, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2360,7 +2408,89 @@ body.isolated-roll .guide-education {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-color: #494949;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 7, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options {
+  padding: 0 10px 10px;
+}
+
+/* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+/* line 17, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid black;
+  display: block;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+/* line 28, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 36, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-submit {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 6px 13px;
+  float: right;
+  width: 33%;
 }
 
 /* Welcome to Compass.
@@ -2385,7 +2515,7 @@ ul.conversation {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 ul.conversation li {
   list-style-image: none;
   list-style-type: none;
@@ -2913,9 +3043,13 @@ ul.conversation li.message .copy .reply {
 }
 /* line 23, ../../app/stylesheets/partials/roll-selection-items.scss */
 .existing-rolls-list ul li {
-  border-bottom: 1px solid #333333;
-  border-top: 1px solid #555555;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
   padding: 5px;
+}
+/* line 28, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list ul li:last-child {
+  border-bottom: none;
 }
 
 /* Welcome to Compass.
