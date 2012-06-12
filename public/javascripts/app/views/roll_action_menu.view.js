@@ -144,13 +144,19 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$el.find('.js-roll-add-leave-button').hide();
 			this.$el.find('.rolls-edit').show();
-			this.$el.find('#js-roll-add-video-area').show();
     }
     else{
       this.$el.find('.js-roll-add-leave-button').show();
 			this.$el.find('.rolls-edit').hide();
-			this.$el.find('#js-roll-add-video-area').hide();
     }
+		// hide add video area if roll is collaboritive or if user is creator
+		if ((currentRollModel.get('creator_id') === shelby.models.user.id) || currentRollModel.get('collaborative')) {
+			this.$el.find('#js-roll-add-video-area').show();
+		}
+		else {
+			this.$el.find('#js-roll-add-video-area').hide();
+		}
+		
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
