@@ -37,13 +37,11 @@
 }
 /* line 40, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
-  height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 160px;
 }
-/* line 47, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 45, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
   color: black;

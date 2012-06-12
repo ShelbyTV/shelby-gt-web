@@ -38,11 +38,9 @@
 		}
 
 		h2{
-			height:36px;
 			overflow:hidden;
 			text-overflow:ellipsis;
 			white-space:nowrap;
-			width:160px;
 
 			&:after {
 			  content: "Now Playing";

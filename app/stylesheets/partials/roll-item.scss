@@ -106,18 +106,21 @@ margin-right: 46px;
 	right: 0;
 	top: 0;
 	
-	img {
-	  width: 120%;
-	  margin-top: -10%;
+	.thumbnail {
+	  width: 100%;
+	  height: 100%;
 	  opacity: 0.5;
+  }
+  .missing-placeholder {
+    width: 10%;
+    margin-top: 7%;
+    display: none;
   }
   
   &.missing {
     text-align: center;
-    img {
-      width: 10%;
-      margin-top: 7%;
-    }
+    .thumbnail { display: none; }
+    .missing-placeholder { display: inline; }
   }
 }
 

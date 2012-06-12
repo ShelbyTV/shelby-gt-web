@@ -41,7 +41,8 @@
     <div class="roll-item-contents">
       <ul class="roll-item-contents-list">
         <li class="roll-item-contents-thumbnail <%= first_frame_thumbnail ? '' : 'missing' %>">
-          <img src="<%= first_frame_thumbnail || '/images/assets/missing_thumb.svg' %>" />
+          <div class="thumbnail" style="background: url(<%= first_frame_thumbnail %>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" />
+          <img class="missing-placeholder" src="/images/assets/missing_thumb.svg" />
         </li>
       </ul>
     </div>
