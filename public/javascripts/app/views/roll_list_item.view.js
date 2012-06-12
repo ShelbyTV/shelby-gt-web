@@ -6,7 +6,8 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-roll-item-button"  : "goToRoll",
-    "click .roll-item-stats"      : "goToRoll"
+    "click .roll-item-stats"      : "goToRoll",
+    "click .roll-item-contents-thumbnail" : "goToRoll"
   },
 
   tagName : 'li',
