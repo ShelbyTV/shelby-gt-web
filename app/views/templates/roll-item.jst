@@ -6,7 +6,6 @@
   if( roll.get('frames') && roll.get('frames').length > 0 && roll.get('frames').first().get('video') ){
     var first_frame_thumbnail = roll.get('frames').first().get('video').get('thumbnail_url');
   }
-      
 %>
 <div class="roll-item-lining">
   <div class="roll-item-header clearfix">
@@ -41,8 +40,8 @@
     </div>
     <div class="roll-item-contents">
       <ul class="roll-item-contents-list">
-        <li class="roll-item-contents-thumbnail">
-          <img src="<%= first_frame_thumbnail || undefined %>" />
+        <li class="roll-item-contents-thumbnail <%= first_frame_thumbnail ? '' : 'missing' %>">
+          <img src="<%= first_frame_thumbnail || '/images/assets/missing_thumb.svg' %>" />
         </li>
       </ul>
     </div>
