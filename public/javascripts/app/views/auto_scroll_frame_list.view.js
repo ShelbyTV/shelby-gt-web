@@ -23,11 +23,10 @@
       try {
         PagingListView.prototype.internalAddOne.call(this, item, collection, options);
       } catch (error) {
-        error.message
-				// We are not loading G. Analytics in development env so just log to console.
-				try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', e.message]); }
-				catch(e) {
-          console.log("_gaq not loaded in development env:", e.message);
+        // We are not loading G. Analytics in development env so just log to console.
+        try { _gaq.push(['_trackEvent', 'Errors', 'AutoScrollFrameListView.internalAddOne', error.message]); }
+        catch(e) {
+          console.log("_gaq not loaded in development env:", error.message);
         }
       }
     },

@@ -7,7 +7,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     "click #js-roll-delete" : "_confirmRollDelete",
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .rolls-add" : "_toggleJoinRoll",
-		"click .js-edit-roll" : "_toggleRollEditFunctions"
+		"click .js-edit-roll" : "_toggleRollEditFunctions",
+		"click #js-add-video" : "_addVideoViaURL"
   },
 
   el : '#js-roll-action-menu',
@@ -23,6 +24,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change:displayState', this._updateVisibility, this);
     this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
+    this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
     
@@ -32,6 +34,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   _cleanup : function(){
     this.model.unbind('change:displayState', this._updateVisibility, this);
     this.model.unbind('change:currentRollModel', this._updateRollHeaderView, this);
+    this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
   },
 
@@ -68,8 +71,9 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _deleteRoll : function(){
+    var self = this;
     this.model.get('currentRollModel').destroy({success: function(m,r){
-      $('.js-edit-roll').text('Edit');
+      self.options.viewState.set('showEditFunctions', false);
       shelby.router.navigate('rolls', {trigger:true});
     }});
   },
@@ -112,6 +116,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     } else {
       // collapse/hide child views
       this._immediateShowHideShareRollView(false);
+      this.options.viewState.set('showEditFunctions', false);
       this.$el.hide();
     }
   },
@@ -137,17 +142,26 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
   },
 
-  _updateRollHeaderView : function(guideModel, currentRollModel) {    
+  _updateRollHeaderView : function(guideModel, currentRollModel) {
     this._immediateShowHideShareRollView(false);
+    this.options.viewState.set('showEditFunctions', false);
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$el.find('.js-roll-add-leave-button').hide();
-			this.$el.find('.rolls-edit').show();
+      this.$el.find('.rolls-edit').show();
     }
     else{
       this.$el.find('.js-roll-add-leave-button').show();
-			this.$el.find('.rolls-edit').hide();
+      this.$el.find('.rolls-edit').hide();
     }
+		// hide add video area if roll is collaboritive or if user is creator
+		if ((currentRollModel.get('creator_id') === shelby.models.user.id) || currentRollModel.get('collaborative')) {
+			this.$el.find('#js-roll-add-video-area').show();
+		}
+		else {
+			this.$el.find('#js-roll-add-video-area').hide();
+		}
+		
     // set text to leave/join roll
     var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Leave' : 'Join';
     this._updateJoinButton(_buttonText);
@@ -155,40 +169,78 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     
   },
 
-	_toggleRollEditFunctions : function(){
-		var _currentRollModel = this.model.get('currentRollModel');
-		if (_currentRollModel.get('creator_id') == shelby.models.user.id){
-			var rollName = _currentRollModel.get('title');
-			if (this.$('.js-edit-roll').text() == "Edit"){
-				this.$('.js-edit-roll').text('Done');
-				$('.roll-title-text').hide();
-				$('.rolls-list-nav').hide();
-				$('#js-roll-name-change').show();
-				
-				if(shelby.models.user.get('public_roll_id') != _currentRollModel.id &&
-				    shelby.models.user.get('watch_later_roll_id') != _currentRollModel.id &&
-				    shelby.models.user.get('heart_roll_id') != _currentRollModel.id){
-				  $('#js-roll-delete').show();
-			  }
-				
-				$('#js-roll-name-change input').focus();
-			}
-			else {
-				var _rollTitle = $('#js-roll-name-change input').val();
-				if (_rollTitle !== _currentRollModel.get('title')){
-					this._saveRollName(_rollTitle);
+  _toggleRollEditFunctions : function() {
+    //if we're hiding the edit functions, save changes to the roll name
+    if (this.options.viewState.get('showEditFunctions')) {
+      var _rollTitle = $('#js-roll-name-change input').val();
+      if (_rollTitle !== this.model.get('currentRollModel').get('title')){
+        this._saveRollName(_rollTitle);
+      }
+    }
+    this.options.viewState.set('showEditFunctions', !this.options.viewState.get('showEditFunctions'));
+  },
+
+  _onChangeShowEditFunctions : function(viewStateModel, showEditFunctions){
+    if (showEditFunctions){
+      this.$('.js-edit-roll').text('Done');
+      $('.roll-title-text').hide();
+      $('.rolls-list-nav').hide();
+      $('#js-roll-name-change').show();
+
+      var _currentRollModel = this.model.get('currentRollModel');
+      if(shelby.models.user.get('public_roll_id') != _currentRollModel.id &&
+          shelby.models.user.get('watch_later_roll_id') != _currentRollModel.id &&
+          shelby.models.user.get('heart_roll_id') != _currentRollModel.id){
+        $('#js-roll-delete').show();
+      }
+
+      $('#js-roll-name-change input').focus();
+    } else {
+      this.$('.js-edit-roll').text('Edit');
+      $('.roll-title-text').show();
+      $('.rolls-list-nav').show();
+      $('#js-roll-name-change').hide();
+      $('#js-roll-delete').hide();
+    }
+  },
+
+  _saveRollName : function(newTitle){
+    this.model.get('currentRollModel').save({title: newTitle});
+  },
+	
+	_addVideoViaURL : function(){
+		var _url = this.$('input#js-video-url-input').val();
+		
+		// check if url given is valid
+		var regex = new RegExp(/^(https?):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i);
+		if (regex.test(_url)) {
+			var self = this;
+			var frame = new libs.shelbyGT.FrameModel();
+			frame.save(
+				{url: _url, source: 'webapp'},
+				{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames', 
+				wait: true,
+				global: false,
+				success: function(frame){
+					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
+					this.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
+				},
+				error: function(a,b,c){
+					if (b.status == 404) {
+						self._addVideoError("sorry, something went wrong with that one");
+					} 
+					else { 
+						alert("sorry, something went wrong.");
+					};
 				}
-				this.$('.js-edit-roll').text('Edit');
-				$('.roll-title-text').show();
-				$('.rolls-list-nav').show();
-				$('#js-roll-name-change').hide();
-				$('#js-roll-delete').hide();
-			}
-		}
+			});
+    } else {
+			this._addVideoError("that's not a valid url");
+    }
 	},
 	
-	_saveRollName : function(newTitle){
-		this.model.get('currentRollModel').save({title: newTitle});
+	_addVideoError: function(message){
+		this.$('#js-video-url-input').addClass('error').attr('placeholder', message).val('');
 	}
 
 });

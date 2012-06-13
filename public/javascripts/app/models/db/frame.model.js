@@ -67,8 +67,9 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     frameWatched.save(null, {url:url, success:onSuccess});
   },
 
-  isOnRoll : function(rollModel) {
-    return this.has('roll') && this.get('roll').id == rollModel.id;
+  isOnRoll : function(roll) {
+    var rollId = typeof(roll) === 'string' ? roll : roll.id;
+    return this.has('roll') && this.get('roll').id == rollId;
   },
 
   isOnRollTypeGenius : function () {
@@ -84,6 +85,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       var haveWatchLaterMessage = firstMessage && (this.isOnRoll(viewingUser.get('watch_later_roll')));
       //true only if the first message of the "conversation uses creator info"
       return !haveCreatorMessage && !haveWatchLaterMessage;
+  },
+
+  getVideoThumbnailUrl : function() {
+    var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
+    return url ? url : null;
   }
 
 });

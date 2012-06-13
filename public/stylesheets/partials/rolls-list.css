@@ -1,11 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
 /* line 3, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list {
   padding: 0;
@@ -16,7 +8,7 @@
 .rolls-list a {
   cursor: pointer;
   display: block;
-  padding: 10px;
+  padding: 5px;
 }
 /* line 15, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a:hover {
@@ -24,39 +16,35 @@
 }
 /* line 20, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
   padding: 0;
 }
-/* line 25, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:first-child {
-  border-top: none;
-}
-/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list li:last-child {
-  border-bottom: none;
-}
-/* line 33, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 24, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
-  background-color: #5fa256;
   position: relative;
 }
-/* line 37, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 27, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item .roll-item-creator {
+  color: #333333;
+}
+/* line 32, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item .roll-item-title,
+.rolls-list .active-list-item .roll-item-people {
+  color: #333333;
+}
+/* line 36, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item a {
   color: #000;
 }
-/* line 41, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 40, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2 {
-  height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 160px;
 }
-/* line 48, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 45, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item h2:after {
   content: "Now Playing";
-  color: #FFF;
+  color: black;
   padding-top: 10px;
   padding-right: 10px;
   position: absolute;

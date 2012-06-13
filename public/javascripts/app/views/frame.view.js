@@ -19,7 +19,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-remove-frame"                : "_removeFromWatchLater",
     "click .js-share-frame"                 : "_shareFrame",
     "click .js-video-activity-toggle"       : "_toggleConversationDisplay",
-    "click .js-frame-source"                : "_goToRoll",
+    "click .js-creator-personal-roll"       : "_goToCreatorPersonalRoll",
+    "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-upvote-frame"                : "_upvote",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "transitionend .video-saved"            : "_onSavedTransitionComplete",
@@ -72,25 +73,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var self = this;
     this._leaveChildren();
 
-    var useFrameCreatorInfo = this.model.conversationUsesCreatorInfo(shelby.models.user);
     this.$el.html(this.template({
       frame : this.model,
       showConversation : showConversation
     }));
 
-    // if the first message is not from the frame's creator and we're not on the watch later roll,
-    // use equivalent info about the frame's creator as a simulated first message
-    // otherwise, just render the first message
-    var firstMessageViewParams = useFrameCreatorInfo ? {frame:this.model} : {model:this.model.get('conversation').get('messages').first()};
-
-//  COMMENTING THIS OUT OBVIOUSLY DOESN'T SOLVE ANYTHING
-//  DOING THIS FOR TESTING PURPOSES
-//    var firstMessageView = new libs.shelbyGT.MessageView(firstMessageViewParams);
-//    this.insertChildBefore(firstMessageView,'.js-video-activity');
-
-    // render all other messages that haven't already been rendered
-    // var startIndex = useFrameCreatorInfo ? 0 : 1;
-    // var _messages = _(this.model.get('conversation').get('messages');
     this.model.get('conversation').get('messages').each(function(message){
       var messageView = new libs.shelbyGT.MessageView({model:message});
       self.renderChild(messageView);
@@ -228,12 +215,21 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     return false;
   },
 
-  _goToRoll : function(){
-    if (!this.model.isOnRoll(shelby.models.user.get('watch_later_roll'))) {
+  _goToCreatorPersonalRoll : function(){
+    var creator = this.model.get('creator');
+
+    if (creator) {
+      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+    }
+
+  },
+
+  _goToSourceRoll : function(){
+    if (!this.model.isOnRoll(shelby.models.user.get('heart_roll_id'))) {
       shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
     } else {
-      // if the frame is on the watch later roll we actually want to go the roll
-      // that this frame was saved FROM
+      // if the frame is on the heart roll we actually want to go the roll
+      // that this frame was hearted FROM
       var ancestorId = _(this.model.get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }

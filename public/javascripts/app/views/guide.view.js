@@ -23,6 +23,7 @@
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
@@ -35,6 +36,7 @@
     _cleanup : function() {
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
@@ -190,7 +192,8 @@
               }
               shelby.models.autoScrollState.set('tryAutoScroll', true);
             },
-            url : fetchUrl
+            url : fetchUrl,
+            data : {frames:true}
         })).done(function(){oneTimeSpinnerState.set('show', false);});
       } else {
         shelby.models.autoScrollState.set('tryAutoScroll', true);
@@ -244,6 +247,15 @@
         // just for completeness, anytime we set the activeFrameModel to null, there is obviously no
         // activeDashboardEntryModel either
         this.model.set('activeDashboardEntryModel', null);
+      }
+    },
+
+    _onDisableSmartRefresh : function(guideModel, disableSmartRefresh){
+      if (disableSmartRefresh) {
+        if (this._listView) {
+          this._listView.options.doSmartRefresh = false;
+        }
+        guideModel.set('disableSmartRefresh', false);
       }
     },
 

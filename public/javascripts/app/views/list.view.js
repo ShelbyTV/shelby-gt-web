@@ -135,15 +135,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     console.log('_displayListEducationView', arguments);
   },
 
-  sourceAddOne : function(item){
+  sourceAddOne : function(item, collection, options){
     if (!this._filter || this._filter(item)) {
-      this._displayCollection.add(item);
+      this._displayCollection.add(item, options);
     }
     // there's no way to effectively specify add:true for a Backbone Relational collection
     // we can simulate it by storing all of the contents the relational collection ever loaded,
     // and using this as a surrogate for the relational collection itself when re-filtering
     if (!this.options.collection && this.options.simulateAddTrue) {
-      this._simulatedMasterCollection.add(item);
+      this._simulatedMasterCollection.add(item, options);
     }
   },
 

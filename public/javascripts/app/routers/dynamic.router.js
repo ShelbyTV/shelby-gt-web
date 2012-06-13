@@ -43,12 +43,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //  then show them the roll
     // otherwise just show the roll view
     if (shelby.userSignedIn() && params && params.gt_ref_roll){
-      shelby.models.user.addUserToRoll(params.gt_ref_roll, function(){
-        $('.rolls-add').text('Leave')['addClass']('rolls-leave');
+      var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
+      rollToJoin.joinRoll(function(){
         self._setupRollViewWithCallback(rollId, frameId, options);
       });
-    }
-    else {
+    } else {
       self._setupRollViewWithCallback(rollId, frameId, options);
     }
   },
@@ -217,7 +216,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       });
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
-      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){oneTimeSpinnerState.set('show', false);});
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){
+        oneTimeSpinnerState.set('show', false);
+        shelby.models.guide.set('disableSmartRefresh', true);
+      });
     } else {
       shelby.models.dashboard.fetch(fetchOptions);
     }
@@ -371,7 +373,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     }
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
-    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide});
+    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide, viewState:new libs.shelbyGT.RollActionMenuViewStateModel()});
     shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
