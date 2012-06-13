@@ -13,7 +13,7 @@
     },
     initialize : function(){
       this._buildNetworkSharingState(shelby.models.user);
-      shelby.models.user.bind('change', this._onUserChange, this);
+      shelby.models.user.bind('change:authentications', this._onUserChange, this);
     },
     sync : function(method, model, options) {
       // the share model is not persisted to the database directly, so there

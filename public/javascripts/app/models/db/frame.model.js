@@ -42,6 +42,10 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   url : function() {
     return shelby.config.apiRoot + '/frame/' + this.id;
   },
+  
+  shareUrl : function(){
+    return shelby.config.apiRoot + '/frame/' + this.id + '/share';
+  },
 
   saveToWatchLater : function(onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();

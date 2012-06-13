@@ -40,7 +40,7 @@
         }
       );
       this.appendChildInto(newRollView, '.js-rolling-main-new-roll');
-      
+
       //existing Rolls
       var rollsListView = new RollingSelectionListView(
         {
