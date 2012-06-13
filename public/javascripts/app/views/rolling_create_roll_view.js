@@ -19,6 +19,7 @@
     },
   
     initialize : function(){
+      this._frameRollingState = this.options.frameRollingState;
     },
   
     render : function(){
@@ -29,41 +30,46 @@
       var self = this;
       
       if( !this._validateForm() ){ 
-        this.options.frameRollingState.set('doShare', ShareActionState.failed);
+        this._frameRollingState.set('doShare', ShareActionState.failed);
         return; 
       }
   
-      this.options.frameRollingState.set({doShare:ShareActionState.share});
+      this._frameRollingState.set({doShare:ShareActionState.share});
     
       roll = new RollModel({
         'title' : this.$("#new-roll-name").val(),
         collaborative : true
       });
     
-      if(this.$("#new-roll-public").attr('checked') === 'checked') {
-        this.options.frameRollingState.get('shareModel')._buildNetworkSharingState(shelby.models.user);
-        roll.set({public: true});
-      } else {
-        roll.set({public: false});
-      }
+      roll.set({public: this.$("#new-roll-public").attr('checked') === 'checked'});
 
-      if(this.$("#new-roll-receipients").val() > 0){
-        this.options.frameRollingState.get('shareModel').set('destination',['email']);
-        roll.set({addresses: this.$("#new-roll-receipients").val()});
+      if(this.$("#new-roll-recipients").val().length > 0){
+        this._frameRollingState.get('shareModel').set({
+          destination: ['email'],
+          addresses: this.$("#new-roll-recipients").val()
+          });
       } else {
-        this.options.frameRollingState.get('shareModel').set('destination',['']);
+        this._frameRollingState.get('shareModel').set({destination: ['']});
       }
-    
+      
       // have to create the new roll and then reroll
       roll.save(null, {
         success : function(newRoll){
-          console.log("rolling create roll created roll", newRoll);
           shelby.models.rollFollowings.add(newRoll);
           self.options.frame.reRoll(newRoll, function(newFrame){
-            //TODO: show success message?
-            self.options.frameRollingState.set({doShare:ShareActionState.complete});
-            //TODO: don't auto-play, just show it
+            
+            //complete rolling and change screens now, allow email action to happen afterward
+            self._frameRollingState.set({doShare:ShareActionState.complete});
             shelby.router.navigate('roll/'+newFrame.get('roll_id')+'/frame/'+newFrame.id+'?reroll_success=true', {trigger:true});
+            
+            //synchronously invite users to this roll via email
+            self.options.frameRollingState.get('shareModel').save(null, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                /* noop */
+              }
+            });
+
           });
         }});
     },
