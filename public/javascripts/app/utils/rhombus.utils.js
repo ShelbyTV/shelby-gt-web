@@ -23,11 +23,9 @@
         url : this._api_root()+'/'+cmd,
         data : data,
         error : function(){
-          console.log(arguments);
-          console.log("couldn't contact local rhombus API .. not a big deal");
+          console.log("couldn't contact local rhombus API .. not a big deal", arguments);
         },
         success : function(){
-          console.log(arguments);
           //do nothing
         }
       };
