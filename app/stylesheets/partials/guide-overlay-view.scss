@@ -39,7 +39,6 @@
 }
 
 .guide-overlay-context {
-
   background-color: #35383a;
   background-position: center center;
   background-repeat: no-repeat;
@@ -49,6 +48,11 @@
   height: 150px;    
   position: relative;
   overflow: hidden;
+
+  &.guide-overlay-missing-thumbnail {
+    background-image: url('/images/assets/missing_thumb.svg');
+    background-size: 20%;
+  }
 
   &:after {
     @include box-shadow(0 0 139px 31px black);

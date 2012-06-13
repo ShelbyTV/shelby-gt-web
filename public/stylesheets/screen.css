@@ -944,7 +944,12 @@ a:hover, a:visited, a:active {
   position: relative;
   overflow: hidden;
 }
-/* line 53, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 52, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context.guide-overlay-missing-thumbnail {
+  background-image: url("/images/assets/missing_thumb.svg");
+  background-size: 20%;
+}
+/* line 57, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context:after {
   -moz-box-shadow: 0 0 139px 31px black;
   -webkit-box-shadow: 0 0 139px 31px black;
@@ -957,14 +962,14 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 64, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 68, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview {
   bottom: 0;
   padding-bottom: 10px;
   position: absolute;
   width: 100%;
 }
-/* line 70, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 74, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview:after {
   -moz-box-shadow: 0 0 86px 59px black;
   -webkit-box-shadow: 0 0 86px 59px black;
@@ -977,7 +982,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 82, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 86, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator,
 .guide-overlay-context-title {
   white-space: nowrap;
@@ -993,23 +998,23 @@ a:hover, a:visited, a:active {
   width: inherit;
 }
 
-/* line 92, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 96, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator {
   font-size: 12px;
   margin-bottom: 3px;
 }
 
-/* line 98, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 102, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-title {
   font-size: 14px;
 }
 
-/* line 103, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 111, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -2363,12 +2368,13 @@ body.isolated-roll .guide-education {
 
 /* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header {
-  padding: 10px;
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
+  font-size: 1.4em;
+  padding: 10px;
 }
 
-/* line 38, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 39, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2394,12 +2400,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 43, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 44, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 49, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 50, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2411,7 +2417,7 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 61, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 62, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2650,7 +2656,7 @@ body.isolated-roll .guide-education {
   border-radius: 3px;
   height: 55px;
   margin: 10px 61px 30px 8px;
-  width: 222px;
+  width: 230px;
 }
 /* line 100, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
@@ -2697,7 +2703,7 @@ body.isolated-roll .guide-education {
 }
 /* line 17, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu .left {
-  margin-left: 12px;
+  margin-left: 10px;
   width: 47px;
 }
 /* line 21, ../../app/stylesheets/partials/rolls.scss */
