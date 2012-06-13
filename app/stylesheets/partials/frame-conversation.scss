@@ -1,9 +1,11 @@
 @import "base";
 
-.conversation-scroller {
-  height: 100%;
-  padding-bottom: 110px; /* take into account height of the guide-overlay-header */
-  overflow-y: scroll;
+.conversation-scroller { //needs to be consistent with .rolling-main
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 196px;
+  width: 100%;
 }
 
 .conversation,
@@ -74,8 +76,8 @@
 
 .new-comment {
   background-color: #35383a;
-  height: 52px;
-	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
+//  height: 52px;
+//	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
   position: relative;
    
   .new-comment-submit {
@@ -91,8 +93,8 @@
   @include opacity(0.8);
   @include roundies(input);
   
-  height: 28px;
-  margin: 10px 61px 0 8px;
+  height: 55px;
+  margin: 10px 61px 30px 8px;
   width: 222px;
 
   &:focus{

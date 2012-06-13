@@ -1,9 +1,12 @@
 @import "base";
 
-.rolling-main {
-  
-  height: 100%;
-	overflow-y: scroll;
+.rolling-main { //needs to be consistent with .conversation-scroller
+	  
+  bottom: 0;
+	overflow-y: auto;
+	position: absolute;
+  top: 196px;
+  width: 100%;
 
 	& > li {
 		&:first-child {

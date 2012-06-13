@@ -8,10 +8,13 @@
  */
 /* line 3, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main {
-  height: 100%;
-  overflow-y: scroll;
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 196px;
+  width: 100%;
 }
-/* line 9, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 12, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -20,7 +23,7 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 12, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 15, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -29,25 +32,25 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 17, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 20, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover {
   background-color: #666;
   cursor: pointer;
 }
-/* line 23, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 26, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 29, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 32, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header {
   padding: 10px;
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
 }
 
-/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 38, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -73,12 +76,12 @@
   padding: 6px 13px;
 }
 
-/* line 40, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 43, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 46, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 49, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -90,7 +93,7 @@
   height: 15px;
 }
 
-/* line 58, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 61, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

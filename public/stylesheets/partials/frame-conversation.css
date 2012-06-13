@@ -8,13 +8,14 @@
  */
 /* line 3, ../../../app/stylesheets/partials/frame-conversation.scss */
 .conversation-scroller {
-  height: 100%;
-  padding-bottom: 110px;
-  /* take into account height of the guide-overlay-header */
-  overflow-y: scroll;
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 196px;
+  width: 100%;
 }
 
-/* line 10, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 12, ../../../app/stylesheets/partials/frame-conversation.scss */
 .conversation,
 .frame-conversation {
   list-style: none;
@@ -29,80 +30,77 @@
   margin-left: 0;
 }
 
-/* line 17, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 19, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message {
   border-top: 1px solid #343434;
   border-bottom: 1px solid black;
   padding: 10px 0 10px 10px;
 }
 
-/* line 23, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 25, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-avatar {
   float: left;
   max-height: 50px;
   overflow: hidden;
   width: 50px;
 }
-/* line 29, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 31, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-avatar a {
   display: block;
 }
 
-/* line 34, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 36, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-user {
   margin-left: 50px;
   padding: 0 10px;
 }
 
-/* line 40, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 42, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-user-name:link {
   color: #777;
 }
 
-/* line 46, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 48, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-user-name,
 .frame-conversation-message-reply {
   text-decoration: none;
 }
-/* line 49, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 51, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-user-name:hover,
 .frame-conversation-message-reply:hover {
   text-decoration: underline;
 }
 
-/* line 54, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 56, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-user-name {
   color: #999;
   font-weight: 500;
   font-size: 11px;
 }
 
-/* line 60, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 62, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-block {
   color: #fefefe;
   margin: 3px 0 10px;
 }
 
-/* line 66, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 68, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp,
 .frame-conversation-message-reply {
   font-size: 11px;
 }
 
-/* line 71, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 73, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
 
-/* line 75, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 77, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
-  height: 52px;
-  margin-bottom: 65px;
-  /* b/c the "hide guide" overlay can interfere w/ our elements */
   position: relative;
 }
-/* line 81, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 83, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -132,7 +130,7 @@
   top: 2px;
 }
 
-/* line 90, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 92, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
@@ -142,11 +140,11 @@
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
-  height: 28px;
-  margin: 10px 61px 0 8px;
+  height: 55px;
+  margin: 10px 61px 30px 8px;
   width: 222px;
 }
-/* line 98, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 100, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
