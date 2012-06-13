@@ -2,6 +2,7 @@
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator ? creator.get('nickname') : "" %>
 <% var creatorThumbnail = creator ? creator.get('user_image_original') : undefined %>
+<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
@@ -27,13 +28,11 @@
       </h3>
     </a>
   </header>   
-
-  <div class="video-thumbnail">
-    <% if(frame.get('video').get('thumbnail_url')) { %>
-      <img class="js-frame-activate video-thumbnail-image" src="<%= frame.get('video').get('thumbnail_url') %>" alt="<%= thumbnailText %>" title="<%= thumbnailText %>">
-    <% } else { %>
-      <img class="js-frame-activate video-thumbnail-missing" src="/images/assets/missing_thumb.svg" alt="posted by <%= thumbnailText %>" title="Thumbnail for video <%= thumbnailText %> is missing">
-    <% } %>
+  <% if( frameThumbnail ) { %>
+    <div class="video-thumbnail" style="background-image: url(' <%= frameThumbnail %> ');">
+  <% } else { %>
+    <div class="video-thumbnail video-thumbnail-missing">  
+  <% } %>  
   </div>
  
   <footer class="video-card-footer">

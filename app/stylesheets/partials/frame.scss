@@ -42,7 +42,10 @@
 }
 
 .video-thumbnail {
-	background: $video-card-thumbnail;
+	background-color: $video-card-thumbnail;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	line-height: 75px;
 	margin: 0;
 	text-align: center;
@@ -60,8 +63,8 @@
 }	
 
 .video-thumbnail-missing {
-		margin: 36px auto 0;
-		width: auto; 
+		background-image: url($icon-missing-thumb);
+		background-size: 20%;
 }
 
 .video-card-header {
@@ -92,7 +95,7 @@
 .frame-creator-avatar-missing{
 	@extend .frame-creator-avatar;
 
-	background: url('/images/assets/missing_thumb.svg') no-repeat center center #454545;
+	background: url($icon-missing-thumb) no-repeat center center #454545;
 	background-size: 50%;
 }
 
@@ -164,7 +167,6 @@
 	}
 
 	.video-activity-comment-submit {
-//		@extend .rolling-main-done;
 		@include x-button-primer($shelby-blue,small);
 
 		float: right;
@@ -305,7 +307,6 @@
 
 .frame-activity {
 	font-weight: 500;
-//	height: 27px;
 }
 
 .frame-activity-favorites {
