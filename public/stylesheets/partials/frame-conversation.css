@@ -1,97 +1,165 @@
-/*
-Syntax error: Undefined mixin 'no-bullets'.
-        on line 10 of /Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss, in `no-bullets'
-        from line 10 of /Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../../app/stylesheets/partials/frame-conversation.scss */
+.conversation-scroller {
+  height: 100%;
+  padding-bottom: 110px;
+  /* take into account height of the guide-overlay-header */
+  overflow-y: scroll;
+}
 
-5:   padding-bottom: 110px; /* take into account height of the guide-overlay-header */
-6:   overflow-y: scroll;
-7: }
-8: 
-9: ul.conversation {
-10:   @include no-bullets();
-11:   
-12:   margin: 0;
-13:   padding: 0;
-14:   
-15:   li.message {
+/* line 10, ../../../app/stylesheets/partials/frame-conversation.scss */
+.conversation,
+.frame-conversation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+.conversation li,
+.frame-conversation li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
 
-Backtrace:
-/Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:10:in `no-bullets'
-/Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:10
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__450044565685399407__call__3716103790328054676__callbacks'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/spinosa/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/Users/spinosa/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
-/Users/spinosa/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
-/Users/spinosa/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'no-bullets'.\A         on line 10 of /Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss, in `no-bullets'\A         from line 10 of /Users/spinosa/code/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss\A \A 5:   padding-bottom: 110px; /* take into account height of the guide-overlay-header */\A 6:   overflow-y: scroll;\A 7: }\A 8: \A 9: ul.conversation {\A 10:   @include no-bullets();\A 11:   \A 12:   margin: 0;\A 13:   padding: 0;\A 14:   \A 15:   li.message {"; }
+/* line 17, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message {
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
+  padding: 10px 0 10px 10px;
+}
+
+/* line 23, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
+}
+/* line 29, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar a {
+  display: block;
+}
+
+/* line 34, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+/* line 40, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:link {
+  color: #777;
+}
+
+/* line 46, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+}
+/* line 49, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:hover,
+.frame-conversation-message-reply:hover {
+  text-decoration: underline;
+}
+
+/* line 54, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+/* line 60, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-block {
+  color: #fefefe;
+  margin: 3px 0 10px;
+}
+
+/* line 66, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+  font-size: 11px;
+}
+
+/* line 71, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
+}
+
+/* line 75, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment {
+  background-color: #35383a;
+  height: 52px;
+  margin-bottom: 65px;
+  /* b/c the "hide guide" overlay can interfere w/ our elements */
+  position: relative;
+}
+/* line 81, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment .new-comment-submit {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 4px 8px;
+  right: 0;
+  margin: 8px;
+  position: absolute;
+  top: 2px;
+}
+
+/* line 90, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  height: 28px;
+  margin: 10px 61px 0 8px;
+  width: 222px;
+}
+/* line 98, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}

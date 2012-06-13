@@ -209,6 +209,17 @@ $highlight-amount : 25% !default;
 	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color, $highlight-amount));
 }
 
+@mixin x-form-label-primer {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+@mixin x-fieldset-primer {
+  padding: 5px 10px 10px;
+}
+
+//this comment overlay mixin will probably be obsolete soon.
 @mixin x-comment-overlay-buttons {
 	@extend .notype;
 	@include box-shadow(inset 0px 0px 1px 0px #333);
@@ -341,5 +352,6 @@ $preferences-network : twitter !default;
 	}
 }
 
-@import "compass/css3";
-@import "compass/utilities/text/ellipsis";
+@import "compass/css3",
+        "compass/utilities/text/ellipsis",
+        "compass/utilities/lists/bullets";

@@ -10,22 +10,16 @@
   </div>
   
   <div class="guide-overlay-context" style="background-image:url('<%= (frame.get('video').get('thumbnail_url')) ? frame.get('video').get('thumbnail_url') : '/images/assets/missing_thumb.svg' %>');">
-<!--
-    <div class="guide-overlay-context-thumbnail">
-    </div>
- -->    
     <div class="guide-overlay-context-overview">
       <h2 class="guide-overlay-context-title">
         <%= frame.get('video').get('title') %>
       </h2>
     </div>
   </div>
-  
 </div>
 
 
 <div class="guide-overlay-main rolling-main">
-  
   <div class="js-rolling-main-new-roll rolling-main-new-roll">
     <h3 class="rolling-main-header">Create New Roll</h3>
     <!-- Form added + filled out by RollingCreateRollView -->
@@ -35,7 +29,6 @@
     <h3 class="rolling-main-header">Add to Existing Rolls</h3>
     <!-- Rolls UL added + filled out by RollingSelctionListView -->
   </div>
-  
 </div>
 
 

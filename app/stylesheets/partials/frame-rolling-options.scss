@@ -5,13 +5,13 @@
 }
 
 .roll-options {
-  padding: 0 10px 10px;
+  @include x-fieldset-primer;
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
 }
 
 .roll-options-label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2;
+  @include x-form-label-primer;
 }
 
 .roll-options-input {

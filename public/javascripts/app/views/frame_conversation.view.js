@@ -4,8 +4,8 @@
     
     events : {
       "click .back:not(.js-busy)" : "_goBack",
-      "click .new-comment-submit" : "_addMessage",
-      "click .reply" : "_reply"
+      "click .js-new-comment-submit" : "_addMessage",
+      "click .js-message-reply" : "_reply"
     },
 
     className : 'conversation-overlay',

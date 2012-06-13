@@ -960,10 +960,11 @@ a:hover, a:visited, a:active {
 /* line 64, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview {
   bottom: 0;
+  padding-bottom: 10px;
   position: absolute;
   width: 100%;
 }
-/* line 71, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 70, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview:after {
   -moz-box-shadow: 0 0 86px 59px black;
   -webkit-box-shadow: 0 0 86px 59px black;
@@ -971,19 +972,13 @@ a:hover, a:visited, a:active {
   box-shadow: 0 0 86px 59px black;
   content: "\0020";
   height: 1px;
+  margin-top: 10px;
   position: absolute;
   width: 100%;
 }
 
-/* line 80, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-creator {
-  color: #999;
-  font-size: 11px;
-  font-weight: 500;
-  margin-bottom: 3px;
-}
-
-/* line 87, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 82, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator,
 .guide-overlay-context-title {
   white-space: nowrap;
   overflow: hidden;
@@ -991,20 +986,30 @@ a:hover, a:visited, a:active {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   color: #ccc;
-  font-size: 14px;
   font-weight: 500;
-  width: inherit;
-  padding: 10px;
+  padding: 0 10px;
   position: relative;
   z-index: 1;
+  width: inherit;
+}
+
+/* line 92, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator {
+  font-size: 12px;
+  margin-bottom: 3px;
 }
 
 /* line 98, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-title {
+  font-size: 14px;
+}
+
+/* line 103, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 103, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -1274,8 +1279,9 @@ a:hover, a:visited, a:active {
   padding: 0;
   margin: 0;
 }
-/* line 13, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item h2 {
+
+/* line 14, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title {
   display: block;
   float: left;
   font-size: 14px;
@@ -1648,7 +1654,7 @@ body.isolated-roll .guide-education {
   content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
-  margin: 1px 3px;
+  margin: 3px 3px 0 0;
 }
 
 /* line 250, ../../app/stylesheets/partials/frame.scss */
@@ -1858,7 +1864,7 @@ body.isolated-roll .guide-education {
  * @import "compass/reset";
  */
 /* line 3, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved, .share-comment .video-shared {
+.video-saved {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -1885,11 +1891,11 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 /* line 18, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved img, .share-comment .video-shared img {
+.video-saved img {
   width: 30px;
 }
 /* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved p, .share-comment .video-shared p {
+.video-saved p {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.231;
@@ -2355,9 +2361,11 @@ body.isolated-roll .guide-education {
 /* line 29, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header {
   padding: 10px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
 }
 
-/* line 33, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 35, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2383,12 +2391,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 38, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 40, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 44, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 46, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2400,7 +2408,7 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 56, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 58, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2420,10 +2428,12 @@ body.isolated-roll .guide-education {
  */
 /* line 7, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options {
-  padding: 0 10px 10px;
+  padding: 5px 10px 10px;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
 }
 
-/* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 13, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-label {
   font-size: 14px;
   font-weight: 500;
@@ -2433,8 +2443,8 @@ body.isolated-roll .guide-education {
 /* line 17, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
-  opacity: 0.75;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
@@ -2509,65 +2519,87 @@ body.isolated-roll .guide-education {
   overflow-y: scroll;
 }
 
-/* line 9, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation {
+/* line 10, ../../app/stylesheets/partials/frame-conversation.scss */
+.conversation,
+.frame-conversation {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 /* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
-ul.conversation li {
+.conversation li,
+.frame-conversation li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0;
 }
-/* line 15, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message {
+
+/* line 17, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message {
+  border-top: 1px solid #343434;
   border-bottom: 1px solid black;
-  border-top: 1px solid #555555;
   padding: 10px 0 10px 10px;
 }
-/* line 20, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .image {
+
+/* line 23, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar {
   float: left;
   max-height: 50px;
   overflow: hidden;
   width: 50px;
 }
-/* line 27, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy {
-  margin-left: 60px;
-}
-/* line 30, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy .user-name, ul.conversation li.message .copy .user-message {
-  color: #efefef;
-  font-size: 12px;
-}
-/* line 35, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy .user-name {
-  color: #999;
+/* line 29, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar a {
   display: block;
+}
+
+/* line 34, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+/* line 40, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:link {
+  color: #777;
+}
+
+/* line 46, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+}
+/* line 49, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:hover,
+.frame-conversation-message-reply:hover {
+  text-decoration: underline;
+}
+
+/* line 54, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
   font-size: 11px;
-  font-weight: bold;
-  margin-bottom: 6px;
-  text-decoration: none;
-}
-/* line 43, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy .user-message {
-  margin: 0 0 5px 0;
-}
-/* line 47, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy .timestamp, ul.conversation li.message .copy .reply {
-  color: #efefef;
-  font-size: 10px;
-}
-/* line 52, ../../app/stylesheets/partials/frame-conversation.scss */
-ul.conversation li.message .copy .reply {
-  margin-left: 12px;
-  text-decoration: none;
 }
 
 /* line 60, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-block {
+  color: #fefefe;
+  margin: 3px 0 10px;
+}
+
+/* line 66, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+  font-size: 11px;
+}
+
+/* line 71, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
+}
+
+/* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
   height: 52px;
@@ -2575,19 +2607,7 @@ ul.conversation li.message .copy .reply {
   /* b/c the "hide guide" overlay can interfere w/ our elements */
   position: relative;
 }
-/* line 66, ../../app/stylesheets/partials/frame-conversation.scss */
-.new-comment textarea {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
-  height: 28px;
-  margin: 10px 61px 0 8px;
-  width: 222px;
-}
-/* line 74, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 81, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2610,11 +2630,43 @@ ul.conversation li.message .copy .reply {
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid black;
   color: #efefef;
-  padding: 6px 13px;
+  padding: 4px 8px;
   right: 0;
   margin: 8px;
   position: absolute;
   top: 2px;
+}
+
+/* line 90, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  height: 28px;
+  margin: 10px 61px 0 8px;
+  width: 222px;
+}
+/* line 98, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 
 /* Welcome to Compass.
@@ -2835,132 +2887,78 @@ ul.conversation li.message .copy .reply {
   z-index: 1;
 }
 
-/* line 126, ../../app/stylesheets/partials/rolls.scss */
-.share-form {
-  background: #494949;
-  padding: 0;
-  position: relative;
-}
-/* line 131, ../../app/stylesheets/partials/rolls.scss */
-.share-form fieldset {
-  border-top: 1px solid #555555;
-  border-bottom: 1px solid #333333;
-  padding: 0 10px 10px;
-}
-/* line 136, ../../app/stylesheets/partials/rolls.scss */
-.share-form fieldset:first-child {
-  border-top: none;
-}
-/* line 139, ../../app/stylesheets/partials/rolls.scss */
-.share-form fieldset:last-child {
-  border-bottom: none;
-}
-/* line 145, ../../app/stylesheets/partials/rolls.scss */
-.share-form legend,
-.share-form label {
-  float: left;
-  font-weight: 500;
-  margin: 8px 0 5px;
-  width: 100%;
+/* line 132, ../../app/stylesheets/partials/rolls.scss */
+.share-comment,
+.share-networks,
+.share-submit {
+  padding: 5px 10px 10px;
 }
 
-/* line 153, ../../app/stylesheets/partials/rolls.scss */
+/* line 136, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
-  position: relative;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
 }
-/* line 156, ../../app/stylesheets/partials/rolls.scss */
-.share-comment textarea {
+
+/* line 142, ../../app/stylesheets/partials/rolls.scss */
+.share-networks,
+.share-submit {
+  border-top: 1px solid #343434;
+}
+
+/* line 146, ../../app/stylesheets/partials/rolls.scss */
+.share-networks {
+  float: left;
+  width: 50%;
+}
+
+/* line 151, ../../app/stylesheets/partials/rolls.scss */
+.share-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+/* line 155, ../../app/stylesheets/partials/rolls.scss */
+.share-textarea {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: block;
   padding: 5px;
-  resize: none;
   width: 100%;
 }
 /* line 164, ../../app/stylesheets/partials/rolls.scss */
-.share-comment .video-shared {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  padding-top: 15px;
+.share-textarea:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 
-/* line 176, ../../app/stylesheets/partials/rolls.scss */
+/* line 172, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
-  float: left;
   margin: 0;
-  padding: 0;
-}
-/* line 181, ../../app/stylesheets/partials/rolls.scss */
-.share-networks-list li {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0 10px 10px 0;
+  padding-left: 0;
 }
 
-/* line 332, ../../app/stylesheets/_base.scss */
-.networks-twitter button,
-.networks-facebook button {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #474747;
-  border: 1px solid #3a3a3a;
-  display: block;
-  height: 34px;
-  width: 34px;
-}
-
-/* line 195, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter button {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -o-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
-}
-/* line 203, ../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active button {
-  background-color: #00a2d1;
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
-}
-
-/* line 214, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook button {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
-}
-/* line 222, ../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active button {
-  background-color: #013e80;
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
-}
-
-/* line 235, ../../app/stylesheets/partials/rolls.scss */
+/* line 177, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2984,15 +2982,73 @@ ul.conversation li.message .copy .reply {
   border: 1px solid #002a3d;
   color: #efefef;
   padding: 6px 13px;
-  margin-top: 10px;
+  margin-top: 32px;
   width: 100%;
 }
-/* line 241, ../../app/stylesheets/partials/rolls.scss */
-.share-submit-button .spinner {
-  left: auto;
-  margin-left: auto;
-  margin-top: auto;
-  position: static;
+
+/* line 184, ../../app/stylesheets/partials/rolls.scss */
+.share-comment-counter {
+  display: block;
+  font-size: 11px;
+  height: 22px;
+  line-height: 2;
+  float: right;
+}
+
+/* line 343, ../../app/stylesheets/_base.scss */
+.networks-twitter button,
+.networks-facebook button {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #474747;
+  border: 1px solid #3a3a3a;
+  display: block;
+  height: 34px;
+  width: 34px;
+}
+
+/* line 198, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter button {
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
+}
+/* line 206, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter.active button {
+  background-color: #00a2d1;
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
+}
+
+/* line 217, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook button {
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
+  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
+}
+/* line 225, ../../app/stylesheets/partials/rolls.scss */
+.networks-facebook.active button {
+  background-color: #013e80;
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #026fe5, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
 /* Welcome to Compass.
@@ -3218,7 +3274,7 @@ ul.conversation li.message .copy .reply {
   padding-left: 0;
 }
 
-/* line 318, ../../app/stylesheets/_base.scss */
+/* line 329, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -3984,7 +4040,7 @@ ul.conversation li.message .copy .reply {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 222, ../../app/stylesheets/_base.scss */
+/* line 233, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -4010,7 +4066,7 @@ ul.conversation li.message .copy .reply {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 222, ../../app/stylesheets/_base.scss */
+/* line 233, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;

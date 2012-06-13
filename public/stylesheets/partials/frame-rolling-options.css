@@ -8,10 +8,12 @@
  */
 /* line 7, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options {
-  padding: 0 10px 10px;
+  padding: 5px 10px 10px;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
 }
 
-/* line 11, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 13, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-label {
   font-size: 14px;
   font-weight: 500;
@@ -21,8 +23,8 @@
 /* line 17, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
-  opacity: 0.75;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;

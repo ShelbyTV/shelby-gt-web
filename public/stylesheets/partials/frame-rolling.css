@@ -43,9 +43,11 @@
 /* line 29, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-header {
   padding: 10px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
 }
 
-/* line 33, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -71,12 +73,12 @@
   padding: 6px 13px;
 }
 
-/* line 38, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 40, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 44, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 46, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -88,7 +90,7 @@
   height: 15px;
 }
 
-/* line 56, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 58, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

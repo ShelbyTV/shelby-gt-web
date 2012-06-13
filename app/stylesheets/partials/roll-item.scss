@@ -5,31 +5,31 @@
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
-.roll-item{ 
-	display:block;
-	padding:0;
-	margin:0;
-
-	h2{
-		display:block;
-    float:left;
-		font-size:14px;
-		line-height:2.5;
-		margin-left: 10px;
-	}
+.roll-item { 
+	display: block;
+	padding: 0;
+	margin: 0;
 }
 
-.roll-item-thumbnail{
+.roll-item-title {
+	display: block;
+  float: left;
+	font-size: 14px;
+	line-height: 2.5;
+	margin-left: 10px;
+}
+
+.roll-item-thumbnail {
 	@include roundies;
 
-	display:block;
-	float:left;
-	height:36px;
-	overflow:hidden;
-	width:36px;
+	display: block;
+	float: left;
+	height: 36px;
+	overflow: hidden;
+	width: 36px;
 
 	img{
-		display:block;
-		height:100%;
+		display: block;
+		height: 100%;
 	}
 }

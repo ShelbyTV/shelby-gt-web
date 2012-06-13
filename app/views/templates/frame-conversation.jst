@@ -29,15 +29,14 @@
       </h2>
     </div>
   </div>
-  
 </div>
 
 <div class="conversation-scroller">
-  <ul class="conversation"></ul>
+  <ul class="conversation frame-conversation"></ul>
   
   <form class="new-comment clearfix">
-    <textarea class="js-add-message-input" rows="1"></textarea>
+    <textarea class="js-add-message-input new-comment-input" rows="1"></textarea>
     <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-    <button class="new-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
+    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
   </form>
 </div>

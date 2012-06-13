@@ -6,55 +6,70 @@
   overflow-y: scroll;
 }
 
-ul.conversation {
+.conversation,
+.frame-conversation {
   @include no-bullets();
-  
+
   margin: 0;
   padding: 0;
-  
-  li.message {
-    border-bottom: 1px solid black;
-    border-top:  1px solid $rolls-outset;
-    padding: 10px 0 10px 10px;
-    
-    .image {
-      float: left;
-      max-height: 50px;
-      overflow: hidden;
-      width: 50px;
-    }
-    
-    .copy {
-      margin-left: 60px;
-      
-      .user-name, .user-message {
-        color: #efefef;
-        font-size: 12px;
-      }
-      
-      .user-name {
-        color: #999;
-        display: block;
-        font-size: 11px;
-        font-weight: bold;
-        margin-bottom: 6px;
-        text-decoration: none;
-      }
-      .user-message {
-        margin: 0 0 5px 0;
-      }
-      
-      .timestamp, .reply {
-        color: #efefef;
-        font-size: 10px;
-      }
-      
-      .reply {
-        margin-left: 12px;
-        text-decoration: none;
-      }
-    }
+}
+
+.frame-conversation-message {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+  padding: 10px 0 10px 10px;
+}
+
+.frame-conversation-message-avatar {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
+
+  a{
+    display: block;
   }
+}
+
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+.frame-conversation-message-user-name {
+  &:link {
+    color: #777;
+  }
+}
+
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.frame-conversation-message-block {
+  color: #fefefe;
+  margin: 3px 0 10px;
+}
+
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+//  color: #999;
+  font-size: 11px;
+}
+
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
 }
 
 .new-comment {
@@ -62,20 +77,28 @@ ul.conversation {
   height: 52px;
 	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
   position: relative;
-  
-  textarea {
-    @include roundies(input);
-    
-    height: 28px;
-    margin: 10px 61px 0 8px;
-    width: 222px;
-  }
-  
+   
   .new-comment-submit {
-    @include x-button-primer($shelby-gray);
-  	right: 0;
-  	margin: 8px;
-  	position: absolute;
-  	top: 2px;	
+    @include x-button-primer($shelby-gray, small);
+    right: 0;
+    margin: 8px;
+    position: absolute;
+    top: 2px; 
+  }
+}
+
+.new-comment-input {
+  @include opacity(0.8);
+  @include roundies(input);
+  
+  height: 28px;
+  margin: 10px 61px 0 8px;
+  width: 222px;
+
+  &:focus{
+    @include transition-property('opacity');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+    @include opacity(1);
   }
 }

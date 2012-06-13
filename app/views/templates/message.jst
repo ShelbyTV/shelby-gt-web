@@ -20,24 +20,24 @@
 %>
 
 
-<div class="image">
+<div class="frame-conversation-message-avatar">
   <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
     <img src="<%= messageJSON.user_image_url %>" alt="" title="">
   </a>
 </div>
 
-<div class="copy">
-  <a class="user-name js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
+<div class="frame-conversation-message-user">
+  <a class="frame-conversation-message-user-name js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
     <%= messageJSON.realname %>
   </a>
 
-  <p class="user-message">
+  <p class="frame-conversation-message-block">
     <%= messageJSON.text %>
   </p>
 
-  <span class="timestamp <%= messageJSON.origin_network ? 'user-post-origin-' + messageJSON.origin_network : '' %>">
-    Posted <%= messageJSON.created_at %>
+  <span class="frame-conversation-message-timestamp">
+    Posted <%= messageJSON.origin_network ? 'on ' + messageJSON.origin_network : '' %> <%= messageJSON.created_at %>
   </span>
   
-  <a class="reply" href="#" data-reply_to="<%= messageJSON.nickname %>">Reply</span>
+  <a class="frame-conversation-message-reply js-message-reply" href="#" data-reply_to="<%= messageJSON.nickname %>">Reply</span>
 </div>

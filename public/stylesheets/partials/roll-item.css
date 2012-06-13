@@ -12,8 +12,9 @@
   padding: 0;
   margin: 0;
 }
-/* line 13, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item h2 {
+
+/* line 14, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title {
   display: block;
   float: left;
   font-size: 14px;
