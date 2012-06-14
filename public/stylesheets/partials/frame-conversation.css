@@ -11,7 +11,7 @@
   bottom: 0;
   overflow-y: auto;
   position: absolute;
-  top: 196px;
+  top: 146px;
   width: 100%;
 }
 
@@ -80,27 +80,26 @@
 
 /* line 62, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-block {
-  color: #fefefe;
   margin: 3px 0 10px;
 }
 
-/* line 68, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 67, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp,
 .frame-conversation-message-reply {
   font-size: 11px;
 }
 
-/* line 73, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 72, ../../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
 
-/* line 77, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 76, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
   position: relative;
 }
-/* line 83, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 82, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -130,7 +129,7 @@
   top: 2px;
 }
 
-/* line 92, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 91, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
@@ -142,9 +141,9 @@
   border-radius: 3px;
   height: 55px;
   margin: 10px 61px 30px 8px;
-  width: 230px;
+  width: 220px;
 }
-/* line 100, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 99, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;

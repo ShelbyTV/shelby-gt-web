@@ -6,14 +6,14 @@
  * Need to integrate the h5bp normalizer into this compass fanciness.
  * @import "compass/reset";
  */
-/* line 8, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 3, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item {
   display: block;
   padding: 0;
   margin: 0;
 }
 
-/* line 14, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 9, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-title {
   display: block;
   float: left;
@@ -22,7 +22,7 @@
   margin-left: 10px;
 }
 
-/* line 22, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 17, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -36,7 +36,7 @@
   overflow: hidden;
   width: 36px;
 }
-/* line 31, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 26, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-thumbnail img {
   display: block;
   height: 100%;

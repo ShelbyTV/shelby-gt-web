@@ -79,12 +79,12 @@
 /* line 41, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context {
   background-color: #35383a;
-  background-position: center center;
+  background-position: center 43%;
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
-  height: 150px;
+  height: 100px;
   position: relative;
   overflow: hidden;
 }

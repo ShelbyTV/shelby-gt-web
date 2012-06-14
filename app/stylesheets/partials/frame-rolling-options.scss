@@ -4,6 +4,15 @@
   
 }
 
+.create-roll {
+  .roll-options{
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+
+}
+
 .roll-options {
   @include x-fieldset-primer;
   border-top: 1px solid $outset;
