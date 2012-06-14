@@ -61,18 +61,18 @@
     border: 1px solid adjust-lightness(#666, -10%);
     content: "\0020";
     display: block;
-    height:30px;
-    left: -10px;
+    height:25px;
+    left: -7px;
     position: absolute;
-    top: -10px;
-    width: 35px;
+    top: -7px;
+    width: 32px;
   }
 
   &:checked {
     margin-left: 82%;
 
     &:before {
-      left: -75px;
+      left: -72px;
       content: "Private";
     }
 
