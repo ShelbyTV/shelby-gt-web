@@ -4,14 +4,88 @@
   
 }
 
+//this is a crazy temporary hack.
 .create-roll {
   .roll-options{
-    &:last-child{
-      border-bottom: none;
+    border: none;
+    &:first-child {
+      border-top: 1px solid $outset;
+    }
+
+    &:nth-child(2) {
+      float: left;
+      margin-bottom: 3em;
+      width: 50%;
     }
   }
-
 }
+
+.new-roll-status {
+  @include roundies;
+
+  display: block;
+  border: 1px solid $inset;
+  overflow: hidden;
+  padding: 7px;
+  width: 126px;
+}
+
+.new-roll-status-checkbox {
+  @include transition-property('margin');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-out);
+
+  float: left;
+  position: relative;
+
+  &:before {
+    color: $button-color;
+    content: "Public";
+    font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+    left: 53px;
+    position: absolute;
+    top: 0;
+  }
+
+  &:after {
+    background-color: gray;
+    @include background(
+      url('/images/assets/lock-public.svg') no-repeat center center #999//,
+//      linear-gradient(top, adjust-lightness(#666, 20%), #666)
+      );
+    @include box-highlight(#666);
+    @include roundies;
+
+    background-size: 61%;
+    border: 1px solid adjust-lightness(#666, -10%);
+    content: "\0020";
+    cursor: pointer;
+    display: block;
+    height:30px;
+    left: -10px;
+    position: absolute;
+    top: -10px;
+    width: 35px;
+  }
+
+  &:checked {
+    margin-left: 82%;
+
+    &:before {
+      left: -75px;
+      content: "Private";
+    }
+
+    &:after {
+      @include background(
+        url('/images/assets/lock_private.svg') no-repeat center center #999//,
+        //linear-gradient(top, adjust-lightness(#666, 10%), #999)
+      );
+      background-size: 43%;
+    }
+  }
+}
+
 
 .roll-options {
   @include x-fieldset-primer;
@@ -42,9 +116,9 @@
   }
 }
 
-.roll-options-submit {
+ .roll-options-submit {
   @include x-button-primer($shelby-blue);
 
   float: right;
-  width: 33%;
+  width: 100%;
 }
