@@ -1,42 +1,135 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
- * Need to integrate the h5bp normalizer into this compass fanciness.
- * @import "compass/reset";
- */
-/* line 8, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item {
-  display: block;
-  padding: 0;
-  margin: 0;
+/* line 5, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item:last-child .roll-item-lining {
+  border-bottom: none;
 }
-/* line 13, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item h2 {
-  display: block;
-  float: left;
-  font-size: 14px;
-  line-height: 2.5;
-  margin-left: 10px;
+/* line 10, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item:hover {
+  background-color: #6d6d6d;
 }
 
-/* line 22, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  float: left;
-  height: 36px;
-  overflow: hidden;
-  width: 36px;
+/* line 15, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-lining {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
 }
-/* line 31, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-thumbnail img {
+
+/* line 20, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header {
+  padding: 0;
+}
+/* line 23, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a {
+  text-decoration: none;
+}
+/* line 26, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:active, .roll-item-header a:visited {
+  text-decoration: none;
+}
+/* line 29, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-header a:hover {
+  text-decoration: underline;
+}
+
+/* line 43, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-people {
+  margin-top: 12px;
+}
+
+/* line 49, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-avatar {
+  float: left;
+  height: 40px;
+  width: 40px;
+}
+
+/* line 55, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-footer {
+  height: 78px;
+  margin-bottom: 2px;
+}
+
+/* line 60, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-stats {
+  background-color: #4e5354;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
+  background: -webkit-linear-gradient(top, #7f8789, #4e5354);
+  background: -moz-linear-gradient(top, #7f8789, #4e5354);
+  background: -o-linear-gradient(top, #7f8789, #4e5354);
+  background: -ms-linear-gradient(top, #7f8789, #4e5354);
+  background: linear-gradient(top, #7f8789, #4e5354);
+  float: right;
+  height: inherit;
+  cursor: pointer;
+  width: 46px;
+}
+
+/* line 68, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-stats-count {
+  border-bottom: 1px solid #4e5354;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  height: 50%;
+  line-height: 2;
+  margin: 0 3px;
+  text-align: center;
+}
+/* line 77, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-stats-count:after {
+  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
+  content: "\0020";
   display: block;
   height: 100%;
+  width: 100%;
+}
+
+/* line 86, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents {
+  height: inherit;
+  margin-right: 46px;
+}
+
+/* line 91, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-list {
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* line 98, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail {
+  background-color: #111;
+  cursor: pointer;
+  height: inherit;
+  left: 0;
+  margin: 0px 2px 0 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 109, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail .thumbnail {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+/* line 114, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail .missing-placeholder {
+  width: 10%;
+  margin-top: 7%;
+  display: none;
+}
+/* line 120, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail.missing {
+  text-align: center;
+}
+/* line 122, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail.missing .thumbnail {
+  display: none;
+}
+/* line 123, ../../../app/stylesheets/partials/roll-item.scss */
+.roll-item-contents-thumbnail.missing .missing-placeholder {
+  display: inline;
 }

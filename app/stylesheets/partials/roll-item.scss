@@ -1,35 +1,155 @@
-@import
-    "base",
-    "compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+@import "base";
 
-.roll-item{ 
-	display:block;
-	padding:0;
-	margin:0;
+.roll-item {
+	&:last-child {
+		.roll-item-lining {
+			border-bottom: none;
+		}
+	}
 
-	h2{
-		display:block;
-    float:left;
-		font-size:14px;
-		line-height:2.5;
-		margin-left: 10px;
+  &:hover {
+    background-color: #6d6d6d;
+  }
+}
+
+.roll-item-lining {
+		border-bottom: 1px solid $inset;
+		border-top: 1px solid $outset;
+}
+
+.roll-item-header {
+	padding: 0; 
+
+	a {
+		text-decoration: none;
+		&:active,
+		&:visited {
+			text-decoration: none;
+		}
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
-.roll-item-thumbnail{
-	@include roundies;
+.roll-item-title { 
+	@extend .frame-title;
+}
 
-	display:block;
-	float:left;
-	height:36px;
-	overflow:hidden;
-	width:36px;
+.roll-item-creator {
+	@extend .frame-creator-roll;
+}
 
-	img{
-		display:block;
-		height:100%;
+.roll-item-people {
+	@extend .roll-item-title;
+
+	margin-top: 12px;
+}
+
+.roll-item-avatar {
+	float: left;
+	height: 40px;
+	width: 40px;
+}
+
+.roll-item-footer {
+	height: 78px;
+	margin-bottom: 2px;
+}
+
+.roll-item-stats {
+	@include gradient-primer;
+	float: right;
+	height: inherit;
+	cursor: pointer;
+	width: 46px;
+}
+
+.roll-item-stats-count {
+	border-bottom: 1px solid $bottom-color;
+	display: block;
+	font-size: 20px;
+	font-weight: 500;
+	height: 50%;
+	line-height: 2;
+	margin: 0 3px;
+	text-align: center;
+	&:after {
+		background: url($icon-chevron-right) no-repeat center center transparent;
+		content: "\0020";
+		display: block;
+		height: 100%;
+		width: 100%;
 	}
 }
+
+.roll-item-contents {
+	height: inherit;
+margin-right: 46px;
+}
+
+.roll-item-contents-list {
+	height: inherit;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.roll-item-contents-thumbnail {
+	background-color: #111;
+	cursor: pointer;
+	height: inherit;
+	left: 0;
+	margin: 0px 2px 0 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	
+	.thumbnail {
+	  width: 100%;
+	  height: 100%;
+	  opacity: 0.5;
+  }
+  .missing-placeholder {
+    width: 10%;
+    margin-top: 7%;
+    display: none;
+  }
+  
+  &.missing {
+    text-align: center;
+    .thumbnail { display: none; }
+    .missing-placeholder { display: inline; }
+  }
+}
+
+//.xroll-item{ 
+//	display:block;
+//	padding:0;
+//	margin:0;
+
+//	h2{
+//		display:block;
+//    float:left;
+//		font-size:14px;
+//		line-height:2.5;
+//		margin-left: 10px;
+//	}
+
+//}
+
+//.xroll-item-thumbnail{
+//	@include roundies;
+
+//	display:block;
+//	float:left;
+//	height:36px;
+//	overflow:hidden;
+//	width:36px;
+
+//	img{
+//		display:block;
+//		height:100%;
+//	}
+//}

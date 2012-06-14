@@ -67,8 +67,9 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     frameWatched.save(null, {url:url, success:onSuccess});
   },
 
-  isOnRoll : function(rollModel) {
-    return this.has('roll') && this.get('roll').id == rollModel.id;
+  isOnRoll : function(roll) {
+    var rollId = typeof(roll) === 'string' ? roll : roll.id;
+    return this.has('roll') && this.get('roll').id == rollId;
   },
 
   isOnRollTypeGenius : function () {

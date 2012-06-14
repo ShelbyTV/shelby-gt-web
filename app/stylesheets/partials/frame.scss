@@ -21,7 +21,7 @@
 	background-color: #ddd;
 
 	&:hover{
-		background-color: #aaa;
+		background-color: adjust-lightness(#ddd, 20%);
 	}
 
 	.active-frame {

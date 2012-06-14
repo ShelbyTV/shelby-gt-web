@@ -111,30 +111,30 @@
 	}
 }
 
-@mixin logged-out-network-buttons{
-	@include buttonfont;
-	@include roundies;
+//@mixin logged-out-network-buttons{
+//	@include buttonfont;
+//	@include roundies;
 
-	border:1px solid #222;
-	color:white;
-	font-size:11px;
-	line-height:2.5;
-	text-align:center;
-	margin-right:10px;
-	padding-left:30px;
-	position:relative;
+//	border:1px solid #222;
+//	color:white;
+//	font-size:11px;
+//	line-height:2.5;
+//	text-align:center;
+//	margin-right:10px;
+//	padding-left:30px;
+//	position:relative;
 
-	&:before{
-		border-right:1px solid #222;
-		bottom:1px;
-		content:"\0020";
-		float:left;
-		left:0;
-		position:absolute;
-		top:1px;
-		width:30px;
-	}
-}
+//	&:before{
+//		border-right:1px solid #222;
+//		bottom:1px;
+//		content:"\0020";
+//		float:left;
+//		left:0;
+//		position:absolute;
+//		top:1px;
+//		width:30px;
+//	}
+//}
 
 $network-image : $icon-rolls-share-twitter-on !default;
 
@@ -149,9 +149,11 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	color: $button-color;
 	font-size: 11px;
 	line-height: 2.5;
+	padding-left: 33px;
 	position: relative;
 
 	&:before{
+		background-repeat: no-repeat;
 		border-right: 1px solid adjust-lightness($primer-color, 20%);
 		bottom: 1px;
 		content: "\0020";
@@ -168,8 +170,8 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include x-logged-out-networks-buttons($twitter-blue);
 	&:before{
 		background-image: url($icon-rolls-share-twitter-on);
-		background-position-x: 3px;
-		background-position-y: 4px;
+		background-position: 3px 5px;
+		background-size: 97%;
 	}
 }
 
@@ -177,28 +179,28 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include x-logged-out-networks-buttons($facebook-blue);
 	&:before{
 		background-image: url($icon-rolls-share-facebook-on);
-		background-position-x: 1px;
-		background-position-y: -1px;
+		background-position: 1px 0px;
+		background-size: 95%;
 	}
 }
 
 
-.xlogged-out-twitter{
-	@include logged-out-network-buttons;
-	background:$twitter-blue;
-	@include background( linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue) );
+//.xlogged-out-twitter{
+//	@include logged-out-network-buttons;
+//	background:$twitter-blue;
+//	@include background( linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue) );
 	
-	&:before{
-		background:url($icon-rolls-share-twitter-on) no-repeat 2px 4px transparent;
-	}
-}
+//	&:before{
+//		background:url($icon-rolls-share-twitter-on) no-repeat 2px 4px transparent;
+//	}
+//}
 
-.xlogged-out-facebook{
-	@include logged-out-network-buttons;
-	background:$facebook-blue;
-	@include background( linear-gradient(top, adjust-lightness($facebook-blue, 10%), $facebook-blue) );
+//.xlogged-out-facebook{
+//	@include logged-out-network-buttons;
+//	background:$facebook-blue;
+//	@include background( linear-gradient(top, adjust-lightness($facebook-blue, 10%), $facebook-blue) );
 
-	&:before{
-		background:url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center transparent;
-	}
-}
+//	&:before{
+//		background:url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center transparent;
+//	}
+//}

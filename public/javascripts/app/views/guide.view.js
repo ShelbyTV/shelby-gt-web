@@ -192,7 +192,8 @@
               }
               shelby.models.autoScrollState.set('tryAutoScroll', true);
             },
-            url : fetchUrl
+            url : fetchUrl,
+            data : {frames:true}
         })).done(function(){oneTimeSpinnerState.set('show', false);});
       } else {
         shelby.models.autoScrollState.set('tryAutoScroll', true);
