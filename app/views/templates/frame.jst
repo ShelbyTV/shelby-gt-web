@@ -30,7 +30,7 @@
     </a>
   </header>   
   <% if( frameThumbnail ) { %>
-    <div class="video-thumbnail" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
+    <div class="video-thumbnail js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
       <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
     </div>
   <% } else { %>
