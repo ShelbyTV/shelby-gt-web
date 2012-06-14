@@ -50,10 +50,11 @@
   -webkit-transition-timing-function: ease-out;
   -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
+  cursor: pointer;
   float: left;
   position: relative;
 }
-/* line 41, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 42, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:before {
   color: #efefef;
   content: "Public";
@@ -62,7 +63,7 @@
   position: absolute;
   top: 0;
 }
-/* line 50, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 51, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:after {
   background-color: gray;
   background: url("/images/assets/lock-public.svg") no-repeat center center #999999;
@@ -79,7 +80,6 @@
   background-size: 61%;
   border: 1px solid #4d4d4d;
   content: "\0020";
-  cursor: pointer;
   display: block;
   height: 30px;
   left: -10px;
