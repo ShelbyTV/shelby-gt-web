@@ -1,7 +1,6 @@
 require 'shelby_api'
 
 class ApplicationController < ActionController::Base
-  before_filter :setup_rhombus_auth
   protect_from_forgery
 
   def render_error(code, message)
