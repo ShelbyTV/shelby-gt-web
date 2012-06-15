@@ -7,6 +7,8 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
 
+  get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
+
   get '/signout' => "home#signout", :as => :signout
 
   get '(*path)' => 'home#index', :as => :root

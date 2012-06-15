@@ -4,9 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :setup_rhombus_auth
   protect_from_forgery
 
-  def setup_rhombus_auth
-    puts 'SETTING UP RHOMBUS'
-    cookies[:_rhombus_auth] = Base64.encode64('shelby_rhombus')
+  def render_error(code, message)
+    @status, @message = code, message
+    Rails.logger.error "render_error(#{code}, '#{message}')"
+    render 'blank', :status => @status, :formats => [:json]
   end
   
   ##

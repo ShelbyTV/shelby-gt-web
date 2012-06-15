@@ -1521,7 +1521,7 @@ body.isolated-roll .guide-education {
 
 /* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338407544');
   float: left;
   font-size: 0.75em;
   margin: 1px 3px;
@@ -1529,12 +1529,12 @@ body.isolated-roll .guide-education {
 
 /* line 249, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338407543');
 }
 
 /* line 256, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336694545');
 }
 
 /* line 261, ../../app/stylesheets/partials/frame.scss */
@@ -4250,6 +4250,133 @@ body.isolated-roll .guide-education {
   height: 30px;
   width: 30px;
   margin: 0 auto;
+}
+
+/* line 3, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-p {
+  margin: 1px;
+}
+
+/* line 7, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo {
+  background-color: #101010;
+  background: url("../images/seovideo/bg.png") no-repeat center center #101010;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 15, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper {
+  margin: auto;
+  width: 1200px;
+}
+
+/* line 20, ../../app/stylesheets/partials/seovideo.scss */
+.content-wrapper {
+  width: 100%;
+  margin: 0px;
+}
+
+/* line 25, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+/* line 30, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header {
+  margin: 0px;
+  width: 400px;
+}
+
+/* line 35, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-logo {
+  float: left;
+  margin: 10px 10px 18px 10px;
+}
+
+/* line 41, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-slogan {
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 15px;
+}
+
+/* line 47, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-deets {
+  float: left;
+  width: 690px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+}
+
+/* line 55, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-tweets {
+  float: left;
+  width: 470px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+}
+
+/* line 63, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-sistervids {
+  float: left;
+  width: 690px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+  margin-top: 10px;
+}
+
+/* line 72, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-leftcol {
+  float: left;
+  width: 710px;
+  padding: 10px;
+}
+
+/* line 78, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-rightcol {
+  float: right;
+  width: 490px;
+  padding: 10px;
+}
+
+/* line 84, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-sistervid {
+  float: left;
+  width: 160px;
+  margin: 10px 20px 0px 0px;
+}
+
+/* line 90, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message {
+  height: 48px;
+  margin: 10px 0px 10px 0px;
+}
+
+/* line 95, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagenickname {
+  float: left;
+  font-weight: bold;
+  padding: 3px;
+}
+
+/* line 101, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagedate {
+  color: lightgrey;
+  padding: 3px;
+}
+
+/* line 106, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagetext {
+  float: left;
+  padding: 5px;
+  margin-left: 7px;
 }
 
 /* line 6, ../../app/stylesheets/partials/ui-test.scss */
