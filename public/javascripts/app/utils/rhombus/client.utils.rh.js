@@ -15,11 +15,11 @@
     
     _post : function(cmd, args){
       var data = {
-        args : []
+        "args" : []
       };
 
       Object.keys(args).forEach(function(k){
-        data.args.push(args[k]);
+        data['args'].push(args[k]);
       });
 
       var opts = {
