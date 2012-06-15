@@ -39,14 +39,24 @@
   border-bottom: 1px solid black;
 }
 
-/* line 37, ../../../app/stylesheets/partials/roll-selection-items.scss */
+/* line 38, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.rolling-public-roll .roll-selection-item-lining {
+  background: url("/images/assets/lock-public.svg") no-repeat 244px center transparent;
+}
+
+/* line 44, ../../../app/stylesheets/partials/roll-selection-items.scss */
+.rolling-private-roll .roll-selection-item-lining {
+  background: url("/images/assets/lock_private.svg") no-repeat 251px center transparent;
+}
+
+/* line 49, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .roll-selection-item-lining {
   border-top: 1px solid #343434;
   border-right: 1px solid #343434;
   margin-right: 45px;
 }
 
-/* line 44, ../../../app/stylesheets/partials/roll-selection-items.scss */
+/* line 56, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .roll-selection-item-thumbnail {
   float: left;
   height: 40px;
@@ -54,19 +64,25 @@
   width: 40px;
 }
 
-/* line 51, ../../../app/stylesheets/partials/roll-selection-items.scss */
+/* line 63, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .roll-selection-item-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   font-size: 14px;
   padding-top: 10px;
+  padding-right: 45px;
 }
 
-/* line 56, ../../../app/stylesheets/partials/roll-selection-items.scss */
+/* line 71, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .roll-selection-item-state {
   font-size: 11px;
   color: #777;
 }
 
-/* line 61, ../../../app/stylesheets/partials/roll-selection-items.scss */
+/* line 76, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .roll-selection-item-add {
   background-color: #1e2021;
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2214px%22%0A%09%20height%3D%2215px%22%20viewBox%3D%220%200%2014%2015%22%20enable-background%3D%22new%200%200%2014%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%20id%3D%22Layer_1%22%3E%0A%09%3Cg%3E%0A%09%09%3Cg%3E%0A%09%09%09%3Cpath%20fill%3D%22%23BBBBBB%22%20d%3D%22M0.288%2C5.764h4.77V0.624h3.884v5.141h4.771v3.474H8.941v5.141H5.058V9.238h-4.77V5.764z%22/%3E%0A%09%09%09%3Cpath%20fill%3D%22%23BBBBBB%22%20d%3D%22M8.941%2C14.658H5.058c-0.159%2C0-0.288-0.125-0.288-0.279V9.518H0.288C0.129%2C9.518%2C0%2C9.393%2C0%2C9.238V5.764%0A%09%09%09%09c0-0.155%2C0.129-0.28%2C0.288-0.28H4.77V0.624c0-0.155%2C0.129-0.28%2C0.288-0.28h3.884c0.159%2C0%2C0.288%2C0.125%2C0.288%2C0.28v4.861h4.482%0A%09%09%09%09c0.159%2C0%2C0.288%2C0.125%2C0.288%2C0.28v3.474c0%2C0.154-0.129%2C0.279-0.288%2C0.279H9.229v4.861C9.229%2C14.533%2C9.101%2C14.658%2C8.941%2C14.658z%0A%09%09%09%09%20M5.346%2C14.098h3.308V9.238c0-0.154%2C0.129-0.281%2C0.288-0.281h4.482V6.044H8.941c-0.159%2C0-0.288-0.125-0.288-0.28V0.903H5.346%0A%09%09%09%09v4.861c0%2C0.155-0.129%2C0.28-0.288%2C0.28H0.576v2.913h4.482c0.159%2C0%2C0.288%2C0.127%2C0.288%2C0.281V14.098z%22/%3E%0A%09%09%3C/g%3E%0A%09%3C/g%3E%0A%3C/g%3E%0A%3C/svg%3E");

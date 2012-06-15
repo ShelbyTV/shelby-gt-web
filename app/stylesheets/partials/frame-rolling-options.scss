@@ -51,13 +51,13 @@
   &:after {
     background-color: gray;
     @include background(
-      url('/images/assets/lock-public.svg') no-repeat center center #999//,
+      url('/images/assets/switch_public.svg') no-repeat 5px 5px #999//,
 //      linear-gradient(top, adjust-lightness(#666, 20%), #666)
       );
     @include box-highlight(#666);
     @include roundies;
 
-    background-size: 61%;
+    background-size: 56%;
     border: 1px solid adjust-lightness(#666, -10%);
     content: "\0020";
     display: block;
@@ -78,7 +78,7 @@
 
     &:after {
       @include background(
-        url('/images/assets/lock_private.svg') no-repeat center center #999//,
+        url('/images/assets/switch_private.svg') no-repeat center center #999//,
         //linear-gradient(top, adjust-lightness(#666, 10%), #999)
       );
       background-size: 43%;

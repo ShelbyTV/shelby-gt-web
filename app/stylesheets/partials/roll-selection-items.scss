@@ -34,6 +34,18 @@
 	border-bottom:  1px solid $inset;
 }
 
+.rolling-public-roll {
+	.roll-selection-item-lining {
+		background: url('/images/assets/lock-public.svg') no-repeat 244px center transparent;
+	}
+}
+
+.rolling-private-roll {
+	.roll-selection-item-lining {
+		background: url('/images/assets/lock_private.svg') no-repeat 251px center transparent;
+	}
+}
+
 .roll-selection-item-lining {
 //	border-bottom:  1px solid $inset;
 	border-top:  1px solid $outset;
@@ -49,8 +61,11 @@
 }
 
 .roll-selection-item-title {
+	@include ellipsis();
+
 	font-size: 14px;
 	padding-top: 10px;
+	padding-right: 45px;
 }
 
 .roll-selection-item-state {

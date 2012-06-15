@@ -66,7 +66,7 @@
 /* line 51, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:after {
   background-color: gray;
-  background: url("/images/assets/lock-public.svg") no-repeat center center #999999;
+  background: url("/images/assets/switch_public.svg") no-repeat 5px 5px #999999;
   -moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
   -webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
   -o-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
@@ -77,15 +77,15 @@
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-size: 61%;
+  background-size: 56%;
   border: 1px solid #4d4d4d;
   content: "\0020";
   display: block;
-  height: 30px;
-  left: -10px;
+  height: 25px;
+  left: -7px;
   position: absolute;
-  top: -10px;
-  width: 35px;
+  top: -7px;
+  width: 32px;
 }
 /* line 71, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked {
@@ -93,12 +93,12 @@
 }
 /* line 74, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked:before {
-  left: -75px;
+  left: -72px;
   content: "Private";
 }
 /* line 79, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked:after {
-  background: url("/images/assets/lock_private.svg") no-repeat center center #999999;
+  background: url("/images/assets/switch_private.svg") no-repeat center center #999999;
   background-size: 43%;
 }
 
