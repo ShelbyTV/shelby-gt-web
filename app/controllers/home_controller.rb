@@ -28,6 +28,7 @@ class HomeController < ApplicationController
     #XXX ISOLATED_ROLL - HACKING allowing viewing
     if user_signed_in? or /isolated_roll\//.match(params[:path])
       @csrf_token = csrf_token_from_cookie      
+      @rhombus_token = 'Basic '+Base64.encode64('shelby:_rhombus_gt')
       render 'app'
     else
       @show_error = params[:access] == "nos"
