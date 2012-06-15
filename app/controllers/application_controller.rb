@@ -2,6 +2,12 @@ require 'shelby_api'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+  def render_error(code, message)
+    @status, @message = code, message
+    Rails.logger.error "render_error(#{code}, '#{message}')"
+    render 'blank', :status => @status, :formats => [:json]
+  end
   
   ##
   # Simple helper to let us know if user is signed in:
