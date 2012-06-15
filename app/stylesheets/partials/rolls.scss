@@ -77,19 +77,23 @@
 }
 
 /* ------ Roll Add Area */
-.roll-add-video-area {
-	display: none;
-	margin: 10px 10px 0px;
-	padding: 8px;
+.add-video-area {
 	@include x-button-primer(#2c2f30);
+	margin: 10px 10px 0px;
+	padding: 6px;
+	display: none;
 	input {
-		width: 85%;
+		width: 260px;
+		height: 25px;
 		margin-right: 5px;
 		padding: 4px;
 	}
 	.add-video {
 		@include x-button-primer;
+		width: 28px;
+		height: 25px;
 		margin-top: 0;
+		padding: 4px;
 	}
 }
 

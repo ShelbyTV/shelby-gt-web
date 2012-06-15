@@ -163,10 +163,7 @@
 
 /* ------ Roll Add Area */
 /* line 80, ../../../app/stylesheets/partials/rolls.scss */
-.roll-add-video-area {
-  display: none;
-  margin: 10px 10px 0px;
-  padding: 8px;
+.add-video-area {
   background-color: #2c2f30;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #44494b), color-stop(100%, #2c2f30));
   background: -webkit-linear-gradient(top, #44494b, #2c2f30);
@@ -189,15 +186,19 @@
   border: 1px solid black;
   color: #efefef;
   padding: 6px 13px;
+  margin: 10px 10px 0px;
+  padding: 6px;
+  display: none;
 }
 /* line 85, ../../../app/stylesheets/partials/rolls.scss */
-.roll-add-video-area input {
-  width: 85%;
+.add-video-area input {
+  width: 260px;
+  height: 25px;
   margin-right: 5px;
   padding: 4px;
 }
-/* line 90, ../../../app/stylesheets/partials/rolls.scss */
-.roll-add-video-area .add-video {
+/* line 91, ../../../app/stylesheets/partials/rolls.scss */
+.add-video-area .add-video {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4e4e4e, #343434);
@@ -220,7 +221,10 @@
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
+  width: 28px;
+  height: 25px;
   margin-top: 0;
+  padding: 4px;
 }
 
 /* unused
@@ -260,7 +264,7 @@
 }
 */
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
-/* line 135, ../../../app/stylesheets/partials/rolls.scss */
+/* line 139, ../../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   background: #585858;
   padding: 0;
@@ -270,27 +274,27 @@
   z-index: 1;
 }
 
-/* line 144, ../../../app/stylesheets/partials/rolls.scss */
+/* line 148, ../../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
   padding: 0;
   position: relative;
 }
-/* line 149, ../../../app/stylesheets/partials/rolls.scss */
+/* line 153, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset {
   border-top: 1px solid #555555;
   border-bottom: 1px solid #333333;
   padding: 0 10px 10px;
 }
-/* line 154, ../../../app/stylesheets/partials/rolls.scss */
+/* line 158, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:first-child {
   border-top: none;
 }
-/* line 157, ../../../app/stylesheets/partials/rolls.scss */
+/* line 161, ../../../app/stylesheets/partials/rolls.scss */
 .share-form fieldset:last-child {
   border-bottom: none;
 }
-/* line 163, ../../../app/stylesheets/partials/rolls.scss */
+/* line 167, ../../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
   float: left;
@@ -299,11 +303,11 @@
   width: 100%;
 }
 
-/* line 171, ../../../app/stylesheets/partials/rolls.scss */
+/* line 175, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
-/* line 174, ../../../app/stylesheets/partials/rolls.scss */
+/* line 178, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -315,7 +319,7 @@
   resize: none;
   width: 100%;
 }
-/* line 182, ../../../app/stylesheets/partials/rolls.scss */
+/* line 186, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -326,13 +330,13 @@
   padding-top: 15px;
 }
 
-/* line 194, ../../../app/stylesheets/partials/rolls.scss */
+/* line 198, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 199, ../../../app/stylesheets/partials/rolls.scss */
+/* line 203, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list li {
   display: inline-block;
   list-style-type: none;
@@ -355,7 +359,7 @@
   width: 34px;
 }
 
-/* line 213, ../../../app/stylesheets/partials/rolls.scss */
+/* line 217, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -364,7 +368,7 @@
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 221, ../../../app/stylesheets/partials/rolls.scss */
+/* line 225, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -375,7 +379,7 @@
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 232, ../../../app/stylesheets/partials/rolls.scss */
+/* line 236, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -384,7 +388,7 @@
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 240, ../../../app/stylesheets/partials/rolls.scss */
+/* line 244, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -395,7 +399,7 @@
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
-/* line 253, ../../../app/stylesheets/partials/rolls.scss */
+/* line 257, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -422,7 +426,7 @@
   margin-top: 10px;
   width: 100%;
 }
-/* line 259, ../../../app/stylesheets/partials/rolls.scss */
+/* line 263, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: auto;

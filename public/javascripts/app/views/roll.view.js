@@ -9,6 +9,7 @@
 
     initialize : function(){
       this._initInfiniteScrolling();
+			
       AutoScrollFrameListView.prototype.initialize.call(this);
     },
 

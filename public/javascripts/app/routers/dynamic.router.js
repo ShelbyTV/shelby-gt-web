@@ -374,6 +374,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
     shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide, viewState:new libs.shelbyGT.RollActionMenuViewStateModel()});
+    shelby.views.addVideo = shelby.views.addVideo || new libs.shelbyGT.addVideoView({model:shelby.models.guide});
     shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
     //--------------------------------------//
     shelby.views.guide = shelby.views.guide ||
