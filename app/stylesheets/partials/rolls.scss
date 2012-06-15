@@ -78,10 +78,13 @@
 
 /* ------ Roll Add Area */
 .roll-add-video-area {
-	display: none; 
+	display: none;
+	margin: 10px 10px 0px;
+	padding: 8px;
+	@include x-button-primer(#2c2f30);
 	input {
-		width: 78%;
-		margin: 0px 13px 10px;
+		width: 85%;
+		margin-right: 5px;
 		padding: 4px;
 	}
 	.add-video {

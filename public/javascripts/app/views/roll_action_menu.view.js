@@ -156,10 +156,10 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }
 		// hide add video area if roll is collaboritive or if user is creator
 		if ((currentRollModel.get('creator_id') === shelby.models.user.id) || currentRollModel.get('collaborative')) {
-			this.$el.find('#js-roll-add-video-area').show();
+			$('#js-roll-add-video-area').show();
 		}
 		else {
-			this.$el.find('#js-roll-add-video-area').hide();
+			$('#js-roll-add-video-area').hide();
 		}
 		
     // set text to leave/join roll
@@ -210,8 +210,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 	
 	_addVideoViaURL : function(){
 		var _url = this.$('input#js-video-url-input').val();
-		
-		// check if url given is valid
+		console.log("test");
+		/* // check if url given is valid
 		var regex = new RegExp(/^(https?):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i);
 		if (regex.test(_url)) {
 			var self = this;
@@ -237,6 +237,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     } else {
 			this._addVideoError("that's not a valid url");
     }
+ */
 	},
 	
 	_addVideoError: function(message){

@@ -233,9 +233,14 @@
     },
 
     scrollToChildElement : function(element){
-      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
-      //this.$el.scrollTo(element, {duration:200, axis:'y'});
-
+			// if this is the first element, offset a bit, need this for adding video via url area
+			if (element == $('ul.roll').children()[0]){
+	      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y', offset:{top:-75}});				
+			}
+			else {
+	      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});				
+	      //this.$el.scrollTo(element, {duration:200, axis:'y'});
+			}
     },
 
     _hideGuideSpinner: function(){
