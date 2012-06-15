@@ -6,9 +6,9 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
     "click .js-user-personal-roll" : "_goToUserPersonalRoll"
   },
 
-  tagName : 'blockquote',
+  tagName : 'li',
 
-  className : 'user video-author',
+  className : 'frame-conversation-message clearfix',
 
   template : function(obj){
     return JST['message'](obj);
@@ -20,8 +20,10 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
 
   _goToUserPersonalRoll : function(e){
     e.preventDefault();
-    var userId = $(e.currentTarget).attr('data-user-id');
+    var userId = $(e.currentTarget).data('user-id');
     shelby.router.navigate('user/' + userId + '/personal_roll', {trigger:true});
+    
+    this.parent.hide();
   }
 
 });

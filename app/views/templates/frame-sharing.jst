@@ -1,0 +1,33 @@
+<% var creator = frame.get('creator') %>
+<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
+<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
+
+<div class="guide-overlay-header rolling-header">
+  <div class="guide-overlay-title">
+    <button class="back js-track-event" data-ga_category="Rolling" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      Cancel
+    </button>
+    <h2>Share Video</h2>
+  </div>
+  
+  <% if ( frameThumbnail ) { %>
+    <div class="guide-overlay-context" style="background-image:url('<%= frameThumbnail %>');">
+  <% } else { %>
+    <div class="guide-overlay-context guide-overlay-missing-thumbnail">
+  <% } %>
+    <div class="guide-overlay-context-overview">
+      <h3 class="guide-overlay-context-creator">
+        <%= creator.get('nickname') || ''%>
+      </h3>
+      <h2 class="guide-overlay-context-title">
+        <%= frame.get('video').get('title') || '' %>
+      </h2>
+    </div>
+  </div>  
+</div>
+
+<div class="frame-sharing">
+</div>
+
+
+

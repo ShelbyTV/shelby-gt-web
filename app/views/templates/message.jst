@@ -12,33 +12,32 @@
     messageJSON = {
       created_at : frame.get('created_at'),
       realname : (creator ? creator.get('name') : ""),
+      nickname : (creator ? creator.get('nickname') : ""),
       user_id : (creator? creator.id : ""),
       user_image_url : (creator ? creator.get('user_image') : "")
     };
   }
 %>
-<div class="user-vcard clearfix">
-  <span class="user-avatar">
-    <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
-      <img src="<%= messageJSON.user_image_url %>" alt="" title="" height="25" width="25">
-    </a>
-  </span>
 
-  <span class="user-handle">
-    <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
-      <%= messageJSON.realname %>
-    </a>
+
+<div class="frame-conversation-message-avatar">
+  <a class="js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
+    <img src="<%= messageJSON.user_image_url %>" alt="" title="">
+  </a>
+</div>
+
+<div class="frame-conversation-message-user">
+  <a class="frame-conversation-message-user-name js-user-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="user roll link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#" data-user-id="<%= messageJSON.user_id %>">
+    <%= messageJSON.realname %>
+  </a>
+
+  <p class="frame-conversation-message-block">
+    <%= messageJSON.text %>
+  </p>
+
+  <span class="frame-conversation-message-timestamp">
+    Posted <%= messageJSON.origin_network ? 'on ' + messageJSON.origin_network : '' %> <%= messageJSON.created_at %>
   </span>
-  <%
-    var timeStampClass = 'user-post-date';
-    if (messageJSON.origin_network) timeStampClass += ' user-post-origin-' + messageJSON.origin_network;
-  %>
-  <span class="<%= timeStampClass %>">
-    <%= messageJSON.created_at %>
-  </span>
-  <div class="user-video-text">
-      <p>
-        <%= messageJSON.text %>
-      </p>
-  </div>
+  
+  <a class="frame-conversation-message-reply js-message-reply" href="#" data-reply_to="<%= messageJSON.nickname %>">Reply</span>
 </div>

@@ -9,24 +9,20 @@
 
 <form class="share-form clearfix">
 	<fieldset class="share-comment">
-		<label for="share-textarea">Comment</label>
-		<textarea name="share-textarea" id="share-textarea" class="js-share-textarea" placeholder="Add a message..." rows="2"></textarea>
+		<label for="share-textarea" class="share-label">Comment</label>
+		<textarea name="share-textarea" id="share-textarea" class="js-share-textarea share-textarea" placeholder="Add a message..." rows="2"></textarea>
        	<span id="js-share-comment-counter" class="share-comment-counter"></span>
 	</fieldset>
 <% if (components.networkToggles) { %>
 	<fieldset class="share-networks">
-			<legend>Also share on…</legend>
-		<ul class="share-networks-list">
+			<label class="share-label" for="share-networks-list">Share to</label>
+		<ul id="share-networks-list" class="share-networks-list">
 			<li class="js-toggle-twitter-sharing networks-twitter <%= twitter_active ? 'active' : '' %> <%= _.include(active_networks, 'twitter') ? '' : 'hidden' %>">
 				<button onclick="return false;" class="networks-twitter-button">Twitter</button>
 			</li>
 			<li class="js-toggle-facebook-sharing networks-facebook <%= facebook_active ? 'active' : '' %> <%= _.include(active_networks, 'facebook') ? '' : 'hidden' %>" >
 				<button onclick="return false;" class="networks-facebook-button">Facebook</button>
 			</li>
-	<!-- 	<li>
-				<button class="networks-tumblr ir">Tumblr</button>
-			</li>
-	-->			
 	    </ul>
 	</fieldset>
 <% } %>
@@ -35,13 +31,4 @@
 		<button onclick="return false;" class="js-submit-share share-submit-button" type="submit">Share it</button>
 	</fieldset>
 <% } %>
-
-<!-- 	<fieldset class="share-submit">
-		<button class="js-social rolling-main-social js-track-event" data-ga_category="Rolling" data-ga_action="share button" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-	    Share
-	  </button>
-	  <button class="js-done rolling-main-done">
-	    Roll it
-	  </button>
-	</fieldset> -->
 </form>

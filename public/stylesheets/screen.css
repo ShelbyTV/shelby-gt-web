@@ -830,6 +830,168 @@ a:hover, a:visited, a:active {
   box-shadow: inset 0 1px 1px 0 #161616;
 }
 
+/* line 3, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay {
+  -moz-transition-property: margin-left;
+  -webkit-transition-property: margin-left;
+  -o-transition-property: margin-left;
+  transition-property: margin-left;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  background-color: #232526;
+  bottom: 0;
+  position: absolute;
+  margin-left: 100%;
+  width: 100%;
+}
+
+/* line 15, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay.showing {
+  margin-left: 0;
+}
+
+/* common to many guide overlays */
+/* line 20, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 46px;
+}
+/* line 25, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title .back {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  left: 0;
+  margin: 8px;
+  position: absolute;
+  top: 0;
+}
+/* line 33, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title h2 {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* line 41, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context {
+  background-color: #35383a;
+  background-position: center 43%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+/* line 52, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context.guide-overlay-missing-thumbnail {
+  background-image: url("/images/assets/missing_thumb.svg");
+  background-size: 20%;
+}
+/* line 57, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context:after {
+  -moz-box-shadow: 0 0 139px 31px black;
+  -webkit-box-shadow: 0 0 139px 31px black;
+  -o-box-shadow: 0 0 139px 31px black;
+  box-shadow: 0 0 139px 31px black;
+  bottom: 0;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 68, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview {
+  bottom: 0;
+  padding-bottom: 10px;
+  position: absolute;
+  width: 100%;
+}
+/* line 74, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview:after {
+  -moz-box-shadow: 0 0 86px 59px black;
+  -webkit-box-shadow: 0 0 86px 59px black;
+  -o-box-shadow: 0 0 86px 59px black;
+  box-shadow: 0 0 86px 59px black;
+  content: "\0020";
+  height: 1px;
+  margin-top: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 86, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator,
+.guide-overlay-context-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: #ccc;
+  font-weight: 500;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  width: inherit;
+}
+
+/* line 96, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+/* line 102, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-title {
+  font-size: 14px;
+}
+
+/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail {
+  height: inherit;
+  overflow: hidden;
+}
+/* line 111, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail img {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
+  margin-top: -25%;
+  width: 100%;
+}
+
 /* line 3, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
   bottom: 10px;
@@ -1233,12 +1395,12 @@ body.isolated-roll .guide-education {
 }
 
 /* line 3, ../../app/stylesheets/partials/frame.scss */
-.list, .rolls-list, .form-rolls-list {
+.list, .rolls-list, .existing-rolls-list > ul {
   margin: 0;
   padding: 0;
 }
 /* line 7, ../../app/stylesheets/partials/frame.scss */
-.list li, .rolls-list li, .form-rolls-list li {
+.list li, .rolls-list li, .existing-rolls-list > ul li {
   list-style-type: none;
 }
 
@@ -1286,13 +1448,17 @@ body.isolated-roll .guide-education {
 
 /* line 44, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
-  background: #494949;
+  background-color: #494949;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
   line-height: 75px;
   margin: 0;
   text-align: center;
 }
 
-/* line 52, ../../app/stylesheets/partials/frame.scss */
+/* line 56, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   cursor: pointer;
   display: inline-block;
@@ -1303,31 +1469,31 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 62, ../../app/stylesheets/partials/frame.scss */
+/* line 66, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
-  margin: 36px auto 0;
-  width: auto;
+  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2240px%22%20height%3D%2253px%22%20viewBox%3D%220%200%2040%2053%22%20enable-background%3D%22new%200%200%2040%2053%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23EFEFEF%22%20d%3D%22M18.337%2C10.294c-1.664%2C0-3.232%2C0.207-4.71%2C0.622c-1.48%2C0.415-3.116%2C1.085-4.917%2C2.009L5.802%2C5.101%0A%09%09c1.8-1.154%2C3.923-2.043%2C6.372-2.669C14.619%2C1.81%2C17.021%2C1.5%2C19.373%2C1.5c2.958%2C0%2C5.392%2C0.393%2C7.308%2C1.176%0A%09%09c1.914%2C0.785%2C3.429%2C1.776%2C4.539%2C2.979c1.106%2C1.199%2C1.878%2C2.514%2C2.318%2C3.946c0.439%2C1.432%2C0.66%2C2.792%2C0.66%2C4.086%0A%09%09c0%2C1.293-0.198%2C2.483-0.589%2C3.568c-0.398%2C1.084-0.894%2C2.088-1.491%2C3.011c-0.601%2C0.924-1.292%2C1.801-2.077%2C2.633%0A%09%09c-0.786%2C0.83-1.55%2C1.615-2.284%2C2.352c-0.55%2C0.555-1.131%2C1.144-1.729%2C1.768c-0.602%2C0.623-1.145%2C1.283-1.627%2C1.975%0A%09%09c-0.483%2C0.694-0.892%2C1.418-1.212%2C2.184c-0.326%2C0.762-0.481%2C1.535-0.481%2C2.322c0%2C0.18%2C0%2C0.463%2C0%2C0.829%0A%09%09c0%2C0.365%2C0.021%2C0.688%2C0.07%2C0.972h-9.142c-0.095-0.464-0.152-0.982-0.176-1.557c-0.022-0.576-0.034-1.074-0.034-1.49%0A%09%09c0-1.289%2C0.16-2.457%2C0.482-3.5c0.323-1.037%2C0.751-2.006%2C1.283-2.909c0.53-0.9%2C1.14-1.742%2C1.836-2.527%0A%09%09c0.692-0.784%2C1.407-1.548%2C2.146-2.286c1.059-1.061%2C2.03-2.115%2C2.91-3.149c0.875-1.042%2C1.314-2.227%2C1.314-3.568%0A%09%09c0-1.109-0.428-2.055-1.281-2.838C21.258%2C10.687%2C19.999%2C10.294%2C18.337%2C10.294z%20M24.774%2C45.128c0%2C2.034-0.656%2C3.602-1.972%2C4.712%0A%09%09c-1.318%2C1.108-2.804%2C1.66-4.466%2C1.66c-1.664%2C0-3.15-0.552-4.468-1.66c-1.315-1.11-1.976-2.678-1.976-4.712%0A%09%09c0-2.029%2C0.66-3.598%2C1.976-4.708c1.317-1.108%2C2.804-1.66%2C4.468-1.66c1.662%2C0%2C3.147%2C0.552%2C4.466%2C1.66%0A%09%09C24.118%2C41.53%2C24.774%2C43.099%2C24.774%2C45.128z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");
+  background-size: 20%;
 }
 
-/* line 67, ../../app/stylesheets/partials/frame.scss */
+/* line 71, ../../app/stylesheets/partials/frame.scss */
 .video-card-header, .frame-share-header {
   border-bottom: 1px solid black;
   padding: 0;
 }
-/* line 72, ../../app/stylesheets/partials/frame.scss */
+/* line 76, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a, .frame-share-header a {
   text-decoration: none;
 }
-/* line 75, ../../app/stylesheets/partials/frame.scss */
+/* line 79, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
   text-decoration: none;
 }
-/* line 78, ../../app/stylesheets/partials/frame.scss */
+/* line 82, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .frame-share-header a:hover {
   text-decoration: underline;
 }
 
-/* line 84, ../../app/stylesheets/partials/frame.scss */
+/* line 88, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar, .frame-creator-avatar-missing {
   -moz-border-radius: 5px 0 0 0;
   -webkit-border-radius: 5px 0 0 0;
@@ -1340,13 +1506,13 @@ body.isolated-roll .guide-education {
   width: 40px;
 }
 
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 96, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing {
-  background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
+  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2240px%22%20height%3D%2253px%22%20viewBox%3D%220%200%2040%2053%22%20enable-background%3D%22new%200%200%2040%2053%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23EFEFEF%22%20d%3D%22M18.337%2C10.294c-1.664%2C0-3.232%2C0.207-4.71%2C0.622c-1.48%2C0.415-3.116%2C1.085-4.917%2C2.009L5.802%2C5.101%0A%09%09c1.8-1.154%2C3.923-2.043%2C6.372-2.669C14.619%2C1.81%2C17.021%2C1.5%2C19.373%2C1.5c2.958%2C0%2C5.392%2C0.393%2C7.308%2C1.176%0A%09%09c1.914%2C0.785%2C3.429%2C1.776%2C4.539%2C2.979c1.106%2C1.199%2C1.878%2C2.514%2C2.318%2C3.946c0.439%2C1.432%2C0.66%2C2.792%2C0.66%2C4.086%0A%09%09c0%2C1.293-0.198%2C2.483-0.589%2C3.568c-0.398%2C1.084-0.894%2C2.088-1.491%2C3.011c-0.601%2C0.924-1.292%2C1.801-2.077%2C2.633%0A%09%09c-0.786%2C0.83-1.55%2C1.615-2.284%2C2.352c-0.55%2C0.555-1.131%2C1.144-1.729%2C1.768c-0.602%2C0.623-1.145%2C1.283-1.627%2C1.975%0A%09%09c-0.483%2C0.694-0.892%2C1.418-1.212%2C2.184c-0.326%2C0.762-0.481%2C1.535-0.481%2C2.322c0%2C0.18%2C0%2C0.463%2C0%2C0.829%0A%09%09c0%2C0.365%2C0.021%2C0.688%2C0.07%2C0.972h-9.142c-0.095-0.464-0.152-0.982-0.176-1.557c-0.022-0.576-0.034-1.074-0.034-1.49%0A%09%09c0-1.289%2C0.16-2.457%2C0.482-3.5c0.323-1.037%2C0.751-2.006%2C1.283-2.909c0.53-0.9%2C1.14-1.742%2C1.836-2.527%0A%09%09c0.692-0.784%2C1.407-1.548%2C2.146-2.286c1.059-1.061%2C2.03-2.115%2C2.91-3.149c0.875-1.042%2C1.314-2.227%2C1.314-3.568%0A%09%09c0-1.109-0.428-2.055-1.281-2.838C21.258%2C10.687%2C19.999%2C10.294%2C18.337%2C10.294z%20M24.774%2C45.128c0%2C2.034-0.656%2C3.602-1.972%2C4.712%0A%09%09c-1.318%2C1.108-2.804%2C1.66-4.466%2C1.66c-1.664%2C0-3.15-0.552-4.468-1.66c-1.315-1.11-1.976-2.678-1.976-4.712%0A%09%09c0-2.029%2C0.66-3.598%2C1.976-4.708c1.317-1.108%2C2.804-1.66%2C4.468-1.66c1.662%2C0%2C3.147%2C0.552%2C4.466%2C1.66%0A%09%09C24.118%2C41.53%2C24.774%2C43.099%2C24.774%2C45.128z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E") no-repeat center center #454545;
   background-size: 50%;
 }
 
-/* line 109, ../../app/stylesheets/partials/frame.scss */
+/* line 113, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll, .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1362,7 +1528,7 @@ body.isolated-roll .guide-education {
   width: 66%;
 }
 
-/* line 121, ../../app/stylesheets/partials/frame.scss */
+/* line 125, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp {
   color: #999;
   font-size: 11px;
@@ -1372,7 +1538,7 @@ body.isolated-roll .guide-education {
   float: right;
 }
 
-/* line 126, ../../app/stylesheets/partials/frame.scss */
+/* line 130, ../../app/stylesheets/partials/frame.scss */
 .frame-title, .roll-item-title, .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -1387,7 +1553,7 @@ body.isolated-roll .guide-education {
   width: 83%;
 }
 
-/* line 140, ../../app/stylesheets/partials/frame.scss */
+/* line 144, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1399,20 +1565,20 @@ body.isolated-roll .guide-education {
   z-index: 5;
 }
 
-/* line 147, ../../app/stylesheets/partials/frame.scss */
+/* line 151, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 153, ../../app/stylesheets/partials/frame.scss */
+/* line 157, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 162, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -1425,7 +1591,7 @@ body.isolated-roll .guide-education {
   resize: none;
   width: 100%;
 }
-/* line 166, ../../app/stylesheets/partials/frame.scss */
+/* line 170, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1453,19 +1619,19 @@ body.isolated-roll .guide-education {
   margin-top: 5px;
 }
 
-/* line 179, ../../app/stylesheets/partials/frame.scss */
+/* line 182, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 183, ../../app/stylesheets/partials/frame.scss */
+/* line 186, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 190, ../../app/stylesheets/partials/frame.scss */
+/* line 193, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -1474,36 +1640,37 @@ body.isolated-roll .guide-education {
   text-overflow: ellipsis;
 }
 
-/* line 198, ../../app/stylesheets/partials/frame.scss */
+/* line 201, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
-/* line 202, ../../app/stylesheets/partials/frame.scss */
+/* XXX BELOW still needed for context overlay, but not for conversation within guide  */
+/* line 206, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 208, ../../app/stylesheets/partials/frame.scss */
+/* line 212, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 213, ../../app/stylesheets/partials/frame.scss */
+/* line 217, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 217, ../../app/stylesheets/partials/frame.scss */
+/* line 221, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 223, ../../app/stylesheets/partials/frame.scss */
+/* line 227, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -1511,7 +1678,7 @@ body.isolated-roll .guide-education {
   line-height: 2.8;
 }
 
-/* line 230, ../../app/stylesheets/partials/frame.scss */
+/* line 234, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1519,54 +1686,67 @@ body.isolated-roll .guide-education {
   padding-right: 3px;
 }
 
-/* line 239, ../../app/stylesheets/partials/frame.scss */
+/* line 243, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/twitter_stamp.svg?1339439121');
+=======
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
   float: left;
   font-size: 0.75em;
-  margin: 1px 3px;
+  margin: 3px 3px 0 0;
 }
 
-/* line 249, ../../app/stylesheets/partials/frame.scss */
+/* line 253, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/facebook_stamp.svg?1339439121');
+=======
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 }
 
-/* line 256, ../../app/stylesheets/partials/frame.scss */
+/* line 260, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
+<<<<<<< HEAD
   content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
+=======
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 }
 
-/* line 261, ../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 264, ../../app/stylesheets/partials/frame.scss */
+/* line 268, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
-/* line 269, ../../app/stylesheets/partials/frame.scss */
+/* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
+/* line 274, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 273, ../../app/stylesheets/partials/frame.scss */
+/* line 278, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 280, ../../app/stylesheets/partials/frame.scss */
+/* line 285, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 286, ../../app/stylesheets/partials/frame.scss */
+/* line 291, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 291, ../../app/stylesheets/partials/frame.scss */
+/* line 296, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -1579,13 +1759,12 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 305, ../../app/stylesheets/partials/frame.scss */
-.frame-activity,
-.video-footer {
+/* line 309, ../../app/stylesheets/partials/frame.scss */
+.frame-activity {
   font-weight: 500;
 }
 
-/* line 310, ../../app/stylesheets/partials/frame.scss */
+/* line 313, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -1594,7 +1773,7 @@ body.isolated-roll .guide-education {
   padding: 4px;
   width: auto;
 }
-/* line 318, ../../app/stylesheets/partials/frame.scss */
+/* line 321, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -1604,16 +1783,16 @@ body.isolated-roll .guide-education {
   margin-right: 3px;
   width: 24px;
 }
-/* line 328, ../../app/stylesheets/partials/frame.scss */
+/* line 331, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 332, ../../app/stylesheets/partials/frame.scss */
+/* line 335, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 337, ../../app/stylesheets/partials/frame.scss */
+/* line 340, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1623,7 +1802,7 @@ body.isolated-roll .guide-education {
   width: 22px;
 }
 
-/* line 348, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1631,12 +1810,12 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 357, ../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 364, ../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1644,25 +1823,25 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 373, ../../app/stylesheets/partials/frame.scss */
+/* line 376, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 380, ../../app/stylesheets/partials/frame.scss */
+/* line 383, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 385, ../../app/stylesheets/partials/frame.scss */
+/* line 388, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 392, ../../app/stylesheets/partials/frame.scss */
+/* line 395, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 397, ../../app/stylesheets/partials/frame.scss */
+/* line 400, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -1718,7 +1897,7 @@ body.isolated-roll .guide-education {
 }
 
 /* line 3, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved, .share-comment .video-shared {
+.video-saved {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -1745,11 +1924,11 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 /* line 18, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved img, .share-comment .video-shared img {
+.video-saved img {
   width: 30px;
 }
 /* line 22, ../../app/stylesheets/partials/saved-indicator.scss */
-.video-saved p, .share-comment .video-shared p {
+.video-saved p {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.231;
@@ -2143,17 +2322,15 @@ body.isolated-roll .guide-education {
 }
 
 /* line 3, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main, .frame-rolling-completion {
-  border-top: 1px solid #222222;
+.rolling-main {
   bottom: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
   position: absolute;
-  top: 39px;
+  top: 146px;
   width: 100%;
 }
-/* line 14, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:first-child, .frame-rolling-completion > li:first-child {
+/* line 12, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -2161,8 +2338,8 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 17, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:first-child h2, .frame-rolling-completion > li:first-child h2 {
+/* line 15, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -o-border-radius: 4px 4px 0 0;
@@ -2170,105 +2347,26 @@ body.isolated-roll .guide-education {
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 22, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main > li:hover, .frame-rolling-completion > li:hover {
+/* line 20, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main > li:hover {
   background-color: #666;
   cursor: pointer;
 }
-/* line 28, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main .share-comment-counter, .frame-rolling-completion .share-comment-counter {
+/* line 26, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 35, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header,
-.rolling-main-footer {
-  background: #555555;
-  -moz-border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
-  -o-border-radius: 4px 4px 0 0;
-  -ms-border-radius: 4px 4px 0 0;
-  -khtml-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid #4F4D51;
-  height: 40px;
-  left: 0;
-  padding: 5px;
-  position: absolute;
-  top: 0;
-  width: 100%;
+/* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-header {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
+  font-size: 1.4em;
+  padding: 10px;
 }
 
-/* line 48, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header-title {
-  line-height: 1.75;
-  text-align: center;
-}
-
-/* line 53, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  padding: 6px 9px;
-  position: absolute;
-  margin: 6px;
-  top: 0;
-  width: auto;
-}
-
-/* line 64, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-cancel {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  margin: 6px;
-  position: absolute;
-  top: 0;
-}
-
-/* line 72, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 39, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social, .rolls-share {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2294,12 +2392,12 @@ body.isolated-roll .guide-education {
   padding: 6px 13px;
 }
 
-/* line 84, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 44, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 90, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 50, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2311,12 +2409,149 @@ body.isolated-roll .guide-education {
   height: 15px;
 }
 
-/* line 102, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 62, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame, .frame-share {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 9, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.create-roll .roll-options {
+  border: none;
+}
+/* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.create-roll .roll-options:first-child {
+  border-top: 1px solid #343434;
+}
+/* line 15, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.create-roll .roll-options:nth-child(2) {
+  float: left;
+  margin-bottom: 2em;
+  width: 50%;
+}
+
+/* line 23, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  border: 1px solid black;
+  overflow: hidden;
+  padding: 7px;
+  width: 126px;
+}
+
+/* line 33, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox {
+  -moz-transition-property: margin;
+  -webkit-transition-property: margin;
+  -o-transition-property: margin;
+  transition-property: margin;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  float: left;
+  position: relative;
+}
+/* line 42, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:before {
+  color: #efefef;
+  content: "Public";
+  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  left: 53px;
+  position: absolute;
+  top: 0;
+}
+/* line 51, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:after {
+  background-color: gray;
+  background: url("/images/assets/switch_public.svg") no-repeat 5px 5px #999999;
+  -moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+  -o-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+  box-shadow: inset 0px 1px 0px 0px #a6a6a6;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background-size: 56%;
+  border: 1px solid #4d4d4d;
+  content: "\0020";
+  display: block;
+  height: 25px;
+  left: -7px;
+  position: absolute;
+  top: -7px;
+  width: 32px;
+}
+/* line 71, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked {
+  margin-left: 82%;
+}
+/* line 74, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked:before {
+  left: -72px;
+  content: "Private";
+}
+/* line 79, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked:after {
+  background: url("/images/assets/switch_private.svg") no-repeat center center #999999;
+  background-size: 43%;
+}
+
+/* line 90, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options {
+  padding: 5px 10px 10px;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
+}
+
+/* line 96, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+/* line 100, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid black;
+  display: block;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+/* line 111, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
   -moz-transition-duration: 0.25s;
   -webkit-transition-duration: 0.25s;
   -o-transition-duration: 0.25s;
@@ -2325,176 +2560,238 @@ body.isolated-roll .guide-education {
   -webkit-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 119, ../../app/stylesheets/partials/frame-rolling-options.scss */
+.roll-options-submit {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-color: #494949;
-  left: 0;
-  position: absolute;
-  margin-left: 100%;
-  top: 0;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 6px 13px;
+  float: right;
   width: 100%;
-  height: 100%;
 }
 
-/* line 117, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame-trans {
+/* line 3, ../../app/stylesheets/partials/frame-conversation.scss */
+.conversation-scroller {
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 146px;
+  width: 100%;
+}
+
+/* line 12, ../../app/stylesheets/partials/frame-conversation.scss */
+.conversation,
+.frame-conversation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+.conversation li,
+.frame-conversation li {
+  list-style-image: none;
+  list-style-type: none;
   margin-left: 0;
 }
 
-/* line 3, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion {
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  -o-border-radius: 5px 5px 0 0;
-  -ms-border-radius: 5px 5px 0 0;
-  -khtml-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  border-top: none;
-  overflow-y: hidden;
-  top: 0;
-  z-index: 1;
+/* line 19, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message {
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
+  padding: 10px 0 10px 10px;
 }
-/* line 12, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -o-border-radius: 0;
-  -ms-border-radius: 0;
-  -khtml-border-radius: 0;
-  border-radius: 0;
-  bottom: 0;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 40px;
+
+/* line 25, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
 }
-/* line 22, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .frame-share:before {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
-  opacity: 0.2;
-  background: #222;
-  bottom: 0;
-  content: "\0020";
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-/* line 35, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion .share-networks-list li {
-  margin-bottom: 0;
-  padding: 0;
-}
-/* line 42, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion.frame-rolling-private .share-comment-counter {
+/* line 31, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar a {
   display: block;
-  float: right;
-  height: 20px;
+}
+
+/* line 36, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+/* line 42, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:link {
+  color: #777;
+}
+
+/* line 48, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+}
+/* line 51, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:hover,
+.frame-conversation-message-reply:hover {
+  text-decoration: underline;
+}
+
+/* line 56, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+/* line 62, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-block {
+  margin: 3px 0 10px;
+}
+
+/* line 67, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+  font-size: 11px;
+}
+
+/* line 72, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
+}
+
+/* line 76, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment {
+  background-color: #35383a;
   position: relative;
 }
-
-/* line 51, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header {
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  -o-border-radius: 5px 5px 0 0;
-  -ms-border-radius: 5px 5px 0 0;
-  -khtml-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  background-color: #555555;
-  border-bottom: 1px solid #222222;
-  height: 40px;
-}
-/* line 58, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1 {
-  border-bottom: 1px solid #333333;
-  font-size: 16px;
-  height: 40px;
-  line-height: 2.4;
-  margin: 0 auto;
-  max-width: 145px;
-  padding-right: 10px;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 86, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-private:before {
-  background-image: url("../images/assets/rolls_private.svg");
-}
-/* line 90, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-rolling-completion-header h1.roll-type-social {
-  padding: 0;
-}
-
-/* line 96, ../../app/stylesheets/partials/frame-rolling-completion.scss */
-.frame-share-undo {
-  line-height: 3;
-  margin: 0 5px;
+/* line 82, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment .new-comment-submit {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 4px 8px;
+  right: 0;
+  margin: 8px;
   position: absolute;
-  right: 5px;
-  top: 0;
+  top: 2px;
 }
 
-/* line 3, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.frame-rolling-options {
-  background-color: #585858;
-  padding: 10px;
-}
-
-/* line 8, ../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-name-input, .new-roll-recipients {
+/* line 91, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
-  border: 1px solid #222;
-  display: block;
-  padding: 5px;
-  width: 100%;
+  height: 55px;
+  margin: 10px 61px 30px 8px;
+  width: 220px;
+}
+/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 
 /* line 3, ../../app/stylesheets/partials/rolls.scss */
 .roll-action-menu {
   display: none;
 }
-
 /* line 7, ../../app/stylesheets/partials/rolls.scss */
+.roll-action-menu .share-comment {
+  border-bottom: none;
+  border-top: none;
+  padding-bottom: 0;
+}
+/* line 13, ../../app/stylesheets/partials/rolls.scss */
+.roll-action-menu .share-networks,
+.roll-action-menu .share-submit {
+  border-top: none;
+}
+
+/* line 19, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu {
   margin: 0;
   padding: 11px 0 9px;
 }
-/* line 11, ../../app/stylesheets/partials/rolls.scss */
+/* line 23, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu li {
   display: block;
   float: left;
   list-style-type: none;
   margin: 0;
 }
-/* line 17, ../../app/stylesheets/partials/rolls.scss */
+/* line 29, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu .left {
-  margin-left: 12px;
+  margin-left: 10px;
   width: 47px;
 }
-/* line 21, ../../app/stylesheets/partials/rolls.scss */
+/* line 33, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu .middle {
   margin-left: 8px;
   width: 161px;
 }
-/* line 25, ../../app/stylesheets/partials/rolls.scss */
+/* line 37, ../../app/stylesheets/partials/rolls.scss */
 .roll-menu .right {
   margin-left: 8px;
   width: 85px;
 }
 
-/* line 31, ../../app/stylesheets/partials/rolls.scss */
+/* line 43, ../../app/stylesheets/partials/rolls.scss */
 .rolls-add, .rolls-invite {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -2522,13 +2819,13 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 42, ../../app/stylesheets/partials/rolls.scss */
+/* line 54, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share {
   margin-top: 0 !important;
   width: 100%;
 }
 
-/* line 48, ../../app/stylesheets/partials/rolls.scss */
+/* line 60, ../../app/stylesheets/partials/rolls.scss */
 .rolls-leave, .rolls-edit, .rolls-share-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2555,17 +2852,17 @@ body.isolated-roll .guide-education {
   margin-top: 0;
 }
 
-/* line 53, ../../app/stylesheets/partials/rolls.scss */
+/* line 65, ../../app/stylesheets/partials/rolls.scss */
 .rolls-edit {
   width: 100%;
 }
 
-/* line 58, ../../app/stylesheets/partials/rolls.scss */
+/* line 70, ../../app/stylesheets/partials/rolls.scss */
 .rolls-share-cancel {
   margin-top: 0;
 }
 
-/* line 63, ../../app/stylesheets/partials/rolls.scss */
+/* line 75, ../../app/stylesheets/partials/rolls.scss */
 .rolls-back {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2594,7 +2891,7 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 70, ../../app/stylesheets/partials/rolls.scss */
+/* line 82, ../../app/stylesheets/partials/rolls.scss */
 .roll-delete {
   background-color: #cc1235;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
@@ -2625,6 +2922,7 @@ body.isolated-roll .guide-education {
 }
 
 /* ------ Roll Add Area */
+<<<<<<< HEAD
 /* line 80, ../../app/stylesheets/partials/rolls.scss */
 .add-video-area {
   background-color: #2c2f30;
@@ -2662,6 +2960,20 @@ body.isolated-roll .guide-education {
 }
 /* line 91, ../../app/stylesheets/partials/rolls.scss */
 .add-video-area .add-video {
+=======
+/* line 92, ../../app/stylesheets/partials/rolls.scss */
+.roll-add-video-area {
+  display: none;
+}
+/* line 94, ../../app/stylesheets/partials/rolls.scss */
+.roll-add-video-area input {
+  width: 78%;
+  margin: 0px 13px 10px;
+  padding: 4px;
+}
+/* line 99, ../../app/stylesheets/partials/rolls.scss */
+.roll-add-video-area .add-video {
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4e4e4e, #343434);
@@ -2727,9 +3039,12 @@ body.isolated-roll .guide-education {
 }
 */
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
+<<<<<<< HEAD
 /* line 139, ../../app/stylesheets/partials/rolls.scss */
+=======
+/* line 144, ../../app/stylesheets/partials/rolls.scss */
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 .share-dialog {
-  background: #585858;
   padding: 0;
   display: none;
   position: relative;
@@ -2737,6 +3052,7 @@ body.isolated-roll .guide-education {
   z-index: 1;
 }
 
+<<<<<<< HEAD
 /* line 148, ../../app/stylesheets/partials/rolls.scss */
 .share-form {
   background: #494949;
@@ -2760,38 +3076,121 @@ body.isolated-roll .guide-education {
 /* line 167, ../../app/stylesheets/partials/rolls.scss */
 .share-form legend,
 .share-form label {
-  float: left;
-  font-weight: 500;
-  margin: 8px 0 5px;
-  width: 100%;
+=======
+/* line 158, ../../app/stylesheets/partials/rolls.scss */
+.share-comment,
+.share-networks,
+.share-submit {
+  padding: 5px 10px 10px;
 }
 
+/* line 162, ../../app/stylesheets/partials/rolls.scss */
+.share-comment {
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
+}
+
+/* line 168, ../../app/stylesheets/partials/rolls.scss */
+.share-networks,
+.share-submit {
+  border-top: 1px solid #343434;
+}
+
+/* line 172, ../../app/stylesheets/partials/rolls.scss */
+.share-networks {
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
+  float: left;
+  width: 50%;
+}
+
+<<<<<<< HEAD
 /* line 175, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   position: relative;
 }
 /* line 178, ../../app/stylesheets/partials/rolls.scss */
 .share-comment textarea {
+=======
+/* line 177, ../../app/stylesheets/partials/rolls.scss */
+.share-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+/* line 181, ../../app/stylesheets/partials/rolls.scss */
+.share-textarea {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: block;
   padding: 5px;
-  resize: none;
   width: 100%;
 }
+<<<<<<< HEAD
 /* line 186, ../../app/stylesheets/partials/rolls.scss */
 .share-comment .video-shared {
+=======
+/* line 190, ../../app/stylesheets/partials/rolls.scss */
+.share-textarea:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 198, ../../app/stylesheets/partials/rolls.scss */
+.share-networks-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+/* line 203, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  padding-top: 15px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 6px 13px;
+  margin-top: 32px;
+  width: 100%;
 }
+<<<<<<< HEAD
 
 /* line 198, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
@@ -2804,9 +3203,26 @@ body.isolated-roll .guide-education {
   display: inline-block;
   list-style-type: none;
   margin: 0 10px 10px 0;
+=======
+/* line 209, ../../app/stylesheets/partials/rolls.scss */
+.share-submit-button .spinner {
+  left: auto;
+  margin-left: -4px;
+  margin-top: -2px;
+  position: relative;
 }
 
-/* line 333, ../../app/stylesheets/_base.scss */
+/* line 217, ../../app/stylesheets/partials/rolls.scss */
+.share-comment-counter {
+  display: block;
+  font-size: 11px;
+  height: 22px;
+  line-height: 2;
+  float: right;
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
+}
+
+/* line 344, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   -moz-border-radius: 3px;
@@ -2822,7 +3238,11 @@ body.isolated-roll .guide-education {
   width: 34px;
 }
 
+<<<<<<< HEAD
 /* line 217, ../../app/stylesheets/partials/rolls.scss */
+=======
+/* line 231, ../../app/stylesheets/partials/rolls.scss */
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -2831,7 +3251,11 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
+<<<<<<< HEAD
 /* line 225, ../../app/stylesheets/partials/rolls.scss */
+=======
+/* line 239, ../../app/stylesheets/partials/rolls.scss */
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -2842,7 +3266,11 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
+<<<<<<< HEAD
 /* line 236, ../../app/stylesheets/partials/rolls.scss */
+=======
+/* line 250, ../../app/stylesheets/partials/rolls.scss */
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -2851,7 +3279,11 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
+<<<<<<< HEAD
 /* line 244, ../../app/stylesheets/partials/rolls.scss */
+=======
+/* line 258, ../../app/stylesheets/partials/rolls.scss */
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -2862,6 +3294,7 @@ body.isolated-roll .guide-education {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
+<<<<<<< HEAD
 /* line 257, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
@@ -2897,6 +3330,8 @@ body.isolated-roll .guide-education {
   position: static;
 }
 
+=======
+>>>>>>> 79dd80ea8151e5ec940b1e34cecf1a5d89c589ca
 /* line 3, ../../app/stylesheets/partials/share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
@@ -2909,67 +3344,98 @@ body.isolated-roll .guide-education {
   height: inherit;
 }
 
-/* line 3, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list {
-  cursor: pointer;
-}
-/* line 8, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a {
-  display: block;
-  padding: 5px;
-  text-decoration: none;
-}
-/* line 13, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a:visited {
-  text-decoration: none;
-}
-/* line 18, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list a:hover, .form-rolls-list a:active {
-  text-decoration: underline;
-}
-/* line 23, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li {
-  border-bottom: 1px solid #333333;
-  border-top: 1px solid #555555;
-  padding: 5px;
-}
-/* line 28, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li:first-child {
+/* line 4, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list .rolling-main-header {
   border-top: none;
 }
-/* line 31, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list li:last-child {
-  border-bottom: none;
+
+/* line 9, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list > ul {
+  cursor: pointer;
 }
-/* line 36, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll, .form-rolls-list .rolling-private-roll {
-  font-size: 14px;
-  line-height: 1.75;
-  position: relative;
-  text-align: center;
+/* line 14, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list > ul a {
+  display: block;
+  height: inherit;
+  text-decoration: none;
 }
-/* line 42, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll.new:before, .form-rolls-list .new.rolling-private-roll:before {
-  content: "+";
+/* line 19, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list > ul a:visited {
+  text-decoration: none;
 }
-/* line 45, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-public-roll:after, .form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_public.svg");
-  right: 9px;
-  position: absolute;
-  top: 1px;
+/* line 24, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list > ul a:hover, .existing-rolls-list > ul a:active {
+  text-decoration: underline;
 }
-/* line 56, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_private.svg");
+/* line 26, ../../app/stylesheets/partials/roll-selection-items.scss */
+.existing-rolls-list > ul a:hover .roll-selection-item-add, .existing-rolls-list > ul a:active .roll-selection-item-add {
+  text-decoration: underline;
 }
 
-/* line 63, ../../app/stylesheets/partials/roll-selection-default-items.scss */
-.share-comment-counter {
-  color: white;
-  line-height: 2.5;
-  margin: 10px;
-  right: 82px;
+/* line 33, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item {
+  border-bottom: 1px solid black;
+}
+
+/* line 38, ../../app/stylesheets/partials/roll-selection-items.scss */
+.rolling-public-roll .roll-selection-item-lining {
+  background: url("/images/assets/lock-public.svg") no-repeat right center transparent;
+}
+
+/* line 44, ../../app/stylesheets/partials/roll-selection-items.scss */
+.rolling-private-roll .roll-selection-item-lining {
+  background: url("/images/assets/lock_private.svg") no-repeat right center transparent;
+}
+
+/* line 49, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item-lining {
+  border-top: 1px solid #343434;
+  border-right: 1px solid #343434;
+  margin-right: 45px;
+}
+
+/* line 56, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item-thumbnail {
+  float: left;
+  height: 40px;
+  margin: 5px 10px 5px 5px;
+  width: 40px;
+}
+
+/* line 63, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-right: 45px;
+}
+
+/* line 71, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item-state {
+  font-size: 11px;
+  color: #777;
+}
+
+/* line 76, ../../app/stylesheets/partials/roll-selection-items.scss */
+.roll-selection-item-add {
+  background-color: #1e2021;
+  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2214px%22%0A%09%20height%3D%2215px%22%20viewBox%3D%220%200%2014%2015%22%20enable-background%3D%22new%200%200%2014%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%20id%3D%22Layer_1%22%3E%0A%09%3Cg%3E%0A%09%09%3Cg%3E%0A%09%09%09%3Cpath%20fill%3D%22%23BBBBBB%22%20d%3D%22M0.288%2C5.764h4.77V0.624h3.884v5.141h4.771v3.474H8.941v5.141H5.058V9.238h-4.77V5.764z%22/%3E%0A%09%09%09%3Cpath%20fill%3D%22%23BBBBBB%22%20d%3D%22M8.941%2C14.658H5.058c-0.159%2C0-0.288-0.125-0.288-0.279V9.518H0.288C0.129%2C9.518%2C0%2C9.393%2C0%2C9.238V5.764%0A%09%09%09%09c0-0.155%2C0.129-0.28%2C0.288-0.28H4.77V0.624c0-0.155%2C0.129-0.28%2C0.288-0.28h3.884c0.159%2C0%2C0.288%2C0.125%2C0.288%2C0.28v4.861h4.482%0A%09%09%09%09c0.159%2C0%2C0.288%2C0.125%2C0.288%2C0.28v3.474c0%2C0.154-0.129%2C0.279-0.288%2C0.279H9.229v4.861C9.229%2C14.533%2C9.101%2C14.658%2C8.941%2C14.658z%0A%09%09%09%09%20M5.346%2C14.098h3.308V9.238c0-0.154%2C0.129-0.281%2C0.288-0.281h4.482V6.044H8.941c-0.159%2C0-0.288-0.125-0.288-0.28V0.903H5.346%0A%09%09%09%09v4.861c0%2C0.155-0.129%2C0.28-0.288%2C0.28H0.576v2.913h4.482c0.159%2C0%2C0.288%2C0.127%2C0.288%2C0.281V14.098z%22/%3E%0A%09%09%3C/g%3E%0A%09%3C/g%3E%0A%3C/g%3E%0A%3C/svg%3E");
+  background-position: center 26px;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  border-top: 1px solid #272727;
+  border-left: 1px solid black;
+  float: right;
+  font-weight: 500;
+  font-size: 11px;
+  height: 50px;
+  padding: 8px;
+  width: 45px;
+  text-align: center;
 }
 
 /* line 7, ../../app/stylesheets/partials/user-preferences.scss */
@@ -3130,7 +3596,7 @@ body.isolated-roll .guide-education {
   padding-left: 0;
 }
 
-/* line 319, ../../app/stylesheets/_base.scss */
+/* line 330, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -3707,7 +4173,7 @@ body.isolated-roll .guide-education {
   border: 1px solid #010101;
   color: #efefef;
   padding: 6px 13px;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 110px;
 }
 
@@ -3786,7 +4252,7 @@ body.isolated-roll .guide-education {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 220, ../../app/stylesheets/_base.scss */
+/* line 231, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -3812,7 +4278,7 @@ body.isolated-roll .guide-education {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 220, ../../app/stylesheets/_base.scss */
+/* line 231, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -4280,6 +4746,133 @@ body.isolated-roll .guide-education {
   margin: 0 auto;
 }
 
+/* line 3, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-p {
+  margin: 1px;
+}
+
+/* line 7, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo {
+  background-color: #101010;
+  background: url("../images/seovideo/bg.png") no-repeat center center #101010;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 15, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper {
+  margin: auto;
+  width: 1200px;
+}
+
+/* line 20, ../../app/stylesheets/partials/seovideo.scss */
+.content-wrapper {
+  width: 100%;
+  margin: 0px;
+}
+
+/* line 25, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+/* line 30, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header {
+  margin: 0px;
+  width: 400px;
+}
+
+/* line 35, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-logo {
+  float: left;
+  margin: 10px 10px 18px 10px;
+}
+
+/* line 41, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-slogan {
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 15px;
+}
+
+/* line 47, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-deets {
+  float: left;
+  width: 690px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+}
+
+/* line 55, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-tweets {
+  float: left;
+  width: 470px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+}
+
+/* line 63, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-sistervids {
+  float: left;
+  width: 690px;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 15px;
+  padding: 23px 25px 23px 25px;
+  margin-top: 10px;
+}
+
+/* line 72, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-leftcol {
+  float: left;
+  width: 710px;
+  padding: 10px;
+}
+
+/* line 78, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-rightcol {
+  float: right;
+  width: 490px;
+  padding: 10px;
+}
+
+/* line 84, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-sistervid {
+  float: left;
+  width: 160px;
+  margin: 10px 20px 0px 0px;
+}
+
+/* line 90, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message {
+  height: 48px;
+  margin: 10px 0px 10px 0px;
+}
+
+/* line 95, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagenickname {
+  float: left;
+  font-weight: bold;
+  padding: 3px;
+}
+
+/* line 101, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagedate {
+  color: lightgrey;
+  padding: 3px;
+}
+
+/* line 106, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagetext {
+  float: left;
+  padding: 5px;
+  margin-left: 7px;
+}
+
 /* line 6, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-saves {
   background: url("../images/assets/saved_big.svg") no-repeat center center transparent;
@@ -4318,10 +4911,6 @@ body.isolated-roll .guide-education {
   display: block;
 }
 /* line 48, ../../app/stylesheets/partials/ui-test.scss */
-.ui-test .video-footer {
-  height: auto;
-}
-/* line 52, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }

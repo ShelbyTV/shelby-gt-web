@@ -1,14 +1,12 @@
 /* line 3, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main {
-  border-top: 1px solid #222222;
   bottom: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
   position: absolute;
-  top: 39px;
+  top: 146px;
   width: 100%;
 }
-/* line 14, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 12, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -17,7 +15,7 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 17, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 15, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:first-child h2 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
@@ -26,105 +24,26 @@
   -khtml-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-/* line 22, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 20, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main > li:hover {
   background-color: #666;
   cursor: pointer;
 }
-/* line 28, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 26, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main .share-comment-counter {
   margin: 0;
   right: 0;
 }
 
-/* line 35, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header,
-.rolling-main-footer {
-  background: #555555;
-  -moz-border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
-  -o-border-radius: 4px 4px 0 0;
-  -ms-border-radius: 4px 4px 0 0;
-  -khtml-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid #4F4D51;
-  height: 40px;
-  left: 0;
-  padding: 5px;
-  position: absolute;
-  top: 0;
-  width: 100%;
+/* line 32, ../../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-header {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
+  font-size: 1.4em;
+  padding: 10px;
 }
 
-/* line 48, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-header-title {
-  line-height: 1.75;
-  text-align: center;
-}
-
-/* line 53, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-back {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  padding: 6px 9px;
-  position: absolute;
-  margin: 6px;
-  top: 0;
-  width: auto;
-}
-
-/* line 64, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-cancel {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  margin: 6px;
-  position: absolute;
-  top: 0;
-}
-
-/* line 72, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 39, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-done, .rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -150,12 +69,12 @@
   padding: 6px 13px;
 }
 
-/* line 84, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 44, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 90, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 50, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -167,36 +86,12 @@
   height: 15px;
 }
 
-/* line 102, ../../../app/stylesheets/partials/frame-rolling.scss */
+/* line 62, ../../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-frame {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  background-color: #494949;
-  left: 0;
-  position: absolute;
-  margin-left: 100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 117, ../../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame-trans {
-  margin-left: 0;
 }

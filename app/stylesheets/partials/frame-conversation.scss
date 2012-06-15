@@ -1,0 +1,105 @@
+@import "base";
+
+.conversation-scroller { //needs to be consistent with .rolling-main
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 146px;
+  width: 100%;
+}
+
+.conversation,
+.frame-conversation {
+  @include no-bullets();
+
+  margin: 0;
+  padding: 0;
+}
+
+.frame-conversation-message {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+  padding: 10px 0 10px 10px;
+}
+
+.frame-conversation-message-avatar {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
+
+  a{
+    display: block;
+  }
+}
+
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+.frame-conversation-message-user-name {
+  &:link {
+    color: #777;
+  }
+}
+
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.frame-conversation-message-block {
+  margin: 3px 0 10px;
+}
+
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+//  color: #999;
+  font-size: 11px;
+}
+
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
+}
+
+.new-comment {
+  background-color: #35383a;
+//  height: 52px;
+//	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
+  position: relative;
+   
+  .new-comment-submit {
+    @include x-button-primer($shelby-gray, small);
+    right: 0;
+    margin: 8px;
+    position: absolute;
+    top: 2px; 
+  }
+}
+
+.new-comment-input {
+  @include opacity(0.8);
+  @include roundies(input);
+  
+  height: 55px;
+  margin: 10px 61px 30px 8px;
+  width: 220px;
+
+  &:focus{
+    @include transition-property('opacity');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+    @include opacity(1);
+  }
+}

@@ -1,0 +1,169 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Commenting out the Reset style sheet in favor of the normalize style sheet that comes with h5bp.
+ * Need to integrate the h5bp normalizer into this compass fanciness.
+ * @import "compass/reset";
+ */
+/* line 3, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay {
+  -moz-transition-property: margin-left;
+  -webkit-transition-property: margin-left;
+  -o-transition-property: margin-left;
+  transition-property: margin-left;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  background-color: #232526;
+  bottom: 0;
+  position: absolute;
+  margin-left: 100%;
+  width: 100%;
+}
+
+/* line 15, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay.showing {
+  margin-left: 0;
+}
+
+/* common to many guide overlays */
+/* line 20, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title {
+  background-color: #35383a;
+  border-bottom: 1px solid black;
+  height: 46px;
+}
+/* line 25, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title .back {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  left: 0;
+  margin: 8px;
+  position: absolute;
+  top: 0;
+}
+/* line 33, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-title h2 {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* line 41, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context {
+  background-color: #35383a;
+  background-position: center 43%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+/* line 52, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context.guide-overlay-missing-thumbnail {
+  background-image: url("/images/assets/missing_thumb.svg");
+  background-size: 20%;
+}
+/* line 57, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context:after {
+  -moz-box-shadow: 0 0 139px 31px black;
+  -webkit-box-shadow: 0 0 139px 31px black;
+  -o-box-shadow: 0 0 139px 31px black;
+  box-shadow: 0 0 139px 31px black;
+  bottom: 0;
+  content: "\0020";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 68, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview {
+  bottom: 0;
+  padding-bottom: 10px;
+  position: absolute;
+  width: 100%;
+}
+/* line 74, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-overview:after {
+  -moz-box-shadow: 0 0 86px 59px black;
+  -webkit-box-shadow: 0 0 86px 59px black;
+  -o-box-shadow: 0 0 86px 59px black;
+  box-shadow: 0 0 86px 59px black;
+  content: "\0020";
+  height: 1px;
+  margin-top: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 86, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator,
+.guide-overlay-context-title {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: #ccc;
+  font-weight: 500;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  width: inherit;
+}
+
+/* line 96, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-creator {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+/* line 102, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-title {
+  font-size: 14px;
+}
+
+/* line 107, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail {
+  height: inherit;
+  overflow: hidden;
+}
+/* line 111, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-thumbnail img {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
+  margin-top: -25%;
+  width: 100%;
+}
