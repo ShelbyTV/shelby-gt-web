@@ -14,8 +14,6 @@
     }, 
     
     _post : function(cmd, args){
-      console.log('posting');
-
       var data = {
         args : []
       };
@@ -29,7 +27,7 @@
         url : this._get_api_root()+'/'+cmd,
         data : data,
         beforeSend : function(xhr, settings){
-          xhr.setRequestHeader('Authorization', 'Basic c2hlbGJ5Ol9yaG9tYnVzX2d0');
+          xhr.setRequestHeader('Authorization', $('#rhombus-auth').data('token'));
         },
         error : function(){
           console.log("couldn't contact local rhombus API .. not a big deal", arguments);
