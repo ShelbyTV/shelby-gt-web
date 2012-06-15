@@ -41,12 +41,12 @@
 
 /* line 38, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .rolling-public-roll .roll-selection-item-lining {
-  background: url("/images/assets/lock-public.svg") no-repeat 244px center transparent;
+  background: url("/images/assets/lock-public.svg") no-repeat right center transparent;
 }
 
 /* line 44, ../../../app/stylesheets/partials/roll-selection-items.scss */
 .rolling-private-roll .roll-selection-item-lining {
-  background: url("/images/assets/lock_private.svg") no-repeat 251px center transparent;
+  background: url("/images/assets/lock_private.svg") no-repeat right center transparent;
 }
 
 /* line 49, ../../../app/stylesheets/partials/roll-selection-items.scss */
