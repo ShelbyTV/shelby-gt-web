@@ -25,8 +25,9 @@
   padding: 0;
   position: absolute;
   top: 40px;
+  width: 100%;
 }
-/* line 22, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 23, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .frame-share:before {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
   opacity: 0.2;
@@ -37,12 +38,12 @@
   top: 0;
   width: 100%;
 }
-/* line 35, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 36, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion .share-networks-list li {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 42, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 43, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion.frame-rolling-private .share-comment-counter {
   display: block;
   float: right;
@@ -50,7 +51,7 @@
   position: relative;
 }
 
-/* line 51, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 52, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header {
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
@@ -62,7 +63,7 @@
   border-bottom: 1px solid #222222;
   height: 40px;
 }
-/* line 58, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 59, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1 {
   border-bottom: 1px solid #333333;
   font-size: 16px;
@@ -76,16 +77,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 86, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 87, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-private:before {
   background-image: url("../images/assets/rolls_private.svg");
 }
-/* line 90, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 91, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-rolling-completion-header h1.roll-type-social {
   padding: 0;
 }
 
-/* line 96, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
+/* line 97, ../../../app/stylesheets/partials/frame-rolling-completion.scss */
 .frame-share-undo {
   line-height: 3;
   margin: 0 5px;

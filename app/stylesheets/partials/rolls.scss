@@ -2,7 +2,19 @@
 
 .roll-action-menu {
 	display: none;
+
+	//unsetting styles, should actually be written so that overriding is unneccessary.
+	.share-comment {
+		border-bottom: none;
+		border-top: none;
+		padding-bottom: 0;
+	}
+	.share-networks,
+	.share-submit {
+		border-top: none;
+	}
 }
+
 
 .roll-menu {
 	margin: 0;
@@ -15,7 +27,7 @@
 		margin: 0;		
 	}
 	.left {
-	  margin-left: 12px;
+	  margin-left: 10px;
 	  width: 47px;
 	}
 	.middle {
@@ -130,7 +142,6 @@
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
 
 .share-dialog {
-	background:#585858;
 	padding:0;
 	display:none;
 	position:relative;
@@ -139,66 +150,76 @@
 }
 
 .share-form {
-	background: #494949;
-	padding: 0;
-	position: relative;
 
-	fieldset {
-		border-top: 1px solid $rolls-outset;
-		border-bottom: 1px solid $rolls-inset;
-		padding: 0 $defaultMargin $defaultMargin;
+}
 
-		&:first-child {
-			border-top: none;
-		}
-		&:last-child {
-			border-bottom: none;
-		}
-	}
-
-	legend,
-	label {
-		float: left;
-		font-weight: 500;
-		margin: $defaultMargin - 2 0 $defaultMargin - 5;
-		width: 100%;
-	}
+.share-comment,
+.share-networks,
+.share-submit {
+	@include x-fieldset-primer;
 }
 
 .share-comment {
-	position:relative;
+	border-top: 1px solid $outset;
+	border-bottom: 1px solid $inset;
+}
 
-	textarea {
-		@include roundies(input);
-		
-		padding:$defaultMargin/2;
-		resize:none;
-		width:100%;
-	}
-
-	.video-shared {
-		@extend .video-saved;
-		@include roundies;
-		
-		padding-top:15px;
-	}
+.share-networks,
+.share-submit {
+	border-top: 1px solid $outset;
 }
 
 .share-networks {
+	float: left;
+	width: 50%;
+}
 
+.share-label {
+	@include x-form-label-primer;
+}
+
+.share-textarea {
+	@include inputfont;
+	@include roundies(input);
+	@include opacity(0.8);
+
+	display: block;
+	padding: 5px;
+	width: 100%;
+
+  &:focus{
+    @include transition-property('opacity');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+    @include opacity(1);
+  }
 }
 
 .share-networks-list {
-	float: left;
 	margin: 0;
-	padding: 0;
+	padding-left: 0;
+}
 
-	li {
-		display: inline-block;
-		list-style-type: none;
-		margin: 0 $defaultMargin $defaultMargin 0;
+.share-submit-button {
+	@include x-button-primer($shelby-blue);
 
+	margin-top: 32px;
+	width: 100%;
+	
+	.spinner {
+		left: auto;
+		margin-left: -4px;
+		margin-top: -2px;		
+		position: relative;
 	}
+}
+
+.share-comment-counter {
+	display: block;
+	font-size: 11px;
+	height: 22px;
+	line-height: 2;
+	float: right;
 }
 
 .networks-twitter,
@@ -245,18 +266,4 @@
 }
 
 .share-submit {
-}
-
-.share-submit-button {
-	@include x-button-primer($shelby-blue);
-
-	margin-top: 10px;
-	width: 100%;
-
-	.spinner {
-		left: auto;
-		margin-left: auto;
-		margin-top: auto;
-		position: static;
-	}
 }

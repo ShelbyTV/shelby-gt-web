@@ -34,7 +34,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayFrameInRoll : function(rollId, frameId, params, options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      activateRollingView : false
+      activateRollingView : false,
+      rerollSuccess : (params && params.reroll_success === "true")
     }).value();
 
     var self = this;
@@ -458,7 +459,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         include_children : true
       },
       onRollFetch: function(rollModel, response){
-        self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+        if(!options.rerollSuccess){
+          self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+        }
       }
     });
   },

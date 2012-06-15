@@ -73,7 +73,7 @@
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 220, ../../../app/stylesheets/_base.scss */
+/* line 231, ../../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -99,7 +99,7 @@
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 220, ../../../app/stylesheets/_base.scss */
+/* line 231, ../../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
