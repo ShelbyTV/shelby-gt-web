@@ -1,6 +1,6 @@
 (function(){
   
-  var commands = ['set', 'hset', 'sadd', 'incrby'];
+  var commands = ['set', 'hset', 'sadd', 'incrby', 'lpush'];
 
   libs.utils.rhombus = {
 
@@ -42,7 +42,6 @@
 
   };
   
-  // weirdest js design pattern ever?
   commands.forEach(function(cmd){
     libs.utils.rhombus[cmd] = function(){
       libs.utils.rhombus._post(cmd, arguments);
