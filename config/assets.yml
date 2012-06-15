@@ -39,6 +39,7 @@ javascripts:
     - public/javascripts/app/views/paging_list.view.js
     - public/javascripts/app/views/auto_scroll_frame_list.view.js
     - public/javascripts/app/views/dashboard.view.js
+    - public/javascripts/app/views/guide_overlay.view.js
     - public/javascripts/app/views/roll_list.view.js
     - public/javascripts/app/views/roll.view.js
     - public/javascripts/app/views/user_preferences.view.js
@@ -49,10 +50,10 @@ javascripts:
     - public/javascripts/app/views/roll_action_menu.view.js
     - public/javascripts/app/views/roll_header.view.js
     - public/javascripts/app/views/item_header.view.js
+    - public/javascripts/app/views/rolling_create_roll_view.js
     - public/javascripts/app/views/rolling_selection_item.view.js
     - public/javascripts/app/views/rolling_selection_list.view.js
     - public/javascripts/app/views/share.view.js
-    - public/javascripts/app/views/frame_rolling_share.view.js
     - public/javascripts/app/browser.js
     - public/javascripts/app/models/db/user.model.js
     # shelby backbone app - all other assets

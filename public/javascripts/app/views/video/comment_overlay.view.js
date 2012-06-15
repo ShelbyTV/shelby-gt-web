@@ -65,7 +65,7 @@
       }
 
       // render the currently selected message
-      var messageView = new libs.shelbyGT.MessageView(messageViewParams);
+      var messageView = new libs.shelbyGT.CommentOverlayMessageView(messageViewParams);
       this._leaveChildren();
       this.insertChildBefore(messageView, '.comment-overlay-next');
 

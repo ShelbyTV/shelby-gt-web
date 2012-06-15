@@ -1,19 +1,124 @@
 @import "base";
 
 .frame-rolling-options{
-	background-color: #585858;
-	padding:$defaultMargin;
+  
 }
 
-.new-roll-name-input{
-	@include border-radius($input-radius);
+//this is a crazy temporary hack.
+.create-roll {
+  .roll-options{
+    border: none;
+    &:first-child {
+      border-top: 1px solid $outset;
+    }
 
-	border:1px solid #222;
-	display:block;
-	padding:$defaultMargin/2;
-	width:100%;
+    &:nth-child(2) {
+      float: left;
+      margin-bottom: 2em;
+      width: 50%;
+    }
+  }
 }
 
-.new-roll-recipients{
-	@extend .new-roll-name-input;
+.new-roll-status {
+  @include roundies;
+
+  display: block;
+  border: 1px solid $inset;
+  overflow: hidden;
+  padding: 7px;
+  width: 126px;
+}
+
+.new-roll-status-checkbox {
+  @include transition-property('margin');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-out);
+
+  cursor: pointer;
+  float: left;
+  position: relative;
+
+  &:before {
+    color: $button-color;
+    content: "Public";
+    font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+    left: 53px;
+    position: absolute;
+    top: 0;
+  }
+
+  &:after {
+    background-color: gray;
+    @include background(
+      url('/images/assets/switch_public.svg') no-repeat 5px 5px #999//,
+//      linear-gradient(top, adjust-lightness(#666, 20%), #666)
+      );
+    @include box-highlight(#666);
+    @include roundies;
+
+    background-size: 56%;
+    border: 1px solid adjust-lightness(#666, -10%);
+    content: "\0020";
+    display: block;
+    height:25px;
+    left: -7px;
+    position: absolute;
+    top: -7px;
+    width: 32px;
+  }
+
+  &:checked {
+    margin-left: 82%;
+
+    &:before {
+      left: -72px;
+      content: "Private";
+    }
+
+    &:after {
+      @include background(
+        url('/images/assets/switch_private.svg') no-repeat center center #999//,
+        //linear-gradient(top, adjust-lightness(#666, 10%), #999)
+      );
+      background-size: 43%;
+    }
+  }
+}
+
+
+.roll-options {
+  @include x-fieldset-primer;
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+}
+
+.roll-options-label {
+  @include x-form-label-primer;
+}
+
+.roll-options-input {
+  @include inputfont;
+  @include opacity(0.8);
+  @include roundies(input);
+
+  border: 1px solid $inset;
+  display:block;
+  padding: 5px;
+  margin-bottom:5px;
+  width: 100%;
+
+  &:focus{
+    @include transition-property('opacity');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+    @include opacity(1);
+  }
+}
+
+ .roll-options-submit {
+  @include x-button-primer($shelby-blue);
+
+  float: right;
+  width: 100%;
 }

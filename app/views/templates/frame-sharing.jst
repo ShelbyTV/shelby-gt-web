@@ -7,7 +7,7 @@
     <button class="back js-track-event" data-ga_category="Rolling" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Cancel
     </button>
-    <h2>Roll Video</h2>
+    <h2>Share Video</h2>
   </div>
   
   <% if ( frameThumbnail ) { %>
@@ -17,25 +17,16 @@
   <% } %>
     <div class="guide-overlay-context-overview">
       <h3 class="guide-overlay-context-creator">
-        <%= creator.get('nickname') || '' %>
+        <%= creator.get('nickname') || ''%>
       </h3>
       <h2 class="guide-overlay-context-title">
         <%= frame.get('video').get('title') || '' %>
       </h2>
     </div>
-  </div>
+  </div>  
 </div>
 
-<div class="guide-overlay-main rolling-main">
-  <div class="js-rolling-main-new-roll rolling-main-new-roll">
-    <h3 class="rolling-main-header">Create New Roll</h3>
-    <!-- Form added + filled out by RollingCreateRollView -->
-  </div>
-  
-  <div class="js-existing-rolls-list existing-rolls-list">
-    <h3 class="rolling-main-header">Add to Existing Rolls</h3>
-    <!-- Rolls UL added + filled out by RollingSelctionListView -->
-  </div>
+<div class="frame-sharing">
 </div>
 
 

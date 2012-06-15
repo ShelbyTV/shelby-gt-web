@@ -4,6 +4,7 @@
   var ListView = libs.shelbyGT.ListView;
   var RollingSelectionItemView = libs.shelbyGT.RollingSelectionItemView;
   var RollModel = libs.shelbyGT.RollModel;
+  var ShareActionState = libs.shelbyGT.ShareActionState;
 
   libs.shelbyGT.RollingSelectionListView = ListView.extend({
 
@@ -11,18 +12,7 @@
       collectionAttribute : 'rolls',
       simulateAddTrue : false
     }),
-
-    events : {
-      "click .js-new-public-roll"  : "_rollToNewPublicRoll",
-      "click .js-new-private-roll" : "_rollToNewPrivateRoll"
-    },
-
-    className : 'form-rolls-list',
-
-    template : function(obj){
-      return JST['roll-selection-default-items'](obj);
-    },
-
+    
     initialize : function(){
       var self = this;
       this.options.listItemView = function(item, params){
@@ -53,16 +43,20 @@
 
     render : function(){
       this._leaveChildren();
-      this.$el.html(this.template());
       ListView.prototype.render.call(this);
     },
+    
+    rollToExisting : function(frame, roll){
+      var self = this;
 
-    _rollToNewPublicRoll : function(){
-      this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'public'});
-    },
-
-    _rollToNewPrivateRoll : function(){
-      this.parent.revealFrameRollingCompletionView(this.options.frame, null, {type:'private'});
+      this.options.frameRollingState.set({doShare:ShareActionState.share});
+      
+      // reroll the frame, then show the new frame
+      this.options.frame.reRoll(roll, function(newFrame){
+        //TODO: show success message?
+        self.options.frameRollingState.set({doShare:ShareActionState.complete});
+        shelby.router.navigate('roll/'+newFrame.get('roll_id')+'/frame/'+newFrame.id+'?reroll_success=true', {trigger:true});
+      });
     },
 
     //override of ListView._renderEducation

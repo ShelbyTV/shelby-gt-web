@@ -24,7 +24,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     return events;
   },
 
-  el : '#header',
+  el : '#js-header',
 
   _menus : [
     {anchor: '.about', subnavId: '#about-subnav'},
