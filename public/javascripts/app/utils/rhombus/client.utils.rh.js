@@ -5,8 +5,8 @@
   libs.utils.rhombus = {
 
     _env_api_root_map : {
-      production : 'http://api.rhombus.shelby.tv',
-      development : 'http://localhost.shelby.tv:3010'
+      "production" : 'http://api.rhombus.shelby.tv',
+      "development" : 'http://localhost.shelby.tv:3010'
     },
 
     _get_api_root : function(){
