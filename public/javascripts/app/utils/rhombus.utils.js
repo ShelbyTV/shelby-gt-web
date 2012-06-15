@@ -4,11 +4,17 @@
 
   libs.utils.rhombus = {
 
-    _api_root : function(){
-      return window.location.host.indexOf('localhost')!==-1 ? 'http://localhost.shelby.tv:3010' : 'http://localhost.shelby.tv:3010';
+    _env_api_root_map : {
+      production : 'http://api.rhombus.shelby.tv',
+      development : 'http://localhost.shelby.tv:3010'
+    },
+
+    _get_api_root : function(){
+      return this._env_api_root_map[libs.utils.environment.getEnvironment()];
     }, 
     
     _post : function(cmd, args){
+      console.log('posting');
 
       var data = {
         args : []
@@ -20,8 +26,11 @@
 
       var opts = {
         type : 'POST',
-        url : this._api_root()+'/'+cmd,
+        url : this._get_api_root()+'/'+cmd,
         data : data,
+        beforeSend : function(xhr, settings){
+          xhr.setRequestHeader('Authorization', 'Basic c2hlbGJ5Ol9yaG9tYnVzX2d0');
+        },
         error : function(){
           console.log("couldn't contact local rhombus API .. not a big deal", arguments);
         },
