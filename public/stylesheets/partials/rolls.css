@@ -237,6 +237,13 @@
   margin-top: 0;
   padding: 4px;
 }
+/* line 110, ../../../app/stylesheets/partials/rolls.scss */
+.add-video-area .spinner {
+  left: auto;
+  margin-left: 0px;
+  margin-top: 0px;
+  position: relative;
+}
 
 /* unused
 .rolls-list-nav {
@@ -275,7 +282,7 @@
 }
 */
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
-/* line 151, ../../../app/stylesheets/partials/rolls.scss */
+/* line 157, ../../../app/stylesheets/partials/rolls.scss */
 .share-dialog {
   padding: 0;
   display: none;
@@ -284,39 +291,39 @@
   z-index: 1;
 }
 
-/* line 165, ../../../app/stylesheets/partials/rolls.scss */
+/* line 171, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment,
 .share-networks,
 .share-submit {
   padding: 5px 10px 10px;
 }
 
-/* line 169, ../../../app/stylesheets/partials/rolls.scss */
+/* line 175, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   border-top: 1px solid #343434;
   border-bottom: 1px solid black;
 }
 
-/* line 175, ../../../app/stylesheets/partials/rolls.scss */
+/* line 181, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks,
 .share-submit {
   border-top: 1px solid #343434;
 }
 
-/* line 179, ../../../app/stylesheets/partials/rolls.scss */
+/* line 185, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 184, ../../../app/stylesheets/partials/rolls.scss */
+/* line 190, ../../../app/stylesheets/partials/rolls.scss */
 .share-label {
   font-size: 14px;
   font-weight: 500;
   line-height: 2;
 }
 
-/* line 188, ../../../app/stylesheets/partials/rolls.scss */
+/* line 194, ../../../app/stylesheets/partials/rolls.scss */
 .share-textarea {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   -moz-border-radius: 3px;
@@ -331,7 +338,7 @@
   padding: 5px;
   width: 100%;
 }
-/* line 197, ../../../app/stylesheets/partials/rolls.scss */
+/* line 203, ../../../app/stylesheets/partials/rolls.scss */
 .share-textarea:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -349,13 +356,13 @@
   opacity: 1;
 }
 
-/* line 205, ../../../app/stylesheets/partials/rolls.scss */
+/* line 211, ../../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding-left: 0;
 }
 
-/* line 210, ../../../app/stylesheets/partials/rolls.scss */
+/* line 216, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -382,7 +389,7 @@
   margin-top: 32px;
   width: 100%;
 }
-/* line 216, ../../../app/stylesheets/partials/rolls.scss */
+/* line 222, ../../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: -4px;
@@ -390,7 +397,7 @@
   position: relative;
 }
 
-/* line 224, ../../../app/stylesheets/partials/rolls.scss */
+/* line 230, ../../../app/stylesheets/partials/rolls.scss */
 .share-comment-counter {
   display: block;
   font-size: 11px;
@@ -415,7 +422,7 @@
   width: 34px;
 }
 
-/* line 238, ../../../app/stylesheets/partials/rolls.scss */
+/* line 244, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -424,7 +431,7 @@
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 246, ../../../app/stylesheets/partials/rolls.scss */
+/* line 252, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -435,7 +442,7 @@
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 257, ../../../app/stylesheets/partials/rolls.scss */
+/* line 263, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -444,7 +451,7 @@
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 265, ../../../app/stylesheets/partials/rolls.scss */
+/* line 271, ../../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));

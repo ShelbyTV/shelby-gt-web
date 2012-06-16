@@ -24,6 +24,12 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
+		this.spinner = new libs.shelbyGT.SpinnerView({
+      el: this.$('#js-add-video')[0],
+      replacement : true,
+      size : 'small'
+    });
+    this.renderChild(this.spinner);
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll) {
       this.$el.show();
     }
@@ -46,8 +52,18 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 			this.$el.hide();
 		}
 	},
+	
+	_showSpinner : function(){
+    this.spinner.show();
+  },
+
+  _hideSpinner : function(){
+    this.spinner.hide();
+  },
+  
 
 	_addVideoViaURL : function(){
+		this._showSpinner();
 		var _url = this.$('input#js-video-url-input').val();
 		// check if url given is valid syntax
 		var regex = new RegExp(/^(https?):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i);
@@ -59,6 +75,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 				{url: shelby.config.apiRoot + '/roll/'+this.model.get('currentRollModel').id+'/frames', 
 				wait: true,
 				global: false,
+				complete: function(){self._hideSpinner();},
 				success: function(frame){
 					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
 					self.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
@@ -73,6 +90,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 			});
     } 
 		else {
+			this._hideSpinner();
 			this._addVideoError("I don't think " + _url + " is a valid url");
     }
 	},
