@@ -1,7 +1,8 @@
 libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 
   events : {
-		"click #js-add-video" : "_addVideoViaURL"
+		"click #js-add-video" : "_addVideoViaURL",
+		"keypress #js-video-url-input" : "_onEnterInInputArea"
   },
 
   el : '#js-add-video-area',
@@ -97,6 +98,12 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 
 	_addVideoError: function(message){
 		alert(message);
-	}
+	},
+	
+  _onEnterInInputArea : function(event){
+    if (event.keyCode==13){
+      return this._addVideoViaURL();
+    }
+  }
 
 });
