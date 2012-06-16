@@ -61,18 +61,18 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 				global: false,
 				success: function(frame){
 					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
-					this.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
+					self.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
+					setTimeout(function(){
+						self.$('#js-video-url-input').attr('placeholder', "add to shelby via a url").val("");
+					}, 1500);
 				},
 				error: function(a,b,c){
-					if (b.status == 404) {
-						self._addVideoError(JSON.parse(b.responseText).message);
-					} 
-					else { 
-						alert("sorry, something went wrong.");
-					};
+					if (b.status == 404) { self._addVideoError(JSON.parse(b.responseText).message); }
+					else { alert("sorry, something went wrong. contact support@shelby.tv if you think somethings wonky."); };
 				}
 			});
-    } else {
+    } 
+		else {
 			this._addVideoError("I don't think " + _url + " is a valid url");
     }
 	},
