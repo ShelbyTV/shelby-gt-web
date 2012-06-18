@@ -82,10 +82,8 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 					self.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
 					self.$('#js-video-url-input').animate({ backgroundColor: 'lightgreen' }, 'fast', function(){
 						self.$('#js-video-url-input').animate({ backgroundColor: 'white' }, 2000);
-					});
-					setTimeout(function(){
 						self.$('#js-video-url-input').attr('placeholder', "add to shelby via a url").val("");
-					}, 1500);
+					});
 				},
 				error: function(a,b,c){
 					if (b.status == 404) { self._addVideoError(JSON.parse(b.responseText).message); }
