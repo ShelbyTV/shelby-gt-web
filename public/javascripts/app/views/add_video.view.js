@@ -80,6 +80,9 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 				success: function(frame){
 					self.model.get('currentRollModel').get('frames').add(frame, {at:0});
 					self.$('#js-video-url-input').removeClass('error').attr('placeholder', "yay! your video was added!").val("");
+					self.$('#js-video-url-input').animate({ backgroundColor: 'lightgreen' }, 'fast', function(){
+						self.$('#js-video-url-input').animate({ backgroundColor: 'white' }, 2000);
+					});
 					setTimeout(function(){
 						self.$('#js-video-url-input').attr('placeholder', "add to shelby via a url").val("");
 					}, 1500);
