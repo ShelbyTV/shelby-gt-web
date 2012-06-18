@@ -10,4 +10,4 @@ role :app, "108.171.161.62"
 #############################################################
 
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
-set :branch, "master"
+set :branch, "closure_compressor"
