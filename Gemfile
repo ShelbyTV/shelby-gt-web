@@ -32,7 +32,9 @@ end
 # gem 'jquery-rails'
 
 # Use Jammit
-gem 'jammit', '= 0.6.3'
+# NOTE: The most recent version of jammit (0.6.5) includes ruby-yui-compressor (https://github.com/sstephenson/ruby-yui-compressor) which
+# is at version 0.9.6 which includes yui-compressor version 2.4.4 which chokes on inline svg.  See assets.yml for the temporary fix.
+gem 'jammit'
 
 # Deploy with Capistrano
 gem 'capistrano'
