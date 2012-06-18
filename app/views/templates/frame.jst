@@ -5,7 +5,7 @@
 <% var frameTitle = frame.get('video').get('title') %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnHeartedRoll = frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+<% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
 
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
 

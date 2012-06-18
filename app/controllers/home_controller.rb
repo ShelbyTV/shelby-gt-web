@@ -1,3 +1,5 @@
+require 'shelby_api'
+
 class HomeController < ApplicationController
 
   ##
@@ -8,25 +10,32 @@ class HomeController < ApplicationController
     # Get video and user info from shelby api for meta tags
     @meta_info = get_video_info(params[:path])
     
-    #XXX ISOLATED_ROLL - HACKING MAPPING based on domain
-    #TODO: pull this mapping from API
-    @isolated_roll_id = case request.host
-      when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
-      when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
-      when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
-      when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
-      when "reecepacheco.tv" then "4f900d56b415cc6614056681"
-      when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
-      when "chriskurdziel.tv" then "4f901d4bb415cc661405fde9"
-      when "bohrmann.tv" then "4f8f81bbb415cc4762002d7a"
-      when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
-      when "syria.shelby.tv" then "4fccffc188ba6b7a82000b92"
-      when "nowplaying.shelby.tv" then "4fcd0ca888ba6b07e30001d7"
-      when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
-      when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
-      when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
-      when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
-      else false
+    #XXX ISOLATED_ROLL
+    if ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
+      # for shelby.tv domain, try to find a roll assigned to the given subdomain
+      response = Shelby::API.get_roll(request.subdomain)
+      @isolated_roll_id = response['status'] == 200 && response['result'] && response['result']['id']
+    else
+      # for all other domains we hard code a list of iso_roll domains to search through
+      #TODO: pull this mapping from API
+      @isolated_roll_id = case request.host
+        when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+        when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
+        when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
+        when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+        when "reecepacheco.tv" then "4f900d56b415cc6614056681"
+        when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
+        when "chriskurdziel.tv" then "4f901d4bb415cc661405fde9"
+        when "bohrmann.tv" then "4f8f81bbb415cc4762002d7a"
+        when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
+        when "syria.shelby.tv" then "4fccffc188ba6b7a82000b92"
+        when "nowplaying.shelby.tv" then "4fcd0ca888ba6b07e30001d7"
+        when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
+        when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+        when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
+        when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
+        else false
+      end
     end
     render 'isolated_roll' and return if @isolated_roll_id
 
