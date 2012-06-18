@@ -1,0 +1,38 @@
+/* line 3, ../../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-wrapper {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  left: 10px;
+  padding-right: 360px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  z-index: 3;
+}
+
+/* line 16, ../../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining {
+  height: 67px;
+  max-width: 550px;
+  position: relative;
+}
+
+/* line 23, ../../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay {
+  border: 1px solid red;
+  background: pink;
+}

@@ -1,0 +1,26 @@
+@import "base";
+
+.context-overlay-wrapper {
+	@include transition-property(opacity);
+	@include transition-duration(.25s);
+	@include transition-timing-function(ease-out);
+	@include transition-delay(0s);
+	left: $defaultMargin;
+	padding-right: 360px;
+	position: absolute;
+	top: $defaultMargin;
+	width: 100%;
+	z-index:3;	
+}
+
+.context-overlay-lining {
+	height: 67px;
+	max-width: 550px;
+	position: relative;
+}
+
+
+.context-overlay {
+	border: 1px solid red;
+		background: pink;
+}
