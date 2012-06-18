@@ -359,7 +359,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     
     if(shelby.models.user.get('anon') && !opts.hideAnonUserView){ this._setupAnonUserViews(); }
     // header & menu render on instantiation //
+    
     shelby.views.commentOverlay = shelby.views.commentOverlay || new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
+    shelby.views.contextOverlay = shelby.views.contextOverlay || new libs.shelbyGT.ContextOverlayView({model:shelby.models.guide});
+
     if(!opts.hideGuideHeader){
       shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     }
