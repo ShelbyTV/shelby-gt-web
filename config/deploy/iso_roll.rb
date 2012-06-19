@@ -10,4 +10,4 @@ role :app, "50.57.52.126"
 #############################################################
 
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
-set :branch, "isolated_roll"
+set :branch, "master"
