@@ -26,13 +26,11 @@
 
 /* line 16, ../../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining {
-  height: 67px;
-  max-width: 550px;
+  font-size: 120%;
+  max-width: 330px;
   position: relative;
 }
-
-/* line 23, ../../../app/stylesheets/partials/context-overlay.scss */
-.context-overlay {
-  border: 1px solid red;
-  background: pink;
+/* line 21, ../../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .frame-title {
+  width: 64%;
 }

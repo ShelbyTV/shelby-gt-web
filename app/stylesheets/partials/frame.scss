@@ -115,7 +115,7 @@
 	@include ellipsis();
 
 	float: left;
-	width: 66%;
+	width: 50%;
 }
 
 .frame-creator-origin-twitter{
@@ -125,6 +125,18 @@
 .frame-timestamp {
 	@include frame-header-smalltype;
 	float:right;
+}
+
+.frame-locator {
+	@include buttonfont;
+
+	background: url($icon-locate) no-repeat center left transparent;
+	border: none;
+	color: $button-color;
+	line-height: 3.25;
+	padding: 0 1em 0 2em;
+	position: absolute;
+	right: 0;
 }
 
 .frame-title {

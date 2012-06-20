@@ -9,7 +9,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   _conversationView : null,
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
+      activationStateProperty : 'activeFrameModel',
+      contextOverlay : false
   }),
 
   events : {
@@ -58,7 +59,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     this._leaveChildren();
 
     var useFrameCreatorInfo = this.model.conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ frame : this.model }));
+    this.$el.html(this.template({ frame : this.model, options : this.options }));
 
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
