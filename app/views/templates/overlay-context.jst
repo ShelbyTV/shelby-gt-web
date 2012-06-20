@@ -1,8 +1,14 @@
-<% if ( thumbnail ) { %>
+<% if (!showThumbnail) { %>
+  <div class="guide-overlay-context">
+<% } else if (thumbnail) { %>
   <div class="guide-overlay-context" style="background-image:url('<%= thumbnail %>');">
 <% } else { %>
   <div class="guide-overlay-context guide-overlay-missing-thumbnail">
 <% } %>
+  <button class="guide-overlay-context-full-shelby-button js-full-shelby-button"></button>
+  <% if (showFollowButton) { %>
+    <button class="guide-overlay-context-follow-button js-follow-button"></button>
+  <% } %>
   <div class="guide-overlay-context-overview">
     <h3 class="guide-overlay-context-creator">
       <%= creatorName || ''%>
