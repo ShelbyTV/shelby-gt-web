@@ -102,7 +102,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       null,
       options,
       {
-        hideAnonUserView:true,
         isIsolatedRoll : true
       });
 
@@ -355,13 +354,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      hideAnonUserView : false,
       isIsolatedRoll : false
     }).value();
     
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
-    if(shelby.models.user.get('anon') && !options.hideAnonUserView){ this._setupAnonUserViews(); }
+    this._setupAnonUserViews(options);
     // header & menu render on instantiation //
     shelby.views.commentOverlay = shelby.views.commentOverlay || new libs.shelbyGT.CommentOverlayView({model:shelby.models.guide});
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
@@ -384,9 +382,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.KeyboardControlsView();
   },
 
-  _setupAnonUserViews : function(){
-    // TODO define this view
+  _setupAnonUserViews : function(options){
+    options = _.chain({}).extend(options).defaults({
+      isIsolatedRoll : false
+    }).value();
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
+    shelby.views.anonBanner.render();
   },
   
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
