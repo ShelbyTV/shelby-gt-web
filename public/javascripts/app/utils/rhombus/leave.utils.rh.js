@@ -6,8 +6,12 @@
     libs.utils.rhombus.lpush('session_length', new Date().getTime() - start_time);
   };
 
-  $(document).ready(function(){
+  /*$(document).ready(function(){
     window.onbeforeunload = libs.utils.leave;
+  });*/
+
+  jQuery(window).bind('beforeunload', function(){
+    libs.utils.leave();
   });
 
 })();
