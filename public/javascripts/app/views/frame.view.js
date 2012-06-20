@@ -8,6 +8,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   
   _conversationView : null,
 
+  _frameSharingInGuideView : null,
+  
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       contextOverlay : false
@@ -75,6 +77,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
   
   requestFrameShareView: function(){
+    this._hideInGuideView();
+
     if (!this._frameSharingInGuideView) {
       var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
       
@@ -82,14 +86,28 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this._frameSharingInGuideView.render();
     }
     this._frameSharingInGuideView.reveal();
+
+    shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView); 
+
   },
   
   requestFrameRollView : function(){
+    this._hideInGuideView();
+
     if (!this._frameRollingView) {
       this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this._frameRollingView.render();
     }
     this._frameRollingView.reveal();
+
+    shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView); 
+  },
+
+  _hideInGuideView : function(){
+    var view = shelby.models.guide.get('activeGuideOverlayView');
+
+    view && view.cancel();
+
   },
 
   _saveToWatchLater : function(){
@@ -137,11 +155,15 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
   
   _requestConversationView : function(){
+    this._hideInGuideView();
+
     if(!this._conversationView){
       this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model});
       this._conversationView.render();
     }
     this._conversationView.reveal();
+
+    shelby.models.guide.set('activeGuideOverlayView', this._conversationView); 
   },
 
   _goToCreatorPersonalRoll : function(){

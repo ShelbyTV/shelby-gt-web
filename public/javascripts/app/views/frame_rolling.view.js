@@ -11,7 +11,7 @@
     _frameRollingState : null,
 
     events : {
-      "click .back:not(.js-busy)"  : "_cancel"
+      "click .back:not(.js-busy)"  : "cancel"
     },
 
     className : 'js-rolling-frame rolling-frame',
@@ -55,7 +55,7 @@
       this.insertIntoDom(false);
     },
 
-    _cancel : function(){
+    cancel : function(){
       this._resetAndHide();
     },
 

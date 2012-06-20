@@ -34,6 +34,11 @@
 
       this.model = activeFrameModel;
 
+      //THIS NEEDS TO BE GARBAGE COLLECTED
+      this._conversationView = null;
+      this._frameRollingView = null;
+      this._frameSharingInGuideView = null;
+
       //bind
       this.model.bind('destroy', this._onFrameRemove, this);
       this.model.bind('change:upvoters', this._onUpvoteChange, this);
@@ -52,7 +57,7 @@
     _frameLocator : function(data){
       var origin = this.options.guide.get('activeFrameModel'),
           originHasRoll = origin.has('roll');
-          console.log(origin);
+          // console.log(origin);
 
       //doesn't load anything newer than the one you asked for:
       //if user is watching the third video in a roll,
