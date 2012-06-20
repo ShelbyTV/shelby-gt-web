@@ -1,0 +1,14 @@
+<% if ( thumbnail ) { %>
+  <div class="guide-overlay-context" style="background-image:url('<%= thumbnail %>');">
+<% } else { %>
+  <div class="guide-overlay-context guide-overlay-missing-thumbnail">
+<% } %>
+  <div class="guide-overlay-context-overview">
+    <h3 class="guide-overlay-context-creator">
+      <%= creatorName || ''%>
+    </h3>
+    <h2 class="guide-overlay-context-title">
+      <%= title || '' %>
+    </h2>
+  </div>
+</div>  
