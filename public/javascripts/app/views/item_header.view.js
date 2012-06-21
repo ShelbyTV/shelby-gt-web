@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
+  var RollOverlayContextView = libs.shelbyGT.RollOverlayContextView;
 
   libs.shelbyGT.ItemHeaderView = Support.CompositeView.extend({
 
@@ -17,26 +18,32 @@
     },
 
     render : function(){
-      this._mapInsertFilterControlsView();
+      this._mapInsertContentsView();
     },
 
     _updateChild : function(guideModel){
       var _changedAttrs = _(guideModel.changedAttributes());
-      if (_changedAttrs.has('displayState') || _changedAttrs.has('currentRollModel')) {
+      if (_changedAttrs.has('displayState') ||
+          _changedAttrs.has('currentRollModel') ||
+          _changedAttrs.has('displayIsolatedRoll')) {
         this.render();
       }
     },
 
-    _mapInsertFilterControlsView : function(){
+    _mapInsertContentsView : function(){
       this._leaveChildren();
-      switch (this.model.get('displayState')) {
-        case libs.shelbyGT.DisplayState.standardRoll :
-          this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
-          break;
-        case libs.shelbyGT.DisplayState.dashboard :
-        case libs.shelbyGT.DisplayState.rollList :
-        case libs.shelbyGT.DisplayState.watchLaterRoll :
-          break;
+      if (this.model.get('displayIsolatedRoll')) {
+        this.appendChild(new RollOverlayContextView({model:this.model.get('currentRollModel')}));
+      } else {
+        switch (this.model.get('displayState')) {
+          case libs.shelbyGT.DisplayState.standardRoll :
+            this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
+            break;
+          case libs.shelbyGT.DisplayState.dashboard :
+          case libs.shelbyGT.DisplayState.rollList :
+          case libs.shelbyGT.DisplayState.watchLaterRoll :
+            break;
+        }
       }
     }
 

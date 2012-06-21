@@ -18,3 +18,5 @@
 
 # Ignore .rvmrc
 .rvmrc
+
+/public/javascripts/compiled

@@ -88,7 +88,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var self = this;
     // Adjust *what* is displayed
     var options = {
-      updateRollTitle:false,
+      updateRollTitle : false,
       startPlaying : frameId ? false : true
     };
     if (frameId){
@@ -102,10 +102,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       null,
       options,
       {
-        hideGuideHeader:true,
-        hideGuidePresentationSelector:true,
-        hideAnonUserView:true,
-        hideRollHeader:true
+        isIsolatedRoll : true
       });
 
     if (!frameId) return;
@@ -354,28 +351,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.autoScrollState.set('tryAutoScroll', true);
   },
 
-  _setupTopLevelViews : function(opts){
-    opts = opts || {};
+  _setupTopLevelViews : function(options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      isIsolatedRoll : false
+    }).value();
     
-    if(shelby.models.user.get('anon') && !opts.hideAnonUserView){ this._setupAnonUserViews(); }
-    // header & menu render on instantiation //
+    shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
-    //this has replaced CommentOverlay    
+    this._setupAnonUserViews(options);
     shelby.views.contextOverlay = shelby.views.contextOverlay || new libs.shelbyGT.ContextOverlayView({guide:shelby.models.guide});
-
-    if(!opts.hideGuideHeader){
-      shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    }
-    //XXX isolated_roll and master collision
-    // this is loaded as a child view of ItemHeaderView (which is loaded below)
-    /*
-    if(!opts.hideRollHeader){
-      shelby.views.rollHeader = shelby.views.rollHeader || new libs.shelbyGT.RollHeaderView({model:shelby.models.guide});
-    }
-    */
-    if(!opts.hideGuidePresentationSelector){
-      shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
-    }
+    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
+    shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
     shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide, viewState:new libs.shelbyGT.RollActionMenuViewStateModel()});
     shelby.views.guideControls = shelby.views.guideControls || new libs.shelbyGT.GuideOverlayControls({userDesires:shelby.models.userDesires});
@@ -394,9 +381,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.KeyboardControlsView();
   },
 
-  _setupAnonUserViews : function(){
-    // TODO define this view
+  _setupAnonUserViews : function(options){
+    options = _.chain({}).extend(options).defaults({
+      isIsolatedRoll : false
+    }).value();
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
+    shelby.views.anonBanner.render();
   },
   
   _setupRollView : function(roll, title, options, topLevelViewsOptions){

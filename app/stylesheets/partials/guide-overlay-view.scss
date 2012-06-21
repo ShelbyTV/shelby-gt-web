@@ -53,16 +53,6 @@
     background-image: url('/images/assets/missing_thumb.svg');
     background-size: 20%;
   }
-
-  &:after {
-    @include box-shadow(0 0 139px 31px black);
-
-    bottom: 0;
-    content: "\0020";
-    height: 1px;
-    position: absolute;
-    width: 100%;
-  }
 }
 
 .guide-overlay-context-overview {
@@ -89,8 +79,22 @@
   font-weight: 500;
   padding: 0 10px;
   position: relative;
-  z-index: 1;
   width: inherit;
+  z-index: 1;
+}
+
+.guide-overlay-context-follow-button,
+.guide-overlay-context-full-shelby-button {
+  @include x-button-primer($shelby-gray);
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.guide-overlay-context-button-highlighted {
+  @include x-button-primer($shelby-green);
 }
 
 .guide-overlay-context-creator {
