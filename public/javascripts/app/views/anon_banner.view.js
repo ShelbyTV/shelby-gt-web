@@ -5,20 +5,19 @@
     events : {
     },
 
-    //el : '',
     className: 'logged-out-banner-wrapper',
 
     template : function(obj){
       return JST['anon_banner'](obj);
     },
-
-    initialize : function(){
-      this.render();
-    },
     
     render : function(active){
       this.$el.html(this.template());
-      $('#wrapper').append(this.$el);
+      if (shelby.models.user.get('anon') && !shelby.models.guide.get('displayIsolatedRoll')) {
+        $('#wrapper').append(this.$el);
+      } else {
+        this.remove();
+      }
     },
 
     displayOverlay : function(){

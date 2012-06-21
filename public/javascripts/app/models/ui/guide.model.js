@@ -9,7 +9,8 @@ libs.shelbyGT.GuideModel = Backbone.Model.extend({
     activeFrameRollingView : null,
     activeGuideOverlayView : null,
     rollListContent : null,
-    disableSmartRefresh : false
+    disableSmartRefresh : false,
+    displayIsolatedRoll : false
   }
 
 });
