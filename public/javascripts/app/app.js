@@ -13,9 +13,7 @@ shelby = {
   models : {},
   views : {},
   collections : {},
-  config : {
-    apiRoot : 'http://api.gt.shelby.tv/v1'
-  },
+  config : {},
 
   // Signed in convience function
   userSignedIn: function(){

@@ -32,6 +32,7 @@ javascripts:
     - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/app.js
+    - public/javascripts/compiled/app.config.js
     - public/javascripts/app/models/lib/shelby.base.model.js
     - public/javascripts/app/models/db/roll.model.js
     - public/javascripts/app/models/ui/share.model.js

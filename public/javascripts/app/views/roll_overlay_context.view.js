@@ -54,7 +54,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     if (!shelby.models.user.get('anon')) {
       this.model.joinRoll();
     } else {
-      window.top.location.href = 'http://gt.shelby.tv';
+      window.top.location.href = shelby.config.appUrl;
     }
   },
 
@@ -62,15 +62,15 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     if (!shelby.models.user.get('anon')) {
       this.model.leaveRoll();
     } else {
-      window.top.location.href = 'http://gt.shelby.tv';
+      window.top.location.href = shelby.config.appUrl;
     }
   },
 
   _goFullShelby : function() {
     if (!shelby.models.user.get('anon')) {
-      window.top.location.href = 'http://gt.shelby.tv/roll/' + this.model.id;
+      window.top.location.href = shelby.config.appUrl + '/roll/' + this.model.id;
     } else {
-      window.top.location.href = 'http://gt.shelby.tv';
+      window.top.location.href = shelby.config.appUrl;
     }
   },
 
