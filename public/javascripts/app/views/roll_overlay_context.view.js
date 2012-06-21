@@ -7,7 +7,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['overlay-context'](obj);
+    return JST['wide-thumbnail-overlay'](obj);
   },
 
   initialize : function(){
@@ -36,15 +36,15 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
       showThumbnail = false;
     }
 
-    var showFollowButton = this.model.has('creator_id') && (this.model.get('creator_id') != shelby.models.user.id);
-
     this.$el.html(this.template({
       creatorName : this.model.get('creator_nickname'),
       showThumbnail : showThumbnail,
-      showFollowButton : showFollowButton,
       thumbnail : first_frame_thumbnail,
       title : this.model.get('title')
     }));
+
+    var showFollowButton = this.model.has('creator_id') && (this.model.get('creator_id') != shelby.models.user.id);
+    this.$('.guide-overlay-context-overview').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
