@@ -11,14 +11,8 @@ class HomeController < ApplicationController
     @meta_info = get_video_info(params[:path])
     
     #XXX ISOLATED_ROLL
-    if ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
-      # for shelby.tv domain, try to find a roll assigned to the given subdomain
-      response = Shelby::API.get_roll(request.subdomain)
-      @isolated_roll_id = response['status'] == 200 && response['result'] && response['result']['id']
-    else
-      # for all other domains we hard code a list of iso_roll domains to search through
-      #TODO: pull this mapping from API
-      @isolated_roll_id = case request.host
+    @isolated_roll_id = case request.host
+        #TODO: pull this mapping from API
         when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
         when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
         when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
@@ -34,9 +28,16 @@ class HomeController < ApplicationController
         when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
         when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
         when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
-        else false
-      end
+        else
+          if ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
+            # for shelby.tv domain, try to find a roll assigned to the given subdomain
+            response = Shelby::API.get_roll(request.subdomain)
+            response['status'] == 200 && response['result'] && response['result']['id']
+          else
+            false
+          end
     end
+
     render 'isolated_roll' and return if @isolated_roll_id
 
     #XXX ISOLATED_ROLL - HACKING allowing viewing

@@ -11,7 +11,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .video-player-quality.hd-off" : "_hdOn",
     "click .video-player-progress": "_onScrubTrackClick",
     "click .video-player-fullscreen" : "_toggleFullscreen",
-    "click .video-player-roll" : "_rollActiveFrame",
     "click .js-video-player-next" : "_nextVideo",
     "click .js-video-player-prev" : "_prevVideo"
   },
@@ -219,11 +218,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 		}
 		// TODO: change icon if fullscreen is activated
 	},
-
-  _rollActiveFrame: function(){
-    this._userDesires.set({guideShown: true});
-    shelby.views.guide.rollActiveFrame();
-  },
   
   _nextVideo: function(){
     this._userDesires.set('changeVideo', 1);

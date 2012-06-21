@@ -10,21 +10,14 @@
     <h2>Roll Video</h2>
   </div>
   
-  <% if ( frameThumbnail ) { %>
-    <div class="guide-overlay-context" style="background-image:url('<%= frameThumbnail %>');">
-  <% } else { %>
-    <div class="guide-overlay-context guide-overlay-missing-thumbnail">
-  <% } %>
-    <div class="guide-overlay-context-overview">
-      <h3 class="guide-overlay-context-creator">
-        <%= creator.get('nickname') || '' %>
-      </h3>
-      <h2 class="guide-overlay-context-title">
-        <%= frame.get('video').get('title') || '' %>
-      </h2>
-    </div>
-  </div>
-</div>
+  <%=
+    JST['wide-thumbnail-overlay']({
+      creatorName : creator.get('nickname'),
+      showThumbnail : true,
+      thumbnail : frameThumbnail,
+      title : frame.get('video').get('title')
+    })
+  %>
 
 <div class="guide-overlay-main rolling-main">
   <div class="js-rolling-main-new-roll rolling-main-new-roll">

@@ -22,7 +22,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 	_cancel: function(){
 		//TODO: what should cancel really do?
 		// -1 (or .back) seems to bring us to the wrong place.
-		window.history.go(-2);
+		window.history.back();
 	},
 
   _submitContactInfo: function(){

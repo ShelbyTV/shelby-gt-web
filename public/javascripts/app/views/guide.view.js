@@ -24,7 +24,6 @@
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
-      shelby.models.userDesires.bind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
       this._dashboardMasterCollection = new Backbone.Collection();
@@ -37,7 +36,6 @@
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
-      shelby.models.userDesires.unbind('change:rollActiveFrame', this.rollActiveFrame, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
@@ -154,6 +152,10 @@
       // cancel any other previous ajax requests' ability to hide the spinner and hide it ourselves
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();
+      
+      //remove any current guide overlay views
+      var view = shelby.models.guide.get('activeGuideOverlayView');
+      view && view.cancel();
 
       // display the new child list view constructed appropriately for the display state
       this.appendChild(this._listView);
@@ -191,45 +193,11 @@
                 // mark the browse rolls as fetched so we know we don't need to do it again
                 shelby.models.fetchState.set('browseRollsFetched', true);
               }
-              shelby.models.autoScrollState.set('tryAutoScroll', true);
             },
             url : fetchUrl,
             data : {frames:true}
         })).done(function(){oneTimeSpinnerState.set('show', false);});
       } else {
-        shelby.models.autoScrollState.set('tryAutoScroll', true);
-      }
-    },
-
-    rollActiveFrame : function(){
-      var activeFrameModel = this.model.get('activeFrameModel');
-      if (activeFrameModel) {
-        var currentDisplayState = this.model.get('displayState');
-        if (currentDisplayState == DisplayState.dashboard ||
-            currentDisplayState == DisplayState.standardRoll ||
-            currentDisplayState == DisplayState.watchLaterRoll) {
-          // try to find the active frame in the current list view and activate its
-          // rolling view
-          if (this._listView) {
-            if (this._listView.activateFrameRollingView(activeFrameModel)) {
-              return;
-            }
-          }
-        }
-
-        // no frame view for the active frame currently exists
-        if (this.model.get('activeFrameModel').has('roll')) {
-          // reroute to the frame in roll url for the frame, which will bring up the frame's source roll,
-          // activate the frame, then reveal is rolling view
-          var frameId = this.model.get('activeFrameModel').id;
-          var rollId = this.model.get('activeFrameModel').get('roll').id;
-          shelby.router.navigate('roll/' + rollId + '/frame/' + frameId + '/rollit', {trigger:true});
-        } else {
-          // the frame has no source roll, so
-          // reroute to the entry in stream url for the frame, which will bring up the dashboard,
-          // activate the entry, then reveal is rolling view
-          shelby.router.navigate('stream/entry/' + this.model.get('activeDashboardEntryModel').id + '/rollit', {trigger:true});
-        }
       }
     },
 
