@@ -1,13 +1,13 @@
 defaults: &defaults
+  url: "http://api.gt.shelby.tv"
+  version: "/v1/"
   cross_site_key: "GoatsFTW"
-  
+
 development:
   <<: *defaults
-  url: "http://api.gt.shelby.tv"
-  
+
 test:
   <<: *defaults
 
 production:
   <<: *defaults
-  url: "http://api.gt.shelby.tv"

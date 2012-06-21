@@ -12,7 +12,7 @@
   </title>
 
 	<meta name="csrf-token" content="<%= @csrf_token %>">
-  <div id="rhombus-auth" data-token="<%= @rhombus_token %>"></div>
+  <!-- <div id="rhombus-auth" data-token="<%= @rhombus_token %>"></div> -->
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,16 +23,6 @@
   <%= include_stylesheets :common %>
   <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
   
-	<!-- Testing out this exception handler
-	<script>
-	    var _errs=["4f9837dac301559577161bc1"];(function(a,b){a.onerror=function(){_errs.push(arguments)};
-	    var d=function(){var a=b.createElement("script"),c=b.getElementsByTagName("script")[0];
-	    a.src="//d15qhc0lu1ghnk.cloudfront.net/beacon.js";a.async=!0;
-	    c.parentNode.insertBefore(a,c)};a.addEventListener?a.addEventListener("load",d,!1):
-	    a.attachEvent("onload",d)})(window,document);
-	</script>
-	-->
-
   <%= include_javascripts :common, :shelby %>
 </head>
 
@@ -68,6 +58,12 @@
 					</div>
 				</div>
         
+        <div class="context-overlay-wrapper js-inactivity-preemption">
+          <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix">
+
+          </aside>
+        </div><!-- eo .conext-overlay-wrapper -->
+
         <div class="comment-overlay-wrapper js-inactivity-preemption">
           <aside id="js-comment-overlay" class="comment-overlay-lining clearfix">
             <button class="comment-overlay-prev js-message-prev">
@@ -79,49 +75,59 @@
             </button>
           </aside><!-- eo .comment-overlay-lining -->
         </div>
-
+				<div id="js-notifications-wrapper" class="notifications-wrapper">
+					<div id="js-notifications" class="notifications">
+						<div class="message">
+							This is a test. Are you sure?
+						</div>
+						<div class="button-wrapper">
+							<button id="js-notification-confirm" class="notification-confirm">Ok</button>
+							<button id="js-notification-cancel" class="notification-cancel">Cancel</button>							
+						</div>
+					</div>
+				</div>
       </div> <!-- eo .video-player -->
     </div><!-- eo #lining -->
 
-      <div class="main clearfix js-inactivity-preemption" role="sidebar">
-        <header class="header-guide">
-          <div id="js-header" class="js-app-header" role="banner">
-            <!-- contents in guide-header.jst -->
-          </div>
-        <div id="js-guide-header" class="menu">
-          <div id="js-guide-presentation-selector" class="guide-presentation-selector">
-            <!-- content filled in by GuidePresentationSelctorView -->
-          </div>
-          <div id="js-item-header">
-            <!-- content filled in by ItemHeaderView -->
-          </div>
-          <div id="js-roll-action-menu" class="roll-action-menu">
-            <!-- content filled in by RollActionMenuView -->
-          </div>
+    <div class="main clearfix js-inactivity-preemption" role="sidebar">
+      <header class="header-guide">
+        <div id="js-header" class="js-app-header" role="banner">
+          <!-- contents in guide-header.jst -->
         </div>
-        <div id="js-guide-wrapper" class="content-body">
-					<div id="js-add-video-area" class="video-card add-video-area">
-					  <!-- content filled in by AddVideoView -->
-					</div>
-          <div id="guide">
-            <!-- guide contents dynamically rendered-->
-          </div>
+      <div id="js-guide-header" class="menu">
+        <div id="js-guide-presentation-selector" class="guide-presentation-selector">
+          <!-- content filled in by GuidePresentationSelctorView -->
         </div>
-				</header>
-      </div><!-- eo .main -->
-
-			<div id="guide-overlay-controls">
-          <!-- controls dynamically rendered, floating over guide -->
+        <div id="js-item-header">
+          <!-- content filled in by ItemHeaderView -->
+        </div>
+        <div id="js-roll-action-menu" class="roll-action-menu">
+          <!-- content filled in by RollActionMenuView -->
+        </div>
       </div>
+      <div id="js-guide-wrapper" class="content-body">
+			<div id="js-add-video-area" class="video-card add-video-area">
+			  <!-- content filled in by AddVideoView -->
+			</div>
+        <div id="guide">
+          <!-- guide contents dynamically rendered-->
+        </div>
+      </div>
+		</header>
+    </div><!-- eo .main -->
 
-      <div style="height:0;clear:both;"></div>
+		<div id="guide-overlay-controls">
+	        <!-- controls dynamically rendered, floating over guide -->
+	  </div>
 
-  		<div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
-  			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
-  			  Make Shelby even better by
-  				<%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
-  			</div>
-  		</div>
+	  <div style="height:0;clear:both;"></div>
+
+		<div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
+			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
+				Make Shelby even better by
+				<%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
+			</div>
+		</div>
   </div> <!-- eo ~main -->
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
 	<% if Rails.env == 'production' %>

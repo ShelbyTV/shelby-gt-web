@@ -1,0 +1,2 @@
+shelby.config.apiRoot = '<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>';
+shelby.config.appUrl = '<%= Settings::Application.url %>';

@@ -5,11 +5,9 @@
 <% var frameTitle = frame.get('video').get('title') %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
-<% var contextOverlay = options.contextOverlay %> 
-<article id="<%= frame.get('conversation_id') %>" class="video-card">
-
-  <header class="video-card-header clearfix">
+<% var frameIsOnHeartedRoll = frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+<div class="context-overlay">
+   <header class="video-card-header clearfix">
     <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
       <% if(creatorThumbnail){ %>
         <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
@@ -22,56 +20,20 @@
         <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
-    <% if (!contextOverlay) { %>
-      <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-        <%= frame.get('created_at') %>
-      </h2>
-    <% } else { %>
-      <button class="js-frame-locator frame-locator">
-        Locate
-      </button>
-    <% } %>
-
+    <h2 class="js-video-locator frame-timestamp"><!-- frame-creator-origin-* -->
+      WRONG
+    </h2>
     <a onclick="return false;" class="js-frame-activate" href="#"> 
       <h3 class="frame-title">
         <%= frame.get('video') && frameTitle %>
       </h3>
     </a>
-  </header> 
-  <% if (!contextOverlay) { %>  
-    <% if( frameThumbnail ) { %>
-      <div class="video-thumbnail js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
-        <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
-      </div>
-    <% } else { %>
-      <div class="video-thumbnail video-thumbnail-missing"></div>
-    <% } %>  
-  <% } /* end of contextOverlay */ %>
-
+  </header>   
+  
   <footer class="video-card-footer">
 
     <% if(!frame.isOnRollTypeGenius()) { %>
 
-      <% if (!contextOverlay) { %>
-      <!-- hearts -->
-        <div class="js-frame-flexible-height frame-activity">
-          <% if(frame.get('upvote_users').length > 0){ %>
-        
-            <ul class="frame-activity-favorites clearfix">
-              <% _.each(frame.get('upvote_users'), function(u){ %>
-                <li>
-                  <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
-                    <% users_image =  u.user_image_original || u.user_image %>
-                    <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
-                  </a>
-                </li>
-              <% }) %>
-            </ul>
-            
-          <% } %>
-        </div>
-      <!-- /hearts -->
-      <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
       <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
@@ -97,11 +59,8 @@
           Share it
         </button>
       </li>
-
     </ul>
   
     <% } %><!-- end if(on_genius_roll) -->
   </footer>
-
-</article><!-- eo #video-123.video-card -->
-<!-- END VIDEO CARD -->
+</div>

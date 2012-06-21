@@ -3,7 +3,7 @@
   libs.shelbyGT.FrameConversationView = libs.shelbyGT.GuideOverlayView.extend({
     
     events : {
-      "click .back:not(.js-busy)" : "_goBack",
+      "click .back:not(.js-busy)" : "cancel",
       "click .js-new-comment-submit" : "_addMessage",
       "click .js-message-reply" : "_reply"
     },
@@ -45,7 +45,7 @@
       return false;
     },
     
-    _goBack : function(){
+    cancel : function(){
       this.hide();
     },
     

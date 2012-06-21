@@ -25,12 +25,6 @@
   z-index: 2;
 }
 
-/* line 19, ../../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-tools-wrapper,
-.user-inactive .comment-overlay-wrapper {
-  opacity: 0;
-}
-
 /* line 23, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools {
   background-color: #0e0e0e;
@@ -277,9 +271,4 @@
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
-}
-
-/* line 225, ../../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-nav-buttons-wrapper .video-player-prev, .user-inactive .video-player-nav-buttons-wrapper .video-player-next {
-  opacity: 0.0;
 }

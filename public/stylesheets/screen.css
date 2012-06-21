@@ -917,27 +917,15 @@ a:hover, a:visited, a:active {
   background-image: url("/images/assets/missing_thumb.svg");
   background-size: 20%;
 }
-/* line 57, ../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context:after {
-  -moz-box-shadow: 0 0 139px 31px black;
-  -webkit-box-shadow: 0 0 139px 31px black;
-  -o-box-shadow: 0 0 139px 31px black;
-  box-shadow: 0 0 139px 31px black;
-  bottom: 0;
-  content: "\0020";
-  height: 1px;
-  position: absolute;
-  width: 100%;
-}
 
-/* line 68, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 58, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview {
   bottom: 0;
   padding-bottom: 10px;
   position: absolute;
   width: 100%;
 }
-/* line 74, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 64, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview:after {
   -moz-box-shadow: 0 0 86px 59px black;
   -webkit-box-shadow: 0 0 86px 59px black;
@@ -950,7 +938,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 86, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 76, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator,
 .guide-overlay-context-title {
   white-space: nowrap;
@@ -962,27 +950,85 @@ a:hover, a:visited, a:active {
   font-weight: 500;
   padding: 0 10px;
   position: relative;
-  z-index: 1;
   width: inherit;
+  z-index: 1;
+}
+
+/* line 87, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-follow-button,
+.guide-overlay-context-full-shelby-button {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  color: #efefef;
+  padding: 6px 13px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 /* line 96, ../../app/stylesheets/partials/guide-overlay-view.scss */
+.guide-overlay-context-button-highlighted {
+  background-color: #428e3a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
+  background: -webkit-linear-gradient(top, #53b249, #428e3a);
+  background: -moz-linear-gradient(top, #53b249, #428e3a);
+  background: -o-linear-gradient(top, #53b249, #428e3a);
+  background: -ms-linear-gradient(top, #53b249, #428e3a);
+  background: linear-gradient(top, #53b249, #428e3a);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  box-shadow: inset 0px 1px 0px 0px #85ca7d;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #20461c;
+  color: #efefef;
+  padding: 6px 13px;
+}
+
+/* line 100, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator {
   font-size: 12px;
   margin-bottom: 3px;
 }
 
-/* line 102, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 106, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-title {
   font-size: 14px;
 }
 
-/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 111, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 111, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 115, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -1525,7 +1571,7 @@ body.isolated-roll .guide-education {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   float: left;
-  width: 66%;
+  width: 50%;
 }
 
 /* line 125, ../../app/stylesheets/partials/frame.scss */
@@ -1539,6 +1585,18 @@ body.isolated-roll .guide-education {
 }
 
 /* line 130, ../../app/stylesheets/partials/frame.scss */
+.frame-locator {
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2218px%22%20height%3D%2218px%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M8.999%2C0C4.037%2C0%2C0%2C4.037%2C0%2C9.001C0%2C13.959%2C4.037%2C18%2C8.999%2C18S18%2C13.959%2C18%2C9.001C18%2C4.037%2C13.961%2C0%2C8.999%2C0z%20M9.83%2C15.806%0A%09v-3.799H8.172v3.799c-3.126-0.377-5.601-2.854-5.979-5.975h3.803V8.172H2.192c0.377-3.126%2C2.853-5.604%2C5.979-5.98v3.805H9.83V2.192%0A%09c3.126%2C0.378%2C5.599%2C2.854%2C5.976%2C5.979h-3.8v1.659h3.8C15.428%2C12.951%2C12.955%2C15.427%2C9.83%2C15.806z%22/%3E%0A%3C/svg%3E%0A") no-repeat center left transparent;
+  border: none;
+  color: #efefef;
+  line-height: 3.25;
+  padding: 0 1em 0 2em;
+  position: absolute;
+  right: 0;
+}
+
+/* line 142, ../../app/stylesheets/partials/frame.scss */
 .frame-title, .roll-item-title, .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -1553,7 +1611,7 @@ body.isolated-roll .guide-education {
   width: 83%;
 }
 
-/* line 144, ../../app/stylesheets/partials/frame.scss */
+/* line 156, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -1565,20 +1623,20 @@ body.isolated-roll .guide-education {
   z-index: 5;
 }
 
-/* line 151, ../../app/stylesheets/partials/frame.scss */
+/* line 163, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 157, ../../app/stylesheets/partials/frame.scss */
+/* line 169, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 162, ../../app/stylesheets/partials/frame.scss */
+/* line 174, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -1591,7 +1649,7 @@ body.isolated-roll .guide-education {
   resize: none;
   width: 100%;
 }
-/* line 170, ../../app/stylesheets/partials/frame.scss */
+/* line 182, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1619,19 +1677,19 @@ body.isolated-roll .guide-education {
   margin-top: 5px;
 }
 
-/* line 182, ../../app/stylesheets/partials/frame.scss */
+/* line 194, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 186, ../../app/stylesheets/partials/frame.scss */
+/* line 198, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 193, ../../app/stylesheets/partials/frame.scss */
+/* line 205, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -1640,37 +1698,37 @@ body.isolated-roll .guide-education {
   text-overflow: ellipsis;
 }
 
-/* line 201, ../../app/stylesheets/partials/frame.scss */
+/* line 213, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
 /* XXX BELOW still needed for context overlay, but not for conversation within guide  */
-/* line 206, ../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 212, ../../app/stylesheets/partials/frame.scss */
+/* line 224, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 217, ../../app/stylesheets/partials/frame.scss */
+/* line 229, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 221, ../../app/stylesheets/partials/frame.scss */
+/* line 233, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 227, ../../app/stylesheets/partials/frame.scss */
+/* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -1678,7 +1736,7 @@ body.isolated-roll .guide-education {
   line-height: 2.8;
 }
 
-/* line 234, ../../app/stylesheets/partials/frame.scss */
+/* line 246, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1686,7 +1744,7 @@ body.isolated-roll .guide-education {
   padding-right: 3px;
 }
 
-/* line 243, ../../app/stylesheets/partials/frame.scss */
+/* line 255, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1339439121');
   float: left;
@@ -1694,47 +1752,47 @@ body.isolated-roll .guide-education {
   margin: 3px 3px 0 0;
 }
 
-/* line 253, ../../app/stylesheets/partials/frame.scss */
+/* line 265, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1339439121');
 }
 
-/* line 260, ../../app/stylesheets/partials/frame.scss */
+/* line 272, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/tumblr_stamp.svg?1336504337');
 }
 
-/* line 265, ../../app/stylesheets/partials/frame.scss */
+/* line 277, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 268, ../../app/stylesheets/partials/frame.scss */
+/* line 280, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
 /* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
-/* line 274, ../../app/stylesheets/partials/frame.scss */
+/* line 286, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 278, ../../app/stylesheets/partials/frame.scss */
+/* line 290, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 285, ../../app/stylesheets/partials/frame.scss */
+/* line 297, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 291, ../../app/stylesheets/partials/frame.scss */
+/* line 303, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 296, ../../app/stylesheets/partials/frame.scss */
+/* line 308, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -1747,12 +1805,12 @@ body.isolated-roll .guide-education {
   width: 100%;
 }
 
-/* line 309, ../../app/stylesheets/partials/frame.scss */
+/* line 321, ../../app/stylesheets/partials/frame.scss */
 .frame-activity {
   font-weight: 500;
 }
 
-/* line 313, ../../app/stylesheets/partials/frame.scss */
+/* line 325, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -1761,7 +1819,7 @@ body.isolated-roll .guide-education {
   padding: 4px;
   width: auto;
 }
-/* line 321, ../../app/stylesheets/partials/frame.scss */
+/* line 333, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -1771,16 +1829,16 @@ body.isolated-roll .guide-education {
   margin-right: 3px;
   width: 24px;
 }
-/* line 331, ../../app/stylesheets/partials/frame.scss */
+/* line 343, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 335, ../../app/stylesheets/partials/frame.scss */
+/* line 347, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 340, ../../app/stylesheets/partials/frame.scss */
+/* line 352, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1790,7 +1848,7 @@ body.isolated-roll .guide-education {
   width: 22px;
 }
 
-/* line 351, ../../app/stylesheets/partials/frame.scss */
+/* line 363, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1798,12 +1856,12 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 360, ../../app/stylesheets/partials/frame.scss */
+/* line 372, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 367, ../../app/stylesheets/partials/frame.scss */
+/* line 379, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1811,25 +1869,25 @@ body.isolated-roll .guide-education {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 376, ../../app/stylesheets/partials/frame.scss */
+/* line 388, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 383, ../../app/stylesheets/partials/frame.scss */
+/* line 395, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 388, ../../app/stylesheets/partials/frame.scss */
+/* line 400, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 395, ../../app/stylesheets/partials/frame.scss */
+/* line 407, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 400, ../../app/stylesheets/partials/frame.scss */
+/* line 412, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -1882,6 +1940,121 @@ body.isolated-roll .guide-education {
 #video-players-holder #ooyala-player-holder div, #video-players-holder #ooyala-player-holder object {
   width: 100%!important;
   height: 100%!important;
+}
+
+/* line 3, ../../app/stylesheets/partials/notifications.scss */
+.notifications-wrapper {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  padding: 6px 13px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 332px;
+  height: 111px;
+  margin-left: -330px;
+  margin-top: -75px;
+  padding: 0px;
+  z-index: 2;
+}
+
+/* line 16, ../../app/stylesheets/partials/notifications.scss */
+.notifications {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+/* line 20, ../../app/stylesheets/partials/notifications.scss */
+.notifications .message {
+  color: #ffffff;
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.5;
+  padding: 0px 5px;
+  top: 17px;
+  position: absolute;
+  width: 100%;
+}
+/* line 30, ../../app/stylesheets/partials/notifications.scss */
+.notifications .button-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 12px;
+}
+/* line 34, ../../app/stylesheets/partials/notifications.scss */
+.notifications .button-wrapper .notification-confirm {
+  background-color: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
+  box-shadow: inset 0px 1px 0px 0px #23bcff;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #002a3d;
+  color: #efefef;
+  padding: 6px 13px;
+  float: right;
+  margin-right: 75px;
+  width: 80px;
+}
+/* line 40, ../../app/stylesheets/partials/notifications.scss */
+.notifications .button-wrapper .notification-cancel {
+  background-color: #343434;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
+  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
+  background: -moz-linear-gradient(top, #4e4e4e, #343434);
+  background: -o-linear-gradient(top, #4e4e4e, #343434);
+  background: -ms-linear-gradient(top, #4e4e4e, #343434);
+  background: linear-gradient(top, #4e4e4e, #343434);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
+  -o-box-shadow: inset 0px 1px 0px 0px #747474;
+  box-shadow: inset 0px 1px 0px 0px #747474;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid #010101;
+  color: #efefef;
+  padding: 6px 13px;
+  float: left;
+  margin-left: 75px;
+  width: 80px;
 }
 
 /* line 3, ../../app/stylesheets/partials/saved-indicator.scss */
@@ -1954,12 +2127,6 @@ body.isolated-roll .guide-education {
   position: absolute;
   width: 100%;
   z-index: 2;
-}
-
-/* line 19, ../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-tools-wrapper,
-.user-inactive .comment-overlay-wrapper {
-  opacity: 0;
 }
 
 /* line 23, ../../app/stylesheets/partials/video-controls.scss */
@@ -2208,11 +2375,6 @@ body.isolated-roll .guide-education {
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
-}
-
-/* line 225, ../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-nav-buttons-wrapper .video-player-prev, .user-inactive .video-player-nav-buttons-wrapper .video-player-next {
-  opacity: 0.0;
 }
 
 /* line 3, ../../app/stylesheets/partials/video-mini-progress.scss */
@@ -3143,7 +3305,7 @@ body.isolated-roll .guide-education {
   float: right;
 }
 
-/* line 344, ../../app/stylesheets/_base.scss */
+/* line 345, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   -moz-border-radius: 3px;
@@ -3463,7 +3625,7 @@ body.isolated-roll .guide-education {
   padding-left: 0;
 }
 
-/* line 330, ../../app/stylesheets/_base.scss */
+/* line 331, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -4119,7 +4281,7 @@ body.isolated-roll .guide-education {
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 231, ../../app/stylesheets/_base.scss */
+/* line 232, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -4145,10 +4307,47 @@ body.isolated-roll .guide-education {
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 231, ../../app/stylesheets/_base.scss */
+/* line 232, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
+}
+
+/* line 3, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-wrapper {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  left: 10px;
+  padding-right: 360px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  z-index: 3;
+}
+
+/* line 16, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining {
+  font-size: 120%;
+  max-width: 330px;
+  position: relative;
+}
+/* line 21, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .frame-title, .context-overlay-lining .roll-item-title, .context-overlay-lining .roll-item-people {
+  width: 64%;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */

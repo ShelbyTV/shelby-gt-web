@@ -1,0 +1,47 @@
+@import "base";
+
+.notifications-wrapper{
+	@include x-button-primer;
+	position: absolute;	
+	left: 50%;
+  top: 50%; 
+	width: 332px;
+	height: 111px;
+	margin-left: -330px;
+	margin-top: -75px;
+	padding:0px;
+	z-index: 2;
+}
+
+.notifications{
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	.message {
+		color: #ffffff;
+		text-align: center;
+		font-weight: 300;
+		line-height:1.5;
+		padding:0px 5px;
+		top: 17px;
+		position: absolute;
+		width: 100%;
+	}
+	.button-wrapper{
+		position: absolute;
+		width: 100%;
+		bottom: 12px;
+		.notification-confirm{
+			@include x-button-primer($shelby-blue);
+			float: right;
+			margin-right: 75px;
+			width: 80px;
+		}
+		.notification-cancel{
+			@include x-button-primer;
+			float: left;
+			margin-left: 75px;
+			width: 80px;
+		}
+	}
+}

@@ -49,7 +49,8 @@
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
           !_changedAttrs.has('pollAttempts') &&
-          !_changedAttrs.has('rollListContent')) {
+          !_changedAttrs.has('rollListContent') &&
+          !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
       this._updateChild(model);
