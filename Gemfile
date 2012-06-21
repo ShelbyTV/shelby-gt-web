@@ -36,6 +36,8 @@ end
 # is at version 0.9.6 which includes yui-compressor version 2.4.4 which chokes on inline svg.  See assets.yml for the temporary fix.
 gem 'jammit'
 
+gem 'js_erb'
+
 # Deploy with Capistrano
 gem 'capistrano'
 

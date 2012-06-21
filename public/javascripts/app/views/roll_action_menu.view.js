@@ -22,7 +22,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change:displayState', this._updateVisibility, this);
+    this.model.bind('change', this._onGuideModelChange, this);
     this.model.bind('change:currentRollModel', this._updateRollHeaderView, this);
     this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
@@ -32,7 +32,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _cleanup : function(){
-    this.model.unbind('change:displayState', this._updateVisibility, this);
+    this.model.unbind('change', this._onGuideModelChange, this);
     this.model.unbind('change:currentRollModel', this._updateRollHeaderView, this);
     this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
@@ -40,9 +40,19 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll) {
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
+        !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     }
+  },
+
+  _onGuideModelChange : function(model){
+    var _changedAttrs = _(model.changedAttributes());
+    if (!_changedAttrs.has('displayState') &&
+        !_changedAttrs.has('displayIsolatedRoll')) {
+      return;
+    }
+    this._updateVisibility();
   },
 
   _goBackToRollsList : function(){
@@ -110,8 +120,9 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     });
   },
 
-  _updateVisibility : function(guideModel, displayState){
-    if (displayState == libs.shelbyGT.DisplayState.standardRoll) {
+  _updateVisibility : function(guideModel){
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
+        !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     } else {
       // collapse/hide child views
