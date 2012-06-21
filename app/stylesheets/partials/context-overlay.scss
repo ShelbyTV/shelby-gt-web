@@ -18,8 +18,29 @@
 	max-width: 330px;
 	position: relative;
 
+	.video-card {
+		@include box-shadow(inset 0px 1px 0px 0px $outset);
+
+		background-color: $guide-bg-color;
+		margin: 10px;
+	}
+
 	.frame-title {
 		width: 61%;
 	}
+
+	.frame-locator {
+		&:before {
+			border-left-color: $outset;
+		}
+	}
+
+	.frame-controls {
+		button{
+			border-top-color: $outset;
+			border-left-color: $outset;
+		}
+	}
+
 }
 

@@ -4162,8 +4162,26 @@ body.isolated-roll .guide-education {
   position: relative;
 }
 /* line 21, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .video-card {
+  -moz-box-shadow: inset 0px 1px 0px 0px #343434;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #343434;
+  -o-box-shadow: inset 0px 1px 0px 0px #343434;
+  box-shadow: inset 0px 1px 0px 0px #343434;
+  background-color: #232526;
+  margin: 10px;
+}
+/* line 28, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-title, .context-overlay-lining .roll-item-title, .context-overlay-lining .roll-item-people {
   width: 61%;
+}
+/* line 33, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .frame-locator:before {
+  border-left-color: #343434;
+}
+/* line 39, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .frame-controls button {
+  border-top-color: #343434;
+  border-left-color: #343434;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */
