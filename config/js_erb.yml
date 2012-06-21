@@ -1,0 +1,6 @@
+# Source paths
+path:
+  # views: app/views
+  source: app/views/javascript
+  compiled: public/javascripts/compiled
+  # locales: config/locales/js

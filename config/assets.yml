@@ -32,6 +32,7 @@ javascripts:
     - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order
     - public/javascripts/app/app.js
+    - public/javascripts/compiled/app.config.js
     - public/javascripts/app/models/lib/shelby.base.model.js
     - public/javascripts/app/models/db/roll.model.js
     - public/javascripts/app/models/ui/share.model.js
@@ -54,6 +55,7 @@ javascripts:
     - public/javascripts/app/views/legal.view.js
     - public/javascripts/app/views/roll_action_menu.view.js
     - public/javascripts/app/views/roll_header.view.js
+    - public/javascripts/app/views/roll_overlay_context.view.js
     - public/javascripts/app/views/item_header.view.js
     - public/javascripts/app/views/rolling_create_roll_view.js
     - public/javascripts/app/views/rolling_selection_item.view.js

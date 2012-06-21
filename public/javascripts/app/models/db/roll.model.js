@@ -36,7 +36,9 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
         url : url,
         success : function(rollModel, response){
           shelby.models.rollFollowings.add(rollModel);
-          onSuccess(rollModel, response);
+          if (onSuccess) {
+            onSuccess(rollModel, response);
+          }
         }
       }
     );
@@ -50,7 +52,9 @@ libs.shelbyGT.RollModel = libs.shelbyGT.ShelbyBaseModel.extend({
         url : url,
         success : function(rollModel, response){
           shelby.models.rollFollowings.remove(rollModel);
-          onSuccess(rollModel, response);
+          if (onSuccess) {
+            onSuccess(rollModel, response);
+          }
         }
       }
     );
