@@ -18,7 +18,8 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 			"click .js-signout"			: "_signout",
       "click .js-help"        : "_showHelp",
       "click .js-team"        : "_showTeam",
-      "click .js-legal"       : "_showLegal"
+      "click .js-legal"       : "_showLegal",
+      "click .js-home"        : "_showHome"
     });
 
     return events;
@@ -66,6 +67,10 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     _(this._menus).each(function(menu){
       $(menu.subnavId).hide();
     });
+  },
+
+  _showHome : function(){
+    shelby.router.navigate('stream', {trigger:true});
   },
 
   _showUserPreferences : function(){
