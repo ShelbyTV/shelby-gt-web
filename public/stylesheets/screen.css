@@ -1439,6 +1439,22 @@ body.isolated-roll .frame-controls {
 body.isolated-roll .guide-education {
   display: none!important;
 }
+/* line 33, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .video-card-header, body.isolated-roll .context-overlay-lining .frame-share-header {
+  border-bottom: none;
+}
+/* line 37, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-locator {
+  display: none;
+}
+/* line 41, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-creator-roll, body.isolated-roll .context-overlay-lining .roll-item-creator {
+  width: inherit;
+}
+/* line 45, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .context-overlay-lining .roll-item-title, body.isolated-roll .context-overlay-lining .roll-item-people {
+  width: 83%;
+}
 
 /* line 3, ../../app/stylesheets/partials/frame.scss */
 .list, .rolls-list, .existing-rolls-list > ul {
