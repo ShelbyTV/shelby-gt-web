@@ -60,12 +60,10 @@
           userDesires = shelby.models.userDesires,
           guideVisibility = userDesires.get('guideShown');
 
-          if (!guideVisibility) {
-            userDesires.set('guideShown', true);
-          }
+      if (!guideVisibility) {
+        userDesires.set('guideShown', true);
+      }
         
-        console.log(this.options, libs.shelbyGT.UserDesiresStateModel, shelby.models.userDesires);
-
       if (originHasRoll) {
           var frameId = origin.id,
               rollId = origin.get('roll').id;
