@@ -152,6 +152,10 @@
       // cancel any other previous ajax requests' ability to hide the spinner and hide it ourselves
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();
+      
+      //remove any current guide overlay views
+      var view = shelby.models.guide.get('activeGuideOverlayView');
+      view && view.cancel();
 
       // display the new child list view constructed appropriately for the display state
       this.appendChild(this._listView);
