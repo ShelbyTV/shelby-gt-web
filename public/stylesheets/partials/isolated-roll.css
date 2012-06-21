@@ -33,3 +33,19 @@ body.isolated-roll .frame-controls {
 body.isolated-roll .guide-education {
   display: none!important;
 }
+/* line 33, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .video-card-header {
+  border-bottom: none;
+}
+/* line 37, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-locator {
+  display: none;
+}
+/* line 41, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-creator-roll {
+  width: inherit;
+}
+/* line 45, ../../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .frame-title {
+  width: 83%;
+}
