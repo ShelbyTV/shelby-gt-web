@@ -33,11 +33,6 @@
 
 /* line 33, ../../../app/stylesheets/partials/anon-banner.scss */
 .logged-out-banner {
-  -moz-border-radius: 0 0 5px 5px;
-  -webkit-border-radius: 0 0 5px 5px;
-  -o-border-radius: 0 0 5px 5px;
-  -ms-border-radius: 0 0 5px 5px;
-  -khtml-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   background-color: #585858;
   margin: 0 auto;
@@ -133,11 +128,6 @@
   background: -o-linear-gradient(top, #05c7ff, #00a2d1);
   background: -ms-linear-gradient(top, #05c7ff, #00a2d1);
   background: linear-gradient(top, #05c7ff, #00a2d1);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
   -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
@@ -180,11 +170,6 @@
   background: -o-linear-gradient(top, #0157b3, #013e80);
   background: -ms-linear-gradient(top, #0157b3, #013e80);
   background: linear-gradient(top, #0157b3, #013e80);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #037bfd;
   -webkit-box-shadow: inset 0px 1px 0px 0px #037bfd;

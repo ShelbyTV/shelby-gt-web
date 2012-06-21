@@ -66,9 +66,8 @@
 
 
 .video-player-progress{
-	@include border-radius($radius*2);
-
-	background:black;
+  background:black;
+	border-radius: $radius*2;
 	height:8px;
 	left:60px;
 	right:230px;
@@ -79,8 +78,8 @@
 .video-player-progress-load{
   background: $video-controls-progress-load;
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
-	@include border-radius($radius*2);
 
+	border-radius: $radius*2;
 	height:8px;
 	width:0;
 }
@@ -93,10 +92,10 @@
 }
 
 .video-player-scrubber{
-	@include border-radius(50%);
-	@include box-shadow(1px 0px 2px 1px black);
+  @include box-shadow(1px 0px 2px 1px black);
 
-	background:#efefef;
+  background:#efefef;
+	border-radius: 50%;
 	cursor:pointer;
 	cursor:ew-resize;
 	height:15px;
@@ -207,8 +206,7 @@
   .video-player-prev, .video-player-next {	
 	  @include opacity(0.5);
 	
-  	@include border-radius($radius);
-
+  	border-radius: $radius;
   	height:40px;
   	position:absolute;
   	top: 45%;

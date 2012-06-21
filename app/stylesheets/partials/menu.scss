@@ -107,8 +107,7 @@
 }
 
 .dashboard-search {
-	@include border-radius($radius*4);
-
+	border-radius: $radius*4;
 	margin: 0px 7px 3px;
 	position: relative;
 
@@ -120,8 +119,8 @@
 		width: 12px; 
 	}
 	input[type="text"] {
-		@include border-radius($radius*4);
 		border: none;
+		border-radius: $radius*4;
 		padding: 3px 8px 3px 20px;
 		
 		&:focus {

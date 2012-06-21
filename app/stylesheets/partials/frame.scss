@@ -86,8 +86,7 @@
 }
 
 .frame-creator-avatar {
-	@include border-radius($radius 0 0 0);
-
+	border-radius: $radius 0 0 0;
 	float: left;
 	height: 40px;
 	width: 40px;
@@ -167,8 +166,7 @@
 }
 
 .video-card-footer {
-	@include border-radius(0 0 $radius $radius);
-	
+	border-radius: 0 0 $radius $radius;
 	overflow: hidden;
 	z-index: 5;
 }
@@ -185,7 +183,7 @@
 	padding: $defaultMargin;
 
 	textarea {
-		@include border-radius($input-radius);
+		border-radius: $input-radius;
 		border-color: #555;
 		padding: $defaultMargin/2;
 		resize: none;

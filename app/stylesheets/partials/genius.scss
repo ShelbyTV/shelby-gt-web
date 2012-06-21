@@ -76,7 +76,7 @@
 }
 
 .genius-search-input {
-	@include border-radius($radius/2);
+	border-radius: $radius/2;
 	border:none;
 	display:block;
 	font-size:14px;
@@ -92,10 +92,10 @@
 	@include buttonfont;
 	background: $shelby-blue;
 	@include background( linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue) );
-	@include border-radius($radius);
 	@include box-shadow(0 0 0 1px $shelby-blue);
 	@include text-shadow(0px 1px 2px #222);
 	border:none;
+	border-radius: $radius;
 	color:#efefef;
 	display:block;
 	font-size:13px;

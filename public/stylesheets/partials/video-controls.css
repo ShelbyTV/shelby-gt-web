@@ -34,11 +34,6 @@
   background: -o-linear-gradient(top, #1b1b1b, #0e0e0e);
   background: -ms-linear-gradient(top, #1b1b1b, #0e0e0e);
   background: linear-gradient(top, #1b1b1b, #0e0e0e);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #202020;
   height: 45px;
@@ -68,11 +63,6 @@
 
 /* line 42, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools-inner {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   margin: 0;
   padding: 0;
@@ -95,13 +85,8 @@
 
 /* line 68, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
   background: black;
+  border-radius: 10px;
   height: 8px;
   left: 60px;
   right: 230px;
@@ -109,7 +94,7 @@
   position: absolute;
 }
 
-/* line 79, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 78, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   background: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3d3d3d), color-stop(100%, #303030));
@@ -118,35 +103,25 @@
   background: -o-linear-gradient(top, #3d3d3d, #303030);
   background: -ms-linear-gradient(top, #3d3d3d, #303030);
   background: linear-gradient(top, #3d3d3d, #303030);
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
   border-radius: 10px;
   height: 8px;
   width: 0;
 }
 
-/* line 88, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 87, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0071a3;
   margin-top: -8px;
 }
 
-/* line 95, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 94, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -khtml-border-radius: 50%;
-  border-radius: 50%;
   -moz-box-shadow: 1px 0px 2px 1px black;
   -webkit-box-shadow: 1px 0px 2px 1px black;
   -o-box-shadow: 1px 0px 2px 1px black;
   box-shadow: 1px 0px 2px 1px black;
   background: #efefef;
+  border-radius: 50%;
   cursor: pointer;
   cursor: ew-resize;
   height: 15px;
@@ -156,7 +131,7 @@
   width: 15px;
 }
 
-/* line 109, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 108, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -166,44 +141,44 @@
   margin: 0 15px;
 }
 
-/* line 118, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 117, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 126, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 125, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 133, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 132, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 143, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 142, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 151, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 150, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 158, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 157, ../../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 164, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 163, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 175, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 174, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -225,7 +200,7 @@
   left: 20px;
   opacity: 1.0;
 }
-/* line 189, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 188, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -247,19 +222,14 @@
   margin-right: 330px;
   right: 20px;
 }
-/* line 202, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 201, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 207, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 206, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   height: 40px;
   position: absolute;
@@ -267,7 +237,7 @@
   width: 40px;
   z-index: 2;
 }
-/* line 218, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 216, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;

@@ -25,11 +25,6 @@
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -o-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -ms-linear-gradient(top, #404344, #27292a);
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   margin-left: 10px;
   padding: 13px 33px;
@@ -71,21 +66,11 @@
 }
 /* line 34, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:first-child button {
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -khtml-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
 /* line 41, ../../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:last-child button {
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
   border-left: none;
 }

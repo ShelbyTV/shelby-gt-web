@@ -116,16 +116,11 @@
 
 /* line 109, ../../../app/stylesheets/partials/menu.scss */
 .dashboard-search {
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
   border-radius: 20px;
   margin: 0px 7px 3px;
   position: relative;
 }
-/* line 115, ../../../app/stylesheets/partials/menu.scss */
+/* line 114, ../../../app/stylesheets/partials/menu.scss */
 .dashboard-search i {
   background: url("../images/assets/search.svg") no-repeat center center;
   height: 12px;
@@ -133,18 +128,13 @@
   position: absolute;
   width: 12px;
 }
-/* line 122, ../../../app/stylesheets/partials/menu.scss */
+/* line 121, ../../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"] {
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
   border: none;
+  border-radius: 20px;
   padding: 3px 8px 3px 20px;
 }
-/* line 127, ../../../app/stylesheets/partials/menu.scss */
+/* line 126, ../../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
   -moz-box-shadow: 0px 0px 5px 3px #666666;
   -webkit-box-shadow: 0px 0px 5px 3px #666666;

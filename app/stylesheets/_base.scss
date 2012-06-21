@@ -121,13 +121,13 @@ $roundies-type : normal !default;  //see @mixin roundies()
 
 @mixin roundies($roundies-type){
 	@if $roundies-type == normal {
-		@include border-radius($radius);	
+		border-radius: $radius;	
 	} 
 	@else if $roundies-type == input {
-		@include border-radius($radius - 2);
+		border-radius: $radius - 2;
 	} 
 	@else if $roundies-type == header {
-		@include border-radius($radius $radius 0 0);
+		border-radius: $radius $radius 0 0;
 	}
 }
 
@@ -255,12 +255,14 @@ $button-image-url : '' !default;
 
 @mixin x-button-primer($primer-color,$button-size,$button-back, $button-image-url){
 	background-color: $primer-color;
+
 	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
-	@include border-radius($button-radius);
-	@include box-highlight($primer-color);
-	@include buttonfont;
-	@include text-shadow(0px -1px 0px #333);
-	border: 1px solid adjust-lightness($primer-color,-20%);
+  @include box-highlight($primer-color);
+  @include buttonfont;
+  @include text-shadow(0px -1px 0px #333);
+
+  border: 1px solid adjust-lightness($primer-color,-20%);
+	border-radius: $button-radius;
 	color: $button-color;
 
 	@if $button-back != back {
@@ -289,13 +291,14 @@ $button-image-url : '' !default;
 
 		&:after {
 			background-color: $primer-color;
+      
 			@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
-			@include border-radius(1px 0 0 4px);
-			@include box-shadow(inset 1px 0 0 adjust-lightness($primer-color, 20%));
-			@include rotate($default-rotate);
+      @include box-shadow(inset 1px 0 0 adjust-lightness($primer-color, 20%));
+      @include rotate($default-rotate);
 
-			border-bottom: 1px solid adjust-lightness($primer-color,-20%);
-			border-left: 1px solid adjust-lightness($primer-color,-20%);
+      border-bottom: 1px solid adjust-lightness($primer-color,-20%);
+      border-left: 1px solid adjust-lightness($primer-color,-20%);
+			border-radius: 1px 0 0 4px;
 			content: "\0020";
 			display: block;
 			height: 18px;

@@ -31,7 +31,7 @@
 }
 
 .logged-out-banner{
-	@include border-radius(0 0 $radius $radius);
+  border-radius: 0 0 $radius $radius;
 
 	background-color: #585858;
 	margin:0 auto;
@@ -141,7 +141,7 @@ $network-image : $icon-rolls-share-twitter-on !default;
 @mixin x-logged-out-networks-buttons($primer-color, $network-image){
 	background-color: $primer-color;
 	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
-	@include border-radius($button-radius);
+	border-radius: $button-radius;
 	@include box-highlight($primer-color);
 	@include buttonfont;
 	@include text-shadow(0px -1px 0px #333);

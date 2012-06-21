@@ -12,11 +12,6 @@
 }
 /* line 19, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-form input {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border: 1px solid #222;
@@ -84,12 +79,6 @@
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
   -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
   -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
@@ -97,6 +86,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid black;
+  border-radius: 5px;
   color: #efefef;
   padding: 4px 8px;
   margin-left: 6px;
@@ -120,12 +110,6 @@
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
@@ -133,6 +117,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #20461c;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   float: right;
@@ -156,15 +141,10 @@
   padding-left: 0;
 }
 
-/* line 331, ../../../app/stylesheets/_base.scss */
+/* line 334, ../../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   content: "\0020";
   float: left;
@@ -258,13 +238,8 @@
   background: -o-linear-gradient(top, #ec254b, #cc1235);
   background: -ms-linear-gradient(top, #ec254b, #cc1235);
   background: linear-gradient(top, #ec254b, #cc1235);
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
   border: 1px solid #222;
+  border-radius: 4px;
   display: block;
   height: 20px;
   margin: 5px 0 0 49%;
@@ -280,16 +255,11 @@
   background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #ffffff, #fefefe);
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -khtml-border-radius: 2px;
-  border-radius: 2px;
   -moz-box-shadow: 0px 0px 2px 1px #111111;
   -webkit-box-shadow: 0px 0px 2px 1px #111111;
   -o-box-shadow: 0px 0px 2px 1px #111111;
   box-shadow: 0px 0px 2px 1px #111111;
+  border-radius: 2px;
   content: "\0020";
   height: 18px;
   left: 0;
