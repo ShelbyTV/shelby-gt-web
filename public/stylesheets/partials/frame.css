@@ -145,16 +145,28 @@
 /* line 130, ../../../app/stylesheets/partials/frame.scss */
 .frame-locator {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2218px%22%20height%3D%2218px%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M8.999%2C0C4.037%2C0%2C0%2C4.037%2C0%2C9.001C0%2C13.959%2C4.037%2C18%2C8.999%2C18S18%2C13.959%2C18%2C9.001C18%2C4.037%2C13.961%2C0%2C8.999%2C0z%20M9.83%2C15.806%0A%09v-3.799H8.172v3.799c-3.126-0.377-5.601-2.854-5.979-5.975h3.803V8.172H2.192c0.377-3.126%2C2.853-5.604%2C5.979-5.98v3.805H9.83V2.192%0A%09c3.126%2C0.378%2C5.599%2C2.854%2C5.976%2C5.979h-3.8v1.659h3.8C15.428%2C12.951%2C12.955%2C15.427%2C9.83%2C15.806z%22/%3E%0A%3C/svg%3E%0A") no-repeat center left transparent;
-  border: none;
+  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2218px%22%20height%3D%2218px%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M8.999%2C0C4.037%2C0%2C0%2C4.037%2C0%2C9.001C0%2C13.959%2C4.037%2C18%2C8.999%2C18S18%2C13.959%2C18%2C9.001C18%2C4.037%2C13.961%2C0%2C8.999%2C0z%20M9.83%2C15.806%0A%09v-3.799H8.172v3.799c-3.126-0.377-5.601-2.854-5.979-5.975h3.803V8.172H2.192c0.377-3.126%2C2.853-5.604%2C5.979-5.98v3.805H9.83V2.192%0A%09c3.126%2C0.378%2C5.599%2C2.854%2C5.976%2C5.979h-3.8v1.659h3.8C15.428%2C12.951%2C12.955%2C15.427%2C9.83%2C15.806z%22/%3E%0A%3C/svg%3E%0A") no-repeat 10px center transparent;
+  border-bottom: none;
+  border-left: 1px solid black;
+  border-right: none;
+  border-top: none;
   color: #efefef;
   line-height: 3.25;
-  padding: 0 1em 0 2em;
+  padding: 0 1em 0 3em;
   position: absolute;
   right: 0;
 }
+/* line 144, ../../../app/stylesheets/partials/frame.scss */
+.frame-locator:before {
+  border-left: 1px solid #414141;
+  content: "\0020";
+  display: block;
+  height: 40px;
+  float: left;
+  margin: 0 0 0 -36px;
+}
 
-/* line 142, ../../../app/stylesheets/partials/frame.scss */
+/* line 155, ../../../app/stylesheets/partials/frame.scss */
 .frame-title {
   clear: right;
   color: #bfbfbf;
@@ -169,7 +181,7 @@
   width: 83%;
 }
 
-/* line 156, ../../../app/stylesheets/partials/frame.scss */
+/* line 169, ../../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -181,20 +193,20 @@
   z-index: 5;
 }
 
-/* line 163, ../../../app/stylesheets/partials/frame.scss */
+/* line 176, ../../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 169, ../../../app/stylesheets/partials/frame.scss */
+/* line 182, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 174, ../../../app/stylesheets/partials/frame.scss */
+/* line 187, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -207,7 +219,7 @@
   resize: none;
   width: 100%;
 }
-/* line 182, ../../../app/stylesheets/partials/frame.scss */
+/* line 195, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -235,19 +247,19 @@
   margin-top: 5px;
 }
 
-/* line 194, ../../../app/stylesheets/partials/frame.scss */
+/* line 207, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 198, ../../../app/stylesheets/partials/frame.scss */
+/* line 211, ../../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 205, ../../../app/stylesheets/partials/frame.scss */
+/* line 218, ../../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -256,37 +268,37 @@
   text-overflow: ellipsis;
 }
 
-/* line 213, ../../../app/stylesheets/partials/frame.scss */
+/* line 226, ../../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
 /* XXX BELOW still needed for context overlay, but not for conversation within guide  */
-/* line 218, ../../../app/stylesheets/partials/frame.scss */
+/* line 231, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 224, ../../../app/stylesheets/partials/frame.scss */
+/* line 237, ../../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 229, ../../../app/stylesheets/partials/frame.scss */
+/* line 242, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 233, ../../../app/stylesheets/partials/frame.scss */
+/* line 246, ../../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 239, ../../../app/stylesheets/partials/frame.scss */
+/* line 252, ../../../app/stylesheets/partials/frame.scss */
 .user-handle, .user-post-date {
   color: #a4a4a4;
   font-size: 11px;
@@ -294,7 +306,7 @@
   line-height: 2.8;
 }
 
-/* line 246, ../../../app/stylesheets/partials/frame.scss */
+/* line 259, ../../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -302,7 +314,7 @@
   padding-right: 3px;
 }
 
-/* line 255, ../../../app/stylesheets/partials/frame.scss */
+/* line 268, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
@@ -310,47 +322,47 @@
   margin: 3px 3px 0 0;
 }
 
-/* line 265, ../../../app/stylesheets/partials/frame.scss */
+/* line 278, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
-/* line 272, ../../../app/stylesheets/partials/frame.scss */
+/* line 285, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
   content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
-/* line 277, ../../../app/stylesheets/partials/frame.scss */
+/* line 290, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 280, ../../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
 /* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
-/* line 286, ../../../app/stylesheets/partials/frame.scss */
+/* line 299, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 290, ../../../app/stylesheets/partials/frame.scss */
+/* line 303, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 297, ../../../app/stylesheets/partials/frame.scss */
+/* line 310, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 303, ../../../app/stylesheets/partials/frame.scss */
+/* line 316, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 308, ../../../app/stylesheets/partials/frame.scss */
+/* line 321, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -363,12 +375,12 @@
   width: 100%;
 }
 
-/* line 321, ../../../app/stylesheets/partials/frame.scss */
+/* line 334, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity {
   font-weight: 500;
 }
 
-/* line 325, ../../../app/stylesheets/partials/frame.scss */
+/* line 338, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -377,7 +389,7 @@
   padding: 4px;
   width: auto;
 }
-/* line 333, ../../../app/stylesheets/partials/frame.scss */
+/* line 346, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -387,16 +399,16 @@
   margin-right: 3px;
   width: 24px;
 }
-/* line 343, ../../../app/stylesheets/partials/frame.scss */
+/* line 356, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 347, ../../../app/stylesheets/partials/frame.scss */
+/* line 360, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 352, ../../../app/stylesheets/partials/frame.scss */
+/* line 365, ../../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -406,7 +418,7 @@
   width: 22px;
 }
 
-/* line 363, ../../../app/stylesheets/partials/frame.scss */
+/* line 376, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -414,12 +426,12 @@
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 372, ../../../app/stylesheets/partials/frame.scss */
+/* line 385, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 379, ../../../app/stylesheets/partials/frame.scss */
+/* line 392, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -427,25 +439,25 @@
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 388, ../../../app/stylesheets/partials/frame.scss */
+/* line 401, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 395, ../../../app/stylesheets/partials/frame.scss */
+/* line 408, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 400, ../../../app/stylesheets/partials/frame.scss */
+/* line 413, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 407, ../../../app/stylesheets/partials/frame.scss */
+/* line 420, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 412, ../../../app/stylesheets/partials/frame.scss */
+/* line 425, ../../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
