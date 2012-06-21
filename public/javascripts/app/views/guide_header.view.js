@@ -36,16 +36,30 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
+    shelby.models.guide.bind('change:displayIsolatedRoll', this._updateVisibility, this);
     this.render();
   },
 
+  _cleanup : function(){
+    shelby.models.guide.unbind('change:displayIsolatedRoll', this._updateVisibility, this);
+  },
+
   render : function(){
+    this._updateVisibility();
     this.$el.html(this.template({user:this.model}));
   },
 
   _selectMenu : function(menu){
     this._closeMenus();
     $(menu.subnavId).show();
+  },
+
+  _updateVisibility : function(){
+    if(shelby.models.guide.get('displayIsolatedRoll')) {
+        this.$el.hide();
+      } else {
+        this.$el.show();
+    }
   },
 
   _closeMenus : function(){

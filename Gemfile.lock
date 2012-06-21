@@ -59,6 +59,7 @@ GEM
     jammit (0.6.5)
       yui-compressor (>= 0.9.3)
     journey (1.0.3)
+    js_erb (0.1.6)
     json (1.7.1)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -128,6 +129,7 @@ DEPENDENCIES
   compass (= 0.11.7)
   httparty
   jammit
+  js_erb
   quiet_assets
   rails (= 3.2.2)
   settingslogic

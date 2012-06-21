@@ -44,13 +44,15 @@
       39 : {
         model : 'userDesires',
         attr : 'changeVideo',
-        val : 1
+        val : 1,
+        is_transient : true
       },
       // (<-) left 
       37 : {
         model : 'userDesires',
         attr : 'changeVideo',
-        val : -1
+        val : -1,
+        is_transient : true
       }
 
     },
@@ -86,6 +88,10 @@
         var actionData = self._getActionData(event.keyCode);
         if(!actionData) return false;
         shelby.models[actionData.model].set(actionData.attr, actionData.val);
+        if(actionData.is_transient){
+          //immediately reset this b/c the desire is transient
+          shelby.models[actionData.model].set(actionData.attr, null);
+        }
         return false;
       });  
     },
