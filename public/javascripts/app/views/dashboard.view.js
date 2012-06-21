@@ -1,14 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var AutoScrollFrameListView = libs.shelbyGT.AutoScrollFrameListView;
+  var PagingListView = libs.shelbyGT.PagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
-  libs.shelbyGT.DashboardView = AutoScrollFrameListView.extend({
+  libs.shelbyGT.DashboardView = PagingListView.extend({
 
-    className : AutoScrollFrameListView.prototype.className + ' dashboard',
+    className : PagingListView.prototype.className + ' dashboard',
 
-    options : _.extend({}, AutoScrollFrameListView.prototype.options, {
+    options : _.extend({}, PagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
@@ -38,12 +38,12 @@
       });
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this._initInfiniteScrolling();
-      AutoScrollFrameListView.prototype.initialize.call(this);
+      PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
       shelby.models.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      AutoScrollFrameListView.prototype._cleanup.call(this);
+      PagingListView.prototype._cleanup.call(this);
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -65,6 +65,11 @@
 
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
+    },
+    
+    //ListView overrides
+    _listItemViewAdditionalParams : function() {
+      return {activationStateModel:shelby.models.guide};
     }
 
   });
