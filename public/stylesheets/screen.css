@@ -939,12 +939,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
   -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
   -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
@@ -952,6 +946,7 @@ a:hover, a:visited, a:active {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid black;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   float: right;
@@ -970,12 +965,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
@@ -983,6 +972,7 @@ a:hover, a:visited, a:active {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #20461c;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
 }
@@ -1719,7 +1709,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 266, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338389592');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -1727,12 +1717,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 276, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338389592');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 283, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 288, ../../app/stylesheets/partials/frame.scss */
@@ -1985,6 +1975,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   position: absolute;
   width: 100%;
   z-index: 2;
+}
+
+/* line 19, ../../app/stylesheets/partials/video-controls.scss */
+.user-inactive .video-player-tools-wrapper,
+.user-inactive .comment-overlay-wrapper {
+  opacity: 0;
 }
 
 /* line 23, ../../app/stylesheets/partials/video-controls.scss */
@@ -2546,7 +2542,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -4009,6 +4005,11 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 .context-overlay-lining .frame-controls button {
   border-top-color: #343434;
   border-left-color: #343434;
+}
+
+/* line 46, ../../app/stylesheets/partials/context-overlay.scss */
+.user-inactive .context-overlay-wrapper {
+  opacity: 0;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */

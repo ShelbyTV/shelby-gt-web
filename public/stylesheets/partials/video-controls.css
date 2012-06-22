@@ -25,6 +25,12 @@
   z-index: 2;
 }
 
+/* line 19, ../../../app/stylesheets/partials/video-controls.scss */
+.user-inactive .video-player-tools-wrapper,
+.user-inactive .comment-overlay-wrapper {
+  opacity: 0;
+}
+
 /* line 23, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools {
   background-color: #0e0e0e;
