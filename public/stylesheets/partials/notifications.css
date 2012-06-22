@@ -30,14 +30,14 @@
 }
 
 /* line 17, ../../../app/stylesheets/partials/notifications.scss */
-.notifications {
+.notification {
   width: 100%;
   height: 100%;
   font-size: 14px;
   overflow: hidden;
 }
 /* line 22, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .message {
+.notification .message {
   color: #ffffff;
   text-align: center;
   font-weight: 300;
@@ -48,17 +48,17 @@
   width: 100%;
 }
 /* line 32, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .button-wrapper {
+.notification .button-wrapper {
   position: absolute;
   width: 100%;
   bottom: 12px;
 }
 /* line 36, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .button-wrapper .disabled {
+.notification .button-wrapper .disabled {
   display: none;
 }
 /* line 41, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .one_button .notification-confirm {
+.notification .one_button .notification-confirm {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
   background: -webkit-linear-gradient(top, #0094d6, #0071a3);
@@ -80,7 +80,7 @@
   margin-left: 126px;
 }
 /* line 46, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .one_button .notification-cancel {
+.notification .one_button .notification-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4e4e4e, #343434);
@@ -102,7 +102,7 @@
   margin-left: 126px;
 }
 /* line 52, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .two_button {
+.notification .two_button {
   /*
   .red { @include x-button-primer($shelby-red); }
   .blue { @include x-button-primer($shelby-red); }
@@ -110,7 +110,7 @@
   */
 }
 /* line 53, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .two_button .notification-confirm {
+.notification .two_button .notification-confirm {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
   background: -webkit-linear-gradient(top, #0094d6, #0071a3);
@@ -133,7 +133,7 @@
   width: 80px;
 }
 /* line 59, ../../../app/stylesheets/partials/notifications.scss */
-.notifications .two_button .notification-cancel {
+.notification .two_button .notification-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
   background: -webkit-linear-gradient(top, #4e4e4e, #343434);
