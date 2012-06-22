@@ -24,6 +24,28 @@ shelby = {
 	
 	signOut: function(){
 		document.location.href = "/sign_out";
+	},
+	
+	alert: function(message, callback){
+		shelby.models.notificationState.bind('change:response', function(r){
+			if (callback) { callback( r.get('response') ); }
+			r.unbind('change:response');
+		});
+		shelby.models.notificationState.set({	'message': message, 
+																					'visible': true,
+																					'number_of_buttons': 'one'});
+	},
+	
+	confirm: function(message, button_one_text, button_two_text, callback){
+		shelby.models.notificationState.bind('change:response', function(r){
+			if (callback) { callback( r.get('response') ); }
+			r.unbind('change:response');
+		});
+		shelby.models.notificationState.set({	'message': message,
+																					'number_of_buttons': 'two',
+																					'button_one' : {visible: true, text: button_one_text},
+																					'button_two' : {visible: true, text: button_two_text},
+																					'visible': true});
 	}
 
 };

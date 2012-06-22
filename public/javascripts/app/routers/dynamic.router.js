@@ -253,7 +253,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         updateRollTitle: false
       });
     } else {
-      alert("Sorry, you don't have a saves roll.");
+      shelby.alert("Sorry, you don't have a saves roll.");
       this.navigate('', {trigger:true, replace:true});
     }
   },
@@ -319,7 +319,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-      window.alert("Sorry, the video you were looking for doesn't exist in this roll.");
+      shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
       this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
@@ -342,7 +342,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     } else {
       // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-      window.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+      shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
       this.navigate("/", {trigger:true, replace:true});
     }
   },
@@ -360,6 +360,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
     this._setupAnonUserViews(options);
+    shelby.views.notificationOverlayView = shelby.views.notificationOverlayView || new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState});
     shelby.views.contextOverlay = shelby.views.contextOverlay || new libs.shelbyGT.ContextOverlayView({guide:shelby.models.guide});
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});

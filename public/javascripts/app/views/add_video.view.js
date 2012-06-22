@@ -87,18 +87,25 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
 				},
 				error: function(a,b,c){
 					if (b.status == 404) { self._addVideoError(JSON.parse(b.responseText).message); }
-					else { alert("sorry, something went wrong. contact support@shelby.tv if you think somethings wonky."); };
+					else { this._addVideoError("sorry, something went wrong. contact support@shelby.tv if you think somethings wonky."); };
 				}
 			});
     } 
 		else {
 			this._hideSpinner();
-			this._addVideoError("I don't think " + _url + " is a valid url");
+			var _message;
+			if (_url == ""){
+				_message = "You have to put something in there, silly.";
+			}
+			else{
+				_message = "I don't think " + _url + " is a valid url. Try again.";
+			}
+			this._addVideoError(_message);
     }
 	},
 
 	_addVideoError: function(message){
-		alert(message);
+		shelby.alert(message);
 	},
 	
   _onEnterInInputArea : function(event){

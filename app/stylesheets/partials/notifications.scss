@@ -6,23 +6,25 @@
 	left: 50%;
   top: 50%; 
 	width: 332px;
-	height: 111px;
+	height: 133px;
 	margin-left: -330px;
 	margin-top: -75px;
 	padding:0px;
 	z-index: 2;
+	display: none;
 }
 
 .notifications{
 	width: 100%;
 	height: 100%;
 	font-size: 14px;
+	overflow: hidden;
 	.message {
 		color: #ffffff;
 		text-align: center;
 		font-weight: 300;
 		line-height:1.5;
-		padding:0px 5px;
+		padding:0px 8px;
 		top: 17px;
 		position: absolute;
 		width: 100%;
@@ -31,6 +33,23 @@
 		position: absolute;
 		width: 100%;
 		bottom: 12px;
+		.disabled{
+			display: none;
+		}
+	}
+	.one_button{
+		.notification-confirm{
+			@include x-button-primer($shelby-blue);
+			width: 80px;
+			margin-left: 126px;
+		}
+		.notification-cancel{
+			@include x-button-primer;
+			width: 80px;
+			margin-left: 126px;
+		}			
+	}
+	.two_button{
 		.notification-confirm{
 			@include x-button-primer($shelby-blue);
 			float: right;
@@ -43,5 +62,10 @@
 			margin-left: 75px;
 			width: 80px;
 		}
+		/*
+		.red { @include x-button-primer($shelby-red); }
+		.blue { @include x-button-primer($shelby-red); }
+		.grey { @include x-button-primer; }
+		*/
 	}
 }

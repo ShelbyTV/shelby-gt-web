@@ -7,12 +7,10 @@ libs.shelbyGT.Ajax = {
         document.location = "/signout?error=401";
         break;
       case 403:
-        //TODO: nicer looking notification of authorization error message
-        alert("You are not authorized to do that");
+        shelby.alert("You are not authorized to do that");
         break;
       default:
-        // TODO: nicer looking notification of generic error message
-        alert("Something went wrong. Shelby apologizes.");
+        shelby.alert("Something went wrong. Shelby apologizes.");
     }
   },
   
