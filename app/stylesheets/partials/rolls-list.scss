@@ -7,14 +7,14 @@
 	position:relative;
 	margin:0;
 
+  .roll-item-header:hover{
+		background-color: #6d6d6d;
+	}
+
 	a{	
 		cursor:pointer;
 		display:block;
 		padding: 5px;
-
-		&:hover{
-			background-color: #6d6d6d;
-		}
 	}
 
 	li{
@@ -24,32 +24,23 @@
 	.active-list-item{
 		position:relative;
 
-		.roll-item-creator {
-			color: $rolls-inset;
-		}
+    .roll-item-header {
+      @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
+    }
+		
+		.roll-item-creator{
+      color: $shelby-gray;
+    }
 
-		.roll-item-title,
-		.roll-item-people {
-			color: $rolls-inset;
-		}
-
-		a{
-			color:#000;
-		}
-
-		h2{
+		.roll-item-title {
+		  color: adjust-lightness($shelby-gray, -10%);
 			overflow:hidden;
 			text-overflow:ellipsis;
 			white-space:nowrap;
 
-			&:after {
-			  content: "Now Playing";
-			  color: $inset;
-			  padding-top: 10px;
-			  padding-right: 10px;
-			  position: absolute;
-			  right: 0;
-			  top: 0;
+			&:before {
+			  content: "On Now: ";
+			  font-style: italic;
 			}
 		}
 	}
