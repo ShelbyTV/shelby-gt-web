@@ -17,6 +17,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-frame-activate"              : "_activate",
+    "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-save-frame"                  : "_saveToWatchLater",

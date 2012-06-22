@@ -41,7 +41,7 @@
         collaborative : true
       });
     
-      roll.set({'public': this.$("#new-roll-public").attr('checked') === 'checked'});
+      roll.set({'public': !this.$("#new-roll-status").is(':checked')});
 
       if(this.$("#new-roll-recipients").val().length > 0){
         this._frameRollingState.get('shareModel').set({

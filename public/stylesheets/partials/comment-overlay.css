@@ -65,11 +65,6 @@
   top: 0;
   width: 24px;
   background: url("../images/assets/comment_arrow_left.svg") no-repeat center center #303030;
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -khtml-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
   left: 0;
 }
@@ -91,11 +86,6 @@
   top: 0;
   width: 24px;
   background: url("../images/assets/comment_arrow_right.svg") no-repeat center center #303030;
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0 5px 5px 0;
-  -o-border-radius: 0 5px 5px 0;
-  -ms-border-radius: 0 5px 5px 0;
-  -khtml-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
   right: 0;
 }

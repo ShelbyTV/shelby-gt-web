@@ -56,16 +56,14 @@
 
     _frameLocator : function(data){
       var origin = this.options.guide.get('activeFrameModel'),
-          originHasRoll = origin.has('roll');
-          // console.log(origin);
+          originHasRoll = origin.has('roll'),
+          userDesires = shelby.models.userDesires,
+          guideVisibility = userDesires.get('guideShown');
 
-      //doesn't load anything newer than the one you asked for:
-      //if user is watching the third video in a roll,
-      //switches to a new roll,
-      //then clicks "locate frame"
-      //the guide will navigate successfully to the active frame
-      //but will not load frames that have been added chronologically after the active frame
-
+      if (!guideVisibility) {
+        userDesires.set('guideShown', true);
+      }
+        
       if (originHasRoll) {
           var frameId = origin.id,
               rollId = origin.get('roll').id;

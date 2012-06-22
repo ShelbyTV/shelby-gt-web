@@ -7,12 +7,6 @@
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
   -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
   -o-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -20,6 +14,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #010101;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   position: absolute;
@@ -71,12 +66,6 @@
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
   -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
   -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
@@ -84,6 +73,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #002a3d;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   width: 80px;
@@ -98,12 +88,6 @@
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
   -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
   -o-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -111,6 +95,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #010101;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   width: 80px;
@@ -133,12 +118,6 @@
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
   -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
   -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
@@ -146,6 +125,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #002a3d;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   float: right;
@@ -161,12 +141,6 @@
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #747474;
   -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
   -o-box-shadow: inset 0px 1px 0px 0px #747474;
@@ -174,6 +148,7 @@
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
   border: 1px solid #010101;
+  border-radius: 5px;
   color: #efefef;
   padding: 6px 13px;
   float: left;

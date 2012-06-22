@@ -1,7 +1,6 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "roll/:rollId/frame/:frameId/rollit" : "displayFrameAndActivateRollingView",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
@@ -10,7 +9,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "isolated_roll/:rollId" : "displayIsolatedRoll",
     "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
-    "stream/entry/:entryId/rollit" : "displayEntryAndActivateRollingView",
     "stream" : "displayDashboard",
     "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
@@ -27,14 +25,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //ROUTE HANDLERS
   //---
 
-  displayFrameAndActivateRollingView : function(rollId, frameId, params){
-    this.displayFrameInRoll(rollId, frameId, params, {activateRollingView:true});
-  },
 
   displayFrameInRoll : function(rollId, frameId, params, options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      activateRollingView : false,
       rerollSuccess : (params && params.reroll_success === "true")
     }).value();
 
@@ -56,10 +50,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
     var defaultOnRollFetch;
-    if (shelby.models.guide.get('activeFrameModel')) {
-      // if something is already playing and it is in the roll that loads, scroll to it
-      defaultOnRollFetch = this._scrollToActiveGuideListItemView;
-    } else {
+    if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
     }
@@ -140,15 +131,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
-  displayEntryAndActivateRollingView : function(entryId, params){
-    this._displayEntryInDashboard(entryId, params, {activateRollingView:true});
-  },
-
   _displayEntryInDashboard : function(entryId, params, options){
     // default options
-    options = _.chain({}).extend(options).defaults({
-      activateRollingView : false
-    }).value();
+    options = options || {};
 
     var self = this;
     this.displayDashboard(params, {
@@ -157,7 +142,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         include_children : true
       },
       onDashboardFetch: function(dashboardModel, response){
-        self._activateEntryInDashboardById(dashboardModel, entryId, options.activateRollingView);
+        self._activateEntryInDashboardById(dashboardModel, entryId);
       }
     });
   },
@@ -173,11 +158,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _fetchDashboard : function(options) {
     // default options
-    var defaultOnDashboardFetch;
-    if (shelby.models.guide.get('activeFrameModel')) {
-      // if something is already playing and it is in the dashboard, scroll to it
-      defaultOnDashboardFetch = this._scrollToActiveGuideListItemView;
-    } else {
+    var defaultOnDashboardFetch = null;
+    if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }
@@ -185,12 +167,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     options = _.chain({}).extend(options).defaults({
       onDashboardFetch: function(dashboardModel, response){
         if (response.result.length) {
-          return defaultOnDashboardFetch.call(self, dashboardModel, response);
+          defaultOnDashboardFetch && defaultOnDashboardFetch.call(self, dashboardModel, response);
+        } else {
+          setTimeout(function(){
+            self._fetchDashboard(options);
+          }, 400);
         }
-
-        setTimeout(function(){
-          self._fetchDashboard(options);
-        }, 400);
 
       },
       data: {
@@ -289,7 +271,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       displayInGuide:false,
       onDashboardFetch: function(dashboardModel, response){
         self._activateFirstDashboardVideoFrame(dashboardModel, response);
-        self._scrollToActiveGuideListItemView();
       }});
   },
 
@@ -310,13 +291,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateFrameInRollById : function(rollModel, frameId, activateRollingView) {
+  _activateFrameInRollById : function(rollModel, frameId) {
     var frame;
     if (frame = rollModel.get('frames').get(frameId)) {
       shelby.models.guide.set('activeFrameModel', frame);
-      if (activateRollingView) {
-        shelby.views.guide.rollActiveFrame();
-      }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
       shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
@@ -333,22 +311,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateEntryInDashboardById : function(dashboardModel, entryId, activateRollingView) {
+  _activateEntryInDashboardById : function(dashboardModel, entryId) {
     var entry;
     if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
       shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-      if (activateRollingView) {
-        shelby.views.guide.rollActiveFrame();
-      }
     } else {
       // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
       shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
       this.navigate("/", {trigger:true, replace:true});
     }
-  },
-
-  _scrollToActiveGuideListItemView : function(){
-    shelby.models.autoScrollState.set('tryAutoScroll', true);
   },
 
   _setupTopLevelViews : function(options){
@@ -455,7 +426,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       },
       onRollFetch: function(rollModel, response){
         if(!options.rerollSuccess){
-          self._activateFrameInRollById(rollModel, frameId, options.activateRollingView);
+          self._activateFrameInRollById(rollModel, frameId);
         }
       }
     });

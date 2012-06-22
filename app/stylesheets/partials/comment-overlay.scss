@@ -45,16 +45,16 @@
 .comment-overlay-prev {
 	@include x-comment-overlay-buttons;
 	@include background( url('../images/assets/comment_arrow_left.svg') no-repeat center center #303030 );
-	@include border-radius($radius 0 0 $radius);
 	
+	border-radius: $radius 0 0 $radius;
 	left: 0;
 }
 
 .comment-overlay-next {
 	@include x-comment-overlay-buttons;
 	@include background( url('../images/assets/comment_arrow_right.svg') no-repeat center center #303030 );
-	@include border-radius(0 $radius $radius 0);
 
+	border-radius: 0 $radius $radius 0;
 	right: 0;
 }
 

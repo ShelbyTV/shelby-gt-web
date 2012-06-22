@@ -69,6 +69,7 @@
 /* line 115, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-twitter:before {
 <<<<<<< HEAD
+<<<<<<< HEAD
   content: url('/images/../images/assets/twitter_stamp.png?1339439121');
 }
 /* line 121, ../../app/stylesheets/png.scss */
@@ -81,6 +82,13 @@
 .no-svg .user-post-origin-facebook:before {
   content: url('/images/../images/assets/facebook_stamp.png?1338389592');
 >>>>>>> 746b8754526bd94f0728ea5d6f310f301a51c5ae
+=======
+  content: url('/images/../images/assets/twitter_stamp.png?1338995882');
+}
+/* line 121, ../../app/stylesheets/png.scss */
+.no-svg .user-post-origin-facebook:before {
+  content: url('/images/../images/assets/facebook_stamp.png?1338995882');
+>>>>>>> d9ff6d3dbf1f96ad2f2ca7a2c98647d4008a5d80
 }
 /* line 127, ../../app/stylesheets/png.scss */
 .no-svg .video-player-play {

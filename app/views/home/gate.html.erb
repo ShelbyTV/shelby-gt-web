@@ -132,7 +132,7 @@
 			});
 			
 			$('.email-gate-signup').submit(function() {
-				$.post('//api.gt.shelby.tv/v1/gt_interest', $(this).serialize(), function(data) {
+				$.post(shelby.config.apiRoot + '/gt_interest', $(this).serialize(), function(data) {
 					$('.email-gate-signup').hide()
 					$('.email-gate-thank-you').show();
 				});
@@ -143,7 +143,7 @@
 
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
   <script>
-    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','gt.shelby.tv'],['_trackPageview']];
+    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','none'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));

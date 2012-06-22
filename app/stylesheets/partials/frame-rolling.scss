@@ -10,10 +10,10 @@
 
 	& > li {
 		&:first-child {
-			@include border-radius($radius - 1 $radius - 1 0 0);
+			border-radius: $radius - 1 $radius - 1 0 0;
 	
 			h2 {
-				@include border-radius($radius - 1 $radius - 1 0 0);
+				border-radius: $radius - 1 $radius - 1 0 0;
 			}
 		}
 

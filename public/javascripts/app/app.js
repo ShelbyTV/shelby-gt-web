@@ -9,11 +9,10 @@ libs = {
 //---------------------------------------------------------
 // global namespace for this app
 //---------------------------------------------------------
-shelby = {
+_(shelby).extend({
   models : {},
   views : {},
   collections : {},
-  config : {},
 
   // Signed in convience function
   userSignedIn: function(){
@@ -48,7 +47,7 @@ shelby = {
 																					'visible': true});
 	}
 
-};
+});
 
 //---------------------------------------------------------
 // setup ajax defaults

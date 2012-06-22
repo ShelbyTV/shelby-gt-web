@@ -4,7 +4,7 @@ require 'net/http'
 class SeovideoController < ApplicationController
 
   def show
-    video_api_base = "http://api.gt.shelby.tv/v1/video"
+    video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
     # route guarantees provider_name and provider_id will exist
     @provider_name = params.delete(:provider_name)

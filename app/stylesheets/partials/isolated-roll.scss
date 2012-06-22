@@ -29,4 +29,22 @@ body.isolated-roll {
   /* don't show any education */
   .guide-education { display: none!important; }
 
+  .context-overlay-lining {
+    .video-card-header {
+      border-bottom: none;
+    }
+
+    .frame-locator {
+      display: none;
+    }
+
+    .frame-creator-roll {
+      width: inherit;
+    }
+
+    .frame-title {
+      width: 83%;
+    }
+  }
+
 }

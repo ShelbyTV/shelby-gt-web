@@ -58,7 +58,7 @@
 }
 
 .rolls-leave {
-	@include x-button-primer;
+	@include x-button-primer($shelby-gray);
 	margin-top: 0;
 }
 
@@ -133,7 +133,7 @@
 		url('../images/assets/navarrow_left.svg') no-repeat center center,
 		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
 	);
-	@include border-radius($button-radius 0 0 $button-radius);	
+	border-radius: $button-radius 0 0 $button-radius;
 
 	margin-right: -1px;
 	text-align: left;
@@ -146,7 +146,7 @@
 		url('../images/assets/navarrow_right.svg') no-repeat center center,
 		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
 	);
-	@include border-radius(0 $button-radius $button-radius 0);	
+	border-radius: 0 $button-radius $button-radius 0;
 
 	text-align: right;
 	width: 50%;
