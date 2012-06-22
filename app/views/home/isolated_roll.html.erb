@@ -27,6 +27,6 @@
 </head>
 
 <body>
-  <iframe src="http://<%= Rails.env == 'development' ? 'localhost.shelby.tv:3000' : 'gt.shelby.tv' %>/isolated_roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
+  <iframe src="<%= Settings::Application.url %>/isolated_roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
 </body>
 </html>
