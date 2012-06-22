@@ -32,18 +32,22 @@ _(shelby).extend({
 		});
 		shelby.models.notificationState.set({	'message': message, 
 																					'visible': true,
+																					'button_one' : {visible: true, text: "Ok", color: 'blue'},
 																					'number_of_buttons': 'one'});
 	},
 	
-	confirm: function(message, button_one_text, button_two_text, callback){
+	confirm: function(message, button_one_opts, button_two_opts, callback){
 		shelby.models.notificationState.bind('change:response', function(r){
 			if (callback) { callback( r.get('response') ); }
 			r.unbind('change:response');
 		});
+		
+		button_one_options = $.extend({visible: true}, button_one_opts);
+		button_two_options = $.extend({visible: true}, button_two_opts);
 		shelby.models.notificationState.set({	'message': message,
 																					'number_of_buttons': 'two',
-																					'button_one' : {visible: true, text: button_one_text},
-																					'button_two' : {visible: true, text: button_two_text},
+																					'button_one' : button_one_options,
+																					'button_two' : button_two_options,
 																					'visible': true});
 	}
 

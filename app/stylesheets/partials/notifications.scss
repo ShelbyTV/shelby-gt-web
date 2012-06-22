@@ -37,36 +37,32 @@
 			display: none;
 		}
 	}
+	
+	.notification-confirm { @include x-button-primer($shelby-blue); }
+	.notification-cancel { @include x-button-primer; }
+	button.red { @include x-button-primer($shelby-red); }
+	button.blue { @include x-button-primer($shelby-blue); }
+	button.grey { @include x-button-primer; }
+	
 	.one_button{
 		.notification-confirm{
-			@include x-button-primer($shelby-blue);
 			width: 80px;
 			margin-left: 126px;
 		}
 		.notification-cancel{
-			@include x-button-primer;
-			width: 80px;
-			margin-left: 126px;
+		  display: none;
 		}			
 	}
 	.two_button{
 		.notification-confirm{
-			@include x-button-primer($shelby-blue);
 			float: right;
-			margin-right: 75px;
-			width: 80px;
+			margin-right: 55px;
+			width: 100px;
 		}
 		.notification-cancel{
-			@include x-button-primer;
 			float: left;
-			margin-left: 75px;
-			width: 80px;
+			margin-left: 55px;
+			width: 100px;
 		}
-		/*
-		.red { @include x-button-primer($shelby-red); }
-		.blue { @include x-button-primer($shelby-red); }
-		.grey { @include x-button-primer; }
-		*/
-		
 	}
 }

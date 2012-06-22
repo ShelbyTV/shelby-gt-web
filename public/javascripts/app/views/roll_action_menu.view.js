@@ -74,7 +74,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   
   _confirmRollDelete : function(){
 		var self = this;
-		shelby.confirm("Are you sure you want to delete this roll?", 'Delete','Cancel', function(r){
+		shelby.confirm("Are you sure you want to permanently delete this roll?", {text: 'Delete Roll', color: 'red'}, {text: 'Cancel'}, function(r){
 			if (r == 1){ self._deleteRoll(); }
 		});
   },

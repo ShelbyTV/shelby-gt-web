@@ -16,8 +16,7 @@
 
     initialize : function(){
       this.model.bind('change:visible', this._onVisiblityChange, this);
-			this.model.bind('change:message', this._onMessageChange, this);
-			this.model.bind('change:number_of_buttons', this._onButtonChange, this);
+			this.model.bind('change:message change:number_of_buttons change:button_one change:button_two', this.render, this);
 			this.render();
     },
 		
@@ -27,8 +26,7 @@
 		
     _cleanup : function() {
       this.model.unbind('change:visible', this._onVisiblityChange, this);
-			this.model.unbind('change:message', this._onMessageChange, this);
-			this.model.unbind('change:number_of_buttons', this._onButtonChange);
+			this.model.unbind('change:message change:number_of_buttons change:button_one change:button_two', this.render, this);
     },
 
 		_onVisiblityChange : function(model){
@@ -38,22 +36,6 @@
 			}
 			else {
 				this.$el.hide();
-			};
-		},
-		
-		_onMessageChange : function(model) {
-			this.$el.find('#js-message').html(model.get('message'));
-		},
-		
-		_onButtonChange : function(model) {
-			if (model.get('number_of_buttons') == "two"){
-				// remove class disabled on cancel
-				this.$el.find('.button-wrapper').removeClass('one_button').addClass('two_button');
-				this.$el.find('#js-notification-cancel').removeClass('disabled');
-			}
-			else if (model.get('number_of_buttons') == "one"){
-				this.$el.find('.button-wrapper').removeClass('two_button').addClass('one_button');
-				this.$el.find('#js-notification-cancel').addClass('disabled');
 			}
 		},
 		
