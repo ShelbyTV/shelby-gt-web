@@ -170,7 +170,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           defaultOnDashboardFetch && defaultOnDashboardFetch.call(self, dashboardModel, response);
         } else {
           setTimeout(function(){
-            self._fetchDashboard(options);
+            if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
+              self._fetchDashboard(options);
+            }
           }, 400);
         }
 
@@ -196,7 +198,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       });
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
-      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(){
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(response, callbackName, jqXHR){
+        // if we're going to re-poll for stream data, don't hide the spinner
+        if (callbackName == 'success' && response && response.result && response.result.length == 0) {
+          return;
+        }
         oneTimeSpinnerState.set('show', false);
         shelby.models.guide.set('disableSmartRefresh', true);
       });
