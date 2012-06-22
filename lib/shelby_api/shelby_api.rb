@@ -1,7 +1,7 @@
 module Shelby
   class API
     include HTTParty
-    base_uri 'api.gt.shelby.tv/v1'
+    base_uri "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}"
   
     def self.get_user_info(nickname)
       u = get("/user/#{nickname}").parsed_response
