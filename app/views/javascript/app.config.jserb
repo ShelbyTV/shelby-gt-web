@@ -1,2 +1,8 @@
-shelby.config.apiRoot = '<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>';
-shelby.config.appUrl = '<%= Settings::Application.url %>';
+shelby = {
+  config : {
+    apiBase : '<%= "#{Settings::ShelbyAPI.url}" %>',
+    apiRoot : '<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>',
+    appUrl : '<%= Settings::Application.url %>',
+    environment : '<%= Rails.env %>'
+  }
+};
