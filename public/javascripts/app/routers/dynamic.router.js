@@ -17,7 +17,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help" : "displayHelp",
     "team" : "displayTeam",
     "legal" : "displayLegal",
-    "" : "displayRollListAndPlayStream",
+    "" : "displayDashboard",
     "*url" : "doNothing"
   },
 
