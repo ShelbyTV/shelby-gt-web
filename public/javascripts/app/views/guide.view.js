@@ -149,9 +149,13 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
-      // cancel any other previous ajax requests' ability to hide the spinner and hide it ourselves
+      // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
-      shelby.views.guideSpinner.hide();
+      if (!(_(guideModel.changedAttributes()).has('pollAttempts') && guideModel.get('pollAttempts') > 1)){
+        // hide the spinner ourselves, unless we're polling the dashboard, in which case, its just going to
+        // be reshown in a few lines anyway, so don't hide - prevents flickering
+        shelby.views.guideSpinner.hide();
+      }
       
       //remove any current guide overlay views
       var view = shelby.models.guide.get('activeGuideOverlayView');

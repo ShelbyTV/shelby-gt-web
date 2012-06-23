@@ -61,8 +61,10 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
         this.$el.html(spinnerHtml);
       }
     } else {
-      this.$('.spinner').remove();
-      this.$el.append(spinnerHtml);
+      if (!this._isSpinning) {
+        this.$('.spinner').remove();
+        this.$el.append(spinnerHtml);
+      }
     }
     this._isSpinning = true;
     if (this.model) {
