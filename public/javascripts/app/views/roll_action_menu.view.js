@@ -1,7 +1,7 @@
 libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   events : {
-    "click #js-rolls-back" : "_goBackToRollsList",
+    "click #js-rolls-back" : "_goBack",
     "click #js-roll-back" : "_goToPreviousRoll",
     "click #js-roll-next" : "_goToNextRoll",
     "click #js-roll-delete" : "_confirmRollDelete",
@@ -54,8 +54,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this._updateVisibility();
   },
 
-  _goBackToRollsList : function(){
-    shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
+  _goBack : function(){
+    if( window.history && window.history.length > 2 ){
+      window.history.back();
+    } else {
+      shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
+    }
   },
 
   _goToPreviousRoll : function(){
