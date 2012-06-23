@@ -17,6 +17,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-frame-activate"              : "_activate",
+    "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
@@ -167,7 +168,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     shelby.models.guide.set('activeGuideOverlayView', this._conversationView); 
   },
 
-  _goToCreatorPersonalRoll : function(){
+  _goToCreatorsPersonalRoll : function(){
     var creator = this.model.get('creator');
 
     if (creator) {
