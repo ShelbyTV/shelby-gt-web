@@ -196,7 +196,7 @@
             },
             url : fetchUrl,
             data : {frames:true}
-        })).done(function(){oneTimeSpinnerState.set('show', false);});
+        })).always(function(){oneTimeSpinnerState.set('show', false);});
       } else {
       }
     },

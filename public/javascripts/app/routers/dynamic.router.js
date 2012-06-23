@@ -198,7 +198,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       });
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
-      $.when(shelby.models.dashboard.fetch(fetchOptions)).done(function(response, callbackName, jqXHR){
+      $.when(shelby.models.dashboard.fetch(fetchOptions)).always(function(response, callbackName, jqXHR){
         // if we're going to re-poll for stream data, don't hide the spinner
         if (callbackName == 'success' && response && response.result && response.result.length == 0) {
           return;
@@ -420,7 +420,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
-    $.when(rollModel.fetch(fetchOptions)).done(function(){oneTimeSpinnerState.set('show', false);});
+    $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});
   },
   
   _setupRollViewWithCallback : function(rollId, frameId, options){
