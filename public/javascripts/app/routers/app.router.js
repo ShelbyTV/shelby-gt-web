@@ -42,8 +42,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         shelby.models.rollFollowings.fetch({
           success : function() {
             self._reroute();
-          },
-          data : {frames: true}
+          }
         });
       },
       error: function(){
