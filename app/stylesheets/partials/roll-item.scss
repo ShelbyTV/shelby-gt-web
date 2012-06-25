@@ -61,18 +61,56 @@
 	}
 }
 
+.roll-item-container-column {
+	float: left;
+	width: 50%;
+}
+
+.roll-item-title,
+.roll-item-creator {
+	@include ellipsis();
+
+}
+
 .roll-item-title { 
-	@extend .frame-title;
+	clear: right; 
+	color: #bfbfbf;
+  font-size: 13px;
+  height: 19px;
+  line-height: 17px;
+  padding: 0 8px 0;
 }
 
 .roll-item-creator {
-	@extend .frame-creator-roll;
+	color: #999;
+	font-size: 11px;
+	font-weight: 300;
+	height: 1.9em;
+	margin-top: 4px;
+	padding: 6px 8px 0;
 }
 
 .roll-item-people {
 	@extend .roll-item-title;
 
 	margin-top: 12px;
+}
+
+.roll-item-total,
+.roll-item-watched {
+	font-size: 11px;
+	font-weight: 100;
+	padding-right: 8px;
+	text-align: right;
+}
+
+.roll-item-total {
+	margin-top: 12px;
+	padding-bottom: 3px;
+}
+
+.roll-item-watched {
+
 }
 
 .roll-item-avatar {
