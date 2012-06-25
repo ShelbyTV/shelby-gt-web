@@ -30,26 +30,20 @@
 }
 /* line 38, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button:after {
-  -moz-box-shadow: 0 0 86px 70px black;
-  -webkit-box-shadow: 0 0 86px 70px black;
-  -o-box-shadow: 0 0 86px 70px black;
-  box-shadow: 0 0 86px 70px black;
   bottom: -2px;
+  box-shadow: 0 0 86px 70px black;
   content: "\0020";
   height: 1px;
   margin-top: 10px;
   position: absolute;
   width: 100%;
 }
-/* line 50, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 49, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button:hover:after {
-  -moz-box-shadow: 0 0 86px 70px #27292a;
-  -webkit-box-shadow: 0 0 86px 70px #27292a;
-  -o-box-shadow: 0 0 86px 70px #27292a;
   box-shadow: 0 0 86px 70px #27292a;
 }
 
-/* line 57, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 56, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container {
   bottom: 0;
   left: 0;
@@ -59,26 +53,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 66, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 65, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a {
   text-decoration: none;
 }
-/* line 69, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 68, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a:active, .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 72, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 71, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a:hover {
   text-decoration: underline;
 }
 
-/* line 78, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 77, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container-column {
   float: left;
   width: 50%;
 }
 
-/* line 84, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 83, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-title, .roll-item-people,
 .roll-item-creator {
   white-space: nowrap;
@@ -88,7 +82,7 @@
   text-overflow: ellipsis;
 }
 
-/* line 89, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 88, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-title, .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -98,7 +92,7 @@
   padding: 0 8px 0;
 }
 
-/* line 98, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 97, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -108,12 +102,12 @@
   padding: 6px 8px 0;
 }
 
-/* line 107, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 106, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-people {
   margin-top: 12px;
 }
 
-/* line 114, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total,
 .roll-item-watched {
   font-size: 11px;
@@ -122,26 +116,26 @@
   text-align: right;
 }
 
-/* line 121, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 120, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
 
-/* line 130, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 129, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-avatar {
   float: left;
   height: 40px;
   width: 40px;
 }
 
-/* line 136, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 135, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
 
-/* line 141, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 140, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -156,7 +150,7 @@
   width: 46px;
 }
 
-/* line 149, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 148, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -167,7 +161,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 159, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 158, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -176,13 +170,13 @@
   width: 100%;
 }
 
-/* line 172, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 171, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
 
-/* line 177, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 176, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-list {
   height: inherit;
   margin: 0;
@@ -190,7 +184,7 @@
   position: relative;
 }
 
-/* line 184, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -202,27 +196,27 @@
   right: 0;
   top: 0;
 }
-/* line 195, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 194, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 200, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 199, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 206, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 205, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 208, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 207, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 209, ../../../app/stylesheets/partials/roll-item.scss */
+/* line 208, ../../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }

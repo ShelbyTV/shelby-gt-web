@@ -99,11 +99,10 @@ a{
 	overflow: hidden;	
 }
 
-.menu{
-	@include box-shadow(0 1px 4px 0px #101010);
-	
+.menu{	
 	background-color: $guide-presentation-bg-color;
 	border-bottom:1px solid #222;
+	box-shadow: 0 1px 4px 0px #101010;
 	position:relative;
 	overflow:hidden;
 }

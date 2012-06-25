@@ -24,8 +24,5 @@
 }
 /* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item .roll-item-button:after {
-  -moz-box-shadow: 0 0 86px 70px #295824;
-  -webkit-box-shadow: 0 0 86px 70px #295824;
-  -o-box-shadow: 0 0 86px 70px #295824;
   box-shadow: 0 0 86px 70px #295824;
 }

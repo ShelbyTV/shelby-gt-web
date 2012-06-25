@@ -12,9 +12,6 @@
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;

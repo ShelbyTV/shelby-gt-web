@@ -36,9 +36,8 @@
 	z-index: 1;
  
   &:after {
-    @include box-shadow(0 0 86px 70px black);
-
     bottom: -2px;
+    box-shadow: 0 0 86px 70px black;
     content: "\0020";
     height: 1px;
     margin-top: 10px;
@@ -48,8 +47,8 @@
 
 	&:hover {
 		&:after {
-	    @include box-shadow(0 0 86px 70px $shelby-gray);
-//	    @include box-shadow(0 0 86px 70px adjust-lightness($shelby-green, -25%));
+	    box-shadow: 0 0 86px 70px $shelby-gray;
+//	    box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
 		}
   }
 }

@@ -92,10 +92,9 @@
 }
 
 .video-player-scrubber{
-  @include box-shadow(1px 0px 2px 1px black);
-
   background:#efefef;
-	border-radius: 50%;
+  border-radius: 50%;
+  box-shadow: 1px 0px 2px 1px black;
 	cursor:pointer;
 	cursor:ew-resize;
 	height:15px;

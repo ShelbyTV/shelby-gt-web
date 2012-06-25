@@ -18,11 +18,11 @@
 }
 
 .video-card {
-	@include box-shadow(inset 0 1px 0 0 adjust-lightness($outset, 5%));
 	@include roundies;
 
 	background-color: $video-card-bg-color;
 	border: $frame-stroke;
+	box-shadow: inset 0 1px 0 0 adjust-lightness($outset, 5%);
 	margin: 0;
 	overflow: hidden;
 	padding: 0;

@@ -40,9 +40,6 @@
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -90,9 +87,6 @@
 }
 /* line 64, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview:after {
-  -moz-box-shadow: 0 0 86px 59px black;
-  -webkit-box-shadow: 0 0 86px 59px black;
-  -o-box-shadow: 0 0 86px 59px black;
   box-shadow: 0 0 86px 59px black;
   content: "\0020";
   height: 1px;
@@ -101,7 +95,7 @@
   width: 100%;
 }
 
-/* line 76, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 75, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator,
 .guide-overlay-context-title {
   white-space: nowrap;
@@ -117,7 +111,7 @@
   z-index: 1;
 }
 
-/* line 87, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 86, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
   background-color: #27292a;
@@ -127,9 +121,6 @@
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -144,7 +135,7 @@
   z-index: 1;
 }
 
-/* line 96, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 95, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-button-highlighted {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -153,9 +144,6 @@
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   box-shadow: inset 0px 1px 0px 0px #85ca7d;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -165,23 +153,23 @@
   padding: 6px 13px;
 }
 
-/* line 100, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 99, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator {
   font-size: 12px;
   margin-bottom: 3px;
 }
 
-/* line 106, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 105, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-title {
   font-size: 14px;
 }
 
-/* line 111, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 110, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 115, ../../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 114, ../../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);

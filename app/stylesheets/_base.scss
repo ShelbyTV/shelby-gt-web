@@ -206,7 +206,7 @@ $bottom-color: #4e5354 !default;
 }
 
 @mixin box-highlight($primer-color, $highlight-amount) { //ref: x-button-primer, preferences-networks
-	@include box-shadow(inset 0px 1px 0px 0px adjust-lightness($primer-color, $highlight-amount));
+	box-shadow: inset 0px 1px 0px 0px adjust-lightness($primer-color, $highlight-amount);
 }
 
 @mixin x-form-label-primer {
@@ -222,9 +222,9 @@ $bottom-color: #4e5354 !default;
 //this comment overlay mixin will probably be obsolete soon.
 @mixin x-comment-overlay-buttons {
 	@extend .notype;
-	@include box-shadow(inset 0px 0px 1px 0px #333);
 
-	border: none;
+  border: none;
+	box-shadow: inset 0px 0px 1px 0px #333;
 	height: inherit;
 	position: absolute;
 	top: 0;
@@ -239,12 +239,11 @@ $bottom-color: #4e5354 !default;
 @mixin x-tab-primer($primer-color){
 	background-color: $primer-color;
 	@include background(linear-gradient(top, adjust-lightness($primer-color, 10%), $primer-color));
-//	@include box-highlight($primer-color);
-	@include box-shadow(inset 0 1px 1px 0 adjust-lightness($primer-color, 15%));
-	@include buttonfont;
-	@include text-shadow(0px -1px 0px #000);
+  @include buttonfont;
+  @include text-shadow(0px -1px 0px #000);
 
-	border: 1px solid adjust-lightness($primer-color,-20%);
+  border: 1px solid adjust-lightness($primer-color,-20%);
+	box-shadow: inset 0 1px 1px 0 adjust-lightness($primer-color, 15%);
 	color: $button-color;
 	float: left;
 	height: 27px;
@@ -294,12 +293,12 @@ $button-image-url : '' !default;
 			background-color: $primer-color;
       
 			@include background(linear-gradient(left top, adjust-lightness($primer-color,10%), $primer-color));
-      @include box-shadow(inset 1px 0 0 adjust-lightness($primer-color, 20%));
       @include rotate($default-rotate);
 
       border-bottom: 1px solid adjust-lightness($primer-color,-20%);
       border-left: 1px solid adjust-lightness($primer-color,-20%);
-			border-radius: 1px 0 0 4px;
+      border-radius: 1px 0 0 4px;
+      box-shadow: inset 1px 0 0 adjust-lightness($primer-color, 20%);
 			content: "\0020";
 			display: block;
 			height: 18px;

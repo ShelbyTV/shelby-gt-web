@@ -55,11 +55,8 @@
 
 /* line 45, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
-  -moz-box-shadow: inset 0px 0px 1px 0px #333333;
-  -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
-  -o-box-shadow: inset 0px 0px 1px 0px #333333;
-  box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
+  box-shadow: inset 0px 0px 1px 0px #333;
   height: inherit;
   position: absolute;
   top: 0;
@@ -76,11 +73,8 @@
 
 /* line 53, ../../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
-  -moz-box-shadow: inset 0px 0px 1px 0px #333333;
-  -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
-  -o-box-shadow: inset 0px 0px 1px 0px #333333;
-  box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
+  box-shadow: inset 0px 0px 1px 0px #333;
   height: inherit;
   position: absolute;
   top: 0;

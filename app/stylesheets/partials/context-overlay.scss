@@ -19,9 +19,8 @@
 	position: relative;
 
 	.video-card {
-		@include box-shadow(inset 0px 1px 0px 0px $outset);
-
 		background-color: $guide-bg-color;
+		box-shadow: inset 0px 1px 0px 0px $outset;
 		margin: 10px;
 	}
 

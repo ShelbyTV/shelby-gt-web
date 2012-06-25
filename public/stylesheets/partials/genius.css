@@ -99,13 +99,10 @@
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: 0 0 0 1px #0071a3;
-  -webkit-box-shadow: 0 0 0 1px #0071a3;
-  -o-box-shadow: 0 0 0 1px #0071a3;
-  box-shadow: 0 0 0 1px #0071a3;
   text-shadow: 0px 1px 2px #222222;
   border: none;
   border-radius: 5px;
+  box-shadow: 0 0 0 1px #0071a3;
   color: #efefef;
   display: block;
   font-size: 13px;
@@ -113,19 +110,15 @@
   padding: 7px 19px;
   width: 17%;
 }
-/* line 106, ../../../app/stylesheets/partials/genius.scss */
+/* line 107, ../../../app/stylesheets/partials/genius.scss */
 .genius-search-submit.disabled, .genius-search-submit[disabled] {
-  background: #27292a;
-  background: url("../images/assets/noise.png"), #27292a;
-  -moz-box-shadow: 0 0 0 1px #27292a;
-  -webkit-box-shadow: 0 0 0 1px #27292a;
-  -o-box-shadow: 0 0 0 1px #27292a;
-  box-shadow: 0 0 0 1px #27292a;
   text-shadow: 0px 1px 2px black;
+  background: #27292a;
+  box-shadow: 0 0 0 1px #27292a;
   color: gray;
 }
 
-/* line 118, ../../../app/stylesheets/partials/genius.scss */
+/* line 116, ../../../app/stylesheets/partials/genius.scss */
 .genius-search-spinner {
   height: 30px;
   width: 30px;

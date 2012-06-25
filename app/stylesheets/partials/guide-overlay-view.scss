@@ -62,8 +62,7 @@
   width: 100%;
   
   &:after {
-    @include box-shadow(0 0 86px 59px black);
-
+    box-shadow: 0 0 86px 59px black;
     content: "\0020";
     height: 1px;
     margin-top: 10px;
