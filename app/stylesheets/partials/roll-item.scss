@@ -15,12 +15,39 @@
 }
 
 .roll-item-lining {
-		border-bottom: 1px solid $inset;
-		border-top: 1px solid $outset;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: 1px solid $inset;
+	border-top: 1px solid $outset;
+	overflow: hidden;
 }
 
-.roll-item-header {
+.roll-item-button {
+	height: 150px;
+	position: relative;
+	z-index: 1;
+ 
+  &:after {
+    @include box-shadow(0 0 86px 70px black);
+
+    bottom: -2px;
+    content: "\0020";
+    height: 1px;
+    margin-top: 10px;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.roll-item-container {
+	bottom: 0;
+	left: 0;
+	margin-bottom: 10px;
 	padding: 0; 
+	position: absolute;
+	width: 100%;
+	z-index: 1;
 
 	a {
 		text-decoration: none;
@@ -76,6 +103,7 @@
 	line-height: 2;
 	margin: 0 3px;
 	text-align: center;
+
 	&:after {
 		background: url($icon-chevron-right) no-repeat center center transparent;
 		content: "\0020";
@@ -85,9 +113,13 @@
 	}
 }
 
+.roll-item-thumbnail {
+
+}
+
 .roll-item-contents {
 	height: inherit;
-margin-right: 46px;
+	margin-right: 46px;
 }
 
 .roll-item-contents-list {
@@ -125,33 +157,3 @@ margin-right: 46px;
     .missing-placeholder { display: inline; }
   }
 }
-
-//.xroll-item{ 
-//	display:block;
-//	padding:0;
-//	margin:0;
-
-//	h2{
-//		display:block;
-//    float:left;
-//		font-size:14px;
-//		line-height:2.5;
-//		margin-left: 10px;
-//	}
-
-//}
-
-//.xroll-item-thumbnail{
-//	@include roundies;
-
-//	display:block;
-//	float:left;
-//	height:36px;
-//	overflow:hidden;
-//	width:36px;
-
-//	img{
-//		display:block;
-//		height:100%;
-//	}
-//}

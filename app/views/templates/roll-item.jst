@@ -6,14 +6,12 @@
     var first_frame_thumbnail = roll.get('frames').first().get('video').get('thumbnail_url');
   }
 %>
-<div class="roll-item-lining">
-  <div class="roll-item-header clearfix">
-    <a onclick="return false;" class="js-roll-item-button clearfix" href="#">
-      
-      <img class="roll-item-avatar" src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
-        
-      <% if(creator_nickname != roll_title && creator_nickname != undefined){ %>
 
+<div class="roll-item-lining" style="background-image:url(<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>);">
+  <a onclick="return false;" class="js-roll-item-button roll-item-button clearfix" href="#">
+    <img class="roll-item-thumbnail visuallyhidden" src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>" alt="Thumbnail from <%= roll_title %>" title="<%= roll_title %>">
+    <div class="roll-item-container">
+      <% if(creator_nickname != roll_title && creator_nickname != undefined){ %>
         <h1 class="roll-item-creator">
           <%= creator_nickname %>
         </h1>
@@ -21,29 +19,11 @@
         <h2 class="roll-item-title">
           <%= roll.get('title')%>
         </h2>
-
       <% } else { %>
-
         <h1 class="roll-item-people">
           <%= (creator_nickname) ? creator_nickname : roll_title %>
         </h1>
-
       <% } %>
-    </a>
-  </div>
-  <div class="roll-item-footer">
-    <div class="roll-item-stats">
-      <span class="roll-item-stats-count">
-        <%= roll.get('frame_count') %>
-      </span>
     </div>
-    <div class="roll-item-contents">
-      <ul class="roll-item-contents-list">
-        <li class="roll-item-contents-thumbnail <%= first_frame_thumbnail ? '' : 'missing' %>">
-          <div class="thumbnail" style="background: url(<%= first_frame_thumbnail %>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" />
-          <img class="missing-placeholder" src="/images/assets/missing_thumb.svg" />
-        </li>
-      </ul>
-    </div>
-  </div>
-</div><!-- eo .roll-item-lining -->
+  </a>
+</div>
