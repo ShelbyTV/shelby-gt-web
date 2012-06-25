@@ -27,9 +27,9 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
       //we use the presence of the frame_count as a handy way to know that the model has had all of its data loaded
       //from the server at least once
       showThumbnail = true;
-      if( this.model.get('frames') && this.model.get('frames').length > 0 && this.model.get('frames').first().get('video') ){
-       first_frame_thumbnail = this.model.get('frames').first().get('video').get('thumbnail_url');
-      }
+			if( this.model.get('first_frame_thumbnail_url') ){
+		    var first_frame_thumbnail = this.model.get('first_frame_thumbnail_url');
+			}
     } else {
       //if the roll model data has never been loaded from the server don't even show a thumbnail, wait
       //until a subsequent load triggers a refresh
