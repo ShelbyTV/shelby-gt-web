@@ -19,7 +19,9 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-bottom: 1px solid $inset;
+//	border-radius: 5px;
 	border-top: 1px solid $outset;
+//	margin: 5px 10px;
 	overflow: hidden;
 
 }
@@ -47,7 +49,7 @@
 	&:hover {
 		&:after {
 	    @include box-shadow(0 0 86px 70px $shelby-gray);
-//	    @include box-shadow(0 0 86px 70px adjust-lightness($shelby-blue, -15%));
+//	    @include box-shadow(0 0 86px 70px adjust-lightness($shelby-green, -25%));
 		}
   }
 }
