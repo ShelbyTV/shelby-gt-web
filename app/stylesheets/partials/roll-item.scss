@@ -21,6 +21,11 @@
 	border-bottom: 1px solid $inset;
 	border-top: 1px solid $outset;
 	overflow: hidden;
+
+}
+
+.missing-roll-thumbnail {
+	background-size: 25%;
 }
 
 .roll-item-button {
@@ -37,6 +42,13 @@
     margin-top: 10px;
     position: absolute;
     width: 100%;
+  }
+
+	&:hover {
+		&:after {
+	    @include box-shadow(0 0 86px 70px $shelby-gray);
+//	    @include box-shadow(0 0 86px 70px adjust-lightness($shelby-blue, -15%));
+		}
   }
 }
 
