@@ -161,6 +161,27 @@
   }
 }
 
+.active-list-item {
+  .roll-item-people-button {
+    background-color: $shelby-green;
+    @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
+    &:hover{
+      &:after{
+        box-shadow: 0 0 44px 16px adjust-lightness($shelby-green, -5%);
+      }
+    } 
+  }
+
+  .roll-item-title {
+    color: #fefefe;
+  }
+
+  .roll-item-total,
+  .roll-item-watched {
+    color: #444;
+  }
+}
+
 .roll-item-watched {
 
 }
