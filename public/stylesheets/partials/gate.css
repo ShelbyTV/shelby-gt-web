@@ -130,8 +130,8 @@
 }
 /* line 118, ../../../app/stylesheets/partials/gate.scss */
 .email-gate-networks .email-gate-error {
+  color: #DADADA;
   font-size: 13px;
-  font-weight: bold;
   margin-top: 10px;
 }
 
