@@ -1,0 +1,15 @@
+<% /* parent:"roll-item" */ %>
+<% 
+  var creator_nickname = roll.get('creator_nickname'),
+      roll_count       = roll.get('frame_count'),
+      roll_followers   = roll.get('following_user_count'),
+      roll_title       = roll.get('title');
+
+  if( roll.get('first_frame_thumbnail_url') ){
+    var first_frame_thumbnail = roll.get('first_frame_thumbnail_url');
+  }
+%>
+
+<div class="roll-item-lining<%= (!first_frame_thumbnail) ? ' missing-roll-thumbnail' : '' %>" style="background-image:url(<%= first_frame_thumbnail || '/images/assets/user_loggedout.svg' %>);">
+<%= creator_nickname %>
+</div>
