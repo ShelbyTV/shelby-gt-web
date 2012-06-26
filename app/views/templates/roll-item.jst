@@ -2,6 +2,7 @@
 <% 
   var creator_nickname = roll.get('creator_nickname'),
       roll_count       = roll.get('frame_count'),
+      roll_followers   = roll.get('following_user_count'),
       roll_title       = roll.get('title');
 
   if( roll.get('first_frame_thumbnail_url') ){
@@ -33,7 +34,7 @@
           <%= '' + roll_count + ' ' + ((roll_count == 1) ? 'video' : 'videos') %>
         </h3>
         <h4 class="roll-item-watched">
-          <%= '1323 watching' %>
+          <%= '' + roll_followers + ' ' + ((roll_followers == 1) ? 'follower' : 'followers') %>
         </h4>
       </div>
     </div>
