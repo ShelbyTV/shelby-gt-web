@@ -1,20 +1,48 @@
 @import "base";
+@import "compass/typography/links/unstyled-link";
 
-.seovideo-p {
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+body{
+	@include basefont;
+
+	background-color:#101010;
+	bottom:0;
+	color: #a4a4a4;
+	left:0;
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+a {
+	@include unstyled-link;
+
+	&:hover, 
+	&:visited,
+	&:active{
+		color: inherit;
+	}
+}
+
+p {
 	margin: 1px;
 }
 
 .seovideo {
-	background-color:#101010;
 	@include background(
-		url('../images/seovideo/bg.png') no-repeat center center #101010
+		url('../images/seovideo/bg.png') 0 0 repeat #101010
 	);
-	@include background-size(cover);
 }
 
 .seovideo-wrapper {
-	margin:auto;
-	width:1200px;
+	margin: 0 auto;
+	width:874px;
 }
 
 .content-wrapper {
@@ -22,89 +50,141 @@
 	margin: 0px;
 }
 
-.seovideo-wrapper.with-embed {
-	float: left;
-	margin-left: 40px;
+.seovideo-header {
+	margin:0px;
+	height:47px;
+        @include background-image(linear-gradient(#2e3132, #171819));
 }
 
-.seovideo-header{
-	margin:0px;
-	width:400px;
+.seovideo-header-contents {
+	margin:0 auto;
+	height:47px;
+	width:874px;
+}
+
+.seovideo-headerrule {
+	height: 2px;
+	width: 100%;
+	color: #303234;
+	background-color: #303234;
+	margin: 0px 0px 0px 0px;
+	border-top-color: black;
 }
 
 .seovideo-logo {
 	float: left;
-	margin: 10px 10px 18px 10px;
+	width: 100px;
+	padding-top: 13px;
 }
-
 
 .seovideo-slogan {
-	font-size: 11px;
+	font-size: 12px;
+	font-weight: 400;
+	padding-top: 20px;
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+}
+
+.seovideo-pitch {
+	height: 38px;
+	font-size: 12px;
+	font-weight: 400;
+	margin-top: 25px;
+}
+
+.seovideo-embed {
+	float: left;
+	width: 640px;
+	padding: 0px;
+	margin-top: 9px;
+}
+
+.seovideo-details {
+	font-size: 12px;
+	font-weight: 400;
 	line-height: 1.4;
-	margin-top:15px;
+	float: left;
+	width: 640px;
+	padding: 0px;
+	margin-top: 5px;
+	margin-bottom: 28px;
 }
 
-.seovideo-deets {
+.seovideo-messages {
 	float: left;
-	width: 690px;
-	background-color: rgba(25, 25, 25, .9);
-	border-radius: 15px;
-	padding: 23px 25px 23px 25px;
+	width: 640px;
 }
 
-.seovideo-tweets {
-	float: left;
-	width: 470px;
-	background-color: rgba(25, 25, 25, .9);
-	border-radius: 15px;
-	padding: 23px 25px 23px 25px;
+.seovideo-relatedvideo-header {
+	height: 28px;
 }
 
-.seovideo-sistervids {
-	float: left;
-	width: 690px;
-	background-color: rgba(25, 25, 25, .9);
-	border-radius: 15px;
-	padding: 23px 25px 23px 25px;
-	margin-top: 10px;
+.seovideo-relatedvideos {
+	width: 194px;
+	margin-top: 44px;
+	padding: 0px;
 }
 
 .seovideo-leftcol {
 	float: left;
-	width: 710px;
-	padding: 10px;
+	width: 640px;
+	padding: 0px;
 }
 
 .seovideo-rightcol {
+	font-size: 12px;
+	font-weight: 400;
 	float: right;
-	width: 490px;
-	padding: 10px;
+	width: 194px;
+	padding: 0px;
+	margin-left: 40px;
 }
 
-.seovideo-sistervid {
-	float: left;
-	width: 160px;
-	margin: 10px 20px 0px 0px;
+.seovideo-relatedvideo {
+	width: 194px;
+	margin: 0px 0px 10px 0px;
+}
+
+.seovideo-relatedvideo-title {
+	font-size: 10px;
+	font-weight: 100;
+	margin: 4px 0px 0px 0px;
+	max-height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .seovideo-message {
-	height:48px;
-	margin: 10px 0px 10px 0px;
+	margin: 10px 10px 10px 10px;
+}
+
+.seovideo-message-image {
+	float: left;
+	width: 50px;
+	padding: 0px;
+	margin: 0px;
 }
 
 .seovideo-messagenickname {
-	float: left;
-	font-weight: bold;
-	padding: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	margin-left: 60px;
+        padding-top: 2px;
 }
 
 .seovideo-messagedate {
-	color: lightgrey;
-	padding: 3px;
+	color: white;
+	font-size: 10px;
+	margin-top: 10px;
+	margin-left: 60px;
 }
 
 .seovideo-messagetext {
-	float: left;
-	padding: 5px;
-	margin-left: 7px;
+	color: white;
+	font-size: 12px;
+	margin-left: 60px;
+	margin-top: 5px;
+	line-height: 1.4;
 }

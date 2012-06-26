@@ -12,77 +12,87 @@
   <meta name="viewport" content="width=device-width">
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
-  <%= include_stylesheets :common %>
+  <%= include_stylesheets :seovideo %>
   <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
 </head>
 
 <body class="seovideo">
   <div class="content-wrapper">
     <header class="seovideo-header clearfix">
-      <div class="seovideo-logo">
-        <a href="http://shelby.tv"><img border=0px width=200px src="/images/seovideo/landing_logo.svg"></a>
-      </div>
-      <div class="seovideo-slogan">
-        An amazing way to <br> discover and enjoy videos.
+      <div class="seovideo-header-contents">
+        <div class="seovideo-logo">
+          <a href="http://shelby.tv"><img border=0px width=100px src="/images/seovideo/landing_logo.svg"></a>
+        </div>
+        <div class="seovideo-slogan">
+          <a href="http://shelby.tv">TRY THE FREE WEB APP SHELBY.TV</a>
+        </div>
       </div>
     </header>
 
+    <hr class="seovideo-headerrule">
+
     <div class="seovideo-wrapper">
+
       <div class="seovideo-leftcol">
-
-        <div class="seovideo-deets">
-          <h1>
-            Video Deets
-          </h1>
-          <br>
-          <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/<%= @provider_id %>" frameborder="0">
-          </iframe>
-          <p class="seovideo-p">Title: <%= @video_title %></p>
-          <p class="seovideo-p">Author: <%= @video_author %></p>
-          <p class="seovideo-p">Duration: <%= @video_duration %></p>
-          <p class="seovideo-p">Description: <%= @video_description %></p>
-        </div><!-- eo seovideo-deets -->
-
-        <div class="seovideo-sistervids">
-          <h1>
-            Sister Vids
-          </h1>
-
-          <% @video_sister_response_body_results.each do |video_sister| %>
-          <div class="seovideo-sistervid">
-            <img width=160 height=96 src=<%= video_sister["thumbnail_url"] %>
-            <p class="seovideo-p"><%= video_sister["title"] %></p>
-          </div>
-          <% video_sister %>
-          <% end %>
+        <div class="seovideo-pitch">
+          <a href="http://shelby.tv">This video is brought to you by Shelby.tv - try out the free web app and discover<br>all the amazing new videos your friends are sharing together.</a>
         </div>
-      </div><!-- eo seovideo-leftcol -->
 
-      <div class="seovideo-rightcol">
-        <div class="seovideo-tweets">
-          <h1>
-            Comments, Tweets, and Posts
-          </h1>
+        <div class="seovideo-embed">
+          <iframe class="youtube-player" type="text/html" width="640" height="365" src="http://www.youtube.com/embed/<%= @provider_id %>" frameborder="0">
+          </iframe>
+        </div>
+        <div class="seovideo-details">
+          <p>Title: <%= @video_title %></p>
+          <p>Author: <%= @video_author %></p>
+          <p>Description: <%= @video_description %></p>
+        </div><!-- eo seovideo-details -->
 
+        <div class="seovideo-messages">
           <% @conversations.each do |conversation| %>
             <% conversation["messages"].each do |message| %>
+              <hr class="seovideo-headerrule">
               <div class="seovideo-message">
-                <img width=48 height=48 src="<%= message["user_image_url"] %>" style="float:left">
-                <div class="seovideo-messagenickname">
-                  <%= message["nickname"] %>
+                <div class="seovideo-message-image">
+                   <img width=50 height=50 src="<%= message["user_image_url"] %>">
                 </div>
-                <div class="seovideo-messagedate">
-                  <%= message["created_at"] %>
+                <div class="seovideo-messagenickname">
+                  <% if message["origin_network"] && message["origin_network"] == "twitter" %>
+                    @<%= message["nickname"] %>
+                  <% else %>
+                    <%= message["nickname"] %>
+                  <% end %>
                 </div>
                 <div class="seovideo-messagetext">
                   <%= message["text"] %>
                 </div>
+                <div class="seovideo-messagedate">
+                  Posted <%= message["created_at"] %>
+                </div>
               </div>
             <% end %>
           <% end %>
+        </div><!-- eo seovideo-messages -->
 
-        </div><!-- eo seovideo-tweets -->
+      </div><!-- eo seovideo-leftcol -->
 
+      <div class="seovideo-rightcol">
+        <% if !@video_related_response_body_results.empty? %>
+          <div class="seovideo-relatedvideos">
+            <div class="seovideo-relatedvideo-header">
+              Related Videos
+            </div>
+            <% @video_related_response_body_results.each do |video_related| %>
+              <div class="seovideo-relatedvideo">
+                <a href="http://gt.shelby.tv/video/youtube/<%= video_related["provider_id"] %>"><img width=194 height=108 src=<%= video_related["thumbnail_url"] %> >
+                <p class="seovideo-relatedvideo-title">
+                  <%= video_related["title"] %>
+                </p>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div><!-- eo seovideo-rightcol -->
 
     </div><!-- eo seovideo-wrapper -->

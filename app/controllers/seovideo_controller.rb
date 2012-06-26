@@ -30,21 +30,23 @@ class SeovideoController < ApplicationController
 
     count = 0
     video_recommendations = @video_response_body_result["recs"]
-    @video_sister_response_body_results = []
+    @video_related_response_body_results = []
 
     # TODO: need to guarantee ordering by rec score
     video_recommendations.each do |rec|
-      video_sister_url = "#{video_api_base}/#{rec["recommended_video_id"]}"
+      video_related_url = "#{video_api_base}/#{rec["recommended_video_id"]}"
       begin
-        video_sister_response = Net::HTTP.get_response(URI.parse(video_sister_url))
+        video_related_response = Net::HTTP.get_response(URI.parse(video_related_url))
       rescue
         next
       end
-      if video_sister_response and video_sister_response.body
-        if (video_sister_response_decoded = ActiveSupport::JSON.decode(video_sister_response.body))
-          if (video_sister_response_decoded_result = video_sister_response_decoded["result"])
-            @video_sister_response_body_results.append(video_sister_response_decoded_result)
-            count += 1
+      if video_related_response and video_related_response.body
+        if (video_related_response_decoded = ActiveSupport::JSON.decode(video_related_response.body))
+          if (video_related_response_decoded_result = video_related_response_decoded["result"])
+            if (video_related_response_decoded_result["provider_name"] && video_related_response_decoded_result["provider_name"] == "youtube")
+              @video_related_response_body_results.append(video_related_response_decoded_result)
+              count += 1
+            end
           end
         end
       end

@@ -75,3 +75,5 @@ javascripts:
 stylesheets:
   common:
     - public/stylesheets/screen.css
+  seovideo:
+    - public/stylesheets/seovideo.css
