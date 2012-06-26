@@ -35,12 +35,14 @@
 
 .roll-item-button,
 .roll-item-people-button {
+  overflow: hidden;
   position: relative;
   z-index: 1; 
+
 }
 
 .roll-item-button{
-	height: 150px;
+  height: 150px;
 
   &:after {
     bottom: -2px;
@@ -52,16 +54,28 @@
     width: 100%;
   }
 
-	&:hover {
-		&:after {
-	    box-shadow: 0 0 86px 70px $shelby-gray;
-//	    box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
-		}
+  &:hover {
+    &:after {
+      box-shadow: 0 0 86px 70px $shelby-gray;
+//      box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
+    }
   }
 }
 
 .roll-item-people-button {
   padding: 0;
+
+  &:hover {
+    &:after {
+      bottom: -2px;
+      box-shadow: 0 0 44px 16px adjust-lightness($shelby-gray, 2%);
+      content: "\0020";
+      height: 1px;
+      margin-top: 10px;
+      position: absolute;
+      width: 100%;
+    }
+  }
 }
 
 .roll-item-container {
@@ -89,7 +103,9 @@
 
 .roll-item-container-column {
 	float: left;
+  position: relative;
 	width: 50%;
+  z-index: 1;
 }
 
 .roll-item-title,
@@ -138,6 +154,11 @@
   .roll-item-total {
     margin-top: 6px;
   }
+
+  .roll-item-total,
+  .roll-item-watched {
+    color: #666;
+  }
 }
 
 .roll-item-watched {
@@ -153,6 +174,10 @@
 }
 
 .roll-item-people-avatar {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   img {
     height: 100%;
   }

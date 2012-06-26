@@ -10,8 +10,8 @@
 <div class="roll-item-people-lining">
   <a onclick="return false;" class="js-roll-item-button roll-item-people-button clearfix" href="#">
     <div class="roll-item-container-column">  
-      <div class="roll-item-people-avatar">
-        <img src="<%= creator_avatar %>" alt="<%= creator_nickname %>" title="<%= creator_nickname %>'s Roll">
+      <div class="roll-item-people-avatar" role="img" style="background-image:url(<%= creator_avatar %>);">
+        <img class="visuallyhidden" src="<%= creator_avatar %>" alt="<%= creator_nickname %>" title="<%= creator_nickname %>'s Roll">
       </div>
       <h2 class="roll-item-people">
         <%= creator_nickname %>

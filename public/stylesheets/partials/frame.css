@@ -307,7 +307,7 @@
 
 /* line 269, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338389592');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -315,12 +315,12 @@
 
 /* line 279, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338389592');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 286, ../../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 291, ../../../app/stylesheets/partials/frame.scss */
