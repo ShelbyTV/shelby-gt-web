@@ -3,7 +3,7 @@
   // the API may pass us authenticated networks/services in the user model that it doesn't yet
   // support for sharing, so here we list all networks currently supported for sharing and exclude
   // the others
-  var supportedDestinations = ['twitter', 'facebook'];
+  var supportedDestinations = ['twitter', 'facebook', 'email'];
 
   libs.shelbyGT.ShareModel = libs.shelbyGT.ShelbyBaseModel.extend({
     defaults : {
@@ -38,6 +38,7 @@
         var destinations = _(authentications).chain().pluck('provider').intersection(supportedDestinations).value();
         this.set('destination', destinations);
       }
+      
     }
   });
 
