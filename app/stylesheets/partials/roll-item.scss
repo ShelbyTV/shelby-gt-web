@@ -14,27 +14,34 @@
   }
 }
 
-.roll-item-lining {
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	border-bottom: 1px solid $inset;
-//	border-radius: 5px;
-	border-top: 1px solid $outset;
-//	margin: 5px 10px;
-	overflow: hidden;
+.roll-item-lining,
+.roll-item-people-lining {
+  border-bottom: 1px solid $inset;
+  border-top: 1px solid $outset;
+}
 
+.roll-item-lining {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+//  border-radius: 5px;
+//  margin: 5px 10px;
+  overflow: hidden;
 }
 
 .missing-roll-thumbnail {
 	background-size: 25%;
 }
 
-.roll-item-button {
+.roll-item-button,
+.roll-item-people-button {
+  position: relative;
+  z-index: 1; 
+}
+
+.roll-item-button{
 	height: 150px;
-	position: relative;
-	z-index: 1;
- 
+
   &:after {
     bottom: -2px;
     box-shadow: 0 0 86px 70px black;
@@ -53,6 +60,10 @@
   }
 }
 
+.roll-item-people-button {
+  padding: 0;
+}
+
 .roll-item-container {
 	bottom: 0;
 	left: 0;
@@ -64,10 +75,12 @@
 
 	a {
 		text-decoration: none;
+
 		&:active,
 		&:visited {
 			text-decoration: none;
 		}
+
 		&:hover {
 			text-decoration: underline;
 		}
@@ -82,7 +95,6 @@
 .roll-item-title,
 .roll-item-creator {
 	@include ellipsis();
-
 }
 
 .roll-item-title { 
@@ -95,41 +107,55 @@
 }
 
 .roll-item-creator {
-	color: #999;
-	font-size: 11px;
-	font-weight: 300;
-	height: 1.9em;
-	margin-top: 4px;
-	padding: 6px 8px 0;
+  color: #999;
+  font-size: 11px;
+  font-weight: 300;
+  height: 1.9em;
+  margin-top: 4px;
+  padding: 6px 8px 0;
 }
 
 .roll-item-people {
-	@extend .roll-item-title;
+  @extend .roll-item-title;
 
-	margin-top: 12px;
+  margin-top: 12px;
 }
 
 .roll-item-total,
 .roll-item-watched {
-	font-size: 11px;
-	font-weight: 100;
-	padding-right: 8px;
-	text-align: right;
+  font-size: 11px;
+  font-weight: 100;
+  padding-right: 8px;
+  text-align: right;
 }
 
 .roll-item-total {
-	margin-top: 12px;
-	padding-bottom: 3px;
+  margin-top: 12px;
+  padding-bottom: 3px;
+}
+
+.roll-item-people-button {
+  .roll-item-total {
+    margin-top: 6px;
+  }
 }
 
 .roll-item-watched {
 
 }
 
-.roll-item-avatar {
+.roll-item-avatar,
+.roll-item-people-avatar {
 	float: left;
 	height: 40px;
+  overflow: hidden;
 	width: 40px;
+}
+
+.roll-item-people-avatar {
+  img {
+    height: 100%;
+  }
 }
 
 .roll-item-footer {
@@ -207,4 +233,12 @@
     .thumbnail { display: none; }
     .missing-placeholder { display: inline; }
   }
+}
+
+.roll-item-people-lining {
+  //see line 17 for shared styles
+}
+
+.roll-item-people-avatar {
+
 }

@@ -1,4 +1,4 @@
-libs.shelbyGT.RollItemViewPeople = libs.shelbyGT.ActiveHighlightListItemView.extend({
+libs.shelbyGT.RollItemPeopleView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel'

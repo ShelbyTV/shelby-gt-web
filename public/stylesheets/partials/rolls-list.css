@@ -10,9 +10,7 @@
 }
 /* line 14, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a {
-  cursor: pointer;
   display: block;
-  padding: 5px;
 }
 /* line 20, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {

@@ -93,7 +93,7 @@
           }
           var listItemView;
           if (this.model.get('rollListContent') == contentRollsEnum.people) {
-            listItemView = 'RollItemViewPeople';
+            listItemView = 'RollItemPeopleView';
           } else {
             listItemView = 'RollItemView';
           }
