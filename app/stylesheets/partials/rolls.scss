@@ -91,22 +91,32 @@
 /* ------ Roll Add Area */
 .add-video-area {
 	@include x-button-primer(#2c2f30);
+
 	margin: 10px 10px 0px;
 	padding: 6px;
 	display: none;
+
 	input {
-		width: 260px;
+		@include inputfont;
+		@include roundies(input);
+
+		border: none;
 		height: 25px;
-		margin-right: 5px;
-		padding: 4px;
+		left: 5px;
+		position: absolute;
+		right: 41px;
 	}
+
 	.add-video {
 		@include x-button-primer;
-		width: 28px;
+	
+		float: right;
 		height: 25px;
 		margin-top: 0;
 		padding: 4px;
+		width: 28px;
 	}
+	
 	.spinner {
 		left: auto;
 		margin-left: 0px;
@@ -115,43 +125,6 @@
 	}
 }
 
-
-/* unused
-.rolls-list-nav {
-	@extend .notype;
-
-	padding: $defaultMargin - 2 $defaultMargin;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 25%;
-}
-
-.roll-back {
-	@include x-tab-primer;	
-	@include background(
-		url('../images/assets/navarrow_left.svg') no-repeat center center,
-		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
-	);
-	border-radius: $button-radius 0 0 $button-radius;
-
-	margin-right: -1px;
-	text-align: left;
-	width: 50%;
-}
-
-.roll-next {
-	@include x-tab-primer;
-	@include background(
-		url('../images/assets/navarrow_right.svg') no-repeat center center,
-		linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color)
-	);
-	border-radius: 0 $button-radius $button-radius 0;
-
-	text-align: right;
-	width: 50%;
-}
-*/
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
 
 .share-dialog {

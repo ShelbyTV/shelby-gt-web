@@ -74,14 +74,18 @@
 }
 
 .active-list-item .video-card-header {
+	background-color: $shelby-green;
   @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
   @include border-top-radius($radius);
+
   h1, h2 {
     color: $shelby-gray;
   }
+
   h3 {
     color: adjust-lightness($shelby-gray, -10%);
   }
+
   .frame-title:before {
     content: "On Now: ";
     font-style: italic;
