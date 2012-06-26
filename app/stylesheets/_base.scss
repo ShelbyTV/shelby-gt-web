@@ -219,23 +219,6 @@ $bottom-color: #4e5354 !default;
   padding: 5px 10px 10px;
 }
 
-//this comment overlay mixin will probably be obsolete soon.
-@mixin x-comment-overlay-buttons {
-	@extend .notype;
-
-  border: none;
-	box-shadow: inset 0px 0px 1px 0px #333;
-	height: inherit;
-	position: absolute;
-	top: 0;
-	width: 24px;
-
-	&.message-terminus {
-		background-image:none;
-		cursor:default;
-	}	
-}
-
 @mixin x-tab-primer($primer-color){
 	background-color: $primer-color;
 	@include background(linear-gradient(top, adjust-lightness($primer-color, 10%), $primer-color));

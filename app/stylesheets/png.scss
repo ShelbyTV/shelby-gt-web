@@ -272,19 +272,6 @@ $softNetworksUnselected : #666;
   	}
   }
 
-  //comment-overlay
-
-  .comment-overlay-prev {
-  	@include background(
-  		url('../images/assets/comment_arrow_left.png') no-repeat center center #303030 
-  	);
-  }
-  .comment-overlay-next {
-  	@include background(
-  		url('../images/assets/comment_arrow_right.png') no-repeat center center #303030
-  	);
-  }
-
   //gate
 
   .email-gate-logo {

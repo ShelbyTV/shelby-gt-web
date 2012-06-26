@@ -1776,7 +1776,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 269, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338389592');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -1784,12 +1784,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 279, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338389592');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
 }
 
 /* line 286, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
 }
 
 /* line 291, ../../app/stylesheets/partials/frame.scss */
@@ -2207,13 +2207,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   z-index: 2;
 }
 
-/* line 19, ../../app/stylesheets/partials/video-controls.scss */
-.user-inactive .video-player-tools-wrapper,
-.user-inactive .comment-overlay-wrapper {
+/* line 18, ../../app/stylesheets/partials/video-controls.scss */
+.user-inactive .video-player-tools-wrapper {
   opacity: 0;
 }
 
-/* line 23, ../../app/stylesheets/partials/video-controls.scss */
+/* line 22, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools {
   background-color: #0e0e0e;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1b1b1b), color-stop(100%, #0e0e0e));
@@ -2244,12 +2243,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   transition-delay: 0s;
 }
 
-/* line 38, ../../app/stylesheets/partials/video-controls.scss */
+/* line 37, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools.full-width {
   margin: 10px 40px 10px 10px;
 }
 
-/* line 42, ../../app/stylesheets/partials/video-controls.scss */
+/* line 41, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-tools-inner {
   border-radius: 5px;
   margin: 0;
@@ -2258,7 +2257,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
 }
 
-/* line 50, ../../app/stylesheets/partials/video-controls.scss */
+/* line 49, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play, .video-player-volume, .video-player-fullscreen, .video-player-quality, .video-player-roll {
   border: none;
   height: 43px;
@@ -2266,12 +2265,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 47px;
   background: url("../images/assets/player_play.svg") center center no-repeat transparent;
 }
-/* line 60, ../../app/stylesheets/partials/video-controls.scss */
+/* line 59, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-play.pause, .pause.video-player-volume, .pause.video-player-fullscreen, .pause.video-player-quality, .pause.video-player-roll {
   background: url("../images/assets/player_pause.svg") center center no-repeat transparent;
 }
 
-/* line 68, ../../app/stylesheets/partials/video-controls.scss */
+/* line 67, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress {
   background: black;
   border-radius: 10px;
@@ -2282,7 +2281,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: absolute;
 }
 
-/* line 78, ../../app/stylesheets/partials/video-controls.scss */
+/* line 77, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-load, .video-player-progress-elapsed {
   background: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3d3d3d), color-stop(100%, #303030));
@@ -2296,13 +2295,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 0;
 }
 
-/* line 87, ../../app/stylesheets/partials/video-controls.scss */
+/* line 86, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0071a3;
   margin-top: -8px;
 }
 
-/* line 94, ../../app/stylesheets/partials/video-controls.scss */
+/* line 93, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   background: #efefef;
   border-radius: 50%;
@@ -2316,7 +2315,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 15px;
 }
 
-/* line 107, ../../app/stylesheets/partials/video-controls.scss */
+/* line 106, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -2326,44 +2325,44 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 15px;
 }
 
-/* line 116, ../../app/stylesheets/partials/video-controls.scss */
+/* line 115, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 124, ../../app/stylesheets/partials/video-controls.scss */
+/* line 123, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 131, ../../app/stylesheets/partials/video-controls.scss */
+/* line 130, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 141, ../../app/stylesheets/partials/video-controls.scss */
+/* line 140, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 149, ../../app/stylesheets/partials/video-controls.scss */
+/* line 148, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 156, ../../app/stylesheets/partials/video-controls.scss */
+/* line 155, ../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 162, ../../app/stylesheets/partials/video-controls.scss */
+/* line 161, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 173, ../../app/stylesheets/partials/video-controls.scss */
+/* line 172, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -2385,7 +2384,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   left: 20px;
   opacity: 1.0;
 }
-/* line 187, ../../app/stylesheets/partials/video-controls.scss */
+/* line 186, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -2407,11 +2406,11 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-right: 330px;
   right: 20px;
 }
-/* line 200, ../../app/stylesheets/partials/video-controls.scss */
+/* line 199, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 205, ../../app/stylesheets/partials/video-controls.scss */
+/* line 204, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -2422,7 +2421,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 40px;
   z-index: 2;
 }
-/* line 215, ../../app/stylesheets/partials/video-controls.scss */
+/* line 214, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -2735,7 +2734,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -3208,7 +3207,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   float: right;
 }
 
-/* line 348, ../../app/stylesheets/_base.scss */
+/* line 331, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   border-radius: 3px;
@@ -3502,7 +3501,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-left: 0;
 }
 
-/* line 334, ../../app/stylesheets/_base.scss */
+/* line 317, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -4025,97 +4024,6 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 6px 13px;
   margin: 10px auto;
   width: 110px;
-}
-
-/* line 3, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-wrapper {
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  -moz-transition-delay: 0s;
-  -webkit-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-  background: transparent;
-  font-size: 12px;
-  left: 10px;
-  line-height: 1.4;
-  padding-right: 360px;
-  position: absolute;
-  top: 10px;
-  width: 100%;
-  z-index: 2;
-}
-/* line 19, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-wrapper .user {
-  background-color: #303030;
-  height: inherit;
-  margin-left: 25px;
-  margin-right: 25px;
-  max-width: 500px;
-  overflow-y: hidden;
-}
-/* line 28, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-wrapper .user-vcard {
-  border: none;
-}
-/* line 32, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-wrapper .user-video-text p {
-  max-height: 2.5em;
-  overflow: hidden;
-}
-
-/* line 38, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-lining {
-  display: none;
-  height: 67px;
-  max-width: 550px;
-  position: relative;
-}
-
-/* line 45, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-prev {
-  border: none;
-  box-shadow: inset 0px 0px 1px 0px #333;
-  height: inherit;
-  position: absolute;
-  top: 0;
-  width: 24px;
-  background: url("../images/assets/comment_arrow_left.svg") no-repeat center center #303030;
-  border-radius: 5px 0 0 5px;
-  left: 0;
-}
-/* line 233, ../../app/stylesheets/_base.scss */
-.comment-overlay-prev.message-terminus {
-  background-image: none;
-  cursor: default;
-}
-
-/* line 53, ../../app/stylesheets/partials/comment-overlay.scss */
-.comment-overlay-next {
-  border: none;
-  box-shadow: inset 0px 0px 1px 0px #333;
-  height: inherit;
-  position: absolute;
-  top: 0;
-  width: 24px;
-  background: url("../images/assets/comment_arrow_right.svg") no-repeat center center #303030;
-  border-radius: 0 5px 5px 0;
-  right: 0;
-}
-/* line 233, ../../app/stylesheets/_base.scss */
-.comment-overlay-next.message-terminus {
-  background-image: none;
-  cursor: default;
 }
 
 /* line 3, ../../app/stylesheets/partials/context-overlay.scss */
@@ -4696,7 +4604,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .notype, .guide-presentation-stream, .frame-controls-roll button, .frame-controls-share button, .networks-twitter button,
-.networks-facebook button, .comment-overlay-prev, .comment-overlay-next {
+.networks-facebook button {
   color: transparent;
   font: 0/0 a;
   overflow: hidden;
