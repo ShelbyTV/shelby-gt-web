@@ -122,12 +122,9 @@
 
 /* line 94, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
-  -moz-box-shadow: 1px 0px 2px 1px black;
-  -webkit-box-shadow: 1px 0px 2px 1px black;
-  -o-box-shadow: 1px 0px 2px 1px black;
-  box-shadow: 1px 0px 2px 1px black;
   background: #efefef;
   border-radius: 50%;
+  box-shadow: 1px 0px 2px 1px black;
   cursor: pointer;
   cursor: ew-resize;
   height: 15px;
@@ -137,7 +134,7 @@
   width: 15px;
 }
 
-/* line 108, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 107, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -147,44 +144,44 @@
   margin: 0 15px;
 }
 
-/* line 117, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 116, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 125, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 124, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 132, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 131, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 142, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 141, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 150, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 149, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 157, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 156, ../../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 163, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 162, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 174, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 173, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -206,7 +203,7 @@
   left: 20px;
   opacity: 1.0;
 }
-/* line 188, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 187, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -228,11 +225,11 @@
   margin-right: 330px;
   right: 20px;
 }
-/* line 201, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 200, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 206, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 205, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -243,7 +240,7 @@
   width: 40px;
   z-index: 2;
 }
-/* line 216, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 215, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;

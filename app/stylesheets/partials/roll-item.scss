@@ -15,12 +15,52 @@
 }
 
 .roll-item-lining {
-		border-bottom: 1px solid $inset;
-		border-top: 1px solid $outset;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: 1px solid $inset;
+//	border-radius: 5px;
+	border-top: 1px solid $outset;
+//	margin: 5px 10px;
+	overflow: hidden;
+
 }
 
-.roll-item-header {
+.missing-roll-thumbnail {
+	background-size: 25%;
+}
+
+.roll-item-button {
+	height: 150px;
+	position: relative;
+	z-index: 1;
+ 
+  &:after {
+    bottom: -2px;
+    box-shadow: 0 0 86px 70px black;
+    content: "\0020";
+    height: 1px;
+    margin-top: 10px;
+    position: absolute;
+    width: 100%;
+  }
+
+	&:hover {
+		&:after {
+	    box-shadow: 0 0 86px 70px $shelby-gray;
+//	    box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
+		}
+  }
+}
+
+.roll-item-container {
+	bottom: 0;
+	left: 0;
+	margin-bottom: 10px;
 	padding: 0; 
+	position: absolute;
+	width: 100%;
+	z-index: 1;
 
 	a {
 		text-decoration: none;
@@ -34,18 +74,56 @@
 	}
 }
 
+.roll-item-container-column {
+	float: left;
+	width: 50%;
+}
+
+.roll-item-title,
+.roll-item-creator {
+	@include ellipsis();
+
+}
+
 .roll-item-title { 
-	@extend .frame-title;
+	clear: right; 
+	color: #bfbfbf;
+  font-size: 13px;
+  height: 19px;
+  line-height: 17px;
+  padding: 0 8px 0;
 }
 
 .roll-item-creator {
-	@extend .frame-creator-roll;
+	color: #999;
+	font-size: 11px;
+	font-weight: 300;
+	height: 1.9em;
+	margin-top: 4px;
+	padding: 6px 8px 0;
 }
 
 .roll-item-people {
 	@extend .roll-item-title;
 
 	margin-top: 12px;
+}
+
+.roll-item-total,
+.roll-item-watched {
+	font-size: 11px;
+	font-weight: 100;
+	padding-right: 8px;
+	text-align: right;
+}
+
+.roll-item-total {
+	margin-top: 12px;
+	padding-bottom: 3px;
+}
+
+.roll-item-watched {
+
 }
 
 .roll-item-avatar {
@@ -76,6 +154,7 @@
 	line-height: 2;
 	margin: 0 3px;
 	text-align: center;
+
 	&:after {
 		background: url($icon-chevron-right) no-repeat center center transparent;
 		content: "\0020";
@@ -85,9 +164,13 @@
 	}
 }
 
+.roll-item-thumbnail {
+
+}
+
 .roll-item-contents {
 	height: inherit;
-margin-right: 46px;
+	margin-right: 46px;
 }
 
 .roll-item-contents-list {
@@ -125,33 +208,3 @@ margin-right: 46px;
     .missing-placeholder { display: inline; }
   }
 }
-
-//.xroll-item{ 
-//	display:block;
-//	padding:0;
-//	margin:0;
-
-//	h2{
-//		display:block;
-//    float:left;
-//		font-size:14px;
-//		line-height:2.5;
-//		margin-left: 10px;
-//	}
-
-//}
-
-//.xroll-item-thumbnail{
-//	@include roundies;
-
-//	display:block;
-//	float:left;
-//	height:36px;
-//	overflow:hidden;
-//	width:36px;
-
-//	img{
-//		display:block;
-//		height:100%;
-//	}
-//}

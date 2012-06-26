@@ -129,9 +129,6 @@
   background: -ms-linear-gradient(top, #05c7ff, #00a2d1);
   background: linear-gradient(top, #05c7ff, #00a2d1);
   border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -171,9 +168,6 @@
   background: -ms-linear-gradient(top, #0157b3, #013e80);
   background: linear-gradient(top, #0157b3, #013e80);
   border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #037bfd;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #037bfd;
-  -o-box-shadow: inset 0px 1px 0px 0px #037bfd;
   box-shadow: inset 0px 1px 0px 0px #037bfd;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;

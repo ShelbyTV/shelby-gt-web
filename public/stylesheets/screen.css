@@ -505,17 +505,14 @@ a:hover, a:visited, a:active {
 
 /* line 102, ../../app/stylesheets/partials/app.html.scss */
 .menu {
-  -moz-box-shadow: 0 1px 4px 0px #101010;
-  -webkit-box-shadow: 0 1px 4px 0px #101010;
-  -o-box-shadow: 0 1px 4px 0px #101010;
-  box-shadow: 0 1px 4px 0px #101010;
   background-color: #35383a;
   border-bottom: 1px solid #222;
+  box-shadow: 0 1px 4px 0px #101010;
   position: relative;
   overflow: hidden;
 }
 
-/* line 111, ../../app/stylesheets/partials/app.html.scss */
+/* line 110, ../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;
@@ -627,63 +624,60 @@ a:hover, a:visited, a:active {
 
 /* line 104, ../../app/stylesheets/partials/guide-header.scss */
 .subnav {
-  -moz-box-shadow: 0px 0px 5px 2px #222222;
-  -webkit-box-shadow: 0px 0px 5px 2px #222222;
-  -o-box-shadow: 0px 0px 5px 2px #222222;
-  box-shadow: 0px 0px 5px 2px #222222;
   background: #232526;
   border-bottom: 1px solid #222;
   border-left: 1px solid #222;
   border-right: 1px solid #222;
   border-top: 0px solid transparent;
+  box-shadow: 0px 0px 5px 2px #222;
   display: none;
   position: absolute;
   width: 92px;
   z-index: 1;
 }
 
-/* line 118, ../../app/stylesheets/partials/guide-header.scss */
+/* line 117, ../../app/stylesheets/partials/guide-header.scss */
 .profile {
   padding-right: 10px;
   width: 85px;
 }
-/* line 124, ../../app/stylesheets/partials/guide-header.scss */
+/* line 123, ../../app/stylesheets/partials/guide-header.scss */
 .profile:hover {
   text-decoration: underline;
 }
 
-/* line 129, ../../app/stylesheets/partials/guide-header.scss */
+/* line 128, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav, .about-subnav {
   left: -94px;
   width: 174px;
 }
-/* line 133, ../../app/stylesheets/partials/guide-header.scss */
+/* line 132, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button, .about-subnav button {
   width: 100%;
 }
-/* line 135, ../../app/stylesheets/partials/guide-header.scss */
+/* line 134, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav button:hover, .about-subnav button:hover {
   text-decoration: none;
 }
 
-/* line 141, ../../app/stylesheets/partials/guide-header.scss */
+/* line 140, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav {
   left: 0;
   width: 92px;
 }
-/* line 147, ../../app/stylesheets/partials/guide-header.scss */
+/* line 146, ../../app/stylesheets/partials/guide-header.scss */
 .about-subnav button:hover {
   text-decoration: underline;
 }
 
-/* line 152, ../../app/stylesheets/partials/guide-header.scss */
+/* line 151, ../../app/stylesheets/partials/guide-header.scss */
 .profile-subnav-userhandle {
   color: #333;
   background: #ddd;
   border-bottom: 1px solid #efefef;
 }
 
-/* line 160, ../../app/stylesheets/partials/guide-header.scss */
+/* line 159, ../../app/stylesheets/partials/guide-header.scss */
 .you:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2216px%22%20height%3D%2217px%22%20viewBox%3D%220%200%2016%2017%22%20enable-background%3D%22new%200%200%2016%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23AEADAE%22%20d%3D%22M14.503%2C8.003l-0.032-0.649c0.502-0.214%2C0.998-0.47%2C1.485-0.765c-0.039-0.306-0.138-0.6-0.21-0.899%0A%09c-0.574-0.078-1.157-0.104-1.711-0.088c-0.073-0.204-0.183-0.394-0.271-0.59c-0.099-0.193-0.222-0.373-0.33-0.559%0A%09c0.351-0.43%2C0.664-0.882%2C0.96-1.371c-0.177-0.253-0.402-0.465-0.604-0.696c-0.545%2C0.199-1.071%2C0.446-1.556%2C0.717%0A%09c-0.161-0.145-0.344-0.264-0.515-0.397c-0.177-0.124-0.368-0.229-0.552-0.343c0.112-0.541%2C0.181-1.089%2C0.216-1.659%0A%09c-0.273-0.142-0.573-0.227-0.86-0.337C10.133%2C0.795%2C9.781%2C1.26%2C9.48%2C1.726c-0.21-0.056-0.428-0.072-0.641-0.11%0A%09C8.625%2C1.581%2C8.407%2C1.587%2C8.191%2C1.571C8.038%2C1.026%2C7.845%2C0.522%2C7.611%2C0C7.305%2C0.006%2C7%2C0.054%2C6.696%2C0.103%0A%09c-0.15%2C0.55-0.245%2C1.129-0.294%2C1.686C6.188%2C1.835%2C5.986%2C1.912%2C5.783%2C1.988C5.576%2C2.055%2C5.383%2C2.155%2C5.188%2C2.249%0A%09C4.801%2C1.842%2C4.387%2C1.472%2C3.941%2C1.127C3.673%2C1.28%2C3.421%2C1.457%2C3.179%2C1.646c0.126%2C0.557%2C0.31%2C1.11%2C0.525%2C1.629%0A%09c-0.166%2C0.14-0.31%2C0.301-0.455%2C0.463C3.097%2C3.893%2C2.974%2C4.072%2C2.844%2C4.245C2.312%2C4.063%2C1.775%2C3.929%2C1.22%2C3.829%0A%09C1.052%2C4.087%2C0.914%2C4.362%2C0.785%2C4.643c0.368%2C0.435%2C0.79%2C0.841%2C1.221%2C1.199C1.923%2C6.043%2C1.871%2C6.253%2C1.818%2C6.463%0A%09c-0.062%2C0.208-0.09%2C0.423-0.122%2C0.638C1.142%2C7.189%2C0.597%2C7.319%2C0.064%2C7.49C0.043%2C7.796%2C0.034%2C8.103%2C0.059%2C8.41%0A%09c0.537%2C0.213%2C1.077%2C0.379%2C1.637%2C0.495c0.032%2C0.214%2C0.06%2C0.43%2C0.122%2C0.637c0.053%2C0.211%2C0.105%2C0.422%2C0.188%2C0.622%0A%09c-0.437%2C0.33-0.88%2C0.707-1.268%2C1.104c0.135%2C0.276%2C0.258%2C0.562%2C0.426%2C0.818c0.58-0.063%2C1.129-0.165%2C1.68-0.325%0A%09c0.13%2C0.173%2C0.253%2C0.353%2C0.406%2C0.507c0.145%2C0.161%2C0.289%2C0.324%2C0.455%2C0.465c-0.234%2C0.495-0.45%2C1.031-0.611%2C1.563%0A%09c0.247%2C0.185%2C0.488%2C0.376%2C0.756%2C0.528c0.483-0.324%2C0.925-0.671%2C1.338-1.066c0.195%2C0.093%2C0.388%2C0.194%2C0.595%2C0.26%0A%09c0.203%2C0.076%2C0.406%2C0.153%2C0.619%2C0.199c0.023%2C0.547%2C0.083%2C1.124%2C0.188%2C1.67C6.895%2C15.93%2C7.198%2C15.995%2C7.505%2C16%0A%09c0.275-0.52%2C0.505-1.021%2C0.687-1.564c0.216-0.016%2C0.434-0.011%2C0.648-0.045c0.213-0.038%2C0.431-0.054%2C0.641-0.11%0A%09c0.273%2C0.475%2C0.588%2C0.94%2C0.941%2C1.393c0.29-0.101%2C0.584-0.2%2C0.865-0.324c0.004-0.589-0.033-1.152-0.119-1.706%0A%09c0.184-0.114%2C0.375-0.219%2C0.552-0.344c0.171-0.132%2C0.354-0.251%2C0.515-0.396c0.465%2C0.292%2C0.959%2C0.557%2C1.481%2C0.794%0A%09c0.209-0.226%2C0.424-0.446%2C0.614-0.688c-0.271-0.522-0.562-1.004-0.896-1.456c0.108-0.188%2C0.231-0.366%2C0.33-0.561%0A%09c0.089-0.196%2C0.198-0.386%2C0.271-0.588c0.547%2C0.042%2C1.108%2C0.047%2C1.681%2C0.013c0.081-0.296%2C0.166-0.594%2C0.225-0.896%0A%09c-0.481-0.338-0.972-0.627-1.47-0.87L14.503%2C8.003z%20M8.001%2C10.472c-1.366%2C0-2.472-1.106-2.472-2.471%0A%09c0-1.365%2C1.106-2.472%2C2.472-2.472c1.364%2C0%2C2.472%2C1.106%2C2.472%2C2.472C10.473%2C9.365%2C9.365%2C10.472%2C8.001%2C10.472z%22/%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -692,7 +686,7 @@ a:hover, a:visited, a:active {
   margin-top: -4px;
   width: 20px;
 }
-/* line 169, ../../app/stylesheets/partials/guide-header.scss */
+/* line 168, ../../app/stylesheets/partials/guide-header.scss */
 .you span {
   border-radius: 5px;
   display: block;
@@ -701,7 +695,7 @@ a:hover, a:visited, a:active {
   margin-right: 5px;
   width: 24px;
 }
-/* line 179, ../../app/stylesheets/partials/guide-header.scss */
+/* line 178, ../../app/stylesheets/partials/guide-header.scss */
 .you img {
   width: 100%;
 }
@@ -715,13 +709,10 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0 1px 1px 0 #4c5052;
-  -webkit-box-shadow: inset 0 1px 1px 0 #4c5052;
-  -o-box-shadow: inset 0 1px 1px 0 #4c5052;
-  box-shadow: inset 0 1px 1px 0 #4c5052;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px black;
   border: 1px solid black;
+  box-shadow: inset 0 1px 1px 0 #4c5052;
   color: #efefef;
   float: left;
   height: 27px;
@@ -757,13 +748,10 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0 1px 1px 0 #4c5052;
-  -webkit-box-shadow: inset 0 1px 1px 0 #4c5052;
-  -o-box-shadow: inset 0 1px 1px 0 #4c5052;
-  box-shadow: inset 0 1px 1px 0 #4c5052;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px black;
   border: 1px solid black;
+  box-shadow: inset 0 1px 1px 0 #4c5052;
   color: #efefef;
   float: left;
   height: 27px;
@@ -791,9 +779,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #2b2b2b, #111111);
   background: -ms-linear-gradient(top, #2b2b2b, #111111);
   background: linear-gradient(top, #2b2b2b, #111111);
-  -moz-box-shadow: inset 0 1px 1px 0 #161616;
-  -webkit-box-shadow: inset 0 1px 1px 0 #161616;
-  -o-box-shadow: inset 0 1px 1px 0 #161616;
   box-shadow: inset 0 1px 1px 0 #161616;
 }
 /* line 56, ../../app/stylesheets/partials/guide-presentation-selector.scss */
@@ -804,9 +789,6 @@ a:hover, a:visited, a:active {
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -o-linear-gradient(top, #2b2b2b, #111111);
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -ms-linear-gradient(top, #2b2b2b, #111111);
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, linear-gradient(top, #2b2b2b, #111111);
-  -moz-box-shadow: inset 0 1px 1px 0 #161616;
-  -webkit-box-shadow: inset 0 1px 1px 0 #161616;
-  -o-box-shadow: inset 0 1px 1px 0 #161616;
   box-shadow: inset 0 1px 1px 0 #161616;
 }
 
@@ -852,9 +834,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -902,9 +881,6 @@ a:hover, a:visited, a:active {
 }
 /* line 64, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-overview:after {
-  -moz-box-shadow: 0 0 86px 59px black;
-  -webkit-box-shadow: 0 0 86px 59px black;
-  -o-box-shadow: 0 0 86px 59px black;
   box-shadow: 0 0 86px 59px black;
   content: "\0020";
   height: 1px;
@@ -913,7 +889,7 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 76, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 75, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator,
 .guide-overlay-context-title {
   white-space: nowrap;
@@ -929,7 +905,7 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 87, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 86, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
   background-color: #27292a;
@@ -939,9 +915,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -956,7 +929,7 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 96, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 95, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-button-highlighted {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -965,9 +938,6 @@ a:hover, a:visited, a:active {
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   box-shadow: inset 0px 1px 0px 0px #85ca7d;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -977,23 +947,23 @@ a:hover, a:visited, a:active {
   padding: 6px 13px;
 }
 
-/* line 100, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 99, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator {
   font-size: 12px;
   margin-bottom: 3px;
 }
 
-/* line 106, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 105, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-title {
   font-size: 14px;
 }
 
-/* line 111, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 110, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 115, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 114, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -1029,15 +999,12 @@ a:hover, a:visited, a:active {
   -webkit-transition-delay: 0.1s;
   -o-transition-delay: 0.1s;
   transition-delay: 0.1s;
-  -moz-box-shadow: 2px 2px 5px 0px #333333;
-  -webkit-box-shadow: 2px 2px 5px 0px #333333;
-  -o-box-shadow: 2px 2px 5px 0px #333333;
-  box-shadow: 2px 2px 5px 0px #333333;
   background-color: #0e0e0e;
   bottom: 0;
   border: 1px solid #202020;
   border-right: none;
   border-radius: 5px 0 0 5px;
+  box-shadow: 2px 2px 5px 0px #333;
   cursor: pointer;
   height: 45px;
   overflow: hidden;
@@ -1153,11 +1120,8 @@ a:hover, a:visited, a:active {
 
 /* line 91, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  -o-box-shadow: none;
-  box-shadow: none;
   border: none;
+  box-shadow: none;
   right: -35px;
 }
 
@@ -1239,46 +1203,133 @@ a:hover, a:visited, a:active {
 
 /* line 17, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-lining {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
+  overflow: hidden;
 }
 
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-header {
+/* line 29, ../../app/stylesheets/partials/roll-item.scss */
+.missing-roll-thumbnail {
+  background-size: 25%;
+}
+
+/* line 33, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-button {
+  height: 150px;
+  position: relative;
+  z-index: 1;
+}
+/* line 38, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-button:after {
+  bottom: -2px;
+  box-shadow: 0 0 86px 70px black;
+  content: "\0020";
+  height: 1px;
+  margin-top: 10px;
+  position: absolute;
+  width: 100%;
+}
+/* line 49, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-button:hover:after {
+  box-shadow: 0 0 86px 70px #27292a;
+}
+
+/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-container {
+  bottom: 0;
+  left: 0;
+  margin-bottom: 10px;
   padding: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
-/* line 25, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-header a {
+/* line 65, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-container a {
   text-decoration: none;
 }
-/* line 28, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-header a:active, .roll-item-header a:visited {
+/* line 68, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-container a:active, .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-header a:hover {
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-container a:hover {
   text-decoration: underline;
 }
 
-/* line 45, ../../app/stylesheets/partials/roll-item.scss */
+/* line 77, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-container-column {
+  float: left;
+  width: 50%;
+}
+
+/* line 83, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title, .roll-item-people,
+.roll-item-creator {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+/* line 88, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title, .roll-item-people {
+  clear: right;
+  color: #bfbfbf;
+  font-size: 13px;
+  height: 19px;
+  line-height: 17px;
+  padding: 0 8px 0;
+}
+
+/* line 97, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-creator {
+  color: #999;
+  font-size: 11px;
+  font-weight: 300;
+  height: 1.9em;
+  margin-top: 4px;
+  padding: 6px 8px 0;
+}
+
+/* line 106, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-people {
   margin-top: 12px;
 }
 
-/* line 51, ../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-total,
+.roll-item-watched {
+  font-size: 11px;
+  font-weight: 100;
+  padding-right: 8px;
+  text-align: right;
+}
+
+/* line 120, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-total {
+  margin-top: 12px;
+  padding-bottom: 3px;
+}
+
+/* line 129, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-avatar {
   float: left;
   height: 40px;
   width: 40px;
 }
 
-/* line 57, ../../app/stylesheets/partials/roll-item.scss */
+/* line 135, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
 
-/* line 62, ../../app/stylesheets/partials/roll-item.scss */
+/* line 140, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1293,7 +1344,7 @@ a:hover, a:visited, a:active {
   width: 46px;
 }
 
-/* line 70, ../../app/stylesheets/partials/roll-item.scss */
+/* line 148, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1304,7 +1355,7 @@ a:hover, a:visited, a:active {
   margin: 0 3px;
   text-align: center;
 }
-/* line 79, ../../app/stylesheets/partials/roll-item.scss */
+/* line 158, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -1313,13 +1364,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 88, ../../app/stylesheets/partials/roll-item.scss */
+/* line 171, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
 
-/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+/* line 176, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-list {
   height: inherit;
   margin: 0;
@@ -1327,7 +1378,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 100, ../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1339,27 +1390,27 @@ a:hover, a:visited, a:active {
   right: 0;
   top: 0;
 }
-/* line 111, ../../app/stylesheets/partials/roll-item.scss */
+/* line 194, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 116, ../../app/stylesheets/partials/roll-item.scss */
+/* line 199, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 122, ../../app/stylesheets/partials/roll-item.scss */
+/* line 205, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 124, ../../app/stylesheets/partials/roll-item.scss */
+/* line 207, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 125, ../../app/stylesheets/partials/roll-item.scss */
+/* line 208, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -1408,11 +1459,11 @@ body.isolated-roll .context-overlay-lining .frame-locator {
   display: none;
 }
 /* line 41, ../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .context-overlay-lining .frame-creator-roll, body.isolated-roll .context-overlay-lining .roll-item-creator {
+body.isolated-roll .context-overlay-lining .frame-creator-roll {
   width: inherit;
 }
 /* line 45, ../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .context-overlay-lining .roll-item-title, body.isolated-roll .context-overlay-lining .roll-item-people {
+body.isolated-roll .context-overlay-lining .frame-title {
   width: 83%;
 }
 
@@ -1437,13 +1488,10 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 20, ../../app/stylesheets/partials/frame.scss */
 .video-card {
-  -moz-box-shadow: inset 0 1px 0 0 #414141;
-  -webkit-box-shadow: inset 0 1px 0 0 #414141;
-  -o-box-shadow: inset 0 1px 0 0 #414141;
-  box-shadow: inset 0 1px 0 0 #414141;
   border-radius: 5px;
   background-color: #35383a;
   border: 1px solid #222222;
+  box-shadow: inset 0 1px 0 0 #414141;
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -1527,7 +1575,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   color: #0e0f10;
 }
 /* line 85, ../../app/stylesheets/partials/frame.scss */
-.active-list-item .video-card-header .frame-title:before, .active-list-item .frame-share-header .frame-title:before, .active-list-item .video-card-header .roll-item-title:before, .active-list-item .frame-share-header .roll-item-title:before, .active-list-item .video-card-header .roll-item-people:before, .active-list-item .frame-share-header .roll-item-people:before {
+.active-list-item .video-card-header .frame-title:before, .active-list-item .frame-share-header .frame-title:before {
   content: "On Now: ";
   font-style: italic;
 }
@@ -1547,7 +1595,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 }
 
 /* line 115, ../../app/stylesheets/partials/frame.scss */
-.frame-creator-roll, .roll-item-creator {
+.frame-creator-roll {
   color: #999;
   font-size: 11px;
   font-weight: 300;
@@ -1597,7 +1645,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 }
 
 /* line 157, ../../app/stylesheets/partials/frame.scss */
-.frame-title, .roll-item-title, .roll-item-people {
+.frame-title {
   clear: right;
   color: #bfbfbf;
   float: left;
@@ -1648,9 +1696,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -1936,9 +1981,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -1995,9 +2037,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2015,9 +2054,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2035,9 +2071,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #ec254b, #cc1235);
   background: -ms-linear-gradient(top, #ec254b, #cc1235);
   background: linear-gradient(top, #ec254b, #cc1235);
-  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
   box-shadow: inset 0px 1px 0px 0px #f26c85;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2055,9 +2088,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2075,9 +2105,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2277,12 +2304,9 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 94, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
-  -moz-box-shadow: 1px 0px 2px 1px black;
-  -webkit-box-shadow: 1px 0px 2px 1px black;
-  -o-box-shadow: 1px 0px 2px 1px black;
-  box-shadow: 1px 0px 2px 1px black;
   background: #efefef;
   border-radius: 50%;
+  box-shadow: 1px 0px 2px 1px black;
   cursor: pointer;
   cursor: ew-resize;
   height: 15px;
@@ -2292,7 +2316,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 15px;
 }
 
-/* line 108, ../../app/stylesheets/partials/video-controls.scss */
+/* line 107, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -2302,44 +2326,44 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   margin: 0 15px;
 }
 
-/* line 117, ../../app/stylesheets/partials/video-controls.scss */
+/* line 116, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 125, ../../app/stylesheets/partials/video-controls.scss */
+/* line 124, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 132, ../../app/stylesheets/partials/video-controls.scss */
+/* line 131, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
 
-/* line 142, ../../app/stylesheets/partials/video-controls.scss */
+/* line 141, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 150, ../../app/stylesheets/partials/video-controls.scss */
+/* line 149, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 157, ../../app/stylesheets/partials/video-controls.scss */
+/* line 156, ../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 163, ../../app/stylesheets/partials/video-controls.scss */
+/* line 162, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 174, ../../app/stylesheets/partials/video-controls.scss */
+/* line 173, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -2361,7 +2385,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   left: 20px;
   opacity: 1.0;
 }
-/* line 188, ../../app/stylesheets/partials/video-controls.scss */
+/* line 187, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -2383,11 +2407,11 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   margin-right: 330px;
   right: 20px;
 }
-/* line 201, ../../app/stylesheets/partials/video-controls.scss */
+/* line 200, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 206, ../../app/stylesheets/partials/video-controls.scss */
+/* line 205, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -2398,7 +2422,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 40px;
   z-index: 2;
 }
-/* line 216, ../../app/stylesheets/partials/video-controls.scss */
+/* line 215, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -2468,30 +2492,9 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 .rolls-list .active-list-item {
   position: relative;
 }
-/* line 27, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-header {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
-  background: -webkit-linear-gradient(top, #53b249, #428e3a);
-  background: -moz-linear-gradient(top, #53b249, #428e3a);
-  background: -o-linear-gradient(top, #53b249, #428e3a);
-  background: -ms-linear-gradient(top, #53b249, #428e3a);
-  background: linear-gradient(top, #53b249, #428e3a);
-}
-/* line 31, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-creator {
-  color: #27292a;
-}
-/* line 35, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-title, .rolls-list .active-list-item .roll-item-people {
-  color: #0e0f10;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 41, ../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-title:before, .rolls-list .active-list-item .roll-item-people:before {
-  content: "On Now: ";
-  font-style: italic;
+/* line 28, ../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item .roll-item-button:after {
+  box-shadow: 0 0 86px 70px #295824;
 }
 
 /* line 3, ../../app/stylesheets/partials/frame-rolling.scss */
@@ -2538,9 +2541,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2628,9 +2628,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 .new-roll-status-checkbox:after {
   background-color: gray;
   background: url("/images/assets/switch_public.svg") no-repeat 5px 5px #999999;
-  -moz-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
-  -o-box-shadow: inset 0px 1px 0px 0px #a6a6a6;
   box-shadow: inset 0px 1px 0px 0px #a6a6a6;
   border-radius: 5px;
   background-size: 56%;
@@ -2711,9 +2708,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2827,9 +2821,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2923,9 +2914,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   box-shadow: inset 0px 1px 0px 0px #85ca7d;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2952,9 +2940,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -2984,9 +2969,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3008,9 +2990,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #ec254b, #cc1235);
   background: -ms-linear-gradient(top, #ec254b, #cc1235);
   background: linear-gradient(top, #ec254b, #cc1235);
-  -moz-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #f26c85;
-  -o-box-shadow: inset 0px 1px 0px 0px #f26c85;
   box-shadow: inset 0px 1px 0px 0px #f26c85;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3034,9 +3013,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #44494b, #2c2f30);
   background: -ms-linear-gradient(top, #44494b, #2c2f30);
   background: linear-gradient(top, #44494b, #2c2f30);
-  -moz-box-shadow: inset 0px 1px 0px 0px #697073;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #697073;
-  -o-box-shadow: inset 0px 1px 0px 0px #697073;
   box-shadow: inset 0px 1px 0px 0px #697073;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3064,9 +3040,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3208,9 +3181,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #23bcff;
-  -o-box-shadow: inset 0px 1px 0px 0px #23bcff;
   box-shadow: inset 0px 1px 0px 0px #23bcff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3476,9 +3446,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3507,9 +3474,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   box-shadow: inset 0px 1px 0px 0px #85ca7d;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -3555,9 +3519,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 /* line 140, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
-  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
   border: 1px solid #00536b;
   background-size: 76%;
@@ -3566,9 +3527,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 /* line 147, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
-  -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #026fe5;
-  -o-box-shadow: inset 0px 1px 0px 0px #026fe5;
   box-shadow: inset 0px 1px 0px 0px #026fe5;
   border: 1px solid #013267;
   background-size: 28%;
@@ -3577,9 +3535,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 /* line 154, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
-  -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #52769e;
-  -o-box-shadow: inset 0px 1px 0px 0px #52769e;
   box-shadow: inset 0px 1px 0px 0px #52769e;
   border: 1px solid #26374a;
   background-size: 36%;
@@ -3652,11 +3607,8 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #ffffff, #fefefe);
-  -moz-box-shadow: 0px 0px 2px 1px #111111;
-  -webkit-box-shadow: 0px 0px 2px 1px #111111;
-  -o-box-shadow: 0px 0px 2px 1px #111111;
-  box-shadow: 0px 0px 2px 1px #111111;
   border-radius: 2px;
+  box-shadow: 0px 0px 2px 1px #111;
   content: "\0020";
   height: 18px;
   left: 0;
@@ -3982,9 +3934,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -ms-linear-gradient(top, #05c7ff, #00a2d1);
   background: linear-gradient(top, #05c7ff, #00a2d1);
   border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -4024,9 +3973,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -ms-linear-gradient(top, #0157b3, #013e80);
   background: linear-gradient(top, #0157b3, #013e80);
   border-radius: 5px;
-  -moz-box-shadow: inset 0px 1px 0px 0px #037bfd;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #037bfd;
-  -o-box-shadow: inset 0px 1px 0px 0px #037bfd;
   box-shadow: inset 0px 1px 0px 0px #037bfd;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -4070,9 +4016,6 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #4e4e4e, #343434);
   background: -ms-linear-gradient(top, #4e4e4e, #343434);
   background: linear-gradient(top, #4e4e4e, #343434);
-  -moz-box-shadow: inset 0px 1px 0px 0px #747474;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #747474;
-  -o-box-shadow: inset 0px 1px 0px 0px #747474;
   box-shadow: inset 0px 1px 0px 0px #747474;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -4141,11 +4084,8 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 45, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-prev {
-  -moz-box-shadow: inset 0px 0px 1px 0px #333333;
-  -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
-  -o-box-shadow: inset 0px 0px 1px 0px #333333;
-  box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
+  box-shadow: inset 0px 0px 1px 0px #333;
   height: inherit;
   position: absolute;
   top: 0;
@@ -4154,7 +4094,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   border-radius: 5px 0 0 5px;
   left: 0;
 }
-/* line 232, ../../app/stylesheets/_base.scss */
+/* line 233, ../../app/stylesheets/_base.scss */
 .comment-overlay-prev.message-terminus {
   background-image: none;
   cursor: default;
@@ -4162,11 +4102,8 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 
 /* line 53, ../../app/stylesheets/partials/comment-overlay.scss */
 .comment-overlay-next {
-  -moz-box-shadow: inset 0px 0px 1px 0px #333333;
-  -webkit-box-shadow: inset 0px 0px 1px 0px #333333;
-  -o-box-shadow: inset 0px 0px 1px 0px #333333;
-  box-shadow: inset 0px 0px 1px 0px #333333;
   border: none;
+  box-shadow: inset 0px 0px 1px 0px #333;
   height: inherit;
   position: absolute;
   top: 0;
@@ -4175,7 +4112,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   border-radius: 0 5px 5px 0;
   right: 0;
 }
-/* line 232, ../../app/stylesheets/_base.scss */
+/* line 233, ../../app/stylesheets/_base.scss */
 .comment-overlay-next.message-terminus {
   background-image: none;
   cursor: default;
@@ -4215,28 +4152,25 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 }
 /* line 21, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .video-card {
-  -moz-box-shadow: inset 0px 1px 0px 0px #343434;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #343434;
-  -o-box-shadow: inset 0px 1px 0px 0px #343434;
-  box-shadow: inset 0px 1px 0px 0px #343434;
   background-color: #232526;
+  box-shadow: inset 0px 1px 0px 0px #343434;
   margin: 10px;
 }
-/* line 28, ../../app/stylesheets/partials/context-overlay.scss */
-.context-overlay-lining .frame-title, .context-overlay-lining .roll-item-title, .context-overlay-lining .roll-item-people {
+/* line 27, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-lining .frame-title {
   width: 61%;
 }
-/* line 33, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 32, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-locator:before {
   border-left-color: #343434;
 }
-/* line 39, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 38, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-controls button {
   border-top-color: #343434;
   border-left-color: #343434;
 }
 
-/* line 46, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 45, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
 }
@@ -4373,13 +4307,10 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: 0 0 0 1px #428e3a;
-  -webkit-box-shadow: 0 0 0 1px #428e3a;
-  -o-box-shadow: 0 0 0 1px #428e3a;
-  box-shadow: 0 0 0 1px #428e3a;
   border-radius: 5px;
   text-shadow: 0px 1px 2px #222222;
   border: none;
+  box-shadow: 0 0 0 1px #428e3a;
   color: #efefef;
   display: block;
   float: right;
@@ -4388,13 +4319,10 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding: 7px 19px;
 }
 
-/* line 92, ../../app/stylesheets/partials/gate.scss */
+/* line 93, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: #585858;
   border-radius: 5px;
-  -moz-box-shadow: inset 0 1px 2px -1px #999999;
-  -webkit-box-shadow: inset 0 1px 2px -1px #999999;
-  -o-box-shadow: inset 0 1px 2px -1px #999999;
   box-shadow: inset 0 1px 2px -1px #999999;
   display: none;
   margin-top: 45px;
@@ -4403,16 +4331,13 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 }
 /* line 103, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
-  -moz-box-shadow: inset 1px 1px 2px -1px #999999;
-  -webkit-box-shadow: inset 1px 1px 2px -1px #999999;
-  -o-box-shadow: inset 1px 1px 2px -1px #999999;
-  box-shadow: inset 1px 1px 2px -1px #999999;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
   background: #585858;
+  box-shadow: inset 1px 1px 2px -1px #999999;
   content: "\0020";
   display: block;
   height: 10px;
@@ -4422,7 +4347,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 10px;
 }
 
-/* line 119, ../../app/stylesheets/partials/gate.scss */
+/* line 120, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -4430,16 +4355,16 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   text-decoration: none;
   width: 100%;
 }
-/* line 128, ../../app/stylesheets/partials/gate.scss */
+/* line 129, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 131, ../../app/stylesheets/partials/gate.scss */
+/* line 132, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 136, ../../app/stylesheets/partials/gate.scss */
+/* line 137, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -4448,27 +4373,27 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   text-decoration: none;
   width: 100%;
 }
-/* line 145, ../../app/stylesheets/partials/gate.scss */
+/* line 146, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 148, ../../app/stylesheets/partials/gate.scss */
+/* line 149, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 153, ../../app/stylesheets/partials/gate.scss */
+/* line 154, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   font-size: 11px;
 }
 
-/* line 157, ../../app/stylesheets/partials/gate.scss */
+/* line 158, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 162, ../../app/stylesheets/partials/gate.scss */
+/* line 163, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4476,7 +4401,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 100%;
 }
 
-/* line 169, ../../app/stylesheets/partials/gate.scss */
+/* line 170, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -4485,7 +4410,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   text-align: right;
 }
 
-/* line 177, ../../app/stylesheets/partials/gate.scss */
+/* line 178, ../../app/stylesheets/partials/gate.scss */
 .email-gate-email, .email-gate-code {
   border-radius: 3px;
   border: none;
@@ -4497,7 +4422,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 50%;
 }
 
-/* line 192, ../../app/stylesheets/partials/gate.scss */
+/* line 193, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #0071a3;
@@ -4507,13 +4432,10 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: 0 0 0 1px #0071a3;
-  -webkit-box-shadow: 0 0 0 1px #0071a3;
-  -o-box-shadow: 0 0 0 1px #0071a3;
-  box-shadow: 0 0 0 1px #0071a3;
   border-radius: 5px;
   text-shadow: 0px 1px 2px #222222;
   border: none;
+  box-shadow: 0 0 0 1px #0071a3;
   color: #efefef;
   display: block;
   font-size: 13px;
@@ -4522,19 +4444,19 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 17%;
 }
 
-/* line 208, ../../app/stylesheets/partials/gate.scss */
+/* line 210, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 213, ../../app/stylesheets/partials/gate.scss */
+/* line 215, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 219, ../../app/stylesheets/partials/gate.scss */
+/* line 221, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
@@ -4640,13 +4562,10 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
-  -moz-box-shadow: 0 0 0 1px #0071a3;
-  -webkit-box-shadow: 0 0 0 1px #0071a3;
-  -o-box-shadow: 0 0 0 1px #0071a3;
-  box-shadow: 0 0 0 1px #0071a3;
   text-shadow: 0px 1px 2px #222222;
   border: none;
   border-radius: 5px;
+  box-shadow: 0 0 0 1px #0071a3;
   color: #efefef;
   display: block;
   font-size: 13px;
@@ -4654,19 +4573,15 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding: 7px 19px;
   width: 17%;
 }
-/* line 106, ../../app/stylesheets/partials/genius.scss */
+/* line 107, ../../app/stylesheets/partials/genius.scss */
 .genius-search-submit.disabled, .genius-search-submit[disabled] {
-  background: #27292a;
-  background: url("../images/assets/noise.png"), #27292a;
-  -moz-box-shadow: 0 0 0 1px #27292a;
-  -webkit-box-shadow: 0 0 0 1px #27292a;
-  -o-box-shadow: 0 0 0 1px #27292a;
-  box-shadow: 0 0 0 1px #27292a;
   text-shadow: 0px 1px 2px black;
+  background: #27292a;
+  box-shadow: 0 0 0 1px #27292a;
   color: gray;
 }
 
-/* line 118, ../../app/stylesheets/partials/genius.scss */
+/* line 116, ../../app/stylesheets/partials/genius.scss */
 .genius-search-spinner {
   height: 30px;
   width: 30px;

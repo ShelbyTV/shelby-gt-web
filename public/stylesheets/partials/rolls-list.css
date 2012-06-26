@@ -22,28 +22,7 @@
 .rolls-list .active-list-item {
   position: relative;
 }
-/* line 27, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-header {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
-  background: -webkit-linear-gradient(top, #53b249, #428e3a);
-  background: -moz-linear-gradient(top, #53b249, #428e3a);
-  background: -o-linear-gradient(top, #53b249, #428e3a);
-  background: -ms-linear-gradient(top, #53b249, #428e3a);
-  background: linear-gradient(top, #53b249, #428e3a);
-}
-/* line 31, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-creator {
-  color: #27292a;
-}
-/* line 35, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-title {
-  color: #0e0f10;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 41, ../../../app/stylesheets/partials/rolls-list.scss */
-.rolls-list .active-list-item .roll-item-title:before {
-  content: "On Now: ";
-  font-style: italic;
+/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item .roll-item-button:after {
+  box-shadow: 0 0 86px 70px #295824;
 }

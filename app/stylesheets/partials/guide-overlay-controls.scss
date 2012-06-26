@@ -12,13 +12,13 @@
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(.1s);
-  @include box-shadow(2px 2px 5px 0px #333);  
   
   background-color: #0e0e0e;
   bottom: 0;
   border: 1px solid #202020;
   border-right: none;
   border-radius: $radius 0 0 $radius;
+  box-shadow: 2px 2px 5px 0px #333;  
   cursor: pointer;
   height: 45px;
 	overflow: hidden;
@@ -89,8 +89,7 @@
 }
 
 .user-inactive .guide-toggle.show {
-  @include box-shadow(none);
-  
   border: none;
+  box-shadow:none;
   right: -35px;
 }

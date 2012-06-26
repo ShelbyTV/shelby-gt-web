@@ -79,9 +79,6 @@
   background: -o-linear-gradient(top, #404344, #27292a);
   background: -ms-linear-gradient(top, #404344, #27292a);
   background: linear-gradient(top, #404344, #27292a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #646a6c;
-  -o-box-shadow: inset 0px 1px 0px 0px #646a6c;
   box-shadow: inset 0px 1px 0px 0px #646a6c;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -110,9 +107,6 @@
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
-  -moz-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  -o-box-shadow: inset 0px 1px 0px 0px #85ca7d;
   box-shadow: inset 0px 1px 0px 0px #85ca7d;
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px -1px 0px #333333;
@@ -158,9 +152,6 @@
 /* line 140, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
-  -moz-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  -o-box-shadow: inset 0px 1px 0px 0px #51d8ff;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
   border: 1px solid #00536b;
   background-size: 76%;
@@ -169,9 +160,6 @@
 /* line 147, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
-  -moz-box-shadow: inset 0px 1px 0px 0px #026fe5;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #026fe5;
-  -o-box-shadow: inset 0px 1px 0px 0px #026fe5;
   box-shadow: inset 0px 1px 0px 0px #026fe5;
   border: 1px solid #013267;
   background-size: 28%;
@@ -180,9 +168,6 @@
 /* line 154, ../../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
-  -moz-box-shadow: inset 0px 1px 0px 0px #52769e;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #52769e;
-  -o-box-shadow: inset 0px 1px 0px 0px #52769e;
   box-shadow: inset 0px 1px 0px 0px #52769e;
   border: 1px solid #26374a;
   background-size: 36%;
@@ -255,11 +240,8 @@
   background: url("../images/assets/switch.svg") no-repeat center center, -o-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, -ms-linear-gradient(top, #ffffff, #fefefe);
   background: url("../images/assets/switch.svg") no-repeat center center, linear-gradient(top, #ffffff, #fefefe);
-  -moz-box-shadow: 0px 0px 2px 1px #111111;
-  -webkit-box-shadow: 0px 0px 2px 1px #111111;
-  -o-box-shadow: 0px 0px 2px 1px #111111;
-  box-shadow: 0px 0px 2px 1px #111111;
   border-radius: 2px;
+  box-shadow: 0px 0px 2px 1px #111;
   content: "\0020";
   height: 18px;
   left: 0;
