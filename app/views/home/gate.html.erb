@@ -60,13 +60,22 @@
 	    </button>
 
 
-	    <fieldset class="email-gate-networks">
+	    <% if @has_access_token || !@auth_failure%>
+	      <fieldset class="email-gate-networks">
+	    <% else %>
+	      <fieldset class="email-gate-networks" style="display:block;">
+	    <% end %>
 	      <a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
 	        Log In with Twitter
 	      </a>   
 	      <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
 	        Log In with Facebook
 	      </a>
+	      <% if @auth_failure %>
+		    <div class="email-gate-error js-signin-error">
+		      Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.  Please wait a moment and try again.
+		    </div>
+		  <% end %>
 	    </fieldset>
 	  </form>
 
@@ -81,13 +90,19 @@
 				<h1>Welcome the Shelby GT private beta!</h1>
 				<h2>Sign up, we don't auto-post anything:</h2>
 				<p class="login">
-					<a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-		        Sign Up with Twitter
-		      </a>   
-		      <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-		        Sign Up with Facebook
-		      </a>
+				  <a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+		            Sign Up with Twitter
+		          </a>
+		          <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+		            Sign Up with Facebook
+		          </a>
 				</p>
+				<% if @auth_failure %>
+				  <h2 class="email-gate-error">
+				    Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.<br/>
+				    Please wait a moment and try again.
+				  </h2>
+				<% end %>
 			</div>
 		<% elsif @gt_enabled_redirect %>
 			<div class="private-beta-access">
@@ -127,6 +142,7 @@
 	<script>
 		$(function(){
 			$('.email-gate-login-button').click(function(){
+				$('.js-signin-error').remove();
 				$('.email-gate-networks').toggle();
 				return false;
 			});
