@@ -159,29 +159,33 @@
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
+/* line 139, ../../../app/stylesheets/partials/video-controls.scss */
+.video-player-fullscreen.cancel {
+  background: url("../images/assets/player_fullscreen_cancel.svg") center center no-repeat transparent;
+}
 
-/* line 141, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 147, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 149, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 155, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 156, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 162, ../../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 162, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 168, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 173, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 179, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -203,7 +207,7 @@
   left: 20px;
   opacity: 1.0;
 }
-/* line 187, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 193, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -225,11 +229,11 @@
   margin-right: 330px;
   right: 20px;
 }
-/* line 200, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 206, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 205, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 211, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -240,7 +244,7 @@
   width: 40px;
   z-index: 2;
 }
-/* line 215, ../../../app/stylesheets/partials/video-controls.scss */
+/* line 221, ../../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;

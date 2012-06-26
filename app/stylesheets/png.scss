@@ -150,7 +150,12 @@ $softNetworksUnselected : #666;
   .video-player-fullscreen{
   	@include background(
   		url('../images/assets/player_fullscreen.png') center center no-repeat transparent
-  	);	
+  	);
+  	&.cancel {
+  	  @include background(
+    		url('../images/assets/player_fullscreen_cancel.png') center center no-repeat transparent
+    	);
+	  }
   }
 
   .video-player-roll{

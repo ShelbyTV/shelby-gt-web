@@ -135,6 +135,12 @@
 	);	
 
 	float:right;
+	
+	&.cancel {
+	  @include background(
+  		url('../images/assets/player_fullscreen_cancel.svg') center center no-repeat transparent
+  	);
+  }
 
 }
 
