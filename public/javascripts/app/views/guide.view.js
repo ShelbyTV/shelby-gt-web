@@ -11,6 +11,7 @@
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
   var GuidePresentation = libs.shelbyGT.GuidePresentation;
+  var contentRollsEnum = libs.shelbyGT.GuidePresentation.content.rolls;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
@@ -85,17 +86,26 @@
          break;
         case DisplayState.rollList :
           var sourceModel;
-          if (this.model.get('rollListContent') == GuidePresentation.content.rolls.browse) {
+          if (this.model.get('rollListContent') == contentRollsEnum.browse) {
             sourceModel = shelby.models.browseRolls;
           } else {
             sourceModel = shelby.models.rollFollowings;
+          }
+          var listItemView;
+          if (this.model.get('rollListContent') == contentRollsEnum.people) {
+            listItemView = 'RollItemViewPeople';
+          } else {
+            listItemView = 'RollItemView';
           }
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
           displayParams = {
             viewProto : RollListView,
             model : sourceModel,
             onAppendChild : this._populateRollList,
-            options : {doStaticRender:true},
+            options : {
+              doStaticRender : true,
+              listItemView : listItemView
+            },
             shouldFetch : shouldFetch,
             spinner : shouldFetch
           };
@@ -179,7 +189,7 @@
       var self = this;
 
       if (shouldFetch) {
-        var contentIsBrowseRolls = guideModel.get('rollListContent') == libs.shelbyGT.GuidePresentation.content.rolls.browse;
+        var contentIsBrowseRolls = guideModel.get('rollListContent') == contentRollsEnum.browse;
         var rollCollection, fetchUrl;
         if (contentIsBrowseRolls) {
           rollCollection = shelby.models.browseRolls;
