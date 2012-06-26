@@ -12,6 +12,11 @@ module Shelby
       r = get( "/roll/#{id}" ).parsed_response
     end
     
+    def self.get_frame_info(frame_id)
+      f = get( "/frame/#{frame_id}" ).parsed_response
+      return f['status'] == 200 ? f['result'] : nil
+    end
+    
     def self.get_video_info(frame_id)
       result = {}
       f = get( "/frame/#{frame_id}" ).parsed_response
