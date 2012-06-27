@@ -14,8 +14,7 @@
   }
 }
 
-.roll-item-lining,
-.roll-item-people-lining {
+.roll-item-lining{
   border-bottom: 1px solid $inset;
   border-top: 1px solid $outset;
 }
@@ -24,8 +23,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 5px;
-  margin: 5px 10px;
+//  border-radius: 5px;
+//  margin: 5px 10px;
   overflow: hidden;
 }
 
@@ -33,12 +32,10 @@
 	background-size: 25%;
 }
 
-.roll-item-button,
-.roll-item-people-button {
+.roll-item-button {
   overflow: hidden;
   position: relative;
   z-index: 1; 
-
 }
 
 .roll-item-button{
@@ -58,22 +55,6 @@
     &:after {
       box-shadow: 0 0 86px 70px $shelby-gray;
 //      box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
-    }
-  }
-}
-
-.roll-item-people-button {
-  padding: 0;
-
-  &:hover {
-    &:after {
-      bottom: -2px;
-      box-shadow: 0 0 44px 16px adjust-lightness($shelby-gray, 2%);
-      content: "\0020";
-      height: 1px;
-      margin-top: 10px;
-      position: absolute;
-      width: 100%;
     }
   }
 }
@@ -131,12 +112,6 @@
   padding: 6px 8px 0;
 }
 
-.roll-item-people {
-  @extend .roll-item-title;
-
-  margin-top: 12px;
-}
-
 .roll-item-total,
 .roll-item-watched {
   font-size: 11px;
@@ -150,55 +125,15 @@
   padding-bottom: 3px;
 }
 
-.roll-item-people-button {
-  .roll-item-total {
-    margin-top: 6px;
-  }
-
-  .roll-item-total,
-  .roll-item-watched {
-    color: #666;
-  }
-}
-
-.active-list-item {
-  .roll-item-people-button {
-    background-color: $shelby-green;
-    @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
-    &:hover{
-      &:after{
-        box-shadow: 0 0 44px 16px adjust-lightness($shelby-green, -5%);
-      }
-    } 
-  }
-
-  .roll-item-total,
-  .roll-item-watched,
-  .roll-item-title {
-    color: #0E0F10;
-  }
-}
-
 .roll-item-watched {
 
 }
 
-.roll-item-avatar,
-.roll-item-people-avatar {
+.roll-item-avatar{
 	float: left;
 	height: 40px;
   overflow: hidden;
 	width: 40px;
-}
-
-.roll-item-people-avatar {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  img {
-    height: 100%;
-  }
 }
 
 .roll-item-footer {
@@ -276,12 +211,4 @@
     .thumbnail { display: none; }
     .missing-placeholder { display: inline; }
   }
-}
-
-.roll-item-people-lining {
-  //see line 17 for shared styles
-}
-
-.roll-item-people-avatar {
-
 }
