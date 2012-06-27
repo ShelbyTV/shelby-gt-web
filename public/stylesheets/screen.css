@@ -1776,7 +1776,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 269, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338389592');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -1784,12 +1784,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 279, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338389592');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 
 /* line 286, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337611867');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 291, ../../app/stylesheets/partials/frame.scss */
@@ -2739,7 +2739,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -3110,40 +3110,41 @@ body.isolated-roll .context-overlay-lining .frame-title {
   z-index: 1;
 }
 
-/* line 171, ../../app/stylesheets/partials/rolls.scss */
+/* line 172, ../../app/stylesheets/partials/rolls.scss */
 .share-comment,
 .share-networks,
-.share-submit {
+.share-submit,
+.share-email-addresses {
   padding: 5px 10px 10px;
 }
 
-/* line 175, ../../app/stylesheets/partials/rolls.scss */
+/* line 176, ../../app/stylesheets/partials/rolls.scss */
 .share-comment {
   border-top: 1px solid #343434;
   border-bottom: 1px solid black;
 }
 
-/* line 181, ../../app/stylesheets/partials/rolls.scss */
+/* line 182, ../../app/stylesheets/partials/rolls.scss */
 .share-networks,
 .share-submit {
   border-top: 1px solid #343434;
 }
 
-/* line 185, ../../app/stylesheets/partials/rolls.scss */
+/* line 186, ../../app/stylesheets/partials/rolls.scss */
 .share-networks {
   float: left;
   width: 50%;
 }
 
-/* line 190, ../../app/stylesheets/partials/rolls.scss */
+/* line 191, ../../app/stylesheets/partials/rolls.scss */
 .share-label {
   font-size: 14px;
   font-weight: 500;
   line-height: 2;
 }
 
-/* line 194, ../../app/stylesheets/partials/rolls.scss */
-.share-textarea {
+/* line 195, ../../app/stylesheets/partials/rolls.scss */
+.share-textarea, .share-email-addresses-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border-radius: 3px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -3152,8 +3153,8 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 5px;
   width: 100%;
 }
-/* line 203, ../../app/stylesheets/partials/rolls.scss */
-.share-textarea:focus {
+/* line 204, ../../app/stylesheets/partials/rolls.scss */
+.share-textarea:focus, .share-email-addresses-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
   -o-transition-property: opacity;
@@ -3170,13 +3171,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   opacity: 1;
 }
 
-/* line 211, ../../app/stylesheets/partials/rolls.scss */
+/* line 212, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding-left: 0;
 }
 
-/* line 216, ../../app/stylesheets/partials/rolls.scss */
+/* line 217, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3195,7 +3196,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-top: 32px;
   width: 100%;
 }
-/* line 222, ../../app/stylesheets/partials/rolls.scss */
+/* line 223, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: -4px;
@@ -3203,7 +3204,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: relative;
 }
 
-/* line 230, ../../app/stylesheets/partials/rolls.scss */
+/* line 231, ../../app/stylesheets/partials/rolls.scss */
 .share-comment-counter {
   display: block;
   font-size: 11px;
@@ -3223,7 +3224,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 34px;
 }
 
-/* line 244, ../../app/stylesheets/partials/rolls.scss */
+/* line 245, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3232,7 +3233,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 252, ../../app/stylesheets/partials/rolls.scss */
+/* line 253, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #00a2d1;
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3243,7 +3244,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
 }
 
-/* line 263, ../../app/stylesheets/partials/rolls.scss */
+/* line 264, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3252,7 +3253,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 271, ../../app/stylesheets/partials/rolls.scss */
+/* line 272, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
