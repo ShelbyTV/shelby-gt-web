@@ -54,7 +54,6 @@
   &:hover {
     &:after {
       box-shadow: 0 0 86px 70px $shelby-gray;
-//      box-shadow: 0 0 86px 70px adjust-lightness($shelby-green, -25%);
     }
   }
 }
@@ -62,7 +61,7 @@
 .roll-item-container {
 	bottom: 0;
 	left: 0;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding: 0; 
 	position: absolute;
 	width: 100%;
@@ -84,9 +83,9 @@
 
 .roll-item-container-column {
 	float: left;
-  position: relative;
+	position: relative;
 	width: 50%;
-  z-index: 1;
+ 	z-index: 1;
 }
 
 .roll-item-title,

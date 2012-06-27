@@ -141,7 +141,8 @@
 
 .share-comment,
 .share-networks,
-.share-submit {
+.share-submit,
+.share-email-addresses {
 	@include x-fieldset-primer;
 }
 
@@ -164,7 +165,7 @@
 	@include x-form-label-primer;
 }
 
-.share-textarea {
+.share-textarea, .share-email-addresses-input {
 	@include inputfont;
 	@include roundies(input);
 	@include opacity(0.8);

@@ -69,7 +69,8 @@
 .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 76, ../../../app/stylesheets/partials/roll-item-people.scss */
+.active-list-item .roll-item-creator,
 .active-list-item .roll-item-total,
 .active-list-item .roll-item-watched,
 .active-list-item .roll-item-title,

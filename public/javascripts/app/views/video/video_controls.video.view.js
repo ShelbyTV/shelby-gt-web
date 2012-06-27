@@ -214,9 +214,15 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_toggleFullscreen: function(){
 		if (shelby.fullScreen.available()){
-			!shelby.fullScreen.activated() ? shelby.fullScreen.request() : shelby.fullScreen.cancel();
+			if(shelby.fullScreen.activated()){
+			  shelby.fullScreen.cancel();
+			  this.$(".video-player-fullscreen").removeClass("cancel");
+			} 
+			else {
+			  shelby.fullScreen.request();
+			  this.$(".video-player-fullscreen").addClass("cancel");
+		  }
 		}
-		// TODO: change icon if fullscreen is activated
 	},
   
   _nextVideo: function(){
