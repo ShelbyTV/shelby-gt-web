@@ -3,6 +3,8 @@ require 'net/http'
 
 class SeovideoController < ApplicationController
 
+before_filter :prepare_for_mobile
+
   def show
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
@@ -93,6 +95,22 @@ private
       return sprintf('%:%02d:%02d', duration / 3600, duration / 60, duration % 60)
     else
       return "> 1 day"
+    end
+  end
+
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
+  
+  def prepare_for_mobile
+    if params[:mobile] != nil
+      if params[:mobile] == "1" 
+        request.format = :mobile
+      else
+        request.format = :html
+      end
+    else 
+      request.format = :mobile if mobile_device?
     end
   end
 
