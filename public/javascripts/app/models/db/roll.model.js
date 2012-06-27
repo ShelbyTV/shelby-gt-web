@@ -2,6 +2,7 @@
 
   // shorten names of included library items
   var ShelbyBaseModel = libs.shelbyGT.ShelbyBaseModel;
+  var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
   var rollFollowingsConfig = shelby.config.db.rollFollowings;
 
   libs.shelbyGT.RollModel = ShelbyBaseModel.extend({
@@ -41,11 +42,8 @@
         {
           url : url,
           success : function(rollModel, response){
-            // add the newly followed roll to the correct spot in the roll followings collection
-            var searchOffset = rollFollowingsConfig.numSpecialRolls;
-            var rankingFunc = function(item){return item.id;};
-            var insertAtIndex = shelby.models.rollFollowings.get('rolls').chain().rest(searchOffset).sortedIndex(rollModel, rankingFunc).value() + searchOffset;
-            shelby.models.rollFollowings.add(rollModel, {at:insertAtIndex});
+            BackboneCollectionUtils.insertAtSortedIndex(rollModel,
+              shelby.models.rollFollowings.get('rolls'), {searchOffset:rollFollowingsConfig.numSpecialRolls});
             if (onSuccess) {
               onSuccess(rollModel, response);
             }

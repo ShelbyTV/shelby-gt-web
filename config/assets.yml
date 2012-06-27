@@ -35,6 +35,7 @@ javascripts:
     - public/javascripts/app/app.js
     - public/javascripts/app/models/lib/shelby.base.model.js
     - public/javascripts/app/config/db.config.js
+    - public/javascripts/app/utils/backbone_collection.utils.js
     - public/javascripts/app/models/db/roll.model.js
     - public/javascripts/app/models/ui/share.model.js
     - public/javascripts/app/models/ui/share_action_state.model.js

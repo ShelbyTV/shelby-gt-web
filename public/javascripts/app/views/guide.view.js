@@ -84,18 +84,25 @@
           };
          break;
         case DisplayState.rollList :
-          var sourceModel;
+          var sourceModel, binarySearchOffset;
           if (this.model.get('rollListContent') == GuidePresentation.content.rolls.browse) {
             sourceModel = shelby.models.browseRolls;
+            binarySearchOffset = 0;
           } else {
             sourceModel = shelby.models.rollFollowings;
+            binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
           }
+
+
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
           displayParams = {
             viewProto : RollListView,
             model : sourceModel,
             onAppendChild : this._populateRollList,
-            options : {doStaticRender:true},
+            options : {
+              doStaticRender : true,
+              binarySearchOffset : binarySearchOffset
+            },
             shouldFetch : shouldFetch,
             spinner : shouldFetch
           };

@@ -53,6 +53,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
         !_changedAttrs.has('displayIsolatedRoll')) {
       return;
     }
+    // set text to leave/join roll
+    var currentRollModel = model.get('currentRollModel');
+    if (currentRollModel) {
+      var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Unfollow' : 'Follow';
+      this._updateJoinButton(_buttonText);
+    }
     this._updateVisibility();
   },
 
