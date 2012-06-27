@@ -5,9 +5,7 @@ libs.shelbyGT.RollItemPeopleView = libs.shelbyGT.ActiveHighlightListItemView.ext
   }),
 
   events : {
-    "click .js-roll-item-button"          : "goToRoll",
-    "click .roll-item-stats"              : "goToRoll",
-    "click .roll-item-contents-thumbnail" : "goToRoll"
+    "click .js-roll-item-button"          : "goToRoll"
   },
 
   tagName : 'li',
