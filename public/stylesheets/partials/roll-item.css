@@ -19,6 +19,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
+  margin: 5px 10px;
   overflow: hidden;
 }
 
