@@ -4,8 +4,9 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',
-    listItemView : 'RollItemView',
-    doSmartRefresh : true
+    doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
+    doSmartRefresh : true,
+    listItemView : 'RollItemView'
   }),
 
   initialize : function() {

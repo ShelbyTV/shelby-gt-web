@@ -46,8 +46,8 @@ libs.shelbyGT.RollsCollectionModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return this.get('rolls').get(rollId);
   },
 
-  add : function(rollModel) {
-    this.get('rolls').add(rollModel);
+  add : function(rollModel, options) {
+    this.get('rolls').add(rollModel, options);
   },
 
   remove : function(rollModel) {

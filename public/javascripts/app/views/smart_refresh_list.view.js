@@ -1,4 +1,5 @@
 libs.shelbyGT.SmartRefreshCheckType = {
+  binarySearch : 'binarySearch',
   head : 'head',
   headAndTail : 'headAndTail',
   tail : 'tail'
@@ -11,6 +12,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   _fixedHeadIndex : 0,
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
+    binarySearchOffset : 0,
     doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
     doSmartRefresh : false,
     initFixedHead : false,
@@ -40,7 +42,19 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   },
 
   _addIfNew : function(item, collection) {
+    var self = this;
     switch (this.options.doCheck) {
+      case libs.shelbyGT.SmartRefreshCheckType.binarySearch :
+          if (this._simulatedMasterCollection.length >= this.options.binarySearchOffset) {
+            var insertAtIndex =
+              libs.utils.BackboneCollectionUtils.getSortedIndex(item, collection,
+                                                    {searchOffset : this.options.binarySearchAttribute,
+                                                     sortAttribute : this.options.sortAttribute});
+            this._addItem(item, collection, {at:insertAtIndex});
+          } else {
+            this._addItem(item, collection);
+          }
+        break;
       case libs.shelbyGT.SmartRefreshCheckType.tail :
         var tailItem = this._simulatedMasterCollection.last();
         var doAddToTail = this._shouldAdd(item, tailItem);
@@ -102,7 +116,13 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     if (this.options.doSmartRefresh) {
       this._simulatedMasterCollection.add(item, options);
       if (!this._filter || this._filter(item)) {
-        this._displayCollection.add(item, options);
+        if (this.options.doCheck == libs.shelbyGT.SmartRefreshCheckType.binarySearch) {
+          libs.utils.BackboneCollectionUtils.insertAtSortedIndex(item, this._displayCollection,
+                                                {searchOffset : this.options.binarySearchOffset,
+                                                 sortAttribute : this.options.sortAttribute});
+        } else {
+          this._displayCollection.add(item, options);
+        }
       }
     } else {
       libs.shelbyGT.ListView.prototype.sourceAddOne.call(this, item, collection, options);
