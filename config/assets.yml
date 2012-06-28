@@ -43,7 +43,6 @@ javascripts:
     - public/javascripts/app/views/list.view.js
     - public/javascripts/app/views/smart_refresh_list.view.js
     - public/javascripts/app/views/paging_list.view.js
-    - public/javascripts/app/views/auto_scroll_frame_list.view.js
     - public/javascripts/app/views/dashboard.view.js
     - public/javascripts/app/views/guide_overlay.view.js
     - public/javascripts/app/views/roll_list.view.js
@@ -75,3 +74,5 @@ javascripts:
 stylesheets:
   common:
     - public/stylesheets/screen.css
+  seovideo:
+    - public/stylesheets/seovideo.css

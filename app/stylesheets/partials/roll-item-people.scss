@@ -1,0 +1,79 @@
+@import "base";
+
+.roll-item-people-lining {
+  border-bottom: 1px solid $inset;
+  border-top: 1px solid $outset;
+
+  .roll-item-people {
+    margin-top: 12px;
+  }
+}
+
+.roll-item-people-button {
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  z-index: 1; 
+
+  &:hover {
+    &:after {
+      bottom: -2px;
+      box-shadow: 0 0 44px 16px adjust-lightness($shelby-gray, 2%);
+      content: "\0020";
+      height: 1px;
+      margin-top: 10px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .roll-item-total {
+    margin-top: 6px;
+  }
+
+  .roll-item-total,
+  .roll-item-watched {
+    color: #666;
+  }
+}
+
+.roll-item-people {
+  @extend .roll-item-title;
+
+  margin-top: 23px;
+}
+
+.roll-item-people-avatar {
+  @extend .roll-item-avatar;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: left;
+  height: 40px;
+  overflow: hidden;
+  width: 40px;
+
+  img {
+    height: 100%;
+  }
+}
+
+.active-list-item {
+  .roll-item-people-button {
+    background-color: $shelby-green;
+    @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
+    &:hover{
+      &:after{
+        box-shadow: 0 0 44px 16px adjust-lightness($shelby-green, -5%);
+      }
+    } 
+  }
+
+  .roll-item-creator,
+  .roll-item-total,
+  .roll-item-watched,
+  .roll-item-title {
+    color: #0E0F10;
+  }
+}

@@ -49,12 +49,14 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
     this.model.bind('change:upvoters', this._onUpvoteChange, this);
+    this.model.get('conversation').bind('change', this._onConversationChange, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change:upvoters', this._onUpvoteChange, this);
+    this.model.get('conversation').unbind('change', this._onConversationChange, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -154,6 +156,10 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       this.$('.js-upvote-frame').addClass('upvoted');
       this.$('.js-upvote-frame-lining').text(this.model.get('upvoters').length);
     }
+  },
+  
+  _onConversationChange : function(conversation){
+    this.render();
   },
   
   _requestConversationView : function(){

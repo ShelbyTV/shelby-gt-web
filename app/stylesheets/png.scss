@@ -150,7 +150,12 @@ $softNetworksUnselected : #666;
   .video-player-fullscreen{
   	@include background(
   		url('../images/assets/player_fullscreen.png') center center no-repeat transparent
-  	);	
+  	);
+  	&.cancel {
+  	  @include background(
+    		url('../images/assets/player_fullscreen_cancel.png') center center no-repeat transparent
+    	);
+	  }
   }
 
   .video-player-roll{
@@ -270,19 +275,6 @@ $softNetworksUnselected : #666;
   	&:before{
   		background:url('../images/assets/rolls_share_facebook_on.png') no-repeat center center transparent;
   	}
-  }
-
-  //comment-overlay
-
-  .comment-overlay-prev {
-  	@include background(
-  		url('../images/assets/comment_arrow_left.png') no-repeat center center #303030 
-  	);
-  }
-  .comment-overlay-next {
-  	@include background(
-  		url('../images/assets/comment_arrow_right.png') no-repeat center center #303030
-  	);
   }
 
   //gate

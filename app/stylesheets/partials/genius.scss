@@ -92,10 +92,11 @@
 	@include buttonfont;
 	background: $shelby-blue;
 	@include background( linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue) );
-	@include box-shadow(0 0 0 1px $shelby-blue);
 	@include text-shadow(0px 1px 2px #222);
+	
 	border:none;
 	border-radius: $radius;
+	box-shadow: 0 0 0 1px $shelby-blue;
 	color:#efefef;
 	display:block;
 	font-size:13px;
@@ -104,15 +105,12 @@
 	width: 17%;
 
 	&.disabled, &[disabled] {
-		background: $shelby-gray;
-		@include background(
-			url('../images/assets/noise.png'),
-			$shelby-gray
-		);
-		@include box-shadow(0 0 0 1px $shelby-gray);
 		@include text-shadow(0px 1px 2px black);
+
+		background: $shelby-gray;
+		box-shadow: 0 0 0 1px $shelby-gray;
 		color:gray;
-        }
+  }
 }
 
 .genius-search-spinner{

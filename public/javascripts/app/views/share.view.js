@@ -5,7 +5,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _components : {
     networkToggles : true,
+    emailAddresses : false,
+    messageCounter :  true,
     shareButton : true,
+    shareButtonCopy : "Share It",
     spinner : true
   },
 
@@ -13,6 +16,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     "click .js-submit-share:not(.js-sharing)" : "_share",
     "keyup .js-share-textarea" : "_onUpdateShareText",
     "focus .js-share-textarea" : "_onFocusShareText",
+    "keyup .js-share-email-addresses" : "_onUpdateAddresses",
+    "focus .js-share-email-addresses" : "_onFocusAddresses",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
   },
@@ -59,12 +64,19 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _onUpdateShareText : function(event){
     this.model.set('text', this.$('.js-share-textarea').val());
-    (event.keyCode===13) && this._share();
   },
 
   _onFocusShareText : function(event){
     // remove the error highlight from this text area on focus if there is one
     this.$('.js-share-textarea').removeClass('error');
+  },
+  
+  _onUpdateAddresses : function(event){
+    this.model.set('addresses', this.$('.js-share-email-addresses').val());
+  },
+  
+  _onFocusAddresses : function(event){
+    this.$('.js-share-email-addresses').removeClass('error');
   },
 
   _updateDestinationButtons : function(shareModel){
@@ -82,8 +94,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _updateTextLengthCounter : function(shareModel, text){
-    var charsLeft = this._getCharsLeft(text);
-    this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
+    if(this._components.messageCounter){
+      var charsLeft = this._getCharsLeft(text);
+      this.$('#js-share-comment-counter').text(charsLeft==140 ? '' : charsLeft);
+    }
   },
 
   _toggleSharingByNetwork : function(network){
@@ -100,7 +114,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _validateShare : function(){
-    return ((this._getCharsLeft() - this.shareBaseLength) < 140);
+    if(this._components.emailAddresses && this.$('.js-share-email-addresses:invalid').length > 0){
+      this.$('.js-share-email-addresses').addClass('error');
+      shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
+      return false;
+    }
+    
+    if(this._components.networkToggles && this.model.get('destination').length == 0){
+      shelby.alert("Please choose a network to share on.");
+      return false;
+    }
+    
+    return true;
   },
 
   _share : function(){

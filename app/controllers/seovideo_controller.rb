@@ -3,6 +3,8 @@ require 'net/http'
 
 class SeovideoController < ApplicationController
 
+before_filter :prepare_for_mobile
+
   def show
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
@@ -30,21 +32,23 @@ class SeovideoController < ApplicationController
 
     count = 0
     video_recommendations = @video_response_body_result["recs"]
-    @video_sister_response_body_results = []
+    @video_related_response_body_results = []
 
     # TODO: need to guarantee ordering by rec score
     video_recommendations.each do |rec|
-      video_sister_url = "#{video_api_base}/#{rec["recommended_video_id"]}"
+      video_related_url = "#{video_api_base}/#{rec["recommended_video_id"]}"
       begin
-        video_sister_response = Net::HTTP.get_response(URI.parse(video_sister_url))
+        video_related_response = Net::HTTP.get_response(URI.parse(video_related_url))
       rescue
         next
       end
-      if video_sister_response and video_sister_response.body
-        if (video_sister_response_decoded = ActiveSupport::JSON.decode(video_sister_response.body))
-          if (video_sister_response_decoded_result = video_sister_response_decoded["result"])
-            @video_sister_response_body_results.append(video_sister_response_decoded_result)
-            count += 1
+      if video_related_response and video_related_response.body
+        if (video_related_response_decoded = ActiveSupport::JSON.decode(video_related_response.body))
+          if (video_related_response_decoded_result = video_related_response_decoded["result"])
+            if (video_related_response_decoded_result["provider_name"] && video_related_response_decoded_result["provider_name"] == "youtube")
+              @video_related_response_body_results.append(video_related_response_decoded_result)
+              count += 1
+            end
           end
         end
       end
@@ -91,6 +95,22 @@ private
       return sprintf('%:%02d:%02d', duration / 3600, duration / 60, duration % 60)
     else
       return "> 1 day"
+    end
+  end
+
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
+  
+  def prepare_for_mobile
+    if params[:mobile] != nil
+      if params[:mobile] == "1" 
+        request.format = :mobile
+      else
+        request.format = :html
+      end
+    else 
+      request.format = :mobile if mobile_device?
     end
   end
 

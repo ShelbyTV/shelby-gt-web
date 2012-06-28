@@ -114,17 +114,14 @@ a:hover, a:visited, a:active {
 
 /* line 102, ../../../app/stylesheets/partials/app.html.scss */
 .menu {
-  -moz-box-shadow: 0 1px 4px 0px #101010;
-  -webkit-box-shadow: 0 1px 4px 0px #101010;
-  -o-box-shadow: 0 1px 4px 0px #101010;
-  box-shadow: 0 1px 4px 0px #101010;
   background-color: #35383a;
   border-bottom: 1px solid #222;
+  box-shadow: 0 1px 4px 0px #101010;
   position: relative;
   overflow: hidden;
 }
 
-/* line 111, ../../../app/stylesheets/partials/app.html.scss */
+/* line 110, ../../../app/stylesheets/partials/app.html.scss */
 .spinner {
   left: 50%;
   margin-left: -24px;

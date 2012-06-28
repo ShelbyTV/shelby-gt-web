@@ -18,11 +18,11 @@
 }
 
 .video-card {
-	@include box-shadow(inset 0 1px 0 0 adjust-lightness($outset, 5%));
 	@include roundies;
 
 	background-color: $video-card-bg-color;
 	border: $frame-stroke;
+	box-shadow: inset 0 1px 0 0 adjust-lightness($outset, 5%);
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
@@ -74,14 +74,18 @@
 }
 
 .active-list-item .video-card-header {
+	background-color: $shelby-green;
   @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
   @include border-top-radius($radius);
+
   h1, h2 {
     color: $shelby-gray;
   }
+
   h3 {
     color: adjust-lightness($shelby-gray, -10%);
   }
+
   .frame-title:before {
     content: "On Now: ";
     font-style: italic;

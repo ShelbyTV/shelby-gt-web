@@ -14,21 +14,15 @@
 }
 /* line 16, ../../../app/stylesheets/partials/menu.scss */
 .video-guide li:nth-of-type(4) {
-  -moz-box-shadow: inset 1px 1px 1px #4d4d4d;
-  -webkit-box-shadow: inset 1px 1px 1px #4d4d4d;
-  -o-box-shadow: inset 1px 1px 1px #4d4d4d;
-  box-shadow: inset 1px 1px 1px #4d4d4d;
   border-right: none;
+  box-shadow: inset 1px 1px 1px #4d4d4d;
   width: 50%;
 }
 /* line 23, ../../../app/stylesheets/partials/menu.scss */
 .video-guide button, .video-guide button:visited {
-  -moz-box-shadow: inset 0px 1px 0px #4d4d4d;
-  -webkit-box-shadow: inset 0px 1px 0px #4d4d4d;
-  -o-box-shadow: inset 0px 1px 0px #4d4d4d;
-  box-shadow: inset 0px 1px 0px #4d4d4d;
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border: none;
+  box-shadow: inset 0px 1px 0px #4d4d4d;
   color: #666;
   display: block;
   font-size: 11px;
@@ -41,18 +35,12 @@
 }
 /* line 38, ../../../app/stylesheets/partials/menu.scss */
 .video-guide button:hover, .video-guide button:visited:hover {
-  -moz-box-shadow: inset 0px 1px 0px #666666;
-  -webkit-box-shadow: inset 0px 1px 0px #666666;
-  -o-box-shadow: inset 0px 1px 0px #666666;
-  box-shadow: inset 0px 1px 0px #666666;
+  box-shadow: inset 0px 1px 0px #666;
   background-color: #444;
 }
 /* line 42, ../../../app/stylesheets/partials/menu.scss */
 .video-guide button:active, .video-guide button:visited:active {
-  -moz-box-shadow: inset 0px 0px 10px #222222;
-  -webkit-box-shadow: inset 0px 0px 10px #222222;
-  -o-box-shadow: inset 0px 0px 10px #222222;
-  box-shadow: inset 0px 0px 10px #222222;
+  box-shadow: inset 0px 0px 10px #222;
 }
 /* line 47, ../../../app/stylesheets/partials/menu.scss */
 .video-guide input {
@@ -62,17 +50,11 @@
 }
 /* line 53, ../../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab {
-  -moz-box-shadow: inset 0px 1px 7px 0px #202020;
-  -webkit-box-shadow: inset 0px 1px 7px 0px #202020;
-  -o-box-shadow: inset 0px 1px 7px 0px #202020;
   box-shadow: inset 0px 1px 7px 0px #202020;
 }
 /* line 56, ../../../app/stylesheets/partials/menu.scss */
 .video-guide .active-tab:hover {
-  -moz-box-shadow: inset 0px 1px 7px 0px #111111;
-  -webkit-box-shadow: inset 0px 1px 7px 0px #111111;
-  -o-box-shadow: inset 0px 1px 7px 0px #111111;
-  box-shadow: inset 0px 1px 7px 0px #111111;
+  box-shadow: inset 0px 1px 7px 0px #111;
 }
 /* line 61, ../../../app/stylesheets/partials/menu.scss */
 .video-guide .stream {
@@ -136,9 +118,6 @@
 }
 /* line 126, ../../../app/stylesheets/partials/menu.scss */
 .dashboard-search input[type="text"]:focus {
-  -moz-box-shadow: 0px 0px 5px 3px #666666;
-  -webkit-box-shadow: 0px 0px 5px 3px #666666;
-  -o-box-shadow: 0px 0px 5px 3px #666666;
-  box-shadow: 0px 0px 5px 3px #666666;
+  box-shadow: 0px 0px 5px 3px #666;
   outline: none;
 }

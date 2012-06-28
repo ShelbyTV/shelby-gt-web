@@ -211,9 +211,9 @@
 				url('../images/assets/switch.svg') no-repeat center center,
 				linear-gradient(top, adjust-lightness($toggle-switch-gray, 10%), $toggle-switch-gray)
 			);
-			@include box-shadow(0px 0px 2px 1px #111);
 
 			border-radius: $radius - 3;
+			box-shadow: 0px 0px 2px 1px #111;
 			content:"\0020";
 			height:18px;
 			left:0;

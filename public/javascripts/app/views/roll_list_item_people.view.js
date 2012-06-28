@@ -1,13 +1,11 @@
-libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
+libs.shelbyGT.RollItemPeopleView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel'
   }),
 
   events : {
-    "click .js-roll-item-button"          : "goToRoll",
-    "click .roll-item-stats"              : "goToRoll",
-    "click .roll-item-contents-thumbnail" : "goToRoll"
+    "click .js-roll-item-button"          : "goToRoll"
   },
 
   tagName : 'li',
@@ -15,7 +13,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   className : 'roll-item clearfix',
 
   template : function(obj){
-    return JST['roll-item'](obj);
+    return JST['roll-item-people'](obj);
   },
 
   render : function(){

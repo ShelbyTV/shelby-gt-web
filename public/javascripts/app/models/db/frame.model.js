@@ -57,12 +57,14 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id+'&include_children=true';
     frameToReroll.save(null, {url:url,success:onSuccess});
+    libs.utils.rhombus.sadd('frames_rolled', this.id);
   },
 
   upvote : function(onSuccess) {
     var frameToUpvote = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
     frameToUpvote.save(null, {url:url, success:onSuccess});
+    libs.utils.rhombus.sadd('frames_upvoted', this.id);
   },
   
   watched : function(startTime, endTime, onSuccess) {

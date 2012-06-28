@@ -1,0 +1,29 @@
+<% /* parent:"roll-item" */ %>
+<% 
+  var creator_nickname = roll.get('creator_nickname'),
+      creator_avatar   = roll.get('thumbnail_url'),
+      roll_count       = roll.get('frame_count'),
+      roll_followers   = roll.get('following_user_count'),
+      roll_title       = roll.get('title');
+%>
+
+<div class="roll-item-people-lining">
+  <a onclick="return false;" class="js-roll-item-button roll-item-people-button clearfix" href="#">
+    <div class="roll-item-container-column">  
+      <div class="roll-item-people-avatar" role="img" style="background-image:url(<%= creator_avatar %>);">
+        <img class="visuallyhidden" src="<%= creator_avatar %>" alt="<%= creator_nickname %>" title="<%= creator_nickname %>'s Roll">
+      </div>
+      <h2 class="roll-item-people">
+        <%= creator_nickname %>
+      </h2>
+    </div>
+    <div class="roll-item-container-column">
+      <h4 class="roll-item-total">
+        <%= '' + roll_count + ' ' + ((roll_count == 1) ? 'video' : 'videos') %>
+      </h4>
+      <h5 class="roll-item-watched">
+        <%= '' + roll_followers + ' ' + ((roll_followers == 1) ? 'follower' : 'followers') %>
+      </h5>
+    </div>
+  </a>
+</div>

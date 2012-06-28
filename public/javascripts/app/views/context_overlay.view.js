@@ -30,6 +30,7 @@
       if (this.model) {
         this.model.unbind('destroy', this._onFrameRemove, this);
         this.model.unbind('change:upvoters', this._onUpvoteChange, this);
+        this.model.get('conversation').unbind('change', this._onConversationChange, this);
       }
 
       this.model = activeFrameModel;
@@ -42,12 +43,13 @@
       //bind
       this.model.bind('destroy', this._onFrameRemove, this);
       this.model.bind('change:upvoters', this._onUpvoteChange, this);
+      this.model.get('conversation').bind('change', this._onConversationChange, this);
 
-      this.render(guideModel, activeFrameModel);
+      this.render();
     },
 
-    render : function(guideModel, activeFrameModel) {
-      this.$el.html( this.template({ frame: activeFrameModel, options: this.options }) );
+    render : function() {
+      this.$el.html( this.template({ frame: this.model, options: this.options }) );
     },
 
     template : function(obj) {

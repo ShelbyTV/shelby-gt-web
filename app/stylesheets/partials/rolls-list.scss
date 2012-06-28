@@ -12,35 +12,21 @@
 	}
 
 	a{	
-		cursor:pointer;
+//		cursor:pointer;
 		display:block;
-		padding: 5px;
+//		padding: 5px;
 	}
 
 	li{
 		padding:0;
 	}
 
-	.active-list-item{
+	.active-list-item {
 		position:relative;
 
-    .roll-item-header {
-      @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
-    }
-		
-		.roll-item-creator{
-      color: $shelby-gray;
-    }
-
-		.roll-item-title {
-		  color: adjust-lightness($shelby-gray, -10%);
-			overflow:hidden;
-			text-overflow:ellipsis;
-			white-space:nowrap;
-
-			&:before {
-			  content: "On Now: ";
-			  font-style: italic;
+		.roll-item-button {
+			&:after {
+		    box-shadow: 0 0 48px 70px adjust-lightness($shelby-green, -10%);
 			}
 		}
 	}

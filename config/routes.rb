@@ -8,6 +8,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/genius' => 'genius#index'
 
   get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
+  
+  # redirects to roll/:roll_id/frame/:frame_id which is handled by web app
+  get '/frame/:frame_id' => "frame#show"
 
   get '/signout' => "home#signout", :as => :signout
 
