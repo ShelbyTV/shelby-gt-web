@@ -1,0 +1,887 @@
+function loadScript(url, callback) {
+  var body = document.getElementsByTagName("body")[0];
+  var script = document.createElement("script");
+  script.src = url;
+
+  var done = false;
+  script.onload = script.onreadystatechange = function() {
+    if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+      done = true;
+      callback();
+      script.onload = script.onreadystatechange = null;
+      body.removeChild(script);
+    }
+  };
+  body.appendChild(script);
+};
+
+function loadCss(url, callback) {
+  var body = document.getElementsByTagName("body")[0];
+  var fileref = document.createElement("link");
+
+  fileref.setAttribute("rel", "stylesheet");
+  fileref.setAttribute("type", "text/css");
+  fileref.setAttribute("href", url);
+
+  var done = false;
+  fileref.onload = fileref.onreadystatechange = function() {
+    if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+      done = true;
+      callback();
+      fileref.onload = fileref.onreadystatechange = null;
+    }
+  };
+  body.appendChild(fileref);
+};
+
+loadCss('http://localhost:3000/stylesheets/bookmarklet.css', function() {
+  loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
+
+    window.shelbyVideo = {};
+    var shelbyJ = jQuery.noConflict();
+    possibleVideos = {
+      embeds : shelbyJ('embed'),
+      objects : shelbyJ('object'),
+      videos : shelbyJ('video'),
+      iframes : shelbyJ('iframe')
+    };
+    
+    var shelbyGuideWidth = 330;
+
+    // add in the bookmarklet loading bar
+    shelbyJ('body').append('<div class=<%=@hash%>ext-elements></div>');
+    shelbyJ('.<%=@hash%>ext-elements').append('<div id=shelby-bookmarklet hidden="hidden"> </div>')
+    shelbyJ("#shelby-bookmarklet").css({"background-image": "url(http://shelby.tv/images/bkmklt-bar.png)",
+                                                        "z-index": "100000",
+                                                        "width": "189px",
+                                                        "height": "35px",
+                                                        "position": "fixed",
+                                                        "top": "10px",
+                                                        "left": "0px"});
+    shelbyJ("#shelby-bookmarklet").html('<div style="position:absolute;top:10px;left:4px;color:#f3f3f3;"><span id=shelby-bookmarklet-text style="float:left;font-size: 12px;font-family: verdana,sans-serif;">...</span><a href="http://<%= Settings::VideoRadar.domain %>"><img style="position:absolute;left:140px;top:-13px;" src="http://<%= Settings::VideoRadar.domain %>/assets/bkmklt-logo.png"/></a></div>');
+
+
+    
+    window.shelbyRadar = {
+      shelbySignedInCallback : function(response) {
+        if (response.result.signed_in === false) {
+          shelbyJ('.<%=@hash%>ext-elements').append('<div id=shelby-login> <iframe height = 400 width=600 src="http://gt.shelby.tv"> </iframe></div>');
+          shelbyJ('#shelby-login').css("position", "fixed")
+                                  .css("left", "0px")
+                                  .css("top", "0px")
+        } else {
+          shelbyRadar.getUser(shelbyJ);
+        }
+      },
+
+      shelbyUserCallback : function(response) {
+        window.shelbyBkmkltUser = response.result;
+        var authentications = response.result.authentications;
+        shelbyRadar.shareGuideHtml(authentications);
+        shelbyJ('.shelby-guide-overlay-context-creator').html(response.result.nickname);
+        shelbyJ.ajax( {
+          type : 'GET',
+          url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyBkmkltUser.id + '/rolls/postable',
+          dataType : "jsonp",
+          crossDomain : true,
+          xhrFields : {withCredentials : true},
+          success : function(response) {
+            rolls = response.result;
+            rollHTML = '<div class=<%=@hash%>existing-rolls-list> <ul class="<%=@hash%>list"> ';
+            for (var i = 0; i < rolls.length; i++) {
+              roll = rolls[i];
+              rollHTML += '<li id="shelby-roll-' + roll.id + '" data-rollid = "' + roll.id + '" class="<%=@hash%>roll-selection-item">' +
+              '<div class="<%=@hash%>roll-selection-item-add clearfix">' +
+                              'Add' +
+                            '</div>' + 
+                            '<div class="<%=@hash%>roll-selection-item-lining">' +
+                            '<img class="<%=@hash%>roll-selection-item-thumbnail" src="' +
+                                          roll.thumbnail_url +
+                                '">' +
+                                '<div class="<%=@hash%>roll-selection-item-title">' +
+                                          roll.title +
+                              '</div>' +
+                              '<div class="<%=@hash%>roll-selection-item-state">' +
+                                    (roll.public ? "public" : "private") +
+                              '</div>' +
+                              '</div>' +
+                            "</li>"
+            }
+            rollHTML += '</ul></div>';
+            shelbyJ("#shelby-roll-guide-window").append(rollHTML);
+            shelbyJ(".<%=@hash%>roll-selection-item").css("height", "66px");
+            shelbyRadar.sendVidsToShelby(shelbyRadar.foundVideo, shelbyJ);
+          }
+        });
+
+      },
+      signedIn : function(shelbyJ) {
+            shelbyJ.ajax( {
+                type : 'GET',
+                url : 'http://<%= Settings::VideoRadar.domain %>/v1/signed_in',
+                dataType : "jsonp",
+                crossDomain: true,
+                xhrFields : {withCredential: true},
+                success : shelbyRadar.shelbySignedInCallback
+              });
+      },
+      getUser : function(shelbyJ) {
+                  shelbyJ.ajax({
+                      type : 'GET',
+                      url : 'http://<%= Settings::VideoRadar.domain %>/v1/user',
+                      dataType : "jsonp",
+                      crossDomain : true,
+                      xhrFields : {withCredentials : true},
+                      success : shelbyRadar.shelbyUserCallback
+                    });
+        },
+
+       
+
+        getElementValue : function(obj, id, shelbyJ) {
+                  var value = '';
+                  for (var i = 0; i < obj.attributes.length; i++) {
+                    if (obj.attributes[i].nodeName === id) {
+                      value += obj.attributes[i].nodeValue;
+                      break;
+                    }
+                  }
+
+                  var params = shelbyJ(obj).children('param');
+                  for (var i = 0; i < params.length; i++) {
+                    if (params[i].name == id) {
+                      value += params[i].value;
+                      break;
+                    }
+                  }
+                  return value;
+        },
+        
+        getHeight : function(jqueryVid) {
+          var height = parseInt(jqueryVid.attr("height"));
+          if (height === undefined) {
+            height = jqueryVid.height();
+          }
+          return height;
+        },
+        
+        getWidth : function(jqueryVid) {
+          var width = parseInt(jqueryVid.attr("width"));
+          if (width === undefined) {
+            width = jqueryVid.width();
+          }
+          return width;
+        },
+
+        sendVidsToShelby : function(vids, shelbyJ) {
+                var self = this;
+                if (vids.length === 0) {
+                  this.noVidsFound(shelbyJ);
+                } else {
+                  shelbyJ('#shelby-bookmarklet-text').html("Found videos");
+                  shelbyJ('#shelby-bookmarklet').delay(1000).hide('slide', {direction : 'left'}, 'fast');
+                  for (var i = 0; i < vids.length; i++) {
+                    if (vids[i].known_url !== false) {
+                      vids[i].embed.css("margin-top", "50px")
+                              .css("margin-bottom", "50px")
+                      var r = Math.floor(Date.now() + Math.random());
+                      var bcastClass = "bcast-" + vids[i].video_id;
+                      var height = shelbyRadar.getHeight(vids[i].embed);
+                      var width = shelbyRadar.getWidth(vids[i].embed);
+                      var vpos = vids[i].embed.offset().top + height;
+                      var hpos = vids[i].embed.offset().left;
+
+                      // put buttons here, we have hpos, vpos, fixed positions
+                    
+
+                      shelbyJ('.<%=@hash%>ext-elements').append('<div class="<%=@hash%>video-card-header clearfix" id="shelby-frame-info-' + r + '"></div>');
+
+                      shelbyJ("#shelby-frame-info-" + r).css("position", "absolute")
+                          .css("left", hpos + "px")
+                          .css("top", jQuery(vids[i].embed).offset().top - 44 + "px")
+                          .css("z-index", "89999")
+                          .css("width", width + "px")
+                          .css("height", "45px")
+                          .css("padding", "0px")
+                          .css("margin", "0px")
+                          .css("background-color", "#35383A")
+                          .css("border-radius", "5px 5px 0 0");
+
+                     
+                    
+                      shelbyJ('.<%=@hash%>ext-elements').append('<ul class="<%=@hash%>frame-controls clearfix ' + ' shelby-found-video-' + r + '" type="toolbar"> </ul>');
+
+
+                      shelbyJ('.shelby-found-video-' + r).html(
+                          '<li class="<%=@hash%>frame-controls-like toolbar-ele-' + bcastClass + '">' +
+                                '<button class="aniImg shelby-all-like ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                  '<i class="js-upvote-frame-lining" id=shelby-like-text-' + r + '> &nbsp; </i>' +
+                                '</button>' +
+                              '</li>' +
+
+                              '<li class="<%=@hash%>frame-controls-comments toolbar-ele-' + bcastClass + '">' +
+                                '<button class="aniImg shelby-all-comment ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                  '<i class="comments-frame-lining" id=shelby-comment-text-' + r + '> &nbsp; </i>' +
+                                '</button>' +
+                              '</li>' +
+
+                              '<li class="<%=@hash%>frame-controls-roll toolbar-ele-' + bcastClass + '">' +
+                                '<button class="aniImg shelby-all-roll ir ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                  ' Roll it ' +
+                                '</button>' +
+                              '</li>' +
+
+                              '<li class="<%=@hash%>frame-controls-share toolbar-ele-' + bcastClass + '">' +
+                                '<button class="aniImg shelby-all-share ir ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                  'Share it ' +
+                                '</button>' +
+                              '</li>')
+                          .css("position", "absolute")
+                          .css("left", hpos + "px")
+                          .css("top", vpos + "px")
+                          .css("z-index", "89999")
+                          .css("width", width + "px")
+                          .css("background-color", "#35383A")
+                          .css("border-radius", "0 0 5px 5px")
+                      var frameInfoId = shelbyJ("#shelby-frame-info-" + r).attr("id");
+                      shelbyJ(".shelby-button-" + r).data("frameid", frameInfoId).data("videourl", vids[i].known_url);
+
+
+                      shelbyJ(window).resize(function (vidIndex, r) {
+                          return function() {
+                            var vid = vids[vidIndex];
+                            var height = shelbyRadar.getHeight(vid.embed);
+                            shelbyJ('.shelby-found-video-' + r)
+                                            .css("left", jQuery(vid.embed).offset().left)
+                                            .css("top", jQuery(vid.embed).offset().top + height);
+                            shelbyJ('#shelby-frame-info-' + r)
+                                            .css("left", jQuery(vid.embed).offset().left)
+                                            .css("top", jQuery(vid.embed).offset().top - 44);
+                            }
+                        }(i, r));
+
+                      var dataReq = {
+                          'provider_name' : vids[i].provider,
+                          'provider_id' : vids[i].video_id
+                      };
+
+                      var guideHeader = function (imgClassName) {
+                        shelbyJ.ajax({
+                            type : "GET",
+                            url : "http://<%= Settings::VideoRadar.domain %>/v1/video/find",
+                            dataType : "jsonp",
+                            data : dataReq,
+                            async : true,
+                            success : function(response) {
+                              shelbyJ.ajax({
+                                type : "GET",
+                                url : "http://<%= Settings::VideoRadar.domain %>/v1/video/" + response.result.id,
+                                dataType : "jsonp",
+                                async : true,
+                                success :  function(response) {
+                                    shelbyJ("." + imgClassName).click(function() {
+                                      shelbyJ('.<%=@hash%>guide-overlay-context-title').html(response.result.title);
+                                      shelbyJ('.<%=@hash%>guide-overlay-context').css("background-image", 
+                                                                "url('" + response.result.thumbnail_url + "')");
+                                    });
+                                  }
+                                });
+                            }
+                          });
+                        };
+                      guideHeader(bcastClass + "-img");
+
+                      var setDashboardFrame = function(frameInfoId) {
+                        shelbyJ.ajax({
+                          type : "GET",
+                          url : "http://<%= Settings::VideoRadar.domain %>/v1/dashboard/find_entries_with_video",
+                          dataType : "jsonp",
+                          data : dataReq,
+                          async : true,
+                          xhrFields : {withCredentials : true},
+                          success : function(response) {
+                            var frames = response.result;
+                            console.log(frames);
+                            shelbyRadar.adjustFrame(frames[0], frameInfoId, true);
+                          }
+                        });
+                      }
+                      setDashboardFrame(frameInfoId);
+                    }
+                  }
+                  shelbyJ(".shelby-all-roll").each(function(index, button) {
+                      var rollButton = shelbyJ(button)
+                      rollButton.click(function() {
+                        shelbyRadar.styleGuideShow("shelby-roll-guide");
+                        shelbyJ(".<%=@hash%>roll-selection-item").each(function(index, item) {
+                          var rollItem = shelbyJ(item);
+                          rollItem.unbind();
+                          var frameMaker = function(response) {
+                            shelbyRadar.adjustFrame(response.result, rollButton.data("frameid"), false);
+                            console.log(response);
+                          };
+                          rollItem.click(function() {
+                            shelbyRadar.shelbyVideoRequest(rollButton.data("videourl"), rollItem.data("rollid"), shelbyJ, frameMaker)
+                        });
+                      });
+                    });
+                  });
+
+                  shelbyJ(".shelby-all-share").each(function(index, button) {
+                      var shareButton = shelbyJ(button)
+                      shareButton.click(function() {
+                        shelbyRadar.styleGuideShow("shelby-share-guide");
+
+                        var shelbySubmit = function (response) {
+                        shelbyJ(".<%=@hash%>share-submit-button").unbind().click(function(event) {
+                            shelbyRadar.adjustFrame(response.result, shareButton.data("frameid"), false);
+                            var destinationstring = [];
+                            var networkImgs  = shelbyJ(".<%=@hash%>networks-list");
+                            for (var i = 0; i < networkImgs.length; i++) {
+                              var networkimg = shelbyJ(networkImgs[i]);
+                              if (networkimg.hasClass('active')) {
+                                destinationstring.push(networkimg.data("dest"));
+                              }
+                            }
+                       
+                            var dataReq = {
+                              'frame_id' : response.result.id,
+                              'destination' : destinationstring,
+                              'text' : shelbyJ("#shelby-share-textarea").val()
+                              };
+                            shelbyJ.ajax({
+                                type : "GET",
+                                dataType : "jsonp",
+                                data : dataReq,
+                                url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" +  response.result.id + "/share",
+                                xhrFields : {withCredentials : true},
+                                async : true,
+                                success : function(response) {console.log(response)},
+                                error : function(response) {console.log(response)}
+                              });
+                          });
+                        }
+
+                        shelbyRadar.shelbyVideoRequest(shareButton.data("videourl"), shelbyBkmkltUser.personal_roll_id, shelbyJ, shelbySubmit)
+                        
+                      });
+                    });
+
+                  shelbyJ(".shelby-all-comment").each(function(index, button) {
+                      var commentButton = shelbyJ(button)
+                      commentButton.click(function() {
+
+                        var conversationId = shelbyJ("#" + commentButton.data("frameid")).data("conversationid");
+                        if (conversationId !== undefined) {
+                          shelbyRadar.setUpConversationWithId(conversationId);
+                        }
+                      
+                        shelbyRadar.styleGuideShow("shelby-comment-guide");
+                        shelbyJ(".<%=@hash%>new-comment-submit").unbind().click(function(event) {
+                          event.preventDefault();
+                          var dataReq =  {
+                            'text' : shelbyJ(".<%=@hash%>new-comment-input").val()
+                          };
+                          if (conversationId === undefined) {
+                            var undefinedCommentCallback = function(frameInfoId) {
+                            return function(response) {
+                                shelbyRadar.adjustFrame(response.result, frameInfoId, false);
+                                var conversationId = shelbyJ("#" + commentButton.data("frameid")).data("conversationid");
+                                shelbyJ.ajax({
+                                  type : "GET",
+                                  dataType : "jsonp",
+                                  data : dataReq,
+                                  url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/conversation/" + conversationId + "/messages",
+                                  xhrFields : {withCredentials : true},
+                                  async : true,
+                                  success : function(response) { shelbyRadar.setUpConversation(response.result)}
+                                })
+                              }
+                            }
+                            shelbyRadar.shelbyVideoRequest(commentButton.data("videourl"),
+                                                          window.shelbyBkmkltUser.personal_roll_id, shelbyJ,
+                                                          undefinedCommentCallback(commentButton.data("frameid")));
+
+                          } else {
+
+                            shelbyJ.ajax({
+                                type : "GET",
+                                dataType : "jsonp",
+                                data : dataReq,
+                                url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/conversation/" + conversationId + "/messages",
+                                xhrFields : {withCredentials : true},
+                                async : true,
+                                success : function(response) {shelbyRadar.setUpConversation(response.result)},
+                              });
+                            }
+            
+                          });
+                        });
+                    });
+
+                  shelbyJ(".shelby-all-like").each(function(index, button) {
+                      var likeButton = shelbyJ(button)
+                      likeButton.click( function() {
+                        var shelbyFrameId = shelbyJ("#" + likeButton.data("frameid")).data("shelbyframeid")
+                        if (shelbyFrameId===undefined) {
+                          var undefinedLikeCallback = function(frameInfoId) {
+                            return function(response) {
+                              shelbyRadar.adjustFrame(response.result, frameInfoId, false);
+                              shelbyJ.ajax({
+                                  type : "GET",
+                                  dataType : "jsonp",
+                                  xhrFields : {withCredentials : true},
+                                  async : true,
+                                  url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + response.result.id + "/upvote",
+                                  success : function(response) {console.log(response)}
+                                });
+                            }
+                          } 
+                          shelbyRadar.shelbyVideoRequest(likeButton.data("videourl"), 
+                                        window.shelbyBkmkltUser.personal_roll_id, shelbyJ, 
+                                        undefinedLikeCallback(likeButton.data("frameid")))
+                        } else {
+                           shelbyJ.ajax({
+                                type : "GET",
+                                dataType : "jsonp",
+                                xhrFields : {withCredentials : true},
+                                async : true,
+                                url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + shelbyFrameId + "/upvote",
+                                success : function(response) {console.log(response)}
+                            });
+                          }
+                        });
+                    });
+                          
+
+                        
+
+
+                  shelbyJ(".shelby-all-like").hover(function() {
+                    jQuery(this).attr('src', shelbyRadar.imageUrls.like.on);
+                  }, function() {
+                    shelbyJ(this).attr('src', shelbyRadar.imageUrls.like.off);
+                  });
+
+                  shelbyJ(".shelby-all-comment").hover(function() {
+                    jQuery(this).attr('src', shelbyRadar.imageUrls.comment.on);
+                  }, function() {
+                    shelbyJ(this).attr('src', shelbyRadar.imageUrls.comment.off);
+                  });
+
+                  shelbyJ(".shelby-all-share").hover(function() {
+                    jQuery(this).attr('src', shelbyRadar.imageUrls.share.on);
+                  }, function() {
+                    shelbyJ(this).attr('src', shelbyRadar.imageUrls.share.off);
+                  });
+
+                  shelbyJ(".shelby-all-roll").hover(function() {
+                    jQuery(this).attr('src', shelbyRadar.imageUrls.roll.on);
+                  }, function() {
+                    shelbyJ(this).attr('src', shelbyRadar.imageUrls.roll.off);
+                  });
+
+                  shelbyJ(".aniImg").hover(function() {
+                    jQuery(this).css({
+                      opacity : 1.0,
+                    });
+                  }, function() {
+                    shelbyJ(this).css({
+                      opacity : 0.8,
+                  });
+                });
+                      
+              }
+              
+                
+        },
+
+        shelbyVideoRequest: function(vid_url, roll_id, shelbyJ, callback) {
+                  reqData = {
+                    'url' : vid_url,
+                    'text' : 'Shelby bookmarklet'
+                  };
+
+                  shelbyJ.ajax({
+                      type : 'GET',
+                      url : 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/' + roll_id + '/frames',
+                      dataType : "jsonp",
+                      async : true,
+                      data : reqData,
+                      xhrFields : {withCredentials : true},
+                      success :  callback
+                  });
+          },
+
+
+
+                  
+
+        noVidsFound : function(shelbyJ) {
+          document.title = document.title.slice(14);
+          shelbyJ("#shelby-bookmarklet-text").html("No videos found");
+        },
+
+
+
+
+	composeKnownUrl: function(domain, video_id){
+	          var known_url = "";
+                  switch (domain){
+                  case 'youtube.com':
+                          known_url = "http://www.youtube.com/watch?v=" + video_id;
+                          break;
+                  case 'dailymotion.com':
+                          known_url = "http://www.dailymotion.com/video/" + video_id;
+                          break;
+                  case 'vimeo.com':
+                          known_url = "http://vimeo.com/" + video_id;
+                          break;
+                  case 'techcrunch.tv':
+                          known_url = "http://techcrunch.tv/watch?id=" + video_id;
+                          break;
+                  case 'collegehumor.com':
+                          known_url = "http://collegehumor.com/video/" + video_id;
+                          break;
+                  case 'hulu.com':
+                          //HACK (For now).
+                          // the video_id is the content_id, not useful when hitting embedly or our link cache
+                          // so using the page location for now
+                          known_url = document.location.href;
+                          break;
+                  case 'bloomberg.com':
+                          //HACK (For now).
+                          // so using the page location for now
+                          known_url = document.location.href;
+                          break;
+                 default:
+                          known_url = false;
+                  }
+                  return known_url;
+      },
+
+        messageHtml : function(message) {
+          var stringbuilder = [];
+          stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-avatar">')
+            stringbuilder.push('<img src="')
+            stringbuilder.push(message.user_image_url)
+            stringbuilder.push('" alt="" title="">')
+            stringbuilder.push('</div>')
+            stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-user">')
+            stringbuilder.push(message.realname)
+            stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-block">')
+            stringbuilder.push(message.text)
+            stringbuilder.push('</div>');
+            stringbuilder.push('<span class="<%=@hash%>frame-conversation-message-timestamp"> Posted ');
+          if (message.origin_network !== undefined) {
+            stringbuilder.push('on ');
+            stringbuilder.push(message.origin_network);
+          }
+          stringbuilder.push(' ');
+          stringbuilder.push(message.created_at);
+          stringbuilder.push('</span>');
+          stringbuilder.push('</div>');
+          return stringbuilder.join('');
+        },
+
+        setUpConversation : function(conversation) {
+            var messages = conversation.messages;
+                var stringbuilder = [];
+                for (var i = 0 ; i < messages.length; i++) {
+                  var message = messages[i];
+                  stringbuilder.push('<li class="<%=@hash%>frame-conversation-message clearfix">');
+                    stringbuilder.push(shelbyRadar.messageHtml(message));
+                    stringbuilder.push('</li>');
+                }
+                shelbyJ(".<%=@hash%>conversation").html(stringbuilder.join(''));
+        },
+               
+
+        setUpConversationWithId : function(conversationId) {
+              var setHtml = function(response) { 
+                shelbyRadar.setUpConversation(response.result);
+              };
+              shelbyJ.ajax({
+                type : 'GET',
+                url : 'http://<%= Settings::VideoRadar.domain %>/v1/conversation/' + conversationId,
+                dataType : "jsonp",
+                async : true,
+                xhrFields : {withCredentials : true},
+                success :  setHtml
+              });
+        },
+
+
+        setUpGuide : function(guideName, styleGuideWidth) {
+          shelbyJ('.<%=@hash%>ext-elements').append('<div id=' + guideName + '-window class=' + guideName + ' hidden="hidden">  </div>');
+          shelbyJ('#' + guideName + '-window').css("position", "fixed")
+                                              .css("right", "0px")
+                                              .css("top", "0px")
+                                              .css("width", shelbyGuideWidth + "px")
+                                              .css("height", shelbyJ(window).height() + "px")
+                                              .css("background", "#222")
+                                              .css("z-index", "99999")
+                                              .css("overflow", "auto");
+                    
+          // set up clickoff
+          shelbyJ('.<%=@hash%>ext-elements').append('<div id=' + guideName + '-clickoff class=' + guideName + ' hidden="hidden"></div>')
+          shelbyJ("#" + guideName + "-clickoff").css("top", "0px")
+                                    .css("right", shelbyGuideWidth + "px")
+                                    .css("position", "fixed")
+                                    .css("height", shelbyJ(window).height() + "px")
+                                    .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px")
+                                    .css("z-index", "99999")
+                                    .click(function() {
+                                        shelbyRadar.styleGuideHide(guideName);
+                                    });
+
+          shelbyJ('#' + guideName + '-window').append('<div id=' + guideName +'-overlay-header class="<%=@hash%>guide-overlay-header"></div>');
+          shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@hash%>guide-overlay-title">' +
+                                                            '<div class="<%=@hash%>guide-overlay-title-text"> ' + shelbyRadar.allGuides[guideName] + '</div>' +
+                                                          '</div>')
+                                                              .append('<div class="<%=@hash%>guide-overlay-context">' +
+                                                              '<div class="<%=@hash%>guide-overlay-context-overview">' +
+                                                                '<div class="<%=@hash%>guide-overlay-context-creator"> </div>' +
+                                                                '<div class = "<%=@hash%>guide-overlay-context-title"></div>' +
+                                                              '</div>' + 
+                                                              '</div>');
+          shelbyJ(".<%=@hash%>guide-overlay-title-text").css("line-height", 2.25)
+                                                      .css("text-align", "center")
+                                                      .css("font-size", "20px")
+                                                      .css("font-weight", "500");
+
+
+          shelbyJ(window).resize(function() {
+              shelbyJ("#" + guideName + "-window").css("height", shelbyJ(window).height() + "px");
+              shelbyJ("#" + guideName + "-clickoff").css("height", shelbyJ(window).height() + "px")
+                                                    .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px");
+          });
+        },
+
+        adjustFrame : function(frame, shelbyFrameId, shouldOverwrite) {
+                    if (!shouldOverwrite && shelbyJ("#" + shelbyFrameId).data("shelbyframeid") !== undefined) {
+                      return;
+                    }
+                    shelbyJ("#" + shelbyFrameId).html(
+                        '<img src=' + frame.creator.user_image + ' class="<%=@hash%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' +
+                        "<div class=<%=@hash%>frame-creator-roll> " + 
+                          frame.roll.title +
+                        "</div>" +
+                        '<div class=<%=@hash%>frame-logo>' +
+                          'Seen on <img class="<%=@hash%> frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' +
+                        "<div class=<%=@hash%>frame-title> " + frame.video.title + "</div>")
+                                  .data("conversationid", frame.conversation.id)
+                                  .data("shelbyframeid", frame.id);
+
+        },
+
+        commentGuideHtml : function() {
+              shelbyJ('#shelby-comment-guide-window').append(
+                  '<div id="<%=@hash%>conversation-scroller">' +
+                    '<ul class="<%=@hash%>conversation <%=@hash%>frame-conversation"></ul>' +
+                    '<form class="<%=@hash%>new-comment clearfix">' +
+                    '<textarea class="<%=@hash%>new-comment-input" rows="1"></textarea>' +
+                    '<div class="<%=@hash%>frame-comment-error-message"></div>' +
+                    '<button class="<%=@hash%>new-comment-submit"> Comment</button>' +
+                    '</form>' +
+                    '</div>');
+
+
+        },
+        
+
+        shareGuideHtml : function(networks) {
+              var contains = function(network_name) {
+                for (var i = 0; i < networks.length; i++) {
+                  if (networks[i].provider === network_name) {
+                    return true;
+                  }
+                }
+                return false;
+              }
+
+              shelbyJ('#shelby-share-guide-window').append(
+                  '<div class="<%=@hash%>frame-sharing">' +
+                 '<div class="<%=@hash%>share-form clearfix">' +
+                    '<fieldset class="<%=@hash%>share-comment">'  +
+                      '<label for="<%=@hash%>share-textarea" class="<%=@hash%>share-label"> Comment </label>' +
+                      '<textarea name="<%=@hash%>share-textarea" id="<%=@hash%>share-textarea" class="<%=@hash%>share-textarea" placeholder="Add a message..." rows="2"></textarea>' +
+                          '</fieldset>' +
+                          '<fieldset class="<%=@hash%>share-networks"> ' +
+                            '<label class="<%=@hash%>share-label" for="<%=@hash%>share-networks-list">Share to</label>' +
+                            '<ul class="<%=@hash%>share-networks-list">' +
+                            '<li class="' +
+                              (contains("twitter") ? 'active ' : '') +
+                            '<%=@hash%>networks-twitter <%=@hash%>networks-list" data-dest="twitter" ' +
+                              (contains("twitter") ? '' : 'hidden') + ">" +
+                              '<button onclick="return false;" class="ir <%=@hash%>networks-twitter-button"> Twitter </button>' +
+                              '</li>' +
+                              '<li class="' +
+                              (contains("facebook") ? 'active ' : '') +
+                              '<%=@hash%>networks-facebook <%=@hash%>networks-list" data-dest="facebook" ' +
+                              (contains("facebook") ? '' : 'hidden') + ">" +
+                              '<button onclick="return false;" class="ir <%=@hash%>networks-facebook-button"> Facebook </button>' +
+                              '</li>' +
+                            '</ul>' +
+                          '</fieldset>' +
+                          '<fieldset class="<%=@hash%>share-submit"> ' +
+                            '<button class="<%=@hash%>share-submit-button" type="submit"> Share it</button>' +
+                          '</fieldset>' +
+                          '</div></div>');
+
+              shelbyJ(".<%=@hash%>networks-twitter").click(function() { shelbyJ(".<%=@hash%>networks-facebook").toggleClass("active");});
+              shelbyJ(".<%=@hash%>networks-facebook").click(function() { shelbyJ(".<%=@hash%>networks-facebook").toggleClass("active");});
+
+
+        },
+
+        styleGuideShow : function(guideName) {
+                    var allGuides = shelbyRadar.allGuides;
+                    if (!shelbyJ('#' + guideName + '-window').is(':visible')) {
+                      shelbyJ("#" + guideName + "-window").show('slide', {direction : 'right'}, 'fast');
+                      shelbyJ("#" + guideName + "-clickoff").show();
+                    }
+                    for (var key in allGuides) {
+                      if (key !== guideName) {
+                        shelbyRadar.styleGuideHide(key);
+                      }
+                    }
+        },
+
+        styleGuideHide : function(guideName) {
+                    if (shelbyJ('#' + guideName + '-window').is(':visible')) {
+                      shelbyJ("#" + guideName + "-window").hide('slide', {direction : 'right'}, 'fast');
+                      shelbyJ("#" + guideName + "-clickoff").hide();
+                    }
+        },
+		
+
+        find : function(possibleVideos, shelbyJ) {
+                shelbyJ("#shelby-bookmarklet-text").html("Finding videos");
+
+                 var videos_to_add = [];
+                 var found_elements = [];
+                 for (var i = 0; i < possibleVideos.embeds.length; i++) {
+                   found_elements.push(possibleVideos.embeds[i]); 
+                  }
+                  for (var i = 0; i < possibleVideos.videos.length; i++) {
+                    found_elements.push(possibleVideos.videos[i]);
+                  }
+                  for (var i = 0; i < possibleVideos.iframes.length; i++) {
+                    found_elements.push(possibleVideos.iframes[i]);
+                  }
+                  for (var i = 0; i < possibleVideos.objects.length; i++) {
+                    if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || 
+                              possibleVideos.embeds.length == 0) && 
+                              (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
+                      found_elements.push(possibleVideos.objects[i]);
+                    } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || 
+                              possibleVideos.embeds.length == 0) && 
+                              (/<vimeo/i.test(possibleVideos.objects[i].innerHTML))) {
+                      found_elements.push(possibleVideos.objects[i]);
+                    } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || 
+                              possibleVideos.embeds.length == 0) && 
+                              (/<ooyala/i.test(possibleVideos.objects[i].innerHTML))) {
+                      found_elements.push(possibleVideos.objects[i]);
+                    }
+                  }
+                  for (var i = 0; i < found_elements.length; i++) {
+                    if (this.getElementValue(found_elements[i], 'data-youtube-id', shelbyJ)) {
+                      var obj = jQuery(found_elements[i]);
+                      videos_to_add.push({
+                            embed: obj,
+                            domain: "youtube.com",
+                            video_id : this.getElementValue(found_elements[i], 'data-youtube-id', shelbyJ)
+                      });
+                    } else {
+                      var str = this.getElementValue(found_elements[i], 'flashvars', shelbyJ) + '&amp;' +
+                                      this.getElementValue(found_elements[i], 'src', shelbyJ) +
+                                      this.getElementValue(found_elements[i], 'data', shelbyJ) +
+                                      this.getElementValue(found_elements[i], 'name', shelbyJ) +
+                                      found_elements[i].innerHTML + found_elements[i].id;
+                      for (var j = 0; j < this.knownProviders.length; j++) {
+                        for (var k = 0; k < this.knownProviders[j].regex.length; k++) {
+                          var reg = new RegExp(this.knownProviders[j].regex[k]);
+                          var domain_split = this.knownProviders[j].domain.split(',');
+                          var valid_domain = false;
+                          for (var l = 0; l < domain_split.length; l++) {
+                            var domain_reg = new RegExp(jQuery.trim(domain_split[l]));
+                            if (domain_reg.test(str) || domain_reg.test(window.location)) {
+                              valid_domain = true;
+                              break;
+                            }
+                          }
+                          if (reg.test(str) && valid_domain) {
+                            var match = reg.exec(str);
+                            var obj = jQuery(found_elements[i]);
+                            if (obj.width() == 0) {
+                              obj = obj.parent();
+                            }
+                            if (match[2] == undefined) {
+                              if (match[1] == undefined) {
+                                match[1] = window.location.href;
+                              } else {
+                                match[2] = match[1];
+                              }
+                            }
+                            videos_to_add.push({
+                              embed : obj,
+                              domain : this.knownProviders[j].domain,
+                              video_id : match[2],
+                              provider : this.knownProviders[j].provider,
+                              known_url : this.composeKnownUrl(this.knownProviders[j].domain, match[2])
+                            });
+                            break;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  return videos_to_add;
+                  
+        },
+
+        allGuides : {"shelby-roll-guide" : "Roll",
+                     "shelby-comment-guide" : "Comments", 
+                     "shelby-share-guide" : "Share"
+                    },
+
+        knownProviders : [
+                    { "provider" : "blip", "domain": "blip.tv", "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"] },
+                    { "provider" : "brightcove", "domain": "brightcove.com", "regex": ["brightcove.com\\\/services\\\/viewer"] },
+                    { "provider" : "collegehumor", "domain": "collegehumor.com", "regex": ["videoid([0-9]+)", "clip_id=([0-9]+)"] },
+                    { "provider" : "dailymotion", "domain": "dailymotion.com", "regex": ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"] },
+                    /*{ "domain": "hulu.com", "regex": ["http:\\\/\\\/player\\.hulu\\.com\\\/express\\\/.*?"] },*/
+                    { "provider" : "hulu", "domain": "hulu.com", "regex": ["\/site-player\/(\\d*)\/player"] },
+                    { "provider" : "pbs", "domain": "video.pbs.org", "regex": ["width=512&height=288&video=.*?\\\/([0-9]+)"] },
+                    { "provider" : "techcrunch", "domain": "techcrunch.tv", "regex": ["embedCode=(\\w*)"] },
+                    { "provider" : "ted", "domain": "ted.com", "regex": ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"] },
+                    { "provider" : "vimeo", "domain": "vimeo.com", "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)", "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)"] },
+                    { "provider" : "youtube", "domain": "youtube.com", "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)", "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"] },
+                    { "provider" : "bloomberg", "domain": "bloomberg.com", "regex": ["embedCode=(\\w*)"] }
+        ],
+		
+
+      imageUrls : {
+              like : {on : "http://gt.shelby.tv/images/assets/videocard_heart_on.svg", off : "http://gt.shelby.tv/images/assets/videocard_heart_off.svg"},
+              comment : {on : "http://gt.shelby.tv/images/assets/videocard_comment_on.svg", off : "http://gt.shelby.tv/images/assets/videocard_comment_off.svg"},
+              roll : {on : "http://gt.shelby.tv/images/assets/videocard_roll_on.svg", off : "http://gt.shelby.tv/images/assets/videocard_roll_off.svg"},
+              share : {on : "http://gt.shelby.tv/images/assets/videocard_share_on.svg", off : "http://gt.shelby.tv/images/assets/videocard_share_off.svg"},
+              twitter : {on :"http://gt.shelby.tv/images/assets/rolls_share_twitter_on.svg", off: "http://gt.shelby.tv/images/assets/rolls_share_twitter_off.svg"},
+              facebook : {on :"http://gt.shelby.tv/images/assets/rolls_share_facebook_on.svg", off: "http://gt.shelby.tv/images/assets/rolls_share_facebook_off.svg"},
+      },
+
+    foundVideo : null,
+  
+    shelbify : function() {
+      shelbyRadar.setUpGuide("shelby-roll-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("shelby-share-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("shelby-comment-guide", shelbyGuideWidth);
+      shelbyRadar.commentGuideHtml();
+      shelbyRadar.foundVideo = shelbyRadar.find(possibleVideos, shelbyJ);
+      shelbyRadar.signedIn(shelbyJ);
+    }
+  };
+   shelbyJ.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js", shelbyRadar.shelbify());
+  })
+});

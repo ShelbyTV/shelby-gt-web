@@ -14,7 +14,10 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/signout' => "home#signout", :as => :signout
 
+  get '/video_radar/load.js' => 'video_radar#load', :format => "js"
+
   get '(*path)' => 'home#index', :as => :root
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
