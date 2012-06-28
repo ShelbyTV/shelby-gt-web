@@ -40,16 +40,20 @@ class ApplicationController < ActionController::Base
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
       frame_id = path_match[1]
       video_info = Shelby::API.get_video_info(frame_id)
-      video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" unless video_info["thumnail_url"]
       if video_info
+        if !video_info['video']["thumbnail_url"]
+          video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" 
+        end
         video_embed = video_info['video']['embed_url']
         permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
       end
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(path)
       roll_id = path_match[1]
       video_info = Shelby::API.get_first_frame_on_roll(roll_id)
-      video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" unless video_info["thumnail_url"]
       if video_info
+        if !video_info['video']["thumbnail_url"]
+          video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" 
+        end
         video_embed = video_info['video']['embed_url']
         permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
       end
