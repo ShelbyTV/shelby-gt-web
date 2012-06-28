@@ -72,6 +72,7 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doSmartRefresh : !this._dashboardMasterCollection.isEmpty(),
               doStaticRender : true,
               fetchParams : {
                 include_children : true,
@@ -84,24 +85,23 @@
           };
          break;
         case DisplayState.rollList :
-          var sourceModel, binarySearchOffset;
+          var binarySearchOffset, sourceModel;
           if (this.model.get('rollListContent') == GuidePresentation.content.rolls.browse) {
-            sourceModel = shelby.models.browseRolls;
             binarySearchOffset = 0;
+            sourceModel = shelby.models.browseRolls;
           } else {
-            sourceModel = shelby.models.rollFollowings;
             binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
+            sourceModel = shelby.models.rollFollowings;
           }
-
-
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
           displayParams = {
             viewProto : RollListView,
             model : sourceModel,
             onAppendChild : this._populateRollList,
             options : {
-              doStaticRender : true,
-              binarySearchOffset : binarySearchOffset
+              binarySearchOffset : binarySearchOffset,
+              doSmartRefresh : !sourceModel.get('rolls').isEmpty(),
+              doStaticRender : true
             },
             shouldFetch : shouldFetch,
             spinner : shouldFetch
