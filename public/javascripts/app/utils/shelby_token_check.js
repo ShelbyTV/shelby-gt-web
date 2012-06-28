@@ -11,7 +11,7 @@ _(shelby).extend({
 	checkFbTokenValidity : function(){
 		if (shelby.userHasProvider('facebook')){
 			// do ajax request to see if token is valid
-			var _url = shelby.config.apiRoot + '/user/' +  shelby.models.user.id + '/valid_token?provider=facebook';
+			var _url = shelby.config.apiRoot + '/user/' +  shelby.models.user.id + '/is_token_valid?provider=facebook';
 			var _fbAuth = shelby.config.apiBase + "/auth/facebook";
 			$.ajax({ url:_url, xhrFields: {withCredentials: true} })
 				.success(function(r){
