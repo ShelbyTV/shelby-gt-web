@@ -15,8 +15,8 @@ _(shelby).extend({
 			var _fbAuth = shelby.config.apiBase + "/auth/facebook";
 			$.ajax({ url:_url, xhrFields: {withCredentials: true} })
 				.success(function(r){
-					if (r.status == 200 && r.result.token_valid){
-						shelby.alert("In order to provide a great experience we need you to re-authenticate with facebook. You will then be re-directed back to Shelby. Hurray!", function(){ document.location.href = _fbAuth; });
+					if (r.status == 200 && !r.result.token_valid){
+						shelby.alert("In order to provide a great experience we need you to re-authenticate with facebook. Don't worry, you'll be re-directed back to Shelby. Yay!", function(){ document.location.href = _fbAuth; });
 					}
 				})
 				.error(function(r){
