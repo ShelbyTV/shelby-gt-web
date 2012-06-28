@@ -2,9 +2,9 @@
 	<!-- For FB -->
 	<meta property="fb:app_id" 	content="<%= Settings::Facebook.facebook_app_id %>" /> 
 	<meta property="og:type" 		content="video.other" />
-	<meta property="og:url"			content="http://<%= @meta_info[:permalink] %>" /> 
-	<meta property="og:video:url" content="http://<%= @meta_info[:permalink] %>" /> 
-	<meta property="og:video:secure_url" content="https://<%= @meta_info[:permalink] %>" /> 
+	<meta property="og:url"			content="<%= @meta_info[:permalink] %>" /> 
+	<meta property="og:video:url" content="<%= @meta_info[:permalink] %>" /> 
+	<meta property="og:video:secure_url" content="https://<%= @meta_info[:permalink][7..-1] %>" /> 
 	<meta property="og:locale"      content="EN_us" />
 <% end %>
 
