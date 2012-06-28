@@ -16,6 +16,7 @@
     }, 
 
     _post : function(cmd, args){
+			if (!shelby.userSignedIn()) return false;
       if (this._disabled) return false;
 
       var data, path;
