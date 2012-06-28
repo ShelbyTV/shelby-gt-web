@@ -5,6 +5,8 @@
 }
 
 .guide-presentation-stream {
+  //needs refactoring eventually:
+  //x-tab-primer is applying a slew of backgrounds which are then overwritten by the consective background style.
   @extend .notype;
   @include x-tab-primer($guide-presentation-tab-bg-color);
   @include background(
