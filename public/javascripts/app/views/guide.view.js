@@ -73,6 +73,7 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doSmartRefresh : !this._dashboardMasterCollection.isEmpty(),
               doStaticRender : true,
               fetchParams : {
                 include_children : true,
@@ -85,10 +86,12 @@
           };
          break;
         case DisplayState.rollList :
-          var sourceModel;
+          var binarySearchOffset, sourceModel;
           if (this.model.get('rollListContent') == contentRollsEnum.browse) {
+            binarySearchOffset = 0;
             sourceModel = shelby.models.browseRolls;
           } else {
+            binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
             sourceModel = shelby.models.rollFollowings;
           }
           var listItemView;
@@ -103,6 +106,8 @@
             model : sourceModel,
             onAppendChild : this._populateRollList,
             options : {
+              binarySearchOffset : binarySearchOffset,
+              doSmartRefresh : !sourceModel.get('rolls').isEmpty(),
               doStaticRender : true,
               listItemView : listItemView
             },
