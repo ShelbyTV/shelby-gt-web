@@ -42,6 +42,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         shelby.models.rollFollowings.fetch({
           success : function() {
             self._reroute();
+						shelby.checkFbTokenValidity();
           }
         });
       },
@@ -66,4 +67,5 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     Backbone.history.stop();
     Backbone.history.start({pushState:true});
   }
+
 });

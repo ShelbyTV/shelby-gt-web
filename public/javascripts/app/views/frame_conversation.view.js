@@ -73,6 +73,7 @@
           console.log('err', arguments);
         }
       });
+      libs.utils.rhombus.sadd('comments', this.model.id);
       return false;
     },
 
