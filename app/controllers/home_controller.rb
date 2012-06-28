@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   def index
     
     # Get video and user info from shelby api for meta tags
-    @meta_info = get_video_info(params[:path])\
+    @meta_info = get_video_info(params[:path])
 
     # Get parameters associated with omniauth failure
     @auth_failure = params[:auth_failure] == '1'
