@@ -16,16 +16,19 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   }),
 
   events : {
-    "click .js-frame-activate"              : "_activate",
-    "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
-    "click .js-frame-source"                : "_goToSourceRoll",
-    "click .js-roll-frame"                  : "requestFrameRollView",
-    "click .js-share-frame"                 : "requestFrameShareView",
-    "click .js-save-frame"                  : "_saveToWatchLater",
-    "click .js-remove-frame"                : "_removeFromWatchLater",
-    "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-upvote-frame"                : "_upvote",
-    "click .js-go-to-roll-by-id"            : "_goToRollById"
+    "click .js-frame-activate"                  : "_activate",
+    "click .js-creator-personal-roll"           : "_goToCreatorsPersonalRoll",
+    "click .js-frame-source"                    : "_goToSourceRoll",
+    "click .js-roll-frame"                      : "requestFrameRollView",
+    "click .js-share-frame"                     : "requestFrameShareView",
+    "click .js-save-frame"                      : "_saveToWatchLater",
+    "click .js-remove-frame"                    : "_removeFromWatchLater",
+    "click .js-video-activity-toggle"           : "_requestConversationView",
+    "click .js-upvote-frame"                    : "_upvote",
+    "click .js-go-to-roll-by-id"                : "_goToRollById",
+    "click .js-frame-activate-collapsed"        : "_expand",
+    "click .js-creator-personal-roll-collapsed" : "_expand",
+    "click .js-frame-source-collapsed"          : "_expand"
   },
 
   tagName : 'li',
@@ -68,6 +71,9 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     this.$el.html(this.template({ frame : this.model, options : this.options }));
 
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+  },
+
+  _expand: function(){
   },
 
   _activate : function(){

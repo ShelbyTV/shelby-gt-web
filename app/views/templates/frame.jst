@@ -6,24 +6,25 @@
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
-<% var contextOverlay = options.contextOverlay %> 
-<article id="<%= frame.get('conversation_id') %>" class="video-card">
+<% var contextOverlay = options.contextOverlay %>
+<% var suffix = Math.floor(Math.random()*2) == 0 && !contextOverlay ? "-collapsed" : "" %>
+<article id="<%= frame.get('conversation_id') %>" class="video-card<%= suffix %>">
 
-  <header class="video-card-header clearfix">
-    <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+  <header class="video-card-header<%= suffix %> clearfix">
+    <a onclick="return false;" class="js-creator-personal-roll<%= suffix %> js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
       <% if(creatorThumbnail){ %>
-        <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+        <img class="frame-creator-avatar<%= suffix %>" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
       <% } else { %>
         <div class="frame-creator-avatar-missing"></div>
       <% } %>  
     </a>
-    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-      <h1 class="frame-creator-roll">
+    <a onclick="return false;" class="js-frame-source<%= suffix %> js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+      <h1 class="frame-creator-roll<%= suffix %>">
         <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
     <% if (!contextOverlay) { %>
-      <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+      <h2 class="frame-timestamp<%= suffix %>"><!-- frame-creator-origin-* -->
         <%= frame.get('created_at') %>
       </h2>
     <% } else { %>
@@ -32,15 +33,15 @@
       </button>
     <% } %>
 
-    <a onclick="return false;" class="js-frame-activate" href="#"> 
-      <h3 class="frame-title">
+    <a onclick="return false;" class="js-frame-activate<%= suffix %>" href="#"> 
+      <h3 class="frame-title<%= suffix %>">
         <%= frame.get('video') && frameTitle %>
       </h3>
     </a>
   </header> 
   <% if (!contextOverlay) { %>  
     <% if( frameThumbnail ) { %>
-      <div class="video-thumbnail js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
+      <div class="video-thumbnail<%= suffix %> js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
         <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
       </div>
     <% } else { %>
@@ -48,7 +49,7 @@
     <% } %>  
   <% } /* end of contextOverlay */ %>
 
-  <footer class="video-card-footer">
+  <footer class="video-card-footer<%= suffix %>">
 
     <% if(!frame.isOnRollTypeGenius()) { %>
 
