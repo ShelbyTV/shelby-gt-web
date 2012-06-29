@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_video_info(path)
-    roll_info, video_info, user_info, permalink = nil
+    roll_info, video_info, user_info, roll_permalink, permalink = nil
     
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
       frame_id = path_match[1]
@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
         end
         video_embed = video_info['video']['embed_url']
         permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
+        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
       end
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(path)
       roll_id = path_match[1]
@@ -56,6 +57,7 @@ class ApplicationController < ActionController::Base
         end
         video_embed = video_info['video']['embed_url']
         permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
+        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
       end
     elsif path_match = /user\/(\w*)\/personal_roll/.match(path)
       user_nickname = path_match[1]
@@ -65,6 +67,7 @@ class ApplicationController < ActionController::Base
     
     info = {
       :video_info =>  video_info,
+      :roll_permalink => roll_permalink,
       :video_embed => video_embed,
       :user_info =>   user_info,
       :permalink =>   permalink

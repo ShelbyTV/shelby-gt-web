@@ -43,6 +43,10 @@ module Shelby
     def self.generate_user_route(user_nickname)
       return "#{Settings::Application.url}/user/#{user_nickname}/rolls/personal"
     end
-  
+    
+    def self.generate_roll_route(roll_id)
+      return "#{Settings::Application.url}/roll/#{roll_id}"
+    end
+    
   end
 end
