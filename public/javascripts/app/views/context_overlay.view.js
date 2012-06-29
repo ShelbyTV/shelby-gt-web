@@ -29,7 +29,7 @@
       //unbind
       if (this.model) {
         this.model.unbind('destroy', this._onFrameRemove, this);
-        this.model.unbind('change:upvoters', this._onUpvoteChange, this);
+        this.model.unbind('change', this.render, this);
         this.model.get('conversation').unbind('change', this._onConversationChange, this);
       }
 
@@ -42,7 +42,7 @@
 
       //bind
       this.model.bind('destroy', this._onFrameRemove, this);
-      this.model.bind('change:upvoters', this._onUpvoteChange, this);
+      this.model.bind('change', this.render, this);
       this.model.get('conversation').bind('change', this._onConversationChange, this);
 
       this.render();
