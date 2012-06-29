@@ -1,6 +1,6 @@
 .frame-logo {
   font-size:14px;
-  font-weight:300;
+  font-weight:100;
   color : #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
@@ -27,5 +27,60 @@
   color: #DCDDDE;
   font-size: 1.2em;
   line-height: 1.4;
+  text-align: left;
 }
+
+.roll-selection-item {
+  height: 66px;
+}
+
+.guide-overlay-title-text {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500
+}
+
+#roll-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+#share-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+#comment-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+#roll-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index:99999; 
+  overflow: auto;
+}
+
+#share-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index:99999; 
+  overflow: auto;
+}
+#comment-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index:99999; 
+  overflow: auto;
+}
+
 

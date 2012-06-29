@@ -1,7 +1,7 @@
 /* line 1, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 100;
   color: #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
@@ -29,11 +29,71 @@
 .ext-elements {
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   color: #DCDDDE;
-  font-size: 1.2px;
+  font-size: 1.2em;
   line-height: 1.4;
   text-align: left;
 }
 
+/* line 33, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item {
   height: 66px;
+}
+
+/* line 37, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.guide-overlay-title-text {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* line 44, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#roll-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 49, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#share-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 54, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#comment-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 60, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#roll-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
+}
+
+/* line 69, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#share-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
+}
+
+/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#comment-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
 }

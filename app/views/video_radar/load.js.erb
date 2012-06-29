@@ -1,42 +1,11 @@
-function loadScript(url, callback) {
-  var body = document.getElementsByTagName("body")[0];
-  var script = document.createElement("script");
-  script.src = url;
+window.bookmarklet = function(opts){fullFunc(opts)};
 
-  var done = false;
-  script.onload = script.onreadystatechange = function() {
-    if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-      done = true;
-      callback();
-      script.onload = script.onreadystatechange = null;
-      body.removeChild(script);
-    }
-  };
-  body.appendChild(script);
-};
+window.bookmarklet({
+css: ["http://localhost:3000/stylesheets/radar.css"],
+js : ["https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"],
+jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
-function loadCss(url, callback) {
-  var body = document.getElementsByTagName("body")[0];
-  var fileref = document.createElement("link");
-
-  fileref.setAttribute("rel", "stylesheet");
-  fileref.setAttribute("type", "text/css");
-  fileref.setAttribute("href", url);
-
-  var done = false;
-  fileref.onload = fileref.onreadystatechange = function() {
-    if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-      done = true;
-      callback();
-      fileref.onload = fileref.onreadystatechange = null;
-    }
-  };
-  body.appendChild(fileref);
-};
-
-loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
-  loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
-
+ready : function() {
     var shelbyJ = jQuery.noConflict();
     possibleVideos = {
       embeds : shelbyJ('embed'),
@@ -58,8 +27,8 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
 
       shelbySignedInCallback : function(response) {
         if (response.result.signed_in === false) {
-          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=shelby-login> <iframe height = 400 width=600 src="http://gt.shelby.tv"> </iframe></div>');
-          shelbyJ('#shelby-login').css("position", "fixed")
+          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=<%=@hash%>login> <iframe height = 400 width=600 src="http://gt.shelby.tv"> </iframe></div>');
+          shelbyJ('#<%=@hash%>login').css("position", "fixed")
                                   .css("left", "0px")
                                   .css("top", "0px")
         } else {
@@ -71,7 +40,7 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
         shelbyRadar.shelbyBkmkltUser = response.result;
         var authentications = response.result.authentications;
         shelbyRadar.shareGuideHtml(authentications);
-        shelbyJ('.shelby-guide-overlay-context-creator').html(response.result.nickname);
+        shelbyJ('.<%=@hash%>guide-overlay-context-creator').html(response.result.nickname);
         shelbyJ.ajax( {
           type : 'GET',
           url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyRadar.shelbyBkmkltUser.id + '/rolls/postable',
@@ -80,28 +49,28 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
           xhrFields : {withCredentials : true},
           success : function(response) {
             rolls = response.result;
-            rollHTML = '<div class=<%=@hash%>existing-rolls-list> <ul class="<%=@hash%>list"> ';
+            rollStringbuilder = [];
+            rollStringbuilder.push('<div class=<%=@hash%>existing-rolls-list> <ul class="<%=@hash%>list"> ');
             for (var i = 0; i < rolls.length; i++) {
               roll = rolls[i];
-              rollHTML += '<li id="shelby-roll-' + roll.id + '" data-rollid = "' + roll.id + '" class="<%=@hash%>roll-selection-item">' +
-              '<div class="<%=@hash%>roll-selection-item-add clearfix">' +
-                              'Add' +
-                            '</div>' + 
-                            '<div class="<%=@hash%>roll-selection-item-lining">' +
-                            '<img class="<%=@hash%>roll-selection-item-thumbnail" src="' +
-                                          roll.thumbnail_url +
-                                '">' +
-                                '<div class="<%=@hash%>roll-selection-item-title">' +
-                                          roll.title +
-                              '</div>' +
-                              '<div class="<%=@hash%>roll-selection-item-state">' +
-                                    (roll.public ? "public" : "private") +
-                              '</div>' +
-                              '</div>' +
-                            "</li>"
+              rollStringbuilder.push('<li id="<%=@hash%>roll-');
+              rollStringbuilder.push(roll.id);
+              rollStringbuilder.push('" data-rollid = "');
+              rollStringbuilder.push(roll.id);
+              rollStringbuilder.push('" class="<%=@hash%>roll-selection-item">');
+              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-add clearfix"> Add</div>'); 
+              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-lining">');
+              rollStringbuilder.push('<img class="<%=@hash%>roll-selection-item-thumbnail" src="');
+              rollStringbuilder.push(roll.thumbnail_url);
+              rollStringbuilder.push('">');
+              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-title">');
+              rollStringbuilder.push(roll.title);
+              rollStringbuilder.push('</div><div class="<%=@hash%>roll-selection-item-state">');
+              rollStringbuilder.push(roll.public ? "public" : "private");
+              rollStringbuilder.push('</div></div></li>');
             }
-            rollHTML += '</ul></div>';
-            shelbyJ("#shelby-roll-guide-window").append(rollHTML);
+            rollStringbuilder.push('</ul></div>');
+            shelbyJ("#<%=@hash%>roll-guide-window").append(rollStringbuilder.join(''));
             shelbyRadar.shelbyDocElements['rollsList'] = shelbyJ(".<%=@hash%>existing-rolls-list");
             shelbyRadar.sendVidsToShelby(shelbyRadar.foundVideo, shelbyJ);
           }
@@ -157,15 +126,24 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
         getWidth : function(jqueryVid) {
           return jqueryVid.width() + 1;
         },
+      
+        getHeaderVpos : function(vidHeight, vidTop) {
+          return vidTop - 45;
+        },
+        getFooterVpos : function(vidHeight, vidTop) {
+          return vidHeight + vidTop;
+        },
+       
+
         
         resizeFunction : function(vids, vidIndex, r, height) {
                     vid = vids[vidIndex]
-                    shelbyJ('.shelby-found-video-' + r)
+                    shelbyJ('.<%=@hash%>found-video-' + r)
                                     .css("left", vid.embed.offset().left)
-                                    .css("top", vid.embed.offset().top + height);
-                    shelbyJ('#shelby-frame-info-' + r)
+                                    .css("top", getFooterVpos(height, vid.embed.offset().top));
+                    shelbyJ('#<%=@hash%>frame-info-' + r)
                                     .css("left", vid.embed.offset().left)
-                                    .css("top", vid.embed.offset().top - 45);
+                                    .css("top", getHeaderVpos(height, vid.embed.offset().top));
         },
         resizeArray : [],
 
@@ -191,9 +169,9 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                       // put buttons here, we have hpos, vpos, fixed positions
                     
 
-                      shelbyRadar.shelbyDocElements['ext-elements'].append('<div class="<%=@hash%>video-card-header clearfix" id="shelby-frame-info-' + r + '"></div>');
+                      shelbyRadar.shelbyDocElements['ext-elements'].append('<div class="<%=@hash%>video-card-header clearfix" id="<%=@hash%>frame-info-' + r + '"></div>');
 
-                      shelbyJ("#shelby-frame-info-" + r).css("position", "absolute")
+                      shelbyJ("#<%=@hash%>frame-info-" + r).css("position", "absolute")
                           .css("left", hpos + "px")
                           .css("top", vids[i].embed.offset().top - 45 + "px")
                           .css("z-index", "89999")
@@ -206,30 +184,30 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
 
                      
                     
-                      shelbyRadar.shelbyDocElements['ext-elements'].append('<ul class="<%=@hash%>frame-controls clearfix ' + ' shelby-found-video-' + r + '" type="toolbar"> </ul>');
+                      shelbyRadar.shelbyDocElements['ext-elements'].append('<ul class="<%=@hash%>frame-controls clearfix ' + ' <%=@hash%>found-video-' + r + '" type="toolbar"> </ul>');
 
 
-                      shelbyJ('.shelby-found-video-' + r).html(
+                      shelbyJ('.<%=@hash%>found-video-' + r).html(
                           '<li class="<%=@hash%>frame-controls-like toolbar-ele-' + bcastClass + '">' +
-                                '<button class="aniImg shelby-all-like ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
-                                  '<i class="js-upvote-frame-lining" id=shelby-like-text-' + r + '> &nbsp; </i>' +
+                                '<button class="aniImg <%=@hash%>all-like ' + bcastClass + '-img <%=@hash%>button-' + r + '" type="button">' +
+                                  '<i class="js-upvote-frame-lining" id=<%=@hash%>like-text-' + r + '> &nbsp; </i>' +
                                 '</button>' +
                               '</li>' +
 
                               '<li class="<%=@hash%>frame-controls-comments toolbar-ele-' + bcastClass + '">' +
-                                '<button class="aniImg shelby-all-comment ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
-                                  '<i class="comments-frame-lining" id=shelby-comment-text-' + r + '> &nbsp; </i>' +
+                                '<button class="aniImg <%=@hash%>all-comment ' + bcastClass + '-img <%=@hash%>button-' + r + '" type="button">' +
+                                  '<i class="comments-frame-lining" id=<%=@hash%>comment-text-' + r + '> &nbsp; </i>' +
                                 '</button>' +
                               '</li>' +
 
                               '<li class="<%=@hash%>frame-controls-roll toolbar-ele-' + bcastClass + '">' +
-                                '<button class="aniImg shelby-all-roll ir ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                '<button class="aniImg <%=@hash%>all-roll ir ' + bcastClass + '-img <%=@hash%>button-' + r + '" type="button">' +
                                   ' Roll it ' +
                                 '</button>' +
                               '</li>' +
 
                               '<li class="<%=@hash%>frame-controls-share toolbar-ele-' + bcastClass + '">' +
-                                '<button class="aniImg shelby-all-share ir ' + bcastClass + '-img shelby-button-' + r + '" type="button">' +
+                                '<button class="aniImg <%=@hash%>all-share ir ' + bcastClass + '-img <%=@hash%>button-' + r + '" type="button">' +
                                   'Share it ' +
                                 '</button>' +
                               '</li>')
@@ -240,8 +218,8 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                           .css("width", width + "px")
                           .css("background-color", "#35383A")
                           .css("border-radius", "0 0 5px 5px")
-                      var frameInfoId = shelbyJ("#shelby-frame-info-" + r).attr("id");
-                      shelbyJ(".shelby-button-" + r).attr("data-frameid", frameInfoId).attr("data-videourl", vids[i].known_url);
+                      var frameInfoId = shelbyJ("#<%=@hash%>frame-info-" + r).attr("id");
+                      shelbyJ(".<%=@hash%>button-" + r).attr("data-frameid", frameInfoId).attr("data-videourl", vids[i].known_url);
 
 
                       shelbyRadar.resizeArray.push(function (vidIndex, r) {
@@ -300,8 +278,8 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                     }
                   }
 
-                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".shelby-all-roll", null, function(event) {
-                    shelbyRadar.styleGuideShow("shelby-roll-guide");
+                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".<%=@hash%>all-roll", null, function(event) {
+                    shelbyRadar.styleGuideShow("<%=@hash%>roll-guide");
                     var rollItems = shelbyRadar.shelbyDocElements['rollItems'];
                     var rollButton = event.currentTarget;
                     shelbyRadar.shelbyDocElements['rollsList'].off('click', ".<%=@hash%>roll-selection-item");
@@ -318,8 +296,8 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                       })
                     });
 
-                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".shelby-all-share", null, function(event) {
-                      shelbyRadar.styleGuideShow("shelby-share-guide");
+                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".<%=@hash%>all-share", null, function(event) {
+                      shelbyRadar.styleGuideShow("<%=@hash%>share-guide");
                       var shelbyButton = event.currentTarget;
 
                       var shelbyFrameId = shelbyJ("#" + shelbyButton.getAttribute("data-frameid")).data("shelbyframeid");
@@ -339,13 +317,13 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                       }
                   });
 
-                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".shelby-all-comment", null, function(event) {
+                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".<%=@hash%>all-comment", null, function(event) {
                       var commentButton = event.currentTarget;
                         var conversationId = shelbyJ("#" + commentButton.getAttribute("data-frameid")).data("conversationid");
                         if (conversationId !== undefined) {
                           shelbyRadar.setUpConversationWithId(conversationId);
                         }
-                        shelbyRadar.styleGuideShow("shelby-comment-guide");
+                        shelbyRadar.styleGuideShow("<%=@hash%>comment-guide");
                         shelbyRadar.shelbyDocElements['commentSubmit'].off('click');
                         shelbyRadar.shelbyDocElements['commentSubmit'].on('click', function(event) {
                           event.preventDefault();
@@ -372,7 +350,7 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                         });
                   });
 
-                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', '.shelby-all-like', null, function(event) {
+                  shelbyRadar.shelbyDocElements['ext-elements'].on('click', '.<%=@hash%>all-like', null, function(event) {
                       var likeButton = event.currentTarget;
                       var shelbyFrameId = shelbyJ("#" + likeButton.getAttribute("data-frameid")).data("shelbyframeid");
                       if (shelbyFrameId===undefined) {
@@ -555,23 +533,16 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
 
         setUpGuide : function(guideName, styleGuideWidth) {
           shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class=' + guideName + ' hidden="hidden">  </div>');
-          shelbyJ('#' + guideName + '-window').css("position", "fixed")
-                                              .css("right", "0px")
-                                              .css("top", "0px")
+          shelbyJ('#' + guideName + '-window')
                                               .css("width", shelbyGuideWidth + "px")
                                               .css("height", shelbyJ(window).height() + "px")
-                                              .css("background", "#222")
-                                              .css("z-index", "99999")
-                                              .css("overflow", "auto");
                     
           // set up clickoff
           shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class=' + guideName + ' hidden="hidden"></div>')
-          shelbyJ("#" + guideName + "-clickoff").css("top", "0px")
+          shelbyJ("#" + guideName + "-clickoff")
                                     .css("right", shelbyGuideWidth + "px")
-                                    .css("position", "fixed")
                                     .css("height", shelbyJ(window).height() + "px")
                                     .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px")
-                                    .css("z-index", "99999")
                                     .click(function() {
                                         shelbyRadar.styleGuideHide(guideName);
                                     });
@@ -586,11 +557,6 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                                                                 '<div class = "<%=@hash%>guide-overlay-context-title"></div>' +
                                                               '</div>' + 
                                                               '</div>');
-          shelbyJ(".<%=@hash%>guide-overlay-title-text").css("line-height", 2.25)
-                                                      .css("text-align", "center")
-                                                      .css("font-size", "20px")
-                                                      .css("font-weight", "500");
-
 
           shelbyJ(window).resize(function() {
               shelbyJ("#" + guideName + "-window").css("height", shelbyJ(window).height() + "px");
@@ -620,7 +586,7 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
         },
 
         commentGuideHtml : function() {
-              shelbyJ('#shelby-comment-guide-window').append(
+              shelbyJ('#<%=@hash%>comment-guide-window').append(
                   '<div id="<%=@hash%>conversation-scroller">' +
                     '<ul class="<%=@hash%>conversation <%=@hash%>frame-conversation"></ul>' +
                     '<form class="<%=@hash%>new-comment clearfix">' +
@@ -644,7 +610,7 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                 return false;
               }
 
-              shelbyJ('#shelby-share-guide-window').append(
+              shelbyJ('#<%=@hash%>share-guide-window').append(
                   '<div class="<%=@hash%>frame-sharing">' +
                  '<div class="<%=@hash%>share-form clearfix">' +
                     '<fieldset class="<%=@hash%>share-comment">'  +
@@ -708,8 +674,6 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
 		
 
         find : function(possibleVideos, shelbyJ) {
-                shelbyJ("#shelby-bookmarklet-text").html("Finding videos");
-
                  var videos_to_add = [];
                  var found_elements = [];
                  for (var i = 0; i < possibleVideos.embeds.length; i++) {
@@ -792,9 +756,9 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
                   
         },
 
-        allGuides : {"shelby-roll-guide" : "Roll",
-                     "shelby-comment-guide" : "Comments", 
-                     "shelby-share-guide" : "Share"
+        allGuides : {"<%=@hash%>roll-guide" : "Roll",
+                     "<%=@hash%>comment-guide" : "Comments", 
+                     "<%=@hash%>share-guide" : "Share"
                     },
 
         knownProviders : [
@@ -816,14 +780,16 @@ loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
     foundVideo : null,
   
     shelbify : function() {
-      shelbyRadar.setUpGuide("shelby-roll-guide", shelbyGuideWidth);
-      shelbyRadar.setUpGuide("shelby-share-guide", shelbyGuideWidth);
-      shelbyRadar.setUpGuide("shelby-comment-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("<%=@hash%>roll-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("<%=@hash%>share-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("<%=@hash%>comment-guide", shelbyGuideWidth);
       shelbyRadar.commentGuideHtml();
       shelbyRadar.foundVideo = shelbyRadar.find(possibleVideos, shelbyJ);
       shelbyRadar.signedIn(shelbyJ);
     }
   };
   shelbyRadar.shelbify();
-  })
-});
+}
+})
+
+function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)};

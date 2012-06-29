@@ -1680,7 +1680,7 @@ td {
 
 /* line 273, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1338995882');
+  content: url('/images/../images/assets/twitter_stamp.svg?1340133553');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -1688,12 +1688,12 @@ td {
 
 /* line 283, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1338995882');
+  content: url('/images/../images/assets/facebook_stamp.svg?1340133553');
 }
 
 /* line 290, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1338995882');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1337698194');
 }
 
 /* line 295, ../../app/stylesheets/partials/frame.scss */
@@ -2091,7 +2091,7 @@ td {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -3065,7 +3065,7 @@ td {
 /* line 1, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 100;
   color: #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
@@ -3095,6 +3095,71 @@ td {
   color: #DCDDDE;
   font-size: 1.2em;
   line-height: 1.4;
+  text-align: left;
+}
+
+/* line 33, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-selection-item {
+  height: 66px;
+}
+
+/* line 37, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.guide-overlay-title-text {
+  line-height: 2.25;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* line 44, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#roll-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 49, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#share-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 54, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#comment-guide-clickoff {
+  position: fixed;
+  z-index: 99999;
+  top: 0px;
+}
+
+/* line 60, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#roll-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
+}
+
+/* line 69, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#share-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
+}
+
+/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#comment-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
