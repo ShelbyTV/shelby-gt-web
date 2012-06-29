@@ -2,21 +2,20 @@
 .roll-item-people-lining {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
-  padding: 5px 0 5px 5px;
 }
-/* line 8, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 7, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-lining .roll-item-people {
   margin-top: 12px;
 }
 
-/* line 13, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 12, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button {
   overflow: hidden;
-  padding: 0;
+  padding: 5px 0 5px 5px;
   position: relative;
   z-index: 1;
 }
-/* line 20, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 19, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button:hover:after {
   bottom: -2px;
   box-shadow: 0 0 44px 16px #2c2e2f;
@@ -26,22 +25,22 @@
   position: absolute;
   width: 100%;
 }
-/* line 31, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 30, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button .roll-item-total {
   margin-top: 6px;
 }
-/* line 36, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 35, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button .roll-item-total,
 .roll-item-people-button .roll-item-watched {
   color: #666;
 }
 
-/* line 41, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 40, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people {
   margin-top: 23px;
 }
 
-/* line 47, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 46, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar {
   background-position: center center;
   background-repeat: no-repeat;
@@ -51,12 +50,12 @@
   overflow: hidden;
   width: 40px;
 }
-/* line 58, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 57, ../../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar img {
   height: 100%;
 }
 
-/* line 64, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 63, ../../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -66,11 +65,11 @@
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
 }
-/* line 68, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 67, ../../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 77, ../../../app/stylesheets/partials/roll-item-people.scss */
+/* line 76, ../../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-creator,
 .active-list-item .roll-item-total,
 .active-list-item .roll-item-watched,
