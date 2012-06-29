@@ -25,7 +25,12 @@
 .ext-elements {
   font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
   color: #DCDDDE;
-  font-size: 1.2em;
+  font-size: 1.2px;
   line-height: 1.4;
+  text-align: left;
+}
+
+.roll-selection-item {
+  height: 66px;
 }
 
