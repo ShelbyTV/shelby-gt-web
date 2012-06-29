@@ -34,7 +34,7 @@ function loadCss(url, callback) {
   body.appendChild(fileref);
 };
 
-loadCss('http://localhost:3000/stylesheets/bookmarklet.css', function() {
+loadCss('http://localhost.shelby.tv:3000/stylesheets/radar.css', function() {
   loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
 
     window.shelbyVideo = {};
@@ -158,19 +158,11 @@ loadCss('http://localhost:3000/stylesheets/bookmarklet.css', function() {
         },
         
         getHeight : function(jqueryVid) {
-          var height = parseInt(jqueryVid.attr("height"));
-          if (height === undefined) {
-            height = jqueryVid.height();
-          }
-          return height;
+          return jqueryVid.height(); 
         },
         
         getWidth : function(jqueryVid) {
-          var width = parseInt(jqueryVid.attr("width"));
-          if (width === undefined) {
-            width = jqueryVid.width();
-          }
-          return width;
+          return jqueryVid.width() + 1;
         },
 
         sendVidsToShelby : function(vids, shelbyJ) {
@@ -662,6 +654,9 @@ loadCss('http://localhost:3000/stylesheets/bookmarklet.css', function() {
                     if (!shouldOverwrite && shelbyJ("#" + shelbyFrameId).data("shelbyframeid") !== undefined) {
                       return;
                     }
+
+                    if(!frame){ return };
+
                     shelbyJ("#" + shelbyFrameId).html(
                         '<img src=' + frame.creator.user_image + ' class="<%=@hash%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' +
                         "<div class=<%=@hash%>frame-creator-roll> " + 
