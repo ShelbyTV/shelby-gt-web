@@ -75,31 +75,40 @@
 
 .new-comment {
   background-color: #35383a;
-//  height: 52px;
-//	margin-bottom: 65px; /* b/c the "hide guide" overlay can interfere w/ our elements */
+  padding: 8px;
   position: relative;
    
   .new-comment-submit {
     @include x-button-primer($shelby-gray, small);
-    right: 0;
-    margin: 8px;
-    position: absolute;
-    top: 2px; 
+    margin-top: 40px;
+    margin-left: 7px;
   }
 }
 
 .new-comment-input {
+  @include inputfont;
   @include opacity(0.8);
   @include roundies(input);
   
-  height: 55px;
-  margin: 10px 61px 30px 8px;
-  width: 220px;
+  left: 68px;
+  position: absolute;
+  right: 8px;
 
   &:focus{
     @include transition-property('opacity');
     @include transition-duration(0.25s);
     @include transition-timing-function(ease-in);
     @include opacity(1);
+  }
+}
+
+.new-comment-user-avatar {
+  height: 50px;
+  width: 50px;
+  float:left;
+
+  & > img {
+    height: 100%;
+    overflow: hidden;
   }
 }
