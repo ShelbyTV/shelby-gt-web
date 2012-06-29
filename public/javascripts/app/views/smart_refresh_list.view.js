@@ -48,7 +48,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
           if (this._simulatedMasterCollection.length >= this.options.binarySearchOffset) {
             var insertAtIndex =
               libs.utils.BackboneCollectionUtils.getSortedIndex(item, collection,
-                                                    {searchOffset : this.options.binarySearchAttribute,
+                                                    {searchOffset : this.options.binarySearchOffset,
                                                      sortAttribute : this.options.sortAttribute});
             this._addItem(item, collection, {at:insertAtIndex});
           } else {
