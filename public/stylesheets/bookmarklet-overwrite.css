@@ -1,7 +1,8 @@
+/* line 1, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo {
-  font-size:14px;
-  font-weight:300;
-  color : #EFEFEF;
+  font-size: 14px;
+  font-weight: 300;
+  color: #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
   position: absolute;
@@ -9,6 +10,7 @@
   line-height: 2;
 }
 
+/* line 12, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo-img {
   width: 100px;
   vertical-align: middle;
@@ -17,15 +19,16 @@
   margin-top: -4px;
 }
 
-.frame-creator-avatar{
+/* line 20, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.frame-creator-avatar {
   height: 45px;
-  width:45px;
+  width: 45px;
 }
 
+/* line 25, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements {
-  font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   color: #DCDDDE;
   font-size: 1.2em;
   line-height: 1.4;
 }
-
