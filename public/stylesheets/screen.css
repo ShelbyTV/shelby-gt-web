@@ -1430,20 +1430,21 @@ a:hover, a:visited, a:active {
 .roll-item-people-lining {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
+  padding: 5px 0 5px 5px;
 }
-/* line 7, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 8, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-lining .roll-item-people {
   margin-top: 12px;
 }
 
-/* line 12, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 13, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button {
   overflow: hidden;
   padding: 0;
   position: relative;
   z-index: 1;
 }
-/* line 19, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 20, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button:hover:after {
   bottom: -2px;
   box-shadow: 0 0 44px 16px #2c2e2f;
@@ -1453,22 +1454,22 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 100%;
 }
-/* line 30, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 31, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button .roll-item-total {
   margin-top: 6px;
 }
-/* line 35, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 36, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button .roll-item-total,
 .roll-item-people-button .roll-item-watched {
   color: #666;
 }
 
-/* line 40, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 41, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people {
   margin-top: 23px;
 }
 
-/* line 46, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 47, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar {
   background-position: center center;
   background-repeat: no-repeat;
@@ -1478,12 +1479,12 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   width: 40px;
 }
-/* line 57, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 58, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar img {
   height: 100%;
 }
 
-/* line 63, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 64, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1493,11 +1494,11 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
 }
-/* line 67, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 68, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 76, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 77, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-creator,
 .active-list-item .roll-item-total,
 .active-list-item .roll-item-watched,
