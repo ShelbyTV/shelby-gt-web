@@ -36,27 +36,8 @@
           return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
         }
       });
-      shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this._initInfiniteScrolling();
       PagingListView.prototype.initialize.call(this);
-    },
-
-    _cleanup : function(){
-      shelby.models.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      PagingListView.prototype._cleanup.call(this);
-    },
-
-    _onActiveFrameModelChange : function(guideModel, activeFrameModel){
-      // when the active frame model changes, find the dashboard entry that contains that frame
-      // and store that information
-      if (activeFrameModel) {
-        var entry = this.model.get('dashboard_entries').find(function(entry){
-          return entry.get('frame') == activeFrameModel;
-        });
-        if (entry) {
-          shelby.models.guide.set('activeDashboardEntryModel', entry);
-        }
-      }
     },
 
     _filter : function(item){

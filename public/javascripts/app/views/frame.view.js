@@ -36,9 +36,9 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var _tmplt;
     if (shelby.commentUpvoteUITest){
      _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
-    } else { 
+    } else {
       try {
-        _tmplt = JST['frame'](obj); 
+        _tmplt = JST['frame'](obj);
       } catch(e){
         console.log(e.message, e.stack);
       }
@@ -91,7 +91,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._frameSharingInGuideView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView);
 
   },
   
@@ -104,7 +104,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._frameRollingView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView);
   },
 
   _hideInGuideView : function(){
@@ -155,7 +155,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._conversationView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._conversationView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._conversationView);
   },
 
   _goToCreatorsPersonalRoll : function(){
