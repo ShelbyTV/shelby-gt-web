@@ -63,7 +63,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _goBack : function(){
-    if( window.history && window.history.length > 2 ){
+    if( shelby.routeHistory.length > 1 ){
       window.history.back();
     } else {
       shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});

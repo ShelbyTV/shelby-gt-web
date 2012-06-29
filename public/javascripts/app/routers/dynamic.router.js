@@ -22,9 +22,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   //---
+  //Breadcrumbs
+  //---
+  initialize : function(){
+    shelby.routeHistory = [];
+    this.bind("all", function(route){ shelby.routeHistory.push(route); });
+  },
+
+  //---
   //ROUTE HANDLERS
   //---
-
 
   displayFrameInRoll : function(rollId, frameId, params, options){
     // default options
