@@ -1,7 +1,7 @@
 @import "base";
 // blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
 .list {
-	margin: 0;
+	margin: 3px 0px 0px 0px;
 	padding: 0;
 
 	li {
@@ -108,11 +108,24 @@
   }
 }
 
+.frame-creator-title-date-holder {
+	height: 100%;
+	overflow: hidden;
+}
+
+.frame-creator-avatar-holder {
+	float: left;
+	height: 40px;
+	width: 40px;
+	background-color: black;
+}
+
 .frame-creator-avatar {
 	border-radius: $radius 0 0 0;
 	float: left;
 	height: 40px;
 	width: 40px;
+	background-color: white;
 }
 
 .frame-creator-avatar-collapsed {
@@ -144,7 +157,7 @@
 	@include ellipsis();
 
 	float: left;
-	width: 50%;
+	width: 60%;
 }
 
 .frame-creator-roll-collapsed {
@@ -159,6 +172,9 @@
 
 .frame-timestamp {
 	@include frame-header-smalltype;
+
+	text-align: right;
+	width: 40%;
 	float:right;
 }
 
@@ -204,7 +220,7 @@
   padding: 0 8px 0;
   text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 83%; 
+	width: 100%; 
 }
 
 .frame-title-collapsed {
