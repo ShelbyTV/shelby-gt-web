@@ -1,8 +1,8 @@
 /* line 3, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
-  bottom: 10px;
   position: absolute;
   right: 0;
+  top: 50%;
   z-index: 10;
 }
 
@@ -33,11 +33,12 @@
   cursor: pointer;
   height: 45px;
   overflow: hidden;
+  padding-right: 0;
   position: absolute;
   right: 0;
-  width: 34px;
+  width: 29px;
 }
-/* line 29, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 30, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -65,7 +66,7 @@
   top: 13px;
   width: 70px;
 }
-/* line 48, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 47, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -85,14 +86,14 @@
   width: 20px;
 }
 
-/* line 60, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 59, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 63, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 62, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -100,13 +101,13 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 67, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 66, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 72, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 71, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -114,7 +115,7 @@
   transition-delay: 0s;
   width: 112px;
 }
-/* line 77, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 76, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -124,14 +125,14 @@
   transition-delay: 0.2s;
 }
 
-/* line 83, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 82, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 85, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 84, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -143,7 +144,7 @@
   transition-delay: 0.1s;
 }
 
-/* line 91, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 90, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   border: none;
   box-shadow: none;
