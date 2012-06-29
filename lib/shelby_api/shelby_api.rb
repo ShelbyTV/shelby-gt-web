@@ -25,7 +25,7 @@ module Shelby
       video_id = f['result']['video_id'] 
       v = get( "/video/#{video_id}" ).parsed_response
       return nil if v['status'] != 200
-      
+      v['result']["thumbnail_url"] ||= "#{Settings::Application..missing_thumb_url}"
       result = {'frame' => f['result'], 'video' => v['result']}
     end
     
@@ -33,7 +33,8 @@ module Shelby
       r = get( "/roll/#{roll_id}/frames?include_children=true&limit=1" ).parsed_response
       return nil if r['status'] != 200
       f0 = r['result']['frames'][0]
-      {'frame' => f0, 'video' => f0['video']}
+      f0['video']["thumbnail_url"] ||= "#{Settings::Application..missing_thumb_url}"
+      {'frame' => f0, 'video' => f0['video'], 'roll' => r['result']}
     end
         
     def self.generate_frame_route(roll_id, frame_id)
