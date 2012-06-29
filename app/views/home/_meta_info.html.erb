@@ -11,7 +11,7 @@
 <% if @meta_info[:video_info] %>
 	<meta property="og:title" content="<%= @meta_info[:video_info]['video']['title'] %>" /> 
 	<meta property="og:image" content="<%= @meta_info[:video_info]['video']['thumbnail_url'] %>" />
-	<meta property="og:video:roll" content="<%= @meta_info[:roll_permalink] %>" /> 
+	<meta property="shelbytv:roll" content="<%= @meta_info[:roll_permalink] %>" /> 
 	<meta property="og:description" content="<%= @meta_info[:video_info]['video']['title'] %>: <%= @meta_info[:video_info]['video']['description'] %> | Shelby.tv - the best way to watch video on the web and iOS." />
 	<meta name="description" content="<%= @meta_info[:video_info]['video']['title'] %>: <%= @meta_info[:video_info]['video']['description'] %> | Shelby.tv - the best way to watch video on the web and iOS.">
 <% elsif @meta_info[:user_info] %>
