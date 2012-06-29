@@ -22,7 +22,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-save-frame"                  : "_saveToWatchLater",
-    "click .js-remove-frame"                : "_removeFromWatchLater",
+    "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-upvote-frame"                : "_upvote",
     "click .js-go-to-roll-by-id"            : "_goToRollById"
@@ -33,17 +33,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   className : 'frame',
 
   template : function(obj){
-    var _tmplt;
-    if (shelby.commentUpvoteUITest){
-     _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
-    } else { 
-      try {
-        _tmplt = JST['frame'](obj); 
-      } catch(e){
-        console.log(e.message, e.stack);
-      }
+    try {
+      return JST['frame'](obj); 
+    } catch(e){
+      console.log(e.message, e.stack);
     }
-    return _tmplt;
   },
 
   initialize : function() {
@@ -128,10 +122,8 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     });
   },
 
-  _removeFromWatchLater : function(){
-    // For UI Test workaround:
-    if (shelby.commentUpvoteUITest){ this._upvote(); }
-    else { this.model.destroy(); }
+  _removeFrame : function(){
+    this.model.destroy();
   },
 
   _upvote : function(){
