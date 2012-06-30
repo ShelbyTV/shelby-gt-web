@@ -46,10 +46,10 @@ class ApplicationController < ActionController::Base
         frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
         roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
       end
-      return  { :frame => { :video_info =>  video_info,
-                            :frame_permalink => frame_permalink,
+      return  { :frame => { :frame_permalink => frame_permalink,
                             :roll_permalink => roll_permalink },
-                :video_embed => video_embed
+                :video_embed => video_embed,
+                :video_info =>  video_info
               }
     elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
     # the url is a roll or personal roll
@@ -63,14 +63,16 @@ class ApplicationController < ActionController::Base
         roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
         user_permalink = Shelby::API.generate_user_route(user_info['nickname'])
       end
-      return {  :roll => {  :video_info =>  video_info,
-                            :roll_info => roll_info,
+      return {  :roll => {  :roll_info => roll_info,
                             :roll_permalink => roll_permalink,
                             :user_info =>   user_info,
                             :user_permalink =>   user_permalink },
-                :video_embed => video_embed
+                :video_embed => video_embed,
+                :video_info =>  video_info
               }
-    end    
+    else
+      return { :video_info => nil }
+    end
   end
   
 end
