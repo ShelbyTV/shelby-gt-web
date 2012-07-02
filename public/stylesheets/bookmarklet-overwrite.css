@@ -24,44 +24,53 @@
   width: 45px;
 }
 
-/* line 29, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 26, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.frame-conversation-message-block {
+  font-size: 13px;
+}
+
+/* line 33, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item-lining {
   height: 50px;
 }
 
-/* line 33, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 37, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item {
   height: 51px;
   margin: 0;
   padding: 0;
 }
-/* line 38, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 42, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a:link, .roll-selection-item a:visited, .roll-selection-item a:active {
   color: #DCDDDE;
 }
-/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 45, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a img {
   border: none;
 }
 
-/* line 47, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 51, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-item-creator {
   height: 23.03030303px;
 }
 
-/* line 51, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 55, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .current-roll {
   font-size: 14.5454545455px;
 }
 
-/* line 57, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.share-submit-button,
-.roll-options-submit,
-.new-roll-status-checkbox {
-  font-size: 12px;
+/* line 59, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.rolling-main-header {
+  font-size: 16px;
+  font-weight: 500;
 }
 
-/* line 63, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 64, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-options-label {
+  font-weight: 500;
+}
+
+/* line 70, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title-text {
   line-height: 2.65;
   font-size: 18px;
@@ -69,14 +78,14 @@
   text-align: center;
 }
 
-/* line 70, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-clickoff {
   position: fixed;
   top: 0px;
   z-index: 89999;
 }
 
-/* line 76, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 83, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-window {
   background: #222;
   border: 0px 0px 25px 5px black;
@@ -88,7 +97,7 @@
   z-index: 99999;
 }
 
-/* line 87, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 94, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .video-card-header {
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
@@ -99,14 +108,14 @@
   z-index: 89999;
 }
 
-/* line 98, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 105, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
 
-/* line 105, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 112, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-controls {
   background-color: #35383A;
   border-radius: 0 0 5px 5px;
@@ -115,12 +124,12 @@
   z-index: 89999;
 }
 
-/* line 113, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-title {
   width: 50%;
 }
 
-/* line 117, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 124, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-position: 15px 50%;
