@@ -10,6 +10,7 @@
 	<meta property="og:video:url" content="<%= @meta_info[:frame][:frame_permalink] %>" /> 
 	<meta property="og:video:secure_url" content="https://<%= @meta_info[:frame][:frame_permalink][7..-1] %>" /> 
 	<meta property="og:title" content="<%= @meta_info[:video_info]['video']['title'] %>" /> 
+	<meta property="og:description" content="<%= @meta_info[:video_info]['video']['description'] %>" />	
 	<meta property="og:image" content="<%= @meta_info[:video_info]['video']['thumbnail_url'] %>" />
 	<meta property="shelbytv:roll" content="<%= @meta_info[:frame][:roll_permalink] %>" />
 <% elsif @meta_info[:roll] and @meta_info[:roll][:roll_info] and @meta_info[:video_info]%>
