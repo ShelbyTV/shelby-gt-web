@@ -1,7 +1,7 @@
 window.bookmarklet = function(opts){fullFunc(opts)};
 
 window.bookmarklet({
-css: ["http://localhost.shelby.tv:3000/stylesheets/radar.css"],
+css: ["http://localhost:3000/stylesheets/radar.css"],
 js : ["https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"],
 jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
@@ -301,7 +301,7 @@ ready : function() {
 
                   shelbyRadar.shelbyDocElements['ext-elements'].on('click', ".<%=@hash%>all-comment", null, function(event) {
                       var commentButton = event.currentTarget;
-                      var commentTextId = "<%=@hash%>like-text-" + commentButton.getAttribute("data-r");
+                      var commentTextId = "<%=@hash%>comment-text-" + commentButton.getAttribute("data-r");
                         var conversationId = shelbyJ("#" + commentButton.getAttribute("data-frameid")).data("conversationid");
                         if (conversationId !== undefined) {
                           shelbyRadar.setUpConversationWithId(conversationId, commentTextId);
@@ -341,14 +341,14 @@ ready : function() {
                         var undefinedLikeCallback = function(frameInfoId) {
                             return function(response) {
                               shelbyRadar.adjustFrame(response.result, frameInfoId, false);
-                              shelbyRadar.shelbyApiLike(response.result.id);
+                              shelbyRadar.shelbyApiLike(response.result.id, likeTextId);
                             }
                           } 
                           shelbyRadar.shelbyApiRoll(likeButton.getAttribute("data-videourl"), 
                                         shelbyRadar.shelbyBkmkltUser.personal_roll_id, shelbyJ, 
                                         undefinedLikeCallback(likeButton.getAttribute("data-frameid")))
                         } else {
-                          shelbyRadar.shelbyApiLike(shelbyFrameId);     
+                          shelbyRadar.shelbyApiLike(shelbyFrameId, likeTextId);     
                         }
                     });
               }
@@ -399,7 +399,8 @@ ready : function() {
                         xhrFields : {withCredentials : true},
                         async : true,
                         url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + shelbyFrameId + "/upvote",
-                        success : function(response) {shelbyJ("#" + heartTextId).html(response.result.upvoters.length)}
+                        success : function(response) {
+                          shelbyJ("#" + heartTextId).html(response.result.upvoters.length)}
               });
              
 
@@ -620,14 +621,14 @@ ready : function() {
       rollGuideHtml : function(rolls) {
           shelbyJ("#<%=@hash%>roll-guide-window").append('<div class="<%=@hash%>guide-overlay-main <%=@hash%>rolling-main">' +
                             '<div class="rolling-main-new-roll">' +
-                            '<div class="rolling-main-header">Create New Roll</h3>' +
+                            '<div class="rolling-main-header">Create New Roll</h3></div>' +
                             '<div class="<%=@hash%>create-roll clearfix">' +
                             '<form class="">' +
                             '<fieldset class="<%=@hash%>roll-options">' +
                             '<label for="<%=@hash%>new-roll-name" class="<%=@hash%>roll-options-label">Roll Name</label>' +
                             '<input name="<%=@hash%>new-roll-name" id="<%=@hash%>new-roll-name" class="<%=@hash%>roll-options-input" plassholder="Roll name..." type="text">' +
                             '<label for="<%=@hash%>new-roll-recipients" class="<%=@hash%>roll-options-label">Share With</label>' +
-                            '<input name="<%=@hash%>new-roll-recipients" id="<%=@hash%>new-roll-recipients" class="<%=@hash%>roll-options-input" placeholder="Seperate email addresses with commas..." type="email" multiple="multiple">' +
+                            '<input name="<%=@hash%>new-roll-recipients" id="<%=@hash%>new-roll-recipients" class="<%=@hash%>roll-options-input" placeholder="Separate email addresses with commas..." type="email" multiple="multiple">' +
                             '</fieldset>' +
                             '<fieldset class="roll-options">' +
                             '<label for="<%=@hash%>new-roll-status" class="<%=@hash%>new-roll-status clearfix" data-private="Private" data-public="Public">' +
@@ -646,55 +647,61 @@ ready : function() {
           shelbyRadar.shelbyDocElements['rollsList'] = shelbyJ(".<%=@hash%>existing-rolls-list");
 
           shelbyJ(".<%=@hash%>roll-options-submit").on('click', null, null, function(event) {
+            var shareEmails = shelbyJ("#<%=@hash%>new-roll-recipients").val();
             var dataReq = {
               'title' : shelbyJ(".<%=@hash%>roll-options-input").val(),
               'collaborative' : true,
-              'public' : (shelbyJ(".<%=@hash%>new-roll-status").is(':checked') ? "public": "private")
-              }
-              shelbyJ.ajax({
-                type : 'GET',
-                url : 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
-                dataType : "jsonp",
-                async : true,
-                crossDomain : true,
-                data : dataReq,
-                xhrFields : {withCredentials : true},
-                success : 
-                function(response) {
+              'public' : (shelbyJ(".<%=@hash%>new-roll-status").is(':checked') ? "public": "private"),
+              'thumbnail_url' : shelbyRadar.shelbyBkmkltUser.user_image
+            }
+                
+    
+            shelbyJ.ajax({
+              type : 'GET',
+              url : 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
+              dataType : "jsonp",
+              async : true,
+              crossDomain : true,
+              data : dataReq,
+              xhrFields : {withCredentials : true},
+              success : 
+              function(response) {
+                if (!shareEmails || shareEmails.length == 0) {
+                  return;
+                }
+                var shareData  = {
+                  'roll_id' : response.result.id,
+                  'destination' : ['email'],
+                  'addresses' : shelbyJ("#<%=@hash%>new-roll-recipients").val(),
+                  'text' : "New Roll"
+                };
+                shelbyJ.ajax( {
+                  type : 'GET',
+                  data : shareData,
+                  url : 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                  dataType : "jsonp",
+                  crossDomain : true,
+                  xhrFields : {withCredentials : true},
+                  success : function(response) {
+                    console.log(response);
+                  }
+                });
 
-                  var shareData  = {
-                    'roll_id' : response.result.id,
-                    'destination' : ['email'],
-                    'addresses' : shelbyJ("#<%=@hash%>new-roll-recipients").val(),
-                    'text' : "New Roll"
-                  };
-                  shelbyJ.ajax( {
+                shelbyJ.ajax({
                     type : 'GET',
-                    data : shareData,
-                    url : 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                    url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyRadar.shelbyBkmkltUser.id + '/rolls/postable',
                     dataType : "jsonp",
                     crossDomain : true,
                     xhrFields : {withCredentials : true},
                     success : function(response) {
+                      rolls = response.result;
+                      shelbyRadar.populateRolls(rolls);    
                       console.log(response);
-                      }
-                      });
-
-                  shelbyJ.ajax( {
-                      type : 'GET',
-                      url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyRadar.shelbyBkmkltUser.id + '/rolls/postable',
-                      dataType : "jsonp",
-                      crossDomain : true,
-                      xhrFields : {withCredentials : true},
-                      success : function(response) {
-                        rolls = response.result;
-                        shelbyRadar.populateRolls(rolls);    
-                        console.log(response);
-                      }
-                    })
-                  }
-              });
+                    }
+                  })
+                }
             });
+          });
         },
         
         loginGuideHtml: function() {
