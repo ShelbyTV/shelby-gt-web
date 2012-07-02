@@ -37,14 +37,12 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _attachMasterCollection : function(){
     libs.shelbyGT.SmartRefreshListView.prototype._attachMasterCollection.call(this);
-    this._numItemsLoaded = this.options.masterCollection.length;
+    this._numItemsLoaded = this._simulatedMasterCollection.length;
   },
 
   _prepareMasterCollection : function() {
     libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
-    if (this.options.doStaticRender) {
-      this._numItemsLoaded = this.model.get(this.options.collectionAttribute).models.length;
-    }
+    this._numItemsLoaded = this._simulatedMasterCollection.length;
   },
 
   _initInfiniteScrolling : function(){

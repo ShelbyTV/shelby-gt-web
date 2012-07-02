@@ -1,14 +1,17 @@
 libs.shelbyGT.GuideModel = Backbone.Model.extend({
 
   defaults : {
-    displayState : libs.shelbyGT.DisplayState.none,
-    currentRollModel : null,
-    sinceId          : null,
-    activeFrameModel : null,
-    activeGuideOverlayView : null,
-    rollListContent : null,
-    disableSmartRefresh : false,
-    displayIsolatedRoll : false
+    activeFrameModel            : null,
+    activeGuideOverlayView      : null,
+    currentRollModel            : null,
+    disableSmartRefresh         : false,
+    displayIsolatedRoll         : false,
+    displayState                : libs.shelbyGT.DisplayState.none,
+    playingFramesCollection     : null,
+    playingState                : libs.shelbyGT.PlayingState.none,
+    rollListContent             : null,
+    sinceId                     : null,
+    skippingVideo               : false
   }
 
 });
