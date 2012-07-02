@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
+  var PlayingState = libs.shelbyGT.PlayingState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
@@ -11,6 +12,7 @@
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
   var GuidePresentation = libs.shelbyGT.GuidePresentation;
+  var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
   var contentRollsEnum = libs.shelbyGT.GuidePresentation.content.rolls;
 
   libs.shelbyGT.GuideView = Support.CompositeView.extend({
@@ -20,6 +22,8 @@
     _listView : null,
 
     _dashboardMasterCollection : null,
+
+    _currentRollMasterCollection : null,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -117,6 +121,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+          this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
@@ -125,7 +130,8 @@
                 include_children : true,
                 sinceId : this.model.get('sinceId')
               },
-              limit : shelby.config.pageLoadSizes.roll
+              limit : shelby.config.pageLoadSizes.roll,
+              masterCollection : this._currentRollMasterCollection
             },
             spinner : true
           };
@@ -204,7 +210,7 @@
           fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
         }
 
-        var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
+        var oneTimeSpinnerState = new SpinnerStateModel();
         shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
         $.when(rollCollection.fetch({
             success : function(){
@@ -221,14 +227,13 @@
     },
 
     scrollToChildElement : function(element){
-			// if this is the first element, offset a bit, need this for adding video via url area
-			if (element == $('ul.roll').children()[0]){
-	      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y', offset:{top:-75}});				
-			}
-			else {
-	      $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});				
-	      //this.$el.scrollTo(element, {duration:200, axis:'y'});
-			}
+      // if this is the first element, offset a bit, need this for adding video via url area
+      if (element == $('ul.roll').children()[0]){
+        $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y', offset:{top:-75}});
+      }
+      else {
+        $('#js-guide-wrapper').scrollTo(element, {duration:200, axis:'y'});
+      }
     },
 
     _hideGuideSpinner: function(){
@@ -236,10 +241,25 @@
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
-      if (!activeFrameModel) {
-        // just for completeness, anytime we set the activeFrameModel to null, there is obviously no
-        // activeDashboardEntryModel either
-        this.model.set('activeDashboardEntryModel', null);
+      if (activeFrameModel) {
+        if (!guideModel.get('skippingVideo')) {
+          if (guideModel.get('displayState') == DisplayState.dashboard) {
+            guideModel.set({
+              playingState : PlayingState.dashboard,
+              playingFramesCollection : this._dashboardMasterCollection
+            });
+          } else {
+            guideModel.set({
+              playingState : PlayingState.roll,
+              playingFramesCollection : this._currentRollMasterCollection
+            });
+          }
+        }
+      } else {
+        guideModel.set({
+          playingState : PlayingState.none,
+          playingFramesCollection : null
+        });
       }
     },
 
@@ -266,42 +286,14 @@
       var self = this,
           _frames,
           _index,
-          _currentFrame = shelby.models.guide.get('activeFrameModel');
-
-      switch (this.model.get('displayState')) {
-        case libs.shelbyGT.DisplayState.dashboard :
-        case libs.shelbyGT.DisplayState.rollList :
-          // if the dashboard model hasn't been created yet, fetch it
-          // THIS IS A TEMPORARY HACK until next frame is selected from the entity that is playing
-          // as opposed to from what is currently displyed in the guide
-          if (!shelby.models.dashboard) {
-            shelby.models.dashboard = new DashboardModel();
-            shelby.models.dashboard.fetch({
-              data: {
-                include_children : true,
-                limit : shelby.config.pageLoadSizes.dashboard
-              },
-              success: function(model, response){
-                this._dashboardMasterCollection.reset(model.get('dashboard_entries').models);
-                self._skipVideo();
-              }
-            });
-            return;
-          }
-          var dashboardSourceCollection;
-          if (this._dashboardMasterCollection.isEmpty()) {
-            dashboardSourceCollection = _(shelby.models.dashboard.get('dashboard_entries').models);
-          } else {
-            dashboardSourceCollection = this._dashboardMasterCollection;
-          }
-          _frames = dashboardSourceCollection.pluck('frame');
-         break;
-        case libs.shelbyGT.DisplayState.standardRoll :
-        case libs.shelbyGT.DisplayState.watchLaterRoll :
-          _frames = this.model.get('currentRollModel').get('frames').models;
-          break;
-      }
+          _currentFrame = this.model.get('activeFrameModel');
       
+      if (this.model.get('playingState') == PlayingState.dashboard) {
+        _frames = this.model.get('playingFramesCollection').pluck('frame');
+      } else {
+        _frames = this.model.get('playingFramesCollection').models;
+      }
+
       var _frameInCollection = _(_frames).find(function(frame){return frame.id == _currentFrame.id;});
       if (_frameInCollection) {
         _index = _frames.indexOf(_frameInCollection) + skip;
@@ -314,7 +306,12 @@
         _index = 0;
       }
 
-      shelby.models.guide.set('activeFrameModel', _frames[_index]);
+      this.model.set({
+        activeFrameModel : _frames[_index],
+        skippingVideo : true
+      });
+
+      this.model.set('skippingVideo', false);
     }
 
   });

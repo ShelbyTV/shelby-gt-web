@@ -33,7 +33,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //ROUTE HANDLERS
   //---
 
-  displayFrameInRoll : function(rollId, frameId, params, options){
+  displayFrameInRoll : function(rollId, frameId, params, options, topLevelViewsOptions){
     // default options
     options = _.chain({}).extend(options).defaults({
       rerollSuccess : (params && params.reroll_success === "true")
@@ -47,23 +47,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.userSignedIn() && params && params.gt_ref_roll){
       var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
       rollToJoin.joinRoll(function(){
-        self._setupRollViewWithCallback(rollId, frameId, options);
+        self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
       });
     } else {
-      self._setupRollViewWithCallback(rollId, frameId, options);
+      self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
     }
   },
 
   displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
-    var defaultOnRollFetch;
+    var defaultOnRollFetch = null;
     if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
-    }
-
-    if (options && !options.startPlaying && options.defaultOnRollFetch){
-      defaultOnRollFetch = options.defaultOnRollFetch;
     }
     
     options = _.chain({}).extend(options).defaults({
@@ -83,27 +79,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
     
-    var self = this;
     // Adjust *what* is displayed
-    var options = {
-      updateRollTitle : false,
-      startPlaying : frameId ? false : true
-    };
-    if (frameId){
-      options.defaultOnRollFetch = function(){
-        self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
-      };
-    }
-    this.displayRoll(
-      rollId,
-      null,
-      null,
-      options,
-      {
-        isIsolatedRoll : true
-      });
+    var options = {updateRollTitle:false};
 
-    if (!frameId) return;
+    if (frameId){
+      this.displayFrameInRoll(rollId, frameId, null, options, {isIsolatedRoll : true});
+    } else {
+      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
+    }
       
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
@@ -192,7 +175,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
-    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
@@ -426,7 +408,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});
   },
   
-  _setupRollViewWithCallback : function(rollId, frameId, options){
+  _setupRollViewWithCallback : function(rollId, frameId, options, topLevelViewsOptions){
     var self = this;
     this._setupRollView(rollId, null, {
       data: {
@@ -438,7 +420,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           self._activateFrameInRollById(rollModel, frameId);
         }
       }
-    });
+    }, topLevelViewsOptions);
   }
 
 });

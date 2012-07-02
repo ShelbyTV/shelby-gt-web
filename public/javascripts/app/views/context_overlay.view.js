@@ -11,7 +11,7 @@
 
     events : _.extend({}, FrameView.prototype.events, {
       "click .js-frame-locator" : "_frameLocator"
-    }), 
+    }),
 
     options : _.extend({}, libs.shelbyGT.FrameView.prototype.options, {
       contextOverlay : true
