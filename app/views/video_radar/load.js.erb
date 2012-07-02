@@ -602,7 +602,7 @@ ready : function() {
 	  
 	populateRolls : function(rolls) {
           rollStringbuilder = [];
-          rollStringbuilder.push('<ul class="<%=@hash%>list"> ');
+          rollStringbuilder.push('<div class="<%=@hash%>rolling-main-header">Add to Existing Rolls</div><ul class="<%=@hash%>list"> ');
           for (var i = 0; i < rolls.length; i++)  {
             roll = rolls[i];
             rollStringbuilder.push('<li id="<%=@hash%>roll-');
@@ -649,7 +649,7 @@ ready : function() {
                             '</form>' +
                               '</div>' +
                               '</div>' +
-                            '<div class="<%=@hash%>existing-rolls-list"></div>');
+                              '<div class="<%=@hash%>existing-rolls-list"></div>');
                                         
           shelbyRadar.populateRolls(rolls);
           shelbyRadar.shelbyDocElements['rollsList'] = shelbyJ(".<%=@hash%>existing-rolls-list");
@@ -712,10 +712,8 @@ ready : function() {
         
         loginGuideHtml: function() {
                           shelbyJ('#<%=@hash%>login-guide-window').append(
-                              //'<fieldset class="<%=@hash%>email-gate-networks">' +
-                              '<a class="<%=@hash%>email-gate-networks-twitter" href="http://<%=Settings::VideoRadar.domain%>/auth/twitter"> Log in with Twitter </a>' + 
-                              '<a class="<%=@hash%>email-gate-networks-facebook" href="http://<%=Settings::VideoRadar.domain%>/auth/facebook"> Log in with Facebook </a>')
-                          //+ '</fieldset>');
+                              '<a class=" <%=@hash%>gate-networks-twitter" href="http://<%=Settings::VideoRadar.domain%>/auth/twitter"> Log in with Twitter </a>' + 
+                              '<a class=" <%=@hash%>gate-networks-facebook" href="http://<%=Settings::VideoRadar.domain%>/auth/facebook"> Log in with Facebook </a>')
                         },
 
 

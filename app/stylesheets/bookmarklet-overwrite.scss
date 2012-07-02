@@ -120,3 +120,29 @@
   background-repeat: no-repeat;
   background-size: 38px;
 }
+
+.gate-networks-twitter,
+.gate-networks-facebook{
+  @include roundies(input);
+
+  border: 0;
+  display: block;
+  font: 0/0 a;
+  height: 40px;
+  margin: 20px;
+  text-shadow: none;
+}
+
+.gate-networks-twitter {
+  @include gradient-primer($twitter-blue);
+  @include preferences-networks;
+
+  background-size: 11%;
+}
+
+.gate-networks-facebook {
+  @include gradient-primer($facebook-blue);
+  @include preferences-networks(facebook);
+
+  background-size: 4%;
+}
