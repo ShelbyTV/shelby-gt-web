@@ -49,7 +49,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
       this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       if (this.options.simulateAddTrue) {
-        if (this.options.masterCollection && this.options.doStaticRender) {
+        if (this.options.masterCollection) {
           this._attachMasterCollection();
         } else {
           this._prepareMasterCollection();
@@ -93,6 +93,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _attachMasterCollection : function() {
     this._simulatedMasterCollection = this.options.masterCollection;
+    if (!this.options.doStaticRender) {
+      this._simulatedMasterCollection.reset();
+    }
   },
 
   _prepareMasterCollection : function() {
