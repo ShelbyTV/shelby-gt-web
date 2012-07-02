@@ -1,7 +1,7 @@
 window.bookmarklet = function(opts){fullFunc(opts)};
 
 window.bookmarklet({
-css: ["http://localhost.shelby.tv:3000/stylesheets/radar.css"],
+css: ["http://localhost:3000/stylesheets/radar.css"],
 js : ["https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"],
 jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
@@ -17,10 +17,11 @@ ready : function() {
     var shelbyGuideWidth = 330;
 
     // add in the bookmarklet loading bar
+    shelbyJ('.<%=@hash%>ext-elements').remove()
     shelbyJ('body').append('<div class=<%=@hash%>ext-elements></div>');
 
     var shelbyRadar = {
-
+      
       shelbyDocElements : {'ext-elements' : shelbyJ(".<%=@hash%>ext-elements")},
 
       shelbyBkmkltUser : null,
