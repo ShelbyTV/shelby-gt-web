@@ -1,6 +1,5 @@
 .frame-logo {
   font-size:14px;
-  font-weight:100;
   color : #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
@@ -25,13 +24,18 @@
 .ext-elements {
   font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
   color: #DCDDDE;
-  font-size: 1.2em;
+  font-size: 14.5454545455px;
   line-height: 1.4;
   text-align: left;
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
 
-.roll-selection-item {
-  height: 66px;
+.roll-selection-item-lining {
+  height: 50px;
 }
 
 .guide-overlay-title-text {
@@ -43,20 +47,24 @@
 
 #roll-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
 #share-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
 #comment-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
-
+#login-guide-clickoff {
+  position: fixed;
+  z-index: 89999;
+  top: 0px;
+}
 #roll-guide-window {
   position: fixed;
   right: 0px;
@@ -83,4 +91,68 @@
   overflow: auto;
 }
 
+#login-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index:99999; 
+  overflow: auto;
+}
+.video-card-header {
+  position: absolute;
+  z-index: 89999;
+  height: 45px;
+  padding: 0px;
+  margin: 0px;
+  background-color: #35383A;
+  border-radius: 5px 5px 0 0;
+}
 
+.frame-exists {
+  .frame-logo:before {
+    content: "Seen on";
+    display: block;
+    float: left;
+  }
+}
+
+.frame-controls {
+  position: absolute;
+  z-index: 89999;
+  background-color: #35383A;
+  border-radius: 0 0 5px 5px;
+  font-size: 13px;
+}
+
+.frame-title {
+width:50%;
+}
+
+.roll-selection-item {
+  height: 51px;
+  margin: 0;
+  padding: 0;
+  a:link, a:visited, a:active {
+    color:#DCDDDE;
+  }
+  a img {
+    border: none;
+  }
+  
+}
+
+.guide-overlay-title {
+  background-image: url("../../images/assets/mark.png");
+  background-repeat: no-repeat;
+  background-size: 38px;
+  background-position: 15px 50%;
+}
+
+.roll-item-creator {
+  height:23.03030303px;
+}
+
+.current-roll {
+  font-size: 14.5454545455px;
+}

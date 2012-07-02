@@ -71,324 +71,257 @@
   font-style: normal;
 }
 
-/* HTML5 Boilerplate  */
-/* line 3, ../../app/stylesheets/partials/h5bp.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
-  display: block;
+/* line 3, ../../app/stylesheets/partials/gate.scss */
+.no-access {
+  margin-top: 30px;
 }
 
-/* line 4, ../../app/stylesheets/partials/h5bp.scss */
-audio, canvas, video {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
+/* line 8, ../../app/stylesheets/partials/gate.scss */
+.private-beta-access h2 {
+  margin: 10px 0;
+}
+/* line 11, ../../app/stylesheets/partials/gate.scss */
+.private-beta-access p.login {
+  width: 205px;
 }
 
-/* line 5, ../../app/stylesheets/partials/h5bp.scss */
-audio:not([controls]) {
-  display: none;
+/* line 16, ../../app/stylesheets/partials/gate.scss */
+.email-gate {
+  background-color: #101010;
+  background: url("../images/email-gate/bg.png") no-repeat center center #101010;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-/* line 6, ../../app/stylesheets/partials/h5bp.scss */
-[hidden] {
-  display: none;
+/* line 22, ../../app/stylesheets/partials/gate.scss */
+.email-gate-wrapper {
+  margin: 0 auto;
+  width: 480px;
 }
 
-/* line 8, ../../app/stylesheets/partials/h5bp.scss */
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+/* line 27, ../../app/stylesheets/partials/gate.scss */
+.content-wrapper {
+  margin: 15% auto 0;
+  width: 1020px;
 }
 
-/* line 9, ../../app/stylesheets/partials/h5bp.scss */
-html, button, input, select, textarea {
-  font-family: sans-serif;
-  color: #222;
+/* line 32, ../../app/stylesheets/partials/gate.scss */
+.embed-gate-wrapper {
+  float: left;
+  width: 500px;
 }
 
-/* line 10, ../../app/stylesheets/partials/h5bp.scss */
-body {
-  margin: 0;
-  font-size: 1em;
+/* line 36, ../../app/stylesheets/partials/gate.scss */
+.embed-gate-wrapper iframe {
+  width: 500px;
+}
+
+/* line 39, ../../app/stylesheets/partials/gate.scss */
+.email-gate-wrapper.with-embed {
+  float: left;
+  margin-left: 40px;
+}
+
+/* line 48, ../../app/stylesheets/partials/gate.scss */
+.email-gate-logo {
+  background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
+  background-size: 100%;
+  float: left;
+  height: 100px;
+  margin-right: 18px;
+  width: 50%;
+}
+
+/* line 59, ../../app/stylesheets/partials/gate.scss */
+.email-gate-slogan {
+  float: left;
+  font-size: 11px;
   line-height: 1.4;
+  margin-top: 40px;
+  width: 33%;
 }
 
-/* line 15, ../../app/stylesheets/partials/h5bp.scss */
-a {
-  color: #00e;
+/* line 68, ../../app/stylesheets/partials/gate.scss */
+.email-gate-login {
+  margin: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 205px;
 }
 
-/* line 16, ../../app/stylesheets/partials/h5bp.scss */
-a:visited {
-  color: #551a8b;
-}
-
-/* line 17, ../../app/stylesheets/partials/h5bp.scss */
-a:hover {
-  color: #06e;
-}
-
-/* line 18, ../../app/stylesheets/partials/h5bp.scss */
-a:focus {
-  outline: thin dotted;
-}
-
-/* line 19, ../../app/stylesheets/partials/h5bp.scss */
-a:hover, a:active {
-  outline: 0;
-}
-
-/* line 20, ../../app/stylesheets/partials/h5bp.scss */
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/* line 21, ../../app/stylesheets/partials/h5bp.scss */
-b, strong {
-  font-weight: bold;
-}
-
-/* line 22, ../../app/stylesheets/partials/h5bp.scss */
-blockquote {
-  margin: 1em 40px;
-}
-
-/* line 23, ../../app/stylesheets/partials/h5bp.scss */
-dfn {
-  font-style: italic;
-}
-
-/* line 24, ../../app/stylesheets/partials/h5bp.scss */
-hr {
+/* line 76, ../../app/stylesheets/partials/gate.scss */
+.email-gate-login-button {
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background: #428e3a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
+  background: -webkit-linear-gradient(top, #53b249, #428e3a);
+  background: -moz-linear-gradient(top, #53b249, #428e3a);
+  background: -o-linear-gradient(top, #53b249, #428e3a);
+  background: -ms-linear-gradient(top, #53b249, #428e3a);
+  background: linear-gradient(top, #53b249, #428e3a);
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px #222222;
+  border: none;
+  box-shadow: 0 0 0 1px #428e3a;
+  color: #efefef;
   display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+  float: right;
+  font-size: 13px;
+  margin: 0 0 10px 20px;
+  padding: 7px 19px;
 }
 
-/* line 25, ../../app/stylesheets/partials/h5bp.scss */
-ins {
-  background: #ff9;
-  color: #000;
-  text-decoration: none;
-}
-
-/* line 26, ../../app/stylesheets/partials/h5bp.scss */
-mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-/* line 27, ../../app/stylesheets/partials/h5bp.scss */
-pre, code, kbd, samp {
-  font-family: monospace, serif;
-  _font-family: 'courier new', monospace;
-  font-size: 1em;
-}
-
-/* line 28, ../../app/stylesheets/partials/h5bp.scss */
-pre {
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* line 30, ../../app/stylesheets/partials/h5bp.scss */
-q {
-  quotes: none;
-}
-
-/* line 31, ../../app/stylesheets/partials/h5bp.scss */
-q:before, q:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../app/stylesheets/partials/h5bp.scss */
-small {
-  font-size: 85%;
-}
-
-/* line 33, ../../app/stylesheets/partials/h5bp.scss */
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
+/* line 93, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks {
+  background: #585858;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px -1px #999999;
+  display: none;
+  margin-top: 45px;
+  padding: 10px;
   position: relative;
-  vertical-align: baseline;
+}
+/* line 103, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks:before {
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: #585858;
+  box-shadow: inset 1px 1px 2px -1px #999999;
+  content: "\0020";
+  display: block;
+  height: 10px;
+  position: absolute;
+  right: 31px;
+  top: -5px;
+  width: 10px;
+}
+/* line 118, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks .email-gate-error {
+  color: #DADADA;
+  font-size: 13px;
+  margin-top: 10px;
 }
 
-/* line 34, ../../app/stylesheets/partials/h5bp.scss */
-sup {
-  top: -0.5em;
+/* line 126, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter {
+  display: block;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+/* line 135, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:before {
+  width: 36px;
+}
+/* line 138, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-twitter:visited {
+  color: #efefef;
 }
 
-/* line 35, ../../app/stylesheets/partials/h5bp.scss */
-sub {
-  bottom: -0.25em;
+/* line 143, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook {
+  display: block;
+  margin-top: 10px;
+  padding: 3px 3px 3px 36px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+/* line 152, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:before {
+  width: 36px;
+}
+/* line 155, ../../app/stylesheets/partials/gate.scss */
+.email-gate-networks-facebook:visited {
+  color: #efefef;
 }
 
-/* line 37, ../../app/stylesheets/partials/h5bp.scss */
-ul, ol {
-  margin: 1em 0;
-  padding: 0 0 0 40px;
+/* line 160, ../../app/stylesheets/partials/gate.scss */
+.email-gate-error {
+  color: #cc1235;
 }
 
-/* line 38, ../../app/stylesheets/partials/h5bp.scss */
-dd {
-  margin: 0 0 0 40px;
+/* line 164, ../../app/stylesheets/partials/gate.scss */
+.email-gate-signup {
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* line 39, ../../app/stylesheets/partials/h5bp.scss */
-nav ul, nav ol {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
+/* line 169, ../../app/stylesheets/partials/gate.scss */
+.email-gate-caption {
+  font-size: 13px;
+  margin: 5px auto 10px;
+  text-align: center;
+  width: 100%;
 }
 
-/* line 41, ../../app/stylesheets/partials/h5bp.scss */
-img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
+/* line 176, ../../app/stylesheets/partials/gate.scss */
+.email-gate-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 3.8;
+  text-align: right;
 }
 
-/* line 42, ../../app/stylesheets/partials/h5bp.scss */
-svg:not(:root) {
-  overflow: hidden;
+/* line 184, ../../app/stylesheets/partials/gate.scss */
+.email-gate-email, .email-gate-code {
+  border-radius: 3px;
+  border: none;
+  display: block;
+  float: right;
+  font-size: 14px;
+  margin: 5px 25% 5px 10px;
+  padding: 12px 10px;
+  width: 50%;
 }
 
-/* line 43, ../../app/stylesheets/partials/h5bp.scss */
-figure {
-  margin: 0;
+/* line 199, ../../app/stylesheets/partials/gate.scss */
+.email-gate-signup-submit {
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background: #0071a3;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
+  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
+  background: -moz-linear-gradient(top, #0094d6, #0071a3);
+  background: -o-linear-gradient(top, #0094d6, #0071a3);
+  background: -ms-linear-gradient(top, #0094d6, #0071a3);
+  background: linear-gradient(top, #0094d6, #0071a3);
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px #222222;
+  border: none;
+  box-shadow: 0 0 0 1px #0071a3;
+  color: #efefef;
+  display: block;
+  font-size: 13px;
+  margin: 14px auto;
+  padding: 7px 19px;
+  width: 17%;
 }
 
-/* line 45, ../../app/stylesheets/partials/h5bp.scss */
-form {
-  margin: 0;
+/* line 216, ../../app/stylesheets/partials/gate.scss */
+.email-gate-thank-you {
+  display: none;
+  margin-top: 10px;
+  text-align: center;
+}
+/* line 221, ../../app/stylesheets/partials/gate.scss */
+.email-gate-thank-you h1 {
+  font-size: 1em;
+  margin-bottom: 2em;
 }
 
-/* line 46, ../../app/stylesheets/partials/h5bp.scss */
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+/* line 227, ../../app/stylesheets/partials/gate.scss */
+.detour {
+  margin-top: 1.231em;
 }
 
-/* line 48, ../../app/stylesheets/partials/h5bp.scss */
-label {
-  cursor: pointer;
-}
-
-/* line 49, ../../app/stylesheets/partials/h5bp.scss */
-legend {
-  border: 0;
-  *margin-left: -7px;
-  padding: 0;
-  white-space: normal;
-}
-
-/* line 50, ../../app/stylesheets/partials/h5bp.scss */
-button, input, select, textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
-}
-
-/* line 51, ../../app/stylesheets/partials/h5bp.scss */
-button, input {
-  line-height: normal;
-}
-
-/* line 52, ../../app/stylesheets/partials/h5bp.scss */
-button, input[type="button"], input[type="reset"], input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-  *overflow: visible;
-}
-
-/* line 53, ../../app/stylesheets/partials/h5bp.scss */
-button[disabled], input[disabled] {
-  cursor: default;
-}
-
-/* line 54, ../../app/stylesheets/partials/h5bp.scss */
-input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  *width: 13px;
-  *height: 13px;
-}
-
-/* line 55, ../../app/stylesheets/partials/h5bp.scss */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-
-/* line 56, ../../app/stylesheets/partials/h5bp.scss */
-input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-
-/* line 57, ../../app/stylesheets/partials/h5bp.scss */
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-/* line 58, ../../app/stylesheets/partials/h5bp.scss */
-textarea {
-  overflow: auto;
-  vertical-align: top;
-  resize: vertical;
-}
-
-/* line 60, ../../app/stylesheets/partials/h5bp.scss */
-input:invalid, textarea:invalid {
-  background-color: #f0dddd;
-}
-
-/* line 62, ../../app/stylesheets/partials/h5bp.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 63, ../../app/stylesheets/partials/h5bp.scss */
-td {
-  vertical-align: top;
-}
-
-/* line 65, ../../app/stylesheets/partials/h5bp.scss */
-.chromeframe {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: black;
-  padding: 0.2em 0;
-}
-
-/* line 68, ../../app/stylesheets/partials/h5bp.scss */
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@media only screen and (min-width: 35em) {
-  /* line 2, ../../app/stylesheets/partials/media-query-35em.scss */
-  body {
-    background: #bbb;
-  }
-}
 /* line 3, ../../app/stylesheets/partials/guide-header.scss */
 .header {
   background-color: #232526;
@@ -3065,7 +2998,6 @@ td {
 /* line 1, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo {
   font-size: 14px;
-  font-weight: 100;
   color: #EFEFEF;
   margin: 9px 12px 0 0;
   float: right;
@@ -3074,7 +3006,7 @@ td {
   line-height: 2;
 }
 
-/* line 12, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 11, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-logo-img {
   width: 100px;
   vertical-align: middle;
@@ -3083,27 +3015,33 @@ td {
   margin-top: -4px;
 }
 
-/* line 20, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 19, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-creator-avatar, .frame-creator-avatar-missing {
   height: 45px;
   width: 45px;
 }
 
-/* line 25, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 24, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements {
   font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   color: #DCDDDE;
-  font-size: 1.2em;
+  font-size: 14.5454545455px;
   line-height: 1.4;
   text-align: left;
 }
-
-/* line 33, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.roll-selection-item {
-  height: 66px;
+/* line 30, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* line 37, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-selection-item-lining {
+  height: 50px;
+}
+
+/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title-text {
   line-height: 2.25;
   text-align: center;
@@ -3111,28 +3049,35 @@ td {
   font-weight: 500;
 }
 
-/* line 44, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 48, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #roll-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
 
-/* line 49, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 53, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #share-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
 
-/* line 54, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 58, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #comment-guide-clickoff {
   position: fixed;
-  z-index: 99999;
+  z-index: 89999;
   top: 0px;
 }
 
-/* line 60, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 63, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#login-guide-clickoff {
+  position: fixed;
+  z-index: 89999;
+  top: 0px;
+}
+
+/* line 68, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #roll-guide-window {
   position: fixed;
   right: 0px;
@@ -3142,7 +3087,7 @@ td {
   overflow: auto;
 }
 
-/* line 69, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #share-guide-window {
   position: fixed;
   right: 0px;
@@ -3152,7 +3097,7 @@ td {
   overflow: auto;
 }
 
-/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 85, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #comment-guide-window {
   position: fixed;
   right: 0px;
@@ -3160,6 +3105,81 @@ td {
   background: #222;
   z-index: 99999;
   overflow: auto;
+}
+
+/* line 94, ../../app/stylesheets/bookmarklet-overwrite.scss */
+#login-guide-window {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background: #222;
+  z-index: 99999;
+  overflow: auto;
+}
+
+/* line 102, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.video-card-header, .frame-share-header {
+  position: absolute;
+  z-index: 89999;
+  height: 45px;
+  padding: 0px;
+  margin: 0px;
+  background-color: #35383A;
+  border-radius: 5px 5px 0 0;
+}
+
+/* line 113, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.frame-exists .frame-logo:before {
+  content: "Seen on";
+  display: block;
+  float: left;
+}
+
+/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.frame-controls {
+  position: absolute;
+  z-index: 89999;
+  background-color: #35383A;
+  border-radius: 0 0 5px 5px;
+  font-size: 13px;
+}
+
+/* line 128, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.frame-title {
+  width: 50%;
+}
+
+/* line 132, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-selection-item {
+  height: 51px;
+  margin: 0;
+  padding: 0;
+}
+/* line 136, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-selection-item a:link, .roll-selection-item a:visited, .roll-selection-item a:active {
+  color: #DCDDDE;
+}
+/* line 139, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-selection-item a img {
+  border: none;
+}
+
+/* line 145, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.guide-overlay-title {
+  background-image: url("../../images/assets/mark.png");
+  background-repeat: no-repeat;
+  background-size: 38px;
+  background-position: 15px 50%;
+}
+
+/* line 152, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.roll-item-creator {
+  height: 23.03030303px;
+}
+
+/* line 156, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.current-roll {
+  font-size: 14.5454545455px;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */

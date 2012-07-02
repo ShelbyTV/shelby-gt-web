@@ -27,14 +27,15 @@ ready : function() {
 
       shelbySignedInCallback : function(response) {
         if (response.result.signed_in === false) {
-          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=<%=@hash%>login> <iframe height = 400 width=600 src="http://gt.shelby.tv"> </iframe></div>');
-          shelbyJ('#<%=@hash%>login').css("position", "fixed")
-                                  .css("left", "0px")
-                                  .css("top", "0px")
+          shelbyRadar.styleGuideShow("<%=@hash%>login-guide");
+          shelbyRadar.loginGuideHtml();
+
         } else {
           shelbyRadar.getUser(shelbyJ);
         }
       },
+
+      
 
       shelbyUserCallback : function(response) {
         shelbyRadar.shelbyBkmkltUser = response.result;
@@ -49,29 +50,7 @@ ready : function() {
           xhrFields : {withCredentials : true},
           success : function(response) {
             rolls = response.result;
-            rollStringbuilder = [];
-            rollStringbuilder.push('<div class=<%=@hash%>existing-rolls-list> <ul class="<%=@hash%>list"> ');
-            for (var i = 0; i < rolls.length; i++) {
-              roll = rolls[i];
-              rollStringbuilder.push('<li id="<%=@hash%>roll-');
-              rollStringbuilder.push(roll.id);
-              rollStringbuilder.push('" data-rollid = "');
-              rollStringbuilder.push(roll.id);
-              rollStringbuilder.push('" class="<%=@hash%>roll-selection-item">');
-              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-add clearfix"> Add</div>'); 
-              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-lining">');
-              rollStringbuilder.push('<img class="<%=@hash%>roll-selection-item-thumbnail" src="');
-              rollStringbuilder.push(roll.thumbnail_url);
-              rollStringbuilder.push('">');
-              rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-title">');
-              rollStringbuilder.push(roll.title);
-              rollStringbuilder.push('</div><div class="<%=@hash%>roll-selection-item-state">');
-              rollStringbuilder.push(roll.public ? "public" : "private");
-              rollStringbuilder.push('</div></div></li>');
-            }
-            rollStringbuilder.push('</ul></div>');
-            shelbyJ("#<%=@hash%>roll-guide-window").append(rollStringbuilder.join(''));
-            shelbyRadar.shelbyDocElements['rollsList'] = shelbyJ(".<%=@hash%>existing-rolls-list");
+            shelbyRadar.rollGuideHtml(rolls);    
             shelbyRadar.sendVidsToShelby(shelbyRadar.foundVideo, shelbyJ);
           }
         });
@@ -124,11 +103,11 @@ ready : function() {
         },
         
         getWidth : function(jqueryVid) {
-          return jqueryVid.width() + 1;
+          return jqueryVid.width();
         },
       
-        getHeaderVpos : function(vidHeight, vidTop) {
-          return vidTop - 45;
+        getHeaderVpos : function(vidHeight, vidTop, header) {
+          return vidTop - header.height();
         },
         getFooterVpos : function(vidHeight, vidTop) {
           return vidHeight + vidTop;
@@ -140,10 +119,10 @@ ready : function() {
                     vid = vids[vidIndex]
                     shelbyJ('.<%=@hash%>found-video-' + r)
                                     .css("left", vid.embed.offset().left)
-                                    .css("top", getFooterVpos(height, vid.embed.offset().top));
+                                    .css("top", shelbyRadar.getFooterVpos(height, vid.embed.offset().top));
                     shelbyJ('#<%=@hash%>frame-info-' + r)
                                     .css("left", vid.embed.offset().left)
-                                    .css("top", getHeaderVpos(height, vid.embed.offset().top));
+                                    .css("top", shelbyRadar.getHeaderVpos(height, vid.embed.offset().top, header));
         },
         resizeArray : [],
 
@@ -157,30 +136,26 @@ ready : function() {
                 } else {
                   for (var i = 0; i < vids.length; i++) {
                     if (vids[i].known_url !== false) {
-                      vids[i].embed.css("margin-top", "50px")
-                              .css("margin-bottom", "50px")
                       var r = Math.floor(Date.now() + Math.random());
                       var bcastClass = "bcast-" + vids[i].video_id;
                       var height = shelbyRadar.getHeight(vids[i].embed);
                       var width = shelbyRadar.getWidth(vids[i].embed);
-                      var vpos = vids[i].embed.offset().top + height;
+                      var vpos = vids[i].embed.offset().top;
                       var hpos = vids[i].embed.offset().left;
 
                       // put buttons here, we have hpos, vpos, fixed positions
                     
 
-                      shelbyRadar.shelbyDocElements['ext-elements'].append('<div class="<%=@hash%>video-card-header clearfix" id="<%=@hash%>frame-info-' + r + '"></div>');
+                      shelbyRadar.shelbyDocElements['ext-elements'].append('<div class="<%=@hash%>video-card-header clearfix" id="<%=@hash%>frame-info-' + r + '" data-r=' + r + '>' + 
+                        '<div class=<%=@hash%>frame-logo>' +
+                          '<img class="<%=@hash%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' +
+                      '</div>');
 
-                      shelbyJ("#<%=@hash%>frame-info-" + r).css("position", "absolute")
+                      header = shelbyJ("#<%=@hash%>frame-info-" + r)
+                      header
                           .css("left", hpos + "px")
-                          .css("top", vids[i].embed.offset().top - 45 + "px")
-                          .css("z-index", "89999")
+                          .css("top", shelbyRadar.getHeaderVpos(height, vpos,header) + "px")
                           .css("width", width + "px")
-                          .css("height", "45px")
-                          .css("padding", "0px")
-                          .css("margin", "0px")
-                          .css("background-color", "#35383A")
-                          .css("border-radius", "5px 5px 0 0");
 
                      
                     
@@ -211,13 +186,9 @@ ready : function() {
                                   'Share it ' +
                                 '</button>' +
                               '</li>')
-                          .css("position", "absolute")
                           .css("left", hpos + "px")
-                          .css("top", vpos + "px")
-                          .css("z-index", "89999")
+                          .css("top", shelbyRadar.getFooterVpos(vpos, height) + "px")
                           .css("width", width + "px")
-                          .css("background-color", "#35383A")
-                          .css("border-radius", "0 0 5px 5px")
                       var frameInfoId = shelbyJ("#<%=@hash%>frame-info-" + r).attr("id");
                       shelbyJ(".<%=@hash%>button-" + r).attr("data-frameid", frameInfoId).attr("data-videourl", vids[i].known_url);
 
@@ -531,7 +502,7 @@ ready : function() {
         },
 
 
-        setUpGuide : function(guideName, styleGuideWidth) {
+        setUpGuide : function(guideName, styleGuideWidth, loggedIn) {
           shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class=' + guideName + ' hidden="hidden">  </div>');
           shelbyJ('#' + guideName + '-window')
                                               .css("width", shelbyGuideWidth + "px")
@@ -550,15 +521,17 @@ ready : function() {
           shelbyJ('#' + guideName + '-window').append('<div id=' + guideName +'-overlay-header class="<%=@hash%>guide-overlay-header"></div>');
           shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@hash%>guide-overlay-title">' +
                                                             '<div class="<%=@hash%>guide-overlay-title-text"> ' + shelbyRadar.allGuides[guideName] + '</div>' +
-                                                          '</div>')
-                                                              .append('<div class="<%=@hash%>guide-overlay-context">' +
+                                                            '</div>')
+          if (loggedIn) {
+            shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@hash%>guide-overlay-context">' +
                                                               '<div class="<%=@hash%>guide-overlay-context-overview">' +
                                                                 '<div class="<%=@hash%>guide-overlay-context-creator"> </div>' +
                                                                 '<div class = "<%=@hash%>guide-overlay-context-title"></div>' +
                                                               '</div>' + 
                                                               '</div>');
+          }
 
-          shelbyJ(window).resize(function() {
+          shelbyRadar.resizeArray.push(function() {
               shelbyJ("#" + guideName + "-window").css("height", shelbyJ(window).height() + "px");
               shelbyJ("#" + guideName + "-clickoff").css("height", shelbyJ(window).height() + "px")
                                                     .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px");
@@ -570,18 +543,24 @@ ready : function() {
                       return;
                     }
 
-                    if(!frame){ return };
+                    if(!frame || !frame.conversation){ return };
 
-                    shelbyJ("#" + shelbyFrameId).html(
+                    var frameHeader = shelbyJ("#" + shelbyFrameId);
+                    frameHeader.addClass("frame-exists");
+
+                    var r = frameHeader.data("r")
+                  console.log(frame);
+                    frameHeader.prepend(
                         '<img src=' + frame.creator.user_image + ' class="<%=@hash%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' +
                         "<div class=<%=@hash%>frame-creator-roll> " + 
                           frame.roll.title +
-                        "</div>" +
-                        '<div class=<%=@hash%>frame-logo>' +
-                          'Seen on <img class="<%=@hash%> frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' +
+                          "</div>" +
                         "<div class=<%=@hash%>frame-title> " + frame.video.title + "</div>")
                                   .data("conversationid", frame.conversation.id)
                                   .data("shelbyframeid", frame.id);
+
+                  shelbyJ("#like-text-" + r).html(frame.upvoters.length);
+                  shelbyJ("#comment-text-" + r).html(frame.conversation.messages.length);
 
         },
 
@@ -598,7 +577,121 @@ ready : function() {
               shelbyRadar.shelbyDocElements['commentSubmit'] = shelbyJ(".<%=@hash%>new-comment-submit");
               shelbyRadar.shelbyDocElements['commentText'] = shelbyJ(".<%=@hash%>new-comment-input");
         },
+	  
+	populateRolls : function(rolls) {
+          rollStringbuilder = [];
+          rollStringbuilder.push('<ul class="<%=@hash%>list"> ');
+          for (var i = 0; i < rolls.length; i++)  {
+            roll = rolls[i];
+            rollStringbuilder.push('<li id="<%=@hash%>roll-');
+            rollStringbuilder.push(roll.id);
+            rollStringbuilder.push('" data-rollid = "');
+            rollStringbuilder.push(roll.id);
+            rollStringbuilder.push('" class="<%=@hash%>roll-selection-item">');
+            rollStringbuilder.push(roll.public ? '<a href="#" class=rolling-public-roll>' : '<a href="#" class=rolling-private-roll>');
+            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-add clearfix"> Add</div>'); 
+            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-lining">');
+            rollStringbuilder.push('<img class="<%=@hash%>roll-selection-item-thumbnail" src="');
+            rollStringbuilder.push(roll.thumbnail_url);
+            rollStringbuilder.push('">');
+            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-title">');
+            rollStringbuilder.push(roll.title);
+            rollStringbuilder.push('</div><div class="<%=@hash%>roll-selection-item-state">');
+            rollStringbuilder.push(roll.public ? "public" : "private");
+            rollStringbuilder.push('</div></div></a></li>');
+          }
+          rollStringbuilder.push('</ul>');
+          shelbyJ(".<%=@hash%>existing-rolls-list").html(rollStringbuilder.join(''));
+      },
+
+      rollGuideHtml : function(rolls) {
+          shelbyJ("#<%=@hash%>roll-guide-window").append('<div class="<%=@hash%>guide-overlay-main <%=@hash%>rolling-main">' +
+                            '<div class="rolling-main-new-roll">' +
+                            '<div class="rolling-main-header">Create New Roll</h3>' +
+                            '<div class="<%=@hash%>create-roll clearfix">' +
+                            '<form class="">' +
+                            '<fieldset class="<%=@hash%>roll-options">' +
+                            '<label for="<%=@hash%>new-roll-name" class="<%=@hash%>roll-options-label">Roll Name</label>' +
+                            '<input name="<%=@hash%>new-roll-name" id="<%=@hash%>new-roll-name" class="<%=@hash%>roll-options-input" plassholder="Roll name..." type="text">' +
+                            '<label for="<%=@hash%>new-roll-recipients" class="<%=@hash%>roll-options-label">Share With</label>' +
+                            '<input name="<%=@hash%>new-roll-recipients" id="<%=@hash%>new-roll-recipients" class="<%=@hash%>roll-options-input" placeholder="Seperate email addresses with commas..." type="email" multiple="multiple">' +
+                            '</fieldset>' +
+                            '<fieldset class="roll-options">' +
+                            '<label for="<%=@hash%>new-roll-status" class="<%=@hash%>new-roll-status clearfix" data-private="Private" data-public="Public">' +
+                            '<input id="<%=@hash%>new-roll-status" class="<%=@hash%>new-roll-status-checkbox" type="checkbox">' +
+                            '</label>' +
+                            '</fieldset>' +
+                            '<fieldset class="<%=@hash%>roll-options">' +
+                            '<button onclick="return false;" id="<%=@hash%>new-roll-create" class="<%=@hash%>roll-options-submit" type="submit">Roll It</button>' +
+                            '</fieldset>' +
+                            '</form>' +
+                              '</div>' +
+                              '</div>' +
+                            '<div class="<%=@hash%>existing-rolls-list"></div>');
+                                        
+          shelbyRadar.populateRolls(rolls);
+          shelbyRadar.shelbyDocElements['rollsList'] = shelbyJ(".<%=@hash%>existing-rolls-list");
+
+          shelbyJ(".<%=@hash%>roll-options-submit").on('click', null, null, function(event) {
+            var dataReq = {
+              'title' : shelbyJ(".<%=@hash%>roll-options-input").val(),
+              'collaborative' : true,
+              'public' : (shelbyJ(".<%=@hash%>new-roll-status").is(':checked') ? "public": "private")
+              }
+              shelbyJ.ajax({
+                type : 'GET',
+                url : 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
+                dataType : "jsonp",
+                async : true,
+                crossDomain : true,
+                data : dataReq,
+                xhrFields : {withCredentials : true},
+                success : 
+                function(response) {
+
+                  var shareData  = {
+                    'roll_id' : response.result.id,
+                    'destination' : ['email'],
+                    'addresses' : shelbyJ("#<%=@hash%>new-roll-recipients").val(),
+                    'text' : "New Roll"
+                  };
+                  shelbyJ.ajax( {
+                    type : 'GET',
+                    data : shareData,
+                    url : 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                    dataType : "jsonp",
+                    crossDomain : true,
+                    xhrFields : {withCredentials : true},
+                    success : function(response) {
+                      console.log(response);
+                      }
+                      });
+
+                  shelbyJ.ajax( {
+                      type : 'GET',
+                      url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyRadar.shelbyBkmkltUser.id + '/rolls/postable',
+                      dataType : "jsonp",
+                      crossDomain : true,
+                      xhrFields : {withCredentials : true},
+                      success : function(response) {
+                        rolls = response.result;
+                        shelbyRadar.populateRolls(rolls);    
+                        console.log(response);
+                      }
+                    })
+                  }
+              });
+            });
+        },
         
+        loginGuideHtml: function() {
+                          shelbyJ('#<%=@hash%>login-guide-window').append(
+                              //'<fieldset class="<%=@hash%>email-gate-networks">' +
+                              '<a class="<%=@hash%>email-gate-networks-twitter" href="http://<%=Settings::VideoRadar.domain%>/auth/twitter"> Log in with Twitter </a>' + 
+                              '<a class="<%=@hash%>email-gate-networks-facebook" href="http://<%=Settings::VideoRadar.domain%>/auth/facebook"> Log in with Facebook </a>')
+                          //+ '</fieldset>');
+                        },
+
 
         shareGuideHtml : function(networks) {
               var contains = function(network_name) {
@@ -758,7 +851,8 @@ ready : function() {
 
         allGuides : {"<%=@hash%>roll-guide" : "Roll",
                      "<%=@hash%>comment-guide" : "Comments", 
-                     "<%=@hash%>share-guide" : "Share"
+                     "<%=@hash%>share-guide" : "Share",
+                     "<%=@hash%>login-guide" : "Log In"
                     },
 
         knownProviders : [
@@ -780,12 +874,20 @@ ready : function() {
     foundVideo : null,
   
     shelbify : function() {
-      shelbyRadar.setUpGuide("<%=@hash%>roll-guide", shelbyGuideWidth);
-      shelbyRadar.setUpGuide("<%=@hash%>share-guide", shelbyGuideWidth);
-      shelbyRadar.setUpGuide("<%=@hash%>comment-guide", shelbyGuideWidth);
+      shelbyRadar.setUpGuide("<%=@hash%>roll-guide", shelbyGuideWidth, true);
+      shelbyRadar.setUpGuide("<%=@hash%>share-guide", shelbyGuideWidth, true);
+      shelbyRadar.setUpGuide("<%=@hash%>comment-guide", shelbyGuideWidth, true);
+      shelbyRadar.setUpGuide("<%=@hash%>login-guide", shelbyGuideWidth, false);
       shelbyRadar.commentGuideHtml();
       shelbyRadar.foundVideo = shelbyRadar.find(possibleVideos, shelbyJ);
       shelbyRadar.signedIn(shelbyJ);
+      shelbyJ(window).resize(function() {
+          for (var i = 0; i < shelbyRadar.resizeArray.length; i++) {
+            console.log("adf");
+            shelbyRadar.resizeArray[i]();
+          }
+        });
+            
     }
   };
   shelbyRadar.shelbify();
