@@ -472,7 +472,9 @@ ready : function() {
             stringbuilder.push('" alt="" title="">')
             stringbuilder.push('</div>')
             stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-user">')
+            stringbuilder.push('<span class="<%=@hash%>frame-conversation-message-user-name">')
             stringbuilder.push(message.realname)
+            stringbuilder.push('</span>')
             stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-block">')
             stringbuilder.push(message.text)
             stringbuilder.push('</div>');
@@ -905,7 +907,6 @@ ready : function() {
       shelbyRadar.signedIn(shelbyJ);
       shelbyJ(window).resize(function() {
           for (var i = 0; i < shelbyRadar.resizeArray.length; i++) {
-            console.log("adf");
             shelbyRadar.resizeArray[i]();
           }
         });
