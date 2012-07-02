@@ -994,9 +994,9 @@ a:hover, a:visited, a:active {
 
 /* line 3, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 #guide-overlay-controls {
-  bottom: 10px;
   position: absolute;
   right: 0;
+  top: 50%;
   z-index: 10;
 }
 
@@ -1027,11 +1027,12 @@ a:hover, a:visited, a:active {
   cursor: pointer;
   height: 45px;
   overflow: hidden;
+  padding-right: 0;
   position: absolute;
   right: 0;
-  width: 34px;
+  width: 29px;
 }
-/* line 29, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 30, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .copy {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -1059,7 +1060,7 @@ a:hover, a:visited, a:active {
   top: 13px;
   width: 70px;
 }
-/* line 48, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 47, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -1079,14 +1080,14 @@ a:hover, a:visited, a:active {
   width: 20px;
 }
 
-/* line 60, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 59, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 63, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 62, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -1094,13 +1095,13 @@ a:hover, a:visited, a:active {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 67, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 66, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
-/* line 72, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 71, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -1108,7 +1109,7 @@ a:hover, a:visited, a:active {
   transition-delay: 0s;
   width: 112px;
 }
-/* line 77, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 76, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -1118,14 +1119,14 @@ a:hover, a:visited, a:active {
   transition-delay: 0.2s;
 }
 
-/* line 83, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 82, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 85, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 84, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -1137,7 +1138,7 @@ a:hover, a:visited, a:active {
   transition-delay: 0.1s;
 }
 
-/* line 91, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 90, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .user-inactive .guide-toggle.show {
   border: none;
   box-shadow: none;
@@ -1231,6 +1232,8 @@ a:hover, a:visited, a:active {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
+  margin: 10px;
   overflow: hidden;
 }
 
@@ -1241,16 +1244,17 @@ a:hover, a:visited, a:active {
 
 /* line 35, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button {
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
-/* line 41, ../../app/stylesheets/partials/roll-item.scss */
+/* line 42, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button {
   height: 150px;
 }
-/* line 44, ../../app/stylesheets/partials/roll-item.scss */
+/* line 45, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -1260,12 +1264,12 @@ a:hover, a:visited, a:active {
   position: absolute;
   width: 100%;
 }
-/* line 55, ../../app/stylesheets/partials/roll-item.scss */
+/* line 56, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
 
-/* line 61, ../../app/stylesheets/partials/roll-item.scss */
+/* line 62, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container {
   bottom: 0;
   left: 0;
@@ -1275,20 +1279,20 @@ a:hover, a:visited, a:active {
   width: 100%;
   z-index: 1;
 }
-/* line 70, ../../app/stylesheets/partials/roll-item.scss */
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a {
   text-decoration: none;
 }
-/* line 74, ../../app/stylesheets/partials/roll-item.scss */
+/* line 75, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a:active, .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 78, ../../app/stylesheets/partials/roll-item.scss */
+/* line 79, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container a:hover {
   text-decoration: underline;
 }
 
-/* line 84, ../../app/stylesheets/partials/roll-item.scss */
+/* line 85, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-container-column {
   float: left;
   position: relative;
@@ -1296,7 +1300,7 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+/* line 94, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-title,
 .roll-item-people,
 .roll-item-creator {
@@ -1307,7 +1311,7 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
 }
 
-/* line 98, ../../app/stylesheets/partials/roll-item.scss */
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-title,
 .roll-item-people {
   clear: right;
@@ -1318,7 +1322,7 @@ a:hover, a:visited, a:active {
   padding: 0 8px 0;
 }
 
-/* line 107, ../../app/stylesheets/partials/roll-item.scss */
+/* line 108, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1328,7 +1332,7 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 0;
 }
 
-/* line 117, ../../app/stylesheets/partials/roll-item.scss */
+/* line 118, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total,
 .roll-item-watched {
   font-size: 11px;
@@ -1337,13 +1341,13 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 124, ../../app/stylesheets/partials/roll-item.scss */
+/* line 125, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
 
-/* line 134, ../../app/stylesheets/partials/roll-item.scss */
+/* line 135, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-avatar,
 .roll-item-people-avatar {
   float: left;
@@ -1352,13 +1356,13 @@ a:hover, a:visited, a:active {
   width: 40px;
 }
 
-/* line 141, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
 
-/* line 146, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1373,7 +1377,7 @@ a:hover, a:visited, a:active {
   width: 46px;
 }
 
-/* line 154, ../../app/stylesheets/partials/roll-item.scss */
+/* line 155, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1384,7 +1388,7 @@ a:hover, a:visited, a:active {
   margin: 0 3px;
   text-align: center;
 }
-/* line 164, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -1393,13 +1397,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 177, ../../app/stylesheets/partials/roll-item.scss */
+/* line 178, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
 
-/* line 182, ../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-list {
   height: inherit;
   margin: 0;
@@ -1407,7 +1411,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 189, ../../app/stylesheets/partials/roll-item.scss */
+/* line 190, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1419,27 +1423,27 @@ a:hover, a:visited, a:active {
   right: 0;
   top: 0;
 }
-/* line 200, ../../app/stylesheets/partials/roll-item.scss */
+/* line 201, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 205, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 211, ../../app/stylesheets/partials/roll-item.scss */
+/* line 212, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 213, ../../app/stylesheets/partials/roll-item.scss */
+/* line 214, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -1457,7 +1461,7 @@ a:hover, a:visited, a:active {
 /* line 12, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-button {
   overflow: hidden;
-  padding: 0;
+  padding: 5px 0 5px 5px;
   position: relative;
   z-index: 1;
 }
@@ -2950,9 +2954,10 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
+  padding: 8px;
   position: relative;
 }
-/* line 79, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 80, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2968,22 +2973,21 @@ body.isolated-roll .context-overlay-lining .frame-title {
   border-radius: 5px;
   color: #efefef;
   padding: 4px 8px;
-  right: 0;
-  margin: 8px;
-  position: absolute;
-  top: 2px;
+  margin-top: 40px;
+  margin-left: 7px;
 }
 
-/* line 89, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 87, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   border-radius: 3px;
-  height: 55px;
-  margin: 10px 61px 30px 8px;
-  width: 220px;
+  left: 68px;
+  position: absolute;
+  right: 8px;
 }
-/* line 97, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 96, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2999,6 +3003,18 @@ body.isolated-roll .context-overlay-lining .frame-title {
   transition-timing-function: ease-in;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+/* line 104, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+/* line 109, ../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar > img {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* line 3, ../../app/stylesheets/partials/rolls.scss */
@@ -4313,15 +4329,16 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 36, ../../app/stylesheets/partials/gate.scss */
 .embed-gate-wrapper iframe {
   width: 500px;
+  height: 300px;
 }
 
-/* line 39, ../../app/stylesheets/partials/gate.scss */
+/* line 40, ../../app/stylesheets/partials/gate.scss */
 .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
 
-/* line 48, ../../app/stylesheets/partials/gate.scss */
+/* line 49, ../../app/stylesheets/partials/gate.scss */
 .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -4331,7 +4348,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 50%;
 }
 
-/* line 59, ../../app/stylesheets/partials/gate.scss */
+/* line 60, ../../app/stylesheets/partials/gate.scss */
 .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -4340,7 +4357,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 33%;
 }
 
-/* line 68, ../../app/stylesheets/partials/gate.scss */
+/* line 69, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -4349,7 +4366,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 205px;
 }
 
-/* line 76, ../../app/stylesheets/partials/gate.scss */
+/* line 77, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
   background: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -4371,7 +4388,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 7px 19px;
 }
 
-/* line 93, ../../app/stylesheets/partials/gate.scss */
+/* line 94, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks {
   background: #585858;
   border-radius: 5px;
@@ -4381,7 +4398,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 10px;
   position: relative;
 }
-/* line 103, ../../app/stylesheets/partials/gate.scss */
+/* line 104, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks:before {
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
@@ -4398,14 +4415,14 @@ body.isolated-roll .context-overlay-lining .frame-title {
   top: -5px;
   width: 10px;
 }
-/* line 118, ../../app/stylesheets/partials/gate.scss */
+/* line 119, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks .email-gate-error {
   color: #DADADA;
   font-size: 13px;
   margin-top: 10px;
 }
 
-/* line 126, ../../app/stylesheets/partials/gate.scss */
+/* line 127, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -4413,16 +4430,16 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-decoration: none;
   width: 100%;
 }
-/* line 134, ../../app/stylesheets/partials/gate.scss */
+/* line 135, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 137, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 142, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -4431,27 +4448,27 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-decoration: none;
   width: 100%;
 }
-/* line 151, ../../app/stylesheets/partials/gate.scss */
+/* line 152, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 154, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 159, ../../app/stylesheets/partials/gate.scss */
+/* line 160, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   color: #cc1235;
 }
 
-/* line 163, ../../app/stylesheets/partials/gate.scss */
+/* line 164, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 168, ../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4459,7 +4476,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
 }
 
-/* line 175, ../../app/stylesheets/partials/gate.scss */
+/* line 176, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -4468,7 +4485,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-align: right;
 }
 
-/* line 184, ../../app/stylesheets/partials/gate.scss */
+/* line 185, ../../app/stylesheets/partials/gate.scss */
 .email-gate-code,
 .email-gate-email {
   border-radius: 3px;
@@ -4481,7 +4498,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 50%;
 }
 
-/* line 195, ../../app/stylesheets/partials/gate.scss */
+/* line 196, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #0071a3;
@@ -4503,19 +4520,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 17%;
 }
 
-/* line 212, ../../app/stylesheets/partials/gate.scss */
+/* line 213, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 217, ../../app/stylesheets/partials/gate.scss */
+/* line 218, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 223, ../../app/stylesheets/partials/gate.scss */
+/* line 224, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }

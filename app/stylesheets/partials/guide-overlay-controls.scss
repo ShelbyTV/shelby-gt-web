@@ -1,9 +1,9 @@
 @import "base";
 
 #guide-overlay-controls {
-  bottom: 10px;
   position: absolute;
   right: 0;
+  top: 50%;
   z-index: 10;
 }
 
@@ -22,9 +22,10 @@
   cursor: pointer;
   height: 45px;
 	overflow: hidden;
+  padding-right: 0;
   position: absolute;
   right: 0;
-  width: 34px;
+  width: 29px;
 	
 	.copy { 
     @include transition-property(opacity);
@@ -37,10 +38,8 @@
   	
   	color: #fff;
     font-size: 14px;
-    
     position: absolute;
     right: 33px;
-    
     top: 13px;
     width: 70px;
   }

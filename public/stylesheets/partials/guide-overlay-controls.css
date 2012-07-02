@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Syntax error: Undefined mixin 'transition-property'.
         on line 11 of /shelbytv/app/stylesheets/partials/guide-overlay-controls.scss, in `transition-property'
@@ -95,3 +96,157 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 11 of /shelbytv/app/stylesheets/partials/guide-overlay-controls.scss, in `transition-property'\A         from line 11 of /shelbytv/app/stylesheets/partials/guide-overlay-controls.scss\A \A 6:   right: 0;\A 7:   z-index: 10;\A 8: }\A 9: \A 10: .guide-toggle {\A 11:   @include transition-property('width, right');\A 12: 	@include transition-duration(.5s);\A 13: 	@include transition-timing-function(ease-in-out);\A 14: 	@include transition-delay(.1s);\A 15:   \A 16:   background-color: #0e0e0e;"; }
+=======
+/* line 3, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+#guide-overlay-controls {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 10;
+}
+
+/* line 10, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle {
+  -moz-transition-property: width, right;
+  -webkit-transition-property: width, right;
+  -o-transition-property: width, right;
+  transition-property: width, right;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  background-color: #0e0e0e;
+  bottom: 0;
+  border: 1px solid #202020;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 2px 2px 5px 0px #333;
+  cursor: pointer;
+  height: 45px;
+  overflow: hidden;
+  padding-right: 0;
+  position: absolute;
+  right: 0;
+  width: 29px;
+}
+/* line 30, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle .copy {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  right: 33px;
+  top: 13px;
+  width: 70px;
+}
+/* line 47, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle .icon {
+  -moz-transition-property: rotate;
+  -webkit-transition-property: rotate;
+  -o-transition-property: rotate;
+  transition-property: rotate;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  background: url("../images/assets/guide.svg") no-repeat center center transparent;
+  float: right;
+  height: 20px;
+  width: 20px;
+}
+
+/* line 59, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show {
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 62, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show .icon {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 66, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.show .copy {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+/* line 71, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  width: 112px;
+}
+/* line 76, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.hide .copy, .guide-toggle.hide:hover .copy {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -moz-transition-delay: 0.2s;
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+/* line 82, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.hide:hover {
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+/* line 84, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.guide-toggle.hide:hover .copy {
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -moz-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+/* line 90, ../../../app/stylesheets/partials/guide-overlay-controls.scss */
+.user-inactive .guide-toggle.show {
+  border: none;
+  box-shadow: none;
+  right: -35px;
+}
+>>>>>>> a2418691dc70e568680b68afd13bac382ba3e420

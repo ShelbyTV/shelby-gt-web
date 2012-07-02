@@ -1,7 +1,7 @@
-<% if @meta_info[:video_info] %>
-	a shelby.tv video: <%= @meta_info[:video_info]['video']['title'] %>
-<% elsif @meta_info[:user_info] %>
-	<%= @meta_info[:user_info]['name'] %>'s Personal Video Roll on Shelby.tv
+<% if @meta_info[:frame] and @meta_info[:video_info] %>
+	A Shelby.tv Video: <%= @meta_info[:video_info]['video']['title'] %>
+<% elsif @meta_info[:roll]  and @meta_info[:video_info] %>
+	The <%= @meta_info[:roll][:roll_info]['title'].titlecase %> Roll, curated by: <%= @meta_info[:roll][:roll_info]['creator_nickname'] %> on Shelby.tv
 <% else %>
 	<%= Settings::Application.title %>
 <% end %>

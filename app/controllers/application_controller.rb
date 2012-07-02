@@ -34,43 +34,45 @@ class ApplicationController < ActionController::Base
     h
   end
   
-  def get_video_info(path)
-    roll_info, video_info, user_info, permalink = nil
+  def get_api_info(path)
+    roll_info, video_info, user_info, roll_permalink, user_permalink, frame_permalink = nil
     
     if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
+    # the url is a frame
       frame_id = path_match[1]
       video_info = Shelby::API.get_video_info(frame_id)
       if video_info
-        if !video_info['video']["thumbnail_url"]
-          video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" 
-        end
         video_embed = video_info['video']['embed_url']
-        permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
+        frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
+        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
       end
-    elsif path_match = /roll\/(\w*)(\/.*)*/.match(path)
+      return  { :frame => { :frame_permalink => frame_permalink,
+                            :roll_permalink => roll_permalink },
+                :video_embed => video_embed,
+                :video_info =>  video_info
+              }
+    elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
+    # the url is a roll or personal roll
       roll_id = path_match[1]
       video_info = Shelby::API.get_first_frame_on_roll(roll_id)
       if video_info
-        if !video_info['video']["thumbnail_url"]
-          video_info['video']["thumbnail_url"] = "#{Settings::Application.url}/images/assets/missing_thumb.png" 
-        end
         video_embed = video_info['video']['embed_url']
-        permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
+        user_info = Shelby::API.get_user_info(video_info['roll']['creator_id'])
+        roll_info = video_info['roll']
+        frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
+        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
+        user_permalink = Shelby::API.generate_user_route(user_info['nickname'])
       end
-    elsif path_match = /user\/(\w*)\/personal_roll/.match(path)
-      user_nickname = path_match[1]
-      user_info = Shelby::API.get_user_info(user_nickname)
-      permalink = Shelby::API.generate_user_route(user_nickname)
+      return {  :roll => {  :roll_info => roll_info,
+                            :roll_permalink => roll_permalink,
+                            :user_info =>   user_info,
+                            :user_permalink =>   user_permalink },
+                :video_embed => video_embed,
+                :video_info =>  video_info
+              }
+    else
+      return { :video_info => nil }
     end
-    
-    info = {
-      :video_info =>  video_info,
-      :video_embed => video_embed,
-      :user_info =>   user_info,
-      :permalink =>   permalink
-    }
-    
-    return info
   end
   
 end
