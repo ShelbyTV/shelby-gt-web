@@ -1,19 +1,21 @@
+//FRAME
+
 .frame-logo {
-  font-size:14px;
   color : #EFEFEF;
-  margin: 9px 12px 0 0;
   float: right;
+  font-size:14px;
+  line-height: 2;
+  margin: 9px 12px 0 0;
   position: absolute;
   right: 0;
-  line-height: 2;
 }
 
 .frame-logo-img {
-  width: 100px;
-  vertical-align: middle;
   display: inline;
   margin-left: 5px;
   margin-top: 0px;
+  width: 100px;
+  vertical-align: middle;
 }
 
 .frame-creator-avatar{
@@ -21,43 +23,75 @@
   width:45px;
 }
 
+//ROLLS
+
 
 .roll-selection-item-lining {
   height: 50px;
 }
 
+.roll-selection-item {
+  height: 51px;
+  margin: 0;
+  padding: 0;
+
+  a:link, a:visited, a:active {
+    color:#DCDDDE;
+  }
+  a img {
+    border: none;
+  }
+  
+}
+
+.roll-item-creator {
+  height:23.03030303px;
+}
+
+.current-roll {
+  font-size: 14.5454545455px;
+}
+
+.share-submit-button,
+.roll-options-submit,
+.new-roll-status-checkbox {
+  font-size: 12px;
+}
+
+//GUIDE
+
 .guide-overlay-title-text {
   line-height: 2.65;
-  text-align: center;
   font-size: 18px;
-  font-weight: 500
+  font-weight: 500;
+  text-align: center;
 }
 
 .guide-clickoff {
   position: fixed;
-  z-index: 89999;
   top: 0px;
+  z-index: 89999;
 }
 
 .guide-window {
+  background: #222;
+  border: 0px 0px 25px 5px black;
+  box-shadow: 0px 0px 25px 5px black;
   position: fixed;
   right: 0px;
   top: 0px;
-  background: #222;
-  z-index:99999; 
   overflow: auto;
-  border: 0px 0px 25px 5px black;
-  box-shadow: 0px 0px 25px 5px black;
+  z-index:99999; 
 }
 
 .video-card-header {
-  position: absolute;
-  z-index: 89999;
-  height: 45px;
-  padding: 0px;
-  margin: 0px;
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
+  height: 45px;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  z-index: 89999;
 }
 
 .frame-exists {
@@ -69,41 +103,20 @@
 }
 
 .frame-controls {
-  position: absolute;
-  z-index: 89999;
   background-color: #35383A;
   border-radius: 0 0 5px 5px;
   font-size: 13px;
+  position: absolute;
+  z-index: 89999;
 }
 
 .frame-title {
-width:50%;
-}
-
-.roll-selection-item {
-  height: 51px;
-  margin: 0;
-  padding: 0;
-  a:link, a:visited, a:active {
-    color:#DCDDDE;
-  }
-  a img {
-    border: none;
-  }
-  
+  width:50%;
 }
 
 .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
+  background-position: 15px 50%;
   background-repeat: no-repeat;
   background-size: 38px;
-  background-position: 15px 50%;
-}
-
-.roll-item-creator {
-  height:23.03030303px;
-}
-
-.current-roll {
-  font-size: 14.5454545455px;
 }
