@@ -57,15 +57,6 @@
 }
 
 /* line 10, ../../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype {
-  color: transparent;
-  font: 0/0 a;
-  overflow: hidden;
-  text-shadow: none;
-  white-space: nowrap;
-}
-
-/* line 11, ../../../app/stylesheets/partials/h5bp-utilities.scss */
 .error {
   background: #fdd;
   border: 1px solid red !important;

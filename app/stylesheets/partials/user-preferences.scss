@@ -29,7 +29,10 @@
 	}	
 }
 
-.you-preferences-list{
+.you-preferences-list,
+.you-preferences-networks,
+.you-preferences-notifications{
+
 	margin:0;
 	padding:0;
 
@@ -91,7 +94,7 @@
 
 
 .you-preferences-networks{
-	@extend .you-preferences-list;
+	//extended by .you-preferences-list;
 
 	button{
 //		THE BELOW STYLES ARE COMMENTED OUT BECAUSE THEY PERTAIN TO SOMETHING
@@ -158,7 +161,7 @@
 }
 
 .you-preferences-notifications{
-	@extend .you-preferences-list;
+	//extended by .you-preferences-list;
 	
 	label {
 		font-size:14px;

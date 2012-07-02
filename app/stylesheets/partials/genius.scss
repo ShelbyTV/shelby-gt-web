@@ -89,9 +89,9 @@
 
 .genius-search-submit{
 	//extend the button style
-	@include buttonfont;
 	background: $shelby-blue;
 	@include background( linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue) );
+	@include buttonfont;
 	@include text-shadow(0px 1px 2px #222);
 	
 	border:none;

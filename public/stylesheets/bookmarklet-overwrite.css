@@ -24,27 +24,12 @@
   width: 45px;
 }
 
-/* line 24, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements {
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  color: #DCDDDE;
-  font-size: 14.5454545455px;
-  line-height: 1.4;
-  text-align: left;
-}
-/* line 30, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 37, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 25, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item-lining {
   height: 50px;
 }
 
-/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 29, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title-text {
   line-height: 2.25;
   text-align: center;
@@ -52,35 +37,35 @@
   font-weight: 500;
 }
 
-/* line 48, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 36, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #roll-guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
 
-/* line 53, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #share-guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
 
-/* line 58, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 46, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #comment-guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
 
-/* line 63, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 51, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #login-guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
 
-/* line 68, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 56, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #roll-guide-window {
   position: fixed;
   right: 0px;
@@ -90,7 +75,7 @@
   overflow: auto;
 }
 
-/* line 77, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 65, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #share-guide-window {
   position: fixed;
   right: 0px;
@@ -100,7 +85,7 @@
   overflow: auto;
 }
 
-/* line 85, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 73, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #comment-guide-window {
   position: fixed;
   right: 0px;
@@ -110,7 +95,7 @@
   overflow: auto;
 }
 
-/* line 94, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 82, ../../app/stylesheets/bookmarklet-overwrite.scss */
 #login-guide-window {
   position: fixed;
   right: 0px;
@@ -120,7 +105,7 @@
   overflow: auto;
 }
 
-/* line 102, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 90, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .video-card-header {
   position: absolute;
   z-index: 89999;
@@ -131,14 +116,14 @@
   border-radius: 5px 5px 0 0;
 }
 
-/* line 113, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 101, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
 
-/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 108, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-controls {
   position: absolute;
   z-index: 89999;
@@ -147,27 +132,27 @@
   font-size: 13px;
 }
 
-/* line 128, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 116, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-title {
   width: 50%;
 }
 
-/* line 132, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item {
   height: 51px;
   margin: 0;
   padding: 0;
 }
-/* line 136, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 124, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a:link, .roll-selection-item a:visited, .roll-selection-item a:active {
   color: #DCDDDE;
 }
-/* line 139, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 127, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a img {
   border: none;
 }
 
-/* line 145, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 133, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-repeat: no-repeat;
@@ -175,12 +160,12 @@
   background-position: 15px 50%;
 }
 
-/* line 152, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 140, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-item-creator {
   height: 23.03030303px;
 }
 
-/* line 156, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 144, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .current-roll {
   font-size: 14.5454545455px;
 }

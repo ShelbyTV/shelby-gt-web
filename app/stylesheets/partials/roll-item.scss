@@ -89,11 +89,13 @@
 }
 
 .roll-item-title,
+.roll-item-people,
 .roll-item-creator {
 	@include ellipsis();
 }
 
-.roll-item-title { 
+.roll-item-title,
+.roll-item-people { 
 	clear: right; 
 	color: #bfbfbf;
   font-size: 13px;
@@ -128,7 +130,8 @@
 
 }
 
-.roll-item-avatar{
+.roll-item-avatar,
+.roll-item-people-avatar {
 	float: left;
 	height: 40px;
   overflow: hidden;
