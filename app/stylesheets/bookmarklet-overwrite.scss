@@ -23,6 +23,10 @@
   width:45px;
 }
 
+.frame-conversation-message-block {
+  font-size: 13px;
+}
+
 //ROLLS
 
 
@@ -52,10 +56,13 @@
   font-size: 14.5454545455px;
 }
 
-.share-submit-button,
-.roll-options-submit,
-.new-roll-status-checkbox {
-  font-size: 12px;
+.rolling-main-header{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.roll-options-label {
+  font-weight: 500;
 }
 
 //GUIDE
