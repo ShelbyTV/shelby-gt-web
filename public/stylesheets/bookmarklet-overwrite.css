@@ -15,7 +15,7 @@
   vertical-align: middle;
   display: inline;
   margin-left: 5px;
-  margin-top: -4px;
+  margin-top: 0px;
 }
 
 /* line 19, ../../app/stylesheets/bookmarklet-overwrite.scss */
@@ -31,81 +31,32 @@
 
 /* line 29, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title-text {
-  line-height: 2.25;
+  line-height: 2.65;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 }
 
 /* line 36, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#roll-guide-clickoff {
+.guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
 
-/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#share-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-
-/* line 46, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#comment-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-
-/* line 51, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#login-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-
-/* line 56, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#roll-guide-window {
+/* line 42, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.guide-window {
   position: fixed;
   right: 0px;
   top: 0px;
   background: #222;
   z-index: 99999;
   overflow: auto;
+  border: 0px 0px 25px 5px black;
+  box-shadow: 0px 0px 25px 5px black;
 }
 
-/* line 65, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#share-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-
-/* line 73, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#comment-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-
-/* line 82, ../../app/stylesheets/bookmarklet-overwrite.scss */
-#login-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-
-/* line 90, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 53, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .video-card-header {
   position: absolute;
   z-index: 89999;
@@ -116,14 +67,14 @@
   border-radius: 5px 5px 0 0;
 }
 
-/* line 101, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 64, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
 
-/* line 108, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 71, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-controls {
   position: absolute;
   z-index: 89999;
@@ -132,27 +83,27 @@
   font-size: 13px;
 }
 
-/* line 116, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 79, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .frame-title {
   width: 50%;
 }
 
-/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 83, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item {
   height: 51px;
   margin: 0;
   padding: 0;
 }
-/* line 124, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 87, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a:link, .roll-selection-item a:visited, .roll-selection-item a:active {
   color: #DCDDDE;
 }
-/* line 127, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 90, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-selection-item a img {
   border: none;
 }
 
-/* line 133, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 96, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-repeat: no-repeat;
@@ -160,12 +111,12 @@
   background-position: 15px 50%;
 }
 
-/* line 140, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 103, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .roll-item-creator {
   height: 23.03030303px;
 }
 
-/* line 144, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 107, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .current-roll {
   font-size: 14.5454545455px;
 }

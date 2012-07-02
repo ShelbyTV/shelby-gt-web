@@ -13,7 +13,7 @@
   vertical-align: middle;
   display: inline;
   margin-left: 5px;
-  margin-top: -4px;
+  margin-top: 0px;
 }
 
 .frame-creator-avatar{
@@ -27,66 +27,29 @@
 }
 
 .guide-overlay-title-text {
-  line-height: 2.25;
+  line-height: 2.65;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500
 }
 
-#roll-guide-clickoff {
+.guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
-}
-#share-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-#comment-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-#login-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-#roll-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index:99999; 
-  overflow: auto;
 }
 
-#share-guide-window {
+.guide-window {
   position: fixed;
   right: 0px;
   top: 0px;
   background: #222;
   z-index:99999; 
   overflow: auto;
-}
-#comment-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index:99999; 
-  overflow: auto;
+  border: 0px 0px 25px 5px black;
+  box-shadow: 0px 0px 25px 5px black;
 }
 
-#login-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index:99999; 
-  overflow: auto;
-}
 .video-card-header {
   position: absolute;
   z-index: 89999;

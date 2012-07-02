@@ -40,6 +40,7 @@ ready : function() {
       shelbyUserCallback : function(response) {
         shelbyRadar.shelbyBkmkltUser = response.result;
         var authentications = response.result.authentications;
+        shelbyRadar.commentGuideHtml();
         shelbyRadar.shareGuideHtml(authentications);
         shelbyJ('.<%=@hash%>guide-overlay-context-creator').html(response.result.nickname);
         shelbyJ.ajax( {
@@ -517,13 +518,13 @@ ready : function() {
 
 
         setUpGuide : function(guideName, styleGuideWidth, loggedIn) {
-          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class=' + guideName + ' hidden="hidden">  </div>');
+          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@hash%>guide-window" hidden="hidden">  </div>');
           shelbyJ('#' + guideName + '-window')
                                               .css("width", shelbyGuideWidth + "px")
                                               .css("height", shelbyJ(window).height() + "px")
                     
           // set up clickoff
-          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class=' + guideName + ' hidden="hidden"></div>')
+          shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@hash%>guide-clickoff" hidden="hidden"></div>')
           shelbyJ("#" + guideName + "-clickoff")
                                     .css("right", shelbyGuideWidth + "px")
                                     .css("height", shelbyJ(window).height() + "px")
@@ -579,10 +580,14 @@ ready : function() {
         },
 
         commentGuideHtml : function() {
+              var user = shelbyRadar.shelbyBkmkltUser;
               shelbyJ('#<%=@hash%>comment-guide-window').append(
                   '<div id="<%=@hash%>conversation-scroller">' +
                     '<ul class="<%=@hash%>conversation <%=@hash%>frame-conversation"></ul>' +
                     '<form class="<%=@hash%>new-comment clearfix">' +
+                    '<div class="<%=@hash%>new-comment-user-avatar">' +
+                    '<img src="' + user.user_image + '" alt="' + user.nickname + '" title="' + user.nickname + '">' +
+                    '</div>' + 
                     '<textarea class="<%=@hash%>new-comment-input" rows="1"></textarea>' +
                     '<div class="<%=@hash%>frame-comment-error-message"></div>' +
                     '<button class="<%=@hash%>new-comment-submit"> Comment</button>' +
@@ -666,27 +671,25 @@ ready : function() {
               xhrFields : {withCredentials : true},
               success : 
               function(response) {
-                if (!shareEmails || shareEmails.length == 0) {
-                  return;
+                if (shareEmails && shareEmails.length > 0) {
+                  var shareData  = {
+                    'roll_id' : response.result.id,
+                    'destination' : ['email'],
+                    'addresses' : shelbyJ("#<%=@hash%>new-roll-recipients").val(),
+                    'text' : "New Roll"
+                  };
+                  shelbyJ.ajax( {
+                    type : 'GET',
+                    data : shareData,
+                    url : 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                    dataType : "jsonp",
+                    crossDomain : true,
+                    xhrFields : {withCredentials : true},
+                    success : function(response) {
+                      console.log(response);
+                    }
+                  });
                 }
-                var shareData  = {
-                  'roll_id' : response.result.id,
-                  'destination' : ['email'],
-                  'addresses' : shelbyJ("#<%=@hash%>new-roll-recipients").val(),
-                  'text' : "New Roll"
-                };
-                shelbyJ.ajax( {
-                  type : 'GET',
-                  data : shareData,
-                  url : 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
-                  dataType : "jsonp",
-                  crossDomain : true,
-                  xhrFields : {withCredentials : true},
-                  success : function(response) {
-                    console.log(response);
-                  }
-                });
-
                 shelbyJ.ajax({
                     type : 'GET',
                     url : 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + shelbyRadar.shelbyBkmkltUser.id + '/rolls/postable',
@@ -898,7 +901,6 @@ ready : function() {
       shelbyRadar.setUpGuide("<%=@hash%>share-guide", shelbyGuideWidth, true);
       shelbyRadar.setUpGuide("<%=@hash%>comment-guide", shelbyGuideWidth, true);
       shelbyRadar.setUpGuide("<%=@hash%>login-guide", shelbyGuideWidth, false);
-      shelbyRadar.commentGuideHtml();
       shelbyRadar.foundVideo = shelbyRadar.find(possibleVideos, shelbyJ);
       shelbyRadar.signedIn(shelbyJ);
       shelbyJ(window).resize(function() {

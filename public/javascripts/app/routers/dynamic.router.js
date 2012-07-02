@@ -22,9 +22,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   //---
+  //Breadcrumbs
+  //---
+  initialize : function(){
+    shelby.routeHistory = [];
+    this.bind("all", function(route){ shelby.routeHistory.push(route); });
+  },
+
+  //---
   //ROUTE HANDLERS
   //---
-
 
   displayFrameInRoll : function(rollId, frameId, params, options){
     // default options
@@ -148,10 +155,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
-    // FOR IN PERSON USER TESTING
-    // This is to alter ui of things like upvote, roll and comment elements
-    this._testSwitchingfromQueryParams(params);
-
     this._setupTopLevelViews();
     this._fetchDashboard(options);
   },
@@ -436,17 +439,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       }
     });
-  },
-
-  //---
-  //MISC HELPERS
-  //---
-  
-  _testSwitchingfromQueryParams: function(params){
-    // set shelby level setting establishing a "new" version of a ui el
-    if (params && params.uitest == 'true') {
-        shelby.commentUpvoteUITest = true;
-    }
   }
 
 });

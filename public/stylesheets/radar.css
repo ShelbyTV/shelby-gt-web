@@ -136,13 +136,14 @@
 /* line 36, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .embed-gate-wrapper iframe {
   width: 500px;
+  height: 300px;
 }
-/* line 39, ../../app/stylesheets/partials/gate.scss */
+/* line 40, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-wrapper.with-embed {
   float: left;
   margin-left: 40px;
 }
-/* line 48, ../../app/stylesheets/partials/gate.scss */
+/* line 49, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-logo {
   background: url("../images/email-gate/landing_logo.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -151,7 +152,7 @@
   margin-right: 18px;
   width: 50%;
 }
-/* line 59, ../../app/stylesheets/partials/gate.scss */
+/* line 60, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-slogan {
   float: left;
   font-size: 11px;
@@ -159,7 +160,7 @@
   margin-top: 40px;
   width: 33%;
 }
-/* line 68, ../../app/stylesheets/partials/gate.scss */
+/* line 69, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-login {
   margin: 10px;
   position: absolute;
@@ -167,7 +168,7 @@
   top: 0;
   width: 205px;
 }
-/* line 76, ../../app/stylesheets/partials/gate.scss */
+/* line 77, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-login-button {
   background: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -188,7 +189,7 @@
   margin: 0 0 10px 20px;
   padding: 7px 19px;
 }
-/* line 93, ../../app/stylesheets/partials/gate.scss */
+/* line 94, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks {
   background: #585858;
   border-radius: 5px;
@@ -198,7 +199,7 @@
   padding: 10px;
   position: relative;
 }
-/* line 103, ../../app/stylesheets/partials/gate.scss */
+/* line 104, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks:before {
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
@@ -215,13 +216,13 @@
   top: -5px;
   width: 10px;
 }
-/* line 118, ../../app/stylesheets/partials/gate.scss */
+/* line 119, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks .email-gate-error {
   color: #DADADA;
   font-size: 13px;
   margin-top: 10px;
 }
-/* line 126, ../../app/stylesheets/partials/gate.scss */
+/* line 127, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-twitter {
   display: block;
   padding: 3px 3px 3px 36px;
@@ -229,15 +230,15 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 134, ../../app/stylesheets/partials/gate.scss */
+/* line 135, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 137, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-twitter:visited {
   color: #efefef;
 }
-/* line 142, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -246,31 +247,31 @@
   text-decoration: none;
   width: 100%;
 }
-/* line 151, ../../app/stylesheets/partials/gate.scss */
+/* line 152, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 154, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-networks-facebook:visited {
   color: #efefef;
 }
-/* line 159, ../../app/stylesheets/partials/gate.scss */
+/* line 160, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-error {
   color: #cc1235;
 }
-/* line 163, ../../app/stylesheets/partials/gate.scss */
+/* line 164, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
-/* line 168, ../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
   text-align: center;
   width: 100%;
 }
-/* line 175, ../../app/stylesheets/partials/gate.scss */
+/* line 176, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-label {
   display: block;
   font-size: 14px;
@@ -278,7 +279,7 @@
   line-height: 3.8;
   text-align: right;
 }
-/* line 184, ../../app/stylesheets/partials/gate.scss */
+/* line 185, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-code,
 .ext-elements .email-gate-email {
   border-radius: 3px;
@@ -290,7 +291,7 @@
   padding: 12px 10px;
   width: 50%;
 }
-/* line 195, ../../app/stylesheets/partials/gate.scss */
+/* line 196, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #0071a3;
@@ -311,18 +312,18 @@
   padding: 7px 19px;
   width: 17%;
 }
-/* line 212, ../../app/stylesheets/partials/gate.scss */
+/* line 213, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 217, ../../app/stylesheets/partials/gate.scss */
+/* line 218, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
-/* line 223, ../../app/stylesheets/partials/gate.scss */
+/* line 224, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .detour {
   margin-top: 1.231em;
 }
@@ -770,9 +771,9 @@
 }
 /* line 3, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements #guide-overlay-controls {
-  bottom: 10px;
   position: absolute;
   right: 0;
+  top: 50%;
   z-index: 10;
 }
 /* line 10, ../../app/stylesheets/partials/guide-overlay-controls.scss */
@@ -802,11 +803,12 @@
   cursor: pointer;
   height: 45px;
   overflow: hidden;
+  padding-right: 0;
   position: absolute;
   right: 0;
-  width: 34px;
+  width: 29px;
 }
-/* line 29, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 30, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle .copy {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -834,7 +836,7 @@
   top: 13px;
   width: 70px;
 }
-/* line 48, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 47, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle .icon {
   -moz-transition-property: rotate;
   -webkit-transition-property: rotate;
@@ -853,14 +855,14 @@
   height: 20px;
   width: 20px;
 }
-/* line 60, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 59, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle.show {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 63, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 62, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle.show .icon {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -868,12 +870,12 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 67, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 66, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle.show .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 72, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 71, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .user-inactive .guide-toggle.hide, .ext-elements .guide-toggle.hide:hover {
   -moz-transition-delay: 0s;
   -webkit-transition-delay: 0s;
@@ -881,7 +883,7 @@
   transition-delay: 0s;
   width: 112px;
 }
-/* line 77, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 76, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .user-inactive .guide-toggle.hide .copy, .ext-elements .guide-toggle.hide:hover .copy {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -890,14 +892,14 @@
   -o-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
-/* line 83, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 82, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle.hide:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 85, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 84, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .guide-toggle.hide:hover .copy {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -908,7 +910,7 @@
   -o-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
-/* line 91, ../../app/stylesheets/partials/guide-overlay-controls.scss */
+/* line 90, ../../app/stylesheets/partials/guide-overlay-controls.scss */
 .ext-elements .user-inactive .guide-toggle.show {
   border: none;
   box-shadow: none;
@@ -993,6 +995,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
+  margin: 10px;
   overflow: hidden;
 }
 /* line 31, ../../app/stylesheets/partials/roll-item.scss */
@@ -1001,15 +1005,16 @@
 }
 /* line 35, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 41, ../../app/stylesheets/partials/roll-item.scss */
+/* line 42, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 44, ../../app/stylesheets/partials/roll-item.scss */
+/* line 45, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -1019,11 +1024,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 55, ../../app/stylesheets/partials/roll-item.scss */
+/* line 56, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 61, ../../app/stylesheets/partials/roll-item.scss */
+/* line 62, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -1033,26 +1038,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 70, ../../app/stylesheets/partials/roll-item.scss */
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 74, ../../app/stylesheets/partials/roll-item.scss */
+/* line 75, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 78, ../../app/stylesheets/partials/roll-item.scss */
+/* line 79, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 84, ../../app/stylesheets/partials/roll-item.scss */
+/* line 85, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+/* line 94, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people,
 .ext-elements .roll-item-creator {
@@ -1062,7 +1067,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 98, ../../app/stylesheets/partials/roll-item.scss */
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people {
   clear: right;
@@ -1072,7 +1077,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 107, ../../app/stylesheets/partials/roll-item.scss */
+/* line 108, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1081,7 +1086,7 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 117, ../../app/stylesheets/partials/roll-item.scss */
+/* line 118, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total,
 .ext-elements .roll-item-watched {
   font-size: 11px;
@@ -1089,12 +1094,12 @@
   padding-right: 8px;
   text-align: right;
 }
-/* line 124, ../../app/stylesheets/partials/roll-item.scss */
+/* line 125, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 134, ../../app/stylesheets/partials/roll-item.scss */
+/* line 135, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar,
 .ext-elements .roll-item-people-avatar {
   float: left;
@@ -1102,12 +1107,12 @@
   overflow: hidden;
   width: 40px;
 }
-/* line 141, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 146, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1121,7 +1126,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 154, ../../app/stylesheets/partials/roll-item.scss */
+/* line 155, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1132,7 +1137,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 164, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -1140,19 +1145,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 177, ../../app/stylesheets/partials/roll-item.scss */
+/* line 178, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 182, ../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 189, ../../app/stylesheets/partials/roll-item.scss */
+/* line 190, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1164,27 +1169,27 @@
   right: 0;
   top: 0;
 }
-/* line 200, ../../app/stylesheets/partials/roll-item.scss */
+/* line 201, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 205, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 211, ../../app/stylesheets/partials/roll-item.scss */
+/* line 212, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 213, ../../app/stylesheets/partials/roll-item.scss */
+/* line 214, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -1200,7 +1205,7 @@
 /* line 12, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-button {
   overflow: hidden;
-  padding: 0;
+  padding: 5px 0 5px 5px;
   position: relative;
   z-index: 1;
 }
@@ -2026,9 +2031,10 @@
 /* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment {
   background-color: #35383a;
+  padding: 8px;
   position: relative;
 }
-/* line 79, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 80, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2044,21 +2050,20 @@
   border-radius: 5px;
   color: #efefef;
   padding: 4px 8px;
-  right: 0;
-  margin: 8px;
-  position: absolute;
-  top: 2px;
+  margin-top: 40px;
+  margin-left: 7px;
 }
-/* line 89, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 87, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   border-radius: 3px;
-  height: 55px;
-  margin: 10px 61px 30px 8px;
-  width: 220px;
+  left: 68px;
+  position: absolute;
+  right: 8px;
 }
-/* line 97, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 96, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2074,6 +2079,17 @@
   transition-timing-function: ease-in;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+/* line 104, ../../app/stylesheets/partials/frame-conversation.scss */
+.ext-elements .new-comment-user-avatar {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+/* line 109, ../../app/stylesheets/partials/frame-conversation.scss */
+.ext-elements .new-comment-user-avatar > img {
+  height: 100%;
+  overflow: hidden;
 }
 /* line 3, ../../app/stylesheets/partials/rolls.scss */
 .ext-elements .roll-action-menu {
@@ -2600,6 +2616,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
+  margin: 10px;
   overflow: hidden;
 }
 /* line 31, ../../app/stylesheets/partials/roll-item.scss */
@@ -2608,15 +2626,16 @@
 }
 /* line 35, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 41, ../../app/stylesheets/partials/roll-item.scss */
+/* line 42, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 44, ../../app/stylesheets/partials/roll-item.scss */
+/* line 45, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -2626,11 +2645,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 55, ../../app/stylesheets/partials/roll-item.scss */
+/* line 56, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 61, ../../app/stylesheets/partials/roll-item.scss */
+/* line 62, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -2640,26 +2659,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 70, ../../app/stylesheets/partials/roll-item.scss */
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 74, ../../app/stylesheets/partials/roll-item.scss */
+/* line 75, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 78, ../../app/stylesheets/partials/roll-item.scss */
+/* line 79, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 84, ../../app/stylesheets/partials/roll-item.scss */
+/* line 85, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+/* line 94, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people, .ext-elements .roll-item-creator {
   white-space: nowrap;
   overflow: hidden;
@@ -2667,7 +2686,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 98, ../../app/stylesheets/partials/roll-item.scss */
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -2676,7 +2695,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 107, ../../app/stylesheets/partials/roll-item.scss */
+/* line 108, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -2685,31 +2704,31 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 117, ../../app/stylesheets/partials/roll-item.scss */
+/* line 118, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total, .ext-elements .roll-item-watched {
   font-size: 11px;
   font-weight: 100;
   padding-right: 8px;
   text-align: right;
 }
-/* line 124, ../../app/stylesheets/partials/roll-item.scss */
+/* line 125, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 134, ../../app/stylesheets/partials/roll-item.scss */
+/* line 135, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar, .ext-elements .roll-item-people-avatar {
   float: left;
   height: 40px;
   overflow: hidden;
   width: 40px;
 }
-/* line 141, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 146, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -2723,7 +2742,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 154, ../../app/stylesheets/partials/roll-item.scss */
+/* line 155, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -2734,7 +2753,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 164, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -2742,19 +2761,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 177, ../../app/stylesheets/partials/roll-item.scss */
+/* line 178, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 182, ../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 189, ../../app/stylesheets/partials/roll-item.scss */
+/* line 190, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -2766,27 +2785,27 @@
   right: 0;
   top: 0;
 }
-/* line 200, ../../app/stylesheets/partials/roll-item.scss */
+/* line 201, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 205, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 211, ../../app/stylesheets/partials/roll-item.scss */
+/* line 212, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 213, ../../app/stylesheets/partials/roll-item.scss */
+/* line 214, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -2802,7 +2821,7 @@
 /* line 12, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-button {
   overflow: hidden;
-  padding: 0;
+  padding: 5px 0 5px 5px;
   position: relative;
   z-index: 1;
 }
@@ -2876,7 +2895,7 @@
   vertical-align: middle;
   display: inline;
   margin-left: 5px;
-  margin-top: -4px;
+  margin-top: 0px;
 }
 /* line 19, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-creator-avatar {
@@ -2889,72 +2908,29 @@
 }
 /* line 29, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-overlay-title-text {
-  line-height: 2.25;
+  line-height: 2.65;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 }
 /* line 36, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #roll-guide-clickoff {
+.ext-elements .guide-clickoff {
   position: fixed;
   z-index: 89999;
   top: 0px;
 }
-/* line 41, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #share-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-/* line 46, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #comment-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-/* line 51, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #login-guide-clickoff {
-  position: fixed;
-  z-index: 89999;
-  top: 0px;
-}
-/* line 56, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #roll-guide-window {
+/* line 42, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements .guide-window {
   position: fixed;
   right: 0px;
   top: 0px;
   background: #222;
   z-index: 99999;
   overflow: auto;
+  border: 0px 0px 25px 5px black;
+  box-shadow: 0px 0px 25px 5px black;
 }
-/* line 65, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #share-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-/* line 73, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #comment-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-/* line 82, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements #login-guide-window {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  background: #222;
-  z-index: 99999;
-  overflow: auto;
-}
-/* line 90, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 53, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .video-card-header {
   position: absolute;
   z-index: 89999;
@@ -2964,13 +2940,13 @@
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
 }
-/* line 101, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 64, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
-/* line 108, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 71, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-controls {
   position: absolute;
   z-index: 89999;
@@ -2978,36 +2954,36 @@
   border-radius: 0 0 5px 5px;
   font-size: 13px;
 }
-/* line 116, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 79, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-title {
   width: 50%;
 }
-/* line 120, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 83, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .roll-selection-item {
   height: 51px;
   margin: 0;
   padding: 0;
 }
-/* line 124, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 87, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .roll-selection-item a:link, .ext-elements .roll-selection-item a:visited, .ext-elements .roll-selection-item a:active {
   color: #DCDDDE;
 }
-/* line 127, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 90, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .roll-selection-item a img {
   border: none;
 }
-/* line 133, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 96, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-repeat: no-repeat;
   background-size: 38px;
   background-position: 15px 50%;
 }
-/* line 140, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 103, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .roll-item-creator {
   height: 23.03030303px;
 }
-/* line 144, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 107, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .current-roll {
   font-size: 14.5454545455px;
 }
