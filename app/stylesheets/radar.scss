@@ -1,7 +1,41 @@
-@import 
+@import "base";
+@import "base-mixin";
+
+@import "compass/css3",
+        "compass/utilities/text/ellipsis",
+        "compass/utilities/lists/bullets";
+
+.ext-elements {
+	  * {
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	  }
+
+	  ul, li, a, div, p, span, form, fieldset, label, input, button, img {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    outline: none;
+	  }
+
+	  font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
+	  color: #DCDDDE;
+	  font-size: 14.5454545455px;
+	  line-height: 1.4;
+	  text-align: left;
+
+
+	
+	@import 
+
+		"bookmarklet-reset",
+
 		"partials/fonts",
+
     "partials/gate",
     "partials/guide-header",
+
 		"partials/guide-presentation-selector",
 		"partials/guide-overlay-view",
 		"partials/guide-overlay-controls",
@@ -29,3 +63,4 @@
     "bookmarklet-overwrite",
 
 		"partials/h5bp-utilities"; 	
+}

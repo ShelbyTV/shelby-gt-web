@@ -1,366 +1,97 @@
-/* line 3, ../../../app/stylesheets/partials/rolls.scss */
-.roll-action-menu {
-  display: none;
-}
-/* line 7, ../../../app/stylesheets/partials/rolls.scss */
-.roll-action-menu .share-comment {
-  border-bottom: none;
-  border-top: none;
-  padding-bottom: 0;
-}
-/* line 13, ../../../app/stylesheets/partials/rolls.scss */
-.roll-action-menu .share-networks,
-.roll-action-menu .share-submit {
-  border-top: none;
-}
+/*
+Syntax error: Undefined mixin 'x-button-primer'.
+        on line 44 of /shelbytv/app/stylesheets/partials/rolls.scss, in `x-button-primer'
+        from line 44 of /shelbytv/app/stylesheets/partials/rolls.scss
 
-/* line 19, ../../../app/stylesheets/partials/rolls.scss */
-.roll-menu {
-  margin: 0;
-  padding: 11px 0 9px;
-}
-/* line 23, ../../../app/stylesheets/partials/rolls.scss */
-.roll-menu li {
-  display: block;
-  float: left;
-  list-style-type: none;
-  margin: 0;
-}
-/* line 29, ../../../app/stylesheets/partials/rolls.scss */
-.roll-menu .left {
-  margin-left: 10px;
-  width: 47px;
-}
-/* line 33, ../../../app/stylesheets/partials/rolls.scss */
-.roll-menu .middle {
-  margin-left: 8px;
-  width: 161px;
-}
-/* line 37, ../../../app/stylesheets/partials/rolls.scss */
-.roll-menu .right {
-  margin-left: 8px;
-  width: 85px;
-}
+39: 	  width: 85px;
+40: 	}
+41: }
+42: 
+43: .rolls-add {
+44: 	@include x-button-primer($shelby-green);
+45: 	
+46: 	margin-top: 0;
+47: 	width: 100%;
+48: }
+49: 
 
-/* line 43, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-add, .rolls-invite {
-  background-color: #428e3a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
-  background: -webkit-linear-gradient(top, #53b249, #428e3a);
-  background: -moz-linear-gradient(top, #53b249, #428e3a);
-  background: -o-linear-gradient(top, #53b249, #428e3a);
-  background: -ms-linear-gradient(top, #53b249, #428e3a);
-  background: linear-gradient(top, #53b249, #428e3a);
-  box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #20461c;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  margin-top: 0;
-  width: 100%;
-}
-
-/* line 54, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share {
-  margin-top: 0 !important;
-  width: 100%;
-}
-
-/* line 60, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-leave, .rolls-edit, .rolls-share-cancel {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  margin-top: 0;
-}
-
-/* line 65, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-edit {
-  width: 100%;
-}
-
-/* line 70, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-share-cancel {
-  margin-top: 0;
-}
-
-/* line 75, ../../../app/stylesheets/partials/rolls.scss */
-.rolls-back {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  padding-left: 0;
-  padding-right: 0;
-  width: 100%;
-}
-
-/* line 82, ../../../app/stylesheets/partials/rolls.scss */
-.roll-delete {
-  background-color: #cc1235;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
-  background: -webkit-linear-gradient(top, #ec254b, #cc1235);
-  background: -moz-linear-gradient(top, #ec254b, #cc1235);
-  background: -o-linear-gradient(top, #ec254b, #cc1235);
-  background: -ms-linear-gradient(top, #ec254b, #cc1235);
-  background: linear-gradient(top, #ec254b, #cc1235);
-  box-shadow: inset 0px 1px 0px 0px #f26c85;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #6e0a1d;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  display: none;
-  position: absolute;
-  right: 9px;
-  top: 22px;
-}
-
-/* ------ Roll Add Area */
-/* line 92, ../../../app/stylesheets/partials/rolls.scss */
-.add-video-area {
-  background-color: #2c2f30;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #44494b), color-stop(100%, #2c2f30));
-  background: -webkit-linear-gradient(top, #44494b, #2c2f30);
-  background: -moz-linear-gradient(top, #44494b, #2c2f30);
-  background: -o-linear-gradient(top, #44494b, #2c2f30);
-  background: -ms-linear-gradient(top, #44494b, #2c2f30);
-  background: linear-gradient(top, #44494b, #2c2f30);
-  box-shadow: inset 0px 1px 0px 0px #697073;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  margin: 10px 10px 0px;
-  padding: 6px;
-  display: none;
-}
-/* line 99, ../../../app/stylesheets/partials/rolls.scss */
-.add-video-area input {
-  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  border-radius: 3px;
-  border: none;
-  height: 25px;
-  left: 5px;
-  position: absolute;
-  right: 41px;
-}
-/* line 110, ../../../app/stylesheets/partials/rolls.scss */
-.add-video-area .add-video {
-  background-color: #343434;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
-  background: -webkit-linear-gradient(top, #4e4e4e, #343434);
-  background: -moz-linear-gradient(top, #4e4e4e, #343434);
-  background: -o-linear-gradient(top, #4e4e4e, #343434);
-  background: -ms-linear-gradient(top, #4e4e4e, #343434);
-  background: linear-gradient(top, #4e4e4e, #343434);
-  box-shadow: inset 0px 1px 0px 0px #747474;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #010101;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  float: right;
-  height: 25px;
-  margin-top: 0;
-  padding: 4px;
-  width: 28px;
-}
-/* line 120, ../../../app/stylesheets/partials/rolls.scss */
-.add-video-area .spinner {
-  left: auto;
-  margin-left: 0px;
-  margin-top: 0px;
-  position: relative;
-}
-
-/*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
-/* line 130, ../../../app/stylesheets/partials/rolls.scss */
-.share-dialog {
-  padding: 0;
-  display: none;
-  position: relative;
-  width: 100%;
-  z-index: 1;
-}
-
-/* line 145, ../../../app/stylesheets/partials/rolls.scss */
-.share-comment,
-.share-networks,
-.share-submit,
-.share-email-addresses {
-  padding: 5px 10px 10px;
-}
-
-/* line 149, ../../../app/stylesheets/partials/rolls.scss */
-.share-comment {
-  border-top: 1px solid #343434;
-  border-bottom: 1px solid black;
-}
-
-/* line 155, ../../../app/stylesheets/partials/rolls.scss */
-.share-networks,
-.share-submit {
-  border-top: 1px solid #343434;
-}
-
-/* line 159, ../../../app/stylesheets/partials/rolls.scss */
-.share-networks {
-  float: left;
-  width: 50%;
-}
-
-/* line 164, ../../../app/stylesheets/partials/rolls.scss */
-.share-label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2;
-}
-
-/* line 168, ../../../app/stylesheets/partials/rolls.scss */
-.share-textarea, .share-email-addresses-input {
-  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  border-radius: 3px;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
-  display: block;
-  padding: 5px;
-  width: 100%;
-}
-/* line 177, ../../../app/stylesheets/partials/rolls.scss */
-.share-textarea:focus, .share-email-addresses-input:focus {
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-}
-
-/* line 185, ../../../app/stylesheets/partials/rolls.scss */
-.share-networks-list {
-  margin: 0;
-  padding-left: 0;
-}
-
-/* line 190, ../../../app/stylesheets/partials/rolls.scss */
-.share-submit-button {
-  background-color: #0071a3;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
-  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
-  background: -moz-linear-gradient(top, #0094d6, #0071a3);
-  background: -o-linear-gradient(top, #0094d6, #0071a3);
-  background: -ms-linear-gradient(top, #0094d6, #0071a3);
-  background: linear-gradient(top, #0094d6, #0071a3);
-  box-shadow: inset 0px 1px 0px 0px #23bcff;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #002a3d;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  margin-top: 32px;
-  width: 100%;
-}
-/* line 196, ../../../app/stylesheets/partials/rolls.scss */
-.share-submit-button .spinner {
-  left: auto;
-  margin-left: -4px;
-  margin-top: -2px;
-  position: relative;
-}
-
-/* line 204, ../../../app/stylesheets/partials/rolls.scss */
-.share-comment-counter {
-  display: block;
-  font-size: 11px;
-  height: 22px;
-  line-height: 2;
-  float: right;
-}
-
-/* line 332, ../../../app/stylesheets/_base.scss */
-.networks-twitter button,
-.networks-facebook button {
-  border-radius: 3px;
-  background-color: #474747;
-  border: 1px solid #3a3a3a;
-  display: block;
-  height: 34px;
-  width: 34px;
-}
-
-/* line 218, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter button {
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -o-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_twitter_off.svg") no-repeat 1px 5px, linear-gradient(top, #7a7a7a, #474747);
-}
-/* line 226, ../../../app/stylesheets/partials/rolls.scss */
-.networks-twitter.active button {
-  background-color: #00a2d1;
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
-}
-
-/* line 237, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook button {
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -moz-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -o-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
-  background: url("../images/assets/rolls_share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
-}
-/* line 245, ../../../app/stylesheets/partials/rolls.scss */
-.networks-facebook.active button {
-  background-color: #013e80;
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -webkit-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -moz-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -o-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, -ms-linear-gradient(top, #026fe5, #013e80);
-  background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
-}
+Backtrace:
+/shelbytv/app/stylesheets/partials/rolls.scss:44:in `x-button-primer'
+/shelbytv/app/stylesheets/partials/rolls.scss:44
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2762727553043877011__call__1975143716994849724__callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'x-button-primer'.\A         on line 44 of /shelbytv/app/stylesheets/partials/rolls.scss, in `x-button-primer'\A         from line 44 of /shelbytv/app/stylesheets/partials/rolls.scss\A \A 39: 	  width: 85px;\A 40: 	}\A 41: }\A 42: \A 43: .rolls-add {\A 44: 	@include x-button-primer($shelby-green);\A 45: 	\A 46: 	margin-top: 0;\A 47: 	width: 100%;\A 48: }\A 49: "; }

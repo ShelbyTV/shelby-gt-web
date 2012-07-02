@@ -1,5 +1,5 @@
 /* non-programatic changes to app display */
-/* line 8, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 9, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll {
   /* adjust the name and avatar of the visible isolated roll */
   /* hide the roll nav buttons */
@@ -7,45 +7,45 @@ body.isolated-roll {
   /* hide the frame's tool-bar and new-conversation */
   /* don't show any education */
 }
-/* line 11, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 12, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .current-roll {
   font-size: 2.2em;
   line-height: 1.75;
 }
-/* line 15, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 16, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .current-roll-avatar {
   height: 40px;
   width: 40px;
 }
-/* line 21, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 22, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back {
   display: none;
 }
-/* line 24, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 25, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .filter-controls {
   border: none;
 }
-/* line 27, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 28, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .frame-controls {
   display: none;
 }
-/* line 30, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 31, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .guide-education {
   display: none!important;
 }
-/* line 33, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 34, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .video-card-header {
   border-bottom: none;
 }
-/* line 37, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 38, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-locator {
   display: none;
 }
-/* line 41, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 42, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-creator-roll {
   width: inherit;
 }
-/* line 45, ../../../app/stylesheets/partials/isolated-roll.scss */
+/* line 46, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-title {
   width: 83%;
 }

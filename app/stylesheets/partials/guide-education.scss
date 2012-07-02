@@ -7,6 +7,7 @@
 .guide-education-lining {
 	background: $education-yellow;
 	@include background( linear-gradient(top, adjust-lightness($education-yellow, 10%), $education-yellow) );
+
 	border: 1px solid adjust-lightness($education-yellow, -5%);
 	position:relative;
 
@@ -24,6 +25,7 @@
 	@include background(
 		url('../images/assets/remove_notification.svg') no-repeat center center transparent
 	);
+
 	border: none;
 	color: #333;
 	cursor: pointer;

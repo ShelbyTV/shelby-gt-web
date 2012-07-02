@@ -2,6 +2,7 @@
 
 .notifications-wrapper{
 	@include x-button-primer;
+
 	position: absolute;	
 	left: 50%;
   top: 50%; 
@@ -19,6 +20,7 @@
 	height: 100%;
 	font-size: 14px;
 	overflow: hidden;
+
 	.message {
 		color: #ffffff;
 		text-align: center;

@@ -88,6 +88,7 @@
 		}
 	}
 
+.profile,
 .about {
 	padding-left: $defaultMargin+2;
 	padding-right: $defaultMargin*2;
@@ -115,7 +116,6 @@
 }
 
 .profile {
-	@extend .about;
 
 	padding-right: 10px;
 	width: 85px;
@@ -125,6 +125,7 @@
 	}
 }
 
+.about-subnav,
 .profile-subnav {
 	left: -94px;
 	width: 174px;
@@ -138,7 +139,6 @@
 }
 
 .about-subnav {
-	@extend .profile-subnav;
 
 	left: 0;
 	width: 92px;
