@@ -1,7 +1,7 @@
 window.bookmarklet = function(opts){fullFunc(opts)};
 
 window.bookmarklet({
-css: ["http://localhost:3000/stylesheets/radar.css"],
+css: ["http://localhost.shelby.tv:3000/stylesheets/radar.css"],
 js : [],
 jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
@@ -449,40 +449,36 @@ ready : function() {
       },
 
         messageHtml : function(message) {
-          var stringbuilder = [];
-          stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-avatar">')
-            stringbuilder.push('<img src="')
-            stringbuilder.push(message.user_image_url)
-            stringbuilder.push('" alt="" title="">')
-            stringbuilder.push('</div>')
-            stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-user">')
-            stringbuilder.push('<span class="<%=@hash%>frame-conversation-message-user-name">')
-            stringbuilder.push(message.realname)
-            stringbuilder.push('</span>')
-            stringbuilder.push('<div class="<%=@hash%>frame-conversation-message-block">')
-            stringbuilder.push(message.text)
-            stringbuilder.push('</div>');
-            stringbuilder.push('<span class="<%=@hash%>frame-conversation-message-timestamp"> Posted ');
-          if (message.origin_network !== undefined) {
-            stringbuilder.push('on ');
-            stringbuilder.push(message.origin_network);
-          }
-          stringbuilder.push(' ');
-          stringbuilder.push(message.created_at);
-          stringbuilder.push('</span>');
-          stringbuilder.push('</div>');
-          return stringbuilder.join('');
+          var stringbuilder = '<div class="<%=@hash%>frame-conversation-message-avatar">'
+            + '<img src="'
+            + message.user_image_url
+            + '" alt="" title="">'
+            + '</div>'
+            + '<div class="<%=@hash%>frame-conversation-message-user">'
+            + '<span class="<%=@hash%>frame-conversation-message-user-name">'
+            + message.realname
+            + '</span>'
+            + '<div class="<%=@hash%>frame-conversation-message-block">'
+            + message.text
+            + '</div>'
+            + '<span class="<%=@hash%>frame-conversation-message-timestamp"> Posted ' 
+              + (message.origin_network !== undefined ? 'on ' + message.origin_network : '')
+            + ' ' 
+            + message.created_at
+            + '</span>'
+            + '</div>';
+          return stringbuilder;
         },
 
         setUpConversation : function(messages, commentTextId) {
                 var stringbuilder = [];
                 for (var i = 0 ; i < messages.length; i++) {
                   var message = messages[i];
-                  stringbuilder.push('<li class="<%=@hash%>frame-conversation-message clearfix">');
-                    stringbuilder.push(shelbyRadar.messageHtml(message));
-                    stringbuilder.push('</li>');
+                  stringbuilder = '<li class="<%=@hash%>frame-conversation-message clearfix">'
+                    + shelbyRadar.messageHtml(message)
+                    + '</li>';
                 }
-                shelbyJ(".<%=@hash%>conversation").html(stringbuilder.join(''));
+                shelbyJ(".<%=@hash%>conversation").html(stringbuilder);
                 shelbyJ("#" + commentTextId).html(messages.length);
         },
                
@@ -511,7 +507,7 @@ ready : function() {
                                     .css("right", shelbyGuideWidth + "px")
                                     .css("height", shelbyJ(window).height() + "px")
                                     .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px")
-                                    .click(function() {
+                                    .on('click', function() {
                                         shelbyRadar.styleGuideHide(guideName);
                                     });
 
@@ -542,13 +538,16 @@ ready : function() {
 
                     var r = frameHeader.data("r")
                     frameHeader.prepend(
-                        '<img src=' + frame.creator.user_image + ' class="<%=@hash%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' +
-                        "<div class=<%=@hash%>frame-creator-roll> " + 
-                          frame.roll.title +
-                          "</div>" +
-                        "<div class=<%=@hash%>frame-title> " + frame.video.title + "</div>")
-                                  .data("conversationid", frame.conversation.id)
-                                  .data("shelbyframeid", frame.id);
+                        '<img src=' + frame.creator.user_image 
+                        + ' class="<%=@hash%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' 
+                        + '<div class=<%=@hash%>frame-creator-roll> ' 
+                        + frame.roll.title 
+                        + '</div>' 
+                        + '<div class=<%=@hash%>frame-title>'
+                        + frame.video.title 
+                        + '</div>')
+                            .data("conversationid", frame.conversation.id)
+                            .data("shelbyframeid", frame.id);
 
                   shelbyJ("#like-text-" + r).html(frame.upvoters.length);
                   shelbyJ("#comment-text-" + r).html(frame.conversation.messages.length);
@@ -574,29 +573,30 @@ ready : function() {
         },
 	  
 	populateRolls : function(rolls) {
-          rollStringbuilder = [];
-          rollStringbuilder.push('<div class="<%=@hash%>rolling-main-header">Add to Existing Rolls</div><ul class="<%=@hash%>list"> ');
+          var rollStringbuilder = '<div class="<%=@hash%>rolling-main-header">Add to Existing Rolls</div><ul class="<%=@hash%>list">';
+          
           for (var i = 0; i < rolls.length; i++)  {
             roll = rolls[i];
-            rollStringbuilder.push('<li id="<%=@hash%>roll-');
-            rollStringbuilder.push(roll.id);
-            rollStringbuilder.push('" data-rollid = "');
-            rollStringbuilder.push(roll.id);
-            rollStringbuilder.push('" class="<%=@hash%>roll-selection-item">');
-            rollStringbuilder.push(roll.public ? '<a href="#" class=rolling-public-roll>' : '<a href="#" class=rolling-private-roll>');
-            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-add clearfix"> Add</div>'); 
-            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-lining">');
-            rollStringbuilder.push('<img class="<%=@hash%>roll-selection-item-thumbnail" src="');
-            rollStringbuilder.push(roll.thumbnail_url);
-            rollStringbuilder.push('">');
-            rollStringbuilder.push('<div class="<%=@hash%>roll-selection-item-title">');
-            rollStringbuilder.push(roll.title);
-            rollStringbuilder.push('</div><div class="<%=@hash%>roll-selection-item-state">');
-            rollStringbuilder.push(roll.public ? "public" : "private");
-            rollStringbuilder.push('</div></div></a></li>');
+
+            rollStringbuilder += '<li id="<%=@hash%>roll-'
+              + roll.id
+              + '" data-rollid = "'
+              + roll.id
+              + '" class="<%=@hash%>roll-selection-item">'
+              + (roll.public ? '<a href="#" class=rolling-public-roll>' : '<a href="#" class=rolling-private-roll>')
+              + '<div class="<%=@hash%>roll-selection-item-add clearfix"> Add</div>' 
+              + '<div class="<%=@hash%>roll-selection-item-lining">'
+              + '<img class="<%=@hash%>roll-selection-item-thumbnail" src="'
+              + roll.thumbnail_url
+              + '">'
+              + '<div class="<%=@hash%>roll-selection-item-title">'
+              + roll.title
+              + '</div><div class="<%=@hash%>roll-selection-item-state">'
+              + (roll.public ? "public" : "private")
+              + '</div></div></a></li>';
           }
-          rollStringbuilder.push('</ul>');
-          shelbyJ(".<%=@hash%>existing-rolls-list").html(rollStringbuilder.join(''));
+          rollStringbuilder += '</ul>';
+          shelbyJ(".<%=@hash%>existing-rolls-list").html(rollStringbuilder);
       },
 
       rollGuideHtml : function(rolls) {
