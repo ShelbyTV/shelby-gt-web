@@ -83,12 +83,14 @@
 .guide-window {
   background: #222;
   border: 0px 0px 25px 5px black;
+  bottom: 0;
   box-shadow: 0px 0px 25px 5px black;
   margin-right: -360px;
+  overflow: auto;
   position: fixed;
   right: 0px;
   top: 0px;
-  overflow: auto;
+  width: 330px;
   z-index:99999; 
   @include transition-property('margin-right');
   @include transition-duration(.5s);

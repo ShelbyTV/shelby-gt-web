@@ -374,7 +374,7 @@ ready : function() {
               url : "http://<%= Settings::VideoRadar.domain %>/v1/POST/conversation/" + conversationId + "/messages",
               xhrFields : {withCredentials : true},
               async : true,
-              success : function(response) {shelbyRadar.setUpConversation(response.result, conversationTextId)},
+              success : function(response) {shelbyRadar.setUpConversationWithId(conversationId, conversationTextId)},
             })
         },
 
@@ -474,7 +474,7 @@ ready : function() {
           return stringbuilder.join('');
         },
 
-      setUpConversation : function(messages, commentTextId) {
+        setUpConversation : function(messages, commentTextId) {
                 var stringbuilder = [];
                 for (var i = 0 ; i < messages.length; i++) {
                   var message = messages[i];
@@ -504,9 +504,6 @@ ready : function() {
 
         setUpGuide : function(guideName, styleGuideWidth, loggedIn) {
           shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@hash%>guide-window">  </div>');
-          shelbyJ('#' + guideName + '-window')
-                                              .css("width", shelbyGuideWidth + "px")
-                                              .css("height", shelbyJ(window).height() + "px")
                     
           // set up clickoff
           shelbyRadar.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@hash%>guide-clickoff"></div>')
