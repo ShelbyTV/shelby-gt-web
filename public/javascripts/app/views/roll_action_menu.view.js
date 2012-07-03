@@ -113,6 +113,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (visible) {
       this._shareRollView = new libs.shelbyGT.ShareRollView({
         model : new libs.shelbyGT.ShareModel(),
+        roll : this.model.get('currentRollModel'),
         viewState : this._shareRollViewState
       });
       this.appendChild(this._shareRollView);

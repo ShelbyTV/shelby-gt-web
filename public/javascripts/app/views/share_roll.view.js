@@ -5,7 +5,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   className : "share-dialog",
 
   initialize : function(){
-    if(!shelby.models.guide.get('currentRollModel').get('public')){
+    if(!this.options.roll.get('public')){
       this._components = $.extend({}, libs.shelbyGT.ShareView.prototype._components,{
         networkToggles: false,
         messageCounter: false,
@@ -19,7 +19,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   },
 
   saveUrl: function(){
-    return shelby.config.apiRoot + '/roll/'+shelby.models.guide.get('currentRollModel').id+'/share';
+    return shelby.config.apiRoot + '/roll/' + this.options.roll.id + '/share';
   },
 
   onShareSuccess: function(){
