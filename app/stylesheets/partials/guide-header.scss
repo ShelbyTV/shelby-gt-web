@@ -1,7 +1,8 @@
 @import "base";
 
-.header {
-	background-color: $guide-bg-color;
+.guide-header {
+	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%), 5%);
+
 	border-bottom: 1px solid $header-outline;
 
 	nav {
@@ -10,7 +11,7 @@
 	}
 }
 
-.logo {
+.guide-logo {
 	background: transparent;
 	border: none;
 	display: block;
@@ -18,7 +19,7 @@
 	padding: 0;
 }
 
-.logo-header {
+.guide-logo-header {
 	background: url('../images/assets/shelbylogo.svg') center 9px no-repeat transparent;
 	background-size: 85%;
 	height: 35px;
@@ -88,17 +89,21 @@
 		}
 	}
 
-.about {
+.about,
+.profile {
 	padding-left: $defaultMargin+2;
-	padding-right: $defaultMargin*2;
 	position: relative;
-	width: 70px;
 	z-index: 2;
 
 	&:hover {
 		color: white;
 		text-decoration: underline;
 	}
+}
+
+.about {
+	padding-right: $defaultMargin*2;
+	width: 70px;
 }
 
 .subnav {
@@ -115,19 +120,13 @@
 }
 
 .profile {
-	@extend .about;
-
 	padding-right: 10px;
 	width: 85px;
-
-	&:hover {
-		text-decoration: underline;
-	}
 }
 
-.profile-subnav {
+.profile-subnav,
+.about-subnav {
 	left: -94px;
-	width: 174px;
 
 	button {
 		width: 100%;
@@ -137,9 +136,11 @@
 	}
 }
 
-.about-subnav {
-	@extend .profile-subnav;
+.profile-subnav{
+	width: 174px;
+}
 
+.about-subnav {
 	left: 0;
 	width: 92px;
 	

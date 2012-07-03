@@ -199,11 +199,11 @@ $networks-unselected : #474747;
 $highlight-amount : 25% !default; 
 
 $bottom-color: #4e5354 !default;
+$bottom-color-adjust: 20% !default;
 
-
-@mixin gradient-primer($bottom-color){
+@mixin gradient-primer($bottom-color, $bottom-color-adjust){
 	background-color: $bottom-color;
-	@include background(linear-gradient(top, adjust-lightness($bottom-color, 20%), $bottom-color));
+	@include background(linear-gradient(top, adjust-lightness($bottom-color, $bottom-color-adjust), $bottom-color));
 }
 
 @mixin box-highlight($primer-color, $highlight-amount) { //ref: x-button-primer, preferences-networks
