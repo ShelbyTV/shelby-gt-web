@@ -4,7 +4,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _numItemsRequested : 0,
 
-  _loadMoreEnabled : false,
+  _loadMoreEnabled : true,
 
   _loadInProgress : false,
   
