@@ -5,6 +5,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _numItemsRequested : 0,
 
   _loadMoreEnabled : false,
+
+  _loadInProgress : false,
   
   events : {
     "click .js-load-more:not(.js-loading)" : "_loadMore"
@@ -86,6 +88,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       // manually hide the DOM element that is clicked for more loading
       this._disableLoadMore();
     }
+    this._loadInProgress = false;
   },
 
   _doesResponseContainListCollection : function(response) {
@@ -107,20 +110,24 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _loadMore : function(){
-    var self = this;
-    var fetchData = {
-      limit : this.options.limit,
-      skip : this._numItemsLoaded
-    };
-    _(fetchData).extend(this.options.fetchParams);
-    this._numItemsRequested = fetchData.limit;
-    this.$('.js-load-more').addClass('js-loading');
-    this.$('.load-more-button').html('Loading...');
-    this.model.fetch({
-      add : true,
-      data : fetchData,
-      success: function(model, response){self._onFetchSuccess(model, response);}
-    });
+    if (!this._loadInProgress) {
+      this._loadInProgress = true;
+
+      var self = this;
+      var fetchData = {
+        limit : this.options.limit,
+        skip : this._numItemsLoaded
+      };
+      _(fetchData).extend(this.options.fetchParams);
+      this._numItemsRequested = fetchData.limit;
+      this.$('.js-load-more').addClass('js-loading');
+      this.$('.load-more-button').html('Loading...');
+      this.model.fetch({
+        add : true,
+        data : fetchData,
+        success: function(model, response){self._onFetchSuccess(model, response);}
+      });
+    }
   }
 
 });
