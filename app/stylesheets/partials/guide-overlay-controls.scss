@@ -1,9 +1,9 @@
 @import "base";
 		
 #guide-overlay-controls {
+  bottom: 10px;
   position: absolute;
   right: 0;
-  top: 50%;
   z-index: 10;
 }
 
@@ -52,6 +52,7 @@
 	  background:url('../images/assets/guide.svg') no-repeat center center transparent;
 	  float: right;
 	  height: 20px; 
+    margin-right: 1px;
 	  width: 20px;
   }
 }
@@ -61,6 +62,7 @@
   
   .icon {
     @include rotate(180deg);
+    margin-right: 6px;
   }
   
   .copy { 
