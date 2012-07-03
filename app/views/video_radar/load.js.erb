@@ -740,10 +740,13 @@ ready : function() {
 
         styleGuideShow : function(guideName) {
                     shelbyJ(".<%=@hash%>guide-window").removeClass("guide-show");
+                    shelbyJ(".<%=@hash%>guide-clickoff").removeClass("guide-clickoff-show")
                     shelbyJ("#" + guideName + "-window").addClass("guide-show");
+                    shelbyJ("#" + guideName + "-clickoff").addClass("guide-clickoff-show");
         },
 
         styleGuideHide : function(guideName) {
+                    shelbyJ(".<%=@hash%>guide-clickoff").removeClass("guide-clickoff-show")
                     shelbyJ(".<%=@hash%>guide-window").removeClass("guide-show");
         },
 		
@@ -862,7 +865,6 @@ ready : function() {
       shelbyRadar.setUpGuide("<%=@hash%>login-guide", shelbyGuideWidth, false);
 
       shelbyRadar.resizeArray.push(function() {
-          shelbyJ("#" + "<%=@hash%>guide-window").css("height", shelbyJ(window).height() + "px");
           shelbyJ("#" + "<%=@hash%>guide-clickoff").css("height", shelbyJ(window).height() + "px")
                                                     .css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px");
       });
