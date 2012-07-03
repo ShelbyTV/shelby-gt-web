@@ -102,7 +102,7 @@
           if (this.model.get('rollListContent') == contentRollsEnum.people) {
             listItemView = 'RollItemPeopleView';
           } else {
-            listItemView = 'RollItemView';
+            listItemView = 'RollItemRollView';
           }
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
           displayParams = {
