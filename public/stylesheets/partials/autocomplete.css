@@ -1,0 +1,8 @@
+/* line 3, ../../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu {
+  background: white;
+  float: left;
+  list-style: none;
+  position: absolute;
+  z-index: 1000;
+}
