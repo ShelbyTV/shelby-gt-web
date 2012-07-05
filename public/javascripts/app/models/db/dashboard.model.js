@@ -7,10 +7,11 @@ libs.shelbyGT.DashboardModel = libs.shelbyGT.ShelbyBaseModel.extend({
     collectionType : 'libs.shelbyGT.DashboardEntriesCollection'
   }],
 
-  parse : function(response) {
+  parse : function(response) {  
     return ({dashboard_entries: response.result || []});
   },
 
   //urlRoot : 'http://localhost:3001/dashboard.json'
   url : shelby.config.apiRoot+'/dashboard'
+    
 });
