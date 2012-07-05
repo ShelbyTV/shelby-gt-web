@@ -192,7 +192,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
-    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
+    shelby.models.dashboard= new libs.shelbyGT.DashboardModel();
+		
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
@@ -440,5 +441,5 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   }
-
+  
 });
