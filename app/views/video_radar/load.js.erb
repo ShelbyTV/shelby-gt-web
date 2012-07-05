@@ -1,6 +1,6 @@
 window.shelbyBookmarklet = {
     shelbyRadar: function (shelbyJ) {
-        radar = {
+        var radar = {
 
             getElementValue: function (obj, id, shelbyJ) {
                 var value = '';
@@ -127,7 +127,7 @@ window.shelbyBookmarklet = {
                 }
                 for (var i = 0; i < found_elements.length; i++) {
                     if (this.getElementValue(found_elements[i], 'data-youtube-id', shelbyJ)) {
-                        var obj = jQuery(found_elements[i]);
+                        var obj = shelbyJ(found_elements[i]);
                         videos_to_add.push({
                             embed: obj,
                             domain: "youtube.com",
@@ -141,7 +141,7 @@ window.shelbyBookmarklet = {
                                 var domain_split = this.knownProviders[j].domain.split(',');
                                 var valid_domain = false;
                                 for (var l = 0; l < domain_split.length; l++) {
-                                    var domain_reg = new RegExp(jQuery.trim(domain_split[l]));
+                                    var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
                                         valid_domain = true;
                                         break;
@@ -149,7 +149,7 @@ window.shelbyBookmarklet = {
                                 }
                                 if (reg.test(str) && valid_domain) {
                                     var match = reg.exec(str);
-                                    var obj = jQuery(found_elements[i]);
+                                    var obj = shelbyJ(found_elements[i]);
                                     if (obj.width() == 0) {
                                         obj = obj.parent();
                                     }
@@ -305,13 +305,15 @@ window.shelbyBookmarklet = {
                             '<li class="<%=@prefix%>frame-controls-share toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-share ir ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + 'Share it ' + '</button>' + '</li>').css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
                             var frameInfoId = shelbyJ("#<%=@prefix%>frame-info-" + r).attr("id");
                             shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameid", frameInfoId).attr("data-videourl", vids[i].known_url);
-
-
-                            utilObject.resizeArray.push(function (vidIndex, r) {
+                            var resizeFunction = function(vidIndex, r) {
                                 return function () {
                                     utilObject.resizeFunction(vids, vidIndex, r);
                                 }
-                            }(i, r));
+                            }(i, r);
+                            shelbyJ("body").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function (event) {
+                                resizeFunction();
+                          });
+                            utilObject.resizeArray.push(resizeFunction);
 
                             var dataReq = {
                                 'provider_name': vids[i].provider,
@@ -569,6 +571,65 @@ window.shelbyBookmarklet = {
                         }
                     });
                 },
+
+                shelbyApiNewRoll: function(dataReq, shareEmails) {
+                      shelbyJ.ajax({
+                          type: 'GET',
+                          url: 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
+                          timeout: 1000,
+                          dataType: "jsonp",
+                          async: true,
+                          crossDomain: true,
+                          data: dataReq,
+                          xhrFields: {
+                              withCredentials: true
+                          },
+                          error: function () {
+                              alert("unable to make new roll");
+                          },
+                          success: function (response) {
+                              if (shareEmails && shareEmails.length > 0) {
+                                  var shareData = {
+                                      'roll_id': response.result.id,
+                                      'destination': ['email'],
+                                      'addresses': shareEmails,
+                                      'text': "New Roll"
+                                  };
+                                  shelbyJ.ajax({
+                                      type: 'GET',
+                                      data: shareData,
+                                      timeout: 1000,
+                                      url: 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                                      dataType: "jsonp",
+                                      crossDomain: true,
+                                      xhrFields: {
+                                          withCredentials: true
+                                      },
+                                      success: function (response) {
+                                          alert("email success");
+                                      },
+                                      error: function () {
+                                          alert("unable to share");
+                                      }
+                                  });
+                              }
+                              shelbyJ.ajax({
+                                  type: 'GET',
+                                  url: 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
+                                  dataType: "jsonp",
+                                  crossDomain: true,
+                                  xhrFields: {
+                                      withCredentials: true
+                                  },
+                                  success: function (response) {
+                                      rolls = response.result;
+                                      utilObject.htmlTemplate.populateRolls(rolls);
+                                      console.log(response);
+                                  }
+                              })
+                            }
+                      });
+                  }
             },
             htmlTemplate : {
                 messageHtml: function (message) {
@@ -680,62 +741,8 @@ window.shelbyBookmarklet = {
                         shelbyJ(".<%=@prefix%>roll-options-input").val('');
                         shelbyJ("#<%=@prefix%>new-roll-recipients").val('');
 
-                        shelbyJ.ajax({
-                            type: 'GET',
-                            url: 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
-                            timeout: 1000,
-                            dataType: "jsonp",
-                            async: true,
-                            crossDomain: true,
-                            data: dataReq,
-                            xhrFields: {
-                                withCredentials: true
-                            },
-                            error: function () {
-                                alert("unable to make new roll");
-                            },
-                            success: function (response) {
-                                if (shareEmails && shareEmails.length > 0) {
-                                    var shareData = {
-                                        'roll_id': response.result.id,
-                                        'destination': ['email'],
-                                        'addresses': shareEmails,
-                                        'text': "New Roll"
-                                    };
-                                    shelbyJ.ajax({
-                                        type: 'GET',
-                                        data: shareData,
-                                        timeout: 1000,
-                                        url: 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
-                                        dataType: "jsonp",
-                                        crossDomain: true,
-                                        xhrFields: {
-                                            withCredentials: true
-                                        },
-                                        success: function (response) {
-                                            alert("email success");
-                                        },
-                                        error: function () {
-                                            alert("unable to share");
-                                        }
-                                    });
-                                }
-                                shelbyJ.ajax({
-                                    type: 'GET',
-                                    url: 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
-                                    dataType: "jsonp",
-                                    crossDomain: true,
-                                    xhrFields: {
-                                        withCredentials: true
-                                    },
-                                    success: function (response) {
-                                        rolls = response.result;
-                                        utilObject.populateRolls(rolls);
-                                        console.log(response);
-                                    }
-                                })
-                            }
-                        });
+                        utilObject.shelbyAjaxCall.shelbyApiNewRoll(dataReq, shareEmails);
+
                     });
                 },
 

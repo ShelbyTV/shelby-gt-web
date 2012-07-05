@@ -2993,10 +2993,6 @@
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 103, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements .guide-window.start-guide-hide {
-  display: none;
-}
 /* line 106, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-window.guide-show {
   margin-right: 0;
