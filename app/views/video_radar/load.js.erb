@@ -121,7 +121,7 @@ window.shelbyBookmarklet = {
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
-                    } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) && possibleVideos.embeds.length == 0) && (/<vimeo/i.test(possibleVideos.objects[i].innerHTML))) {
+                    } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<ooyala/i.test(possibleVideos.objects[i].innerHTML))) found_elements.push(possibleVideos.objects[i]);
                 }
@@ -588,6 +588,7 @@ window.shelbyBookmarklet = {
                               alert("unable to make new roll");
                           },
                           success: function (response) {
+  
                               if (shareEmails && shareEmails.length > 0) {
                                   var shareData = {
                                       'roll_id': response.result.id,
@@ -622,9 +623,9 @@ window.shelbyBookmarklet = {
                                       withCredentials: true
                                   },
                                   success: function (response) {
+                                      alert("rolled to new roll");
                                       rolls = response.result;
                                       utilObject.htmlTemplate.populateRolls(rolls);
-                                      console.log(response);
                                   }
                               })
                             }
@@ -670,7 +671,7 @@ window.shelbyBookmarklet = {
 
 
                 setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
-                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="<%=@prefix%>start-guide-hide ' + guideName + ' <%=@prefix%>guide-window">  </div>');
+                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@prefix%>guide-window">  </div>');
 
                     // set up clickoff
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@prefix%>guide-clickoff"></div>')
@@ -777,10 +778,10 @@ window.shelbyBookmarklet = {
                 }
             },
             styleGuideShow: function (guideName) {
-                shelbyJ(".<%=@prefix%>guide-window").removeClass("start-guide-hide");
+
                 shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
                 shelbyJ(".<%=@prefix%>guide-clickoff").removeClass("guide-clickoff-show")
-                shelbyJ("#" + guideName + "-window").addClass("guide-show");
+                shelbyJ("#" + guideName + "-window").addClass("guide-show").addClass("guide-animate");
                 shelbyJ("#" + guideName + "-clickoff").addClass("guide-clickoff-show");
             },
 
@@ -801,7 +802,7 @@ window.shelbyBookmarklet = {
 
             foundVideo: null,
 
-            shelbify: function (radar) {
+            shelbify: function (radar, possibleVideos) {
                 utilObject.foundVideo = radar.find(possibleVideos, shelbyJ);
                 if (utilObject.foundVideo.length > 0) {
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>roll-guide", shelbyGuideWidth, true);
@@ -837,7 +838,7 @@ window.shelbyBookmarklet = {
 
         ready: function () {
             var shelbyJ = jQuery.noConflict();
-            possibleVideos = {
+            var possibleVideos = {
                 embeds: shelbyJ('embed'),
                 objects: shelbyJ('object'),
                 videos: shelbyJ('video'),
@@ -850,7 +851,7 @@ window.shelbyBookmarklet = {
             shelbyJ('.<%=@prefix%>ext-elements').remove()
             shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
 
-            shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(shelbyBookmarklet.shelbyRadar(shelbyJ));
+            shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(shelbyBookmarklet.shelbyRadar(shelbyJ), possibleVideos);
         }
     }
 }

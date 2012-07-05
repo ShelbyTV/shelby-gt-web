@@ -2976,6 +2976,13 @@
   top: 0px;
   width: 330px;
   z-index: 99999;
+}
+/* line 99, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements .guide-window.guide-show {
+  margin-right: 0;
+}
+/* line 102, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements .guide-window.guide-animate {
   -moz-transition-property: margin-right;
   -webkit-transition-property: margin-right;
   -o-transition-property: margin-right;
@@ -2993,11 +3000,7 @@
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-/* line 106, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements .guide-window.guide-show {
-  margin-right: 0;
-}
-/* line 111, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 110, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .video-card-header {
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
@@ -3007,13 +3010,13 @@
   position: absolute;
   z-index: 89999;
 }
-/* line 122, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 121, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
-/* line 129, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 128, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-controls {
   background-color: #35383A;
   border-radius: 0 0 5px 5px;
@@ -3021,18 +3024,18 @@
   position: absolute;
   z-index: 89999;
 }
-/* line 137, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 136, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-title {
   width: 50%;
 }
-/* line 141, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 140, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-position: 15px 50%;
   background-repeat: no-repeat;
   background-size: 38px;
 }
-/* line 149, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 148, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-twitter,
 .ext-elements .gate-networks-facebook {
   border-radius: 3px;
@@ -3043,7 +3046,7 @@
   margin: 20px;
   text-shadow: none;
 }
-/* line 160, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 159, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-twitter {
   background-color: #00a2d1;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3057,7 +3060,7 @@
   border: 1px solid #00536b;
   background-size: 11%;
 }
-/* line 167, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 166, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-facebook {
   background-color: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));

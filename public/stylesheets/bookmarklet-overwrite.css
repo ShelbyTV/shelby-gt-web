@@ -1,24 +1,34 @@
 /*
 Syntax error: Undefined mixin 'transition-property'.
-        on line 99 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'
-        from line 99 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss
+        on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'
+        from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss
 
-94:   position: fixed;
-95:   right: 0px;
-96:   top: 0px;
-97:   width: 330px;
 98:   z-index:99999; 
-99:   @include transition-property('margin-right');
-100:   @include transition-duration(.5s);
-101:   @include transition-timing-function(ease-in-out);
-102:   @include transition-delay(0s);
-103:   &.start-guide-hide {
-104:  //   display: none;
+99:   &.guide-show {
+100:     margin-right: 0;
+101:   }
+102:   &.guide-animate {
+103:     @include transition-property('margin-right');
+104:     @include transition-duration(.5s);
+105:     @include transition-timing-function(ease-in-out);
+106:     @include transition-delay(0s);
+107:   }
+108: }
 
 Backtrace:
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:99:in `transition-property'
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:99
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:103:in `transition-property'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:103
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -94,4 +104,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 99 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 99 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 94:   position: fixed;\A 95:   right: 0px;\A 96:   top: 0px;\A 97:   width: 330px;\A 98:   z-index:99999; \A 99:   @include transition-property('margin-right');\A 100:   @include transition-duration(.5s);\A 101:   @include transition-timing-function(ease-in-out);\A 102:   @include transition-delay(0s);\A 103:   &.start-guide-hide {\A 104:  //   display: none;"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index:99999; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108: }"; }

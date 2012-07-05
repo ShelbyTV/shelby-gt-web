@@ -96,15 +96,14 @@
   top: 0px;
   width: 330px;
   z-index:99999; 
-  @include transition-property('margin-right');
-  @include transition-duration(.5s);
-  @include transition-timing-function(ease-in-out);
-  @include transition-delay(0s);
-  &.start-guide-hide {
-    display: none;
-  }
   &.guide-show {
     margin-right: 0;
+  }
+  &.guide-animate {
+    @include transition-property('margin-right');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
   }
 }
 
