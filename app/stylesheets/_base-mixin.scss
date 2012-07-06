@@ -32,9 +32,9 @@
 
 
 
-@mixin gradient-primer($bottom-color){
+@mixin gradient-primer($bottom-color, $bottom-color-adjust){
 	background-color: $bottom-color;
-	@include background(linear-gradient(top, adjust-lightness($bottom-color, 20%), $bottom-color));
+	@include background(linear-gradient(top, adjust-lightness($bottom-color, $bottom-color-adjust), $bottom-color));
 }
 
 @mixin box-highlight($primer-color, $highlight-amount) { //ref: x-button-primer, preferences-networks

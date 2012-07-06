@@ -1,25 +1,46 @@
 /*
-Syntax error: Invalid CSS after "	}": expected selector or at-rule, was "<<<<<<< HEAD"
-        on line 92 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss
+Syntax error: Undefined mixin 'gradient-primer'.
+        on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss, in `gradient-primer'
+        from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss
 
-87: 			top: 40%;
-88: 			width: 12px;
-89: 		}
-90: 	}
-91: 
-92: <<<<<<< HEAD
-93: .profile,
-94: .about {
-95: =======
-96: .about,
-97: .profile {
+1: @import "base";
+2: 
+3: .guide-header {
+4: 	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%), 5%);
+5: 
+6: 	border-bottom: 1px solid $header-outline;
+7: 
+8: 	nav {
+9: 		display: inline;
 
 Backtrace:
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss:92
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/scss/parser.rb:1010:in `expected'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/scss/parser.rb:956:in `expected'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/scss/parser.rb:28:in `parse'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:326:in `_to_tree'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss:4:in `gradient-primer'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss:4
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
@@ -71,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"	}\": expected selector or at-rule, was \"<<<<<<< HEAD\"\A         on line 92 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss\A \A 87: 			top: 40%;\A 88: 			width: 12px;\A 89: 		}\A 90: 	}\A 91: \A 92: <<<<<<< HEAD\A 93: .profile,\A 94: .about {\A 95: =======\A 96: .about,\A 97: .profile {"; }
+  content: "Syntax error: Undefined mixin 'gradient-primer'.\A         on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss, in `gradient-primer'\A         from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-header.scss\A \A 1: @import \"base\";\A 2: \A 3: .guide-header {\A 4: 	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%), 5%);\A 5: \A 6: 	border-bottom: 1px solid $header-outline;\A 7: \A 8: 	nav {\A 9: 		display: inline;"; }

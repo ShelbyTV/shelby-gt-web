@@ -882,11 +882,11 @@ window.shelbyBookmarklet = {
             shelbify: function (radar, possibleVideos) {
                 utilObject.foundVideo = radar.find(possibleVideos);
                 if (utilObject.foundVideo.length > 0) {
+                    utilObject.htmlTemplate.setUpGuide("<%=@prefix%>frame-guide", shelbyGuideWidth, false);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>roll-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>share-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>comment-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>login-guide", shelbyGuideWidth, false);
-                    utilObject.htmlTemplate.setUpGuide("<%=@prefix%>frame-guide", shelbyGuideWidth, false);
                     utilObject.htmlTemplate.setUpToggle();
                     utilObject.htmlTemplate.frameGuideHtml();
                     utilObject.resizeArray.push(function () {
