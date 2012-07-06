@@ -109,8 +109,8 @@
   border-radius: 5px;
   color: #efefef;
   padding: 4px 8px;
-  margin-top: 40px;
-  margin-left: 12px;
+  margin-top: 10px;
+  margin-left: 59px;
 }
 
 /* line 89, ../../../app/stylesheets/partials/frame-conversation.scss */
@@ -119,11 +119,13 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   border-radius: 3px;
+  height: 50px;
   left: 68px;
-  position: absolute;
-  right: 8px;
+  margin-left: 12px;
+  padding: 4px 5px;
+  width: 75%;
 }
-/* line 98, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 100, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -141,13 +143,13 @@
   opacity: 1;
 }
 
-/* line 106, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 108, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar {
   height: 48px;
   width: 48px;
   float: left;
 }
-/* line 111, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 113, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar > img {
   height: 100%;
   overflow: hidden;

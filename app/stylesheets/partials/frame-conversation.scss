@@ -81,8 +81,8 @@
    
   .new-comment-submit {
     @include x-button-primer($shelby-gray, small);
-    margin-top: 40px;
-    margin-left: 12px;
+    margin-top: 10px;
+    margin-left: 59px;
   }
 }
 
@@ -91,9 +91,11 @@
   @include opacity(0.8);
   @include roundies(input);
   
+  height: 50px;
   left: 68px;
-  position: absolute;
-  right: 8px;
+  margin-left: 12px;
+  padding: 4px 5px;
+  width: 75%;
 
   &:focus{
     @include transition-property('opacity');
