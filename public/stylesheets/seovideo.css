@@ -90,5 +90,564 @@ Backtrace:
 */
 body:before {
   white-space: pre;
+<<<<<<< HEAD
   font-family: monospace;
   content: "Syntax error: Undefined mixin 'basefont'.\A         on line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss, in `basefont'\A         from line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss\A         from line 6 of /shelbytv/app/stylesheets/seovideo.scss\A \A 6: 		\"partials/seovideo.scss\";"; }
+=======
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 30, ../../app/stylesheets/partials/h5bp.scss */
+q {
+  quotes: none;
+}
+
+/* line 31, ../../app/stylesheets/partials/h5bp.scss */
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../app/stylesheets/partials/h5bp.scss */
+small {
+  font-size: 85%;
+}
+
+/* line 33, ../../app/stylesheets/partials/h5bp.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 34, ../../app/stylesheets/partials/h5bp.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 35, ../../app/stylesheets/partials/h5bp.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 37, ../../app/stylesheets/partials/h5bp.scss */
+ul, ol {
+  margin: 1em 0;
+  padding: 0 0 0 40px;
+}
+
+/* line 38, ../../app/stylesheets/partials/h5bp.scss */
+dd {
+  margin: 0 0 0 40px;
+}
+
+/* line 39, ../../app/stylesheets/partials/h5bp.scss */
+nav ul, nav ol {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 41, ../../app/stylesheets/partials/h5bp.scss */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* line 42, ../../app/stylesheets/partials/h5bp.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* line 43, ../../app/stylesheets/partials/h5bp.scss */
+figure {
+  margin: 0;
+}
+
+/* line 45, ../../app/stylesheets/partials/h5bp.scss */
+form {
+  margin: 0;
+}
+
+/* line 46, ../../app/stylesheets/partials/h5bp.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 48, ../../app/stylesheets/partials/h5bp.scss */
+label {
+  cursor: pointer;
+}
+
+/* line 49, ../../app/stylesheets/partials/h5bp.scss */
+legend {
+  border: 0;
+  *margin-left: -7px;
+  padding: 0;
+  white-space: normal;
+}
+
+/* line 50, ../../app/stylesheets/partials/h5bp.scss */
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/* line 51, ../../app/stylesheets/partials/h5bp.scss */
+button, input {
+  line-height: normal;
+}
+
+/* line 52, ../../app/stylesheets/partials/h5bp.scss */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+  *overflow: visible;
+}
+
+/* line 53, ../../app/stylesheets/partials/h5bp.scss */
+button[disabled], input[disabled] {
+  cursor: default;
+}
+
+/* line 54, ../../app/stylesheets/partials/h5bp.scss */
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *width: 13px;
+  *height: 13px;
+}
+
+/* line 55, ../../app/stylesheets/partials/h5bp.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 56, ../../app/stylesheets/partials/h5bp.scss */
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* line 57, ../../app/stylesheets/partials/h5bp.scss */
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* line 58, ../../app/stylesheets/partials/h5bp.scss */
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+
+/* line 60, ../../app/stylesheets/partials/h5bp.scss */
+input:invalid, textarea:invalid {
+  background-color: #f0dddd;
+}
+
+/* line 62, ../../app/stylesheets/partials/h5bp.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 63, ../../app/stylesheets/partials/h5bp.scss */
+td {
+  vertical-align: top;
+}
+
+/* line 65, ../../app/stylesheets/partials/h5bp.scss */
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: black;
+  padding: 0.2em 0;
+}
+
+/* line 68, ../../app/stylesheets/partials/h5bp.scss */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 35em) {
+  /* line 2, ../../app/stylesheets/partials/media-query-35em.scss */
+  body {
+    background: #bbb;
+  }
+}
+/* line 4, ../../app/stylesheets/partials/seovideo.scss */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 11, ../../app/stylesheets/partials/seovideo.scss */
+body {
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background-color: #101010;
+  bottom: 0;
+  color: #a4a4a4;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* line 23, ../../app/stylesheets/partials/seovideo.scss */
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+/* line 6, ../../../../../.rvm/gems/ruby-1.9.3-p125@gt-web/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/links/_unstyled-link.scss */
+a:active, a:focus {
+  outline: none;
+}
+/* line 28, ../../app/stylesheets/partials/seovideo.scss */
+a:hover, a:visited, a:active {
+  color: inherit;
+}
+
+/* line 33, ../../app/stylesheets/partials/seovideo.scss */
+p {
+  margin: 1px;
+}
+
+/* line 37, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo {
+  background: url("../images/seovideo/bg.png") 0 0 repeat #101010;
+}
+
+/* line 43, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper {
+  margin: 0 auto;
+  width: 874px;
+}
+
+/* line 48, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-wrapper-mobile {
+  margin: 0 auto;
+  width: 320px;
+}
+
+/* line 53, ../../app/stylesheets/partials/seovideo.scss */
+.content-wrapper {
+  width: 100%;
+  margin: 0px;
+}
+
+/* line 58, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header {
+  margin: 0px;
+  height: 47px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2e3132), color-stop(100%, #171819));
+  background-image: -webkit-linear-gradient(#2e3132, #171819);
+  background-image: -moz-linear-gradient(#2e3132, #171819);
+  background-image: -o-linear-gradient(#2e3132, #171819);
+  background-image: -ms-linear-gradient(#2e3132, #171819);
+  background-image: linear-gradient(#2e3132, #171819);
+}
+
+/* line 64, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header-mobile {
+  margin: 0px;
+  height: 47px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2e3132), color-stop(100%, #171819));
+  background-image: -webkit-linear-gradient(#2e3132, #171819);
+  background-image: -moz-linear-gradient(#2e3132, #171819);
+  background-image: -o-linear-gradient(#2e3132, #171819);
+  background-image: -ms-linear-gradient(#2e3132, #171819);
+  background-image: linear-gradient(#2e3132, #171819);
+}
+
+/* line 70, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header-contents {
+  margin: 0 auto;
+  height: 47px;
+  width: 874px;
+}
+
+/* line 76, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-header-contents-mobile {
+  margin: 0 auto;
+  height: 47px;
+  width: 320px;
+}
+
+/* line 82, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-headerrule {
+  height: 2px;
+  width: 100%;
+  color: #303234;
+  background-color: #303234;
+  margin: 0px 0px 0px 0px;
+  border-top-color: black;
+}
+
+/* line 91, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-logo {
+  float: left;
+  width: 100px;
+  padding-top: 13px;
+}
+
+/* line 97, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-logo-mobile {
+  float: left;
+  margin-left: 6px;
+  width: 34px;
+  padding-top: 15px;
+  overflow: hidden;
+}
+
+/* line 105, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-slogan {
+  font-size: 12px;
+  font-weight: 400;
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+}
+
+/* line 114, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-slogan-mobile {
+  font-size: 11px;
+  font-weight: 400;
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 310px;
+  text-align: center;
+}
+
+/* line 123, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-pitch {
+  height: 38px;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 25px;
+}
+
+/* line 130, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-pitch-mobile {
+  height: 44px;
+  font-size: 11px;
+  font-weight: 300;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* line 138, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-embed {
+  float: left;
+  width: 640px;
+  padding: 0px;
+  margin-top: 9px;
+}
+
+/* line 145, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-embed-mobile {
+  width: 310px;
+  padding: 0px;
+  margin-top: 9px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 153, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-details {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  float: left;
+  width: 640px;
+  padding: 0px;
+  margin-top: 5px;
+  margin-bottom: 28px;
+}
+
+/* line 164, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-details-mobile {
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.2;
+  width: 310px;
+  padding: 0px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 176, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messages {
+  float: left;
+}
+
+/* line 180, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideo-header {
+  height: 33px;
+}
+
+/* line 184, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideo-header-mobile {
+  height: 20px;
+  width: 310px;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* line 191, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideos {
+  width: 194px;
+  margin-top: 39px;
+  padding: 0px;
+}
+
+/* line 197, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideos-mobile {
+  width: 310px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0px;
+  text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+}
+
+/* line 210, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-leftcol {
+  float: left;
+  width: 640px;
+  padding: 0px;
+}
+
+/* line 216, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-rightcol {
+  font-size: 12px;
+  font-weight: 400;
+  float: right;
+  width: 194px;
+  padding: 0px;
+  margin-left: 40px;
+}
+
+/* line 225, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideo {
+  width: 194px;
+  margin: 0px 0px 10px 0px;
+}
+
+/* line 230, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideo-mobile {
+  width: 94px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+/* line 238, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-relatedvideo-title {
+  font-size: 10px;
+  font-weight: 100;
+  margin: 4px 0px 0px 0px;
+  max-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* line 248, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message {
+  margin: 10px 10px 10px 10px;
+}
+
+/* line 252, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message-mobile {
+  margin: 5px 5px 5px 5px;
+}
+
+/* line 256, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message-image {
+  float: left;
+  width: 50px;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 263, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagenickname {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 60px;
+  padding-top: 2px;
+}
+
+/* line 270, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagedate {
+  color: white;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+/* line 277, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagetext {
+  color: white;
+  font-size: 12px;
+  margin-left: 60px;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* line 285, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-message-image-mobile {
+  float: left;
+  width: 36px;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 292, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagenickname-mobile {
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 46px;
+}
+
+/* line 298, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagedate-mobile {
+  color: white;
+  font-size: 8px;
+  margin-top: 8px;
+  margin-left: 46px;
+}
+
+/* line 305, ../../app/stylesheets/partials/seovideo.scss */
+.seovideo-messagetext-mobile {
+  color: white;
+  font-size: 10px;
+  margin-left: 46px;
+  margin-top: 4px;
+  line-height: 1.2;
+}
+>>>>>>> 5b57721200ca05fb74ac27254d26d0cc37714e17

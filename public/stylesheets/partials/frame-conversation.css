@@ -15,6 +15,7 @@ Syntax error: Undefined mixin 'no-bullets'.
 17: }
 18: 
 
+<<<<<<< HEAD
 Backtrace:
 /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:13:in `no-bullets'
 /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:13
@@ -95,3 +96,135 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Syntax error: Undefined mixin 'no-bullets'.\A         on line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss, in `no-bullets'\A         from line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss\A \A 8:   width: 100%;\A 9: }\A 10: \A 11: .conversation,\A 12: .frame-conversation {\A 13:   @include no-bullets();\A 14: \A 15:   margin: 0;\A 16:   padding: 0;\A 17: }\A 18: "; }
+=======
+/* line 19, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message {
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid black;
+  padding: 10px 0 10px 10px;
+}
+
+/* line 25, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar {
+  float: left;
+  max-height: 50px;
+  overflow: hidden;
+  width: 50px;
+}
+/* line 31, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-avatar a {
+  display: block;
+}
+
+/* line 36, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+/* line 42, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:link {
+  color: #777;
+}
+
+/* line 48, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name,
+.frame-conversation-message-reply {
+  text-decoration: none;
+}
+/* line 51, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name:hover,
+.frame-conversation-message-reply:hover {
+  text-decoration: underline;
+}
+
+/* line 56, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-user-name {
+  color: #999;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+/* line 62, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-block {
+  margin: 3px 0 10px;
+}
+
+/* line 67, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp,
+.frame-conversation-message-reply {
+  font-size: 11px;
+}
+
+/* line 72, ../../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-timestamp {
+  padding-right: 0.5em;
+}
+
+/* line 76, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment {
+  background-color: #35383a;
+  border-top: 1px solid #343434;
+  padding: 8px;
+  position: relative;
+}
+/* line 82, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment .new-comment-submit {
+  background-color: #27292a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
+  background: -webkit-linear-gradient(top, #404344, #27292a);
+  background: -moz-linear-gradient(top, #404344, #27292a);
+  background: -o-linear-gradient(top, #404344, #27292a);
+  background: -ms-linear-gradient(top, #404344, #27292a);
+  background: linear-gradient(top, #404344, #27292a);
+  box-shadow: inset 0px 1px 0px 0px #646a6c;
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  text-shadow: 0px -1px 0px #333333;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: #efefef;
+  padding: 4px 8px;
+  margin-top: 40px;
+  margin-left: 12px;
+}
+
+/* line 89, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  border-radius: 3px;
+  left: 68px;
+  position: absolute;
+  right: 8px;
+}
+/* line 98, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-input:focus {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 106, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar {
+  height: 48px;
+  width: 48px;
+  float: left;
+}
+/* line 111, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar > img {
+  height: 100%;
+  overflow: hidden;
+}
+>>>>>>> 5b57721200ca05fb74ac27254d26d0cc37714e17

@@ -175,12 +175,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
+    shelby.models.dashboard= new libs.shelbyGT.DashboardModel();
+
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
         'sinceId' : options.data.since_id ? options.data.since_id : null,
         'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
+      
+      // filtering out faux users so as a team we can interact more easily 
+      //   with real users easily as they come in.
+      if ($.getUrlParam("real") == 1){ 
+        shelby.views.guide._listView.updateFilter(function(model){
+          return model.get('frame').get('creator').get('faux') != 1;
+        });
+      }
+      
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
       $.when(shelby.models.dashboard.fetch(fetchOptions)).always(function(response, callbackName, jqXHR){
@@ -422,5 +433,5 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     }, topLevelViewsOptions);
   }
-
+  
 });

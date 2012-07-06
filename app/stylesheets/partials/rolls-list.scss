@@ -12,9 +12,11 @@
 	}
 
 	a{	
-//		cursor:pointer;
 		display:block;
-//		padding: 5px;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	li{

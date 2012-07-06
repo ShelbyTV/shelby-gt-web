@@ -1,14 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var PagingListView = libs.shelbyGT.PagingListView;
+  var FramePlayPagingListView = libs.shelbyGT.FramePlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
-  libs.shelbyGT.DashboardView = PagingListView.extend({
+  libs.shelbyGT.DashboardView = FramePlayPagingListView.extend({
 
-    className : PagingListView.prototype.className + ' dashboard',
+    className : FramePlayPagingListView.prototype.className + ' dashboard',
 
-    options : _.extend({}, PagingListView.prototype.options, {
+    options : _.extend({}, FramePlayPagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
@@ -36,8 +36,7 @@
           return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
         }
       });
-      this._initInfiniteScrolling();
-      PagingListView.prototype.initialize.call(this);
+      FramePlayPagingListView.prototype.initialize.call(this);
     },
 
     _filter : function(item){
@@ -47,10 +46,9 @@
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
     },
-    
-    //ListView overrides
-    _listItemViewAdditionalParams : function() {
-      return {activationStateModel:shelby.models.guide};
+
+    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
+      return itemModel.has('frame') && itemModel.get('frame').id == activeFrameModel.id;
     }
 
   });
