@@ -105,6 +105,7 @@
     @include transition-timing-function(ease-in-out);
     @include transition-delay(0s);
   }
+    
 }
 
 .video-card-header {
@@ -140,12 +141,13 @@
   width:50%;
 }
 
+/*
 .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-position: 15px 50%;
   background-repeat: no-repeat;
   background-size: 38px;
-}
+}*/
 
 .gate-networks-twitter,
 .gate-networks-facebook{
@@ -178,3 +180,6 @@
   position: fixed;
 }
 
+.content-body {
+    top: 45px;
+}

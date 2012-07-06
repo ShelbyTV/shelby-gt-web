@@ -190,7 +190,6 @@ window.shelbyBookmarklet = {
                     }
                 }
                 return videos_to_add;
-
             }
         };
         return radar;
@@ -221,7 +220,7 @@ window.shelbyBookmarklet = {
                     shelbyJ('.<%=@prefix%>guide-overlay-context-creator').html(response.result.nickname);
                     shelbyJ.ajax({
                         type: 'GET',
-                        url: 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
+                        url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
                         dataType: "jsonp",
                         crossDomain: true,
                         xhrFields: {
@@ -238,7 +237,7 @@ window.shelbyBookmarklet = {
                 signedIn: function () {
                     shelbyJ.ajax({
                         type: 'GET',
-                        url: 'http://<%= Settings::VideoRadar.domain %>/v1/signed_in',
+                        url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/signed_in',
                         dataType: "jsonp",
                         crossDomain: true,
                         xhrFields: {
@@ -250,7 +249,7 @@ window.shelbyBookmarklet = {
                 getUser: function () {
                     shelbyJ.ajax({
                         type: 'GET',
-                        url: 'http://<%= Settings::VideoRadar.domain %>/v1/user',
+                        url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/user',
                         dataType: "jsonp",
                         crossDomain: true,
                         xhrFields: {
@@ -305,7 +304,7 @@ window.shelbyBookmarklet = {
                             // put buttons/headers here, we have hpos, vpos, fixed positions
 
                             var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
-                            utilObject.htmlTemplate.addFrameToGuide(footerHtml, r);
+                            utilObject.htmlTemplate.addFrameToGuide(footerHtml, r, vids[i].embed);
                             if (embedButtons) {
                                 utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
 
@@ -337,7 +336,7 @@ window.shelbyBookmarklet = {
                             var setDashboardFrame = function (frameInfoClass) {
                                     shelbyJ.ajax({
                                         type: "GET",
-                                        url: "http://<%= Settings::VideoRadar.domain %>/v1/dashboard/find_entries_with_video",
+                                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/dashboard/find_entries_with_video",
                                         dataType: "jsonp",
                                         data: dataReq,
                                         crossDomain:true,
@@ -356,7 +355,7 @@ window.shelbyBookmarklet = {
                                   var imgClassName = r + "-img";
                                     shelbyJ.ajax({
                                         type: "GET",
-                                        url: "http://<%= Settings::VideoRadar.domain %>/v1/video/find_or_create",
+                                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/video/find_or_create",
                                         dataType: "jsonp",
                                         data: dataReq,
                                         async: true,
@@ -431,7 +430,7 @@ window.shelbyBookmarklet = {
                     utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-comment", null, function (event) {
                         var commentButton = event.currentTarget;
                         var commentTextClass = "<%=@prefix%>comment-text-" + commentButton.getAttribute("data-r");
-                        var frameHeader = shelbyJ("#header-on-page-3678658").last();
+                        var frameHeader = shelbyJ("." + commentButton.getAttribute("data-frameclass"));
                         var conversationId = frameHeader.attr("data-conversationid");
                         if (conversationId !== undefined) {
                             utilObject.htmlTemplate.setUpConversationWithId(conversationId, commentTextClass);
@@ -505,8 +504,7 @@ window.shelbyBookmarklet = {
                         type: "GET",
                         dataType: "jsonp",
                         data: dataReq,
-                        timeout: 1000,
-                        url: "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + apiFrameId + "/share",
+                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/frame/" + apiFrameId + "/share",
                         xhrFields: {
                             withCredentials: true
                         },
@@ -531,8 +529,7 @@ window.shelbyBookmarklet = {
                         type: "GET",
                         dataType: "jsonp",
                         data: dataReq,
-                        timeout: 1000,
-                        url: "http://<%= Settings::VideoRadar.domain %>/v1/POST/conversation/" + conversationId + "/messages",
+                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/conversation/" + conversationId + "/messages",
                         xhrFields: {
                             withCredentials: true
                         },
@@ -553,9 +550,8 @@ window.shelbyBookmarklet = {
                         xhrFields: {
                             withCredentials: true
                         },
-                        timeout: 1000,
                         async: true,
-                        url: "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + shelbyFrameId + "/upvote",
+                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/frame/" + shelbyFrameId + "/upvote",
                         success: function (response) {
                             shelbyLikeImg.parent().addClass("upvoted");
                             shelbyJ("." + heartTextId).html(response.result.upvoters.length);
@@ -576,11 +572,10 @@ window.shelbyBookmarklet = {
 
                     shelbyJ.ajax({
                         type: 'GET',
-                        url: 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/' + roll_id + '/frames',
+                        url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/roll/' + roll_id + '/frames',
                         dataType: "jsonp",
                         async: true,
                         crossDomain: true,
-                        timeout: 1000,
                         data: reqData,
                         xhrFields: {
                             withCredentials: true
@@ -598,8 +593,7 @@ window.shelbyBookmarklet = {
                 shelbyApiNewRoll: function(dataReq, shareEmails) {
                       shelbyJ.ajax({
                           type: 'GET',
-                          url: 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/',
-                          timeout: 1000,
+                          url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/roll/',
                           dataType: "jsonp",
                           async: true,
                           crossDomain: true,
@@ -622,8 +616,7 @@ window.shelbyBookmarklet = {
                                   shelbyJ.ajax({
                                       type: 'GET',
                                       data: shareData,
-                                      timeout: 1000,
-                                      url: 'http://<%= Settings::VideoRadar.domain%>/v1/POST/roll/' + response.result.id + '/share',
+                                      url: 'http://<%= Settings::VideoRadar.api_domain%>/v1/POST/roll/' + response.result.id + '/share',
                                       dataType: "jsonp",
                                       crossDomain: true,
                                       xhrFields: {
@@ -639,7 +632,7 @@ window.shelbyBookmarklet = {
                               }
                               shelbyJ.ajax({
                                   type: 'GET',
-                                  url: 'http://<%= Settings::VideoRadar.domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
+                                  url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/user/' + utilObject.shelbyBkmkltUser.id + '/rolls/postable',
                                   dataType: "jsonp",
                                   crossDomain: true,
                                   xhrFields: {
@@ -657,11 +650,11 @@ window.shelbyBookmarklet = {
             },
             htmlTemplate : {
                 setUpToggle : function() {
-                    utilObject.shelbyDocElements['ext-elements'].append('<div id="<%=@prefix%>guide-overlay-controls"><button class="<%=@prefix%>guide-toggle <%=@prefix%>hide"> <div class="<%=@prefix%>icon"></div><div class="<%=@prefix%>copy">hide guide</div></button></div>');
+                    utilObject.shelbyDocElements['ext-elements'].append('<div id="<%=@prefix%>guide-overlay-controls"><button class="<%=@prefix%>guide-toggle <%=@prefix%>show"> <div class="<%=@prefix%>icon"></div><div class="<%=@prefix%>copy">hide guide</div></button></div>');
                     shelbyJ(".<%=@prefix%>guide-toggle").on("click", function(event) {
                         event.preventDefault();
                         var button = shelbyJ(this);
-                        if (button.hasClass("show")) {
+                        if (button.hasClass("hide")) {
                             utilObject.styleGuideHide();
                         } else {
                             utilObject.styleGuideShow("<%=@prefix%>frame-guide");
@@ -695,7 +688,7 @@ window.shelbyBookmarklet = {
                     };
                     shelbyJ.ajax({
                         type: 'GET',
-                        url: 'http://<%= Settings::VideoRadar.domain %>/v1/conversation/' + conversationId,
+                        url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/conversation/' + conversationId,
                         dataType: "jsonp",
                         async: true,
                         crossDomain : true,
@@ -714,10 +707,13 @@ window.shelbyBookmarklet = {
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@prefix%>guide-clickoff"></div>')
                     shelbyJ("#" + guideName + "-clickoff").css("right", shelbyGuideWidth + "px").css("height", shelbyJ(window).height() + "px").css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px").on('click', function () {
                         utilObject.styleGuideHide();
-                    });
+                        });
 
                     shelbyJ('#' + guideName + '-window').append('<div id=' + guideName + '-overlay-header class="<%=@prefix%>guide-overlay-header"></div>');
-                    shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@prefix%>guide-overlay-title">' + '<div class="<%=@prefix%>guide-overlay-title-text"> ' + utilObject.allGuides[guideName] + '</div>' + '</div>')
+                    shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@prefix%>guide-overlay-title"><button class="<%=@prefix%>back ' + guideName + '-button"> </button>' + '<div class="<%=@prefix%>guide-overlay-title-text"> ' + utilObject.allGuides[guideName] + '</div>' + '</div>')
+                    shelbyJ(".<%=@prefix%>back").on("click", function(event) {
+                        utilObject.styleGuideHide(guideName);
+                    });
                     if (loggedIn) {
                         shelbyJ('#' + guideName + '-overlay-header').append('<div class="<%=@prefix%>guide-overlay-context">' + '<div class="<%=@prefix%>guide-overlay-context-overview">' + '<div class="<%=@prefix%>guide-overlay-context-creator"> </div>' + '<div class = "<%=@prefix%>guide-overlay-context-title"></div>' + '</div>' + '</div>');
                     }
@@ -794,7 +790,7 @@ window.shelbyBookmarklet = {
                 },
 
                 loginGuideHtml: function () {
-                    shelbyJ('#<%=@prefix%>login-guide-window').append('<a class=" <%=@prefix%>gate-networks-twitter" href="http://<%=Settings::VideoRadar.domain%>/auth/twitter"> Log in with Twitter </a>' + '<a class=" <%=@prefix%>gate-networks-facebook" href="http://<%=Settings::VideoRadar.domain%>/auth/facebook"> Log in with Facebook </a>')
+                    shelbyJ('#<%=@prefix%>login-guide-window').append('<a class=" <%=@prefix%>gate-networks-twitter" href="http://<%=Settings::VideoRadar.api_domain%>/auth/twitter"> Log in with Twitter </a>' + '<a class=" <%=@prefix%>gate-networks-facebook" href="http://<%=Settings::VideoRadar.api_domain%>/auth/facebook"> Log in with Facebook </a>')
                 },
 
 
@@ -824,21 +820,25 @@ window.shelbyBookmarklet = {
                 },
 
                 frameGuideHtml: function() { 
-                                  shelbyJ("#<%=@prefix%>frame-guide-window").html('<div class="<%=@prefix%>content-body"<div class="<%=@prefix%>guide"><ul class="<%=@prefix%>list <%=@prefix%>dashboard"></ul></div></div>');
+                                  shelbyJ("#<%=@prefix%>frame-guide-window").append('<div class="<%=@prefix%>content-body"<div class="<%=@prefix%>guide"><ul class="<%=@prefix%>list <%=@prefix%>dashboard"></ul></div></div>');
                 },
 
-                addFrameToGuide: function(footerHtml, r) {
+                addFrameToGuide: function(footerHtml, r, vidEmbed) {
                       var html = '<li class="<%=@prefix%>frame">' +
                         '<article id="article-"' + r + '" class="<%=@prefix%>video-card">' +
                         '<div class="<%=@prefix%>video-card-header clearfix <%=@prefix%>video-header-' + r + '" data-r=' + r + '></div>';
                       html += '<div id=video-card-' + r + ' class="<%=@prefix%>video-thumbnail" role="img" aria-label></div>';
-                        html +='<ul class="<%=@prefix%>frame-controls clearfix found-video-' + r +'" type="toolbar">';
-                        html += footerHtml;
-                        html += '</ul></article></li>';
-                      console.log(html);
+                      html +='<ul class="<%=@prefix%>frame-controls clearfix found-video-' + r +'" type="toolbar">';
+                      html += footerHtml;
+                      html += '</ul></article></li>';
+                      scrollToFunction = function(vidEmbed) {
+                          shelbyJ.scrollTo({"top": vidEmbed.offset().top - 70, "left": vidEmbed.offset().left}, 300);
+                      }
                       shelbyJ(".<%=@prefix%>dashboard").append(html);
+                      shelbyJ("#video-card-" + r).on('click', function() {
+                          scrollToFunction(vidEmbed);
+                      });
 
-                    
                 },
 
                 frameFooterHtml : function(r) {
@@ -854,17 +854,31 @@ window.shelbyBookmarklet = {
         
             },
             styleGuideShow: function (guideName) {
-                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("hide").addClass("show");
-                shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
-                shelbyJ(".<%=@prefix%>guide-clickoff").removeClass("guide-clickoff-show")
+                if (!shelbyJ("#<%=@prefix%>frame-guide-window").hasClass("guide-show")) {
+                    shelbyJ(".<%=@prefix%>back").html("Cancel");
+                } else {
+                  shelbyJ(".<%=@prefix%>back:not(.<%=@prefix%>frame-guide-button)").html("Back");
+                }
+                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("show").addClass("hide");
+                shelbyJ(".<%=@prefix%>guide-window:not(#frame-guide-window)").removeClass("guide-show");
+                shelbyJ(".<%=@prefix%>guide-clickoff:not(#frame-guide-clickoff):").removeClass("guide-clickoff-show")
                 shelbyJ("#" + guideName + "-window").addClass("guide-show").addClass("guide-animate");
                 shelbyJ("#" + guideName + "-clickoff").addClass("guide-clickoff-show");
             },
 
-            styleGuideHide: function () {
-                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("show").addClass("hide");
-                shelbyJ(".<%=@prefix%>guide-clickoff").removeClass("guide-clickoff-show")
-                shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
+            // style guide hide will never be called on frame guide
+            styleGuideHide: function (guideName) {
+                if (!shelbyJ("#<%=@prefix%>frame-guide-window").hasClass("guide-show")) {
+                    shelbyJ('.<%=@prefix%>guide-toggle').removeClass("hide").addClass("show");
+                }
+                if (guideName === undefined) {
+                    shelbyJ('.<%=@prefix%>guide-toggle').removeClass("hide").addClass("show");
+                    shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
+                    shelbyJ('.<%=@prefix%>guide-clickoff').removeClass("guide-clickoff-show");
+                } else {
+                    shelbyJ('#' + guideName + '-clickoff').removeClass("guide-clickoff-show")
+                    shelbyJ("#" + guideName + "-window").removeClass("guide-show");
+                }
             },
 
 
@@ -872,7 +886,8 @@ window.shelbyBookmarklet = {
                 "<%=@prefix%>roll-guide": "Roll",
                 "<%=@prefix%>comment-guide": "Comments",
                 "<%=@prefix%>share-guide": "Share",
-                "<%=@prefix%>login-guide": "Log In"
+                "<%=@prefix%>login-guide": "Log In",
+                "<%=@prefix%>frame-guide": "Videos on Page"
             },
 
 
@@ -906,13 +921,13 @@ window.shelbyBookmarklet = {
         return utilObject;
     },
 
-    shelbyInit: function (opts, useUrl, urlProvider) {
+shelbyInit: function (opts, useUrl, urlProvider) {
         fullFunc(opts(useUrl, urlProvider));
     },
     shelbyOpts: function (useUrl, urlProvider) {
         return {
             css: ["http://localhost:3000/stylesheets/radar.css"],
-            js: [],
+            js: ["http://<%= Settings::VideoRadar.web_domain%>/javascripts/jquery-plugins/jquery.scrollTo.js"],
             jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
 

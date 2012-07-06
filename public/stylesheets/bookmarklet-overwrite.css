@@ -13,7 +13,7 @@ Syntax error: Undefined mixin 'transition-property'.
 105:     @include transition-timing-function(ease-in-out);
 106:     @include transition-delay(0s);
 107:   }
-108: }
+108:     
 
 Backtrace:
 /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:103:in `transition-property'
@@ -74,7 +74,7 @@ Backtrace:
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4574926503756376609__call__2980931160868440700__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__3516424050155727949__call__2613232422538688269__callbacks'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
@@ -104,4 +104,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index: 2147483646; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108: }"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index: 2147483646; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108:     "; }

@@ -1,5 +1,6 @@
 defaults: &defaults
-  domain: 'api.gt.shelby.tv'
+  api_domain: 'api.gt.shelby.tv'
+  web_domain: 'gt.shelby.tv'
 
 development:
   <<: *defaults
