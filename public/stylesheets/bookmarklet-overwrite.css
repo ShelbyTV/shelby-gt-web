@@ -3,7 +3,7 @@ Syntax error: Undefined mixin 'transition-property'.
         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'
         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss
 
-98:   z-index:99999; 
+98:   z-index: 2147483646; 
 99:   &.guide-show {
 100:     margin-right: 0;
 101:   }
@@ -104,4 +104,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index:99999; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108: }"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index: 2147483646; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108: }"; }

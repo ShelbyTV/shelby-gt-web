@@ -101,6 +101,125 @@
 .ext-elements textarea, .ext-elements button, .ext-elements input {
   font-size: 12px !important;
 }
+/* line 3, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements h1, .ext-elements h2, .ext-elements h3, .ext-elements h4, .ext-elements h5, .ext-elements h6 {
+  font-weight: 500;
+  line-height: 1.231;
+  margin: 0;
+}
+/* line 9, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements html, .ext-elements body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+/* line 17, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements body {
+  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  background-color: #000;
+  bottom: 0;
+  color: #dcddde;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 30, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements a {
+  color: #a4a4a4;
+}
+/* line 35, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements a:hover, .ext-elements a:visited, .ext-elements a:active {
+  color: #a4a4a4;
+}
+/* line 41, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .wrapper {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 49, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .lining {
+  float: left;
+  margin-right: -330px;
+  height: 100%;
+  width: 100%;
+}
+/* line 58, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .main,
+.ext-elements .content {
+  float: right;
+  width: 330px;
+}
+/* line 63, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .main {
+  background: #232526;
+  font-size: 1.2em;
+  height: 100%;
+  line-height: 1.4;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  -moz-transition-property: opacity, margin-right;
+  -webkit-transition-property: opacity, margin-right;
+  -o-transition-property: opacity, margin-right;
+  transition-property: opacity, margin-right;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 80, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .main.hide-guide {
+  margin-right: -330px;
+}
+/* line 84, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .user-inactive .main {
+  opacity: .5;
+}
+/* line 88, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .content-body {
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 88px;
+  width: 100%;
+  z-index: -1;
+}
+/* line 98, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .touch .content-body {
+  overflow: hidden;
+}
+/* line 102, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .menu {
+  background-color: #35383a;
+  border-bottom: 1px solid #222;
+  box-shadow: 0 1px 4px 0px #101010;
+  position: relative;
+  overflow: hidden;
+}
+/* line 110, ../../app/stylesheets/partials/app.html.scss */
+.ext-elements .spinner {
+  left: 50%;
+  margin-left: -24px;
+  margin-top: 100px;
+  position: absolute;
+  z-index: 0;
+}
 /* line 3, ../../app/stylesheets/partials/gate.scss */
 .ext-elements .no-access {
   margin-top: 30px;
@@ -2957,7 +3076,7 @@
   display: none;
   position: fixed;
   top: 0px;
-  z-index: 89999;
+  z-index: 2147483647;
 }
 /* line 82, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-clickoff.guide-clickoff-show {
@@ -2975,7 +3094,7 @@
   right: 0px;
   top: 0px;
   width: 330px;
-  z-index: 99999;
+  z-index: 2147483646;
 }
 /* line 99, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-window.guide-show {
@@ -3002,40 +3121,43 @@
 }
 /* line 110, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .video-card-header {
+  height: 45px;
+}
+/* line 114, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements .embedded-header {
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
-  height: 45px;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  z-index: 89999;
+  z-index: 2147483645;
 }
-/* line 121, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 124, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-exists .frame-logo:before {
   content: "Seen on";
   display: block;
   float: left;
 }
-/* line 128, ../../app/stylesheets/bookmarklet-overwrite.scss */
-.ext-elements .frame-controls {
+/* line 131, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements .embedded-footer {
   background-color: #35383A;
   border-radius: 0 0 5px 5px;
   font-size: 13px;
   position: absolute;
-  z-index: 89999;
+  z-index: 2147483645;
 }
-/* line 136, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 139, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .frame-title {
   width: 50%;
 }
-/* line 140, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 143, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .guide-overlay-title {
   background-image: url("../../images/assets/mark.png");
   background-position: 15px 50%;
   background-repeat: no-repeat;
   background-size: 38px;
 }
-/* line 148, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 151, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-twitter,
 .ext-elements .gate-networks-facebook {
   border-radius: 3px;
@@ -3046,7 +3168,7 @@
   margin: 20px;
   text-shadow: none;
 }
-/* line 159, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 162, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-twitter {
   background-color: #00a2d1;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
@@ -3060,7 +3182,7 @@
   border: 1px solid #00536b;
   background-size: 11%;
 }
-/* line 166, ../../app/stylesheets/bookmarklet-overwrite.scss */
+/* line 169, ../../app/stylesheets/bookmarklet-overwrite.scss */
 .ext-elements .gate-networks-facebook {
   background-color: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -3073,6 +3195,11 @@
   box-shadow: inset 0px 1px 0px 0px #026fe5;
   border: 1px solid #013267;
   background-size: 4%;
+}
+/* line 176, ../../app/stylesheets/bookmarklet-overwrite.scss */
+.ext-elements #guide-overlay-controls {
+  z-index: 2147483647;
+  position: fixed;
 }
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .ext-elements .ir {

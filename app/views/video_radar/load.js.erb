@@ -1,8 +1,59 @@
 window.shelbyBookmarklet = {
-    shelbyRadar: function (shelbyJ) {
+
+    shelbyProviders: [{
+        "provider": "blip",
+        "domain": "blip.tv",
+        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"]
+    }, {
+        "provider": "brightcove",
+        "domain": "brightcove.com",
+        "regex": ["brightcove.com\\\/services\\\/viewer"]
+    }, {
+        "provider": "collegehumor",
+        "domain": "collegehumor.com",
+        "regex": ["videoid([0-9]+)", "clip_id=([0-9]+)"],
+        "url_regex" : "([0-9]+)"
+    }, {
+        "provider": "dailymotion",
+        "domain": "dailymotion.com",
+        "regex": ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"]
+    },
+    /*{ "domain": "hulu.com", "regex": ["http:\\\/\\\/player\\.hulu\\.com\\\/express\\\/.*?"] },*/ {
+        "provider": "hulu",
+        "domain": "hulu.com",
+        "regex": ["\/site-player\/(\\d*)\/player"]
+    }, {
+        "provider": "pbs",
+        "domain": "video.pbs.org",
+        "regex": ["width=512&height=288&video=.*?\\\/([0-9]+)"]
+    }, {
+        "provider": "techcrunch",
+        "domain": "techcrunch.tv",
+        "regex": ["embedCode=(\\w*)"]
+    }, {
+        "provider": "ted",
+        "domain": "ted.com",
+        "regex": ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
+    }, {
+        "provider": "vimeo",
+        "domain": "vimeo.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
+        "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)"]
+    }, {
+        "provider": "youtube",
+        "domain": "youtube.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
+        "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
+    }, {
+        "provider": "bloomberg",
+        "domain": "bloomberg.com",
+        "regex": ["embedCode=(\\w*)"]
+    }],
+
+    shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
         var radar = {
 
-            getElementValue: function (obj, id, shelbyJ) {
+            getElementValue: function (obj, id) {
                 var value = '';
                 for (var i = 0; i < obj.attributes.length; i++) {
                     if (obj.attributes[i].nodeName === id) {
@@ -22,54 +73,6 @@ window.shelbyBookmarklet = {
             },
 
 
-            knownProviders: [{
-                "provider": "blip",
-                "domain": "blip.tv",
-                "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"]
-            }, {
-                "provider": "brightcove",
-                "domain": "brightcove.com",
-                "regex": ["brightcove.com\\\/services\\\/viewer"]
-            }, {
-                "provider": "collegehumor",
-                "domain": "collegehumor.com",
-                "regex": ["videoid([0-9]+)", "clip_id=([0-9]+)"]
-            }, {
-                "provider": "dailymotion",
-                "domain": "dailymotion.com",
-                "regex": ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"]
-            },
-            /*{ "domain": "hulu.com", "regex": ["http:\\\/\\\/player\\.hulu\\.com\\\/express\\\/.*?"] },*/ {
-                "provider": "hulu",
-                "domain": "hulu.com",
-                "regex": ["\/site-player\/(\\d*)\/player"]
-            }, {
-                "provider": "pbs",
-                "domain": "video.pbs.org",
-                "regex": ["width=512&height=288&video=.*?\\\/([0-9]+)"]
-            }, {
-                "provider": "techcrunch",
-                "domain": "techcrunch.tv",
-                "regex": ["embedCode=(\\w*)"]
-            }, {
-                "provider": "ted",
-                "domain": "ted.com",
-                "regex": ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
-            }, {
-                "provider": "vimeo",
-                "domain": "vimeo.com",
-                "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
-                "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)"]
-            }, {
-                "provider": "youtube",
-                "domain": "youtube.com",
-                "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
-                "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
-            }, {
-                "provider": "bloomberg",
-                "domain": "bloomberg.com",
-                "regex": ["embedCode=(\\w*)"]
-            }],
 
             composeKnownUrl: function (domain, video_id) {
                 var known_url = "";
@@ -87,7 +90,11 @@ window.shelbyBookmarklet = {
                     known_url = "http://techcrunch.tv/watch?id=" + video_id;
                     break;
                 case 'collegehumor.com':
-                    known_url = "http://collegehumor.com/video/" + video_id;
+                    if (useUrl) {
+                        known_url = document.location.href;
+                    } else {
+                        known_url = "http://collegehumor.com/video/" + video_id;
+                    }
                     break;
                 case 'hulu.com':
                     //HACK (For now).
@@ -126,19 +133,22 @@ window.shelbyBookmarklet = {
                     } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<ooyala/i.test(possibleVideos.objects[i].innerHTML))) found_elements.push(possibleVideos.objects[i]);
                 }
                 for (var i = 0; i < found_elements.length; i++) {
-                    if (this.getElementValue(found_elements[i], 'data-youtube-id', shelbyJ)) {
+                    if (this.getElementValue(found_elements[i], 'data-youtube-id')) {
                         var obj = shelbyJ(found_elements[i]);
                         videos_to_add.push({
                             embed: obj,
                             domain: "youtube.com",
-                            video_id: this.getElementValue(found_elements[i], 'data-youtube-id', shelbyJ)
+                            video_id: this.getElementValue(found_elements[i], 'data-youtube-id')
                         });
                     } else {
-                        var str = this.getElementValue(found_elements[i], 'flashvars', shelbyJ) + '&amp;' + this.getElementValue(found_elements[i], 'src', shelbyJ) + this.getElementValue(found_elements[i], 'data', shelbyJ) + this.getElementValue(found_elements[i], 'name', shelbyJ) + found_elements[i].innerHTML + found_elements[i].id;
-                        for (var j = 0; j < this.knownProviders.length; j++) {
-                            for (var k = 0; k < this.knownProviders[j].regex.length; k++) {
-                                var reg = new RegExp(this.knownProviders[j].regex[k]);
-                                var domain_split = this.knownProviders[j].domain.split(',');
+                        var str = this.getElementValue(found_elements[i], 'flashvars') + '&amp;' + this.getElementValue(found_elements[i], 'src') + this.getElementValue(found_elements[i], 'data') + this.getElementValue(found_elements[i], 'name') + found_elements[i].innerHTML + found_elements[i].id;
+                        for (var j = 0; j < shelbyBookmarklet.shelbyProviders.length; j++) {
+                            if (useUrl && shelbyBookmarklet.shelbyProviders[j].provider !== urlProvider) { 
+                                continue;
+                            }
+                            for (var k = 0; k < shelbyBookmarklet.shelbyProviders[j].regex.length; k++) {
+                                var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
+                                var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
                                 var valid_domain = false;
                                 for (var l = 0; l < domain_split.length; l++) {
                                     var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
@@ -160,12 +170,18 @@ window.shelbyBookmarklet = {
                                             match[2] = match[1];
                                         }
                                     }
+                                    var provider = shelbyBookmarklet.shelbyProviders[j].provider;
+                                    var video_id = match[2];
+                                    if (useUrl) {
+                                      var match = new RegExp(shelbyBookmarklet.shelbyProviders[j].url_regex).exec(window.location.href);
+                                      video_id = match[1];
+                                    }
                                     videos_to_add.push({
                                         embed: obj,
-                                        domain: this.knownProviders[j].domain,
-                                        video_id: match[2],
-                                        provider: this.knownProviders[j].provider,
-                                        known_url: this.composeKnownUrl(this.knownProviders[j].domain, match[2])
+                                        domain: shelbyBookmarklet.shelbyProviders[j].domain,
+                                        video_id: video_id,
+                                        provider: provider,
+                                        known_url: this.composeKnownUrl(shelbyBookmarklet.shelbyProviders[j].domain, match[2])
                                     });
                                     break;
                                 }
@@ -194,7 +210,7 @@ window.shelbyBookmarklet = {
                         utilObject.styleGuideShow("<%=@prefix%>login-guide");
                         utilObject.htmlTemplate.loginGuideHtml();
                     } else {
-                        utilObject.shelbyUserUtil.getUser(shelbyJ);
+                        utilObject.shelbyUserUtil.getUser();
                     }
                 },
                 shelbyUserCallback: function (response) {
@@ -214,12 +230,12 @@ window.shelbyBookmarklet = {
                         success: function (response) {
                             rolls = response.result;
                             utilObject.htmlTemplate.rollGuideHtml(rolls);
-                            utilObject.sendVidsToShelby(utilObject.foundVideo, shelbyJ);
+                            utilObject.sendVidsToShelby(utilObject.foundVideo, true);
                         }
                     });
 
                 },
-                signedIn: function (shelbyJ) {
+                signedIn: function () {
                     shelbyJ.ajax({
                         type: 'GET',
                         url: 'http://<%= Settings::VideoRadar.domain %>/v1/signed_in',
@@ -231,7 +247,7 @@ window.shelbyBookmarklet = {
                         success: utilObject.shelbyUserUtil.shelbySignedInCallback
                     });
                 },
-                getUser: function (shelbyJ) {
+                getUser: function () {
                     shelbyJ.ajax({
                         type: 'GET',
                         url: 'http://<%= Settings::VideoRadar.domain %>/v1/user',
@@ -266,16 +282,15 @@ window.shelbyBookmarklet = {
                 var vid = vids[vidIndex];
                 var height = utilObject.getHeight(vid.embed);
                 var width = utilObject.getWidth(vid.embed);
-                shelbyJ('.<%=@prefix%>found-video-' + r).css("left", vid.embed.offset().left).css("width", width).css("top", utilObject.getFooterVpos(height, vid.embed.offset().top));
-                shelbyJ('#<%=@prefix%>frame-info-' + r).css("left", vid.embed.offset().left).css("width", width).css("top", utilObject.getHeaderVpos(height, vid.embed.offset().top, header));
+                shelbyJ('#<%=@prefix%>control-on-page-' + r).css("left", vid.embed.offset().left).css("width", width).css("top", utilObject.getFooterVpos(height, vid.embed.offset().top));
+                shelbyJ('#<%=@prefix%>header-on-page-' + r).css("left", vid.embed.offset().left).css("width", width).css("top", utilObject.getHeaderVpos(height, vid.embed.offset().top, header));
             },
+
             resizeArray: [],
 
 
 
-
-
-            sendVidsToShelby: function (vids, shelbyJ) {
+            sendVidsToShelby: function (vids, embedButtons) {
                 var self = this;
                 if (vids.length > 0) {
                     for (var i = 0; i < vids.length; i++) {
@@ -285,77 +300,83 @@ window.shelbyBookmarklet = {
                             var width = utilObject.getWidth(vids[i].embed);
                             var vpos = vids[i].embed.offset().top;
                             var hpos = vids[i].embed.offset().left;
+                            var frameInfoClass = "<%=@prefix%>video-header-" + r;
 
-                            // put buttons here, we have hpos, vpos, fixed positions
+                            // put buttons/headers here, we have hpos, vpos, fixed positions
 
-                            utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%>video-card-header clearfix" id="<%=@prefix%>frame-info-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
+                            var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
+                            utilObject.htmlTemplate.addFrameToGuide(footerHtml, r);
+                            if (embedButtons) {
+                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
 
-                            header = shelbyJ("#<%=@prefix%>frame-info-" + r)
-                            header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
+                                header = shelbyJ("#<%=@prefix%>header-on-page-" + r)
+                                header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
 
-                            utilObject.shelbyDocElements['ext-elements'].append('<ul class="<%=@prefix%>frame-controls clearfix ' + ' <%=@prefix%>found-video-' + r + '" type="toolbar"> </ul>');
-
-
-                            shelbyJ('.<%=@prefix%>found-video-' + r).html('<li class="<%=@prefix%>frame-controls-like toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-like ' + r + '-img <%=@prefix%>button-' + r + '"data-to=tw data-r=' + r + ' type="button">' + '<i class="js-upvote-frame-lining" id=<%=@prefix%>like-text-' + r + '> &nbsp; </i>' + '</button>' + '</li>' +
-
-                            '<li class="<%=@prefix%>frame-controls-comments toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-comment ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + '<i class="comments-frame-lining" id=<%=@prefix%>comment-text-' + r + '> &nbsp; </i>' + '</button>' + '</li>' +
-
-                            '<li class="<%=@prefix%>frame-controls-roll toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-roll ir ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + ' Roll it ' + '</button>' + '</li>' +
-
-                            '<li class="<%=@prefix%>frame-controls-share toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-share ir ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + 'Share it ' + '</button>' + '</li>').css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
-                            var frameInfoId = shelbyJ("#<%=@prefix%>frame-info-" + r).attr("id");
-                            shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameid", frameInfoId).attr("data-videourl", vids[i].known_url);
-                            var resizeFunction = function(vidIndex, r) {
-                                return function () {
-                                    utilObject.resizeFunction(vids, vidIndex, r);
-                                }
-                            }(i, r);
-                            shelbyJ("body").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function (event) {
-                                resizeFunction();
-                          });
-                            utilObject.resizeArray.push(resizeFunction);
-
+                                utilObject.shelbyDocElements['ext-elements'].append('<ul id="<%=@prefix%>control-on-page-' + r + '" class="<%=@prefix%>embedded-footer <%=@prefix%>frame-controls clearfix ' + ' <%=@prefix%>found-video-' + r + '" type="toolbar"> </ul>');
+                                
+                                var vidFooter = shelbyJ('#<%=@prefix%>control-on-page-' + r);
+                                vidFooter.html(footerHtml);
+                                vidFooter.css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
+                                shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
+                                var resizeFunction = function(vidIndex, r) {
+                                    return function () {
+                                        utilObject.resizeFunction(vids, vidIndex, r);
+                                    }
+                                }(i, r);
+                                shelbyJ("body").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function (event) {
+                                    resizeFunction();
+                                });
+                                utilObject.resizeArray.push(resizeFunction);
+                            }
                             var dataReq = {
                                 'provider_name': vids[i].provider,
                                 'provider_id': vids[i].video_id,
                                 'url': vids[i].known_url
                             };
-
-                            var guideHeader = function (imgClassName, i) {
-                                    shelbyJ.ajax({
-                                        type: "GET",
-                                        url: "http://<%= Settings::VideoRadar.domain %>/v1/video/find_or_create",
-                                        dataType: "jsonp",
-                                        data: dataReq,
-                                        async: true,
-                                        success: function (response) {
-                                            shelbyJ("." + imgClassName).on('click', function () {
-                                                shelbyJ('.<%=@prefix%>guide-overlay-context-title').html(response.result.title);
-                                                shelbyJ('.<%=@prefix%>guide-overlay-context').css("background-image", "url('" + response.result.thumbnail_url + "')");
-                                            });
-                                        }
-                                    });
-                                };
-
-                            guideHeader(r + "-img", i);
-
-                            var setDashboardFrame = function (frameInfoId) {
+                            
+                            var setDashboardFrame = function (frameInfoClass) {
                                     shelbyJ.ajax({
                                         type: "GET",
                                         url: "http://<%= Settings::VideoRadar.domain %>/v1/dashboard/find_entries_with_video",
                                         dataType: "jsonp",
                                         data: dataReq,
+                                        crossDomain:true,
                                         async: true,
                                         xhrFields: {
                                             withCredentials: true
                                         },
                                         success: function (response) {
                                             var frames = response.result;
-                                            utilObject.htmlTemplate.adjustFrameHeader(frames[0], frameInfoId, true);
+                                            utilObject.htmlTemplate.adjustFrameHeader(frames[0], frameInfoClass, true);
+                                        }
+                                  });
+                            };
+                         
+                            var setGuideHeader = function (r, i) {
+                                  var imgClassName = r + "-img";
+                                    shelbyJ.ajax({
+                                        type: "GET",
+                                        url: "http://<%= Settings::VideoRadar.domain %>/v1/video/find_or_create",
+                                        dataType: "jsonp",
+                                        data: dataReq,
+                                        async: true,
+                                        xhrFields: {
+                                            withCredentials: true
+                                        },
+                                        crossDomain : true,
+                                        success: function (response) {
+                                            var imageUrl =  "url('" + response.result.thumbnail_url + "')";
+
+                                            shelbyJ('#video-card-' + r).css("background-image", imageUrl);
+                                            shelbyJ("." + imgClassName).on('click', function () {
+                                                shelbyJ('.<%=@prefix%>guide-overlay-context-title').html(response.result.title);
+                                                shelbyJ('.<%=@prefix%>guide-overlay-context').css("background-image", imageUrl);
+                                            });
                                         }
                                     });
-                                }
-                            setDashboardFrame(frameInfoId);
+                            };
+                            setGuideHeader(r, i);
+                            setDashboardFrame(frameInfoClass);
                         }
                     }
                    utilObject.shelbyHeaderButton.clickRoll();
@@ -372,15 +393,15 @@ window.shelbyBookmarklet = {
                         var rollButton = event.currentTarget;
                         utilObject.shelbyDocElements['rollsList'].off('click', ".<%=@prefix%>roll-selection-item");
                         utilObject.shelbyDocElements['rollsList'].on('click', ".<%=@prefix%>roll-selection-item", {
-                            'frameid': rollButton.getAttribute("data-frameid"),
+                            'frameclass': rollButton.getAttribute("data-frameclass"),
                             'videourl': rollButton.getAttribute("data-videourl")
                         }, function (event) {
                             var rollItem = event.currentTarget;
                             var frameMaker = function (response) {
-                                    utilObject.htmlTemplate.adjustFrameHeader(response.result, event.data["frameid"], false);
+                                    utilObject.htmlTemplate.adjustFrameHeader(response.result, event.data["frameclass"], false);
                                     alert("successfully rolled video");
                                 };
-                            utilObject.shelbyAjaxCall.shelbyApiRoll(event.data["videourl"], rollItem.getAttribute("data-rollid"), shelbyJ, frameMaker);
+                            utilObject.shelbyAjaxCall.shelbyApiRoll(event.data["videourl"], rollItem.getAttribute("data-rollid"), frameMaker);
                         })
                     });
                 },
@@ -389,15 +410,15 @@ window.shelbyBookmarklet = {
                         utilObject.styleGuideShow("<%=@prefix%>share-guide");
                         var shareButton = event.currentTarget;
 
-                        var shelbyFrameId = shelbyJ("#" + shareButton.getAttribute("data-frameid")).data("shelbyframeid");
+                        var shelbyFrameId = shelbyJ("." + shareButton.getAttribute("data-frameclass")).attr("data-shelbyframeid");
                         var shelbyShareSubmit = utilObject.shelbyDocElements['shareSubmit'];
                         if (shelbyFrameId === undefined) {
                             var shelbySubmit = function (response) {
-                                    utilObject.htmlTemplate.adjustFrameHeader(response.result, shareButton.getAttribute('data-frameid'), false);
+                                    utilObject.htmlTemplate.adjustFrameHeader(response.result, shareButton.getAttribute('data-frameclass'), false);
                                     utilObject.shelbyAjaxCall.shelbyApiShare(response.result.id);
                                 }
                             shelbyShareSubmit.on('click', function () {
-                                utilObject.shelbyAjaxCall.shelbyApiRoll(shareButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbyJ, shelbySubmit);
+                                utilObject.shelbyAjaxCall.shelbyApiRoll(shareButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbySubmit);
                             });
                         } else {
                             shelbyShareSubmit.on('click', function () {
@@ -409,10 +430,11 @@ window.shelbyBookmarklet = {
                 clickComment : function() {
                     utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-comment", null, function (event) {
                         var commentButton = event.currentTarget;
-                        var commentTextId = "<%=@prefix%>comment-text-" + commentButton.getAttribute("data-r");
-                        var conversationId = shelbyJ("#" + commentButton.getAttribute("data-frameid")).data("conversationid");
+                        var commentTextClass = "<%=@prefix%>comment-text-" + commentButton.getAttribute("data-r");
+                        var frameHeader = shelbyJ("#header-on-page-3678658").last();
+                        var conversationId = frameHeader.attr("data-conversationid");
                         if (conversationId !== undefined) {
-                            utilObject.htmlTemplate.setUpConversationWithId(conversationId, commentTextId);
+                            utilObject.htmlTemplate.setUpConversationWithId(conversationId, commentTextClass);
                         }
                         utilObject.styleGuideShow("<%=@prefix%>comment-guide");
                         utilObject.shelbyDocElements['commentSubmit'].off('click');
@@ -426,19 +448,19 @@ window.shelbyBookmarklet = {
                             var dataReq = {
                                 'text': comment
                             };
-
                             utilObject.shelbyDocElements['commentText'].val('');
                             if (conversationId === undefined) {
-                                var undefinedCommentCallback = function (frameInfoId) {
-                                        return function (response) {
-                                            utilObject.htmlTemplate.adjustFrameHeader(response.result, frameInfoId, false);
-                                            var conversationId = shelbyJ("#" + commentButton.getAttribute("data-frameid")).data("conversationid");
-                                            utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextId);
-                                        }
+                                var undefinedCommentCallback = function (frameInfoClass) {
+                                    return function (response) {
+                                      utilObject.htmlTemplate.adjustFrameHeader(response.result, frameInfoClass, false, true);
+                                      var frame = shelbyJ("." + commentButton.getAttribute("data-frameclass"));
+                                      var conversationId = frame.attr("data-conversationid");
+                                        utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextClass);
                                     }
-                                utilObject.shelbyAjaxCall.shelbyApiRoll(commentButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbyJ, undefinedCommentCallback(commentButton.getAttribute("data-frameid")));
+                                }
+                                utilObject.shelbyAjaxCall.shelbyApiRoll(commentButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, undefinedCommentCallback(commentButton.getAttribute("data-frameclass")));
                             } else {
-                                utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextId);
+                                utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextClass);
                             }
 
                         });
@@ -447,18 +469,18 @@ window.shelbyBookmarklet = {
                 clickLike : function() {
                     utilObject.shelbyDocElements['ext-elements'].on('click', '.<%=@prefix%>all-like', null, function (event) {
                         var likeButton = event.currentTarget;
-                        var likeTextId = "<%=@prefix%>like-text-" + likeButton.getAttribute("data-r");
-                        var shelbyFrameId = shelbyJ("#" + likeButton.getAttribute("data-frameid")).data("shelbyframeid");
+                        var likeTextClass = "<%=@prefix%>like-text-" + likeButton.getAttribute("data-r");
+                        var shelbyFrameId = shelbyJ("." + likeButton.getAttribute("data-frameclass")).data("shelbyframeid");
                         if (shelbyFrameId === undefined) {
-                            var undefinedLikeCallback = function (frameInfoId) {
+                            var undefinedLikeCallback = function (frameInfoClass) {
                                     return function (response) {
-                                        utilObject.htmlTemplate.adjustFrameHeader(response.result, frameInfoId, false);
-                                        utilObject.shelbyAjaxCall.shelbyApiLike(response.result.id, shelbyJ(likeButton), likeTextId);
+                                        utilObject.htmlTemplate.adjustFrameHeader(response.result, frameInfoClass, false, true);
+                                        utilObject.shelbyAjaxCall.shelbyApiLike(response.result.id, shelbyJ(likeButton), likeTextClass);
                                     }
                                 }
-                            utilObject.shelbyAjaxCall.shelbyApiRoll(likeButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbyJ, undefinedLikeCallback(likeButton.getAttribute("data-frameid")))
+                            utilObject.shelbyAjaxCall.shelbyApiRoll(likeButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, undefinedLikeCallback(likeButton.getAttribute("data-frameclass")))
                         } else {
-                            utilObject.shelbyAjaxCall.shelbyApiLike(shelbyFrameId, shelbyJ(likeButton), likeTextId);
+                            utilObject.shelbyAjaxCall.shelbyApiLike(shelbyFrameId, shelbyJ(likeButton), likeTextClass);
                         }
                     });  
                 }
@@ -504,7 +526,7 @@ window.shelbyBookmarklet = {
                     });
                 },
 
-                shelbyApiComment: function (conversationId, dataReq, conversationTextId) {
+                shelbyApiComment: function (conversationId, dataReq, conversationTextClass) {
                     shelbyJ.ajax({
                         type: "GET",
                         dataType: "jsonp",
@@ -516,7 +538,7 @@ window.shelbyBookmarklet = {
                         },
                         async: true,
                         success: function (response) {
-                            utilObject.htmlTemplate.setUpConversationWithId(conversationId, conversationTextId)
+                            utilObject.htmlTemplate.setUpConversationWithId(conversationId, conversationTextClass)
                         },
                         error: function () {
                             alert("Unable to comment");
@@ -536,7 +558,7 @@ window.shelbyBookmarklet = {
                         url: "http://<%= Settings::VideoRadar.domain %>/v1/POST/frame/" + shelbyFrameId + "/upvote",
                         success: function (response) {
                             shelbyLikeImg.parent().addClass("upvoted");
-                            shelbyJ("#" + heartTextId).html(response.result.upvoters.length);
+                            shelbyJ("." + heartTextId).html(response.result.upvoters.length);
                         },
                         error: function () {
                             alert("failure to like");
@@ -547,7 +569,7 @@ window.shelbyBookmarklet = {
                 },
 
 
-                shelbyApiRoll: function (vid_url, roll_id, shelbyJ, callback) {
+                shelbyApiRoll: function (vid_url, roll_id, callback) {
                     reqData = {
                         'url': vid_url,
                     };
@@ -557,6 +579,7 @@ window.shelbyBookmarklet = {
                         url: 'http://<%= Settings::VideoRadar.domain %>/v1/POST/roll/' + roll_id + '/frames',
                         dataType: "jsonp",
                         async: true,
+                        crossDomain: true,
                         timeout: 1000,
                         data: reqData,
                         xhrFields: {
@@ -633,12 +656,26 @@ window.shelbyBookmarklet = {
                   }
             },
             htmlTemplate : {
+                setUpToggle : function() {
+                    utilObject.shelbyDocElements['ext-elements'].append('<div id="<%=@prefix%>guide-overlay-controls"><button class="<%=@prefix%>guide-toggle <%=@prefix%>hide"> <div class="<%=@prefix%>icon"></div><div class="<%=@prefix%>copy">hide guide</div></button></div>');
+                    shelbyJ(".<%=@prefix%>guide-toggle").on("click", function(event) {
+                        event.preventDefault();
+                        var button = shelbyJ(this);
+                        if (button.hasClass("show")) {
+                            utilObject.styleGuideHide();
+                        } else {
+                            utilObject.styleGuideShow("<%=@prefix%>frame-guide");
+                        }
+                      });
+
+                          
+              },
                 messageHtml: function (message) {
                     var stringbuilder = '<div class="<%=@prefix%>frame-conversation-message-avatar">' + '<img src="' + message.user_image_url + '" alt="" title="">' + '</div>' + '<div class="<%=@prefix%>frame-conversation-message-user">' + '<span class="<%=@prefix%>frame-conversation-message-user-name">' + message.realname + '</span>' + '<div class="<%=@prefix%>frame-conversation-message-block">' + message.text + '</div>' + '<span class="<%=@prefix%>frame-conversation-message-timestamp"> Posted ' + (message.origin_network !== undefined && message.origin_network !== null ? 'on ' + message.origin_network : '') + ' ' + message.created_at + '</span>' + '</div>';
                     return stringbuilder;
                 },
 
-                setUpConversation: function (messages, commentTextId) {
+                setUpConversation: function (messages, commentTextClass) {
                     var stringbuilder = "";
                     if (!messages) {
                         return;
@@ -648,13 +685,13 @@ window.shelbyBookmarklet = {
                         stringbuilder += '<li class="<%=@prefix%>frame-conversation-message clearfix">' + utilObject.htmlTemplate.messageHtml(message) + '</li>';
                     }
                     shelbyJ(".<%=@prefix%>conversation").html(stringbuilder);
-                    shelbyJ("#" + commentTextId).html(messages.length);
+                    shelbyJ("." + commentTextClass).html(messages.length);
                 },
 
 
-                setUpConversationWithId: function (conversationId, commentTextId) {
+                setUpConversationWithId: function (conversationId, commentTextClass) {
                     var setHtml = function (response) {
-                        utilObject.htmlTemplate.setUpConversation(response.result.messages, commentTextId);
+                        utilObject.htmlTemplate.setUpConversation(response.result.messages, commentTextClass);
                     };
                     shelbyJ.ajax({
                         type: 'GET',
@@ -676,7 +713,7 @@ window.shelbyBookmarklet = {
                     // set up clickoff
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@prefix%>guide-clickoff"></div>')
                     shelbyJ("#" + guideName + "-clickoff").css("right", shelbyGuideWidth + "px").css("height", shelbyJ(window).height() + "px").css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px").on('click', function () {
-                        utilObject.styleGuideHide(guideName);
+                        utilObject.styleGuideHide();
                     });
 
                     shelbyJ('#' + guideName + '-window').append('<div id=' + guideName + '-overlay-header class="<%=@prefix%>guide-overlay-header"></div>');
@@ -686,24 +723,33 @@ window.shelbyBookmarklet = {
                     }
                 },
 
-                adjustFrameHeader: function (frame, shelbyFrameId, shouldOverwrite) {
-                    if (!shouldOverwrite && shelbyJ("#" + shelbyFrameId).data("shelbyframeid") !== undefined) {
+                adjustFrameHeader: function (frame, shelbyFrameClass, shouldOverwrite) {
+
+                    if (!shouldOverwrite && shelbyJ("." + shelbyFrameClass).data("shelbyframeid") !== undefined) {
                         return;
                     }
 
                     if (!frame || !frame.conversation) {
-                        return
-                    };
-
-                    var frameHeader = shelbyJ("#" + shelbyFrameId);
-                    frameHeader.addClass("frame-exists");
-
-                    var r = frameHeader.data("r")
-                    frameHeader.prepend('<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>' + '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>').data("conversationid", frame.conversation.id).data("shelbyframeid", frame.id);
-
-                    shelbyJ("#like-text-" + r).html(frame.upvoters.length);
-                    shelbyJ("#comment-text-" + r).html(frame.conversation.messages.length);
-
+                        return;
+                    }
+                    var frameHeaders = shelbyJ("." + shelbyFrameClass);
+                    for (var i = 0; i < frameHeaders.length; i++) {
+                        var frameHeader = shelbyJ(frameHeaders[i]);
+                        var displayLogo = frameHeader.hasClass("embedded-header");
+                        frameHeader.addClass("frame-exists");
+                        var r = frameHeader.attr("data-r")
+                        var html = '<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>' + '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>';
+                        if (displayLogo) {
+                            html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
+                        }
+                        frameHeader.html(html);
+                        frameHeader.attr("data-conversationid", frame.conversation_id);
+                        frameHeader.attr("data-shelbyframeid", frame.id);
+                        shelbyJ(".like-text-" + r).html(frame.upvoters.length);
+                      if (frame.conversation.messages) {
+                        shelbyJ(".comment-text-" + r).html(frame.conversation.messages.length);
+                      }
+                    }
                 },
 
                 commentGuideHtml: function () {
@@ -775,17 +821,48 @@ window.shelbyBookmarklet = {
                     utilObject.shelbyDocElements['shareNetworks'].push(shelbyJ(".<%=@prefix%>networks-twitter"));
                     utilObject.shelbyDocElements['shareNetworks'].push(shelbyJ(".<%=@prefix%>networks-facebook"));
                     utilObject.shelbyDocElements['shareText'] = shelbyJ(".<%=@prefix%>share-textarea");
+                },
+
+                frameGuideHtml: function() { 
+                                  shelbyJ("#<%=@prefix%>frame-guide-window").html('<div class="<%=@prefix%>content-body"<div class="<%=@prefix%>guide"><ul class="<%=@prefix%>list <%=@prefix%>dashboard"></ul></div></div>');
+                },
+
+                addFrameToGuide: function(footerHtml, r) {
+                      var html = '<li class="<%=@prefix%>frame">' +
+                        '<article id="article-"' + r + '" class="<%=@prefix%>video-card">' +
+                        '<div class="<%=@prefix%>video-card-header clearfix <%=@prefix%>video-header-' + r + '" data-r=' + r + '></div>';
+                      html += '<div id=video-card-' + r + ' class="<%=@prefix%>video-thumbnail" role="img" aria-label></div>';
+                        html +='<ul class="<%=@prefix%>frame-controls clearfix found-video-' + r +'" type="toolbar">';
+                        html += footerHtml;
+                        html += '</ul></article></li>';
+                      console.log(html);
+                      shelbyJ(".<%=@prefix%>dashboard").append(html);
+
+                    
+                },
+
+                frameFooterHtml : function(r) {
+                    return '<li class="<%=@prefix%>frame-controls-like toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-like ' + r + '-img <%=@prefix%>button-' + r + '"data-to=tw data-r=' + r + ' type="button">' + '<i class="js-upvote-frame-lining <%=@prefix%>like-text-' + r + '"> &nbsp; </i>' + '</button>' + '</li>' +
+
+                    '<li class="<%=@prefix%>frame-controls-comments toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-comment ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + '<i class="comments-frame-lining <%=@prefix%>comment-text-' + r + '"> &nbsp; </i>' + '</button>' + '</li>' +
+
+                    '<li class="<%=@prefix%>frame-controls-roll toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-roll ir ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + ' Roll it ' + '</button>' + '</li>' +
+
+                    '<li class="<%=@prefix%>frame-controls-share toolbar-ele-' + r + '">' + '<button class="aniImg <%=@prefix%>all-share ir ' + r + '-img <%=@prefix%>button-' + r + '" data-r=' + r + ' type="button">' + 'Share it ' + '</button>' + '</li>'
                 }
+                    
+        
             },
             styleGuideShow: function (guideName) {
-
+                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("hide").addClass("show");
                 shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
                 shelbyJ(".<%=@prefix%>guide-clickoff").removeClass("guide-clickoff-show")
                 shelbyJ("#" + guideName + "-window").addClass("guide-show").addClass("guide-animate");
                 shelbyJ("#" + guideName + "-clickoff").addClass("guide-clickoff-show");
             },
 
-            styleGuideHide: function (guideName) {
+            styleGuideHide: function () {
+                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("show").addClass("hide");
                 shelbyJ(".<%=@prefix%>guide-clickoff").removeClass("guide-clickoff-show")
                 shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
             },
@@ -803,16 +880,19 @@ window.shelbyBookmarklet = {
             foundVideo: null,
 
             shelbify: function (radar, possibleVideos) {
-                utilObject.foundVideo = radar.find(possibleVideos, shelbyJ);
+                utilObject.foundVideo = radar.find(possibleVideos);
                 if (utilObject.foundVideo.length > 0) {
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>roll-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>share-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>comment-guide", shelbyGuideWidth, true);
                     utilObject.htmlTemplate.setUpGuide("<%=@prefix%>login-guide", shelbyGuideWidth, false);
+                    utilObject.htmlTemplate.setUpGuide("<%=@prefix%>frame-guide", shelbyGuideWidth, false);
+                    utilObject.htmlTemplate.setUpToggle();
+                    utilObject.htmlTemplate.frameGuideHtml();
                     utilObject.resizeArray.push(function () {
                         shelbyJ("#" + "<%=@prefix%>guide-clickoff").css("height", shelbyJ(window).height() + "px").css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px");
                     });
-                    utilObject.shelbyUserUtil.signedIn(shelbyJ);
+                    utilObject.shelbyUserUtil.signedIn();
                     shelbyJ(window).resize(function () {
                         for (var i = 0; i < utilObject.resizeArray.length; i++) {
                             utilObject.resizeArray[i]();
@@ -826,35 +906,71 @@ window.shelbyBookmarklet = {
         return utilObject;
     },
 
-    shelbyInit: function (opts) {
-        fullFunc(opts)
+    shelbyInit: function (opts, useUrl, urlProvider) {
+        fullFunc(opts(useUrl, urlProvider));
     },
-    shelbyOpts: {
-        css: ["http://localhost:3000/stylesheets/radar.css"],
-        js: [],
-        jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
+    shelbyOpts: function (useUrl, urlProvider) {
+        return {
+            css: ["http://localhost:3000/stylesheets/radar.css"],
+            js: [],
+            jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
 
 
-        ready: function () {
-            var shelbyJ = jQuery.noConflict();
-            var possibleVideos = {
-                embeds: shelbyJ('embed'),
-                objects: shelbyJ('object'),
-                videos: shelbyJ('video'),
-                iframes: shelbyJ('iframe')
-            };
+            ready: function () {
+                var shelbyJ = jQuery.noConflict();
+                var possibleVideos = {
+                    embeds: shelbyJ('embed'),
+                    objects: shelbyJ('object'),
+                    videos: shelbyJ('video'),
+                    iframes: shelbyJ('iframe')
+                };
 
-            var shelbyGuideWidth = 330;
+                var shelbyGuideWidth = 330;
 
-            // add in the bookmarklet loading bar
-            shelbyJ('.<%=@prefix%>ext-elements').remove()
-            shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
-
-            shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(shelbyBookmarklet.shelbyRadar(shelbyJ), possibleVideos);
+                // add in the bookmarklet loading bar
+                shelbyJ('.<%=@prefix%>ext-elements').remove()
+                shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
+                var radar = shelbyBookmarklet.shelbyRadar(shelbyJ, useUrl, urlProvider);
+                shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(radar, possibleVideos);
+            }
         }
     }
 }
-shelbyBookmarklet.shelbyInit(shelbyBookmarklet.shelbyOpts);
+function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)}; 
 
-function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)};
+var loadBookmarklet = function(useUrl, useProvider) {
+  shelbyBookmarklet.shelbyInit(shelbyBookmarklet.shelbyOpts, useUrl, useProvider);
+};
+
+(function(history) {
+    var pushState = history.pushState;
+    history.pushState = function(state) {
+        if (typeof history.onpushstate == "function") {
+            history.onpushstate({state: state});
+        }
+        for (var i = 0; i < shelbyBookmarklet.shelbyProviders.length; i++) {
+            var domain_split = shelbyBookmarklet.shelbyProviders[i].domain.split(',');
+            var valid_domain = false;
+            for (var l = 0; l < domain_split.length; l++) {
+                var domain_reg = new RegExp(domain_split[l]);
+                if (domain_reg.test(window.location.href)) {
+                    valid_domain = true;
+                    break;
+                }
+            }
+            if (valid_domain) {
+                var providerObj = shelbyBookmarklet.shelbyProviders[i];
+                if (providerObj.url_regex) {
+                    if (new RegExp(providerObj.url_regex).test(window.location.href)) {
+                        loadBookmarklet(true, providerObj.provider);
+                        return pushState.apply(history, arguments);
+                    }
+                }
+            }
+        }
+        shelbyJ('.<%=@prefix%>ext-elements').remove()
+        return pushState.apply(history, arguments);
+    }
+  })(window.history);
+loadBookmarklet(false);

@@ -78,7 +78,7 @@
   display: none;
   position: fixed;
   top: 0px;
-  z-index: 89999;
+  z-index: 2147483647;
   &.guide-clickoff-show {
     cursor: pointer;
     display: block;
@@ -95,7 +95,7 @@
   right: 0px;
   top: 0px;
   width: 330px;
-  z-index:99999; 
+  z-index: 2147483646; 
   &.guide-show {
     margin-right: 0;
   }
@@ -108,13 +108,16 @@
 }
 
 .video-card-header {
+  height: 45px;
+}
+
+.embedded-header {
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
-  height: 45px;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  z-index: 89999;
+  z-index: 2147483645;
 }
 
 .frame-exists {
@@ -125,12 +128,12 @@
   }
 }
 
-.frame-controls {
+.embedded-footer {
   background-color: #35383A;
   border-radius: 0 0 5px 5px;
   font-size: 13px;
   position: absolute;
-  z-index: 89999;
+  z-index: 2147483645;
 }
 
 .frame-title {
@@ -169,3 +172,9 @@
 
   background-size: 4%;
 }
+
+#guide-overlay-controls {
+  z-index:2147483647;
+  position: fixed;
+}
+
