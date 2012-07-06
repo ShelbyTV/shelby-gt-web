@@ -1,332 +1,97 @@
-<<<<<<< HEAD
 /*
 Syntax error: Undefined mixin 'ellipsis'.
-        on line 94 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'
-        from line 94 of /shelbytv/app/stylesheets/partials/roll-item.scss
+        on line 95 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss, in `ellipsis'
+        from line 95 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss
 
-89: }
-90: 
-91: .roll-item-title,
-92: .roll-item-people,
-93: .roll-item-creator {
-94: 	@include ellipsis();
-95: }
-96: 
-97: .roll-item-title,
-98: .roll-item-people { 
-99: 	clear: right; 
+90: }
+91: 
+92: .roll-item-title,
+93: .roll-item-people,
+94: .roll-item-creator {
+95: 	@include ellipsis();
+96: }
+97: 
+98: .roll-item-title,
+99: .roll-item-people { 
+100: 	clear: right; 
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/roll-item.scss:94:in `ellipsis'
-/shelbytv/app/stylesheets/partials/roll-item.scss:94
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2762727553043877011__call__1975143716994849724__callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss:95:in `ellipsis'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss:95
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4574926503756376609__call__2980931160868440700__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'ellipsis'.\A         on line 94 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'\A         from line 94 of /shelbytv/app/stylesheets/partials/roll-item.scss\A \A 89: }\A 90: \A 91: .roll-item-title,\A 92: .roll-item-people,\A 93: .roll-item-creator {\A 94: 	@include ellipsis();\A 95: }\A 96: \A 97: .roll-item-title,\A 98: .roll-item-people { \A 99: 	clear: right; "; }
-=======
-/* line 5, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item:last-child .roll-item-lining {
-  border-bottom: none;
-}
-/* line 11, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item:hover .roll-item-header {
-  background-color: #6d6d6d;
-}
-
-/* line 17, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-lining {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-}
-
-/* line 22, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-lining {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 5px;
-  margin: 10px;
-  overflow: hidden;
-}
-
-/* line 31, ../../../app/stylesheets/partials/roll-item.scss */
-.missing-roll-thumbnail {
-  background-size: 25%;
-}
-
-/* line 35, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-button {
-  border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-/* line 42, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-button {
-  height: 150px;
-}
-/* line 45, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-button:after {
-  bottom: -2px;
-  box-shadow: 0 0 86px 70px black;
-  content: "\0020";
-  height: 1px;
-  margin-top: 10px;
-  position: absolute;
-  width: 100%;
-}
-/* line 56, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-button:hover:after {
-  box-shadow: 0 0 86px 70px #27292a;
-}
-
-/* line 62, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-container {
-  bottom: 0;
-  left: 0;
-  margin-bottom: 5px;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-/* line 71, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-container a {
-  text-decoration: none;
-}
-/* line 75, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-container a:active, .roll-item-container a:visited {
-  text-decoration: none;
-}
-/* line 79, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-container a:hover {
-  text-decoration: underline;
-}
-
-/* line 85, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-container-column {
-  float: left;
-  position: relative;
-  width: 50%;
-  z-index: 1;
-}
-
-/* line 93, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-title,
-.roll-item-creator {
-  white-space: nowrap;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-}
-
-/* line 97, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-title {
-  clear: right;
-  color: #bfbfbf;
-  font-size: 13px;
-  height: 19px;
-  line-height: 17px;
-  padding: 0 8px 0;
-}
-
-/* line 106, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-creator {
-  color: #999;
-  font-size: 11px;
-  font-weight: 300;
-  height: 1.9em;
-  margin-top: 4px;
-  padding: 6px 8px 0;
-}
-
-/* line 116, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-total,
-.roll-item-watched {
-  font-size: 11px;
-  font-weight: 100;
-  padding-right: 8px;
-  text-align: right;
-}
-
-/* line 123, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-total {
-  margin-top: 12px;
-  padding-bottom: 3px;
-}
-
-/* line 132, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-avatar {
-  float: left;
-  height: 40px;
-  overflow: hidden;
-  width: 40px;
-}
-
-/* line 139, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-footer {
-  height: 78px;
-  margin-bottom: 2px;
-}
-
-/* line 144, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-stats {
-  background-color: #4e5354;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
-  background: -webkit-linear-gradient(top, #7f8789, #4e5354);
-  background: -moz-linear-gradient(top, #7f8789, #4e5354);
-  background: -o-linear-gradient(top, #7f8789, #4e5354);
-  background: -ms-linear-gradient(top, #7f8789, #4e5354);
-  background: linear-gradient(top, #7f8789, #4e5354);
-  float: right;
-  height: inherit;
-  cursor: pointer;
-  width: 46px;
-}
-
-/* line 152, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-stats-count {
-  border-bottom: 1px solid #4e5354;
-  display: block;
-  font-size: 20px;
-  font-weight: 500;
-  height: 50%;
-  line-height: 2;
-  margin: 0 3px;
-  text-align: center;
-}
-/* line 162, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-stats-count:after {
-  background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
-  content: "\0020";
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
-/* line 175, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents {
-  height: inherit;
-  margin-right: 46px;
-}
-
-/* line 180, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-list {
-  height: inherit;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-/* line 187, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail {
-  background-color: #111;
-  cursor: pointer;
-  height: inherit;
-  left: 0;
-  margin: 0px 2px 0 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-/* line 198, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail .thumbnail {
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-}
-/* line 203, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail .missing-placeholder {
-  width: 10%;
-  margin-top: 7%;
-  display: none;
-}
-/* line 209, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail.missing {
-  text-align: center;
-}
-/* line 211, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail.missing .thumbnail {
-  display: none;
-}
-/* line 212, ../../../app/stylesheets/partials/roll-item.scss */
-.roll-item-contents-thumbnail.missing .missing-placeholder {
-  display: inline;
-}
->>>>>>> a2418691dc70e568680b68afd13bac382ba3e420
+  content: "Syntax error: Undefined mixin 'ellipsis'.\A         on line 95 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss, in `ellipsis'\A         from line 95 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/roll-item.scss\A \A 90: }\A 91: \A 92: .roll-item-title,\A 93: .roll-item-people,\A 94: .roll-item-creator {\A 95: 	@include ellipsis();\A 96: }\A 97: \A 98: .roll-item-title,\A 99: .roll-item-people { \A 100: 	clear: right; "; }
