@@ -53,11 +53,17 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
         !_changedAttrs.has('displayIsolatedRoll')) {
       return;
     }
+    // set text to leave/join roll
+    var currentRollModel = model.get('currentRollModel');
+    if (currentRollModel) {
+      var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Unfollow' : 'Follow';
+      this._updateJoinButton(_buttonText);
+    }
     this._updateVisibility();
   },
 
   _goBack : function(){
-    if( window.history && window.history.length > 2 ){
+    if( shelby.routeHistory.length > 1 ){
       window.history.back();
     } else {
       shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
@@ -107,6 +113,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (visible) {
       this._shareRollView = new libs.shelbyGT.ShareRollView({
         model : new libs.shelbyGT.ShareModel(),
+        roll : this.model.get('currentRollModel'),
         viewState : this._shareRollViewState
       });
       this.appendChild(this._shareRollView);

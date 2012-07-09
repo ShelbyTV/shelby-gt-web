@@ -22,9 +22,10 @@
   cursor: pointer;
   height: 45px;
 	overflow: hidden;
+  padding-right: 0;
   position: absolute;
   right: 0;
-  width: 34px;
+  width: 29px;
 	
 	.copy { 
     @include transition-property(opacity);
@@ -37,10 +38,8 @@
   	
   	color: #fff;
     font-size: 14px;
-    
     position: absolute;
     right: 33px;
-    
     top: 13px;
     width: 70px;
   }
@@ -53,6 +52,7 @@
 	  background:url('../images/assets/guide.svg') no-repeat center center transparent;
 	  float: right;
 	  height: 20px; 
+    margin-right: 1px;
 	  width: 20px;
   }
 }
@@ -62,6 +62,7 @@
   
   .icon {
     @include rotate(180deg);
+    margin-right: 6px;
   }
   
   .copy { 

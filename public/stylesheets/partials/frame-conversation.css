@@ -89,6 +89,8 @@
 /* line 76, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
+  border-top: 1px solid #343434;
+  padding: 8px;
   position: relative;
 }
 /* line 82, ../../../app/stylesheets/partials/frame-conversation.scss */
@@ -107,22 +109,21 @@
   border-radius: 5px;
   color: #efefef;
   padding: 4px 8px;
-  right: 0;
-  margin: 8px;
-  position: absolute;
-  top: 2px;
+  margin-top: 40px;
+  margin-left: 12px;
 }
 
-/* line 91, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 89, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   border-radius: 3px;
-  height: 55px;
-  margin: 10px 61px 30px 8px;
-  width: 220px;
+  left: 68px;
+  position: absolute;
+  right: 8px;
 }
-/* line 99, ../../../app/stylesheets/partials/frame-conversation.scss */
+/* line 98, ../../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -138,4 +139,16 @@
   transition-timing-function: ease-in;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+/* line 106, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar {
+  height: 48px;
+  width: 48px;
+  float: left;
+}
+/* line 111, ../../../app/stylesheets/partials/frame-conversation.scss */
+.new-comment-user-avatar > img {
+  height: 100%;
+  overflow: hidden;
 }

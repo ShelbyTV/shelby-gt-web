@@ -16,16 +16,16 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   }),
 
   events : {
-    "click .js-frame-activate"                  : "_activate",
-    "click .js-frame-source"                    : "_goToSourceRoll",
-    "click .js-frame-toggle"                    : "_toggleCollapseExpand",
-    "click .js-roll-frame"                      : "requestFrameRollView",
-    "click .js-share-frame"                     : "requestFrameShareView",
-    "click .js-save-frame"                      : "_saveToWatchLater",
-    "click .js-remove-frame"                    : "_removeFromWatchLater",
-    "click .js-video-activity-toggle"           : "_requestConversationView",
-    "click .js-upvote-frame"                    : "_upvote",
-    "click .js-go-to-roll-by-id"                : "_goToRollById",
+    "click .js-frame-activate"              : "_activate",
+    "click .js-frame-source"                : "_goToSourceRoll",
+    "click .js-frame-toggle"                : "_toggleCollapseExpand",
+    "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-share-frame"                 : "requestFrameShareView",
+    "click .js-save-frame"                  : "_saveToWatchLater",
+    "click .js-remove-frame"                : "_removeFrame",
+    "click .js-video-activity-toggle"       : "_requestConversationView",
+    "click .js-upvote-frame"                : "_upvote",
+    "click .js-go-to-roll-by-id"            : "_goToRollById"
   },
 
   tagName : 'li',
@@ -33,30 +33,24 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   className : 'frame',
 
   template : function(obj){
-    var _tmplt;
-    if (shelby.commentUpvoteUITest){
-     _tmplt = JST['ui-tests/frame-upvote-comment-test'](obj);
-    } else { 
-      try {
-        _tmplt = JST['frame'](obj); 
-      } catch(e){
-        console.log(e.message, e.stack);
-      }
+    try {
+      return JST['frame'](obj);
+    } catch(e){
+      console.log(e.message, e.stack);
     }
-    return _tmplt;
   },
 
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
-    this.model.bind('change:upvoters', this._onUpvoteChange, this);
-    this.model.get('conversation').bind('change', this._onConversationChange, this);
+    this.model.bind('change', this.render, this);
+    this.model.get('conversation').bind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
-    this.model.unbind('change:upvoters', this._onUpvoteChange, this);
-    this.model.get('conversation').unbind('change', this._onConversationChange, this);
+    this.model.unbind('change', this.render, this);
+    this.model.get('conversation').unbind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -100,7 +94,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._frameSharingInGuideView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView);
 
   },
   
@@ -113,7 +107,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._frameRollingView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView);
   },
 
   _hideInGuideView : function(){
@@ -137,38 +131,20 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     });
   },
 
-  _removeFromWatchLater : function(){
-    // For UI Test workaround:
-    if (shelby.commentUpvoteUITest){ this._upvote(); }
-    else { this.model.destroy(); }
+  _removeFrame : function(){
+    this.model.destroy();
   },
 
   _upvote : function(){
     var self = this;
     // check if they're already an upvoter
     if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
-      this.model.upvote(function(r){
-        var upvoters = r.get('upvoters');
-        // set the returned upvoter attr to prevent user from being able to upvote again.
-        self.model.set('upvoters', upvoters);
+      this.model.upvote(function(f){
+        var upvoteUsers = self.model.get('upvote_users');
+        upvoteUsers.push(shelby.models.user.toJSON());
+        self.model.set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
       });
     }
-  },
-
-  _onUpvoteChange : function(){
-    // For UI Test workaround:
-    if (shelby.commentUpvoteUITest){
-      this.$('.upvote-test').addClass('video-score-upvoted');
-      this.$('.upvote-test').text(this.model.get('upvoters').length);
-    }
-    else {
-      this.$('.js-upvote-frame').addClass('upvoted');
-      this.$('.js-upvote-frame-lining').text(this.model.get('upvoters').length);
-    }
-  },
-  
-  _onConversationChange : function(conversation){
-    this.render();
   },
   
   _requestConversationView : function(){
@@ -180,7 +156,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     }
     this._conversationView.reveal();
 
-    shelby.models.guide.set('activeGuideOverlayView', this._conversationView); 
+    shelby.models.guide.set('activeGuideOverlayView', this._conversationView);
   },
 
   _goToSourceRoll : function(){

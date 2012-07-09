@@ -11,16 +11,21 @@
 /* line 14, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list a {
   display: block;
+  text-decoration: none;
 }
-/* line 20, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 17, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a:hover {
+  text-decoration: underline;
+}
+/* line 22, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list li {
   padding: 0;
 }
-/* line 24, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 26, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item {
   position: relative;
 }
-/* line 28, ../../../app/stylesheets/partials/rolls-list.scss */
+/* line 30, ../../../app/stylesheets/partials/rolls-list.scss */
 .rolls-list .active-list-item .roll-item-button:after {
   box-shadow: 0 0 48px 70px #316a2b;
 }

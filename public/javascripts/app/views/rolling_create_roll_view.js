@@ -43,11 +43,13 @@
     
       roll.set({'public': !this.$("#new-roll-status").is(':checked')});
 
+      var doShare = false;
       if(this.$("#new-roll-recipients").val().length > 0){
         this._frameRollingState.get('shareModel').set({
           destination: ['email'],
           addresses: this.$("#new-roll-recipients").val()
           });
+        doShare = true;
       } else {
         this._frameRollingState.get('shareModel').set({destination: ['']});
       }
@@ -62,13 +64,15 @@
             self._frameRollingState.set({doShare:ShareActionState.complete});
             shelby.router.navigate('roll/'+newFrame.get('roll_id')+'/frame/'+newFrame.id+'?reroll_success=true', {trigger:true});
             
-            //synchronously invite users to this roll via email
-            self.options.frameRollingState.get('shareModel').save(null, {
-              url : newFrame.shareUrl(),
-              success : function(){
-                /* noop */
-              }
-            });
+            if (doShare) {
+              //synchronously invite users to this roll via email
+              self.options.frameRollingState.get('shareModel').save(null, {
+                url : newFrame.shareUrl(),
+                success : function(){
+                  /* noop */
+                }
+              });
+            }
 
           });
         }});

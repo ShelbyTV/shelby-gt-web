@@ -1,18 +1,17 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var PagingListView = libs.shelbyGT.PagingListView;
+  var FramePlayPagingListView = libs.shelbyGT.FramePlayPagingListView;
 
-  libs.shelbyGT.RollView = PagingListView.extend({
+  libs.shelbyGT.RollView = FramePlayPagingListView.extend({
 
-    className : PagingListView.prototype.className + ' roll',
+    className : FramePlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
-      this._initInfiniteScrolling();
-      PagingListView.prototype.initialize.call(this);
+      FramePlayPagingListView.prototype.initialize.call(this);
     },
 
-    options : _.extend({}, PagingListView.prototype.options, {
+    options : _.extend({}, FramePlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
       listItemView : 'FrameView',
       fetchParams : {
@@ -23,10 +22,9 @@
     _doesResponseContainListCollection : function(response) {
       return response.result.frames;
     },
-    
-    //ListView overrides
-    _listItemViewAdditionalParams : function() {
-      return {activationStateModel:shelby.models.guide};
+
+    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
+      return itemModel.id == activeFrameModel.id;
     }
 
   });

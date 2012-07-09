@@ -16,6 +16,7 @@
     }, 
 
     _post : function(cmd, args){
+			if (!shelby.userSignedIn()) return false;
       if (this._disabled) return false;
 
       var data, path;
@@ -52,7 +53,7 @@
           url : self._get_api_root()+'/'+path,
           data : _data,
           beforeSend : function(xhr, settings){
-            xhr.setRequestHeader('Authorization', $('#rhombus-auth').data('token'));
+            xhr.setRequestHeader('Authorization', $('meta[name="rhombus-auth"]').attr('content'));
           },
           error : function(){
             self._disabled = true;

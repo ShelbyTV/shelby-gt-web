@@ -4,10 +4,8 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       activationStateProperty : 'activeFrameModel'
   }),
 
-  events : {
-    "click .js-roll-item-button"          : "goToRoll",
-    "click .roll-item-stats"              : "goToRoll",
-    "click .roll-item-contents-thumbnail" : "goToRoll"
+  events : function() {
+    return this._setupEvents();
   },
 
   tagName : 'li',
@@ -15,7 +13,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   className : 'roll-item clearfix',
 
   template : function(obj){
-    return JST['roll-item'](obj);
+    return this._renderTemplate(obj);
   },
 
   render : function(){
@@ -37,5 +35,15 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       }
     }
     return false;
+  },
+
+  _setupEvents : function() {
+    //subclasses must override this function to return an events object for this view
+    alert('Your RollItemView subclass must override _setupEvents()');
+  },
+
+  _renderTemplate : function(obj) {
+    //subclasses must override this function to render a specific JST template for this view
+    alert('Your RollItemView subclass must override _renderTemplate()');
   }
 });

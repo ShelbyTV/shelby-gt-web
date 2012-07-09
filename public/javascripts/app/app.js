@@ -25,6 +25,8 @@ _(shelby).extend({
 		document.location.href = "/sign_out";
 	},
 	
+	// shelby.alert mimicks js native alert functionality.
+	// optional: add a callback function to execute after alert is dismissed
 	alert: function(message, callback){
 		shelby.models.notificationState.bind('change:response', function(r){
 			if (callback) { callback( r.get('response') ); }
@@ -36,6 +38,8 @@ _(shelby).extend({
 																					'number_of_buttons': 'one'});
 	},
 	
+	// shelby.alert mimicks js native confirm functionality.
+	// optional: add a callback function to execute after confirm choice is executed
 	confirm: function(message, button_one_opts, button_two_opts, callback){
 		shelby.models.notificationState.bind('change:response', function(r){
 			if (callback) { callback( r.get('response') ); }

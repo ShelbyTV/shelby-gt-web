@@ -31,9 +31,14 @@
 
 <div class="content-wrapper <%= 'with-embed' if @video_embed %>">
 	
-	<% if @meta_info[:video_embed] %>
+	<% if @meta_info[:video_embed] || @provider_name == "youtube" %>
 		<div class="embed-gate-wrapper">
-			<%=raw @meta_info[:video_embed] %>
+			<% if @provider_name == "youtube" %>
+				<!-- TODO: Build all of our embeds like this using the video provider_id -->
+				<%= render :partial => "youtube_embed", :locals => { :provider_id => @meta_info[:video_info]['video']['provider_id'] } %>
+			<% else %>
+				<%=raw @meta_info[:video_embed] %>
+			<% end %>
 			<h1 style="margin: 15px 0 10px;">Your friend discovered this video with Shelby.tv</h1>
 			<h2>
 				You have a very cool friend, because they have access to Shelby GT, our latest version, which delivers personalized streams of video curated by your friends. 

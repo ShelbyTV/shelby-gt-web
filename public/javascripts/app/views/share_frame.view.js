@@ -4,8 +4,6 @@
   var ShareView = libs.shelbyGT.ShareView;
   var ShareActionState = libs.shelbyGT.ShareActionState;
 
-  itermediate = libs.shelbyGT.GuideOverlayView.extend({});
-
   libs.shelbyGT.ShareFrameView = libs.shelbyGT.ShareView.extend({
     
     saveUrl: function(){
@@ -16,7 +14,7 @@
       libs.shelbyGT.ShareView.prototype.onShareSuccess.call(this);
       
       this.parent.hide();
-    },
+    }
     
   });
   

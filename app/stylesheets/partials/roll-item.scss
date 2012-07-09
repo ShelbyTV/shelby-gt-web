@@ -23,8 +23,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-//  border-radius: 5px;
-//  margin: 5px 10px;
+  border-radius: 5px;
+  margin: 10px;
   overflow: hidden;
 }
 
@@ -33,6 +33,7 @@
 }
 
 .roll-item-button {
+	border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1; 

@@ -22,11 +22,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   //---
+  //Breadcrumbs
+  //---
+  initialize : function(){
+    shelby.routeHistory = [];
+    this.bind("all", function(route){ shelby.routeHistory.push(route); });
+  },
+
+  //---
   //ROUTE HANDLERS
   //---
 
-
-  displayFrameInRoll : function(rollId, frameId, params, options){
+  displayFrameInRoll : function(rollId, frameId, params, options, topLevelViewsOptions){
     // default options
     options = _.chain({}).extend(options).defaults({
       rerollSuccess : (params && params.reroll_success === "true")
@@ -40,23 +47,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.userSignedIn() && params && params.gt_ref_roll){
       var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
       rollToJoin.joinRoll(function(){
-        self._setupRollViewWithCallback(rollId, frameId, options);
+        self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
       });
     } else {
-      self._setupRollViewWithCallback(rollId, frameId, options);
+      self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
     }
   },
 
   displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
-    var defaultOnRollFetch;
+    var defaultOnRollFetch = null;
     if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
-    }
-
-    if (options && !options.startPlaying && options.defaultOnRollFetch){
-      defaultOnRollFetch = options.defaultOnRollFetch;
     }
     
     options = _.chain({}).extend(options).defaults({
@@ -76,27 +79,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
     
-    var self = this;
     // Adjust *what* is displayed
-    var options = {
-      updateRollTitle : false,
-      startPlaying : frameId ? false : true
-    };
-    if (frameId){
-      options.defaultOnRollFetch = function(){
-        self._activateFrameInRollById(shelby.models.guide.get('currentRollModel'), frameId);
-      };
-    }
-    this.displayRoll(
-      rollId,
-      null,
-      null,
-      options,
-      {
-        isIsolatedRoll : true
-      });
+    var options = {updateRollTitle:false};
 
-    if (!frameId) return;
+    if (frameId){
+      this.displayFrameInRoll(rollId, frameId, null, options, {isIsolatedRoll : true});
+    } else {
+      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
+    }
       
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
@@ -148,10 +138,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
-    // FOR IN PERSON USER TESTING
-    // This is to alter ui of things like upvote, roll and comment elements
-    this._testSwitchingfromQueryParams(params);
-
     this._setupTopLevelViews();
     this._fetchDashboard(options);
   },
@@ -189,13 +175,29 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
-    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
+    shelby.models.dashboard= new libs.shelbyGT.DashboardModel();
+
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
         'sinceId' : options.data.since_id ? options.data.since_id : null,
         'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
+      
+      // filtering out faux users so as a team we can interact more easily 
+      //   with real users easily as they come in.
+      if ($.getUrlParam("real") == 1){ 
+        shelby.views.guide._listView.updateFilter(function(model){
+          return model.get('frame').get('creator').get('faux') != 1;
+        });
+      } 
+      // filtering out non-gt_enabled users
+      if ($.getUrlParam("gt") == 1){
+        shelby.views.guide._listView.updateFilter(function(model){
+          return model.get('frame').get('creator').get('gt_enabled') == true;
+        });
+      }
+      
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
       $.when(shelby.models.dashboard.fetch(fetchOptions)).always(function(response, callbackName, jqXHR){
@@ -423,7 +425,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});
   },
   
-  _setupRollViewWithCallback : function(rollId, frameId, options){
+  _setupRollViewWithCallback : function(rollId, frameId, options, topLevelViewsOptions){
     var self = this;
     this._setupRollView(rollId, null, {
       data: {
@@ -435,18 +437,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           self._activateFrameInRollById(rollModel, frameId);
         }
       }
-    });
-  },
-
-  //---
-  //MISC HELPERS
-  //---
-  
-  _testSwitchingfromQueryParams: function(params){
-    // set shelby level setting establishing a "new" version of a ui el
-    if (params && params.uitest == 'true') {
-        shelby.commentUpvoteUITest = true;
-    }
+    }, topLevelViewsOptions);
   }
-
+  
 });

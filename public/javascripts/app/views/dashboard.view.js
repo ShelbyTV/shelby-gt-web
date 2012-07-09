@@ -1,14 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var PagingListView = libs.shelbyGT.PagingListView;
+  var FramePlayPagingListView = libs.shelbyGT.FramePlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
-  libs.shelbyGT.DashboardView = PagingListView.extend({
+  libs.shelbyGT.DashboardView = FramePlayPagingListView.extend({
 
-    className : PagingListView.prototype.className + ' dashboard',
+    className : FramePlayPagingListView.prototype.className + ' dashboard',
 
-    options : _.extend({}, PagingListView.prototype.options, {
+    options : _.extend({}, FramePlayPagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
@@ -36,27 +36,7 @@
           return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
         }
       });
-      shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      this._initInfiniteScrolling();
-      PagingListView.prototype.initialize.call(this);
-    },
-
-    _cleanup : function(){
-      shelby.models.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      PagingListView.prototype._cleanup.call(this);
-    },
-
-    _onActiveFrameModelChange : function(guideModel, activeFrameModel){
-      // when the active frame model changes, find the dashboard entry that contains that frame
-      // and store that information
-      if (activeFrameModel) {
-        var entry = this.model.get('dashboard_entries').find(function(entry){
-          return entry.get('frame') == activeFrameModel;
-        });
-        if (entry) {
-          shelby.models.guide.set('activeDashboardEntryModel', entry);
-        }
-      }
+      FramePlayPagingListView.prototype.initialize.call(this);
     },
 
     _filter : function(item){
@@ -66,10 +46,9 @@
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
     },
-    
-    //ListView overrides
-    _listItemViewAdditionalParams : function() {
-      return {activationStateModel:shelby.models.guide};
+
+    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
+      return itemModel.has('frame') && itemModel.get('frame').id == activeFrameModel.id;
     }
 
   });
