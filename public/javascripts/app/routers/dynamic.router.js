@@ -188,7 +188,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       //   with real users easily as they come in.
       if ($.getUrlParam("real") == 1){ 
         shelby.views.guide._listView.updateFilter(function(model){
-          return model.get('frame').get('creator').get('gt_enabled') != 1;
+          return model.get('frame').get('creator').get('faux') != 1;
+        });
+      } 
+      // filtering out non-gt_enabled users
+      if ($.getUrlParam("gt") == 1){
+        shelby.views.guide._listView.updateFilter(function(model){
+          return model.get('frame').get('creator').get('gt_enabled') == true;
         });
       }
       
