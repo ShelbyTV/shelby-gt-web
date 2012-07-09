@@ -20,71 +20,71 @@
   }
 }
 
-.new-roll-status {
-  @include roundies;
+//.new-roll-status {
+//  @include roundies;
 
-  display: block;
-  border: 1px solid $inset;
-  overflow: hidden;
-  padding: 7px;
-  width: 126px;
-}
+//  display: block;
+//  border: 1px solid $inset;
+//  overflow: hidden;
+//  padding: 7px;
+//  width: 126px;
+//}
 
-.new-roll-status-checkbox {
-  @include transition-property('margin');
-  @include transition-duration(0.25s);
-  @include transition-timing-function(ease-out);
+//.new-roll-status-checkbox {
+//  @include transition-property('margin');
+//  @include transition-duration(0.25s);
+//  @include transition-timing-function(ease-out);
 
-  cursor: pointer;
-  float: left;
-  position: relative;
+//  cursor: pointer;
+//  float: left;
+//  position: relative;
 
-  &:before {
-    color: $button-color;
-    content: "Public";
-    font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-    left: 53px;
-    position: absolute;
-    top: 0;
-  }
+//  &:before {
+//    color: $button-color;
+//    content: "Public";
+//    font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+//    left: 53px;
+//    position: absolute;
+//    top: 0;
+//  }
 
-  &:after {
-    background-color: gray;
-    @include background(
-      url('/images/assets/switch_public.svg') no-repeat 5px 5px #999//,
-//      linear-gradient(top, adjust-lightness(#666, 20%), #666)
-      );
-    @include box-highlight(#666);
-    @include roundies;
+//  &:after {
+//    background-color: gray;
+//    @include background(
+//      url('/images/assets/switch_public.svg') no-repeat 5px 5px #999//,
+////      linear-gradient(top, adjust-lightness(#666, 20%), #666)
+//      );
+//    @include box-highlight(#666);
+//    @include roundies;
 
-    background-size: 56%;
-    border: 1px solid adjust-lightness(#666, -10%);
-    content: "\0020";
-    display: block;
-    height:25px;
-    left: -7px;
-    position: absolute;
-    top: -7px;
-    width: 32px;
-  }
+//    background-size: 56%;
+//    border: 1px solid adjust-lightness(#666, -10%);
+//    content: "\0020";
+//    display: block;
+//    height:25px;
+//    left: -7px;
+//    position: absolute;
+//    top: -7px;
+//    width: 32px;
+//  }
 
-  &:checked {
-    margin-left: 82%;
+//  &:checked {
+//    margin-left: 82%;
 
-    &:before {
-      left: -72px;
-      content: "Private";
-    }
+//    &:before {
+//      left: -72px;
+//      content: "Private";
+//    }
 
-    &:after {
-      @include background(
-        url('/images/assets/switch_private.svg') no-repeat center center #999//,
-        //linear-gradient(top, adjust-lightness(#666, 10%), #999)
-      );
-      background-size: 43%;
-    }
-  }
-}
+//    &:after {
+//      @include background(
+//        url('/images/assets/switch_private.svg') no-repeat center center #999//,
+//        //linear-gradient(top, adjust-lightness(#666, 10%), #999)
+//      );
+//      background-size: 43%;
+//    }
+//  }
+//}
 
 
 .roll-options {
@@ -122,3 +122,73 @@
   float: right;
   width: 100%;
 }
+
+.new-roll-status-label {
+    border: 1px solid #444;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    font-family: 'Arial';
+    font-size: .875em;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+}
+
+.new-roll-status-checkbox {
+    margin: 3px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.new-roll-status-checkbox ~ .new-roll-status-description {
+    display: block;
+    font: 0/0 a;
+    line-height: 1.231;
+    height: inherit;
+    overflow: hidden;
+    padding-left: 41px;
+    padding-top: 2px;
+    text-indent: -9999px;
+    text-align: left;    
+}
+
+.new-roll-status-checkbox ~ .new-roll-status-description:before {
+    content: "Public";
+    font: normal 14px/1.231 sans-serif;
+}
+
+.new-roll-status-checkbox ~ .new-roll-status-chrome {
+    background: #666;
+    border-radius: 3px;
+    border: 1px solid #444;
+    box-shadow: 0 0 3px 1px #444;
+    content: "\0020";
+    display: block;
+    left: -1px;
+    margin: 0px;
+    position: absolute;
+    height: inherit;
+    top:-1px;
+    width: 24px;
+}
+
+.new-roll-status-checkbox:checked {
+    left: 75px;
+}
+
+.new-roll-status-checkbox:checked ~ .new-roll-status-description {
+    text-align: left;
+    padding-left: 16px;        
+}
+
+.new-roll-status-checkbox:checked ~ .new-roll-status-description:before {
+    content: "Private";
+}
+
+.new-roll-status-checkbox:checked ~ .new-roll-status-chrome {
+    left: 76px;
+}
+

@@ -13,74 +13,6 @@
   width: 50%;
 }
 
-/* line 23, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status {
-  border-radius: 5px;
-  display: block;
-  border: 1px solid black;
-  overflow: hidden;
-  padding: 7px;
-  width: 126px;
-}
-
-/* line 33, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox {
-  -moz-transition-property: margin;
-  -webkit-transition-property: margin;
-  -o-transition-property: margin;
-  transition-property: margin;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  cursor: pointer;
-  float: left;
-  position: relative;
-}
-/* line 42, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:before {
-  color: #efefef;
-  content: "Public";
-  font: 500 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  left: 53px;
-  position: absolute;
-  top: 0;
-}
-/* line 51, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:after {
-  background-color: gray;
-  background: url("/images/assets/switch_public.svg") no-repeat 5px 5px #999999;
-  box-shadow: inset 0px 1px 0px 0px #a6a6a6;
-  border-radius: 5px;
-  background-size: 56%;
-  border: 1px solid #4d4d4d;
-  content: "\0020";
-  display: block;
-  height: 25px;
-  left: -7px;
-  position: absolute;
-  top: -7px;
-  width: 32px;
-}
-/* line 71, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked {
-  margin-left: 82%;
-}
-/* line 74, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked:before {
-  left: -72px;
-  content: "Private";
-}
-/* line 79, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked:after {
-  background: url("/images/assets/switch_private.svg") no-repeat center center #999999;
-  background-size: 43%;
-}
-
 /* line 90, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options {
   padding: 5px 10px 10px;
@@ -143,4 +75,82 @@
   padding: 6px 13px;
   float: right;
   width: 100%;
+}
+
+/* line 126, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-label {
+  border: 1px solid #444;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  font-family: 'Arial';
+  font-size: .875em;
+  height: 28px;
+  overflow: hidden;
+  position: relative;
+  width: 100px;
+}
+
+/* line 139, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox {
+  margin: 3px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 146, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox ~ .new-roll-status-description {
+  display: block;
+  font: 0/0 a;
+  line-height: 1.231;
+  height: inherit;
+  overflow: hidden;
+  padding-left: 41px;
+  padding-top: 2px;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+/* line 158, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox ~ .new-roll-status-description:before {
+  content: "Public";
+  font: normal 14px/1.231 sans-serif;
+}
+
+/* line 163, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox ~ .new-roll-status-chrome {
+  background: #666;
+  border-radius: 3px;
+  border: 1px solid #444;
+  box-shadow: 0 0 3px 1px #444;
+  content: "\0020";
+  display: block;
+  left: -1px;
+  margin: 0px;
+  position: absolute;
+  height: inherit;
+  top: -1px;
+  width: 24px;
+}
+
+/* line 178, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked {
+  left: 75px;
+}
+
+/* line 182, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked ~ .new-roll-status-description {
+  text-align: left;
+  padding-left: 16px;
+}
+
+/* line 187, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked ~ .new-roll-status-description:before {
+  content: "Private";
+}
+
+/* line 191, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+.new-roll-status-checkbox:checked ~ .new-roll-status-chrome {
+  left: 76px;
 }
