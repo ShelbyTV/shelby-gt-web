@@ -25,7 +25,14 @@
   
     render : function(){
       this.$el.html(this.template());
-      this._recipientsAutocompleteView = new AutoCompleteView({el:this.$('#new-roll-recipients')[0]});
+      var emailAutocomplete = [];
+      if (_(shelby.models.user.get('autocomplete')).has('email')) {
+        emailAutocomplete = shelby.models.user.get('autocomplete').email;
+      }
+      this._recipientsAutocompleteView = new AutoCompleteView({
+        el : this.$('#new-roll-recipients')[0],
+        source : emailAutocomplete
+      });
       this.renderChild(this._recipientsAutocompleteView);
     },
   
@@ -34,7 +41,7 @@
       
       if( !this._validateForm() ){ 
         this._frameRollingState.set('doShare', ShareActionState.failed);
-        return; 
+        return;
       }
   
       this._frameRollingState.set({doShare:ShareActionState.share});
