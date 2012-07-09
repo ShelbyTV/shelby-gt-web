@@ -6,3 +6,10 @@
   position: absolute;
   z-index: 1000;
 }
+/* line 11, ../../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li a {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  color: #222;
+  display: block;
+  text-decoration: none;
+}

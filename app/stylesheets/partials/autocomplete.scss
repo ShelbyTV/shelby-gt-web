@@ -6,6 +6,15 @@
 	list-style: none;
 	position: absolute;
 	z-index: 1000;
+
+	li {
+		a {
+			@include inputfont;
+			color: #222;
+			display: block;
+			text-decoration: none;
+		}
+	}
 }
 
 
