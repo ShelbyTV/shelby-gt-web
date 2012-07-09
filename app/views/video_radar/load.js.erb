@@ -411,16 +411,23 @@ window.shelbyBookmarklet = {
 
                         var shelbyFrameId = shelbyJ("." + shareButton.getAttribute("data-frameclass")).attr("data-shelbyframeid");
                         var shelbyShareSubmit = utilObject.shelbyDocElements['shareSubmit'];
+                        shelbyShareSubmit.off('click');
                         if (shelbyFrameId === undefined) {
                             var shelbySubmit = function (response) {
                                     utilObject.htmlTemplate.adjustFrameHeader(response.result, shareButton.getAttribute('data-frameclass'), false);
                                     utilObject.shelbyAjaxCall.shelbyApiShare(response.result.id);
                                 }
-                            shelbyShareSubmit.on('click', function () {
-                                utilObject.shelbyAjaxCall.shelbyApiRoll(shareButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbySubmit);
+                                shelbyShareSubmit.on('click', function () {
+                                    if (shelbyShareSubmit.hasClass("<%=@prefix%>js_sharing")) {
+                                        return;
+                                    }
+                                    utilObject.shelbyAjaxCall.shelbyApiRoll(shareButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, shelbySubmit);
                             });
                         } else {
                             shelbyShareSubmit.on('click', function () {
+                                if (shelbyShareSubmit.hasClass("<%=@prefix%>js_sharing")) {
+                                    return;
+                                }
                                 utilObject.shelbyAjaxCall.shelbyApiShare(shelbyFrameId);
                             });
                         }
@@ -490,7 +497,6 @@ window.shelbyBookmarklet = {
                     var networkImgs = utilObject.shelbyDocElements["shareNetworks"];
                     for (var i = 0; i < networkImgs.length; i++) {
                         var networkimg = networkImgs[i];
-                        console.log(networkimg);
                         if (networkimg.hasClass('active')) {
                             destinationstring.push(networkimg.data("dest"));
                         }
@@ -500,9 +506,11 @@ window.shelbyBookmarklet = {
                         'destination': destinationstring,
                         'text': utilObject.shelbyDocElements['shareText'].val()
                     };
+                    var shareCompleteCb = utilObject.displaySpinnerOnButton(utilObject.shelbyDocElements['shareSubmit']);
                     shelbyJ.ajax({
                         type: "GET",
                         dataType: "jsonp",
+                        timeout: 10000,
                         data: dataReq,
                         url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/frame/" + apiFrameId + "/share",
                         xhrFields: {
@@ -515,12 +523,13 @@ window.shelbyBookmarklet = {
                                 alertString += destinationstring[i] + ", ";
                             }
                             alertString += destinationstring[i] + ".";
-                            alert(alertString);
                         },
                         error: function (xhr, textStatus, errorThrown) {
                             alert("Unable to share video");
+                        },
+                        complete: function() {
+                            shareCompleteCb();
                         }
-
                     });
                 },
 
@@ -569,7 +578,7 @@ window.shelbyBookmarklet = {
                     reqData = {
                         'url': vid_url,
                     };
-
+                    
                     shelbyJ.ajax({
                         type: 'GET',
                         url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/roll/' + roll_id + '/frames',
@@ -581,7 +590,6 @@ window.shelbyBookmarklet = {
                             withCredentials: true
                         },
                         success: function (response) {
-                            console.log(response);
                             callback(response)
                         },
                         error: function () {
@@ -807,7 +815,7 @@ window.shelbyBookmarklet = {
                     shelbyJ('#<%=@prefix%>share-guide-window').append('<div class="<%=@prefix%>frame-sharing">' + '<div class="<%=@prefix%>share-form clearfix">' + '<fieldset class="<%=@prefix%>share-comment">' + '<label for="<%=@prefix%>share-textarea" class="<%=@prefix%>share-label"> Comment </label>' + '<textarea name="<%=@prefix%>share-textarea" id="<%=@prefix%>share-textarea" class="<%=@prefix%>share-textarea" placeholder="Add a message..." rows="2"></textarea>' + '</fieldset>' + '<fieldset class="<%=@prefix%>share-networks"> ' + '<label class="<%=@prefix%>share-label" for="<%=@prefix%>share-networks-list">Share to</label>' + '<ul class="<%=@prefix%>share-networks-list">' + '<li class="' + (contains("twitter") ? 'active ' : '') + '<%=@prefix%>networks-twitter <%=@prefix%>networks-list" data-dest="twitter" ' + (contains("twitter") ? '' : 'hidden') + ">" + '<button onclick="return false;" class="ir <%=@prefix%>networks-twitter-button"> Twitter </button>' + '</li>' + '<li class="' + (contains("facebook") ? 'active ' : '') + '<%=@prefix%>networks-facebook <%=@prefix%>networks-list" data-dest="facebook" ' + (contains("facebook") ? '' : 'hidden') + ">" + '<button onclick="return false;" class="ir <%=@prefix%>networks-facebook-button"> Facebook </button>' + '</li>' + '</ul>' + '</fieldset>' + '<fieldset class="<%=@prefix%>share-submit"> ' + '<button class="<%=@prefix%>share-submit-button" type="submit"> Share it</button>' + '</fieldset>' + '</div></div>');
 
                     shelbyJ(".<%=@prefix%>networks-twitter").click(function () {
-                        shelbyJ(".<%=@prefix%>networks-facebook").toggleClass("active");
+                        shelbyJ(".<%=@prefix%>networks-twitter").toggleClass("active");
                     });
                     shelbyJ(".<%=@prefix%>networks-facebook").click(function () {
                         shelbyJ(".<%=@prefix%>networks-facebook").toggleClass("active");
@@ -881,6 +889,15 @@ window.shelbyBookmarklet = {
                 }
             },
 
+            displaySpinnerOnButton: function (jQueryButton) {
+                jQueryButton.addClass("<%=@prefix%>js_sharing");
+                var content = jQueryButton.html();
+                jQueryButton.html('<img src="http://<%= Settings::VideoRadar.web_domain%>/images/assets/loading-small.gif"/>');
+                return function () {
+                  jQueryButton.html(content);
+                  jQueryButton.removeClass("<%=@prefix%>js_sharing");
+                }
+            },
 
             allGuides: {
                 "<%=@prefix%>roll-guide": "Roll",
@@ -952,6 +969,7 @@ shelbyInit: function (opts, useUrl, urlProvider) {
         }
     }
 }
+
 function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)}; 
 
 var loadBookmarklet = function(useUrl, useProvider) {
