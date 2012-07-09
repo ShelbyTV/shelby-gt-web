@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
     # the url is a frame
       frame_id = path_match[1]
       video_info = Shelby::API.get_video_info(frame_id)
-      if video_info
+      if video_info and video_info['video'] and video_info['frame']
         video_embed = video_info['video']['embed_url']
         frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
         roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
@@ -56,11 +56,13 @@ class ApplicationController < ActionController::Base
       roll_id = path_match[1]
       video_info = Shelby::API.get_first_frame_on_roll(roll_id)
       if video_info
-        video_embed = video_info['video']['embed_url']
+        video_embed = video_info['video']['embed_url'] if video_info['video']
         user_info = Shelby::API.get_user_info(video_info['roll']['creator_id'])
         roll_info = video_info['roll']
-        frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
-        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
+        if video_info['frame']
+          frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
+          roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id']) 
+        end
         user_permalink = Shelby::API.generate_user_route(user_info['nickname']) if user_info
       end
       return {  :roll => {  :roll_info => roll_info,
