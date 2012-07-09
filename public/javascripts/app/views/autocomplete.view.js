@@ -66,7 +66,7 @@
         tagName : "ul"
       });
       this.renderChild(this._menu);
-      this._menu.$el.appendTo('body');
+      this.$el.after(this._menu.el);
     },
 
     select : function () {
@@ -91,13 +91,15 @@
     },
 
     show : function () {
-        var pos = $.extend({}, this.$el.offset(), {
-          height: this.el.offsetHeight
+        var pos = $.extend({}, this.$el.position(), {
+          height: this.el.clientHeight,
+          width: this.el.clientWidth
         });
 
         this._menu.$el.css({
           top: pos.top + pos.height,
-          left: pos.left
+          left: pos.left,
+          width: pos.width + 2 //+2 compensates for border thickness
         });
 
         this._menu.$el.show();
