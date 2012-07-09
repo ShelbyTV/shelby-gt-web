@@ -38,6 +38,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
+    if (this._components.emailAddresses) {
+      var emailAutocomplete = [];
+      if (_(shelby.models.user.get('autocomplete')).has('email')) {
+        emailAutocomplete = shelby.models.user.get('autocomplete').email;
+      }
+      var recipientsAutocompleteView = new libs.shelbyGT.AutoCompleteView({
+        el : this.$('.js-share-email-addresses')[0],
+        multiTerm : true,
+        source : emailAutocomplete
+      });
+      this.renderChild(recipientsAutocompleteView);
+    }
     if (this._components.spinner) {
       this.spinner = new libs.shelbyGT.SpinnerView({
         el: this.$('.js-submit-share')[0],

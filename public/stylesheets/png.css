@@ -68,11 +68,11 @@
 }
 /* line 115, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-twitter:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1338995882');
+  content: url('/images/../images/assets/twitter_stamp.png?1338389592');
 }
 /* line 121, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.png?1338995882');
+  content: url('/images/../images/assets/facebook_stamp.png?1338389592');
 }
 /* line 127, ../../app/stylesheets/png.scss */
 .no-svg .video-player-play {

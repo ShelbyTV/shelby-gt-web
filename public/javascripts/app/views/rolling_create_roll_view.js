@@ -29,18 +29,18 @@
       if (_(shelby.models.user.get('autocomplete')).has('email')) {
         emailAutocomplete = shelby.models.user.get('autocomplete').email;
       }
-      this._recipientsAutocompleteView = new AutoCompleteView({
-        el : this.$('#new-roll-recipients')[0],
+      var recipientsAutocompleteView = new AutoCompleteView({
+        el : this.$('.js-roll-options-input-email')[0],
         multiTerm : true,
         source : emailAutocomplete
       });
-      this.renderChild(this._recipientsAutocompleteView);
+      this.renderChild(recipientsAutocompleteView);
     },
   
     rollToNew : function(){
       var self = this;
       
-      if( !this._validateForm() ){ 
+      if( !this._validateForm() ){
         this._frameRollingState.set('doShare', ShareActionState.failed);
         return;
       }
