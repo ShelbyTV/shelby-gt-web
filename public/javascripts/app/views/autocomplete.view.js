@@ -39,7 +39,9 @@
       items: 8,
       item: '<li><a href="#"></a></li>',
       menuTag : "ul",
-      menuClass : "autocomplete-menu"
+      menuClass : "autocomplete-menu",
+      multiTerm : false,
+      separator : /,\s*/
     },
 
     events : function() {
@@ -59,13 +61,25 @@
     },
 
     initialize : function() {
-      this._menu = new AutoCompleteDropDownView({tagName : "ul", className: this.options.menuClass + " js-autocomplete-menu"});
+      this._menu = new AutoCompleteDropDownView({
+        className: this.options.menuClass + " js-autocomplete-menu",
+        tagName : "ul"
+      });
       this.renderChild(this._menu);
       this._menu.$el.appendTo('body');
     },
 
     select : function () {
         var val = this._menu.$('.active').attr('data-value');
+
+        if (this.options.multiTerm) {
+          terms = this.$el.val().split(this.options.separator);
+          terms.pop();
+          terms.push(val);
+          terms.push("");
+          val = terms.join(", ");
+        }
+
         this.$el
           .val(this.updater(val))
           .change();
@@ -103,6 +117,10 @@
           q;
 
       this.query = this.$el.val();
+
+      if (this.options.multiTerm) {
+        this.query = _(this.query.split(this.options.separator)).last();
+      }
 
       if (!this.query) {
         return this._shown ? this.hide() : this;

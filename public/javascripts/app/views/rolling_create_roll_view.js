@@ -31,6 +31,7 @@
       }
       this._recipientsAutocompleteView = new AutoCompleteView({
         el : this.$('#new-roll-recipients')[0],
+        multiTerm : true,
         source : emailAutocomplete
       });
       this.renderChild(this._recipientsAutocompleteView);
