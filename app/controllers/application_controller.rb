@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
         roll_info = video_info['roll']
         frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
         roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
-        user_permalink = Shelby::API.generate_user_route(user_info['nickname'])
+        user_permalink = Shelby::API.generate_user_route(user_info['nickname']) if user_info
       end
       return {  :roll => {  :roll_info => roll_info,
                             :roll_permalink => roll_permalink,
