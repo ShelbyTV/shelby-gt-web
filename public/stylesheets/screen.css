@@ -1658,7 +1658,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 }
 /* line 79, ../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .video-card-header-collapsed a:hover, .frame-share-header a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* line 85, ../../app/stylesheets/partials/frame.scss */

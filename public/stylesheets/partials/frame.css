@@ -81,7 +81,7 @@
 }
 /* line 79, ../../../app/stylesheets/partials/frame.scss */
 .video-card-header a:hover, .video-card-header-collapsed a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* line 85, ../../../app/stylesheets/partials/frame.scss */
