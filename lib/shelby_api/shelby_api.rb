@@ -32,9 +32,13 @@ module Shelby
     def self.get_first_frame_on_roll(roll_id)
       r = get( "/roll/#{roll_id}/frames?include_children=true&limit=1" ).parsed_response
       return nil if r['status'] != 200
-      f0 = r['result']['frames'][0]
-      f0['video']["thumbnail_url"] ||= "#{Settings::Application..missing_thumb_url}"
-      {'frame' => f0, 'video' => f0['video'], 'roll' => r['result']}
+      if r['result']['frames'] and r['result']['frames'].is_a?(Array)
+        f0 = r['result']['frames'][0]
+        f0['video']["thumbnail_url"] ||= "#{Settings::Application..missing_thumb_url}"
+        {'frame' => f0, 'video' => f0['video'], 'roll' => r['result']}
+      else
+        {'frame' => nil, 'video' => nil, 'roll' => nil}
+      end
     end
         
     def self.generate_frame_route(roll_id, frame_id)
