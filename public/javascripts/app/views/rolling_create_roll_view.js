@@ -2,7 +2,7 @@
   
   var RollModel = libs.shelbyGT.RollModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
-  var AutoCompleteView = libs.shelbyGT.AutoCompleteView;
+  var EmailAddressAutocompleteView = libs.shelbyGT.EmailAddressAutocompleteView;
 
   // Subclass with a view that has class, tag, or id (not el) and this will handle
   libs.shelbyGT.RollingCreateRollView = Support.CompositeView.extend({
@@ -25,14 +25,9 @@
   
     render : function(){
       this.$el.html(this.template());
-      var emailAutocomplete = [];
-      if (_(shelby.models.user.get('autocomplete')).has('email')) {
-        emailAutocomplete = shelby.models.user.get('autocomplete').email;
-      }
-      var recipientsAutocompleteView = new AutoCompleteView({
+      var recipientsAutocompleteView = new EmailAddressAutocompleteView({
         el : this.$('.js-roll-options-input-email')[0],
-        multiTerm : true,
-        source : emailAutocomplete
+        multiTerm : true
       });
       this.renderChild(recipientsAutocompleteView);
     },

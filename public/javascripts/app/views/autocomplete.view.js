@@ -28,7 +28,7 @@
     }
   });
 
-  libs.shelbyGT.AutoCompleteView = Support.CompositeBehaviorView.extend({
+  libs.shelbyGT.AutocompleteView = Support.CompositeBehaviorView.extend({
 
     _menu : null,
 
@@ -128,7 +128,7 @@
         return this._shown ? this.hide() : this;
       }
 
-      items = $.grep(this.options.source, function (item) {
+      items = $.grep(_(this.options).result('source'), function (item) {
         return that.matcher(item);
       });
 
