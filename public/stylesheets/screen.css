@@ -3305,7 +3305,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   float: right;
 }
 
-/* line 332, ../../app/stylesheets/_base.scss */
+/* line 335, ../../app/stylesheets/_base.scss */
 .networks-twitter button,
 .networks-facebook button {
   border-radius: 3px;
@@ -3599,7 +3599,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-left: 0;
 }
 
-/* line 318, ../../app/stylesheets/_base.scss */
+/* line 321, ../../app/stylesheets/_base.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -4641,6 +4641,59 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 48, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
+}
+
+/* line 3, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu {
+  border-radius: 0 0 5px 5px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  float: left;
+  font-size: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1000;
+}
+/* line 17, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li {
+  background-color: #efefef;
+}
+/* line 21, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li a {
+  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
+  color: #888;
+  display: block;
+  font-weight: 100;
+  padding: .5em;
+  text-decoration: none;
+}
+/* line 31, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li strong {
+  color: #333;
+  font-weight: 500;
+}
+/* line 37, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li.active {
+  background-color: #428e3a;
+}
+/* line 41, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li.active a {
+  color: #96d190;
+}
+/* line 44, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li.active a:hover {
+  text-decoration: underline;
+}
+/* line 49, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li.active strong {
+  color: #fff;
+}
+/* line 54, ../../app/stylesheets/partials/autocomplete.scss */
+.autocomplete-menu li:last-child {
+  border-radius: 0 0 4px 4px;
 }
 
 /* line 1, ../../app/stylesheets/partials/h5bp-utilities.scss */
