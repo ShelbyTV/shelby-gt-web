@@ -281,11 +281,18 @@
       this._skipVideo(1);
     },
 
-    // appropriatly changes the next video (in dashboard or a roll)
+    // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
+
+      // undefined skip causes infinite loop below... so just return here?
+      if (!skip) {
+        return;
+      } 
+
       var self = this,
           _frames,
-          _index,
+          _index = -1,
+          _currentFrameIndex = -1,
           _currentFrame = this.model.get('activeFrameModel');
       
       if (this.model.get('playingState') == PlayingState.dashboard) {
@@ -296,14 +303,37 @@
 
       var _frameInCollection = _(_frames).find(function(frame){return frame.id == _currentFrame.id;});
       if (_frameInCollection) {
-        _index = _frames.indexOf(_frameInCollection) + skip;
-        if (_index < 0) {
-          _index = _frames.length - 1;
-        } else {
-         _index = _index % _frames.length;
-        }
+        _currentFrameIndex = _frames.indexOf(_frameInCollection);
+        _index = _currentFrameIndex + skip;
       } else {
-        _index = 0;
+        _currentFrameIndex = 0;
+      }
+
+      // loop to skip collapsed frames (looping should only happen in dashboard view)
+      while (true) {
+
+        // bad index means we just stay on current video...
+        if (_index < 0) {
+          _index = _currentFrameIndex;
+          break;
+        } else if (_index >= _frames.length) {
+          // ideally would load more videos here? do something like _loadMoreWhenLastItemActive
+          _index = _currentFrameIndex;
+          break;
+        }
+
+        if (!_frames) {
+          _index = 0;
+          break;
+        }
+
+        var _indexFrameInCollection = _frames[_index];
+
+        if (_indexFrameInCollection.get('collapsed')) {
+          _index = _index + skip; // keep looking for a non-collapsed frame to play
+        } else {
+          break; // otherwise we have a good non-collapsed frame to play
+        }
       }
 
       this.model.set({
