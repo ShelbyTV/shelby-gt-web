@@ -142,7 +142,10 @@
     },
 
     matcher : function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase());
+      var itemLowerCase = item.toLowerCase();
+      var queryLowerCase = this.query.toLowerCase();
+      // don't match exactly equal strings if we are autocompleting multiple terms - it makes for bad UX
+      return ~itemLowerCase.indexOf(queryLowerCase) && (!this.options.multiTerm || itemLowerCase != queryLowerCase);
     },
 
     sorter : function (items) {
