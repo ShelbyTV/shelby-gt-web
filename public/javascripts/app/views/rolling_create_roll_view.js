@@ -2,6 +2,7 @@
   
   var RollModel = libs.shelbyGT.RollModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
+  var EmailAddressAutocompleteView = libs.shelbyGT.EmailAddressAutocompleteView;
 
   // Subclass with a view that has class, tag, or id (not el) and this will handle
   libs.shelbyGT.RollingCreateRollView = Support.CompositeView.extend({
@@ -9,7 +10,7 @@
     events : {
       "click #new-roll-create" : 'rollToNew',
       "focus #new-roll-name" : "_onFocusRollName",
-      "focus #new-roll-receipients" : "_onFocusRollRecipients"
+      "focus #new-roll-recipients" : "_onFocusRollRecipients"
     },
   
     className : 'create-roll clearfix',
@@ -24,14 +25,19 @@
   
     render : function(){
       this.$el.html(this.template());
+      var recipientsAutocompleteView = new EmailAddressAutocompleteView({
+        el : this.$('.js-roll-options-input-email')[0],
+        multiTerm : true
+      });
+      this.renderChild(recipientsAutocompleteView);
     },
   
     rollToNew : function(){
       var self = this;
       
-      if( !this._validateForm() ){ 
+      if( !this._validateForm() ){
         this._frameRollingState.set('doShare', ShareActionState.failed);
-        return; 
+        return;
       }
   
       this._frameRollingState.set({doShare:ShareActionState.share});
@@ -98,7 +104,7 @@
 
     _onFocusRollRecipients : function(){
       // remove the error highlight from the roll title input on focus if there is one
-      this.$('#new-roll-receipients').removeClass('error');
+      this.$('#new-roll-recipients').removeClass('error');
     }
   
   });

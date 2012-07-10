@@ -1,0 +1,55 @@
+@import "base";
+
+.autocomplete-menu {	
+	@include roundies(footer);
+
+	border-left: 1px solid $inset;
+	border-right: 1px solid $inset;
+	border-bottom: 1px solid $inset;
+	float: left;
+	font-size: 12px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	z-index: 1000;
+
+	li {
+		background-color: #efefef;
+
+		a {
+			@include inputfont;
+
+			color: #888;
+			display: block;
+			font-weight: 100;
+			padding: .5em;
+			text-decoration: none;
+		}
+
+		strong {
+			color: #333;
+			font-weight: 500;
+		}
+	}
+
+	li.active {
+		background-color: $shelby-green;
+
+		a {
+			color: adjust-lightness($shelby-green, 30%);
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		strong {
+			color: #fff;
+		}
+	}
+
+	li:last-child {
+		border-radius: 0 0 4px 4px;
+	}
+}
