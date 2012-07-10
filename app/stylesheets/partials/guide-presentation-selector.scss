@@ -10,7 +10,7 @@
   @extend .notype;
   @include x-tab-primer($guide-presentation-tab-bg-color);
   @include background(
-    url("../images/assets/stream.svg") no-repeat 7px -1px,
+    url("../images/assets/stream.svg") no-repeat center center,
     linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-color, 10%), $guide-presentation-tab-bg-color)
   );
   @include roundies;
@@ -57,7 +57,7 @@
     
     &.guide-presentation-stream {
       @include background(
-        url("../images/assets/stream.svg") no-repeat 7px -1px,
+        url("../images/assets/stream.svg") no-repeat center center,
         linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
       );
       box-shadow: inset 0 1px 1px 0 adjust-lightness($guide-presentation-tab-bg-selected,2%);

@@ -186,6 +186,12 @@
 	padding-left: 0;
 }
 
+.share-networks-item {
+	float: left;
+	list-style-type:none;
+	margin-right: 10px;
+}
+
 .share-submit-button {
 	@include x-button-primer($shelby-blue);
 

@@ -13,21 +13,21 @@
   width: 50%;
 }
 
-/* line 90, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 23, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options {
   padding: 5px 10px 10px;
   border-top: 1px solid #343434;
   border-bottom: 1px solid black;
 }
 
-/* line 96, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 29, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-label {
   font-size: 14px;
   font-weight: 500;
   line-height: 2;
 }
 
-/* line 100, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 33, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -39,7 +39,7 @@
   margin-bottom: 5px;
   width: 100%;
 }
-/* line 111, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 44, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -57,7 +57,7 @@
   opacity: 1;
 }
 
-/* line 119, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 52, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .roll-options-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -77,7 +77,7 @@
   width: 100%;
 }
 
-/* line 126, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 59, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-label {
   border-radius: 5px;
   border: 1px solid black;
@@ -91,7 +91,7 @@
   width: 126px;
 }
 
-/* line 140, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 73, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -113,13 +113,13 @@
   top: 0;
   width: 1px;
 }
-/* line 153, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 86, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:focus {
   border: none;
   outline: none;
 }
 
-/* line 159, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 92, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox ~ .new-roll-status-description {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -145,14 +145,14 @@
   text-shadow: none;
 }
 
-/* line 176, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 109, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox ~ .new-roll-status-description:before {
   color: #efefef;
   content: "Public";
   font: 300 12px/2 "Ubuntu", Trebuchet MS, sans-serif;
 }
 
-/* line 182, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 115, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox ~ .new-roll-status-chrome {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -169,7 +169,7 @@
   border-radius: 5px;
   background-color: #999;
   background-image: url("/images/assets/switch_public.svg");
-  background-position: 3px center;
+  background-position: 4px center;
   background-repeat: no-repeat;
   border: 1px solid #4d4d4d;
   box-shadow: inset 0px 1px 0px 0px #a6a6a6;
@@ -180,28 +180,28 @@
   position: absolute;
   height: inherit;
   top: -1px;
-  width: 34px;
+  width: 35px;
 }
 
-/* line 205, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 138, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked {
   left: 96px;
 }
 
-/* line 209, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 142, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked ~ .new-roll-status-description {
   text-align: left;
   padding-left: 26px;
 }
 
-/* line 214, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 147, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked ~ .new-roll-status-description:before {
   content: "Private";
 }
 
-/* line 218, ../../../app/stylesheets/partials/frame-rolling-options.scss */
+/* line 151, ../../../app/stylesheets/partials/frame-rolling-options.scss */
 .new-roll-status-checkbox:checked ~ .new-roll-status-chrome {
   background-image: url("/images/assets/switch_private.svg");
-  background-position: center center;
-  left: 90px;
+  background-position: 9px center;
+  left: 89px;
 }

@@ -20,73 +20,6 @@
   }
 }
 
-//.new-roll-status {
-//  @include roundies;
-
-//  display: block;
-//  border: 1px solid $inset;
-//  overflow: hidden;
-//  padding: 7px;
-//  width: 126px;
-//}
-
-//.new-roll-status-checkbox {
-//  @include transition-property('margin');
-//  @include transition-duration(0.25s);
-//  @include transition-timing-function(ease-out);
-
-//  cursor: pointer;
-//  float: left;
-//  position: relative;
-
-//  &:before {
-//    color: $button-color;
-//    content: "Public";
-//    font:500 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
-//    left: 53px;
-//    position: absolute;
-//    top: 0;
-//  }
-
-//  &:after {
-//    background-color: gray;
-//    @include background(
-//      url('/images/assets/switch_public.svg') no-repeat 5px 5px #999//,
-////      linear-gradient(top, adjust-lightness(#666, 20%), #666)
-//      );
-//    @include box-highlight(#666);
-//    @include roundies;
-
-//    background-size: 56%;
-//    border: 1px solid adjust-lightness(#666, -10%);
-//    content: "\0020";
-//    display: block;
-//    height:25px;
-//    left: -7px;
-//    position: absolute;
-//    top: -7px;
-//    width: 32px;
-//  }
-
-//  &:checked {
-//    margin-left: 82%;
-
-//    &:before {
-//      left: -72px;
-//      content: "Private";
-//    }
-
-//    &:after {
-//      @include background(
-//        url('/images/assets/switch_private.svg') no-repeat center center #999//,
-//        //linear-gradient(top, adjust-lightness(#666, 10%), #999)
-//      );
-//      background-size: 43%;
-//    }
-//  }
-//}
-
-
 .roll-options {
   @include x-fieldset-primer;
   border-top: 1px solid $outset;
@@ -188,7 +121,7 @@
 
   background-color: #999;
   background-image: url('/images/assets/switch_public.svg');
-  background-position: 3px center;
+  background-position: 4px center;
   background-repeat: no-repeat;
   border: 1px solid #4d4d4d;
   box-shadow: inset 0px 1px 0px 0px #a6a6a6;
@@ -199,7 +132,7 @@
   position: absolute;
   height: inherit;
   top:-1px;
-  width: 34px;
+  width: 35px;
 }
 
 .new-roll-status-checkbox:checked {
@@ -217,7 +150,7 @@
 
 .new-roll-status-checkbox:checked ~ .new-roll-status-chrome {
   background-image: url('/images/assets/switch_private.svg');
-  background-position: center center;
-  left: 90px;
+  background-position: 9px center;
+  left: 89px;
 }
 
