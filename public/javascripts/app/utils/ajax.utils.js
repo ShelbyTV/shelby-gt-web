@@ -2,10 +2,7 @@ libs.shelbyGT.Ajax = {
   // default error handling for ajax calls in the Shelby app
   defaultOnError : function(event, jqXHR, ajaxSettings, thrownError){
     switch(jqXHR.status){
-      case 401:
-        //user is not authenticated, tried to take action requiring auth
-        document.location = "/signout?error=401";
-        break;
+      //401 is always handled globally, see app.js
       case 403:
         shelby.alert("You are not authorized to do that");
         break;
