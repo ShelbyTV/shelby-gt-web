@@ -190,6 +190,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         shelby.views.guide._listView.updateFilter(function(model){
           return model.get('frame').get('creator').get('faux') != 1;
         });
+      } 
+      // filtering out non-gt_enabled users
+      if ($.getUrlParam("gt") == 1){
+        shelby.views.guide._listView.updateFilter(function(model){
+          return model.get('frame').get('creator').get('gt_enabled') == true;
+        });
       }
       
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
