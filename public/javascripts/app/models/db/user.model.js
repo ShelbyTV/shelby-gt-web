@@ -39,6 +39,21 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var personalRoll = new libs.shelbyGT.RollModel({id:result.personal_roll_id});
     result.personal_roll = personalRoll;
     return result;
+  },
+
+  push_autocomplete_entries : function(key, entries) {
+    if (!_(this.get('autocomplete')).has(key)) {
+      this.get('autocomplete')[key] = [];
+    }
+    var entriesArray = entries.split(/,\s*/);
+    entriesArray = _(entriesArray).chain().map(function(entry){
+                    return entry.trim();
+                   }).filter(function(entry){
+                    // only save email addresses if they are valid ones
+                    return (key != 'email' || entry.search(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/) != -1);
+                   }).value();
+    var self = this;
+    self.get('autocomplete')[key] = _.union(self.get('autocomplete')[key], entriesArray);
   }
 
 });

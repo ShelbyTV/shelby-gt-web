@@ -16,7 +16,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     "click .js-submit-share:not(.js-sharing)" : "_share",
     "keyup .js-share-textarea" : "_onUpdateShareText",
     "focus .js-share-textarea" : "_onFocusShareText",
-    "keyup .js-share-email-addresses" : "_onUpdateAddresses",
     "focus .js-share-email-addresses" : "_onFocusAddresses",
     "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
     "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
@@ -77,11 +76,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     // remove the error highlight from this text area on focus if there is one
     this.$('.js-share-textarea').removeClass('error');
   },
-  
-  _onUpdateAddresses : function(event){
-    this.model.set('addresses', this.$('.js-share-email-addresses').val());
-  },
-  
+
   _onFocusAddresses : function(event){
     this.$('.js-share-email-addresses').removeClass('error');
   },
@@ -154,6 +149,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     var urls = typeof(this.saveUrl) === 'function' ? this.saveUrl() : this.saveUrl;
     if (!$.isArray(urls)) {
       urls = [urls];
+    }
+    if (this._components.emailAddresses) {
+      this.model.set('addresses', this.$('.js-share-email-addresses').val());
     }
     this.model.save(null, this._getSaveOpts(urls));
     return false;
