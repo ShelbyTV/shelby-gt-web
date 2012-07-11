@@ -27,13 +27,13 @@
 }
 /* line 57, ../../app/stylesheets/png.scss */
 .no-svg .networks-twitter.active {
-  background: #00a2d1;
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #05c7ff), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-linear-gradient(top, #05c7ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -moz-linear-gradient(top, #05c7ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -o-linear-gradient(top, #05c7ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #05c7ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #05c7ff, #00a2d1);
+  background: #2caae1;
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59bce7), color-stop(100%, #2caae1));
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -moz-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -o-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #59bce7, #2caae1);
 }
 /* line 66, ../../app/stylesheets/png.scss */
 .no-svg .networks-facebook {
@@ -68,11 +68,11 @@
 }
 /* line 115, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-twitter:before {
-  content: url('/images/../images/assets/twitter_stamp.png?1338389592');
+  content: url('/images/../images/assets/twitter_stamp.png?1335815212');
 }
 /* line 121, ../../app/stylesheets/png.scss */
 .no-svg .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.png?1338389592');
+  content: url('/images/../images/assets/facebook_stamp.png?1335813888');
 }
 /* line 127, ../../app/stylesheets/png.scss */
 .no-svg .video-player-play {

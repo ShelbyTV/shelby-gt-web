@@ -145,16 +145,22 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include box-highlight($primer-color);
 	@include buttonfont;
 	@include text-shadow(0px -1px 0px #333);
-	border: 1px solid adjust-lightness($primer-color,-20%);
+
+	@if $primer-color == $twitter-blue {
+		border: 1px solid adjust-lightness($primer-color,-40%);
+	} @else {
+		border: 1px solid adjust-lightness($primer-color,-20%);
+	}
 	color: $button-color;
 	font-size: 11px;
 	line-height: 2.5;
-	padding-left: 33px;
+//	padding-left: 33px;
+	padding-left: 15px;
 	position: relative;
 
 	&:before{
 		background-repeat: no-repeat;
-		border-right: 1px solid adjust-lightness($primer-color, 20%);
+//		border-right: 1px solid adjust-lightness($primer-color, 20%);
 		bottom: 1px;
 		content: "\0020";
 		float: left;
@@ -179,7 +185,7 @@ $network-image : $icon-rolls-share-twitter-on !default;
 	@include x-logged-out-networks-buttons($facebook-blue);
 	&:before{
 		background-image: url($icon-rolls-share-facebook-on);
-		background-position: 1px 0px;
+		background-position: 1px -1px;
 		background-size: 95%;
 	}
 }

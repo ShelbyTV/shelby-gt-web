@@ -337,13 +337,13 @@
 }
 /* line 227, ../../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
-  background-color: #00a2d1;
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #38d2ff), color-stop(100%, #00a2d1));
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #38d2ff, #00a2d1);
-  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #38d2ff, #00a2d1);
+  background-color: #2caae1;
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #85ceee), color-stop(100%, #2caae1));
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -webkit-linear-gradient(top, #85ceee, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -moz-linear-gradient(top, #85ceee, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -o-linear-gradient(top, #85ceee, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, -ms-linear-gradient(top, #85ceee, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.svg") no-repeat 1px 5px, linear-gradient(top, #85ceee, #2caae1);
 }
 
 /* line 238, ../../../app/stylesheets/partials/rolls.scss */
