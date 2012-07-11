@@ -2,7 +2,9 @@
 // global mechanism for including library prototypes
 //---------------------------------------------------------
 libs = {
-  shelbyGT : {},
+  shelbyGT : {
+    viewHelpers : {}
+  },
   utils : {}
 };
 

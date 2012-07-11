@@ -69,5 +69,24 @@
     }
 
   });
+  
+  libs.shelbyGT.RollModel.TYPES = {
+    // special rolls that have not yet been updated to their specific type default to :special_roll
+    special_roll : 10,
+    special_public : 11,
+    special_hearted : 12,
+    special_watch_later : 13,
+    // special rolls are < all_special_rolls (convenience)
+    all_special_rolls: 14,
+
+    // User-created non-collaborative public rolls (previously these were collaborative, we're changing that)
+    user_public : 30,
+    // Company-created collaborative public rolls
+    global_public : 31,
+    // User-created collaborative private rolls
+    user_private : 50,
+
+    genius : 70
+  };
 
 } ) ();

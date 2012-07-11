@@ -22,19 +22,17 @@
     },
 
     _filter : function(item) {
-      // the user can only post to certain rolls
-      if (item.get('creator_id') == shelby.models.user.id) {
-        return true;
-      }
-      if (!item.get('collaborative')) {
+      // doesn't make sense to post to my hearts
+      if (item.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
         return false;
       }
-      if (item.get('public')) {
+      // anything I created or is collaborative, I can post to
+      if (item.get('creator_id') == shelby.models.user.id || item.get('collaborative')) {
         return true;
       }
 
-      // if we got here, it's a private collaborative roll that I'm following, so I can post
-      return true;
+      // otherwise, it's non-collaborative and I can't post
+      return false;
     },
 
     _cleanup : function(){
