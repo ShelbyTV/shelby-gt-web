@@ -1,8 +1,9 @@
 /*
-Syntax error: Undefined mixin 'inputfont'.
-        on line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss, in `inputfont'
-        from line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss
+Syntax error: Undefined mixin 'roundies'.
+        on line 20 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss, in `roundies'
+        from line 20 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss
 
+15: 			margin-bottom:0;
 16: 		}
 17: 	}
 18: 
@@ -13,11 +14,10 @@ Syntax error: Undefined mixin 'inputfont'.
 23: 	}	
 24: 
 25: 	legend{
-26: 		font-size:16px;
 
 Backtrace:
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss:21:in `inputfont'
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss:21
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss:20:in `roundies'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss:20
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -104,4 +104,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'inputfont'.\A         on line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss, in `inputfont'\A         from line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss\A \A 16: 		}\A 17: 	}\A 18: \A 19: 	input{\A 20: 		@include roundies;\A 21: 		@include inputfont;\A 22: 		border:1px solid #222;\A 23: 	}	\A 24: \A 25: 	legend{\A 26: 		font-size:16px;"; }
+  content: "Syntax error: Undefined mixin 'roundies'.\A         on line 20 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss, in `roundies'\A         from line 20 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/user-preferences.scss\A \A 15: 			margin-bottom:0;\A 16: 		}\A 17: 	}\A 18: \A 19: 	input{\A 20: 		@include roundies;\A 21: 		@include inputfont;\A 22: 		border:1px solid #222;\A 23: 	}	\A 24: \A 25: 	legend{"; }

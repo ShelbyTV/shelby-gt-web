@@ -1,44 +1,22 @@
 /*
-Syntax error: Undefined mixin 'inputfont'.
-        on line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss, in `inputfont'
-        from line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss
+Syntax error: Undefined mixin 'roundies'.
+        on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss, in `roundies'
+        from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss
 
-16: 
-17: 	li {
-18: 		background-color: #efefef;
-19: 
-20: 		a {
-21: 			@include inputfont;
-22: 
-23: 			color: #888;
-24: 			display: block;
-25: 			font-weight: 100;
-26: 			padding: .5em;
+1: @import "base";
+2: 
+3: .autocomplete-menu {	
+4: 	@include roundies(footer);
+5: 
+6: 	border-left: 1px solid $inset;
+7: 	border-right: 1px solid $inset;
+8: 	border-bottom: 1px solid $inset;
+9: 	float: left;
 
 Backtrace:
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss:21:in `inputfont'
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss:21
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss:4:in `roundies'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss:4
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -114,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'inputfont'.\A         on line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss, in `inputfont'\A         from line 21 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss\A \A 16: \A 17: 	li {\A 18: 		background-color: #efefef;\A 19: \A 20: 		a {\A 21: 			@include inputfont;\A 22: \A 23: 			color: #888;\A 24: 			display: block;\A 25: 			font-weight: 100;\A 26: 			padding: .5em;"; }
+  content: "Syntax error: Undefined mixin 'roundies'.\A         on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss, in `roundies'\A         from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/autocomplete.scss\A \A 1: @import \"base\";\A 2: \A 3: .autocomplete-menu {	\A 4: 	@include roundies(footer);\A 5: \A 6: 	border-left: 1px solid $inset;\A 7: 	border-right: 1px solid $inset;\A 8: 	border-bottom: 1px solid $inset;\A 9: 	float: left;"; }

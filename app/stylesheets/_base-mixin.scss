@@ -1,3 +1,17 @@
+@mixin roundies($roundies-type){
+	@if $roundies-type == normal {
+		border-radius: $radius;	
+	} 
+	@else if $roundies-type == input {
+		border-radius: $radius - 2;
+	} 
+  @else if $roundies-type == header {
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $roundies-type == footer {
+    border-radius: 0 0 $radius $radius;
+  }
+}
 
 @mixin darkgradient {
 	background: $darkGradientBot;
@@ -17,20 +31,6 @@
 @mixin buttonfont{
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
-
-@mixin roundies($roundies-type){
-	@if $roundies-type == normal {
-		border-radius: $radius;	
-	} 
-	@else if $roundies-type == input {
-		border-radius: $radius - 2;
-	} 
-	@else if $roundies-type == header {
-		border-radius: $radius $radius 0 0;
-	}
-}
-
-
 
 @mixin gradient-primer($bottom-color, $bottom-color-adjust){
 	background-color: $bottom-color;
