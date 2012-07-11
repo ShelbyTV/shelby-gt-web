@@ -1,653 +1,94 @@
 /*
 Syntax error: Undefined mixin 'basefont'.
-        on line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss, in `basefont'
-        from line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss
-        from line 6 of /shelbytv/app/stylesheets/seovideo.scss
+        on line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss, in `basefont'
+        from line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss
+        from line 6 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/seovideo.scss
 
 6: 		"partials/seovideo.scss";
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/seovideo.scss:11:in `basefont'
-/shelbytv/app/stylesheets/partials/seovideo.scss:11
-/shelbytv/app/stylesheets/seovideo.scss:6
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2762727553043877011__call__1975143716994849724__callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss:11:in `basefont'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss:11
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/seovideo.scss:6
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2616787927388507919__call__3663342967110823108__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
 */
 body:before {
   white-space: pre;
-<<<<<<< HEAD
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'basefont'.\A         on line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss, in `basefont'\A         from line 11 of /shelbytv/app/stylesheets/partials/seovideo.scss\A         from line 6 of /shelbytv/app/stylesheets/seovideo.scss\A \A 6: 		\"partials/seovideo.scss\";"; }
-=======
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* line 30, ../../app/stylesheets/partials/h5bp.scss */
-q {
-  quotes: none;
-}
-
-/* line 31, ../../app/stylesheets/partials/h5bp.scss */
-q:before, q:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../app/stylesheets/partials/h5bp.scss */
-small {
-  font-size: 85%;
-}
-
-/* line 33, ../../app/stylesheets/partials/h5bp.scss */
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-/* line 34, ../../app/stylesheets/partials/h5bp.scss */
-sup {
-  top: -0.5em;
-}
-
-/* line 35, ../../app/stylesheets/partials/h5bp.scss */
-sub {
-  bottom: -0.25em;
-}
-
-/* line 37, ../../app/stylesheets/partials/h5bp.scss */
-ul, ol {
-  margin: 1em 0;
-  padding: 0 0 0 40px;
-}
-
-/* line 38, ../../app/stylesheets/partials/h5bp.scss */
-dd {
-  margin: 0 0 0 40px;
-}
-
-/* line 39, ../../app/stylesheets/partials/h5bp.scss */
-nav ul, nav ol {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* line 41, ../../app/stylesheets/partials/h5bp.scss */
-img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
-}
-
-/* line 42, ../../app/stylesheets/partials/h5bp.scss */
-svg:not(:root) {
-  overflow: hidden;
-}
-
-/* line 43, ../../app/stylesheets/partials/h5bp.scss */
-figure {
-  margin: 0;
-}
-
-/* line 45, ../../app/stylesheets/partials/h5bp.scss */
-form {
-  margin: 0;
-}
-
-/* line 46, ../../app/stylesheets/partials/h5bp.scss */
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/* line 48, ../../app/stylesheets/partials/h5bp.scss */
-label {
-  cursor: pointer;
-}
-
-/* line 49, ../../app/stylesheets/partials/h5bp.scss */
-legend {
-  border: 0;
-  *margin-left: -7px;
-  padding: 0;
-  white-space: normal;
-}
-
-/* line 50, ../../app/stylesheets/partials/h5bp.scss */
-button, input, select, textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
-}
-
-/* line 51, ../../app/stylesheets/partials/h5bp.scss */
-button, input {
-  line-height: normal;
-}
-
-/* line 52, ../../app/stylesheets/partials/h5bp.scss */
-button, input[type="button"], input[type="reset"], input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-  *overflow: visible;
-}
-
-/* line 53, ../../app/stylesheets/partials/h5bp.scss */
-button[disabled], input[disabled] {
-  cursor: default;
-}
-
-/* line 54, ../../app/stylesheets/partials/h5bp.scss */
-input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  *width: 13px;
-  *height: 13px;
-}
-
-/* line 55, ../../app/stylesheets/partials/h5bp.scss */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-
-/* line 56, ../../app/stylesheets/partials/h5bp.scss */
-input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-
-/* line 57, ../../app/stylesheets/partials/h5bp.scss */
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-/* line 58, ../../app/stylesheets/partials/h5bp.scss */
-textarea {
-  overflow: auto;
-  vertical-align: top;
-  resize: vertical;
-}
-
-/* line 60, ../../app/stylesheets/partials/h5bp.scss */
-input:invalid, textarea:invalid {
-  background-color: #f0dddd;
-}
-
-/* line 62, ../../app/stylesheets/partials/h5bp.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 63, ../../app/stylesheets/partials/h5bp.scss */
-td {
-  vertical-align: top;
-}
-
-/* line 65, ../../app/stylesheets/partials/h5bp.scss */
-.chromeframe {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: black;
-  padding: 0.2em 0;
-}
-
-/* line 68, ../../app/stylesheets/partials/h5bp.scss */
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@media only screen and (min-width: 35em) {
-  /* line 2, ../../app/stylesheets/partials/media-query-35em.scss */
-  body {
-    background: #bbb;
-  }
-}
-/* line 4, ../../app/stylesheets/partials/seovideo.scss */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-/* line 11, ../../app/stylesheets/partials/seovideo.scss */
-body {
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background-color: #101010;
-  bottom: 0;
-  color: #a4a4a4;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-/* line 23, ../../app/stylesheets/partials/seovideo.scss */
-a {
-  color: inherit;
-  text-decoration: inherit;
-  cursor: inherit;
-}
-/* line 6, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/links/_unstyled-link.scss */
-a:active, a:focus {
-  outline: none;
-}
-/* line 28, ../../app/stylesheets/partials/seovideo.scss */
-a:hover, a:visited, a:active {
-  color: inherit;
-}
-
-/* line 33, ../../app/stylesheets/partials/seovideo.scss */
-p {
-  margin: 1px;
-}
-
-/* line 37, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo {
-  background: url("../images/seovideo/bg.png") 0 0 repeat #101010;
-}
-
-/* line 43, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-wrapper {
-  margin: 0 auto;
-  width: 874px;
-}
-
-/* line 48, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-wrapper-mobile {
-  margin: 0 auto;
-  width: 320px;
-}
-
-/* line 53, ../../app/stylesheets/partials/seovideo.scss */
-.content-wrapper {
-  width: 100%;
-  margin: 0px;
-}
-
-/* line 58, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-header {
-  margin: 0px;
-  height: 47px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2e3132), color-stop(100%, #171819));
-  background-image: -webkit-linear-gradient(#2e3132, #171819);
-  background-image: -moz-linear-gradient(#2e3132, #171819);
-  background-image: -o-linear-gradient(#2e3132, #171819);
-  background-image: -ms-linear-gradient(#2e3132, #171819);
-  background-image: linear-gradient(#2e3132, #171819);
-}
-
-/* line 64, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-header-mobile {
-  margin: 0px;
-  height: 47px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2e3132), color-stop(100%, #171819));
-  background-image: -webkit-linear-gradient(#2e3132, #171819);
-  background-image: -moz-linear-gradient(#2e3132, #171819);
-  background-image: -o-linear-gradient(#2e3132, #171819);
-  background-image: -ms-linear-gradient(#2e3132, #171819);
-  background-image: linear-gradient(#2e3132, #171819);
-}
-
-/* line 70, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-header-contents {
-  margin: 0 auto;
-  height: 47px;
-  width: 874px;
-}
-
-/* line 76, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-header-contents-mobile {
-  margin: 0 auto;
-  height: 47px;
-  width: 320px;
-}
-
-/* line 82, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-headerrule {
-  height: 2px;
-  width: 100%;
-  color: #303234;
-  background-color: #303234;
-  margin: 0px 0px 0px 0px;
-  border-top-color: black;
-}
-
-/* line 91, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-logo {
-  float: left;
-  width: 100px;
-  padding-top: 13px;
-}
-
-/* line 97, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-logo-mobile {
-  float: left;
-  margin-left: 6px;
-  width: 34px;
-  padding-top: 15px;
-  overflow: hidden;
-}
-
-/* line 105, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-slogan {
-  font-size: 12px;
-  font-weight: 400;
-  padding-top: 20px;
-  margin: 0 auto;
-  width: 500px;
-  text-align: center;
-}
-
-/* line 114, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-slogan-mobile {
-  font-size: 11px;
-  font-weight: 400;
-  padding-top: 20px;
-  margin: 0 auto;
-  width: 310px;
-  text-align: center;
-}
-
-/* line 123, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-pitch {
-  height: 38px;
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 25px;
-}
-
-/* line 130, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-pitch-mobile {
-  height: 44px;
-  font-size: 11px;
-  font-weight: 300;
-  margin-top: 12px;
-  text-align: center;
-}
-
-/* line 138, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-embed {
-  float: left;
-  width: 640px;
-  padding: 0px;
-  margin-top: 9px;
-}
-
-/* line 145, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-embed-mobile {
-  width: 310px;
-  padding: 0px;
-  margin-top: 9px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* line 153, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-details {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.4;
-  float: left;
-  width: 640px;
-  padding: 0px;
-  margin-top: 5px;
-  margin-bottom: 28px;
-}
-
-/* line 164, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-details-mobile {
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 1.2;
-  width: 310px;
-  padding: 0px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* line 176, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messages {
-  float: left;
-}
-
-/* line 180, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideo-header {
-  height: 33px;
-}
-
-/* line 184, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideo-header-mobile {
-  height: 20px;
-  width: 310px;
-  font-size: 10px;
-  font-weight: 400;
-}
-
-/* line 191, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideos {
-  width: 194px;
-  margin-top: 39px;
-  padding: 0px;
-}
-
-/* line 197, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideos-mobile {
-  width: 310px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 0px;
-  text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
-}
-
-/* line 210, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-leftcol {
-  float: left;
-  width: 640px;
-  padding: 0px;
-}
-
-/* line 216, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-rightcol {
-  font-size: 12px;
-  font-weight: 400;
-  float: right;
-  width: 194px;
-  padding: 0px;
-  margin-left: 40px;
-}
-
-/* line 225, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideo {
-  width: 194px;
-  margin: 0px 0px 10px 0px;
-}
-
-/* line 230, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideo-mobile {
-  width: 94px;
-  vertical-align: top;
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-}
-
-/* line 238, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-relatedvideo-title {
-  font-size: 10px;
-  font-weight: 100;
-  margin: 4px 0px 0px 0px;
-  max-height: 20px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* line 248, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-message {
-  margin: 10px 10px 10px 10px;
-}
-
-/* line 252, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-message-mobile {
-  margin: 5px 5px 5px 5px;
-}
-
-/* line 256, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-message-image {
-  float: left;
-  width: 50px;
-  padding: 0px;
-  margin: 0px;
-}
-
-/* line 263, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagenickname {
-  font-size: 12px;
-  font-weight: 600;
-  margin-left: 60px;
-  padding-top: 2px;
-}
-
-/* line 270, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagedate {
-  color: white;
-  font-size: 10px;
-  margin-top: 10px;
-  margin-left: 60px;
-}
-
-/* line 277, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagetext {
-  color: white;
-  font-size: 12px;
-  margin-left: 60px;
-  margin-top: 5px;
-  line-height: 1.4;
-}
-
-/* line 285, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-message-image-mobile {
-  float: left;
-  width: 36px;
-  padding: 0px;
-  margin: 0px;
-}
-
-/* line 292, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagenickname-mobile {
-  font-size: 11px;
-  font-weight: 400;
-  margin-left: 46px;
-}
-
-/* line 298, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagedate-mobile {
-  color: white;
-  font-size: 8px;
-  margin-top: 8px;
-  margin-left: 46px;
-}
-
-/* line 305, ../../app/stylesheets/partials/seovideo.scss */
-.seovideo-messagetext-mobile {
-  color: white;
-  font-size: 10px;
-  margin-left: 46px;
-  margin-top: 4px;
-  line-height: 1.2;
-}
->>>>>>> 5b57721200ca05fb74ac27254d26d0cc37714e17
+  content: "Syntax error: Undefined mixin 'basefont'.\A         on line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss, in `basefont'\A         from line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss\A         from line 6 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/seovideo.scss\A \A 6: 		\"partials/seovideo.scss\";"; }

@@ -3,7 +3,6 @@ Syntax error: Undefined mixin 'no-bullets'.
         on line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss, in `no-bullets'
         from line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss
 
-<<<<<<< HEAD
 8:   width: 100%;
 9: }
 10: 
@@ -15,22 +14,6 @@ Syntax error: Undefined mixin 'no-bullets'.
 16:   padding: 0;
 17: }
 18: 
-=======
-/* line 12, ../../../app/stylesheets/partials/frame-conversation.scss */
-.conversation,
-.frame-conversation {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-/* line 11, ../../../../home/vagrant/.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
-.conversation li,
-.frame-conversation li {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0;
-}
->>>>>>> 6db79ff2fbdbd71a0f07ac32aade13c9083a9dc2
 
 Backtrace:
 /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:13:in `no-bullets'
@@ -81,7 +64,7 @@ Backtrace:
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4574926503756376609__call__2980931160868440700__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2616787927388507919__call__3663342967110823108__callbacks'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
