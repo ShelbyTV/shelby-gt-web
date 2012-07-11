@@ -41,6 +41,7 @@
       menuTag : "ul",
       menuClass : "autocomplete-menu",
       multiTerm : false,
+      multiTermMethod : 'list', //supported options: list, paragraph
       separator : /,\s*/
     },
 
@@ -73,11 +74,17 @@
         var val = this._menu.$('.active').attr('data-value');
 
         if (this.options.multiTerm) {
-          terms = this.$el.val().split(this.options.separator);
-          terms.pop();
-          terms.push(val);
-          terms.push("");
-          val = terms.join(", ");
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              this.terms.pop();
+              this.terms.push(val);
+              this.terms.push("");
+              val = this.terms.join(", ");
+              break;
+            case 'paragraph':
+              val = this.paragraph + val;
+              break;
+          }
         }
 
         this.$el
@@ -121,11 +128,28 @@
       this.query = this.$el.val();
 
       if (this.options.multiTerm) {
-        this.query = _(this.query.split(this.options.separator)).last();
+        switch (this.options.multiTermMethod) {
+          case 'list':
+            this.terms = _(this.query.split(this.options.separator));
+            this.query = this.terms.last();
+            break;
+          case 'paragraph':
+            var lastTerm = _(this.query.split(this.options.separator)).last();
+            if (lastTerm) {
+              var queryIndex = this.query.lastIndexOf(lastTerm);
+              this.paragraph = this.query.slice(0, queryIndex);
+            }
+            this.query = lastTerm;
+            break;
+        }
       }
 
       if (!this.query) {
         return this._shown ? this.hide() : this;
+      }
+
+      if (!this.qualifier()) {
+       return this._shown ? this.hide() : this;
       }
 
       items = $.grep(_(this.options).result('source'), function (item) {
@@ -139,6 +163,11 @@
       }
 
       return this._renderAutoCompleteMenu(items.slice(0, this.options.items)).show();
+    },
+
+    qualifier : function () {
+      // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
+      return true;
     },
 
     matcher : function (item) {
