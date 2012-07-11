@@ -6,7 +6,9 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
     collectionAttribute : 'rolls',
     doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
     doSmartRefresh : true,
-    listItemView : 'RollItemRollView'
+    listItemView : 'RollItemRollView',
+    sortAttribute : shelby.config.db.rollFollowings.sortAttribute,
+    sortDirection : shelby.config.db.rollFollowings.sortDirection
   }),
 
   initialize : function() {
