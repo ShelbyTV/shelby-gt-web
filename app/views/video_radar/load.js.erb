@@ -464,7 +464,7 @@ window.shelbyBookmarklet = {
                                         utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextClass);
                                     }
                                 }
-                                utilObject.shelbyAjaxCall.shelbyApiRoll(commentButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, undefinedCommentCallback(commentButton.getAttribute("data-frameclass")));
+                                utilObject.shelbyAjaxCall.shelbyApiRoll(commentButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.watch_later_roll_id, undefinedCommentCallback(commentButton.getAttribute("data-frameclass")));
                             } else {
                                 utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, commentTextClass);
                             }
@@ -484,7 +484,7 @@ window.shelbyBookmarklet = {
                                         utilObject.shelbyAjaxCall.shelbyApiLike(response.result.id, shelbyJ(likeButton), likeTextClass);
                                     }
                                 }
-                            utilObject.shelbyAjaxCall.shelbyApiRoll(likeButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.personal_roll_id, undefinedLikeCallback(likeButton.getAttribute("data-frameclass")))
+                            utilObject.shelbyAjaxCall.shelbyApiRoll(likeButton.getAttribute("data-videourl"), utilObject.shelbyBkmkltUser.heart_roll_id, undefinedLikeCallback(likeButton.getAttribute("data-frameclass")))
                         } else {
                             utilObject.shelbyAjaxCall.shelbyApiLike(shelbyFrameId, shelbyJ(likeButton), likeTextClass);
                         }
