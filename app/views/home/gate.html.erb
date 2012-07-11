@@ -58,7 +58,8 @@
 						Want to stay updated?
 					</h3>
 
-					<input type="email" placeholder="email@address.com" class="gate-form-input" />
+					<input type="email" placeholder="email@address.com" id="js-email-input" class="gate-form-input" />
+					<span class="gate-input-error hidden">Email must be valid!</span>
 					<input type="submit" class="gate-form-submit" />
 				</form>
 
@@ -79,14 +80,20 @@
 				Greetings Shelby Beta user, you've been selected to be inducted early into our field training program. Login below and try out the new Shelby.tv
 			</p>
 
-			<a class="gate-networks-twitter" href="http://api.gt.shelby.tv/auth/twitter">
+			<a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
       </a>   
 
-      <a class="gate-networks-facebook" href="http://api.gt.shelby.tv/auth/facebook">
+      <a class="gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
         Log In with Facebook
       </a>
 
+			<% if @auth_failure %>
+        <div class="gate-input-error js-signin-error">
+          Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.  Please wait a moment and try again.
+        </div>
+      <% end %>
+      
       <a href="#" id="js-no-access" class="gate-no-access">
       	Not a Beta user?
       </a>
@@ -100,9 +107,13 @@
 
   		$('#js-no-access').on('click', function(){
   			$(this).remove();
-  			$('#js-gate-form').children('.gate-subheader').text('Sign up for the Beta!').end()
+  			$('.gate-input-error').addClass('hidden');
+  			$('#js-gate-form').children('.gate-subheader').text('Request access!').end()
   												.css('margin','2.5em 2px 1em').appendTo('#js-login');
+  		});
 
+  		$('#js-email-input').on('click', function(){
+  			$(this).siblings('.gate-input-error').removeClass('hidden');
   		});
   	});
 	</script>
