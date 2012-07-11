@@ -8,16 +8,27 @@
 </div>
 
 <div class="title">
-  <h3 class="current-roll-owner-nickname">
-    <%= roll.get('creator_nickname') || '' %>
-  </h3>
+  <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
+    <h2 class="current-roll">
+    	<span class="roll-title-text">
+    		<%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+    	</span>
+    	<span id="js-roll-name-change" class="roll-name-change">
+    		<input value="<%= roll.get('title') %>" size="15"/>
+    	</span>
+    </h2>
+  <% } else { %>
+    <h3 class="current-roll-owner-nickname">
+      <%= roll.get('creator_nickname') || '' %>
+    </h3>
 
-  <h2 class="current-roll">
-  	<span class="roll-title-text">
-  		<%= rollTitle || '' %>
-  	</span>
-  	<span id="js-roll-name-change" class="roll-name-change">
-  		<input value="<%= roll.get('title') %>" size="15"/>
-  	</span>
-  </h2>
+    <h2 class="current-roll">
+    	<span class="roll-title-text">
+    		<%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+    	</span>
+    	<span id="js-roll-name-change" class="roll-name-change">
+    		<input value="<%= roll.get('title') %>" size="15"/>
+    	</span>
+    </h2>
+  <% } %>
 </div>

@@ -19,25 +19,32 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _filterContent : function(guidePresentationContent){
+    var self = this;
+    
     switch(guidePresentationContent){
       case libs.shelbyGT.GuidePresentation.content.rolls.people:
         this.updateFilter(function(model){
-          var creator_id = model.get('creator_id');
-          return model.get('public') && !model.get('collaborative') && (!creator_id || creator_id != shelby.models.user.id);
+          var isPersonRoll = self._isPersonRoll(model);
+          var isMyPublicRoll = (model.id == shelby.models.user.get('personal_roll_id'));
+          return isPersonRoll && !isMyPublicRoll;
         });
         break;
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
         this.updateFilter(function(model){
-          var isNotPersonRoll = !model.get('public') || model.get('collaborative');
-          var creator_id = model.get('creator_id');
-          var isMyPublicRoll = model.get('public') && !model.get('collaborative') && creator_id && creator_id == shelby.models.user.id;
-          return isNotPersonRoll || isMyPublicRoll;
+          var isPersonRoll = self._isPersonRoll(model);
+          var isMyPublicRoll = (model.id == shelby.models.user.get('personal_roll_id'));
+          return !isPersonRoll || isMyPublicRoll;
         });
         break;
       case libs.shelbyGT.GuidePresentation.content.rolls.browse:
         this.updateFilter(null);
         break;
     }
+  },
+  
+  _isPersonRoll : function(roll) {
+    return roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+            roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll;
   },
 
   _scrollTo : function(element) {

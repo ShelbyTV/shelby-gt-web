@@ -38,7 +38,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     var self = this;
 
     shelby.models.user.fetch({
-      global: false,
       success: function() {
         shelby.models.rollFollowings.fetch({
           success : function() {
@@ -46,9 +45,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 						shelby.checkFbTokenValidity();
           }
         });
-      },
-      error: function(){
-        self.initAnonymous(url);
       }
     });
   },

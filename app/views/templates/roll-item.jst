@@ -15,19 +15,25 @@
     <img class="roll-item-thumbnail visuallyhidden" src="<%= first_frame_thumbnail || '/images/assets/user_loggedout.svg' %>" alt="Thumbnail from <%= roll_title %>" title="<%= roll_title %>">
     <div class="roll-item-container">
       <div class="roll-item-container-column">
-        <% if(creator_nickname != roll_title && creator_nickname != undefined){ %>
+      
+        <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
+          <h3 class="roll-item-title">
+            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+          </h3>
+        <% } else if(creator_nickname != roll_title && creator_nickname != undefined){ %>
           <h2 class="roll-item-creator">
             <%= creator_nickname %>
           </h2>
 
           <h3 class="roll-item-title">
-            <%= roll.get('title')%>
+            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
           </h3>
         <% } else { %>
           <h2 class="roll-item-people">
             <%= (creator_nickname) ? creator_nickname : roll_title %>
           </h2>
         <% } %>
+        
       </div>
       <div class="roll-item-container-column">
         <h4 class="roll-item-total">

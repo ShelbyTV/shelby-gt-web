@@ -103,6 +103,21 @@ $button-radius : 5px;
 $input-radius  : 3px;
 $roundies-type : normal !default;  //see @mixin roundies()
 
+@mixin roundies($roundies-type){
+	@if $roundies-type == normal {
+		border-radius: $radius;	
+	} 
+	@else if $roundies-type == input {
+		border-radius: $radius - 2;
+	} 
+  @else if $roundies-type == header {
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $roundies-type == footer {
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
 //spacing
 $defaultMargin  : 10px;
 $default-margin : 10px;

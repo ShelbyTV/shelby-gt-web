@@ -3,6 +3,7 @@ Syntax error: Undefined mixin 'no-bullets'.
         on line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss, in `no-bullets'
         from line 13 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss
 
+<<<<<<< HEAD
 8:   width: 100%;
 9: }
 10: 
@@ -14,6 +15,22 @@ Syntax error: Undefined mixin 'no-bullets'.
 16:   padding: 0;
 17: }
 18: 
+=======
+/* line 12, ../../../app/stylesheets/partials/frame-conversation.scss */
+.conversation,
+.frame-conversation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../../../../home/vagrant/.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+.conversation li,
+.frame-conversation li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+>>>>>>> 6db79ff2fbdbd71a0f07ac32aade13c9083a9dc2
 
 Backtrace:
 /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/frame-conversation.scss:13:in `no-bullets'
