@@ -32,6 +32,7 @@ javascripts:
     - public/javascripts/jquery-plugins/jquery.animateAuto.js
     - public/javascripts/jquery-plugins/jquery.color.js
     - public/javascripts/jquery-plugins/jquery.urlparams.js
+    - public/javascripts/jquery-plugins/textinputs_jquery.js
     # swf
     - public/javascripts/swfobject.js
     # shelby backbone app - assets that need to be loaded in dependency order

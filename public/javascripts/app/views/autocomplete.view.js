@@ -42,6 +42,7 @@
       menuClass : "autocomplete-menu",
       multiTerm : false,
       multiTermMethod : 'list', //supported options: list, paragraph
+      multiTermPosition : 'tail', //supported options: tail, caret
       separator : /,\s*/
     },
 
@@ -71,25 +72,31 @@
     },
 
     select : function () {
-        var val = this._menu.$('.active').attr('data-value');
+        var selection = this._menu.$('.active').attr('data-value');
+        var newVal = selection;
 
         if (this.options.multiTerm) {
           switch (this.options.multiTermMethod) {
             case 'list':
               this.terms.pop();
-              this.terms.push(val);
+              this.terms.push(selection);
               this.terms.push("");
-              val = this.terms.join(", ");
+              newVal = this.terms.join(", ");
               break;
             case 'paragraph':
-              val = this.paragraph + val;
+              newVal = this.textUpToQuery + selection + this.textAfterQuery;
               break;
           }
         }
 
         this.$el
-          .val(this.updater(val))
+          .val(this.updater(newVal))
           .change();
+
+        if (this.options.multiTerm && this.options.multiTermPosition == 'caret') {
+          this.$el.setSelection(this.textUpToQuery.length + selection.length);
+        }
+
         return this.hide();
     },
 
@@ -128,18 +135,28 @@
       this.query = this.$el.val();
 
       if (this.options.multiTerm) {
+        var stringToSearch;
+        switch (this.options.multiTermPosition) {
+          case 'tail':
+            stringToSearch = this.query;
+            break;
+          case 'caret':
+            stringToSearch = this.query.slice(0, this.$el.getSelection().start);
+            break;
+        }
         switch (this.options.multiTermMethod) {
           case 'list':
-            this.terms = _(this.query.split(this.options.separator));
+            this.terms = _(stringToSearch.split(this.options.separator));
             this.query = this.terms.last();
             break;
           case 'paragraph':
-            var lastTerm = _(this.query.split(this.options.separator)).last();
-            if (lastTerm) {
-              var queryIndex = this.query.lastIndexOf(lastTerm);
-              this.paragraph = this.query.slice(0, queryIndex);
+            var queryTerm = _(stringToSearch.split(this.options.separator)).last();
+            if (queryTerm) {
+              var queryIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryIndex);
+              this.textAfterQuery = this.query.slice(queryIndex + queryTerm.length);
             }
-            this.query = lastTerm;
+            this.query = queryTerm;
             break;
         }
       }
