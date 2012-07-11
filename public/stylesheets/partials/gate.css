@@ -75,7 +75,13 @@
   margin: 1em 0 2em;
 }
 
-/* line 60, ../../../app/stylesheets/partials/gate.scss */
+/* line 61, ../../../app/stylesheets/partials/gate.scss */
+.gate-form-input,
+.gate-form-submit {
+  margin-top: 1em;
+}
+
+/* line 65, ../../../app/stylesheets/partials/gate.scss */
 .gate-form-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border-radius: 3px;
@@ -84,7 +90,7 @@
   width: 61.8%;
 }
 
-/* line 69, ../../../app/stylesheets/partials/gate.scss */
+/* line 74, ../../../app/stylesheets/partials/gate.scss */
 .gate-form-submit {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -102,7 +108,7 @@
   padding: 4px 8px;
 }
 
-/* line 73, ../../../app/stylesheets/partials/gate.scss */
+/* line 78, ../../../app/stylesheets/partials/gate.scss */
 .gate-no-access {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -127,17 +133,17 @@
   padding: 5px 9px;
   text-decoration: none;
 }
-/* line 85, ../../../app/stylesheets/partials/gate.scss */
+/* line 90, ../../../app/stylesheets/partials/gate.scss */
 .gate-no-access:visited {
   color: #efefef;
 }
 
-/* line 90, ../../../app/stylesheets/partials/gate.scss */
+/* line 95, ../../../app/stylesheets/partials/gate.scss */
 .gate-small {
   font-size: 0.769em;
 }
 
-/* line 95, ../../../app/stylesheets/partials/gate.scss */
+/* line 100, ../../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter,
 .gate-networks-facebook {
   display: block;
@@ -146,18 +152,18 @@
   text-decoration: none;
   width: 200px;
 }
-/* line 102, ../../../app/stylesheets/partials/gate.scss */
+/* line 107, ../../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter:before,
 .gate-networks-facebook:before {
   width: 36px;
 }
-/* line 105, ../../../app/stylesheets/partials/gate.scss */
+/* line 110, ../../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter:visited,
 .gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 115, ../../../app/stylesheets/partials/gate.scss */
+/* line 120, ../../../app/stylesheets/partials/gate.scss */
 .gate-networks-facebook {
   margin-top: 10px;
 }

@@ -57,6 +57,11 @@
 	margin: 1em 0 2em;
 }
 
+.gate-form-input,
+.gate-form-submit {
+	margin-top: 1em;
+}
+
 .gate-form-input{
 	@include inputfont;
 	@include roundies(input);

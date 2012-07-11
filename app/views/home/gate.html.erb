@@ -53,11 +53,11 @@
 			</button>
 
 			<footer class="gate-footer">
-				<h3 class="gate-subheader">
-					Want to stay updated?
-				</h3>
-
 				<form id="js-gate-form" class="gate-form">
+					<h3 class="gate-subheader">
+						Want to stay updated?
+					</h3>
+
 					<input type="email" placeholder="email@address.com" class="gate-form-input" />
 					<input type="submit" class="gate-form-submit" />
 				</form>
@@ -100,7 +100,9 @@
 
   		$('#js-no-access').on('click', function(){
   			$(this).remove();
-  			$('#js-gate-form').css('margin','2.5em 2px 1em').appendTo('#js-login');	
+  			$('#js-gate-form').children('.gate-subheader').text('Sign up for the Beta!').end()
+  												.css('margin','2.5em 2px 1em').appendTo('#js-login');
+
   		});
   	});
 	</script>
