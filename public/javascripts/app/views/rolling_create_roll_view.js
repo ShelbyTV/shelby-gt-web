@@ -44,7 +44,7 @@
     
       roll = new RollModel({
         'title' : this.$("#new-roll-name").val(),
-        collaborative : true
+        collaborative : false
       });
     
       roll.set({'public': !this.$("#new-roll-status").is(':checked')});

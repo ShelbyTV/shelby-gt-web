@@ -49,7 +49,8 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
             var insertAtIndex =
               libs.utils.BackboneCollectionUtils.getSortedIndex(item, collection,
                                                     {searchOffset : this.options.binarySearchOffset,
-                                                     sortAttribute : this.options.sortAttribute});
+                                                     sortAttribute : this.options.sortAttribute,
+                                                     sortDirection : this.options.sortDirection});
             this._addItem(item, collection, {at:insertAtIndex});
           } else {
             this._addItem(item, collection);
@@ -119,7 +120,8 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         if (this.options.doCheck == libs.shelbyGT.SmartRefreshCheckType.binarySearch) {
           libs.utils.BackboneCollectionUtils.insertAtSortedIndex(item, this._displayCollection,
                                                 {searchOffset : this.options.binarySearchOffset,
-                                                 sortAttribute : this.options.sortAttribute});
+                                                 sortAttribute : this.options.sortAttribute,
+                                                 sortDirection : this.options.sortDirection});
         } else {
           this._displayCollection.add(item, options);
         }

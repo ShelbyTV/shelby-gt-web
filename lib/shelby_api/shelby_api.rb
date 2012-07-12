@@ -34,7 +34,7 @@ module Shelby
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
         f0 = r['result']['frames'][0]
-        f0['video']["thumbnail_url"] ||= "#{Settings::Application..missing_thumb_url}"
+        f0['video']["thumbnail_url"] ||= "#{Settings::Application.missing_thumb_url}"
         {'frame' => f0, 'video' => f0['video'], 'roll' => r['result']}
       else
         {'frame' => nil, 'video' => nil, 'roll' => nil}

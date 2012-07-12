@@ -1,207 +1,97 @@
-/* line 9, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.create-roll .roll-options {
-  border: none;
-}
-/* line 11, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.create-roll .roll-options:first-child {
-  border-top: 1px solid #343434;
-}
-/* line 15, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.create-roll .roll-options:nth-child(2) {
-  float: left;
-  margin-bottom: 2em;
-  width: 50%;
-}
+/*
+Syntax error: Undefined mixin 'x-fieldset-primer'.
+        on line 24 of /shelbytv/app/stylesheets/partials/frame-rolling-options.scss, in `x-fieldset-primer'
+        from line 24 of /shelbytv/app/stylesheets/partials/frame-rolling-options.scss
 
-/* line 23, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.roll-options {
-  padding: 5px 10px 10px;
-  border-top: 1px solid #343434;
-  border-bottom: 1px solid black;
-}
+19:     }
+20:   }
+21: }
+22: 
+23: .roll-options {
+24:   @include x-fieldset-primer;
+25:   border-top: 1px solid $outset;
+26:   border-bottom: 1px solid $inset;
+27: }
+28: 
+29: .roll-options-label {
 
-/* line 29, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.roll-options-label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2;
-}
-
-/* line 33, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.roll-options-input {
-  font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
-  border-radius: 3px;
-  border: 1px solid black;
-  display: block;
-  padding: 5px;
-  margin-bottom: 5px;
-  width: 100%;
-}
-/* line 44, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.roll-options-input:focus {
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-}
-
-/* line 52, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.roll-options-submit {
-  background-color: #0071a3;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
-  background: -webkit-linear-gradient(top, #0094d6, #0071a3);
-  background: -moz-linear-gradient(top, #0094d6, #0071a3);
-  background: -o-linear-gradient(top, #0094d6, #0071a3);
-  background: -ms-linear-gradient(top, #0094d6, #0071a3);
-  background: linear-gradient(top, #0094d6, #0071a3);
-  box-shadow: inset 0px 1px 0px 0px #23bcff;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #002a3d;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  float: right;
-  width: 100%;
-}
-
-/* line 59, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-label {
-  border-radius: 5px;
-  border: 1px solid black;
-  cursor: pointer;
-  display: block;
-  font-family: 'Arial';
-  font-size: .875em;
-  height: 29px;
-  overflow: hidden;
-  position: relative;
-  width: 126px;
-}
-
-/* line 73, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  display: block;
-  height: 1px;
-  margin: 3px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-}
-/* line 86, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:focus {
-  border: none;
-  outline: none;
-}
-
-/* line 92, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox ~ .new-roll-status-description {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  color: transparent;
-  display: block;
-  font: 0/0 a;
-  line-height: 1.231;
-  height: inherit;
-  overflow: hidden;
-  padding-left: 60px;
-  padding-top: 2px;
-  text-align: left;
-  text-shadow: none;
-}
-
-/* line 109, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox ~ .new-roll-status-description:before {
-  color: #efefef;
-  content: "Public";
-  font: 300 12px/2 "Ubuntu", Trebuchet MS, sans-serif;
-}
-
-/* line 115, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox ~ .new-roll-status-chrome {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  border-radius: 5px;
-  background-color: #999;
-  background-image: url("/images/assets/switch_public.svg");
-  background-position: 4px center;
-  background-repeat: no-repeat;
-  border: 1px solid #4d4d4d;
-  box-shadow: inset 0px 1px 0px 0px #a6a6a6;
-  content: "\0020";
-  display: block;
-  left: 0px;
-  margin: 0px;
-  position: absolute;
-  height: inherit;
-  top: -1px;
-  width: 35px;
-}
-
-/* line 138, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked {
-  left: 96px;
-}
-
-/* line 142, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked ~ .new-roll-status-description {
-  text-align: left;
-  padding-left: 26px;
-}
-
-/* line 147, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked ~ .new-roll-status-description:before {
-  content: "Private";
-}
-
-/* line 151, ../../../app/stylesheets/partials/frame-rolling-options.scss */
-.new-roll-status-checkbox:checked ~ .new-roll-status-chrome {
-  background-image: url("/images/assets/switch_private.svg");
-  background-position: 9px center;
-  left: 89px;
-}
+Backtrace:
+/shelbytv/app/stylesheets/partials/frame-rolling-options.scss:24:in `x-fieldset-primer'
+/shelbytv/app/stylesheets/partials/frame-rolling-options.scss:24
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__3194544734319491368__call__4099669886038078163__callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/home/vagrant/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'x-fieldset-primer'.\A         on line 24 of /shelbytv/app/stylesheets/partials/frame-rolling-options.scss, in `x-fieldset-primer'\A         from line 24 of /shelbytv/app/stylesheets/partials/frame-rolling-options.scss\A \A 19:     }\A 20:   }\A 21: }\A 22: \A 23: .roll-options {\A 24:   @include x-fieldset-primer;\A 25:   border-top: 1px solid $outset;\A 26:   border-bottom: 1px solid $inset;\A 27: }\A 28: \A 29: .roll-options-label {"; }

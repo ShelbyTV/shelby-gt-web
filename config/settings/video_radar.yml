@@ -1,0 +1,15 @@
+defaults: &defaults
+  api_domain: 'api.gt.shelby.tv'
+  web_domain: 'gt.shelby.tv'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production: &production
+  <<: *defaults
+
+arnold:
+  <<: *production

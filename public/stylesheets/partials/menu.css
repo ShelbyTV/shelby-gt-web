@@ -1,123 +1,107 @@
-/* line 3, ../../../app/stylesheets/partials/menu.scss */
-.video-guide {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-/* line 9, ../../../app/stylesheets/partials/menu.scss */
-.video-guide li {
-  border-right: 1px solid #222;
-  display: block;
-  float: left;
-  height: 42px;
-  width: 50%;
-}
-/* line 16, ../../../app/stylesheets/partials/menu.scss */
-.video-guide li:nth-of-type(4) {
-  border-right: none;
-  box-shadow: inset 1px 1px 1px #4d4d4d;
-  width: 50%;
-}
-/* line 23, ../../../app/stylesheets/partials/menu.scss */
-.video-guide button, .video-guide button:visited {
-  font: 100 normal 62.5%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  border: none;
-  box-shadow: inset 0px 1px 0px #4d4d4d;
-  color: #666;
-  display: block;
-  font-size: 11px;
-  height: inherit;
-  line-height: 5.5;
-  text-align: center;
-  text-decoration: none;
-  text-transform: lowercase;
-  width: 100%;
-}
-/* line 38, ../../../app/stylesheets/partials/menu.scss */
-.video-guide button:hover, .video-guide button:visited:hover {
-  box-shadow: inset 0px 1px 0px #666;
-  background-color: #444;
-}
-/* line 42, ../../../app/stylesheets/partials/menu.scss */
-.video-guide button:active, .video-guide button:visited:active {
-  box-shadow: inset 0px 0px 10px #222;
-}
-/* line 47, ../../../app/stylesheets/partials/menu.scss */
-.video-guide input {
-  display: block;
-  margin: 10px 0;
-  width: 100%;
-}
-/* line 53, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .active-tab {
-  box-shadow: inset 0px 1px 7px 0px #202020;
-}
-/* line 56, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .active-tab:hover {
-  box-shadow: inset 0px 1px 7px 0px #111;
-}
-/* line 61, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .stream {
-  background: url("../images/assets/stream.svg") no-repeat center center;
-}
-/* line 66, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .stream.active-tab {
-  background: url("../images/assets/stream_on.svg") no-repeat center 1px #3f3f3f;
-  color: #63BD57;
-}
-/* line 71, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .stream.active-tab:hover {
-  background-color: #3f3f3f;
-}
-/* line 77, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls {
-  background: url("../images/assets/rolls.svg") no-repeat center center;
-}
-/* line 82, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls.active-tab {
-  background: url("../images/assets/rolls_on.svg") no-repeat center 1px;
-  color: #0092C1;
-}
-/* line 87, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .rolls.active-tab:hover {
-  background-color: #3f3f3f;
-}
-/* line 92, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .saves {
-  background: url("../images/assets/saves.svg") no-repeat center center;
-}
-/* line 97, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .saves.active-tab {
-  background: url("../images/assets/saves_on.svg") no-repeat center 1px;
-  color: #693a7b;
-}
-/* line 102, ../../../app/stylesheets/partials/menu.scss */
-.video-guide .saves.active-tab:hover {
-  background-color: #3f3f3f;
-}
+/*
+Syntax error: Undefined mixin 'basefont'.
+        on line 24 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss, in `basefont'
+        from line 24 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss
 
-/* line 109, ../../../app/stylesheets/partials/menu.scss */
-.dashboard-search {
-  border-radius: 20px;
-  margin: 0px 7px 3px;
-  position: relative;
-}
-/* line 114, ../../../app/stylesheets/partials/menu.scss */
-.dashboard-search i {
-  background: url("../images/assets/search.svg") no-repeat center center;
-  height: 12px;
-  margin: 5px;
-  position: absolute;
-  width: 12px;
-}
-/* line 121, ../../../app/stylesheets/partials/menu.scss */
-.dashboard-search input[type="text"] {
-  border: none;
-  border-radius: 20px;
-  padding: 3px 8px 3px 20px;
-}
-/* line 126, ../../../app/stylesheets/partials/menu.scss */
-.dashboard-search input[type="text"]:focus {
-  box-shadow: 0px 0px 5px 3px #666;
-  outline: none;
-}
+19: 			width: 50%;
+20: 		}
+21: 	}
+22: 
+23: 	button, button:visited {
+24: 		@include basefont;
+25: 
+26: 		border: none;
+27: 		box-shadow: inset 0px 1px 0px #4d4d4d;
+28: 		color: #666;
+29: 		display: block;
+
+Backtrace:
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss:24:in `basefont'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss:24
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2616787927388507919__call__3663342967110823108__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'basefont'.\A         on line 24 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss, in `basefont'\A         from line 24 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/menu.scss\A \A 19: 			width: 50%;\A 20: 		}\A 21: 	}\A 22: \A 23: 	button, button:visited {\A 24: 		@include basefont;\A 25: \A 26: 		border: none;\A 27: 		box-shadow: inset 0px 1px 0px #4d4d4d;\A 28: 		color: #666;\A 29: 		display: block;"; }

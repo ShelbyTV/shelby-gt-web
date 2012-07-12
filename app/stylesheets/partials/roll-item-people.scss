@@ -38,14 +38,12 @@
 }
 
 .roll-item-people {
-  @extend .roll-item-title;
-
+  //extended from .roll-item-title
   margin-top: 23px;
 }
 
 .roll-item-people-avatar {
-  @extend .roll-item-avatar;
-
+  //extended from .roll-item-avatar 
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -73,7 +71,8 @@
   .roll-item-creator,
   .roll-item-total,
   .roll-item-watched,
-  .roll-item-title {
+  .roll-item-title,
+  .roll-item-people {
     color: #0E0F10;
   }
 }

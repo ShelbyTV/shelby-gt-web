@@ -34,7 +34,9 @@
 	}
 }
 
-.about-nav{
+.about-nav,
+.about-definition-peripherals{
+
 	margin:$defaultMargin;
 	padding:0;
 
@@ -83,7 +85,7 @@
 }
 
 .about-definition-peripherals{
-	@extend .about-nav;
+	//extended by .about-nav;
 	line-height: 1.5;
 	list-style-type:none;
 	margin:$defaultMargin 0 $defaultMargin*2 0;
