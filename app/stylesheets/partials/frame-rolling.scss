@@ -36,13 +36,15 @@
 	padding: 10px;
 }
 
-.rolling-main-done  {
+.rolling-main-done,
+.rolling-main-social  {
+
 	@include x-button-primer($shelby-blue);
 }
 
 
 .rolling-main-social  {
-	@extend .rolling-main-done;
+	//extended by .rolling-main-done;
 
 	float: right;
 	padding-left: 0;
@@ -59,8 +61,7 @@
 	}
 }
 
-.rolling-frame {
+.rolling-frame,
+.frame-share{
 	@include roundies;
-
-//	background-color: #494949;	
 }

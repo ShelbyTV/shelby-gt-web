@@ -255,3 +255,9 @@
 
 .share-submit {
 }
+
+.networks-twitter-button,
+.networks-facebook-button,
+.networks-tumblr-button {
+	@include notype;
+}

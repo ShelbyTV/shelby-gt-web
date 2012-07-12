@@ -443,13 +443,14 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 57, ../../app/stylesheets/partials/app.html.scss */
-.content, .main {
+/* line 58, ../../app/stylesheets/partials/app.html.scss */
+.main,
+.content {
   float: right;
   width: 330px;
 }
 
-/* line 62, ../../app/stylesheets/partials/app.html.scss */
+/* line 63, ../../app/stylesheets/partials/app.html.scss */
 .main {
   background: #232526;
   font-size: 1.2em;
@@ -717,6 +718,11 @@ a:hover, a:visited, a:active {
 
 /* line 7, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-stream {
+  color: transparent;
+  font: 0/0 a;
+  overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
   background: -webkit-linear-gradient(top, #404344, #27292a);
@@ -744,17 +750,17 @@ a:hover, a:visited, a:active {
   padding: 13px 33px;
 }
 
-/* line 21, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 22, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter {
   margin: 7px 4px 7px 85px;
   padding: 0;
 }
 
-/* line 26, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 27, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item {
   list-style-type: none;
 }
-/* line 29, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 30, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item .guide-presentation-button {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -775,18 +781,26 @@ a:hover, a:visited, a:active {
   padding: 6px;
   width: 33%;
 }
-/* line 36, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 37, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:first-child button {
   border-radius: 5px 0 0 5px;
   border-right: none;
 }
-/* line 43, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 44, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-filter-item:last-child button {
   border-radius: 0 5px 5px 0;
   border-left: none;
 }
 
 /* line 52, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+.guide-presentation-button {
+  color: transparent;
+  font: 0/0 a;
+  overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
+}
+/* line 54, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-button.guide-presentation-content-selected {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
   background: -webkit-linear-gradient(top, #2b2b2b, #111111);
@@ -796,7 +810,7 @@ a:hover, a:visited, a:active {
   background: linear-gradient(top, #2b2b2b, #111111);
   box-shadow: inset 0 1px 1px 0 #161616;
 }
-/* line 58, ../../app/stylesheets/partials/guide-presentation-selector.scss */
+/* line 61, ../../app/stylesheets/partials/guide-presentation-selector.scss */
 .guide-presentation-button.guide-presentation-content-selected.guide-presentation-stream {
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2b2b2b), color-stop(100%, #111111));
   background: url("../images/assets/stream.svg") no-repeat 7px -1px, -webkit-linear-gradient(top, #2b2b2b, #111111);
@@ -920,7 +934,7 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 86, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 87, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
   background-color: #27292a;
@@ -944,7 +958,7 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 95, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 97, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-button-highlighted {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -962,23 +976,23 @@ a:hover, a:visited, a:active {
   padding: 6px 13px;
 }
 
-/* line 99, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 101, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-creator {
   font-size: 12px;
   margin-bottom: 3px;
 }
 
-/* line 105, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 107, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-title {
   font-size: 14px;
 }
 
-/* line 110, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 112, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail {
   height: inherit;
   overflow: hidden;
 }
-/* line 114, ../../app/stylesheets/partials/guide-overlay-view.scss */
+/* line 116, ../../app/stylesheets/partials/guide-overlay-view.scss */
 .guide-overlay-context-thumbnail img {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -1298,8 +1312,9 @@ a:hover, a:visited, a:active {
   z-index: 1;
 }
 
-/* line 93, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-title, .roll-item-people,
+/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title,
+.roll-item-people,
 .roll-item-creator {
   white-space: nowrap;
   overflow: hidden;
@@ -1308,8 +1323,9 @@ a:hover, a:visited, a:active {
   text-overflow: ellipsis;
 }
 
-/* line 97, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-title, .roll-item-people {
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-title,
+.roll-item-people {
   clear: right;
   color: #bfbfbf;
   font-size: 13px;
@@ -1318,7 +1334,7 @@ a:hover, a:visited, a:active {
   padding: 0 8px 0;
 }
 
-/* line 106, ../../app/stylesheets/partials/roll-item.scss */
+/* line 108, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1328,7 +1344,7 @@ a:hover, a:visited, a:active {
   padding: 6px 8px 0;
 }
 
-/* line 116, ../../app/stylesheets/partials/roll-item.scss */
+/* line 118, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total,
 .roll-item-watched {
   font-size: 11px;
@@ -1337,27 +1353,28 @@ a:hover, a:visited, a:active {
   text-align: right;
 }
 
-/* line 123, ../../app/stylesheets/partials/roll-item.scss */
+/* line 125, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
 
-/* line 132, ../../app/stylesheets/partials/roll-item.scss */
-.roll-item-avatar, .roll-item-people-avatar {
+/* line 135, ../../app/stylesheets/partials/roll-item.scss */
+.roll-item-avatar,
+.roll-item-people-avatar {
   float: left;
   height: 40px;
   overflow: hidden;
   width: 40px;
 }
 
-/* line 139, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
 
-/* line 144, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1372,7 +1389,7 @@ a:hover, a:visited, a:active {
   width: 46px;
 }
 
-/* line 152, ../../app/stylesheets/partials/roll-item.scss */
+/* line 155, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1383,7 +1400,7 @@ a:hover, a:visited, a:active {
   margin: 0 3px;
   text-align: center;
 }
-/* line 162, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-stats-count:after {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%229px%22%20height%3D%2215px%22%20viewBox%3D%220%200%209%2015%22%20enable-background%3D%22new%200%200%209%2015%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M9%2C7.537c0-0.394-0.136-0.752-0.355-1.043C8.562%2C6.284%2C8.438%2C6.086%2C8.27%2C5.916L2.879%2C0.497%0A%09%09c-0.659-0.662-1.727-0.662-2.385%2C0c-0.659%2C0.662-0.659%2C1.735%2C0%2C2.397L3.39%2C5.805l0%2C0l1.667%2C1.732l-1.74%2C1.73l0%2C0l-2.822%2C2.838%0A%09%09c-0.658%2C0.662-0.658%2C1.734%2C0%2C2.396c0.659%2C0.661%2C1.726%2C0.661%2C2.385%2C0l5.392-5.42c0.117-0.117%2C0.205-0.25%2C0.279-0.391%0A%09%09C8.827%2C8.389%2C9%2C7.984%2C9%2C7.537z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E%0A") no-repeat center center transparent;
   content: "\0020";
@@ -1392,13 +1409,13 @@ a:hover, a:visited, a:active {
   width: 100%;
 }
 
-/* line 175, ../../app/stylesheets/partials/roll-item.scss */
+/* line 178, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
 
-/* line 180, ../../app/stylesheets/partials/roll-item.scss */
+/* line 183, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-list {
   height: inherit;
   margin: 0;
@@ -1406,7 +1423,7 @@ a:hover, a:visited, a:active {
   position: relative;
 }
 
-/* line 187, ../../app/stylesheets/partials/roll-item.scss */
+/* line 190, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1418,27 +1435,27 @@ a:hover, a:visited, a:active {
   right: 0;
   top: 0;
 }
-/* line 198, ../../app/stylesheets/partials/roll-item.scss */
+/* line 201, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 203, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 209, ../../app/stylesheets/partials/roll-item.scss */
+/* line 212, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 211, ../../app/stylesheets/partials/roll-item.scss */
+/* line 214, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 212, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -1485,7 +1502,7 @@ a:hover, a:visited, a:active {
   margin-top: 23px;
 }
 
-/* line 46, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 45, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar {
   background-position: center center;
   background-repeat: no-repeat;
@@ -1495,12 +1512,12 @@ a:hover, a:visited, a:active {
   overflow: hidden;
   width: 40px;
 }
-/* line 57, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 55, ../../app/stylesheets/partials/roll-item-people.scss */
 .roll-item-people-avatar img {
   height: 100%;
 }
 
-/* line 63, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 61, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1510,11 +1527,11 @@ a:hover, a:visited, a:active {
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
 }
-/* line 67, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 65, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 76, ../../app/stylesheets/partials/roll-item-people.scss */
+/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
 .active-list-item .roll-item-creator,
 .active-list-item .roll-item-total,
 .active-list-item .roll-item-watched,
@@ -1524,7 +1541,7 @@ a:hover, a:visited, a:active {
 }
 
 /* non-programatic changes to app display */
-/* line 8, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 9, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll {
   /* adjust the name and avatar of the visible isolated roll */
   /* hide the roll nav buttons */
@@ -1532,69 +1549,75 @@ body.isolated-roll {
   /* hide the frame's tool-bar and new-conversation */
   /* don't show any education */
 }
-/* line 11, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 12, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .current-roll {
   font-size: 2.2em;
   line-height: 1.75;
 }
-/* line 15, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 16, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .current-roll-avatar {
   height: 40px;
   width: 40px;
 }
-/* line 21, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 22, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .rolls-list-nav, body.isolated-roll .rolls-back {
   display: none;
 }
-/* line 24, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 25, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .filter-controls {
   border: none;
 }
-/* line 27, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 28, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .frame-controls {
   display: none;
 }
-/* line 30, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 31, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .guide-education {
   display: none!important;
 }
-/* line 33, ../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .context-overlay-lining .video-card-header, body.isolated-roll .context-overlay-lining .frame-share-header {
+/* line 34, ../../app/stylesheets/partials/isolated-roll.scss */
+body.isolated-roll .context-overlay-lining .video-card-header {
   border-bottom: none;
 }
-/* line 37, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 38, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-locator {
   display: none;
 }
-/* line 41, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 42, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-creator-roll {
   width: inherit;
 }
-/* line 45, ../../app/stylesheets/partials/isolated-roll.scss */
+/* line 46, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-title {
   width: 83%;
 }
 
-/* line 3, ../../app/stylesheets/partials/frame.scss */
-.list, .rolls-list, .existing-rolls-list > ul {
+/* line 6, ../../app/stylesheets/partials/frame.scss */
+.list,
+.rolls-list,
+.form-rolls-list,
+.existing-rolls-list > ul {
   margin: 0;
   padding: 0;
 }
-/* line 7, ../../app/stylesheets/partials/frame.scss */
-.list li, .rolls-list li, .existing-rolls-list > ul li {
+/* line 10, ../../app/stylesheets/partials/frame.scss */
+.list li,
+.rolls-list li,
+.form-rolls-list li,
+.existing-rolls-list > ul li {
   list-style-type: none;
 }
 
-/* line 12, ../../app/stylesheets/partials/frame.scss */
+/* line 15, ../../app/stylesheets/partials/frame.scss */
 .frame {
   padding: 10px;
 }
-/* line 15, ../../app/stylesheets/partials/frame.scss */
+/* line 18, ../../app/stylesheets/partials/frame.scss */
 .frame:hover {
   background: #292b2d;
 }
 
-/* line 20, ../../app/stylesheets/partials/frame.scss */
+/* line 23, ../../app/stylesheets/partials/frame.scss */
 .video-card {
   border-radius: 5px;
   background-color: #35383a;
@@ -1606,7 +1629,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: relative;
 }
 
-/* line 32, ../../app/stylesheets/partials/frame.scss */
+/* line 35, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   background-color: #494949;
   background-position: center center;
@@ -1618,7 +1641,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-align: center;
 }
 
-/* line 44, ../../app/stylesheets/partials/frame.scss */
+/* line 46, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-image {
   cursor: pointer;
   display: inline-block;
@@ -1629,32 +1652,37 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
 }
 
-/* line 54, ../../app/stylesheets/partials/frame.scss */
+/* line 56, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-missing {
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2240px%22%20height%3D%2253px%22%20viewBox%3D%220%200%2040%2053%22%20enable-background%3D%22new%200%200%2040%2053%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23EFEFEF%22%20d%3D%22M18.337%2C10.294c-1.664%2C0-3.232%2C0.207-4.71%2C0.622c-1.48%2C0.415-3.116%2C1.085-4.917%2C2.009L5.802%2C5.101%0A%09%09c1.8-1.154%2C3.923-2.043%2C6.372-2.669C14.619%2C1.81%2C17.021%2C1.5%2C19.373%2C1.5c2.958%2C0%2C5.392%2C0.393%2C7.308%2C1.176%0A%09%09c1.914%2C0.785%2C3.429%2C1.776%2C4.539%2C2.979c1.106%2C1.199%2C1.878%2C2.514%2C2.318%2C3.946c0.439%2C1.432%2C0.66%2C2.792%2C0.66%2C4.086%0A%09%09c0%2C1.293-0.198%2C2.483-0.589%2C3.568c-0.398%2C1.084-0.894%2C2.088-1.491%2C3.011c-0.601%2C0.924-1.292%2C1.801-2.077%2C2.633%0A%09%09c-0.786%2C0.83-1.55%2C1.615-2.284%2C2.352c-0.55%2C0.555-1.131%2C1.144-1.729%2C1.768c-0.602%2C0.623-1.145%2C1.283-1.627%2C1.975%0A%09%09c-0.483%2C0.694-0.892%2C1.418-1.212%2C2.184c-0.326%2C0.762-0.481%2C1.535-0.481%2C2.322c0%2C0.18%2C0%2C0.463%2C0%2C0.829%0A%09%09c0%2C0.365%2C0.021%2C0.688%2C0.07%2C0.972h-9.142c-0.095-0.464-0.152-0.982-0.176-1.557c-0.022-0.576-0.034-1.074-0.034-1.49%0A%09%09c0-1.289%2C0.16-2.457%2C0.482-3.5c0.323-1.037%2C0.751-2.006%2C1.283-2.909c0.53-0.9%2C1.14-1.742%2C1.836-2.527%0A%09%09c0.692-0.784%2C1.407-1.548%2C2.146-2.286c1.059-1.061%2C2.03-2.115%2C2.91-3.149c0.875-1.042%2C1.314-2.227%2C1.314-3.568%0A%09%09c0-1.109-0.428-2.055-1.281-2.838C21.258%2C10.687%2C19.999%2C10.294%2C18.337%2C10.294z%20M24.774%2C45.128c0%2C2.034-0.656%2C3.602-1.972%2C4.712%0A%09%09c-1.318%2C1.108-2.804%2C1.66-4.466%2C1.66c-1.664%2C0-3.15-0.552-4.468-1.66c-1.315-1.11-1.976-2.678-1.976-4.712%0A%09%09c0-2.029%2C0.66-3.598%2C1.976-4.708c1.317-1.108%2C2.804-1.66%2C4.468-1.66c1.662%2C0%2C3.147%2C0.552%2C4.466%2C1.66%0A%09%09C24.118%2C41.53%2C24.774%2C43.099%2C24.774%2C45.128z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");
   background-size: 20%;
 }
 
-/* line 59, ../../app/stylesheets/partials/frame.scss */
-.video-card-header, .frame-share-header {
+/* line 62, ../../app/stylesheets/partials/frame.scss */
+.video-card-header,
+.frame-share-header {
   border-bottom: 1px solid black;
   padding: 0;
 }
-/* line 64, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a, .frame-share-header a {
-  text-decoration: none;
-}
 /* line 67, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:active, .frame-share-header a:active, .video-card-header a:visited, .frame-share-header a:visited {
+.video-card-header a,
+.frame-share-header a {
   text-decoration: none;
 }
 /* line 70, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:hover, .frame-share-header a:hover {
+.video-card-header a:active, .video-card-header a:visited,
+.frame-share-header a:active,
+.frame-share-header a:visited {
+  text-decoration: none;
+}
+/* line 73, ../../app/stylesheets/partials/frame.scss */
+.video-card-header a:hover,
+.frame-share-header a:hover {
   text-decoration: underline;
 }
 
-/* line 76, ../../app/stylesheets/partials/frame.scss */
-.active-list-item .video-card-header, .active-list-item .frame-share-header {
+/* line 79, ../../app/stylesheets/partials/frame.scss */
+.active-list-item .video-card-header {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
   background: -webkit-linear-gradient(top, #53b249, #428e3a);
@@ -1675,35 +1703,36 @@ body.isolated-roll .context-overlay-lining .frame-title {
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 81, ../../app/stylesheets/partials/frame.scss */
-.active-list-item .video-card-header h1, .active-list-item .frame-share-header h1, .active-list-item .video-card-header h2, .active-list-item .frame-share-header h2 {
+/* line 84, ../../app/stylesheets/partials/frame.scss */
+.active-list-item .video-card-header h1, .active-list-item .video-card-header h2 {
   color: #27292a;
 }
-/* line 85, ../../app/stylesheets/partials/frame.scss */
-.active-list-item .video-card-header h3, .active-list-item .frame-share-header h3 {
+/* line 88, ../../app/stylesheets/partials/frame.scss */
+.active-list-item .video-card-header h3 {
   color: #0e0f10;
 }
-/* line 89, ../../app/stylesheets/partials/frame.scss */
-.active-list-item .video-card-header .frame-title:before, .active-list-item .frame-share-header .frame-title:before {
+/* line 92, ../../app/stylesheets/partials/frame.scss */
+.active-list-item .video-card-header .frame-title:before {
   content: "On Now: ";
   font-style: italic;
 }
 
-/* line 95, ../../app/stylesheets/partials/frame.scss */
-.frame-creator-avatar, .frame-creator-avatar-missing {
+/* line 99, ../../app/stylesheets/partials/frame.scss */
+.frame-creator-avatar,
+.frame-creator-avatar-missing {
   border-radius: 5px 0 0 0;
   float: left;
   height: 40px;
   width: 40px;
 }
 
-/* line 102, ../../app/stylesheets/partials/frame.scss */
+/* line 107, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing {
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2240px%22%20height%3D%2253px%22%20viewBox%3D%220%200%2040%2053%22%20enable-background%3D%22new%200%200%2040%2053%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20fill%3D%22%23EFEFEF%22%20d%3D%22M18.337%2C10.294c-1.664%2C0-3.232%2C0.207-4.71%2C0.622c-1.48%2C0.415-3.116%2C1.085-4.917%2C2.009L5.802%2C5.101%0A%09%09c1.8-1.154%2C3.923-2.043%2C6.372-2.669C14.619%2C1.81%2C17.021%2C1.5%2C19.373%2C1.5c2.958%2C0%2C5.392%2C0.393%2C7.308%2C1.176%0A%09%09c1.914%2C0.785%2C3.429%2C1.776%2C4.539%2C2.979c1.106%2C1.199%2C1.878%2C2.514%2C2.318%2C3.946c0.439%2C1.432%2C0.66%2C2.792%2C0.66%2C4.086%0A%09%09c0%2C1.293-0.198%2C2.483-0.589%2C3.568c-0.398%2C1.084-0.894%2C2.088-1.491%2C3.011c-0.601%2C0.924-1.292%2C1.801-2.077%2C2.633%0A%09%09c-0.786%2C0.83-1.55%2C1.615-2.284%2C2.352c-0.55%2C0.555-1.131%2C1.144-1.729%2C1.768c-0.602%2C0.623-1.145%2C1.283-1.627%2C1.975%0A%09%09c-0.483%2C0.694-0.892%2C1.418-1.212%2C2.184c-0.326%2C0.762-0.481%2C1.535-0.481%2C2.322c0%2C0.18%2C0%2C0.463%2C0%2C0.829%0A%09%09c0%2C0.365%2C0.021%2C0.688%2C0.07%2C0.972h-9.142c-0.095-0.464-0.152-0.982-0.176-1.557c-0.022-0.576-0.034-1.074-0.034-1.49%0A%09%09c0-1.289%2C0.16-2.457%2C0.482-3.5c0.323-1.037%2C0.751-2.006%2C1.283-2.909c0.53-0.9%2C1.14-1.742%2C1.836-2.527%0A%09%09c0.692-0.784%2C1.407-1.548%2C2.146-2.286c1.059-1.061%2C2.03-2.115%2C2.91-3.149c0.875-1.042%2C1.314-2.227%2C1.314-3.568%0A%09%09c0-1.109-0.428-2.055-1.281-2.838C21.258%2C10.687%2C19.999%2C10.294%2C18.337%2C10.294z%20M24.774%2C45.128c0%2C2.034-0.656%2C3.602-1.972%2C4.712%0A%09%09c-1.318%2C1.108-2.804%2C1.66-4.466%2C1.66c-1.664%2C0-3.15-0.552-4.468-1.66c-1.315-1.11-1.976-2.678-1.976-4.712%0A%09%09c0-2.029%2C0.66-3.598%2C1.976-4.708c1.317-1.108%2C2.804-1.66%2C4.468-1.66c1.662%2C0%2C3.147%2C0.552%2C4.466%2C1.66%0A%09%09C24.118%2C41.53%2C24.774%2C43.099%2C24.774%2C45.128z%22/%3E%0A%3C/g%3E%0A%3C/svg%3E") no-repeat center center #454545;
   background-size: 50%;
 }
 
-/* line 119, ../../app/stylesheets/partials/frame.scss */
+/* line 116, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll {
   color: #999;
   font-size: 11px;
@@ -1719,7 +1748,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 50%;
 }
 
-/* line 131, ../../app/stylesheets/partials/frame.scss */
+/* line 128, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp {
   color: #999;
   font-size: 11px;
@@ -1729,7 +1758,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   float: right;
 }
 
-/* line 136, ../../app/stylesheets/partials/frame.scss */
+/* line 133, ../../app/stylesheets/partials/frame.scss */
 .frame-locator {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2218px%22%20height%3D%2218px%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23efefef%22%20d%3D%22M8.999%2C0C4.037%2C0%2C0%2C4.037%2C0%2C9.001C0%2C13.959%2C4.037%2C18%2C8.999%2C18S18%2C13.959%2C18%2C9.001C18%2C4.037%2C13.961%2C0%2C8.999%2C0z%20M9.83%2C15.806%0A%09v-3.799H8.172v3.799c-3.126-0.377-5.601-2.854-5.979-5.975h3.803V8.172H2.192c0.377-3.126%2C2.853-5.604%2C5.979-5.98v3.805H9.83V2.192%0A%09c3.126%2C0.378%2C5.599%2C2.854%2C5.976%2C5.979h-3.8v1.659h3.8C15.428%2C12.951%2C12.955%2C15.427%2C9.83%2C15.806z%22/%3E%0A%3C/svg%3E%0A") no-repeat 10px center transparent;
@@ -1743,7 +1772,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: absolute;
   right: 0;
 }
-/* line 150, ../../app/stylesheets/partials/frame.scss */
+/* line 147, ../../app/stylesheets/partials/frame.scss */
 .frame-locator:before {
   border-left: 1px solid #414141;
   content: "\0020";
@@ -1753,7 +1782,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 0 0 -36px;
 }
 
-/* line 161, ../../app/stylesheets/partials/frame.scss */
+/* line 158, ../../app/stylesheets/partials/frame.scss */
 .frame-title {
   clear: right;
   color: #bfbfbf;
@@ -1768,27 +1797,27 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 83%;
 }
 
-/* line 175, ../../app/stylesheets/partials/frame.scss */
+/* line 172, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   z-index: 5;
 }
 
-/* line 181, ../../app/stylesheets/partials/frame.scss */
+/* line 178, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 187, ../../app/stylesheets/partials/frame.scss */
+/* line 184, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 192, ../../app/stylesheets/partials/frame.scss */
+/* line 189, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   border-radius: 3px;
   border-color: #555;
@@ -1796,7 +1825,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   resize: none;
   width: 100%;
 }
-/* line 200, ../../app/stylesheets/partials/frame.scss */
+/* line 197, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1816,19 +1845,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-top: 5px;
 }
 
-/* line 212, ../../app/stylesheets/partials/frame.scss */
+/* line 209, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 216, ../../app/stylesheets/partials/frame.scss */
+/* line 213, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 223, ../../app/stylesheets/partials/frame.scss */
+/* line 220, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -1837,45 +1866,46 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-overflow: ellipsis;
 }
 
-/* line 231, ../../app/stylesheets/partials/frame.scss */
+/* line 228, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
 /* XXX BELOW still needed for context overlay, but not for conversation within guide  */
-/* line 236, ../../app/stylesheets/partials/frame.scss */
+/* line 233, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 242, ../../app/stylesheets/partials/frame.scss */
+/* line 239, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 247, ../../app/stylesheets/partials/frame.scss */
+/* line 244, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 251, ../../app/stylesheets/partials/frame.scss */
+/* line 248, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 257, ../../app/stylesheets/partials/frame.scss */
-.user-handle, .user-post-date {
+/* line 255, ../../app/stylesheets/partials/frame.scss */
+.user-handle,
+.user-post-date {
   color: #a4a4a4;
   font-size: 11px;
   font-weight: 500;
   line-height: 2.8;
 }
 
-/* line 264, ../../app/stylesheets/partials/frame.scss */
+/* line 262, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -1883,55 +1913,58 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-right: 3px;
 }
 
-/* line 273, ../../app/stylesheets/partials/frame.scss */
-.user-post-origin-twitter:before, .frame-creator-origin-twitter:before, .user-post-origin-facebook:before, .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1335815213');
+/* line 274, ../../app/stylesheets/partials/frame.scss */
+.user-post-origin-twitter:before,
+.user-post-origin-facebook:before,
+.user-post-origin-tumblr:before,
+.frame-creator-origin-twitter:before {
+  content: url('/images/../images/assets/twitter_stamp.svg?1340133553');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
 }
 
-/* line 283, ../../app/stylesheets/partials/frame.scss */
+/* line 284, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1335813891');
+  content: url('/images/../images/assets/facebook_stamp.svg?1340133553');
 }
 
-/* line 290, ../../app/stylesheets/partials/frame.scss */
+/* line 291, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1337698194');
 }
 
-/* line 295, ../../app/stylesheets/partials/frame.scss */
+/* line 296, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 298, ../../app/stylesheets/partials/frame.scss */
+/* line 299, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
 /* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
-/* line 304, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 308, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 315, ../../app/stylesheets/partials/frame.scss */
+/* line 316, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 321, ../../app/stylesheets/partials/frame.scss */
+/* line 322, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 326, ../../app/stylesheets/partials/frame.scss */
+/* line 327, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -1944,12 +1977,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
 }
 
-/* line 339, ../../app/stylesheets/partials/frame.scss */
+/* line 341, ../../app/stylesheets/partials/frame.scss */
 .frame-activity {
   font-weight: 500;
 }
 
-/* line 343, ../../app/stylesheets/partials/frame.scss */
+/* line 345, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -1958,7 +1991,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 4px;
   width: auto;
 }
-/* line 351, ../../app/stylesheets/partials/frame.scss */
+/* line 353, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -1968,16 +2001,16 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-right: 3px;
   width: 24px;
 }
-/* line 361, ../../app/stylesheets/partials/frame.scss */
+/* line 363, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 365, ../../app/stylesheets/partials/frame.scss */
+/* line 367, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 370, ../../app/stylesheets/partials/frame.scss */
+/* line 372, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1987,7 +2020,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 22px;
 }
 
-/* line 381, ../../app/stylesheets/partials/frame.scss */
+/* line 383, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -1995,12 +2028,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 390, ../../app/stylesheets/partials/frame.scss */
+/* line 392, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 397, ../../app/stylesheets/partials/frame.scss */
+/* line 399, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
   color: #efefef;
@@ -2008,25 +2041,35 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 406, ../../app/stylesheets/partials/frame.scss */
+/* line 408, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
 }
 
-/* line 413, ../../app/stylesheets/partials/frame.scss */
+/* line 415, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
+  color: transparent;
+  font: 0/0 a;
+  overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
   background: url("../images/assets/videocard_roll_off.svg") no-repeat center center transparent;
 }
-/* line 418, ../../app/stylesheets/partials/frame.scss */
+/* line 420, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background: url("../images/assets/videocard_roll_on.svg") no-repeat center center transparent;
 }
 
-/* line 425, ../../app/stylesheets/partials/frame.scss */
+/* line 427, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
+  color: transparent;
+  font: 0/0 a;
+  overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
   background: url("../images/assets/videocard_share_off.svg") no-repeat center center transparent;
 }
-/* line 430, ../../app/stylesheets/partials/frame.scss */
+/* line 432, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background: url("../images/assets/videocard_share_on.svg") no-repeat center center transparent;
 }
@@ -2109,14 +2152,14 @@ body.isolated-roll .context-overlay-lining .frame-title {
   display: none;
 }
 
-/* line 17, ../../app/stylesheets/partials/notifications.scss */
+/* line 18, ../../app/stylesheets/partials/notifications.scss */
 .notification {
   width: 100%;
   height: 100%;
   font-size: 14px;
   overflow: hidden;
 }
-/* line 22, ../../app/stylesheets/partials/notifications.scss */
+/* line 24, ../../app/stylesheets/partials/notifications.scss */
 .notification .message {
   color: #ffffff;
   text-align: center;
@@ -2127,17 +2170,17 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: absolute;
   width: 100%;
 }
-/* line 32, ../../app/stylesheets/partials/notifications.scss */
+/* line 34, ../../app/stylesheets/partials/notifications.scss */
 .notification .button-wrapper {
   position: absolute;
   width: 100%;
   bottom: 12px;
 }
-/* line 36, ../../app/stylesheets/partials/notifications.scss */
+/* line 38, ../../app/stylesheets/partials/notifications.scss */
 .notification .button-wrapper .disabled {
   display: none;
 }
-/* line 41, ../../app/stylesheets/partials/notifications.scss */
+/* line 43, ../../app/stylesheets/partials/notifications.scss */
 .notification .notification-confirm {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2154,7 +2197,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 6px 13px;
 }
-/* line 42, ../../app/stylesheets/partials/notifications.scss */
+/* line 44, ../../app/stylesheets/partials/notifications.scss */
 .notification .notification-cancel {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2171,7 +2214,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 6px 13px;
 }
-/* line 43, ../../app/stylesheets/partials/notifications.scss */
+/* line 45, ../../app/stylesheets/partials/notifications.scss */
 .notification button.red {
   background-color: #cc1235;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ec254b), color-stop(100%, #cc1235));
@@ -2188,7 +2231,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 6px 13px;
 }
-/* line 44, ../../app/stylesheets/partials/notifications.scss */
+/* line 46, ../../app/stylesheets/partials/notifications.scss */
 .notification button.blue {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -2205,7 +2248,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 6px 13px;
 }
-/* line 45, ../../app/stylesheets/partials/notifications.scss */
+/* line 47, ../../app/stylesheets/partials/notifications.scss */
 .notification button.grey {
   background-color: #343434;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4e4e4e), color-stop(100%, #343434));
@@ -2222,22 +2265,22 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 6px 13px;
 }
-/* line 48, ../../app/stylesheets/partials/notifications.scss */
+/* line 50, ../../app/stylesheets/partials/notifications.scss */
 .notification .one_button .notification-confirm {
   width: 80px;
   margin-left: 126px;
 }
-/* line 52, ../../app/stylesheets/partials/notifications.scss */
+/* line 54, ../../app/stylesheets/partials/notifications.scss */
 .notification .one_button .notification-cancel {
   display: none;
 }
-/* line 57, ../../app/stylesheets/partials/notifications.scss */
+/* line 59, ../../app/stylesheets/partials/notifications.scss */
 .notification .two_button .notification-confirm {
   float: right;
   margin-right: 55px;
   width: 100px;
 }
-/* line 62, ../../app/stylesheets/partials/notifications.scss */
+/* line 64, ../../app/stylesheets/partials/notifications.scss */
 .notification .two_button .notification-cancel {
   float: left;
   margin-left: 55px;
@@ -2390,8 +2433,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: absolute;
 }
 
-/* line 77, ../../app/stylesheets/partials/video-controls.scss */
-.video-player-progress-load, .video-player-progress-elapsed {
+/* line 78, ../../app/stylesheets/partials/video-controls.scss */
+.video-player-progress-load,
+.video-player-progress-elapsed {
   background: #303030;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3d3d3d), color-stop(100%, #303030));
   background: -webkit-linear-gradient(top, #3d3d3d, #303030);
@@ -2404,13 +2448,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 0;
 }
 
-/* line 86, ../../app/stylesheets/partials/video-controls.scss */
+/* line 88, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-progress-elapsed {
   background: #0071a3;
   margin-top: -8px;
 }
 
-/* line 93, ../../app/stylesheets/partials/video-controls.scss */
+/* line 95, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-scrubber {
   background: #efefef;
   border-radius: 50%;
@@ -2424,7 +2468,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 15px;
 }
 
-/* line 106, ../../app/stylesheets/partials/video-controls.scss */
+/* line 108, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
@@ -2434,48 +2478,48 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 15px;
 }
 
-/* line 115, ../../app/stylesheets/partials/video-controls.scss */
+/* line 117, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume {
   background: url("../images/assets/player_sound_on.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 123, ../../app/stylesheets/partials/video-controls.scss */
+/* line 125, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-volume.mute {
   background: url("../images/assets/player_sound_off.svg") center center no-repeat transparent;
 }
 
-/* line 130, ../../app/stylesheets/partials/video-controls.scss */
+/* line 132, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen {
   background: url("../images/assets/player_fullscreen.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 138, ../../app/stylesheets/partials/video-controls.scss */
+/* line 140, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-fullscreen.cancel {
   background: url("../images/assets/player_fullscreen_cancel.svg") center center no-repeat transparent;
 }
 
-/* line 146, ../../app/stylesheets/partials/video-controls.scss */
+/* line 148, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality {
   background: url("../images/assets/player_hd_off.svg") center center no-repeat transparent;
   float: right;
 }
-/* line 154, ../../app/stylesheets/partials/video-controls.scss */
+/* line 156, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-quality.hd-on {
   background: url("../images/assets/player_hd_on.svg") center center no-repeat transparent;
 }
 
-/* line 161, ../../app/stylesheets/partials/video-controls.scss */
+/* line 163, ../../app/stylesheets/partials/video-controls.scss */
 .disable-video-quality .video-player-quality {
   background: url("../images/assets/player_hd_disabled.svg") center center no-repeat transparent;
 }
 
-/* line 167, ../../app/stylesheets/partials/video-controls.scss */
+/* line 169, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-roll {
   background: url("../images/assets/player_roll.svg") center 6px no-repeat transparent;
   float: right;
 }
 
-/* line 178, ../../app/stylesheets/partials/video-controls.scss */
+/* line 180, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev {
   background: url("../images/assets/arrow_left.svg") center center no-repeat #444444;
   -moz-transition-property: opacity;
@@ -2497,7 +2541,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   left: 20px;
   opacity: 1.0;
 }
-/* line 192, ../../app/stylesheets/partials/video-controls.scss */
+/* line 194, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next {
   background: url("../images/assets/arrow_right.svg") center center no-repeat #444444;
   -moz-transition-property: opacity, margin-right;
@@ -2519,11 +2563,11 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-right: 330px;
   right: 20px;
 }
-/* line 205, ../../app/stylesheets/partials/video-controls.scss */
+/* line 207, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-next.full-width {
   margin-right: 0;
 }
-/* line 210, ../../app/stylesheets/partials/video-controls.scss */
+/* line 212, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev, .video-player-nav-buttons-wrapper .video-player-next {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -2534,7 +2578,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 40px;
   z-index: 2;
 }
-/* line 220, ../../app/stylesheets/partials/video-controls.scss */
+/* line 222, ../../app/stylesheets/partials/video-controls.scss */
 .video-player-nav-buttons-wrapper .video-player-prev:hover, .video-player-nav-buttons-wrapper .video-player-next:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -2647,8 +2691,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 10px;
 }
 
-/* line 39, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-main-done, .rolling-main-social, .rolls-share {
+/* line 40, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-main-done, .rolls-share,
+.rolling-main-social {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
   background: -webkit-linear-gradient(top, #0094d6, #0071a3);
@@ -2665,12 +2710,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 6px 13px;
 }
 
-/* line 44, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 46, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social {
   float: right;
   padding-left: 0;
 }
-/* line 50, ../../app/stylesheets/partials/frame-rolling.scss */
+/* line 52, ../../app/stylesheets/partials/frame-rolling.scss */
 .rolling-main-social:before {
   background: url("../images/assets/sharebutton_icons.svg") no-repeat 0px center;
   background-size: 71%;
@@ -2682,8 +2727,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   height: 15px;
 }
 
-/* line 62, ../../app/stylesheets/partials/frame-rolling.scss */
-.rolling-frame, .frame-share {
+/* line 65, ../../app/stylesheets/partials/frame-rolling.scss */
+.rolling-frame,
+.frame-share {
   border-radius: 5px;
 }
 
@@ -2850,7 +2896,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -2917,19 +2963,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   font-size: 11px;
 }
 
-/* line 72, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 71, ../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
 
-/* line 76, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
   border-top: 1px solid #343434;
   padding: 8px;
   position: relative;
 }
-/* line 82, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 81, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2949,7 +2995,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-left: 12px;
 }
 
-/* line 89, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 88, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -2959,7 +3005,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: absolute;
   right: 8px;
 }
-/* line 98, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 97, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2977,13 +3023,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   opacity: 1;
 }
 
-/* line 106, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 105, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar {
   height: 48px;
   width: 48px;
   float: left;
 }
-/* line 111, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 110, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar > img {
   height: 100%;
   overflow: hidden;
@@ -3306,7 +3352,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   float: right;
 }
 
-/* line 335, ../../app/stylesheets/_base.scss */
+/* line 200, ../../app/stylesheets/_base-mixin.scss */
 .networks-twitter button,
 .networks-facebook button {
   border-radius: 3px;
@@ -3357,6 +3403,17 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("../images/assets/rolls_share_facebook_on.svg") no-repeat center center, linear-gradient(top, #026fe5, #013e80);
 }
 
+/* line 261, ../../app/stylesheets/partials/rolls.scss */
+.networks-twitter-button,
+.networks-facebook-button,
+.networks-tumblr-button {
+  color: transparent;
+  font: 0/0 a;
+  overflow: hidden;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
 /* line 3, ../../app/stylesheets/partials/share.scss */
 .frame-share {
   background: rgba(0, 0, 0, 0.8);
@@ -3364,7 +3421,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   top: 40px;
 }
 
-/* line 12, ../../app/stylesheets/partials/share.scss */
+/* line 11, ../../app/stylesheets/partials/share.scss */
 .frame-share-content {
   height: inherit;
 }
@@ -3488,33 +3545,41 @@ body.isolated-roll .context-overlay-lining .frame-title {
   line-height: 2.75;
 }
 
-/* line 32, ../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-list, .you-preferences-networks, .you-preferences-notifications {
+/* line 34, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-list,
+.you-preferences-networks,
+.you-preferences-notifications {
   margin: 0;
   padding: 0;
 }
-/* line 36, ../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-list li, .you-preferences-networks li, .you-preferences-notifications li {
+/* line 39, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-list li,
+.you-preferences-networks li,
+.you-preferences-notifications li {
   border-bottom: 1px solid #222;
   list-style-type: none;
   padding: 10px 5px 10px 10px;
 }
-/* line 41, ../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-list li:first-child, .you-preferences-networks li:first-child, .you-preferences-notifications li:first-child {
+/* line 44, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-list li:first-child,
+.you-preferences-networks li:first-child,
+.you-preferences-notifications li:first-child {
   border-top: 1px solid #222;
 }
-/* line 46, ../../app/stylesheets/partials/user-preferences.scss */
-.you-preferences-list label, .you-preferences-networks label, .you-preferences-notifications label {
+/* line 49, ../../app/stylesheets/partials/user-preferences.scss */
+.you-preferences-list label,
+.you-preferences-networks label,
+.you-preferences-notifications label {
   margin-top: 1px;
 }
 
-/* line 53, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 56, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   float: left;
   line-height: 1.4;
 }
-/* line 58, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 61, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile label,
 .you-notifications label {
   float: left;
@@ -3523,19 +3588,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   line-height: 2;
   width: 25%;
 }
-/* line 66, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 69, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile input,
 .you-notifications input {
   padding: 5px;
   width: 75%;
 }
 
-/* line 72, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 75, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions {
   float: right;
   margin-top: 5px;
 }
-/* line 76, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 79, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions button {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -3553,17 +3618,17 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 4px 8px;
   margin-left: 6px;
 }
-/* line 82, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 85, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions .you-profile-cancel {
   float: left;
 }
-/* line 86, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 89, ../../app/stylesheets/partials/user-preferences.scss */
 .you-profile-actions #response-message {
   float: left;
   margin: 6px;
 }
 
-/* line 108, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 111, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks button.connected-network {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -3581,26 +3646,26 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 6px 13px;
   float: right;
 }
-/* line 114, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 117, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h2 {
   float: left;
   font-size: 14px;
   line-height: 2;
   width: 40%;
 }
-/* line 121, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 124, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks h3 {
   float: left;
   font-size: 12px;
   line-height: 2.5;
   width: 40%;
 }
-/* line 128, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 131, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks li {
   padding-left: 0;
 }
 
-/* line 321, ../../app/stylesheets/_base.scss */
+/* line 186, ../../app/stylesheets/_base-mixin.scss */
 .you-preferences-networks-twitter:before,
 .you-preferences-networks-tumblr:before,
 .you-preferences-networks-facebook:before {
@@ -3614,7 +3679,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 24px;
 }
 
-/* line 140, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 143, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-twitter:before {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
@@ -3622,7 +3687,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 76%;
 }
 
-/* line 147, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 150, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-facebook:before {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   box-shadow: inset 0px 1px 0px 0px #026fe5;
@@ -3630,7 +3695,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 28%;
 }
 
-/* line 154, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 157, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-networks-tumblr:before {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
   box-shadow: inset 0px 1px 0px 0px #52769e;
@@ -3638,7 +3703,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 36%;
 }
 
-/* line 163, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 166, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications label {
   font-size: 14px;
   font-weight: 500;
@@ -3646,7 +3711,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
   z-index: 1;
 }
-/* line 171, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 174, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"] {
   border: none;
   margin-top: 10px;
@@ -3655,7 +3720,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   left: 50%;
   width: 50%;
 }
-/* line 179, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 182, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:after {
   color: #efefef;
   content: "off";
@@ -3663,11 +3728,11 @@ body.isolated-roll .context-overlay-lining .frame-title {
   right: 20px;
   top: -7px;
 }
-/* line 187, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 190, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input[type="checkbox"]:checked:after {
   content: "on";
 }
-/* line 192, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 195, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -3696,7 +3761,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: relative;
   width: 60px;
 }
-/* line 208, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 211, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input + span:after {
   background: #fefefe;
   background: url("../images/assets/switch.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #fefefe));
@@ -3714,7 +3779,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   top: 0;
   width: 30px;
 }
-/* line 226, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 229, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span {
   background: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3728,11 +3793,11 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: relative;
   width: 60px;
 }
-/* line 235, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 238, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:checked + span:after {
   left: 49%;
 }
-/* line 240, ../../app/stylesheets/partials/user-preferences.scss */
+/* line 243, ../../app/stylesheets/partials/user-preferences.scss */
 .you-preferences-notifications input:focus {
   outline: none;
   border: none;
@@ -3768,135 +3833,144 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 10px 10px;
 }
 
-/* line 37, ../../app/stylesheets/partials/team.scss */
-.about-nav, .about-definition-peripherals {
+/* line 38, ../../app/stylesheets/partials/team.scss */
+.about-nav,
+.about-definition-peripherals {
   margin: 10px;
   padding: 0;
 }
-/* line 41, ../../app/stylesheets/partials/team.scss */
-.about-nav a, .about-definition-peripherals a {
+/* line 43, ../../app/stylesheets/partials/team.scss */
+.about-nav a,
+.about-definition-peripherals a {
   text-decoration: none;
 }
-/* line 45, ../../app/stylesheets/partials/team.scss */
-.about-nav a:hover, .about-definition-peripherals a:hover, .about-nav a:active, .about-definition-peripherals a:active {
+/* line 47, ../../app/stylesheets/partials/team.scss */
+.about-nav a:hover, .about-nav a:active,
+.about-definition-peripherals a:hover,
+.about-definition-peripherals a:active {
   text-decoration: underline;
 }
-/* line 48, ../../app/stylesheets/partials/team.scss */
-.about-nav a:visited, .about-definition-peripherals a:visited {
+/* line 50, ../../app/stylesheets/partials/team.scss */
+.about-nav a:visited,
+.about-definition-peripherals a:visited {
   text-decoration: none;
 }
-/* line 54, ../../app/stylesheets/partials/team.scss */
-.about-nav h2, .about-definition-peripherals h2,
+/* line 56, ../../app/stylesheets/partials/team.scss */
+.about-nav h2,
 .about-nav h3,
+.about-definition-peripherals h2,
 .about-definition-peripherals h3 {
   font-size: 12px;
   line-height: 1.4;
 }
-/* line 58, ../../app/stylesheets/partials/team.scss */
-.about-nav h2, .about-definition-peripherals h2 {
+/* line 60, ../../app/stylesheets/partials/team.scss */
+.about-nav h2,
+.about-definition-peripherals h2 {
   font-weight: 300;
 }
-/* line 62, ../../app/stylesheets/partials/team.scss */
-.about-nav h3, .about-definition-peripherals h3 {
+/* line 64, ../../app/stylesheets/partials/team.scss */
+.about-nav h3,
+.about-definition-peripherals h3 {
   font-weight: 100;
 }
-/* line 65, ../../app/stylesheets/partials/team.scss */
-.about-nav li, .about-definition-peripherals li {
+/* line 67, ../../app/stylesheets/partials/team.scss */
+.about-nav li,
+.about-definition-peripherals li {
   list-style-type: none;
   margin-bottom: .5em;
 }
 
-/* line 72, ../../app/stylesheets/partials/team.scss */
+/* line 74, ../../app/stylesheets/partials/team.scss */
 .about-term-list dt {
   font-weight: 500;
   margin: 10px 10px 0;
 }
-/* line 76, ../../app/stylesheets/partials/team.scss */
+/* line 78, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd {
   margin: 0 10px;
   padding: 0;
 }
-/* line 79, ../../app/stylesheets/partials/team.scss */
+/* line 81, ../../app/stylesheets/partials/team.scss */
 .about-term-list dd.about-definition {
   margin-top: 10px;
 }
 
-/* line 85, ../../app/stylesheets/partials/team.scss */
+/* line 87, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals {
   line-height: 1.5;
   list-style-type: none;
   margin: 10px 0 20px 0;
 }
-/* line 91, ../../app/stylesheets/partials/team.scss */
+/* line 93, ../../app/stylesheets/partials/team.scss */
 .about-definition-peripherals li {
   float: none;
   margin-bottom: 0;
   width: auto;
 }
 
-/* line 99, ../../app/stylesheets/partials/team.scss */
+/* line 101, ../../app/stylesheets/partials/team.scss */
 .about-external-twitter a {
   background: url("../images/assets/team_twitter.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 108, ../../app/stylesheets/partials/team.scss */
+/* line 110, ../../app/stylesheets/partials/team.scss */
 .about-external-link a {
   background: url("../images/assets/team_web.svg") no-repeat center left transparent;
   padding-left: 22px;
 }
 
-/* line 116, ../../app/stylesheets/partials/team.scss */
+/* line 118, ../../app/stylesheets/partials/team.scss */
 .pacheco:before {
   background: url("../images/team/1_reece.gif") no-repeat center center transparent;
 }
 
-/* line 119, ../../app/stylesheets/partials/team.scss */
+/* line 121, ../../app/stylesheets/partials/team.scss */
 .spinosa:before {
   background: url("../images/team/2_dan.gif") no-repeat center center transparent;
 }
 
-/* line 122, ../../app/stylesheets/partials/team.scss */
+/* line 124, ../../app/stylesheets/partials/team.scss */
 .sztul:before {
   background: url("../images/team/3_henry.gif") no-repeat center center transparent;
 }
 
-/* line 125, ../../app/stylesheets/partials/team.scss */
+/* line 127, ../../app/stylesheets/partials/team.scss */
 .recny:before {
   background: url("../images/team/4_myles.gif") no-repeat center center transparent;
 }
 
-/* line 128, ../../app/stylesheets/partials/team.scss */
+/* line 130, ../../app/stylesheets/partials/team.scss */
 .kurdziel:before {
   background: url("../images/team/5_chris.gif") no-repeat center center transparent;
 }
 
-/* line 131, ../../app/stylesheets/partials/team.scss */
+/* line 133, ../../app/stylesheets/partials/team.scss */
 .johnson:before {
   background: url("../images/team/6_mark.gif") no-repeat center center transparent;
 }
 
-/* line 134, ../../app/stylesheets/partials/team.scss */
+/* line 136, ../../app/stylesheets/partials/team.scss */
 .appelwick:before {
   background: url("../images/team/7_lauren.gif") no-repeat center center transparent;
 }
 
-/* line 137, ../../app/stylesheets/partials/team.scss */
+/* line 139, ../../app/stylesheets/partials/team.scss */
 .samberg:before {
   background: url("../images/team/8_josh.gif") no-repeat center center transparent;
 }
 
-/* line 140, ../../app/stylesheets/partials/team.scss */
+/* line 142, ../../app/stylesheets/partials/team.scss */
 .iadevaia:before {
   background: url("../images/team/9_vincent.gif") no-repeat center center transparent;
 }
 
-/* line 143, ../../app/stylesheets/partials/team.scss */
+/* line 145, ../../app/stylesheets/partials/team.scss */
 .matyus:before {
   background: url("../images/team/10_mike.gif") no-repeat center center transparent;
 }
 
-/* line 146, ../../app/stylesheets/partials/team.scss */
+/* line 148, ../../app/stylesheets/partials/team.scss */
 .sabintsev:before {
   background: url("../images/team/11_arthur.gif") no-repeat center center transparent;
 }
@@ -4022,8 +4096,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 93%;
 }
 
-/* line 169, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter, .email-gate-networks-twitter {
+/* line 115, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-twitter,
+.email-gate-networks-twitter {
   background-color: #00a2d1;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #05c7ff), color-stop(100%, #00a2d1));
   background: -webkit-linear-gradient(top, #05c7ff, #00a2d1);
@@ -4042,8 +4117,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-left: 33px;
   position: relative;
 }
-/* line 155, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, .email-gate-networks-twitter:before {
+/* line 93, ../../app/stylesheets/_base-mixin.scss */
+.logged-out-twitter:before,
+.email-gate-networks-twitter:before {
   background-repeat: no-repeat;
   border-right: 1px solid #38d2ff;
   bottom: 1px;
@@ -4054,15 +4130,17 @@ body.isolated-roll .context-overlay-lining .frame-title {
   top: 1px;
   width: 30px;
 }
-/* line 171, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before, .email-gate-networks-twitter:before {
+/* line 118, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-twitter:before,
+.email-gate-networks-twitter:before {
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M26.74%2C10.224c-0.862%2C0.146-2.114-0.005-2.775-0.279c1.378-0.114%2C2.309-0.733%2C2.666-1.576%0A%09c-0.495%2C0.303-2.035%2C0.632-2.882%2C0.318c-0.043-0.198-0.089-0.386-0.138-0.556c-0.646-2.362-2.863-4.267-5.188-4.036%0A%09c0.188-0.075%2C0.377-0.144%2C0.568-0.208c0.254-0.09%2C1.755-0.335%2C1.52-0.86c-0.201-0.464-2.035%2C0.347-2.38%2C0.456%0A%09c0.456-0.17%2C1.209-0.463%2C1.292-0.984c-0.699%2C0.095-1.386%2C0.423-1.914%2C0.9c0.19-0.203%2C0.338-0.453%2C0.367-0.721%0A%09c-1.861%2C1.182-2.95%2C3.563-3.831%2C5.875c-0.689-0.666-1.304-1.19-1.855-1.482c-1.538-0.82-3.384-1.676-6.277-2.745%0A%09c-0.089%2C0.95%2C0.471%2C2.217%2C2.092%2C3.057C7.655%2C7.335%2C7.015%2C7.442%2C6.501%2C7.562c0.21%2C1.091%2C0.895%2C1.987%2C2.741%2C2.42%0A%09c-0.846%2C0.055-1.283%2C0.249-1.68%2C0.66c0.385%2C0.759%2C1.324%2C1.649%2C3.015%2C1.466c-1.879%2C0.806-0.767%2C2.294%2C0.762%2C2.072%0A%09c-2.606%2C2.676-6.717%2C2.479-9.079%2C0.242c6.165%2C8.344%2C19.563%2C4.932%2C21.561-3.104C25.314%2C11.33%2C26.195%2C10.805%2C26.74%2C10.224z%22/%3E%0A%3C/svg%3E");
   background-position: 3px 5px;
   background-size: 97%;
 }
 
-/* line 178, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook, .email-gate-networks-facebook {
+/* line 126, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-facebook,
+.email-gate-networks-facebook {
   background-color: #013e80;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
   background: -webkit-linear-gradient(top, #0157b3, #013e80);
@@ -4081,8 +4159,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-left: 33px;
   position: relative;
 }
-/* line 155, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, .email-gate-networks-facebook:before {
+/* line 93, ../../app/stylesheets/_base-mixin.scss */
+.logged-out-facebook:before,
+.email-gate-networks-facebook:before {
   background-repeat: no-repeat;
   border-right: 1px solid #026fe5;
   bottom: 1px;
@@ -4093,8 +4172,9 @@ body.isolated-roll .context-overlay-lining .frame-title {
   top: 1px;
   width: 30px;
 }
-/* line 180, ../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before, .email-gate-networks-facebook:before {
+/* line 129, ../../app/stylesheets/partials/anon-banner.scss */
+.logged-out-facebook:before,
+.email-gate-networks-facebook:before {
   background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M14.367%2C26.995V16.987h-2.18V13.47h2.159c0%2C0%2C0-1.125%2C0-3.192c0-2.068%2C1.49-3.273%2C4.11-3.273%0A%09c2.619%2C0%2C3.312%2C0%2C3.312%2C0l-0.004%2C3.396c0%2C0-1.693%2C0-2.322%2C0s-0.902%2C0.573-0.902%2C0.88c0%2C0.306%2C0%2C2.25%2C0%2C2.25h3.271l-0.377%2C3.457%0A%09h-2.791l-0.031%2C10.005L14.367%2C26.995z%22/%3E%0A%3C/svg%3E");
   background-position: 1px 0px;
   background-size: 95%;
@@ -4151,33 +4231,33 @@ body.isolated-roll .context-overlay-lining .frame-title {
   z-index: 3;
 }
 
-/* line 16, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 17, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining {
   font-size: 120%;
   max-width: 330px;
   position: relative;
 }
-/* line 21, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 22, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .video-card {
   background-color: #232526;
   box-shadow: inset 0px 1px 0px 0px #343434;
   margin: 10px;
 }
-/* line 27, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 28, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-title {
   width: 61%;
 }
-/* line 32, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 33, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-locator:before {
   border-left-color: #343434;
 }
-/* line 38, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 39, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-controls button {
   border-top-color: #343434;
   border-left-color: #343434;
 }
 
-/* line 45, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 46, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
 }
@@ -4199,7 +4279,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   border: 1px solid #f8ef43;
   position: relative;
 }
-/* line 13, ../../app/stylesheets/partials/guide-education.scss */
+/* line 14, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-lining p {
   color: #000;
   font-size: 12px;
@@ -4209,7 +4289,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-top: 10px;
 }
 
-/* line 23, ../../app/stylesheets/partials/guide-education.scss */
+/* line 24, ../../app/stylesheets/partials/guide-education.scss */
 .guide-education-close {
   background: url("../images/assets/remove_notification.svg") no-repeat center center transparent;
   border: none;
@@ -4307,7 +4387,6 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 77, ../../app/stylesheets/partials/gate.scss */
 .email-gate-login-button {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
   background: -webkit-linear-gradient(top, #53b249, #428e3a);
@@ -4315,6 +4394,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: -o-linear-gradient(top, #53b249, #428e3a);
   background: -ms-linear-gradient(top, #53b249, #428e3a);
   background: linear-gradient(top, #53b249, #428e3a);
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border-radius: 5px;
   text-shadow: 0px 1px 2px #222222;
   border: none;
@@ -4369,16 +4449,16 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-decoration: none;
   width: 100%;
 }
-/* line 136, ../../app/stylesheets/partials/gate.scss */
+/* line 135, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:before {
   width: 36px;
 }
-/* line 139, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-twitter:visited {
   color: #efefef;
 }
 
-/* line 144, ../../app/stylesheets/partials/gate.scss */
+/* line 143, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook {
   display: block;
   margin-top: 10px;
@@ -4387,27 +4467,27 @@ body.isolated-roll .context-overlay-lining .frame-title {
   text-decoration: none;
   width: 100%;
 }
-/* line 153, ../../app/stylesheets/partials/gate.scss */
+/* line 152, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:before {
   width: 36px;
 }
-/* line 156, ../../app/stylesheets/partials/gate.scss */
+/* line 155, ../../app/stylesheets/partials/gate.scss */
 .email-gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 161, ../../app/stylesheets/partials/gate.scss */
+/* line 160, ../../app/stylesheets/partials/gate.scss */
 .email-gate-error {
   color: #cc1235;
 }
 
-/* line 165, ../../app/stylesheets/partials/gate.scss */
+/* line 164, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 170, ../../app/stylesheets/partials/gate.scss */
+/* line 169, ../../app/stylesheets/partials/gate.scss */
 .email-gate-caption {
   font-size: 13px;
   margin: 5px auto 10px;
@@ -4415,7 +4495,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100%;
 }
 
-/* line 177, ../../app/stylesheets/partials/gate.scss */
+/* line 176, ../../app/stylesheets/partials/gate.scss */
 .email-gate-label {
   display: block;
   font-size: 14px;
@@ -4425,7 +4505,8 @@ body.isolated-roll .context-overlay-lining .frame-title {
 }
 
 /* line 185, ../../app/stylesheets/partials/gate.scss */
-.email-gate-email, .email-gate-code {
+.email-gate-code,
+.email-gate-email {
   border-radius: 3px;
   border: none;
   display: block;
@@ -4436,7 +4517,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 50%;
 }
 
-/* line 200, ../../app/stylesheets/partials/gate.scss */
+/* line 196, ../../app/stylesheets/partials/gate.scss */
 .email-gate-signup-submit {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #0071a3;
@@ -4458,19 +4539,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 17%;
 }
 
-/* line 217, ../../app/stylesheets/partials/gate.scss */
+/* line 213, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
-/* line 222, ../../app/stylesheets/partials/gate.scss */
+/* line 218, ../../app/stylesheets/partials/gate.scss */
 .email-gate-thank-you h1 {
   font-size: 1em;
   margin-bottom: 2em;
 }
 
-/* line 228, ../../app/stylesheets/partials/gate.scss */
+/* line 224, ../../app/stylesheets/partials/gate.scss */
 .detour {
   margin-top: 1.231em;
 }
@@ -4568,7 +4649,6 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 90, ../../app/stylesheets/partials/genius.scss */
 .genius-search-submit {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
   background: -webkit-linear-gradient(top, #0094d6, #0071a3);
@@ -4576,6 +4656,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: -o-linear-gradient(top, #0094d6, #0071a3);
   background: -ms-linear-gradient(top, #0094d6, #0071a3);
   background: linear-gradient(top, #0094d6, #0071a3);
+  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   text-shadow: 0px 1px 2px #222222;
   border: none;
   border-radius: 5px;
@@ -4602,7 +4683,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 auto;
 }
 
-/* line 6, ../../app/stylesheets/partials/ui-test.scss */
+/* line 5, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-saves {
   background: url("../images/assets/saved_big.svg") no-repeat center center transparent;
   background-size: 100%;
@@ -4613,11 +4694,11 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 0;
   width: 10px;
 }
-/* line 16, ../../app/stylesheets/partials/ui-test.scss */
+/* line 15, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-saves:before {
   content: "";
 }
-/* line 23, ../../app/stylesheets/partials/ui-test.scss */
+/* line 22, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-controls-button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: url("../images/assets/upvote_large.svg") no-repeat center 5px;
@@ -4627,19 +4708,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding-top: 27px;
   text-decoration: none;
 }
-/* line 34, ../../app/stylesheets/partials/ui-test.scss */
+/* line 33, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .upvote-frame .video-score-upvoted {
   color: #333;
 }
-/* line 40, ../../app/stylesheets/partials/ui-test.scss */
+/* line 39, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .save-frame {
   display: none;
 }
-/* line 43, ../../app/stylesheets/partials/ui-test.scss */
+/* line 42, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-controls .upvote-frame {
   display: block;
 }
-/* line 48, ../../app/stylesheets/partials/ui-test.scss */
+/* line 47, ../../app/stylesheets/partials/ui-test.scss */
 .ui-test .video-activity-comment {
   padding: 2px 0 0;
 }
@@ -4756,16 +4837,6 @@ body.isolated-roll .context-overlay-lining .frame-title {
 }
 
 /* line 10, ../../app/stylesheets/partials/h5bp-utilities.scss */
-.notype, .guide-presentation-stream, .frame-controls-roll button, .frame-controls-share button, .networks-twitter button,
-.networks-facebook button {
-  color: transparent;
-  font: 0/0 a;
-  overflow: hidden;
-  text-shadow: none;
-  white-space: nowrap;
-}
-
-/* line 11, ../../app/stylesheets/partials/h5bp-utilities.scss */
 .error {
   background: #fdd;
   border: 1px solid red !important;

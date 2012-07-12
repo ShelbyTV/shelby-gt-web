@@ -1,23 +1,23 @@
 /*
-Syntax error: Undefined mixin 'background'.
-        on line 56 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss, in `background'
-        from line 56 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss
+Syntax error: Undefined mixin 'transition-property'.
+        on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'
+        from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss
 
-51:   .networks-twitter {
-52:   	background: $flatNetworksUnselected;
-53:   	@include background(
-54:   		url('../images/assets/rolls_share_twitter_off.png') no-repeat center center,
-55:   		$softNetworksUnselected
-56:   	);
-57:   	&.active{
-58:   		background: $twitter-blue;
-59:   		@include background(
-60:   			url('../images/assets/rolls_share_twitter_on.png') no-repeat center center,
-61:   			linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue)
+98:   z-index: 2147483646; 
+99:   &.guide-show {
+100:     margin-right: 0;
+101:   }
+102:   &.guide-animate {
+103:     @include transition-property('margin-right');
+104:     @include transition-duration(.5s);
+105:     @include transition-timing-function(ease-in-out);
+106:     @include transition-delay(0s);
+107:   }
+108:     
 
 Backtrace:
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss:56:in `background'
-/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss:56
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:103:in `transition-property'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss:103
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -104,4 +104,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 56 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss, in `background'\A         from line 56 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/png.scss\A \A 51:   .networks-twitter {\A 52:   	background: $flatNetworksUnselected;\A 53:   	@include background(\A 54:   		url('../images/assets/rolls_share_twitter_off.png') no-repeat center center,\A 55:   		$softNetworksUnselected\A 56:   	);\A 57:   	&.active{\A 58:   		background: $twitter-blue;\A 59:   		@include background(\A 60:   			url('../images/assets/rolls_share_twitter_on.png') no-repeat center center,\A 61:   			linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue)"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss, in `transition-property'\A         from line 103 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/bookmarklet-overwrite.scss\A \A 98:   z-index: 2147483646; \A 99:   &.guide-show {\A 100:     margin-right: 0;\A 101:   }\A 102:   &.guide-animate {\A 103:     @include transition-property('margin-right');\A 104:     @include transition-duration(.5s);\A 105:     @include transition-timing-function(ease-in-out);\A 106:     @include transition-delay(0s);\A 107:   }\A 108:     "; }

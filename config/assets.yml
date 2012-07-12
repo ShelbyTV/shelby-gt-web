@@ -84,3 +84,5 @@ stylesheets:
     - public/stylesheets/screen.css
   seovideo:
     - public/stylesheets/seovideo.css
+  radar:
+    - public/stylesheets/radar.css

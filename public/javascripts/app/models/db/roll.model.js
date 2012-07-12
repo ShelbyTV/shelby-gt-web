@@ -43,7 +43,10 @@
           url : url,
           success : function(rollModel, response){
             BackboneCollectionUtils.insertAtSortedIndex(rollModel,
-              shelby.models.rollFollowings.get('rolls'), {searchOffset:rollFollowingsConfig.numSpecialRolls});
+              shelby.models.rollFollowings.get('rolls'), 
+                {searchOffset:rollFollowingsConfig.numSpecialRolls, 
+                  sortAttribute:rollFollowingsConfig.sortAttribute,
+                  sortDirection:rollFollowingsConfig.sortDirection});
             if (onSuccess) {
               onSuccess(rollModel, response);
             }
