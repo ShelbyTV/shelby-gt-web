@@ -213,16 +213,14 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 	
 	_toggleFullscreen: function(){
-		if (shelby.fullScreen.available()){
-			if(shelby.fullScreen.activated()){
-			  shelby.fullScreen.cancel();
-			  this.$(".video-player-fullscreen").removeClass("cancel");
-			} 
-			else {
-			  shelby.fullScreen.request();
-			  this.$(".video-player-fullscreen").addClass("cancel");
-		  }
-		}
+	  var guideShown = this._userDesires.get('guideShown');
+	  if( guideShown ){
+      this._userDesires.set({guideShown: false});
+      this.$(".video-player-fullscreen").addClass("cancel");
+    } else {
+      this._userDesires.set({guideShown: true});
+      this.$(".video-player-fullscreen").removeClass("cancel");
+    }    
 	},
   
   _nextVideo: function(){
@@ -243,9 +241,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
+  	  $('.main').removeClass("hide-guide");
       this.$el.find('.video-player-tools').removeClass("full-width");
       this.$el.find('.video-player-next').removeClass("full-width");
     } else {
+  	  $('.main').addClass("hide-guide");
       this.$el.find('.video-player-tools').addClass("full-width");
       this.$el.find('.video-player-next').addClass("full-width");
     }
