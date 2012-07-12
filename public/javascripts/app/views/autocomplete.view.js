@@ -42,8 +42,9 @@
       menuClass : "autocomplete-menu",
       multiTerm : false,
       multiTermMethod : 'list', //supported options: list, paragraph
-      multiTermPosition : 'tail', //supported options: tail, caret
-      separator : /,\s*/
+      multiTermPosition : 'caret', //supported options: tail, caret
+      separator : /,\s*/,
+      separatorReplacement : ","
     },
 
     events : function() {
@@ -78,10 +79,8 @@
         if (this.options.multiTerm) {
           switch (this.options.multiTermMethod) {
             case 'list':
-              this.terms.pop();
-              this.terms.push(selection);
-              this.terms.push("");
-              newVal = this.terms.join(", ");
+              var terms = this.termsUpToQuery.concat(selection,this.termsAfterQuery,"");
+              newVal = terms.join(this.options.separatorReplacement);
               break;
             case 'paragraph':
               newVal = this.textUpToQuery + selection + this.textAfterQuery;
@@ -94,7 +93,14 @@
           .change();
 
         if (this.options.multiTerm && this.options.multiTermPosition == 'caret') {
-          this.$el.setSelection(this.textUpToQuery.length + selection.length);
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              this.$el.setSelection(this.textUpToQuery.length + selection.length + this.options.separatorReplacement.length);
+              break;
+            case 'paragraph':
+              this.$el.setSelection(this.textUpToQuery.length + selection.length);
+              break;
+          }
         }
 
         return this.hide();
@@ -141,24 +147,37 @@
             stringToSearch = this.query;
             break;
           case 'caret':
-            stringToSearch = this.query.slice(0, this.$el.getSelection().start);
+            var caretIndex = this.$el.getSelection().start;
+            var includeAfterCaretIndex = this.query.slice(caretIndex).search(this.options.separator);
+            if (includeAfterCaretIndex == -1) {
+              stringToSearch = this.query;
+            } else {
+              stringToSearch = this.query.slice(0, caretIndex + includeAfterCaretIndex);
+            }
             break;
         }
+        var queryTerm;
+        var queryAtIndex;
         switch (this.options.multiTermMethod) {
           case 'list':
-            this.terms = _(stringToSearch.split(this.options.separator));
-            this.query = this.terms.last();
+            this.termsUpToQuery = stringToSearch.split(this.options.separator);
+            queryTerm = this.termsUpToQuery.pop();
+            if (queryTerm) {
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.termsAfterQuery = _(this.query.slice(queryAtIndex + queryTerm.length).split(this.options.separator)).compact();
+            }
             break;
           case 'paragraph':
-            var queryTerm = _(stringToSearch.split(this.options.separator)).last();
+            queryTerm = _(stringToSearch.split(this.options.separator)).last();
             if (queryTerm) {
-              var queryIndex = stringToSearch.lastIndexOf(queryTerm);
-              this.textUpToQuery = this.query.slice(0, queryIndex);
-              this.textAfterQuery = this.query.slice(queryIndex + queryTerm.length);
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.textAfterQuery = this.query.slice(queryAtIndex + queryTerm.length);
             }
-            this.query = queryTerm;
             break;
         }
+        this.query = queryTerm;
       }
 
       if (!this.query) {

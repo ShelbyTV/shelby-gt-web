@@ -43,8 +43,7 @@
         this._twitterAutocompleteView = new TwitterAutocompleteView({
           el : this.$('.js-add-message-input')[0],
           multiTerm : true,
-          multiTermMethod : 'paragraph',
-          multiTermPosition : 'caret'
+          multiTermMethod : 'paragraph'
         });
         this.renderChild(this._twitterAutocompleteView);
       }
