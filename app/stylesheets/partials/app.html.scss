@@ -54,13 +54,13 @@ a{
 
 }
 
+.main,
 .content{
 	float:right;
 	width:330px;
 }
 
 .main{
-	@extend .content;
 
 	background: $guide-bg-color;
 	font-size:1.2em;

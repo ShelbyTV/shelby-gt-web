@@ -75,9 +75,9 @@
 }
 
 .email-gate-login-button {
-	@include buttonfont;
 	background: $shelby-green;
 	@include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
+	@include buttonfont;
 	@include roundies;
 	@include text-shadow(0px 1px 2px #222);
 	
@@ -125,8 +125,7 @@
 }
 
 .email-gate-networks-twitter {
-	//extend existing
-	@extend .logged-out-twitter;
+	//extended by .logged-out-twitter
 	display: block;
 	padding: 3px 3px 3px 36px;
 	text-align: center;
@@ -142,7 +141,7 @@
 }
 
 .email-gate-networks-facebook {
-	@extend .logged-out-facebook;
+	//extended by .logged-out-facebook
 	display: block;
 	margin-top: $defaultMargin;
 	padding: 3px 3px 3px 36px;
@@ -182,6 +181,7 @@
 	text-align: right;
 }
 
+.email-gate-code,
 .email-gate-email {
 	@include roundies(input);
 	border: none;
@@ -191,10 +191,6 @@
 	margin: 5px 25% 5px $defaultMargin;
 	padding: $defaultMargin+2 $defaultMargin;
 	width: 50%;
-}
-
-.email-gate-code {
-	@extend .email-gate-email;
 }
 
 .email-gate-signup-submit{

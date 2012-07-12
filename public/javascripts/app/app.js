@@ -2,7 +2,9 @@
 // global mechanism for including library prototypes
 //---------------------------------------------------------
 libs = {
-  shelbyGT : {},
+  shelbyGT : {
+    viewHelpers : {}
+  },
   utils : {}
 };
 
@@ -22,7 +24,7 @@ _(shelby).extend({
   },
 	
 	signOut: function(){
-		document.location.href = "/sign_out";
+		document.location.href = "/signout";
 	},
 	
 	// shelby.alert mimicks js native alert functionality.
@@ -79,13 +81,18 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
 // global ajax error handling to handle users who are not authenticated and other unexpected errors
 // disable for more specific error handling by using the jQuery.ajax global:false option
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
+
+  //on a 401 we *always* want to alert the user and then sign them out
+  if(jqXHR.status == 401){
+    //this view may not have gotten rendered...
+    if(!shelby.views.notificationOverlayView){ new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState}); }
+    shelby.alert("Sorry, but you need you to sign in again.  You will now be brought to the login page.", function(){
+      document.location = "/signout?error=401";
+    });
+  }
+  
   var exec = ajaxSettings.error || libs.shelbyGT.defaultOnError;
   exec(event, jqXHR, ajaxSettings, thrownError);
-  /*if (ajaxSettings.error) { //we should allow overrides
-    ajaxSettings.error(event, jqXH);
-  } else {
-    libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
-  }*/
 });
 
 //---------------------------------------------------------

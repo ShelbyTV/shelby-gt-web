@@ -30,7 +30,6 @@
       if (this.model) {
         this.model.unbind('destroy', this._onFrameRemove, this);
         this.model.unbind('change', this.render, this);
-        this.model.get('conversation').unbind('change', this._onConversationChange, this);
       }
 
       this.model = activeFrameModel;
@@ -43,7 +42,6 @@
       //bind
       this.model.bind('destroy', this._onFrameRemove, this);
       this.model.bind('change', this.render, this);
-      this.model.get('conversation').bind('change', this._onConversationChange, this);
 
       this.render();
     },

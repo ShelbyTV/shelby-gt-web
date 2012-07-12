@@ -1,0 +1,185 @@
+//FRAME
+
+.frame-logo {
+  color : #EFEFEF;
+  float: right;
+  font-size:14px;
+  line-height: 2;
+  margin: 9px 12px 0 0;
+  position: absolute;
+  right: 0;
+}
+
+.frame-logo-img {
+  display: inline;
+  margin-left: 5px;
+  margin-top: 0px;
+  width: 100px;
+  vertical-align: middle;
+}
+
+.frame-creator-avatar{
+  height: 45px;
+  width:45px;
+}
+
+.frame-conversation-message-block {
+  font-size: 13px;
+}
+
+//ROLLS
+
+
+.roll-selection-item-lining {
+  height: 50px;
+}
+
+.roll-selection-item {
+  height: 51px;
+  margin: 0;
+  padding: 0;
+
+  a:link, a:visited, a:active {
+    color:#DCDDDE;
+  }
+  a img {
+    border: none;
+  }
+  
+}
+
+.roll-item-creator {
+  height:23.03030303px;
+}
+
+.current-roll {
+  font-size: 14.5454545455px;
+}
+
+.rolling-main-header{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.roll-options-label {
+  font-weight: 500;
+}
+
+//GUIDE
+
+.guide-overlay-title-text {
+  line-height: 2.65;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.guide-clickoff {
+  display: none;
+  position: fixed;
+  top: 0px;
+  z-index: 2147483647;
+  &.guide-clickoff-show {
+    cursor: pointer;
+    display: block;
+  }
+}
+
+.guide-window {
+  background: #222;
+  border-left: 1px solid black;
+  bottom: 0;
+  box-shadow: 0px 0px 25px 5px black;
+  margin-right: -360px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 330px;
+  z-index: 2147483646; 
+  &.guide-show {
+    margin-right: 0;
+  }
+  &.guide-animate {
+    @include transition-property('margin-right');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+    
+}
+
+.video-card-header {
+  height: 45px;
+}
+
+.embedded-header {
+  background-color: #35383A;
+  border-radius: 5px 5px 0 0;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  z-index: 2147483645;
+}
+
+.frame-exists {
+  .frame-logo:before {
+    content: "Seen on";
+    display: block;
+    float: left;
+  }
+}
+
+.embedded-footer {
+  background-color: #35383A;
+  border-radius: 0 0 5px 5px;
+  font-size: 13px;
+  position: absolute;
+  z-index: 2147483645;
+}
+
+.frame-title {
+  width:50%;
+}
+
+/*
+.guide-overlay-title {
+  background-image: url("../../images/assets/mark.png");
+  background-position: 15px 50%;
+  background-repeat: no-repeat;
+  background-size: 38px;
+}*/
+
+.gate-networks-twitter,
+.gate-networks-facebook{
+  @include roundies(input);
+
+  border: 0;
+  display: block;
+  font: 0/0 a;
+  height: 40px;
+  margin: 20px;
+  text-shadow: none;
+}
+
+.gate-networks-twitter {
+  @include gradient-primer($twitter-blue);
+  @include preferences-networks;
+
+  background-size: 11%;
+}
+
+.gate-networks-facebook {
+  @include gradient-primer($facebook-blue);
+  @include preferences-networks(facebook);
+
+  background-size: 4%;
+}
+
+#guide-overlay-controls {
+  z-index:2147483647;
+  position: fixed;
+}
+
+.content-body {
+    top: 45px;
+}

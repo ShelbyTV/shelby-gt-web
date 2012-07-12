@@ -153,10 +153,10 @@
 			});
 			
 			$('.email-gate-signup').submit(function() {
-				$.post(shelby.config.apiRoot + '/gt_interest', $(this).serialize(), function(data) {
+				$.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
 					$('.email-gate-signup').hide()
 					$('.email-gate-thank-you').show();
-				});
+				}, 'jsonp');
 			  return false;
 			});
 		});

@@ -41,7 +41,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({actionCopy: this._actionCopy}));
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
+    if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
         !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     }
@@ -133,7 +133,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(guideModel){
-    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
+    if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
         !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     } else {
@@ -171,7 +171,13 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
       this.$el.find('.js-roll-add-leave-button').hide();
-      this.$el.find('.rolls-edit').show();
+      //only show roll edit if it's not a special roll
+      if(currentRollModel.get('roll_type') < libs.shelbyGT.RollModel.TYPES.all_special_rolls){
+        this.$el.find('.rolls-edit').hide();
+      } 
+      else{
+        this.$el.find('.rolls-edit').show();
+      }
     }
     else{
       this.$el.find('.js-roll-add-leave-button').show();

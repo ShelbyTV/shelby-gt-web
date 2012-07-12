@@ -2,6 +2,9 @@
   
   var RollModel = libs.shelbyGT.RollModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
+  var EmailAddressAutocompleteView = libs.shelbyGT.EmailAddressAutocompleteView;
+  var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
+  var rollFollowingsConfig = shelby.config.db.rollFollowings;
 
   // Subclass with a view that has class, tag, or id (not el) and this will handle
   libs.shelbyGT.RollingCreateRollView = Support.CompositeView.extend({
@@ -9,7 +12,7 @@
     events : {
       "click #new-roll-create" : 'rollToNew',
       "focus #new-roll-name" : "_onFocusRollName",
-      "focus #new-roll-receipients" : "_onFocusRollRecipients"
+      "focus #new-roll-recipients" : "_onFocusRollRecipients"
     },
   
     className : 'create-roll clearfix',
@@ -24,21 +27,26 @@
   
     render : function(){
       this.$el.html(this.template());
+      var recipientsAutocompleteView = new EmailAddressAutocompleteView({
+        el : this.$('.js-roll-options-input-email')[0],
+        multiTerm : true
+      });
+      this.renderChild(recipientsAutocompleteView);
     },
   
     rollToNew : function(){
       var self = this;
       
-      if( !this._validateForm() ){ 
+      if( !this._validateForm() ){
         this._frameRollingState.set('doShare', ShareActionState.failed);
-        return; 
+        return;
       }
   
       this._frameRollingState.set({doShare:ShareActionState.share});
     
       roll = new RollModel({
         'title' : this.$("#new-roll-name").val(),
-        collaborative : true
+        collaborative : false
       });
     
       roll.set({'public': !this.$("#new-roll-status").is(':checked')});
@@ -57,7 +65,12 @@
       // have to create the new roll and then reroll
       roll.save(null, {
         success : function(newRoll){
-          shelby.models.rollFollowings.add(newRoll);
+          BackboneCollectionUtils.insertAtSortedIndex(newRoll,
+            shelby.models.rollFollowings.get('rolls'), 
+              {searchOffset:rollFollowingsConfig.numSpecialRolls, 
+                sortAttribute:rollFollowingsConfig.sortAttribute,
+                sortDirection:rollFollowingsConfig.sortDirection});
+          
           self.options.frame.reRoll(newRoll, function(newFrame){
             
             //complete rolling and change screens now, allow email action to happen afterward
@@ -98,7 +111,7 @@
 
     _onFocusRollRecipients : function(){
       // remove the error highlight from the roll title input on focus if there is one
-      this.$('#new-roll-receipients').removeClass('error');
+      this.$('#new-roll-recipients').removeClass('error');
     }
   
   });

@@ -8,10 +8,18 @@ libs.utils.BackboneCollectionUtils = {
     // default options
     options = _.chain({}).extend(options).defaults({
       searchOffset : 0,
-      sortAttribute : 'id'
+      sortAttribute : 'id',
+      sortDirection : 'asc'
     }).value();
 
     var rankingFunc = function(item){return item.get(options.sortAttribute);};
-    return collection.chain().rest(options.searchOffset).sortedIndex(model, rankingFunc).value() + options.searchOffset;
+
+    if(options.sortDirection === "desc"){
+      var collectionToInspect = collection.chain().rest(options.searchOffset).reverse();
+      return (collectionToInspect.value().length - collectionToInspect.sortedIndex(model, rankingFunc).value()) + options.searchOffset;
+    } else {
+      var collectionToInspect = collection.chain().rest(options.searchOffset);
+      return collectionToInspect.sortedIndex(model, rankingFunc).value() + options.searchOffset;
+    }
   }
 };

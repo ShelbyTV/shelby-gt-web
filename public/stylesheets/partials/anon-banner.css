@@ -1,198 +1,97 @@
-/* line 3, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-banner-wrapper {
-  bottom: 0;
-  left: 0;
-  padding-right: 330px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
+/*
+Syntax error: Undefined mixin 'opacity'.
+        on line 17 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss, in `opacity'
+        from line 17 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss
 
-/* line 12, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-overlay {
-  background: black;
-  bottom: 0;
-  display: none;
-  height: 100%;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  z-index: 0;
-}
-/* line 23, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-overlay p {
-  color: #efefef;
-  font-size: 40px;
-  font-weight: 500;
-  margin-top: 25%;
-  padding-right: 330px;
-  top: 50%;
-}
+12: .logged-out-overlay{
+13: 	background:black;	
+14: 	bottom:0;
+15: 	display:none;
+16: 	height:100%;
+17: 	@include opacity(0.8);
+18: 	position:absolute;
+19: 	text-align:center;
+20: 	width:100%;
+21: 	z-index:0;
+22: 
 
-/* line 33, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-banner {
-  border-radius: 0 0 5px 5px;
-  background-color: #585858;
-  margin: 0 auto;
-  min-width: 680px;
-  max-width: 738px;
-  position: relative;
-  z-index: 1;
-}
-
-/* line 44, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-header {
-  background-color: #303030;
-  border-bottom: 1px solid #222;
-  padding: 10px;
-}
-
-/* line 51, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-nav {
-  float: left;
-  font-size: 11px;
-}
-/* line 55, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-nav li {
-  display: inline;
-  padding-right: 5px;
-}
-/* line 59, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-nav a {
-  color: #d3d3d3;
-  text-decoration: none;
-}
-/* line 63, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-nav a:hover {
-  color: white;
-  text-decoration: underline;
-}
-/* line 68, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-nav a:visited, .logged-out-nav a:active {
-  color: white;
-}
-
-/* line 74, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-origin {
-  float: right;
-}
-
-/* line 78, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-tagline {
-  float: left;
-  font-weight: 100;
-  font-size: 17px;
-  margin-top: 20px;
-  width: 50%;
-}
-/* line 85, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-tagline a {
-  text-decoration: none;
-  font-weight: 500;
-}
-/* line 88, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-tagline a:hover {
-  text-decoration: none;
-}
-/* line 92, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-tagline a:active, .logged-out-tagline a:visited {
-  text-decoration: none;
-}
-
-/* line 98, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-networks {
-  float: left;
-  margin: 12px 0;
-  padding: 0;
-  width: 50%;
-}
-/* line 104, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-networks li {
-  display: inline;
-  float: left;
-  width: 50%;
-}
-/* line 109, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-networks button {
-  width: 93%;
-}
-
-/* line 169, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter {
-  background-color: #00a2d1;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #05c7ff), color-stop(100%, #00a2d1));
-  background: -webkit-linear-gradient(top, #05c7ff, #00a2d1);
-  background: -moz-linear-gradient(top, #05c7ff, #00a2d1);
-  background: -o-linear-gradient(top, #05c7ff, #00a2d1);
-  background: -ms-linear-gradient(top, #05c7ff, #00a2d1);
-  background: linear-gradient(top, #05c7ff, #00a2d1);
-  border-radius: 5px;
-  box-shadow: inset 0px 1px 0px 0px #51d8ff;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #00536b;
-  color: #efefef;
-  font-size: 11px;
-  line-height: 2.5;
-  padding-left: 33px;
-  position: relative;
-}
-/* line 155, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before {
-  background-repeat: no-repeat;
-  border-right: 1px solid #38d2ff;
-  bottom: 1px;
-  content: "\0020";
-  float: left;
-  left: 0;
-  position: absolute;
-  top: 1px;
-  width: 30px;
-}
-/* line 171, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-twitter:before {
-  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M26.74%2C10.224c-0.862%2C0.146-2.114-0.005-2.775-0.279c1.378-0.114%2C2.309-0.733%2C2.666-1.576%0A%09c-0.495%2C0.303-2.035%2C0.632-2.882%2C0.318c-0.043-0.198-0.089-0.386-0.138-0.556c-0.646-2.362-2.863-4.267-5.188-4.036%0A%09c0.188-0.075%2C0.377-0.144%2C0.568-0.208c0.254-0.09%2C1.755-0.335%2C1.52-0.86c-0.201-0.464-2.035%2C0.347-2.38%2C0.456%0A%09c0.456-0.17%2C1.209-0.463%2C1.292-0.984c-0.699%2C0.095-1.386%2C0.423-1.914%2C0.9c0.19-0.203%2C0.338-0.453%2C0.367-0.721%0A%09c-1.861%2C1.182-2.95%2C3.563-3.831%2C5.875c-0.689-0.666-1.304-1.19-1.855-1.482c-1.538-0.82-3.384-1.676-6.277-2.745%0A%09c-0.089%2C0.95%2C0.471%2C2.217%2C2.092%2C3.057C7.655%2C7.335%2C7.015%2C7.442%2C6.501%2C7.562c0.21%2C1.091%2C0.895%2C1.987%2C2.741%2C2.42%0A%09c-0.846%2C0.055-1.283%2C0.249-1.68%2C0.66c0.385%2C0.759%2C1.324%2C1.649%2C3.015%2C1.466c-1.879%2C0.806-0.767%2C2.294%2C0.762%2C2.072%0A%09c-2.606%2C2.676-6.717%2C2.479-9.079%2C0.242c6.165%2C8.344%2C19.563%2C4.932%2C21.561-3.104C25.314%2C11.33%2C26.195%2C10.805%2C26.74%2C10.224z%22/%3E%0A%3C/svg%3E");
-  background-position: 3px 5px;
-  background-size: 97%;
-}
-
-/* line 178, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook {
-  background-color: #013e80;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
-  background: -webkit-linear-gradient(top, #0157b3, #013e80);
-  background: -moz-linear-gradient(top, #0157b3, #013e80);
-  background: -o-linear-gradient(top, #0157b3, #013e80);
-  background: -ms-linear-gradient(top, #0157b3, #013e80);
-  background: linear-gradient(top, #0157b3, #013e80);
-  border-radius: 5px;
-  box-shadow: inset 0px 1px 0px 0px #037bfd;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #000d1b;
-  color: #efefef;
-  font-size: 11px;
-  line-height: 2.5;
-  padding-left: 33px;
-  position: relative;
-}
-/* line 155, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before {
-  background-repeat: no-repeat;
-  border-right: 1px solid #026fe5;
-  bottom: 1px;
-  content: "\0020";
-  float: left;
-  left: 0;
-  position: absolute;
-  top: 1px;
-  width: 30px;
-}
-/* line 180, ../../../app/stylesheets/partials/anon-banner.scss */
-.logged-out-facebook:before {
-  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20width%3D%2234px%22%20height%3D%2234px%22%20viewBox%3D%220%200%2034%2034%22%20enable-background%3D%22new%200%200%2034%2034%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M14.367%2C26.995V16.987h-2.18V13.47h2.159c0%2C0%2C0-1.125%2C0-3.192c0-2.068%2C1.49-3.273%2C4.11-3.273%0A%09c2.619%2C0%2C3.312%2C0%2C3.312%2C0l-0.004%2C3.396c0%2C0-1.693%2C0-2.322%2C0s-0.902%2C0.573-0.902%2C0.88c0%2C0.306%2C0%2C2.25%2C0%2C2.25h3.271l-0.377%2C3.457%0A%09h-2.791l-0.031%2C10.005L14.367%2C26.995z%22/%3E%0A%3C/svg%3E");
-  background-position: 1px 0px;
-  background-size: 95%;
-}
+Backtrace:
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss:17:in `opacity'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss:17
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2616787927388507919__call__3663342967110823108__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'opacity'.\A         on line 17 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss, in `opacity'\A         from line 17 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/anon-banner.scss\A \A 12: .logged-out-overlay{\A 13: 	background:black;	\A 14: 	bottom:0;\A 15: 	display:none;\A 16: 	height:100%;\A 17: 	@include opacity(0.8);\A 18: 	position:absolute;\A 19: 	text-align:center;\A 20: 	width:100%;\A 21: 	z-index:0;\A 22: "; }

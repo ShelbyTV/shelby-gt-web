@@ -1,7 +1,7 @@
 @import "base";
 
 .form-rolls-list {
-	@extend .list;
+	//@extend .list;
 
 	cursor: pointer;
 	
@@ -33,7 +33,8 @@
 		}
 	}
 
-	.rolling-public-roll{
+	.rolling-public-roll,
+	.rolling-private-roll{
 		font-size: 14px;
 		line-height: 1.75;
 		position: relative;
@@ -51,7 +52,7 @@
 	}
 
 	.rolling-private-roll{
-		@extend .rolling-public-roll;
+		//extended by .rolling-public-roll;
 
 		&:after{
 			content: url('../images/assets/rolls_private.svg');

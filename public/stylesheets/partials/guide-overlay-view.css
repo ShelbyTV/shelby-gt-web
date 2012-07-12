@@ -1,180 +1,95 @@
-/* line 3, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay {
-  -moz-transition-property: margin-left;
-  -webkit-transition-property: margin-left;
-  -o-transition-property: margin-left;
-  transition-property: margin-left;
-  -moz-transition-duration: 0.25s;
-  -webkit-transition-duration: 0.25s;
-  -o-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  background-color: #232526;
-  bottom: 0;
-  position: absolute;
-  margin-left: 100%;
-  width: 100%;
-}
+/*
+Syntax error: Undefined mixin 'transition-property'.
+        on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss, in `transition-property'
+        from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss
 
-/* line 15, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay.showing {
-  margin-left: 0;
-}
+1: @import "base";
+2: 
+3: .guide-overlay {
+4:   @include transition-property('margin-left');
+5: 	@include transition-duration(0.25s);
+6: 	@include transition-timing-function(ease-in);
+7: 	
+8: 	background-color: #232526;
+9: 	bottom: 0;
 
-/* common to many guide overlays */
-/* line 20, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-title {
-  background-color: #35383a;
-  border-bottom: 1px solid black;
-  height: 46px;
-}
-/* line 25, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-title .back {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  left: 0;
-  margin: 8px;
-  position: absolute;
-  top: 0;
-}
-/* line 33, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-title h2 {
-  line-height: 2.25;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-/* line 41, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context {
-  background-color: #35383a;
-  background-position: center 43%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-  height: 100px;
-  position: relative;
-  overflow: hidden;
-}
-/* line 52, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context.guide-overlay-missing-thumbnail {
-  background-image: url("/images/assets/missing_thumb.svg");
-  background-size: 20%;
-}
-
-/* line 58, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-overview {
-  bottom: 0;
-  padding-bottom: 10px;
-  position: absolute;
-  width: 100%;
-}
-/* line 64, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-overview:after {
-  box-shadow: 0 0 86px 59px black;
-  content: "\0020";
-  height: 1px;
-  margin-top: 10px;
-  position: absolute;
-  width: 100%;
-}
-
-/* line 75, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-creator,
-.guide-overlay-context-title {
-  white-space: nowrap;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  color: #ccc;
-  font-weight: 500;
-  padding: 0 10px;
-  position: relative;
-  width: inherit;
-  z-index: 1;
-}
-
-/* line 86, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-follow-button,
-.guide-overlay-context-full-shelby-button {
-  background-color: #27292a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
-  background: -webkit-linear-gradient(top, #404344, #27292a);
-  background: -moz-linear-gradient(top, #404344, #27292a);
-  background: -o-linear-gradient(top, #404344, #27292a);
-  background: -ms-linear-gradient(top, #404344, #27292a);
-  background: linear-gradient(top, #404344, #27292a);
-  box-shadow: inset 0px 1px 0px 0px #646a6c;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-  float: right;
-  margin-right: 10px;
-  margin-top: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-/* line 95, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-button-highlighted {
-  background-color: #428e3a;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
-  background: -webkit-linear-gradient(top, #53b249, #428e3a);
-  background: -moz-linear-gradient(top, #53b249, #428e3a);
-  background: -o-linear-gradient(top, #53b249, #428e3a);
-  background: -ms-linear-gradient(top, #53b249, #428e3a);
-  background: linear-gradient(top, #53b249, #428e3a);
-  box-shadow: inset 0px 1px 0px 0px #85ca7d;
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  text-shadow: 0px -1px 0px #333333;
-  border: 1px solid #20461c;
-  border-radius: 5px;
-  color: #efefef;
-  padding: 6px 13px;
-}
-
-/* line 99, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-creator {
-  font-size: 12px;
-  margin-bottom: 3px;
-}
-
-/* line 105, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-title {
-  font-size: 14px;
-}
-
-/* line 110, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-thumbnail {
-  height: inherit;
-  overflow: hidden;
-}
-/* line 114, ../../../app/stylesheets/partials/guide-overlay-view.scss */
-.guide-overlay-context-thumbnail img {
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  -o-filter: blur(1px);
-  filter: blur(1px);
-  margin-top: -25%;
-  width: 100%;
-}
+Backtrace:
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss:4:in `transition-property'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss:4
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2616787927388507919__call__3663342967110823108__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss, in `transition-property'\A         from line 4 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/guide-overlay-view.scss\A \A 1: @import \"base\";\A 2: \A 3: .guide-overlay {\A 4:   @include transition-property('margin-left');\A 5: 	@include transition-duration(0.25s);\A 6: 	@include transition-timing-function(ease-in);\A 7: 	\A 8: 	background-color: #232526;\A 9: 	bottom: 0;"; }
