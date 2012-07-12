@@ -4242,11 +4242,16 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 17, ../../app/stylesheets/partials/gate.scss */
 .gate-lining {
   margin-left: 170px;
-  margin-top: 50px;
+  margin-top: 0px;
   width: 24em;
 }
 
 /* line 23, ../../app/stylesheets/partials/gate.scss */
+.gate-header {
+  margin-bottom: 50px;
+}
+
+/* line 27, ../../app/stylesheets/partials/gate.scss */
 .gate-logo {
   -moz-background-size: contain;
   -webkit-background-size: contain;
@@ -4262,19 +4267,19 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 100px;
 }
 
-/* line 36, ../../app/stylesheets/partials/gate.scss */
+/* line 40, ../../app/stylesheets/partials/gate.scss */
 .gate-slogan {
   font-size: 0.846em;
   font-weight: 100;
   line-height: 4;
 }
 
-/* line 42, ../../app/stylesheets/partials/gate.scss */
-.gate-header {
+/* line 46, ../../app/stylesheets/partials/gate.scss */
+.gate-head {
   font-size: 2em;
 }
 
-/* line 49, ../../app/stylesheets/partials/gate.scss */
+/* line 53, ../../app/stylesheets/partials/gate.scss */
 .gate-login {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -4293,23 +4298,30 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0 0 1.5em;
 }
 
-/* line 56, ../../app/stylesheets/partials/gate.scss */
+/* line 62, ../../app/stylesheets/partials/gate.scss */
 .gate-form {
   margin: 1em 0 2em;
 }
 
-/* line 60, ../../app/stylesheets/partials/gate.scss */
+/* line 66, ../../app/stylesheets/partials/gate.scss */
+.gate-form-label {
+  color: #ddd;
+  display: block;
+  font-size: 0.923em;
+  font-weight: 500;
+  margin: 1em 0 .25em;
+}
+
+/* line 74, ../../app/stylesheets/partials/gate.scss */
 .gate-form-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   border-radius: 3px;
   border: none;
-  margin-left: 1px;
-  margin-top: 1em;
   padding: 4px 3px;
-  width: 61.8%;
+  width: 63%;
 }
 
-/* line 71, ../../app/stylesheets/partials/gate.scss */
+/* line 83, ../../app/stylesheets/partials/gate.scss */
 .gate-form-submit {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -4326,10 +4338,10 @@ body.isolated-roll .context-overlay-lining .frame-title {
   color: #efefef;
   padding: 4px 8px;
   display: block;
-  margin-top: 0.5em;
+  margin-top: 1em;
 }
 
-/* line 78, ../../app/stylesheets/partials/gate.scss */
+/* line 92, ../../app/stylesheets/partials/gate.scss */
 .gate-no-access {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -4354,51 +4366,72 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 5px 9px;
   text-decoration: none;
 }
-/* line 90, ../../app/stylesheets/partials/gate.scss */
+/* line 104, ../../app/stylesheets/partials/gate.scss */
 .gate-no-access:visited {
   color: #efefef;
 }
 
-/* line 95, ../../app/stylesheets/partials/gate.scss */
+/* line 109, ../../app/stylesheets/partials/gate.scss */
 .gate-small {
-  font-size: 0.769em;
+  font-size: 0.846em;
 }
 
-/* line 99, ../../app/stylesheets/partials/gate.scss */
+/* line 113, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter {
   margin-top: 2em;
 }
 
-/* line 104, ../../app/stylesheets/partials/gate.scss */
+/* line 118, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter,
 .gate-networks-facebook {
   display: block;
-  padding: 4px 3px 3px 15px;
+  padding: 4px 3px 3px 20px;
   text-align: center;
   text-decoration: none;
   width: 200px;
 }
-/* line 111, ../../app/stylesheets/partials/gate.scss */
+/* line 125, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter:before,
 .gate-networks-facebook:before {
   width: 36px;
 }
-/* line 114, ../../app/stylesheets/partials/gate.scss */
+/* line 128, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-twitter:visited,
 .gate-networks-facebook:visited {
   color: #efefef;
 }
 
-/* line 124, ../../app/stylesheets/partials/gate.scss */
+/* line 138, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-facebook {
   margin-top: 10px;
 }
 
-/* line 129, ../../app/stylesheets/partials/gate.scss */
-.gate-input-error {
-  color: #FF5200;
+/* line 144, ../../app/stylesheets/partials/gate.scss */
+.gate-input-error,
+.gate-signin-error {
+  color: #E92222;
   font-size: 0.923em;
+}
+
+/* line 149, ../../app/stylesheets/partials/gate.scss */
+.gate-input-error {
   padding-left: .5em;
+}
+
+/* line 154, ../../app/stylesheets/partials/gate.scss */
+.with-video .gate-lining {
+  float: left;
+  margin-left: 35px;
+}
+
+/* line 160, ../../app/stylesheets/partials/gate.scss */
+.with-video-embed {
+  margin-top: 5px;
+  width: 500px;
+}
+/* line 163, ../../app/stylesheets/partials/gate.scss */
+.with-video-embed * {
+  width: 100%;
 }
 
 /* line 3, ../../app/stylesheets/partials/genius.scss */

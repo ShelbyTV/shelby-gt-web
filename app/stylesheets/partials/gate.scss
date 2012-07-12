@@ -16,8 +16,12 @@
 
 .gate-lining {
 	margin-left: 170px;
-	margin-top: 50px;
+	margin-top: 0px;
 	width: 24em;
+}
+
+.gate-header {
+	margin-bottom: 50px;
 }
 
 .gate-logo {
@@ -39,11 +43,11 @@
 	line-height: 4;
 }
 
-.gate-header {
+.gate-head {
 	font-size: 2em;
 }
 
-.gate-subheader {
+.gate-subhead {
 }
 
 .gate-login {
@@ -53,8 +57,18 @@
 
 }
 
+//------------------ form ---------------------//
+
 .gate-form {
 	margin: 1em 0 2em;
+}
+
+.gate-form-label {
+	color: #ddd;
+	display: block;
+	font-size: (12em/13);
+	font-weight: 500;
+	margin: 1em 0 .25em;
 }
 
 .gate-form-input{
@@ -62,18 +76,18 @@
 	@include roundies(input);
 
 	border: none;
-	margin-left: 1px;
-	margin-top: 1em;
 	padding: 4px 3px;
-	width: 61.8%;
+	width: 63%;
 }
 
 .gate-form-submit{
 	@include x-button-primer($shelby-green, small);
 
 	display: block;
-	margin-top: 0.5em;
+	margin-top: 1em;
 }
+
+//-------------------- eo form ---------------------//
 
 .gate-no-access {
 	@include x-button-primer($shelby-gray, small);
@@ -93,7 +107,7 @@
 }
 
 .gate-small {
-	font-size: (10em/13);
+	font-size: (11em/13);
 }
 
 .gate-networks-twitter{
@@ -103,7 +117,7 @@
 .gate-networks-twitter,
 .gate-networks-facebook {
   display: block;
-  padding: 4px 3px 3px 15px;
+  padding: 4px 3px 3px 20px;
   text-align: center;
   text-decoration: none;
   width: 200px;	
@@ -126,9 +140,27 @@
   margin-top: $defaultMargin;
 }
 
-.gate-input-error {
-	color: #FF5200;
+.gate-input-error,
+.gate-signin-error {
+	color: #E92222;
 	font-size: (12em/13);
+}
+
+.gate-input-error {
 	padding-left: .5em;
 }
 
+.with-video {
+	.gate-lining {
+		float: left;
+		margin-left: 35px;
+	}
+}
+
+.with-video-embed {
+	margin-top: 5px;
+	width: 500px;
+	& * {
+		width: 100%;
+	}
+}
