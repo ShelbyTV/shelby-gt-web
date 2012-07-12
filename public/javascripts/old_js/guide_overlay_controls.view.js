@@ -16,7 +16,7 @@ libs.shelbyGT.GuideOverlayControls = Support.CompositeView.extend({
     this._userDesires = opts.userDesires;
     this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
     
-    this.render();
+    //this.render();
   },
   
   _cleanup: function() {
