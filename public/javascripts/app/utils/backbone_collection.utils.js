@@ -13,9 +13,10 @@ libs.utils.BackboneCollectionUtils = {
     }).value();
 
     var rankingFunc = function(item){return item.get(options.sortAttribute);};
+
     if(options.sortDirection === "desc"){
       var collectionToInspect = collection.chain().rest(options.searchOffset).reverse();
-      return (collectionToInspect.size - collectionToInspect.sortedIndex(model, rankingFunc).value()) + options.searchOffset;
+      return (collectionToInspect.value().length - collectionToInspect.sortedIndex(model, rankingFunc).value()) + options.searchOffset;
     } else {
       var collectionToInspect = collection.chain().rest(options.searchOffset);
       return collectionToInspect.sortedIndex(model, rankingFunc).value() + options.searchOffset;
