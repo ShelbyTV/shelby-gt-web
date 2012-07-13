@@ -60,7 +60,7 @@
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
@@ -87,7 +87,7 @@
 
         <input type="text" placeholder="Are you special?" id="js-token-input" class="gate-form-input" />
 
-        <input type="submit" id="js-email-submit" class="gate-form-submit" />
+        <input type="submit" value="Submit" id="js-email-submit" class="gate-form-submit" />
       </form>
 
       <p class="gate-small-block">
@@ -106,7 +106,7 @@
 			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if hasTokenNoAuth %>">
 			<h2 class="gate-head">
         Welcome to the T-101 <br/>Beta Command Center
     	</h2>
