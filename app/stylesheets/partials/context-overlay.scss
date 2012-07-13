@@ -5,6 +5,7 @@
 	@include transition-duration(.25s);
 	@include transition-timing-function(ease-out);
 	@include transition-delay(0s);
+	
 	left: $defaultMargin;
 	padding-right: 360px;
 	position: absolute;

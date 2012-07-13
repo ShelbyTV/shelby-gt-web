@@ -3,6 +3,8 @@
   var RollModel = libs.shelbyGT.RollModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
   var EmailAddressAutocompleteView = libs.shelbyGT.EmailAddressAutocompleteView;
+  var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
+  var rollFollowingsConfig = shelby.config.db.rollFollowings;
 
   // Subclass with a view that has class, tag, or id (not el) and this will handle
   libs.shelbyGT.RollingCreateRollView = Support.CompositeView.extend({
@@ -63,7 +65,12 @@
       // have to create the new roll and then reroll
       roll.save(null, {
         success : function(newRoll){
-          shelby.models.rollFollowings.add(newRoll);
+          BackboneCollectionUtils.insertAtSortedIndex(newRoll,
+            shelby.models.rollFollowings.get('rolls'), 
+              {searchOffset:rollFollowingsConfig.numSpecialRolls, 
+                sortAttribute:rollFollowingsConfig.sortAttribute,
+                sortDirection:rollFollowingsConfig.sortDirection});
+          
           self.options.frame.reRoll(newRoll, function(newFrame){
             
             //complete rolling and change screens now, allow email action to happen afterward

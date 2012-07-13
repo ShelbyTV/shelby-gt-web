@@ -102,10 +102,8 @@
 
 		border: none;
 		height: 25px;
-		left: 5px;
-		padding-left:4px;
-		position: absolute;
-		right: 41px;
+		padding: 0 4px;
+		width: 87%;
 	}
 
 	.add-video {
@@ -188,6 +186,12 @@
 	padding-left: 0;
 }
 
+.share-networks-item {
+	float: left;
+	list-style-type:none;
+	margin-right: 10px;
+}
+
 .share-submit-button {
 	@include x-button-primer($shelby-blue);
 
@@ -254,4 +258,10 @@
 }
 
 .share-submit {
+}
+
+.networks-twitter-button,
+.networks-facebook-button,
+.networks-tumblr-button {
+	@include notype;
 }

@@ -41,7 +41,10 @@
       menuTag : "ul",
       menuClass : "autocomplete-menu",
       multiTerm : false,
-      separator : /,\s*/
+      multiTermMethod : 'list', //supported options: list, paragraph
+      multiTermPosition : 'caret', //supported options: tail, caret
+      separator : /,\s*/,
+      separatorReplacement : ","
     },
 
     events : function() {
@@ -70,19 +73,36 @@
     },
 
     select : function () {
-        var val = this._menu.$('.active').attr('data-value');
+        var selection = this._menu.$('.active').attr('data-value');
+        var newVal = selection;
 
         if (this.options.multiTerm) {
-          terms = this.$el.val().split(this.options.separator);
-          terms.pop();
-          terms.push(val);
-          terms.push("");
-          val = terms.join(", ");
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              var terms = this.termsUpToQuery.concat(selection,this.termsAfterQuery,"");
+              newVal = terms.join(this.options.separatorReplacement);
+              break;
+            case 'paragraph':
+              newVal = this.textUpToQuery + selection + this.textAfterQuery;
+              break;
+          }
         }
 
         this.$el
-          .val(this.updater(val))
+          .val(this.updater(newVal))
           .change();
+
+        if (this.options.multiTerm && this.options.multiTermPosition == 'caret') {
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              this.$el.setSelection(this.textUpToQuery.length + selection.length + this.options.separatorReplacement.length);
+              break;
+            case 'paragraph':
+              this.$el.setSelection(this.textUpToQuery.length + selection.length);
+              break;
+          }
+        }
+
         return this.hide();
     },
 
@@ -121,11 +141,51 @@
       this.query = this.$el.val();
 
       if (this.options.multiTerm) {
-        this.query = _(this.query.split(this.options.separator)).last();
+        var stringToSearch;
+        switch (this.options.multiTermPosition) {
+          case 'tail':
+            stringToSearch = this.query;
+            break;
+          case 'caret':
+            var caretIndex = this.$el.getSelection().start;
+            var includeAfterCaretIndex = this.query.slice(caretIndex).search(this.options.separator);
+            if (includeAfterCaretIndex == -1) {
+              stringToSearch = this.query;
+            } else {
+              stringToSearch = this.query.slice(0, caretIndex + includeAfterCaretIndex);
+            }
+            break;
+        }
+        var queryTerm;
+        var queryAtIndex;
+        switch (this.options.multiTermMethod) {
+          case 'list':
+            this.termsUpToQuery = stringToSearch.split(this.options.separator);
+            queryTerm = this.termsUpToQuery.pop();
+            if (queryTerm) {
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.termsAfterQuery = _(this.query.slice(queryAtIndex + queryTerm.length).split(this.options.separator)).compact();
+            }
+            break;
+          case 'paragraph':
+            queryTerm = _(stringToSearch.split(this.options.separator)).last();
+            if (queryTerm) {
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.textAfterQuery = this.query.slice(queryAtIndex + queryTerm.length);
+            }
+            break;
+        }
+        this.query = queryTerm;
       }
 
       if (!this.query) {
         return this._shown ? this.hide() : this;
+      }
+
+      if (!this.qualifier()) {
+       return this._shown ? this.hide() : this;
       }
 
       items = $.grep(_(this.options).result('source'), function (item) {
@@ -139,6 +199,11 @@
       }
 
       return this._renderAutoCompleteMenu(items.slice(0, this.options.items)).show();
+    },
+
+    qualifier : function () {
+      // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
+      return true;
     },
 
     matcher : function (item) {

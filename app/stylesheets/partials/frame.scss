@@ -1,6 +1,9 @@
 @import "base";
-// blockquote gradient top #444 bottom #333, box-shadow (dist 6px, size 10px)
-.list {
+
+.list,
+.rolls-list,
+.form-rolls-list,
+.existing-rolls-list > ul {
 	margin: 0;
 	padding: 0;
 
@@ -38,7 +41,6 @@
 	line-height: 75px;
 	margin: 0;
 	text-align: center;
-//	width: 100%;
 }
 
 .video-thumbnail-image {
@@ -56,7 +58,8 @@
 		background-size: 20%;
 }
 
-.video-card-header {
+.video-card-header,
+.frame-share-header{
 	border-bottom: 1px solid $inset;
 //	padding: $defaultMargin - 4 $defaultMargin - 2;
 	padding: 0;
@@ -92,7 +95,9 @@
   }
 }
 
-.frame-creator-avatar {
+.frame-creator-avatar,
+.frame-creator-avatar-missing{
+
 	border-radius: $radius 0 0 0;
 	float: left;
 	height: 40px;
@@ -100,19 +105,11 @@
 }
 
 .frame-creator-avatar-missing{
-	@extend .frame-creator-avatar;
-
+	//extended by .frame-creator-avatar
 	background: url($icon-missing-thumb) no-repeat center center #454545;
 	background-size: 50%;
 }
 
-@mixin frame-header-smalltype{
-	color: #999;
-	font-size: 11px;
-	font-weight: 300;
-	height: 1.9em;
-	padding: 6px 8px 0;
-}
 
 //see .frame-creator-roll, .frame-timestamp
 
@@ -125,7 +122,7 @@
 }
 
 .frame-creator-origin-twitter{
-	@extend .user-post-origin-twitter;
+	//extended by .user-post-origin-twitter;
 }
 
 .frame-timestamp {
@@ -254,7 +251,8 @@
 		margin-top: 9px;
 	}
 }
-.user-handle {
+.user-handle,
+.user-post-date {
 	color: #a4a4a4;
 	font-size: 11px;
 	font-weight: 500;
@@ -262,14 +260,17 @@
 }
 
 .user-post-date {
-	@extend .user-handle;
+	//@extended .user-handle;
 	float: right;
 	line-height: 1;
 	margin-top: 9px;
 	padding-right: 3px;
 }
 
-.user-post-origin-twitter {
+.user-post-origin-twitter,
+.user-post-origin-facebook,
+.user-post-origin-tumblr,
+.frame-creator-origin-twitter{
 	&:before {
 		content: image-url('../images/assets/twitter_stamp.svg');
 		float: left;
@@ -279,14 +280,14 @@
 }
 
 .user-post-origin-facebook {
-	@extend .user-post-origin-twitter;
+	//@extended by .user-post-origin-twitter;
 	&:before {
 		content: image-url('../images/assets/facebook_stamp.svg');
 	}
 }
 
 .user-post-origin-tumblr {
-	@extend .user-post-origin-twitter;
+	//extended by .user-post-origin-twitter;
 	&:before {
 		content: image-url('../images/assets/tumblr_stamp.svg');
 	}
@@ -325,6 +326,7 @@
 	}
 	button {
 		@include buttonfont;
+
 		background: transparent;
 		border-bottom: none;
 		border-left: 1px solid adjust-lightness($outset, 5%);
@@ -411,7 +413,7 @@
 
 .frame-controls-roll {
 	button {
-		@extend .notype;
+		@include notype;
 		background:url('../images/assets/videocard_roll_off.svg') no-repeat center center transparent;
 	}
 	&:hover {
@@ -423,7 +425,7 @@
 
 .frame-controls-share {
 	button {
-		@extend .notype;
+		@include notype;
 		background:url('../images/assets/videocard_share_off.svg') no-repeat center center transparent;
 	}
 	&:hover {

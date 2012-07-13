@@ -1,5 +1,5 @@
 @import "base";
- 
+
 .video-player-tools-wrapper{
 	@include transition-property(opacity);
 	@include transition-duration(.25s);
@@ -74,7 +74,9 @@
 	position:absolute;
 }
 
-.video-player-progress-load{
+.video-player-progress-load,
+.video-player-progress-elapsed{
+
   background: $video-controls-progress-load;
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
 
@@ -84,7 +86,7 @@
 }
 
 .video-player-progress-elapsed{
-	@extend .video-player-progress-load;
+	//extended by .video-player-progress-load
 	@include background($shelby-blue); //original light blue lost in translation. using shelby-blue. more consistent but most desirable?
 
 	margin-top:-8px;

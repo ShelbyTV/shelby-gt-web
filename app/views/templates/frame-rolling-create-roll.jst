@@ -8,18 +8,15 @@
   </fieldset>
   
   <fieldset class="roll-options">
-    <label for="new-roll-status" class="new-roll-status clearfix" data-private="Private" data-public="Public">
-      <input id="new-roll-status" class="new-roll-status-checkbox" type="checkbox">
+    <label for="new-roll-status" class="new-roll-status-label clearfix">
+      <input id="new-roll-status" class="new-roll-status-checkbox" type="checkbox" aria-label="slider-description">
+      
+      <span id="slider-description" class="new-roll-status-description">
+        Roll is private when checkbox is checked.
+      </span>
+      
+      <b role="presentation" aria-hidden="true" class="new-roll-status-chrome"></b>
     </label>
-<!-- 
-    <br><br>
-    <label class="roll-options-label">Status</label><br>
-    <input id="new-roll-public" name="new-roll-status" type="radio" checked>    
-    <label for="new-roll-public" class="roll-options-label">Public</label> - Lets everyone see this roll.
-    <br>
-    <input id="new-roll-private" name="new-roll-status" type="radio">    
-    <label for="new-roll-private" class="roll-options-label">Private</label> - Only people you invite see this roll. 
--->
   </fieldset>
     
   <fieldset class="roll-options">    
