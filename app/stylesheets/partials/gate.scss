@@ -336,6 +336,32 @@ html {
 
 @media all and (max-width:415px) { 
 
+	.with-video {
+		.with-video-embed {
+			margin-top: 5px;
+			margin-left: 0 !important;
+
+			& > iframe,
+			& > embed,
+			& > object {
+				height: 200px;
+			}
+		}
+
+		.with-video-embed-block {
+			margin-left: 20px;
+		}
+
+		.gate-lining {
+			margin-left: 20px;
+		}
+
+		.gate-footer {
+			margin-left: 20px;
+		}
+
+	}
+
 	.gate-logo {
 		margin-right: 10px;
 		width: 70px;
