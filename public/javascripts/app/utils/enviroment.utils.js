@@ -18,7 +18,8 @@
     },
 
     getEnvironment : function(){
-      return window.location.host.indexOf('gt.shelby.tv')!==-1 ? this.envs.production : this.envs.development;
+      return shelby.config.environment;
+      //return window.location.host.indexOf('gt.shelby.tv')!==-1 ? this.envs.production : this.envs.development;
     }
 
   };
