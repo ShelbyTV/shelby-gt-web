@@ -52,7 +52,7 @@
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
@@ -98,7 +98,7 @@
 			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+  	<div id="js-login" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
 			<h2 class="gate-head">
         Welcome to the T-101 <br/>Beta Command Center
     	</h2>
