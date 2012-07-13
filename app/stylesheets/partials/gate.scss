@@ -1,5 +1,9 @@
 @import "base";
 
+html {
+	overflow:auto !important;
+}
+
 .gate {
 	background-color: #101010;
 	@include background(url('/images/blue.png') no-repeat center center #101010);
@@ -8,7 +12,7 @@
 	color: #efefef;
 	font-size: 13px;
 	line-height: 1.5;
-	overflow-y: auto;
+	overflow: auto !important;
 }
 
 .gate-wrapper {
@@ -327,5 +331,20 @@
 	.gate-extra-margin {
 		margin-top: 1em;
 	}
+}
 
+@media all and (max-width:415px) {
+	.gate-logo {
+		margin-right: 10px;
+		width: 70px;
+	}
+
+	.gate-slogan {
+		line-height: 4.4;
+	}
+
+	.gate-lining,
+	.gate-footer {
+		margin-left: 20px;
+	}
 }

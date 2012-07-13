@@ -1,22 +1,23 @@
 /*
 Syntax error: Undefined mixin 'background'.
-        on line 5 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'
-        from line 5 of /shelbytv/app/stylesheets/partials/gate.scss
+        on line 9 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'
+        from line 9 of /shelbytv/app/stylesheets/partials/gate.scss
 
-1: @import "base";
-2: 
-3: .gate {
-4: 	background-color: #101010;
-5: 	@include background(url('/images/blue.png') no-repeat center center #101010);
-6: 	@include background-size(cover);
-7: 
-8: 	color: #efefef;
-9: 	font-size: 13px;
-10: 	line-height: 1.5;
+4: 	overflow:auto !important;
+5: }
+6: 
+7: .gate {
+8: 	background-color: #101010;
+9: 	@include background(url('/images/blue.png') no-repeat center center #101010);
+10: 	@include background-size(cover);
+11: 
+12: 	color: #efefef;
+13: 	font-size: 13px;
+14: 	line-height: 1.5;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/gate.scss:5:in `background'
-/shelbytv/app/stylesheets/partials/gate.scss:5
+/shelbytv/app/stylesheets/partials/gate.scss:9:in `background'
+/shelbytv/app/stylesheets/partials/gate.scss:9
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -93,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background'.\A         on line 5 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'\A         from line 5 of /shelbytv/app/stylesheets/partials/gate.scss\A \A 1: @import \"base\";\A 2: \A 3: .gate {\A 4: 	background-color: #101010;\A 5: 	@include background(url('/images/blue.png') no-repeat center center #101010);\A 6: 	@include background-size(cover);\A 7: \A 8: 	color: #efefef;\A 9: 	font-size: 13px;\A 10: 	line-height: 1.5;"; }
+  content: "Syntax error: Undefined mixin 'background'.\A         on line 9 of /shelbytv/app/stylesheets/partials/gate.scss, in `background'\A         from line 9 of /shelbytv/app/stylesheets/partials/gate.scss\A \A 4: 	overflow:auto !important;\A 5: }\A 6: \A 7: .gate {\A 8: 	background-color: #101010;\A 9: 	@include background(url('/images/blue.png') no-repeat center center #101010);\A 10: 	@include background-size(cover);\A 11: \A 12: 	color: #efefef;\A 13: 	font-size: 13px;\A 14: 	line-height: 1.5;"; }
