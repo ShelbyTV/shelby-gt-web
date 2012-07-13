@@ -2,7 +2,8 @@
 @import "base-mixin";
 
 html {
-	overflow:auto !important;
+	overflow-y:auto !important;
+	overflow-y:hidden !important;
 }
 
 .gate {
@@ -350,6 +351,7 @@ html {
 
 		.with-video-embed-block {
 			margin-left: 20px;
+			margin-right: 20px;
 		}
 
 		.gate-lining {
