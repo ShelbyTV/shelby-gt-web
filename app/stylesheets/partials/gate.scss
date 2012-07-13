@@ -2,7 +2,7 @@
 
 .gate {
 	background-color: #101010;
-	@include background(url('/images/t3.png') no-repeat center center #101010);
+	@include background(url('/images/blue.png') no-repeat center center #101010);
 	@include background-size(cover);
 
 	color: #efefef;
@@ -60,7 +60,7 @@
 //------------------ form ---------------------//
 
 .gate-form {
-	margin: 1.5em 0 2em;
+	margin: 1.5em 0 1em;
 }
 
 .gate-form-label {
@@ -157,15 +157,21 @@
 }
 
 .gate-footer-list {
+	line-height: 2;
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	width: 200px;
 }
 
 .gate-footer-item {
 	display: block;
 	float: left;
-	list-style-type: none;
 	padding-right: .25em;
+}
+
+#made-newyork {
+	padding-left: .75em;
 }
 
 .gate-networks-link {
@@ -204,8 +210,12 @@
 //helpers
 
 .gate-extra-margin {
-	margin-top: 4em;
+	margin-top: 5em;
 	margin-bottom: 1em;
+}
+
+.gate-small-block {
+	font-size: 11px;
 }
 
 
@@ -231,4 +241,8 @@
 	& * {
 		width: 100%;
 	}
+}
+
+.with-video-embed-block {
+	margin-top: 1.5em;
 }

@@ -4224,7 +4224,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 3, ../../app/stylesheets/partials/gate.scss */
 .gate {
   background-color: #101010;
-  background: url("/images/t3.png") no-repeat center center #101010;
+  background: url("/images/blue.png") no-repeat center center #101010;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -4300,7 +4300,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 62, ../../app/stylesheets/partials/gate.scss */
 .gate-form {
-  margin: 1.5em 0 2em;
+  margin: 1.5em 0 1em;
 }
 
 /* line 66, ../../app/stylesheets/partials/gate.scss */
@@ -4427,19 +4427,26 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 159, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-list {
+  line-height: 2;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 200px;
 }
 
-/* line 164, ../../app/stylesheets/partials/gate.scss */
+/* line 167, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-item {
   display: block;
   float: left;
-  list-style-type: none;
   padding-right: .25em;
 }
 
-/* line 171, ../../app/stylesheets/partials/gate.scss */
+/* line 173, ../../app/stylesheets/partials/gate.scss */
+#made-newyork {
+  padding-left: .75em;
+}
+
+/* line 177, ../../app/stylesheets/partials/gate.scss */
 .gate-networks-link {
   display: inherit;
   float: inherit;
@@ -4447,7 +4454,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 24px;
 }
 
-/* line 180, ../../app/stylesheets/partials/gate.scss */
+/* line 186, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-networks-twitter,
 .gate-footer-networks-facebook,
 .gate-footer-networks-tumblr {
@@ -4470,7 +4477,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 24px;
 }
 
-/* line 189, ../../app/stylesheets/partials/gate.scss */
+/* line 195, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-networks-twitter {
   background: url("../images/assets/rolls_twitter.svg") no-repeat center center #00a2d1;
   box-shadow: inset 0px 1px 0px 0px #51d8ff;
@@ -4478,7 +4485,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 76%;
 }
 
-/* line 194, ../../app/stylesheets/partials/gate.scss */
+/* line 200, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-networks-facebook {
   background: url("../images/assets/rolls_facebook.svg") no-repeat center center #013e80;
   box-shadow: inset 0px 1px 0px 0px #026fe5;
@@ -4486,7 +4493,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 28%;
 }
 
-/* line 199, ../../app/stylesheets/partials/gate.scss */
+/* line 205, ../../app/stylesheets/partials/gate.scss */
 .gate-footer-networks-tumblr {
   background: url("../images/assets/rolls_tumblr.svg") no-repeat center center #2f445b;
   box-shadow: inset 0px 1px 0px 0px #52769e;
@@ -4494,34 +4501,44 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background-size: 36%;
 }
 
-/* line 206, ../../app/stylesheets/partials/gate.scss */
+/* line 212, ../../app/stylesheets/partials/gate.scss */
 .gate-extra-margin {
-  margin-top: 4em;
+  margin-top: 5em;
   margin-bottom: 1em;
 }
 
-/* line 215, ../../app/stylesheets/partials/gate.scss */
+/* line 217, ../../app/stylesheets/partials/gate.scss */
+.gate-small-block {
+  font-size: 11px;
+}
+
+/* line 225, ../../app/stylesheets/partials/gate.scss */
 .with-video .gate-lining,
 .with-video .gate-footer {
   margin-left: 35px;
 }
-/* line 219, ../../app/stylesheets/partials/gate.scss */
+/* line 229, ../../app/stylesheets/partials/gate.scss */
 .with-video .gate-lining {
   float: left;
 }
-/* line 223, ../../app/stylesheets/partials/gate.scss */
+/* line 233, ../../app/stylesheets/partials/gate.scss */
 .with-video .gate-footer {
   clear: both;
 }
 
-/* line 228, ../../app/stylesheets/partials/gate.scss */
+/* line 238, ../../app/stylesheets/partials/gate.scss */
 .with-video-embed {
   margin-top: 5px;
   width: 500px;
 }
-/* line 231, ../../app/stylesheets/partials/gate.scss */
+/* line 241, ../../app/stylesheets/partials/gate.scss */
 .with-video-embed * {
   width: 100%;
+}
+
+/* line 246, ../../app/stylesheets/partials/gate.scss */
+.with-video-embed-block {
+  margin-top: 1.5em;
 }
 
 /* line 3, ../../app/stylesheets/partials/genius.scss */

@@ -49,16 +49,22 @@
       <% else %>
         <%=raw @meta_info[:video_embed] %>
       <% end %>
+      <div class="with-video-embed-block">
+        <h2 class="gate-subhead">Your friend discovered this video with Shelby.tv</h2>
+        <p>
+          You have a very cool friend, because they have access to our latest version, <br>which delivers personalized streams of video curated by your friends.         </p>
+        </p>
+      </div>
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
 
 			<p>
-				The new version of Shelby is currently in a private beta. <br>
+				The new version of Shelby is currently in <br>a private beta. 
         <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
 			</p>
 
@@ -82,8 +88,8 @@
         <input type="submit" id="js-email-submit" class="gate-form-submit" />
       </form>
 
-      <p>
-        (Current Shelby users will be automatically rolled into the new version when it's ready.) 
+      <p class="gate-small-block">
+        (Current Shelby users will be automatically <br>rolled into the new version when it's ready.) 
       </p>
 
       <h3 class="gate-subhead gate-extra-margin">
@@ -98,7 +104,7 @@
 			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+  	<div id="js-login" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
 			<h2 class="gate-head">
         Welcome to the T-101 <br/>Beta Command Center
     	</h2>
@@ -109,7 +115,8 @@
 
 			<% if @auth_failure %>
         <p class="gate-signin-error js-signin-error">
-          Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.  <br/>Please wait a moment and try again.
+          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.  
+          <br/>Please wait a moment and try again.
         </p>
       <% end %>
 
@@ -122,7 +129,7 @@
       </a>
       
       <a href="#" id="js-no-access" class="gate-no-access">
-      	Not a Beta user?
+      	Not a beta user?
       </a>
 		</div><!-- eo .gate-lining -->
 
@@ -148,6 +155,9 @@
           <a href="http://shelby.tv/blog" class="gate-networks-link gate-footer-networks-tumblr">
             shelby.tv/blog
           </a>
+        </li>
+        <li id="made-newyork" class="gate-footer-item">
+          Made in NYC
         </li>
       </ul>
     </footer>
