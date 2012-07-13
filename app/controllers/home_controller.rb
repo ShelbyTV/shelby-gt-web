@@ -34,7 +34,9 @@ class HomeController < ApplicationController
         when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
         when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
         else
-          if ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
+          if request.subdomain == nil
+            false
+          elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
             # for shelby.tv domain, try to find a roll assigned to the given subdomain
             response = Shelby::API.get_roll(request.subdomain)
             response['status'] == 200 && response['result'] && response['result']['id']
