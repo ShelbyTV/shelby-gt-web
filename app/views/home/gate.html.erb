@@ -46,7 +46,7 @@
     <% if videoEmbed %>
     <div id="js-video-embed" class="gate-lining with-video-embed">
       <% if @provider_name == "youtube" %>
-        <!-- TODO: Build all of our embeds like this using the video provider_id -->
+        <% #TODO: Build all of our embeds like this using the video provider_id %>
         <%= render :partial => "youtube_embed", :locals => { :provider_id => @meta_info[:video_info]['video']['provider_id'] } %>
       <% else %>
         <%=raw @meta_info[:video_embed] %>
