@@ -52,61 +52,66 @@
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
 
 			<p>
-				So we've taken down the current Shelby.tv but <br/>don't worry, we're hard at work on the next version!
+				The new version of Shelby is currently in a private beta. <br>
+        <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
 			</p>
 
-			<p>
-				Here is some more copy talking about what we're doing in our free time, lots of high fives and jump kicks! We can't wait to show you.
-			</p>
+			<form id="js-email-form" class="gate-form">
+				<h3 class="gate-subhead">
+					Want in on the action? Let us know!
+				</h3>
+        <label for="js-email-input" class="gate-form-label">
+          Email
+        </label>
+				<input type="email" placeholder="Where can we reach you?" id="js-email-input" class="gate-form-input" />
+				
+        <span class="gate-input-error hidden">Email must be valid!</span>
+				
+        <label for="js-token-input" class="gate-form-label">
+          Priority Code
+        </label>
 
-			<button id="js-gate-login" class="gate-login">
-				Beta User Login
-			</button>
+        <input type="text" placeholder="Are you special?" id="js-token-input" class="gate-form-input" />
 
-			<footer class="gate-footer">
-				<form id="js-email-form" class="gate-form">
-					<h3 class="gate-subhead">
-						Want to stay updated?
-					</h3>
-          <label for="js-email-input" class="gate-form-label">
-            Email
-          </label>
-					<input type="email" placeholder="email@address.com" id="js-email-input" class="gate-form-input" />
-					
-          <span class="gate-input-error hidden">Email must be valid!</span>
-					
-          <label for="js-token-input" class="gate-form-label">
-            Promo code
-          </label>
+        <input type="submit" id="js-email-submit" class="gate-form-submit" />
+      </form>
 
-          <input type="text" placeholder="Are you special?" id="js-token-input" class="gate-form-input" />
+      <p>
+        (Current Shelby users will be automatically rolled into the new version when it's ready.) 
+      </p>
 
-          <input type="submit" id="js-email-submit" class="gate-form-submit" />
+      <h3 class="gate-subhead gate-extra-margin">
+        Returning?
+      </h3>
 
-				</form
-			</footer>
+      <button id="js-gate-login" class="gate-login">
+        Beta User Login
+      </button>
+
+      <div class="gate-lining-footer">
+			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+  	<div id="js-login" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
 			<h2 class="gate-head">
-				Ultra Secret Login
-			</h2>
+        Welcome to the T-101 <br/>Beta Command Center
+    	</h2>
 
 			<p>
-				Greetings Shelby Beta user, you've been selected to be inducted early into our field training program. Login below and try out the new Shelby.tv
+        Please log in.    
 			</p>
 
-			<% if @auth_failure %>
+			<% #if @auth_failure %>
         <p class="gate-signin-error js-signin-error">
           Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.  <br/>Please wait a moment and try again.
         </p>
-      <% end %>
+      <% #end %>
 
       <a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
@@ -123,15 +128,29 @@
 
     <div id="js-thankyou" class="gate-lining hidden">
       <h2 class="gate-head">
-        Thank you!
+        Thanks for signing up!
       </h2>
-
-      <p>
-        Thank you for signing up for our private beta!
-      </p>
-
-
     </div>
+
+    <footer class="gate-footer">
+      <ul class="gate-footer-list"> 
+        <li class="gate-footer-item">
+          <a href="http://twitter.com/shelby" class="gate-networks-link gate-footer-networks-twitter">
+            twitter.com/shelby
+          </a>
+        </li> 
+        <li class="gate-footer-item">
+          <a href="http://facebook.com/shelbytv" class="gate-networks-link gate-footer-networks-facebook">
+            facebook.com/shelbytv
+          </a>
+        </li>
+        <li class="gate-footer-item">
+          <a href="http://shelby.tv/blog" class="gate-networks-link gate-footer-networks-tumblr">
+            shelby.tv/blog
+          </a>
+        </li>
+      </ul>
+    </footer>
   </div><!-- eo .gate-wrapper -->
   <script>
   	$(document).ready(function(){
@@ -143,8 +162,7 @@
   		$('#js-no-access').on('click', function(){
   			$(this).remove();
   			$('.gate-input-error').addClass('hidden');
-  			$('#js-email-form').children('.gate-subhead').text('Request access!').end()
-  												 .css('margin','2.5em 2px 1em').appendTo('#js-login');
+  			$('#js-email-form').css('margin-top','2em').appendTo('#js-login');
         return false;
   		});
 

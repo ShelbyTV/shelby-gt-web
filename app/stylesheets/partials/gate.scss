@@ -17,7 +17,7 @@
 .gate-lining {
 	margin-left: 170px;
 	margin-top: 0px;
-	width: 24em;
+	width: 26em;
 }
 
 .gate-header {
@@ -51,7 +51,7 @@
 }
 
 .gate-login {
-	@include x-button-primer($shelby-blue);
+	@include x-button-primer($shelby-green);
 
 	margin: 0 0 1.5em;
 
@@ -60,7 +60,7 @@
 //------------------ form ---------------------//
 
 .gate-form {
-	margin: 1em 0 2em;
+	margin: 1.5em 0 2em;
 }
 
 .gate-form-label {
@@ -81,7 +81,7 @@
 }
 
 .gate-form-submit{
-	@include x-button-primer($shelby-green, small);
+	@include x-button-primer($shelby-blue, small);
 
 	display: block;
 	margin-top: 1em;
@@ -150,10 +150,78 @@
 	padding-left: .5em;
 }
 
+.gate-footer {
+	bottom: 1em;
+	margin-left: 170px;
+	position: absolute;
+}
+
+.gate-footer-list {
+	margin: 0;
+	padding: 0;
+}
+
+.gate-footer-item {
+	display: block;
+	float: left;
+	list-style-type: none;
+	padding-right: .25em;
+}
+
+.gate-networks-link {
+	display: inherit;
+	float: inherit;
+	height: 24px;
+	width: 24px;
+}
+
+.gate-footer-networks-twitter,
+.gate-footer-networks-facebook,
+.gate-footer-networks-tumblr {
+	@include x-networks-badge;
+	@include roundies(input);
+
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+}
+
+.gate-footer-networks-twitter{
+	@include preferences-networks(twitter);
+	background-size:76%;
+}
+
+.gate-footer-networks-facebook{
+	@include preferences-networks(facebook);
+	background-size:28%;
+}
+
+.gate-footer-networks-tumblr{
+	@include preferences-networks(tumblr);
+	background-size:36%;
+}
+
+//helpers
+
+.gate-extra-margin {
+	margin-top: 4em;
+	margin-bottom: 1em;
+}
+
+
+//-------------------- changes compensating for video embed --------------//
 .with-video {
+	.gate-lining,
+	.gate-footer {
+		margin-left: 35px;
+	}
+
 	.gate-lining {
 		float: left;
-		margin-left: 35px;
+	}
+
+	.gate-footer {
+		clear: both;
 	}
 }
 
