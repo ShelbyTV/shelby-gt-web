@@ -1,7 +1,7 @@
 <% 
   videoEmbed = @meta_info[:video_embed] || @provider_name == "youtube" 
-  hasTokenNoAuth = @has_access_token || !@auth_failure
   flashError = flash[:error] == "401"
+  showAuth = @has_access_token || @auth_failure || @show_error || flashError
   # flashError = true
 %>
 
@@ -60,7 +60,7 @@
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if showAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
@@ -106,18 +106,25 @@
 			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if !showAuth %>">
 			<h2 class="gate-head">
         Welcome to the T-101 <br/>Beta Command Center
     	</h2>
 
-			<p>
-        Please log in.    
-			</p>
+      <% if @show_error %> 
+        <p class="gate-signin-noaccess js-signin-error">
+          Sorry, you do not have access to the beta…<br>
+          <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
+        </p> 
+      <% else %> 
+        <p>
+          Please log in.    
+        </p>   
+      <% end %>     
 
-			<% if @auth_failure %>
+      <% if @auth_failure %>
         <p class="gate-signin-error js-signin-error">
-          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.  
+          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy.titleize}" end%>.  
           <br/>Please wait a moment and try again.
         </p>
       <% end %>
@@ -127,6 +134,7 @@
           Session expired, please log in again!
         </p>      
       <% end %>
+
       <a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
       </a>   
@@ -184,10 +192,10 @@
   		});
 
       $('#js-email-form').on('submit', function(){
-        // $.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
+        $.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
           $('#js-login, #js-signup').addClass('hidden');
           $('#js-thankyou').removeClass('hidden');
-        //}, 'jsonp');
+        }, 'jsonp');
         return false;
       });
   	});
