@@ -8,10 +8,12 @@
 	color: #efefef;
 	font-size: 13px;
 	line-height: 1.5;
+	overflow-y: auto;
 }
 
 .gate-wrapper {
 	margin-top: 1em;
+	margin-bottom: 2.5em;
 }
 
 .gate-lining {
@@ -211,7 +213,7 @@
 
 .gate-extra-margin {
 	margin-top: 5em;
-	margin-bottom: 1em;
+	margin-bottom: 1.2em;
 }
 
 .gate-small-block {
@@ -237,12 +239,79 @@
 
 .with-video-embed {
 	margin-top: 5px;
+	position: relative;
 	width: 500px;
-	& * {
+
+	& > iframe,
+	& > embed,
+	& > object {
 		width: 100%;
+		height: 360px;
+		position: relative;
 	}
 }
 
 .with-video-embed-block {
 	margin-top: 1.5em;
+}
+
+@media all and (max-height:620px) {
+
+	.gate-wrapper {
+		margin-top: .5em;
+	}
+
+	.gate-header {
+		margin-bottom: 0em;
+	}
+
+	.gate-footer {
+		bottom: auto;
+		margin-top: 2em;
+		position: relative;
+	}
+	
+	.gate-extra-margin {
+		margin-top: 1em;
+	}
+}
+
+@media all and (max-width:920px){
+
+	.gate-header {
+		margin-bottom: 0em;
+	}
+
+	.gate-slogan {
+		font-size: (10em/13);
+		line-height: 4.5;
+	}
+	
+	.gate-footer {
+		bottom: auto;
+		margin-top: 2em;
+		position: relative;
+	}
+
+	.with-video {
+		.with-video-embed {
+			float:none;
+			width: 100%;
+			margin: 0;
+		}
+
+		.with-video-embed-block {
+			margin-left: 35px;
+			width: auto;
+
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.gate-extra-margin {
+		margin-top: 1em;
+	}
+
 }

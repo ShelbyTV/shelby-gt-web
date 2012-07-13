@@ -1,6 +1,8 @@
 <% 
   videoEmbed = @meta_info[:video_embed] || @provider_name == "youtube" 
   hasTokenNoAuth = @has_access_token || !@auth_failure
+  flashError = flash[:error] == "401"
+  # flashError = true
 %>
 
 <!doctype html>
@@ -58,7 +60,7 @@
     </div>
     <% end -%>
 
-    <div id="js-signup" class="gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
+    <div id="js-signup" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
 			<h2 class="gate-head">
 				We'll be back!
 			</h2>
@@ -104,7 +106,7 @@
 			</div>
 		</div><!-- eo .gate-lining -->
 
-  	<div id="js-login" class="gate-lining<%= ' hidden' if hasTokenNoAuth %>">
+  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if !hasTokenNoAuth %>">
 			<h2 class="gate-head">
         Welcome to the T-101 <br/>Beta Command Center
     	</h2>
@@ -120,6 +122,11 @@
         </p>
       <% end %>
 
+      <% if flashError %>
+        <p class="gate-signin-error js-signin-error">
+          Session expired, please log in again!
+        </p>      
+      <% end %>
       <a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
       </a>   
