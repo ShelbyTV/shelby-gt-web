@@ -287,11 +287,20 @@
 		margin-bottom: 0em;
 	}
 
+	.gate-logo {
+		margin: 0 20px;
+	}
+
 	.gate-slogan {
 		font-size: (10em/13);
 		line-height: 4.5;
 	}
 	
+	.gate-lining,
+	.gate-footer {
+		margin-left: 145px;
+	}
+
 	.gate-footer {
 		bottom: auto;
 		margin-top: 2em;

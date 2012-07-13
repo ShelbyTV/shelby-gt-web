@@ -550,32 +550,41 @@
     margin-bottom: 0em;
   }
   /* line 290, ../../app/stylesheets/partials/gate.scss */
+  .ext-elements .gate-logo {
+    margin: 0 20px;
+  }
+  /* line 294, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-slogan {
     font-size: 0.769em;
     line-height: 4.5;
   }
-  /* line 295, ../../app/stylesheets/partials/gate.scss */
+  /* line 300, ../../app/stylesheets/partials/gate.scss */
+  .ext-elements .gate-lining,
+  .ext-elements .gate-footer {
+    margin-left: 145px;
+  }
+  /* line 304, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-footer {
     bottom: auto;
     margin-top: 2em;
     position: relative;
   }
-  /* line 302, ../../app/stylesheets/partials/gate.scss */
+  /* line 311, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed {
     float: none;
     width: 100%;
     margin: 0;
   }
-  /* line 308, ../../app/stylesheets/partials/gate.scss */
+  /* line 317, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed-block {
     margin-left: 35px;
     width: auto;
   }
-  /* line 312, ../../app/stylesheets/partials/gate.scss */
+  /* line 321, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed-block br {
     display: none;
   }
-  /* line 318, ../../app/stylesheets/partials/gate.scss */
+  /* line 327, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-extra-margin {
     margin-top: 1em;
   }
