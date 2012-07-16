@@ -1,5 +1,5 @@
 defaults: &defaults
-  url: "http://api.gt.shelby.tv"
+  url: "http://api.shelby.tv"
   version: "/v1"
 
 development:
