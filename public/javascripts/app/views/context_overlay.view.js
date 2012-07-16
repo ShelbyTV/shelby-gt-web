@@ -6,9 +6,6 @@
 
     el: '#js-context-overlay-lining',
 
-    // events : {
-    // },
-
     events : _.extend({}, FrameView.prototype.events, {
       "click .js-frame-locator" : "_frameLocator"
     }),

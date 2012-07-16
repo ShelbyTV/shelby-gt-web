@@ -22,21 +22,20 @@
         <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
       </h1>
     </a>
+        <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+          <%= frame.get('created_at') %>
+        </h2>
     <% if (!contextOverlay) { %>
-      <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-        <%= frame.get('created_at') %>
-      </h2>
+        <h3 class="frame-title" title="<%= frameTitle %>">
+          <%= frame.get('video') && frameTitle %>
+        </h3>
     <% } else { %>
-      <button class="js-frame-locator frame-locator">
-        Locate
-      </button>
+      <a onclick="return false;" class="js-frame-activate js-frame-locator" href="#"> 
+        <h3 class="frame-title" title="<%= frameTitle %>">
+          <%= frame.get('video') && frameTitle %>
+        </h3>
+      </a>
     <% } %>
-
-    <a onclick="return false;" class="js-frame-activate" href="#"> 
-      <h3 class="frame-title" title="<%= frameTitle %>">
-        <%= frame.get('video') && frameTitle %>
-      </h3>
-    </a>
   </header> 
   <% if (!contextOverlay) { %>  
     <% if( frameThumbnail ) { %>

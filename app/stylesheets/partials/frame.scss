@@ -130,30 +130,30 @@
 	float:right;
 }
 
-.frame-locator {
-	@include buttonfont;
+//.xframe-locator {
+//	@include buttonfont;
 
-	background: url($icon-locate) no-repeat 10px center transparent;
-	border-bottom: none;
-	border-left: 1px solid $inset;
-	border-right: none;
-	border-top: none;
-	color: $button-color;
-	line-height: 3.25;
-	padding: 0 1em 0 3em;
-	position: absolute;
-	right: 0;
+//	background: url($icon-locate) no-repeat 10px center transparent;
+//	border-bottom: none;
+//	border-left: 1px solid $inset;
+//	border-right: none;
+//	border-top: none;
+//	color: $button-color;
+//	line-height: 3.25;
+//	padding: 0 1em 0 3em;
+//	position: absolute;
+//	right: 0;
 
-	&:before {
-		border-left: 1px solid adjust-lightness($outset, 5%);
-		content: "\0020";
-		display: block;
-		height: 40px;
-		float: left;
-		margin: 0 0 0 -36px;
-	}
+//	&:before {
+//		border-left: 1px solid adjust-lightness($outset, 5%);
+//		content: "\0020";
+//		display: block;
+//		height: 40px;
+//		float: left;
+//		margin: 0 0 0 -36px;
+//	}
 
-}
+//}
 
 .frame-title {
 	clear: right; 
