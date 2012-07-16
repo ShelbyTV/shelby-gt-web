@@ -1,0 +1,11 @@
+{
+  "name": "Shelby",
+  "version": "1.0",
+  "permissions" : ["http://api.gt.shelby.tv/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["myscript.js"]
+    }
+  ]
+}
