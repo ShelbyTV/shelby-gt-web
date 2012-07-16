@@ -530,105 +530,105 @@
   margin-top: 1.5em;
 }
 @media all and (max-height:620px) {
-  /* line 270, ../../app/stylesheets/partials/gate.scss */
+  /* line 272, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-wrapper {
     margin-top: .5em;
   }
-  /* line 274, ../../app/stylesheets/partials/gate.scss */
+  /* line 276, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-header {
     margin-bottom: 0em;
   }
-  /* line 278, ../../app/stylesheets/partials/gate.scss */
+  /* line 280, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-footer {
     bottom: auto;
     margin-top: 2em;
     position: relative;
   }
-  /* line 284, ../../app/stylesheets/partials/gate.scss */
+  /* line 286, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-extra-margin {
     margin-top: 1em;
   }
 }
 @media all and (max-width:920px) {
-  /* line 291, ../../app/stylesheets/partials/gate.scss */
+  /* line 294, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-header {
     margin-bottom: 0em;
   }
-  /* line 295, ../../app/stylesheets/partials/gate.scss */
+  /* line 298, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-logo {
     margin: 0 20px;
   }
-  /* line 299, ../../app/stylesheets/partials/gate.scss */
+  /* line 302, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-slogan {
     font-size: 0.769em;
     line-height: 4.5;
   }
-  /* line 305, ../../app/stylesheets/partials/gate.scss */
+  /* line 308, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-lining,
   .ext-elements .gate-footer {
     margin-left: 145px;
   }
-  /* line 309, ../../app/stylesheets/partials/gate.scss */
+  /* line 312, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-footer {
     bottom: auto;
     margin-top: 2em;
     position: relative;
   }
-  /* line 316, ../../app/stylesheets/partials/gate.scss */
+  /* line 319, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed {
     float: none;
     width: 100%;
     margin: 0;
   }
-  /* line 322, ../../app/stylesheets/partials/gate.scss */
+  /* line 325, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed-block {
     margin-left: 35px;
     width: auto;
   }
-  /* line 326, ../../app/stylesheets/partials/gate.scss */
+  /* line 329, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed-block br {
     display: none;
   }
-  /* line 332, ../../app/stylesheets/partials/gate.scss */
+  /* line 335, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-extra-margin {
     margin-top: 1em;
   }
 }
 @media all and (max-width:415px) {
-  /* line 340, ../../app/stylesheets/partials/gate.scss */
+  /* line 344, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed {
     margin-top: 5px;
     margin-left: 0 !important;
   }
-  /* line 346, ../../app/stylesheets/partials/gate.scss */
+  /* line 350, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed > iframe, .ext-elements .with-video .with-video-embed > embed, .ext-elements .with-video .with-video-embed > object {
     height: 200px;
   }
-  /* line 351, ../../app/stylesheets/partials/gate.scss */
+  /* line 355, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .with-video-embed-block {
     margin-left: 20px;
     margin-right: 20px;
   }
-  /* line 356, ../../app/stylesheets/partials/gate.scss */
+  /* line 360, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .gate-lining {
     margin-left: 0px;
     padding-left: 20px;
     width: 100%;
   }
-  /* line 362, ../../app/stylesheets/partials/gate.scss */
+  /* line 366, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .with-video .gate-footer {
     margin-left: 20px;
   }
-  /* line 368, ../../app/stylesheets/partials/gate.scss */
+  /* line 372, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-logo {
     margin-right: 10px;
     width: 70px;
   }
-  /* line 373, ../../app/stylesheets/partials/gate.scss */
+  /* line 377, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-slogan {
     line-height: 4.4;
   }
-  /* line 378, ../../app/stylesheets/partials/gate.scss */
+  /* line 382, ../../app/stylesheets/partials/gate.scss */
   .ext-elements .gate-lining,
   .ext-elements .gate-footer {
     margin-left: 0px;
@@ -1888,18 +1888,18 @@
 .ext-elements .user-post-origin-facebook:before,
 .ext-elements .user-post-origin-tumblr:before,
 .ext-elements .frame-creator-origin-twitter:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1340133553');
+  content: url('/images/../images/assets/twitter_stamp.svg?1335815213');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
 }
 /* line 284, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1340133553');
+  content: url('/images/../images/assets/facebook_stamp.svg?1335813891');
 }
 /* line 291, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337698194');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336071207');
 }
 /* line 296, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text {
@@ -2344,7 +2344,7 @@
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .ext-elements .conversation li,
 .ext-elements .frame-conversation li {
   list-style-image: none;

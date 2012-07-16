@@ -265,6 +265,8 @@ html {
 	margin-top: 1.5em;
 }
 
+
+//-------------------- screens SHORTER than 620 --------------//
 @media all and (max-height:620px) {
 
 	.gate-wrapper {
@@ -286,6 +288,7 @@ html {
 	}
 }
 
+//-------------------- screens NARROWER than 920 --------------//
 @media all and (max-width:920px){
 
 	.gate-header {
@@ -334,6 +337,7 @@ html {
 	}
 }
 
+//-------------------- screens NARROWER than 415 --------------//
 @media all and (max-width:415px) { 
 
 	.with-video {

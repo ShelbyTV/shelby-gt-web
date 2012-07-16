@@ -2,7 +2,6 @@
   videoEmbed = @meta_info[:video_embed] || @provider_name == "youtube" 
   flashError = flash[:error] == "401"
   showAuth = @has_access_token || @auth_failure || @show_error || flashError
-  # flashError = true
 %>
 
 <!doctype html>
