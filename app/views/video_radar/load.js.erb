@@ -1003,6 +1003,9 @@ var loadBookmarklet = function(useUrl, useProvider) {
                 }
             }
         }
+        if (!shelbyJ) {
+          var shelbyJ = jQuery.noConflict();
+        }
         shelbyJ('.<%=@prefix%>ext-elements').remove()
         return pushState.apply(history, arguments);
     }
