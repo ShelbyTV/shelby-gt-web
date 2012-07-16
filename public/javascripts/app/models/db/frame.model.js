@@ -84,7 +84,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   conversationUsesCreatorInfo : function(viewingUser) {
       //get the first message
-      var firstMessage = this.get('conversation').get('messages').first();
+      var firstMessage = this.model.get('conversation') && this.get('conversation').get('messages').first();
       //true if there is a first message and the user of the first message is the one who created the frame
       var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.get('creator_id');
       //tue if there is a first message and the user is viewing their own role

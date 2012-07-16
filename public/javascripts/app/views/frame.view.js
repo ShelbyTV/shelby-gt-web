@@ -43,14 +43,14 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   initialize : function() {
     this.model.bind('destroy', this._onFrameRemove, this);
     this.model.bind('change', this.render, this);
-    this.model.get('conversation').bind('change', this.render, this);
+    this.model.get('conversation') && this.model.get('conversation').bind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
     this.model.unbind('destroy', this._onFrameRemove, this);
     this.model.unbind('change', this.render, this);
-    this.model.get('conversation').unbind('change', this.render, this);
+    this.model.get('conversation') && this.model.get('conversation').unbind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
