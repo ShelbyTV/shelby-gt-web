@@ -306,7 +306,7 @@ window.shelbyBookmarklet = {
                             var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
                             utilObject.htmlTemplate.addFrameToGuide(footerHtml, r, vids[i].embed);
                             if (toEmbedButtons) {
-                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
+                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
 
                                 header = shelbyJ("#<%=@prefix%>header-on-page-" + r)
                                 header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
@@ -744,7 +744,7 @@ window.shelbyBookmarklet = {
                         var r = frameHeader.attr("data-r")
                         var html = '<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>' + '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>';
                         if (displayLogo) {
-                            html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
+                            html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
                         }
                         frameHeader.html(html);
                         frameHeader.attr("data-conversationid", frame.conversation_id);

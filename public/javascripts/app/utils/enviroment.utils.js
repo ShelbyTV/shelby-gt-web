@@ -19,7 +19,7 @@
 
     getEnvironment : function(){
       return shelby.config.environment;
-      //return window.location.host.indexOf('gt.shelby.tv')!==-1 ? this.envs.production : this.envs.development;
+      //return window.location.host.indexOf('shelby.tv')!==-1 ? this.envs.production : this.envs.development;
     }
 
   };
