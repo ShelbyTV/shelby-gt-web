@@ -316,7 +316,6 @@ window.shelbyBookmarklet = {
                                 var vidFooter = shelbyJ('#<%=@prefix%>control-on-page-' + r);
                                 vidFooter.html(footerHtml);
                                 vidFooter.css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
-                                shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
                                 var resizeFunction = function(vidIndex, r) {
                                     return function () {
                                         utilObject.resizeFunction(vids, vidIndex, r);
@@ -327,6 +326,8 @@ window.shelbyBookmarklet = {
                                 });
                                 utilObject.resizeArray.push(resizeFunction);
                             }
+
+                            shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
                             var dataReq = {
                                 'provider_name': vids[i].provider,
                                 'provider_id': vids[i].video_id,
