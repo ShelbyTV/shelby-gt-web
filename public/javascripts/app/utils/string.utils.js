@@ -4,4 +4,13 @@ libs.utils.String = {
     // replace spaces and non-word characters with underscores
     return string.replace(/\s+|\W+/g, '-');
   },
+  
+  pluralize : function(count, toPluralize, pluralVersion){
+    if(count === 1){
+      return count+' '+toPluralize;
+    } 
+    else {
+      return count+' '+(pluralVersion || toPluralize+'s');
+    }
+  }
  };
