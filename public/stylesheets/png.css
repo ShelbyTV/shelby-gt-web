@@ -1,0 +1,172 @@
+/* line 6, ../../app/stylesheets/png.scss */
+.lt-ie9 .guide-toggle .copy {
+  top: 1px;
+}
+
+/* line 19, ../../app/stylesheets/png.scss */
+.no-svg .logo-header {
+  background: url("../images/assets/shelbylogo.png") center 9px no-repeat transparent;
+  background-size: 79%;
+}
+/* line 25, ../../app/stylesheets/png.scss */
+.no-svg .top-level:after {
+  background: url("../images/assets/carrot.png") no-repeat center center transparent;
+}
+/* line 33, ../../app/stylesheets/png.scss */
+.no-svg .dashboard-search i {
+  background: url("../images/assets/search.png") no-repeat center center;
+}
+/* line 41, ../../app/stylesheets/png.scss */
+.no-svg .guide-toggle .icon {
+  background: url("../images/assets/guide.png") no-repeat center center transparent;
+}
+/* line 52, ../../app/stylesheets/png.scss */
+.no-svg .networks-twitter {
+  background: #666666;
+  background: url("../images/assets/rolls_share_twitter_off.png") no-repeat center center, #666666;
+}
+/* line 58, ../../app/stylesheets/png.scss */
+.no-svg .networks-twitter.active {
+  background: #2caae1;
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59bce7), color-stop(100%, #2caae1));
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -webkit-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -moz-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -o-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, -ms-linear-gradient(top, #59bce7, #2caae1);
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat center center, linear-gradient(top, #59bce7, #2caae1);
+}
+/* line 67, ../../app/stylesheets/png.scss */
+.no-svg .networks-facebook {
+  background: #666666;
+  background: url("../images/assets/rolls_share_facebook_off.png") no-repeat center center, #666666;
+}
+/* line 74, ../../app/stylesheets/png.scss */
+.no-svg .networks-facebook.active {
+  background: #013e80;
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0157b3), color-stop(100%, #013e80));
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -webkit-linear-gradient(top, #0157b3, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -moz-linear-gradient(top, #0157b3, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -o-linear-gradient(top, #0157b3, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, -ms-linear-gradient(top, #0157b3, #013e80);
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center, linear-gradient(top, #0157b3, #013e80);
+}
+/* line 86, ../../app/stylesheets/png.scss */
+.no-svg .video-score:before {
+  content: url("../images/assets/score.png");
+}
+/* line 93, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .roll-frame button {
+  background: url("../images/assets/roll_action.png") no-repeat 0px -1px;
+}
+/* line 100, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .save-frame button {
+  background: url("../images/assets/saved_action.png") no-repeat center center;
+}
+/* line 107, ../../app/stylesheets/png.scss */
+.no-svg .video-controls .remove-frame button {
+  background: url("../images/assets/saved_remove.png") no-repeat center center;
+}
+/* line 116, ../../app/stylesheets/png.scss */
+.no-svg .user-post-origin-twitter:before {
+  content: url('/images/../images/assets/twitter_stamp.png?1340133553');
+}
+/* line 122, ../../app/stylesheets/png.scss */
+.no-svg .user-post-origin-facebook:before {
+  content: url('/images/../images/assets/facebook_stamp.png?1340133553');
+}
+/* line 128, ../../app/stylesheets/png.scss */
+.no-svg .video-player-play {
+  background: url("../images/assets/player_play.png") center center no-repeat transparent;
+}
+/* line 133, ../../app/stylesheets/png.scss */
+.no-svg .video-player-play.pause {
+  background: url("../images/assets/player_pause.png") center center no-repeat transparent;
+}
+/* line 140, ../../app/stylesheets/png.scss */
+.no-svg .video-player-volume {
+  background: url("../images/assets/player_sound_on.png") center center no-repeat transparent;
+}
+/* line 144, ../../app/stylesheets/png.scss */
+.no-svg .video-player-volume.mute {
+  background: url("../images/assets/player_sound_off.png") center center no-repeat transparent;
+}
+/* line 151, ../../app/stylesheets/png.scss */
+.no-svg .video-player-fullscreen {
+  background: url("../images/assets/player_fullscreen.png") center center no-repeat transparent;
+}
+/* line 155, ../../app/stylesheets/png.scss */
+.no-svg .video-player-fullscreen.cancel {
+  background: url("../images/assets/player_fullscreen_cancel.png") center center no-repeat transparent;
+}
+/* line 162, ../../app/stylesheets/png.scss */
+.no-svg .video-player-roll {
+  background: url("../images/assets/player_roll.png") center 6px no-repeat transparent;
+}
+/* line 171, ../../app/stylesheets/png.scss */
+.no-svg .rolling-main-social:before {
+  background: url("../images/assets/sharebutton_icons.png") no-repeat 0px center;
+}
+/* line 181, ../../app/stylesheets/png.scss */
+.no-svg .frame-rolling-completion-header h1.roll-type-public:before {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 186, ../../app/stylesheets/png.scss */
+.no-svg .frame-rolling-completion-header h1.roll-type-private:before {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 198, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-public-roll.new:before {
+  content: "+";
+}
+/* line 201, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-public-roll:after {
+  content: url("../images/assets/rolls_public.png");
+}
+/* line 207, ../../app/stylesheets/png.scss */
+.no-svg .form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_private.png");
+}
+/* line 217, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-twitter:before {
+  background: url("../images/assets/rolls_twitter.png") no-repeat center center #00a2d1;
+}
+/* line 224, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-facebook:before {
+  background: url("../images/assets/rolls_facebook.png") no-repeat center center #013e80;
+}
+/* line 231, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-networks-tumblr:before {
+  background: url("../images/assets/rolls_tumblr.png") no-repeat center center, #2f445b;
+}
+/* line 240, ../../app/stylesheets/png.scss */
+.no-svg .you-preferences-notifications input + span:after {
+  background: url("../images/assets/switch.png") no-repeat center center, #fefefe;
+}
+/* line 252, ../../app/stylesheets/png.scss */
+.no-svg .about-external-twitter a {
+  background: url("../images/assets/team_twitter.png") no-repeat center left transparent;
+}
+/* line 260, ../../app/stylesheets/png.scss */
+.no-svg .about-external-link a {
+  background: url("../images/assets/team_web.png") no-repeat center left transparent;
+}
+/* line 270, ../../app/stylesheets/png.scss */
+.no-svg .logged-out-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 1px 2px transparent;
+}
+/* line 276, ../../app/stylesheets/png.scss */
+.no-svg .logged-out-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat center center transparent;
+}
+/* line 283, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-logo {
+  background: url("../images/email-gate/landing_logo.png") no-repeat center center transparent;
+}
+/* line 288, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-networks-twitter:before {
+  background: url("../images/assets/rolls_share_twitter_on.png") no-repeat 2px 4px transparent;
+}
+/* line 294, ../../app/stylesheets/png.scss */
+.no-svg .email-gate-networks-facebook:before {
+  background: url("../images/assets/rolls_share_facebook_on.png") no-repeat -1px center transparent;
+}

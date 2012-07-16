@@ -1,0 +1,65 @@
+/* line 3, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list {
+  cursor: pointer;
+}
+/* line 8, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+/* line 13, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a:visited {
+  text-decoration: none;
+}
+/* line 18, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list a:hover, .form-rolls-list a:active {
+  text-decoration: underline;
+}
+/* line 23, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li {
+  border-bottom: 1px solid #333333;
+  border-top: 1px solid #555555;
+  padding: 5px;
+}
+/* line 28, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li:first-child {
+  border-top: none;
+}
+/* line 31, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list li:last-child {
+  border-bottom: none;
+}
+/* line 37, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll,
+.form-rolls-list .rolling-private-roll {
+  font-size: 14px;
+  line-height: 1.75;
+  position: relative;
+  text-align: center;
+}
+/* line 43, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll.new:before,
+.form-rolls-list .rolling-private-roll.new:before {
+  content: "+";
+}
+/* line 46, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-public-roll:after,
+.form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_public.svg");
+  right: 9px;
+  position: absolute;
+  top: 1px;
+}
+/* line 57, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.form-rolls-list .rolling-private-roll:after {
+  content: url("../images/assets/rolls_private.svg");
+}
+
+/* line 64, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
+.share-comment-counter {
+  color: white;
+  line-height: 2.5;
+  margin: 10px;
+  right: 82px;
+}

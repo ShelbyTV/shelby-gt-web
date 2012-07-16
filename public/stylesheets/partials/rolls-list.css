@@ -1,0 +1,31 @@
+/* line 3, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list {
+  padding: 0;
+  position: relative;
+  margin: 0;
+}
+/* line 10, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .roll-item-header:hover {
+  background-color: #6d6d6d;
+}
+/* line 14, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a {
+  display: block;
+  text-decoration: none;
+}
+/* line 17, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list a:hover {
+  text-decoration: underline;
+}
+/* line 22, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list li {
+  padding: 0;
+}
+/* line 26, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item {
+  position: relative;
+}
+/* line 30, ../../../app/stylesheets/partials/rolls-list.scss */
+.rolls-list .active-list-item .roll-item-button:after {
+  box-shadow: 0 0 48px 70px #316a2b;
+}

@@ -1,0 +1,97 @@
+/*
+Syntax error: Undefined mixin 'basefont'.
+        on line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss, in `basefont'
+        from line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss
+
+6: 	padding:0;
+7: 	width:100%;
+8: }
+9: 
+10: body{
+11: 	@include basefont;
+12: 
+13: 	background-color:#101010;
+14: 	bottom:0;
+15: 	color: #a4a4a4;
+16: 	left:0;
+
+Backtrace:
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss:11:in `basefont'
+/Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss:11
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `block in render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/util.rb:331:in `silence_sass_warnings'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/engine.rb:247:in `render'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.1.17/lib/sass/plugin/rack.rb:51:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__3573099901708046920__call__706513707728560759__callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:26:in `call_app'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/logger.rb:16:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/quiet_assets-1.0.1/lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.2/lib/action_dispatch/middleware/static.rb:61:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/engine.rb:479:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/application.rb:220:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.2/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danieljeng1/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/danieljeng1/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'basefont'.\A         on line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss, in `basefont'\A         from line 11 of /Users/danieljeng1/ShelbyTV/shelby-gt-web/app/stylesheets/partials/seovideo.scss\A \A 6: 	padding:0;\A 7: 	width:100%;\A 8: }\A 9: \A 10: body{\A 11: 	@include basefont;\A 12: \A 13: 	background-color:#101010;\A 14: 	bottom:0;\A 15: 	color: #a4a4a4;\A 16: 	left:0;"; }

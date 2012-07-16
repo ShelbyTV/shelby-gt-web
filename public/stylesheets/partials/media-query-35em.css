@@ -1,0 +1,6 @@
+@media only screen and (min-width: 35em) {
+  /* line 2, ../../../app/stylesheets/partials/media-query-35em.scss */
+  body {
+    background: #bbb;
+  }
+}
