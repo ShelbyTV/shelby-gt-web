@@ -1,0 +1,65 @@
+@import "base";
+
+.full-width .preroll-video-info-wrapper {
+  padding-right: 80px;
+}
+
+.preroll-video-info-wrapper {
+  left: 0;
+  padding-right: 410px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  z-index: 2;
+
+  .preroll-video-info-lining {
+    @include text-shadow(0px -1px 0px #000);
+
+    background: rgba(0,0,0, 0.5);
+    color: white;
+    margin-left: 8*$defaultMargin;
+    opacity: 0.0;
+    padding: 20px;
+  
+    @include transition-property('opacity');
+    @include transition-duration(1s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  
+    .video-title {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  
+    .frame-creator {
+      font-size: 23px;
+    }
+  
+    .frame-comment {
+      font-size: 30px;
+      font-style: italic;
+      margin: 10px;
+    }
+  
+    .stats {
+      @include text-shadow(0 0 0 #000);
+      color: #999;
+      font-size: 15px;
+      margin-top: 30px;
+    }
+    
+  }
+
+  &.showing .preroll-video-info-lining {
+    opacity: 1.0;
+  }
+
+  &.post-display {
+    /* get the entire thing out of the way after it fades */
+    top: 110%;
+    @include transition-property('top');
+    @include transition-duration(0s);
+    @include transition-delay(1.5s);
+  }
+
+}

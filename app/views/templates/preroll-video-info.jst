@@ -1,0 +1,19 @@
+<div class="preroll-video-info-lining">
+  <div class="video-title"><%= frame.get('video').get('title') %></div>
+  <div class="frame-creator">presented by <%= frame.get('creator').get('nickname') %></div>
+
+  <% 
+    var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
+    if(messages.length > 0){
+  %>
+    <div class="frame-comment">“<%= messages.first().get('text') %>”</div>
+  <% } %>
+
+  <%
+    var heartCount = frame.get('upvoters').length,
+    messageCount = messages.length,
+    rerollCount = frame.get('frame_children').length,
+    viewCount = frame.get('video').get('view_count');
+  %>
+  <div class="stats"><%= libs.utils.String.pluralize(heartCount, 'Heart') %> • <%= libs.utils.String.pluralize(messageCount, 'Comment') %> • <%= libs.utils.String.pluralize(viewCount, 'View') %></div>
+</div>

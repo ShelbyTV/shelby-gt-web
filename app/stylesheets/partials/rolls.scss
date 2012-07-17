@@ -169,6 +169,7 @@
 	@include roundies(input);
 	@include opacity(0.8);
 
+	border: 1px solid $inset;
 	display: block;
 	padding: 5px;
 	width: 100%;
