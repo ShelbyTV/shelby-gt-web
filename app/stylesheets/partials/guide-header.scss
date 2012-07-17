@@ -20,7 +20,7 @@
 }
 
 .guide-logo-header {
-	background: url('../images/assets/shelbylogo.svg') center 9px no-repeat transparent;
+	background: url($logo-shelby) center 9px no-repeat transparent;
 	background-size: 85%;
 	height: 35px;
 	margin: 0 1px;
@@ -75,7 +75,7 @@
 
 .top-level {
 		&:after {
-			background: url('../images/assets/carrot.svg') no-repeat center center transparent;
+			background: url($icon-carrot) no-repeat center center transparent;
 			content: "\0020";
 			font-size: $font-size/1.5;
 			height: 12px;

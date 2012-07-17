@@ -34,7 +34,7 @@ html {
 .gate-logo {
 	@include background-size(contain);
 
-	background-image: url('/images/assets/shelbylogo.svg');
+	background-image: url($logo-shelby);
 	background-position: left center;
 	background-repeat: no-repeat;
 	clear: left;

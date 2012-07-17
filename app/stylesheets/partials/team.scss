@@ -100,7 +100,7 @@
 .about-external-twitter {
 	a{
 		@include background(
-			url('../images/assets/team_twitter.svg') no-repeat center left transparent
+			url($icon-team-twitter) no-repeat center left transparent
 		);
 		padding-left:22px;
 	}
@@ -109,7 +109,7 @@
 .about-external-link {
 	a{
 		@include background(
-			url('../images/assets/team_web.svg') no-repeat center left transparent
+			url($icon-team-web) no-repeat center left transparent
 		);
 		padding-left:22px;
 	}
