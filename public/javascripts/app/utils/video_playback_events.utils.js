@@ -13,7 +13,9 @@
     _userSeeked : false,
     
     //how much playback (in seconds) should eached "watched" interval represent
-    WATCHED_INTERVAL : 20,
+    WATCHED_INTERVAL : 5,
+    //how much playback (by percent) should eached "watched" interval represent
+    WATCHED_PCT : 0.20,
     
     initialize: function(playbackState, guideModel, userDesires) {
       this._playbackState = playbackState;
@@ -37,8 +39,7 @@
     //--------------------------------------
     
     /* 
-    * since we only post after WATCHED_INTERVAL seconds, and not on video change, this should give us a pretty good
-    * idea of what videos were actually watched versus just shown for a few seconds during browsing
+    * If the user watches WATCHED_INTERVAL seconds or WATHCHED_PCT % of the video, count that as a watch
     */
     _onCurrentTimeChange: function(attr, curTime){
       
@@ -55,9 +56,23 @@
         return;
       }
       
-      if( curTime && curTime > this._startTime + this.WATCHED_INTERVAL ){
+      //can't do any calculations w/o curTime
+      if(!curTime) return;
+      
+      // did they watch the mininum amount in seconds or by percentage?
+      var watchedSeconds = curTime - this._startTime;
+      if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchPct) {
         this._currentFrame.watched(this._startTime, curTime);        
         this._startTime = curTime;
+      }
+    },
+    
+    /*
+    * When the video ends, count that as a watch
+    */
+    _onPlaybackStatusChange: function(attr, status){
+      if(status === libs.shelbyGT.PlaybackStatus.ended){
+        this._currentFrame.watched();
       }
     },
     
@@ -74,14 +89,17 @@
       var prevPlayerState = playbackState.previous('activePlayerState');
       if( prevPlayerState ){
         prevPlayerState.unbind('change:currentTime', this._onCurrentTimeChange, this);
+        prevPlayerState.unbind('change:playbackStatus', this._onPlaybackStatusChange, this);
       }
 
       newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
+      newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
     },
 
     _videoChanged: function( guideModel, frame ){
       this._currentFrame = frame;
       this._startTime = 0;
+      this._requireWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
     }
     
   };

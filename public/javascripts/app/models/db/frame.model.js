@@ -69,7 +69,10 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   
   watched : function(startTime, endTime, onSuccess) {
     var frameWatched = new libs.shelbyGT.FrameModel();
-    var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched?startTime='+startTime+'&endTime='+endTime;
+    var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
+    if(startTime && endTime){
+      url += '?startTime='+startTime+'&endTime='+endTime;
+    }
     frameWatched.save(null, {url:url, success:onSuccess});
   },
 
