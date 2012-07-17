@@ -1,55 +1,57 @@
 
 //POSSIBLY LIKELY INCOMPLETE, ALSO INCLUDES OBSELETE IMAGEs
+$extension: ".svg" !default;
+$path: "/images/assets/" !default;
 
-$logo-shelby                    : "/images/assets/shelby_logo.svg";
-$logo-shelby-mark               : "/images/assets/shelby_mark.svg";
+$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
+$logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
-$icon-carrot                    : "/images/assets/carrot.svg";
-$icon-chevron-right             : "/images/assets/chevron.svg";
-$icon-mark                      : "/images/assets/mark.svg";
-$icon-missing-thumbnail         : "/images/assets/missing_thumb.svg";
-$icon-settings                  : "/images/assets/settings.svg";
+$icon-carrot                    : "#{$path}carrot#{$extension}";
+$icon-chevron-right             : "#{$path}chevron#{$extension}";
+$icon-mark                      : "#{$path}mark#{$extension}";
+$icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
+$icon-settings                  : "#{$path}settings#{$extension}";
 
-$icon-player-fullscreen-enable  : "/images/assets/player_fullscreen_enable.svg";
-$icon-player-fullscreen-disable : "/images/assets/player_fullscreen_disable.svg";
-$icon-player-hd-disabled        : "/images/assets/player_hd_disabled.svg";
-$icon-player-hd-on              : "/images/assets/player_hd_on.svg";
-$icon-player-hd-off             : "/images/assets/player_hd_off.svg";
-$icon-player-play               : "/images/assets/player_play.svg";
-$icon-player-pause              : "/images/assets/player_pause.svg";
-$icon-player-sound-off          : "/images/assets/player_sound_off.svg";
-$icon-player-sound-on           : "/images/assets/player_sound_on.svg";
+$icon-player-fullscreen-enable  : "#{$path}player_fullscreen_enable#{$extension}";
+$icon-player-fullscreen-disable : "#{$path}player_fullscreen_disable#{$extension}";
+$icon-player-hd-disabled        : "#{$path}player_hd_disabled#{$extension}";
+$icon-player-hd-on              : "#{$path}player_hd_on#{$extension}";
+$icon-player-hd-off             : "#{$path}player_hd_off#{$extension}";
+$icon-player-play               : "#{$path}player_play#{$extension}";
+$icon-player-pause              : "#{$path}player_pause#{$extension}";
+$icon-player-sound-off          : "#{$path}player_sound_off#{$extension}";
+$icon-player-sound-on           : "#{$path}player_sound_on#{$extension}";
 
-$icon-roll-lock                 : "/images/assets/roll_lock.svg";
-$icon-roll-unlock               : "/images/assets/roll_unlock.svg";
+$icon-roll-lock                 : "#{$path}roll_lock#{$extension}";
+$icon-roll-unlock               : "#{$path}roll_unlock#{$extension}";
 
-$icon-share-facebook-on         : "/images/assets/share_facebook_on.svg";
-$icon-share-facebook-off        : "/images/assets/share_facebook_off.svg";
-$icon-share-twitter-on          : "/images/assets/share_twitter_on.svg";
-$icon-share-twitter-off         : "/images/assets/share_twitter_off.svg";
+$icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
+$icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
+$icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
+$icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
 
-$icon-social-facebook           : "/images/assets/social_facebook.svg"; 
-$icon-social-tumblr             : "/images/assets/social_tumblr.svg";
-$icon-social-twitter            : "/images/assets/social_twitter.svg";
+$icon-social-facebook           : "#{$path}social_facebook#{$extension}"; 
+$icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
+$icon-social-twitter            : "#{$path}social_twitter#{$extension}";
 
-$icon-switch-lock               : "/images/assets/slider_lock.svg";
-$icon-switch-unlock             : "/images/assets/slider_unlock.svg";
+$icon-switch-lock               : "#{$path}slider_lock#{$extension}";
+$icon-switch-unlock             : "#{$path}slider_unlock#{$extension}";
 
-$icon-team-twitter              : "/images/assets/team_twitter.svg";
-$icon-team-web                  : "/images/assets/team_web.svg";
+$icon-team-twitter              : "#{$path}team_twitter#{$extension}";
+$icon-team-web                  : "#{$path}team_web#{$extension}";
 
-$icon-user-logged-out           : "/images/assets/user_loggedout.svg";
+$icon-user-logged-out           : "#{$path}user_loggedout#{$extension}";
 
-$icon-nav-stream                : "/images/assets/nav_stream.svg";
+$icon-nav-stream                : "#{$path}nav_stream#{$extension}";
 
-$icon-videocard-comment-off     : "/images/assets/videocard_comment_off.svg";
-$icon-videocard-comment-on      : "/images/assets/videocard_comment_on.svg";
-$icon-videocard-like-off        : "/images/assets/videocard_like_off.svg";
-$icon-videocard-like-on         : "/images/assets/videocard_like_on.svg";
-$icon-videocard-roll-off        : "/images/assets/videocard_roll_off.svg";
-$icon-videocard-roll-on         : "/images/assets/videocard_roll_on.svg";
-$icon-videocard-share-off       : "/images/assets/videocard_share_off.svg";
-$icon-videocard-share-on        : "/images/assets/videocard_share_on.svg";
+$icon-videocard-comment-off     : "#{$path}videocard_comment_off#{$extension}";
+$icon-videocard-comment-on      : "#{$path}videocard_comment_on#{$extension}";
+$icon-videocard-like-off        : "#{$path}videocard_like_off#{$extension}";
+$icon-videocard-like-on         : "#{$path}videocard_like_on#{$extension}";
+$icon-videocard-roll-off        : "#{$path}videocard_roll_off#{$extension}";
+$icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
+$icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
+$icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
 //UI-TODO: comb through radar.scss for hardcoded variables
 //         below needs to be added to css:
