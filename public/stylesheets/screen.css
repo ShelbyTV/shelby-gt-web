@@ -4329,30 +4329,35 @@ body.isolated-roll .context-overlay-lining .frame-title {
 }
 
 /* line 3, ../../app/stylesheets/partials/preroll-video-info.scss */
+.full-width .preroll-video-info-wrapper {
+  padding-right: 80px;
+}
+
+/* line 7, ../../app/stylesheets/partials/preroll-video-info.scss */
 .preroll-video-info-wrapper {
-  position: absolute;
   left: 0;
+  padding-right: 410px;
+  position: absolute;
   top: 30%;
   width: 100%;
   z-index: 2;
 }
-/* line 10, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-inner {
-  background: rgba(0, 0, 0, 0.5);
+/* line 15, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining {
   text-shadow: 0px -1px 0px black;
-  max-width: 60%;
-  margin-left: 80px;
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
   color: white;
+  margin-left: 80px;
   opacity: 0.0;
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  padding: 20px;
+  -moz-transition-property: opacity, padding-right;
+  -webkit-transition-property: opacity, padding-right;
+  -o-transition-property: opacity, padding-right;
+  transition-property: opacity, padding-right;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
   -moz-transition-timing-function: ease-in-out;
   -webkit-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
@@ -4363,32 +4368,47 @@ body.isolated-roll .context-overlay-lining .frame-title {
   transition-delay: 0s;
 }
 /* line 29, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-inner .video-title {
+.preroll-video-info-wrapper .preroll-video-info-lining .video-title {
   font-size: 40px;
   font-weight: bold;
 }
 /* line 34, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-inner .frame-creator {
-  font-size: 30px;
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-creator {
+  font-size: 23px;
 }
 /* line 38, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-inner .frame-comment {
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-comment {
   font-size: 30px;
   font-style: italic;
   margin: 10px;
 }
 /* line 44, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-inner .stats {
-  margin-top: 30px;
+.preroll-video-info-wrapper .preroll-video-info-lining .stats {
+  text-shadow: 0 0 0 black;
+  color: #999;
   font-size: 15px;
+  margin-top: 30px;
 }
-/* line 51, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper.showing .preroll-video-info-inner {
+/* line 53, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.showing .preroll-video-info-lining {
   opacity: 1.0;
 }
-/* line 55, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper.post-display .preroll-video-info-inner {
-  opacity: 0.0;
+/* line 57, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.post-display {
+  /* get the entire thing out of the way after it fades */
+  top: 110%;
+  -moz-transition-property: top;
+  -webkit-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -moz-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+  -moz-transition-delay: 1.5s;
+  -webkit-transition-delay: 1.5s;
+  -o-transition-delay: 1.5s;
+  transition-delay: 1.5s;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */

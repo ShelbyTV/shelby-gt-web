@@ -1,4 +1,4 @@
-<div class="preroll-video-info-inner">
+<div class="preroll-video-info-lining">
   <div class="video-title"><%= frame.get('video').get('title') %></div>
   <div class="frame-creator">presented by <%= frame.get('creator').get('nickname') %></div>
 
@@ -13,7 +13,7 @@
     var heartCount = frame.get('upvoters').length,
     messageCount = messages.length,
     rerollCount = frame.get('frame_children').length,
-    viewCount = frame.get('view_count');
+    viewCount = frame.get('video').get('view_count');
   %>
-  <div class="stats"><%= libs.utils.String.pluralize(heartCount, 'Heart') %> | <%= libs.utils.String.pluralize(messageCount, 'Comment') %> | <%= libs.utils.String.pluralize(rerollCount, 'reRoll') %> | <%= libs.utils.String.pluralize(viewCount, 'View') %></div>
+  <div class="stats"><%= libs.utils.String.pluralize(heartCount, 'Heart') %> • <%= libs.utils.String.pluralize(messageCount, 'Comment') %> • <%= libs.utils.String.pluralize(viewCount, 'View') %></div>
 </div>

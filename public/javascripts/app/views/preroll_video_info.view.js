@@ -31,15 +31,15 @@
       newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
     },
     
-    // hide overlay 1s into video
+    // hide overlay as video starts
     _onCurrentTimeChange: function(attr, time){
-      if(time > 1){ 
-        this.$el.addClass("post-display");
+      if(time > 1.0){ 
+        this.$el.removeClass('showing').addClass("post-display");
       }
     },
 
     render : function() {
-      this.$el.removeClass('showing').removeClass("post-display");
+      this.$el.removeClass("post-display");
       this.$el.html( this.template({ frame: this.model }) );
       var self = this;
       self.$el.addClass("showing");
