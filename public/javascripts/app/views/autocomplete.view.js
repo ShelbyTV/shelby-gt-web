@@ -184,8 +184,12 @@
         return this._shown ? this.hide() : this;
       }
 
-      if (!this.qualifier()) {
+      if (this.qualifier && !this.qualifier()) {
        return this._shown ? this.hide() : this;
+      }
+
+      if (this.queryTransformer) {
+        this.queryTransformer();
       }
 
       items = $.grep(_(this.options).result('source'), function (item) {
@@ -194,6 +198,10 @@
 
       items = this.sorter(items);
 
+      if (this.matchTransformer) {
+        items = _(items).map(this.matchTransformer);
+      }
+
       if (!items.length) {
         return this._shown ? this.hide() : this;
       }
@@ -201,10 +209,15 @@
       return this._renderAutoCompleteMenu(items.slice(0, this.options.items)).show();
     },
 
-    qualifier : function () {
-      // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
-      return true;
-    },
+    // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
+    qualifier : null,
+
+    // subclasses can override and transform the query arbitrarily before matching
+    queryTransformer : null,
+
+    // subclasses can override and transform the matches arbitrarily before displaying
+    // needs to be of the form function (matchedItem)
+    matchTransformer : null,
 
     matcher : function (item) {
       var itemLowerCase = item.toLowerCase();
