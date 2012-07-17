@@ -27,7 +27,8 @@
   
   <form class="new-comment clearfix">
     <div class="new-comment-user-avatar">
-      <img src="<%= shelby.models.user.get('user_image_original') %>" alt="<%= shelby.models.user.get('nickname') %>" title="<%= shelby.models.user.get('nickname') %>" />
+      <img src="<%= shelby.models.user.get('user_image_original') || shelby.models.user.get('user_image')%>"
+           alt="<%= shelby.models.user.get('nickname') %>" title="<%= shelby.models.user.get('nickname') %>" />
     </div>
     <textarea class="js-add-message-input new-comment-input" rows="2"></textarea>
     <div class="js-frame-comment-error-message frame-comment-error-message"></div>

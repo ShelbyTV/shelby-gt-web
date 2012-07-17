@@ -7,6 +7,7 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   initialize : function(){
     if(!this.options.roll.get('public')){
       this._components = $.extend({}, libs.shelbyGT.ShareView.prototype._components,{
+        autoComplete : false,
         networkToggles: false,
         messageCounter: false,
         emailAddresses: true,

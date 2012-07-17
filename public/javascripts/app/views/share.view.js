@@ -4,6 +4,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   shareBaseLength : 23,
 
   _components : {
+    autoComplete : true,
     networkToggles : true,
     emailAddresses : false,
     messageCounter :  true,
@@ -51,6 +52,14 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
         size : 'small'
       });
       this.renderChild(this.spinner);
+    }
+    if (this._components.autoComplete) {
+      var twitterAutocompleteView = new libs.shelbyGT.TwitterAutocompleteView({
+        el : this.$('.js-share-textarea')[0],
+        multiTerm : true,
+        multiTermMethod : 'paragraph'
+      });
+      this.renderChild(twitterAutocompleteView);
     }
   },
 

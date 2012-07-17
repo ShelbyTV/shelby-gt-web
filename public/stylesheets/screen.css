@@ -3317,11 +3317,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
   border-radius: 3px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
+  border: 1px solid black;
   display: block;
   padding: 5px;
   width: 100%;
 }
-/* line 176, ../../app/stylesheets/partials/rolls.scss */
+/* line 177, ../../app/stylesheets/partials/rolls.scss */
 .share-textarea:focus, .share-email-addresses-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -3339,20 +3340,20 @@ body.isolated-roll .context-overlay-lining .frame-title {
   opacity: 1;
 }
 
-/* line 184, ../../app/stylesheets/partials/rolls.scss */
+/* line 185, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-list {
   margin: 0;
   padding-left: 0;
 }
 
-/* line 189, ../../app/stylesheets/partials/rolls.scss */
+/* line 190, ../../app/stylesheets/partials/rolls.scss */
 .share-networks-item {
   float: left;
   list-style-type: none;
   margin-right: 10px;
 }
 
-/* line 195, ../../app/stylesheets/partials/rolls.scss */
+/* line 196, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -3371,7 +3372,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-top: 32px;
   width: 100%;
 }
-/* line 201, ../../app/stylesheets/partials/rolls.scss */
+/* line 202, ../../app/stylesheets/partials/rolls.scss */
 .share-submit-button .spinner {
   left: auto;
   margin-left: -4px;
@@ -3379,7 +3380,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   position: relative;
 }
 
-/* line 209, ../../app/stylesheets/partials/rolls.scss */
+/* line 210, ../../app/stylesheets/partials/rolls.scss */
 .share-comment-counter {
   display: block;
   font-size: 11px;
@@ -3399,7 +3400,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 34px;
 }
 
-/* line 223, ../../app/stylesheets/partials/rolls.scss */
+/* line 224, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter button {
   background: url("/images/assets/share_twitter_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("/images/assets/share_twitter_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3408,7 +3409,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("/images/assets/share_twitter_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("/images/assets/share_twitter_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 231, ../../app/stylesheets/partials/rolls.scss */
+/* line 232, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter.active button {
   background-color: #2caae1;
   background: url("/images/assets/share_twitter_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #85ceee), color-stop(100%, #2caae1));
@@ -3420,7 +3421,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   border: 1px solid #082a39;
 }
 
-/* line 243, ../../app/stylesheets/partials/rolls.scss */
+/* line 244, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook button {
   background: url("/images/assets/share_facebook_off.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7a7a7a), color-stop(100%, #474747));
   background: url("/images/assets/share_facebook_off.svg") no-repeat center center, -webkit-linear-gradient(top, #7a7a7a, #474747);
@@ -3429,7 +3430,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   background: url("/images/assets/share_facebook_off.svg") no-repeat center center, -ms-linear-gradient(top, #7a7a7a, #474747);
   background: url("/images/assets/share_facebook_off.svg") no-repeat center center, linear-gradient(top, #7a7a7a, #474747);
 }
-/* line 251, ../../app/stylesheets/partials/rolls.scss */
+/* line 252, ../../app/stylesheets/partials/rolls.scss */
 .networks-facebook.active button {
   background-color: #013e80;
   background: url("/images/assets/share_facebook_on.svg") no-repeat center center, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #026fe5), color-stop(100%, #013e80));
@@ -3441,7 +3442,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   border: 1px solid #01254d;
 }
 
-/* line 267, ../../app/stylesheets/partials/rolls.scss */
+/* line 268, ../../app/stylesheets/partials/rolls.scss */
 .networks-twitter-button,
 .networks-facebook-button,
 .networks-tumblr-button {
@@ -4296,6 +4297,89 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 46, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
+}
+
+/* line 3, ../../app/stylesheets/partials/preroll-video-info.scss */
+.full-width .preroll-video-info-wrapper {
+  padding-right: 80px;
+}
+
+/* line 7, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper {
+  left: 0;
+  padding-right: 410px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  z-index: 2;
+}
+/* line 15, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining {
+  text-shadow: 0px -1px 0px black;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin-left: 80px;
+  opacity: 0.0;
+  padding: 20px;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 29, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .video-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+/* line 34, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-creator {
+  font-size: 23px;
+}
+/* line 38, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-comment {
+  font-size: 30px;
+  font-style: italic;
+  margin: 10px;
+}
+/* line 44, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .stats {
+  text-shadow: 0 0 0 black;
+  color: #999;
+  font-size: 15px;
+  margin-top: 30px;
+}
+/* line 53, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.showing .preroll-video-info-lining {
+  opacity: 1.0;
+}
+/* line 57, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.post-display {
+  /* get the entire thing out of the way after it fades */
+  top: 110%;
+  -moz-transition-property: top;
+  -webkit-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -moz-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+  -moz-transition-delay: 1.5s;
+  -webkit-transition-delay: 1.5s;
+  -o-transition-delay: 1.5s;
+  transition-delay: 1.5s;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */
