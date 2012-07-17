@@ -112,14 +112,13 @@
 
     show : function () {
         var pos = $.extend({}, this.$el.position(), {
-          height: this.el.clientHeight,
-          width: this.el.clientWidth
+          height: this.el.clientHeight
         });
 
         this._menu.$el.css({
           top: pos.top + pos.height,
-          left: pos.left,
-          width: pos.width + 2 //+2 compensates for border thickness
+          left: this.el.offsetLeft,
+          width: this.el.offsetWidth //+2 compensates for border thickness
         });
 
         this._menu.$el.show();
