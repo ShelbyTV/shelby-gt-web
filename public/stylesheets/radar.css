@@ -1888,18 +1888,18 @@
 .ext-elements .user-post-origin-facebook:before,
 .ext-elements .user-post-origin-tumblr:before,
 .ext-elements .frame-creator-origin-twitter:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1340133553');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
 }
 /* line 284, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1340133553');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 /* line 291, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337698194');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 /* line 296, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text {
@@ -2344,7 +2344,7 @@
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .ext-elements .conversation li,
 .ext-elements .frame-conversation li {
   list-style-image: none;

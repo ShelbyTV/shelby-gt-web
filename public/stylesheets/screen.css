@@ -1918,7 +1918,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 .user-post-origin-facebook:before,
 .user-post-origin-tumblr:before,
 .frame-creator-origin-twitter:before {
-  content: url('/images/../images/assets/twitter_stamp.svg?1340133553');
+  content: url('/images/../images/assets/twitter_stamp.svg?1338412617');
   float: left;
   font-size: 0.75em;
   margin: 3px 3px 0 0;
@@ -1926,12 +1926,12 @@ body.isolated-roll .context-overlay-lining .frame-title {
 
 /* line 284, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-facebook:before {
-  content: url('/images/../images/assets/facebook_stamp.svg?1340133553');
+  content: url('/images/../images/assets/facebook_stamp.svg?1338412617');
 }
 
 /* line 291, ../../app/stylesheets/partials/frame.scss */
 .user-post-origin-tumblr:before {
-  content: url('/images/../images/assets/tumblr_stamp.svg?1337698194');
+  content: url('/images/../images/assets/tumblr_stamp.svg?1336400805');
 }
 
 /* line 296, ../../app/stylesheets/partials/frame.scss */
@@ -2957,7 +2957,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -4326,6 +4326,89 @@ body.isolated-roll .context-overlay-lining .frame-title {
 /* line 46, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
+}
+
+/* line 3, ../../app/stylesheets/partials/preroll-video-info.scss */
+.full-width .preroll-video-info-wrapper {
+  padding-right: 80px;
+}
+
+/* line 7, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper {
+  left: 0;
+  padding-right: 410px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  z-index: 2;
+}
+/* line 15, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining {
+  text-shadow: 0px -1px 0px black;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin-left: 80px;
+  opacity: 0.0;
+  padding: 20px;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+/* line 29, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .video-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+/* line 34, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-creator {
+  font-size: 23px;
+}
+/* line 38, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-comment {
+  font-size: 30px;
+  font-style: italic;
+  margin: 10px;
+}
+/* line 44, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .stats {
+  text-shadow: 0 0 0 black;
+  color: #999;
+  font-size: 15px;
+  margin-top: 30px;
+}
+/* line 53, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.showing .preroll-video-info-lining {
+  opacity: 1.0;
+}
+/* line 57, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper.post-display {
+  /* get the entire thing out of the way after it fades */
+  top: 110%;
+  -moz-transition-property: top;
+  -webkit-transition-property: top;
+  -o-transition-property: top;
+  transition-property: top;
+  -moz-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+  -moz-transition-delay: 1.5s;
+  -webkit-transition-delay: 1.5s;
+  -o-transition-delay: 1.5s;
+  transition-delay: 1.5s;
 }
 
 /* line 3, ../../app/stylesheets/partials/guide-education.scss */
