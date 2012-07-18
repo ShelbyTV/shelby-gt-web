@@ -1744,7 +1744,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   float: left;
-  padding: 5px 8px 0 5px;
+  padding: 4px 8px 0 6px;
   width: 50%;
 }
 
@@ -1766,7 +1766,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   line-height: 17px;
   margin-right: 38px;
   overflow: hidden;
-  padding: 4px 0 0 5px;
+  padding: 4px 0 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
