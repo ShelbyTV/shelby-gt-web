@@ -69,7 +69,10 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   
   watched : function(startTime, endTime, onSuccess) {
     var frameWatched = new libs.shelbyGT.FrameModel();
-    var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched?startTime='+startTime+'&endTime='+endTime;
+    var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
+    if(startTime && endTime){
+      url += '?startTime='+startTime+'&endTime='+endTime;
+    }
     frameWatched.save(null, {url:url, success:onSuccess});
   },
 
@@ -84,7 +87,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   conversationUsesCreatorInfo : function(viewingUser) {
       //get the first message
-      var firstMessage = this.get('conversation').get('messages').first();
+      var firstMessage = this.get('conversation') && this.get('conversation').get('messages').first();
       //true if there is a first message and the user of the first message is the one who created the frame
       var haveCreatorMessage = firstMessage && firstMessage.get('user_id') == this.get('creator_id');
       //tue if there is a first message and the user is viewing their own role

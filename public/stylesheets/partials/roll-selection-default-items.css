@@ -46,14 +46,14 @@
 /* line 46, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-public-roll:after,
 .form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_public.svg");
+  content: url("/images/assets/roll_unlock.svg");
   right: 9px;
   position: absolute;
   top: 1px;
 }
 /* line 57, ../../../app/stylesheets/partials/roll-selection-default-items.scss */
 .form-rolls-list .rolling-private-roll:after {
-  content: url("../images/assets/rolls_private.svg");
+  content: url("/images/assets/roll_lock.svg");
 }
 
 /* line 64, ../../../app/stylesheets/partials/roll-selection-default-items.scss */

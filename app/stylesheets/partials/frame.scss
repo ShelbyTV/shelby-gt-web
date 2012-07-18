@@ -54,7 +54,7 @@
 }	
 
 .video-thumbnail-missing {
-		background-image: url($icon-missing-thumb);
+		background-image: url($icon-missing-thumbnail);
 		background-size: 20%;
 }
 
@@ -106,7 +106,7 @@
 
 .frame-creator-avatar-missing{
 	//extended by .frame-creator-avatar
-	background: url($icon-missing-thumb) no-repeat center center #454545;
+	background: url($icon-missing-thumbnail) no-repeat center center #454545;
 	background-size: 50%;
 }
 
@@ -267,31 +267,33 @@
 	padding-right: 3px;
 }
 
-.user-post-origin-twitter,
-.user-post-origin-facebook,
-.user-post-origin-tumblr,
-.frame-creator-origin-twitter{
-	&:before {
-		content: image-url('../images/assets/twitter_stamp.svg');
-		float: left;
-		font-size: 0.75em;
-		margin: 3px 3px 0 0;
-	}
-}
+//UI-TODO: Verify if below is obsolete.
 
-.user-post-origin-facebook {
-	//@extended by .user-post-origin-twitter;
-	&:before {
-		content: image-url('../images/assets/facebook_stamp.svg');
-	}
-}
+//.user-post-origin-twitter,
+//.user-post-origin-facebook,
+//.user-post-origin-tumblr,
+//.frame-creator-origin-twitter{
+//	&:before {
+//		content: image-url('../images/assets/twitter_stamp.svg');
+//		float: left;
+//		font-size: 0.75em;
+//		margin: 3px 3px 0 0;
+//	}
+//}
 
-.user-post-origin-tumblr {
-	//extended by .user-post-origin-twitter;
-	&:before {
-		content: image-url('../images/assets/tumblr_stamp.svg');
-	}
-}
+//.user-post-origin-facebook {
+//	//@extended by .user-post-origin-twitter;
+//	&:before {
+//		content: image-url('../images/assets/facebook_stamp.svg');
+//	}
+//}
+
+//.user-post-origin-tumblr {
+//	//extended by .user-post-origin-twitter;
+//	&:before {
+//		content: image-url('../images/assets/tumblr_stamp.svg');
+//	}
+//}
 
 .user-video-text {
 	margin-top: -7px;
@@ -370,7 +372,7 @@
 	}
 
 	&:before {
-		background: url("../images/assets/videocard_heart_off.svg") no-repeat 3px center transparent;
+		background: url($icon-videocard-like-off) no-repeat 3px center transparent;
 		background-size: 55%;
 		content: "\0020";
 		float: left;
@@ -379,9 +381,18 @@
 	}
 }
 
+.frame-controls-like i,
+.frame-controls-comments i,
+.frame-controls-roll button,
+.frame-controls-share button{
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
+
 .frame-controls-like {
 	i{
-		background: url("../images/assets/videocard_heart_off.svg") no-repeat left 0 transparent;
+		background-image: url($icon-videocard-like-off);
+		background-position: left 0;
 		color: #efefef;
 		font-style: normal;
 		padding-bottom: 2px;
@@ -390,14 +401,15 @@
 	&.upvoted,
 	&:hover {
 		i {
-			background: url("../images/assets/videocard_heart_on.svg") no-repeat left 0 transparent;
+			background-image: url($icon-videocard-like-on);
 		}
 	}
 }
 
 .frame-controls-comments {
 	i{
-		background: url("../images/assets/videocard_comment_off.svg") no-repeat left 0 transparent;
+		background-image: url($icon-videocard-comment-off);
+		background-position: left 0;
 		color: #efefef;
 		font-style: normal;
 		padding-bottom: 2px;
@@ -406,7 +418,7 @@
 	.frame-comments-open,
 	&:hover {
 		i {
-			background: url("../images/assets/videocard_comment_on.svg") no-repeat left 0 transparent;
+			background-image: url($icon-videocard-comment-on);
 		}
 	}
 }
@@ -414,11 +426,12 @@
 .frame-controls-roll {
 	button {
 		@include notype;
-		background:url('../images/assets/videocard_roll_off.svg') no-repeat center center transparent;
+		background-image: url($icon-videocard-roll-off);
+		background-position:center center;
 	}
 	&:hover {
 		button {
-			background:url('../images/assets/videocard_roll_on.svg') no-repeat center center transparent;		
+			background-image: url($icon-videocard-roll-on);
 		}
 	}
 }
@@ -426,11 +439,12 @@
 .frame-controls-share {
 	button {
 		@include notype;
-		background:url('../images/assets/videocard_share_off.svg') no-repeat center center transparent;
+		background-image:url($icon-videocard-share-off);
+		background-position: center 45%;
 	}
 	&:hover {
 		button {
-			background:url('../images/assets/videocard_share_on.svg') no-repeat center center transparent;		
+			background-image:url($icon-videocard-share-on);		
 		}
 	}
 }

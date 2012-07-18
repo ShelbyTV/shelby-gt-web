@@ -36,13 +36,13 @@
 
 .rolling-public-roll {
 	.roll-selection-item-lining {
-		background: url('/images/assets/lock-public.svg') no-repeat right center transparent;
+		background: url($icon-roll-unlock) no-repeat right center transparent;
 	}
 }
 
 .rolling-private-roll {
 	.roll-selection-item-lining {
-		background: url('/images/assets/lock_private.svg') no-repeat right center transparent;
+		background: url($icon-roll-lock) no-repeat right center transparent;
 	}
 }
 
@@ -75,7 +75,7 @@
 
 .roll-selection-item-add {
 	background-color: adjust-lightness($guide-bg-color, -2%);
-	background-image: url($icon-video-card-roll-off);
+	background-image: url($icon-videocard-roll-off);
 	background-position: center 26px;
 	background-repeat: no-repeat;
 	background-size: 25%;
