@@ -2925,7 +2925,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -4172,7 +4172,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 .logged-out-twitter:before, .gate-networks-twitter:before,
 .email-gate-networks-twitter:before {
   background-image: url("/images/assets/share_twitter_on.svg");
-  background-position: 3px 5px;
+  background-position: center center;
   background-size: 97%;
 }
 

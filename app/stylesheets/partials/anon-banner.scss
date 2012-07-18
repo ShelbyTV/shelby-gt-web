@@ -118,7 +118,7 @@
 	@include x-logged-out-networks-buttons($twitter-blue);
 	&:before{
 		background-image: url($icon-share-twitter-on);
-		background-position: 3px 5px;
+		background-position: center center;
 		background-size: 97%;
 	}
 }
