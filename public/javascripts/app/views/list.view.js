@@ -37,6 +37,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     */
     listItemView : 'ListItemView',
     masterCollection : null,
+    displayCollection : null,
     simulateAddTrue : true
   },
   
@@ -56,7 +57,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         }
       }
     }
-    this._displayCollection = new Backbone.Collection();
+    if (this.options.displayCollection) {
+      this._displayCollection = this.options.displayCollection;
+    } else {
+      this._displayCollection = new Backbone.Collection();
+    }
+ 
     this._displayCollection.bind('add', this.internalAddOne, this);
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);

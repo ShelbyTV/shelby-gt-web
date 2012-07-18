@@ -110,9 +110,9 @@
 
   <% if (!contextOverlay) { %>
     <% var firstLink = true %>
-    <% var dupeFrameRollIds = [frameGroup.frames[0].get('roll').get('id')] %>
-    <% for (var i = 1; i < frameGroup.frames.length; i++) { %>
-      <% var dupeFrame = frameGroup.frames[i] %>
+    <% var dupeFrameRollIds = [frameGroup.get('frames').at(0).get('roll').get('id')] %>
+    <% for (var i = 1; i < frameGroup.get('frames').length; i++) { %>
+      <% var dupeFrame = frameGroup.get('frames').at(i) %>
       <% var dupeCreator = dupeFrame.get('creator') %>
       <% var dupeCreatorNickname = dupeCreator ? dupeCreator.get('nickname') : "" %>
       <% var dupeFrameIsOnHeartedRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>

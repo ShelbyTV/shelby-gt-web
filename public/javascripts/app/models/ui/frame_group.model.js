@@ -1,7 +1,9 @@
 libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
 
-  frames : null,
-  primaryDashboardEntry : null,
+  defaults: {
+    "frames" : null,
+    "primaryDashboardEntry" : null
+  },
 
   add: function (frame, dashboard_entry) {
 
@@ -9,23 +11,23 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         return;
      }
 
-     if (!this.frames) {
-        this.frames = new Array;
+     if (!this.get('frames')) {
+        this.set( { frames : new libs.shelbyGT.FramesCollection } );
      }
 
      // first addition
-     if (this.frames.length == 0) {
-        this.frames.push(frame);
-        this.primaryDashboardEntry = dashboard_entry;
+     if (this.get('frames').length == 0) {
+        this.get('frames').add(frame);
+        this.set( { primaryDashboardEntry : dashboard_entry } );
      } else {
         // make sure we don't already have this...
-        for (var i = 0; i < this.frames.length; i++) {
-           if (this.frames[i].get('id') == frame.get('id')) {
+        for (var i = 0; i < this.get('frames').length; i++) {
+           if (this.get('frames').at(i).get('id') == frame.get('id')) {
               return;
            }
         }
         // guess we don't have this frame yet
-        this.frames.push(frame);
+        this.get('frames').add(frame);
      } 
   },
 

@@ -11,7 +11,7 @@
       type : Backbone.HasMany,
       key : 'frames',
       relatedModel : 'libs.shelbyGT.FrameModel',
-      collectionType : 'libs.shelbyGT.FrameGroupsCollection'
+      collectionType : 'libs.shelbyGT.FramesCollection'
     }],
 
     sync : function(method, model, options) {

@@ -43,16 +43,22 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   initialize : function() {
-    this.model.frames[0].bind('destroy', this._onFrameRemove, this);
-    this.model.frames[0].bind('change', this.render, this);
-    this.model.frames[0].get('conversation').bind('change', this.render, this);
+    this.model.get('frames').at(0).bind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).bind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation').bind('change', this.render, this);
+    this.model.get('frames').bind('change', this.render, this);
+    this.model.get('frames').bind('add', this.render, this);
+    this.model.get('frames').bind('destroy', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
-    this.model.frames[0].unbind('destroy', this._onFrameRemove, this);
-    this.model.frames[0].unbind('change', this.render, this);
-    this.model.frames[0].get('conversation').unbind('change', this.render, this);
+    this.model.get('frames').at(0).unbind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).unbind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation').unbind('change', this.render, this);
+    this.model.get('frames').unbind('change', this.render, this);
+    this.model.get('frames').unbind('add', this.render, this);
+    this.model.get('frames').unbind('destroy', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -60,29 +66,29 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var self = this;
     this._leaveChildren();
 
-    var useFrameCreatorInfo = this.model.frames[0].conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ frameGroup : this.model, frame : this.model.frames[0], options : this.options }));
+    var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
+    this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
   _toggleCollapseExpand: function(){
-    if (this.model.frames[0].get('collapsed')) {
-      this.model.frames[0].unset('collapsed');
+    if (this.model.get('frames').at(0).get('collapsed')) {
+      this.model.get('frames').at(0).unset('collapsed');
     } else {
-      this.model.frames[0].set('collapsed', true);
+      this.model.get('frames').at(0).set('collapsed', true);
     }
     this.render();
   },
 
   _activate : function(){
-    shelby.models.guide.set('activeFrameModel', this.model.frames[0]);
+    shelby.models.guide.set('activeFrameModel', this.model.get('frames').at(0));
   },
 
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
     var activeFrameModel = guideModel.get('activeFrameModel');
-    return activeFrameModel && activeFrameModel.id == this.model.frames[0].id;
+    return activeFrameModel && activeFrameModel.id == this.model.get('frames').at(0).id;
   },
   
   requestFrameShareView: function(){
@@ -91,7 +97,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (!this._frameSharingInGuideView) {
       var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
       
-      this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model.frames[0], roll:personalRoll});
+      this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model.get('frames').at(0), roll:personalRoll});
       this._frameSharingInGuideView.render();
     }
     this._frameSharingInGuideView.reveal();
@@ -104,7 +110,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._hideInGuideView();
 
     if (!this._frameRollingView) {
-      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model.frames[0]});
+      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model.get('frames').at(0)});
       this._frameRollingView.render();
     }
     this._frameRollingView.reveal();
@@ -123,7 +129,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var self = this;
     // save to watch later, passing a callback that will add the saved-indicator
     // to the frame thumbnail when the save returns succsessfully
-    this.model.frames[0].saveToWatchLater(function(){
+    this.model.get('frames').at(0).saveToWatchLater(function(){
       self.$('.video-thumbnail').append(JST['saved-indicator']());
       // start the transition which fades out the saved-indicator
       var startTransition = _.bind(function() {
@@ -140,8 +146,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _upvote : function(){
     var self = this;
     // check if they're already an upvoter
-    if ( !_.contains(this.model.frames[0].get('upvoters'), shelby.models.user.id) ) {
-      this.model.frames[0].upvote(function(f){
+    if ( !_.contains(this.model.get('frames').at(0).get('upvoters'), shelby.models.user.id) ) {
+      this.model.get('frames').at(0).upvote(function(f){
         var upvoteUsers = self.model.get('upvote_users');
         upvoteUsers.push(shelby.models.user.toJSON());
         self.model.set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
@@ -153,7 +159,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._hideInGuideView();
 
     if(!this._conversationView){
-      this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model.frames[0]});
+      this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model.get('frames').at(0)});
       this._conversationView.render();
     }
     this._conversationView.reveal();
@@ -162,12 +168,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _goToSourceRoll : function(){
-    if (!this.model.frames[0].isOnRoll(shelby.models.user.get('heart_roll_id'))) {
-      shelby.router.navigateToRoll(this.model.frames[0].get('roll'), {trigger:true});
+    if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
+      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     } else {
       // if the frame is on the heart roll we actually want to go the roll
       // that this frame was hearted FROM
-      var ancestorId = _(this.model.frames[0].get('frame_ancestors')).last();
+      var ancestorId = _(this.model.get('frames').at(0).get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
   },

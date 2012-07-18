@@ -39,8 +39,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
     for (var i = 0; i < this.models.length && !dupe; i++) {
 
-       if (this.models[i].frames[0].get('video').get('provider_id') == provider_id &&
-           this.models[i].frames[0].get('video').get('provider_name') == provider_name) {
+       if (this.models[i].get('frames').at(0).get('video').get('provider_id') == provider_id &&
+           this.models[i].get('frames').at(0).get('video').get('provider_name') == provider_name) {
 
           this.models[i].add(frame, dashboard_entry);
           dupe = true;
