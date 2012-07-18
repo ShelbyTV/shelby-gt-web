@@ -2925,7 +2925,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin: 0;
   padding: 0;
 }
-/* line 11, ../../../home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+/* line 11, ../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
 .conversation li,
 .frame-conversation li {
   list-style-image: none;
@@ -4347,24 +4347,20 @@ body.isolated-roll .context-overlay-lining .frame-title {
 .preroll-video-info-wrapper .preroll-video-info-lining .frame-creator {
   font-size: 23px;
 }
-/* line 38, ../../app/stylesheets/partials/preroll-video-info.scss */
+/* line 36, ../../app/stylesheets/partials/preroll-video-info.scss */
+.preroll-video-info-wrapper .preroll-video-info-lining .frame-creator img {
+  width: 48px;
+}
+/* line 41, ../../app/stylesheets/partials/preroll-video-info.scss */
 .preroll-video-info-wrapper .preroll-video-info-lining .frame-comment {
   font-size: 30px;
-  font-style: italic;
-  margin: 10px;
+  margin: 25px 0 35px 0;
 }
-/* line 44, ../../app/stylesheets/partials/preroll-video-info.scss */
-.preroll-video-info-wrapper .preroll-video-info-lining .stats {
-  text-shadow: 0 0 0 black;
-  color: #999;
-  font-size: 15px;
-  margin-top: 30px;
-}
-/* line 53, ../../app/stylesheets/partials/preroll-video-info.scss */
+/* line 48, ../../app/stylesheets/partials/preroll-video-info.scss */
 .preroll-video-info-wrapper.showing .preroll-video-info-lining {
   opacity: 1.0;
 }
-/* line 57, ../../app/stylesheets/partials/preroll-video-info.scss */
+/* line 52, ../../app/stylesheets/partials/preroll-video-info.scss */
 .preroll-video-info-wrapper.post-display {
   /* get the entire thing out of the way after it fades */
   top: 110%;
