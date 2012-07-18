@@ -1,30 +1,35 @@
-<% var rollTitle = roll.get('title') %>
+<% 
+  var rollTitle = roll.get('title'),
+      rollCreator = roll.get('creator'),
+      rollSubdomain = roll.get('subdomain'),
+      personalRollId = shelby.models.user.get('personal_roll_id');
+%>
 
 <div class="current-roll-avatar">
-	<% if (rollTitle) { %>
-		<img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
-		alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
-	<% } %>
+  <% if (rollTitle) { %>
+    <img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
+    alt="<%= roll.get('title') %>'s Avatar" title="<%= roll.get('title') %>'s Roll">
+  <% } %>
 </div>
 
 <div class="title">
-  <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
+  <% if((roll.id == peronsalRollId && rollSubdomain) || rollTitle != rollCreator) { %>
     <h2 class="current-roll">
-    	<span class="roll-title-text">
-    		<%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-    	</span>
-    	<span id="js-roll-name-change" class="roll-name-change">
-    		<input value="<%= roll.get('title') %>" size="15"/>
-    	</span>
+      <span class="roll-title-text">
+        <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+      </span>
+      <span id="js-roll-name-change" class="roll-name-change">
+        <input value="<%= roll.get('title') %>" size="15"/>
+      </span>
     </h2>
   <% } else { %>
     <h2 class="current-roll">
-        <span class="roll-title-text">
-            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-        </span>
-        <span id="js-roll-name-change" class="roll-name-change">
-            <input value="<%= roll.get('title') %>" size="15"/>
-        </span>
+      <span class="roll-title-text">
+        <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+      </span>
+      <span id="js-roll-name-change" class="roll-name-change">
+        <input value="<%= roll.get('title') %>" size="15"/>
+      </span>
     </h2>
 
     <h3 class="current-roll-owner-nickname">
