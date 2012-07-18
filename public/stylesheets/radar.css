@@ -1287,11 +1287,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -2934,11 +2938,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;

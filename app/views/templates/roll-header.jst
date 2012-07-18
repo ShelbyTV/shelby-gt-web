@@ -1,8 +1,11 @@
 <% 
   var rollTitle = roll.get('title'),
       rollCreator = roll.get('creator'),
-      rollSubdomain = roll.get('subdomain'),
+      rollCreatorNickname = roll.get('creator_nickname'),
+      rollSubdomain = roll.has('subdomain'),
       personalRollId = shelby.models.user.get('personal_roll_id');
+
+  var titleNameMatch = rollTitle == rollCreatorNickname;    
 %>
 
 <div class="current-roll-avatar">
@@ -13,8 +16,8 @@
 </div>
 
 <div class="title">
-  <% if((roll.id == peronsalRollId && rollSubdomain) || rollTitle != rollCreator) { %>
-    <h2 class="current-roll">
+  <% if(roll.id == personalRollId && rollSubdomain) { %>
+    <h2 class="current-roll<%= (titleNameMatch) ? ' roll-name-single' : ' x' %>">
       <span class="roll-title-text">
         <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
       </span>
@@ -23,7 +26,7 @@
       </span>
     </h2>
   <% } else { %>
-    <h2 class="current-roll">
+    <h2 class="current-roll<%= (titleNameMatch) ? ' roll-name-single' : ' x' %>">
       <span class="roll-title-text">
         <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
       </span>
@@ -31,9 +34,10 @@
         <input value="<%= roll.get('title') %>" size="15"/>
       </span>
     </h2>
-
-    <h3 class="current-roll-owner-nickname">
-      <%= roll.get('creator_nickname') || '' %>
-    </h3>
+    <% if (!titleNameMatch) { %>
+      <h3 class="current-roll-owner-nickname">
+        <%= rollCreatorNickname || '' %>
+      </h3>
+    <% } %>
   <% } %>
 </div>

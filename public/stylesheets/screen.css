@@ -1213,12 +1213,16 @@ a:hover, a:visited, a:active {
   line-height: 1.5;
   width: 100%;
 }
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.current-roll.roll-name-single {
+  padding-top: .5em;
+}
 
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
