@@ -4144,7 +4144,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
 .logged-out-twitter:before, .gate-networks-twitter:before,
 .email-gate-networks-twitter:before {
   background-image: url("/images/assets/share_twitter_on.svg");
-  background-position: 3px 5px;
+  background-position: center center;
   background-size: 97%;
 }
 
