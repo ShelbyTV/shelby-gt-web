@@ -4254,17 +4254,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   box-shadow: inset 0px 1px 0px 0px #343434;
   margin: 10px;
 }
-/* line 28, ../../app/stylesheets/partials/context-overlay.scss */
-.context-overlay-lining .frame-title {
-  width: 61%;
-}
-/* line 39, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 29, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-controls button {
   border-top-color: #343434;
   border-left-color: #343434;
 }
 
-/* line 46, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 36, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
 }
