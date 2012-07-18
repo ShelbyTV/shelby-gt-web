@@ -44,7 +44,6 @@ class HomeController < ApplicationController
             false
           end
     end
-
     render 'isolated_roll' and return if @isolated_roll_id
 
     #XXX ISOLATED_ROLL - HACKING allowing viewing
