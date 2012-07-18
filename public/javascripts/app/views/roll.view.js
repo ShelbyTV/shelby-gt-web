@@ -13,7 +13,7 @@
 
     options : _.extend({}, FramePlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
-      listItemView : 'FrameView',
+      listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
       }

@@ -20,27 +20,27 @@
     }),
 
     actionToViewMap : {
-      '0' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '1' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '2' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '8' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '9' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '10' : {view: libs.shelbyGT.FrameView, model_attr:'frame'}
+      '0' : {view: libs.shelbyGT.FrameGroupView},
+      '1' : {view: libs.shelbyGT.FrameGroupView},
+      '2' : {view: libs.shelbyGT.FrameGroupView},
+      '8' : {view: libs.shelbyGT.FrameGroupView},
+      '9' : {view: libs.shelbyGT.FrameGroupView},
+      '10' : {view: libs.shelbyGT.FrameGroupView}
     },
 
     initialize : function(){
       var self = this;
       _(this.options).extend({
         listItemView : function(item, params){
-          var mapResult = self.actionToViewMap[item.get('action')];
-          return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
+          var mapResult = self.actionToViewMap[item.primaryDashboardEntry.get('action')];
+          return new mapResult.view(_(params).extend({model:item}));
         }
       });
       FramePlayPagingListView.prototype.initialize.call(this);
     },
 
     _filter : function(item){
-      return item.get('frame');
+      return item;
     },
 
     _doesResponseContainListCollection : function(response) {

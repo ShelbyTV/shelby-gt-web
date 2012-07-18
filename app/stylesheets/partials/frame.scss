@@ -35,8 +35,8 @@
 .video-card-collapsed {
 	@extend .video-card;
 
-	margin-top: (- $defaultMargin);
-	margin-bottom: (- $defaultMargin);
+	margin-top: -5px;
+	margin-bottom: -5px;
 	background-color: #222;
 	box-shadow: inset 0 1px 0 0 adjust-lightness(#222, 5%);
 }
@@ -146,6 +146,12 @@
 	background-size: 50%;
 }
 
+.frame-creator-avatar-missing-collapsed {
+	@extend .frame-creator-avatar-missing;
+
+	opacity: 0.6;
+	border-radius: $radius 0 0 $radius;
+}
 
 //see .frame-creator-roll, .frame-timestamp
 
@@ -504,3 +510,21 @@
 		}
 	}
 }
+
+.framegroup-dupes {
+	margin: 8px 0px 0px 5px;
+}
+
+.framegroup-dupes-collapsed {
+	height: 0px;
+	overflow: hidden;
+}
+
+.framegroup-dupe-text {
+	@include frame-header-smalltype;
+
+	height: 1em;
+	margin: 0px;
+	padding: 0px;
+}
+

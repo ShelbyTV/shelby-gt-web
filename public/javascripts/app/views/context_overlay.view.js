@@ -1,19 +1,19 @@
 ( function(){
 
-  var FrameView = libs.shelbyGT.FrameView;
+  var FrameGroupView = libs.shelbyGT.FrameGroupView;
 
-  libs.shelbyGT.ContextOverlayView = FrameView.extend({
+  libs.shelbyGT.ContextOverlayView = FrameGroupView.extend({
 
     el: '#js-context-overlay-lining',
 
     // events : {
     // },
 
-    events : _.extend({}, FrameView.prototype.events, {
+    events : _.extend({}, FrameGroupView.prototype.events, {
       "click .js-frame-locator" : "_frameLocator"
     }),
 
-    options : _.extend({}, libs.shelbyGT.FrameView.prototype.options, {
+    options : _.extend({}, libs.shelbyGT.FrameGroupView.prototype.options, {
       contextOverlay : true
     }),
 

@@ -4,7 +4,7 @@ libs.shelbyGT.DashboardModel = libs.shelbyGT.ShelbyBaseModel.extend({
     type : Backbone.HasMany,
     key : 'dashboard_entries',
     relatedModel : 'libs.shelbyGT.DashboardEntryModel',
-    collectionType : 'libs.shelbyGT.DashboardEntriesCollection'
+    collectionType : 'libs.shelbyGT.FrameGroupsCollection'
   }],
 
   parse : function(response) {  
