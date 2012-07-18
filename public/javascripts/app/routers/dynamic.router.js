@@ -78,7 +78,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayIsolatedRoll : function(rollId, frameId){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
-    
+
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
 

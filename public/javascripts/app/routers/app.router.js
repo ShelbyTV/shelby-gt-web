@@ -36,17 +36,23 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
 
     var self = this;
-
-    shelby.models.user.fetch({
-      success: function() {
-        shelby.models.rollFollowings.fetch({
-          success : function() {
-            self._reroute();
-						shelby.checkFbTokenValidity();
-          }
-        });
-      }
-    });
+    
+    
+    if (shelby.userSignedIn()){
+      shelby.models.user.fetch({
+        success: function() {
+          shelby.models.rollFollowings.fetch({
+            success : function() {
+              self._reroute();
+  						shelby.checkFbTokenValidity();
+            }
+          });
+        }
+      });      
+    }
+    else {
+      self.initAnonymous(url);
+    }
   },
 
   initAnonymous : function(url){
