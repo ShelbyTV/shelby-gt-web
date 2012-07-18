@@ -147,7 +147,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       return false;
     }
     if (this.options.frame) {
-      libs.utils.email.publishFrameAddition(this.options.frame);
       libs.utils.rhombus.sadd('shares', this.options.frame.id);
     }
     this.$('.js-share-textarea').removeClass('error');
