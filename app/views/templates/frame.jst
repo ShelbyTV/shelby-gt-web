@@ -17,26 +17,30 @@
         <div class="frame-creator-avatar-missing"></div>
       <% } %>  
     </a>
-    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-      <h1 class="frame-creator-roll">
-        <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
-      </h1>
-    </a>
-        <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-          <%= frame.get('created_at') %>
-        </h2>
+    
+    <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+      <%= frame.get('created_at') %>
+    </h2>
+
     <% if (!contextOverlay) { %>
-        <h3 class="frame-title" title="<%= frameTitle %>">
-          <%= frame.get('video') && frameTitle %>
-        </h3>
+      <h1 class="frame-title" title="<%= frameTitle %>">
+        <%= frame.get('video') && frameTitle %>
+      </h1>
     <% } else { %>
       <a onclick="return false;" class="js-frame-activate js-frame-locator" href="#"> 
-        <h3 class="frame-title" title="<%= frameTitle %>">
+        <h1 class="frame-title" title="<%= frameTitle %>">
           <%= frame.get('video') && frameTitle %>
-        </h3>
+        </h1>
       </a>
     <% } %>
+
+    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+      <h3 class="frame-creator-roll">
+        <%= frameIsOnHeartedRoll ? 'Source Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+      </h3>
+    </a>
   </header> 
+
   <% if (!contextOverlay) { %>  
     <% if( frameThumbnail ) { %>
       <div class="video-thumbnail js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">

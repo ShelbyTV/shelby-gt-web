@@ -64,8 +64,9 @@
 //	padding: $defaultMargin - 4 $defaultMargin - 2;
 	padding: 0;
 
-	a {
+	a, a > * {
 		text-decoration: none;
+
 		&:active,
 		&:visited {
 			text-decoration: none;
@@ -118,6 +119,7 @@
 	@include ellipsis();
 
 	float: left;
+	padding: 5px 8px 0 5px;
 	width: 50%;
 }
 
@@ -128,6 +130,7 @@
 .frame-timestamp {
 	@include frame-header-smalltype;
 	float:right;
+	padding: 7px 8px 0 0;
 }
 
 //.xframe-locator {
@@ -156,17 +159,15 @@
 //}
 
 .frame-title {
-	clear: right; 
 	color: #bfbfbf;
-	float: left;
   font-size: 13px;
   height: 19px;
   line-height: 17px;
+  margin-right: 38px;
 	overflow: hidden;
-  padding: 0 8px 0;
+  padding: 4px 0 0 5px;
   text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 83%; 
 }
 
 .video-card-footer {
