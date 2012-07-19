@@ -55,16 +55,23 @@
       var origin = this.options.guide.get('activeFrameModel'),
           originHasRoll = origin.has('roll'),
           userDesires = shelby.models.userDesires,
-          guideVisibility = userDesires.get('guideShown');
+          guideVisibility = userDesires.get('guideShown'),
+          playingState = shelby.models.guide.get('playingState');
 
       if (!guideVisibility) {
         userDesires.set('guideShown', true);
       }
+
+      if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
+        //if video has no roll, or it's playingstate is 'dashboard', go to stream
+        shelby.router.navigate('stream', {trigger:true});
+
+      } else if( originHasRoll ) {
+        //otherwise go to roll
+        var frameId = origin.id,
+            rollId = origin.get('roll').id;
         
-      if (originHasRoll) {
-          var frameId = origin.id,
-              rollId = origin.get('roll').id;
-          shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
+        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
       }
     }
 
