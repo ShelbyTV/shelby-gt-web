@@ -36,6 +36,7 @@
 
     options : {
       source: [],
+      inputSelector : null, //if null, the view element itself is the input element
       items: 8,
       item: '<li><a href="#"></a></li>',
       menuTag : "ul",
@@ -60,16 +61,27 @@
         });
       }
 
+      if (this.options.inputSelector) {
+        var self = this;
+        _(events).map(function(value, key, obj){
+          obj[key + " " + self.options.inputSelector] = value;
+          delete obj[key];
+        });
+      }
+
       return events;
     },
 
     initialize : function() {
+      this._$input = this.options.inputSelector ? this.$(this.options.inputSelector) : this.$el;
+      this._input = this._$input[0];
+
       this._menu = new AutoCompleteDropDownView({
         className: this.options.menuClass + " js-autocomplete-menu",
         tagName : "ul"
       });
       this.renderChild(this._menu);
-      this.$el.after(this._menu.el);
+      this._$input.after(this._menu.el);
     },
 
     select : function () {
@@ -88,17 +100,17 @@
           }
         }
 
-        this.$el
+        this._$input
           .val(this.updater(newVal))
           .change();
 
         if (this.options.multiTerm && this.options.multiTermPosition == 'caret') {
           switch (this.options.multiTermMethod) {
             case 'list':
-              this.$el.setSelection(this.textUpToQuery.length + selection.length + this.options.separatorReplacement.length);
+              this._$input.setSelection(this.textUpToQuery.length + selection.length + this.options.separatorReplacement.length);
               break;
             case 'paragraph':
-              this.$el.setSelection(this.textUpToQuery.length + selection.length);
+              this._$input.setSelection(this.textUpToQuery.length + selection.length);
               break;
           }
         }
@@ -111,14 +123,14 @@
     },
 
     show : function () {
-        var pos = $.extend({}, this.$el.position(), {
-          height: this.el.clientHeight
+        var pos = $.extend({}, this._$input.position(), {
+          height: this._input.clientHeight
         });
 
         this._menu.$el.css({
           top: pos.top + pos.height,
-          left: this.el.offsetLeft,
-          width: this.el.offsetWidth //+2 compensates for border thickness
+          left: this._input.offsetLeft,
+          width: this._input.offsetWidth //+2 compensates for border thickness
         });
 
         this._menu.$el.show();
@@ -137,7 +149,7 @@
           items,
           q;
 
-      this.query = this.$el.val();
+      this.query = this._$input.val();
 
       if (this.options.multiTerm) {
         var stringToSearch;
@@ -146,7 +158,7 @@
             stringToSearch = this.query;
             break;
           case 'caret':
-            var caretIndex = this.$el.getSelection().start;
+            var caretIndex = this._$input.getSelection().start;
             var includeAfterCaretIndex = this.query.slice(caretIndex).search(this.options.separator);
             if (includeAfterCaretIndex == -1) {
               stringToSearch = this.query;
