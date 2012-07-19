@@ -54,12 +54,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.renderChild(this.spinner);
     }
     if (this._components.autoComplete) {
-      var twitterAutocompleteView = new libs.shelbyGT.TwitterAutocompleteView({
+      var shelbyAutocompleteView = new libs.shelbyGT.ShelbyAutocompleteView({
         el : this.$('.js-share-textarea')[0],
+        includeSources : ['twitter'],
         multiTerm : true,
         multiTermMethod : 'paragraph'
       });
-      this.renderChild(twitterAutocompleteView);
+      this.renderChild(shelbyAutocompleteView);
     }
   },
 
