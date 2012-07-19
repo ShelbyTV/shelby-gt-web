@@ -51,6 +51,7 @@
         var opts = {
           type : 'POST',
           url : self._get_api_root()+'/'+path,
+          global:false,
           data : _data,
           beforeSend : function(xhr, settings){
             xhr.setRequestHeader('Authorization', $('meta[name="rhombus-auth"]').attr('content'));

@@ -55,7 +55,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
     if (this._components.autoComplete) {
       var twitterAutocompleteView = new libs.shelbyGT.TwitterAutocompleteView({
-        el : this.$('.js-share-textarea')[0],
+        el: this.el,
+        inputSelector : '.js-share-textarea',
         multiTerm : true,
         multiTermMethod : 'paragraph'
       });
@@ -147,7 +148,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       return false;
     }
     if (this.options.frame) {
-      libs.utils.email.publishFrameAddition(this.options.frame);
       libs.utils.rhombus.sadd('shares', this.options.frame.id);
     }
     this.$('.js-share-textarea').removeClass('error');
