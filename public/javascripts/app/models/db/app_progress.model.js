@@ -11,7 +11,11 @@
       'streamEducated' : false,
       'rollNav' : false,
       'rollListNav' : false,
-      'streamNav' : false
+      'streamNav' : false,
+      'onboard_1' : false,
+      'onboard_2' : false,
+      'onboard_3' : false,
+      'onboard_4' : false
     },
 
     initialize : function(){

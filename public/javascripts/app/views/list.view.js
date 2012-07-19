@@ -108,9 +108,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _initializeEducation : function(){
     var self = this;
     if (shelby.userSignedIn() && !this._userHasBeenEducated()){
-      setTimeout(function(){
+      // deprecating education in anticipation of real onboarding
+      /*setTimeout(function(){
         self._renderEducation();
-      }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);
+      }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);*/
     }
 
   },

@@ -3,7 +3,8 @@ window.shelbyBookmarklet = {
     shelbyProviders: [{
         "provider": "blip",
         "domain": "blip.tv",
-        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"]
+        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"],
+        "url_regex": "([0-9]+)"
     }, {
         "provider": "brightcove",
         "domain": "brightcove.com",
@@ -74,14 +75,18 @@ window.shelbyBookmarklet = {
 
 
 
-            composeKnownUrl: function (domain, video_id) {
+          composeKnownUrl : function (domain, video_id) {
+                alert(domain + " " +video_id)
                 var known_url = "";
                 switch (domain) {
+                case 'blip.tv':
+                    known_url = document.location.href;
+                    break;
                 case 'youtube.com':
                     known_url = "http://www.youtube.com/watch?v=" + video_id;
                     break;
                 case 'dailymotion.com':
-                    known_url = "http://www.dailymotion.com/video/" + video_id;
+                    known_url = "http://www.dailymotion.com/video/" + video_id + "?";
                     break;
                 case 'vimeo.com':
                     known_url = "http://vimeo.com/" + video_id;
@@ -297,6 +302,9 @@ window.shelbyBookmarklet = {
                             var r = vids[i].video_id;
                             var height = utilObject.getHeight(vids[i].embed);
                             var width = utilObject.getWidth(vids[i].embed);
+                            if (height < 100 || width < 100) {
+                                continue;
+                            }
                             var vpos = vids[i].embed.offset().top;
                             var hpos = vids[i].embed.offset().left;
                             var frameInfoClass = "<%=@prefix%>video-header-" + r;
@@ -391,6 +399,7 @@ window.shelbyBookmarklet = {
                         utilObject.styleGuideShow("<%=@prefix%>roll-guide");
                         var rollItems = utilObject.shelbyDocElements['rollItems'];
                         var rollButton = event.currentTarget;
+                        utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"));
                         utilObject.shelbyDocElements['rollsList'].off('click', ".<%=@prefix%>roll-selection-item");
                         utilObject.shelbyDocElements['rollsList'].on('click', ".<%=@prefix%>roll-selection-item", {
                             'frameclass': rollButton.getAttribute("data-frameclass"),
@@ -599,7 +608,7 @@ window.shelbyBookmarklet = {
                     });
                 },
 
-                shelbyApiNewRoll: function(dataReq, shareEmails) {
+                shelbyApiNewRoll: function(dataReq, shareEmails, knownUrl) {
                       shelbyJ.ajax({
                           type: 'GET',
                           url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/roll/',
@@ -610,11 +619,8 @@ window.shelbyBookmarklet = {
                           xhrFields: {
                               withCredentials: true
                           },
-                          error: function () {
-                              alert("unable to make new roll");
-                          },
                           success: function (response) {
-  
+                              utilObject.shelbyAjaxCall.shelbyApiRoll(knownUrl, response.result.id, function() {alert("rolled");});
                               if (shareEmails && shareEmails.length > 0) {
                                   var shareData = {
                                       'roll_id': response.result.id,
@@ -657,6 +663,26 @@ window.shelbyBookmarklet = {
                       });
                   }
             },
+
+            handleRollSubmit : function (knownUrl) {
+              var submitButton = shelbyJ(".<%=@prefix%>roll-options-submit");
+              submitButton.off('click');
+              submitButton.on('click', null, null, function (event) {
+                var shareEmails = shelbyJ("#<%=@prefix%>new-roll-recipients").val();
+                var dataReq = {
+                    'title': shelbyJ(".<%=@prefix%>roll-options-input").val(),
+                    'collaborative': true,
+                    'public': (shelbyJ(".<%=@prefix%>new-roll-status").is(':checked') ? "public" : "private"),
+                    'thumbnail_url': utilObject.shelbyBkmkltUser.user_image
+                }
+                shelbyJ(".<%=@prefix%>roll-options-input").val('');
+                shelbyJ("#<%=@prefix%>new-roll-recipients").val('');
+
+                utilObject.shelbyAjaxCall.shelbyApiNewRoll(dataReq, shareEmails, knownUrl);
+
+                });
+            },
+
             htmlTemplate : {
                 setUpToggle : function() {
                     utilObject.shelbyDocElements['ext-elements'].append('<div id="<%=@prefix%>guide-overlay-controls"><button class="<%=@prefix%>guide-toggle <%=@prefix%>show"> <div class="<%=@prefix%>icon"></div><div class="<%=@prefix%>copy">hide guide</div></button></div>');
@@ -781,21 +807,6 @@ window.shelbyBookmarklet = {
 
                     utilObject.htmlTemplate.populateRolls(rolls);
                     utilObject.shelbyDocElements['rollsList'] = shelbyJ(".<%=@prefix%>existing-rolls-list");
-
-                    shelbyJ(".<%=@prefix%>roll-options-submit").on('click', null, null, function (event) {
-                        var shareEmails = shelbyJ("#<%=@prefix%>new-roll-recipients").val();
-                        var dataReq = {
-                            'title': shelbyJ(".<%=@prefix%>roll-options-input").val(),
-                            'collaborative': true,
-                            'public': (shelbyJ(".<%=@prefix%>new-roll-status").is(':checked') ? "public" : "private"),
-                            'thumbnail_url': utilObject.shelbyBkmkltUser.user_image
-                        }
-                        shelbyJ(".<%=@prefix%>roll-options-input").val('');
-                        shelbyJ("#<%=@prefix%>new-roll-recipients").val('');
-
-                        utilObject.shelbyAjaxCall.shelbyApiNewRoll(dataReq, shareEmails);
-
-                    });
                 },
 
                 loginGuideHtml: function () {
