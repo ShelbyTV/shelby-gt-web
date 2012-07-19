@@ -4,7 +4,7 @@
   var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
   var MessageModel = libs.shelbyGT.MessageModel;
   var MessageView = libs.shelbyGT.MessageView;
-  var TwitterAutocompleteView = libs.shelbyGT.TwitterAutocompleteView;
+  var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
 
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
@@ -39,14 +39,19 @@
         self.$('.conversation').append(messageView.el);
       });
       
-      if (!this._twitterAutocompleteView) {
-        this._twitterAutocompleteView = new TwitterAutocompleteView({
-          el : this.$('.js-add-message-input')[0],
-          multiTerm : true,
-          multiTermMethod : 'paragraph'
-        });
-        this.renderChild(this._twitterAutocompleteView);
+      if (this._shelbyAutocompleteView) {
+        this._shelbyAutocompleteView.leave();
       }
+      this._shelbyAutocompleteView = new ShelbyAutocompleteView({
+        el : this.$('.js-add-message-input')[0],
+        includeSources : ['shelby'],
+        multiTerm : true,
+        multiTermMethod : 'paragraph',
+        shelbySource : function() {
+          return _(self.model.get('conversation').get('messages').pluck('nickname')).uniq();
+        }
+      });
+      this.renderChild(this._shelbyAutocompleteView);
 
       this.insertIntoDom(false);
     },
