@@ -37,3 +37,14 @@
   opacity: 0;
 }
 
+.context-overlay-header{
+		&:active,
+		&:link,
+		&:visited {
+			text-decoration: none;
+		}
+		
+		&:hover {
+			text-decoration: underline;
+		}
+}

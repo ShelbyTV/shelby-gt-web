@@ -8,37 +8,56 @@
 <% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %> 
 <article id="<%= frame.get('conversation_id') %>" class="video-card">
-  <header class="video-card-header clearfix">
-    <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-      <% if(creatorThumbnail){ %>
-        <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
-      <% } else { %>
-        <div class="frame-creator-avatar-missing"></div>
-      <% } %>  
-    </a>
-    
-    <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-      <%= frame.get('created_at') %>
-    </h2>
+  <% if(!contextOverlay){ %>
+    <header class="video-card-header clearfix">
+      <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
+        <% if(creatorThumbnail){ %>
+          <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+        <% } else { %>
+          <div class="frame-creator-avatar-missing"></div>
+        <% } %>  
+      </a>
+      
+      <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+        <%= frame.get('created_at') %>
+      </h2>
 
-    <% if (!contextOverlay) { %>
       <h1 class="frame-title" title="<%= frameTitle %>">
         <%= frame.get('video') && frameTitle %>
       </h1>
-    <% } else { %>
-      <a onclick="return false;" class="js-frame-activate js-frame-locator" href="#"> 
+
+      <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+        <h3 class="frame-creator-roll">
+          
+          <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+        </h3>
+      </a>
+    </header> 
+
+  <% } else { %>
+
+    <a href="#" onclick="return false;" class="js-creator-personal-roll js-track-event context-overlay-header" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <header class="video-card-header clearfix">
+        <% if(creatorThumbnail){ %>
+          <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+        <% } else { %>
+          <div class="frame-creator-avatar-missing"></div>
+        <% } %>  
+  
+        <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+          <%= frame.get('created_at') %>
+        </h2>
+
         <h1 class="frame-title" title="<%= frameTitle %>">
           <%= frame.get('video') && frameTitle %>
         </h1>
-      </a>
-    <% } %>
 
-    <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-      <h3 class="frame-creator-roll">
-        <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
-      </h3>
+        <h3 class="frame-creator-roll">
+          <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+        </h3>
+      </header>
     </a>
-  </header> 
+  <% } %> 
 
   <% if (!contextOverlay) { %>  
     <% if( frameThumbnail ) { %>
