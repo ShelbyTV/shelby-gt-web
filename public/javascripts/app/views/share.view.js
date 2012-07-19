@@ -15,6 +15,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   events : {
     "click .js-submit-share:not(.js-sharing)" : "_share",
+    "change .js-share-textarea" : "_onUpdateShareText",
     "keyup .js-share-textarea" : "_onUpdateShareText",
     "focus .js-share-textarea" : "_onFocusShareText",
     "focus .js-share-email-addresses" : "_onFocusAddresses",
