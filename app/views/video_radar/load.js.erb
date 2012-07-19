@@ -4,6 +4,7 @@ window.shelbyBookmarklet = {
         "provider": "blip",
         "domain": "blip.tv",
         "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"],
+        "url_regex": "([0-9]+)"
     }, {
         "provider": "brightcove",
         "domain": "brightcove.com",
@@ -74,14 +75,18 @@ window.shelbyBookmarklet = {
 
 
 
-            composeKnownUrl: function (domain, video_id) {
+          composeKnownUrl : function (domain, video_id) {
+                alert(domain + " " +video_id)
                 var known_url = "";
                 switch (domain) {
+                case 'blip.tv':
+                    known_url = document.location.href;
+                    break;
                 case 'youtube.com':
                     known_url = "http://www.youtube.com/watch?v=" + video_id;
                     break;
                 case 'dailymotion.com':
-                    known_url = "http://www.dailymotion.com/video/" + video_id;
+                    known_url = "http://www.dailymotion.com/video/" + video_id + "?";
                     break;
                 case 'vimeo.com':
                     known_url = "http://vimeo.com/" + video_id;
@@ -297,6 +302,9 @@ window.shelbyBookmarklet = {
                             var r = vids[i].video_id;
                             var height = utilObject.getHeight(vids[i].embed);
                             var width = utilObject.getWidth(vids[i].embed);
+                            if (height < 100 || width < 100) {
+                                continue;
+                            }
                             var vpos = vids[i].embed.offset().top;
                             var hpos = vids[i].embed.offset().left;
                             var frameInfoClass = "<%=@prefix%>video-header-" + r;
