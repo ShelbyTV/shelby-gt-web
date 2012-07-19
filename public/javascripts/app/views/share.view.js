@@ -15,6 +15,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   events : {
     "click .js-submit-share:not(.js-sharing)" : "_share",
+    "change .js-share-textarea" : "_onUpdateShareText",
     "keyup .js-share-textarea" : "_onUpdateShareText",
     "focus .js-share-textarea" : "_onFocusShareText",
     "focus .js-share-email-addresses" : "_onFocusAddresses",
@@ -54,13 +55,14 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.renderChild(this.spinner);
     }
     if (this._components.autoComplete) {
-      var twitterAutocompleteView = new libs.shelbyGT.TwitterAutocompleteView({
+      var shelbyAutocompleteView = new libs.shelbyGT.ShelbyAutocompleteView({
         el: this.el,
         inputSelector : '.js-share-textarea',
+        includeSources : ['twitter'],
         multiTerm : true,
         multiTermMethod : 'paragraph'
       });
-      this.renderChild(twitterAutocompleteView);
+      this.renderChild(shelbyAutocompleteView);
     }
   },
 

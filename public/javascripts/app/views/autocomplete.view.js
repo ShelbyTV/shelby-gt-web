@@ -210,7 +210,7 @@
       items = this.sorter(items);
 
       if (this.matchTransformer) {
-        items = _(items).map(this.matchTransformer);
+        items = _(items).map(this.matchTransformer, this);
       }
 
       if (!items.length) {
@@ -220,14 +220,18 @@
       return this._renderAutoCompleteMenu(items.slice(0, this.options.items)).show();
     },
 
-    // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
+    // subclasses can override to determine whether the query qualifies for matching and optionally
+    // update the matching data source for different kinds of queries
+    // needs to be of the form function qualifier() returning true or false
+    // and optionally updating this.options.source internally
     qualifier : null,
 
     // subclasses can override and transform the query arbitrarily before matching
+    // needs to be of the form function queryTransformer() returning nothing and updating this.query internally
     queryTransformer : null,
 
     // subclasses can override and transform the matches arbitrarily before displaying
-    // needs to be of the form function (matchedItem)
+    // needs to be of the form function matchTransformer(matchedItem) returning the transformed match
     matchTransformer : null,
 
     matcher : function (item) {

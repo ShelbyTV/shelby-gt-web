@@ -49,12 +49,16 @@ window.shelbyBookmarklet = {
         "provider": "bloomberg",
         "domain": "bloomberg.com",
         "regex": ["embedCode=(\\w*)"]
+    }, {
+      "provider": "espn",
+        "domain": "espn.com,espn.go.com",
+        "regex": ["espn%3A([0-9]+)&"]
     }],
 
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
         var radar = {
 
-            getElementValue: function (obj, id) {
+getElementValue: function (obj, id) {
                 var value = '';
                 for (var i = 0; i < obj.attributes.length; i++) {
                     if (obj.attributes[i].nodeName === id) {
@@ -75,8 +79,9 @@ window.shelbyBookmarklet = {
 
 
 
-          composeKnownUrl : function (domain, video_id) {
-                alert(domain + " " +video_id)
+            composeKnownUrl : function (domain, video_id) {
+                    console.log(domain);
+                    console.log(video_id);
                 var known_url = "";
                 switch (domain) {
                 case 'blip.tv':
@@ -112,6 +117,10 @@ window.shelbyBookmarklet = {
                     // so using the page location for now
                     known_url = document.location.href;
                     break;
+                case "espn.go.com":
+                      
+                    known_url = "http://espn.go.com/video/clip?id=" + video_id;
+                    break;
                 default:
                     known_url = false;
                 }
@@ -131,11 +140,18 @@ window.shelbyBookmarklet = {
                     found_elements.push(possibleVideos.iframes[i]);
                 }
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
+                  console.log(possibleVideos.objects[i]);
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
                         found_elements.push(possibleVideos.objects[i]);
-                    } else if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<ooyala/i.test(possibleVideos.objects[i].innerHTML))) found_elements.push(possibleVideos.objects[i]);
+                    } else if ((/<oolaya/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
+
+                        found_elements.push(possibleVideos.objects[i]);
+                    } else if ((/ooyala/i.test(possibleVideos.objects[i].className))) {
+                        found_elements.push(possibleVideos.objects[i]);
+                    }
+                    
                 }
                 for (var i = 0; i < found_elements.length; i++) {
                     if (this.getElementValue(found_elements[i], 'data-youtube-id')) {
@@ -155,12 +171,17 @@ window.shelbyBookmarklet = {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
                                 var valid_domain = false;
+                                var domain = null;
                                 for (var l = 0; l < domain_split.length; l++) {
-                                    var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
+                                  var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
                                         valid_domain = true;
+                                        domain = shelbyJ.trim(domain_split[l]);
                                         break;
                                     }
+                                }
+                                if(valid_domain) {
+                                  //  console.log(str);
                                 }
                                 if (reg.test(str) && valid_domain) {
                                     var match = reg.exec(str);
@@ -186,7 +207,7 @@ window.shelbyBookmarklet = {
                                         domain: shelbyBookmarklet.shelbyProviders[j].domain,
                                         video_id: video_id,
                                         provider: provider,
-                                        known_url: this.composeKnownUrl(shelbyBookmarklet.shelbyProviders[j].domain, match[2])
+                                        known_url: this.composeKnownUrl(domain, match[2])
                                     });
                                     break;
                                 }
@@ -292,100 +313,103 @@ window.shelbyBookmarklet = {
 
             resizeArray: [],
 
-
-
-            sendVidsToShelby: function (vids, toEmbedButtons) {
+            sendVidsToShelby: function (foundVids, toEmbedButtons) {
+                var vids = [];
+                for (var i = 0; i < foundVids.length; i++) {
+                    if (foundVids[i].known_url !== false) {
+                        vids.push(foundVids[i]);
+                    }
+                }
                 var self = this;
+  
                 if (vids.length > 0) {
                     for (var i = 0; i < vids.length; i++) {
-                        if (vids[i].known_url !== false) {
-                            var r = vids[i].video_id;
-                            var height = utilObject.getHeight(vids[i].embed);
-                            var width = utilObject.getWidth(vids[i].embed);
-                            if (height < 100 || width < 100) {
-                                continue;
-                            }
-                            var vpos = vids[i].embed.offset().top;
-                            var hpos = vids[i].embed.offset().left;
-                            var frameInfoClass = "<%=@prefix%>video-header-" + r;
-
-                            // put buttons/headers here, we have hpos, vpos, fixed positions
-
-                            var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
-                            utilObject.htmlTemplate.addFrameToGuide(footerHtml, r, vids[i].embed);
-                            if (toEmbedButtons) {
-                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
-
-                                header = shelbyJ("#<%=@prefix%>header-on-page-" + r)
-                                header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
-
-                                utilObject.shelbyDocElements['ext-elements'].append('<ul id="<%=@prefix%>control-on-page-' + r + '" class="<%=@prefix%>embedded-footer <%=@prefix%>frame-controls clearfix ' + ' <%=@prefix%>found-video-' + r + '" type="toolbar"> </ul>');
-                                
-                                var vidFooter = shelbyJ('#<%=@prefix%>control-on-page-' + r);
-                                vidFooter.html(footerHtml);
-                                vidFooter.css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
-                                var resizeFunction = function(vidIndex, r) {
-                                    return function () {
-                                        utilObject.resizeFunction(vids, vidIndex, r);
-                                    }
-                                }(i, r);
-                                shelbyJ("body").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function (event) {
-                                    resizeFunction();
-                                });
-                                utilObject.resizeArray.push(resizeFunction);
-                            }
-
-                            shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
-                            var dataReq = {
-                                'provider_name': vids[i].provider,
-                                'provider_id': vids[i].video_id,
-                                'url': vids[i].known_url
-                            };
-                            
-                            var setDashboardFrame = function (frameInfoClass) {
-                                    shelbyJ.ajax({
-                                        type: "GET",
-                                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/dashboard/find_entries_with_video",
-                                        dataType: "jsonp",
-                                        data: dataReq,
-                                        crossDomain:true,
-                                        async: true,
-                                        xhrFields: {
-                                            withCredentials: true
-                                        },
-                                        success: function (response) {
-                                            var frames = response.result;
-                                            utilObject.htmlTemplate.adjustFrameHeader(frames[0], frameInfoClass, true);
-                                        }
-                                  });
-                            };
-                         
-                            var setGuideHeader = function (r, i) {
-                                  var imgClassName = r + "-img";
-                                    shelbyJ.ajax({
-                                        type: "GET",
-                                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/video/find_or_create",
-                                        dataType: "jsonp",
-                                        data: dataReq,
-                                        async: true,
-                                        xhrFields: {
-                                            withCredentials: true
-                                        },
-                                        crossDomain : true,
-                                        success: function (response) {
-                                            var imageUrl =  "url('" + response.result.thumbnail_url + "')";
-
-                                            shelbyJ('#video-card-' + r).css("background-image", imageUrl);
-                                            shelbyJ("." + imgClassName).on('click', function () {
-                                                shelbyJ('.<%=@prefix%>guide-overlay-context-title').html(response.result.title);
-                                                shelbyJ('.<%=@prefix%>guide-overlay-context').css("background-image", imageUrl);
-                                            });
-                                        }
-                                    });
-                            };
-                            setGuideHeader(r, i);
-                            setDashboardFrame(frameInfoClass);
+                        var r = vids[i].video_id;
+                        var height = utilObject.getHeight(vids[i].embed);
+                        var width = utilObject.getWidth(vids[i].embed);
+                        if (height < 100 || width < 100) {
+                            continue;
                         }
+                        var vpos = vids[i].embed.offset().top;
+                        var hpos = vids[i].embed.offset().left;
+                        var frameInfoClass = "<%=@prefix%>video-header-" + r;
+
+                        // put buttons/headers here, we have hpos, vpos, fixed positions
+
+                        var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
+                        utilObject.htmlTemplate.addFrameToGuide(footerHtml, r, vids[i].embed);
+                        if (toEmbedButtons) {
+                            utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
+
+                            header = shelbyJ("#<%=@prefix%>header-on-page-" + r)
+                            header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
+
+                            utilObject.shelbyDocElements['ext-elements'].append('<ul id="<%=@prefix%>control-on-page-' + r + '" class="<%=@prefix%>embedded-footer <%=@prefix%>frame-controls clearfix ' + ' <%=@prefix%>found-video-' + r + '" type="toolbar"> </ul>');
+                            
+                            var vidFooter = shelbyJ('#<%=@prefix%>control-on-page-' + r);
+                            vidFooter.html(footerHtml);
+                            vidFooter.css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
+                            var resizeFunction = function(vidIndex, r) {
+                                return function () {
+                                    utilObject.resizeFunction(vids, vidIndex, r);
+                                }
+                            }(i, r);
+                            shelbyJ("body").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function (event) {
+                                resizeFunction();
+                            });
+                            utilObject.resizeArray.push(resizeFunction);
+                        }
+
+                        shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
+                        var dataReq = {
+                            'provider_name': vids[i].provider,
+                            'provider_id': vids[i].video_id,
+                            'url': vids[i].known_url
+                        };
+                        
+                        var setDashboardFrame = function (frameInfoClass) {
+                                shelbyJ.ajax({
+                                    type: "GET",
+                                    url: "http://<%= Settings::VideoRadar.api_domain %>/v1/dashboard/find_entries_with_video",
+                                    dataType: "jsonp",
+                                    data: dataReq,
+                                    crossDomain:true,
+                                    async: true,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    success: function (response) {
+                                        var frames = response.result;
+                                        utilObject.htmlTemplate.adjustFrameHeader(frames[0], frameInfoClass, true);
+                                    }
+                              });
+                        };
+                     
+                        var setGuideHeader = function (r, i) {
+                              var imgClassName = r + "-img";
+                                shelbyJ.ajax({
+                                    type: "GET",
+                                    url: "http://<%= Settings::VideoRadar.api_domain %>/v1/video/find_or_create",
+                                    dataType: "jsonp",
+                                    data: dataReq,
+                                    async: true,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain : true,
+                                    success: function (response) {
+                                        var imageUrl =  "url('" + response.result.thumbnail_url + "')";
+
+                                        shelbyJ('#video-card-' + r).css("background-image", imageUrl);
+                                        shelbyJ("." + imgClassName).on('click', function () {
+                                            shelbyJ('.<%=@prefix%>guide-overlay-context-title').html(response.result.title);
+                                            shelbyJ('.<%=@prefix%>guide-overlay-context').css("background-image", imageUrl);
+                                        });
+                                    }
+                                });
+                        };
+                        setGuideHeader(r, i);
+                        setDashboardFrame(frameInfoClass);
                     }
                    utilObject.shelbyHeaderButton.clickRoll();
                    utilObject.shelbyHeaderButton.clickComment();
