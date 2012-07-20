@@ -28,8 +28,7 @@
           <%= frame.get('video') && frameTitle %>
         </h1>
       </a>
-
-      <% if(creatorNickname != frameRoll) { %>
+      <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard || frameIsOnHeartedRoll) { %>
         <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
           <h3 class="frame-creator-roll">
             <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
