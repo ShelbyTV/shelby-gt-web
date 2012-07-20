@@ -8,7 +8,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 		"change #you-preferences-email-upvotes": "_toggleUpvoteEmails",
 		"change #you-preferences-email-comments": "_toggleCommentEmails",
 		"change #you-preferences-email-rerolls": "_toggleRerollEmails",
-		"change #you-preferences-email-joinrolls": "_toggleJoinrollEmails"
+		"change #you-preferences-email-joinrolls": "_toggleJoinrollEmails",
+		"change #you-preferences-timeline-sharing": "_toggleTimelineSharing"
   },
   
   template : function(obj){
@@ -89,6 +90,12 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 		var _prefs = this.model.get('preferences');
 		_prefs.roll_activity_notifications = this.$('#you-preferences-email-joinrolls').is(':checked') ? true : false;
 		this.model.save({preferences: _prefs});		
+	},
+	
+	_toggleTimelineSharing: function(){
+		var _prefs = this.model.get('preferences');
+		_prefs.open_graph_posting = this.$('#you-preferences-timeline-sharing').is(':checked') ? true : false;
+		this.model.save({preferences: _prefs});
 	}
 
   // the future
