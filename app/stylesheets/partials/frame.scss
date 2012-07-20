@@ -96,13 +96,21 @@
   }
 }
 
-.frame-creator-avatar,
+.frame-creator,
 .frame-creator-avatar-missing{
 
 	border-radius: $radius 0 0 0;
 	float: left;
 	height: 40px;
 	width: 40px;
+}
+
+.frame-creator {
+	overflow: hidden;
+}
+
+.frame-creator-avatar {
+	width: 100%;
 }
 
 .frame-creator-avatar-missing{

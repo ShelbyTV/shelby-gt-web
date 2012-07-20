@@ -1713,7 +1713,7 @@
   font-style: italic;
 }
 /* line 100, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame-creator-avatar,
+.ext-elements .frame-creator,
 .ext-elements .frame-creator-avatar-missing {
   border-radius: 5px 0 0 0;
   float: left;
@@ -1721,11 +1721,19 @@
   width: 40px;
 }
 /* line 108, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .frame-creator {
+  overflow: hidden;
+}
+/* line 112, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .frame-creator-avatar {
+  width: 100%;
+}
+/* line 116, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-missing {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
-/* line 117, ../../app/stylesheets/partials/frame.scss */
+/* line 125, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-roll {
   color: #999;
   font-size: 11px;
@@ -1739,7 +1747,7 @@
   float: left;
   padding: 4px 8px 0 6px;
 }
-/* line 129, ../../app/stylesheets/partials/frame.scss */
+/* line 137, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-timestamp {
   color: #999;
   font-size: 11px;
@@ -1748,7 +1756,7 @@
   float: right;
   padding: 7px 8px 0 0;
 }
-/* line 160, ../../app/stylesheets/partials/frame.scss */
+/* line 168, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-title {
   color: #bfbfbf;
   font-size: 13px;
@@ -1760,25 +1768,25 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 172, ../../app/stylesheets/partials/frame.scss */
+/* line 180, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-footer {
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   z-index: 5;
 }
-/* line 178, ../../app/stylesheets/partials/frame.scss */
+/* line 186, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
-/* line 184, ../../app/stylesheets/partials/frame.scss */
+/* line 192, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   padding: 10px;
 }
-/* line 189, ../../app/stylesheets/partials/frame.scss */
+/* line 197, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment textarea {
   border-radius: 3px;
   border-color: #555;
@@ -1786,7 +1794,7 @@
   resize: none;
   width: 100%;
 }
-/* line 197, ../../app/stylesheets/partials/frame.scss */
+/* line 205, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1805,18 +1813,18 @@
   float: right;
   margin-top: 5px;
 }
-/* line 209, ../../app/stylesheets/partials/frame.scss */
+/* line 217, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 213, ../../app/stylesheets/partials/frame.scss */
+/* line 221, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 220, ../../app/stylesheets/partials/frame.scss */
+/* line 228, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-source {
   float: right;
   height: 1.231em;
@@ -1824,33 +1832,33 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 228, ../../app/stylesheets/partials/frame.scss */
+/* line 236, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-author {
   margin: 0;
 }
-/* line 233, ../../app/stylesheets/partials/frame.scss */
+/* line 241, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #343434;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 239, ../../app/stylesheets/partials/frame.scss */
+/* line 247, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-vcard a {
   text-decoration: none;
 }
-/* line 244, ../../app/stylesheets/partials/frame.scss */
+/* line 252, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-avatar {
   display: block;
   float: left;
 }
-/* line 248, ../../app/stylesheets/partials/frame.scss */
+/* line 256, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
-/* line 255, ../../app/stylesheets/partials/frame.scss */
+/* line 263, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-handle,
 .ext-elements .user-post-date {
   color: #a4a4a4;
@@ -1858,42 +1866,42 @@
   font-weight: 500;
   line-height: 2.8;
 }
-/* line 262, ../../app/stylesheets/partials/frame.scss */
+/* line 270, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-date {
   float: right;
   line-height: 1;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 298, ../../app/stylesheets/partials/frame.scss */
+/* line 306, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text {
   margin-top: -7px;
 }
-/* line 301, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text p {
   margin: 2px 5px 0 32px;
 }
-/* line 307, ../../app/stylesheets/partials/frame.scss */
+/* line 315, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 311, ../../app/stylesheets/partials/frame.scss */
+/* line 319, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 318, ../../app/stylesheets/partials/frame.scss */
+/* line 326, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 324, ../../app/stylesheets/partials/frame.scss */
+/* line 332, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 329, ../../app/stylesheets/partials/frame.scss */
+/* line 337, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -1905,11 +1913,11 @@
   height: 42px;
   width: 100%;
 }
-/* line 343, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity {
   font-weight: 500;
 }
-/* line 347, ../../app/stylesheets/partials/frame.scss */
+/* line 355, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #414141;
@@ -1918,7 +1926,7 @@
   padding: 4px;
   width: auto;
 }
-/* line 355, ../../app/stylesheets/partials/frame.scss */
+/* line 363, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites li {
   display: block;
   float: left;
@@ -1928,16 +1936,16 @@
   margin-right: 3px;
   width: 24px;
 }
-/* line 365, ../../app/stylesheets/partials/frame.scss */
+/* line 373, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites a {
   display: block;
 }
-/* line 369, ../../app/stylesheets/partials/frame.scss */
+/* line 377, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 374, ../../app/stylesheets/partials/frame.scss */
+/* line 382, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites:before {
   background: url("/images/assets/videocard_like_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -1946,7 +1954,7 @@
   height: 24px;
   width: 22px;
 }
-/* line 387, ../../app/stylesheets/partials/frame.scss */
+/* line 395, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like i,
 .ext-elements .frame-controls-comments i,
 .ext-elements .frame-controls-roll button,
@@ -1954,7 +1962,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
 }
-/* line 393, ../../app/stylesheets/partials/frame.scss */
+/* line 401, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like i {
   background-image: url("/images/assets/videocard_like_off.svg");
   background-position: left 0;
@@ -1963,11 +1971,11 @@
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 403, ../../app/stylesheets/partials/frame.scss */
+/* line 411, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like.upvoted i, .ext-elements .frame-controls-like:hover i {
   background-image: url("/images/assets/videocard_like_on.svg");
 }
-/* line 410, ../../app/stylesheets/partials/frame.scss */
+/* line 418, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-comments i {
   background-image: url("/images/assets/videocard_comment_off.svg");
   background-position: left 0;
@@ -1976,11 +1984,11 @@
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 420, ../../app/stylesheets/partials/frame.scss */
+/* line 428, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-comments .frame-comments-open i, .ext-elements .frame-controls-comments:hover i {
   background-image: url("/images/assets/videocard_comment_on.svg");
 }
-/* line 427, ../../app/stylesheets/partials/frame.scss */
+/* line 435, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-roll button {
   color: transparent;
   font: 0/0 a;
@@ -1990,11 +1998,11 @@
   background-image: url("/images/assets/videocard_roll_off.svg");
   background-position: center center;
 }
-/* line 433, ../../app/stylesheets/partials/frame.scss */
+/* line 441, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-roll:hover button {
   background-image: url("/images/assets/videocard_roll_on.svg");
 }
-/* line 440, ../../app/stylesheets/partials/frame.scss */
+/* line 448, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-share button {
   color: transparent;
   font: 0/0 a;
@@ -2004,7 +2012,7 @@
   background-image: url("/images/assets/videocard_share_off.svg");
   background-position: center 45%;
 }
-/* line 446, ../../app/stylesheets/partials/frame.scss */
+/* line 454, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-share:hover button {
   background-image: url("/images/assets/videocard_share_on.svg");
 }
