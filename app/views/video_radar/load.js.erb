@@ -117,7 +117,7 @@ getElementValue: function (obj, id) {
                     // so using the page location for now
                     known_url = document.location.href;
                     break;
-                case "espn.go.com":
+                case "espn.com,espn.go.com":
                       
                     known_url = "http://espn.go.com/video/clip?id=" + video_id;
                     break;
@@ -171,17 +171,12 @@ getElementValue: function (obj, id) {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
                                 var valid_domain = false;
-                                var domain = null;
                                 for (var l = 0; l < domain_split.length; l++) {
                                   var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
                                         valid_domain = true;
-                                        domain = shelbyJ.trim(domain_split[l]);
                                         break;
                                     }
-                                }
-                                if(valid_domain) {
-                                  //  console.log(str);
                                 }
                                 if (reg.test(str) && valid_domain) {
                                     var match = reg.exec(str);
@@ -207,7 +202,7 @@ getElementValue: function (obj, id) {
                                         domain: shelbyBookmarklet.shelbyProviders[j].domain,
                                         video_id: video_id,
                                         provider: provider,
-                                        known_url: this.composeKnownUrl(domain, match[2])
+                                        known_url: this.composeKnownUrl(shelbyBookmarklet.shelbyProviders[j].domain, match[2])
                                     });
                                     break;
                                 }
