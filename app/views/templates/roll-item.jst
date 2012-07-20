@@ -9,6 +9,7 @@
   if( roll.get('first_frame_thumbnail_url') ){
     var first_frame_thumbnail = roll.get('first_frame_thumbnail_url');
   }
+  
   var rollModifier = options.rollModifier;
   var modifyRollClass = (roll.id == user.get('personal_roll_id'))    ? rollModifier.personalRoll.rollClass   : 
                         (roll.id == user.get('watch_later_roll_id')) ? rollModifier.watchLaterRoll.rollClass : 

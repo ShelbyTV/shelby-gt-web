@@ -36,6 +36,7 @@
   .roll-item-button {
     &:after {
       background: {
+        color: black;
         position: center center;
         repeat: no-repeat;
       };
@@ -47,7 +48,7 @@
 
       box-shadow: none;
       color: $button-color;
-      opacity: .75;
+      opacity: .5;
       text-align: center;
       top: -10px;
       height: inherit;
@@ -59,7 +60,6 @@
   .roll-item-button {
     &:after {
       background:  {
-        color: $shelby-blue;
         image: url($icon-overlay-nowplaying);
       }
     }
@@ -70,7 +70,6 @@
   .roll-item-button {
     &:after {
       background: {
-        color: $shelby-yellow;
         image: url($icon-overlay-you);
       }
     }
@@ -81,7 +80,6 @@
   .roll-item-button {
     &:after {
       background: {
-        color: $shelby-purple;
         image: url($icon-overlay-watchlater);
       }
     }
@@ -92,7 +90,6 @@
   .roll-item-button {
     &:after {
       background: {
-        color: $shelby-red;
         image: url($icon-overlay-like);
       }
     }
