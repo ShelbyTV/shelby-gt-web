@@ -15,17 +15,88 @@
 }
 
 .roll-item-lining{
-  border-bottom: 1px solid $inset;
-  border-top: 1px solid $outset;
-}
-
-.roll-item-lining {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 5px;
+  background: {
+    position: center center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  border: {
+    bottom: 1px solid $inset;
+    top: 1px solid $outset;
+    radius: 5px;
+  }
   margin: 10px;
   overflow: hidden;
+}
+
+.roll-nowplaying,
+.roll-personal,
+.roll-watch-later,
+.roll-likes {
+  .roll-item-button {
+    &:after {
+      background: {
+        position: center center;
+        repeat: no-repeat;
+      };
+
+      font: {
+        weight: 500;
+        size: 1.4em;
+      };
+
+      box-shadow: none;
+      color: $button-color;
+      opacity: .75;
+      text-align: center;
+      top: -10px;
+      height: inherit;
+    }
+  }
+}
+
+.roll-nowplaying {
+  .roll-item-button {
+    &:after {
+      background:  {
+        color: $shelby-blue;
+        image: url($icon-overlay-nowplaying);
+      }
+    }
+  }
+}
+
+.roll-personal {
+  .roll-item-button {
+    &:after {
+      background: {
+        color: $shelby-yellow;
+        image: url($icon-overlay-you);
+      }
+    }
+  }
+}
+
+.roll-watch-later {
+  .roll-item-button {
+    &:after {
+      background: {
+        color: $shelby-purple;
+        image: url($icon-overlay-watchlater);
+      }
+    }
+  }
+}
+
+.roll-likes {
+  .roll-item-button {
+    &:after {
+      background: {
+        color: $shelby-red;
+        image: url($icon-overlay-like);
+      }
+    }
+  }
 }
 
 .missing-roll-thumbnail {

@@ -1310,34 +1310,67 @@
 }
 /* line 17, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-lining {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-}
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-item-lining {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
   border-radius: 5px;
   margin: 10px;
   overflow: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
+/* line 37, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-nowplaying .roll-item-button:after,
+.ext-elements .roll-personal .roll-item-button:after,
+.ext-elements .roll-watch-later .roll-item-button:after,
+.ext-elements .roll-likes .roll-item-button:after {
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  font-size: 1.4em;
+  box-shadow: none;
+  color: #efefef;
+  opacity: .75;
+  text-align: center;
+  top: -10px;
+  height: inherit;
+}
+/* line 60, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-nowplaying .roll-item-button:after {
+  background-color: #0071a3;
+  background-image: url("/images/assets/overlay_nowplaying.svg");
+}
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-personal .roll-item-button:after {
+  background-color: #d5cd39;
+  background-image: url("/images/assets/overlay_you.svg");
+}
+/* line 82, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-watch-later .roll-item-button:after {
+  background-color: #693a7b;
+  background-image: url("/images/assets/overlay_watchlater.svg");
+}
+/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-likes .roll-item-button:after {
+  background-color: #cc1235;
+  background-image: url("/images/assets/overlay_like.svg");
+}
+/* line 102, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .missing-roll-thumbnail {
   background-size: 25%;
 }
-/* line 35, ../../app/stylesheets/partials/roll-item.scss */
+/* line 106, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 42, ../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 45, ../../app/stylesheets/partials/roll-item.scss */
+/* line 116, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -1347,11 +1380,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+/* line 127, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 62, ../../app/stylesheets/partials/roll-item.scss */
+/* line 133, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -1361,26 +1394,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item.scss */
+/* line 146, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/roll-item.scss */
+/* line 150, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 85, ../../app/stylesheets/partials/roll-item.scss */
+/* line 156, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people,
 .ext-elements .roll-item-creator {
@@ -1390,7 +1423,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 99, ../../app/stylesheets/partials/roll-item.scss */
+/* line 170, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people {
   clear: right;
@@ -1400,7 +1433,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 108, ../../app/stylesheets/partials/roll-item.scss */
+/* line 179, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1409,7 +1442,7 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 118, ../../app/stylesheets/partials/roll-item.scss */
+/* line 189, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total,
 .ext-elements .roll-item-watched {
   font-size: 11px;
@@ -1417,12 +1450,12 @@
   padding-right: 8px;
   text-align: right;
 }
-/* line 125, ../../app/stylesheets/partials/roll-item.scss */
+/* line 196, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 135, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar,
 .ext-elements .roll-item-people-avatar {
   float: left;
@@ -1430,12 +1463,12 @@
   overflow: hidden;
   width: 40px;
 }
-/* line 142, ../../app/stylesheets/partials/roll-item.scss */
+/* line 213, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 147, ../../app/stylesheets/partials/roll-item.scss */
+/* line 218, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1449,7 +1482,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 155, ../../app/stylesheets/partials/roll-item.scss */
+/* line 226, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1460,7 +1493,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 165, ../../app/stylesheets/partials/roll-item.scss */
+/* line 236, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("/images/assets/chevron.svg") no-repeat center center transparent;
   content: "\0020";
@@ -1468,19 +1501,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 178, ../../app/stylesheets/partials/roll-item.scss */
+/* line 249, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 183, ../../app/stylesheets/partials/roll-item.scss */
+/* line 254, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 190, ../../app/stylesheets/partials/roll-item.scss */
+/* line 261, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1492,27 +1525,27 @@
   right: 0;
   top: 0;
 }
-/* line 201, ../../app/stylesheets/partials/roll-item.scss */
+/* line 272, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 206, ../../app/stylesheets/partials/roll-item.scss */
+/* line 277, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 212, ../../app/stylesheets/partials/roll-item.scss */
+/* line 283, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 285, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 215, ../../app/stylesheets/partials/roll-item.scss */
+/* line 286, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
@@ -2977,34 +3010,64 @@
 }
 /* line 17, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-lining {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-}
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-item-lining {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #343434;
   border-radius: 5px;
   margin: 10px;
   overflow: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
+/* line 37, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-nowplaying .roll-item-button:after, .ext-elements .roll-personal .roll-item-button:after, .ext-elements .roll-watch-later .roll-item-button:after, .ext-elements .roll-likes .roll-item-button:after {
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  font-size: 1.4em;
+  box-shadow: none;
+  color: #efefef;
+  opacity: .75;
+  text-align: center;
+  top: -10px;
+  height: inherit;
+}
+/* line 60, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-nowplaying .roll-item-button:after {
+  background-color: #0071a3;
+  background-image: url("/images/assets/overlay_nowplaying.svg");
+}
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-personal .roll-item-button:after {
+  background-color: #d5cd39;
+  background-image: url("/images/assets/overlay_you.svg");
+}
+/* line 82, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-watch-later .roll-item-button:after {
+  background-color: #693a7b;
+  background-image: url("/images/assets/overlay_watchlater.svg");
+}
+/* line 93, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-likes .roll-item-button:after {
+  background-color: #cc1235;
+  background-image: url("/images/assets/overlay_like.svg");
+}
+/* line 102, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .missing-roll-thumbnail {
   background-size: 25%;
 }
-/* line 35, ../../app/stylesheets/partials/roll-item.scss */
+/* line 106, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 42, ../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 45, ../../app/stylesheets/partials/roll-item.scss */
+/* line 116, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -3014,11 +3077,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+/* line 127, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 62, ../../app/stylesheets/partials/roll-item.scss */
+/* line 133, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -3028,26 +3091,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+/* line 142, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item.scss */
+/* line 146, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/roll-item.scss */
+/* line 150, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 85, ../../app/stylesheets/partials/roll-item.scss */
+/* line 156, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+/* line 165, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people, .ext-elements .roll-item-creator {
   white-space: nowrap;
   overflow: hidden;
@@ -3055,7 +3118,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 99, ../../app/stylesheets/partials/roll-item.scss */
+/* line 170, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -3064,7 +3127,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 108, ../../app/stylesheets/partials/roll-item.scss */
+/* line 179, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -3073,31 +3136,31 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 118, ../../app/stylesheets/partials/roll-item.scss */
+/* line 189, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total, .ext-elements .roll-item-watched {
   font-size: 11px;
   font-weight: 100;
   padding-right: 8px;
   text-align: right;
 }
-/* line 125, ../../app/stylesheets/partials/roll-item.scss */
+/* line 196, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 135, ../../app/stylesheets/partials/roll-item.scss */
+/* line 206, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar, .ext-elements .roll-item-people-avatar {
   float: left;
   height: 40px;
   overflow: hidden;
   width: 40px;
 }
-/* line 142, ../../app/stylesheets/partials/roll-item.scss */
+/* line 213, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 147, ../../app/stylesheets/partials/roll-item.scss */
+/* line 218, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -3111,7 +3174,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 155, ../../app/stylesheets/partials/roll-item.scss */
+/* line 226, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -3122,7 +3185,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 165, ../../app/stylesheets/partials/roll-item.scss */
+/* line 236, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("/images/assets/chevron.svg") no-repeat center center transparent;
   content: "\0020";
@@ -3130,19 +3193,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 178, ../../app/stylesheets/partials/roll-item.scss */
+/* line 249, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 183, ../../app/stylesheets/partials/roll-item.scss */
+/* line 254, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 190, ../../app/stylesheets/partials/roll-item.scss */
+/* line 261, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -3154,27 +3217,27 @@
   right: 0;
   top: 0;
 }
-/* line 201, ../../app/stylesheets/partials/roll-item.scss */
+/* line 272, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 206, ../../app/stylesheets/partials/roll-item.scss */
+/* line 277, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 212, ../../app/stylesheets/partials/roll-item.scss */
+/* line 283, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 285, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 215, ../../app/stylesheets/partials/roll-item.scss */
+/* line 286, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
