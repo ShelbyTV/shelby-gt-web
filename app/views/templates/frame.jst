@@ -3,6 +3,7 @@
 <% var creatorNickname = creator ? creator.get('nickname') : "" %>
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var frameTitle = frame.get('video').get('title') %>
+<% var frameRoll = frame.get('roll').get('title') %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
@@ -21,17 +22,24 @@
       <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
         <%= frame.get('created_at') %>
       </h2>
+  
+      <a onclick="retrun false;" href="#" class="js-frame-activate">
+        <h1 class="frame-title" title="<%= frameTitle %>">
+          <%= frame.get('video') && frameTitle %>
+        </h1>
+      </a>
 
-      <h1 class="frame-title" title="<%= frameTitle %>">
-        <%= frame.get('video') && frameTitle %>
-      </h1>
-
-      <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+      <% if(creatorNickname != frameRoll) { %>
+        <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+          <h3 class="frame-creator-roll">
+            <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+          </h3>
+        </a>
+      <% } else { %>
         <h3 class="frame-creator-roll">
-          
           <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
         </h3>
-      </a>
+      <% } %>
     </header> 
 
   <% } else { %>
