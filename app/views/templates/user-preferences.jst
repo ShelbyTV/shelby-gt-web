@@ -66,16 +66,18 @@
 						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="<%= shelby.config.apiBase %>/auth/facebook">Connect</button>
 					<% } %>
 				</li>
-				<li class="clearfix">
-					<span class="you-preferences-notifications you-notifications">
-					<label for="you-preferences-timeline-sharing">
-							Timeline Sharing
-						</label>
-						<input id="you-preferences-timeline-sharing" name="you-preferences-timeline-sharing" type="checkbox" <% if (user.get('preferences').open_graph_posting === true){ %> checked <% }%> >
-						<span></span>
-						<span class="timeline-sharing-description">share videos you watch, heart, comment, and roll to your facebook timeline</span>
-					</span>
-				</li>
+				<% if (typeof fb !== 'undefined'){ %>
+					<li class="clearfix">
+						<span class="you-preferences-notifications you-notifications">
+						<label for="you-preferences-timeline-sharing">
+								Timeline Sharing
+							</label>
+							<input id="you-preferences-timeline-sharing" name="you-preferences-timeline-sharing" type="checkbox" <% if (user.get('preferences').open_graph_posting === true){ %> checked <% }%> >
+							<span></span>
+							<span class="timeline-sharing-description">share videos you watch, heart, comment, and roll to your facebook timeline</span>
+						</span>
+					</li>
+				<% } %>
 			</ul>
 		</fieldset>
 		<fieldset>
