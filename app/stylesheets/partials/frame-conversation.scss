@@ -68,6 +68,17 @@
   font-size: 11px;
 }
 
+.frame-conversation-message-reply {
+  background: {
+    color: transparent;
+    image: url($icon-comment-reply);
+    repeat: no-repeat;
+    position: left center;
+    size: 27%;
+  }
+  padding-left:1.1em;
+}
+
 .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
