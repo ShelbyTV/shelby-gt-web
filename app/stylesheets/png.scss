@@ -34,9 +34,9 @@ $extension: ".png";
 
   //rolls
 
-//hax, need to get these variables out of here.
-$flatNetworksUnselected : #666;
-$softNetworksUnselected : #666;
+  //hax, need to get these variables out of here.
+  $flatNetworksUnselected : #666;
+  $softNetworksUnselected : #666;
 
   .networks-twitter {
   	background: $flatNetworksUnselected;
@@ -191,6 +191,13 @@ $softNetworksUnselected : #666;
   			url($icon-team-web) no-repeat center left transparent
   		);
   	}
+  }
+
+  //guide overlay
+  .frame-conversation-message-reply {
+    background: {
+      image: url($icon-comment-reply);
+    }
   }
 
 

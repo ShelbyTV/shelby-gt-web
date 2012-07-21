@@ -110,3 +110,7 @@
 .no-svg .about-external-link a {
   background: url("/images/assets/team_web.svg") no-repeat center left transparent;
 }
+/* line 198, ../../app/stylesheets/png.scss */
+.no-svg .frame-conversation-message-reply background {
+  image: url("/images/assets/comment_reply.svg");
+}

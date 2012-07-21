@@ -1213,12 +1213,16 @@ a:hover, a:visited, a:active {
   line-height: 1.5;
   width: 100%;
 }
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.current-roll.roll-name-single {
+  padding-top: .5em;
+}
 
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -1579,10 +1583,6 @@ body.isolated-roll .guide-education {
 body.isolated-roll .context-overlay-lining .video-card-header {
   border-bottom: none;
 }
-/* line 38, ../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .context-overlay-lining .frame-locator {
-  display: none;
-}
 /* line 42, ../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-creator-roll {
   width: inherit;
@@ -1665,23 +1665,27 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 0;
 }
 /* line 67, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a,
-.frame-share-header a {
+.video-card-header a, .video-card-header a > *,
+.frame-share-header a,
+.frame-share-header a > * {
   text-decoration: none;
 }
-/* line 70, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:active, .video-card-header a:visited,
+/* line 71, ../../app/stylesheets/partials/frame.scss */
+.video-card-header a:active, .video-card-header a:visited, .video-card-header a > *:active, .video-card-header a > *:visited,
 .frame-share-header a:active,
-.frame-share-header a:visited {
+.frame-share-header a:visited,
+.frame-share-header a > *:active,
+.frame-share-header a > *:visited {
   text-decoration: none;
 }
-/* line 73, ../../app/stylesheets/partials/frame.scss */
-.video-card-header a:hover,
-.frame-share-header a:hover {
+/* line 74, ../../app/stylesheets/partials/frame.scss */
+.video-card-header a:hover, .video-card-header a > *:hover,
+.frame-share-header a:hover,
+.frame-share-header a > *:hover {
   text-decoration: underline;
 }
 
-/* line 79, ../../app/stylesheets/partials/frame.scss */
+/* line 80, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1703,21 +1707,21 @@ body.isolated-roll .context-overlay-lining .frame-title {
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 84, ../../app/stylesheets/partials/frame.scss */
+/* line 85, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header h1, .active-list-item .video-card-header h2 {
   color: #27292a;
 }
-/* line 88, ../../app/stylesheets/partials/frame.scss */
+/* line 89, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header h3 {
   color: #0e0f10;
 }
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 93, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header .frame-title:before {
   content: "On Now: ";
   font-style: italic;
 }
 
-/* line 99, ../../app/stylesheets/partials/frame.scss */
+/* line 100, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar,
 .frame-creator-avatar-missing {
   border-radius: 5px 0 0 0;
@@ -1726,75 +1730,48 @@ body.isolated-roll .context-overlay-lining .frame-title {
   width: 40px;
 }
 
-/* line 107, ../../app/stylesheets/partials/frame.scss */
+/* line 108, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
 
-/* line 116, ../../app/stylesheets/partials/frame.scss */
+/* line 117, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   float: left;
-  width: 50%;
+  padding: 4px 8px 0 6px;
 }
 
-/* line 128, ../../app/stylesheets/partials/frame.scss */
+/* line 129, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   float: right;
+  padding: 7px 8px 0 0;
 }
 
-/* line 133, ../../app/stylesheets/partials/frame.scss */
-.frame-locator {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: url() no-repeat 10px center transparent;
-  border-bottom: none;
-  border-left: 1px solid black;
-  border-right: none;
-  border-top: none;
-  color: #efefef;
-  line-height: 3.25;
-  padding: 0 1em 0 3em;
-  position: absolute;
-  right: 0;
-}
-/* line 147, ../../app/stylesheets/partials/frame.scss */
-.frame-locator:before {
-  border-left: 1px solid #414141;
-  content: "\0020";
-  display: block;
-  height: 40px;
-  float: left;
-  margin: 0 0 0 -36px;
-}
-
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 160, ../../app/stylesheets/partials/frame.scss */
 .frame-title {
-  clear: right;
   color: #bfbfbf;
-  float: left;
   font-size: 13px;
   height: 19px;
   line-height: 17px;
+  margin-right: 38px;
   overflow: hidden;
-  padding: 0 8px 0;
+  padding: 4px 0 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 83%;
 }
 
 /* line 172, ../../app/stylesheets/partials/frame.scss */
@@ -2993,18 +2970,28 @@ body.isolated-roll .context-overlay-lining .frame-title {
 }
 
 /* line 71, ../../app/stylesheets/partials/frame-conversation.scss */
+.frame-conversation-message-reply {
+  background-color: transparent;
+  background-image: url("/images/assets/comment_reply.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 27%;
+  padding-left: 1.1em;
+}
+
+/* line 82, ../../app/stylesheets/partials/frame-conversation.scss */
 .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
 
-/* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 86, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment {
   background-color: #35383a;
   border-top: 1px solid #343434;
   padding: 10px;
   position: relative;
 }
-/* line 81, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 92, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -3024,7 +3011,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   margin-left: 59px;
 }
 
-/* line 88, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -3036,7 +3023,7 @@ body.isolated-roll .context-overlay-lining .frame-title {
   padding: 4px 5px;
   width: 75%;
 }
-/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 110, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -3054,13 +3041,13 @@ body.isolated-roll .context-overlay-lining .frame-title {
   opacity: 1;
 }
 
-/* line 107, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 118, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar {
   height: 48px;
   width: 48px;
   float: left;
 }
-/* line 112, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 123, ../../app/stylesheets/partials/frame-conversation.scss */
 .new-comment-user-avatar > img {
   height: 100%;
   overflow: hidden;
@@ -4280,23 +4267,24 @@ body.isolated-roll .context-overlay-lining .frame-title {
   box-shadow: inset 0px 1px 0px 0px #343434;
   margin: 10px;
 }
-/* line 28, ../../app/stylesheets/partials/context-overlay.scss */
-.context-overlay-lining .frame-title {
-  width: 61%;
-}
-/* line 33, ../../app/stylesheets/partials/context-overlay.scss */
-.context-overlay-lining .frame-locator:before {
-  border-left-color: #343434;
-}
-/* line 39, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 29, ../../app/stylesheets/partials/context-overlay.scss */
 .context-overlay-lining .frame-controls button {
   border-top-color: #343434;
   border-left-color: #343434;
 }
 
-/* line 46, ../../app/stylesheets/partials/context-overlay.scss */
+/* line 36, ../../app/stylesheets/partials/context-overlay.scss */
 .user-inactive .context-overlay-wrapper {
   opacity: 0;
+}
+
+/* line 43, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-header:active, .context-overlay-header:link, .context-overlay-header:visited {
+  text-decoration: none;
+}
+/* line 47, ../../app/stylesheets/partials/context-overlay.scss */
+.context-overlay-header:hover {
+  text-decoration: underline;
 }
 
 /* line 3, ../../app/stylesheets/partials/preroll-video-info.scss */

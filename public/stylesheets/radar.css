@@ -1287,11 +1287,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -1654,22 +1658,26 @@
   padding: 0;
 }
 /* line 67, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a,
-.ext-elements .frame-share-header a {
+.ext-elements .video-card-header a, .ext-elements .video-card-header a > *,
+.ext-elements .frame-share-header a,
+.ext-elements .frame-share-header a > * {
   text-decoration: none;
 }
-/* line 70, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a:active, .ext-elements .video-card-header a:visited,
+/* line 71, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header a:active, .ext-elements .video-card-header a:visited, .ext-elements .video-card-header a > *:active, .ext-elements .video-card-header a > *:visited,
 .ext-elements .frame-share-header a:active,
-.ext-elements .frame-share-header a:visited {
+.ext-elements .frame-share-header a:visited,
+.ext-elements .frame-share-header a > *:active,
+.ext-elements .frame-share-header a > *:visited {
   text-decoration: none;
 }
-/* line 73, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a:hover,
-.ext-elements .frame-share-header a:hover {
+/* line 74, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header a:hover, .ext-elements .video-card-header a > *:hover,
+.ext-elements .frame-share-header a:hover,
+.ext-elements .frame-share-header a > *:hover {
   text-decoration: underline;
 }
-/* line 79, ../../app/stylesheets/partials/frame.scss */
+/* line 80, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1691,20 +1699,20 @@
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 84, ../../app/stylesheets/partials/frame.scss */
+/* line 85, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header h1, .ext-elements .active-list-item .video-card-header h2 {
   color: #27292a;
 }
-/* line 88, ../../app/stylesheets/partials/frame.scss */
+/* line 89, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header h3 {
   color: #0e0f10;
 }
-/* line 92, ../../app/stylesheets/partials/frame.scss */
+/* line 93, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header .frame-title:before {
   content: "On Now: ";
   font-style: italic;
 }
-/* line 99, ../../app/stylesheets/partials/frame.scss */
+/* line 100, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar,
 .ext-elements .frame-creator-avatar-missing {
   border-radius: 5px 0 0 0;
@@ -1712,71 +1720,45 @@
   height: 40px;
   width: 40px;
 }
-/* line 107, ../../app/stylesheets/partials/frame.scss */
+/* line 108, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-missing {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
-/* line 116, ../../app/stylesheets/partials/frame.scss */
+/* line 117, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-roll {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   float: left;
-  width: 50%;
+  padding: 4px 8px 0 6px;
 }
-/* line 128, ../../app/stylesheets/partials/frame.scss */
+/* line 129, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-timestamp {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   float: right;
+  padding: 7px 8px 0 0;
 }
-/* line 133, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame-locator {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: url() no-repeat 10px center transparent;
-  border-bottom: none;
-  border-left: 1px solid black;
-  border-right: none;
-  border-top: none;
-  color: #efefef;
-  line-height: 3.25;
-  padding: 0 1em 0 3em;
-  position: absolute;
-  right: 0;
-}
-/* line 147, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame-locator:before {
-  border-left: 1px solid #414141;
-  content: "\0020";
-  display: block;
-  height: 40px;
-  float: left;
-  margin: 0 0 0 -36px;
-}
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 160, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-title {
-  clear: right;
   color: #bfbfbf;
-  float: left;
   font-size: 13px;
   height: 19px;
   line-height: 17px;
+  margin-right: 38px;
   overflow: hidden;
-  padding: 0 8px 0;
+  padding: 4px 0 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 83%;
 }
 /* line 172, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-footer {
@@ -2380,17 +2362,26 @@
   font-size: 11px;
 }
 /* line 71, ../../app/stylesheets/partials/frame-conversation.scss */
+.ext-elements .frame-conversation-message-reply {
+  background-color: transparent;
+  background-image: url("/images/assets/comment_reply.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 27%;
+  padding-left: 1.1em;
+}
+/* line 82, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
-/* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 86, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment {
   background-color: #35383a;
   border-top: 1px solid #343434;
   padding: 10px;
   position: relative;
 }
-/* line 81, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 92, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2409,7 +2400,7 @@
   margin-top: 10px;
   margin-left: 59px;
 }
-/* line 88, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -2421,7 +2412,7 @@
   padding: 4px 5px;
   width: 75%;
 }
-/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 110, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2438,13 +2429,13 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 107, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 118, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-user-avatar {
   height: 48px;
   width: 48px;
   float: left;
 }
-/* line 112, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 123, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-user-avatar > img {
   height: 100%;
   overflow: hidden;
@@ -2955,11 +2946,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
