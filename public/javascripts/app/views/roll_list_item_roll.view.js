@@ -1,7 +1,25 @@
 libs.shelbyGT.RollItemRollView = libs.shelbyGT.RollItemView.extend({
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
+    activationStateProperty : 'activeFrameModel',
+    rollModifier : {
+      personalRoll: {
+        rollClass: ' roll-personal',
+        rollTitle: 'You'
+      },
+      watchLaterRoll: {
+        rollClass: ' roll-watch-later',
+        rollTitle: 'Watch Later'
+      },
+      likesRoll: {
+        rollClass: ' roll-likes',
+        rollTitle: 'Liked'
+      },
+      nowPlaying: {
+        rollClass: ' now-playing',
+        rollTitle: 'Now Playing'
+      }
+    }
   }),
 
   // RollItemView overrides
