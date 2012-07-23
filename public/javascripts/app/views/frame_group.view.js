@@ -73,10 +73,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleCollapseExpand: function(){
-    if (this.model.get('frames').at(0).get('collapsed')) {
-      this.model.get('frames').at(0).unset('collapsed');
+    if (this.model.get('collapsed')) {
+      this.model.unset('collapsed');
     } else {
-      this.model.get('frames').at(0).set('collapsed', true);
+      this.model.set('collapsed', true);
     }
     this.render();
   },

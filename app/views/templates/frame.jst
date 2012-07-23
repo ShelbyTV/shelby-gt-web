@@ -7,7 +7,7 @@
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
-<% var suffix = frame.get('collapsed') && !contextOverlay ? "-collapsed" : "" %>
+<% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
 <article id="<%= frame.get('conversation_id') %>" > 
 <div class="video-card<%= suffix %>">
 
