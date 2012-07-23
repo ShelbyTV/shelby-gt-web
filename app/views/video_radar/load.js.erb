@@ -118,7 +118,6 @@ getElementValue: function (obj, id) {
                     known_url = document.location.href;
                     break;
                 case "espn.com,espn.go.com":
-                      
                     known_url = "http://espn.go.com/video/clip?id=" + video_id;
                     break;
                 default:
@@ -140,7 +139,6 @@ getElementValue: function (obj, id) {
                     found_elements.push(possibleVideos.iframes[i]);
                 }
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
-                  console.log(possibleVideos.objects[i]);
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
