@@ -44,7 +44,7 @@
 			content: "+";
 		}
 		&:after{
-			content: url('../images/assets/rolls_public.svg');
+			content: url($icon-roll-unlock);
 			right: 9px;
 			position: absolute;
 			top: 1px;
@@ -55,7 +55,7 @@
 		//extended by .rolling-public-roll;
 
 		&:after{
-			content: url('../images/assets/rolls_private.svg');
+			content: url($icon-roll-lock);
 		}
 
 	}

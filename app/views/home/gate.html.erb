@@ -1,3 +1,9 @@
+<% 
+  videoEmbed = @meta_info[:video_embed] || @provider_name == "youtube" 
+  flashError = flash[:error] == "401"
+  showAuth = @has_access_token || @auth_failure || @show_error || flashError
+%>
+
 <!doctype html>
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -19,156 +25,185 @@
   <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
 </head>
 
-<body class="email-gate">
+<body class="gate">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-<% if flash[:error] == "401" %>
-	<h1>Please sign in again</h1>
-	<h2>Sorry for the inconvenience, but your session expired (we do this for security)</h2>
-<% end %>
+  <div class="clearfix gate-wrapper<%= ' with-video' if videoEmbed %>">
+  	<header class="gate-header">
+	  		<h1 class="ir gate-logo">
+			  	<a href="/">
+		  			Shelby.tv
+			  	</a>
+	  		</h1>
+		  	<h4 class="gate-slogan">
+		  		An amazing way to discover and enjoy videos.
+				</h4>
+		</header>
 
-<div class="content-wrapper <%= 'with-embed' if @video_embed %>">
-	
-	<% if @meta_info[:video_embed] || @provider_name == "youtube" %>
-		<div class="embed-gate-wrapper">
-			<% if @provider_name == "youtube" %>
-				<!-- TODO: Build all of our embeds like this using the video provider_id -->
-				<%= render :partial => "youtube_embed", :locals => { :provider_id => @meta_info[:video_info]['video']['provider_id'] } %>
-			<% else %>
-				<%=raw @meta_info[:video_embed] %>
-			<% end %>
-			<h1 style="margin: 15px 0 10px;">Your friend discovered this video with Shelby.tv</h1>
-			<h2>
-				You have a very cool friend, because they have access to Shelby GT, our latest version, which delivers personalized streams of video curated by your friends. 
+    <% if videoEmbed %>
+    <div id="js-video-embed" class="gate-lining with-video-embed">
+      <% if @provider_name == "youtube" %>
+        <% #TODO: Build all of our embeds like this using the video provider_id %>
+        <%= render :partial => "youtube_embed", :locals => { :provider_id => @meta_info[:video_info]['video']['provider_id'] } %>
+      <% else %>
+        <%=raw @meta_info[:video_embed] %>
+      <% end %>
+      <div class="with-video-embed-block">
+        <h2 class="gate-subhead">Your friend discovered this video with Shelby.tv</h2>
+        <p>
+          You have a very cool friend, because they have access to our latest version, <br>which delivers personalized streams of video curated by your friends.         </p>
+        </p>
+      </div>
+    </div>
+    <% end -%>
+
+    <div id="js-signup" class="gate-lining<%= ' hidden' if showAuth %>">
+			<h2 class="gate-head">
+				We'll be back!
 			</h2>
-			<h3 style="margin: 10px 0 0 0;">
-				P.S. "GT" is just the project code name. Our CTO really likes cars.
-			</h3>
-		</div>
-	<% end -%>
 
-	<div class="email-gate-wrapper <%= 'with-embed' if @meta_info[:video_embed] %>">
-	  <header class="email-gate-header clearfix">
-	    <h1 class="email-gate-logo ir">
-	      Shelby.tv
-	    </h1>
-	    <p class="email-gate-slogan">
-	      An amazing way to <br> discover and enjoy videos.
-	    </p>
-	  </header>
+			<p>
+				The new version of Shelby is currently in <br>a private beta. 
+        <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
+			</p>
 
-	  <form class="email-gate-login">
-	    <button class="email-gate-login-button">
-	      Login
-	    </button>
+			<form id="js-email-form" class="gate-form">
+				<h3 class="gate-subhead">
+					Want in on the action? Let us know!
+				</h3>
+        <label for="js-email-input" class="gate-form-label">
+          Email
+        </label>
+				<input name="email" type="email" placeholder="Where can we reach you?" id="js-email-input" class="gate-form-input" />
+				
+        <span class="gate-input-error hidden">Email must be valid!</span>
+				
+        <label for="js-token-input" class="gate-form-label">
+          Priority Code
+        </label>
 
+        <input name="priority_code" type="text" placeholder="Are you special?" id="js-token-input" class="gate-form-input" />
 
-	    <% if @has_access_token || !@auth_failure%>
-	      <fieldset class="email-gate-networks">
-	    <% else %>
-	      <fieldset class="email-gate-networks" style="display:block;">
-	    <% end %>
-	      <a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-	        Log In with Twitter
-	      </a>   
-	      <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-	        Log In with Facebook
-	      </a>
-	      <% if @auth_failure %>
-		    <div class="email-gate-error js-signin-error">
-		      Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.  Please wait a moment and try again.
-		    </div>
-		  <% end %>
-	    </fieldset>
-	  </form>
+        <input type="submit" value="Submit" id="js-email-submit" class="gate-form-submit" />
+      </form>
 
-		<% if @show_error %>
-			<div class="no-access">
-				<h1>Sorry, you don't have access to Shelby GT just yet.</h1>
-				<h2>But we're working hard to get you in!</h2>
-	      <h2 class="detour">In the meantime, visit our <a href="http://shelby.tv">current website</a>!</h2>
+      <p class="gate-small-block">
+        (Current Shelby users will be automatically <br>rolled into the new version when it's ready.) 
+      </p>
+
+      <h3 class="gate-subhead gate-extra-margin">
+        Returning?
+      </h3>
+
+      <button id="js-gate-login" class="gate-login">
+        Beta User Login
+      </button>
+
+      <div class="gate-lining-footer">
 			</div>
-		<% elsif @has_access_token %>
-			<div class="private-beta-access">
-				<h1>Welcome the Shelby GT private beta!</h1>
-				<h2>Sign up, we don't auto-post anything:</h2>
-				<p class="login">
-				  <a class="email-gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-		            Sign Up with Twitter
-		          </a>
-		          <a class="email-gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-		            Sign Up with Facebook
-		          </a>
-				</p>
-				<% if @auth_failure %>
-				  <h2 class="email-gate-error">
-				    Sorry, there was a problem signing in<%= if @auth_strategy then " to #{@auth_strategy}" end%>.<br/>
-				    Please wait a moment and try again.
-				  </h2>
-				<% end %>
-			</div>
-		<% elsif @gt_enabled_redirect %>
-			<div class="private-beta-access">
-				<h1>You're part of the Shelby GT private beta!</h1>
-				<h2>Use the login at the top right of this page to enter.</h2>
-			</div>
-		<% else %>
-			<form class="email-gate-signup">
-		    <legend class="email-gate-caption">
-		      Shelby GT is currently in a private beta.<br />
-					If you want in on the action, let us know!
-		    </legend>
-		    <label for="email-gate-email" class="email-gate-label">
-		      Email
-		    <input type="email" id="email-gate-email" class="email-gate-email" name="email" placeholder="Where can we reach you?" />
-		    </label>
-  
-		    <label for="email-gate-code" class="email-gate-label">
-		      Priority Code
-		    <input type="text" id="email-gate-code"  class="email-gate-code" name="priority_code" placeholder="Are you special?" />
-		    </label>
-  
-		    <button type="submit" class="email-gate-signup-submit">
-		      Submit
-		    </button>
-		  </form>
+		</div><!-- eo .gate-lining -->
 
-			<div class="email-gate-thank-you">
-				<h1>Thanks for the info! We'll let you know when Shelby GT is revved and ready.</h1>
-				<h2>Can't wait? Watch videos now on <a href="http://shelby.tv">Shelby 1.0</a></h2>
-			</div>
-		<% end %>
+  	<div id="js-login" class="clearfix gate-lining<%= ' hidden' if !showAuth %>">
+			<h2 class="gate-head">
+        Welcome to the T-101 <br/>Beta Command Center
+    	</h2>
 
-	</div><!-- eo email-gate-wrapper -->
-</div><!-- eo content-wrapper -->
+      <% if @show_error %> 
+        <p class="gate-signin-noaccess js-signin-error">
+          Sorry, you do not have access to the beta…<br>
+          <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
+        </p> 
+      <% else %> 
+        <p>
+          Please log in.    
+        </p>   
+      <% end %>     
 
-	<script>
-		$(function(){
-			$('.email-gate-login-button').click(function(){
-				$('.js-signin-error').remove();
-				$('.email-gate-networks').toggle();
-				return false;
-			});
-			
-			$('.email-gate-signup').submit(function() {
-				$.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
-					$('.email-gate-signup').hide()
-					$('.email-gate-thank-you').show();
-				}, 'jsonp');
-			  return false;
-			});
-		});
+      <% if @auth_failure %>
+        <p class="gate-signin-error js-signin-error">
+          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy.titleize}" end%>.  
+          <br/>Please wait a moment and try again.
+        </p>
+      <% end %>
+
+      <% if flashError %>
+        <p class="gate-signin-error js-signin-error">
+          Session expired, please log in again!
+        </p>      
+      <% end %>
+
+      <a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+        Log In with Twitter
+      </a>   
+
+      <a class="gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+        Log In with Facebook
+      </a>
+      
+      <a href="#" id="js-no-access" class="gate-no-access">
+      	Not a beta user?
+      </a>
+		</div><!-- eo .gate-lining -->
+
+    <div id="js-thankyou" class="gate-lining hidden">
+      <h2 class="gate-head">
+        Thanks for signing up!
+      </h2>
+    </div>
+
+    <footer class="gate-footer">
+      <ul class="gate-footer-list"> 
+        <li class="gate-footer-item">
+          <a href="http://twitter.com/shelby" class="gate-networks-link gate-footer-networks-twitter">
+            twitter.com/shelby
+          </a>
+        </li> 
+        <li class="gate-footer-item">
+          <a href="http://facebook.com/shelbytv" class="gate-networks-link gate-footer-networks-facebook">
+            facebook.com/shelbytv
+          </a>
+        </li>
+        <li class="gate-footer-item">
+          <a href="http://shelby.tv/blog" class="gate-networks-link gate-footer-networks-tumblr">
+            shelby.tv/blog
+          </a>
+        </li>
+        <li id="made-newyork" class="gate-footer-item">
+          Made in NYC
+        </li>
+      </ul>
+    </footer>
+  </div><!-- eo .gate-wrapper -->
+  <script>
+  	$(document).ready(function(){
+  		$('#js-gate-login').on('click', function(){
+  			$('#js-login, #js-signup').toggleClass('hidden');
+        return false;
+  		});
+
+  		$('#js-no-access').on('click', function(){
+  			$(this).remove();
+  			$('.gate-input-error').addClass('hidden');
+  			$('#js-email-form').css('margin-top','2em').appendTo('#js-login');
+        return false;
+  		});
+
+      $('#js-email-form').on('submit', function(){
+        $.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
+          $('#js-login, #js-signup').addClass('hidden');
+          $('#js-thankyou').removeClass('hidden');
+        }, 'jsonp');
+        return false;
+      });
+  	});
 	</script>
-
-  <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
   <script>
     var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','none'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-
 </body>
 </html>

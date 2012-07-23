@@ -1,6 +1,8 @@
 @import "base";
 @import "base-mixin";
 
+$extension: ".png";
+
 .lt-ie9 {
 
 	.guide-toggle .copy {
@@ -17,31 +19,18 @@
   //guide-header
 
   	.logo-header {
-  		background:url('../images/assets/shelbylogo.png') center 9px no-repeat transparent;
+  		background:url($logo-shelby) center 9px no-repeat transparent;
       background-size: 79%;
     }
 
     .top-level {
     	&:after {
-  			background: url('../images/assets/carrot.png') no-repeat center center transparent;
+  			background: url($icon-carrot) no-repeat center center transparent;
     	}
     }
 
   //menu
 
-  .dashboard-search {
-  	i {
-  		background: url('../images/assets/search.png') no-repeat center center;
-  	}
-  }
-
-  //guide-overlay-controls
-
-  .guide-toggle {
-  	.icon {
-  	  background:url('../images/assets/guide.png') no-repeat center center transparent;
-  	}
-  }
 
   //rolls
 
@@ -52,13 +41,13 @@ $softNetworksUnselected : #666;
   .networks-twitter {
   	background: $flatNetworksUnselected;
   	@include background(
-  		url('../images/assets/rolls_share_twitter_off.png') no-repeat center center,
+  		url($icon-share-twitter-off) no-repeat center center,
   		$softNetworksUnselected
   	);
   	&.active{
   		background: $twitter-blue;
   		@include background(
-  			url('../images/assets/rolls_share_twitter_on.png') no-repeat center center,
+  			url($icon-share-twitter-on) no-repeat center center,
   			linear-gradient(top, adjust-lightness($twitter-blue, 10%), $twitter-blue)
   		);
   	}
@@ -67,14 +56,14 @@ $softNetworksUnselected : #666;
   .networks-facebook{
   	background: $flatNetworksUnselected;
   	@include background(
-  		url('../images/assets/rolls_share_facebook_off.png') no-repeat center center,
+  		url($icon-share-facebook-off) no-repeat center center,
   			$softNetworksUnselected
   		);
 	
   	&.active{
   		background: $facebook-blue;
   		@include background(
-  			url('../images/assets/rolls_share_facebook_on.png') no-repeat center center,
+  			url($icon-share-facebook-on) no-repeat center center,
         linear-gradient(top, adjust-lightness($facebook-blue, 10%), $facebook-blue)
   		);
   	}
@@ -82,112 +71,53 @@ $softNetworksUnselected : #666;
 
   //frame
 
-  .video-score{
-  	&:before{
-  		content: url('../images/assets/score.png');
-  	}
-  }
-
-  .video-controls {
-  	.roll-frame{
-  		button{
-  			@include background(
-  				url('../images/assets/roll_action.png') no-repeat 0px -1px
-  			);
-  		}
-  	}
-  	.save-frame{
-  		button{
-  			@include background(
-  				url('../images/assets/saved_action.png') no-repeat center center
-  			);
-  		}
-  	}
-  	.remove-frame{
-  		button{
-  			@include background(
-  				url('../images/assets/saved_remove.png') no-repeat center center
-  			);
-  		}	
-  	}
-  }
-
-  .user-post-origin-twitter{
-  	&:before{
-  		content: image-url('../images/assets/twitter_stamp.png');
-  	}
-  }
-
-  .user-post-origin-facebook{
-  	&:before{
-  		content: image-url('../images/assets/facebook_stamp.png');
-  	}
-  }
+//add menu buttons
 
   //video-controls
   .video-player-play{
   	@include background(
-  		url('../images/assets/player_play.png') center center no-repeat transparent
+  		url($icon-player-play) center center no-repeat transparent
   	);
 
   	&.pause{
   		@include background(
-  			url('../images/assets/player_pause.png') center center no-repeat transparent
+  			url($icon-player-pause) center center no-repeat transparent
   		);		
   	}
   }
 
   .video-player-volume{
   	@include background(
-  		url('../images/assets/player_sound_on.png') center center no-repeat transparent
+  		url($icon-player-sound-on) center center no-repeat transparent
   	);
   	&.mute{
   		@include background(
-  			url('../images/assets/player_sound_off.png') center center no-repeat transparent
+  			url($icon-player-sound-off) center center no-repeat transparent
   		);
   	}
   }
 
   .video-player-fullscreen{
   	@include background(
-  		url('../images/assets/player_fullscreen.png') center center no-repeat transparent
+  		url($icon-player-fullscreen-enable) center center no-repeat transparent
   	);
   	&.cancel {
   	  @include background(
-    		url('../images/assets/player_fullscreen_cancel.png') center center no-repeat transparent
+    		url($icon-player-fullscreen-disable) center center no-repeat transparent
     	);
 	  }
   }
 
-  .video-player-roll{
-  	@include background(
-  		url('../images/assets/player_roll.png') center 6px no-repeat transparent
-  	);	
-  }
+  .video-player-quality {
+    @include background(
+      url($icon-player-hd-on) center center no-repeat transparent
+    );
+    &.hd-off {
+      @include background(
+        url($icon-player-hd-off) center center no-repeat transparent
+      );
+    }
 
-  //frame-rolling
-
-  .rolling-main-social {
-  	&:before{
-  		background:url('../images/assets/sharebutton_icons.png') no-repeat 0px center;
-  	}
-  }
-
-  //frame-rolling-completion
-
-  .frame-rolling-completion-header{
-  	h1{
-  		&.roll-type-public{
-  			&:before{
-  				content:url('../images/assets/rolls_public.png');
-  			}
-  		}
-  		&.roll-type-private{
-  			&:before{
-  				content:url('../images/assets/rolls_private.png');
-  			}
-  		}
-  	}
   }
 
   //roll-selection-default-items
@@ -199,13 +129,13 @@ $softNetworksUnselected : #666;
   			content:"+";
   		}
   		&:after{
-  			content:url('../images/assets/rolls_public.png');
+  			content:url($icon-roll-unlock);
   		}
   	}
 
   	.rolling-private-roll{
   		&:after{
-  			content:url('../images/assets/rolls_private.png');
+  			content:url($icon-roll-lock);
   		}
   	}
   }
@@ -216,21 +146,21 @@ $softNetworksUnselected : #666;
 
   	&:before{
   		@include background(
-  			url('../images/assets/rolls_twitter.png') no-repeat center center #00a2d1
+  			url($icon-social-twitter) no-repeat center center #00a2d1
   		);
   	}
   }
   .you-preferences-networks-facebook{
   	&:before{
   		@include background(
-  			url('../images/assets/rolls_facebook.png') no-repeat center center #013e80
+  			url($icon-social-facebook) no-repeat center center #013e80
   		);
   	}	
   }
   .you-preferences-networks-tumblr{
   	&:before{
   		@include background(
-  			url('../images/assets/rolls_tumblr.png') no-repeat center center,
+  			url($icon-social-tumblr) no-repeat center center,
   			$tumblr-blue
   		);
   	}
@@ -239,7 +169,6 @@ $softNetworksUnselected : #666;
   	input + span{
   		&:after{
   			@include background(
-  				url('../images/assets/switch.png') no-repeat center center,
   				$toggle-switch-gray
   			);
   		}
@@ -251,7 +180,7 @@ $softNetworksUnselected : #666;
   .about-external-twitter {
   	a{
   		@include background(
-  			url('../images/assets/team_twitter.png') no-repeat center left transparent
+  			url($icon-team-twitter) no-repeat center left transparent
   		);
   	}
   }
@@ -259,40 +188,10 @@ $softNetworksUnselected : #666;
   .about-external-link {
   	a{
   		@include background(
-  			url('../images/assets/team_web.png') no-repeat center left transparent
+  			url($icon-team-web) no-repeat center left transparent
   		);
   	}
   }
 
-  //anon-banner
 
-  .logged-out-twitter{
-  	&:before{
-  		background:url('../images/assets/rolls_share_twitter_on.png') no-repeat 1px 2px transparent;
-  	}
-  }
-
-  .logged-out-facebook{
-  	&:before{
-  		background:url('../images/assets/rolls_share_facebook_on.png') no-repeat center center transparent;
-  	}
-  }
-
-  //gate
-
-  .email-gate-logo {
-  		@include background(url('../images/email-gate/landing_logo.png') no-repeat center center transparent);
-  }
-
-  .email-gate-networks-twitter {
-  	&:before {
-  		background:url('../images/assets/rolls_share_twitter_on.png') no-repeat 2px 4px transparent;
-  	}
-  }
-
-  .email-gate-networks-facebook {
-      &:before {
-      background:url('../images/assets/rolls_share_facebook_on.png') no-repeat -1px center transparent;
-    }
-  }
 }

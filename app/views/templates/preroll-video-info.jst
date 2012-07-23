@@ -1,0 +1,15 @@
+<div class="preroll-video-info-lining">
+  <div class="video-title"><%= frame.get('video').get('title') %></div>
+
+  <% 
+    var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
+    if(messages.length > 0){
+  %>
+    <div class="frame-comment">“<%= messages.first().get('text') %>”</div>
+  <% } %>
+
+  <div class="frame-creator">
+    <img src="<%= frame.get('creator').get('user_image_original') || frame.get('creator').get('user_image') %>" alt="<%= frame.get('creator').get('nickname') %>" />
+    <%= frame.get('creator').get('nickname') %>
+  </div>
+</div>

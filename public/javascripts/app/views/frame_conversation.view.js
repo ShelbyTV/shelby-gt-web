@@ -1,6 +1,12 @@
 ( function(){
   
-  libs.shelbyGT.FrameConversationView = libs.shelbyGT.GuideOverlayView.extend({
+  // shorten names of included library prototypes
+  var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
+  var MessageModel = libs.shelbyGT.MessageModel;
+  var MessageView = libs.shelbyGT.MessageView;
+  var TwitterAutocompleteView = libs.shelbyGT.TwitterAutocompleteView;
+
+  libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
     events : {
       "click .back:not(.js-busy)" : "cancel",
@@ -28,11 +34,20 @@
       this.$el.html(this.template({ frame : this.model }));
       
       this.model.get('conversation').get('messages').each(function(message){
-        var messageView = new libs.shelbyGT.MessageView({model:message});
+        var messageView = new MessageView({model:message});
         self.renderChild(messageView);
         self.$('.conversation').append(messageView.el);
       });
       
+      if (!this._twitterAutocompleteView) {
+        this._twitterAutocompleteView = new TwitterAutocompleteView({
+          el : this.$('.js-add-message-input')[0],
+          multiTerm : true,
+          multiTermMethod : 'paragraph'
+        });
+        this.renderChild(this._twitterAutocompleteView);
+      }
+
       this.insertIntoDom(false);
     },
     
@@ -64,7 +79,7 @@
         this._renderError('Why not say something?');
         return false;
       }
-      var msg = new libs.shelbyGT.MessageModel({text:text, conversation_id:this.model.get('conversation').id});
+      var msg = new MessageModel({text:text, conversation_id:this.model.get('conversation').id});
       msg.save(null, {
         success:function(conversation){
           self.model.set('conversation', conversation);

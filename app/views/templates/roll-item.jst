@@ -17,7 +17,8 @@
       <div class="roll-item-container-column">
       
         <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
-          <h3 class="roll-item-title">
+          <h3 class="<%= (roll_title == creator_nickname) ? 'roll-item-people' : 'roll-item-title' %>">
+            <% console.log(roll.title, roll_title, creator_nickname,roll) %>
             <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
           </h3>
         <% } else if(creator_nickname != roll_title && creator_nickname != undefined){ %>

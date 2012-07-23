@@ -169,6 +169,7 @@
 	@include roundies(input);
 	@include opacity(0.8);
 
+	border: 1px solid $inset;
 	display: block;
 	padding: 5px;
 	width: 100%;
@@ -222,7 +223,7 @@
 .networks-twitter {
 	button {
 		@include background(
-			url('../images/assets/rolls_share_twitter_off.svg') no-repeat 1px 5px,
+			url($icon-share-twitter-off) no-repeat center center,
 			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
 		);
 
@@ -231,9 +232,10 @@
 		button {
 			background-color: $twitter-blue;
 			@include background(
-				url('../images/assets/rolls_share_twitter_on.svg') no-repeat 1px 5px,
+				url($icon-share-twitter-on) no-repeat center center,
 				linear-gradient(top, adjust-lightness($twitter-blue, 20%),$twitter-blue)
 			);
+			border: 1px solid adjust-lightness($twitter-blue, -40%);
 		}
 	}
 }
@@ -241,7 +243,7 @@
 .networks-facebook {
 	button {
 		@include background(
-			url('../images/assets/rolls_share_facebook_off.svg') no-repeat center center,
+			url($icon-share-facebook-off) no-repeat center center,
 			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
 		);
 
@@ -250,9 +252,10 @@
 		button {
 			background-color: $facebook-blue;
 			@include background(
-				url('../images/assets/rolls_share_facebook_on.svg') no-repeat center center,
+				url($icon-share-facebook-on) no-repeat center center,
 				linear-gradient(top, adjust-lightness($facebook-blue, 20%),$facebook-blue)
 			);
+			border: 1px solid adjust-lightness($facebook-blue, -10%);
 		}
 	}
 }

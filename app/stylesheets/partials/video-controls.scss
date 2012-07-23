@@ -53,12 +53,12 @@
 	width:47px;
 
 	@include background(
-		url('../images/assets/player_play.svg') center center no-repeat transparent
+		url($icon-player-play) center center no-repeat transparent
 	);
 
 	&.pause{
 		@include background(
-			url('../images/assets/player_pause.svg') center center no-repeat transparent
+			url($icon-player-pause) center center no-repeat transparent
 		);		
 	}
 }
@@ -117,14 +117,14 @@
 .video-player-volume{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_sound_on.svg') center center no-repeat transparent
+		url($icon-player-sound-on) center center no-repeat transparent
 	);
 
 	float:right;
 
 	&.mute{
 		@include background(
-			url('../images/assets/player_sound_off.svg') center center no-repeat transparent
+			url($icon-player-sound-off) center center no-repeat transparent
 		);
 	}
 }
@@ -132,14 +132,14 @@
 .video-player-fullscreen{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_fullscreen.svg') center center no-repeat transparent
+		url($icon-player-fullscreen-enable) center center no-repeat transparent
 	);	
 
 	float:right;
 	
 	&.cancel {
 	  @include background(
-  		url('../images/assets/player_fullscreen_cancel.svg') center center no-repeat transparent
+  		url($icon-player-fullscreen-disable) center center no-repeat transparent
   	);
   }
 
@@ -148,32 +148,22 @@
 .video-player-quality{
 	@extend .video-player-play;
 	@include background(
-		url('../images/assets/player_hd_off.svg') center center no-repeat transparent
+		url($icon-player-hd-off) center center no-repeat transparent
 	);
 
 	float:right;
 
 	&.hd-on{
 		@include background(
-			url('../images/assets/player_hd_on.svg') center center no-repeat transparent
+			url($icon-player-hd-on) center center no-repeat transparent
 		);
 	}
 }
 
 .disable-video-quality .video-player-quality{
   @include background(
-		url('../images/assets/player_hd_disabled.svg') center center no-repeat transparent
+		url($icon-player-hd-disabled) center center no-repeat transparent
 	);
-}
-
-.video-player-roll{
-	@extend .video-player-play;
-	@include background(
-		url('../images/assets/player_roll.svg') center 6px no-repeat transparent
-	);	
-
-	float:right;
-
 }
 
 .video-player-nav-buttons-wrapper{	

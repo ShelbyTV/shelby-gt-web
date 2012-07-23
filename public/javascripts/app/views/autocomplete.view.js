@@ -36,12 +36,16 @@
 
     options : {
       source: [],
+      inputSelector : null, //if null, the view element itself is the input element
       items: 8,
       item: '<li><a href="#"></a></li>',
       menuTag : "ul",
       menuClass : "autocomplete-menu",
       multiTerm : false,
-      separator : /,\s*/
+      multiTermMethod : 'list', //supported options: list, paragraph
+      multiTermPosition : 'caret', //supported options: tail, caret
+      separator : /,\s*/,
+      separatorReplacement : ","
     },
 
     events : function() {
@@ -57,32 +61,60 @@
         });
       }
 
+      if (this.options.inputSelector) {
+        var self = this;
+        _(events).map(function(value, key, obj){
+          obj[key + " " + self.options.inputSelector] = value;
+          delete obj[key];
+        });
+      }
+
       return events;
     },
 
     initialize : function() {
+      this._$input = this.options.inputSelector ? this.$(this.options.inputSelector) : this.$el;
+      this._input = this._$input[0];
+
       this._menu = new AutoCompleteDropDownView({
         className: this.options.menuClass + " js-autocomplete-menu",
         tagName : "ul"
       });
       this.renderChild(this._menu);
-      this.$el.after(this._menu.el);
+      this._$input.after(this._menu.el);
     },
 
     select : function () {
-        var val = this._menu.$('.active').attr('data-value');
+        var selection = this._menu.$('.active').attr('data-value');
+        var newVal = selection;
 
         if (this.options.multiTerm) {
-          terms = this.$el.val().split(this.options.separator);
-          terms.pop();
-          terms.push(val);
-          terms.push("");
-          val = terms.join(", ");
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              var terms = this.termsUpToQuery.concat(selection,this.termsAfterQuery,"");
+              newVal = terms.join(this.options.separatorReplacement);
+              break;
+            case 'paragraph':
+              newVal = this.textUpToQuery + selection + this.textAfterQuery;
+              break;
+          }
         }
 
-        this.$el
-          .val(this.updater(val))
+        this._$input
+          .val(this.updater(newVal))
           .change();
+
+        if (this.options.multiTerm && this.options.multiTermPosition == 'caret') {
+          switch (this.options.multiTermMethod) {
+            case 'list':
+              this._$input.setSelection(this.textUpToQuery.length + selection.length + this.options.separatorReplacement.length);
+              break;
+            case 'paragraph':
+              this._$input.setSelection(this.textUpToQuery.length + selection.length);
+              break;
+          }
+        }
+
         return this.hide();
     },
 
@@ -91,15 +123,14 @@
     },
 
     show : function () {
-        var pos = $.extend({}, this.$el.position(), {
-          height: this.el.clientHeight,
-          width: this.el.clientWidth
+        var pos = $.extend({}, this._$input.position(), {
+          height: this._input.clientHeight
         });
 
         this._menu.$el.css({
           top: pos.top + pos.height,
-          left: pos.left,
-          width: pos.width + 2 //+2 compensates for border thickness
+          left: this._input.offsetLeft,
+          width: this._input.offsetWidth //+2 compensates for border thickness
         });
 
         this._menu.$el.show();
@@ -118,14 +149,58 @@
           items,
           q;
 
-      this.query = this.$el.val();
+      this.query = this._$input.val();
 
       if (this.options.multiTerm) {
-        this.query = _(this.query.split(this.options.separator)).last();
+        var stringToSearch;
+        switch (this.options.multiTermPosition) {
+          case 'tail':
+            stringToSearch = this.query;
+            break;
+          case 'caret':
+            var caretIndex = this._$input.getSelection().start;
+            var includeAfterCaretIndex = this.query.slice(caretIndex).search(this.options.separator);
+            if (includeAfterCaretIndex == -1) {
+              stringToSearch = this.query;
+            } else {
+              stringToSearch = this.query.slice(0, caretIndex + includeAfterCaretIndex);
+            }
+            break;
+        }
+        var queryTerm;
+        var queryAtIndex;
+        switch (this.options.multiTermMethod) {
+          case 'list':
+            this.termsUpToQuery = stringToSearch.split(this.options.separator);
+            queryTerm = this.termsUpToQuery.pop();
+            if (queryTerm) {
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.termsAfterQuery = _(this.query.slice(queryAtIndex + queryTerm.length).split(this.options.separator)).compact();
+            }
+            break;
+          case 'paragraph':
+            queryTerm = _(stringToSearch.split(this.options.separator)).last();
+            if (queryTerm) {
+              queryAtIndex = stringToSearch.lastIndexOf(queryTerm);
+              this.textUpToQuery = this.query.slice(0, queryAtIndex);
+              this.textAfterQuery = this.query.slice(queryAtIndex + queryTerm.length);
+            }
+            break;
+        }
+        this.query = queryTerm;
       }
 
       if (!this.query) {
         return this._shown ? this.hide() : this;
+      }
+
+      if (this.qualifier && !this.qualifier()) {
+       return this._shown ? this.hide() : this;
+      }
+
+      if (this.queryTransformer) {
+        this.queryTransformer();
       }
 
       items = $.grep(_(this.options).result('source'), function (item) {
@@ -134,12 +209,26 @@
 
       items = this.sorter(items);
 
+      if (this.matchTransformer) {
+        items = _(items).map(this.matchTransformer);
+      }
+
       if (!items.length) {
         return this._shown ? this.hide() : this;
       }
 
       return this._renderAutoCompleteMenu(items.slice(0, this.options.items)).show();
     },
+
+    // subclasses can override and return true or false whether the query qualifies for an autocomplete lookup
+    qualifier : null,
+
+    // subclasses can override and transform the query arbitrarily before matching
+    queryTransformer : null,
+
+    // subclasses can override and transform the matches arbitrarily before displaying
+    // needs to be of the form function (matchedItem)
+    matchTransformer : null,
 
     matcher : function (item) {
       var itemLowerCase = item.toLowerCase();

@@ -78,7 +78,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayIsolatedRoll : function(rollId, frameId){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
-    
+
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
 
@@ -341,6 +341,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupAnonUserViews(options);
     shelby.views.notificationOverlayView = shelby.views.notificationOverlayView || new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState});
     shelby.views.contextOverlay = shelby.views.contextOverlay || new libs.shelbyGT.ContextOverlayView({guide:shelby.models.guide});
+    shelby.views.prerollVideoInfo = shelby.views.prerollVideoInfo || new libs.shelbyGT.PrerollVideoInfoView({guide:shelby.models.guide, playbackState:shelby.models.playbackState});
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});

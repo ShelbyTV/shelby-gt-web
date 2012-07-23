@@ -45,7 +45,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   initialize : function() {
     this.model.get('frames').at(0).bind('destroy', this._onFrameRemove, this);
     this.model.get('frames').at(0).bind('change', this.render, this);
-    this.model.get('frames').at(0).get('conversation').bind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').bind('change', this.render, this);
     this.model.get('frames').bind('change', this.render, this);
     this.model.get('frames').bind('add', this.render, this);
     this.model.get('frames').bind('destroy', this.render, this);
@@ -55,7 +55,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _cleanup : function(){
     this.model.get('frames').at(0).unbind('destroy', this._onFrameRemove, this);
     this.model.get('frames').at(0).unbind('change', this.render, this);
-    this.model.get('frames').at(0).get('conversation').unbind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').unbind('change', this.render, this);
     this.model.get('frames').unbind('change', this.render, this);
     this.model.get('frames').unbind('add', this.render, this);
     this.model.get('frames').unbind('destroy', this.render, this);

@@ -4,6 +4,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   shareBaseLength : 23,
 
   _components : {
+    autoComplete : true,
     networkToggles : true,
     emailAddresses : false,
     messageCounter :  true,
@@ -51,6 +52,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
         size : 'small'
       });
       this.renderChild(this.spinner);
+    }
+    if (this._components.autoComplete) {
+      var twitterAutocompleteView = new libs.shelbyGT.TwitterAutocompleteView({
+        el: this.el,
+        inputSelector : '.js-share-textarea',
+        multiTerm : true,
+        multiTermMethod : 'paragraph'
+      });
+      this.renderChild(twitterAutocompleteView);
     }
   },
 
@@ -138,7 +148,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       return false;
     }
     if (this.options.frame) {
-      libs.utils.email.publishFrameAddition(this.options.frame);
       libs.utils.rhombus.sadd('shares', this.options.frame.id);
     }
     this.$('.js-share-textarea').removeClass('error');

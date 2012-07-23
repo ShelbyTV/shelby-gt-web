@@ -1,226 +1,387 @@
 @import "base";
 
-.no-access {
-	margin-top: 30px;
+html {
+	overflow-y:auto !important;
+	overflow-y:hidden !important;
 }
 
-.private-beta-access {
-	h2 {
-	margin: 10px 0;
-	}
-	p.login {
-	width: 205px;
-	}
-}
-
-.email-gate {
+.gate {
 	background-color: #101010;
-	@include background(url('../images/email-gate/bg.png') no-repeat center center #101010);
+	@include background(url('/images/blue.png') no-repeat center center #101010);
 	@include background-size(cover);
-}
 
-.email-gate-wrapper {
-	margin: 0 auto;
-	width: 480px;
-}
-
-.content-wrapper {
-	margin: 15% auto 0;
-	width: 1020px;
- 
-}
-.embed-gate-wrapper {
-	float: left;
-	width: 500px;
-}
-.embed-gate-wrapper iframe { 
-	width: 500px; 
-	height: 300px;
-}
-.email-gate-wrapper.with-embed {
-	float: left;
-	margin-left: 40px;
-}
-
-.email-gate-header{
-
-}
-
-.email-gate-logo {
-	@include background(url('../images/email-gate/landing_logo.svg') no-repeat center center transparent);
-
-	background-size: 100%;
-	float: left;
-	height: 100px;
-	margin-right: 18px;
-	width: 50%;
-}
-
-
-.email-gate-slogan {
-	float: left;
-	font-size: 11px;
-	line-height: 1.4;
-	margin-top: 40px;
-	width: 33%;
-}
-
-
-.email-gate-login{
-	margin: $defaultMargin;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 205px;
-}
-
-.email-gate-login-button {
-	background: $shelby-green;
-	@include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
-	@include buttonfont;
-	@include roundies;
-	@include text-shadow(0px 1px 2px #222);
-	
-	border: none;
-	box-shadow: 0 0 0 1px $shelby-green;
 	color: #efefef;
-	display: block;
-	float: right;
 	font-size: 13px;
-	margin: 0 0 10px 20px;
-	padding: 7px $defaultMargin+9px;
+	line-height: 1.5;
+	overflow: auto !important;
 }
 
-.email-gate-networks{
-	@include background(#585858);
-	@include roundies;
+.gate-wrapper {
+	margin-top: 1em;
+	margin-bottom: 2.5em;
+}
 
-	box-shadow: inset 0 1px 2px -1px #999;
-	display: none;
-	margin-top: 45px;
-	padding: 10px;
-	position: relative;
+.gate-lining {
+	margin-left: 170px;
+	margin-top: 0px;
+	width: 26em;
+}
 
-	&:before{
-		@include rotate(45deg);
+.gate-header {
+	margin-bottom: 50px;
+}
 
-		background: #585858;
-		box-shadow: inset 1px 1px 2px -1px #999;
-		content: "\0020";
-		display: block;
-		height: 10px;
-		position: absolute;
-		right: 31px;
-		top: -5px;
-		width: 10px;
+.gate-logo {
+	@include background-size(contain);
 
-	}
+	background-image: url($logo-shelby);
+	background-position: left center;
+	background-repeat: no-repeat;
+	clear: left;
+	float: left;
+	height: 40px;
+	margin: 0 35px;
+	width: 100px;
+}
 
-	.email-gate-error {
-		color: #DADADA;
-		font-size: 13px;
-		margin-top: 10px;
-	}
+.gate-slogan {
+	font-size: (11em/13);
+	font-weight: 100;
+	line-height: 4;
+}
+
+.gate-head {
+	font-size: 2em;
+}
+
+.gate-subhead {
+}
+
+.gate-login {
+	@include x-button-primer($shelby-green);
+
+	margin: 0 0 1.5em;
 
 }
 
-.email-gate-networks-twitter {
-	//extended by .logged-out-twitter
+//------------------ form ---------------------//
+
+.gate-form {
+	margin: 1.5em 0 1em;
+}
+
+.gate-form-label {
+	color: #ddd;
 	display: block;
-	padding: 3px 3px 3px 36px;
-	text-align: center;
-	text-decoration: none;
-	width: 100%;
-
-	&:before {
-		width: 36px;
-	}
-	&:visited {
-		color: #efefef;
-	}
+	font-size: (12em/13);
+	font-weight: 500;
+	margin: 1em 0 .25em;
 }
 
-.email-gate-networks-facebook {
-	//extended by .logged-out-facebook
-	display: block;
-	margin-top: $defaultMargin;
-	padding: 3px 3px 3px 36px;
-	text-align: center;
-	text-decoration: none;
-
-	width: 100%;
-		&:before {
-		width: 36px;
-	}
-	&:visited {
-		color: #efefef;
-	}
-}
-
-.email-gate-error {
-	color: $shelby-red;
-}
-
-.email-gate-signup {
-	margin: 0 auto;
-	text-align: center;
-}
-
-.email-gate-caption { 
-	font-size: 13px;
-	margin: 5px auto 10px;
-	text-align: center;
-	width: 100%;
-}
-
-.email-gate-label {
-	display: block;
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 3.8;
-	text-align: right;
-}
-
-.email-gate-code,
-.email-gate-email {
+.gate-form-input{
+	@include inputfont;
 	@include roundies(input);
-	border: none;
-	display: block;
-	float: right;
-	font-size: 14px;
-	margin: 5px 25% 5px $defaultMargin;
-	padding: $defaultMargin+2 $defaultMargin;
-	width: 50%;
-}
-
-.email-gate-signup-submit{
-	@include buttonfont;
-	background: $shelby-blue;
-	@include background( linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue) );
-	@include roundies;
-	@include text-shadow(0px 1px 2px #222);
 
 	border: none;
-	box-shadow: 0 0 0 1px $shelby-blue;
-	color: #efefef;
-	display: block;
-	font-size: 13px;
-	margin: $defaultMargin+4 auto;
-	padding: 7px $defaultMargin+9px;
-	width: 17%;
+	padding: 4px 3px;
+	width: 63%;
 }
 
-.email-gate-thank-you {
-	display: none;
-	margin-top: $defaultMargin;
-	text-align: center;
+.gate-form-submit{
+	@include x-button-primer($shelby-blue, small);
 
-	h1{
-		font-size: 1em;
-		margin-bottom: 2em;
+	display: block;
+	margin-top: 1em;
+}
+
+//-------------------- eo form ---------------------//
+
+.gate-no-access {
+	@include x-button-primer($shelby-gray, small);
+
+	color: $button-color;
+	display: block;
+	float: left;
+	font-size: (11em/13);
+	font-weight: 300;
+	margin-top:3em;
+	padding: 5px 9px;
+	text-decoration: none;
+
+	&:visited {
+		color: $button-color;
 	}
 }
 
-.detour{
-	margin-top: 1.231em;
+.gate-small {
+	font-size: (11em/13);
+}
+
+.gate-networks-twitter{
+	margin-top: 2em;
+}
+
+.gate-networks-twitter,
+.gate-networks-facebook {
+  display: block;
+  padding: 4px 3px 3px 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;	
+
+  &:before {
+    width: 36px;
+  }
+  &:visited {
+    color: #efefef;
+  }
+}
+
+.gate-networks-twitter {
+  //extend existing
+  @extend .logged-out-twitter;
+}
+
+.gate-networks-facebook {
+  @extend .logged-out-facebook;
+  margin-top: $defaultMargin;
+}
+
+.gate-input-error,
+.gate-signin-error {
+	color: #E92222;
+	font-size: (12em/13);
+}
+
+.gate-signin-noaccess {
+	color: yellow;
+	font-size: (12em/13);
+}
+
+.gate-input-error {
+	padding-left: .5em;
+}
+
+.gate-footer {
+	bottom: 1em;
+	margin-left: 170px;
+	position: absolute;
+}
+
+.gate-footer-list {
+	line-height: 2;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+}
+
+.gate-footer-item {
+	display: block;
+	float: left;
+	padding-right: .25em;
+}
+
+#made-newyork {
+	padding-left: .75em;
+}
+
+.gate-networks-link {
+	display: inherit;
+	float: inherit;
+	height: 24px;
+	width: 24px;
+}
+
+.gate-footer-networks-twitter,
+.gate-footer-networks-facebook,
+.gate-footer-networks-tumblr {
+	@include x-networks-badge;
+	@include roundies(input);
+
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+}
+
+.gate-footer-networks-twitter{
+	@include preferences-networks(twitter);
+	background-size:76%;
+}
+
+.gate-footer-networks-facebook{
+	@include preferences-networks(facebook);
+	background-size:28%;
+}
+
+.gate-footer-networks-tumblr{
+	@include preferences-networks(tumblr);
+	background-size:36%;
+}
+
+//helpers
+
+.gate-extra-margin {
+	margin-top: 5em;
+	margin-bottom: 1.2em;
+}
+
+.gate-small-block {
+	font-size: 11px;
+}
+
+
+//-------------------- changes compensating for video embed --------------//
+.with-video {
+	.gate-lining,
+	.gate-footer {
+		margin-left: 35px;
+	}
+
+	.gate-lining {
+		float: left;
+	}
+
+	.gate-footer {
+		clear: both;
+	}
+}
+
+.with-video-embed {
+	margin-top: 5px;
+	position: relative;
+	width: 500px;
+
+	& > iframe,
+	& > embed,
+	& > object {
+		width: 100%;
+		height: 360px;
+		position: relative;
+	}
+}
+
+.with-video-embed-block {
+	margin-top: 1.5em;
+}
+
+
+//-------------------- screens SHORTER than 620 --------------//
+@media all and (max-height:620px) {
+
+	.gate-wrapper {
+		margin-top: .5em;
+	}
+
+	.gate-header {
+		margin-bottom: 0em;
+	}
+
+	.gate-footer {
+		bottom: auto;
+		margin-top: 2em;
+		position: relative;
+	}
+	
+	.gate-extra-margin {
+		margin-top: 1em;
+	}
+}
+
+//-------------------- screens NARROWER than 920 --------------//
+@media all and (max-width:920px){
+
+	.gate-header {
+		margin-bottom: 0em;
+	}
+
+	.gate-logo {
+		margin: 0 20px;
+	}
+
+	.gate-slogan {
+		font-size: (10em/13);
+		line-height: 4.5;
+	}
+	
+	.gate-lining,
+	.gate-footer {
+		margin-left: 145px;
+	}
+
+	.gate-footer {
+		bottom: auto;
+		margin-top: 2em;
+		position: relative;
+	}
+
+	.with-video {
+		.with-video-embed {
+			float:none;
+			width: 100%;
+			margin: 0;
+		}
+
+		.with-video-embed-block {
+			margin-left: 35px;
+			width: auto;
+
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.gate-extra-margin {
+		margin-top: 1em;
+	}
+}
+
+//-------------------- screens NARROWER than 415 --------------//
+@media all and (max-width:415px) { 
+
+	.with-video {
+		.with-video-embed {
+			margin-top: 5px;
+			margin-left: 0 !important;
+
+			& > iframe,
+			& > embed,
+			& > object {
+				height: 200px;
+			}
+		}
+
+		.with-video-embed-block {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+
+		.gate-lining {
+			margin-left: 0px;
+			padding-left: 20px;
+			width: 100%;
+		}
+
+		.gate-footer {
+			margin-left: 20px;
+		}
+
+	}
+
+	.gate-logo {
+		margin-right: 10px;
+		width: 70px;
+	}
+
+	.gate-slogan {
+		line-height: 4.4;
+	}
+
+	.gate-lining,
+	.gate-footer {
+		margin-left: 0px;
+		padding-left: 20px;
+		width: 100%;
+	}
 }

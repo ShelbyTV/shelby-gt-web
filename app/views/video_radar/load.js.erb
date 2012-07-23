@@ -306,7 +306,7 @@ window.shelbyBookmarklet = {
                             var footerHtml = utilObject.htmlTemplate.frameFooterHtml(r);
                             utilObject.htmlTemplate.addFrameToGuide(footerHtml, r, vids[i].embed);
                             if (toEmbedButtons) {
-                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
+                                utilObject.shelbyDocElements['ext-elements'].append('<div class="<%=@prefix%> embedded-header <%=@prefix%>video-card-header clearfix ' + frameInfoClass + '" id="<%=@prefix%>header-on-page-' + r + '" data-r=' + r + '>' + '<div class=<%=@prefix%>frame-logo>' + '<img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div>' + '</div>');
 
                                 header = shelbyJ("#<%=@prefix%>header-on-page-" + r)
                                 header.css("left", hpos + "px").css("top", utilObject.getHeaderVpos(height, vpos, header) + "px").css("width", width + "px")
@@ -316,7 +316,6 @@ window.shelbyBookmarklet = {
                                 var vidFooter = shelbyJ('#<%=@prefix%>control-on-page-' + r);
                                 vidFooter.html(footerHtml);
                                 vidFooter.css("left", hpos + "px").css("top", utilObject.getFooterVpos(vpos, height) + "px").css("width", width + "px")
-                                shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
                                 var resizeFunction = function(vidIndex, r) {
                                     return function () {
                                         utilObject.resizeFunction(vids, vidIndex, r);
@@ -327,6 +326,8 @@ window.shelbyBookmarklet = {
                                 });
                                 utilObject.resizeArray.push(resizeFunction);
                             }
+
+                            shelbyJ(".<%=@prefix%>button-" + r).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
                             var dataReq = {
                                 'provider_name': vids[i].provider,
                                 'provider_id': vids[i].video_id,
@@ -744,7 +745,7 @@ window.shelbyBookmarklet = {
                         var r = frameHeader.attr("data-r")
                         var html = '<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>' + '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>';
                         if (displayLogo) {
-                            html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://gt.shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
+                            html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
                         }
                         frameHeader.html(html);
                         frameHeader.attr("data-conversationid", frame.conversation_id);
@@ -776,7 +777,7 @@ window.shelbyBookmarklet = {
                 },
 
                 rollGuideHtml: function (rolls) {
-                    shelbyJ("#<%=@prefix%>roll-guide-window").append('<div class="<%=@prefix%>guide-overlay-main <%=@prefix%>rolling-main">' + '<div class="rolling-main-new-roll">' + '<div class="rolling-main-header">Create New Roll</h3></div>' + '<div class="<%=@prefix%>create-roll clearfix">' + '<form class="">' + '<fieldset class="<%=@prefix%>roll-options">' + '<label for="<%=@prefix%>new-roll-name" class="<%=@prefix%>roll-options-label">Roll Name</label>' + '<input name="<%=@prefix%>new-roll-name" id="<%=@prefix%>new-roll-name" class="<%=@prefix%>roll-options-input" plassholder="Roll name..." type="text">' + '<label for="<%=@prefix%>new-roll-recipients" class="<%=@prefix%>roll-options-label">Share With</label>' + '<input name="<%=@prefix%>new-roll-recipients" id="<%=@prefix%>new-roll-recipients" class="<%=@prefix%>roll-options-input" placeholder="Separate email addresses with commas..." type="email" multiple="multiple">' + '</fieldset>' + '<fieldset class="roll-options">' + '<label for="<%=@prefix%>new-roll-status" class="<%=@prefix%>new-roll-status clearfix" data-private="Private" data-public="Public">' + '<input id="<%=@prefix%>new-roll-status" class="<%=@prefix%>new-roll-status-checkbox" type="checkbox">' + '</label>' + '</fieldset>' + '<fieldset class="<%=@prefix%>roll-options">' + '<button onclick="return false;" id="<%=@prefix%>new-roll-create" class="<%=@prefix%>roll-options-submit" type="submit">Roll It</button>' + '</fieldset>' + '</form>' + '</div>' + '</div>' + '<div class="<%=@prefix%>existing-rolls-list"></div>');
+                                 shelbyJ("#<%=@prefix%>roll-guide-window").append('<div class="<%=@prefix%>guide-overlay-main <%=@prefix%>rolling-main">' + '<div class="rolling-main-new-roll">' + '<div class="rolling-main-header">Create New Roll</h3></div>' + '<div class="<%=@prefix%>create-roll clearfix">' + '<form class="">' + '<fieldset class="<%=@prefix%>roll-options">' + '<label for="<%=@prefix%>new-roll-name" class="<%=@prefix%>roll-options-label">Roll Name</label>' + '<input name="<%=@prefix%>new-roll-name" id="<%=@prefix%>new-roll-name" class="<%=@prefix%>roll-options-input" plassholder="Roll name..." type="text">' + '<label for="<%=@prefix%>new-roll-recipients" class="<%=@prefix%>roll-options-label">Share With</label>' + '<input name="<%=@prefix%>new-roll-recipients" id="<%=@prefix%>new-roll-recipients" class="<%=@prefix%>roll-options-input" placeholder="Separate email addresses with commas..." type="email" multiple="multiple">' + '</fieldset>' + '<fieldset class="roll-options">' + '<label for="<%=@prefix%>new-roll-status" class="<%=@prefix%>new-roll-status-label clearfix">' + '<input id="<%=@prefix%>new-roll-status" class="<%=@prefix%>new-roll-status-checkbox" type="checkbox" aria-label="slider-description">' + '<span id="slider-description" class="new-roll-status-description"> Roll is private when checkbox is checked.</span> <b role="presentation" aria-hidden="true" class="new-roll-status-chrome"></b>' + '</label>' + '</fieldset>' + '<fieldset class="<%=@prefix%>roll-options">' + '<button onclick="return false;" id="<%=@prefix%>new-roll-create" class="<%=@prefix%>roll-options-submit" type="submit">Roll It</button>' + '</fieldset>' + '</form>' + '</div>' + '</div>' + '<div class="<%=@prefix%>existing-rolls-list"></div>');
 
                     utilObject.htmlTemplate.populateRolls(rolls);
                     utilObject.shelbyDocElements['rollsList'] = shelbyJ(".<%=@prefix%>existing-rolls-list");
@@ -943,7 +944,7 @@ shelbyInit: function (opts, useUrl, urlProvider) {
     },
     shelbyOpts: function (useUrl, urlProvider) {
         return {
-            css: ["http://localhost:3000/stylesheets/radar.css"],
+            css: ["http://<%= Settings::VideoRadar.web_domain%>/stylesheets/radar.css"],
             js: ["http://<%= Settings::VideoRadar.web_domain%>/javascripts/jquery-plugins/jquery.scrollTo.js"],
             jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
@@ -1001,6 +1002,9 @@ var loadBookmarklet = function(useUrl, useProvider) {
                     }
                 }
             }
+        }
+        if (!shelbyJ) {
+          var shelbyJ = jQuery.noConflict();
         }
         shelbyJ('.<%=@prefix%>ext-elements').remove()
         return pushState.apply(history, arguments);
