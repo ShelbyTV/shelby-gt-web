@@ -44,7 +44,10 @@ class HomeController < ApplicationController
             false
           end
     end
-    render 'isolated_roll' and return if @isolated_roll_id
+    if @isolated_roll_id
+      @meta_info = get_api_info("/roll/#{@isolated_roll_id}")
+      render 'isolated_roll' and return 
+    end
 
     #XXX ISOLATED_ROLL - HACKING allowing viewing
     if user_signed_in? or /isolated_roll\//.match(params[:path])
