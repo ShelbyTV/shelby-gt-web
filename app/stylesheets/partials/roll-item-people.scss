@@ -66,13 +66,13 @@
         box-shadow: 0 0 44px 16px adjust-lightness($shelby-green, -5%);
       }
     } 
-  }
-
-  .roll-item-creator,
-  .roll-item-total,
-  .roll-item-watched,
-  .roll-item-title,
-  .roll-item-people {
-    color: #0E0F10;
+  
+    .roll-item-creator,
+    .roll-item-total,
+    .roll-item-watched,
+    .roll-item-title,
+    .roll-item-people {
+      color: #0E0F10;
+    }
   }
 }

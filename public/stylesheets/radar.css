@@ -1320,7 +1320,7 @@
   overflow: hidden;
 }
 /* line 37, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-nowplaying .roll-item-button:after,
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after,
 .ext-elements .roll-personal .roll-item-button:after,
 .ext-elements .roll-watch-later .roll-item-button:after,
 .ext-elements .roll-likes .roll-item-button:after {
@@ -1337,7 +1337,7 @@
   height: inherit;
 }
 /* line 61, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-nowplaying .roll-item-button:after {
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after {
   background-image: url("/images/assets/overlay_nowplaying.svg");
 }
 /* line 71, ../../app/stylesheets/partials/roll-item.scss */
@@ -1613,12 +1613,12 @@
 .ext-elements .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
-.ext-elements .active-list-item .roll-item-creator,
-.ext-elements .active-list-item .roll-item-total,
-.ext-elements .active-list-item .roll-item-watched,
-.ext-elements .active-list-item .roll-item-title,
-.ext-elements .active-list-item .roll-item-people {
+/* line 74, ../../app/stylesheets/partials/roll-item-people.scss */
+.ext-elements .active-list-item .roll-item-people-button .roll-item-creator,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-total,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-watched,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-title,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-people {
   color: #0E0F10;
 }
 /* line 6, ../../app/stylesheets/partials/frame.scss */
@@ -3017,7 +3017,7 @@
   overflow: hidden;
 }
 /* line 37, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-nowplaying .roll-item-button:after, .ext-elements .roll-personal .roll-item-button:after, .ext-elements .roll-watch-later .roll-item-button:after, .ext-elements .roll-likes .roll-item-button:after {
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after, .ext-elements .roll-personal .roll-item-button:after, .ext-elements .roll-watch-later .roll-item-button:after, .ext-elements .roll-likes .roll-item-button:after {
   background-color: black;
   background-position: center center;
   background-repeat: no-repeat;
@@ -3031,7 +3031,7 @@
   height: inherit;
 }
 /* line 61, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-nowplaying .roll-item-button:after {
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after {
   background-image: url("/images/assets/overlay_nowplaying.svg");
 }
 /* line 71, ../../app/stylesheets/partials/roll-item.scss */
@@ -3301,8 +3301,8 @@
 .ext-elements .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
-.ext-elements .active-list-item .roll-item-creator, .ext-elements .active-list-item .roll-item-total, .ext-elements .active-list-item .roll-item-watched, .ext-elements .active-list-item .roll-item-title, .ext-elements .active-list-item .roll-item-people {
+/* line 74, ../../app/stylesheets/partials/roll-item-people.scss */
+.ext-elements .active-list-item .roll-item-people-button .roll-item-creator, .ext-elements .active-list-item .roll-item-people-button .roll-item-total, .ext-elements .active-list-item .roll-item-people-button .roll-item-watched, .ext-elements .active-list-item .roll-item-people-button .roll-item-title, .ext-elements .active-list-item .roll-item-people-button .roll-item-people {
   color: #0E0F10;
 }
 /* line 3, ../../app/stylesheets/bookmarklet-overwrite.scss */

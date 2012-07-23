@@ -10,14 +10,22 @@
     var first_frame_thumbnail = roll.get('first_frame_thumbnail_url');
   }
   
-  var rollModifier = options.rollModifier;
-  var modifyRollClass = (roll.id == user.get('personal_roll_id'))    ? rollModifier.personalRoll.rollClass   : 
-                        (roll.id == user.get('watch_later_roll_id')) ? rollModifier.watchLaterRoll.rollClass : 
-                        (roll.id == user.get('heart_roll_id'))       ? rollModifier.likesRoll.rollClass      : false ;
+  var modifyRollClass = null;
 
-  var modifyRollTitle = (roll.id == user.get('personal_roll_id'))    ? rollModifier.personalRoll.rollTitle   : 
-                        (roll.id == user.get('watch_later_roll_id')) ? rollModifier.watchLaterRoll.rollTitle : 
-                        (roll.id == user.get('heart_roll_id'))       ? rollModifier.likesRoll.rollTitle      : false ;
+  switch (roll.id) {
+    case user.get('personal_roll_id') :
+      modifyRollClass = ' roll-personal';
+      break;
+
+    case user.get('watch_later_roll_id') :
+      modifyRollClass = ' roll-watch-later';
+      break;
+
+    case user.get('heart_roll_id') : 
+      modifyRollClass = ' roll-likes';
+      break;
+  }
+
 %>
 
 <div class="roll-item-lining<%= (!first_frame_thumbnail) ? ' missing-roll-thumbnail' : '' %><%= (modifyRollClass) ? modifyRollClass : '' %>" style="background-image:url(<%= first_frame_thumbnail || '/images/assets/user_loggedout.svg' %>);">
@@ -35,11 +43,7 @@
           </h2>
 
           <h3 class="roll-item-title">
-            <% if (!modifyRollTitle) { %>
-              <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-            <% } else { %>
-               <%= modifyRollTitle %>
-            <% } %>
+            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
           </h3>
         <% } else { %>
           <h2 class="roll-item-people">

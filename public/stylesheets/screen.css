@@ -1250,7 +1250,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 37, ../../app/stylesheets/partials/roll-item.scss */
-.roll-nowplaying .roll-item-button:after,
+.active-list-item .roll-item-lining .roll-item-button:after,
 .roll-personal .roll-item-button:after,
 .roll-watch-later .roll-item-button:after,
 .roll-likes .roll-item-button:after {
@@ -1268,7 +1268,7 @@ a:hover, a:visited, a:active {
 }
 
 /* line 61, ../../app/stylesheets/partials/roll-item.scss */
-.roll-nowplaying .roll-item-button:after {
+.active-list-item .roll-item-lining .roll-item-button:after {
   background-image: url("/images/assets/overlay_nowplaying.svg");
 }
 
@@ -1569,12 +1569,12 @@ a:hover, a:visited, a:active {
 .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
-.active-list-item .roll-item-creator,
-.active-list-item .roll-item-total,
-.active-list-item .roll-item-watched,
-.active-list-item .roll-item-title,
-.active-list-item .roll-item-people {
+/* line 74, ../../app/stylesheets/partials/roll-item-people.scss */
+.active-list-item .roll-item-people-button .roll-item-creator,
+.active-list-item .roll-item-people-button .roll-item-total,
+.active-list-item .roll-item-people-button .roll-item-watched,
+.active-list-item .roll-item-people-button .roll-item-title,
+.active-list-item .roll-item-people-button .roll-item-people {
   color: #0E0F10;
 }
 

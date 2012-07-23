@@ -29,7 +29,7 @@
   overflow: hidden;
 }
 
-.roll-nowplaying,
+.active-list-item .roll-item-lining,
 .roll-personal,
 .roll-watch-later,
 .roll-likes {
@@ -56,7 +56,7 @@
   }
 }
 
-.roll-nowplaying {
+.active-list-item .roll-item-lining {
   .roll-item-button {
     &:after {
       background:  {
