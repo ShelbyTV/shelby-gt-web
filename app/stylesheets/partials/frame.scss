@@ -177,7 +177,7 @@
 
 	float: left;
 	padding: 4px 8px 0 6px;
-	width: 60%;
+	width: 100%;
 }
 
 .frame-creator-roll-collapsed {
@@ -194,7 +194,7 @@
 	@include frame-header-smalltype;
 
 	text-align: right;
-	width: 40%;
+	width: 20%;
 	float:right;
 	padding: 7px 8px 0 0;
 }
@@ -232,15 +232,15 @@
 
 .frame-title {
 	color: #bfbfbf;
-  font-size: 13px;
-  height: 19px;
-  line-height: 17px;
-  margin-right: 38px;
+        font-size: 13px;
+        height: 19px;
+        line-height: 17px;
+        margin-right: 38px;
 	overflow: hidden;
-  padding: 4px 0 0 6px;
-  text-overflow: ellipsis;
+        padding: 4px 0 0 6px;
+        text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 100%; 
+	width: 80%; 
 }
 
 .frame-title-collapsed {

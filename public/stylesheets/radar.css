@@ -1813,7 +1813,7 @@
   text-overflow: ellipsis;
   float: left;
   padding: 4px 8px 0 6px;
-  width: 60%;
+  width: 100%;
 }
 /* line 183, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-roll-collapsed {
@@ -1826,7 +1826,7 @@
   font-weight: 300;
   height: 1.9em;
   text-align: right;
-  width: 40%;
+  width: 20%;
   float: right;
   padding: 7px 8px 0 0;
 }
@@ -1845,7 +1845,7 @@
   padding: 4px 0 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
+  width: 80%;
 }
 /* line 246, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-title-collapsed {
