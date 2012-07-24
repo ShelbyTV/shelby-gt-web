@@ -117,8 +117,7 @@ getElementValue: function (obj, id) {
                     // so using the page location for now
                     known_url = document.location.href;
                     break;
-                case "espn.go.com":
-                      
+                case "espn.com,espn.go.com":
                     known_url = "http://espn.go.com/video/clip?id=" + video_id;
                     break;
                 default:
@@ -140,7 +139,6 @@ getElementValue: function (obj, id) {
                     found_elements.push(possibleVideos.iframes[i]);
                 }
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
-                  console.log(possibleVideos.objects[i]);
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
@@ -171,17 +169,12 @@ getElementValue: function (obj, id) {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
                                 var valid_domain = false;
-                                var domain = null;
                                 for (var l = 0; l < domain_split.length; l++) {
                                   var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
                                         valid_domain = true;
-                                        domain = shelbyJ.trim(domain_split[l]);
                                         break;
                                     }
-                                }
-                                if(valid_domain) {
-                                  //  console.log(str);
                                 }
                                 if (reg.test(str) && valid_domain) {
                                     var match = reg.exec(str);
@@ -207,7 +200,7 @@ getElementValue: function (obj, id) {
                                         domain: shelbyBookmarklet.shelbyProviders[j].domain,
                                         video_id: video_id,
                                         provider: provider,
-                                        known_url: this.composeKnownUrl(domain, match[2])
+                                        known_url: this.composeKnownUrl(shelbyBookmarklet.shelbyProviders[j].domain, match[2])
                                     });
                                     break;
                                 }
@@ -793,10 +786,11 @@ getElementValue: function (obj, id) {
                         var displayLogo = frameHeader.hasClass("embedded-header");
                         frameHeader.addClass("frame-exists");
                         var r = frameHeader.attr("data-r")
-                        var html = '<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>' + '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>';
+                          var html = '<img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '">';
                         if (displayLogo) {
                             html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
                         }
+                        html += '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>';
                         frameHeader.html(html);
                         frameHeader.attr("data-conversationid", frame.conversation_id);
                         frameHeader.attr("data-shelbyframeid", frame.id);
