@@ -1725,7 +1725,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
 .video-card-header a:hover, .video-card-header-collapsed a:hover, .video-card-header a > *:hover, .video-card-header-collapsed a > *:hover,
 .frame-share-header a:hover,
 .frame-share-header a > *:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* line 94, ../../app/stylesheets/partials/frame.scss */
@@ -1733,8 +1733,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   border-radius: 5px;
   overflow: hidden;
 }
-
 /* line 101, ../../app/stylesheets/partials/frame.scss */
+.video-card-header-collapsed a:hover, .video-card-header-collapsed a > *:hover {
+  text-decoration: none;
+}
+
+/* line 107, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header, .active-list-item .video-card-header-collapsed {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1756,27 +1760,27 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 107, ../../app/stylesheets/partials/frame.scss */
+/* line 113, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header h1, .active-list-item .video-card-header-collapsed h1, .active-list-item .video-card-header h2, .active-list-item .video-card-header-collapsed h2 {
   color: #27292a;
 }
-/* line 111, ../../app/stylesheets/partials/frame.scss */
+/* line 117, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header h3, .active-list-item .video-card-header-collapsed h3 {
   color: #0e0f10;
 }
-/* line 115, ../../app/stylesheets/partials/frame.scss */
+/* line 121, ../../app/stylesheets/partials/frame.scss */
 .active-list-item .video-card-header .frame-title:before, .active-list-item .video-card-header-collapsed .frame-title:before, .active-list-item .video-card-header .frame-title-collapsed:before, .active-list-item .video-card-header-collapsed .frame-title-collapsed:before {
   content: "On Now: ";
   font-style: italic;
 }
 
-/* line 121, ../../app/stylesheets/partials/frame.scss */
+/* line 127, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-title-date-holder {
   height: 100%;
   overflow: hidden;
 }
 
-/* line 126, ../../app/stylesheets/partials/frame.scss */
+/* line 132, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-holder {
   float: left;
   height: 40px;
@@ -1784,7 +1788,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background-color: black;
 }
 
-/* line 135, ../../app/stylesheets/partials/frame.scss */
+/* line 141, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar, .frame-creator-avatar-collapsed,
 .frame-creator,
 .frame-creator-collapsed,
@@ -1797,40 +1801,40 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background-color: white;
 }
 
-/* line 144, ../../app/stylesheets/partials/frame.scss */
+/* line 150, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-collapsed {
   opacity: 0.6;
   border-radius: 5px 0 0 5px;
 }
 
-/* line 151, ../../app/stylesheets/partials/frame.scss */
+/* line 157, ../../app/stylesheets/partials/frame.scss */
 .frame-creator, .frame-creator-collapsed {
   overflow: hidden;
 }
 
-/* line 155, ../../app/stylesheets/partials/frame.scss */
+/* line 161, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar, .frame-creator-avatar-collapsed {
   width: 100%;
 }
 
-/* line 159, ../../app/stylesheets/partials/frame.scss */
+/* line 165, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-collapsed {
   border-radius: 5px 0 0 5px;
 }
 
-/* line 164, ../../app/stylesheets/partials/frame.scss */
+/* line 170, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing, .frame-creator-avatar-missing-collapsed {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
 
-/* line 170, ../../app/stylesheets/partials/frame.scss */
+/* line 176, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-avatar-missing-collapsed {
   opacity: 0.6;
   border-radius: 5px 0 0 5px;
 }
 
-/* line 179, ../../app/stylesheets/partials/frame.scss */
+/* line 185, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll, .frame-creator-roll-collapsed {
   color: #999;
   font-size: 11px;
@@ -1846,12 +1850,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 100%;
 }
 
-/* line 188, ../../app/stylesheets/partials/frame.scss */
+/* line 194, ../../app/stylesheets/partials/frame.scss */
 .frame-creator-roll-collapsed {
   color: #666;
 }
 
-/* line 198, ../../app/stylesheets/partials/frame.scss */
+/* line 204, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp, .frame-timestamp-collapsed {
   color: #999;
   font-size: 11px;
@@ -1863,12 +1867,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding: 7px 8px 0 0;
 }
 
-/* line 207, ../../app/stylesheets/partials/frame.scss */
+/* line 213, ../../app/stylesheets/partials/frame.scss */
 .frame-timestamp-collapsed {
   color: #777;
 }
 
-/* line 238, ../../app/stylesheets/partials/frame.scss */
+/* line 244, ../../app/stylesheets/partials/frame.scss */
 .frame-title, .frame-title-collapsed {
   color: #bfbfbf;
   font-size: 13px;
@@ -1882,12 +1886,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 75%;
 }
 
-/* line 251, ../../app/stylesheets/partials/frame.scss */
+/* line 257, ../../app/stylesheets/partials/frame.scss */
 .frame-title-collapsed {
   color: #777;
 }
 
-/* line 257, ../../app/stylesheets/partials/frame.scss */
+/* line 263, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer {
   background-color: #35383a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #414547), color-stop(100%, #35383a));
@@ -1902,33 +1906,33 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   z-index: 5;
 }
 
-/* line 266, ../../app/stylesheets/partials/frame.scss */
+/* line 272, ../../app/stylesheets/partials/frame.scss */
 .video-card-footer-collapsed {
 @extends .video-card-footer;
   height: 0px;
   overflow: hidden;
 }
 
-/* line 273, ../../app/stylesheets/partials/frame.scss */
+/* line 279, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
 
-/* line 279, ../../app/stylesheets/partials/frame.scss */
+/* line 285, ../../app/stylesheets/partials/frame.scss */
 .video-thumbnail-collapsed {
 @extends .video-thumbnail;
   height: 0px;
 }
 
-/* line 285, ../../app/stylesheets/partials/frame.scss */
+/* line 291, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment {
   border-bottom: 1px solid black;
   border-top: 1px solid #484b4d;
   padding: 10px;
 }
-/* line 290, ../../app/stylesheets/partials/frame.scss */
+/* line 296, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment textarea {
   border-radius: 3px;
   border-color: #555;
@@ -1936,7 +1940,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   resize: none;
   width: 100%;
 }
-/* line 298, ../../app/stylesheets/partials/frame.scss */
+/* line 304, ../../app/stylesheets/partials/frame.scss */
 .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1956,19 +1960,19 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   margin-top: 5px;
 }
 
-/* line 310, ../../app/stylesheets/partials/frame.scss */
+/* line 316, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 314, ../../app/stylesheets/partials/frame.scss */
+/* line 320, ../../app/stylesheets/partials/frame.scss */
 .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 321, ../../app/stylesheets/partials/frame.scss */
+/* line 327, ../../app/stylesheets/partials/frame.scss */
 .video-source {
   float: right;
   height: 1.231em;
@@ -1977,37 +1981,37 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   text-overflow: ellipsis;
 }
 
-/* line 329, ../../app/stylesheets/partials/frame.scss */
+/* line 335, ../../app/stylesheets/partials/frame.scss */
 .video-author {
   margin: 0;
 }
 
 /* XXX BELOW still needed for context overlay, but not for conversation within guide  */
-/* line 334, ../../app/stylesheets/partials/frame.scss */
+/* line 340, ../../app/stylesheets/partials/frame.scss */
 .user-vcard {
   border-bottom: 1px solid black;
   border-top: 1px solid #484b4d;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 340, ../../app/stylesheets/partials/frame.scss */
+/* line 346, ../../app/stylesheets/partials/frame.scss */
 .user-vcard a {
   text-decoration: none;
 }
 
-/* line 345, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .user-avatar {
   display: block;
   float: left;
 }
-/* line 349, ../../app/stylesheets/partials/frame.scss */
+/* line 355, ../../app/stylesheets/partials/frame.scss */
 .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
 
-/* line 356, ../../app/stylesheets/partials/frame.scss */
+/* line 362, ../../app/stylesheets/partials/frame.scss */
 .user-handle,
 .user-post-date {
   color: #a4a4a4;
@@ -2016,7 +2020,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   line-height: 2.8;
 }
 
-/* line 363, ../../app/stylesheets/partials/frame.scss */
+/* line 369, ../../app/stylesheets/partials/frame.scss */
 .user-post-date {
   float: right;
   line-height: 1;
@@ -2024,37 +2028,37 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding-right: 3px;
 }
 
-/* line 399, ../../app/stylesheets/partials/frame.scss */
+/* line 405, ../../app/stylesheets/partials/frame.scss */
 .user-video-text {
   margin-top: -7px;
 }
-/* line 402, ../../app/stylesheets/partials/frame.scss */
+/* line 408, ../../app/stylesheets/partials/frame.scss */
 .user-video-text p {
   margin: 2px 5px 0 32px;
 }
 
 /* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
-/* line 408, ../../app/stylesheets/partials/frame.scss */
+/* line 414, ../../app/stylesheets/partials/frame.scss */
 .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 412, ../../app/stylesheets/partials/frame.scss */
+/* line 418, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 419, ../../app/stylesheets/partials/frame.scss */
+/* line 425, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 425, ../../app/stylesheets/partials/frame.scss */
+/* line 431, ../../app/stylesheets/partials/frame.scss */
 .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 430, ../../app/stylesheets/partials/frame.scss */
+/* line 436, ../../app/stylesheets/partials/frame.scss */
 .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
@@ -2067,12 +2071,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 100%;
 }
 
-/* line 444, ../../app/stylesheets/partials/frame.scss */
+/* line 450, ../../app/stylesheets/partials/frame.scss */
 .frame-activity {
   font-weight: 500;
 }
 
-/* line 448, ../../app/stylesheets/partials/frame.scss */
+/* line 454, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites {
   border-bottom: 1px solid black;
   border-top: 1px solid #54585a;
@@ -2081,7 +2085,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding: 4px;
   width: auto;
 }
-/* line 456, ../../app/stylesheets/partials/frame.scss */
+/* line 462, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites li {
   display: block;
   float: left;
@@ -2091,16 +2095,16 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   margin-right: 3px;
   width: 24px;
 }
-/* line 466, ../../app/stylesheets/partials/frame.scss */
+/* line 472, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites a {
   display: block;
 }
-/* line 470, ../../app/stylesheets/partials/frame.scss */
+/* line 476, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 475, ../../app/stylesheets/partials/frame.scss */
+/* line 481, ../../app/stylesheets/partials/frame.scss */
 .frame-activity-favorites:before {
   background: url("/images/assets/videocard_like_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -2110,7 +2114,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   width: 22px;
 }
 
-/* line 488, ../../app/stylesheets/partials/frame.scss */
+/* line 494, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i,
 .frame-controls-comments i,
 .frame-controls-roll button,
@@ -2119,7 +2123,7 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background-repeat: no-repeat;
 }
 
-/* line 494, ../../app/stylesheets/partials/frame.scss */
+/* line 500, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like i {
   background-image: url("/images/assets/videocard_like_off.svg");
   background-position: left 0;
@@ -2128,12 +2132,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 504, ../../app/stylesheets/partials/frame.scss */
+/* line 510, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-like.upvoted i, .frame-controls-like:hover i {
   background-image: url("/images/assets/videocard_like_on.svg");
 }
 
-/* line 511, ../../app/stylesheets/partials/frame.scss */
+/* line 517, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments i {
   background-image: url("/images/assets/videocard_comment_off.svg");
   background-position: left 0;
@@ -2142,12 +2146,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 521, ../../app/stylesheets/partials/frame.scss */
+/* line 527, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-comments .frame-comments-open i, .frame-controls-comments:hover i {
   background-image: url("/images/assets/videocard_comment_on.svg");
 }
 
-/* line 528, ../../app/stylesheets/partials/frame.scss */
+/* line 534, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll button {
   color: transparent;
   font: 0/0 a;
@@ -2157,12 +2161,12 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background-image: url("/images/assets/videocard_roll_off.svg");
   background-position: center center;
 }
-/* line 534, ../../app/stylesheets/partials/frame.scss */
+/* line 540, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-roll:hover button {
   background-image: url("/images/assets/videocard_roll_on.svg");
 }
 
-/* line 541, ../../app/stylesheets/partials/frame.scss */
+/* line 547, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share button {
   color: transparent;
   font: 0/0 a;
@@ -2172,23 +2176,23 @@ body.isolated-roll .context-overlay-lining .frame-title, body.isolated-roll .con
   background-image: url("/images/assets/videocard_share_off.svg");
   background-position: center 45%;
 }
-/* line 547, ../../app/stylesheets/partials/frame.scss */
+/* line 553, ../../app/stylesheets/partials/frame.scss */
 .frame-controls-share:hover button {
   background-image: url("/images/assets/videocard_share_on.svg");
 }
 
-/* line 553, ../../app/stylesheets/partials/frame.scss */
+/* line 559, ../../app/stylesheets/partials/frame.scss */
 .framegroup-dupes {
   margin: 8px 0px 0px 5px;
 }
 
-/* line 557, ../../app/stylesheets/partials/frame.scss */
+/* line 563, ../../app/stylesheets/partials/frame.scss */
 .framegroup-dupes-collapsed {
   height: 0px;
   overflow: hidden;
 }
 
-/* line 562, ../../app/stylesheets/partials/frame.scss */
+/* line 568, ../../app/stylesheets/partials/frame.scss */
 .framegroup-dupe-text {
   color: #999;
   font-size: 11px;

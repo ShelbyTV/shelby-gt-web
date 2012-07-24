@@ -86,7 +86,7 @@
 			text-decoration: none;
 		}
 		&:hover {
-			text-decoration: none;
+			text-decoration: underline;
 		}
 	}
 }
@@ -96,6 +96,12 @@
 
 	border-radius: $radius;
 	overflow: hidden;
+
+	a, a > * {
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }
 
 .active-list-item .video-card-header {
