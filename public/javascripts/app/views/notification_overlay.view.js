@@ -21,7 +21,7 @@
     },
 		
 		render : function(){
-	    this.$el.html(this.template({model:this.model})).draggable({cursor: 'move'});
+	    this.$el.html(this.template({model:this.model}));
 		},
 		
     _cleanup : function() {

@@ -53,8 +53,24 @@
         attr : 'changeVideo',
         val : -1,
         is_transient : true
+      },
+      
+      // (l)ink
+      76 : {
+        model : 'userDesires',
+        attr : 'shortLink',
+        val : function(){
+          if (shelby.models.guide.get('activeFrameModel')){
+            var _frameId = shelby.models.guide.get('activeFrameModel').id;
+            $.ajax({
+              url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
+              dataType: 'json',
+              success: function(r){ shelby.alert(r.result.short_link); }
+            });
+          }
+        },
+        is_transient : true
       }
-
     },
     
     initialize : function(){
