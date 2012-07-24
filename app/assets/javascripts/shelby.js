@@ -1,6 +1,7 @@
-
 //backbone && underscore
 //= require ./backbone
+//templates
+//= require_tree ../templates
 //jQuery plugins
 //= require_tree ./jquery-plugins
 //swf
