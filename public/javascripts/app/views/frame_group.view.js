@@ -17,8 +17,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   events : {
     "click .js-frame-activate"              : "_activate",
+    "click .js-creation-date"               : "_expand",
+    "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
-    "click .js-frame-toggle"                : "_toggleCollapseExpand",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-save-frame"                  : "_saveToWatchLater",
@@ -72,16 +73,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
-  _toggleCollapseExpand: function(){
+  _expand: function(){
     if (this.model.get('collapsed')) {
       this.model.unset('collapsed');
-    } else {
-      this.model.set('collapsed', true);
-    }
-    this.render();
+      this.render();
+    } 
   },
 
   _activate : function(){
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
     shelby.models.guide.set('activeFrameModel', this.model.get('frames').at(0));
   },
 
@@ -167,7 +170,25 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     shelby.models.guide.set('activeGuideOverlayView', this._conversationView);
   },
 
+  _goToCreatorsPersonalRoll : function(){
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
+
+    var creator = this.model.get('frames').at(0).get('creator');
+
+    if (creator) {
+      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+    }
+
+  },
+
   _goToSourceRoll : function(){
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
     if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
       shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     } else {

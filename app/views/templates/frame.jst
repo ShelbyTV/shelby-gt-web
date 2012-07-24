@@ -28,9 +28,16 @@
         </a>
 
         <div class="frame-creator-title-date-holder">
+
+          <% if (frameGroup.get('collapsed')) { %>
+            <a onclick="return false;" class="js-creation-date js-track-event" href="#">
+          <% } %>
           <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
             <%= frame.get('created_at') %>
           </h2>
+          <% if (frameGroup.get('collapsed')) { %>
+            </a>
+          <% } %>
   
           <a onclick="return false;" href="#" class="js-frame-activate">
             <h1 class="frame-title<%= suffix %>" title="<%= frameTitle %>">
