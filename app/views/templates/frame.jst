@@ -17,11 +17,11 @@
 
         <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
           <div class="frame-creator-avatar-holder">
-            <div class="frame-creator">
+            <div class="frame-creator<%= suffix %>">
               <% if(creatorThumbnail){ %>
-                <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+                <img class="frame-creator-avatar<%= suffix %>" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
               <% } else { %>
-                <div class="frame-creator-avatar-missing"></div>
+                <div class="frame-creator-avatar-missing<%= suffix %>"></div>
               <% } %>  
             </div>
           </div>

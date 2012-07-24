@@ -141,8 +141,8 @@
 	background-color: white;
 }
 
-.frame-creator-avatar-collapsed {
-	@extend .frame-creator-avatar;
+.frame-creator-collapsed {
+	@extend .frame-creator;
 
 	opacity: 0.6;
 	border-radius: $radius 0 0 $radius;
@@ -154,6 +154,11 @@
 
 .frame-creator-avatar {
 	width: 100%;
+}
+
+.frame-creator-avatar-collapsed {
+	@extend .frame-creator-avatar;
+	border-radius: $radius 0 0 $radius;
 }
 
 .frame-creator-avatar-missing{
@@ -194,7 +199,7 @@
 	@include frame-header-smalltype;
 
 	text-align: right;
-	width: 20%;
+	width: 25%;
 	float:right;
 	padding: 7px 8px 0 0;
 }
@@ -240,7 +245,7 @@
         padding: 4px 0 0 6px;
         text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 80%; 
+	width: 75%; 
 }
 
 .frame-title-collapsed {
