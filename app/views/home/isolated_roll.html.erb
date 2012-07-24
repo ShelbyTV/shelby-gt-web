@@ -4,9 +4,7 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-	<% if @meta_info[:video_info] %>
-		<%= render :partial => "meta_info", :locals => { :meta_info => @meta_info} %>
-	<% end %>
+	<%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>

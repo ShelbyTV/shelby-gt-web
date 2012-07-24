@@ -982,7 +982,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   height: 100px;
   position: relative;
   overflow: hidden;
@@ -1237,7 +1237,7 @@
 }
 /* line 3, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-header {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   margin: 0;
   padding: 12px 0 0 12px;
   position: relative;
@@ -1287,11 +1287,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -1306,34 +1310,64 @@
 }
 /* line 17, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-lining {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-}
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-item-lining {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #484b4d;
   border-radius: 5px;
   margin: 10px;
   overflow: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
+/* line 37, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after,
+.ext-elements .roll-personal .roll-item-button:after,
+.ext-elements .roll-watch-later .roll-item-button:after,
+.ext-elements .roll-likes .roll-item-button:after {
+  background-color: black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  font-size: 1.4em;
+  box-shadow: none;
+  color: #efefef;
+  opacity: .5;
+  text-align: center;
+  top: -10px;
+  height: inherit;
+}
+/* line 61, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after {
+  background-image: url("/images/assets/overlay_nowplaying.svg");
+}
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-personal .roll-item-button:after {
+  background-image: url("/images/assets/overlay_you.svg");
+}
+/* line 81, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-watch-later .roll-item-button:after {
+  background-image: url("/images/assets/overlay_watchlater.svg");
+}
+/* line 91, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-likes .roll-item-button:after {
+  background-image: url("/images/assets/overlay_like.svg");
+}
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .missing-roll-thumbnail {
   background-size: 25%;
 }
-/* line 35, ../../app/stylesheets/partials/roll-item.scss */
+/* line 103, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 42, ../../app/stylesheets/partials/roll-item.scss */
+/* line 110, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 45, ../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -1343,11 +1377,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+/* line 124, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 62, ../../app/stylesheets/partials/roll-item.scss */
+/* line 130, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -1357,26 +1391,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+/* line 139, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item.scss */
+/* line 143, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 85, ../../app/stylesheets/partials/roll-item.scss */
+/* line 153, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+/* line 162, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people,
 .ext-elements .roll-item-creator {
@@ -1386,7 +1420,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 99, ../../app/stylesheets/partials/roll-item.scss */
+/* line 167, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title,
 .ext-elements .roll-item-people {
   clear: right;
@@ -1396,7 +1430,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 108, ../../app/stylesheets/partials/roll-item.scss */
+/* line 176, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -1405,7 +1439,7 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 118, ../../app/stylesheets/partials/roll-item.scss */
+/* line 186, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total,
 .ext-elements .roll-item-watched {
   font-size: 11px;
@@ -1413,12 +1447,12 @@
   padding-right: 8px;
   text-align: right;
 }
-/* line 125, ../../app/stylesheets/partials/roll-item.scss */
+/* line 193, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 135, ../../app/stylesheets/partials/roll-item.scss */
+/* line 203, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar,
 .ext-elements .roll-item-people-avatar {
   float: left;
@@ -1426,12 +1460,12 @@
   overflow: hidden;
   width: 40px;
 }
-/* line 142, ../../app/stylesheets/partials/roll-item.scss */
+/* line 210, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 147, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -1445,7 +1479,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 155, ../../app/stylesheets/partials/roll-item.scss */
+/* line 223, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -1456,7 +1490,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 165, ../../app/stylesheets/partials/roll-item.scss */
+/* line 233, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("/images/assets/chevron.svg") no-repeat center center transparent;
   content: "\0020";
@@ -1464,19 +1498,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 178, ../../app/stylesheets/partials/roll-item.scss */
+/* line 246, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 183, ../../app/stylesheets/partials/roll-item.scss */
+/* line 251, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 190, ../../app/stylesheets/partials/roll-item.scss */
+/* line 258, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -1488,34 +1522,34 @@
   right: 0;
   top: 0;
 }
-/* line 201, ../../app/stylesheets/partials/roll-item.scss */
+/* line 269, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 206, ../../app/stylesheets/partials/roll-item.scss */
+/* line 274, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 212, ../../app/stylesheets/partials/roll-item.scss */
+/* line 280, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 282, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 215, ../../app/stylesheets/partials/roll-item.scss */
+/* line 283, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
 /* line 3, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-lining {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #2e2f30;
 }
 /* line 7, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-lining .roll-item-people {
@@ -1579,12 +1613,12 @@
 .ext-elements .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
-.ext-elements .active-list-item .roll-item-creator,
-.ext-elements .active-list-item .roll-item-total,
-.ext-elements .active-list-item .roll-item-watched,
-.ext-elements .active-list-item .roll-item-title,
-.ext-elements .active-list-item .roll-item-people {
+/* line 74, ../../app/stylesheets/partials/roll-item-people.scss */
+.ext-elements .active-list-item .roll-item-people-button .roll-item-creator,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-total,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-watched,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-title,
+.ext-elements .active-list-item .roll-item-people-button .roll-item-people {
   color: #0E0F10;
 }
 /* line 6, ../../app/stylesheets/partials/frame.scss */
@@ -1606,16 +1640,12 @@
 .ext-elements .frame {
   padding: 10px;
 }
-/* line 18, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame:hover {
-  background: #292b2d;
-}
 /* line 23, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card, .ext-elements .video-card-collapsed {
   border-radius: 5px;
   background-color: #35383a;
   border: 1px solid #222222;
-  box-shadow: inset 0 1px 0 0 #414141;
+  box-shadow: inset 0 1px 0 0 #54585a;
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -1654,34 +1684,42 @@
   background-image: url("/images/assets/missing_thumb.svg");
   background-size: 20%;
 }
-/* line 71, ../../app/stylesheets/partials/frame.scss */
+/* line 70, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header, .ext-elements .video-card-header-collapsed {
+  border-radius: 5px 5px 0 0;
+}
+/* line 76, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-header, .ext-elements .video-card-header-collapsed,
 .ext-elements .frame-share-header {
   border-bottom: 1px solid black;
   padding: 0;
 }
-/* line 76, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a, .ext-elements .video-card-header-collapsed a,
-.ext-elements .frame-share-header a {
+/* line 81, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header a, .ext-elements .video-card-header-collapsed a, .ext-elements .video-card-header a > *, .ext-elements .video-card-header-collapsed a > *,
+.ext-elements .frame-share-header a,
+.ext-elements .frame-share-header a > * {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a:active, .ext-elements .video-card-header-collapsed a:active, .ext-elements .video-card-header a:visited, .ext-elements .video-card-header-collapsed a:visited,
+/* line 85, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header a:active, .ext-elements .video-card-header-collapsed a:active, .ext-elements .video-card-header a:visited, .ext-elements .video-card-header-collapsed a:visited, .ext-elements .video-card-header a > *:active, .ext-elements .video-card-header-collapsed a > *:active, .ext-elements .video-card-header a > *:visited, .ext-elements .video-card-header-collapsed a > *:visited,
 .ext-elements .frame-share-header a:active,
-.ext-elements .frame-share-header a:visited {
-  text-decoration: none;
-}
-/* line 82, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .video-card-header a:hover, .ext-elements .video-card-header-collapsed a:hover,
-.ext-elements .frame-share-header a:hover {
+.ext-elements .frame-share-header a:visited,
+.ext-elements .frame-share-header a > *:active,
+.ext-elements .frame-share-header a > *:visited {
   text-decoration: none;
 }
 /* line 88, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .video-card-header a:hover, .ext-elements .video-card-header-collapsed a:hover, .ext-elements .video-card-header a > *:hover, .ext-elements .video-card-header-collapsed a > *:hover,
+.ext-elements .frame-share-header a:hover,
+.ext-elements .frame-share-header a > *:hover {
+  text-decoration: none;
+}
+/* line 94, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-header-collapsed {
   border-radius: 5px;
   overflow: hidden;
 }
-/* line 95, ../../app/stylesheets/partials/frame.scss */
+/* line 101, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header, .ext-elements .active-list-item .video-card-header-collapsed {
   background-color: #428e3a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #53b249), color-stop(100%, #428e3a));
@@ -1703,33 +1741,34 @@
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 100, ../../app/stylesheets/partials/frame.scss */
+/* line 107, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header h1, .ext-elements .active-list-item .video-card-header-collapsed h1, .ext-elements .active-list-item .video-card-header h2, .ext-elements .active-list-item .video-card-header-collapsed h2 {
   color: #27292a;
 }
-/* line 104, ../../app/stylesheets/partials/frame.scss */
+/* line 111, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header h3, .ext-elements .active-list-item .video-card-header-collapsed h3 {
   color: #0e0f10;
 }
-/* line 108, ../../app/stylesheets/partials/frame.scss */
+/* line 115, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .active-list-item .video-card-header .frame-title:before, .ext-elements .active-list-item .video-card-header-collapsed .frame-title:before, .ext-elements .active-list-item .video-card-header .frame-title-collapsed:before, .ext-elements .active-list-item .video-card-header-collapsed .frame-title-collapsed:before {
   content: "On Now: ";
   font-style: italic;
 }
-/* line 114, ../../app/stylesheets/partials/frame.scss */
+/* line 121, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-title-date-holder {
   height: 100%;
   overflow: hidden;
 }
-/* line 119, ../../app/stylesheets/partials/frame.scss */
+/* line 126, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-holder {
   float: left;
   height: 40px;
   width: 40px;
   background-color: black;
 }
-/* line 127, ../../app/stylesheets/partials/frame.scss */
+/* line 135, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar, .ext-elements .frame-creator-avatar-collapsed,
+.ext-elements .frame-creator,
 .ext-elements .frame-creator-avatar-missing,
 .ext-elements .frame-creator-avatar-missing-collapsed {
   border-radius: 5px 0 0 0;
@@ -1738,126 +1777,118 @@
   width: 40px;
   background-color: white;
 }
-/* line 136, ../../app/stylesheets/partials/frame.scss */
+/* line 144, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-collapsed {
   opacity: 0.6;
   border-radius: 5px 0 0 5px;
 }
-/* line 143, ../../app/stylesheets/partials/frame.scss */
+/* line 151, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .frame-creator {
+  overflow: hidden;
+}
+/* line 155, ../../app/stylesheets/partials/frame.scss */
+.ext-elements .frame-creator-avatar, .ext-elements .frame-creator-avatar-collapsed {
+  width: 100%;
+}
+/* line 159, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-missing, .ext-elements .frame-creator-avatar-missing-collapsed {
   background: url("/images/assets/missing_thumb.svg") no-repeat center center #454545;
   background-size: 50%;
 }
-/* line 149, ../../app/stylesheets/partials/frame.scss */
+/* line 165, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-avatar-missing-collapsed {
   opacity: 0.6;
   border-radius: 5px 0 0 5px;
 }
-/* line 158, ../../app/stylesheets/partials/frame.scss */
+/* line 174, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-roll, .ext-elements .frame-creator-roll-collapsed {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   float: left;
+  padding: 4px 8px 0 6px;
   width: 60%;
 }
-/* line 166, ../../app/stylesheets/partials/frame.scss */
+/* line 183, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-creator-roll-collapsed {
   color: #666;
 }
-/* line 176, ../../app/stylesheets/partials/frame.scss */
+/* line 193, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-timestamp, .ext-elements .frame-timestamp-collapsed {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   text-align: right;
   width: 40%;
   float: right;
+  padding: 7px 8px 0 0;
 }
-/* line 184, ../../app/stylesheets/partials/frame.scss */
+/* line 202, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-timestamp-collapsed {
   color: #777;
 }
-/* line 190, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame-locator {
-  font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
-  background: url() no-repeat 10px center transparent;
-  border-bottom: none;
-  border-left: 1px solid black;
-  border-right: none;
-  border-top: none;
-  color: #efefef;
-  line-height: 3.25;
-  padding: 0 1em 0 3em;
-  position: absolute;
-  right: 0;
-}
-/* line 204, ../../app/stylesheets/partials/frame.scss */
-.ext-elements .frame-locator:before {
-  border-left: 1px solid #414141;
-  content: "\0020";
-  display: block;
-  height: 40px;
-  float: left;
-  margin: 0 0 0 -36px;
-}
-/* line 215, ../../app/stylesheets/partials/frame.scss */
+/* line 233, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-title, .ext-elements .frame-title-collapsed {
-  clear: right;
   color: #bfbfbf;
-  float: left;
   font-size: 13px;
   height: 19px;
   line-height: 17px;
+  margin-right: 38px;
   overflow: hidden;
-  padding: 0 8px 0;
+  padding: 4px 0 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
 }
-/* line 229, ../../app/stylesheets/partials/frame.scss */
+/* line 246, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-title-collapsed {
   color: #777;
 }
-/* line 235, ../../app/stylesheets/partials/frame.scss */
+/* line 252, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-footer {
+  background-color: #35383a;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #414547), color-stop(100%, #35383a));
+  background: -webkit-linear-gradient(top, #414547, #35383a);
+  background: -moz-linear-gradient(top, #414547, #35383a);
+  background: -o-linear-gradient(top, #414547, #35383a);
+  background: -ms-linear-gradient(top, #414547, #35383a);
+  background: linear-gradient(top, #414547, #35383a);
   border-radius: 0 0 5px 5px;
+  border-top: 1px solid black;
   overflow: hidden;
   z-index: 5;
 }
-/* line 241, ../../app/stylesheets/partials/frame.scss */
+/* line 261, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-card-footer-collapsed {
 @extends .video-card-footer;
   height: 0px;
   overflow: hidden;
 }
-/* line 248, ../../app/stylesheets/partials/frame.scss */
+/* line 268, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-thumbnail {
   height: 125px;
   overflow: hidden;
   position: relative;
 }
-/* line 254, ../../app/stylesheets/partials/frame.scss */
+/* line 274, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-thumbnail-collapsed {
 @extends .video-thumbnail;
   height: 0px;
 }
-/* line 260, ../../app/stylesheets/partials/frame.scss */
+/* line 280, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   padding: 10px;
 }
-/* line 265, ../../app/stylesheets/partials/frame.scss */
+/* line 285, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment textarea {
   border-radius: 3px;
   border-color: #555;
@@ -1865,7 +1896,7 @@
   resize: none;
   width: 100%;
 }
-/* line 273, ../../app/stylesheets/partials/frame.scss */
+/* line 293, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-comment .video-activity-comment-submit {
   background-color: #0071a3;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094d6), color-stop(100%, #0071a3));
@@ -1884,18 +1915,18 @@
   float: right;
   margin-top: 5px;
 }
-/* line 285, ../../app/stylesheets/partials/frame.scss */
+/* line 305, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-list {
   margin: 0;
   padding-left: 0;
 }
-/* line 289, ../../app/stylesheets/partials/frame.scss */
+/* line 309, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-activity-list li {
   border-bottom: 0;
   list-style-type: none;
   padding: 0;
 }
-/* line 296, ../../app/stylesheets/partials/frame.scss */
+/* line 316, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-source {
   float: right;
   height: 1.231em;
@@ -1903,33 +1934,33 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 304, ../../app/stylesheets/partials/frame.scss */
+/* line 324, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .video-author {
   margin: 0;
 }
-/* line 309, ../../app/stylesheets/partials/frame.scss */
+/* line 329, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-vcard {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   height: 100%;
   padding: 0 9px 9px;
 }
-/* line 315, ../../app/stylesheets/partials/frame.scss */
+/* line 335, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-vcard a {
   text-decoration: none;
 }
-/* line 320, ../../app/stylesheets/partials/frame.scss */
+/* line 340, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-avatar {
   display: block;
   float: left;
 }
-/* line 324, ../../app/stylesheets/partials/frame.scss */
+/* line 344, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-avatar img {
   margin-bottom: 7px;
   margin-right: 7px;
   margin-top: 9px;
 }
-/* line 331, ../../app/stylesheets/partials/frame.scss */
+/* line 351, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-handle,
 .ext-elements .user-post-date {
   color: #a4a4a4;
@@ -1937,67 +1968,67 @@
   font-weight: 500;
   line-height: 2.8;
 }
-/* line 338, ../../app/stylesheets/partials/frame.scss */
+/* line 358, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-post-date {
   float: right;
   line-height: 1;
   margin-top: 9px;
   padding-right: 3px;
 }
-/* line 374, ../../app/stylesheets/partials/frame.scss */
+/* line 394, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text {
   margin-top: -7px;
 }
-/* line 377, ../../app/stylesheets/partials/frame.scss */
+/* line 397, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .user-video-text p {
   margin: 2px 5px 0 32px;
 }
-/* line 383, ../../app/stylesheets/partials/frame.scss */
+/* line 403, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls {
   margin: 0;
   padding: 0;
 }
-/* line 387, ../../app/stylesheets/partials/frame.scss */
+/* line 407, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li {
   display: block;
   float: left;
   list-style-type: none;
   width: 25%;
 }
-/* line 394, ../../app/stylesheets/partials/frame.scss */
+/* line 414, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li:first-child button {
   border-left: none;
 }
-/* line 400, ../../app/stylesheets/partials/frame.scss */
+/* line 420, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls li:last-child button {
   border-right: none;
 }
-/* line 405, ../../app/stylesheets/partials/frame.scss */
+/* line 425, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls button {
   font: 700 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   background: transparent;
   border-bottom: none;
-  border-left: 1px solid #414141;
+  border-left: 1px solid #54585a;
   border-right: 1px solid black;
-  border-top: 1px solid #414141;
+  border-top: 1px solid #54585a;
   display: block;
   height: 42px;
   width: 100%;
 }
-/* line 419, ../../app/stylesheets/partials/frame.scss */
+/* line 439, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity {
   font-weight: 500;
 }
-/* line 423, ../../app/stylesheets/partials/frame.scss */
+/* line 443, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites {
   border-bottom: 1px solid black;
-  border-top: 1px solid #414141;
+  border-top: 1px solid #54585a;
   font-size: 11px;
   margin: 0;
   padding: 4px;
   width: auto;
 }
-/* line 431, ../../app/stylesheets/partials/frame.scss */
+/* line 451, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites li {
   display: block;
   float: left;
@@ -2007,16 +2038,16 @@
   margin-right: 3px;
   width: 24px;
 }
-/* line 441, ../../app/stylesheets/partials/frame.scss */
+/* line 461, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites a {
   display: block;
 }
-/* line 445, ../../app/stylesheets/partials/frame.scss */
+/* line 465, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites img {
   display: block;
   width: 100%;
 }
-/* line 450, ../../app/stylesheets/partials/frame.scss */
+/* line 470, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-activity-favorites:before {
   background: url("/images/assets/videocard_like_off.svg") no-repeat 3px center transparent;
   background-size: 55%;
@@ -2025,7 +2056,7 @@
   height: 24px;
   width: 22px;
 }
-/* line 463, ../../app/stylesheets/partials/frame.scss */
+/* line 483, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like i,
 .ext-elements .frame-controls-comments i,
 .ext-elements .frame-controls-roll button,
@@ -2033,7 +2064,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
 }
-/* line 469, ../../app/stylesheets/partials/frame.scss */
+/* line 489, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like i {
   background-image: url("/images/assets/videocard_like_off.svg");
   background-position: left 0;
@@ -2042,11 +2073,11 @@
   padding-bottom: 2px;
   padding-left: 19px;
 }
-/* line 479, ../../app/stylesheets/partials/frame.scss */
+/* line 499, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-like.upvoted i, .ext-elements .frame-controls-like:hover i {
   background-image: url("/images/assets/videocard_like_on.svg");
 }
-/* line 486, ../../app/stylesheets/partials/frame.scss */
+/* line 506, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-comments i {
   background-image: url("/images/assets/videocard_comment_off.svg");
   background-position: left 0;
@@ -2055,11 +2086,11 @@
   padding-bottom: 2px;
   padding-left: 21px;
 }
-/* line 496, ../../app/stylesheets/partials/frame.scss */
+/* line 516, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-comments .frame-comments-open i, .ext-elements .frame-controls-comments:hover i {
   background-image: url("/images/assets/videocard_comment_on.svg");
 }
-/* line 503, ../../app/stylesheets/partials/frame.scss */
+/* line 523, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-roll button {
   color: transparent;
   font: 0/0 a;
@@ -2069,11 +2100,11 @@
   background-image: url("/images/assets/videocard_roll_off.svg");
   background-position: center center;
 }
-/* line 509, ../../app/stylesheets/partials/frame.scss */
+/* line 529, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-roll:hover button {
   background-image: url("/images/assets/videocard_roll_on.svg");
 }
-/* line 516, ../../app/stylesheets/partials/frame.scss */
+/* line 536, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-share button {
   color: transparent;
   font: 0/0 a;
@@ -2083,26 +2114,25 @@
   background-image: url("/images/assets/videocard_share_off.svg");
   background-position: center 45%;
 }
-/* line 522, ../../app/stylesheets/partials/frame.scss */
+/* line 542, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .frame-controls-share:hover button {
   background-image: url("/images/assets/videocard_share_on.svg");
 }
-/* line 528, ../../app/stylesheets/partials/frame.scss */
+/* line 548, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .framegroup-dupes {
   margin: 8px 0px 0px 5px;
 }
-/* line 532, ../../app/stylesheets/partials/frame.scss */
+/* line 552, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .framegroup-dupes-collapsed {
   height: 0px;
   overflow: hidden;
 }
-/* line 537, ../../app/stylesheets/partials/frame.scss */
+/* line 557, ../../app/stylesheets/partials/frame.scss */
 .ext-elements .framegroup-dupe-text {
   color: #999;
   font-size: 11px;
   font-weight: 300;
   height: 1.9em;
-  padding: 6px 8px 0;
   height: auto;
   margin: 0px;
   padding: 0px;
@@ -2167,7 +2197,7 @@
 /* line 32, ../../app/stylesheets/partials/frame-rolling.scss */
 .ext-elements .rolling-main-header {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   font-size: 1.4em;
   padding: 10px;
 }
@@ -2199,7 +2229,7 @@
 }
 /* line 11, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .ext-elements .create-roll .roll-options:first-child {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
 }
 /* line 15, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .ext-elements .create-roll .roll-options:nth-child(2) {
@@ -2210,7 +2240,7 @@
 /* line 23, ../../app/stylesheets/partials/frame-rolling-options.scss */
 .ext-elements .roll-options {
   padding: 5px 10px 10px;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   border-bottom: 1px solid black;
 }
 /* line 29, ../../app/stylesheets/partials/frame-rolling-options.scss */
@@ -2411,7 +2441,7 @@
 }
 /* line 19, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .frame-conversation-message {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   border-bottom: 1px solid black;
   padding: 10px 0 10px 10px;
 }
@@ -2461,17 +2491,26 @@
   font-size: 11px;
 }
 /* line 71, ../../app/stylesheets/partials/frame-conversation.scss */
+.ext-elements .frame-conversation-message-reply {
+  background-color: transparent;
+  background-image: url("/images/assets/comment_reply.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 27%;
+  padding-left: 1.1em;
+}
+/* line 82, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .frame-conversation-message-timestamp {
   padding-right: 0.5em;
 }
-/* line 75, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 86, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment {
   background-color: #35383a;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   padding: 10px;
   position: relative;
 }
-/* line 81, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 92, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment .new-comment-submit {
   background-color: #27292a;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404344), color-stop(100%, #27292a));
@@ -2490,7 +2529,7 @@
   margin-top: 10px;
   margin-left: 59px;
 }
-/* line 88, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input {
   font: 300 normal 100%/1.231 "Ubuntu", Trebuchet MS, sans-serif;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
@@ -2502,7 +2541,7 @@
   padding: 4px 5px;
   width: 75%;
 }
-/* line 99, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 110, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-input:focus {
   -moz-transition-property: opacity;
   -webkit-transition-property: opacity;
@@ -2519,13 +2558,13 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 107, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 118, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-user-avatar {
   height: 48px;
   width: 48px;
   float: left;
 }
-/* line 112, ../../app/stylesheets/partials/frame-conversation.scss */
+/* line 123, ../../app/stylesheets/partials/frame-conversation.scss */
 .ext-elements .new-comment-user-avatar > img {
   height: 100%;
   overflow: hidden;
@@ -2738,13 +2777,13 @@
 }
 /* line 148, ../../app/stylesheets/partials/rolls.scss */
 .ext-elements .share-comment {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   border-bottom: 1px solid black;
 }
 /* line 154, ../../app/stylesheets/partials/rolls.scss */
 .ext-elements .share-networks,
 .ext-elements .share-submit {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
 }
 /* line 158, ../../app/stylesheets/partials/rolls.scss */
 .ext-elements .share-networks {
@@ -2940,8 +2979,8 @@
 }
 /* line 49, ../../app/stylesheets/partials/roll-selection-items.scss */
 .ext-elements .roll-selection-item-lining {
-  border-top: 1px solid #343434;
-  border-right: 1px solid #343434;
+  border-top: 1px solid #484b4d;
+  border-right: 1px solid #484b4d;
   margin-right: 45px;
 }
 /* line 56, ../../app/stylesheets/partials/roll-selection-items.scss */
@@ -2974,7 +3013,7 @@
   background-position: center 26px;
   background-repeat: no-repeat;
   background-size: 25%;
-  border-top: 1px solid #272727;
+  border-top: 1px solid #3c3e40;
   border-left: 1px solid black;
   float: right;
   font-weight: 500;
@@ -2986,7 +3025,7 @@
 }
 /* line 3, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-header {
-  border-top: 1px solid #343434;
+  border-top: 1px solid #484b4d;
   margin: 0;
   padding: 12px 0 0 12px;
   position: relative;
@@ -3036,11 +3075,15 @@
   line-height: 1.5;
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/partials/roll-header.scss */
+/* line 48, ../../app/stylesheets/partials/roll-header.scss */
+.ext-elements .current-roll.roll-name-single {
+  padding-top: .5em;
+}
+/* line 53, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change {
   display: none;
 }
-/* line 51, ../../app/stylesheets/partials/roll-header.scss */
+/* line 55, ../../app/stylesheets/partials/roll-header.scss */
 .ext-elements .roll-name-change input {
   margin: -4px 0 0 -4px;
   padding: 2px;
@@ -3055,34 +3098,61 @@
 }
 /* line 17, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-lining {
-  border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
-}
-/* line 22, ../../app/stylesheets/partials/roll-item.scss */
-.ext-elements .roll-item-lining {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #484b4d;
   border-radius: 5px;
   margin: 10px;
   overflow: hidden;
 }
-/* line 31, ../../app/stylesheets/partials/roll-item.scss */
+/* line 37, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after, .ext-elements .roll-personal .roll-item-button:after, .ext-elements .roll-watch-later .roll-item-button:after, .ext-elements .roll-likes .roll-item-button:after {
+  background-color: black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  font-size: 1.4em;
+  box-shadow: none;
+  color: #efefef;
+  opacity: .5;
+  text-align: center;
+  top: -10px;
+  height: inherit;
+}
+/* line 61, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .active-list-item .roll-item-lining .roll-item-button:after {
+  background-image: url("/images/assets/overlay_nowplaying.svg");
+}
+/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-personal .roll-item-button:after {
+  background-image: url("/images/assets/overlay_you.svg");
+}
+/* line 81, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-watch-later .roll-item-button:after {
+  background-image: url("/images/assets/overlay_watchlater.svg");
+}
+/* line 91, ../../app/stylesheets/partials/roll-item.scss */
+.ext-elements .roll-likes .roll-item-button:after {
+  background-image: url("/images/assets/overlay_like.svg");
+}
+/* line 99, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .missing-roll-thumbnail {
   background-size: 25%;
 }
-/* line 35, ../../app/stylesheets/partials/roll-item.scss */
+/* line 103, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* line 42, ../../app/stylesheets/partials/roll-item.scss */
+/* line 110, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button {
   height: 150px;
 }
-/* line 45, ../../app/stylesheets/partials/roll-item.scss */
+/* line 113, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:after {
   bottom: -2px;
   box-shadow: 0 0 86px 70px black;
@@ -3092,11 +3162,11 @@
   position: absolute;
   width: 100%;
 }
-/* line 56, ../../app/stylesheets/partials/roll-item.scss */
+/* line 124, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-button:hover:after {
   box-shadow: 0 0 86px 70px #27292a;
 }
-/* line 62, ../../app/stylesheets/partials/roll-item.scss */
+/* line 130, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container {
   bottom: 0;
   left: 0;
@@ -3106,26 +3176,26 @@
   width: 100%;
   z-index: 1;
 }
-/* line 71, ../../app/stylesheets/partials/roll-item.scss */
+/* line 139, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a {
   text-decoration: none;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item.scss */
+/* line 143, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:active, .ext-elements .roll-item-container a:visited {
   text-decoration: none;
 }
-/* line 79, ../../app/stylesheets/partials/roll-item.scss */
+/* line 147, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container a:hover {
   text-decoration: underline;
 }
-/* line 85, ../../app/stylesheets/partials/roll-item.scss */
+/* line 153, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-container-column {
   float: left;
   position: relative;
   width: 50%;
   z-index: 1;
 }
-/* line 94, ../../app/stylesheets/partials/roll-item.scss */
+/* line 162, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people, .ext-elements .roll-item-creator {
   white-space: nowrap;
   overflow: hidden;
@@ -3133,7 +3203,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 99, ../../app/stylesheets/partials/roll-item.scss */
+/* line 167, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-title, .ext-elements .roll-item-people {
   clear: right;
   color: #bfbfbf;
@@ -3142,7 +3212,7 @@
   line-height: 17px;
   padding: 0 8px 0;
 }
-/* line 108, ../../app/stylesheets/partials/roll-item.scss */
+/* line 176, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-creator {
   color: #999;
   font-size: 11px;
@@ -3151,31 +3221,31 @@
   margin-top: 4px;
   padding: 6px 8px 0;
 }
-/* line 118, ../../app/stylesheets/partials/roll-item.scss */
+/* line 186, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total, .ext-elements .roll-item-watched {
   font-size: 11px;
   font-weight: 100;
   padding-right: 8px;
   text-align: right;
 }
-/* line 125, ../../app/stylesheets/partials/roll-item.scss */
+/* line 193, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-total {
   margin-top: 12px;
   padding-bottom: 3px;
 }
-/* line 135, ../../app/stylesheets/partials/roll-item.scss */
+/* line 203, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-avatar, .ext-elements .roll-item-people-avatar {
   float: left;
   height: 40px;
   overflow: hidden;
   width: 40px;
 }
-/* line 142, ../../app/stylesheets/partials/roll-item.scss */
+/* line 210, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-footer {
   height: 78px;
   margin-bottom: 2px;
 }
-/* line 147, ../../app/stylesheets/partials/roll-item.scss */
+/* line 215, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats {
   background-color: #4e5354;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7f8789), color-stop(100%, #4e5354));
@@ -3189,7 +3259,7 @@
   cursor: pointer;
   width: 46px;
 }
-/* line 155, ../../app/stylesheets/partials/roll-item.scss */
+/* line 223, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count {
   border-bottom: 1px solid #4e5354;
   display: block;
@@ -3200,7 +3270,7 @@
   margin: 0 3px;
   text-align: center;
 }
-/* line 165, ../../app/stylesheets/partials/roll-item.scss */
+/* line 233, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-stats-count:after {
   background: url("/images/assets/chevron.svg") no-repeat center center transparent;
   content: "\0020";
@@ -3208,19 +3278,19 @@
   height: 100%;
   width: 100%;
 }
-/* line 178, ../../app/stylesheets/partials/roll-item.scss */
+/* line 246, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents {
   height: inherit;
   margin-right: 46px;
 }
-/* line 183, ../../app/stylesheets/partials/roll-item.scss */
+/* line 251, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-list {
   height: inherit;
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* line 190, ../../app/stylesheets/partials/roll-item.scss */
+/* line 258, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail {
   background-color: #111;
   cursor: pointer;
@@ -3232,34 +3302,34 @@
   right: 0;
   top: 0;
 }
-/* line 201, ../../app/stylesheets/partials/roll-item.scss */
+/* line 269, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .thumbnail {
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-/* line 206, ../../app/stylesheets/partials/roll-item.scss */
+/* line 274, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail .missing-placeholder {
   width: 10%;
   margin-top: 7%;
   display: none;
 }
-/* line 212, ../../app/stylesheets/partials/roll-item.scss */
+/* line 280, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing {
   text-align: center;
 }
-/* line 214, ../../app/stylesheets/partials/roll-item.scss */
+/* line 282, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .thumbnail {
   display: none;
 }
-/* line 215, ../../app/stylesheets/partials/roll-item.scss */
+/* line 283, ../../app/stylesheets/partials/roll-item.scss */
 .ext-elements .roll-item-contents-thumbnail.missing .missing-placeholder {
   display: inline;
 }
 /* line 3, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-lining {
   border-bottom: 1px solid black;
-  border-top: 1px solid #343434;
+  border-top: 1px solid #2e2f30;
 }
 /* line 7, ../../app/stylesheets/partials/roll-item-people.scss */
 .ext-elements .roll-item-people-lining .roll-item-people {
@@ -3322,8 +3392,8 @@
 .ext-elements .active-list-item .roll-item-people-button:hover:after {
   box-shadow: 0 0 44px 16px #3a7c33;
 }
-/* line 75, ../../app/stylesheets/partials/roll-item-people.scss */
-.ext-elements .active-list-item .roll-item-creator, .ext-elements .active-list-item .roll-item-total, .ext-elements .active-list-item .roll-item-watched, .ext-elements .active-list-item .roll-item-title, .ext-elements .active-list-item .roll-item-people {
+/* line 74, ../../app/stylesheets/partials/roll-item-people.scss */
+.ext-elements .active-list-item .roll-item-people-button .roll-item-creator, .ext-elements .active-list-item .roll-item-people-button .roll-item-total, .ext-elements .active-list-item .roll-item-people-button .roll-item-watched, .ext-elements .active-list-item .roll-item-people-button .roll-item-title, .ext-elements .active-list-item .roll-item-people-button .roll-item-people {
   color: #0E0F10;
 }
 /* line 3, ../../app/stylesheets/bookmarklet-overwrite.scss */

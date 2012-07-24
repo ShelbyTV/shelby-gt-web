@@ -8,9 +8,15 @@ $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
+$icon-comment-reply             : "#{$path}comment_reply#{$extension}";
 $icon-mark                      : "#{$path}mark#{$extension}";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
+
+$icon-overlay-like              : "#{$path}overlay_like#{$extension}";
+$icon-overlay-nowplaying        : "#{$path}overlay_nowplaying#{$extension}";
+$icon-overlay-watchlater        : "#{$path}overlay_watchlater#{$extension}";
+$icon-overlay-you               : "#{$path}overlay_you#{$extension}";
 
 $icon-player-fullscreen-enable  : "#{$path}player_fullscreen_enable#{$extension}";
 $icon-player-fullscreen-disable : "#{$path}player_fullscreen_disable#{$extension}";
@@ -55,7 +61,6 @@ $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
 //UI-TODO: comb through radar.scss for hardcoded variables
 //         below needs to be added to css:
-$icon-comment-reply: "comment_reply.svg";
 
 
 //$x-pos : center !default;
@@ -85,7 +90,7 @@ $margin         : 0.5em;
 //border colors
 $outline : #222;
 $inset   : #000;
-$outset  : #343434;
+$outset  : #484b4d;
 
 $rolls-inset : #333; //possibly obselete after new rolling pages are done
 $rolls-outset : #555; //possibly obselete after new rolling pages are done
@@ -108,12 +113,14 @@ $header-bg-color                    : #2c2c2c;
 $header-outline                     : #202020;
 $filter-bg-color			              : #585858;
 $video-card-color                   : #404040;
+$video-card-outline                 : #222;
 $video-card-bg-color                : #35383a;
 $video-card-thumbnail               : #494949;
 $video-controls-progress-load       : #303030;
 $video-player 											: #0e0e0e;
 $rolling-header-bg-color            : #555;
 $rolls-bg-color 			              : #585858;
+$rolls-people-outset                : #2E2F30;
 $toggle-switch-gray                 : #fefefe;
 
 $settingsBG : #2b2a2a;

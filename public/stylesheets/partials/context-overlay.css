@@ -1,21 +1,23 @@
 /*
 Syntax error: Undefined mixin 'transition-property'.
-        on line 4 of /shelbytv/app/stylesheets/partials/context-overlay.scss, in `transition-property'
-        from line 4 of /shelbytv/app/stylesheets/partials/context-overlay.scss
+        on line 6 of /shelbytv/app/stylesheets/partials/context-overlay.scss, in `transition-property'
+        from line 6 of /shelbytv/app/stylesheets/partials/context-overlay.scss
 
 1: @import "base";
 2: 
-3: .context-overlay-wrapper {
-4: 	@include transition-property(opacity);
-5: 	@include transition-duration(.25s);
-6: 	@include transition-timing-function(ease-out);
-7: 	@include transition-delay(0s);
-8: 	
-9: 	left: $defaultMargin;
+3: $outset : adjust-lightness($outset,-10%);
+4: 
+5: .context-overlay-wrapper {
+6: 	@include transition-property(opacity);
+7: 	@include transition-duration(.25s);
+8: 	@include transition-timing-function(ease-out);
+9: 	@include transition-delay(0s);
+10: 	
+11: 	left: $defaultMargin;
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/context-overlay.scss:4:in `transition-property'
-/shelbytv/app/stylesheets/partials/context-overlay.scss:4
+/shelbytv/app/stylesheets/partials/context-overlay.scss:6:in `transition-property'
+/shelbytv/app/stylesheets/partials/context-overlay.scss:6
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -62,7 +64,7 @@ Backtrace:
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__97612684014726534__call__3788504430371361801__callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__4279977572940711050__call__4302490194163058663__callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
@@ -92,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 4 of /shelbytv/app/stylesheets/partials/context-overlay.scss, in `transition-property'\A         from line 4 of /shelbytv/app/stylesheets/partials/context-overlay.scss\A \A 1: @import \"base\";\A 2: \A 3: .context-overlay-wrapper {\A 4: 	@include transition-property(opacity);\A 5: 	@include transition-duration(.25s);\A 6: 	@include transition-timing-function(ease-out);\A 7: 	@include transition-delay(0s);\A 8: 	\A 9: 	left: $defaultMargin;"; }
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 6 of /shelbytv/app/stylesheets/partials/context-overlay.scss, in `transition-property'\A         from line 6 of /shelbytv/app/stylesheets/partials/context-overlay.scss\A \A 1: @import \"base\";\A 2: \A 3: $outset : adjust-lightness($outset,-10%);\A 4: \A 5: .context-overlay-wrapper {\A 6: 	@include transition-property(opacity);\A 7: 	@include transition-duration(.25s);\A 8: 	@include transition-timing-function(ease-out);\A 9: 	@include transition-delay(0s);\A 10: 	\A 11: 	left: $defaultMargin;"; }

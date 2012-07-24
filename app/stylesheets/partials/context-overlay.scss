@@ -1,5 +1,7 @@
 @import "base";
 
+$outset : adjust-lightness($outset,-10%);
+
 .context-overlay-wrapper {
 	@include transition-property(opacity);
 	@include transition-duration(.25s);
@@ -25,14 +27,13 @@
 		margin: 10px;
 	}
 
-	.frame-title {
-		width: 61%;
+	.video-card-header,
+	.video-card-footer {
+		background: transparent;
 	}
 
-	.frame-locator {
-		&:before {
-			border-left-color: $outset;
-		}
+	.video-card-header {
+		border-bottom: none;
 	}
 
 	.frame-controls {
@@ -47,3 +48,14 @@
   opacity: 0;
 }
 
+.context-overlay-header{
+		&:active,
+		&:link,
+		&:visited {
+			text-decoration: none;
+		}
+		
+		&:hover {
+			text-decoration: underline;
+		}
+}

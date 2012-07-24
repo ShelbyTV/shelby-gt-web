@@ -65,7 +65,7 @@ javascripts:
     - public/javascripts/app/views/item_header.view.js
     - public/javascripts/app/views/autocomplete.view.js
     - public/javascripts/app/views/email_address_autocomplete.view.js
-    - public/javascripts/app/views/twitter_autocomplete.view.js
+    - public/javascripts/app/views/shelby_autocomplete.view.js
     - public/javascripts/app/views/rolling_create_roll_view.js
     - public/javascripts/app/views/rolling_selection_item.view.js
     - public/javascripts/app/views/rolling_selection_list.view.js

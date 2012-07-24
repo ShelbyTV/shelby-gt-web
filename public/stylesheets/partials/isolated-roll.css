@@ -37,10 +37,6 @@ body.isolated-roll .guide-education {
 body.isolated-roll .context-overlay-lining .video-card-header {
   border-bottom: none;
 }
-/* line 38, ../../../app/stylesheets/partials/isolated-roll.scss */
-body.isolated-roll .context-overlay-lining .frame-locator {
-  display: none;
-}
 /* line 42, ../../../app/stylesheets/partials/isolated-roll.scss */
 body.isolated-roll .context-overlay-lining .frame-creator-roll {
   width: inherit;

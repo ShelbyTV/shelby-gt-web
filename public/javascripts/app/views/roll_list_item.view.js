@@ -1,7 +1,7 @@
 libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
+    activationStateProperty : 'activeFrameModel'
   }),
 
   events : function() {
@@ -17,7 +17,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({roll : this.model}));
+    this.$el.html(this.template({roll : this.model, options: this.options}));
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
