@@ -22,8 +22,10 @@
     _listView : null,
 
     _dashboardMasterCollection : null,
+    _dashboardView : null,
 
     _currentRollMasterCollection : null,
+    _currentRollView : null,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -170,6 +172,16 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
+      switch (this.model.get('displayState')) {
+        case DisplayState.dashboard :
+          this._dashboardView = this._listView;
+          break;
+        case DisplayState.standardRoll :
+        case DisplayState.watchLaterRoll :
+          this._currentRollView = this._listView;
+          break;
+      }
+
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
       if (!(_(guideModel.changedAttributes()).has('pollAttempts') && guideModel.get('pollAttempts') > 1)){
@@ -246,19 +258,19 @@
           if (guideModel.get('displayState') == DisplayState.dashboard) {
             guideModel.set({
               playingState : PlayingState.dashboard,
-              playingFramesCollection : this._dashboardMasterCollection
+              playingFrameGroupCollection : this._dashboardView.frameGroupCollection
             });
           } else {
             guideModel.set({
               playingState : PlayingState.roll,
-              playingFramesCollection : this._currentRollMasterCollection
+              playingFrameGroupCollection : this._currentRollView.frameGroupCollection
             });
           }
         }
       } else {
         guideModel.set({
           playingState : PlayingState.none,
-          playingFramesCollection : null
+          playingFrameGroupCollection : null
         });
       }
     },
@@ -290,23 +302,19 @@
       } 
 
       var self = this,
-          _frames,
+          _frameGroups,
           _index = -1,
-          _currentFrameIndex = -1,
+          _currentFrameGroupIndex = -1,
           _currentFrame = this.model.get('activeFrameModel');
       
-      if (this.model.get('playingState') == PlayingState.dashboard) {
-        _frames = this.model.get('playingFramesCollection').pluck('frame');
-      } else {
-        _frames = this.model.get('playingFramesCollection').models;
-      }
+      _frameGroups = this.model.get('playingFrameGroupCollection').models;
 
-      var _frameInCollection = _(_frames).find(function(frame){return frame.id == _currentFrame.id;});
+      var _frameInCollection = _(_frameGroups).find(function(frameGroup){return frameGroup.get('frames').at(0).get('video').id == _currentFrame.get('video').id;});
       if (_frameInCollection) {
-        _currentFrameIndex = _frames.indexOf(_frameInCollection);
-        _index = _currentFrameIndex + skip;
+        _currentFrameGroupIndex = _frameGroups.indexOf(_frameInCollection);
+        _index = _currentFrameGroupIndex + skip;
       } else {
-        _currentFrameIndex = 0;
+        _currentFrameGroupIndex = 0;
       }
 
       // loop to skip collapsed frames (looping should only happen in dashboard view)
@@ -314,30 +322,30 @@
 
         // bad index means we just stay on current video...
         if (_index < 0) {
-          _index = _currentFrameIndex;
+          _index = _currentFrameGroupIndex;
           break;
-        } else if (_index >= _frames.length) {
+        } else if (_index >= _frameGroups.length) {
           // ideally would load more videos here? do something like _loadMoreWhenLastItemActive
-          _index = _currentFrameIndex;
+          _index = _currentFrameGroupIndex;
           break;
         }
 
-        if (!_frames) {
+        if (!_frameGroups) {
           _index = 0;
           break;
         }
 
-        var _indexFrameInCollection = _frames[_index];
+        var _indexFrameGroupInCollection = _frameGroups[_index];
 
-        if (_indexFrameInCollection.get('collapsed')) {
-          _index = _index + skip; // keep looking for a non-collapsed frame to play
+        if (_indexFrameGroupInCollection.get('collapsed')) {
+          _index = _index + skip; // keep looking for a non-collapsed frame group to play
         } else {
-          break; // otherwise we have a good non-collapsed frame to play
+          break; // otherwise we have a good non-collapsed frame group to play
         }
       }
 
       this.model.set({
-        activeFrameModel : _frames[_index],
+        activeFrameModel : _frameGroups[_index].get('frames').at(0),
         skippingVideo : true
       });
 

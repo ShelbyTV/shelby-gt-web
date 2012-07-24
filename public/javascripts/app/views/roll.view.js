@@ -5,14 +5,14 @@
 
   libs.shelbyGT.RollView = FramePlayPagingListView.extend({
 
-    _frameGroupsCollection : null,
+    frameGroupCollection : null,
 
     className : FramePlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
-      this._frameGroupsCollection = new libs.shelbyGT.FrameGroupsCollection();
+      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
       _(this.options).extend({
-        displayCollection: this._frameGroupsCollection
+        displayCollection: this.frameGroupCollection
       });
 
       FramePlayPagingListView.prototype.initialize.call(this);

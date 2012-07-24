@@ -6,7 +6,7 @@
 
   libs.shelbyGT.DashboardView = FramePlayPagingListView.extend({
     
-    _frameGroupsCollection : null,
+    frameGroupCollection : null,
 
     className : FramePlayPagingListView.prototype.className + ' dashboard',
 
@@ -33,14 +33,14 @@
 
     initialize : function(){
       var self = this;
-      this._frameGroupsCollection = new libs.shelbyGT.FrameGroupsCollection();
+      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
 
       _(this.options).extend({
         listItemView : function(item, params){
           var mapResult = self.actionToViewMap[item.get('primaryDashboardEntry').get('action')];
           return new mapResult.view(_(params).extend({model:item}));
         },
-        displayCollection: this._frameGroupsCollection
+        displayCollection: this.frameGroupCollection
       });
       FramePlayPagingListView.prototype.initialize.call(this);
     },
