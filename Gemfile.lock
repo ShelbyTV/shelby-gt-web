@@ -126,11 +126,11 @@ DEPENDENCIES
   bson
   bson_ext
   capistrano
-  compass-rails
+  compass-rails (~> 1.0.3)
   ejs
   httparty
   jquery-rails
   quiet_assets
   rails (= 3.2.2)
-  sass-rails
+  sass-rails (~> 3.2.5)
   settingslogic
