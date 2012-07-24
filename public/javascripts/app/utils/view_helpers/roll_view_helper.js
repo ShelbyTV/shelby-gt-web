@@ -1,7 +1,7 @@
 libs.shelbyGT.viewHelpers.roll = {
   titleForDisplay : function(roll){
     if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-      return "Hearts";
+      return "Liked";
     }
     else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_watch_later){
       return "Watch Later";

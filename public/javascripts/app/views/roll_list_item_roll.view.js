@@ -1,7 +1,7 @@
 libs.shelbyGT.RollItemRollView = libs.shelbyGT.RollItemView.extend({
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
+    activationStateProperty : 'activeFrameModel'
   }),
 
   // RollItemView overrides
