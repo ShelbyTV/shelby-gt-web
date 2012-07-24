@@ -8,9 +8,15 @@ $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
+$icon-comment-reply             : "#{$path}comment_reply#{$extension}";
 $icon-mark                      : "#{$path}mark#{$extension}";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
+
+$icon-overlay-like              : "#{$path}overlay_like#{$extension}";
+$icon-overlay-nowplaying        : "#{$path}overlay_nowplaying#{$extension}";
+$icon-overlay-watchlater        : "#{$path}overlay_watchlater#{$extension}";
+$icon-overlay-you               : "#{$path}overlay_you#{$extension}";
 
 $icon-player-fullscreen-enable  : "#{$path}player_fullscreen_enable#{$extension}";
 $icon-player-fullscreen-disable : "#{$path}player_fullscreen_disable#{$extension}";
@@ -55,7 +61,6 @@ $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
 //UI-TODO: comb through radar.scss for hardcoded variables
 //         below needs to be added to css:
-$icon-comment-reply: "comment_reply.svg";
 
 
 //$x-pos : center !default;

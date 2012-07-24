@@ -64,8 +64,9 @@
 //	padding: $defaultMargin - 4 $defaultMargin - 2;
 	padding: 0;
 
-	a {
+	a, a > * {
 		text-decoration: none;
+
 		&:active,
 		&:visited {
 			text-decoration: none;
@@ -95,13 +96,21 @@
   }
 }
 
-.frame-creator-avatar,
+.frame-creator,
 .frame-creator-avatar-missing{
 
 	border-radius: $radius 0 0 0;
 	float: left;
 	height: 40px;
 	width: 40px;
+}
+
+.frame-creator {
+	overflow: hidden;
+}
+
+.frame-creator-avatar {
+	width: 100%;
 }
 
 .frame-creator-avatar-missing{
@@ -118,7 +127,7 @@
 	@include ellipsis();
 
 	float: left;
-	width: 50%;
+	padding: 4px 8px 0 6px;
 }
 
 .frame-creator-origin-twitter{
@@ -128,45 +137,44 @@
 .frame-timestamp {
 	@include frame-header-smalltype;
 	float:right;
+	padding: 7px 8px 0 0;
 }
 
-.frame-locator {
-	@include buttonfont;
+//.xframe-locator {
+//	@include buttonfont;
 
-	background: url() no-repeat 10px center transparent;
-	border-bottom: none;
-	border-left: 1px solid $inset;
-	border-right: none;
-	border-top: none;
-	color: $button-color;
-	line-height: 3.25;
-	padding: 0 1em 0 3em;
-	position: absolute;
-	right: 0;
+//	background: url($icon-locate) no-repeat 10px center transparent;
+//	border-bottom: none;
+//	border-left: 1px solid $inset;
+//	border-right: none;
+//	border-top: none;
+//	color: $button-color;
+//	line-height: 3.25;
+//	padding: 0 1em 0 3em;
+//	position: absolute;
+//	right: 0;
 
-	&:before {
-		border-left: 1px solid adjust-lightness($outset, 5%);
-		content: "\0020";
-		display: block;
-		height: 40px;
-		float: left;
-		margin: 0 0 0 -36px;
-	}
+//	&:before {
+//		border-left: 1px solid adjust-lightness($outset, 5%);
+//		content: "\0020";
+//		display: block;
+//		height: 40px;
+//		float: left;
+//		margin: 0 0 0 -36px;
+//	}
 
-}
+//}
 
 .frame-title {
-	clear: right; 
 	color: #bfbfbf;
-	float: left;
   font-size: 13px;
   height: 19px;
   line-height: 17px;
+  margin-right: 38px;
 	overflow: hidden;
-  padding: 0 8px 0;
+  padding: 4px 0 0 6px;
   text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 83%; 
 }
 
 .video-card-footer {

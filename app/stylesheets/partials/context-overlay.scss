@@ -25,16 +25,6 @@
 		margin: 10px;
 	}
 
-	.frame-title {
-		width: 61%;
-	}
-
-	.frame-locator {
-		&:before {
-			border-left-color: $outset;
-		}
-	}
-
 	.frame-controls {
 		button{
 			border-top-color: $outset;
@@ -47,3 +37,14 @@
   opacity: 0;
 }
 
+.context-overlay-header{
+		&:active,
+		&:link,
+		&:visited {
+			text-decoration: none;
+		}
+		
+		&:hover {
+			text-decoration: underline;
+		}
+}

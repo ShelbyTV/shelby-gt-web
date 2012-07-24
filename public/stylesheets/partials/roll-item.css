@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'ellipsis'.
-        on line 95 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'
-        from line 95 of /shelbytv/app/stylesheets/partials/roll-item.scss
+        on line 163 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'
+        from line 163 of /shelbytv/app/stylesheets/partials/roll-item.scss
 
-90: }
-91: 
-92: .roll-item-title,
-93: .roll-item-people,
-94: .roll-item-creator {
-95: 	@include ellipsis();
-96: }
-97: 
-98: .roll-item-title,
-99: .roll-item-people { 
-100: 	clear: right; 
+158: }
+159: 
+160: .roll-item-title,
+161: .roll-item-people,
+162: .roll-item-creator {
+163: 	@include ellipsis();
+164: }
+165: 
+166: .roll-item-title,
+167: .roll-item-people { 
+168: 	clear: right; 
 
 Backtrace:
-/shelbytv/app/stylesheets/partials/roll-item.scss:95:in `ellipsis'
-/shelbytv/app/stylesheets/partials/roll-item.scss:95
+/shelbytv/app/stylesheets/partials/roll-item.scss:163:in `ellipsis'
+/shelbytv/app/stylesheets/partials/roll-item.scss:163
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -64,7 +64,7 @@ Backtrace:
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/cookies.rb:338:in `call'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.2/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__97612684014726534__call__3788504430371361801__callbacks'
+/home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `_run__2005051165558637174__call__3545697180379019385__callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:405:in `__run_callback'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 /home/vagrant/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.2/lib/active_support/callbacks.rb:81:in `run_callbacks'
@@ -94,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'ellipsis'.\A         on line 95 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'\A         from line 95 of /shelbytv/app/stylesheets/partials/roll-item.scss\A \A 90: }\A 91: \A 92: .roll-item-title,\A 93: .roll-item-people,\A 94: .roll-item-creator {\A 95: 	@include ellipsis();\A 96: }\A 97: \A 98: .roll-item-title,\A 99: .roll-item-people { \A 100: 	clear: right; "; }
+  content: "Syntax error: Undefined mixin 'ellipsis'.\A         on line 163 of /shelbytv/app/stylesheets/partials/roll-item.scss, in `ellipsis'\A         from line 163 of /shelbytv/app/stylesheets/partials/roll-item.scss\A \A 158: }\A 159: \A 160: .roll-item-title,\A 161: .roll-item-people,\A 162: .roll-item-creator {\A 163: 	@include ellipsis();\A 164: }\A 165: \A 166: .roll-item-title,\A 167: .roll-item-people { \A 168: 	clear: right; "; }
