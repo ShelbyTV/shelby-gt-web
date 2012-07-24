@@ -20,10 +20,11 @@
   
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
-  <%= include_stylesheets :common %>
+
   <!--[if lt IE 9]><link href="/stylesheets/png.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->  
   
-  <%= include_javascripts :common, :shelby %>
+  <%= javascript_include_tag "common" %>
+  <%= javascript_include_tag "shelby" %>
 </head>
 
 <body>
