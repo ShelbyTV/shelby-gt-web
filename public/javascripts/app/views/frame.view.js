@@ -75,36 +75,45 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
   
   requestFrameShareView: function(){
-    this._hideInGuideView();
-
-    if (!this._frameSharingInGuideView) {
+    if (this._frameSharingInGuideView) {
+      if (this._frameSharingInGuideView == shelby.models.guide.get('activeGuideOverlayView')) {
+        this._frameSharingInGuideView.hide();
+        return;
+      }
+    } else {
       var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
       
       this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model, roll:personalRoll});
       this._frameSharingInGuideView.render();
     }
+
+    this._hideInGuideView();
+    this._frameSharingInGuideView.insertIntoDom(false);
     this._frameSharingInGuideView.reveal();
-
     shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView);
-
   },
   
   requestFrameRollView : function(){
-    this._hideInGuideView();
-
-    if (!this._frameRollingView) {
+    if (this._frameRollingView) {
+      if (this._frameRollingView == shelby.models.guide.get('activeGuideOverlayView')) {
+        this._frameRollingView.hide();
+        return;
+      }
+    } else {
       this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
       this._frameRollingView.render();
     }
-    this._frameRollingView.reveal();
 
+    this._hideInGuideView();
+    this._frameRollingView.insertIntoDom(false);
+    this._frameRollingView.reveal();
     shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView);
   },
 
   _hideInGuideView : function(){
     var view = shelby.models.guide.get('activeGuideOverlayView');
 
-    view && view.cancel();
+    view && view.hide();
 
   },
 
@@ -139,14 +148,19 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
   
   _requestConversationView : function(){
-    this._hideInGuideView();
-
-    if(!this._conversationView){
+    if (this._conversationView) {
+      if (this._conversationView == shelby.models.guide.get('activeGuideOverlayView')) {
+        this._conversationView.hide();
+        return;
+      }
+    } else {
       this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model});
       this._conversationView.render();
     }
-    this._conversationView.reveal();
 
+    this._hideInGuideView();
+    this._conversationView.insertIntoDom(false);
+    this._conversationView.reveal();
     shelby.models.guide.set('activeGuideOverlayView', this._conversationView);
   },
 
