@@ -91,7 +91,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
     var activeFrameModel = guideModel.get('activeFrameModel');
-    return activeFrameModel && activeFrameModel.id == this.model.get('frames').at(0).id;
+    if (activeFrameModel && activeFrameModel.id == this.model.get('frames').at(0).id) {
+      this._expand();
+      return true;
+    } else {
+      return false;
+    }
   },
   
   requestFrameShareView: function(){
