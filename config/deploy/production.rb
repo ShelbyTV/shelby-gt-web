@@ -1,3 +1,4 @@
+load 'deploy/assets'
 require 'bundler/capistrano'
 #############################################################
 #	Servers
