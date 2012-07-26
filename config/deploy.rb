@@ -55,7 +55,6 @@ end
 
 after "deploy:update_code" do
   bundler.bundle_new_release
-  load 'deploy/assets'
 end
 
 #############################################################
