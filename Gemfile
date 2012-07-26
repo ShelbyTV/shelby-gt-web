@@ -25,18 +25,15 @@ gem 'quiet_assets', :group => :development
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  # gem 'sass-rails',   '~> 3.2.3'
-  gem "compass", "0.11.7"
+  gem 'sass-rails', '~> 3.2.5'
+  gem 'compass-rails', '~> 1.0.3'
+  gem 'ejs'
 end
 
-#
-# -- Asset Compression
-#
+gem 'jquery-rails'
 
 # NOTE: The most recent version of jammit (0.6.5) includes ruby-yui-compressor (https://github.com/sstephenson/ruby-yui-compressor) which
 # is at version 0.9.6 which includes yui-compressor version 2.4.4 which chokes on inline svg.  See assets.yml for the temporary fix.
-gem 'jammit'
-gem 'js_erb'
 
 
 #
