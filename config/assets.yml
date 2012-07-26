@@ -9,78 +9,9 @@ javascript_compressor: yui
 template_function: _.template
 
 javascripts:
-  common:
-    - public/javascripts/common/**/*.js
-    - public/javascripts/compiled/app.config.js
-  shelby:
+  shelby-jst:
     # JSTs
     - app/views/templates/**/*.jst
-    # backbone && underscore
-    - public/javascripts/backbone/underscore.js
-    - public/javascripts/backbone/backbone.js
-    - public/javascripts/backbone/backbone-relational.js
-    - public/javascripts/backbone/backbone.queryparams.js
-    - public/javascripts/backbone/backbone-support/support.js
-    - public/javascripts/backbone/backbone-support/swapping_router.js
-    - public/javascripts/backbone/backbone-support/composite_view.js
-    - public/javascripts/backbone/backbone-support/composite_behavior_view.js
-    # underscore mixins
-    - public/javascripts/backbone/underscore.inflection.js
-    # jQuery plugins
-    - public/javascripts/jquery-plugins/jquery-ui-1.8.19.core-draggable.min.js
-    - public/javascripts/jquery-plugins/jquery.scrollTo.js
-    - public/javascripts/jquery-plugins/jquery.animateAuto.js
-    - public/javascripts/jquery-plugins/jquery.color.js
-    - public/javascripts/jquery-plugins/jquery.urlparams.js
-    - public/javascripts/jquery-plugins/textinputs_jquery.js
-    # swf
-    - public/javascripts/swfobject.js
-    # shelby backbone app - assets that need to be loaded in dependency order
-    - public/javascripts/app/app.js
-    - public/javascripts/app/models/lib/shelby.base.model.js
-    - public/javascripts/app/config/db.config.js
-    - public/javascripts/app/utils/backbone_collection.utils.js
-    - public/javascripts/app/models/db/roll.model.js
-    - public/javascripts/app/models/ui/share.model.js
-    - public/javascripts/app/models/ui/share_action_state.model.js
-    - public/javascripts/app/views/list_item.view.js
-    - public/javascripts/app/views/active_highlight_list_item.view.js
-    - public/javascripts/app/views/frame.view.js
-    - public/javascripts/app/views/list.view.js
-    - public/javascripts/app/views/smart_refresh_list.view.js
-    - public/javascripts/app/views/paging_list.view.js
-    - public/javascripts/app/views/frame_play_paging_list.view.js
-    - public/javascripts/app/views/dashboard.view.js
-    - public/javascripts/app/views/guide_overlay.view.js
-    - public/javascripts/app/views/roll_list.view.js
-    - public/javascripts/app/views/roll.view.js
-    - public/javascripts/app/views/user_preferences.view.js
-    - public/javascripts/app/views/scrolling_guide.view.js
-    - public/javascripts/app/views/help.view.js
-    - public/javascripts/app/views/team.view.js
-    - public/javascripts/app/views/legal.view.js
-    - public/javascripts/app/views/roll_action_menu.view.js
-    - public/javascripts/app/views/roll_header.view.js
-    - public/javascripts/app/views/roll_overlay_context.view.js
-    - public/javascripts/app/views/item_header.view.js
-    - public/javascripts/app/views/autocomplete.view.js
-    - public/javascripts/app/views/email_address_autocomplete.view.js
-    - public/javascripts/app/views/shelby_autocomplete.view.js
-    - public/javascripts/app/views/rolling_create_roll_view.js
-    - public/javascripts/app/views/rolling_selection_item.view.js
-    - public/javascripts/app/views/rolling_selection_list.view.js
-    - public/javascripts/app/views/share.view.js
-    - public/javascripts/app/views/message.view.js
-    - public/javascripts/app/browser.js
-    - public/javascripts/app/models/db/user.model.js
-    # shelby backbone app - all other assets
-    - public/javascripts/app/config/*.js
-    - public/javascripts/app/utils/**/*.js
-    - public/javascripts/app/models/lib/*.js
-    - public/javascripts/app/models/**/*.js
-    - public/javascripts/app/collections/*.js
-    - public/javascripts/app/views/**/*.js
-    - public/javascripts/app/routers/*.js
     
 stylesheets:
   common:
