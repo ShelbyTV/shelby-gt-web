@@ -21,8 +21,9 @@
   <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
 
-  <%= include_stylesheets :common %>
-  <%= include_javascripts :common, :shelby %>
+  <%= stylesheet_link_tag "screen", :media => "screen" %>
+  <%= javascript_include_tag "common" %>
+  <%= javascript_include_tag "shelby" %>
 
 </head>
 <body>
