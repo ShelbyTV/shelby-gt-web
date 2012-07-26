@@ -6,7 +6,7 @@ worker_processes 4
 preload_app true
 timeout 30
 listen "/tmp/shelby-web.socket", :backlog => 64
-listen 8080, :tcp_nopush => true
+#listen 8080, :tcp_nopush => true
 
 # Spawn unicorn master worker for user apps (group: apps)
 user 'gt'
