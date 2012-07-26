@@ -8,11 +8,11 @@
 
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
-    events : {
-      "click .back:not(.js-busy)" : "cancel",
+    events : _.extend({}, GuideOverlayView.prototype.events, {
+      "click .back:not(.js-busy)" : "hide",
       "click .js-new-comment-submit" : "_addMessage",
       "click .js-message-reply" : "_reply"
-    },
+    }),
 
     className : 'conversation-overlay',
 
@@ -63,10 +63,6 @@
     _renderError : function(msg){
       this.$('.js-add-message-input').addClass('error');
       return false;
-    },
-    
-    cancel : function(){
-      this.hide();
     },
     
     _reply : function(e){

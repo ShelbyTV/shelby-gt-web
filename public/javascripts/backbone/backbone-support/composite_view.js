@@ -80,7 +80,17 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   _removeChild: function(view) {
     var index = this.children.indexOf(view);
     this.children.splice(index, 1);
+  },
+
+  delegateEvents : function(recursive) {
+    Backbone.View.prototype.delegateEvents.call(this);
+    if (recursive) {
+      this.children.each(function(childView){
+        childView.delegateEvents(recursive);
+      });
+    }
   }
+
 });
 
 Support.CompositeView.extend = Backbone.View.extend;

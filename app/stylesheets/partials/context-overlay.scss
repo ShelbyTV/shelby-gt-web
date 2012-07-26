@@ -1,5 +1,7 @@
 @import "base";
 
+$outset : adjust-lightness($outset,-10%);
+
 .context-overlay-wrapper {
 	@include transition-property(opacity);
 	@include transition-duration(.25s);
@@ -23,6 +25,15 @@
 		background-color: $guide-bg-color;
 		box-shadow: inset 0px 1px 0px 0px $outset;
 		margin: 10px;
+	}
+
+	.video-card-header,
+	.video-card-footer {
+		background: transparent;
+	}
+
+	.video-card-header {
+		border-bottom: none;
 	}
 
 	.frame-controls {

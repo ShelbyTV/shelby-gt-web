@@ -1,18 +1,19 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
   var RollingCreateRollView = libs.shelbyGT.RollingCreateRollView;
   var RollingSelectionListView = libs.shelbyGT.RollingSelectionListView;
   var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
   var ShareActionState = libs.shelbyGT.ShareActionState;
   
-  libs.shelbyGT.FrameRollingView = libs.shelbyGT.GuideOverlayView.extend({
+  libs.shelbyGT.FrameRollingView = GuideOverlayView.extend({
 
     _frameRollingState : null,
 
-    events : {
-      "click .back:not(.js-busy)"  : "cancel"
-    },
+    events : _.extend({}, GuideOverlayView.prototype.events, {
+      "click .back:not(.js-busy)"  : "hide"
+    }),
 
     className : 'js-rolling-frame rolling-frame',
 
@@ -55,14 +56,10 @@
       this.insertIntoDom(false);
     },
 
-    cancel : function(){
-      this._resetAndHide();
-    },
-
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
-          this._resetAndHide();
+          this.hide();
           break;
         case ShareActionState.share :
           //TODO: show spinner (via GuideOverlay?)
@@ -73,12 +70,6 @@
           this.$('.back').removeClass('js-busy');
           break;
       }
-    },
-    
-    _resetAndHide: function(){      
-      //TODO: hide spinner (via GuideOverlay?)
-      
-      this.hide();
     }
 
   });
