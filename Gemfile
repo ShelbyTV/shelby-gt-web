@@ -41,7 +41,11 @@ gem 'jquery-rails'
 #
 gem 'capistrano'
 gem 'rvm-capistrano'
-gem 'uglifier'
+group :production do
+  gem "therubyracer"
+  gem "uglifier"
+end
+
 group :development do
   gem 'capistrano-unicorn', :require => false
 end
