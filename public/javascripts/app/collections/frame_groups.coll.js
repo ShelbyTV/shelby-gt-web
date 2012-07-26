@@ -4,6 +4,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   add: function(models, options) {
 
+    options || (options = {});
+
     models = _.isArray(models) ? models.slice() : [models];
 
     for (i = 0, length = models.length; i < length; i++) {
@@ -28,23 +30,23 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
   
       var dupe = false;
   
-      for (var i = 0; i < this.models.length && !dupe; i++) {
-         if (this.models[i].get('frames').at(0).get('video').get('id') == video_id) {
-            this.models[i].add(frame, dashboard_entry);
+      for (var j = 0; j < this.models.length && !dupe; j++) {
+         if (this.models[j].get('frames').at(0).get('video').get('id') == video_id) {
+            this.models[j].add(frame, dashboard_entry, options);
             dupe = true;
          }
       }
   
       if (!dupe) {
          var frameGroup = new libs.shelbyGT.FrameGroupModel;
-         frameGroup.add(frame, dashboard_entry);
+         frameGroup.add(frame, dashboard_entry, options);
   
          var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
            return entry.id == frame.get('video').get('id');
          });
   
          if (viewed) {
-           frameGroup.set('collapsed', true);
+           frameGroup.set( { collapsed : true }, {silent : true});
          }
   
          Backbone.Collection.prototype.add.call(this, frameGroup, options);
