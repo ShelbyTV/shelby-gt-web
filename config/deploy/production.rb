@@ -13,3 +13,4 @@ role :app, "50.56.112.113"
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
 set :branch, "unicorn"
 
+set :current_path, '/home/gt/web/current'

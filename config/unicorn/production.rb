@@ -1,5 +1,5 @@
 # Set your full path to application.
-app_path = "/home/gt/api/current"
+app_path = "/home/gt/web/current"
 
 # Set unicorn options
 worker_processes 4
