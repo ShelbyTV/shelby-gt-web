@@ -50,6 +50,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.model.get('frames').bind('change', this.render, this);
     this.model.get('frames').bind('add', this.render, this);
     this.model.get('frames').bind('destroy', this.render, this);
+    this.model.bind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
@@ -60,6 +61,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.model.get('frames').unbind('change', this.render, this);
     this.model.get('frames').unbind('add', this.render, this);
     this.model.get('frames').unbind('destroy', this.render, this);
+    this.model.unbind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 

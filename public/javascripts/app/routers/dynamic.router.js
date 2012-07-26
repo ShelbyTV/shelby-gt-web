@@ -280,6 +280,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRollListAndPlayStream : function(params){
     var self = this;
     this.displayRollList();
+    this._fetchViewedVideos();
     this._fetchDashboard({
       displayInGuide:false,
       onDashboardFetch: function(dashboardModel, response){

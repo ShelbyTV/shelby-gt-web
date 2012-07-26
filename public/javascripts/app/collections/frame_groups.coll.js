@@ -2,6 +2,36 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   model: libs.shelbyGT.FrameGroupModel,
 
+  initialize : function(models, options) {
+    models || (models = {});
+    options || (options = {});
+
+    shelby.models.viewedVideos.get('viewed_videos').bind('change', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.get('viewed_videos').bind('reset', this.viewedVideosUpdated, this);
+  },
+
+  _cleanup : function(){
+    shelby.models.viewedVideos.get('viewed_videos').unbind('change', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.get('viewed_videos').unbind('reset', this.viewedVideosUpdated, this);
+  },
+
+  viewedVideosUpdated : function(){
+
+    var sortedViewedVideosArray = shelby.models.viewedVideos.get('viewed_videos').pluck('id').sort();
+
+    for (i = 0, length = this.models.length; i < length; i++) {
+      var model = this.models[i];
+      var video_id = model.get('frames').at(0).get('video').get('id');
+
+      var viewedIndex = _.indexOf(sortedViewedVideosArray, video_id, true);
+      var viewed = (viewedIndex != -1);
+  
+      if (viewed != model.get('collapsed')) {
+        model.set({ collapsed : viewed });
+      }
+    }
+  },
+
   add: function(models, options) {
 
     options || (options = {});
@@ -46,7 +76,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          });
   
          if (viewed) {
-           frameGroup.set( { collapsed : true }, {silent : true});
+           frameGroup.set({ collapsed : true }, options);
          }
   
          Backbone.Collection.prototype.add.call(this, frameGroup, options);
