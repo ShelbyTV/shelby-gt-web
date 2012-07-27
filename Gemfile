@@ -28,6 +28,7 @@ group :assets do
   gem 'sass-rails', '~> 3.2.5'
   gem 'compass-rails', '~> 1.0.3'
   gem 'ejs'
+  gem 'yui-compressor'
 end
 
 gem 'jquery-rails'
@@ -59,3 +60,5 @@ gem 'unicorn'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'jasmine'

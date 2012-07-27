@@ -44,12 +44,15 @@
   
       this._frameRollingState.set({doShare:ShareActionState.share});
     
-      roll = new RollModel({
-        'title' : this.$("#new-roll-name").val(),
-        collaborative : false
-      });
-    
-      roll.set({'public': !this.$("#new-roll-status").is(':checked')});
+      roll = new RollModel({ 'title' : this.$("#new-roll-name").val() });
+      
+      if(this.$("#new-roll-status").is(':checked')){
+        //private
+        roll.set({'public': false, collaborative: true});
+      } else {
+        //public
+        roll.set({'public': true, collaborative: false});
+      }
 
       var doShare = false;
       if(this.$("#new-roll-recipients").val().length > 0){

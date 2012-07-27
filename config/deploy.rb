@@ -1,4 +1,6 @@
-set :application, "gt"
+require "bundler/capistrano"
+
+set :application, "shelby-gt-web"
 set :user, "gt"
 set :deploy_to, "/home/gt/web"
 
@@ -49,13 +51,13 @@ namespace :bundler do
 
   task :unlock, :roles => :app do
     run "cd #{current_release} && bundle unlock;"
-  end
+  end  
 end
-
+  
 after "deploy:update_code" do
-  bundler.bundle_new_release
+ bundler.bundle_new_release
 end
-
+  
 #############################################################
 #	Multistage Deploy via capistrano-ext
 #############################################################
