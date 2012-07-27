@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require 'capistrano-unicorn'
 
 set :application, "shelby-gt-web"
 set :user, "gt"
@@ -11,9 +12,6 @@ ssh_options[:forward_agent] = true
 #############################################################
 #	RVM
 #############################################################
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require "rvm/capistrano"
-set :rvm_type, :user
 set :rvm_ruby_string, '1.9.3-p194'
 set :current_path, '/home/gt/web'
 
@@ -32,7 +30,7 @@ set :deploy_via, :remote_cache
 #############################################################
 #	Bundler
 #############################################################
-
+=begin
 namespace :bundler do
   task :symlink, :roles => :app do
     shared_dir = File.join(shared_path, 'bundle')
@@ -57,7 +55,7 @@ end
 after "deploy:update_code" do
  bundler.bundle_new_release
 end
-  
+=end 
 #############################################################
 #	Multistage Deploy via capistrano-ext
 #############################################################
@@ -65,4 +63,3 @@ end
 set :stages, %w(production iso_roll)
 set :default_stage, 'production'
 require 'capistrano/ext/multistage'
-require 'capistrano-unicorn'
