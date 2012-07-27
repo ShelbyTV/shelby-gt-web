@@ -1,0 +1,49 @@
+//= require ./browser.js
+
+//= require_directory .
+
+//shelby backbone app - assets that need to be loaded in dependency order
+//= require ./models/lib/shelby.base.model.js
+//= require ./config/db.config.js
+//= require ./utils/backbone_collection.utils.js
+//= require ./models/db/roll.model.js
+//= require ./models/ui/share.model.js
+//= require ./models/ui/share_action_state.model.js
+//= require ./views/list_item.view.js
+//= require ./views/active_highlight_list_item.view.js
+//= require ./views/frame_group.view.js
+//= require ./views/list.view.js
+//= require ./views/smart_refresh_list.view.js
+//= require ./views/paging_list.view.js
+//= require ./views/frame_play_paging_list.view.js
+//= require ./views/dashboard.view.js
+//= require ./views/guide_overlay.view.js
+//= require ./views/roll_list.view.js
+//= require ./views/roll.view.js
+//= require ./views/user_preferences.view.js
+//= require ./views/scrolling_guide.view.js
+//= require ./views/help.view.js
+//= require ./views/team.view.js
+//= require ./views/legal.view.js
+//= require ./views/roll_action_menu.view.js
+//= require ./views/roll_header.view.js
+//= require ./views/roll_overlay_context.view.js
+//= require ./views/item_header.view.js
+//= require ./views/autocomplete.view.js
+//= require ./views/email_address_autocomplete.view.js
+//= require ./views/shelby_autocomplete.view.js
+//= require ./views/rolling_create_roll_view.js
+//= require ./views/rolling_selection_item.view.js
+//= require ./views/rolling_selection_list.view.js
+//= require ./views/share.view.js
+//= require ./views/message.view.js
+//= require ./browser.js
+//= require ./models/db/user.model.js
+//shelby backbone app - all other assets
+//= require_tree ./config
+//= require_tree ./utils
+//= require_tree ./models/lib
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
