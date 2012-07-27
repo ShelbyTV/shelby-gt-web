@@ -257,20 +257,23 @@
         if (!guideModel.get('skippingVideo')) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
             guideModel.set({
-              playingState : PlayingState.dashboard,
-              playingFrameGroupCollection : this._dashboardView.frameGroupCollection
+              playingState : PlayingState.dashboard
             });
           } else {
             guideModel.set({
               playingState : PlayingState.roll,
-              playingFrameGroupCollection : this._currentRollView.frameGroupCollection
+              // XXX TODO in this case, when the activeFrame model changes, everything is fine.
+              // however, if we're playing a roll, switch to dashboard, and switch back to the
+              // same roll, the new roll view / frame collection isn't the same as the playing
+              // frame group collection, so the UI and frame skipping logic don't match.
+              playingRollFrameGroupCollection : this._currentRollView.frameGroupCollection
             });
           }
         }
       } else {
         guideModel.set({
           playingState : PlayingState.none,
-          playingFrameGroupCollection : null
+          playingRollFrameGroupCollection : null
         });
       }
     },
@@ -306,8 +309,16 @@
           _index = -1,
           _currentFrameGroupIndex = -1,
           _currentFrame = this.model.get('activeFrameModel');
-      
-      _frameGroups = this.model.get('playingFrameGroupCollection').models;
+     
+      if (this.model.get('playingState') == PlayingState.dashboard) {
+        _frameGroups = this._dashboardView.frameGroupCollection.models;
+      } else {
+        _frameGroups = this.model.get('playingRollFrameGroupCollection').models;
+      }
+
+      if (!_frameGroups) {
+        return;
+      }
 
       var _frameInCollection = _(_frameGroups).find(function(frameGroup){return frameGroup.get('frames').at(0).get('video').id == _currentFrame.get('video').id;});
       if (_frameInCollection) {
