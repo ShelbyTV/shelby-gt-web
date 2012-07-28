@@ -104,8 +104,8 @@
 						});
 
 					// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-					$.post(shelby.config.apiRoot + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
-						window.location.href = shelby.config.appUrl + "/roll/" + data.result.id;
+					$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
+						window.location.href = '<%= Settings::Application.url %>' + "/roll/" + data.result.id;
 						});
                         		};
                         	
