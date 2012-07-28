@@ -167,9 +167,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // check if they're already an upvoter
     if ( !_.contains(this.model.get('frames').at(0).get('upvoters'), shelby.models.user.id) ) {
       this.model.get('frames').at(0).upvote(function(f){
-        var upvoteUsers = self.model.get('upvote_users');
+        var upvoteUsers = self.model.get('frames').at(0).get('upvote_users');
         upvoteUsers.push(shelby.models.user.toJSON());
-        self.model.set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
+        self.model.get('frames').at(0).set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
       });
     }
   },
