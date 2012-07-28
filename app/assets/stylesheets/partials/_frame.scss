@@ -137,7 +137,6 @@
 }
 
 .frame-creator-avatar,
-.frame-creator,
 .frame-creator-avatar-missing{
 
 	border-radius: $radius 0 0 0;
@@ -145,17 +144,6 @@
 	height: 40px;
 	width: 40px;
 	background-color: white;
-}
-
-.frame-creator-collapsed {
-	@extend .frame-creator;
-
-	opacity: 0.6;
-	border-radius: $radius 0 0 $radius;
-}
-
-.frame-creator {
-	overflow: hidden;
 }
 
 .frame-creator-avatar {
