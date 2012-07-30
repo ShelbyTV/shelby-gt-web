@@ -1,1 +1,0 @@
-window.jserb = { v:function(key){return jserb.$[key]}, $:{} };
