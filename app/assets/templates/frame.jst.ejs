@@ -1,0 +1,200 @@
+<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+<% var creator = frame.get('creator') %>
+<% var creatorNickname = creator ? creator.get('nickname') : "" %>
+<% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
+<% var frameTitle = frame.get('video').get('title') %>
+<% var frameRoll = frame.get('roll').get('title') %>
+<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
+<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
+<% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+<% var contextOverlay = options.contextOverlay %>
+<% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
+  <% if(!contextOverlay){ %>
+    <article id="<%= frame.get('conversation_id') %>" > 
+    <div class="video-card<%= suffix %>">
+
+      <header class="video-card-header<%= suffix %> clearfix">
+
+        <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
+          <div class="frame-creator-avatar-holder">
+            <div class="frame-creator<%= suffix %>">
+              <% if(creatorThumbnail){ %>
+                <img class="frame-creator-avatar<%= suffix %>" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+              <% } else { %>
+                <div class="frame-creator-avatar-missing<%= suffix %>"></div>
+              <% } %>  
+            </div>
+          </div>
+        </a>
+
+        <div class="frame-creator-title-date-holder">
+
+          <% if (frameGroup.get('collapsed')) { %>
+            <a onclick="return false;" class="js-creation-date js-track-event" href="#">
+          <% } %>
+          <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+            <%= frame.get('created_at') %>
+          </h2>
+          <% if (frameGroup.get('collapsed')) { %>
+            </a>
+          <% } %>
+  
+          <a onclick="return false;" href="#" class="js-frame-activate">
+            <h1 class="frame-title<%= suffix %>" title="<%= frameTitle %>">
+              <%= frame.get('video') && frameTitle %>
+            </h1>
+          </a>
+
+          <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard || frameIsOnHeartedRoll) { %>
+            <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+              <h3 class="frame-creator-roll<%= suffix %>">
+                <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+              </h3>
+            </a>
+          <% } else { %>
+            <h3 class="frame-creator-roll<%= suffix %>">
+              <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+            </h3>
+          <% } %>
+        </div>
+      </header> 
+
+  <% } else { %>
+    <div class="video-card">
+
+    <a href="#" onclick="return false;" class="js-creator-personal-roll js-track-event context-overlay-header" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <header class="video-card-header clearfix">
+        <div class="frame-creator-avatar-holder">
+          <div class="frame-creator">
+            <% if(creatorThumbnail){ %>
+              <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
+            <% } else { %>
+              <div class="frame-creator-avatar-missing"></div>
+            <% } %>  
+          </div>
+        </div>
+  
+        <div class="frame-creator-title-date-holder">
+          <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
+            <%= frame.get('created_at') %>
+          </h2>
+
+          <h1 class="frame-title" title="<%= frameTitle %>">
+            <%= frame.get('video') && frameTitle %>
+          </h1>
+
+          <h3 class="frame-creator-roll">
+            <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+          </h3>
+        </div>
+      </header>
+    </a>
+  <% } %> 
+
+  <% if (!contextOverlay) { %>  
+    <% if( frameThumbnail ) { %>
+      <div class="video-thumbnail<%= suffix %> js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
+        <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
+      </div>
+    <% } else { %>
+      <div class="video-thumbnail<%= suffix %> video-thumbnail-missing"></div>
+    <% } %>  
+  <% } /* end of contextOverlay */ %>
+
+  <footer class="video-card-footer<%= suffix %>">
+
+    <% if(!frame.isOnRollTypeGenius()) { %>
+
+      <% if (!contextOverlay) { %>
+      <!-- hearts -->
+        <div class="js-frame-flexible-height frame-activity">
+          <% if(frame.get('upvote_users').length > 0){ %>
+        
+            <ul class="frame-activity-favorites clearfix">
+              <% _.each(frame.get('upvote_users'), function(u){ %>
+                <li>
+                  <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
+                    <% users_image =  u.user_image_original || u.user_image %>
+                    <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+            
+          <% } %>
+        </div>
+      <!-- /hearts -->
+      <% } /* end of contextOverlay */%>
+    <ul class="frame-controls" type="toolbar">
+      <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
+        <button class="js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          <i class="js-upvote-frame-lining">
+            <%= frame.get('upvoters').length %>
+          </i>
+        </button>
+      </li>
+      <li class="frame-controls-comments">
+        <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          <i class="comments-frame-lining">
+            <%= messages.length %>
+          </i>
+        </button>
+      </li>
+      <li class="frame-controls-roll js-roll-frame">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          Roll it
+        </button>
+      </li>
+      <li class="frame-controls-share js-share-frame">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+          Share it
+        </button>
+      </li>
+
+    </ul>
+  
+    <% } %><!-- end if(on_genius_roll) -->
+  </footer>
+</div>
+
+  <% if (!contextOverlay) { %>
+    <% var firstLink = true %>
+    <% var dupeFrameRollIds = [frameGroup.get('frames').at(0).get('roll').get('id')] %>
+    <% for (var i = 1; i < frameGroup.get('frames').length; i++) { %>
+      <% var dupeFrame = frameGroup.get('frames').at(i) %>
+      <% var dupeCreator = dupeFrame.get('creator') %>
+      <% var dupeCreatorNickname = dupeCreator ? dupeCreator.get('nickname') : "" %>
+      <% var dupeFrameIsOnHeartedRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+      <% var linkText = "" %>
+      
+      <% if (dupeFrame.get('roll') && $.inArray(dupeFrame.get('roll').get('id'), dupeFrameRollIds) != -1) { %>
+      <%   continue; %>
+      <% } %>
+
+      <% if (dupeFrameIsOnHeartedRoll && dupeCreatorNickname != "") { %>
+         <% linkText = dupeCreatorNickname + "'s Likes" %>
+      <% } else if (!dupeFrameIsOnHeartedRoll && dupeFrame.get('roll')) { %>
+         <% linkText = dupeFrame.get('roll').get('title') %>
+      <% } else { %>
+         <% continue; %>
+      <% } %>
+
+      <% dupeFrameRollIds.push(dupeFrame.get('roll').get('id')) %>
+      <% if (firstLink) { %>
+        <div class="framegroup-dupes<%= suffix %>">
+        <h1 class="framegroup-dupe-text<%= suffix %>">
+        Also via:
+        <% firstLink = false %>
+      <% } %>
+        
+      <% var commaOrNot = dupeFrameRollIds.length > 2 ? ", " : "" %>
+      <%= commaOrNot %><a href="#" data-roll_id="<%= dupeFrame.get('roll').get('id') %>" data-frame_id="<%= dupeFrame.get('id') %>" class="js-go-to-frame-and-roll-by-id"><%= linkText %></a>
+    <% } %>
+    <% if (!firstLink) { %> 
+      </h1>
+      </div>
+    <% } %>
+  <% } /* end of contextOverlay */ %>
+
+</article><!-- eo #video-123.video-card -->
+<!-- END VIDEO CARD -->

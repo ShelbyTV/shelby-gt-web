@@ -786,11 +786,11 @@ getElementValue: function (obj, id) {
                         var displayLogo = frameHeader.hasClass("embedded-header");
                         frameHeader.addClass("frame-exists");
                         var r = frameHeader.attr("data-r")
-                          var html = '<div class="frame-creator"><img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '"></div>';
+                          var html = '<div class="frame-creator-avatar-holder"> <div class="frame-creator"><img src=' + frame.creator.user_image + ' class="<%=@prefix%>frame-creator-avatar" alt="' + frame.creator.nickname + 's avatar" title="' + frame.creator.nickname + '"></div> </div>';
                         if (displayLogo) {
                             html += '<div class="frame-logo"><img class="<%=@prefix%>frame-logo-img"src="http://shelby.tv/images/assets/shelby_logo.png"/> </div></div>';
                         }
-                        html += '<div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div>';
+                        html += '<div class="frame-creator-title-date-holder"> <div class=<%=@prefix%>frame-title>' + frame.video.title + '</div>' + '<div class=<%=@prefix%>frame-creator-roll> ' + frame.roll.title + '</div></div>';
                         frameHeader.html(html);
                         frameHeader.attr("data-conversationid", frame.conversation_id);
                         frameHeader.attr("data-shelbyframeid", frame.id);
@@ -973,7 +973,7 @@ shelbyInit: function (opts, useUrl, urlProvider) {
     },
     shelbyOpts: function (useUrl, urlProvider) {
         return {
-            css: ["http://<%= Settings::VideoRadar.web_domain%>/stylesheets/radar.css"],
+            css: ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
             js: ["http://<%= Settings::VideoRadar.web_domain%>/javascripts/jquery-plugins/jquery.scrollTo.js"],
             jqpath: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 

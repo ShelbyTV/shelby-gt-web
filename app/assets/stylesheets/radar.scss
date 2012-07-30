@@ -1,0 +1,69 @@
+@import "base";
+@import "base-mixin";
+
+@import "compass/css3",
+        "compass/utilities/text/ellipsis",
+        "compass/utilities/lists/bullets";
+
+.ext-elements {
+	  * {
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	  }
+
+	  ul, li, a, div, p, span, form, fieldset, label, input, button, img {
+	    margin: 0;
+	    padding: 0;
+	    border: 0;
+	    outline: none;
+	  }
+
+	  textarea, button, input {
+	  	font-size: 12px !important;
+	  }
+
+	  font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
+	  color: #DCDDDE;
+	  font-size: 14.5454545455px;
+	  line-height: 1.4;
+	  text-align: left;
+
+
+	
+	@import 
+
+                "partials/app.html",
+		"partials/fonts",
+
+    "partials/gate",
+    "partials/guide-header",
+
+		"partials/guide-presentation-selector",
+		"partials/guide-overlay-view",
+		"partials/guide-overlay-controls",
+
+		"partials/roll-header",
+		"partials/roll-item",
+		"partials/roll-item-people",
+    
+    "partials/frame",
+
+		"partials/rolls-list",
+
+		"partials/frame-rolling",
+		"partials/frame-rolling-options",	
+		"partials/frame-conversation",
+
+		"partials/rolls",	
+		"partials/share",
+		"partials/roll-selection-items",
+
+		"partials/roll-header",
+		"partials/roll-item",
+		"partials/roll-item-people",
+ 
+    "bookmarklet-overwrite",
+
+		"partials/h5bp-utilities"; 	
+}
