@@ -15,6 +15,7 @@ libs.shelbyGT.RollsCollectionModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   parse : function(response) {
     return ({
+      initialized : true,
       rolls : response.result || []
     });
   },

@@ -42,12 +42,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         success: function() {
-          shelby.models.rollFollowings.fetch({
-            success : function() {
-              self._reroute();
-  						shelby.checkFbTokenValidity();
-            }
-          });
+          self._reroute();
+          shelby.models.rollFollowings.fetch();
+          shelby.checkFbTokenValidity();
         }
       });      
     }
