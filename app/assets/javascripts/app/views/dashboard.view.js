@@ -5,6 +5,8 @@
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
   libs.shelbyGT.DashboardView = FramePlayPagingListView.extend({
+    
+    frameGroupCollection : null,
 
     className : FramePlayPagingListView.prototype.className + ' dashboard',
 
@@ -16,31 +18,35 @@
       fetchParams : {
         include_children : true
       },
-      sortOrder : -1
+      sortOrder : -1,
     }),
 
     actionToViewMap : {
-      '0' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '1' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '2' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '8' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '9' : {view: libs.shelbyGT.FrameView, model_attr:'frame'},
-      '10' : {view: libs.shelbyGT.FrameView, model_attr:'frame'}
+      '0' : {view: libs.shelbyGT.FrameGroupView},
+      '1' : {view: libs.shelbyGT.FrameGroupView},
+      '2' : {view: libs.shelbyGT.FrameGroupView},
+      '8' : {view: libs.shelbyGT.FrameGroupView},
+      '9' : {view: libs.shelbyGT.FrameGroupView},
+      '10' : {view: libs.shelbyGT.FrameGroupView}
     },
+
 
     initialize : function(){
       var self = this;
+      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
+
       _(this.options).extend({
         listItemView : function(item, params){
-          var mapResult = self.actionToViewMap[item.get('action')];
-          return new mapResult.view(_(params).extend({model:item.get(mapResult.model_attr)}));
-        }
+          var mapResult = self.actionToViewMap[item.get('primaryDashboardEntry').get('action')];
+          return new mapResult.view(_(params).extend({model:item}));
+        },
+        displayCollection: this.frameGroupCollection
       });
       FramePlayPagingListView.prototype.initialize.call(this);
     },
 
     _filter : function(item){
-      return item.get('frame');
+      return item;
     },
 
     _doesResponseContainListCollection : function(response) {

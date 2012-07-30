@@ -5,15 +5,22 @@
 
   libs.shelbyGT.RollView = FramePlayPagingListView.extend({
 
+    frameGroupCollection : null,
+
     className : FramePlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
+      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
+      _(this.options).extend({
+        displayCollection: this.frameGroupCollection
+      });
+
       FramePlayPagingListView.prototype.initialize.call(this);
     },
 
     options : _.extend({}, FramePlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
-      listItemView : 'FrameView',
+      listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
       }

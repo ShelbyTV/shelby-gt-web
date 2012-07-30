@@ -11,6 +11,10 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       relatedModel : 'libs.shelbyGT.RollModel'
     },{
       type : Backbone.HasOne,
+      key : 'viewed_roll',
+      relatedModel : 'libs.shelbyGT.RollModel'
+    },{
+      type : Backbone.HasOne,
       key : 'app_progress',
       relatedModel : 'libs.shelbyGT.AppProgressModel'
     }
@@ -38,6 +42,8 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     result.watch_later_roll = watchLaterRoll;
     var personalRoll = new libs.shelbyGT.RollModel({id:result.personal_roll_id});
     result.personal_roll = personalRoll;
+    var viewedRoll = new libs.shelbyGT.RollModel({id:result.viewed_roll_id});
+    result.viewed_roll = viewedRoll;
     return result;
   },
 

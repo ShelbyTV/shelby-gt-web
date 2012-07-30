@@ -11,7 +11,7 @@
 //= require ./models/ui/share_action_state.model.js
 //= require ./views/list_item.view.js
 //= require ./views/active_highlight_list_item.view.js
-//= require ./views/frame.view.js
+//= require ./views/frame_group.view.js
 //= require ./views/list.view.js
 //= require ./views/smart_refresh_list.view.js
 //= require ./views/paging_list.view.js

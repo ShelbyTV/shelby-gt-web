@@ -1,4 +1,4 @@
-libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
+libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _conversationDisplayed : false,
 
@@ -17,6 +17,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   events : {
     "click .js-frame-activate"              : "_activate",
+    "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
@@ -25,7 +26,9 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-upvote-frame"                : "_upvote",
-    "click .js-go-to-roll-by-id"            : "_goToRollById"
+    "click .js-go-to-roll-by-id"            : "_goToRollById",
+    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
+
   },
 
   tagName : 'li',
@@ -41,16 +44,24 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   initialize : function() {
-    this.model.bind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).bind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).bind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').bind('change', this.render, this);
+    this.model.get('frames').bind('change', this.render, this);
+    this.model.get('frames').bind('add', this.render, this);
+    this.model.get('frames').bind('destroy', this.render, this);
     this.model.bind('change', this.render, this);
-    this.model.get('conversation') && this.model.get('conversation').bind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
-    this.model.unbind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).unbind('destroy', this._onFrameRemove, this);
+    this.model.get('frames').at(0).unbind('change', this.render, this);
+    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').unbind('change', this.render, this);
+    this.model.get('frames').unbind('change', this.render, this);
+    this.model.get('frames').unbind('add', this.render, this);
+    this.model.get('frames').unbind('destroy', this.render, this);
     this.model.unbind('change', this.render, this);
-    this.model.get('conversation') && this.model.get('conversation').unbind('change', this.render, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -58,20 +69,36 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var self = this;
     this._leaveChildren();
 
-    var useFrameCreatorInfo = this.model.conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ frame : this.model, options : this.options }));
+    var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
+    this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
+  _expand: function(){
+    if (this.model.get('collapsed')) {
+      this.model.unset('collapsed');
+      this.render();
+    } 
+  },
+
   _activate : function(){
-    shelby.models.guide.set('activeFrameModel', this.model);
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
+    shelby.models.guide.set('activeFrameModel', this.model.get('frames').at(0));
   },
 
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
     var activeFrameModel = guideModel.get('activeFrameModel');
-    return activeFrameModel && activeFrameModel.id == this.model.id;
+    if (activeFrameModel && activeFrameModel.id == this.model.get('frames').at(0).id) {
+      this._expand();
+      return true;
+    } else {
+      return false;
+    }
   },
   
   requestFrameShareView: function(){
@@ -83,7 +110,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     } else {
       var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
       
-      this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model, roll:personalRoll});
+      this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model.get('frames').at(0), roll:personalRoll});
       this._frameSharingInGuideView.render();
     }
 
@@ -100,7 +127,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
         return;
       }
     } else {
-      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model});
+      this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model.get('frames').at(0)});
       this._frameRollingView.render();
     }
 
@@ -121,7 +148,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     var self = this;
     // save to watch later, passing a callback that will add the saved-indicator
     // to the frame thumbnail when the save returns succsessfully
-    this.model.saveToWatchLater(function(){
+    this.model.get('frames').at(0).saveToWatchLater(function(){
       self.$('.video-thumbnail').append(JST['saved-indicator']());
       // start the transition which fades out the saved-indicator
       var startTransition = _.bind(function() {
@@ -138,11 +165,11 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   _upvote : function(){
     var self = this;
     // check if they're already an upvoter
-    if ( !_.contains(this.model.get('upvoters'), shelby.models.user.id) ) {
-      this.model.upvote(function(f){
-        var upvoteUsers = self.model.get('upvote_users');
+    if ( !_.contains(this.model.get('frames').at(0).get('upvoters'), shelby.models.user.id) ) {
+      this.model.get('frames').at(0).upvote(function(f){
+        var upvoteUsers = self.model.get('frames').at(0).get('upvote_users');
         upvoteUsers.push(shelby.models.user.toJSON());
-        self.model.set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
+        self.model.get('frames').at(0).set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
       });
     }
   },
@@ -154,7 +181,7 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
         return;
       }
     } else {
-      this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model});
+      this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model.get('frames').at(0)});
       this._conversationView.render();
     }
 
@@ -165,7 +192,12 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   _goToCreatorsPersonalRoll : function(){
-    var creator = this.model.get('creator');
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
+
+    var creator = this.model.get('frames').at(0).get('creator');
 
     if (creator) {
       shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
@@ -174,12 +206,16 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   _goToSourceRoll : function(){
-    if (!this.model.isOnRoll(shelby.models.user.get('heart_roll_id'))) {
-      shelby.router.navigateToRoll(this.model.get('roll'), {trigger:true});
+    if (this.model.get('collapsed')) {
+      this._expand();
+      return;
+    }
+    if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
+      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     } else {
       // if the frame is on the heart roll we actually want to go the roll
       // that this frame was hearted FROM
-      var ancestorId = _(this.model.get('frame_ancestors')).last();
+      var ancestorId = _(this.model.get('frames').at(0).get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
     }
   },
@@ -188,6 +224,12 @@ libs.shelbyGT.FrameView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
     return false;
   },
+
+  _goToFrameAndRollById : function(e){
+    shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id') + '/frame/' + $(e.currentTarget).data('frame_id'), {trigger:true});
+    return false;
+  },
+
 
   _onFrameRemove : function() {
     // TODO: perform some visually attractive removal animation for the frame
