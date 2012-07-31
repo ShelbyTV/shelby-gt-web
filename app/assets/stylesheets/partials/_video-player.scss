@@ -4,8 +4,9 @@
 	background: #000;
 	color:white;
 	height:100%;
-	margin-right:330px;
-	
+//	margin-right:330px;
+	margin-left: 330px;
+
 	@include transition-property('margin-right');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
