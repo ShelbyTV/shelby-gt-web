@@ -28,7 +28,7 @@
       // if this share contained email addresses, save them for autocomplete
       if (_(this.get('destination')).contains('email')) {
         shelby.models.user.push_autocomplete_entries('email', this.get('addresses'));
-      }
+      }      
     },
     networkEnabled : function(network){
       var result = _.include(this.get('destination'), network);

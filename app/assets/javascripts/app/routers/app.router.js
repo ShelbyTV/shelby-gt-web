@@ -50,6 +50,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           self._reroute();
           shelby.models.rollFollowings.fetch();
           shelby.checkFbTokenValidity();
+          shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
         }
       });      
     }
@@ -63,6 +64,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.user = new libs.shelbyGT.AnonUserModel();
     this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
     this._reroute();
+    
+    shelby.track('identify', {nickname: 'anonymous'});
   },
 
   //---

@@ -13,6 +13,12 @@
     onShareSuccess: function(){
       libs.shelbyGT.ShareView.prototype.onShareSuccess.call(this);
       
+      shelby.track( 'shared_frame', 
+                    { destination: this.model.get('destination').join(', '), 
+                      id: this.options.frame.id,
+                      userName: shelby.models.user.get('nickname')
+                  });
+            
       this.parent.hide();
     }
     

@@ -58,6 +58,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id=' + this.id+'&include_children=true';
     frameToReroll.save(null, {url:url,success:onSuccess});
     libs.utils.rhombus.sadd('frames_rolled', this.id);
+    shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },
 
   upvote : function(onSuccess) {
@@ -65,6 +66,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
     frameToUpvote.save(null, {url:url, success:onSuccess});
     libs.utils.rhombus.sadd('frames_upvoted', this.id);
+    shelby.track( 'heart_video', { id: this.id, userName: shelby.models.user.get('nickname') });
   },
   
   watched : function(startTime, endTime, onSuccess) {

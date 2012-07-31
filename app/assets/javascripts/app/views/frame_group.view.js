@@ -169,7 +169,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this.model.get('frames').at(0).upvote(function(f){
         var upvoteUsers = self.model.get('frames').at(0).get('upvote_users');
         upvoteUsers.push(shelby.models.user.toJSON());
-        self.model.get('frames').at(0).set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
+        self.model.get('frames').at(0).set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });        
       });
     }
   },
