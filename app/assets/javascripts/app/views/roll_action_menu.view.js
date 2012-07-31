@@ -28,6 +28,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateJoinButton, this);
     
     this.render();
   },
@@ -37,6 +38,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.unbind('change:currentRollModel', this._onRollModelChange, this);
     this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    shelby.models.rollFollowings.unbind('add:rolls remove:rolls', this._updateJoinButton, this);
   },
 
   render : function(){
@@ -53,12 +55,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
         !_changedAttrs.has('displayIsolatedRoll')) {
       return;
     }
-    // set text to leave/join roll
-    var currentRollModel = model.get('currentRollModel');
-    if (currentRollModel) {
-      var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Unfollow' : 'Follow';
-      this._updateJoinButton(_buttonText);
-    }
+    this._updateJoinButton();
     this._updateVisibility();
   },
 
@@ -148,21 +145,31 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
     if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
-      currentRollModel.leaveRoll(function(){
-        self._updateJoinButton('Follow');
-      });
+      currentRollModel.leaveRoll();
+      // join button updates automatically when rollFollowings changes
     }
     else {
-      currentRollModel.joinRoll(function(){
-        self._updateJoinButton('Unfollow');
-      });
+      currentRollModel.joinRoll();
+      // join button updates automatically when rollFollowings changes
     }
   },
 
-  _updateJoinButton : function(action){
+  _updateJoinButton : function(){
+    var currentRollModel = this.model.get('currentRollModel');
+    if (!currentRollModel || !shelby.models.rollFollowings.has('initialized')) {
+      this.$('.rolls-add').hide();
+      return;
+    }
+    var action = '';
+    if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
+      action = 'Unfollow';
+    } else {
+      action = 'Follow';
+    }
     var addOrRemoveClass = action == 'Unfollow' ? 'addClass' : 'removeClass';
     // this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
     this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
+    this.$('.rolls-add').show();
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
@@ -184,9 +191,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$el.find('.rolls-edit').hide();
     }
 		
-    // set text to leave/join roll
-    var _buttonText = shelby.models.rollFollowings.containsRoll(currentRollModel) ? 'Unfollow' : 'Follow';
-    this._updateJoinButton(_buttonText);
+    this._updateJoinButton();
     
     //update button
     this._actionCopy = this.model.get('currentRollModel').get('public') ? "Share Roll" : "Invite Friends";

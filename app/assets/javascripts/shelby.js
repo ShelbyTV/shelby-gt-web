@@ -1,10 +1,4 @@
-//backbone && underscore
-//= require ./backbone
-//templates
-//= require_tree ../templates
-//jQuery plugins
-//= require_tree ./jquery-plugins
-//swf
-//= require swfobject.js
-//shelby app
-//= require ./app
+//require all libraries used by the shelby app
+//= require lib
+//load code that bootstraps and starts the shelby app and initiates routing
+//= require ./app/app.start.js

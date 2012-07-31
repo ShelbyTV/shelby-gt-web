@@ -36,18 +36,20 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
 
+    libs.utils.rhombus.login.init_login();
+    libs.utils.rhombus.videos_watched.init_videos_watched();
+    libs.utils.rhombus.heartbeat.init_heartbeat();
+    libs.utils.rhombus.activity.init_activity();
+
     var self = this;
     
     
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         success: function() {
-          shelby.models.rollFollowings.fetch({
-            success : function() {
-              self._reroute();
-  						shelby.checkFbTokenValidity();
-            }
-          });
+          self._reroute();
+          shelby.models.rollFollowings.fetch();
+          shelby.checkFbTokenValidity();
         }
       });      
     }

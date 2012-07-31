@@ -81,6 +81,10 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   _updateFollowButton : function() {
     var text;
     var doButtonHighlight;
+    if (!this.model || !shelby.models.rollFollowings.has('initialized')) {
+      this.$('.js-follow-button').hide();
+      return;
+    }
     if (shelby.models.user.get('anon')) {
       text = "Follow";
       doButtonHighlight = true;
@@ -96,6 +100,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     }
     var addOrRemoveClass = doButtonHighlight ? 'addClass' : 'removeClass';
     this.$('.js-follow-button').text(text)[addOrRemoveClass]('guide-overlay-context-button-highlighted');
+    this.$('.js-follow-button').show();
   },
 
   _onRollChange : function(rollModel) {
