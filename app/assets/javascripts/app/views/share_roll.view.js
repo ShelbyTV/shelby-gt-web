@@ -35,6 +35,11 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
       });
       self.options.viewState.change();
     });
+    
+    shelby.track( 'shared_roll', 
+                  { destination: this.model.get('destination').join(', '), 
+                    id: this.options.roll.id, 
+                    userName: shelby.models.user.get('nickname') } );
   },
 
   updateVisibility : function(visible, slide, cb) {

@@ -147,10 +147,14 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
       currentRollModel.leaveRoll();
       // join button updates automatically when rollFollowings changes
+      
+      shelby.track( 'left_roll',  {id: this.model.id, userName: shelby.models.user.get('nickname')} );
     }
     else {
       currentRollModel.joinRoll();
       // join button updates automatically when rollFollowings changes
+
+      shelby.track('joined_roll', {id: this.model.id, userName: shelby.models.user.get('nickname')});
     }
   },
 

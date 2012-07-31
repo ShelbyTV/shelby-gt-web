@@ -164,6 +164,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (this._components.emailAddresses) {
       this.model.set('addresses', this.$('.js-share-email-addresses').val());
     }
+        
     this.model.save(null, this._getSaveOpts(urls));
     return false;
   },

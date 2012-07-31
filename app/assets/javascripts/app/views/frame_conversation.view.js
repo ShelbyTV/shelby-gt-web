@@ -90,6 +90,9 @@
         }
       });
       libs.utils.rhombus.sadd('comments', this.model.id);
+      
+      shelby.track('commented', {id: this.model.id.toString(), userName: shelby.models.user.get('nickname')});
+      
       return false;
     },
 
