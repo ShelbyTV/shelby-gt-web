@@ -1,7 +1,10 @@
-//= require ./browser.js
-
-//= require_directory .
-
+/* NOTE: If you want to actually start up the app, you must include app.start.js manually in your
+manifest. That file is omitted here so that all of the app's functionality can be loaded for testing
+without triggering default app setup actions such as routing, user fetch, etc. */
+//= require ./browser
+//= require ./app.config
+//= require ./app.namespace
+//
 //shelby backbone app - assets that need to be loaded in dependency order
 //= require ./models/lib/shelby.base.model.js
 //= require ./config/db.config.js
@@ -39,6 +42,7 @@
 //= require ./views/message.view.js
 //= require ./browser.js
 //= require ./models/db/user.model.js
+//
 //shelby backbone app - all other assets
 //= require_tree ./config
 //= require_tree ./utils

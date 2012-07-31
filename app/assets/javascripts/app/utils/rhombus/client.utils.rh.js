@@ -2,7 +2,7 @@
   
   var commands = ['set', 'hset', 'sadd', 'incrby', 'lpush'];
 
-  libs.utils.rhombus = {
+  libs.utils.rhombus = _.extend({},libs.utils.rhombus,{
 
     _disabled : false,
 
@@ -13,7 +13,7 @@
 
     _get_api_root : function(){
       return this._env_api_root_map[libs.utils.environment.getEnvironment()];
-    }, 
+    },
 
     _post : function(cmd, args){
 			if (!shelby.userSignedIn()) return false;
@@ -69,7 +69,7 @@
       });
     }
 
-  };
+  });
   
   commands.forEach(function(cmd){
     libs.utils.rhombus[cmd] = function(arg1){

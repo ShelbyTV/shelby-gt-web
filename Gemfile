@@ -44,4 +44,8 @@ gem 'capistrano'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'jasmine'
+group :test, :development do
+	gem 'jasmine'
+	gem 'sinon-rails'
+	gem 'jasmine-sinon-rails'
+end

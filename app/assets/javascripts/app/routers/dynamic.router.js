@@ -1,6 +1,7 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
+    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title" : "displayRoll",
     "roll/:rollId/" : "displayRoll",
@@ -75,7 +76,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }, topLevelViewsOptions);
   },
   
-  displayIsolatedRoll : function(rollId, frameId){
+  displayIsolatedRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
 
@@ -83,7 +84,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var options = {updateRollTitle:false};
 
     if (frameId){
-      this.displayFrameInRoll(rollId, frameId, null, options, {isIsolatedRoll : true});
+      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
     }
