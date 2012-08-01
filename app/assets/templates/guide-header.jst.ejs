@@ -1,50 +1,9 @@
-<div class="guide-header clearfix">
-  <button class="guide-logo js-home">
-    <h1 class="guide-logo-header ir">
+  <button class="shelby-logo js-home">
+    <h1 class="shelby-title ir">
       Shelby.tv
     </h1>
   </button>
-  <div id="js-guide-presentation-selector" class="guide-presentation-selector">
-    <!-- content filled in by GuidePresentationSelctorView -->
-  </div>
-  <nav>
-    <ul class="settings">
-      <li>
-        <button class="profile you top-level">
-          Settings
-        </button>
-        <ul id="profile-subnav" class="subnav profile-subnav ">
-          <li class="profile-subnav-userhandle">
-            <span>
-              <%= user.get('nickname') %>
-            </span>
-          </li>
-          <li>
-            <button class="js-preferences">Preferences</button>
-          </li>
-          <li>
-            <button class="js-signout">Log Out</button>
-          </li>
-        </ul>          
-      </li>
-      <li>
-        <button class="about top-level" href="#about">About</button>
-        <ul id="about-subnav" class="subnav about-subnav">
-          <li>
-            <button class="js-help">Help</button>
-          </li>
-          <li>
-            <button class="js-team">Team</button>
-          </li>
-          <li>
-            <button data-href="http://shelby.tv/blog" data-target="_blank">Blog</button>
-          </li>
-          <li>
-            <button class="js-legal">Legal</button>
-          </li>
-        </ul>
-      </li>
-      
-    </ul><!-- eo .settings -->
+
+  <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
+    <!-- content filled in by GuidePresentationSelectorView -->
   </nav>
-</div><!-- eo .header -->

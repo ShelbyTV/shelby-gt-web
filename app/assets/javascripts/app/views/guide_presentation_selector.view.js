@@ -15,7 +15,7 @@
     },
 
     /*el : '#js-guide-presentation-selector',*/
-    
+
     template : function(obj){
       return JST['guide-presentation-selector'](obj);
     },
