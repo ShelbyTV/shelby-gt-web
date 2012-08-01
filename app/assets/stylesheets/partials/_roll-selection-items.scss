@@ -22,7 +22,6 @@
 		&:hover,
 		&:active{
 			@include gradient-primer($video-card-bg-color, 5%);
-			text-decoration: underline;
 		}
 	}
 }
