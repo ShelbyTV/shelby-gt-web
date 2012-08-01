@@ -1,4 +1,4 @@
-describe("Dynamic Router", function() {
+describe("DynamicRouter", function() {
   describe("Route definitions", function() {
     beforeEach(function() {
         // can't stub Backbone router functions directly - here's the workaround:

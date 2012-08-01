@@ -31,11 +31,6 @@
 
       this.model = activeFrameModel;
 
-      //THIS NEEDS TO BE GARBAGE COLLECTED
-      this._conversationView = null;
-      this._frameRollingView = null;
-      this._frameSharingInGuideView = null;
-
       //bind
       this.model.bind('destroy', this._onFrameRemove, this);
       this.model.bind('change', this.render, this);

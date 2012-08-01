@@ -1,4 +1,4 @@
-describe("Frame Group View", function() {
+describe("FrameGroupView", function() {
   beforeEach(function() {
     this.frameGroupModel = BackboneFactory.create('frame_group');
     this.view = new libs.shelbyGT.FrameGroupView({
@@ -14,7 +14,7 @@ describe("Frame Group View", function() {
     });
     
     it("should create an el with class 'frame'", function() {
-      expect($(this.view.el)).toHaveClass('frame');
+      expect(this.view.$el).toHaveClass('frame');
     });
   });
 
@@ -81,16 +81,28 @@ describe("Frame Group View", function() {
   describe("Methods", function() {
 
     describe("_checkSetGuideOverlayState", function() {
-      it("should set guide overlay model state to reflect the parameters", function() {
+      it("should set guide overlay model state to reflect the arguments", function() {
         this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.conversation);
-        expect(this.view.options.guideOverlayModel.has('activeGuideOverlayFrame')).toBeTruthy();
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toEqual(this.frameGroupModel);
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).not.toBeNull();
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toEqual(this.frameGroupModel.get('frames').at(0));
+
+        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.rolling);
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).not.toBeNull();
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toEqual(this.frameGroupModel.get('frames').at(0));
       });
     
-      it("should set guide overlay model state to reflect no guide overlay view if the requested view and frame are already displayed", function() {
+      it("should set guide overlay model state to reflect no guide overlay view if the specified view and frame are already displayed", function() {
         this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
         this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
+        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
+      });
+
+      it("should clear the overlay frame attribute if overlay type is set to none", function() {
+        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
+        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.none);
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
       });

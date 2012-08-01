@@ -12,7 +12,7 @@
     _frameRollingState : null,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .back:not(.js-busy)"  : "hide"
+      "click .back:not(.js-busy)"  : "_setGuideOverlayStateNone"
     }),
 
     className : 'js-rolling-frame rolling-frame',
@@ -22,7 +22,7 @@
     },
 
     initialize : function(){
-      this._frameRollingState = new ShareActionStateModel();
+      this._frameRollingState = new libs.shelbyGT.ShareActionStateModel();
       this._frameRollingState.bind('change:doShare', this._onDoShareChange, this);
     },
 
@@ -53,7 +53,7 @@
       );
       this.appendChildInto(rollsListView, '.js-existing-rolls-list');
 
-      this.insertIntoDom(false);
+      GuideOverlayView.prototype.render.call(this);
     },
 
     _onDoShareChange: function(shareActionStateModel, doShare){

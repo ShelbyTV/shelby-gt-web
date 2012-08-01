@@ -196,18 +196,22 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _checkSetGuideOverlayState : function(type) {
-    if (this.options.guideOverlayModel.get('activeGuideOverlayType') == type &&
+    //if we're already showing the specified overlay type for this frame, hide it
+    var alreadyShowingThisOverlay =
+        this.options.guideOverlayModel.get('activeGuideOverlayType') == type &&
         this.options.guideOverlayModel.has('activeGuideOverlayFrame') &&
-        this.options.guideOverlayModel.get('activeGuideOverlayFrame').id == this.model.get('frames').at(0).id) {
-      //if we're already showing the requested overlay type for this frame, hide it
+        this.options.guideOverlayModel.get('activeGuideOverlayFrame').id == this.model.get('frames').at(0).id;
+
+    if (type == libs.shelbyGT.GuideOverlayType.none || alreadyShowingThisOverlay) {
+      // hide the current overlay
       this.options.guideOverlayModel.set({
         'activeGuideOverlayFrame' : null,
         'activeGuideOverlayType' : libs.shelbyGT.GuideOverlayType.none
       });
     } else {
-      //otherwise, show the requested overlay
+      // show the requested overlay
       this.options.guideOverlayModel.set({
-        'activeGuideOverlayFrame' : this.model,
+        'activeGuideOverlayFrame' : this.model.get('frames').at(0),
         'activeGuideOverlayType' : type
       });
     }
