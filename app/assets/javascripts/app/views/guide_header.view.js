@@ -50,7 +50,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
     this.$el.html(this.template({user:this.model}));
     if (!this.selectorView){
       this.selectorView = new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
-      this.appendChild(this.selectorView);
+      this.appendChildInto(this.selectorView, '.guide-presentation-selector');
     }
   },
 
