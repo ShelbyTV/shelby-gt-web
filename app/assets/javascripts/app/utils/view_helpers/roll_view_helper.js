@@ -1,19 +1,26 @@
 libs.shelbyGT.viewHelpers.roll = {
 	titleWithPath : function(roll){
-		var t = roll.get('creator_nickname')+"/";
+		return this.pathForDisplay(roll)+"/"+this.titleWithoutPath(roll);
+	},
+	
+	pathForDisplay : function(roll){
+		return roll.get('creator_nickname');
+	},
+	
+	titleWithoutPath : function(roll){
 		if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-      t += "Liked";
+      return "Liked";
     }
     else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_watch_later){
-      t += "Queue";
+      return "Queue";
     }
 		else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public){
-			t += "Personal Roll";
+			return "Personal Roll";
     } 
 		else {
-      t += roll.get('title');
+      return roll.get('title');
     }
-		return t;
+		return '';
 	},
 	
 	urlForRoll : function(roll){
@@ -22,10 +29,6 @@ libs.shelbyGT.viewHelpers.roll = {
     } else {
 			return null;
 		}
-	},
-	
-	pathForDisplay : function(roll){
-		return roll.get('creator_nickname');
 	},
 	
   titleForDisplay : function(roll){
