@@ -35,7 +35,6 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/autocomplete.view.js
 //= require ./views/email_address_autocomplete.view.js
 //= require ./views/shelby_autocomplete.view.js
-//= require ./views/rolling_create_roll_view.js
 //= require ./views/rolling_selection_item.view.js
 //= require ./views/rolling_selection_list.view.js
 //= require ./views/share.view.js

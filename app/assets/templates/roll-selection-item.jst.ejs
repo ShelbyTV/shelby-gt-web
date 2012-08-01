@@ -7,11 +7,13 @@
     <img class="roll-selection-item-thumbnail" src="<%= roll.get('thumbnail_url') %>">
     
     <h2 class="roll-selection-item-title">
-      <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+      <%= libs.shelbyGT.viewHelpers.roll.titleWithPath(roll) %>
     </h2>
 
-    <h3 class="roll-selection-item-state">
-      <%= (rollPublic) ? 'Public' : 'Private' %>
-    </h3>
+		<% if(libs.shelbyGT.viewHelpers.roll.urlForRoll(roll)) { %>
+	    <h3 class="roll-selection-item-state">
+				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
+	    </h3>
+		<% } %>
   </div>
 </a>

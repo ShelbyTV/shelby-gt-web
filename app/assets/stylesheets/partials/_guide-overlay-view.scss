@@ -22,7 +22,7 @@
   border-bottom: 1px solid black;
   height: 46px;
   
-  .back {
+  .back, .cancel {
   	@include x-button-primer($shelby-gray);
   	left: 0;
   	margin: 8px;
