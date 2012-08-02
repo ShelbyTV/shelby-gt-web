@@ -31,14 +31,17 @@ describe("FrameGroupView", function() {
   });
 
   beforeEach(function() {
-    sinon.stub(this.view, 'template').returns('<div class="js-video-activity-toggle"></div>\
-                                              <div class="js-roll-frame"></div>\
-                                              <div class="js-share-frame"></div>');
+    sinon.stub(this.view, 'render', function() {
+      this.$el.html('<div class="js-video-activity-toggle"></div>\
+                    <div class="js-roll-frame"></div>\
+                    <div class="js-share-frame"></div>');
+      return this.el;
+    });
     this.view.render();
   });
       
   afterEach(function() {
-    this.view.template.restore();
+    this.view.render.restore();
   });
 
   describe("Events", function() {

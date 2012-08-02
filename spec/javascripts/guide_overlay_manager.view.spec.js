@@ -65,12 +65,9 @@ describe("GuideOverlayManagerView", function() {
       expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
-      // expect(this.view.$el).toContain('div.conversation-overlay.guide-overlay.showing');
     });
         
     it("should create, insert, and reveal correct overlay view when guide overlay model changes to rolling", function() {
-      
-
       this.guideOverlayModel.set({
         activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.rolling,
         activeGuideOverlayFrame : this.frame
@@ -83,7 +80,6 @@ describe("GuideOverlayManagerView", function() {
       expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
-      // expect(this.view.$el).toContain('div.js-rolling-frame.rolling-frame.guide-overlay.showing');
     });
 
     it("should create, insert, and reveal correct overlay view when guide overlay model changes to share", function() {
@@ -99,7 +95,6 @@ describe("GuideOverlayManagerView", function() {
       expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
-      // expect(this.view.$el).toContain('div.conversation-overlay.guide-overlay.showing');
     });
 
     it("should NOT create, insert, and reveal an overlay view when guide overlay model changes to none", function() {

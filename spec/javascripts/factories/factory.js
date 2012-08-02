@@ -10,8 +10,6 @@ BackboneFactory.define('conversation', libs.shelbyGT.ConversationModel);
 
 BackboneFactory.define('video', libs.shelbyGT.VideoModel);
 
-
-
 BackboneFactory.define('rollscollection', libs.shelbyGT.RollsCollectionModel);
 
 BackboneFactory.define('frame', libs.shelbyGT.FrameModel, function() {
