@@ -121,7 +121,7 @@
 			// re roll the frame
       this._frame.reRoll(roll, function(newFrame){
         //rolling is done
-				self.parent.done();
+				self._rollingSuccess(roll, newFrame);
 
 				// Optional Sharing (happens in the background)
 				if(shareDests.length){
@@ -135,6 +135,16 @@
 				}
       });
 		
+		},
+		
+		_rollingSuccess : function(roll, newFrame){
+			this.parent.done();
+			
+			//N.B. This link is picked up by NotificationOverlayView for routing
+			shelby.success(
+				"Rolled to <a href='#' data-roll_id='"+roll.id+"' class='roll-route'>"+
+				libs.shelbyGT.viewHelpers.roll.titleWithPath(roll)+
+				"</a>!");
 		}
 		
 	});
