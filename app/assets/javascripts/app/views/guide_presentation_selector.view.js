@@ -30,7 +30,6 @@
     },
 
     render : function(){
-      this._updateVisibility();
       this.$el.html(this.template());
       this._setSelected();
     },
@@ -56,7 +55,6 @@
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState') ||
           _changedAttrs.has('displayIsolatedRoll')) {
-        this._updateVisibility();
       }
       // only update selection rendering if relevant attribtues have been updated
       if (!_changedAttrs.has('displayState') &&
@@ -64,16 +62,6 @@
         return;
       }
       this._setSelected();
-    },
-
-    _updateVisibility : function(){
-      if(this.model.get('displayIsolatedRoll') ||
-           this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll ||
-           this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
-          this.$el.hide();
-        } else {
-          this.$el.show();
-        }
     },
 
     _setSelected : function(){
