@@ -10,10 +10,6 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
 
   className : 'guide-overlay',
 
-  insertIntoDom: function(){
-    this.delegateEvents(true);
-  },
-
   reveal: function(){
     this.$el.addClass('showing');
   },

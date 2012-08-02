@@ -34,10 +34,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //ROUTE HANDLERS
   //---
 
+  displayFrameInRollWithComments : function(rollId, frameId, params){
+    this.displayFrameInRoll(rollId, frameId, params, {showCommentOverlay:true});
+  },
+
   displayFrameInRoll : function(rollId, frameId, params, options, topLevelViewsOptions){
     // default options
     options = _.chain({}).extend(options).defaults({
-      rerollSuccess : (params && params.reroll_success === "true")
+      rerollSuccess : (params && params.reroll_success === "true"),
+      showCommentOverlay : false
     }).value();
 
     var self = this;
@@ -190,13 +195,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
       
-      // filtering out faux users so as a team we can interact more easily 
+      // filtering out faux users so as a team we can interact more easily
       //   with real users easily as they come in.
-      if ($.getUrlParam("real") == 1){ 
+      if ($.getUrlParam("real") == 1){
         shelby.views.guide._listView.updateFilter(function(model){
           return model.get('frame').get('creator').get('faux') != 1;
         });
-      } 
+      }
       // filtering out non-gt_enabled users
       if ($.getUrlParam("gt") == 1){
         shelby.views.guide._listView.updateFilter(function(model){
@@ -306,10 +311,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _activateFrameInRollById : function(rollModel, frameId) {
+  _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
     var frame;
     if (frame = rollModel.get('frames').get(frameId)) {
       shelby.models.guide.set('activeFrameModel', frame);
+      if (showCommentOverlay) {
+        shelby.models.guideOverlay.set({
+          activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+          activeGuideOverlayFrame : frame
+        });
+      }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
       shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
@@ -444,7 +455,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       },
       onRollFetch: function(rollModel, response){
         if(!options.rerollSuccess){
-          self._activateFrameInRollById(rollModel, frameId);
+          self._activateFrameInRollById(rollModel, frameId, options.showCommentOverlay);
         }
       }
     }, topLevelViewsOptions);

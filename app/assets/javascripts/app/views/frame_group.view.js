@@ -104,47 +104,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   requestFrameShareView: function(){
     this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.share);
-    // if (this._frameSharingInGuideView) {
-    //   if (this._frameSharingInGuideView == shelby.models.guide.get('activeGuideOverlayView')) {
-    //     this._frameSharingInGuideView.hide();
-    //     return;
-    //   }
-    // } else {
-    //   var personalRoll = shelby.models.rollFollowings.getRollModelById(shelby.models.user.get('personal_roll').id);
-      
-    //   this._frameSharingInGuideView = new libs.shelbyGT.FrameSharingInGuideView({model:this.model.get('frames').at(0), roll:personalRoll});
-    //   this._frameSharingInGuideView.render();
-    // }
-
-    // this._hideInGuideView();
-    // this._frameSharingInGuideView.insertIntoDom(false);
-    // this._frameSharingInGuideView.reveal();
-    // shelby.models.guide.set('activeGuideOverlayView', this._frameSharingInGuideView);
   },
   
   requestFrameRollView : function(){
     this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
-    // if (this._frameRollingView) {
-    //   if (this._frameRollingView == shelby.models.guide.get('activeGuideOverlayView')) {
-    //     this._frameRollingView.hide();
-    //     return;
-    //   }
-    // } else {
-    //   this._frameRollingView = new libs.shelbyGT.FrameRollingView({model:this.model.get('frames').at(0)});
-    //   this._frameRollingView.render();
-    // }
-
-    // this._hideInGuideView();
-    // this._frameRollingView.insertIntoDom(false);
-    // this._frameRollingView.reveal();
-    // shelby.models.guide.set('activeGuideOverlayView', this._frameRollingView);
-  },
-
-  _hideInGuideView : function(){
-    var view = shelby.models.guide.get('activeGuideOverlayView');
-
-    view && view.hide();
-
   },
 
   _saveToWatchLater : function(){
@@ -179,20 +142,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   _requestConversationView : function(){
     this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-    // if (this._conversationView) {
-    //   if (this._conversationView == shelby.models.guide.get('activeGuideOverlayView')) {
-    //     this._conversationView.hide();
-    //     return;
-    //   }
-    // } else {
-    //   this._conversationView = new libs.shelbyGT.FrameConversationView({model:this.model.get('frames').at(0)});
-    //   this._conversationView.render();
-    // }
-
-    // this._hideInGuideView();
-    // this._conversationView.insertIntoDom(false);
-    // this._conversationView.reveal();
-    // shelby.models.guide.set('activeGuideOverlayView', this._conversationView);
   },
 
   _checkSetGuideOverlayState : function(type) {
@@ -252,7 +201,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id') + '/frame/' + $(e.currentTarget).data('frame_id'), {trigger:true});
     return false;
   },
-
 
   _onFrameRemove : function() {
     // TODO: perform some visually attractive removal animation for the frame
