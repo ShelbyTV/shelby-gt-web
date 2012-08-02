@@ -1,37 +1,30 @@
 @import "base";
  
-.video-player{
+.videoplayer{
 	background: #000;
-	color:white;
 	height:100%;
-//	margin-right:330px;
-	margin-left: 330px;
+  float: right;
 
 	@include transition-property('margin-right');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(0s);
-
-//	p{
-//		background:black;
-//		margin:0;
-//	}
 }
 
-.video-player.full-width {
+.videoplayer.full-width {
   margin-right:0px;
 }
 
 
-#video-players-holder {
+.videoplayer-lining {
   position: relative;
   height: 100%;
   width: 100%;
   > * {
     position: absolute;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    width: inherit;
+    height: inherit;
   }
   
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */

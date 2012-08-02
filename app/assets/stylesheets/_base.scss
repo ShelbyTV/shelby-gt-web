@@ -59,35 +59,30 @@ $icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
 $icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
 $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
-//UI-TODO: comb through radar.scss for hardcoded variables
-//         below needs to be added to css:
 
-
-//$x-pos : center !default;
-//$y-pos : center !default;
-
-//@mixin x-inline-svg($svg $primer-color, $x-pos, $y-pos){
-//	background: url($svg) no-repeat $x-pos, $y-pos, $primer-color;
-//}
-
-//variables must be announced here.
+//--- FONT SETUP
 $font-size   : 13px;
 $size        : "62.5%" !default;
 $button-size : large !default; 		//see @mixin x-button-primer()
 $button-back : normal !default; 	//see @mixin x-button-primer()
 
-//radius, for border-radius, etc.
+//--- BORDER RADIUS
 $radius        : 5px;
-$button-radius : 5px;
-$input-radius  : 3px;
+$button-radius : $radius;
+$input-radius  : $radius - 2;
 $roundies-type : normal !default;  //see @mixin roundies()
 
-//spacing
-$defaultMargin  : 10px;
-$default-margin : 10px;
+//--- MARGINS, PADDINGS, and WIDTHS 
+$unit           : 10px;
+$defaultMargin  : $unit;
+$default-margin : $unit;
 $margin         : 0.5em;
 
-//border colors
+$header-height : $unit * 3.5; 
+$guide-width   : $unit * 33;
+
+
+//--- COLORS
 $outline : #222;
 $inset   : #000;
 $outset  : #484b4d;
@@ -103,21 +98,25 @@ $button-color  : #efefef;
 $text          : #dcddde;
 $headerNavLink : #d8d8d8;
 
-//background colors
 $base-bg-color                      : #494949;
+
 $guide-bg-color 				            : #232526;
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #111;
+
 $header-bg-color                    : #2c2c2c;
 $header-outline                     : #202020;
+
 $filter-bg-color			              : #585858;
+
 $video-card-color                   : #404040;
 $video-card-outline                 : #222;
 $video-card-bg-color                : #35383a;
 $video-card-thumbnail               : #494949;
 $video-controls-progress-load       : #303030;
 $video-player 											: #0e0e0e;
+
 $rolling-header-bg-color            : #555;
 $rolls-bg-color 			              : #585858;
 $rolls-people-outset                : #2E2F30;
@@ -126,25 +125,24 @@ $toggle-switch-gray                 : #fefefe;
 $settingsBG : #2b2a2a;
 $rollsBG    : #585858;
 
-//special colors
-$primer-color      : #343434 !default;
+//--- COLORS: shelby 
 $shelby-blue       : #0071a3;
-//$shelby-gray       : #343434;
 $shelby-gray       : #27292A;
 $shelby-green      : #428e3a;
 $shelby-purple     : #693a7b;
 $shelby-red        : #cc1235;
 $shelby-yellow     : #d5cd39;
-
+$primer-color      : $shelby-gray !default;
 $education-yellow  : #f9f15c;
 
+//--- COLORS: social media
 $facebook-blue     : #013e80;
 $twitter-blue      : #2CAAE1;
 $tumblr-blue       : #2f445b;
 
-$facebook-color    : #013e80;
-$twitter-color     : #00a2d1;
-$tumblr-color      : #2f445b;
+$facebook-color    : $facebook-blue;
+$twitter-color     : $twitter-blue;
+$tumblr-color      : $tumblr-blue;
 
 $networks-unselected : #474747;
 

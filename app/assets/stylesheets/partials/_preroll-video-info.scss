@@ -1,52 +1,24 @@
 @import "base";
 
-.full-width .preroll-video-info-wrapper {
-  padding-right: 80px;
+.full-width { 
+  .preroll-video-info-wrapper {
+    padding-right: 80px;
+  }
 }
 
 .preroll-video-info-wrapper {
   left: 0;
-  padding-right: 410px;
+  padding-left: $guide-width;
   position: absolute;
   top: 30%;
   width: 100%;
   z-index: 2;
 
-  .preroll-video-info-lining {
-    @include text-shadow(0px -1px 0px #000);
 
-    background: rgba(0,0,0, 0.5);
-    color: white;
-    margin-left: 34*$defaultMargin;
-    opacity: 0.0;
-    padding: 20px;
-  
-    @include transition-property('opacity');
-    @include transition-duration(1s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0s);
-  
-    .video-title {
-      font-size: 40px;
-      font-weight: bold;
+  &.showing {
+    .preroll-video-info {
+      opacity: 1.0;
     }
-  
-    .frame-creator {
-      font-size: 23px;
-      img {
-        width: 48px;
-      }
-    }
-  
-    .frame-comment {
-      font-size: 30px;
-      margin: 25px 0 35px 0;
-    }
-    
-  }
-
-  &.showing .preroll-video-info-lining {
-    opacity: 1.0;
   }
 
   &.post-display {
@@ -57,4 +29,37 @@
     @include transition-delay(1.5s);
   }
 
+}
+
+.preroll-video-info {
+  @include text-shadow(0px -1px 0px #000);
+
+  background: rgba(0,0,0, 0.5);
+  color: white;
+  margin:0 $defaultMargin * 6;
+  opacity: 0.0;
+  padding: 20px;
+
+  @include transition-property('opacity');
+  @include transition-duration(1s);
+  @include transition-timing-function(ease-in-out);
+  @include transition-delay(0s);
+
+  .video-title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .frame-creator {
+    font-size: 23px;
+    img {
+      width: 48px;
+    }
+  }
+
+  .frame-comment {
+    font-size: 30px;
+    margin: 25px 0 35px 0;
+  }
+  
 }

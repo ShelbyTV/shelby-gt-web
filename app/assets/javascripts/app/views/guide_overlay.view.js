@@ -9,10 +9,9 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   },
 
   insertIntoDom: function(reveal){
-    $(".main").append(this.el);
+    $(".js-guide").append(this.el);
     this.delegateEvents(true);
     this.$el.addClass("guide-overlay");
-    this._doPosition();
     if(reveal!==false){ this.reveal(); }
   },
   
@@ -24,12 +23,7 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
     this.$el.removeClass('showing');
     shelby.models.guide.set('activeGuideOverlayView', null);
   },
-  
-  _doPosition: function(){
-    var allHeadersHeight = _.reduce($(".js-app-header"), function(memo, el){ return memo + $(el).height(); }, 0);
-    this.$el.css({top:allHeadersHeight, bottom:0});
-  },
-  
+
   _onSlideComplete: function(){
     if (!this.$el.hasClass('showing')) {
       this.$el.remove();

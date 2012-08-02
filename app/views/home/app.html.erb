@@ -29,90 +29,83 @@
 <body class="shelby">
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   
-  <div id="wrapper" class="shelby-wrapper wrapper" role="application">
+  <div id="js-shelby-wrapper" class="shelby-wrapper" role="application">
 
+    <header id="js-header" class="js-app-header shelby-header" role="banner">
+      <!-- contents in guide-header.jst -->
+    </header>
 
-<!-- MOVED FROM LINE 83 -->
-        <div id="js-header" class="js-app-header shelby-header" role="banner">
-          <!-- contents in guide-header.jst -->
-        </div>
-<!-- /MOVED FROM LINE 83 -->
-
-    <div id="lining" class="lining">
-      <div id="player" class="video-player" role="main">
-
-				<div id="video-players-holder">
-	        <div id="youtube-player-holder"></div>
-	        <div id="vimeo-player-holder"></div>
-	        <div id="collegehumor-player-holder"></div>
-	        <div id="dailymotion-player-holder"></div>
-	        <div id="bliptv-player-holder"></div>
-	        <div id="ooyala-player-holder"></div>
-	        <div id="espn-player-holder"></div>	
-	        <div id="hulu-player-holder">
-	          <div id="videoPlayerComponent"></div>
-	          <div id="adComponent"></div>
-	        </div>
-				</div>
-				
-				<div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
-
+    <div class="content_module">
+      <div class="videoplayer-wrapper">
+        <div class="videoplayer" role="main">
+  				<div class="videoplayer-lining">
+  	        <div id="youtube-player-holder"></div>
+  	        <div id="vimeo-player-holder"></div>
+  	        <div id="collegehumor-player-holder"></div>
+  	        <div id="dailymotion-player-holder"></div>
+  	        <div id="bliptv-player-holder"></div>
+  	        <div id="ooyala-player-holder"></div>
+  	        <div id="espn-player-holder"></div>	
+  	        <div id="hulu-player-holder">
+            <div id="videoPlayerComponent"></div>
+            <div id="adComponent"></div>
+          </div>
+  			</div><!-- eo .videoplayer -->
+  				
+  			<div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
         <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
 
-				<div id="mini-video-progress">
-					<div class="mini-video-player-progress">
-						<div class="video-player-progress-load"></div>
-						<div class="video-player-progress-elapsed"></div>
-					</div>
-				</div>
-        
+  			<div id="mini-video-progress">
+  				<div class="mini-video-player-progress">
+  					<div class="video-player-progress-load"></div>
+  					<div class="video-player-progress-elapsed"></div>
+  				</div>
+  			</div>
+          
         <div class="context-overlay-wrapper js-inactivity-preemption">
-          <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix">
-
-          </aside>
+          <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
         </div><!-- eo .conext-overlay-wrapper -->
 
-				<div id="js-notifications-wrapper" class="notifications-wrapper"></div>
-      </div> <!-- eo .video-player -->
-    </div><!-- eo #lining -->
+  			<div id="js-notifications-wrapper" class="notifications-wrapper"></div>
+      </div> <!-- eo .videoplayer-wrapper -->
 
-    <div class="main clearfix js-inactivity-preemption" role="sidebar">
-      <header class="header-guide">
+      <section class="js-inactivity-preemption js-guide guide-wrapper sidebar_module clearfix" role="sidebar">
+        <div id="js-guide" class="guide">
+          <div id="js-guide-header" class="menu">
+            <div id="js-item-header">
+              <!-- content filled in by ItemHeaderView -->
+            </div>
 
-      <div id="js-guide-header" class="menu">
-        <!-- <div id="js-guide-presentation-selector" class="guide-presentation-selector"> -->
-          <!-- content filled in by GuidePresentationSelctorView -->
-        <!-- </div> -->
-        <div id="js-item-header">
-          <!-- content filled in by ItemHeaderView -->
-        </div>
-        <div id="js-roll-action-menu" class="roll-action-menu">
-          <!-- content filled in by RollActionMenuView -->
-        </div>
+            <div id="js-roll-action-menu" class="roll-action-menu">
+              <!-- content filled in by RollActionMenuView -->
+            </div>
+          </div>
+
+          <div id="js-guide-body" class="content-body">
+            <div id="js-add-video-area" class="video-card add-video-area">
+              <!-- content filled in by AddVideoView -->
+            </div>
+
+            <div id="guide">
+              <!-- guide contents dynamically rendered-->
+            </div>
+          </div>
+        </div><!-- eo .guide -->
+      </section><!-- eo .guide-wrapper -->
+
+      <div id="guide-overlay-controls">
+        <!-- controls dynamically rendered, floating over guide -->
       </div>
-      <div id="js-guide-wrapper" class="content-body">
-			<div id="js-add-video-area" class="video-card add-video-area">
-			  <!-- content filled in by AddVideoView -->
-			</div>
-        <div id="guide">
-          <!-- guide contents dynamically rendered-->
+
+      <!-- <div style="height:0;clear:both;"></div> -->
+
+      <div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
+        <div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
+          Make Shelby even better by
+          <%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>       
         </div>
-      </div>
-		</header>
-    </div><!-- eo .main -->
-
-		<div id="guide-overlay-controls">
-	        <!-- controls dynamically rendered, floating over guide -->
-	  </div>
-
-	  <div style="height:0;clear:both;"></div>
-
-		<div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
-			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
-				Make Shelby even better by
-				<%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
-			</div>
-		</div>
+      </div><!-- eo #temp-auth-related-links -->    
+    </div><!-- eo .content_module -->
   </div> <!-- eo ~main -->
   <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
 	<% if Rails.env == 'production' %>
