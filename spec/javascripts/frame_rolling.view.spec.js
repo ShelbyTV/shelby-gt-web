@@ -36,8 +36,9 @@ describe("FrameRollingView", function() {
       this.view._setGuideOverlayStateNone.restore();
     });
 
-    it("should update guide overlay model to request hiding guide overlay views when sharing state becomes complete", function() {
-      this.shareActionStateModel.set({doShare:libs.shelbyGT.ShareActionState.complete});
+    it("should update guide overlay model to request hiding guide overlay views when done is called", function() {
+			sinon.stub(this.view,'_renderRollSelectionChild'); //don't need this actually be run
+			this.view.done();
       expect(this.view._setGuideOverlayStateNone).toHaveBeenCalled();
     });
   });
