@@ -45,25 +45,30 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   initialize : function() {
-    this.model.get('frames').at(0).bind('destroy', this._onFrameRemove, this);
-    this.model.get('frames').at(0).bind('change', this.render, this);
-    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').bind('change', this.render, this);
-    this.model.get('frames').bind('change', this.render, this);
-    this.model.get('frames').bind('add', this.render, this);
-    this.model.get('frames').bind('destroy', this.render, this);
-    this.model.bind('change', this.render, this);
+    this._setupTeardownModelBindings(this.model, true);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function(){
-    this.model.get('frames').at(0).unbind('destroy', this._onFrameRemove, this);
-    this.model.get('frames').at(0).unbind('change', this.render, this);
-    this.model.get('frames').at(0).get('conversation') && this.model.get('frames').at(0).get('conversation').unbind('change', this.render, this);
-    this.model.get('frames').unbind('change', this.render, this);
-    this.model.get('frames').unbind('add', this.render, this);
-    this.model.get('frames').unbind('destroy', this.render, this);
-    this.model.unbind('change', this.render, this);
+    this._setupTeardownModelBindings(this.model, false);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
+  },
+
+  _setupTeardownModelBindings : function(model, bind) {
+    var action;
+    if (bind) {
+      action = 'bind';
+    } else {
+      action = 'unbind';
+    }
+
+    model.get('frames').at(0)[action]('destroy', this._onFrameRemove, this);
+    model.get('frames').at(0)[action]('change', this.render, this);
+    model.get('frames').at(0).get('conversation') && model.get('frames').at(0).get('conversation')[action]('change', this.render, this);
+    model.get('frames')[action]('change', this.render, this);
+    model.get('frames')[action]('add', this.render, this);
+    model.get('frames')[action]('destroy', this.render, this);
+    model[action]('change', this.render, this);
   },
 
   render : function(){

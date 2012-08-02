@@ -25,21 +25,21 @@
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       //unbind
       if (this.model) {
-        this.model.unbind('destroy', this._onFrameRemove, this);
-        this.model.unbind('change', this.render, this);
+        this._setupTeardownModelBindings(this.model, false);
       }
 
-      this.model = activeFrameModel;
+      var frames = new Backbone.Collection();
+      frames.add(activeFrameModel);
+      this.model  = new Backbone.Model({'frames':frames});
 
       //bind
-      this.model.bind('destroy', this._onFrameRemove, this);
-      this.model.bind('change', this.render, this);
+      this._setupTeardownModelBindings(this.model, true);
 
       this.render();
     },
 
     render : function() {
-      this.$el.html( this.template({ frame: this.model, options: this.options }) );
+      this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
     },
 
     template : function(obj) {
