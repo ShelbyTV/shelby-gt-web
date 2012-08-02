@@ -191,8 +191,7 @@
       }
       
       //remove any current guide overlay views
-      var view = shelby.models.guide.get('activeGuideOverlayView');
-      view && view.cancel();
+      shelby.models.guideOverlay.clearAllGuideOverlays();
 
       // display the new child list view constructed appropriately for the display state
       this.appendChild(this._listView);
