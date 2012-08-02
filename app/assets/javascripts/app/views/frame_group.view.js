@@ -203,11 +203,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         this.options.guideOverlayModel.get('activeGuideOverlayFrame').id == this.model.get('frames').at(0).id;
 
     if (type == libs.shelbyGT.GuideOverlayType.none || alreadyShowingThisOverlay) {
-      // hide the current overlay
-      this.options.guideOverlayModel.set({
-        'activeGuideOverlayFrame' : null,
-        'activeGuideOverlayType' : libs.shelbyGT.GuideOverlayType.none
-      });
+      // hide the current overlay(s)
+      this.options.guideOverlayModel.clearAllGuideOverlays();
     } else {
       // show the requested overlay
       this.options.guideOverlayModel.set({

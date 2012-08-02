@@ -14,7 +14,7 @@
       "click .js-message-reply" : "_reply"
     }),
 
-    className : 'conversation-overlay',
+    className : GuideOverlayView.prototype.className + ' conversation-overlay',
 
     template : function(obj){
       return JST['frame-conversation'](obj);

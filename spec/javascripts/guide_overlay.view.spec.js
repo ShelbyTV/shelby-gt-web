@@ -8,18 +8,10 @@ describe("GuideOverlayView", function() {
     it("should create a <div> el", function() {
       expect(this.view.el.nodeName).toEqual("DIV");
     });
-  });
 
-  describe("Rendering", function() {
-
-    beforeEach(function() {
-      this.view.render();
-    });
-
-    it ("Should have class 'guide-overlay'", function() {
+    it ("should have the class 'guide-overlay'", function() {
       expect(this.view.$el).toHaveClass('guide-overlay');
     });
-
   });
 
   describe("Methods", function() {

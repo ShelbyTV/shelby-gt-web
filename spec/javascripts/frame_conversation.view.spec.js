@@ -13,8 +13,9 @@ describe("FrameConversationView", function() {
       expect(this.view.el.nodeName).toEqual("DIV");
     });
 
-    it("should have the class 'conversation-overlay'", function() {
+    it("should have the classes 'conversation-overlay guide-overlay'", function() {
       expect(this.view.$el).toHaveClass("conversation-overlay");
+      expect(this.view.$el).toHaveClass('guide-overlay');
     });
   });
 
@@ -27,18 +28,14 @@ describe("FrameConversationView", function() {
     this.view.template.restore();
   });
 
-  describe("Rendering", function() {
-
-    it ("Should have class 'guide-overlay'", function() {
-      expect(this.view.$el).toHaveClass('guide-overlay');
-    });
-
-  });
-
   describe("Events", function() {
 
     describe("click .back:not(.js-busy)", function() {
       it("should update guide overlay state to hide guide overlays", function() {
+        this.view.options.guideOverlayModel.set({
+          activeGuideOverlayType : 'something',
+          activeGuideOverlayFrame : 'something else'
+        });
         this.view.$('.back').click();
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();

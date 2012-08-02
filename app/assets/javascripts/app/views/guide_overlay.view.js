@@ -8,12 +8,10 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
     "oTransitionEnd"       : "_onSlideComplete"
   },
 
+  className : 'guide-overlay',
+
   insertIntoDom: function(){
     this.delegateEvents(true);
-  },
-  
-  render : function() {
-    this.$el.addClass("guide-overlay");
   },
 
   reveal: function(){
@@ -30,15 +28,12 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   },
   
   _setGuideOverlayStateNone: function(){
-    this.options.guideOverlayModel.set({
-      'activeGuideOverlayFrame' : null,
-      'activeGuideOverlayType' : libs.shelbyGT.GuideOverlayType.none
-    });
+    this.options.guideOverlayModel.clearAllGuideOverlays();
   },
 
   _onSlideComplete: function(){
     if (!this.$el.hasClass('showing')) {
-      this.$el.remove();
+      this.leave();
     }
   }
 

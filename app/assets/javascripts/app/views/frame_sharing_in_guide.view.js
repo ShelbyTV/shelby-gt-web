@@ -4,23 +4,21 @@ libs.shelbyGT.FrameSharingInGuideView = libs.shelbyGT.GuideOverlayView.extend({
     "click .back:not(.js-busy)"  : "_setGuideOverlayStateNone"
   }),
 
-  className : 'frame-sharing',
+  className : libs.shelbyGT.GuideOverlayView.prototype.className + ' frame-sharing',
 
   template : function(obj){
     return JST['frame-sharing'](obj);
-  },
-
-  initialize : function(){
-  },
-
-  _cleanup : function(){
   },
 
   render : function(){
     this.$el.html(this.template({frame:this.model}));
     
     //sharing view
-    var shareFrameView = new libs.shelbyGT.ShareFrameView({model : new libs.shelbyGT.ShareModel(), frame : this.model});
+    var shareFrameView = new libs.shelbyGT.ShareFrameView({
+      model : new libs.shelbyGT.ShareModel(),
+      guideOverlayModel : this.options.guideOverlayModel,
+      frame : this.model
+    });
     this.appendChildInto(shareFrameView, '.frame-sharing');
 
     libs.shelbyGT.GuideOverlayView.prototype.render.call(this);

@@ -15,7 +15,7 @@
       "click .back:not(.js-busy)"  : "_setGuideOverlayStateNone"
     }),
 
-    className : 'js-rolling-frame rolling-frame',
+    className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
 
     template : function(obj){
       return JST['frame-rolling'](obj);
@@ -59,7 +59,7 @@
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
-          this.hide();
+          this._setGuideOverlayStateNone();
           break;
         case ShareActionState.share :
           //TODO: show spinner (via GuideOverlay?)

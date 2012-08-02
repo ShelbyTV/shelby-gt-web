@@ -9,8 +9,9 @@ describe("FrameSharingInGuideView", function() {
       expect(this.view.el.nodeName).toEqual("DIV");
     });
 
-    it("should have the class 'frame-sharing'", function() {
+    it("should have the classes 'frame-sharing guide-overlay'", function() {
       expect(this.view.$el).toHaveClass("frame-sharing");
+      expect(this.view.$el).toHaveClass("guide-overlay");
     });
   });
 });
