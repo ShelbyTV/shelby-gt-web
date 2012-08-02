@@ -28,7 +28,7 @@ describe("GuideOverlayManagerView", function() {
       sinon.spy(this.GuideOverlayViewStub, 'render');
       sinon.spy(this.GuideOverlayViewStub, 'doPosition');
       sinon.spy(this.GuideOverlayViewStub, 'reveal');
-      sinon.spy(this.GuideOverlayViewStub, 'hide');
+      this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
 
       this.user = BackboneFactory.create('user');
       this.rollFollowings = BackboneFactory.create('rollscollection');
@@ -112,16 +112,42 @@ describe("GuideOverlayManagerView", function() {
       this.view.appendChild.restore();
     });
 
-    it("should hide old guide overlays when guide overlay model changes to none", function() {
+    it("should hide old guide overlays when new guide overlay is requested or guide overlay changes to none", function() {
+      var childCount;
+
+      childCount = this.view.children.value().length;
       this.guideOverlayModel.set({
         activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
         activeGuideOverlayFrame : this.frame
       });
+      expect(this.hideSpy.callCount).toEqual(childCount);
+      this.hideSpy.restore();
+      this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
+      
+      childCount = this.view.children.value().length;
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.rolling,
+        activeGuideOverlayFrame : this.frame
+      });
+      expect(this.hideSpy.callCount).toEqual(childCount);
+      this.hideSpy.restore();
+      this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
+
+      childCount = this.view.children.value().length;
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.share,
+        activeGuideOverlayFrame : this.frame
+      });
+      expect(this.hideSpy.callCount).toEqual(childCount);
+      this.hideSpy.restore();
+      this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
+
+      childCount = this.view.children.value().length;
       this.guideOverlayModel.set({
         activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none,
         activeGuideOverlayFrame : null
       });
-      expect(this.GuideOverlayViewStub.hide).toHaveBeenCalledOnce();
+      expect(this.hideSpy.callCount).toEqual(childCount);
     });
   });
 });
