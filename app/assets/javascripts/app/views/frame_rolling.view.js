@@ -11,12 +11,12 @@
     _frameRollingState : null,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .cancel"							  	: "hide",  //cancel from Step 1/2
+      "click .cancel"							  	: "_setGuideOverlayStateNone",  //cancel from Step 1/2
 			"click .back"										: "_backToRollSelection", //back from Step 2/2
 			"click .create-roll"						: "_createRoll"
     }),
 
-    className : 'js-rolling-frame rolling-frame',
+    className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
 
     template : function(obj){
       return JST['frame-rolling'](obj);
@@ -34,7 +34,7 @@
 			// render step 1: roll selection
       this._renderRollSelectionChild();
 
-      this.insertIntoDom(false);
+      GuideOverlayView.prototype.render.call(this);
     },
 
 		//------------------------- STEP 1 ----------------------------
@@ -55,6 +55,7 @@
           doStaticRender : true
         }
       );
+
       this.appendChildInto(this._rollsListView, '.js-existing-rolls-list');
 		},
 		
@@ -106,7 +107,7 @@
 		
 		done : function(){
 			this._backToRollSelection();
-			this.hide();
+			this._setGuideOverlayStateNone();
 		}
 
   });
