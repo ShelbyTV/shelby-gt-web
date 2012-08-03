@@ -15,11 +15,10 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   },
   
   hide: function(){
-    console.log(this.$el.removeClass('showing'));
+    this.$el.removeClass('showing');
   },
   
   _setGuideOverlayStateNone: function(){
-    console.log('setting guide overlay state:none');
     this.options.guideOverlayModel.clearAllGuideOverlays();
   },
 
