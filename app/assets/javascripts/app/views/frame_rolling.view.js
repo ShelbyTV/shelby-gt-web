@@ -10,6 +10,8 @@
 
     _frameRollingState : null,
 
+		_autoChoosePersonalRoll : true,
+
     events : _.extend({}, GuideOverlayView.prototype.events, {
       "click .cancel"							  	: "_setGuideOverlayStateNone",  //cancel from Step 1/2
 			"click .back"										: "_backToRollSelection", //back from Step 2/2
@@ -31,8 +33,14 @@
     render : function(){
       this.$el.html(this.template({frame:this.model}));
 
-			// render step 1: roll selection
-      this._renderRollSelectionChild();
+			if(this._autoChoosePersonalRoll && shelby.models.user.get('personal_roll')){
+				//skipping step 1.  Rendering Step 2 with user's personal roll.
+				this.selectRoll(shelby.models.user.get('personal_roll'));
+			} 
+			else {
+				// render step 1: roll selection
+	      this._renderRollSelectionChild();
+			}
 
       GuideOverlayView.prototype.render.call(this);
     },
@@ -42,7 +50,6 @@
 		_renderRollSelectionChild: function(){
 			this.$(".guide-overlay-title .cancel").show();
 			this.$(".guide-overlay-title .back").hide();
-			this.$(".guide-overlay-title .title").text("Roll Video (1/2)");
 			
 			this.$('.select-roll-type').show();
 			
@@ -71,7 +78,6 @@
 		_renderRollingFormChild: function(roll){
 			this.$(".guide-overlay-title .cancel").hide();
 			this.$(".guide-overlay-title .back").show();
-			this.$(".guide-overlay-title .title").text("Roll Video (2/2)");
 			
 			this._rollingForm = new libs.shelbyGT.RollingFormView({
 				roll: roll,

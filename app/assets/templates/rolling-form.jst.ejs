@@ -13,15 +13,24 @@
 
 
 <fieldset class="rolling-fields">
-	<label for="new-roll-name" class="section-label">Add to Roll...</label>
+	<label for="new-roll-name" class="section-label">Add to Roll:</label>
 	
-	<h2 class="roll-selection-item-title">
-		<% if(roll){ %>
+	
+	<% if(roll){ %>
+		<h2 class="roll-selection-item-title">
 			<span class="path"><%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
-		<% } else { %>
-			<span class="path"><%= shelby.models.user.get('nickname') %></span><span class="path">/</span><input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="what's this roll about?" type="text">
+		</h2>
+		<% if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public && roll.get('creator_id') == shelby.models.user.id){ %>
+			<h3 class="roll-selection-item-url">
+				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
+			</h3>
 		<% } %>
-	</h2>
+	<% } else { %>
+		<h2 class="roll-selection-item-title">
+			<span class="path"><%= shelby.models.user.get('nickname') %></span><span class="path">/</span><input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="what's this roll about?" type="text">
+		</h2>
+	<% } %>
+
 </fieldset>
 
 <fieldset class="rolling-fields">
