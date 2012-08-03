@@ -19,35 +19,36 @@ _(shelby).extend({
     
     switch (action){
       case 'commented':
-        _action = 'commented'; _category = 'frame';
+        _action = 'commented'; _category = 'Frame';
         _kmq.push(['record', action, {'frame': options.id}]);
         break;
       case 'shared_roll':
-        _action = 'shared'; _category = 'roll'; 
+        _action = 'shared'; _category = 'Roll'; 
         _kmq.push(['record', 'shared', {'outbound destination': options.destination, 'roll': options.id }]);
         break;
       case 'shared_frame':
-        _action = 'shared'; _category = 'frame';
+        _action = 'shared'; _category = 'Frame';
         _kmq.push(['record', 'shared', {'outbound destination': options.destination, 'frame': options.id }]);
         break;
       case 'heart_video':
-        _action = 'hearted'; _category = 'frame';
+        _action = 'hearted'; _category = 'Frame';
         _kmq.push(['record', action, {'frame': options.id}]);
         break;
       case 'left_roll':
-        _action = 'left'; _category = 'roll'; 
+        _action = 'left'; _category = 'Roll'; 
         _kmq.push(['record', action, {'roll': options.id}]);
         break;
       case 'joined_roll':
-        _action = 'joined'; _category = 'roll';
+        _action = 'joined'; _category = 'Roll';
         _kmq.push(['record', action, {'roll': options.id}]);
         break;
       case 'add_to_roll':
-        _action = 'rolled'; _category = 'frame';
+        _action = 'rolled'; _category = 'Frame';
         _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
         break;
       case 'identify':
         _kmq.push(['identify', options.nickname]);
+        break;
       default:
         _action = 'unknown';
         _category = 'unknown';
