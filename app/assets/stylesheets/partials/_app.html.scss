@@ -78,13 +78,13 @@ a{
 	z-index:3;
 	
 	opacity: 1;
-	@include transition-property('opacity, margin-right');
+	@include transition-property('opacity, margin-left');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(0s);
 	
 	&.hide-guide {
-	  margin-right:-330px;
+	  margin-left:-330px;
 	}
 }
 
