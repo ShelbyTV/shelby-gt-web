@@ -191,7 +191,7 @@
   		});
 
       $('#js-email-form').on('submit', function(){
-        $.get(shelby.config.apiRoot + '/POST/gt_interest', $(this).serialize(), function(data) {
+        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
           $('#js-login, #js-signup').addClass('hidden');
           $('#js-thankyou').removeClass('hidden');
         }, 'jsonp');
