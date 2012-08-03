@@ -12,17 +12,17 @@
     _frameRollingState : null,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .back:not(.js-busy)"  : "hide"
+      "click .back:not(.js-busy)"  : "_setGuideOverlayStateNone"
     }),
 
-    className : 'js-rolling-frame rolling-frame',
+    className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
 
     template : function(obj){
       return JST['frame-rolling'](obj);
     },
 
     initialize : function(){
-      this._frameRollingState = new ShareActionStateModel();
+      this._frameRollingState = new libs.shelbyGT.ShareActionStateModel();
       this._frameRollingState.bind('change:doShare', this._onDoShareChange, this);
     },
 
@@ -53,13 +53,13 @@
       );
       this.appendChildInto(rollsListView, '.js-existing-rolls-list');
 
-      this.insertIntoDom(false);
+      GuideOverlayView.prototype.render.call(this);
     },
 
     _onDoShareChange: function(shareActionStateModel, doShare){
       switch (doShare) {
         case ShareActionState.complete :
-          this.hide();
+          this._setGuideOverlayStateNone();
           break;
         case ShareActionState.share :
           //TODO: show spinner (via GuideOverlay?)

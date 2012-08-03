@@ -24,6 +24,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
+    shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.fetchState = new libs.shelbyGT.FetchStateModel();
@@ -50,6 +51,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           self._reroute();
           shelby.models.rollFollowings.fetch();
           shelby.checkFbTokenValidity();
+          shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
         }
       });      
     }
@@ -63,6 +65,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.user = new libs.shelbyGT.AnonUserModel();
     this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
     this._reroute();
+    
+    shelby.track('identify', {nickname: 'anonymous'});
   },
 
   //---

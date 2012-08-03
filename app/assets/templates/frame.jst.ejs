@@ -15,7 +15,7 @@
 
       <header class="video-card-header<%= suffix %> clearfix">
 
-        <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
+        <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="Click user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
           <div class="frame-creator-avatar-holder">
             <div class="frame-creator<%= suffix %>">
               <% if(creatorThumbnail){ %>
@@ -30,7 +30,7 @@
         <div class="frame-creator-title-date-holder">
 
           <% if (frameGroup.get('collapsed')) { %>
-            <a onclick="return false;" class="js-creation-date js-track-event" href="#">
+            <a onclick="return false;" class="js-creation-date js-track-event" data-ga_category="Frame" data-ga_action="Click expand frame group" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
           <% } %>
           <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
             <%= frame.get('created_at') %>
@@ -46,7 +46,7 @@
           </a>
 
           <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard || frameIsOnHeartedRoll) { %>
-            <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+            <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="Click frame source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
               <h3 class="frame-creator-roll<%= suffix %>">
                 <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
               </h3>
@@ -62,7 +62,7 @@
   <% } else { %>
     <div class="video-card">
 
-    <a href="#" onclick="return false;" class="js-creator-personal-roll js-track-event context-overlay-header" data-ga_category="Frame" data-ga_action="source link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+    <a href="#" onclick="return false;" class="js-creator-personal-roll js-track-event context-overlay-header" data-ga_category="Frame" data-ga_action="Click frame user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       <header class="video-card-header clearfix">
         <div class="frame-creator-avatar-holder">
           <div class="frame-creator">
@@ -127,26 +127,26 @@
       <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
       <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
-        <button class="js-track-event" data-ga_category="Frame" data-ga_action="upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+        <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="js-upvote-frame-lining">
             <%= frame.get('upvoters').length %>
           </i>
         </button>
       </li>
       <li class="frame-controls-comments">
-        <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+        <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="comments-frame-lining">
             <%= messages.length %>
           </i>
         </button>
       </li>
       <li class="frame-controls-roll js-roll-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           Roll it
         </button>
       </li>
       <li class="frame-controls-share js-share-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
+        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           Share it
         </button>
       </li>

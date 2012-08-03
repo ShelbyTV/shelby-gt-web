@@ -39,7 +39,6 @@
     },
     
     _filterPeople : function(){
-      console.log('here');
       shelby.router.navigate('rolls/people',{trigger:true});
     },
     

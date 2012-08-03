@@ -7,7 +7,7 @@ html {
 
 .gate {
 	background-color: #101010;
-	@include background(url('/images/blue.png') no-repeat center center #101010);
+	@include background(url('/images/blue.jpg') no-repeat center center #101010);
 	@include background-size(cover);
 
 	color: #efefef;

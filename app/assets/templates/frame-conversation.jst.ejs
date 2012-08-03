@@ -7,7 +7,7 @@
 
 <div class="guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Back
     </button>
     <h2>Comments</h2>
@@ -32,6 +32,6 @@
     </div>
     <textarea class="js-add-message-input new-comment-input" rows="2"></textarea>
     <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Frame" data-ga_action="comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
+    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
   </form>
 </div>

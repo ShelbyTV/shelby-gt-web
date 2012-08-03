@@ -54,8 +54,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _initInfiniteScrolling : function(){
     var self = this;
-    var wrapper = $('#js-guide-wrapper');
+    //var wrapper = $('#js-guide-wrapper');
+    var wrapper = $('.guide');
     wrapper.scroll(function () {
+      console.log('foo');
       if (wrapper[0].scrollHeight - wrapper.scrollTop() == wrapper.outerHeight()) {
         var coll = self.model.get('frames') || self.model.get('dashboard_entries');
         if (coll.length > 9){

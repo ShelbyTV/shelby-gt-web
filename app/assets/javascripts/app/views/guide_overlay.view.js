@@ -8,25 +8,24 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
     "oTransitionEnd"       : "_onSlideComplete"
   },
 
-  insertIntoDom: function(reveal){
-    $(".js-guide").append(this.el);
-    this.delegateEvents(true);
-    this.$el.addClass("guide-overlay");
-    if(reveal!==false){ this.reveal(); }
-  },
-  
+  className : 'guide-overlay',
+
   reveal: function(){
     this.$el.addClass('showing');
   },
   
   hide: function(){
-    this.$el.removeClass('showing');
-    shelby.models.guide.set('activeGuideOverlayView', null);
+    console.log(this.$el.removeClass('showing'));
+  },
+  
+  _setGuideOverlayStateNone: function(){
+    console.log('setting guide overlay state:none');
+    this.options.guideOverlayModel.clearAllGuideOverlays();
   },
 
   _onSlideComplete: function(){
     if (!this.$el.hasClass('showing')) {
-      this.$el.remove();
+      this.leave();
     }
   }
 
