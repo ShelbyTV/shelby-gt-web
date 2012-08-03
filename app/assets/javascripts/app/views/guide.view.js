@@ -68,8 +68,8 @@
     },
 
     _setGuideTop : function(){
-      var allHeadersHeight = _.reduce($(".main > header"), function(memo, el){ return memo + $(el).height(); }, 0);
-      $('#js-guide-wrapper').css('top', allHeadersHeight);
+      var allHeadersHeight = _.reduce($("#js-guide-header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-body').css('top', allHeadersHeight);
     },
 
     _mapAppendChildView : function(guideModel){

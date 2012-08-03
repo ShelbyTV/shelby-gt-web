@@ -4,7 +4,7 @@
 
 libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
-  el: '.video-player',
+  el: '.videoplayer',
 
 	_curView: null,
 	_playbackState: shelby.models.playbackState,

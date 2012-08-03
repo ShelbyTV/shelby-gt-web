@@ -14,7 +14,7 @@
     render : function(active){
       this.$el.html(this.template());
       if (shelby.models.user.get('anon') && !shelby.models.guide.get('displayIsolatedRoll')) {
-        $('#wrapper').append(this.$el);
+        $('#js-shelby-wrapper').append(this.$el);
       } else {
         this.remove();
       }

@@ -28,8 +28,7 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   el : '#js-header',
 
   _menus : [
-    {anchor: '.about', subnavId: '#about-subnav'},
-    {anchor: '.profile', subnavId: '#profile-subnav'}
+    {anchor: '.js-settings', subnavId: '#js-settings-subnav'}
   ],
 
   template : function(obj){
@@ -48,6 +47,10 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   render : function(){
     this._updateVisibility();
     this.$el.html(this.template({user:this.model}));
+    if (!this.selectorView){
+      this.selectorView = new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
+      this.appendChildInto(this.selectorView, '.guide-presentation-selector');
+    }
   },
 
   _selectMenu : function(menu){
