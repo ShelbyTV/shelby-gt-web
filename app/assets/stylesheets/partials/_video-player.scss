@@ -1,20 +1,18 @@
 @import "base";
+
+.animate-easein {
+  @include animate;
+}
  
 .videoplayer{
-	background: #000;
-	height:100%;
-  float: right;
-
-	@include transition-property('margin-right');
-	@include transition-duration(.5s);
-	@include transition-timing-function(ease-in-out);
-	@include transition-delay(0s);
+  background: #000;
+  height:100%;
+  margin-left: 330px;
 }
 
 .videoplayer.full-width {
   margin-right:0px;
 }
-
 
 .videoplayer-lining {
   position: relative;
