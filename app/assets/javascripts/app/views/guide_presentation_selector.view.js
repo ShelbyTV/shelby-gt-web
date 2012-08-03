@@ -30,7 +30,7 @@
     },
 
     render : function(){
-      this._updateVisibility();
+      //this._updateVisibility();
       this.$el.html(this.template());
       this._setSelected();
     },
