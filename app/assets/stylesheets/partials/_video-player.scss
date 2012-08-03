@@ -3,7 +3,7 @@
 .videoplayer{
 	background: #000;
 	height:100%;
-  float: right;
+  margin-left: 330px;
 
 	@include transition-property('margin-right');
 	@include transition-duration(.5s);
@@ -12,7 +12,7 @@
 }
 
 .videoplayer.full-width {
-  margin-right:0px;
+  margin-left:0px;
 }
 
 
