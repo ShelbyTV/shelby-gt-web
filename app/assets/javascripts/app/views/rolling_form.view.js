@@ -122,17 +122,14 @@
       this._frame.reRoll(roll, function(newFrame){
         //rolling is done
 				self._rollingSuccess(roll, newFrame);
-
 				// Optional Sharing (happens in the background)
-				if(shareDests.length){
-					self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
-		      self._frameRollingState.get('shareModel').save(null, {
-		        url : newFrame.shareUrl(),
-		        success : function(){
-		          /* noop */
-		        }
-		      });
-				}
+        self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
+        self._frameRollingState.get('shareModel').save(null, {
+          url : newFrame.shareUrl(),
+          success : function(){
+            /* noop */
+          } 
+        });
       });
 		
 		},
