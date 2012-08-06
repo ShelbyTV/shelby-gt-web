@@ -39,7 +39,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _cleanup : function(){
     this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     $('#js-guide-body').unbind('scroll');
-    this._scrollingEl.unbind('scroll');
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
 
@@ -57,7 +56,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     var self = this;
     var wrapper = $('#js-guide-body');
     wrapper.scroll(function () {
-      console.log('foo');
       if (wrapper[0].scrollHeight - wrapper.scrollTop() == wrapper.outerHeight()) {
         var coll = self.model.get('frames') || self.model.get('dashboard_entries');
         if (coll.length > 9){

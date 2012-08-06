@@ -1,3 +1,6 @@
+/*
+	Styles the list elements used in step 1 in the Rolling overlay
+*/
 @import "base";
 
 .existing-rolls-list {
@@ -7,9 +10,8 @@
 }
 
 .existing-rolls-list > ul {
-	//@extended by .list;
-
 	cursor: pointer;
+	margin: 0;
 	
 	a {
 		display: block;
@@ -22,10 +24,7 @@
 
 		&:hover,
 		&:active{
-			text-decoration: underline;
-			.roll-selection-item-add {
-				text-decoration: underline;
-			}
+			@include gradient-primer($video-card-bg-color, 5%);
 		}
 	}
 }
@@ -34,30 +33,10 @@
 	border-bottom:  1px solid $inset;
 }
 
-.rolling-public-roll {
-	.roll-selection-item-lining {
-		background: url($icon-roll-unlock) no-repeat right center transparent;
-	}
-}
-
-.rolling-private-roll {
-	.roll-selection-item-lining {
-		background: url($icon-roll-lock) no-repeat right center transparent;
-	}
-}
-
 .roll-selection-item-lining {
-//	border-bottom:  1px solid $inset;
+	background: url($icon-chevron-right) no-repeat 97% center transparent;
 	border-top:  1px solid $outset;
-	border-right:  1px solid $outset;
-	margin-right: 45px;
-}
-
-.roll-selection-item-thumbnail {
-	float: left;
-	height: 40px;
-	margin: 5px 10px 5px 5px;
-	width: 40px;
+	padding: 0 0 10px 10px;
 }
 
 .roll-selection-item-title {
@@ -66,26 +45,14 @@
 	font-size: 14px;
 	padding-top: 10px;
 	padding-right: 45px;
+	
+	.path {
+		font-weight: 100;
+		color: #555;
+	}
 }
 
-.roll-selection-item-state {
+.roll-selection-item-url {
 	font-size: 11px;
 	color: #777;
-}
-
-.roll-selection-item-add {
-	background-color: adjust-lightness($guide-bg-color, -2%);
-	background-image: url($icon-videocard-roll-off);
-	background-position: center 26px;
-	background-repeat: no-repeat;
-	background-size: 25%;
-	border-top: 1px solid adjust-lightness($outset, -5%); 
-	border-left: 1px solid adjust-lightness($inset, -5%); 
-	float: right;
-	font-weight: 500;
-	font-size: 11px;
-	height: 50px;
-	padding: 8px;
-	width: 45px;
-	text-align: center;
 }

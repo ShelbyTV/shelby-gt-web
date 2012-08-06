@@ -21,12 +21,10 @@ describe("GuideOverlayManagerView", function() {
   describe("Bindings", function() {
     beforeEach(function() {
       this.GuideOverlayViewStub = new (Backbone.View.extend({
-          doPosition : function() {},
           reveal : function() {},
           hide : function() {}
       }))();
       sinon.spy(this.GuideOverlayViewStub, 'render');
-      sinon.spy(this.GuideOverlayViewStub, 'doPosition');
       sinon.spy(this.GuideOverlayViewStub, 'reveal');
       this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
 
@@ -44,12 +42,16 @@ describe("GuideOverlayManagerView", function() {
       this.FrameConversationViewStub = sinon.stub(libs.shelbyGT, 'FrameConversationView').returns(this.GuideOverlayViewStub);
       this.FrameRollingViewStub = sinon.stub(libs.shelbyGT, 'FrameRollingView').returns(this.GuideOverlayViewStub);
       this.FrameSharingInGuideViewStub = sinon.stub(libs.shelbyGT, 'FrameSharingInGuideView').returns(this.GuideOverlayViewStub);
+
+      this.clock = sinon.useFakeTimers();
     });
 
     afterEach(function() {
       this.FrameConversationViewStub.restore();
       this.FrameRollingViewStub.restore();
       this.FrameSharingInGuideViewStub.restore();
+
+      this.clock.restore();
     });
 
     it("should create, insert, and reveal correct overlay view when guide overlay model changes to conversation", function() {
@@ -62,7 +64,7 @@ describe("GuideOverlayManagerView", function() {
           guideOverlayModel : this.guideOverlayModel
         });
       expect(this.GuideOverlayViewStub.render).toHaveBeenCalled();
-      expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
+      this.clock.tick(0);
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
     });
@@ -77,7 +79,7 @@ describe("GuideOverlayManagerView", function() {
         guideOverlayModel : this.guideOverlayModel
       });
       expect(this.GuideOverlayViewStub.render).toHaveBeenCalled();
-      expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
+      this.clock.tick(0);
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
     });
@@ -92,7 +94,7 @@ describe("GuideOverlayManagerView", function() {
         guideOverlayModel : this.guideOverlayModel,
         roll : this.user.get('personalRoll')});
       expect(this.GuideOverlayViewStub.render).toHaveBeenCalled();
-      expect(this.GuideOverlayViewStub.doPosition).toHaveBeenCalled();
+      this.clock.tick(0);
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
     });
@@ -105,7 +107,7 @@ describe("GuideOverlayManagerView", function() {
         activeGuideOverlayFrame : null
       });
       expect(this.GuideOverlayViewStub.render).not.toHaveBeenCalled();
-      expect(this.GuideOverlayViewStub.doPosition).not.toHaveBeenCalled();
+      this.clock.tick(0);
       expect(this.GuideOverlayViewStub.reveal).not.toHaveBeenCalled();
       expect(this.view.appendChild).not.toHaveBeenCalled();
 

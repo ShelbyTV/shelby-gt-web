@@ -16,15 +16,15 @@
     initialize : function(){
       var self = this;
       this.options.listItemView = function(item, params){
-        return new RollingSelectionItemView(_(params).extend({model:item,frame:self.options.frame}));
+        return new RollingSelectionItemView(_(params).extend({model:item}));
       };
       ListView.prototype.initialize.call(this);
     },
 
     _filter : function(item) {
-      // doesn't make sense to post to my hearts
+      // i can post to my hearts
       if (item.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-        return false;
+        return true;
       }
       // anything I created or is collaborative, I can post to
       if (item.get('creator_id') == shelby.models.user.id || item.get('collaborative')) {
@@ -43,19 +43,10 @@
       this._leaveChildren();
       ListView.prototype.render.call(this);
     },
-    
-    rollToExisting : function(frame, roll){
-      var self = this;
 
-      this.options.frameRollingState.set({doShare:ShareActionState.share});
-      
-      // reroll the frame, then show the new frame
-      this.options.frame.reRoll(roll, function(newFrame){
-        //TODO: show success message?
-        self.options.frameRollingState.set({doShare:ShareActionState.complete});
-        shelby.router.navigate('roll/'+newFrame.get('roll_id')+'/frame/'+newFrame.id+'?reroll_success=true', {trigger:true});
-      });
-    },
+    selectRoll : function(roll){
+			this.parent.selectRoll(roll);
+		},
 
     //override of ListView._renderEducation
     _renderEducation : function(){

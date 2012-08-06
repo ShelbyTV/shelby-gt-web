@@ -1,0 +1,79 @@
+<% 
+	var messageText = "➜ @"+frame.get('creator').get('nickname');
+  var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
+  if(messages.length > 0){
+		messageText += ": "+messages.first().get('text');
+	}
+	
+  var active_networks = [];
+  shelby.models.user.get('authentications').forEach(function(auth){
+    active_networks.push(auth.provider);
+  });
+%>
+
+
+<fieldset class="rolling-fields">
+	<label for="new-roll-name" class="section-label">Add to Roll:</label>
+	
+	
+	<% if(roll){ %>
+		<h2 class="roll-selection-item-title">
+			<span class="path"><%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
+		</h2>
+		<% if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public && roll.get('creator_id') == shelby.models.user.id){ %>
+			<h3 class="roll-selection-item-url">
+				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
+			</h3>
+		<% } %>
+	<% } else { %>
+		<h2 class="roll-selection-item-title">
+			<span class="path"><%= shelby.models.user.get('nickname') %></span><span class="path">/</span><input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="what's this roll about?" type="text">
+		</h2>
+	<% } %>
+
+</fieldset>
+
+<fieldset class="rolling-fields">
+	<label for="rolling-message" class="section-label">Comment</label>
+	<textarea name="message" id="rolling-message" class="js-share-textarea share-textarea" rows=5><%= messageText %></textarea>
+</fieldset>
+
+<fieldset class="rolling-fields">
+	<label class="section-label">Also share on</label>
+
+	<% if(_.include(active_networks, 'twitter')){ %>
+		<fieldset class="share-option">
+		  <label for="share-on-twitter" class="share-status-label clearfix" aria-label="twitter-label">
+		    <input id="share-on-twitter" class="share-status-checkbox" type="checkbox" aria-label="twitter-slider-description">
+   
+		    <span id="twitter-slider-description" class="share-status-description">
+		      Share on Twitter
+		    </span>
+   
+		    <b role="presentation" aria-hidden="true" class="share-status-chrome"></b>
+		  </label>
+	
+			<h3 id="twitter-label" class="label">Twitter</h3>
+		</fieldset>
+	<% } %>
+	
+	<% if(_.include(active_networks, 'facebook')){ %>
+		<fieldset class="share-option">
+		  <label for="share-on-facebook" class="share-status-label clearfix">
+		    <input id="share-on-facebook" class="share-status-checkbox" type="checkbox" aria-label="facebook-slider-description">
+    
+		    <span id="facebook-slider-description" class="share-status-description">
+		      Share on Facebook
+		    </span>
+    
+		    <b role="presentation" aria-hidden="true" class="share-status-chrome"></b>
+		  </label>
+		
+			<h3 id="twitter-label" class="label">Facebook</h3>
+		</fieldset>
+	<% } %>
+</fieldset>
+
+<fieldset class="rolling-fields">
+	<button id="roll-it" class="roll-options-submit" type="submit">Roll It!</button>
+</fieldset>

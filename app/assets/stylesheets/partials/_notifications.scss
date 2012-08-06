@@ -1,6 +1,10 @@
 @import "base";
 
-.notifications-wrapper{
+.notifications-wrapper {
+	display: none;
+}
+
+.notifications-lining{
 	@include x-button-primer;
 
 	position: absolute;	
@@ -11,8 +15,7 @@
 	margin-left: -330px;
 	margin-top: -75px;
 	padding:0px;
-	z-index: 2;
-	display: none;
+	z-index: 5;
 }
 
 .notification{
@@ -66,5 +69,31 @@
 			margin-left: 55px;
 			width: 100px;
 		}
+	}
+}
+
+/* lightweight auto-dismissed informational style */
+.notifications-lining.info {
+	top: 85px;
+	height: 39px;
+	
+	.notification {
+		
+		.message {
+			top: 8px;
+		}
+	
+		.button-wrapper {
+			bottom: 3px;
+			right: 0;
+			width: 42px;
+		}
+	
+		button.notification-confirm {
+			float: right;
+			margin-right: 3px;
+			width: 42px;
+		}
+	
 	}
 }

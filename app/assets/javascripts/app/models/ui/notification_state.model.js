@@ -2,6 +2,7 @@ libs.shelbyGT.notificationStateModel = Backbone.Model.extend({
 
   defaults : {
 		'visible' : false,
+		'class' : 'default',
     'message' : null,
 		'response' : null,
 		'button_one' : {visible: true, text: "Ok", color: "blue"},

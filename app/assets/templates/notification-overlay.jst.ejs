@@ -1,13 +1,15 @@
-<div id="js-notifications" class="notification">
-	<div id="js-message" class="message">
-		<%= model.get("message") %>
-	</div>
-	<div class="button-wrapper <%= model.get('number_of_buttons') %>_button">
-		<button id="js-notification-confirm" class="notification-confirm <% if (!model.get('button_one').visible) { %> disabled <% } %><%= model.get('button_one').color %>">
-			<%= model.get('button_one').text %>
-		</button>
-		<button id="js-notification-cancel" class="notification-cancel <% if (!model.get('button_two').visible) { %> disabled <% } %><%= model.get('button_two').color %>">
-			<%= model.get('button_two').text %>
-		</button>							
+<div class="notifications-lining <%= model.get('class') %>">
+	<div id="js-notifications" class="notification">
+		<div id="js-message" class="message">
+			<%= model.get("message") %>
+		</div>
+		<div class="button-wrapper <%= model.get('number_of_buttons') %>_button">
+			<button id="js-notification-confirm" class="notification-confirm <% if (!model.get('button_one').visible) { %> disabled <% } %><%= model.get('button_one').color %>">
+				<%= model.get('button_one').text %>
+			</button>
+			<button id="js-notification-cancel" class="notification-cancel <% if (!model.get('button_two').visible) { %> disabled <% } %><%= model.get('button_two').color %>">
+				<%= model.get('button_two').text %>
+			</button>							
+		</div>
 	</div>
 </div>
