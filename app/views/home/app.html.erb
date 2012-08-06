@@ -34,8 +34,7 @@
     <div class="content_module">
       <div class="videoplayer-wrapper">
         <div class="videoplayer animate-easein" role="main">
-  				<div class="videoplayer-lining">
-
+  				<div class="videoplayer-viewport">
   	        <div id="youtube-player-holder"></div>
   	        <div id="vimeo-player-holder"></div>
   	        <div id="collegehumor-player-holder"></div>
@@ -43,11 +42,11 @@
   	        <div id="bliptv-player-holder"></div>
   	        <div id="ooyala-player-holder"></div>
   	        <div id="espn-player-holder"></div>	
-  	        <div id="hulu-player-holder">
+  	        <div id="hulu-player-holder"></div>
             <div id="videoPlayerComponent"></div>
             <div id="adComponent"></div>
-          </div><!-- eo .videoplayer-lining -->
-          
+          </div><!-- eo .videoplayer-viewport -->
+
           <div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
           <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
 
@@ -63,7 +62,6 @@
           </div><!-- eo .conext-overlay-wrapper -->
 
           <div id="js-notifications-wrapper" class="notifications-wrapper"></div>
-        </div> <!-- eo .videoplayer-wrapper -->
 
         </div><!-- eo .videoplayer -->
   		</div><!-- eo .videoplayer-wrapper -->
@@ -92,12 +90,6 @@
         </div><!-- eo .guide -->
       </section><!-- eo .guide-wrapper -->
 
-      <div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
-        <div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
-          Make Shelby even better by
-          <%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>       
-        </div>
-      </div><!-- eo #temp-auth-related-links -->    
     </div><!-- eo .content_module -->
   </div> <!-- eo ~application -->
 	<% if Rails.env == 'production' %>

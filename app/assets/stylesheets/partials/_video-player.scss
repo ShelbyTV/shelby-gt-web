@@ -8,13 +8,14 @@
 	background: #000;
 	height:100%;
   margin-left: 330px;
+  position: relative;
 }
 
 .videoplayer.full-width {
   margin-left:0px;
 }
 
-.videoplayer-lining {
+.videoplayer-viewport {
   position: relative;
   height: 100%;
   width: 100%;
