@@ -4,10 +4,14 @@
 
 <div class="guide-overlay-header rolling-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="cancel js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Cancel
     </button>
-    <h2>Roll Video</h2>
+		<button class="back js-track-event" data-ga_category="Rolling" data-ga_action="step_2_back" data-ga_label='<%= shelby.models.user.get('nickname') %>'
+			style="display:none;">
+      Back
+    </button>
+    <h2 class="title">Roll Video</h2>
   </div>
   
   <%=
@@ -20,15 +24,22 @@
   %>
 
 <div class="guide-overlay-main rolling-main">
-  <div class="js-rolling-main-new-roll rolling-main-new-roll">
-    <h3 class="rolling-main-header">Create New Roll</h3>
-    <!-- Form added + filled out by RollingCreateRollView -->
-  </div>
+	
+	<div class="rolling-form">
+		<!-- Form content from RollingFormView -->
+	</div>
+	
+	<div class="select-roll-type">  
+		<button class="create-roll js-track-event" data-ga_category="Rolling" data-ga_action="create_new_roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+			Create
+		</button>
+		
+		<h3 class="rolling-main-header">Rolls</h3>
   
-  <div class="js-existing-rolls-list existing-rolls-list">
-    <h3 class="rolling-main-header">Add to Existing Rolls</h3>
-    <!-- Rolls UL added + filled out by RollingSelctionListView -->
-  </div>
+	  <div class="js-existing-rolls-list existing-rolls-list">
+	    <!-- Rolls UL added + filled out by RollingSelctionListView -->
+	  </div>
+	</div>
 </div>
 
 

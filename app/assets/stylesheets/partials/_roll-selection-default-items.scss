@@ -43,20 +43,10 @@
 		&.new:before{
 			content: "+";
 		}
-		&:after{
-			content: url($icon-roll-unlock);
-			right: 9px;
-			position: absolute;
-			top: 1px;
-		}
 	}
 
 	.rolling-private-roll{
 		//extended by .rolling-public-roll;
-
-		&:after{
-			content: url($icon-roll-lock);
-		}
 
 	}
 }

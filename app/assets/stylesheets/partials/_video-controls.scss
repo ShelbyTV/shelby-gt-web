@@ -26,7 +26,7 @@
 
 	border:1px solid #202020;
 	height:45px;
-	margin:$defaultMargin $defaultMargin*34 $defaultMargin $defaultMargin;
+	margin:$defaultMargin;
 
   @include transition-property(margin);
 	@include transition-duration(.5s);
@@ -34,11 +34,7 @@
 	@include transition-delay(0s);
 }
 
-.video-player-tools.full-width{
-  margin:$defaultMargin $defaultMargin*4 $defaultMargin $defaultMargin;
-}
-
-.video-player-tools-inner{
+.video-player-tools-lining{
 	@include roundies;
  	margin:0;
 	padding:0;
@@ -177,7 +173,7 @@
   	@include transition-timing-function(ease-out);
   	@include transition-delay(0s);
     
-  	left: $defaultMargin*2;
+  	left: $defaultMargin;
   	opacity: 1.0;
   }
 
@@ -191,12 +187,8 @@
   	@include transition-timing-function('ease-out, ease-in-out');
   	@include transition-delay('0s, 0s');
   	
-  	margin-right: $defaultMargin*33;
+  	margin-right: 0px;
   	right: $defaultMargin*2;
-  	
-  	&.full-width {
-  	  margin-right: 0;
-	  }
   }
   
   .video-player-prev, .video-player-next {	
@@ -217,6 +209,6 @@
 
 .user-inactive .video-player-nav-buttons-wrapper {
   .video-player-prev, .video-player-next {
-//    opacity: 0.0;
+    opacity: 0.0;
   }
 }

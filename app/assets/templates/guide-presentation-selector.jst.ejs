@@ -1,21 +1,56 @@
-<button class="js-stream guide-presentation-button guide-presentation-stream">
-  Stream
-</button>
 
-<ul class="js-content-selector guide-presentation-filter clearfix">
-  <li class="guide-presentation-filter-item">
-    <button class="guide-presentation-button js-people">
+<ul class="js-content-selector guide-presentation-list clearfix">
+  <li class="guide-presentation-item">
+    <button class="js-stream">
+      Stream
+    </button>
+  </li>
+
+  <li class="guide-presentation-item">
+    <button class="js-people">
       Friends
     </button>
   </li>
-  <li class="guide-presentation-filter-item">
-    <button class="guide-presentation-button js-my-rolls">
+
+  <li class="guide-presentation-item">
+    <button class="js-my-rolls">
       Rolls
     </button>
   </li>
-  <li class="guide-presentation-filter-item">
-    <button class="guide-presentation-button js-browse">
+
+  <li class="guide-presentation-item">
+    <button class="js-browse">
       Explore
     </button>
   </li>
-</ul>
+
+  <li class="guide-presentation-item guide-settings">
+    <button class="js-settings guide-settings-anchor">
+      Settings
+    </button>
+
+    <ul id="js-settings-subnav" class="guide-settings-list">
+      <li class="guide-settings-item">
+        <span class="guide-settings-userhandle"><%= 'nickname' %></span>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button js-help">Help</button>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button js-team">Team</button>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button" data-href="http://shelby.tv/blog" data-target="_blank">Blog</button>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button js-legal">Legal</button>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button js-preferences">Preferences</button>
+      </li>
+      <li class="guide-settings-item">
+        <button class="guide-settings-button js-signout">Log Out</button>
+      </li>
+    </ul><!-- eo guide-settings-list -->
+  </li>
+</ul><!-- eo guide-presentation-list -->

@@ -86,7 +86,7 @@
 
         <input name="priority_code" type="text" placeholder="Are you special?" id="js-token-input" class="gate-form-input" />
 
-        <input type="submit" value="Submit" id="js-email-submit" class="gate-form-submit" />
+        <input type="submit" value="Submit" id="js-email-submit" class="gate-form-submit js-track-event" data-ga_category="Landing Page" data-ga_action="Submitted email" />
       </form>
 
       <p class="gate-small-block">
@@ -97,7 +97,7 @@
         Returning?
       </h3>
 
-      <button id="js-gate-login" class="gate-login">
+      <button id="js-gate-login" class="gate-login js-track-event" data-ga_category="Landing Page" data-ga_action="Beta User Login">
         Beta User Login
       </button>
 
@@ -134,15 +134,15 @@
         </p>      
       <% end %>
 
-      <a class="gate-networks-twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
         Log In with Twitter
       </a>   
 
-      <a class="gate-networks-facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
         Log In with Facebook
       </a>
       
-      <a href="#" id="js-no-access" class="gate-no-access">
+      <a href="#" id="js-no-access" class="gate-no-access js-track-event" data-ga_category="Landing Page" data-ga_action="Not a Beta User">
       	Not a beta user?
       </a>
 		</div><!-- eo .gate-lining -->
@@ -199,11 +199,38 @@
       });
   	});
 	</script>
-  <script>
-    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','none'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+	
+	<% if "production" == Rails.env %>
+	  <script>
+			var shortLink = $.getUrlParam('awesm');
+		  if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
+			else { shortLink = "Direct"; }
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s);}(document,'script'));
+	  </script>
+	<% end %>
+	
+	<script>
+	  var _kmq = _kmq || [];
+	  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+	  function _kms(u){
+	    setTimeout(function(){
+	      var d = document, f = d.getElementsByTagName('script')[0],
+	      s = d.createElement('script');
+	      s.type = 'text/javascript'; s.async = true; s.src = u;
+	      f.parentNode.insertBefore(s, f);
+	    }, 1);
+	  }
+	  _kms('//i.kissmetrics.com/i.js');
+	  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+	
+		var shortLink = $.getUrlParam('awesm');
+	  if (typeof ShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
+		else { shortLink = "Direct"; }
+		_kmq.push(['record', 'Visit landing page', {shortLink: shortLink}]);
+	</script>
+
 </body>
 </html>

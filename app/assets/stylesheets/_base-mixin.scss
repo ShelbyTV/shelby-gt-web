@@ -1,3 +1,14 @@
+$style : ease-in-out !default;
+
+@mixin animate($style){
+	@if ($style == ease-in-out) {
+		@include transition-property('all');
+		@include transition-duration(.5s);
+		@include transition-timing-function(ease-in-out);
+		@include transition-delay(0s);  
+	}
+}
+
 @mixin roundies($roundies-type){
 	@if $roundies-type == normal {
 		border-radius: $radius;	
@@ -30,6 +41,25 @@
 
 @mixin buttonfont{
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+
+@mixin font-primer($font-usage){
+		line-height: 1.231;
+		font-family: 'Ubuntu',Trebuchet MS,sans-serif;
+
+	@if $font-usage == basefont {
+		font-size: 62.5%;
+		font-weight:100;
+	}
+	@else if $font-usage == inputfont {
+		font-size: 100%;
+		font-weight:300;
+	}
+	@else if $font-usage == buttonfont {
+		font-size: 100%;
+		font-weight:700;
+	}
 }
 
 @mixin gradient-primer($bottom-color, $bottom-color-adjust){
