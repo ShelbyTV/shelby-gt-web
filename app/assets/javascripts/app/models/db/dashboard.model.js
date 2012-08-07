@@ -12,6 +12,6 @@ libs.shelbyGT.DashboardModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
 
   //urlRoot : 'http://localhost:3001/dashboard.json'
-  url : shelby.config.apiRoot+'/dashboard'
+  url : shelby.config.apiRoot+'/dashboard?fast=1'
     
 });
