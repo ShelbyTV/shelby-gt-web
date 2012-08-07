@@ -226,10 +226,11 @@
 	  _kms('//i.kissmetrics.com/i.js');
 	  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 	
+		var action = "Visit landing page";
 		var shortLink = $.getUrlParam('awesm');
-	  if (typeof shortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
-		else { shortLink = "Direct"; }
-		_kmq.push(['record', 'Visit landing page', {shortLink: shortLink}]);
+	  if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
+		else { shortLink = null; }
+		_kmq.push(['record', action, {shortLink: shortLink}]);
 	</script>
 
 </body>
