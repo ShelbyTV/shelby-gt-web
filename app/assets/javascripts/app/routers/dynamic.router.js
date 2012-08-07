@@ -13,7 +13,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream" : "displayDashboard",
     "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
-    "queue" : "displayQueue",
+    "queue" : "displaySaves",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
     "help" : "displayHelp",
@@ -223,11 +223,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       shelby.models.dashboard.fetch(fetchOptions);
     }
-  },
-
-  displayQueue : function(){
-    this._setupTopLevelViews();
-    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.queue});
   },
 
   displayRollList : function(content){
