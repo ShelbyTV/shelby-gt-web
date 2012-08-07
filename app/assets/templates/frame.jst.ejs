@@ -126,7 +126,8 @@
       <!-- /hearts -->
       <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
-      <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
+      <!--<li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">-->
+      <li class="frame-controls-like js-upvote-frame <%= (frameGroup.get('inQueue') ) ? 'upvoted' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="js-upvote-frame-lining">
             <%= frame.get('upvoters').length %>

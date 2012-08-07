@@ -26,7 +26,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-save-frame"                  : "_saveToWatchLater",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-upvote-frame"                : "_upvote",
+    //"click .js-upvote-frame"                : "_upvote",
+    "click .js-upvote-frame"                : "_saveToWatchLater",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
 
@@ -47,11 +48,26 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   initialize : function() {
     this._setupTeardownModelBindings(this.model, true);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
+    shelby.models.user.get('watch_later_roll').get('frames').bind('add', this._onWatchLaterFetch, this);
+    this.model.bind('change:inQueue', this._onInQueueChange, this);
   },
 
   _cleanup : function(){
     this._setupTeardownModelBindings(this.model, false);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
+    shelby.models.user.get('watch_later_roll').get('frames').unbind('add', this._onWatchLaterFetch, this);
+  },
+
+  _onWatchLaterFetch : function(frame){
+    if (frame.get('video_id')===this.model.get('frames').at(0).get('video_id')){
+      this.model.set({inQueue:true});
+      console.log('frame is in WL', frame);
+    }
+  },
+
+  _onInQueueChange : function(model){
+    console.log('on in queue change', model);
+    console.log(this.$('.js-upvote-frame').addClass('upvoted'));
   },
 
   _setupTeardownModelBindings : function(model, bind) {
@@ -116,6 +132,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _saveToWatchLater : function(){
+    this.model.set({inQueue:true});
     var self = this;
     // save to watch later, passing a callback that will add the saved-indicator
     // to the frame thumbnail when the save returns succsessfully

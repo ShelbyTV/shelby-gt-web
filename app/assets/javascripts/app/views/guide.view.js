@@ -72,10 +72,17 @@
       $('#js-guide-body').css('top', allHeadersHeight);
     },
 
+    _fetchWatchLaterRoll : function(){
+      setTimeout(function(){
+        shelby.models.user.get('watch_later_roll').fetch();
+      },0);
+    },
+
     _mapAppendChildView : function(guideModel){
       switch (this.model.get('displayState')) {
         case DisplayState.dashboard :
           displayParams = {
+            onAppendChild : this._fetchWatchLaterRoll,
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
