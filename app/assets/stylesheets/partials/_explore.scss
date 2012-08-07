@@ -1,0 +1,106 @@
+@import "base";
+
+.explore {
+  background: #efefef;
+  color: black;
+  border: 1px solid yellow;
+}
+
+.explore-body {
+  border: 1px solid red;
+}
+
+.explore-list { //primer, shared by all lists in .explore
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.explore-rolls {
+
+}
+
+.explore-item {
+
+}
+
+.explore-roll {
+
+}
+
+.explore-roll-header {
+
+}
+
+.explore-link {
+  float: left;
+}
+
+.explore-header {
+
+}
+
+.explore-subline {
+
+}
+
+.explore-menu {
+  float: right;
+}
+
+.explore-command {
+  & > button {
+    float:right;
+  }
+}
+
+.explore-roll-list {
+
+}
+
+.explore-roll-item {
+  float: left;
+  width: 33.333333%;
+}
+
+.explore-frame {
+  border: 1px solid blue;
+  display: block;
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.explore-frame-menu {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.explore-frame-command {
+
+  & > button {
+    display: block;
+    float: left;
+  }
+}
+
+
+.explore-frame-thumbnail {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 160px;
+  position: relative;
+  width: 100%;
+
+  & > img {
+
+  }
+}
+
+.explore-frame-title {
+
+}

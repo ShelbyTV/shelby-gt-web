@@ -56,6 +56,11 @@ $icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
 $icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
 $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
+//--- ANIMATION VALUES
+$animate-property: 'all' !default;
+$animate-duration: .5s !default;
+$animate-timing: ease-in-out !default;
+$animate-delay: 0s !default;
 
 //--- FONT SETUP
 $font-size   : 13px;

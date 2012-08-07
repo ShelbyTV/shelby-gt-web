@@ -46,7 +46,7 @@ a{
 	top:0;
 }
 
-.content_module {
+.content_wrapper {
 	bottom: 0;
 	left: 0;
 	margin-top: $header-height;
@@ -56,11 +56,17 @@ a{
 	width: 100%;
 }
 
-.videoplayer-wrapper {
+.content_lining {
 	float: right;
 	margin-left: -330px;
 	height:100%;
 	width:100%;
+}
+
+.content_module {
+	height:100%;
+  margin-left: 330px;
+  position: relative;	
 }
 
 .sidebar_module {
@@ -73,11 +79,10 @@ a{
 	height:100%;
 	line-height:1.4;
 	overflow:hidden;
-	position:relative;
-	width:$guide-width;
-	z-index:3;
-	
 	opacity: 1;
+	position:relative;
+	z-index:3;
+
 	@include transition-property('opacity, margin-left');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);

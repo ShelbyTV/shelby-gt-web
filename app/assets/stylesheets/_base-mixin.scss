@@ -2,10 +2,10 @@ $style : ease-in-out !default;
 
 @mixin animate($style){
 	@if ($style == ease-in-out) {
-		@include transition-property('all');
-		@include transition-duration(.5s);
-		@include transition-timing-function(ease-in-out);
-		@include transition-delay(0s);  
+		@include transition-property($animate-property);
+		@include transition-duration($animate-duration);
+		@include transition-timing-function($animate-timing);
+		@include transition-delay($animate-delay);  
 	}
 }
 
