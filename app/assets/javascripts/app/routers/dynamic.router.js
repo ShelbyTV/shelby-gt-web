@@ -233,7 +233,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
 
     switch (content) {
-      case libs.shelbyGT.GuidePresentation.content.rolls.people:
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
       case libs.shelbyGT.GuidePresentation.content.rolls.browse:
         shelby.models.guide.set({'rollListContent':content}, {silent:true});
