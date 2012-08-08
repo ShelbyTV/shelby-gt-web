@@ -194,9 +194,37 @@ $button-image-url : '' !default;
 			position: absolute;
 			top: 3.75px;
 			width: 18px;
-		}		
+		}
 	}//EO @ELSE
 }
+
+
+$primer-color          : $button-default-color;
+$primer-tone           : light !default;
+$primer-button-context : generic !default;
+
+@mixin xx-button-primer($primer-color, $primer-tone, $primer-button-context){
+	background-color: $primer-color;
+
+	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+
+	border: 1px solid adjust-lightness($primer-color, -25%);
+	border-radius: $button-radius;
+	box-shadow: inset 0 1px 0 0 adjust-lightness($primer-color, 20%),
+							inset 0 -1px 0 0 adjust-lightness($primer-color, -5%);
+	padding: .8em 1em .75em;
+
+	@include font-primer(inputfont);
+
+
+	@if $primer-tone == light {
+		color: $button-color-light;
+	} @else {
+		color: $button-color;
+		text-shadow: 1px 1px 1px red;
+	}
+}
+
 
 $preferences-network : twitter !default;
 
@@ -204,17 +232,17 @@ $preferences-network : twitter !default;
 		@if $preferences-network == twitter {
 			@include background(url($icon-social-twitter) no-repeat center center $twitter-color);
 			@include box-highlight($twitter-color);
-			border:1px solid adjust-lightness($twitter-color, -20%);	
+			border:1px solid adjust-lightness($twitter-color, -20%);
 		}
 		@else if $preferences-network == tumblr {
 			@include background(url($icon-social-tumblr) no-repeat center center $tumblr-color);
 			@include box-highlight($tumblr-color, 20%);
-			border:1px solid adjust-lightness($tumblr-color, -5%);				
+			border:1px solid adjust-lightness($tumblr-color, -5%);
 		}
 		@else if $preferences-network == facebook {
 			@include background(url($icon-social-facebook) no-repeat center center $facebook-color);
 			@include box-highlight($facebook-color, 20%);
-			border:1px solid adjust-lightness($facebook-color, -5%);				
+			border:1px solid adjust-lightness($facebook-color, -5%);
 		}
 }
 
@@ -238,7 +266,7 @@ $preferences-network : twitter !default;
 		@include roundies(input);
 		
 		background-color: $networks-unselected;
-		border: 1px solid adjust-lightness($networks-unselected, -5%); 
+		border: 1px solid adjust-lightness($networks-unselected, -5%);
 		display: block;
 		height: 34px;
 		width: 34px;

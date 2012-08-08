@@ -70,7 +70,7 @@ $button-back : normal !default; 	//see @mixin x-button-primer()
 
 //--- BORDER RADIUS
 $radius        : 5px;
-$button-radius : $radius;
+$button-radius : $radius - 1;
 $input-radius  : $radius - 2;
 $roundies-type : normal !default;  //see @mixin roundies()
 
@@ -97,6 +97,7 @@ $frame-stroke : 1px solid $outline;
 
 //text-level colors
 $button-color  : #efefef;
+$button-color-light: #333;
 $text          : #dcddde;
 $headerNavLink : #d8d8d8;
 
@@ -148,6 +149,11 @@ $tumblr-blue       : #2f445b;
 $facebook-color    : $facebook-blue;
 $twitter-color     : $twitter-blue;
 $tumblr-color      : $tumblr-blue;
+
+
+//--- COLORS: buttons
+$button-default-color: #eee;
+
 
 $networks-unselected : #474747;
 

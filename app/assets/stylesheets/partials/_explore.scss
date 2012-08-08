@@ -3,11 +3,9 @@
 .explore {
   background: #efefef;
   color: black;
-  border: 1px solid yellow;
 }
 
 .explore-body {
-  border: 1px solid red;
 }
 
 .explore-list { //primer, shared by all lists in .explore
@@ -57,13 +55,14 @@
 }
 
 .explore-menu {
-  float: right;
+  font-size: 1.2em;
 }
 
 .explore-command {
-  & > button {
-    float:right;
-  }
+  @include xx-button-primer($primer-color, $primer-tone,explore-rolls);
+
+  float:right;
+  margin: 0 .25em 0 .75em;
 }
 
 .explore-roll-list {
@@ -76,7 +75,6 @@
 }
 
 .explore-frame {
-  border: 1px solid blue;
   display: block;
   height: 200px;
   margin: 10px;
@@ -93,11 +91,10 @@
 }
 
 .explore-frame-command {
+  @include xx-button-primer($primer-color,$primer-tone,frame-command);
 
-  & > button {
-    display: block;
-    float: left;
-  }
+  float: left;
+  margin: .75em 0 0 .75em;
 }
 
 
