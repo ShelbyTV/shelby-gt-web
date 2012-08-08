@@ -6,7 +6,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     "click #js-roll-next" : "_goToNextRoll",
     "click #js-roll-delete" : "_confirmRollDelete",
     "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
-    "click .rolls-add" : "_toggleJoinRoll",
+    "click .js-roll-add-leave-button" : "_toggleJoinRoll",
 		"click .js-edit-roll" : "_toggleRollEditFunctions"
   },
 
@@ -168,20 +168,20 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   _updateJoinButton : function(){
     var currentRollModel = this.model.get('currentRollModel');
-    if (!currentRollModel || !shelby.models.rollFollowings.has('initialized')) {
-      this.$('.rolls-add').hide();
-      return;
-    }
-    var action = '';
-    if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
-      action = 'Unfollow';
+    if (!currentRollModel || currentRollModel.get('creator_id') === shelby.models.user.id ||
+        !shelby.models.rollFollowings.has('initialized')){
+      this.$('.js-roll-add-leave-button').hide();
     } else {
-      action = 'Follow';
+      var action = '';
+      if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
+        action = 'Unfollow';
+      } else {
+        action = 'Follow';
+      }
+      var addOrRemoveClass = action == 'Unfollow' ? 'addClass' : 'removeClass';
+      this.$('.js-roll-add-leave-button').text(action)[addOrRemoveClass]('rolls-leave');
+      this.$('.js-roll-add-leave-button').show();
     }
-    var addOrRemoveClass = action == 'Unfollow' ? 'addClass' : 'removeClass';
-    // this.$('.rolls-add').text(action+' Roll')[addOrRemoveClass]('rolls-leave');
-    this.$('.rolls-add').text(action)[addOrRemoveClass]('rolls-leave');
-    this.$('.rolls-add').show();
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
@@ -192,15 +192,15 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$el.find('.js-roll-add-leave-button').hide();
       //only show roll edit if it's not a special roll
       if(currentRollModel.get('roll_type') < libs.shelbyGT.RollModel.TYPES.all_special_rolls){
-        this.$el.find('.rolls-edit').hide();
+        this.$el.find('.js-edit-roll').hide();
       }
       else{
-        this.$el.find('.rolls-edit').show();
+        this.$el.find('.js-edit-roll').show();
       }
     }
     else{
       this.$el.find('.js-roll-add-leave-button').show();
-      this.$el.find('.rolls-edit').hide();
+      this.$el.find('.js-edit-roll').hide();
     }
 		
     this._updateJoinButton();
