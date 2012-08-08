@@ -28,6 +28,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    shelby.models.guideOverlay.bind('change', this._onGuideOverlayChange, this);
     shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateJoinButton, this);
     
     this.render();
@@ -38,6 +39,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.unbind('change:currentRollModel', this._onRollModelChange, this);
     this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
     this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
+    shelby.models.guideOverlay.unbind('change', this._onGuideOverlayChange, this);
     shelby.models.rollFollowings.unbind('add:rolls remove:rolls', this._updateJoinButton, this);
   },
 
@@ -129,6 +131,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     });
   },
 
+  _onGuideOverlayChange : function(guideOverlayModel) {
+    if (guideOverlayModel.get('activeGuideOverlayType') != libs.shelbyGT.GuideOverlayType.none) {
+      this._immediateShowHideShareRollView(false);
+    }
+  },
+
   _updateVisibility : function(guideModel){
     if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
         !this.model.get('displayIsolatedRoll')) {
@@ -185,7 +193,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       //only show roll edit if it's not a special roll
       if(currentRollModel.get('roll_type') < libs.shelbyGT.RollModel.TYPES.all_special_rolls){
         this.$el.find('.rolls-edit').hide();
-      } 
+      }
       else{
         this.$el.find('.rolls-edit').show();
       }
