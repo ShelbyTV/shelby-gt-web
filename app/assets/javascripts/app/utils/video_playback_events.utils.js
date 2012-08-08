@@ -70,7 +70,7 @@
         this._startTime = curTime;
         
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
-        if (!this._markedAsWatched) {this.trackWatchEvent(curTime);}
+        if (!this._markedAsWatched) {this.trackWatchEvent(false, curTime);}
       }
       
     },
@@ -81,6 +81,7 @@
     _onPlaybackStatusChange: function(attr, status){
       if(status === libs.shelbyGT.PlaybackStatus.ended){
         this._currentFrame.watched();
+        this.trackWatchEvent(true, null);
       }
     },
     
@@ -116,11 +117,14 @@
     //  == tracked with GA and KISS
     //----------------------------------
 
-    trackWatchEvent : function(currentTime){
+    trackWatchEvent : function(completeWatch, currentTime){
       var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
-      var _pctWatched = parseFloat((currentTime / _duration * 100).toFixed(2));
       
-      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
+      if (completeWatch) {
+        shelby.track('watched in full', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: '100'});        
+      }
+      else if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
+        var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
         this._markedAsWatched = true;
         shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched});        
       }

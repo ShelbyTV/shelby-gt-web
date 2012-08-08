@@ -50,6 +50,9 @@ _(shelby).extend({
         options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
         _action = 'watched'; _category = 'Frame'; _label = options.pctWatched;
         _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
+      case 'watched in full':
+        _action = 'watched'; _category = 'Frame'; _label = 100;
+        _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
       case 'identify':
         _kmq.push(['identify', options.nickname]);
         break;
