@@ -46,6 +46,10 @@ _(shelby).extend({
         _action = 'rolled'; _category = 'Frame';
         _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
         break;
+      case 'watched':
+        options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
+        _action = 'watched'; _category = 'Frame'; _label = options.pctWatched;
+        _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
       case 'identify':
         _kmq.push(['identify', options.nickname]);
         break;
