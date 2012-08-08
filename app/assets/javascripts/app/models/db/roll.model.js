@@ -75,13 +75,13 @@
   
   libs.shelbyGT.RollModel.TYPES = {
     // special rolls that have not yet been updated to their specific type default to :special_roll
-    special_roll : 10,
-    special_public : 11,
+    special_roll : 10,    // <-- faux
+    special_public : 11,  // <-- faux
     special_hearted : 12,
     special_watch_later : 13,
-    //Differentiate special_public rolls of real shelby users and faux users we deem important
-    special_public_real_user : 15,
-    special_public_upgraded : 16,
+    //Differentiate special_public rolls of real shelby users and those faux-users whome we deem special
+    special_public_real_user : 15,  // <-- real
+    special_public_upgraded : 16,   // <-- real
     // special rolls are < all_special_rolls (convenience)
     all_special_rolls: 17,
 

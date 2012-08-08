@@ -55,5 +55,11 @@ libs.shelbyGT.viewHelpers.roll = {
     } else {
       return roll.get('title');
     }
+  },
+  
+  isFaux : function(roll){
+    return roll && 
+    (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+     roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll);
   }
 };
