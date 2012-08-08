@@ -25,23 +25,35 @@
 }
 
 .explore-roll {
-
+  padding: 10px;
 }
 
 .explore-roll-header {
-
+  margin: 5px 10px;
 }
 
 .explore-link {
   float: left;
+
+  &:active,
+  &:hover,
+  &:link,
+  &:visited {
+    color: $explore-header-color;
+    text-decoration: none;
+  }
 }
 
 .explore-header {
-
+  font-size: 1.5em; 
 }
 
 .explore-subline {
-
+  color: $explore-subline-color;
+  font-size: .9em;
+  letter-spacing: 1px;
+  margin: 0.5em 0;
+  text-transform: uppercase;
 }
 
 .explore-menu {
@@ -67,8 +79,9 @@
   border: 1px solid blue;
   display: block;
   height: 200px;
+  margin: 10px;
   position: relative;
-  width: 100%;
+//  width: 100%;
 }
 
 .explore-frame-menu {
