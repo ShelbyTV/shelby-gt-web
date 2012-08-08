@@ -34,11 +34,19 @@
   float: left;
 
   &:active,
-  &:hover,
   &:link,
   &:visited {
     color: $explore-header-color;
     text-decoration: none;
+  }
+
+  &:hover {
+    .explore-header {
+      text-decoration: underline;
+    }
+    .explore-subline {
+      text-decoration: none;
+    }
   }
 }
 
@@ -112,5 +120,9 @@
 }
 
 .explore-frame-title {
-
+  color: $explore-frame-title;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-top: (10em/12);
 }

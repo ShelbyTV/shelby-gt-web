@@ -115,6 +115,8 @@ $filter-bg-color			              : #585858;
 
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
+$explore-frame-title                : adjust-lightness($explore-header-color,10%);
+
 
 $video-card-color                   : #404040;
 $video-card-outline                 : #222;

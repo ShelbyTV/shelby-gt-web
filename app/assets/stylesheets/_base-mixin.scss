@@ -216,7 +216,6 @@ $primer-button-context : generic !default;
 
 	@include font-primer(inputfont);
 
-
 	@if $primer-tone == light {
 		color: $button-color-light;
 	} @else {
@@ -229,21 +228,21 @@ $primer-button-context : generic !default;
 $preferences-network : twitter !default;
 
 @mixin preferences-networks($preferences-network){
-		@if $preferences-network == twitter {
-			@include background(url($icon-social-twitter) no-repeat center center $twitter-color);
-			@include box-highlight($twitter-color);
-			border:1px solid adjust-lightness($twitter-color, -20%);
-		}
-		@else if $preferences-network == tumblr {
-			@include background(url($icon-social-tumblr) no-repeat center center $tumblr-color);
-			@include box-highlight($tumblr-color, 20%);
-			border:1px solid adjust-lightness($tumblr-color, -5%);
-		}
-		@else if $preferences-network == facebook {
-			@include background(url($icon-social-facebook) no-repeat center center $facebook-color);
-			@include box-highlight($facebook-color, 20%);
-			border:1px solid adjust-lightness($facebook-color, -5%);
-		}
+	@if $preferences-network == twitter {
+		@include background(url($icon-social-twitter) no-repeat center center $twitter-color);
+		@include box-highlight($twitter-color);
+		border:1px solid adjust-lightness($twitter-color, -20%);
+	}
+	@else if $preferences-network == tumblr {
+		@include background(url($icon-social-tumblr) no-repeat center center $tumblr-color);
+		@include box-highlight($tumblr-color, 20%);
+		border:1px solid adjust-lightness($tumblr-color, -5%);
+	}
+	@else if $preferences-network == facebook {
+		@include background(url($icon-social-facebook) no-repeat center center $facebook-color);
+		@include box-highlight($facebook-color, 20%);
+		border:1px solid adjust-lightness($facebook-color, -5%);
+	}
 }
 
 @mixin x-networks-badge {
