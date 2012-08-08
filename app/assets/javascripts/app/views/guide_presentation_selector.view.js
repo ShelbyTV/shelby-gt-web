@@ -30,7 +30,7 @@
     },
 
     render : function(){
-      this.$el.html(this.template());
+      this.$el.html(this.template({user:shelby.models.user}));
       this._setSelected();
     },
     
