@@ -55,6 +55,7 @@ _(shelby).extend({
         _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
       case 'identify':
         _kmq.push(['identify', options.nickname]);
+        _kmq.push(['record', 'Visit App', {nickname: options.nickname}]);
         break;
       default:
         _action = 'unknown';
