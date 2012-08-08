@@ -121,12 +121,12 @@
       var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
       
       if (completeWatch) {
-        shelby.track('watched in full', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: '100'});        
+        shelby.track('watched in full', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: '100', userName: shelby.models.user.get('nickname')});   
       }
       else if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
         var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
         this._markedAsWatched = true;
-        shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched});        
+        shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});        
       }
     }
   };
