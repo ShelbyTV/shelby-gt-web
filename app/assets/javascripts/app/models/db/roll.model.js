@@ -79,8 +79,11 @@
     special_public : 11,
     special_hearted : 12,
     special_watch_later : 13,
+    //Differentiate special_public rolls of real shelby users and faux users we deem important
+    special_public_real_user : 15,
+    special_public_upgraded : 16,
     // special rolls are < all_special_rolls (convenience)
-    all_special_rolls: 14,
+    all_special_rolls: 17,
 
     // User-created non-collaborative public rolls (previously these were collaborative, we're changing that)
     user_public : 30,

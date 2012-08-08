@@ -39,7 +39,9 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
   
   _isPersonRoll : function(roll) {
     return roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-            roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll;
+           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ||
+           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll;
   },
 
   _scrollTo : function(element) {
