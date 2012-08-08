@@ -3,6 +3,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   routes : {
     "static/*url" : "initStatic",
     "embedded/*url" : "initEmbedded",
+    "m/*url" : "initMobile",
     "*url" : "initDynamic"
   },
 
@@ -18,6 +19,12 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   initEmbedded : function(){
     //init embed router
     this._reroute();
+  },
+  
+  initMobile : function(url){
+    //init mobile experience
+    $('body').addClass('simple-mobile');
+    this.initDynamic(url);
   },
 
   initDynamic : function(url){
