@@ -3,6 +3,7 @@
 <% var creatorNickname = creator ? creator.get('nickname') : "" %>
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var frameTitle = frame.get('video').get('title') %>
+<% var frameVideo = frame.get('video') %>
 <% var frameRoll = frame.get('roll').get('title') %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
@@ -127,7 +128,7 @@
       <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
       <!--<li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">-->
-      <li class="frame-controls-like js-upvote-frame <%= (frameGroup.get('inQueue') ) ? 'upvoted' : '' %>">
+      <li class="frame-controls-like js-upvote-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'upvoted' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="js-upvote-frame-lining">
             <%= frame.get('upvoters').length %>

@@ -16,10 +16,12 @@
 
     initialize : function(data) {
       this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.queuedVideos.get('queued_videos').bind('add', this._onQueuedVideosAdd, this);
     },
 
     _cleanup : function(){
       this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      shelby.models.queuedVideos.get('queued_videos').unbind('add', this._onQueuedVideosAdd, this);
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -39,7 +41,7 @@
     },
 
     render : function() {
-      this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
     },
 
     template : function(obj) {

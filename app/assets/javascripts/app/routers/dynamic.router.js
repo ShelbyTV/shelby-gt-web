@@ -147,11 +147,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayDashboard : function(params, options){
     this._setupTopLevelViews();
     this._fetchViewedVideos();
+    this._fetchQueuedVideos();
     this._fetchDashboard(options);
   },
 
   _fetchViewedVideos : function() {
       shelby.models.viewedVideos.fetch();
+  },
+
+  _fetchQueuedVideos : function() {
+      shelby.models.queuedVideos.fetch();
   },
 
   _fetchDashboard : function(options) {
