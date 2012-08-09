@@ -67,7 +67,7 @@
 }
 
 .explore-command {
-  @include xx-button-primer($primer-color, $primer-tone,explore-rolls);
+  @include xx-button-primer($x-primer-color, $primer-tone,explore-rolls);
 
   float:right;
   margin: 0 .25em 0 .75em;
@@ -99,7 +99,7 @@
 }
 
 .explore-frame-command {
-  @include xx-button-primer($primer-color,$primer-tone,frame-command);
+  @include xx-button-primer($x-primer-color,$primer-tone,frame-command);
 
   float: left;
   margin: .75em 0 0 .75em;
@@ -119,6 +119,12 @@
   }
 }
 
+//--------- partials need refactoring/cleaning up ----------
+
+.guide-explore {
+  background-color: $guide-explore-bg-color;
+}
+
 .explore-frame-title {
   color: $explore-frame-title;
   font-size: 1.2em;
@@ -126,3 +132,31 @@
   line-height: 1.4;
   margin-top: (10em/12);
 }
+
+.list_module {
+  background-color: pink;
+  border: 1px solid red;
+  margin: 0;
+  padding: 0;
+}
+
+.list_item {
+  border: 1px solid blue;
+
+  &:first-child {
+    @include roundies(header);
+    border-bottom: none;
+  }
+
+  &:last-child {
+    @include roundies(footer);
+    border-top: none;
+  }
+}
+
+.list_button {
+  background: transparent;
+  border: none;
+  display: block;
+}
+
