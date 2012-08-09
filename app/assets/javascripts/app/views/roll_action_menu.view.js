@@ -2,21 +2,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   events : {
     "click #js-rolls-back" : "_goBack",
-    "click #js-roll-back" : "_goToPreviousRoll",
-    "click #js-roll-next" : "_goToNextRoll",
     "click #js-roll-delete" : "_confirmRollDelete",
-    "click .js-share-roll:not(.js-busy)" : "_onShareRoll",
     "click .js-roll-add-leave-button" : "_toggleJoinRoll",
 		"click .js-edit-roll" : "_toggleRollEditFunctions"
   },
 
   el : '#js-roll-action-menu',
-
-  _shareRollView: null,
-
-  _shareRollViewState: null,
-  
-  _actionCopy: "Share Roll",
 
   template : function(obj){
     return JST['roll-action-menu'](obj);
@@ -26,9 +17,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.bind('change', this._onGuideModelChange, this);
     this.model.bind('change:currentRollModel', this._onRollModelChange, this);
     this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
-    this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
-    this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
-    shelby.models.guideOverlay.bind('change', this._onGuideOverlayChange, this);
     shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateJoinButton, this);
     
     this.render();
@@ -38,8 +26,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.unbind('change', this._onGuideModelChange, this);
     this.model.unbind('change:currentRollModel', this._onRollModelChange, this);
     this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
-    this._shareRollViewState.unbind('change:visible', this._onUpdateShareRollViewVisibility, this);
-    shelby.models.guideOverlay.unbind('change', this._onGuideOverlayChange, this);
     shelby.models.rollFollowings.unbind('add:rolls remove:rolls', this._updateJoinButton, this);
   },
 
@@ -69,20 +55,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }
   },
 
-  _goToPreviousRoll : function(){
-    var previousRoll = shelby.models.rollFollowings.getPreviousRoll(this.model);
-    shelby.router.navigateToRoll(previousRoll, {trigger:true,replace:true});
-  },
-
-  _goToNextRoll : function(){
-    var nextRoll = shelby.models.rollFollowings.getNextRoll(this.model);
-    shelby.router.navigateToRoll(nextRoll, {trigger:true,replace:true});
-  },
-  
-  _onShareRoll : function() {
-    this._shareRollViewState.toggleVisibility();
-  },
-  
   _confirmRollDelete : function(){
 		var self = this;
 		shelby.confirm("Are you sure you want to permanently delete this roll?", {text: 'Delete Roll', color: 'red'}, {text: 'Cancel'}, function(r){
@@ -98,52 +70,12 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }});
   },
 
-  _immediateShowHideShareRollView : function(visible) {
-    this._shareRollViewState.set('slide', false);
-    this._shareRollViewState.set('visible', visible);
-  },
-
-  _onUpdateShareRollViewVisibility : function(shareRollViewStateModel, visible) {
-    var self = this;
-    this.$('.js-share-roll').addClass('js-busy');
-    // the share roll subview is recreated for each time it will be displayed
-    // this causes it to be reset to a clean state and helps to make sure that
-    // stale callbacks don't affect it
-    if (visible) {
-      this._shareRollView = new libs.shelbyGT.ShareRollView({
-        model : new libs.shelbyGT.ShareModel(),
-        roll : this.model.get('currentRollModel'),
-        viewState : this._shareRollViewState
-      });
-      this.appendChild(this._shareRollView);
-    }
-    this._shareRollView.updateVisibility(visible, shareRollViewStateModel.get('slide'), function(){
-      if(self._shareRollView) {
-        if (self._shareRollView.$el.is(':visible')) {
-          this.$('.js-share-roll').text('Cancel').addClass('rolls-share-cancel');
-        } else {
-          self._shareRollView.leave();
-          self._shareRollView = null;
-          this.$('.js-share-roll').text(self._actionCopy).removeClass('rolls-share-cancel');
-        }
-        self.$('.js-share-roll').removeClass('js-busy');
-      }
-    });
-  },
-
-  _onGuideOverlayChange : function(guideOverlayModel) {
-    if (guideOverlayModel.get('activeGuideOverlayType') != libs.shelbyGT.GuideOverlayType.none) {
-      this._immediateShowHideShareRollView(false);
-    }
-  },
-
   _updateVisibility : function(guideModel){
     if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
         !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     } else {
       // collapse/hide child views
-      this._immediateShowHideShareRollView(false);
       this.options.viewState.set('showEditFunctions', false);
       this.$el.hide();
     }
@@ -185,7 +117,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
-    this._immediateShowHideShareRollView(false);
     this.options.viewState.set('showEditFunctions', false);
     // hide join/leave button if the user is the roll's creator (includes the user's public roll)
     if (currentRollModel.get('creator_id') === shelby.models.user.id){
@@ -204,10 +135,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }
 		
     this._updateJoinButton();
-    
-    //update button
-    this._actionCopy = this.model.get('currentRollModel').get('public') ? "Share Roll" : "Invite Friends";
-    this.$('.js-share-roll').text(this._actionCopy);
   },
 
   _toggleRollEditFunctions : function() {
