@@ -122,7 +122,7 @@
 //--------- partials need refactoring/cleaning up ----------
 
 .guide-explore {
-  background-color: $guide-explore-bg-color;
+  background-color: $guide-explore-bg;
 }
 
 .explore-frame-title {
@@ -134,14 +134,13 @@
 }
 
 .list_module {
-  background-color: pink;
-  border: 1px solid red;
   margin: 0;
-  padding: 0;
+  padding: $list-module-spacing;
 }
 
 .list_item {
-  border: 1px solid blue;
+  background-color: $list-item-bg;
+  border: 1px solid $list-item-border;
 
   &:first-child {
     @include roundies(header);
@@ -157,6 +156,15 @@
 .list_button {
   background: transparent;
   border: none;
-  display: block;
+  color: $font-color-display;
+  font-family: $font-family-display;
+  font-weight: 300;
+  padding: .75em 1em .8em;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    background-color: $list-item-bg-hover;
+  }
 }
 
