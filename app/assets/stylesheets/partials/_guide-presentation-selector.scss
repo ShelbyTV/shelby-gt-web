@@ -34,6 +34,11 @@
       color: $shelby-blue;
     }
   }
+
+  & > button.guide-settings-anchor {
+    margin-left: 64px;
+    width: auto;
+  }
 }
 
 .guide-presentation-item {
