@@ -1,0 +1,14 @@
+<img src="<%= thumbnail_url %>" width="320" height="180"/>
+
+<script>
+	$('div.<%= provider_name %>-<%= provider_id %>').on('click', function(){
+		$(this).find('img').replaceWith('<iframe class="<%= provider_name %>-<%= provider_id %>" width="320" height="180" data-thumbnail_url="<%= thumbnail_url %>" src="http://www.youtube.com/embed/<%= provider_id %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+		
+		if (window.currentPlaying){
+			var thumbnail_url = $('iframe.'+window.currentPlaying).data('thumbnail_url');
+			$('iframe.'+window.currentPlaying).replaceWith('<img src="'+thumbnail_url+'" width="320" height="180"/>');
+		}
+		
+		window.currentPlaying = '<%= provider_name %>-<%= provider_id %>';
+	});
+</script>

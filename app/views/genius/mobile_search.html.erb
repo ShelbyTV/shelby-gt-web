@@ -1,0 +1,19 @@
+<body class="mobile-search">
+	<div class="mobile-search-header">
+	  <header class="genius-header clearfix">
+	    <h1 class="genius-logo ir">
+	      Shelby.tv
+	    </h1>
+	    <p class="genius-slogan">
+	      An amazing way to <br> discover and enjoy videos.
+	    </p>
+	  </header>
+	</div><!-- eo genius-wrapper -->
+
+	<div id="search-bar" class="mobile-search-form">
+		<%= form_tag :m_results, :method => :post do %>
+			<%= text_field_tag(:term, @query_param, :placeholder => 'search for some video', :class =>"genius-search-input") %>
+		  <%= submit_tag("search &rarr;".html_safe, :class=>'genius-search-submit') %>
+		<% end %>
+	</div>	
+</body>
