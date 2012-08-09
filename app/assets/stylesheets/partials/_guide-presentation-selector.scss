@@ -35,8 +35,8 @@
     }
   }
 
-  & > button.guide-settings-anchor {
-    margin-left: 64px;
+  & > .guide-settings-anchor {
+    float: right;
     width: auto;
   }
 }
