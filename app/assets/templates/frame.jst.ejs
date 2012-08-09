@@ -1,3 +1,4 @@
+<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator ? creator.get('nickname') : "" %>
@@ -11,11 +12,11 @@
 <% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
   <% if(!contextOverlay){ %>
     <article id="<%= frame.get('conversation_id') %>" > 
-    <div class="video-card<%= suffix %>">
+    <div class="video-card<%= suffix %> <%= isFaux ? 'faux-roll' : '' %>">
 
       <header class="video-card-header<%= suffix %> clearfix">
 
-        <a onclick="return false;" class="js-creator-personal-roll js-track-event" data-ga_category="Frame" data-ga_action="Click user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
+        <a onclick="return false;" class="js-creator-personal-roll js-track-event no-faux-link" data-ga_category="Frame" data-ga_action="Click user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
           <div class="frame-creator-avatar-holder">
             <div class="frame-creator<%= suffix %>">
               <% if(creatorThumbnail){ %>
@@ -46,7 +47,7 @@
           </a>
 
           <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard || frameIsOnHeartedRoll) { %>
-            <a onclick="return false;" class="js-frame-source js-track-event" data-ga_category="Frame" data-ga_action="Click frame source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
+            <a onclick="return false;" class="js-frame-source js-track-event no-faux-link" data-ga_category="Frame" data-ga_action="Click frame source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
               <h3 class="frame-creator-roll<%= suffix %>">
                 <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
               </h3>
