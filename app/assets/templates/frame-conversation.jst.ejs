@@ -3,11 +3,11 @@
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnWatchLaterRoll = frame.isOnRoll(shelby.models.user.get('watch_later_roll')) %>
+<% var frameIsOnWatchLaterRoll = frame.isOnRoll(user.get('watch_later_roll')) %>
 
 <div class="guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label='<%= user.get('nickname') %>'>
       Back
     </button>
     <h2>Comments</h2>
@@ -22,16 +22,7 @@
     })
   %>
 
-<div class="conversation-scroller">
-  <ul class="conversation frame-conversation"></ul>
-  
-  <form class="new-comment clearfix">
-    <div class="new-comment-user-avatar">
-      <img src="<%= shelby.models.user.get('user_image_original') || shelby.models.user.get('user_image')%>"
-           alt="<%= shelby.models.user.get('nickname') %>" title="<%= shelby.models.user.get('nickname') %>" />
-    </div>
-    <textarea class="js-add-message-input new-comment-input" rows="2"></textarea>
-    <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= shelby.models.user.get('nickname') %>">Comment</button>
-  </form>
+  <%=
+    JST['frame-conversation-form']({user: user})
+  %>
 </div>

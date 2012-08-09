@@ -108,17 +108,20 @@
     
 }
 
-.video-card-header {
+.video-card-context {
   height: 45px;
 }
 
-.embedded-header {
+.embedded-context {
   background-color: #35383A;
   border-radius: 5px 5px 0 0;
   margin: 0px;
   padding: 0px;
   position: absolute;
   z-index: 2147483645;
+  &.off {
+    display: none;
+  }
 }
 
 .frame-exists {

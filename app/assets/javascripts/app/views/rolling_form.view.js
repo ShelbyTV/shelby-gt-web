@@ -11,6 +11,7 @@
 	var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
 	var RollFollowingsConfig = shelby.config.db.rollFollowings;
 	var RollModel = libs.shelbyGT.RollModel;
+        var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
 	var ShareActionState = libs.shelbyGT.ShareActionState;
 	var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
 	var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
@@ -38,7 +39,17 @@
 		render : function(){
 			var self = this;
 			
-      this.$el.html(this.template({roll:this._roll, frame:this._frame}));
+      this.$el.html(this.template({
+                    roll:this._roll, 
+                    frame:this._frame, 
+                    user: shelby.models.user,
+                    rollOptions: {
+                      pathForDisplay:RollViewHelpers.pathForDisplay(roll), 
+                      titleWithoutPath:RollViewHelpers.titleWithoutPath(roll), 
+                      urlForRoll:RollViewHelpers.urlForRoll(roll)
+                    }
+                  }
+                ));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
         el : this.$('#rolling-message')[0],
