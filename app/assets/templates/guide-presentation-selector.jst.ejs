@@ -7,12 +7,6 @@
   </li>
 
   <li class="guide-presentation-item">
-    <button class="js-people">
-      Friends
-    </button>
-  </li>
-
-  <li class="guide-presentation-item">
     <button class="js-my-rolls">
       Rolls
     </button>
@@ -26,12 +20,11 @@
 
   <li class="guide-presentation-item guide-settings">
     <button class="js-settings guide-settings-anchor">
-      Settings
     </button>
 
     <ul id="js-settings-subnav" class="guide-settings-list">
       <li class="guide-settings-item">
-        <span class="guide-settings-userhandle"><%= 'nickname' %></span>
+        <span class="guide-settings-userhandle"><%= user.get('nickname') %></span>
       </li>
       <li class="guide-settings-item">
         <button class="guide-settings-button js-help">Help</button>

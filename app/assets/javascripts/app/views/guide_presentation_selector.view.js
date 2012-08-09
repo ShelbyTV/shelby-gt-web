@@ -9,7 +9,6 @@
     
     events : {
       "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
-      "click .js-people:not(.guide-presentation-content-selected)"   : "_filterPeople",
       "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
       "click .js-browse:not(.guide-presentation-content-selected)"   : "_browseRolls"
     },
@@ -30,16 +29,12 @@
     },
 
     render : function(){
-      this.$el.html(this.template());
+      this.$el.html(this.template({user:shelby.models.user}));
       this._setSelected();
     },
     
     _goToStream : function(){
       shelby.router.navigate('stream', {trigger: true});
-    },
-    
-    _filterPeople : function(){
-      shelby.router.navigate('rolls/people',{trigger:true});
     },
     
     _filterMyRolls : function(){
@@ -71,9 +66,6 @@
         var $setSelectedClassOn;
         if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
           switch (this.model.get('rollListContent')) {
-            case libs.shelbyGT.GuidePresentation.content.rolls.people :
-              $setSelectedClassOn = this.$('.js-people');
-              break;
             case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
               $setSelectedClassOn = this.$('.js-my-rolls');
               break;
