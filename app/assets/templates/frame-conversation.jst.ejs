@@ -3,7 +3,6 @@
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnWatchLaterRoll = frame.isOnRoll(user.get('watch_later_roll')) %>
 
 <div class="guide-overlay-header conversation-header">
   <div class="guide-overlay-title">

@@ -27,6 +27,7 @@
   font-size: 13px;
 }
 
+
 //ROLLS
 
 
@@ -118,6 +119,7 @@
   margin: 0px;
   padding: 0px;
   position: absolute;
+  width: 80px;
   z-index: 2147483645;
   &.off {
     display: none;
@@ -138,7 +140,17 @@
   font-size: 13px;
   position: absolute;
   z-index: 2147483645;
+  width: 100px;
+  li {
+    display: block;
+    list-style-type: none;
+  }
+  .all-roll {
+    height: 20px;
+  }
 }
+
+
 
 .frame-title {
   width:50%;

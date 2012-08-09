@@ -4,10 +4,10 @@
 
 <div class="guide-overlay-header rolling-header">
   <div class="guide-overlay-title">
-    <button class="cancel js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="cancel js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= user.get('nickname') %>'>
       Cancel
     </button>
-		<button class="back js-track-event" data-ga_category="Rolling" data-ga_action="step_2_back" data-ga_label='<%= shelby.models.user.get('nickname') %>'
+		<button class="back js-track-event" data-ga_category="Rolling" data-ga_action="step_2_back" data-ga_label='<%= user.get('nickname') %>'
 			style="display:none;">
       Back
     </button>
@@ -30,7 +30,7 @@
 	</div>
 	
 	<div class="select-roll-type">  
-		<button class="create-roll js-track-event" data-ga_category="Rolling" data-ga_action="create_new_roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+		<button class="create-roll js-track-event" data-ga_category="Rolling" data-ga_action="create_new_roll" data-ga_label='<%= user.get('nickname') %>'>
 			Create
 		</button>
 		

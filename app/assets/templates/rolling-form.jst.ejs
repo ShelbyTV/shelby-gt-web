@@ -1,6 +1,7 @@
 <% 
 	var messageText = "➜ @"+frame.get('creator').get('nickname');
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
+  console.log(messages);
   if(messages.length > 0){
 		messageText += ": "+messages.first().get('text');
 	}
