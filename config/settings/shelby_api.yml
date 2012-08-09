@@ -5,6 +5,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  login_form_url: "http://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
 
 test:
   <<: *defaults
