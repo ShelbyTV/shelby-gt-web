@@ -1,0 +1,22 @@
+<body class="mobile-search">
+
+	<%= render :partial => "mobile_header" %>
+
+	<div id="mobile-frames">
+		<% @frames.each do |f| %>
+	
+			<div class="<%= f['video']['provider_name'] %>-<%= f['video']['provider_id'] %> frame">
+				<%= render :partial => "mobile_frame", :locals => { :frame => f } %>
+			</div>
+		<% end %>
+		<button class="search-button">search again</button>
+	</div>
+	
+	
+	<script>
+		$('.search-button').on("click", function(){
+			window.location.href = 'http://192.168.2.206:3000/m'; //'<%= Settings::Application.url %>' + "/m";
+		})
+	</script>
+	
+</body>

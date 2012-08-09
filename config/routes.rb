@@ -1,8 +1,8 @@
 ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
-  get '/m(/*query)' => 'genius#mobile_search'
-  post '/m/results' => 'genius#mobile_results'
+  get '/m(/*query)' => 'mobile#mobile_search'
+  post '/m/results' => 'mobile#mobile_results'
 
   get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
   

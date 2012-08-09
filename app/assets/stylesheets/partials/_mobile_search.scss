@@ -1,49 +1,78 @@
 @import "base";
 
 body.mobile-search{
-  overflow: auto;
+  overflow-y: auto;
   background-color: #333;
+  width: 100%;
     
-  #mobile-search-nav-footer{
+  #mobile-search-footer{
     position: fixed;
     bottom: 0px;
-    width: 100%;
+    width: 400px;
     height: 40px;
     background-color: #222;
 
     #search-button {
+      background-color: white;
       position: absolute;
       left: 50%;
       width: 100px;
-      height: 40px;      
+      height: 40px;
       margin: 0px -50px;
     }
   }
 }
 
 .mobile-search-form{
-  margin: 50px auto;
-	text-align:center;
+  margin: 100px auto;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  left: -17%;
 }
 
 .mobile-search-header{
+  position: fixed;
+  top: 0px;
   margin: 0 auto;
-  width: 100%;
+  width: 400px;
   padding: 0px 20px;
   background-color: #222;
   
   .genius-logo {
-    height: 65px;
+    height: 60px;
+  }
+  .mobile-slogan {
+    margin-top: 15px;
   }
 }
 
 #mobile-frames {
  
  width: 330px;
- margin: 10px auto;
-
+ margin: 70px auto;
+ //margin-bottom: 200px;
+ 
  .frame {
    margin: 10px auto;
- } 
+   
+   .video-title {
+     @include basefont;
+     font-size: 12px;
+     background-color: black;
+     width: 320px;
+     padding: 10px 5px 5px;
+     margin-top: -5px;
+   }
+ }
+ 
+ .search-button {
+   width: 120px;
+   height: 40px;
+   border-radius: 6px;
+   margin: 0 115px;
+   padding: 1px;
+   background-color: #999;
+ }
  
 }
