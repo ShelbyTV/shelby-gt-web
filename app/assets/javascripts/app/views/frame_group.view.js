@@ -130,7 +130,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onClickQueue : function(){
-    shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
+    if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('frames').at(0).get('video'))){
+      //remove
+    } else {
+      //add
+      shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
+    }
   },
 
   _saveToWatchLater : function(){
