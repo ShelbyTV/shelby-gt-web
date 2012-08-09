@@ -131,17 +131,35 @@
         </p>      
       <% end %>
 
-      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-        Log In with Twitter
-      </a>   
+			<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="login-form">
+				<fieldset>
+					<label for="username" class="gate-form-label">Username</label>
+					<input id="username" name="username" placeholder="or email" class="gate-form-input">
+				</fieldset>
+				<fieldset>
+					<label for="password" class="gate-form-label">Password</label>
+					<input id="password" name="password" type="password" class="gate-form-input">
+				</fieldset>
+				<fieldset>
+					<input name="commit" type="submit" value="Login" class="gate-form-login-submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login">
+				</fieldset>
+			</form>
 
-      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-        Log In with Facebook
-      </a>
+			<div class="gate-networks-wrapper clearfix">
+	      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+	        Twitter
+	      </a>   
+
+	      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+	        Facebook
+	      </a>
+			</div>
       
-      <a href="#" id="js-no-access" class="gate-no-access js-track-event" data-ga_category="Landing Page" data-ga_action="Not a Beta User">
-      	Not a beta user?
-      </a>
+			<div class="gate-no-access-wrapper">
+	      <a href="#" id="js-no-access" class="gate-no-access js-track-event" data-ga_category="Landing Page" data-ga_action="Not a Beta User">
+	      	Not a beta user?
+	      </a>
+			</div>
 		</div><!-- eo .gate-lining -->
 
     <div id="js-thankyou" class="gate-lining hidden">

@@ -1,5 +1,6 @@
 defaults: &defaults
   url: "http://api.shelby.tv"
+  login_form_url: "http://api.shelby.tv/authentications/login"
   version: "/v1"
 
 development:
