@@ -88,6 +88,7 @@ $header-height : $unit * 3.5;
 $guide-width   : $unit * 33;
 
 //--- COLORS
+$highlight : rgba(255,255,255,.3) !default;
 $outline : #222;
 $inset   : #000;
 $outset  : #484b4d;
