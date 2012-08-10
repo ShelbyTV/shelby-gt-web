@@ -1,22 +1,3 @@
-<!doctype html>
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
-<% # if we got any meta tag info from request display it, otherwise just render head normally %>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <meta name="description" content="<%= Settings::Application.meta_description %>">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><%= Settings::Application.title %></title>
-  
-  <meta name="viewport" content="width=device-width">
-  <head profile="http://www.w3.org/2005/10/profile">
-  <link rel="icon"type="image/png" href="/favicon.png">
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
-  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->  
-  <%= javascript_include_tag "common" %>
-</head>
-
 <body class="genius">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -126,4 +107,3 @@
   </script>
 
 </body>
-</html>

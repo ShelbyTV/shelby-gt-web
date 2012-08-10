@@ -1,0 +1,74 @@
+<div id="search-bar" class="mobile-search-form">
+	<%= form_tag '', :method => :post do %>
+		<%= text_field_tag(:term, query_param, :placeholder => 'physics',:type => "search", 'data-theme' => 'b', :id=>"mobile-search-input", "data-mini"=>"true") %>
+	  <%= submit_tag("search &rarr;".html_safe, :class=>'mobile-search-submit', :id=>'mobile-search-submit') %>
+		<div id="mobile-search-spinner" class="mobile-search-spinner"></div>
+	<% end %>
+</div>
+
+<script>
+	$(function(){
+		$('.mobile-search-form').submit(function() {
+			$('.mobile-search-submit').prop('disabled', true);
+			var opts = {
+          lines: 11, // The number of lines to draw
+          length: 5, // The length of each line
+          width: 4, // The line thickness
+          radius: 5, // The radius of the inner circle
+          rotate: 0, // The rotation offset
+          color: 'white', // #rgb or #rrggbb
+          speed: 1, // Rounds per second
+          trail: 55, // Afterglow percentage
+          shadow: true, // Whether to render a shadow
+          hwaccel: false, // Whether to use hardware acceleration
+          className: 'mobile-spinner', // The CSS class to assign to the spinner
+          zIndex: 2e9, // The z-index (defaults to 2000000000)
+          top: 'auto', // Top position relative to parent in px
+          left: 'auto' // Left position relative to parent in px
+        };
+
+			var target = document.getElementById('mobile-search-spinner');
+			var spinner = new Spinner(opts).spin(target);
+
+			$('form .ui-submit .ui-btn-text').html('&nbsp;');
+
+			var search = $('#mobile-search-input').val();
+			
+			var params = {
+                    	  "q" : search,
+                    	  "max-results" : "50",
+                    	  "orderby" : "relevance"
+                    	};
+
+      	// Create a callback
+      	var cb = function(res){
+       	// Create array of returned YouTube video URLs
+        	var urls = new Array();
+				res.forEach(function(r){
+					if (r.link != undefined) {
+					  r.link.forEach(function(l){
+					  	if(l.rel != undefined && l.rel == "alternate") {
+						  	if(l.href != undefined) {
+						    	urls.push(l.href);
+						  	}
+				  		}
+			  		});	
+					}
+				});
+
+				// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
+				$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
+					if (data.status == 200){
+						window.location = '<%= Settings::Application.url %>' + "/m/genius/" + data.result.id;
+					}
+					else { alert("something went wrong."); }
+				});
+   		};
+							
+     	// Call ytQuery.query, passing params and your callback
+     	ytQuery.query(params, cb); 
+
+			return false;
+		});
+	});
+</script>
