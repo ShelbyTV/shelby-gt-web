@@ -158,14 +158,20 @@ html {
 .gate-networks-twitter {
   @extend .logged-out-twitter;
   margin-right: 20px;
+
+	&:before {
+		background-position: 30% 50%;
+		background-size: 82%;
+	}
 }
 
 .gate-networks-facebook {
   @extend .logged-out-facebook;
-}
 
-.gate-networks-facebook::before {
-  background-position: 0px -5px;
+  &:before {
+	  background-position: 30% 50%;
+	  background-size: 72%;
+  }
 }
 
 .gate-input-error,
