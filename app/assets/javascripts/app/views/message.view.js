@@ -15,7 +15,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
   },
 
   render : function(showConversation){
-    this.$el.html(this.template({message:this.model,frame:this.options.frame}));
+    this.$el.html(this.template({message:this.model,frame:this.options.frame, user:shelby.models.user}));
   },
 
   _goToUserPersonalRoll : function(e){

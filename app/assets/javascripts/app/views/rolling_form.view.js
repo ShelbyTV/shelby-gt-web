@@ -44,9 +44,9 @@
                     frame:this._frame, 
                     user: shelby.models.user,
                     rollOptions: {
-                      pathForDisplay:RollViewHelpers.pathForDisplay(roll), 
-                      titleWithoutPath:RollViewHelpers.titleWithoutPath(roll), 
-                      urlForRoll:RollViewHelpers.urlForRoll(roll)
+                      pathForDisplay:RollViewHelpers.pathForDisplay(this._roll), 
+                      titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll), 
+                      urlForRoll:RollViewHelpers.urlForRoll(this._roll)
                     }
                   }
                 ));
