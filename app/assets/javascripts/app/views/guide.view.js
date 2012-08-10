@@ -92,21 +92,15 @@
           };
          break;
         case DisplayState.rollList :
-          var binarySearchOffset, sourceModel;
-          if (this.model.get('rollListContent') == contentRollsEnum.browse) {
-            binarySearchOffset = 0;
-            sourceModel = shelby.models.browseRolls;
-          } else {
-            binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
-            sourceModel = shelby.models.rollFollowings;
-          }
-          var listItemView;
+          var binarySearchOffset, sourceModel, listItemView;
+          binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
+          sourceModel = shelby.models.rollFollowings;
           if (this.model.get('rollListContent') == contentRollsEnum.people) {
             listItemView = 'RollItemPeopleView';
           } else {
             listItemView = 'RollItemRollView';
           }
-          var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
+          var shouldFetch = true;
           displayParams = {
             viewProto : RollListView,
             model : sourceModel,
@@ -208,32 +202,15 @@
     },
 
     _populateRollList : function(guideModel, shouldFetch) {
-      var self = this;
-
       if (shouldFetch) {
-        var contentIsBrowseRolls = guideModel.get('rollListContent') == contentRollsEnum.browse;
-        var rollCollection, fetchUrl;
-        if (contentIsBrowseRolls) {
-          rollCollection = shelby.models.browseRolls;
-          fetchUrl = shelby.config.apiRoot + '/roll/browse';
-        } else {
-          rollCollection = shelby.models.rollFollowings;
-          fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
-        }
-
+        var rollCollection = shelby.models.rollFollowings;
+        var fetchUrl = shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/rolls/following';
         var oneTimeSpinnerState = new SpinnerStateModel();
         shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
         $.when(rollCollection.fetch({
-            success : function(){
-              if (contentIsBrowseRolls) {
-                // mark the browse rolls as fetched so we know we don't need to do it again
-                shelby.models.fetchState.set('browseRollsFetched', true);
-              }
-            },
             url : fetchUrl,
             data : {frames:true}
         })).always(function(){oneTimeSpinnerState.set('show', false);});
-      } else {
       }
     },
 

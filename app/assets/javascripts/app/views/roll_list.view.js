@@ -38,9 +38,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
           return !isPersonRoll || isMyPublicRoll;
         });
         break;
-      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
-        this.updateFilter(null);
-        break;
     }
   },
   
