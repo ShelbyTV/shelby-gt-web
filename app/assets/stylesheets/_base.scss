@@ -100,9 +100,6 @@ $rolls-outset : #555; //possibly obselete after new rolling pages are done
 $button-color       : #efefef;
 $button-color-light : #333;
 $text               : #dcddde;
-$headerNavLink      : #d8d8d8;
-
-$base-bg-color                      : #494949;
 
 $guide-bg-color 				            : #232526;
 $guide-presentation-bg-color        : #2f3233;
@@ -117,10 +114,7 @@ $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
-$header-bg-color                    : #2c2c2c;
 $header-outline                     : #202020;
-
-$filter-bg-color			              : #585858;
 
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
@@ -133,13 +127,8 @@ $video-card-thumbnail               : #494949;
 $video-controls-progress-load       : #303030;
 $video-player 											: #0e0e0e;
 
-$rolling-header-bg-color            : #555;
-$rolls-bg-color 			              : #585858;
 $rolls-people-outset                : #2E2F30;
 $toggle-switch-gray                 : #fefefe;
-
-$settingsBG : #2b2a2a;
-$rollsBG    : #585858;
 
 //--- COLORS: shelby 
 $shelby-blue       : #0071a3;
