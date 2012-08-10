@@ -120,8 +120,8 @@
 
       <% if @auth_failure %>
         <p class="gate-signin-error js-signin-error">
-          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy.titleize}" end%>.  
-          <br/>Please wait a moment and try again.
+          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.  
+          <br/>Please try again.
         </p>
       <% end %>
 
@@ -138,7 +138,7 @@
 				</fieldset>
 				<fieldset>
 					<label for="password" class="gate-form-label">Password</label>
-					<input id="password" name="password" type="password" class="gate-form-input">
+					<input id="password" name="password" type="password" placeholder="•••" class="gate-form-input">
 				</fieldset>
 				<fieldset>
 					<input name="commit" type="submit" value="Login" class="gate-form-login-submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login">
