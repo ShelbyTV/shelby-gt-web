@@ -52,6 +52,7 @@
   text-align: center;
   top: 30px;
   width: 102px;
+  z-index: 2147483647;
 }
 
 
@@ -174,15 +175,6 @@
   li {
     background-color: #EEE;
     height: 31px;
-    .all-roll {
-      background-image: url("/images/assets/videocard_roll_off.svg");
-      background-size: 20px 20px;
-      background-repeat: no-repeat;
-      background-position: 0 50%;
-      &:hover {
-        background-image: url("/images/assets/videocard_roll_on.svg");
-      }
-    }
   }
 
   &.buttons-animate{
