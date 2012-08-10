@@ -857,21 +857,9 @@ window.shelbyBookmarklet = {
     },
     shelbyOpts: function (useUrl, urlProvider) {
         return {
-            css: (window.JST)? [] : ["http://localhost:3000/assets/radar.css"],
-                 js: (window.JST)? [] : [
-                 "http://<%= Settings::VideoRadar.web_domain%>/assets/backbone/underscore.js",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/rolling-form.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-buttons.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-context.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-context-content.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/frame-conversation-form.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/message.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/frame-rolling.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/frame-conversation.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-login.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/wide-thumbnail-overlay.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-notify.jst",
-                 "http://<%=Settings::VideoRadar.web_domain%>/assets/bookmarklet-video-tab.jst"
+                css: (window.JST)? [] : ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
+                js: (window.JST)? [] : [
+                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
                    ],
             jqpath: (window.JST)? []: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
 
