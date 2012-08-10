@@ -4,9 +4,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  web_domain: 'localhost.shelby.tv:3000'
 
 test:
   <<: *defaults
+  web_domain: 'localhost.shelby.tv:3000'
 
 production: &production
   <<: *defaults

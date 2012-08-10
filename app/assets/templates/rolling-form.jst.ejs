@@ -6,9 +6,13 @@
 	}
 	
   var active_networks = [];
-  shelby.models.user.get('authentications').forEach(function(auth){
+  user.get('authentications').forEach(function(auth){
     active_networks.push(auth.provider);
   });
+
+  var pathForDisplay = rollOptions.pathForDisplay;
+  var titleWithoutPath = rollOptions.titleWithoutPath;
+  var urlForRoll = rollOptions.urlForRoll;
 %>
 
 
@@ -18,16 +22,16 @@
 	
 	<% if(roll){ %>
 		<h2 class="roll-selection-item-title">
-			<span class="path"><%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
+			<span class="path"><%= pathForDisplay %>/</span><%= titleWithoutPath %>
 		</h2>
-		<% if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user && roll.get('creator_id') == shelby.models.user.id){ %>
+		<% if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public && roll.get('creator_id') == user.id){ %>
 			<h3 class="roll-selection-item-url">
-				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
+				<%= urlForRoll %>
 			</h3>
 		<% } %>
 	<% } else { %>
 		<h2 class="roll-selection-item-title">
-			<span class="path"><%= shelby.models.user.get('nickname') %></span><span class="path">/</span><input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="what's this roll about?" type="text">
+			<span class="path"><%= user.get('nickname') %></span><span class="path">/</span><input name="new-roll-name" id="new-roll-name" class="roll-options-input" placeholder="what's this roll about?" type="text">
 		</h2>
 	<% } %>
 

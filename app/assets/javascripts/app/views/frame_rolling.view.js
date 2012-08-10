@@ -31,7 +31,7 @@
     },
 
     render : function(){
-      this.$el.html(this.template({frame:this.model}));
+      this.$el.html(this.template({frame:this.model, user: shelby.models.user}));
 
 			if(this._autoChoosePersonalRoll && shelby.models.user.get('personal_roll')){
 				//skipping step 1.  Rendering Step 2 with user's personal roll.
