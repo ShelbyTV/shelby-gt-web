@@ -58,7 +58,9 @@
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
-      this._updateChild(model);
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+        this._updateChild(model);
+      }
     },
 
     _updateChild : function(guideModel) {

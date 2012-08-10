@@ -39,7 +39,11 @@
     },
 
     render : function() {
-      this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+      if (this.model) {
+        this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+      } else {
+        this.$el.html('');
+      }
     },
 
     template : function(obj) {

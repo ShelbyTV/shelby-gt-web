@@ -362,10 +362,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
     this._setupAnonUserViews(options);
-    shelby.views.notificationOverlayView = shelby.views.notificationOverlayView || new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState});
-    shelby.views.contextOverlay = shelby.views.contextOverlay ||
-      new libs.shelbyGT.ContextOverlayView({guide:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay});
-    shelby.views.prerollVideoInfo = shelby.views.prerollVideoInfo || new libs.shelbyGT.PrerollVideoInfoView({guide:shelby.models.guide, playbackState:shelby.models.playbackState});
     shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
     //shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
     shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
@@ -376,12 +372,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideView({model:shelby.models.guide});
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.guide'});
-    shelby.views.video = shelby.views.video ||
-        new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
-    shelby.views.videoControls = shelby.views.videoControls ||
-        new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
-    shelby.views.miniVideoProgress = shelby.views.miniVideoProgress ||
-        new libs.shelbyGT.MiniVideoProgress({playbackState:shelby.models.playbackState});
+    shelby.views.contentPane = shelby.views.contentPane ||
+      new libs.shelbyGT.ContentPaneView({model:shelby.models.guide, userDesires:shelby.models.userDesires});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
