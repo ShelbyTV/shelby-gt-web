@@ -17,6 +17,12 @@ gem "settingslogic"
 gem 'httparty'
 
 #
+# ---------- Mobile Search
+#
+gem 'youtube_it'
+
+
+#
 # -- Quiet Logging
 #
 gem 'quiet_assets', :group => :development

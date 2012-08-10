@@ -66,8 +66,12 @@ html {
 
 //------------------ form ---------------------//
 
-.gate-form {
+.gate-form, .login-form {
 	margin: 1.5em 0 1em;
+}
+
+.login-form {
+  margin-bottom: 40px;
 }
 
 .gate-form-label {
@@ -87,6 +91,10 @@ html {
 	width: 63%;
 }
 
+.login-form .gate-form-input {
+  width: 79%;
+}
+
 .gate-form-submit{
 	@include x-button-primer($shelby-blue, small);
 
@@ -94,19 +102,28 @@ html {
 	margin-top: 1em;
 }
 
+.gate-form-login-submit{
+  @include x-button-primer($shelby-green, small);
+
+	display: block;
+	margin-top: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
 //-------------------- eo form ---------------------//
 
-.gate-no-access {
-	@include x-button-primer($shelby-gray, small);
+.gate-no-access-wrapper {
+  float: left;
+  margin-top: 3em;
+  width: 100%;
+}
 
+.gate-no-access {
 	color: $button-color;
-	display: block;
-	float: left;
 	font-size: (11em/13);
 	font-weight: 300;
 	margin-top:3em;
-	padding: 5px 9px;
-	text-decoration: none;
 
 	&:visited {
 		color: $button-color;
@@ -117,17 +134,18 @@ html {
 	font-size: (11em/13);
 }
 
-.gate-networks-twitter{
-	margin-top: 2em;
+.gate-networks-wrapper {
+  margin-bottom: 3em;
 }
 
 .gate-networks-twitter,
 .gate-networks-facebook {
   display: block;
-  padding: 4px 3px 3px 20px;
+  float: left;
+  padding: 0 3px 0 20px;
   text-align: center;
   text-decoration: none;
-  width: 200px;	
+  width: 100px;	
 
   &:before {
     width: 36px;
@@ -138,13 +156,22 @@ html {
 }
 
 .gate-networks-twitter {
-  //extend existing
   @extend .logged-out-twitter;
+  margin-right: 20px;
+
+	&:before {
+		background-position: 30% 50%;
+		background-size: 82%;
+	}
 }
 
 .gate-networks-facebook {
   @extend .logged-out-facebook;
-  margin-top: $defaultMargin;
+
+  &:before {
+	  background-position: 30% 50%;
+	  background-size: 72%;
+  }
 }
 
 .gate-input-error,
