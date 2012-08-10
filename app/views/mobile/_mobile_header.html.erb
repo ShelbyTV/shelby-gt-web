@@ -1,0 +1,16 @@
+<div class="mobile-search-header">
+  <header class="genius-header clearfix">
+    <h1 class="genius-logo ir">
+      Shelby.tv
+    </h1>
+    <p class="mobile-slogan">
+      An amazing way to <br> discover and enjoy videos.
+    </p>
+		<script>
+			$('.mobile-search-header').on("click", function(){
+				window.location.href = 'http://192.168.2.206:3000/m'; //'<%= Settings::Application.url %>' + "/m";
+			});
+		</script>
+		
+  </header>
+</div>
