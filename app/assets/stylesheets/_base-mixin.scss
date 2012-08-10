@@ -89,7 +89,7 @@ $highlight-amount : 25% !default;
   @include text-shadow(0px -1px 0px #000);
 
   border: 1px solid adjust-lightness($primer-color,-20%);
-	box-shadow: inset 0 1px 1px 0 adjust-lightness($primer-color, 15%);
+	box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.3);
 	color: $button-color;
 	float: left;
 	height: 27px;
