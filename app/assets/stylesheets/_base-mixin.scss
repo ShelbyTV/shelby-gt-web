@@ -199,19 +199,19 @@ $button-image-url : '' !default;
 }
 
 
-$primer-color          : $button-default-color;
+$x-primer-color        : $button-default-color;
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
-@mixin xx-button-primer($primer-color, $primer-tone, $primer-button-context){
-	background-color: $primer-color;
+@mixin xx-button-primer($x-primer-color, $primer-tone, $primer-button-context){
+	background-color: $x-primer-color;
 
-	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+	@include background(linear-gradient(top, adjust-lightness($x-primer-color,10%), $x-primer-color));
 
-	border: 1px solid adjust-lightness($primer-color, -25%);
+	border: 1px solid adjust-lightness($x-primer-color, -25%);
 	border-radius: $button-radius;
-	box-shadow: inset 0 1px 0 0 adjust-lightness($primer-color, 20%),
-							inset 0 -1px 0 0 adjust-lightness($primer-color, -5%);
+	box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%),
+							inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%);
 	padding: .8em 1em .75em;
 
 	@include font-primer(inputfont);
