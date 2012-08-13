@@ -10,14 +10,29 @@
 	    -moz-box-sizing: border-box;
 	    -webkit-box-sizing: border-box;
 	    box-sizing: border-box;
+	  font-family: "Ubuntu",Trebuchet MS,sans-serif !important;
+	  text-align: left;
+          border: none;
+          text-transform: none;
+          letter-spacing: 0;
 	  }
+
+          h1, h2, h3 {
+            color: #DCDDDE;
+          }
 
 	  ul, li, a, div, p, span, form, fieldset, label, input, button, img {
 	    margin: 0;
 	    padding: 0;
 	    border: 0;
 	    outline: none;
+            list-stype-type: none;
 	  }
+
+          form {
+            display: block;
+          }
+            
 
 	  textarea, button, input {
 	  	font-size: 12px !important;
@@ -28,6 +43,7 @@
 	  font-size: 14.5454545455px;
 	  line-height: 1.4;
 	  text-align: left;
+          border: none;
 
 
 	
@@ -36,8 +52,8 @@
                 "partials/app.html",
 		"partials/fonts",
 
-    "partials/gate",
-    "partials/guide-header",
+                "partials/gate",
+                "partials/guide-header",
 
 		"partials/guide-presentation-selector",
 		"partials/guide-overlay-view",
@@ -45,25 +61,20 @@
 
 		"partials/roll-header",
 		"partials/roll-item",
-		"partials/roll-item-people",
     
-    "partials/frame",
-
+                "partials/frame",
+                "partials/rolling-form",
 		"partials/rolls-list",
 
 		"partials/frame-rolling",
-		"partials/frame-rolling-options",	
+                "partials/rolling-form",
 		"partials/frame-conversation",
 
 		"partials/rolls",	
 		"partials/share",
 		"partials/roll-selection-items",
-
-		"partials/roll-header",
-		"partials/roll-item",
-		"partials/roll-item-people",
  
-    "bookmarklet-overwrite",
+                "bookmarklet-overwrite",
 
 		"partials/h5bp-utilities"; 	
 }

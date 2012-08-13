@@ -1,0 +1,7 @@
+<div id="mobile-frames">
+	<% @frames.each do |f| %>
+		<div class="<%= f['video']['provider_name'] %>-<%= f['video']['provider_id'] %> search-frame">
+			<%= render :partial => "mobile_frame", :locals => { :frame => f } %>
+		</div>
+	<% end %>
+</div>

@@ -324,6 +324,14 @@
 	margin: 0;
 }
 
+/* We are not linking to faux users' personal rolls, so don't display like a link */
+.video-card.faux-roll a.no-faux-link {
+  cursor: default;
+  &:hover, h3:hover {
+    text-decoration: none;
+  }
+}
+
 /* XXX BELOW still needed for context overlay, but not for conversation within guide  */
 .user-vcard {
 	border-bottom: 1px solid $inset;

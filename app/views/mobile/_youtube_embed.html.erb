@@ -1,0 +1,15 @@
+<% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
+<script>
+	$('div.<%= vid_info %> .video').on('click', function(){
+		$(this).find('img').replaceWith('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+		
+		if (window.currentPlaying){
+			var thumbnail_url = $('iframe.'+window.currentPlaying).data('thumbnail_url');
+			if ( $(this).find('iframe').length !== 0 ){
+				$('iframe.'+window.currentPlaying).replaceWith('<img src="'+thumbnail_url+'" width="320" height="180"/>');
+			}
+		}
+		
+		window.currentPlaying = '<%= vid_info %>';
+	});
+</script>

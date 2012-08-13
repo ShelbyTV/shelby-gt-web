@@ -24,21 +24,15 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
   },
 
   onShareSuccess: function(){
-    var self = this;
-    this._displayOverlay(function(){
-      self.options.viewState.set({
-        visible : false,
-        slide : true,
-        shareSuccess : true
-      }, {
-        silent:true
-      });
-      self.options.viewState.change();
+    this.options.viewState.set({
+      visible : false,
+      slide : true,
+      shareSuccess : true
     });
     
-    shelby.track( 'shared_roll', 
-                  { destination: this.model.get('destination').join(', '), 
-                    id: this.options.roll.id, 
+    shelby.track( 'shared_roll',
+                  { destination: this.model.get('destination').join(', '),
+                    id: this.options.roll.id,
                     userName: shelby.models.user.get('nickname') } );
   },
 
@@ -67,14 +61,6 @@ libs.shelbyGT.ShareRollView = libs.shelbyGT.ShareView.extend({
       this.$el.toggle();
       afterToggle();
     }
-  },
-
-  //callback to be called when fading is done
-  _displayOverlay : function(cb){
-    this.$('.share-comment').append(JST['shared-indicator']());
-    setTimeout(function(){
-      cb();
-    }, 700);
   }
 
 });

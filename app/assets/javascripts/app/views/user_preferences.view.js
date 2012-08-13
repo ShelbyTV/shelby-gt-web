@@ -2,7 +2,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   events: {
 	  "click .js-user-save": 	"_submitContactInfo",
+	  "click .js-user-password-save": "_submitPassword",
 		"click .js-user-cancel": "_cancel",
+		"click .js-user-password-cancel": "_cancel",
+		"click #show-change-password": "_showChangePassword",
 		"change #you-preferences-email-weekly": "_toggleWeeklyEmails",
 		"change #you-preferences-email-watches": "_toggleWatchEmails",
 		"change #you-preferences-email-upvotes": "_toggleUpvoteEmails",
@@ -20,6 +23,11 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     this.$el.html(this.template({user:this.model}));
   },
 
+  _showChangePassword: function(e){
+    this.$("#you-preferences-change-password").show();
+    e.preventDefault();
+  },
+  
 	_cancel: function(){
 		//TODO: what should cancel really do?
 		// -1 (or .back) seems to bring us to the wrong place.
@@ -48,11 +56,39 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     });
 	},
 	
+	_submitPassword: function(){
+	  var self = this;
+		var info = {
+		  password: this.$('#you-preferences-password').val(),
+		  password_confirmation: this.$('#you-preferences-password-confirmation').val()
+		  };
+		  
+		if(info.password.length == 0){
+		  self._updateSecurityResponse("Password can't be blank.");
+		  return;
+		}
+		
+	  this.model.save(info, {
+			success: function(model, resp){self._updateSecurityResponse("Password updated!");},
+			error: function(model, resp){
+				self._updateSecurityResponse("Passwords did not match.");
+			}
+    });
+	},
+	
 	_updateResponse: function(resp, msg){
 		var self = this;
    	this.$('.js-response-message').show().text(msg);
 		setTimeout(function(){
 			self.$('.js-response-message').fadeOut('fast', function() { $(this).text(""); });
+		}, 3000);
+	},
+	
+	_updateSecurityResponse: function(msg){
+	  var self = this;
+   	this.$('.js-security-response-message').show().text(msg);
+		setTimeout(function(){
+			self.$('.js-security-response-message').fadeOut('fast', function() { $(this).text(""); });
 		}, 3000);
 	},
 	

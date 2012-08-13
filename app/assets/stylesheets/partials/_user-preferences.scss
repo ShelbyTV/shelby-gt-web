@@ -86,10 +86,21 @@
 		float: left;
 	}
 
-	#response-message{
+	.you-profile-response{
 		float: left;
 		margin: 6px;
 	}
+}
+
+#show-change-password {
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+#you-preferences-change-password {
+  display: none;
 }
 
 

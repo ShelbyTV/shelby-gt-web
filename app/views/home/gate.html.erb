@@ -12,7 +12,6 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
   <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>
     <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
   </title>
@@ -26,9 +25,7 @@
 </head>
 
 <body class="gate">
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <!--[if lt IE 8]><p class=chromeframe><a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
   <div class="clearfix gate-wrapper<%= ' with-video' if videoEmbed %>">
   	<header class="gate-header">
@@ -123,8 +120,8 @@
 
       <% if @auth_failure %>
         <p class="gate-signin-error js-signin-error">
-          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy.titleize}" end%>.  
-          <br/>Please wait a moment and try again.
+          There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.  
+          <br/>Please try again.
         </p>
       <% end %>
 
@@ -134,17 +131,35 @@
         </p>      
       <% end %>
 
-      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-        Log In with Twitter
-      </a>   
+			<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="login-form">
+				<fieldset>
+					<label for="username" class="gate-form-label">Username</label>
+					<input id="username" name="username" placeholder="Username or Email address" class="gate-form-input">
+				</fieldset>
+				<fieldset>
+					<label for="password" class="gate-form-label">Password</label>
+					<input id="password" name="password" type="password" placeholder="•••" class="gate-form-input">
+				</fieldset>
+				<fieldset>
+					<input name="commit" type="submit" value="Login" class="gate-form-login-submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login">
+				</fieldset>
+			</form>
 
-      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-        Log In with Facebook
-      </a>
+			<div class="gate-networks-wrapper clearfix">
+	      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+	        Twitter
+	      </a>   
+
+	      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+	        Facebook
+	      </a>
+			</div>
       
-      <a href="#" id="js-no-access" class="gate-no-access js-track-event" data-ga_category="Landing Page" data-ga_action="Not a Beta User">
-      	Not a beta user?
-      </a>
+			<div class="gate-no-access-wrapper">
+	      <a href="#" id="js-no-access" class="gate-no-access js-track-event" data-ga_category="Landing Page" data-ga_action="Not a Beta User">
+	      	Not a beta user?
+	      </a>
+			</div>
 		</div><!-- eo .gate-lining -->
 
     <div id="js-thankyou" class="gate-lining hidden">
@@ -210,28 +225,27 @@
 	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	    s.parentNode.insertBefore(g,s);}(document,'script'));
 	  </script>
+		<script>
+		  var _kmq = _kmq || [];
+		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+		  function _kms(u){
+		    setTimeout(function(){
+		      var d = document, f = d.getElementsByTagName('script')[0],
+		      s = d.createElement('script');
+		      s.type = 'text/javascript'; s.async = true; s.src = u;
+		      f.parentNode.insertBefore(s, f);
+		    }, 1);
+		  }
+		  _kms('//i.kissmetrics.com/i.js');
+		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+
+			var action = "Visit landing page";
+			var shortLink = $.getUrlParam('awesm');
+		  if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
+			else { shortLink = null; }
+			_kmq.push(['record', action, {shortLink: shortLink}]);
+		</script>
 	<% end %>
-	
-	<script>
-	  var _kmq = _kmq || [];
-	  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-	  function _kms(u){
-	    setTimeout(function(){
-	      var d = document, f = d.getElementsByTagName('script')[0],
-	      s = d.createElement('script');
-	      s.type = 'text/javascript'; s.async = true; s.src = u;
-	      f.parentNode.insertBefore(s, f);
-	    }, 1);
-	  }
-	  _kms('//i.kissmetrics.com/i.js');
-	  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-	
-		var action = "Visit landing page";
-		var shortLink = $.getUrlParam('awesm');
-	  if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
-		else { shortLink = null; }
-		_kmq.push(['record', action, {shortLink: shortLink}]);
-	</script>
 
 </body>
 </html>

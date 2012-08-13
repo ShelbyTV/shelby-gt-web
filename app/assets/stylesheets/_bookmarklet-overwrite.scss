@@ -18,51 +18,124 @@
   vertical-align: middle;
 }
 
+.frame-creator{
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 50px;
+  margin-left: 4px;
+  margin-bottom:5px;
+  width: 50px;
+
+}
+
 .frame-creator-avatar{
-  height: 45px;
-  width:45px;
+  height: 100%;
+  width: 100%;
 }
 
 .frame-conversation-message-block {
   font-size: 13px;
 }
 
+//NOTIFICATION
+.shelby-notify {
+  background-color: #eee;
+  background-image: url('/images/assets/shelby_mark.svg');
+  background-position: 50% -7px;
+  background-size: 30px 40px;
+  background-repeat: no-repeat;
+  border: 1px solid #adadad;
+  color: #333;
+  font-size: 11px;
+  font-weight: 300;
+  height: 40px;
+  left: 30px;
+  line-height: 5.5em;
+  position: fixed;
+  text-align: center;
+  top: 30px;
+  width: 102px;
+  z-index: 2147483647;
+}
+
+.notify-window {
+  background-color: black;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 2147483647;
+  &.notified {
+    opacity: 0.7;
+  }
+  &.animate-fadein {
+    @include transition-property('opacity');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+}
+
+.queue-notification {
+  background-image: url("/images/assets/clock.png");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: 77%;
+  height:100px;
+  left: 50%;
+  line-height: 10;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 80px;
+}
+
+//LOGIN
+.bookmarklet-login-twitter,  
+.bookmarklet-login-facebook {
+  border-radius: 3px;
+  display: block;
+  float: left;
+  font: 0/0 a;
+  height: 40px;
+  margin: 20px;
+  padding: 0 3x 0 20px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  width: 165px;
+}
+
+.bookmarklet-login-twitter {  
+  @include x-logged-out-networks-buttons($twitter-blue);
+  background-size: 11%;
+  &:before {
+    background-image: url($icon-share-twitter-on);
+    background-position: center center;
+    background-size: 97%;
+  }
+}
+
+.bookmarklet-login-facebook {
+  @include x-logged-out-networks-buttons($facebook-blue);
+  background-size: 4%;
+  &:before {
+    background-image: url($icon-share-facebook-on);
+    background-position: 1px 3px;
+    background-size: 95%;
+  }
+}
+
 //ROLLS
 
-
-.roll-selection-item-lining {
-  height: 50px;
+.roll-options-submit {
+  text-align: center;
 }
 
-.roll-selection-item {
-  height: 51px;
-  margin: 0;
-  padding: 0;
-
-  a:link, a:visited, a:active {
-    color:#DCDDDE;
-  }
-  a img {
-    border: none;
-  }
-  
-}
-
-.roll-item-creator {
-  height:23.03030303px;
-}
-
-.current-roll {
-  font-size: 14.5454545455px;
-}
-
-.rolling-main-header{
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.roll-options-label {
-  font-weight: 500;
+.label {
+  color: #DCDDDE;
 }
 
 //GUIDE
@@ -108,19 +181,6 @@
     
 }
 
-.video-card-header {
-  height: 45px;
-}
-
-.embedded-header {
-  background-color: #35383A;
-  border-radius: 5px 5px 0 0;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
-  z-index: 2147483645;
-}
-
 .frame-exists {
   .frame-logo:before {
     content: "Seen on";
@@ -129,25 +189,77 @@
   }
 }
 
-.embedded-footer {
-  background-color: #35383A;
-  border-radius: 0 0 5px 5px;
-  font-size: 13px;
-  position: absolute;
-  z-index: 2147483645;
+.bookmarklet-button {
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 300;
+  color: #333;
+  text-align: center;
+  background-color: #EEE;
+  height: 31px;
 }
+
+.bookmarklet-video-tab {
+  height: 300px;
+  overflow: hidden;
+  position: absolute;
+  width: 60px;
+  z-index: 2147483646;
+}
+
+.queue-button-content {
+  background-image: url("/images/assets/clock.png");
+  background-position: 5px 2px;
+  background-repeat:no-repeat;
+  background-size: 20%;
+  font-style: normal;
+  padding-bottom: 2px;
+  padding-left: 19px;
+}
+
+.roll-button-content {
+  background-image: url("/images/assets/videocard_roll_off.svg");
+  background-position: 5px 2px;
+  background-repeat:no-repeat;
+  background-size: 20%;
+  font-style: normal;
+  padding-bottom: 2px;
+  padding-left: 19px;
+}
+
+.embedded-buttons {
+  border-radius: 0;
+  list-style-type: none;
+  margin: 0 0 0 100%;
+  padding-top: 2px;
+  padding-bottom: 28px;
+  width: inherit;
+  li {
+    border: 1px solid #adadad;
+    background-color: #EEE;
+
+    &:last-child {
+      border-top: none;
+    }
+  }
+
+  &.buttons-animate{
+    @include transition-property('margin-left');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+
+  &.buttons-show {
+    margin-left: 0;
+  }
+}
+
 
 .frame-title {
   width:50%;
 }
-
-/*
-.guide-overlay-title {
-  background-image: url("../../images/assets/mark.png");
-  background-position: 15px 50%;
-  background-repeat: no-repeat;
-  background-size: 38px;
-}*/
 
 .gate-networks-twitter,
 .gate-networks-facebook{
