@@ -10,9 +10,11 @@
 	    -moz-box-sizing: border-box;
 	    -webkit-box-sizing: border-box;
 	    box-sizing: border-box;
-	  font: 100 normal 62.5%/1.231 "Ubuntu",Trebuchet MS,sans-serif;
+	  font-family: "Ubuntu",Trebuchet MS,sans-serif !important;
 	  text-align: left;
           border: none;
+          text-transform: none;
+          letter-spacing: 0;
 	  }
 
 	  ul, li, a, div, p, span, form, fieldset, label, input, button, img {
@@ -42,8 +44,8 @@
                 "partials/app.html",
 		"partials/fonts",
 
-    "partials/gate",
-    "partials/guide-header",
+                "partials/gate",
+                "partials/guide-header",
 
 		"partials/guide-presentation-selector",
 		"partials/guide-overlay-view",
@@ -52,7 +54,7 @@
 		"partials/roll-header",
 		"partials/roll-item",
     
-    "partials/frame",
+                "partials/frame",
                 "partials/rolling-form",
 		"partials/rolls-list",
 
@@ -63,11 +65,8 @@
 		"partials/rolls",	
 		"partials/share",
 		"partials/roll-selection-items",
-
-		"partials/roll-header",
-		"partials/roll-item",
  
-    "bookmarklet-overwrite",
+                "bookmarklet-overwrite",
 
 		"partials/h5bp-utilities"; 	
 }

@@ -308,9 +308,10 @@ window.shelbyBookmarklet = {
             getWidth: function (jqueryVid) {
                 return jqueryVid.width();
             },
-
+  
+            // make it a little higher than necessary so that overflow doesn't take out the border
             getTabVpos: function(vidTop) {
-                return vidTop;
+                return Math.ceil(vidTop - 2);
             },
             getTabHpos: function(vidLeft, tabWidth) {
                 return vidLeft - tabWidth;

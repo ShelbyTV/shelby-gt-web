@@ -97,6 +97,10 @@
   text-align: center;
 }
 
+.label {
+  color: #DCDDDE;
+}
+
 //GUIDE
 
 .guide-overlay-title-text {
@@ -172,7 +176,8 @@
   border-radius: 0;
   list-style-type: none;
   margin: 0 0 0 100%;
-  padding-bottom: 30px;
+  padding-top: 2px;
+  padding-bottom: 28px;
   width: inherit;
   li {
     .all-roll {
