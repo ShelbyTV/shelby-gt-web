@@ -629,7 +629,7 @@ window.shelbyBookmarklet = {
               submitButton.on('click', null, null, function (event) {
                 var message = shelbyJ("#rolling-message").val();    
                 rollCallback = function(response) {
-                  alert("successfully rolled");
+                  utilObject.styleGuideHide("roll-guide");
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;
                   }
