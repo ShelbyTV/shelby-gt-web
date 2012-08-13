@@ -19,10 +19,13 @@
 }
 
 .frame-creator{
-  height: 100%;
-  width: 100%;
   -webkit-background-size: cover;
   background-size: cover;
+  height: 50px;
+  margin-left: 4px;
+  margin-bottom:5px;
+  width: 50px;
+
 }
 
 .frame-creator-avatar{
@@ -160,17 +163,32 @@
   color: #333;
   text-align: center;
   background-color: #EEE;
-  border: 1px solid #adadad;
+  height: 31px;
 }
 
 .bookmarklet-video-tab {
   height: 300px;
   overflow: hidden;
   position: absolute;
-  width: 50px;
+  width: 60px;
   z-index: 2147483646;
 }
 
+.queue-button-content {
+  font-style: normal;
+}
+
+.roll-button-content {
+  background-image: url("/images/assets/videocard_roll_off.svg");
+  background-position: 5px 2px;
+  background-repeat:no-repeat;
+  background-size: 20%;
+  font-style: normal;
+  padding-bottom: 2px;
+  padding-left: 19px;
+  
+
+}
 
 .embedded-buttons {
   border-radius: 0;
@@ -180,18 +198,12 @@
   padding-bottom: 28px;
   width: inherit;
   li {
-    .all-roll {
-      background-image: url("/images/assets/videocard_roll_off.svg");
-      &:hover {
-        background-image: url("/images/assets/videocard_roll_on.svg");
-      }
-      background-size: 10px 10px;
-      background-repeat: no-repeat;
-      background-position: 0 45%;
-    }
-
+    border: 1px solid #adadad;
     background-color: #EEE;
-    height: 31px;
+
+    &:last-child {
+      border-top: none;
+    }
   }
 
   &.buttons-animate{

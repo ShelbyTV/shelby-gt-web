@@ -389,8 +389,10 @@ window.shelbyBookmarklet = {
                                     },
                                     success: function (response) {
                                         var frames = response.result;
-                                        utilObject.videoInformation[videoId].frame = response.result[0];
-                                        utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, true);
+                                        if (response.result[0]) {
+                                          utilObject.videoInformation[videoId].frame = response.result[0];
+                                          utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, videoId, true);
+                                        }
                                     }
                               });
                         };
@@ -631,7 +633,7 @@ window.shelbyBookmarklet = {
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;
                   }
-                  utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, false);
+                  utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, videoId, false);
                 }
                 utilObject.shelbyAjaxCall.shelbyApiRoll(knownUrl, utilObject.shelbyBkmkltUser.personal_roll_id, message, rollCallback);
 
@@ -697,9 +699,8 @@ window.shelbyBookmarklet = {
 
                 },
   
-                adjustFrameContext: function (shelbyFrameClass, shouldOverwrite) {
+                adjustFrameContext: function (shelbyFrameClass, videoId, shouldOverwrite) {
                     var frameContext = shelbyJ("." + shelbyFrameClass);
-                    var videoId = frameContext.attr("data-videoId");
                     var frame = utilObject.videoInformation[videoId].frame;
                     var creator = frame.creator;
                     var creatorUrl = "http://<%== Settings::VideoRadar.web_domain%>/user/" + creator.id + "/personal_roll";
