@@ -20,7 +20,7 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
     if (displayState == libs.shelbyGT.DisplayState.explore) {
       this.$('.js-explore-layout').show();
       //pause the video player when obscuring it
-      shelby.models.userDesires.set('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
     } else {
       this.$('.js-explore-layout').hide();
     }

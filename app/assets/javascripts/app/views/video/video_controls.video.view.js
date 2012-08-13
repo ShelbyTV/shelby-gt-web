@@ -180,8 +180,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     var activePlayerState = this._playbackState.get('activePlayerState');
     if (activePlayerState) {
       var _newPlaybackStatus = (activePlayerState.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
-      this._userDesires.set('playbackStatus', _newPlaybackStatus);
-      this._userDesires.set('playbackStatus', null);
+      this._userDesires.triggerTransientChange('playbackStatus', _newPlaybackStatus);
     }
   },
 
