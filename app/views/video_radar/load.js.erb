@@ -739,8 +739,14 @@ window.shelbyBookmarklet = {
                 notifyQueued: function() {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
                         setTimeout(function() {
+                              shelbyJ(".notify-window").addClass("notified").on("click", 
+                                        function() {
+                                            shelbyJ('.notify-window').remove();
+                                });
+                        }, 0);
+                        setTimeout(function() {
                               shelbyJ('.notify-window').remove();
-                        }, 2000)
+                        }, 3000)
                 },
                         
 
