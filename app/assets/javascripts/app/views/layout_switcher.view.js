@@ -21,10 +21,8 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
       this.$('.js-explore-layout').show();
       //pause the video player when obscuring it
       shelby.models.userDesires.set('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
-      this.$('.js-main-layout').hide();
     } else {
       this.$('.js-explore-layout').hide();
-      this.$('.js-main-layout').show();
     }
   }
 

@@ -362,7 +362,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
-    shelby.views.layoutSwticher = shelby.views.layoutSwticher ||
+    shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({model:shelby.models.guide, userDesires:shelby.models.userDesires});
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.guide'});
