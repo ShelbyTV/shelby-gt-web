@@ -17,6 +17,10 @@
           letter-spacing: 0;
 	  }
 
+          h1, h2, h3 {
+            color: #DCDDDE;
+          }
+
 	  ul, li, a, div, p, span, form, fieldset, label, input, button, img {
 	    margin: 0;
 	    padding: 0;
@@ -24,6 +28,10 @@
 	    outline: none;
             list-stype-type: none;
 	  }
+
+          form {
+            display: block;
+          }
             
 
 	  textarea, button, input {
