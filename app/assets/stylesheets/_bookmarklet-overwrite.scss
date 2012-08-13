@@ -56,7 +56,8 @@
 }
 
 //LOGIN
-.bookmarklet-login-twitter .bookmarklet-login-facebook {
+.bookmarklet-login-twitter,  
+.bookmarklet-login-facebook {
   border-radius: 3px;
   display: block;
   float: left;
@@ -73,49 +74,27 @@
 .bookmarklet-login-twitter {  
   @include x-logged-out-networks-buttons($twitter-blue);
   background-size: 11%;
+  &:before {
+    background-image: url($icon-share-twitter-on);
+    background-position: center center;
+    background-size: 97%;
+  }
 }
 
 .bookmarklet-login-facebook {
   @include x-logged-out-networks-buttons($facebook-blue);
   background-size: 4%;
+  &:before {
+    background-image: url($icon-share-facebook-on);
+    background-position: 1px 3px;
+    background-size: 95%;
+  }
 }
 
 //ROLLS
 
-
-.roll-selection-item-lining {
-  height: 50px;
-}
-
-.roll-selection-item {
-  height: 51px;
-  margin: 0;
-  padding: 0;
-
-  a:link, a:visited, a:active {
-    color:#DCDDDE;
-  }
-  a img {
-    border: none;
-  }
-  
-}
-
-.roll-item-creator {
-  height:23.03030303px;
-}
-
-.current-roll {
-  font-size: 14.5454545455px;
-}
-
-.rolling-main-header{
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.roll-options-label {
-  font-weight: 500;
+.roll-options-submit {
+  text-align: center;
 }
 
 //GUIDE
@@ -197,13 +176,13 @@
   width: inherit;
   li {
     .all-roll {
-      background-image: url("/images/assets/video_roll_off.svg");
+      background-image: url("/images/assets/videocard_roll_off.svg");
       &:hover {
-        background-image: url("/images/assets/video_roll_on.svg");
+        background-image: url("/images/assets/videocard_roll_on.svg");
       }
       background-size: 10px 10px;
       background-repeat: no-repeat;
-      background-position: 0 50%;
+      background-position: 0 45%;
     }
 
     background-color: #EEE;

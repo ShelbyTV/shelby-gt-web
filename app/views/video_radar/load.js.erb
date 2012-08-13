@@ -664,7 +664,7 @@ window.shelbyBookmarklet = {
                 setUpConversationWithId: function (conversationId, videoId) {
                     var commentTextClass = "comment-text-" + videoId;
                     var conversationCallback = function (response) {
-                      console.log(videoId);
+                        console.log(videoId);
                         console.log(utilObject.videoInformation);
                         var frame = utilObject.videoInformation[videoId].frame;
                         if (frame) {
@@ -686,14 +686,13 @@ window.shelbyBookmarklet = {
                 },
 
 
-                setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
+              setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@prefix%>guide-window">  </div>');
-
                     // set up clickoff
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@prefix%>guide-clickoff"></div>')
                     shelbyJ("#" + guideName + "-clickoff").css("right", shelbyGuideWidth + "px").css("height", shelbyJ(window).height() + "px").css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px").on('click', function () {
                         utilObject.styleGuideHide();
-                        });
+                    });
 
                 },
   
@@ -855,14 +854,7 @@ window.shelbyBookmarklet = {
         fullFunc(opts(useUrl, urlProvider));
     },
     shelbyOpts: function (useUrl, urlProvider) {
-        return {
-                css: (window.JST)? [] : ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
-                js: (window.JST)? [] : [
-                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
-                   ],
-            jqpath: (window.JST)? []: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
-
-            ready: function () {
+        var radarStart =  function () {
                 var shelbyJ = jQuery.noConflict();
                 var possibleVideos = {
                     embeds: shelbyJ('embed'),
@@ -874,16 +866,30 @@ window.shelbyBookmarklet = {
                 var shelbyGuideWidth = 330;
 
                 // add in the bookmarklet loading bar
-                shelbyJ('.<%=@prefix%>ext-elements').remove()
+                shelbyJ('.<%=@prefix%>ext-elements').remove();
                 shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
                 var radar = shelbyBookmarklet.shelbyRadar(shelbyJ, useUrl, urlProvider);
                 shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(radar, possibleVideos);
-            }
+        }
+        if (window.JST) {
+          return {
+              css: [],
+              js: [],
+              ready: radarStart
+          }
+        }
+        return {
+                css: ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
+                js: [
+                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
+                   ],
+            jqpath: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
+            ready: radarStart
         }
     }
 }
 
-function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)}; 
+function fullFunc(a){function d(b,g){if(b.length===0){a.ready();return false}g.getScript(b[0],function(){d(b.slice(1))})}function e(b,g){g.each(b,function(c,f){g("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;;c.onload=function(){var g=jQuery.noConflict(); e(a.css,g);d(a.js,g)};document.body.appendChild(c)})(a.jqpath)}; 
 
 var loadBookmarklet = function(useUrl, useProvider) {
   shelbyBookmarklet.shelbyInit(shelbyBookmarklet.shelbyOpts, useUrl, useProvider);
@@ -921,5 +927,6 @@ var loadBookmarklet = function(useUrl, useProvider) {
         shelbyJ('.<%=@prefix%>ext-elements').remove()
         return pushState.apply(history, arguments);
     }
-  })(window.history);
+})(window.history);
+
 loadBookmarklet(false);
