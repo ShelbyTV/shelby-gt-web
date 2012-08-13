@@ -46,21 +46,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   initialize : function() {
     this._setupTeardownModelBindings(this.model, true);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
-    shelby.models.queuedVideos.get('queued_videos').bind('add', this._onQueuedVideosAdd, this);
   },
 
   _cleanup : function(){
     this._setupTeardownModelBindings(this.model, false);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
-    shelby.models.queuedVideos.get('queued_videos').unbind('add', this._onQueuedVideosAdd, this);
   },
 
   _onQueuedVideosAdd : function(video){
     if (!this.model) return false;
-    // we wanna make sure that this frames vid is the one being added
-    if (this.model.get('frames').at(0).get('video').id !== video.id) return false;
-    this._saveToWatchLater();
-    this._toggleQueueButton(true);
+    var frameVideo = this.model.get('frames').at(0).get('video');
+    // this video is the one being added && this video aint already in the queue 
+    if (frameVideo.id == video.id){
+      this._saveToWatchLater();
+    }
   },
 
   _toggleQueueButton : function(add){
@@ -83,6 +82,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
     model[action]('change', this.render, this);
+    shelby.models.queuedVideos.get('queued_videos')[action]('add', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.get('queued_videos')[action]('add', this.render, this);
   },
 
   render : function(){
@@ -130,16 +131,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onClickQueue : function(){
-    if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('frames').at(0).get('video'))){
-      //remove
-    } else {
-      //add
-      shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
-    }
+    shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
   },
 
   _saveToWatchLater : function(){
-    console.log('SAVING THIS BITCH');
     var self = this;
     // save to watch later, passing a callback that will add the saved-indicator
     // to the frame thumbnail when the save returns succsessfully

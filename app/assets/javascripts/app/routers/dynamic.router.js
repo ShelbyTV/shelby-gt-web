@@ -63,6 +63,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
     // default options
+    this._fetchQueuedVideos();
     var defaultOnRollFetch = null;
     if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
@@ -156,7 +157,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _fetchQueuedVideos : function() {
-      shelby.models.queuedVideos.fetch();
+    if (shelby.models.queuedVideos.get('queued_videos').length) return false;
+    shelby.models.queuedVideos.fetch();
   },
 
   _fetchDashboard : function(options) {

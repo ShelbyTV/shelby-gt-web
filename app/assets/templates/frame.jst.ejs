@@ -130,7 +130,7 @@
       <!--<li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">-->
       <li class="frame-controls-queue js-upvote-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          Add to <br>Queue
+          <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'Queued' : 'Add to<br>Queue' %>
         </button>
       </li>
       
