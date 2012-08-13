@@ -63,24 +63,20 @@ $animate-timing: ease-in-out !default;
 $animate-delay: 0s !default;
 
 //--- FONT SETUP
+$font-size           : 13px;//eventually make so that this is 100% and calculate everything by em's
+
 $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 
 $font-color          : #333;
 $font-color-display  : $font-color;
 
-$font-size           : 13px;
-
-$size                : "62.5%" !default;
-$button-size         : large !default; 		//see @mixin x-button-primer()
-$button-back         : normal !default; 	//see @mixin x-button-primer()
-
+$size                : "62.5%" !default;  //again, this should be 100% eventually.
 
 //--- BORDER RADIUS
 $radius        : 5px;
 $button-radius : $radius - 1;
 $input-radius  : $radius - 2;
-$roundies-type : normal !default;  //see @mixin roundies()
 
 //--- MARGINS, PADDINGS, and WIDTHS 
 $unit           : 10px;
@@ -91,8 +87,8 @@ $margin         : 0.5em;
 $header-height : $unit * 3.5; 
 $guide-width   : $unit * 33;
 
-
 //--- COLORS
+$highlight : rgba(255,255,255,.3) !default;
 $outline : #222;
 $inset   : #000;
 $outset  : #484b4d;
@@ -100,16 +96,10 @@ $outset  : #484b4d;
 $rolls-inset : #333; //possibly obselete after new rolling pages are done
 $rolls-outset : #555; //possibly obselete after new rolling pages are done
 
-//border styles
-$frame-stroke : 1px solid $outline;
-
 //text-level colors
-$button-color  : #efefef;
-$button-color-light: #333;
-$text          : #dcddde;
-$headerNavLink : #d8d8d8;
-
-$base-bg-color                      : #494949;
+$button-color       : #efefef;
+$button-color-light : #333;
+$text               : #dcddde;
 
 $guide-bg-color 				            : #232526;
 $guide-presentation-bg-color        : #2f3233;
@@ -118,26 +108,17 @@ $guide-presentation-tab-bg-selected : #111;
 
 $guide-explore-bg                   : #e2e2e2;
 
-//item, eee
-//hover bebebe
-//line adadad
-//type 333
-
 $list-module-spacing                : 1em;
 $list-module-bg                     : #e2e2e2;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
-$header-bg-color                    : #2c2c2c;
 $header-outline                     : #202020;
-
-$filter-bg-color			              : #585858;
 
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
-
 
 $video-card-color                   : #404040;
 $video-card-outline                 : #222;
@@ -146,13 +127,8 @@ $video-card-thumbnail               : #494949;
 $video-controls-progress-load       : #303030;
 $video-player 											: #0e0e0e;
 
-$rolling-header-bg-color            : #555;
-$rolls-bg-color 			              : #585858;
 $rolls-people-outset                : #2E2F30;
 $toggle-switch-gray                 : #fefefe;
-
-$settingsBG : #2b2a2a;
-$rollsBG    : #585858;
 
 //--- COLORS: shelby 
 $shelby-blue       : #0071a3;
@@ -169,18 +145,7 @@ $facebook-blue     : #013e80;
 $twitter-blue      : #2CAAE1;
 $tumblr-blue       : #2f445b;
 
-$facebook-color    : $facebook-blue;
-$twitter-color     : $twitter-blue;
-$tumblr-color      : $tumblr-blue;
-
 
 //--- COLORS: buttons
 $button-default-color: #eee;
-
-
 $networks-unselected : #474747;
-
-$highlight-amount : 25% !default; 
-
-$bottom-color: #4e5354 !default;
-$bottom-color-adjust: 20% !default;
