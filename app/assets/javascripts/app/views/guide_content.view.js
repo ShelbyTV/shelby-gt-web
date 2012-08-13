@@ -97,11 +97,7 @@
           var binarySearchOffset, sourceModel, listItemView;
           binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
           sourceModel = shelby.models.rollFollowings;
-          if (this.model.get('rollListContent') == contentRollsEnum.people) {
-            listItemView = 'RollItemPeopleView';
-          } else {
-            listItemView = 'RollItemRollView';
-          }
+          listItemView = 'RollItemRollView';
           var shouldFetch = true;
           displayParams = {
             viewProto : RollListView,

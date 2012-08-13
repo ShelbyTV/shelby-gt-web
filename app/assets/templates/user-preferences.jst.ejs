@@ -27,7 +27,36 @@
 					Save
 				</button>
 			</fieldset>
-		</fieldset>
+		</fieldset><!-- /Your Profile -->
+		
+		<fieldset>
+			<legend>
+				<a href="#" id="show-change-password">Change Password</a>
+			</legend>
+			<fieldset id="you-preferences-change-password">
+				<ul class="you-preferences-list you-profile">
+					<li class="clearfix">
+						<label for="you-preferences-password">
+							Password
+						</label>
+						<input id="you-preferences-password" name="you-preferences-password" type="password" />
+					</li>
+					<li class="clearfix">
+						<label for="you-preferences-password-confirmation">
+							Confirm
+						</label>
+						<input id="you-preferences-password-confirmation" name="you-preferences-password-confirmation" type="password" />
+					</li>
+				</ul>
+				<fieldset class="you-profile-actions">
+					<span id="security-response-message" class="js-security-response-message you-profile-response"></span>	
+					<button class="js-user-password-save" type="button">
+						Change Password
+					</button>
+				</fieldset>
+			</fieldset>
+		</fieldset><!-- /Password -->
+		
 		<fieldset>
 			<legend>
 				Connect
@@ -79,7 +108,8 @@
 					</li>
 				<% } %>
 			</ul>
-		</fieldset>
+		</fieldset><!-- /Connect -->
+		
 		<fieldset>
 			<legend>
 				Email Notifications
@@ -128,6 +158,7 @@
 					<span></span>
 				</li>
 			</ul>
-		</fieldset>
+		</fieldset><!-- /Email Notifications -->
+		
 	</form>	
 </section>

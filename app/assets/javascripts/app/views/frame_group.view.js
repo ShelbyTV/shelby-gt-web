@@ -173,6 +173,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
+    
+    if (libs.shelbyGT.viewHelpers.roll.isFaux(this.model.get('frames').at(0).get('roll'))){
+      //not showing personal rolls for faux users
+      return;
+    }
 
     var creator = this.model.get('frames').at(0).get('creator');
 
@@ -187,6 +192,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
+    
+    if (libs.shelbyGT.viewHelpers.roll.isFaux(this.model.get('frames').at(0).get('roll'))){
+      //not showing personal rolls for faux users
+      return;
+    }
+    
     if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
       shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     } else {

@@ -14,7 +14,10 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_watch_later){
       return "Queue";
     }
-		else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public){
+		else if(
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
 			return "Personal Roll";
     } 
 		else {
@@ -24,7 +27,10 @@ libs.shelbyGT.viewHelpers.roll = {
 	},
 	
 	urlForRoll : function(roll){
-		if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public){
+		if(
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
 			return roll.get('subdomain') + '.shelby.tv';
     } else {
 			return null;
@@ -41,10 +47,19 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')){
       return roll.get('subdomain') + '.shelby.tv';
 		} 
-		else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public){
+		else if(
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded){
 			return "Personal Roll";
     } else {
       return roll.get('title');
     }
+  },
+  
+  isFaux : function(roll){
+    return roll && 
+    (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+     roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll);
   }
 };

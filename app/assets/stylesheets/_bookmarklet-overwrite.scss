@@ -18,14 +18,43 @@
   vertical-align: middle;
 }
 
+.frame-creator{
+  height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
 .frame-creator-avatar{
-  height: 45px;
-  width:45px;
+  height: 100%;
+  width: 100%;
 }
 
 .frame-conversation-message-block {
   font-size: 13px;
 }
+
+//NOTIFICATION
+.shelby-notify {
+  background-color: #eee;
+  background-image: url('/images/assets/shelby_mark.svg');
+  background-position: 50% -7px;
+  background-size: 30px 40px;
+  background-repeat: no-repeat;
+  border: 1px solid #adadad;
+  color: #333;
+  font-size: 11px;
+  font-weight: 300;
+  height: 40px;
+  left: 30px;
+  line-height: 5.5em;
+  position: fixed;
+  text-align: center;
+  top: 30px;
+  width: 102px;
+  z-index: 2147483647;
+}
+
 
 //ROLLS
 
@@ -108,19 +137,6 @@
     
 }
 
-.video-card-header {
-  height: 45px;
-}
-
-.embedded-header {
-  background-color: #35383A;
-  border-radius: 5px 5px 0 0;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
-  z-index: 2147483645;
-}
-
 .frame-exists {
   .frame-logo:before {
     content: "Seen on";
@@ -129,25 +145,54 @@
   }
 }
 
-.embedded-footer {
-  background-color: #35383A;
-  border-radius: 0 0 5px 5px;
-  font-size: 13px;
-  position: absolute;
-  z-index: 2147483645;
+.bookmarklet-button {
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 300;
+  color: #333;
+  text-align: center;
+  background-color: #EEE;
+  border: 1px solid #adadad;
 }
+
+.bookmarklet-video-tab {
+  height: 300px;
+  overflow: hidden;
+  position: absolute;
+  width: 50px;
+  z-index: 2147483646;
+}
+
+
+.embedded-buttons {
+  border-radius: 0;
+  list-style-type: none;
+  margin: 0 0 0 100%;
+  padding-bottom: 30px;
+  width: inherit;
+
+  li {
+    background-color: #EEE;
+    height: 31px;
+  }
+
+  &.buttons-animate{
+    @include transition-property('margin-left');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+
+  &.buttons-show {
+    margin-left: 0;
+  }
+}
+
 
 .frame-title {
   width:50%;
 }
-
-/*
-.guide-overlay-title {
-  background-image: url("../../images/assets/mark.png");
-  background-position: 15px 50%;
-  background-repeat: no-repeat;
-  background-size: 38px;
-}*/
 
 .gate-networks-twitter,
 .gate-networks-facebook{
