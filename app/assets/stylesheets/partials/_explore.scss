@@ -67,10 +67,16 @@
 }
 
 .explore-command {
-  @include xx-button-primer($x-primer-color, $primer-tone,explore-rolls);
+  @include xx-button-primer($x-primer-color, $primer-tone, explore-rolls);
 
   float:right;
   margin: 0 .25em 0 .75em;
+
+  &.command-active {
+    //state for the follow/unfollow button,
+    //if other modes/states arise this classname probably won't cut it
+    @include xx-button-primer($shelby-blue, dark, explore-rolls);
+  }
 }
 
 .explore-roll-list {
@@ -80,6 +86,12 @@
 .explore-roll-item {
   float: left;
   width: 33.333333%;
+
+  &:hover {
+    .explore-frame-menu {
+      display: block;
+    }
+  }
 }
 
 .explore-frame {
@@ -87,10 +99,10 @@
   height: 200px;
   margin: 10px;
   position: relative;
-//  width: 100%;
 }
 
 .explore-frame-menu {
+  display: none;
   left: 0;
   position: absolute;
   top: 0;
@@ -110,12 +122,25 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  display: block;
   height: 160px;
   position: relative;
   width: 100%;
 
   & > img {
 
+  }
+}
+
+.explore-frame-link {
+  &:link,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 

@@ -164,7 +164,7 @@ $primer-button-context : generic !default;
 	padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
 
 //@include font-primer(inputfont); 
-//not convinced font-primer() mix-in is a good idea anymore. 
+//not convinced font-primer() mix-in is a good idea anymore.
 //instead spec out each property...
 //only style font-family, color, weight in mixin
 //determine size in the actual class.
@@ -176,7 +176,7 @@ $primer-button-context : generic !default;
 		color: $button-color-light;
 	} @else {
 		color: $button-color;
-		text-shadow: 1px 1px 1px red;
+		text-shadow: 0px 1px 0px #333;
 	}
 }
 
