@@ -177,9 +177,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
 
   _togglePlayback : function(){
-    var _newPlaybackStatus = (this._userDesires.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
-    this._userDesires.unset('playbackStatus');
-    this._userDesires.set('playbackStatus', _newPlaybackStatus);
+    var activePlayerState = this._playbackState.get('activePlayerState');
+    if (activePlayerState) {
+      var _newPlaybackStatus = (activePlayerState.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
+      this._userDesires.set('playbackStatus', _newPlaybackStatus);
+      this._userDesires.set('playbackStatus', null);
+    }
   },
 
   _onUserDesiresMuteChange : function(){
