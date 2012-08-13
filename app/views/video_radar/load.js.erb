@@ -431,7 +431,6 @@ window.shelbyBookmarklet = {
                           function(response) {
                             alert("roll success");
                             utilObject.videoInformation[videoId].frame = response.result;
-                            utilObject.htmlTemplate.adjustFrameContext(frameContextClass, false);
                           });
                     });
                 },
