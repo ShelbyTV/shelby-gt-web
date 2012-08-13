@@ -10,7 +10,6 @@
     events : {
       "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
       "click .js-queue:not(.guide-presentation-content-selected)"   : "_goToQueue",
-      "click .js-people:not(.guide-presentation-content-selected)"   : "_filterPeople",
       "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
       "click .js-browse:not(.guide-presentation-content-selected)"   : "_browseRolls"
     },
