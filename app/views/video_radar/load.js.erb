@@ -432,7 +432,7 @@ window.shelbyBookmarklet = {
                           utilObject.shelbyBkmkltUser.watch_later_roll_id, 
                           "", 
                           function(response) {
-                            alert("roll success");
+                            utilObject.htmlTemplate.notifyQueued();
                             utilObject.videoInformation[videoId].frame = response.result;
                           });
                     });
@@ -727,13 +727,20 @@ window.shelbyBookmarklet = {
                 },
     
                 notifyFoundVids: function(numVids) {
-
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids}));
                         setTimeout(function() {
                               shelbyJ('.shelby-notify').remove();
                             }, 2000)
                         
                 },
+                
+                notifyQueued: function() {
+                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
+                        setTimeout(function() {
+                              shelbyJ('.notify-window').remove();
+                        }, 2000)
+                },
+                        
 
                 rollingFormHtml: function (personalRoll, backboneFrame) {
                         var backboneRoll = utilObject.shelbyCreateModel(personalRoll);    
