@@ -713,11 +713,13 @@ window.shelbyBookmarklet = {
                     frameContext.addClass("buttons-show").addClass("buttons-animate");
                     var videoId = frameContext.attr("data-videoId")
                     var frameContextContent = JST['bookmarklet-context-content']({frame: frame, videoId: videoId});
-                    shelbyJ(".frame-context-image-" + videoId).html(frameContextContent);
-                    shelbyJ(".frame-context-image-" + videoId).click("on",
+                    shelbyJ(".frame-avatar-listitem-" + videoId).html(frameContextContent);
+                    shelbyJ(".frame-context-image-" + videoId).off("click");
+                    shelbyJ(".frame-context-image-" + videoId).on("click",
                                                   function() {
-                                                    window.open(creatorUrl)
-                                                    });
+                                                      console.log("hello");  
+                                                      window.open(creatorUrl)
+                                                  });
                     frameContext.attr("data-conversationid", frame.conversation_id);
                     frameContext.attr("data-frameclass", frame.id);
                     frameContext.attr("data-nickname", frame.creator.nickname);
