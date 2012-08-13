@@ -55,6 +55,30 @@
   z-index: 2147483647;
 }
 
+//LOGIN
+.bookmarklet-login-twitter .bookmarklet-login-facebook {
+  border-radius: 3px;
+  display: block;
+  float: left;
+  font: 0/0 a;
+  height: 40px;
+  margin: 20px;
+  padding: 0 3x 0 20px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  width: 165px;
+}
+
+.bookmarklet-login-twitter {  
+  @include x-logged-out-networks-buttons($twitter-blue);
+  background-size: 11%;
+}
+
+.bookmarklet-login-facebook {
+  @include x-logged-out-networks-buttons($facebook-blue);
+  background-size: 4%;
+}
 
 //ROLLS
 
@@ -171,8 +195,17 @@
   margin: 0 0 0 100%;
   padding-bottom: 30px;
   width: inherit;
-
   li {
+    .all-roll {
+      background-image: url("/images/assets/video_roll_off.svg");
+      &:hover {
+        background-image: url("/images/assets/video_roll_on.svg");
+      }
+      background-size: 10px 10px;
+      background-repeat: no-repeat;
+      background-position: 0 50%;
+    }
+
     background-color: #EEE;
     height: 31px;
   }
