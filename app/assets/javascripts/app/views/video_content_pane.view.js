@@ -1,22 +1,13 @@
-libs.shelbyGT.ContentPaneView = Support.CompositeView.extend({
+libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
-  el: '.content_lining',
+  el: '.js-main-layout .content_lining',
 
   options : {
     userDesires : null
   },
 
-	initialize : function() {
-    this.model.bind('change:displayState', this._onChangeDisplayState, this);
-    this.render();
-  },
-
-  _cleanup : function(){
-    this.model.unbind('change:displayState', this._onChangeDisplayState, this);
-  },
-
   template : function(obj){
-      return JST['content-pane'](obj);
+      return JST['video-content-pane'](obj);
   },
 
   render : function(){
@@ -45,18 +36,6 @@ libs.shelbyGT.ContentPaneView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.MiniVideoProgress({
       playbackState : shelby.models.playbackState
     }));
-  },
-
-  _onChangeDisplayState : function(guideModel, displayState) {
-    if (displayState == libs.shelbyGT.DisplayState.explore) {
-      this.$('.explore').show();
-      //pause the video player when obscuring it
-      this.options.userDesires.set('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
-      this.$('.videoplayer').hide();
-    } else {
-      this.$('.explore').hide();
-      this.$('.videoplayer').show();
-    }
   }
 
 });

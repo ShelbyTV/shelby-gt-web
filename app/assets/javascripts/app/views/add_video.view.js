@@ -14,8 +14,6 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change:displayState', this._updateVisibility, this);
     this.model.bind('change:currentRollModel', this._updateHeaderView, this);
-    
-    this.render();
   },
 
   _cleanup : function(){

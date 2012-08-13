@@ -29,8 +29,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this._shareRollViewState = new libs.shelbyGT.ShareRollViewStateModel();
     this._shareRollViewState.bind('change:visible', this._onUpdateShareRollViewVisibility, this);
     shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateJoinButton, this);
-    
-    this.render();
   },
 
   _cleanup : function(){

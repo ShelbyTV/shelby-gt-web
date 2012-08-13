@@ -54,6 +54,10 @@ a{
 	right: 0;
 	top: 0;
 	width: 100%;
+
+	&.explore-layout {
+		display: none;
+	}
 }
 
 .content_lining {
@@ -93,9 +97,11 @@ a{
 	}
 }
 
-.user-inactive {
-	.guide-wrapper{
-	  opacity: .5;
+.user-inactive{
+	.main-layout{
+		.guide-wrapper{
+		  opacity: .5;
+		}
 	}
 }
 

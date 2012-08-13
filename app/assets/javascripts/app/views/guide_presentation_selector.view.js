@@ -22,7 +22,6 @@
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChanged, this);
-      this.render();
     },
 
     _cleanup : function(){

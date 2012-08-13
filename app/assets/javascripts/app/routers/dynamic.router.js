@@ -362,18 +362,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
     this._setupAnonUserViews(options);
-    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    //shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
-    shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
-    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide, viewState:new libs.shelbyGT.RollActionMenuViewStateModel()});
-    shelby.views.addVideo = shelby.views.addVideo || new libs.shelbyGT.addVideoView({model:shelby.models.guide});
     //--------------------------------------//
-    shelby.views.guide = shelby.views.guide ||
-        new libs.shelbyGT.GuideView({model:shelby.models.guide});
+    shelby.views.layoutSwticher = shelby.views.layoutSwticher ||
+        new libs.shelbyGT.LayoutSwitcherView({model:shelby.models.guide, userDesires:shelby.models.userDesires});
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.guide'});
-    shelby.views.contentPane = shelby.views.contentPane ||
-      new libs.shelbyGT.ContentPaneView({model:shelby.models.guide, userDesires:shelby.models.userDesires});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
