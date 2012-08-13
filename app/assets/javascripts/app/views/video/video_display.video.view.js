@@ -86,7 +86,6 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
       //if bootstrapping, player *may* be in autoplay mode, but is not required to be
       //when not bootstrapping/autplaying, this is the only way video is set & played
       this._curView.playVideo(video);
-      this._userDesires.set('playbackStatus', libs.shelbyGT.PlaybackStatus.playing, {silent:true});
     }
 
   },
