@@ -31,8 +31,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   },
 
-  tagName : 'li',
-
   className : 'frame',
 
   template : function(obj){
