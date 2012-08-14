@@ -125,8 +125,7 @@
         shelby.track('watched in full', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: '100', userName: shelby.models.user.get('nickname')});
         return false;
       }
-      
-      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD && !this._markedAsWatched) {
+      else if (!this._markedAsWatched && _pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
         shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
         return false;
