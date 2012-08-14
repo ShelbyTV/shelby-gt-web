@@ -126,7 +126,7 @@
         return false;
       }
       
-      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
+      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD && !this._markedAsWatched) {
         shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
         return false;
