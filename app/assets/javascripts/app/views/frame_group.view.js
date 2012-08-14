@@ -217,13 +217,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return;
     }
     
-    if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
-      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
-    } else {
-      // if the frame is on the heart roll we actually want to go the roll
-      // that this frame was hearted FROM
+    if (this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id')) ||
+        this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('watch_later_roll_id'))) {
+      // if the frame is on the heart or queue roll we actually want to go to the roll
+      // that this frame was hearted or queued FROM
       var ancestorId = _(this.model.get('frames').at(0).get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
+    } else {
+      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     }
   },
   
