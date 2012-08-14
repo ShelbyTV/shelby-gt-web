@@ -9,6 +9,7 @@
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+<% var frameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
 <% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
   <% if(!contextOverlay){ %>
@@ -47,15 +48,17 @@
             </h1>
           </a>
 
-          <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard || frameIsOnHeartedRoll) { %>
+          <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+             frameIsOnHeartedRoll ||
+             frameIsOnWatchLaterRoll) { %>
             <a onclick="return false;" class="js-frame-source js-track-event no-faux-link" data-ga_category="Frame" data-ga_action="Click frame source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
               <h3 class="frame-creator-roll<%= suffix %>">
-                <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+                <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
               </h3>
             </a>
           <% } else { %>
             <h3 class="frame-creator-roll<%= suffix %>">
-              <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+              <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
             </h3>
           <% } %>
         </div>
@@ -86,7 +89,7 @@
           </h1>
 
           <h3 class="frame-creator-roll">
-            <%= frameIsOnHeartedRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
+            <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
           </h3>
         </div>
       </header>
@@ -162,6 +165,7 @@
       <% var dupeCreator = dupeFrame.get('creator') %>
       <% var dupeCreatorNickname = dupeCreator ? dupeCreator.get('nickname') : "" %>
       <% var dupeFrameIsOnHeartedRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+      <% var dupeFrameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
       <% var linkText = "" %>
       
       <% if (dupeFrame.get('roll') && $.inArray(dupeFrame.get('roll').get('id'), dupeFrameRollIds) != -1) { %>
@@ -170,7 +174,9 @@
 
       <% if (dupeFrameIsOnHeartedRoll && dupeCreatorNickname != "") { %>
          <% linkText = dupeCreatorNickname + "'s Likes" %>
-      <% } else if (!dupeFrameIsOnHeartedRoll && dupeFrame.get('roll')) { %>
+      <% } else if (dupeFrameIsOnWatchLaterRoll && dupeCreatorNickname != "") { %>
+        <% linkText = dupeCreatorNickname + "'s Queue" %>
+      <% } else if (!dupeFrameIsOnHeartedRoll && !dupeFrameIsOnWatchLaterRoll && dupeFrame.get('roll')) { %>
          <% linkText = dupeFrame.get('roll').get('title') %>
       <% } else { %>
          <% continue; %>
