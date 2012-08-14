@@ -120,9 +120,8 @@
     trackWatchedEvent : function(currentTime){
       var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
       var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
-      
       if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
-        shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
+        shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
       }
     },

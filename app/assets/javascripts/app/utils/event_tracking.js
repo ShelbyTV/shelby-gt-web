@@ -55,6 +55,9 @@ _(shelby).extend({
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
           _action = 'watched'; _category = 'Frame'; _label = options.pctWatched;
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
+          
+          // extra watch event tracking to capture frame and roll popularity
+          _gaq.push(['_trackEvent', "Watched", options.rollId, options.frameId]);
         case 'watched in full':
           _action = 'watched in full'; _category = 'Frame'; _label = 100;
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
