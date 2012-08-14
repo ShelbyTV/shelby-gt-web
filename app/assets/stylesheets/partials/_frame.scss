@@ -415,7 +415,7 @@
 		display: block;
 		float: left;
 		list-style-type: none;
-		width: 25%;
+		width: 33.333333%;
 
 		&:first-child {
 			button {
@@ -437,7 +437,9 @@
 		border-left: 1px solid adjust-lightness($outset, 5%);
 		border-right: 1px solid $inset;
 		border-top: 1px solid adjust-lightness($outset, 5%);
+		color: #efefef;
 		display: block;
+		font-weight: 300;
 		height: 42px;
 		width: 100%;
 	}
@@ -484,7 +486,6 @@
 	}
 }
 
-.frame-controls-like i,
 .frame-controls-comments i,
 .frame-controls-roll button,
 .frame-controls-share button{
@@ -492,20 +493,13 @@
 	background-repeat: no-repeat;
 }
 
-.frame-controls-like {
-	i{
-		background-image: url($icon-videocard-like-off);
-		background-position: left 0;
-		color: #efefef;
-		font-style: normal;
-		padding-bottom: 2px;
-		padding-left: 19px;
+.frame-controls-queue {
+	button {
+		font-size: 11px;
 	}
 	&.upvoted,
 	&:hover {
-		i {
-			background-image: url($icon-videocard-like-on);
-		}
+		color: $shelby-red;
 	}
 }
 
@@ -535,19 +529,6 @@
 	&:hover {
 		button {
 			background-image: url($icon-videocard-roll-on);
-		}
-	}
-}
-
-.frame-controls-share {
-	button {
-		@include notype;
-		background-image:url($icon-videocard-share-off);
-		background-position: center 45%;
-	}
-	&:hover {
-		button {
-			background-image:url($icon-videocard-share-on);		
 		}
 	}
 }

@@ -23,10 +23,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
-    "click .js-save-frame"                  : "_saveToWatchLater",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-upvote-frame"                : "_upvote",
+    "click .js-upvote-frame"                : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
 
@@ -54,6 +53,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
+  _onQueuedVideosAdd : function(video){
+    if (!this.model) return false;
+    var frameVideo = this.model.get('frames').at(0).get('video');
+    // this video is the one being added && this video aint already in the queue 
+    if (frameVideo.id == video.id){
+      this._saveToWatchLater();
+    }
+  },
+
+  _toggleQueueButton : function(add){
+    var fn = add ? 'addClass' : 'removeClass'; 
+    this.$('.js-upvote-frame')[fn]('upvoted'); 
+  },
+
   _setupTeardownModelBindings : function(model, bind) {
     var action;
     if (bind) {
@@ -69,6 +82,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
     model[action]('change', this.render, this);
+    shelby.models.queuedVideos.get('queued_videos')[action]('add', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.get('queued_videos')[action]('add', this.render, this);
   },
 
   render : function(){
@@ -76,7 +91,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
 
     var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+    this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
     libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
@@ -113,6 +128,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   requestFrameRollView : function(){
     this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
+  },
+
+  _onClickQueue : function(){
+    shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
   },
 
   _saveToWatchLater : function(){
@@ -198,13 +217,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return;
     }
     
-    if (!this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id'))) {
-      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
-    } else {
-      // if the frame is on the heart roll we actually want to go the roll
-      // that this frame was hearted FROM
+    if (this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('heart_roll_id')) ||
+        this.model.get('frames').at(0).isOnRoll(shelby.models.user.get('watch_later_roll_id'))) {
+      // if the frame is on the heart or queue roll we actually want to go to the roll
+      // that this frame was hearted or queued FROM
       var ancestorId = _(this.model.get('frames').at(0).get('frame_ancestors')).last();
       shelby.router.navigate('rollFromFrame/' + ancestorId, {trigger:true});
+    } else {
+      shelby.router.navigateToRoll(this.model.get('frames').at(0).get('roll'), {trigger:true});
     }
   },
   

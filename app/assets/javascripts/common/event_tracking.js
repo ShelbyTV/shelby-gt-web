@@ -7,6 +7,8 @@
 $(document).ready(function(){
 	$('.js-track-event').on('click', function(e){
     
+    if (shelby.track) { return; }
+    
 	  var action = $(e.currentTarget).data("ga_action");
 	  var category = $(e.currentTarget).data("ga_category");
 	  var label = $(e.currentTarget).data("ga_label");

@@ -1,6 +1,5 @@
 describe("ShareFrameView", function() {
   beforeEach(function() {
-    shelby = {};
     this.frame = BackboneFactory.create('frame');
     this.guideOverlayModel = new libs.shelbyGT.GuideOverlayModel();
     this.shareModel = new Backbone.Model({destination:['twitter']});
@@ -9,10 +8,6 @@ describe("ShareFrameView", function() {
       guideOverlayModel : this.guideOverlayModel,
       frame: this.frame
     });
-  });
-
-  afterEach(function() {
-    delete shelby;
   });
 
   describe("Instantiation", function() {
@@ -25,11 +20,9 @@ describe("ShareFrameView", function() {
 
     describe("onShareSuccess", function() {
       it("should update guide overlay state to hide guide overlays", function() {
-        shelby = {
-          track : function(){},
-          models : {
+        shelby.track = function(){};
+        shelby.models = {
             user : new Backbone.Model()
-          }
         };
         this.guideOverlayModel.set({
           activeGuideOverlayType : 'something',

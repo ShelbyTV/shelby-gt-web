@@ -20,12 +20,15 @@ describe("FrameConversationView", function() {
   });
 
   beforeEach(function() {
-    sinon.stub(this.view, 'template').returns('<div class="back"></div>');
+    sinon.stub(this.view, 'render', function() {
+      this.$el.html('<div class="back"></div>');
+      return this.el;
+    });
     this.view.render();
   });
 
   afterEach(function() {
-    this.view.template.restore();
+    this.view.render.restore();
   });
 
   describe("Events", function() {
