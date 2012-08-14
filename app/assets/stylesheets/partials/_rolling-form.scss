@@ -24,7 +24,7 @@ fieldset.rolling-fields {
 
 		.path {
 			@include ellipsis();
-			display: inline-block;
+			display: inline;
 			max-width: 125px;
 		}
 		input#new-roll-name {
