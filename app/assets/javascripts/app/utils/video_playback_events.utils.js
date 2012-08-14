@@ -119,16 +119,17 @@
 
     trackWatchEvent : function(completeWatch, currentTime){
       var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
+      var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
       
-      if (completeWatch && !this._markedAsWatched) {
+      if (completeWatch) {
         shelby.track('watched in full', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: '100', userName: shelby.models.user.get('nickname')});
-        this._markedAsWatched = true;
+        return false;
       }
       
-      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD && !this._markedAsWatched) {
-        var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
+      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
         shelby.track('watched', {frameId: this._currentFrame.id, videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
+        return false;
       }
     }
   };
