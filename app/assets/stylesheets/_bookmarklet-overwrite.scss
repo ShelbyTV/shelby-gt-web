@@ -82,14 +82,14 @@
   background-image: url("/images/assets/clock.png");
   background-position: 50% 0%;
   background-repeat: no-repeat;
-  background-size: 77%;
+  background-size: 50%;
   height:100px;
   left: 50%;
-  line-height: 10;
+  line-height: 12;
   position: absolute;
   text-align: center;
   top: 50%;
-  width: 80px;
+  width: 150px;
 }
 
 //LOGIN
@@ -208,7 +208,19 @@
   z-index: 2147483646;
 }
 
+
 .queue-button-content {
+  &:before {
+      content: "Queue"
+  }
+  &.queued {
+    background-position: 3px 2px;
+    padding-left: 15px;
+
+    &:before {
+      content: "Queued"
+    }
+  }
   background-image: url("/images/assets/clock.png");
   background-position: 5px 2px;
   background-repeat:no-repeat;

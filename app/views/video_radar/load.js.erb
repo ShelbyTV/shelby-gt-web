@@ -270,7 +270,21 @@ window.shelbyBookmarklet = {
                         success: function (response) {
                             roll = response.result;
                             utilObject.shelbyBkmkltUser.personalRoll = roll;
-                            utilObject.sendVidsToShelby(utilObject.foundVideo);
+                            shelbyJ.ajax({
+                              type: "GET",
+                              url: "http://<%= Settings::VideoRadar.api_domain%>/v1/video/queued/",
+                              dataType: "jsonp",
+                              data: {},
+                              async: true,
+                              xhrFields: {
+                                withCredentials: true
+                              },
+                              crossDomain: true,
+                              success: function (response) {
+                                utilObject.queuedVideos = response.result;
+                                utilObject.sendVidsToShelby(utilObject.foundVideo);
+                              }
+                            });
                         }
                     });
 
@@ -409,7 +423,16 @@ window.shelbyBookmarklet = {
                                     },
                                     crossDomain : true,
                                     success: function (response) {
+                                      var vidShelbyId = response.result.id;
                                       utilObject.videoInformation[videoId].video = response.result;
+                                      var queuedVids = utilObject.queuedVideos;
+                                      for (var i = 0; i < queuedVids.length; i++) {
+                                        var queuedVid = queuedVids[i];
+                                        if (queuedVid.id === vidShelbyId) {
+                                          shelbyJ(".button-" + videoId + " .queue-button-content").addClass("queued");
+                                          break;
+                                        }
+                                      }
                                     }
                                 });
                         };
@@ -432,6 +455,7 @@ window.shelbyBookmarklet = {
                           utilObject.shelbyBkmkltUser.watch_later_roll_id, 
                           "", 
                           function(response) {
+                            shelbyJ(".queue-button-content").addClass("queued");
                             utilObject.htmlTemplate.notifyQueued();
                             utilObject.videoInformation[videoId].frame = response.result;
                           });
