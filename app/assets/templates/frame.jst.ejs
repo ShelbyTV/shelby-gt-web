@@ -4,6 +4,7 @@
 <% var creatorNickname = creator ? creator.get('nickname') : "" %>
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var frameTitle = frame.get('video').get('title') %>
+<% var frameVideo = frame.get('video') %>
 <% var frameRoll = frame.get('roll').get('title') %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
@@ -127,13 +128,13 @@
       <!-- /hearts -->
       <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
-      <li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">
+      <!--<li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">-->
+      <li class="frame-controls-queue js-upvote-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click upvote" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          <i class="js-upvote-frame-lining">
-            <%= frame.get('upvoters').length %>
-          </i>
+          <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'Queued' : 'Add to<br>Queue' %>
         </button>
       </li>
+      
       <li class="frame-controls-comments">
         <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <i class="comments-frame-lining">
@@ -141,17 +142,12 @@
           </i>
         </button>
       </li>
+
       <li class="frame-controls-roll js-roll-frame">
         <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           Roll it
         </button>
       </li>
-      <li class="frame-controls-share js-share-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          Share it
-        </button>
-      </li>
-
     </ul>
   
     <% } %><!-- end if(on_genius_roll) -->

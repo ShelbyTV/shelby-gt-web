@@ -118,6 +118,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+        case DisplayState.queue :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
@@ -173,6 +174,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+        case DisplayState.queue :
           this._currentRollView = this._listView;
           break;
       }

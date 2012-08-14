@@ -1,12 +1,4 @@
 describe("DynamicRouter", function() {
-  beforeEach(function() {
-    shelby = {};
-  });
-
-  afterEach(function() {
-    delete shelby;
-  });
-
   describe("Route definitions", function() {
     beforeEach(function() {
         // can't stub Backbone router functions directly - here's the workaround:
@@ -69,9 +61,7 @@ describe("DynamicRouter", function() {
 
     describe("displayFrameInRoll", function() {
       it("passes showCommentOverlay input option through to _setupRollViewWithCallback", function() {
-        shelby = {
-          userSignedIn : function(){return true;}
-        };
+        shelby.userSignedIn = function(){return true;};
         var callStub = sinon.stub(this.router, '_setupRollViewWithCallback');
         this.router.displayFrameInRoll('1', '2', null, {showCommentOverlay:true}, null);
         expect(callStub).toHaveBeenCalledWithExactly('1', '2', {showCommentOverlay:true, rerollSuccess:null}, null);
@@ -97,11 +87,9 @@ describe("DynamicRouter", function() {
         var frameModel = new Backbone.Model();
         var framesCollection = new Backbone.Collection();
         var rollModel = new Backbone.Model();
-        shelby = {
-          models : {
+        shelby.models = {
             guide : new Backbone.Model(),
             guideOverlay : new Backbone.Model()
-          }
         };
         sinon.stub(rollModel, 'get').withArgs('frames').returns(framesCollection);
         sinon.stub(framesCollection, 'get').withArgs(frameId).returns(frameModel);
