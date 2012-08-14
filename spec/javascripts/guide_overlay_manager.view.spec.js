@@ -32,11 +32,9 @@ describe("GuideOverlayManagerView", function() {
       this.rollFollowings = BackboneFactory.create('rollscollection');
       sinon.stub(this.rollFollowings, 'getRollModelById').returns(this.user.get('personalRoll'));
       
-      shelby = {
-        models : {
+      shelby.models = {
           rollFollowings : this.rollFollowings,
           user : this.user
-        }
       };
 
       this.FrameConversationViewStub = sinon.stub(libs.shelbyGT, 'FrameConversationView').returns(this.GuideOverlayViewStub);
