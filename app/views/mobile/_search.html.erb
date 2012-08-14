@@ -59,7 +59,13 @@
 				// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
 				$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
 					if (data.status == 200){
-						window.location = '<%= Settings::Application.url %>' + "/m/genius/" + data.result.id;
+						var _rollUrl = '<%= Settings::Application.url %>' + "/m/genius/" + data.result.id;
+						if (window.cache){
+							var _searchHistory = window.cache.get('searchHistory');
+							_searchHistory[search] = _rollUrl;
+							cache.set('searchHistory', _searchHistory);
+						}
+						window.location = _rollUrl;
 					}
 					else { alert("something went wrong."); }
 				});

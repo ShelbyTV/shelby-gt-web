@@ -1,5 +1,8 @@
 describe("FrameGroupView", function() {
   beforeEach(function() {
+    shelby.models = {
+      queuedVideos : new Backbone.Model({queued_videos:new Backbone.Collection()})
+    };
     this.frameGroupModel = BackboneFactory.create('frame_group');
     this.view = new libs.shelbyGT.FrameGroupView({
       model : this.frameGroupModel,

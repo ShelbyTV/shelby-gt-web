@@ -5,6 +5,7 @@ libs.shelbyGT.DisplayState = {
   legal : 'legal',
   none : 'none',
   rollList : 'rollList',
+  queue : 'queue',
   standardRoll : 'standardRoll',
   team : 'team',
   userPreferences : 'userPreferences',

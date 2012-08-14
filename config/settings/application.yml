@@ -6,8 +6,8 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  #url: "http://localhost.shelby.tv:3000"
-  url: "http://192.168.2.206:3000"
+  url: "http://localhost.shelby.tv:3000"
+  #url: "http://192.168.2.206:3000"
 test:
   <<: *defaults
 

@@ -9,6 +9,7 @@
     
     events : {
       "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
+      "click .js-queue:not(.guide-presentation-content-selected)"   : "_goToQueue",
       "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
       "click .js-explore:not(.guide-presentation-content-selected)"   : "_explore"
     },
@@ -34,6 +35,10 @@
     
     _goToStream : function(){
       shelby.router.navigate('stream', {trigger: true});
+    },
+
+    _goToQueue : function(){
+      shelby.router.navigate('queue', {trigger: true});
     },
     
     _filterMyRolls : function(){

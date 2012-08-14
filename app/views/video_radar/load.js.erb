@@ -308,9 +308,10 @@ window.shelbyBookmarklet = {
             getWidth: function (jqueryVid) {
                 return jqueryVid.width();
             },
-
+  
+            // make it a little higher than necessary so that overflow doesn't take out the border
             getTabVpos: function(vidTop) {
-                return vidTop;
+                return Math.ceil(vidTop - 2);
             },
             getTabHpos: function(vidLeft, tabWidth) {
                 return vidLeft - tabWidth;
@@ -388,8 +389,10 @@ window.shelbyBookmarklet = {
                                     },
                                     success: function (response) {
                                         var frames = response.result;
-                                        utilObject.videoInformation[videoId].frame = response.result[0];
-                                        utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, true);
+                                        if (response.result[0]) {
+                                          utilObject.videoInformation[videoId].frame = response.result[0];
+                                          utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, videoId, true);
+                                        }
                                     }
                               });
                         };
@@ -429,7 +432,7 @@ window.shelbyBookmarklet = {
                           utilObject.shelbyBkmkltUser.watch_later_roll_id, 
                           "", 
                           function(response) {
-                            alert("roll success");
+                            utilObject.htmlTemplate.notifyQueued();
                             utilObject.videoInformation[videoId].frame = response.result;
                           });
                     });
@@ -626,11 +629,11 @@ window.shelbyBookmarklet = {
               submitButton.on('click', null, null, function (event) {
                 var message = shelbyJ("#rolling-message").val();    
                 rollCallback = function(response) {
-                  alert("successfully rolled");
+                  utilObject.styleGuideHide("roll-guide");
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;
                   }
-                  utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, false);
+                  utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, videoId, false);
                 }
                 utilObject.shelbyAjaxCall.shelbyApiRoll(knownUrl, utilObject.shelbyBkmkltUser.personal_roll_id, message, rollCallback);
 
@@ -664,7 +667,7 @@ window.shelbyBookmarklet = {
                 setUpConversationWithId: function (conversationId, videoId) {
                     var commentTextClass = "comment-text-" + videoId;
                     var conversationCallback = function (response) {
-                      console.log(videoId);
+                        console.log(videoId);
                         console.log(utilObject.videoInformation);
                         var frame = utilObject.videoInformation[videoId].frame;
                         if (frame) {
@@ -686,20 +689,18 @@ window.shelbyBookmarklet = {
                 },
 
 
-                setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
+              setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@prefix%>guide-window">  </div>');
-
                     // set up clickoff
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-clickoff class="' + guideName + ' <%=@prefix%>guide-clickoff"></div>')
                     shelbyJ("#" + guideName + "-clickoff").css("right", shelbyGuideWidth + "px").css("height", shelbyJ(window).height() + "px").css("width", (shelbyJ(window).width() - shelbyGuideWidth) + "px").on('click', function () {
                         utilObject.styleGuideHide();
-                        });
+                    });
 
                 },
   
-                adjustFrameContext: function (shelbyFrameClass, shouldOverwrite) {
+                adjustFrameContext: function (shelbyFrameClass, videoId, shouldOverwrite) {
                     var frameContext = shelbyJ("." + shelbyFrameClass);
-                    var videoId = frameContext.attr("data-videoId");
                     var frame = utilObject.videoInformation[videoId].frame;
                     var creator = frame.creator;
                     var creatorUrl = "http://<%== Settings::VideoRadar.web_domain%>/user/" + creator.id + "/personal_roll";
@@ -712,11 +713,13 @@ window.shelbyBookmarklet = {
                     frameContext.addClass("buttons-show").addClass("buttons-animate");
                     var videoId = frameContext.attr("data-videoId")
                     var frameContextContent = JST['bookmarklet-context-content']({frame: frame, videoId: videoId});
-                    shelbyJ(".frame-context-image-" + videoId).html(frameContextContent);
-                    shelbyJ(".frame-context-image-" + videoId).click("on",
+                    shelbyJ(".frame-avatar-listitem-" + videoId).html(frameContextContent);
+                    shelbyJ(".frame-context-image-" + videoId).off("click");
+                    shelbyJ(".frame-context-image-" + videoId).on("click",
                                                   function() {
-                                                    window.open(creatorUrl)
-                                                    });
+                                                      console.log("hello");  
+                                                      window.open(creatorUrl)
+                                                  });
                     frameContext.attr("data-conversationid", frame.conversation_id);
                     frameContext.attr("data-frameclass", frame.id);
                     frameContext.attr("data-nickname", frame.creator.nickname);
@@ -726,13 +729,26 @@ window.shelbyBookmarklet = {
                 },
     
                 notifyFoundVids: function(numVids) {
-
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids}));
                         setTimeout(function() {
                               shelbyJ('.shelby-notify').remove();
                             }, 2000)
                         
                 },
+                
+                notifyQueued: function() {
+                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
+                        setTimeout(function() {
+                              shelbyJ(".notify-window").addClass("notified").on("click", 
+                                        function() {
+                                            shelbyJ('.notify-window').remove();
+                                });
+                        }, 0);
+                        setTimeout(function() {
+                              shelbyJ('.notify-window').remove();
+                        }, 3000)
+                },
+                        
 
                 rollingFormHtml: function (personalRoll, backboneFrame) {
                         var backboneRoll = utilObject.shelbyCreateModel(personalRoll);    
@@ -855,14 +871,7 @@ window.shelbyBookmarklet = {
         fullFunc(opts(useUrl, urlProvider));
     },
     shelbyOpts: function (useUrl, urlProvider) {
-        return {
-                css: (window.JST)? [] : ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
-                js: (window.JST)? [] : [
-                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
-                   ],
-            jqpath: (window.JST)? []: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"],
-
-            ready: function () {
+        var radarStart =  function () {
                 var shelbyJ = jQuery.noConflict();
                 var possibleVideos = {
                     embeds: shelbyJ('embed'),
@@ -874,16 +883,30 @@ window.shelbyBookmarklet = {
                 var shelbyGuideWidth = 330;
 
                 // add in the bookmarklet loading bar
-                shelbyJ('.<%=@prefix%>ext-elements').remove()
+                shelbyJ('.<%=@prefix%>ext-elements').remove();
                 shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
                 var radar = shelbyBookmarklet.shelbyRadar(shelbyJ, useUrl, urlProvider);
                 shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(radar, possibleVideos);
-            }
+        }
+        if (window.JST) {
+          return {
+              css: [],
+              js: [],
+              ready: radarStart
+          }
+        }
+        return {
+                css: ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
+                js: [
+                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
+                   ],
+            jqpath: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
+            ready: radarStart
         }
     }
 }
 
-function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)}; 
+function fullFunc(a){function d(b,g){if(b.length===0){a.ready();return false}g.getScript(b[0],function(){d(b.slice(1))})}function e(b,g){g.each(b,function(c,f){g("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;;c.onload=function(){var g=jQuery.noConflict(); e(a.css,g);d(a.js,g)};document.body.appendChild(c)})(a.jqpath)}; 
 
 var loadBookmarklet = function(useUrl, useProvider) {
   shelbyBookmarklet.shelbyInit(shelbyBookmarklet.shelbyOpts, useUrl, useProvider);
@@ -921,5 +944,6 @@ var loadBookmarklet = function(useUrl, useProvider) {
         shelbyJ('.<%=@prefix%>ext-elements').remove()
         return pushState.apply(history, arguments);
     }
-  })(window.history);
+})(window.history);
+
 loadBookmarklet(false);

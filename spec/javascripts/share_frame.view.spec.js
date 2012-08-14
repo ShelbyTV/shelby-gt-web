@@ -20,7 +20,7 @@ describe("ShareFrameView", function() {
 
     describe("onShareSuccess", function() {
       it("should update guide overlay state to hide guide overlays", function() {
-        shelby.track = function(){},
+        shelby.track = function(){};
         shelby.models = {
             user : new Backbone.Model()
         };
