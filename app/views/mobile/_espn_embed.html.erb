@@ -1,0 +1,17 @@
+<% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
+<script>
+	$('div.<%= vid_info %>').on('click', function(){		
+		var src = "http://player.ooyala.com/player.js?externalId=espn:<%= video['provider_id'] %>&callback=window.receiveEspnEvent&debug=false&hasModuleParams=1&pcode=1kNG061cgaoolOncv54OAO1ceO-I&playerBrandingId=a28f1994885a41098953d166c34cf81c&targetReplaceId=<%= video['provider_id'] %>&wmode=opaque&autoplay=1&width=320&height=180"; 
+		//write to head, where script will be downloaded and run
+		var tag = document.createElement('script');
+		tag.src = src;
+		(document.head || document.getElementsByTagName( "head" )[0]).appendChild(tag);		
+		
+		if (window.currentPlaying){
+			var thumbnail_url = $('iframe.'+window.currentPlaying).data('thumbnail_url');
+			$('iframe.'+window.currentPlaying).replaceWith('<img src="'+thumbnail_url+'" width="320" height="180"/>');
+		}
+		
+		window.currentPlaying = '<%= vid_info %>';
+	});
+</script>
