@@ -3,7 +3,15 @@ describe("RollCategoryItemView", function() {
     this.model = new Backbone.Model({
       category : 'Some Category Name'
     });
+    this.superCtorStub = sinon.stub(libs.shelbyGT.ActiveHighlightListItemView.prototype, 'initialize');
     this.view = new libs.shelbyGT.RollCategoryItemView({model:this.model});
+    this.superRenderStub =
+      sinon.stub(libs.shelbyGT.ActiveHighlightListItemView.prototype, 'render').returns(this.view);
+  });
+
+  afterEach(function() {
+    this.superCtorStub.restore();
+    this.superRenderStub.restore();
   });
 
   describe("Instantiation", function() {
@@ -14,6 +22,10 @@ describe("RollCategoryItemView", function() {
     it ("should have the classes 'list_item' and 'guide-item'", function() {
       expect(this.view.$el).toHaveClass('list_item');
       expect(this.view.$el).toHaveClass('guide-item');
+    });
+
+    it("should call the superclass initializer", function() {
+      expect(this.superCtorStub).toHaveBeenCalled();
     });
   });
 

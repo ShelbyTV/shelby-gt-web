@@ -17,7 +17,7 @@ libs.shelbyGT.RollCategoryItemView = libs.shelbyGT.ActiveHighlightListItemView.e
 
   render : function(){
     this.$el.html(this.template({rollCategory : this.model}));
-    return this;
+    return libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
   _setDisplayedCategory : function() {
