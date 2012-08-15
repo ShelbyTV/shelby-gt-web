@@ -10,14 +10,14 @@
 <form class="share-form clearfix">
   <% if(components.emailAddresses){ %>
     <fieldset class="share-email-addresses">
-      <label class="share-label" for="share-email-addresses">Email Addresses</label>
-      <input type="email" multiple="multiple" name="share-email-addresses" id ="share-email-addresses" class="js-share-email-addresses share-email-addresses-input" required></input>
+      <label class="share-label" for="share-email-addresses">To</label>
+      <input type="email" multiple="multiple" name="share-email-addresses" id ="share-email-addresses" class="js-share-email-addresses share-email-addresses-input" placeholder="dad@gmail.com, cyborg@shelby.tv, ..." required></input>
     </fieldset>
   <% } %>
   
 	<fieldset class="share-comment">
-		<label for="share-textarea" class="share-label">Comment</label>
-		<textarea name="email" id="share-textarea" class="js-share-textarea share-textarea" placeholder="Add a message..." rows="2"></textarea>
+		<label for="share-textarea" class="share-label">Message</label>
+		<textarea name="email" id="share-textarea" class="js-share-textarea share-textarea" placeholder="Add a message..." rows="5" required></textarea>
 		  <% if(components.messageCounter){ %>
 		    <span id="js-share-comment-counter" class="share-comment-counter"></span>
       <% } %>

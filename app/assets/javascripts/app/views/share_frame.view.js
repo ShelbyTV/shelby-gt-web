@@ -8,6 +8,13 @@
     options : _.extend({}, ShareView.prototype.options, {
       guideOverlayModel : null
     }),
+    
+    _components : _.extend({}, ShareView.prototype._components, {
+      networkToggles: false,
+      emailAddresses: true,
+      messageCounter: false,
+      shareButtonCopy: "Send"
+    }),
 
     saveUrl: function(){
       return shelby.config.apiRoot + '/frame/' + this.options.frame.id + '/share';
