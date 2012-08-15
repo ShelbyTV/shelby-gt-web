@@ -238,6 +238,7 @@
 }
 
 .queued {
+  background-color: gray;
   i {
     background-position: 0px 2px;
     padding-left: 15px;
@@ -259,9 +260,6 @@
   padding-bottom: 2px;
   padding-left: 19px;
 
-  &:hover {
-    background-image: url("/images/assets/videocard_roll_on.svg");
-  }
 }
 
 .embedded-buttons {
@@ -280,7 +278,14 @@
 
     .all-queue {
       &:hover {
-        background-color: gray;
+        color: $shelby-blue;
+      }
+    }
+    .all-roll {
+      &:hover {
+        i {
+          background-image: url("/images/assets/videocard_roll_on.svg");
+        }
       }
     }
 
