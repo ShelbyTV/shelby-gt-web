@@ -26,9 +26,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
     switch(guidePresentationContent){
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
         this.updateFilter(function(model){
-          var isPersonRoll = self._isPersonRoll(model);
-          var isMyPublicRoll = (model.id == shelby.models.user.get('personal_roll_id'));
-          return !isPersonRoll || isMyPublicRoll;
+          return !self._isFauxUserPersonalRoll(model);
         });
         break;
       case libs.shelbyGT.GuidePresentation.content.rolls.browse:
@@ -37,10 +35,8 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
   },
   
-  _isPersonRoll : function(roll) {
+  _isFauxUserPersonalRoll : function(roll) {
     return roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ||
            roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll;
   },
 
