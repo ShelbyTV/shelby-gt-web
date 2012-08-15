@@ -18,6 +18,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
       listItemView : 'RollCategoryItemView',
       model : shelby.models.exploreRollCategories
     }));
+    this.renderChild(new libs.shelbyGT.ExploreContentPaneView({model:shelby.models.exploreGuide}));
   }
 
 });
