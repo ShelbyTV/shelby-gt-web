@@ -1,3 +1,5 @@
 <div class="shelby-notify">
-  Found <%=numVids%> videos
+    <button class="cancel">
+    </button>
+  Found <%=numVids%><%= (findMore) ? " more ": " "%><%= (numVids > 1) ? "videos": "video" %>
 </div>
