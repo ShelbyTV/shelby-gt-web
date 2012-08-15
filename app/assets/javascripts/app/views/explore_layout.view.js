@@ -8,11 +8,16 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    // this.renderChild(new libs.shelbyGT.GuideView({model:this.model}));
-    // this.renderChild(new libs.shelbyGT.VideoContentPaneView({
-    //   model : this.model,
-    //   userDesires : shelby.models.userDesires
-    // }));
+    this.renderChild(new libs.shelbyGT.ListView({
+      collectionAttribute : 'roll_categories',
+      el : '.js-roll-category-list',
+      listItemViewAdditionalParams : {
+        activationStateModel : shelby.models.exploreGuide,
+        exploreGuideModel : shelby.models.exploreGuide
+      },
+      listItemView : 'RollCategoryItemView',
+      model : shelby.models.exploreRollCategories
+    }));
   }
 
 });

@@ -148,6 +148,7 @@
 
 .guide-explore {
   background-color: $guide-explore-bg;
+  height: 100%;
 }
 
 .explore-frame-title {
@@ -193,3 +194,6 @@
   }
 }
 
+.active-list-item .list_button {
+  background-color: $list-item-bg-hover;
+}

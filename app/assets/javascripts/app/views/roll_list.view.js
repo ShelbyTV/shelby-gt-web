@@ -7,6 +7,9 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
     doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
     doSmartRefresh : true,
     listItemView : 'RollItemRollView',
+    listItemViewAdditionalParams : function() {
+      return {activationStateModel:shelby.models.guide};
+    },
     sortAttribute : shelby.config.db.rollFollowings.sortAttribute,
     sortDirection : shelby.config.db.rollFollowings.sortDirection
   }),
@@ -43,11 +46,6 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _scrollTo : function(element) {
     this.parent.scrollToChildElement(element);
-  },
-
-  //ListView overrides
-  _listItemViewAdditionalParams : function() {
-    return {activationStateModel:shelby.models.guide};
   }
 
 });

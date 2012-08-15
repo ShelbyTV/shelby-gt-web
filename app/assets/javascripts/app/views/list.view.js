@@ -36,6 +36,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
           params are any additional parameters to be passed to the new view's constructor
     */
     listItemView : 'ListItemView',
+    /*
+      listItemViewAdditionalParams - additional parameters to pass to the constructors of the listItemViews
+        this can be an object or a function that returns an object
+    */
+    listItemViewAdditionalParams : {},
     masterCollection : null,
     displayCollection : null,
     simulateAddTrue : true
@@ -253,16 +258,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _constructListItemView : function(item){
-    var params = _(this).result('_listItemViewAdditionalParams');
+    var params = _(this.options).result('listItemViewAdditionalParams');
     if (typeof this.options.listItemView === 'function'){
       return this.options.listItemView(item, params);
     } else {
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
-  },
-
-  // sub-classes override to pass additional parameters to the constructors of the list item views
-  // this can be an object or a function that returns an object
-  _listItemViewAdditionalParams : {}
+  }
 
 });
