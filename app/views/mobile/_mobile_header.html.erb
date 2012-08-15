@@ -1,4 +1,4 @@
 <h1 class="mobile-logo ir"></h1>
-<% unless request.url == Settings::Application.url+"/m" %>
-	<a href="<%= Settings::Application.url %>/m" data-icon="search" data-mini="true" class="ui-btn-right">search</a>
+<% unless request.url == Settings::Application.mobile_url %>
+	<a href="<%= Settings::Application.mobile_url %>" data-icon="search" data-mini="true" class="ui-btn-right">search</a>
 <% end %>
