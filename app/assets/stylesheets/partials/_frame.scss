@@ -415,7 +415,7 @@
 		display: block;
 		float: left;
 		list-style-type: none;
-		width: 33.333333%;
+		width: 25%;
 
 		&:first-child {
 			button {
@@ -529,6 +529,19 @@
 	&:hover {
 		button {
 			background-image: url($icon-videocard-roll-on);
+		}
+	}
+}
+
+.frame-controls-share {
+  button {
+		@include notype;
+		background-image: url($icon-videocard-share-off);
+		background-position:center center;
+	}
+	&:hover {
+		button {
+			background-image: url($icon-videocard-share-on);
 		}
 	}
 }
