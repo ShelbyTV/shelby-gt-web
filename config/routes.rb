@@ -2,7 +2,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
 
-  constraints(:subdomain => 'm.localhost') do
+  constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
     get '/roll/:id' => 'mobile#search_results', :as => :mobile_search_results
   end
