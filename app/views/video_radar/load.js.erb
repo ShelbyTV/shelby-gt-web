@@ -432,7 +432,7 @@ window.shelbyBookmarklet = {
                                       for (var i = 0; i < queuedVids.length; i++) {
                                         var queuedVid = queuedVids[i];
                                         if (queuedVid.id === vidShelbyId) {
-                                          shelbyJ(".button-" + videoId + " .queue-button-content").addClass("queued");
+                                          shelbyJ(".button-" + videoId + ".all-queue").addClass("queued");
                                           break;
                                         }
                                       }
@@ -452,17 +452,17 @@ window.shelbyBookmarklet = {
                   clickQueue : function() {
 
                       utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-queue", null, function (event) {
-                        if (shelbyJ(".queue-button-content").hasClass("queued")) {
-                          return;
-                        }
                         var queueButton = event.currentTarget;
                         var frameContextClass = queueButton.getAttribute("data-frameclass");
                         var videoId = queueButton.getAttribute("data-videoId");
+                        if (shelbyJ(".button-" + videoId + ".all-queue").hasClass("queued")) {
+                          return;
+                        }
                         utilObject.shelbyAjaxCall.shelbyApiQueue(
                           queueButton.getAttribute("data-videourl"), 
                           videoId,
                           function(response) {
-                            shelbyJ(".queue-button-content").addClass("queued");
+                            shelbyJ(".button-" + videoId + ".all-queue").addClass("queued");
                             utilObject.htmlTemplate.notifyQueued();
                             if (!utilObject.videoInformation[videoId].frame) {
                               utilObject.videoInformation[videoId].frame = response.result;
@@ -817,6 +817,9 @@ window.shelbyBookmarklet = {
     
                 notifyFoundVids: function(numVids, findMore) {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, findMore: findMore}));
+                        if (findMore) {
+                            shelbyJ(".shelby-notify").addClass("more");
+                        }
                         shelbyJ(".shelby-notify").on("click", ".cancel", function() {
                               shelbyJ('.shelby-notify').remove();
                         });
