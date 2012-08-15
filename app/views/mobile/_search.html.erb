@@ -1,7 +1,6 @@
 <div id="search-bar" class="mobile-search-form">
 	<%= form_tag '', :method => :post do %>
-		<%= text_field_tag(:term, query_param, :placeholder => 'physics',:type => "search", 'data-theme' => 'b', :id=>"mobile-search-input", "data-mini"=>"true") %>
-	  <%= submit_tag("search &rarr;".html_safe, :class=>'mobile-search-submit', :id=>'mobile-search-submit') %>
+		<%= text_field_tag(:term, query_param, :placeholder => 'find the unexpected. search shelby.',:type => "search", 'data-theme' => 'b', :id=>"mobile-search-input", "data-mini"=>"true") %>
 		<div id="mobile-search-spinner" class="mobile-search-spinner"></div>
 	<% end %>
 </div>

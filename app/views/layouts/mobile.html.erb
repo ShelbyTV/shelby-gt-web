@@ -9,15 +9,15 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
-	<%= stylesheet_link_tag "screen", :media => "screen" %>
+	<%= stylesheet_link_tag "mobile", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->  
-  <%= javascript_include_tag "common" %>
+  <%= javascript_include_tag "mobile" %>
 </head> 
 <body class="mobile-search"> 
 
-	<div data-role="page" data-theme="a">
+	<div data-role="page" data-theme="b" id="main" >
 
-		<div data-role="header">
+		<div id="header" data-role="header" data-position="fixed" data-icon="search" data-iconpos="right">
 			<%= render :partial => "mobile_header" %>
 		</div><!-- /header -->
 
