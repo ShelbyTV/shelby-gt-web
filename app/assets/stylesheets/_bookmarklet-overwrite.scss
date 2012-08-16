@@ -34,6 +34,12 @@
 }
 
 //NOTIFICATION
+
+.notifications-lining {
+  position: fixed;
+  z-index: 2147483647;
+}
+
 .shelby-notify {
   background-color: #eee;
   background-image: url('/images/assets/shelby_mark_dark.svg');
