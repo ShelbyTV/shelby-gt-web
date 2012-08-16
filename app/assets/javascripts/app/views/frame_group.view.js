@@ -89,11 +89,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   render : function(){
     var self = this;
     this._leaveChildren();
+    
+    if (this.model.get('frames').length){
+      var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
+      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
-    var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
-
-    libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+      libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+    }
   },
 
   _expand: function(){
@@ -149,7 +151,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _removeFrame : function(){
-    this.model.destroy();
+    this.leave();
+    // if user is trying to delete the currently playing frame, kick on to the next one
+    // then delete
+    if (shelby.models.guide.get('activeFrameModel')===this.model.get('frames').at(0)){
+      Backbone.Events.trigger('playback:next');
+    }
+    var self = this;
+    setTimeout(function(){
+      self.model.get('frames').forEach(function(frame){
+        frame.destroy();
+      });
+    }, 100);
   },
 
   _upvote : function(){

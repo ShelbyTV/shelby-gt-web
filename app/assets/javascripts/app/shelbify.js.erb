@@ -24,15 +24,15 @@ window.shelbyBookmarklet = {
         "provider": "hulu",
         "domain": "hulu.com",
         "regex": ["\/site-player\/(\\d*)\/player"]
-    }, {
+    }, /*{
         "provider": "pbs",
         "domain": "video.pbs.org",
-        "regex": ["width=512&height=288&video=.*?\\\/([0-9]+)"]
+        "regex": ["width=512&height=288.*&video=.*?\\\/([0-9]+)"]
     }, {
         "provider": "techcrunch",
         "domain": "techcrunch.tv",
         "regex": ["embedCode=(\\w*)"]
-    }, {
+    },*/ {
         "provider": "ted",
         "domain": "ted.com",
         "regex": ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
@@ -46,11 +46,11 @@ window.shelbyBookmarklet = {
         "domain": "youtube.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
         "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
-    }, {
+    }, /*{
         "provider": "bloomberg",
         "domain": "bloomberg.com",
         "regex": ["embedCode=(\\w*)"]
-    }, {
+    },*/ {
       "provider": "espn",
         "domain": "espn.com,espn.go.com",
         "regex": ["espn%3A([0-9]+)&"]
@@ -59,7 +59,7 @@ window.shelbyBookmarklet = {
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
         var radar = {
 
-    getElementValue: function (obj, id) {
+          getElementValue: function (obj, id) {
                 var value = '';
                 for (var i = 0; i < obj.attributes.length; i++) {
                     if (obj.attributes[i].nodeName === id) {
@@ -97,6 +97,9 @@ window.shelbyBookmarklet = {
                     break;
                 case 'techcrunch.tv':
                     known_url = "http://techcrunch.tv/watch?id=" + video_id;
+                    break;
+                case 'video.pbs.org':
+                    known_url = "http://video.pbs.org/video/" + video_id;
                     break;
                 case 'collegehumor.com':
                     if (useUrl) {
@@ -140,6 +143,8 @@ window.shelbyBookmarklet = {
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
+                    } else if(/video\.pbs\.org/.test(possibleVideos.objects[i].innerHTML)) {
+                        found_elements.push(possibleVideos.objects[i]);
                     } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if ((/<oolaya/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
@@ -170,7 +175,6 @@ window.shelbyBookmarklet = {
                             for (var k = 0; k < shelbyBookmarklet.shelbyProviders[j].regex.length; k++) {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
-                                var valid_domain = false;
                                 for (var l = 0; l < domain_split.length; l++) {
                                   var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
@@ -353,9 +357,14 @@ window.shelbyBookmarklet = {
                     }
                 }
                 var self = this;
-  
+                if (shelbyBookmarklet) {
+                        if (vids.length == 0) {
+                          utilObject.htmlTemplate.notifyNumVids(vids.length);
+                        }
+                }
+              
                 if (vids.length > 0) {
-                    utilObject.htmlTemplate.notifyFoundVids(vids.length, findMore);
+                    utilObject.htmlTemplate.notifyNumVids(vids.length, findMore);
                     for (var i = 0; i < vids.length; i++) {
                         var videoId = vids[i].video_id;
                         utilObject.videoInformation[videoId] = {video: null, frame: null, domain: vids[i].domain};
@@ -782,20 +791,23 @@ window.shelbyBookmarklet = {
 
                 },
     
-                notifyFoundVids: function(numVids, findMore) {
-                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
-                        if (findMore) {
-                            shelbyJ(".shelby-notify").addClass("more");
-                        }
-                        shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
-                              shelbyJ('.shelby-notify').remove();
-                        });
-                        setTimeout(function() {
-                              shelbyJ('.shelby-notify').remove();
-                            }, 10000)
+                notifyNumVids: function(numVids, findMore) {
+                    if (shelbyJ(".shelby-notify").length > 0) {
+                        return;
+                    }
+                    utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
+                    if (findMore) {
+                        shelbyJ(".shelby-notify").addClass("more");
+                    }
+                    shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
+                          shelbyJ('.shelby-notify').remove();
+                    });
+                    setTimeout(function() {
+                          shelbyJ('.shelby-notify').remove();
+                        }, 10000)
                         
                 },
-                
+
                 notifyQueued: function() {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
                         setTimeout(function() {
