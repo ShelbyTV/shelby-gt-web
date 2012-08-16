@@ -48,9 +48,20 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
 
   saveToWatchLater : function(onSuccess) {
+    var self = this;
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
-    frameToReroll.save(null, {url:url,success:onSuccess});
+    frameToReroll.save(null, {
+      global : false, // we don't care if the ajax call fails
+      url : url,
+      success : function(frameModel, response){
+        // we only want to update the set of queued videos if the ajax call succeeds,
+        // that's the only way that the Queued state of a video will persist across navigation
+        // around the app
+        shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
+        if (onSuccess) onSuccess();
+      }
+    });
     shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
   },
 
