@@ -1,16 +1,4 @@
-<div class="mobile-search-header">
-  <header class="genius-header clearfix">
-    <h1 class="genius-logo ir">
-      Shelby.tv
-    </h1>
-    <p class="mobile-slogan">
-      An amazing way to <br> discover and enjoy videos.
-    </p>
-		<script>
-			$('.mobile-search-header').on("click", function(){
-				window.location.href = '<%= Settings::Application.url %>' + "/m";
-			});
-		</script>
-		
-  </header>
-</div>
+<h1 class="mobile-logo ir"></h1>
+<% unless request.url == Settings::Application.mobile_url %>
+	<a href="<%= Settings::Application.mobile_url %>" data-icon="search" data-mini="true" class="ui-btn-right">search</a>
+<% end %>

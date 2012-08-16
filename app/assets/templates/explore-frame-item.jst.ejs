@@ -1,0 +1,25 @@
+<article id="" class="explore-frame clearfix">
+  <ul class="explore-list explore-frame-menu">
+    <li>
+      <button class="explore-frame-command">
+        Queue
+      </button>
+    </li>
+
+    <li>
+      <button class="explore-frame-command">
+        + Roll…
+      </button>
+    </li>
+  </ul>
+
+  <a href="#" onclick="return false;" class="explore-frame-thumbnail js-explore-frame-thumbnail" style="background-image:url(<%= frame.get('video').get('thumbnail_url') %>);" role="img">
+    <img src="<%= frame.get('video').get('thumbnail_url') %>" alt="Thumbnail of <%= frame.get('video').get('title') %>" title="<%= frame.get('video').get('title') %>" class="visuallyhidden">
+  </a>
+
+  <a href="#" onclick="return false;" class="explore-frame-link">
+    <h3 class="explore-frame-title">
+      <%= frame.get('video').get('title') %>
+    </h3>
+  </a>
+</article>

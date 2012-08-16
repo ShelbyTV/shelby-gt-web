@@ -51,6 +51,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
     frameToReroll.save(null, {url:url,success:onSuccess});
+    shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
   },
 
   reRoll : function(roll, onSuccess) {
