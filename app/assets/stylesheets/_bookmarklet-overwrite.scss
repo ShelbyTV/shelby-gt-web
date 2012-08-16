@@ -109,6 +109,14 @@
   left: 50%;
   position: absolute;
   top: 50%;
+  &:before {
+    content: "Shelby is searching for videos...";
+  }
+  &.no-videos {
+    &:before {
+      content: "No videos found";
+    }
+  }
 }
 
 .queue-notification {

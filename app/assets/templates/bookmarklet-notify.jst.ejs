@@ -3,6 +3,10 @@
     x
     </button>
   <div class="notify-text">
-    Found <%=numVids%><%= (findMore) ? " more ": " "%><%= (numVids > 1) ? "videos": "video" %>
+    <% if (numVids === 0) {%>
+        No videos found.
+    <% } else { %>
+       Found <%=numVids%><%= (findMore) ? " more ": " "%><%= (numVids > 1) ? "videos": "video" %>
+    <% } %>
   </div>
 </div>

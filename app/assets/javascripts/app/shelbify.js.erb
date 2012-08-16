@@ -289,9 +289,6 @@ window.shelbyBookmarklet = {
                                 crossDomain: true,
                                 success: function (response) {
                                   utilObject.queuedVideos = response.result;
-                                  if (shelbyBookmarklet) {
-                                    utilObject.htmlTemplate.notifySearching();
-                                  }
                                   utilObject.sendVidsToShelby(foundVids);
                                 }
                               });
@@ -361,18 +358,9 @@ window.shelbyBookmarklet = {
                 }
                 var self = this;
                 if (shelbyBookmarklet) {
-                    setTimeout(function(numVids) {
-                      return function() {    
                         if (vids.length == 0) {
-                              shelbyJ(".found-vid-notification").html("No videos found");
-                              setTimeout(function() {
-                                    shelbyJ(".notify-searching").remove();
-                              }, 5000);
-                          } else {
-                              shelbyJ(".notify-searching").remove();
-                          }
-                      }
-                    }(vids.length), 3000);
+                          utilObject.htmlTemplate.notifyNumVids(vids.length);
+                        }
                 }
               
                 if (vids.length > 0) {
@@ -820,16 +808,6 @@ window.shelbyBookmarklet = {
                         
                 },
 
-                notifySearching: function() {
-                    utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-searching-notify']());    
-                    setTimeout(function() {
-                        shelbyJ(".notify-searching").addClass("notified");
-                    }, 0);
-                    shelbyJ(".notify-searching").on("click", function() {
-                        shelbyJ(".notify-searching").remove();
-                    });
-                },
-                
                 notifyQueued: function() {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
                         setTimeout(function() {
