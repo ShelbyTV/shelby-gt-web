@@ -783,11 +783,11 @@ window.shelbyBookmarklet = {
                 },
     
                 notifyFoundVids: function(numVids, findMore) {
-                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, findMore: findMore}));
+                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
                         if (findMore) {
                             shelbyJ(".shelby-notify").addClass("more");
                         }
-                        shelbyJ(".shelby-notify").on("click", ".cancel", function() {
+                        shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
                               shelbyJ('.shelby-notify').remove();
                         });
                         setTimeout(function() {

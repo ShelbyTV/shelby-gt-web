@@ -18,7 +18,7 @@
   vertical-align: middle;
 }
 
-.frame-creator{
+.all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
   height: 50px;
@@ -29,11 +29,6 @@
 
 }
 
-.frame-creator-avatar{
-  height: 100%;
-  width: 100%;
-}
-
 .frame-conversation-message-block {
   font-size: 13px;
 }
@@ -41,11 +36,12 @@
 //NOTIFICATION
 .shelby-notify {
   background-color: #eee;
-  background-image: url('/images/assets/shelby_mark.svg');
-  background-position: 40% -3px;
+  background-image: url('/images/assets/shelby_mark_dark.svg');
+  background-position: 10% -3px;
   background-size: 40px 40px;
   background-repeat: no-repeat;
   border: 1px solid #adadad;
+  border-radius: 2px;
   color: #333;
   font-size: 11px;
   font-weight: 300;
@@ -53,23 +49,31 @@
   left: 30px;
   line-height: 3.5em;
   position: fixed;
-  text-align: right;
   top: 30px;
   width: 160px;
   z-index: 2147483647;
+
   &.more {
     width: 200px;
-    background-position: 30% -3px;
+    background-position: 10% -3px;
+
   }
-  .cancel {
-    &:before {
-      content: 'x'   
-    }
+
+  .notify-text {
+    margin-left: 60px;
+  }
+
+  .notify-cancel {
     @include x-button-primer($shelby-gray);
-    left: 0;
-    margin: 8px;
+
+    border-radius: 20px;
+    height: 20px;
+    left: -10px;
+    line-height: 1.0;
+    padding: 0;
     position: absolute;
-    top: -3px;	
+    top: -10px;	
+    width: 20px;
   }
 }
 
@@ -94,7 +98,7 @@
 }
 
 .queue-notification {
-  background-image: url("/images/assets/clock.png");
+  background-image: url("/images/assets/chrome_queue_large.svg");
   background-position: 50% 0%;
   background-repeat: no-repeat;
   background-size: 50%;
@@ -215,25 +219,26 @@
     border: 1px solid #adadad;
     border-right: 0;
     background-color: #EEE;
-    box-shadow: -1px 0 1px 0 rgba(0, 0, 0, .3);
+    box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
     width: 100%;
+    &:hover {
+      background-color: gray;
+    }
 
     .all-queue {
       &:hover {
-        color: $shelby-blue;
+        background-color: gray;
       }
     }
     .all-roll {
       &:hover {
-        i {
-          background-image: url("/images/assets/videocard_roll_on.svg");
-        }
+        background-color: gray;
       }
     }
 
     .all-comment {
       &:hover {
-        color: $shelby-blue;
+        background-color: gray;
       }
     }
 
@@ -254,6 +259,23 @@
   }
 }
 
+.embedded-controls {
+  li {
+    &:first-child {
+      border-radius: 5px 0 0 0;
+      button {
+        border-radius: 5px 0 0 0;
+      }
+    }
+
+    &:last-child {
+      border-radius: 0 0 0 5px;
+      button {
+        border-radius: 0 0 0 5px;
+      }
+    }
+  }
+}
 
 .comment-button-content {
   &:before {
@@ -271,7 +293,7 @@
   &:before {
       content: "Queue"
   }
-  background-image: url("/images/assets/videocard_queue_off.svg");
+  background-image: url("/images/assets/chrome_queue.svg");
   background-position: 5px 2px;
   background-repeat:no-repeat;
   background-size: 20%;
@@ -282,7 +304,7 @@
   
 
 .roll-button-content {
-  background-image: url("/images/assets/videocard_roll_off.svg");
+  background-image: url("/images/assets/chrome_roll.svg");
   background-position: 5px 2px;
   background-repeat:no-repeat;
   background-size: 20%;
