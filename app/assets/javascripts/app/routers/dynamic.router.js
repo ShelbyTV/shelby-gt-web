@@ -331,13 +331,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
-    var firstFrame = rollModel.get('frames').first();
-    if (firstFrame) {
-      shelby.models.guide.set('activeFrameModel', firstFrame);
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var firstFrame = rollModel.get('frames').first();
+      if (firstFrame) {
+        shelby.models.guide.set('activeFrameModel', firstFrame);
+      }
     }
   },
 
   _checkPlayRollFrame : function(rollModel, response) {
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       if (activeFrameModel) {
         var activeFrameModelRoll = activeFrameModel.get('roll');
@@ -353,42 +358,52 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       if (firstFrame) {
         shelby.models.guide.set('activeFrameModel', firstFrame);
       }
+    }
   },
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
-    var frame;
-    if (frame = rollModel.get('frames').get(frameId)) {
-      shelby.models.guide.set('activeFrameModel', frame);
-      if (showCommentOverlay) {
-        shelby.models.guideOverlay.set({
-          activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
-          activeGuideOverlayFrame : frame
-        });
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var frame;
+      if (frame = rollModel.get('frames').get(frameId)) {
+        shelby.models.guide.set('activeFrameModel', frame);
+        if (showCommentOverlay) {
+          shelby.models.guideOverlay.set({
+            activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+            activeGuideOverlayFrame : frame
+          });
+        }
+      } else {
+        // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
+        shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
+        this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
-    } else {
-      // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-      shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
-      this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
 
   _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
-    var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
-      return entry.get('frame') && entry.get('frame').get('video');
-    });
-    if (firstDashboardEntry) {
-      shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
+        return entry.get('frame') && entry.get('frame').get('video');
+      });
+      if (firstDashboardEntry) {
+        shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+      }
     }
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
-    var entry;
-    if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
-      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-    } else {
-      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-      shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
-      this.navigate("/", {trigger:true, replace:true});
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var entry;
+      if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
+        shelby.models.guide.set('activeFrameModel', entry.get('frame'));
+      } else {
+        // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+        shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+        this.navigate("/", {trigger:true, replace:true});
+      }
     }
   },
 
