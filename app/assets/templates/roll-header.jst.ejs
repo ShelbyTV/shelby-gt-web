@@ -1,6 +1,5 @@
 <% 
   var rollTitle = roll.get('title') || '',
-      rollCreator = roll.get('creator'),
       rollCreatorNickname = roll.get('creator_nickname') || '',
       rollSubdomain = roll.has('subdomain'),
       personalRollId = shelby.models.user.get('personal_roll_id');
@@ -9,8 +8,8 @@
 %>
 
 <div class="current-roll-avatar">
-  <% if (rollTitle) { %>
-    <img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.svg' %>"
+  <% if (rollTitle && _(roll.attributes).has('thumbnail_url')) { %>
+    <img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.png' %>"
     alt="<%= rollTitle %>'s Avatar" title="<%= rollTitle %>'s Roll">
   <% } %>
 </div>

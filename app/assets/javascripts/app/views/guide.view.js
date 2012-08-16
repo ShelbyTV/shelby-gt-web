@@ -68,8 +68,8 @@
     },
 
     _setGuideTop : function(){
-      var allHeadersHeight = _.reduce($(".main > header"), function(memo, el){ return memo + $(el).height(); }, 0);
-      $('#js-guide-wrapper').css('top', allHeadersHeight);
+      var allHeadersHeight = _.reduce($("#js-guide-header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-body').css('top', allHeadersHeight);
     },
 
     _mapAppendChildView : function(guideModel){
@@ -100,12 +100,7 @@
             binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
             sourceModel = shelby.models.rollFollowings;
           }
-          var listItemView;
-          if (this.model.get('rollListContent') == contentRollsEnum.people) {
-            listItemView = 'RollItemPeopleView';
-          } else {
-            listItemView = 'RollItemRollView';
-          }
+          var listItemView = 'RollItemRollView';
           var shouldFetch = GuidePresentation.shouldFetchRolls(this.model);
           displayParams = {
             viewProto : RollListView,
@@ -123,6 +118,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+        case DisplayState.queue :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
@@ -178,6 +174,7 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
+        case DisplayState.queue :
           this._currentRollView = this._listView;
           break;
       }
@@ -191,8 +188,7 @@
       }
       
       //remove any current guide overlay views
-      var view = shelby.models.guide.get('activeGuideOverlayView');
-      view && view.cancel();
+      shelby.models.guideOverlay.clearAllGuideOverlays();
 
       // display the new child list view constructed appropriately for the display state
       this.appendChild(this._listView);

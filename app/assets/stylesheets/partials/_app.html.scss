@@ -38,7 +38,7 @@ a{
 
 }
 
-.wrapper{
+.shelby-wrapper{
 	bottom:0;
 	left:0;
 	position:absolute;
@@ -46,43 +46,52 @@ a{
 	top:0;
 }
 
-.lining{
-	float:left;
-	margin-right:-330px;
+.content_module {
+	bottom: 0;
+	left: 0;
+	margin-top: $header-height;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+
+.videoplayer-wrapper {
+	float: right;
+	margin-left: -330px;
 	height:100%;
 	width:100%;
-
 }
 
-.main,
-.content{
-	float:right;
-	width:330px;
+.sidebar_module {
+	width: $guide-width;
 }
 
-.main{
-
+.guide-wrapper{
 	background: $guide-bg-color;
 	font-size:1.2em;
 	height:100%;
 	line-height:1.4;
 	overflow:hidden;
 	position:relative;
+	width:$guide-width;
 	z-index:3;
 	
 	opacity: 1;
-	@include transition-property('opacity, margin-right');
+	@include transition-property('opacity, margin-left');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(0s);
+	
+	&.hide-guide {
+	  margin-left:-330px;
+	}
 }
 
-.main.hide-guide {
-  margin-right:-330px;
-}
-
-.user-inactive .main{
-  opacity: .5;
+.user-inactive {
+	.guide-wrapper{
+	  opacity: .5;
+	}
 }
 
 .content-body{
@@ -95,8 +104,10 @@ a{
 	z-index: -1;
 }
 
-.touch .content-body {
-	overflow: hidden;	
+.touch {
+	.content-body {
+		overflow: hidden;	
+	}
 }
 
 .menu{	

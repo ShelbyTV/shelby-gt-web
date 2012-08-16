@@ -3,6 +3,8 @@
 @import "base";
 @import "base-mixin";
 
+// xxxzxxx
+
 @import 
 		"partials/fonts",
 		"partials/h5bp", 
@@ -12,11 +14,9 @@
 		"partials/guide-header",
 		"partials/guide-presentation-selector",
 		"partials/guide-overlay-view",
-		"partials/guide-overlay-controls",
 
 		"partials/roll-header",
 		"partials/roll-item",
-		"partials/roll-item-people",
 		
 		"partials/isolated-roll",
 
@@ -32,7 +32,7 @@
 		"partials/rolls-list",
 
 		"partials/frame-rolling",
-		"partials/frame-rolling-options",	
+		"partials/rolling-form",
 		"partials/frame-conversation",
 
 		"partials/rolls",	
@@ -60,6 +60,6 @@
 
 		"partials/h5bp-utilities";
 
+// line	17: "partials/guide-overlay-controls",
 // line 10:	"partials/menu",
-
-		//		"partials/form-roll-video",
+// line ... "partials/form-roll-video",

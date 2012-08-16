@@ -39,7 +39,21 @@ _(shelby).extend({
                                           'button_one' : {visible: true, text: "Ok", color: 'blue'},
                                           'number_of_buttons': 'one'});
   },
-  
+
+	// shelby.success is designed to show a non-intrusive success message
+	// will self-dismiss if not X'd by user
+	success: function(message, timeoutMs){
+    shelby.models.notificationState.set({ 'class': 'info',
+																					'message': message,
+                                          'visible': true,
+                                          'button_one' : {visible: true, text: "ok", color: 'grey'},
+                                          'number_of_buttons': 'one'});
+		//ghetto auto-hide
+		setTimeout(function(){
+				shelby.models.notificationState.set({visible: false});
+			}, timeoutMs || 9000);
+	},
+
   // shelby.alert mimicks js native confirm functionality.
   // optional: add a callback function to execute after confirm choice is executed
   confirm: function(message, button_one_opts, button_two_opts, callback){

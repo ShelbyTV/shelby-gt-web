@@ -13,18 +13,23 @@
 
     _keyCodeActionMap : {
 
-      //  spacebar 
+      //  spacebar
       32 : {
         model : 'userDesires',
         attr : 'playbackStatus',
         val : function(){
           var playbackState = shelby.models.playbackState.get('activePlayerState');
-          return playbackState.get('playbackStatus') === 'playing' ?
-          libs.shelbyGT.PlaybackStatus.paused :
-          libs.shelbyGT.PlaybackStatus.playing;
-        }
+          if (playbackState) {
+            return playbackState.get('playbackStatus') === 'playing' ?
+            libs.shelbyGT.PlaybackStatus.paused :
+            libs.shelbyGT.PlaybackStatus.playing;
+          } else {
+            return false;
+          }
+        },
+        is_transient : true
       },
-      // (g)uide      
+      // (g)uide
       71 : {
         model : 'userDesires',
         attr : 'guideShown',
@@ -47,7 +52,7 @@
         val : 1,
         is_transient : true
       },
-      // (<-) left 
+      // (<-) left
       37 : {
         model : 'userDesires',
         attr : 'changeVideo',
@@ -109,7 +114,7 @@
           shelby.models[actionData.model].set(actionData.attr, null);
         }
         return false;
-      });  
+      });
     },
 
     _getActionData : function(keyCode){

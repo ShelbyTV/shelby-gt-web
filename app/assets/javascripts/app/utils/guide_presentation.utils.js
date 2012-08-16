@@ -1,10 +1,8 @@
 libs.shelbyGT.GuidePresentation = {
   content : {
     rolls : {
-      people : 'people',
       myRolls : 'my_rolls',
-      browse : 'browse',
-      switchFilterOnlyStates : ['people', 'my_rolls']
+      browse : 'browse'
     }
   },
   shouldFetchRolls : function(guideModel){
@@ -17,9 +15,5 @@ libs.shelbyGT.GuidePresentation = {
     // var notSwitchingDisplayState = !_changedAttrs.has('displayState');
     // return !(switchingBetweenFilters && notSwitchingDisplayState) && (!contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched'));
     return !contentIsBrowseRolls || !shelby.models.fetchState.get('browseRollsFetched');
-  },
-  _switchContentFilterOnly : function(oldContent, newContent){
-    var _switchFilterOnlyStates = _(this.content.rolls.switchFilterOnlyStates);
-    return _switchFilterOnlyStates.contains(oldContent) && _switchFilterOnlyStates.contains(newContent);
   }
 };

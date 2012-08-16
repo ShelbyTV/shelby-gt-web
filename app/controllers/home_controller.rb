@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     # Get parameters associated with omniauth failure
     @auth_failure = params[:auth_failure] == '1'
     @auth_strategy = params[:auth_strategy]
-    
+
     #XXX ISOLATED_ROLL
     @isolated_roll_id = case request.host
         #TODO: pull this mapping from API

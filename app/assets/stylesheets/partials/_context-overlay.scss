@@ -8,17 +8,20 @@ $outset : adjust-lightness($outset,-10%);
 	@include transition-timing-function(ease-out);
 	@include transition-delay(0s);
 	
-	left: $defaultMargin;
-	padding-right: 360px;
+//	left: $defaultMargin;
+//	padding-right: 360px;
+	padding-left: 360px;
 	position: absolute;
+	right: $defaultMargin;
 	top: $defaultMargin;
-	width: 100%;
+	width: 20%;
 	z-index:3;	
 }
 
 .context-overlay-lining {
+	float: right;
 	font-size: 120%; //fixes the clipping of the icons in the buttons, makes line-height taller
-	max-width: 330px;
+	width: 330px;
 	position: relative;
 
 	.video-card {

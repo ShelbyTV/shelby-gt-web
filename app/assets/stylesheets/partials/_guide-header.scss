@@ -1,17 +1,20 @@
 @import "base";
 
-.guide-header {
+
+.shelby-header {
 	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%), 5%);
 
 	border-bottom: 1px solid $header-outline;
 
-	nav {
-		display: inline;
-
-	}
+	//NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
 }
 
-.guide-logo {
+.shelby-logo {
 	background: transparent;
 	border: none;
 	display: block;
@@ -19,164 +22,10 @@
 	padding: 0;
 }
 
-.guide-logo-header {
+.shelby-title {
 	background: url($logo-shelby) center 9px no-repeat transparent;
 	background-size: 85%;
 	height: 35px;
 	margin: 0 1px;
 	width: 95px;
-}
-
-.settings {
-	float: right;
-	margin: 0;
-	padding: 0;
-	width: 50%;
-
-	button {
-		@include inputfont;
-
-		background: transparent;
-		border: none;
-		color: #adadad;
-		line-height: 2.9;
-		padding-bottom: 0;
-		text-align: left;
-
-		&:hover {
-			color: white;
-			text-decoration: underline;
-		}
-	}
-
-	li {
-		display: block;
-		float: right;
-		height: 35px;
-		position: relative;
-		
-		li {
-			float: none;
-			height: 2em;
-			line-height: 2;
-			margin: 0;
-			padding-left: 0;
-
-			button,span {
-				height: 2em;
-				line-height: 2;
-				padding-left: $margin;
-				text-decoration: none;
-			}
-		}	
-	}
-
-}
-
-.top-level {
-		&:after {
-			background: url($icon-carrot) no-repeat center center transparent;
-			content: "\0020";
-			font-size: $font-size/1.5;
-			height: 12px;
-//			left: 0;
-			line-height: 5.5;
-			margin-left: 3px;
-			position: absolute;
-			text-align: right;
-			top: 40%;
-			width: 12px;
-		}
-	}
-
-.about,
-.profile {
-	padding-left: $defaultMargin+2;
-	position: relative;
-	z-index: 2;
-
-	&:hover {
-		color: white;
-		text-decoration: underline;
-	}
-}
-
-.about {
-	padding-right: $defaultMargin*2;
-	width: 70px;
-}
-
-.subnav {
-	background: $guide-bg-color;
-	border-bottom: 1px solid #222;
-	border-left: 1px solid #222;
-	border-right: 1px solid #222;
-	border-top: 0px solid transparent;
-	box-shadow: 0px 0px 5px 2px #222;
-	display: none;
-	position: absolute;
-	width: 92px;
-	z-index: 1;
-}
-
-.profile {
-	padding-right: 10px;
-	width: 85px;
-}
-
-.profile-subnav,
-.about-subnav {
-	left: -94px;
-
-	button {
-		width: 100%;
-		&:hover {
-			text-decoration: none;
-		}
-	}
-}
-
-.profile-subnav{
-	width: 174px;
-}
-
-.about-subnav {
-	left: 0;
-	width: 92px;
-	
-	button:hover {
-		text-decoration: underline;
-	}
-}
-
-.profile-subnav-userhandle {
-	color: #333;
-	background: #ddd;
-	border-bottom: 1px solid #efefef;
-}
-
-.you {
-
-	&:after {
-		@include background(url($icon-settings) no-repeat center center transparent);
-		content: "\0020";
-		float: right;
-		height: 19px;
-		margin-top: -4px;
-		width: 20px;
-	}
-
-	span {
-		@include roundies;
-
-		display: block;
-		height: 24px;
-		float: left;
-		margin-right: 5px;
-		width: 24px;
-
-	}
-	img {
-		width: 100%;
-	}
 }

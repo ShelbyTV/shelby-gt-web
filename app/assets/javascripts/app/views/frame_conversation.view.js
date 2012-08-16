@@ -9,12 +9,12 @@
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .back:not(.js-busy)" : "hide",
+      "click .back:not(.js-busy)" : "_setGuideOverlayStateNone",
       "click .js-new-comment-submit" : "_addMessage",
       "click .js-message-reply" : "_reply"
     }),
 
-    className : 'conversation-overlay',
+    className : GuideOverlayView.prototype.className + ' conversation-overlay',
 
     template : function(obj){
       return JST['frame-conversation'](obj);
@@ -31,7 +31,7 @@
     render : function(){
       var self = this;
       
-      this.$el.html(this.template({ frame : this.model }));
+      this.$el.html(this.template({ frame : this.model, user: shelby.models.user }));
       
       this.model.get('conversation').get('messages').each(function(message){
         var messageView = new MessageView({model:message});
@@ -53,7 +53,7 @@
       });
       this.renderChild(this._shelbyAutocompleteView);
 
-      this.insertIntoDom(false);
+      GuideOverlayView.prototype.render.call(this);
     },
     
     _onConversationChange : function(){

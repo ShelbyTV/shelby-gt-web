@@ -1,0 +1,13 @@
+<div class="conversation-scroller">
+  <ul class="conversation frame-conversation"></ul>
+  
+  <form class="new-comment clearfix">
+    <div class="new-comment-user-avatar">
+      <img src="<%= user.get('user_image_original') || user.get('user_image')%>"
+           alt="<%= user.get('nickname') %>" title="<%= user.get('nickname') %>" />
+    </div>
+    <textarea class="js-add-message-input new-comment-input" rows="2"></textarea>
+    <div class="js-frame-comment-error-message frame-comment-error-message"></div>
+    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>">Comment</button>
+  </form>
+</div>

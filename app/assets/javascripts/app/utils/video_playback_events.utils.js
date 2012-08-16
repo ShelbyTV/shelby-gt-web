@@ -16,6 +16,10 @@
     WATCHED_INTERVAL : 5,
     //how much playback (by percent) should eached "watched" interval represent
     WATCHED_PCT : 0.20,
+    //when to mark video as watched (by percent) for js based even tracking
+    EVENT_TRACKING_PCT_THRESHOLD : 10,
+    
+    _markedAsWatched : null,
     
     initialize: function(playbackState, guideModel, userDesires) {
       this._playbackState = playbackState;
@@ -64,7 +68,11 @@
       if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchPct) {
         this._currentFrame.watched(this._startTime, curTime);        
         this._startTime = curTime;
+        
+        // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
+        if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
+      
     },
     
     /*
@@ -73,6 +81,7 @@
     _onPlaybackStatusChange: function(attr, status){
       if(status === libs.shelbyGT.PlaybackStatus.ended){
         this._currentFrame.watched();
+        this.trackWatchedCompleteEvent();
       }
     },
     
@@ -100,7 +109,25 @@
       this._currentFrame = frame;
       this._startTime = 0;
       this._requireWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
-    }
+      this._markedAsWatched = null;
+    },
     
+    //----------------------------------
+    // Analytics Reporting on when video is watched
+    //  == tracked with GA and KISS
+    //----------------------------------
+
+    trackWatchedEvent : function(currentTime){
+      var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
+      var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
+      if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
+        shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
+        this._markedAsWatched = true;
+      }
+    },
+    
+    trackWatchedCompleteEvent : function(){
+      shelby.track('watched in full', {frameId: this._currentFrame.id, userName: shelby.models.user.get('nickname')});
+    }
   };
 })();

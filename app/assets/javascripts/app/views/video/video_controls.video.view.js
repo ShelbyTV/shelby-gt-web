@@ -178,9 +178,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	//--------------------------------------
 	
   _togglePlayback : function(){
-    var _newPlaybackStatus = (this._userDesires.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
-    this._userDesires.unset('playbackStatus');
-    this._userDesires.set('playbackStatus', _newPlaybackStatus);
+    var activePlayerState = this._playbackState.get('activePlayerState');
+    if (activePlayerState) {
+      var _newPlaybackStatus = (activePlayerState.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
+      this._userDesires.set('playbackStatus', _newPlaybackStatus);
+      this._userDesires.set('playbackStatus', null);
+    }
   },
   
   _onUserDesiresMuteChange : function(){
@@ -241,11 +244,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 	
 	_guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-  	  $('.main').removeClass("hide-guide");
+  	  $('.js-guide').removeClass("hide-guide");
       this.$el.find('.video-player-tools').removeClass("full-width");
       this.$el.find('.video-player-next').removeClass("full-width");
     } else {
-  	  $('.main').addClass("hide-guide");
+  	  $('.js-guide').addClass("hide-guide");
       this.$el.find('.video-player-tools').addClass("full-width");
       this.$el.find('.video-player-next').addClass("full-width");
     }

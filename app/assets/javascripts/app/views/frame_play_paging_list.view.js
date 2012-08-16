@@ -55,7 +55,7 @@
 
     //ListView overrides
     _listItemViewAdditionalParams : function() {
-      return {activationStateModel:shelby.models.guide};
+      return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
     }
 
   });

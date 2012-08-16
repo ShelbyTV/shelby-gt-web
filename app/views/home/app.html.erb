@@ -6,7 +6,6 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
   <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>
     <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
   </title>
@@ -18,121 +17,100 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-  <%= javascript_include_tag "common" %>
   <%= javascript_include_tag "shelby" %>
 </head>
 
-<body>
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  
-  <div id="wrapper" class="wrapper" role="application">
-    <div id="lining" class="lining">
-      <div id="player" class="video-player" role="main">
+<body class="shelby">
+  <div id="js-shelby-wrapper" class="shelby-wrapper" role="application">
+    <header id="js-header" class="js-app-header shelby-header" role="banner">
+      <!-- contents in guide-header.jst -->
+    </header>
 
-				<div id="video-players-holder">
-	        <div id="youtube-player-holder"></div>
-	        <div id="vimeo-player-holder"></div>
-	        <div id="collegehumor-player-holder"></div>
-	        <div id="dailymotion-player-holder"></div>
-	        <div id="bliptv-player-holder"></div>
-	        <div id="ooyala-player-holder"></div>
-	        <div id="espn-player-holder"></div>	
-	        <div id="hulu-player-holder">
-	          <div id="videoPlayerComponent"></div>
-	          <div id="adComponent"></div>
-	        </div>
-				</div>
-				
-				<div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
+    <div class="content_module">
+      <div class="videoplayer-wrapper">
+        <div class="videoplayer animate-easein" role="main">
+  				<div class="videoplayer-viewport">
+  	        <div id="youtube-player-holder"></div>
+  	        <div id="vimeo-player-holder"></div>
+  	        <div id="collegehumor-player-holder"></div>
+  	        <div id="dailymotion-player-holder"></div>
+  	        <div id="bliptv-player-holder"></div>
+  	        <div id="ooyala-player-holder"></div>
+  	        <div id="espn-player-holder"></div>	
+  	        <div id="hulu-player-holder"></div>
+            <div id="videoPlayerComponent"></div>
+            <div id="adComponent"></div>
+          </div><!-- eo .videoplayer-viewport -->
 
-        <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
+          <div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
+          <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
 
-				<div id="mini-video-progress">
-					<div class="mini-video-player-progress">
-						<div class="video-player-progress-load"></div>
-						<div class="video-player-progress-elapsed"></div>
-					</div>
-				</div>
-        
-        <div class="context-overlay-wrapper js-inactivity-preemption">
-          <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix">
+          <div id="mini-video-progress">
+            <div class="mini-video-player-progress">
+              <div class="video-player-progress-load"></div>
+              <div class="video-player-progress-elapsed"></div>
+            </div>
+          </div>
+            
+          <div class="context-overlay-wrapper js-inactivity-preemption">
+            <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
+          </div><!-- eo .conext-overlay-wrapper -->
 
-          </aside>
-        </div><!-- eo .conext-overlay-wrapper -->
+          <div id="js-notifications-wrapper" class="notifications-wrapper"></div>
 
-				<div id="js-notifications-wrapper" class="notifications-wrapper"></div>
-      </div> <!-- eo .video-player -->
-    </div><!-- eo #lining -->
+        </div><!-- eo .videoplayer -->
+  		</div><!-- eo .videoplayer-wrapper -->
 
-    <div class="main clearfix js-inactivity-preemption" role="sidebar">
-      <header class="header-guide">
-        <div id="js-header" class="js-app-header" role="banner">
-          <!-- contents in guide-header.jst -->
-        </div>
-      <div id="js-guide-header" class="menu">
-        <div id="js-guide-presentation-selector" class="guide-presentation-selector">
-          <!-- content filled in by GuidePresentationSelctorView -->
-        </div>
-        <div id="js-item-header">
-          <!-- content filled in by ItemHeaderView -->
-        </div>
-        <div id="js-roll-action-menu" class="roll-action-menu">
-          <!-- content filled in by RollActionMenuView -->
-        </div>
-      </div>
-      <div id="js-guide-wrapper" class="content-body">
-			<div id="js-add-video-area" class="video-card add-video-area">
-			  <!-- content filled in by AddVideoView -->
-			</div>
-        <div id="guide">
-          <!-- guide contents dynamically rendered-->
-        </div>
-      </div>
-		</header>
-    </div><!-- eo .main -->
+      <section class="js-inactivity-preemption js-guide guide-wrapper sidebar_module clearfix" role="sidebar">
+        <div id="js-guide" class="guide">
+          <div id="js-guide-header" class="menu">
+            <div id="js-item-header">
+              <!-- content filled in by ItemHeaderView -->
+            </div>
 
-		<div id="guide-overlay-controls">
-	        <!-- controls dynamically rendered, floating over guide -->
-	  </div>
+            <div id="js-roll-action-menu" class="roll-action-menu">
+              <!-- content filled in by RollActionMenuView -->
+            </div>
+          </div>
 
-	  <div style="height:0;clear:both;"></div>
+          <div id="js-guide-body" class="content-body">
+            <div id="js-add-video-area" class="video-card add-video-area">
+              <!-- content filled in by AddVideoView -->
+            </div>
 
-		<div id="temp-auth-related-links" style="position:absolute;top:0;left:0;">
-			<div id="temp-signin" style="display:none; position:fixed; top: 0px; height: 40px; font-size: 15px; padding: 5px 0px; left:33%">
-				Make Shelby even better by
-				<%= link_to ' logging in', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>				
-			</div>
-		</div>
-  </div> <!-- eo ~main -->
-  <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
+            <div id="guide">
+              <!-- guide contents dynamically rendered-->
+            </div>
+          </div>
+        </div><!-- eo .guide -->
+      </section><!-- eo .guide-wrapper -->
+
+    </div><!-- eo .content_module -->
+  </div> <!-- eo ~application -->
 	<% if Rails.env == 'production' %>
 	  <script>
-	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','none'],['_trackPageview']];
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
 	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	    s.parentNode.insertBefore(g,s)}(document,'script'));
 	  </script>
+		<script>
+		  var _kmq = _kmq || [];
+		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+		  function _kms(u){
+		    setTimeout(function(){
+		      var d = document, f = d.getElementsByTagName('script')[0],
+		      s = d.createElement('script');
+		      s.type = 'text/javascript'; s.async = true; s.src = u;
+		      f.parentNode.insertBefore(s, f);
+		    }, 1);
+		  }
+		  _kms('//i.kissmetrics.com/i.js');
+		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+		</script>
 	<% end %>
-	
-	<script>
-	  var _kmq = _kmq || [];
-	  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-	  function _kms(u){
-	    setTimeout(function(){
-	      var d = document, f = d.getElementsByTagName('script')[0],
-	      s = d.createElement('script');
-	      s.type = 'text/javascript'; s.async = true; s.src = u;
-	      f.parentNode.insertBefore(s, f);
-	    }, 1);
-	  }
-	  _kms('//i.kissmetrics.com/i.js');
-	  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-	</script>
 </body>
 </html>

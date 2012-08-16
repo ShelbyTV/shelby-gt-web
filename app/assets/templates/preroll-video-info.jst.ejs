@@ -1,9 +1,9 @@
-<div class="preroll-video-info-lining">
+<div class="preroll-video-info">
   <div class="video-title"><%= frame.get('video').get('title') %></div>
 
   <% 
     var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
-    if(messages.length > 0){
+    if(messages.length > 0 && messages.first().get('user_id') === frame.get('creator_id')){
   %>
     <div class="frame-comment">“<%= messages.first().get('text') %>”</div>
   <% } %>

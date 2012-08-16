@@ -1,17 +1,13 @@
-<% var rollPublic = roll.get('public') %>
-<a href="#" class="<%= roll.get('public') ? 'rolling-public-roll' : 'rolling-private-roll' %> js-track-event" data-ga_category="Rolling" data-ga_action="Click add to roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-  <div class="roll-selection-item-add clearfix">
-    Add
-  </div>
-  <div class="roll-selection-item-lining clearfix">  
-    <img class="roll-selection-item-thumbnail" src="<%= roll.get('thumbnail_url') %>">
-    
+<a href="#" class="js-track-event" data-ga_category="Rolling" data-ga_action="click add to roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+  <div class="roll-selection-item-lining clearfix">      
     <h2 class="roll-selection-item-title">
-      <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+			<span class="path"><%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
     </h2>
 
-    <h3 class="roll-selection-item-state">
-      <%= (rollPublic) ? 'Public' : 'Private' %>
-    </h3>
+		<% if(libs.shelbyGT.viewHelpers.roll.urlForRoll(roll)) { %>
+	    <h3 class="roll-selection-item-url">
+				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
+	    </h3>
+		<% } %>
   </div>
 </a>

@@ -53,5 +53,18 @@ module Shelby
       return "#{Settings::Application.url}/roll/#{roll_id}"
     end
     
+    def self.post_to_genius(term, urls)
+      r = post("/roll/genius", { :query => {'search' => term, 'urls' => urls}}).parsed_response
+      return nil if r['status'] != 200
+      r['result']
+    end
+    
+    def self.get_frames_in_roll(roll_id)
+      r = get( "/roll/#{roll_id}/frames?include_children=true" ).parsed_response
+      return nil if r['status'] != 200
+      if r['result']['frames'] and r['result']['frames'].is_a?(Array)
+        roll = r['result']
+      end
+    end
   end
 end

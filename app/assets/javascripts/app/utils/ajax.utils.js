@@ -7,11 +7,10 @@ libs.shelbyGT.Ajax = {
         shelby.alert("Sorry, but you need you to sign in again.  You will now be brought to the login page.", function(){
           document.location = "/signout?error=401";
         });
+        break;
       case 403:
         shelby.alert("You are not authorized to do that");
         break;
-      default:
-        shelby.alert("Something went wrong. Shelby apologizes.");
     }
   },
   

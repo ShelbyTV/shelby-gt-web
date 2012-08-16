@@ -128,15 +128,9 @@ $extension: ".png";
   		&.new:before{
   			content:"+";
   		}
-  		&:after{
-  			content:url($icon-roll-unlock);
-  		}
   	}
 
   	.rolling-private-roll{
-  		&:after{
-  			content:url($icon-roll-lock);
-  		}
   	}
   }
 

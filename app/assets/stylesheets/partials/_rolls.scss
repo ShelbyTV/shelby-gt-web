@@ -146,13 +146,12 @@
 }
 
 .share-comment {
-	border-top: 1px solid $outset;
-	border-bottom: 1px solid $inset;
+  border: none;
 }
 
 .share-networks,
 .share-submit {
-	border-top: 1px solid $outset;
+  border: none;
 }
 
 .share-networks {
@@ -196,8 +195,9 @@
 .share-submit-button {
 	@include x-button-primer($shelby-blue);
 
+  float: right;
 	margin-top: 32px;
-	width: 100%;
+	width: 33%;
 	
 	.spinner {
 		left: auto;

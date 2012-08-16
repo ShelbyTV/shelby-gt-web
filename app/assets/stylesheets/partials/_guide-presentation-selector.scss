@@ -1,70 +1,105 @@
 @import "base";
 
 .guide-presentation-selector {
-//  background-color: $guide-presentation-bg-color;
 }
 
-.guide-presentation-stream {
-  //needs refactoring eventually:
-  //x-tab-primer is applying a slew of backgrounds which are then overwritten by the consective background style.
-  @include notype;
-  @include x-tab-primer($guide-presentation-tab-bg-color);
-  @include background(
-    url($icon-nav-stream) no-repeat center center,
-    linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-color, 10%), $guide-presentation-tab-bg-color)
-  );
-  @include roundies;
-
-  margin-left: $default-margin;
-  padding: 13px 33px;
-}
-
-.guide-presentation-filter {
-  margin: 7px 4px 7px 85px;
+.guide-presentation-list {
+  font-size: 1.3em;
+  margin: 0;
   padding: 0;
 }
 
-.guide-presentation-filter-item {
+.guide-presentation-item,
+.guide-settings-item {
+  display: block;
+  float: left;
   list-style-type: none;
- 
- .guide-presentation-button {
-    @include x-tab-primer($guide-presentation-tab-bg-color);
-    padding: 6px;
-    width: 33%;
- }
 
-  &:first-child{
-    button {
-      //left rounded
-      border-radius: $radius 0 0 $radius;
-      border-right: none;
+  & > button {
+    @include inputfont;
+
+    background: none;
+    border: none;
+    color: $button-color;
+    display: inherit;
+    line-height: 2;
+    padding: 3px 6px;
+    width:100%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.guide-presentation-content-selected {
+      color: $shelby-blue;
     }
   }
-  &:last-child {
-    button {
-      //right rounded
-      border-radius: 0 $radius $radius 0;
-      border-left: none;    
-    }
+
+  & > .guide-settings-anchor {
+    float: right;
+    width: auto;
   }
 }
 
-.guide-presentation-button {
-      @include notype;
-   &.guide-presentation-content-selected{
-    @include background(    
-      linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
-    );
+.guide-presentation-item {
+  margin-top: 2px;
+  width: 70px;
+}
 
-    box-shadow: inset 0 1px 1px 0 adjust-lightness($guide-presentation-tab-bg-selected,2%);
-    
-    &.guide-presentation-stream {
-      @include background(
-        url($icon-nav-stream) no-repeat center center,
-        linear-gradient(top, adjust-lightness($guide-presentation-tab-bg-selected, 10%), $guide-presentation-tab-bg-selected)
-      );
-      
-      box-shadow: inset 0 1px 1px 0 adjust-lightness($guide-presentation-tab-bg-selected,2%);
+.guide-settings {
+  float: right;
+  position: relative;
+  width: 100px;
+}
+
+.guide-settings-list {
+  background-color: $guide-presentation-tab-bg-selected;
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 13px;
+  width: 200px;
+  z-index:5;
+
+  button {
+    text-align: left;
+  }
+}
+
+.guide-settings-item {
+  width: 100%;
+}
+
+.guide-settings-userhandle {
+  background: #ddd;
+  color: #333;
+  display: block;
+  padding: 6px;
+}
+
+.guide-settings-anchor {
+    background: none;
+    border: none;
+    color: $button-color;
+
+    &:after {
+    @include background(url($icon-settings) no-repeat center center transparent);
+    content: "\0020";
+    float: right;
+    height: 19px;
+    margin: {
+      right: 4px;
+      top: 4px;
     }
+    width: 20px;
+
+  }
+}
+
+.guide-settings-button {
+  &:hover {
+    background: $shelby-blue;
   }
 }

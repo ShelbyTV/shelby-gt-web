@@ -9,13 +9,13 @@
     
     events : {
       "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
-      "click .js-people:not(.guide-presentation-content-selected)"   : "_filterPeople",
+      "click .js-queue:not(.guide-presentation-content-selected)"   : "_goToQueue",
       "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
       "click .js-browse:not(.guide-presentation-content-selected)"   : "_browseRolls"
     },
 
-    el : '#js-guide-presentation-selector',
-    
+    /*el : '#js-guide-presentation-selector',*/
+
     template : function(obj){
       return JST['guide-presentation-selector'](obj);
     },
@@ -30,17 +30,16 @@
     },
 
     render : function(){
-      this._updateVisibility();
-      this.$el.html(this.template());
+      this.$el.html(this.template({user:shelby.models.user}));
       this._setSelected();
     },
     
     _goToStream : function(){
       shelby.router.navigate('stream', {trigger: true});
     },
-    
-    _filterPeople : function(){
-      shelby.router.navigate('rolls/people',{trigger:true});
+
+    _goToQueue : function(){
+      shelby.router.navigate('queue', {trigger: true});
     },
     
     _filterMyRolls : function(){
@@ -55,7 +54,6 @@
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState') ||
           _changedAttrs.has('displayIsolatedRoll')) {
-        this._updateVisibility();
       }
       // only update selection rendering if relevant attribtues have been updated
       if (!_changedAttrs.has('displayState') &&
@@ -65,44 +63,29 @@
       this._setSelected();
     },
 
-    _updateVisibility : function(){
-      if(this.model.get('displayIsolatedRoll') ||
-           this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll ||
-           this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
-          this.$el.hide();
-        } else {
-          this.$el.show();
-        }
-    },
-
     _setSelected : function(){
       this._clearSelected();
 
-      if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-          this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+      if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
+        this.$('.js-stream').addClass('guide-presentation-content-selected');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
         var $setSelectedClassOn;
-        if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-          switch (this.model.get('rollListContent')) {
-            case libs.shelbyGT.GuidePresentation.content.rolls.people :
-              $setSelectedClassOn = this.$('.js-people');
-              break;
-            case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-              $setSelectedClassOn = this.$('.js-my-rolls');
-              break;
-            case libs.shelbyGT.GuidePresentation.content.rolls.browse :
-              $setSelectedClassOn = this.$('.js-browse');
-              break;
-          }
-        } else {
-            $setSelectedClassOn = this.$('.js-stream');
+        switch (this.model.get('rollListContent')) {
+          case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
+            $setSelectedClassOn = this.$('.js-my-rolls');
+            break;
+          case libs.shelbyGT.GuidePresentation.content.rolls.browse :
+            $setSelectedClassOn = this.$('.js-browse');
+            break;
         }
-
         $setSelectedClassOn.addClass('guide-presentation-content-selected');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
+        this.$('.js-queue').addClass('guide-presentation-content-selected');
       }
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector button, .js-stream').removeClass('guide-presentation-content-selected');
+      this.$('.js-content-selector button').removeClass('guide-presentation-content-selected');
     }
 
   });
