@@ -59,7 +59,7 @@ window.shelbyBookmarklet = {
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
         var radar = {
 
-    getElementValue: function (obj, id) {
+          getElementValue: function (obj, id) {
                 var value = '';
                 for (var i = 0; i < obj.attributes.length; i++) {
                     if (obj.attributes[i].nodeName === id) {
@@ -289,6 +289,9 @@ window.shelbyBookmarklet = {
                                 crossDomain: true,
                                 success: function (response) {
                                   utilObject.queuedVideos = response.result;
+                                  if (shelbyBookmarklet) {
+                                    utilObject.htmlTemplate.notifySearching();
+                                  }
                                   utilObject.sendVidsToShelby(foundVids);
                                 }
                               });
@@ -357,9 +360,23 @@ window.shelbyBookmarklet = {
                     }
                 }
                 var self = this;
-  
+                if (shelbyBookmarklet) {
+                    setTimeout(function(numVids) {
+                      return function() {    
+                        if (vids.length == 0) {
+                              shelbyJ(".found-vid-notification").html("No videos found");
+                              setTimeout(function() {
+                                    shelbyJ(".notify-searching").remove();
+                              }, 5000);
+                          } else {
+                              shelbyJ(".notify-searching").remove();
+                          }
+                      }
+                    }(vids.length), 3000);
+                }
+              
                 if (vids.length > 0) {
-                    utilObject.htmlTemplate.notifyFoundVids(vids.length, findMore);
+                    utilObject.htmlTemplate.notifyNumVids(vids.length, findMore);
                     for (var i = 0; i < vids.length; i++) {
                         var videoId = vids[i].video_id;
                         utilObject.videoInformation[videoId] = {video: null, frame: null, domain: vids[i].domain};
@@ -786,18 +803,31 @@ window.shelbyBookmarklet = {
 
                 },
     
-                notifyFoundVids: function(numVids, findMore) {
-                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
-                        if (findMore) {
-                            shelbyJ(".shelby-notify").addClass("more");
-                        }
-                        shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
-                              shelbyJ('.shelby-notify').remove();
-                        });
-                        setTimeout(function() {
-                              shelbyJ('.shelby-notify').remove();
-                            }, 10000)
+                notifyNumVids: function(numVids, findMore) {
+                    if (shelbyJ(".shelby-notify").length > 0) {
+                        return;
+                    }
+                    utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
+                    if (findMore) {
+                        shelbyJ(".shelby-notify").addClass("more");
+                    }
+                    shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
+                          shelbyJ('.shelby-notify').remove();
+                    });
+                    setTimeout(function() {
+                          shelbyJ('.shelby-notify').remove();
+                        }, 10000)
                         
+                },
+
+                notifySearching: function() {
+                    utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-searching-notify']());    
+                    setTimeout(function() {
+                        shelbyJ(".notify-searching").addClass("notified");
+                    }, 0);
+                    shelbyJ(".notify-searching").on("click", function() {
+                        shelbyJ(".notify-searching").remove();
+                    });
                 },
                 
                 notifyQueued: function() {

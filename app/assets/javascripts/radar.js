@@ -4,6 +4,7 @@
 //= require ../templates/bookmarklet-context.jst.ejs
 //= require ../templates/bookmarklet-login.jst.ejs
 //= require ../templates/bookmarklet-notify.jst.ejs
+//= require ../templates/bookmarklet-searching-notify.jst.ejs
 //= require ../templates/bookmarklet-queued.jst.ejs
 //= require ../templates/bookmarklet-video-tab.jst.ejs
 //= require ../templates/frame-conversation-form.jst.ejs

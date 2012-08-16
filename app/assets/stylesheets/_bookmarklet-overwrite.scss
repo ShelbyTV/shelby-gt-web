@@ -48,6 +48,7 @@
   background-repeat: no-repeat;
   border: 1px solid #adadad;
   border-radius: 2px;
+  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
   color: #333;
   font-size: 11px;
   font-weight: 300;
@@ -57,7 +58,7 @@
   position: fixed;
   top: 30px;
   width: 160px;
-  z-index: 2147483647;
+  z-index: 2147483646;
 
   &.more {
     width: 200px;
@@ -101,6 +102,13 @@
     @include transition-timing-function(ease-in-out);
     @include transition-delay(0s);
   }
+}
+
+.found-vid-notification {
+  font-size: 20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
 }
 
 .queue-notification {
@@ -331,6 +339,7 @@
 
   &.queued {
     background-color: gray;
+    cursor: default;
     i {
       background-position: 0px 2px;
       padding-left: 15px;
