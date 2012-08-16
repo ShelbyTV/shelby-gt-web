@@ -33,7 +33,7 @@
   }
   
   #search-history {
-    margin: 40px auto;
+    margin: 10px auto;
   }
   
   #mobile-video-player {
@@ -55,7 +55,8 @@
     width: 100%;
     bottom: 0;
     top: 60px;
-    overflow:scroll;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
 
     // customizing jquery mobile ui
     .ui-content .ui-listview { margin:0px; }
