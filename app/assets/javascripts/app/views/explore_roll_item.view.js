@@ -30,6 +30,15 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
     if (!userFollowingRoll) {
       this.$('.js-follow-unfollow').addClass('command-active');
     }
+    this.appendChild(new libs.shelbyGT.ListView({
+      collectionAttribute : 'frames',
+      className: 'explore-list explore-roll-list clearfix',
+      doStaticRender : true,
+      listItemView : 'ExploreFrameItemView',
+      listItemViewAdditionalParams : {roll:this.model},
+      model : this.model,
+      tagName : 'ol'
+    }));
     return this;
   },
 
