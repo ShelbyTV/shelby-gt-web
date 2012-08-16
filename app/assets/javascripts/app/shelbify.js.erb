@@ -24,15 +24,15 @@ window.shelbyBookmarklet = {
         "provider": "hulu",
         "domain": "hulu.com",
         "regex": ["\/site-player\/(\\d*)\/player"]
-    }, {
+    }, /*{
         "provider": "pbs",
         "domain": "video.pbs.org",
-        "regex": ["width=512&height=288&video=.*?\\\/([0-9]+)"]
+        "regex": ["width=512&height=288.*&video=.*?\\\/([0-9]+)"]
     }, {
         "provider": "techcrunch",
         "domain": "techcrunch.tv",
         "regex": ["embedCode=(\\w*)"]
-    }, {
+    },*/ {
         "provider": "ted",
         "domain": "ted.com",
         "regex": ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
@@ -46,11 +46,11 @@ window.shelbyBookmarklet = {
         "domain": "youtube.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
         "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
-    }, {
+    }, /*{
         "provider": "bloomberg",
         "domain": "bloomberg.com",
         "regex": ["embedCode=(\\w*)"]
-    }, {
+    },*/ {
       "provider": "espn",
         "domain": "espn.com,espn.go.com",
         "regex": ["espn%3A([0-9]+)&"]
@@ -59,7 +59,7 @@ window.shelbyBookmarklet = {
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
         var radar = {
 
-    getElementValue: function (obj, id) {
+          getElementValue: function (obj, id) {
                 var value = '';
                 for (var i = 0; i < obj.attributes.length; i++) {
                     if (obj.attributes[i].nodeName === id) {
@@ -97,6 +97,9 @@ window.shelbyBookmarklet = {
                     break;
                 case 'techcrunch.tv':
                     known_url = "http://techcrunch.tv/watch?id=" + video_id;
+                    break;
+                case 'video.pbs.org':
+                    known_url = "http://video.pbs.org/video/" + video_id;
                     break;
                 case 'collegehumor.com':
                     if (useUrl) {
@@ -140,6 +143,8 @@ window.shelbyBookmarklet = {
                 for (var i = 0; i < possibleVideos.objects.length; i++) {
                     if ((/<embed/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
                         found_elements.push(possibleVideos.objects[i]);
+                    } else if(/video\.pbs\.org/.test(possibleVideos.objects[i].innerHTML)) {
+                        found_elements.push(possibleVideos.objects[i]);
                     } else if (/vimeo\.com/i.test(possibleVideos.objects[i].innerHTML)) {
                         found_elements.push(possibleVideos.objects[i]);
                     } else if ((/<oolaya/i.test(possibleVideos.objects[i].innerHTML) || possibleVideos.embeds.length == 0) && (/<object/i.test(possibleVideos.objects[i].innerHTML))) {
@@ -170,7 +175,6 @@ window.shelbyBookmarklet = {
                             for (var k = 0; k < shelbyBookmarklet.shelbyProviders[j].regex.length; k++) {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
-                                var valid_domain = false;
                                 for (var l = 0; l < domain_split.length; l++) {
                                   var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
@@ -243,7 +247,7 @@ window.shelbyBookmarklet = {
             },
 
             shelbyDocElements: {
-                'ext-elements': shelbyJ(".<%=@prefix%>ext-elements")
+                'ext-elements': shelbyJ(".ext-elements")
             },
 
             shelbyBkmkltUser: null,
@@ -251,7 +255,7 @@ window.shelbyBookmarklet = {
               shelbySignedInCallback: function(foundVids) {
                   return function (response) {
                     if (response.result.signed_in === false) {
-                        utilObject.styleGuideShow("<%=@prefix%>login-guide");
+                        utilObject.styleGuideShow("login-guide");
                         utilObject.htmlTemplate.loginGuideHtml();
                     } else {
                         utilObject.shelbyUserUtil.getUser(foundVids);
@@ -353,9 +357,14 @@ window.shelbyBookmarklet = {
                     }
                 }
                 var self = this;
-  
+                if (shelbyBookmarklet) {
+                        if (vids.length == 0) {
+                          utilObject.htmlTemplate.notifyNumVids(vids.length);
+                        }
+                }
+              
                 if (vids.length > 0) {
-                    utilObject.htmlTemplate.notifyFoundVids(vids.length, findMore);
+                    utilObject.htmlTemplate.notifyNumVids(vids.length, findMore);
                     for (var i = 0; i < vids.length; i++) {
                         var videoId = vids[i].video_id;
                         utilObject.videoInformation[videoId] = {video: null, frame: null, domain: vids[i].domain};
@@ -363,7 +372,7 @@ window.shelbyBookmarklet = {
                         var width = utilObject.getWidth(vids[i].embed);
                         var vpos = vids[i].embed.offset().top;
                         var hpos = vids[i].embed.offset().left;
-                        var frameInfoClass = "<%=@prefix%>video-context-" + videoId;
+                        var frameInfoClass = "video-context-" + videoId;
 
                         // put buttons/headers here, we have hpos, vpos, fixed positions
 
@@ -386,7 +395,7 @@ window.shelbyBookmarklet = {
                           });
                           utilObject.resizeArray.push(resizeFunction);
 
-                        shelbyJ(".<%=@prefix%>button-" + videoId).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
+                        shelbyJ(".button-" + videoId).attr("data-frameclass", frameInfoClass).attr("data-videourl", vids[i].known_url);
                         var dataReq = {
                             'provider_name': vids[i].provider,
                             'provider_id': vids[i].video_id,
@@ -451,7 +460,7 @@ window.shelbyBookmarklet = {
             shelbyContextButton : {
                   clickQueue : function() {
 
-                      utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-queue", null, function (event) {
+                      utilObject.shelbyDocElements['ext-elements'].on('click', ".all-queue", null, function (event) {
                         var queueButton = event.currentTarget;
                         var frameContextClass = queueButton.getAttribute("data-frameclass");
                         var videoId = queueButton.getAttribute("data-videoId");
@@ -472,8 +481,8 @@ window.shelbyBookmarklet = {
                   },
                       
                 clickRoll : function() {
-                        utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-roll", null, function (event) {
-                          utilObject.styleGuideShow("<%=@prefix%>roll-guide");
+                        utilObject.shelbyDocElements['ext-elements'].on('click', ".all-roll", null, function (event) {
+                          utilObject.styleGuideShow("roll-guide");
                           var rollButton = event.currentTarget;
                           var videoId = rollButton.getAttribute("data-videoId");
                           var user = utilObject.shelbyBkmkltUser;
@@ -501,17 +510,17 @@ window.shelbyBookmarklet = {
                           shelbyJ(".select-roll-type").css("display", "none");
                           utilObject.htmlTemplate.rollingFormHtml(user.personalRoll, backboneFrame);
                           utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"), frameClass, videoId);
-                          shelbyJ(".<%=@prefix%>cancel").on("click", function(event) {
+                          shelbyJ(".cancel").on("click", function(event) {
                               utilObject.styleGuideHide("roll-guide");
                           });
-                          shelbyJ(".<%=@prefix%>back").on("click", function(event) {
+                          shelbyJ(".back").on("click", function(event) {
                               utilObject.styleGuideHide("roll-guide");
                           });
                     });
                 },
                 // if it is commentable there must be a frame associated with it
                 clickComment : function() {
-                    utilObject.shelbyDocElements['ext-elements'].on('click', ".<%=@prefix%>all-comment", null, function (event) {
+                    utilObject.shelbyDocElements['ext-elements'].on('click', ".all-comment", null, function (event) {
                         var commentButton = event.currentTarget;
                         var videoId = commentButton.getAttribute("data-videoId");
                         var frameInfo = utilObject.videoInformation[videoId].frame;
@@ -522,16 +531,16 @@ window.shelbyBookmarklet = {
                         backboneFrame.set("video", utilObject.shelbyCreateModel(frameInfo.video));
                         var commentHtml = JST["frame-conversation"]({frame: backboneFrame, user: utilObject.shelbyCreateModel(utilObject.shelbyBkmkltUser)});
                         shelbyJ("#comment-guide-window").html(commentHtml);
-                        shelbyJ(".<%=@prefix%>cancel").on("click", function(event) {
+                        shelbyJ(".cancel").on("click", function(event) {
                             utilObject.styleGuideHide("comment-guide");
                         });
-                        shelbyJ(".<%=@prefix%>back").on("click", function(event) {
+                        shelbyJ(".back").on("click", function(event) {
                             utilObject.styleGuideHide("comment-guide");
                         });
-                        utilObject.shelbyDocElements['commentSubmit'] = shelbyJ(".<%=@prefix%>new-comment-submit");
-                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".<%=@prefix%>new-comment-input");
+                        utilObject.shelbyDocElements['commentSubmit'] = shelbyJ(".new-comment-submit");
+                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".new-comment-input");
                         utilObject.htmlTemplate.setUpConversationWithId(conversationId, videoId);
-                        utilObject.styleGuideShow("<%=@prefix%>comment-guide");
+                        utilObject.styleGuideShow("comment-guide");
                         utilObject.shelbyDocElements['commentSubmit'].off('click');
                         utilObject.shelbyDocElements['commentSubmit'].on('click', function (event) {
                             event.preventDefault();
@@ -655,7 +664,7 @@ window.shelbyBookmarklet = {
             },
 
             handleRollSubmit : function (knownUrl, frameInfoClass, videoId) {
-              var submitButton = shelbyJ(".<%=@prefix%>roll-options-submit");
+              var submitButton = shelbyJ(".roll-options-submit");
               submitButton.off('click');
               submitButton.on('click', null, null, function (event) {
                 var message = shelbyJ("#rolling-message").val();    
@@ -688,7 +697,7 @@ window.shelbyBookmarklet = {
                     shelbyJ(".conversation").html("");
                     for (var i = 0; i < messages.length; i++) {
                         var message = messages[i];
-                        var messageElement = '<li class="<%=@prefix%>frame-conversation-message shelby-message-' + i.toString() + ' clearfix">' + utilObject.htmlTemplate.messageHtml(message) + '</li>';
+                        var messageElement = '<li class="frame-conversation-message shelby-message-' + i.toString() + ' clearfix">' + utilObject.htmlTemplate.messageHtml(message) + '</li>';
                         shelbyJ(".conversation").append(messageElement);
                         shelbyJ(".shelby-message-" + i).on("click", ".js-message-reply", function(event) {
                             event.preventDefault(); 
@@ -724,7 +733,7 @@ window.shelbyBookmarklet = {
 
 
               setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
-                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' <%=@prefix%>guide-window">  </div>');
+                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' guide-window">  </div>');
                     utilObject.styleGuideHide();
                 },
   
@@ -735,7 +744,7 @@ window.shelbyBookmarklet = {
                     if (creator.nickname == utilObject.shelbyBkmkltUser.nickname) {
                         shelbyJ(".comment-button-content").addClass("self");
                     }
-                    var creatorUrl = "http://<%== Settings::VideoRadar.web_domain%>/user/" + creator.id + "/personal_roll";
+                    var creatorUrl = "http://<%=Settings::VideoRadar.web_domain%>/user/" + creator.id + "/personal_roll";
                     if (!shouldOverwrite && shelbyJ("." + shelbyFrameClass).data("frameclass") !== undefined) {
                         return;
                     }
@@ -782,20 +791,23 @@ window.shelbyBookmarklet = {
 
                 },
     
-                notifyFoundVids: function(numVids, findMore) {
-                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
-                        if (findMore) {
-                            shelbyJ(".shelby-notify").addClass("more");
-                        }
-                        shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
-                              shelbyJ('.shelby-notify').remove();
-                        });
-                        setTimeout(function() {
-                              shelbyJ('.shelby-notify').remove();
-                            }, 10000)
+                notifyNumVids: function(numVids, findMore) {
+                    if (shelbyJ(".shelby-notify").length > 0) {
+                        return;
+                    }
+                    utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-notify']({'numVids': numVids, "findMore": findMore}));
+                    if (findMore) {
+                        shelbyJ(".shelby-notify").addClass("more");
+                    }
+                    shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
+                          shelbyJ('.shelby-notify').remove();
+                    });
+                    setTimeout(function() {
+                          shelbyJ('.shelby-notify').remove();
+                        }, 10000)
                         
                 },
-                
+
                 notifyQueued: function() {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
                         setTimeout(function() {
@@ -826,7 +838,7 @@ window.shelbyBookmarklet = {
                         shelbyJ(".rolling-form").append(JST['rolling-form'](templateObj));
                 },
                 loginGuideHtml: function () {
-                  shelbyJ('#<%=@prefix%>login-guide-window').html(JST['bookmarklet-login']({
+                  shelbyJ('#login-guide-window').html(JST['bookmarklet-login']({
                       twitterDomain: "http://<%=Settings::VideoRadar.api_domain%>/auth/twitter",
                       facebookDomain: "http://<%=Settings::VideoRadar.api_domain%>/auth/facebook",
                   }));
@@ -837,45 +849,45 @@ window.shelbyBookmarklet = {
                 }
             },
             styleGuideShow: function(guideName) {
-                if (!shelbyJ("#<%=@prefix%>frame-guide-window").hasClass("guide-show")) {
-                    shelbyJ(".<%=@prefix%>back").html("Cancel");
+                if (!shelbyJ("#frame-guide-window").hasClass("guide-show")) {
+                    shelbyJ(".back").html("Cancel");
                 } else {
-                  shelbyJ(".<%=@prefix%>back:not(.<%=@prefix%>frame-guide-button)").html("Back");
+                  shelbyJ(".back:not(.frame-guide-button)").html("Back");
                 }
-                shelbyJ(".<%=@prefix%>guide-toggle").removeClass("show").addClass("hide");
-                shelbyJ(".<%=@prefix%>guide-window:not(#frame-guide-window)").removeClass("guide-show");
+                shelbyJ(".guide-toggle").removeClass("show").addClass("hide");
+                shelbyJ(".guide-window:not(#frame-guide-window)").removeClass("guide-show");
                 shelbyJ("#" + guideName + "-window").addClass("guide-show").addClass("guide-animate");
             },
 
             // style guide hide will never be called on frame guide
             styleGuideHide: function (guideName) {
-                if (!shelbyJ("#<%=@prefix%>frame-guide-window").hasClass("guide-show")) {
-                    shelbyJ('.<%=@prefix%>guide-toggle').removeClass("hide").addClass("show");
+                if (!shelbyJ("#frame-guide-window").hasClass("guide-show")) {
+                    shelbyJ('.guide-toggle').removeClass("hide").addClass("show");
                 }
                 if (guideName === undefined) {
-                    shelbyJ('.<%=@prefix%>guide-toggle').removeClass("hide").addClass("show");
-                    shelbyJ(".<%=@prefix%>guide-window").removeClass("guide-show");
+                    shelbyJ('.guide-toggle').removeClass("hide").addClass("show");
+                    shelbyJ(".guide-window").removeClass("guide-show");
                 } else {
                     shelbyJ("#" + guideName + "-window").removeClass("guide-show");
                 }
             },
 
             displaySpinnerOnButton: function (jQueryButton) {
-                jQueryButton.addClass("<%=@prefix%>js_sharing");
+                jQueryButton.addClass("js_sharing");
                 var content = jQueryButton.html();
                 jQueryButton.html('<img src="http://<%= Settings::VideoRadar.web_domain%>/images/assets/loading-small.gif"/>');
                 return function () {
                   jQueryButton.html(content);
-                  jQueryButton.removeClass("<%=@prefix%>js_sharing");
+                  jQueryButton.removeClass("js_sharing");
                 }
             },
 
             allGuides: {
-                "<%=@prefix%>roll-guide": "Roll",
-                "<%=@prefix%>comment-guide": "Comments",
-                "<%=@prefix%>share-guide": "Share",
-                "<%=@prefix%>login-guide": "Log In",
-                "<%=@prefix%>frame-guide": "Videos on Page"
+                "roll-guide": "Roll",
+                "comment-guide": "Comments",
+                "share-guide": "Share",
+                "login-guide": "Log In",
+                "frame-guide": "Videos on Page"
             },
 
 
@@ -936,9 +948,9 @@ window.shelbyBookmarklet = {
                     }
               });
 
-                utilObject.htmlTemplate.setUpGuide("<%=@prefix%>roll-guide", shelbyGuideWidth, true);
-                utilObject.htmlTemplate.setUpGuide("<%=@prefix%>comment-guide", shelbyGuideWidth, true);
-                utilObject.htmlTemplate.setUpGuide("<%=@prefix%>login-guide", shelbyGuideWidth, false);
+                utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
+                utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);
+                utilObject.htmlTemplate.setUpGuide("login-guide", shelbyGuideWidth, false);
                 utilObject.shelbyUserUtil.signedIn(foundVideos);
                 shelbyJ(window).resize(function () {
                     for (var i = 0; i < utilObject.resizeArray.length; i++) {
@@ -959,8 +971,8 @@ window.shelbyBookmarklet = {
                 var shelbyGuideWidth = 330;
 
                 // add in the bookmarklet loading bar
-                shelbyJ('.<%=@prefix%>ext-elements').remove();
-                shelbyJ('body').append('<div class=<%=@prefix%>ext-elements></div>');
+                shelbyJ('.ext-elements').remove();
+                shelbyJ('body').append('<div class=ext-elements></div>');
                 var radar = shelbyBookmarklet.shelbyRadar(shelbyJ, useUrl, urlProvider);
                 shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(radar);
         }
@@ -1017,7 +1029,7 @@ var loadBookmarklet = function(useUrl, useProvider) {
         if (!shelbyJ) {
           var shelbyJ = jQuery.noConflict();
         }
-        shelbyJ('.<%=@prefix%>ext-elements').remove()
+        shelbyJ('.ext-elements').remove()
         return pushState.apply(history, arguments);
     }
 })(window.history);

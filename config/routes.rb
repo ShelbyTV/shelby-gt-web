@@ -2,6 +2,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
 
+  get '/m' => 'mobile#search', :as => :mobile_search
+  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
+
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
     get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
@@ -18,8 +21,6 @@ ShelbyGtWeb::Application.routes.draw do
   get '/frame/:frame_id' => "frame#show"
 
   get '/signout' => "home#signout", :as => :signout
-
-  get '/video_radar/load.js' => 'video_radar#load', :format => "js"
 
   get '(*path)' => 'home#index', :as => :root
 
