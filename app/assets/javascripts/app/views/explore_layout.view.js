@@ -8,9 +8,12 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    this.renderChild(new libs.shelbyGT.ListView({
+    this.renderChild(new libs.shelbyGT.SmartRefreshListView({
       collectionAttribute : 'roll_categories',
+      doCheck : libs.shelbyGT.SmartRefreshCheckType.key,
+      doSmartRefresh : true,
       el : '.js-roll-category-list',
+      keyAttribute : 'category',
       listItemViewAdditionalParams : {
         activationStateModel : shelby.models.exploreGuide,
         exploreGuideModel : shelby.models.exploreGuide

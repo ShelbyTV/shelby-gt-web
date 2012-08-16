@@ -2,6 +2,7 @@ libs.shelbyGT.SmartRefreshCheckType = {
   binarySearch : 'binarySearch',
   head : 'head',
   headAndTail : 'headAndTail',
+  key : 'key',
   tail : 'tail'
 };
 
@@ -16,6 +17,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
     doSmartRefresh : false,
     initFixedHead : false,
+    keyAttribute : 'id',
     sortOrder : 1,
     sortAttribute : 'id'
   }),
@@ -42,7 +44,6 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   },
 
   _addIfNew : function(item, collection) {
-    var self = this;
     switch (this.options.doCheck) {
       case libs.shelbyGT.SmartRefreshCheckType.binarySearch :
           if (this._simulatedMasterCollection.length >= this.options.binarySearchOffset) {
@@ -89,6 +90,15 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
           if (this.options.initFixedHead) {
             this._updateFixedHeadIndex();
           }
+        }
+        break;
+      case libs.shelbyGT.SmartRefreshCheckType.key :
+        var self = this;
+        var existingItem = this._simulatedMasterCollection.find(function(compareItem) {
+          return compareItem.get(self.options.keyAttribute) == item.get(self.options.keyAttribute);
+        });
+        if (!existingItem) {
+          this._addItem(item, collection);
         }
         break;
     }
