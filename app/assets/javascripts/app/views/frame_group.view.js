@@ -25,8 +25,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
-    /*"click .js-upvote-frame"                : "_onClickQueue",*/
-    "click .js-upvote-frame"                : "_removeFrame",
+    "click .js-upvote-frame"                : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
 
@@ -156,7 +155,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // if user is trying to delete the currently playing frame, kick on to the next one
     // then delete
     if (shelby.models.guide.get('activeFrameModel')===this.model.get('frames').at(0)){
-      console.log('forwarding to next vid');
       Backbone.Events.trigger('playback:next');
     }
     var self = this;
