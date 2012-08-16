@@ -25,7 +25,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-upvote-frame"                : "_onClickQueue",
+    /*"click .js-upvote-frame"                : "_onClickQueue",*/
+    "click .js-upvote-frame"                : "_removeFrame",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
 
@@ -89,11 +90,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   render : function(){
     var self = this;
     this._leaveChildren();
+    
+    if (this.model.get('frames').length){
+      var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
+      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
-    var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
-
-    libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+      libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+    }
   },
 
   _expand: function(){
@@ -149,7 +152,19 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _removeFrame : function(){
-    this.model.destroy();
+    this.leave();
+    // if user is trying to delete the currently playing frame, kick on to the next one
+    // then delete
+    if (shelby.models.guide.get('activeFrameModel')===this.model.get('frames').at(0)){
+      console.log('forwarding to next vid');
+      Backbone.Events.trigger('playback:next');
+    }
+    var self = this;
+    setTimeout(function(){
+      self.model.get('frames').forEach(function(frame){
+        frame.destroy();
+      });
+    }, 100);
   },
 
   _upvote : function(){
