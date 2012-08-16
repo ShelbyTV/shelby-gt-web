@@ -46,7 +46,12 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       var video_id,
           frame,
           dashboard_entry;
-  
+      
+
+      if (!model.get('frame') || !model.get('frame').get('video')){
+        return false;
+      }
+
       // TODO: need to deal with null frame, null video, etc. in both cases
       if (model instanceof libs.shelbyGT.DashboardEntryModel) {
         video_id = model.get('frame').get('video').get('id');
