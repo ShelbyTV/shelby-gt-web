@@ -30,6 +30,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind("change:text", this._updateTextLengthCounter, this);
     this.model.bind("change:destination", this._updateDestinationButtons, this);
+    
+    // Supporting direct share via email only right now...
+    this.model.set('destination', ['email']);
   },
 
   _cleanup : function(){
@@ -162,6 +165,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       urls = [urls];
     }
     if (this._components.emailAddresses) {
+      this.model.set('destination', _.union(this.model.get('destination'), ['email']));
       this.model.set('addresses', this.$('.js-share-email-addresses').val());
     }
         

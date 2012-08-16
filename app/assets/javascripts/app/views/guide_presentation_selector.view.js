@@ -66,28 +66,26 @@
     _setSelected : function(){
       this._clearSelected();
 
-      if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-          this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+      if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
+        this.$('.js-stream').addClass('guide-presentation-content-selected');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
         var $setSelectedClassOn;
-        if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-          switch (this.model.get('rollListContent')) {
-            case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-              $setSelectedClassOn = this.$('.js-my-rolls');
-              break;
-            case libs.shelbyGT.GuidePresentation.content.rolls.browse :
-              $setSelectedClassOn = this.$('.js-browse');
-              break;
-          }
-        } else {
-            $setSelectedClassOn = this.$('.js-stream');
+        switch (this.model.get('rollListContent')) {
+          case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
+            $setSelectedClassOn = this.$('.js-my-rolls');
+            break;
+          case libs.shelbyGT.GuidePresentation.content.rolls.browse :
+            $setSelectedClassOn = this.$('.js-browse');
+            break;
         }
-
         $setSelectedClassOn.addClass('guide-presentation-content-selected');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
+        this.$('.js-queue').addClass('guide-presentation-content-selected');
       }
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector button, .js-stream').removeClass('guide-presentation-content-selected');
+      this.$('.js-content-selector button').removeClass('guide-presentation-content-selected');
     }
 
   });

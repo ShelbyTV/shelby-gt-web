@@ -17,6 +17,11 @@
           letter-spacing: 0;
 	  }
 
+          button {
+            cursor: pointer;
+            text-align: center;
+          }
+
           h1, h2, h3 {
             color: #DCDDDE;
           }
@@ -75,6 +80,8 @@
 		"partials/roll-selection-items",
  
                 "bookmarklet-overwrite",
+
+                "partials/notifications",
 
 		"partials/h5bp-utilities"; 	
 }

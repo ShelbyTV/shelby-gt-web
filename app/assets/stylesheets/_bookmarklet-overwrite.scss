@@ -22,8 +22,9 @@
   -webkit-background-size: cover;
   background-size: cover;
   height: 50px;
-  margin-left: 4px;
+  margin-left: 14px;
   margin-bottom:5px;
+  margin-top: 5px;
   width: 50px;
 
 }
@@ -41,8 +42,8 @@
 .shelby-notify {
   background-color: #eee;
   background-image: url('/images/assets/shelby_mark.svg');
-  background-position: 50% -7px;
-  background-size: 30px 40px;
+  background-position: 40% -3px;
+  background-size: 40px 40px;
   background-repeat: no-repeat;
   border: 1px solid #adadad;
   color: #333;
@@ -50,12 +51,26 @@
   font-weight: 300;
   height: 40px;
   left: 30px;
-  line-height: 5.5em;
+  line-height: 3.5em;
   position: fixed;
-  text-align: center;
+  text-align: right;
   top: 30px;
-  width: 102px;
+  width: 160px;
   z-index: 2147483647;
+  &.more {
+    width: 200px;
+    background-position: 30% -3px;
+  }
+  .cancel {
+    &:before {
+      content: 'x'   
+    }
+    @include x-button-primer($shelby-gray);
+    left: 0;
+    margin: 8px;
+    position: absolute;
+    top: -3px;	
+  }
 }
 
 .notify-window {
@@ -147,17 +162,6 @@
   text-align: center;
 }
 
-.guide-clickoff {
-  display: none;
-  position: fixed;
-  top: 0px;
-  z-index: 2147483647;
-  &.guide-clickoff-show {
-    cursor: pointer;
-    display: block;
-  }
-}
-
 .guide-window {
   background: #222;
   border-left: 1px solid black;
@@ -189,67 +193,49 @@
   }
 }
 
-.bookmarklet-button {
-  width: 100%;
-  height: 100%;
-  font-size: 11px;
-  font-weight: 300;
-  color: #333;
-  text-align: center;
-  background-color: #EEE;
-  height: 31px;
-}
+
+//BUTTONS
 
 .bookmarklet-video-tab {
   height: 300px;
   overflow: hidden;
   position: absolute;
-  width: 60px;
+  width: 85px;
   z-index: 2147483646;
-}
-
-
-.queue-button-content {
-  &:before {
-      content: "Queue"
-  }
-  &.queued {
-    background-position: 3px 2px;
-    padding-left: 15px;
-
-    &:before {
-      content: "Queued"
-    }
-  }
-  background-image: url("/images/assets/clock.png");
-  background-position: 5px 2px;
-  background-repeat:no-repeat;
-  background-size: 20%;
-  font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
-}
-
-.roll-button-content {
-  background-image: url("/images/assets/videocard_roll_off.svg");
-  background-position: 5px 2px;
-  background-repeat:no-repeat;
-  background-size: 20%;
-  font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
 }
 
 .embedded-buttons {
   border-radius: 0;
   list-style-type: none;
   margin: 0 0 0 100%;
-  padding-top: 2px;
   padding-bottom: 28px;
-  width: inherit;
+  padding-top: 2px;
+  width: 80px;
   li {
     border: 1px solid #adadad;
+    border-right: 0;
     background-color: #EEE;
+    box-shadow: -1px 0 1px 0 rgba(0, 0, 0, .3);
+    width: 100%;
+
+    .all-queue {
+      &:hover {
+        color: $shelby-blue;
+      }
+    }
+    .all-roll {
+      &:hover {
+        i {
+          background-image: url("/images/assets/videocard_roll_on.svg");
+        }
+      }
+    }
+
+    .all-comment {
+      &:hover {
+        color: $shelby-blue;
+      }
+    }
 
     &:last-child {
       border-top: none;
@@ -264,10 +250,70 @@
   }
 
   &.buttons-show {
-    margin-left: 0;
+    margin-left: 5px;
   }
 }
 
+
+.comment-button-content {
+  &:before {
+    content: "Reply"
+  }
+  &.self {
+    &:before {
+      content: "Comment"
+    }
+  }
+  font-style: normal;
+}
+
+.queue-button-content {
+  &:before {
+      content: "Queue"
+  }
+  background-image: url("/images/assets/videocard_queue_off.svg");
+  background-position: 5px 2px;
+  background-repeat:no-repeat;
+  background-size: 20%;
+  font-style: normal;
+  padding-bottom: 2px;
+  padding-left: 19px;
+}
+  
+
+.roll-button-content {
+  background-image: url("/images/assets/videocard_roll_off.svg");
+  background-position: 5px 2px;
+  background-repeat:no-repeat;
+  background-size: 20%;
+  font-style: normal;
+  padding-bottom: 2px;
+  padding-left: 19px;
+}
+
+.bookmarklet-button {
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 300;
+  color: #333;
+  text-align: center;
+  background-color: #EEE;
+  height: 31px;
+
+  &.queued {
+    background-color: gray;
+    i {
+      background-position: 0px 2px;
+      padding-left: 15px;
+
+      &:before {
+        content: "Queued"
+      }
+      font-style: normal;
+    }
+  }
+}
 
 .frame-title {
   width:50%;
