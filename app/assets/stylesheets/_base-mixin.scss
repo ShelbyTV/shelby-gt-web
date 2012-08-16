@@ -29,7 +29,7 @@ $roundies-type : normal !default;
 @mixin notype{color: transparent;font: 0/0 a; overflow: hidden;text-shadow: none; white-space: nowrap;}
 
 @mixin basefont{
-	font:100 normal 62.5%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+	font:100 normal 62.5%/1.231 Arial,sans-serif;
 }
 
 @mixin inputfont{
