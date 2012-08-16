@@ -1,6 +1,6 @@
 <div id="search-bar" class="mobile-search-form">
 	<%= form_tag '', :method => :post do %>
-		<%= text_field_tag(:term, query_param, :placeholder => 'find the unexpected. search shelby.',:type => "search", 'data-theme' => 'b', :id=>"mobile-search-input", "data-mini"=>"true") %>
+		<%= text_field_tag(:term, query_param, :placeholder => 'find the unexpected. search shelby.',:type => "search", 'data-theme' => 'c', :id=>"mobile-search-input", "data-mini"=>"true") %>
 		<div id="mobile-search-spinner" class="mobile-search-spinner"></div>
 	<% end %>
 </div>
@@ -10,15 +10,15 @@
 		$('.mobile-search-form').submit(function() {
 			$('.mobile-search-submit').prop('disabled', true);
 			var opts = {
-          lines: 11, // The number of lines to draw
-          length: 5, // The length of each line
-          width: 4, // The line thickness
-          radius: 5, // The radius of the inner circle
+          lines: 10, // The number of lines to draw
+          length: 4, // The length of each line
+          width: 3, // The line thickness
+          radius: 3, // The radius of the inner circle
           rotate: 0, // The rotation offset
-          color: 'white', // #rgb or #rrggbb
+          color: 'black', // #rgb or #rrggbb
           speed: 1, // Rounds per second
           trail: 55, // Afterglow percentage
-          shadow: true, // Whether to render a shadow
+          shadow: false, // Whether to render a shadow
           hwaccel: false, // Whether to use hardware acceleration
           className: 'mobile-spinner', // The CSS class to assign to the spinner
           zIndex: 2e9, // The z-index (defaults to 2000000000)
