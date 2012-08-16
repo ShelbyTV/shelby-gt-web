@@ -1,9 +1,9 @@
-<div class="video">
+<a href="#">
 	<img id="<%= frame['video']['provider_id'] %>" src="<%= frame['video']["thumbnail_url"] %>" width="320" height="180"/>
-</div>
-<div class="video-title">
-	<%= frame['video']['title'] %>
-</div>
+	<h3 class="ui-li-heading"><%= frame['video']['title'] %></h3>
+	<p class="ui-li-desc"><%= frame['video']['provider_name'] %></p>	
+</a>
+
 <div class="video-script">
 	<% if frame['video']['provider_name'] == 'youtube' %>
 		<%= render :partial => "youtube_embed", :locals => { :video => frame['video'] } %>

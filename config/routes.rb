@@ -4,7 +4,12 @@ ShelbyGtWeb::Application.routes.draw do
 
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
-    get '/roll/:id' => 'mobile#search_results', :as => :mobile_search_results
+    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+  end
+
+  constraints(:subdomain => 'm.localhost') do
+    get '/' => 'mobile#search', :as => :mobile_search
+    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
   end
 
   get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
