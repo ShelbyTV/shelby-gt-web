@@ -258,6 +258,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayExploreView : function(){
+    this._fetchQueuedVideos();
     this._setupTopLevelViews();
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.explore});
     shelby.models.exploreRollCategories.fetch({
