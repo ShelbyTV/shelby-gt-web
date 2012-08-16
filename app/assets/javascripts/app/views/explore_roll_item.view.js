@@ -43,6 +43,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _displayFullRoll : function(){
+    shelby.models.routingState.set('forceFramePlay', true);
     shelby.router.navigateToRoll(this.model, {trigger:true});
   },
 

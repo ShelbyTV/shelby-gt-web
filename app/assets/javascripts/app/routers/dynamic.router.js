@@ -4,7 +4,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title" : "displayRoll",
-    "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
     "isolated_roll/:rollId" : "displayIsolatedRoll",
@@ -69,6 +68,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
+    } else if (shelby.models.routingState.get('forceFramePlay')) {
+      defaultOnRollFetch = this._checkPlayRollFrame;
+      // responded to the forceFramePlay state, so reset it
+      shelby.models.routingState.unset('forceFramePlay');
     }
     
     options = _.chain({}).extend(options).defaults({
@@ -332,6 +335,24 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (firstFrame) {
       shelby.models.guide.set('activeFrameModel', firstFrame);
     }
+  },
+
+  _checkPlayRollFrame : function(rollModel, response) {
+      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+      if (activeFrameModel) {
+        var activeFrameModelRoll = activeFrameModel.get('roll');
+        if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
+          //if the previous active frame was on the current roll, just play it
+          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+          return;
+        }
+      }
+
+      //if we weren't already playing something from the current roll, activate the roll's first frame
+      var firstFrame = rollModel.get('frames').first();
+      if (firstFrame) {
+        shelby.models.guide.set('activeFrameModel', firstFrame);
+      }
   },
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {

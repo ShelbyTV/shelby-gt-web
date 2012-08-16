@@ -22,6 +22,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   initDynamic : function(url){
     shelby.router = new libs.shelbyGT.DynamicRouter();
+    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
