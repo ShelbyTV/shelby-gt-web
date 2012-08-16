@@ -549,46 +549,6 @@ window.shelbyBookmarklet = {
                 },
             },
             shelbyAjaxCall : {
-                shelbyApiShare: function (apiFrameId) {
-                    var destinationstring = [];
-                    var networkImgs = utilObject.shelbyDocElements["shareNetworks"];
-                    for (var i = 0; i < networkImgs.length; i++) {
-                        var networkimg = networkImgs[i];
-                        if (networkimg.hasClass('active')) {
-                            destinationstring.push(networkimg.data("dest"));
-                        }
-                    }
-                    var dataReq = {
-                        'frame_id': apiFrameId,
-                        'destination': destinationstring,
-                        'text': utilObject.shelbyDocElements['shareText'].val()
-                    };
-                    var shareCompleteCb = utilObject.displaySpinnerOnButton(utilObject.shelbyDocElements['shareSubmit']);
-                    shelbyJ.ajax({
-                        type: "GET",
-                        dataType: "jsonp",
-                        timeout: 10000,
-                        data: dataReq,
-                        url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/frame/" + apiFrameId + "/share",
-                        xhrFields: {
-                            withCredentials: true
-                        },
-                        async: true,
-                        success: function (response) {
-                            var alertString = "Sucessful Share to ";
-                            for (var i = 0; i < destinationstring.length - 1; i++) {
-                                alertString += destinationstring[i] + ", ";
-                            }
-                            alertString += destinationstring[i] + ".";
-                        },
-                        error: function (xhr, textStatus, errorThrown) {
-                            alert("Unable to share video");
-                        },
-                        complete: function() {
-                            shareCompleteCb();
-                        }
-                    });
-                },
                 shelbyApiConversation: function(conversationId, conversationCB) {
                     if (!conversationId) {
                         conversationCB();
@@ -596,6 +556,7 @@ window.shelbyBookmarklet = {
                       shelbyJ.ajax({
                           type: "GET",
                           dataType: "jsonp",
+                          timeout: 10000,
                           data: {},
                           url: "http://<%=Settings::VideoRadar.api_domain%>/v1/conversation/" + conversationId,
                           xhrFields: {
@@ -603,6 +564,9 @@ window.shelbyBookmarklet = {
                           },
                           async: true,
                           success: conversationCB,
+                          error: function() {
+                            utilObject.htmlTemplate.notifyMessage("Cannot find conversation");
+                          }
                       });
                     }
                 },
@@ -612,6 +576,7 @@ window.shelbyBookmarklet = {
                     shelbyJ.ajax({
                         type: "GET",
                         dataType: "jsonp",
+                        timeout: 10000,
                         data: dataReq,
                         url: "http://<%= Settings::VideoRadar.api_domain %>/v1/POST/conversation/" + conversationId + "/messages",
                         xhrFields: {
@@ -622,7 +587,7 @@ window.shelbyBookmarklet = {
                             utilObject.htmlTemplate.setUpConversationWithId(conversationId, videoId)
                         },
                         error: function () {
-                            alert("Unable to comment");
+                            utilObject.htmlTemplate.notifyMessage("Cannot comment")
                         }
                     })
                 },
@@ -638,6 +603,7 @@ window.shelbyBookmarklet = {
                         type: 'GET',
                         url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/roll/' + roll_id + '/frames',
                         dataType: "jsonp",
+                        timeout: 10000,
                         async: true,
                         crossDomain: true,
                         data: reqData,
@@ -648,7 +614,7 @@ window.shelbyBookmarklet = {
                             callback(response)
                         },
                         error: function () {
-                            alert("unable to roll video");
+                            utilObject.htmlTemplate.notifyMessage("Cannot roll");
                         }
                     });
                 },
@@ -663,6 +629,7 @@ window.shelbyBookmarklet = {
                           type: 'GET',
                           url: 'http://<%=Settings::VideoRadar.api_domain%>/v1/POST/frame/' + frame.id + '/add_to_watch_later',
                           data: reqData,
+                          timeout: 10000,
                           dataType: 'jsonp',
                           async: true,
                           crossDomain: true,
@@ -673,7 +640,7 @@ window.shelbyBookmarklet = {
                             callback(response);
                           },
                           error : function() {
-                            alert("unable to queue video");
+                            utilObject.htmlTemplate.notifyMessage("Cannot queue");
                           }
                       });
                     } else {
@@ -693,7 +660,7 @@ window.shelbyBookmarklet = {
               submitButton.on('click', null, null, function (event) {
                 var message = shelbyJ("#rolling-message").val();    
                 if (!message || message.length === 0) {
-                  utilObject.htmlTemplate.notifyNeedComment();
+                  utilObject.htmlTemplate.notifyMessage("Please enter a comment");
                   return;
                 }
                 rollCallback = function(response) {
@@ -791,8 +758,8 @@ window.shelbyBookmarklet = {
                       shelbyJ(".comment-text-" + videoId).html(frame.conversation.messages.length);
                     }
                 },
-                
-                notifyNeedComment: function() {
+
+                notifyMessage: function(message) {
                     var buttonOne = {
                         text: "Ok",
                         visible: true,
@@ -803,7 +770,7 @@ window.shelbyBookmarklet = {
                     };
                     var model = {
                                   "class" : "default",
-                                  "message": "Please enter a comment",
+                                  "message": message,
                                   "number_of_buttons": 'one',
                                   "button_one": buttonOne,
                                   "button_two": buttonTwo};
@@ -956,7 +923,6 @@ window.shelbyBookmarklet = {
 
                     var refoundVideos = radar.find(newPossibleVideos);
                     var newVideos = []
-                    console.log(refoundVideos);
                     for (var i = 0; i < refoundVideos.length; i++) {
                         var refoundId = refoundVideos[i].video_id;
                         if (!utilObject.videoInformation[refoundId]) {
