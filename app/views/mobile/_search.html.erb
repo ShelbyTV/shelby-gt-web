@@ -8,6 +8,7 @@
 <script>
 	$(function(){
 		$('.mobile-search-form').submit(function() {
+			// SPINNER SETUP //
 			$('.mobile-search-submit').prop('disabled', true);
 			var opts = {
           lines: 10, // The number of lines to draw
@@ -42,7 +43,7 @@
       	// Create a callback
       	var cb = function(res){
        	// Create array of returned YouTube video URLs
-        	var urls = new Array();
+       	var urls = new Array();
 				res.forEach(function(r){
 					if (r.link != undefined) {
 					  r.link.forEach(function(l){
