@@ -175,6 +175,7 @@ window.shelbyBookmarklet = {
                             for (var k = 0; k < shelbyBookmarklet.shelbyProviders[j].regex.length; k++) {
                                 var reg = new RegExp(shelbyBookmarklet.shelbyProviders[j].regex[k]);
                                 var domain_split = shelbyBookmarklet.shelbyProviders[j].domain.split(',');
+                                var valid_domain = false;
                                 for (var l = 0; l < domain_split.length; l++) {
                                   var domain_reg = new RegExp(shelbyJ.trim(domain_split[l]));
                                     if (domain_reg.test(str) || domain_reg.test(window.location)) {
@@ -357,7 +358,7 @@ window.shelbyBookmarklet = {
                     }
                 }
                 var self = this;
-                if (isShelbyBookmarklet) {
+                if (window.isShelbyBookmarklet) {
                         if (vids.length == 0) {
                           utilObject.htmlTemplate.notifyNumVids(vids.length);
                         }

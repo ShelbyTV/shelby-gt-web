@@ -9,6 +9,7 @@
 ( function(){
 	
 	var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
+	var MessageModel = libs.shelbyGT.MessageModel;
 	var RollFollowingsConfig = shelby.config.db.rollFollowings;
 	var RollModel = libs.shelbyGT.RollModel;
         var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
@@ -131,8 +132,12 @@
 			
 			// re roll the frame
       this._frame.reRoll(roll, function(newFrame){
-        //rolling is done
+        //need to send comment (share doesn't do that)
+        self._addMessage(message, newFrame.get('conversation_id'));
+        
+        //rolling is done (don't need to wait for add message to complete)
 				self._rollingSuccess(roll, newFrame);
+				
 				// Optional Sharing (happens in the background)
         self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
         self._frameRollingState.get('shareModel').save(null, {
@@ -153,6 +158,12 @@
 				"Rolled to <a href='#' data-roll_id='"+roll.id+"' class='roll-route'>"+
 				libs.shelbyGT.viewHelpers.roll.titleWithPath(roll)+
 				"</a>!");
+		},
+		
+		_addMessage : function(text, conversation_id){
+		  var msg = new MessageModel({text:text, conversation_id:conversation_id});
+      msg.save(null, {});
+      libs.utils.rhombus.sadd('comments', this._frame.id);
 		}
 		
 	});
