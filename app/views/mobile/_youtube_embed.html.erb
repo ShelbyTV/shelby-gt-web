@@ -1,18 +1,19 @@
 <% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
 <script>
 	$('li.<%= vid_info %>').on('click', function(){
-		$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-		
-		$('#mobile-video-player').slideDown('slow');
-		
-		if (window.currentPlaying){
-			//$('#mobile-video-player').html('');
-			//$("#content").removeClass('video-playing');
+		if ( window.currentPlaying == '<%= vid_info %>' ){
+			$('#mobile-video-player').html('');
+			$('#mobile-video-player').slideUp('fast');
+			$("#content").removeClass('video-playing');
 			window.currentPlaying = null;
 		}
-		else {
-			window.currentPlaying = '<%= vid_info %>';
+		else{
+			$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			
+			$('#mobile-video-player').slideDown('slow');
 			$("#content").addClass('video-playing');
+			window.currentPlaying = '<%= vid_info %>';
 		}
+		
 	});
 </script>

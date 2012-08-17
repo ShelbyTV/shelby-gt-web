@@ -33,7 +33,7 @@
   }
   
   #search-history {
-    margin: 40px auto;
+    margin: 10px auto;
   }
   
   #mobile-video-player {
@@ -41,7 +41,7 @@
     position:fixed;
     top: 59px;
     width: 100%;
-    height: 300px;
+    height: 45%;
     margin: 0 auto;
     z-index:100;
     iframe{
@@ -55,7 +55,8 @@
     width: 100%;
     bottom: 0;
     top: 60px;
-    overflow:scroll;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
 
     // customizing jquery mobile ui
     .ui-content .ui-listview { margin:0px; }
@@ -81,6 +82,6 @@
   }
   
   #content.video-playing {
-    #mobile-frames { margin-top: 300px; }
+    #mobile-frames { margin-top: 45%; }
   } 
 }
