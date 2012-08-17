@@ -2,7 +2,8 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
     'click .js-explore-frame-thumbnail'       : '_displayVideo',
-    'click .js-queue-command:not(.js-queued)' : '_queueVideo'
+    'click .js-queue-command:not(.js-queued)' : '_queueVideo',
+    'click .js-roll-command'                  : '_displayRollVideo'
   },
 
   className : 'explore-roll-item',
@@ -34,6 +35,10 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   _queueVideo : function() {
     this.model.saveToWatchLater();
     this.$('.js-queue-command').text('Queued').addClass('js-queued');
+  },
+
+  _displayRollVideo : function() {
+    shelby.models.guideOverlay.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, this.model);
   },
 
   _onQueuedVideosAdd : function(video) {
