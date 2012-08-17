@@ -924,7 +924,6 @@ window.shelbyBookmarklet = {
                 utilObject.htmlTemplate.setUpGuide("login-guide", shelbyGuideWidth, false);
                 shelbyJ(".ext-elements").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', '.guide-window', function(event) {
                         var guideWindow = shelbyJ("#" + event.currentTarget.getAttribute("id"));
-                        console.log(guideWindow);
                         if (!guideWindow.hasClass("guide-show")) {
                             guideWindow.addClass("guide-hide");
                         }
