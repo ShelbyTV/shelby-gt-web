@@ -4,10 +4,11 @@ describe("FrameGroupView", function() {
       queuedVideos : new Backbone.Model({queued_videos:new Backbone.Collection()})
     };
     this.frameGroupModel = BackboneFactory.create('frame_group');
+    this.guideOverlayModel = new libs.shelbyGT.GuideOverlayModel();
     this.view = new libs.shelbyGT.FrameGroupView({
       model : this.frameGroupModel,
       activationStateModel : new libs.shelbyGT.GuideModel(),
-      guideOverlayModel : new libs.shelbyGT.GuideOverlayModel()
+      guideOverlayModel : this.guideOverlayModel
     });
   });
 
@@ -51,18 +52,18 @@ describe("FrameGroupView", function() {
     
     describe("Guide overlays", function() {
       beforeEach(function() {
-        sinon.spy(this.view, '_checkSetGuideOverlayState');
+        this.switchStub = sinon.stub(this.guideOverlayModel, 'switchOrHideOverlay');
       });
       
       afterEach(function() {
-        this.view._checkSetGuideOverlayState.restore();
+        this.switchStub.restore();
       });
 
       describe("click .js-video-activity-toggle", function() {
         it("should update guide overlay state using proper parameters to request conversation view", function() {
           expect(this.view.$el).toContain('.js-video-activity-toggle');
           this.view.$('.js-video-activity-toggle').click();
-          expect(this.view._checkSetGuideOverlayState).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.conversation);
+          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.conversation, this.frameGroupModel.get('frames').at(0));
         });
       });
 
@@ -70,7 +71,7 @@ describe("FrameGroupView", function() {
         it("should update guide overlay state using proper parameters to request rolling view", function() {
           expect(this.view.$el).toContain('.js-roll-frame');
           this.view.$('.js-roll-frame').click();
-          expect(this.view._checkSetGuideOverlayState).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.rolling);
+          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.rolling, this.frameGroupModel.get('frames').at(0));
         });
       });
 
@@ -78,39 +79,8 @@ describe("FrameGroupView", function() {
         it("should update guide overlay state using proper parameters to request share view", function() {
           expect(this.view.$el).toContain('.js-share-frame');
           this.view.$('.js-share-frame').click();
-          expect(this.view._checkSetGuideOverlayState).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.share);
+          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.share, this.frameGroupModel.get('frames').at(0));
         });
-      });
-    });
-  });
-
-  describe("Methods", function() {
-
-    describe("_checkSetGuideOverlayState", function() {
-      it("should set guide overlay model state to reflect the arguments", function() {
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.conversation);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).not.toBeNull();
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toEqual(this.frameGroupModel.get('frames').at(0));
-
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.rolling);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).not.toBeNull();
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toEqual(this.frameGroupModel.get('frames').at(0));
-      });
-    
-      it("should set guide overlay model state to reflect no guide overlay view if the specified view and frame are already displayed", function() {
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
-      });
-
-      it("should clear the overlay frame attribute if overlay type is set to none", function() {
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-        this.view._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.none);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
-        expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
       });
     });
   });

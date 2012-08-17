@@ -117,11 +117,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   requestFrameShareView: function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.share);
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
+      this.model.get('frames').at(0));
   },
   
   requestFrameRollView : function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+      this.model.get('frames').at(0));
   },
 
   _onClickQueue : function(){
@@ -156,26 +158,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   _requestConversationView : function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-  },
-
-  _checkSetGuideOverlayState : function(type) {
-    //if we're already showing the specified overlay type for this frame, hide it
-    var alreadyShowingThisOverlay =
-        this.options.guideOverlayModel.get('activeGuideOverlayType') == type &&
-        this.options.guideOverlayModel.has('activeGuideOverlayFrame') &&
-        this.options.guideOverlayModel.get('activeGuideOverlayFrame').id == this.model.get('frames').at(0).id;
-
-    if (type == libs.shelbyGT.GuideOverlayType.none || alreadyShowingThisOverlay) {
-      // hide the current overlay(s)
-      this.options.guideOverlayModel.clearAllGuideOverlays();
-    } else {
-      // show the requested overlay
-      this.options.guideOverlayModel.set({
-        'activeGuideOverlayFrame' : this.model.get('frames').at(0),
-        'activeGuideOverlayType' : type
-      });
-    }
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
+      this.model.get('frames').at(0));
   },
 
   _goToCreatorsPersonalRoll : function(){
