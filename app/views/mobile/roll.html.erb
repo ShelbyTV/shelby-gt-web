@@ -3,7 +3,7 @@
 <div id="mobile-frames">
 	<ul id="rolls-frame-list" data-role="listview" data-theme="c" style="margin:0;">
 		<% @frames.each do |f| %>
-			<li class="<%= f['video']['provider_name'] %>-<%= f['video']['provider_id'] %> mobile-frame">
+			<li class="<%= f['video']['provider_name'] %>-<%= f['video']['provider_id'] %> mobile-frame js-track-event" data-ga_category="Mobile" data-ga_action="Clicked video to watch" data-ga_label="<%= f['video']['title'] %>">
 				<%= render :partial => "mobile_frame", :locals => { :frame => f } %>
 			</li>
 		<% end %>

@@ -6,6 +6,7 @@
     margin: 10px auto;
     text-align: center;
     width: 100%;
+    padding: 0px 5px;
     .mobile-search-spinner{
       position: absolute;
       margin-top: -21px;
@@ -29,11 +30,19 @@
   	);
   	background-size:135px;
     height: 35px;
-    margin-left: 30px;
+    margin-left: 5px;
   }
   
   #search-history {
     margin: 10px auto;
+  }
+  
+  #share-area {
+    height: 20px;
+    width: 125px;
+    margin: 0px auto 0px auto;
+    position: relative;
+    top: -10px;
   }
   
   #mobile-video-player {
@@ -81,7 +90,7 @@
 
   }
   
-  #content.video-playing {
+  .content.video-playing {
     #mobile-frames { margin-top: 45%; }
   } 
 }

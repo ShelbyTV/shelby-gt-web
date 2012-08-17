@@ -5,15 +5,15 @@
 		if ( window.currentPlaying == '<%= vid_info %>' ){
 			$('#mobile-video-player').html('');
 			$('#mobile-video-player').slideUp('fast');
-			$("#content").removeClass('video-playing');
+			$(".content").removeClass('video-playing');
 			window.currentPlaying = null;
 		}
 		// NEW VIDEO WAS CLICKED => LOAD VIDEO & SHOW VIDEO
 		else{
+			$(".content").addClass('video-playing');
 			$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			
 			$('#mobile-video-player').slideDown('slow');
-			$("#content").addClass('video-playing');
 			window.currentPlaying = '<%= vid_info %>';
 		}
 		

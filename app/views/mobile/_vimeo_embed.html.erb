@@ -5,14 +5,14 @@
 		if ( window.currentPlaying == '<%= vid_info %>' ){
 			$('#mobile-video-player').html('');
 			$('#mobile-video-player').slideUp('fast');
-			$("#content").removeClass('video-playing');
+			$(".content").removeClass('video-playing');
 			window.currentPlaying = null;
 		}
 		// NEW VIDEO WAS CLICKED => LOAD VIDEO & SHOW VIDEO
 		else{
+			$(".content").addClass('video-playing');
 			$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" src="http://player.vimeo.com/video/<%= video["provider_id"] %>?autoplay=1&portrait=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
 				$('#mobile-video-player').slideDown('slow');
-				$("#content").addClass('video-playing');
 				window.currentPlaying = '<%= vid_info %>';
 			}
 	});

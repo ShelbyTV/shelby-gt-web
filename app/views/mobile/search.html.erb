@@ -3,7 +3,7 @@
 <div id="search-history">
 	<ul id="search-history-list" data-role="listview" data-split-theme="c" data-split-icon="delete" data-theme="c" style="margin:0;">
 		<li>
-			<a href='<%= Settings::Application.mobile_url %>/roll/4f8f7ef6b415cc476200004a'>Awesomeness (promoted search)</a><a class="henry" href="#">gear</a>
+			<a href='<%= Settings::Application.mobile_url %>/roll/4f8f7ef6b415cc476200004a'>Awesomeness [promoted search]</a><a class="henry js-track-event" data-ga_category="Mobile" data-ga_action="Clicked promoted search" data-ga_label="Promoted Search" href="#" data-transition="flow">gear</a>
 		</li>
 	</ul>
 </div>
@@ -19,7 +19,7 @@
 				// DISPLAY SEACH HISTORY //
 				for (var term in searchHistory) {
 					var link = searchHistory[term];
-					$("#search-history-list").prepend('<li id="'+term+'" class="historical-link"><a href='+link+'>'+term+'</a><a class="remove-search-term" href="#">gear</a></li>').listview("refresh");
+					$("#search-history-list").prepend('<li id="'+term+'" class="js-track-event" data-ga_category="Mobile" data-ga_action="Clicked previous search" data-ga_label="'+term+'"><a href='+link+'>'+term+'</a><a class="remove-search-term js-track-event" data-ga_category="Mobile" data-ga_action="Removed previous search" data-ga_label="'+term+'" href="#" >gear</a></li>').listview("refresh");
 				}
 			}
 			else{
@@ -35,6 +35,6 @@
 			});
 			
 			// reset header text in case anythings in there for some reason.
-			$('h1').text("");
+			$('h1.mobile-logo').text("");
 	});
 </script>

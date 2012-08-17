@@ -9,6 +9,7 @@
 ( function(){
 	
 	var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
+	var MessageModel = libs.shelbyGT.MessageModel;
 	var RollFollowingsConfig = shelby.config.db.rollFollowings;
 	var RollModel = libs.shelbyGT.RollModel;
         var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
@@ -130,9 +131,10 @@
 			if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 			
 			// re roll the frame
-      this._frame.reRoll(roll, function(newFrame){
-        //rolling is done
+      this._frame.reRoll(roll, message, function(newFrame){
+        //rolling is done (don't need to wait for add message to complete)
 				self._rollingSuccess(roll, newFrame);
+				
 				// Optional Sharing (happens in the background)
         self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
         self._frameRollingState.get('shareModel').save(null, {
