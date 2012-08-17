@@ -148,13 +148,6 @@
   }
 }
 
-//--------- partials need refactoring/cleaning up ----------
-
-.guide-explore {
-  background-color: $guide-explore-bg;
-  height: 100%;
-}
-
 .explore-frame-title {
   color: $explore-frame-title;
   font-size: 1.2em;
@@ -163,35 +156,19 @@
   margin-top: (10em/12);
 }
 
+//---------------------------
+//  modular list framework
+//---------------------------
+
 .list_module {
   margin: 0;
   padding: $list-module-spacing;
 }
 
 .list_item {
-  background-color: $list-item-bg;
-  border: 1px solid $list-item-border;
-
-  &:first-child {
-    @include roundies(header);
-    border-bottom: none;
-  }
-
-  &:last-child {
-    @include roundies(footer);
-    border-top: none;
-  }
 }
 
 .list_button {
-  background: transparent;
-  border: none;
-  color: $font-color-display;
-  font-family: $font-family-display;
-  font-weight: 300;
-  padding: .75em 1em .8em;
-  text-align: left;
-  width: 100%;
 
   &:hover {
     background-color: $list-item-bg-hover;
@@ -200,4 +177,47 @@
 
 .active-list-item .list_button {
   background-color: $list-item-bg-hover;
+}
+
+//---------------------------
+//  guide styles.
+//  base: modular list framework
+//---------------------------
+
+.guide-explore {
+  background-color: $guide-explore-bg;
+  height: 100%;
+}
+
+.guide-list {
+
+}
+
+.guide-item {
+  &:first-child {
+    .guide-link {
+      @include roundies(header);
+    }
+  }
+
+  &:last-child {
+    .guide-link {    
+      @include roundies(footer);
+      border-bottom: 1px solid $list-item-border;
+    }
+  }
+}
+
+.guide-link {
+  border-bottom: none;
+  border-left: 1px solid $list-item-border;
+  border-right: 1px solid $list-item-border;
+  border-top: 1px solid $list-item-border;
+  color: $font-color-display;
+  font-family: $font-family-display;
+  font-weight: 300;
+  padding: .75em 1em .8em;
+  text-align: left;
+  width: 100%;
+  background-color: $list-item-bg;
 }
