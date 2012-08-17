@@ -1,17 +1,22 @@
 <% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
 <script>
-	$('div.<%= vid_info %>').on('click', function(){		
-		var src = "http://player.ooyala.com/player.js?externalId=espn:<%= video['provider_id'] %>&callback=window.receiveEspnEvent&debug=false&hasModuleParams=1&pcode=1kNG061cgaoolOncv54OAO1ceO-I&playerBrandingId=a28f1994885a41098953d166c34cf81c&targetReplaceId=<%= video['provider_id'] %>&wmode=opaque&autoplay=1&width=320&height=180"; 
+	$('li.<%= vid_info %>').on('click', function(){
+		if ( window.currentPlaying == '<%= vid_info %>' ){
+			$('#mobile-video-player').html('');
+			$('#mobile-video-player').slideUp('fast');
+			$("#content").removeClass('video-playing');
+			window.currentPlaying = null;
+		}
+		else{
+			var src = "http://player.ooyala.com/player.js?externalId=espn:<%= video['provider_id'] %>&callback=window.receiveEspnEvent&debug=false&hasModuleParams=1&pcode=1kNG061cgaoolOncv54OAO1ceO-I&playerBrandingId=a28f1994885a41098953d166c34cf81c&targetReplaceId=espn-mobile-video-player&wmode=opaque&autoplay=1&width=500&height=300"; 
 		//write to head, where script will be downloaded and run
-		var tag = document.createElement('script');
-		tag.src = src;
-		(document.head || document.getElementsByTagName( "head" )[0]).appendChild(tag);		
-		
-		if (window.currentPlaying){
-			var thumbnail_url = $('iframe.'+window.currentPlaying).data('thumbnail_url');
-			$('iframe.'+window.currentPlaying).replaceWith('<img src="'+thumbnail_url+'" width="320" height="180"/>');
+			window.tag = document.createElement('script');
+			tag.src = src;
+			(document.head || document.getElementsByTagName( "head" )[0]).appendChild(tag);		
+			$('#mobile-video-player').slideDown('slow');
+			$("#content").addClass('video-playing');
+			window.currentPlaying = '<%= vid_info %>';
 		}
 		
-		window.currentPlaying = '<%= vid_info %>';
 	});
 </script>

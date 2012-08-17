@@ -2,13 +2,14 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
 
-  get '/m' => 'mobile#search', :as => :mobile_search
-  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
-
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
     get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
   end
+  
+  # For development, take me out when mobile is more stable
+  get '/m' => 'mobile#search', :as => :mobile_search
+  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
 
   constraints(:subdomain => 'm.localhost') do
     get '/' => 'mobile#search', :as => :mobile_search
