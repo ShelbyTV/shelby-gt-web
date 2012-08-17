@@ -23,7 +23,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   render : function(){
     this.$el.html(this.template({frame : this.model}));
     if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('video'))) {
-      this.$('.js-queue-command').text('Queued').addClass('js-queued');
+      this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
     }
     return this;
   },
@@ -34,7 +34,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _queueVideo : function() {
     this.model.saveToWatchLater();
-    this.$('.js-queue-command').text('Queued').addClass('js-queued');
+    this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
   },
 
   _displayRollVideo : function() {
@@ -43,7 +43,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _onQueuedVideosAdd : function(video) {
     if (this.model.get('video').id == video.id){
-      this.$('.js-queue-command').text('Queued').addClass('js-queued');
+      this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
     }
   }
 
