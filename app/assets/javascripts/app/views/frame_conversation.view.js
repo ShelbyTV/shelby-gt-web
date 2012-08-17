@@ -34,6 +34,7 @@
       this.$el.html(this.template({ frame : this.model, user: shelby.models.user }));
       
       this.model.get('conversation').get('messages').each(function(message){
+        console.log(message);
         var messageView = new MessageView({model:message});
         self.renderChild(messageView);
         self.$('.conversation').append(messageView.el);

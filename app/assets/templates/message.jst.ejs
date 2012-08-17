@@ -3,6 +3,8 @@
   if (message) {
     messageJSON = message.toJSON();
     messageJSON.text = message.getText();
+    console.log(message);
+    console.log(messageJSON);
   } else {
     /*
       if there is no message, create something that looks like

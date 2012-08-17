@@ -357,7 +357,6 @@ window.shelbyBookmarklet = {
                         vids.push(foundVids[i]);
                     }
                 }
-                var self = this;
                 if (window.isShelbyBookmarklet) {
                         if (vids.length == 0) {
                           utilObject.htmlTemplate.notifyNumVids(vids.length);
@@ -379,11 +378,9 @@ window.shelbyBookmarklet = {
 
                           utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-video-tab']({videoId: videoId}));
                           
-                          shelbyJ(".bookmarklet-video-tab-" + videoId).append(utilObject.htmlTemplate.frameRollersHtml(videoId));
-                          shelbyJ(".bookmarklet-video-tab-" + videoId).append(JST['bookmarklet-context']({videoId : videoId}));
                           utilObject.resizeFunction(vids, i, videoId);
 
-                          shelbyJ("#control-on-page-" + videoId).addClass("buttons-show").addClass("buttons-animate");
+                          shelbyJ("#control-on-page-" + videoId).addClass("buttons-show");
 
 
                           var resizeFunction = function(vidIndex, videoId) {
@@ -734,7 +731,7 @@ window.shelbyBookmarklet = {
 
 
               setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
-                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' guide-window">  </div>');
+                    utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' guide-window guide-animate">  </div>');
                     utilObject.styleGuideHide();
                 },
   
@@ -755,7 +752,7 @@ window.shelbyBookmarklet = {
                     frameContext.addClass("buttons-show").addClass("buttons-animate");
                     var videoId = frameContext.attr("data-videoId")
                     var frameContextContent = JST['bookmarklet-context-content']({frame: frame, videoId: videoId});
-                    shelbyJ(".frame-avatar-listitem-" + videoId).html(frameContextContent);
+                    shelbyJ(".frame-avatar-listitem-" + videoId + " .all-creator").html(frameContextContent);
                     shelbyJ(".frame-context-image-" + videoId).off("click");
                     shelbyJ(".frame-context-image-" + videoId).on("click",
                                                   function() {
@@ -850,27 +847,16 @@ window.shelbyBookmarklet = {
                 }
             },
             styleGuideShow: function(guideName) {
-                if (!shelbyJ("#frame-guide-window").hasClass("guide-show")) {
-                    shelbyJ(".back").html("Cancel");
-                } else {
-                  shelbyJ(".back:not(.frame-guide-button)").html("Back");
-                }
-                shelbyJ(".guide-toggle").removeClass("show").addClass("hide");
-                shelbyJ(".guide-window:not(#frame-guide-window)").removeClass("guide-show");
-                shelbyJ("#" + guideName + "-window").addClass("guide-show").addClass("guide-animate");
+                shelbyJ(".guide-window").removeClass("guide-show");
+                shelbyJ("#" + guideName + "-window").removeClass("guide-hide")
+                setTimeout(function() {
+                    shelbyJ("#" + guideName + "-window").addClass("guide-show");
+                }, 0);
             },
 
             // style guide hide will never be called on frame guide
             styleGuideHide: function (guideName) {
-                if (!shelbyJ("#frame-guide-window").hasClass("guide-show")) {
-                    shelbyJ('.guide-toggle').removeClass("hide").addClass("show");
-                }
-                if (guideName === undefined) {
-                    shelbyJ('.guide-toggle').removeClass("hide").addClass("show");
-                    shelbyJ(".guide-window").removeClass("guide-show");
-                } else {
-                    shelbyJ("#" + guideName + "-window").removeClass("guide-show");
-                }
+                shelbyJ("#" + guideName + "-window").removeClass("guide-show")
             },
 
             displaySpinnerOnButton: function (jQueryButton) {
@@ -954,6 +940,14 @@ window.shelbyBookmarklet = {
                 utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("login-guide", shelbyGuideWidth, false);
+                shelbyJ(".ext-elements").on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', '.guide-window', function(event) {
+                        var guideWindow = shelbyJ("#" + event.currentTarget.getAttribute("id"));
+                        console.log(guideWindow);
+                        if (!guideWindow.hasClass("guide-show")) {
+                            guideWindow.addClass("guide-hide");
+                        }
+                    }
+                );
                 utilObject.shelbyUserUtil.signedIn(foundVideos);
                 shelbyJ(window).resize(function () {
                     for (var i = 0; i < utilObject.resizeArray.length; i++) {
@@ -979,18 +973,11 @@ window.shelbyBookmarklet = {
                 var radar = shelbyBookmarklet.shelbyRadar(shelbyJ, useUrl, urlProvider);
                 shelbyBookmarklet.shelbyUtil(shelbyJ, shelbyGuideWidth).shelbify(radar);
         }
-        if (window.JST) {
-          return {
-              css: [],
-              js: [],
-              ready: radarStart
-          }
-        }
+        var cssArray = (window.JST) ? [] :  ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"];
+        var jsArray =  (window.JST) ? [] :  ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js"];
         return {
-                css: ["http://<%= Settings::VideoRadar.web_domain%>/assets/radar.css"],
-                js: [
-                 "http://<%= Settings::VideoRadar.web_domain%>/assets/radar.js",
-                   ],
+            css: cssArray,
+            js: jsArray,
             jqpath: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
             ready: radarStart
         }
