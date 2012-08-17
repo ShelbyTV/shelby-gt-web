@@ -1,31 +1,31 @@
 
 <ul class="js-content-selector guide-presentation-list clearfix">
   <li class="guide-presentation-item">
-    <button class="js-stream">
+    <button class="js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
       Stream
     </button>
   </li>
 
   <li class="guide-presentation-item">
-    <button class="js-queue">
+    <button class="js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Queue 
     </button>
   </li>
 
   <li class="guide-presentation-item">
-    <button class="js-my-rolls">
+    <button class="js-my-rolls js-track-event" data-ga_category="Header" data-ga_action="Rolls" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Rolls
     </button>
   </li>
 
   <li class="guide-presentation-item">
-    <button class="js-browse">
+    <button class="js-browse js-track-event" data-ga_category="Header" data-ga_action="Explore" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Explore
     </button>
   </li>
 
   <li class="guide-presentation-item guide-settings">
-    <button class="js-settings guide-settings-anchor">
+    <button class="js-settings guide-settings-anchor js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
     </button>
 
     <ul id="js-settings-subnav" class="guide-settings-list">
@@ -45,10 +45,10 @@
         <button class="guide-settings-button js-legal">Legal</button>
       </li>
       <li class="guide-settings-item">
-        <button class="guide-settings-button js-preferences">Preferences</button>
+        <button class="guide-settings-button js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label='<%= shelby.models.user.get('nickname') %>'>Preferences</button>
       </li>
       <li class="guide-settings-item">
-        <button class="guide-settings-button js-signout">Log Out</button>
+        <button class="guide-settings-button js-signout js-track-event" data-ga_category="Header" data-ga_action="Logout" data-ga_label='<%= shelby.models.user.get('nickname') %>'>Log Out</button>
       </li>
     </ul><!-- eo guide-settings-list -->
   </li>
