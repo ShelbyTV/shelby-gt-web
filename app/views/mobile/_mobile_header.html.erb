@@ -2,10 +2,10 @@
 <% unless request.url[0..-2] == Settings::Application.mobile_url %>
 	<div id="share-area" data-theme="b">
 		<!-- AddThis Button BEGIN -->
-		<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=ra-502d9e1c63463b1e"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+		<a class="addthis_button js-track-event" data-ga_category="Mobile" data-ga_action="Clicked share button" href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=ra-502d9e1c63463b1e"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
 		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-502d9e1c63463b1e"></script>
 		<!-- AddThis Button END -->
 	</div>
-	<a href="<%= Settings::Application.mobile_url %>/" data-icon="search" data-mini="true" class="ui-btn-right">search</a>
+	<a href="<%= Settings::Application.mobile_url %>/" data-icon="search" data-mini="true" class="ui-btn-right  js-track-event" data-ga_category="Mobile" data-ga_action="Clicked back to search">search</a>
 <% end %>
