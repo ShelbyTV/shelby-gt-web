@@ -6,6 +6,7 @@
     margin: 10px auto;
     text-align: center;
     width: 100%;
+    padding: 0px 5px;
     .mobile-search-spinner{
       position: absolute;
       margin-top: -21px;
@@ -29,7 +30,7 @@
   	);
   	background-size:135px;
     height: 35px;
-    margin-left: 0px;
+    margin-left: 5px;
   }
   
   #search-history {
@@ -47,7 +48,7 @@
   #mobile-video-player {
     display:none;
     position:fixed;
-    top: 79px;
+    top: 59px;
     width: 100%;
     height: 45%;
     margin: 0 auto;
@@ -62,7 +63,7 @@
     position: fixed;
     width: 100%;
     bottom: 0;
-    top: 80px;
+    top: 60px;
     overflow-y:scroll;
     -webkit-overflow-scrolling: touch;
 
