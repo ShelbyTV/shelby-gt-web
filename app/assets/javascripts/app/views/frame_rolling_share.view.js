@@ -71,7 +71,7 @@
       }
       this._components.spinner && this._showSpinner();
       // reroll the frame, then share the new frame
-      this.options.frame.reRoll(this.options.roll, function(newFrame){
+      this.options.frame.reRoll(this.options.roll, null, function(newFrame){
         self.options.frame = newFrame;
         ShareView.prototype._share.call(self);
       });
@@ -108,7 +108,7 @@
       this.options.roll.save(null, {
         success : function(newRoll){
           shelby.models.rollFollowings.add(newRoll);
-          self.options.frame.reRoll(newRoll, function(newFrame){
+          self.options.frame.reRoll(newRoll, null, function(newFrame){
             self.options.frame = newFrame;
             // the backend will later assign a thumbnail to the new roll, but we won't see that
             // until the next roll followings refresh, so set it ourselves on the new roll model
