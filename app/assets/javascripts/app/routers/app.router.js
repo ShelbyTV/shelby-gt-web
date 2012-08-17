@@ -52,6 +52,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         success: function() {
           self._reroute();
           shelby.models.rollFollowings.fetch();
+          libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
         }

@@ -261,17 +261,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.explore});
-    shelby.models.exploreRollCategories.fetch({
-      success: function(rollCategoriesCollectionModel, response){
-        // if no roll category is already selected, automatically select the first category in the list
-        if (!shelby.models.exploreGuide.has('displayedRollCategory')) {
-          var firstRollCateogry = rollCategoriesCollectionModel.get('roll_categories').at(0);
-          if (firstRollCateogry) {
-            shelby.models.exploreGuide.set('displayedRollCategory', firstRollCateogry);
-          }
-        }
-      }
-    });
+    if (shelby.models.exploreRollCategories.get('roll_categories').isEmpty()) {
+      shelby.models.exploreGuide.trigger('showSpinner');
+    }
+    $.when(libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect())
+      .always(function(){shelby.models.exploreGuide.trigger('hideSpinner');});
   },
 
   displaySaves : function(){
