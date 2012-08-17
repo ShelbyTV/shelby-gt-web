@@ -1,4 +1,4 @@
-<h1 class="mobile-logo ir"></h1>
+<h1 class="mobile-logo ir js-track-event" data-ga_category="Mobile" data-ga_action="Clicked logo"></h1>
 <% unless request.url[0..-2] == Settings::Application.mobile_url %>
 	<div id="share-area" data-theme="b">
 		<!-- AddThis Button BEGIN -->
@@ -7,5 +7,5 @@
 		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-502d9e1c63463b1e"></script>
 		<!-- AddThis Button END -->
 	</div>
-	<a href="<%= Settings::Application.mobile_url %>/" data-icon="search" data-mini="true" class="ui-btn-right  js-track-event" data-ga_category="Mobile" data-ga_action="Clicked back to search">search</a>
+	<a href="<%= Settings::Application.mobile_url %>/" data-icon="search" data-mini="true" class="ui-btn-right  js-track-event" data-ga_category="Mobile" data-ga_action="Clicked back to search" data-ajax="false">search</a>
 <% end %>

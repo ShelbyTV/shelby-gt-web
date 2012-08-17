@@ -27,7 +27,12 @@ $(document).ready(function(){
       case 'Clicked share button':
         action = 'Clicked share button on mobile';
         break;
-        
+      case 'Clicked video to watch':
+        action = 'Clicked video to watch on mobile';
+        break;
+      case 'Clicked logo':
+        action = 'Clicked logo on mobile';
+        break;
     };
 	  
  		try{

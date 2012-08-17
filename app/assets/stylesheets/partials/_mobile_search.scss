@@ -47,7 +47,7 @@
   #mobile-video-player {
     display:none;
     position:fixed;
-    top: 59px;
+    top: 79px;
     width: 100%;
     height: 45%;
     margin: 0 auto;
@@ -89,7 +89,7 @@
 
   }
   
-  #content.video-playing {
+  .content.video-playing {
     #mobile-frames { margin-top: 45%; }
   } 
 }
