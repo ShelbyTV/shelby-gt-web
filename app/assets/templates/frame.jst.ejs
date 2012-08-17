@@ -98,6 +98,9 @@
 
   <% if (!contextOverlay) { %>  
     <% if( frameThumbnail ) { %>
+    <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
+      <button class="js-remove-frame remove-frame">Remove</button>
+    <% } %>
       <div class="video-thumbnail<%= suffix %> js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
         <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
       </div>
@@ -110,28 +113,7 @@
 
     <% if(!frame.isOnRollTypeGenius()) { %>
 
-      <% if (!contextOverlay) { %>
-      <!-- hearts -->
-        <div class="js-frame-flexible-height frame-activity">
-          <% if(frame.get('upvote_users').length > 0){ %>
-        
-            <ul class="frame-activity-favorites clearfix">
-              <% _.each(frame.get('upvote_users'), function(u){ %>
-                <li>
-                  <a href="#" data-public_roll_id="<%= u.public_roll_id %>" class="js-go-to-roll-by-id">
-                    <% users_image =  u.user_image_original || u.user_image %>
-                    <img src="<%= users_image %>" alt="<%= u.nickname %>" title="<%= u.nickname %>" />
-                  </a>
-                </li>
-              <% }) %>
-            </ul>
-            
-          <% } %>
-        </div>
-      <!-- /hearts -->
-      <% } /* end of contextOverlay */%>
     <ul class="frame-controls" type="toolbar">
-      <!--<li class="frame-controls-like js-upvote-frame <%= ( _.contains(frame.get('upvoters'), shelby.models.user.id) ) ? 'upvoted' : '' %>">-->
       <li class="frame-controls-queue js-upvote-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click queue" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'Queued' : 'Add to<br>Queue' %>

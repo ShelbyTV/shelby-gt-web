@@ -8,8 +8,8 @@ defaults: &defaults
 development:
   <<: *defaults
   url: "http://localhost.shelby.tv:3000"
-  #mobile_url: "http://m.localhost.shelby.tv:3000"
-  mobile_url: "http://192.168.2.206:3000/m"
+  mobile_url: "http://m.localhost.shelby.tv:3000"
+  #mobile_url: "http://192.168.1.6:3000/m"
 test:
   <<: *defaults
 
