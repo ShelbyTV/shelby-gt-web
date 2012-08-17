@@ -1,23 +1,5 @@
 //FRAME
 
-.frame-logo {
-  color : #EFEFEF;
-  float: right;
-  font-size:14px;
-  line-height: 2;
-  margin: 9px 12px 0 0;
-  position: absolute;
-  right: 0;
-}
-
-.frame-logo-img {
-  display: inline;
-  margin-left: 5px;
-  margin-top: 0px;
-  width: 100px;
-  vertical-align: middle;
-}
-
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
@@ -84,7 +66,7 @@
   }
 }
 
-.notify-window {
+.fadein-notify-window {
   background-color: black;
   bottom: 0px;
   left: 0px;
@@ -104,21 +86,6 @@
   }
 }
 
-.found-vid-notification {
-  font-size: 20px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  &:before {
-    content: "Shelby is searching for videos...";
-  }
-  &.no-videos {
-    &:before {
-      content: "No videos found";
-    }
-  }
-}
-
 .queue-notification {
   background-image: url("/images/assets/chrome_queue_large.svg");
   background-position: 50% 0%;
@@ -134,6 +101,14 @@
 }
 
 //LOGIN
+
+#login-guide-window {
+  .shelby-login-cancel {
+    @include x-button-primer($shelby-gray);
+  }
+
+}
+
 .bookmarklet-login-twitter,  
 .bookmarklet-login-facebook {
   border-radius: 3px;
@@ -141,17 +116,17 @@
   float: left;
   font: 0/0 a;
   height: 40px;
-  margin: 20px;
-  padding: 0 3x 0 20px;
+  margin: 10px 65px;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
-  width: 165px;
+  width: 200px;
 }
 
-.bookmarklet-login-twitter {  
+.bookmarklet-login-twitter {
   @include x-logged-out-networks-buttons($twitter-blue);
-  background-size: 11%;
+  line-height: 3.5;
+  margin-top: 35px;
   &:before {
     background-image: url($icon-share-twitter-on);
     background-position: center center;
@@ -161,7 +136,7 @@
 
 .bookmarklet-login-facebook {
   @include x-logged-out-networks-buttons($facebook-blue);
-  background-size: 4%;
+  line-height: 3.5;
   &:before {
     background-image: url($icon-share-facebook-on);
     background-position: 1px 3px;
@@ -180,13 +155,6 @@
 }
 
 //GUIDE
-
-.guide-overlay-title-text {
-  line-height: 2.65;
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-}
 
 .guide-window {
   background: #222;
@@ -213,15 +181,6 @@
   }
     
 }
-
-.frame-exists {
-  .frame-logo:before {
-    content: "Seen on";
-    display: block;
-    float: left;
-  }
-}
-
 
 //BUTTONS
 
@@ -313,6 +272,30 @@
   }
 }
 
+.bookmarklet-button {
+  background-color: #EEE;
+  color: #333;
+  font-size: 11px;
+  font-weight: 300;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+
+  &.queued {
+    background-color: gray;
+    cursor: default;
+    i {
+      background-position: 0px 2px;
+      padding-left: 15px;
+
+      &:before {
+        content: "Queued"
+      }
+      font-style: normal;
+    }
+  }
+}
+
 .comment-button-content {
   &:before {
     content: "Reply"
@@ -347,68 +330,4 @@
   font-style: normal;
   padding-bottom: 2px;
   padding-left: 19px;
-}
-
-
-.bookmarklet-button {
-  background-color: #EEE;
-  color: #333;
-  font-size: 11px;
-  font-weight: 300;
-  height: 100%;
-  text-align: center;
-  width: 100%;
-
-  &.queued {
-    background-color: gray;
-    cursor: default;
-    i {
-      background-position: 0px 2px;
-      padding-left: 15px;
-
-      &:before {
-        content: "Queued"
-      }
-      font-style: normal;
-    }
-  }
-}
-
-.frame-title {
-  width:50%;
-}
-
-.gate-networks-twitter,
-.gate-networks-facebook{
-  @include roundies(input);
-
-  border: 0;
-  display: block;
-  font: 0/0 a;
-  height: 40px;
-  margin: 20px;
-  text-shadow: none;
-}
-
-.gate-networks-twitter {
-  @include gradient-primer($twitter-blue);
-  @include preferences-networks;
-
-  background-size: 11%;
-}
-
-.gate-networks-facebook {
-  @include gradient-primer($facebook-blue);
-  @include preferences-networks(facebook);
-
-  background-size: 4%;
-}
-
-#guide-overlay-controls {
-  z-index:2147483647;
-  position: fixed;
-}
-
-.content-body {
-    top: 45px;
 }

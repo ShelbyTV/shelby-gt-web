@@ -732,7 +732,6 @@ window.shelbyBookmarklet = {
 
               setUpGuide: function (guideName, styleGuideWidth, loggedIn) {
                     utilObject.shelbyDocElements['ext-elements'].append('<div id=' + guideName + '-window class="' + guideName + ' guide-window guide-animate">  </div>');
-                    utilObject.styleGuideHide();
                 },
   
                 adjustFrameContext: function (shelbyFrameClass, videoId, shouldOverwrite) {
@@ -809,13 +808,13 @@ window.shelbyBookmarklet = {
                 notifyQueued: function() {
                         utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-queued']());
                         setTimeout(function() {
-                              shelbyJ(".notify-window").addClass("notified").on("click", 
+                              shelbyJ(".fadein-notify-window").addClass("notified").on("click", 
                                         function() {
-                                            shelbyJ('.notify-window').remove();
+                                            shelbyJ('.fadein-notify-window').remove();
                                 });
                         }, 0);
                         setTimeout(function() {
-                              shelbyJ('.notify-window').remove();
+                              shelbyJ('.fadein-notify-window').remove();
                         }, 3000)
                 },
                         
@@ -840,6 +839,9 @@ window.shelbyBookmarklet = {
                       twitterDomain: "http://<%=Settings::VideoRadar.api_domain%>/auth/twitter",
                       facebookDomain: "http://<%=Settings::VideoRadar.api_domain%>/auth/facebook",
                   }));
+                  shelbyJ('.shelby-login-cancel').on('click', function() {
+                      utilObject.styleGuideHide('login-guide');
+                  });
                 },
 
                 frameRollersHtml : function(videoId) {
@@ -858,26 +860,6 @@ window.shelbyBookmarklet = {
             styleGuideHide: function (guideName) {
                 shelbyJ("#" + guideName + "-window").removeClass("guide-show")
             },
-
-            displaySpinnerOnButton: function (jQueryButton) {
-                jQueryButton.addClass("js_sharing");
-                var content = jQueryButton.html();
-                jQueryButton.html('<img src="http://<%= Settings::VideoRadar.web_domain%>/images/assets/loading-small.gif"/>');
-                return function () {
-                  jQueryButton.html(content);
-                  jQueryButton.removeClass("js_sharing");
-                }
-            },
-
-            allGuides: {
-                "roll-guide": "Roll",
-                "comment-guide": "Comments",
-                "share-guide": "Share",
-                "login-guide": "Log In",
-                "frame-guide": "Videos on Page"
-            },
-
-
 
             foundVideo: null,
 
