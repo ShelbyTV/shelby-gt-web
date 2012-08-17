@@ -18,11 +18,19 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
+
     if (displayState == libs.shelbyGT.DisplayState.explore) {
+      // hide any guide overlays
+      this.options.guideOverlay.triggerImmediateHide();
+      // show the explore layout
       this.$('.js-explore-layout').show();
       //pause the video player when obscuring it
       shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
     } else {
+      if (guideModel.previous('displayState') == libs.shelbyGT.DisplayState.explore) {
+        //if we're switching away from the explore view, hide any guide overlays
+        this.options.guideOverlay.triggerImmediateHide();
+      }
       this.$('.js-explore-layout').hide();
     }
   }

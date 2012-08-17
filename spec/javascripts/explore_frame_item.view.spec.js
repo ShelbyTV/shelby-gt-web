@@ -1,5 +1,10 @@
 describe("ExploreFrameItemView", function() {
   beforeEach(function() {
+    shelby = {
+      models : {
+        queuedVideos : new Backbone.RelationalModel()
+      }
+    };
     this.frame = new Backbone.Model();
     this.view = new libs.shelbyGT.ExploreFrameItemView({model:this.frame});
   });

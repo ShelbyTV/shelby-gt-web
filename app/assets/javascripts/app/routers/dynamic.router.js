@@ -419,9 +419,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupAnonUserViews(options);
     //--------------------------------------//
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
-        new libs.shelbyGT.LayoutSwitcherView({model:shelby.models.guide, userDesires:shelby.models.userDesires});
+        new libs.shelbyGT.LayoutSwitcherView({
+          model : shelby.models.guide,
+          guideOverlay : shelby.models.guideOverlay,
+          userDesires : shelby.models.userDesires
+        });
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
-        new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.guide'});
+        new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||

@@ -10,6 +10,10 @@ libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
       activeGuideOverlayFrame : null,
       activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none
     });
+  },
+
+  triggerImmediateHide : function() {
+    this.trigger('immediateHide');
   }
 
 });
