@@ -116,8 +116,11 @@
 
   float: left;
   margin: .75em 0 0 .75em;
-}
 
+  &.frame-queued {
+    @include xx-button-primer($shelby-gray,dark,frame-command);
+  }
+}
 
 .explore-frame-thumbnail {
   background-size: cover;
