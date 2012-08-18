@@ -1,7 +1,5 @@
 //= require ./backbone/underscore.js
-//= require ../templates/bookmarklet-buttons.jst.ejs
 //= require ../templates/bookmarklet-context-content.jst.ejs
-//= require ../templates/bookmarklet-context.jst.ejs
 //= require ../templates/bookmarklet-login.jst.ejs
 //= require ../templates/bookmarklet-notify.jst.ejs
 //= require ../templates/bookmarklet-queued.jst.ejs

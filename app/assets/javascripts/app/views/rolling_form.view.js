@@ -131,10 +131,7 @@
 			if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 			
 			// re roll the frame
-      this._frame.reRoll(roll, function(newFrame){
-        //need to send comment (share doesn't do that)
-        self._addMessage(message, newFrame.get('conversation_id'));
-        
+      this._frame.reRoll(roll, message, function(newFrame){
         //rolling is done (don't need to wait for add message to complete)
 				self._rollingSuccess(roll, newFrame);
 				
@@ -158,12 +155,6 @@
 				"Rolled to <a href='#' data-roll_id='"+roll.id+"' class='roll-route'>"+
 				libs.shelbyGT.viewHelpers.roll.titleWithPath(roll)+
 				"</a>!");
-		},
-		
-		_addMessage : function(text, conversation_id){
-		  var msg = new MessageModel({text:text, conversation_id:conversation_id});
-      msg.save(null, {});
-      libs.utils.rhombus.sadd('comments', this._frame.id);
 		}
 		
 	});
