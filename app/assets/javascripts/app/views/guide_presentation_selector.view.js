@@ -68,7 +68,6 @@
           case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
             $setSelectedClassOn = this.$('.js-my-rolls');
             break;
-
         }
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');

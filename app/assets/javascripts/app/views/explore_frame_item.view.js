@@ -29,6 +29,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _displayVideo : function() {
+    shelby.models.routingState.set('forceFramePlay', true);
     shelby.router.navigate('roll/' + this.options.roll.id + '/frame/' + this.model.id, {trigger:true});
   },
 

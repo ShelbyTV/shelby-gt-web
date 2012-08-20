@@ -70,10 +70,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       defaultOnRollFetch = this._activateFirstRollFrame;
     } else if (shelby.models.routingState.get('forceFramePlay')) {
       defaultOnRollFetch = this._checkPlayRollFrame;
+    }
+
+    if (shelby.models.routingState.get('forceFramePlay')) {
       // responded to the forceFramePlay state, so reset it
       shelby.models.routingState.unset('forceFramePlay');
     }
-    
+
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
@@ -361,17 +364,41 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var frame;
       if (frame = rollModel.get('frames').get(frameId)) {
-        shelby.models.guide.set('activeFrameModel', frame);
+        var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+        if (shelby.models.routingState.get('forceFramePlay')) {
+          // if we want to be sure the frame starts playing, we need to take special action if the
+          // requested frame is already active, because it may be paused
+          if (activeFrameModel.id == frame.id) {
+            //if the previous active frame was the frame we want to play, play it
+            shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+          } else {
+            shelby.models.guide.set('activeFrameModel', frame);
+          }
+        } else {
+          // under normal circumstances we can just set the frame to active because we are not
+          // specifically concerned with whether it will play or not, just that it will be
+          // selected and displayed
+          shelby.models.guide.set('activeFrameModel', frame);
+        }
         if (showCommentOverlay) {
           shelby.models.guideOverlay.set({
             activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
             activeGuideOverlayFrame : frame
           });
         }
+        if (shelby.models.routingState.get('forceFramePlay')) {
+          // responded to the forceFramePlay state, so reset it
+          shelby.models.routingState.unset('forceFramePlay');
+        }
       } else {
         // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
         shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
         this.navigateToRoll(rollModel, {trigger:true, replace:true});
+      }
+    } else {
+      if (shelby.models.routingState.get('forceFramePlay')) {
+        // responded to the forceFramePlay state, so reset it
+        shelby.models.routingState.unset('forceFramePlay');
       }
     }
   },
