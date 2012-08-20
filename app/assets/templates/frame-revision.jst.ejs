@@ -1,8 +1,24 @@
+<% console.log(frame) %>
+
+<% var user = shelby.models.user %>
+<% var userNickname = user.get('nickname') %>
+
+<% var video = frame.get('video') %>
+<% var videoId = frame.get('id') %>
+<% var videoTitle = video.get('title') %>
+<% var videoThumbnail = video.get('thumbnail_url') || '/images/avatar.jpg' %>
+
+<% var creator = frame.get('creator') %>
+<% var creatorNickname = creator.get('nickname') %>
+<% var creatorAvatar = creator.get('user_image') || '/images/avatar.jpg' %>
+
+<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+
         <!-- new videocard -->
-           <article id="__id__" class="xframe">
+           <article id="<%= videoId %>" class="xframe">
             <header class="xframe-header">
-              <h1 class="xframe-title">
-                Alex Alexander and His Really Stupid Terrible Horrible No-Good Very-Bad Day, What A Loser
+              <h1 class="xframe-title" title="<%= videoTitle %>">
+               <%= videoTitle %> 
               </h1>
             </header>
             <div class="xframe-body-wrapper clearfix">
@@ -38,28 +54,28 @@
                     </li>
                   </ul>
                 </div><!-- eo .xframe-menu -->
-                  <div class="image_module xframe-thumbnail js-frame-activate" style="background-image: url('<%= '/images/avatar.jpg' %>');" role="img">
-                    <img class="visuallyhidden" src="<%= '/images/avatar.jpg' %>" title="__TITLE__" alt="Thumbnail of __TITLE__">
+                  <div class="image_module xframe-thumbnail js-frame-activate" style="background-image: url('<%= videoThumbnail %>');" role="img">
+                    <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
                   </div>
                   <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
               </div><!-- eo .xframe-body -->
 
               <footer class="media_module xframe-footer">
                 <a href="#" class="media_image">
-                  <span class="image_module xuser-avatar" style="background-image: url(<%= '/images/avatar.jpg' %>);" role="img">
-                    <img src="<%= '/images/avatar.jpg' %>" class="visuallyhidden" title="__USER__" alt="Thumbnail of __USER__">
+                  <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
+                    <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
                   </span>
                 </a>
                 <div class="media_body">
                   <p class="xuser-data">
-                    shared by <strong>vincentvondoom</strong> on twitter
+                    shared by <strong><%= creatorNickname %></strong> on twitter
                   </p>
                   <p>
                     Just a reminder: We're going to have a pretty amazing event for @jeffemire's UNDERWATER WELDER tomorrow! http://beguiling.com
                   </p>
                   <p class="xframe-comment">
-                    <a href="#" class="xframe-link xframe-comment-link">
-                      Comments (40)
+                    <a href="#" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+                      Comments (<%= messages.length %>)
                     </a>
                   </p>
                 </div>

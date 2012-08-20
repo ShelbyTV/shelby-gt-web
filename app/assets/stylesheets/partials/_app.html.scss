@@ -48,7 +48,6 @@ a{
 }
 
 .content_wrapper {
-	background: $guide-bg-color;
 	bottom: 0;
 	font-size: 1.1em;
 	line-height:1.5;
@@ -97,6 +96,11 @@ a{
 	&.hide-guide {
 	  margin-left:-($guide-width);
 	}
+}
+
+.main-layout,
+.explore-layout {
+	background: $guide-bg-color;
 }
 
 .user-inactive{
