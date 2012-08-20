@@ -40,9 +40,12 @@
 
     render : function() {
       this.$el.removeClass("post-display");
-      this.$el.html( this.template({ frame: this.model }) );
-      var self = this;
-      self.$el.addClass("showing");
+      if (this.model) {
+        this.$el.html( this.template({ frame: this.model }) );
+        this.$el.addClass("showing");
+      } else {
+        this.$el.html('');
+      }
     },
 
     template : function(obj) {

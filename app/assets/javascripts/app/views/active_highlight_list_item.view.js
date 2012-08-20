@@ -25,6 +25,7 @@
 
     render : function(){
       this._checkAndHighlight();
+      return this;
     },
 
     _checkAndHighlight : function(){

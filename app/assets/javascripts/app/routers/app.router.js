@@ -22,13 +22,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   initDynamic : function(url){
     shelby.router = new libs.shelbyGT.DynamicRouter();
+    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
     shelby.models.user = new libs.shelbyGT.UserModel();
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
+    shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
-    shelby.models.fetchState = new libs.shelbyGT.FetchStateModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -36,7 +37,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 		shelby.models.notificationState = new libs.shelbyGT.notificationStateModel();
 		
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
-    shelby.models.browseRolls = new libs.shelbyGT.RollsCollectionModel();
+    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -51,10 +52,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         success: function() {
           self._reroute();
           shelby.models.rollFollowings.fetch();
+          libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
         }
-      });      
+      });
     }
     else {
       self.initAnonymous(url);

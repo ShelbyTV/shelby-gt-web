@@ -25,13 +25,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-upvote-frame"                : "_onClickQueue",
+    "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
 
   },
-
-  tagName : 'li',
 
   className : 'frame',
 
@@ -56,15 +54,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _onQueuedVideosAdd : function(video){
     if (!this.model) return false;
     var frameVideo = this.model.get('frames').at(0).get('video');
-    // this video is the one being added && this video aint already in the queue 
+    // this video is the one being added
+    // in case it got updated from somewhere else like the explore view, update my button
     if (frameVideo.id == video.id){
-      this._saveToWatchLater();
+      this.$('.js-queue-frame').addClass('queued');
+      this.$('.js-queue-frame button').text('Queued');
     }
-  },
-
-  _toggleQueueButton : function(add){
-    var fn = add ? 'addClass' : 'removeClass'; 
-    this.$('.js-upvote-frame')[fn]('upvoted'); 
   },
 
   _setupTeardownModelBindings : function(model, bind) {
@@ -83,7 +78,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     model.get('frames')[action]('destroy', this.render, this);
     model[action]('change', this.render, this);
     shelby.models.queuedVideos.get('queued_videos')[action]('add', this._onQueuedVideosAdd, this);
-    shelby.models.queuedVideos.get('queued_videos')[action]('add', this.render, this);
   },
 
   render : function(){
@@ -125,29 +119,28 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   requestFrameShareView: function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.share);
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
+      this.model.get('frames').at(0));
   },
   
   requestFrameRollView : function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.rolling);
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+      this.model.get('frames').at(0));
   },
 
   _onClickQueue : function(){
-    shelby.models.queuedVideos.get('queued_videos').add(this.model.get('frames').at(0).get('video'));
-  },
-
-  _saveToWatchLater : function(){
-    var self = this;
-    // save to watch later, passing a callback that will add the saved-indicator
-    // to the frame thumbnail when the save returns succsessfully
-    this.model.get('frames').at(0).saveToWatchLater(function(){
-      self.$('.video-thumbnail').append(JST['saved-indicator']());
-      // start the transition which fades out the saved-indicator
-      var startTransition = _.bind(function() {
-        this.$('.video-saved').addClass('video-saved-trans');
-      }, self);
-      setTimeout(startTransition, 0);
-    });
+    self = this;
+    this.model.get('frames').at(0).saveToWatchLater();
+    // immediately change the button state
+    this.$('.js-queue-frame').addClass('queued');
+    this.$('.js-queue-frame button').text('Queued');
+    // immediately add the saved-indicator to the frame thumbnail
+    self.$('.video-thumbnail').append(JST['saved-indicator']());
+    // start the transition which fades out the saved-indicator
+    var startTransition = _.bind(function() {
+      this.$('.video-saved').addClass('video-saved-trans');
+    }, self);
+    setTimeout(startTransition, 0);
   },
 
   _removeFrame : function(){
@@ -178,26 +171,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   _requestConversationView : function(){
-    this._checkSetGuideOverlayState(libs.shelbyGT.GuideOverlayType.conversation);
-  },
-
-  _checkSetGuideOverlayState : function(type) {
-    //if we're already showing the specified overlay type for this frame, hide it
-    var alreadyShowingThisOverlay =
-        this.options.guideOverlayModel.get('activeGuideOverlayType') == type &&
-        this.options.guideOverlayModel.has('activeGuideOverlayFrame') &&
-        this.options.guideOverlayModel.get('activeGuideOverlayFrame').id == this.model.get('frames').at(0).id;
-
-    if (type == libs.shelbyGT.GuideOverlayType.none || alreadyShowingThisOverlay) {
-      // hide the current overlay(s)
-      this.options.guideOverlayModel.clearAllGuideOverlays();
-    } else {
-      // show the requested overlay
-      this.options.guideOverlayModel.set({
-        'activeGuideOverlayFrame' : this.model.get('frames').at(0),
-        'activeGuideOverlayType' : type
-      });
-    }
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
+      this.model.get('frames').at(0));
   },
 
   _goToCreatorsPersonalRoll : function(){

@@ -4,7 +4,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
     "roll/:rollId/:title" : "displayRoll",
-    "roll/:rollId/" : "displayRoll",
     "roll/:rollId" : "displayRoll",
     "rollFromFrame/:frameId" : "displayRollFromFrame",
     "isolated_roll/:rollId" : "displayIsolatedRoll",
@@ -13,6 +12,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream" : "displayDashboard",
     "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
+    "explore" : "displayExploreView",
     "queue" : "displaySaves",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -68,6 +68,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (!shelby.models.guide.get('activeFrameModel')) {
       // if nothing is already playing, start playing the first frame in the roll on load
       defaultOnRollFetch = this._activateFirstRollFrame;
+    } else if (shelby.models.routingState.get('forceFramePlay')) {
+      defaultOnRollFetch = this._checkPlayRollFrame;
+      // responded to the forceFramePlay state, so reset it
+      shelby.models.routingState.unset('forceFramePlay');
     }
     
     options = _.chain({}).extend(options).defaults({
@@ -242,7 +246,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     switch (content) {
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-      case libs.shelbyGT.GuidePresentation.content.rolls.browse:
         shelby.models.guide.set({'rollListContent':content}, {silent:true});
         break;
       default:
@@ -252,6 +255,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
     shelby.models.guide.change();
+  },
+
+  displayExploreView : function(){
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.explore});
+    if (shelby.models.exploreRollCategories.get('roll_categories').isEmpty()) {
+      shelby.models.exploreGuide.trigger('showSpinner');
+    }
+    $.when(libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect())
+      .always(function(){shelby.models.exploreGuide.trigger('hideSpinner');});
   },
 
   displaySaves : function(){
@@ -312,46 +326,79 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
-    var firstFrame = rollModel.get('frames').first();
-    if (firstFrame) {
-      shelby.models.guide.set('activeFrameModel', firstFrame);
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var firstFrame = rollModel.get('frames').first();
+      if (firstFrame) {
+        shelby.models.guide.set('activeFrameModel', firstFrame);
+      }
+    }
+  },
+
+  _checkPlayRollFrame : function(rollModel, response) {
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+      if (activeFrameModel) {
+        var activeFrameModelRoll = activeFrameModel.get('roll');
+        if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
+          //if the previous active frame was on the current roll, just play it
+          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+          return;
+        }
+      }
+
+      //if we weren't already playing something from the current roll, activate the roll's first frame
+      var firstFrame = rollModel.get('frames').first();
+      if (firstFrame) {
+        shelby.models.guide.set('activeFrameModel', firstFrame);
+      }
     }
   },
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
-    var frame;
-    if (frame = rollModel.get('frames').get(frameId)) {
-      shelby.models.guide.set('activeFrameModel', frame);
-      if (showCommentOverlay) {
-        shelby.models.guideOverlay.set({
-          activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
-          activeGuideOverlayFrame : frame
-        });
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var frame;
+      if (frame = rollModel.get('frames').get(frameId)) {
+        shelby.models.guide.set('activeFrameModel', frame);
+        if (showCommentOverlay) {
+          shelby.models.guideOverlay.set({
+            activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+            activeGuideOverlayFrame : frame
+          });
+        }
+      } else {
+        // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
+        shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
+        this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
-    } else {
-      // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-      shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
-      this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
 
   _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
-    var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
-      return entry.get('frame') && entry.get('frame').get('video');
-    });
-    if (firstDashboardEntry) {
-      shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
+        return entry.get('frame') && entry.get('frame').get('video');
+      });
+      if (firstDashboardEntry) {
+        shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
+      }
     }
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
-    var entry;
-    if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
-      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-    } else {
-      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-      shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
-      this.navigate("/", {trigger:true, replace:true});
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var entry;
+      if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
+        shelby.models.guide.set('activeFrameModel', entry.get('frame'));
+      } else {
+        // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+        shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+        this.navigate("/", {trigger:true, replace:true});
+      }
     }
   },
 
@@ -364,26 +411,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
     this._setupAnonUserViews(options);
-    shelby.views.notificationOverlayView = shelby.views.notificationOverlayView || new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState});
-    shelby.views.contextOverlay = shelby.views.contextOverlay ||
-      new libs.shelbyGT.ContextOverlayView({guide:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay});
-    shelby.views.prerollVideoInfo = shelby.views.prerollVideoInfo || new libs.shelbyGT.PrerollVideoInfoView({guide:shelby.models.guide, playbackState:shelby.models.playbackState});
-    shelby.views.header = shelby.views.header || new libs.shelbyGT.GuideHeaderView({model:shelby.models.user});
-    //shelby.views.guidePresentationSelector = shelby.views.guidePresentationSelector || new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
-    shelby.views.itemHeader = shelby.views.itemHeader || new libs.shelbyGT.ItemHeaderView({model:shelby.models.guide});
-    shelby.views.rollActionMenu = shelby.views.rollActionMenu || new libs.shelbyGT.RollActionMenuView({model:shelby.models.guide, viewState:new libs.shelbyGT.RollActionMenuViewStateModel()});
-    shelby.views.addVideo = shelby.views.addVideo || new libs.shelbyGT.addVideoView({model:shelby.models.guide});
     //--------------------------------------//
-    shelby.views.guide = shelby.views.guide ||
-        new libs.shelbyGT.GuideView({model:shelby.models.guide});
+    shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
+        new libs.shelbyGT.LayoutSwitcherView({
+          model : shelby.models.guide,
+          guideOverlay : shelby.models.guideOverlay,
+          userDesires : shelby.models.userDesires
+        });
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
-        new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.guide'});
-    shelby.views.video = shelby.views.video ||
-        new libs.shelbyGT.VideoDisplayView({model:shelby.models.guide, playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
-    shelby.views.videoControls = shelby.views.videoControls ||
-        new libs.shelbyGT.VideoControlsView({playbackState:shelby.models.playbackState, userDesires:shelby.models.userDesires});
-    shelby.views.miniVideoProgress = shelby.views.miniVideoProgress ||
-        new libs.shelbyGT.MiniVideoProgress({playbackState:shelby.models.playbackState});
+        new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||

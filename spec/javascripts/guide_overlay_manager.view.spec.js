@@ -12,6 +12,10 @@ describe("GuideOverlayManagerView", function() {
     it("should attach to the element with class 'main'", function() {
       expect(this.view.$el).toHaveClass('main');
     });
+
+    it("should hide its el immediately", function() {
+      expect(this.view.$el).toBeHidden();
+    });
   });
 
   beforeEach(function() {
@@ -19,8 +23,9 @@ describe("GuideOverlayManagerView", function() {
   });
 
   describe("Bindings", function() {
+
     beforeEach(function() {
-      this.GuideOverlayViewStub = new (Backbone.View.extend({
+      this.GuideOverlayViewStub = new (Support.CompositeView.extend({
           reveal : function() {},
           hide : function() {}
       }))();
@@ -112,6 +117,47 @@ describe("GuideOverlayManagerView", function() {
       this.view.appendChild.restore();
     });
 
+    xit("should hide its el when guide overlay model changes to none", function() {
+      // TODO: implement as a functional test with Capybara
+    });
+
+    xit("should not hide its el when switching between two different guide overlays", function() {
+      // TODO: implement as a functional test with Capybara
+    });
+
+    it("should show its el when new guide overlay is requested", function() {
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+        activeGuideOverlayFrame : this.frame
+      });
+
+      expect(this.view.$el).not.toBeHidden();
+
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none,
+        activeGuideOverlayFrame : null
+      });
+
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.rolling,
+        activeGuideOverlayFrame : this.frame
+      });
+
+      expect(this.view.$el).not.toBeHidden();
+
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none,
+        activeGuideOverlayFrame : null
+      });
+
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.share,
+        activeGuideOverlayFrame : this.frame
+      });
+
+      expect(this.view.$el).not.toBeHidden();
+    });
+
     it("should hide old guide overlays when new guide overlay is requested or guide overlay changes to none", function() {
       var childCount;
 
@@ -148,6 +194,19 @@ describe("GuideOverlayManagerView", function() {
         activeGuideOverlayFrame : null
       });
       expect(this.hideSpy.callCount).toEqual(childCount);
+    });
+
+    it("should hide its el, leave its children, and update state on immediateHide", function() {
+      this.guideOverlayModel.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+        activeGuideOverlayFrame : this.frame
+      });
+
+      this.guideOverlayModel.trigger('immediateHide');
+      expect(this.view.$el).toBeHidden();
+      expect(this.view.children.value().length).toEqual(0);
+      expect(this.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
+      expect(this.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
     });
   });
 });

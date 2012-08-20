@@ -1,0 +1,223 @@
+@import "base";
+
+.explore {
+  background: #efefef;
+  color: black;
+  overflow-y: scroll;
+}
+
+.explore-body {
+}
+
+.explore-list { //primer, shared by all lists in .explore
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.explore-rolls {
+
+}
+
+.explore-item {
+
+}
+
+.explore-roll {
+  padding: 10px 10px 0;
+}
+
+.explore-roll-header {
+  margin: 5px 10px;
+}
+
+.explore-link {
+  float: left;
+
+  &:active,
+  &:link,
+  &:visited {
+    color: $explore-header-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    .explore-header {
+      text-decoration: underline;
+    }
+    .explore-subline {
+      text-decoration: none;
+    }
+  }
+}
+
+.explore-header {
+  font-size: 1.5em; 
+}
+
+.explore-subline {
+  color: $explore-subline-color;
+  font-size: .9em;
+  letter-spacing: 1px;
+  margin: 0.5em 0;
+  text-transform: uppercase;
+}
+
+.explore-menu {
+  font-size: 1.2em;
+}
+
+.explore-command {
+  @include xx-button-primer($x-primer-color, $primer-tone, explore-rolls);
+
+  float:right;
+  margin: 0 .25em 0 .75em;
+
+  &.command-active {
+    //state for the follow/unfollow button,
+    //if other modes/states arise this classname probably won't cut it
+    @include xx-button-primer($shelby-blue, dark, explore-rolls);
+  }
+}
+
+.explore-roll-list {
+
+}
+
+.explore-roll-item {
+  float: left;
+  width: 33.333333%;
+
+  &:hover {
+    .explore-frame-menu {
+      display: block;
+    }
+  }
+}
+
+.explore-frame {
+  display: block;
+  height: 200px;
+  margin: 10px;
+  position: relative;
+}
+
+.explore-frame-menu {
+  display: none;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.explore-frame-command {
+  @include xx-button-primer($x-primer-color,$primer-tone,frame-command);
+
+  float: left;
+  margin: .75em 0 0 .75em;
+
+  &.frame-queued {
+    @include xx-button-primer($shelby-gray,dark,frame-command);
+  }
+}
+
+.explore-frame-thumbnail {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: block;
+  height: 160px;
+  position: relative;
+  width: 100%;
+
+  & > img {
+
+  }
+}
+
+.explore-frame-link {
+  &:link,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.explore-frame-title {
+  color: $explore-frame-title;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-top: (10em/12);
+}
+
+//---------------------------
+//  modular list framework
+//---------------------------
+
+.list_module {
+  margin: 0;
+  padding: $list-module-spacing;
+}
+
+.list_item {
+}
+
+.list_button {
+
+  &:hover {
+    background-color: $list-item-bg-hover;
+  }
+}
+
+.active-list-item .list_button {
+  background-color: $list-item-bg-hover;
+}
+
+//---------------------------
+//  guide styles.
+//  base: modular list framework
+//---------------------------
+
+.guide-explore {
+  background-color: $guide-explore-bg;
+  height: 100%;
+}
+
+.guide-list {
+
+}
+
+.guide-item {
+  &:first-child {
+    .guide-link {
+      @include roundies(header);
+    }
+  }
+
+  &:last-child {
+    .guide-link {    
+      @include roundies(footer);
+      border-bottom: 1px solid $list-item-border;
+    }
+  }
+}
+
+.guide-link {
+  border-bottom: none;
+  border-left: 1px solid $list-item-border;
+  border-right: 1px solid $list-item-border;
+  border-top: 1px solid $list-item-border;
+  color: $font-color-display;
+  font-family: $font-family-display;
+  font-weight: 300;
+  padding: .75em 1em .8em;
+  text-align: left;
+  width: 100%;
+  background-color: $list-item-bg;
+}

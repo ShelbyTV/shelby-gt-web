@@ -25,6 +25,9 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   _onSlideComplete: function(){
     if (!this.$el.hasClass('showing')) {
       this.leave();
+      if (this.parent.children.value().length == 0) {
+        this.parent.$el.hide();
+      }
     }
   }
 
