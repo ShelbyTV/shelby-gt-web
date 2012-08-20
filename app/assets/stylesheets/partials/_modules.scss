@@ -1,0 +1,100 @@
+//---------------------------
+//  media module, what up! 
+//  thanks @stubbornella.
+//---------------------------
+
+.media_module {
+  margin-left: $media-module-margin;
+}
+
+.media_body,
+.media_image {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media_image {
+  float: left;
+  margin-right: 10px;
+}
+
+.media_body {
+  p {
+    margin: 0 0 .5em 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+//---------------------------
+//  modular image
+//---------------------------
+
+.image_module {
+  @include background-size(cover);
+
+  background-color: pink;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+//---------------------------
+//  modular menu framework
+//---------------------------
+
+.menu_module {
+  display: none;
+}
+
+.menu_list,
+.menu_sublist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu_sublist {
+  display: none;
+  width: 106px;
+}
+
+.menu_item:hover {
+  .menu_sublist{
+    display: block;
+  }
+}
+
+.menu_item {
+  float: left;
+
+  &.right {
+    float: right;
+    //float LI to the right
+    text-align: right;
+    //child el (button) is display:inline by default,
+    //this is like a fake float right
+    //makes the sublist margin effective.
+  }
+}
+
+//---------------------------
+//  modular list framework
+//---------------------------
+
+.list_module {
+  margin: 0;
+  padding: $list-module-spacing;
+}
+
+.list_item {
+}
+
+.list_button {
+
+  &:hover {
+    background-color: $list-item-bg-hover;
+  }
+}
