@@ -118,7 +118,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
         Backbone.Events.trigger('playback:next');
         break;
     }
-
   },
 
   _onCurrentTimeChange: function(attr, curTime){
