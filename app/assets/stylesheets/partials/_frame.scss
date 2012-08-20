@@ -12,12 +12,16 @@
 	&:hover {
 		.menu_module {
 			display: block;
+
+		.xframe-header {
+			text-decoration:underline;
 		}
 	}
 }
 
 .xframe-header {
-
+	color: $text;
+	text-decoration:none;
 }
 
 .xframe-title {
@@ -111,6 +115,10 @@
 	border-top: none;
 	padding: .75em 1em .75em;
 	width: 100%;
+
+	&:hover {
+		background-color: adjust-lightness(#efefef,-5%);
+	}
 }
 
 .xframe-item {
@@ -131,11 +139,67 @@
 	}
 }
 
-.command-sublist {
-	padding-right: 10px;
+.command-icon {
+		background-position: center left;
+		background-repeat: no-repeat;
+		background-size: 1em;
+		font-style: normal;
+		padding-left: 1.3em;
 }
 
+.command-sublist {
+	padding-right: 10px;
+	.command-icon {
+			background-position: center right;
+			padding-left: 0;
+			padding-right: 1.5em;
+	}
+}
 
+.command-queue {
+	.command-icon {
+		background-image: url($icon-videocard-queue);
+	}
+//	&:hover {
+//		.command-icon {
+//			//file doesn't exist yet
+//		}
+//	}
+}
+
+.command-roll {
+	.command-icon {
+		background-image: url($icon-videocard-roll-off);
+	}
+//	&:hover {
+//		.command-icon {
+//			background-image: url($icon-videocard-roll-on);
+//		}
+//	}
+}
+
+.command-more {
+	.command-icon {
+		background-image: url($icon-carrot);
+	}
+//	&:hover {
+//		.command-icon {
+//			background-image: url($icon-videocard-roll-on);
+//		}
+//	}
+}
+
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
+//----------------------------------------
 //----------------------------------------
 
 .list,
