@@ -107,11 +107,18 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
       case libs.shelbyGT.PlaybackStatus.playing:
         this.$el.removeClass('js-paused').addClass('js-playing');
         this.$('.video-player-play').addClass('pause');
+        // special case: if the explore view is showing and we switch to playing, we don't actually want to
+        //  play behind the obscuring explore view, so immediately pause
+        //  case where this definitely happens: ESPN Ooyala switching from buffering to playing states
+        if (this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.explore) {
+          this._userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+        }
         break;
       case libs.shelbyGT.PlaybackStatus.ended:
         Backbone.Events.trigger('playback:next');
         break;
     }
+
   },
 
   _onCurrentTimeChange: function(attr, curTime){
