@@ -41,7 +41,7 @@
 
 .xframe-footer {
 	position: relative;
-	//top and bottom margins are set here 
+	//top, bottom, and right margins are set here 
 	//as they're not exactly pertainent to making the media_module work.
 	//however, they use the same margin variable
 	//this makes it clear that they're still relative to the initial margin-left in the module.
