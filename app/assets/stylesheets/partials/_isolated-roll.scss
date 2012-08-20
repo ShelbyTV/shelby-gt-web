@@ -8,6 +8,10 @@
 /* non-programatic changes to app display */
 body.isolated-roll {
   
+  .content_wrapper {
+    margin-top: 0px;
+  }
+
   /* adjust the name and avatar of the visible isolated roll */
   .current-roll {
     font-size: 2.2em;
