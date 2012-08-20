@@ -52,13 +52,21 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onQueuedVideosAdd : function(video){
+    this._onAddRemoveQueuedVideo(video);
+  },
+
+  _onQueuedVideosRemove : function(video){
+    this._onAddRemoveQueuedVideo(video, true);
+  },
+
+  _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (!this.model) return false;
     var frameVideo = this.model.get('frames').at(0).get('video');
-    // this video is the one being added
-    // in case it got updated from somewhere else like the explore view, update my button
     if (frameVideo.id == video.id){
-      this.$('.js-queue-frame').addClass('queued');
-      this.$('.js-queue-frame button').text('Queued');
+      // this video is the one being added/removed
+      // in case it got updated from somewhere else like the explore view, update my button
+      this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
+      this.$('.js-queue-frame button').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },
 
@@ -77,7 +85,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
     model[action]('change', this.render, this);
-    shelby.models.queuedVideos.get('queued_videos')[action]('add', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos[action]('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos[action]('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   render : function(){
@@ -153,7 +162,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var self = this;
     setTimeout(function(){
       self.model.get('frames').forEach(function(frame){
-        frame.destroy();
+        frame.destroy({wait:true});
       });
     }, 100);
   },

@@ -10,10 +10,12 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   initialize : function() {
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   _cleanup : function() {
     shelby.models.queuedVideos.unbind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.unbind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   template : function(obj){
@@ -43,8 +45,16 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _onQueuedVideosAdd : function(video) {
+    this._onAddRemoveQueuedVideo(video);
+  },
+
+  _onQueuedVideosRemove : function(video) {
+    this._onAddRemoveQueuedVideo(video, true);
+  },
+
+  _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (this.model.get('video').id == video.id){
-      this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
+      this.$('.js-queue-command').text('Queued').toggleClass('frame-queued js-queued', !removeVideo);
     }
   }
 
