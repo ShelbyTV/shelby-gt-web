@@ -48,7 +48,10 @@ a{
 }
 
 .content_wrapper {
+	background: $guide-bg-color;
 	bottom: 0;
+	font-size: 1.1em;
+	line-height:1.5;
 	left: 0;
 	margin-top: $header-height;
 	position: absolute;
@@ -64,14 +67,14 @@ a{
 
 .content_lining {
 	float: right;
-	margin-left: -330px;
+	margin-left: -($guide-width);
 	height:100%;
 	width:100%;
 }
 
 .content_module {
 	height:100%;
-  margin-left: 330px;
+  margin-left: $guide-width;
   position: relative;	
 }
 
@@ -80,10 +83,7 @@ a{
 }
 
 .guide-wrapper{
-	background: $guide-bg-color;
-	font-size:1.2em;
 	height:100%;
-	line-height:1.4;
 	overflow:hidden;
 	opacity: 1;
 	position:relative;
@@ -95,7 +95,7 @@ a{
 	@include transition-delay(0s);
 	
 	&.hide-guide {
-	  margin-left:-330px;
+	  margin-left:-($guide-width);
 	}
 }
 

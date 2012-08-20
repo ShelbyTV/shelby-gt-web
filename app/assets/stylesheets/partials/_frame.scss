@@ -1,94 +1,13 @@
 @import "base";
 
 //---------------------------
-//	media module, what up! 
-//	thanks @stubbornella.
-//---------------------------
-
-.media_module {
-	margin: 8px;
-}
-
-.media_body,
-.media_image {
-	overflow: hidden;
-	zoom: 1;
-}
-
-.media_image {
-	float: left;
-	margin-right: 10px;
-}
-
-.media_body {
-	p {
-		margin: 0 0 .5em 0;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
-//---------------------------
-//	modular image
-//---------------------------
-
-.image_module {
-	@include background-size(cover);
-
-	background-color: pink;
-	background-position: center center;
-	background-repeat: no-repeat;
-	display: block;
-}
-
-//---------------------------
-//	modular menu framework
-//---------------------------
-
-.menu_module {
-	display: none;
-}
-
-.menu_list,
-.menu_sublist {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.menu_sublist {
-	display: none;
-	width: 106px;
-}
-
-.menu_item:hover {
-	.menu_sublist{
-		display: block;
-	}
-}
-
-.menu_item {
-	float: left;
-
-	&.right {
-		float: right;
-		//float LI to the right
-		text-align: right;
-		//child el (button) is display:inline by default,
-		//this is like a fake float right
-		//makes the sublist margin effective.
-	}
-}
-
-//---------------------------
 //	frame architecture
 //---------------------------
 
 .xframe {
-	color: $shelby-gray;
-	margin: 10px;
+	border-top: 1px solid $outset;
+	border-bottom: 1px solid $inset;
+	padding: 1.5em 8px;
 
 	&:hover {
 		.menu_module {
@@ -102,8 +21,9 @@
 }
 
 .xframe-title {
-	line-height: 1.4;
-	margin-bottom: .5em;
+	font-size: 1.3em;
+	line-height: 1.45;
+	margin-bottom: .35em;
 }
 
 .xframe-body-wrapper {
@@ -113,7 +33,6 @@
 }
 
 .xframe-body {
-
 }
 
 .xframe-thumbnail {
@@ -122,6 +41,13 @@
 
 .xframe-footer {
 	position: relative;
+	//top and bottom margins are set here 
+	//as they're not exactly pertainent to making the media_module work.
+	//however, they use the same margin variable
+	//this makes it clear that they're still relative to the initial margin-left in the module.
+	margin-bottom: ($media-module-margin - 3);
+	margin-right: $media-module-margin;
+	margin-top: $media-module-margin;
 }
 
 .xframe-link {
@@ -136,16 +62,17 @@
 	background-position: left center;
 	background-repeat: no-repeat;
 	background-size: 1.3em;
-	padding-left: 1.4em;
+	padding-left: 1.5em;
+	text-decoration: none;
 
 	&:hover {
 		background-image: url($icon-videocard-comment-on);
+		text-decoration: underline;
 	}
 }
 
 .xuser-data {
-//	margin-left: 43px;
-	color: $shelby-gray;
+	color: adjust-lightness($text, 20%);
 }
 
 .xuser-avatar {

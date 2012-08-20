@@ -61,7 +61,7 @@ $animate-timing: ease-in-out !default;
 $animate-delay: 0s !default;
 
 //--- FONT SETUP
-$font-size           : 13px;//eventually make so that this is 100% and calculate everything by em's
+$font-size           : 100%;//eventually make so that this is 100% and calculate everything by em's
 
 $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
@@ -69,7 +69,7 @@ $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-color          : #333;
 $font-color-display  : $font-color;
 
-$size                : "62.5%" !default;  //again, this should be 100% eventually.
+$size                : $font-size !default;  //again, this should be 100% eventually.
 
 //--- BORDER RADIUS
 $radius        : 5px;
@@ -77,29 +77,31 @@ $button-radius : $radius - 1;
 $input-radius  : $radius - 2;
 
 //--- MARGINS, PADDINGS, and WIDTHS 
-$unit           : 10px;
-$defaultMargin  : $unit;
-$default-margin : $unit;
-$margin         : 0.5em;
+$unit                : 10px;
+$defaultMargin       : $unit;
+$default-margin      : $unit;
+$margin              : 0.5em;
+$media-module-margin : 8px;
+
 
 $header-height : $unit * 3.5; 
-$guide-width   : $unit * 33;
+$guide-width   : $unit * 37;
 
 //--- COLORS
 $highlight : rgba(255,255,255,.3) !default;
 $outline : #222;
-$inset   : #000;
-$outset  : #484b4d;
+$outset  : #fff;
+$inset   : #ddd;
 
 $rolls-inset : #333; //possibly obselete after new rolling pages are done
 $rolls-outset : #555; //possibly obselete after new rolling pages are done
 
 //text-level colors
+$text               : #333;
 $button-color       : #efefef;
-$button-color-light : #333;
-$text               : #dcddde;
+$button-color-light : $text;
 
-$guide-bg-color 				            : #232526;
+$guide-bg-color 				            : #efefef;
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #111;

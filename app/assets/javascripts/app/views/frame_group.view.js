@@ -31,11 +31,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   },
 
-  className : 'frame',
+  // className : 'frame',
 
   template : function(obj){
     try {
-      return JST['frame'](obj);
+      return JST['frame-revision'](obj);
     } catch(e){
       console.log(e.message, e.stack);
     }

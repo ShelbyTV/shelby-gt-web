@@ -156,24 +156,6 @@
   margin-top: (10em/12);
 }
 
-//---------------------------
-//  modular list framework
-//---------------------------
-
-.list_module {
-  margin: 0;
-  padding: $list-module-spacing;
-}
-
-.list_item {
-}
-
-.list_button {
-
-  &:hover {
-    background-color: $list-item-bg-hover;
-  }
-}
 
 .active-list-item .list_button {
   background-color: $list-item-bg-hover;
