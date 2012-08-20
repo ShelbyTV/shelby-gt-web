@@ -28,6 +28,8 @@ libs.shelbyGT.ExploreContentPaneView = Support.CompositeView.extend({
       model : displayedRollCategory,
       tagName : 'ol'
     }), '.js-explore-body');
+    //reset scroll position to the top
+    this.$('.js-content-module-explore').scrollTop(0);
   }
 
 });
