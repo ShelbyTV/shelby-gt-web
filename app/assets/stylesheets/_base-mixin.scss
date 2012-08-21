@@ -161,14 +161,25 @@ $primer-button-context : generic !default;
 	border-radius: $button-radius;
 	box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%), //inner top highlight
 							inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%); //inner bottom shadow
-	padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
 
-//@include font-primer(inputfont); 
-//not convinced font-primer() mix-in is a good idea anymore.
-//instead spec out each property...
-//only style font-family, color, weight in mixin
-//determine size in the actual class.
+	//@include font-primer(inputfont);
+	//not convinced font-primer() mix-in is a good idea anymore.
+	//instead spec out each property...
+	//only style font-family, color, weight in mixin
+	//determine size in the actual class.
 	font-family: $font-family-display;
+	font-weight: 400;
+
+	//possible button contexts:
+	//frame command, menu command, or generic
+	@if $primer-button-context == frame-command {
+		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
+	} @elseif $primer-button-context == explore-rolls {
+		padding: .8em 2em .75em; //this is magical: button padding stays proportional, relative to font-size.
+	} @else {//generic
+		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
+	}
+
 
 	@if $primer-tone == light { 
 	//toggle light font and dark font depending on button bg.

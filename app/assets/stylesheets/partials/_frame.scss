@@ -17,7 +17,12 @@
 }
 
 .xframe-header {
-	color: $text;
+	&:active,
+	&:hover,
+	&:link, 
+	&:visited{
+		color: $text;
+	}
 	text-decoration:none;
 }
 
@@ -85,6 +90,8 @@
 //---------------------------
 
 .xframe-command-menu {
+	//set height to 0 so that clicking thumbnail isn't impossible.
+	height: 0;
 	left: 0;
 	list-style-type: none;
 	position: absolute;

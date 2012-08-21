@@ -1,5 +1,3 @@
-<% console.log(frame) %>
-
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
 
@@ -16,7 +14,7 @@
 
         <!-- new videocard -->
            <article id="<%= videoId %>" class="xframe">
-            <a href="#" onclick="return false;" class="xframe-header">
+            <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
               <h1 class="xframe-title" title="<%= videoTitle %>">
                <%= videoTitle %> 
               </h1>
@@ -33,7 +31,7 @@
                       </button>
                     </li>
                     <li class="menu_item" role="menuitem">
-                      <button class="xframe-command command-roll">
+                      <button class="xframe-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
                         <i class="command-icon">
                           Roll…
                         </i>
@@ -60,9 +58,9 @@
                     </li>
                   </ul>
                 </div><!-- eo .xframe-menu -->
-                  <div class="image_module xframe-thumbnail js-frame-activate" style="background-image: url('<%= videoThumbnail %>');" role="img">
-                    <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
-                  </div>
+                <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate" style="background-image: url('<%= videoThumbnail %>');" role="img">
+                  <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+                </a>
                   <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
               </div><!-- eo .xframe-body -->
 
