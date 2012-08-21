@@ -4,13 +4,12 @@
 <% var video = frame.get('video') %>
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
-<% var videoThumbnail = video.get('thumbnail_url') || '/images/avatar.jpg' %>
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var videoThumbnail = video.get('thumbnail_url') || '/images/avatar.jpg' %>
 
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator.get('nickname') %>
-<% var creatorAvatar = creator.get('user_image') || '/images/avatar.jpg' %>
-
-<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var creatorAvatar = creator.get('user_image') || '/images/avatar.jpg' %>
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 
         <!-- new videocard -->
            <article id="<%= videoId %>" class="xframe">

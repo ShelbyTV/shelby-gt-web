@@ -1,5 +1,24 @@
 <article id="" class="explore-frame clearfix">
-  <ul class="explore-list explore-frame-menu">
+  <div class="menu_module xframe-menu">
+    <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
+      <li class="menu_item" role="menuitem">
+        <button class="xframe-command command-queue js-queue-command">
+          <i class="command-icon">
+            Queue
+          </i>
+        </button>
+      </li>
+      <li class="menu_item" role="menuitem">
+        <button class="xframe-command command-roll js-roll-command">
+          <i class="command-icon">
+            Roll…
+          </i>
+        </button>
+      </li>
+    </ul>
+  </div><!-- eo .xframe-menu -->
+
+<!--   <ul class="explore-list explore-frame-menu">
     <li>
       <button class="explore-frame-command js-queue-command">
         Queue
@@ -12,7 +31,7 @@
       </button>
     </li>
   </ul>
-
+ -->
   <a href="#" onclick="return false;" class="explore-frame-thumbnail js-explore-frame-thumbnail" style="background-image:url(<%= frame.get('video').get('thumbnail_url') %>);" role="img">
     <img src="<%= frame.get('video').get('thumbnail_url') %>" alt="Thumbnail of <%= frame.get('video').get('title') %>" title="<%= frame.get('video').get('title') %>" class="visuallyhidden">
   </a>
