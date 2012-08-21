@@ -89,14 +89,23 @@
 //	frame command menu
 //---------------------------
 
-.xframe-command-menu {
-	//set height to 0 so that clicking thumbnail isn't impossible.
+.xframe-menu {
 	height: 0;
 	left: 0;
-	list-style-type: none;
 	position: absolute;
 	top: 0;
 	width: 100%;
+	z-index: 1;
+}
+
+.xframe-command-menu {
+	//set height to 0 so that clicking thumbnail isn't impossible.
+	height: inherit;
+	left: inherit;
+	list-style-type: none;
+	position: inherit;
+	top: inherit;
+	width: inherit;
 }
 
 .xframe-command {
