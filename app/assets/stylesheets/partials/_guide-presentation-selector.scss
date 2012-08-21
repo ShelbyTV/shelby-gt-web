@@ -46,6 +46,21 @@
   width: 70px;
 }
 
+.guide-now-playing {
+  display: none;
+  width: 100px;
+  
+  .context-overlay-wrapper {
+    opacity: 0.0;
+  }
+  &:hover{
+    background-color: $guide-bg-color;
+    .context-overlay-wrapper {
+      opacity: 1.0;
+    }
+  }
+}
+
 .guide-settings {
   float: right;
   position: relative;

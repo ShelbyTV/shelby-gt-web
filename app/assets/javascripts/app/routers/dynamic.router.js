@@ -368,7 +368,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         if (shelby.models.routingState.get('forceFramePlay')) {
           // if we want to be sure the frame starts playing, we need to take special action if the
           // requested frame is already active, because it may be paused
-          if (activeFrameModel.id == frame.id) {
+          if (activeFrameModel && activeFrameModel.id == frame.id) {
             //if the previous active frame was the frame we want to play, play it
             shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
           } else {

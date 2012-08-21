@@ -8,26 +8,23 @@ $outset : adjust-lightness($outset,-10%);
 	@include transition-timing-function(ease-out);
 	@include transition-delay(0s);
 	
-//	left: $defaultMargin;
-//	padding-right: 360px;
-	padding-left: 360px;
 	position: absolute;
-	right: $defaultMargin;
-	top: $defaultMargin;
-	width: 20%;
 	z-index:3;	
 }
 
 .context-overlay-lining {
-	float: right;
 	font-size: 120%; //fixes the clipping of the icons in the buttons, makes line-height taller
 	width: 330px;
 	position: relative;
 
 	.video-card {
 		background-color: $guide-bg-color;
-		box-shadow: inset 0px 1px 0px 0px $outset;
-		margin: 10px;
+		box-shadow: none;
+		border-top-left-radius: 0;
+		
+		.frame-creator-avatar {
+		  border-radius: 0;
+	  }
 	}
 
 	.video-card-header,
@@ -45,10 +42,6 @@ $outset : adjust-lightness($outset,-10%);
 			border-left-color: $outset;
 		}
 	}
-}
-
-.user-inactive .context-overlay-wrapper {
-  opacity: 0;
 }
 
 .context-overlay-header{

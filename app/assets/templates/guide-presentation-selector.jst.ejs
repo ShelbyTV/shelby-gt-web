@@ -24,6 +24,16 @@
     </button>
   </li>
 
+	<li class="guide-presentation-item guide-now-playing">
+    <button class="js-now-playing js-track-event" data-ga_category="Header" data-ga_action="Now Playing" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      Now Playing
+    </button>
+
+	  <div class="context-overlay-wrapper js-inactivity-preemption">
+	    <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
+	  </div><!-- eo .conext-overlay-wrapper -->
+  </li>
+
   <li class="guide-presentation-item guide-settings">
     <button class="js-settings guide-settings-anchor js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
     </button>
