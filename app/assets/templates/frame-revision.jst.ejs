@@ -4,7 +4,7 @@
 <% var video = frame.get('video') %>
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var videoThumbnail = video.get('thumbnail_url') || '/images/avatar.jpg' %>
+<% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator.get('nickname') %>
@@ -57,7 +57,7 @@
           </li>
         </ul>
       </div><!-- eo .xframe-menu -->
-      <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate" style="background-image: url('<%= videoThumbnail %>');" role="img">
+      <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
         <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
       </a>
         <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
