@@ -42,7 +42,13 @@
 }
 
 .xframe-thumbnail {
+	border: 1px solid #b9b9b9;
 	height: 130px;
+
+	&.missing-thumbnail {
+		background-image: url($icon-missing-thumbnail) !important;
+		background-size: 72px;
+	}
 }
 
 .xframe-footer {
