@@ -58,12 +58,13 @@ class ApplicationController < ActionController::Base
       if video_info
         video_embed = video_info['video'] ? video_info['video']['embed_url'] : nil
         roll_info = video_info['roll']
-        user_info = roll_info ? Shelby::API.get_user_info(video_info['roll']['creator_id']) : nil
+        user_id = roll_info ? roll_info['creator_id'] : nil
+        user_info = user_id ? Shelby::API.get_user_info(user_id) : nil
         if video_info['frame']
           frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
           roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id']) 
         end
-        user_permalink = user_info ? Shelby::API.generate_user_route(user_info['nickname']) : nil
+        user_permalink = user_id ? Shelby::API.generate_user_route(user_id) : nil
       end
       return {  :roll => {  :roll_info => roll_info,
                             :roll_permalink => roll_permalink,
