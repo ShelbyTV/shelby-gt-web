@@ -52,9 +52,9 @@ fieldset.rolling-fields {
 }
 
 .roll-options-submit {
-  @include x-button-primer($shelby-blue);
-
-  width: 100%;
+  @include xx-button-primer($shelby-blue, dark);
+  float:right;
+  margin-top: 8px;
 }
 
 /* sliders */

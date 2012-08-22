@@ -37,8 +37,8 @@
 				//skipping step 1.  Rendering Step 2 with user's personal roll.
 				this.selectRoll(shelby.models.user.get('personal_roll'));
 				//user can't go back to step 1 since it doesn't exist
-				this.$(".guide-overlay-title .cancel").show();
-				this.$(".guide-overlay-title .back").hide();
+				// this.$(".guide-overlay-title .cancel").show();
+				// this.$(".guide-overlay-title .back").hide();
 			} 
 			else {
 				// render step 1: roll selection
@@ -51,8 +51,8 @@
 		//------------------------- STEP 1 ----------------------------
 		
 		_renderRollSelectionChild: function(){
-			this.$(".guide-overlay-title .cancel").show();
-			this.$(".guide-overlay-title .back").hide();
+			// this.$(".guide-overlay-title .cancel").show();
+			// this.$(".guide-overlay-title .back").hide();
 			
 			this.$('.select-roll-type').show();
 			
@@ -79,8 +79,8 @@
 		//------------------------- STEP 2 ----------------------------
 		
 		_renderRollingFormChild: function(roll){
-			this.$(".guide-overlay-title .cancel").hide();
-			this.$(".guide-overlay-title .back").show();
+			// this.$(".guide-overlay-title .cancel").hide();
+			// this.$(".guide-overlay-title .back").show();
 			
 			this._rollingForm = new libs.shelbyGT.RollingFormView({
 				roll: roll,
