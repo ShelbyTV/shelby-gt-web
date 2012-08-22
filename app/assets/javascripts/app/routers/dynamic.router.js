@@ -13,6 +13,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rolls/:content" : "displayRollList",
     "rolls" : "displayRollList",
     "explore" : "displayExploreView",
+    "onboarding/:stage" : "displayOnboardingView",
     "queue" : "displaySaves",
     "saves" : "displaySaves",
     "preferences" : "displayUserPreferences",
@@ -269,6 +270,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     $.when(libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect())
       .always(function(){shelby.models.exploreGuide.trigger('hideSpinner');});
+  },
+
+  displayOnboardingView : function(stage){
+    this._setupTopLevelViews();
+    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
   },
 
   displaySaves : function(){

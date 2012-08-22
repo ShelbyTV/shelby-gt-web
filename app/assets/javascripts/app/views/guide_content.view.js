@@ -58,7 +58,8 @@
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore
+        && model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
         this._updateChild(model);
       }
     },
