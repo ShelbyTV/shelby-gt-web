@@ -1,3 +1,9 @@
+<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+<% var comment = messages.models[0].get('text') %>
+<% console.log(messages.models[0].get('user_id')) %> 
+
+<% console.log(messages) %>
+
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
 
@@ -7,6 +13,7 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
+<% console.log(creator.get('id')) %>
 <% var creatorNickname = creator.get('nickname') %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var creatorAvatar = creator.get('user_image') || '/images/avatar.jpg' %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
@@ -73,9 +80,12 @@
         <p class="xuser-data">
           shared by <strong><%= creatorNickname %></strong> on twitter
         </p>
-        <p>
-          Just a reminder: We're going to have a pretty amazing event for @jeffemire's UNDERWATER WELDER tomorrow! http://beguiling.com
-        </p>
+
+        <% if(creator.get('id') == messages.models[0].get('user_id')) { %>
+          <p>
+            <%= messages.models[0].get('text') %>
+          </p>
+        <% } %>
         <p class="xframe-comment">
           <a href="#" onclick="return false;" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
             Comments (<%= messages.length %>)

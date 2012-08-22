@@ -31,6 +31,8 @@
     render : function(){
       var self = this;
       
+      console.log(this.$el);
+      
       this.$el.html(this.template({ frame : this.model, user: shelby.models.user }));
       
       this.model.get('conversation').get('messages').each(function(message){

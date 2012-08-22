@@ -4,7 +4,11 @@
 //---------------------------
 
 .media_module {
-  margin-left: $media-module-margin;
+  margin-bottom : ($media-module-margin - 3);
+  margin-left   : $media-module-margin;
+  margin-right  : $media-module-margin;
+  margin-top    : $media-module-margin;
+  position      : relative;
 }
 
 .media_body,
@@ -99,3 +103,21 @@
     background-color: $list-item-bg-hover;
   }
 }
+
+//---------------------------
+//  modular overlay framework
+//---------------------------
+
+.overlay_header {
+  height: $overlay_header_height;
+}
+
+.overlay_body {
+  bottom: 0;
+  position: absolute;
+  overflow-y: auto;
+  top: $overlay_header_height;
+  width: 100%;
+}
+
+

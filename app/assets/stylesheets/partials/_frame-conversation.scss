@@ -1,11 +1,25 @@
 @import "base";
 
-.conversation-scroller { //needs to be consistent with .rolling-main
+.conversation-header {
+
+}
+
+.conversation-body {
+  padding: 1.5em 8px;
+}
+
+////////TODO: FIGURE OUT WHATS BEING USED ANYMORE BELOW:
+.conversation-scroller { 
+  background: $guide-bg-color;
   bottom: 0;
-  overflow-y: auto;
+//  overflow-y: auto;
   position: absolute;
-  top: 146px;
+  top: 178px;
   width: 100%;
+}
+
+.conversation-wrapper {
+  background: $videocard-footer-bg-color;
 }
 
 .conversation,
@@ -19,7 +33,6 @@
 .frame-conversation-message {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
-  padding: 10px 0 10px 10px;
 }
 
 .frame-conversation-message-avatar {
@@ -84,34 +97,33 @@
 }
 
 .new-comment {
-  background-color: #35383a;
   border-top: 1px solid $outset;
-  padding: 10px;
-  position: relative;
-   
-  .new-comment-submit {
-    @include x-button-primer($shelby-gray, small);
-    margin-top: 10px;
-    margin-left: 59px;
-  }
+  position: relative;   
+}
+
+.new-comment-submit {
+  @include x-button-primer($shelby-blue, small);
+  margin-top: 10px;
+  float: right;
 }
 
 .new-comment-input {
   @include inputfont;
-  @include opacity(0.8);
   @include roundies(input);
   
+  border: 1px solid adjust-lightness($inset, -10%);
   height: 50px;
   left: 68px;
-  margin-left: 12px;
   padding: 4px 5px;
-  width: 75%;
+  width: 100%;
 
   &:focus{
-    @include transition-property('opacity');
+    @include transition-property('border');
     @include transition-duration(0.25s);
     @include transition-timing-function(ease-in);
-    @include opacity(1);
+    border-color: black;
+    color: black;
+    outline: none;
   }
 }
 

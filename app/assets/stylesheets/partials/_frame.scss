@@ -34,7 +34,7 @@
 
 .xframe-body-wrapper {
 	background-color: #fff;
-	box-shadow: 0 0 2px 0 rgba(0,0,0,.5);
+	box-shadow: $videocard-shadow;
 	position: relative;
 }
 
@@ -42,7 +42,6 @@
 }
 
 .xframe-thumbnail {
-	border: 1px solid #b9b9b9;
 	height: 130px;
 
 	&.missing-thumbnail {
@@ -52,14 +51,6 @@
 }
 
 .xframe-footer {
-	position: relative;
-	//top, bottom, and right margins are set here 
-	//as they're not exactly pertainent to making the media_module work.
-	//however, they use the same margin variable
-	//this makes it clear that they're still relative to the initial margin-left in the module.
-	margin-bottom: ($media-module-margin - 3);
-	margin-right: $media-module-margin;
-	margin-top: $media-module-margin;
 }
 
 .xframe-link {
@@ -86,9 +77,18 @@
 	color: adjust-lightness($text, 20%);
 }
 
+.xuser-data-timestamp {
+	float: right;
+	opacity: .5;
+}
+
 .xuser-avatar {
 	height: 33px;
 	width: 33px;
+
+	&.missing-avatar {
+		background-image: url($icon-missing-avatar) !important;
+	}
 }
 
 //---------------------------

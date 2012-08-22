@@ -1,9 +1,19 @@
 <% var creator = frame.get('creator') %>
+<% var frameTitle = frame.get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-
-<div class="guide-overlay-header rolling-header">
+<% console.log(user) %>
+<div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
+    <button class="cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
+      X
+    </button>
+    <h2>Destination: user.shelby.tv</h2>
+  </div>
+</div>
+
+<div class="overlay_body guide-overlay-body conversation-body">
+<!--   <div class="guide-overlay-title">
     <button class="cancel js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= user.get('nickname') %>'>
       Cancel
     </button>
@@ -11,35 +21,29 @@
 			style="display:none;">
       Back
     </button>
-    <h2 class="title">Roll Video</h2>
+    <h2 class="title">Roll Videoz</h2>
   </div>
+ -->  
+  <h1 class="xframe-title" title="<%= frameTitle %>">
+    <%= frameTitle || '' %> 
+  </h1>
   
-  <%=
-    JST['wide-thumbnail-overlay']({
-      creatorName : creator.get('nickname'),
-      showThumbnail : true,
-      thumbnail : frameThumbnail,
-      title : frame.get('video').get('title')
-    })
-  %>
+  <div class="xframe-body-wrapper">
+    <%=
+      JST['thumbnail-module']({
+        thumbnail : frameThumbnail,
+        title : frame.get('video').get('title')
+      })
+    %>
 
-<div class="guide-overlay-main rolling-main">
-	
-	<div class="rolling-form">
-		<!-- Form content from RollingFormView -->
-	</div>
-	
-	<div class="select-roll-type">  
-		<button class="create-roll js-track-event" data-ga_category="Rolling" data-ga_action="create_new_roll" data-ga_label='<%= user.get('nickname') %>'>
-			Create
-		</button>
-		
-		<h3 class="rolling-main-header">Rolls</h3>
-  
-	  <div class="js-existing-rolls-list existing-rolls-list">
-	    <!-- Rolls UL added + filled out by RollingSelctionListView -->
-	  </div>
-	</div>
+
+
+    <div class="guide-overlay-main rolling-main">
+      <div class="rolling-form">
+        <!-- Form content from RollingFormView -->
+      </div>
+    </div>
+  </div>
 </div>
 
 

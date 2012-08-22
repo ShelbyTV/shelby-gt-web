@@ -1,13 +1,21 @@
-<div class="conversation-scroller">
+<% var userAvatar = user.get('user_image_original') || user.get('user_image')%>
+<% var userNickname = user.get('nickname') || "" %>
+
+<div class="conversation-wrapper">
   <ul class="conversation frame-conversation"></ul>
-  
+
   <form class="new-comment clearfix">
-    <div class="new-comment-user-avatar">
-      <img src="<%= user.get('user_image_original') || user.get('user_image')%>"
-           alt="<%= user.get('nickname') %>" title="<%= user.get('nickname') %>" />
-    </div>
-    <textarea class="js-add-message-input new-comment-input" rows="2"></textarea>
-    <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-    <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>">Comment</button>
+    <div class="media_module">
+      <a href="#" onclick="return false;" class="media_image">
+        <span class="image_module xuser-avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
+          <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>">
+        </span>
+      </a>
+      <div class="media_body">
+        <textarea class="js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"></textarea>
+        <div class="js-frame-comment-error-message frame-comment-error-message"></div>
+        <button class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>" tabindex="0">Comment</button>
+      </div>
+    </div><!-- eo .media_module-->
   </form>
 </div>

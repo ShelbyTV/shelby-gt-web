@@ -8,6 +8,9 @@ $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
 $icon-comment-reply             : "#{$path}comment_reply#{$extension}";
 $icon-mark                      : "#{$path}mark#{$extension}";
+//TODO: get an SVG of this lil' fucker:
+$icon-missing-avatar            : "#{$path}missing_avatar.png";
+//$icon-missing-avatar            : "#{$path}missing_avatar#{$extension}";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
 
@@ -109,17 +112,28 @@ $guide-presentation-tab-bg-selected : #111;
 
 $guide-explore-bg                   : #e2e2e2;
 
+
+////modules
 $list-module-spacing                : 1em;
 $list-module-bg                     : #e2e2e2;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
+
+$overlay_header_height              : 46px;
+////end modules
+
+
+
 $header-outline                     : #202020;
 
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
+
+$videocard-footer-bg-color          : #fff;
+$videocard-shadow                   : 0 0 2px 0 rgba(0,0,0,.5);
 
 $video-card-color                   : #404040;
 $video-card-outline                 : #222;
