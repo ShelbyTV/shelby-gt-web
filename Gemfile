@@ -53,6 +53,7 @@ gem 'capistrano'
 group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'mini_magick' # for rendering screenshots from capybara webkit
   gem 'headless'
   gem 'rspec-rails'
   gem 'jasmine', :git => "git://github.com/pivotal/jasmine-gem.git"
