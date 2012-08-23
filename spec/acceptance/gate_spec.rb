@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Index' do
+describe 'Index', :type => :request do
   before(:each) do
     visit '/'
   end
