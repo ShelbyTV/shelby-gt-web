@@ -618,12 +618,47 @@ window.shelbyBookmarklet = {
                             withCredentials: true
                         },
                         success: function (response) {
-                            callback(response)
+                            callback(response);
                         },
                         error: function () {
                             utilObject.htmlTemplate.notifyMessage("Cannot roll");
                         }
                     });
+                },
+                
+                //params:
+                //  frame_id is the String Bson ID of the frame
+                //  comment is the comment entered by the user
+                //  destinations is an array of strings that is a subset of: ['twitter', 'facebook']
+                shelbyApiShare: function(frame_id, comment, destinations, callback){
+                  if(!frame_id || !comment || !destinations || destinations.length == 0){
+                    return;
+                  }
+                  
+                  var reqData = {
+                    'destination': destinations,
+                    'text': comment
+                  };
+                  
+                  shelbyJ.ajax({
+                      type: 'GET',
+                      url: 'http://<%= Settings::VideoRadar.api_domain %>/v1/POST/frame/'+frame_id+'/share',
+                      dataType: "jsonp",
+                      timeout: 10000,
+                      async: true,
+                      crossDomain: true,
+                      data: reqData,
+                      xhrFields: {
+                          withCredentials: true
+                      },
+                      success: function (response) {
+                          if(callback) callback(response);
+                      },
+                      error: function () {
+                          utilObject.htmlTemplate.notifyMessage("Sharing failed.");
+                      }
+                  });
+                  
                 },
                   
                 shelbyApiQueue: function(vid_url, video_id, callback) {
@@ -670,7 +705,16 @@ window.shelbyBookmarklet = {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
                   return;
                 }
+                
+                var shareDests = [];
+                if(shelbyJ("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
+          			if(shelbyJ("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
+                
                 rollCallback = function(response) {
+                  //if sharing was enabled, do it, do it now (not waiting for success response to keep UX snappy)
+                  var frame_id = response.result.id;
+                  utilObject.shelbyAjaxCall.shelbyApiShare(frame_id, message, shareDests);
+                  
                   utilObject.styleGuideHide("roll-guide");
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;

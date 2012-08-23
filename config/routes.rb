@@ -22,6 +22,8 @@ ShelbyGtWeb::Application.routes.draw do
   get '/frame/:frame_id' => "frame#show"
 
   get '/signout' => "home#signout", :as => :signout
+  
+  get '/get_bookmarklet' => "home#get_bookmarklet"
 
   get '(*path)' => 'home#index', :as => :root
 
