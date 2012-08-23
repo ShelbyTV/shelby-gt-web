@@ -6,7 +6,11 @@ require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-Capybara.javascript_driver = :webkit
+Capybara.register_driver :webkit_silent do |app|
+  Capybara::Driver::Webkit.new(app, :stdout => nil)
+end
+
+Capybara.javascript_driver = :webkit_silent
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
