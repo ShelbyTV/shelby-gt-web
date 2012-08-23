@@ -51,8 +51,12 @@ gem 'capistrano'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :development do
-	gem 'jasmine', :git => "git://github.com/pivotal/jasmine-gem.git"
-	gem 'sinon-rails'
-	gem 'jasmine-sinon-rails'
-	gem 'jasmine-jquery-rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'headless'
+  gem 'rspec-rails'
+  gem 'jasmine', :git => "git://github.com/pivotal/jasmine-gem.git"
+  gem 'sinon-rails'
+  gem 'jasmine-sinon-rails'
+  gem 'jasmine-jquery-rails'
 end
