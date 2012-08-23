@@ -18,9 +18,15 @@
 }
 
 /* common to many guide overlays */
-.guide-overlay-title {
-  background-color: adjust-lightness($guide-bg-color, -10%);
+.guide-overlay-header {
   border-bottom: 1px solid $inset;
+}
+
+.guide-overlay-body {
+  border-top: 1px solid $outset;
+}
+
+.guide-overlay-title {
   height: 46px;
   
   .back, .cancel {
