@@ -2,7 +2,6 @@
 <% var frameTitle = frame.get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% console.log(user) %>
 <div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
     <button class="cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">

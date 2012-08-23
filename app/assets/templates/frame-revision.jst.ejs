@@ -51,13 +51,13 @@
             </button>
             <ul class="menu_sublist xframe-sublist" role="menu">
               <li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-share">
+                <button class="xframe-option command-share js-share-frame">
                   Share Video
                 </button>
               </li>
               <li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-remove">
-                  Remove Video
+                <button class="xframe-option command-remove js-remove-frame">
+                  Hide Video
                 </button>
               </li>
             </ul>
@@ -86,11 +86,11 @@
             <%= messages.models[0].get('text') %>
           </p>
         <% } %>
-        <p class="xframe-comment">
+        <div class="xframe-comment">
           <a href="#" onclick="return false;" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
             Comments (<%= messages.length %>)
           </a>
-        </p>
+        </div>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->

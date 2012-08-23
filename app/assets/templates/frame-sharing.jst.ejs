@@ -1,26 +1,42 @@
-<% var creator = frame.get('creator') %>
+<% var creator        = frame.get('creator') %>
+<% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
+<% var thumbnailText  = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
+<% console.log(shelby.models) %>
+<% var user = shelby.models.user %>
+<% var userNickname   = user.get('nickname') %>
+<% var userAvatar     = user.get('user_image_original') || user.get('user_image')%>
 
-<div class="guide-overlay-header rolling-header">
+<% var messageText    = 'test' %>
+<div class="overlay_header guide-overlay-header sharing-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      Cancel
+    <button class="cancel js-cancel frajs-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      X
     </button>
-    <h2>Share Video</h2>
+    <h2>Share this video to friends</h2>
   </div>
-  
-  <%=
-    JST['wide-thumbnail-overlay']({
-      creatorName : creator.get('nickname'),
-      showThumbnail : true,
-      thumbnail : frameThumbnail,
-      title : frame.get('video').get('title')
-    })
-  %>
-
-<div class="frame-sharing">
 </div>
+<div class="overlay_body guide-overlay-body conversation-body">
+  <h1 class="xframe-title" title="<%= frameTitle %>">
+    <%= frameTitle || '' %>
+  </h1>
 
-
-
+  <div class="xframe-body-wrapper">
+    <%=
+      JST['thumbnail-module']({
+        thumbnail : frameThumbnail,
+        title : frameTitle
+      })
+    %>
+    <%=
+      JST['media-module']({
+          userAvatar : userAvatar,
+          userNickname : userNickname,
+          messageText : messageText,
+          action : 'sharing',
+          subline : false
+      })
+    %>
+  </div><!-- eo xframe-body-wrapper -->
+  <div class="frame-sharing"></div>
+</div>
