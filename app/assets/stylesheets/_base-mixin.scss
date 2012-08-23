@@ -171,21 +171,29 @@ $primer-button-context : generic !default;
 
 	//possible button contexts:
 	//frame command, menu command, or generic
-	padding-top: .8em;
-	padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 
 	@if $primer-button-context == frame-command {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 		padding-left: 1em;
 		padding-right: 1em;
+		padding-top: .8em;
 	} @elseif $primer-button-context == explore-rolls {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 		padding-left: 2em;
 		padding-right: 2em;
+		padding-top: .8em;
 	} @elseif $primer-button-context == rolling {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 		padding-left: 4em;
 		padding-right: 4em;
+		padding-top: .8em;
+	} @elseif $primer-button-context == guide-close {
+		padding: .6em;
 	} @else {//generic
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 		padding-left: 1em;
 		padding-right: 1em;
+		padding-top: .8em;
 	}
 
 

@@ -28,13 +28,26 @@
 
 .guide-overlay-title {
   height: 46px;
-  
+
   .back, .cancel {
   	@include xx-button-primer($x-primer-color, light, guide-close);
+
   	left: 0;
-  	margin: 8px;
+    margin: 1em;
   	position: absolute;
   	top: 0;	
+    
+    .cancel-icon {
+      color: transparent;
+      display: block;
+      font: 0/0 a;
+      height: 7px;
+      background-image: url($icon-cancel);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 6px;
+    }
   }
   
   h2 {
@@ -42,6 +55,10 @@
     text-align: center;
     font-size: 1em;
     font-weight: 400;
+  }
+
+  .em {
+    font-weight: 100;
   }
 }
 

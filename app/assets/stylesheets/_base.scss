@@ -4,6 +4,9 @@ $path: "/images/assets/" !default;
 $logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
+//TODO: get a PNG of this lil' fucker:
+$icon-cancel                    : "#{$path}cancel.svg";
+//$icon-cancel                    : "#{$path}cancel#{$extension}";
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
 $icon-comment-reply             : "#{$path}comment_reply#{$extension}";

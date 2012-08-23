@@ -4,10 +4,10 @@
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 <div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
-    <button class="cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
-      X
+    <button class="cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
+      <i class="cancel-icon">Cancel</i>
     </button>
-    <h2>Destination: user.shelby.tv</h2>
+    <h2>Destination: <span class="em">user.shelby.tv</span></h2>
   </div>
 </div>
 

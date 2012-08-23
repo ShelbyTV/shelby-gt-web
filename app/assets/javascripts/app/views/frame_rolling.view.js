@@ -13,7 +13,7 @@
 		_autoChoosePersonalRoll : true,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .cancel"							  	: "_setGuideOverlayStateNone",  //cancel from Step 1/2
+      "click .js-cancel"							: "_setGuideOverlayStateNone",  //cancel from Step 1/2
 			"click .back"										: "_backToRollSelection", //back from Step 2/2
 			"click .create-roll"						: "_createRoll"
     }),
