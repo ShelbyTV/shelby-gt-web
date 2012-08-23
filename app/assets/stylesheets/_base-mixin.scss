@@ -168,16 +168,24 @@ $primer-button-context : generic !default;
 	//only style font-family, color, weight in mixin
 	//determine size in the actual class.
 	font-family: $font-family-display;
-	font-weight: 400;
 
 	//possible button contexts:
 	//frame command, menu command, or generic
+	padding-top: .8em;
+	padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
+
 	@if $primer-button-context == frame-command {
-		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 1em;
+		padding-right: 1em;
 	} @elseif $primer-button-context == explore-rolls {
-		padding: .8em 2em .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 2em;
+		padding-right: 2em;
+	} @elseif $primer-button-context == rolling {
+		padding-left: 4em;
+		padding-right: 4em;
 	} @else {//generic
-		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 
@@ -185,8 +193,11 @@ $primer-button-context : generic !default;
 	//toggle light font and dark font depending on button bg.
 	//this may be over engineering at its finest. maybe...
 		color: $button-color-light;
+		font-weight: 400;
+
 	} @else {
 		color: $button-color;
+		font-weight: 500;
 		text-shadow: 0px 1px 0px #333;
 	}
 }

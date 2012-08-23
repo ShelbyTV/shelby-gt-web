@@ -115,3 +115,41 @@
   top: $overlay_header_height;
   width: 100%;
 }
+
+//---------------------------
+//  modular form framework
+//---------------------------
+
+.form_module {
+
+}
+
+.form_fieldset {
+  margin-top: 1em;
+}
+
+.form_label {
+  font-family: $font-family-display;
+  font-size: 1em;
+  font-weight: 400;
+  display: block;
+}
+
+.form_input,
+.form_textarea {
+  @include roundies(input);
+
+  border: 1px solid $inset;
+  display: block;
+  font-size: 1.2em;
+  padding: .5em;
+  width: 100%;
+}
+
+.form_input {
+  margin-bottom: 1em;
+}
+
+.form_textarea {
+
+}

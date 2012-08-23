@@ -140,7 +140,6 @@
 
 .share-comment,
 .share-networks,
-.share-submit,
 .share-email-addresses {
 	@include x-fieldset-primer;
 }
@@ -152,7 +151,6 @@
 
 .share-networks,
 .share-submit {
-	border-top: 1px solid $outset;
 }
 
 .share-networks {
@@ -194,11 +192,12 @@
 }
 
 .share-submit-button {
-	@include x-button-primer($shelby-blue);
+	@include xx-button-primer($shelby-blue, dark, rolling);
 
-	margin-top: 32px;
-	width: 100%;
-	
+	font-size: 1.2em;
+	float: right;
+	margin-top: 10px;
+
 	.spinner {
 		left: auto;
 		margin-left: -4px;

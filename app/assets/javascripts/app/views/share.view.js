@@ -9,7 +9,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     emailAddresses : false,
     messageCounter :  true,
     shareButton : true,
-    shareButtonCopy : "Share It",
+    shareButtonCopy : "Send",
     spinner : true
   },
 
