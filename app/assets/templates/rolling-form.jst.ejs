@@ -18,17 +18,13 @@
   var userNickname = user.get('nickname') || "";
 %>
 <form class="new-comment clearfix">
-  <div class="media_module">
-    <a href="#" onclick="return false;" class="media_image">
-      <span class="image_module xuser-avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
-        <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>">
-      </span>
-    </a>
-    <div class="media_body">
-      <textarea id="js-rolling-message" class="js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"><%= messageText %></textarea>
-      <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-      <!-- <button id="roll-it" class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>" tabindex="0">Comment</button> -->
-			<button id="js-roll-it" class="roll-options-submit" type="submit">Roll It!</button>
-    </div>
-  </div><!-- eo .media_module-->
+	<%=
+		JST['media-module']({
+			userAvatar : userAvatar,
+			userNickname : user.get('nickname'),
+			messageText : messageText,
+			action : 'rolling',
+			subline : false
+		})
+	%>
 </form>
