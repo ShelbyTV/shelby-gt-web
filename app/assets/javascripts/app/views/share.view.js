@@ -19,8 +19,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     "keyup  .js-share-textarea"                : "_onUpdateShareText",
     "focus  .js-share-textarea"                : "_onFocusShareText",
     "focus  .js-share-email-addresses"         : "_onFocusAddresses",
-    "click  .js-toggle-twitter-sharing"        : "_toggleTwitterSharing",
-    "click  .js-toggle-facebook-sharing"       : "_toggleFacebookSharing"
+    // "click  .js-toggle-twitter-sharing"        : "_toggleTwitterSharing",
+    // "click  .js-toggle-facebook-sharing"       : "_toggleFacebookSharing"
   },
 
   template : function(obj){
@@ -29,12 +29,12 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind("change:text", this._updateTextLengthCounter, this);
-    this.model.bind("change:destination", this._updateDestinationButtons, this);
+    // this.model.bind("change:destination", this._updateDestinationButtons, this);
   },
 
   _cleanup : function(){
     this.model.unbind("change:text", this._updateTextLengthCounter, this);
-    this.model.unbind("change:destination", this._updateDestinationButtons, this);
+    // this.model.unbind("change:destination", this._updateDestinationButtons, this);
   },
 
   render : function(){
@@ -58,7 +58,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       var shelbyAutocompleteView = new libs.shelbyGT.ShelbyAutocompleteView({
         el: this.el,
         inputSelector : '.js-share-textarea',
-        includeSources : ['twitter'],
+        includeSources : ['shelby'],
         multiTerm : true,
         multiTermMethod : 'paragraph'
       });
@@ -93,15 +93,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this.$('.js-share-email-addresses').removeClass('error');
   },
 
-  _updateDestinationButtons : function(shareModel){
-    if (this._components.networkToggles) {
-      var self = this;
-      ['twitter', 'facebook'].forEach(function(network){
-        var btn = this.$('.js-toggle-' + network + '-sharing');
-        shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
-      });
-    }
-  },
+  // _updateDestinationButtons : function(shareModel){
+  //   if (this._components.networkToggles) {
+  //     var self = this;
+  //     ['twitter', 'facebook'].forEach(function(network){
+  //       var btn = this.$('.js-toggle-' + network + '-sharing');
+  //       shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
+  //     });
+  //   }
+  // },
 
   _getCharsLeft : function(){
     return 140 - this.shareBaseLength - this.model.get('text').length;
@@ -114,18 +114,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
   },
 
-  _toggleSharingByNetwork : function(network){
-    var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference;
-    this.model.set('destination', setOperation(this.model.get('destination'), [network]));
-  },
+  // _toggleSharingByNetwork : function(network){
+  //   var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference;
+  //   this.model.set('destination', setOperation(this.model.get('destination'), [network]));
+  // },
 
-  _toggleTwitterSharing : function(){
-    this._toggleSharingByNetwork('twitter');
-  },
+  // _toggleTwitterSharing : function(){
+  //   this._toggleSharingByNetwork('twitter');
+  // },
 
-  _toggleFacebookSharing : function(){
-    this._toggleSharingByNetwork('facebook');
-  },
+  // _toggleFacebookSharing : function(){
+  //   this._toggleSharingByNetwork('facebook');
+  // },
 
   _validateShare : function(){
     if(this._components.emailAddresses && this.$('.js-share-email-addresses:invalid').length > 0){
@@ -134,10 +134,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       return false;
     }
     
-    if(this._components.networkToggles && this.model.get('destination').length == 0){
-      shelby.alert("Please choose a network to share on.");
-      return false;
-    }
+    // if(this._components.networkToggles && this.model.get('destination').length == 0){
+    //   shelby.alert("Please choose a network to share on.");
+    //   return false;
+    // }
     
     return true;
   },
