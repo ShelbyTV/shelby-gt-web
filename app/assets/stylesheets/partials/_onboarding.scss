@@ -57,3 +57,43 @@
     width:100%;
   }
 }
+
+/* STAGE 3 */
+.onboarding-network-list{
+  list-style:none;
+  margin-left:20px;
+  margin-right:20px;
+  width:auto;
+  .onboarding-roll-list-item-lining{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  li{
+    float:left;
+    margin:0;
+    padding:0;
+    width:20%;
+  }
+}
+
+/* STAGE 4 */
+
+.onboarding-last-step-list{
+  list-style:none;
+  margin-left:20px;
+  margin-right:20px;
+  width:auto;
+  .onboarding-last-step-item-lining{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  li{
+    float:left;
+    margin:0;
+    padding:0;
+    width:50%;
+  }
+  img{
+    width:100%;
+  }
+}

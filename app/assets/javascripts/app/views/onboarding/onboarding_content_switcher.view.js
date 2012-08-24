@@ -15,7 +15,12 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
   _stageToChildMap : {
     '1' : {
       view:libs.shelbyGT.OnboardingContentStage1View,
-      opts:{stage:1}
+      opts:function(){
+        return {
+          model: new libs.shelbyGT.OnboardingStage1Model(),
+          stage: 1
+        }
+      }
     },
     '2' : {
       view:libs.shelbyGT.OnboardingContentStage2View,
@@ -37,7 +42,8 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
     var stage = shelby.models.guide.get('onboardingStage');
     if (stage===null) return false;
     console.log('STAGE', stage, this._stageToChildMap[stage]);
-    this.renderChild(new this._stageToChildMap[stage].view(this._stageToChildMap[stage].opts));
+    var opts = (typeof this._stageToChildMap[stage].opts==='function') ?this._stageToChildMap[stage].opts() : this._stageToChildMap[stage].opts;
+    this.renderChild(new this._stageToChildMap[stage].view(opts));
     return this;
   }
 
