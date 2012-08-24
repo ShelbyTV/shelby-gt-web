@@ -5,22 +5,22 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _components : {
     autoComplete : true,
-    networkToggles : true,
+    networkToggles : true, //TODO: possibly obsolete
     emailAddresses : false,
     messageCounter :  true,
-    shareButton : true,
-    shareButtonCopy : "Send",
+    shareButton : true, //TODO: possibly obsolete
+    shareButtonCopy : "Send", //TODO: possibly obsolete
     spinner : true
   },
 
   events : {
-    "click .js-submit-share:not(.js-sharing)" : "_share",
-    "change .js-share-textarea" : "_onUpdateShareText",
-    "keyup .js-share-textarea" : "_onUpdateShareText",
-    "focus .js-share-textarea" : "_onFocusShareText",
-    "focus .js-share-email-addresses" : "_onFocusAddresses",
-    "click .js-toggle-twitter-sharing" : "_toggleTwitterSharing",
-    "click .js-toggle-facebook-sharing" : "_toggleFacebookSharing"
+    "click  .js-submit-share:not(.js-sharing)" : "_share",
+    "change .js-share-textarea"                : "_onUpdateShareText",
+    "keyup  .js-share-textarea"                : "_onUpdateShareText",
+    "focus  .js-share-textarea"                : "_onFocusShareText",
+    "focus  .js-share-email-addresses"         : "_onFocusAddresses",
+    "click  .js-toggle-twitter-sharing"        : "_toggleTwitterSharing",
+    "click  .js-toggle-facebook-sharing"       : "_toggleFacebookSharing"
   },
 
   template : function(obj){

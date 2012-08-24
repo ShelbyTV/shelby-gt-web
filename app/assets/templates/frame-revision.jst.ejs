@@ -1,8 +1,5 @@
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 <% var comment = messages.models[0].get('text') %>
-<% console.log(messages.models[0].get('user_id')) %> 
-
-<% console.log(messages) %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
@@ -13,9 +10,8 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
-<% console.log(creator.get('id')) %>
 <% var creatorNickname = creator.get('nickname') %>
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var creatorAvatar = creator.get('user_image') || '/images/avatar.jpg' %>
+ <% var creatorAvatar = creator.get('user_image') %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 
 <!-- new videocard -->

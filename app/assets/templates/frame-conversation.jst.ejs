@@ -3,7 +3,6 @@
 <% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
 <% var creatorNickname = creator.get('nickname') || '' %>
 <% var frameTitle = frame.get('video').get('title') || '' %>
-<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 
 <div class="overlay_header guide-overlay-header conversation-header">
@@ -16,20 +15,22 @@
 </div>
 
 <div class="overlay_body guide-overlay-body conversation-body">
-  <h1 class="xframe-title" title="<%= frameTitle %>">
-    <%= frameTitle || '' %> 
-  </h1>
-  
-  <div class="xframe-body-wrapper">
-    <%=
-      JST['thumbnail-module']({
-        thumbnail : frameThumbnail,
-        title : frame.get('video').get('title')
-      })
-    %>
+  <form class="form_module new-comment">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle || '' %> 
+    </h1>
+    
+    <div class="xframe-body-wrapper">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frame.get('video').get('thumbnail_url') || '',
+          title : frame.get('video').get('title') || ''
+        })
+      %>
 
-    <%=
-      JST['frame-conversation-form']({user: user})
-    %>
-  </div>
-</div>
+      <%=
+        JST['frame-conversation-form']({user: user})
+      %>
+    </div>
+  </form>
+</div><!-- eo overlay_body guide-overlay-body conversation-body -->

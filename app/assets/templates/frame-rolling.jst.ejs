@@ -1,37 +1,43 @@
-<% var creator = frame.get('creator') %>
-<% var frameTitle = frame.get('title') || '' %>
+<% var frameTitle     = frame.get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var userNickname = user.get('nickname') %>
+<% var userNickname   = user.get('nickname') || 'your personal '%>
+
 <div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
     <button class="cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
       <i class="cancel-icon">Cancel</i>
     </button>
-    <h2>Destination: <span class="em"><%= userNickname %>.shelby.tv</span></h2>
+    <h2>Destination: <span class="em"><%= userNickname + '.' %>shelby.tv</span></h2>
   </div>
 </div>
 
 <div class="overlay_body guide-overlay-body conversation-body">
-  <h1 class="xframe-title" title="<%= frameTitle %>">
-    <%= frameTitle || '' %> 
-  </h1>
-  
-  <div class="xframe-body-wrapper">
-    <%=
-      JST['thumbnail-module']({
-        thumbnail : frameThumbnail,
-        title : frame.get('video').get('title')
-      })
-    %>
+  <form class="form_module">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle %> 
+    </h1>
+    
+    <div class="xframe-body-wrapper">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frameThumbnail,
+          title : frame.get('video').get('title')
+        })
+      %>
 
-    <div class="guide-overlay-main rolling-main">
-      <div class="rolling-form">
-        <!-- Form content from RollingFormView -->
-      </div>
-    </div><!-- eo guide-overlay-main -->
-  </div><!-- eo xframe-body-wrapper -->
-</div><!-- eo overlay_body-->
+      <div class="guide-overlay-main rolling-main">
+        <div class="rolling-form">
+          <!-- Form content from RollingFormView -->
+        </div>
+      </div><!-- eo guide-overlay-main rolling-main -->
+    </div><!-- eo xframe-body-wrapper -->
+    <div class="rolling-submit">
+      <button id="js-roll-it" class="roll-options-submit" type="submit" tabindex="0">
+        Roll It!
+      </button>
+    </div>
+  </form>
+</div><!-- eo overlay_body guide-overlay-body conversation-body -->
 
 
 

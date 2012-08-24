@@ -27,7 +27,8 @@ fieldset.rolling-fields {
 			display: inline;
 			max-width: 125px;
 		}
-		input#new-roll-name {
+		
+    #new-roll-name {
 			display:inline-block;
 			width: auto;
 		}
@@ -52,8 +53,8 @@ fieldset.rolling-fields {
 }
 
 .roll-options-submit {
-  @include xx-button-primer($shelby-blue, dark);
-  float:right;
+  @include xx-button-primer($shelby-blue, dark, wide);
+
   margin-top: 8px;
 }
 
@@ -94,9 +95,9 @@ fieldset.share-option {
 
   display: block;
   height: 1px;
+  left: 0;
   margin: 3px;
   position: absolute;
-  left: 0;
   top: 0;
   width: 1px;
 
@@ -114,8 +115,8 @@ fieldset.share-option {
   color: transparent;
   display: block;
   font: 0/0 a;
-  line-height: 1.231;
   height: inherit;
+  line-height: 1.231;
   overflow: hidden;
   padding-left: 46px;
   padding-top: 2px;

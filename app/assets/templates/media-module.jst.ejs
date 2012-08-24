@@ -4,7 +4,7 @@
       <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= userNickname %>" alt="<%= userNickname %>">
     </span>
   </a>
-  <div class="media_body">
+  <div class="media_body clearfix">
     <% if (action != 'rolling') { %>
       <!-- display natural comment -->
       <p class="xuser-data">
@@ -15,7 +15,8 @@
       </p>
     <% } else { %>
       <!-- display input for rolling -->
-      <textarea id="js-rolling-message" class="js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"><%= messageText %></textarea>
+      <textarea id="js-rolling-message" class="form_textarea js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"><%= messageText %></textarea>
+      <p style="text-align: right;">140</p>
     <% } %>    
 
     <% if (subline) { %>
@@ -29,8 +30,6 @@
 
     <% if (action == 'commenting') { %>  
       <button id="roll-it" class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= userNickname %>" tabindex="0">Comment</button>
-    <% } else if (action == 'rolling') { %>
-      <button id="js-roll-it" class="roll-options-submit" type="submit">Roll It!</button>
     <% } %>
   </div>
 </div><!-- eo .media_module-->

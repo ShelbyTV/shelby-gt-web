@@ -1,30 +1,18 @@
 <% 
 	var messageText = "↬ @"+frame.get('creator').get('nickname');
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
+
   if(messages.length > 0){
 		messageText += ": "+messages.first().get('text');
 	}
-	
-  var active_networks = [];
-  user.get('authentications').forEach(function(auth){
-    active_networks.push(auth.provider);
-  });
-
-  var pathForDisplay = rollOptions.pathForDisplay;
-  var titleWithoutPath = rollOptions.titleWithoutPath;
-  var urlForRoll = rollOptions.urlForRoll;
-
-  var userAvatar = userAvatar = user.get('user_image_original') || user.get('user_image');
-  var userNickname = user.get('nickname') || "";
 %>
-<form class="new-comment clearfix">
-	<%=
-		JST['media-module']({
-			userAvatar : userAvatar,
-			userNickname : user.get('nickname'),
-			messageText : messageText,
-			action : 'rolling',
-			subline : false
-		})
-	%>
-</form>
+
+<%=
+	JST['media-module']({
+		userAvatar   : user.get('user_image_original') || user.get('user_image'),
+		userNickname : user.get('nickname') || '',
+		messageText  : messageText,
+		action       : 'rolling',
+		subline      : false
+	})
+%>

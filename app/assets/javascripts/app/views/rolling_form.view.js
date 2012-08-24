@@ -11,7 +11,7 @@
 	var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
 	var RollFollowingsConfig = shelby.config.db.rollFollowings;
 	var RollModel = libs.shelbyGT.RollModel;
-        var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
+  var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
 	var ShareActionState = libs.shelbyGT.ShareActionState;
 	var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
 	var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;

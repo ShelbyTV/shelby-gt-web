@@ -9,9 +9,9 @@
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel:not(.js-busy)"    : "_setGuideOverlayStateNone",
-      "click .js-new-comment-submit" : "_addMessage",
-      "click .js-message-reply"      : "_reply"
+      "click .js-cancel:not(.js-busy)" : "_setGuideOverlayStateNone",
+      "click .js-new-comment-submit"   : "_addMessage",
+      "click .js-message-reply"        : "_reply"
     }),
 
     className : GuideOverlayView.prototype.className + ' conversation-overlay',

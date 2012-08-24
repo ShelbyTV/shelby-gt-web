@@ -182,7 +182,7 @@ $primer-button-context : generic !default;
 		padding-left: 2em;
 		padding-right: 2em;
 		padding-top: .8em;
-	} @elseif $primer-button-context == rolling {
+	} @elseif $primer-button-context == wide {
 		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
 		padding-left: 4em;
 		padding-right: 4em;

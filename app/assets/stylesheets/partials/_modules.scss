@@ -138,12 +138,26 @@
 .form_input,
 .form_textarea {
   @include roundies(input);
+  @include transition-property('border');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
 
-  border: 1px solid $inset;
+  border: 1px solid adjust-lightness($inset, -15%);
   display: block;
   font-size: 1.2em;
   padding: .5em;
   width: 100%;
+
+  &:focus {
+    outline: none;
+    border: 1px solid adjust-lightness($inset, -50%);
+  }
+}
+
+.form_textarea_counter {
+  margin: .25em 0 0;
+  opacity: .5;
+  text-align: right;
 }
 
 .form_input {

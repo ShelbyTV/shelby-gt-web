@@ -1,13 +1,10 @@
-<% var creator        = frame.get('creator') %>
-<% var frameTitle     = frame.get('video').get('title') || '' %>
-<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText  = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% console.log(shelby.models) %>
-<% var user = shelby.models.user %>
+<% var user           = shelby.models.user %>
 <% var userNickname   = user.get('nickname') %>
 <% var userAvatar     = user.get('user_image_original') || user.get('user_image')%>
+<% var frameTitle     = frame.get('video').get('title') || '' %>
+<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
+<% var message        = frame.get('conversation').get('messages').at(0) %>
 
-<% var messageText    = 'test' %>
 <div class="overlay_header guide-overlay-header sharing-header">
   <div class="guide-overlay-title">
     <button class="cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
@@ -17,28 +14,31 @@
   </div>
 </div>
 <div class="overlay_body guide-overlay-body conversation-body">
-  <h1 class="xframe-title" title="<%= frameTitle %>">
-    <%= frameTitle || '' %>
-  </h1>
+  <form class="form_module share-form clearfix">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle || '' %>
+    </h1>
 
-  <div class="xframe-body-wrapper">
-    <%=
-      JST['thumbnail-module']({
-        thumbnail : frameThumbnail,
-        title : frameTitle
-      })
-    %>
+    <div class="xframe-body-wrapper">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frameThumbnail,
+          title : frameTitle
+        })
+      %>
 
-    <%=
-      JST['media-module']({
-          userAvatar : userAvatar,
-          userNickname : userNickname,
-          messageText : messageText,
-          action : 'sharing',
-          subline : false
-      })
-    %>
-  </div><!-- eo xframe-body-wrapper -->
-  <div class="frame-sharing">
-  </div>
-</div>
+      <%=
+        JST['media-module']({
+            userAvatar   : message.get('user_image_url'),
+            userNickname : message.get('nickname'),
+            messageText  : message.get('text'),
+            timestamp    : frame.get('created_at'),
+            action       : 'sharing',
+            subline      : false
+        })
+      %>
+    </div><!-- eo xframe-body-wrapper -->
+    <div class="frame-sharing">
+    </div>
+  </form>
+</div><!-- eo over_body guide-overlay-body conversation-body -->

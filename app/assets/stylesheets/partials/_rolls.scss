@@ -15,7 +15,6 @@
 	}
 }
 
-
 .roll-menu {
 	margin: 0;
 	padding: 11px 0 9px;
@@ -153,6 +152,10 @@
 .share-submit {
 }
 
+.share-submit {
+	text-align: right;
+}
+
 .share-networks {
 	float: left;
 	width: 50%;
@@ -192,11 +195,9 @@
 }
 
 .share-submit-button {
-	@include xx-button-primer($shelby-blue, dark, rolling);
+	@include xx-button-primer($shelby-blue, dark, wide);
 
 	font-size: 1.2em;
-	float: right;
-	margin-top: 10px;
 
 	.spinner {
 		left: auto;

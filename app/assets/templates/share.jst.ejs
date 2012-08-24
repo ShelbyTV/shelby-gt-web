@@ -6,8 +6,7 @@
   var twitter_active = _.include(shareModel.get('destination'), 'twitter') ? true : false;
   var facebook_active = _.include(shareModel.get('destination'), 'facebook') ? true : false;
 %>
-
-<form class="form_module share-form clearfix">
+  <!-- form element wrapper is in outside of this JST -->
   <fieldset class="form_fieldset">
     <label class="form_label" for="email-recipients">
       Recipients
@@ -18,11 +17,11 @@
       Message
     </label>
     <textarea class="form_textarea" name="email-message" id="email-message" tabindex="0"></textarea>
+    <p id="js-share-comment-counter" class="form_textarea_counter">140</p>
   </fieldset>
 
 	<fieldset class="form_fieldset share-submit">
 		<button onclick="return false;" class="js-submit-share share-submit-button" type="submit" tabindex="0">
-      <%= components.shareButtonCopy %>
+      Send
     </button>
 	</fieldset>
-</form>
