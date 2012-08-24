@@ -1,0 +1,17 @@
+defaults: &defaults
+  user_interest_email: "example@example.com"
+
+  shelby_user_name: "jtest13"
+  shelby_password: "shelby4321"
+
+  twitter_login_email: "j@shelby.tv"
+  twitter_password: "shelby4321"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
