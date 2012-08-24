@@ -17,4 +17,43 @@
   }
 }
 
+.onboarding-next-step{
+  @include x-button-primer($shelby-gray);
+}
+
 /* STAGE 1 */
+
+.onboarding-form-1{
+  margin:0px auto;
+  width:300px;
+  font-size:20px;
+  text-align:left;
+  input, label{
+    width:100%;
+  }
+}
+
+.onboarding-vanity-url{
+  font-size:22px;
+}
+
+/* STAGE 2 */
+.onboarding-roll-list{
+  list-style:none;
+  margin-left:20px;
+  margin-right:20px;
+  width:auto;
+  .onboarding-roll-list-item-lining{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  li{
+    float:left;
+    margin:0;
+    padding:0;
+    width:20%;
+  }
+  img{
+    width:100%;
+  }
+}
