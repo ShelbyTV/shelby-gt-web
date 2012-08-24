@@ -13,15 +13,24 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
   },
 
   _stageToChildMap : {
-    '1': {
-      view :libs.shelbyGT.OnboardingContentStage1View,
-      opts : {}
+    '1' : {
+      view:libs.shelbyGT.OnboardingContentStage1View,
+      opts:{stage:1}
     },
-    '2': {
-      view :libs.shelbyGT.OnboardingContentStage1View,
-      opts : {}
+    '2' : {
+      view:libs.shelbyGT.OnboardingContentStage2View,
+      opts:{stage:2}
+    },
+    '3' : {
+      view:libs.shelbyGT.OnboardingContentStage3View,
+      opts:{stage:3}
+    },
+    '4' : {
+      view:libs.shelbyGT.OnboardingContentStage4View,
+      opts:{stage:4}
     }
   },
+  
 
   render : function(){
     this._leaveChildren();

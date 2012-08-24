@@ -11,7 +11,7 @@ libs.shelbyGT.OnboardingGuideView = libs.shelbyGT.ListItemView.extend({
   },
 
   template : function(obj){
-    return JST['onboarding-guide'](obj);
+    return JST['onboarding/onboarding-guide'](obj);
   },
 
   _onOnboardingStageChange : function(guideModel, stage){

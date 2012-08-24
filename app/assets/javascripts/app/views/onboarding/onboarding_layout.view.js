@@ -7,7 +7,7 @@ libs.shelbyGT.OnboardingLayoutView = Support.CompositeView.extend({
   _spinnerState : null,
 
   template : function(obj){
-      return JST['onboarding-layout'](obj);
+      return JST['onboarding/onboarding-layout'](obj);
   },
 
   initialize : function(){
@@ -23,13 +23,7 @@ libs.shelbyGT.OnboardingLayoutView = Support.CompositeView.extend({
   render : function(){
     this.$el.html(this.template());
     this.renderChild(new libs.shelbyGT.OnboardingGuideView());
-    this._spinnerState = new libs.shelbyGT.SpinnerStateModel();
-    this._spinnerView = new libs.shelbyGT.SpinnerView({
-      model : this._spinnerState,
-      el : '.js-guide-explore',
-      size : 'explore'
-    });
-    this.renderChild(this._spinnerView);
+    this.renderChild(new libs.shelbyGT.OnboardingContentSwitcherView());
   },
 
   _onShowSpinner : function() {
