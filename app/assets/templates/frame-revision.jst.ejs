@@ -1,5 +1,5 @@
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
-<% var comment = messages.models[0].get('text') %>
+<% var comment; if(messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
@@ -77,7 +77,7 @@
           shared by <strong><%= creatorNickname %></strong> on twitter
         </p>
 
-        <% if(creator.get('id') == messages.models[0].get('user_id')) { %>
+        <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
           <p>
             <%= messages.models[0].get('text') %>
           </p>

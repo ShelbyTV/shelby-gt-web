@@ -5,10 +5,8 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _components : {
     autoComplete : true,
-    networkToggles : true, //TODO: possibly obsolete
-    emailAddresses : false,
+    emailAddresses : true,
     messageCounter :  true,
-    shareButton : true, //TODO: possibly obsolete
     shareButtonCopy : "Send", //TODO: possibly obsolete
     spinner : true
   },
@@ -19,8 +17,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     "keyup  .js-share-textarea"                : "_onUpdateShareText",
     "focus  .js-share-textarea"                : "_onFocusShareText",
     "focus  .js-share-email-addresses"         : "_onFocusAddresses",
-    // "click  .js-toggle-twitter-sharing"        : "_toggleTwitterSharing",
-    // "click  .js-toggle-facebook-sharing"       : "_toggleFacebookSharing"
   },
 
   template : function(obj){
@@ -29,12 +25,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind("change:text", this._updateTextLengthCounter, this);
-    // this.model.bind("change:destination", this._updateDestinationButtons, this);
   },
 
   _cleanup : function(){
     this.model.unbind("change:text", this._updateTextLengthCounter, this);
-    // this.model.unbind("change:destination", this._updateDestinationButtons, this);
   },
 
   render : function(){
@@ -42,6 +36,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if (this._components.emailAddresses) {
       var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({
         el : this.$('.js-share-email-addresses')[0],
+        includeSources : ['email'],
         multiTerm : true
       });
       this.renderChild(recipientsAutocompleteView);
@@ -144,8 +139,9 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _share : function(){
     var self = this;
+
     if(!this._validateShare()) {
-      this.$('.js-share-textarea').addClass('error');
+      this.$('.js-share-textarea, .js-share-email-addresses').addClass('error');
       this.onValidationFail();
       return false;
     }
@@ -163,6 +159,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
     if (this._components.emailAddresses) {
       this.model.set('addresses', this.$('.js-share-email-addresses').val());
+      this.model.set('destination', ['email']);
     }
         
     this.model.save(null, this._getSaveOpts(urls));

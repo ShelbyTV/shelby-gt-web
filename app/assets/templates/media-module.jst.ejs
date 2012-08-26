@@ -29,7 +29,13 @@
     <% } %>
 
     <% if (action == 'commenting') { %>  
-      <button id="roll-it" class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= userNickname %>" tabindex="0">Comment</button>
+      <button id="roll-it" class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= userNickname %>" tabindex="0">
+        Comment
+      </button>
+    <% } else if (action == 'rolling') { %>
+      <button id="js-roll-it" class="roll-options-submit" type="submit" tabindex="0">
+        Roll It!
+      </button>
     <% } %>
   </div>
 </div><!-- eo .media_module-->

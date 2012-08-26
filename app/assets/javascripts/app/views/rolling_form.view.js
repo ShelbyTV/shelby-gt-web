@@ -65,7 +65,6 @@
 
 		_doRoll : function(e){
 			e.preventDefault();
-			
 			if(!this._validate()){ return; }
 			
 			if(this._roll){
@@ -126,9 +125,8 @@
 			var self = this;
 			var message = this.$("#js-rolling-message").val();
 			var shareDests = [];
-			if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
-			if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
-			
+			// if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
+			// if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 			// re roll the frame
       this._frame.reRoll(roll, function(newFrame){
         //rolling is done
