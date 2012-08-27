@@ -14,6 +14,18 @@
 <% var creatorAvatar = creator.get('user_image') %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 
+
+<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
+<% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+<% var frameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
+<% var contextOverlay = options.contextOverlay %>
+<% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
+<% var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+                                                                      frameIsOnHeartedRoll ||
+                                                                      frameIsOnWatchLaterRoll)
+%>
+
+
 <!-- new videocard -->
 <article id="<%= videoId %>" class="xframe">
   <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
@@ -74,7 +86,11 @@
       </a>
       <div class="media_body">
         <p class="xuser-data">
-          shared by <strong><%= creatorNickname %></strong>
+          <% if (clickableCreator && !isFaux) { %>
+            shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+          <% } else { %>
+            shared by <%= creatorNickname %>
+          <% } %>
         </p>
 
         <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>

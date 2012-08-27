@@ -51,6 +51,17 @@
 }
 
 .xframe-footer {
+	.no-faux-link {
+		&:visited,
+		&:link {
+			color: #666;
+			text-decoration: none;
+		}
+		&:hover,
+		&:active {
+			text-decoration: underline;
+		}
+	}
 }
 
 .xframe-link {
