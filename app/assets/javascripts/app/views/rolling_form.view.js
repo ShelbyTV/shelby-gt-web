@@ -8,13 +8,14 @@
 */
 ( function(){
 	
-	var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
-	var RollFollowingsConfig = shelby.config.db.rollFollowings;
-	var RollModel = libs.shelbyGT.RollModel;
+  var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
+  var MessageModel = libs.shelbyGT.MessageModel;
+  var RollFollowingsConfig = shelby.config.db.rollFollowings;
+  var RollModel = libs.shelbyGT.RollModel;
   var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
-	var ShareActionState = libs.shelbyGT.ShareActionState;
-	var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
-	var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
+  var ShareActionState = libs.shelbyGT.ShareActionState;
+  var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
+  var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
 	
 	libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 		
@@ -32,8 +33,8 @@
   
     initialize : function(){
       this._frameRollingState = new ShareActionStateModel();
-			this._roll = this.options.roll;
-			this._frame = this.options.frame;
+      this._roll = this.options.roll;
+      this._frame = this.options.frame;
     },
 
 		render : function(){
@@ -66,7 +67,7 @@
 		_doRoll : function(e){
 			e.preventDefault();
 			if(!this._validate()){ return; }
-			
+
 			if(this._roll){
 				this._rerollFrameAndShare(this._roll);
 			}	else {
@@ -76,12 +77,6 @@
 		
 		_validate : function(){
       validates = true;
-
-      if( !this._roll && this.$("#new-roll-name").val().length < 1 ){
-				shelby.alert("Please enter a name for your Roll");
-        this.$('#new-roll-name').addClass('error');
-        validates = false;
-      }
 
 			if( this.$("#js-rolling-message").val().length < 1 ){
 				shelby.alert("Please enter a comment");
@@ -125,14 +120,13 @@
 			var self = this;
 			var message = this.$("#js-rolling-message").val();
 			var shareDests = [];
-			// if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
-			// if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 			// re roll the frame
-      this._frame.reRoll(roll, function(newFrame){
+      this._frame.reRoll(roll, message, function(newFrame){
         //rolling is done
 				self._rollingSuccess(roll, newFrame);
 				// Optional Sharing (happens in the background)
         self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
+
         self._frameRollingState.get('shareModel').save(null, {
           url : newFrame.shareUrl(),
           success : function(){
