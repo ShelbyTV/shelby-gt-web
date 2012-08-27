@@ -122,11 +122,7 @@
 			var shareDests = [];
 			// re roll the frame
       this._frame.reRoll(roll, message, function(newFrame){
-<<<<<<< HEAD
-        //rolling is done
-=======
         //rolling is done (don't need to wait for add message to complete)
->>>>>>> master_ready
 				self._rollingSuccess(roll, newFrame);
 				
 				// Optional Sharing (happens in the background)
