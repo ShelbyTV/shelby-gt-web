@@ -40,7 +40,7 @@
 }
 
 .rolls-add {
-	@include x-button-primer($shelby-green);
+	@include xx-button-primer($shelby-green);
 	
 	margin-top: 0;
 	width: 100%;
@@ -57,7 +57,7 @@
 }
 
 .rolls-leave {
-	@include x-button-primer($shelby-gray);
+	@include xx-button-primer;
 	margin-top: 0;
 }
 
@@ -72,14 +72,14 @@
 }
 
 .rolls-back {
-	@include x-button-primer($shelby-gray,large);
+	@include xx-button-primer;
 	padding-left: 0;
 	padding-right: 0;
 	width: 100%;
 }
 
 .roll-delete{
-	@include x-button-primer($shelby-red);
+	@include xx-button-primer($shelby-red);
 
 	display: none;
 	position: absolute;
@@ -89,7 +89,7 @@
 
 /* ------ Roll Add Area */
 .add-video-area {
-	@include x-button-primer(#2c2f30);
+	@include xx-button-primer;
 
 	margin: 10px 10px 0px;
 	padding: 6px;
@@ -99,14 +99,14 @@
 		@include inputfont;
 		@include roundies(input);
 
-		border: none;
+		border: 1px solid $inset;
 		height: 25px;
 		padding: 0 4px;
 		width: 87%;
 	}
 
 	.add-video {
-		@include x-button-primer;
+		@include xx-button-primer;
 	
 		float: right;
 		height: 25px;

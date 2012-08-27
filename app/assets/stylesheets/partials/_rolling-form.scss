@@ -55,7 +55,8 @@ fieldset.rolling-fields {
 .roll-options-submit {
   @include xx-button-primer($shelby-blue, dark, wide);
 
-  margin-top: 8px;
+  float: right;
+  margin: 8px 0;
 }
 
 /* sliders */

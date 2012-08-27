@@ -3,8 +3,9 @@
 .roll-header {
   border-top: 1px solid $outset;
 	margin: 0;
-	padding: 12px 0 0 12px;
+	padding: 12px 0 0;
 	position: relative;
+  text-align: center;
 	width: 100%;
 }
 
@@ -27,8 +28,6 @@
 }
 
 .title {
-  margin-left: 35px;
-  padding-left: 12px;
 }
 
 .current-roll-owner-nickname {

@@ -229,6 +229,11 @@
 
 	li {
 		list-style-type: none;	
+		&:first-child {
+			.xframe {
+				border-top: none;
+			}
+		}
 	}
 }
 

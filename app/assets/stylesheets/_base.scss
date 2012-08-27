@@ -135,8 +135,10 @@ $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
+$shadow : 0 0 2px 0 rgba(0,0,0,.5);
+
 $videocard-footer-bg-color          : #fff;
-$videocard-shadow                   : 0 0 2px 0 rgba(0,0,0,.5);
+$videocard-shadow                   : $shadow;
 
 $video-card-color                   : #404040;
 $video-card-outline                 : #222;
