@@ -16,6 +16,25 @@
 	}
 }
 
+.xframe-collapsed {
+	.xframe-thumbnail {
+		float: left;
+		height: 75px;
+		margin-right: 10px;
+		width: 40%;
+	}
+
+	.xframe-footer {
+		overflow: hidden;
+		zoom: 1;
+	}
+	&:hover {
+		.xframe-menu {
+			display: none;
+		}
+	}
+}
+
 .xframe-header {
 	&:active,
 	&:hover,
