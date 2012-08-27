@@ -9,7 +9,7 @@ libs.shelbyGT.SpinnerView = Support.CompositeView.extend({
     "small"   :  "/images/assets/loading-small.gif",
     "medium"  :  "/images/assets/loading-medium.gif",
     "large"   :  "/images/assets/loading-large.gif",
-    "explore" :  "/images/assets/loading-explore.gif"
+    "large-light" :  "/images/assets/loading-explore.gif"
   },
 
   _replacement : null,
