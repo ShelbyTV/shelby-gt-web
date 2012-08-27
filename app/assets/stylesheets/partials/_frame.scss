@@ -128,8 +128,8 @@
 .xframe-option {
 	background-color: #efefef;
 	border-bottom: none;
-	border-left: 1px solid $shelby-gray;
-	border-right: 1px solid $shelby-gray;
+	border-left: 1px solid $inset;
+	border-right: 1px solid $inset;
 	border-top: none;
 	padding: .75em 1em .75em;
 	width: 100%;
@@ -144,7 +144,7 @@
 		.xframe-option {
 			@include roundies(header);
 
-			border-top: 1px solid $shelby-gray;
+			border-top: 1px solid $inset;
 		}
 	}
 
@@ -152,7 +152,7 @@
 		.xframe-option {
 			@include roundies(footer);
 
-			border-bottom: 1px solid $shelby-gray;
+			border-bottom: 1px solid $inset;
 		}
 	}
 }

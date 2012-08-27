@@ -40,7 +40,7 @@
 }
 
 .rolls-add {
-	@include xx-button-primer($shelby-green);
+	@include xx-button-primer($shelby-green, dark);
 	
 	margin-top: 0;
 	width: 100%;
@@ -79,7 +79,7 @@
 }
 
 .roll-delete{
-	@include xx-button-primer($shelby-red);
+	@include xx-button-primer($shelby-red, dark);
 
 	display: none;
 	position: absolute;

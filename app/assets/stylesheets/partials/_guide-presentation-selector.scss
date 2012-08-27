@@ -36,8 +36,10 @@
   }
 
   & > .guide-settings-anchor {
-    float: right;
-    width: auto;
+    background: none;
+    border: none;
+    color: $button-color;
+    display: inline;
   }
 }
 
@@ -82,11 +84,6 @@
 }
 
 .guide-settings-anchor {
-    background: none;
-    border: none;
-    color: $button-color;
-    display: inline;
-
     &:after {
       @include background(url($icon-settings) no-repeat center center transparent);
 
