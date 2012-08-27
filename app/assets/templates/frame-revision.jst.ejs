@@ -63,11 +63,13 @@
                   Share Video
                 </button>
               </li>
-              <li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-remove js-remove-frame">
-                  Hide Video
-                </button>
-              </li>
+              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
+                <li class="menu_option xframe-item" role="menuitem">
+                  <button class="xframe-option command-remove js-remove-frame">
+                    Remove Video
+                  </button>
+                </li>
+              <% } %>
             </ul>
           </li>
         </ul>

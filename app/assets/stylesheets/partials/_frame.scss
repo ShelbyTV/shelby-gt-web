@@ -153,7 +153,7 @@
 .xframe-item {
 	&:first-child {
 		.xframe-option {
-			@include roundies(header);
+//			@include roundies(header);
 
 			border-top: 1px solid $inset;
 		}
@@ -161,7 +161,7 @@
 
 	&:last-child {
 		.xframe-option {
-			@include roundies(footer);
+//			@include roundies(footer);
 
 			border-bottom: 1px solid $inset;
 		}
