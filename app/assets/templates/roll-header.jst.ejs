@@ -7,13 +7,6 @@
   var titleNameMatch = rollTitle == rollCreatorNickname;    
 %>
 
-<div class="current-roll-avatar">
-  <% if (rollTitle && _(roll.attributes).has('thumbnail_url')) { %>
-    <img src="<%= roll.get('thumbnail_url') || '/images/assets/user_loggedout.png' %>"
-    alt="<%= rollTitle %>'s Avatar" title="<%= rollTitle %>'s Roll">
-  <% } %>
-</div>
-
 <div class="title">
   <% if(roll.id == personalRollId && rollSubdomain) { %>
     <h2 class="current-roll<%= (titleNameMatch) ? ' roll-name-single' : ' x' %>">
