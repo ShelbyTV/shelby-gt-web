@@ -1,5 +1,216 @@
 @import "base";
 
+//---------------------------
+//	media module, what up! 
+//	thanks @stubbornella.
+//---------------------------
+
+.media_module {
+	margin: 8px;
+}
+
+.media_body,
+.media_image {
+	overflow: hidden;
+	zoom: 1;
+}
+
+.media_image {
+	float: left;
+	margin-right: 10px;
+}
+
+.media_body {
+	p {
+		margin: 0 0 .5em 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+//---------------------------
+//	modular image
+//---------------------------
+
+.image_module {
+	@include background-size(cover);
+
+	background-color: pink;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: block;
+}
+
+//---------------------------
+//	modular menu framework
+//---------------------------
+
+.menu_module {
+	display: none;
+}
+
+.menu_list,
+.menu_sublist {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu_sublist {
+	display: none;
+	width: 106px;
+}
+
+.menu_item:hover {
+	.menu_sublist{
+		display: block;
+	}
+}
+
+.menu_item {
+	float: left;
+
+	&.right {
+		float: right;
+		//float LI to the right
+		text-align: right;
+		//child el (button) is display:inline by default,
+		//this is like a fake float right
+		//makes the sublist margin effective.
+	}
+}
+
+//---------------------------
+//	frame architecture
+//---------------------------
+
+.xframe {
+	color: $shelby-gray;
+	margin: 10px;
+
+	&:hover {
+		.menu_module {
+			display: block;
+		}
+	}
+}
+
+.xframe-header {
+
+}
+
+.xframe-title {
+	line-height: 1.4;
+	margin-bottom: .5em;
+}
+
+.xframe-body-wrapper {
+	background-color: #fff;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.5);
+	position: relative;
+}
+
+.xframe-body {
+
+}
+
+.xframe-thumbnail {
+	height: 130px;
+}
+
+.xframe-footer {
+	position: relative;
+}
+
+.xframe-link {
+}
+
+.xframe-comment {
+	text-align: right;
+}
+
+.xframe-comment-link {
+	background-image: url($icon-videocard-comment-off);
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 1.3em;
+	padding-left: 1.4em;
+
+	&:hover {
+		background-image: url($icon-videocard-comment-on);
+	}
+}
+
+.xuser-data {
+//	margin-left: 43px;
+	color: $shelby-gray;
+}
+
+.xuser-avatar {
+	height: 33px;
+	width: 33px;
+}
+
+//---------------------------
+//	frame command menu
+//---------------------------
+
+.xframe-command-menu {
+	left: 0;
+	list-style-type: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.xframe-command {
+	@include xx-button-primer($x-primer-color, light, menu);
+
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.xframe-sublist {
+	margin-top: 3px;
+}
+
+.xframe-option {
+	background-color: #efefef;
+	border-bottom: none;
+	border-left: 1px solid $shelby-gray;
+	border-right: 1px solid $shelby-gray;
+	border-top: none;
+	padding: .75em 1em .75em;
+	width: 100%;
+}
+
+.xframe-item {
+	&:first-child {
+		.xframe-option {
+			@include roundies(header);
+
+			border-top: 1px solid $shelby-gray;
+		}
+	}
+
+	&:last-child {
+		.xframe-option {
+			@include roundies(footer);
+
+			border-bottom: 1px solid $shelby-gray;
+		}
+	}
+}
+
+.command-sublist {
+	padding-right: 10px;
+}
+
+
+//----------------------------------------
+
 .list,
 .rolls-list,
 .form-rolls-list,

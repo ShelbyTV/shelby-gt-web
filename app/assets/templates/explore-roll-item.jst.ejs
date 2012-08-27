@@ -1,0 +1,26 @@
+<section class="explore-roll">
+  <div class="explore-roll-header clearfix">
+    <a href="#" onclick="return false;" class="explore-link js-explore-link">
+      <h2 class="explore-header">
+        <%= roll.get('title') %>
+      </h2>
+      <p class="explore-subline">
+        <!-- somedomain.com | -->See all…
+      </p>
+    </a>
+
+    <ul class="explore-list explore-menu">
+      <!-- <li>
+        <button class="explore-command">
+          Similar Rolls
+        </button>
+      </li> -->
+
+      <li>
+        <button class="explore-command js-follow-unfollow">
+          <%= userFollowingRoll ? 'Unfollow' : 'Follow' %>
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -25,8 +25,8 @@ var Bootstrap = {
   setupGuideView : function(){
     this.setFirstRollModel(function (){
       guideModel = new libs.shelbyGT.GuideModel({current_roll : firstRollModel});
-      guideView = new libs.shelbyGT.GuideView({model:guideModel});
-      $(document.body).html(guideView.el);
+      guideContentView = new libs.shelbyGT.GuideContentView({model:guideModel});
+      $(document.body).html(guideContentView.el);
     });
   },
   goToRoll : function(id){

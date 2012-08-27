@@ -108,10 +108,10 @@
         if(shelby.models.userDesires.get('typing')) return false;
         var actionData = self._getActionData(event.keyCode);
         if(!actionData) return false;
-        shelby.models[actionData.model].set(actionData.attr, actionData.val);
-        if(actionData.is_transient){
-          //immediately reset this b/c the desire is transient
-          shelby.models[actionData.model].set(actionData.attr, null);
+        if(!actionData.is_transient){
+          shelby.models[actionData.model].set(actionData.attr, actionData.val);
+        } else {
+          shelby.models[actionData.model].triggerTransientChange(actionData.attr, actionData.val);
         }
         return false;
       });

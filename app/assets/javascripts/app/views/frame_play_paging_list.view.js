@@ -6,7 +6,10 @@
   libs.shelbyGT.FramePlayPagingListView = PagingListView.extend({
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
-      infinite: true
+      infinite: true,
+      listItemViewAdditionalParams : function() {
+        return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
+      }
     }),
 
     initialize : function(){
@@ -51,11 +54,6 @@
     _onItemsLoaded : function(rollModel, items){
       PagingListView.prototype._onItemsLoaded.call(this, rollModel, items);
       this._loadMoreWhenLastItemActive();
-    },
-
-    //ListView overrides
-    _listItemViewAdditionalParams : function() {
-      return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
     }
 
   });

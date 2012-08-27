@@ -1,6 +1,7 @@
 @import "base";
 
 h1,h2,h3,h4,h5,h6{
+	font-family: 'Ubuntu', Trebuchet MS, sans-serif;
 	font-weight:500;
 	line-height:1.231;
 	margin:0;
@@ -46,7 +47,7 @@ a{
 	top:0;
 }
 
-.content_module {
+.content_wrapper {
 	bottom: 0;
 	left: 0;
 	margin-top: $header-height;
@@ -54,13 +55,24 @@ a{
 	right: 0;
 	top: 0;
 	width: 100%;
+
+	&.explore-layout {
+		display: none;
+		z-index: 3;
+	}
 }
 
-.videoplayer-wrapper {
+.content_lining {
 	float: right;
 	margin-left: -330px;
 	height:100%;
 	width:100%;
+}
+
+.content_module {
+	height:100%;
+  margin-left: 330px;
+  position: relative;	
 }
 
 .sidebar_module {
@@ -73,11 +85,10 @@ a{
 	height:100%;
 	line-height:1.4;
 	overflow:hidden;
-	position:relative;
-	width:$guide-width;
-	z-index:3;
-	
 	opacity: 1;
+	position:relative;
+	z-index:3;
+
 	@include transition-property('opacity, margin-left');
 	@include transition-duration(.5s);
 	@include transition-timing-function(ease-in-out);
@@ -88,9 +99,11 @@ a{
 	}
 }
 
-.user-inactive {
-	.guide-wrapper{
-	  opacity: .5;
+.user-inactive{
+	.main-layout{
+		.guide-wrapper{
+		  opacity: .5;
+		}
 	}
 }
 

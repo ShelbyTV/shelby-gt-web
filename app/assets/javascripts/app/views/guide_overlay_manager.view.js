@@ -2,10 +2,13 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
 
   initialize : function() {
     this.model.bind('change', this._onGuideOverlayChange, this);
+    this.model.bind('immediateHide', this._onGuideOverlayImmediateHide, this);
+    this.$el.hide();
   },
 
   _cleanup : function(){
     this.model.unbind('change', this._onGuideOverlayChange, this);
+    this.model.unbind('immediateHide', this._onGuideOverlayImmediateHide, this);
   },
 
   _onGuideOverlayChange : function(guideOverlayModel) {
@@ -43,9 +46,19 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
 
     guideOverlayView.render();
     this.appendChild(guideOverlayView);
+    this.$el.show();
     setTimeout(function(){
       guideOverlayView.reveal();
     }, 0);
+  },
+
+  _onGuideOverlayImmediateHide : function() {
+    this._leaveChildren();
+    this.$el.hide();
+    this.model.set({
+        activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none,
+        activeGuideOverlayFrame : null
+    }, {silent:true});
   }
 
 });

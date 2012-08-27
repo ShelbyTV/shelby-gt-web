@@ -10,7 +10,7 @@
     <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
   </title>
 
-	<meta name="csrf-token" content="<%= @csrf_token %>">
+  <meta name="csrf-token" content="<%= @csrf_token %>">
   <meta name="rhombus-auth" content="<%= @rhombus_token %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
@@ -24,71 +24,30 @@
 </head>
 
 <body class="shelby">
-  <div id="js-shelby-wrapper" class="shelby-wrapper" role="application">
+  <div id="js-shelby-wrapper" class="shelby-wrapper">
     <header id="js-header" class="js-app-header shelby-header" role="banner">
       <!-- contents in guide-header.jst -->
     </header>
 
-    <div class="content_module">
-      <div class="videoplayer-wrapper">
-        <div class="videoplayer animate-easein" role="main">
-  				<div class="videoplayer-viewport">
-  	        <div id="youtube-player-holder"></div>
-  	        <div id="vimeo-player-holder"></div>
-  	        <div id="collegehumor-player-holder"></div>
-  	        <div id="dailymotion-player-holder"></div>
-  	        <div id="bliptv-player-holder"></div>
-  	        <div id="ooyala-player-holder"></div>
-  	        <div id="espn-player-holder"></div>	
-  	        <div id="hulu-player-holder"></div>
-            <div id="videoPlayerComponent"></div>
-            <div id="adComponent"></div>
-          </div><!-- eo .videoplayer-viewport -->
-
-          <div id="js-preroll-video-info-wrapper" class="preroll-video-info-wrapper"></div>
-          <div id="video-controls" class="video-player-controls-wrapper js-inactivity-preemption"></div>
-
-          <div id="mini-video-progress">
-            <div class="mini-video-player-progress">
-              <div class="video-player-progress-load"></div>
-              <div class="video-player-progress-elapsed"></div>
-            </div>
-          </div>
-            
-          <div class="context-overlay-wrapper js-inactivity-preemption">
-            <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
-          </div><!-- eo .conext-overlay-wrapper -->
-
-          <div id="js-notifications-wrapper" class="notifications-wrapper"></div>
-
-        </div><!-- eo .videoplayer -->
-  		</div><!-- eo .videoplayer-wrapper -->
+    <div class="content_wrapper main-layout js-main-layout">
+      <section class="content_lining" role="main">
+        <!-- content filled in by VideoContentPaneView -->
+      </section><!-- eo .content_lining -->
 
       <section class="js-inactivity-preemption js-guide guide-wrapper sidebar_module clearfix" role="sidebar">
-        <div id="js-guide" class="guide">
-          <div id="js-guide-header" class="menu">
-            <div id="js-item-header">
-              <!-- content filled in by ItemHeaderView -->
-            </div>
-
-            <div id="js-roll-action-menu" class="roll-action-menu">
-              <!-- content filled in by RollActionMenuView -->
-            </div>
-          </div>
-
-          <div id="js-guide-body" class="content-body">
-            <div id="js-add-video-area" class="video-card add-video-area">
-              <!-- content filled in by AddVideoView -->
-            </div>
-
-            <div id="guide">
-              <!-- guide contents dynamically rendered-->
-            </div>
-          </div>
-        </div><!-- eo .guide -->
+        <!-- content filled in by GuideView -->
       </section><!-- eo .guide-wrapper -->
+    </div><!-- eo .content_wrapper.main-layout -->
 
-    </div><!-- eo .content_module -->
+    <div class="content_wrapper explore-layout js-explore-layout">
+      <!-- content filled in by ExploreLayoutView -->
+    </div><!-- eo .content_wrapper.explore-layout -->
+
+    <div class="content_wrapper action-layout js-action-layout">
+      <section class="content_lining">
+      </section>
+    </div><!-- eo .content_wrapper.explore-layout -->
+
   </div> <!-- eo ~application -->
 	<% if Rails.env == 'production' %>
 	  <script>

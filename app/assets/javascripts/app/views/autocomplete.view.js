@@ -1,6 +1,6 @@
 ( function(){
 
-  var AutoCompleteDropDownView = Support.CompositeBehaviorView.extend({
+  var AutoCompleteDropDownView = Support.CompositeView.extend({
     
     events : {
       "click"         : "_onMenuClick",

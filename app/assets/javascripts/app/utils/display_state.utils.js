@@ -1,12 +1,13 @@
 libs.shelbyGT.DisplayState = {
   dashboard : 'dashboard',
+  explore : 'explore',
+  help : 'help',
+  legal : 'legal',
+  none : 'none',
   rollList : 'rollList',
   queue : 'queue',
   standardRoll : 'standardRoll',
-  watchLaterRoll : 'watchLaterRoll',
-  userPreferences : 'userPreferences',
-  help : 'help',
   team : 'team',
-  legal : 'legal',
-  none : 'none'
+  userPreferences : 'userPreferences',
+  watchLaterRoll : 'watchLaterRoll'
 };

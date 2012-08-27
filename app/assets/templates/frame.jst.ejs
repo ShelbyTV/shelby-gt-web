@@ -114,7 +114,7 @@
     <% if(!frame.isOnRollTypeGenius()) { %>
 
     <ul class="frame-controls" type="toolbar">
-      <li class="frame-controls-queue js-upvote-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
+      <li class="frame-controls-queue js-queue-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
         <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click queue" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
           <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'Queued' : 'Add to<br>Queue' %>
         </button>

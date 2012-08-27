@@ -26,7 +26,7 @@
             url += '/roll/' + this.id;
             break;
           case 'read' :
-            url += '/roll/' + this.id + '/frames';
+            url += '/roll/' + this.id + '/frames?fast=1';
             break;
         }
         options.url = url;
@@ -53,6 +53,7 @@
           }
         }
       );
+      shelby.track('joined_roll', {id: this.id, userName: shelby.models.user.get('nickname')});
     },
 
     leaveRoll : function(onSuccess) {
@@ -69,6 +70,15 @@
           }
         }
       );
+      shelby.track( 'left_roll',  {id: this.id, userName: shelby.models.user.get('nickname')} );
+    },
+
+    joinOrLeaveRoll : function() {
+      if ( shelby.models.rollFollowings.containsRoll(this) ){
+        this.leaveRoll();
+      } else {
+        this.joinRoll();
+      }
     }
 
   });

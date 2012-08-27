@@ -42,6 +42,14 @@ describe("DynamicRouter", function() {
           });
         });
       });
+      describe("/explore", function() {
+        it("fires the route with correct parameters", function() {
+            this.router.bind("route:displayExploreView", this.routeSpy);
+            Backbone.history.loadUrl("explore", true);
+            expect(this.routeSpy).toHaveBeenCalledOnce();
+            expect(this.routeSpy).toHaveBeenCalledWithExactly(undefined);
+        });
+      });
     });
   });
 

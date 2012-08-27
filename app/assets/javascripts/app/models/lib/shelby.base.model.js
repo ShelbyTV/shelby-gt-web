@@ -28,7 +28,7 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
       }
       _.extend(options, overrides);
     
-      // dynamically re-write the route to append POST/ PUT/ DELETE/ after v1/ 
+      // dynamically re-write the route to append POST/ PUT/ DELETE/ after v1/
       if (!options.url) {
         options.url = _.isFunction(model.url) ? model.url() : model.url;
       }
@@ -39,6 +39,16 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
     }
     
     return Backbone.sync(method, model, options);
-  }
+  },
   
+  /*  method: triggerTransientChange
+      description: Conveniece method to set model attribute, in the process executing all change handlers bound and
+        scoped to that attribute, then reset the attribute to null. Allows a stateful approach to sending
+        'signals' (might call them pulses or triggers also)
+  */
+  triggerTransientChange : function(attribute, value) {
+    this.set(attribute, value);
+    this.set(attribute, null);
+  }
+
 });

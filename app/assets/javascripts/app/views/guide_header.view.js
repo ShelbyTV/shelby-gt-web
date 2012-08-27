@@ -37,7 +37,6 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
 
   initialize : function(){
     shelby.models.guide.bind('change:displayIsolatedRoll', this._updateVisibility, this);
-    this.render();
   },
 
   _cleanup : function(){
