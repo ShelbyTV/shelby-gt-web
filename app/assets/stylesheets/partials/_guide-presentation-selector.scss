@@ -55,8 +55,9 @@
   .context-overlay-wrapper {
     opacity: 0.0;
   }
+
   &:hover{
-    background-color: $guide-bg-color;
+    background-color: black;
     .context-overlay-wrapper {
       opacity: 1.0;
     }

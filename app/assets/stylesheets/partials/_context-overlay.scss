@@ -1,6 +1,7 @@
 @import "base";
 
-$outset : adjust-lightness($outset,-10%);
+$outset : adjust-lightness($rolls-outset,-10%);
+$inset  : adjust-lightness($rolls-inset, -5);
 
 .context-overlay-wrapper {
 	position: absolute;
@@ -13,7 +14,7 @@ $outset : adjust-lightness($outset,-10%);
 	position: relative;
 
 	.video-card {
-		background-color: $guide-bg-color;
+		background-color: $contextoverlay-bg-color;
 		box-shadow: none;
 		border-top-left-radius: 0;
 		
@@ -31,10 +32,16 @@ $outset : adjust-lightness($outset,-10%);
 		border-bottom: none;
 	}
 
+	.video-card-footer {
+		border-top-color: $inset;
+		font-size: .8em;
+	}
+
 	.frame-controls {
 		button{
 			border-top-color: $outset;
 			border-left-color: $outset;
+			border-right-color: $inset;
 		}
 	}
 }
