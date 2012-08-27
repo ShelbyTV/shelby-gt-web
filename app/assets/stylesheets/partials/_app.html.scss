@@ -29,12 +29,12 @@ body{
 }
 
 a{
-	color: $text;
+	color: adjust-lightness($text, 20%);
 	
 	&:hover, 
 	&:visited,
 	&:active{
-		color: $text;
+		color: adjust-lightness($text, 20%);
 	}
 
 }
