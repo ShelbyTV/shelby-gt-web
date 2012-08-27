@@ -3,13 +3,6 @@
 $outset : adjust-lightness($outset,-10%);
 
 .context-overlay-wrapper {
-	@include transition-property(opacity);
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
-	
-//	left: $defaultMargin;
-//	padding-right: 360px;
 	padding-left: 360px;
 	position: absolute;
 	right: $defaultMargin;

@@ -1,6 +1,6 @@
 $animate-style : $animate-timing !default;
 
-@mixin animate($animate-style){
+@mixin animate($animate-style, $animate-property){
 	@if ($animate-style == ease-in-out) {
 		@include transition-property($animate-property);
 		@include transition-duration($animate-duration);

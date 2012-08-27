@@ -68,14 +68,11 @@ $animate-timing: ease-in-out !default;
 $animate-delay: 0s !default;
 
 //--- FONT SETUP
-$font-size           : 100%;//eventually make so that this is 100% and calculate everything by em's
-
-$font-family         : Arial, sans-serif;
-$font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
-
 $font-color          : #333;
 $font-color-display  : $font-color;
-
+$font-family         : Arial, sans-serif;
+$font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
+$font-size           : 100%;//eventually make so that this is 100% and calculate everything by em's
 $size                : $font-size !default;  //again, this should be 100% eventually.
 
 //--- BORDER RADIUS
@@ -108,13 +105,13 @@ $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text;
 
+
+//guide
 $guide-bg-color 				            : #efefef;
+$guide-explore-bg                   : #e2e2e2;
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #111;
-
-$guide-explore-bg                   : #e2e2e2;
-
 
 ////modules
 $list-module-spacing                : 1em;

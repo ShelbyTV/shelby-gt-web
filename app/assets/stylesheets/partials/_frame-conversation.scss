@@ -102,7 +102,7 @@
 }
 
 .new-comment-submit {
-  @include x-button-primer($shelby-blue, small);
+  @include xx-button-primer($shelby-blue, small);
   margin-top: 10px;
   float: right;
 }

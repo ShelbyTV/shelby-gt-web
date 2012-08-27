@@ -1,10 +1,6 @@
 @import "base";
 
 .guide-overlay {
-  @include transition-property('margin-left');
-	@include transition-duration(0.25s);
-	@include transition-timing-function(ease-in);
-	
 	background-color: $guide-bg-color;
 	bottom: 0;
 	position: absolute;
