@@ -1,6 +1,6 @@
 <% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
 <script>
-	$('li.<%= vid_info %>').on('click', function(){
+	$('li.<%= vid_info %> a.play').on('click', function(){
 		// SAME VIDEO WAS CLICKED => COLLAPSE VIDEO PLAYER
 		if ( window.currentPlaying == '<%= vid_info %>' ){
 			$('#mobile-video-player').html('');
