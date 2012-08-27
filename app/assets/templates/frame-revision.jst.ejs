@@ -11,7 +11,7 @@
 
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator.get('nickname') %>
- <% var creatorAvatar = creator.get('user_image') %>
+<% var creatorAvatar = creator.get('user_image') %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 
 <!-- new videocard -->
@@ -66,7 +66,7 @@
         <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
     </div><!-- eo .xframe-body -->
 
-    <footer class="media_module xframe-footer">
+    <footer class="media_module xframe-footer clearfix">
       <a href="#" onclick="return false;" class="media_image">
         <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
           <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
