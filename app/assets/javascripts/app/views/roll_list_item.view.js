@@ -8,7 +8,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     return this._setupEvents();
   },
 
-  className : 'roll-item clearfix',
+  className : 'list_item guide-item clearfix',
 
   template : function(obj){
     return this._renderTemplate(obj);

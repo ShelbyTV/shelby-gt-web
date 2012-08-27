@@ -214,4 +214,8 @@
   text-align: left;
   width: 100%;
   background-color: $list-item-bg;
+
+  & > span {
+    opacity: .5;
+  }
 }

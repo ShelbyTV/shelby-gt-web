@@ -27,39 +27,12 @@
   }
 
 %>
-
-<div class="roll-item-lining<%= (!first_frame_thumbnail) ? ' missing-roll-thumbnail' : '' %><%= (modifyRollClass) ? modifyRollClass : '' %>" style="background-image:url(<%= first_frame_thumbnail || '/images/assets/user_loggedout.svg' %>);">
-  <a onclick="return false;" class="js-roll-item-button roll-item-button clearfix" role="img" href="#">
-    <img class="roll-item-thumbnail visuallyhidden" src="<%= first_frame_thumbnail || '/images/assets/user_loggedout.svg' %>" alt="Thumbnail from <%= roll_title %>" title="<%= roll_title %>">
-    <div class="roll-item-container">
-      <div class="roll-item-container-column">      
-        <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
-          <h3 class="<%= (roll_title == creator_nickname) ? 'roll-item-people' : 'roll-item-title' %>">
-            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-          </h3>
-        <% } else if(creator_nickname != roll_title && creator_nickname != undefined){ %>
-          <h2 class="roll-item-creator">
-            <%= creator_nickname %>
-          </h2>
-
-          <h3 class="roll-item-title">
-            <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-          </h3>
-        <% } else { %>
-          <h2 class="roll-item-people">
-            <%= (creator_nickname) ? creator_nickname : roll_title %>
-          </h2>
-        <% } %>
-        
-      </div>
-      <div class="roll-item-container-column">
-        <h4 class="roll-item-total">
-          <%= '' + roll_count + ' ' + ((roll_count == 1) ? 'video' : 'videos') %>
-        </h4>
-        <h5 class="roll-item-watched">
-          <%= '' + roll_followers + ' ' + ((roll_followers == 1) ? 'follower' : 'followers') %>
-        </h5>
-      </div>
-    </div>
-  </a>
-</div>
+<button class="list_button guide-link js-roll-item-button">
+  <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
+    <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+  <% } else if(creator_nickname != roll_title && creator_nickname != undefined){ %>
+    <span><%= creator_nickname %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
+  <% } else { %>
+    <%= (creator_nickname) ? creator_nickname : roll_title %>
+  <% } %>
+</button>
