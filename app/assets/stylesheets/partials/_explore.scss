@@ -79,6 +79,8 @@
     //state for the follow/unfollow button,
     //if other modes/states arise this classname probably won't cut it
     @include xx-button-primer($shelby-blue, dark, explore-rolls);
+
+    font-weight: 300;
   }
 }
 
