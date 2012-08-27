@@ -5,9 +5,11 @@ class MobileController < ApplicationController
     @query_param = params[:q]
   end
 
-  def search_results
+  def roll
     # get frames from shelby genius roll
-    if @frames = Shelby::API.get_frames_in_roll(params[:id])
+    if @roll = Shelby::API.get_frames_in_roll(params[:id])
+      @frames = @roll['frames']
+      @roll.delete('frames')
       # great successes
     end
   end

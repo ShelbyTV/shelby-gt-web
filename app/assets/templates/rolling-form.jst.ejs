@@ -1,5 +1,10 @@
 <% 
-	var messageText = "↬ @"+frame.get('creator').get('nickname');
+  if (frame.get('creator').get('nickname')) {
+    var messageText = "↬ @"+frame.get('creator').get('nickname');
+  } else {
+    var messageText = "";
+  }
+
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
 
   if(messages.length > 0){

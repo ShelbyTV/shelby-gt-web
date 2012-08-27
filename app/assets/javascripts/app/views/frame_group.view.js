@@ -50,13 +50,21 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onQueuedVideosAdd : function(video){
+    this._onAddRemoveQueuedVideo(video);
+  },
+
+  _onQueuedVideosRemove : function(video){
+    this._onAddRemoveQueuedVideo(video, true);
+  },
+
+  _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (!this.model) return false;
     var frameVideo = this.model.get('frames').at(0).get('video');
-    // this video is the one being added
-    // in case it got updated from somewhere else like the explore view, update my button
     if (frameVideo.id == video.id){
-      this.$('.js-queue-frame').addClass('queued');
-      this.$('.js-queue-frame button').text('Queued');
+      // this video is the one being added/removed
+      // in case it got updated from somewhere else like the explore view, update my button
+      this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
+      this.$('.js-queue-frame button').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },
 
@@ -75,17 +83,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
     model[action]('change', this.render, this);
-    shelby.models.queuedVideos.get('queued_videos')[action]('add', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos[action]('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos[action]('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   render : function(){
     var self = this;
     this._leaveChildren();
+    
+    if (this.model.get('frames').length){
+      var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
+      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
 
-    var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
-    this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
-
-    libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+      libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
+    }
   },
 
   _expand: function(){
@@ -140,7 +151,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _removeFrame : function(){
-    this.model.destroy();
+    this.leave();
+    // if user is trying to delete the currently playing frame, kick on to the next one
+    // then delete
+    if (shelby.models.guide.get('activeFrameModel')===this.model.get('frames').at(0)){
+      Backbone.Events.trigger('playback:next');
+    }
+    var self = this;
+    setTimeout(function(){
+      self.model.get('frames').forEach(function(frame){
+        frame.destroy({wait:true});
+      });
+    }, 100);
   },
 
   _upvote : function(){

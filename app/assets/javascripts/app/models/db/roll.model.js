@@ -26,7 +26,7 @@
             url += '/roll/' + this.id;
             break;
           case 'read' :
-            url += '/roll/' + this.id + '/frames';
+            url += '/roll/' + this.id + '/frames?fast=1';
             break;
         }
         options.url = url;

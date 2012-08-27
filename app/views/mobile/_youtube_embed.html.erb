@@ -1,15 +1,21 @@
 <% vid_info = "#{video["provider_name"]}-#{video["provider_id"]}" %>
 <script>
-	$('div.<%= vid_info %> .video').on('click', function(){
-		$(this).find('img').replaceWith('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
-		
-		if (window.currentPlaying){
-			var thumbnail_url = $('iframe.'+window.currentPlaying).data('thumbnail_url');
-			if ( $(this).find('iframe').length !== 0 ){
-				$('iframe.'+window.currentPlaying).replaceWith('<img src="'+thumbnail_url+'" width="320" height="180"/>');
-			}
+	$('li.<%= vid_info %>').on('click', function(){
+		// SAME VIDEO WAS CLICKED => COLLAPSE VIDEO PLAYER
+		if ( window.currentPlaying == '<%= vid_info %>' ){
+			$('#mobile-video-player').html('');
+			$('#mobile-video-player').slideUp('fast');
+			$(".content").removeClass('video-playing');
+			window.currentPlaying = null;
+		}
+		// NEW VIDEO WAS CLICKED => LOAD VIDEO & SHOW VIDEO
+		else{
+			$(".content").addClass('video-playing');
+			$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" data-thumbnail_url="<%= video["thumbnail_url"] %>" src="http://www.youtube.com/embed/<%= video["provider_id"] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			
+			$('#mobile-video-player').slideDown('slow');
+			window.currentPlaying = '<%= vid_info %>';
 		}
 		
-		window.currentPlaying = '<%= vid_info %>';
 	});
 </script>

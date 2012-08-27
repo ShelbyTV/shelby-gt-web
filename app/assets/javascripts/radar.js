@@ -1,2 +1,13 @@
 //= require ./backbone/underscore.js
-//= require_tree ../templates
+//= require ../templates/bookmarklet-context-content.jst.ejs
+//= require ../templates/bookmarklet-login.jst.ejs
+//= require ../templates/bookmarklet-notify.jst.ejs
+//= require ../templates/bookmarklet-queued.jst.ejs
+//= require ../templates/bookmarklet-video-tab.jst.ejs
+//= require ../templates/frame-conversation-form.jst.ejs
+//= require ../templates/frame-conversation.jst.ejs
+//= require ../templates/frame-rolling.jst.ejs
+//= require ../templates/message.jst.ejs
+//= require ../templates/notification-overlay.jst.ejs
+//= require ../templates/rolling-form.jst.ejs
+//= require ../templates/wide-thumbnail-overlay.jst.ejs

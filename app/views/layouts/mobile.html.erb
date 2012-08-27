@@ -15,17 +15,41 @@
 </head> 
 <body class="mobile-search"> 
 
-	<div data-role="page" data-theme="b" id="main" >
+	<div data-role="page" data-theme="b">
 
 		<div id="header" data-role="header" data-position="fixed" data-icon="search" data-iconpos="right">
 			<%= render :partial => "mobile_header" %>
 		</div><!-- /header -->
 
-		<div data-role="content">	
+		<div class="content" data-role="content" style="padding: 0px;">	
 			<%= yield %>
 		</div><!-- /content -->
 
 	</div><!-- /page -->
-
+	
+	<% if Rails.env == 'production' %>
+	  <script>
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s);}(document,'script'));
+	  </script>
+		<script>
+		  var _kmq = _kmq || [];
+		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+		  function _kms(u){
+		    setTimeout(function(){
+		      var d = document, f = d.getElementsByTagName('script')[0],
+		      s = d.createElement('script');
+		      s.type = 'text/javascript'; s.async = true; s.src = u;
+		      f.parentNode.insertBefore(s, f);
+		    }, 1);
+		  }
+		  _kms('//i.kissmetrics.com/i.js');
+		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+		
+			_kmq.push(['record', "Visit mobile page"]);
+		</script>
+	<% end %>
 </body>
 </html>

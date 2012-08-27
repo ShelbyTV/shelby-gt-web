@@ -1,26 +1,25 @@
 <%= render :partial => "search", :locals => { :query_param => @query_param } %>
 
 <div id="search-history">
-	<ul id="search-history-list" data-role="listview" data-split-theme="c" data-split-icon="delete" data-theme="c">
+	<ul id="search-history-list" data-role="listview" data-split-theme="c" data-split-icon="delete" data-theme="c" style="margin:0;">
 		<li>
-			<a href='<%= Settings::Application.mobile_url %>/roll/4fbe42069a725b686300004a'>ESPN (top roll)</a><a class="espn" href="#">gear</a>
-		</li>
-		<li>
-			<a href='<%= Settings::Application.mobile_url %>/roll/4f8f7ef6b415cc476200004a'>Awesomeness (promoted search)</a><a class="henry" href="#">gear</a>
+			<a href='<%= Settings::Application.mobile_url %>/roll/4f8f7ef6b415cc476200004a'>Awesomeness [promoted search]</a><a class="henry js-track-event" data-ga_category="Mobile" data-ga_action="Clicked promoted search" data-ga_label="Promoted Search" href="#" data-transition="flow">gear</a>
 		</li>
 	</ul>
 </div>
 
 <script>
 	$(document).ready(function(event){
+			// using local store to save search history. 
+			// the idea is we aren't re-creating genius rolls here
 			window.cache = kizzy('history');
 			window.searchHistory = window.cache.get('searchHistory');
 			
 			if (searchHistory){
-				// show some history
+				// DISPLAY SEACH HISTORY //
 				for (var term in searchHistory) {
 					var link = searchHistory[term];
-					$("#search-history-list").prepend('<li id="'+term+'" class="historical-link"><a href='+link+'>'+term+'</a><a class="remove-search-term" href="#">gear</a></li>').listview("refresh");
+					$("#search-history-list").prepend('<li id="'+term+'" class="js-track-event" data-ga_category="Mobile" data-ga_action="Clicked previous search" data-ga_label="'+term+'"><a href='+link+'>'+term+'</a><a class="remove-search-term js-track-event" data-ga_category="Mobile" data-ga_action="Removed previous search" data-ga_label="'+term+'" href="#" >gear</a></li>').listview("refresh");
 				}
 			}
 			else{
@@ -28,11 +27,14 @@
 				cache.set('searchHistory', {});
 			}
 			
+			// REMOVE SEARCH HISTORY //
 			$('.remove-search-term').on('click',function(){
 				delete searchHistory[$(this).parent().attr('id')];
 				cache.set('searchHistory', searchHistory);
 				$(this).parent().remove();
 			});
 			
+			// reset header text in case anythings in there for some reason.
+			$('h1.mobile-logo').text("");
 	});
 </script>

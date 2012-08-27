@@ -1,15 +1,16 @@
 @import "base";
 
 .mobile-search{
-
+  
   .mobile-search-form{
     margin: 10px auto;
     text-align: center;
     width: 100%;
+    padding: 0px 5px;
     .mobile-search-spinner{
       position: absolute;
-      margin-top: -26px;
-      right: 50%;
+      margin-top: -21px;
+      right: 58px;
     }
   }
 
@@ -18,6 +19,10 @@
       margin-top: 7px;
       margin-right: 8px;      
     }
+    h1 {
+      line-height: 40px;
+      width: 100%;
+    }
   }
   .mobile-logo {
     @include background(
@@ -25,30 +30,61 @@
   	);
   	background-size:135px;
     height: 35px;
-    margin-left: 30px;
+    margin-left: 5px;
   }
   
   #search-history {
-    margin: 40px auto;
+    margin: 10px auto;
+  }
+  
+  #share-area {
+    height: 20px;
+    width: 125px;
+    margin: 0px auto 0px auto;
+    position: relative;
+    top: -10px;
+  }
+  
+  #mobile-roll-title {
+    text-align: center;
+  }
+  
+  #mobile-video-player {
+    display:none;
+    position:fixed;
+    top: 83px;
+    width: 100%;
+    height: 45%;
+    margin: 0 auto;
+    z-index:100;
+    -moz-box-shadow: 0px 6px 22px -1px black;
+    -webkit-box-shadow: 0px 6px 22px -1px black;
+    box-shadow: 0px 6px 22px -1px black;
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
   }
 
   #mobile-frames {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    top: 80px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
 
-   width: 330px;
-   margin: 50px auto auto;
-
-   .search-frame {
-     margin: 10px auto;
-
-     .video-title {
-       @include basefont;
-       font-size: 12px;
-       background-color: black;
-       width: 320px;
-       padding: 10px 5px 5px;
-       margin-top: -5px;
-     }
-   }
+    // customizing jquery mobile ui
+    .ui-content .ui-listview { margin:0px; }
+    .ui-li-thumb, .ui-listview .ui-li-icon {
+      max-width: 142px !important;
+      max-height: 78px !important;
+      top: -3px;
+    }
+    .ui-li, .ui-li.ui-field-contain { margin-left: -14px; border-top-width: 3px; padding: 0px;}
+    .ui-li-heading { font-size: 14px; margin: .6em 60px; }
+    .ui-li-desc { font-size: 11px; margin: -.5em 60px .6em; }
+    
 
    .search-button {
      width: 120px;
@@ -60,4 +96,8 @@
    }
 
   }
+  
+  .content.video-playing {
+    #mobile-frames { margin-top: 45%; }
+  } 
 }

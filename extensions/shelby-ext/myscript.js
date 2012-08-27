@@ -1,1 +1,1 @@
-_my_script=document.createElement('SCRIPT');   _my_script.type='text/javascript';   _my_script.src='http://shelby.tv/video_radar/load.js?chrome_extension="abcd"';   document.getElementsByTagName('head')[0].appendChild(_my_script);
+window.isShelbyBookmarklet=false; _my_script=document.createElement('SCRIPT');   _my_script.type='text/javascript';   _my_script.src='http://shelby.tv/assets/shelbify.js';   document.getElementsByTagName('head')[0].appendChild(_my_script);

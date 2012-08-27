@@ -33,6 +33,8 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
     this.appendChildInto(new libs.shelbyGT.ListView({
       collectionAttribute : 'frames',
       className: 'explore-list explore-roll-list clearfix',
+      doDynamicRender : false, // we don't want to show more than three frames even if other activities in the app
+                               // fetch more frames for this roll later
       doStaticRender : true,
       listItemView : 'ExploreFrameItemView',
       listItemViewAdditionalParams : {roll:this.model},

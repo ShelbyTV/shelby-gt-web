@@ -63,7 +63,7 @@ module Shelby
       r = get( "/roll/#{roll_id}/frames?include_children=true" ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
-        frames = r['result']['frames']
+        roll = r['result']
       end
     end
   end

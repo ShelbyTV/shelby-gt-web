@@ -21,13 +21,15 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
     for (i = 0, length = this.models.length; i < length; i++) {
       var model = this.models[i];
-      var video_id = model.get('frames').at(0).get('video').get('id');
+      if (model.get('frames').length){
+        var video_id = model.get('frames').at(0).get('video').get('id');
 
-      var viewedIndex = _.indexOf(sortedViewedVideosArray, video_id, true);
-      var viewed = (viewedIndex != -1);
-  
-      if (viewed != model.get('collapsed')) {
-        model.set({ collapsed : viewed });
+        var viewedIndex = _.indexOf(sortedViewedVideosArray, video_id, true);
+        var viewed = (viewedIndex != -1);
+    
+        if (viewed != model.get('collapsed')) {
+          model.set({ collapsed : viewed });
+        }
       }
     }
   },
@@ -41,19 +43,32 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     for (i = 0, length = models.length; i < length; i++) {
       model = models[i];
 
+      if (!model) {
+         return false;
+      }
+
       var video_id,
           frame,
           dashboard_entry;
-  
-      // TODO: need to deal with null frame, null video, etc. in both cases
+      
       if (model instanceof libs.shelbyGT.DashboardEntryModel) {
+        if (!model.get('frame') || !model.get('frame').get('video')){
+          return false;
+        }
+
         video_id = model.get('frame').get('video').get('id');
         frame = model.get('frame');
         dashboard_entry = model;
+
       } else if (model instanceof libs.shelbyGT.FrameModel) {
+        if (!model.get('video')){
+          return false;
+        }
+
         video_id = model.get('video').get('id');
         frame = model;
         dashboard_entry = null;
+
       } else {
         continue;
       }

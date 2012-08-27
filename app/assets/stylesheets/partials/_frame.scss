@@ -266,6 +266,11 @@
 	overflow: hidden;
 	padding: 0;
 	position: relative;
+  &:hover {
+    .remove-frame {
+      display: block;
+    }
+  }
 }
 
 .video-card-collapsed {
@@ -275,6 +280,16 @@
 	margin-bottom: -5px;
 	background-color: #222;
 	box-shadow: inset 0 1px 0 0 adjust-lightness(#222, 5%);
+}
+
+.remove-frame {
+  @include x-button-primer($shelby-red, small);
+  
+  display: none;
+  margin: 10px;
+  position: absolute;
+  right : 0;
+  z-index: 1000;
 }
 
 .video-thumbnail {
@@ -651,7 +666,7 @@
 		display: block;
 		float: left;
 		list-style-type: none;
-		width: 33.333333%;
+		width: 25%;
 
 		&:first-child {
 			button {
@@ -765,6 +780,19 @@
 	&:hover {
 		button {
 			background-image: url($icon-videocard-roll-on);
+		}
+	}
+}
+
+.frame-controls-share {
+  button {
+		@include notype;
+		background-image: url($icon-videocard-share-off);
+		background-position:center center;
+	}
+	&:hover {
+		button {
+			background-image: url($icon-videocard-share-on);
 		}
 	}
 }

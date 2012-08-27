@@ -22,6 +22,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   options : {
     collection : null,
     collectionAttribute : 'listCollection',
+    doDynamicRender : true,
     doStaticRender : false,
     insert : {
       position : 'append',
@@ -47,21 +48,25 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    if (this.options.collection) {
-      this.options.collection.bind('add', this.sourceAddOne, this);
-      this.options.collection.bind('destroy', this.sourceRemoveOne, this);
-      this.options.collection.bind('reset', this.sourceReset, this);
-    } else {
-      this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
-      this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
-      if (this.options.simulateAddTrue) {
-        if (this.options.masterCollection) {
-          this._attachMasterCollection();
-        } else {
-          this._prepareMasterCollection();
-        }
+    if (this.options.doDynamicRender) {
+      if (this.options.collection) {
+        this.options.collection.bind('add', this.sourceAddOne, this);
+        this.options.collection.bind('destroy', this.sourceRemoveOne, this);
+        this.options.collection.bind('reset', this.sourceReset, this);
+      } else {
+        this.model.bind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+        this.model.bind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       }
     }
+
+    if (!this.options.collection && this.options.simulateAddTrue) {
+      if (this.options.masterCollection) {
+        this._attachMasterCollection();
+      } else {
+        this._prepareMasterCollection();
+      }
+    }
+
     if (this.options.displayCollection) {
       this._displayCollection = this.options.displayCollection;
     } else {
@@ -76,13 +81,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _cleanup : function(){
-    if (this.options.collection) {
-      this.options.collection.unbind('add', this.sourceAddOne, this);
-      this.options.collection.unbind('destroy', this.sourceRemoveOne, this);
-      this.options.collection.unbind('reset', this.sourceReset, this);
-    } else {
-      this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
-      this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+    if (this.options.doDynamicRender) {
+      if (this.options.collection) {
+        this.options.collection.unbind('add', this.sourceAddOne, this);
+        this.options.collection.unbind('destroy', this.sourceRemoveOne, this);
+        this.options.collection.unbind('reset', this.sourceReset, this);
+      } else {
+        this.model.unbind('add:'+this.options.collectionAttribute, this.sourceAddOne, this);
+        this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
+      }
     }
     this._displayCollection.unbind('add', this.internalAddOne, this);
     this._displayCollection.unbind('remove', this.internalRemoveOne, this);

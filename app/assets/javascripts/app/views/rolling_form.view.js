@@ -8,14 +8,14 @@
 */
 ( function(){
 	
-  var BackboneCollectionUtils = libs.utils.BackboneCollectionUtils;
-  var MessageModel = libs.shelbyGT.MessageModel;
-  var RollFollowingsConfig = shelby.config.db.rollFollowings;
-  var RollModel = libs.shelbyGT.RollModel;
-  var RollViewHelpers = libs.shelbyGT.viewHelpers.roll;
-  var ShareActionState = libs.shelbyGT.ShareActionState;
-  var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
-  var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
+  var BackboneCollectionUtils       = libs.utils.BackboneCollectionUtils;
+  var MessageModel                  = libs.shelbyGT.MessageModel;
+  var RollFollowingsConfig          = shelby.config.db.rollFollowings;
+  var RollModel                     = libs.shelbyGT.RollModel;
+  var RollViewHelpers               = libs.shelbyGT.viewHelpers.roll;
+  var ShareActionState              = libs.shelbyGT.ShareActionState;
+  var ShareActionStateModel         = libs.shelbyGT.ShareActionStateModel;
+  var ShelbyAutocompleteView        = libs.shelbyGT.ShelbyAutocompleteView;
 	
 	libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 		
@@ -122,8 +122,13 @@
 			var shareDests = [];
 			// re roll the frame
       this._frame.reRoll(roll, message, function(newFrame){
+<<<<<<< HEAD
         //rolling is done
+=======
+        //rolling is done (don't need to wait for add message to complete)
+>>>>>>> master_ready
 				self._rollingSuccess(roll, newFrame);
+				
 				// Optional Sharing (happens in the background)
         self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
 

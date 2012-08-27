@@ -33,12 +33,16 @@
     _mapInsertContentsView : function(){
       this._leaveChildren();
       if (this.model.get('displayIsolatedRoll')) {
-        this.appendChild(new RollOverlayContextView({model:this.model.get('currentRollModel')}));
+        if (this.model.has('currentRollModel')) {
+          this.appendChild(new RollOverlayContextView({model:this.model.get('currentRollModel')}));
+        }
       } else {
         switch (this.model.get('displayState')) {
           case libs.shelbyGT.DisplayState.standardRoll :
           case libs.shelbyGT.DisplayState.watchLaterRoll :
-            this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
+            if (this.model.has('currentRollModel')) {
+              this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
+            }
             break;
           case libs.shelbyGT.DisplayState.dashboard :
           case libs.shelbyGT.DisplayState.rollList :

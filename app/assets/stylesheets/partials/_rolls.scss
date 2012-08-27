@@ -59,6 +59,7 @@
 .rolls-leave {
 	@include xx-button-primer;
 	margin-top: 0;
+	text-shadow: none;
 }
 
 .rolls-edit{
@@ -144,16 +145,13 @@
 }
 
 .share-comment {
-	border-top: 1px solid $outset;
-	border-bottom: 1px solid $inset;
+  border: none;
 }
 
 .share-networks,
 .share-submit {
-}
-
-.share-submit {
 	text-align: right;
+  border: none;
 }
 
 .share-networks {

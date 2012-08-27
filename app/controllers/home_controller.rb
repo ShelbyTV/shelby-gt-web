@@ -77,5 +77,9 @@ class HomeController < ApplicationController
     flash[:error] = params[:error]
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
+  
+  def get_bookmarklet
+    render 'get_bookmarklet', :layout => 'blank'
+  end
 
 end

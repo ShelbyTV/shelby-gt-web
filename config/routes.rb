@@ -4,7 +4,16 @@ ShelbyGtWeb::Application.routes.draw do
 
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
-    get '/roll/:id' => 'mobile#search_results', :as => :mobile_search_results
+    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+  end
+  
+  # For development, take me out when mobile is more stable
+  get '/m' => 'mobile#search', :as => :mobile_search
+  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
+
+  constraints(:subdomain => 'm.localhost') do
+    get '/' => 'mobile#search', :as => :mobile_search
+    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
   end
 
   get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
@@ -13,8 +22,8 @@ ShelbyGtWeb::Application.routes.draw do
   get '/frame/:frame_id' => "frame#show"
 
   get '/signout' => "home#signout", :as => :signout
-
-  get '/video_radar/load.js' => 'video_radar#load', :format => "js"
+  
+  get '/get_bookmarklet' => "home#get_bookmarklet"
 
   get '(*path)' => 'home#index', :as => :root
 
