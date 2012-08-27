@@ -17,11 +17,16 @@
 }
 
 .xframe-collapsed {
+	.xframe-title {
+		height: 40px;
+		overflow: hidden;
+	}
+
 	.xframe-thumbnail {
 		float: left;
-		height: 75px;
+		height: 80px;
 		margin-right: 10px;
-		width: 40%;
+		width: 45%;
 	}
 
 	.xframe-footer {

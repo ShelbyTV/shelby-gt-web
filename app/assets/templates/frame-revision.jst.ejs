@@ -28,11 +28,14 @@
 
 <!-- new videocard -->
 <article id="<%= videoId %>" class="xframe<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
-  <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-    <h1 class="xframe-title" title="<%= videoTitle %>">
-     <%= videoTitle %>
-    </h1>
-  </a>
+  <% if (!frameViewed) { %>
+    <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+      <h1 class="xframe-title" title="<%= videoTitle %>">
+       <%= videoTitle %>
+      </h1>
+    </a>
+  <% } %>
+
   <div class="xframe-body-wrapper clearfix">
     <div class="xframe-body">
       <div class="menu_module xframe-menu">
@@ -81,11 +84,14 @@
     </div><!-- eo .xframe-body -->
 
     <footer class="media_module xframe-footer clearfix">
-      <a href="#" onclick="return false;" class="media_image">
-        <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
-          <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-        </span>
-      </a>
+      <% if (!frameViewed) { %>
+        <a href="#" onclick="return false;" class="media_image">
+          <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
+            <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+          </span>
+        </a>
+      <% } %>
+
       <div class="media_body">
         <% if (!frameViewed) { %>
           <p class="xuser-data">
@@ -108,12 +114,59 @@
             </a>
           </div>
         <% } else { %>
-          <p class="xuser-data">
-            shared by <%= creatorNickname %>
-          </p>
+          <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+            <h1 class="xframe-title" title="<%= videoTitle %>">
+             <%= videoTitle %>
+            </h1>
+
+            <p class="xuser-data">
+              shared by <%= creatorNickname %>
+            </p>
+          </a>
         <% } %>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
+  <% if (!contextOverlay) { %>
+    <% var firstLink = true %>
+    <% var dupeFrameRollIds = [frameGroup.get('frames').at(0).get('roll').get('id')] %>
+    <% for (var i = 1; i < frameGroup.get('frames').length; i++) { %>
+      <% var dupeFrame = frameGroup.get('frames').at(i) %>
+      <% var dupeCreator = dupeFrame.get('creator') %>
+      <% var dupeCreatorNickname = dupeCreator ? dupeCreator.get('nickname') : "" %>
+      <% var dupeFrameIsOnHeartedRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
+      <% var dupeFrameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
+      <% var linkText = "" %>
+      
+      <% if (dupeFrame.get('roll') && $.inArray(dupeFrame.get('roll').get('id'), dupeFrameRollIds) != -1) { %>
+      <%   continue; %>
+      <% } %>
+
+      <% if (dupeFrameIsOnHeartedRoll && dupeCreatorNickname != "") { %>
+         <% linkText = dupeCreatorNickname + "'s Likes" %>
+      <% } else if (dupeFrameIsOnWatchLaterRoll && dupeCreatorNickname != "") { %>
+        <% linkText = dupeCreatorNickname + "'s Queue" %>
+      <% } else if (!dupeFrameIsOnHeartedRoll && !dupeFrameIsOnWatchLaterRoll && dupeFrame.get('roll')) { %>
+         <% linkText = dupeFrame.get('roll').get('title') %>
+      <% } else { %>
+         <% continue; %>
+      <% } %>
+
+      <% dupeFrameRollIds.push(dupeFrame.get('roll').get('id')) %>
+      <% if (firstLink) { %>
+        <div class="framegroup-dupes<%= suffix %>">
+        <h1 class="framegroup-dupe-text<%= suffix %>">
+        Also via:
+        <% firstLink = false %>
+      <% } %>
+
+      <% var commaOrNot = dupeFrameRollIds.length > 2 ? ", " : "" %>
+      <%= commaOrNot %><a href="#" data-roll_id="<%= dupeFrame.get('roll').get('id') %>" data-frame_id="<%= dupeFrame.get('id') %>" class="js-go-to-frame-and-roll-by-id"><%= linkText %></a>
+    <% } %>
+    <% if (!firstLink) { %>
+      </h1>
+      </div>
+    <% } %>
+  <% } /* end of contextOverlay */ %>
 </article>
 <!-- end new videocard -->
