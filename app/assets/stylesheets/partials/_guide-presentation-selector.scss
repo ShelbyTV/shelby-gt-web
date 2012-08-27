@@ -4,7 +4,7 @@
 }
 
 .guide-presentation-list {
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin: 0;
   padding: 0;
 }
@@ -16,12 +16,12 @@
   list-style-type: none;
 
   & > button {
-    @include inputfont;
-
     background: none;
     border: none;
-    color: $button-color;
+    color: $guide-presentation-button;
     display: inherit;
+    font-family: $font-family-display;
+    font-weight: 100;
     line-height: 2;
     padding: 3px 6px;
     width:100%;
@@ -31,7 +31,13 @@
     }
 
     &.guide-presentation-content-selected {
-      color: $shelby-blue;
+      color: $guide-presentation-button-active;
+
+      &:visited,
+      &:active,
+      &:link {
+        text-decoration: none;
+      }
     }
   }
 

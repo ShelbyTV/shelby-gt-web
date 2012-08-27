@@ -154,10 +154,9 @@
 
       <% dupeFrameRollIds.push(dupeFrame.get('roll').get('id')) %>
       <% if (firstLink) { %>
-        <div class="framegroup-dupes<%= suffix %>">
-        <h1 class="framegroup-dupe-text<%= suffix %>">
-        Also via:
-        <% firstLink = false %>
+        <div class="framegroup-dupes">
+        <h1 class="framegroup-dupe-text">
+        + <% firstLink = false %>
       <% } %>
 
       <% var commaOrNot = dupeFrameRollIds.length > 2 ? ", " : "" %>

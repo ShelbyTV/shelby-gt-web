@@ -105,13 +105,14 @@ $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text;
 
-
 //guide
 $guide-bg-color 				            : #efefef;
 $guide-explore-bg                   : #e2e2e2;
+$guide-presentation-button          : #aaa;
+$guide-presentation-button-active   : adjust-lightness($guide-presentation-button, 28%);
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
-$guide-presentation-tab-bg-selected : #111;
+$guide-presentation-tab-bg-selected : #242627;
 
 ////modules
 $list-module-spacing                : 1em;
