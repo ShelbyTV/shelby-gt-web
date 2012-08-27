@@ -1,4 +1,4 @@
-<% var frameTitle     = frame.get('title') || '' %>
+<% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var userNickname   = user.get('nickname') || 'your personal '%>
 
@@ -21,7 +21,7 @@
       <%=
         JST['thumbnail-module']({
           thumbnail : frameThumbnail,
-          title : frame.get('video').get('title')
+          title : frameTitle
         })
       %>
 
