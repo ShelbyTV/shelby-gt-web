@@ -36,24 +36,22 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onPwdInputKeyup : function(event){
-    this.model.set('password', $(event.currentTarget).val());
+    var pwd = $(event.currentTarget).val();
+    this.model.set({
+      password: pwd,
+      password_confirmation: pwd
+    });
   },
 
-  _onSaveSuccess : function(a, res){
-    console.log('success', res.error());
+  _onSaveSuccess : function(){
+    shelby.router.navigate('onboarding/2');
   },
-
-  _onSaveError : function(model, res){
-    if (res.error){
-      console.log(res.error());
-    }
-  },
+  
 
   _onNextStepClick : function(){
     var self = this;
     shelby.models.user.save(this.model.toJSON(), {
-      success : self._onSaveSuccess,
-      error : self._onSaveError
+      success : self._onSaveSuccess
     });
   }
   
