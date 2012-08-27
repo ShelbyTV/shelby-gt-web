@@ -100,6 +100,10 @@
             <% } else { %>
               shared by <%= creatorNickname %>
             <% } %>
+
+            <span class="xuser-data-timestamp">
+               <%= frame.get('created_at') %>
+            </span>
           </p>
 
           <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
