@@ -88,11 +88,6 @@ a{
 	position:relative;
 	z-index:3;
 
-	@include transition-property('opacity, margin-left');
-	@include transition-duration(.5s);
-	@include transition-timing-function(ease-in-out);
-	@include transition-delay(0s);
-	
 	&.hide-guide {
 	  margin-left:-($guide-width);
 	}
