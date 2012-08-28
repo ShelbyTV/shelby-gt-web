@@ -48,10 +48,6 @@
 
     _doesResponseContainListCollection : function(response) {
       return response.result.frames;
-    },
-
-    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
-      return itemModel.id == activeFrameModel.id;
     }
 
   });

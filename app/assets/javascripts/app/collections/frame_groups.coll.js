@@ -112,6 +112,10 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     }
   },
 
+  isLastPlayableFrameGroup : function(currentFrame) {
+    return !this._findNextPlayableFrameGroup(currentFrame, 1);
+  },
+
   _findNextPlayableFrameGroup : function(currentFrame, skip) {
     var _index = -1,
         _currentFrameGroupIndex = -1;

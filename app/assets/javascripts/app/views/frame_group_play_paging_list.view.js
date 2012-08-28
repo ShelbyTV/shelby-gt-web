@@ -38,19 +38,10 @@
       if (activeFrameModel) {
         // if we're playing the final playable frame group in the list, load some more if they are available
         // so they're ready to go when this frame finishes
-        if (this._loadMoreEnabled) {
-          var lastItem = this._displayCollection.last();
-          if (lastItem && this._doesListItemMatchFrame(lastItem, activeFrameModel)) {
+        if (this.frameGroupCollection.isLastPlayableFrameGroup(activeFrameModel)) {
             this._loadMore();
-          }
         }
       }
-    },
-
-    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
-      // subclasses must override to specify how to know when a given list item
-      // matches the active frame model
-      console.log('Sorry, your FrameGroupPlayPagingListView subclass must override _doesListItemMatchFrame');
     },
 
     _onItemsLoaded : function(rollModel, items){

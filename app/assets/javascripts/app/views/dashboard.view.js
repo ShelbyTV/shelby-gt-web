@@ -49,10 +49,6 @@
 
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
-    },
-
-    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
-      return itemModel.has('frame') && itemModel.get('frame').id == activeFrameModel.id;
     }
 
   });
