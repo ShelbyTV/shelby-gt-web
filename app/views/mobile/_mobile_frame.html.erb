@@ -9,7 +9,5 @@
 		<%= render :partial => "youtube_embed", :locals => { :video => frame['video'] } %>
 	<% elsif frame['video']['provider_name'] == 'vimeo' %>
 		<%= render :partial => "vimeo_embed", :locals => { :video => frame['video']} %>					  
-	<% elsif frame['video']['provider_name'] == 'espn' %>
-		<%= render :partial => "espn_embed", :locals => { :video => frame['video']} %>					  
 	<% end %>
 </div>
