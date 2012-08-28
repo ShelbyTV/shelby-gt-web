@@ -17,7 +17,7 @@
       <%= frameTitle %> 
     </h1>
     
-    <div class="xframe-body-wrapper">
+    <div class="xframe-body-wrapper clearfix">
       <%=
         JST['thumbnail-module']({
           thumbnail : frameThumbnail,
@@ -26,18 +26,15 @@
       %>
 
       <div class="guide-overlay-main rolling-main">
-        <div class="rolling-form">
-          <!-- Form content from RollingFormView -->
-        </div>
-      
+        <!-- Form content from RollingFormView -->
       </div><!-- eo guide-overlay-main rolling-main -->
     </div><!-- eo xframe-body-wrapper -->
-<!--     <div class="rolling-submit">
+     <!--<div class="rolling-submit">
       <button id="js-roll-it" class="roll-options-submit" type="submit" onclick="return false;" tabindex="0">
         Roll It!
       </button>
-    </div>
- -->  </form>
+    </div>-->
+   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->
 
 

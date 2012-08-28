@@ -87,7 +87,7 @@
 				frame: this.model,
 				frameRollingState: this._frameRollingState
 			});
-			this.appendChildInto(this._rollingForm, '.rolling-form');
+			this.appendChildInto(this._rollingForm, '.guide-overlay-main');
 		},
 		
 		_removeRollingFormChild: function(){
