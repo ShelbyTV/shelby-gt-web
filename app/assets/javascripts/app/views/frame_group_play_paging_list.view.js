@@ -3,7 +3,9 @@
   // shorten names of included library prototypes
   var PagingListView = libs.shelbyGT.PagingListView;
 
-  libs.shelbyGT.FramePlayPagingListView = PagingListView.extend({
+  libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
+
+    frameGroupCollection : null,
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
       infinite: true,
@@ -48,7 +50,7 @@
     _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
       // subclasses must override to specify how to know when a given list item
       // matches the active frame model
-      console.log('Sorry, your FramePlayPagingListView subclass must override _doesListItemMatchFrame');
+      console.log('Sorry, your FrameGroupPlayPagingListView subclass must override _doesListItemMatchFrame');
     },
 
     _onItemsLoaded : function(rollModel, items){

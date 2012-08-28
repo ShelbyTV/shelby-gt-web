@@ -1,13 +1,11 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var FramePlayPagingListView = libs.shelbyGT.FramePlayPagingListView;
+  var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
 
-  libs.shelbyGT.RollView = FramePlayPagingListView.extend({
+  libs.shelbyGT.RollView = FrameGroupPlayPagingListView.extend({
 
-    frameGroupCollection : null,
-
-    className : FramePlayPagingListView.prototype.className + ' roll',
+    className : FrameGroupPlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
       this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
@@ -19,7 +17,7 @@
         this.model.get('frames').bind('destroy', this._onQueueFrameDestroyed, this);
       }
 
-      FramePlayPagingListView.prototype.initialize.call(this);
+      FrameGroupPlayPagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
@@ -28,7 +26,7 @@
       }
     },
 
-    options : _.extend({}, FramePlayPagingListView.prototype.options, {
+    options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
       listItemView : 'FrameGroupView',
       fetchParams : {

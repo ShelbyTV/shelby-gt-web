@@ -95,7 +95,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     
     if (this.model.get('frames').length){
       var useFrameCreatorInfo = this.model.getFirstFrame().conversationUsesCreatorInfo(shelby.models.user);
-      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame().at(0), options : this.options }));
+      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
