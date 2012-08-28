@@ -2,7 +2,6 @@
 
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
-  var PlayingState = libs.shelbyGT.PlayingState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
@@ -26,6 +25,12 @@
 
     _currentRollMasterCollection : null,
     _currentRollView : null,
+
+    _playingFrameGroupCollection : null,
+    _playingState : libs.shelbyGT.PlayingState.none,
+    _playingRollId : null,
+
+    _nowSkippingVideo : false,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -168,11 +173,25 @@
       switch (this.model.get('displayState')) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
+          if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
+            // while we were away from the dashboard, we relied on the last displayed state of the dashboard
+            // to determine what frames to play
+            // since we're displaying the dashboard again now, we need to play based on what is actually
+            // displayed in the current dashboard view
+            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+          }
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
         case DisplayState.queue :
           this._currentRollView = this._listView;
+          if (this._playingState == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
+            // while we were away from this roll, we relied on the last displayed state of the roll
+            // to determine what frames to play
+            // since we're displaying the roll again now, we need to play based on what is actually
+            // displayed in the current roll view
+            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+          }
           break;
       }
 
@@ -230,27 +249,21 @@
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (activeFrameModel) {
-        if (!guideModel.get('skippingVideo')) {
+        if (!this._nowSkippingVideo) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
-            guideModel.set({
-              playingState : PlayingState.dashboard
-            });
+            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.dashboard;
+            this._playingRollId = null;
           } else {
-            guideModel.set({
-              playingState : PlayingState.roll,
-              // XXX TODO in this case, when the activeFrame model changes, everything is fine.
-              // however, if we're playing a roll, switch to dashboard, and switch back to the
-              // same roll, the new roll view / frame collection isn't the same as the playing
-              // frame group collection, so the UI and frame skipping logic don't match.
-              playingRollFrameGroupCollection : this._currentRollView.frameGroupCollection
-            });
+            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.roll;
+            this._playingRollId = activeFrameModel.get('roll').id;
           }
         }
       } else {
-        guideModel.set({
-          playingState : PlayingState.none,
-          playingRollFrameGroupCollection : null
-        });
+        this._playingFrameGroupCollection = null;
+        this._playingState = libs.shelbyGT.PlayingState.none;
+        this._playingRollId = null;
       }
     },
 
@@ -278,7 +291,7 @@
       // undefined skip causes infinite loop below... so just return here?
       if (!skip) {
         return;
-      } 
+      }
 
       var self = this,
           _frameGroups,
@@ -286,19 +299,15 @@
           _currentFrameGroupIndex = -1,
           _currentFrame = this.model.get('activeFrameModel');
      
-      if (this.model.get('playingState') == PlayingState.dashboard) {
-        _frameGroups = this._dashboardView.frameGroupCollection.models;
-      } else {
-        _frameGroups = this.model.get('playingRollFrameGroupCollection').models;
-      }
+      _frameGroups = this._playingFrameGroupCollection;
 
-      if (!_frameGroups) {
-        return;
-      }
-
-      var _frameInCollection = _(_frameGroups).find(function(frameGroup){return frameGroup.get('frames').at(0).get('video').id == _currentFrame.get('video').id;});
-      if (_frameInCollection) {
-        _currentFrameGroupIndex = _frameGroups.indexOf(_frameInCollection);
+      var _matchingFrameGroup = _frameGroups.find(function(frameGroup){
+        return frameGroup.get('frames').any(function(frame){
+          return frame.id == _currentFrame.id;
+        });
+      });
+      if (_matchingFrameGroup) {
+        _currentFrameGroupIndex = _frameGroups.indexOf(_matchingFrameGroup);
         _index = _currentFrameGroupIndex + skip;
       } else {
         _currentFrameGroupIndex = 0;
@@ -317,26 +326,20 @@
           break;
         }
 
-        if (!_frameGroups) {
-          _index = 0;
-          break;
-        }
+        var _nextPotentialFrameGroup = _frameGroups.at(_index);
 
-        var _indexFrameGroupInCollection = _frameGroups[_index];
-
-        if (_indexFrameGroupInCollection.get('collapsed')) {
+        if (_nextPotentialFrameGroup.get('collapsed')) {
           _index = _index + skip; // keep looking for a non-collapsed frame group to play
         } else {
           break; // otherwise we have a good non-collapsed frame group to play
         }
       }
 
+      this._nowSkippingVideo = true;
       this.model.set({
-        activeFrameModel : _frameGroups[_index].get('frames').at(0),
-        skippingVideo : true
+        activeFrameModel : _frameGroups.at(_index).getFirstFrame()
       });
-
-      this.model.set('skippingVideo', false);
+      this._nowSkippingVideo = false;
     }
 
   });

@@ -19,7 +19,7 @@
 
     _cleanup : function(){
       this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._checkAndHighlight, this);
-      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._checkAndUnHighlight, this);
       ListItemView.prototype._cleanup.call(this);
     },
 
@@ -30,15 +30,21 @@
 
     _checkAndHighlight : function(){
       if (this.doActivateThisItem(this.options.activationStateModel)) {
-        this.$el.addClass(this.options.activeClassName);
-        //bind a handler to remove the active state when this frame is deactivated
-        this.options.activationStateModel.bind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+        this._updateHighlight(true);
       }
     },
 
-    _onThisItemDeactivate : function() {
-      this.$el.removeClass(this.options.activeClassName);
-      this.options.activationStateModel.unbind('change:' + this.options.activationStateProperty, this._onThisItemDeactivate, this);
+    _checkAndUnHighlight : function() {
+      if (!this.doActivateThisItem(this.options.activationStateModel)) {
+        this._updateHighlight(false);
+      }
+    },
+
+    _updateHighlight : function(doHighlight) {
+        this.$el.toggleClass(this.options.activeClassName, doHighlight);
+        // bind or unbind handler to remove the active state when this frame is deactivated
+        var action = doHighlight ? 'bind' : 'unbind';
+        this.options.activationStateModel[action]('change:' + this.options.activationStateProperty, this._checkAndUnHighlight, this);
     },
 
     doActivateThisItem : function(model) {
