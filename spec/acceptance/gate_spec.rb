@@ -53,7 +53,7 @@ describe 'Gate', :type => :request do
 
         xit "should enter the app after a successful login" do
           click_link('Twitter')
-          fill_in('username_or_email', :with => Settings::Acceptance.twitter_login_email)
+          fill_in('username_or_email', :with => Settings::Acceptance.twitter_user_name)
           fill_in('password', :with => Settings::Acceptance.twitter_password)
           click_button('Sign In')
           visit '/'
