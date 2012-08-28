@@ -1,5 +1,5 @@
 <% 
-  var rollTitle = roll.get('title') || '',
+  var rollTitle = libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '',
       rollSubdomain = roll.has('subdomain'),
       personalRollId = shelby.models.user.get('personal_roll_id');
 %>
@@ -8,7 +8,7 @@
   <% if(roll.id == personalRollId && rollSubdomain) { %>
     <h2 class="current-roll">
       <span class="roll-title-text">
-        <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '' %>
+        <%= rollTitle || '' %>
       </span>
       <span id="js-roll-name-change" class="roll-name-change">
         <input value="<%= rollTitle %>" size="15"/>
