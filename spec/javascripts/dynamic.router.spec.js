@@ -96,8 +96,9 @@ describe("DynamicRouter", function() {
         var framesCollection = new Backbone.Collection();
         var rollModel = new Backbone.Model();
         shelby.models = {
-            guide : new Backbone.Model(),
-            guideOverlay : new Backbone.Model()
+            guide : new Backbone.Model({displayState: libs.shelbyGT.DisplayState.standardRoll}),
+            guideOverlay : new Backbone.Model(),
+            routingState : new Backbone.Model({forceFramePlay: false})
         };
         sinon.stub(rollModel, 'get').withArgs('frames').returns(framesCollection);
         sinon.stub(framesCollection, 'get').withArgs(frameId).returns(frameModel);
