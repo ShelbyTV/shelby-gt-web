@@ -15,7 +15,7 @@
   float: left;
   list-style-type: none;
 
-  & > button {
+  & > .presentation-button {
     background: none;
     border: none;
     color: $guide-presentation-button;
@@ -26,16 +26,21 @@
     padding: 3px 6px;
     width:100%;
 
-    &:hover {
-      text-decoration: underline;
+    &:active,
+    &:hover,
+    &:link,
+    &:visited {
+      //in the event that this class is applied to an <a>, rather than a <button>
+      color: #efefef;
+      text-decoration: none;
     }
 
     &.guide-presentation-content-selected {
       color: $guide-presentation-button-active;
 
-      &:visited,
       &:active,
-      &:link {
+      &:link,
+      &:visited {
         text-decoration: none;
       }
     }
@@ -89,7 +94,7 @@
   width: 200px;
   z-index:5;
 
-  button {
+  .guide-settings-button {
     text-align: left;
   }
 }
