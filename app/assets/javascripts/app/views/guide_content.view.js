@@ -277,8 +277,9 @@
     },
 
     _onChangeVideo : function(userDesiresModel, videoChangeValue){
-      if (typeof videoChangeValue==='undefined') return false;
-      this._skipVideo(videoChangeValue);
+      if (userDesiresModel.has('changeVideo')) {
+        this._skipVideo(videoChangeValue);
+      }
     },
 
     _onPlaybackNext : function(){
@@ -288,11 +289,6 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      // undefined skip causes infinite loop below... so just return here?
-      if (!skip) {
-        return;
-      }
-
       var self = this,
           _frameGroups,
           _index = -1,
@@ -301,6 +297,7 @@
      
       _frameGroups = this._playingFrameGroupCollection;
 
+      // look for a frame group that contains the currently playing frame
       var _matchingFrameGroup = _frameGroups.find(function(frameGroup){
         return frameGroup.get('frames').any(function(frame){
           return frame.id == _currentFrame.id;
@@ -316,13 +313,13 @@
       // loop to skip collapsed frames (looping should only happen in dashboard view)
       while (true) {
 
-        // bad index means we just stay on current video...
+        // bad index means we return to the beginning of the roll or stream
         if (_index < 0) {
-          _index = _currentFrameGroupIndex;
+          _index = 0;
           break;
         } else if (_index >= _frameGroups.length) {
           // ideally would load more videos here? do something like _loadMoreWhenLastItemActive
-          _index = _currentFrameGroupIndex;
+          _index = 0;
           break;
         }
 
