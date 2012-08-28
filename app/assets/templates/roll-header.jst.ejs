@@ -1,15 +1,12 @@
 <% 
   var rollTitle = roll.get('title') || '',
-      rollCreatorNickname = roll.get('creator_nickname') || '',
       rollSubdomain = roll.has('subdomain'),
       personalRollId = shelby.models.user.get('personal_roll_id');
-
-  var titleNameMatch = rollTitle == rollCreatorNickname;    
 %>
 
 <div class="title">
   <% if(roll.id == personalRollId && rollSubdomain) { %>
-    <h2 class="current-roll<%= (titleNameMatch) ? ' roll-name-single' : ' x' %>">
+    <h2 class="current-roll">
       <span class="roll-title-text">
         <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '' %>
       </span>
@@ -18,18 +15,10 @@
       </span>
     </h2>
   <% } else { %>
-    <h2 class="current-roll<%= (titleNameMatch) ? ' roll-name-single' : ' x' %>">
+    <h2 class="current-roll">
       <span class="roll-title-text">
         <%= rollTitle || '' %>
       </span>
-<!--       <span id="js-roll-name-change" class="roll-name-change">
-        <input value="<%= rollTitle %>" size="15"/>
-      </span>
- -->    </h2>
-    <% if (!titleNameMatch) { %>
-      <h3 class="current-roll-owner-nickname">
-        <%= rollCreatorNickname %>
-      </h3>
-    <% } %>
+    </h2>
   <% } %>
 </div>
