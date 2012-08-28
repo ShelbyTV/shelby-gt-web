@@ -147,7 +147,7 @@
 
   <% if (!contextOverlay) { %>
     <% var firstLink = true %>
-    <% var dupeFrameRollIds = [frameGroup.get('frames').at(0).get('roll').get('id')] %>
+    <% var dupeFrameRollIds = [frameGroup.getFirstFrame().get('roll').get('id')] %>
     <% for (var i = 1; i < frameGroup.get('frames').length; i++) { %>
       <% var dupeFrame = frameGroup.get('frames').at(i) %>
       <% var dupeCreator = dupeFrame.get('creator') %>
