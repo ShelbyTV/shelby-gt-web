@@ -40,9 +40,10 @@
 		render : function(){
 			var self = this;
 			
+
       this.$el.html(this.template({
                     roll:this._roll, 
-                    frame:this._frame, 
+                    frame:this._frame,
                     user: shelby.models.user,
                     rollOptions: {
                       pathForDisplay:RollViewHelpers.pathForDisplay(this._roll), 
@@ -65,8 +66,9 @@
     },
 
 		_doRoll : function(e){
-			e.preventDefault();
-			if(!this._validate()){ return; }
+			e.preventDefault
+
+      if(!this._validate()){ return; }
 
 			if(this._roll){
 				this._rerollFrameAndShare(this._roll);
@@ -88,7 +90,7 @@
 		},
 		
 		_clearErrors : function(){
-			this.$('#new-roll-name').removeClass('error');
+			// this.$('#new-roll-name').removeClass('error');
 			this.$('#js-rolling-message').removeClass('error');
 		},
 		
@@ -120,12 +122,15 @@
 			var self = this;
 			var message = this.$("#js-rolling-message").val();
 			var shareDests = [];
-			// re roll the frame
+      if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
+      if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
+
+      // re roll the frame
       this._frame.reRoll(roll, message, function(newFrame){
         //rolling is done (don't need to wait for add message to complete)
-				self._rollingSuccess(roll, newFrame);
-				
-				// Optional Sharing (happens in the background)
+        self._rollingSuccess(roll, newFrame);
+        // Optional Sharing (happens in the background)
+
         self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
 
         self._frameRollingState.get('shareModel').save(null, {

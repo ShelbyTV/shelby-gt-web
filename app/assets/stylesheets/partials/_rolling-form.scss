@@ -74,6 +74,58 @@ fieldset.share-option {
 	margin-right: 45%;
 }
 
+
+
+
+
+.share-option {
+  position: absolute;
+}
+
+.share-option-twitter,
+.share-option-facebook {
+  margin-right: 5px;
+}
+
+.share-button-twitter,
+.share-button-facebook {
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid $inset !important;
+  border-radius: $radius;
+}
+
+.share-button-twitter {
+  background-image: url($icon-share-twitter-off);
+  background-size: contain;
+}
+
+.share-button-facebook {
+  background-image: url($icon-share-facebook-off);
+  background-size: contain;
+}
+
+.share-option-twitter:checked {
+  & ~ .share-button-twitter {
+    background-color: $twitter-blue;
+    background-image: url($icon-share-twitter-on);
+    border-color: adjust-lightness($twitter-blue, -20%);
+  }
+}
+
+.share-option-facebook:checked {
+  & ~ .share-button-facebook {
+    background-color: $facebook-blue;
+    background-image: url($icon-share-facebook-on);
+    border-color: adjust-lightness($facebook-blue, -10%);
+  }
+}
+
+
+
+
+
+
 /* generic slider style */
 .share-status-label {
   @include roundies;

@@ -1,6 +1,6 @@
 <%  
   var creatorNickname = frame.get('creator').get('nickname')
-  var messageText = (creatorNickname) ? "↬ @"+frame.get('creator').get('nickname') : '';
+  var messageText = (creatorNickname) ? "↬@"+frame.get('creator').get('nickname') : '';
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
 
   if(messages.length > 0){
@@ -17,3 +17,29 @@
 		subline      : false
 	})
 %>
+
+<%
+  var active_networks = [];
+  shelby.models.user.get('authentications').forEach(function(auth){
+    active_networks.push(auth.provider);
+  }); 
+
+  var twitter_enabled = _.include(active_networks, 'twitter') ? true : false;
+  var facebook_enabled = _.include(active_networks, 'facebook') ? true : false;
+%>
+
+<fieldset class="share_module share-option">
+  <% if(twitter_enabled) { %>
+    <label class="share_label js-toggle-twitter-sharing" for="share-on-twitter" title="Share to Twitter">
+      <input id="share-on-twitter" class="share_input share-option-twitter visuallyhidden" name="share-option-twitter" type="checkbox" />
+      <span class="ir share_label_icon share-button-twitter">Share to Twitter</span>
+    </label>
+  <% } %>
+
+  <% if(facebook_enabled) { %>
+    <label class="share_label js-toggle-facebook-sharing" for="share-on-facebook" title="Share to Facebook">
+      <input id="share-on-facebook" class="share_input share-option-facebook visuallyhidden" name="share-option-facebook" type="checkbox" />
+      <span class="ir share_label_icon share-button-facebook">Share to Facebook</span>
+    </label>
+  <% } %>
+</fieldset>

@@ -1,7 +1,6 @@
 <% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var userNickname   = user.get('nickname') || 'your personal '%>
-
 <div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
     <button class="cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
@@ -24,7 +23,6 @@
           title : frameTitle
         })
       %>
-
       <div class="guide-overlay-main rolling-main">
         <!-- Form content from RollingFormView -->
       </div><!-- eo guide-overlay-main rolling-main -->

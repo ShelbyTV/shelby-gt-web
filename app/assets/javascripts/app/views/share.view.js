@@ -26,7 +26,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind("change:text", this._updateTextLengthCounter, this);
     // Supporting direct share via email only right now...
-    this.model.set('destination', ['email']);
+    this.model.set('destination', ['email','twitter','facebook']);
   },
 
   _cleanup : function(){
@@ -34,6 +34,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   render : function(){
+    console.log('aaa',this.model);
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
     if (this._components.emailAddresses) {
       var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({
@@ -90,15 +91,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this.$('.js-share-email-addresses').removeClass('error');
   },
 
-  // _updateDestinationButtons : function(shareModel){
-  //   if (this._components.networkToggles) {
-  //     var self = this;
-  //     ['twitter', 'facebook'].forEach(function(network){
-  //       var btn = this.$('.js-toggle-' + network + '-sharing');
-  //       shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
-  //     });
-  //   }
-  // },
+  _updateDestinationButtons : function(shareModel){
+    if (this._components.networkToggles) {
+      var self = this;
+      ['twitter', 'facebook'].forEach(function(network){
+        var btn = this.$('.js-toggle-' + network + '-sharing');
+        shareModel.networkEnabled(network) ? btn.addClass('active') : btn.removeClass('active');
+      });
+    }
+  },
 
   _getCharsLeft : function(){
     return 140 - this.shareBaseLength - this.model.get('text').length;
@@ -111,18 +112,18 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     }
   },
 
-  // _toggleSharingByNetwork : function(network){
-  //   var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference;
-  //   this.model.set('destination', setOperation(this.model.get('destination'), [network]));
-  // },
+  _toggleSharingByNetwork : function(network){
+    var setOperation = this.model.get('destination').indexOf(network)===-1 ? _.union : _.difference;
+    this.model.set('destination', setOperation(this.model.get('destination'), [network]));
+  },
 
-  // _toggleTwitterSharing : function(){
-  //   this._toggleSharingByNetwork('twitter');
-  // },
+  _toggleTwitterSharing : function(){
+    this._toggleSharingByNetwork('twitter');
+  },
 
-  // _toggleFacebookSharing : function(){
-  //   this._toggleSharingByNetwork('facebook');
-  // },
+  _toggleFacebookSharing : function(){
+    this._toggleSharingByNetwork('facebook');
+  },
 
   _validateShare : function(){
     if(this._components.emailAddresses && this.$('.js-share-email-addresses:invalid').length > 0){
@@ -131,10 +132,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       return false;
     }
     
-    // if(this._components.networkToggles && this.model.get('destination').length == 0){
-    //   shelby.alert("Please choose a network to share on.");
-    //   return false;
-    // }
+    if(this._components.networkToggles && this.model.get('destination').length == 0){
+      shelby.alert("Please choose a network to share on.");
+      return false;
+    }
     
     return true;
   },

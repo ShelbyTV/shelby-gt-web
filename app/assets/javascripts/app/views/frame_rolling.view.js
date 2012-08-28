@@ -25,6 +25,7 @@
     },
 
     initialize : function(){
+      this.model.set('destination', ['email','twitter','facebook']);
     },
 
     _cleanup : function(){

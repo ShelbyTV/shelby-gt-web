@@ -1,11 +1,3 @@
-<%
-  var active_networks = [];
-  shelby.models.user.get('authentications').forEach(function(auth){
-    active_networks.push(auth.provider);
-  });
-  var twitter_active = _.include(shareModel.get('destination'), 'twitter') ? true : false;
-  var facebook_active = _.include(shareModel.get('destination'), 'facebook') ? true : false;
-%>
   <!-- form element wrapper is in outside of this JST -->
   <fieldset class="form_fieldset">
     <label class="form_label" for="email-recipients">
