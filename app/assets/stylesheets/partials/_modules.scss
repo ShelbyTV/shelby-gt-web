@@ -13,11 +13,8 @@
 //---------------------------
 
 .media_module {
-  margin-bottom : ($media-module-margin - 3);
-  margin-left   : $media-module-margin;
-  margin-right  : $media-module-margin;
-  margin-top    : $media-module-margin;
-  position      : relative;
+  margin : $media-module-margin;
+  position : relative;
 }
 
 .media_body,
