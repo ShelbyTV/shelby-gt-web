@@ -6,6 +6,24 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
    * .bind(fn(el)el.parent.data('roll_id') etc)
    *
    * Next button should be disabled "follow n more Rolls"
-   */
+  */
+
+  events : {
+    "click .js-onboarding-roll-list-item-button" : "_onOnboardingRollButtonClick"
+  },
+
+  _onOnboardingRollButtonClick : function(event){
+    console.log('following roll', event.currentTarget.id);
+    var rollToJoin = new libs.shelbyGT.RollModel({id:event.currentTarget.id});
+    rollToJoin.joinRoll(this._onRollFollowSuccess);
+  },
+
+  _onRollFollowSuccess : function(){
+    this.$('.js-onboarding-roll-list-item-lining').addClass('followed');
+  }
+
+  
+
+
 
 });
