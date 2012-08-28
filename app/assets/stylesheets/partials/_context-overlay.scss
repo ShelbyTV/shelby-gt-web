@@ -1,7 +1,7 @@
 @import "base";
 
-$outset : adjust-lightness($rolls-outset,-10%);
-$inset  : adjust-lightness($rolls-inset, -5);
+$outset : adjust-lightness($contextoverlay-outset,-10%);
+$inset  : adjust-lightness($contextoverlay-inset, -5);
 
 .context-overlay-wrapper {
 	position: absolute;

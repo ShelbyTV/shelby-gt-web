@@ -72,8 +72,8 @@ $font-color          : #333;
 $font-color-display  : $font-color;
 $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
-$font-size           : 100%;//eventually make so that this is 100% and calculate everything by em's
-$size                : $font-size !default;  //again, this should be 100% eventually.
+$font-size           : 100%;
+$size                : $font-size !default;
 
 //--- BORDER RADIUS
 $radius        : 5px;
@@ -95,11 +95,11 @@ $guide-width   : $unit * 37;
 $base : #e2e2e2;
 $highlight : rgba(255,255,255,.3) !default;
 $outline : #222;
-$outset  : adjust-lightness($base, 10%);
+$outset  : adjust-lightness($base, 7%);
 $inset   : adjust-lightness($base, -10%);
 
-$rolls-inset : #333; //possibly obselete after new rolling pages are done
-$rolls-outset : #555; //possibly obselete after new rolling pages are done
+$contextoverlay-inset : #333; 
+$contextoverlay-outset : #555; 
 
 //text-level colors
 $text               : #333;
@@ -126,6 +126,8 @@ $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
 $overlay_header_height              : 46px;
+
+$thumbnail_default_bg               : adjust-lightness($base, -1%);
 
 //header
 $header-outline                     : #202020;

@@ -44,7 +44,7 @@
 .image_module {
   @include background-size(cover);
 
-  background-color: adjust-lightness(#efefef,2%);
+  background-color: $thumbnail_default_bg;
   background-position: center center;
   background-repeat: no-repeat;
   display: block;
