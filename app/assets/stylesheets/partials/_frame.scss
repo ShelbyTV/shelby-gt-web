@@ -1,10 +1,7 @@
 @import "base";
 
 .active-list-item {
-	.xframe-body-wrapper {
-		box-shadow: 0 0 2px 0px rgba(21, 163, 255, 1);
-		outline: 2px solid rgba(21, 163, 255, 1);
-	}
+	background-color: rgba(200,200,200,.5);
 }
 
 //---------------------------
@@ -14,7 +11,7 @@
 .xframe {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
-	padding: 1.5em 8px;
+	padding: 1em;
 
 	&:hover {
 		.menu_module {
@@ -266,7 +263,7 @@
 .rolls-list,
 .form-rolls-list,
 .existing-rolls-list > ul {
-	margin: 3px 0px 0px 0px;
+	margin: 0;
 	padding: 0;
 
 	li {

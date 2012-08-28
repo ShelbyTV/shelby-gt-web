@@ -28,10 +28,8 @@
 
 %>
 <button class="list_button guide-link js-roll-item-button">
-  <% if(roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')) { %>
+  <% if(creator_nickname != roll_title && creator_nickname != undefined) { %>
     <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-  <% } else if(creator_nickname != roll_title && creator_nickname != undefined){ %>
-    <span><%= creator_nickname %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
   <% } else { %>
     <%= (creator_nickname) ? creator_nickname : roll_title %>
   <% } %>

@@ -27,11 +27,14 @@
     width:100%;
 
     &:active,
+    &:hover {
+      color: #efefef;
+    }
+
     &:hover,
     &:link,
     &:visited {
       //in the event that this class is applied to an <a>, rather than a <button>
-      color: #efefef;
       text-decoration: none;
     }
 

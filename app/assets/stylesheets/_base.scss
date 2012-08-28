@@ -92,10 +92,11 @@ $header-height : $unit * 3.5;
 $guide-width   : $unit * 37;
 
 //--- COLORS
+$base : #e2e2e2;
 $highlight : rgba(255,255,255,.3) !default;
 $outline : #222;
-$outset  : #fff;
-$inset   : #ddd;
+$outset  : adjust-lightness($base, 10%);
+$inset   : adjust-lightness($base, -10%);
 
 $rolls-inset : #333; //possibly obselete after new rolling pages are done
 $rolls-outset : #555; //possibly obselete after new rolling pages are done
@@ -109,8 +110,8 @@ $button-color-light : $text;
 $base-bg-color : #000;
 
 //guide
-$guide-bg-color 				            : #efefef;
-$guide-explore-bg                   : #e2e2e2;
+$guide-bg-color 				            : $base;
+$guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
 $guide-presentation-button-active   : adjust-lightness($guide-presentation-button, 28%);
 $guide-presentation-bg-color        : #2f3233;
