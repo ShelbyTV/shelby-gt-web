@@ -289,53 +289,10 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      var self = this,
-          _frameGroups,
-          _index = -1,
-          _currentFrameGroupIndex = -1,
-          _currentFrame = this.model.get('activeFrameModel');
-     
-      _frameGroups = this._playingFrameGroupCollection;
-
-      // look for a frame group that contains the currently playing frame
-      var _matchingFrameGroup = _frameGroups.find(function(frameGroup){
-        return frameGroup.get('frames').any(function(frame){
-          return frame.id == _currentFrame.id;
-        });
-      });
-      if (_matchingFrameGroup) {
-        _currentFrameGroupIndex = _frameGroups.indexOf(_matchingFrameGroup);
-        _index = _currentFrameGroupIndex + skip;
-      } else {
-        _currentFrameGroupIndex = 0;
-      }
-
-      // loop to skip collapsed frames (looping should only happen in dashboard view)
-      while (true) {
-
-        // bad index means we return to the beginning of the roll or stream
-        if (_index < 0) {
-          _index = 0;
-          break;
-        } else if (_index >= _frameGroups.length) {
-          // ideally would load more videos here? do something like _loadMoreWhenLastItemActive
-          _index = 0;
-          break;
-        }
-
-        var _nextPotentialFrameGroup = _frameGroups.at(_index);
-
-        if (_nextPotentialFrameGroup.get('collapsed')) {
-          _index = _index + skip; // keep looking for a non-collapsed frame group to play
-        } else {
-          break; // otherwise we have a good non-collapsed frame group to play
-        }
-      }
+      var nextPlayableFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
 
       this._nowSkippingVideo = true;
-      this.model.set({
-        activeFrameModel : _frameGroups.at(_index).getFirstFrame()
-      });
+      this.model.set({activeFrameModel: nextPlayableFrame});
       this._nowSkippingVideo = false;
     }
 

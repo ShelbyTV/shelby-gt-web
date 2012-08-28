@@ -99,6 +99,55 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     }
 
     return this;
+  },
+
+  getNextPlayableFrame : function(currentFrame, skip) {
+    var nextPlayableFrameGroup = this._findNextPlayableFrameGroup(currentFrame, skip);
+    if (nextPlayableFrameGroup) {
+      return nextPlayableFrameGroup.getFirstFrame();
+    } else {
+      // if we can't find another playable frame group in the direction we're looking,
+      // we return to the beginning of the roll or stream
+      return this.at(0).getFirstFrame();
+    }
+  },
+
+  _findNextPlayableFrameGroup : function(currentFrame, skip) {
+    var _index = -1,
+        _currentFrameGroupIndex = -1;
+
+    // look for a frame group that contains the currently playing frame
+    var _matchingFrameGroup = this.find(function(frameGroup){
+      return frameGroup.get('frames').any(function(frame){
+        return frame.id == currentFrame.id;
+      });
+    });
+    if (_matchingFrameGroup) {
+      _currentFrameGroupIndex = this.indexOf(_matchingFrameGroup);
+      _index = _currentFrameGroupIndex + skip;
+    } else {
+      _currentFrameGroupIndex = 0;
+    }
+
+    // loop to skip collapsed frames (looping should only happen in dashboard view)
+    while (true) {
+
+      if (_index < 0) {
+        return null;
+      } else if (_index >= this.length) {
+        return null;
+      }
+
+      var _nextPotentialFrameGroup = this.at(_index);
+
+      if (_nextPotentialFrameGroup.get('collapsed')) {
+        _index = _index + skip; // keep looking for a non-collapsed frame group to play
+      } else {
+        break; // otherwise we have a good non-collapsed frame group to play
+      }
+    }
+
+    return this.at(_index);
   }
 
 });

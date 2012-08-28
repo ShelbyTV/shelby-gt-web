@@ -36,7 +36,7 @@
     _loadMoreWhenLastItemActive : function(){
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       if (activeFrameModel) {
-        // if we're playing the final frame in the list, load some more if they are available
+        // if we're playing the final playable frame group in the list, load some more if they are available
         // so they're ready to go when this frame finishes
         if (this._loadMoreEnabled) {
           var lastItem = this._displayCollection.last();
