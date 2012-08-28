@@ -105,6 +105,9 @@ $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text;
 
+//base
+$base-bg-color : #000;
+
 //guide
 $guide-bg-color 				            : #efefef;
 $guide-explore-bg                   : #e2e2e2;
@@ -121,14 +124,12 @@ $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
-
 $overlay_header_height              : 46px;
-////end modules
 
-
-
+//header
 $header-outline                     : #202020;
 
+//
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);

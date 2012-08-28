@@ -1,5 +1,12 @@
 @import "base";
 
+.active-list-item {
+	.xframe-body-wrapper {
+		box-shadow: 0 0 2px 0px rgba(21, 163, 255, 1);
+		outline: 2px solid rgba(21, 163, 255, 1);
+	}
+}
+
 //---------------------------
 //	frame architecture
 //---------------------------

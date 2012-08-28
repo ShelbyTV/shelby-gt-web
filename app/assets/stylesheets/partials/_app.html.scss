@@ -1,5 +1,14 @@
 @import "base";
 
+//---------------------------
+//  boilerplate stuff
+//
+//	this is the only time 
+//  you should see styling 
+//  on natural elements 
+//---------------------------
+
+
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Ubuntu', Trebuchet MS, sans-serif;
 	font-weight:500;
@@ -38,6 +47,10 @@ a{
 	}
 
 }
+
+//---------------------------
+//  shelby! containing wrappers, etc
+//---------------------------
 
 .shelby-wrapper{
 	bottom:0;
@@ -81,7 +94,21 @@ a{
 	width: $guide-width;
 }
 
+.main-layout,
+.explore-layout {
+	background: $base-bg-color;
+}
+
+.user-inactive{
+	.main-layout{
+		.guide-wrapper{
+		  opacity: .4;
+		}
+	}
+}
+
 .guide-wrapper{
+	background-color: $guide-bg-color; //should technically be on .guide or something.
 	height:100%;
 	overflow:hidden;
 	opacity: 1;
@@ -90,19 +117,6 @@ a{
 
 	&.hide-guide {
 	  margin-left:-($guide-width);
-	}
-}
-
-.main-layout,
-.explore-layout {
-	background: $guide-bg-color;
-}
-
-.user-inactive{
-	.main-layout{
-		.guide-wrapper{
-		  opacity: .5;
-		}
 	}
 }
 
@@ -124,8 +138,8 @@ a{
 
 .menu{	
 	box-shadow: $shadow;
-	position:relative;
 	overflow:hidden;
+	position:relative;
 }
 
 .spinner{
