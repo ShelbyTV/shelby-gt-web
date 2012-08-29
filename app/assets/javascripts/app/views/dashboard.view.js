@@ -1,16 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var FramePlayPagingListView = libs.shelbyGT.FramePlayPagingListView;
+  var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
-  libs.shelbyGT.DashboardView = FramePlayPagingListView.extend({
-    
-    frameGroupCollection : null,
+  libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
-    className : FramePlayPagingListView.prototype.className + ' dashboard',
+    className : FrameGroupPlayPagingListView.prototype.className + ' dashboard',
 
-    options : _.extend({}, FramePlayPagingListView.prototype.options, {
+    options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
@@ -18,7 +16,7 @@
       fetchParams : {
         include_children : true
       },
-      sortOrder : -1,
+      sortOrder : -1
     }),
 
     actionToViewMap : {
@@ -42,7 +40,7 @@
         },
         displayCollection: this.frameGroupCollection
       });
-      FramePlayPagingListView.prototype.initialize.call(this);
+      FrameGroupPlayPagingListView.prototype.initialize.call(this);
     },
 
     _filter : function(item){
@@ -51,10 +49,6 @@
 
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
-    },
-
-    _doesListItemMatchFrame : function(itemModel, activeFrameModel) {
-      return itemModel.has('frame') && itemModel.get('frame').id == activeFrameModel.id;
     }
 
   });

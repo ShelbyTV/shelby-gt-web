@@ -6,29 +6,19 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     models || (models = {});
     options || (options = {});
 
-    shelby.models.viewedVideos.get('viewed_videos').bind('change', this.viewedVideosUpdated, this);
-    shelby.models.viewedVideos.get('viewed_videos').bind('reset', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.bind('add:viewed_videos', this.viewedVideosUpdated, this);
   },
 
   _cleanup : function(){
-    shelby.models.viewedVideos.get('viewed_videos').unbind('change', this.viewedVideosUpdated, this);
-    shelby.models.viewedVideos.get('viewed_videos').unbind('reset', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.unbind('add:viewed_videos', this.viewedVideosUpdated, this);
   },
 
-  viewedVideosUpdated : function(){
-
-    var sortedViewedVideosArray = shelby.models.viewedVideos.get('viewed_videos').pluck('id').sort();
-
-    for (i = 0, length = this.models.length; i < length; i++) {
+  viewedVideosUpdated : function(videoModel, viewedVideosCollection, options){
+    for (var i = 0, length = this.models.length; i < length; i++) {
       var model = this.models[i];
       if (model.get('frames').length){
-        var video_id = model.get('frames').at(0).get('video').get('id');
-
-        var viewedIndex = _.indexOf(sortedViewedVideosArray, video_id, true);
-        var viewed = (viewedIndex != -1);
-    
-        if (viewed != model.get('collapsed')) {
-          model.set({ collapsed : viewed });
+        if (model.getFirstFrame().get('video').id == videoModel.id) {
+          model.set({ collapsed : true });
         }
       }
     }
@@ -40,7 +30,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
     models = _.isArray(models) ? models.slice() : [models];
 
-    for (i = 0, length = models.length; i < length; i++) {
+    for (var i = 0, length = models.length; i < length; i++) {
       model = models[i];
 
       if (!model) {
@@ -76,18 +66,18 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       var dupe = false;
   
       for (var j = 0; j < this.models.length && !dupe; j++) {
-         if (this.models[j].get('frames').at(0).get('video').get('id') == video_id) {
+         if (this.models[j].getFirstFrame().get('video').id == video_id) {
             this.models[j].add(frame, dashboard_entry, options);
             dupe = true;
          }
       }
   
       if (!dupe) {
-         var frameGroup = new libs.shelbyGT.FrameGroupModel;
+         var frameGroup = new libs.shelbyGT.FrameGroupModel();
          frameGroup.add(frame, dashboard_entry, options);
   
          var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
-           return entry.id == frame.get('video').get('id');
+           return entry.id == frame.get('video').id;
          });
   
          if (viewed) {
@@ -95,10 +85,63 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          }
   
          Backbone.Collection.prototype.add.call(this, frameGroup, options);
-      } 
+      }
     }
 
     return this;
+  },
+
+  getNextPlayableFrame : function(currentFrame, skip) {
+    var nextPlayableFrameGroup = this._findNextPlayableFrameGroup(currentFrame, skip);
+    if (nextPlayableFrameGroup) {
+      return nextPlayableFrameGroup.getFirstFrame();
+    } else {
+      // if we can't find another playable frame group in the direction we're looking,
+      // we return to the beginning of the roll or stream
+      return this.at(0).getFirstFrame();
+    }
+  },
+
+  isLastPlayableFrameGroup : function(currentFrame) {
+    return !this._findNextPlayableFrameGroup(currentFrame, 1);
+  },
+
+  _findNextPlayableFrameGroup : function(currentFrame, skip) {
+    var _index = -1,
+        _currentFrameGroupIndex = -1;
+
+    // look for a frame group that contains the currently playing frame
+    var _matchingFrameGroup = this.find(function(frameGroup){
+      return frameGroup.get('frames').any(function(frame){
+        return frame.id == currentFrame.id;
+      });
+    });
+    if (_matchingFrameGroup) {
+      _currentFrameGroupIndex = this.indexOf(_matchingFrameGroup);
+      _index = _currentFrameGroupIndex + skip;
+    } else {
+      _currentFrameGroupIndex = 0;
+    }
+
+    // loop to skip collapsed frames (looping should only happen in dashboard view)
+    while (true) {
+
+      if (_index < 0) {
+        return null;
+      } else if (_index >= this.length) {
+        return null;
+      }
+
+      var _nextPotentialFrameGroup = this.at(_index);
+
+      if (_nextPotentialFrameGroup.get('collapsed')) {
+        _index = _index + skip; // keep looking for a non-collapsed frame group to play
+      } else {
+        break; // otherwise we have a good non-collapsed frame group to play
+      }
+    }
+
+    return this.at(_index);
   }
 
 });

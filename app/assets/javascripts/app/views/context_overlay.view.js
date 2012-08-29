@@ -6,10 +6,6 @@
 
     el: '#js-context-overlay-lining',
 
-    events : _.extend({}, FrameGroupView.prototype.events, {
-      "click .js-frame-locator" : "_frameLocator"
-    }),
-
     options : _.extend({}, libs.shelbyGT.FrameGroupView.prototype.options, {
       contextOverlay : true
     }),
@@ -30,9 +26,8 @@
         this._setupTeardownModelBindings(this.model, false);
       }
 
-      var frames = new Backbone.Collection();
-      frames.add(activeFrameModel);
-      this.model  = new Backbone.Model({'frames':frames});
+      this.model = new libs.shelbyGT.FrameGroupModel();
+      this.model.add(activeFrameModel)
 
       //bind
       this._setupTeardownModelBindings(this.model, true);
@@ -42,7 +37,7 @@
 
     render : function() {
       if (this.model) {
-        this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+        this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
       } else {
         this.$el.html('');
       }
@@ -50,30 +45,6 @@
 
     template : function(obj) {
       return JST['frame'](obj);
-    },
-
-    _frameLocator : function(data){
-      var origin = this.options.guide.get('activeFrameModel'),
-          originHasRoll = origin.has('roll'),
-          userDesires = shelby.models.userDesires,
-          guideVisibility = userDesires.get('guideShown'),
-          playingState = shelby.models.guide.get('playingState');
-
-      if (!guideVisibility) {
-        userDesires.set('guideShown', true);
-      }
-
-      if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
-        //if video has no roll, or it's playingstate is 'dashboard', go to stream
-        shelby.router.navigate('stream', {trigger:true});
-
-      } else if( originHasRoll ) {
-        //otherwise go to roll
-        var frameId = origin.id,
-            rollId = origin.get('roll').id;
-        
-        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
-      }
     }
 
   });
