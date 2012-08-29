@@ -4,12 +4,20 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _numItemsRequested : 0,
 
-  _loadMoreEnabled : true,
+  _loadMoreEnabled : false,
 
   _loadInProgress : false,
   
-  events : {
-    "click .js-load-more:not(.js-loading)" : "_loadMore"
+  events : function() {
+    var events = {
+      "click .js-load-more:not(.js-loading)" : "_loadMore"
+    };
+    if (this.options.infinite) {
+      _(events).extend({
+        "inview .js-load-more" : "_onLoadMoreInView"
+      });
+    }
+    return events;
   },
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
@@ -31,15 +39,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
-    if (this.options.infinite) {
-      this.$('.js-load-more').appear(function() {
-        if (self._loadMoreEnabled) {
-          self._loadMore();
-        }
-      }, {
-        one : false
-      });
-    }
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
   },
 
@@ -121,6 +120,12 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         data : fetchData,
         success: function(model, response){self._onFetchSuccess(model, response);}
       });
+    }
+  },
+
+  _onLoadMoreInView : function(e, isInView) {
+    if (isInView && this._loadMoreEnabled) {
+      this._loadMore();
     }
   }
 
