@@ -43,7 +43,9 @@
           <li class="menu_item" role="menuitem">
             <button class="xframe-command command-queue js-queue-frame<%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
               <i class="command-icon">
-                <%= (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' %>
+                <%= (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
+                %>
               </i>
             </button>
           </li>
