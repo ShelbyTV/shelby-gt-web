@@ -4,8 +4,13 @@
 	background-color: $shelby-blue;
 //	background-color: rgba(0,0,255,.5);
 
-	.xframe-title {
+	.xframe-title,
+	.framegroup-dupe-text {
 		color: white;
+	}
+
+	.framegroup-dupes a:link {
+		color: adjust-lightness($shelby-blue, 50%);
 	}
 }
 
