@@ -26,13 +26,20 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   initialize : function(){
-    if (this.options.infinite) {
-      this._initInfiniteScrolling();
-    }
+    var self = this;
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.limit;
     this.$el.append(this.template());
+    if (this.options.infinite) {
+      this.$('.js-load-more').appear(function() {
+        if (self._loadMoreEnabled) {
+          self._loadMore();
+        }
+      }, {
+        one : false
+      });
+    }
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
   },
 
@@ -50,19 +57,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _prepareMasterCollection : function() {
     libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
     this._numItemsLoaded = this._simulatedMasterCollection.length;
-  },
-
-  _initInfiniteScrolling : function(){
-    var self = this;
-    var wrapper = $('#js-guide-body');
-    wrapper.scroll(function () {
-      if (wrapper[0].scrollHeight - wrapper.scrollTop() == wrapper.outerHeight()) {
-        var coll = self.model.get('frames') || self.model.get('dashboard_entries');
-        if (coll.length > 9){
-          self._loadMore();
-        }
-      }
-    });
   },
 
   _onItemsLoaded : function(rollModel, items){
