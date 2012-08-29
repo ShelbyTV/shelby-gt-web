@@ -16,8 +16,9 @@
     </h2>
   <% } else { %>
     <h2 class="current-roll">
+      <% console.log(roll) %>
       <span class="roll-title-text">
-        <%= rollTitle || '' %>
+        <%= (roll.get('creator_nickname') == shelby.models.user.get('nickname')) ? rollTitle : roll.get('title') %>
       </span>
     </h2>
   <% } %>

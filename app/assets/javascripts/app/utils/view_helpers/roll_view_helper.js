@@ -45,7 +45,7 @@ libs.shelbyGT.viewHelpers.roll = {
       return "Queue";
     }
     else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')){
-      return roll.get('subdomain') + '.shelby.tv';
+      return roll.get('subdomain');
 		} 
 		else if(
 		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
