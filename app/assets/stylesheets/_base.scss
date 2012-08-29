@@ -52,12 +52,16 @@ $icon-user-logged-out           : "#{$path}user_loggedout#{$extension}";
 $icon-nav-stream                : "#{$path}nav_stream#{$extension}";
 
 $icon-videocard-queue           : "#{$path}videocard_queue#{$extension}";
+$icon-videocard-comment     : "#{$path}videocard_comment#{$extension}";
 $icon-videocard-comment-off     : "#{$path}videocard_comment_off#{$extension}";
 $icon-videocard-comment-on      : "#{$path}videocard_comment_on#{$extension}";
 $icon-videocard-like-off        : "#{$path}videocard_like_off#{$extension}";
 $icon-videocard-like-on         : "#{$path}videocard_like_on#{$extension}";
+$icon-videocard-more        : "#{$path}videocard_more#{$extension}";
+$icon-videocard-roll        : "#{$path}videocard_roll#{$extension}";
 $icon-videocard-roll-off        : "#{$path}videocard_roll_off#{$extension}";
 $icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
+$icon-videocard-share       : "#{$path}videocard_share#{$extension}";
 $icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
 $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
@@ -104,7 +108,7 @@ $contextoverlay-outset : #555;
 //text-level colors
 $text               : #333;
 $button-color       : #efefef;
-$button-color-light : $text;
+$button-color-light : $text + #333;
 
 //base
 $base-bg-color : #000;
