@@ -92,8 +92,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var useFrameCreatorInfo = this.model.get('frames').at(0).conversationUsesCreatorInfo(shelby.models.user);
-      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFrames();
+      this.$el.html(this.template({
+        queuedVideosModel : shelby.models.queuedVideos,
+        frameGroup : this.model,
+        frame : this.model.get('frames').at(0),
+        options : this.options,
+        dupeFrames : dupeFrames
+      }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }

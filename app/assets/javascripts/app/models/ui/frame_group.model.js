@@ -14,7 +14,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
      }
 
      if (!this.get('frames')) {
-        this.set( { frames : new libs.shelbyGT.FramesCollection }, options);
+        this.set( { frames : new libs.shelbyGT.FramesCollection() }, options);
      }
 
      // first addition
@@ -30,11 +30,13 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         }
         // guess we don't have this frame yet
         this.get('frames').add(frame, options);
-     } 
+     }
   },
 
-  getRelations : function () {
-     return null;
+  getDuplicateFrames : function () {
+    return this.get('frames').chain().rest().select(function (frame){
+      return frame.has('roll');
+    }).uniq(false, function(frame){return frame.get('roll').id;}).compact().value();
   }
 
 });
