@@ -6,29 +6,19 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     models || (models = {});
     options || (options = {});
 
-    shelby.models.viewedVideos.get('viewed_videos').bind('change', this.viewedVideosUpdated, this);
-    shelby.models.viewedVideos.get('viewed_videos').bind('reset', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.bind('add:viewed_videos', this.viewedVideosUpdated, this);
   },
 
   _cleanup : function(){
-    shelby.models.viewedVideos.get('viewed_videos').unbind('change', this.viewedVideosUpdated, this);
-    shelby.models.viewedVideos.get('viewed_videos').unbind('reset', this.viewedVideosUpdated, this);
+    shelby.models.viewedVideos.unbind('add:viewed_videos', this.viewedVideosUpdated, this);
   },
 
-  viewedVideosUpdated : function(){
-
-    var sortedViewedVideosArray = shelby.models.viewedVideos.get('viewed_videos').pluck('id').sort();
-
+  viewedVideosUpdated : function(videoModel, viewedVideosCollection, options){
     for (var i = 0, length = this.models.length; i < length; i++) {
       var model = this.models[i];
       if (model.get('frames').length){
-        var video_id = model.getFirstFrame().get('video').id;
-
-        var viewedIndex = _.indexOf(sortedViewedVideosArray, video_id, true);
-        var viewed = (viewedIndex != -1);
-    
-        if (viewed != model.get('collapsed')) {
-          model.set({ collapsed : viewed });
+        if (model.getFirstFrame().get('video').id == videoModel.id) {
+          model.set({ collapsed : true });
         }
       }
     }
