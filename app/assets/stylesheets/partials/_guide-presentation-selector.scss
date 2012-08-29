@@ -4,7 +4,7 @@
 }
 
 .guide-presentation-list {
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin: 0;
   padding: 0;
 }
@@ -15,29 +15,45 @@
   float: left;
   list-style-type: none;
 
-  & > button {
-    @include inputfont;
-
+  & > .presentation-button {
     background: none;
     border: none;
-    color: $button-color;
+    color: $guide-presentation-button;
     display: inherit;
+    font-family: $font-family-display;
+    font-weight: 100;
     line-height: 2;
     padding: 3px 6px;
     width:100%;
 
+    &:active,
     &:hover {
-      text-decoration: underline;
+      color: #efefef;
+    }
+
+    &:hover,
+    &:link,
+    &:visited {
+      //in the event that this class is applied to an <a>, rather than a <button>
+      text-decoration: none;
     }
 
     &.guide-presentation-content-selected {
-      color: $shelby-blue;
+      color: $guide-presentation-button-active;
+
+      &:active,
+      &:link,
+      &:visited {
+        text-decoration: none;
+      }
     }
   }
 
   & > .guide-settings-anchor {
-    float: right;
-    width: auto;
+    background: none;
+    border: none;
+    color: $button-color;
+    display: inline;
   }
 }
 
@@ -46,9 +62,26 @@
   width: 70px;
 }
 
+.guide-now-playing {
+  display: none;
+  width: 100px;
+  
+  .context-overlay-wrapper {
+    opacity: 0.0;
+  }
+
+  &:hover{
+    background-color: black;
+    .context-overlay-wrapper {
+      opacity: 1.0;
+    }
+  }
+}
+
 .guide-settings {
   float: right;
   position: relative;
+  text-align: right;
   width: 100px;
 }
 
@@ -60,10 +93,11 @@
   padding: 0;
   position: absolute;
   right: 13px;
+  text-align: left;
   width: 200px;
   z-index:5;
 
-  button {
+  .guide-settings-button {
     text-align: left;
   }
 }
@@ -80,20 +114,17 @@
 }
 
 .guide-settings-anchor {
-    background: none;
-    border: none;
-    color: $button-color;
-
     &:after {
-    @include background(url($icon-settings) no-repeat center center transparent);
-    content: "\0020";
-    float: right;
-    height: 19px;
-    margin: {
-      right: 4px;
-      top: 4px;
-    }
-    width: 20px;
+      @include background(url($icon-settings) no-repeat center center transparent);
+
+      content: "\0020";
+      float: right;
+      height: 19px;
+      margin: {
+        right: 4px;
+        top: 4px;
+      }
+      width: 20px;
 
   }
 }

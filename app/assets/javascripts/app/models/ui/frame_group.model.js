@@ -37,8 +37,10 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
     return this.get('frames').at(0);
   },
 
-  getRelations : function () {
-     return null;
+  getDuplicateFrames : function () {
+    return this.get('frames').chain().rest().select(function (frame){
+      return frame.has('roll');
+    }).uniq(false, function(frame){return frame.get('roll').id;}).compact().value();
   }
 
 });

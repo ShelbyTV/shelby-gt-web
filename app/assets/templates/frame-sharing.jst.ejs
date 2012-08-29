@@ -1,26 +1,44 @@
-<% var creator = frame.get('creator') %>
+<% var user           = shelby.models.user %>
+<% var userNickname   = user.get('nickname') %>
+<% var userAvatar     = user.get('user_image_original') || user.get('user_image')%>
+<% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
+<% var message        = frame.get('conversation').get('messages').at(0) %>
 
-<div class="guide-overlay-header rolling-header">
+<div class="overlay_header guide-overlay-header sharing-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      Cancel
+    <button class="cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      <i class="cancel-icon">Cancel</i>
     </button>
-    <h2>Email to Friends</h2>
+    <h2>Share this video to friends</h2>
   </div>
-  
-  <%=
-    JST['wide-thumbnail-overlay']({
-      creatorName : creator.get('nickname'),
-      showThumbnail : true,
-      thumbnail : frameThumbnail,
-      title : frame.get('video').get('title')
-    })
-  %>
-
-<div class="frame-sharing">
 </div>
+<div class="overlay_body guide-overlay-body conversation-body">
+  <form class="form_module share-form clearfix">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle || '' %>
+    </h1>
 
+    <div class="xframe-body-wrapper clearfix">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frameThumbnail,
+          title : frameTitle
+        })
+      %>
 
-
+      <%=
+        JST['media-module']({
+            userAvatar   : message.get('user_image_url'),
+            userNickname : message.get('nickname'),
+            messageText  : message.get('text'),
+            timestamp    : frame.get('created_at'),
+            action       : 'sharing',
+            subline      : false
+        })
+      %>
+    </div><!-- eo xframe-body-wrapper -->
+    <div class="frame-sharing">
+    </div>
+  </form>
+</div><!-- eo over_body guide-overlay-body conversation-body -->

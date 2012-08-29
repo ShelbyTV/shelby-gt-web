@@ -449,7 +449,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guideOverlayManager = shelby.views.guideOverlayManager ||
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
-        new libs.shelbyGT.SpinnerView({el:'#guide', size:'large'});
+        new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
         new libs.shelbyGT.KeyboardControlsView();
   },

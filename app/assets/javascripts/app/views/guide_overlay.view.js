@@ -8,7 +8,7 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
     "oTransitionEnd"       : "_onSlideComplete"
   },
 
-  className : 'guide-overlay',
+  className : 'animate_module guide-overlay',
 
   reveal: function(){
     this.$el.addClass('showing');

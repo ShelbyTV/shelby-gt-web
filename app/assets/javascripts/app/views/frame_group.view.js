@@ -31,11 +31,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   },
 
-  className : 'frame',
-
   template : function(obj){
     try {
-      return JST['frame'](obj);
+      return JST['frame-revision'](obj);
     } catch(e){
       console.log(e.message, e.stack);
     }
@@ -66,7 +64,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
-      this.$('.js-queue-frame button').text(!removeVideo ? 'Queued' : 'Add to Queue');
+      this.$('.js-queue-frame i').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },
 
@@ -80,7 +78,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     var groupFirstFrame = model.getFirstFrame();
     groupFirstFrame[action]('change', this.render, this);
-    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
+    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);   
     model.get('frames')[action]('change', this.render, this);
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
@@ -94,8 +92,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var useFrameCreatorInfo = this.model.getFirstFrame().conversationUsesCreatorInfo(shelby.models.user);
-      this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
+      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFrames();
+      this.$el.html(this.template({
+        queuedVideosModel : shelby.models.queuedVideos,
+        frameGroup : this.model,
+        frame : this.model.get('frames').at(0),
+        options : this.options,
+        dupeFrames : dupeFrames
+      }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }

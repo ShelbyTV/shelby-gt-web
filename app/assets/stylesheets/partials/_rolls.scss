@@ -15,36 +15,31 @@
 	}
 }
 
-
 .roll-menu {
 	margin: 0;
 	padding: 11px 0 9px;
+	text-align: center;
 
 	li {
-		display: block;
-		float: left;
+		display: inline;
 		list-style-type: none;
 		margin: 0;		
 	}
 	.left {
-	  margin-left: 10px;
 	  width: 47px;
 	}
 	.middle {
-	  margin-left: 8px;
 	  width: 161px;
 	}
 	.right {
-	  margin-left: 8px;
 	  width: 85px;
 	}
 }
 
 .rolls-add {
-	@include x-button-primer($shelby-green);
+	@include xx-button-primer($shelby-green, dark);
 	
 	margin-top: 0;
-	width: 100%;
 }
 
 .rolls-invite {
@@ -54,17 +49,16 @@
 .rolls-share {
 	@extend .rolling-main-done;
 	margin-top: 0 !important;
-	width: 100%;
 }
 
 .rolls-leave {
-	@include x-button-primer($shelby-gray);
+	@include xx-button-primer;
 	margin-top: 0;
+	text-shadow: none;
 }
 
 .rolls-edit{
 	@extend .rolls-leave;
-	width: 100%;
 }
 
 .rolls-share-cancel {
@@ -73,14 +67,13 @@
 }
 
 .rolls-back {
-	@include x-button-primer($shelby-gray,large);
+	@include xx-button-primer;
 	padding-left: 0;
 	padding-right: 0;
-	width: 100%;
 }
 
 .roll-delete{
-	@include x-button-primer($shelby-red);
+	@include xx-button-primer($shelby-red, dark);
 
 	display: none;
 	position: absolute;
@@ -90,7 +83,7 @@
 
 /* ------ Roll Add Area */
 .add-video-area {
-	@include x-button-primer(#2c2f30);
+	@include xx-button-primer;
 
 	margin: 10px 10px 0px;
 	padding: 6px;
@@ -100,14 +93,14 @@
 		@include inputfont;
 		@include roundies(input);
 
-		border: none;
+		border: 1px solid $inset;
 		height: 25px;
 		padding: 0 4px;
 		width: 87%;
 	}
 
 	.add-video {
-		@include x-button-primer;
+		@include xx-button-primer;
 	
 		float: right;
 		height: 25px;
@@ -140,7 +133,6 @@
 
 .share-comment,
 .share-networks,
-.share-submit,
 .share-email-addresses {
 	@include x-fieldset-primer;
 }
@@ -151,6 +143,7 @@
 
 .share-networks,
 .share-submit {
+	text-align: right;
   border: none;
 }
 
@@ -193,12 +186,10 @@
 }
 
 .share-submit-button {
-	@include x-button-primer($shelby-blue);
+	@include xx-button-primer($shelby-blue, dark, wide);
 
-  float: right;
-	margin-top: 32px;
-	width: 33%;
-	
+	font-size: 1.2em;
+
 	.spinner {
 		left: auto;
 		margin-left: -4px;

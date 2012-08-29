@@ -1,33 +1,26 @@
 @import "base";
 
-$outset : adjust-lightness($outset,-10%);
+$outset : adjust-lightness($contextoverlay-outset,-10%);
+$inset  : adjust-lightness($contextoverlay-inset, -5);
 
 .context-overlay-wrapper {
-	@include transition-property(opacity);
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
-	
-//	left: $defaultMargin;
-//	padding-right: 360px;
-	padding-left: 360px;
 	position: absolute;
-	right: $defaultMargin;
-	top: $defaultMargin;
-	width: 20%;
 	z-index:3;	
 }
 
 .context-overlay-lining {
-	float: right;
 	font-size: 120%; //fixes the clipping of the icons in the buttons, makes line-height taller
 	width: 330px;
 	position: relative;
 
 	.video-card {
-		background-color: $guide-bg-color;
-		box-shadow: inset 0px 1px 0px 0px $outset;
-		margin: 10px;
+		background-color: $contextoverlay-bg-color;
+		box-shadow: none;
+		border-top-left-radius: 0;
+		
+		.frame-creator-avatar {
+		  border-radius: 0;
+	  }
 	}
 
 	.video-card-header,
@@ -39,16 +32,18 @@ $outset : adjust-lightness($outset,-10%);
 		border-bottom: none;
 	}
 
+	.video-card-footer {
+		border-top-color: $inset;
+		font-size: .8em;
+	}
+
 	.frame-controls {
 		button{
 			border-top-color: $outset;
 			border-left-color: $outset;
+			border-right-color: $inset;
 		}
 	}
-}
-
-.user-inactive .context-overlay-wrapper {
-  opacity: 0;
 }
 
 .context-overlay-header{

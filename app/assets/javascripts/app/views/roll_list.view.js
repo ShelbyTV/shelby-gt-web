@@ -1,6 +1,6 @@
 libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
-  className : 'rolls-list js-rolls-list',
+  className : 'list_module guide-list js-rolls-list',
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',

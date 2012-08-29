@@ -40,7 +40,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
     this._spinnerView = new libs.shelbyGT.SpinnerView({
       model : this._spinnerState,
       el : '.js-guide-explore',
-      size : 'explore'
+      size : 'large-light'
     });
     this.renderChild(this._spinnerView);
   },
