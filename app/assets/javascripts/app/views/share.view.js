@@ -34,7 +34,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log('aaa',this.model);
     this.$el.html(this.template({shareModel:this.model, components:this._components}));
     if (this._components.emailAddresses) {
       var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({

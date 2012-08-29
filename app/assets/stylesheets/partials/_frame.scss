@@ -1,7 +1,12 @@
 @import "base";
 
 .active-list-item {
-	background-color: rgba(200,200,200,.5);
+	background-color: $shelby-blue;
+//	background-color: rgba(0,0,255,.5);
+
+	.xframe-title {
+		color: white;
+	}
 }
 
 //---------------------------
@@ -101,7 +106,7 @@
 }
 
 .xframe-comment-link {
-	background-image: url($icon-videocard-comment-off);
+	background-image: url($icon-videocard-comment);
 	background-position: left center;
 	background-repeat: no-repeat;
 	background-size: 1.3em;
@@ -223,11 +228,17 @@
 //			//file doesn't exist yet
 //		}
 //	}
+	&.queued {
+		.command-icon {
+			background: none;
+			padding: 0;
+		}
+	}
 }
 
 .command-roll {
 	.command-icon {
-		background-image: url($icon-videocard-roll-off);
+		background-image: url($icon-videocard-roll);
 	}
 //	&:hover {
 //		.command-icon {
