@@ -61,7 +61,7 @@ fieldset.rolling-fields {
 
 /* sliders */
 fieldset.share-option {
-	margin-top: 5px;
+	margin-top: 8px;
 	
 	.label {
 		font-weight: 100;
@@ -109,7 +109,7 @@ fieldset.share-option {
   & ~ .share-button-twitter {
     background-color: $twitter-blue;
     background-image: url($icon-share-twitter-on);
-    border-color: adjust-lightness($twitter-blue, -20%);
+    border-color: adjust-lightness($twitter-blue, -20%) !important;
   }
 }
 
@@ -117,7 +117,7 @@ fieldset.share-option {
   & ~ .share-button-facebook {
     background-color: $facebook-blue;
     background-image: url($icon-share-facebook-on);
-    border-color: adjust-lightness($facebook-blue, -10%);
+    border-color: adjust-lightness($facebook-blue, -15%) !important;
   }
 }
 
