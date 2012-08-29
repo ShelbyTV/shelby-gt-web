@@ -17,32 +17,26 @@
   #header {
     a{
       margin-top: 7px;
-      margin-right: 8px;      
+      margin-right: 8px;
+      width: 85px;
     }
     h1 {
       line-height: 40px;
-      width: 100%;
     }
   }
+
   .mobile-logo {
     @include background(
   		url('../images/genius/landing_logo.svg') no-repeat left center transparent
   	);
   	background-size:135px;
     height: 35px;
-    margin-left: 5px;
+    width: 135px;
+    margin: 11px auto;
   }
   
   #search-history {
     margin: 10px auto;
-  }
-  
-  #share-area {
-    height: 20px;
-    width: 125px;
-    margin: 0px auto 0px auto;
-    position: relative;
-    top: -10px;
   }
   
   #mobile-roll-title {
@@ -54,12 +48,12 @@
     position:fixed;
     top: 83px;
     width: 100%;
-    height: 45%;
+    height: 50%;
     margin: 0 auto;
     z-index:100;
-    -moz-box-shadow: 0px 6px 22px -1px black;
-    -webkit-box-shadow: 0px 6px 22px -1px black;
-    box-shadow: 0px 6px 22px -1px black;
+    //-moz-box-shadow: 0px 6px 25px -6px black;
+    //-webkit-box-shadow: 0px 6px 25px -6px black;
+    //box-shadow: 0px 6px 25px -6px black;
     iframe{
       width: 100%;
       height: 100%;
@@ -98,10 +92,43 @@
   }
   
   .content.video-playing {
-    #mobile-frames { margin-top: 45%; }
+    #mobile-frames { margin-top: 50%; }
   } 
   
-  
+  #mobile-frame-context {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    top: 59px;
+    margin-top: 50%;
+    overflow-y: hidden;
+
+    #shared-by {
+      text-align: center;
+      background-color: lightblue;
+      font-weight: bold;
+    }
+    
+    #user-and-comment{
+      padding-top: 3px;
+      height: 72px;
+      background-color: lightblue;
+      #avatar {
+        float: left;
+        width: 65px;
+        margin-left: 3px;
+      }
+      #comment {
+        position: relative;
+        left: 5px;
+      }      
+    }
+    .ui-btn {
+      width: 50%;
+      margin: 39px auto;
+    }    
+  }
 }
 
 .landscape {

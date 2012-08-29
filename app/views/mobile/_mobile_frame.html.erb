@@ -6,8 +6,8 @@
 
 <div class="video-script">
 	<% if frame['video']['provider_name'] == 'youtube' %>
-		<%= render :partial => "youtube_embed", :locals => { :video => frame['video'] } %>
+		<%= render :partial => "mobile/youtube_embed", :locals => { :video => frame['video'], :mobile_frame => false } %>
 	<% elsif frame['video']['provider_name'] == 'vimeo' %>
-		<%= render :partial => "vimeo_embed", :locals => { :video => frame['video']} %>					  
+		<%= render :partial => "mobile/vimeo_embed", :locals => { :video => frame['video'], :mobile_frame => false } %>					  
 	<% end %>
 </div>
