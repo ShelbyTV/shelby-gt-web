@@ -19,7 +19,6 @@ fieldset.rolling-fields {
 	}
 
 	.roll-selection-item-title {
-		/* see _roll-selection-items.scss for base styling of this class */
 		padding-top: 0;
 
 		.path {
@@ -27,7 +26,8 @@ fieldset.rolling-fields {
 			display: inline;
 			max-width: 125px;
 		}
-		input#new-roll-name {
+		
+    #new-roll-name {
 			display:inline-block;
 			width: auto;
 		}
@@ -52,14 +52,16 @@ fieldset.rolling-fields {
 }
 
 .roll-options-submit {
-  @include x-button-primer($shelby-blue);
+  @include xx-button-primer($shelby-blue, dark, wide);
 
-  width: 100%;
+  margin: 18px 0;
+  position: absolute;
+  right: -($media-module-margin);
 }
 
 /* sliders */
 fieldset.share-option {
-	margin-top: 5px;
+	margin-top: 18px;
 	
 	.label {
 		font-weight: 100;
@@ -71,6 +73,58 @@ fieldset.share-option {
 	float: right;
 	margin-right: 45%;
 }
+
+
+
+
+
+.share-option {
+  position: absolute;
+}
+
+.share-option-twitter,
+.share-option-facebook {
+  margin-right: 5px;
+}
+
+.share-button-twitter,
+.share-button-facebook {
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid $inset !important;
+  border-radius: $radius;
+}
+
+.share-button-twitter {
+  background-image: url($icon-share-twitter-off);
+  background-size: contain;
+}
+
+.share-button-facebook {
+  background-image: url($icon-share-facebook-off);
+  background-size: contain;
+}
+
+.share-option-twitter:checked {
+  & ~ .share-button-twitter {
+    background-color: $twitter-blue;
+    background-image: url($icon-share-twitter-on);
+    border-color: adjust-lightness($twitter-blue, -20%) !important;
+  }
+}
+
+.share-option-facebook:checked {
+  & ~ .share-button-facebook {
+    background-color: $facebook-blue;
+    background-image: url($icon-share-facebook-on);
+    border-color: adjust-lightness($facebook-blue, -15%) !important;
+  }
+}
+
+
+
+
+
 
 /* generic slider style */
 .share-status-label {
@@ -94,9 +148,9 @@ fieldset.share-option {
 
   display: block;
   height: 1px;
+  left: 0;
   margin: 3px;
   position: absolute;
-  left: 0;
   top: 0;
   width: 1px;
 
@@ -114,8 +168,8 @@ fieldset.share-option {
   color: transparent;
   display: block;
   font: 0/0 a;
-  line-height: 1.231;
   height: inherit;
+  line-height: 1.231;
   overflow: hidden;
   padding-left: 46px;
   padding-top: 2px;

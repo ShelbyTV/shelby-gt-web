@@ -12,4 +12,9 @@
 
 <script>
 	$('#mobile-roll-title').text("The <%= @roll['title'].titlecase %> Roll");
+	$(document).bind('pageinit', function(){
+		$(window).bind('orientationchange', function(event){
+			$('body').toggleClass('landscape');
+		});		
+	});
 </script>

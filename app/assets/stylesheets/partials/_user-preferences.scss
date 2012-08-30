@@ -52,13 +52,14 @@
 }
 
 .you-profile,
+.you-avatar,
 .you-notifications{
 	input{
 		float:left;
 		line-height:1.4;
 	}
 
-	label{
+	label, .label{
 		float:left;
 		font-weight:500;
 		font-size:14px;
@@ -90,6 +91,13 @@
 		float: left;
 		margin: 6px;
 	}
+}
+
+.you-avatar {
+  input[type=file] {
+    border: none;
+    padding: 0;
+  }
 }
 
 #show-change-password {

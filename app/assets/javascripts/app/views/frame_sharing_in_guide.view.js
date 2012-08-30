@@ -1,7 +1,7 @@
 libs.shelbyGT.FrameSharingInGuideView = libs.shelbyGT.GuideOverlayView.extend({
 
   events : _.extend({}, libs.shelbyGT.GuideOverlayView.prototype.events, {
-    "click .back:not(.js-busy)"  : "_setGuideOverlayStateNone"
+    "click .js-cancel:not(.js-busy)"  : "_setGuideOverlayStateNone"
   }),
 
   className : libs.shelbyGT.GuideOverlayView.prototype.className + ' frame-sharing',

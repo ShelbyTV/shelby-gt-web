@@ -12,7 +12,7 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.renderChild(new libs.shelbyGT.GuideHeaderView({model:shelby.models.user}));
+    this.renderChild(new libs.shelbyGT.AppHeaderView({model:shelby.models.user}));
     this.renderChild(new libs.shelbyGT.MainLayoutView({model:shelby.models.guide}));
     this.renderChild(new libs.shelbyGT.ExploreLayoutView());
     this.renderChild(new libs.shelbyGT.OnboardingLayoutView());

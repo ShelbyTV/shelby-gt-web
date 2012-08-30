@@ -15,7 +15,7 @@ before_filter :prepare_for_mobile
     # don't care about the URL title for now... maybe in the future
     title = params.delete(:title)
 
-    video_url = "#{video_api_base}/find?provider_name=#{@provider_name}&provider_id=#{@provider_id}"
+    video_url = "#{video_api_base}/find_or_create?provider_name=#{@provider_name}&provider_id=#{@provider_id}"
 
     begin
       video_response = Net::HTTP.get_response(URI.parse(video_url))

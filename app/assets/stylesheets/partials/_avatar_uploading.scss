@@ -1,0 +1,27 @@
+.dynamic-avatar-lining {
+  float: left;
+  position: relative;
+  
+  .progress-overlay {
+    background: black;
+    height: 100%;
+    width: 0;
+    opacity: 0.75;
+    position: absolute;
+  }
+  
+  .spinner-overlay {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    
+    .spinner {
+      left: 0;
+      margin-top: 0;
+      margin-left: 292px;
+      top: 0;
+    }
+  }
+}

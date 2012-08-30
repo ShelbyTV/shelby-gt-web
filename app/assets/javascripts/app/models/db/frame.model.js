@@ -64,7 +64,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     });
     shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
   },
-  
+
   reRoll : function(roll, text, onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id='+this.id+'&text='+text;

@@ -1,6 +1,7 @@
 defaults: &defaults
   url: "http://shelby.tv"
   mobile_url: "http://m.shelby.tv"
+  avatar_url_root: "http://s3.amazonaws.com/shelby-gt-user-avatars"
   missing_thumb_url: "http://shelby.tv/images/assets/missing_thumb.png"
   meta_description: "Shelby.tv - the best way to watch video online, pulling videos from your Facebook, Twitter, and Tumblr friends into free web and iOS apps for you to enjoy."
   title: "shelby.tv | The best online video from Facebook, YouTube, and more! (And yeah, it's free.)"
@@ -9,7 +10,10 @@ development:
   <<: *defaults
   url: "http://localhost.shelby.tv:3000"
   mobile_url: "http://m.localhost.shelby.tv:3000"
+  #enable this if you're using a local API
+  #avatar_url_root: "http://s3.amazonaws.com/dev-shelby-gt-user-avatars"
   #mobile_url: "http://192.168.1.6:3000/m"
+
 test:
   <<: *defaults
 

@@ -1,0 +1,40 @@
+<div class="media_module clearfix">
+  <a href="#" onclick="return false;" class="media_image">
+    <span class="image_module xuser-avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
+      <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= userNickname %>" alt="<%= userNickname %>">
+    </span>
+  </a>
+  <div class="media_body clearfix">
+    <% if (action != 'rolling') { %>
+      <!-- display natural comment -->
+      <p class="xuser-data">
+        shared by <strong><%= userNickname %></strong> on twitter
+      </p>
+      <p>
+        <%= messageText %>
+      </p>
+    <% } else { %>
+      <!-- display input for rolling -->
+      <textarea id="js-rolling-message" class="form_textarea js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"><%= messageText %></textarea>
+    <% } %>    
+
+    <% if (subline) { %>
+      <!-- show comments in stream -->
+      <div class="xframe-subline">
+        <a href="#" onclick="return false;" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+          Comments (<%= messages.length %>)
+        </a>
+      </div>
+    <% } %>
+
+    <% if (action == 'commenting') { %>  
+      <button id="roll-it" class="new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= userNickname %>" tabindex="0" onclick="return false;">
+        Comment
+      </button>
+    <% } else if (action == 'rolling') { %>
+      <button id="js-roll-it" class="roll-options-submit" type="submit" tabindex="0" onclick="return false;">
+        Roll It!
+      </button>
+    <% } %>
+  </div>
+</div><!-- eo .media_module-->

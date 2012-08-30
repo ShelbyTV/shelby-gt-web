@@ -1,46 +1,39 @@
-<% var creator = frame.get('creator') %>
+<% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-
-<div class="guide-overlay-header rolling-header">
+<% var userNickname   = user.get('nickname') || 'your personal '%>
+<div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
-    <button class="cancel js-track-event" data-ga_category="Rolling" data-ga_action="Click cancel" data-ga_label='<%= user.get('nickname') %>'>
-      Cancel
+    <button class="cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      <i class="cancel-icon">Cancel</i>
     </button>
-		<button class="back js-track-event" data-ga_category="Rolling" data-ga_action="step_2_back" data-ga_label='<%= user.get('nickname') %>'
-			style="display:none;">
-      Back
-    </button>
-    <h2 class="title">Roll Video</h2>
+    <h2>Destination: <span class="em"><%= userNickname + '.' %>shelby.tv</span></h2>
   </div>
-  
-  <%=
-    JST['wide-thumbnail-overlay']({
-      creatorName : creator.get('nickname'),
-      showThumbnail : true,
-      thumbnail : frameThumbnail,
-      title : frame.get('video').get('title')
-    })
-  %>
-
-<div class="guide-overlay-main rolling-main">
-	
-	<div class="rolling-form">
-		<!-- Form content from RollingFormView -->
-	</div>
-	
-	<div class="select-roll-type">  
-		<button class="create-roll js-track-event" data-ga_category="Rolling" data-ga_action="create_new_roll" data-ga_label='<%= user.get('nickname') %>'>
-			Create
-		</button>
-		
-		<h3 class="rolling-main-header">Rolls</h3>
-  
-	  <div class="js-existing-rolls-list existing-rolls-list">
-	    <!-- Rolls UL added + filled out by RollingSelctionListView -->
-	  </div>
-	</div>
 </div>
+
+<div class="overlay_body guide-overlay-body conversation-body">
+  <form class="form_module">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle %> 
+    </h1>
+    
+    <div class="xframe-body-wrapper clearfix">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frameThumbnail,
+          title : frameTitle
+        })
+      %>
+      <div class="guide-overlay-main rolling-main">
+        <!-- Form content from RollingFormView -->
+      </div><!-- eo guide-overlay-main rolling-main -->
+    </div><!-- eo xframe-body-wrapper -->
+     <!--<div class="rolling-submit">
+      <button id="js-roll-it" class="roll-options-submit" type="submit" onclick="return false;" tabindex="0">
+        Roll It!
+      </button>
+    </div>-->
+   </form>
+</div><!-- eo overlay_body guide-overlay-body conversation-body -->
 
 
 

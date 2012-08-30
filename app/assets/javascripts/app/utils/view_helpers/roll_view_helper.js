@@ -1,62 +1,73 @@
 libs.shelbyGT.viewHelpers.roll = {
-	titleWithPath : function(roll){
-		return this.pathForDisplay(roll)+"/"+this.titleWithoutPath(roll);
-	},
-	
-	pathForDisplay : function(roll){
-		return roll.get('creator_nickname');
-	},
-	
-	titleWithoutPath : function(roll){
-		if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-      return "Liked";
+  titleWithPath : function(roll){
+    return this.pathForDisplay(roll)+"/"+this.titleWithoutPath(roll);
+  },
+
+  pathForDisplay : function(roll){
+    return roll.get('creator_nickname');
+  },
+
+  titleWithoutPath : function(roll, options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      creatorNickname : ''
+    }).value();
+
+    var rollName;
+
+    if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
+      rollName = "Likes";
     }
     else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_watch_later){
-      return "Queue";
+      rollName = "Queue";
     }
-		else if(
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
-			return "Personal Roll";
-    } 
-		else {
+    else if(
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
+      rollName = "Personal Roll";
+    }
+    else {
       return roll.get('title');
     }
-		return '';
-	},
-	
-	urlForRoll : function(roll){
-		if(
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
-			return roll.get('subdomain') + '.shelby.tv';
+    if (options.creatorNickname && options.creatorNickname != shelby.models.user.get('nickname')) {
+      return options.creatorNickname + "'s " + rollName;
     } else {
-			return null;
-		}
-	},
-	
+      return rollName;
+    }
+  },
+
+  urlForRoll : function(roll){
+    if(
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
+      return roll.get('subdomain') + '.shelby.tv';
+    } else {
+      return null;
+    }
+  },
+
   titleForDisplay : function(roll){
     if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-      return "Liked";
+      return "Likes";
     }
     else if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_watch_later){
       return "Queue";
     }
     else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')){
-      return roll.get('subdomain') + '.shelby.tv';
-		} 
-		else if(
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-		  roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded){
-			return "Personal Roll";
+      return roll.get('subdomain');
+    }
+    else if(
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded){
+      return "Personal Roll";
     } else {
       return roll.get('title');
     }
   },
-  
+
   isFaux : function(roll){
     return roll && 
     (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||

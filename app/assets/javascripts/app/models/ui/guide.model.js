@@ -10,8 +10,7 @@ libs.shelbyGT.GuideModel = Backbone.Model.extend({
     playingFramesCollection     : null,
     playingState                : libs.shelbyGT.PlayingState.none,
     rollListContent             : null,
-    sinceId                     : null,
-    skippingVideo               : false
+    sinceId                     : null
   }
 
 });
