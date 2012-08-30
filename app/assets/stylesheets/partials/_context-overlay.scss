@@ -65,10 +65,8 @@ $inset  : adjust-lightness($contextoverlay-inset, -5);
 	}
 
 	.xuser-message {
-		&:hover {
-			overflow-y:auto;
-			max-height: 150px;
-		}
+		overflow-y:auto;
+		max-height: 150px;
 	}
 
 }//eo .context-overlay-lining
