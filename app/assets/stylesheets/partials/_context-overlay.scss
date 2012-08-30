@@ -10,6 +10,7 @@ $inset  : adjust-lightness($contextoverlay-inset, -5);
 
 .context-overlay-lining {
 	font-size: .925em;
+	line-height: 1.5;
 	position: relative;
 	width: $guide-width;
 	top: 10px;
@@ -62,4 +63,12 @@ $inset  : adjust-lightness($contextoverlay-inset, -5);
 		margin: 0;
 		width: auto;
 	}
-}
+
+	.xuser-message {
+		&:hover {
+			overflow-y:scroll;
+			max-height: 105px;
+		}
+	}
+
+}//eo .context-overlay-lining

@@ -112,7 +112,7 @@
           </p>
 
           <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-            <p>
+            <p class="animate_module xuser-message">
               <%= messages.models[0].get('text') %>
             </p>
           <% } %>
