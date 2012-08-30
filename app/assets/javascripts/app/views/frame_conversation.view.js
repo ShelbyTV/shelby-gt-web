@@ -11,7 +11,8 @@
     events : _.extend({}, GuideOverlayView.prototype.events, {
       "click .js-cancel:not(.js-busy)" : "_setGuideOverlayStateNone",
       "click .js-new-comment-submit"   : "_addMessage",
-      "click .js-message-reply"        : "_reply"
+      "click .js-message-reply"        : "_reply",
+      "click .js-load-video"           : "_loadVideo"
     }),
 
     className : GuideOverlayView.prototype.className + ' conversation-overlay',
@@ -102,6 +103,10 @@
     
     _onAddMessageInputFocus : function(event){
       this.$('.js-add-message-input').removeClass('error');
+    },
+    
+    _loadVideo : function(){
+      shelby.models.guide.set('activeFrameModel', this.model);
     }
     
   });
