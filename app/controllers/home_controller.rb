@@ -63,7 +63,16 @@ class HomeController < ApplicationController
       request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android)/]
     end
     
+    def is_iphone?(request)
+      request.user_agent=~/iPhone/) != nil
+    end
+    
+    def is_android?(request)
+      request.user_agent=~/Andoid/) != nil
+    end
+    
     def render_mobile_view(params)
+      
       if frame_id = /frame\/(\w*)/.match(params[:path]) and frame_id[1] and @frame = Shelby::API.get_frame_info(frame_id[1], true)
         render 'mobile/frame', :layout => "mobile"
       else
