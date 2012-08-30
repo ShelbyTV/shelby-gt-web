@@ -47,14 +47,17 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         if(data.result.status == 200){
           //avatar_updated_at does come back with result, but this will work just as well
           self.model.set({avatar_updated_at:Date.now()});
+          shelby.track( 'avatar_upload_success', { userName: shelby.models.user.get('nickname') });
         } else {
           shelby.alert("Sorry, that upload failed.");
+          shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
       error: function(){
         self._hideSpinner();
         self._clearProgress();
         shelby.alert("Sorry, that upload failed.");
+        shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
         self._showSpinner();
