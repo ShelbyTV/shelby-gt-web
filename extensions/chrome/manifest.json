@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-			"exclude_matches": ["*://*shelby.tv*", "*://*pandora.com*"]
+			"exclude_matches": ["*://*.shelby.tv/*", "*://*.pandora.com/*"],
       "js": ["bootstrap.js"]
     }
   ]
