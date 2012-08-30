@@ -129,6 +129,15 @@
 	color: adjust-lightness($text, 20%);
 }
 
+.xuser-message {
+	max-height: 105px;
+	overflow-y: hidden;
+
+	&:hover {
+		max-height: 10000px;
+	}
+}
+
 .xuser-data-timestamp {
 	float: right;
 	opacity: .5;
