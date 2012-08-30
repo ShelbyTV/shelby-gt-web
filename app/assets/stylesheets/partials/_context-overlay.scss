@@ -66,8 +66,7 @@ $inset  : adjust-lightness($contextoverlay-inset, -5);
 
 	.xuser-message {
 		&:hover {
-			overflow-y:scroll;
-			max-height: 105px;
+			overflow-y:auto;
 		}
 	}
 

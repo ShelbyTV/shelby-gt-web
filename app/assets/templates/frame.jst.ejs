@@ -112,8 +112,14 @@
           </p>
 
           <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-            <p class="animate_module xuser-message">
-              <%= messages.models[0].get('text') %>
+            <p class="xuser-message">
+              <% var comment = messages.models[0].get('text') %>
+              <% if (comment.length > 256) { %>              
+                <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
+                <a class="js-toggle-comment" href="#">more…</a>
+              <% } else { %>
+                <%= comment %>
+              <% } %>
             </p>
           <% } %>
 

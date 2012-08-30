@@ -130,12 +130,10 @@
 }
 
 .xuser-message {
-	max-height: 105px;
-	overflow-y: hidden;
+}
 
-	&:hover {
-		max-height: 10000px;
-	}
+.xuser-message-remainder {
+	display: none;
 }
 
 .xuser-data-timestamp {
