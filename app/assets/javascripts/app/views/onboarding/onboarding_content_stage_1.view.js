@@ -49,13 +49,47 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     alert('go to the next step');
     //shelby.router.navigate('onboarding/2');
   },
-  
+
+  _onSaveError : function(model, even, response){
+    $('.js-onboarding-username-input-error').text('Sorry, that username is already taken').show();
+  },
+
+  _getInvalidFields : function(){
+    var invalidFields = [];
+    if (!this.model.get('nickname') || !this.model.get('nickname').length){
+      invalidFields.push('nickname');
+    }
+    if (!this.model.get('password') || !this.model.get('password').length){
+      invalidFields.push('password');
+    }
+    if (!this.model.get('primary_email') || !this.model.get('primary_email').length || this.model.get('primary_email').indexOf('@')===-1){
+      invalidFields.push('primary_email');
+    }
+    return invalidFields;
+  },
+
+  _displayErrors : function(fields){
+    if (_.include(fields, 'nickname')){
+      $('.js-onboarding-username-input-error').text('Please enter a nickname.').show();
+    }
+    if (_.include(fields, 'primary_email')){
+      $('.js-onboarding-email-input-error').text('Please enter a valid email.').show();
+    }
+    if (_.include(fields, 'password')){
+      $('.js-onboarding-pwd-input-error').text('Please enter a password.').show();
+    }
+  },
 
   _onNextStepClick : function(){
+    var invalidFields = this._getInvalidFields();
+    if (invalidFields.length){
+      return this._displayErrors(invalidFields);
+    }
     this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
     shelby.models.user.save(this.model.toJSON(), {
-      success : self._onSaveSuccess
+      success : self._onSaveSuccess,
+      error : self._onSaveError
     });
   }
   

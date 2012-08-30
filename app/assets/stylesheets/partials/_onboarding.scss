@@ -21,6 +21,11 @@
   @include x-button-primer($shelby-gray);
 }
 
+.onboarding-error{
+  display:none;
+  color:red;
+}
+
 /* STAGE 1 */
 
 .onboarding-form-1{
