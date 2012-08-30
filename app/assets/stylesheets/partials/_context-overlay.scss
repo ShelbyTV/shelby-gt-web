@@ -9,51 +9,57 @@ $inset  : adjust-lightness($contextoverlay-inset, -5);
 }
 
 .context-overlay-lining {
-	font-size: 120%; //fixes the clipping of the icons in the buttons, makes line-height taller
-	width: 330px;
+	font-size: .925em;
 	position: relative;
+	width: $guide-width;
+	top: 10px;
 
-	.video-card {
-		background-color: $contextoverlay-bg-color;
+	.xframe {
+		background-color: $base;
+		overflow: hidden; //hide that body-wrapper box-shadow!
+		padding: 0;
+	}
+
+	.xframe-title {
+		padding-left: 5px;
+		padding-top: 3px;
+	}
+
+	.xframe-menu {
+		bottom: 29px;
+		display: block;
+		top: auto;
+
+		.right {
+			float: left;
+			text-align: left;
+		}
+	}
+
+	.xframe-option,
+	.xframe-command {
+		//let's "unstyle" this shit to look like a text link.
+		border: none !important;
 		box-shadow: none;
-		border-top-left-radius: 0;
-		
-		.frame-creator-avatar {
-		  border-radius: 0;
-	  }
-	}
-
-	.video-card-header,
-	.video-card-footer {
 		background: transparent;
-	}
+		color: #666;
+		font-family: $font-family;
+		margin: 0;
+		width: auto;
 
-	.video-card-header {
-		border-bottom: none;
-	}
-
-	.video-card-footer {
-		border-top-color: $inset;
-		font-size: .8em;
-	}
-
-	.frame-controls {
-		button{
-			border-top-color: $outset;
-			border-left-color: $outset;
-			border-right-color: $inset;
-		}
-	}
-}
-
-.context-overlay-header{
-		&:active,
-		&:link,
-		&:visited {
-			text-decoration: none;
-		}
-		
 		&:hover {
 			text-decoration: underline;
 		}
+	}
+
+	.command-more {
+		display: none;
+		margin: 0;
+	}
+
+	.xframe-sublist {
+		display: block;
+		margin: 0;
+		width: auto;
+	}
 }
