@@ -1,6 +1,6 @@
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 <% var creator = frame.get('creator') %>
-<% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
+<% var creatorThumbnail = creator ? libs.shelbyGT.viewHelpers.user.avatarUrl(creator) : undefined %>
 <% var creatorNickname = creator.get('nickname') || '' %>
 <% var frameTitle = frame.get('video').get('title') || '' %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>

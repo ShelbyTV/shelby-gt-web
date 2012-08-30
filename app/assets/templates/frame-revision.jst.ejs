@@ -11,7 +11,7 @@
 
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator.get('nickname') %>
-<% var creatorAvatar = creator.get('user_image') %>
+<% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 
 

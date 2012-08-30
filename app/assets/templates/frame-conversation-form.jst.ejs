@@ -1,4 +1,4 @@
-<% var userAvatar = user.get('user_image_original') || user.get('user_image') %>
+<% var userAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 <% var userNickname = user.get('nickname') || "" %>
 
 <div class="conversation-wrapper">

@@ -10,7 +10,7 @@
 
 <%=
 	JST['media-module']({
-		userAvatar   : user.get('user_image_original') || user.get('user_image'),
+		userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
 		userNickname : user.get('nickname') || '',
 		messageText  : messageText,
 		action       : 'rolling',

@@ -14,7 +14,7 @@
       realname : (creator ? creator.get('name') : ""),
       nickname : (creator ? creator.get('nickname') : ""),
       user_id : (creator? creator.id : ""),
-      user_image_url : (creator ? (creator.get('user_image') || creator.get('user_image_original')) : "")
+      user_image_url : libs.shelbyGT.viewHelpers.user.avatarUrl(creator)
     };
   }
 %>

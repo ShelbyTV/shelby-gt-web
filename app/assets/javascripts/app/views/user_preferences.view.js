@@ -21,6 +21,18 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({user:this.model}));
+    
+    this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
+      el: this.$('#js-dynamic-user-avatar')[0]
+    });
+    this.renderChild(this._userAvatar);
+    
+    this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
+      el: this.$('#js-user-avatar-uploader')[0],
+      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0],
+      progressEl: this.$('.dynamic-avatar .progress-overlay')[0]
+    });
+    this.renderChild(this._userAvatarUploader);
   },
 
   _showChangePassword: function(e){
