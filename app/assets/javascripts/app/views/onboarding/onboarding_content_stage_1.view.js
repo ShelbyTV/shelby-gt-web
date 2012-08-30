@@ -12,7 +12,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     "keyup #js-onboarding-username-input" : "_onUsernameInputKeyup",
     "keyup #js-onboarding-pwd-input" : "_onPwdInputKeyup",
     "keyup #js-onboarding-email-input" : "_onEmailInputKeyup",
-    "click .onboarding-next-step" : "_onNextStepClick"
+    "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
   initialize : function(){
@@ -44,11 +44,15 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onSaveSuccess : function(){
-    shelby.router.navigate('onboarding/2');
+    this.$('.js-onboarding-next-step').text('Get Started');
+    // TODO: this doesn't work
+    alert('go to the next step');
+    //shelby.router.navigate('onboarding/2');
   },
   
 
   _onNextStepClick : function(){
+    this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
     shelby.models.user.save(this.model.toJSON(), {
       success : self._onSaveSuccess
