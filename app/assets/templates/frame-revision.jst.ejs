@@ -1,5 +1,5 @@
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
-<% var comment; if(messages.models.length > 0){ comment = messages.models[0].get('text') } %>
+<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
