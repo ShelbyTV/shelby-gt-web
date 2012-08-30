@@ -10,67 +10,79 @@ $(document).ready(function(){
 			_gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
 			_kmq.push(['record', $(e.currentTarget).data("ga_action")]);
 		}
-		catch(e){};
+		catch(e){}
 	});
 });
 
 _(shelby).extend({
   track : function(action, options){
-    var _category, _action;
+    var _gaCategory, _gaAction;
     
     try {
       switch (action){
         case 'commented':
-          _action = 'commented'; _category = 'Frame';
+          _gaAction = 'commented'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.id}]);
           break;
         case 'shared_roll':
-          _action = 'shared'; _category = 'Roll'; 
+          _gaAction = 'shared'; _gaCategory = 'Roll'; 
           _kmq.push(['record', 'shared', {'outbound destination': options.destination, 'roll': options.id }]);
           break;
         case 'shared_frame':
-          _action = 'shared'; _category = 'Frame';
+          _gaAction = 'shared'; _gaCategory = 'Frame';
           _kmq.push(['record', 'shared', {'outbound destination': options.destination, 'frame': options.id }]);
           break;
         case 'heart_video':
-          _action = 'hearted'; _category = 'Frame';
+          _gaAction = 'hearted'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.id}]);
           break;
         case 'left_roll':
-          _action = 'left'; _category = 'Roll'; 
+          _gaAction = 'left'; _gaCategory = 'Roll'; 
           _kmq.push(['record', action, {'roll': options.id}]);
           break;
         case 'joined_roll':
-          _action = 'joined'; _category = 'Roll';
+          _gaAction = 'joined'; _gaCategory = 'Roll';
           _kmq.push(['record', action, {'roll': options.id}]);
           break;
         case 'add_to_roll':
-          _action = 'rolled'; _category = 'Frame';
+          _gaAction = 'rolled'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
           break;
         case 'add_to_queue':
-          _action = 'queued'; _category = 'Frame';
+          _gaAction = 'queued'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);          
           break;
         case 'watched':
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
-          _action = 'watched'; _category = 'Frame'; _label = options.pctWatched;
+          _gaAction = 'watched'; _gaCategory = 'Frame'; _label = options.pctWatched;
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
           // extra watch event tracking to capture frame and roll popularity
           _gaq.push(['_trackEvent', "Watched", options.rollId, options.frameId]);
+          break;
         case 'watched in full':
-          _action = 'watched in full'; _category = 'Frame'; _label = 100;
+          _gaAction = 'watched in full'; _gaCategory = 'Frame'; _label = 100;
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
+          break;
         case 'identify':
           _kmq.push(['identify', options.nickname]);
           _kmq.push(['record', 'Visit App', {nickname: options.nickname}]);
           break;
+        case 'avatar_upload_success':
+          _gaCategory = 'Avatar';
+          _gaAction = "Upload success";
+          _kmq.push(['record', action, {nickname: options.userName}]);
+          break;
+        case 'avatar_upload_fial':
+          _gaCategory = 'Avatar';
+          _gaAction = "Upload fail";
+          _kmq.push(['record', action, {nickname: options.userName}]);
+          break;
         default:
-          _action = 'unknown';
-          _category = 'unknown';
-      };
-      _gaq.push(['_trackEvent', _category, _action, options.userName]);
-    } catch(e){};
+          _gaAction = 'unknown';
+          _gaCategory = 'unknown';
+      }
+      _gaq.push(['_trackEvent', _gaCategory, _gaAction, options.userName]);
+    } catch(e){}
     
   }
 });
