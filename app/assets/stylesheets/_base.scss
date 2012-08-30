@@ -66,6 +66,7 @@ $icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
 $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
 //--- ANIMATION VALUES
+//    should only be used in the animate mixin / module
 $animate-property: 'all' !default;
 $animate-duration: .5s !default;
 $animate-timing: ease-in-out !default;
@@ -102,19 +103,19 @@ $outline : #222;
 $outset  : adjust-lightness($base, 7%);
 $inset   : adjust-lightness($base, -10%);
 
-$contextoverlay-inset : #333; 
-$contextoverlay-outset : #555; 
-
 //text-level colors
 $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text + #333;
 
+//--- NICETIES
+$shadow : 0 0 2px 0 rgba(0,0,0,.5);
+
 //base
 $base-bg-color : #000;
 
 //guide
-$guide-bg-color 				            : $base;
+$guide-bg-color                     : $base;
 $guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
 $guide-presentation-button-active   : adjust-lightness($guide-presentation-button, 28%);
@@ -141,7 +142,6 @@ $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
-$shadow : 0 0 2px 0 rgba(0,0,0,.5);
 
 $videocard-footer-bg-color          : #fff;
 $videocard-shadow                   : $shadow;

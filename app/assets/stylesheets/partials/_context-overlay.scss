@@ -1,12 +1,16 @@
 @import "base";
 
-$outset : adjust-lightness($contextoverlay-outset,-10%);
-$inset  : adjust-lightness($contextoverlay-inset, -5);
-
 .context-overlay-wrapper {
 	position: absolute;
-	z-index:3;	
+	z-index:3;
+	right: -5px;
 }
+
+//---------------------------
+//	nested styles in context-overlay-lining 
+//  override default styling of the frame (jst)
+//	(the context-overlay is a subclass of the frame view)
+//---------------------------
 
 .context-overlay-lining {
 	font-size: .925em;

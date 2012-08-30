@@ -26,7 +26,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   el : '#js-header',
 
   _menus : [
-    {anchor: '.js-settings', subnavId: '#js-settings-subnav'}
+    // {anchor: '.js-settings', subnavId: '#js-settings-subnav'}
   ],
 
   template : function(obj){
