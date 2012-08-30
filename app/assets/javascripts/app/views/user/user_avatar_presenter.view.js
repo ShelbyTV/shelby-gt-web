@@ -36,7 +36,7 @@ libs.shelbyGT.UserAvatarPresenterView = Support.CompositeView.extend({
   },
   
   _updateAvatar : function(){
-    this.$(".shelby-avatar").attr("src", this._shelbyAvatarUrl());
+    this.$(".user-avatar").attr("src", this._shelbyAvatarUrl());
   },
   
   _shelbyAvatarUrl: function(){
