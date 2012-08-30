@@ -15,11 +15,13 @@
     }),
 
     initialize : function(){
+      this.frameGroupCollection = this.options.displayCollection = new libs.shelbyGT.FrameGroupsCollection();
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
     },
 
     _cleanup : function(){
+      this.frameGroupCollection._cleanup();
       shelby.models.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype._cleanup.call(this);
     },

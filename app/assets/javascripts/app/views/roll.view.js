@@ -8,15 +8,9 @@
     className : FrameGroupPlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
-      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
-      _(this.options).extend({
-        displayCollection: this.frameGroupCollection
-      });
-
       if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
         this.model.get('frames').bind('destroy', this._onQueueFrameDestroyed, this);
       }
-
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
     },
 
@@ -24,6 +18,7 @@
       if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
         this.model.get('frames').unbind('destroy', this._onQueueFrameDestroyed, this);
       }
+      FrameGroupPlayPagingListView.prototype._cleanup.call(this);
     },
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {

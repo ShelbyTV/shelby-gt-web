@@ -14,8 +14,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
   },
 
   viewedVideosUpdated : function(videoModel, viewedVideosCollection, options){
-    for (var i = 0, length = this.models.length; i < length; i++) {
-      var model = this.models[i];
+    for (var i = 0, length = this.length; i < length; i++) {
+      var model = this.at(i);
       if (model.get('frames').length){
         if (model.getFirstFrame().get('video').id == videoModel.id) {
           model.set({ collapsed : true });
@@ -65,9 +65,9 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
   
       var dupe = false;
   
-      for (var j = 0; j < this.models.length && !dupe; j++) {
-         if (this.models[j].getFirstFrame().get('video').id == video_id) {
-            this.models[j].add(frame, dashboard_entry, options);
+      for (var j = 0; j < this.length && !dupe; j++) {
+         if (this.at(j).getFirstFrame().get('video').id == video_id) {
+            this.at(j).add(frame, dashboard_entry, options);
             dupe = true;
          }
       }
