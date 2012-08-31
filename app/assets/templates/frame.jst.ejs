@@ -97,16 +97,16 @@
 
       <div class="media_body">
         <% if (!frameViewed) { %>
+          <span class="xuser-data-timestamp">
+             <%= frame.get('created_at') %>
+          </span>
+
           <p class="xuser-data">
             <% if (clickableCreator && !isFaux) { %>
               shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
             <% } else { %>
               shared by <%= creatorNickname %>
             <% } %>
-
-            <span class="xuser-data-timestamp">
-               <%= frame.get('created_at') %>
-            </span>
           </p>
 
           <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
