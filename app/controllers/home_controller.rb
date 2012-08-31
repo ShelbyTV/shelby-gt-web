@@ -60,10 +60,6 @@ class HomeController < ApplicationController
       if params[:gt_access_token]
         @has_access_token = true
         cookies[:gt_access_token] = {:value => params[:gt_access_token], :domain => ".shelby.tv"}
-      elsif params[:gt_ref_uid] and params[:gt_ref_email] and params[:gt_ref_roll]
-        @has_access_token = true
-        val = "#{params[:gt_ref_uid]},#{params[:gt_ref_email]},#{params[:gt_ref_roll]}"
-        cookies[:gt_roll_invite] = {:value => val, :domain => ".shelby.tv"}
       end
       render 'gate'
     end

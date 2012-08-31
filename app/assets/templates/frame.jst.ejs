@@ -1,4 +1,4 @@
-<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
 <% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
@@ -12,8 +12,6 @@
 <% var creator = frame.get('creator') %>
 <% var creatorNickname = creator.get('nickname') %>
 <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ %> <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
-
 
 <% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>

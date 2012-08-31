@@ -31,14 +31,12 @@
 
     initialize : function(){
       var self = this;
-      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
 
       _(this.options).extend({
         listItemView : function(item, params){
           var mapResult = self.actionToViewMap[item.get('primaryDashboardEntry').get('action')];
           return new mapResult.view(_(params).extend({model:item}));
-        },
-        displayCollection: this.frameGroupCollection
+        }
       });
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
     },
