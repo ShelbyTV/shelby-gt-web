@@ -8,18 +8,7 @@
   padding: 1.5em 8px;
 }
 
-////////TODO: FIGURE OUT WHATS BEING USED ANYMORE BELOW:
-.conversation-scroller { 
-  background: $guide-bg-color;
-  bottom: 0;
-//  overflow-y: auto;
-  position: absolute;
-  top: 178px;
-  width: 100%;
-}
-
 .conversation-wrapper {
-  background: $videocard-footer-bg-color;
 }
 
 .conversation,
@@ -35,50 +24,12 @@
   border-bottom: 1px solid $inset;
 }
 
-.frame-conversation-message-avatar {
-  float: left;
-  max-height: 50px;
-  overflow: hidden;
-  width: 50px;
-
-  a{
-    display: block;
-  }
-}
-
-.frame-conversation-message-user {
-  overflow: hidden;
-  padding: 0 10px;
-}
-
-.frame-conversation-message-user-name {
-  &:link {
-    color: #777;
-  }
-}
-
-.frame-conversation-message-user-name,
 .frame-conversation-message-reply {
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
-}
-
-.frame-conversation-message-user-name {
-  color: #999;
-  font-weight: 500;
-  font-size: 11px;
-}
-
-.frame-conversation-message-block {
-  margin: 3px 0 10px;
-}
-
-.frame-conversation-message-timestamp,
-.frame-conversation-message-reply {
-  font-size: 11px;
 }
 
 .frame-conversation-message-reply {
@@ -90,21 +41,6 @@
     size: 27%;
   }
   padding-left:1.1em;
-}
-
-.frame-conversation-message-timestamp {
-  padding-right: 0.5em;
-}
-
-.new-comment {
-//  border-top: 1px solid $outset;
-  position: relative;   
-}
-
-.new-comment-submit {
-  @include xx-button-primer($shelby-blue, small);
-  margin-top: 10px;
-  float: right;
 }
 
 .new-comment-input {
@@ -127,17 +63,8 @@
   }
 }
 
-.new-comment-subline {
-  text-align: right;
-}
-
-.new-comment-user-avatar {
-  height: 48px;
-  width: 48px;
-  float:left;
-
-  & > img {
-    height: 100%;
-    overflow: hidden;
-  }
+.new-comment-submit {
+  @include xx-button-primer($shelby-blue, small);
+  margin-top: 10px;
+  float: right;
 }
