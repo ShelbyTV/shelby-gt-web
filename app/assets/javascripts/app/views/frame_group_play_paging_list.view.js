@@ -8,14 +8,18 @@
     frameGroupCollection : null,
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
-      infinite: true,
+      collapseViewedFrameGroups : true,
+      infinite : true,
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
       }
     }),
 
     initialize : function(){
-      this.frameGroupCollection = this.options.displayCollection = new libs.shelbyGT.FrameGroupsCollection();
+      this.frameGroupCollection = this.options.displayCollection =
+        new libs.shelbyGT.FrameGroupsCollection([], {
+          collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
+        });
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
     },

@@ -80,7 +80,9 @@
     },
 
     _mapAppendChildView : function(guideModel){
-      switch (this.model.get('displayState')) {
+      var currentDisplayState = this.model.get('displayState')
+
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           displayParams = {
             viewProto : DashboardView,
@@ -126,6 +128,7 @@
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
+              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
               fetchParams : {
                 include_children : true,
                 sinceId : this.model.get('sinceId')
@@ -170,7 +173,7 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
-      switch (this.model.get('displayState')) {
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
           if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
