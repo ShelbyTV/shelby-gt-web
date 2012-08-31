@@ -33,6 +33,13 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
      }
   },
 
+  destroy : function(options) {
+    Backbone.Model.prototype.destroy.call(this, options);
+    this.get('frames').each(function(frame){
+      frame.destroy();
+    });
+  },
+
   getFirstFrame : function() {
     return this.get('frames').at(0);
   },

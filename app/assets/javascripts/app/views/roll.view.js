@@ -8,21 +8,16 @@
     className : FrameGroupPlayPagingListView.prototype.className + ' roll',
 
     initialize : function(){
-      this.frameGroupCollection = new libs.shelbyGT.FrameGroupsCollection();
-      _(this.options).extend({
-        displayCollection: this.frameGroupCollection
-      });
-
-      if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
-        this.model.get('frames').bind('destroy', this._onQueueFrameDestroyed, this);
-      }
-
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
+      if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
+        this.frameGroupCollection.bind('destroy', this._onQueueFrameGroupDestroyed, this);
+      }
     },
 
     _cleanup : function(){
+      FrameGroupPlayPagingListView.prototype._cleanup.call(this);
       if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
-        this.model.get('frames').unbind('destroy', this._onQueueFrameDestroyed, this);
+        this.frameGroupCollection.unbind('destroy', this._onQueueFrameGroupDestroyed, this);
       }
     },
 
@@ -34,10 +29,10 @@
       }
     }),
 
-    _onQueueFrameDestroyed : function(frameModel, framesCollection, response) {
-      // if the frame being destroyed is from the Queue/Watch Later roll, we need to remove its video
+    _onQueueFrameGroupDestroyed : function(frameGroupModel, frameGroupsCollection, options) {
+      // if the frame group being destroyed is from the Queue/Watch Later roll, we need to remove its video
       // from our local collection tracking which videos are queued
-      var frameVideo = frameModel.get('video');
+      var frameVideo = frameGroupModel.getFirstFrame().get('video');
       if (frameVideo) {
         var queuedVideo = shelby.models.queuedVideos.get('queued_videos').get(frameVideo.id);
         if (queuedVideo) {

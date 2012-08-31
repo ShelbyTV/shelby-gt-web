@@ -289,10 +289,15 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      var nextPlayableFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
+      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
+      // if we can't find a playable frame in the direction we're looking,
+      // we return to the beginning of the roll or stream
+      if (!nextFrame) {
+        nextFrame = this._playingFrameGroupCollection.at(0).getFirstFrame();
+      }
 
       this._nowSkippingVideo = true;
-      this.model.set({activeFrameModel: nextPlayableFrame});
+      this.model.set({activeFrameModel: nextFrame});
       this._nowSkippingVideo = false;
     }
 
