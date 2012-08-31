@@ -96,9 +96,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     if (nextPlayableFrameGroup) {
       return nextPlayableFrameGroup.getFirstFrame();
     } else {
-      // if we can't find another playable frame group in the direction we're looking,
-      // we return to the beginning of the roll or stream
-      return this.at(0).getFirstFrame();
+      return null;
     }
   },
 
@@ -120,7 +118,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       _currentFrameGroupIndex = this.indexOf(_matchingFrameGroup);
       _index = _currentFrameGroupIndex + skip;
     } else {
-      _currentFrameGroupIndex = 0;
+      return null;
     }
 
     // loop to skip collapsed frames (looping should only happen in dashboard view)
