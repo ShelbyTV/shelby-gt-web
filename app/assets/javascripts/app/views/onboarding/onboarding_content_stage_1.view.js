@@ -23,6 +23,24 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     this.model.unbind('change:nickname', this._onUsernameChange, this);
   },
 
+  render : function(){
+    console.log('rendering comp view '+this.options.stage);
+    this.$el.html(this.template());
+    this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
+      el: this.$('.js-dynamic-user-avatar')[0]
+    });
+    this.renderChild(this._userAvatar);
+    
+    this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
+      el: this.$('.js-user-avatar-uploader')[0],
+      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0],
+      progressEl: this.$('.dynamic-avatar .progress-overlay')[0]
+    });
+
+    this.renderChild(this._userAvatarUploader);
+    return this;
+  },
+
   _onUsernameChange : function(model, username){
     this.$('.js-onboarding-url-username').text(username);
   },
