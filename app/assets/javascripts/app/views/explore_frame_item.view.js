@@ -25,7 +25,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   render : function(){
     this.$el.html(this.template({frame : this.model}));
     if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('video'))) {
-      this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
+      this._updateQueueButton(true);
     }
     return this;
   },
@@ -37,7 +37,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _queueVideo : function() {
     this.model.saveToWatchLater();
-    this.$('.js-queue-command').text('Queued').addClass('frame-queued js-queued');
+    this._updateQueueButton(true);
   },
 
   _displayRollVideo : function() {
@@ -54,8 +54,13 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (this.model.get('video').id == video.id){
-      this.$('.js-queue-command').text('Queued').toggleClass('frame-queued js-queued', !removeVideo);
+      this._updateQueueButton(!removeVideo);
     }
+  },
+
+  _updateQueueButton : function(itemQueued) {
+    var buttonText = itemQueued ? 'Queued' : 'Queue';
+    this.$('.js-queue-command').toggleClass('queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
   }
 
 });
