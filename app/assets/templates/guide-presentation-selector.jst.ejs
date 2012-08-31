@@ -1,82 +1,114 @@
 
-<ul class="js-content-selector guide-presentation-list clearfix">
-  <li class="guide-presentation-item">
-    <button class="presentation-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
+<ul class="js-content-selector guide-nav-list clearfix">
+  <li class="guide-nav-item">
+    <button class="nav-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
       Stream
     </button>
   </li>
 
-  <li class="guide-presentation-item">
-    <button class="presentation-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+  <li class="guide-nav-item">
+    <button class="nav-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Queue 
     </button>
   </li>
 
-  <li class="guide-presentation-item">
-    <button class="presentation-button js-explore">
+  <li class="guide-nav-item">
+    <button class="nav-button js-explore">
       Explore
     </button>
   </li>
 
-  <li class="guide-presentation-item">
-    <button class="presentation-button js-my-rolls">
+  <li class="guide-nav-item">
+    <button class="nav-button js-my-rolls">
       Me
     </button>
   </li>
 
-  <li class="guide-presentation-item secondary-item has-children guide-settings">
+  <li class="dropdown_module guide-nav-item secondary-item guide-settings">
+    <button class="dropdown_button nav-button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <i class="dropdown_icon">
+        Settings
+      </i>
+    </button>
+    <section class="dropdown_section settings-section">
+      <div class="dropdown_lining settings-section-lining clearfix">
+        <div class="settings-user clearfix"> 
+          <button class="settings-userhandle">
+            <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
+  
+            <strong>
+              <%= user.get('nickname') + '.shelby.tv' %>
+            </strong>
+          </button>
+  
+          <button class="guide-settings-button settings-preferences js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            Edit Preferences
+          </button>
+        </div><!-- eo settings-user-section -->
+  
+        <ul class="settings-list">
+          <li class="settings-item">
+            <a class="settings-button" href="http://twitter.com/shelby" target="_blank">
+              Twitter
+            </a>
+          </li>
+  
+          <li class="settings-item">
+            <a class="settings-button" href="http://facebook.com/shelbytv" target="_blank">
+              Facebook
+            </a>
+          </li>
+  
+          <li class="settings-item">
+            <a class="settings-button" href="http://shelby.tv/blog" target="_blank">
+              Blog
+            </a>
+          </li>
+  
+          <li class="settings-item right">
+            <button class="settings-button js-signout js-track-event" data-ga_category="Header" data-ga_action="Logout" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              Sign Out
+            </button>
+          </li>
+  
+          <li class="settings-item right">
+            <button class="settings-button js-legal">
+              Privacy
+            </button>
+          </li>
+        </ul><!-- eo guide-settings-list -->
+      </div>
+    </section>
+  </li>
+
+  <li class="dropdown_module guide-nav-item secondary-item guide-nowplaying">
+    <button class="dropdown_button nav-button js-track-event" data-ga_category="Header" data-ga_action="Now Playing" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <i class="dropdown_icon">
+        Now Playing
+      </i>
+    </button>
+
+    <section class="dropdown_section nowplaying-section">
+      <div class="dropdown_lining animate_module nowplaying-section-lining js-inactivity-preemption">
+        <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
+      </div>
+    </section>
+  </li>
+
+
+
+<!--   <li class="guide-presentation-item secondary-item has-children guide-settings">
     <button class="js-settings presentation-button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       Settings
     </button>
     <div id="js-settings-subnav" class="animate_module guide-settings-section is-child clearfix">
       <div class="settings-user-section clearfix">
-        <button class="guide-settings-userhandle clearfix">
-          <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
-          <strong>
-            <%= user.get('nickname') + '.shelby.tv' %>
-          </strong>
-        </button>
-        <button class="guide-settings-button settings-preferences js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-          Edit Preferences
-        </button>
-      </div><!-- eo settings-user-section -->
-      <ul class="guide-settings-list">
-        <li class="guide-settings-item">
-          <a class="guide-settings-button" href="http://twitter.com/shelby" target="_blank">
-            Twitter
-          </a>
-        </li>
-        <li class="guide-settings-item">
-          <a class="guide-settings-button" href="http://facebook.com/shelbytv" target="_blank">
-            Facebook
-          </a>
-        </li>
-        <li class="guide-settings-item">
-          <a class="guide-settings-button" href="http://shelby.tv/blog" target="_blank">
-            Blog
-          </a>
-        </li>
-        <li class="guide-settings-item right">
-          <button class="guide-settings-button js-signout js-track-event" data-ga_category="Header" data-ga_action="Logout" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            Sign Out
-          </button>
-        </li>
-        <li class="guide-settings-item right">
-          <button class="guide-settings-button js-legal">
-            Privacy
-          </button>
-        </li>
-      </ul><!-- eo guide-settings-list -->
-    </div><!-- eo guide-settings-section -->
+    </div>
   </li>
 
   <li class="guide-presentation-item secondary-item has-children guide-now-playing">
     <button class="presentation-button js-now-playing js-track-event" data-ga_category="Header" data-ga_action="Now Playing" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       Now Playing
     </button>
-
-    <div class="animate_module is-child context-overlay-wrapper js-inactivity-preemption">
-      <aside id="js-context-overlay-lining" class="context-overlay-lining clearfix"></aside>
-    </div><!-- eo .conext-overlay-wrapper -->
-  </li>
+  </li> -->
 </ul><!-- eo guide-presentation-list -->

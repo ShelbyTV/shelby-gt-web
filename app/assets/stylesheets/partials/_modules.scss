@@ -227,3 +227,38 @@
 .share_input:checked {
 
 }
+
+//---------------------------
+//  share form framework
+//---------------------------
+
+.dropdown_module {
+  position: relative;
+
+  &:hover {
+    .dropdown_section {
+      display: block;
+    }
+  }
+}
+
+.dropdown_button {
+}
+
+.dropdown_icon {
+  background-image: url($icon-carrot);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-style: normal;
+  padding-right: 1em;
+}
+
+.dropdown_section {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown_lining {
+
+}
