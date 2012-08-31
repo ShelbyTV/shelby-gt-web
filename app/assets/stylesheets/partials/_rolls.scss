@@ -186,16 +186,6 @@
 }
 
 .share-submit-button {
-	@include xx-button-primer($shelby-blue, dark, wide);
-
-	font-size: 1.2em;
-
-	.spinner {
-		left: auto;
-		margin-left: -4px;
-		margin-top: -2px;		
-		position: relative;
-	}
 }
 
 .share-comment-counter {

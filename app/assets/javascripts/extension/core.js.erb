@@ -739,7 +739,7 @@ window.shelbyBookmarklet = {
                     shelbyJ(".conversation").html("");
                     for (var i = 0; i < messages.length; i++) {
                         var message = messages[i];
-                        var messageElement = '<li class="frame-conversation-message shelby-message-' + i.toString() + ' clearfix">' + utilObject.htmlTemplate.messageHtml(message) + '</li>';
+                        var messageElement = '<li class="conversation-message shelby-message-' + i.toString() + ' clearfix">' + utilObject.htmlTemplate.messageHtml(message) + '</li>';
                         shelbyJ(".conversation").append(messageElement);
                         shelbyJ(".shelby-message-" + i).on("click", ".js-message-reply", function(event) {
                             event.preventDefault(); 

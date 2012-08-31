@@ -2,15 +2,24 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   model: libs.shelbyGT.FrameGroupModel,
 
-  initialize : function(models, options) {
-    models || (models = {});
-    options || (options = {});
+  _collapseViewedFrameGroups : true,
 
-    shelby.models.viewedVideos.bind('add:viewed_videos', this.viewedVideosUpdated, this);
+  initialize : function(models, options) {
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      collapseViewedFrameGroups : true
+    }).value();
+
+    this._collapseViewedFrameGroups = options.collapseViewedFrameGroups;
+    if (this._collapseViewedFrameGroups) {
+      shelby.models.viewedVideos.bind('add:viewed_videos', this.viewedVideosUpdated, this);
+    }
   },
 
   _cleanup : function(){
-    shelby.models.viewedVideos.unbind('add:viewed_videos', this.viewedVideosUpdated, this);
+    if (this._collapseViewedFrameGroups) {
+      shelby.models.viewedVideos.unbind('add:viewed_videos', this.viewedVideosUpdated, this);
+    }
   },
 
   viewedVideosUpdated : function(videoModel, viewedVideosCollection, options){
@@ -73,18 +82,20 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       }
   
       if (!dupe) {
-         var frameGroup = new libs.shelbyGT.FrameGroupModel();
-         frameGroup.add(frame, dashboard_entry, options);
+        var frameGroup = new libs.shelbyGT.FrameGroupModel();
+        frameGroup.add(frame, dashboard_entry, options);
   
-         var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
-           return entry.id == frame.get('video').id;
-         });
+        if (this._collapseViewedFrameGroups) {
+           var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
+             return entry.id == frame.get('video').id;
+           });
+
+           if (viewed) {
+             frameGroup.set({ collapsed : true }, options);
+           }
+        }
   
-         if (viewed) {
-           frameGroup.set({ collapsed : true }, options);
-         }
-  
-         Backbone.Collection.prototype.add.call(this, frameGroup, options);
+        Backbone.Collection.prototype.add.call(this, frameGroup, options);
       }
     }
 

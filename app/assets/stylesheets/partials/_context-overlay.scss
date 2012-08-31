@@ -1,9 +1,6 @@
 @import "base";
 
 .context-overlay-wrapper {
-	position: absolute;
-	z-index:3;
-	right: -5px;
 }
 
 //---------------------------
@@ -15,9 +12,7 @@
 .context-overlay-lining {
 	font-size: .925em;
 	line-height: 1.5;
-	position: relative;
 	width: $guide-width;
-	top: 10px;
 
 	.xframe {
 		background-color: $base;

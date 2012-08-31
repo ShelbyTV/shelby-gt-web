@@ -6,10 +6,11 @@
 
 //---------------------------
 //  submit button currently resides in
-//  media-module JST
+//  media-module JST, 
+//  submit button subclasses share_submit
 //---------------------------
 
-.rolling-form-submit {
+.rolling-submit {
   margin: 18px 0;
   position: absolute;
   right: -($media-module-margin);
