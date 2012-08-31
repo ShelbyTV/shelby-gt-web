@@ -9,51 +9,67 @@
   padding: 0;
 }
 
-.guide-presentation-item,
-.guide-settings-item {
+.guide-presentation-item {
   display: block;
   float: left;
   list-style-type: none;
 
-  & > .presentation-button {
-    background: none;
-    border: none;
-    color: $guide-presentation-button;
-    display: inherit;
-    font-family: $font-family-display;
-    font-weight: 100;
-    line-height: 2;
-    padding: 3px 6px;
-    width:100%;
+  &.secondary-item {
+    float: right;
+    margin-right: 1em;
+    position: relative;
+    text-align: left;
+    width: auto;
+  }
 
-    &:active,
+  &.has-children {
+    & > .presentation-button {
+      background-image: url($icon-carrot);
+      background-position: right center;
+      background-repeat: no-repeat;
+      padding-right: 1em;
+    }
+
     &:hover {
-      color: #efefef;
-    }
-
-    &:hover,
-    &:link,
-    &:visited {
-      //in the event that this class is applied to an <a>, rather than a <button>
-      text-decoration: none;
-    }
-
-    &.guide-presentation-content-selected {
-      color: $guide-presentation-button-active;
-
-      &:active,
-      &:link,
-      &:visited {
-        text-decoration: none;
+      .is-child {
+        display: block;
       }
     }
   }
+}
 
-  & > .guide-settings-anchor {
-    background: none;
-    border: none;
-    color: $button-color;
-    display: inline;
+.presentation-button {
+  background: none;
+  border: none;
+  color: $guide-presentation-button;
+  display: inherit;
+  font-family: $font-family-display;
+  font-weight: 100;
+  line-height: 2;
+  padding: 3px 6px;
+  width:100%;
+
+  &:active,
+  &:hover {
+    color: #efefef;
+  }
+
+  &:hover,
+  &:link,
+  &:visited {
+    //in the event that this class is applied to an <a>, rather than a <button>
+    text-decoration: none;
+  }
+
+  &.active-item {
+    background: $guide-presentation-tab-bg-selected;
+    color: $guide-presentation-button-active;
+
+    &:active,
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
   }
 }
 
@@ -73,7 +89,7 @@
   }
 
   &:hover{
-    background-color: black;
+    background-color: $guide-presentation-tab-bg-selected;
     .context-overlay-wrapper {
       opacity: 1.0;
     }
@@ -81,54 +97,95 @@
 }
 
 .guide-settings {
-  float: right;
-  position: relative;
-  text-align: right;
-  width: 100px;
 }
 
-.guide-settings-list {
-  background-color: $guide-presentation-tab-bg-selected;
+.guide-settings-section {
+  background: adjust-lightness(#ddd,-5%);
   display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
   position: absolute;
   right: 13px;
   text-align: left;
-  width: 200px;
+  width: 300px;
   z-index:5;
+}
+
+.guide-settings-button {
+  background: transparent;
+  border: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.settings-user-section {
+  background-color: #ddd;
+}
+
+.guide-settings-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 
   .guide-settings-button {
+    display: block;
+    float: left;
+    padding: .5em;
     text-align: left;
+
+    &:active,
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .guide-settings-item {
-  width: 100%;
+  display: inline;
+
+  &.right {
+    float: right;
+  }
 }
 
 .guide-settings-userhandle {
-  background: #ddd;
+  background: transparent;
+  border: none;
   color: #333;
   display: block;
+  float: left;
+  margin: 0;
   padding: 6px;
+
+  img {
+    height: 33px;
+    width: 33px;
+  }
+}
+
+.settings-preferences {
+  float: right;
+  padding: 1.5em 1em;
 }
 
 .guide-settings-anchor {
-    &:after {
-      @include background(url($icon-settings) no-repeat center center transparent);
+//    &:after {
+//      @include background(url($icon-settings) no-repeat center center transparent);
 
-      content: "\0020";
-      float: right;
-      height: 19px;
-      margin: {
-        right: 4px;
-        top: 4px;
-      }
-      width: 20px;
-
-  }
+//      content: "\0020";
+//      float: right;
+//      height: 19px;
+//      margin: {
+//        right: 4px;
+//        top: 4px;
+//      }
+//      width: 20px;
+//  }
 }
 
 .guide-settings-button {

@@ -1,21 +1,29 @@
 @import "base";
 
+//---------------------------
+//	currently playing styles
+//---------------------------
+
+$active-list-item: $shelby-blue;
+//bring this into base once the color is determined.
+
 .active-list-item {
-	background-color: $shelby-blue;
+	background-color: $active-list-item;
 //	background-color: rgba(0,0,255,.5);
 
 	.xframe-title,
-	.framegroup-dupe-text {
+	.xframe-aside-text {
 		color: white;
 	}
 
-	.framegroup-dupes a:link {
-		color: adjust-lightness($shelby-blue, 50%);
+	.xframe-aside-text a:link,
+	.xframe-aside-text a:visited {
+		color: adjust-lightness($active-list-item, 50%);
 	}
 }
 
 //---------------------------
-//	frame architecture
+//	frame
 //---------------------------
 
 .xframe {
@@ -115,7 +123,11 @@
 	background-position: left center;
 	background-repeat: no-repeat;
 	background-size: 1.3em;
+	display: block;
+	float: right;
+	line-height: 1;
 	padding-left: 1.5em;
+	padding-bottom: 1px;
 	text-decoration: none;
 
 	&:hover {
@@ -125,17 +137,19 @@
 	}
 }
 
+//---------------------------
+//	frame creator block, media obj.
+//---------------------------
+
 .xuser-data {
 	color: adjust-lightness($text, 20%);
 }
 
 .xuser-message {
-	max-height: 105px;
-	overflow-y: hidden;
+}
 
-	&:hover {
-		max-height: 10000px;
-	}
+.xuser-message-remainder {
+	display: none;
 }
 
 .xuser-data-timestamp {
@@ -274,599 +288,17 @@
 //	}
 }
 
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-//----------------------------------------
-
-.list,
-.rolls-list,
-.form-rolls-list,
-.existing-rolls-list > ul {
-	margin: 0;
-	padding: 0;
-
-	li {
-		list-style-type: none;	
-		&:first-child {
-			.xframe {
-				border-top: none;
-			}
-		}
-	}
-}
-
-.frame {
-	padding: $defaultMargin;
-
-//	&:hover {
-//		@include background(#292b2d);
-//	}
-}
-
-.video-card {
-	@include roundies;
-
-	background-color: $video-card-bg-color;
-	border: 1px solid $video-card-outline;
-	box-shadow: inset 0 1px 0 0 adjust-lightness($outset, 5%);
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: relative;
-  &:hover {
-    .remove-frame {
-      display: block;
-    }
-  }
-}
-
-.video-card-collapsed {
-	@extend .video-card;
-
-	margin-top: -5px;
-	margin-bottom: -5px;
-	background-color: #222;
-	box-shadow: inset 0 1px 0 0 adjust-lightness(#222, 5%);
-}
-
-.remove-frame {
-  @include x-button-primer($shelby-red, small);
-  
-  display: none;
-  margin: 10px;
-  position: absolute;
-  right : 0;
-  z-index: 1000;
-}
-
-.video-thumbnail {
-	background-color: $video-card-thumbnail;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	cursor: pointer;
-	line-height: 75px;
-	margin: 0;
-	text-align: center;
-}
-
-.video-thumbnail-image {
-	cursor: pointer;
-	display: inline-block;
-	margin: -29px auto 0;
-	overflow: hidden;
-	padding-top: 0;
-	vertical-align: middle;
-	width: 100%;
-}	
-
-.video-thumbnail-missing {
-		background-image: url($icon-missing-thumbnail);
-		background-size: 20%;
-}
-
-.video-card-header {
-	@include roundies(header);
-
-//	background-color: #35383a;
-}
-.video-card-header,
-.frame-share-header{
-	border-bottom: 1px solid $inset;
-//	padding: $defaultMargin - 4 $defaultMargin - 2;
-	padding: 0;
-
-	a, a > * {
-		text-decoration: none;
-
-		&:active,
-		&:visited {
-			text-decoration: none;
-		}
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-}
-
-.video-card-header-collapsed {
-	@extend .video-card-header;
-
-	border-radius: $radius;
-	overflow: hidden;
-
-	a, a > * {
-		&:hover {
-			text-decoration: none;
-		}
-	}
-}
-
-.active-list-item .video-card-header {
-	@include gradient-primer($shelby-green, 10%);
-//	background-color: $shelby-green;
-//  @include background( linear-gradient(top, adjust-lightness($shelby-green, 10%), $shelby-green) );
-  @include border-top-radius($radius);
-
-  h1, h2 {
-    color: $shelby-gray;
-  }
-
-  h3 {
-    color: adjust-lightness($shelby-gray, -10%);
-  }
-
-  .frame-title:before {
-    content: "On Now: ";
-    font-style: italic;
-  }
-}
-
-.frame-creator-title-date-holder {
-	height: 100%;
-	overflow: hidden;
-}
-
-.frame-creator-avatar-holder {
-	float: left;
-	height: 40px;
-	width: 40px;
-	background-color: black;
-}
-
-.frame-creator-avatar,
-.frame-creator-avatar-missing{
-
-	border-radius: $radius 0 0 0;
-	float: left;
-	height: 40px;
-	width: 40px;
-	background-color: white;
-}
-
-.frame-creator-avatar {
-	width: 100%;
-}
-
-.frame-creator-avatar-collapsed {
-	@extend .frame-creator-avatar;
-	border-radius: $radius 0 0 $radius;
-}
-
-.frame-creator-avatar-missing{
-	//extended by .frame-creator-avatar
-	background: url($icon-missing-thumbnail) no-repeat center center #454545;
-	background-size: 50%;
-}
-
-.frame-creator-avatar-missing-collapsed {
-	@extend .frame-creator-avatar-missing;
-
-	opacity: 0.6;
-	border-radius: $radius 0 0 $radius;
-}
-
-//see .frame-creator-roll, .frame-timestamp
-
-.frame-creator-roll {
-	@include frame-header-smalltype;
-	@include ellipsis();
-
-	float: left;
-	padding: 4px 8px 0 6px;
-//	width: 100%;
-}
-
-.frame-creator-roll-collapsed {
-	@extend .frame-creator-roll;
-
-	color: #666;
-}
-
-.frame-creator-origin-twitter{
-	//extended by .user-post-origin-twitter;
-}
-
-.frame-timestamp {
-	@include frame-header-smalltype;
-
-	text-align: right;
-	width: 25%;
-	float:right;
-	padding: 7px 8px 0 0;
-}
-
-.frame-timestamp-collapsed {
-	@extend .frame-timestamp;
-
-	color: #777;
-}
-
-//.xframe-locator {
-//	@include buttonfont;
-
-//	background: url($icon-locate) no-repeat 10px center transparent;
-//	border-bottom: none;
-//	border-left: 1px solid $inset;
-//	border-right: none;
-//	border-top: none;
-//	color: $button-color;
-//	line-height: 3.25;
-//	padding: 0 1em 0 3em;
-//	position: absolute;
-//	right: 0;
-
-//	&:before {
-//		border-left: 1px solid adjust-lightness($outset, 5%);
-//		content: "\0020";
-//		display: block;
-//		height: 40px;
-//		float: left;
-//		margin: 0 0 0 -36px;
-//	}
-
-//}
-
-.frame-title {
-	color: #bfbfbf;
-        font-size: 13px;
-        height: 19px;
-        line-height: 17px;
-        margin-right: 38px;
-	overflow: hidden;
-        padding: 4px 0 0 6px;
-        text-overflow: ellipsis;
-	white-space: nowrap; 
-	width: 75%; 
-}
-
-.frame-title-collapsed {
-	@extend .frame-title;
-
-	color: #777;
-}
-
-.video-card-footer {
-	@include gradient-primer($video-card-bg-color, 5%);
-
-	border-radius: 0 0 $radius $radius;
-	border-top: 1px solid $inset;
-	overflow: hidden;
-	z-index: 5;
-}
-
-.video-card-footer-collapsed {
-	@extends .video-card-footer;
-
-	height: 0px;
-	overflow: hidden;
-}
-
-.video-thumbnail {
-	height: 125px;
-	overflow: hidden;
-	position: relative;
-}
-
-.video-thumbnail-collapsed {
-	@extends .video-thumbnail;
-
-	height: 0px;
-}
-
-.video-activity-comment {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
-	padding: $defaultMargin;
-
-	textarea {
-		border-radius: $input-radius;
-		border-color: #555;
-		padding: $defaultMargin/2;
-		resize: none;
-		width: 100%;
-	}
-
-	.video-activity-comment-submit {
-		@include x-button-primer($shelby-blue,small);
-
-		float: right;
-		margin-top: 5px;
-	}
-}
-
-.video-activity-toggle {
-
-}
-
-.video-activity-list {
-	margin: 0;
-	padding-left: 0;
-	
-	li {
-		border-bottom: 0;
-		list-style-type: none;
-		padding: 0;
-	}
-}
-
-.video-source {
-	float: right;
-	height: 1.231em;
-	max-width: 50%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.video-author {
-	margin: 0;
-}
-
-/* We are not linking to faux users' personal rolls, so don't display like a link */
-.video-card.faux-roll a.no-faux-link {
-  cursor: default;
-  &:hover, h3:hover {
-    text-decoration: none;
-  }
-}
-
-/* XXX BELOW still needed for context overlay, but not for conversation within guide  */
-.user-vcard {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
-	height: 100%;
-	padding: 0 9px 9px;
-
-	a {
-		text-decoration: none;
-	}
-}
-
-.user-avatar {
-	display: block;
-	float: left;
-
-	img {
-		margin-bottom: 7px;
-		margin-right: 7px;
-		margin-top: 9px;
-	}
-}
-.user-handle,
-.user-post-date {
-	color: #a4a4a4;
-	font-size: 11px;
-	font-weight: 500;
-	line-height: 2.8;
-}
-
-.user-post-date {
-	//@extended .user-handle;
-	float: right;
-	line-height: 1;
-	margin-top: 9px;
-	padding-right: 3px;
-}
-
-//UI-TODO: Verify if below is obsolete.
-
-//.user-post-origin-twitter,
-//.user-post-origin-facebook,
-//.user-post-origin-tumblr,
-//.frame-creator-origin-twitter{
-//	&:before {
-//		content: image-url('../images/assets/twitter_stamp.svg');
-//		float: left;
-//		font-size: 0.75em;
-//		margin: 3px 3px 0 0;
-//	}
-//}
-
-//.user-post-origin-facebook {
-//	//@extended by .user-post-origin-twitter;
-//	&:before {
-//		content: image-url('../images/assets/facebook_stamp.svg');
-//	}
-//}
-
-//.user-post-origin-tumblr {
-//	//extended by .user-post-origin-twitter;
-//	&:before {
-//		content: image-url('../images/assets/tumblr_stamp.svg');
-//	}
-//}
-
-.user-video-text {
-	margin-top: -7px;
-
-	p {
-		margin: 2px $defaultMargin/2 0 $defaultMargin*3+2;
-	}
-}
-/* XXX ABOVE still needed for context overlay, but not for conversation within guide  */
-
-.frame-controls {
-	margin: 0;
-	padding: 0;
-
-	li {
-		display: block;
-		float: left;
-		list-style-type: none;
-		width: 25%;
-
-		&:first-child {
-			button {
-				border-left: none;
-			}
-		}
-
-		&:last-child {
-			button {
-				border-right: none;
-			}
-		}
-	}
-	button {
-		@include buttonfont;
-
-		background: transparent;
-		border-bottom: none;
-		border-left: 1px solid adjust-lightness($outset, 5%);
-		border-right: 1px solid $inset;
-		border-top: 1px solid adjust-lightness($outset, 5%);
-		color: #efefef;
-		display: block;
-		font-weight: 300;
-		height: 42px;
-		width: 100%;
-	}
-}
-
-.frame-activity {
-	font-weight: 500;
-}
-
-.frame-activity-favorites {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid adjust-lightness($outset, 5%);
-	font-size: $font-size - 2;
-	margin: 0;
-	padding: 4px;
-	width: auto;
-	
-	li {
-		display: block;
-		float: left;
-		height: 24px;
-		list-style-type: none;
-		overflow: hidden;
-		margin-right: 3px;
-		width: 24px;
-	}
-	
-	a { 
-	  display: block;
-	}
-
-	img {
-		display: block;
-		width: 100%;
-	}
-
-	&:before {
-		background: url($icon-videocard-like-off) no-repeat 3px center transparent;
-		background-size: 55%;
-		content: "\0020";
-		float: left;
-		height: 24px;
-		width: 22px;
-	}
-}
-
-.frame-controls-comments i,
-.frame-controls-roll button,
-.frame-controls-share button{
-	background-color: transparent;
-	background-repeat: no-repeat;
-}
-
-.frame-controls-queue {
-	button {
-		font-size: 11px;
-	}
-	&.upvoted,
-	&:hover {
-		color: $shelby-red;
-	}
-}
-
-.frame-controls-comments {
-	i{
-		background-image: url($icon-videocard-comment-off);
-		background-position: left 0;
-		color: #efefef;
-		font-style: normal;
-		padding-bottom: 2px;
-		padding-left: 21px;
-	}
-	.frame-comments-open,
-	&:hover {
-		i {
-			background-image: url($icon-videocard-comment-on);
-		}
-	}
-}
-
-.frame-controls-roll {
-	button {
-		@include notype;
-		background-image: url($icon-videocard-roll-off);
-		background-position:center center;
-	}
-	&:hover {
-		button {
-			background-image: url($icon-videocard-roll-on);
-		}
-	}
-}
-
-.frame-controls-share {
-  button {
-		@include notype;
-		background-image: url($icon-videocard-share-off);
-		background-position:center center;
-	}
-	&:hover {
-		button {
-			background-image: url($icon-videocard-share-on);
-		}
-	}
-}
-
-.framegroup-dupes {
+//---------------------------
+//	aside, lists duplicates
+//---------------------------
+
+.xframe-aside {
 	margin: 8px 0px 0px 5px;
 }
 
-.framegroup-dupes-collapsed {
-	height: 0px;
-	overflow: hidden;
-}
-
-.framegroup-dupe-text {
-	@include frame-header-smalltype;
-
-	height: auto;
-	margin: 0px;
-	padding: 0px;
+.xframe-aside-text {
+	color: #666;
+	margin: 0;
+	padding: 0;
 }
 
