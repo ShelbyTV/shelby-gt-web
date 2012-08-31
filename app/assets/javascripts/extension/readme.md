@@ -3,14 +3,14 @@
 Assets:
 
 * 
-radar.js a list of JST's selected in assets/javascript/radar.js
+includes.js a list of JST's needed for the extension
 Some of the JST's are used in both the web app and the extension.
 All of the JST's that don't begin with bookmarklet is used in the web app also. 
 
 
-* radar.css is a list of partials in assets/stylesheet/radar.scss
+* radar.css is a list of partials in assets/stylesheets/extension.scss
 All of the css but _bookmarklet_overwrite.scss is also used in the web app.
-In radar.scss, there is also some scss meant to reset the css in `.ext-elements`
+In extension.scss, there is also some scss meant to reset the css in `.ext-elements`
 
 * jquery
 

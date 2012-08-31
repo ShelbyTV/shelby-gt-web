@@ -1,191 +1,161 @@
-<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
-<% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
+<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
+
+<% var user = shelby.models.user %>
+<% var userNickname = user.get('nickname') %>
+
+<% var video = frame.get('video') %>
+<% var videoId = frame.get('id') %>
+<% var videoTitle = video.get('title') %>
+<% var videoThumbnail = video.get('thumbnail_url') %>
+
 <% var creator = frame.get('creator') %>
-<% var creatorNickname = creator ? creator.get('nickname') : "" %>
-<% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
-<% var frameTitle = frame.get('video').get('title') %>
-<% var frameVideo = frame.get('video') %>
-<% var frameRoll = frame.get('roll').get('title') %>
-<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
-<% var frameIsOnHeartedRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
-<% var frameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && frame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
+<% var creatorNickname = creator.get('nickname') %>
+<% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
+
+<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
+<% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
+<% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
-<% var suffix = !contextOverlay && frameGroup.get('collapsed') ? "-collapsed" : "" %>
-  <% if(!contextOverlay){ %>
-    <article id="<%= frame.get('conversation_id') %>" > 
-    <div class="video-card<%= suffix %> <%= isFaux ? 'faux-roll' : '' %>">
+<% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
+<% var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+                                                                      frameIsOnHeartedRoll ||
+                                                                      frameIsOnWatchLaterRoll)
+%>
 
-      <header class="video-card-header<%= suffix %> clearfix">
 
-        <a onclick="return false;" class="js-creator-personal-roll js-track-event no-faux-link" data-ga_category="Frame" data-ga_action="Click user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
-          <div class="frame-creator-avatar-holder">
-            <div class="frame-creator<%= suffix %>">
-              <% if(creatorThumbnail){ %>
-                <img class="frame-creator-avatar<%= suffix %>" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
-              <% } else { %>
-                <div class="frame-creator-avatar-missing<%= suffix %>"></div>
-              <% } %>  
-            </div>
-          </div>
-        </a>
-
-        <div class="frame-creator-title-date-holder">
-
-          <% if (frameGroup.get('collapsed')) { %>
-            <a onclick="return false;" class="js-creation-date js-track-event" data-ga_category="Frame" data-ga_action="Click expand frame group" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#">
-          <% } %>
-          <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-            <%= frame.get('created_at') %>
-          </h2>
-          <% if (frameGroup.get('collapsed')) { %>
-            </a>
-          <% } %>
-  
-          <a onclick="return false;" href="#" class="js-frame-activate">
-            <h1 class="frame-title<%= suffix %>" title="<%= frameTitle %>">
-              <%= frame.get('video') && frameTitle %>
-            </h1>
-          </a>
-
-          <% if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-             frameIsOnHeartedRoll ||
-             frameIsOnWatchLaterRoll) { %>
-            <a onclick="return false;" class="js-frame-source js-track-event no-faux-link" data-ga_category="Frame" data-ga_action="Click frame source link" data-ga_label='<%= shelby.models.user.get('nickname') %>' href="#">
-              <h3 class="frame-creator-roll<%= suffix %>">
-                <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
-              </h3>
-            </a>
-          <% } else { %>
-            <h3 class="frame-creator-roll<%= suffix %>">
-              <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
-            </h3>
-          <% } %>
-        </div>
-      </header> 
-
-  <% } else { %>
-    <div class="video-card">
-
-    <a href="#" onclick="return false;" class="js-creator-personal-roll js-track-event context-overlay-header" data-ga_category="Frame" data-ga_action="Click frame user source link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-      <header class="video-card-header clearfix">
-        <div class="frame-creator-avatar-holder">
-          <div class="frame-creator">
-            <% if(creatorThumbnail){ %>
-              <img class="frame-creator-avatar" src="<%= creatorThumbnail %>" alt="<%= creatorNickname %>'s avatar" title="<%= creatorNickname %>">
-            <% } else { %>
-              <div class="frame-creator-avatar-missing"></div>
-            <% } %>  
-          </div>
-        </div>
-  
-        <div class="frame-creator-title-date-holder">
-          <h2 class="frame-timestamp"><!-- frame-creator-origin-* -->
-            <%= frame.get('created_at') %>
-          </h2>
-
-          <h1 class="frame-title" title="<%= frameTitle %>">
-            <%= frame.get('video') && frameTitle %>
-          </h1>
-
-          <h3 class="frame-creator-roll">
-            <%= frameIsOnHeartedRoll || frameIsOnWatchLaterRoll ? 'Go to Roll' : frame.get('roll') ? frame.get('roll').get('title') : '' %>
-          </h3>
-        </div>
-      </header>
-    </a>
-  <% } %> 
-
-  <% if (!contextOverlay) { %>  
-    <% if( frameThumbnail ) { %>
-    <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
-      <button class="js-remove-frame remove-frame">Remove</button>
-    <% } %>
-      <div class="video-thumbnail<%= suffix %> js-frame-activate" style="background-image: url(' <%= frameThumbnail %> ');" role="img" aria-label="">
-        <img class="visuallyhidden" src="<%= frameThumbnail %>" title="<%= frameTitle %>" alt="Thumbnail of <%= frameTitle %>"> 
-      </div>
-    <% } else { %>
-      <div class="video-thumbnail<%= suffix %> video-thumbnail-missing"></div>
-    <% } %>  
-  <% } /* end of contextOverlay */ %>
-
-  <footer class="video-card-footer<%= suffix %>">
-
-    <% if(!frame.isOnRollTypeGenius()) { %>
-
-    <ul class="frame-controls" type="toolbar">
-      <li class="frame-controls-queue js-queue-frame <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'queued' : '' %>">
-        <button class="js-track-event" data-ga_category="Frame" data-ga_action="Click queue" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          <%= (queuedVideosModel.videoIsInQueue(frameVideo) ) ? 'Queued' : 'Add to<br>Queue' %>
-        </button>
-      </li>
-      
-      <li class="frame-controls-comments">
-        <button class="video-activity-toggle js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          <i class="comments-frame-lining">
-            <%= messages.length %>
-          </i>
-        </button>
-      </li>
-
-      <li class="frame-controls-roll js-roll-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          Roll it
-        </button>
-      </li>
-
-			<li class="frame-controls-share js-share-frame">
-        <button class="video-controls-button ir js-track-event" data-ga_category="Frame" data-ga_action="Click share" data-ga_label="<%= shelby.models.user.get('nickname') %>" type="button">
-          Share it
-        </button>
-      </li>
-    </ul>
-  
-    <% } %><!-- end if(on_genius_roll) -->
-  </footer>
-</div>
-
-  <% if (!contextOverlay) { %>
-    <% var firstLink = true %>
-    <% var dupeFrameRollIds = [frameGroup.getFirstFrame().get('roll').get('id')] %>
-    <% for (var i = 1; i < frameGroup.get('frames').length; i++) { %>
-      <% var dupeFrame = frameGroup.get('frames').at(i) %>
-      <% var dupeCreator = dupeFrame.get('creator') %>
-      <% var dupeCreatorNickname = dupeCreator ? dupeCreator.get('nickname') : "" %>
-      <% var dupeFrameIsOnHeartedRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('heart_roll_id')) %>
-      <% var dupeFrameIsOnWatchLaterRoll = !shelby.models.user.get('anon') && dupeFrame.isOnRoll(shelby.models.user.get('watch_later_roll_id')) %>
-      <% var linkText = "" %>
-      
-      <% if (dupeFrame.get('roll') && $.inArray(dupeFrame.get('roll').get('id'), dupeFrameRollIds) != -1) { %>
-      <%   continue; %>
-      <% } %>
-
-      <% if (dupeFrameIsOnHeartedRoll && dupeCreatorNickname != "") { %>
-         <% linkText = dupeCreatorNickname + "'s Likes" %>
-      <% } else if (dupeFrameIsOnWatchLaterRoll && dupeCreatorNickname != "") { %>
-        <% linkText = dupeCreatorNickname + "'s Queue" %>
-      <% } else if (!dupeFrameIsOnHeartedRoll && !dupeFrameIsOnWatchLaterRoll && dupeFrame.get('roll')) { %>
-         <% linkText = dupeFrame.get('roll').get('title') %>
-      <% } else { %>
-         <% continue; %>
-      <% } %>
-
-      <% dupeFrameRollIds.push(dupeFrame.get('roll').get('id')) %>
-      <% if (firstLink) { %>
-        <div class="framegroup-dupes<%= suffix %>">
-        <h1 class="framegroup-dupe-text<%= suffix %>">
-        Also via:
-        <% firstLink = false %>
-      <% } %>
-        
-      <% var commaOrNot = dupeFrameRollIds.length > 2 ? ", " : "" %>
-      <%= commaOrNot %><a href="#" data-roll_id="<%= dupeFrame.get('roll').get('id') %>" data-frame_id="<%= dupeFrame.get('id') %>" class="js-go-to-frame-and-roll-by-id"><%= linkText %></a>
-    <% } %>
-    <% if (!firstLink) { %> 
+<!-- new videocard -->
+<article id="<%= videoId %>" class="xframe<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
+  <% if (!frameViewed) { %>
+    <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+      <h1 class="xframe-title" title="<%= videoTitle %>">
+       <%= videoTitle %>
       </h1>
-      </div>
-    <% } %>
-  <% } /* end of contextOverlay */ %>
+    </a>
+  <% } %>
 
-</article><!-- eo #video-123.video-card -->
-<!-- END VIDEO CARD -->
+  <div class="xframe-body-wrapper clearfix">
+    <div class="xframe-body">
+      <div class="menu_module xframe-menu">
+        <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
+          <li class="menu_item" role="menuitem">
+            <button class="xframe-command command-queue js-queue-frame<%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
+              <i class="command-icon">
+                <%= (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
+                %>
+              </i>
+            </button>
+          </li>
+          <li class="menu_item" role="menuitem">
+            <button class="xframe-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+              <i class="command-icon">
+                Roll…
+              </i>
+            </button>
+          </li>
+          <li class="menu_item right command-sublist" aria-haspopup="true">
+            <button class="menu_sublist_anchor xframe-command command-more">
+              <i class="command-icon">
+                More
+              </i>
+            </button>
+            <ul class="menu_sublist xframe-sublist" role="menu">
+              <li class="menu_option xframe-item" role="menuitem">
+                <button class="xframe-option command-share js-share-frame">
+                  Share Video
+                </button>
+              </li>
+              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
+                <li class="menu_option xframe-item" role="menuitem">
+                  <button class="xframe-option command-remove js-remove-frame">
+                    Remove Video
+                  </button>
+                </li>
+              <% } %>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- eo .xframe-menu -->
+      <% if (!contextOverlay) { %>
+        <!-- TODO: should maybe use the thumbnail module JST -->
+        <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+          <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+        </a>
+      <% } %>
+        <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
+    </div><!-- eo .xframe-body -->
+
+    <footer class="media_module xframe-footer clearfix">
+      <% if (!frameViewed) { %>
+        <a href="#" onclick="return false;" class="media_image">
+          <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
+            <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+          </span>
+        </a>
+      <% } %>
+
+      <div class="media_body">
+        <% if (!frameViewed) { %>
+          <p class="xuser-data">
+            <% if (clickableCreator && !isFaux) { %>
+              shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+            <% } else { %>
+              shared by <%= creatorNickname %>
+            <% } %>
+
+            <span class="xuser-data-timestamp">
+               <%= frame.get('created_at') %>
+            </span>
+          </p>
+
+          <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+            <p class="xuser-message">
+              <% var comment = messages.models[0].get('text') %>
+              <% if (comment.length > 256) { %>              
+                <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
+                <a class="js-toggle-comment" href="#">more…</a>
+              <% } else { %>
+                <%= comment %>
+              <% } %>
+            </p>
+          <% } %>
+
+          <div class="xframe-subline">
+            <a href="#" onclick="return false;" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+              <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+            </a>
+          </div>
+        <% } else { %>
+          <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+            <h1 class="xframe-title" title="<%= videoTitle %>">
+             <%= videoTitle %>
+            </h1>
+
+            <div class="xuser-data">
+              shared by <%= creatorNickname %>
+            </div>
+          </a>
+        <% } %>
+      </div>
+    </footer><!-- eo .media_module-->
+  </div><!-- eo .xframe-body-wrapper -->
+  <% if (!contextOverlay && !_(dupeFrames).isEmpty()) { %>
+    <aside class="xframe-aside">
+      <p class="xframe-aside-text">
+        Also via:
+
+        <% _(dupeFrames).each(function(frame, index) {
+          var creatorNickname = frame.get('creator') && frame.get('creator').get('nickname');
+          var rollTitle = libs.shelbyGT.viewHelpers.roll.titleWithoutPath(frame.get('roll'), {creatorNickname:creatorNickname})
+        %>
+          <%= index == 0 ? '' : ', ' %>
+          <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
+          <%= rollTitle %>
+          </a>
+        <% }); %>
+      </p>
+    </aside>
+  <% } /* end of !contextOverlay */ %>
+</article>
+<!-- end new videocard -->

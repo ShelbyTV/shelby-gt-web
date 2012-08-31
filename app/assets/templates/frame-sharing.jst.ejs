@@ -1,6 +1,6 @@
 <% var user           = shelby.models.user %>
 <% var userNickname   = user.get('nickname') %>
-<% var userAvatar     = user.get('user_image_original') || user.get('user_image')%>
+<% var userAvatar     = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 <% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var message        = frame.get('conversation').get('messages').at(0) %>
@@ -29,7 +29,7 @@
 
       <%=
         JST['media-module']({
-            userAvatar   : message.get('user_image_url'),
+            userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message),
             userNickname : message.get('nickname'),
             messageText  : message.get('text'),
             timestamp    : frame.get('created_at'),

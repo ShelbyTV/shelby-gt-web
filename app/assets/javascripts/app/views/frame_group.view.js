@@ -27,13 +27,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
-    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
-
+    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
+    "click .js-toggle-comment"              : "_toggleComment"
   },
 
   template : function(obj){
     try {
-      return JST['frame-revision'](obj);
+      return JST['frame'](obj);
     } catch(e){
       console.log(e.message, e.stack);
     }
@@ -237,6 +237,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _goToFrameAndRollById : function(e){
     shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id') + '/frame/' + $(e.currentTarget).data('frame_id'), {trigger:true});
     return false;
+  },
+
+  _toggleComment : function(e){
+    e.preventDefault();
+    $(e.currentTarget).text(function(e,i){
+      return (i == 'more…') ? 'Hide' : 'more…';
+    });
+    this.$('.xuser-message-remainder').toggle();
   }
 
 });
