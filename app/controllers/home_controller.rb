@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   # If the request is made to a particular frame, then we should display the appropriate metatags
   #  (primarily for fb og, but also for any other bots)
   def index
-    
+
     # Get video and user info from shelby api for meta tags
     @meta_info = get_api_info(params[:path])
     @provider_name = @meta_info[:video_info] && @meta_info[:video_info]['video'] && @meta_info[:video_info]['video']['provider_name']
@@ -71,6 +71,10 @@ class HomeController < ApplicationController
   #
   def signout
     flash[:error] = params[:error]
+    
+    # def dont want this around (API tries to kill it, too)
+    cookies.delete(:_shelby_gt_common)
+    
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
   
