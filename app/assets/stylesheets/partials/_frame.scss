@@ -142,6 +142,7 @@ $active-list-item: $shelby-blue;
 //---------------------------
 
 .xuser-data {
+	@include ellipsis();
 	color: adjust-lightness($text, 20%);
 }
 
