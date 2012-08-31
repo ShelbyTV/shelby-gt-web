@@ -157,18 +157,15 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _removeFrame : function(){
-    this.leave();
-    // if user is trying to delete the currently playing frame, kick on to the next one
-    // then delete
-    if (shelby.models.guide.get('activeFrameModel')===this.model.getFirstFrame()){
+    var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+    var destroyingActiveFrame = activeFrameModel && this.model.get('frames').any(function(frame){
+      return frame.id == activeFrameModel.id;
+    });
+    this.model.destroy();
+    // if user destroys the currently playing frame, kick on to the next one
+    if (destroyingActiveFrame){
       Backbone.Events.trigger('playback:next');
     }
-    var self = this;
-    setTimeout(function(){
-      self.model.get('frames').forEach(function(frame){
-        frame.destroy({wait:true});
-      });
-    }, 100);
   },
 
   _upvote : function(){
@@ -245,6 +242,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return (i == 'more…') ? 'Hide' : 'more…';
     });
     this.$('.xuser-message-remainder').toggle();
+  },
+
+  //ListItemView overrides
+  isMyModel : function(model) {
+    return this.model == model;
   }
 
 });
