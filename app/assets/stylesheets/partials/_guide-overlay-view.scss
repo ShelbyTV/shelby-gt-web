@@ -106,7 +106,7 @@
 
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
-  @include x-button-primer($shelby-gray);
+  @include xx-button-primer($shelby-gray);
   
   float: right;
   margin-right: 10px;
@@ -116,7 +116,7 @@
 }
 
 .guide-overlay-context-button-highlighted {
-  @include x-button-primer($shelby-green);
+  @include xx-button-primer($shelby-green);
 }
 
 .guide-overlay-context-creator {

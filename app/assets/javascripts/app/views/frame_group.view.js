@@ -147,13 +147,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame button').text('Queued');
-    // immediately add the saved-indicator to the frame thumbnail
-    self.$('.video-thumbnail').append(JST['saved-indicator']());
     // start the transition which fades out the saved-indicator
-    var startTransition = _.bind(function() {
-      this.$('.video-saved').addClass('video-saved-trans');
-    }, self);
-    setTimeout(startTransition, 0);
   },
 
   _removeFrame : function(){
