@@ -19,20 +19,12 @@
   padding: 0;
 }
 
-.frame-conversation-message {
+.conversation-message {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
 }
 
-.frame-conversation-message-reply {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.frame-conversation-message-reply {
+.conversation-message-reply {
   background: {
     color: transparent;
     image: url($icon-comment-reply);
@@ -40,7 +32,13 @@
     position: left center;
     size: 27%;
   }
+
+  text-decoration: none;
   padding-left:1.1em;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .new-comment-input {
@@ -63,8 +61,11 @@
   }
 }
 
+//---------------------------
+//  submit button subclasses share_submit
+//---------------------------
+
 .new-comment-submit {
-  @include xx-button-primer($shelby-blue, small);
   margin-top: 10px;
   float: right;
 }
