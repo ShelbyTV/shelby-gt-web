@@ -20,9 +20,11 @@
 
 <%
   var active_networks = [];
-  shelby.models.user.get('authentications').forEach(function(auth){
-    active_networks.push(auth.provider);
-  }); 
+	if(shelby.models.user.get('authentications')){
+	  shelby.models.user.get('authentications').forEach(function(auth){
+	    active_networks.push(auth.provider);
+	  }); 
+	}
 
   var twitter_enabled = _.include(active_networks, 'twitter') ? true : false;
   var facebook_enabled = _.include(active_networks, 'facebook') ? true : false;
