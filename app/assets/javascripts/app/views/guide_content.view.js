@@ -81,7 +81,9 @@
     },
 
     _mapAppendChildView : function(guideModel){
-      switch (this.model.get('displayState')) {
+      var currentDisplayState = this.model.get('displayState')
+
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           displayParams = {
             viewProto : DashboardView,
@@ -127,6 +129,7 @@
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
+              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
               fetchParams : {
                 include_children : true,
                 sinceId : this.model.get('sinceId')
@@ -171,7 +174,7 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
-      switch (this.model.get('displayState')) {
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
           if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
@@ -290,10 +293,15 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      var nextPlayableFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
+      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
+      // if we can't find a playable frame in the direction we're looking,
+      // we return to the beginning of the roll or stream
+      if (!nextFrame) {
+        nextFrame = this._playingFrameGroupCollection.at(0).getFirstFrame();
+      }
 
       this._nowSkippingVideo = true;
-      this.model.set({activeFrameModel: nextPlayableFrame});
+      this.model.set({activeFrameModel: nextFrame});
       this._nowSkippingVideo = false;
     }
 

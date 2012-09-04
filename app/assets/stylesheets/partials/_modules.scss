@@ -1,4 +1,25 @@
 //---------------------------
+//  TODO: fix this list shit 
+//---------------------------
+
+.list,
+.rolls-list,
+.form-rolls-list,
+.existing-rolls-list > ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;  
+    &:first-child {
+      .xframe {
+        border-top: none;
+      }
+    }
+  }
+}
+
+//---------------------------
 //  animation module 
 //---------------------------
 
@@ -49,6 +70,7 @@
 
 //---------------------------
 //  modular menu framework
+//  menu appears in the frame
 //---------------------------
 
 .menu_module {
@@ -175,6 +197,17 @@
 
 }
 
+.form_submit {
+  @include xx-button-primer($shelby-blue, dark, wide);
+
+  .spinner {
+    left: auto;
+    margin-left: -4px;
+    margin-top: -2px;   
+    position: relative;
+  }
+}
+
 //---------------------------
 //  share form framework
 //---------------------------
@@ -200,5 +233,41 @@
 }
 
 .share_input:checked {
+
+}
+
+//---------------------------
+//  dropdown framework
+//  used in header nav
+//---------------------------
+
+.dropdown_module {
+  position: relative;
+
+  &:hover {
+    .dropdown_section {
+      display: block;
+    }
+  }
+}
+
+.dropdown_button {
+}
+
+.dropdown_icon {
+  background-image: url($icon-carrot);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-style: normal;
+  padding-right: 1em;
+}
+
+.dropdown_section {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown_lining {
 
 }

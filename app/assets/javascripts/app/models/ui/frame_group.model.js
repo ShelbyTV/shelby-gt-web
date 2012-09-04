@@ -33,13 +33,24 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
      }
   },
 
+  destroy : function(options) {
+    Backbone.Model.prototype.destroy.call(this, options);
+    this.get('frames').each(function(frame){
+      frame.destroy();
+    });
+  },
+
   getFirstFrame : function() {
     return this.get('frames').at(0);
   },
 
-  getDuplicateFrames : function () {
+  getDuplicateFramesToDisplay : function () {
+    var firstFrame = this.getFirstFrame();
+    var firstFramesRoll = firstFrame && firstFrame.get('roll');
+    //we only show the duplicate frame information once for each roll that dupes come from,
+    //and not at all for dupes from the same roll as the group's first frame
     return this.get('frames').chain().rest().select(function (frame){
-      return frame.has('roll');
+      return frame.has('roll') && (!firstFramesRoll || firstFramesRoll.id != frame.get('roll').id);
     }).uniq(false, function(frame){return frame.get('roll').id;}).compact().value();
   }
 

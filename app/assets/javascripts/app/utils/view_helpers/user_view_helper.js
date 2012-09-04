@@ -25,8 +25,11 @@ libs.shelbyGT.viewHelpers.user = {
   // see libs.shelbyGT.UserAvatarSizes for size options (will be respected only for Shelby avatars)
   avatarUrlForMessage: function(message, avatarSize){
     avatarSize = avatarSize || libs.shelbyGT.UserAvatarSizes.small;
+    
     if( message && message.get('user_has_shelby_avatar') ) {
       return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+message.creator_id;
+    } else if( message && message.get('user_image_url') ){
+      return message.get('user_image_url');
     } else {
       return libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
     }

@@ -27,13 +27,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
-    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById"
-
+    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
+    "click .js-toggle-comment"              : "_toggleComment"
   },
 
   template : function(obj){
     try {
-      return JST['frame-revision'](obj);
+      return JST['frame'](obj);
     } catch(e){
       console.log(e.message, e.stack);
     }
@@ -92,7 +92,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFrames();
+      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFramesToDisplay();
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
@@ -147,28 +147,19 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame button').text('Queued');
-    // immediately add the saved-indicator to the frame thumbnail
-    self.$('.video-thumbnail').append(JST['saved-indicator']());
     // start the transition which fades out the saved-indicator
-    var startTransition = _.bind(function() {
-      this.$('.video-saved').addClass('video-saved-trans');
-    }, self);
-    setTimeout(startTransition, 0);
   },
 
   _removeFrame : function(){
-    this.leave();
-    // if user is trying to delete the currently playing frame, kick on to the next one
-    // then delete
-    if (shelby.models.guide.get('activeFrameModel')===this.model.getFirstFrame()){
+    var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+    var destroyingActiveFrame = activeFrameModel && this.model.get('frames').any(function(frame){
+      return frame.id == activeFrameModel.id;
+    });
+    this.model.destroy();
+    // if user destroys the currently playing frame, kick on to the next one
+    if (destroyingActiveFrame){
       Backbone.Events.trigger('playback:next');
     }
-    var self = this;
-    setTimeout(function(){
-      self.model.get('frames').forEach(function(frame){
-        frame.destroy({wait:true});
-      });
-    }, 100);
   },
 
   _upvote : function(){
@@ -237,6 +228,19 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _goToFrameAndRollById : function(e){
     shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id') + '/frame/' + $(e.currentTarget).data('frame_id'), {trigger:true});
     return false;
+  },
+
+  _toggleComment : function(e){
+    e.preventDefault();
+    $(e.currentTarget).text(function(e,i){
+      return (i == 'more…') ? 'Hide' : 'more…';
+    });
+    this.$('.xuser-message-remainder').toggle();
+  },
+
+  //ListItemView overrides
+  isMyModel : function(model) {
+    return this.model == model;
   }
 
 });

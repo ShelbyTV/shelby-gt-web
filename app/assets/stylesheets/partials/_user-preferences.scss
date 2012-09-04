@@ -78,7 +78,7 @@
 	margin-top: $defaultMargin/2;
 
 	button {
-		@include x-button-primer($shelby-gray,small);
+		@include xx-button-primer($shelby-gray,small);
 
 		margin-left: 6px;
 	}
@@ -94,6 +94,9 @@
 }
 
 .you-avatar {
+  .user-avatar {
+    width: 48px;
+  }
   input[type=file] {
     border: none;
     padding: 0;
@@ -128,7 +131,7 @@
 //		text-decoration:underline;
 //
 		&.connected-network {
-			@include x-button-primer($shelby-green);
+			@include xx-button-primer($shelby-green);
 			float: right;
 		}
 	}

@@ -12,12 +12,13 @@
 
     initialize : function(data) {
       this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.queuedVideos.get('queued_videos').bind('add', this._onQueuedVideosAdd, this);
     },
 
     _cleanup : function(){
       this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.queuedVideos.get('queued_videos').unbind('add', this._onQueuedVideosAdd, this);
+      if (this.model) {
+        this._setupTeardownModelBindings(this.model, false);
+      }
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -27,12 +28,32 @@
       }
 
       this.model = new libs.shelbyGT.FrameGroupModel();
-      this.model.add(activeFrameModel)
+      this.model.add(activeFrameModel);
 
       //bind
       this._setupTeardownModelBindings(this.model, true);
 
       this.render();
+    },
+
+    _setupTeardownModelBindings : function(model, bind) {
+      var action;
+      if (bind) {
+        action = 'bind';
+      } else {
+        action = 'unbind';
+      }
+
+      var groupFirstFrame = model.getFirstFrame();
+      //TODO fix binding leak on frame group destoy - I'll still have bindings to the first frame
+      //of the destroyed frame group
+      if (groupFirstFrame) {
+        groupFirstFrame[action]('change', this.render, this);
+        groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
+      }
+      model[action]('change', this.render, this);
+      shelby.models.queuedVideos[action]('add:queued_videos', this._onQueuedVideosAdd, this);
+      shelby.models.queuedVideos[action]('remove:queued_videos', this._onQueuedVideosRemove, this);
     },
 
     render : function() {

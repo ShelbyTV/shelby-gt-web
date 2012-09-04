@@ -8,11 +8,11 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
     
     events : {
-      "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
-      "click .js-queue:not(.guide-presentation-content-selected)"   : "_goToQueue",
-      "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
-      "click .js-explore:not(.guide-presentation-content-selected)"   : "_explore",
-      "click .js-now-playing"                                         : "_nowPlaying"
+      "click .js-stream:not(.active-item)"   : "_goToStream",
+      "click .js-queue:not(.active-item)"    : "_goToQueue",
+      "click .js-my-rolls:not(.active-item)" : "_filterMyRolls",
+      "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-now-playing"                : "_nowPlaying"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -107,12 +107,12 @@
       }
 
       if ($setSelectedClassOn) {
-        $setSelectedClassOn.addClass('guide-presentation-content-selected');
+        $setSelectedClassOn.addClass('active-item');
       }
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector button').removeClass('guide-presentation-content-selected');
+      this.$('.js-content-selector button').removeClass('active-item');
     }
 
   });
