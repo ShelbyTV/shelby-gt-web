@@ -14,16 +14,13 @@ class HomeController < ApplicationController
     # Get parameters associated with omniauth failure
     @auth_failure = params[:auth_failure] == '1'
     @auth_strategy = params[:auth_strategy]
-        
+    
     #XXX ISOLATED_ROLL
     if @isolated_roll_id = is_isolated_roll?(request)
       @meta_info = get_api_info("/roll/#{@isolated_roll_id}")
       render 'isolated_roll' and return 
     end
     
-    #XXX Mobile
-    return render_mobile_view(params) if is_mobile?(request)
-
     #XXX ISOLATED_ROLL - HACKING allowing viewing
     if user_signed_in? or /isolated_roll\//.match(params[:path])
       @csrf_token = csrf_token_from_cookie
@@ -36,6 +33,16 @@ class HomeController < ApplicationController
         @has_access_token = true
         cookies[:gt_access_token] = {:value => params[:gt_access_token], :domain => ".shelby.tv"}
       end
+      
+      # Get parameters associated with sharing
+      if params[:utm_campaign] == "email-share"
+        @email_share = {:name => URI.unescape(params[:utm_source]), :avatar => URI.unescape(params[:utm_medium])}
+      elsif params[:genius]
+        @genius_share = true
+      end
+      #XXX Mobile
+      return render_mobile_view(params) if is_mobile?(request)
+      
       render 'gate'
     end
   end  
@@ -64,16 +71,17 @@ class HomeController < ApplicationController
     end
     
     def is_iphone?(request)
-      request.user_agent=~/iPhone/) != nil
+      (request.user_agent=~/iPhone/) != nil
     end
     
     def is_android?(request)
-      request.user_agent=~/Andoid/) != nil
+      (request.user_agent=~/Andoid/) != nil
     end
     
     def render_mobile_view(params)
       
       if frame_id = /frame\/(\w*)/.match(params[:path]) and frame_id[1] and @frame = Shelby::API.get_frame_info(frame_id[1], true)
+        
         render 'mobile/frame', :layout => "mobile"
       else
         # TODO: this should really be some mobile optimized splash page with a link to the search page?

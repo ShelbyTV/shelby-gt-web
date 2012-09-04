@@ -2,25 +2,18 @@
 
 <div class="video-script">
 	<% if @frame['video']['provider_name'] == 'youtube' %>
-		<%= render :partial => "mobile/youtube_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>
+		<%= render :partial => "mobile/video_embeds/youtube_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>
 	<% elsif @frame['video']['provider_name'] == 'vimeo' %>
-		<%= render :partial => "mobile/vimeo_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>					  
+		<%= render :partial => "mobile/video_embeds/vimeo_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>					  
 	<% end %>
 </div>
 
 <div id="mobile-frame-context">
-	<div id="user-and-comment">
-		<div id="avatar">
-			<% avatar = @frame['creator']['user_image'] %>
-			<%= image_tag avatar, :title => @frame['creator']['nickname'], :size => "65x65" %>
-		</div>
-		<div id="comment">
-			<% msg = @frame['conversation']['messages'].empty? ? @frame['video']['title'] : @frame['conversation']['messages'].first["text"] %>
-			<%= msg %>
-		</div>
-	</div>
-	<div id="shared-by">
-		Shared by: <%= @frame['creator']['name'] || @frame['creator']['nickname'] %>
-	</div>	
-	<%= link_to "Try Shelby.tv", Settings::Application.url, "data-role"=>"button", "data-theme" => "c" %>
+	<% if @genius_share %>
+		<%= render :partial => "mobile/partials/genius_sharer" %>
+	<% elsif @email_share %>
+		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @email_share[:name], :avatar => @email_share[:avatar] } %>
+	<% else %>
+		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @frame['creator']['name'] || @frame['creator']['nickname'], :avatar => @frame['creator']['user_image'] } %>
+	<% end %> 
 </div>
