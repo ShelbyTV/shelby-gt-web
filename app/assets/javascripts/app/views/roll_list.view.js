@@ -29,7 +29,8 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
     switch(guidePresentationContent){
       case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
         this.updateFilter(function(model){
-          return !self._isFauxUserPersonalRoll(model);
+          return !self._isFauxUserPersonalRoll(model) &&
+            model.id != shelby.models.user.get('watch_later_roll_id');
         });
         break;
     }
