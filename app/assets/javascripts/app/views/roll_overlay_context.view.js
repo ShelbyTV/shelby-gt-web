@@ -21,25 +21,29 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   },
 
   render : function(){
-    var first_frame_thumbnail = null;
-    var showThumbnail;
-    if (this.model.has('frame_count')) {
-      //we use the presence of the frame_count as a handy way to know that the model has had all of its data loaded
-      //from the server at least once
-      showThumbnail = true;
-			if( this.model.get('first_frame_thumbnail_url') ){
-		    var first_frame_thumbnail = this.model.get('first_frame_thumbnail_url');
-			}
-    } else {
-      //if the roll model data has never been loaded from the server don't even show a thumbnail, wait
-      //until a subsequent load triggers a refresh
-      showThumbnail = false;
-    }
+
+    //determining the frame thumbnail is obsolete
+
+   //  var first_frame_thumbnail = null;
+   //  var showThumbnail;
+   //  if (this.model.has('frame_count')) {
+   //    //we use the presence of the frame_count as a handy way to know that the model has had all of its data loaded
+   //    //from the server at least once
+   //    showThumbnail = true;
+			// if( this.model.get('first_frame_thumbnail_url') ){
+		 //    var first_frame_thumbnail = this.model.get('first_frame_thumbnail_url');
+			// }
+   //  } else {
+   //    //if the roll model data has never been loaded from the server don't even show a thumbnail, wait
+   //    //until a subsequent load triggers a refresh
+   //    showThumbnail = false;
+   //  }
 
     this.$el.html(this.template({
-      creatorName : this.model.get('creator_nickname'),
-      showThumbnail : showThumbnail,
-      thumbnail : first_frame_thumbnail,
+     //determining the frame thumbnail is obsolete  
+    //  creatorName : this.model.get('creator_nickname'),
+    //  showThumbnail : showThumbnail,
+    //  thumbnail : first_frame_thumbnail,
       title : this.model.get('title')
     }));
 
