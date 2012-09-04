@@ -2,7 +2,7 @@
   var messageJSON;
   if (message) {
     messageJSON = message.toJSON();
-    messageJSON.text = message.getText();
+    messageJSON.text = message.escape('text');
   } else {
     /*
       if there is no message, create something that looks like
