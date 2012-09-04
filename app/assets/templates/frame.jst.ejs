@@ -145,13 +145,10 @@
       <p class="xframe-aside-text">
         Also via:
 
-        <% _(dupeFrames).each(function(frame, index) {
-          var creatorNickname = frame.get('creator') && frame.get('creator').get('nickname');
-          var rollTitle = libs.shelbyGT.viewHelpers.roll.titleWithoutPath(frame.get('roll'), {creatorNickname:creatorNickname})
-        %>
+        <% _(dupeFrames).each(function(frame, index) { %>
           <%= index == 0 ? '' : ', ' %>
           <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
-          <%= rollTitle %>
+          <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(frame.get('roll')) %>
           </a>
         <% }); %>
       </p>
