@@ -44,7 +44,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     listItemViewAdditionalParams : {},
     masterCollection : null,
     displayCollection : null,
-    simulateAddTrue : true
+    simulateAddTrue : true,
+    maxDisplayedItems : null // can be null or an integer 1 to infinity
   },
   
   initialize : function(){
@@ -104,6 +105,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         newContents = sourceCollection.filter(this._filter);
       } else {
         newContents = sourceCollection.models;
+      }
+      if (this.options.maxDisplayedItems) {
+        newContents = newContents.slice(0, this.options.maxDisplayedItems);
       }
       this._displayCollection.reset(newContents);
     }
@@ -179,7 +183,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   sourceReset : function(sourceCollection){
     //only happens when our source collection is a standard backbone collection
     //and not a collection inside a Relational Model
-    this._displayCollection.reset(sourceCollection.models);
+    var newContents = sourceCollection.models;
+    if (this.options.maxDisplayedItems) {
+        newContents = newContents.slice(0, this.options.maxDisplayedItems);
+    }
+    this._displayCollection.reset(newContents);
   },
 
   internalRemoveOne : function(item){
