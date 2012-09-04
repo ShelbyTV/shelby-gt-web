@@ -1,27 +1,36 @@
 <% var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [] %>
 <% var creator = frame.get('creator') %>
-<% var creatorThumbnail = creator ? (creator.get('user_image_original') || creator.get('user_image')) : undefined %>
-<% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
+<% var creatorThumbnail = creator ? libs.shelbyGT.viewHelpers.user.avatarUrl(creator) : undefined %>
+<% var creatorNickname = creator.get('nickname') || '' %>
+<% var frameTitle = frame.get('video').get('title') || '' %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 
-<div class="guide-overlay-header conversation-header">
+<div class="overlay_header guide-overlay-header conversation-header">
   <div class="guide-overlay-title">
-    <button class="back js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label='<%= user.get('nickname') %>'>
-      Back
+    <button class="js-cancel cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
+      <i class="cancel-icon">Cancel</i>
     </button>
-    <h2>Comments</h2>
+    <h2>Add a new comment within Shelby.tv</h2>
   </div>
-  
-  <%=
-    JST['wide-thumbnail-overlay']({
-      creatorName : creator.get('nickname'),
-      showThumbnail : true,
-      thumbnail : frameThumbnail,
-      title : frame.get('video').get('title')
-    })
-  %>
-
-  <%=
-    JST['frame-conversation-form']({user: user})
-  %>
 </div>
+
+<div class="overlay_body guide-overlay-body conversation-body">
+  <form class="form_module new-comment">
+    <h1 class="xframe-title" title="<%= frameTitle %>">
+      <%= frameTitle || '' %> 
+    </h1>
+    
+    <div class="xframe-body-wrapper clearfix">
+      <%=
+        JST['thumbnail-module']({
+          thumbnail : frame.get('video').get('thumbnail_url') || '',
+          title : frame.get('video').get('title') || ''
+        })
+      %>
+
+      <%=
+        JST['frame-conversation-form']({user: user})
+      %>
+    </div>
+  </form>
+</div><!-- eo overlay_body guide-overlay-body conversation-body -->

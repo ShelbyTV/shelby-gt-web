@@ -1,6 +1,4 @@
-//TODO: change my name to "app_header.view.js"
-
-libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
+libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
 
   events : function(){
     var self = this;
@@ -28,11 +26,11 @@ libs.shelbyGT.GuideHeaderView = Support.CompositeView.extend({
   el : '#js-header',
 
   _menus : [
-    {anchor: '.js-settings', subnavId: '#js-settings-subnav'}
+    // {anchor: '.js-settings', subnavId: '#js-settings-subnav'}
   ],
 
   template : function(obj){
-    return JST['guide-header'](obj);
+    return JST['app-header'](obj);
   },
 
   initialize : function(){

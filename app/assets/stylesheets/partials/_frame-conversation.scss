@@ -1,11 +1,14 @@
 @import "base";
 
-.conversation-scroller { //needs to be consistent with .rolling-main
-  bottom: 0;
-  overflow-y: auto;
-  position: absolute;
-  top: 146px;
-  width: 100%;
+.conversation-header {
+
+}
+
+.conversation-body {
+  padding: 1.5em 8px;
+}
+
+.conversation-wrapper {
 }
 
 .conversation,
@@ -16,59 +19,12 @@
   padding: 0;
 }
 
-.frame-conversation-message {
+.conversation-message {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
-  padding: 10px 0 10px 10px;
 }
 
-.frame-conversation-message-avatar {
-  float: left;
-  max-height: 50px;
-  overflow: hidden;
-  width: 50px;
-
-  a{
-    display: block;
-  }
-}
-
-.frame-conversation-message-user {
-  overflow: hidden;
-  padding: 0 10px;
-}
-
-.frame-conversation-message-user-name {
-  &:link {
-    color: #777;
-  }
-}
-
-.frame-conversation-message-user-name,
-.frame-conversation-message-reply {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.frame-conversation-message-user-name {
-  color: #999;
-  font-weight: 500;
-  font-size: 11px;
-}
-
-.frame-conversation-message-block {
-  margin: 3px 0 10px;
-}
-
-.frame-conversation-message-timestamp,
-.frame-conversation-message-reply {
-  font-size: 11px;
-}
-
-.frame-conversation-message-reply {
+.conversation-message-reply {
   background: {
     color: transparent;
     image: url($icon-comment-reply);
@@ -76,52 +32,40 @@
     position: left center;
     size: 27%;
   }
+
+  text-decoration: none;
   padding-left:1.1em;
-}
 
-.frame-conversation-message-timestamp {
-  padding-right: 0.5em;
-}
-
-.new-comment {
-  background-color: #35383a;
-  border-top: 1px solid $outset;
-  padding: 10px;
-  position: relative;
-   
-  .new-comment-submit {
-    @include x-button-primer($shelby-gray, small);
-    margin-top: 10px;
-    margin-left: 59px;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
 .new-comment-input {
   @include inputfont;
-  @include opacity(0.8);
   @include roundies(input);
   
+  border: 1px solid adjust-lightness($inset, -10%);
   height: 50px;
   left: 68px;
-  margin-left: 12px;
   padding: 4px 5px;
-  width: 75%;
+  width: 100%;
 
   &:focus{
-    @include transition-property('opacity');
+    @include transition-property('border');
     @include transition-duration(0.25s);
     @include transition-timing-function(ease-in);
-    @include opacity(1);
+    border-color: black;
+    color: black;
+    outline: none;
   }
 }
 
-.new-comment-user-avatar {
-  height: 48px;
-  width: 48px;
-  float:left;
+//---------------------------
+//  submit button subclasses share_submit
+//---------------------------
 
-  & > img {
-    height: 100%;
-    overflow: hidden;
-  }
+.new-comment-submit {
+  margin-top: 10px;
+  float: right;
 }

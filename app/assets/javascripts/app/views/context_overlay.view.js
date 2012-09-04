@@ -6,22 +6,19 @@
 
     el: '#js-context-overlay-lining',
 
-    events : _.extend({}, FrameGroupView.prototype.events, {
-      "click .js-frame-locator" : "_frameLocator"
-    }),
-
     options : _.extend({}, libs.shelbyGT.FrameGroupView.prototype.options, {
       contextOverlay : true
     }),
 
     initialize : function(data) {
       this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.queuedVideos.get('queued_videos').bind('add', this._onQueuedVideosAdd, this);
     },
 
     _cleanup : function(){
       this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      shelby.models.queuedVideos.get('queued_videos').unbind('add', this._onQueuedVideosAdd, this);
+      if (this.model) {
+        this._setupTeardownModelBindings(this.model, false);
+      }
     },
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -30,9 +27,8 @@
         this._setupTeardownModelBindings(this.model, false);
       }
 
-      var frames = new Backbone.Collection();
-      frames.add(activeFrameModel);
-      this.model  = new Backbone.Model({'frames':frames});
+      this.model = new libs.shelbyGT.FrameGroupModel();
+      this.model.add(activeFrameModel);
 
       //bind
       this._setupTeardownModelBindings(this.model, true);
@@ -40,9 +36,29 @@
       this.render();
     },
 
+    _setupTeardownModelBindings : function(model, bind) {
+      var action;
+      if (bind) {
+        action = 'bind';
+      } else {
+        action = 'unbind';
+      }
+
+      var groupFirstFrame = model.getFirstFrame();
+      //TODO fix binding leak on frame group destoy - I'll still have bindings to the first frame
+      //of the destroyed frame group
+      if (groupFirstFrame) {
+        groupFirstFrame[action]('change', this.render, this);
+        groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
+      }
+      model[action]('change', this.render, this);
+      shelby.models.queuedVideos[action]('add:queued_videos', this._onQueuedVideosAdd, this);
+      shelby.models.queuedVideos[action]('remove:queued_videos', this._onQueuedVideosRemove, this);
+    },
+
     render : function() {
       if (this.model) {
-        this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.get('frames').at(0), options : this.options }));
+        this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
       } else {
         this.$el.html('');
       }
@@ -50,30 +66,6 @@
 
     template : function(obj) {
       return JST['frame'](obj);
-    },
-
-    _frameLocator : function(data){
-      var origin = this.options.guide.get('activeFrameModel'),
-          originHasRoll = origin.has('roll'),
-          userDesires = shelby.models.userDesires,
-          guideVisibility = userDesires.get('guideShown'),
-          playingState = shelby.models.guide.get('playingState');
-
-      if (!guideVisibility) {
-        userDesires.set('guideShown', true);
-      }
-
-      if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
-        //if video has no roll, or it's playingstate is 'dashboard', go to stream
-        shelby.router.navigate('stream', {trigger:true});
-
-      } else if( originHasRoll ) {
-        //otherwise go to roll
-        var frameId = origin.id,
-            rollId = origin.get('roll').id;
-        
-        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
-      }
     }
 
   });

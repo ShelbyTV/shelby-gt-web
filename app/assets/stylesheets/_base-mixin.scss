@@ -1,11 +1,12 @@
 $animate-style : $animate-timing !default;
 
-@mixin animate($animate-style){
+@mixin animate($animate-style, $animate-property){
 	@if ($animate-style == ease-in-out) {
 		@include transition-property($animate-property);
 		@include transition-duration($animate-duration);
-		@include transition-timing-function($animate-timing);
+//		@include transition-timing-function($animate-timing);
 		@include transition-delay($animate-delay);  
+		@include transform(translateZ(0));
 	}
 }
 
@@ -62,9 +63,9 @@ $roundies-type : normal !default;
 $bottom-color: #4e5354 !default;
 $bottom-color-adjust: 20% !default;
 
-@mixin gradient-primer($bottom-color, $bottom-color-adjust){
-	background-color: $bottom-color;
-	@include background(linear-gradient(top, adjust-lightness($bottom-color, $bottom-color-adjust), $bottom-color));
+@mixin gradient-primer($x-primer-color){
+	background-color: $x-primer-color;
+	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
 }
 
 $highlight-amount : 25% !default; 
@@ -153,33 +154,65 @@ $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
 @mixin xx-button-primer($x-primer-color, $primer-tone, $primer-button-context){
-	background-color: $x-primer-color;
+	@include gradient-primer($x-primer-color);
+//	background-color: $x-primer-color;
 
-	@include background(linear-gradient(top, adjust-lightness($x-primer-color,10%), $x-primer-color));
+//	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
 
-	border: 1px solid adjust-lightness($x-primer-color, -25%);
+	border: 1px solid adjust-lightness($x-primer-color, -10%);
 	border-radius: $button-radius;
 	box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%), //inner top highlight
 							inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%); //inner bottom shadow
+
 	@if $primer-button-context == frame-command {						
 		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
 	} @else {
 		padding: .8em 2em .75em; //this is magical: button padding stays proportional, relative to font-size.
 	}
-//@include font-primer(inputfont); 
-//not convinced font-primer() mix-in is a good idea anymore.
-//instead spec out each property...
-//only style font-family, color, weight in mixin
-//determine size in the actual class.
+
+	//@include font-primer(inputfont); 
+	//not convinced font-primer() mix-in is a good idea anymore.
+	//instead spec out each property...
+	//only style font-family, color, weight in mixin
+	//determine size in the actual class.
 	font-family: $font-family-display;
-	font-weight: 400;
+
+	//possible button contexts:
+	//frame command, menu command, or generic
+
+	@if $primer-button-context == frame-command {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: .8em;
+	} @elseif $primer-button-context == explore-rolls {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 2em;
+		padding-right: 2em;
+		padding-top: .8em;
+	} @elseif $primer-button-context == wide {
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 4em;
+		padding-right: 4em;
+		padding-top: .8em;
+	} @elseif $primer-button-context == guide-close {
+		padding: .6em;
+	} @else {//generic
+		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: .8em;
+	}
+
 
 	@if $primer-tone == light { 
 	//toggle light font and dark font depending on button bg.
 	//this may be over engineering at its finest. maybe...
 		color: $button-color-light;
+		font-weight: 500;
 	} @else {
 		color: $button-color;
+		font-weight: 700;
 		text-shadow: 0px 1px 0px #333;
 	}
 }

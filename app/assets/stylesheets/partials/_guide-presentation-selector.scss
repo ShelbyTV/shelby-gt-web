@@ -3,103 +3,195 @@
 .guide-presentation-selector {
 }
 
-.guide-presentation-list {
-  font-size: 1.3em;
+.guide-nav-list {
+  font-size: 1.2em;
   margin: 0;
   padding: 0;
 }
 
-.guide-presentation-item,
-.guide-settings-item {
+.guide-nav-item {
   display: block;
   float: left;
   list-style-type: none;
 
-  & > button {
-    @include inputfont;
-
-    background: none;
-    border: none;
-    color: $button-color;
-    display: inherit;
-    line-height: 2;
-    padding: 3px 6px;
-    width:100%;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &.guide-presentation-content-selected {
-      color: $shelby-blue;
-    }
+  &.secondary-item {
+    float: right;
+    margin-right: 1em;
+    position: relative;
+    text-align: left;
+    width: auto;
   }
 
-  & > .guide-settings-anchor {
-    float: right;
-    width: auto;
+  &.has-children {
+    & > .nav-button {
+      background-image: url($icon-carrot);
+      background-position: right center;
+      background-repeat: no-repeat;
+      padding-right: 1em;
+    }
+
+    &:hover {
+      .is-child {
+        display: block;
+      }
+    }
   }
 }
 
-.guide-presentation-item {
+.nav-button {
+  background: none;
+  border: none;
+  color: $guide-presentation-button;
+  display: inherit;
+  font-family: $font-family-display;
+  font-weight: 100;
+  line-height: 2;
+  padding: 3px 6px;
+  width:100%;
+
+  &:active,
+  &:hover {
+    color: #efefef;
+  }
+
+  &:hover,
+  &:link,
+  &:visited {
+    //in the event that this class is applied to an <a>, rather than a <button>
+    text-decoration: none;
+  }
+
+  &.active-item {
+    background: $guide-presentation-tab-bg-selected;
+    color: $guide-presentation-button-active;
+
+    &:active,
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
+
+.guide-nav-item {
   margin-top: 2px;
   width: 70px;
 }
 
-.guide-settings {
-  float: right;
-  position: relative;
-  width: 100px;
-}
-
-.guide-settings-list {
-  background-color: $guide-presentation-tab-bg-selected;
+.guide-now-playing {
+// XXX commented out for deving
   display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 13px;
-  width: 200px;
-  z-index:5;
-
-  button {
-    text-align: left;
+  width: 100px;
+  
+  .context-overlay-wrapper {
+// XXX commented out for deving
+    display: none;
   }
-}
 
-.guide-settings-item {
-  width: 100%;
-}
-
-.guide-settings-userhandle {
-  background: #ddd;
-  color: #333;
-  display: block;
-  padding: 6px;
-}
-
-.guide-settings-anchor {
-    background: none;
-    border: none;
-    color: $button-color;
-
-    &:after {
-    @include background(url($icon-settings) no-repeat center center transparent);
-    content: "\0020";
-    float: right;
-    height: 19px;
-    margin: {
-      right: 4px;
-      top: 4px;
+  &:hover{
+    background-color: $guide-presentation-tab-bg-selected;
+    .context-overlay-wrapper {
+      display: block;
     }
-    width: 20px;
-
   }
+}
+
+//---------------------------
+//  settings panel
+//---------------------------
+
+.settings-section {
+  right: 0;
+}
+
+.settings-section-lining {
+  background: adjust-lightness(#ddd,-5%);
+  margin-top: 5px;
+  position: relative;
+  text-align: left;
+  width: 300px;
 }
 
 .guide-settings-button {
+  background: transparent;
+  border: none;
+
   &:hover {
-    background: $shelby-blue;
+    text-decoration: underline;
   }
+}
+
+.settings-user {
+  background-color: #ddd;
+}
+
+//---------------------------
+//  small-text list in settings dropdown
+//---------------------------
+
+.settings-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings-item {
+  display: inline;
+
+  &.right {
+    float: right;
+  }
+}
+
+.settings-button {
+  background: transparent;
+  border: none;
+  float: left;
+  padding: .5em;
+  text-align: left;
+
+  &:active,
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.settings-userhandle {
+  background: transparent;
+  border: none;
+  color: #333;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 6px;
+
+  img {
+    height: 33px;
+    width: 33px;
+  }
+}
+
+.settings-preferences {
+  float: right;
+  line-height: 3.8;
+  padding: 0 1em;
+}
+
+//---------------------------
+//  nowplaying panel
+//---------------------------
+
+.nowplaying-section {
+  right: 0;
+}
+
+.nowplaying-section-lining {
+  margin-top: 5px;
+  position: relative;
 }

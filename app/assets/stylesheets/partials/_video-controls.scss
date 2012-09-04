@@ -1,11 +1,6 @@
 @import "base";
 
 .video-player-tools-wrapper{
-	@include transition-property(opacity);
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
-	
 	bottom:0;
 	height:65px;
 	left:0;
@@ -27,11 +22,6 @@
 	border:1px solid #202020;
 	height:45px;
 	margin:$defaultMargin;
-
-  @include transition-property(margin);
-	@include transition-duration(.5s);
-	@include transition-timing-function(ease-in-out);
-	@include transition-delay(0s);
 }
 
 .video-player-tools-lining{
@@ -82,8 +72,7 @@
 }
 
 .video-player-progress-elapsed{
-	//extended by .video-player-progress-load
-	@include background($shelby-blue); //original light blue lost in translation. using shelby-blue. more consistent but most desirable?
+	@include background($shelby-blue);
 
 	margin-top:-8px;
 }
@@ -167,12 +156,7 @@
     @include background(
   		url('../images/assets/arrow_left.svg') center center no-repeat #444
   	);
-  	
-  	@include transition-property(opacity);
-  	@include transition-duration(.25s);
-  	@include transition-timing-function(ease-out);
-  	@include transition-delay(0s);
-    
+
   	left: $defaultMargin;
   	opacity: 1.0;
   }

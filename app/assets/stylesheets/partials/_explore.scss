@@ -24,6 +24,8 @@
 }
 
 .explore-roll {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
   padding: 10px 10px 0;
 }
 
@@ -77,6 +79,8 @@
     //state for the follow/unfollow button,
     //if other modes/states arise this classname probably won't cut it
     @include xx-button-primer($shelby-blue, dark, explore-rolls);
+
+    font-weight: 300;
   }
 }
 
@@ -100,27 +104,37 @@
   height: 200px;
   margin: 10px;
   position: relative;
-}
 
-.explore-frame-menu {
-  display: none;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
+  &:hover {
+    .menu_module {
+      display: block;
+    }
+  }
 
-.explore-frame-command {
-  @include xx-button-primer($x-primer-color,$primer-tone,frame-command);
-
-  float: left;
-  margin: .75em 0 0 .75em;
-
-  &.frame-queued {
-    @include xx-button-primer($shelby-gray,dark,frame-command);
+  .xframe-thumbnail {
+    border: 1px solid #b9b9b9;
   }
 }
+
+//.xxxexplore-frame-menu {
+//  display: none;
+//  left: 0;
+//  position: absolute;
+//  top: 0;
+//  width: 100%;
+//  z-index: 1;
+//}
+
+//.xxxexplore-frame-command {
+//  @include xx-button-primer($x-primer-color,$primer-tone,frame-command);
+
+//  float: left;
+//  margin: .75em 0 0 .75em;
+
+//  &.frame-queued {
+//    @include xx-button-primer($shelby-gray,dark,frame-command);
+//  }
+//}
 
 .explore-frame-thumbnail {
   background-size: cover;
@@ -157,24 +171,6 @@
   margin-top: (10em/12);
 }
 
-//---------------------------
-//  modular list framework
-//---------------------------
-
-.list_module {
-  margin: 0;
-  padding: $list-module-spacing;
-}
-
-.list_item {
-}
-
-.list_button {
-
-  &:hover {
-    background-color: $list-item-bg-hover;
-  }
-}
 
 .active-list-item .list_button {
   background-color: $list-item-bg-hover;
@@ -221,4 +217,8 @@
   text-align: left;
   width: 100%;
   background-color: $list-item-bg;
+
+  & > span {
+    opacity: .5;
+  }
 }

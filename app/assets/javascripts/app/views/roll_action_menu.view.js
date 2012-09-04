@@ -1,10 +1,10 @@
 libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   events : {
-    "click #js-rolls-back" : "_goBack",
-    "click #js-roll-delete" : "_confirmRollDelete",
+    "click #js-rolls-back"            : "_goBack",
+    "click #js-roll-delete"           : "_confirmRollDelete",
     "click .js-roll-add-leave-button" : "_toggleJoinRoll",
-		"click .js-edit-roll" : "_toggleRollEditFunctions"
+		"click .js-edit-roll"             : "_toggleRollEditFunctions"
   },
 
   el : '#js-roll-action-menu',

@@ -1,0 +1,27 @@
+<div class="media_module clearfix">
+  <a href="#" onclick="return false;" class="media_image">
+    <span class="image_module xuser-avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
+      <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= userNickname %>" alt="<%= userNickname %>">
+    </span>
+  </a>
+  <div class="media_body clearfix">
+    <% if (action != 'rolling') { %>
+      <!-- display natural comment -->
+      <p class="xuser-data">
+        shared by <strong><%= userNickname %></strong> on twitter
+      </p>
+      <p>
+        <%= messageText %>
+      </p>
+    <% } else { %>
+      <!-- display input for rolling -->
+      <textarea id="js-rolling-message" class="form_textarea js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"><%= messageText %></textarea>
+    <% } %>    
+
+    <% if (action == 'rolling') { %>
+      <button id="js-roll-it" class="form_submit rolling-submit" type="submit" tabindex="0" onclick="return false;">
+        Roll It!
+      </button>
+    <% } %>
+  </div>
+</div><!-- eo .media_module-->

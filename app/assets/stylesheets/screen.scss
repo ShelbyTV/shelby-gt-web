@@ -1,21 +1,18 @@
 @import "base";
 @import "base-mixin";
-//x
+
 @import 
 		"partials/fonts",
 		"partials/h5bp", 
-		"partials/media-query-35em",	
+		"partials/modules",	
 		
 		"partials/app.html",
-		"partials/guide-header",
+		"partials/app-header",
 		"partials/guide-presentation-selector",
 		"partials/guide-overlay-view",
 
 		"partials/explore",
     "partials/action",
-
-		"partials/roll-header",
-		"partials/roll-item",
 		
 		"partials/isolated-roll",
 
@@ -23,7 +20,7 @@
 		"partials/video-player",
 		"partials/notifications",
 
-		"partials/saved-indicator",
+		"partials/roll-header",
 		
 		"partials/video-controls",
 		"partials/video-mini-progress",
@@ -36,29 +33,20 @@
 
 		"partials/rolls",	
 		"partials/share",
-		"partials/roll-selection-items",
 
 		"partials/user-preferences",
 		"partials/team",
 		
-		"partials/anon-banner",
-		"partials/anon-guide",
+		"partials/avatar_uploading",
 
 		"partials/load-more",
 
 		"partials/context-overlay",
 		"partials/preroll-video-info",
 
-		"partials/guide-education",
-
 		"partials/gate.scss",
 		"partials/genius.scss",
-		"partials/ui-test.scss",
 
 		"partials/autocomplete.scss",
 
 		"partials/h5bp-utilities";
-
-// line	17: "partials/guide-overlay-controls",
-// line 10:	"partials/menu",
-// line ... "partials/form-roll-video",

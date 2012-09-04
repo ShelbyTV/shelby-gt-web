@@ -9,9 +9,10 @@
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({
     
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .back:not(.js-busy)" : "_setGuideOverlayStateNone",
-      "click .js-new-comment-submit" : "_addMessage",
-      "click .js-message-reply" : "_reply"
+      "click .js-cancel:not(.js-busy)" : "_setGuideOverlayStateNone",
+      "click .js-new-comment-submit"   : "_addMessage",
+      "click .js-message-reply"        : "_reply",
+      "click .js-load-video"           : "_loadVideo"
     }),
 
     className : GuideOverlayView.prototype.className + ' conversation-overlay',
@@ -30,11 +31,10 @@
 
     render : function(){
       var self = this;
-      
+
       this.$el.html(this.template({ frame : this.model, user: shelby.models.user }));
       
       this.model.get('conversation').get('messages').each(function(message){
-        console.log(message);
         var messageView = new MessageView({model:message});
         self.renderChild(messageView);
         self.$('.conversation').append(messageView.el);
@@ -103,6 +103,10 @@
     
     _onAddMessageInputFocus : function(event){
       this.$('.js-add-message-input').removeClass('error');
+    },
+    
+    _loadVideo : function(){
+      shelby.models.guide.set('activeFrameModel', this.model);
     }
     
   });

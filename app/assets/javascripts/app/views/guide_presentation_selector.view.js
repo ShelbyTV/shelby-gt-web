@@ -8,10 +8,11 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
     
     events : {
-      "click .js-stream:not(.guide-presentation-content-selected)"   : "_goToStream",
-      "click .js-queue:not(.guide-presentation-content-selected)"   : "_goToQueue",
-      "click .js-my-rolls:not(.guide-presentation-content-selected)" : "_filterMyRolls",
-      "click .js-explore:not(.guide-presentation-content-selected)"   : "_explore"
+      "click .js-stream:not(.active-item)"   : "_goToStream",
+      "click .js-queue:not(.active-item)"    : "_goToQueue",
+      "click .js-my-rolls:not(.active-item)" : "_filterMyRolls",
+      "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-now-playing"                : "_nowPlaying"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -48,15 +49,43 @@
     _explore : function(){
       shelby.router.navigate('explore',{trigger:true});
     },
+    
+    _nowPlaying : function(){
+      var origin = this.model.get('activeFrameModel'),
+          originHasRoll = origin.has('roll'),
+          userDesires = shelby.models.userDesires,
+          guideVisibility = userDesires.get('guideShown'),
+          playingState = shelby.models.guide.get('playingState');
+
+      if (!guideVisibility) {
+        userDesires.set('guideShown', true);
+      }
+
+      if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
+        //if video has no roll, or it's playingstate is 'dashboard', go to stream
+        shelby.router.navigate('stream', {trigger:true});
+      } 
+      else if( originHasRoll ) {
+        //otherwise go to roll
+        var frameId = origin.id,
+            rollId = origin.get('roll').id;
+        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
+      }
+    },
 
     _onGuideModelChanged : function(model){
       var _changedAttrs = _(model.changedAttributes());
       // only update selection rendering if relevant attribtues have been updated
-      if (!_changedAttrs.has('displayState') &&
-          !_changedAttrs.has('rollListContent')) {
-        return;
+      if (_changedAttrs.has('displayState') ||
+          _changedAttrs.has('rollListContent')) {
+        this._setSelected();
       }
-      this._setSelected();
+      
+      //show "Now Playing" only when we have an active video
+      if(_changedAttrs.has('activeFrameModel')){
+        this.model.get('activeFrameModel') ? this.$(".guide-now-playing").show() : this.$(".guide-now-playing").hide();
+      }
+      
     },
 
     _setSelected : function(){
@@ -78,12 +107,12 @@
       }
 
       if ($setSelectedClassOn) {
-        $setSelectedClassOn.addClass('guide-presentation-content-selected');
+        $setSelectedClassOn.addClass('active-item');
       }
     },
 
     _clearSelected : function(){
-      this.$('.js-content-selector button').removeClass('guide-presentation-content-selected');
+      this.$('.js-content-selector button').removeClass('active-item');
     }
 
   });

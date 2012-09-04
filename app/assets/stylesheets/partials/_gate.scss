@@ -1,5 +1,35 @@
 @import "base";
 
+
+
+
+.logged-out-twitter,
+.email-gate-networks-twitter {
+	
+	@include x-logged-out-networks-buttons($twitter-blue);
+	&:before{
+		background-image: url($icon-share-twitter-on);
+		background-position: center center;
+		background-size: 97%;
+	}
+}
+
+.logged-out-facebook,
+.email-gate-networks-facebook {
+
+	@include x-logged-out-networks-buttons($facebook-blue);
+	&:before{
+		background-image: url($icon-share-facebook-on);
+		background-position: 1px -1px;
+		background-size: 95%;
+	}
+}
+
+
+
+
+
+
 html {
 	overflow-y:auto !important;
 	overflow-y:hidden !important;
@@ -58,7 +88,7 @@ html {
 }
 
 .gate-login {
-	@include x-button-primer($shelby-green);
+	@include xx-button-primer($shelby-green);
 
 	margin: 0 0 1.5em;
 
@@ -96,14 +126,14 @@ html {
 }
 
 .gate-form-submit{
-	@include x-button-primer($shelby-blue, small);
+	@include xx-button-primer($shelby-blue, small);
 
 	display: block;
 	margin-top: 1em;
 }
 
 .gate-form-login-submit{
-  @include x-button-primer($shelby-green, small);
+  @include xx-button-primer($shelby-green, small);
 
 	display: block;
 	margin-top: 1em;

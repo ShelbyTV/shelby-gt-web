@@ -183,7 +183,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   internalRemoveOne : function(item){
-    var viewToRemove = this.children.find(this._findViewByModel(item));
+    var viewToRemove = _(this._listItemViews).find(function(listItemView) {
+      return listItemView.isMyModel(item);
+    });
     if (viewToRemove) {
       viewToRemove.leave();
       var index = this._listItemViews.indexOf(viewToRemove);
@@ -256,12 +258,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         // so we have the option of keeping a full copy of the collection within this list view as our "master copy"
         return this.options.simulateAddTrue ? this._simulatedMasterCollection : this.model.get(this.options.collectionAttribute);
     }
-  },
-
-  _findViewByModel : function(model){
-    return function(view){
-      return model && view.model.id == model.id;
-    };
   },
 
   _constructListItemView : function(item){

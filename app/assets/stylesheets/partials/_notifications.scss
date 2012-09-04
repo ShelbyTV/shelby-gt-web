@@ -43,11 +43,11 @@
 		}
 	}
 	
-	.notification-confirm { @include x-button-primer($shelby-blue); }
-	.notification-cancel { @include x-button-primer; }
-	button.red { @include x-button-primer($shelby-red); }
-	button.blue { @include x-button-primer($shelby-blue); }
-	button.grey { @include x-button-primer; }
+	.notification-confirm { @include xx-button-primer($shelby-blue,dark); }
+	.notification-cancel { @include xx-button-primer; }
+	button.red { @include xx-button-primer($shelby-red,dark); }
+	button.blue { @include xx-button-primer($shelby-blue,dark); }
+	button.grey { @include xx-button-primer($shelby-gray,dark); }
 	
 	.one_button{
 		.notification-confirm{

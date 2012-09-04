@@ -1,64 +1,71 @@
 @import "base";
 
-$outset : adjust-lightness($outset,-10%);
-
 .context-overlay-wrapper {
-	@include transition-property(opacity);
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
-	
-//	left: $defaultMargin;
-//	padding-right: 360px;
-	padding-left: 360px;
-	position: absolute;
-	right: $defaultMargin;
-	top: $defaultMargin;
-	width: 20%;
-	z-index:3;	
 }
+
+//---------------------------
+//	nested styles in context-overlay-lining 
+//  override default styling of the frame (jst)
+//	(the context-overlay is a subclass of the frame view)
+//---------------------------
 
 .context-overlay-lining {
-	float: right;
-	font-size: 120%; //fixes the clipping of the icons in the buttons, makes line-height taller
-	width: 330px;
-	position: relative;
+	font-size: .925em;
+	line-height: 1.5;
+	width: $guide-width;
 
-	.video-card {
-		background-color: $guide-bg-color;
-		box-shadow: inset 0px 1px 0px 0px $outset;
-		margin: 10px;
+	.xframe {
+		background-color: $base;
+		overflow: hidden; //hide that body-wrapper box-shadow!
+		padding: 0;
 	}
 
-	.video-card-header,
-	.video-card-footer {
+	.xframe-title {
+		padding-left: 5px;
+		padding-top: 3px;
+	}
+
+	.xframe-menu {
+		bottom: 29px;
+		display: block;
+		top: auto;
+
+		.right {
+			float: left;
+			text-align: left;
+		}
+	}
+
+	.xframe-option,
+	.xframe-command {
+		//let's "unstyle" this shit to look like a text link.
+		border: none !important;
+		box-shadow: none;
 		background: transparent;
-	}
+		color: #666;
+		font-family: $font-family;
+		margin: 0;
+		width: auto;
 
-	.video-card-header {
-		border-bottom: none;
-	}
-
-	.frame-controls {
-		button{
-			border-top-color: $outset;
-			border-left-color: $outset;
-		}
-	}
-}
-
-.user-inactive .context-overlay-wrapper {
-  opacity: 0;
-}
-
-.context-overlay-header{
-		&:active,
-		&:link,
-		&:visited {
-			text-decoration: none;
-		}
-		
 		&:hover {
 			text-decoration: underline;
 		}
-}
+	}
+
+	.command-more {
+		display: none;
+		margin: 0;
+	}
+
+	.xframe-sublist {
+		display: block;
+		margin: 0;
+		width: auto;
+	}
+
+	.xuser-message {
+		overflow-y:auto;
+		max-height: 150px;
+	}
+
+}//eo .context-overlay-lining

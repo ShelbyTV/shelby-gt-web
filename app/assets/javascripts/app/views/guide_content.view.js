@@ -2,7 +2,6 @@
 
   // shorten names of included library prototypes
   var DisplayState = libs.shelbyGT.DisplayState;
-  var PlayingState = libs.shelbyGT.PlayingState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var RollListView = libs.shelbyGT.RollListView;
@@ -26,6 +25,12 @@
 
     _currentRollMasterCollection : null,
     _currentRollView : null,
+
+    _playingFrameGroupCollection : null,
+    _playingState : libs.shelbyGT.PlayingState.none,
+    _playingRollId : null,
+
+    _nowSkippingVideo : false,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -75,7 +80,9 @@
     },
 
     _mapAppendChildView : function(guideModel){
-      switch (this.model.get('displayState')) {
+      var currentDisplayState = this.model.get('displayState')
+
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           displayParams = {
             viewProto : DashboardView,
@@ -121,6 +128,7 @@
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
+              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
               fetchParams : {
                 include_children : true,
                 sinceId : this.model.get('sinceId')
@@ -165,14 +173,28 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
-      switch (this.model.get('displayState')) {
+      switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
+          if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
+            // while we were away from the dashboard, we relied on the last displayed state of the dashboard
+            // to determine what frames to play
+            // since we're displaying the dashboard again now, we need to play based on what is actually
+            // displayed in the current dashboard view
+            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+          }
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
         case DisplayState.queue :
           this._currentRollView = this._listView;
+          if (this._playingState == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
+            // while we were away from this roll, we relied on the last displayed state of the roll
+            // to determine what frames to play
+            // since we're displaying the roll again now, we need to play based on what is actually
+            // displayed in the current roll view
+            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+          }
           break;
       }
 
@@ -230,27 +252,21 @@
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (activeFrameModel) {
-        if (!guideModel.get('skippingVideo')) {
+        if (!this._nowSkippingVideo) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
-            guideModel.set({
-              playingState : PlayingState.dashboard
-            });
+            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.dashboard;
+            this._playingRollId = null;
           } else {
-            guideModel.set({
-              playingState : PlayingState.roll,
-              // XXX TODO in this case, when the activeFrame model changes, everything is fine.
-              // however, if we're playing a roll, switch to dashboard, and switch back to the
-              // same roll, the new roll view / frame collection isn't the same as the playing
-              // frame group collection, so the UI and frame skipping logic don't match.
-              playingRollFrameGroupCollection : this._currentRollView.frameGroupCollection
-            });
+            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.roll;
+            this._playingRollId = activeFrameModel.get('roll').id;
           }
         }
       } else {
-        guideModel.set({
-          playingState : PlayingState.none,
-          playingRollFrameGroupCollection : null
-        });
+        this._playingFrameGroupCollection = null;
+        this._playingState = libs.shelbyGT.PlayingState.none;
+        this._playingRollId = null;
       }
     },
 
@@ -264,8 +280,9 @@
     },
 
     _onChangeVideo : function(userDesiresModel, videoChangeValue){
-      if (typeof videoChangeValue==='undefined') return false;
-      this._skipVideo(videoChangeValue);
+      if (userDesiresModel.has('changeVideo')) {
+        this._skipVideo(videoChangeValue);
+      }
     },
 
     _onPlaybackNext : function(){
@@ -275,68 +292,16 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      // undefined skip causes infinite loop below... so just return here?
-      if (!skip) {
-        return;
-      } 
-
-      var self = this,
-          _frameGroups,
-          _index = -1,
-          _currentFrameGroupIndex = -1,
-          _currentFrame = this.model.get('activeFrameModel');
-     
-      if (this.model.get('playingState') == PlayingState.dashboard) {
-        _frameGroups = this._dashboardView.frameGroupCollection.models;
-      } else {
-        _frameGroups = this.model.get('playingRollFrameGroupCollection').models;
+      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
+      // if we can't find a playable frame in the direction we're looking,
+      // we return to the beginning of the roll or stream
+      if (!nextFrame) {
+        nextFrame = this._playingFrameGroupCollection.at(0).getFirstFrame();
       }
 
-      if (!_frameGroups) {
-        return;
-      }
-
-      var _frameInCollection = _(_frameGroups).find(function(frameGroup){return frameGroup.get('frames').at(0).get('video').id == _currentFrame.get('video').id;});
-      if (_frameInCollection) {
-        _currentFrameGroupIndex = _frameGroups.indexOf(_frameInCollection);
-        _index = _currentFrameGroupIndex + skip;
-      } else {
-        _currentFrameGroupIndex = 0;
-      }
-
-      // loop to skip collapsed frames (looping should only happen in dashboard view)
-      while (true) {
-
-        // bad index means we just stay on current video...
-        if (_index < 0) {
-          _index = _currentFrameGroupIndex;
-          break;
-        } else if (_index >= _frameGroups.length) {
-          // ideally would load more videos here? do something like _loadMoreWhenLastItemActive
-          _index = _currentFrameGroupIndex;
-          break;
-        }
-
-        if (!_frameGroups) {
-          _index = 0;
-          break;
-        }
-
-        var _indexFrameGroupInCollection = _frameGroups[_index];
-
-        if (_indexFrameGroupInCollection.get('collapsed')) {
-          _index = _index + skip; // keep looking for a non-collapsed frame group to play
-        } else {
-          break; // otherwise we have a good non-collapsed frame group to play
-        }
-      }
-
-      this.model.set({
-        activeFrameModel : _frameGroups[_index].get('frames').at(0),
-        skippingVideo : true
-      });
-
-      this.model.set('skippingVideo', false);
+      this._nowSkippingVideo = true;
+      this.model.set({activeFrameModel: nextFrame});
+      this._nowSkippingVideo = false;
     }
 
   });

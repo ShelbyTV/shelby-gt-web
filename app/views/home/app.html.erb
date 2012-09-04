@@ -34,7 +34,7 @@
         <!-- content filled in by VideoContentPaneView -->
       </section><!-- eo .content_lining -->
 
-      <section class="js-inactivity-preemption js-guide guide-wrapper sidebar_module clearfix" role="sidebar">
+      <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
         <!-- content filled in by GuideView -->
       </section><!-- eo .guide-wrapper -->
     </div><!-- eo .content_wrapper.main-layout -->
@@ -46,7 +46,10 @@
     <div class="content_wrapper action-layout js-action-layout">
       <section class="content_lining">
       </section>
-    </div><!-- eo .content_wrapper.explore-layout -->
+    </div><!-- eo .content_wrapper.action-layout -->
+
+		<!-- Need this at the base level so it's always in the DOM -->
+		<div id="js-notifications-wrapper" class="notifications-wrapper"></div>
 
   </div> <!-- eo ~application -->
 	<% if Rails.env == 'production' %>
@@ -71,5 +74,7 @@
 		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 		</script>
 	<% end %>
+	
+	<%= javascript_include_tag "deferred" %>
 </body>
 </html>

@@ -1,0 +1,273 @@
+//---------------------------
+//  TODO: fix this list shit 
+//---------------------------
+
+.list,
+.rolls-list,
+.form-rolls-list,
+.existing-rolls-list > ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;  
+    &:first-child {
+      .xframe {
+        border-top: none;
+      }
+    }
+  }
+}
+
+//---------------------------
+//  animation module 
+//---------------------------
+
+.animate_module,
+.animate-easein {
+  @include animate;
+}
+
+//---------------------------
+//  media module, what up! 
+//  thanks @stubbornella.
+//---------------------------
+
+.media_module {
+  margin : $media-module-margin;
+  position : relative;
+}
+
+.media_body,
+.media_image {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media_image {
+  float: left;
+  margin-right: 10px;
+}
+
+.media_body {
+  p {
+    margin: 0 0 .5em 0;
+  }
+}
+
+//---------------------------
+//  modular image
+//---------------------------
+
+.image_module {
+  @include background-size(cover);
+
+  background-color: $thumbnail_default_bg;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+//---------------------------
+//  modular menu framework
+//  menu appears in the frame
+//---------------------------
+
+.menu_module {
+  display: none;
+}
+
+.menu_list,
+.menu_sublist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu_sublist {
+  display: none;
+  width: 106px;
+}
+
+.menu_item:hover {
+  .menu_sublist{
+    display: block;
+  }
+}
+
+.menu_item {
+  float: left;
+
+  &.right {
+    float: right;
+    //float LI to the right
+    text-align: right;
+    //child el (button) is display:inline by default,
+    //this is like a fake float right
+    //makes the sublist margin effective.
+  }
+}
+
+//---------------------------
+//  modular list framework
+//---------------------------
+
+.list_module {
+  margin: 0;
+  list-style-type: none;
+  padding: $list-module-spacing;
+}
+
+.list_item {
+}
+
+.list_button {
+
+  &:hover {
+    background-color: $list-item-bg-hover;
+  }
+}
+
+//---------------------------
+//  modular overlay framework
+//---------------------------
+
+.overlay_header {
+  height: $overlay_header_height;
+}
+
+.overlay_body {
+  bottom: 0;
+  position: absolute;
+  overflow-y: auto;
+  top: $overlay_header_height;
+  width: 100%;
+}
+
+//---------------------------
+//  modular form framework
+//---------------------------
+
+.form_module {
+
+}
+
+.form_fieldset {
+  margin-top: 1em;
+}
+
+.form_label {
+  font-family: $font-family-display;
+  font-size: 1em;
+  font-weight: 400;
+  display: block;
+  line-height: 1.75;
+}
+
+.form_input,
+.form_textarea {
+  @include roundies(input);
+  @include transition-property('border');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
+
+  border: 1px solid adjust-lightness($inset, -15%);
+  display: block;
+  font-size: 1.2em;
+  padding: .5em;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border: 1px solid adjust-lightness($inset, -50%);
+  }
+}
+
+.form_textarea_subline {
+  margin: .25em 0 0;
+  opacity: .5;
+  text-align: right;
+}
+
+.form_input {
+  margin-bottom: 1em;
+}
+
+.form_textarea {
+
+}
+
+.form_submit {
+  @include xx-button-primer($shelby-blue, dark, wide);
+
+  .spinner {
+    left: auto;
+    margin-left: -4px;
+    margin-top: -2px;   
+    position: relative;
+  }
+}
+
+//---------------------------
+//  share form framework
+//---------------------------
+
+.share_module {
+
+}
+
+.share_label {
+  float: left;
+  margin-right: 5px;
+}
+
+.share_label_icon {
+  display: block;
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+.share_input {
+
+}
+
+.share_input:checked {
+
+}
+
+//---------------------------
+//  dropdown framework
+//  used in header nav
+//---------------------------
+
+.dropdown_module {
+  position: relative;
+
+  &:hover {
+    .dropdown_section {
+      display: block;
+    }
+  }
+}
+
+.dropdown_button {
+}
+
+.dropdown_icon {
+  background-image: url($icon-carrot);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-style: normal;
+  padding-right: 1em;
+}
+
+.dropdown_section {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown_lining {
+
+}

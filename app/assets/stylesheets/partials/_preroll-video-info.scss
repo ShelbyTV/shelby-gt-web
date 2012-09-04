@@ -9,7 +9,7 @@
 .preroll-video-info-wrapper {
   left: 0;
   position: absolute;
-  top: 30%;
+  top: 50%;
   width: 100%;
   z-index: 2;
 
@@ -35,7 +35,7 @@
 
   background: rgba(0,0,0, 0.5);
   color: white;
-  margin:0 $defaultMargin * 6;
+  margin:-25% $defaultMargin * 6;
   opacity: 0.0;
   padding: 20px;
 
