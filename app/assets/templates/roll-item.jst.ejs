@@ -28,9 +28,5 @@
 
 %>
 <button class="list_button guide-link js-roll-item-button">
-  <% if(creator_nickname != roll_title && creator_nickname != undefined) { %>
-    <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-  <% } else { %>
-    <%= (creator_nickname) ? creator_nickname : roll_title %>
-  <% } %>
+  <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(roll) %>
 </button>
