@@ -10,7 +10,8 @@ libs.shelbyGT.ExploreFrameListView = libs.shelbyGT.ListView.extend({
                                // fetch more frames for this roll later
       doStaticRender : true,
       listItemView : 'ExploreFrameItemView',
-      listItemViewAdditionalParams : {roll:this.model}
+      listItemViewAdditionalParams : {roll:this.model},
+      maxDisplayedItems: 3
   }),
 
   _filter : function(frame) {
