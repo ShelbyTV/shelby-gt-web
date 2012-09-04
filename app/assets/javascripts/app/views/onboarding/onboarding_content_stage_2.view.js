@@ -19,7 +19,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onRollFollowSuccess : function(){
-    this.$('.js-onboarding-roll-list-item-lining').addClass('followed');
+    this.$('.js-onboarding-roll-item-lining').addClass('followed');
   }
 
   

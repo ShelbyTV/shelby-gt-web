@@ -64,8 +64,8 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   _onSaveSuccess : function(){
     this.$('.js-onboarding-next-step').text('Get Started');
     // TODO: this doesn't work
-    alert('go to the next step');
-    //shelby.router.navigate('onboarding/2');
+    //alert('go to the next step');
+    shelby.router.navigate('onboarding/2', {trigger:true});
   },
 
   _onSaveError : function(model, even, response){

@@ -1,29 +1,39 @@
+<%
+  var authed_providers = [];
+  shelby.models.user.get('authentications').forEach(function(auth){
+    console.log(auth.provider);
+    authed_providers.push(auth.provider);
+  });
+%>
+
 <div class="onboarding-header">
   <h1>Comment and Share</h1>
   <h2>Connect your favorite network.</h2>
 </div>
+
 <ul class="clearfix onboarding-network-list">
-  <li class="js-onboarding-network-list-item">
-    <div class="onboarding-network-list-item-lining">
-      <button>
-        Twitter  
-      </button>
-    </div>
-  </li>
-  <li class="js-onboarding-network-list-item">
-    <div class="onboarding-network-list-item-lining">
-      <button>
-        Facebook  
-      </button>
-    </div>
-  </li>
-  <li class="js-onboarding-network-list-item">
-    <div class="onboarding-network-list-item-lining">
-      <button>
-        Tumblr  
-      </button>
-    </div>
-  </li>
+  
+  <% ['twitter', 'facebook', 'tumblr'].forEach(function(network){ %>
+
+    <%
+      var connected_network, disabled = '';
+      if( _.include(authed_providers, network) ){
+        connected_network = 'connected-network';
+        disabled = 'disabled';
+      }
+    %>
+
+    <li class="onboarding-network-item js-onboarding-network-item">
+      <div class="onboarding-network-item-lining">
+        <button <%= disabled %> class="<%= connected_network %> js-oauth-popup onboarding-network-button onboarding-network-<%= network %>" type="button" popup-width="600" popup-height="700" location="http://api.shelby.tv/auth/<%= network %>">
+          <i class="ir onboarding-icon">
+            <%= network %>
+          </i>
+        </button>
+      </div>
+    </li>
+  <% }); %>
+
 </ul>
 
 <button class="onboarding-next-step">

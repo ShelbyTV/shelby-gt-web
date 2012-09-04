@@ -4,10 +4,21 @@ $path: "/images/assets/" !default;
 $logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
+
+//onboarding
+$icon-onboarding-facebook-add             : "#{$path}onboarding_facebook_add#{$extension}";
+$icon-onboarding-facebook-added           : "#{$path}onboarding_facebook_added#{$extension}";
+$icon-onboarding-tumblr-add               : "#{$path}onboarding_tumblr_add#{$extension}";
+$icon-onboarding-tumblr-added             : "#{$path}onboarding_tumblr_added#{$extension}";
+$icon-onboarding-twitter-add              : "#{$path}onboarding_twitter_add#{$extension}";
+$icon-onboarding-twitter-added            : "#{$path}onboarding_twitter_added#{$extension}";
+
+
 //TODO: get a PNG of this lil' fucker:
 $icon-cancel                    : "#{$path}cancel.svg";
 //$icon-cancel                    : "#{$path}cancel#{$extension}";
 $icon-carrot                    : "#{$path}carrot#{$extension}";
+$icon-check                     : "#{$path}check#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
 $icon-comment-reply             : "#{$path}comment_reply#{$extension}";
 $icon-mark                      : "#{$path}mark#{$extension}";
@@ -161,6 +172,7 @@ $toggle-switch-gray                 : #fefefe;
 //--- COLORS: shelby 
 $shelby-blue       : #0590c4;
 $shelby-gray       : #27292A;
+$shelby-gray-light : #a0a0a0;
 $shelby-green      : #428e3a;
 $shelby-purple     : #693a7b;
 $shelby-red        : #cc1235;
