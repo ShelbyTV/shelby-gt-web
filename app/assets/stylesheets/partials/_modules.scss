@@ -216,6 +216,14 @@
     margin-top: -2px;   
     position: relative;
   }
+
+  &:hover {
+    @include xx-button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+  }
+
+  &:active {
+    @include xx-button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+  }
 }
 
 //---------------------------
@@ -294,3 +302,66 @@
   //i.e. class="dropdown_lining nowplaying-section-lining",
   //.nowplaying-section-lining applies offset.
 }
+
+//---------------------------
+//  social-login framework
+//---------------------------
+
+.social_login {
+}
+
+.social_login_twitter,
+.social_login_facebook {
+  display: block;
+  float: left;
+  padding: 0 3px 0 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px; 
+
+  &:before {
+    width: 36px;
+  }
+  &:visited {
+    color: #efefef;
+  }
+}
+
+.social_login_twitter {
+  @include x-logged-out-networks-buttons($twitter-blue);
+
+  margin-right: 20px;
+  
+  &:before{
+    background-image: url($icon-share-twitter-on);
+    background-position: 30% 50%;
+    background-size: 82%;
+  }
+
+  &:hover {
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, 5%));
+  }
+
+  &:active {
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, -5%));
+  }
+}
+
+.social_login_facebook {
+  @include x-logged-out-networks-buttons($facebook-blue);
+
+  &:before{
+    background-image: url($icon-share-facebook-on);
+    background-position: 30% 50%;
+    background-size: 72%;
+  }
+
+  &:hover {
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, 5%));
+  }
+
+  &:active {
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, -5%));
+  }
+}
+

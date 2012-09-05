@@ -14,13 +14,11 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onOnboardingRollButtonClick : function(event){
-    console.log('following roll', event.currentTarget.id);
-    var rollToJoin = new libs.shelbyGT.RollModel({id:event.currentTarget.id});
-    rollToJoin.joinRoll(this._onRollFollowSuccess);
-  },
-
-  _onRollFollowSuccess : function(){
-    this.$('.js-onboarding-roll-item-lining').addClass('followed');
+    var rollId = event.currentTarget.id;
+    var rollToJoin = new libs.shelbyGT.RollModel({id:rollId});
+    rollToJoin.joinRoll(function(){
+      $('#js-roll-item-lining-'+rollId).addClass('followed');
+    });
   },
 
   _onNextStepClick : function(){

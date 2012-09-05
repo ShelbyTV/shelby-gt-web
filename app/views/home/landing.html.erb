@@ -34,38 +34,39 @@
 
 		  <nav class="guide-presentation-selector">
 				<ul class="guide-nav-list clearfix">
-			    <li class="dropdown_module guide-nav-item secondary-item guide-settings">
+			    <li class="dropdown_module guide-nav-item secondary-item guide-login">
 				    <button class="dropdown_button nav-button js-track-event" data-ga_category="Landing Page" data-ga_action="Header log in">
 				      <i class="dropdown_icon">
 				        Log In
 				      </i>
 				    </button>
 				
-				    <section class="dropdown_section settings-section">
-				      <div class="dropdown_lining settings-section-lining clearfix">
-								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module">
-									<fieldset class="form_fieldset">
+				    <section class="dropdown_section login-section">
+				      <div class="dropdown_lining login-section-lining clearfix">
+					      <h3 class="login-header">Beta Access Login</h3>
+								<div class="social_login login-social-section clearfix">
+						      <a class="social_login_twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+						        Twitter
+						      </a>
+
+						      <a class="social_login_facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+						        Facebook
+						      </a>
+								</div>
+								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form">
+									<fieldset class="">
 										<label for="username" class="form_label">Username</label>
 										<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
 									</fieldset>
 									<fieldset class="form_fieldset">
 										<label for="password" class="form_label">Password</label>
-										<input id="password" name="password" type="password" placeholder="•••" class="form_input" />
+										<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
 									</fieldset>
 									<fieldset class="form_fieldset">
 										<input name="commit" type="submit" value="Login" class="form_submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login" />
 									</fieldset>
 								</form>
 
-								<div class="gate-networks-wrapper clearfix">
-						      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
-						        Twitter
-						      </a>   
-
-						      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
-						        Facebook
-						      </a>
-								</div>
 							</div>
 						</section>
 						

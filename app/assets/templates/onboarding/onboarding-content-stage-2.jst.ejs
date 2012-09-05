@@ -7,31 +7,93 @@
 
 </div>
 
+<%
+  var rolls = [
+    {
+      title:'Laughing Squid',
+      category:'POPULAR CULTURE',
+      img_src:'/images/onboarding/rolls/laughingsquid.png',
+      roll_id:'4fa28d309a725b77f700070f'
+    },
+    {
+      title:'Brain Pickings',
+      category:'EDUCATION',
+      img_src:'/images/onboarding/rolls/brainpicker.png',
+      roll_id:'4fbad2c5d1041266bc000d4f'
+    },
+    {
+      title:'They Daily What',
+      category:'POPULAR CULTURE',
+      img_src:'/images/onboarding/rolls/dailywhat.png',
+      roll_id:'4fa28d849a725b79c9000228'
+    },
+    {
+      title:'IGN',
+      category:'GAMING',
+      img_src:'/images/onboarding/rolls/ign.png',
+      roll_id:'4f987a5e9a725b032b002f13'
+    },
+    {
+      title:'PBS Idea Channel',
+      category:'POPULAR CULTURE',
+      img_src:'/images/onboarding/rolls/pbs.png',
+      roll_id:'4faabca99a725b5cd50026a2'
+    },
+    {
+      title:'Red Bull',
+      category:'POPULAR CULTURE',
+      img_src:'/images/onboarding/rolls/redbull.png',
+      roll_id:'4fb413bb9a725b650900195a'
+    },
+    {
+      title:'Reuters',
+      category:'POPULAR CULTURE',
+      img_src:'/images/onboarding/rolls/reuters.png',
+      roll_id:'4f95622b9a725b72e700106b'
+    },
+    {
+      title:'Vondoom',
+      category:'COOL PEOPLE',
+      img_src:'/images/onboarding/rolls/vincent.png',
+      roll_id:'4f900553b415cc6614051b7b'
+    },
+    {
+      title:'WSJ',
+      category:'NEWS / BUSINESS',
+      img_src:'/images/onboarding/rolls/wsj.png',
+      roll_id:'4fa8542c88ba6b669b000bcd'
+    }
+
+  ];
+%>
+
 <ol class="clearfix onboarding-roll-list">
 
+  <% rolls.forEach(function(roll){ %>
+    <li class="onboarding-roll-item js-onboarding-roll-item">
+      
+      <div id="js-roll-item-lining-<%= roll.roll_id %>" class="onboarding-roll-item-lining js-onboarding-roll-item-lining">
+        <h3 class="onboarding-roll-head"><%= roll.title %></h3>
+        <h4 class="onboarding-roll-subhead"><%= roll.category %></h4>
+        <div class="onboarding-roll-body">
 
-  <li class="onboarding-roll-item js-onboarding-roll-item">
-    
-    <div class="onboarding-roll-item-lining js-onboarding-roll-item-lining">
-      <h3 class="onboarding-roll-head">Laughing Squid</h3>
-      <h4 class="onboarding-roll-subhead">POPULAR CULTURE</h4>
-      <div class="onboarding-roll-body">
+          <div class="onboarding-roll-followed">
+            <i class="ir onboarding-followed-icon">
+              FOLLOWED
+            </i>
+          </div>
+          <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />
 
-        <div class="onboarding-roll-followed">
-          <i class="ir onboarding-followed-icon">
-            FOLLOWED
-          </i>
-        </div>
-        <img src="http://img.mota.ru/upload/wallpapers/2009/07/16/10/01/12257/movies_187-preview.jpg" class="onboarding-roll-list-img" />
-
-        <div class="onboarding-roll-button-wrapper">
-          <button id="4f900553b415cc6614051b7b" class="onboarding-roll-button js-onboarding-roll-list-item-button">
-            Follow
-          </button>
-        </div>
-    </div>
-    </div>
-  </li>
+          <div class="onboarding-roll-button-wrapper">
+            <button id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-list-item-button">
+              Follow
+            </button>
+          </div>
+      </div>
+      </div>
+      
+    </li>
+  <% }) %>
 
 </ol>
 
