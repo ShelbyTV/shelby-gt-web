@@ -2,7 +2,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   events: {
     "click .js-user-save:not(.js-busy)":  "_submitContactInfo",
-    "click .js-user-password-save": "_submitPassword",
+    "click .js-user-password-save:not(.js-busy)": "_submitPassword",
     "click .js-user-cancel": "_cancel",
     "click #show-change-password": "_showChangePassword",
     "change #you-preferences-email-weekly": "_toggleWeeklyEmails",
@@ -69,27 +69,37 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
         }
         $thisButton.removeClass('js-busy');
       },
-      wait : true
+      wait: true
     });
   },
 
-  _submitPassword: function(){
+  _submitPassword: function(e){
     var self = this;
     var info = {
       password: this.$('#you-preferences-password').val(),
       password_confirmation: this.$('#you-preferences-password-confirmation').val()
       };
 
-    if(info.password.length == 0){
-      self._updateSecurityResponse("Password can't be blank.");
+    if(info.password.length < 6){
+      self._updateSecurityResponse("password must be at least 6 characters.");
       return;
     }
 
+    var $thisButton = $(e.currentTarget).addClass('js-busy');
     this.model.save(info, {
-      success: function(model, resp){self._updateSecurityResponse("Password updated!");},
+      success: function(model, resp){
+        self._updateSecurityResponse("password updated!");
+        $thisButton.removeClass('js-busy');
+      },
       error: function(model, resp){
-        self._updateSecurityResponse("Passwords did not match.");
-      }
+        if (resp.status == 409) {
+          self._updateSecurityResponse("passwords did not match.");
+        } else {
+          self._updateSecurityResponse("unexpected error. try again later.");
+        }
+        $thisButton.removeClass('js-busy');
+      },
+      wait: true
     });
   },
 
