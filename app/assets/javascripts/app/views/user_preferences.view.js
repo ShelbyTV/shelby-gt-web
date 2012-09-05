@@ -1,7 +1,7 @@
 libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   events: {
-    "click .js-user-save":  "_submitContactInfo",
+    "click .js-user-save:not(.js-busy)":  "_submitContactInfo",
     "click .js-user-password-save": "_submitPassword",
     "click .js-user-cancel": "_cancel",
     "click #show-change-password": "_showChangePassword",
@@ -45,7 +45,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     window.history.back();
   },
 
-  _submitContactInfo: function(){
+  _submitContactInfo: function(e){
     var self = this;
     var _email = this.$('#you-preferences-email').val();
     // make sure this is a valid email address
@@ -55,14 +55,19 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     }
     var _username = this.$('#you-preferences-username').val();
     var info = {primary_email: _email, nickname: _username};
+    var $thisButton = $(e.currentTarget).addClass('js-busy');
     this.model.save(info, {
-      success: function(model, resp){self._updateResponse("saved!");},
+      success: function(model, resp){
+        self._updateResponse("saved!");
+        $thisButton.removeClass('js-busy');
+      },
       error: function(model, resp){
         if (resp.status == 409) {
           self._updateResponse("sorry, username taken.");
         } else {
           self._updateResponse("unexpected error. try again later.");
         }
+        $thisButton.removeClass('js-busy');
       },
       wait : true
     });
