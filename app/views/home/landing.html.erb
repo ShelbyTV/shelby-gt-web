@@ -152,8 +152,47 @@
 		</section>
 		
 		
-		<footer>
-			tiwtter, facebook, blog links and shit like that
+		<footer class="landing-footer">
+			<div class="landing-footer-lining">
+				
+				<ul class="landing-footer-lists">
+					<li>
+						<ul class="landing-footer-content-list">
+							<li class="header-item">Shelby.tv</li>
+							<li><a href="/blog/about">About</a></li>
+							<li><a href="mailto:contact@shelby.tv">Contact</a></li>
+							<li>Made in NYC</li>
+						</ul>
+					</li>
+					<li>
+						<ul class="landing-footer-content-list">
+							<li class="header-item">Community</li>
+							<li><a href="/blog">Blog</a></li>
+							<li><a href="http://twitter.com/shelby">Twitter</a></li>
+							<li><a href="http://facebook.com/shelby">Facebook</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="landing-footer-content-list">
+							<li class="header-item">Legal</li>
+							<li><a href="/privacy.html">Privacy</a></li>
+							<li><a href="/tos.html">Terms</a></li>
+						</ul>
+					<li>
+					
+					<li class="secondary">
+						<ul class="landing-footer-content-list">
+							<li class="header-item">Show us some love</li>
+							<li>
+								<div class="fb-like" data-href="http://shelby.tv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
+							</li>
+							<li>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv" data-text="a simple new way to enjoy video" data-related="shelby">Tweet</a>
+							</li>
+					</li>
+				</ul>
+				
+			</div>
 		</footer>
 		
 
@@ -170,6 +209,21 @@
       });
   	});
 	</script>
+	
+	<!-- Facebook widget -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- /facebook widget -->
+	
+	<!-- Twitter widget -->
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<!-- /Twitter widget -->
 	
 	<% if "production" == Rails.env %>
 	  <script>

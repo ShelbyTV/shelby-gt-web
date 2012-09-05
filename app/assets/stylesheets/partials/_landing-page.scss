@@ -1,4 +1,7 @@
+$landing-page-width: 920px;
+
 .shelby-landing {
+  overflow: auto;
   
   /* adjust the header, don't want absolute position */
   .shelby-header {
@@ -27,7 +30,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-shelf-lining {
-  width: 920px;
+  width: $landing-page-width;
   margin: 0 auto;
 }
 
@@ -134,4 +137,20 @@ $landing-page-shelf-background: #ccc;
   position: absolute;
   right: 0;
   width: 50%;
+}
+
+/********************************************************
+ * Footer
+ ********************************************************/
+
+$landing-page-footer-background: #161818;
+
+.landing-footer {
+  @include gradient-primer($landing-page-footer-background);
+}
+
+.landing-footer-lining {
+  width: $landing-page-width;
+  margin: 0 auto;
+  height: 250px;
 }
