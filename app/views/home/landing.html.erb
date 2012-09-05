@@ -37,13 +37,29 @@
 			    <li class="dropdown_module guide-nav-item secondary-item guide-login">
 				    <button class="dropdown_button nav-button js-track-event" data-ga_category="Landing Page" data-ga_action="Header log in">
 				      <i class="dropdown_icon">
-				        Log In
+				        Beta Community Log In
 				      </i>
 				    </button>
 				
 				    <section class="dropdown_section login-section">
 				      <div class="dropdown_lining login-section-lining clearfix">
-					      <h3 class="login-header">Beta Access Login</h3>
+								
+								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form">
+									<fieldset class="">
+										<label for="username" class="form_label">Username</label>
+										<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
+									</fieldset>
+									<fieldset class="">
+										<label for="password" class="form_label">Password</label>
+										<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
+									</fieldset>
+									<fieldset class="form_fieldset">
+										<input name="commit" type="submit" value="Login" class="login-submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login" />
+									</fieldset>
+								</form>
+								
+								<hr />
+								
 								<div class="social_login login-social-section clearfix">
 						      <a class="social_login_twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
 						        Twitter
@@ -53,19 +69,6 @@
 						        Facebook
 						      </a>
 								</div>
-								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form">
-									<fieldset class="">
-										<label for="username" class="form_label">Username</label>
-										<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
-									</fieldset>
-									<fieldset class="form_fieldset">
-										<label for="password" class="form_label">Password</label>
-										<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
-									</fieldset>
-									<fieldset class="form_fieldset">
-										<input name="commit" type="submit" value="Login" class="form_submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login" />
-									</fieldset>
-								</form>
 
 							</div>
 						</section>
@@ -156,34 +159,34 @@
 		<footer class="landing-footer">
 			<div class="landing-footer-lining">
 				
-				<ul class="landing-footer-lists">
+				<ul class="landing-footer-lists list_module">
 					<li>
-						<ul class="landing-footer-content-list">
-							<li class="header-item">Shelby.tv</li>
+						<h5 class="landing-footer-content-header">Shelby.tv</h5>
+						<ul class="landing-footer-content-list list_module">
 							<li><a href="/blog/about">About</a></li>
 							<li><a href="mailto:contact@shelby.tv">Contact</a></li>
 							<li>Made in NYC</li>
 						</ul>
 					</li>
 					<li>
-						<ul class="landing-footer-content-list">
-							<li class="header-item">Community</li>
+						<h5 class="landing-footer-content-header">Community</h5>
+						<ul class="landing-footer-content-list list_module">
 							<li><a href="/blog">Blog</a></li>
 							<li><a href="http://twitter.com/shelby">Twitter</a></li>
 							<li><a href="http://facebook.com/shelby">Facebook</a></li>
 						</ul>
 					</li>
 					<li>
-						<ul class="landing-footer-content-list">
-							<li class="header-item">Legal</li>
+						<h5 class="landing-footer-content-header">Legal</h5>
+						<ul class="landing-footer-content-list list_module">
 							<li><a href="/privacy.html">Privacy</a></li>
 							<li><a href="/tos.html">Terms</a></li>
 						</ul>
 					<li>
 					
 					<li class="secondary">
-						<ul class="landing-footer-content-list">
-							<li class="header-item">Show us some love</li>
+						<h5 class="landing-footer-content-header">Show us some love</h5>
+						<ul class="landing-footer-content-list secondary-landing-footer-content-list  list_module">
 							<li>
 								<div class="fb-like" data-href="http://shelby.tv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
 							</li>

@@ -42,9 +42,25 @@ $landing-page-width: 920px;
   margin: 10px 10px 0;
 }
 
+.login-section hr {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+  margin-bottom: 0;
+}
+
 .login-form,
 .login-social-section {
   padding: 10px;
+}
+
+.login-form .form_input {
+  margin-bottom: .5em;
+}
+
+.login-submit {
+  @include xx-button-primer();
+  
+  margin-top: .5em;
 }
  
 
@@ -185,4 +201,30 @@ $landing-page-footer-background: #161818;
   width: $landing-page-width;
   margin: 0 auto;
   height: 250px;
+}
+
+.landing-footer .list_module {
+  padding: 0;
+}
+
+.landing-footer-lists > li {
+  float: left;
+  width: (100%/6);
+}
+
+.secondary-landing-footer-content-list {
+  float: right;
+}
+
+.landing-footer-content-header, .landing-footer-content-list li {
+  color: #EFEFEF;
+  font-size: 1.3em;
+  font-family: ubuntu;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.landing-footer-content-header {
+  margin-bottom: 10px;
+  width: inherit;
 }
