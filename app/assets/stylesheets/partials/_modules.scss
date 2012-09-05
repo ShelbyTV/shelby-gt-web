@@ -311,10 +311,12 @@
   }
 
   &:hover {
-    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue), 5%);
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, 5%));
   }
+
   &:active {
-    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue), -5%);
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, -5%));
+  }
 }
 
 .social_login_facebook {
@@ -327,10 +329,11 @@
   }
 
   &:hover {
-    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue), 5%);
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, 5%));
   }
+
   &:active {
-    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue), -5%);
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, -5%));
   }
 }
 
