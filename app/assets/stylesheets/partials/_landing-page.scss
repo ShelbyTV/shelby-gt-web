@@ -1,0 +1,137 @@
+.shelby-landing {
+  
+  /* adjust the header, don't want absolute position */
+  .shelby-header {
+    position: relative;
+  }
+}
+
+/********************************************************
+ * Login
+ ********************************************************/
+ 
+ 
+ 
+
+/********************************************************
+ * All Shelves
+ ********************************************************/
+
+$landing-page-shelf-background: #ccc;
+
+.landing-shelf {
+  @include gradient-primer($landing-page-shelf-background);
+  
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+}
+
+.landing-shelf-lining {
+  width: 920px;
+  margin: 0 auto;
+}
+
+.landing-shelf-header {
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.landing-shelf-subheader {
+  font-family: $font-family-display;
+  font-size: 1.75em;
+  font-weight: 100;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  width: 400px;
+}
+
+.landing-shelf-error {
+  color: red;
+  font-size: 1.5em;
+}
+
+/********************************************************
+ * Genius App Shelf
+ ********************************************************/
+
+.landing-shelf-genius .landing-shelf-lining {
+  background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
+  padding: 55px 0 10px;
+}
+
+.landing-appstore {
+  border-radius: 5px;
+  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
+  display: block;
+  height: 97px;
+  margin: 45px 0;
+  width: 265px;
+  
+  &:hover {
+    box-shadow: 0 0 200px 4px white;
+  }
+}
+
+/********************************************************
+ * Private Beta Shelf
+ ********************************************************/
+
+.landing-shelf-private {
+  position: relative;
+}
+
+.landing-shelf-private .landing-shelf-lining {
+  padding: 40px 0 50px;
+}
+
+.landing-form {
+  
+}
+
+.landing-form-label {
+  display: block;
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 300;
+  line-height: 2.5;
+}
+
+.landing-form-input {
+  @include roundies(left);
+  
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  font-size: 2em;
+  padding: .5em;
+}  
+  
+.landing-form-submit {
+  @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
+  @include roundies(right);
+  
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  border-left: none;
+  display: inline-block;
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 400;
+  padding: 1.1em 3em;
+  vertical-align: top;
+  
+  &:hover {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
+  }
+  
+  &:active {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
+  }
+}
+
+.landing-shelf-private .browser-image {
+  background: url('/images/landing/browser.png') no-repeat left 20px transparent;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  width: 50%;
+}

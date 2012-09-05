@@ -61,7 +61,7 @@ class HomeController < ApplicationController
         @has_access_token = true
         cookies[:gt_access_token] = {:value => params[:gt_access_token], :domain => ".shelby.tv"}
       end
-      render 'gate'
+      render 'landing'
     end
   end  
   

@@ -25,6 +25,12 @@ $roundies-type : normal !default;
   @else if $roundies-type == footer {
     border-radius: 0 0 $radius $radius;
   }
+  @else if $roundies-type == left {
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $roundies-type == right {
+    border-radius: 0 $radius $radius 0;
+  }
 }
 
 @mixin notype{color: transparent;font: 0/0 a; overflow: hidden;text-shadow: none; white-space: nowrap;}

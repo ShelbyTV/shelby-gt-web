@@ -9,7 +9,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
   <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
   <meta charset="utf-8">
   <title>
@@ -17,7 +17,6 @@
   </title>
   
   <meta name="viewport" content="width=device-width">
-  <head profile="http://www.w3.org/2005/10/profile">
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
