@@ -12,7 +12,8 @@
       infinite : true,
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
-      }
+      },
+      pagingKeySortOrder : -1
     }),
 
     initialize : function(){
@@ -40,12 +41,14 @@
     },
 
     _loadMoreWhenLastItemActive : function(){
-      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-      if (activeFrameModel) {
-        // if we're playing the final playable frame group in the list, load some more if they are available
-        // so they're ready to go when this frame finishes
-        if (this.frameGroupCollection.isLastPlayableFrameGroup(activeFrameModel)) {
-            this._loadMore();
+      if (this._loadMoreEnabled) {
+        var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+        if (activeFrameModel) {
+          // if we're playing the final playable frame group in the list, load some more if they are available
+          // so they're ready to go when this frame finishes
+          if (this.frameGroupCollection.isLastPlayableFrameGroup(activeFrameModel)) {
+              this._loadMore();
+          }
         }
       }
     },

@@ -68,6 +68,18 @@ libs.shelbyGT.viewHelpers.roll = {
     }
   },
 
+  titleForRollsList : function(roll){
+    if(roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
+       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded) {
+      //if possible use the creator's nickname as the displayed title for personal rolls
+      return roll.get('creator_nickname') || roll.get('title');
+    } else {
+      //for all non-personal rolls, just use the roll's title
+     return roll.get('title');
+    }
+  },
+
   isFaux : function(roll){
     return roll && 
     (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||

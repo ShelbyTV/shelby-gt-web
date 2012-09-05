@@ -1,0 +1,260 @@
+.onboarding-content-pane {
+  background: #efefef;
+  color: black;
+  overflow-y: scroll;
+  text-align:center;
+}
+
+.onboarding-content-wrapper{
+  margin-top:30px;
+}
+
+.onboarding-header{
+  h1 {
+    color:black;
+    font-size:24px;
+  }
+  h2 {
+    color:grey;
+    font-size:16px;
+  }
+}
+
+.onboarding-next-step{
+  margin:40px 0px;
+  @include xx-button-primer($x-primer-color, light);
+}
+
+.onboarding-error{
+  display:none;
+  color:red;
+}
+
+/* STAGE 1 */
+
+.onboarding-form-1{
+  margin:0px auto;
+  width:300px;
+  font-size:20px;
+  text-align:left;
+  input, label{
+    width:100%;
+  }
+}
+
+.onboarding-vanity-url{
+  font-size:22px;
+}
+
+/* STAGE 2 */
+
+.onboarding-roll-list{
+  list-style:none;
+  margin-left:20px;
+  margin-right:20px;
+  width:auto;
+  img{
+    width:100%;
+  }
+}
+
+.onboarding-roll-item{
+  float:left;
+  margin:0;
+  padding:0;
+  width:20%;
+}
+
+.onboarding-roll-item-lining{
+  position:relative;
+  margin-left:5px;
+  margin-right:5px;
+  text-align:left;
+  &:hover{
+    .onboarding-roll-button-wrapper{
+      display:block;
+    }
+  }
+  &.followed{
+    &:hover{
+      .onboarding-roll-wrapper{
+        display:none;
+      }
+
+    }
+    .onboarding-roll-followed{
+      display:block;
+    }
+    .onboarding-roll-button{
+      display:none;
+    }
+  }
+}
+
+.onboarding-roll-body{
+  position:relative;
+}
+
+.onboarding-roll-head{
+  font-size:1.39em;
+}
+.onboarding-roll-subhead{
+  font-weight:100;
+  font-size:0.8em;
+  letter-spacing:1px;
+  line-height:1.9;
+  margin-bottom:8px;
+}
+.onboarding-roll-button-wrapper {
+  display: none;
+  left:0;
+  top: 40px;
+  position:absolute;
+  text-align: center;
+  width: 100%;
+}
+.onboarding-roll-button{
+  @include xx-button-primer($x-primer-color, light, menu);
+
+  display:inline;
+  margin:0 auto;
+}
+
+.onboarding-roll-followed{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:none;
+  top:0;
+  left:0;
+  background-color:rgba(255,255,255,0.9);
+  color:black;
+}
+
+.onboarding-followed-icon{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image:url($icon-check);
+  bottom:0;
+  display:block;
+  position:absolute;
+  top:0;
+  width:100%;
+}
+
+/* STAGE 3 */
+.onboarding-network-list{
+  list-style:none;
+  margin:20px auto;
+  padding:0;
+  width:auto;
+}
+
+.onboarding-network-item{
+  display:inline-block;
+  margin-right:32px;
+  margin-left:32px;
+  padding:0;
+  width:20%;
+}
+
+.onboarding-network-button{
+  &.connected-network{
+    @include xx-button-primer($shelby-gray-light);
+  }
+  width:100%;
+}
+
+.onboarding-network-lining{
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.onboarding-icon{
+  background-repeat:no-repeat;
+  background-position:center center;
+  display:block;  
+  height:105px;
+}
+
+.onboarding-network-twitter{
+  @include xx-button-primer($twitter-blue);
+  &:hover{
+    &:not([disabled]){
+      @include xx-button-primer(adjust-lightness($twitter-blue, 5%));
+    }
+  }
+  &.connected-network{
+    .onboarding-icon{
+      background-image: url($icon-onboarding-twitter-added)
+    }
+  }
+  .onboarding-icon{
+    background-image: url($icon-onboarding-twitter-add)
+  }
+}
+
+.onboarding-network-facebook{
+  @include xx-button-primer($facebook-blue);
+  &:hover{
+    &:not([disabled]){
+      @include xx-button-primer(adjust-lightness($facebook-blue, 5%));
+    }
+  }
+  &.connected-network{
+    .onboarding-icon{
+      background-image: url($icon-onboarding-facebook-added)
+    }
+  }
+  .onboarding-icon{
+    background-image: url($icon-onboarding-facebook-add)
+  }
+}
+
+.onboarding-network-tumblr{
+  @include xx-button-primer($tumblr-blue);
+  &:hover{
+    &:not([disabled]){
+      @include xx-button-primer(adjust-lightness($tumblr-blue, 5%));
+    }
+  }
+  &.connected-network{
+    .onboarding-icon{
+      background-image: url($icon-onboarding-tumblr-added)
+    }
+  }
+  .onboarding-icon{
+    background-image: url($icon-onboarding-tumblr-add)
+  }
+}
+
+/* STAGE 4 */
+
+.onboarding-last-step-list{
+  list-style:none;
+  margin-left:20px;
+  margin-right:20px;
+  width:auto;
+  .onboarding-last-step-item-lining{
+    font-size:1.4em;
+    text-align:left;
+    margin:10px 30px;
+  }
+  li{
+    float:left;
+    margin:0;
+    padding:0;
+    width:50%;
+  }
+  img{
+    width:100%;
+  }
+}
+
+.onboarding-last-step-title{
+  line-height:2.5;
+}
+
+.onboarding-last-step-desc{
+  font-weight:100;
+}

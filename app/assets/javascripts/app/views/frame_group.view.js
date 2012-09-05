@@ -92,7 +92,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFrames();
+      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFramesToDisplay();
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,

@@ -81,22 +81,22 @@
   padding-bottom: 10px;
   position: absolute;  
   width: 100%;
-  
-  &:after {
-    box-shadow: 0 0 86px 59px black;
-    content: "\0020";
-    height: 1px;
-    margin-top: 10px;
-    position: absolute;
-    width: 100%;
-  }
+// 
+//  &:after {
+//    box-shadow: 0 0 86px 59px black;
+//    content: "\0020";
+//    height: 1px;
+//    margin-top: 10px;
+//    position: absolute;
+//    width: 100%;
+//  }
 }
 
 .guide-overlay-context-creator,
 .guide-overlay-context-title {
   @include ellipsis();
 
-  color: #ccc;
+//  color: #ccc;
   font-weight: 500;
   padding: 0 10px;
   position: relative;
@@ -106,7 +106,7 @@
 
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
-  @include xx-button-primer($shelby-gray);
+  @include xx-button-primer($shelby-gray, dark);
   
   float: right;
   margin-right: 10px;
@@ -116,7 +116,7 @@
 }
 
 .guide-overlay-context-button-highlighted {
-  @include xx-button-primer($shelby-green);
+  @include xx-button-primer($shelby-blue, dark);
 }
 
 .guide-overlay-context-creator {
@@ -130,16 +130,16 @@
   font-size: 14px;
 }
 
-.guide-overlay-context-thumbnail {
-  height: inherit;
-  overflow: hidden;
+//.guide-overlay-context-thumbnail {
+//  height: inherit;
+//  overflow: hidden;
   
-  img {
-    -webkit-filter:blur(1px);
-    -moz-filter:blur(1px);
-    -o-filter:blur(1px);
-    filter:blur(1px);
-    margin-top: -25%;
-    width: 100%;
-  }
-}
+//  img {
+//    -webkit-filter:blur(1px);
+//    -moz-filter:blur(1px);
+//    -o-filter:blur(1px);
+//    filter:blur(1px);
+//    margin-top: -25%;
+//    width: 100%;
+//  }
+//}

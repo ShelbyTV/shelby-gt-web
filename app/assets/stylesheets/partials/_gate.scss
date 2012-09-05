@@ -88,7 +88,7 @@ html {
 }
 
 .gate-login {
-	@include xx-button-primer($shelby-green);
+	@include xx-button-primer($shelby-green, dark);
 
 	margin: 0 0 1.5em;
 
@@ -126,14 +126,14 @@ html {
 }
 
 .gate-form-submit{
-	@include xx-button-primer($shelby-blue, small);
+	@include xx-button-primer($shelby-blue, dark);
 
 	display: block;
 	margin-top: 1em;
 }
 
 .gate-form-login-submit{
-  @include xx-button-primer($shelby-green, small);
+  @include xx-button-primer($shelby-green, dark);
 
 	display: block;
 	margin-top: 1em;

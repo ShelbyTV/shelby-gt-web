@@ -27,7 +27,7 @@ libs.shelbyGT.viewHelpers.user = {
     avatarSize = avatarSize || libs.shelbyGT.UserAvatarSizes.small;
     
     if( message && message.get('user_has_shelby_avatar') ) {
-      return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+message.creator_id;
+      return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+message.get('user_id');
     } else if( message && message.get('user_image_url') ){
       return message.get('user_image_url');
     } else {
