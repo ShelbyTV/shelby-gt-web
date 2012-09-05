@@ -5,4 +5,13 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
    * .jst looks at user.get('authentications') and renders shit
    * no validation - can skip
    */
+   
+   events : {
+     "click .js-onboarding-next-step" : "_onNextStepClick"
+   },
+
+   _onNextStepClick : function(){
+     shelby.router.navigate('onboarding/4', {trigger:true});
+   }
+
 });

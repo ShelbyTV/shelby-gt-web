@@ -9,7 +9,8 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   */
 
   events : {
-    "click .js-onboarding-roll-list-item-button" : "_onOnboardingRollButtonClick"
+    "click .js-onboarding-roll-list-item-button" : "_onOnboardingRollButtonClick",
+    "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
   _onOnboardingRollButtonClick : function(event){
@@ -20,10 +21,10 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
 
   _onRollFollowSuccess : function(){
     this.$('.js-onboarding-roll-item-lining').addClass('followed');
+  },
+
+  _onNextStepClick : function(){
+    shelby.router.navigate('onboarding/3', {trigger:true});
   }
-
-  
-
-
 
 });
