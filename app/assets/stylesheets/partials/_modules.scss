@@ -294,3 +294,46 @@
   //i.e. class="dropdown_lining nowplaying-section-lining",
   //.nowplaying-section-lining applies offset.
 }
+
+//---------------------------
+//  social-login framework
+//---------------------------
+
+.social_login_twitter {
+  @include x-logged-out-networks-buttons($twitter-blue);
+
+  margin-right: 20px;
+  
+  &:before{
+    background-image: url($icon-share-twitter-on);
+    background-position: 30% 50%;
+    background-size: 82%;
+  }
+
+  &:hover {
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, 5%));
+  }
+
+  &:active {
+    @include x-logged-out-networks-buttons(adjust-lightness($twitter-blue, -5%));
+  }
+}
+
+.social_login_facebook {
+  @include x-logged-out-networks-buttons($facebook-blue);
+
+  &:before{
+    background-image: url($icon-share-facebook-on);
+    background-position: 30% 50%;
+    background-size: 72%;
+  }
+
+  &:hover {
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, 5%));
+  }
+
+  &:active {
+    @include x-logged-out-networks-buttons(adjust-lightness($facebook-blue, -5%));
+  }
+}
+
