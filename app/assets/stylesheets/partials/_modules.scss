@@ -216,6 +216,14 @@
     margin-top: -2px;   
     position: relative;
   }
+
+  &:hover {
+    @include xx-button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+  }
+
+  &:active {
+    @include xx-button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+  }
 }
 
 //---------------------------
@@ -298,6 +306,26 @@
 //---------------------------
 //  social-login framework
 //---------------------------
+
+.social_login {
+}
+
+.social_login_twitter,
+.social_login_facebook {
+  display: block;
+  float: left;
+  padding: 0 3px 0 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px; 
+
+  &:before {
+    width: 36px;
+  }
+  &:visited {
+    color: #efefef;
+  }
+}
 
 .social_login_twitter {
   @include x-logged-out-networks-buttons($twitter-blue);

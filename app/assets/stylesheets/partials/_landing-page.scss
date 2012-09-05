@@ -10,7 +10,39 @@
  * Login
  ********************************************************/
  
- 
+.login-section {
+  right: 0;
+}
+
+.login-section-lining {
+  background: #D0D0D0;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
+  margin-top: 2px;
+  text-align: left;
+  width: 300px;
+
+  &:after {
+    @include rotate(45deg);
+
+    background: #D0D0D0;
+    content: "\0020";
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 24px;
+    top: -5px;
+    width: 10px;
+  }
+}
+
+.login-header {
+  margin: 10px 10px 0;
+}
+
+.login-form,
+.login-social-section {
+  padding: 10px;
+}
  
 
 /********************************************************
