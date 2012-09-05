@@ -81,7 +81,7 @@
     },
 
     _mapAppendChildView : function(guideModel){
-      var currentDisplayState = this.model.get('displayState')
+      var currentDisplayState = this.model.get('displayState');
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
@@ -92,10 +92,10 @@
               doSmartRefresh : !this._dashboardMasterCollection.isEmpty(),
               doStaticRender : true,
               fetchParams : {
-                include_children : true,
-                sinceId : this.model.get('sinceId')
+                include_children : true
               },
-              limit : shelby.config.pageLoadSizes.dashboard,
+              firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
+              limit : shelby.config.pageLoadSizes.dashboard + 1,
               masterCollection : this._dashboardMasterCollection
             },
             spinner : true
@@ -131,10 +131,10 @@
             options : {
               collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
               fetchParams : {
-                include_children : true,
-                sinceId : this.model.get('sinceId')
+                include_children : true
               },
-              limit : shelby.config.pageLoadSizes.roll,
+              firstFetchLimit : shelby.config.pageLoadSizes.roll,
+              limit : shelby.config.pageLoadSizes.roll + 1,
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true

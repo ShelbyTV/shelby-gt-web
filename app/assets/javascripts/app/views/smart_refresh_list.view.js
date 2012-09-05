@@ -18,7 +18,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     doSmartRefresh : false,
     initFixedHead : false,
     keyAttribute : 'id',
-    sortOrder : 1,
+    sortOrder : 1, // 1 for ascending, -1 for descending
     sortAttribute : 'id'
   }),
 

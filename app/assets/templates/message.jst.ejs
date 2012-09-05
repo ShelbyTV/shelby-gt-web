@@ -20,8 +20,8 @@
 %>
 <blockquote class="media_module">
   <a href="#" onclick="return false;" class="media_image">
-    <span class="image_module xuser-avatar" style="background-image: url(<%= messageJSON.user_image_url %>);" role="img">
-      <img src="<%= messageJSON.user_image_url %>" class="visuallyhidden" title="<%= messageJSON.nickname %>" alt="<%= messageJSON.nickname %>">
+    <span class="image_module xuser-avatar" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>);" role="img">
+      <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>" class="visuallyhidden" title="<%= messageJSON.nickname %>" alt="<%= messageJSON.nickname %>">
     </span>
   </a>
   <div class="media_body">

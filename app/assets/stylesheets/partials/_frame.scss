@@ -32,6 +32,7 @@ $active-list-item: $shelby-blue;
 	padding: 1em;
 
 	&:hover {
+		.xframe-is-collapsed,
 		.menu_module {
 			display: block;
 		}
@@ -116,6 +117,22 @@ $active-list-item: $shelby-blue;
 .xframe-subline {
 	margin-top: 1em;
 	text-align: right;
+}
+
+.xframe-is-collapsed {
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:active,
+	&:hover {
+		text-decoration: underline;
+	}
+
+	display:none;
+	float: right;
+	opacity: .5;
 }
 
 .xframe-comment-link {
