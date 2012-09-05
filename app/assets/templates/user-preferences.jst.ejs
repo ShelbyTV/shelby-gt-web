@@ -134,28 +134,14 @@
 			</legend>
 			<ul class="you-preferences-notifications you-notifications">
 				<li class="clearfix">
-					<label for="you-preferences-email-weekly">
-						Weekly email
+					<label for="you-preferences-email-updates">
+						News and Updates
 					</label>
-					<input id="you-preferences-email-weekly" name="you-preferences-email-weekly" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
+					<input id="you-preferences-email-updates" name="you-preferences-email-updates" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
 					<span></span>
 				</li>
 				<li class="clearfix">
-					<label for="you-preferences-email-watches">
-						Watches
-					</label>
-					<input id="you-preferences-email-watches" name="you-preferences-email-watches" type="checkbox" <% if (user.get('preferences').watched_notifications === true){ %> checked <% }%> />
-					<span></span>
-				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email-upvotes">
-						Upvotes
-					</label>
-					<input id="you-preferences-email-upvotes" name="you-preferences-email-upvotes" type="checkbox" <% if (user.get('preferences').upvote_notifications === true){ %> checked <% }%> />
-					<span></span>
-				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email-comment">
+					<label for="you-preferences-email-comments">
 						Comments
 					</label>
 					<input id="you-preferences-email-comments" name="you-preferences-email-comments" type="checkbox" <% if (user.get('preferences').comment_notifications === true){ %> checked <% }%> />
