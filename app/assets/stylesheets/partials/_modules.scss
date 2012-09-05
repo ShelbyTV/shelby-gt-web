@@ -30,7 +30,7 @@
 
 //---------------------------
 //  media module, what up! 
-//  thanks @stubbornella.
+//  thanks to @stubbornella.
 //---------------------------
 
 .media_module {
@@ -130,6 +130,12 @@
 
 //---------------------------
 //  modular overlay framework
+//  
+//    overlays have two main parts:
+//    header and body.
+//    this abstraction is a primer for
+//    the content separation.
+//    *must be used for any overlay 
 //---------------------------
 
 .overlay_header {
@@ -146,6 +152,10 @@
 
 //---------------------------
 //  modular form framework
+//
+//    base styling to make any/all
+//    inputs consistent throughout
+//    the entire app
 //---------------------------
 
 .form_module {
@@ -210,6 +220,8 @@
 
 //---------------------------
 //  share form framework
+//
+//    TODO: make share_module a sub-class of form_module
 //---------------------------
 
 .share_module {
@@ -239,6 +251,14 @@
 //---------------------------
 //  dropdown framework
 //  used in header nav
+//
+//    contextless-abstraction, 
+//    any/all hoverable dropdowns should
+//    use the the dropdown_module
+//
+//    1. dropdown_button and dropdown_section are siblings
+//    2. dropdown_icon is the child icon of dropdown_button,
+//       indicates that button is a dropdown
 //---------------------------
 
 .dropdown_module {
@@ -253,14 +273,13 @@
 
 .dropdown_button {
 }
-
-.dropdown_icon {
-  background-image: url($icon-carrot);
-  background-repeat: no-repeat;
-  background-position: right center;
-  font-style: normal;
-  padding-right: 1em;
-}
+  .dropdown_icon {
+    background-image: url($icon-carrot);
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-style: normal;
+    padding-right: 1em;
+  }
 
 .dropdown_section {
   display: none;
@@ -269,5 +288,9 @@
 }
 
 .dropdown_lining {
-
+  position: relative;
+  //DO NOT SET AN MARGIN/PADDING OFFSET HERE.
+  //Offsets are stylistic and relative to a particlar context
+  //i.e. class="dropdown_lining nowplaying-section-lining",
+  //.nowplaying-section-lining applies offset.
 }
