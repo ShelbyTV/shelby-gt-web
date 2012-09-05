@@ -1,7 +1,9 @@
 @import "base";
 
 //---------------------------
-//	currently playing styles
+//	frame currently playing styles
+//
+//	nest styles inside of .active-list-item
 //---------------------------
 
 $active-list-item: $shelby-blue;
@@ -23,7 +25,7 @@ $active-list-item: $shelby-blue;
 }
 
 //---------------------------
-//	frame
+//	frame natural state
 //---------------------------
 
 .xframe {
@@ -35,30 +37,6 @@ $active-list-item: $shelby-blue;
 		.xframe-is-collapsed,
 		.menu_module {
 			display: block;
-		}
-	}
-}
-
-.xframe-collapsed {
-	.xframe-title {
-		height: 40px;
-		overflow: hidden;
-	}
-
-	.xframe-thumbnail {
-		float: left;
-		height: 80px;
-		margin-right: 10px;
-		width: 45%;
-	}
-
-	.xframe-footer {
-		overflow: hidden;
-		zoom: 1;
-	}
-	&:hover {
-		.xframe-menu {
-			display: none;
 		}
 	}
 }
@@ -148,14 +126,13 @@ $active-list-item: $shelby-blue;
 	text-decoration: none;
 
 	&:hover {
-//TODO: need ddesign update on this guy:
-//		background-image: url($icon-videocard-comment-on);
 		text-decoration: underline;
 	}
 }
 
 //---------------------------
-//	frame creator block, media obj.
+//	frame creator block, 
+//	(media obj.)
 //---------------------------
 
 .xuser-data {
@@ -198,7 +175,6 @@ $active-list-item: $shelby-blue;
 }
 
 .xframe-command-menu {
-	//set height to 0 so that clicking thumbnail isn't impossible.
 	height: inherit;
 	left: inherit;
 	list-style-type: none;
@@ -214,100 +190,127 @@ $active-list-item: $shelby-blue;
 	margin-top: 10px;
 }
 
-.xframe-sublist {
-	margin-top: 3px;
-}
 
-.xframe-option {
-	background-color: #efefef;
-	border-bottom: none;
-	border-left: 1px solid $inset;
-	border-right: 1px solid $inset;
-	border-top: none;
-	padding: .75em 1em .75em;
-	width: 100%;
+		//------------------------
+		//	dropdown sublist
+		//------------------------
+		.xframe-sublist {
+			margin-top: 3px;
+		}
+
+		.xframe-option {
+			background-color: #efefef;
+			border-bottom: none;
+			border-left: 1px solid $inset;
+			border-right: 1px solid $inset;
+			border-top: none;
+			padding: .75em 1em .75em;
+			width: 100%;
+
+			&:hover {
+				background-color: adjust-lightness(#efefef,-5%);
+			}
+		}
+
+		.xframe-item {
+			&:first-child {
+				.xframe-option {
+					border-top: 1px solid $inset;
+				}
+			}
+
+			&:last-child {
+				.xframe-option {
+					border-bottom: 1px solid $inset;
+				}
+			}
+		}
+
+		.command-sublist {
+			padding-right: 10px;
+			.command-icon {
+					background-position: center right;
+					padding-left: 0;
+					padding-right: 1.5em;
+			}
+		}
+
+		//---------------------------
+		//	styling of the command buttons,
+		//	queue, roll, share, etc.
+		//---------------------------
+		.command-icon {
+				background-position: center left;
+				background-repeat: no-repeat;
+				background-size: 1em;
+				font-style: normal;
+				padding-left: 1.3em;	
+		}
+
+		.command-queue {
+			.command-icon {
+				background-image: url($icon-videocard-queue);
+			}
+
+			&.queued {
+				.command-icon {
+					background: none;
+					padding: 0;
+				}
+			}
+		}
+
+		.command-roll {
+			.command-icon {
+				background-image: url($icon-videocard-roll);
+			}
+		}
+
+		.command-more {
+			.command-icon {
+				background-image: url($icon-carrot);
+			}
+		}
+
+//---------------------------
+//	frame collapsed
+//
+//	nest styles inside of .xframe-collapsed{}
+//---------------------------
+
+.xframe-collapsed {
+	.xframe-title {
+		height: 40px;
+		overflow: hidden;
+	}
+
+	.xframe-thumbnail {
+		float: left;
+		height: 80px;
+		margin-right: 10px;
+		width: 45%;
+	}
+
+	.xframe-footer {
+		overflow: hidden;
+		zoom: 1;
+	}
 
 	&:hover {
-		background-color: adjust-lightness(#efefef,-5%);
-	}
-}
+		.xframe-body-wrapper {
+			cursor: pointer;
+		}
 
-.xframe-item {
-	&:first-child {
-		.xframe-option {
-//			@include roundies(header);
-
-			border-top: 1px solid $inset;
+		.xframe-menu {
+			display: none;
 		}
 	}
-
-	&:last-child {
-		.xframe-option {
-//			@include roundies(footer);
-
-			border-bottom: 1px solid $inset;
-		}
-	}
-}
-
-.command-icon {
-		background-position: center left;
-		background-repeat: no-repeat;
-		background-size: 1em;
-		font-style: normal;
-		padding-left: 1.3em;	
-}
-
-.command-sublist {
-	padding-right: 10px;
-	.command-icon {
-			background-position: center right;
-			padding-left: 0;
-			padding-right: 1.5em;
-	}
-}
-
-.command-queue {
-	.command-icon {
-		background-image: url($icon-videocard-queue);
-	}
-//	&:hover {
-//		.command-icon {
-//			//file doesn't exist yet
-//		}
-//	}
-	&.queued {
-		.command-icon {
-			background: none;
-			padding: 0;
-		}
-	}
-}
-
-.command-roll {
-	.command-icon {
-		background-image: url($icon-videocard-roll);
-	}
-//	&:hover {
-//		.command-icon {
-//			background-image: url($icon-videocard-roll-on);
-//		}
-//	}
-}
-
-.command-more {
-	.command-icon {
-		background-image: url($icon-carrot);
-	}
-//	&:hover {
-//		.command-icon {
-//			background-image: url($icon-videocard-roll-on);
-//		}
-//	}
 }
 
 //---------------------------
-//	aside, lists duplicates
+//	aside 
+//
+//	lists duplicates, 'also via:' stuff
 //---------------------------
 
 .xframe-aside {
