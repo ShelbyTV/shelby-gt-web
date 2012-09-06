@@ -14,30 +14,20 @@ $landing-page-width: 920px;
 /********************************************************
  * Login
  ********************************************************/
- 
+
+
 .login-section {
-  right: 0;
+  right: 10px;
 }
 
 .login-section-lining {
-  background: #D0D0D0;
+  @include fin;
+
+  background: $nav-dropdown-bg;
   box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
   margin-top: 2px;
   text-align: left;
   width: 300px;
-
-  &:after {
-    @include rotate(45deg);
-
-    background: #D0D0D0;
-    content: "\0020";
-    display: block;
-    height: 10px;
-    position: absolute;
-    right: 24px;
-    top: -5px;
-    width: 10px;
-  }
 }
 
 .login-header {
@@ -48,6 +38,7 @@ $landing-page-width: 920px;
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
   margin-bottom: 0;
+  margin-top: .5em;
 }
 
 .login-form,

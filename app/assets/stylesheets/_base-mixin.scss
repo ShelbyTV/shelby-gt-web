@@ -47,6 +47,21 @@ $roundies-type : normal !default;
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
+$bg-color: $nav-dropdown-bg !default;
+@mixin fin($bg-color) {
+	&:after {
+    @include rotate(45deg);
+
+    background: $bg-color;
+    content: "\0020";
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 24px;
+    top: -5px;
+    width: 10px;
+  }
+}
 
 @mixin font-primer($font-usage){
 		line-height: 1.231;
