@@ -78,6 +78,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   _submitPassword: function(e){
     var self = this;
     var info = {
+      id: this.model.id,
       password: this.$('#you-preferences-password').val(),
       password_confirmation: this.$('#you-preferences-password-confirmation').val()
       };
@@ -88,7 +89,11 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     }
 
     var $thisButton = $(e.currentTarget).addClass('js-busy');
-    this.model.save(info, {
+    // the new password is not state that we want/need to persist on the client side,
+    // so we create a temporary clone of the user model with only password info via which
+    // to save the password to the backend
+    var userClone = new libs.shelbyGT.UserModel(info);
+    userClone.save(null, {
       success: function(model, resp){
         self._updateSecurityResponse("password updated!");
         $thisButton.removeClass('js-busy');
@@ -100,8 +105,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
           self._updateSecurityResponse("unexpected error. try again later.");
         }
         $thisButton.removeClass('js-busy');
-      },
-      wait: true
+      }
     });
   },
 
