@@ -13,10 +13,12 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
 
   initialize : function(){
     shelby.models.guide.bind('change:displayState', this._onChangeDisplayState, this);
+    shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   _cleanup : function(){
     shelby.models.guide.unbind('change:displayState', this._onChangeDisplayState, this);
+    shelby.models.rollFollowings.unbind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   render : function(){
@@ -65,9 +67,19 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
     // representation matches any changes that might have been made in other views
     if (guideModel.previousAttributes('displayState') &&
         displayState == libs.shelbyGT.DisplayState.explore) {
-      var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
-      this.$('.js-follow-unfollow').toggleClass('command-active', !userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
+      this._checkUpdateFollowButton();
     }
+  },
+
+  _onRollFollowingsInitialized : function(rollFollowingsModel, initialized) {
+    if (initialized) {
+      this._checkUpdateFollowButton();
+    }
+  },
+
+  _checkUpdateFollowButton : function() {
+    var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
+    this.$('.js-follow-unfollow').toggleClass('command-active', !userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
   }
 
 });
