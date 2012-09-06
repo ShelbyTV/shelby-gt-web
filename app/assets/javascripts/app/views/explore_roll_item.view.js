@@ -11,6 +11,14 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
     return JST['explore-roll-item'](obj);
   },
 
+  initialize : function(){
+    shelby.models.guide.bind('change:displayState', this._onChangeDisplayState, this);
+  },
+
+  _cleanup : function(){
+    shelby.models.guide.unbind('change:displayState', this._onChangeDisplayState, this);
+  },
+
   render : function(){
     var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
     this.$el.html(this.template({
@@ -50,6 +58,16 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
       this.model.joinRoll(clearBusyFunction, clearBusyFunction);
     } else {
       this.model.leaveRoll(clearBusyFunction, clearBusyFunction);
+    }
+  },
+
+  _onChangeDisplayState : function(guideModel, displayState) {
+    // if we're switching to explore view from another view, make sure our follow button
+    // representation matches any changes that might have been made in other views
+    if (guideModel.previousAttributes('displayState') &&
+        displayState == libs.shelbyGT.DisplayState.explore) {
+      var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
+      this.$('.js-follow-unfollow').toggleClass('command-active', !userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
     }
   }
 
