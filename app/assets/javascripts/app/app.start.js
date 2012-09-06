@@ -20,7 +20,6 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
 // disable for more specific error handling by using the jQuery.ajax global:false option
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError){
   libs.shelbyGT.Ajax.defaultOnError(event, jqXHR, ajaxSettings, thrownError);
-  if (ajaxSettings.error) {ajaxSettings.error(event, jqXHR, ajaxSettings, thrownError);}
 });
 
 //---------------------------------------------------------

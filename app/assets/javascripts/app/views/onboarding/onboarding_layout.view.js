@@ -27,11 +27,11 @@ libs.shelbyGT.OnboardingLayoutView = Support.CompositeView.extend({
   },
 
   _onShowSpinner : function() {
-    this._spinnerState.set('show', true);
+    this._spinnerState && this._spinnerState.set('show', true);
   },
 
   _onHideSpinner : function() {
-    this._spinnerState.set('show', false);
+    this._spinnerState && this._spinnerState.set('show', false);
   }
 
 });
