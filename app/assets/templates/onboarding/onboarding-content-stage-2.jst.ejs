@@ -1,10 +1,10 @@
-
-<div class="onboarding-header">
-
-  <h1>Shelby pulls in videos from lots of great sources</h1>
-
-  <h2>You only need to follow a few rolls to load your stream</h2>
-
+<div class="onboarding-head">
+  <h1 class="onboarding-header">
+    Shelby pulls in videos from lots of great sources
+  </h1>
+  <h2 class="onboarding-subheader">
+    You only need to follow a few rolls to load your stream
+  </h2>
 </div>
 
 <%
@@ -67,7 +67,7 @@
   ];
 %>
 
-<ol class="clearfix onboarding-roll-list">
+<ol class="clearfix onboarding_list_module onboarding-roll-list">
 
   <% rolls.forEach(function(roll){ %>
     <li class="onboarding-roll-item js-onboarding-roll-item">
@@ -77,7 +77,7 @@
         <h4 class="onboarding-roll-subhead"><%= roll.category %></h4>
         <div class="onboarding-roll-body">
 
-          <div class="onboarding-roll-followed">
+          <div class="animate_module onboarding-roll-followed">
             <i class="ir onboarding-followed-icon">
               FOLLOWED
             </i>

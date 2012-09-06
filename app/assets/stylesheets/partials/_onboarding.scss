@@ -1,9 +1,20 @@
 //------------------------------
+//  onboard module 
+//------------------------------
+
+.onboarding_list_module {
+  list-style-type:none;
+  margin: 0 auto;
+  max-width: 780px;
+  padding: 0;
+}
+
+//------------------------------
 //  onboard architectural priming 
 //------------------------------
 
 .onboarding-content-pane  {
-  background: $base;
+  background: adjust-lightness($base, 5%);
   overflow-y: scroll;
   text-align: center;
 }
@@ -30,8 +41,9 @@
     font-size: 2em;
   }
   .onboarding-subheader  {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 300;
+    line-height: 2.3;
   }
 
 
@@ -106,10 +118,6 @@
 /* STAGE 2 */
 
 .onboarding-roll-list {
-  list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: auto;
   img {
     width: 100%;
   }
@@ -120,36 +128,56 @@
   margin: 0;
   padding: 0;
   width: 20%;
+
+//  &.followed {
+//    &:hover {
+//      .onboarding-roll-wrapper {
+//        display: none;
+//      }
+//    }
+
+//    .onboarding-roll-followed {
+//      display: block;
+//    }
+
+//    .onboarding-roll-button {
+//      display: none;
+//    }
+//  }
 }
 
 .onboarding-roll-item-lining {
   position: relative;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 10px 5px;
   text-align: left;
+
   &:hover {
+    cursor: pointer; 
+
     .onboarding-roll-button-wrapper {
       display: block;
     }
   }
-  &.followed {
-    &:hover {
-      .onboarding-roll-wrapper {
-        display: none;
-      }
 
-    }
+  &.followed {
     .onboarding-roll-followed {
       display: block;
     }
-    .onboarding-roll-button {
-      display: none;
+
+    &:hover {
+      .onboarding-roll-button-wrapper {
+        display: none;
+      }
     }
   }
 }
 
 .onboarding-roll-body {
   position: relative;
+}
+.onboarding-roll-head,
+.onboarding-roll-subhead {
+  @include ellipsis;
 }
 
 .onboarding-roll-head {
@@ -165,7 +193,7 @@
 .onboarding-roll-button-wrapper  {
   display:  none;
   left: 0;
-  top:  40px;
+  top: 32%;
   position: absolute;
   text-align:  center;
   width:  100%;
@@ -175,6 +203,14 @@
 
   display: inline;
   margin: 0 auto;
+
+  &:hover {
+    @include xx-button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
+  }
+
+  &:active {
+    @include xx-button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
+  }
 }
 
 .onboarding-roll-followed {
@@ -243,11 +279,11 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-twitter-added)
+      background-image: url($icon-onboarding-twitter-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-twitter-add)
+    background-image: url($icon-onboarding-twitter-add);
   }
 }
 
@@ -260,11 +296,11 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-facebook-added)
+      background-image: url($icon-onboarding-facebook-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-facebook-add)
+    background-image: url($icon-onboarding-facebook-add);
   }
 }
 
@@ -277,41 +313,39 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-tumblr-added)
+      background-image: url($icon-onboarding-tumblr-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-tumblr-add)
+    background-image: url($icon-onboarding-tumblr-add);
   }
 }
 
 /* STAGE 4 */
 
-.onboarding-last-step-list {
-  list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: auto;
-  .onboarding-last-step-item-lining {
+.onboarding-last-list {
+  .onboarding-last-item-lining {
     font-size: 1.4em;
     text-align: left;
     margin: 10px 30px;
   }
+
   li {
     float: left;
     margin: 0;
     padding: 0;
     width: 50%;
   }
+
   img {
     width: 100%;
   }
 }
 
-.onboarding-last-step-title {
+.onboarding-last-title {
   line-height: 2.5;
 }
 
-.onboarding-last-step-desc {
+.onboarding-last-desc {
   font-weight: 100;
 }
