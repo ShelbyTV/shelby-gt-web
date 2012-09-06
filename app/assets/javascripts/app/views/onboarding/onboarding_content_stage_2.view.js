@@ -35,7 +35,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     if (rolls_followed > 2){
       this.$('.js-onboarding-next-step').text('Next').removeAttr('disabled');
     } else {
-      var noun = rolls_followed===1 ? 'Roll' : 'Rolls';
+      var noun = rolls_followed===2 ? 'Roll' : 'Rolls';
       this.$('.js-onboarding-next-step').text('Follow '+(3-this.model.get('rolls_followed'))+' more '+noun);
     }
   },

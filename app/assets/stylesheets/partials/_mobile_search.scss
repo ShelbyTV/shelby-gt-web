@@ -17,53 +17,38 @@
   #header {
     a{
       margin-top: 7px;
-      margin-right: 8px;      
+      margin-right: 8px;
+      width: 85px;
     }
-    h1 {
-      line-height: 40px;
-      width: 100%;
-    }
+    h1 { line-height: 40px; }
   }
+  
   .mobile-logo {
-    @include background(
-  		url('../images/genius/landing_logo.svg') no-repeat left center transparent
-  	);
-  	background-size:135px;
-    height: 35px;
-    margin-left: 5px;
-  }
-  
-  #search-history {
-    margin: 10px auto;
-  }
-  
-  #share-area {
-    height: 20px;
-    width: 125px;
-    margin: 0px auto 0px auto;
-    position: relative;
-    top: -10px;
-  }
-  
-  #mobile-roll-title {
-    text-align: center;
-  }
+      @include background(
+    		url('../images/genius/landing_logo.svg') no-repeat left center transparent
+    	);
+    	background-size:135px;
+      height: 35px;
+      margin-left: 5px;
+    }
+    
+  #search-history { margin: 10px auto; }
   
   #mobile-video-player {
-    display:none;
-    position:fixed;
-    top: 83px;
-    width: 100%;
-    height: 45%;
-    margin: 0 auto;
-    z-index:100;
-    -moz-box-shadow: 0px 6px 22px -1px black;
-    -webkit-box-shadow: 0px 6px 22px -1px black;
-    box-shadow: 0px 6px 22px -1px black;
-    iframe{
+      display:none;
+      position:fixed;
+      top: 83px;
       width: 100%;
-      height: 100%;
-    }
+      height: 45%;
+      margin: 0 auto;
+      z-index:100;
+      -moz-box-shadow: 0px 6px 22px -1px black;
+      -webkit-box-shadow: 0px 6px 22px -1px black;
+      box-shadow: 0px 6px 22px -1px black;
+      iframe{
+        width: 100%;
+        height: 100%;
+      }
   }
 
   #mobile-frames {
@@ -84,7 +69,7 @@
     .ui-li, .ui-li.ui-field-contain { margin-left: -14px; border-top-width: 3px; padding: 0px;}
     .ui-li-heading { font-size: 14px; margin: .6em 60px; }
     .ui-li-desc { font-size: 11px; margin: -.5em 60px .6em; }
-    
+
 
    .search-button {
      width: 120px;
@@ -96,12 +81,46 @@
    }
 
   }
-  
+
   .content.video-playing {
     #mobile-frames { margin-top: 45%; }
   } 
-  
-  
+
+  #mobile-frame-context {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    top: 59px;
+    margin-top: 50%;
+    overflow-y: hidden;
+
+    #shared-by {
+      text-align: center;
+      background-color: lightblue;
+      font-weight: bold;
+    }
+    
+    #user-and-comment{
+      padding-top: 3px;
+      height: 72px;
+      background-color: lightblue;
+      #avatar {
+        float: left;
+        width: 65px;
+        margin-left: 3px;
+      }
+      #comment {
+        position: relative;
+        left: 5px;
+      }      
+    }
+    .ui-btn {
+      width: 50%;
+      margin: 39px auto;
+    }    
+  }
+
 }
 
 .landscape {
@@ -115,3 +134,73 @@
   }
 }
 
+.mobile-genius-landing {
+  .genius-header {
+    text-align:center;
+    height: 88px;
+    border-bottom: 2px solid #111111;
+  }
+  
+  .mobile-logo {
+    margin: 12px auto;
+  }
+  
+  #mobile-video-player {
+    display:none;
+    width: 100%;
+    height: 317px;
+    margin: 0 auto;
+    z-index:100;
+    border-bottom: 2px solid #C8C8C8;
+    border-top: 2px solid #111111;
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  #genius-frame-context {
+    width: 100%;
+    height: 133px;
+    background-color: #f2f0f0;
+    margin-top: -1px;
+    border-bottom: 2px solid #C8C8C8;
+    border-top: 2px solid #eeeeee;
+    font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+    color: #333333;
+
+    #query-info {
+      text-align:center;
+      line-height: 0.8;
+    	font-weight:300;
+    	
+      #friend-found-this { font-size: 26px; }
+      #search-term{ font-size: 34px; }
+    }
+
+  }
+  
+  #explanation {
+    background-color: #E2E2E2;
+    text-align:center;
+    border-top: 2px solid #eeeeee;
+    font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+    font-size: 26px;
+  	font-weight:200;
+    color: #333333;
+    
+    #what-is-this{
+      margin-top: 53px;
+      text-align:center;
+    }
+    
+    #app-button {
+      margin: 41px;
+    }
+    
+    #mobile-web-app-link {
+    	font-weight:200;
+      color: #333333;
+    }
+  }  
+}

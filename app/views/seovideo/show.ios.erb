@@ -1,0 +1,38 @@
+<div id="mobile-video-player"></div>
+
+<div class="video-script">
+	<% if @frame['video']['provider_name'] == 'youtube' %>
+		<%= render :partial => "mobile/video_embeds/youtube_embed", :formats => [:html], :locals => { :video => @frame['video'], :mobile_frame => true } %>
+	<% elsif @frame['video']['provider_name'] == 'vimeo' %>
+		<%= render :partial => "mobile/video_embeds/vimeo_embed", :formats => [:html], :locals => { :video => @frame['video'], :mobile_frame => true } %>					  
+	<% end %>
+</div>
+
+<div id="genius-frame-context">
+	<%= render :partial => "mobile/partials/genius_sharer", :formats => [:html] %>
+</div>
+
+<div id="explanation">
+	<p id="what-is-this">
+		Shelby Genius is a smart way to find video, <br/>
+		what will you find?
+	</p>
+	
+	<div id="app-button">
+		<a href="<%= Settings::Application.ios_app_url %>">
+			<%= image_tag '/images/genius/CTA.png' %>			
+		</a>
+	</div>
+	
+	<a id="mobile-web-app-link" href="<%= Settings::Application.mobile_url %>">
+		or try the web app
+	</a>
+</div>
+
+<script>
+	$(document).bind('pageinit', function(){
+		$(window).bind('orientationchange', function(event){
+			$('body').toggleClass('landscape');
+		});		
+	});
+</script>

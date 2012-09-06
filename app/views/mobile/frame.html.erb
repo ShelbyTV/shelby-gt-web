@@ -1,0 +1,19 @@
+<div id="mobile-video-player"></div>
+
+<div class="video-script">
+	<% if @frame['video']['provider_name'] == 'youtube' %>
+		<%= render :partial => "mobile/video_embeds/youtube_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>
+	<% elsif @frame['video']['provider_name'] == 'vimeo' %>
+		<%= render :partial => "mobile/video_embeds/vimeo_embed", :locals => { :video => @frame['video'], :mobile_frame => true } %>					  
+	<% end %>
+</div>
+
+<div id="mobile-frame-context">
+	<% if @genius_share %>
+		<%= render :partial => "mobile/partials/genius_sharer" %>
+	<% elsif @email_share %>
+		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @email_share[:name], :avatar => @email_share[:avatar] } %>
+	<% else %>
+		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @frame['creator']['name'] || @frame['creator']['nickname'], :avatar => @frame['creator']['user_image'] } %>
+	<% end %> 
+</div>

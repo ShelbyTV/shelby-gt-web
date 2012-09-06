@@ -13,12 +13,12 @@
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->  
   <%= javascript_include_tag "mobile" %>
 </head> 
-<body class="mobile-search"> 
+<body class="mobile-genius-landing"> 
 
 	<div data-role="page" data-theme="b">
 
-		<div id="header" data-role="header" data-position="fixed" data-icon="search" data-iconpos="right">
-			<%= render :partial => "mobile/partials/mobile_header" %>
+		<div class="genius-header" id="header" data-role="header" data-position="fixed">
+			<%= image_tag '/images/genius/logo.png', :class=>"mobile-logo ir js-track-event", 'data-ga_category'=>"Mobile", "data-ga_action"=>"Clicked logo" %>
 		</div><!-- /header -->
 
 		<div class="content" data-role="content" style="padding: 0px;">	
