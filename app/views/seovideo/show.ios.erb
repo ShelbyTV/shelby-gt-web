@@ -1,3 +1,7 @@
+<div id="genius-frame-context">
+	<%= render :partial => "mobile/partials/genius_sharer", :formats => [:html] %>
+</div>
+
 <div id="mobile-video-player"></div>
 
 <div class="video-script">
@@ -8,14 +12,10 @@
 	<% end %>
 </div>
 
-<div id="genius-frame-context">
-	<%= render :partial => "mobile/partials/genius_sharer", :formats => [:html] %>
-</div>
-
 <div id="explanation">
 	<p id="what-is-this">
 		Shelby Genius is a smart way to find video, <br/>
-		what will you find?
+		<span class="find-what">what will you find?</span>
 	</p>
 	
 	<div id="app-button">
