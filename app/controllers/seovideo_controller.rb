@@ -1,11 +1,23 @@
 require 'uri'
 require 'net/http'
+require 'shelby_api'
 
 class SeovideoController < ApplicationController
 
 before_filter :prepare_for_mobile
 
   def show
+    
+    #XXX MOBILE GENIUS FRAME HACK
+    #TODO: This should be a different route altogether, eg /genius/:frame_id
+    if params[:roll_id] and params[:frame_id]
+      @genius_share = true
+      if @frame = Shelby::API.get_frame_info(params[:frame_id], true)
+        g = /GENIUS\:\s(\w*)/.match(@frame['roll']['title'])
+        @search_term = g ? g[1] : "something cool"
+      end
+    end
+    
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
     # route guarantees provider_name and provider_id will exist
@@ -102,6 +114,14 @@ private
     request.user_agent =~ /Mobile|webOS/
   end
   
+  def is_iphone?
+    (request.user_agent=~/iPhone|iPad/) != nil
+  end
+  
+  def is_android?
+    (request.user_agent=~/Andoid/) != nil
+  end
+  
   def prepare_for_mobile
     if params[:mobile] != nil
       if params[:mobile] == "1" 
@@ -109,8 +129,12 @@ private
       else
         request.format = :html
       end
-    else 
-      request.format = :mobile if mobile_device?
+    else
+      if is_iphone?
+        request.format = :ios
+      else
+        request.format = :mobile if mobile_device?
+      end
     end
   end
 

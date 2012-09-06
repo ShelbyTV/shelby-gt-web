@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <meta name="description" content="<%= Settings::Application.meta_description %>">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= Settings::Application.title %></title>	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	<%= stylesheet_link_tag "mobile", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->  
+  <%= javascript_include_tag "mobile" %>
+</head> 
+<body class="mobile-genius-landing"> 
+
+	<div data-role="page" data-theme="b">
+
+		<div class="genius-header" id="header" data-role="header" data-position="fixed">
+			<%= image_tag '../images/genius/logo.png', :class=>"mobile-logo ir js-track-event", 'data-ga_category'=>"Mobile", "data-ga_action"=>"Clicked logo" %>
+		</div><!-- /header -->
+
+		<div class="content" data-role="content" style="padding: 0px;">	
+			<%= yield %>
+		</div><!-- /content -->
+
+	</div><!-- /page -->
+	
+	<% if Rails.env == 'production' %>
+	  <script>
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s);}(document,'script'));
+	  </script>
+		<script>
+		  var _kmq = _kmq || [];
+		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+		  function _kms(u){
+		    setTimeout(function(){
+		      var d = document, f = d.getElementsByTagName('script')[0],
+		      s = d.createElement('script');
+		      s.type = 'text/javascript'; s.async = true; s.src = u;
+		      f.parentNode.insertBefore(s, f);
+		    }, 1);
+		  }
+		  _kms('//i.kissmetrics.com/i.js');
+		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+		
+			_kmq.push(['record', "Visit mobile page"]);
+		</script>
+	<% end %>
+</body>
+</html>

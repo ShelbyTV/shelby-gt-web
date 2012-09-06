@@ -1,21 +1,9 @@
-<div id="user-and-comment">
+<div id="query-info">
+	<p id="friend-found-this">
+		Your friend found this video by searching for
+	</p>
 	
-	<div id="avatar">		
-		<%= image_tag avatar, :title => name, :size => "65x65" %>
-	</div>
-	
-	<div id="comment">
-		<% if @email_share.nil? and @genius_share.nil? %>		
-			<% msg = @frame['conversation']['messages'].empty? ? @frame['video']['title'] : @frame['conversation']['messages'].first["text"] %>
-			<%= msg %>
-		<% end %>
-	</div>
-
+	<p id="search-term">
+		<%= @search_term %>
+	</p>
 </div>
-
-<div id="shared-by">
-	Shared by: <%= name %>
-</div>	
-
-
-<%= link_to "Try Shelby.tv", Settings::Application.url, "data-role"=>"button", "data-theme" => "c" %>

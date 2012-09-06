@@ -20,40 +20,22 @@
       margin-right: 8px;
       width: 85px;
     }
-    h1 {
-      line-height: 40px;
-    }
+    h1 { line-height: 40px; }
   }
-
-  .mobile-logo {
-    @include background(
-  		url('../images/genius/landing_logo.svg') no-repeat left center transparent
-  	);
-  	background-size:135px;
-    height: 35px;
-    width: 135px;
-    margin: 11px auto;
-  }
+    
+  #search-history { margin: 10px auto; }
   
-  #search-history {
-    margin: 10px auto;
-  }
-  
-  #mobile-roll-title {
-    text-align: center;
-  }
+  #mobile-roll-title { text-align: center; }
   
   #mobile-video-player {
     display:none;
     position:fixed;
-    top: 83px;
+    top: 88px;
     width: 100%;
-    height: 50%;
+    height: 317px;
     margin: 0 auto;
     z-index:100;
-    //-moz-box-shadow: 0px 6px 25px -6px black;
-    //-webkit-box-shadow: 0px 6px 25px -6px black;
-    //box-shadow: 0px 6px 25px -6px black;
+    border-bottom: 2px solid #C8C8C8;
     iframe{
       width: 100%;
       height: 100%;
@@ -129,6 +111,7 @@
       margin: 39px auto;
     }    
   }
+
 }
 
 .landscape {
@@ -142,3 +125,73 @@
   }
 }
 
+.mobile-genius-landing {
+  .genius-header {
+    text-align:center;
+    height: 88px;
+    border-bottom: 2px solid #111111;
+  }
+  
+  .mobile-logo {
+    margin: 12px auto;
+  }
+  
+  #mobile-video-player {
+    display:none;
+    width: 100%;
+    height: 317px;
+    margin: 0 auto;
+    z-index:100;
+    border-bottom: 2px solid #C8C8C8;
+    border-top: 2px solid #111111;
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  #genius-frame-context {
+    width: 100%;
+    height: 133px;
+    background-color: #f2f0f0;
+    margin-top: -1px;
+    border-bottom: 2px solid #C8C8C8;
+    border-top: 2px solid #eeeeee;
+    font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+    color: #333333;
+
+    #query-info {
+      text-align:center;
+      line-height: 0.8;
+    	font-weight:300;
+    	
+      #friend-found-this { font-size: 26px; }
+      #search-term{ font-size: 34px; }
+    }
+
+  }
+  
+  #explanation {
+    background-color: #E2E2E2;
+    text-align:center;
+    border-top: 2px solid #eeeeee;
+    font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+    font-size: 26px;
+  	font-weight:200;
+    color: #333333;
+    
+    #what-is-this{
+      margin-top: 53px;
+      text-align:center;
+    }
+    
+    #app-button {
+      margin: 41px;
+    }
+    
+    #mobile-web-app-link {
+    	font-weight:200;
+      color: #333333;
+    }
+  }  
+}
