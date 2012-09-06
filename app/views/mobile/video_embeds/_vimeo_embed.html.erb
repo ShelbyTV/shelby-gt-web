@@ -26,3 +26,9 @@
 			}
 	});
 </script>
+
+<% if mobile_frame %>
+	<script>
+		$('#mobile-video-player').html('<iframe class="<%= vid_info %>" width="320" height="180" src="http://player.vimeo.com/video/<%= video["provider_id"] %>?autoplay=1&portrait=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+	</script>
+<% end %>
