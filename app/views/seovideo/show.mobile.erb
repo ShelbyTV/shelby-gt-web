@@ -1,106 +1,76 @@
-<!doctype html>
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<div class="content-wrapper">
 
-<% # if we got any meta tag info from request display it, otherwise just render head normally %>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <meta name="description" content="<%= Settings::Application.meta_description %>">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>shelby.tv | <%= @video_title %></title>
-  
-  <meta name="viewport" content="width=device-width">
-  <head profile="http://www.w3.org/2005/10/profile">
-  <link rel="icon"type="image/png" href="/favicon.png">
-  <%= stylesheet_link_tag "seovideo", :media => "screen" %>
-  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-</head>
+  <header class="seovideo-header clearfix">
+    <div class="seovideo-header-contents-mobile">
+      <div class="seovideo-logo-mobile">
+        <a href="http://shelby.tv"><img border=0px width=100px src="/images/seovideo/landing_logo.svg"></a>
+      </div>
+      <div class="seovideo-slogan-mobile">
+        <a href="http://shelby.tv">TRY THE FREE WEB APP SHELBY.TV</a>
+      </div>
+    </div>
+  </header>
 
-<body class="seovideo">
-  <div class="content-wrapper">
+  <hr class="seovideo-headerrule">
 
-    <header class="seovideo-header clearfix">
-      <div class="seovideo-header-contents-mobile">
-        <div class="seovideo-logo-mobile">
-          <a href="http://shelby.tv"><img border=0px width=100px src="/images/seovideo/landing_logo.svg"></a>
+  <div class="seovideo-wrapper-mobile">
+
+    <div class="seovideo-pitch-mobile">
+      <a href="http://shelby.tv">This video is brought to you by Shelby.tv<br>Try out the free web app and discover all the amazing<br>new videos your friends are sharing together.</a>
+    </div>
+
+    <div class="seovideo-embed-mobile">
+      <iframe class="youtube-player" type="text/html" width="310" height="180" src="http://www.youtube.com/embed/<%= @provider_id %>" frameborder="0">
+      </iframe>
+    </div>
+    <div class="seovideo-details-mobile">
+      <p>Title: <%= @video_title %></p>
+      <p>Author: <%= @video_author %></p>
+      <p>Description: <%= @video_description %></p>
+    </div><!-- eo seovideo-details -->
+
+    <% if !@video_related_response_body_results.empty? %>
+      <div class="seovideo-relatedvideos-mobile">
+        <div class="seovideo-relatedvideo-header-mobile">
+          Related Videos
         </div>
-        <div class="seovideo-slogan-mobile">
-          <a href="http://shelby.tv">TRY THE FREE WEB APP SHELBY.TV</a>
-        </div>
-      </div>
-    </header>
-
-    <hr class="seovideo-headerrule">
-
-    <div class="seovideo-wrapper-mobile">
-
-      <div class="seovideo-pitch-mobile">
-        <a href="http://shelby.tv">This video is brought to you by Shelby.tv<br>Try out the free web app and discover all the amazing<br>new videos your friends are sharing together.</a>
-      </div>
-
-      <div class="seovideo-embed-mobile">
-        <iframe class="youtube-player" type="text/html" width="310" height="180" src="http://www.youtube.com/embed/<%= @provider_id %>" frameborder="0">
-        </iframe>
-      </div>
-      <div class="seovideo-details-mobile">
-        <p>Title: <%= @video_title %></p>
-        <p>Author: <%= @video_author %></p>
-        <p>Description: <%= @video_description %></p>
-      </div><!-- eo seovideo-details -->
-
-      <% if !@video_related_response_body_results.empty? %>
-        <div class="seovideo-relatedvideos-mobile">
-          <div class="seovideo-relatedvideo-header-mobile">
-            Related Videos
+        <% @video_related_response_body_results.each do |video_related| %>
+          <div class="seovideo-relatedvideo-mobile">
+            <a href="http://shelby.tv/video/youtube/<%= video_related["provider_id"] %>"><img width=94 height=60 src=<%= video_related["thumbnail_url"] %> ></a>
           </div>
-          <% @video_related_response_body_results.each do |video_related| %>
-            <div class="seovideo-relatedvideo-mobile">
-              <a href="http://shelby.tv/video/youtube/<%= video_related["provider_id"] %>"><img width=94 height=60 src=<%= video_related["thumbnail_url"] %> ></a>
-            </div>
-          <% end %>
-          <span style="width: 100%; display: inline-block; font-size: 0; line-height: 0"></span>
-        </div>
-      <% end %>
-
-
-      <div class="seovideo-messages">
-        <% @conversations.each do |conversation| %>
-          <% conversation["messages"].each do |message| %>
-            <hr class="seovideo-headerrule">
-            <div class="seovideo-message-mobile">
-              <div class="seovideo-message-image-mobile">
-                 <img width=36 height=36 src="<%= message["user_image_url"] %>">
-              </div>
-              <div class="seovideo-messagenickname-mobile">
-                <% if message["origin_network"] && message["origin_network"] == "twitter" %>
-                  @<%= message["nickname"] %>
-                <% else %>
-                  <%= message["nickname"] %>
-                <% end %>
-              </div>
-              <div class="seovideo-messagetext-mobile">
-                <%= message["text"] %>
-              </div>
-              <div class="seovideo-messagedate-mobile">
-                Posted <%= message["created_at"] %>
-              </div>
-            </div>
-          <% end %>
         <% end %>
-      </div><!-- eo seovideo-messages -->
+        <span style="width: 100%; display: inline-block; font-size: 0; line-height: 0"></span>
+      </div>
+    <% end %>
 
 
-    </div><!-- eo seovideo-wrapper -->
+    <div class="seovideo-messages">
+      <% @conversations.each do |conversation| %>
+        <% conversation["messages"].each do |message| %>
+          <hr class="seovideo-headerrule">
+          <div class="seovideo-message-mobile">
+            <div class="seovideo-message-image-mobile">
+               <img width=36 height=36 src="<%= message["user_image_url"] %>">
+            </div>
+            <div class="seovideo-messagenickname-mobile">
+              <% if message["origin_network"] && message["origin_network"] == "twitter" %>
+                @<%= message["nickname"] %>
+              <% else %>
+                <%= message["nickname"] %>
+              <% end %>
+            </div>
+            <div class="seovideo-messagetext-mobile">
+              <%= message["text"] %>
+            </div>
+            <div class="seovideo-messagedate-mobile">
+              Posted <%= message["created_at"] %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div><!-- eo seovideo-messages -->
 
-  </div><!-- eo content-wrapper -->	
 
-  <%# Asynchronous Google Analytics snippet via http://mathiasbynens.be/notes/async-analytics-snippet %>
-  <script>
-    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','none'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+  </div><!-- eo seovideo-wrapper -->
 
-</body>
-</html>
+</div><!-- eo content-wrapper -->	

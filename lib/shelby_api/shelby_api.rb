@@ -12,8 +12,10 @@ module Shelby
       r = get( "/roll/#{id}" ).parsed_response
     end
     
-    def self.get_frame_info(frame_id)
-      f = get( "/frame/#{frame_id}" ).parsed_response
+    def self.get_frame_info(frame_id, include_children=false)
+      route = "/frame/#{frame_id}"
+      route += "?include_children=true" if include_children
+      f = get( route ).parsed_response
       return f['status'] == 200 ? f['result'] : nil
     end
     

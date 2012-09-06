@@ -13,12 +13,31 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
+  initialize : function(){
+    this.model.bind('change:rolls_followed', this._onRollsFollwedChange, this);
+  },
+
+  cleanup : function(){
+    this.model.unbind('change:rolls_followed', this._onRollsFollwedChange, this);
+  },
+
   _onOnboardingRollButtonClick : function(event){
     var rollId = event.currentTarget.id;
     var rollToJoin = new libs.shelbyGT.RollModel({id:rollId});
+    var self = this;
     rollToJoin.joinRoll(function(){
+      self.model.set('rolls_followed', self.model.get('rolls_followed')+1);
       $('#js-roll-item-lining-'+rollId).addClass('followed');
     });
+  },
+
+  _onRollsFollwedChange : function(model, rolls_followed){
+    if (rolls_followed > 2){
+      this.$('.js-onboarding-next-step').text('Next').removeAttr('disabled');
+    } else {
+      var noun = rolls_followed===2 ? 'Roll' : 'Rolls';
+      this.$('.js-onboarding-next-step').text('Follow '+(3-this.model.get('rolls_followed'))+' more '+noun);
+    }
   },
 
   _onNextStepClick : function(){

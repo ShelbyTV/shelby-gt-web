@@ -26,7 +26,12 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
     },
     '2' : {
       view:libs.shelbyGT.OnboardingContentStage2View,
-      opts:{stage:2}
+      opts:function(){
+        return {
+          model: new libs.shelbyGT.OnboardingStage2Model(),
+          stage: 2
+        }
+      }
     },
     '3' : {
       view:libs.shelbyGT.OnboardingContentStage3View,
