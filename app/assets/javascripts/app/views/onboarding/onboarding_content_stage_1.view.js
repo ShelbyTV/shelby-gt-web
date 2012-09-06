@@ -16,6 +16,8 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   initialize : function(){
+    this.model.set('primary_email', shelby.models.user.get('primary_email'));
+    this.model.set('nickname', shelby.models.user.get('nickname'));
     this.model.bind('change:nickname', this._onUsernameChange, this);
   },
 
@@ -75,8 +77,10 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     if (!this.model.get('nickname') || !this.model.get('nickname').length){
       invalidFields.push('nickname');
     }
-    if (!this.model.get('password') || !this.model.get('password').length || this.model.get('password').length<5){
-      invalidFields.push('password');
+    if (!shelby.models.user.get('has_password')){
+      if (!this.model.get('password') || !this.model.get('password').length || this.model.get('password').length<5){
+        invalidFields.push('password');
+      }
     }
     if (!this.model.get('primary_email') || !this.model.get('primary_email').length || this.model.get('primary_email').indexOf('@')===-1){
       invalidFields.push('primary_email');
