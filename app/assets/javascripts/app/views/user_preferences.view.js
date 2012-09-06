@@ -130,7 +130,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
   _toggleJoinrollEmails: function(){
-    this._toggleCheckboxSelection('roll_activity_notifications', '#you-preferences-timeline-sharing');
+    this._toggleCheckboxSelection('roll_activity_notifications', '#you-preferences-email-joinrolls');
   },
 
   _toggleTimelineSharing: function(){
@@ -142,7 +142,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   _toggleCheckboxSelection: function(prefAttribute, checkBoxSelector) {
     var _prefs = _.clone(this.model.get('preferences'));
     _prefs[prefAttribute] = this.$(checkBoxSelector).is(':checked') ? true : false;
-    this.model.save({preferences: _prefs}, {wait: true});
+    this.model.save({preferences: _prefs});
   }
 
 });
