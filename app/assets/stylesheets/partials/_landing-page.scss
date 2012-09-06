@@ -51,6 +51,10 @@ $landing-page-footer-font-color: #EFEFEF;
   padding: 10px;
 }
 
+.login-social-section-header  {
+  margin-bottom: 5px;
+}
+
 .login-form .form_input {
   margin-bottom: .5em;
 }
@@ -168,12 +172,17 @@ $landing-page-shelf-background: #ccc;
   padding: 55px 0 10px;
 }
 
+.landing-appstore-header {
+  font-size: 1.5em;
+  margin-top: 40px;
+}
+
 .landing-appstore {
   border-radius: 5px;
   background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
   display: block;
   height: 97px;
-  margin: 45px 0;
+  margin: 5px 0 45px;
   width: 265px;
   
   &:hover {
