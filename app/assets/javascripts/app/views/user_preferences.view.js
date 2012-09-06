@@ -1,5 +1,9 @@
 libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
+  _responseFadeTimeout : null,
+
+  _securityResponseFadeTimeout : null,
+
   events: {
     "click .js-user-save:not(.js-busy)":  "_submitContactInfo",
     "click .js-user-password-save:not(.js-busy)": "_submitPassword",
@@ -103,17 +107,27 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _updateResponse: function(msg){
     var self = this;
-    this.$('.js-response-message').show().text(msg);
-    setTimeout(function(){
+    if (this._responseFadeTimeout) {
+      clearTimeout(this._responseFadeTimeout);
+      delete this._responseFadeTimeout;
+    }
+    this.$('.js-response-message').stop(true, true).text(msg).show();
+    this._responseFadeTimeout = setTimeout(function(){
       self.$('.js-response-message').fadeOut('fast', function() { $(this).text(""); });
+      delete self._responseFadeTimeout;
     }, 3000);
   },
 
   _updateSecurityResponse: function(msg){
     var self = this;
-    this.$('.js-security-response-message').show().text(msg);
-    setTimeout(function(){
+    if (this._securityResponseFadeTimeout) {
+      clearTimeout(this._securityResponseFadeTimeout);
+      delete this._securityResponseFadeTimeout;
+    }
+    this.$('.js-security-response-message').stop(true, true).text(msg).show();
+    this._securityResponseFadeTimeout = setTimeout(function(){
       self.$('.js-security-response-message').fadeOut('fast', function() { $(this).text(""); });
+      delete this._securityResponseFadeTimeout;
     }, 3000);
   },
 
