@@ -40,7 +40,7 @@ class HomeController < ApplicationController
       elsif params[:genius]
         @genius_share = true
       end
-      #XXX Mobile
+      #XXX Mobile View
       return render_mobile_view(params) if is_mobile?(request)
       
       render 'gate'
