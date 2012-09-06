@@ -131,11 +131,13 @@
 //---------------------------
 //  modular overlay framework
 //  
-//    overlays have two main parts:
+//    two main parts:
 //    header and body.
 //    this abstraction is a primer for
 //    the content separation.
-//    *must be used for any overlay 
+//
+//    *used for any overlay,
+//     that slides over the guide    
 //---------------------------
 
 .overlay_header {

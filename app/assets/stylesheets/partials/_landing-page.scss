@@ -166,8 +166,9 @@ $landing-page-shelf-background: #ccc;
   font-family: $font-family-display;
   font-size: 1.3em;
   font-weight: 400;
-  padding: 1.1em 3em;
-  vertical-align: top;
+  height: 45px;
+  padding: 1.1em 3em 1.2em;
+  vertical-align: bottom;
   
   &:hover {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
@@ -226,5 +227,4 @@ $landing-page-footer-background: #161818;
 
 .landing-footer-content-header {
   margin-bottom: 10px;
-  width: inherit;
 }
