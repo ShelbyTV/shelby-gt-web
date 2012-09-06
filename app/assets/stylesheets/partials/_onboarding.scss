@@ -3,7 +3,7 @@
 //------------------------------
 
 .onboarding-content-pane  {
-  background: $base;
+  background: adjust-lightness($base, 5%);
   overflow-y: scroll;
   text-align: center;
 }
@@ -243,11 +243,11 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-twitter-added)
+      background-image: url($icon-onboarding-twitter-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-twitter-add)
+    background-image: url($icon-onboarding-twitter-add);
   }
 }
 
@@ -260,11 +260,11 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-facebook-added)
+      background-image: url($icon-onboarding-facebook-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-facebook-add)
+    background-image: url($icon-onboarding-facebook-add);
   }
 }
 
@@ -277,41 +277,44 @@
   }
   &.connected-network {
     .onboarding-icon {
-      background-image:  url($icon-onboarding-tumblr-added)
+      background-image: url($icon-onboarding-tumblr-added);
     }
   }
   .onboarding-icon {
-    background-image:  url($icon-onboarding-tumblr-add)
+    background-image: url($icon-onboarding-tumblr-add);
   }
 }
 
 /* STAGE 4 */
 
-.onboarding-last-step-list {
+.onboarding-last-list {
   list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: auto;
-  .onboarding-last-step-item-lining {
+  margin: 0 auto;
+  max-width: 780px;
+  padding: 0;
+
+  .onboarding-last-item-lining {
     font-size: 1.4em;
     text-align: left;
     margin: 10px 30px;
   }
+
   li {
     float: left;
     margin: 0;
     padding: 0;
     width: 50%;
   }
+
   img {
     width: 100%;
   }
 }
 
-.onboarding-last-step-title {
+.onboarding-last-title {
   line-height: 2.5;
 }
 
-.onboarding-last-step-desc {
+.onboarding-last-desc {
   font-weight: 100;
 }
