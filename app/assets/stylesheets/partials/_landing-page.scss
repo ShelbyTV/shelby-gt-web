@@ -1,3 +1,5 @@
+@import "compass/utilities/links/hover-link";
+
 $landing-page-width: 920px;
 
 .shelby-landing {
@@ -153,6 +155,7 @@ $landing-page-shelf-background: #ccc;
   
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   font-size: 2em;
+  height: 45px;
   padding: .5em;
 }  
   
@@ -193,6 +196,7 @@ $landing-page-shelf-background: #ccc;
  ********************************************************/
 
 $landing-page-footer-background: #161818;
+$landing-page-footer-font-color: #EFEFEF;
 
 .landing-footer {
   @include gradient-primer($landing-page-footer-background);
@@ -210,15 +214,16 @@ $landing-page-footer-background: #161818;
 
 .landing-footer-lists > li {
   float: left;
+  padding-top: 30px;
   width: (100%/6);
-}
-
-.secondary-landing-footer-content-list {
-  float: right;
+  
+  &.secondary {
+    float: right;
+  }
 }
 
 .landing-footer-content-header, .landing-footer-content-list li {
-  color: #EFEFEF;
+  color: $landing-page-footer-font-color;
   font-size: 1.3em;
   font-family: ubuntu;
   font-weight: 300;
@@ -226,5 +231,14 @@ $landing-page-footer-background: #161818;
 }
 
 .landing-footer-content-header {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.landing-footer-content-list > li, .landing-footer-content-list a {
+  color: $landing-page-footer-font-color;
+  font-weight: 100;
+}
+
+.landing-footer-content-list a {
+  @include hover-link();
 }
