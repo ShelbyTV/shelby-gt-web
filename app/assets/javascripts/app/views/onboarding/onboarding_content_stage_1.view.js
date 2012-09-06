@@ -75,7 +75,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     if (!this.model.get('nickname') || !this.model.get('nickname').length){
       invalidFields.push('nickname');
     }
-    if (!this.model.get('password') || !this.model.get('password').length){
+    if (!this.model.get('password') || !this.model.get('password').length || this.model.get('password').length<5){
       invalidFields.push('password');
     }
     if (!this.model.get('primary_email') || !this.model.get('primary_email').length || this.model.get('primary_email').indexOf('@')===-1){
@@ -92,7 +92,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       $('.js-onboarding-email-input-error').text('Please enter a valid email.').show();
     }
     if (_.include(fields, 'password')){
-      $('.js-onboarding-pwd-input-error').text('Please enter a password.').show();
+      $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least 5 characters long.').show();
     }
   },
 
