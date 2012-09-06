@@ -118,35 +118,31 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
   _toggleEmailUpdates: function(){
-    var _prefs = this.model.get('preferences');
-    _prefs.email_updates = this.$('#you-preferences-email-updates').is(':checked') ? true : false;
-    this.model.save({preferences: _prefs});
+    this._toggleCheckboxSelection('email_updates', '#you-preferences-email-updates');
   },
 
   _toggleCommentEmails: function(){
-    var _prefs = this.model.get('preferences');
-    _prefs.comment_notifications = this.$('#you-preferences-email-comments').is(':checked') ? true : false;
-    this.model.save({preferences: _prefs});
+    this._toggleCheckboxSelection('comment_notifications', '#you-preferences-email-comments');
   },
 
   _toggleRerollEmails: function(){
-    var _prefs = this.model.get('preferences');
-    _prefs.reroll_notifications = this.$('#you-preferences-email-rerolls').is(':checked') ? true : false;
-    this.model.save({preferences: _prefs});
+    this._toggleCheckboxSelection('reroll_notifications', '#you-preferences-email-rerolls');
   },
 
   _toggleJoinrollEmails: function(){
-    var _prefs = this.model.get('preferences');
-    _prefs.roll_activity_notifications = this.$('#you-preferences-email-joinrolls').is(':checked') ? true : false;
-    this.model.save({preferences: _prefs});
+    this._toggleCheckboxSelection('roll_activity_notifications', '#you-preferences-timeline-sharing');
   },
 
   _toggleTimelineSharing: function(){
-    var _prefs = this.model.get('preferences');
-    _prefs.open_graph_posting = this.$('#you-preferences-timeline-sharing').is(':checked') ? true : false;
-    this.model.save({preferences: _prefs});
-  }
+    this._toggleCheckboxSelection('open_graph_posting', '#you-preferences-timeline-sharing');
+  },
 
   // the future
+
+  _toggleCheckboxSelection: function(prefAttribute, checkBoxSelector) {
+    var _prefs = _.clone(this.model.get('preferences'));
+    _prefs[prefAttribute] = this.$(checkBoxSelector).is(':checked') ? true : false;
+    this.model.save({preferences: _prefs}, {wait: true});
+  }
 
 });
