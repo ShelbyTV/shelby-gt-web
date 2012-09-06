@@ -53,7 +53,6 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
     var clearBusyFunction = function() {
       self.$('.js-follow-unfollow').removeClass('js-busy');
     };
-
     if (wasCommandActive) {
       this.model.joinRoll(clearBusyFunction, clearBusyFunction);
     } else {
