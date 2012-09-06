@@ -101,10 +101,14 @@
 //---------------------------
 
 .settings-section {
-  right: 0;
+  right: 10px;
 }
 
+$settings-panel-bg : #555;
+
 .settings-section-lining {
+  @include fin($base);
+
   background: adjust-lightness(#ddd,-5%);
   margin-top: 5px;
   text-align: left;
@@ -183,9 +187,10 @@
 //---------------------------
 
 .nowplaying-section {
-  right: 0;
+  right: 10px;
 }
 
 .nowplaying-section-lining {
+  @include fin($base);
   margin-top: 5px;
 }

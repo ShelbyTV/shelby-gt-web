@@ -9,11 +9,10 @@
 </div>
 
 <div id="mobile-frame-context">
-	<% if @genius_share %>
-		<%= render :partial => "mobile/partials/genius_sharer" %>
-	<% elsif @email_share %>
-		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @email_share[:name], :avatar => @email_share[:avatar] } %>
-	<% else %>
-		<%= render :partial => "mobile/partials/user_sharer", :locals => { :name => @frame['creator']['name'] || @frame['creator']['nickname'], :avatar => @frame['creator']['user_image'] } %>
-	<% end %> 
+	
+	<% if @share_type == :genius %> 		<%= render :partial => "/mobile/partials/genius_email_share" %>
+	<% elsif @share_type == :email %> 	<%= render :partial => "/mobile/partials/direct_email_share" %>
+	<% elsif @share_type == :rolling %>	<%= render :partial => "/mobile/partials/rolling_share" %>
+	<% end %>
+
 </div>
