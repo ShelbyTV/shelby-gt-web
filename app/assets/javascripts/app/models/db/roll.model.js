@@ -35,41 +35,51 @@
       return ShelbyBaseModel.prototype.sync.call(this, method, model, options);
     },
 
-    joinRoll : function(onSuccess) {
+    joinRoll : function(onSuccess, onError) {
       var rollToJoin = new libs.shelbyGT.RollModel();
       var url = shelby.config.apiRoot + '/roll/' + this.id + '/join';
-      rollToJoin.save(null,
-        {
-          url : url,
-          success : function(rollModel, response){
-            BackboneCollectionUtils.insertAtSortedIndex(rollModel,
-              shelby.models.rollFollowings.get('rolls'), 
-                {searchOffset:rollFollowingsConfig.numSpecialRolls, 
-                  sortAttribute:rollFollowingsConfig.sortAttribute,
-                  sortDirection:rollFollowingsConfig.sortDirection});
-            if (onSuccess) {
-              onSuccess(rollModel, response);
-            }
+      var params = {
+        url : url,
+        success : function(rollModel, response){
+          BackboneCollectionUtils.insertAtSortedIndex(rollModel,
+            shelby.models.rollFollowings.get('rolls'),
+              {searchOffset:rollFollowingsConfig.numSpecialRolls,
+                sortAttribute:rollFollowingsConfig.sortAttribute,
+                sortDirection:rollFollowingsConfig.sortDirection});
+          if (onSuccess) {
+            onSuccess(rollModel, response);
           }
         }
-      );
+      };
+      if (onError) {
+        params.error = function(rollModel, response){
+          onError(rollModel, response);
+        };
+      }
+      rollToJoin.save(null, params);
+
       shelby.track('joined_roll', {id: this.id, userName: shelby.models.user.get('nickname')});
     },
 
-    leaveRoll : function(onSuccess) {
+    leaveRoll : function(onSuccess, onError) {
       var rollToLeave = new libs.shelbyGT.RollModel();
       var url = shelby.config.apiRoot + '/roll/' + this.id + '/leave';
-      rollToLeave.save(null,
-        {
-          url : url,
-          success : function(rollModel, response){
-            shelby.models.rollFollowings.remove(rollModel);
-            if (onSuccess) {
-              onSuccess(rollModel, response);
-            }
+      var params = {
+        url : url,
+        success : function(rollModel, response){
+          shelby.models.rollFollowings.remove(rollModel);
+          if (onSuccess) {
+            onSuccess(rollModel, response);
           }
         }
-      );
+      };
+      if (onError) {
+        params.error = function(rollModel, response){
+          onError(rollModel, response);
+        };
+      }
+      rollToLeave.save(null, params);
+
       shelby.track( 'left_roll',  {id: this.id, userName: shelby.models.user.get('nickname')} );
     },
 

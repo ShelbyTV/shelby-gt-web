@@ -1,24 +1,14 @@
 libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
-    "click .js-explore-link"    : "_displayFullRoll",
-    "click .js-follow-unfollow" : "_followOrUnfollow"
+    "click .js-explore-link"                  : "_displayFullRoll",
+    "click .js-follow-unfollow:not(.js-busy)" : "_followOrUnfollow"
   },
 
   className : 'explore-item',
 
   template : function(obj){
     return JST['explore-roll-item'](obj);
-  },
-
-  initialize : function() {
-    shelby.models.rollFollowings.bind('add:rolls', this._onAddRollFollowings, this);
-    shelby.models.rollFollowings.bind('remove:rolls', this._onRemoveRollFollowings, this);
-  },
-
-  _cleanup : function() {
-    shelby.models.rollFollowings.unbind('add:rolls', this._onAddRollFollowings, this);
-    shelby.models.rollFollowings.unbind('remove:rolls', this._onRemoveRollFollowings, this);
   },
 
   render : function(){
@@ -40,22 +30,26 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _followOrUnfollow : function(){
-    this.model.joinOrLeaveRoll();
-  },
+    var self = this;
+    var $thisButton = this.$('.js-follow-unfollow');
 
-  _onAddRollFollowings : function(rollModel, rollFollowingsCollection, options){
-    this._checkReRenderFollowButton(rollModel, true);
-  },
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isCommandActive = $thisButton.toggleClass('command-active').hasClass('command-active');
+    var wasCommandActive = !isCommandActive;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.text(isCommandActive ? 'Follow' : 'Unfollow').addClass('js-busy');
 
-  _onRemoveRollFollowings : function(rollModel, rollFollowingsCollection, options){
-    this._checkReRenderFollowButton(rollModel, false);
-  },
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      self.$('.js-follow-unfollow').removeClass('js-busy');
+    };
 
-  _checkReRenderFollowButton : function(rollModel, wasFollowed) {
-    if (rollModel.id == this.model.id) {
-      //if my model was added or removed from roll followings, I need to re-render my follow button
-      this.$('.js-follow-unfollow').toggleClass('command-active', !wasFollowed);
-      this.$('.js-follow-unfollow').text(wasFollowed ? 'Unfollow' : 'Follow');
+    if (wasCommandActive) {
+      this.model.joinRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      this.model.leaveRoll(clearBusyFunction, clearBusyFunction);
     }
   }
 
