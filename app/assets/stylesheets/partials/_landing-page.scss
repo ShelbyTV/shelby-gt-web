@@ -242,3 +242,11 @@ $landing-page-footer-font-color: #EFEFEF;
 .landing-footer-content-list a {
   @include hover-link();
 }
+
+/********************************************************
+ * Social Media
+ ********************************************************/
+
+.fb_edge_widget_with_comment {
+  margin-bottom: 2px;
+}
