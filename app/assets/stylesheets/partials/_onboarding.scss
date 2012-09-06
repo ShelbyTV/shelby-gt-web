@@ -9,6 +9,12 @@
   margin-top:30px;
 }
 
+.onboarding-guide-list-item{
+  &:hover{
+    display:none;
+  }
+}
+
 .onboarding-header{
   h1 {
     color:black;
