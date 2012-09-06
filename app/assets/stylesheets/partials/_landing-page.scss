@@ -1,8 +1,11 @@
 @import "compass/typography/links/hover-link";
 
 $landing-page-width: 920px;
+$landing-page-footer-background: #161818;
+$landing-page-footer-font-color: #EFEFEF;
 
 .shelby-landing {
+  background-color: $landing-page-footer-background;
   overflow: auto;
   
   /* adjust the header, don't want absolute position */
@@ -96,8 +99,67 @@ $landing-page-shelf-background: #ccc;
 }
 
 /********************************************************
- * Genius App Shelf
+ * All Share Shelves
  ********************************************************/
+
+.landing-shelf-share {
+  padding: 50px 0 20px;
+}
+
+.landing-shelf-video-embed {
+  float: left;
+  width: $landing-page-width * (10/18);
+}
+
+.landing-shelf-share-content {
+  float: left;
+  padding-top: 30px;
+  width: $landing-page-width * (8/18);
+  
+  .user-avatar {
+    width: 48px;
+    padding-right: 5px;
+  }
+}
+
+/********************************************************
+ * _direct_email_share - Share Shelf
+ ********************************************************/
+
+/********************************************************
+ * _genius_email_share - Share Shelf
+ ********************************************************/
+ 
+/********************************************************
+ * _rolling_share - Share Shelf
+ ********************************************************/
+.landing-shelf-rolling-share .landing-shelf-share-content {
+  padding-top: 0;
+}
+
+.landing-shelf-rolling-share .share-context {
+  font-face: ubuntu;
+  font-size: 1.5em;
+  padding-top: 10px;
+
+  .user-avatar {
+    float: left;
+  }
+  
+  .user-nickname {
+    font-weight: 600;
+  }
+}
+
+/********************************************************
+ * _genius_ios_ad - Primary Shelf
+ ********************************************************/
+
+.genius-typographical {
+  font-variant: small-caps;
+  font-size: 1.3em;
+  font-weight: 600;
+}
 
 .landing-shelf-genius .landing-shelf-lining {
   background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
@@ -118,7 +180,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 /********************************************************
- * Private Beta Shelf
+ * _private_beta - Primary Shelf
  ********************************************************/
 
 .landing-shelf-private {
@@ -185,9 +247,6 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * Footer
  ********************************************************/
-
-$landing-page-footer-background: #161818;
-$landing-page-footer-font-color: #EFEFEF;
 
 .landing-footer {
   @include gradient-primer($landing-page-footer-background);

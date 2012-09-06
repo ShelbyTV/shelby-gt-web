@@ -156,11 +156,12 @@
 
 	</div><!-- /shelby-wrapper -->
 
+	<!-- Email submit (used by many shelves) -->
   <script>
   	$(document).ready(function(){
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-login, #js-signup').addClass('hidden');
+          $('#js-email-form').addClass('hidden');
           $('#js-thankyou').removeClass('hidden');
         }, 'jsonp');
         return false;

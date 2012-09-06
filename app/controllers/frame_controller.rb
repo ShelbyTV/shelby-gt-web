@@ -27,10 +27,10 @@ class FrameController < ApplicationController
       
       # Get all pertinent info from the API (we need all of this no matter what)
       @roll = Shelby::API.get_roll(params[:roll_id])
-      @frame = Shelby::API.get_frame(params[:frame_id])
+      @frame = Shelby::API.get_frame(params[:frame_id], true)
       @video = Shelby::API.get_video(@frame['video_id']) if @frame
-      if @share_type == :rolling and @roll
-        @user = Shelby::API.get_user(@roll['creator_id'])
+      if @share_type == :rolling and @frame
+        @user = Shelby::API.get_user(@frame['creator_id'])
       else
         @user = Shelby::API.get_user(params[:utm_source])
       end

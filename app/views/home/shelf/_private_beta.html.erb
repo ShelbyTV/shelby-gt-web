@@ -7,22 +7,7 @@
 			We're currently in a private beta, but we'll let you know when the wait is over.
 		</h2>
 	
-		<form id="js-email-form" class="landing-form">
-      <label for="js-email-input" class="landing-form-label">
-        Email
-      </label>
-      <span class="landing-input-error hidden">Email must be valid!</span>
-
-			<input name="email" type="email" id="js-email-input" class="landing-form-input" /><!--
-
-      --><input type="submit" value="Submit" id="js-email-submit" class="landing-form-submit js-track-event" data-ga_category="Landing Page" data-ga_action="Submit email" />
-    </form>
-
-		<div id="js-thankyou" class="gate-lining hidden">
-      <h2 class="gate-head">
-        Thanks for signing up!
-      </h2>
-    </div>
+		<%= render :partial => "/home/shelf/interest_email_form" %>
 
 	</div>
 
