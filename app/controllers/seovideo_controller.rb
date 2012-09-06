@@ -8,14 +8,9 @@ before_filter :prepare_for_mobile
 
   def show
     
-    #XXX MOBILE GENIUS FRAME HACK
-    #TODO: This should be a different route altogether, eg /genius/:frame_id
+    # Genius email share is piggybacking on this route, for now we just want to redirect
     if params[:roll_id] and params[:frame_id]
-      @genius_share = true
-      if @frame = Shelby::API.get_frame_info(params[:frame_id], true)
-        g = /GENIUS\:\s(\w*)/.match(@frame['roll']['title'])
-        @search_term = g ? g[1] : "something cool"
-      end
+      redirect_to "/roll/#{params[:roll_id]}/frame/#{params[:frame_id]}?utm_campaign=genius-email" and return
     end
     
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"

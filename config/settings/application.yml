@@ -1,5 +1,6 @@
 defaults: &defaults
   url: "http://shelby.tv"
+  domain: "shelby.tv"
   mobile_url: "http://m.shelby.tv"
   ios_app_url: "http://shl.by/ios-genius-app"
   avatar_url_root: "http://s3.amazonaws.com/shelby-gt-user-avatars"
