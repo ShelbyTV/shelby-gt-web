@@ -17,6 +17,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   initialize : function(){
     this.model.set('primary_email', shelby.models.user.get('primary_email'));
+    this.model.set('nickname', shelby.models.user.get('nickname'));
     this.model.bind('change:nickname', this._onUsernameChange, this);
   },
 
