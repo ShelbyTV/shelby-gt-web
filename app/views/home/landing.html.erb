@@ -4,10 +4,10 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
-  <%= render :partial => "/home/meta_info", :locals => { :info => @meta_info } %>
+  <%= render :partial => "/home/meta_info" %>
   <meta charset="utf-8">
   <title>
-    <%= render :partial => "/home/title_tag", :locals => { :meta_info => @meta_info} %>
+    <%= render :partial => "/home/title_tag" %>
   </title>
   
   <meta name="viewport" content="width=device-width">
@@ -55,6 +55,7 @@
 								<hr />
 								
 								<div class="social_login login-social-section clearfix">
+									<h4 class="login-social-section-header">or, login with</h4>
 						      <a class="social_login_twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
 						        Twitter
 						      </a>
@@ -156,11 +157,12 @@
 
 	</div><!-- /shelby-wrapper -->
 
+	<!-- Email submit (used by many shelves) -->
   <script>
   	$(document).ready(function(){
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-login, #js-signup').addClass('hidden');
+          $('#js-email-form').addClass('hidden');
           $('#js-thankyou').removeClass('hidden');
         }, 'jsonp');
         return false;

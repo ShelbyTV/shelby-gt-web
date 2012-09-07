@@ -86,6 +86,7 @@ $animate-delay: 0s !default;
 //--- FONT SETUP
 $font-color          : #333;
 $font-color-display  : $font-color;
+$font-color-light    : adjust-lightness($font-color, 26.5%);
 $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-size           : 100%;
