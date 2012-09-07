@@ -8,11 +8,6 @@ before_filter :prepare_for_mobile
 
   def show
     
-    # Genius email share is piggybacking on this route, for now we just want to redirect
-    if params[:roll_id] and params[:frame_id]
-      redirect_to "/roll/#{params[:roll_id]}/frame/#{params[:frame_id]}?utm_campaign=genius-email" and return
-    end
-    
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
     # route guarantees provider_name and provider_id will exist
@@ -108,15 +103,6 @@ private
   def mobile_device?
     request.user_agent =~ /Mobile|webOS/
   end
-  
-  def is_iphone?
-    (request.user_agent=~/iPhone|iPad/) != nil
-  end
-  
-  def is_android?
-    (request.user_agent=~/Andoid/) != nil
-  end
-  
   def prepare_for_mobile
     if params[:mobile] != nil
       if params[:mobile] == "1" 
@@ -125,11 +111,7 @@ private
         request.format = :html
       end
     else
-      if is_iphone?
-        request.format = :ios
-      else
-        request.format = :mobile if mobile_device?
-      end
+      request.format = :mobile if mobile_device?
     end
   end
 
