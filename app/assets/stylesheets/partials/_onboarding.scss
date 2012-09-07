@@ -1,266 +1,351 @@
-.onboarding-content-pane {
-  background: #efefef;
-  color: black;
+//------------------------------
+//  onboard module 
+//------------------------------
+
+.onboarding_list_module {
+  list-style-type:none;
+  margin: 0 auto;
+  max-width: 780px;
+  padding: 0;
+}
+
+//------------------------------
+//  onboard architectural priming 
+//------------------------------
+
+.onboarding-content-pane  {
+  background: adjust-lightness($base, 5%);
   overflow-y: scroll;
-  text-align:center;
+  text-align: center;
 }
 
-.onboarding-content-wrapper{
-  margin-top:30px;
+.onboarding-content-wrapper  {
+  margin-top: 30px;
 }
 
-.onboarding-guide-list-item{
-  &:hover{
-    display:none;
+.onboarding-guide-list-item {
+  &:hover {
+    display: none;
   }
 }
 
-.onboarding-header{
-  h1 {
-    color:black;
-    font-size:24px;
-  }
-  h2 {
-    color:grey;
-    font-size:16px;
-  }
-}
+//------------------------------
+//  onboarding head module 
+//------------------------------
 
-.onboarding-next-step{
-  margin:40px 0px;
+  .onboarding-head {
+    margin-bottom: 3em;
+  }
+
+  .onboarding-header  {
+    font-size: 2em;
+  }
+  .onboarding-subheader  {
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 2.3;
+  }
+
+
+.onboarding-next-step {
+  margin: 40px 0px;
   @include xx-button-primer($x-primer-color, light);
 }
 
-.onboarding-error{
-  display:none;
-  color:red;
+.onboarding-error {
+  display: none;
+  color: $shelby-red;
+}
+
+.onboarding-subline {
+  color: $font-color-light;
+  font-size: .8em;
+  margin: .5em 0;
 }
 
 /* STAGE 1 */
 
-.onboarding-form-1{
-  margin:0px auto;
-  width:300px;
-  font-size:20px;
-  text-align:left;
-  input, label{
-    width:100%;
+.onboarding-form-1 {
+  margin:  0px auto;
+  width:  300px;
+  font-size:  1.2em;
+  position:   relative;
+  text-align:  left;
+
+  //------------------------------
+  //  TODO: 
+  //  dynamic-avatar-lining needs refactoring
+  //  for now this is a hacky override 
+  //------------------------------
+
+  .form_label.no-subline {
+    margin-top: 1em;
+  }
+
+  .dynamic-avatar-lining {
+    float: none;
   }
 }
 
-.onboarding-vanity-url{
-  font-size:22px;
+  //------------------------------
+  //  avatar upload module 
+  //------------------------------
+
+  .onboarding-form-avatar {
+    position: relative;
+    margin: 0 auto;
+    width: 138px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .onboarding-form-avatar-thumbnail {
+    
+  }
+
+  .onboarding-form-avatar-file {
+    margin-top: 1em;
+    font-size: .7em;
+  }
+
+
+.onboarding-vanity-url {
+//  font-size: 22px;
 }
 
 /* STAGE 2 */
 
-.onboarding-roll-list{
-  list-style:none;
-  margin-left:20px;
-  margin-right:20px;
-  width:auto;
-  img{
-    width:100%;
+.onboarding-roll-list {
+  img {
+    width: 100%;
   }
 }
 
-.onboarding-roll-item{
-  float:left;
-  margin:0;
-  padding:0;
-  width:20%;
+.onboarding-roll-item {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+
+//  &.followed {
+//    &:hover {
+//      .onboarding-roll-wrapper {
+//        display: none;
+//      }
+//    }
+
+//    .onboarding-roll-followed {
+//      display: block;
+//    }
+
+//    .onboarding-roll-button {
+//      display: none;
+//    }
+//  }
 }
 
-.onboarding-roll-item-lining{
-  position:relative;
-  margin-left:5px;
-  margin-right:5px;
-  text-align:left;
-  &:hover{
-    .onboarding-roll-button-wrapper{
-      display:block;
+.onboarding-roll-item-lining {
+  position: relative;
+  margin: 10px 5px;
+  text-align: left;
+
+  &:hover {
+    cursor: pointer; 
+
+    .onboarding-roll-button-wrapper {
+      display: block;
     }
   }
-  &.followed{
-    &:hover{
-      .onboarding-roll-wrapper{
-        display:none;
+
+  &.followed {
+    .onboarding-roll-followed {
+      display: block;
+    }
+
+    &:hover {
+      .onboarding-roll-button-wrapper {
+        display: none;
       }
-
-    }
-    .onboarding-roll-followed{
-      display:block;
-    }
-    .onboarding-roll-button{
-      display:none;
     }
   }
 }
 
-.onboarding-roll-body{
-  position:relative;
+.onboarding-roll-body {
+  position: relative;
+}
+.onboarding-roll-head,
+.onboarding-roll-subhead {
+  @include ellipsis;
 }
 
-.onboarding-roll-head{
-  font-size:1.39em;
+.onboarding-roll-head {
+  font-size: 1.39em;
 }
-.onboarding-roll-subhead{
-  font-weight:100;
-  font-size:0.8em;
-  letter-spacing:1px;
-  line-height:1.9;
-  margin-bottom:8px;
+.onboarding-roll-subhead {
+  font-weight: 100;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  line-height: 1.9;
+  margin-bottom: 8px;
 }
-.onboarding-roll-button-wrapper {
-  display: none;
-  left:0;
-  top: 40px;
-  position:absolute;
-  text-align: center;
-  width: 100%;
+.onboarding-roll-button-wrapper  {
+  display:  none;
+  left: 0;
+  top: 32%;
+  position: absolute;
+  text-align:  center;
+  width:  100%;
 }
-.onboarding-roll-button{
+.onboarding-roll-button {
   @include xx-button-primer($x-primer-color, light, menu);
 
-  display:inline;
-  margin:0 auto;
+  display: inline;
+  margin: 0 auto;
+
+  &:hover {
+    @include xx-button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
+  }
+
+  &:active {
+    @include xx-button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
+  }
 }
 
-.onboarding-roll-followed{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:none;
-  top:0;
-  left:0;
-  background-color:rgba(255,255,255,0.9);
-  color:black;
+.onboarding-roll-followed {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+  color: black;
 }
 
-.onboarding-followed-icon{
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image:url($icon-check);
-  bottom:0;
-  display:block;
-  position:absolute;
-  top:0;
-  width:100%;
+.onboarding-followed-icon {
+  background-repeat:  no-repeat;
+  background-position:  center center;
+  background-image: url($icon-check);
+  bottom: 0;
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 /* STAGE 3 */
-.onboarding-network-list{
-  list-style:none;
-  margin:20px auto;
-  padding:0;
-  width:auto;
+.onboarding-network-list {
+  list-style: none;
+  margin: 20px auto;
+  padding: 0;
+  width: auto;
 }
 
-.onboarding-network-item{
-  display:inline-block;
-  margin-right:32px;
-  margin-left:32px;
-  padding:0;
-  width:20%;
+.onboarding-network-item {
+  display: inline-block;
+  margin-right: 32px;
+  margin-left: 32px;
+  padding: 0;
+  width: 20%;
 }
 
-.onboarding-network-button{
-  &.connected-network{
+.onboarding-network-button {
+  &.connected-network {
     @include xx-button-primer($shelby-gray-light);
   }
-  width:100%;
+  width: 100%;
 }
 
-.onboarding-network-lining{
-  margin-left:5px;
-  margin-right:5px;
+.onboarding-network-lining {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.onboarding-icon{
-  background-repeat:no-repeat;
-  background-position:center center;
-  display:block;  
-  height:105px;
+.onboarding-icon {
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;  
+  height: 105px;
 }
 
-.onboarding-network-twitter{
+.onboarding-network-twitter {
   @include xx-button-primer($twitter-blue);
-  &:hover{
-    &:not([disabled]){
+  &:hover {
+    &:not([disabled]) {
       @include xx-button-primer(adjust-lightness($twitter-blue, 5%));
     }
   }
-  &.connected-network{
-    .onboarding-icon{
-      background-image: url($icon-onboarding-twitter-added)
+  &.connected-network {
+    .onboarding-icon {
+      background-image: url($icon-onboarding-twitter-added);
     }
   }
-  .onboarding-icon{
-    background-image: url($icon-onboarding-twitter-add)
+  .onboarding-icon {
+    background-image: url($icon-onboarding-twitter-add);
   }
 }
 
-.onboarding-network-facebook{
+.onboarding-network-facebook {
   @include xx-button-primer($facebook-blue);
-  &:hover{
-    &:not([disabled]){
+  &:hover {
+    &:not([disabled]) {
       @include xx-button-primer(adjust-lightness($facebook-blue, 5%));
     }
   }
-  &.connected-network{
-    .onboarding-icon{
-      background-image: url($icon-onboarding-facebook-added)
+  &.connected-network {
+    .onboarding-icon {
+      background-image: url($icon-onboarding-facebook-added);
     }
   }
-  .onboarding-icon{
-    background-image: url($icon-onboarding-facebook-add)
+  .onboarding-icon {
+    background-image: url($icon-onboarding-facebook-add);
   }
 }
 
-.onboarding-network-tumblr{
+.onboarding-network-tumblr {
   @include xx-button-primer($tumblr-blue);
-  &:hover{
-    &:not([disabled]){
+  &:hover {
+    &:not([disabled]) {
       @include xx-button-primer(adjust-lightness($tumblr-blue, 5%));
     }
   }
-  &.connected-network{
-    .onboarding-icon{
-      background-image: url($icon-onboarding-tumblr-added)
+  &.connected-network {
+    .onboarding-icon {
+      background-image: url($icon-onboarding-tumblr-added);
     }
   }
-  .onboarding-icon{
-    background-image: url($icon-onboarding-tumblr-add)
+  .onboarding-icon {
+    background-image: url($icon-onboarding-tumblr-add);
   }
 }
 
 /* STAGE 4 */
 
-.onboarding-last-step-list{
-  list-style:none;
-  margin-left:20px;
-  margin-right:20px;
-  width:auto;
-  .onboarding-last-step-item-lining{
-    font-size:1.4em;
-    text-align:left;
-    margin:10px 30px;
+.onboarding-last-list {
+  .onboarding-last-item-lining {
+    font-size: 1.4em;
+    text-align: left;
+    margin: 10px 30px;
   }
-  li{
-    float:left;
-    margin:0;
-    padding:0;
-    width:50%;
+
+  li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 50%;
   }
-  img{
-    width:100%;
+
+  img {
+    width: 100%;
   }
 }
 
-.onboarding-last-step-title{
-  line-height:2.5;
+.onboarding-last-title {
+  line-height: 2.5;
 }
 
-.onboarding-last-step-desc{
-  font-weight:100;
+.onboarding-last-desc {
+  font-weight: 100;
 }

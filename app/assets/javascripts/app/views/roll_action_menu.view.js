@@ -1,10 +1,7 @@
 libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   events : {
-    "click #js-rolls-back"            : "_goBack",
-    "click #js-roll-delete"           : "_confirmRollDelete",
-    "click .js-roll-add-leave-button" : "_toggleJoinRoll",
-		"click .js-edit-roll"             : "_toggleRollEditFunctions"
+    "click .js-roll-add-leave-button:not(.js-busy)" : "_followOrUnfollowRoll"
   },
 
   el : '#js-roll-action-menu',
@@ -16,15 +13,13 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change', this._onGuideModelChange, this);
     this.model.bind('change:currentRollModel', this._onRollModelChange, this);
-    this.options.viewState.bind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
-    shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateJoinButton, this);
+    shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change', this._onGuideModelChange, this);
     this.model.unbind('change:currentRollModel', this._onRollModelChange, this);
-    this.options.viewState.unbind('change:showEditFunctions', this._onChangeShowEditFunctions, this);
-    shelby.models.rollFollowings.unbind('add:rolls remove:rolls', this._updateJoinButton, this);
+    shelby.models.rollFollowings.unbind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   render : function(){
@@ -41,7 +36,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
         !_changedAttrs.has('displayIsolatedRoll')) {
       return;
     }
-    this._updateJoinButton();
     this._updateVisibility();
   },
 
@@ -53,37 +47,37 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     }
   },
 
-  _confirmRollDelete : function(){
-		var self = this;
-		shelby.confirm("Are you sure you want to permanently delete this roll?", {text: 'Delete Roll', color: 'red'}, {text: 'Cancel'}, function(r){
-			if (r == 1){ self._deleteRoll(); }
-		});
-  },
-
-  _deleteRoll : function(){
-    var self = this;
-    this.model.get('currentRollModel').destroy({success: function(m,r){
-      self.options.viewState.set('showEditFunctions', false);
-      shelby.router.navigate('rolls', {trigger:true});
-    }});
-  },
-
   _updateVisibility : function(guideModel){
     if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
         !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     } else {
       // collapse/hide child views
-      this.options.viewState.set('showEditFunctions', false);
       this.$el.hide();
     }
   },
 
-  _toggleJoinRoll : function() {
+  _followOrUnfollowRoll : function() {
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
-    currentRollModel.joinOrLeaveRoll();
-    // join button updates automatically when rollFollowings changes
+    var $thisButton = this.$('.js-roll-add-leave-button');
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isUnfollow = $thisButton.toggleClass('rolls-leave').hasClass('rolls-leave');
+    var wasUnfollow = !isUnfollow;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').addClass('js-busy');
+
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      self.$('.js-roll-add-leave-button').removeClass('js-busy');
+    };
+    if (wasUnfollow) {
+      currentRollModel.leaveRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      currentRollModel.joinRoll(clearBusyFunction, clearBusyFunction);
+    }
   },
 
   _updateJoinButton : function(){
@@ -92,75 +86,20 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
         !shelby.models.rollFollowings.has('initialized')){
       this.$('.js-roll-add-leave-button').hide();
     } else {
-      var action = '';
-      if ( shelby.models.rollFollowings.containsRoll(currentRollModel) ){
-        action = 'Unfollow';
-      } else {
-        action = 'Follow';
-      }
-      var addOrRemoveClass = action == 'Unfollow' ? 'addClass' : 'removeClass';
-      this.$('.js-roll-add-leave-button').text(action)[addOrRemoveClass]('rolls-leave');
-      this.$('.js-roll-add-leave-button').show();
+      var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
+      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave', userFollowingRoll)
+        .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
-    this.options.viewState.set('showEditFunctions', false);
-    // hide join/leave button if the user is the roll's creator (includes the user's public roll)
-    if (currentRollModel.get('creator_id') === shelby.models.user.id){
-      this.$el.find('.js-roll-add-leave-button').hide();
-      //only show roll edit if it's not a special roll
-      if(currentRollModel.get('roll_type') < libs.shelbyGT.RollModel.TYPES.all_special_rolls){
-        this.$el.find('.js-edit-roll').hide();
-      }
-      else{
-        this.$el.find('.js-edit-roll').show();
-      }
-    }
-    else{
-      this.$el.find('.js-roll-add-leave-button').show();
-      this.$el.find('.js-edit-roll').hide();
-    }
-		
     this._updateJoinButton();
   },
 
-  _toggleRollEditFunctions : function() {
-    //if we're hiding the edit functions, save changes to the roll name
-    if (this.options.viewState.get('showEditFunctions')) {
-      var _rollTitle = $('#js-roll-name-change input').val();
-      if (_rollTitle !== this.model.get('currentRollModel').get('title')){
-        this._saveRollName(_rollTitle);
-      }
+  _onRollFollowingsInitialized : function(rollFollowingsModel, initialized) {
+    if (initialized) {
+      this._updateJoinButton();
     }
-    this.options.viewState.set('showEditFunctions', !this.options.viewState.get('showEditFunctions'));
-  },
-
-  _onChangeShowEditFunctions : function(viewStateModel, showEditFunctions){
-    if (showEditFunctions){
-      this.$('.js-edit-roll').text('Done');
-      $('.roll-title-text').hide();
-      $('.rolls-list-nav').hide();
-      $('#js-roll-name-change').show();
-
-      var _currentRollModel = this.model.get('currentRollModel');
-      if(shelby.models.user.get('public_roll_id') != _currentRollModel.id &&
-          shelby.models.user.get('watch_later_roll_id') != _currentRollModel.id &&
-          shelby.models.user.get('heart_roll_id') != _currentRollModel.id){
-        $('#js-roll-delete').show();
-      }
-
-      $('#js-roll-name-change input').focus();
-    } else {
-      this.$('.js-edit-roll').text('Edit');
-      $('.roll-title-text').show();
-      $('.rolls-list-nav').show();
-      $('#js-roll-name-change').hide();
-      $('#js-roll-delete').hide();
-    }
-  },
-
-  _saveRollName : function(newTitle){
-    this.model.get('currentRollModel').save({title: newTitle});
   }
+
 });

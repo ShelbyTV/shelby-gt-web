@@ -1,10 +1,10 @@
-
-<div class="onboarding-header">
-
-  <h1>Shelby pulls in videos from lots of great sources</h1>
-
-  <h2>You only need to follow a few rolls to load your stream</h2>
-
+<div class="onboarding-head">
+  <h1 class="onboarding-header">
+    Shelby pulls in videos from lots of great sources
+  </h1>
+  <h2 class="onboarding-subheader">
+    You only need to follow a few rolls to load your stream
+  </h2>
 </div>
 
 <%
@@ -14,6 +14,12 @@
       category:'POPULAR CULTURE',
       img_src:'/images/onboarding/rolls/laughingsquid.png',
       roll_id:'4fa28d309a725b77f700070f'
+    },
+    {
+      title:'Omgal',
+      category:'INTERESTING PEOPLE',
+      img_src:'/images/onboarding/rolls/omggal.png',
+      roll_id:'4f8f81beb415cc4762002daa'
     },
     {
       title:'Brain Pickings',
@@ -34,6 +40,12 @@
       roll_id:'4f987a5e9a725b032b002f13'
     },
     {
+      title:'Chris',
+      category:'INTERESTING PEOPLE',
+      img_src:'/images/onboarding/rolls/chris.png',
+      roll_id:'4f901d4bb415cc661405fde9'
+    },
+    {
       title:'PBS Idea Channel',
       category:'POPULAR CULTURE',
       img_src:'/images/onboarding/rolls/pbs.png',
@@ -46,6 +58,12 @@
       roll_id:'4fb413bb9a725b650900195a'
     },
     {
+      title:'Jacqueline',
+      category:'INTERESTING PEOPLE',
+      img_src:'/images/onboarding/rolls/jacqueline.png',
+      roll_id:'4f900012b415cc661404e72b'
+    },
+    {
       title:'Reuters',
       category:'POPULAR CULTURE',
       img_src:'/images/onboarding/rolls/reuters.png',
@@ -53,7 +71,7 @@
     },
     {
       title:'Vondoom',
-      category:'COOL PEOPLE',
+      category:'INTERESTING PEOPLE',
       img_src:'/images/onboarding/rolls/vincent.png',
       roll_id:'4f900553b415cc6614051b7b'
     },
@@ -62,12 +80,23 @@
       category:'NEWS / BUSINESS',
       img_src:'/images/onboarding/rolls/wsj.png',
       roll_id:'4fa8542c88ba6b669b000bcd'
+    },
+    {
+      title:'Harto',
+      category:'INTERESTING PEOPLE',
+      img_src:'/images/onboarding/rolls/harto.png',
+      roll_id:'4f902316b415cc466a0009dd'
+    },
+    {
+      title:'Chow',
+      category:'INTERESTING PEOPLE',
+      img_src:'/images/onboarding/rolls/chow.png',
+      roll_id:'50072ee988ba6b796b00e4fd'
     }
-
   ];
 %>
 
-<ol class="clearfix onboarding-roll-list">
+<ol class="clearfix onboarding_list_module onboarding-roll-list">
 
   <% rolls.forEach(function(roll){ %>
     <li class="onboarding-roll-item js-onboarding-roll-item">
@@ -77,7 +106,7 @@
         <h4 class="onboarding-roll-subhead"><%= roll.category %></h4>
         <div class="onboarding-roll-body">
 
-          <div class="onboarding-roll-followed">
+          <div class="animate_module onboarding-roll-followed">
             <i class="ir onboarding-followed-icon">
               FOLLOWED
             </i>

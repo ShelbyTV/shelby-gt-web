@@ -41,25 +41,6 @@ $roundies-type : normal !default;
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
-
-@mixin font-primer($font-usage){
-		line-height: 1.231;
-		font-family: 'Ubuntu',Trebuchet MS,sans-serif;
-
-	@if $font-usage == basefont {
-		font-size: 62.5%;
-		font-weight:100;
-	}
-	@else if $font-usage == inputfont {
-		font-size: 100%;
-		font-weight:300;
-	}
-	@else if $font-usage == buttonfont {
-		font-size: 100%;
-		font-weight:700;
-	}
-}
-
 $bottom-color: #4e5354 !default;
 $bottom-color-adjust: 20% !default;
 
@@ -125,39 +106,12 @@ $network-image : $icon-share-twitter-on !default;
 	}
 }
 
-$button-size      : large  !default;
-$button-back      : normal !default;
-$button-image-url : ''     !default;
-
-@mixin x-button-primer($primer-color,$button-size,$button-back, $button-image-url){
-	background-color: $primer-color;
-
-	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
-  @include buttonfont;
-  @include text-shadow(0px -1px 0px #333);
-
-  border: 1px solid adjust-lightness($primer-color,-20%);
-	border-radius: $button-radius;
-	box-shadow:inset 0px 1px 0px 0px $highlight;
-	color: $button-color;
-
-	@if $button-size == small {
-		padding: 4px 8px;
-	} 	
-	@else {
-		padding: 6px 13px
-	}
-}
-
 $x-primer-color        : $button-default-color;
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
 @mixin xx-button-primer($x-primer-color, $primer-tone, $primer-button-context){
 	@include gradient-primer($x-primer-color);
-//	background-color: $x-primer-color;
-
-//	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
 
 	border: 1px solid adjust-lightness($x-primer-color, -10%);
 	border-radius: $button-radius;
@@ -170,15 +124,8 @@ $primer-button-context : generic !default;
 		padding: .8em 2em .75em; //this is magical: button padding stays proportional, relative to font-size.
 	}
 
-	//@include font-primer(inputfont); 
-	//not convinced font-primer() mix-in is a good idea anymore.
-	//instead spec out each property...
-	//only style font-family, color, weight in mixin
-	//determine size in the actual class.
 	font-family: $font-family-display;
-
-	//possible button contexts:
-	//frame command, menu command, or generic
+	//determine size in the actual class.
 
 	@if $primer-button-context == frame-command {
 		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
