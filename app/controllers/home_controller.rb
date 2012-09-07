@@ -39,10 +39,7 @@ class HomeController < ApplicationController
         @email_share = {:name => URI.unescape(params[:utm_source]), :avatar => URI.unescape(params[:utm_medium])}
       elsif params[:genius]
         @genius_share = true
-      end
-      #XXX Mobile View
-      return render_mobile_view(params) if is_mobile?(request)
-      
+      end      
       render 'gate'
     end
   end  
