@@ -6,7 +6,7 @@
 */
 libs.shelbyGT.viewHelpers.user = {
   
-  undefinedAvatarUrl: "/assets/missing_thumb.png",
+  undefinedAvatarUrl: "/images/assets/avatar.png",
   
   // Use this when you have a User
   // see libs.shelbyGT.UserAvatarSizes for size options (will be respected only for Shelby avatars)
