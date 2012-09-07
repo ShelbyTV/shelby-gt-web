@@ -84,19 +84,34 @@
 
   .dynamic-avatar-lining {
     float: none;
+
+    .progress-overlay {
+      opacity: 0.5;
+      top: 0;
+      z-index: 1;
+    }
+
+    .spinner-overlay {
+      border:1px solid darken($base,5%);
+//      background-color: $base;
+
+      .spinner {
+        margin-left:33.3333%;
+        margin-top:33.3333%;
+      }
+    }
   }
 }
 
   //------------------------------
   //  avatar upload module 
   //------------------------------
-
   .onboarding-form-avatar {
     position: relative;
     margin: 0 auto;
     width: 138px;
 
-    img {
+    .shelby-avatar {
       width: 100%;
     }
   }
