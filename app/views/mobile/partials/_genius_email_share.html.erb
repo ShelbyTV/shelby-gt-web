@@ -1,9 +1,9 @@
-<div id="query-info">
-	<p id="friend-found-this">
+<div id="genius-query-info">
+	<div id="friend-found-this">
 		Your friend found this video by searching for
-	</p>
+	</div>
 	
-	<p id="search-term">
-		“<%= @search_term %>”
-	</p>
+	<div id="search-term">
+		“<%= URI.unescape(@roll['title'][8..-1]) %>”
+	</div>
 </div>

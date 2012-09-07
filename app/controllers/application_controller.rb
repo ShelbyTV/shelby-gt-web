@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
   def detect_mobile_os
     return :ios if (request.user_agent=~/iPhone/)
-    return :android if (request.user_agent=~/Andoid/)
+    return :android if (request.user_agent=~/Android/)
     return :generic if is_mobile?
     return nil
   end
