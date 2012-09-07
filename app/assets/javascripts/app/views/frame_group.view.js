@@ -23,6 +23,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
+    "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-remove-frame"                : "_removeFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
@@ -148,6 +149,27 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame button').text('Queued');
     // start the transition which fades out the saved-indicator
+  },
+  
+  _copyFrameLink : function(e){
+    var buttonEl = $(e.currentTarget);
+    buttonEl.text("[fetching...]");
+    
+    var frameId = this.model.getFirstFrame().id;
+    $.ajax({
+      url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
+      dataType: 'json',
+      success: function(r){
+        var inputEl = $("<input type='text' value='"+r.result.short_link+"' class='xframe-option frame-shortlink' />");
+        buttonEl.replaceWith(inputEl);
+        inputEl.click(function(){ inputEl.select(); });
+        inputEl.select();
+      },
+      error: function(){
+        buttonEl.text("Link Unavailable");
+        shelby.error("Shortlinks are currently unavailable.");
+      }
+    });
   },
 
   _removeFrame : function(){
