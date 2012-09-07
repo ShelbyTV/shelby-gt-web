@@ -1,32 +1,15 @@
 @import "base";
 
-.rolling-main { //needs to be consistent with .conversation-scroller
-//  bottom: 0;
-//	overflow-y: auto;
-//	position: absolute;
-//  top: 146px;
-//  width: 100%;
-}
-
-.rolling-main-header {
-	border-bottom: 1px solid $inset;
-	border-top: 1px solid $outset;
-	font-size: 1.4em;
-	padding: 10px;
+.rolling-main { 
+	//needs to be consistent with .conversation-scroller
 }
 
 .rolling-main .select-roll-type {
 	button.create-roll {
-		@include x-button-primer($shelby-blue);
+		@include button-primer($shelby-blue);
 		
 		float: right;
 		margin: 7px 7px 0 0;
 	}
 	
-	.rolling-main-header {
-	}
-}
-
-.rolling-submit {
-	text-align: right;
 }

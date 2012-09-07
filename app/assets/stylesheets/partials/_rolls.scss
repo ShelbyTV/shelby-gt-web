@@ -37,7 +37,7 @@
 }
 
 .rolls-add {
-	@include xx-button-primer($shelby-green, dark);
+	@include button-primer($shelby-green, dark);
 	
 	margin-top: 0;
 }
@@ -52,7 +52,7 @@
 }
 
 .rolls-leave {
-	@include xx-button-primer;
+	@include button-primer;
 	margin-top: 0;
 	text-shadow: none;
 }
@@ -67,13 +67,13 @@
 }
 
 .rolls-back {
-	@include xx-button-primer;
+	@include button-primer;
 	padding-left: 0;
 	padding-right: 0;
 }
 
 .roll-delete{
-	@include xx-button-primer($shelby-red, dark);
+	@include button-primer($shelby-red, dark);
 
 	display: none;
 	position: absolute;
@@ -83,7 +83,7 @@
 
 /* ------ Roll Add Area */
 .add-video-area {
-	@include xx-button-primer;
+	@include button-primer;
 
 	margin: 10px 10px 0px;
 	padding: 6px;
@@ -100,7 +100,7 @@
 	}
 
 	.add-video {
-		@include xx-button-primer;
+		@include button-primer;
 	
 		float: right;
 		height: 25px;
@@ -134,7 +134,7 @@
 .share-comment,
 .share-networks,
 .share-email-addresses {
-	@include x-fieldset-primer;
+  padding: 5px 10px 10px;
 }
 
 .share-comment {
@@ -153,7 +153,9 @@
 }
 
 .share-label {
-	@include x-form-label-primer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
 }
 
 .share-textarea, .share-email-addresses-input {

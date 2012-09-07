@@ -18,11 +18,11 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   initialize : function(){
     this.model.set('primary_email', shelby.models.user.get('primary_email'));
     this.model.set('nickname', shelby.models.user.get('nickname'));
-    this.model.bind('change:nickname', this._onUsernameChange, this);
+    // this.model.bind('change:nickname', this._onUsernameChange, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change:nickname', this._onUsernameChange, this);
+    // this.model.unbind('change:nickname', this._onUsernameChange, this);
   },
 
   render : function(){
@@ -43,11 +43,16 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     return this;
   },
 
-  _onUsernameChange : function(model, username){
-    this.$('.js-onboarding-url-username').text(username);
-  },
+  // _onUsernameChange : function(model, username){
+  //   this.$('.js-onboarding-url-username').text(username);
+  // },
 
   _onUsernameInputKeyup : function(event){
+    var usernameInput = this.$('.onboarding-username');
+    if (!usernameInput.hasClass('show-context')) {
+      usernameInput.addClass('show-context');
+    }
+
     this.model.set('nickname', $(event.currentTarget).val());
   },
 
@@ -112,5 +117,5 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       error : self._onSaveError
     });
   }
-  
+
 });

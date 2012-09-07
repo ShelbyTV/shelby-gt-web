@@ -60,7 +60,7 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .login-submit {
-  @include xx-button-primer();
+  @include button-primer();
   
   margin-top: .5em;
 }

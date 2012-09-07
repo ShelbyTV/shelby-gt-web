@@ -5,7 +5,7 @@
 }
 
 .notifications-lining{
-	@include x-button-primer;
+	@include button-primer;
 
 	position: absolute;	
 	left: 50%;
@@ -43,11 +43,11 @@
 		}
 	}
 	
-	.notification-confirm { @include xx-button-primer($shelby-blue,dark); }
-	.notification-cancel { @include xx-button-primer; }
-	button.red { @include xx-button-primer($shelby-red,dark); }
-	button.blue { @include xx-button-primer($shelby-blue,dark); }
-	button.grey { @include xx-button-primer($shelby-gray,dark); }
+	.notification-confirm { @include button-primer($shelby-blue,dark); }
+	.notification-cancel { @include button-primer; }
+	button.red { @include button-primer($shelby-red,dark); }
+	button.blue { @include button-primer($shelby-blue,dark); }
+	button.grey { @include button-primer($shelby-gray,dark); }
 	
 	.one_button{
 		.notification-confirm{

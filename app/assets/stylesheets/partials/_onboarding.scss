@@ -49,7 +49,7 @@
 
 .onboarding-next-step {
   margin: 40px 0px;
-  @include xx-button-primer($x-primer-color, light);
+  @include button-primer($x-primer-color, light);
 }
 
 .onboarding-error {
@@ -113,6 +113,40 @@
 
 .onboarding-vanity-url {
 //  font-size: 22px;
+}
+
+.onboarding-username {
+
+  position: relative;
+
+  &.show-context {
+    .onboarding-username-http,
+    .onboarding-username-shelbytv {
+      opacity: 1;
+    }
+  }
+}
+
+.onboarding-username-input {
+}
+
+.onboarding-username-http,
+.onboarding-username-shelbytv {
+  font-family: $font-family-display;
+  font-size: 1.2em;
+  font-weight: 100;
+  line-height: 2;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.onboarding-username-http {
+  left:-53px;
+}
+
+.onboarding-username-shelbytv {
+  right: -73px;
 }
 
 /* STAGE 2 */
@@ -199,17 +233,17 @@
   width:  100%;
 }
 .onboarding-roll-button {
-  @include xx-button-primer($x-primer-color, light, menu);
+  @include button-primer($x-primer-color, light, menu);
 
   display: inline;
   margin: 0 auto;
 
   &:hover {
-    @include xx-button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
+    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
   }
 
   &:active {
-    @include xx-button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
+    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
   }
 }
 
@@ -253,7 +287,7 @@
 
 .onboarding-network-button {
   &.connected-network {
-    @include xx-button-primer($shelby-gray-light);
+    @include button-primer($shelby-gray-light);
   }
   width: 100%;
 }
@@ -271,10 +305,10 @@
 }
 
 .onboarding-network-twitter {
-  @include xx-button-primer($twitter-blue);
+  @include button-primer($twitter-blue);
   &:hover {
     &:not([disabled]) {
-      @include xx-button-primer(adjust-lightness($twitter-blue, 5%));
+      @include button-primer(adjust-lightness($twitter-blue, 5%));
     }
   }
   &.connected-network {
@@ -288,10 +322,10 @@
 }
 
 .onboarding-network-facebook {
-  @include xx-button-primer($facebook-blue);
+  @include button-primer($facebook-blue);
   &:hover {
     &:not([disabled]) {
-      @include xx-button-primer(adjust-lightness($facebook-blue, 5%));
+      @include button-primer(adjust-lightness($facebook-blue, 5%));
     }
   }
   &.connected-network {
@@ -305,10 +339,10 @@
 }
 
 .onboarding-network-tumblr {
-  @include xx-button-primer($tumblr-blue);
+  @include button-primer($tumblr-blue);
   &:hover {
     &:not([disabled]) {
-      @include xx-button-primer(adjust-lightness($tumblr-blue, 5%));
+      @include button-primer(adjust-lightness($tumblr-blue, 5%));
     }
   }
   &.connected-network {
@@ -338,7 +372,8 @@
   }
 
   img {
-    width: 100%;
+    height:145px;
+    width:330px;
   }
 }
 

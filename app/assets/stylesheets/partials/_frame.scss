@@ -8,19 +8,20 @@
 
 $active-list-item: $shelby-blue;
 //bring this into base once the color is determined.
+.stream {
+	.active-list-item {
+		background-color: $shelby-blue;
+	  //background-color: rgba(0,0,255,.5);
 
-.active-list-item {
-	background-color: $shelby-blue;
-  //background-color: rgba(0,0,255,.5);
+		.xframe-title,
+		.xframe-aside-text {
+			color: white;
+		}
 
-	.xframe-title,
-	.xframe-aside-text {
-		color: white;
-	}
-
-	.xframe-aside-text a:link,
-	.xframe-aside-text a:visited {
-		color: adjust-lightness($active-list-item, 50%);
+		.xframe-aside-text a:link,
+		.xframe-aside-text a:visited {
+			color: adjust-lightness($active-list-item, 50%);
+		}
 	}
 }
 
@@ -58,7 +59,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xframe-body-wrapper {
-	background-color: #fff;
+	background-color: $videocard-footer-bg-color;
 	box-shadow: $videocard-shadow;
 	position: relative;
 }
@@ -184,7 +185,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xframe-command {
-	@include xx-button-primer($x-primer-color, light, menu);
+	@include button-primer($x-primer-color, light, menu);
 
 	margin-left: 10px;
 	margin-top: 10px;
@@ -192,7 +193,8 @@ $active-list-item: $shelby-blue;
 
 
 		//------------------------
-		//	dropdown sublist
+		//	dropdown sublist:
+		//	children options of frame commands
 		//------------------------
 		.xframe-sublist {
 			margin-top: 3px;
@@ -205,6 +207,7 @@ $active-list-item: $shelby-blue;
 			border-right: 1px solid $inset;
 			border-top: none;
 			padding: .75em 1em .75em;
+			text-align: left;
 			width: 100%;
 
 			&:hover {
@@ -228,6 +231,7 @@ $active-list-item: $shelby-blue;
 
 		.command-sublist {
 			padding-right: 10px;
+
 			.command-icon {
 					background-position: center right;
 					padding-left: 0;
@@ -248,11 +252,15 @@ $active-list-item: $shelby-blue;
 		}
 
 		.command-queue {
+			width: 71px;
+
 			.command-icon {
 				background-image: url($icon-videocard-queue);
 			}
 
 			&.queued {
+				@include button-primer(darken($x-primer-color,20%));
+
 				.command-icon {
 					background: none;
 					padding: 0;
