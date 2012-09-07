@@ -115,6 +115,40 @@
 //  font-size: 22px;
 }
 
+.onboarding-username {
+
+  position: relative;
+
+  &.show-context {
+    .onboarding-username-http,
+    .onboarding-username-shelbytv {
+      opacity: 1;
+    }
+  }
+}
+
+.onboarding-username-input {
+}
+
+.onboarding-username-http,
+.onboarding-username-shelbytv {
+  font-family: $font-family-display;
+  font-size: 1.2em;
+  font-weight: 100;
+  line-height: 2;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.onboarding-username-http {
+  left:-53px;
+}
+
+.onboarding-username-shelbytv {
+  right: -73px;
+}
+
 /* STAGE 2 */
 
 .onboarding-roll-list {

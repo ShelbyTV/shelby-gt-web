@@ -1,3 +1,7 @@
+<%
+  var username = shelby.models.user.get('nickname');
+%>
+
 <div class="onboarding-head">
   <h1 class="onboarding-header">Set up your account.</h1>
   <!--<h2 class="onboarding-subheader">Looking good BTW</h2>-->
@@ -15,11 +19,16 @@
   <label class="form_label no-subline" for="js-onboarding-username-input">
     Username
   </label>
-  <input class="form_input" id="js-onboarding-username-input" name="onboarding-username-input" type="text" placeholder="Pick your username." value="<%= shelby.models.user.get('nickname') || '' %>" />
-  <p class="onboarding-subline onboarding-vanity-url">
-    http://<span class="js-onboarding-url-username"><%= shelby.models.user.get('nickname') || 'username' %></span>.shelby.tv <br>
-    All the videos you Roll will be shared here!
-  </p>
+  <div class="onboarding-username <%= (username) ? 'show-context' : '' %>">
+    <input class="form_input" id="js-onboarding-username-input" class="onboarding-username-input" name="onboarding-username-input" type="text" placeholder="Pick your username." value="<%= shelby.models.user.get('nickname') || '' %>" />
+      <span class="animate_module onboarding-username-http">
+        http://
+      </span>
+
+      <span class="animate_module onboarding-username-shelbytv">
+        .shelby.tv
+      </span>
+  </div>
   <div class="onboarding-error js-onboarding-username-input-error"></div>
 
   <% if (!shelby.models.user.get('has_password')) { %>
