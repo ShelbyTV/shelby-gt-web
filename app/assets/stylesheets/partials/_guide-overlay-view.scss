@@ -26,7 +26,7 @@
   height: 46px;
 
   .back, .cancel {
-  	@include xx-button-primer($x-primer-color, light, guide-close);
+  	@include button-primer($x-primer-color, light, guide-close);
 
   	left: 0;
     margin: 1em;
@@ -106,7 +106,7 @@
 
 .guide-overlay-context-follow-button,
 .guide-overlay-context-full-shelby-button {
-  @include xx-button-primer($shelby-gray, dark);
+  @include button-primer($shelby-gray, dark);
   
   float: right;
   margin-right: 10px;
@@ -116,7 +116,7 @@
 }
 
 .guide-overlay-context-button-highlighted {
-  @include xx-button-primer($shelby-blue, dark);
+  @include button-primer($shelby-blue, dark);
 }
 
 .guide-overlay-context-creator {

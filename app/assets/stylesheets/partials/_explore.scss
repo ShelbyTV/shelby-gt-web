@@ -70,7 +70,7 @@
 }
 
 .explore-command {
-  @include xx-button-primer($x-primer-color, $primer-tone, explore-rolls);
+  @include button-primer($x-primer-color, $primer-tone, explore-rolls);
 
   float:right;
   margin: 0 .25em 0 .75em;
@@ -78,7 +78,7 @@
   &.command-active {
     //state for the follow/unfollow button,
     //if other modes/states arise this classname probably won't cut it
-    @include xx-button-primer($shelby-blue, dark, explore-rolls);
+    @include button-primer($shelby-blue, dark, explore-rolls);
   }
 }
 
@@ -124,13 +124,13 @@
 //}
 
 //.xxxexplore-frame-command {
-//  @include xx-button-primer($x-primer-color,$primer-tone,frame-command);
+//  @include button-primer($x-primer-color,$primer-tone,frame-command);
 
 //  float: left;
 //  margin: .75em 0 0 .75em;
 
 //  &.frame-queued {
-//    @include xx-button-primer($shelby-gray,dark,frame-command);
+//    @include button-primer($shelby-gray,dark,frame-command);
 //  }
 //}
 
@@ -212,8 +212,9 @@
   border-top: 1px solid $list-item-border;
   color: $font-color-display;
   font-family: $font-family-display;
-  font-weight: 300;
-  padding: .75em 1em .8em;
+  font-weight: 400;
+  font-size: 1.3em;
+  padding: 0.9em 0.9em 1em;
   text-align: left;
   width: 100%;
   background-color: $list-item-bg;

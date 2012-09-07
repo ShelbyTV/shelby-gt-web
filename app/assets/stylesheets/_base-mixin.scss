@@ -49,28 +49,6 @@ $bottom-color-adjust: 20% !default;
 	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
 }
 
-$highlight-amount : 25% !default; 
-@mixin box-highlight($primer-color, $highlight-amount) { //ref: x-button-primer, preferences-networks
-	box-shadow: inset 0px 1px 0px 0px adjust-lightness($primer-color, $highlight-amount);
-}
-
-@mixin x-form-label-primer {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2;
-}
-
-@mixin x-fieldset-primer {
-  padding: 5px 10px 10px;
-}
-
-@mixin frame-header-smalltype{
-	color: #999;
-	font-size: 11px;
-	font-weight: 300;
-	height: 1.9em;
-}
-
 $network-image : $icon-share-twitter-on !default;
 
 @mixin x-logged-out-networks-buttons($primer-color, $network-image){
@@ -110,51 +88,48 @@ $x-primer-color        : $button-default-color;
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
-@mixin xx-button-primer($x-primer-color, $primer-tone, $primer-button-context){
+@mixin button-primer($x-primer-color, $primer-tone, $primer-button-context){
 	@include gradient-primer($x-primer-color);
 
 	border: 1px solid adjust-lightness($x-primer-color, -10%);
 	border-radius: $button-radius;
 	box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%), //inner top highlight
 							inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%); //inner bottom shadow
-
-	@if $primer-button-context == frame-command {						
-		padding: .8em 1em .75em; //this is magical: button padding stays proportional, relative to font-size.
-	} @else {
-		padding: .8em 2em .75em; //this is magical: button padding stays proportional, relative to font-size.
-	}
-
 	font-family: $font-family-display;
 	//determine size in the actual class.
 
 	@if $primer-button-context == frame-command {
-		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
-		padding-left: 1em;
+		padding-top: .8em;
 		padding-right: 1em;
-		padding-top: .8em;
+		padding-bottom: .75em;
+		padding-left: 1em;
 	} @elseif $primer-button-context == explore-rolls {
-		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
-		padding-left: 2em;
-		padding-right: 2em;
 		padding-top: .8em;
+		padding-bottom: .75em;
+	//------------------------------------------------------
+	//	follow/unfollow need to be the same size.
+	//	setting the WIDTH normalizes them,
+	//	rather than having the width delegated by the padding
+	//------------------------------------------------------
+		width: 100px;
 	} @elseif $primer-button-context == wide {
-		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
-		padding-left: 4em;
-		padding-right: 4em;
 		padding-top: .8em;
+		padding-right: 4em;
+		padding-bottom: .75em;
+		padding-left: 4em;
 	} @elseif $primer-button-context == guide-close {
 		padding: .6em;
 	} @else {//generic
-		padding-bottom: .75em; //this is magical: button padding stays proportional, relative to font-size.
-		padding-left: 1em;
-		padding-right: 1em;
 		padding-top: .8em;
+		padding-right: 1em;
+		padding-bottom: .75em;
+		padding-left: 1em;
 	}
 
-
 	@if $primer-tone == light { 
-	//toggle light font and dark font depending on button bg.
-	//this may be over engineering at its finest. maybe...
+	//------------------------------------------------------
+	//	toggle LIGHT font and DARK font depending on button bg.
+	//------------------------------------------------------
 		color: $button-color-light;
 		font-weight: 500;
 	} @else {
@@ -162,20 +137,20 @@ $primer-button-context : generic !default;
 		font-weight: 700;
 		text-shadow: 0px 1px 0px #333;
 	}
-}
+}//eo xx-button-primer
 
 $preferences-network : twitter !default;
 
-@mixin preferences-networks($preferences-network){
-	@if $preferences-network == twitter {
+@mixin preferences-networks($network){
+	@if $network == twitter {
 		@include background(url($icon-social-twitter) no-repeat center center $twitter-blue);
 		border:1px solid adjust-lightness($twitter-blue, -20%);
 	}
-	@else if $preferences-network == tumblr {
+	@else if $network == tumblr {
 		@include background(url($icon-social-tumblr) no-repeat center center $tumblr-blue);
 		border:1px solid adjust-lightness($tumblr-blue, -5%);
 	}
-	@else if $preferences-network == facebook {
+	@else if $network == facebook {
 		@include background(url($icon-social-facebook) no-repeat center center $facebook-blue);
 		border:1px solid adjust-lightness($facebook-blue, -5%);
 	}

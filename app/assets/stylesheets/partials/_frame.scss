@@ -185,7 +185,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xframe-command {
-	@include xx-button-primer($x-primer-color, light, menu);
+	@include button-primer($x-primer-color, light, menu);
 
 	margin-left: 10px;
 	margin-top: 10px;

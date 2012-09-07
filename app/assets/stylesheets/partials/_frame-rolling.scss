@@ -6,7 +6,7 @@
 
 .rolling-main .select-roll-type {
 	button.create-roll {
-		@include xx-button-primer($shelby-blue);
+		@include button-primer($shelby-blue);
 		
 		float: right;
 		margin: 7px 7px 0 0;
