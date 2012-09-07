@@ -6,7 +6,7 @@
 
   libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
-    className : FrameGroupPlayPagingListView.prototype.className + ' dashboard',
+    className : FrameGroupPlayPagingListView.prototype.className + ' dashboard stream',
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
