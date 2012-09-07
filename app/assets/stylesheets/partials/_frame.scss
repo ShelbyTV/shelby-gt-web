@@ -252,11 +252,15 @@ $active-list-item: $shelby-blue;
 		}
 
 		.command-queue {
+			width: 71px;
+
 			.command-icon {
 				background-image: url($icon-videocard-queue);
 			}
 
 			&.queued {
+				@include button-primer(darken($x-primer-color,20%));
+
 				.command-icon {
 					background: none;
 					padding: 0;
