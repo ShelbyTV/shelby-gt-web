@@ -63,6 +63,14 @@ $bg-color: $nav-dropdown-bg !default;
   }
 }
 
+@mixin bottom-fin($bg-color) {
+  @include fin($bg-color);
+	&:after {
+	  top: auto;
+    bottom: -5px;
+  }
+}
+
 @mixin font-primer($font-usage){
 		line-height: 1.231;
 		font-family: 'Ubuntu',Trebuchet MS,sans-serif;
