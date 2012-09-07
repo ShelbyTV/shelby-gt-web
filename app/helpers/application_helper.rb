@@ -18,4 +18,13 @@ module ApplicationHelper
     return nil
   end
   
+  def shelby_tracking_category_for(share_type)
+    case share_type
+    when :genius then "Genius Email Share Landing Page"
+    when :email then "Direct Email Share Landing Page"
+    when :rolling then "Rolling Share Landing Page"
+    else "Landing Page"
+    end
+  end
+  
 end

@@ -15,6 +15,10 @@
   <%= stylesheet_link_tag "landing", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "common", "landing" %>
+
+	<script>
+		var shelbyTrackingCategory = "<%= shelby_tracking_category_for(@share_type) %>";
+	</script>
 </head>
 
 <body class="shelby shelby-landing">
@@ -29,7 +33,7 @@
 		  <nav class="guide-presentation-selector">
 				<ul class="guide-nav-list clearfix">
 			    <li class="dropdown_module guide-nav-item secondary-item guide-login">
-				    <button class="dropdown_button nav-button js-track-event" data-ga_category="Landing Page" data-ga_action="Header log in">
+				    <button class="dropdown_button nav-button">
 				      <i class="dropdown_icon">
 				        Beta Community Log In
 				      </i>
@@ -38,7 +42,7 @@
 				    <section class="dropdown_section login-section">
 				      <div class="dropdown_lining login-section-lining clearfix">
 								
-								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form">
+								<form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
 									<fieldset class="">
 										<label for="username" class="form_label">Username</label>
 										<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
@@ -48,7 +52,7 @@
 										<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
 									</fieldset>
 									<fieldset class="form_fieldset">
-										<input name="commit" type="submit" value="Login" class="login-submit js-track-event" data-ga_category="Landing Page" data-ga_action="email login" />
+										<input name="commit" type="submit" value="Login" class="login-submit" />
 									</fieldset>
 								</form>
 								
@@ -56,11 +60,11 @@
 								
 								<div class="social_login login-social-section clearfix">
 									<h4 class="login-social-section-header">or, login with</h4>
-						      <a class="social_login_twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+						      <a class="social_login_twitter js-track-event" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
 						        Twitter
 						      </a>
 
-						      <a class="social_login_facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+						      <a class="social_login_facebook js-track-event" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
 						        Facebook
 						      </a>
 								</div>
@@ -186,7 +190,7 @@
 	<!-- /Twitter widget -->
 	
 	<!-- G +1 widget -->
-	<script type="text/javascript">
+	<script>
 	  (function() {
 	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 	    po.src = 'https://apis.google.com/js/plusone.js';
@@ -196,6 +200,7 @@
 	<!-- /G +1 widget -->
 	
 	<% if "production" == Rails.env %>
+		<!-- Track loading of landing page separate from loading of app -->
 	  <script>
 			var shortLink = $.getUrlParam('awesm');
 		  if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
