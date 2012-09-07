@@ -12,20 +12,20 @@ class FrameController < ApplicationController
   # or renders the appropriate logged-out page.
   #
   def show
+    # Determine what kind of share_type this is based on optional params
+    # Genius rolls not working in the app, so sending those the landing page even if you're logged in
+    case params[:utm_campaign]
+    when "genius-email" then @share_type = :genius
+    when "email-share" then @share_type = :email
+    else @share_type = :rolling
+    end
     
-    if user_signed_in?
+    if user_signed_in? and @share_type != :genius
       set_app_tokens_for_view
       render '/home/app'
     else
-
-      # Determine what kind of page to show based on optional params
-      case params[:utm_campaign]
-      when "genius-email" then @share_type = :genius
-      when "email-share" then @share_type = :email
-      else @share_type = :rolling
-      end
       
-      # Get all pertinent info from the API (we need all of this no matter what)
+      # Get all pertinent info from the API
       @roll = Shelby::API.get_roll(params[:roll_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)
       @video = Shelby::API.get_video(@frame['video_id']) if @frame

@@ -5,7 +5,7 @@
 		
 		<div class="landing-shelf-share-content">
 			<h1>
-				Your friend found this searching for "<%= @roll['title'][8..-1] %>"
+				Your friend found this searching for "<%= URI.unescape(@roll['title'][8..-1]) %>"
 			</h1>
 			
 			<hr />
