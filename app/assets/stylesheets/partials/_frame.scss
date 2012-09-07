@@ -59,7 +59,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xframe-body-wrapper {
-	background-color: #fff;
+	background-color: $videocard-footer-bg-color;
 	box-shadow: $videocard-shadow;
 	position: relative;
 }
@@ -193,7 +193,8 @@ $active-list-item: $shelby-blue;
 
 
 		//------------------------
-		//	dropdown sublist
+		//	dropdown sublist:
+		//	children options of frame commands
 		//------------------------
 		.xframe-sublist {
 			margin-top: 3px;
@@ -206,6 +207,7 @@ $active-list-item: $shelby-blue;
 			border-right: 1px solid $inset;
 			border-top: none;
 			padding: .75em 1em .75em;
+			text-align: left;
 			width: 100%;
 
 			&:hover {
@@ -229,6 +231,7 @@ $active-list-item: $shelby-blue;
 
 		.command-sublist {
 			padding-right: 10px;
+
 			.command-icon {
 					background-position: center right;
 					padding-left: 0;

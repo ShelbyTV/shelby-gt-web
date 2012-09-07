@@ -4,16 +4,6 @@ $path: "/images/assets/" !default;
 $logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
-
-//onboarding
-$icon-onboarding-facebook-add             : "#{$path}onboarding_facebook_add#{$extension}";
-$icon-onboarding-facebook-added           : "#{$path}onboarding_facebook_added#{$extension}";
-$icon-onboarding-tumblr-add               : "#{$path}onboarding_tumblr_add#{$extension}";
-$icon-onboarding-tumblr-added             : "#{$path}onboarding_tumblr_added#{$extension}";
-$icon-onboarding-twitter-add              : "#{$path}onboarding_twitter_add#{$extension}";
-$icon-onboarding-twitter-added            : "#{$path}onboarding_twitter_added#{$extension}";
-
-
 //TODO: get a PNG of this lil' fucker:
 $icon-cancel                    : "#{$path}cancel.svg";
 //$icon-cancel                    : "#{$path}cancel#{$extension}";
@@ -27,6 +17,13 @@ $icon-missing-avatar            : "#{$path}missing_avatar.png";
 //$icon-missing-avatar            : "#{$path}missing_avatar#{$extension}";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
+
+$icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
+$icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
+$icon-onboarding-tumblr-add     : "#{$path}onboarding_tumblr_add#{$extension}";
+$icon-onboarding-tumblr-added   : "#{$path}onboarding_tumblr_added#{$extension}";
+$icon-onboarding-twitter-add    : "#{$path}onboarding_twitter_add#{$extension}";
+$icon-onboarding-twitter-added  : "#{$path}onboarding_twitter_added#{$extension}";
 
 $icon-overlay-like              : "#{$path}overlay_like#{$extension}";
 $icon-overlay-nowplaying        : "#{$path}overlay_nowplaying#{$extension}";
@@ -103,30 +100,27 @@ $defaultMargin       : $unit;
 $default-margin      : $unit;
 $margin              : 0.5em;
 $media-module-margin : 8px;
-
-
-$header-height : $unit * 3.5; 
-$guide-width   : $unit * 37;
+$header-height       : $unit * 3.5;
+$guide-width         : $unit * 37;
 
 //--- COLORS
-$base : #e2e2e2;
-$highlight : rgba(255,255,255,.3) !default;
-$outline : #222;
-$outset  : adjust-lightness($base, 7%);
-$inset   : adjust-lightness($base, -10%);
+$base          : #e2e2e2;
+$base-bg-color : #000;
+$highlight     : rgba(255,255,255,.3) !default;
+$shadow        : 0 0 2px 0 rgba(0,0,0,.5);
+$outline       : #222;
+$outset        : adjust-lightness($base, 7%);
+$inset         : adjust-lightness($base, -10%);
 
-//text-level colors
+//--- COLORS: fonts
 $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text + #333;
 
-//--- NICETIES
-$shadow : 0 0 2px 0 rgba(0,0,0,.5);
+//--- COLORS: app header
+$header-outline                     : #202020;
 
-//base
-$base-bg-color : #000;
-
-//guide
+//--- COLORS: guide
 $guide-bg-color                     : $base;
 $guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
@@ -135,39 +129,34 @@ $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #242627;
 
-////modules
+//--- COLORS: list_module
 $list-module-spacing                : 1em;
 $list-module-bg                     : #e2e2e2;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
 
+//--- COLORS: overlay
 $overlay_header_height              : 46px;
 
+//--- COLORS: thumbnail_module
 $thumbnail_default_bg               : adjust-lightness($base, -1%);
 
-//header
-$header-outline                     : #202020;
-
-//
+//--- COLORS: explore
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
-
-$videocard-footer-bg-color          : #fff;
+//--- COLORS: videocard
+$videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
 
-$video-card-color                   : #404040;
-$video-card-outline                 : #222;
-$video-card-bg-color                : #35383a;
-$video-card-thumbnail               : #494949;
+//--- COLORS: videoplayer
 $video-controls-progress-load       : #303030;
-$video-player 											: #0e0e0e;
+$video-player                       : #0e0e0e;
 
-$contextoverlay-bg-color            : #232526;
 
-$rolls-people-outset                : #2E2F30;
+//--- COLORS: preferences
 $toggle-switch-gray                 : #fefefe;
 
 //--- COLORS: shelby 
