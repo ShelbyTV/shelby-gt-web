@@ -1,0 +1,45 @@
+<div id="explanation">
+	<p id="what-is-this">
+		<% if @share_type == :genius %>
+			<b>Shelby Genius</b> is a smart way to find video, <br/>
+			<span class="find-what">what will you find?</span>
+	  <% else %>
+			Shelby.tv is currently in private beta... <br/>
+			in the mean time try <b>Shelby Genius</b>, <br/>
+			an amazing new way to find video!
+    <% end %>
+	</p>
+	
+	<div id="app-button">
+		<% if @mobile_os == :ios %>
+			<div>
+				<a class="js-ios-app" href="<%= Settings::Application.ios_app_url %>">
+					<%= image_tag '/images/genius/CTA.png' %>			
+				</a>				
+			</div>
+			<div id="mobile-web-app-link">
+				<a class="js-mobile-web-app-ios" href="<%= Settings::Application.mobile_url %>">
+					or try the web app
+				</a>				
+			</div>
+		<% else %>
+			<a class="js-mobile-web-app" data-role="button" data-mini="true" data-inline="true" href="<%= Settings::Application.mobile_url %>">
+				Try Shelby Genius ➜
+			</a>
+		<% end %>
+	</div>
+	
+</div>
+<script>
+	$(document).ready(function(){
+		$('a.js-ios-app').click(function(){
+			_kmq.push(['record', "Click iOS Genius App on iOS Mobile Landing Page"]);
+		});
+		$('a.js-mobile-web-app-ios').click(function(){
+			_kmq.push(['record', "Click Mobile Web App on iOS Mobile Landing Page"]);
+		});
+		$('a.js-mobile-web-app-generic').click(function(){
+			_kmq.push(['record', "Click Mobile Web App on non-iOS Mobile Landing Page"]);
+		});		
+	});
+</script>
