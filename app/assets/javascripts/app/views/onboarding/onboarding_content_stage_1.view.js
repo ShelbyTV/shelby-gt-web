@@ -75,6 +75,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onSaveError : function(model, even, response){
+    this.$('.js-onboarding-next-step').text('Get Started');
     $('.js-onboarding-username-input-error').text('Sorry, that username is already taken').show();
   },
 
