@@ -53,7 +53,7 @@
   }
 
   .notify-cancel {
-    @include xx-button-primer($shelby-gray);
+    @include button-primer($shelby-gray);
 
     border-radius: 20px;
     height: 20px;
