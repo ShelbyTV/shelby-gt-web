@@ -104,7 +104,7 @@
 
 #login-guide-window {
   .shelby-login-cancel {
-    @include xx-button-primer($shelby-gray);
+    @include button-primer($shelby-gray);
   }
 
 }
