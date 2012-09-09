@@ -41,7 +41,7 @@
           <li class="menu_item" role="menuitem">
             <button class="xframe-command command-queue js-queue-frame<%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
               <i class="command-icon">
-                <%= (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
                     (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
                 %>
               </i>
@@ -72,7 +72,7 @@
                 </button>
 								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
               </li>
-              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
+              <% if (shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
                 <li class="menu_option xframe-item" role="menuitem">
                   <button class="xframe-option command-remove js-remove-frame">
                     Remove Video
