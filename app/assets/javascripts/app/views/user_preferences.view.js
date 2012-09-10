@@ -51,7 +51,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     var self = this;
     var _email = this.$('#you-preferences-email').val();
     // make sure this is a valid email address
-    if (_email.search(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i) == -1) {
+    if (_email.search(shelby.config.user.email.validationRegex) == -1) {
       self._updateResponse("email invalid.");
       return;
     }

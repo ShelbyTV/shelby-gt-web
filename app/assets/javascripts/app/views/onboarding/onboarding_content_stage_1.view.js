@@ -89,7 +89,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
         invalidFields.push('password');
       }
     }
-    if (!this.model.get('primary_email') || !this.model.get('primary_email').length || this.model.get('primary_email').indexOf('@')===-1){
+    if (!this.model.get('primary_email') || this.model.get('primary_email').search(shelby.config.user.email.validationRegex) == -1){
       invalidFields.push('primary_email');
     }
     return invalidFields;
