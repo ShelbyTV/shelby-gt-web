@@ -95,7 +95,12 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     return invalidFields;
   },
 
-  _displayErrors : function(fields){
+  _renderErrors : function(fields){
+    //hide any old error messages
+    $('.js-onboarding-username-input-error').hide();
+    $('.js-onboarding-email-input-error').hide();
+    $('.js-onboarding-pwd-input-error').hide();
+
     if (_.include(fields, 'nickname')){
       $('.js-onboarding-username-input-error').text('Please enter a nickname.').show();
     }
@@ -109,8 +114,9 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _onNextStepClick : function(){
     var invalidFields = this._getInvalidFields();
+    this._renderErrors(invalidFields);
     if (invalidFields.length){
-      return this._displayErrors(invalidFields);
+      return;
     }
     this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
