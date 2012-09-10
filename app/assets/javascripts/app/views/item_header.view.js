@@ -39,11 +39,11 @@
       } else {
         switch (this.model.get('displayState')) {
           case libs.shelbyGT.DisplayState.standardRoll :
-          case libs.shelbyGT.DisplayState.watchLaterRoll :
             if (this.model.has('currentRollModel')) {
               this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
             }
             break;
+          case libs.shelbyGT.DisplayState.watchLaterRoll :
           case libs.shelbyGT.DisplayState.dashboard :
           case libs.shelbyGT.DisplayState.rollList :
             break;
