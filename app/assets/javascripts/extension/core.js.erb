@@ -697,10 +697,10 @@ window.shelbyBookmarklet = {
             },
 
             handleRollSubmit : function (knownUrl, frameInfoClass, videoId) {
-              var submitButton = shelbyJ(".roll-options-submit");
+              var submitButton = shelbyJ("#js-roll-it");
               submitButton.off('click');
               submitButton.on('click', null, null, function (event) {
-                var message = shelbyJ("#rolling-message").val();    
+                var message = shelbyJ("#js-rolling-message").val();    
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
                   return;
