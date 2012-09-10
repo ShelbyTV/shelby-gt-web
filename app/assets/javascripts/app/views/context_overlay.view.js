@@ -11,24 +11,23 @@
     }),
 
     initialize : function(data) {
-      this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.options.contextOverlayState.bind('change:playingFrameGroup', this._onPlayingFrameGroupChange, this);
     },
 
     _cleanup : function(){
-      this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+      this.options.contextOverlayState.unbind('change:playingFrameGroup', this._onPlayingFrameGroupChange, this);
       if (this.model) {
         this._setupTeardownModelBindings(this.model, false);
       }
     },
 
-    _onActiveFrameModelChange : function(guideModel, activeFrameModel){
+    _onPlayingFrameGroupChange : function(contestOverlayStateModel, playingFrameGroup){
       //unbind
       if (this.model) {
         this._setupTeardownModelBindings(this.model, false);
       }
 
-      this.model = new libs.shelbyGT.FrameGroupModel();
-      this.model.add(activeFrameModel);
+      this.model = playingFrameGroup;
 
       //bind
       this._setupTeardownModelBindings(this.model, true);
@@ -45,8 +44,6 @@
       }
 
       var groupFirstFrame = model.getFirstFrame();
-      //TODO fix binding leak on frame group destoy - I'll still have bindings to the first frame
-      //of the destroyed frame group
       if (groupFirstFrame) {
         groupFirstFrame[action]('change', this.render, this);
         groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
