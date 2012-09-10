@@ -20,8 +20,8 @@
 
 <%
   var active_networks = [];
-	if(shelby.models.user.get('authentications')){
-	  shelby.models.user.get('authentications').forEach(function(auth){
+	if(user.get('authentications')){
+		user.get('authentications').forEach(function(auth){
 	    active_networks.push(auth.provider);
 	  }); 
 	}

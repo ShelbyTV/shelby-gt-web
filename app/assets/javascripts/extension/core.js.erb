@@ -876,7 +876,7 @@ window.shelbyBookmarklet = {
                                 urlForRoll: backboneRoll.subdomain + ".shelby.tv"
                           }
                         }
-                        shelbyJ(".rolling-form").append(JST['rolling-form'](templateObj));
+                        shelbyJ(".rolling-main").append(JST['rolling-form'](templateObj));
                 },
                 loginGuideHtml: function () {
                   shelbyJ('#login-guide-window').html(JST['bookmarklet-login']({
