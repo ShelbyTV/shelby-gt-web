@@ -1,4 +1,17 @@
 //---------------------------
+//  EXPERIMENTAL:
+//  should arbitrary button get a class that gives it its color?
+//  i.e.: <button class="form_submit submit-share shelby-blue">Submit</button>
+//---------------------------
+
+$list : blue, green, default;
+@each $color in $list {
+  .shelby-#{$color} {
+    @include loopable-button-primer($color);
+  }
+}
+
+//---------------------------
 //  TODO: fix this list shit 
 //---------------------------
 
