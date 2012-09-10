@@ -3,17 +3,20 @@
 .context-overlay-wrapper {
 }
 
-//---------------------------
+//------------------------------------------------------------------------------
 //	nested styles in context-overlay-lining 
 //  override default styling of the frame (jst)
 //	(the context-overlay is a subclass of the frame view)
-//---------------------------
+//------------------------------------------------------------------------------
 
 .context-overlay-lining {
 	font-size: .925em;
 	line-height: 1.5;
 	width: $guide-width;
 
+	////////////////////////////////////////////////////////////////////////////
+	// frame restylings 
+	////////////////////////////////////////////////////////////////////////////
 	.xframe {
 		background-color: $base;
 		overflow: hidden; //hide that body-wrapper box-shadow!
@@ -36,36 +39,52 @@
 		}
 	}
 
-	.xframe-option,
-	.xframe-command {
-		//let's "unstyle" this shit to look like a text link.
-		border: none !important;
-		box-shadow: none;
-		background: transparent;
-		color: #666;
-		font-family: $font-family;
-		margin: 0;
-		width: auto;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-
-	.command-more {
-		display: none;
-		margin: 0;
-	}
-
 	.xframe-sublist {
 		display: block;
 		margin: 0;
 		width: auto;
 	}
 
+	.xframe-command,
+	.xframe-option {
+		//let's "unstyle" this shit to look like a text link.
+		border: none !important;
+		box-shadow: none;
+		background: transparent;
+		color: #666;
+		font-family: $font-family;
+		font-weight: 300;
+		margin: 0;
+		width: auto;
+
+		&:hover {
+			background: transparent;
+			text-decoration: underline;
+		}
+	}
+
+//------------------------------------------------------------------------------
+//  command-more has dropdown:
+//	queue, remove, shortlink, etc.
+//------------------------------------------------------------------------------
+	.command-more {
+		display: none;
+		margin: 0;
+	}
+		// double indentation denotes sublist options
+		// 'nesting' without actually nesting.
+		// saves us from having stupid-long selector strings,
+		// i.e. `.content-overlay .command-more .command-queue`
+		.command-queue {
+			&.queued {
+				background: transparent;
+				box-shadow: none;
+				font-weight: 300;
+			}
+		}
+
 	.xuser-message {
 		overflow-y:auto;
 		max-height: 150px;
 	}
-
 }//eo .context-overlay-lining
