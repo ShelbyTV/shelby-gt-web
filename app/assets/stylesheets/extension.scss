@@ -5,7 +5,48 @@
         "compass/utilities/text/ellipsis",
         "compass/utilities/lists/bullets";
 
+
+
+
+/* A wrapper around all the elements the extension inserts */
 .ext-elements {
+  /* We import these in here so we don't fuck up the surrounding page */
+  @import "partials/fonts",
+          "partials/h5bp", 
+          "partials/modules",
+          
+          "partials/app.html",
+          "partials/app-header",
+
+          "partials/guide-presentation-selector",
+          "partials/guide-overlay-view",
+          "partials/guide-overlay-controls",
+
+          "partials/roll-header",
+
+          "partials/frame",
+          "partials/rolling-form",
+          "partials/rolls-list",
+
+          "partials/frame-rolling",
+          "partials/frame-conversation",
+
+          "partials/rolls",	
+          "partials/share",
+
+          "partials/notifications",
+
+          "partials/h5bp-utilities",
+          "bookmarklet-overwrite";
+  
+  font-size: 11px;
+  
+  ul, ol {
+    padding: 0;
+  }
+}
+
+  /*
 	  * {
 	    -moz-box-sizing: border-box;
 	    -webkit-box-sizing: border-box;
@@ -49,37 +90,4 @@
 	  line-height: 1.4;
 	  text-align: left;
           border: none;
-
-
-	
-	@import 
-
-    "partials/app.html",
-		"partials/fonts",
-
-    "partials/gate",
-    "partials/app-header",
-
-		"partials/guide-presentation-selector",
-		"partials/guide-overlay-view",
-		"partials/guide-overlay-controls",
-
-		"partials/roll-header",
-    
-    "partials/frame",
-    "partials/rolling-form",
-		"partials/rolls-list",
-
-		"partials/frame-rolling",
-    "partials/rolling-form",
-		"partials/frame-conversation",
-
-		"partials/rolls",	
-		"partials/share",
- 
-    "partials/notifications",
-
-		"partials/h5bp-utilities",
-                "bookmarklet-overwrite";
-
-}
+}*/
