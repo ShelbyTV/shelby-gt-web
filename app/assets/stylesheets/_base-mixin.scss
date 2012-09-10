@@ -88,7 +88,7 @@ $x-primer-color        : $button-default-color;
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
-@mixin button-primer($x-primer-color, $primer-tone, $primer-button-context){
+@mixin button-primer($x-primer-color, $primer-tone, $primer-button-context, $enable-pseudo-classes: true){
 	@include gradient-primer($x-primer-color);
 
 	border: 1px solid adjust-lightness($x-primer-color, -10%);
@@ -138,27 +138,29 @@ $primer-button-context : generic !default;
 		text-shadow: 0px 1px 0px #333;
 	}
 
-	&:hover {
-		$x-primer-color-hover : lighten($x-primer-color, 5%);
+	@if $enable-pseudo-classes {
+		&:hover {
+			$x-primer-color-hover : lighten($x-primer-color, 5%);
 
-		@include gradient-primer($x-primer-color-hover);
+			@include gradient-primer($x-primer-color-hover);
 
-		border: 1px solid adjust-lightness($x-primer-color-hover, -10%);
-		border-radius: $button-radius;
-		box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-hover, 20%), //inner top highlight
-								inset 0 -1px 0 0 adjust-lightness($x-primer-color-hover, -5%); //inner bottom shadow
+			border: 1px solid adjust-lightness($x-primer-color-hover, -10%);
+			border-radius: $button-radius;
+			box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-hover, 20%), //inner top highlight
+									inset 0 -1px 0 0 adjust-lightness($x-primer-color-hover, -5%); //inner bottom shadow
 
+			}
+
+		&:active {
+			$x-primer-color-active : darken($x-primer-color, 5%);
+
+			@include gradient-primer($x-primer-color-active);
+
+			border: 1px solid adjust-lightness($x-primer-color-active, -10%);
+			border-radius: $button-radius;
+			box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-active, 20%), //inner top highlight
+									inset 0 -1px 0 0 adjust-lightness($x-primer-color-active, -5%); //inner bottom shadow
 		}
-
-	&:active {
-		$x-primer-color-active : darken($x-primer-color, 5%);
-
-		@include gradient-primer($x-primer-color-active);
-
-		border: 1px solid adjust-lightness($x-primer-color-active, -10%);
-		border-radius: $button-radius;
-		box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-active, 20%), //inner top highlight
-								inset 0 -1px 0 0 adjust-lightness($x-primer-color-active, -5%); //inner bottom shadow
 	}
 
 }//eo button-primer
