@@ -35,8 +35,13 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
 
   destroy : function(options) {
     Backbone.Model.prototype.destroy.call(this, options);
+    //remove all bindings to this frame group - if some view has a problem with that,
+    //that's bad modular development and needs to be fixed
+    this.unbind();
     this.get('frames').each(function(frame){
       frame.destroy();
+      //remove all bindings to this frame
+      frame.unbind();
     });
   },
 
