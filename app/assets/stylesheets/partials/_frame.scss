@@ -8,6 +8,7 @@
 
 $active-list-item: $shelby-blue;
 //bring this into base once the color is determined.
+.roll,
 .stream {
 	.active-list-item {
 		background-color: $shelby-blue;
@@ -260,6 +261,12 @@ $active-list-item: $shelby-blue;
 
 			&.queued {
 				@include button-primer(darken($x-primer-color,20%));
+
+				&:not(.remove-frame) {
+					@include button-primer(darken($x-primer-color,20%),light,queue-button,false);
+					cursor: auto;
+				}
+
 
 				.command-icon {
 					background: none;
