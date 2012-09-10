@@ -85,17 +85,22 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       invalidFields.push('nickname');
     }
     if (!shelby.models.user.get('has_password')){
-      if (!this.model.get('password') || !this.model.get('password').length || this.model.get('password').length<5){
+      if (!this.model.get('password') || this.model.get('password').length<shelby.config.user.password.minLength){
         invalidFields.push('password');
       }
     }
-    if (!this.model.get('primary_email') || !this.model.get('primary_email').length || this.model.get('primary_email').indexOf('@')===-1){
+    if (!this.model.get('primary_email') || this.model.get('primary_email').search(shelby.config.user.email.validationRegex) == -1){
       invalidFields.push('primary_email');
     }
     return invalidFields;
   },
 
-  _displayErrors : function(fields){
+  _renderErrors : function(fields){
+    //hide any old error messages
+    $('.js-onboarding-username-input-error').hide();
+    $('.js-onboarding-email-input-error').hide();
+    $('.js-onboarding-pwd-input-error').hide();
+
     if (_.include(fields, 'nickname')){
       $('.js-onboarding-username-input-error').text('Please enter a nickname.').show();
     }
@@ -103,14 +108,15 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       $('.js-onboarding-email-input-error').text('Please enter a valid email.').show();
     }
     if (_.include(fields, 'password')){
-      $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least 5 characters long.').show();
+      $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
     }
   },
 
   _onNextStepClick : function(){
     var invalidFields = this._getInvalidFields();
+    this._renderErrors(invalidFields);
     if (invalidFields.length){
-      return this._displayErrors(invalidFields);
+      return;
     }
     this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
