@@ -69,8 +69,9 @@
     _reply : function(e){
       e.preventDefault();
       var replyTo = $(e.currentTarget).data('reply_to');
-      this.$('.js-add-message-input').val('@'+replyTo+' ');
-      this.$('.js-add-message-input').focus();
+      var $messageInput = this.$('.js-add-message-input');
+      $messageInput.val('@'+replyTo+' ').focus();
+      $messageInput.setSelection($messageInput.val().length);
     },
     
     _addMessage : function(){

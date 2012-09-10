@@ -95,12 +95,12 @@
 		},
 		
 		// create new roll, then proceed like normal
-		_createRollRerollFrameAndShare : function(){	
+		_createRollRerollFrameAndShare : function(){
 			var self = this;
 			
-			var roll = new RollModel({ 
+			var roll = new RollModel({
 				'title' : this.$("#new-roll-name").val(),
-				'public': true, 
+				'public': true,
 				'collaborative': false});
 			
 			roll.save(null, {
@@ -108,8 +108,8 @@
 					// add new roll to rolls collection, correctly sorted
           BackboneCollectionUtils.insertAtSortedIndex(
 						newRoll,
-            shelby.models.rollFollowings.get('rolls'), 
-            {searchOffset:  RollFollowingsConfig.numSpecialRolls, 
+            shelby.models.rollFollowings.get('rolls'),
+            {searchOffset:  RollFollowingsConfig.numSpecialRolls,
              sortAttribute: RollFollowingsConfig.sortAttribute,
              sortDirection: RollFollowingsConfig.sortDirection});
 
@@ -130,15 +130,14 @@
         //rolling is done (don't need to wait for add message to complete)
         self._rollingSuccess(roll, newFrame);
         // Optional Sharing (happens in the background)
-
-        self._frameRollingState.get('shareModel').set({destination: shareDests, text: message});
-
-        self._frameRollingState.get('shareModel').save(null, {
-          url : newFrame.shareUrl(),
-          success : function(){
-            /* noop */
-          } 
-        });
+        if (shareDests.length) {
+          self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+            url : newFrame.shareUrl(),
+            success : function(){
+              /* noop */
+            }
+          });
+        }
       });
 		
 		},

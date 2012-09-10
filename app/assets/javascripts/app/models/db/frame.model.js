@@ -67,8 +67,8 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   reRoll : function(roll, text, onSuccess) {
     var frameToReroll = new libs.shelbyGT.FrameModel();
-    var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames?frame_id='+this.id+'&text='+text;
-    frameToReroll.save(null, {url:url,success:onSuccess});
+    var url = shelby.config.apiRoot + '/roll/' + roll.id + '/frames';
+    frameToReroll.save({frame_id: this.id, text: text}, {url:url,success:onSuccess});
     libs.utils.rhombus.sadd('frames_rolled', this.id);
     shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },

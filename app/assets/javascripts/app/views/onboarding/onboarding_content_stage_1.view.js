@@ -29,7 +29,8 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     console.log('rendering comp view '+this.options.stage);
     this.$el.html(this.template());
     this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
-      el: this.$('.js-dynamic-user-avatar')[0]
+      el: this.$('.js-dynamic-user-avatar')[0],
+      avatarSize: libs.shelbyGT.UserAvatarSizes.large
     });
     this.renderChild(this._userAvatar);
     
@@ -74,6 +75,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onSaveError : function(model, even, response){
+    this.$('.js-onboarding-next-step').text('Get Started');
     $('.js-onboarding-username-input-error').text('Sorry, that username is already taken').show();
   },
 
