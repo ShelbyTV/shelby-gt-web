@@ -64,7 +64,7 @@
       if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
         //if video has no roll, or it's playingstate is 'dashboard', go to stream
         shelby.router.navigate('stream', {trigger:true});
-      } 
+      }
       else if( originHasRoll ) {
         //otherwise go to roll
         var frameId = origin.id,
@@ -79,6 +79,12 @@
       if (_changedAttrs.has('displayState') ||
           _changedAttrs.has('rollListContent')) {
         this._setSelected();
+        if (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding) {
+          //don't show any of the menus during onboarding
+          this.$('.js-content-selector').hide();
+        } else {
+          this.$('.js-content-selector').show();
+        }
       }
       
       //show "Now Playing" only when we have an active video

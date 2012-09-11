@@ -45,12 +45,7 @@
     },
 
     selectRoll : function(roll){
-			this.parent.selectRoll(roll);
-		},
-
-    //override of ListView._renderEducation
-    _renderEducation : function(){
-      // do nothing, we don't want education in this particular list view
+      this.parent.selectRoll(roll);
     }
 
   });

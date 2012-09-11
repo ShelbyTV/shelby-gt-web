@@ -78,7 +78,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);
     this._listItemViews = [];
-    this._initializeEducation();
   },
 
   _cleanup : function(){
@@ -125,40 +124,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     if (this.options.doStaticRender) {
       this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
     }
-  },
-
-  _initializeEducation : function(){
-    var self = this;
-    if (shelby.userSignedIn() && !this._userHasBeenEducated()){
-      // deprecating education in anticipation of real onboarding
-      /*setTimeout(function(){
-        self._renderEducation();
-      }, self._educationTimeoutMap[shelby.models.guide.get('displayState')]);*/
-    }
-
-  },
-
-  _userHasBeenEducated : function(){
-    return shelby.models.user.get('app_progress').get(shelby.models.guide.get('displayState')+'Educated');
-  },
-
-  // delay before displaying education view
-  _educationTimeoutMap : {
-    'rollList' : 1000,
-    'browseRollList' : 1000,
-    'dashboard' : 2000,
-    'standardRoll' : 2000,
-    'watchLaterRoll' : 1000
-  },
-
-  _renderEducation : function(){
-    var educationView = new libs.shelbyGT.GuideEducationView({model:shelby.models.user.get('app_progress'), type:shelby.models.guide.get('displayState')});
-    this.prependChild(educationView, 'slideToggle');
-  },
-
-
-  _displayListEducationView : function(){
-    console.log('_displayListEducationView', arguments);
   },
 
   sourceAddOne : function(item, collection, options){

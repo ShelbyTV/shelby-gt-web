@@ -24,8 +24,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({actionCopy: this._actionCopy}));
-    if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
-        !this.model.get('displayIsolatedRoll')) {
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     }
   },
@@ -48,8 +47,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(guideModel){
-    if ((this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll || this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) &&
-        !this.model.get('displayIsolatedRoll')) {
+    if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     } else {
       // collapse/hide child views

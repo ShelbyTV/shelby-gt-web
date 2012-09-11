@@ -56,6 +56,23 @@
   .em {
     font-weight: 100;
   }
+  
+  /* For two-line headers with details above the meat */
+  h2.top-line, h2.bottom-line{
+    line-height: 1;
+    text-align: left;
+    padding-left: 43px;
+  }
+  h2.top-line {
+    font-size: 1em;
+    font-weight: 100;
+    padding-top: 8px;
+  }
+  h2.bottom-line {
+    @include ellipsis();
+    font-size: 1.5em;
+    line-height: 1.2;
+  }
 }
 
 .guide-overlay-context {

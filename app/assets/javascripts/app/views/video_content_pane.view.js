@@ -17,6 +17,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       model : shelby.models.notificationState
     }));
     this.renderChild(new libs.shelbyGT.ContextOverlayView({
+      contextOverlayState : shelby.models.contextOverlayState,
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay
     }));

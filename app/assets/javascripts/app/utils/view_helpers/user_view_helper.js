@@ -15,7 +15,8 @@ libs.shelbyGT.viewHelpers.user = {
     if( !user ){
       return libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
     } else if( user.get('has_shelby_avatar') ){
-      return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+user.id+'?'+Date.parse(user.get('avatar_updated_at'));
+      //using .get('id') for extension compatibility
+      return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+user.get('id')+'?'+(new Date(user.get('avatar_updated_at')).getTime());
     } else {
       return user.get('user_image_original') || user.get('user_image') || libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
     }

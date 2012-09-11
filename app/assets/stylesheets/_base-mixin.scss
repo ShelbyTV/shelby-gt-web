@@ -213,6 +213,18 @@ $primer-button-context : generic !default;
 
 }//eo button-primer
 
+@mixin loopable-button-primer($color) {
+  $button-bg : $button-default-color !default;
+
+  @if $color == blue {
+    $button-bg: $shelby-blue;
+  } @else if $color == green {
+    $button-bg: $shelby-green;
+  }
+
+  @include button-primer($button-bg);
+}//eo loopable-button-primer
+
 $preferences-network : twitter !default;
 
 @mixin preferences-networks($network){
