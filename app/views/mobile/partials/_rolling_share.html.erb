@@ -1,8 +1,9 @@
 <div id="rolling-share-info">
-	<%= @user['name'] if @user %> shared this video
-	<div id="social-context">
-		<img src="<%= avatar_url_for_user(@user) %>" class="user-avatar" />
-		<span class="user-nickname"><%= @user['nickname'] if @user %></span><br />
-		<%= creators_message_from_frame(@frame) %>
-	</div>
+	<% if @user %>
+		<div id="social-context">
+			<img src="<%= avatar_url_for_user(@user) %>" class="user-avatar" />
+			<span class="user-nickname"><%= @user['nickname'] if @user %></span><br />
+			<span class="user-message"> <%= creators_message_from_frame(@frame) %> </span>
+		</div>
+	<% end %>
 </div>
