@@ -724,6 +724,9 @@ window.shelbyBookmarklet = {
                     utilObject.videoInformation[videoId].frame = response.result;
                   }
                   utilObject.htmlTemplate.adjustFrameContext(frameInfoClass, videoId, false);
+                  
+                  //show success overlay
+                  utilObject.htmlTemplate.notifyRolled();
                 }
                 utilObject.shelbyAjaxCall.shelbyApiRoll(knownUrl, utilObject.shelbyBkmkltUser.personal_roll_id, message, rollCallback);
 
@@ -865,7 +868,19 @@ window.shelbyBookmarklet = {
                               shelbyJ('.fadein-notify-window').remove();
                         }, 3000)
                 },
-                        
+                
+                notifyRolled: function() {
+                        utilObject.shelbyDocElements['ext-elements'].append(JST['bookmarklet-rolled']());
+                        setTimeout(function() {
+                              shelbyJ(".fadein-notify-window").addClass("notified").on("click", 
+                                        function() {
+                                            shelbyJ('.fadein-notify-window').remove();
+                                });
+                        }, 0);
+                        setTimeout(function() {
+                              shelbyJ('.fadein-notify-window').remove();
+                        }, 3000)
+                },
 
                 rollingFormHtml: function (personalRoll, backboneFrame) {
                         var backboneRoll = utilObject.shelbyCreateModel(personalRoll);    
