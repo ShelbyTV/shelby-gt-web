@@ -1,98 +1,110 @@
 @import "base";
 
+////////////////////////////////////////////////////////////////////////////
+// 	TODO: ONE WORD CLASS NAMES ARE TOO VAGUE,
+//				NEED TO FIX THIS EVENTUALLY
+//
+//	TODO: ONLY CLASSES IN THE MODULES PARTIAL GET UNDERSCORES
+//				UNDERSCORES DENOTE UTILITY CLASSES THAT AREN'T READILY EDITABLE
+////////////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------------------
+//  Notifications architecture
+//	(setup, shared between any/all alerts and notifications)
+//------------------------------------------------------------------------------
+
 .notifications-wrapper {
 	display: none;
 }
 
-.notifications-lining{
-	@include button-primer;
+.notifications {
+	@include roundies(input);
 
-	position: absolute;	
-	left: 50%;
-	top: 50%;
-	width: 332px;
-	height: 134px;
-	margin-left: -166px;
-	margin-top: -75px;
+	background-color: $base;
+	box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
 	padding:0px;
+	left: 50%;
+	margin-left: -166px;
+	position: absolute;
+	width: 332px;
 	z-index: 5;
-}
 
-.notification{
-	width: 100%;
-	height: 100%;
-	font-size: 14px;
-	overflow: hidden;
+	&.default {
+		//see below
+	}
+
+	&.info {
+		//see below
+	}
 
 	.message {
-		text-align: center;
+		font-size: 1.4em;
 		font-weight: 300;
 		line-height:1.5;
-		padding:0px 8px;
-		top: 17px;
-		position: absolute;
-		width: 100%;
 	}
-	.button-wrapper{
-		position: absolute;
-		width: 100%;
-		bottom: 12px;
-		.disabled{
+
+}//eo notifications
+
+.button-wrapper {
+	margin: 2em;
+	text-align: center;
+
+	.one_button {
+		.notification-cancel {
 			display: none;
 		}
 	}
-	
-	.notification-confirm { @include button-primer($shelby-blue,dark); }
-	.notification-cancel { @include button-primer; }
-	button.red { @include button-primer($shelby-red,dark); }
-	button.blue { @include button-primer($shelby-blue,dark); }
-	button.grey { @include button-primer($shelby-gray,dark); }
-	
-	.one_button{
-		.notification-confirm{
-			width: 80px;
-			margin-left: 126px;
-		}
-		.notification-cancel{
-		  display: none;
-		}			
+
+	.two_button {
 	}
-	.two_button{
-		.notification-confirm{
-			float: right;
-			margin-right: 55px;
-			width: 100px;
-		}
-		.notification-cancel{
-			float: left;
-			margin-left: 55px;
-			width: 100px;
-		}
+
+	.notification-confirm,
+	.notification-cancel {
+		font-size: 1.3em;
+		width: 6.7em;
+	}
+
+	button.disabled { display: none; }
+	button.red      { @include button-primer($shelby-red,dark); }
+	button.blue     { @include button-primer($shelby-blue,dark); }
+	button.grey     { @include button-primer($shelby-gray,dark); }
+}//eo button-wrapper
+
+
+//------------------------------------------------------------------------------
+//  Specifically Shelby.alert()
+//------------------------------------------------------------------------------
+
+.default {
+	top: 50%;
+	margin-top: -75px;
+
+	.message {
+		overflow: hidden;
+		text-align: center;
+		margin: 1em 1em 0;
 	}
 }
 
-/* lightweight auto-dismissed informational style */
-.notifications-lining.info {
-	top: 85px;
-	height: 39px;
-	
-	.notification {
-		
-		.message {
-			top: 8px;
-		}
-	
-		.button-wrapper {
-			bottom: 3px;
-			right: 0;
-			width: 42px;
-		}
-	
-		button.notification-confirm {
-			float: right;
-			margin-right: 3px;
-			width: 42px;
-		}
-	
+//------------------------------------------------------------------------------
+// Specifically the "Rolled to username/personal roll" message
+//------------------------------------------------------------------------------
+.info {
+	top: 20px;
+
+	.message {
+		float: left;
+		margin: 1.2em 1em 0;
 	}
-}
+
+	.button-wrapper {
+		margin: 1em 0;
+		overflow: hidden;
+	}
+
+	button.notification-confirm {
+		float: right;
+		margin-right: 1em;
+		width: auto;
+	}
+}//eo info

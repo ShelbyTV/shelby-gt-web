@@ -87,6 +87,7 @@
   }
 
   .dynamic-avatar-lining {
+    border:1px solid darken($base,5%);
     float: none;
 
     .progress-overlay {
@@ -96,9 +97,6 @@
     }
 
     .spinner-overlay {
-      border:1px solid darken($base,5%);
-//      background-color: $base;
-
       .spinner {
         margin-left:33.3333%;
         margin-top:33.3333%;
@@ -115,13 +113,16 @@
     margin: 0 auto;
     width: 138px;
 
+    .user-avatar,
     .shelby-avatar {
       width: 100%;
     }
   }
 
-  .onboarding-form-avatar-thumbnail {
-    
+  .onboarding-form-avatar-thumb {
+    height: 138px;
+    overflow: hidden;
+    width: 138px;
   }
 
   .onboarding-form-avatar-file {
@@ -181,22 +182,6 @@
   margin: 0;
   padding: 0;
   width: 20%;
-
-//  &.followed {
-//    &:hover {
-//      .onboarding-roll-wrapper {
-//        display: none;
-//      }
-//    }
-
-//    .onboarding-roll-followed {
-//      display: block;
-//    }
-
-//    .onboarding-roll-button {
-//      display: none;
-//    }
-//  }
 }
 
 .onboarding-roll-item-lining {
@@ -405,9 +390,9 @@
 }
 
 //------------------------------------------------------------------------------
-//  media query fix for onboarding
+//  media query fix for anything-onboarding
 //------------------------------------------------------------------------------
-  @media screen and (max-width: 1110px) {
+  @media screen and (max-width: 1110px) { //this breakpoint reflects when step 4 starts breaking up.
     .onboarding-last-list img {
       height: auto;
       width: 100%;
