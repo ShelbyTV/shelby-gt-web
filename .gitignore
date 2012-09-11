@@ -19,5 +19,12 @@
 # Ignore .rvmrc
 .rvmrc
 
+# ignore OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
 /public/assets
 /public/javascripts/compiled
