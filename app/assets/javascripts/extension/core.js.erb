@@ -57,6 +57,7 @@ window.shelbyBookmarklet = {
     }],
 
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
+      
         var radar = {
 
           getElementValue: function (obj, id) {
@@ -940,31 +941,43 @@ window.shelbyBookmarklet = {
                         genius : 70
                   };
                 }
-                shelbyJ("body").on("click", function() {
-                    if (!utilObject.shelbyBkmkltUser) {
-                      return;
-                    }
-                    var newPossibleVideos = {
-                        embeds: shelbyJ('embed'),
-                        objects: shelbyJ('object'),
-                        videos: shelbyJ('video'),
-                        iframes: shelbyJ('iframe')
-                    };
+                
+                // DEBT Should refactor this out into a helper method instead of an inline function
+                var reRunVideoSearch = function(){
+                  if (!utilObject.shelbyBkmkltUser) {
+                    return;
+                  }
+                  var newPossibleVideos = {
+                      embeds: shelbyJ('embed'),
+                      objects: shelbyJ('object'),
+                      videos: shelbyJ('video'),
+                      iframes: shelbyJ('iframe')
+                  };
 
-                    var refoundVideos = radar.find(newPossibleVideos);
-                    var newVideos = []
-                    for (var i = 0; i < refoundVideos.length; i++) {
-                        var refoundId = refoundVideos[i].video_id;
-                        if (!utilObject.videoInformation[refoundId]) {
-                            newVideos.push(refoundVideos[i]);
-                        }
-                    }
-                    if (newVideos.length > 0) {
-                        utilObject.sendVidsToShelby(newVideos, true);
-                    } else {
-                        return;
-                    }
-              });
+                  var refoundVideos = radar.find(newPossibleVideos);
+                  var newVideos = []
+                  for (var i = 0; i < refoundVideos.length; i++) {
+                      var refoundId = refoundVideos[i].video_id;
+                      if (!utilObject.videoInformation[refoundId]) {
+                          newVideos.push(refoundVideos[i]);
+                      }
+                  }
+                  if (newVideos.length > 0) {
+                      utilObject.sendVidsToShelby(newVideos, true);
+                  } else {
+                      return;
+                  }
+                };
+                
+                //every 2 seconds re-run the search for videos (up to 5 times)
+                var searchesRan = 0;
+                var searchInterval = setInterval(function(){
+                  reRunVideoSearch();
+                  if(searchesRan++ == 5) clearInterval(searchInterval);
+                }, 2*1000);
+                
+                // Also re-run the search after a click
+                shelbyJ("body").on("click", function() { reRunVideoSearch(); });
 
                 utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);
