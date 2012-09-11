@@ -1,3 +1,15 @@
+<div class="landing-shelf-video-sharing">
+	<!-- AddThis Button BEGIN -->
+	<div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="padding-left:0;margin-left:-40px;margin-top:-5px;">
+		<a class="addthis_button_facebook" style="cursor:pointer"></a>
+		<a class="addthis_button_twitter" style="cursor:pointer"></a>
+		<a class="addthis_button_reddit" style="cursor:pointer"></a>
+		<a class="addthis_button_gmail" style="cursor:pointer"></a>
+	</div>
+	<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-502d9e1c63463b1e"></script>
+	<!-- AddThis Button END -->
+</div>
 <div class="landing-shelf-video-embed">
   <% if @video['provider_name'] == "youtube" %>
 		<iframe width="500" height="300" src="http://www.youtube.com/embed/<%= @video['provider_id'] %>?autoplay=0" frameborder="0" allowfullscreen></iframe>
