@@ -14,6 +14,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this.model.bind('change', this._onGuideModelChange, this);
     this.model.bind('change:currentRollModel', this._onRollModelChange, this);
     shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
+
+    console.log('init roll action view');
   },
 
   _cleanup : function(){
@@ -27,6 +29,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     }
+    console.log('render roll action view', $('#js-roll-action-menu').height());
   },
 
   _onGuideModelChange : function(model){
