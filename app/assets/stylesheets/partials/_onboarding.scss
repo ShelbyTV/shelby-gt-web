@@ -403,3 +403,13 @@
 .onboarding-last-desc {
   font-weight: 100;
 }
+
+//------------------------------------------------------------------------------
+//  media query fix for onboarding
+//------------------------------------------------------------------------------
+  @media screen and (max-width: 1110px) {
+    .onboarding-last-list img {
+      height: auto;
+      width: 100%;
+    }
+  }
