@@ -20,8 +20,12 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
   
+  // could generalize this.apiRoot and this.useSecureUrl into ShelbyBaseModel to use it elsewhere/DRY up code
+  useSecureUrl : false,
+  
   url : function() {
-    return shelby.config.apiRoot + '/user/' + (this.isNew() ? '' : this.id);
+    var apiRoot = this.useSecureUrl ? shelby.config.secure.apiRoot : shelby.config.apiRoot;
+    return apiRoot + '/user/' + (this.isNew() ? '' : this.id);
   },
 
   getFirstName : function(){
