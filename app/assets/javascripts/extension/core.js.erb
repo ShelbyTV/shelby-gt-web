@@ -57,6 +57,7 @@ window.shelbyBookmarklet = {
     }],
 
     shelbyRadar: function (shelbyJ, useUrl, urlProvider) {
+      
         var radar = {
 
           getElementValue: function (obj, id) {
@@ -229,6 +230,9 @@ window.shelbyBookmarklet = {
         BackboneModel.prototype = {
             get : function(prop) {
                 return this.props[prop];
+            },
+            escape : function(prop) {
+              return _.escape(this.props[prop]);
             },
             set : function(prop, val) {
                 this.props[prop] = val;
@@ -697,10 +701,10 @@ window.shelbyBookmarklet = {
             },
 
             handleRollSubmit : function (knownUrl, frameInfoClass, videoId) {
-              var submitButton = shelbyJ(".roll-options-submit");
+              var submitButton = shelbyJ("#js-roll-it");
               submitButton.off('click');
               submitButton.on('click', null, null, function (event) {
-                var message = shelbyJ("#rolling-message").val();    
+                var message = shelbyJ("#js-rolling-message").val();    
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
                   return;
@@ -794,7 +798,7 @@ window.shelbyBookmarklet = {
                     }
                     frameContext.addClass("buttons-show").addClass("buttons-animate");
                     var videoId = frameContext.attr("data-videoId")
-                    var frameContextContent = JST['bookmarklet-context-content']({frame: frame, videoId: videoId});
+                    var frameContextContent = JST['bookmarklet-context-content']({videoId: videoId, frame: frame, frameCreator: utilObject.shelbyCreateModel(frame.creator)});
                     shelbyJ(".frame-avatar-listitem-" + videoId + " .all-creator").html(frameContextContent);
                     shelbyJ(".frame-context-image-" + videoId).off("click");
                     shelbyJ(".frame-context-image-" + videoId).on("click",
@@ -876,7 +880,7 @@ window.shelbyBookmarklet = {
                                 urlForRoll: backboneRoll.subdomain + ".shelby.tv"
                           }
                         }
-                        shelbyJ(".rolling-form").append(JST['rolling-form'](templateObj));
+                        shelbyJ(".rolling-main").append(JST['rolling-form'](templateObj));
                 },
                 loginGuideHtml: function () {
                   shelbyJ('#login-guide-window').html(JST['bookmarklet-login']({
@@ -937,31 +941,43 @@ window.shelbyBookmarklet = {
                         genius : 70
                   };
                 }
-                shelbyJ("body").on("click", function() {
-                    if (!utilObject.shelbyBkmkltUser) {
-                      return;
-                    }
-                    var newPossibleVideos = {
-                        embeds: shelbyJ('embed'),
-                        objects: shelbyJ('object'),
-                        videos: shelbyJ('video'),
-                        iframes: shelbyJ('iframe')
-                    };
+                
+                // DEBT Should refactor this out into a helper method instead of an inline function
+                var reRunVideoSearch = function(){
+                  if (!utilObject.shelbyBkmkltUser) {
+                    return;
+                  }
+                  var newPossibleVideos = {
+                      embeds: shelbyJ('embed'),
+                      objects: shelbyJ('object'),
+                      videos: shelbyJ('video'),
+                      iframes: shelbyJ('iframe')
+                  };
 
-                    var refoundVideos = radar.find(newPossibleVideos);
-                    var newVideos = []
-                    for (var i = 0; i < refoundVideos.length; i++) {
-                        var refoundId = refoundVideos[i].video_id;
-                        if (!utilObject.videoInformation[refoundId]) {
-                            newVideos.push(refoundVideos[i]);
-                        }
-                    }
-                    if (newVideos.length > 0) {
-                        utilObject.sendVidsToShelby(newVideos, true);
-                    } else {
-                        return;
-                    }
-              });
+                  var refoundVideos = radar.find(newPossibleVideos);
+                  var newVideos = []
+                  for (var i = 0; i < refoundVideos.length; i++) {
+                      var refoundId = refoundVideos[i].video_id;
+                      if (!utilObject.videoInformation[refoundId]) {
+                          newVideos.push(refoundVideos[i]);
+                      }
+                  }
+                  if (newVideos.length > 0) {
+                      utilObject.sendVidsToShelby(newVideos, true);
+                  } else {
+                      return;
+                  }
+                };
+                
+                //every 2 seconds re-run the search for videos (up to 5 times)
+                var searchesRan = 0;
+                var searchInterval = setInterval(function(){
+                  reRunVideoSearch();
+                  if(searchesRan++ == 5) clearInterval(searchInterval);
+                }, 2*1000);
+                
+                // Also re-run the search after a click
+                shelbyJ("body").on("click", function() { reRunVideoSearch(); });
 
                 utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);

@@ -20,6 +20,10 @@
 	display: block;
 	float: left;
 	padding: 0;
+
+	&.shelby-logo-no-link {
+		cursor: auto;
+	}
 }
 
 .shelby-title {

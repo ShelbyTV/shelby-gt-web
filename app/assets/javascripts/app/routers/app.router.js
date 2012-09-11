@@ -50,8 +50,22 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
-        success: function() {
-          self._reroute();
+        success: function(userModel, response) {
+          if (url.indexOf('onboarding') == -1) {
+            var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
+            if (!userOnboardingProgress) {
+              self.navigate('/onboarding/1', {trigger:true, replace:true});
+              return;
+            } else {
+              if (userOnboardingProgress < 4) {
+                  self.navigate('/onboarding/' + (userOnboardingProgress + 1), {trigger:true, replace:true});
+              } else {
+                  self._reroute();
+              }
+            }
+          } else {
+            self._reroute();
+          }
           shelby.models.rollFollowings.fetch();
           libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect();
           shelby.checkFbTokenValidity();
