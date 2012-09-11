@@ -32,13 +32,13 @@
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining settings-section-lining clearfix">
         <div class="settings-user clearfix"> 
-          <button class="settings-userhandle">
+          <div class="settings-userhandle">
             <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
   
-            <strong>
+            <a href="http://<%= user.get('nickname') + '.shelby.tv' %>" target="_personalRoll">
               <%= user.get('nickname') + '.shelby.tv' %>
-            </strong>
-          </button>
+            </a>
+          </div>
   
           <button class="guide-settings-button settings-preferences js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             Edit Preferences
