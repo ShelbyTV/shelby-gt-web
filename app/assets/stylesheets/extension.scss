@@ -44,6 +44,15 @@
   ul, ol {
     padding: 0;
   }
+  
+  /* Color reset (b/c of Vimeo, at least) */
+  input, textarea {
+    background-color: #fff;
+  }
+  
+  h1, h2, h3, h4 {
+    color: $text;
+  }
 }
 
   /*

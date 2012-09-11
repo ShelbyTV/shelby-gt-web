@@ -230,6 +230,9 @@ window.shelbyBookmarklet = {
             get : function(prop) {
                 return this.props[prop];
             },
+            escape : function(prop) {
+              return _.escape(this.props[prop]);
+            },
             set : function(prop, val) {
                 this.props[prop] = val;
             },
@@ -794,7 +797,7 @@ window.shelbyBookmarklet = {
                     }
                     frameContext.addClass("buttons-show").addClass("buttons-animate");
                     var videoId = frameContext.attr("data-videoId")
-                    var frameContextContent = JST['bookmarklet-context-content']({frame: frame, videoId: videoId});
+                    var frameContextContent = JST['bookmarklet-context-content']({videoId: videoId, frame: frame, frameCreator: utilObject.shelbyCreateModel(frame.creator)});
                     shelbyJ(".frame-avatar-listitem-" + videoId + " .all-creator").html(frameContextContent);
                     shelbyJ(".frame-context-image-" + videoId).off("click");
                     shelbyJ(".frame-context-image-" + videoId).on("click",
