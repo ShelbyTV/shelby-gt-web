@@ -4,7 +4,7 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
-  var RollListView = libs.shelbyGT.RollListView;
+  var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
@@ -102,23 +102,12 @@
           };
          break;
         case DisplayState.rollList :
-          var binarySearchOffset, sourceModel, listItemView;
-          binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
-          sourceModel = shelby.models.rollFollowings;
-          listItemView = 'RollItemRollView';
-          var shouldFetch = true;
           displayParams = {
-            viewProto : RollListView,
-            model : sourceModel,
+            viewProto : MeListView,
+            model : shelby.models.rollFollowings,
             onAppendChild : this._populateRollList,
-            options : {
-              binarySearchOffset : binarySearchOffset,
-              doSmartRefresh : !sourceModel.get('rolls').isEmpty(),
-              doStaticRender : true,
-              listItemView : listItemView
-            },
-            shouldFetch : shouldFetch,
-            spinner : shouldFetch
+            shouldFetch : true,
+            spinner : true
           };
           break;
         case DisplayState.standardRoll :

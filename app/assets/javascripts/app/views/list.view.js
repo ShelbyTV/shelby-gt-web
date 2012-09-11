@@ -101,7 +101,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       var sourceCollection = this._getSourceCollection();
       var newContents;
       if (this._filter) {
-        newContents = sourceCollection.filter(this._filter);
+        newContents = sourceCollection.filter(this._filter, this);
       } else {
         newContents = sourceCollection.models;
       }
