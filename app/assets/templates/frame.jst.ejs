@@ -96,11 +96,9 @@
 
     <footer class="media_module xframe-footer clearfix">
       <% if (!frameViewed) { %>
-        <a href="#" onclick="return false;" class="media_image">
-          <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
-            <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-          </span>
-        </a>
+         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+           <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+         </span>
       <% } %>
 
       <div class="media_body">
