@@ -19,16 +19,16 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
+    if (this.model.has('roll_type')) {
+      this.$el.html(this.template({roll:this.model,guide:shelby.models.guide}));
+    }
+    shelby.models.guide.trigger('reposition');
   },
 
   _onRollChange : function(model) {
     // only re-render if relevant attribtues have been updated
     var _changedAttrs = _(model.changedAttributes());
-    if (!_changedAttrs.has('title') &&
-        !_changedAttrs.has('thumbnail_url') &&
-        !_changedAttrs.has('creator_nickname') &&
-        !_changedAttrs.has('title')) {
+    if (!_changedAttrs.has('roll_type')) {
       return;
     }
     this.render();

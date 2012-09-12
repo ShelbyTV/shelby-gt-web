@@ -4,15 +4,13 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
-  var RollListView = libs.shelbyGT.RollListView;
+  var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
-  var GuidePresentation = libs.shelbyGT.GuidePresentation;
   var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
-  var contentRollsEnum = libs.shelbyGT.GuidePresentation.content.rolls;
 
   libs.shelbyGT.GuideContentView = Support.CompositeView.extend({
 
@@ -36,6 +34,7 @@
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
+      this.model.bind('reposition', this._onReposition, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
       this._dashboardMasterCollection = new Backbone.Collection();
@@ -48,6 +47,7 @@
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
+      this.model.unbind('reposition', this._onReposition, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
@@ -59,7 +59,6 @@
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
           !_changedAttrs.has('pollAttempts') &&
-          !_changedAttrs.has('rollListContent') &&
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
@@ -72,7 +71,11 @@
     _updateChild : function(guideModel) {
         this._leaveChildren();
         this._mapAppendChildView(guideModel);
-        this._setGuideTop();
+        this.model.trigger('reposition');
+    },
+
+    _onReposition : function() {
+      this._setGuideTop();
     },
 
     _setGuideTop : function(){
@@ -102,23 +105,12 @@
           };
          break;
         case DisplayState.rollList :
-          var binarySearchOffset, sourceModel, listItemView;
-          binarySearchOffset = shelby.config.db.rollFollowings.numSpecialRolls;
-          sourceModel = shelby.models.rollFollowings;
-          listItemView = 'RollItemRollView';
-          var shouldFetch = true;
           displayParams = {
-            viewProto : RollListView,
-            model : sourceModel,
+            viewProto : MeListView,
+            model : shelby.models.rollFollowings,
             onAppendChild : this._populateRollList,
-            options : {
-              binarySearchOffset : binarySearchOffset,
-              doSmartRefresh : !sourceModel.get('rolls').isEmpty(),
-              doStaticRender : true,
-              listItemView : listItemView
-            },
-            shouldFetch : shouldFetch,
-            spinner : shouldFetch
+            shouldFetch : true,
+            spinner : true
           };
           break;
         case DisplayState.standardRoll :

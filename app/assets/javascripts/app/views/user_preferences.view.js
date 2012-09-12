@@ -91,8 +91,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     var $thisButton = $(e.currentTarget).addClass('js-busy');
     // the new password is not state that we want/need to persist on the client side,
     // so we create a temporary clone of the user model with only password info via which
-    // to save the password to the backend
+    // to save the password to the backend (using HTTPS)
     var userClone = new libs.shelbyGT.UserModel(info);
+    userClone.useSecureUrl = true;
+        
     userClone.save(null, {
       success: function(model, resp){
         self._updateSecurityResponse("password updated!");

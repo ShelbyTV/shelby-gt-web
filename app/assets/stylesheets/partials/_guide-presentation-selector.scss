@@ -165,7 +165,6 @@ $settings-panel-bg : #555;
 .settings-userhandle {
   background: transparent;
   border: none;
-  color: #333;
   display: block;
   float: left;
   margin: 0;
@@ -174,6 +173,10 @@ $settings-panel-bg : #555;
   img {
     height: 33px;
     width: 33px;
+  }
+  
+  a {
+    @include hover-link();
   }
 }
 

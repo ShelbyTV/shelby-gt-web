@@ -10,8 +10,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "user/:id/personal_roll" : "displayUserPersonalRoll",
     "stream" : "displayDashboard",
-    "rolls/:content" : "displayRollList",
-    "rolls" : "displayRollList",
+    "me" : "displayRollList",
     "explore" : "displayExploreView",
     "onboarding/:stage" : "displayOnboardingView",
     "queue" : "displaySaves",
@@ -241,25 +240,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRollList : function(content){
-    //default parameters
-    if (!content) {
-      content = libs.shelbyGT.GuidePresentation.content.rolls.myRolls;
-    }
-
+  displayRollList : function(){
     this._setupTopLevelViews();
-
-    switch (content) {
-      case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-        shelby.models.guide.set({'rollListContent':content}, {silent:true});
-        break;
-      default:
-        this.navigate('rolls',{trigger:true,replace:true});
-        return;
-    }
-
-    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList}, {silent:true});
-    shelby.models.guide.change();
+    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList});
   },
 
   displayExploreView : function(){

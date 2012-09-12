@@ -6,15 +6,13 @@ $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
 //TODO: get a PNG of this lil' fucker:
 $icon-cancel                    : "#{$path}cancel.svg";
-//$icon-cancel                    : "#{$path}cancel#{$extension}";
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-check                     : "#{$path}check#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
 $icon-comment-reply             : "#{$path}comment_reply#{$extension}";
 $icon-mark                      : "#{$path}mark#{$extension}";
-//TODO: get an SVG of this lil' fucker:
+$icon-avatar-large              : "#{$path}avatar.png";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
-//$icon-missing-avatar            : "#{$path}missing_avatar#{$extension}";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
 
@@ -149,6 +147,9 @@ $thumbnail_default_bg               : adjust-lightness($base, -1%);
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
+
+//--- COLORS: me
+$me-header-color                    : adjust-lightness($text, 10%);
 
 //--- COLORS: videocard
 $videocard-footer-bg-color          : #f2f0f0;
