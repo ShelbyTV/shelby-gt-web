@@ -18,17 +18,21 @@
   }
 %>
 <blockquote class="media_module">
-  <a href="#" onclick="return false;" class="media_image">
+  <a href="#" onclick="return false;" class="media_image js-user-personal-roll">
     <span class="image_module xuser-avatar" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>);" role="img">
       <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>" class="visuallyhidden" title="<%= messageJSON.nickname %>" alt="<%= messageJSON.nickname %>">
     </span>
   </a>
   <div class="media_body">
     <p class="xuser-data">
-      <strong><%= messageJSON.nickname %></strong>
-      <span class="xuser-data-timestamp">
-        <%= messageJSON.created_at %>
-      </span>
+      <a href="#" onclick="return false;" class="xuser-data-link js-user-personal-roll js-track-event" data-ga_category="Message" data-ga_action="Click user roll link" data-ga_label='<%= user.get('nickname') %>' data-user-id="<%= messageJSON.user_id %>">
+        <strong>
+          <%= messageJSON.nickname %>
+        </strong>
+        <span class="xuser-data-timestamp">
+          <%= messageJSON.created_at %>
+        </span>
+      </a>
     </p>
     <p>
       <%= messageJSON.text %>

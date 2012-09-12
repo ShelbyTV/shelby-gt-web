@@ -1,7 +1,6 @@
 @import "base";
 
 .me-section{
-
   .me-header{
     @include ellipsis;
 
@@ -12,5 +11,4 @@
     margin: 1em 1em 0;
     padding: 0 .9em;
   }
-
 }
