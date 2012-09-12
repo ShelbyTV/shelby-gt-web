@@ -178,7 +178,7 @@
 
 //---------------------------
 //  guide styles.
-//  base: modular list framework
+//  base: list_module
 //---------------------------
 
 .guide-explore {
@@ -218,6 +218,14 @@
   text-align: left;
   width: 100%;
   background-color: $list-item-bg;
+
+  .guide-link-icon {
+    background-image: url($icon-chevron-right);
+    background-repeat: no-repeat;
+    background-position: center right;
+    display: block;
+    font-style: normal;
+  }
 
   & > span {
     opacity: .5;

@@ -145,6 +145,9 @@ $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
+//--- COLORS: me
+$me-header-color                    : adjust-lightness($text, 10%);
+
 //--- COLORS: videocard
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
