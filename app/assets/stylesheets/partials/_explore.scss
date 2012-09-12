@@ -206,6 +206,7 @@
 }
 
 .guide-link {
+
   border-bottom: none;
   border-left: 1px solid $list-item-border;
   border-right: 1px solid $list-item-border;
@@ -220,11 +221,14 @@
   background-color: $list-item-bg;
 
   .guide-link-icon {
+    @include ellipsis;
+
     background-image: url($icon-chevron-right);
     background-repeat: no-repeat;
     background-position: center right;
     display: block;
     font-style: normal;
+    padding-right: 1em;
   }
 
   & > span {
