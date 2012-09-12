@@ -13,6 +13,7 @@ libs.shelbyGT.OnboardingContentStage4View = libs.shelbyGT.OnboardingContentStage
       var appProgress = shelby.models.user.get('app_progress');
       appProgress.set('onboarding', 4);
       appProgress.saveMe();
+      shelby.track('completed onboarding',{userName: shelby.models.user.get('nickname')});
       shelby.router.navigate('stream', {trigger:true});
     }
 

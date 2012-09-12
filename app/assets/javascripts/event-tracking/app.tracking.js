@@ -63,6 +63,14 @@ _(shelby).extend({
           _gaAction = 'watched in full'; _gaCategory = 'Frame'; _label = 100;
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
           break;
+        case 'started onboarding':
+          _gaAction = action; _gaCategory = 'Onboarding';
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
+        case 'completed onboarding':
+          _gaAction = action; _gaCategory = 'Onboarding';
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
         case 'identify':
           _kmq.push(['identify', options.nickname]);
           _kmq.push(['record', 'Visit App', {nickname: options.nickname}]);
