@@ -114,9 +114,9 @@ $primer-button-context : generic !default;
 		width: 100px;
 	} @elseif $primer-button-context == wide {
 		padding-top: .8em;
-		padding-right: 4em;
+		padding-right: 3em;
 		padding-bottom: .75em;
-		padding-left: 4em;
+		padding-left: 3em;
 	} @elseif $primer-button-context == guide-close {
 		padding: .6em;
 	} @else {//generic

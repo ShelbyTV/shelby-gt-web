@@ -1,11 +1,12 @@
 defaults: &defaults
   url: "http://api.shelby.tv"
-  login_form_url: "http://api.shelby.tv/authentications/login"
+  secure_url: "https://api.shelby.tv"
+  login_form_url: "https://api.shelby.tv/authentications/login"
   version: "/v1"
 
 development:
   <<: *defaults
-  login_form_url: "http://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
+  login_form_url: "https://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
 
 test:
   <<: *defaults

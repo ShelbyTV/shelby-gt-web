@@ -1,9 +1,11 @@
 @import "base";
+@import "compass/utilities/links/hover-link";
 
 .guide-presentation-selector {
 }
 
 .guide-nav-list {
+  display: none;
   font-size: 1.2em;
   margin: 0;
   padding: 0;
@@ -160,7 +162,6 @@
 .settings-userhandle {
   background: transparent;
   border: none;
-  color: #333;
   display: block;
   float: left;
   margin: 0;
@@ -169,6 +170,10 @@
   img {
     height: 33px;
     width: 33px;
+  }
+  
+  a {
+    @include hover-link();
   }
 }
 

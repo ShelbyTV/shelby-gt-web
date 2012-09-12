@@ -12,12 +12,12 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
     });
 
     _(events).extend({
-      "click .js-preferences" : "_showUserPreferences",
-			"click .js-signout"			: "_signout",
-      "click .js-help"        : "_showHelp",
-      "click .js-team"        : "_showTeam",
-      "click .js-legal"       : "_showLegal",
-      "click .js-home"        : "_showHome"
+      "click .js-preferences"                    : "_showUserPreferences",
+      "click .js-signout"                        : "_signout",
+      "click .js-help"                           : "_showHelp",
+      "click .js-team"                           : "_showTeam",
+      "click .js-legal"                          : "_showLegal",
+      "click .js-home:not(.shelby-logo-no-link)" : "_showHome"
     });
 
     return events;
@@ -34,18 +34,21 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    shelby.models.guide.bind('change:displayIsolatedRoll', this._updateVisibility, this);
+    this.options.guide.bind('change:displayIsolatedRoll', this._updateVisibility, this);
+    this.options.guide.bind('change:displayState', this._onChangeDisplayState, this);
   },
 
   _cleanup : function(){
-    shelby.models.guide.unbind('change:displayIsolatedRoll', this._updateVisibility, this);
+    this.options.guide.unbind('change:displayIsolatedRoll', this._updateVisibility, this);
+    this.options.guide.unbind('change:displayState', this._onChangeDisplayState, this);
   },
 
   render : function(){
     this._updateVisibility();
     this.$el.html(this.template({user:this.model}));
+    this._updateHomeLinkState();
     if (!this.selectorView){
-      this.selectorView = new libs.shelbyGT.GuidePresentationSelectorView({model:shelby.models.guide});
+      this.selectorView = new libs.shelbyGT.GuidePresentationSelectorView({model:this.options.guide});
       this.appendChildInto(this.selectorView, '.guide-presentation-selector');
     }
   },
@@ -56,11 +59,20 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(){
-    if(shelby.models.guide.get('displayIsolatedRoll')) {
+    if(this.options.guide.get('displayIsolatedRoll')) {
         this.$el.hide();
       } else {
         this.$el.show();
     }
+  },
+
+  _onChangeDisplayState : function(){
+    this._updateHomeLinkState();
+  },
+
+  _updateHomeLinkState : function(){
+    var isOnboarding = this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.onboarding;
+    this.$('.js-home').toggleClass('shelby-logo-no-link', isOnboarding);
   },
 
   _closeMenus : function(){
@@ -89,8 +101,8 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
     shelby.router.navigate('legal', {trigger:true});
   },
 
-	_signout : function(){
-		document.location.href = "/signout";
-	}
+  _signout : function(){
+    document.location.href = "/signout";
+  }
 
 });

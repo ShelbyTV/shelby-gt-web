@@ -5,15 +5,15 @@
     el: '#js-notifications-wrapper',
 
 		events: {
-			"click button" 			: "_handleResponse",
+			"click button"			: "_handleResponse",
 			"click .roll-route"	: "_handleRollRoute"
 		},
 
     _listView : null,
 
-	  template : function(obj){
-	    return JST['notification-overlay'](obj);
-	  },
+		template : function(obj){
+			return JST['notification-overlay'](obj);
+		},
 
     initialize : function(){
       this.model.bind('change:visible', this._onVisiblityChange, this);
@@ -22,7 +22,7 @@
     },
 		
 		render : function(){
-	    this.$el.html(this.template({model:this.model}));
+			this.$el.html(this.template({model:this.model}));
 		},
 		
     _cleanup : function() {
@@ -41,7 +41,7 @@
 		},
 		
 		_handleResponse : function(data){
-			if ($(data.target).hasClass('notification-confirm')) { 
+			if ($(data.target).hasClass('notification-confirm')) {
 				this.model.set('response', 1);
 			}
 			else if ($(data.target).hasClass('notification-cancel')) {

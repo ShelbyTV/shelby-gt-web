@@ -11,6 +11,9 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
    },
 
    _onNextStepClick : function(){
+     var appProgress = shelby.models.user.get('app_progress');
+     appProgress.set('onboarding', 3);
+     appProgress.saveMe();
      shelby.router.navigate('onboarding/4', {trigger:true});
    }
 

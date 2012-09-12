@@ -76,7 +76,7 @@
   top: 0px;
   z-index: 2147483647;
   &.notified {
-    opacity: 0.7;
+    opacity: 0.85;
   }
   &.animate-fadein {
     @include transition-property('opacity');
@@ -86,18 +86,28 @@
   }
 }
 
+.overlay-notification {
+  font-size: 40px;
+  font-family: $font-family-display;
+  height:100px; 
+  line-height: 1;
+  text-align: center;
+  margin-top: 200px;
+}
+
 .queue-notification {
   background-image: url("/images/assets/chrome_queue_large.svg");
   background-position: 50% 0%;
   background-repeat: no-repeat;
-  background-size: 50%;
-  height:100px;
-  left: 50%;
-  line-height: 12;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 150px;
+  background-size: 6%;
+  padding-top: 100px;
+}
+
+.rolled-notification {
+  .rolled-icon {
+    color: #fff;
+    font-size: 90px;
+  }
 }
 
 //LOGIN
@@ -157,7 +167,7 @@
 //GUIDE
 
 .guide-window {
-  background: #222;
+  background: #e2e2e2;
   border-left: 1px solid black;
   bottom: 0;
   box-shadow: 0px 0px 25px 5px black;
