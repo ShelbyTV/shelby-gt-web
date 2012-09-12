@@ -1,6 +1,11 @@
+libs.shelbyGT.RollListFilterType = {
+  me : "me",
+  following : "following"
+};
+
 libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
 
-  className : 'list_module guide-list js-rolls-list',
+  className : 'list_module guide-list',
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',
@@ -11,11 +16,11 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
       return {activationStateModel:shelby.models.guide};
     },
     sortAttribute : shelby.config.db.rollFollowings.sortAttribute,
-    sortDirection : shelby.config.db.rollFollowings.sortDirection
+    sortDirection : shelby.config.db.rollFollowings.sortDirection,
+    rollListFilterType : null
   }),
 
   initialize : function() {
-      this._filterContent(shelby.models.guide.get('rollListContent'));
       libs.shelbyGT.ListView.prototype.initialize.call(this);
   },
 
@@ -23,22 +28,17 @@ libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
       libs.shelbyGT.ListView.prototype._cleanup.call(this);
   },
 
-  _filterContent : function(guidePresentationContent){
-    var self = this;
-    
-    switch(guidePresentationContent){
-      case libs.shelbyGT.GuidePresentation.content.rolls.myRolls:
-        this.updateFilter(function(model){
-          return !self._isFauxUserPersonalRoll(model) &&
-            model.id != shelby.models.user.get('watch_later_roll_id');
-        });
-        break;
+  _filter : function(roll) {
+    var rollListFilterSatisfied = true;
+    if (this.options.rollListFilterType == libs.shelbyGT.RollListFilterType.following) {
+      rollListFilterSatisfied = roll.get('creator_id') != shelby.models.user.id;
+    } else if (this.options.rollListFilterType == libs.shelbyGT.RollListFilterType.me) {
+      rollListFilterSatisfied = roll.get('creator_id') == shelby.models.user.id;
     }
-  },
-  
-  _isFauxUserPersonalRoll : function(roll) {
-    return roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-           roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll;
+    return rollListFilterSatisfied &&
+           roll.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_public &&
+           roll.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_roll &&
+           roll.id != shelby.models.user.get('watch_later_roll_id');
   },
 
   _scrollTo : function(element) {

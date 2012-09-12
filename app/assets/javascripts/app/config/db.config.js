@@ -1,6 +1,6 @@
 shelby.config.db = {
 	rollFollowings : {
-    numSpecialRolls : 2,
+    numSpecialRolls : 1,
     sortAttribute: 'followed_at',
     sortDirection: 'desc'
   }
