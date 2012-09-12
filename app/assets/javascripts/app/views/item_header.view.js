@@ -11,6 +11,7 @@
     initialize : function(opts){
       this._options = opts.options || {};
       this.model.bind('change', this._updateChild, this);
+      console.log('init item header view');
     },
 
     _cleanup : function(){
@@ -19,6 +20,10 @@
 
     render : function(){
       this._mapInsertContentsView();
+      console.log('render item header view', $('#js-roll-action-menu').height());
+      var allHeadersHeight = _.reduce($("#js-guide-header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-body').css('top', allHeadersHeight + $('#js-roll-action-menu').height());
+      console.log(allHeadersHeight);
     },
 
     _updateChild : function(guideModel){
@@ -28,6 +33,11 @@
           _changedAttrs.has('displayIsolatedRoll')) {
         this.render();
       }
+      //  TODO:
+      //  THIS IS WHERE THE PROBLEM IS, 
+      //  set height isn't being called here. and needs to be.
+      var allHeadersHeight = _.reduce($("#js-guide-header"), function(memo, el){ return memo + $(el).height(); }, 0);
+      $('#js-guide-body').css('top', allHeadersHeight);
     },
 
     _mapInsertContentsView : function(){
