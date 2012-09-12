@@ -143,14 +143,14 @@ $active-list-item: $shelby-blue;
 }
 
 .xuser-data-link {
-	&:active,
-	&:hover {
-		text-decoration: underline;
-	}
-
 	&:link,
 	&:visited {
 		text-decoration: none;
+	}
+
+	&:active,
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
