@@ -42,7 +42,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if( shelby.routeHistory.length > 1 ){
       window.history.back();
     } else {
-      shelby.router.navigate("rolls/" + shelby.models.guide.get('rollListContent'), {trigger:true});
+      shelby.router.navigate("me");
     }
   },
 

@@ -10,9 +10,7 @@
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
-  var GuidePresentation = libs.shelbyGT.GuidePresentation;
   var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
-  var contentRollsEnum = libs.shelbyGT.GuidePresentation.content.rolls;
 
   libs.shelbyGT.GuideContentView = Support.CompositeView.extend({
 
@@ -59,7 +57,6 @@
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
           !_changedAttrs.has('pollAttempts') &&
-          !_changedAttrs.has('rollListContent') &&
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
