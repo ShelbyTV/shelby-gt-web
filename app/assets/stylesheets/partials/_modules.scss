@@ -121,13 +121,25 @@ $list : blue, green, default;
   }
 }
 
-//---------------------------
+//------------------------------------------------------------------------------
 //  modular list framework
-//---------------------------
+//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  GROUP_LIST_MODULE is a super list
+//  for when you have nested lists.
+//
+//  LIST_MODULE handles lists in the guide
+//  lists of rolls, frame, etc.
+////////////////////////////////////////////////////////////////////////////
+.group_list_module {
+  list-style-type: none;
+  margin: 0;  
+  padding: 0;
+}
 
 .list_module {
-  margin: 0;
   list-style-type: none;
+  margin: 0;
   padding: $list-module-spacing;
 }
 
@@ -140,6 +152,7 @@ $list : blue, green, default;
     background-color: $list-item-bg-hover;
   }
 }
+
 
 //---------------------------
 //  modular overlay framework
