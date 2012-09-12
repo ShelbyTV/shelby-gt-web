@@ -130,17 +130,14 @@ $list : blue, green, default;
 //
 //  LIST_MODULE handles lists in the guide
 //  lists of rolls, frame, etc.
+//
+//  (right now they're both the same.)
 ////////////////////////////////////////////////////////////////////////////
-.group_list_module {
-  list-style-type: none;
-  margin: 0;  
-  padding: 0;
-}
-
+.group_list_module,
 .list_module {
   list-style-type: none;
   margin: 0;
-  padding: $list-module-spacing;
+  padding: 0;
 }
 
 .list_item {
@@ -153,7 +150,6 @@ $list : blue, green, default;
   }
 }
 
-
 //---------------------------
 //  modular overlay framework
 //  
@@ -163,7 +159,6 @@ $list : blue, green, default;
 //    the content separation.
 //    *must be used for any overlay 
 //---------------------------
-
 .overlay_header {
   height: $overlay_header_height;
 }
