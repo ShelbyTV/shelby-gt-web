@@ -34,6 +34,7 @@
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
+      this.model.bind('reposition', this._onReposition, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
       this._dashboardMasterCollection = new Backbone.Collection();
@@ -46,6 +47,7 @@
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
+      this.model.unbind('reposition', this._onReposition, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
@@ -69,7 +71,11 @@
     _updateChild : function(guideModel) {
         this._leaveChildren();
         this._mapAppendChildView(guideModel);
-        this._setGuideTop();
+        this.model.trigger('reposition');
+    },
+
+    _onReposition : function() {
+      this._setGuideTop();
     },
 
     _setGuideTop : function(){

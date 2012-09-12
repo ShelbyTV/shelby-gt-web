@@ -56,6 +56,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
+    shelby.models.guide.trigger('reposition');
   },
 
   _followRoll : function() {

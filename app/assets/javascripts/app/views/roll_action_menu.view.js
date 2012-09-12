@@ -27,6 +27,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
     }
+    shelby.models.guide.trigger('reposition');
   },
 
   _onGuideModelChange : function(model){
@@ -53,6 +54,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       // collapse/hide child views
       this.$el.hide();
     }
+    shelby.models.guide.trigger('reposition');
   },
 
   _followOrUnfollowRoll : function() {
@@ -82,6 +84,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     var currentRollModel = this.model.get('currentRollModel');
     if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel)){
       this.$('.js-roll-add-leave-button').hide();
+      shelby.models.guide.trigger('reposition');
       return;
     }
     if (!currentRollModel || currentRollModel.get('creator_id') === shelby.models.user.id ||
@@ -92,6 +95,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$('.js-roll-add-leave-button').toggleClass('rolls-leave', userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
+    shelby.models.guide.trigger('reposition');
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
