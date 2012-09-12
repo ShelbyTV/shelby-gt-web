@@ -2,11 +2,9 @@
 @import "base-mixin";
 
 @import "compass/css3",
+        "compass/typography/links/hover-link",
         "compass/utilities/text/ellipsis",
         "compass/utilities/lists/bullets";
-
-
-
 
 /* A wrapper around all the elements the extension inserts */
 .ext-elements {
