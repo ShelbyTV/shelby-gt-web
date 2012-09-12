@@ -145,12 +145,14 @@
 				</fieldset>
 			</form>
 
-			<div class="gate-networks-wrapper clearfix">
-	      <a class="gate-networks-twitter js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+			<div class="gate-networks-wrapper clearfix">				
+	      <a class="gate-networks-twitter js-track-event auth-popup" data-ga_category="Landing Page" data-ga_action="Login with Twitter" 
+					href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
 	        Twitter
 	      </a>   
 
-	      <a class="gate-networks-facebook js-track-event" data-ga_category="Landing Page" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+	      <a class="gate-networks-facebook js-track-event auth-popup" data-ga_category="Landing Page" data-ga_action="Login with Facebook" 
+					href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" popup-width="1000" popup-height="650">
 	        Facebook
 	      </a>
 			</div>
