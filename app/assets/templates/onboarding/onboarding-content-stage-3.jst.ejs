@@ -1,9 +1,10 @@
 <%
   var authed_providers = [];
-  shelby.models.user.get('authentications').forEach(function(auth){
-    console.log(auth.provider);
-    authed_providers.push(auth.provider);
-  });
+	if (shelby.models.user.get('authentications') != null){
+	  shelby.models.user.get('authentications').forEach(function(auth){
+	    authed_providers.push(auth.provider);
+	  });		
+	}
 %>
 
 <div class="onboarding-head">
