@@ -1,5 +1,9 @@
 libs.shelbyGT.MeListView = Support.CompositeView.extend({
 
+  tagName : 'ul',
+
+  className : 'list_module me-section',
+
   template : function(obj){
     return JST['me-list'](obj);
   },
