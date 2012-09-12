@@ -15,7 +15,14 @@
       'onboarding' : false
     },
 
-    initialize : function(){
+    //assuming that parameter stage is an integer
+    advanceStage : function(attribute, stage) {
+      var value = this.get(attribute);
+      //don't let the stage of progress move backwards
+      if (!value || value < stage) {
+        this.set(attribute, stage);
+        this.saveMe();
+      }
     },
 
     saveMe : function(){

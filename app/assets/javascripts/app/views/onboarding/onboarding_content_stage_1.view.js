@@ -71,9 +71,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _onSaveSuccess : function(){
     this.$('.js-onboarding-next-step').text('Get Started');
-    var appProgress = shelby.models.user.get('app_progress');
-    appProgress.set('onboarding', 1);
-    appProgress.saveMe();
+    shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
     shelby.router.navigate('onboarding/2', {trigger:true});
   },
 
