@@ -39,7 +39,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         this._addIfNew(item, collection);
       }
     } else {
-      this._addItem(item, collection, options);
+      this._addItem(item, collection, options, true);
     }
   },
 
@@ -123,8 +123,8 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
       return doAdd;
   },
 
-  _addItem : function(item, collection, options) {
-    if (this.options.doSmartRefresh) {
+  _addItem : function(item, collection, options, noSmartRefresh) {
+    if (!noSmartRefresh) {
       this._simulatedMasterCollection.add(item, options);
       if (!this._filter || this._filter(item)) {
         if (this.options.doCheck == libs.shelbyGT.SmartRefreshCheckType.binarySearch) {

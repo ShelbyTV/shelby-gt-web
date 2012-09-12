@@ -3,20 +3,16 @@ libs.shelbyGT.RollListFilterType = {
   following : "following"
 };
 
-libs.shelbyGT.RollListView = libs.shelbyGT.SmartRefreshListView.extend({
+libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   className : 'list_module guide-list',
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',
-    doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
-    doSmartRefresh : true,
     listItemView : 'RollItemRollView',
     listItemViewAdditionalParams : function() {
       return {activationStateModel:shelby.models.guide};
     },
-    sortAttribute : shelby.config.db.rollFollowings.sortAttribute,
-    sortDirection : shelby.config.db.rollFollowings.sortDirection,
     rollListFilterType : null
   }),
 
