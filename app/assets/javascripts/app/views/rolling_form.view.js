@@ -145,7 +145,7 @@
 		_rollingSuccess : function(roll, newFrame){
 			this.parent.done();
 			//N.B. This link is picked up by NotificationOverlayView for routing
-			shelby.success('Video successfully rolled! <span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="roll-route">Go to Roll</a></span>');
+			shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="roll-route">Go to Roll</a></span> Video successfully rolled!');
 		}
 		
 	});
