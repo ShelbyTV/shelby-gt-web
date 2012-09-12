@@ -50,7 +50,8 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     var showFollowButton = this.model.has('creator_id') &&
                            (this.model.get('creator_id') != shelby.models.user.id) &&
                            this.model.has('roll_type') &&
-                           this.model.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_watch_later;
+                           this.model.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_watch_later &&
+                           !libs.shelbyGT.viewHelpers.roll.isFaux(this.model);
     this.$('.guide-overlay-context-overview').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
 
     this._updateFullShelbyButton();

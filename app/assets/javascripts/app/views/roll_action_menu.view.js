@@ -80,6 +80,10 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   _updateJoinButton : function(){
     var currentRollModel = this.model.get('currentRollModel');
+    if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel)){
+      this.$('.js-roll-add-leave-button').hide();
+      return;
+    }
     if (!currentRollModel || currentRollModel.get('creator_id') === shelby.models.user.id ||
         !shelby.models.rollFollowings.has('initialized')){
       this.$('.js-roll-add-leave-button').hide();

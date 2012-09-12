@@ -13,7 +13,6 @@
 <% var creatorNickname = creator.get('nickname') %>
 <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
 
-<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
@@ -110,7 +109,7 @@
           </span>
 
           <p class="xuser-data">
-            <% if (clickableCreator && !isFaux) { %>
+            <% if (clickableCreator) { %>
               shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
             <% } else { %>
               shared by <%= creatorNickname %>

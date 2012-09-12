@@ -7,6 +7,10 @@ libs.shelbyGT.viewHelpers.roll = {
     return roll.get('creator_nickname');
   },
 
+  capitalizeFirstLetter : function(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  },
+
   titleWithoutPath : function(roll, options){
     // default options
     options = _.chain({}).extend(options).defaults({
@@ -22,10 +26,18 @@ libs.shelbyGT.viewHelpers.roll = {
       rollName = "Queue";
     }
     else if(
-      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
       rollName = "Personal Roll";
+    }
+    else if(libs.shelbyGT.viewHelpers.roll.isFaux(roll)){
+      // faux rolls will only have frames from one network
+      if(roll.get('origin_network') && roll.get('creator_nickname')){
+        rollName = libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network')) + " Shares";
+      }
+      else {
+        return roll.get('title');
+      }
     }
     else {
       return roll.get('title');
@@ -58,12 +70,19 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id') && roll.get('subdomain')){
       return roll.get('subdomain');
     }
-    else if(
-      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
-      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded){
+    else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id')){
       return "Personal Roll";
-    } else {
+    }
+    else if(libs.shelbyGT.viewHelpers.roll.isFaux(roll)){
+      // faux rolls will only have frames from one network
+      if(roll.get('origin_network') && roll.get('creator_nickname')){
+        return roll.get('creator_nickname') + "'s " + libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network')) + " Shares";
+      }
+      else {
+        return roll.get('title');
+      }
+    }
+    else {
       return roll.get('title');
     }
   },

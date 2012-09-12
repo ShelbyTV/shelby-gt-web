@@ -17,7 +17,7 @@
   <% } else { %>
     <h2 class="current-roll">
       <span class="roll-title-text">
-        <%= (roll.get('creator_nickname') == shelby.models.user.get('nickname')) ? rollTitle : roll.get('title') %>
+        <%= rollTitle || '' %>
       </span>
     </h2>
   <% } %>
