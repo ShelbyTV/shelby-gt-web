@@ -21,6 +21,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard.view.js
 //= require ./views/guide_overlay.view.js
+//= require ./views/me_list.view.js
 //= require ./views/roll_list.view.js
 //= require ./views/roll.view.js
 //= require ./views/user_preferences.view.js

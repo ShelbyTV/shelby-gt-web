@@ -12,6 +12,11 @@ $landing-page-footer-font-color: #EFEFEF;
   .shelby-header {
     position: relative;
   }
+  
+  /* this gets hidden in _guide-presentation-selector.scss for onboarding */
+  .guide-nav-list {
+    display: block;
+  }
 }
 
 /********************************************************

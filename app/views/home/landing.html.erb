@@ -60,11 +60,13 @@
 								
 								<div class="social_login login-social-section clearfix">
 									<h4 class="login-social-section-header">or, login with</h4>
-						      <a class="social_login_twitter js-track-event" data-ga_action="Login with Twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>">
+						      <a class="social_login_twitter js-track-event auth-popup" data-ga_action="Login with Twitter" 
+										href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
 						        Twitter
 						      </a>
 
-						      <a class="social_login_facebook js-track-event" data-ga_action="Login with Facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>">
+						      <a class="social_login_facebook js-track-event auth-popup" data-ga_action="Login with Facebook" 
+										href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" popup-width="1000" popup-height="650">
 						        Facebook
 						      </a>
 								</div>

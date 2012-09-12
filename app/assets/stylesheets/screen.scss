@@ -1,5 +1,6 @@
 @import "base";
 @import "base-mixin";
+@import "compass/typography/links/hover-link";
 
 @import 
 		"partials/fonts",
@@ -26,6 +27,7 @@
 		"partials/video-controls",
 		"partials/video-mini-progress",
 
+		"partials/me-section",
 		"partials/rolls-list",
 
 		"partials/frame-rolling",

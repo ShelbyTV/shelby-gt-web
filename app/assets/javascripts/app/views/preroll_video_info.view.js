@@ -5,6 +5,8 @@
     el: '#js-preroll-video-info-wrapper',
     
     _playbackState: null,
+    
+    _renderedAt: null,
 
     initialize : function(opts) {
       this._playbackState = opts.playbackState;
@@ -21,6 +23,7 @@
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       this.model = activeFrameModel;
       this.render();
+      this._renderedAt = Date.now();
     },
     
     _onNewPlayerState: function(playbackState, newPlayerState){
@@ -31,9 +34,9 @@
       newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
     },
     
-    // hide overlay as video starts
+    // hide overlay 1s into video or 4s from initial dislay, whichever is greater
     _onCurrentTimeChange: function(attr, time){
-      if(time > 1.0){ 
+      if(time > 1.0 && Date.now() > (this._renderedAt + 4*1000)){ 
         this.$el.removeClass('showing').addClass("post-display");
       }
     },

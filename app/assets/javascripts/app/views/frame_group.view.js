@@ -207,11 +207,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return;
     }
     
-    if (libs.shelbyGT.viewHelpers.roll.isFaux(this.model.getFirstFrame().get('roll'))){
-      //not showing personal rolls for faux users
-      return;
-    }
-
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
@@ -223,11 +218,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _goToSourceRoll : function(){
     if (this.model.get('collapsed')) {
       this._expand();
-      return;
-    }
-    
-    if (libs.shelbyGT.viewHelpers.roll.isFaux(this.model.getFirstFrame().get('roll'))){
-      //not showing personal rolls for faux users
       return;
     }
     

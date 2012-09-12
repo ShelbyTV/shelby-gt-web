@@ -26,7 +26,6 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   render : function(){
-    console.log('rendering comp view '+this.options.stage);
     this.$el.html(this.template());
     this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
       el: this.$('.js-dynamic-user-avatar')[0],
@@ -40,6 +39,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       progressEl: this.$('.dynamic-avatar .progress-overlay')[0]
     });
 
+    shelby.track('started onboarding', {userName: shelby.models.user.get('nickname')});
     this.renderChild(this._userAvatarUploader);
     return this;
   },
@@ -71,9 +71,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _onSaveSuccess : function(){
     this.$('.js-onboarding-next-step').text('Get Started');
-    var appProgress = shelby.models.user.get('app_progress');
-    appProgress.set('onboarding', 1);
-    appProgress.saveMe();
+    shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
     shelby.router.navigate('onboarding/2', {trigger:true});
   },
 

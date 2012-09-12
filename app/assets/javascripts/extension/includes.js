@@ -10,6 +10,7 @@
 //= require ../../templates/bookmarklet-login.jst.ejs
 //= require ../../templates/bookmarklet-notify.jst.ejs
 //= require ../../templates/bookmarklet-queued.jst.ejs
+//= require ../../templates/bookmarklet-rolled.jst.ejs
 //= require ../../templates/bookmarklet-video-tab.jst.ejs
 //= require ../../templates/frame-conversation-form.jst.ejs
 //= require ../../templates/frame-conversation.jst.ejs

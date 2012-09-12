@@ -10,7 +10,7 @@
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
-      "click .js-my-rolls:not(.active-item)" : "_filterMyRolls",
+      "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
       "click .js-now-playing"                : "_nowPlaying"
     },
@@ -42,12 +42,12 @@
       shelby.router.navigate('queue', {trigger: true});
     },
     
-    _filterMyRolls : function(){
-      shelby.router.navigate('rolls/my_rolls',{trigger:true});
+    _goToMe : function(){
+      shelby.router.navigate('me', {trigger:true});
     },
     
     _explore : function(){
-      shelby.router.navigate('explore',{trigger:true});
+      shelby.router.navigate('explore', {trigger:true});
     },
     
     _nowPlaying : function(){
@@ -76,8 +76,7 @@
     _onGuideModelChanged : function(model){
       var _changedAttrs = _(model.changedAttributes());
       // only update selection rendering if relevant attribtues have been updated
-      if (_changedAttrs.has('displayState') ||
-          _changedAttrs.has('rollListContent')) {
+      if (_changedAttrs.has('displayState')) {
         this._setSelected();
         if (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding) {
           //don't show any of the menus during onboarding
@@ -99,11 +98,7 @@
 
       var $setSelectedClassOn = null;
       if (this.model.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-        switch (this.model.get('rollListContent')) {
-          case libs.shelbyGT.GuidePresentation.content.rolls.myRolls :
-            $setSelectedClassOn = this.$('.js-my-rolls');
-            break;
-        }
+        $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.explore) {

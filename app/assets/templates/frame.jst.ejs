@@ -13,7 +13,6 @@
 <% var creatorNickname = creator.get('nickname') %>
 <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
 
-<% var isFaux = libs.shelbyGT.viewHelpers.roll.isFaux(frame.get('roll')) %>
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
@@ -96,11 +95,9 @@
 
     <footer class="media_module xframe-footer clearfix">
       <% if (!frameViewed) { %>
-        <a href="#" onclick="return false;" class="media_image">
-          <span class="image_module xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
-            <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-          </span>
-        </a>
+         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+           <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+         </span>
       <% } %>
 
       <div class="media_body">
@@ -110,12 +107,8 @@
           </span>
 
           <p class="xuser-data">
-            <% if (clickableCreator && !isFaux) { %>
-              <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link">
-                <strong>
-                  <%= creatorNickname %>
-                </strong>
-              </a>
+            <% if (clickableCreator) { %>
+              shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
             <% } else { %>
               shared by <%= creatorNickname %>
             <% } %>
