@@ -22,6 +22,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   options : {
     collection : null,
     collectionAttribute : 'listCollection',
+    comparator : null,
     doDynamicRender : true,
     doStaticRender : false,
     insert : {
@@ -74,6 +75,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._displayCollection = new Backbone.Collection();
     }
  
+    if (this.options.comparator) {
+      this._displayCollection.comparator = this.options.comparator;
+    }
+
     this._displayCollection.bind('add', this.internalAddOne, this);
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);
@@ -114,6 +119,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _attachMasterCollection : function() {
     this._simulatedMasterCollection = this.options.masterCollection;
+    if (this.options.comparator) {
+      this._simulatedMasterCollection.comparator = this.options.comparator;
+    }
     if (!this.options.doStaticRender) {
       this._simulatedMasterCollection.reset();
     }
@@ -121,6 +129,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _prepareMasterCollection : function() {
     this._simulatedMasterCollection = new Backbone.Collection();
+    if (this.options.comparator) {
+      this._simulatedMasterCollection.comparator = this.options.comparator;
+    }
     if (this.options.doStaticRender) {
       this._simulatedMasterCollection.reset(this.model.get(this.options.collectionAttribute).models);
     }
@@ -128,13 +139,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   sourceAddOne : function(item, collection, options){
     if (!this._filter || this._filter(item)) {
-      this._displayCollection.add(item, options);
+      this._displayCollection.add(item);
     }
     // there's no way to effectively specify add:true for a Backbone Relational collection
     // we can simulate it by storing all of the contents the relational collection ever loaded,
     // and using this as a surrogate for the relational collection itself when re-filtering
     if (!this.options.collection && this.options.simulateAddTrue) {
-      this._simulatedMasterCollection.add(item, options);
+      this._simulatedMasterCollection.add(item);
     }
   },
 
@@ -172,9 +183,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var childView = this._constructListItemView(item);
 
     //special handling if the item was not added to the end of the collection
-    if (options && _(options).has('at') && options.at != this._listItemViews.length) {
-      this._listItemViews.splice(options.at, 0, childView);
-      this.insertChildAt(childView, options.at);
+    if (options && _(options).has('index') && options.index != this._listItemViews.length) {
+      this._listItemViews.splice(options.index, 0, childView);
+      this.insertChildAt(childView, options.index);
     } else {
       //store a reference to all list item child views so they can be removed/left without
       //removing any other child views
@@ -197,7 +208,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
   },
 
-  internalReset : function(){
+  internalReset : function(models){
     var self = this;
     //we have to completely repopulate the contents of the view, so remove
     //all the existing list items
@@ -206,7 +217,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     });
     this._listItemViews.length = 0;
     //refill the view with the new contents
-    this._displayCollection.each(function(item){
+    models.each(function(item){
       self.internalAddOne(item);
     });
   },
