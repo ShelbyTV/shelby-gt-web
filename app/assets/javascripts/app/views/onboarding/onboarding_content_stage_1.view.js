@@ -69,17 +69,6 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     });
   },
 
-  _onSaveSuccess : function(){
-    this.$('.js-onboarding-next-step').text('Get Started');
-    shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
-    shelby.router.navigate('onboarding/2', {trigger:true});
-  },
-
-  _onSaveError : function(model, even, response){
-    this.$('.js-onboarding-next-step').text('Get Started');
-    $('.js-onboarding-username-input-error').text('Sorry, that username is already taken').show();
-  },
-
   _getInvalidFields : function(){
     var invalidFields = [];
     if (!this.model.get('nickname') || !this.model.get('nickname').length){
@@ -122,8 +111,15 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
     shelby.models.user.save(this.model.toJSON(), {
-      success : self._onSaveSuccess,
-      error : self._onSaveError
+      success : function(){
+        shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
+        shelby.router.navigate('onboarding/2', {trigger:true});
+      },
+      error : function(model, resp){
+        self.$('.js-onboarding-next-step').text('Get Started');
+        var r = $.parseJSON(resp.responseText);
+        self._renderErrors(_.keys(r.errors.user));
+      }
     });
   }
 
