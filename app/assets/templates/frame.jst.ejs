@@ -150,14 +150,14 @@
             </a>
 
             <div class="xuser-data">
-              shared by <%= creatorNickname %>
+              shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
             </div>
           </a>
         <% } %>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
-  <% if (!contextOverlay && !_(dupeFrames).isEmpty()) { %>
+  <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
     <aside class="xframe-aside">
       <p class="xframe-aside-text">
         Also via:
