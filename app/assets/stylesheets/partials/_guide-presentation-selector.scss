@@ -109,7 +109,7 @@
   background: adjust-lightness(#ddd,-5%);
   margin-top: 5px;
   text-align: left;
-  width: 300px;
+  width: 330px;
 }
 
 .guide-settings-button {
@@ -159,12 +159,15 @@
 
 
 .settings-userhandle {
+  @include ellipsis;
+
   background: transparent;
   border: none;
   display: block;
   float: left;
   margin: 0;
   padding: 6px;
+  width: 60%;
 
   img {
     height: 33px;
