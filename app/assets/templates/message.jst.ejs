@@ -18,7 +18,7 @@
   }
 %>
 <blockquote class="media_module">
-  <a href="#" onclick="return false;" class="media_image js-user-personal-roll">
+  <a href="#" onclick="return false;" class="media_image js-user-personal-roll" data-ga_category="Message" data-ga_action="Click user roll link" data-ga_label='<%= user.get('nickname') %>' data-user-id="<%= messageJSON.user_id %>">
     <span class="image_module xuser-avatar" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>);" role="img">
       <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message) %>" class="visuallyhidden" title="<%= messageJSON.nickname %>" alt="<%= messageJSON.nickname %>">
     </span>
