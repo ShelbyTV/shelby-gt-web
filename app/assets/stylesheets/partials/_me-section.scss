@@ -1,14 +1,16 @@
 @import "base";
 
 .me-section{
-  .me-header{
-    @include ellipsis;
 
-    color: $me-header-color;
-		display: none;
-		font-size: 1.2em;
-		line-height: 1.5;
-    margin: 1em 1em 0;
-    padding: 0 .9em;
-  }
+}
+
+.me-header{
+  @include ellipsis;
+
+  color: $me-header-color;
+	display: none;
+	font-size: 1.2em;
+	line-height: 1.5;
+  margin: 1em 1em .5em;
+  padding: 0 .9em;
 }
