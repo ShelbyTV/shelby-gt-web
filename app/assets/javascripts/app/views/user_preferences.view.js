@@ -49,13 +49,19 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _submitContactInfo: function(e){
     var self = this;
+    var _username = this.$('#you-preferences-username').val();
+    // make sure they entered something for their username
+    if (!_username.length) {
+      self._updateResponse("enter a username.");
+      return;
+    }
     var _email = this.$('#you-preferences-email').val();
     // make sure this is a valid email address
     if (_email.search(shelby.config.user.email.validationRegex) == -1) {
       self._updateResponse("email invalid.");
       return;
     }
-    var _username = this.$('#you-preferences-username').val();
+
     var info = {primary_email: _email, nickname: _username};
     var $thisButton = $(e.currentTarget).addClass('js-busy');
     this.model.save(info, {
@@ -65,7 +71,14 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
       },
       error: function(model, resp){
         if (resp.status == 409) {
-          self._updateResponse("sorry, username taken.");
+          var r = $.parseJSON(resp.responseText);
+          if (_(r.errors.user).has('nickname')) {
+            self._updateResponse("sorry, username taken.");
+          } else if (_(r.errors.user).has('primary_email')) {
+            self._updateResponse("sorry, email taken.");
+          } else {
+            self._updateResponse("unexpected error. try again later.");
+          }
         } else {
           self._updateResponse("unexpected error. try again later.");
         }

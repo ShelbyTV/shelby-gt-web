@@ -85,17 +85,17 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     return invalidFields;
   },
 
-  _renderErrors : function(fields){
+  _renderErrors : function(fields, isBeforeSubmit){
     //hide any old error messages
     $('.js-onboarding-username-input-error').hide();
     $('.js-onboarding-email-input-error').hide();
     $('.js-onboarding-pwd-input-error').hide();
 
     if (_.include(fields, 'nickname')){
-      $('.js-onboarding-username-input-error').text('Please enter a nickname.').show();
+      $('.js-onboarding-username-input-error').text(isBeforeSubmit ? 'Please enter a nickname.' : 'Sorry, that username is already taken.').show();
     }
     if (_.include(fields, 'primary_email')){
-      $('.js-onboarding-email-input-error').text('Please enter a valid email.').show();
+      $('.js-onboarding-email-input-error').text(isBeforeSubmit ? 'Please enter a valid email.' : 'Sorry, that email is already taken.').show();
     }
     if (_.include(fields, 'password')){
       $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
@@ -104,7 +104,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _onNextStepClick : function(){
     var invalidFields = this._getInvalidFields();
-    this._renderErrors(invalidFields);
+    this._renderErrors(invalidFields, true);
     if (invalidFields.length){
       return;
     }
