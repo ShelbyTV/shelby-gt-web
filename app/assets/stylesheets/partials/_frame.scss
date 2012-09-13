@@ -120,11 +120,11 @@ $active-list-item: $shelby-blue;
 	background-image: url($icon-videocard-comment);
 	background-position: left center;
 	background-repeat: no-repeat;
-	background-size: 1.3em;
+	background-size: auto;
 	display: block;
 	float: right;
 	line-height: 1;
-	padding-left: 1.5em;
+	padding-left: 1.4em;
 	padding-bottom: 1px;
 	text-decoration: none;
 
@@ -250,7 +250,7 @@ $active-list-item: $shelby-blue;
 			.command-icon {
 					background-position: center right;
 					padding-left: 0;
-					padding-right: 1.5em;
+					padding-right: .95em;
 			}
 		}
 
@@ -260,7 +260,7 @@ $active-list-item: $shelby-blue;
 .command-icon {
 		background-position: center left;
 		background-repeat: no-repeat;
-		background-size: 1em;
+		background-size: auto;
 		font-style: normal;
 		padding-left: 1.3em;
 }
