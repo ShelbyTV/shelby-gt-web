@@ -1,13 +1,15 @@
 libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
 
   events : {
-    "click .js-follow-button.guide-overlay-context-button-highlighted" : "_followRoll",
-    "click .js-follow-button:not(.guide-overlay-context-button-highlighted)" : "_unFollowRoll",
+    "click .js-follow-button.guide-header-button-highlighted" : "_followRoll",
+    "click .js-follow-button:not(.guide-header-button-highlighted)" : "_unFollowRoll",
     "click .js-full-shelby-button" : "_goFullShelby",
   },
 
+  className : 'guide-header-lining clearfix',
+
   template : function(obj){
-    return JST['wide-thumbnail-overlay'](obj);
+    return JST['guide-header-lining'](obj);
   },
 
   initialize : function(){
@@ -52,7 +54,8 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
                            this.model.has('roll_type') &&
                            this.model.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_watch_later &&
                            !libs.shelbyGT.viewHelpers.roll.isFaux(this.model);
-    this.$('.guide-overlay-context-overview').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
+    this.$('#js-guide-title').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
+    // this.$('.guide-overlay-context-overview').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
@@ -84,7 +87,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   },
 
   _updateFullShelbyButton : function() {
-    this.$('.js-full-shelby-button').text(shelby.models.user.get('anon') ? 'Join Shelby' : 'Guide');
+    this.$('.js-full-shelby-button').text(shelby.models.user.get('anon') ? 'Shelby.tv' : 'Home');
   },
 
   _updateFollowButton : function() {
