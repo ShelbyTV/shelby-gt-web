@@ -23,6 +23,10 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     shelby.router.navigateToRoll(this.model, {trigger:true});
   },
 
+  unfollowRoll : function() {
+    console.log('unfollow roll!');
+  },
+
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
     var activeFrameModel = guideModel.get('activeFrameModel');

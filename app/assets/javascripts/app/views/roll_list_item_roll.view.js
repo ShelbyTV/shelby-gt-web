@@ -11,7 +11,8 @@ libs.shelbyGT.RollItemRollView = libs.shelbyGT.RollItemView.extend({
       {
         "click .js-roll-item-button"          : "goToRoll",
         "click .roll-item-stats"              : "goToRoll",
-        "click .roll-item-contents-thumbnail" : "goToRoll"
+        "click .roll-item-contents-thumbnail" : "goToRoll",
+        "click .js-roll-item-unfollow"        : "unfollowRoll"
       }
     );
   },
