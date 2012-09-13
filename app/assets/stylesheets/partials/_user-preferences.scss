@@ -135,7 +135,7 @@
 //		text-decoration:underline;
 //
 		&.connected-network {
-			@include button-primer($shelby-green);
+			@include button-primer($shelby-green,dark,wide);
 			float: right;
 		}
 	}
