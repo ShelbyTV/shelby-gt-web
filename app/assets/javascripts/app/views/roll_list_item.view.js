@@ -23,8 +23,8 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     shelby.router.navigateToRoll(this.model, {trigger:true});
   },
 
-  unfollowRoll : function() {
-    console.log('unfollow roll!');
+  unfollowRoll : function(data) {
+    console.log('unfollow roll!',data);
   },
 
   // override ActiveHighlightListItemView abstract method
@@ -47,5 +47,29 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   _renderTemplate : function(obj) {
     //subclasses must override this function to render a specific JST template for this view
     alert('Your RollItemView subclass must override _renderTemplate()');
-  }
+  }/*,
+
+  followOrUnfollowRoll : function() {
+    var self = this;
+    var currentRollModel = this.model.get('currentRollModel');
+    var $thisButton = this.$('.js-roll-item-unfollow');
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isUnfollow = $thisButton.toggleClass('re-follow').hasClass('re-follow');
+    var wasUnfollow = !isUnfollow;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').addClass('js-busy');
+
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      self.$('.js-roll-item-unfollow').removeClass('js-busy');
+    };
+    if (wasUnfollow) {
+      currentRollModel.leaveRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      currentRollModel.joinRoll(clearBusyFunction, clearBusyFunction);
+    }
+  }*/
+
 });

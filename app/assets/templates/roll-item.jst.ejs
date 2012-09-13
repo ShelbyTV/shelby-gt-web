@@ -1,6 +1,6 @@
 <% /* parent:"roll-item" */ %>
-
-<button class="list_button guide-link js-roll-item-button">
+<% console.log(roll); %>
+<button class="list_button guide-link js-roll-item-button" data-roll_id="<%= roll.id %>">
   <i class="guide-link-icon">
     <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(roll) %>
   </i>
