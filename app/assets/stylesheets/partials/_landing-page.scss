@@ -69,6 +69,10 @@ $landing-page-footer-font-color: #EFEFEF;
   
   margin-top: .5em;
 }
+
+.login-forgot-password {
+  padding-left: 2em;
+}
  
 
 /********************************************************
@@ -90,7 +94,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-shelf-header {
-  font-size: 2.5em;
+  font-size: 2.3em;
   font-weight: 300;
   margin-bottom: 1em;
 }
@@ -171,35 +175,13 @@ $landing-page-shelf-background: #ccc;
  * _genius_ios_ad - Primary Shelf
  ********************************************************/
 
-.no-youtube-dropdown a {
-  color: $text;
-}
-
-.no-youtube-dropdown-section {
-  top: -65px;
-}
-
-.no-youtube-dropdown-lining {
-  @include bottom-fin;
-
-  background: $nav-dropdown-bg;
-  box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
-  font-size: 15px;
-  margin-top: 2px;
-  padding: 10px;
-  text-align: left;
-  width: 120px;
-}
-
-.genius-typographical {
-  font-variant: small-caps;
-  font-size: 1.3em;
-  font-weight: 600;
-}
-
 .landing-shelf-genius .landing-shelf-lining {
   background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
-  padding: 55px 0 10px;
+  padding: 70px 0 30px;
+}
+
+.landing-shelf-genius .genius-logo {
+  margin-top: -6px;
 }
 
 .landing-appstore-header {
@@ -211,9 +193,9 @@ $landing-page-shelf-background: #ccc;
   border-radius: 5px;
   background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
   display: block;
-  height: 97px;
+  height: 67px;
   margin: 5px 0 45px;
-  width: 265px;
+  width: 215px;
   
   &:hover {
     box-shadow: 0 0 200px 4px white;
