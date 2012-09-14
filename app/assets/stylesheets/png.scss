@@ -136,7 +136,7 @@ $extension: ".png";
 
   //user-preferences
 
-  .you-preferences-networks-twitter{
+  .preferences-networks-twitter{
 
   	&:before{
   		@include background(
@@ -144,14 +144,14 @@ $extension: ".png";
   		);
   	}
   }
-  .you-preferences-networks-facebook{
+  .preferences-networks-facebook{
   	&:before{
   		@include background(
   			url($icon-social-facebook) no-repeat center center #013e80
   		);
   	}	
   }
-  .you-preferences-networks-tumblr{
+  .preferences-networks-tumblr{
   	&:before{
   		@include background(
   			url($icon-social-tumblr) no-repeat center center,
@@ -159,7 +159,7 @@ $extension: ".png";
   		);
   	}
   }
-  .you-preferences-notifications{
+  .preferences-notifications{
   	input + span{
   		&:after{
   			@include background(
