@@ -147,8 +147,9 @@
 
 .disable-video-quality .video-player-quality{
   @include background(
-		url($icon-player-hd-disabled) center center no-repeat transparent
+		url($icon-player-hd-off) center center no-repeat transparent
 	);
+  opacity: .7;
 }
 
 .video-player-nav-buttons-wrapper{	
