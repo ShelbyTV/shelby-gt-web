@@ -34,7 +34,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-      return JST['frame'](obj);
+      // show different frame if coming from fb-genius app
+      if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
+        return JST['fb-genius-frame'](obj);
+      }
+      else { 
+        return JST['frame'](obj);
+      }
     } catch(e){
       console.log(e.message, e.stack);
     }

@@ -117,9 +117,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var options = {updateRollTitle:false};
 
     if (frameId){
-      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
+      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
     } else {
-      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
+      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
     }
     
   },
@@ -438,10 +438,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      isIsolatedRoll : false
+      isIsolatedRoll : false,
+      isFBGeniusRoll : false
     }).value();
     
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
+    shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
