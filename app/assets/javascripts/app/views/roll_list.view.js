@@ -9,7 +9,7 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',
-    listItemView : 'RollItemRollView',
+    listItemView : 'RollItemView',
     listItemViewAdditionalParams : function() {
       return {activationStateModel:shelby.models.guide};
     },

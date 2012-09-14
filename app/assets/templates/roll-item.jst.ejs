@@ -1,34 +1,12 @@
 <% /* parent:"roll-item" */ %>
-<% 
-  var creator_nickname = roll.get('creator_nickname'),
-      roll_count       = roll.get('frame_count'),
-      roll_followers   = roll.get('following_user_count'),
-      roll_title       = roll.get('title'),
-      user             = shelby.models.user;
-
-  if( roll.get('first_frame_thumbnail_url') ){
-    var first_frame_thumbnail = roll.get('first_frame_thumbnail_url');
-  }
-  
-  var modifyRollClass = null;
-
-  switch (roll.id) {
-    case user.get('personal_roll_id') :
-      modifyRollClass = ' roll-personal';
-      break;
-
-    case user.get('watch_later_roll_id') :
-      modifyRollClass = ' roll-watch-later';
-      break;
-
-    case user.get('heart_roll_id') : 
-      modifyRollClass = ' roll-likes';
-      break;
-  }
-
-%>
-<button class="list_button guide-link js-roll-item-button">
+<button class="list_button guide-link js-roll-item-button" data-roll_id="<%= roll.id %>">
   <i class="guide-link-icon">
     <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(roll) %>
   </i>
 </button>
+
+<% if ( roll.get('creator_id') != shelby.models.user.id ) { %>
+  <button class="guide-link-unfollow js-roll-item-unfollow">
+    Unfollow
+  </button>
+<% } %>
