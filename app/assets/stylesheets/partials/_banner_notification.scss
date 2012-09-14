@@ -1,0 +1,30 @@
+$notification-base-color: #dfc700;
+
+.notification-banner-wrapper {
+  background-color: $notification-base-color;
+  display: none;
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+/*
+ * All Noticiation Banners
+ */
+.notification-banner-left {
+  float: left;
+  width: 62%;
+}
+
+.notification-banner-right {
+  float: left;
+  width: 38%;
+}
+
+/*
+ * Chrome Extension
+ */
+ 
+/*
+ * Bookmarklet
+ */

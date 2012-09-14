@@ -12,7 +12,8 @@
       'rollNav' : false,
       'rollListNav' : false,
       'streamNav' : false,*/
-      'onboarding' : false
+      'onboarding' : false,
+      'hasExtension' : false
     },
 
     //assuming that parameter stage is an integer
