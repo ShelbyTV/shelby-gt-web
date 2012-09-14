@@ -1,12 +1,11 @@
 <% /* parent:"roll-item" */ %>
-<% console.log(roll); %>
 <button class="list_button guide-link js-roll-item-button" data-roll_id="<%= roll.id %>">
   <i class="guide-link-icon">
     <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(roll) %>
   </i>
 </button>
 
-<% if ( roll.id != shelby.models.user.get('personal_roll_id') ) { %>
+<% if ( roll.get('creator_id') != shelby.models.user.id ) { %>
   <button class="guide-link-unfollow js-roll-item-unfollow">
     Unfollow
   </button>

@@ -27,7 +27,11 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
   },
 
   unfollowRoll : function(data) {
-    console.log('unfollow roll!',data);
+    // immediately remove the roll following locally - if the ajax fails, we'll update the next time we render
+    this.model.collection.remove(this.model);
+    // now that we've shown the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    this.model.leaveRoll();
   },
 
   // override ActiveHighlightListItemView abstract method
