@@ -36,55 +36,6 @@
 
   <div class="xframe-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="xframe-body">
-      <div class="menu_module xframe-menu">
-        <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
-          <li class="menu_item" role="menuitem">
-            <button class="xframe-command command-queue
-                           <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
-                           <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
-              <i class="command-icon">
-                <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
-                %>
-              </i>
-            </button>
-          </li>
-          <li class="menu_item" role="menuitem">
-            <button class="xframe-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="command-icon">
-                Roll…
-              </i>
-            </button>
-          </li>
-          <li class="menu_item right command-sublist" aria-haspopup="true">
-            <button class="menu_sublist_anchor xframe-command command-more">
-              <i class="command-icon">
-                More
-              </i>
-            </button>
-            <ul class="menu_sublist xframe-sublist" role="menu">
-              <li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-share js-share-frame">
-                  Share Video...
-                </button>
-              </li>
-							<li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-link js-copy-link">
-                  Get Shortlink
-                </button>
-								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
-              </li>
-              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
-                <li class="menu_option xframe-item" role="menuitem">
-                  <button class="xframe-option command-remove js-remove-frame">
-                    Remove Video
-                  </button>
-                </li>
-              <% } %>
-            </ul>
-          </li>
-        </ul>
-      </div><!-- eo .xframe-menu -->
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
         <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
@@ -95,58 +46,8 @@
     </div><!-- eo .xframe-body -->
 
     <footer class="media_module xframe-footer clearfix">
-      <% if (!frameViewed) { %>
-         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-           <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-         </span>
-      <% } %>
-
       <div class="media_body">
-        <% if (!frameViewed) { %>
-          <span class="xuser-data-timestamp">
-             <%= frame.get('created_at') %>
-          </span>
-
-          <p class="xuser-data">
-            <% if (clickableCreator) { %>
-              shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
-            <% } else { %>
-              shared by <%= creatorNickname %>
-            <% } %>
-          </p>
-
-          <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-            <p class="xuser-message">
-              <% var comment = messages.models[0].escape('text') %>
-              <% if (comment.length > 256) { %>              
-                <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
-                <a class="js-toggle-comment" href="#">more…</a>
-              <% } else { %>
-                <%= comment %>
-              <% } %>
-            </p>
-          <% } %>
-
-          <div class="xframe-subline">
-            <a href="#" onclick="return false;" class="xframe-link xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-              <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-            </a>
-          </div>
-        <% } else { %>
-          <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-            <h1 class="xframe-title" title="<%= videoTitle %>">
-             <%= videoTitle %>
-            </h1>
-
-            <a class="xframe-is-collapsed">
-              Open
-            </a>
-
-            <div class="xuser-data">
-              shared by <%= creatorNickname %>
-            </div>
-          </a>
-        <% } %>
+				share - send
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
