@@ -513,9 +513,11 @@ window.shelbyBookmarklet = {
                           utilObject.htmlTemplate.rollingFormHtml(user.personalRoll, backboneFrame);
                           utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"), frameClass, videoId);
                           shelbyJ(".cancel").on("click", function(event) {
+                              shelbyJ(".ext-elements #js-notifications").remove();
                               utilObject.styleGuideHide("roll-guide");
                           });
                           shelbyJ(".back").on("click", function(event) {
+                              shelbyJ(".ext-elements #js-notifications").remove();
                               utilObject.styleGuideHide("roll-guide");
                           });
                     });
@@ -719,6 +721,7 @@ window.shelbyBookmarklet = {
                   var frame_id = response.result.id;
                   utilObject.shelbyAjaxCall.shelbyApiShare(frame_id, message, shareDests);
                   
+                  shelbyJ(".ext-elements #js-notifications").remove();
                   utilObject.styleGuideHide("roll-guide");
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;
@@ -831,9 +834,10 @@ window.shelbyBookmarklet = {
                                   "number_of_buttons": 'one',
                                   "button_one": buttonOne,
                                   "button_two": buttonTwo};
+                    shelbyJ(".ext-elements #js-notifications").remove();
                     utilObject.shelbyDocElements['ext-elements'].append(JST['notification-overlay']({model: utilObject.shelbyCreateModel(model)}));
-                    shelbyJ(".ext-elements").on("click", "#js-notification-confirm", function() {
-                        shelbyJ(".ext-elements .notifications-lining").remove();
+                    utilObject.shelbyDocElements['ext-elements'].on("click", "#js-notification-confirm", function() {
+                        shelbyJ(".ext-elements #js-notifications").remove();
                     });
 
 
