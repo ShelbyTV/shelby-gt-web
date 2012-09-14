@@ -50,7 +50,7 @@ $(function(){
       
 			// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
 			$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
-				window.location.href = '<%= Settings::Application.url %>' + "/facebook-genius/roll/" + data.result.id;
+				window.location.href = '<%= Settings::Application.url %>' + "/fb_genius/roll/" + data.result.id;
 			});
     };
 

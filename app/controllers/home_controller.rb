@@ -11,8 +11,8 @@ class HomeController < ApplicationController
   def index
     
     #XXX FB GENIOUS ROLL
-    if @genius_roll_id = get_genius_roll_id_from_request(request)
-      render '/home/facebook_genius/app'
+    if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
+      render '/home/app' and return
     end
     
     #XXX ISOLATED_ROLL
@@ -92,8 +92,8 @@ class HomeController < ApplicationController
       end
     end
     
-    def get_genius_roll_id_from_request(request)
-      
+    def get_genius_roll_id_from_path(path)
+      return @roll_id[1] if @roll_id = /fb_genius\/roll\/(\w*)/i.match(path)
     end
     
 end
