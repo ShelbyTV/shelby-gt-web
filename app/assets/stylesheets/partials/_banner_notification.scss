@@ -48,6 +48,19 @@ $notification-base-color: #fff82b;
 /*
  * Chrome Extension
  */
+
+.get-extension-wrapper {
+  text-align: center;
+} 
+
+.get-extension {
+  @include button-primer();
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 100;
+  margin-top: 3px;
+  text-decoration: none;
+}
  
 /*
  * Bookmarklet
@@ -59,6 +72,8 @@ $notification-base-color: #fff82b;
   a {
     @include button-primer();
     display: inline-block;
+    font-size: 1.2em;
+    font-weight: 100;
     margin-bottom: 5px;
     text-decoration: none;
   }
@@ -73,5 +88,11 @@ $notification-base-color: #fff82b;
   
   li > ul {
     margin: 0;
+  }
+  
+  .faux-bookmarklet-button {
+    @include roundies();
+    border: 1px solid #ccc;
+    padding: 0 3px;
   }
 }
