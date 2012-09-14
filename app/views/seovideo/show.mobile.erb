@@ -20,8 +20,11 @@
     </div>
 
     <div class="seovideo-embed-mobile">
-      <iframe class="youtube-player" type="text/html" width="310" height="180" src="http://www.youtube.com/embed/<%= @provider_id %>" frameborder="0">
-      </iframe>
+      <% if @provider_name == "youtube" %>
+        <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
+      <% else %>
+        <%= raw @video_embed %>
+      <% end %>
     </div>
     <div class="seovideo-details-mobile">
       <p>Title: <%= @video_title %></p>
@@ -36,7 +39,7 @@
         </div>
         <% @video_related_response_body_results.each do |video_related| %>
           <div class="seovideo-relatedvideo-mobile">
-            <a href="http://shelby.tv/video/youtube/<%= video_related["provider_id"] %>"><img width=94 height=60 src=<%= video_related["thumbnail_url"] %> ></a>
+            <a href="http://shelby.tv/video/<%= video_related['provider_name'] %>/<%= video_related['provider_id'] %>/<%= hyphenateString(video_related['title']) %>"><img width=94 height=60 src=<%= video_related["thumbnail_url"] %> >
           </div>
         <% end %>
         <span style="width: 100%; display: inline-block; font-size: 0; line-height: 0"></span>
