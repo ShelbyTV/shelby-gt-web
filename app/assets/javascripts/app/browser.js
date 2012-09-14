@@ -207,3 +207,5 @@ var BrowserDetect = {
 		}
 	]
 };
+
+BrowserDetect.init();

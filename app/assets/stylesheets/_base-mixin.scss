@@ -44,9 +44,9 @@ $roundies-type : normal !default;
 $bottom-color: #4e5354 !default;
 $bottom-color-adjust: 20% !default;
 
-@mixin gradient-primer($x-primer-color){
+@mixin gradient-primer($x-primer-color,$x-lightness-adjust-pct:5%){
 	background-color: $x-primer-color;
-	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
+	@include background(linear-gradient(top, adjust-lightness($x-primer-color,$x-lightness-adjust-pct), $x-primer-color));
 }
 
 $network-image : $icon-share-twitter-on !default;
