@@ -1,105 +1,70 @@
 @import "base";
 
-.video-player-tools-wrapper{
-	bottom:0;
-	height:65px;
-	left:0;
-	opacity: 1;
-	position:absolute;
-	width:100%;
-	z-index: 2;
+//------------------------------------------------------------------------------
+//  user-inactive controls show/hide triggers for various
+//  elements in the videoplayer and videoplayer navigational buttons
+//------------------------------------------------------------------------------
+.user-inactive {
+  .video-player-tools-wrapper {
+    opacity: 0;
+  }
+
+  .video-player-nav-buttons-wrapper {
+    .video-player-prev,
+    .video-player-next {
+      opacity: 0.0;
+    }
+  }
 }
 
-.user-inactive .video-player-tools-wrapper{
-  opacity: 0;
+//------------------------------------------------------------------------------
+//  VIDEO PLAYER setup,
+//  video-player-tools-wrapper is purely for positioning.
+//------------------------------------------------------------------------------
+.video-player-tools-wrapper {
+  bottom:0;
+  height:65px;
+  left:0;
+  opacity: 1;
+  position:absolute;
+  width:100%;
+  z-index: 2;
 }
 
-.video-player-tools{
+////////////////////////////////////////////////////////////////////////////
+//  actual video player controller
+////////////////////////////////////////////////////////////////////////////
+.video-player-tools {
 	background-color: $video-player;
 	@include background( linear-gradient(top, adjust-lightness($video-player, 5%), $video-player) );
-	@include roundies;
+  @include roundies;
 
-	border:1px solid #202020;
-	height:45px;
-	margin:$defaultMargin;
-}
-
-.video-player-tools-lining{
-	@include roundies;
- 	margin:0;
-	padding:0;
+  border:1px solid #202020;
+  height:45px;
+  margin:$defaultMargin;
+  padding: 0;
   position: relative;
-	width:100%;
 }
 
-.video-player-play{
-	border:none;
+//------------------------------------------------------------------------------
+//  video player buttons
+//------------------------------------------------------------------------------
+.video-player-play {
+  background-color: transparent;
+	background-image: url($icon-player-play);
+  background-position: center center;
+  background-repeat: no-repeat;
+  border:none;
 	height:43px;
 	float:left;
 	width:47px;
 
-	@include background(
-		url($icon-player-play) center center no-repeat transparent
-	);
-
-	&.pause{
-		@include background(
-			url($icon-player-pause) center center no-repeat transparent
-		);		
-	}
+	&.pause {
+		background-image:	url($icon-player-pause);
+  }
 }
 
-
-.video-player-progress{
-  background:black;
-	border-radius: $radius*2;
-	height:8px;
-	left:60px;
-	right:250px;
-	margin:18px 8px 0;
-	position:absolute;
-}
-
-.video-player-progress-load,
-.video-player-progress-elapsed{
-
-  background: $video-controls-progress-load;
-  @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
-
-	border-radius: $radius*2;
-	height:8px;
-	width:0;
-}
-
-.video-player-progress-elapsed{
-	@include background($shelby-blue);
-
-	margin-top:-8px;
-}
-
-.video-player-scrubber{
-  background:#efefef;
-  border-radius: 50%;
-  box-shadow: 1px 0px 2px 1px black;
-	cursor:pointer;
-	cursor:ew-resize;
-	height:15px;
-	left:0;
-	margin:-11px;
-	position:absolute;
-	width:15px;
-}
-
-.video-player-timeline{
-	color:#b2b2b2;
-	float:right;
-	font-size:13px;
-	font-weight:300;
-	line-height:3.25;
-	margin:0 15px;
-}
-
-.video-player-volume{
+.video-player-volume {
 	@extend .video-player-play;
 	@include background(
 		url($icon-player-sound-on) center center no-repeat transparent
@@ -107,14 +72,14 @@
 
 	float:right;
 
-	&.mute{
+	&.mute {
 		@include background(
 			url($icon-player-sound-off) center center no-repeat transparent
 		);
 	}
 }
 
-.video-player-fullscreen{
+.video-player-fullscreen {
 	@extend .video-player-play;
 	@include background(
 		url($icon-player-fullscreen-enable) center center no-repeat transparent
@@ -130,7 +95,7 @@
 
 }
 
-.video-player-quality{
+.video-player-quality {
 	@extend .video-player-play;
 	@include background(
 		url($icon-player-hd-off) center center no-repeat transparent
@@ -138,45 +103,103 @@
 
 	float:right;
 
-	&.hd-on{
+	&.hd-on {
 		@include background(
 			url($icon-player-hd-on) center center no-repeat transparent
 		);
 	}
 }
 
-.disable-video-quality .video-player-quality{
+.disable-video-quality .video-player-quality {
   @include background(
 		url($icon-player-hd-off) center center no-repeat transparent
 	);
   opacity: .7;
 }
 
-.video-player-nav-buttons-wrapper{	
-  .video-player-prev{
-    @include background(
-  		url('../images/assets/arrow_left.svg') center center no-repeat #444
-  	);
+////////////////////////////////////////////////////////////////////////////
+//  video player progress bar components
+////////////////////////////////////////////////////////////////////////////
+.video-player-progress {
+  background:black;
+  border-radius: $radius*2;
+  height:8px;
+  left:60px;
+  right:250px;
+  margin:18px 8px 0;
+  position:absolute;
+}
 
-  	left: $defaultMargin;
-  	opacity: 1.0;
-  }
+.video-player-progress-load,
+.video-player-progress-elapsed {
 
-  .video-player-next{
-    @include background(
-  		url('../images/assets/arrow_right.svg') center center no-repeat #444
-  	);
-  	
+  background: $video-controls-progress-load;
+  @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
+
+  border-radius: $radius*2;
+  height:8px;
+  width:0;
+}
+
+.video-player-progress-elapsed {
+  @include background($shelby-blue);
+
+  margin-top:-8px;
+}
+
+.video-player-scrubber {
+  background:#efefef;
+  border-radius: 50%;
+  box-shadow: 1px 0px 2px 1px black;
+  cursor:pointer;
+  cursor:ew-resize;
+  height:15px;
+  left:0;
+  margin:-11px;
+  position:absolute;
+  width:15px;
+}
+
+.video-player-timeline {
+  color:#b2b2b2;
+  float:right;
+  font-size:13px;
+  font-weight:300;
+  line-height:3.25;
+  margin:0 15px;
+}
+
+//------------------------------------------------------------------------------
+//  video player navigational buttons,
+//  prev/next
+//------------------------------------------------------------------------------
+.videoplayer_animate {
   	@include transition-property('opacity, margin-right');
   	@include transition-duration('.25s, .5s');
   	@include transition-timing-function('ease-out, ease-in-out');
   	@include transition-delay('0s, 0s');
-  	
+}
+
+.video-player-nav-buttons-wrapper {
+  .video-player-prev {
+    @include background(
+      url('../images/assets/arrow_left.svg') center center no-repeat #444
+    );
+
+    left: $defaultMargin;
+    opacity: 1.0;
+  }
+
+  .video-player-next {
+    @include background(
+      url('../images/assets/arrow_right.svg') center center no-repeat #444
+    );
+
   	margin-right: 0px;
   	right: $defaultMargin*2;
   }
   
-  .video-player-prev, .video-player-next {	
+  .video-player-prev, .video-player-next {
 	  @include opacity(0.5);
 	
   	border-radius: $radius;
@@ -189,11 +212,5 @@
   	&:hover {
   	  @include opacity(1.0);
   	}
-  }
-}
-
-.user-inactive .video-player-nav-buttons-wrapper {
-  .video-player-prev, .video-player-next {
-    opacity: 0.0;
   }
 }
