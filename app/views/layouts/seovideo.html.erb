@@ -4,7 +4,7 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <meta name="description" content="<%= Settings::Application.meta_description %>">
+  <meta name="description" content="<%= @meta_description %>">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>shelby.tv | <%= @video_title %></title>

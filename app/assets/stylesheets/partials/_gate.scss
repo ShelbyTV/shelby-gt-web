@@ -1,8 +1,7 @@
 @import "base";
-
-
-
-
+//------------------------------------------------------------------------------
+//  weirdness that needs abstracting/cleaning up:
+//------------------------------------------------------------------------------
 .logged-out-twitter,
 .email-gate-networks-twitter {
 	
@@ -25,11 +24,9 @@
 	}
 }
 
-
-
-
-
-
+//------------------------------------------------------------------------------
+//  GATE setup
+//------------------------------------------------------------------------------
 html {
 	overflow-y:auto !important;
 	overflow-y:hidden !important;
@@ -143,6 +140,7 @@ html {
 }
 
 .gate-form-forgot-password {
+	color: #999;
   display: inline;
   line-height: 5;
   padding-left: 1em;
