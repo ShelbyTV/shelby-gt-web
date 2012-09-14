@@ -4,14 +4,17 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     activationStateProperty : 'activeFrameModel'
   }),
 
-  events : function() {
-    return this._setupEvents();
+  events : {
+    "click .js-roll-item-button"          : "goToRoll",
+    "click .roll-item-stats"              : "goToRoll",
+    "click .roll-item-contents-thumbnail" : "goToRoll",
+    "click .js-roll-item-unfollow"        : "unfollowRoll"
   },
 
   className : 'list_item guide-item clearfix',
 
   template : function(obj){
-    return this._renderTemplate(obj);
+    return JST['roll-item'](obj);
   },
 
   render : function(){
@@ -21,6 +24,14 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   goToRoll : function(){
     shelby.router.navigateToRoll(this.model, {trigger:true});
+  },
+
+  unfollowRoll : function(data) {
+    // immediately remove the roll following locally - if the ajax fails, we'll update the next time we render
+    this.model.collection.remove(this.model);
+    // now that we've shown the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    this.model.leaveRoll();
   },
 
   // override ActiveHighlightListItemView abstract method
@@ -33,15 +44,6 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
       }
     }
     return false;
-  },
-
-  _setupEvents : function() {
-    //subclasses must override this function to return an events object for this view
-    alert('Your RollItemView subclass must override _setupEvents()');
-  },
-
-  _renderTemplate : function(obj) {
-    //subclasses must override this function to render a specific JST template for this view
-    alert('Your RollItemView subclass must override _renderTemplate()');
   }
+
 });
