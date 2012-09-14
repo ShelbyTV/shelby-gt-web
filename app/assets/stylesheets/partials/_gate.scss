@@ -135,10 +135,17 @@ html {
 .gate-form-login-submit{
   @include button-primer($shelby-green, dark);
 
-	display: block;
+	display: inline;
+	float: left;
 	margin-top: 1em;
 	padding-left: 2em;
 	padding-right: 2em;
+}
+
+.gate-form-forgot-password {
+  display: inline;
+  line-height: 5;
+  padding-left: 1em;
 }
 
 //-------------------- eo form ---------------------//
