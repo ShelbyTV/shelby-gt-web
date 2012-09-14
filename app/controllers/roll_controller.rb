@@ -33,4 +33,8 @@ class RollController < ApplicationController
     render '/home/app'
   end
   
+  def show_fb_genius_roll
+    render '/home/app'
+  end
+  
 end

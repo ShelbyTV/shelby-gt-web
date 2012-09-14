@@ -1,0 +1,21 @@
+<section class="landing-shelf landing-shelf-private">
+	<div class="landing-shelf-lining">
+		<h1 class="landing-shelf-header">Shelby.tv</h1>
+	
+		<h2 class="landing-shelf-subheader">
+			Find the unexpected. Search ShelbyGENIUS.
+		</h2>
+	
+		<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
+			<input name="search" type="text" id="js-email-input" class="landing-form-input" /><!--
+
+		  --><input type="submit" value="SEARCH" id="js-genius-search-submit" class="landing-form-submit" />
+			<div id="genius-search-spinner" class="genius-search-spinner">
+		</form>
+		
+	</div>
+	
+	</div>
+</section>
+
+<%= javascript_tag render :partial => "/home/shelf/genius/genius_search", :formats => [:js] %>

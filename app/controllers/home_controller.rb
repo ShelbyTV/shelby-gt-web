@@ -10,6 +10,11 @@ class HomeController < ApplicationController
   #
   def index
     
+    #XXX FB GENIOUS ROLL
+    if @genius_roll_id = get_genius_roll_id_from_request(request)
+      render '/home/facebook_genius/app'
+    end
+    
     #XXX ISOLATED_ROLL
     # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
     # controller, but until that's built, we just short-circuit right here
@@ -49,6 +54,10 @@ class HomeController < ApplicationController
     render 'get_bookmarklet', :layout => 'blank'
   end
   
+  def facebook_genius_index
+    render '/home/facebook_genius/index'
+  end
+
   private
 
     
@@ -82,5 +91,9 @@ class HomeController < ApplicationController
             end
       end
     end
-
+    
+    def get_genius_roll_id_from_request(request)
+      
+    end
+    
 end

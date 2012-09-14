@@ -1,6 +1,7 @@
 ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
+  get '/fb_genius' => 'home#facebook_genius_index'
 
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search
@@ -23,12 +24,13 @@ ShelbyGtWeb::Application.routes.draw do
   # FRAMES
   get '/frame/:frame_id' => 'frame#just_frame'
   get '/roll/:roll_id/frame/:frame_id' => 'frame#show'
+  get '/facebook-genius/frame/:frame_id' => 'frame#show_fb_genius_frame'
   
   # ROLLS
   get '/roll/:roll_id' => 'roll#show'
   get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
   get '/isolated_roll/:roll_id' => 'roll#show_isolated_roll'
-
+  get '/facebook-genius/roll/:roll_id' => 'roll#show_fb_genius_roll'
 
   get '/signout' => "home#signout", :as => :signout
   
