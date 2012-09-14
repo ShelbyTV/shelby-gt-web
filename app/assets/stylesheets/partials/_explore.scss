@@ -201,6 +201,8 @@
 }
 
 .guide-item {
+  position: relative;
+
   &:first-child {
     .guide-link {
       @include roundies(header);
@@ -213,10 +215,21 @@
       border-bottom: 1px solid $list-item-border;
     }
   }
+
+  &:only-child {
+    .guide-link {
+      @include roundies;
+    }
+  }
+
+  &:hover {
+    .guide-link-unfollow {
+      display: block;
+    }
+  }
 }
 
 .guide-link {
-
   border-bottom: none;
   border-left: 1px solid $list-item-border;
   border-right: 1px solid $list-item-border;
@@ -235,7 +248,7 @@
 
     background-image: url($icon-chevron-right);
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: 100% 60%;
     display: block;
     font-style: normal;
     padding-right: 1em;
@@ -243,5 +256,19 @@
 
   & > span {
     opacity: .5;
+  }
+}//eo guide-link
+
+.guide-link-unfollow {
+  @include button-primer($shelby-gray, dark);
+
+  display: none;
+  margin: .8em 3em;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.re-follow {
+    @include button-primer($shelby-blue, dark);
   }
 }

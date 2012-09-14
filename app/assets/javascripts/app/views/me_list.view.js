@@ -26,7 +26,6 @@ libs.shelbyGT.MeListView = Support.CompositeView.extend({
       binarySearchOffset : shelby.config.db.rollFollowings.numSpecialRolls,
       model : this.model,
       doStaticRender : true,
-      listItemView : 'RollItemRollView',
       rollListFilterType : libs.shelbyGT.RollListFilterType.me
     }), '.js-me-rolls-list');
     this.appendChildInto(new libs.shelbyGT.RollListView({
@@ -35,7 +34,6 @@ libs.shelbyGT.MeListView = Support.CompositeView.extend({
       },
       model : this.model,
       doStaticRender : true,
-      listItemView : 'RollItemRollView',
       rollListFilterType : libs.shelbyGT.RollListFilterType.following
     }), '.js-following-rolls-list');
   },
