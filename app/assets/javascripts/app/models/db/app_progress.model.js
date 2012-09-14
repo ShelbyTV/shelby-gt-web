@@ -13,7 +13,8 @@
       'rollListNav' : false,
       'streamNav' : false,*/
       'onboarding' : false,
-      'hasExtension' : false
+      //has this user seen and dismissed the extension/bookmarket notification?
+      'extension' : false
     },
 
     //assuming that parameter stage is an integer
@@ -24,6 +25,10 @@
         this.set(attribute, stage);
         this.saveMe();
       }
+    },
+    
+    hasCompletedOnboarding : function(){
+      return this.get('onboarding') == 4;
     },
 
     saveMe : function(){

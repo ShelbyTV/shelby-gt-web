@@ -53,6 +53,11 @@ a{
 //---------------------------
 
 .shelby-wrapper{
+  @include transition-property('top');
+	@include transition-duration(.25s);
+	@include transition-timing-function(ease-out);
+	@include transition-delay(0s);
+
 	bottom:0;
 	left:0;
 	position:absolute;

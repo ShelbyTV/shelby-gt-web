@@ -9,15 +9,15 @@
  
 libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
   
-  _appProgressKey: "hasExtension",
+  _appProgressKey: "extension",
   
   events : {
-    "click #js-dismiss-extension-banner" : "_dismissExtensionBanner"
+    "click .js-dismiss-extension-banner" : "_dismissExtensionBanner"
   },
   
   el : '#js-notification-banner-wrapper',
   
-  _height: "50px",
+  _height: "70px",
   
   _chromeExtensionTemplate : function(obj){
     return JST['notification-banners/chrome-extension'](obj);
@@ -28,8 +28,10 @@ libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
   },
   
   initialize : function(){
-    if( !shelby.models.user.get('app_progress').get(this._appProgressKey) ){
-      this.render();
+    if( shelby.models.user.get('app_progress').hasCompletedOnboarding() &&
+        !shelby.models.user.get('app_progress').get(this._appProgressKey) ){
+      var self = this;
+      setTimeout(function(){ self.render(); }, 5000);
     }
   },
   
@@ -48,7 +50,7 @@ libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
     this.$el.show();
   },
   
-  unRender : function(){
+  _unRender : function(){
     $("#js-shelby-wrapper").css({top: this._originalWrapperTop});
     this._leaveChildren();
     this.$el.hide();
