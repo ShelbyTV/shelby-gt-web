@@ -40,7 +40,8 @@ window.shelbyBookmarklet = {
         "provider": "vimeo",
         "domain": "vimeo.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
-        "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)"]
+        "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
+        "elements": "div.player.f:not(:has(video))"
     }, {
         "provider": "youtube",
         "domain": "youtube.com",
@@ -156,6 +157,21 @@ window.shelbyBookmarklet = {
                     }
                     
                 }
+                for (var i=0; i < shelbyBookmarklet.shelbyProviders.length; i++) {
+                    if (shelbyBookmarklet.shelbyProviders[i].elements) {
+                        var domain_split = shelbyBookmarklet.shelbyProviders[i].domain.split(',');
+                        for (var j = 0; j < domain_split.length; j++) {
+                            if (window.location.hostname == domain_split[j]) {
+                                var domainSpecificPossibleVideos = shelbyJ(shelbyBookmarklet.shelbyProviders[i].elements);
+                                for (var k = 0; k < domainSpecificPossibleVideos.length; k++) {
+                                    found_elements.push(domainSpecificPossibleVideos[k]);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 for (var i = 0; i < found_elements.length; i++) {
                     if (this.getElementValue(found_elements[i], 'data-youtube-id')) {
                         var obj = shelbyJ(found_elements[i]);
