@@ -20,5 +20,6 @@
   }
   
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
-  #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 100%!important; }
+  #ooyala-player-holder div,
+  #ooyala-player-holder object { width: 100%!important; height: 100%!important; }
 }

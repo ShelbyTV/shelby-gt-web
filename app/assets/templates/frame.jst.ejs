@@ -95,9 +95,17 @@
 
     <footer class="media_module xframe-footer clearfix">
       <% if (!frameViewed) { %>
-         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-           <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-         </span>
+         <% if (clickableCreator) { %>
+           <a href="#" onclick="return false;" class="js-creator-personal-roll">
+             <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+               <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+             </span>
+           </a>
+         <% } else { %>
+           <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+           </span>
+         <% } %>
       <% } %>
 
       <div class="media_body">
@@ -142,14 +150,14 @@
             </a>
 
             <div class="xuser-data">
-              shared by <%= creatorNickname %>
+              shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
             </div>
           </a>
         <% } %>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
-  <% if (!contextOverlay && !_(dupeFrames).isEmpty()) { %>
+  <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
     <aside class="xframe-aside">
       <p class="xframe-aside-text">
         Also via:

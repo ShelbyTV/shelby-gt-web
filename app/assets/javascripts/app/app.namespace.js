@@ -48,7 +48,7 @@ _(shelby).extend({
     shelby.models.notificationState.set({ 'class': 'info',
 																					'message': message,
                                           'visible': true,
-                                          'button_one' : {visible: true, text: "ok", color: 'grey'},
+                                          'button_one' : {visible: true, text: "Ok", color: 'grey'},
                                           'number_of_buttons': 'one'});
 		//ghetto auto-hide
 		setTimeout(function(){

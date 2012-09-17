@@ -29,20 +29,17 @@
 	width: 332px;
 	z-index: 5;
 
-	&.default {
-		//see below
-	}
-
-	&.info {
-		//see below
-	}
-
 	.message {
 		font-size: 1.4em;
 		font-weight: 300;
 		line-height:1.5;
 	}
 
+	.message-link {
+		font-size:.8em;
+		font-weight:bold;
+		line-height: 2;
+	}
 }//eo notifications
 
 .button-wrapper {
@@ -67,7 +64,7 @@
 	button.disabled { display: none; }
 	button.red      { @include button-primer($shelby-red,dark); }
 	button.blue     { @include button-primer($shelby-blue,dark); }
-	button.grey     { @include button-primer($shelby-gray,dark); }
+	button.grey     { @include button-primer; }
 }//eo button-wrapper
 
 
@@ -93,13 +90,20 @@
 	top: 20px;
 
 	.message {
-		float: left;
-		margin: 1.2em 1em 0;
+		@include ellipsis;
+
+		margin: 1.2em 5em 1.2em 1em;
+	}
+
+	.message-link {
+		float: right;
 	}
 
 	.button-wrapper {
 		margin: 1em 0;
-		overflow: hidden;
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 
 	button.notification-confirm {

@@ -20,7 +20,6 @@
 //= require ../../templates/notification-overlay.jst.ejs
 //= require ../../templates/rolling-form.jst.ejs
 //= require ../../templates/thumbnail-module.jst.ejs
-//= require ../../templates/wide-thumbnail-overlay.jst.ejs
 
 
 //View Helpers

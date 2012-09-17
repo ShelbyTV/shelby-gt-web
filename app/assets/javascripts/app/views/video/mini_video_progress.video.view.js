@@ -42,6 +42,9 @@ libs.shelbyGT.MiniVideoProgress = Support.CompositeView.extend({
 	
 	_onCurrentTimeChange: function(attr, curTime){
 		var pct = (curTime / this._currentDuration) * 100;
+		//prevent pct from getting wonky on strange input
+		pct = Math.max(Math.min(pct, 100), 0);
+		
 		if( this._shouldUpdateScrubHandle ){
       this.$('.video-player-scrubber').css('left',pct+"%");
     }

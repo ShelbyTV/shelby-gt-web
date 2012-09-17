@@ -75,22 +75,20 @@
   }
 }
 
-.guide-overlay-context {
+.guide-header-lining,
+.xguide-overlay-context {
   background-color: adjust-lightness($guide-bg-color, -5%);
-  background-position: center 43%;
-  background-repeat: no-repeat;
-  background-size: cover;
   border-bottom: 1px solid $inset;
   border-top: 1px solid $outset;
   box-shadow: $videocard-shadow;
-  height: 100px;
-  overflow: hidden;
+//  height: 100px;
+//  overflow: hidden;
   position: relative;
 
-  &.guide-overlay-missing-thumbnail {
-    background-image: url($icon-missing-thumbnail);
-    background-size: 20%;
-  }
+//  &.guide-overlay-missing-thumbnail {
+//    background-image: url($icon-missing-thumbnail);
+//    background-size: 20%;
+//  }
 }
 
 .guide-overlay-context-overview {
@@ -98,65 +96,40 @@
   padding-bottom: 10px;
   position: absolute;  
   width: 100%;
-// 
-//  &:after {
-//    box-shadow: 0 0 86px 59px black;
-//    content: "\0020";
-//    height: 1px;
-//    margin-top: 10px;
-//    position: absolute;
-//    width: 100%;
-//  }
 }
 
-.guide-overlay-context-creator,
-.guide-overlay-context-title {
+.guide-header-title {
   @include ellipsis();
 
 //  color: #ccc;
   font-weight: 500;
+  line-height: 2.6;
   padding: 0 10px;
   position: relative;
   width: inherit;
   z-index: 1;
 }
 
-.guide-overlay-context-follow-button,
-.guide-overlay-context-full-shelby-button {
-  @include button-primer($shelby-gray, dark);
+.guide-header-button {
+  @include button-primer($shelby-gray, dark,frame-command);
   
   float: right;
-  margin-right: 10px;
-  margin-top: 10px;
-  position: relative;
-  z-index: 1;
+  margin: 10px;
 }
 
-.guide-overlay-context-button-highlighted {
-  @include button-primer($shelby-blue, dark);
+.guide-follow-button {
+  margin-right: 0;
+}
+
+.guide-header-button-highlighted {
+  @include button-primer($shelby-blue, dark,frame-command);
 }
 
 .guide-overlay-context-creator {
-  //shares styles with .guide-overlay-context-title above
   font-size: 12px;
   margin-bottom: 3px;
 }
 
 .guide-overlay-context-title {
-  //shares styles with .guide-overlay-context-creator above
   font-size: 14px;
 }
-
-//.guide-overlay-context-thumbnail {
-//  height: inherit;
-//  overflow: hidden;
-  
-//  img {
-//    -webkit-filter:blur(1px);
-//    -moz-filter:blur(1px);
-//    -o-filter:blur(1px);
-//    filter:blur(1px);
-//    margin-top: -25%;
-//    width: 100%;
-//  }
-//}

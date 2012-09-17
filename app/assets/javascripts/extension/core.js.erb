@@ -40,7 +40,8 @@ window.shelbyBookmarklet = {
         "provider": "vimeo",
         "domain": "vimeo.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
-        "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)"]
+        "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
+        "elements": "div.player.f:not(:has(video))"
     }, {
         "provider": "youtube",
         "domain": "youtube.com",
@@ -156,6 +157,21 @@ window.shelbyBookmarklet = {
                     }
                     
                 }
+                for (var i=0; i < shelbyBookmarklet.shelbyProviders.length; i++) {
+                    if (shelbyBookmarklet.shelbyProviders[i].elements) {
+                        var domain_split = shelbyBookmarklet.shelbyProviders[i].domain.split(',');
+                        for (var j = 0; j < domain_split.length; j++) {
+                            if (window.location.hostname == domain_split[j]) {
+                                var domainSpecificPossibleVideos = shelbyJ(shelbyBookmarklet.shelbyProviders[i].elements);
+                                for (var k = 0; k < domainSpecificPossibleVideos.length; k++) {
+                                    found_elements.push(domainSpecificPossibleVideos[k]);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 for (var i = 0; i < found_elements.length; i++) {
                     if (this.getElementValue(found_elements[i], 'data-youtube-id')) {
                         var obj = shelbyJ(found_elements[i]);
@@ -513,9 +529,11 @@ window.shelbyBookmarklet = {
                           utilObject.htmlTemplate.rollingFormHtml(user.personalRoll, backboneFrame);
                           utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"), frameClass, videoId);
                           shelbyJ(".cancel").on("click", function(event) {
+                              shelbyJ(".ext-elements #js-notifications").remove();
                               utilObject.styleGuideHide("roll-guide");
                           });
                           shelbyJ(".back").on("click", function(event) {
+                              shelbyJ(".ext-elements #js-notifications").remove();
                               utilObject.styleGuideHide("roll-guide");
                           });
                     });
@@ -719,6 +737,7 @@ window.shelbyBookmarklet = {
                   var frame_id = response.result.id;
                   utilObject.shelbyAjaxCall.shelbyApiShare(frame_id, message, shareDests);
                   
+                  shelbyJ(".ext-elements #js-notifications").remove();
                   utilObject.styleGuideHide("roll-guide");
                   if (!utilObject.videoInformation[videoId].frame) {
                     utilObject.videoInformation[videoId].frame = response.result;
@@ -831,9 +850,10 @@ window.shelbyBookmarklet = {
                                   "number_of_buttons": 'one',
                                   "button_one": buttonOne,
                                   "button_two": buttonTwo};
+                    shelbyJ(".ext-elements #js-notifications").remove();
                     utilObject.shelbyDocElements['ext-elements'].append(JST['notification-overlay']({model: utilObject.shelbyCreateModel(model)}));
-                    shelbyJ(".ext-elements").on("click", "#js-notification-confirm", function() {
-                        shelbyJ(".ext-elements .notifications-lining").remove();
+                    utilObject.shelbyDocElements['ext-elements'].on("click", "#js-notification-confirm", function() {
+                        shelbyJ(".ext-elements #js-notifications").remove();
                     });
 
 
@@ -902,7 +922,7 @@ window.shelbyBookmarklet = {
                       twitterDomain: "http://<%=Settings::Extension.api_domain%>/auth/twitter",
                       facebookDomain: "http://<%=Settings::Extension.api_domain%>/auth/facebook",
                   }));
-                  shelbyJ('.shelby-login-cancel').on('click', function() {
+                  shelbyJ('.js-login-cancel').on('click', function() {
                       utilObject.styleGuideHide('login-guide');
                   });
                 },

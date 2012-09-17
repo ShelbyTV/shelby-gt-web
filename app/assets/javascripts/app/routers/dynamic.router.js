@@ -429,6 +429,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
+    shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification || 
+      new libs.shelbyGT.ExtensionBannerNotification();
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({
           model : shelby.models.guide,
