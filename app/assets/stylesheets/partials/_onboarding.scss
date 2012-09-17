@@ -78,7 +78,7 @@
 
   //------------------------------
   //  TODO: 
-  //  dynamic-avatar-lining needs refactoring
+  //  dynamic-avatar needs refactoring
   //  for now this is a hacky override 
   //------------------------------
 
@@ -86,8 +86,8 @@
     margin-top: 1em;
   }
 
-  .dynamic-avatar-lining {
-    border:1px solid darken($base,5%);
+  .dynamic-avatar {
+    border:1px solid $avatar-outline;
     float: none;
 
     .progress-overlay {

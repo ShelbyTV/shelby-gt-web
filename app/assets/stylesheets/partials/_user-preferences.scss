@@ -62,9 +62,11 @@
 	height: 48px;
 
 	.dynamic-avatar {
+		border: 1px solid $avatar-outline;
 		width: inherit;
 		height: inherit;
 	}
+
 	.user-avatar {
 		width: 100%;
 	}

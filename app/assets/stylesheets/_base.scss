@@ -4,7 +4,6 @@ $path: "/images/assets/" !default;
 $logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
-//TODO: get a PNG of this lil' fucker:
 $icon-cancel                    : "#{$path}cancel.svg";
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-check                     : "#{$path}check#{$extension}";
@@ -70,14 +69,18 @@ $icon-videocard-share           : "#{$path}videocard_share#{$extension}";
 $icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
 $icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
-//--- ANIMATION VALUES
-//    should only be used in the animate mixin / module
+//------------------------------------------------------------------------------
+//  ANIMATION VALUES
+//  should only be used in the animate mixin / module
+//------------------------------------------------------------------------------
 $animate-property : 'all' !default;
 $animate-duration : .5s !default;
 $animate-timing   : ease-in-out !default;
 $animate-delay    : 0s !default;
 
-//--- FONT SETUP
+//------------------------------------------------------------------------------
+//  FONT SETUP
+//------------------------------------------------------------------------------
 $font-color          : #333;
 $font-color-display  : $font-color;
 $font-color-light    : adjust-lightness($font-color, 26.5%);
@@ -86,12 +89,16 @@ $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-size           : 100%;
 $size                : $font-size !default;
 
-//--- BORDER RADIUS
+//------------------------------------------------------------------------------
+//  BORDER RADIUS
+//------------------------------------------------------------------------------
 $radius        : 5px;
 $button-radius : $radius - 1;
 $input-radius  : $radius - 2;
 
-//--- MARGINS, PADDINGS, and WIDTHS 
+//------------------------------------------------------------------------------
+//  MARGINS, PADDINGS, and WIDTHS
+//------------------------------------------------------------------------------
 $unit                : 10px;
 $defaultMargin       : $unit;
 $default-margin      : $unit;
@@ -100,7 +107,12 @@ $media-module-margin : 8px;
 $header-height       : $unit * 3.5;
 $guide-width         : $unit * 37;
 
-//--- COLORS
+//------------------------------------------------------------------------------
+//  COLORS
+//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: base
+////////////////////////////////////////////////////////////////////////////
 $base          : #e2e2e2;
 $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
@@ -108,16 +120,19 @@ $shadow        : 0 0 2px 0 rgba(0,0,0,.5);
 $outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
-
-//--- COLORS: fonts
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: fonts
+////////////////////////////////////////////////////////////////////////////
 $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text + #333;
-
-//--- COLORS: app header
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: app header
+////////////////////////////////////////////////////////////////////////////
 $header-outline                     : #202020;
-
-//--- COLORS: guide
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: guide
+////////////////////////////////////////////////////////////////////////////
 $guide-bg-color                     : $base;
 $guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
@@ -125,40 +140,49 @@ $guide-presentation-button-active   : adjust-lightness($guide-presentation-butto
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #242627;
-
-//--- COLORS: list_module
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: list_module
+////////////////////////////////////////////////////////////////////////////
 $list-module-spacing                : 1em;
 $list-module-bg                     : #e2e2e2;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
-
-//--- COLORS: overlay
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: overlay
+////////////////////////////////////////////////////////////////////////////
 $overlay_header_height              : 46px;
-
-//--- COLORS: thumbnail_module
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: thumbnail_module
+////////////////////////////////////////////////////////////////////////////
 $thumbnail_default_bg               : adjust-lightness($base, -1%);
-
-//--- COLORS: explore
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: explore
+////////////////////////////////////////////////////////////////////////////
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
-
-//--- COLORS: me
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: me
+////////////////////////////////////////////////////////////////////////////
 $me-header-color                    : adjust-lightness($text, 10%);
-
-//--- COLORS: videocard
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: videocard
+////////////////////////////////////////////////////////////////////////////
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
-
-//--- COLORS: videoplayer
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: videoplayer
+////////////////////////////////////////////////////////////////////////////
 $video-controls-progress-load       : #303030;
 $video-player                       : #0e0e0e;
-
-//--- COLORS: preferences
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: preferences
+////////////////////////////////////////////////////////////////////////////
 $toggle-switch-gray                 : #fefefe;
-
-//--- COLORS: shelby 
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: shelby
+////////////////////////////////////////////////////////////////////////////
 $shelby-blue                        : #0590c4;
 $shelby-gray                        : #27292A;
 $shelby-gray-light                  : #a0a0a0;
@@ -168,12 +192,18 @@ $shelby-red                         : #cc1235;
 $shelby-yellow                      : #d5cd39;
 $primer-color                       : $shelby-gray !default;
 $education-yellow                   : #f9f15c;
-
-//--- COLORS: social media
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: social media
+////////////////////////////////////////////////////////////////////////////
 $facebook-blue                      : #013e80;
 $twitter-blue                       : #2CAAE1;
 $tumblr-blue                        : #2f445b;
-
-//--- COLORS: buttons
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: buttons
+////////////////////////////////////////////////////////////////////////////
 $button-default-color               : #eee;
 $networks-unselected                : #474747;
+////////////////////////////////////////////////////////////////////////////
+//  COLORS: avatar
+////////////////////////////////////////////////////////////////////////////
+$avatar-outline                     : darken($base,5%);
