@@ -1,9 +1,8 @@
 libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
 
   events : {
-    "click .js-follow-button.guide-header-button-highlighted" : "_followRoll",
-    "click .js-follow-button:not(.guide-header-button-highlighted)" : "_unFollowRoll",
-    "click .js-full-shelby-button" : "_goFullShelby",
+    "click .js-follow-button:not(.js-busy)" : "_followOrUnfollow",
+    "click .js-full-shelby-button" : "_goFullShelby"
   },
 
   className : 'guide-header-lining clearfix',
@@ -14,67 +13,44 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind('change', this._onRollChange, this);
-    shelby.models.rollFollowings.bind('add:rolls remove:rolls', this._updateFollowButton, this);
+    shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change', this._onRollChange, this);
-    shelby.models.rollFollowings.unbind('add:rolls remove:rolls', this._updateFollowButton, this);
+    shelby.models.rollFollowings.unbind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   render : function(){
 
-    //determining the frame thumbnail is obsolete
-
-   //  var first_frame_thumbnail = null;
-   //  var showThumbnail;
-   //  if (this.model.has('frame_count')) {
-   //    //we use the presence of the frame_count as a handy way to know that the model has had all of its data loaded
-   //    //from the server at least once
-   //    showThumbnail = true;
-			// if( this.model.get('first_frame_thumbnail_url') ){
-		 //    var first_frame_thumbnail = this.model.get('first_frame_thumbnail_url');
-			// }
-   //  } else {
-   //    //if the roll model data has never been loaded from the server don't even show a thumbnail, wait
-   //    //until a subsequent load triggers a refresh
-   //    showThumbnail = false;
-   //  }
-
     this.$el.html(this.template({
-     //determining the frame thumbnail is obsolete  
-    //  creatorName : this.model.get('creator_nickname'),
-    //  showThumbnail : showThumbnail,
-    //  thumbnail : first_frame_thumbnail,
       title : this.model.get('title')
     }));
-
-    var showFollowButton = this.model.has('creator_id') &&
-                           (this.model.get('creator_id') != shelby.models.user.id) &&
-                           this.model.has('roll_type') &&
-                           this.model.get('roll_type') != libs.shelbyGT.RollModel.TYPES.special_watch_later &&
-                           !libs.shelbyGT.viewHelpers.roll.isFaux(this.model);
-    this.$('#js-guide-title').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
-    // this.$('.guide-overlay-context-overview').before(JST['iso-roll-buttons']({showFollowButton:showFollowButton}));
+    this.$('#js-guide-title').before(JST['iso-roll-buttons']());
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
     shelby.models.guide.trigger('reposition');
   },
 
-  _followRoll : function() {
-    if (!shelby.models.user.get('anon')) {
-      this.model.joinRoll();
-    } else {
-      window.top.location.href = shelby.config.appUrl;
-    }
-  },
+ _followOrUnfollow : function() {
+    var $thisButton = this.$('.js-follow-button');
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isFollow = $thisButton.toggleClass('guide-header-button-highlighted').hasClass('guide-header-button-highlighted');
+    var wasFollow = !isFollow;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.text(isFollow ? 'Follow' : 'Unfollow').addClass('js-busy');
 
-  _unFollowRoll : function() {
-    if (!shelby.models.user.get('anon')) {
-      this.model.leaveRoll();
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      $thisButton.removeClass('js-busy');
+    };
+    if (wasFollow) {
+      this.model.joinRoll(clearBusyFunction, clearBusyFunction);
     } else {
-      window.top.location.href = shelby.config.appUrl;
+      this.model.leaveRoll(clearBusyFunction, clearBusyFunction);
     }
   },
 
@@ -91,28 +67,16 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   },
 
   _updateFollowButton : function() {
-    var text;
-    var doButtonHighlight;
-    if (!this.model || !shelby.models.rollFollowings.has('initialized')) {
+    if (libs.shelbyGT.viewHelpers.roll.isFaux(this.model)){
       this.$('.js-follow-button').hide();
-      return;
-    }
-    if (shelby.models.user.get('anon')) {
-      text = "Follow";
-      doButtonHighlight = true;
+    } else if (this.model.get('creator_id') === shelby.models.user.id ||
+               !shelby.models.rollFollowings.has('initialized')){
+      this.$('.js-follow-button').hide();
     } else {
-      var followingRoll = shelby.models.rollFollowings.containsRoll(this.model);
-      if (followingRoll) {
-        text = "Unfollow";
-        doButtonHighlight = false;
-      } else {
-        text = "Follow";
-        doButtonHighlight = true;
-      }
+      var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
+      this.$('.js-follow-button').toggleClass('guide-header-button-highlighted', !userFollowingRoll)
+        .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
-    var addOrRemoveClass = doButtonHighlight ? 'addClass' : 'removeClass';
-    this.$('.js-follow-button').text(text)[addOrRemoveClass]('guide-overlay-context-button-highlighted');
-    this.$('.js-follow-button').show();
   },
 
   _onRollChange : function(rollModel) {
@@ -122,6 +86,12 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
         _changedAttrs.has('frames') ||
         _changedAttrs.has('creator_id')) {
       this.render();
+    }
+  },
+
+  _onRollFollowingsInitialized : function(rollFollowingsModel, initialized) {
+    if (initialized) {
+      this._updateFollowButton();
     }
   }
 
