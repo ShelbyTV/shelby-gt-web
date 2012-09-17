@@ -114,7 +114,7 @@ private
     elsif duration < 3600 
       return sprintf('%d:%02d', duration / 60, duration % 60)
     elsif duration < (3600 * 24)
-      return sprintf('%:%02d:%02d', duration / 3600, duration / 60, duration % 60)
+      return sprintf('%d:%02d:%02d', duration / 3600, duration / 60, duration % 60)
     else
       return "> 1 day"
     end
