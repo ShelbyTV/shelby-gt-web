@@ -16,5 +16,35 @@ body.facebook-genius {
   	width: 30px;
   	margin: 0 auto;
   }
+  
+}
 
+body.shelby.fb-genius-roll{
+  #fb-comments-holder{
+  }
+  .fb-comments { background-color: white;}
+  .fb-comments, .fb-comments * {
+      width:100% !important;
+      height: 165px;
+      overflow-y: scroll;
+      bottom:0;
+  }
+  #video-controls {
+    position:relative;
+  }
+  .videoplayer-viewport {
+    position: relative;
+    height: 725px;
+    width: 100%;
+    > * {
+      position: absolute;
+      top: 0; left: 0;
+      width: inherit;
+      height: inherit;
+    }
+
+    /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
+    #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 100%!important; }
+  }
+  
 }

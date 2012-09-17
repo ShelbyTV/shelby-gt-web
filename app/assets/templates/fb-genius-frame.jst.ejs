@@ -9,32 +9,17 @@
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
-<% var creator = frame.get('creator') %>
-<% var creatorNickname, creatorAvatar %>
-
-<% if (creator !== null) { creatorNickname = creator.get('nickname'); creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) } %>
-
-<% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
-<% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
-<% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
-<% var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-                                                                      frameIsOnHeartedRoll ||
-                                                                      frameIsOnWatchLaterRoll)
-%>
-
 
 <!-- new videocard -->
-<article id="<%= videoId %>" class="xframe<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
-  <% if (!frameViewed) { %>
-    <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-      <h1 class="xframe-title" title="<%= videoTitle %>">
-       <%= videoTitle %>
-      </h1>
-    </a>
-  <% } %>
+<article id="<%= videoId %>" class="xframe">
+   <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+     <h1 class="xframe-title" title="<%= videoTitle %>">
+      <%= videoTitle %>
+     </h1>
+   </a>
 
-  <div class="xframe-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
+  <div class="xframe-body-wrapper clearfix">
     <div class="xframe-body">
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
@@ -47,23 +32,9 @@
 
     <footer class="media_module xframe-footer clearfix">
       <div class="media_body">
-				share - send
+				<div class="fb-like" data-href="http://shelby.tv/roll/<%= frame.get('roll').id %>/frame/<%= frame.id %>" data-send="true" data-width="325" data-show-faces="true"></div>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
-  <% if (!contextOverlay && !_(dupeFrames).isEmpty()) { %>
-    <aside class="xframe-aside">
-      <p class="xframe-aside-text">
-        Also via:
-
-        <% _(dupeFrames).each(function(frame, index) { %>
-          <%= index == 0 ? '' : ', ' %>
-          <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
-          <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(frame.get('roll')) %>
-          </a>
-        <% }); %>
-      </p>
-    </aside>
-  <% } /* end of !contextOverlay */ %>
 </article>
 <!-- end new videocard -->
