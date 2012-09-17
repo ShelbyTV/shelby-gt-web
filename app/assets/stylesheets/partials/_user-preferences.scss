@@ -52,6 +52,28 @@
 
 }
 
+.avatar-section-body {
+
+}
+
+.avatar-section-viewport {
+	float: left;
+	width: 48px;
+	height: 48px;
+
+	.dynamic-avatar {
+		width: inherit;
+		height: inherit;
+	}
+	.user-avatar {
+		width: 100%;
+	}
+}
+
+.avatar-section-input {
+
+}
+
 .avatar-section-input {
 	input[type=file] {
 		margin: 13px 0 0 10px;
@@ -151,6 +173,9 @@
 
 .connected-network {
 	@include button-primer($shelby-green, dark, wide);
+
+	float:right;
+	font-size: .8em;
 }
 
 ////////////////////////////////////////////////////////////////////////////
