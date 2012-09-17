@@ -137,7 +137,7 @@ private
   end
 
 def hyphenateString(title)
-  title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
+  title ? title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-') : ""
 end
 
 
