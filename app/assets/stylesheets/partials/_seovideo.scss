@@ -165,6 +165,8 @@ p {
 .seovideo-messages-item {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
+
+
 }
 ////////////////////////////////////////////////////////////////////////////
 //  .media_module.seovideo-messages-block
@@ -221,6 +223,27 @@ p {
 		width: auto;
 	}
 
+	.seovideo-subhead {
+		text-align: center;
+		br {
+			display: none;
+		}
+	}
+
+	.seovideo-subheader {
+		margin-top: 1em;
+	}
+
+	.seovideo-signup {
+		float: none;
+	}
+
+	.seovideo-card {
+		.seovideo-column-header {
+			padding: 8px 8px 0;
+		}
+	}
+
 	.seovideo-details {
 		margin: 8px;
 	}
@@ -232,5 +255,17 @@ p {
 
 	.seovideo-messages-list {
 		margin: 8px;
+	}
+}
+
+@media only screen and (max-width : 470px) {
+	.seovideo-embed {
+		padding: 0px;
+
+		& > iframe,
+		& > embed,
+		& > object {
+			height: 200px;
+		}
 	}
 }
