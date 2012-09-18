@@ -1,6 +1,7 @@
 require 'uri'
 require 'net/http'
 require 'shelby_api'
+require 'iconv'
 
 class SeovideoController < ApplicationController
 helper_method :hyphenateString
@@ -86,8 +87,9 @@ before_filter :prepare_for_mobile
               @conversations.first["messages"].first)
             first_message = @conversations.first["messages"].first
             if first_message["text"]
-              # can't use double-quotes anywhere, since it's going in a meta tag
-              first_message_text = first_message["text"].gsub /"/, "'"
+              # can't use double-quotes anywhere, since it's going in a meta tag, and need to make sure we're using valid UTF-8
+              ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+              first_message_text = ic.iconv(first_message["text"] + ' ')[0..-2].gsub /"/, "'"
               if first_message['origin_network'] && first_message['origin_network'] == 'twitter' 
                 @meta_description = "Shared by @#{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
               else
