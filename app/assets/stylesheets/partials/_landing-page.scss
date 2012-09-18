@@ -203,6 +203,15 @@ $landing-page-shelf-background: #ccc;
 }
 
 /********************************************************
+ * _video_graph_blog_post - Substitute Shelf
+ ********************************************************/
+.landing-shelf-video-graph-blog .landing-shelf-lining {
+  background: url('/images/landing/graph.png') no-repeat 498px 55px transparent;
+  padding: 70px 0 30px;
+}
+
+
+/********************************************************
  * _private_beta - Primary Shelf
  ********************************************************/
 
