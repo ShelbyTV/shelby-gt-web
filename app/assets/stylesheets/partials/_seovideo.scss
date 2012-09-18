@@ -62,6 +62,7 @@ p {
 	float: left;
 	padding: 0px;
 	max-width: $seo-column-left;
+	width: 100%;
 }
 
 .seovideo-column-right {
@@ -118,6 +119,7 @@ p {
 .seovideo-signup {
 	float: right;
 	font-size: 1em;
+	margin-right: 260px;
 }
 
 .seovideo-signup-link {
@@ -256,6 +258,7 @@ p {
 
 	.seovideo-signup {
 		float: none;
+		margin: 0;
 	}
 
 	.seovideo-card {
