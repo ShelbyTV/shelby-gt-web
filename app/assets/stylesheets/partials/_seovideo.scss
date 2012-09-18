@@ -5,8 +5,13 @@
 $seo-column-main: 900px;
 $seo-column-left: 640px;
 $seo-column-right: 200px;
-
-//non-normative
+////////////////////////////////////////////////////////////////////////////
+//  non-normative
+////////////////////////////////////////////////////////////////////////////
+.xuser-data-timestamp {
+	font-size: .8em;
+	line-height: 1.9;
+}
 .xuser-data-origin-name {
 	opacity:.6;
 }
@@ -72,7 +77,6 @@ p {
 
 .seovideo-column-right {
 	float: right;
-	margin-left: 8px;
 	max-width: $seo-column-right;
 }
 
@@ -261,9 +265,9 @@ p {
 
 //------------------------------------------------------------------------------
 //  media query,
-//	when window is NARROWER than 860px
+//	when window is NARROWER than 830px
 //------------------------------------------------------------------------------
-@media only screen and (max-width : 860px) {	
+@media only screen and (max-width : 830px) {	
 	.seovideo-column-right {
 		clear: both;
 		float: none;
@@ -310,7 +314,9 @@ p {
 		margin: 8px;
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////
+//  this makes vertical height of video more reasonable/proportional
+////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-width : 470px) {
 	.seovideo-embed {
 		padding: 0px;
