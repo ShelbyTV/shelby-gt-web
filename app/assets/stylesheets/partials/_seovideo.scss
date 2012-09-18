@@ -5,6 +5,11 @@
 $seo-column-main: 900px;
 $seo-column-left: 640px;
 $seo-column-right: 200px;
+
+//non-normative
+.xuser-data-origin-name {
+	opacity:.6;
+}
 //------------------------------------------------------------------------------
 //  seovideo setup
 //------------------------------------------------------------------------------
@@ -171,20 +176,17 @@ p {
 .seovideo-messages {
 	clear: left;
 	max-width: $seo-column-left;
+	margin-top: 1em;
 }
 
 .seovideo-messages-list {
+	border-top: 1px solid $inset;
 	margin-right: 125px;
-
 }
 
 .seovideo-messages-item {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
-
-	&:first-child {
-		border-top: none;
-	}
 
 	&:last-child {
 		border-bottom: none;
@@ -219,6 +221,10 @@ p {
 .seovideo-relatedvideo-link {
 	display: block;
 	max-width: $seo-column-right;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .seovideo-relatedvideo-title {
@@ -237,7 +243,7 @@ p {
 //  media query,
 //	when window is NARROWER than 860px
 //------------------------------------------------------------------------------
-@media only screen and (max-width : 860px) {
+@media only screen and (max-width : 860px) {	
 	.seovideo-column-right {
 		clear: both;
 		float: none;
@@ -278,10 +284,6 @@ p {
 
 	.seovideo-relatedvideo-link {
 		margin-right: 5px;
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	.seovideo-messages-list {

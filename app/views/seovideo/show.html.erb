@@ -76,7 +76,7 @@
       <% end %>
     </div><!-- eo seovideo-column-right -->
 
-    <div class="seovideo-messages">
+    <div class="seovideo-messages clearfix">
       <ul class="list_module seovideo-messages-list">
         <% if @conversations %>
           <% @conversations.each do |conversation| %>
@@ -98,7 +98,7 @@
                           <%= message["realname"] %>
                         </strong>                        
 
-                        <span style="opacity:.6">
+                        <span class="xuser-data-origin-name">
                           @<%= message["nickname"] %>
                         </span>
                       <% else %>
