@@ -85,8 +85,12 @@ p {
 .seovideo-button {
 	@include button-primer($shelby-blue,dark,wide);
 
-	&:link {
-		color: $button-color;
+	//TODO: fix this weird bug.
+	&:link,
+	&:visited,
+	&:hover,
+	&:active {
+		color: $button-color !important;
 	}
 }
 
