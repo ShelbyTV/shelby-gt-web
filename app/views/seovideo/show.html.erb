@@ -1,3 +1,13 @@
+<!-- FACEBOOK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="content-wrapper clearfix">
   <header class="seovideo-head clearfix" role="banner">
     <div class="shelby-header clearfix">
@@ -47,8 +57,10 @@
             Description: <%= @video_description %>
           </p>
 
-          <div class="seovideo-social">
-          </div>
+          <div class="seovideo-social clearfix">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv" data-via="shelby">Tweet</a>
+
+            <div class="fb-like" data-href="http://shelby.tv" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>          </div>
         </div><!-- eo seovideo-details -->
       </section><!-- eo seovideo-card -->
     </div><!-- eo seovideo-column-left -->
@@ -122,3 +134,5 @@
   </div><!-- eo seovideo-wrapper -->
 
 </div><!-- eo content-wrapper -->	
+<!-- TWITTER -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
