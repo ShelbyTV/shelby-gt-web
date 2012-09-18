@@ -35,7 +35,7 @@ a {
 }
 
 p {
-	margin: 0;
+	margin: 0 0 .25em;
 }
 
 //------------------------------------------------------------------------------
@@ -120,6 +120,20 @@ p {
 	font-size: 1em;
 }
 
+.seovideo-signup-link {
+	color: #666;
+
+	&:link,
+	&:visited,
+	&:active {
+		color: #666;
+	}
+
+	&:hover {
+		color: #333;
+	}
+}
+
 //------------------------------------------------------------------------------
 //  seovideo card
 //------------------------------------------------------------------------------
@@ -166,7 +180,13 @@ p {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
 
+	&:first-child {
+		border-top: none;
+	}
 
+	&:last-child {
+		border-bottom: none;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////
 //  .media_module.seovideo-messages-block
@@ -251,6 +271,14 @@ p {
 	.seovideo-relatedvideo {
 		float: left;
 		width: 33.3333%;
+	}
+
+	.seovideo-relatedvideo-link {
+		margin-right: 5px;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	.seovideo-messages-list {

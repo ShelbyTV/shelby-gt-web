@@ -14,7 +14,7 @@
         Sign me up!
       </a>
 
-      <a href="http://shelby.tv" title="Join Shelby now!">
+      <a href="http://shelby.tv" title="Join Shelby now!" class="seovideo-signup-link">
         <h2 class="seovideo-subheader">
           This video is brought to you by Shelby.tv - try out the free web app and discover<br />
           all the amazing new videos your friends are sharing together.
@@ -93,16 +93,18 @@
                         <%= message["created_at"] %>
                       </span>
 
-                      <strong>
-                        <%= message["nickname"] %>
-                      </strong>
-
                       <% if message["origin_network"] && message["origin_network"] == "twitter" %>
+                        <strong>
+                          <%= message["realname"] %>
+                        </strong>                        
 
-                        <%= message["realname"] %>
                         <span style="opacity:.6">
                           @<%= message["nickname"] %>
                         </span>
+                      <% else %>
+                        <strong>
+                          <%= message["nickname"] %>
+                        </strong>                      
                       <% end %>
                     </p>
 
