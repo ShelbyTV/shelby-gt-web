@@ -1,5 +1,13 @@
 @import "compass/typography/links/unstyled-link";
-
+//------------------------------------------------------------------------------
+//  SEOVIDEO PRIVATE VARS
+//------------------------------------------------------------------------------
+$seo-column-main: 900px;
+$seo-column-left: 640px;
+$seo-column-right: 200px;
+//------------------------------------------------------------------------------
+//  seovideo setup
+//------------------------------------------------------------------------------
 html,body{
 	height:100%;
 	margin:0;
@@ -8,15 +16,12 @@ html,body{
 }
 
 body{
-	@include basefont;
-
 	background-color:#f8f8f8;
 	bottom:0;
-	color: #333333;
-	left:0;
-	position:absolute;
-	right:0;
-	top:0;
+	color: $font-color;
+	font-family: $font-family;
+	font-size: 81.25%;
+	font-weight: normal;
 }
 
 a {
@@ -30,293 +35,194 @@ a {
 }
 
 p {
-	margin: 1px;
+	margin: 0;
+}
+
+//------------------------------------------------------------------------------
+//  seovideo architecture
+//------------------------------------------------------------------------------
+.shelby-header {
+	position: relative;
 }
 
 .seovideo-wrapper {
 	margin: 0 auto;
-	width:874px;
-}
-
-.seovideo-wrapper-mobile {
-	margin: 0 auto;
-	width:320px;
+	max-width:$seo-column-main;
 }
 
 .content-wrapper {
-	width: 100%;
 	margin: 0px;
-}
-
-.seovideo-header {
-	color: #a4a4a4;
-	margin:0px;
-	height:47px;
-        @include background-image(linear-gradient(#2e3132, #171819));
-}
-
-.seovideo-header-mobile {
-	color: #a4a4a4;
-	margin:0px;
-	height:47px;
-        @include background-image(linear-gradient(#2e3132, #171819));
-}
-
-.seovideo-header-contents {
-	margin:0 auto;
-	height:47px;
-	width:874px;
-}
-
-.seovideo-header-contents-mobile {
-	margin:0 auto;
-	height:47px;
-	width:320px;
-}
-
-.seovideo-headerrule {
-	height: 2px;
 	width: 100%;
-	color: #efefef;
-	background-color: #efefef;
-	margin: 0px 0px 0px 0px;
-	border-top-color: #cacaca;
 }
 
-.seovideo-logo {
+////////////////////////////////////////////////////////////////////////////
+//  column setup
+////////////////////////////////////////////////////////////////////////////
+.seovideo-column-left {
 	float: left;
-	width: 100px;
-	padding-top: 13px;
-}
-
-.seovideo-logo-mobile {
-	float: left;
-	margin-left: 6px;
-	width: 34px;
-	padding-top: 15px;
-	overflow: hidden;
-}
-
-.seovideo-slogan {
-	font-size: 12px;
-	font-weight: 400;
-	padding-top: 20px;
-	margin: 0 auto;
-	width: 500px;
-	text-align: center;
-}
-
-.seovideo-slogan-mobile {
-	font-size: 11px;
-	font-weight: 400;
-	padding-top: 20px;
-	margin: 0 auto;
-	width: 310px;
-	text-align: center;
-}
-
-.seovideo-pitch {
-	height: 38px;
-	font-size: 12px;
-	font-weight: 400;
-	margin-top: 25px;
-}
-
-.seovideo-pitch-mobile {
-	height: 44px;
-	font-size: 11px;
-	font-weight: 300;
-	margin-top: 12px;
-	text-align: center;
-}
-
-.seovideo-embed {
-	float: left;
-	width: 640px;
 	padding: 0px;
-	margin-top: 9px;
+	max-width: $seo-column-left;
+}
+
+.seovideo-column-right {
+	float: right;
+	margin-left: 8px;
+	max-width: $seo-column-right;
+}
+
+.seovideo-column-header {
+	font-family: $font-family-display;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 2.231;
+	margin: 0;
+}
+
+
+//------------------------------------------------------------------------------
+//  abstracts
+//------------------------------------------------------------------------------
+.seovideo-button {
+	@include button-primer($shelby-blue,dark,wide);
+}
+
+//------------------------------------------------------------------------------
+//  seovideo head
+//	header.seohead wraps the header bar AND the tagline/CTA button.
+//	div.shelby-header == header.shelby-header from the main app.
+//------------------------------------------------------------------------------
+.seovideo-head {
+
+}
+
+.seovideo-subhead{
+	margin: 1.7em auto 1em;
+	max-width: $seo-column-main;
+}
+
+.seovideo-subheader {
+	font-family: $font-family-display;
+	font-size: 1em;
+	font-weight: 300;
+	margin: 0;
+}
+
+.seovideo-signup {
+	float: right;
+	font-size: 1em;
+}
+
+//------------------------------------------------------------------------------
+//  seovideo card
+//------------------------------------------------------------------------------
+.seovideo-card {
+
+}
+
+//------------------------------------------------------------------------------
+//  seovideo embedding module
+//------------------------------------------------------------------------------
+.seovideo-embed {
+	padding: 0px;
 
 	& > iframe,
 	& > embed,
 	& > object {
-		width: 100%;
 		height: 365px;
 		position: relative;
-	}
-}
-
-.seovideo-embed-mobile {
-	width: 310px;
-	padding: 0px;
-	margin-top: 9px;
-	margin-left: auto;
-	margin-right: auto;
-
-	& > iframe,
-	& > embed,
-	& > object {
 		width: 100%;
-		height: 180px;
-		position: relative;
 	}
 }
 
+//------------------------------------------------------------------------------
+//  seovideo details
+//------------------------------------------------------------------------------
 .seovideo-details {
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 1.4;
-	float: left;
-	width: 640px;
-	padding: 0px;
-	margin-top: 5px;
-	margin-bottom: 28px;
+	margin: 8px 125px 8px 8px;
 }
 
-.seovideo-details-mobile {
-	font-size: 10px;
-	font-weight: 300;
-	line-height: 1.2;
-	width: 310px;
-	padding: 0px;
-	margin-top: 5px;
-	margin-bottom: 15px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
+//------------------------------------------------------------------------------
+//  seovideo messages
+//------------------------------------------------------------------------------
 .seovideo-messages {
-	float: left;
+	clear: left;
+	max-width: $seo-column-left;
+}
+
+.seovideo-messages-list {
+	margin-right: 125px;
+
+}
+
+.seovideo-messages-item {
+	border-top: 1px solid $outset;
+	border-bottom: 1px solid $inset;
+}
+////////////////////////////////////////////////////////////////////////////
+//  .media_module.seovideo-messages-block
+////////////////////////////////////////////////////////////////////////////
+.seovideo-messages-block {
+
+}
+
+//------------------------------------------------------------------------------
+//  seovideo related videos
+//------------------------------------------------------------------------------
+.seovideo-relatedvideos {
+
 }
 
 .seovideo-relatedvideo-header {
-	height: 33px;
-}
 
-.seovideo-relatedvideo-header-mobile {
-	height: 20px;
-	width: 310px;
-	font-size: 10px;
-	font-weight: 400;
-}
-
-.seovideo-relatedvideos {
-	width: 194px;
-	margin-top: 39px;
-	padding: 0px;
-}
-
-.seovideo-relatedvideos-mobile {
-	width: 310px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding: 0px;
-
-        text-align: justify;
-        -ms-text-justify: distribute-all-lines;
-        text-justify: distribute-all-lines;
-}
-
-.seovideo-leftcol {
-	float: left;
-	width: 640px;
-	padding: 0px;
-}
-
-.seovideo-rightcol {
-	font-size: 12px;
-	font-weight: 400;
-	float: right;
-	width: 194px;
-	padding: 0px;
-	margin-left: 40px;
 }
 
 .seovideo-relatedvideo {
-	width: 194px;
 	margin: 0px 0px 10px 0px;
+
+	img {
+		width: 100%;
+	}
 }
 
-.seovideo-relatedvideo-mobile {
-	width: 94px;
-	vertical-align: top;
-	display: inline-block;
-	*display: inline;
-	zoom: 1;
+.seovideo-relatedvideo-link {
+	display: block;
+	max-width: $seo-column-right;
 }
 
 .seovideo-relatedvideo-title {
-	font-size: 10px;
-	font-weight: 100;
 	margin: 4px 0px 0px 0px;
 	max-height: 20px;
+	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	overflow: hidden;
 }
 
 .seovideo-message {
 	margin: 10px 10px 10px 10px;
 }
 
-.seovideo-message-mobile {
-	margin: 5px 5px 5px 5px;
-}
+//------------------------------------------------------------------------------
+//  media query,
+//	when window is NARROWER than 860px
+//------------------------------------------------------------------------------
+@media only screen and (max-width : 860px) {
+	.seovideo-column-right {
+		clear: both;
+		float: none;
+		max-width: none;
+		width: auto;
+	}
 
-.seovideo-message-image {
-	float: left;
-	width: 50px;
-	padding: 0px;
-	margin: 0px;
-}
+	.seovideo-details {
+		margin: 8px;
+	}
 
-.seovideo-messagenickname {
-	font-size: 12px;
-	font-weight: 600;
-	margin-left: 60px;
-        padding-top: 2px;
-}
+	.seovideo-relatedvideo {
+		float: left;
+		width: 33.3333%;
+	}
 
-.seovideo-messagedate {
-	color: #333333;
-	font-size: 10px;
-	margin-top: 10px;
-	margin-left: 60px;
-}
-
-.seovideo-messagetext {
-	color: #333333;
-	font-size: 12px;
-	margin-left: 60px;
-	margin-top: 5px;
-	line-height: 1.4;
-}
-
-.seovideo-message-image-mobile {
-	float: left;
-	width: 36px;
-	padding: 0px;
-	margin: 0px;
-}
-
-.seovideo-messagenickname-mobile {
-	font-size: 11px;
-	font-weight: 400;
-	margin-left: 46px;
-}
-
-.seovideo-messagedate-mobile {
-	color: #333333;
-	font-size: 8px;
-	margin-top: 8px;
-	margin-left: 46px;
-}
-
-.seovideo-messagetext-mobile {
-	color: #333333;
-	font-size: 10px;
-	margin-left: 46px;
-	margin-top: 4px;
-	line-height: 1.2;
+	.seovideo-messages-list {
+		margin: 8px;
+	}
 }
