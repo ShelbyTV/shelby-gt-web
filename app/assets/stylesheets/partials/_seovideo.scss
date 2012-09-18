@@ -249,10 +249,12 @@ p {
 .twitter-share-button {
 	display: block;
 	float: left;
+	margin-left: .5em;
 }
 
+.fb_edge_widget_with_comment,
 .fb-like {
-	display: block;
+	display: block !important;
 	float:left;
 }
 

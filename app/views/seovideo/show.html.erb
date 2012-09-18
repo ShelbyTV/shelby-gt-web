@@ -58,9 +58,10 @@
           </p>
 
           <div class="seovideo-social clearfix">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv" data-via="shelby">Tweet</a>
+            <div class="fb-like" data-href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>
 
-            <div class="fb-like" data-href="http://shelby.tv" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>          </div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>"  data-text="<%= @video_title %> via @Shelby">Tweet</a>
+          </div>
         </div><!-- eo seovideo-details -->
       </section><!-- eo seovideo-card -->
     </div><!-- eo seovideo-column-left -->
