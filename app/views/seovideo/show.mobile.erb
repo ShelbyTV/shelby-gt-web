@@ -1,79 +1,119 @@
-<div class="content-wrapper">
+<div class="content-wrapper clearfix">
+  <header class="seovideo-head clearfix" role="banner">
+    <div class="shelby-header clearfix">
+      <a href="http://shelby.tv" class="shelby-logo">
+        <h1 class="shelby-title ir">
+          Shelby.tv
+        </h1>
+      </a>
+      <!-- TODO: copy Login button from new Landing page stuff -->
+    </div>
 
-  <header class="seovideo-header clearfix">
-    <div class="seovideo-header-contents-mobile">
-      <div class="seovideo-logo-mobile">
-        <a href="http://shelby.tv"><img border=0px width=100px src="/images/seovideo/landing_logo.svg"></a>
-      </div>
-      <div class="seovideo-slogan-mobile">
-        <a href="http://shelby.tv">TRY THE FREE WEB APP SHELBY.TV</a>
-      </div>
+    <div class="seovideo-subhead clearfix">
+      <a href="http://shelby.tv" class="seovideo-button seovideo-signup">
+        Sign me up!
+      </a>
+
+      <a href="http://shelby.tv" title="Join Shelby now!">
+        <h2 class="seovideo-subheader">
+          This video is brought to you by Shelby.tv - try out the free web app and discover<br />
+          all the amazing new videos your friends are sharing together.
+        </h2>
+      </a>
     </div>
   </header>
 
-  <hr class="seovideo-headerrule">
+  <div class="seovideo-wrapper clearfix">
+    <div class="seovideo-column-left">
+      <section class="seovideo-section seovideo-card">
+        <h3 class="seovideo-column-header">
+          <%= @video_title %>
+        </h3>
 
-  <div class="seovideo-wrapper-mobile">
-
-    <div class="seovideo-pitch-mobile">
-      <a href="http://shelby.tv">This video is brought to you by Shelby.tv<br>Try out the free web app and discover all the amazing<br>new videos your friends are sharing together.</a>
-    </div>
-
-    <div class="seovideo-embed-mobile">
-      <% if @provider_name == "youtube" %>
-        <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
-      <% else %>
-        <%= raw @video_embed %>
-      <% end %>
-    </div>
-    <div class="seovideo-details-mobile">
-      <p>Title: <%= @video_title %></p>
-      <p>Author: <%= @video_author %></p>
-      <p>Description: <%= @video_description %></p>
-    </div><!-- eo seovideo-details -->
-
-    <% if !@video_related_response_body_results.empty? %>
-      <div class="seovideo-relatedvideos-mobile">
-        <div class="seovideo-relatedvideo-header-mobile">
-          Related Videos
+        <div class="seovideo-embed">
+          <% if @provider_name == "youtube" %>
+            <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
+          <% else %>
+            <%= raw @video_embed %>
+          <% end %>
         </div>
-        <% @video_related_response_body_results.each do |video_related| %>
-          <div class="seovideo-relatedvideo-mobile">
-            <a href="http://shelby.tv/video/<%= video_related['provider_name'] %>/<%= video_related['provider_id'] %>/<%= hyphenateString(video_related['title']) %>"><img width=94 height=60 src=<%= video_related["thumbnail_url"] %> >
-          </div>
-        <% end %>
-        <span style="width: 100%; display: inline-block; font-size: 0; line-height: 0"></span>
-      </div>
-    <% end %>
 
+        <div class="seovideo-details">
+          <p>
+            Author: <%= @video_author %>
+          </p>
+
+          <p>
+            Description: <%= @video_description %>
+          </p>
+
+          <div class="seovideo-social">
+            Social stuff
+          </div>
+        </div><!-- eo seovideo-details -->
+      </section><!-- eo seovideo-card -->
+    </div><!-- eo seovideo-column-left -->
+
+    <div class="seovideo-column-right">
+      <% if !@video_related_response_body_results.empty? %>
+        <div class="seovideo-relatedvideos">
+          <h3 class="seovideo-column-header">
+            Related Videos
+          </h3>
+          <ul class="list_module seovideo-related-list">
+            <% @video_related_response_body_results.each do |video_related| %>
+              <li class="list_item seovideo-related-item seovideo-relatedvideo">
+                <a href="http://shelby.tv/video/<%= video_related["provider_name"] %>/<%= video_related["provider_id"] %>/<%= hyphenateString(video_related["title"]) %>" class="seovideo-relatedvideo-link">
+                  <img src="<%= video_related["thumbnail_url"] %>" />
+
+                  <p class="seovideo-relatedvideo-title">
+                    <%= video_related["title"] %>
+                  </p>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div><!-- eo seovideo-column-right -->
 
     <div class="seovideo-messages">
-      <% @conversations.each do |conversation| %>
-        <% conversation["messages"].each do |message| %>
-          <hr class="seovideo-headerrule">
-          <div class="seovideo-message-mobile">
-            <div class="seovideo-message-image-mobile">
-               <img width=36 height=36 src="<%= message["user_image_url"] %>">
-            </div>
-            <div class="seovideo-messagenickname-mobile">
-              <% if message["origin_network"] && message["origin_network"] == "twitter" %>
-                @<%= message["nickname"] %>
-              <% else %>
-                <%= message["nickname"] %>
-              <% end %>
-            </div>
-            <div class="seovideo-messagetext-mobile">
-              <%= message["text"] %>
-            </div>
-            <div class="seovideo-messagedate-mobile">
-              Posted <%= message["created_at"] %>
-            </div>
-          </div>
+      <ul class="list_module seovideo-messages-list">
+        <% @conversations.each do |conversation| %>
+          <% conversation["messages"].each do |message| %>
+            <li class="list_item seovideo-messages-item">
+              <blockquote class="media_module seovideo-messages-block">
+                <span class="image_module xuser-avatar media_image" style="background-image: url(<%= message["user_image_url"] %>);" role="img">
+                  <img src="<%= message["user_image_url"] %>" class="visuallyhidden" title="<%= message["nickname"] %>" alt="<%= message["nickname"] %>">
+                </span>
+
+                <div class="media_body">
+                  <p class="xuser-data">
+                    <span class="xuser-data-timestamp">
+                      <%= message["created_at"] %>
+                    </span>
+
+                    <strong>
+                      <%= message["nickname"] %>
+                    </strong>
+
+                    <% if message["origin_network"] && message["origin_network"] == "twitter" %>
+                      <span style="opacity:.6">
+                        @<%= message["nickname"] %>
+                      </span>
+                    <% end %>
+                  </p>
+
+                  <p>
+                    <%= message["text"] %>
+                  </p>
+                </div>
+              </blockquote><!-- eo .media_module-->
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
+      </ul>
     </div><!-- eo seovideo-messages -->
-
-
   </div><!-- eo seovideo-wrapper -->
 
-</div><!-- eo content-wrapper -->	
+</div><!-- eo content-wrapper -->
