@@ -34,6 +34,14 @@ body.fb-genius-roll{
   }
   // ** //
   
+  // header
+  .shelby-header {
+    @include background(linear-gradient(top, #3B5998 10%, black 90%));
+  }
+  .guide-presentation-selector {
+    display:none;
+  }
+  
   #fb-comments-holder{
     height: 20%;
     overflow-y: scroll;

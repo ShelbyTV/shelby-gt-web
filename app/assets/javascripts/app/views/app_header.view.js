@@ -59,10 +59,13 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(){
-    if(this.options.guide.get('displayIsolatedRoll')) {
-        this.$el.hide();
-      } else {
-        this.$el.show();
+    if(this.options.guide.get('displayFBGeniusRoll')) {
+      this.$el.show();
+    }
+    else if ( this.options.guide.get('displayIsolatedRoll') ){
+      this.$el.hide();
+    } else {
+      this.$el.show();
     }
   },
 
