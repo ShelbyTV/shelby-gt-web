@@ -191,14 +191,22 @@
 }
 
 .onboarding-roll-item-lining {
-  position: relative;
+  background-color: transparent;
+  border: none;
+  display: block;
   margin: 10px 5px;
+  padding: 5px;
+  position: relative;
   text-align: left;
 
   &:hover {
-    .onboarding-roll-button-wrapper {
-      display: block;
-    }
+    @include roundies(input);
+
+    background-color: darken($base,2%);
+  }
+
+  &:active {
+    background-color: darken($base,5%);
   }
 
   &.followed {
@@ -207,9 +215,12 @@
     }
 
     &:hover {
-      .onboarding-roll-button-wrapper {
-        display: none;
-      }
+      background-color: transparent;
+      cursor: auto;
+    }
+
+    &:active {
+      background-color: transparent;
     }
   }
 }

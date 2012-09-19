@@ -9,7 +9,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   */
 
   events : {
-    "click .js-onboarding-roll-list-item-button" : "_onOnboardingRollButtonClick",
+    "click .js-onboarding-roll-item-lining:not(.followed)" : "_onOnboardingRollButtonClick",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
@@ -22,10 +22,13 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onOnboardingRollButtonClick : function(event){
+    console.log('not followed?');
     //doing this fire and forget so update state and appearance immediately
-    var rollId = event.currentTarget.id;
+    var $roll = $(event.currentTarget);
+    var rollId = $roll.data('roll_id');
+
     this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
-    $('#js-roll-item-lining-'+rollId).addClass('followed');
+    $roll.addClass('followed');
 
     //then fire off ajax
     var rollToJoin = new libs.shelbyGT.RollModel({id:rollId});
