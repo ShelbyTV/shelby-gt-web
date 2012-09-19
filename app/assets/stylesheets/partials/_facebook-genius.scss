@@ -1,6 +1,6 @@
 
 
-/* non-programatic changes to app display */
+/* non-programatic changes to landing page display */
 body.facebook-genius {
 
   .landing-form-input {
@@ -19,10 +19,12 @@ body.facebook-genius {
   
 }
 
-body.shelby.fb-genius-roll{
+/* non-programatic changes to app display */
+body.fb-genius-roll{
   .media_body, .media_image {
     overflow: visible;
   }
+  // customize fb iframes
   .fb_edge_widget_with_comment span.fb_edge_comment_widget {
     top: -145px !important;
     left: -10px !important;
@@ -30,6 +32,7 @@ body.shelby.fb-genius-roll{
   span.fb_edge_comment_widget iframe {
     width: 351px !important;
   }
+  // ** //
   
   #fb-comments-holder{
     height: 20%;
@@ -42,9 +45,16 @@ body.shelby.fb-genius-roll{
       height: 100%;
       bottom:0;
   }
+  
+  // prev/next buttons
+  .video-player-nav-buttons-wrapper{ display: none; }
+  
+  // video controls
   #video-controls {
     position:relative;
   }
+  
+  // video player adjustments
   .videoplayer-viewport {
     position: relative;
     height: 80%;
@@ -57,7 +67,7 @@ body.shelby.fb-genius-roll{
     }
 
     /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
-    #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 100%!important; }
+    #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 80%!important; }
   }
   
 }

@@ -93,6 +93,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
+    
+    if (typeof FB !== "undefined"){
+     FB.XFBML.parse($('ul.roll')[0]);
+    }
   },
 
   _onFetchSuccess : function(model, response){
@@ -117,10 +121,12 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         }
       }, 250);
     }
+    
+    // load up fb like/send buttons if fb sdk is available
     if (typeof FB !== "undefined"){
-     FB.XFBML.parse($('.x-frame-footer')[0]);
+     FB.XFBML.parse($('ul.roll')[0]);
     }
-    console.log("===== loading? ===== ", $('.x-frame-footer')[0]);
+    
   },
 
   _doesResponseContainListCollection : function(response) {

@@ -13,6 +13,8 @@
 		//var frame = shelby.models.guide.get("activeFrameModel");
 		//$(".fb-comments").attr('data-href', shelby.config.appUrl+"/roll/"+frame.get('roll').id+"/frame/"+frame.id);
 		//FB.XFBML.parse(document.getElementById('fb-comments-holder'));
+		//$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');
+    FB.XFBML.parse($('#fb-comments-holder')[0]);
   };
 
   // Load the SDK Asynchronously
