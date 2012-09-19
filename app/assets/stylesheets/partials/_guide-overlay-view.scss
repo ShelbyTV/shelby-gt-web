@@ -26,6 +26,8 @@
   height: 46px;
 
   .back, .cancel {
+    //TODO: abstract button icons better
+
   	@include button-primer($x-primer-color, light, guide-close);
 
   	left: 0;

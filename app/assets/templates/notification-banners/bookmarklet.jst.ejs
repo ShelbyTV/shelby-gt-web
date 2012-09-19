@@ -1,27 +1,57 @@
 <div class="bookmarklet-notification video-radar-lining clearfix">
 	<div class="notification-banner-left">
-		<h1 class="video-radar-title">Video Radar</h1>
-		<h2 class="video-radar-subtitle">Add video to Shelby! <em>Queue</em> and <em>Roll</em> while you browse the web.</h2>
-		<button class="js-dismiss-extension-banner dismiss-banner-notification">✕</button>
+		<h1 class="video-radar-title">
+			Video Radar
+		</h1>
+
+		<h2 class="video-radar-subtitle">
+			Add video to Shelby! <em>Queue</em> and <em>Roll</em> while you browse the web.
+		</h2>
+
+		<button class="js-dismiss-extension-banner dismiss-banner-notification">
+			<i class="ir dismiss-banner-icon">
+				Close
+			</i>
+		</button>
 	</div>
 	<div class="notification-banner-right dropdown_module">
 
 		<div class="bookmarklet-drag-wrapper">
-			<a href="javascript:window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//<%= shelby.config.webDomain %>/assets/shelbify.js';document.getElementsByTagName('head')[0].appendChild(_sbm);">✚ Shelby Video</a>
-			<h2 class="video-radar-subtitle">Grab the bookmarklet!</h2>
+			<a class="bookmarklet-drag-button" href="javascript:window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//<%= shelby.config.webDomain %>/assets/shelbify.js';document.getElementsByTagName('head')[0].appendChild(_sbm);">
+				<i class="roll-icon">
+					Shelby Video
+				</i>
+			</a>
+
+			<h2 class="video-radar-subtitle">
+				Grab the bookmarklet!
+			</h2>
 		</div>
-	
-		<section class="dropdown_section bookmarklet-help">
-			<ol>
-				<li>Make sure your bookmarks bar is showing
-					<ul>
-						<li>Click "view" then "show bookmarks bar"</li>
-					</ul>
-				</li>
-				<li>Drag the <span class="faux-bookmarklet-button">✚ Shelby Video</span> button above into your browser's bookmarks bar</li>
-				<li>Click that button when you see video anywhere on the web!</li>
-			</ol>
+
+		<section class="dropdown_section bookmarklet-help-section clearfix">
+			<div class="dropdown_lining bookmarklet-help">
+				<h3 class="bookmarklet-help-header">
+					How to:
+				</h3>
+				<ol>
+					<li>
+						Make sure your bookmarks bar is showing
+
+						<ul>
+							<li>
+								Click "view" then "show bookmarks bar"
+							</li>
+						</ul>
+					</li>
+					<li>
+						Drag the <span class="faux-bookmarklet-button"><i>Shelby Video</i></span> button above into your browser's bookmarks bar
+					</li>
+
+					<li>
+						Click that button when you see video anywhere on the web!
+					</li>
+				</ol>
+			</div>
 		</section>
-		
 	</div>
 </div>
