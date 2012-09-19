@@ -171,6 +171,10 @@
 
 /* STAGE 2 */
 
+.onboarding-follow-more-count.onboarding-follow-more-highlight {
+  color: $shelby-red;
+}
+
 .onboarding-roll-list {
   img {
     width: 100%;
@@ -269,6 +273,10 @@
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.onboarding-stage-2-next-step.onboarding-next-step-highlight {
+  @include button-primer($shelby-green, dark);
 }
 
 /* STAGE 3 */

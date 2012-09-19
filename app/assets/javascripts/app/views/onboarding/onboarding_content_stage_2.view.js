@@ -22,21 +22,24 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onOnboardingRollButtonClick : function(event){
+    //doing this fire and forget so update state and appearance immediately
     var rollId = event.currentTarget.id;
+    this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
+    $('#js-roll-item-lining-'+rollId).addClass('followed');
+
+    //then fire off ajax
     var rollToJoin = new libs.shelbyGT.RollModel({id:rollId});
-    var self = this;
-    rollToJoin.joinRoll(function(){
-      self.model.set('rolls_followed', self.model.get('rolls_followed')+1);
-      $('#js-roll-item-lining-'+rollId).addClass('followed');
-    });
+    rollToJoin.joinRoll();
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){
     if (rolls_followed > 2){
-      this.$('.js-onboarding-next-step').text('Next').removeAttr('disabled');
+      this.$('.js-onboarding-next-step').text('Next').addClass('onboarding-next-step-highlight');
+      this.$('.js-onboarding-follow-more-count').text('some rolls').removeClass('onboarding-follow-more-highlight');
     } else {
-      var noun = rolls_followed===2 ? 'Roll' : 'Rolls';
-      this.$('.js-onboarding-next-step').text('Follow '+(3-this.model.get('rolls_followed'))+' more '+noun);
+      var needToFollowCount = 3 - rolls_followed;
+      var newText = 'at least '+(needToFollowCount)+' more '+_('roll').pluralize(needToFollowCount);
+      this.$('.js-onboarding-follow-more-count').text(newText).addClass('onboarding-follow-more-highlight');
     }
   },
 
