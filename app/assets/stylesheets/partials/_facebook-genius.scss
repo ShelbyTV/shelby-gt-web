@@ -20,13 +20,26 @@ body.facebook-genius {
 }
 
 body.shelby.fb-genius-roll{
+  .media_body, .media_image {
+    overflow: visible;
+  }
+  .fb_edge_widget_with_comment span.fb_edge_comment_widget {
+    top: -145px !important;
+    left: -10px !important;
+  }
+  span.fb_edge_comment_widget iframe {
+    width: 351px !important;
+  }
+  
   #fb-comments-holder{
+    height: 20%;
+    overflow-y: scroll;
+    background-color: white;
   }
   .fb-comments { background-color: white;}
   .fb-comments, .fb-comments * {
       width:100% !important;
-      height: 165px;
-      overflow-y: scroll;
+      height: 100%;
       bottom:0;
   }
   #video-controls {
@@ -34,7 +47,7 @@ body.shelby.fb-genius-roll{
   }
   .videoplayer-viewport {
     position: relative;
-    height: 725px;
+    height: 80%;
     width: 100%;
     > * {
       position: absolute;

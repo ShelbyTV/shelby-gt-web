@@ -117,6 +117,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         }
       }, 250);
     }
+    if (typeof FB !== "undefined"){
+     FB.XFBML.parse($('.x-frame-footer')[0]);
+    }
+    console.log("===== loading? ===== ", $('.x-frame-footer')[0]);
   },
 
   _doesResponseContainListCollection : function(response) {
