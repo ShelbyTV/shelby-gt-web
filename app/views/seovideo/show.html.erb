@@ -126,20 +126,20 @@
                     </p>
 
                     <% if message["origin_network"] == "twitter" %>
-                      <ul class="xuser-data-twitter-intents">
+                      <ul class="list_module xuser-data-twitter-intents seovideo-command-menu">
                         <li>
-                          <a href="https://twitter.com/intent/reply?tweet_id=">
-                            Reply
+                          <a class="xuser-data-twitter-reply" href="https://twitter.com/intent/tweet?in_reply_to=<%= message["origin_id"] %>">
+                            <i></i>Reply
                           </a>
                         </li>
                         <li>
-                          <a href="http://twitter.com/intent/retweet?tweet_id=">
-                            Retweet
+                          <a class="xuser-data-twitter-retweet" href="https://twitter.com/intent/retweet?tweet_id=<%= message["origin_id"] %>">
+                            <i></i>Retweet
                           </a>
                         </li>
                         <li>
-                          <a href="http://twitter.com/intent/favorite?tweet_id=">
-                            Favorite
+                          <a class="xuser-data-twitter-favorite" href="https://twitter.com/intent/favorite?tweet_id=<%= message["origin_id"] %>">
+                            <i></i>Favorite
                           </a>
                         </li>
                       </ul>
@@ -155,6 +155,9 @@
   </div><!-- eo seovideo-wrapper -->
 
 </div><!-- eo content-wrapper -->	
+<!-- TWITTER INTENTS -->
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
 <!-- TWITTER -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 

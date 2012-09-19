@@ -12,8 +12,58 @@ $seo-column-right: 200px;
 	font-size: .8em;
 	line-height: 1.9;
 }
+
 .xuser-data-origin-name {
 	opacity:.6;
+}
+////////////////////////////////////////////////////////////////////////////
+//  non-normative: tweet-intents
+////////////////////////////////////////////////////////////////////////////
+.xuser-data-twitter-intents {
+
+	li {
+		display: inline;
+	}	
+}
+
+.xuser-data-twitter-reply,
+.xuser-data-twitter-retweet,
+.xuser-data-twitter-favorite {
+	margin-right: .5em;
+
+	i {
+		background-image: url($icon-tweet-intents);
+		background-repeat: no-repeat;
+		background-position: center left;
+		height: 1.3em;
+		display: inline-block;
+		margin-right: .3em;
+		padding-left: 1.2em;
+		width: 1em;
+		vertical-align: top;
+	}
+
+	&:hover {	
+		text-decoration: underline;
+	}
+}
+
+.xuser-data-twitter-reply {
+	i {
+		background-position:center left;
+	}
+}
+
+.xuser-data-twitter-retweet {
+	i {
+		background-position:-80px 0;
+	}
+}
+
+.xuser-data-twitter-favorite {
+	i {
+		background-position:-32px 0;
+	}
 }
 //------------------------------------------------------------------------------
 //  seovideo setup
@@ -195,6 +245,16 @@ p {
 	&:last-child {
 		border-bottom: none;
 	}
+
+	&:hover {
+		.seovideo-command-menu {
+			opacity: 1;
+		}
+	}
+}
+
+.seovideo-command-menu {
+	opacity: .4;
 }
 ////////////////////////////////////////////////////////////////////////////
 //  .media_module.seovideo-messages-block
