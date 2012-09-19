@@ -1,11 +1,8 @@
 @import "base";
-
-//---------------------------
+//------------------------------------------------------------------------------
 //	frame currently playing styles
-//
 //	nest styles inside of .active-list-item
-//---------------------------
-
+//------------------------------------------------------------------------------
 $active-list-item: $shelby-blue;
 //bring this into base once the color is determined.
 .roll,
@@ -25,15 +22,20 @@ $active-list-item: $shelby-blue;
 	}
 }
 
-//---------------------------
+//------------------------------------------------------------------------------
 //	frame natural state
-//---------------------------
-
+//------------------------------------------------------------------------------
 .xframe {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
 	padding: 1em;
 
+	////////////////////////////////////////////////////////////////////////////
+	//  on HOVER, toggle:
+	//
+	//	uncollpased: command menu,
+	//	collapsed: indicationt that frame is openable.
+	////////////////////////////////////////////////////////////////////////////
 	&:hover {
 		.xframe-is-collapsed,
 		.menu_module {
@@ -118,11 +120,11 @@ $active-list-item: $shelby-blue;
 	background-image: url($icon-videocard-comment);
 	background-position: left center;
 	background-repeat: no-repeat;
-	background-size: 1.3em;
+	background-size: auto;
 	display: block;
 	float: right;
 	line-height: 1;
-	padding-left: 1.5em;
+	padding-left: 1.4em;
 	padding-bottom: 1px;
 	text-decoration: none;
 
@@ -131,14 +133,25 @@ $active-list-item: $shelby-blue;
 	}
 }
 
-//---------------------------
+//------------------------------------------------------------------------------
 //	frame creator block, 
-//	(media obj.)
-//---------------------------
-
+//	base: media obj.
+//------------------------------------------------------------------------------
 .xuser-data {
 	@include ellipsis();
 	color: adjust-lightness($text, 20%);
+}
+
+.xuser-data-link {
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:active,
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .xuser-message {
@@ -162,10 +175,10 @@ $active-list-item: $shelby-blue;
 	}
 }
 
-//---------------------------
-//	frame command menu
-//---------------------------
-
+//------------------------------------------------------------------------------
+//	frame command menu:
+//	frame menu appears on :hover of particular videocard
+//------------------------------------------------------------------------------
 .xframe-menu {
 	height: 0;
 	left: 0;
@@ -184,18 +197,20 @@ $active-list-item: $shelby-blue;
 	width: inherit;
 }
 
+////////////////////////////////////////////////////////////////////////////
+//	styling of the command buttons,
+//	queue, roll, share, etc.
+////////////////////////////////////////////////////////////////////////////
 .xframe-command {
 	@include button-primer($x-primer-color, light, menu);
 
 	margin-left: 10px;
 	margin-top: 10px;
 }
-
-
-		//------------------------
+		////////////////////////////////////////////////////////////////////////////
 		//	dropdown sublist:
-		//	children options of frame commands
-		//------------------------
+		//	children options of a spcific frame command (more button)
+		////////////////////////////////////////////////////////////////////////////
 		.xframe-sublist {
 			margin-top: 3px;
 		}
@@ -235,62 +250,61 @@ $active-list-item: $shelby-blue;
 			.command-icon {
 					background-position: center right;
 					padding-left: 0;
-					padding-right: 1.5em;
+					padding-right: .95em;
 			}
 		}
 
-		//---------------------------
-		//	styling of the command buttons,
-		//	queue, roll, share, etc.
-		//---------------------------
+//------------------------------------------------------------------------------
+// 	command-icon setup
+//------------------------------------------------------------------------------
+.command-icon {
+		background-position: center left;
+		background-repeat: no-repeat;
+		background-size: auto;
+		font-style: normal;
+		padding-left: 1.3em;
+}
+
+//------------------------------------------------------------------------------
+//  specific command button stylings
+//------------------------------------------------------------------------------
+.command-queue {
+	width: 71px;
+
+	.command-icon {
+		background-image: url($icon-videocard-queue);
+	}
+
+	&.queued {
+		@include button-primer(darken($x-primer-color,20%));
+
+		&:not(.remove-frame) {
+			@include button-primer(darken($x-primer-color,20%),light,queue-button,false);
+			cursor: auto;
+		}
+
 		.command-icon {
-				background-position: center left;
-				background-repeat: no-repeat;
-				background-size: 1em;
-				font-style: normal;
-				padding-left: 1.3em;	
+			background: none;
+			padding: 0;
 		}
+	}
+}
 
-		.command-queue {
-			width: 71px;
+.command-roll {
+	.command-icon {
+		background-image: url($icon-videocard-roll);
+	}
+}
 
-			.command-icon {
-				background-image: url($icon-videocard-queue);
-			}
-
-			&.queued {
-				@include button-primer(darken($x-primer-color,20%));
-
-				&:not(.remove-frame) {
-					@include button-primer(darken($x-primer-color,20%),light,queue-button,false);
-					cursor: auto;
-				}
-
-
-				.command-icon {
-					background: none;
-					padding: 0;
-				}
-			}
-		}
-
-		.command-roll {
-			.command-icon {
-				background-image: url($icon-videocard-roll);
-			}
-		}
-
-		.command-more {
-			.command-icon {
-				background-image: url($icon-carrot);
-			}
-		}
-
-//---------------------------
+.command-more {
+	.command-icon {
+		background-image: url($icon-carrot);
+	}
+}
+//------------------------------------------------------------------------------
 //	frame collapsed
-//
-//	nest styles inside of .xframe-collapsed{}
-//---------------------------
+//	(nest styles inside of .xframe-collapsed{})
+//------------------------------------------------------------------------------
 
 .xframe-collapsed {
 	.xframe-title {
@@ -322,7 +336,7 @@ $active-list-item: $shelby-blue;
 }
 
 //---------------------------
-//	aside 
+//	aside: subline below videocard
 //
 //	lists duplicates, 'also via:' stuff
 //---------------------------

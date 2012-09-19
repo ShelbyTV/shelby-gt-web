@@ -130,17 +130,14 @@ $list : blue, green, default;
 //
 //  LIST_MODULE handles lists in the guide
 //  lists of rolls, frame, etc.
+//
+//  (right now they're both the same.)
 ////////////////////////////////////////////////////////////////////////////
-.group_list_module {
-  list-style-type: none;
-  margin: 0;  
-  padding: 0;
-}
-
+.group_list_module,
 .list_module {
   list-style-type: none;
   margin: 0;
-  padding: $list-module-spacing;
+  padding: 0;
 }
 
 .list_item {
@@ -153,7 +150,6 @@ $list : blue, green, default;
   }
 }
 
-
 //---------------------------
 //  modular overlay framework
 //  
@@ -165,7 +161,6 @@ $list : blue, green, default;
 //    *used for any overlay,
 //     that slides over the guide    
 //---------------------------
-
 .overlay_header {
   height: $overlay_header_height;
 }
@@ -177,21 +172,26 @@ $list : blue, green, default;
   top: $overlay_header_height;
   width: 100%;
 }
-
-//---------------------------
+//------------------------------------------------------------------------------
 //  modular form framework
 //
 //    base styling to make any/all
 //    inputs consistent throughout
 //    the entire app
-//---------------------------
-
+//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  VERTICAL FORMS
+////////////////////////////////////////////////////////////////////////////
 .form_module {
 
 }
 
 .form_fieldset {
   margin-top: 1em;
+}
+
+.form_legend {
+
 }
 
 .form_label {
@@ -235,6 +235,49 @@ $list : blue, green, default;
 
 }
 
+////////////////////////////////////////////////////////////////////////////
+//  HORIZONTAL FORMS
+//
+//  horizontal forms are less often used.
+//  instead of having horizontal be its own full set,
+//  we're going to try to make the horizontal styles an override
+//  thus making it a subclass of the standard vertical forms.
+////////////////////////////////////////////////////////////////////////////
+.form_module_horz {
+
+  .form_fieldset {
+
+  }
+
+  .form_legend {
+
+  }
+
+  .form_label {
+
+  }
+
+  .form_label {
+
+  }
+
+  .form_input,
+  .form_textarea {
+
+  }
+
+  .form_input {
+
+  }
+
+  .form_textarea {
+
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  SHARED BY HORIZONTAL + VERTICAL FORMS
+////////////////////////////////////////////////////////////////////////////
 .form_submit {
   @include button-primer($shelby-blue, dark, wide);
 

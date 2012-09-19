@@ -1,274 +1,165 @@
 @import "base";
-
-.you-preferences{
-//		background:red;
+//------------------------------------------------------------------------------
+//  User Preferences Page
+//------------------------------------------------------------------------------
+.preferences{
+	font-size: 1.2em;
 }
 
-.you-preferences-form{
-	margin:0 $defaultMargin;
-
-	fieldset{
-		margin-bottom:1em;
-
-		&:first-child,
-		&.you-profile-actions{
-			margin-bottom:0;
-		}
-	}
-
-	input{
-		@include roundies;
-		@include inputfont;
-		border:1px solid #222;
-	}	
-
-	legend{
-		font-size:16px;
-		font-weight:500;
-		line-height:2.75;
-	}	
+.preferences-head {
+	border-bottom: 1px solid $inset;
+	font-size: 1.3em;
+	padding: $default-margin;
 }
 
-.you-preferences-list,
-.you-preferences-networks,
-.you-preferences-notifications{
+////////////////////////////////////////////////////////////////////////////
+//  abstract: used in all .form_fieldsets
+////////////////////////////////////////////////////////////////////////////
+.preferences-section {
+	border-top: 1px solid $outset;
+	border-bottom: 1px solid $inset;
 
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: $default-margin;
+}
 
-	li{
-		border-bottom:1px solid #222;
-		list-style-type:none;
-		padding:$defaultMargin $defaultMargin/2 $defaultMargin $defaultMargin;
-
-		&:first-child{
-			border-top:1px solid #222;
-		}
+.preferences-form {
+	.form_legend {
+		font-size: 1.2em;
+		margin-bottom: 1em;
 	}
-	
- label{
-		margin-top:1px;
+
+	.form_fieldset {
+		font-size: 1em;
+		font-weight: 500;
 	}
 }
 
-.you-profile,
-.you-avatar,
-.you-notifications{
-	input{
-		float:left;
-		line-height:1.4;
-	}
-
-	label, .label{
-		float:left;
-		font-weight:500;
-		font-size:14px;
-		line-height:2;
-		width:25%;
-	}
-
-	input{
-		padding:$radius;
-		width:75%;
+.preferences-list {
+	.list_item {
+		margin-bottom: 1em;
 	}
 }
 
-.you-profile-actions{
+.preferences-checkbox {
+	margin: .6em;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.avatar-section
+////////////////////////////////////////////////////////////////////////////
+.avatar-section {
+
+}
+
+.avatar-section-input {
+	input[type=file] {
+		margin: 13px 0 0 10px;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.profile-section
+////////////////////////////////////////////////////////////////////////////
+.profile-section {
+
+}
+
+.profile-actions {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.profile-action-cancel,
+.profile-action-save {
+	@include button-primer;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.password-section
+////////////////////////////////////////////////////////////////////////////
+.password-section {
+
+}
+
+.password-actions {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.password-action-save {
+	@include button-primer;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.networks-section
+////////////////////////////////////////////////////////////////////////////
+.networks-section {
+
+}
+
+.networks-username {
 	float:right;
-	margin-top: $defaultMargin/2;
-
-	button {
-		@include button-primer($shelby-gray,small);
-
-		margin-left: 6px;
-	}
-	
-	.you-profile-cancel{
-		float: left;
-	}
-
-	.you-profile-save{
-		float: left;
-	}
-
-	.you-profile-response{
-		float: left;
-		margin: 6px;
-	}
+	line-height: 2.6;
+	margin: 0;
 }
 
-.you-avatar {
-  .user-avatar {
-    width: 48px;
-  }
-  input[type=file] {
-    border: none;
-    padding: 0;
-  }
-}
-
-#show-change-password {
-  text-decoration: none;
-  &:hover{
-    text-decoration: underline;
-  }
-}
-
-#you-preferences-change-password {
-  display: none;
-}
-
-
-.you-preferences-networks{
-	//extended by .you-preferences-list;
-
-	button{
-//		THE BELOW STYLES ARE COMMENTED OUT BECAUSE THEY PERTAIN TO SOMETHING
-//		THAT ISN'T CURRENTLY BEING RENDERED ANYWHERE ON THE SITE
-//		@include buttonfont;
-//		background:transparent;
-//		border:none;
-//		color:#efefef;
-//		float:right;
-//		font-size:11px;
-//		font-weight:300;
-//		text-decoration:underline;
-//
-		&.connected-network {
-			@include button-primer($shelby-green);
-			float: right;
-		}
-	}
-
-	h2{
-		float:left;
-		font-size:14px;
-		line-height:2;
-		width:40%;
-	}	
-
-	h3{
-		float:left;
-		font-size:12px;
-		line-height:2.5;
-		width:40%
-	}	
-
-	li{
-		padding-left:0;
-	}
-}
-
-.you-preferences-networks-twitter,
-.you-preferences-networks-tumblr,
-.you-preferences-networks-facebook {
+.preferences-networks-twitter,
+.preferences-networks-tumblr,
+.preferences-networks-facebook {
 	@include x-networks-badge;
+
+	line-height: 2.4;
 }
 
-.you-preferences-networks-twitter{
+.preferences-networks-twitter{
 	&:before{
 		@include preferences-networks(twitter);
 		background-size:76%;
 	}
 }
 
-.you-preferences-networks-facebook{
+.preferences-networks-facebook{
 	&:before{
 		@include preferences-networks(facebook);
 		background-size:28%;
 	}	
 }
 
-.you-preferences-networks-tumblr{
+.preferences-networks-tumblr{
 	&:before{
 		@include preferences-networks(tumblr);
 		background-size:36%;
 	}
 }
 
-.you-preferences-notifications{
-	//extended by .you-preferences-list;
-	
-	label {
-		font-size:14px;
-		font-weight:500;
-		position:relative;
-		width:100%;
-		z-index:1;
+
+.connected-network-options {
+	background-color: #eee;
+	margin: 0 0 0 27px;
+	padding: 5px;
+
+	p {
+		line-height: 1.231;
+		margin: 0;
 	}
+}
 
-	input[type="checkbox"]{
-		border: none;
-		margin-top:10px;
-		position:absolute;
-		height:0;
-		left:50%;
-		width:50%;
+.connected-network-checkbox {
+	float: right;
+}
 
-		&:after{
-			color:#efefef;
-			content:"off";
-			position:absolute;
-			right:$defaultMargin*2;
-			top:-7px;
-		}
+.connected-network {
+	@include button-primer($shelby-green, dark, wide);
+}
 
-		&:checked:after{
-			content:"on";
-		}
-	}
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.notifications-section
+////////////////////////////////////////////////////////////////////////////
+.notifications-section {
 
-	input + span{
-		@include transition-property(all);
-	  @include transition-duration(1s);
-		@include transition-timing-function(ease-in);
-		
-		background: $shelby-red;
-		@include background(linear-gradient(top, adjust-lightness($shelby-red,10%), $shelby-red));
-  	
-  	border:1px solid #222;
-		border-radius: $radius - 1;
-		display:block;
-		height:20px;
-		margin:5px 0 0 49%;
-		position:relative;
-		width:60px;
+}
 
-		&:after{
-			background:$toggle-switch-gray;
-			@include background(
-				url('../images/assets/switch.svg') no-repeat center center,
-				linear-gradient(top, adjust-lightness($toggle-switch-gray, 10%), $toggle-switch-gray)
-			);
-
-			border-radius: $radius - 3;
-			box-shadow: 0px 0px 2px 1px #111;
-			content:"\0020";
-			height:18px;
-			left:0;
-			position:absolute;
-			top:0;
-			width:30px;
-		}
-	}
-
-	input:checked + span{
-		background: $shelby-blue;
-		@include background(linear-gradient(top, adjust-lightness($shelby-blue, 10%), $shelby-blue));
-
-		display:block;
-		height:20px;
-		position:relative;
-		width:60px;
-
-		&:after{
-			left:49%;
-		}	
-	}
-
-	input:focus{
-		outline:none;
-		border:none;
-	}
-	
+.preferences-checkbox {
+	float: right;
 }

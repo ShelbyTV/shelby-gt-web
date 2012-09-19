@@ -30,11 +30,11 @@
     image: url($icon-comment-reply);
     repeat: no-repeat;
     position: left center;
-    size: 27%;
+    size: 22%;
   }
 
   text-decoration: none;
-  padding-left:1.1em;
+  padding-left: .95em;
 
   &:hover {
     text-decoration: underline;
@@ -61,12 +61,13 @@
   }
 }
 
-//---------------------------
+//------------------------------------------------------------------------------
 //  submit button subclasses share_submit
-//---------------------------
-
+//------------------------------------------------------------------------------
 .new-comment-submit {
   float: right;
   font-size: 1.1em;
-  margin-top: 10px;
+  margin-top: 16px;
+  position: absolute;
+  right: 0;
 }

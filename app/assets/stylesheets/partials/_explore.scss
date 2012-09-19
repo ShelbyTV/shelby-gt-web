@@ -175,22 +175,34 @@
     background-color: $list-item-bg-hover;
   }
 }
-
-//---------------------------
+//------------------------------------------------------------------------------
 //  guide styles.
 //  base: list_module
-//---------------------------
+//------------------------------------------------------------------------------
 
 .guide-explore {
   background-color: $guide-explore-bg;
   height: 100%;
+
+  ////////////////////////////////////////////////////////////////////////////
+  //  TODO:
+  //  guide-list is used in both EXPLORE and ME,
+  //  since EXPLORE hasn't headers while ME does,
+  //  `.guide-explore .guide-list` is a little override,
+  //  accounts for the lack of the header.
+  ////////////////////////////////////////////////////////////////////////////
+  .guide-list {
+    margin-top: $list-module-spacing;
+  }
 }
 
 .guide-list {
-
+  margin: 0 $list-module-spacing;
 }
 
 .guide-item {
+  position: relative;
+
   &:first-child {
     .guide-link {
       @include roundies(header);
@@ -203,10 +215,21 @@
       border-bottom: 1px solid $list-item-border;
     }
   }
+
+  &:only-child {
+    .guide-link {
+      @include roundies;
+    }
+  }
+
+  &:hover {
+    .guide-link-unfollow {
+      display: block;
+    }
+  }
 }
 
 .guide-link {
-
   border-bottom: none;
   border-left: 1px solid $list-item-border;
   border-right: 1px solid $list-item-border;
@@ -225,7 +248,7 @@
 
     background-image: url($icon-chevron-right);
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: 100% 60%;
     display: block;
     font-style: normal;
     padding-right: 1em;
@@ -233,5 +256,19 @@
 
   & > span {
     opacity: .5;
+  }
+}//eo guide-link
+
+.guide-link-unfollow {
+  @include button-primer($shelby-gray, dark);
+
+  display: none;
+  margin: .8em 3em;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.re-follow {
+    @include button-primer($shelby-blue, dark);
   }
 }

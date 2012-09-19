@@ -92,9 +92,9 @@ $bg-color: $nav-dropdown-bg !default;
 $bottom-color: #4e5354 !default;
 $bottom-color-adjust: 20% !default;
 
-@mixin gradient-primer($x-primer-color){
+@mixin gradient-primer($x-primer-color,$x-lightness-adjust-pct:5%){
 	background-color: $x-primer-color;
-	@include background(linear-gradient(top, adjust-lightness($x-primer-color,5%), $x-primer-color));
+	@include background(linear-gradient(top, adjust-lightness($x-primer-color,$x-lightness-adjust-pct), $x-primer-color));
 }
 
 $network-image : $icon-share-twitter-on !default;
@@ -154,11 +154,11 @@ $primer-button-context : generic !default;
 	} @elseif $primer-button-context == explore-rolls {
 		padding-top: .8em;
 		padding-bottom: .75em;
-	//------------------------------------------------------
-	//	follow/unfollow need to be the same size.
-	//	setting the WIDTH normalizes them,
-	//	rather than having the width delegated by the padding
-	//------------------------------------------------------
+		//------------------------------------------------------
+		//	follow/unfollow need to be the same size.
+		//	setting the WIDTH normalizes them,
+		//	rather than having the width delegated by the padding
+		//------------------------------------------------------
 		width: 100px;
 	} @elseif $primer-button-context == wide {
 		padding-top: .8em;
@@ -175,9 +175,9 @@ $primer-button-context : generic !default;
 	}
 
 	@if $primer-tone == light { 
-	//------------------------------------------------------
-	//	toggle LIGHT font and DARK font depending on button bg.
-	//------------------------------------------------------
+		//------------------------------------------------------
+		//	toggle LIGHT font and DARK font depending on button bg.
+		//------------------------------------------------------
 		color: $button-color-light;
 		font-weight: 500;
 	} @else {
@@ -208,6 +208,11 @@ $primer-button-context : generic !default;
 			border-radius: $button-radius;
 			box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-active, 20%), //inner top highlight
 									inset 0 -1px 0 0 adjust-lightness($x-primer-color-active, -5%); //inner bottom shadow
+		}
+
+		&:focus {
+			border: 1px solid black;
+			outline: none;
 		}
 	}
 

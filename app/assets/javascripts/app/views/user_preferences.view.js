@@ -5,16 +5,19 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   _securityResponseFadeTimeout : null,
 
   events: {
-    "click .js-user-save:not(.js-busy)":  "_submitContactInfo",
+    "click .js-user-save:not(.js-busy)"         :  "_submitContactInfo",
     "click .js-user-password-save:not(.js-busy)": "_submitPassword",
-    "click .js-user-cancel": "_cancel",
-    "click #show-change-password": "_showChangePassword",
-    "change #you-preferences-email-updates": "_toggleEmailUpdates",
-    "change #you-preferences-email-comments": "_toggleCommentEmails",
-    "change #you-preferences-email-rerolls": "_toggleRerollEmails",
-    "change #you-preferences-email-joinrolls": "_toggleJoinrollEmails",
-    "change #you-preferences-timeline-sharing": "_toggleTimelineSharing"
+    "click .js-user-cancel"                     : "_cancel",
+    "change #preferences-email-updates"         : "_toggleEmailUpdates",
+    "change #preferences-email-comments"        : "_toggleCommentEmails",
+    "change #preferences-email-rerolls"         : "_toggleRerollEmails",
+    "change #preferences-email-joinrolls"       : "_toggleJoinrollEmails",
+    "change #preferences-timeline-sharing"      : "_toggleTimelineSharing"
   },
+
+  className : 'preferences',
+
+  tagName : 'section',
 
   template : function(obj){
     return JST['user-preferences'](obj);
@@ -36,11 +39,6 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     this.renderChild(this._userAvatarUploader);
   },
 
-  _showChangePassword: function(e){
-    this.$("#you-preferences-change-password").show();
-    e.preventDefault();
-  },
-
   _cancel: function(){
     //TODO: what should cancel really do?
     // -1 (or .back) seems to bring us to the wrong place.
@@ -49,13 +47,19 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _submitContactInfo: function(e){
     var self = this;
-    var _email = this.$('#you-preferences-email').val();
+    var _username = this.$('#preferences-username').val();
+    // make sure they entered something for their username
+    if (!_username.length) {
+      self._updateResponse("enter a username.");
+      return;
+    }
+    var _email = this.$('#preferences-email').val();
     // make sure this is a valid email address
     if (_email.search(shelby.config.user.email.validationRegex) == -1) {
       self._updateResponse("email invalid.");
       return;
     }
-    var _username = this.$('#you-preferences-username').val();
+
     var info = {primary_email: _email, nickname: _username};
     var $thisButton = $(e.currentTarget).addClass('js-busy');
     this.model.save(info, {
@@ -65,7 +69,14 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
       },
       error: function(model, resp){
         if (resp.status == 409) {
-          self._updateResponse("sorry, username taken.");
+          var r = $.parseJSON(resp.responseText);
+          if (_(r.errors.user).has('nickname')) {
+            self._updateResponse("sorry, username taken.");
+          } else if (_(r.errors.user).has('primary_email')) {
+            self._updateResponse("sorry, email taken.");
+          } else {
+            self._updateResponse("unexpected error. try again later.");
+          }
         } else {
           self._updateResponse("unexpected error. try again later.");
         }
@@ -79,8 +90,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     var self = this;
     var info = {
       id: this.model.id,
-      password: this.$('#you-preferences-password').val(),
-      password_confirmation: this.$('#you-preferences-password-confirmation').val()
+      password: this.$('#preferences-password').val(),
+      password_confirmation: this.$('#preferences-password-confirmation').val()
       };
 
     if(info.password.length < shelby.config.user.password.minLength){
@@ -138,23 +149,23 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
   _toggleEmailUpdates: function(){
-    this._toggleCheckboxSelection('email_updates', '#you-preferences-email-updates');
+    this._toggleCheckboxSelection('email_updates', '#preferences-email-updates');
   },
 
   _toggleCommentEmails: function(){
-    this._toggleCheckboxSelection('comment_notifications', '#you-preferences-email-comments');
+    this._toggleCheckboxSelection('comment_notifications', '#preferences-email-comments');
   },
 
   _toggleRerollEmails: function(){
-    this._toggleCheckboxSelection('reroll_notifications', '#you-preferences-email-rerolls');
+    this._toggleCheckboxSelection('reroll_notifications', '#preferences-email-rerolls');
   },
 
   _toggleJoinrollEmails: function(){
-    this._toggleCheckboxSelection('roll_activity_notifications', '#you-preferences-email-joinrolls');
+    this._toggleCheckboxSelection('roll_activity_notifications', '#preferences-email-joinrolls');
   },
 
   _toggleTimelineSharing: function(){
-    this._toggleCheckboxSelection('open_graph_posting', '#you-preferences-timeline-sharing');
+    this._toggleCheckboxSelection('open_graph_posting', '#preferences-timeline-sharing');
   },
 
   // the future

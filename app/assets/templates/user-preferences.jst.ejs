@@ -1,168 +1,164 @@
-<section class="you-preferences">
-	<form class="you-preferences-form">
-		<fieldset>
-			<legend>
-				Your Profile
-			</legend>
-			<ul class="you-preferences-list you-profile">
-				<li class="clearfix">
-					<label for="you-preferences-username">
-						Username
-					</label>
-					<input id="you-preferences-username" name="you-preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
-				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email">
-						Email
-					</label>
-					<input id="you-preferences-email" name="you-preferences-email" type="email" placeholder="youremail@address.com" value="<%= user.get('primary_email') %>" />
-				</li>
-			</ul>
-			<fieldset class="you-profile-actions">
-				<span id="response-message" class="js-response-message you-profile-response"></span>	
-				<button class="js-user-cancel you-profile-cancel" type="button">
-					Cancel
-				</button>
-				<button class="js-user-save you-profile-save" type="button">
-					Save
-				</button>
-			</fieldset>
-		</fieldset><!-- /Your Profile -->
-			
-			
-		<fieldset>
-			<legend>
+<!-- <section class="preferences"> -->
+	<h1 class="preferences-head">
+		Preferences
+	</h1>
+	<form class="form_module preferences-form">
+		<fieldset class="form_fieldset preferences-section avatar-section">
+			<h2 class="form_legend">
 				Avatar
-			</legend>
-			<ul class="you-preferences-list you-avatar">
-				<li class="clearfix">
+			</h2>
+			<ul class="list_module preferences-list avatar">
+				<li class="list_item clearfix">
 					<div id="js-dynamic-user-avatar" class="label">
 						<!-- filled in by UserAvatarPresenterView -->
 					</div>
 
-					<div id="js-user-avatar-uploader">
+					<div id="js-user-avatar-uploader" class="avatar-section-input">
 						<!-- filled in by UserAvatarUploaderView -->
 					</div>
 				</li>
 			</ul>
 		</fieldset>
+
+		<fieldset class="form_fieldset preferences-section profile-section">
+			<h2 class="form_legend">
+				Your Profile
+			</h2>
+			<ul class="list_module preferences-list profile">
+				<li class="list_item clearfix">
+					<label for="preferences-username" class="form_label">
+						Username
+					</label>
+					<input id="preferences-username" class="form_input" name="preferences-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
+				</li>
+				<li class="list_item clearfix">
+					<label for="preferences-email" class="form_label">
+						Email
+					</label>
+					<input id="preferences-email" class="form_input" name="preferences-email" type="email" placeholder="youremail@address.com" value="<%= user.get('primary_email') %>" />
+				</li>
+			</ul>
+			<fieldset class="profile-actions">
+				<span id="response-message" class="js-response-message profile-response"></span>
+				<button class="js-user-cancel profile-action-cancel" type="button">
+					Cancel
+				</button>
+				<button class="js-user-save profile-action-save" type="button">
+					Save
+				</button>
+			</fieldset>
+		</fieldset><!-- /Your Profile -->
 		
-		<fieldset>
-			<legend>
-				<a href="#" id="show-change-password">Change Password</a>
-			</legend>
-			<fieldset id="you-preferences-change-password">
-				<ul class="you-preferences-list you-profile">
-					<li class="clearfix">
-						<label for="you-preferences-password">
+		<fieldset class="form_fieldset preferences-section password-section">
+			<h2 class="form_legend">
+				Change Password
+			</h2>
+			<fieldset>
+				<ul class="list_module preferences-list profile">
+					<li class="list_item clearfix">
+						<label for="preferences-password" class="form_label">
 							Password
 						</label>
-						<input id="you-preferences-password" name="you-preferences-password" type="password" />
+						<input id="preferences-password" class="form_input" name="preferences-password" type="password" />
 					</li>
-					<li class="clearfix">
-						<label for="you-preferences-password-confirmation">
+					<li class="list_item clearfix">
+						<label for="preferences-password-confirmation" class="form_label">
 							Confirm
 						</label>
-						<input id="you-preferences-password-confirmation" name="you-preferences-password-confirmation" type="password" />
+						<input id="preferences-password-confirmation" class="form_input" name="preferences-password-confirmation" type="password" />
 					</li>
 				</ul>
-				<fieldset class="you-profile-actions">
-					<span id="security-response-message" class="js-security-response-message you-profile-response"></span>	
-					<button class="js-user-password-save" type="button">
+				<fieldset class="password-actions">
+					<span id="security-response-message" class="js-security-response-message profile-response"></span>
+					<button class="js-user-password-save password-action-save" type="button">
 						Change Password
 					</button>
 				</fieldset>
 			</fieldset>
 		</fieldset><!-- /Password -->
 		
-		<fieldset>
-			<legend>
+		<fieldset class="form_fieldset preferences-section networks-section">
+			<h2 class="form_legend">
 				Connect
-			</legend>
-			<ul class="you-preferences-networks">
-				<li class="clearfix">
-					<h2 class="you-preferences-networks-twitter">Twitter</h2>
+			</h2>
+			<ul class="list_module preferences-list preferences-networks">
+				<li class="list_item clearfix">
 					<% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
 					<% if (typeof tw !== 'undefined'){ %>
-						<h3>@<%= tw.nickname || '' %></h3>
+						<p class="networks-username">@<%= tw.nickname || '' %></p>
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
-						<h3></h3>
+						<p class="networks-username"></p>
 						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="<%= shelby.config.apiBase %>/auth/twitter">Connect</button>
 					<% } %>
+					<h2 class="preferences-networks-twitter form_label">Twitter</h2>
 				</li>
-				<li class="clearfix">
-					<h2 class="you-preferences-networks-tumblr">Tumblr</h2>
+				<li class="list_item clearfix">
 					<% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
 					<% if (typeof tu !== 'undefined'){ %>
-						<h3><%= tu.nickname || '' %></h3>
+						<p class="networks-username"><%= tu.nickname || '' %></p>
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
-						<h3></h3>
+						<p class="networks-username"></p>
 						<button class="connected-network js-oauth-popup" type="button" popup-width="900" popup-height="400" location="<%= shelby.config.apiBase %>/auth/tumblr">Connect</button>
 					<% } %>
+					<h2 class="preferences-networks-tumblr form_label">Tumblr</h2>
 				</li>
-				<li class="clearfix">
-					<h2 class="you-preferences-networks-facebook">Facebook</h2>
+				<li class="list_item clearfix">
 					<% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
 					<% if (typeof fb !== 'undefined'){ %>
-						<h3><%= fb.nickname || '' %></h3>
+						<p class="networks-username"><%= fb.nickname || '' %></p>
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
-						<h3></h3>
+						<p class="networks-username"></p>
 						<button class="connected-network js-oauth-popup" type="button" popup-width="1000" popup-height="650" location="<%= shelby.config.apiBase %>/auth/facebook">Connect</button>
 					<% } %>
-				</li>
-				<% if (typeof fb !== 'undefined'){ %>
-					<li class="clearfix">
-						<span class="you-preferences-notifications you-notifications">
-						<label for="you-preferences-timeline-sharing">
+					<h2 class="preferences-networks-facebook form_label">Facebook</h2>
+					<% if (typeof fb !== 'undefined'){ %>
+						<div class="connected-network-options clearfix">
+							<input id="preferences-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" <% if (user.get('preferences').open_graph_posting === true){ %> checked <% }%> >
+							<label for="preferences-timeline-sharing" class="form_label">
 								Timeline Sharing
 							</label>
-							<input id="you-preferences-timeline-sharing" name="you-preferences-timeline-sharing" type="checkbox" <% if (user.get('preferences').open_graph_posting === true){ %> checked <% }%> >
-							<span></span>
-							<span class="timeline-sharing-description">share videos you watch, heart, comment, and roll to your facebook timeline</span>
-						</span>
-					</li>
-				<% } %>
+							<p class="timeline-sharing-description">
+								Share videos you watch, heart, comment, and roll to your facebook timeline.
+							</p>
+						</div>
+					<% } %>
+				</li>
 			</ul>
 		</fieldset><!-- /Connect -->
 		
-		<fieldset>
-			<legend>
+		<fieldset class="form_fieldset preferences-section notifications-section">
+			<h2 class="form_legend">
 				Email Notifications
-			</legend>
-			<ul class="you-preferences-notifications you-notifications">
-				<li class="clearfix">
-					<label for="you-preferences-email-updates">
+			</h2>
+			<ul class="list_module preferences-list preferences-notifications">
+				<li class="list_item clearfix">
+					<input id="preferences-email-updates" class="form_checkbox preferences-checkbox" name="preferences-email-updates" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
+					<label for="preferences-email-updates" class="form_label">
 						News and Updates
 					</label>
-					<input id="you-preferences-email-updates" name="you-preferences-email-updates" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
-					<span></span>
 				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email-comments">
+				<li class="list_item clearfix">
+					<input id="preferences-email-comments" class="form_checkbox preferences-checkbox" name="preferences-email-comments" type="checkbox" <% if (user.get('preferences').comment_notifications === true){ %> checked <% }%> />
+					<label for="preferences-email-comments" class="form_label">
 						Comments
 					</label>
-					<input id="you-preferences-email-comments" name="you-preferences-email-comments" type="checkbox" <% if (user.get('preferences').comment_notifications === true){ %> checked <% }%> />
-					<span></span>
 				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email-rerolls">
+				<li class="list_item clearfix">
+					<input id="preferences-email-rerolls" class="form_checkbox preferences-checkbox" name="preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> />
+					<label for="preferences-email-rerolls" class="form_label">
 						Re-rolls
 					</label>
-					<input id="you-preferences-email-rerolls" name="you-preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> />
-					<span></span>
 				</li>
-				<li class="clearfix">
-					<label for="you-preferences-email-joinrolls">
+				<li class="list_item clearfix">
+					<input id="preferences-email-joinrolls" class="form_checkbox preferences-checkbox" name="preferences-email-joinrolls" type="checkbox" <% if (user.get('preferences').roll_activity_notifications === true){ %> checked <% }%> />
+					<label for="preferences-email-joinrolls" class="form_label">
 						Roll activity
 					</label>
-					<input id="you-preferences-email-joinrolls" name="you-preferences-email-joinrolls" type="checkbox" <% if (user.get('preferences').roll_activity_notifications === true){ %> checked <% }%> />
-					<span></span>
 				</li>
 			</ul>
 		</fieldset><!-- /Email Notifications -->
-		
 	</form>	
-</section>
+<!-- </section> -->

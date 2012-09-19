@@ -69,17 +69,6 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     });
   },
 
-  _onSaveSuccess : function(){
-    this.$('.js-onboarding-next-step').text('Get Started');
-    shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
-    shelby.router.navigate('onboarding/2', {trigger:true});
-  },
-
-  _onSaveError : function(model, even, response){
-    this.$('.js-onboarding-next-step').text('Get Started');
-    $('.js-onboarding-username-input-error').text('Sorry, that username is already taken').show();
-  },
-
   _getInvalidFields : function(){
     var invalidFields = [];
     if (!this.model.get('nickname') || !this.model.get('nickname').length){
@@ -96,17 +85,17 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     return invalidFields;
   },
 
-  _renderErrors : function(fields){
+  _renderErrors : function(fields, isBeforeSubmit){
     //hide any old error messages
     $('.js-onboarding-username-input-error').hide();
     $('.js-onboarding-email-input-error').hide();
     $('.js-onboarding-pwd-input-error').hide();
 
     if (_.include(fields, 'nickname')){
-      $('.js-onboarding-username-input-error').text('Please enter a nickname.').show();
+      $('.js-onboarding-username-input-error').text(isBeforeSubmit ? 'Please enter a nickname.' : 'Sorry, that username is already taken.').show();
     }
     if (_.include(fields, 'primary_email')){
-      $('.js-onboarding-email-input-error').text('Please enter a valid email.').show();
+      $('.js-onboarding-email-input-error').text(isBeforeSubmit ? 'Please enter a valid email.' : 'Sorry, that email is already taken.').show();
     }
     if (_.include(fields, 'password')){
       $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
@@ -115,15 +104,22 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _onNextStepClick : function(){
     var invalidFields = this._getInvalidFields();
-    this._renderErrors(invalidFields);
+    this._renderErrors(invalidFields, true);
     if (invalidFields.length){
       return;
     }
     this.$('.js-onboarding-next-step').text('Working...');
     var self = this;
     shelby.models.user.save(this.model.toJSON(), {
-      success : self._onSaveSuccess,
-      error : self._onSaveError
+      success : function(){
+        shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
+        shelby.router.navigate('onboarding/2', {trigger:true});
+      },
+      error : function(model, resp){
+        self.$('.js-onboarding-next-step').text('Get Started');
+        var r = $.parseJSON(resp.responseText);
+        self._renderErrors(_.keys(r.errors.user));
+      }
     });
   }
 

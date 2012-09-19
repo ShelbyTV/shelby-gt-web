@@ -10,9 +10,9 @@ html,body{
 body{
 	@include basefont;
 
-	background-color:#101010;
+	background-color:#f8f8f8;
 	bottom:0;
-	color: #a4a4a4;
+	color: #333333;
 	left:0;
 	position:absolute;
 	right:0;
@@ -33,12 +33,6 @@ p {
 	margin: 1px;
 }
 
-.seovideo {
-	@include background(
-		url('../images/seovideo/bg.png') 0 0 repeat #101010
-	);
-}
-
 .seovideo-wrapper {
 	margin: 0 auto;
 	width:874px;
@@ -55,12 +49,14 @@ p {
 }
 
 .seovideo-header {
+	color: #a4a4a4;
 	margin:0px;
 	height:47px;
         @include background-image(linear-gradient(#2e3132, #171819));
 }
 
 .seovideo-header-mobile {
+	color: #a4a4a4;
 	margin:0px;
 	height:47px;
         @include background-image(linear-gradient(#2e3132, #171819));
@@ -81,10 +77,10 @@ p {
 .seovideo-headerrule {
 	height: 2px;
 	width: 100%;
-	color: #303234;
-	background-color: #303234;
+	color: #efefef;
+	background-color: #efefef;
 	margin: 0px 0px 0px 0px;
-	border-top-color: black;
+	border-top-color: #cacaca;
 }
 
 .seovideo-logo {
@@ -139,6 +135,14 @@ p {
 	width: 640px;
 	padding: 0px;
 	margin-top: 9px;
+
+	& > iframe,
+	& > embed,
+	& > object {
+		width: 100%;
+		height: 365px;
+		position: relative;
+	}
 }
 
 .seovideo-embed-mobile {
@@ -147,6 +151,14 @@ p {
 	margin-top: 9px;
 	margin-left: auto;
 	margin-right: auto;
+
+	& > iframe,
+	& > embed,
+	& > object {
+		width: 100%;
+		height: 180px;
+		position: relative;
+	}
 }
 
 .seovideo-details {
@@ -267,14 +279,14 @@ p {
 }
 
 .seovideo-messagedate {
-	color: white;
+	color: #333333;
 	font-size: 10px;
 	margin-top: 10px;
 	margin-left: 60px;
 }
 
 .seovideo-messagetext {
-	color: white;
+	color: #333333;
 	font-size: 12px;
 	margin-left: 60px;
 	margin-top: 5px;
@@ -295,14 +307,14 @@ p {
 }
 
 .seovideo-messagedate-mobile {
-	color: white;
+	color: #333333;
 	font-size: 8px;
 	margin-top: 8px;
 	margin-left: 46px;
 }
 
 .seovideo-messagetext-mobile {
-	color: white;
+	color: #333333;
 	font-size: 10px;
 	margin-left: 46px;
 	margin-top: 4px;

@@ -3,7 +3,7 @@ require 'net/http'
 require 'shelby_api'
 
 class SeovideoController < ApplicationController
-
+helper_method :hyphenateString
 before_filter :prepare_for_mobile
 
   def show
@@ -47,10 +47,8 @@ before_filter :prepare_for_mobile
       if video_related_response and video_related_response.body
         if (video_related_response_decoded = ActiveSupport::JSON.decode(video_related_response.body))
           if (video_related_response_decoded_result = video_related_response_decoded["result"])
-            if (video_related_response_decoded_result["provider_name"] && video_related_response_decoded_result["provider_name"] == "youtube")
-              @video_related_response_body_results.append(video_related_response_decoded_result)
-              count += 1
-            end
+            @video_related_response_body_results.append(video_related_response_decoded_result)
+            count += 1
           end
         end
       end
@@ -62,6 +60,7 @@ before_filter :prepare_for_mobile
     @video_author = @video_response_body_result["author"]
     @video_duration = prettyDuration(@video_response_body_result["duration"])
     @video_id = @video_response_body_result["id"]
+    @video_embed = @video_response_body_result["embed_url"]
 
     conversations_url = "#{video_api_base}/#{@video_id}/conversations"
 
@@ -75,6 +74,21 @@ before_filter :prepare_for_mobile
       if conversations_response.body
         if (conversations_response_body_decoded = ActiveSupport::JSON.decode(conversations_response.body))
           @conversations = conversations_response_body_decoded["result"]
+          if (@conversations and 
+              @conversations.first and
+              @conversations.first["messages"] and
+              @conversations.first["messages"].first)
+            first_message = @conversations.first["messages"].first
+            # can't use double-quotes anywhere, since it's going in a meta tag
+            first_message_text = first_message["text"].gsub /"/, "'"
+            if first_message['origin_network'] && first_message['origin_network'] == 'twitter' 
+              @meta_description = "Shared by @#{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
+            else
+              @meta_description = "Shared by #{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
+            end
+          else
+            @meta_description = Settings::Application.meta_description 
+          end
         end
       end
     end
@@ -103,6 +117,7 @@ private
   def mobile_device?
     request.user_agent =~ /Mobile|webOS/
   end
+
   def prepare_for_mobile
     if params[:mobile] != nil
       if params[:mobile] == "1" 
@@ -114,5 +129,10 @@ private
       request.format = :mobile if mobile_device?
     end
   end
+
+  def hyphenateString(title)
+    title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
+  end
+
 
 end
