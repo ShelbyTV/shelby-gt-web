@@ -124,6 +124,26 @@
                     <p>
                       <%= message["text"] %>
                     </p>
+
+                    <% if message["origin_network"] == "twitter" %>
+                      <ul class="xuser-data-twitter-intents">
+                        <li>
+                          <a href="https://twitter.com/intent/reply?tweet_id=">
+                            Reply
+                          </a>
+                        </li>
+                        <li>
+                          <a href="http://twitter.com/intent/retweet?tweet_id=">
+                            Retweet
+                          </a>
+                        </li>
+                        <li>
+                          <a href="http://twitter.com/intent/favorite?tweet_id=">
+                            Favorite
+                          </a>
+                        </li>
+                      </ul>
+                    <% end %>
                   </div>
                 </blockquote><!-- eo .media_module-->
               </li>
