@@ -125,10 +125,15 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   _validateShare : function(){
-    if(this._components.emailAddresses && this.$('.js-share-email-addresses:invalid').length > 0){
-      this.$('.js-share-email-addresses').addClass('error');
-      shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
-      return false;
+    if(this._components.emailAddresses){
+      var $emailAddressesInput = this.$('.js-share-email-addresses');
+      var emailAddresses = $emailAddressesInput.val();
+      $emailAddressesInput.val(_(emailAddresses.split(',')).compact().join(','));
+      if (this.$('.js-share-email-addresses:invalid').length > 0) {
+        $emailAddressesInput.addClass('error');
+        shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
+        return false;
+      }
     }
     
     if(this._components.networkToggles && this.model.get('destination').length == 0){
