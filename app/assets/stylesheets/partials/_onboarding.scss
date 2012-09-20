@@ -190,11 +190,11 @@
   width: 20%;
 }
 
-.onboarding-roll-item-lining {
+.onboarding-roll-button {
   background-color: transparent;
   border: none;
   display: block;
-  margin: 10px 5px;
+  margin: 10px 0;
   padding: 5px;
   position: relative;
   text-align: left;
@@ -244,28 +244,31 @@
   line-height: 1.9;
   margin-bottom: 8px;
 }
-.onboarding-roll-button-wrapper  {
-  display:  none;
-  left: 0;
-  top: 32%;
-  position: absolute;
-  text-align:  center;
-  width:  100%;
-}
-.onboarding-roll-button {
-  @include button-primer($x-primer-color, light, menu);
 
-  display: inline;
-  margin: 0 auto;
+//TODO: determine that this button stuff is not-needed
 
-  &:hover {
-    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
-  }
+//.onboarding-roll-button-wrapper  {
+//  display:  none;
+//  left: 0;
+//  top: 32%;
+//  position: absolute;
+//  text-align:  center;
+//  width:  100%;
+//}
+//.onboarding-roll-button {
+//  @include button-primer($x-primer-color, light, menu);
 
-  &:active {
-    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
-  }
-}
+//  display: inline;
+//  margin: 0 auto;
+
+//  &:hover {
+//    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);
+//  }
+
+//  &:active {
+//    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);
+//  }
+//}
 
 .onboarding-roll-followed {
   position: absolute;

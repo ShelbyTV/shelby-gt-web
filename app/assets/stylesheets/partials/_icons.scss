@@ -1,0 +1,89 @@
+//------------------------------------------------------------------------------
+//  ICON CLASS CONSTRUCTOR
+//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  $icons, icon keywords are whitespace-delineated because Sass, scary right?
+////////////////////////////////////////////////////////////////////////////
+$icons: cancel 
+        carrot 
+        check 
+        chevron_right 
+        comment_reply
+        email
+        mark
+        avatar_large
+        missing_avatar
+        missing_thumbnail
+        settings
+        onboarding_facebook_add
+        onboarding_facebook_added
+        onboarding_tumblr_add
+        onboarding_tumblr_added
+        onboarding_twitter_add
+        onboarding_twitter_added
+        overlay_like
+        overlay_nowplaying
+        overlay_watchlater
+        overlay_you
+        player_fullscreen_enable
+        player_fullscreen_disable
+        player_hd_on
+        player_hd_off
+        player_play
+        player_pause
+        player_sound_off
+        player_sound_on
+        share_facebook_on
+        share_facebook_off
+        share_twitter_on
+        share_twitter_off
+        social_facebook
+        social_tumblr
+        social_twitter
+        switch_lock
+        switch_unlock
+        team_twitter
+        team_web
+        tweet_intents
+        user_logged_out
+        nav_stream
+        videocard_queue
+        videocard_comment
+        videocard_comment_off
+        videocard_comment_on
+        videocard_like_off
+        videocard_like_on
+        videocard_more
+        videocard_roll
+        videocard_roll_off
+        videocard_roll_on
+        videocard_share
+        videocard_share_off
+        videocard_share_on;
+
+@mixin icon-primer($icon) {
+  background-image: url("#{$path}#{$icon}#{$extension}");
+}
+
+@each $icon in $icons {
+  .icon_#{$icon} {
+    @include icon-primer($icon);
+  }
+}
+
+//------------------------------------------------------------------------------
+//  button icon module
+//------------------------------------------------------------------------------
+.button_icon {
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: auto;
+  font-style: normal;
+}
+
+.button_icon_right {
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: auto;
+  font-style: normal;
+}

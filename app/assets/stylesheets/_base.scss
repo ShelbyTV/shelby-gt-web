@@ -9,6 +9,7 @@ $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-check                     : "#{$path}check#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
 $icon-comment-reply             : "#{$path}comment_reply#{$extension}";
+$icon-email                     : "#{$path}email.svg";
 $icon-mark                      : "#{$path}mark#{$extension}";
 $icon-avatar-large              : "#{$path}avatar.png";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
@@ -91,6 +92,12 @@ $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-size           : 100%;
 $size                : $font-size !default;
 
+//------------------------------------------------------------------------------
+//  BUTTON SETUP
+$button-padding-left: 1.3em;
+$button-padding-right: .95em;
+
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //  BORDER RADIUS
 //------------------------------------------------------------------------------

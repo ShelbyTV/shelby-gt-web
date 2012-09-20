@@ -30,14 +30,11 @@ $notification-base-color: #fff82b;
   top: -3px;
 
   .dismiss-banner-icon {
+      background-size: contain;
       color: transparent;
       display: block;
       font: 0/0 a;
       height: 7px;
-      background-image: url($icon-cancel);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: contain;
       width: 7px;
   }
 
@@ -92,11 +89,7 @@ $notification-base-color: #fff82b;
   text-decoration: none;
 
   .roll-icon {
-    background-image: url($icon-videocard-roll);
-    background-repeat: no-repeat;
-    background-position: center left;
-    font-style: normal;
-    padding-left: 1.2em;
+    padding-left: $button-padding-left;
   }
 }
 
