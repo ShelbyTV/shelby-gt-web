@@ -22,7 +22,7 @@
 
   &.post-display {
     /* get the entire thing out of the way after it fades */
-    top: 110%;
+    top: -200%;
     @include transition-property('top');
     @include transition-duration(0s);
     @include transition-delay(1.5s);
