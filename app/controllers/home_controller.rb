@@ -59,7 +59,8 @@ class HomeController < ApplicationController
   # main search/home page for fb genius app
   #
   def facebook_genius_index
-    @sig = Koala::Facebook::OAuth.parse_signed_request(params[:signed_request])
+    oauth = Koala::Facebook::OAuth.new
+    @un_signed_request = oauth.parse_signed_request(params[:signed_request])
     render '/home/facebook_genius/index'
   end
 
@@ -85,7 +86,7 @@ class HomeController < ApplicationController
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else
-            if [nil, "", "gt", "localhost", "www", "fb"].include? request.subdomain
+            if [nil, "", "gt", "localhost", "www"].include? request.subdomain
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
