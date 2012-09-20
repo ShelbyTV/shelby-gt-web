@@ -106,7 +106,7 @@ class HomeController < ApplicationController
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else
-            if [nil, "", "gt", "localhost", "www"].include? request.subdomain
+            if [nil, "", "gt", "localhost", "www", "fb"].include? request.subdomain
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
