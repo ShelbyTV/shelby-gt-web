@@ -21,6 +21,10 @@ gem 'httparty'
 #
 gem 'youtube_it'
 
+#
+# ---------- External Services
+#
+gem 'koala'
 
 #
 # -- Quiet Logging
