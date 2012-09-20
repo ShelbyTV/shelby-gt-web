@@ -19,6 +19,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/smart_refresh_list.view.js
 //= require ./views/paging_list.view.js
 //= require ./views/frame_group_play_paging_list.view.js
+//= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/dashboard.view.js
 //= require ./views/guide_overlay.view.js
 //= require ./views/me_list.view.js
