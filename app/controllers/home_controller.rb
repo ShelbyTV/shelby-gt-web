@@ -59,8 +59,10 @@ class HomeController < ApplicationController
   # main search/home page for fb genius app
   #
   def facebook_genius_index
-    oauth = Koala::Facebook::OAuth.new
-    @un_signed_request = oauth.parse_signed_request(params[:signed_request])
+    if param[:signed_request]
+      koala = Koala::Facebook::OAuth.new('305135322927840','b616125302256c0dc06654cdd4bdf9bc')
+      @un_signed_request = koala.parse_signed_request(params[:signed_request])
+    end
     render '/home/facebook_genius/index'
   end
 
