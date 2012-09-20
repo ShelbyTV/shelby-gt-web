@@ -37,3 +37,4 @@ end
 set :stages, %w(production iso_roll fb_genius)
 set :default_stage, 'production'
 require 'capistrano/ext/multistage'
+require 'capistrano-unicorn'
