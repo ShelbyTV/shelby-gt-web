@@ -112,7 +112,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   
   displayFacebookGeniusRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
-    $('body').addClass('fb-genius-roll');
+    $('body').addClass('facebook-genius');
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
 

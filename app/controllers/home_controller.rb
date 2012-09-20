@@ -32,6 +32,7 @@ class HomeController < ApplicationController
       @auth_strategy = params[:auth_strategy]
       @show_error = params[:access] == "nos"
       @mobile_os = detect_mobile_os
+      
       render (@mobile_os ? '/mobile/search' : '/home/landing')
       
     end
@@ -54,6 +55,9 @@ class HomeController < ApplicationController
     render 'get_bookmarklet', :layout => 'blank'
   end
   
+  #####
+  # main search/home page for fb genius app
+  #
   def facebook_genius_index
     render '/home/facebook_genius/index'
   end
@@ -94,6 +98,10 @@ class HomeController < ApplicationController
     
     def get_genius_roll_id_from_path(path)
       return @roll_id[1] if @roll_id = /fb_genius\/roll\/(\w*)/i.match(path)
+    end
+    
+    def is_from_fb_genius_frame_share(path)
+      /fb_genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
     end
     
 end

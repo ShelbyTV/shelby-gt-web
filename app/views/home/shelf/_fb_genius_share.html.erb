@@ -1,0 +1,32 @@
+<section class="landing-shelf-genius-email-share landing-shelf-share landing-shelf fb-genius">
+	<div class="landing-shelf-lining clearfix">
+		<div id="sharing-box">
+			<div class="fb-like" data-href="<%= @frame['permalink'] %>" data-send="true" data-layout="box_count" data-width="250" data-show-faces="true"></div>
+		</div>
+		<%= render :partial => "/home/shelf/video_embed", :locals => {:share_buttons => false } %>
+		
+		<div class="landing-shelf-share-content" style="padding-top:0px;">
+			<h1>
+				Your friend found this searching for "<%= URI.unescape(@roll['title'][8..-1]) %>"
+			</h1>
+			
+			<hr />
+			
+			<div class="fb-comments" data-href="<%= Settings::Application.url %>/roll/<%= @roll['id'] %>/frame/<%= @frame['id'] %>" data-width="404" data-num-posts="2"></div>
+				
+		</div>
+		
+		<div id="landing-page-search-area">
+			<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
+				<input name="search" type="text" id="js-email-input" class="landing-form-input" placeholder="WHAT WILL YOU FIND?" /><!--
+
+			  --><input type="submit" value="SEARCH" id="js-genius-search-submit" class="landing-form-submit" />
+				<div id="genius-search-spinner" class="genius-search-spinner">
+			</form>
+		</div>
+
+	</div>
+</section>
+<script>
+	$('.guide-presentation-selector').remove();
+</script>

@@ -1,8 +1,6 @@
-
-
-/* non-programatic changes to landing page display */
-body.facebook-genius {
-
+/* non-programatic changes to app display */
+body.facebook-genius{
+  // landing page //
   .landing-form-input {
     width: 75%;
   }
@@ -16,11 +14,9 @@ body.facebook-genius {
   	width: 30px;
   	margin: 0 auto;
   }
-  
-}
+  // ***** //
 
-/* non-programatic changes to app display */
-body.fb-genius-roll{
+  
   .media_body, .media_image {
     overflow: visible;
   }
@@ -32,12 +28,9 @@ body.fb-genius-roll{
   span.fb_edge_comment_widget iframe {
     width: 351px !important;
   }
-  // ** //
-  
+  // ***** //
+    
   // header
-  .shelby-header {
-    @include background(linear-gradient(top, #3B5998 10%, black 90%));
-  }
   .guide-presentation-selector {
     display:none;
   }
@@ -78,4 +71,21 @@ body.fb-genius-roll{
     #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 80%!important; }
   }
   
+}
+
+
+section.fb-genius {
+  #landing-page-search-area{
+    margin-top: 330px;
+    margin-left: 63px;
+  }
+
+  #sharing-box {
+    width: 65px;
+    float: left; 
+  }
+
+  .landing-shelf-lining { width: 1000px; }
+  .landing-form-input { width: 85%; }
+
 }

@@ -34,6 +34,6 @@ end
 #	Multistage Deploy via capistrano-ext
 #############################################################
 
-set :stages, %w(production iso_roll)
+set :stages, %w(production iso_roll fb_genius)
 set :default_stage, 'production'
 require 'capistrano/ext/multistage'
