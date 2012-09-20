@@ -198,6 +198,7 @@
   padding: 5px;
   position: relative;
   text-align: left;
+  width: 100%;
 
   &:hover {
     @include roundies(input);

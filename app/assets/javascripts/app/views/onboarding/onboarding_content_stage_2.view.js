@@ -9,7 +9,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   */
 
   events : {
-    "click .js-onboarding-roll-item-lining:not(.followed)" : "_onOnboardingRollButtonClick",
+    "click .js-onboarding-roll-button:not(.followed)" : "_onOnboardingRollButtonClick",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
