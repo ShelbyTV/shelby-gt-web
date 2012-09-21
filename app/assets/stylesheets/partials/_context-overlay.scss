@@ -27,19 +27,12 @@
     padding: 3px 5px 0;
   }
 
-  .xframe-comment-link {
-    &:active,
-    &:link,
-    &:visited {
-      color: #888;
-    }
-  }
-
   ////////////////////////////////////////////////////////////////////////////
   //  menu and sublist stuff
   ////////////////////////////////////////////////////////////////////////////
+
   .xframe-menu {
-    bottom: 27px;
+    bottom: 28px;
     display: block;
     top: auto;
 
@@ -61,10 +54,11 @@
     border: none !important;
     box-shadow: none;
     background: transparent;
-    color: #888;
+    color: #666;
     font-family: $font-family;
     font-weight: 300;
     margin: 0;
+    opacity: $videocard-faux-tint;
     width: auto;
 
     &:hover {
@@ -106,8 +100,8 @@
       .command-icon {
         &.icon_email {
           background-image: url($icon-email);
+          padding-left: $button-padding-left + .2em;
         }
-//        padding-left: $button-padding-left;
       }
     }
 
