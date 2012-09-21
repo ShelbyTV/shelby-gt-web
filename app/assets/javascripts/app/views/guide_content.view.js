@@ -33,7 +33,6 @@
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      this.model.bind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       this.model.bind('reposition', this._onReposition, this);
       shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
@@ -46,7 +45,6 @@
     _cleanup : function() {
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-      this.model.unbind('change:disableSmartRefresh', this._onDisableSmartRefresh, this);
       this.model.unbind('reposition', this._onReposition, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
@@ -58,7 +56,6 @@
       if (!_changedAttrs.has('displayState') &&
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
-          !_changedAttrs.has('pollAttempts') &&
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
@@ -193,11 +190,7 @@
 
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
-      if (!(_(guideModel.changedAttributes()).has('pollAttempts') && guideModel.get('pollAttempts') > 1)){
-        // hide the spinner ourselves, unless we're polling the dashboard, in which case, its just going to
-        // be reshown in a few lines anyway, so don't hide - prevents flickering
-        shelby.views.guideSpinner.hide();
-      }
+      shelby.views.guideSpinner.hide();
       
       //remove any current guide overlay views
       shelby.models.guideOverlay.clearAllGuideOverlays();
@@ -274,15 +267,6 @@
         this._playingFrameGroupCollection = null;
         this._playingState = libs.shelbyGT.PlayingState.none;
         this._playingRollId = null;
-      }
-    },
-
-    _onDisableSmartRefresh : function(guideModel, disableSmartRefresh){
-      if (disableSmartRefresh) {
-        if (this._listView) {
-          this._listView.options.doSmartRefresh = false;
-        }
-        guideModel.set('disableSmartRefresh', false);
       }
     },
 
