@@ -133,8 +133,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   requestFrameShareView: function(){
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
-      this.model.getFirstFrame());
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
+        this.model.getFirstFrame());
+    }
   },
   
   requestFrameRollView : function(){
