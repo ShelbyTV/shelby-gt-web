@@ -10,11 +10,24 @@
     });
 
     // Additional initialization code here
-		//var frame = shelby.models.guide.get("activeFrameModel");
-		//$(".fb-comments").attr('data-href', shelby.config.appUrl+"/roll/"+frame.get('roll').id+"/frame/"+frame.id);
-		//FB.XFBML.parse(document.getElementById('fb-comments-holder'));
-		//$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');
+		var frame = shelby.models.guide.get("activeFrameModel");
+		$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');
     FB.XFBML.parse($('#fb-comments-holder')[0]);
+
+		/*
+		// Event subscriptions
+		FB.Event.subscribe('comment.create',
+			function(response) {
+				window.comment_response = response;
+			}
+		);
+		
+		FB.Event.subscribe('edge.create',
+		    function(response) {
+					window.like_response = response;
+		    }
+		);
+		*/
   };
 
   // Load the SDK Asynchronously

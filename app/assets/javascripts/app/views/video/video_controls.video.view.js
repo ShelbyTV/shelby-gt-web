@@ -251,10 +251,14 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
       $('.js-main-layout .js-guide').removeClass("hide-guide");
       this.$el.find('.video-player-tools').removeClass("full-width");
       this.$el.find('.video-player-next').removeClass("full-width");
+      $('.videoplayer').removeClass("full-width");
+      $('#fb-comments-holder').removeClass('hide-comment-holder');
     } else {
       $('.js-main-layout .js-guide').addClass("hide-guide");
       this.$el.find('.video-player-tools').addClass("full-width");
       this.$el.find('.video-player-next').addClass("full-width");
+      $('.videoplayer').addClass("full-width");
+      $('#fb-comments-holder').addClass('hide-comment-holder');
     }
   },
 
