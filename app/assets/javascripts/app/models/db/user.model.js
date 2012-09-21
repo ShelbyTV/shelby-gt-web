@@ -64,6 +64,10 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
                    }).value();
     var self = this;
     self.get('autocomplete')[key] = _.union(self.get('autocomplete')[key], entriesArray);
+  },
+  
+  isAnonymous : function(){
+    return this.get('anon');
   }
 
 });

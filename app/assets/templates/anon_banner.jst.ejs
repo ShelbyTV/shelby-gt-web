@@ -1,51 +1,87 @@
-<div class="js-logged-out-overlay logged-out-overlay">
-  <p>Sorry, you must log in to do that : ]</p>
+<div class="notification-banner-anon notification-banner-anon-signup">
+	<div class="dropdown_module">
+    <button class="dropdown_button signup-button">
+      <i class="dropdown_icon">
+        Sign Up!
+      </i>
+    </button>
+
+    <section class="dropdown_section signup-section">
+      <div class="dropdown_lining signup-section-lining clearfix">
+				
+				<form accept-charset="UTF-8" action="<%= shelby.config.signupFormUrl %>" method="post" class="form_module signup-form">
+					<fieldset class="">
+						<label for="name" class="form_label">Name</label>
+						<input id="name" name="name" placeholder="Your full name" class="form_input" />
+					</fieldset>
+					<fieldset class="">
+						<label for="nickname" class="form_label">Nickname</label>
+						<input id="nickname" name="nickname" placeholder="To identify you on Shelby" class="form_input" />
+					</fieldset>
+					<fieldset class="">
+						<label for="primary_email" class="form_label">Email</label>
+						<input id="primary_email" name="primary_email" class="form_input" type="email" />
+					</fieldset>
+					<fieldset class="">
+						<label for="password" class="form_label">Password</label>
+						<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
+					</fieldset>
+					<fieldset class="form_fieldset">
+						<input name="commit" type="submit" value="Sign Up" class="signup-submit" />
+					</fieldset>
+				</form>
+				
+				<hr />
+				
+				<div class="social_login login-social-section clearfix">
+					<h4 class="login-social-section-header">or, signup with</h4>
+		      <a class="social_login_twitter js-track-event auth-popup" data-ga_action="Login with Twitter" 
+						href="<%= shelby.config.apiBase %>/auth/twitter" location="<%= shelby.config.apiBase %>/auth/twitter" popup-width="600" popup-height="700">
+		        Twitter
+		      </a>
+
+		      <a class="social_login_facebook js-track-event auth-popup" data-ga_action="Login with Facebook" 
+						href="<%= shelby.config.apiBase %>/auth/facebook" location="<%= shelby.config.apiBase %>/auth/facebook" popup-width="1000" popup-height="650">
+		        Facebook
+		      </a>
+				</div>
+
+			</div>
+		</section>
+		
+	</div>
+	<h3 class="anon-signup-subtitle">
+		(takes just a minute)
+	</h3>
 </div>
-
-<aside class="logged-out-banner clearfix">
-	<header class="logged-out-header">
-		<nav class="clearfix">
-			<ul class="logged-out-nav">
-				<li>
-					<a href="/blog">
-						Blog
-					</a>
-				</li>
-				<li>
-					<a href="/team">
-						Team
-					</a>
-				</li>
-				<li>
-					<a href="/press">
-						Press
-					</a>
-				</li>
-				<li>
-					<a href="/help">
-						Help
-					</a>
-				</li>
-			</ul>
-			<span class="logged-out-origin">
-				Made in Cyberdyne Systems  NYC
-			</span>
-		</nav>
-		<h1 class="logged-out-tagline">
-			<a href="/">Shelby.tv</a> is the most amazing way <br/>to discover and enjoy web video.
-		</h1>
-	</header>
-	<ul class="logged-out-networks">
-		<li>
-			<button class="js-logged-out-twitter logged-out-twitter js-oauth-popup" popup-width="600" popup-height="700" location="<%= shelby.config.apiBase %>/auth/twitter">
-				Log In with Twitter
-			</button>
-		</li>
-		<li>
-			<button class="js-logged-out-facebook logged-out-facebook js-oauth-popup" popup-width="600" popup-height="700" location="<%= shelby.config.apiBase %>/auth/facebook">
-				Log In with Facebook
-			</button>
-		</li>
-	</ul>
-
-</aside>
+<div class="notification-banner-anon notification-banner-anon-benefit">
+	<% switch(bannerType){
+		 case libs.shelbyGT.AnonymousActions.QUEUE: %>
+			<h1 class="anon-benefit-title">Don't miss a thing!</h1>
+			<h2 class="anon-benefit-subtitle">As a member, you can queue the videos that interest you and watch them whenever you'd like.</h2>
+	<% break;
+		 case libs.shelbyGT.AnonymousActions.STREAM: %>
+			<h1 class="anon-benefit-title">Instant On</h1>
+			<h2 class="anon-benefit-subtitle">As a member, your stream is a fresh source of videos that you care about.  It can also include the videos shared by your Twitter, Facebook, and Tumblr friends!</h2>
+	<% break;
+		 case libs.shelbyGT.AnonymousActions.ROLL: %>
+			<h1 class="anon-benefit-title">Create a .tv channel</h1>
+			<h2 class="anon-benefit-subtitle">Our community curates really interesting channels of video.  As a member, you +Roll and curate a channel to call your own.</h2>
+	<% break;
+		 case libs.shelbyGT.AnonymousActions.FOLLOW: %>
+			<h1 class="anon-benefit-title">You choose what's on</h1>
+			<h2 class="anon-benefit-subtitle">Discover interesting videos that you might miss on other sites.  The Shelby community of Roll's has something for everybody.</h2>
+	<% break;
+		 case libs.shelbyGT.AnonymousActions.COMMENT: %>
+			<h1 class="anon-benefit-title">Engage</h1>
+			<h2 class="anon-benefit-subtitle">Take part in lively discussions outside the traditional walls of video sites.  Sign up now to become a member of the thoughtful Shelby community.</h2>
+	<% break;
+		 case libs.shelbyGT.AnonymousActions.ME: %>
+			<h1 class="anon-benefit-title">http://your-name.shelby.tv</h1>
+			<h2 class="anon-benefit-subtitle">Curate your own .tv channel.<br />It's like a blog, except you post video and don't have write so much. ;-]</h2>
+	<% break;
+		 default: %>
+			<h1 class="anon-benefit-title">Get more from Shelby</h1>
+			<h2 class="anon-benefit-subtitle">Join the thoughtful community on Shelby and enjoy your video experience a little better.</h2>
+	<% } %>
+</div>

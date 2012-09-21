@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     #XXX ISOLATED_ROLL
     # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
     # controller, but until that's built, we just short-circuit right here
-    if @isolated_roll_id = get_isolated_roll_id_from_request(request)
+    if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
       render '/home/isolated_roll' and return 
     end
     
@@ -30,7 +30,16 @@ class HomeController < ApplicationController
       render (@mobile_os ? '/mobile/search' : '/home/landing')
       
     end
-  end  
+  end
+  
+  ##
+  # Handles explore view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /explore
+  #
+  def explore
+    render '/home/app'
+  end
   
   ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
@@ -52,7 +61,7 @@ class HomeController < ApplicationController
   private
 
     
-    def get_isolated_roll_id_from_request(request)
+    def get_isolated_roll_id_from_domain_of_request(request)
       return case request.host
           #TODO: pull this mapping from API
           when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
