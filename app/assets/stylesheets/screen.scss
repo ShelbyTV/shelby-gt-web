@@ -2,54 +2,56 @@
 @import "base-mixin";
 
 @import 
-		"partials/fonts",
-		"partials/h5bp", 
-		"partials/modules",	
-		
-		"partials/app.html",
-		"partials/banner_notification",
-		"partials/app-header",
-		"partials/guide-presentation-selector",
-		"partials/guide-overlay-view",
+    "partials/fonts",
+    "partials/h5bp",
+    "partials/modules",
+    "partials/icons",
 
-		"partials/explore",
-		"partials/onboarding",
+    "partials/app.html",
+    "partials/banner_notification",
+    "partials/app-header",
+    "partials/guide-presentation-selector",
+    "partials/guide-overlay-view",
+
+    "partials/explore",
+    "partials/onboarding",
     "partials/action",
-		
-		"partials/isolated-roll",
 
-		"partials/frame",
-		"partials/video-player",
-		"partials/notifications",
+    "partials/isolated-roll",
 
-		"partials/roll-header",
-		
-		"partials/video-controls",
-		"partials/video-mini-progress",
+    "partials/stream",
+    "partials/frame",
+    "partials/video-player",
+    "partials/notifications",
 
-		"partials/me-section",
-		"partials/rolls-list",
+    "partials/roll-header",
 
-		"partials/frame-rolling",
-		"partials/rolling-form",
-		"partials/frame-conversation",
+    "partials/video-controls",
+    "partials/video-mini-progress",
 
-		"partials/rolls",	
-		"partials/share",
+    "partials/me-section",
+    "partials/rolls-list",
 
-		"partials/user-preferences",
-		"partials/team",
-		
-		"partials/avatar_uploading",
+    "partials/frame-rolling",
+    "partials/rolling-form",
+    "partials/frame-conversation",
 
-		"partials/load-more",
+    "partials/rolls",
+    "partials/share",
 
-		"partials/context-overlay",
-		"partials/preroll-video-info",
+    "partials/user-preferences",
+    "partials/team",
 
-		"partials/gate.scss",
-		"partials/genius.scss",
+    "partials/avatar_uploading",
 
-		"partials/autocomplete.scss",
+    "partials/load-more",
 
-		"partials/h5bp-utilities";
+    "partials/context-overlay",
+    "partials/preroll-video-info",
+
+    "partials/gate.scss",
+    "partials/genius.scss",
+
+    "partials/autocomplete.scss",
+
+    "partials/h5bp-utilities";

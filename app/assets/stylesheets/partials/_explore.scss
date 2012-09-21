@@ -1,5 +1,7 @@
 @import "base";
-
+//------------------------------------------------------------------------------
+//  explore section
+//------------------------------------------------------------------------------
 .explore {
   background: #efefef;
   color: black;
@@ -9,6 +11,9 @@
 .explore-body {
 }
 
+//------------------------------------------------------------------------------
+//  lists of sections
+//------------------------------------------------------------------------------
 .explore-list { //primer, shared by all lists in .explore
   margin: 0;
   padding: 0;
@@ -22,7 +27,9 @@
 .explore-item {
 
 }
-
+////////////////////////////////////////////////////////////////////////////
+//  individual roll
+////////////////////////////////////////////////////////////////////////////
 .explore-roll {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -54,7 +61,7 @@
 }
 
 .explore-header {
-  font-size: 1.5em; 
+  font-size: 1.5em;
 }
 
 .explore-subline {
@@ -65,6 +72,9 @@
   text-transform: uppercase;
 }
 
+//------------------------------------------------------------------------------
+//  menu per frame, displays on hover
+//------------------------------------------------------------------------------
 .explore-menu {
   font-size: 1.2em;
 }
@@ -82,6 +92,9 @@
   }
 }
 
+//------------------------------------------------------------------------------
+//  list of frames per roll
+//------------------------------------------------------------------------------
 .explore-roll-list {
 
 }
@@ -113,26 +126,6 @@
     border: 1px solid #b9b9b9;
   }
 }
-
-//.xxxexplore-frame-menu {
-//  display: none;
-//  left: 0;
-//  position: absolute;
-//  top: 0;
-//  width: 100%;
-//  z-index: 1;
-//}
-
-//.xxxexplore-frame-command {
-//  @include button-primer($x-primer-color,$primer-tone,frame-command);
-
-//  float: left;
-//  margin: .75em 0 0 .75em;
-
-//  &.frame-queued {
-//    @include button-primer($shelby-gray,dark,frame-command);
-//  }
-//}
 
 .explore-frame-thumbnail {
   background-size: cover;
@@ -169,12 +162,12 @@
   margin-top: (10em/12);
 }
 
-
 .active-list-item {
   .list_button {
     background-color: $list-item-bg-hover;
   }
 }
+
 //------------------------------------------------------------------------------
 //  guide styles.
 //  base: list_module
@@ -210,7 +203,7 @@
   }
 
   &:last-child {
-    .guide-link {    
+    .guide-link {
       @include roundies(footer);
       border-bottom: 1px solid $list-item-border;
     }
@@ -228,8 +221,8 @@
     }
   }
 }
-
 .guide-link {
+  background-color: $list-item-bg;
   border-bottom: none;
   border-left: 1px solid $list-item-border;
   border-right: 1px solid $list-item-border;
@@ -241,7 +234,6 @@
   padding: 0.9em 0.9em 1em;
   text-align: left;
   width: 100%;
-  background-color: $list-item-bg;
 
   .guide-link-icon {
     @include ellipsis;
@@ -259,6 +251,10 @@
   }
 }//eo guide-link
 
+////////////////////////////////////////////////////////////////////////////
+//  unfollow/follow button,
+//  displays on hover per roll item in list
+////////////////////////////////////////////////////////////////////////////
 .guide-link-unfollow {
   @include button-primer($shelby-gray, dark);
 

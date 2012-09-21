@@ -5,20 +5,20 @@ $animate-style : $animate-timing !default;
 		@include transition-property($animate-property);
 		@include transition-duration($animate-duration);
 //		@include transition-timing-function($animate-timing);
-		@include transition-delay($animate-delay);  
+		@include transition-delay($animate-delay);
 		@include transform(translateZ(0));
 	}
 }
 
-$roundies-type : normal !default; 
+$roundies-type : normal !default;
 
 @mixin roundies($roundies-type){
 	@if $roundies-type == normal {
-		border-radius: $radius;	
-	} 
+		border-radius: $radius;
+	}
 	@else if $roundies-type == input {
 		border-radius: $radius - 2;
-	} 
+	}
   @else if $roundies-type == header {
     border-radius: $radius $radius 0 0;
   }
@@ -67,7 +67,7 @@ $network-image : $icon-share-twitter-on !default;
 
 	@if $primer-color == $twitter-blue {//twitter blue is lighter, thus needing more darkening
 		border: 1px solid adjust-lightness($primer-color,-40%);
-	} 
+	}
 	@else {
 		border: 1px solid adjust-lightness($primer-color,-20%);
 	}
@@ -126,7 +126,7 @@ $primer-button-context : generic !default;
 		padding-left: 1em;
 	}
 
-	@if $primer-tone == light { 
+	@if $primer-tone == light {
 		//------------------------------------------------------
 		//	toggle LIGHT font and DARK font depending on button bg.
 		//------------------------------------------------------
@@ -218,13 +218,77 @@ $preferences-network : twitter !default;
 	button {
 		@extend .notype;
 		@include roundies(input);
-		
+
 		background-color: $networks-unselected;
 		border: 1px solid adjust-lightness($networks-unselected, -5%);
 		display: block;
 		height: 34px;
 		width: 34px;
 	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  $icons, icon keywords are whitespace-delineated because Sass, scary right?
+////////////////////////////////////////////////////////////////////////////
+$icons: cancel
+        carrot
+        check
+        chevron_right
+        comment_reply
+        email
+        mark
+        avatar_large
+        missing_avatar
+        missing_thumbnail
+        settings
+        onboarding_facebook_add
+        onboarding_facebook_added
+        onboarding_tumblr_add
+        onboarding_tumblr_added
+        onboarding_twitter_add
+        onboarding_twitter_added
+        overlay_like
+        overlay_nowplaying
+        overlay_watchlater
+        overlay_you
+        player_fullscreen_enable
+        player_fullscreen_disable
+        player_hd_on
+        player_hd_off
+        player_play
+        player_pause
+        player_sound_off
+        player_sound_on
+        share_facebook_on
+        share_facebook_off
+        share_twitter_on
+        share_twitter_off
+        social_facebook
+        social_tumblr
+        social_twitter
+        switch_lock
+        switch_unlock
+        team_twitter
+        team_web
+        tweet_intents
+        user_logged_out
+        nav_stream
+        videocard_queue
+        videocard_comment
+        videocard_comment_off
+        videocard_comment_on
+        videocard_like_off
+        videocard_like_on
+        videocard_more
+        videocard_roll
+        videocard_roll_off
+        videocard_roll_on
+        videocard_share
+        videocard_share_off
+        videocard_share_on;
+
+@mixin icon-primer($icon) {
+  background-image: url("#{$path}#{$icon}#{$extension}");
 }
 
 @import "compass/css3",

@@ -1,353 +1,345 @@
 @import "base";
 //------------------------------------------------------------------------------
-//	frame currently playing styles
-//	nest styles inside of .active-list-item
+//  frame currently playing styles
+//  nest styles inside of .active-list-item
 //------------------------------------------------------------------------------
 $active-list-item: $shelby-blue;
 //bring this into base once the color is determined.
 .roll,
 .stream {
-	.active-list-item {
-		background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
+  .active-list-item {
+    background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
-		.xframe-title,
-		.xframe-aside-text {
-			color: white;
-		}
+    .xframe-title,
+    .xframe-aside-text {
+      color: white;
+    }
 
-		.xframe-aside-text a:link,
-		.xframe-aside-text a:visited {
-			color: adjust-lightness($active-list-item, 50%);
-		}
-	}
+    .xframe-aside-text a:link,
+    .xframe-aside-text a:visited {
+      color: adjust-lightness($active-list-item, 50%);
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
-//	frame natural state
+//  frame natural state
 //------------------------------------------------------------------------------
 .xframe {
-	border-top: 1px solid $outset;
-	border-bottom: 1px solid $inset;
-	padding: 1em;
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+  padding: 1em;
 
-	////////////////////////////////////////////////////////////////////////////
-	//  on HOVER, toggle:
-	//
-	//	uncollpased: command menu,
-	//	collapsed: indicationt that frame is openable.
-	////////////////////////////////////////////////////////////////////////////
-	&:hover {
-		.xframe-is-collapsed,
-		.menu_module {
-			display: block;
-		}
-	}
+  ////////////////////////////////////////////////////////////////////////////
+  //  on HOVER, toggle:
+  //
+  //  uncollpased: command menu,
+  //  collapsed: indicationt that frame is openable.
+  ////////////////////////////////////////////////////////////////////////////
+  &:hover {
+    .xframe-is-collapsed,
+    .menu_module {
+      display: block;
+    }
+  }
 }
 
 .xframe-header {
-	&:active,
-	&:hover,
-	&:link, 
-	&:visited{
-		color: $text;
-	}
-	text-decoration:none;
+  &:active,
+  &:hover,
+  &:link,
+  &:visited{
+    color: $text;
+  }
+  text-decoration:none;
 }
 
 .xframe-title {
-	font-size: 1.3em;
-	line-height: 1.45;
-	margin-bottom: .35em;
+  font-size: 1.3em;
+  line-height: 1.45;
+  margin-bottom: .35em;
 }
 
 .xframe-body-wrapper {
-	background-color: $videocard-footer-bg-color;
-	box-shadow: $videocard-shadow;
-	position: relative;
+  background-color: $videocard-footer-bg-color;
+  box-shadow: $videocard-shadow;
+  position: relative;
 }
 
 .xframe-body {
 }
 
 .xframe-thumbnail {
-	height: 130px;
+  height: 130px;
 
-	&.missing-thumbnail {
-		background-image: url($icon-missing-thumbnail) !important;
-		background-size: 72px;
-	}
+  &.missing-thumbnail {
+    background-image: url($icon-missing-thumbnail) !important;
+    background-size: 72px;
+  }
 }
 
 .xframe-footer {
-	.no-faux-link {
-		&:visited,
-		&:link {
-			color: #666;
-			text-decoration: none;
-		}
-		&:hover,
-		&:active {
-			text-decoration: underline;
-		}
-	}
-}
-
-.xframe-link {
+  .no-faux-link {
+    &:visited,
+    &:link {
+      color: #666;
+      text-decoration: none;
+    }
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
 }
 
 .xframe-subline {
-	margin-top: 1em;
-	text-align: right;
+  margin-top: 1em;
+  text-align: right;
 }
 
 .xframe-is-collapsed {
-	&:link,
-	&:visited {
-		text-decoration: none;
-	}
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
 
-	&:active,
-	&:hover {
-		text-decoration: underline;
-	}
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
 
-	display:none;
-	float: right;
-	opacity: .5;
+  display:none;
+  float: right;
+  opacity: .5;
 }
 
 .xframe-comment-link {
-	background-image: url($icon-videocard-comment);
-	background-position: left center;
-	background-repeat: no-repeat;
-	background-size: auto;
-	display: block;
-	float: right;
-	line-height: 1;
-	padding-left: 1.4em;
-	padding-bottom: 1px;
-	text-decoration: none;
+  display: block;
+  float: right;
+  line-height: 1;
+  opacity: $videocard-faux-tint;
+  padding-left: $button-padding-left;
+  padding-bottom: 1px;
+  text-decoration: none;
 
-	&:hover {
-		text-decoration: underline;
-	}
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 //------------------------------------------------------------------------------
-//	frame creator block, 
-//	base: media obj.
+//  frame creator block, 
+//  base: media obj.
 //------------------------------------------------------------------------------
 .xuser-data {
-	@include ellipsis();
-	color: adjust-lightness($text, 20%);
+  @include ellipsis();
+  color: adjust-lightness($text, 20%);
 }
 
 .xuser-data-link {
-	&:link,
-	&:visited {
-		text-decoration: none;
-	}
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
 
-	&:active,
-	&:hover {
-		text-decoration: underline;
-	}
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .xuser-message {
 }
 
 .xuser-message-remainder {
-	display: none;
+  display: none;
 }
 
 .xuser-data-timestamp {
-	float: right;
-	opacity: .5;
+  float: right;
+  opacity: .5;
 }
 
 .xuser-avatar {
-	height: 33px;
-	width: 33px;
+  height: 33px;
+  width: 33px;
 
-	&.missing-avatar {
-		background-image: url($icon-missing-avatar) !important;
-	}
+  &.missing-avatar {
+    background-image: url($icon-missing-avatar) !important;
+  }
 }
 
 //------------------------------------------------------------------------------
-//	frame command menu:
-//	frame menu appears on :hover of particular videocard
+//  frame command menu:
+//  frame menu appears on :hover of particular videocard
 //------------------------------------------------------------------------------
 .xframe-menu {
-	height: 0;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 1;
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .xframe-command-menu {
-	height: inherit;
-	left: inherit;
-	list-style-type: none;
-	position: inherit;
-	top: inherit;
-	width: inherit;
+  height: inherit;
+  left: inherit;
+  list-style-type: none;
+  position: inherit;
+  top: inherit;
+  width: inherit;
 }
 
 ////////////////////////////////////////////////////////////////////////////
-//	styling of the command buttons,
-//	queue, roll, share, etc.
+//  styling of the command buttons,
+//  queue, roll, share, etc.
 ////////////////////////////////////////////////////////////////////////////
 .xframe-command {
-	@include button-primer($x-primer-color, light, menu);
+  @include button-primer($x-primer-color, light, menu);
 
-	margin-left: 10px;
-	margin-top: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
-		////////////////////////////////////////////////////////////////////////////
-		//	dropdown sublist:
-		//	children options of a spcific frame command (more button)
-		////////////////////////////////////////////////////////////////////////////
-		.xframe-sublist {
-			margin-top: 3px;
-		}
+    ////////////////////////////////////////////////////////////////////////////
+    //  dropdown sublist:
+    //  children options of a spcific frame command (more button)
+    ////////////////////////////////////////////////////////////////////////////
+    .xframe-sublist {
+      margin-top: 3px;
+    }
 
-		.xframe-option {
-			background-color: #efefef;
-			border-bottom: none;
-			border-left: 1px solid $inset;
-			border-right: 1px solid $inset;
-			border-top: none;
-			padding: .75em 1em .75em;
-			text-align: left;
-			width: 100%;
+    .xframe-option {
+      background-color: #efefef;
+      border-bottom: none;
+      border-left: 1px solid $inset;
+      border-right: 1px solid $inset;
+      border-top: none;
+      padding: .75em 1em .75em;
+      text-align: left;
+      width: 100%;
 
-			&:hover {
-				background-color: adjust-lightness(#efefef,-5%);
-			}
-		}
+      &:hover {
+        background-color: adjust-lightness(#efefef,-5%);
+      }
+    }
 
-		.xframe-item {
-			&:first-child {
-				.xframe-option {
-					border-top: 1px solid $inset;
-				}
-			}
+    .xframe-item {
+      &:first-child {
+        .xframe-option {
+          border-top: 1px solid $inset;
+        }
+      }
 
-			&:last-child {
-				.xframe-option {
-					border-bottom: 1px solid $inset;
-				}
-			}
-		}
+      &:last-child {
+        .xframe-option {
+          border-bottom: 1px solid $inset;
+        }
+      }
+    }
 
-		.command-sublist {
-			padding-right: 10px;
+    .command-sublist {
+      padding-right: 10px;
 
-			.command-icon {
-					background-position: center right;
-					padding-left: 0;
-					padding-right: .95em;
-			}
-		}
+      .command-icon {
+      }
+    }
 
 //------------------------------------------------------------------------------
-// 	command-icon setup
+//  command-icon setup
 //------------------------------------------------------------------------------
 .command-icon {
-		background-position: center left;
-		background-repeat: no-repeat;
-		background-size: auto;
-		font-style: normal;
-		padding-left: 1.3em;
 }
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
-	width: 71px;
+  width: 71px;
 
-	.command-icon {
-		background-image: url($icon-videocard-queue);
-	}
+  .command-icon {
+    padding-left: $button-padding-left;
+  }
 
-	&.queued {
-		@include button-primer(darken($x-primer-color,20%));
+  &.queued {
+    @include button-primer(darken($x-primer-color,20%));
 
-		&:not(.remove-frame) {
-			@include button-primer(darken($x-primer-color,20%),light,queue-button,false);
-			cursor: auto;
-		}
+    &:not(.remove-frame) {
+      @include button-primer(darken($x-primer-color,20%),light,queue-button,false);
+      cursor: auto;
+    }
 
-		.command-icon {
-			background: none;
-			padding: 0;
-		}
-	}
+    .command-icon {
+      background-image: none;
+      padding: 0;
+    }
+  }
 }
 
 .command-roll {
-	.command-icon {
-		background-image: url($icon-videocard-roll);
-	}
+  .command-icon {
+    padding-left: $button-padding-left;
+  }
 }
 
 .command-more {
-	.command-icon {
-		background-image: url($icon-carrot);
-	}
+  .command-icon {
+    padding-right: $button-padding-right;
+  }
+}
+
+.command-share {
+  .command-icon {
+    background-image: none;
+  }
 }
 //------------------------------------------------------------------------------
-//	frame collapsed
-//	(nest styles inside of .xframe-collapsed{})
+//  frame collapsed
+//  (nest styles inside of .xframe-collapsed{})
 //------------------------------------------------------------------------------
 
 .xframe-collapsed {
-	.xframe-title {
-		height: 40px;
-		overflow: hidden;
-	}
+  .xframe-title {
+    height: 40px;
+    overflow: hidden;
+  }
 
-	.xframe-thumbnail {
-		float: left;
-		height: 80px;
-		margin-right: 10px;
-		width: 45%;
-	}
+  .xframe-thumbnail {
+    float: left;
+    height: 80px;
+    margin-right: 10px;
+    width: 45%;
+  }
 
-	.xframe-footer {
-		overflow: hidden;
-		zoom: 1;
-	}
+  .xframe-footer {
+    overflow: hidden;
+    zoom: 1;
+  }
 
-	&:hover {
-		.xframe-body-wrapper {
-			cursor: pointer;
-		}
+  &:hover {
+    .xframe-body-wrapper {
+      cursor: pointer;
+    }
 
-		.xframe-menu {
-			display: none;
-		}
-	}
+    .xframe-menu {
+      display: none;
+    }
+  }
 }
 
 //---------------------------
-//	aside: subline below videocard
+//  aside: subline below videocard
 //
-//	lists duplicates, 'also via:' stuff
+//  lists duplicates, 'also via:' stuff
 //---------------------------
 
 .xframe-aside {
-	margin: 8px 0px 0px 5px;
+  margin: 8px 0px 0px 5px;
 }
 
 .xframe-aside-text {
-	color: #666;
-	margin: 0;
-	padding: 0;
+  color: #666;
+  margin: 0;
+  padding: 0;
 }
 
