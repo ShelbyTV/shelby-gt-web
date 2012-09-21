@@ -122,10 +122,12 @@
 }
 
 .settings-user {
-  background-color: #ddd;
+  background-color: $videocard-footer-bg-color;
+  box-shadow: $shadow;
 }
 
 .settings-list {
+  font-size: .95em;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -136,13 +138,20 @@
 
   &.right {
     float: right;
+
+    .settings-button {
+      padding-left: 0em;
+      padding-right: 1em;
+    }
   }
 }
 
 .settings-button {
   background: transparent;
   border: none;
+  color: $text;
   float: left;
+  line-height: 1.5;
   padding: .5em;
   text-align: left;
 
@@ -163,25 +172,32 @@
 
   background: transparent;
   border: none;
+  color: $text;
   display: block;
   float: left;
+  font-family: $font-family-display;
+  font-weight: 500;
+  font-size: 1.1em;
+  line-height: 2.3;
   margin: 0;
   padding: 6px;
   width: 60%;
 
   img {
     height: 33px;
+    margin-right: 5px;
     width: 33px;
   }
   
   a {
     @include hover-link();
+    color: $text;
   }
 }
 
 .settings-preferences {
   float: right;
-  line-height: 3.8;
+  line-height: 3.6;
   padding: 0 1em;
 }
 
