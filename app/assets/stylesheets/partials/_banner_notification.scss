@@ -126,10 +126,11 @@ $notification-base-color: #fff82b;
 }
 
 .faux-bookmarklet-button {
-  @include roundies();
+  @include roundies(input);
 
   border: 1px solid #ccc;
   font-family: $font-family-display;
+  font-size: .9em;
   padding: .3em 0.4em .35em;
 
   i {
