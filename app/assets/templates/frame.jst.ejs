@@ -167,7 +167,7 @@
         <% _(dupeFrames).each(function(frame, index) { %>
           <%= index == 0 ? '' : ', ' %>
           <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
-          <%= libs.shelbyGT.viewHelpers.roll.titleForRollsList(frame.get('roll')) %>
+          <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(frame.get('roll')) %>
           </a>
         <% }); %>
       </p>
