@@ -1,26 +1,27 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
-    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
-    "roll/:rollId/:title" : "displayRoll",
-    "roll/:rollId" : "displayRoll",
-    "rollFromFrame/:frameId" : "displayRollFromFrame",
-    "isolated_roll/:rollId" : "displayIsolatedRoll",
+    "isolated_roll/:rollId"                : "displayIsolatedRoll",
     "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
-    "user/:id/personal_roll" : "displayUserPersonalRoll",
-    "stream" : "displayDashboard",
-    "me" : "displayRollList",
-    "explore" : "displayExploreView",
-    "onboarding/:stage" : "displayOnboardingView",
-    "queue" : "displaySaves",
-    "saves" : "displaySaves",
-    "preferences" : "displayUserPreferences",
-    "help" : "displayHelp",
-    "team" : "displayTeam",
-    "legal" : "displayLegal",
-    "" : "displayDashboard",
-    "*url" : "doNothing"
+    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
+    "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
+    "roll/:rollId/:title"                  : "displayRoll",
+    "roll/:rollId"                         : "displayRoll",
+    "rollFromFrame/:frameId"               : "displayRollFromFrame",
+    "user/:id/personal_roll"               : "displayUserPersonalRoll",
+    "explore"                              : "displayExploreView",
+    "help"                                 : "displayHelp",
+    "legal"                                : "displayLegal",
+    "me"                                   : "displayRollList",
+    "onboarding/:stage"                    : "displayOnboardingView",
+    "preferences"                          : "displayUserPreferences",
+    "queue"                                : "displaySaves",
+    "saves"                                : "displaySaves",
+    "stream"                               : "displayDashboard",
+    "team"                                 : "displayTeam",
+    "tools"                                : "displayTools",
+    ""                                     : "displayDashboard",
+    "*url"                                 : "doNothing"
   },
 
   //---
@@ -287,6 +288,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayLegal : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.legal);
+  },
+
+  displayTools : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
   },
   
   doNothing : function(url){
