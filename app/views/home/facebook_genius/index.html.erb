@@ -34,28 +34,10 @@
 		</header>
 		
 		<%= render :partial => "/home/shelf/genius/genius_search" %>		
+
+		<%= render :partial => "/home/shelf/genius/genius_history" %>
 		
-		<section class="landing-shelf landing-shelf-private previous-search-area">
-			<div class="landing-shelf-lining">
-				<h1 class="landing-shelf-header">Previous Genius Results:</h1>
-
-				<h2 class="landing-shelf-subheader">
-					< Rolls list goes here >
-				</h2>
-
-			</div>
-		</section>
-		
-		<section class="landing-shelf landing-shelf-private login-area">
-			<div class="landing-shelf-lining">
-				<h1 class="landing-shelf-header">Login to personalize your video discovery and to share videos with your friends</h1>
-
-				<h2 class="landing-shelf-subheader">
-					<div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="2" data-scope="user_groups,user_likes,user_interests,friends_likes"></div>
-				</h2>
-
-			</div>
-		</section>
+		<%= render :partial => "/home/shelf/genius/genius_personalization" %>
 		
 		<footer class="landing-footer">
 			<div class="landing-footer-lining clearfix">
@@ -107,6 +89,9 @@
 
 	</div><!-- /shelby-wrapper -->	
 	
+	<script>
+		<%= render :partial => "/home/shelf/genius/search_history", :formats => [:js] %>	
+	</script>
 	
 	
 </body>

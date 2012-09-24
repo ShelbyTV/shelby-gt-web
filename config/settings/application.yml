@@ -14,6 +14,7 @@ development:
   <<: *defaults
   url: "http://localhost.shelby.tv:3000"
   mobile_url: "http://m.localhost.shelby.tv:3000"
+  fb_genius_url: "http://localhost.shelby.tv:3000"
   #enable this if you're using a local API
   #avatar_url_root: "http://s3.amazonaws.com/dev-shelby-gt-user-avatars"
   #mobile_url: "http://192.168.1.6:3000/m"

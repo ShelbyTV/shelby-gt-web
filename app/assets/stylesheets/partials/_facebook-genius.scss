@@ -16,7 +16,7 @@ body.facebook-genius{
   }
   
   .login-area {
-    float: right;
+    float: left;
     text-align: center;
     width: 50%;
     height: 400px;
@@ -24,11 +24,43 @@ body.facebook-genius{
   }
   
   .previous-search-area {
-    float: left;
+    float: right;
     width: 50%;
-    text-align:center;
     height: 400px;    
     .landing-shelf-lining { width: 50%; }
+    .landing-shelf-header { text-align:left; }
+    .landing-shelf-subheader{
+      text-align: left;
+    }
+    #recommended-searches{ display: none; }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      border-bottom: 1px solid #ccc;
+      &a {
+        text-decoration: none;
+        color: $font-color;
+        display: block;
+        width: 400px;
+
+        -webkit-transition: font-size 0.1s ease, background-color 0.1s ease;
+        -moz-transition: font-size 0.1s ease, background-color 0.1s ease;
+        -o-transition: font-size 0.1s ease, background-color 0.1s ease;
+        -ms-transition: font-size 0.1s ease, background-color 0.1s ease;
+        transition: font-size 0.1s ease, background-color 0.1s ease;
+      }
+
+      a:hover {
+        width: 100%;
+        font-size: 21px;
+        font-weight: 300;
+        background: #f6f6f6;
+      }
+    }
+
   }
   // ***** //
   

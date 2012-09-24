@@ -60,7 +60,7 @@ class HomeController < ApplicationController
   #
   def facebook_genius_index
     if params[:signed_request]
-      koala = Koala::Facebook::OAuth.new('305135322927840','b616125302256c0dc06654cdd4bdf9bc')
+      koala = Koala::Facebook::OAuth.new(Settings::Facebook.genius_app_id, Settings::Facebook.genius_app_secret)
       @un_signed_request = koala.parse_signed_request(params[:signed_request])
     end
     render '/home/facebook_genius/index'

@@ -9,23 +9,32 @@
       xfbml      : true  // parse XFBML
     });
 
-    // Additional initialization code here
-		var frame = shelby.models.guide.get("activeFrameModel");
-		$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');
-    FB.XFBML.parse($('#fb-comments-holder')[0]);
-
+		if (typeof shelby !== "undefined") {
+			var frame = shelby.models.guide.get("activeFrameModel");
+			$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');			
+		}
+		FB.XFBML.parse($('#fb-comments-holder')[0]);
+		
 		/*
+		// if logged in 
+		FB.api('/me?fields=id,name,likes.fields(name)', function(r){
+			console.log(r);
+			for (var L in r.likes.data) { 
+				console.log(r.likes.data[L]['name']);
+			}
+		});
+
 		// Event subscriptions
+		FB.Event.subscribe('auth.authResponseChange', function(response) {
+			window.resp = response;
+			$('body').removeClass(''); 	// any class like genius-fb-*
+			$('body').addClass('');			// genius-fb-{new-auth-status}
+		});
+
 		FB.Event.subscribe('comment.create',
 			function(response) {
 				window.comment_response = response;
 			}
-		);
-		
-		FB.Event.subscribe('edge.create',
-		    function(response) {
-					window.like_response = response;
-		    }
 		);
 		*/
   };
