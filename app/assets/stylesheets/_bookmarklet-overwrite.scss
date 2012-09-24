@@ -31,7 +31,7 @@
 }
 
 //------------------------------------------------------------------------------
-//  NOTIFICATION
+//  'Videos Found' NOTIFICATION
 //------------------------------------------------------------------------------
 .notifications-lining {
   position: fixed;
@@ -41,7 +41,7 @@
 .shelby-notify {
   background-color: #eee;
   background-image: url('/images/assets/shelby_mark_dark.svg');
-  background-position: 10% -3px;
+  background-position: 9px -1px;
   background-size: 40px 40px;
   background-repeat: no-repeat;
   border: 1px solid #adadad;
@@ -60,28 +60,40 @@
 
   &.more {
     width: 200px;
-    background-position: 10% -3px;
-
-  }
-
-  .notify-text {
-    margin-left: 60px;
-  }
-
-  .notify-cancel {
-    @include button-primer($shelby-gray);
-
-    border-radius: 20px;
-    height: 20px;
-    left: -10px;
-    line-height: 1.0;
-    padding: 0;
-    position: absolute;
-    top: -10px;	
-    width: 20px;
   }
 }
 
+.notify-text {
+  margin-left: 52px;
+  text-align: center;
+}
+
+.notify-cancel {
+  @include button-primer($shelby-gray,dark);
+
+  border-radius: 20px;
+  left: -10px;
+  padding: .5em;
+  position: absolute;
+  top: -10px;
+
+  &:hover {
+    border-radius: 20px;
+  }
+
+  .cancel-icon {
+    background-size: contain;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 7px;
+    width: 7px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Process completion Feedback
+//------------------------------------------------------------------------------
 .fadein-notify-window {
   background-color: black;
   bottom: 0px;
@@ -279,6 +291,7 @@
   }
 }
 
+.video-card-context,
 .embedded-controls {
   li {
     &:first-child {
