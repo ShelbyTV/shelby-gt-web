@@ -165,13 +165,16 @@
   color: #DCDDDE;
 }
 
-//GUIDE
-
+//------------------------------------------------------------------------------
+//  GUIDE
+//------------------------------------------------------------------------------
 .guide-window {
+  -webkit-font-smoothing: antialiased; //hehe
   background: #e2e2e2;
   border-left: 1px solid black;
   bottom: 0;
   box-shadow: 0px 0px 25px 5px black;
+  font-size: 11px;
   margin-right: -360px;
   position: fixed;
   right: 0px;
@@ -213,30 +216,20 @@
   width: 80px;
   li {
     background-color: #EEE;
+    border-radius: 5px;
     height: 31px;
+    margin: 0;
     width: 100%;
+
+    .all-comment,
+    .all-roll,
+    .all-queue,
     .all-creator {
       &:hover {
-        background-color: gray;
+        background-color: darken(#eee, 15%);
       }
     }
 
-    .all-queue {
-      &:hover {
-        background-color: gray;
-      }
-    }
-    .all-roll {
-      &:hover {
-        background-color: gray;
-      }
-    }
-
-    .all-comment {
-      &:hover {
-        background-color: gray;
-      }
-    }
     &:last-child {
       button {
         border-top: none;
@@ -284,19 +277,23 @@
 }
 
 .bookmarklet-button {
-  background-color: #EEE;
-  color: #333;
-  font-size: 11px;
-  font-weight: 300;
-  height: 100%;
-  text-align: center;
-  width: 100%;
+  background: #EEE !important;
+  box-shadow: none !important;
+  color: #444 !important;
+  font-family: $font-family !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  height: 100% !important;
+  outline: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  width: 100% !important;
 
   &.queued {
-    background-color: gray;
+    background-color: darken(#eee,10%);
     cursor: default;
     i {
-      background-position: 0px 2px;
       padding-left: 15px;
 
       &:before {
@@ -319,26 +316,31 @@
   font-style: normal;
 }
 
+.queue-button-content,
+.roll-button-content {
+  background-position: left 1px;
+  background-repeat:no-repeat;
+  font-style: normal;
+  padding-left: 1.3em;
+}
+
 .queue-button-content {
+  background-image: url("/images/assets/chrome_queue.svg");
+  background-size: 11px;
+
   &:before {
       content: "Queue"
   }
-  background-image: url("/images/assets/chrome_queue.svg");
-  background-position: 5px 2px;
-  background-repeat:no-repeat;
-  background-size: 20%;
-  font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
 }
-  
 
 .roll-button-content {
   background-image: url("/images/assets/chrome_roll.svg");
-  background-position: 5px 2px;
-  background-repeat:no-repeat;
-  background-size: 20%;
-  font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
+  background-size: 10px;
+}
+
+//  override needed:
+//  waywire.com uses !important,
+//  so we have override !important them
+.form_submit {
+  font-family: $font-family-display !important;
 }
