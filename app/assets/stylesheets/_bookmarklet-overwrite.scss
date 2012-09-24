@@ -1,5 +1,20 @@
-//FRAME
+//------------------------------------------------------------------------------
+//  experimental clearfix... fix.
+//------------------------------------------------------------------------------
 
+//  fixes uproxx.com
+.clearfix:not(.media_body) {
+  overflow: visible;
+}
+
+//  fixes waywire.com
+.form_submit {
+  font-family: $font-family-display !important;
+}
+
+//------------------------------------------------------------------------------
+//  FRAME
+//------------------------------------------------------------------------------
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
@@ -15,8 +30,9 @@
   font-size: 13px;
 }
 
-//NOTIFICATION
-
+//------------------------------------------------------------------------------
+//  NOTIFICATION
+//------------------------------------------------------------------------------
 .notifications-lining {
   position: fixed;
   z-index: 2147483647;
@@ -111,8 +127,9 @@
   }
 }
 
-//LOGIN
-
+//------------------------------------------------------------------------------
+//  LOGIN
+//------------------------------------------------------------------------------
 #login-guide-window {
   .shelby-login-cancel {
     @include button-primer($shelby-gray);
@@ -155,8 +172,9 @@
   }
 }
 
-//ROLLS
-
+//------------------------------------------------------------------------------
+//  ROLLS
+//------------------------------------------------------------------------------
 .roll-options-submit {
   text-align: center;
 }
@@ -196,8 +214,9 @@
     
 }
 
-//BUTTONS
-
+//------------------------------------------------------------------------------
+//  BUTTONS
+//------------------------------------------------------------------------------
 .bookmarklet-video-tab {
   height: 300px;
   overflow: hidden;
@@ -214,6 +233,7 @@
   margin-bottom: 28px;
   margin-top: 2px;
   width: 80px;
+
   li {
     background-color: #EEE;
     border-radius: 5px;
@@ -235,6 +255,7 @@
         border-top: none;
       }
     }
+
     button {
       border: 1px solid #adadad;
       border-right: 0;
@@ -262,6 +283,7 @@
   li {
     &:first-child {
       border-radius: 5px 0 0 0;
+
       button {
         border-radius: 5px 0 0 0;
       }
@@ -269,6 +291,7 @@
 
     &:last-child {
       border-radius: 0 0 0 5px;
+
       button {
         border-radius: 0 0 0 5px;
       }
@@ -293,12 +316,14 @@
   &.queued {
     background-color: darken(#eee,10%);
     cursor: default;
+
     i {
       padding-left: 15px;
 
       &:before {
         content: "Queued"
       }
+
       font-style: normal;
     }
   }
@@ -329,18 +354,11 @@
   background-size: 11px;
 
   &:before {
-      content: "Queue"
+    content: "Queue"
   }
 }
 
 .roll-button-content {
   background-image: url("/images/assets/chrome_roll.svg");
   background-size: 10px;
-}
-
-//  override needed:
-//  waywire.com uses !important,
-//  so we have override !important them
-.form_submit {
-  font-family: $font-family-display !important;
 }
