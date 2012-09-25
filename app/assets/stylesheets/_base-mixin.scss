@@ -85,6 +85,7 @@ $network-image : $icon-share-twitter-on !default;
 }
 
 $x-primer-color        : $button-default-color;
+//TODO: primer tone is now obsolete
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
@@ -126,7 +127,7 @@ $primer-button-context : generic !default;
 		padding-left: 1em;
 	}
 
-	@if $primer-tone == light {
+	@if $x-primer-color == $button-default-color {
 		//------------------------------------------------------
 		//	toggle LIGHT font and DARK font depending on button bg.
 		//------------------------------------------------------

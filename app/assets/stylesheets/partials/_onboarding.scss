@@ -1,12 +1,28 @@
-//------------------------------
-//  onboard module 
-//------------------------------
-
+//------------------------------------------------------------------------------
+//  onboard modules
+//------------------------------------------------------------------------------
 .onboarding_list_module {
   list-style-type:none;
   margin: 0 auto;
   max-width: 780px;
   padding: 0;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  onboarding_layout:
+//  setup for the fixed header situation
+////////////////////////////////////////////////////////////////////////////
+$onboarding-head-height: 125px;
+
+.onboarding_layout_head {
+  height: $onboarding-head-height;
+}
+
+.onboarding_layout_body {
+  bottom: 0;
+  position: absolute;
+  top: $onboarding-head-height;
+  width: 100%;
 }
 
 //------------------------------
@@ -15,12 +31,13 @@
 
 .onboarding-content-pane  {
   background: adjust-lightness($base, 5%);
-  overflow-y: scroll;
+  box-shadow: $shadow;
+  position: relative;
   text-align: center;
+  z-index: 4;
 }
 
 .onboarding-content-wrapper  {
-  margin-top: 30px;
 }
 
 .onboarding-guide-list-item {
@@ -34,15 +51,16 @@
 }
 
 //------------------------------
-//  onboarding head module 
+//  onboarding head/body
 //------------------------------
 
   .onboarding-head {
-    margin-bottom: 3em;
+    background-color: darken($base,1%);
   }
 
   .onboarding-header  {
-    font-size: 2em;
+    font-size: 2.8em;
+    margin-top: 38px;
   }
   .onboarding-subheader  {
     font-size: 1.2em;
@@ -50,10 +68,37 @@
     line-height: 2.3;
   }
 
+  .onboarding-body {
+    overflow-y: auto;
+  }
+
+  .onboarding-body-lining {
+    margin: 3em;
+  }
+
+//------------------------------------------------------------------------------
+//  onboarding 'next step'
+//------------------------------------------------------------------------------  
+.onboarding-next-step-wrapper {
+  font-size: 1.2em;
+  margin: 38px 20px 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
 .onboarding-next-step {
-  margin: 40px 0px;
-  @include button-primer($x-primer-color, light);
+  @include button-primer($shelby-blue, light);
+
+  font-size: 1.1em;
+}
+
+.onboarding-next-step-counter {
+  color: #666;
+  display: block;
+  font-size: .8em;
+  font-weight: bold;
+  line-height: 2;
 }
 
 .onboarding-error {
@@ -67,11 +112,31 @@
   margin: .5em 0;
 }
 
-/* STAGE 1 */
+//------------------------------------------------------------------------------
+//  form related
+//------------------------------------------------------------------------------
+.onboarding-legend-description {
+  font-family: $font-family-display;
+  font-size: 1.2em;
+  font-weight: 300;
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
+//  STAGE 1
+//------------------------------------------------------------------------------
+.onboarding-form-container {
+  max-width: 300px;
+  margin:  0px auto;
+
+  &.wide {
+    max-width: none;//this can change according to any needs
+  }
+}
 
 .onboarding-form-1 {
-  margin:  0px auto;
-  width:  300px;
+//  margin:  0px auto;
+//  width:  300px;
   font-size:  1.2em;
   position:   relative;
   text-align:  left;
