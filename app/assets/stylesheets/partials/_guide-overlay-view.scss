@@ -97,13 +97,18 @@
   width: 100%;
 }
 
+.guide-header-avatar {
+  background-color: inherit;
+  float: left;
+  margin: 10px;
+}
+
 .guide-header-title {
   @include ellipsis();
 
 //  color: #ccc;
   font-weight: 500;
-  line-height: 2.6;
-  padding: 0 10px;
+  line-height: 3.0;
   position: relative;
   width: inherit;
   z-index: 1;

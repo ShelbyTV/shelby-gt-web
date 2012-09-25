@@ -1,3 +1,11 @@
+  <% var creatorNickname = roll.get('creator_nickname') %>
+  <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+
+  <% if (creatorNickname) { %>
+    <span class="image_module xuser-avatar guide-header-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
+        <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+    </span>
+  <% } %>
   <h2 id="js-guide-title" class="guide-header-title">
-    <%= title || '' %>
+    <%= roll.get('title') || '' %>
   </h2>
