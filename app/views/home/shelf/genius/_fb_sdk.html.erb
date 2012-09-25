@@ -16,13 +16,16 @@
 		FB.XFBML.parse($('#fb-comments-holder')[0]);
     FB.XFBML.parse($('.roll')[0]);
 
+		// do things if logged in or not
 		FB.getLoginStatus(function(response) {  
 		  if (response.status == "connected"){
 		    // logged in and authorized!
 		    $('body').addClass('connected');
 				FB.api('/me?fields=id,name,likes.fields(name)', function(r){
-					for (var L in r.likes.data) { 
-						$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
+					for (var L in r.likes.data) {
+						if (L <= 10){
+							$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
+						}
 					}
 				});
 				FB.api('/me', function(r){
@@ -32,7 +35,7 @@
 		  else {
 		    // logged in but not authorized
 		    $('body').addClass('not_authorized');
-				$('.login-area .landing-shelf-header').text("Login to personalize your video discovery and to share videos with your friends")
+				$('.login-area .landing-shelf-header').text("Login to personalize your video discovery and to share videos with your friends");
 		  }
 		});
 		

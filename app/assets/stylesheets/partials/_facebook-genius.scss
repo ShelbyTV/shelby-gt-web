@@ -3,6 +3,7 @@ body.facebook-genius{
   // landing page //
   .landing-form-input {
     width: 75%;
+    margin-top: 20px;
   }
   
   #js-genius-search-submit {
@@ -20,14 +21,14 @@ body.facebook-genius{
     text-align: left;
     width: 50%;
     height: 400px;
-    .landing-shelf-lining { width: 50%; }
+    .landing-shelf-lining { width: 75%; }
   }
-  
+  h2 { width: 100%;}
   .previous-search-area {
     float: right;
     width: 50%;
     height: 400px;    
-    .landing-shelf-lining { width: 50%; }
+    .landing-shelf-lining { width: 75%; }
     .landing-shelf-header { text-align:left; }
     .landing-shelf-subheader{
       text-align: left;
@@ -61,7 +62,6 @@ body.facebook-genius{
 
       a:hover {
         width: 100%;
-        font-size: 21px;
         font-weight: 300;
         background: #f6f6f6;
       }

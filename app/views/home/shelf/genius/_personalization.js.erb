@@ -1,5 +1,5 @@
 $('document').ready(function(){
-  $('#searches-from-likes a').live('click', function(){
+  $('#searches-from-likes a, #recommended-searches a').live('click', function(){
     var search = $(this).text();
 
     $('body').addClass('loading');
