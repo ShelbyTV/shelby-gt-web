@@ -111,7 +111,7 @@
 		<% elsif @share_type == :email %> 	<%= render :partial => "/home/shelf/direct_email_share" %>
 		<% elsif @share_type == :rolling %>	<%= render :partial => "/home/shelf/rolling_share" %>
 		<% end %>
-		<%= render :partial => "/home/shelf/video_graph_blog_post", :locals => { :primary_shelf => !@share_type } %>
+		<%= render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => !@share_type } %>
 		<%= render :partial => "/home/shelf/private_beta" unless @share_type %>		
 		<% #------------ /Shelf Content --------------- %>
 		
