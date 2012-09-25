@@ -290,7 +290,9 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-roll-button {
-  background-color: darken($base,.25%);
+  @include gradient-primer($base, 25%);
+  @include roundies(input);
+
   border: 1px solid darken($base,5%);
   display: block;
   margin: 10px 0;
@@ -299,30 +301,21 @@ $onboarding-head-height: 125px;
   text-align: left;
   width: 100%;
 
-  &:hover {
-    @include roundies(input);
+  &:hover:not(.followed) {
+    @include gradient-primer(darken($base, 10%),20%);
 
-    background-color: darken($base,5%);
     border: 1px solid darken($base,10%);
   }
 
-  &:active {
-    background-color: darken($base,10%);
+  &:active:not(.followed) {
+    @include gradient-primer(darken($base,25%),25%);
+  
     border: 1px solid darken($base,15%);
   }
 
   &.followed {
     .onboarding-roll-followed {
       display: block;
-    }
-
-    &:hover {
-      background-color: transparent;
-      cursor: auto;
-    }
-
-    &:active {
-      background-color: transparent;
     }
   }
 }
@@ -345,31 +338,6 @@ $onboarding-head-height: 125px;
   line-height: 1.9;
   margin-bottom: 8px;
 }
-
-//TODO: determine that this button stuff is not-needed
-
-//.onboarding-roll-button-wrapper  {
-//  display:  none;
-//  left: 0;
-//  top: 32%;
-//  position: absolute;
-//  text-align:  center;
-//  width:  100%;
-//}
-//.onboarding-roll-button {
-//  @include button-primer($x-primer-color, light, menu);
-
-//  display: inline;
-//  margin: 0 auto;
-
-//  &:hover {
-//    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);
-//  }
-
-//  &:active {
-//    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);
-//  }
-//}
 
 .onboarding-roll-followed {
   position: absolute;
