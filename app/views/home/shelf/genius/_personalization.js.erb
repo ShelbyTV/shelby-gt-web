@@ -1,34 +1,10 @@
-$(function(){
-	$('.genius-search-form').submit(function() {
-    
-    $('#js-genius-search-submit').prop('disabled', true);
+$('document').ready(function(){
+  $('#searches-from-likes a').live('click', function(){
+    var search = $(this).text();
 
     $('body').addClass('loading');
-    
-		var opts = {
-      lines: 13, // The number of lines to draw
-      length: 5, // The length of each line
-      width: 2, // The line thickness
-      radius: 5, // The radius of the inner circle
-      rotate: 0, // The rotation offset
-      color: '#111', // #rgb or #rrggbb
-      speed: 1, // Rounds per second
-      trail: 60, // Afterglow percentage
-      shadow: false, // Whether to render a shadow
-      hwaccel: false, // Whether to use hardware acceleration
-      className: 'genius-spinner', // The CSS class to assign to the spinner
-      zIndex: 2e9, // The z-index (defaults to 2000000000)
-      top: -33, // Top position relative to parent in px
-      left: 297 // Left position relative to parent in px
-    };
 
-		var target = document.getElementById('genius-search-spinner');
-		var spinner = new Spinner(opts).spin(target);
-		$('#js-genius-search-submit').attr('value','');
-    
-		var search = $('.genius-search-form').find('input').val();
-    
-		var params = {
+    var params = {
 	    "q" : search,
     	"max-results" : "50",
       "orderby" : "relevance"
@@ -64,12 +40,9 @@ $(function(){
 				}
 				else{ alert("something went wrong."); }
 			});
-    };
-
-      
+    }; 
     // Call ytQuery.query, passing params and your callback
-    ytQuery.query(params, cb); 
+    ytQuery.query(params, cb);
     
-	  return false;
-	});
+  });
 });

@@ -32,9 +32,11 @@ body.facebook-genius{
     .landing-shelf-subheader{
       text-align: left;
     }
-    #recommended-searches{ display: none; }
+    #recommended-searches{ 
+      display: none;
+    }
   }
-  
+
   // lists on the shelf
   .landing-shelf {
     ul {
@@ -164,4 +166,8 @@ section.fb-genius {
   .landing-shelf-lining { width: 1000px; }
   .landing-form-input { width: 85%; }
 
+}
+
+body.loading {
+  cursor: progress;
 }
