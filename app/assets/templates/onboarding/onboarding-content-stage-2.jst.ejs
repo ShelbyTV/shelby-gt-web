@@ -3,7 +3,7 @@
     Shelby brings you video from people and places on the web
   </h1>
   <h2 class="onboarding-subheader">
-    Follow a few rolls to get fresh video in your stream
+    Click and follow <span class="onboarding-follow-more-count js-onboarding-follow-more-count">some rolls</span> to get fresh video in your stream
   </h2>
 </div>
 
@@ -13,7 +13,7 @@
       title:'Laughing Squid',
       category:'POP CULTURE',
       img_src:'/images/onboarding/rolls/laughingsquid.png',
-      roll_id:'4fa28d309a725b77f700070f'
+      roll_id:'4fc637879a725b755d001f77'
     },
     {
       title:'Om Gal',
@@ -107,31 +107,25 @@
   <% rolls.forEach(function(roll){ %>
     <li class="onboarding-roll-item js-onboarding-roll-item">
       
-      <div id="js-roll-item-lining-<%= roll.roll_id %>" class="onboarding-roll-item-lining js-onboarding-roll-item-lining">
+      <button data-roll_id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-button">
         <h3 class="onboarding-roll-head"><%= roll.title %></h3>
         <h4 class="onboarding-roll-subhead"><%= roll.category %></h4>
         <div class="onboarding-roll-body">
-
           <div class="animate_module onboarding-roll-followed">
             <i class="ir onboarding-followed-icon">
               FOLLOWED
             </i>
           </div>
+
           <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />
 
-          <div class="onboarding-roll-button-wrapper">
-            <button id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-list-item-button">
-              Follow
-            </button>
-          </div>
-      </div>
-      </div>
-      
+        </div>
+      </button>
     </li>
   <% }) %>
 
 </ol>
 
-<button disabled class="js-onboarding-next-step onboarding-next-step">
-  Follow 3 Rolls 
+<button class="js-onboarding-next-step onboarding-next-step onboarding-stage-2-next-step">
+  Skip
 </button>

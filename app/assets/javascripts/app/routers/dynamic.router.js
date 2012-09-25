@@ -202,13 +202,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
-    shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
-
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
         'sinceId' : options.data.since_id ? options.data.since_id : null,
-        'pollAttempts' : shelby.models.guide.get('pollAttempts') ? shelby.models.guide.get('pollAttempts')+1 : 1
       });
       
       // filtering out faux users so as a team we can interact more easily
@@ -233,7 +230,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           return;
         }
         oneTimeSpinnerState.set('show', false);
-        shelby.models.guide.set('disableSmartRefresh', true);
       });
     } else {
       shelby.models.dashboard.fetch(fetchOptions);

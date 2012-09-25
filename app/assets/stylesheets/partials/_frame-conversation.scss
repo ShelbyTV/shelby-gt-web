@@ -42,12 +42,13 @@
 }
 
 .new-comment-input {
-  @include inputfont;
   @include roundies(input);
   
   border: 1px solid adjust-lightness($inset, -10%);
+  font-size: 1em;
   height: 50px;
   left: 68px;
+  line-height: 1.4;
   padding: 4px 5px;
   width: 100%;
 

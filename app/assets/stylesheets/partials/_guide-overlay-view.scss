@@ -26,6 +26,8 @@
   height: 46px;
 
   .back, .cancel {
+    //TODO: abstract button icons better
+
   	@include button-primer($x-primer-color, light, guide-close);
 
   	left: 0;
@@ -34,14 +36,11 @@
   	top: 0;	
     
     .cancel-icon {
+      background-size: contain;
       color: transparent;
       display: block;
       font: 0/0 a;
       height: 7px;
-      background-image: url($icon-cancel);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: contain;
       width: 7px;
     }
   }

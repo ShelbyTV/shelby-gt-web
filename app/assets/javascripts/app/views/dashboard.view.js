@@ -1,6 +1,7 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var DashboardEmptyIndicatorView = libs.shelbyGT.DashboardEmptyIndicatorView;
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
 
@@ -12,6 +13,7 @@
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
+      emptyIndicatorViewProto : DashboardEmptyIndicatorView,
       initFixedHead : true,
       fetchParams : {
         include_children : true

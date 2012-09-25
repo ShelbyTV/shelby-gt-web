@@ -66,7 +66,7 @@ class HomeController < ApplicationController
           #TODO: pull this mapping from API
           when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
-          when "laughingsquid.tv" then "4fa28d309a725b77f700070f"
+          when "laughingsquid.tv" then "4fc637879a725b755d001f77"
           when "hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
           when "reecepacheco.tv" then "4f900d56b415cc6614056681"
           when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
@@ -80,7 +80,7 @@ class HomeController < ApplicationController
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else
-            if [nil, "", "gt", "localhost", "www"].include? request.subdomain
+            if [nil, "", "gt", "localhost", "www", "fb"].include? request.subdomain
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain

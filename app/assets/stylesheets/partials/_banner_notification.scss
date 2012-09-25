@@ -68,22 +68,30 @@ $notification-base-color: #fff82b;
 .notification-banner-left {
   float: left;
   padding: 10px 0 10px 40px;
-  width: 62%;
 }
 
 .notification-banner-right {
-  float: left;
-  padding: 10px 40px 10px 0;
-  width: 38%;
+  float: right;
+  padding: 10px 27px 0 10px;
 }
 
 .dismiss-banner-notification {
-  @include button-primer();
+  @include button-primer;
   
-  padding: 0.3em 0.4em 0.15em 0.5em;
+  font-size: 1em;
+  left: -3px;
   position: absolute;
   top: -3px;
-  left: -3px;
+
+  .dismiss-banner-icon {
+      background-size: contain;
+      color: transparent;
+      display: block;
+      font: 0/0 a;
+      height: 7px;
+      width: 7px;
+  }
+
 }
 
 .video-radar-lining {
@@ -109,6 +117,7 @@ $notification-base-color: #fff82b;
 
 .get-extension {
   @include button-primer();
+
   display: inline-block;
   font-size: 1.5em;
   font-weight: 100;
@@ -122,31 +131,67 @@ $notification-base-color: #fff82b;
  
 .bookmarklet-drag-wrapper {
   text-align: center;
-  
-  a {
-    @include button-primer();
-    display: inline-block;
-    font-size: 1.2em;
-    font-weight: 100;
-    margin-bottom: 5px;
-    text-decoration: none;
+}
+
+.bookmarklet-drag-button {
+  @include button-primer();
+
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: 100;
+  margin-bottom: 5px;
+  text-decoration: none;
+
+  .roll-icon {
+    padding-left: $button-padding-left;
   }
+}
+
+.bookmarklet-help-section {
+  width: 320px;
+  right: 10px;
 }
 
 .bookmarklet-help {
   @include gradient-primer();
   
   box-shadow: 0px 0px 5px 0px black;
-  font-size: 1.5em;
+  font-size: 1.3em;
   width: 99%;
+
+  ol {
+    margin: 0;
+    padding: 10px 10px 10px 30px;
+
+    & > li {
+      margin-bottom: .5em;
+    }
+  }
   
   li > ul {
     margin: 0;
+    padding-left: 20px;
   }
   
-  .faux-bookmarklet-button {
-    @include roundies();
-    border: 1px solid #ccc;
-    padding: 0 3px;
+}
+
+.bookmarklet-help-header {
+  padding: 10px 10px 0;
+}
+
+.faux-bookmarklet-button {
+  @include roundies(input);
+
+  border: 1px solid #ccc;
+  font-family: $font-family-display;
+  font-size: .9em;
+  padding: .3em 0.4em .35em;
+
+  i {
+    background-image: url($icon-videocard-roll);
+    background-repeat: no-repeat;
+    background-position: center left;
+    font-style: normal;
+    padding-left: 1.2em;
   }
 }

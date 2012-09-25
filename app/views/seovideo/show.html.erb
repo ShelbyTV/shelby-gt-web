@@ -1,84 +1,171 @@
-<div class="content-wrapper">
-  <header class="seovideo-header clearfix">
-    <div class="seovideo-header-contents">
-      <div class="seovideo-logo">
-        <a href="http://shelby.tv"><img border=0px width=100px src="/images/seovideo/landing_logo.svg"></a>
-      </div>
-      <div class="seovideo-slogan">
-        <a href="http://shelby.tv">TRY THE FREE WEB APP SHELBY.TV</a>
-      </div>
+<!-- FACEBOOK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="content-wrapper clearfix">
+  <header class="seovideo-head clearfix" role="banner">
+    <div class="shelby-header clearfix">
+      <a href="http://shelby.tv" class="shelby-logo">
+        <h1 class="shelby-title ir">
+          Shelby.tv
+        </h1>
+      </a>
+      <!-- TODO: copy Login button from new Landing page stuff -->
+    </div>
+
+    <div class="seovideo-subhead clearfix">
+      <a href="http://shelby.tv" title="Click to Join Shelby.tv!" class="seovideo-button seovideo-signup js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Signup Button" data-ga_label="<%= @video_title %>">
+        Sign me up!
+      </a>
+
+      <h2 class="seovideo-subheader">
+        This video is brought to you by Shelby.tv - try out the free web app and discover<br />
+        all the amazing new videos your friends are sharing together.
+      </h2>
     </div>
   </header>
 
-  <hr class="seovideo-headerrule">
+  <div class="seovideo-wrapper clearfix">
+    <div class="seovideo-column-left">
+      <section class="seovideo-section seovideo-card">
+        <h3 class="seovideo-column-header">
+          <%= @video_title %>
+        </h3>
 
-  <div class="seovideo-wrapper">
-
-    <div class="seovideo-leftcol">
-      <div class="seovideo-pitch">
-        <a href="http://shelby.tv">This video is brought to you by Shelby.tv - try out the free web app and discover<br>all the amazing new videos your friends are sharing together.</a>
-      </div>
-
-      <div class="seovideo-embed">
-        <% if @provider_name == "youtube" %>
-          <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
-        <% else %>
-          <%= raw @video_embed %>
-        <% end %>
-      </div>
-      <div class="seovideo-details">
-        <p>Title: <%= @video_title %></p>
-        <p>Author: <%= @video_author %></p>
-        <p>Description: <%= @video_description %></p>
-      </div><!-- eo seovideo-details -->
-
-      <div class="seovideo-messages">
-        <% @conversations.each do |conversation| %>
-          <% conversation["messages"].each do |message| %>
-            <hr class="seovideo-headerrule">
-            <div class="seovideo-message">
-              <div class="seovideo-message-image">
-                 <img width=50 height=50 src="<%= message["user_image_url"] %>">
-              </div>
-              <div class="seovideo-messagenickname">
-                <% if message["origin_network"] && message["origin_network"] == "twitter" %>
-                  @<%= message["nickname"] %>
-                <% else %>
-                  <%= message["nickname"] %>
-                <% end %>
-              </div>
-              <div class="seovideo-messagetext">
-                <%= message["text"] %>
-              </div>
-              <div class="seovideo-messagedate">
-                Posted <%= message["created_at"] %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div><!-- eo seovideo-messages -->
-
-    </div><!-- eo seovideo-leftcol -->
-
-    <div class="seovideo-rightcol">
-      <% if !@video_related_response_body_results.empty? %>
-        <div class="seovideo-relatedvideos">
-          <div class="seovideo-relatedvideo-header">
-            Related Videos
-          </div>
-          <% @video_related_response_body_results.each do |video_related| %>
-            <div class="seovideo-relatedvideo">
-              <a href="http://shelby.tv/video/<%= video_related['provider_name'] %>/<%= video_related['provider_id'] %>/<%= hyphenateString(video_related['title']) %>"><img width=194 height=108 src=<%= video_related["thumbnail_url"] %> >
-              <p class="seovideo-relatedvideo-title">
-                <%= video_related["title"] %>
-              </p>
-              </a>
-            </div>
+        <div class="seovideo-embed">
+          <% if @provider_name == "youtube" %>
+            <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
+          <% else %>
+            <%= raw @video_embed %>
           <% end %>
         </div>
-      <% end %>
-    </div><!-- eo seovideo-rightcol -->
 
+        <div class="seovideo-details">
+          <p>
+            Author: <%= @video_author %>
+          </p>
+ 
+          <p>
+            Description: <%= @video_description %>
+          </p>
+
+          <div class="seovideo-social clearfix">
+            <div class="fb-like" data-href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>"  data-text="<%= @video_title %> via @Shelby">Tweet</a>
+
+            <div class="g-plusone" data-size="medium"></div>
+          </div>
+        </div><!-- eo seovideo-details -->
+      </section><!-- eo seovideo-card -->
+    </div><!-- eo seovideo-column-left -->
+
+    <div class="seovideo-column-right">
+      <% if !@video_related_response_body_results.empty? %>
+        <div class="seovideo-relatedvideos">
+          <h3 class="seovideo-column-header">
+            Related Videos
+          </h3>
+          <ul class="list_module seovideo-related-list">
+            <% @video_related_response_body_results.each do |video_related| %>
+              <li class="list_item seovideo-related-item seovideo-relatedvideo">
+                <a href="http://shelby.tv/video/<%= video_related["provider_name"] %>/<%= video_related["provider_id"] %>/<%= hyphenateString(video_related["title"]) %>" class="seovideo-relatedvideo-link js-track-event" title="<%= video_related["title"] %>" data-ga_category="SEO Video" data-ga_action="Click on Related Video" data-ga_label="<%= @video_title %>">
+                  <img src="<%= video_related["thumbnail_url"] %>" alt="<%= video_related["title"] %>" title="<%= video_related["title"] %>" />
+
+                  <p class="seovideo-relatedvideo-title">
+                    <%= video_related["title"] %>
+                  </p>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div><!-- eo seovideo-column-right -->
+
+    <div class="seovideo-messages clearfix">
+      <ul class="list_module seovideo-messages-list">
+        <% if @conversations %>
+          <% @conversations.each do |conversation| %>
+            <% conversation["messages"].each do |message| %>
+              <li class="list_item seovideo-messages-item">
+                <blockquote class="media_module seovideo-messages-block">
+                  <span class="image_module xuser-avatar media_image" style="background-image: url(<%= message["user_image_url"] %>);" role="img">
+                    <img src="<%= message["user_image_url"] %>" class="visuallyhidden" title="<%= message["nickname"] %>" alt="<%= message["nickname"] %>">
+                  </span>
+
+                  <div class="media_body">
+                    <p class="xuser-data">
+                      <span class="xuser-data-timestamp">
+                        <%= message["created_at"] %>
+                      </span>
+
+                      <% if message["origin_network"] && message["origin_network"] == "twitter" %>
+                        <strong>
+                          <%= message["realname"] %>
+                        </strong>                        
+
+                        <span class="xuser-data-origin-name">
+                          @<%= message["nickname"] %>
+                        </span>
+                      <% else %>
+                        <strong>
+                          <%= message["nickname"] %>
+                        </strong>                      
+                      <% end %>
+                    </p>
+
+                    <p>
+                      <%= message["text"] %>
+                    </p>
+
+                    <% if message["origin_network"] == "twitter" %>
+                      <ul class="list_module xuser-data-twitter-intents seovideo-command-menu">
+                        <li>
+                          <a class="xuser-data-twitter-reply" href="https://twitter.com/intent/tweet?in_reply_to=<%= message["origin_id"] %>">
+                            <i></i>Reply
+                          </a>
+                        </li>
+                        <li>
+                          <a class="xuser-data-twitter-retweet" href="https://twitter.com/intent/retweet?tweet_id=<%= message["origin_id"] %>">
+                            <i></i>Retweet
+                          </a>
+                        </li>
+                        <li>
+                          <a class="xuser-data-twitter-favorite" href="https://twitter.com/intent/favorite?tweet_id=<%= message["origin_id"] %>">
+                            <i></i>Favorite
+                          </a>
+                        </li>
+                      </ul>
+                    <% end %>
+                  </div>
+                </blockquote><!-- eo .media_module-->
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div><!-- eo seovideo-messages -->
   </div><!-- eo seovideo-wrapper -->
 
 </div><!-- eo content-wrapper -->	
+<!-- TWITTER INTENTS -->
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+
+<!-- TWITTER -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<!-- GOOGLE PLUS -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

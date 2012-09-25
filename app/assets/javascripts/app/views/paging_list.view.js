@@ -15,6 +15,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _loadInProgress : false,
 
+  _emptyIndicatorView : null,
+
   events : function() {
     var events = {
       "click .js-load-more:not(.js-loading)" : "_loadMore"
@@ -28,6 +30,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
+    emptyIndicatorViewProto : null,
     firstFetchLimit : 0,
     insert : {
       position : 'before',
@@ -46,9 +49,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   initialize : function(){
     var self = this;
     this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.count) {
-      this._numItemsLoaded = 0;
-    }
+    this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
     this.$el.append(this.template());
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
@@ -71,9 +72,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _updatePagingParameters : function() {
-    if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.count) {
-      this._numItemsLoaded = this._simulatedMasterCollection.length;
-    } else if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
+    this._numItemsLoaded = this._simulatedMasterCollection.length;
+    if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
       //assuming data already sorted by id
       if (this._simulatedMasterCollection.length) {
         this._lastKeyValue = this._simulatedMasterCollection.last().id;
@@ -86,6 +86,14 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _onItemsLoaded : function(rollModel, items){
     this.$('.js-load-more').removeClass('js-loading').show();
     this.$('.js-load-more-button').html('Load more');
+    if (this.options.emptyIndicatorViewProto) {
+      if (this._numItemsLoaded == 0 && !items.length && !this._emptyIndicatorView) {
+        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+        this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+      } else if (items.length && this._emptyIndicatorView) {
+        this._emptyIndicatorView.leave();
+      }
+    }
     if (items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
@@ -133,9 +141,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _addItem : function(item, collection, options){
-    if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.count) {
-      this._numItemsLoaded++;
-    } else if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
+    this._numItemsLoaded++;
+    if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
       if (!this._lastKeyValue ||
           this.options.pagingKeySortOrder == 1 && item.id > this._lastKeyValue ||
           this.options.pagingKeySortOrder == -1 && item.id < this._lastKeyValue) {
