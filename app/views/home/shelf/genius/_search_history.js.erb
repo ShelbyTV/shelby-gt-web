@@ -3,7 +3,7 @@ $(document).ready(function(event){
 		// the idea is we aren't re-creating genius rolls here
 		window.cache = kizzy('history');
 		window.searchHistory = window.cache.get('searchHistory');
-		
+				
 		if (searchHistory){
 			// DISPLAY SEACH HISTORY //
 			for (var term in searchHistory) {
@@ -14,7 +14,11 @@ $(document).ready(function(event){
 		else{			
 			// create some history
 			cache.set('searchHistory', {});
-			$('.previous-search-area .landing-shelf-header').text("Popular searches on Shelby Genius:");
+		}
+		
+		// if no search history is present, show recommended searches
+		if (Object.keys(window.searchHistory).length === 0) {
+		  $('.previous-search-area .landing-shelf-header').text("Popular searches on Shelby Genius:");
 			$('#recommended-searches').show();
 		}
 		

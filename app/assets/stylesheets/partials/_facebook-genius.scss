@@ -17,7 +17,7 @@ body.facebook-genius{
   
   .login-area {
     float: left;
-    text-align: center;
+    text-align: left;
     width: 50%;
     height: 400px;
     .landing-shelf-lining { width: 50%; }
@@ -33,6 +33,10 @@ body.facebook-genius{
       text-align: left;
     }
     #recommended-searches{ display: none; }
+  }
+  
+  // lists on the shelf
+  .landing-shelf {
     ul {
       list-style-type: none;
       margin: 0;
@@ -60,7 +64,6 @@ body.facebook-genius{
         background: #f6f6f6;
       }
     }
-
   }
   // ***** //
   
@@ -139,6 +142,13 @@ body.facebook-genius{
   
 }
 
+body.connected {
+  .fb-login-button { display: none; }
+}
+
+body.not_authorized { 
+  #searches-from-likes { display:none; }
+}
 
 section.fb-genius {
   #landing-page-search-area{
