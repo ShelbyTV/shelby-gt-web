@@ -290,7 +290,7 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-roll-button {
-  @include gradient-primer($base, 25%);
+  @include gradient-primer($base, 15%);
   @include roundies(input);
 
   border: 1px solid darken($base,5%);
@@ -302,7 +302,7 @@ $onboarding-head-height: 125px;
   width: 100%;
 
   &:hover:not(.followed) {
-    @include gradient-primer(darken($base, 10%),20%);
+    @include gradient-primer(darken($base, 10%));
 
     border: 1px solid darken($base,10%);
   }
@@ -314,6 +314,9 @@ $onboarding-head-height: 125px;
   }
 
   &.followed {
+    border: 1px solid darken($base,3%);
+    background: transparent;
+
     .onboarding-roll-followed {
       display: block;
     }

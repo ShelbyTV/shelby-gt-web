@@ -1,7 +1,7 @@
 <%
   var rolls = [
     {
-      roll_category: 'Pop Culture',
+      category_name: 'Pop Culture',
       rolls: [
         {
           title:'Laughing Squid',
@@ -21,7 +21,7 @@
       ]
     },
     {
-      roll_category: 'Interesting People',
+      category_name: 'Interesting People',
       rolls: [
         {
           title:'Om Gal',
@@ -56,7 +56,7 @@
       ]
     },
     {
-      roll_category: 'Education',
+      category_name: 'Education',
       rolls: [
         {
           title:'Brain Pickings',
@@ -66,7 +66,7 @@
       ]
     },
     {
-      roll_category: 'Gaming',
+      category_name: 'Gaming',
       rolls: [
         {
           title:'IGN',
@@ -76,7 +76,7 @@
       ]
     },
     {
-      roll_category: 'Sports',
+      category_name: 'Sports',
       rolls: [
         {
           title:'Red Bull',
@@ -86,7 +86,7 @@
       ]
     },
     {
-      roll_category: 'News',
+      category_name: 'News',
       rolls: [
         {
           title:'Reuters',
@@ -101,7 +101,7 @@
       ]
     },
     {
-      roll_category: 'Food',
+      category_name: 'Food',
       rolls: [
         {
           title:'Chow',
@@ -133,13 +133,13 @@
   </div>
 </div><!-- eo .onboarding_layout_head -->
 
-<div class="onboardind_layout_body onboarding-body">
+<div class="onboarding_layout_body onboarding-body">
   <ol class="onboarding-category-list clearfix">
     <% rolls.forEach(function(category){ %>
       <li class="onboarding-category-item">
         <div class="onboarding-category-item-lining">
           <h3 class="onboarding-category-header">
-            <%= category.roll_category %>
+            <%= category.category_name %>
           </h3>
 
           <ol class="onboarding_list_module onboarding-roll-list clearfix">
