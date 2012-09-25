@@ -94,9 +94,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       this._loadMoreEnabled = true;
     }
     
-    if (typeof FB !== "undefined"){
-     FB.XFBML.parse($('ul.roll')[0]);
-    }
+    //if (typeof FB !== "undefined"){
+     FB.XFBML.parse($('.roll')[0]);
+    //}
   },
 
   _onFetchSuccess : function(model, response){
@@ -124,7 +124,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     
     // load up fb like/send buttons if fb sdk is available
     if (typeof FB !== "undefined"){
-     FB.XFBML.parse($('ul.roll')[0]);
+     FB.XFBML.parse($('.roll')[0]);
     }
     
   },

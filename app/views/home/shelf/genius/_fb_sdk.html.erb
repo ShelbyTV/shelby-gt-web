@@ -9,12 +9,13 @@
       xfbml      : true  // parse XFBML
     });
 
-		if (typeof shelby !== "undefined") {
+		if (typeof shelby !== "undefined" && shelby.guide) {
 			var frame = shelby.models.guide.get("activeFrameModel");
 			$('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/roll/'+frame.get('roll').id+'/frame/'+frame.id+'" data-num-posts="2"></div>');			
 		}
 		FB.XFBML.parse($('#fb-comments-holder')[0]);
-		
+    FB.XFBML.parse($('.roll')[0]);
+
 		FB.getLoginStatus(function(response) {  
 		  if (response.status == "connected"){
 		    // logged in and authorized!
