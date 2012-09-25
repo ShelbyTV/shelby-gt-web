@@ -78,7 +78,7 @@
 
   //------------------------------
   //  TODO: 
-  //  dynamic-avatar-lining needs refactoring
+  //  dynamic-avatar needs refactoring
   //  for now this is a hacky override 
   //------------------------------
 
@@ -86,8 +86,8 @@
     margin-top: 1em;
   }
 
-  .dynamic-avatar-lining {
-    border:1px solid darken($base,5%);
+  .dynamic-avatar {
+    border:1px solid $avatar-outline;
     float: none;
 
     .progress-overlay {
@@ -171,6 +171,12 @@
 
 /* STAGE 2 */
 
+.onboarding-follow-more-count {
+  &.onboarding-follow-more-highlight {
+    color: $shelby-red;
+  }
+}
+
 .onboarding-roll-list {
   img {
     width: 100%;
@@ -184,15 +190,24 @@
   width: 20%;
 }
 
-.onboarding-roll-item-lining {
+.onboarding-roll-button {
+  background-color: transparent;
+  border: none;
+  display: block;
+  margin: 10px 0;
+  padding: 5px;
   position: relative;
-  margin: 10px 5px;
   text-align: left;
+  width: 100%;
 
   &:hover {
-    .onboarding-roll-button-wrapper {
-      display: block;
-    }
+    @include roundies(input);
+
+    background-color: darken($base,2%);
+  }
+
+  &:active {
+    background-color: darken($base,5%);
   }
 
   &.followed {
@@ -201,9 +216,12 @@
     }
 
     &:hover {
-      .onboarding-roll-button-wrapper {
-        display: none;
-      }
+      background-color: transparent;
+      cursor: auto;
+    }
+
+    &:active {
+      background-color: transparent;
     }
   }
 }
@@ -226,28 +244,31 @@
   line-height: 1.9;
   margin-bottom: 8px;
 }
-.onboarding-roll-button-wrapper  {
-  display:  none;
-  left: 0;
-  top: 32%;
-  position: absolute;
-  text-align:  center;
-  width:  100%;
-}
-.onboarding-roll-button {
-  @include button-primer($x-primer-color, light, menu);
 
-  display: inline;
-  margin: 0 auto;
+//TODO: determine that this button stuff is not-needed
 
-  &:hover {
-    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);    
-  }
+//.onboarding-roll-button-wrapper  {
+//  display:  none;
+//  left: 0;
+//  top: 32%;
+//  position: absolute;
+//  text-align:  center;
+//  width:  100%;
+//}
+//.onboarding-roll-button {
+//  @include button-primer($x-primer-color, light, menu);
 
-  &:active {
-    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);    
-  }
-}
+//  display: inline;
+//  margin: 0 auto;
+
+//  &:hover {
+//    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);
+//  }
+
+//  &:active {
+//    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);
+//  }
+//}
 
 .onboarding-roll-followed {
   position: absolute;
@@ -269,6 +290,12 @@
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.onboarding-stage-2-next-step {
+  &.onboarding-next-step-highlight {
+    @include button-primer($shelby-green, dark);
+  }
 }
 
 /* STAGE 3 */

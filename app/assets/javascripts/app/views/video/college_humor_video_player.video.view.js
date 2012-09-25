@@ -51,16 +51,23 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
   },
   render: function(container, video){
     this._isActivePlayer = true;
+
+    //no harm in showing the player before it's been built - it just
+    //looks black, but this makes it much easier to keep track
+    //if its visibility state - less conditionals and asynchronicity to worry about
+    if( !this.playerState.get('visible') ){
+      this.$el.css('visibility', 'visible');
+      this.$el.css('z-index', '1');
+      this.playerState.set({visible:true});
+
+    }
+
     if( !this.playerState.get('playerLoaded') ){
       this._video = video;
       this._bootstrapPlayer();
     }
-    else if( !this.playerState.get('visible') ){
-      this.$el.css('visibility', 'visible');
-      this.$el.css('z-index', '1');
-      this.playerState.set({visible:true});
-      //playVideo will be called by video display view
-    }
+
+    //playVideo will be called by video display view
   },
 
   playVideo: function(video){
@@ -162,11 +169,8 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 
     this._player = $("#"+this.id)[0];
 
-    this.$el.css('z-index', '1');
-    this.playerState.set({visible:true});
-
     //auto play is not a config option, need to press play meow...
-    if( this._playbackState.get('autoplayOnVideoDisplay') ){ this.play(); }
+    if( this._playbackState.get('autoplayOnVideoDisplay') && this._isActivePlayer ){ this.play(); }
 
     this.playerState.set({playerLoaded: true});
   },

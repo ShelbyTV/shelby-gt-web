@@ -4,86 +4,109 @@
 }
 
 //------------------------------------------------------------------------------
-//	nested styles in context-overlay-lining 
+//  nested styles in context-overlay-lining
 //  override default styling of the frame (jst)
-//	(the context-overlay is a subclass of the frame view)
+//  (the context-overlay is a subclass of the frame view)
 //------------------------------------------------------------------------------
 
 .context-overlay-lining {
-	font-size: .925em;
-	line-height: 1.5;
-	width: $guide-width;
+  font-size: .925em;
+  line-height: 1.5;
+  width: $guide-width;
 
-	////////////////////////////////////////////////////////////////////////////
-	// frame restylings 
-	////////////////////////////////////////////////////////////////////////////
-	.xframe {
-		background-color: $base;
-		overflow: hidden; //hide that body-wrapper box-shadow!
-		padding: 0;
-	}
+  ////////////////////////////////////////////////////////////////////////////
+  // frame restylings
+  ////////////////////////////////////////////////////////////////////////////
+  .xframe {
+    background-color: $base;
+    overflow: hidden; //hide that body-wrapper box-shadow!
+    padding: 0;
+  }
 
-	.xframe-title {
-		padding: 3px 5px 0;
-	}
+  .xframe-title {
+    padding: 3px 5px 0;
+  }
 
-	.xframe-menu {
-		bottom: 29px;
-		display: block;
-		top: auto;
+  ////////////////////////////////////////////////////////////////////////////
+  //  menu and sublist stuff
+  ////////////////////////////////////////////////////////////////////////////
 
-		.right {
-			float: left;
-			text-align: left;
-		}
-	}
+  .xframe-menu {
+    bottom: 28px;
+    display: block;
+    top: auto;
 
-	.xframe-sublist {
-		display: block;
-		margin: 0;
-		width: auto;
-	}
+    .right {
+      float: left;
+      text-align: left;
+    }
+  }
 
-	.xframe-command,
-	.xframe-option {
-		//let's "unstyle" this shit to look like a text link.
-		border: none !important;
-		box-shadow: none;
-		background: transparent;
-		color: #666;
-		font-family: $font-family;
-		font-weight: 300;
-		margin: 0;
-		width: auto;
+  .xframe-sublist {
+    display: block;
+    margin: 0;
+    width: auto;
+  }
 
-		&:hover {
-			background: transparent;
-			text-decoration: underline;
-		}
-	}
+  .xframe-command,
+  .xframe-option {
+    //let's "unstyle" this shit to look like a text link.
+    border: none !important;
+    box-shadow: none;
+    background: transparent;
+    color: #666;
+    font-family: $font-family;
+    font-weight: 300;
+    margin: 0;
+    opacity: $videocard-faux-tint;
+    width: auto;
+
+    &:hover {
+      background: transparent;
+      text-decoration: underline;
+    }
+  }
 
 //------------------------------------------------------------------------------
 //  command-more has dropdown:
-//	queue, remove, shortlink, etc.
+//  queue, remove, shortlink, etc.
 //------------------------------------------------------------------------------
-	.command-more {
-		display: none;
-		margin: 0;
-	}
-		// double indentation denotes sublist options
-		// 'nesting' without actually nesting.
-		// saves us from having stupid-long selector strings,
-		// i.e. `.content-overlay .command-more .command-queue`
-		.command-queue {
-			&.queued {
-				background: transparent;
-				box-shadow: none;
-				font-weight: 300;
-			}
-		}
+  .command-sublist { //override the background positioning
+    .command-icon {
+      background-position: center left;
+//      background-repeat: no-repeat; //not sure why this has to be called again.
+      padding-left: $button-padding-left;
+      padding-right: 0;
+    }
+  }
 
-	.xuser-message {
-		overflow-y:auto;
-		max-height: 150px;
-	}
+  .command-more {
+    display: none;
+    margin: 0;
+  }
+    // double indentation denotes sublist options
+    // 'nesting' without actually nesting.
+    // saves us from having stupid-long selector strings,
+    // i.e. `.content-overlay .command-more .command-queue`
+    .command-queue {
+      &.queued {
+        background: transparent;
+        box-shadow: none;
+        font-weight: 300;
+      }
+    }
+
+    .command-share {
+      .command-icon {
+        &.icon_email {
+          background-image: url($icon-email);
+          padding-left: $button-padding-left + .2em;
+        }
+      }
+    }
+
+  .xuser-message {
+    overflow-y:auto;
+    max-height: 150px;
+  }
 }//eo .context-overlay-lining

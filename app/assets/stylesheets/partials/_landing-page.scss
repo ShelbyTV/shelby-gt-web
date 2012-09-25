@@ -20,51 +20,57 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 /********************************************************
- * Login
+ * Login & Signup (used on landing page and anonymous banner)
  ********************************************************/
 
 
-.login-section {
+.login-section, 
+.signup-section {
   box-shadow: 0 0 20px 0 black;
   right: 10px;
   top: 28px;
 }
 
-.login-section-lining {
+.login-section-lining, 
+.signup-section-lining {
   @include fin;
 
   background: $nav-dropdown-bg;
   box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
-  margin-top: 2px;
   text-align: left;
   width: 300px;
 }
 
-.login-header {
+.login-header, 
+.signup-header {
   margin: 10px 10px 0;
 }
 
-.login-section hr {
+.login-section hr, 
+.signup-section hr {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
   margin-bottom: 0;
   margin-top: .5em;
 }
 
-.login-form,
-.login-social-section {
+.login-form, .login-social-section,
+.signup-form, .signup-social-section  {
   padding: 10px;
 }
 
-.login-social-section-header  {
+.login-social-section-header,
+.signup-social-section-header  {
   margin-bottom: 5px;
 }
 
-.login-form .form_input {
+.login-form .form_input
+.signup-form .form_input {
   margin-bottom: .5em;
 }
 
-.login-submit {
+.login-submit,
+.signup-submit {
   @include button-primer();
   
   margin-top: .5em;

@@ -15,8 +15,9 @@ libs.shelbyGT.Ajax = {
   },
   
   validAnonUrlStubs : [
-    '/user/',
-    '/roll/'
+    shelby.config.apiRoot+'/user/',
+    shelby.config.apiRoot+'/roll/',
+    '/short_link'
   ],
   
   isAnonUrlValid : function(opts){
@@ -24,7 +25,7 @@ libs.shelbyGT.Ajax = {
     if (opts.type != 'GET') return valid;
     this.validAnonUrlStubs.forEach(function(stub){
       //for each of the valid stubs
-      if (opts.url.indexOf(shelby.config.apiRoot+stub)!==-1){
+      if (opts.url.indexOf(stub)!==-1){
         //if url contains the valid stub
         valid = true;
         //mark as valid

@@ -1,0 +1,26 @@
+//------------------------------------------------------------------------------
+//  ICON CLASS CONSTRUCTOR
+//------------------------------------------------------------------------------
+
+@each $icon in $icons {
+  .icon_#{$icon} {
+    @include icon-primer($icon);
+  }
+}
+
+//------------------------------------------------------------------------------
+//  button icon module
+//------------------------------------------------------------------------------
+.button_icon {
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: auto;
+  font-style: normal;
+}
+
+.button_icon_right {
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: auto;
+  font-style: normal;
+}

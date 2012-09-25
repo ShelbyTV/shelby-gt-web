@@ -1,10 +1,10 @@
 require 'uri'
 require 'net/http'
 require 'shelby_api'
+require 'iconv'
 
 class SeovideoController < ApplicationController
 helper_method :hyphenateString
-before_filter :prepare_for_mobile
 
   def show
     
@@ -70,6 +70,12 @@ before_filter :prepare_for_mobile
       conversations_response = nil
     end
 
+    # default description in case first message has issues... can't use double-quotes anywhere, since it's going in a meta tag
+    if @video_description
+      @meta_description = @video_description.gsub /"/, "'"
+    else 
+      @meta_description = Settings::Application.meta_description
+    end
     if (conversations_response and conversations_response.code == "200")
       if conversations_response.body
         if (conversations_response_body_decoded = ActiveSupport::JSON.decode(conversations_response.body))
@@ -79,15 +85,16 @@ before_filter :prepare_for_mobile
               @conversations.first["messages"] and
               @conversations.first["messages"].first)
             first_message = @conversations.first["messages"].first
-            # can't use double-quotes anywhere, since it's going in a meta tag
-            first_message_text = first_message["text"].gsub /"/, "'"
-            if first_message['origin_network'] && first_message['origin_network'] == 'twitter' 
-              @meta_description = "Shared by @#{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
-            else
-              @meta_description = "Shared by #{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
+            if first_message["text"]
+              # can't use double-quotes anywhere, since it's going in a meta tag, and need to make sure we're using valid UTF-8
+              ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+              first_message_text = ic.iconv(first_message["text"] + ' ')[0..-2].gsub /"/, "'"
+              if first_message['origin_network'] && first_message['origin_network'] == 'twitter' 
+                @meta_description = "Shared by @#{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
+              else
+                @meta_description = "Shared by #{first_message['nickname']} (#{first_message['created_at']}): #{first_message_text}" 
+              end
             end
-          else
-            @meta_description = Settings::Application.meta_description 
           end
         end
       end
@@ -108,7 +115,7 @@ private
     elsif duration < 3600 
       return sprintf('%d:%02d', duration / 60, duration % 60)
     elsif duration < (3600 * 24)
-      return sprintf('%:%02d:%02d', duration / 3600, duration / 60, duration % 60)
+      return sprintf('%d:%02d:%02d', duration / 3600, duration / 60, duration % 60)
     else
       return "> 1 day"
     end
@@ -131,8 +138,7 @@ private
   end
 
   def hyphenateString(title)
-    title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
+    title ? title.downcase.gsub(/\W/,'-').gsub(/"/,"'").squeeze('-').chomp('-') : ""
   end
-
 
 end

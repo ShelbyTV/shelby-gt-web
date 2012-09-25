@@ -1,5 +1,20 @@
-//FRAME
+//------------------------------------------------------------------------------
+//  experimental clearfix... fix.
+//------------------------------------------------------------------------------
 
+//  fixes uproxx.com
+.clearfix:not(.media_body) {
+  overflow: visible;
+}
+
+//  fixes waywire.com
+.form_submit {
+  font-family: $font-family-display !important;
+}
+
+//------------------------------------------------------------------------------
+//  FRAME
+//------------------------------------------------------------------------------
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
@@ -15,8 +30,9 @@
   font-size: 13px;
 }
 
-//NOTIFICATION
-
+//------------------------------------------------------------------------------
+//  'Videos Found' NOTIFICATION
+//------------------------------------------------------------------------------
 .notifications-lining {
   position: fixed;
   z-index: 2147483647;
@@ -25,7 +41,7 @@
 .shelby-notify {
   background-color: #eee;
   background-image: url('/images/assets/shelby_mark_dark.svg');
-  background-position: 10% -3px;
+  background-position: 9px -1px;
   background-size: 40px 40px;
   background-repeat: no-repeat;
   border: 1px solid #adadad;
@@ -44,28 +60,40 @@
 
   &.more {
     width: 200px;
-    background-position: 10% -3px;
-
-  }
-
-  .notify-text {
-    margin-left: 60px;
-  }
-
-  .notify-cancel {
-    @include button-primer($shelby-gray);
-
-    border-radius: 20px;
-    height: 20px;
-    left: -10px;
-    line-height: 1.0;
-    padding: 0;
-    position: absolute;
-    top: -10px;	
-    width: 20px;
   }
 }
 
+.notify-text {
+  margin-left: 52px;
+  text-align: center;
+}
+
+.notify-cancel {
+  @include button-primer($shelby-gray,dark);
+
+  border-radius: 20px;
+  left: -10px;
+  padding: .5em;
+  position: absolute;
+  top: -10px;
+
+  &:hover {
+    border-radius: 20px;
+  }
+
+  .cancel-icon {
+    background-size: contain;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 7px;
+    width: 7px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Process completion Feedback
+//------------------------------------------------------------------------------
 .fadein-notify-window {
   background-color: black;
   bottom: 0px;
@@ -111,8 +139,9 @@
   }
 }
 
-//LOGIN
-
+//------------------------------------------------------------------------------
+//  LOGIN
+//------------------------------------------------------------------------------
 #login-guide-window {
   .shelby-login-cancel {
     @include button-primer($shelby-gray);
@@ -155,8 +184,9 @@
   }
 }
 
-//ROLLS
-
+//------------------------------------------------------------------------------
+//  ROLLS
+//------------------------------------------------------------------------------
 .roll-options-submit {
   text-align: center;
 }
@@ -165,13 +195,16 @@
   color: #DCDDDE;
 }
 
-//GUIDE
-
+//------------------------------------------------------------------------------
+//  GUIDE
+//------------------------------------------------------------------------------
 .guide-window {
+  -webkit-font-smoothing: antialiased; //hehe
   background: #e2e2e2;
   border-left: 1px solid black;
   bottom: 0;
   box-shadow: 0px 0px 25px 5px black;
+  font-size: 11px;
   margin-right: -360px;
   position: fixed;
   right: 0px;
@@ -193,8 +226,9 @@
     
 }
 
-//BUTTONS
-
+//------------------------------------------------------------------------------
+//  BUTTONS
+//------------------------------------------------------------------------------
 .bookmarklet-video-tab {
   height: 300px;
   overflow: hidden;
@@ -211,37 +245,29 @@
   margin-bottom: 28px;
   margin-top: 2px;
   width: 80px;
+
   li {
     background-color: #EEE;
+    border-radius: 5px;
     height: 31px;
+    margin: 0;
     width: 100%;
+
+    .all-comment,
+    .all-roll,
+    .all-queue,
     .all-creator {
       &:hover {
-        background-color: gray;
+        background-color: darken(#eee, 15%);
       }
     }
 
-    .all-queue {
-      &:hover {
-        background-color: gray;
-      }
-    }
-    .all-roll {
-      &:hover {
-        background-color: gray;
-      }
-    }
-
-    .all-comment {
-      &:hover {
-        background-color: gray;
-      }
-    }
     &:last-child {
       button {
         border-top: none;
       }
     }
+
     button {
       border: 1px solid #adadad;
       border-right: 0;
@@ -265,10 +291,12 @@
   }
 }
 
+.video-card-context,
 .embedded-controls {
   li {
     &:first-child {
       border-radius: 5px 0 0 0;
+
       button {
         border-radius: 5px 0 0 0;
       }
@@ -276,6 +304,7 @@
 
     &:last-child {
       border-radius: 0 0 0 5px;
+
       button {
         border-radius: 0 0 0 5px;
       }
@@ -284,24 +313,30 @@
 }
 
 .bookmarklet-button {
-  background-color: #EEE;
-  color: #333;
-  font-size: 11px;
-  font-weight: 300;
-  height: 100%;
-  text-align: center;
-  width: 100%;
+  background: #EEE !important;
+  box-shadow: none !important;
+  color: #444 !important;
+  font-family: $font-family !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  height: 100% !important;
+  outline: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  width: 100% !important;
 
   &.queued {
-    background-color: gray;
+    background-color: darken(#eee,10%);
     cursor: default;
+
     i {
-      background-position: 0px 2px;
       padding-left: 15px;
 
       &:before {
         content: "Queued"
       }
+
       font-style: normal;
     }
   }
@@ -319,26 +354,24 @@
   font-style: normal;
 }
 
-.queue-button-content {
-  &:before {
-      content: "Queue"
-  }
-  background-image: url("/images/assets/chrome_queue.svg");
-  background-position: 5px 2px;
+.queue-button-content,
+.roll-button-content {
+  background-position: left 1px;
   background-repeat:no-repeat;
-  background-size: 20%;
   font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
+  padding-left: 1.3em;
 }
-  
+
+.queue-button-content {
+  background-image: url("/images/assets/chrome_queue.svg");
+  background-size: 11px;
+
+  &:before {
+    content: "Queue"
+  }
+}
 
 .roll-button-content {
   background-image: url("/images/assets/chrome_roll.svg");
-  background-position: 5px 2px;
-  background-repeat:no-repeat;
-  background-size: 20%;
-  font-style: normal;
-  padding-bottom: 2px;
-  padding-left: 19px;
+  background-size: 10px;
 }

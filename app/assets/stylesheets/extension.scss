@@ -1,17 +1,13 @@
 @import "base";
 @import "base-mixin";
 
-@import "compass/css3",
-        "compass/typography/links/hover-link",
-        "compass/utilities/text/ellipsis",
-        "compass/utilities/lists/bullets";
-
 /* A wrapper around all the elements the extension inserts */
 .ext-elements {
   /* We import these in here so we don't fuck up the surrounding page */
   @import "partials/fonts",
           "partials/h5bp", 
           "partials/modules",
+          "partials/icons",
           
           "partials/app.html",
           "partials/app-header",

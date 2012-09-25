@@ -139,16 +139,22 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   requestFrameShareView: function(){
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
-      this.model.getFirstFrame());
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
+        this.model.getFirstFrame());
+    }
   },
   
   requestFrameRollView : function(){
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
-      this.model.getFirstFrame());
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+        this.model.getFirstFrame());
+    }
   },
 
   _onClickQueue : function(){
+    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
+    
     self = this;
     this.model.getFirstFrame().saveToWatchLater();
     // immediately change the button state
@@ -203,8 +209,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
   
   _requestConversationView : function(){
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
-      this.model.getFirstFrame());
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
+        this.model.getFirstFrame());
+    }
   },
 
   _goToCreatorsPersonalRoll : function(){
@@ -250,6 +258,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _toggleComment : function(e){
     e.preventDefault();
+    
     $(e.currentTarget).text(function(e,i){
       return (i == 'more…') ? 'Hide' : 'more…';
     });
