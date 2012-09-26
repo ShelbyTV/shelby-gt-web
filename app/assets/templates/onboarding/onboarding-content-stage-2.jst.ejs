@@ -123,7 +123,7 @@
   </h2>
 
   <div class="onboarding-next-step-wrapper">
-    <button class="js-onboarding-next-step onboarding-next-step onboarding-stage-2-next-step">
+    <button class="js-onboarding-next-step onboarding-stage-2-next-step">
       Skip
     </button>
 
@@ -133,7 +133,7 @@
   </div>
 </div><!-- eo .onboarding_layout_head -->
 
-<div class="onboarding_layout_body onboarding-body">
+<div class="onboarding_layout_body onboarding-body onboarding-stage-2 clearfix">
   <ol class="onboarding-category-list clearfix">
     <% rolls.forEach(function(category){ %>
       <li class="onboarding-category-item">
@@ -152,9 +152,9 @@
 
                   <div class="onboarding-roll-body">
                     <div class="animate_module onboarding-roll-followed">
-                      <i class="ir onboarding-followed-icon">
-                        FOLLOWED
-                      </i>
+                      <p>
+                        Following
+                      </p>
                     </div>
 
                     <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />

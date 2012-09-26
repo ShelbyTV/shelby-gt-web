@@ -80,20 +80,25 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 .onboarding-block-container,
 .onboarding-form-container {
-  max-width: 300px;
+  max-width: 330px;
   margin:  0px auto;
 
   &.wide {
     max-width: none;//this can change according to any needs
   }
 
-  & > p {
+  p {
     font-family: $font-family-display;
     font-size: 1.2em;
     font-weight: 300;
     text-align: center;
   }
+
+  .onboarding-form-disclaimer {
+    font-size: .8em;
+  }
 }
+
 
 //------------------------------------------------------------------------------
 //  onboarding 'next step'
@@ -144,6 +149,9 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 //  STAGE 1
 //------------------------------------------------------------------------------
+.onboarding-stage-1 {
+
+}
 
 .onboarding-form-1 {
 //  margin:  0px auto;
@@ -212,7 +220,6 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-username {
-
   position: relative;
 
   &.show-context {
@@ -239,16 +246,24 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-username-http {
-  left:-53px;
+  left: -53px;
 }
 
 .onboarding-username-shelbytv {
   right: -73px;
 }
 
+.onboarding-form-subline {
+  font-size: .7em;
+}
+
 //------------------------------------------------------------------------------
 //  STAGE 2
 //------------------------------------------------------------------------------
+.onboarding-stage-2 {
+
+}
+
 .onboarding-follow-more-count {
   &.onboarding-follow-more-highlight {
     color: $shelby-red;
@@ -325,6 +340,10 @@ $onboarding-head-height: 125px;
     border: 1px solid $shelby-green;
     background: transparent;
 
+    .onboarding-roll-head {
+      opacity: .2;
+    }
+
     .onboarding-roll-followed {
       display: block;
     }
@@ -334,6 +353,7 @@ $onboarding-head-height: 125px;
 .onboarding-roll-body {
   position: relative;
 }
+
 .onboarding-roll-head,
 .onboarding-roll-subhead {
   @include ellipsis;
@@ -341,7 +361,9 @@ $onboarding-head-height: 125px;
 
 .onboarding-roll-head {
   font-size: 1.39em;
+  padding-bottom: 0.25em;
 }
+
 .onboarding-roll-subhead {
   font-weight: 100;
   font-size: 0.8em;
@@ -351,34 +373,53 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-roll-followed {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  top: 0;
-  left: 0;
   background-color: rgba(255,255,255,0.9);
-  color: black;
-}
-
-.onboarding-followed-icon {
-  background-repeat:  no-repeat;
-  background-position:  center center;
-  background-image: url($icon-check);
-  bottom: 0;
-  display: block;
+  display: none;
+  height: 100%;
+  left: 0;
   position: absolute;
   top: 0;
   width: 100%;
-}
 
-.onboarding-stage-2-next-step {
-  &.onboarding-next-step-highlight {
-    @include button-primer($shelby-green, dark);
+  p {
+    color: $shelby-green;
+    font-family: $font-family-display;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: -.75em;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
   }
 }
 
-/* STAGE 3 */
+//.onboarding-followed-icon {
+//  background-repeat:  no-repeat;
+//  background-position:  center center;
+//  background-image: url($icon-check);
+//  bottom: 0;
+//  display: block;
+//  position: absolute;
+//  top: 0;
+//  width: 100%;
+//}
+
+.onboarding-stage-2-next-step {
+  @include button-primer;
+
+  &.onboarding-next-step-highlight {
+    @include button-primer($shelby-blue, dark);
+  }
+}
+
+//------------------------------------------------------------------------------
+//  STAGE 3
+//------------------------------------------------------------------------------
+.onboarding-stage-3 {
+  font-size: 1.2em;
+}
+
 .onboarding-network-list {
   list-style: none;
   margin: 20px auto;
@@ -395,9 +436,10 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-network-button {
-  &.connected-network {
+  &.onboarding-connected-network {
     @include button-primer($shelby-gray-light);
   }
+
   width: 100%;
 }
 
@@ -406,6 +448,20 @@ $onboarding-head-height: 125px;
   margin-right: 5px;
 }
 
+.onboarding-network-description {
+  font-family: $font-family-display;
+  font-size: .9em;
+  font-weight: 400;
+  margin-top: .5em;
+
+  span {
+    text-transform: capitalize;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  network button icon class structure
+////////////////////////////////////////////////////////////////////////////
 .onboarding-icon {
   background-repeat: no-repeat;
   background-position: center center;
@@ -415,12 +471,13 @@ $onboarding-head-height: 125px;
 
 .onboarding-network-twitter {
   @include button-primer($twitter-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($twitter-blue, 5%));
     }
   }
-  &.connected-network {
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-twitter-added);
     }
@@ -432,16 +489,19 @@ $onboarding-head-height: 125px;
 
 .onboarding-network-facebook {
   @include button-primer($facebook-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($facebook-blue, 5%));
     }
   }
-  &.connected-network {
+
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-facebook-added);
     }
   }
+
   .onboarding-icon {
     background-image: url($icon-onboarding-facebook-add);
   }
@@ -449,16 +509,19 @@ $onboarding-head-height: 125px;
 
 .onboarding-network-tumblr {
   @include button-primer($tumblr-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($tumblr-blue, 5%));
     }
   }
-  &.connected-network {
+
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-tumblr-added);
     }
   }
+
   .onboarding-icon {
     background-image: url($icon-onboarding-tumblr-add);
   }
@@ -467,15 +530,23 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 //  STAGE 4
 //------------------------------------------------------------------------------
-.stage-4 {
+.onboarding-stage-4 {
   font-size: 1.2em;
+
+  .onboarding-block-container {
+    margin-top: 1em;
+  }
 }
 
+////////////////////////////////////////////////////////////////////////////
+//  this is the 'roll' button in the messaging
+////////////////////////////////////////////////////////////////////////////
 .onboarding-inline-button {
   @include button-primer();
 
   display: inline-block;
-  font-size: .9em;
+  font-size: .7em;
+  margin: 0 .25em;
 
   .icon-roll {
     padding-left: 1.3em;
@@ -485,13 +556,3 @@ $onboarding-head-height: 125px;
 .onboarding-username-display {
   font-size: 2em;
 }
-
-//------------------------------------------------------------------------------
-//  media query fix for anything-onboarding
-//------------------------------------------------------------------------------
-  @media screen and (max-width: 1110px) { //this breakpoint reflects when step 4 starts breaking up.
-    .onboarding-last-list img {
-      height: auto;
-      width: 100%;
-    }
-  }

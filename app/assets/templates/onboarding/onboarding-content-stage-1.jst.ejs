@@ -4,10 +4,10 @@
 
 <div class="onboarding_layout_head onboarding-head clearfix">
   <h1 class="onboarding-header">Set up your Shelby account</h1>
-  <!--<h2 class="onboarding-subheader">Looking good BTW</h2>-->
+
   <div class="onboarding-next-step-wrapper">
     <button class="js-onboarding-next-step onboarding-next-step">
-      Next 
+      Next
     </button>
     <span class="onboarding-next-step-counter">
       Step 1 of 3
@@ -15,7 +15,7 @@
   </div>
 </div><!-- eo .onboarding_layout_head -->
 
-<div class="onboarding_layout_body onboarding-body">
+<div class="onboarding_layout_body onboarding-body onboarding-stage-1 clearfix">
   <div class="onboarding-body-lining">
     <form class="onboarding-form-1 form_module">
       <div class="onboarding-form-container">
@@ -30,7 +30,7 @@
       </div><!-- eo .onboarding-form-container -->
 
       <div class="onboarding-form-container wide">
-        <p class="onboarding-legend-description">
+        <p>
           Your username will be used to create your own .TV.<br/>
           All the video you Roll will be shared here for others to see.
         </p>
@@ -62,7 +62,7 @@
         <input class="form_input" id="js-onboarding-email-input" name="onboarding-email-input" type="email" placeholder="how can we stay in touch?" value="<%= shelby.models.user.get('primary_email') || '' %>" />
         <div class="onboarding-error js-onboarding-email-input-error"></div>
 
-        <p class="onboarding-subline">
+        <p class="onboarding-subline onboarding-form-disclaimer">
           We will confirm your account information. We won't spam you.
         </p>
       </div><!-- eo .onboarding-form-container -->
