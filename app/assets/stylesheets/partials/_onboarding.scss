@@ -542,7 +542,7 @@ $onboarding-head-height: 125px;
 //  this is the 'roll' button in the messaging
 ////////////////////////////////////////////////////////////////////////////
 .onboarding-inline-button {
-  @include button-primer($x-primer-color, light, frame-command, false);
+  @include button-primer($x-primer-color, $primer-tone, $primer-button-context, false);
 
   display: inline-block;
   font-size: .7em;
@@ -555,4 +555,24 @@ $onboarding-head-height: 125px;
 
 .onboarding-username-display {
   font-size: 2em;
+}
+
+.onboarding-stage-4-slideshow {
+  border: 1px solid #adadad;
+  height: 400px;
+  margin: 30px auto 0 auto;
+  position: relative;
+  width: 700px;
+}
+
+.onboarding-stage-4-slide {
+  @include animate($animate-style, $animate-property, 1s);
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+
+  &.onboarding-stage-4-slide-shown {
+    opacity: 1;
+  }
 }
