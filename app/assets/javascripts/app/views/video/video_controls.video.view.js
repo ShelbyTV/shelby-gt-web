@@ -90,7 +90,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
     this.render();
 
-    //need to fake-fire some change events since they don't actually change when swapping players
+    //need to fake-fire some change events since they may not change when swapping players
+    //discussion:  If player A has duration D and gets swapped out, then gets swapped back in (without changing videos) it
+    // will still have duration D.  Thus no change will be fired and we need to fake-fire here.
+    this._onDurationChange('duration', newPlayerState.get('duration'));
     this._onMutedChange('muted', newPlayerState.get('muted'));
     this._onHdVideoChange('hdVideo', newPlayerState.get('hdVideo'));
     this._onSupportsMuteChange('supportsMute', newPlayerState.get('supportsMute'));
