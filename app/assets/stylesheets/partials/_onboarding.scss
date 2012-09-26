@@ -472,10 +472,11 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-inline-button {
-  @include button-primer();
+  @include button-primer($x-primer-color, $primer-tone, $primer-button-context, false);
 
   display: inline-block;
   font-size: .9em;
+  margin: 0 5px;
 
   .icon-roll {
     padding-left: 1.3em;
@@ -489,7 +490,7 @@ $onboarding-head-height: 125px;
 .onboarding-stage-4-slideshow {
   border: 1px solid #adadad;
   height: 400px;
-  margin: 20px auto;
+  margin: 30px auto 0 auto;
   position: relative;
   width: 700px;
 }
