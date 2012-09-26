@@ -114,7 +114,7 @@ $onboarding-head-height: 125px;
 .onboarding-next-step {
   @include button-primer($shelby-blue);
 
-  font-size: 1.1em;
+//  font-size: 1.1em;
 
   &.deselected {
     @include button-primer;
@@ -327,7 +327,7 @@ $onboarding-head-height: 125px;
   &:hover:not(.followed) {
     @include gradient-primer(lighten($base, 10%));
 
-    border: 1px solid lighten($base,10%);
+    border: 1px solid lighten($base,2%);
   }
 
   &:active:not(.followed) {
@@ -433,6 +433,7 @@ $onboarding-head-height: 125px;
   margin-left: 32px;
   padding: 0;
   width: 20%;
+  vertical-align: top;
 }
 
 .onboarding-network-button {
