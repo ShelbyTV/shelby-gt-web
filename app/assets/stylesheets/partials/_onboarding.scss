@@ -118,7 +118,7 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 //  form related
 //------------------------------------------------------------------------------
-.onboarding-legend-description {
+.onboarding-description {
   font-family: $font-family-display;
   font-size: 1.2em;
   font-weight: 300;
@@ -128,6 +128,7 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 //  STAGE 1
 //------------------------------------------------------------------------------
+.onboarding-block-container,
 .onboarding-form-container {
   max-width: 300px;
   margin:  0px auto;
