@@ -96,6 +96,19 @@
       z-index: 1;
     }
 
+    .progress-message {
+      color: white;
+      font-family: $font-family-display;
+      font-size: 1.2em;
+      font-weight: 500;
+      margin-top: -0.5em;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      width: 100%;
+      z-index: 2;
+    }
+
     .spinner-overlay {
       .spinner {
         margin-left:33.3333%;

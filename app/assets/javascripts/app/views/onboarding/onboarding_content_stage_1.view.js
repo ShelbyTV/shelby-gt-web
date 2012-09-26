@@ -35,8 +35,8 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     
     this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
       el: this.$('.js-user-avatar-uploader')[0],
-      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0],
-      progressEl: this.$('.dynamic-avatar .progress-overlay')[0]
+      progressEl: this.$('.dynamic-avatar .progress-overlay')[0],
+      progressMessageEl: this.$('.dynamic-avatar .progress-message')[0]
     });
 
     shelby.track('started onboarding', {userName: shelby.models.user.get('nickname')});
