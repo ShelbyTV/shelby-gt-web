@@ -76,6 +76,26 @@ $onboarding-head-height: 125px;
   }
 
 //------------------------------------------------------------------------------
+//  onboarding abstracts, generic stuff
+//------------------------------------------------------------------------------
+.onboarding-block-container,
+.onboarding-form-container {
+  max-width: 300px;
+  margin:  0px auto;
+
+  &.wide {
+    max-width: none;//this can change according to any needs
+  }
+
+  & > p {
+    font-family: $font-family-display;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: center;
+  }
+}
+
+//------------------------------------------------------------------------------
 //  onboarding 'next step'
 //------------------------------------------------------------------------------ 
 .onboarding-next-step-wrapper {
@@ -118,25 +138,12 @@ $onboarding-head-height: 125px;
 //------------------------------------------------------------------------------
 //  form related
 //------------------------------------------------------------------------------
-.onboarding-description {
-  font-family: $font-family-display;
-  font-size: 1.2em;
-  font-weight: 300;
-  text-align: center;
-}
+
+/* empty for now */
 
 //------------------------------------------------------------------------------
 //  STAGE 1
 //------------------------------------------------------------------------------
-.onboarding-block-container,
-.onboarding-form-container {
-  max-width: 300px;
-  margin:  0px auto;
-
-  &.wide {
-    max-width: none;//this can change according to any needs
-  }
-}
 
 .onboarding-form-1 {
 //  margin:  0px auto;
@@ -457,34 +464,26 @@ $onboarding-head-height: 125px;
   }
 }
 
-/* STAGE 4 */
+//------------------------------------------------------------------------------
+//  STAGE 4
+//------------------------------------------------------------------------------
+.stage-4 {
+  font-size: 1.2em;
+}
 
-.onboarding-last-list {
-  .onboarding-last-item-lining {
-    font-size: 1.4em;
-    text-align: left;
-    margin: 10px 30px;
-  }
+.onboarding-inline-button {
+  @include button-primer();
 
-  li {
-    float: left;
-    margin: 0;
-    padding: 0;
-    width: 50%;
-  }
+  display: inline-block;
+  font-size: .9em;
 
-  img {
-    height:145px;
-    width:330px;
+  .icon-roll {
+    padding-left: 1.3em;
   }
 }
 
-.onboarding-last-title {
-  line-height: 2.5;
-}
-
-.onboarding-last-desc {
-  font-weight: 100;
+.onboarding-username-display {
+  font-size: 2em;
 }
 
 //------------------------------------------------------------------------------
