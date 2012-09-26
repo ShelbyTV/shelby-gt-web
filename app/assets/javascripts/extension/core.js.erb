@@ -41,7 +41,7 @@ window.shelbyBookmarklet = {
         "domain": "vimeo.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
         "regex": ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
-        "elements": "div.player.f:not(:has(video))"
+        "elements": "div.player.f:not(:has(video)):not(:has(object))"
     }, {
         "provider": "youtube",
         "domain": "youtube.com",
