@@ -542,7 +542,7 @@ $onboarding-head-height: 125px;
 //  this is the 'roll' button in the messaging
 ////////////////////////////////////////////////////////////////////////////
 .onboarding-inline-button {
-  @include button-primer();
+  @include button-primer($x-primer-color, light, frame-command, false);
 
   display: inline-block;
   font-size: .7em;
