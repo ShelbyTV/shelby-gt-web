@@ -302,9 +302,9 @@ $onboarding-head-height: 125px;
   width: 100%;
 
   &:hover:not(.followed) {
-    @include gradient-primer(darken($base, 10%));
+    @include gradient-primer(lighten($base, 10%));
 
-    border: 1px solid darken($base,10%);
+    border: 1px solid lighten($base,10%);
   }
 
   &:active:not(.followed) {
@@ -314,7 +314,7 @@ $onboarding-head-height: 125px;
   }
 
   &.followed {
-    border: 1px solid darken($base,3%);
+    border: 1px solid $shelby-green;
     background: transparent;
 
     .onboarding-roll-followed {
