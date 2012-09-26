@@ -7,7 +7,6 @@ libs.shelbyGT.OnboardingContentStageBaseView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log('rendering comp view '+this.options.stage);
     this.$el.html(this.template());
     return this;
   }

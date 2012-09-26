@@ -486,6 +486,26 @@ $onboarding-head-height: 125px;
   font-size: 2em;
 }
 
+.onboarding-stage-4-slideshow {
+  border: 1px solid #adadad;
+  height: 400px;
+  margin: 20px auto;
+  position: relative;
+  width: 700px;
+}
+
+.onboarding-stage-4-slide {
+  @include animate($animate-style, $animate-property, 1s);
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+
+  &.onboarding-stage-4-slide-shown {
+    opacity: 1;
+  }
+}
+
 //------------------------------------------------------------------------------
 //  media query fix for anything-onboarding
 //------------------------------------------------------------------------------
