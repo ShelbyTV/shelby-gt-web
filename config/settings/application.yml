@@ -3,7 +3,7 @@ defaults: &defaults
   domain: "shelby.tv"
   secure_url: "https://shelby.tv"
   mobile_url: "http://m.shelby.tv"
-  fb_genius_url: "http://fb.shelby.tv"
+  fb_genius_url: "//fb.shelby.tv"
   ios_app_url: "http://itunes.apple.com/us/app/shelby-genius/id556665733"
   avatar_url_root: "http://s3.amazonaws.com/shelby-gt-user-avatars"
   missing_thumb_url: "http://shelby.tv/images/assets/missing_thumb.png"
