@@ -268,13 +268,15 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   requestFBPostUI : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
-    FB.ui(
+    var _frame = this.model.get('frames').models[0];
+     FB.ui(
       {
         method: 'feed',
-        name: this.model.get('video').get('title'),
-        link: 'http://apps.facebook.com/shelbygenius/?frame='+this.model.id+'&roll='+this.model.get('roll').id,
-        picture: this.model.get('video').get('thumnail_url'),
-        caption: this.model.get('video').get('description')
+        name: _frame.get('video').get('title'),
+        link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+        picture: _frame.get('video').get('thumnail_url'),
+        description: _frame.get('video').get('description'),
+        caption: ' a shelby genius video '
       },
       function(response) {
         if (response && response.post_id) {
@@ -284,6 +286,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         }
       }
     );
+
   },
 
   //ListItemView overrides
