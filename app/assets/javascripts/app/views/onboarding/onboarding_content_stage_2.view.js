@@ -28,6 +28,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     } else {
       var needToFollowCount = 3 - rolls_followed;
       var newText = 'at least '+(needToFollowCount)+' more '+_('roll').pluralize(needToFollowCount);
+      this.$('.js-onboarding-next-step').text('Skip').removeClass('onboarding-next-step-highlight');
       this.$('.js-onboarding-follow-more-count').text(newText).addClass('onboarding-follow-more-highlight');
     }
   },
@@ -60,8 +61,10 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
 
     if (wasFollowed) {
+      this.model.set('rolls_followed', this.model.get('rolls_followed')-1);
       thisRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
     } else {
+      this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
       thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
     }
   }
