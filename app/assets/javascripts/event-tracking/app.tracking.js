@@ -67,11 +67,11 @@ _(shelby).extend({
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
           break;
-        case 'Onboarding step 2 complete'
+        case 'Onboarding step 2 complete':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);          
           break;
-        case 'Onboarding step 3 complete'
+        case 'Onboarding step 3 complete':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
           break;          
