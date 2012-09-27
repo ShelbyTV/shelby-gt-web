@@ -1,3 +1,7 @@
+<% var nickName = user.get('nickname'); %>
+<% var customTvUrl = nickName + ".shelby.tv"; %>
+<% var avatarUrl = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
+
 <div class="onboarding_layout_head onboarding-head clearfix">
   <h1 class="onboarding-header">
     Ready to Roll
@@ -18,11 +22,24 @@
       Click <span class="onboarding-inline-button"><i class="button_icon icon_videocard_roll icon-roll">Roll…</i></span> to share video on
     </p>
     <h2 class="onboarding-username-display">
-      http://<%= user.get('nickname') %>.shelby.tv
+      <%= customTvUrl %>
     </h2>
   </div>
 
   <div class="onboarding-stage-4-rolling-demo">
     <img class="onboarding-stage-4-rolling-demo-image" src="/images/onboarding/stage-4/rolling-demo.png" />
+    <div class="onboarding-stage-4-avatar-wrapper onboarding-stage-4-avatar-wrapper-video-card">
+      <img class="onboarding-stage-4-avatar onboarding-stage-4-avatar-video-card" src="<%= avatarUrl %>">
+    </div>
+    <div class="onboarding-stage-4-username onboarding-stage-4-username-video-card"><%= nickName %></div>
+    <div class="onboarding-custom-tv-url"><%= customTvUrl %></div>
+    <div class="onboarding-stage-4-avatar-wrapper onboarding-stage-4-avatar-wrapper-roll-header">
+      <img class="onboarding-stage-4-avatar onboarding-stage-4-avatar-roll-header" src="<%= avatarUrl %>" />
+    </div>
+    <div class="onboarding-stage-4-username onboarding-stage-4-username-roll-header"><%= nickName %></div>
+    <div class="onboarding-stage-4-avatar-wrapper onboarding-stage-4-avatar-wrapper-in-roll">
+      <img class="onboarding-stage-4-avatar onboarding-stage-4-avatar-in-roll" src="<%= avatarUrl %>" />
+    </div>
+    <div class="onboarding-stage-4-username onboarding-stage-4-username-in-roll"><%= nickName %></div>
   </div>
 </div><!-- eo onboarding_layout_body -->
