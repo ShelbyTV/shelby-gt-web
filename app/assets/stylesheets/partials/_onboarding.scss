@@ -424,6 +424,8 @@ $onboarding-head-height: 125px;
 
   p {
     &:after {
+      @include ellipsis;
+
       color: $shelby-gray;
       content: "Follow";
 //      display: none;
@@ -600,6 +602,8 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-username-display {
+  @include ellipsis;
+
   font-size: 2em;
 }
 
@@ -702,4 +706,21 @@ $onboarding-head-height: 125px;
   left: 488px;
   line-height: 1.2;
   top: 286px;
+}
+
+//------------------------------------------------------------------------------
+//  onboarding mediqueries
+//------------------------------------------------------------------------------
+@media all and (max-width: 1080px){
+  .onboarding-header {
+    font-size: 2em;
+  }
+}
+
+@media all and (max-width: 1280px){
+  .onboarding-network-description {
+    br {
+      display: none;
+    }
+  }
 }
