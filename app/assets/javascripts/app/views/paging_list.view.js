@@ -102,9 +102,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       this._loadMoreEnabled = true;
     }
     
-    //if (typeof FB !== "undefined"){
+    if (typeof FB !== "undefined"){
      FB.XFBML.parse($('.roll')[0]);
-    //}
+    }
   },
 
   _onFetchSuccess : function(model, response){

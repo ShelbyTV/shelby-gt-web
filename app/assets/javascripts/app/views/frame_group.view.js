@@ -22,6 +22,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-frame-post"                  : "requestFBPostUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-remove-frame"                : "_removeFrame",
@@ -263,6 +264,26 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return (i == 'more…') ? 'Hide' : 'more…';
     });
     this.$('.xuser-message-remainder').toggle();
+  },
+  
+  requestFBPostUI : function(e){
+    var _id = $(e.currentTarget).parents('article').attr('id');
+    FB.ui(
+      {
+        method: 'feed',
+        name: this.model.get('video').get('title'),
+        link: 'http://apps.facebook.com/shelbygenius/?frame='+this.model.id+'&roll='+this.model.get('roll').id,
+        picture: this.model.get('video').get('thumnail_url'),
+        caption: this.model.get('video').get('description')
+      },
+      function(response) {
+        if (response && response.post_id) {
+          alert('Post was published.');
+        } else {
+          alert('Post was not published.');
+        }
+      }
+    );
   },
 
   //ListItemView overrides

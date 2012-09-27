@@ -113,6 +113,15 @@ body.facebook-genius{
       bottom:0;
   }
   
+  // post button
+  .menu_item.right { margin-right: 10px; }
+  button.command-post{ 
+    width: 105px; 
+    i {
+      padding-left: 1.3em;
+    }
+  }
+  
   // prev/next buttons
   .video-player-nav-buttons-wrapper{ display: none; }
   

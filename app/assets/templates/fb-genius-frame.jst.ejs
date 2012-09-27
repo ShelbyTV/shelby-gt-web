@@ -21,6 +21,17 @@
 
   <div class="xframe-body-wrapper clearfix">
     <div class="xframe-body">
+			<div class="menu_module xframe-menu">
+			        <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
+			          <li class="menu_item right" role="menuitem">
+			            <button class="xframe-command command-post js-frame-post">
+			              <i class="button_icon command-icon icon_videocard_roll">
+			                Post on wall
+			              </i>
+			            </button>
+			          </li>
+			        </ul>
+			      </div><!-- eo .xframe-menu -->
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
         <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
@@ -32,7 +43,7 @@
 
     <footer class="media_module xframe-footer clearfix">
       <div class="media_body">
-				<div class="fb-like" data-href="http://shelby.tv/roll/<%= frame.get('roll').id %>/frame/<%= frame.id %>" data-send="true" data-width="325" data-show-faces="true"></div>
+				<div class="fb-like" data-href="http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" data-send="true" data-width="325" data-show-faces="true"></div>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
