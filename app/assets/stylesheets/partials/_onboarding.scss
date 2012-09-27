@@ -119,6 +119,16 @@ $onboarding-head-height: 125px;
   &.deselected {
     @include button-primer;
   }
+
+  .player-play {
+    background-position: center center;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 19px;
+    width: 50px;
+    text-indent: -100%;
+  }
 }
 
 .onboarding-next-step-counter {
