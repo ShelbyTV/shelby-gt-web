@@ -1,7 +1,7 @@
 <section class="landing-shelf-genius-email-share landing-shelf-share landing-shelf fb-genius">
 	<div class="landing-shelf-lining clearfix">
 		<div id="sharing-box">
-			<div class="fb-like" data-href="<%= Settings::Application.url %>/video/<%=@video['provider_name'] %>/<%=@video['provider_id'] %>" data-layout="box_count" data-width="250" data-show-faces="true"></div>
+			<div class="fb-like" data-href="<%= Settings::Application.url %>/video/<%=@video['provider_name'] %>/<%=@video['provider_id'] %>" data-send="true" data-layout="box_count" data-width="250" data-show-faces="true"></div>
 		</div>
 		<%= render :partial => "/home/shelf/video_embed", :locals => {:share_buttons => false } %>
 		
