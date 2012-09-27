@@ -111,6 +111,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
+    if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
+
   },
 
   _expand: function(){
@@ -280,9 +282,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       },
       function(response) {
         if (response && response.post_id) {
-          alert('Post was published.');
-        } else {
-          alert('Post was not published.');
+          // TODO:we should record that this happened.
         }
       }
     );
