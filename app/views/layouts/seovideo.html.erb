@@ -20,12 +20,13 @@
 
 	<%= yield %>	
 
-  <% if Rails.env == 'production' %>
+  <% if Rails.env != 'production' %>
     <script>
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+      s.parentNode.insertBefore(g,s);}(document,'script'));
+			_gaq.push(['_trackEvent', "SEO Video", "Visit page"]);
     </script>
     <script>
       var _kmq = _kmq || [];
@@ -40,6 +41,7 @@
       }
       _kms('//i.kissmetrics.com/i.js');
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+			_kmq.push(['record', "Visit to SEO Video Page"]);
     </script>
   <% end %>
 </body>
