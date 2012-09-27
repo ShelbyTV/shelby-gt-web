@@ -596,7 +596,7 @@ $onboarding-head-height: 125px;
   font-size: 2em;
 }
 
-.onboarding-stage-4-slideshow {
+.onboarding-stage-4-rolling-demo {
   border: 1px solid #adadad;
   height: 400px;
   margin: 30px auto 0 auto;
@@ -604,16 +604,10 @@ $onboarding-head-height: 125px;
   width: 700px;
 }
 
-.onboarding-stage-4-slide {
-  @include animate($animate-style, $animate-property, 1s);
+.onboarding-stage-4-rolling-demo-image {
   height: 100%;
   left: 0;
-  opacity: 0;
   position: absolute;
   width: 100%;
   top: 0;
-
-  &.onboarding-stage-4-slide-shown {
-    opacity: 1;
-  }
 }

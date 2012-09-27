@@ -5,24 +5,24 @@ libs.shelbyGT.OnboardingContentStage4View = libs.shelbyGT.OnboardingContentStage
    * bind to button and navigate
    */
     
-    _animationInterval : null,
+    // _animationInterval : null,
 
     events : {
       "click .js-onboarding-next-step" : "_onNextStepClick"
     },
 
-    _cleanup : function() {
-      if (this._animationInterval) {
-        clearInterval(this._animationInterval);
-      }
-    },
+    // _cleanup : function() {
+    //   if (this._animationInterval) {
+    //     clearInterval(this._animationInterval);
+    //   }
+    // },
 
     render : function(){
-      if (this._animationInterval) {
-        clearInterval(this._animationInterval);
-      }
+      // if (this._animationInterval) {
+      //   clearInterval(this._animationInterval);
+      // }
       this.$el.html(this.template({user: shelby.models.user}));
-      this._animationInterval = setInterval(_.bind(this._showNextSlide, this), 3000);
+      // this._animationInterval = setInterval(_.bind(this._showNextSlide, this), 3000);
       return this;
     },
 
@@ -32,14 +32,14 @@ libs.shelbyGT.OnboardingContentStage4View = libs.shelbyGT.OnboardingContentStage
       shelby.track('completed onboarding',{userName: shelby.models.user.get('nickname')});
       shelby.models.guide.set('onboardingStage', null);
       shelby.router.navigate('stream', {trigger:true});
-    },
-
-    _showNextSlide : function(){
-      var $nextSibling = this.$('.onboarding-stage-4-slide-shown').removeClass('onboarding-stage-4-slide-shown').next();
-      if (!$nextSibling.length) {
-        $nextSibling = this.$('.onboarding-stage-4-slide:first');
-      }
-      $nextSibling.addClass('onboarding-stage-4-slide-shown');
     }
+
+    // _showNextSlide : function(){
+    //   var $nextSibling = this.$('.onboarding-stage-4-slide-shown').removeClass('onboarding-stage-4-slide-shown').next();
+    //   if (!$nextSibling.length) {
+    //     $nextSibling = this.$('.onboarding-stage-4-slide:first');
+    //   }
+    //   $nextSibling.addClass('onboarding-stage-4-slide-shown');
+    // }
 
 });
