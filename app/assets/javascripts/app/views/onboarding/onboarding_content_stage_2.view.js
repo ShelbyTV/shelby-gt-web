@@ -48,8 +48,11 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
 
   _onNextStepClick : function(){
     var appProgress = shelby.models.user.get('app_progress');
+    
     shelby.models.user.get('app_progress').advanceStage('onboarding', 2);
     shelby.router.navigate('onboarding/3', {trigger:true});
+    
+    shelby.track('Onboarding step 2 complete', {userName: shelby.models.user.get('nickname')});
   }
 
 });
