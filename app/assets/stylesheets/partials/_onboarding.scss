@@ -583,3 +583,87 @@ $onboarding-head-height: 125px;
   width: 100%;
   top: 0;
 }
+
+.onboarding-custom-tv-url {
+  font-size: 13px;
+  font-weight: 500;
+  left: 522px;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  top: 60px;
+  width: 176px;
+}
+
+.onboarding-stage-4-avatar-wrapper {
+  background-color: black;
+  position: absolute;
+}
+
+.onboarding-stage-4-avatar {
+  display: block;
+  opacity: 0.7;
+}
+
+.onboarding-stage-4-avatar-wrapper-video-card {
+  left: 28px;
+  top: 222px;
+}
+
+.onboarding-stage-4-avatar-video-card {
+  height: 31px;
+  width: 31px;
+}
+
+.onboarding-stage-4-avatar-wrapper-roll-header {
+  left: 440px;
+  top: 87px;
+}
+
+.onboarding-stage-4-avatar-roll-header {
+  height: 38px;
+  width: 38px;
+}
+
+.onboarding-stage-4-avatar-wrapper-in-roll {
+  left: 457px;
+  top: 286px;
+}
+
+.onboarding-stage-4-avatar-in-roll {
+  height: 33px;
+  width: 33px;
+}
+
+.onboarding-stage-4-username {
+  color:#454545;
+  font-weight: bold;
+  position: absolute;
+}
+
+.onboarding-stage-4-username-video-card {
+  color: #5E5E5E;
+  font-size: 10px;
+  font-weight: bold;
+  left: 67px;
+  line-height: 1;
+  top: 222px;
+}
+
+.onboarding-stage-4-username-roll-header {
+  color: #3B3B3B;
+  font-size: 13px;
+  font-weight: bold;
+  left: 485px;
+  line-height: 40px;
+  top: 86px;
+}
+
+.onboarding-stage-4-username-in-roll {
+  color: #5E5E5E;
+  font-size: 11px;
+  font-weight: bold;
+  left: 500px;
+  line-height: 1.2;
+  top: 286px;
+}
