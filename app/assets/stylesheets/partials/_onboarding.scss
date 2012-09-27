@@ -6,6 +6,17 @@
   margin: 0 auto;
   padding: 0;
 }
+//------------------------------------------------------------------------------
+//  onboarding guide list
+//------------------------------------------------------------------------------
+.onboarding-guide-list {
+  .item-complete:not(.active-list-item) {
+    .guide-link {
+      opacity: .5;
+    }
+  } 
+}
+
 
 ////////////////////////////////////////////////////////////////////////////
 //  onboarding_layout:
@@ -27,7 +38,6 @@ $onboarding-head-height: 125px;
 //------------------------------
 //  onboard architectural priming 
 //------------------------------
-
 .onboarding-content-pane  {
   background: adjust-lightness($base, 5%);
   box-shadow: $shadow;
@@ -49,10 +59,9 @@ $onboarding-head-height: 125px;
   }
 }
 
-//------------------------------
-//  onboarding head/body
-//------------------------------
-
+  //------------------------------
+  //  onboarding head/body
+  //------------------------------
   .onboarding-head {
     background-color: darken($base,1%);
   }
