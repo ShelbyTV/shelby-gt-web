@@ -125,7 +125,7 @@ $onboarding-head-height: 125px;
     color: transparent;
     display: block;
     font: 0/0 a;
-    height: 19px;
+    height: 20px;
     width: 50px;
     text-indent: -100%;
   }
@@ -338,6 +338,10 @@ $onboarding-head-height: 125px;
     @include gradient-primer(lighten($base, 10%));
 
     border: 1px solid lighten($base,2%);
+
+    .onboarding-roll-status {
+      display: block;
+    }
   }
 
   &:active:not(.followed) {
@@ -354,8 +358,27 @@ $onboarding-head-height: 125px;
       opacity: .2;
     }
 
-    .onboarding-roll-followed {
+    .onboarding-roll-status {
+      border: none;
       display: block;
+
+      p{
+        &:after {
+          color: $shelby-green;
+          content: "Following";
+        }
+      }
+    }
+
+    &:hover {
+      border: 1px solid $shelby-gray;
+
+      p {
+        &:after {
+          color: $shelby-gray;
+          content: "Unfollow";
+        }
+      }
     }
   }
 }
@@ -382,8 +405,9 @@ $onboarding-head-height: 125px;
   margin-bottom: 8px;
 }
 
-.onboarding-roll-followed {
+.onboarding-roll-status {
   background-color: rgba(255,255,255,0.9);
+  border: 1px solid lighten($shelby-gray,50%);
   display: none;
   height: 100%;
   left: 0;
@@ -392,15 +416,19 @@ $onboarding-head-height: 125px;
   width: 100%;
 
   p {
-    color: $shelby-green;
-    font-family: $font-family-display;
-    font-size: 1.5em;
-    font-weight: 500;
-    margin-top: -.75em;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    width: 100%;
+    &:after {
+      color: $shelby-gray;
+      content: "Follow";
+//      display: none;
+      font-family: $font-family-display;
+      font-size: 1.5em;
+      font-weight: 500;
+      margin-top: -.75em;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      width: 100%;
+    }
   }
 }
 
