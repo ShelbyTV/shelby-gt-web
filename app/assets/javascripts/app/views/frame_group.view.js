@@ -23,7 +23,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-frame-post"                  : "requestFBPostUI",
-    "click .js-frame-send"                  : "requestFBPostUI",
+    "click .js-frame-send"                  : "requestFBSendUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-remove-frame"                : "_removeFrame",
@@ -295,7 +295,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     FB.ui({
       method: 'send',
       name: _frame.get('video').get('title'),
-      link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id
+      link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+      picture: _frame.get('video').get('thumnail_url'),
+      description: _frame.get('video').get('description'),
+      caption: ' a shelby genius video '
     });
   },
 
