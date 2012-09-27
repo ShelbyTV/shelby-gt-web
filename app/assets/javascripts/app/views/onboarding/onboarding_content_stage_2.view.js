@@ -9,7 +9,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   */
 
   events : {
-    "click .js-onboarding-roll-button:not(.followed)" : "_onOnboardingRollButtonClick",
+    "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
@@ -50,6 +50,27 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     var appProgress = shelby.models.user.get('app_progress');
     shelby.models.user.get('app_progress').advanceStage('onboarding', 2);
     shelby.router.navigate('onboarding/3', {trigger:true});
-  }
+  },
 
+  _followOrUnfollow : function(e){
+    var $thisButton = $(e.currentTarget);
+
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isFollowed = $thisButton.toggleClass('followed').hasClass('followed');
+    var wasFollowed = !isFollowed;
+
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      $thisButton.removeClass('js-busy');
+    };
+
+    var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
+
+    if (wasFollowed) {
+      thisRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
+    }
+  }
 });
