@@ -1,70 +1,41 @@
-<div class="onboarding-head">
+<% var nickName = user.get('nickname'); %>
+<% var customTvUrl = nickName + ".shelby.tv"; %>
+<% var avatarUrl = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
+
+<div class="onboarding_layout_head onboarding-head clearfix">
   <h1 class="onboarding-header">
-    All set!
+    Ready to Roll
   </h1>
-  <h2 class="onboarding-subheader">
-    Here's how to get the most out of Shelby.
-  </h2>
-</div>
+  <div class="onboarding-next-step-wrapper">
+    <button class="js-onboarding-next-step onboarding-next-step">
+      <i class="button_icon icon_onboarding_play player-play">Play</i>
+    </button>
+    <span class="onboarding-next-step-counter">
+      Start Watching
+    </span>
+  </div>
+</div><!-- eo onboarding_layout_head -->
 
-<ol class="clearfix onboarding_list_module onboarding-last-list">
-  <li class="onboarding-last-item js-onboarding-roll-list-item">
-    <div class="onboarding-last-item-lining">
-      <img src="/images/onboarding/roll.png" class="onboarding-roll-list-img" />
+<div class="onboarding_layout_body onboarding-body onboarding-stage-4">
+  <div class="onboarding-block-container wide clearfix">
+    <p>
+      Click <span class="onboarding-inline-button"><i class="button_icon icon_videocard_roll icon-roll">Roll…</i></span> to share video on
+    </p>
+    <h2 class="onboarding-username-display">
+      http://<%= customTvUrl %>
+    </h2>
+  </div>
 
-      <h3 class="onboarding-last-title">
-        Roll to your .tv
-      </h3>
-
-      <h4 class="onboarding-last-desc">
-        Publish a personal roll of favorite videos by using the +Roll button.
-      </h4>
+  <div class="onboarding-stage-4-rolling-demo">
+    <img class="onboarding-stage-4-rolling-demo-image" src="/images/onboarding/stage-4/rolling-demo.png" />
+    <div class="onboarding-custom-tv-url"><%= customTvUrl %></div>
+    <div class="onboarding-stage-4-avatar-wrapper onboarding-stage-4-avatar-wrapper-roll-header">
+      <img class="onboarding-stage-4-avatar onboarding-stage-4-avatar-roll-header" src="<%= avatarUrl %>" />
     </div>
-  </li>
-
-  <li class="onboarding-last-item js-onboarding-roll-list-item">
-    <div class="onboarding-last-item-lining">
-      <img src="/images/onboarding/queue.png" class="onboarding-roll-list-img" />
-
-      <h3 class="onboarding-last-title">
-        Queue
-      </h3>
-
-      <h4 class="onboarding-last-desc">
-        Save videos that interest you, or add them to your personal roll.
-      </h4>
+    <div class="onboarding-stage-4-username onboarding-stage-4-username-roll-header"><%= nickName %></div>
+    <div class="onboarding-stage-4-avatar-wrapper onboarding-stage-4-avatar-wrapper-in-roll">
+      <img class="onboarding-stage-4-avatar onboarding-stage-4-avatar-in-roll" src="<%= avatarUrl %>" />
     </div>
-  </li>
-
-  <li class="onboarding-last-item js-onboarding-roll-list-item">
-    <div class="onboarding-last-item-lining">
-      <img src="/images/onboarding/explore.png" class="onboarding-roll-list-img" />
-
-      <h3 class="onboarding-last-title">
-        Explore
-      </h3>
-
-      <h4 class="onboarding-last-desc">
-        Browse by topic, discover recommended videos and follow new rolls.
-      </h4>
-    </div>
-  </li>
-
-  <li class="onboarding-last-item js-onboarding-roll-list-item">
-    <div class="onboarding-last-item-lining">
-      <img src="/images/onboarding/stream.png" class="onboarding-roll-list-img" />
-
-      <h3 class="onboarding-last-title">
-        Stream
-      </h3>
-
-      <h4 class="onboarding-last-desc">
-        Watch videos from your connected networks and the rolls you follow.
-      </h4>
-    </div>
-  </li>
-</ol>
-
-<button class="js-onboarding-next-step onboarding-next-step">
-  Play My Stream
-</button>
+    <div class="onboarding-stage-4-username onboarding-stage-4-username-in-roll"><%= nickName %></div>
+  </div>
+</div><!-- eo onboarding_layout_body -->

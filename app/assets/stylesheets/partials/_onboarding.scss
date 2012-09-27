@@ -1,26 +1,52 @@
-//------------------------------
-//  onboard module 
-//------------------------------
-
+//------------------------------------------------------------------------------
+//  onboard modules
+//------------------------------------------------------------------------------
 .onboarding_list_module {
   list-style-type:none;
   margin: 0 auto;
-  max-width: 780px;
   padding: 0;
+}
+//------------------------------------------------------------------------------
+//  onboarding guide list
+//------------------------------------------------------------------------------
+.onboarding-guide-list {
+  .item-complete:not(.active-list-item) {
+    .guide-link {
+      opacity: .5;
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  onboarding_layout:
+//  setup for the fixed header situation
+////////////////////////////////////////////////////////////////////////////
+$onboarding-head-height: 125px;
+
+.onboarding_layout_head {
+  height: $onboarding-head-height;
+}
+
+.onboarding_layout_body {
+  bottom: 0;
+  position: absolute;
+  top: $onboarding-head-height;
+  width: 100%;
 }
 
 //------------------------------
 //  onboard architectural priming 
 //------------------------------
-
 .onboarding-content-pane  {
   background: adjust-lightness($base, 5%);
-  overflow-y: scroll;
+  box-shadow: $shadow;
+  position: relative;
   text-align: center;
+  z-index: 4;
 }
 
 .onboarding-content-wrapper  {
-  margin-top: 30px;
 }
 
 .onboarding-guide-list-item {
@@ -33,16 +59,16 @@
   }
 }
 
-//------------------------------
-//  onboarding head module 
-//------------------------------
-
+  //------------------------------
+  //  onboarding head/body
+  //------------------------------
   .onboarding-head {
-    margin-bottom: 3em;
+    background-color: darken($base,1%);
   }
 
   .onboarding-header  {
-    font-size: 2em;
+    font-size: 2.8em;
+    margin-top: 38px;
   }
   .onboarding-subheader  {
     font-size: 1.2em;
@@ -50,10 +76,76 @@
     line-height: 2.3;
   }
 
+  .onboarding-body {
+    overflow-y: auto;
+  }
+
+  .onboarding-body-lining {
+    margin: 3em;
+  }
+
+//------------------------------------------------------------------------------
+//  onboarding abstracts, generic stuff
+//------------------------------------------------------------------------------
+.onboarding-block-container,
+.onboarding-form-container {
+  max-width: 330px;
+  margin:  0px auto;
+
+  &.wide {
+    max-width: none;//this can change according to any needs
+  }
+
+  p {
+    font-family: $font-family-display;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .onboarding-form-disclaimer {
+    font-size: .8em;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  onboarding 'next step'
+//------------------------------------------------------------------------------ 
+.onboarding-next-step-wrapper {
+  font-size: 1.2em;
+  margin: 38px 20px 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
 .onboarding-next-step {
-  margin: 40px 0px;
-  @include button-primer($x-primer-color, light);
+  @include button-primer($shelby-blue);
+
+//  font-size: 1.1em;
+
+  &.deselected {
+    @include button-primer;
+  }
+
+  .player-play {
+    background-position: center center;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 20px;
+    width: 50px;
+    text-indent: -100%;
+  }
+}
+
+.onboarding-next-step-counter {
+  color: #666;
+  display: block;
+  font-size: .8em;
+  font-weight: bold;
+  line-height: 2;
 }
 
 .onboarding-error {
@@ -67,14 +159,23 @@
   margin: .5em 0;
 }
 
-/* STAGE 1 */
+//------------------------------------------------------------------------------
+//  form related
+//------------------------------------------------------------------------------
+
+/* empty for now */
+
+//------------------------------------------------------------------------------
+//  STAGE 1
+//------------------------------------------------------------------------------
+.onboarding-stage-1 {
+
+}
 
 .onboarding-form-1 {
-  margin:  0px auto;
-  width:  300px;
-  font-size:  1.2em;
-  position:   relative;
-  text-align:  left;
+  font-size: 1.2em;
+  position: relative;
+  text-align: left;
 
   //------------------------------
   //  TODO: 
@@ -149,7 +250,6 @@
 }
 
 .onboarding-username {
-
   position: relative;
 
   &.show-context {
@@ -161,6 +261,7 @@
 }
 
 .onboarding-username-input {
+
 }
 
 .onboarding-username-http,
@@ -175,19 +276,57 @@
 }
 
 .onboarding-username-http {
-  left:-53px;
+  left: -53px;
 }
 
 .onboarding-username-shelbytv {
   right: -73px;
 }
 
-/* STAGE 2 */
+.onboarding-form-subline {
+  font-size: .7em;
+}
+
+//------------------------------------------------------------------------------
+//  STAGE 2
+//------------------------------------------------------------------------------
+.onboarding-stage-2 {
+
+}
 
 .onboarding-follow-more-count {
   &.onboarding-follow-more-highlight {
     color: $shelby-red;
   }
+}
+
+.onboarding-category-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.onboarding-category-item {
+  border-top:1px solid $inset;
+  border-bottom: 1px solid $outset;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.onboarding-category-item-lining {
+  padding: 1em;
+}
+
+.onboarding-category-header {
+  font-size: 1.5em;
+  padding: .25em;
+  text-align: left;
 }
 
 .onboarding-roll-list {
@@ -199,13 +338,15 @@
 .onboarding-roll-item {
   float: left;
   margin: 0;
-  padding: 0;
-  width: 20%;
+  padding: 2px;
+  width: 16.666667%;
 }
 
 .onboarding-roll-button {
-  background-color: transparent;
-  border: none;
+  @include gradient-primer($base, 15%);
+  @include roundies(input);
+
+  border: 1px solid darken($base,5%);
   display: block;
   margin: 10px 0;
   padding: 5px;
@@ -213,28 +354,51 @@
   text-align: left;
   width: 100%;
 
-  &:hover {
-    @include roundies(input);
+  &:hover:not(.followed) {
+    @include gradient-primer(lighten($base, 10%));
 
-    background-color: darken($base,2%);
+    border: 1px solid lighten($base,2%);
+
+    .onboarding-roll-status {
+      display: block;
+    }
   }
 
-  &:active {
-    background-color: darken($base,5%);
+  &:active:not(.followed) {
+    @include gradient-primer(darken($base,25%),25%);
+  
+    border: 1px solid darken($base,15%);
   }
 
   &.followed {
-    .onboarding-roll-followed {
+    border: 1px solid $shelby-green;
+    background: transparent;
+
+    .onboarding-roll-head {
+      opacity: .2;
+    }
+
+    .onboarding-roll-status {
+      border: none;
       display: block;
+
+      p{
+        &:after {
+          color: $shelby-green;
+          content: "Following";
+        }
+      }
     }
 
     &:hover {
-      background-color: transparent;
-      cursor: auto;
-    }
+      border: 1px solid $shelby-gray;
 
-    &:active {
-      background-color: transparent;
+      p {
+        &:after {
+          color: $shelby-gray;
+          content: "Unfollow";
+        }
+      }
     }
   }
 }
@@ -242,6 +406,7 @@
 .onboarding-roll-body {
   position: relative;
 }
+
 .onboarding-roll-head,
 .onboarding-roll-subhead {
   @include ellipsis;
@@ -249,7 +414,9 @@
 
 .onboarding-roll-head {
   font-size: 1.39em;
+  padding-bottom: 0.25em;
 }
+
 .onboarding-roll-subhead {
   font-weight: 100;
   font-size: 0.8em;
@@ -258,60 +425,61 @@
   margin-bottom: 8px;
 }
 
-//TODO: determine that this button stuff is not-needed
-
-//.onboarding-roll-button-wrapper  {
-//  display:  none;
-//  left: 0;
-//  top: 32%;
-//  position: absolute;
-//  text-align:  center;
-//  width:  100%;
-//}
-//.onboarding-roll-button {
-//  @include button-primer($x-primer-color, light, menu);
-
-//  display: inline;
-//  margin: 0 auto;
-
-//  &:hover {
-//    @include button-primer(adjust-lightness($x-primer-color,5%), light, menu);
-//  }
-
-//  &:active {
-//    @include button-primer(adjust-lightness($x-primer-color,-5%), light, menu);
-//  }
-//}
-
-.onboarding-roll-followed {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  top: 0;
-  left: 0;
+.onboarding-roll-status {
   background-color: rgba(255,255,255,0.9);
-  color: black;
-}
-
-.onboarding-followed-icon {
-  background-repeat:  no-repeat;
-  background-position:  center center;
-  background-image: url($icon-check);
-  bottom: 0;
-  display: block;
+  border: 1px solid lighten($shelby-gray,50%);
+  display: none;
+  height: 100%;
+  left: 0;
   position: absolute;
   top: 0;
   width: 100%;
-}
 
-.onboarding-stage-2-next-step {
-  &.onboarding-next-step-highlight {
-    @include button-primer($shelby-green, dark);
+  p {
+    &:after {
+      @include ellipsis;
+
+      color: $shelby-gray;
+      content: "Follow";
+//      display: none;
+      font-family: $font-family-display;
+      font-size: 1.5em;
+      font-weight: 500;
+      margin-top: -.75em;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      width: 100%;
+    }
   }
 }
 
-/* STAGE 3 */
+//.onboarding-followed-icon {
+//  background-repeat:  no-repeat;
+//  background-position:  center center;
+//  background-image: url($icon-check);
+//  bottom: 0;
+//  display: block;
+//  position: absolute;
+//  top: 0;
+//  width: 100%;
+//}
+
+.onboarding-stage-2-next-step {
+  @include button-primer;
+
+  &.onboarding-next-step-highlight {
+    @include button-primer($shelby-blue, dark);
+  }
+}
+
+//------------------------------------------------------------------------------
+//  STAGE 3
+//------------------------------------------------------------------------------
+.onboarding-stage-3 {
+  font-size: 1.2em;
+}
+
 .onboarding-network-list {
   list-style: none;
   margin: 20px auto;
@@ -325,12 +493,14 @@
   margin-left: 32px;
   padding: 0;
   width: 20%;
+  vertical-align: top;
 }
 
 .onboarding-network-button {
-  &.connected-network {
+  &.onboarding-connected-network {
     @include button-primer($shelby-gray-light);
   }
+
   width: 100%;
 }
 
@@ -339,6 +509,20 @@
   margin-right: 5px;
 }
 
+.onboarding-network-description {
+  font-family: $font-family-display;
+  font-size: .9em;
+  font-weight: 400;
+  margin-top: .5em;
+
+  span {
+    text-transform: capitalize;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  network button icon class structure
+////////////////////////////////////////////////////////////////////////////
 .onboarding-icon {
   background-repeat: no-repeat;
   background-position: center center;
@@ -348,12 +532,13 @@
 
 .onboarding-network-twitter {
   @include button-primer($twitter-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($twitter-blue, 5%));
     }
   }
-  &.connected-network {
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-twitter-added);
     }
@@ -365,16 +550,19 @@
 
 .onboarding-network-facebook {
   @include button-primer($facebook-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($facebook-blue, 5%));
     }
   }
-  &.connected-network {
+
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-facebook-added);
     }
   }
+
   .onboarding-icon {
     background-image: url($icon-onboarding-facebook-add);
   }
@@ -382,57 +570,170 @@
 
 .onboarding-network-tumblr {
   @include button-primer($tumblr-blue);
+
   &:hover {
     &:not([disabled]) {
       @include button-primer(adjust-lightness($tumblr-blue, 5%));
     }
   }
-  &.connected-network {
+
+  &.onboarding-connected-network {
     .onboarding-icon {
       background-image: url($icon-onboarding-tumblr-added);
     }
   }
+
   .onboarding-icon {
     background-image: url($icon-onboarding-tumblr-add);
   }
 }
 
-/* STAGE 4 */
+//------------------------------------------------------------------------------
+//  STAGE 4
+//------------------------------------------------------------------------------
+.onboarding-stage-4 {
+  font-size: 1.2em;
 
-.onboarding-last-list {
-  .onboarding-last-item-lining {
-    font-size: 1.4em;
-    text-align: left;
-    margin: 10px 30px;
-  }
-
-  li {
-    float: left;
-    margin: 0;
-    padding: 0;
-    width: 50%;
-  }
-
-  img {
-    height:145px;
-    width:330px;
+  .onboarding-block-container {
+    margin-top: 1em;
   }
 }
 
-.onboarding-last-title {
-  line-height: 2.5;
+////////////////////////////////////////////////////////////////////////////
+//  this is the 'roll' button in the messaging
+////////////////////////////////////////////////////////////////////////////
+.onboarding-inline-button {
+  @include button-primer($x-primer-color, $primer-tone, $primer-button-context, false);
+
+  display: inline-block;
+  font-size: .7em;
+  margin: 0 .25em;
+
+  .icon-roll {
+    padding-left: 1.3em;
+  }
 }
 
-.onboarding-last-desc {
-  font-weight: 100;
+.onboarding-username-display {
+  @include ellipsis;
+
+  font-size: 2em;
+}
+
+.onboarding-stage-4-rolling-demo {
+  border: 1px solid #adadad;
+  height: 400px;
+  margin: 30px auto 0 auto;
+  position: relative;
+  width: 700px;
+}
+
+.onboarding-stage-4-rolling-demo-image {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.onboarding-custom-tv-url {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  left: 510px;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  top: 61px;
+  width: 176px;
+}
+
+.onboarding-stage-4-avatar-wrapper {
+  background-color: black;
+  position: absolute;
+}
+
+.onboarding-stage-4-avatar {
+  display: block;
+  opacity: 0.7;
+}
+
+.onboarding-stage-4-avatar-wrapper-video-card {
+  left: 28px;
+  top: 222px;
+}
+
+.onboarding-stage-4-avatar-video-card {
+  height: 31px;
+  width: 31px;
+}
+
+.onboarding-stage-4-avatar-wrapper-roll-header {
+  left: 428px;
+  top: 87px;
+}
+
+.onboarding-stage-4-avatar-roll-header {
+  height: 37px;
+  width: 37px;
+}
+
+.onboarding-stage-4-avatar-wrapper-in-roll {
+  left: 445px;
+  top: 286px;
+}
+
+.onboarding-stage-4-avatar-in-roll {
+  height: 33px;
+  width: 33px;
+}
+
+.onboarding-stage-4-username {
+  color:#454545;
+  font-weight: bold;
+  position: absolute;
+}
+
+.onboarding-stage-4-username-video-card {
+  color: #5E5E5E;
+  font-size: 10px;
+  font-weight: bold;
+  left: 67px;
+  line-height: 1;
+  top: 222px;
+}
+
+.onboarding-stage-4-username-roll-header {
+  color: #3B3B3B;
+  font-size: 13px;
+  font-weight: bold;
+  left: 473px;
+  line-height: 40px;
+  top: 86px;
+}
+
+.onboarding-stage-4-username-in-roll {
+  color: #5E5E5E;
+  font-size: 11px;
+  font-weight: bold;
+  left: 488px;
+  line-height: 1.2;
+  top: 286px;
 }
 
 //------------------------------------------------------------------------------
-//  media query fix for anything-onboarding
+//  onboarding mediqueries
 //------------------------------------------------------------------------------
-  @media screen and (max-width: 1110px) { //this breakpoint reflects when step 4 starts breaking up.
-    .onboarding-last-list img {
-      height: auto;
-      width: 100%;
+@media all and (max-width: 1080px){
+  .onboarding-header {
+    font-size: 2em;
+  }
+}
+
+@media all and (max-width: 1280px){
+  .onboarding-network-description {
+    br {
+      display: none;
     }
   }
+}

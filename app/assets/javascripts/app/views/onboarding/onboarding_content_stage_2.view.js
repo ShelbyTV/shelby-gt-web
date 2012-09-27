@@ -9,7 +9,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   */
 
   events : {
-    "click .js-onboarding-roll-button:not(.followed)" : "_onOnboardingRollButtonClick",
+    "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
@@ -19,20 +19,6 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
 
   cleanup : function(){
     this.model.unbind('change:rolls_followed', this._onRollsFollwedChange, this);
-  },
-
-  _onOnboardingRollButtonClick : function(event){
-    console.log('not followed?');
-    //doing this fire and forget so update state and appearance immediately
-    var $roll = $(event.currentTarget);
-    var rollId = $roll.data('roll_id');
-
-    this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
-    $roll.addClass('followed');
-
-    //then fire off ajax
-    var rollToJoin = new libs.shelbyGT.RollModel({id:rollId});
-    rollToJoin.joinRoll();
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){
@@ -53,6 +39,30 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     shelby.router.navigate('onboarding/3', {trigger:true});
     
     shelby.track('Onboarding step 2 complete', {userName: shelby.models.user.get('nickname')});
-  }
+  },
 
+  _followOrUnfollow : function(e){
+    var $thisButton = $(e.currentTarget);
+
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isFollowed = $thisButton.toggleClass('followed').hasClass('followed');
+    var wasFollowed = !isFollowed;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.addClass('js-busy');
+
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      $thisButton.removeClass('js-busy');
+    };
+
+    var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
+
+    if (wasFollowed) {
+      thisRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
+    }
+  }
 });

@@ -1,131 +1,169 @@
-<div class="onboarding-head">
-  <h1 class="onboarding-header">
-    Shelby brings you video from people and places on the web
-  </h1>
-  <h2 class="onboarding-subheader">
-    Click and follow <span class="onboarding-follow-more-count js-onboarding-follow-more-count">some rolls</span> to get fresh video in your stream
-  </h2>
-</div>
-
 <%
   var rolls = [
     {
-      title:'Laughing Squid',
-      category:'POP CULTURE',
-      img_src:'/images/onboarding/rolls/laughingsquid.png',
-      roll_id:'4fc637879a725b755d001f77'
+      category_name: 'Pop Culture',
+      rolls: [
+        {
+          title:'Laughing Squid',
+          img_src:'/images/onboarding/rolls/laughingsquid.png',
+          roll_id:'4fc637879a725b755d001f77'
+        },
+        {
+          title:'They Daily What',
+          img_src:'/images/onboarding/rolls/dailywhat.png',
+          roll_id:'4fa28d849a725b79c9000228'
+        },
+        {
+          title:'PBS Idea Channel',
+          img_src:'/images/onboarding/rolls/pbs.png',
+          roll_id:'4faabca99a725b5cd50026a2'
+        }
+      ]
     },
     {
-      title:'Om Gal',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/omggal.png',
-      roll_id:'4f8f81beb415cc4762002daa'
+      category_name: 'Interesting People',
+      rolls: [
+        {
+          title:'Om Gal',
+          img_src:'/images/onboarding/rolls/omggal.png',
+          roll_id:'4f8f81beb415cc4762002daa'
+        },
+        {
+          title:'Chris',
+          img_src:'/images/onboarding/rolls/chris.png',
+          roll_id:'4f901d4bb415cc661405fde9'
+        },
+        {
+          title:'Jacqueline',
+          img_src:'/images/onboarding/rolls/jacqueline.png',
+          roll_id:'4f900012b415cc661404e72b'
+        },
+        {
+          title:'Vondoom',
+          img_src:'/images/onboarding/rolls/vincent.png',
+          roll_id:'4f900553b415cc6614051b7b'
+        },
+        {
+          title:'Harto',
+          img_src:'/images/onboarding/rolls/harto.png',
+          roll_id:'4f902316b415cc466a0009dd'
+        },
+        {
+          title:'Reece',
+          img_src:'/images/onboarding/rolls/reece.png',
+          roll_id:'4f900d56b415cc6614056681'
+        }
+      ]
     },
     {
-      title:'Brain Pickings',
-      category:'EDUCATION',
-      img_src:'/images/onboarding/rolls/brainpicker.png',
-      roll_id:'4fbad2c5d1041266bc000d4f'
+      category_name: 'Education',
+      rolls: [
+        {
+          title:'Brain Pickings',
+          img_src:'/images/onboarding/rolls/brainpicker.png',
+          roll_id:'4fbad2c5d1041266bc000d4f'
+        }
+      ]
     },
     {
-      title:'They Daily What',
-      category:'POP CULTURE',
-      img_src:'/images/onboarding/rolls/dailywhat.png',
-      roll_id:'4fa28d849a725b79c9000228'
+      category_name: 'Gaming',
+      rolls: [
+        {
+          title:'IGN',
+          img_src:'/images/onboarding/rolls/ign.png',
+          roll_id:'4f987a5e9a725b032b002f13'
+        }
+      ]
     },
     {
-      title:'IGN',
-      category:'GAMING',
-      img_src:'/images/onboarding/rolls/ign.png',
-      roll_id:'4f987a5e9a725b032b002f13'
+      category_name: 'Sports',
+      rolls: [
+        {
+          title:'Red Bull',
+          img_src:'/images/onboarding/rolls/redbull.png',
+          roll_id:'4fb413bb9a725b650900195a'
+        }
+      ]
     },
     {
-      title:'Chris',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/chris.png',
-      roll_id:'4f901d4bb415cc661405fde9'
+      category_name: 'News',
+      rolls: [
+        {
+          title:'Reuters',
+          img_src:'/images/onboarding/rolls/reuters.png',
+          roll_id:'4f95622b9a725b72e700106b'
+        },
+        {
+          title:'WSJ',
+          img_src:'/images/onboarding/rolls/wsj.png',
+          roll_id:'4fa8542c88ba6b669b000bcd'
+        }
+      ]
     },
     {
-      title:'PBS Idea Channel',
-      category:'POP CULTURE',
-      img_src:'/images/onboarding/rolls/pbs.png',
-      roll_id:'4faabca99a725b5cd50026a2'
-    },
-    {
-      title:'Red Bull',
-      category:'SPORTS',
-      img_src:'/images/onboarding/rolls/redbull.png',
-      roll_id:'4fb413bb9a725b650900195a'
-    },
-    {
-      title:'Jacqueline',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/jacqueline.png',
-      roll_id:'4f900012b415cc661404e72b'
-    },
-    {
-      title:'Reuters',
-      category:'NEWS',
-      img_src:'/images/onboarding/rolls/reuters.png',
-      roll_id:'4f95622b9a725b72e700106b'
-    },
-    {
-      title:'Vondoom',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/vincent.png',
-      roll_id:'4f900553b415cc6614051b7b'
-    },
-    {
-      title:'WSJ',
-      category:'NEWS',
-      img_src:'/images/onboarding/rolls/wsj.png',
-      roll_id:'4fa8542c88ba6b669b000bcd'
-    },
-    {
-      title:'Harto',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/harto.png',
-      roll_id:'4f902316b415cc466a0009dd'
-    },
-    {
-      title:'Chow',
-      category:'FOOD',
-      img_src:'/images/onboarding/rolls/chow.png',
-      roll_id:'50072ee988ba6b796b00e4fd'
-    },
-		{
-      title:'Reece',
-      category:'INTERESTING PEOPLE',
-      img_src:'/images/onboarding/rolls/reece.png',
-      roll_id:'4f900d56b415cc6614056681'
+      category_name: 'Food',
+      rolls: [
+        {
+          title:'Chow',
+          img_src:'/images/onboarding/rolls/chow.png',
+          roll_id:'50072ee988ba6b796b00e4fd'
+        }
+      ]
     }
   ];
 %>
 
-<ol class="clearfix onboarding_list_module onboarding-roll-list">
+<div class="onboarding_layout_head onboarding-head clearfix">
+  <h1 class="onboarding-header">
+    Program your personal Shelby stream
+  </h1>
 
-  <% rolls.forEach(function(roll){ %>
-    <li class="onboarding-roll-item js-onboarding-roll-item">
-      
-      <button data-roll_id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-button">
-        <h3 class="onboarding-roll-head"><%= roll.title %></h3>
-        <h4 class="onboarding-roll-subhead"><%= roll.category %></h4>
-        <div class="onboarding-roll-body">
-          <div class="animate_module onboarding-roll-followed">
-            <i class="ir onboarding-followed-icon">
-              FOLLOWED
-            </i>
-          </div>
+  <h2 class="onboarding-subheader">
+    Try following <span class="onboarding-follow-more-count js-onboarding-follow-more-count">some rolls</span>
+  </h2>
 
-          <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />
+  <div class="onboarding-next-step-wrapper">
+    <button class="js-onboarding-next-step onboarding-stage-2-next-step">
+      Skip
+    </button>
 
-        </div>
-      </button>
-    </li>
-  <% }) %>
+    <span class="onboarding-next-step-counter">
+      Step 2 of 3
+    </span>
+  </div>
+</div><!-- eo .onboarding_layout_head -->
 
-</ol>
+<div class="onboarding_layout_body onboarding-body onboarding-stage-2 clearfix">
+  <ol class="onboarding-category-list clearfix">
+    <% rolls.forEach(function(category){ %>
+      <li class="onboarding-category-item">
+        <div class="onboarding-category-item-lining">
+          <h3 class="onboarding-category-header">
+            <%= category.category_name %>
+          </h3>
 
-<button class="js-onboarding-next-step onboarding-next-step onboarding-stage-2-next-step">
-  Skip
-</button>
+          <ol class="onboarding_list_module onboarding-roll-list clearfix">
+            <% category.rolls.forEach(function(roll){ %>
+              <li class="onboarding-roll-item js-onboarding-roll-item">
+                <button data-roll_id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-button js-follow-unfollow">
+                  <h4 class="onboarding-roll-head">
+                    <%= roll.title %>
+                  </h4>
+
+                  <div class="onboarding-roll-body">
+                    <div class="animate_module onboarding-roll-status">
+                      <p></p>
+                    </div>
+
+                    <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />
+
+                  </div>
+                </button>
+              </li><!-- eo onboarding-roll-item -->
+            <% }); %>
+          </ol>
+        </div><!-- eo onboarding-category-lining -->
+      </li><!-- eo onboarding-category-item -->
+    <% }); %>
+  </ol>
+</div>
