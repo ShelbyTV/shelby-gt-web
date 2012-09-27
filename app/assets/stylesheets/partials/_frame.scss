@@ -293,12 +293,14 @@ $active-list-item: $shelby-blue;
     background-image: none;
   }
 }
+
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .xframe-collapsed{})
 //------------------------------------------------------------------------------
-
 .xframe-collapsed {
+  opacity: .5;
+
   .xframe-title {
     height: 40px;
     overflow: hidden;
@@ -317,6 +319,8 @@ $active-list-item: $shelby-blue;
   }
 
   &:hover {
+    opacity: 1;
+
     .xframe-body-wrapper {
       cursor: pointer;
     }
