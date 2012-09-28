@@ -1,8 +1,88 @@
 @import "base";
- 
+//------------------------------------------------------------------------------
+//  external tools pane
+//------------------------------------------------------------------------------
 .external-tools{
-	left: 0;
+  background-color: $base;
+  left: 0;
+  overflow-y: auto;
   position: absolute;
+  right: 0;
   top: 0;
+}
+//------------------------------------------------------------------------------
+//  external; architectural
+//------------------------------------------------------------------------------
+.external-tools-lining {
+  font-size: 1.2em;
+  padding: 3em;
+}
+
+.external-tools-subsection {
+  margin-top: 1em;
+}
+
+//------------------------------------------------------------------------------
+//  general setup
+//------------------------------------------------------------------------------
+.external-header {
+  font-size: 2em;
+}
+
+.external-header-section {
+
+}
+
+.external-block {
+  max-width: 290px;
+}
+
+.external-figure {
+  border: 1px solid darken($base,10%);
+  float: right;
+}
+
+//------------------------------------------------------------------------------
+//  extension specific
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//  bookmarklet specific
+//------------------------------------------------------------------------------
+.external-bookmarklet-button-wrapper {
+  background-color: darken($base,3%);
+  margin: 1em 0;
+  max-width: 280px;
+  min-width: 180px;
+  overflow: hidden;
+  padding: 1.5em;
+  text-align: center;
+}
+
+.external-bookmarklet-button {
+  @include button-primer;
+
+  cursor: move;
+  display: block;
+  margin: 0 1em;
+
+  &:active,
+  &:hover,
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  .add-icon {
+    padding-left: 1.3em;
+  }
+}
+
+.bookmarklet-figure {
+  float: right;
+  margin-left: 2em;
+  max-width: 600px;
   width: 100%;
 }
