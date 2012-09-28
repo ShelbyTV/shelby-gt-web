@@ -1,4 +1,5 @@
-  <button class="shelby-logo shelby-logo-no-link js-home">
+	<button class="shelby-logo <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'shelby-logo-no-link js-home' %>">
+
     <h1 class="shelby-title ir">
       Shelby.tv
     </h1>
@@ -7,3 +8,4 @@
   <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
     <!-- content filled in by GuidePresentationSelectorView -->
   </nav>
+	

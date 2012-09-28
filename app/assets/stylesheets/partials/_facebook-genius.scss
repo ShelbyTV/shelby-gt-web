@@ -84,7 +84,7 @@ body.facebook-genius{
   
   // header //
   .shelby-logo{
-    width: 100%;
+    margin-left: 135px;
     .shelby-title {
     	background: url('/images/genius/logo.png') center 5px no-repeat transparent;
     	background-size: 100%;
@@ -96,6 +96,45 @@ body.facebook-genius{
   .guide-presentation-selector {
     display:none;
   }
+  
+  #fb-header-search {
+    float:right;
+    margin-right: 100px;
+    padding-top: 6px;
+    
+    .roll-page-form-input {
+      border-radius: 2px 0 0 2px;
+      border: 1px solid #A6A6A6;
+      font-size: 1em;
+      height: 21px;
+      padding: 5px;
+    }
+   .header-form-submit {
+     @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
+     border-radius: 0 2px 2px 0;
+
+     border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+     border-left: none;
+     display: inline-block;
+     font-family: $font-family-display;
+     font-size: 1em;
+     font-weight: 400;
+     height: 20px;
+     padding: 4px 2px 15px;
+     vertical-align: middle;
+     width: 78px;
+
+     &:hover {
+       @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
+     }
+
+     &:active {
+       @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
+     }
+   }
+  }
+  
+  // end header
   
   #fb-comments-holder{
     position: relative;

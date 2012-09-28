@@ -112,6 +112,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
+    
+    // have FB parse any like tags on page so they render correctly
     if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
 
   },

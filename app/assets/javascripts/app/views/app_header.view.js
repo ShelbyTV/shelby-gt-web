@@ -17,7 +17,8 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
       "click .js-help"                           : "_showHelp",
       "click .js-team"                           : "_showTeam",
       "click .js-legal"                          : "_showLegal",
-      "click .js-home:not(.shelby-logo-no-link)" : "_showHome"
+      "click .js-home:not(.shelby-logo-no-link)" : "_showHome",
+      "click .js-fb-home"                        : "_showFBHome"
     });
 
     return events;
@@ -86,6 +87,10 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
 
   _showHome : function(){
     shelby.router.navigate('stream', {trigger:true});
+  },
+  
+  _showFBHome : function(){
+    document.location.href = shelby.config.appUrl+'/fb_genius';
   },
 
   _showUserPreferences : function(){
