@@ -34,6 +34,20 @@ libs.shelbyGT.viewHelpers.user = {
     } else {
       return libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
     }
-  }
+  },
   
+  // Use this to get the avatar for a roll creator when you have a roll
+  // see libs.shelbyGT.UserAvatarSizes for size options (will be respected only for Shelby avatars)
+  avatarUrlForRoll: function(roll, avatarSize){
+    avatarSize = avatarSize || libs.shelbyGT.UserAvatarSizes.small;
+
+    if( roll && roll.get('creator_has_shelby_avatar') ) {
+      return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+roll.get('creator_id')+'?'+(new Date(roll.get('creator_avatar_updated_at')).getTime());
+    } else if( roll && roll.get('thumbnail_url') ){
+      return roll.get('thumbnail_url');
+    } else {
+      return libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
+    }
+  }
+
 };

@@ -2,54 +2,71 @@
   var username = shelby.models.user.get('nickname');
 %>
 
-<div class="onboarding-head">
-  <h1 class="onboarding-header">Set up your account.</h1>
-  <!--<h2 class="onboarding-subheader">Looking good BTW</h2>-->
-</div>
+<div class="onboarding_layout_head onboarding-head clearfix">
+  <h1 class="onboarding-header">Who are you?</h1>
+  <h1 class="onboarding-subheader">Customize your Shelby Profile</h1>
 
-<form class="onboarding-form-1 form_module">
-  <label class="form_label visuallyhidden">
-    Avatar
-  </label>
-  <div class="onboarding-form-avatar">
-    <div class="clearfix js-dynamic-user-avatar onboarding-form-avatar-thumb"></div>
-    <div class="clearfix js-user-avatar-uploader onboarding-form-avatar-file"></div>
+  <div class="onboarding-next-step-wrapper">
+    <button class="js-onboarding-next-step onboarding-next-step">
+      Next
+    </button>
+    <span class="onboarding-next-step-counter">
+      Step 1 of 3
+    </span>
   </div>
+</div><!-- eo .onboarding_layout_head -->
 
-  <label class="form_label no-subline" for="js-onboarding-username-input">
-    Username
-  </label>
-  <div class="onboarding-username <%= (username) ? 'show-context' : '' %>">
-    <input class="form_input" id="js-onboarding-username-input" class="onboarding-username-input" name="onboarding-username-input" type="text" placeholder="Pick your username." value="<%= shelby.models.user.get('nickname') || '' %>" />
-      <span class="animate_module onboarding-username-http">
-        http://
-      </span>
+<div class="onboarding_layout_body onboarding-body onboarding-stage-1 clearfix">
+  <div class="onboarding-body-lining">
+    <form class="onboarding-form-1 form_module">
+      <div class="onboarding-form-container">
+        <label class="form_label visuallyhidden">
+          Avatar
+        </label>
 
-      <span class="animate_module onboarding-username-shelbytv">
-        .shelby.tv
-      </span>
-  </div>
-  <div class="onboarding-error js-onboarding-username-input-error"></div>
+        <div class="onboarding-form-avatar">
+          <div class="clearfix js-dynamic-user-avatar onboarding-form-avatar-thumb"></div>
+          <div class="clearfix js-user-avatar-uploader onboarding-form-avatar-file"></div>
+        </div>
+      </div><!-- eo .onboarding-form-container -->
 
-  <% if (!shelby.models.user.get('has_password')) { %>
-  <label class="form_label" for="js-onboarding-pwd-input">
-    Password
-  </label>
-  <input class="form_input" id="js-onboarding-pwd-input" name="onboarding-pwd-input" type="password" placeholder="shhhh it's a secret" />
-  <div class="onboarding-error js-onboarding-pwd-input-error"></div>
-  <% } %>
+      <div class="onboarding-form-container wide">
+        <p>
+          Your username will be used to create your own .TV.<br/>
+          All the video you Roll will be shared here for others to see.
+        </p>
+      </div>
 
-  <label class="form_label no-subline" for="js-onboarding-email-input">
-    Email
-  </label>
-  <input class="form_input" id="js-onboarding-email-input" name="onboarding-email-input" type="email" placeholder="how can we stay in touch?" value="<%= shelby.models.user.get('primary_email') || '' %>" />
-  <div class="onboarding-error js-onboarding-email-input-error"></div>
+      <div class="onboarding-form-container">
+        <label class="form_label no-subline" for="js-onboarding-username-input">
+          Username
+        </label>
 
-  <p class="onboarding-subline">
-    We will confirm your account information. We won't spam you.
-  </p>
-</form>
+        <div class="onboarding-username <%= (username) ? 'show-context' : '' %>">
+          <input class="form_input" id="js-onboarding-username-input" class="onboarding-username-input" name="onboarding-username-input" type="text" placeholder="Pick your username." value="<%= shelby.models.user.get('nickname') || '' %>" />
+          <span class="animate_module onboarding-username-http">http://</span>
+          <span class="animate_module onboarding-username-shelbytv">.shelby.tv</span>
+        </div>
+        <div class="onboarding-error js-onboarding-username-input-error"></div>
 
-<button class="js-onboarding-next-step onboarding-next-step">
-  Get Started
-</button>
+        <% if (!shelby.models.user.get('has_password')) { %>
+          <label class="form_label" for="js-onboarding-pwd-input">
+            Password
+          </label>
+          <input class="form_input" id="js-onboarding-pwd-input" name="onboarding-pwd-input" type="password" placeholder="shhhh it's a secret" />
+          <div class="onboarding-error js-onboarding-pwd-input-error"></div>
+        <% } %>
+
+        <label class="form_label no-subline" for="js-onboarding-email-input">
+          Email
+        </label>
+        <input class="form_input" id="js-onboarding-email-input" name="onboarding-email-input" type="email" placeholder="how can we stay in touch?" value="<%= shelby.models.user.get('primary_email') || '' %>" />
+        <div class="onboarding-error js-onboarding-email-input-error"></div>
+
+        <p class="onboarding-subline onboarding-form-disclaimer">
+          We will confirm your account information. We won't spam you.
+        </p>
+      </div><!-- eo .onboarding-form-container -->
+    </form>
+  </div><!-- eo .onboarding-body-lining -->
+</div><!-- eo .onboarding-body -->
