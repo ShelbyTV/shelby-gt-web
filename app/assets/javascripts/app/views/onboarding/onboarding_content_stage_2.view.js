@@ -24,10 +24,10 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   _onRollsFollwedChange : function(model, rolls_followed){
     if (rolls_followed > 2){
       this.$('.js-onboarding-next-step').text('Next').addClass('onboarding-next-step-highlight');
-      this.$('.js-onboarding-follow-more-count').text('some rolls').removeClass('onboarding-follow-more-highlight');
+      this.$('.js-onboarding-follow-more-count').text('Nice job! Follow a few more or click next to continue.').removeClass('onboarding-follow-more-highlight');
     } else {
       var needToFollowCount = 3 - rolls_followed;
-      var newText = 'at least '+(needToFollowCount)+' more '+_('roll').pluralize(needToFollowCount);
+      var newText = 'Try following at least '+(needToFollowCount)+' more '+_('roll').pluralize(needToFollowCount);
       this.$('.js-onboarding-next-step').text('Skip').removeClass('onboarding-next-step-highlight');
       this.$('.js-onboarding-follow-more-count').text(newText).addClass('onboarding-follow-more-highlight');
     }
