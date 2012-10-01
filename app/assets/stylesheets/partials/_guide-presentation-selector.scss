@@ -154,7 +154,7 @@
   color: $text;
   float: left;
   line-height: 1.5;
-  padding: .5em;
+  padding: .75em .5em .75em .8em;
   text-align: left;
 
   &:active,
@@ -182,7 +182,7 @@
   font-size: 1.1em;
   line-height: 2.3;
   margin: 0;
-  padding: 6px;
+  padding: 7px;
   width: 60%;
 
   img {
@@ -199,7 +199,7 @@
 
 .settings-preferences {
   float: right;
-  line-height: 3.6;
+  line-height: 3.9;
   padding: 0 1em;
 }
 
