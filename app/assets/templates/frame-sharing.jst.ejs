@@ -5,16 +5,20 @@
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var message        = frame.get('conversation').get('messages').at(0) %>
 
-<div class="overlay_header guide-overlay-header sharing-header">
-  <div class="guide-overlay-title">
-    <button class="cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+<div class="overlay_header guide-overlay-head sharing-head">
+  <div class="guide-overlay-head-lining">
+    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
       <i class="button_icon icon_cancel cancel-icon">
         Cancel
       </i>
     </button>
-    <h2>Share this video to friends</h2>
-  </div>
-</div>
+
+    <h2 class="guide-overlay-header">
+      Share this video to friends
+    </h2>
+  </div><!-- eo guide-overlay-head-lining -->
+</div><!-- eo guide-overlay-head.sharing-head -->
+
 <div class="overlay_body guide-overlay-body conversation-body">
   <form class="form_module share-form clearfix">
     <h1 class="xframe-title" title="<%= frameTitle %>">

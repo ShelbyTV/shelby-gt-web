@@ -102,6 +102,8 @@
 //---------------------------
 
 .settings-section {
+  box-shadow: $shadow;
+  overflow: hidden;
   right: 0;
 }
 
@@ -206,6 +208,8 @@
 //---------------------------
 
 .nowplaying-section {
+  box-shadow: $shadow;
+  overflow: hidden;
   right: 0;
 }
 
