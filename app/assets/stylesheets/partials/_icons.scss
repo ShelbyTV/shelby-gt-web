@@ -28,7 +28,7 @@ $icons:
   star
   videocard_comment
   videocard_queue
-  videocard_roll,
+  videocard_roll
   videocard_roll_on;
 
 //------------------------------------------------------------------------------
@@ -44,16 +44,17 @@ $icons:
 //------------------------------------------------------------------------------
 //  button icon module
 //------------------------------------------------------------------------------
+.button_icon_right,
 .button_icon {
   background-repeat: no-repeat;
-  background-position: center left;
   background-size: auto;
   font-style: normal;
 }
 
+.button_icon {
+  background-position: center left;
+}
+
 .button_icon_right {
-  background-repeat: no-repeat;
   background-position: center right;
-  background-size: auto;
-  font-style: normal;
 }
