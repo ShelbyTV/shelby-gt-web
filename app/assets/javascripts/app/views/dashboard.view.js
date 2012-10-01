@@ -4,6 +4,7 @@
   var DashboardEmptyIndicatorView = libs.shelbyGT.DashboardEmptyIndicatorView;
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
+  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
 
   libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
@@ -15,6 +16,10 @@
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
       initFixedHead : true,
+      intervalInsertViewProto : InStreamExplorePromoView,
+      isIntervalComplete : function(displayedItems) {
+        return displayedItems != 0 && displayedItems % 20 == 0;
+      },
       fetchParams : {
         include_children : true
       },
