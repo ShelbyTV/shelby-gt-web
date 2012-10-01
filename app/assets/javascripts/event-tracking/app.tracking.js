@@ -5,7 +5,7 @@
 // add class 'js-track-event' to element with data attributes for a category, action and label
 //---------------------------------------------------------
 $(document).ready(function(){
-	$('.js-track-event').on('click',function(e){
+	$(document).on('click', '.js-track-event', function(e){
 		try{
 			_gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
 			_kmq.push(['record', $(e.currentTarget).data("ga_action")]);
