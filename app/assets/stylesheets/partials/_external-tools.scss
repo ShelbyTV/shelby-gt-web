@@ -16,6 +16,7 @@
 .external-tools-lining {
   font-size: 1.2em;
   padding: 3em;
+  text-align: center;
 }
 
 .external-subsection {
@@ -33,36 +34,43 @@
   font-size: 1.5em;
 }
 
+.external-lead {
+  font-family: $font-family-display;
+  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.4;
+  margin-top: 1em;
+}
+
 .external-block {
-  max-width: 290px;
+  width: 450px;
+}
+
+.external-figure-wrapper {
+  position: absolute;
+  left: 350px;
+  right: 10px;
 }
 
 .external-figure {
   border: 1px solid darken($base,10%);
-  float: right;
 }
 
 .external-bookmarklet-button-wrapper {
   background-color: darken($base,3%);
   margin: 1em 0;
-  max-width: 280px;
-  min-width: 180px;
   overflow: hidden;
-  padding: 1.5em;
-  text-align: center;
+  padding: 2.75em 1.5em 1.5em;
 }
 
 .external-bookmarklet-button {
-  @include button-primer;
-
-  cursor: move;
-  display: block;
-  margin: 0 1em;
+  @include button-primer($shelby-blue, dark, wide);
 
   &:active,
   &:hover,
   &:link,
   &:visited {
+    color: $button-color;
     text-decoration: none;
   }
 }
@@ -70,6 +78,10 @@
 //------------------------------------------------------------------------------
 //  extension specific
 //------------------------------------------------------------------------------
+.extension-chrome-button {
+
+}
+
 .chrome-icon {
   background-image: url("/images/tools/chrome-icon.png");
   padding-left: 1.6em;
@@ -78,13 +90,31 @@
 //------------------------------------------------------------------------------
 //  bookmarklet specific
 //------------------------------------------------------------------------------
+.extension-bookmarklet-button {
+  cursor: move;
+  font-size: 1.1em
+}
+
 .add-icon {
   padding-left: 1.3em;
 }
 
+.external-bookmarklet-caption {
+  display: block;
+  margin: 0 auto;
+  padding: 1em 2em 0;
+  vertical-align: middle;
+}
+
+.external-bookmarklet-button-subline {
+  display: block;
+  line-height: 1.5;
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .bookmarklet-figure {
-  float: right;
-  margin-left: 2em;
+  margin-top: 1em;
   max-width: 600px;
   width: 100%;
 }
