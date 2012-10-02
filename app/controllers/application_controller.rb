@@ -9,12 +9,29 @@ class ApplicationController < ActionController::Base
     render 'blank', :status => @status, :formats => [:json]
   end
   
+  # Mobile detection
+  def is_mobile?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android)/]
+  end
+  
+  def detect_mobile_os
+    return :ios if (request.user_agent=~/iPhone/)
+    return :android if (request.user_agent=~/Android/)
+    return :generic if is_mobile?
+    return nil
+  end
+  
   ##
-  # Simple helper to let us know if user is signed in:
+  # Simple helper to let us know if we expect that the user is signed in:
   #  the _shelby_gt_common cookie is being set/cleared on the api server
   def user_signed_in?
     id = cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
     id ? id != "nil" : false
+  end
+  
+  def set_app_tokens_for_view
+    @csrf_token = csrf_token_from_cookie
+    @rhombus_token = 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt')
   end
   
   def csrf_token_from_cookie
@@ -32,50 +49,6 @@ class ApplicationController < ActionController::Base
     end
     
     h
-  end
-  
-  def get_api_info(path)
-    roll_info, video_info, user_info, roll_permalink, user_permalink, frame_permalink = nil
-    
-    if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
-    # the url is a frame
-      frame_id = path_match[1]
-      video_info = Shelby::API.get_video_info(frame_id)
-      if video_info and video_info['video'] and video_info['frame']
-        video_embed = video_info['video']['embed_url']
-        frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], frame_id)
-        roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id'])
-      end
-      return  { :frame => { :frame_permalink => frame_permalink,
-                            :roll_permalink => roll_permalink },
-                :video_embed => video_embed,
-                :video_info =>  video_info
-              }
-    elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
-    # the url is a roll or personal roll
-      roll_id = path_match[1]
-      video_info = Shelby::API.get_first_frame_on_roll(roll_id)
-      if video_info
-        video_embed = video_info['video'] ? video_info['video']['embed_url'] : nil
-        roll_info = video_info['roll']
-        user_id = roll_info ? roll_info['creator_id'] : nil
-        user_info = user_id ? Shelby::API.get_user_info(user_id) : nil
-        if video_info['frame']
-          frame_permalink = Shelby::API.generate_frame_route(video_info['frame']['roll_id'], video_info['frame']['id'])
-          roll_permalink = Shelby::API.generate_roll_route(video_info['frame']['roll_id']) 
-        end
-        user_permalink = user_id ? Shelby::API.generate_user_route(user_id) : nil
-      end
-      return {  :roll => {  :roll_info => roll_info,
-                            :roll_permalink => roll_permalink,
-                            :user_info =>   user_info,
-                            :user_permalink =>   user_permalink},
-                :video_embed => video_embed,
-                :video_info =>  video_info
-              }
-    else
-      return { :video_info => nil }
-    end
   end
   
 end

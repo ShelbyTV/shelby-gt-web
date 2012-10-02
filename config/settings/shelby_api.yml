@@ -2,6 +2,7 @@ defaults: &defaults
   url: "http://api.shelby.tv"
   secure_url: "https://api.shelby.tv"
   login_form_url: "https://api.shelby.tv/authentications/login"
+  signup_form_url: "https://api.shelby.tv/user/sign_in"
   version: "/v1"
 
 development:

@@ -7,6 +7,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
   end
   
+  #######################XXX###############################
   # For development, take me out when mobile is more stable
   get '/m' => 'mobile#search', :as => :mobile_search
   get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
@@ -14,22 +15,30 @@ ShelbyGtWeb::Application.routes.draw do
     get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
     get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
   end
-  ######################################################
+  #######################XXX###############################
   
-  get '/video/:provider_name/:provider_id(/*title)' => "seovideo#show"
+  # SEO PAGES
+  get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
   
-  # redirects to roll/:roll_id/frame/:frame_id which is handled by web app
-  get '/frame/:frame_id' => "frame#show"
+  # FRAMES
+  get '/frame/:frame_id' => 'frame#just_frame'
+  get '/roll/:roll_id/frame/:frame_id' => 'frame#show'
+  
+  # ROLLS
+  get '/roll/:roll_id' => 'roll#show'
+  get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
+  get '/isolated_roll/:roll_id' => 'roll#show_isolated_roll'
 
+  # HOME
+  get '/explore' => "home#explore"
   get '/signout' => "home#signout", :as => :signout
   
+  #XXX kill this after merge back to master (we have bookmarklet correctly setup over there w/ tools page)
   get '/get_bookmarklet' => "home#get_bookmarklet"
 
+  # Everything else falls through to home#index
+  # This used to handle *everything* but now it's much more limited in scope
+  # XXX Still handles non-shelby-domain iso rolls :(
   get '(*path)' => 'home#index', :as => :root
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  #root :to => 'home#login'
   
 end

@@ -4,10 +4,10 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <%= render :partial => "meta_info", :locals => { :info => @meta_info } %>
+  <%= render :partial => "/home/meta_info" %>
   <meta charset="utf-8">
   <title>
-    <%= render :partial => "title_tag", :locals => { :meta_info => @meta_info} %>
+    <%= render :partial => "/home/title_tag" %>
   </title>
 
   <meta name="csrf-token" content="<%= @csrf_token %>">
@@ -27,7 +27,7 @@
 	<div id="js-notification-banner-wrapper" class="notification-banner-wrapper"></div>
   <div id="js-shelby-wrapper" class="shelby-wrapper">
     <header id="js-header" class="js-app-header shelby-header" role="banner">
-      <!-- contents in guide-header.jst -->
+      <!-- contents in AppHeaderView -->
     </header>
 
     <div class="content_wrapper main-layout js-main-layout">

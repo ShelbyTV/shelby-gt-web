@@ -1,0 +1,8 @@
+Testing the Landing Page variations:
+
+Hit the following when both logged in and logged out:
+http://localhost.shelby.tv:3000/
+http://localhost.shelby.tv:3000/roll/4fa28d8c9a725b7a2a0001e6/frame/5048c6a1d104120abe0171ea?utm_source=spinosa&utm_medium=http%3A%2F%2Fs3.amazonaws.com%2Fshelby-gt-user-avatars%2Fsq48x48%2F4d7a882df6db246de0000001%3F2012-08-30%2021%3A49%3A01%20-0400&utm_campaign=email-share
+http://localhost.shelby.tv:3000/roll/5048a82559b0522820002899/frame/5048a82659b0522820002923?utm_campaign=genius-email
+http://localhost.shelby.tv:3000/roll/4f8f7ef6b415cc476200004a/frame/501c0d27b415cc5b7d00163a?awesm=shl.by_jk
+http://localhost.shelby.tv:3000/roll/4f8f7ef2b415cc4762000002/frame/50491cd9b415cc1362000403?awesm=shl.by_e0F

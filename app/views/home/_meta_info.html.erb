@@ -1,26 +1,29 @@
-<% if @meta_info[:frame] or @meta_info[:roll] %>
+<% if @frame or @roll %>
 	<!-- For FB -->
-	<meta property="fb:app_id" 	content="<%= Settings::Facebook.facebook_app_id %>" /> 
-	<meta property="og:locale"      content="EN_us" />
+	<meta property="fb:app_id" content="<%= Settings::Facebook.facebook_app_id %>" /> 
+	<meta property="og:locale" content="EN_us" />
 <% end %>
 
-<% if @meta_info[:frame] and @meta_info[:frame][:frame_permalink] and @meta_info[:video_info] %>
+<% if @frame and @video %>
 	<meta property="og:type" 		content="video" />
-	<meta property="og:url"			content="<%= @meta_info[:frame][:frame_permalink] %>" /> 
-	<meta property="og:video:url" content="<%= @meta_info[:frame][:frame_permalink] %>" /> 
-	<meta property="og:video:secure_url" content="https://<%= @meta_info[:frame][:frame_permalink][7..-1] %>" /> 
-	<meta property="og:title" content="<%= @meta_info[:video_info]['video']['title'] %>" /> 
-	<meta property="og:description" content="<%= @meta_info[:video_info]['video']['description'] %>" />	
-	<meta property="og:image" content="<%= @meta_info[:video_info]['video']['thumbnail_url'] %>" />
-<% elsif @meta_info[:roll] and @meta_info[:roll][:roll_info] and @meta_info[:video_info]%>
-	<% user_roll_title = "The #{@meta_info[:roll][:roll_info]['title'].capitalize} Roll" %>
-	<% user_roll_description = "The #{@meta_info[:roll][:roll_info]['title']} Roll curated by: #{@meta_info[:roll][:user_info] ? @meta_info[:roll][:user_info]['name'] : ""} on Shelby.tv (the best way to watch video on the web and iOS.)" %>
+	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
+	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
+	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id'], 'https') %>" /> 
+	<meta property="og:title" content="<%= @video['title'] %>" /> 
+	<meta property="og:description" content="<%= @video['description'] %>" />	
+	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
+	
+<% elsif @roll and @video %>
+	<% user_roll_title = "The #{@roll['title'].capitalize} Roll" %>
+	<% user_roll_description = "#{user_roll_title} curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
 	<meta property="og:type" 		content="shelbytv:roll" />
-	<meta property="og:url"			content="<%= @meta_info[:roll][:roll_permalink] %>" /> 
+	<meta property="og:url"			content="<%= Shelby::API.generate_roll_route(@roll['id']) %>" /> 
 	<meta property="og:title" content="<%= user_roll_title %>" /> 
 	<meta property="og:description" content="<%= user_roll_description %>" />	
-	<meta property="og:image" content="<%= @meta_info[:roll][:roll_info]['first_frame_thumbnail_url'] %>" />
+	<meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
 	<meta name="description" content="<%= user_roll_description %>" />
+	
 <% else %>
-	<meta name="description" content="<%= Settings::Application.meta_description %>">	   
+	<meta name="description" content="<%= Settings::Application.meta_description %>">
+
 <% end %>

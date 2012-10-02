@@ -31,19 +31,26 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
+      if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
     
-    _goToStream : function(){
-      shelby.router.navigate('stream', {trigger: true});
+    _goToStream : function(e){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+        shelby.router.navigate('stream', {trigger: true});
+      }
     },
 
-    _goToQueue : function(){
-      shelby.router.navigate('queue', {trigger: true});
+    _goToQueue : function(e){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+        shelby.router.navigate('queue', {trigger: true});
+      }
     },
     
     _goToMe : function(){
-      shelby.router.navigate('me', {trigger:true});
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
+        shelby.router.navigate('me', {trigger:true});
+      }
     },
     
     _explore : function(){
@@ -114,6 +121,12 @@
 
     _clearSelected : function(){
       this.$('.js-content-selector button').removeClass('active-item');
+    },
+    
+    _adjustForAnonymousUser : function(){
+      //hide the settings
+      this.$('.js-guide-settings').hide();
+      
     }
 
   });

@@ -4,6 +4,7 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       anon : true,
       app_progress : new libs.shelbyGT.AppProgressModel(),
       authentications : [],
+      autocomplete : {},
       csrf_token : '',
       faux : 1,
       id : '',
