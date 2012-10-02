@@ -1,7 +1,3 @@
-<%
-  var rolls = libs.shelbyGT.Onboarding.rolls;
-%>
-
 <div class="onboarding_layout_head onboarding-head clearfix">
   <h1 class="onboarding-header">
     Program your personal Shelby stream
@@ -24,19 +20,19 @@
 
 <div class="onboarding_layout_body onboarding-body onboarding-stage-2 clearfix">
   <ol class="onboarding-category-list clearfix">
-    <% rolls.forEach(function(category){ %>
+    <% rollCategories.get('roll_categories').forEach(function(category){ %>
       <li class="onboarding-category-item">
         <div class="onboarding-category-item-lining">
           <h3 class="onboarding-category-header">
-            <%= category.category_name %>
+            <%= category.get('category_title') %>
           </h3>
 
           <ol class="onboarding_list_module onboarding-roll-list clearfix">
-            <% category.rolls.forEach(function(roll){ %>
+            <% category.get('rolls').forEach(function(roll){ %>
               <li class="onboarding-roll-item js-onboarding-roll-item">
-                <button data-roll_id="<%= roll.roll_id %>" class="onboarding-roll-button js-onboarding-roll-button js-follow-unfollow">
+                <button data-roll_id="<%= roll.id %>" class="onboarding-roll-button js-onboarding-roll-button js-follow-unfollow">
                   <h4 class="onboarding-roll-head">
-                    <%= roll.title %>
+                    <%= roll.get('display_title') %>
                   </h4>
 
                   <div class="onboarding-roll-body">
@@ -44,7 +40,7 @@
                       <p></p>
                     </div>
 
-                    <img src="<%= roll.img_src %>" class="onboarding-roll-list-img" />
+                    <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding-roll-list-img" />
 
                   </div>
                 </button>

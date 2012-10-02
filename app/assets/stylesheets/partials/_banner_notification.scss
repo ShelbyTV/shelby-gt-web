@@ -3,13 +3,67 @@ $notification-base-color: #fff82b;
 .notification-banner-wrapper {
   @include gradient-primer($notification-base-color, 20%);
   display: none;
-  height: 70px;
+  /*height is set by GenericBannerNotificationView */
   position: relative;
   width: 100%;
 }
 
 /*
- * All Noticiation Banners
+ * Anonymous Banner Notification
+ */
+.notification-banner-anon {
+  float: left;
+  padding: 15px 0 10px 10px;
+  
+  .signup-button {
+    @include button-primer($shelby-blue, $primer-tone);
+    
+    color: #efefef;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    width: 110px;
+  }
+  
+  /* Reconfigure the stuff we're borrowing from landing-page */
+  .signup-section {
+    font-size: 12px;
+    left: 0;
+    right: auto;
+    top: 40px;
+  }
+  
+  .signup-section-lining:after {
+    left: 60px;
+  }
+}
+
+.notification-banner-anon-signup {
+  text-align: center;
+  width: 150px;
+}
+
+.anon-signup-subtitle {
+  font-weight: 100;
+  font-size: 1.1em;
+}
+
+.notification-banner-anon-benefit {
+  float: left;
+  width: 75%;
+  max-width: 700px;
+  padding: 10px ;
+}
+
+.anon-benefit-title {
+  
+}
+
+.anon-benefit-subtitle {
+  font-weight: 100;
+}
+
+/*
+ * Extension & Bookmarklet
  */
 .notification-banner-left {
   float: left;

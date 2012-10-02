@@ -443,11 +443,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupAnonUserViews : function(options){
-    options = _.chain({}).extend(options).defaults({
-      isIsolatedRoll : false
-    }).value();
-    shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
-    shelby.views.anonBanner.render();
+    //this view will not ever render if user is not anonymous
+    shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
   },
   
   _setupRollView : function(roll, title, options, topLevelViewsOptions){

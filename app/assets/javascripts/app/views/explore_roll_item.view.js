@@ -6,6 +6,8 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   className : 'explore-item',
+  
+  _spinnerView : null,
 
   template : function(obj){
     return JST['explore-roll-item'](obj);
@@ -14,6 +16,17 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   initialize : function(){
     shelby.models.guide.bind('change:displayState', this._onChangeDisplayState, this);
     shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
+    
+    // Explore view lazy loads the frames, so grab them if we need to
+    if(this.model.get('frames').length === 0){
+      var self = this;
+      this.model.fetch({
+        success: function(roll, response){
+          self._leaveChildren();
+          self.render();
+        }
+      });
+    }
   },
 
   _cleanup : function(){
@@ -31,6 +44,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
       this.$('.js-follow-unfollow').addClass('command-active');
     }
     this.appendChildInto(new libs.shelbyGT.ExploreFrameListView({model: this.model}), '.explore-roll');
+    
     return this;
   },
 
@@ -40,6 +54,8 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _followOrUnfollow : function(){
+    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
+    
     var self = this;
     var $thisButton = this.$('.js-follow-unfollow');
 

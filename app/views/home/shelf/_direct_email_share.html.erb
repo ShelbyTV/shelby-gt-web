@@ -1,0 +1,24 @@
+<section class="landing-shelf-direct-email-share landing-shelf-share landing-shelf">
+	<div class="landing-shelf-lining clearfix">
+
+		<%= render :partial => "/home/shelf/video_embed" %>
+		
+		<div class="landing-shelf-share-content">
+			<h1>
+				<img src="<%= avatar_url_for_user(@user) %>" class="user-avatar" />
+				<%= @user['name'] if @user %> shared this video with you
+			</h1>
+			
+			<hr />
+			
+			<h2 class="landing-shelf-subheader">
+				Shelby.tv is a simple new way to enjoy video.
+				We're currently in a private beta, but we'll let you know when the wait is over.
+			</h2>
+
+			<%= render :partial => "/home/shelf/interest_email_form" %>
+	
+		</div>
+
+	</div>
+</section>

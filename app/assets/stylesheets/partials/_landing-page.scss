@@ -1,0 +1,342 @@
+@import "compass/typography/links/hover-link";
+
+$landing-page-width: 920px;
+$landing-page-footer-background: #161818;
+$landing-page-footer-font-color: #EFEFEF;
+
+.shelby-landing {
+  background-color: $landing-page-footer-background;
+  overflow: auto;
+  
+  /* adjust the header, don't want absolute position */
+  .shelby-header {
+    position: relative;
+  }
+  
+  /* this gets hidden in _guide-presentation-selector.scss for onboarding */
+  .guide-nav-list {
+    display: block;
+  }
+}
+
+/********************************************************
+ * Login & Signup (used on landing page and anonymous banner)
+ ********************************************************/
+
+
+.login-section, 
+.signup-section {
+  box-shadow: 0 0 20px 0 black;
+  right: 10px;
+  top: 28px;
+}
+
+.login-section-lining, 
+.signup-section-lining {
+  @include fin;
+
+  background: $nav-dropdown-bg;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
+  text-align: left;
+  width: 300px;
+}
+
+.login-header, 
+.signup-header {
+  margin: 10px 10px 0;
+}
+
+.login-section hr, 
+.signup-section hr {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+  margin-bottom: 0;
+  margin-top: .5em;
+}
+
+.login-form, .login-social-section,
+.signup-form, .signup-social-section  {
+  padding: 10px;
+}
+
+.login-social-section-header,
+.signup-social-section-header  {
+  margin-bottom: 5px;
+}
+
+.login-form .form_input
+.signup-form .form_input {
+  margin-bottom: .5em;
+}
+
+.login-submit,
+.signup-submit {
+  @include button-primer();
+  
+  margin-top: .5em;
+}
+
+.login-forgot-password {
+  padding-left: 2em;
+}
+ 
+
+/********************************************************
+ * All Shelves
+ ********************************************************/
+
+$landing-page-shelf-background: #ccc;
+
+.landing-shelf {
+  @include gradient-primer($landing-page-shelf-background);
+  
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
+}
+
+.landing-shelf-lining {
+  width: $landing-page-width;
+  margin: 0 auto;
+}
+
+.landing-shelf-header {
+  font-size: 2.3em;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.landing-shelf-subheader {
+  font-family: $font-family-display;
+  font-size: 1.75em;
+  font-weight: 100;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  width: 400px;
+}
+
+.landing-shelf-error {
+  color: red;
+  font-size: 1.5em;
+}
+
+/********************************************************
+ * All Share Shelves
+ ********************************************************/
+
+.landing-shelf-share {
+  padding: 50px 0 20px;
+}
+
+.landing-shelf-video-embed {
+  float: left;
+  width: $landing-page-width * (10/18);
+}
+
+
+.addthis_toolbox{
+  @include gradient-primer($landing-page-shelf-background);
+}
+
+.landing-shelf-share-content {
+  float: left;
+  padding: 30px 0 0 5px;
+  width: $landing-page-width * (8/18);
+  
+  .user-avatar {
+    width: 48px;
+    padding-right: 5px;
+  }
+}
+
+/********************************************************
+ * _direct_email_share - Share Shelf
+ ********************************************************/
+
+/********************************************************
+ * _genius_email_share - Share Shelf
+ ********************************************************/
+ 
+/********************************************************
+ * _rolling_share - Share Shelf
+ ********************************************************/
+.landing-shelf-rolling-share .landing-shelf-share-content {
+  padding-top: 0;
+}
+
+.landing-shelf-rolling-share .share-context {
+  font-face: ubuntu;
+  font-size: 1.4em;
+  padding-top: 10px;
+
+  .user-avatar {
+    float: left;
+  }
+  
+  .user-nickname {
+    font-weight: 600;
+  }
+}
+
+/********************************************************
+ * _genius_ios_ad - Primary Shelf
+ ********************************************************/
+
+.landing-shelf-genius .landing-shelf-lining {
+  background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
+  padding: 70px 0 30px;
+}
+
+.landing-shelf-genius .genius-logo {
+  margin-top: -9px;
+}
+
+.landing-appstore-header {
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.landing-appstore {
+  border-radius: 5px;
+  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
+  display: block;
+  height: 67px;
+  margin: 63px 0 5px;
+  width: 215px;
+  
+  &:hover {
+    box-shadow: 0 0 200px 4px white;
+  }
+}
+
+/********************************************************
+ * _video_graph_blog_post - Substitute Shelf
+ ********************************************************/
+.landing-shelf-video-graph-blog .landing-shelf-lining {
+  background: url('/images/landing/graph.png') no-repeat 498px 55px transparent;
+  padding: 70px 0 30px;
+}
+
+
+/********************************************************
+ * _private_beta - Primary Shelf
+ ********************************************************/
+
+.landing-shelf-private {
+  position: relative;
+}
+
+.landing-shelf-private .landing-shelf-lining {
+  padding: 40px 0 50px;
+}
+
+.landing-form {
+  
+}
+
+.landing-form-label {
+  display: block;
+  font-family: $font-family-display;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 2;
+}
+
+.landing-form-input {
+  @include roundies(left);
+  
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  font-size: 2em;
+  height: 45px;
+  padding: .5em;
+}  
+  
+.landing-form-submit {
+  @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
+  @include roundies(right);
+  
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  border-left: none;
+  display: inline-block;
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 400;
+  height: 45px;
+  padding: 1.1em 3em 1.2em;
+  vertical-align: bottom;
+  
+  &:hover {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
+  }
+  
+  &:active {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
+  }
+}
+
+.landing-shelf-private .browser-image {
+  background: url('/images/landing/browser.png') no-repeat left 20px transparent;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
+
+/********************************************************
+ * Footer
+ ********************************************************/
+
+.landing-footer {
+  @include gradient-primer($landing-page-footer-background);
+}
+
+.landing-footer-lining {
+  width: $landing-page-width;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.landing-footer .list_module {
+  padding: 0;
+}
+
+.landing-footer-lists > li {
+  float: left;
+  padding-top: 30px;
+  width: (100%/6);
+  
+  &.secondary {
+    float: right;
+  }
+}
+
+.landing-footer-content-header, .landing-footer-content-list li {
+  color: $landing-page-footer-font-color;
+  font-size: 1.3em;
+  font-family: ubuntu;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.landing-footer-content-header {
+  margin-bottom: 15px;
+}
+
+.landing-footer-content-list > li, .landing-footer-content-list a {
+  color: $landing-page-footer-font-color;
+  font-weight: 100;
+}
+
+.landing-footer-content-list a {
+  @include hover-link();
+}
+
+/********************************************************
+ * Social Media
+ ********************************************************/
+
+.fb_edge_widget_with_comment {
+  margin-bottom: 2px;
+}
