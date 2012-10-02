@@ -1,0 +1,13 @@
+@import "base";
+
+.in-stream-explore-promo-header{
+  line-height: 2;
+  margin: 1em;
+}
+
+.in-stream-explore-promo-button {
+  @include button-primer($shelby-blue, dark);
+  
+  float: right;
+  margin: 1em;
+}

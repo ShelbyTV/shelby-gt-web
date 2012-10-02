@@ -24,7 +24,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   render : function(){
 
     this.$el.html(this.template({
-      title : this.model.get('title')
+      roll : this.model
     }));
     this.$('#js-guide-title').before(JST['iso-roll-buttons']());
 
@@ -83,8 +83,9 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     var _changedAttrs = _(rollModel.changedAttributes());
     if (_changedAttrs.has('title') ||
         _changedAttrs.has('creator_nickname') ||
-        _changedAttrs.has('frames') ||
-        _changedAttrs.has('creator_id')) {
+        _changedAttrs.has('creator_id') ||
+        _changedAttrs.has('creator_has_shelby_avatar') ||
+        _changedAttrs.has('creator_avatar_updated_at')) {
       this.render();
     }
   },

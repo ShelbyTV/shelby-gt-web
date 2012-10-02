@@ -102,7 +102,7 @@
 //---------------------------
 
 .settings-section {
-  right: 10px;
+  right: 0;
 }
 
 $settings-panel-bg : #555;
@@ -156,7 +156,7 @@ $settings-panel-bg : #555;
   color: $text;
   float: left;
   line-height: 1.5;
-  padding: .5em;
+  padding: .75em .5em .75em .8em;
   text-align: left;
 
   &:active,
@@ -184,7 +184,7 @@ $settings-panel-bg : #555;
   font-size: 1.1em;
   line-height: 2.3;
   margin: 0;
-  padding: 6px;
+  padding: 7px;
   width: 60%;
 
   img {
@@ -201,7 +201,7 @@ $settings-panel-bg : #555;
 
 .settings-preferences {
   float: right;
-  line-height: 3.6;
+  line-height: 3.9;
   padding: 0 1em;
 }
 
@@ -210,7 +210,7 @@ $settings-panel-bg : #555;
 //---------------------------
 
 .nowplaying-section {
-  right: 10px;
+  right: 0;
 }
 
 .nowplaying-section-lining {

@@ -1,6 +1,7 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
@@ -13,6 +14,7 @@
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
       },
+      noMoreResultsViewProto : InStreamExplorePromoView,
       pagingKeySortOrder : -1
     }),
 

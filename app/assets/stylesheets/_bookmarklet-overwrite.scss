@@ -41,8 +41,8 @@
 .shelby-notify {
   background-color: #eee;
   background-image: url('/images/assets/shelby_mark_dark.svg');
-  background-position: 9px -1px;
-  background-size: 40px 40px;
+  background-position: 11px 6px;
+  background-size: 40px;
   background-repeat: no-repeat;
   border: 1px solid #adadad;
   border-radius: 2px;
@@ -354,24 +354,16 @@
   font-style: normal;
 }
 
-.queue-button-content,
-.roll-button-content {
-  background-position: left 1px;
-  background-repeat:no-repeat;
-  font-style: normal;
+.queue-button,
+.roll-button {
   padding-left: 1.3em;
 }
 
-.queue-button-content {
-  background-image: url("/images/assets/chrome_queue.svg");
-  background-size: 11px;
-
+.queue-button {
   &:before {
     content: "Queue"
   }
 }
 
-.roll-button-content {
-  background-image: url("/images/assets/chrome_roll.svg");
-  background-size: 10px;
+.roll-button {
 }

@@ -1,5 +1,7 @@
 @import "base";
-
+//------------------------------------------------------------------------------
+//  guide overlay setup
+//------------------------------------------------------------------------------
 .guide-overlay {
 	background-color: $guide-bg-color;
 	bottom: 0;
@@ -13,66 +15,56 @@
   margin-left: 0; 
 }
 
-/* common to many guide overlays */
-.guide-overlay-header {
+//------------------------------------------------------------------------------
+//  guide overlay framework
+//------------------------------------------------------------------------------
+.guide-overlay-head {
   border-bottom: 1px solid $inset;
+}
+
+.guide-overlay-head-lining {
+  height: 46px;
+  padding: 12px 7px;
 }
 
 .guide-overlay-body {
   border-top: 1px solid $outset;
 }
 
-.guide-overlay-title {
-  height: 46px;
-
-  .back, .cancel {
-    //TODO: abstract button icons better
-
-  	@include button-primer($x-primer-color, light, guide-close);
-
-  	left: 0;
-    margin: 1em;
-  	position: absolute;
-  	top: 0;	
-    
-    .cancel-icon {
-      background-size: contain;
-      color: transparent;
-      display: block;
-      font: 0/0 a;
-      height: 7px;
-      width: 7px;
-    }
-  }
-  
-  h2 {
-    line-height: 4.25;
-    text-align: center;
-    font-size: 1em;
-    font-weight: 400;
-  }
+//------------------------------------------------------------------------------
+//  normative contents
+//------------------------------------------------------------------------------
+.guide-overlay-header {
+  display: inline;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.55;
+  padding-left: .25em;
 
   .em {
     font-weight: 100;
   }
+}
+
+.guide-overlay-cancel {
+  @include button-primer($x-primer-color, light, guide-close);
+
+  display: inline;
+  vertical-align: top;
   
-  /* For two-line headers with details above the meat */
-  h2.top-line, h2.bottom-line{
-    line-height: 1;
-    text-align: left;
-    padding-left: 43px;
-  }
-  h2.top-line {
-    font-size: 1em;
-    font-weight: 100;
-    padding-top: 8px;
-  }
-  h2.bottom-line {
-    @include ellipsis();
-    font-size: 1.5em;
-    line-height: 1.2;
+  .cancel-icon {
+    background-size: contain;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 7px;
+    width: 7px;
   }
 }
+
+//------------------------------------------------------------------------------
+//  TODO: non-normative/uncategorized
+//------------------------------------------------------------------------------
 
 .guide-header-lining,
 .xguide-overlay-context {
@@ -97,13 +89,18 @@
   width: 100%;
 }
 
+.guide-header-avatar {
+  background-color: inherit;
+  float: left;
+  margin: 10px;
+}
+
 .guide-header-title {
   @include ellipsis();
 
 //  color: #ccc;
   font-weight: 500;
-  line-height: 2.6;
-  padding: 0 10px;
+  line-height: 3.0;
   position: relative;
   width: inherit;
   z-index: 1;

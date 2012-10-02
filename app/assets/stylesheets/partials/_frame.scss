@@ -26,8 +26,6 @@ $active-list-item: $shelby-blue;
 //  frame natural state
 //------------------------------------------------------------------------------
 .xframe {
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
   padding: 1em;
 
   ////////////////////////////////////////////////////////////////////////////
@@ -42,6 +40,11 @@ $active-list-item: $shelby-blue;
       display: block;
     }
   }
+}
+
+.xframe-list-item {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
 }
 
 .xframe-header {
@@ -293,12 +296,14 @@ $active-list-item: $shelby-blue;
     background-image: none;
   }
 }
+
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .xframe-collapsed{})
 //------------------------------------------------------------------------------
-
 .xframe-collapsed {
+  opacity: .5;
+
   .xframe-title {
     height: 40px;
     overflow: hidden;
@@ -317,6 +322,8 @@ $active-list-item: $shelby-blue;
   }
 
   &:hover {
+    opacity: 1;
+
     .xframe-body-wrapper {
       cursor: pointer;
     }

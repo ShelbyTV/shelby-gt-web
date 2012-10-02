@@ -25,8 +25,7 @@
       </a>
 
       <h2 class="seovideo-subheader">
-        This video is brought to you by Shelby.tv - try out the free web app and discover<br />
-        all the amazing new videos your friends are sharing together.
+        This video is brought to you by Shelby.tv - try out the free web app and discover all the amazing new videos your friends are sharing together.
       </h2>
     </div>
   </header>
@@ -46,6 +45,7 @@
           <% end %>
         </div>
 
+        <div class="seovideo-details-wrapper"> 
         <div class="seovideo-details">
           <p>
             Author: <%= @video_author %>
@@ -55,14 +55,21 @@
             Description: <%= @video_description %>
           </p>
 
-          <div class="seovideo-social clearfix">
-            <div class="fb-like" data-href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>
-
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>"  data-text="<%= @video_title %> via @Shelby">Tweet</a>
-
-            <div class="g-plusone" data-size="medium"></div>
-          </div>
         </div><!-- eo seovideo-details -->
+        </div>
+        <div class="seovideo-social">
+          <div class="seovideo-social-button clearfix">
+            <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+          </div>
+          <div class="seovideo-social-button clearfix">
+            <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
+          </div>
+          <div class="seovideo-social-button clearfix">
+            <div class="g-plusone-wrapper clearfix">
+              <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
+            </div>
+          </div>
+        </div>
       </section><!-- eo seovideo-card -->
     </div><!-- eo seovideo-column-left -->
 
@@ -93,7 +100,7 @@
       <ul class="list_module seovideo-messages-list">
         <% if @conversations %>
           <% @conversations.each do |conversation| %>
-            <% conversation["messages"].each do |message| %>
+            <% conversation["messages"].first(1).each do |message| %>
               <li class="list_item seovideo-messages-item">
                 <blockquote class="media_module seovideo-messages-block">
                   <span class="image_module xuser-avatar media_image" style="background-image: url(<%= message["user_image_url"] %>);" role="img">
@@ -125,25 +132,6 @@
                       <%= message["text"] %>
                     </p>
 
-                    <% if message["origin_network"] == "twitter" %>
-                      <ul class="list_module xuser-data-twitter-intents seovideo-command-menu">
-                        <li>
-                          <a class="xuser-data-twitter-reply" href="https://twitter.com/intent/tweet?in_reply_to=<%= message["origin_id"] %>">
-                            <i></i>Reply
-                          </a>
-                        </li>
-                        <li>
-                          <a class="xuser-data-twitter-retweet" href="https://twitter.com/intent/retweet?tweet_id=<%= message["origin_id"] %>">
-                            <i></i>Retweet
-                          </a>
-                        </li>
-                        <li>
-                          <a class="xuser-data-twitter-favorite" href="https://twitter.com/intent/favorite?tweet_id=<%= message["origin_id"] %>">
-                            <i></i>Favorite
-                          </a>
-                        </li>
-                      </ul>
-                    <% end %>
                   </div>
                 </blockquote><!-- eo .media_module-->
               </li>

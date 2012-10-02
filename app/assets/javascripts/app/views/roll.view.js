@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
+  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
 
   libs.shelbyGT.RollView = FrameGroupPlayPagingListView.extend({
 
@@ -23,6 +24,10 @@
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
+      intervalInsertViewProto : InStreamExplorePromoView,
+      isIntervalComplete : function(displayedItems) {
+        return displayedItems != 0 && displayedItems % 30 == 0;
+      },
       listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true

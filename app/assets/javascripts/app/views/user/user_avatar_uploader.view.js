@@ -42,6 +42,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
       
       done: function (e, data) {
         self._hideSpinner();
+        self._hideProgressMessage();
         self._clearProgress();
         
         if(data.result.status == 200){
@@ -55,12 +56,14 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
       },
       error: function(){
         self._hideSpinner();
+        self._hideProgressMessage();
         self._clearProgress();
         shelby.alert("Sorry, that upload failed.");
         shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
         self._showSpinner();
+        self._showProgressMessage();
         self._clearProgress();
       },
       progressall: function (e, data) {
@@ -94,9 +97,17 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
     
     if(this._spinner) this._spinner.show();
   },
-  
+
   _hideSpinner: function(){
     if(this._spinner) this._spinner.hide();
-  }
+  },
+
+  _showProgressMessage : function(){
+    $(this.options.progressMessageEl).text('Uploading...');
+  },
   
+  _hideProgressMessage : function(){
+    $(this.options.progressMessageEl).text('');
+  }
+
 });

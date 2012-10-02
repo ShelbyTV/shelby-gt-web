@@ -30,6 +30,21 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       selector : null
     },
     /*
+      isIntervalComplete - a callback function that can be overriden to return true when client wants
+      to insert special view items at certain points in the list, for example:
+        function(displayedItems) {
+          return displayedItems != 0 && displayedItems % 3 == 0;
+        }
+      to insert the special view after every three items in the list
+    */
+    isIntervalComplete : function(displayedItems) {
+      return false;
+    },
+    /*
+      intervalInsertViewProto - the view to be inserted when isIntervalComplete returns true
+    */
+    intervalInsertViewProto : null,
+    /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
         1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
@@ -83,6 +98,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
     this._displayCollection.bind('reset', this.internalReset, this);
     this._listItemViews = [];
+    this._intervalViews = [];
   },
 
   _cleanup : function(){
@@ -190,7 +206,19 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       //store a reference to all list item child views so they can be removed/left without
       //removing any other child views
       this._listItemViews.push(childView);
-      if (this.options.insert && this.options.insert.position) {
+      this._insertChildView(childView);
+    }
+
+    //check if the client-defined interval for adding a special list item has elapsed, and if so add the view
+    if (this.options.intervalInsertViewProto && this.options.isIntervalComplete(this._listItemViews.length)) {
+      var intervalView = new this.options.intervalInsertViewProto();
+      this._intervalViews.push(intervalView);
+      this._insertChildView(intervalView);
+    }
+  },
+
+  _insertChildView: function(childView) {
+    if (this.options.insert && this.options.insert.position) {
         switch (this.options.insert.position) {
           case 'append' :
             this.appendChild(childView);
@@ -203,9 +231,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         }
       }
 
-      // default behavior if not enough options were supplied
+      // default behavior if no options were supplied
       this.appendChild(childView);
-    }
   },
 
   internalReset : function(models){
@@ -216,6 +243,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         view.leave();
     });
     this._listItemViews.length = 0;
+    _(this._intervalViews).each(function(view) {
+        view.leave();
+    });
+    this._intervalViews.length = 0;
     //refill the view with the new contents
     models.each(function(item){
       self.internalAddOne(item);
