@@ -45,6 +45,14 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     */
     intervalInsertViewProto : null,
     /*
+      intervalInsertViews - a callback function that returns a view or an array of views to add
+      to the list and render when isIntervalComplete returns true; callback takes no arguments
+
+      this option is mutually exclusive with intervalInsertViewProto, that is, it will only be used
+      if intervalInsertViewProto is null
+    */
+    intervalInsertViews : null,
+    /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
         1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
@@ -196,6 +204,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   internalAddOne : function(item, collection, options){
+    var self = this;
     var childView = this._constructListItemView(item);
 
     //special handling if the item was not added to the end of the collection
@@ -209,12 +218,24 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._insertChildView(childView);
     }
 
+    var intervalViews = [];
     //check if the client-defined interval for adding a special list item has elapsed, and if so add the view
-    if (this.options.intervalInsertViewProto && this.options.isIntervalComplete(this._listItemViews.length)) {
-      var intervalView = new this.options.intervalInsertViewProto();
-      this._intervalViews.push(intervalView);
-      this._insertChildView(intervalView);
+    if (this.options.intervalInsertViewProto) {
+      if (this.options.isIntervalComplete(this._listItemViews.length)) {
+        intervalViews = [new this.options.intervalInsertViewProto()];
+      }
+    } else if (this.options.intervalInsertViews) {
+      if (this.options.isIntervalComplete(this._listItemViews.length)) {
+        intervalViews = this.options.intervalInsertViews();
+        if (!_(intervalViews).isArray()) {
+          intervalViews = [intervalViews];
+        }
+      }
     }
+    _(intervalViews).each(function(intervalView) {
+      self._intervalViews.push(intervalView);
+      self._insertChildView(intervalView);
+    });
   },
 
   _insertChildView: function(childView) {

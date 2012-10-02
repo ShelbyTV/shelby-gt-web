@@ -311,7 +311,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    this.navigate('roll/' + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
+    var rollId = roll.id || roll.get('roll_id');
+    this.navigate('roll/' + rollId + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {

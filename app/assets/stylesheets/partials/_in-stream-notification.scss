@@ -1,5 +1,9 @@
 @import "base";
 
+.in-stream-promo {
+  background-color: #D6D6D6;
+}
+
 .in-stream-explore-promo-header{
   line-height: 2;
   margin: 1em;
@@ -9,5 +13,9 @@
   @include button-primer($shelby-blue, dark);
   
   float: right;
+  margin: 1em;
+}
+
+.in-stream-roll-promo-header-text{
   margin: 1em;
 }
