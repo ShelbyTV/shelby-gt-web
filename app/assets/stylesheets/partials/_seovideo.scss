@@ -298,6 +298,22 @@ p {
 }
 
 //------------------------------------------------------------------------------
+//  SHELBY GENIUS APP AD
+//------------------------------------------------------------------------------
+.seovideo-appstore {
+  border-radius: 5px;
+  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
+  display: block;
+  height: 67px;
+  max-width: $seo-column-right;
+}
+
+.seovideo-genius-ad {
+  margin-top: 50px;
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
 //  media query,
 //	when window is NARROWER than 850px
 //------------------------------------------------------------------------------
@@ -308,6 +324,10 @@ p {
 	        max-width: $seo-column-left;
 		width: auto;
 	}
+
+        .seovideo-genius-ad {
+                display: none;
+        }
 
 	.seovideo-subhead {
 		text-align: center;
@@ -359,3 +379,5 @@ p {
 		}
 	}
 }
+
+
