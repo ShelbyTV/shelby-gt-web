@@ -1,0 +1,53 @@
+<div class="external-tools-lining clearfix">
+  <h1 class="external-header">
+    Add video to Shelby
+  </h1>
+
+  <h2 class="external-lead">
+    Want to <strong>Queue</strong> a video from someone's blog post? <br>
+    Or <strong>Roll</strong> an interesting video you just found? We make it easy.
+  </h2>
+<% var chrome; %>
+<% if(chrome){ %>
+
+  <div class="external-subsection">
+    <h2 class="external-subheader">
+      Shelby Radar
+    </h2>
+
+
+    <div class="external-bookmarklet-button-wrapper">
+      <a class="external-bookmarklet-button extension-chrome-button" href="<%= shelby.config.chromeExtensionWebStoreUrl %>" title="Click to add the Chrome Extension!">
+        <i class="button_icon chrome-icon">
+          Chrome Extension
+        </i>
+      </a>
+    </div>
+
+    <p class="external-block">
+      Click the button above to add <strong>Shelby Radar</strong> to your Google Chrome browser from the Chrome App Store.
+    </p>
+  </div><!-- eo .external-subsection -->
+<% } %>
+  <div class="external-subsection">
+    <div class="external-bookmarklet-button-wrapper">
+      <a class="external-bookmarklet-button extension-bookmarklet-button" href="javascript:(function(){window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);})();" title="Drag me onto your bookmarks bar!">
+        <i class="button_icon icon_videocard_roll_on add-icon">
+          Video Radar
+        </i>
+      </a>
+      <p class="external-block external-bookmarklet-caption">
+        <span class="external-bookmarklet-button-subline">
+          (Click and Drag to your Bookmarks Bar)
+        </span>
+      </p>
+      <p class="external-block external-bookmarklet-caption">
+        Drag the bookmarklet on to your <strong>Bookmarks Bar</strong>. <br>
+        Click it when you want to <strong>Roll</strong>, <strong>Queue</strong>, <br>
+        or <strong>share a video</strong> from any website.
+      </p>
+    </div>
+
+
+  </div><!-- eo .external-subsection -->
+</div><!-- eo .external-tools-lining -->

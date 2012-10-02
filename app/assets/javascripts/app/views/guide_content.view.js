@@ -130,6 +130,7 @@
           };
           break;
         case DisplayState.userPreferences :
+        case DisplayState.tools :
           displayParams = {
             viewProto : UserPreferencesView,
             model : shelby.models.user
