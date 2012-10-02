@@ -121,9 +121,24 @@ private
     end
   end
 
-def hyphenateString(title)
-  title ? title.downcase.gsub(/\W/,'-').gsub(/"/,"'").squeeze('-').chomp('-') : ""
-end
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
 
+  def prepare_for_mobile
+    if params[:mobile] != nil
+      if params[:mobile] == "1" 
+        request.format = :mobile
+      else
+        request.format = :html
+      end
+    else
+      request.format = :mobile if mobile_device?
+    end
+  end
+
+  def hyphenateString(title)
+    title ? title.downcase.gsub(/\W/,'-').gsub(/"/,"'").squeeze('-').chomp('-') : ""
+  end
 
 end

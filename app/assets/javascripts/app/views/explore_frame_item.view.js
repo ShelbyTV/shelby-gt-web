@@ -36,12 +36,16 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _queueVideo : function() {
-    this.model.saveToWatchLater();
-    this._updateQueueButton(true);
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+      this.model.saveToWatchLater();
+      this._updateQueueButton(true);
+    }
   },
 
   _displayRollVideo : function() {
-    shelby.models.guideOverlay.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, this.model);
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      shelby.models.guideOverlay.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, this.model);
+    }
   },
 
   _onQueuedVideosAdd : function(video) {

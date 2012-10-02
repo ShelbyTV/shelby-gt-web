@@ -153,11 +153,13 @@ $list : blue, green, default;
 //---------------------------
 //  modular overlay framework
 //  
-//    overlays have two main parts:
+//    two main parts:
 //    header and body.
 //    this abstraction is a primer for
 //    the content separation.
-//    *must be used for any overlay 
+//
+//    *used for any overlay,
+//     that slides over the guide    
 //---------------------------
 .overlay_header {
   height: $overlay_header_height;
@@ -285,6 +287,14 @@ $list : blue, green, default;
     margin-top: -2px;   
     position: relative;
   }
+
+  &:hover {
+    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+  }
+
+  &:active {
+    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+  }
 }
 
 //---------------------------
@@ -367,6 +377,26 @@ $list : blue, green, default;
 //---------------------------
 //  social-login framework
 //---------------------------
+
+.social_login {
+}
+
+.social_login_twitter,
+.social_login_facebook {
+  display: block;
+  float: left;
+  padding: 0 3px 0 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px; 
+
+  &:before {
+    width: 36px;
+  }
+  &:visited {
+    color: #efefef;
+  }
+}
 
 .social_login_twitter {
   @include x-logged-out-networks-buttons($twitter-blue);

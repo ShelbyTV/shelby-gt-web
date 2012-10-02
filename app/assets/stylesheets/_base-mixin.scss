@@ -25,6 +25,12 @@ $roundies-type : normal !default;
   @else if $roundies-type == footer {
     border-radius: 0 0 $radius $radius;
   }
+  @else if $roundies-type == left {
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $roundies-type == right {
+    border-radius: 0 $radius $radius 0;
+  }
 }
 
 @mixin notype{color: transparent;font: 0/0 a; overflow: hidden;text-shadow: none; white-space: nowrap;}
@@ -39,6 +45,48 @@ $roundies-type : normal !default;
 
 @mixin buttonfont{
 	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+$bg-color: $nav-dropdown-bg !default;
+@mixin fin($bg-color) {
+	&:after {
+    @include rotate(45deg);
+
+    background: $bg-color;
+    content: "\0020";
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 24px;
+    top: -5px;
+    width: 10px;
+  }
+}
+
+@mixin bottom-fin($bg-color) {
+  @include fin($bg-color);
+	&:after {
+	  top: auto;
+    bottom: -5px;
+  }
+}
+
+@mixin font-primer($font-usage){
+		line-height: 1.231;
+		font-family: 'Ubuntu',Trebuchet MS,sans-serif;
+
+	@if $font-usage == basefont {
+		font-size: 62.5%;
+		font-weight:100;
+	}
+	@else if $font-usage == inputfont {
+		font-size: 100%;
+		font-weight:300;
+	}
+	@else if $font-usage == buttonfont {
+		font-size: 100%;
+		font-weight:700;
+	}
 }
 
 $bottom-color: #4e5354 !default;

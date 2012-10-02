@@ -54,6 +54,8 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _followOrUnfollow : function(){
+    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
+    
     var self = this;
     var $thisButton = this.$('.js-follow-unfollow');
 

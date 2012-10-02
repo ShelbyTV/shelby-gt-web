@@ -96,6 +96,7 @@ p {
 //------------------------------------------------------------------------------
 .seovideo-button {
 	@include button-primer($shelby-blue,dark,wide);
+        margin-left: 8px;
 
 	//TODO: fix this weird bug.
 	&:link,
@@ -172,8 +173,14 @@ p {
 //------------------------------------------------------------------------------
 //  seovideo details
 //------------------------------------------------------------------------------
+.seovideo-details-wrapper {
+        float: left;
+        width: 100%;
+}
+
 .seovideo-details {
-	margin: 8px 125px 8px 8px;
+	margin: 8px 83px 8px 8px;
+        float: left;
 }
 
 //------------------------------------------------------------------------------
@@ -259,42 +266,58 @@ p {
 //  SOCIAL MEDIA STUFF
 //------------------------------------------------------------------------------
 .seovideo-social {
-	margin: 1em .1em;
+	margin: 8px 8px 8px -83px;
+        float: right;
+        width: 75px;
 }
 
 .twitter-share-button {
 	display: block;
-	float: left;
-	margin-left: .5em;
+	float: right;
+        width: 100%;
 }
 
 .fb_edge_widget_with_comment,
-.fb-like {
-	display: block !important;
-	float: left;
-	width: 97px;
+.fb-like span {
+    height: 21px;
+    overflow: hidden;
+    position: relative;
+}
+
+.fb-like iframe {
+    overflow: hidden;
+    position: absolute;
+    top: -41px;
+}
+
+.seovideo-social-button {
+         width: 100%;
+         display: block;
+         text-align: right;
+         height: 25px;
 }
 
 //------------------------------------------------------------------------------
 //  media query,
-//	when window is NARROWER than 830px
+//	when window is NARROWER than 850px
 //------------------------------------------------------------------------------
-@media only screen and (max-width : 830px) {	
+@media only screen and (max-width : 850px) {	
 	.seovideo-column-right {
 		clear: both;
 		float: none;
-		max-width: none;
+	        max-width: $seo-column-left;
 		width: auto;
 	}
 
 	.seovideo-subhead {
 		text-align: center;
-		br {
-			display: none;
-		}
+	        margin: 1.7em 0em 0em 0em;
+                padding: 0em 1em 0em 1em;
+	        max-width: $seo-column-left;
 	}
 
 	.seovideo-subheader {
+	        max-width: $seo-column-left;
 		margin-top: 1em;
 	}
 
@@ -307,10 +330,6 @@ p {
 		.seovideo-column-header {
 			padding: 8px 8px 0;
 		}
-	}
-
-	.seovideo-details {
-		margin: 8px;
 	}
 
 	.seovideo-relatedvideo {
