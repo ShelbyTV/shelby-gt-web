@@ -3,13 +3,13 @@ describe("RollCategoryModel", function() {
   describe("Instantiation", function() {
     it('should exhibit attributes', function() {
       var rollCategory = new libs.shelbyGT.RollCategoryModel({
-        category: 'Sports'
+        category_title: 'Sports'
       });
-      expect(rollCategory.get('category')).toEqual('Sports');
+      expect(rollCategory.get('category_title')).toEqual('Sports');
     });
     it('should have default attribute values', function() {
       var rollCategory = new libs.shelbyGT.RollCategoryModel();
-      expect(rollCategory.get('category')).toBeNull();
+      expect(rollCategory.get('category_title')).toBeNull();
     });
     
     beforeEach(function() {

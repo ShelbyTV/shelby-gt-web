@@ -89,7 +89,7 @@ class HomeController < ApplicationController
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
               response = Shelby::API.get_roll(request.subdomain)
-              response['status'] == 200 && response['result'] && response['result']['id']
+              response && response['id']
             else
               false
             end

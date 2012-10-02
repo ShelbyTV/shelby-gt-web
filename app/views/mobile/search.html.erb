@@ -5,6 +5,8 @@
 	</ul>
 </div>
 
+<%= render :partial => "/mobile/partials/explanation", :locals => { :mobile_os => @mobile_os } %>
+
 <script>
 	$(document).ready(function(event){
 			// using local store to save search history. 
