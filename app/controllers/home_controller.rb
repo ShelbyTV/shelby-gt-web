@@ -26,7 +26,7 @@ class HomeController < ApplicationController
       @auth_failure = params[:auth_failure] == '1'
       @auth_strategy = params[:auth_strategy]
       @show_error = params[:access] == "nos"
-      @mobile_os = detect_mobile_os
+      @mobile_os = false #detect_mobile_os
       render (@mobile_os ? '/mobile/search' : '/home/landing')
       
     end
