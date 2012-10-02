@@ -14,7 +14,7 @@
 	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 	
 <% elsif @roll and @video %>
-	<% user_roll_title = "The #{@roll['title'].capitalize} Roll" %>
+	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
 	<% user_roll_description = "#{user_roll_title} curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
 	<meta property="og:type" 		content="shelbytv:roll" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_roll_route(@roll['id']) %>" /> 
