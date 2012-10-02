@@ -27,7 +27,11 @@ class HomeController < ApplicationController
       @auth_strategy = params[:auth_strategy]
       @show_error = params[:access] == "nos"
       @mobile_os = detect_mobile_os
-      render (@mobile_os ? '/mobile/search' : '/home/landing')
+      if @mobile_os
+        render '/mobile/search', :layout => 'mobile'
+      else
+        render '/home/landing'
+      end
       
     end
   end
@@ -85,7 +89,7 @@ class HomeController < ApplicationController
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
               response = Shelby::API.get_roll(request.subdomain)
-              response['status'] == 200 && response['result'] && response['result']['id']
+              response && response['id']
             else
               false
             end

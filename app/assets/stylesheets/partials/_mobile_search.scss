@@ -123,6 +123,36 @@
       margin: 39px auto;
     }    
   }
+  
+  #explanation {
+    text-align:center;
+    padding-top: 4px;
+    font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+    font-size: 15px;
+  	font-weight:200;
+    color: #333333;
+    
+    #what-is-this{
+      margin-top: 0px;
+      text-align:center;
+      line-height: 1.3;
+    }
+    
+    .find-what {
+      font-weight:300;
+      font-size: 16px;
+    }
+    
+    #app-button {
+      margin-top: -8px;
+      img { height: 35px;}
+    }
+    
+    .js-mobile-web-app, #mobile-web-app-link {
+      display: none;
+    }
+    
+  }
 
 }
 
@@ -136,6 +166,11 @@
     display: none;
   }
 }
+
+
+/* ----------------
+ TODO: move into different file 
+ ------------------ */
 
 .mobile-landing {
   background-color: #E2E2E2;
