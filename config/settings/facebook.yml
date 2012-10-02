@@ -1,7 +1,7 @@
 defaults: &defaults
   facebook_app_id: "115071338568035"
-  genius_app_id: "305135322927840"
-  genius_app_secret: "b616125302256c0dc06654cdd4bdf9bc"
+  genius_app_id: "211695542294209" #"305135322927840"
+  genius_app_secret: "ba3335ff05275006b3e40c1e40da5668" #"b616125302256c0dc06654cdd4bdf9bc"
   
 development:
   <<: *defaults
