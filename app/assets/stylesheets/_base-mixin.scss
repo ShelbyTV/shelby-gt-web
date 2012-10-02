@@ -184,7 +184,7 @@ $primer-button-context : generic !default;
 	} @else {
 		color: $button-color;
 		font-weight: 700;
-		text-shadow: 0px 1px 0px #333;
+		text-shadow: 0px -1px 0px #333;
 	}
 
 	@if $enable-pseudo-classes {
@@ -286,6 +286,7 @@ $icons:
   chevron
   comment_reply
   email
+  iphone
   missing_thumb
   onboarding_play
   player_fullscreen_disable

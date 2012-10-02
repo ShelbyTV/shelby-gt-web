@@ -192,20 +192,50 @@ $landing-page-shelf-background: #ccc;
 
 .landing-feature-header,
 .landing-appstore-header {
+  clear: both;
   font-family: $font-family-display;
   font-size: 1.3em;
   font-weight: 300;
   margin: 10px 0;
 }
 
-.landing-appstore {
-  border-radius: 5px;
-  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
+.appstore-button {
+  @include button-primer($shelby-blue);
+
+  clear: both;
   display: block;
-  height: 67px;
-  margin: 35px 0 5px;
-  width: 215px;
-  
+  float: left;
+  font-size: 1.5em;
+  margin: 25px 0 10px;
+  text-align: center;
+
+  i {
+    background-size: contain;
+    -webkit-background-size: contain;
+    display: block;
+    font-weight: 300;
+    margin-left: .7em;
+    margin-right: .7em;
+    padding-left: 3.2em;
+  }
+
+  span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.6em;
+  }
+
+  &:active,
+  &:link {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:visited {
+    color: $button-color;
+    text-decoration: none;
+  }
+
   &:hover {
     box-shadow: 0 0 200px 4px white;
   }
@@ -222,7 +252,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-feature-item {
-
+  display: inline;
 }
 
 .landing-feature-link {
