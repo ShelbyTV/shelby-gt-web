@@ -38,7 +38,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 		shelby.models.notificationState = new libs.shelbyGT.notificationStateModel();
 		
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
-    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel();
+    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();

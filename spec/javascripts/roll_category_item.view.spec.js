@@ -1,7 +1,7 @@
 describe("RollCategoryItemView", function() {
   beforeEach(function() {
     this.model = new Backbone.Model({
-      category : 'Some Category Name'
+      category_title : 'Some Category Name'
     });
     this.superCtorStub = sinon.stub(libs.shelbyGT.ActiveHighlightListItemView.prototype, 'initialize');
     this.view = new libs.shelbyGT.RollCategoryItemView({model:this.model});

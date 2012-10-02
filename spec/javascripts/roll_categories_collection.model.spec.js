@@ -28,7 +28,7 @@ describe("RollCategoriesCollectionModel", function() {
       };
       this.fixture = this.ajaxFixtures.RollCollections.valid;
       this.server = sinon.fakeServer.create();
-      this.server.respondWith("GET", shelby.config.apiRoot + '/roll/explore', this.validResponse(this.fixture));
+      this.server.respondWith("GET", shelby.config.apiRoot + '/roll/featured', this.validResponse(this.fixture));
       this.rollCategories = new libs.shelbyGT.RollCategoriesCollectionModel();
       sinon.stub(Browser,'supportsCORS').returns(true);
     });
@@ -42,7 +42,7 @@ describe("RollCategoriesCollectionModel", function() {
       this.rollCategories.fetch();
       expect(this.server.requests.length).toEqual(1);
       expect(this.server.requests[0].method).toEqual("GET");
-      expect(this.server.requests[0].url).toEqual(shelby.config.apiRoot + '/roll/explore');
+      expect(this.server.requests[0].url).toEqual(shelby.config.apiRoot + '/roll/featured');
     });
 
     it('should parse the response', function() {
