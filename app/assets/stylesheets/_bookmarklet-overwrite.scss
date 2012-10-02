@@ -154,6 +154,16 @@
   font-size: 1.2em;
 }
 
+.login-form {
+  margin: 0 10px;
+}
+
+.login-submit {
+  @include button-primer();
+  
+  margin-top: .5em;
+}
+
 .bookmarklet-login-twitter,  
 .bookmarklet-login-facebook {
   border-radius: 3px;
