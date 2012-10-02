@@ -54,6 +54,10 @@ module Shelby
     def self.generate_roll_route(roll_id)
       return "#{Settings::Application.url}/roll/#{roll_id}"
     end
+
+    def self.generate_video_route(video_provider_name, video_provider_id, protocol="http")
+      return "#{protocol}://#{Settings::Application.domain}/video/#{video_provider_name}/#{video_provider_id}"
+    end
     
     #UNUSED
     def self.post_to_genius(term, urls)
