@@ -2,20 +2,65 @@
 
 .in-stream-promo {
   background-color: #D6D6D6;
+  padding: 10px;
 }
 
-.in-stream-explore-promo-header{
-  line-height: 2;
-  margin: 1em;
+.in-stream-promo-item {
+  &:last-child {
+    .in-stream-promo-item-lining {
+      margin-bottom: 0;
+    }
+  }
 }
 
-.in-stream-explore-promo-button {
+.in-stream-promo-item-lining {
+  margin: 2px 0 10px;
+}
+
+.in-stream-promo-header {
+  font-size: 1.17em;
+  line-height: 2.4;
+}
+
+.in-stream-promo-button {
   @include button-primer($shelby-blue, dark);
   
   float: right;
-  margin: 1em;
 }
 
-.in-stream-roll-promo-header-text{
-  margin: 1em;
+.in-stream-promo-link {
+  float: right;
+  font-size: 1.17em;
+  line-height: 2.3;
+
+  &:active,
+  &:link,
+  &:visited {
+    color: #555;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+}
+
+.in-stream-promo-thumb,
+.in-stream-promo-title {
+  float: left;
+}
+
+.in-stream-promo-thumb {
+  border: 1px solid #ADADAD;
+  height: 30px;
+}
+
+.in-stream-promo-title {
+  @include ellipsis;
+
+  color: #555;
+  font-size: 1.17em;
+  line-height: 2.3;
+  margin-left: 0.55em;
 }

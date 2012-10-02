@@ -1,11 +1,11 @@
-<div class="in-stream-roll-promo-item in-stream-promo xframe-list-item">
-  <img src="<%= roll.get('img_src') %>" />
-  <h3>
-    <%= roll.get('title') %>
-  </h3>
-  <a href="#" onclick="return false;" class="js-goto-roll js-track-event" data-ga_category="Stream" data-ga_action="Click on roll promo" data-ga_label="<%= roll.get('roll_id') %>">
-    <h3>
+<li class="in-stream-promo-item">
+  <div class="in-stream-promo-item-lining clearfix">
+    <a href="#" onclick="return false;" class="in-stream-promo-link js-goto-roll js-track-event" data-roll_id="<%= roll.get('roll_id') %>" data-ga_category="Stream" data-ga_action="Click on roll promo" data-ga_label="<%= roll.get('roll_id') %>">
       view roll
+    </a>
+    <img class="in-stream-promo-thumb" src="<%= roll.get('img_src') %>" />
+    <h3 class="in-stream-promo-title">
+      <%= roll.get('title') %>
     </h3>
-  </a
-</div>
+  </div>
+</li>

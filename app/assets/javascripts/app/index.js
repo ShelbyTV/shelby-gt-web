@@ -19,8 +19,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/smart_refresh_list.view.js
 //= require ./views/paging_list.view.js
 //= require ./views/in_stream_explore_promo.view.js
-//= require ./views/in_stream_roll_promo_header.view.js
-//= require ./views/in_stream_roll_promo_item.view.js
+//= require ./views/in_stream_roll_promo.view.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/dashboard.view.js

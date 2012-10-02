@@ -1,0 +1,14 @@
+<div class="in-stream-promo xframe-list-item clearfix">
+  <h3 class="in-stream-promo-header">
+    Discover even more great content
+  </h3>
+  <ul class="list">
+    <%
+      rolls.each(function(roll){
+    %>
+        <%= JST['in-stream-roll-promo-item']({"roll":roll}) %>
+    <%
+      });
+    %>
+  </ul>
+</div>

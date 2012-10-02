@@ -5,8 +5,7 @@
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
   var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
-  var InStreamRollPromoHeaderView = libs.shelbyGT.InStreamRollPromoHeaderView;
-  var InStreamRollPromoItemView = libs.shelbyGT.InStreamRollPromoItemView;
+  var InStreamRollPromoView = libs.shelbyGT.InStreamRollPromoView;
 
   libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
@@ -22,11 +21,11 @@
         if (Math.random() < 0.5) {
           return new InStreamExplorePromoView();
         } else {
-          return [new InStreamRollPromoHeaderView(), new InStreamRollPromoItemView()];
+          return new InStreamRollPromoView();
         }
       },
       isIntervalComplete : function(displayedItems) {
-        return displayedItems != 0 && displayedItems % 15 == 0;
+        return displayedItems != 0;
       },
       fetchParams : {
         include_children : true
