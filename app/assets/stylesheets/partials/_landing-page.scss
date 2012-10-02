@@ -198,49 +198,6 @@ $landing-page-shelf-background: #ccc;
   font-weight: 300;
   margin: 10px 0;
 }
-
-.appstore-button {
-  @include button-primer($shelby-blue);
-
-  clear: both;
-  display: block;
-  float: left;
-  font-size: 1.5em;
-  margin: 25px 0 10px;
-  text-align: center;
-
-  i {
-    background-size: contain;
-    -webkit-background-size: contain;
-    display: block;
-    font-weight: 100;
-    -webkit-font-smoothing: auto;
-    margin-left: .7em;
-    margin-right: .7em;
-    padding-left: 3.2em;
-  }
-
-  span {
-    display: block;
-    font-weight: 500;
-    font-size: 1.6em;
-  }
-
-  &:active,
-  &:link {
-    text-decoration: none;
-  }
-
-  &:hover,
-  &:visited {
-    color: $button-color;
-    text-decoration: none;
-  }
-
-  &:hover {
-    box-shadow: 0 0 200px 4px white;
-  }
-}
 ////////////////////////////////////////////////////////////////////////////
 //  list of press sources
 ////////////////////////////////////////////////////////////////////////////
