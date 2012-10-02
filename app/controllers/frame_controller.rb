@@ -37,7 +37,12 @@ class FrameController < ApplicationController
       
       # And render it
       @mobile_os = detect_mobile_os
-      render (@mobile_os ? '/mobile/landing' : '/home/landing')
+      if @mobile_os
+        render '/mobile/search', :layout => 'mobile'
+      else
+        render '/home/landing'
+      end
+      
     end
   end
   
