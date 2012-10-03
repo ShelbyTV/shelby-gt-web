@@ -10,14 +10,7 @@ libs.shelbyGT.InStreamRollPromoView = Support.CompositeView.extend({
     return JST['in-stream-roll-promo'](obj);
   },
 
-  initialize : function() {
-    if (!this.model) {
-      var featuredRolls = _(libs.shelbyGT.Onboarding.rolls).reduce(function(memo, category){return memo.concat(category.rolls);}, []);
-      this.model = (new Backbone.Collection());
-      this.model.add(new Backbone.Model(featuredRolls[Math.floor(Math.random() * (featuredRolls.length))]));
-    }
-  },
-
+  //NOTE: expecting this.model to be a Backbone.Collection of rolls passed in to constructor
   render : function(){
     this.$el.html(this.template({rolls:this.model}));
   },
