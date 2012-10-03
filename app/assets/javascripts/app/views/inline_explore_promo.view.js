@@ -12,6 +12,7 @@ libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({}));
+    shelby.track('Show explore promo');
   },
 
   _gotoExplore : function(){
