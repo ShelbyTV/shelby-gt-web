@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Google Analytics Event Tracking
-// bind click events to buttons and a tags 
+// bind click events to buttons and a tags
 // To Use:
 // add class 'js-track-event' to element with data attributes for a category, action and label
 //---------------------------------------------------------
@@ -16,8 +16,8 @@ $(document).ready(function(){
 
 _(shelby).extend({
   track : function(action, options){
-    var _gaCategory, _gaAction;
-    
+    var _gaCategory, _gaAction, _gaLabel = options.userName;
+
     try {
       switch (action){
         case 'commented':
@@ -25,7 +25,7 @@ _(shelby).extend({
           _kmq.push(['record', action, {'frame': options.id}]);
           break;
         case 'shared_roll':
-          _gaAction = 'shared'; _gaCategory = 'Roll'; 
+          _gaAction = 'shared'; _gaCategory = 'Roll';
           _kmq.push(['record', 'shared', {'outbound destination': options.destination, 'roll': options.id }]);
           break;
         case 'shared_frame':
@@ -37,7 +37,7 @@ _(shelby).extend({
           _kmq.push(['record', action, {'frame': options.id}]);
           break;
         case 'left_roll':
-          _gaAction = 'left'; _gaCategory = 'Roll'; 
+          _gaAction = 'left'; _gaCategory = 'Roll';
           _kmq.push(['record', action, {'roll': options.id}]);
           break;
         case 'joined_roll':
@@ -50,17 +50,17 @@ _(shelby).extend({
           break;
         case 'add_to_queue':
           _gaAction = 'queued'; _gaCategory = 'Frame';
-          _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);          
+          _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
           break;
         case 'watched':
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
-          _gaAction = 'watched'; _gaCategory = 'Frame'; _label = options.pctWatched;
+          _gaAction = 'watched'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
           // extra watch event tracking to capture frame and roll popularity
           _gaq.push(['_trackEvent', "Watched", options.rollId, options.frameId]);
           break;
         case 'watched in full':
-          _gaAction = 'watched in full'; _gaCategory = 'Frame'; _label = 100;
+          _gaAction = 'watched in full'; _gaCategory = 'Frame';
           _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
           break;
         case 'started onboarding':
@@ -69,12 +69,12 @@ _(shelby).extend({
           break;
         case 'Onboarding step 2 complete':
           _gaAction = action; _gaCategory = 'Onboarding';
-          _kmq.push(['record', action, {nickname: options.userName} ]);          
+          _kmq.push(['record', action, {nickname: options.userName} ]);
           break;
         case 'Onboarding step 3 complete':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
-          break;          
+          break;
         case 'completed onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
@@ -97,8 +97,8 @@ _(shelby).extend({
           _gaAction = 'unknown';
           _gaCategory = 'unknown';
       }
-      _gaq.push(['_trackEvent', _gaCategory, _gaAction, options.userName]);
+      _gaq.push(['_trackEvent', _gaCategory, _gaAction, _gaLabel]);
     } catch(e){}
-    
+
   }
 });

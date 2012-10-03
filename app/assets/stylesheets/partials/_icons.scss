@@ -1,3 +1,38 @@
+////////////////////////////////////////////////////////////////////////////
+//  $icons, icon keywords are whitespace-delineated because Sass, scary right?
+////////////////////////////////////////////////////////////////////////////
+$icons:
+  arrow_left
+  arrow_right
+  avatar
+  cancel
+  carrot
+  chevron
+  comment_reply
+  email
+  iphone
+  missing_thumb
+  onboarding_play
+  player_fullscreen_disable
+  player_fullscreen_enable
+  player_hd_off
+  player_hd_on
+  player_pause
+  player_play
+  player_sound_off
+  player_sound_on
+  share_facebook_off
+  share_facebook_on
+  share_twitter_off
+  share_twitter_on
+  social_facebook
+  social_tumblr
+  social_twitter
+  star
+  videocard_comment
+  videocard_queue
+  videocard_roll;
+
 //------------------------------------------------------------------------------
 //  ICON CLASS CONSTRUCTOR
 //------------------------------------------------------------------------------
@@ -11,16 +46,22 @@
 //------------------------------------------------------------------------------
 //  button icon module
 //------------------------------------------------------------------------------
-.button_icon {
+.button_icon_center,
+.button_icon_left,
+.button_icon_right {
   background-repeat: no-repeat;
-  background-position: center left;
   background-size: auto;
   font-style: normal;
 }
 
+.button_icon_center {
+  background-position: center center;
+}
+
+.button_icon_left {
+  background-position: center left;
+}
+
 .button_icon_right {
-  background-repeat: no-repeat;
   background-position: center right;
-  background-size: auto;
-  font-style: normal;
 }

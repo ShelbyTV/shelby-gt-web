@@ -300,12 +300,10 @@ p {
 //------------------------------------------------------------------------------
 //  SHELBY GENIUS APP AD
 //------------------------------------------------------------------------------
-.seovideo-appstore {
-  border-radius: 5px;
-  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
-  display: block;
-  height: 67px;
-  max-width: $seo-column-right;
+.appstore-button {
+  margin: 0px;
+  float: none;
+  font-size: 1em;
 }
 
 .seovideo-genius-ad {

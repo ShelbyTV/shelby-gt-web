@@ -23,6 +23,14 @@
     </button>
   </li>
 
+	<% if (shelby.models.user.get('admin')) { %>
+		<li class="guide-nav-item js-admin">
+	    <button class="nav-button">
+	      Admin
+	    </button>
+	  </li>
+	<% } %>
+
   <li class="dropdown_module guide-nav-item secondary-item guide-settings js-guide-settings">
     <button class="dropdown_button nav-button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       <i class="dropdown_icon">
@@ -80,10 +88,10 @@
     </section>
   </li>
 
-  <li class="dropdown_module guide-nav-item secondary-item guide-nowplaying">
+  <li class="dropdown_module guide-nav-item secondary-item guide-nowplaying" id="js-guide-nowplaying">
     <button class="dropdown_button nav-button js-track-event" data-ga_category="Header" data-ga_action="Now Playing" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-      <i class="dropdown_icon">
-        Now Playing
+      <i class="dropdown_icon paused" id="guide-nowplaying-label">
+				Now Playing
       </i>
     </button>
 

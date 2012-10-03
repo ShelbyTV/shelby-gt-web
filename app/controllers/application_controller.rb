@@ -2,6 +2,8 @@ require 'shelby_api'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  helper_method :csrf_token_from_cookie
 
   def render_error(code, message)
     @status, @message = code, message
@@ -27,11 +29,6 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
     id = cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
     id ? id != "nil" : false
-  end
-  
-  def set_app_tokens_for_view
-    @csrf_token = csrf_token_from_cookie
-    @rhombus_token = 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt')
   end
   
   def csrf_token_from_cookie

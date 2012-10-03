@@ -190,24 +190,34 @@ $landing-page-shelf-background: #ccc;
   margin-top: -9px;
 }
 
+.landing-feature-header,
 .landing-appstore-header {
+  clear: both;
   font-family: $font-family-display;
   font-size: 1.3em;
   font-weight: 300;
   margin: 10px 0;
 }
+////////////////////////////////////////////////////////////////////////////
+//  list of press sources
+////////////////////////////////////////////////////////////////////////////
+.landing-feature-header {
+  margin-top: 30px;
+}
 
-.landing-appstore {
-  border-radius: 5px;
-  background: url('/images/landing/appstore.png') no-repeat center center $shelby-blue;
+.landing-feature-list {
+
+}
+
+.landing-feature-item {
+  display: inline;
+}
+
+.landing-feature-link {
   display: block;
-  height: 67px;
-  margin: 63px 0 5px;
-  width: 215px;
-  
-  &:hover {
-    box-shadow: 0 0 200px 4px white;
-  }
+}
+
+.landing-feature-techcrunch {
 }
 
 /********************************************************

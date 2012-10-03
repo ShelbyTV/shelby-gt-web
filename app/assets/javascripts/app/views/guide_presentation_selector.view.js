@@ -12,6 +12,7 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-admin"                      : "_goToAdmin",
       "click .js-now-playing"                : "_nowPlaying"
     },
 
@@ -53,6 +54,10 @@
       }
     },
     
+    _goToAdmin : function(){
+      document.location = "http://api.shelby.tv/admin/new_users";
+    },
+    
     _explore : function(){
       shelby.router.navigate('explore', {trigger:true});
     },
@@ -92,12 +97,6 @@
           this.$('.js-content-selector').show();
         }
       }
-      
-      //show "Now Playing" only when we have an active video
-      if(_changedAttrs.has('activeFrameModel')){
-        this.model.get('activeFrameModel') ? this.$(".guide-now-playing").show() : this.$(".guide-now-playing").hide();
-      }
-      
     },
 
     _setSelected : function(){
