@@ -5,14 +5,14 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
-    "click .js-playback" : "_togglePlayback",
-    "click .js-mute" : "_toggleMute",
-    "click .video-player-quality.hd-on" : "_hdOff",
-    "click .video-player-quality.hd-off" : "_hdOn",
-    "click .video-player-progress": "_onScrubTrackClick",
-    "click .video-player-fullscreen" : "_toggleFullscreen",
-    "click .js-video-player-next" : "_nextVideo",
-    "click .js-video-player-prev" : "_prevVideo"
+    "click .js-videoplayer-playback"   : "_togglePlayback",
+    "click .js-videoplayer-mute"       : "_toggleMute",
+    "click .js-videoplayer-hd.hd-on"   : "_hdOff",
+    "click .js-videoplayer-hd.hd-off"  : "_hdOn",
+    "click .js-videoplayer-progress"   : "_onScrubTrackClick",
+    "click .js-videoplayer-fullscreen" : "_toggleFullscreen",
+    "click .js-videoplayer-next"       : "_nextVideo",
+    "click .js-videoplayer-prev"       : "_prevVideo"
   },
 
   el: '#video-controls',
@@ -134,7 +134,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
         curTimeS = parseInt(curTime % 60, 10);
 
     this.$('.video-player-progress-elapsed').width(pct+"%");
-    this.$('.video-player-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
+    this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
   },
 
   _onBufferTimeChange: function(attr, bufferTime){
@@ -149,7 +149,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     durationM = parseInt(val / 60, 10 ) % 60,
     durationS = parseInt(val % 60, 10);
 
-    this.$('.video-player-timeline  span:last-child').text(prettyTime(durationH, durationM, durationS));
+    this.$('.js-videoplayer-timeline  span:last-child').text(prettyTime(durationH, durationM, durationS));
   },
 
   _onMutedChange: function(attr, muted){
