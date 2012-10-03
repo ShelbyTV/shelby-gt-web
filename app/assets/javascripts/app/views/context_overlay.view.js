@@ -46,7 +46,6 @@
     },
     
     _onPlaybackStatusChange : function(attr, curState){
-      console.log("playback stat", curState);
       if(curState === libs.shelbyGT.PlaybackStatus.playing){
         $("#guide-nowplaying-label").removeClass("paused");
       } else {
