@@ -45,14 +45,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     */
     intervalInsertViewProto : null,
     /*
-      intervalInsertViews - a callback function that returns a view or an array of views to add
-      to the list and render when isIntervalComplete returns true; callback takes no arguments
-
-      this option is mutually exclusive with intervalInsertViewProto, that is, it will only be used
-      if intervalInsertViewProto is null
-    */
-    intervalInsertViews : null,
-    /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
         1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
@@ -224,9 +216,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       if (this.options.isIntervalComplete(this._listItemViews.length)) {
         intervalViews = [new this.options.intervalInsertViewProto()];
       }
-    } else if (this.options.intervalInsertViews) {
+    } else if (this._intervalInsertViews) {
       if (this.options.isIntervalComplete(this._listItemViews.length)) {
-        intervalViews = this.options.intervalInsertViews();
+        intervalViews = this._intervalInsertViews();
         if (!_(intervalViews).isArray()) {
           intervalViews = [intervalViews];
         }
@@ -303,6 +295,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     } else {
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
-  }
+  },
+
+  /*
+    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
+    to the list and render when this.options.isIntervalComplete returns true
+
+    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
+    if this.options.intervalInsertViewProto is null
+    */
+  _intervalInsertViews : null
 
 });
