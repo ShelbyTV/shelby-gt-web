@@ -18,11 +18,13 @@ class HomeController < ApplicationController
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
         if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
+          @roll = Shelby::API.get_roll(@isolated_roll_id)
+          @user = Shelby::API.get_user(@roll['creator_id']) if @roll
+          
           render '/home/isolated_roll' and return
         end
 
         if user_signed_in?
-          set_app_tokens_for_view
           render '/home/app'
 
         else
@@ -31,6 +33,9 @@ class HomeController < ApplicationController
           @auth_strategy = params[:auth_strategy]
           @show_error = params[:access] == "nos"
           @mobile_os = detect_mobile_os
+          
+          get_info_for_meta_tags(params[:path])
+          
           if @mobile_os
             render '/mobile/search', :layout => 'mobile'
           else
@@ -99,11 +104,24 @@ class HomeController < ApplicationController
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
-              response = Shelby::API.get_roll(request.subdomain)
-              response && response['id']
+              roll = Shelby::API.get_roll(request.subdomain)
+              
+              roll && roll['id']
             else
               false
             end
+      end
+    end
+    
+    def get_info_for_meta_tags(path)
+      if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
+        # the url is a frame
+        @frame = Shelby::API.get_first_frame_on_roll(path_match[1])
+        @video = Shelby::API.get_video() if @frame
+      elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
+        # the url is a roll or personal roll
+        @roll = Shelby::API.get_roll(path_match[1])
+        @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       end
     end
 

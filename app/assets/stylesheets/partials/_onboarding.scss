@@ -588,6 +588,19 @@ $onboarding-head-height: 125px;
   }
 }
 
+.facebook-timeline-opt-in {
+  background-color: #E2E2E2;
+  margin: 0 auto;
+  padding: 5px;
+  width: 290px;
+  text-align: left;
+  input { margin: 4px 0 0; }
+  p {
+    line-height: 1.231;
+    margin: 0;
+  }
+}
+
 //------------------------------------------------------------------------------
 //  STAGE 4
 //------------------------------------------------------------------------------

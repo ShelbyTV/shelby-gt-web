@@ -21,7 +21,6 @@ class FrameController < ApplicationController
     end
     
     if user_signed_in? and @share_type != :genius
-      set_app_tokens_for_view
       render '/home/app'
     else
       

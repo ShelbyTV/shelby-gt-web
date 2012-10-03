@@ -11,13 +11,13 @@ helper_method :hyphenateString
     video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
     # route guarantees provider_name and provider_id will exist
-    @provider_name = params.delete(:provider_name)
-    @provider_id = params.delete(:provider_id)
+    @video_provider_name = params.delete(:provider_name)
+    @video_provider_id = params.delete(:provider_id)
 
     # don't care about the URL title for now... maybe in the future
     title = params.delete(:title)
 
-    video_url = "#{video_api_base}/find_or_create?provider_name=#{@provider_name}&provider_id=#{@provider_id}"
+    video_url = "#{video_api_base}/find_or_create?provider_name=#{@video_provider_name}&provider_id=#{@video_provider_id}"
 
     begin
       video_response = Net::HTTP.get_response(URI.parse(video_url))
@@ -61,6 +61,7 @@ helper_method :hyphenateString
     @video_duration = prettyDuration(@video_response_body_result["duration"])
     @video_id = @video_response_body_result["id"]
     @video_embed = @video_response_body_result["embed_url"]
+    @video_thumbnail_url = @video_response_body_result['thumbnail_url']
 
     conversations_url = "#{video_api_base}/#{@video_id}/conversations"
 

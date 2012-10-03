@@ -10,8 +10,8 @@
     <%= render :partial => "/home/title_tag" %>
   </title>
 
-  <meta name="csrf-token" content="<%= @csrf_token %>">
-  <meta name="rhombus-auth" content="<%= @rhombus_token %>">
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+  <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">
