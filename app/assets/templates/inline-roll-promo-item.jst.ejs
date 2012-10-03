@@ -1,0 +1,11 @@
+<li class="in-line-promo-item">
+  <div class="in-line-promo-item-lining clearfix">
+    <a href="#" onclick="return false;" class="in-line-promo-link js-goto-roll js-track-event" data-roll_id="<%= roll.id %>" data-ga_category="Promo" data-ga_action="Click roll promo" data-ga_label="<%= roll.id %>">
+      view roll
+    </a>
+    <img class="in-line-promo-thumb" src="<%= roll.get('display_thumbnail_src') %>" />
+    <h3 class="in-line-promo-title">
+      <%= roll.get('display_title') %>
+    </h3>
+  </div>
+</li>

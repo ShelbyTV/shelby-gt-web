@@ -1,4 +1,4 @@
-libs.shelbyGT.InStreamRollPromoView = Support.CompositeView.extend({
+libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
 
   tagName : 'li',
 
@@ -7,7 +7,7 @@ libs.shelbyGT.InStreamRollPromoView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['in-stream-roll-promo'](obj);
+    return JST['inline-roll-promo'](obj);
   },
 
   //NOTE: expecting this.model to be a Backbone.Collection of rolls passed in to constructor

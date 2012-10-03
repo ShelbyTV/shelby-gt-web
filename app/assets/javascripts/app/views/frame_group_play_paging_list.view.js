@@ -1,10 +1,10 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
+  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
-  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
-  var InStreamRollPromoView = libs.shelbyGT.InStreamRollPromoView;
+  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
+  var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
 
@@ -16,7 +16,7 @@
       intervalInsertViews : function() {
         //we'll just randomly choose to show a promo for the explore section or for a specific roll
         if (Math.random() < 0.5) {
-          return new InStreamExplorePromoView();
+          return new InlineExplorePromoView();
         } else {
           var promoRolls =
             shelby.models.promoRollCategories.get('roll_categories').reduce(function(memo, category){
@@ -30,7 +30,7 @@
             var rollsCollection = new Backbone.Collection();
             //select one of the promo rolls at random to display in the promo
             rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
-            return new InStreamRollPromoView({model:rollsCollection});
+            return new InlineRollPromoView({model:rollsCollection});
           } else {
             return [];
           }
@@ -39,7 +39,7 @@
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
       },
-      noMoreResultsViewProto : InStreamExplorePromoView,
+      noMoreResultsViewProto : InlineExplorePromoView,
       pagingKeySortOrder : -1
     }),
 

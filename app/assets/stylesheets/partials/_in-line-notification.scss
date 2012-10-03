@@ -1,34 +1,34 @@
 @import "base";
 
-.in-stream-promo {
+.in-line-promo {
   background-color: #D6D6D6;
   padding: 10px;
 }
 
-.in-stream-promo-item {
+.in-line-promo-item {
   &:last-child {
-    .in-stream-promo-item-lining {
+    .in-line-promo-item-lining {
       margin-bottom: 0;
     }
   }
 }
 
-.in-stream-promo-item-lining {
+.in-line-promo-item-lining {
   margin: 2px 0 10px;
 }
 
-.in-stream-promo-header {
+.in-line-promo-header {
   font-size: 1.17em;
   line-height: 2.4;
 }
 
-.in-stream-promo-button {
+.in-line-promo-button {
   @include button-primer($shelby-blue, dark);
   
   float: right;
 }
 
-.in-stream-promo-link {
+.in-line-promo-link {
   float: right;
   font-size: 1.17em;
   line-height: 2.3;
@@ -46,17 +46,17 @@
   }
 }
 
-.in-stream-promo-thumb,
-.in-stream-promo-title {
+.in-line-promo-thumb,
+.in-line-promo-title {
   float: left;
 }
 
-.in-stream-promo-thumb {
+.in-line-promo-thumb {
   border: 1px solid #ADADAD;
   height: 30px;
 }
 
-.in-stream-promo-title {
+.in-line-promo-title {
   @include ellipsis;
 
   color: #555;

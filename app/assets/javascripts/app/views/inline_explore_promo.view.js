@@ -1,4 +1,4 @@
-libs.shelbyGT.InStreamExplorePromoView = Support.CompositeView.extend({
+libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
 
   tagName : 'li',
 
@@ -7,7 +7,7 @@ libs.shelbyGT.InStreamExplorePromoView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['in-stream-explore-promo'](obj);
+    return JST['inline-explore-promo'](obj);
   },
 
   render : function(){
