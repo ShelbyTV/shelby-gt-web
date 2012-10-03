@@ -96,6 +96,18 @@ $landing-page-shelf-background: #ccc;
 .landing-shelf-lining {
   margin: 0 auto;
   max-width: $landing-page-width;
+
+  &.half {
+    float: left;
+    width: 50%;
+        &:first-child {
+          border-right: 1px solid $inset;
+        }
+
+        &:last-child {
+          border-left: 1px solid $outset;
+        }
+  }
 }
 
 .landing-shelf-header-extra {
@@ -116,7 +128,20 @@ $landing-page-shelf-background: #ccc;
   font-weight: 100;
   line-height: 1.4;
   margin-bottom: 1em;
-  width: 400px;
+//  width: 400px;
+
+  &.extra {
+    font-weight: 500;
+  }
+}
+
+.landing-shelf-block {
+  font-size: 1.1em;
+
+  &.display {
+    font-family: $font-family-display;
+    font-weight: 300;
+  }
 }
 
 .landing-shelf-error {
@@ -174,7 +199,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 /********************************************************
- * _banner
+ * _sign_me_up
  ********************************************************/
 .form_module_horz.landing-signmeup-form {
   ////////////////////////////////////////////////////////////////////////////
@@ -239,6 +264,52 @@ $landing-page-shelf-background: #ccc;
 }
 
 /********************************************************
+ * _call_to_action
+ ********************************************************/
+ $cta-height: 300px;
+
+.landing-cta {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.landing-cta-header {
+  margin: 1.2em;
+}
+
+.cta-icon {
+  display: block;
+  height: 50px;
+}
+////////////////////////////////////////////////////////////////////////////
+//  landing-shelf-lining.half.landing-cta-genius
+////////////////////////////////////////////////////////////////////////////
+.landing-cta-genius {
+  height: $cta-height;
+
+  .appstore-button {
+    display: inline-block;
+    font-size: 1.1em;
+    float: none;
+  }
+}
+
+.icon-genius {
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  landing-shelf-lining.half.landing-cta-explore
+////////////////////////////////////////////////////////////////////////////
+.landing-cta-explore {
+  height: $cta-height;
+}
+
+.landing-cta-button {
+  @include button-primer;
+
+  margin: 25px 0 10px;
+}
+/********************************************************
  * _direct_email_share - Share Shelf
  ********************************************************/
 
@@ -254,7 +325,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-shelf-rolling-share .share-context {
-  font-face: ubuntu;
+  font-family: $font-family-display;
   font-size: 1.4em;
   padding-top: 10px;
 
