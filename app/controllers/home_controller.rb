@@ -34,6 +34,9 @@ class HomeController < ApplicationController
           @auth_strategy = params[:auth_strategy]
           @show_error = params[:access] == "nos"
           @mobile_os = detect_mobile_os
+          
+          get_info_for_meta_tags(params[:path])
+          
           if @mobile_os
             render '/mobile/search', :layout => 'mobile'
           else
@@ -108,6 +111,18 @@ class HomeController < ApplicationController
             else
               false
             end
+      end
+    end
+    
+    def get_info_for_meta_tags(path)
+      if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
+        # the url is a frame
+        @frame = Shelby::API.get_first_frame_on_roll(path_match[1])
+        @video = Shelby::API.get_video() if @frame
+      elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
+        # the url is a roll or personal roll
+        @roll = Shelby::API.get_roll(path_match[1])
+        @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       end
     end
 

@@ -24,5 +24,7 @@
 	<meta name="description" content="<%= user_roll_description %>" />
 	
 <% else %>
+	<% Rails.logger.info "nada present" %>
 	<meta name="description" content="<%= Settings::Application.meta_description %>">
+
 <% end %>
