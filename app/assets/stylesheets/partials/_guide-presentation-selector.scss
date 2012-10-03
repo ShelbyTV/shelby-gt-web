@@ -212,6 +212,22 @@ $settings-panel-bg : #555;
 
 .guide-nowplaying {
   display: none;
+  
+  .now-playing-text { 
+    display: none;
+    padding-right: 1em;
+    text-align: right;
+    width: 350px;
+  }
+  
+  &:hover {
+    .now-playing-text {
+      display: inline-block;
+    }
+    .video-title {
+      display: none;
+    }
+  }
 }
 
 #guide-nowplaying-label {
