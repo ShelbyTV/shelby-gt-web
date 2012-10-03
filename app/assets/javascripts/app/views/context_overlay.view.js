@@ -12,13 +12,23 @@
 
     initialize : function(data) {
       this.options.contextOverlayState.bind('change:playingFrameGroup', this._onPlayingFrameGroupChange, this);
+      this.options.playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
     },
 
     _cleanup : function(){
       this.options.contextOverlayState.unbind('change:playingFrameGroup', this._onPlayingFrameGroupChange, this);
+      this.options.playbackState.unbind('change:activePlayerState', this._onNewPlayerState, this);
       if (this.model) {
         this._setupTeardownModelBindings(this.model, false);
       }
+    },
+    
+    _onNewPlayerState: function(playbackState, newPlayerState){
+      var prevPlayerState = playbackState.previous('activePlayerState');
+      if( prevPlayerState ){
+        prevPlayerState.unbind('change:playbackStatus', this._onPlaybackStatusChange, this);
+      }
+      newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
     },
 
     _onPlayingFrameGroupChange : function(contestOverlayStateModel, playingFrameGroup){
@@ -33,6 +43,15 @@
       this._setupTeardownModelBindings(this.model, true);
 
       this.render();
+    },
+    
+    _onPlaybackStatusChange : function(attr, curState){
+      console.log("playback stat", curState);
+      if(curState === libs.shelbyGT.PlaybackStatus.playing){
+        $("#guide-nowplaying-label").removeClass("paused");
+      } else {
+        $("#guide-nowplaying-label").addClass("paused");
+      }
     },
 
     _setupTeardownModelBindings : function(model, bind) {
@@ -56,9 +75,14 @@
     render : function() {
       if (this.model) {
         this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
+        var videoTitle = this.model.getFirstFrame() && this.model.getFirstFrame().get('video') && this.model.getFirstFrame().get('video').get('title');
+        $("#guide-nowplaying-label").text( videoTitle || 'Now Playing');
+        $("#js-guide-nowplaying").show();
       } else {
         this.$el.html('');
+        $("#js-guide-nowplaying").hide();
       }
+      
     },
 
     template : function(obj) {
