@@ -25,7 +25,6 @@ class HomeController < ApplicationController
         end
 
         if user_signed_in?
-          set_app_tokens_for_view
           render '/home/app'
 
         else
