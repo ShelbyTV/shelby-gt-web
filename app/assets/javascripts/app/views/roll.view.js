@@ -24,7 +24,6 @@
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
-      intervalInsertViewProto : InStreamExplorePromoView,
       isIntervalComplete : function(displayedItems) {
         return displayedItems != 0 && displayedItems % 30 == 0;
       },
