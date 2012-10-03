@@ -210,6 +210,27 @@ $settings-panel-bg : #555;
 //  nowplaying panel
 //---------------------------
 
+.guide-nowplaying {
+  display: none;
+}
+
+#guide-nowplaying-label {
+  @include transition-property('opacity');
+	@include transition-duration(.2s);
+	@include transition-timing-function(linear);
+	@include transition-delay(0s);
+	
+  display: block;
+  max-width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  &.paused {
+    opacity: 0.4;
+  }
+}
+
 .nowplaying-section {
   right: 0;
 }

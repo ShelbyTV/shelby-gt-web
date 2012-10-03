@@ -92,12 +92,6 @@
           this.$('.js-content-selector').show();
         }
       }
-      
-      //show "Now Playing" only when we have an active video
-      if(_changedAttrs.has('activeFrameModel')){
-        this.model.get('activeFrameModel') ? this.$(".guide-now-playing").show() : this.$(".guide-now-playing").hide();
-      }
-      
     },
 
     _setSelected : function(){
