@@ -7,12 +7,12 @@ $landing-page-footer-font-color: #EFEFEF;
 .shelby-landing {
   background-color: $landing-page-footer-background;
   overflow: auto;
-  
+
   /* adjust the header, don't want absolute position */
   .shelby-header {
     position: relative;
   }
-  
+
   /* this gets hidden in _guide-presentation-selector.scss for onboarding */
   .guide-nav-list {
     display: block;
@@ -22,16 +22,14 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * Login & Signup (used on landing page and anonymous banner)
  ********************************************************/
-
-
-.login-section, 
+.login-section,
 .signup-section {
   box-shadow: 0 0 20px 0 black;
   right: 10px;
   top: 28px;
 }
 
-.login-section-lining, 
+.login-section-lining,
 .signup-section-lining {
   @include fin;
 
@@ -41,12 +39,12 @@ $landing-page-footer-font-color: #EFEFEF;
   width: 300px;
 }
 
-.login-header, 
+.login-header,
 .signup-header {
   margin: 10px 10px 0;
 }
 
-.login-section hr, 
+.login-section hr,
 .signup-section hr {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -54,8 +52,10 @@ $landing-page-footer-font-color: #EFEFEF;
   margin-top: .5em;
 }
 
-.login-form, .login-social-section,
-.signup-form, .signup-social-section  {
+.login-form,
+.login-social-section,
+.signup-form,
+.signup-social-section  {
   padding: 10px;
 }
 
@@ -72,31 +72,36 @@ $landing-page-footer-font-color: #EFEFEF;
 .login-submit,
 .signup-submit {
   @include button-primer();
-  
+
   margin-top: .5em;
 }
 
 .login-forgot-password {
   padding-left: 2em;
 }
- 
+
 
 /********************************************************
  * All Shelves
  ********************************************************/
-
 $landing-page-shelf-background: #ccc;
 
 .landing-shelf {
   @include gradient-primer($landing-page-shelf-background);
-  
+
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
 }
 
 .landing-shelf-lining {
-  width: $landing-page-width;
   margin: 0 auto;
+  max-width: $landing-page-width;
+}
+
+.landing-shelf-header-extra {
+  font-size: 2.5em;
+  font-weight: 500;
+  margin-bottom: 1em;
 }
 
 .landing-shelf-header {
@@ -122,7 +127,6 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * All Share Shelves
  ********************************************************/
-
 .landing-shelf-share {
   padding: 50px 0 20px;
 }
@@ -141,11 +145,97 @@ $landing-page-shelf-background: #ccc;
   float: left;
   padding: 30px 0 0 5px;
   width: $landing-page-width * (8/18);
-  
+
   .user-avatar {
     width: 48px;
     padding-right: 5px;
   }
+}
+/********************************************************
+ * _banner
+ ********************************************************/
+.landing-banner {
+  text-align: center;
+}
+
+.landing-banner-lining {
+  max-width: none;
+  width: auto;
+}
+
+.landing-banner-header {
+  margin-top: 1em;
+}
+
+.landing-banner-figure {
+  padding: 0 1em;
+  max-width: 870px;
+  width: 100%;
+}
+
+/********************************************************
+ * _banner
+ ********************************************************/
+.form_module_horz.landing-signmeup-form {
+  ////////////////////////////////////////////////////////////////////////////
+  //  breaking rules.
+  //  experiment with nesting.
+  //  isolating .landing-signmeup-form by compounding the class
+  //  thus binding it to the form_module
+  ////////////////////////////////////////////////////////////////////////////
+  font-size: 1.8em;
+  margin: 1em;
+  text-align: center;
+
+  .form_label {
+    font-size: 1.5em;
+    line-height: 1.8;
+    vertical-align: top;
+  }
+
+  .form_input-wrapper {
+    @include roundies(input);
+    @include transition-property('border');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid $inset;
+    display: inline-block;
+    padding: 0.33em 0.9em;
+    width: auto;
+
+    &.focused,
+    &:focus {
+      border-color: black;
+      outline: 0;
+    }
+  }
+
+  .form_input {
+    border: none;
+    direction: rtl;
+    font-size: 1em;
+    padding-right: 0;
+    width: auto;
+
+    &:focus {
+      outline: 0;
+      border: 0;
+    }
+  }
+
+  .form_submit {
+
+  }
+}
+
+/********************************************************
+ * _sign_me_up
+ ********************************************************/
+.landing-signmeup {
+
 }
 
 /********************************************************
@@ -155,7 +245,7 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * _genius_email_share - Share Shelf
  ********************************************************/
- 
+
 /********************************************************
  * _rolling_share - Share Shelf
  ********************************************************/
@@ -171,7 +261,7 @@ $landing-page-shelf-background: #ccc;
   .user-avatar {
     float: left;
   }
-  
+
   .user-nickname {
     font-weight: 600;
   }
@@ -242,7 +332,7 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-form {
-  
+
 }
 
 .landing-form-label {
@@ -255,17 +345,25 @@ $landing-page-shelf-background: #ccc;
 
 .landing-form-input {
   @include roundies(left);
-  
+  @include transition-property('border');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
+
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   font-size: 2em;
   height: 45px;
   padding: .5em;
-}  
-  
+
+  &:focus {
+    border: 1px solid black;
+    outline: none;
+  }
+}
+
 .landing-form-submit {
   @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
   @include roundies(right);
-  
+
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   border-left: none;
   display: inline-block;
@@ -275,11 +373,11 @@ $landing-page-shelf-background: #ccc;
   height: 45px;
   padding: 1.1em 3em 1.2em;
   vertical-align: bottom;
-  
+
   &:hover {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
   }
-  
+
   &:active {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
   }
@@ -303,8 +401,8 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-footer-lining {
-  width: $landing-page-width;
   margin: 0 auto;
+  max-width: $landing-page-width;
   padding-bottom: 50px;
 }
 
@@ -316,9 +414,11 @@ $landing-page-shelf-background: #ccc;
   float: left;
   padding-top: 30px;
   width: (100%/6);
-  
+
   &.secondary {
     float: right;
+    //TODO: TEMPORARY HACK
+    overflow: hidden;
   }
 }
 

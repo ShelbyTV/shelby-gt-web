@@ -12,7 +12,7 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  TODO: fix this list shit 
+//  TODO: fix this list shit
 //---------------------------
 
 .list,
@@ -23,7 +23,7 @@ $list : blue, green, default;
   padding: 0;
 
   li {
-    list-style-type: none;  
+    list-style-type: none;
     &:first-child {
       .xframe {
         border-top: none;
@@ -33,7 +33,7 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  animation module 
+//  animation module
 //---------------------------
 
 .animate_module,
@@ -42,7 +42,7 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  media module, what up! 
+//  media module, what up!
 //  thanks to @stubbornella.
 //---------------------------
 
@@ -152,14 +152,14 @@ $list : blue, green, default;
 
 //---------------------------
 //  modular overlay framework
-//  
+//
 //    two main parts:
 //    header and body.
 //    this abstraction is a primer for
 //    the content separation.
 //
 //    *used for any overlay,
-//     that slides over the guide    
+//     that slides over the guide
 //---------------------------
 .overlay_header {
   height: $overlay_header_height;
@@ -179,6 +179,28 @@ $list : blue, green, default;
 //    inputs consistent throughout
 //    the entire app
 //------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  SHARED BY HORIZONTAL + VERTICAL FORMS
+////////////////////////////////////////////////////////////////////////////
+.form_submit {
+  @include button-primer($shelby-blue, dark, wide);
+
+  .spinner {
+    left: auto;
+    margin-left: -4px;
+    margin-top: -2px;
+    position: relative;
+  }
+
+  &:hover {
+    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+  }
+
+  &:active {
+    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////
 //  VERTICAL FORMS
 ////////////////////////////////////////////////////////////////////////////
@@ -234,7 +256,6 @@ $list : blue, green, default;
 .form_textarea {
 
 }
-
 ////////////////////////////////////////////////////////////////////////////
 //  HORIZONTAL FORMS
 //
@@ -254,16 +275,16 @@ $list : blue, green, default;
   }
 
   .form_label {
-
+    display: inline;
   }
 
   .form_label {
-
+    display: inline;
   }
 
   .form_input,
   .form_textarea {
-
+    display: inline;
   }
 
   .form_input {
@@ -273,29 +294,12 @@ $list : blue, green, default;
   .form_textarea {
 
   }
-}
 
-////////////////////////////////////////////////////////////////////////////
-//  SHARED BY HORIZONTAL + VERTICAL FORMS
-////////////////////////////////////////////////////////////////////////////
-.form_submit {
-  @include button-primer($shelby-blue, dark, wide);
-
-  .spinner {
-    left: auto;
-    margin-left: -4px;
-    margin-top: -2px;   
-    position: relative;
-  }
-
-  &:hover {
-    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
-  }
-
-  &:active {
-    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+  .form_submit {
+    display: inline;
   }
 }
+
 
 //---------------------------
 //  share form framework
@@ -331,7 +335,7 @@ $list : blue, green, default;
 //  dropdown framework
 //  used in header nav
 //
-//    contextless-abstraction, 
+//    contextless-abstraction,
 //    any/all hoverable dropdowns should
 //    use the the dropdown_module
 //
@@ -388,7 +392,7 @@ $list : blue, green, default;
   padding: 0 3px 0 20px;
   text-align: center;
   text-decoration: none;
-  width: 100px; 
+  width: 100px;
 
   &:before {
     width: 36px;
@@ -402,7 +406,7 @@ $list : blue, green, default;
   @include x-logged-out-networks-buttons($twitter-blue);
 
   margin-right: 20px;
-  
+
   &:before{
     background-image: url($icon-share-twitter-on);
     background-position: 30% 50%;
