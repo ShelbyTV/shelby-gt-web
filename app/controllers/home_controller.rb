@@ -14,6 +14,9 @@ class HomeController < ApplicationController
     # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
     # controller, but until that's built, we just short-circuit right here
     if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
+      @roll = Shelby::API.get_roll(@isolated_roll_id)
+      @user = Shelby::API.get_user(@roll['creator_id']) if @roll
+      
       render '/home/isolated_roll' and return 
     end
     
@@ -88,8 +91,9 @@ class HomeController < ApplicationController
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
-              response = Shelby::API.get_roll(request.subdomain)
-              response && response['id']
+              roll = Shelby::API.get_roll(request.subdomain)
+              
+              roll && roll['id']
             else
               false
             end

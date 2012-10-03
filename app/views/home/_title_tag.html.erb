@@ -2,7 +2,7 @@
 	<%= @video['title'] %> on shelby.tv
 	
 <% elsif @roll %>
-	The <%= @roll['title'].titlecase %> Roll, curated <%= "#{@user ? "by #{@user['name']}" : ""}" %> on Shelby.tv
+	<%= @roll['subdomain'] %>.shelby.tv, a curated roll by <%= "#{@user ? "by #{@user['name']}" : ""}" %> on Shelby.tv
 	
 <% else %>
 	<%= Settings::Application.title %>
