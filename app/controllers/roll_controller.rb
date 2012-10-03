@@ -8,7 +8,6 @@ class RollController < ApplicationController
   def show
     
     if user_signed_in?
-      set_app_tokens_for_view
       render '/home/app'
     else
       
@@ -25,12 +24,10 @@ class RollController < ApplicationController
   end
   
   def show_personal_roll
-    set_app_tokens_for_view if user_signed_in?
     render '/home/app'
   end
   
   def show_isolated_roll
-    set_app_tokens_for_view if user_signed_in?
     render '/home/app'
   end
   

@@ -273,7 +273,7 @@
     .all-queue,
     .all-creator {
       &:hover {
-        background-color: darken(#eee, 15%);
+        background-color: darken(#eee, 15%) !important;
       }
     }
 
@@ -342,7 +342,7 @@
   width: 100% !important;
 
   &.queued {
-    background-color: darken(#eee,10%);
+    background-color: darken(#eee,10%) !important;
     cursor: default;
 
     i {
