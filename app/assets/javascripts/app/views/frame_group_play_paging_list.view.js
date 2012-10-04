@@ -8,6 +8,8 @@
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
 
+    _nextPromoExplore: true,
+
     frameGroupCollection : null,
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
@@ -65,7 +67,8 @@
     //ListView overrides
     _intervalInsertViews : function() {
       //we'll just randomly choose to show a promo for the explore section or for a specific roll
-      if (Math.random() < 0.5) {
+      if (this._nextPromoExplore) {
+        this._nextPromoExplore = false;
         return new InlineExplorePromoView();
       } else {
         var promoRolls =
@@ -78,9 +81,12 @@
           var rollsCollection = new Backbone.Collection();
           //select one of the promo rolls at random to display in the promo
           rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
+          this._nextPromoExplore = true;
           return new InlineRollPromoView({model:rollsCollection});
         } else {
-          return [];
+          this._nextPromoExplore = false;
+          //we don't have any rolls to promo, so promo explore instead
+          return new InlineExplorePromoView();
         }
       }
     },
