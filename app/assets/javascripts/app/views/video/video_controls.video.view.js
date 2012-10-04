@@ -202,11 +202,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _hdOn: function(el){
-    this._userDesires.set({hdVideo: true});
+    this._userDesires.trigger('desireHdVideo', true);
   },
 
   _hdOff: function(el){
-    this._userDesires.set({hdVideo: false});
+    this._userDesires.trigger('desireHdVideo', false);
   },
 
   _onScrubTrackClick: function(el){

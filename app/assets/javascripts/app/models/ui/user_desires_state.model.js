@@ -9,7 +9,6 @@ libs.shelbyGT.UserDesiresStateModel = libs.shelbyGT.ShelbyBaseModel.extend({
     currentTimePct: null,
     mute: false,
     volume: 1.0,
-    hdVideo: true,
     guideShown: true
   }
 
