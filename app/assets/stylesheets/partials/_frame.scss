@@ -100,6 +100,10 @@ $active-list-item: $shelby-blue;
   text-align: right;
 }
 
+.isolated-roll .xframe-subline {
+  display: none;
+}
+
 .xframe-is-collapsed {
   &:link,
   &:visited {
@@ -139,6 +143,10 @@ $active-list-item: $shelby-blue;
   color: adjust-lightness($text, 20%);
 }
 
+.isolated-roll .xuser-data {
+  display: none;
+}
+
 .xuser-data-link {
   &:link,
   &:visited {
@@ -154,6 +162,11 @@ $active-list-item: $shelby-blue;
 .xuser-message {
 }
 
+.isolated-roll .xuser-message {
+  font-size: 1.3em;
+  margin: 0;
+}
+
 .xuser-message-remainder {
   display: none;
 }
@@ -161,6 +174,10 @@ $active-list-item: $shelby-blue;
 .xuser-data-timestamp {
   float: right;
   opacity: .5;
+}
+
+.isolated-roll .xuser-data-timestamp {
+  padding: 0 0 5px 10px;
 }
 
 .xuser-avatar {
@@ -171,6 +188,20 @@ $active-list-item: $shelby-blue;
     background-image: url($icon-missing-avatar) !important;
   }
 }
+
+/* adjust the avatar in the roll header */
+.isolated-roll .guide .xuser-avatar {
+  height: 51px;
+  margin: 0 10px 0 0;
+  width: 51px;
+}
+
+/* hide the avatar on the frame */
+.isolated-roll .xframe .xuser-avatar {
+  display: none;
+}
+
+
 
 //------------------------------------------------------------------------------
 //  frame command menu:
