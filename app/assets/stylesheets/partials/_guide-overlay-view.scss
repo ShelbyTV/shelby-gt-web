@@ -106,8 +106,13 @@
   z-index: 1;
 }
 
+.isolated-roll .guide-header-title {
+  text-shadow: 0px 1px #eee;
+}
+
+/* iso-roll button */
 .guide-header-button {
-  @include button-primer($shelby-gray, dark,frame-command);
+  @include button-primer($shelby-gray-light, dark, frame-command);
   
   float: right;
   margin: 10px;
