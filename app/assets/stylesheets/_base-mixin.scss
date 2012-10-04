@@ -180,7 +180,7 @@ $primer-button-context : generic !default;
     padding-left: 1em;
   }
 
-  @if $x-primer-color == $button-default-color {
+  @if $x-primer-color == $button-default-color or $x-primer-color == $shelby-gray-medium {
     //------------------------------------------------------
     //  toggle LIGHT font and DARK font depending on button bg.
     //------------------------------------------------------
