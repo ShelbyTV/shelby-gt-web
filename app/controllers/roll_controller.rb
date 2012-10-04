@@ -14,8 +14,6 @@ class RollController < ApplicationController
       # Get all pertinent info from the API (we need all of this no matter what)
       @roll_only = true
       @roll = Shelby::API.get_roll(params[:roll_id])
-      @frame = Shelby::API.get_first_frame_on_roll(params[:roll_id])
-      @video = Shelby::API.get_video(@frame['video_id']) if @frame
       @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       
       # And render it

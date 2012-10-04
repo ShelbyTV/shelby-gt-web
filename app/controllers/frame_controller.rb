@@ -20,7 +20,7 @@ class FrameController < ApplicationController
     else @share_type = :rolling
     end
     
-    if user_signed_in? and @share_type != :genius
+    if (user_signed_in? and @share_type != :genius) or params[:iso_roll]
       render '/home/app'
     else
       
