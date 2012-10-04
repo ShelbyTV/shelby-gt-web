@@ -196,6 +196,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   internalAddOne : function(item, collection, options){
+    var self = this;
     var childView = this._constructListItemView(item);
 
     //special handling if the item was not added to the end of the collection
@@ -209,12 +210,24 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._insertChildView(childView);
     }
 
+    var intervalViews = [];
     //check if the client-defined interval for adding a special list item has elapsed, and if so add the view
-    if (this.options.intervalInsertViewProto && this.options.isIntervalComplete(this._listItemViews.length)) {
-      var intervalView = new this.options.intervalInsertViewProto();
-      this._intervalViews.push(intervalView);
-      this._insertChildView(intervalView);
+    if (this.options.intervalInsertViewProto) {
+      if (this.options.isIntervalComplete(this._listItemViews.length)) {
+        intervalViews = [new this.options.intervalInsertViewProto()];
+      }
+    } else if (this._intervalInsertViews) {
+      if (this.options.isIntervalComplete(this._listItemViews.length)) {
+        intervalViews = this._intervalInsertViews();
+        if (!_(intervalViews).isArray()) {
+          intervalViews = [intervalViews];
+        }
+      }
     }
+    _(intervalViews).each(function(intervalView) {
+      self._intervalViews.push(intervalView);
+      self._insertChildView(intervalView);
+    });
   },
 
   _insertChildView: function(childView) {
@@ -282,6 +295,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     } else {
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
-  }
+  },
+
+  /*
+    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
+    to the list and render when this.options.isIntervalComplete returns true
+
+    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
+    if this.options.intervalInsertViewProto is null
+    */
+  _intervalInsertViews : null
 
 });
