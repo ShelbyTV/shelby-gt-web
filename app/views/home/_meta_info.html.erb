@@ -7,8 +7,8 @@
 <% if @frame and @video %>
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider'], @video['id']) %>" /> 
-	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider'], @video['id'], "https") %>" /> 
+	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
+	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id'], "https") %>" /> 
 	<meta property="og:title" content="<%= @video['title'] %>" /> 
 	<meta property="og:description" content="<%= @video['description'] %>" />	
 	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
@@ -34,7 +34,6 @@
 	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
 	
 <% else %>
-	<% Rails.logger.info "nada present" %>
 	<meta name="description" content="<%= Settings::Application.meta_description %>">
 
 <% end %>

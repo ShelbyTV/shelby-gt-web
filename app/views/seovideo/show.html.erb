@@ -38,8 +38,8 @@
         </h3>
 
         <div class="seovideo-embed">
-          <% if @provider_name == "youtube" %>
-            <%= render :partial => "youtube_embed", :locals => { :provider_id => @provider_id } %>
+          <% if @video_provider_name == "youtube" %>
+            <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
           <% else %>
             <%= raw @video_embed %>
           <% end %>
@@ -59,10 +59,10 @@
         </div>
         <div class="seovideo-social">
           <div class="seovideo-social-button clearfix">
-            <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+            <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
           </div>
           <div class="seovideo-social-button clearfix">
-            <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
           </div>
           <div class="seovideo-social-button clearfix">
             <div class="g-plusone-wrapper clearfix">
