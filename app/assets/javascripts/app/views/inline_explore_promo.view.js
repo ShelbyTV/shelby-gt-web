@@ -17,6 +17,7 @@ libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
 
   _gotoExplore : function(){
     shelby.router.navigate('explore', {trigger:true});
+    shelby.track('Click explore promo');
   }
 
 });
