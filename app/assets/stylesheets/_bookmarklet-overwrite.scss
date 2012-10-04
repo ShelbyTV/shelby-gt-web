@@ -253,19 +253,26 @@
 }
 
 .embedded-buttons {
+  background-image: none;
+  border: none;
   border-radius: 5px 0 0 5px;
   box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
   list-style-type: none;
-  margin: 0 0 0 100%;
-  margin-bottom: 28px;
-  margin-top: 2px;
+  margin: 2px 0 28px 100%;
+  padding: 0;
   width: 80px;
 
   li {
     background-color: #EEE;
+    background-image: none;
+    border: none;
     border-radius: 5px;
     height: 31px;
+    list-style-type: none;
     margin: 0;
+    outline: none;
+    padding: 0;
+    position: relative;
     width: 100%;
 
     .all-comment,
