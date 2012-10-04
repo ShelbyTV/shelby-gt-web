@@ -4,7 +4,7 @@
 	<meta property="og:locale" content="EN_us" />
 <% end %>
 
-<% if @frame and @video %>
+<% if @frame and @video and @roll %>
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
 	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
