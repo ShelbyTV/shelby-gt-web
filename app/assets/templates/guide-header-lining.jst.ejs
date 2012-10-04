@@ -1,6 +1,14 @@
-  <% var creatorNickname = roll.get('creator_nickname') %>
-  <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+<% var creatorNickname = roll.get('creator_nickname') %>
+<% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
 
+<!--   Spinosa is working in here, making this customizable
+
+<div class="image_module" id="guide-header-roll-header-image">
+	<img src="http://2.bp.blogspot.com/-tZNMrc0u5L0/UGCC1KsK4GI/AAAAAAAACJk/YPj4DbglrcQ/s1600/fire.jpeg" class="visuallyhidden" />
+</div>
+-->
+
+<div class="guide-header-lining clearfix">
   <% if (creatorNickname) { %>
     <span class="image_module xuser-avatar guide-header-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
         <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
@@ -9,3 +17,4 @@
   <h2 id="js-guide-title" class="guide-header-title">
     <%= roll.get('title') || '' %>
   </h2>
+</div>
