@@ -84,10 +84,14 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * All Shelves
  ********************************************************/
-$landing-page-shelf-background: #ccc;
+$landing-page-shelf-background: #ddd;
 
 .landing-shelf {
-  @include gradient-primer($landing-page-shelf-background);
+  background-color: $landing-page-shelf-background;
+
+  &:not(.flat){
+    @include gradient-primer($landing-page-shelf-background, -10%,bottom);
+  }
 
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -111,8 +115,9 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-shelf-header-extra {
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: 500;
+  line-height: 1;
   margin-bottom: 1em;
 }
 
@@ -240,8 +245,8 @@ $landing-page-shelf-background: #ccc;
 
   .form_input {
     border: none;
-    direction: rtl;
     font-size: 1em;
+    text-align: right;
     padding-right: 0;
     width: auto;
 
@@ -252,7 +257,8 @@ $landing-page-shelf-background: #ccc;
   }
 
   .form_submit {
-
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 
@@ -271,6 +277,7 @@ $landing-page-shelf-background: #ccc;
 .landing-cta {
   text-align: center;
   font-size: 1.3em;
+  height: $cta-height;
 }
 
 .landing-cta-header {
@@ -285,11 +292,11 @@ $landing-page-shelf-background: #ccc;
 //  landing-shelf-lining.half.landing-cta-genius
 ////////////////////////////////////////////////////////////////////////////
 .landing-cta-genius {
-  height: $cta-height;
+  height: inherit;
 
   .appstore-button {
     display: inline-block;
-    font-size: 1.1em;
+    font-size: .9em;
     float: none;
   }
 }
@@ -301,13 +308,20 @@ $landing-page-shelf-background: #ccc;
 //  landing-shelf-lining.half.landing-cta-explore
 ////////////////////////////////////////////////////////////////////////////
 .landing-cta-explore {
-  height: $cta-height;
+  background-image: url("/images/landing/banner.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  height: inherit;
 }
 
 .landing-cta-button {
   @include button-primer;
 
+  display: inline-block;
+  font-size: 1.3em;
+  font-weight: 700;
   margin: 25px 0 10px;
+  padding: 1.05em 1.35em;
 }
 /********************************************************
  * _direct_email_share - Share Shelf
