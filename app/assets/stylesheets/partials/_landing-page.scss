@@ -315,9 +315,6 @@ $landing-page-shelf-background: #ddd;
 }
 
 .landing-cta-button {
-  @include button-primer($shelby-gray-medium);
-
-  display: inline-block;
   font-size: 1.3em;
   font-weight: 700;
   margin: 25px 0 10px;
