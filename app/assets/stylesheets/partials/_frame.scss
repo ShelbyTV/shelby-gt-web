@@ -100,10 +100,6 @@ $active-list-item: $shelby-blue;
   text-align: right;
 }
 
-.isolated-roll .xframe-subline {
-  display: none;
-}
-
 .xframe-is-collapsed {
   &:link,
   &:visited {
@@ -143,10 +139,6 @@ $active-list-item: $shelby-blue;
   color: adjust-lightness($text, 20%);
 }
 
-.isolated-roll .xuser-data {
-  display: none;
-}
-
 .xuser-data-link {
   &:link,
   &:visited {
@@ -162,10 +154,6 @@ $active-list-item: $shelby-blue;
 .xuser-message {
 }
 
-.isolated-roll .xuser-message {
-  margin: 0;
-}
-
 .xuser-message-remainder {
   display: none;
 }
@@ -175,10 +163,6 @@ $active-list-item: $shelby-blue;
   opacity: .5;
 }
 
-.isolated-roll .xuser-data-timestamp {
-  padding: 0 0 5px 10px;
-}
-
 .xuser-avatar {
   height: 33px;
   width: 33px;
@@ -186,16 +170,6 @@ $active-list-item: $shelby-blue;
   &.missing-avatar {
     background-image: url($icon-missing-avatar) !important;
   }
-}
-
-/* adjust the avatar in the roll header */
-.isolated-roll .guide .xuser-avatar {
-  margin: 0 10px 0 0;
-}
-
-/* hide the avatar on the frame */
-.isolated-roll .xframe .xuser-avatar {
-  display: none;
 }
 
 
@@ -378,3 +352,35 @@ $active-list-item: $shelby-blue;
   padding: 0;
 }
 
+//------------------------------------------------------------------------------
+//  isolate roll
+//  (nest styles inside of .isolated-roll{})
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .xframe-subline {
+    display: none;
+  }
+
+  .xuser-data {
+    display: none;
+  }
+
+  .xuser-message {
+    margin: 0;
+  }
+
+  .xuser-data-timestamp {
+    padding: 0 0 5px 10px;
+  }
+
+  /* adjust the avatar in the roll header */
+  .guide .xuser-avatar {
+    border-right: 1px solid $outset;
+    margin: 0 10px 0 0;
+  }
+
+  /* hide the avatar on the frame */
+  .xframe .xuser-avatar {
+    display: none;
+  }
+}
