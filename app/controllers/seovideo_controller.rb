@@ -35,6 +35,11 @@ class SeovideoController < ApplicationController
     splitConversationMessagesByNetwork()
     setMetaDescription()
 
+    respond_to do |format|
+      format.html { render }
+      format.any { head :not_found }
+    end
+
   end
 
 
