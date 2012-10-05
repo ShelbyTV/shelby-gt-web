@@ -1,9 +1,11 @@
+<% var isGenius       = frame.has('roll') && frame.get('roll').get('genius') %>
 <% var user           = shelby.models.user %>
 <% var userNickname   = user.get('nickname') %>
 <% var userAvatar     = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 <% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
-<% var message        = frame.get('conversation').get('messages').at(0) %>
+<% var conversation   = frame.get('conversation') %>
+<% var message        = conversation ? conversation.get('messages').at(0) : null %>
 
 <div class="overlay_header guide-overlay-head sharing-head">
   <div class="guide-overlay-head-lining">
@@ -33,16 +35,18 @@
         })
       %>
 
-      <%=
-        JST['media-module']({
-            userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message),
-            userNickname : message.get('nickname'),
-            messageText  : message.get('text'),
-            timestamp    : frame.get('created_at'),
-            action       : 'sharing',
-            subline      : false
-        })
-      %>
+      <% if (!isGenius && message) { %>
+        <%=
+          JST['media-module']({
+              userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message),
+              userNickname : message.get('nickname'),
+              messageText  : message.get('text'),
+              timestamp    : frame.get('created_at'),
+              action       : 'sharing',
+              subline      : false
+          })
+        %>
+      <% } %>
     </div><!-- eo xframe-body-wrapper -->
     <div class="frame-sharing">
     </div>
