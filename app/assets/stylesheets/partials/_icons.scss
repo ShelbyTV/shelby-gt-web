@@ -32,7 +32,8 @@ $icons:
   star
   videocard_comment
   videocard_queue
-  videocard_roll;
+  videocard_roll
+  videocard_roll_on;
 
 //------------------------------------------------------------------------------
 //  ICON CLASS CONSTRUCTOR
@@ -46,6 +47,7 @@ $icons:
 //------------------------------------------------------------------------------
 //  button icon module
 //------------------------------------------------------------------------------
+.button_icon,
 .button_icon_center,
 .button_icon_left,
 .button_icon_right {
