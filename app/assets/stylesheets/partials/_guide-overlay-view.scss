@@ -63,9 +63,30 @@
 }
 
 //------------------------------------------------------------------------------
+//  ISOLATED ROLL OVERRIDES
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .guide-header-lining {
+    border: none;
+  }
+
+  .guide-header-title {
+    @include ellipsis;
+
+    font-size: 1.4em;
+    line-height: 2.1;
+  }
+}
+
+/* iso-roll button */
+.isolated-roll-button {
+  float: right;
+  padding: button-padding(isolated-roll-header);
+  margin: 4px 6px 4px 0;
+}
+//------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
-
 #guide-header-roll-header-image {
   background-image: url("http://2.bp.blogspot.com/-tZNMrc0u5L0/UGCC1KsK4GI/AAAAAAAACJk/YPj4DbglrcQ/s1600/fire.jpeg");
   height: 150px;
@@ -77,18 +98,7 @@
   border-bottom: 1px solid $inset;
   border-top: 1px solid $outset;
   box-shadow: $videocard-shadow;
-//  height: 100px;
-//  overflow: hidden;
   position: relative;
-
-//  &.guide-overlay-missing-thumbnail {
-//    background-image: url($icon-missing-thumbnail);
-//    background-size: 20%;
-//  }
-}
-
-.isolated-roll .guide-header-lining {
-  border: none;
 }
 
 .guide-overlay-context-overview {
@@ -107,7 +117,6 @@
 .guide-header-title {
   @include ellipsis();
 
-//  color: #ccc;
   font-weight: 500;
   line-height: 3.0;
   position: relative;
@@ -115,20 +124,6 @@
   z-index: 1;
 }
 
-.isolated-roll .guide-header-title {
-  @include ellipsis;
-
-  font-size: 1.4em;
-  line-height: 2.1;
-}
-
-/* iso-roll button */
-.guide-button-home,
-.guide-button-follow {
-  float: right;
-  padding: button-padding(isolated-roll-header);
-  margin: 4px 6px 4px 0;
-}
 
 .guide-header-button-highlighted {
   @include button-primer($shelby-blue, dark,frame-command);
