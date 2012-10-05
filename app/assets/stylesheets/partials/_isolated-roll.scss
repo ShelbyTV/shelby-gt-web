@@ -1,13 +1,15 @@
-@import "base",
+@import
+    "base",
     "base-mixin",
-		"compass",
+
+    "compass",
 		"compass/css3",
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow";
 
 /* non-programatic changes to app display */
 body.isolated-roll {
-  
+
   .content_wrapper {
     margin-top: 0px;
   }
