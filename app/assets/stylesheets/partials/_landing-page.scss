@@ -562,7 +562,16 @@ $landing-page-shelf-background: #ddd;
       width: auto;
     }
   }
+
   .landing-cta {
     height: auto;
+  }
+
+  .landing-cta-genius {
+    border-bottom: 1px solid $inset;
+  }
+
+  .landing-cta-explore {
+    border-top: 1px solid $outset;
   }
 }
