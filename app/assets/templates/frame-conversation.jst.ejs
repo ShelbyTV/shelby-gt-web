@@ -5,16 +5,19 @@
 <% var frameTitle = frame.get('video').get('title') || '' %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 
-<div class="overlay_header guide-overlay-header conversation-header">
-  <div class="guide-overlay-title">
-    <button class="js-cancel cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
-      <i class="button_icon icon_cancel cancel-icon">
+<div class="overlay_header guide-overlay-head conversation-head">
+  <div class="guide-overlay-head-lining">
+    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
+      <i class="button_icon_left icon_cancel cancel-icon">
         Cancel
       </i>
     </button>
-    <h2>Add a new comment within Shelby.tv</h2>
-  </div>
-</div>
+
+    <h2 class="guide-overlay-header">
+      Add a new comment within Shelby.tv
+    </h2>
+  </div><!-- eo guide-overlay-head-lining -->
+</div><!-- eo guide-overlay-head.conversation-head -->
 
 <div class="overlay_body guide-overlay-body conversation-body">
   <form class="form_module new-comment">

@@ -26,8 +26,6 @@ $active-list-item: $shelby-blue;
 //  frame natural state
 //------------------------------------------------------------------------------
 .xframe {
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
   padding: 1em;
 
   ////////////////////////////////////////////////////////////////////////////
@@ -42,6 +40,11 @@ $active-list-item: $shelby-blue;
       display: block;
     }
   }
+}
+
+.xframe-list-item {
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
 }
 
 .xframe-header {
@@ -97,6 +100,10 @@ $active-list-item: $shelby-blue;
   text-align: right;
 }
 
+.isolated-roll .xframe-subline {
+  display: none;
+}
+
 .xframe-is-collapsed {
   &:link,
   &:visited {
@@ -136,6 +143,10 @@ $active-list-item: $shelby-blue;
   color: adjust-lightness($text, 20%);
 }
 
+.isolated-roll .xuser-data {
+  display: none;
+}
+
 .xuser-data-link {
   &:link,
   &:visited {
@@ -151,6 +162,10 @@ $active-list-item: $shelby-blue;
 .xuser-message {
 }
 
+.isolated-roll .xuser-message {
+  margin: 0;
+}
+
 .xuser-message-remainder {
   display: none;
 }
@@ -158,6 +173,10 @@ $active-list-item: $shelby-blue;
 .xuser-data-timestamp {
   float: right;
   opacity: .5;
+}
+
+.isolated-roll .xuser-data-timestamp {
+  padding: 0 0 5px 10px;
 }
 
 .xuser-avatar {
@@ -168,6 +187,18 @@ $active-list-item: $shelby-blue;
     background-image: url($icon-missing-avatar) !important;
   }
 }
+
+/* adjust the avatar in the roll header */
+.isolated-roll .guide .xuser-avatar {
+  margin: 0 10px 0 0;
+}
+
+/* hide the avatar on the frame */
+.isolated-roll .xframe .xuser-avatar {
+  display: none;
+}
+
+
 
 //------------------------------------------------------------------------------
 //  frame command menu:

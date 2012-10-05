@@ -317,7 +317,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    this.navigate('roll/' + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
+    var rollId = roll.id || roll.get('roll_id');
+    this.navigate('roll/' + rollId + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
@@ -448,11 +449,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupAnonUserViews : function(options){
-    options = _.chain({}).extend(options).defaults({
-      isIsolatedRoll : false
-    }).value();
-    shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerView();
-    shelby.views.anonBanner.render();
+    //this view will not ever render if user is not anonymous
+    shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
   },
   
   _setupRollView : function(roll, title, options, topLevelViewsOptions){

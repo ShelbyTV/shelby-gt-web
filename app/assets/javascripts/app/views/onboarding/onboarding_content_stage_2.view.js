@@ -7,6 +7,13 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
    *
    * Next button should be disabled "follow n more Rolls"
   */
+  
+  /* Where does the content come from?
+   * --> We are using RollCategoriesCollectionModel to fetch featured rolls from the API
+   *
+   * To update the content, see shelby_gt/config/settings/roll.yml (which gets returned via
+   * /v1/roll/featured)
+   */
 
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
@@ -14,11 +21,20 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   initialize : function(){
+    this.options.rollCategories.fetch();
+    
     this.model.bind('change:rolls_followed', this._onRollsFollwedChange, this);
+    this.options.rollCategories.get('roll_categories').bind('reset', this.render, this);
   },
 
   cleanup : function(){
     this.model.unbind('change:rolls_followed', this._onRollsFollwedChange, this);
+    this.options.rollCategories.get('roll_categories').unbind('reset', this.render, this);
+  },
+  
+  render : function(){
+    this.$el.html(this.template({rollCategories: this.options.rollCategories}));
+    return this;
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){

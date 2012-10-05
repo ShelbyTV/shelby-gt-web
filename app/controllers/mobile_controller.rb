@@ -7,10 +7,12 @@ class MobileController < ApplicationController
 
   def roll
     # get frames from shelby genius roll
-    if @roll = Shelby::API.get_frames_in_roll(params[:id])
+    if @roll = Shelby::API.get_roll_with_frames(params[:id])
       @frames = @roll['frames']
       @roll.delete('frames')
       # great successes
+    else
+      redirect_to "/"
     end
   end
   

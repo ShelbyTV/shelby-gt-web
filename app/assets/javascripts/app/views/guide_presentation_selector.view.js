@@ -12,6 +12,7 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-admin"                      : "_goToAdmin",
       "click .js-now-playing"                : "_nowPlaying"
     },
 
@@ -31,19 +32,30 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
+      if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
     
-    _goToStream : function(){
-      shelby.router.navigate('stream', {trigger: true});
+    _goToStream : function(e){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+        shelby.router.navigate('stream', {trigger: true});
+      }
     },
 
-    _goToQueue : function(){
-      shelby.router.navigate('queue', {trigger: true});
+    _goToQueue : function(e){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+        shelby.router.navigate('queue', {trigger: true});
+      }
     },
     
     _goToMe : function(){
-      shelby.router.navigate('me', {trigger:true});
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
+        shelby.router.navigate('me', {trigger:true});
+      }
+    },
+    
+    _goToAdmin : function(){
+      document.location = "http://api.shelby.tv/admin/new_users";
     },
     
     _explore : function(){
@@ -85,12 +97,6 @@
           this.$('.js-content-selector').show();
         }
       }
-      
-      //show "Now Playing" only when we have an active video
-      if(_changedAttrs.has('activeFrameModel')){
-        this.model.get('activeFrameModel') ? this.$(".guide-now-playing").show() : this.$(".guide-now-playing").hide();
-      }
-      
     },
 
     _setSelected : function(){
@@ -114,6 +120,12 @@
 
     _clearSelected : function(){
       this.$('.js-content-selector button').removeClass('active-item');
+    },
+    
+    _adjustForAnonymousUser : function(){
+      //hide the settings
+      this.$('.js-guide-settings').hide();
+      
     }
 
   });

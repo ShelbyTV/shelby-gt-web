@@ -7,11 +7,11 @@ beforeEach(function() {
         "status": 200,
         "result": [
             {
-              "category": 'Sports',
+              "category_title": 'Sports',
               "rolls": []
             },
             {
-              "category": 'Memes',
+              "category_title": 'Memes',
               "rolls": [{id:'id1'},{id:'id2'}]
             }
           ]

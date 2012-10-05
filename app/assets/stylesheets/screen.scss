@@ -1,9 +1,10 @@
 @import "base";
 @import "base-mixin";
 
-@import 
+@import
     "partials/fonts",
     "partials/h5bp",
+    "partials/utilities",
     "partials/modules",
     "partials/icons",
 
@@ -12,6 +13,8 @@
     "partials/app-header",
     "partials/guide-presentation-selector",
     "partials/guide-overlay-view",
+
+    "partials/landing-page",
 
     "partials/explore",
     "partials/onboarding",
@@ -45,12 +48,12 @@
 
     "partials/avatar_uploading",
 
+    "partials/in-line-notification",
     "partials/load-more",
 
     "partials/context-overlay",
     "partials/preroll-video-info",
 
-    "partials/gate.scss",
     "partials/genius.scss",
 
     "partials/autocomplete.scss",

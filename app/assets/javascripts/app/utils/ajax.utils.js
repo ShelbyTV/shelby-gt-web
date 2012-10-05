@@ -4,9 +4,8 @@ libs.shelbyGT.Ajax = {
     if(!shelby.views.notificationOverlayView){ new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState}); }
     switch(jqXHR.status){
       case 401:
-        shelby.alert("Sorry, but you need you to sign in again.  You will now be brought to the login page.", function(){
-          document.location = "/signout?error=401";
-        });
+        //need to log them out immediately so app can't continue to make requests resulting in 401s
+        document.location = "/signout?error=401";
         break;
       case 403:
         shelby.alert("You are not authorized to do that");
@@ -15,8 +14,9 @@ libs.shelbyGT.Ajax = {
   },
   
   validAnonUrlStubs : [
-    '/user/',
-    '/roll/'
+    shelby.config.apiRoot+'/user/',
+    shelby.config.apiRoot+'/roll/',
+    '/short_link'
   ],
   
   isAnonUrlValid : function(opts){
@@ -24,7 +24,7 @@ libs.shelbyGT.Ajax = {
     if (opts.type != 'GET') return valid;
     this.validAnonUrlStubs.forEach(function(stub){
       //for each of the valid stubs
-      if (opts.url.indexOf(shelby.config.apiRoot+stub)!==-1){
+      if (opts.url.indexOf(stub)!==-1){
         //if url contains the valid stub
         valid = true;
         //mark as valid

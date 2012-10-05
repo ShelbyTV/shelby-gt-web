@@ -10,21 +10,16 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
-<% var creatorNickname = creator.get('nickname') %>
-<% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>
+<% var isGenius = frame.has('roll') && frame.get('roll').get('genius') %>
 
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
-<% var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-                                                                      frameIsOnHeartedRoll ||
-                                                                      frameIsOnWatchLaterRoll)
-%>
 
 
 <!-- new videocard -->
-<article id="<%= videoId %>" class="animate_module xframe<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
+<article id="<%= videoId %>" class="animate_module xframe xframe-list-item<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
       <h1 class="xframe-title" title="<%= videoTitle %>">
@@ -41,7 +36,7 @@
             <button class="xframe-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
-              <i class="button_icon command-icon icon_videocard_queue">
+              <i class="button_icon_left command-icon icon_videocard_queue">
                 <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
                     (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
                 %>
@@ -50,7 +45,7 @@
           </li>
           <li class="menu_item" role="menuitem">
             <button class="xframe-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="button_icon command-icon icon_videocard_roll">
+              <i class="button_icon_left command-icon icon_videocard_roll">
                 Roll…
               </i>
             </button>
@@ -64,7 +59,7 @@
             <ul class="menu_sublist xframe-sublist" role="menu">
               <li class="menu_option xframe-item" role="menuitem">
                 <button class="xframe-option command-share js-share-frame">
-                  <i class="button_icon command-icon icon_email">
+                  <i class="button_icon_left command-icon icon_email">
                     Share Video...
                   </i>
                 </button>
@@ -95,53 +90,79 @@
         <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
     </div><!-- eo .xframe-body -->
 
-    <footer class="media_module xframe-footer clearfix">
-      <% if (!frameViewed) { %>
-         <% if (clickableCreator) { %>
-           <a href="#" onclick="return false;" class="js-creator-personal-roll">
+    <% if (!isGenius && creator) {
+         var creatorNickname = creator.get('nickname');
+         var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
+         var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+                                                                            frameIsOnHeartedRoll ||
+                                                                            frameIsOnWatchLaterRoll);
+    %>
+      <footer class="media_module xframe-footer clearfix">
+        <% if (!frameViewed) { %>
+           <% if (clickableCreator) { %>
+             <a href="#" onclick="return false;" class="js-creator-personal-roll">
+               <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+                 <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+               </span>
+             </a>
+           <% } else { %>
              <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
-           </a>
-         <% } else { %>
-           <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-             <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-           </span>
-         <% } %>
-      <% } %>
+           <% } %>
+        <% } %>
 
-      <div class="media_body">
-        <% if (!frameViewed) { %>
-          <span class="xuser-data-timestamp">
-             <%= frame.get('created_at') %>
-          </span>
+        <div class="media_body">
+          <% if (!frameViewed) { %>
+            <span class="xuser-data-timestamp">
+               <%= frame.get('created_at') %>
+            </span>
 
-          <p class="xuser-data">
-            <% if (clickableCreator) { %>
-              shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
-            <% } else { %>
-              shared by <%= creatorNickname %>
-            <% } %>
-          </p>
-
-          <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-            <p class="xuser-message">
-              <% var comment = messages.models[0].escape('text') %>
-              <% if (comment.length > 256) { %>              
-                <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
-                <a class="js-toggle-comment" href="#">more…</a>
+            <p class="xuser-data">
+              <% if (clickableCreator) { %>
+                shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
               <% } else { %>
-                <%= comment %>
+                shared by <%= creatorNickname %>
               <% } %>
             </p>
-          <% } %>
 
-          <div class="xframe-subline">
-            <a href="#" onclick="return false;" class="button_icon icon_videocard_comment xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-              <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+            <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+              <p class="xuser-message">
+                <% var comment = messages.models[0].escape('text') %>
+                <% if (comment.length > 256) { %>
+                  <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
+                  <a class="js-toggle-comment" href="#">more…</a>
+                <% } else { %>
+                  <%= comment %>
+                <% } %>
+              </p>
+            <% } %>
+
+            <div class="xframe-subline">
+              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+              </a>
+            </div>
+          <% } else { %>
+            <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
+              <h1 class="xframe-title" title="<%= videoTitle %>">
+               <%= videoTitle %>
+              </h1>
+
+              <a class="xframe-is-collapsed">
+                Open
+              </a>
+
+              <div class="xuser-data">
+                shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
+              </div>
             </a>
-          </div>
-        <% } else { %>
+          <% } %>
+        </div>
+      </footer><!-- eo .media_module-->
+    <% } else if (frameViewed){ %>
+      <footer class="media_module xframe-footer clearfix">
+        <div class="media_body">
           <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
             <h1 class="xframe-title" title="<%= videoTitle %>">
              <%= videoTitle %>
@@ -150,14 +171,10 @@
             <a class="xframe-is-collapsed">
               Open
             </a>
-
-            <div class="xuser-data">
-              shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
-            </div>
           </a>
-        <% } %>
-      </div>
-    </footer><!-- eo .media_module-->
+        </div>
+      </footer><!-- eo .media_module-->
+    <% } %>
   </div><!-- eo .xframe-body-wrapper -->
   <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
     <aside class="xframe-aside">

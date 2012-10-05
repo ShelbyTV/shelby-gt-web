@@ -2,19 +2,19 @@
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
-<article id="<%= videoId %>" class="explore-frame clearfix">
+<article id="<%= videoId %>" class="explore-frame clearfix transparent">
   <div class="menu_module xframe-menu">
     <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
       <li class="menu_item" role="menuitem">
         <button class="xframe-command command-queue js-queue-command js-track-event" data-ga_category="Explore" data-ga_action="Click to queue frame" data-ga_label="<%= videoTitle %>">
-          <i class="button_icon icon_videocard_queue command-icon js-command-icon">
+          <i class="button_icon_left icon_videocard_queue command-icon js-command-icon">
             Queue
           </i>
         </button>
       </li>
       <li class="menu_item" role="menuitem">
         <button class="xframe-command command-roll js-roll-command js-track-event" data-ga_category="Explore" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
-          <i class="button_icon icon_videocard_roll command-icon">
+          <i class="button_icon_left icon_videocard_roll command-icon">
             Roll…
           </i>
         </button>
@@ -22,7 +22,7 @@
     </ul>
   </div><!-- eo .xframe-menu -->
   <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-explore-frame-thumbnail<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Explore" data-ga_action="Click thumbnail to play frame" data-ga_label="<%= videoTitle %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-    <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+    <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail" onload="$(this).parents('.explore-frame').first().removeClass('transparent');">
   </a>
 
   <a href="#" onclick="return false;" class="explore-frame-link js-track-event" data-ga_category="Explore" data-ga_action="Click title to play frame" data-ga_label="<%= videoTitle %>">

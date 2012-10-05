@@ -55,9 +55,18 @@
             <% } else { %>
               Shelby will pull the videos off your<br> <span><%= network %></span> feed.
             <% } %>
-          </p>            
+          </p>
         </div>
       </li>
     <% }); %>
   </ul>
+	<div class="facebook-timeline-opt-in clearfix">
+		<input id="onboarding-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" checked >
+		<label for="preferences-timeline-sharing" class="form_label">
+			Facebook Timeline Sharing
+		</label>
+		<p class="timeline-sharing-description">
+			I want to share <b><%= shelby.models.user.get('nickname') %>.shelby.tv</b> and videos I discover on Shelby with my friends on my Facebook Timeline
+		</p>
+	</div>
 </div><!-- eo onboarding_layout_body -->

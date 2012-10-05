@@ -18,6 +18,8 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/list.view.js
 //= require ./views/smart_refresh_list.view.js
 //= require ./views/paging_list.view.js
+//= require ./views/inline_explore_promo.view.js
+//= require ./views/inline_roll_promo.view.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/dashboard.view.js
@@ -39,6 +41,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/shelby_autocomplete.view.js
 //= require ./views/rolling_selection_item.view.js
 //= require ./views/rolling_selection_list.view.js
+//= require ./views/banner_notifications/generic_banner_notification.view.js
 //= require ./views/share.view.js
 //= require ./views/message.view.js
 //= require ./browser.js

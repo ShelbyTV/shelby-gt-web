@@ -1,0 +1,15 @@
+defaults: &defaults
+  username: "smtp_login@shelby.tv"
+  password: "$h3lby"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production: &production
+  <<: *defaults
+  
+arnold:
+  <<: *production

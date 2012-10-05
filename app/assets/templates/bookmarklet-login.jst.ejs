@@ -1,22 +1,50 @@
-
-<div class="guide-overlay-header rolling-header">
-  <div class="guide-overlay-title">
-    <button class="cancel js-login-cancel js-track-event">
-      <i class="button_icon icon_cancel cancel-icon">
+<div class="overlay_header guide-overlay-head rolling-header">
+  <div class="guide-overlay-head-lining">
+    <button class="guide-overlay-cancel js-login-cancel js-track-event">
+      <i class="button_icon_left icon_cancel cancel-icon">
         Cancel
       </i>
     </button>
 
-    <h2 class="title">
-      Login
+    <h2 class="guide-overlay-header">
+      Shelby Video Radar / Login
     </h2>
-  </div>
-</div> 
+  </div><!-- eo .guide-overlay-head-lining -->
+</div><!-- eo .guide-overlay-head.rolling-header -->
 
-<a class="bookmarklet-login-twitter" target="_blank" href="<%=twitterDomain%>">
-  Login with Twitter
-</a>
+<div class="overlay_body guide-overlay-body rolling-body">
+	
+	<div class="login-explanation">
+		<p>Nice, you have Shelby Video Radar installed!</p>
+		<p>Just need you to login before we can detect video...</p>
+	</div>
+	
+	<hr />
+	
+	<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>?redir=<%= window.location.href %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
+		<fieldset class="">
+			<label for="username" class="form_label">Username</label>
+			<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
+		</fieldset>
+		<fieldset class="">
+			<label for="password" class="form_label">Password</label>
+			<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
+		</fieldset>
+		<fieldset class="form_fieldset">
+			<input name="commit" type="submit" value="Login" class="login-submit" />
+		</fieldset>
+	</form>
+	
+	<hr />
+	
+	<div class="clearfix">
+	  <a class="bookmarklet-login-twitter" target="_blank" href="<%=twitterDomain%>">
+	    Login with Twitter
+	  </a>
 
-<a class="bookmarklet-login-facebook" target="_blank" href="<%=facebookDomain%>">
-  Login with Facebook
-</a>
+	  <a class="bookmarklet-login-facebook" target="_blank" href="<%=facebookDomain%>">
+	    Login with Facebook
+	  </a>
+	</div>
+	
+</div><!-- eo guide-overlay-body.rolling-body -->

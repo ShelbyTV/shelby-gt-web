@@ -149,6 +149,21 @@
 
 }
 
+#login-guide-window .login-explanation {
+  margin: 20px 0 0 10px;
+  font-size: 1.2em;
+}
+
+.login-form {
+  margin: 0 10px;
+}
+
+.login-submit {
+  @include button-primer();
+  
+  margin-top: .5em;
+}
+
 .bookmarklet-login-twitter,  
 .bookmarklet-login-facebook {
   border-radius: 3px;
@@ -156,17 +171,17 @@
   float: left;
   font: 0/0 a;
   height: 40px;
-  margin: 10px 65px;
+  margin: 10px 10px;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
   width: 200px;
 }
 
-.bookmarklet-login-twitter {
+.bookmarklet-login-twitter, a.bookmarklet-login-twitter {
   @include x-logged-out-networks-buttons($twitter-blue);
   line-height: 3.5;
-  margin-top: 35px;
+  margin-top: 10px;
   &:before {
     background-image: url($icon-share-twitter-on);
     background-position: center center;
@@ -174,7 +189,7 @@
   }
 }
 
-.bookmarklet-login-facebook {
+.bookmarklet-login-facebook, a.bookmarklet-login-facebook {
   @include x-logged-out-networks-buttons($facebook-blue);
   line-height: 3.5;
   &:before {
@@ -238,19 +253,26 @@
 }
 
 .embedded-buttons {
+  background-image: none;
+  border: none;
   border-radius: 5px 0 0 5px;
   box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
   list-style-type: none;
-  margin: 0 0 0 100%;
-  margin-bottom: 28px;
-  margin-top: 2px;
+  margin: 2px 0 28px 100%;
+  padding: 0;
   width: 80px;
 
   li {
     background-color: #EEE;
+    background-image: none;
+    border: none;
     border-radius: 5px;
     height: 31px;
+    list-style-type: none;
     margin: 0;
+    outline: none;
+    padding: 0;
+    position: relative;
     width: 100%;
 
     .all-comment,
@@ -258,7 +280,7 @@
     .all-queue,
     .all-creator {
       &:hover {
-        background-color: darken(#eee, 15%);
+        background-color: darken(#eee, 15%) !important;
       }
     }
 
@@ -327,7 +349,7 @@
   width: 100% !important;
 
   &.queued {
-    background-color: darken(#eee,10%);
+    background-color: darken(#eee,10%) !important;
     cursor: default;
 
     i {

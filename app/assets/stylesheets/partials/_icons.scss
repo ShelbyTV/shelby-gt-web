@@ -1,14 +1,18 @@
-//------------------------------------------------------------------------------
-//  icons list
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  $icons, icon keywords are whitespace-delineated because Sass, scary right?
+////////////////////////////////////////////////////////////////////////////
 $icons:
+  arrow_left
+  arrow_right
   avatar
   cancel
   carrot
   chevron
   comment_reply
   email
+  iphone
   missing_thumb
+  logo_type
   onboarding_play
   player_fullscreen_disable
   player_fullscreen_enable
@@ -28,13 +32,11 @@ $icons:
   star
   videocard_comment
   videocard_queue
-  videocard_roll
-  videocard_roll_on;
+  videocard_roll;
 
 //------------------------------------------------------------------------------
 //  ICON CLASS CONSTRUCTOR
 //------------------------------------------------------------------------------
-
 @each $icon in $icons {
   .icon_#{$icon} {
     @include icon-primer($icon);
@@ -44,14 +46,20 @@ $icons:
 //------------------------------------------------------------------------------
 //  button icon module
 //------------------------------------------------------------------------------
-.button_icon_right,
-.button_icon {
+.button_icon_center,
+.button_icon_left,
+.button_icon_right {
   background-repeat: no-repeat;
   background-size: auto;
   font-style: normal;
 }
 
-.button_icon {
+.button_icon,
+.button_icon_center {
+  background-position: center center;
+}
+
+.button_icon_left {
   background-position: center left;
 }
 

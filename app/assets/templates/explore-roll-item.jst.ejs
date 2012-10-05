@@ -2,7 +2,7 @@
   <div class="explore-roll-header clearfix">
     <a href="#" onclick="return false;" class="explore-link js-explore-link js-track-event" data-ga_category="Explore" data-ga_action="Click roll title" data-ga_label="<%= roll.get('title') %>">
       <h2 class="explore-header">
-        <%= roll.get('title') %>
+        <%= roll.get('display_title') || roll.get('title') %>
       </h2>
       <p class="explore-subline">
         <!-- somedomain.com | -->See all…

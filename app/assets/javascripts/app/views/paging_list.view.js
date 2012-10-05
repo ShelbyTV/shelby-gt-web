@@ -38,6 +38,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
+    noMoreResultsViewProto : null,
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
   }),
@@ -57,7 +58,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _cleanup : function(){
     this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    $('#js-guide-body').unbind('scroll');
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
 
@@ -98,6 +98,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
       this._disableLoadMore();
+      if (this.options.noMoreResultsViewProto && (this._numItemsLoaded != 0 || items.length)) {
+        this.appendChild(new this.options.noMoreResultsViewProto());
+      }
     } else {
       this._loadMoreEnabled = true;
     }

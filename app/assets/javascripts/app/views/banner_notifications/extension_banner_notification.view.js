@@ -7,15 +7,13 @@
  *            But it's not necessary right now and would be over-engineering.
  */
  
-libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
+libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotification.extend({
   
   _appProgressKey: "extension",
   
   events : {
     "click .js-dismiss-extension-banner" : "_dismissExtensionBanner"
   },
-  
-  el : '#js-notification-banner-wrapper',
   
   _height: "70px",
   
@@ -35,10 +33,7 @@ libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
     }
   },
   
-  render : function(){
-    this._originalWrapperTop = $("#js-shelby-wrapper").css('top');
-    $("#js-shelby-wrapper").css({top: this._height});
-    
+  bannerElement : function(){
     if( Browser.isChrome() && false ){
       // disabled until we have the extension in the chrome store
       this.$el.html(this._chromeExtensionTemplate());
@@ -46,18 +41,10 @@ libs.shelbyGT.ExtensionBannerNotification = Support.CompositeView.extend({
     else {
       this.$el.html(this._bookmarketTemplate());
     }
-    
-    this.$el.show();
-  },
-  
-  _unRender : function(){
-    $("#js-shelby-wrapper").css({top: this._originalWrapperTop});
-    this._leaveChildren();
-    this.$el.hide();
   },
   
   _dismissExtensionBanner : function(){
-    this._unRender();
+    this.unRender();
     this._updateAppProgress(true);
   },
   

@@ -27,7 +27,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
       doCheck : libs.shelbyGT.SmartRefreshCheckType.key,
       doSmartRefresh : true,
       el : '.js-roll-category-list',
-      keyAttribute : 'category',
+      keyAttribute : 'category_title',
       listItemViewAdditionalParams : {
         activationStateModel : shelby.models.exploreGuide,
         exploreGuideModel : shelby.models.exploreGuide

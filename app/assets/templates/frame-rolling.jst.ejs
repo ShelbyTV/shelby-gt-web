@@ -1,19 +1,24 @@
 <% var frameTitle     = frame.get('video').get('title') || '' %>
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var userNickname   = user.get('nickname') || 'your personal '%>
-<div class="overlay_header guide-overlay-header conversation-header">
-  <div class="guide-overlay-title">
-    <button class="cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
-      <i class="button_icon icon_cancel cancel-icon">
+<div class="overlay_header guide-overlay-head framerolling-head">
+  <div class="guide-overlay-head-lining">
+    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      <i class="button_icon_left icon_cancel cancel-icon">
         Cancel
       </i>
     </button>
-    <h2 class="top-line">Destination:</h3>
- 		<h2 class="bottom-line"><%= userNickname + '.' %>shelby.tv</h2>
-  </div>
-</div>
 
-<div class="overlay_body guide-overlay-body conversation-body">
+    <h2 class="guide-overlay-header">
+      Destination:
+      <span class="destination">
+        <%= userNickname + '.' %>shelby.tv
+      </span>
+    </h2>
+  </div><!-- eo guide-overlay-head-lining -->
+</div><!-- eo guide-overlay-head.framerolling-head -->
+
+<div class="overlay_body guide-overlay-body framerolling-body">
   <form class="form_module">
     <h1 class="xframe-title" title="<%= frameTitle %>">
       <%= frameTitle %> 
