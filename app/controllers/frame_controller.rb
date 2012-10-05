@@ -20,7 +20,7 @@ class FrameController < ApplicationController
     else @share_type = :rolling
     end
     
-    if (user_signed_in? and @share_type != :genius) or params[:iso_roll]
+    if user_signed_in? and @share_type != :genius
       render '/home/app'
     else
       
@@ -40,6 +40,14 @@ class FrameController < ApplicationController
       
     end
   end
+  
+  # GET /isolated_roll/:roll_id/frame/:frame_id
+  # to allow linking to a frame within a subdomain'd iso roll
+  #  
+  def show_frame_in_isolated_roll
+    render '/home/app'
+  end
+  
   
   # GET /frame/:frame_id
   #
