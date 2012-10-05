@@ -154,6 +154,18 @@ $landing-page-shelf-background: #ddd;
   font-size: 1.5em;
 }
 
+.landing-button-large {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin: 25px 0 10px;
+  padding: 1.05em 1.35em;
+
+  &:link,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /********************************************************
  * All Share Shelves
  ********************************************************/
@@ -269,6 +281,12 @@ $landing-page-shelf-background: #ddd;
 
 }
 
+.landing-signmeup-submit {
+  font-size: .825em;
+  margin:1px 0 0;
+  vertical-align: top;
+}
+
 /********************************************************
  * _call_to_action
  ********************************************************/
@@ -314,17 +332,6 @@ $landing-page-shelf-background: #ddd;
   height: inherit;
 }
 
-.landing-cta-button {
-  font-size: 1.3em;
-  font-weight: 700;
-  margin: 25px 0 10px;
-  padding: 1.05em 1.35em;
-
-  &:link,
-  &:hover {
-    text-decoration: none;
-  }
-}
 /********************************************************
  * _direct_email_share - Share Shelf
  ********************************************************/
