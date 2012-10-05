@@ -1,8 +1,61 @@
+@each $name in $color-names {
+  .button_#{$name} {
+    $base: name-to-value($name);
+    //take the color-name and look up the corresponding color-value
+
+    @include gradient-primer($base);
+
+    border: 1px solid if($base == blue, $base, darken($base,20%));
+    box-shadow: inset 0 1px 0 0 lighten($base, 20%), //inner top hightlight
+                inset 0 -1px 0 0 darken($base, 5%);
+//    color: darken($base, 50%);
+    color: if($name == blue, $button-color, $button-color-light);
+    text-shadow: if($name == blue, $shadow-text, none);
+
+    &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+        $base-hover: lighten($base, 5%);
+
+        @include gradient-primer($base-hover);
+
+        border: 1px solid darken($base-hover,10%);
+        box-shadow: inset 0 1px 0 0 lighten($base-hover, 20%), //inner top hightlight
+                    inset 0 -1px 0 0 darken($base-hover, 5%);
+    }
+
+    &:not([disabled]):not(.disabled):not(.visuallydisabled):active {
+        $base-active: darken($base, 5%);
+
+        @include gradient-primer($base-active);
+
+        border: 1px solid darken($base-active, 50%);
+        box-shadow: inset 0 1px 0 0 lighten($base-active, 20%), //inner top hightlight
+                    inset 0 -1px 0 0 darken($base-active, 5%);
+    }
+
+    &[disabled],
+    &.disabled {
+        color: darken($base, 30%);
+    }
+
+    &:visited {
+        color: darken($base, 50%);
+    }
+
+    &.disabled {
+       &:active,
+       &:hover,
+       &:link,
+       &:visited {
+        color: darken($base, 30%);
+       }
+    }
+  }//eo .button_#{$name}
+}
+
 //------------------------------------------------------------------------------
 //  utility classes are special-case classes
 //  non-normative
 //------------------------------------------------------------------------------
-
 .appstore-button {
   @include button-primer($shelby-blue);
 
