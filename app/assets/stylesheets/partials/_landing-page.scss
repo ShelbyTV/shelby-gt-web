@@ -544,3 +544,25 @@ $landing-page-shelf-background: #ddd;
 .fb_edge_widget_with_comment {
   margin-bottom: 2px;
 }
+
+@media all and (max-width: 720px) {
+  .landing-signmeup {
+    font-size: .8em;
+  }
+
+  .landing-signmeup-form {
+    .form_label {
+      display: block;
+    }
+  }
+
+  .landing-shelf-lining {
+    &.half {
+      float: none;
+      width: auto;
+    }
+  }
+  .landing-cta {
+    height: auto;
+  }
+}
