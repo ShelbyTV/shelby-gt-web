@@ -96,7 +96,8 @@
 //  list of frames per roll
 //------------------------------------------------------------------------------
 .explore-roll-list {
-
+  /* so that dynamic addition of the frames doesn't jump the layout */
+  min-height: 220px;
 }
 
 .explore-roll-item {
@@ -111,11 +112,21 @@
 }
 
 .explore-frame {
+  @include transition-property('opacity');
+	@include transition-duration(.5s);
+	@include transition-timing-function(linear);
+	@include transition-delay(0s);
+	
   display: block;
   height: 200px;
   margin: 10px;
+  opacity: 1.0;
   position: relative;
 
+  &.transparent {
+    opacity: 0.0;
+  }
+  
   &:hover {
     .menu_module {
       display: block;

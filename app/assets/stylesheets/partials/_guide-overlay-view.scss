@@ -66,6 +66,11 @@
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
 
+#guide-header-roll-header-image {
+  background-image: url("http://2.bp.blogspot.com/-tZNMrc0u5L0/UGCC1KsK4GI/AAAAAAAACJk/YPj4DbglrcQ/s1600/fire.jpeg");
+  height: 150px;
+}
+
 .guide-header-lining,
 .xguide-overlay-context {
   background-color: adjust-lightness($guide-bg-color, -5%);
@@ -80,6 +85,10 @@
 //    background-image: url($icon-missing-thumbnail);
 //    background-size: 20%;
 //  }
+}
+
+.isolated-roll .guide-header-lining {
+  border: none;
 }
 
 .guide-overlay-context-overview {
@@ -106,11 +115,19 @@
   z-index: 1;
 }
 
+.isolated-roll .guide-header-title {
+  font-weight: 100;
+  line-height: 1.9;
+  text-shadow: 0px 1px #eee;
+}
+
+/* iso-roll button */
 .guide-header-button {
-  @include button-primer($shelby-gray, dark,frame-command);
+  @include button-primer();
   
   float: right;
-  margin: 10px;
+  margin: 2px 4px;
+  padding: .6em 1em .65em;
 }
 
 .guide-follow-button {

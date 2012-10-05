@@ -16,6 +16,8 @@ $(document).ready(function(){
 
 _(shelby).extend({
   track : function(action, options){
+    options = _.extend({}, options);
+
     var _gaCategory, _gaAction, _gaLabel = options.userName;
 
     try {
@@ -92,6 +94,20 @@ _(shelby).extend({
           _gaCategory = 'Avatar';
           _gaAction = "Upload fail";
           _kmq.push(['record', action, {nickname: options.userName}]);
+          break;
+        case 'Click explore promo':
+        case 'Show explore promo':
+          _gaCategory = 'Promo';
+          _gaAction = action;
+          _gaLabel = 'explore';
+          _kmq.push(['record', action, {label: 'explore'}]);
+          break;
+        case 'Click roll promo':
+        case 'Show roll promo':
+          _gaCategory = 'Promo';
+          _gaAction = action;
+          _gaLabel = options.id;
+          _kmq.push(['record', action, {roll: options.id}]);
           break;
         default:
           _gaAction = 'unknown';

@@ -1,4 +1,4 @@
-libs.shelbyGT.InStreamExplorePromoView = Support.CompositeView.extend({
+libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
 
   tagName : 'li',
 
@@ -7,15 +7,17 @@ libs.shelbyGT.InStreamExplorePromoView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['in-stream-explore-promo'](obj);
+    return JST['inline-explore-promo'](obj);
   },
 
   render : function(){
     this.$el.html(this.template({}));
+    shelby.track('Show explore promo');
   },
 
   _gotoExplore : function(){
     shelby.router.navigate('explore', {trigger:true});
+    shelby.track('Click explore promo');
   }
 
 });

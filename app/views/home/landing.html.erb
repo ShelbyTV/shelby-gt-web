@@ -107,12 +107,14 @@
 		<% end %>
 
 		<% #------------ Shelf Content --------------- %>
-		<% if @share_type == :genius %> 		<%= render :partial => "/home/shelf/genius_email_share" %>
-		<% elsif @share_type == :email %> 	<%= render :partial => "/home/shelf/direct_email_share" %>
-		<% elsif @share_type == :rolling %>	<%= render :partial => "/home/shelf/rolling_share" %>
+		<% if @video %>
+		  <% if @share_type == :genius %> 		<%= render :partial => "/home/shelf/genius_email_share" %>
+		  <% elsif @share_type == :email %> 	<%= render :partial => "/home/shelf/direct_email_share" %>
+		  <% elsif @share_type == :rolling %>	<%= render :partial => "/home/shelf/rolling_share" %>
+		  <% end %>
 		<% end %>
-		<%= render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => !@share_type } %>
-		<%= render :partial => "/home/shelf/private_beta" unless @share_type %>		
+		<%= render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => (!@share_type or !@video)} %>
+		<%= render :partial => "/home/shelf/private_beta" unless @share_type and @video %>
 		<% #------------ /Shelf Content --------------- %>
 		
 		<footer class="landing-footer">
