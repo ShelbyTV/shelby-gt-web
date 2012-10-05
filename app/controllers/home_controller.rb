@@ -21,6 +21,7 @@ class HomeController < ApplicationController
           @roll = Shelby::API.get_roll(@isolated_roll_id)
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
           
+          @frame_id = get_frame_from_path(params[:path])
           render '/home/isolated_roll' and return
         end
 
@@ -123,6 +124,11 @@ class HomeController < ApplicationController
         @roll = Shelby::API.get_roll(path_match[1])
         @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       end
+    end
+    
+    def get_frame_from_path(path)
+       frame_id = /(\w*)/.match(params[:path])
+       frame_id[1] if frame_id and BSON::ObjectId.legal?(frame_id[1])
     end
 
 end
