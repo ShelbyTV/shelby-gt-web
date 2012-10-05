@@ -298,20 +298,6 @@ p {
 }
 
 //------------------------------------------------------------------------------
-//  SHELBY GENIUS APP AD
-//------------------------------------------------------------------------------
-.appstore-button {
-  margin: 0px;
-  float: none;
-  font-size: 1em;
-}
-
-.seovideo-genius-ad {
-  margin-top: 50px;
-  text-align: center;
-}
-
-//------------------------------------------------------------------------------
 //  media query,
 //	when window is NARROWER than 850px
 //------------------------------------------------------------------------------
@@ -321,7 +307,12 @@ p {
 		float: none;
 	        max-width: $seo-column-left;
 		width: auto;
+                margin-left: 8px;
 	}
+
+        .seovideo-messages {
+                margin-left: 8px;
+        }
 
         .seovideo-genius-ad {
                 display: none;

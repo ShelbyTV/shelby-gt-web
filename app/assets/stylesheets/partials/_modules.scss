@@ -1,10 +1,180 @@
+//------------------------------------------------------------------------------
+//  Button Primer
+//------------------------------------------------------------------------------
+.button_primer {
+  @include roundies(input);
+
+  font-family: $font-family-display;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+      cursor: pointer;
+  }
+
+  &.visuallydisabled,
+  &.disabled {
+      cursor: default;
+  }
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):focus {
+      border: 1px solid black;
+      outline: none;
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+//  faux_button should be applied to
+//  elements that will be styled by .button_primer
+//  but are not <button> elements, i.e. <a> elements
+////////////////////////////////////////////////////////////////////////////
+.faux_button {
+    display: inline-block;
+
+    &:active,
+    &:hover,
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  "for now"
+//  specific padding mixins so you don't lose consistency
+////////////////////////////////////////////////////////////////////////////
+@mixin button-sizing($use: generic) {
+    @if $use == frame-command {
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  } @elseif $use == explore-rolls {
+    padding-top: .8em;
+    padding-bottom: .75em;
+    //------------------------------------------------------
+    //  follow/unfollow need to be the same size.
+    //  setting the WIDTH normalizes them,
+    //  rather than having the width delegated by the padding
+    //------------------------------------------------------
+    width: 100px;
+  } @elseif $use == wide {
+    padding-top: .8em;
+    padding-right: 3em;
+    padding-bottom: .75em;
+    padding-left: 3em;
+  } @elseif $use == guide-close {
+    padding: .6em;
+  } @elseif $use == generic {//generic
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  }
+}
+//------------------------------------------------------------------------------
+//  $color-names and $color-values
+//  the indexes of each correspond.
+//  (Sass doesn't have multi-dimensional arrays or anything really cool,
+//  so we have to fake it by matching the indexes of two arrays.)
+//------------------------------------------------------------------------------
+@function name-to-value($name) {
+  ////////////////////////////////////////////////////////////////////////////
+  //  cool little look-up table technique lifted from D. Eppstein
+  //  https://groups.google.com/forum/#!msg/sass-lang/upr78cyrW1I/_5xLPA9yYjUJ
+  ////////////////////////////////////////////////////////////////////////////
+  @return nth($color-values, index($color-names, $name));
+}
+////////////////////////////////////////////////////////////////////////////
+//  REFERENCE TABLE
+//  ---------------------
+//  blue       : #0590c4;
+//  default    : #eeeeee;
+//  gray       : #27292A;
+//  gray-light : #a0a0a0;
+//  green      : #428e3a;
+//  purple     : #693a7b;
+//  red        : #cc1235;
+//  yellow     : #d5cd39;
+////////////////////////////////////////////////////////////////////////////
+    $color-names:
+    blue       ,
+    default    ,
+    gray       ,
+    gray-light ,
+    gray-medium,
+    green      ,
+    purple     ,
+    red        ,
+    yellow     ;
+
+    $color-values:
+    #0590c4,
+    #eeeeee,
+    #27292A,
+    #a0a0a0,
+    #dddddd,
+    #428e3a,
+    #693a7b,
+    #cc1235,
+    #d5cd39;
+
+
+@each $name in $color-names {
+  .button_#{$name} {
+    $base: name-to-value($name);
+    //take the color-name and look up the corresponding color-value
+
+    background: $base;
+    border: 1px solid darken($base,25%);
+    box-shadow: inset 0 1px 0 0 lighten($base, 20%), //inner top hightlight
+                inset 0 -1px 0 0 darken($base, 5%);
+    color: darken($base, 50%);
+
+    &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+        $base-hover: lighten($base, 5%);
+
+        background: lighten($base-hover,5%);
+        border: 1px solid lighten($base-hover,2%);
+        box-shadow: inset 0 1px 0 0 lighten($base-hover, 20%), //inner top hightlight
+                    inset 0 -1px 0 0 darken($base-hover, 5%);
+    }
+
+    &:not([disabled]):not(.disabled):not(.visuallydisabled):active {
+        $base-active: darken($base, 5%);
+
+        background: darken($base-active, 10%);
+        border: 1px solid darken($base-active, 50%);
+        box-shadow: inset 0 1px 0 0 lighten($base-active, 20%), //inner top hightlight
+                    inset 0 -1px 0 0 darken($base-active, 5%);
+    }
+
+    &[disabled],
+    &.disabled {
+        color: darken($base, 30%);
+    }
+
+    &:visited {
+        color: darken($base, 50%);
+    }
+
+    &.disabled {
+       &:active,
+       &:hover,
+       &:link,
+       &:visited {
+        color: darken($base, 30%);
+       }
+    }
+  }//eo .button_#{$name}
+}
+
 //---------------------------
 //  EXPERIMENTAL:
 //  should arbitrary button get a class that gives it its color?
 //  i.e.: <button class="form_submit submit-share shelby-blue">Submit</button>
 //---------------------------
-
-$list : blue, green, default;
+$list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
 @each $color in $list {
   .shelby-#{$color} {
     @include loopable-button-primer($color);
@@ -14,7 +184,6 @@ $list : blue, green, default;
 //---------------------------
 //  TODO: fix this list shit
 //---------------------------
-
 .list,
 .rolls-list,
 .form-rolls-list,
@@ -297,6 +466,21 @@ $list : blue, green, default;
 
   .form_submit {
     display: inline;
+
+    .spinner {
+      left: auto;
+      margin-left: -4px;
+      margin-top: -2px;
+      position: relative;
+    }
+
+    &:hover {
+      @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+    }
+
+    &:active {
+      @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+    }
   }
 }
 

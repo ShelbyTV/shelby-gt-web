@@ -75,7 +75,7 @@
       if (this.model) {
         this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
         var videoTitle = this.model.getFirstFrame() && this.model.getFirstFrame().get('video') && this.model.getFirstFrame().get('video').get('title');
-        $("#guide-nowplaying-label").text( videoTitle || 'Now Playing');
+        $("#guide-nowplaying-label .video-title").text( videoTitle || 'Now Playing');
         $("#js-guide-nowplaying").show();
       } else {
         this.$el.html('');

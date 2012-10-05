@@ -12,6 +12,7 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-admin"                      : "_goToAdmin",
       "click .js-now-playing"                : "_nowPlaying"
     },
 
@@ -51,6 +52,10 @@
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate('me', {trigger:true});
       }
+    },
+    
+    _goToAdmin : function(){
+      document.location = "http://api.shelby.tv/admin/new_users";
     },
     
     _explore : function(){

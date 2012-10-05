@@ -2,6 +2,9 @@ module ApplicationHelper
   
   #valid avatar_size options are "sq192x192", "sq48x48", and "original"
   def avatar_url_for_user(user, avatar_size="sq48x48")
+
+    return "/images/assets/avatar.png" unless user
+
     if user['has_shelby_avatar']
       return "#{Settings::Application.avatar_url_root}/#{avatar_size}/#{user['id']}"
     else

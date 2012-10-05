@@ -1,10 +1,14 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var InStreamExplorePromoView = libs.shelbyGT.InStreamExplorePromoView;
+  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
+  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
+  var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
+
+    _nextPromoExplore: true,
 
     frameGroupCollection : null,
 
@@ -14,7 +18,7 @@
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
       },
-      noMoreResultsViewProto : InStreamExplorePromoView,
+      noMoreResultsViewProto : InlineExplorePromoView,
       pagingKeySortOrder : -1
     }),
 
@@ -58,6 +62,37 @@
     _onItemsLoaded : function(rollModel, items){
       PagingListView.prototype._onItemsLoaded.call(this, rollModel, items);
       this._loadMoreWhenLastItemActive();
+    },
+
+    //ListView overrides
+    _intervalInsertViews : function() {
+      //we'll just randomly choose to show a promo for the explore section or for a specific roll
+      if (this._nextPromoExplore) {
+        this._nextPromoExplore = false;
+        return new InlineExplorePromoView();
+      } else {
+        var promoRolls =
+          shelby.models.promoRollCategories.get('roll_categories').reduce(function(memo, category){
+            return memo.concat(category.get('rolls').models);
+          }, []);
+        //only consider rolls that have all the needed attribtues to render a promo
+        promoRolls = promoRolls.filter(this._filterPromoRolls, this);
+        if (promoRolls.length) {
+          var rollsCollection = new Backbone.Collection();
+          //select one of the promo rolls at random to display in the promo
+          rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
+          this._nextPromoExplore = true;
+          return new InlineRollPromoView({model:rollsCollection});
+        } else {
+          this._nextPromoExplore = false;
+          //we don't have any rolls to promo, so promo explore instead
+          return new InlineExplorePromoView();
+        }
+      }
+    },
+
+    _filterPromoRolls : function(roll) {
+      return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
     }
 
   });

@@ -44,31 +44,40 @@
       	var cb = function(res){
        	// Create array of returned YouTube video URLs
        	var urls = new Array();
-				res.forEach(function(r){
-					if (r.link != undefined) {
-					  r.link.forEach(function(l){
-					  	if(l.rel != undefined && l.rel == "alternate") {
-						  	if(l.href != undefined) {
-						    	urls.push(l.href);
-						  	}
-				  		}
-			  		});	
-					}
-				});
-
-				// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-				$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
-					if (data.status == 200){
-						var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
-						if (window.cache){
-							var _searchHistory = window.cache.get('searchHistory');
-							_searchHistory[search] = _rollUrl;
-							cache.set('searchHistory', _searchHistory);
+				if (typeof res !== 'undefined'){
+					res.forEach(function(r){
+						if (r.link != undefined) {
+						  r.link.forEach(function(l){
+						  	if(l.rel != undefined && l.rel == "alternate") {
+							  	if(l.href != undefined) {
+							    	urls.push(l.href);
+							  	}
+					  		}
+				  		});	
 						}
-						window.location = _rollUrl;
-					}
-					else { alert("something went wrong."); }
-				});
+					});					
+				}
+				
+				if (urls.length !== 0) {
+					// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
+					$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
+						if (data.status == 200){
+							var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
+							if (window.cache){
+								var _searchHistory = window.cache.get('searchHistory');
+								_searchHistory[search] = _rollUrl;
+								cache.set('searchHistory', _searchHistory);
+							}
+							window.location = _rollUrl;
+						}
+						else { alert("something went wrong."); }
+					});	
+				}
+				else {
+					$('.mobile-search-submit').prop('enabled', true);
+					$('#mobile-search-spinner').html('');
+					$('#mobile-search-input').val('').attr('placeholder','sorry, nothing turned up');
+				}
    		};
 							
      	// Call ytQuery.query, passing params and your callback

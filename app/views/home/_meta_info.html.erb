@@ -4,18 +4,18 @@
 	<meta property="og:locale" content="EN_us" />
 <% end %>
 
-<% if @frame and @video %>
+<% if @frame and @video and @roll %>
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider'], @video['id']) %>" /> 
-	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider'], @video['id'], "https") %>" /> 
+	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
+	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id'], "https") %>" /> 
 	<meta property="og:title" content="<%= @video['title'] %>" /> 
 	<meta property="og:description" content="<%= @video['description'] %>" />	
 	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 	
 <% elsif @roll and @user %>
 	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
-	<% user_roll_description = "#{user_roll_title} curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
+	<% user_roll_description = "#{user_roll_title} is curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
 	<meta property="og:type" 		content="shelbytv:roll" />
 	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv" /> 
 	<meta property="og:title" content="<%= user_roll_title %>" /> 
@@ -34,7 +34,6 @@
 	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
 	
 <% else %>
-	<% Rails.logger.info "nada present" %>
 	<meta name="description" content="<%= Settings::Application.meta_description %>">
 
 <% end %>

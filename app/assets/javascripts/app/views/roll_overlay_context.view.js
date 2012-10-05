@@ -5,7 +5,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     "click .js-full-shelby-button" : "_goFullShelby"
   },
 
-  className : 'guide-header-lining clearfix',
+  className : 'guide-header-wrapper clearfix',
 
   template : function(obj){
     return JST['guide-header-lining'](obj);
