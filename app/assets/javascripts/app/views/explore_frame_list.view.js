@@ -8,12 +8,22 @@ libs.shelbyGT.ExploreFrameListView = libs.shelbyGT.ListView.extend({
       collectionAttribute : 'frames',
       doDynamicRender : false, // we don't want to show more than three frames even if other activities in the app
                                // fetch more frames for this roll later
-      doStaticRender : true,
-      maxDisplayedItems: 3
+      doStaticRender : true
   }),
 
   initialize : function() {
     _(this.options).extend({
+      displayCollection : new libs.utils.UniqueCollection(null, {
+        uniquenessValue : function(item){
+          var video = item.get('video');
+          if (video) {
+            return 'videoid:' + item.get('video').id;
+          } else {
+            return 'frameid:' + item.id;
+          }
+        },
+        maxDisplayedItems : 3
+      }),
       listItemView : function(item, params){
           params = _.extend({}, params, {
             roll : this.model
