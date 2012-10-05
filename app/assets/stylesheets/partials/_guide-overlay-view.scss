@@ -83,6 +83,10 @@
   float: right;
   padding: button-padding(isolated-roll-header);
   margin: 4px 6px 4px 0;
+
+  &.button-active {
+    @include button(blue,$shelby-blue);
+  }
 }
 //------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
@@ -122,11 +126,6 @@
   position: relative;
   width: inherit;
   z-index: 1;
-}
-
-
-.guide-header-button-highlighted {
-  @include button-primer($shelby-blue, dark,frame-command);
 }
 
 .guide-overlay-context-creator {
