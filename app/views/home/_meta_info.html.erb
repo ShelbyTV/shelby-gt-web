@@ -37,8 +37,8 @@
 		<meta property="og:video:url" content="<%= @video_source_url %>" /> 
 		<meta property="og:video:secure_url" content="https://<%= @video_source_url[7..-1] if @video_source_url %>" />
 	<%= else %>
-		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id']) %>" /> 
-		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id'], 'https') %>" /> 		
+		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
+		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id, 'https') %>" /> 		
 	<% end %>
 	<meta property="og:title" content="<%= @video_title %>" /> 
 	<meta property="og:description" content="<%= @video_description %>" />	
