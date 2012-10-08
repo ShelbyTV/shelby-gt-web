@@ -182,7 +182,8 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
 //  SHARED BY HORIZONTAL + VERTICAL FORMS
 ////////////////////////////////////////////////////////////////////////////
 .form_submit {
-  @include button-primer($shelby-blue, dark, wide);
+//  @include button-primer($shelby-blue, dark, wide);
+  @include button-sizing(wide);
 
   .spinner {
     left: auto;
@@ -191,13 +192,13 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
     position: relative;
   }
 
-  &:hover {
-    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
-  }
+//  &:hover {
+//    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+//  }
 
-  &:active {
-    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
-  }
+//  &:active {
+//    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+//  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -304,13 +305,13 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
       position: relative;
     }
 
-    &:hover {
-      @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
-    }
+//    &:hover {
+//      @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+//    }
 
-    &:active {
-      @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
-    }
+//    &:active {
+//      @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+//    }
   }
 }
 
