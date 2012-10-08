@@ -85,6 +85,7 @@ class HomeController < ApplicationController
     def get_isolated_roll_id_from_domain_of_request(request)
       return case request.host
           #TODO: pull this mapping from API
+          when "fredwilson.tv" then "4f8f7fb0b415cc4762000c42"
           when "danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           when "laughingsquid.tv" then "4fc637879a725b755d001f77"
