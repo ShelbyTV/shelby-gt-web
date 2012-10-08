@@ -214,10 +214,14 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-feature-link {
-  display: block;
+  display: inherit;
+  margin-right: 2em;
 }
 
 .landing-feature-techcrunch {
+}
+
+.landing-feature-guardian {
 }
 
 /********************************************************
