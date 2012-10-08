@@ -100,5 +100,10 @@ libs.shelbyGT.viewHelpers.roll = {
     return roll &&
     (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll);
+  },
+  
+  guideHeaderImageURL : function(roll){
+    return  shelby.config.rollImagesUrlRoot+'/header/'+roll.id+'/guide_wide/'+roll.get('header_image_file_name');
   }
+  
 };
