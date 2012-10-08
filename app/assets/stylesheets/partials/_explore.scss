@@ -80,7 +80,7 @@
 }
 
 .explore-command {
-  @include button-primer($x-primer-color, $primer-tone, explore-rolls);
+  @include button-sizing(explore-rolls);
 
   float:right;
   margin: 0 .25em 0 .75em;
@@ -88,7 +88,7 @@
   &.command-active {
     //state for the follow/unfollow button,
     //if other modes/states arise this classname probably won't cut it
-    @include button-primer($shelby-blue, dark, explore-rolls);
+    @include button(blue,$shelby-blue);
   }
 }
 
