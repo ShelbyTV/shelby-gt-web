@@ -399,6 +399,31 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
 .social_login {
 }
 
+.social_login-facebook,
+.social_login-twitter {
+  @include button-sizing(social-login);
+
+  margin-right: .7em;
+  text-align: center;
+  width: 100px;
+
+  .icon {
+    background-size: contain;
+    -webkit-background-size: contain;
+    display: block;
+    margin-left: .4em;
+    padding: .5em 1.3em .5em 2.4em;
+  }
+}
+
+.social_login-facebook {
+
+}
+.social_login-twitter {
+
+}
+
+
 .social_login_twitter,
 .social_login_facebook {
   display: block;

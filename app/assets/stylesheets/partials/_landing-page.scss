@@ -71,8 +71,8 @@ $landing-page-footer-font-color: #EFEFEF;
 
 .login-submit,
 .signup-submit {
-  @include button-primer();
-  
+  @include button-sizing;
+
   margin-top: .5em;
 }
 
