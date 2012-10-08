@@ -215,13 +215,19 @@ $landing-page-shelf-background: #ccc;
 
 .landing-feature-link {
   display: inherit;
-  margin-right: 2em;
+  margin-right: 1.5em;
 }
 
 .landing-feature-techcrunch {
+  img {
+    width: 50px;
+  }
 }
 
 .landing-feature-guardian {
+  img {
+    margin-top: 4px;
+  }
 }
 
 /********************************************************
