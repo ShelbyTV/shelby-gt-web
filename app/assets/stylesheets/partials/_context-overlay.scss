@@ -27,6 +27,9 @@
     padding: 3px 5px 0;
   }
 
+  .xframe-footer {
+    min-height: 51px;
+  }
   ////////////////////////////////////////////////////////////////////////////
   //  menu and sublist stuff
   ////////////////////////////////////////////////////////////////////////////
@@ -108,5 +111,6 @@
   .xuser-message {
     overflow-y:auto;
     max-height: 150px;
+    min-height: .7em;
   }
 }//eo .context-overlay-lining
