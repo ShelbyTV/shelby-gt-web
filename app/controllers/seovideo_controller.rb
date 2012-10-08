@@ -71,6 +71,7 @@ private
     @video_embed = @video_response_body_result["embed_url"]
     @video_thumbnail_url = @video_response_body_result["thumbnail_url"]
     @video_related_ids = @video_response_body_result["recs"]
+    @video_source_url = @video_response_body_result['source_url']
 
   end
 
