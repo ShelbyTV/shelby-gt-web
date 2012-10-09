@@ -1,6 +1,7 @@
+<% var userNickname = shelby.models.user.get('nickname') %>
 <div class="external-tools-lining clearfix">
   <h1 class="external-header">
-    Add video to Shelby
+    Add video to <strong><%= (userNickname) ? userNickname + '.shelby.tv' :  'your account' %></strong>
   </h1>
 
   <h2 class="external-lead">

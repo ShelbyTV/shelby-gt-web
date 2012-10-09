@@ -119,6 +119,21 @@
 }
 
 .external-bookmarklet-instructions {
-  max-width: 300px;
-  margin: 0 auto;
+  line-height: 1.4;
+  max-width: 285px;
+  margin: 1em auto;
+  text-align: left;
+
+  ol {
+    padding-left: .9em;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: .5em;
+  }
 }
