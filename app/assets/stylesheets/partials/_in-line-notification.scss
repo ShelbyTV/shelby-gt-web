@@ -23,7 +23,7 @@
 }
 
 .in-line-promo-button {
-  @include button-primer($shelby-blue, dark);
+  @include button-sizing;
   
   float: right;
 }
