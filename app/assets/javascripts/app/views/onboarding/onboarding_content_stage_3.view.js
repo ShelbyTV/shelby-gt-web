@@ -23,7 +23,12 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
   
   _checkFollowShelby : function(){
     if(_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'twitter';})) {
-      var doFollowShelby = $('.js-onboarding-follow-shelby').is(':checked');
+      if($('.js-onboarding-follow-shelby').is(':checked')) {
+        //TODO make this an actual model subclass if we need to do this anywhere else in the app
+        var userToFollow = new libs.shelbyGT.ShelbyBaseModel();
+        userToFollow.url = shelby.config.apiRoot + '/twitter/follow/shelby';
+        userToFollow.save();
+      }
     }
   },
 
