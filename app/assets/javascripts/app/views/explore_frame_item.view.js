@@ -1,7 +1,7 @@
 libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
-    'click .js-explore-frame-thumbnail'       : '_displayVideo',
+    'click .js-play-explore-frame'            : '_displayVideo',
     'click .js-queue-command:not(.js-queued)' : '_queueVideo',
     'click .js-roll-command'                  : '_displayRollVideo'
   },
