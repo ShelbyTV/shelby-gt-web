@@ -70,7 +70,7 @@
                 </button>
 								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
               </li>
-              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll') { %>
+              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
                 <li class="menu_option xframe-item" role="menuitem">
                   <button class="xframe-option command-remove js-remove-frame">
                     Remove Video

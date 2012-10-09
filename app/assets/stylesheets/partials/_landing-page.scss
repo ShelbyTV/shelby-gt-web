@@ -71,8 +71,8 @@ $landing-page-footer-font-color: #EFEFEF;
 
 .login-submit,
 .signup-submit {
-  @include button-primer();
-  
+  @include button-sizing;
+
   margin-top: .5em;
 }
 
@@ -214,10 +214,20 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-feature-link {
-  display: block;
+  display: inherit;
+  margin-right: 1.5em;
 }
 
 .landing-feature-techcrunch {
+  img {
+    width: 50px;
+  }
+}
+
+.landing-feature-guardian {
+  img {
+    margin-top: 4px;
+  }
 }
 
 /********************************************************

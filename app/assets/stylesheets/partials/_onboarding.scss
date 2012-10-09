@@ -454,17 +454,6 @@ $onboarding-head-height: 125px;
   }
 }
 
-//.onboarding-followed-icon {
-//  background-repeat:  no-repeat;
-//  background-position:  center center;
-//  background-image: url($icon-check);
-//  bottom: 0;
-//  display: block;
-//  position: absolute;
-//  top: 0;
-//  width: 100%;
-//}
-
 .onboarding-stage-2-next-step {
   @include button-primer;
 
@@ -489,10 +478,10 @@ $onboarding-head-height: 125px;
 
 .onboarding-network-item {
   display: inline-block;
-  margin-right: 32px;
-  margin-left: 32px;
+  margin-right: 2%;
+  margin-left: 2%;
   padding: 0;
-  width: 20%;
+  width: 25%;
   vertical-align: top;
 }
 
@@ -513,6 +502,7 @@ $onboarding-head-height: 125px;
   font-family: $font-family-display;
   font-size: .9em;
   font-weight: 400;
+  min-height: 55px;
   margin-top: .5em;
 
   span {
@@ -588,11 +578,10 @@ $onboarding-head-height: 125px;
   }
 }
 
-.facebook-timeline-opt-in {
+.onboarding-network-additional-options {
   background-color: #E2E2E2;
-  margin: 0 auto;
+  margin-top: 2.5em;
   padding: 5px;
-  width: 290px;
   text-align: left;
   input { margin: 4px 0 0; }
   p {

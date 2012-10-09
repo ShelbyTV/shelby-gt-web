@@ -11,7 +11,8 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onNextStepClick : function(){
-    this._setTimelineSharing();
+    this._checkFollowShelby();
+    this._checkSetTimelineSharing();
     
     var appProgress = shelby.models.user.get('app_progress');
     shelby.models.user.get('app_progress').advanceStage('onboarding', 3);
@@ -20,10 +21,23 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
     shelby.track('Onboarding step 3 complete', {userName: shelby.models.user.get('nickname')});
   },
   
-  _setTimelineSharing : function(){
-    var _prefs = _.clone(shelby.models.user.get('preferences'));
-    _prefs['open_graph_posting'] = $('#onboarding-timeline-sharing').is(':checked') ? true : false;
-    shelby.models.user.save({preferences: _prefs});
+  _checkFollowShelby : function(){
+    if(_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'twitter';})) {
+      if($('.js-onboarding-follow-shelby').is(':checked')) {
+        //TODO make this an actual model subclass if we need to do this anywhere else in the app
+        var userToFollow = new libs.shelbyGT.ShelbyBaseModel();
+        userToFollow.url = shelby.config.apiRoot + '/twitter/follow/shelby';
+        userToFollow.save();
+      }
+    }
+  },
+
+  _checkSetTimelineSharing : function(){
+    if(_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'facebook';})) {
+      var _prefs = _.clone(shelby.models.user.get('preferences'));
+      _prefs['open_graph_posting'] = $('#onboarding-timeline-sharing').is(':checked') ? true : false;
+      shelby.models.user.save({preferences: _prefs});
+    }
   }
 
 });

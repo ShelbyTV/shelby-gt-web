@@ -76,14 +76,14 @@ $notification-base-color: #fff82b;
 }
 
 .dismiss-banner-notification {
-  @include button-primer;
+  @include button-sizing;
   
   font-size: 1em;
   left: -3px;
   position: absolute;
   top: -3px;
 
-  .dismiss-banner-icon {
+  .icon {
       background-size: contain;
       color: transparent;
       display: block;
@@ -134,15 +134,13 @@ $notification-base-color: #fff82b;
 }
 
 .bookmarklet-drag-button {
-  @include button-primer();
+  @include button-sizing;
 
   display: inline-block;
   font-size: 1.2em;
-  font-weight: 100;
   margin-bottom: 5px;
-  text-decoration: none;
 
-  .roll-icon {
+  .icon {
     padding-left: $button-padding-left;
   }
 }
