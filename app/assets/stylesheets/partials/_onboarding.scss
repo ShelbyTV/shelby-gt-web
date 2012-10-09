@@ -588,9 +588,8 @@ $onboarding-head-height: 125px;
   }
 }
 
-.facebook-timeline-opt-in {
+.onboarding-network-additional-options {
   background-color: #E2E2E2;
-  margin: 0 auto;
   padding: 5px;
   width: 290px;
   text-align: left;
@@ -599,6 +598,11 @@ $onboarding-head-height: 125px;
     line-height: 1.231;
     margin: 0;
   }
+
+}
+
+.facebook-timeline-opt-in {
+  margin: 0 auto;
 }
 
 //------------------------------------------------------------------------------
