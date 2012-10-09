@@ -1,5 +1,5 @@
 <% var nickName = user.get('nickname'); %>
-<% var subdomain = user.has('personal_roll_subdomain') ? user.get('personal_roll_subdomain') : nickname; %>
+<% var subdomain = user.has('personal_roll_subdomain') ? user.get('personal_roll_subdomain') : nickName; %>
 <% var customTvUrl = subdomain + ".shelby.tv"; %>
 <% var avatarUrl = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 
