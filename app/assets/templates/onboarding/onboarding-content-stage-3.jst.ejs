@@ -56,8 +56,7 @@
               Shelby will pull the videos off your<br> <span><%= network %></span> feed.
             <% } %>
           </p>
-          <% console.log(network, disabled);
-             if (network == 'twitter' && disabled){ %>
+          <% if (network == 'twitter' && disabled){ %>
             <div class="twitter-follow-shelby onboarding-network-additional-options clearfix">
               <input id="onboarding-follow-shelby" class="form_checkbox connected-network-checkbox js-onboarding-follow-shelby" name="onboarding-follow-shelby" type="checkbox" checked >
               <label for="onboarding-follow-shelby" class="form_label">
