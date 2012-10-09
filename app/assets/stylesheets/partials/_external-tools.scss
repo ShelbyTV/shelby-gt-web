@@ -3,7 +3,7 @@
 //  external tools pane
 //------------------------------------------------------------------------------
 .external-tools{
-  background-color: #efefef;
+  background-color: $external-bg;
   left: 0;
   overflow-y: auto;
   position: absolute;
@@ -56,22 +56,23 @@
 }
 
 .external-bookmarklet-button-wrapper {
-  background-color: darken(#efefef,3%);
+  background-color: darken($external-bg,3%);
   margin: 1em 0;
   overflow: hidden;
   padding: 2.75em 1.5em 1.5em;
 }
 
 .external-bookmarklet-button {
-  @include button-primer($shelby-blue, dark, wide);
+//  @include button-sizing;
+//  @include button-primer($shelby-blue, dark, wide);
 
-  &:active,
-  &:hover,
-  &:link,
-  &:visited {
-    color: $button-color;
-    text-decoration: none;
-  }
+//  &:active,
+//  &:hover,
+//  &:link,
+//  &:visited {
+//    color: $button-color;
+//    text-decoration: none;
+//  }
 }
 
 //------------------------------------------------------------------------------
@@ -89,14 +90,17 @@
 //------------------------------------------------------------------------------
 //  bookmarklet specific
 //------------------------------------------------------------------------------
-.extension-bookmarklet-button {
-  cursor: move;
-  font-size: 1.1em
+.external-bookmarklet-button {
+  @include button-sizing;
+
+  cursor: move !important;
+  font-size: 1.1em;
+
+  .icon {
+    padding-left: 1.3em;
+  }
 }
 
-.add-icon {
-  padding-left: 1.3em;
-}
 
 .external-bookmarklet-caption {
   display: block;
