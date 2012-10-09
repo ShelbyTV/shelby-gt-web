@@ -171,6 +171,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _showTools: function(e){
     e.preventDefault();
+    shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
     shelby.router.navigate('tools', {trigger:true});
   },
 

@@ -3,7 +3,7 @@
 //  external tools pane
 //------------------------------------------------------------------------------
 .external-tools{
-  background-color: $base;
+  background-color: #efefef;
   left: 0;
   overflow-y: auto;
   position: absolute;
@@ -53,11 +53,10 @@
 }
 
 .external-figure {
-  border: 1px solid darken($base,10%);
 }
 
 .external-bookmarklet-button-wrapper {
-  background-color: darken($base,3%);
+  background-color: darken(#efefef,3%);
   margin: 1em 0;
   overflow: hidden;
   padding: 2.75em 1.5em 1.5em;

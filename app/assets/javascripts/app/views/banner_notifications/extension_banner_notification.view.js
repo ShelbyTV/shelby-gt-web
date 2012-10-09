@@ -12,10 +12,11 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _appProgressKey: "extension",
   
   events : {
-    "click .js-dismiss" : "_dismissExtensionBanner"
+    "click .js-dismiss" : "_dismissExtensionBanner",
+    "click .js-tools"   : "_navigateTools"
   },
   
-  _height: "70px",
+  _height: "40px",
   
   _chromeExtensionTemplate : function(obj){
     return JST['notification-banners/chrome-extension'](obj);
@@ -51,6 +52,10 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _updateAppProgress : function(hasExtension){
     shelby.models.user.get('app_progress').set(this._appProgressKey, hasExtension);
     shelby.models.user.get('app_progress').saveMe();
-  }
+  },
   
+  _navigateTools : function(){
+    shelby.router.navigate('tools', {trigger:true});
+    shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
+  }
 });
