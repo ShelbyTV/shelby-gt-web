@@ -1,5 +1,6 @@
 <% var nickName = user.get('nickname'); %>
-<% var customTvUrl = nickName + ".shelby.tv"; %>
+<% var subdomain = user.has('personal_roll_subdomain') ? user.get('personal_roll_subdomain') : nickname; %>
+<% var customTvUrl = subdomain + ".shelby.tv"; %>
 <% var avatarUrl = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 
 <div class="onboarding_layout_head onboarding-head clearfix">
