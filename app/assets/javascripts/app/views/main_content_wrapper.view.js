@@ -25,11 +25,15 @@ libs.shelbyGT.MainContentWrapperView = Support.CompositeView.extend({
 
   _onChangeDisplayState: function(guideModel, displayState){
     if (displayState == libs.shelbyGT.DisplayState.tools) {
+      shelby.userInactivity.disableUserActivityDetection();
       this._toolsContentPaneView = new libs.shelbyGT.ExternalToolsContentPaneView();
       this.appendChild(this._toolsContentPaneView);
-    } else if (this._toolsContentPaneView) {
-      this._toolsContentPaneView.leave();
-      this._toolsContentPaneView = null;
+    } else {
+      shelby.userInactivity.enableUserActivityDetection();
+      if (this._toolsContentPaneView) {
+        this._toolsContentPaneView.leave();
+        this._toolsContentPaneView = null;
+      }
     }
   }
 
