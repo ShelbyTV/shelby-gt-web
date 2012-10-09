@@ -24,7 +24,6 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
   _checkFollowShelby : function(){
     if(_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'twitter';})) {
       var doFollowShelby = $('.js-onboarding-follow-shelby').is(':checked');
-      console.log('follow?', doFollowShelby);
     }
   },
 

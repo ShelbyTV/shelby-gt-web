@@ -590,8 +590,8 @@ $onboarding-head-height: 125px;
 
 .onboarding-network-additional-options {
   background-color: #E2E2E2;
+  margin-top: 2.5em;
   padding: 5px;
-  width: 290px;
   text-align: left;
   input { margin: 4px 0 0; }
   p {
@@ -599,10 +599,6 @@ $onboarding-head-height: 125px;
     margin: 0;
   }
 
-}
-
-.facebook-timeline-opt-in {
-  margin: 0 auto;
 }
 
 //------------------------------------------------------------------------------
