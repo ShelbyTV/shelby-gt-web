@@ -1,195 +1,73 @@
-$notification-base-color: #fff82b;
-
-.notification-banner-wrapper {
-  @include gradient-primer($notification-base-color, 20%);
-  display: none;
-  /*height is set by GenericBannerNotificationView */
-  position: relative;
-  width: 100%;
-}
-
-/*
- * Anonymous Banner Notification
- */
-.notification-banner-anon {
-  float: left;
-  padding: 15px 0 10px 10px;
-  
-  .signup-button {
-    @include button-primer($shelby-blue, $primer-tone);
-    
-    color: #efefef;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    width: 110px;
-  }
-  
-  /* Reconfigure the stuff we're borrowing from landing-page */
-  .signup-section {
-    font-size: 12px;
-    left: 0;
-    right: auto;
-    top: 40px;
-  }
-  
-  .signup-section-lining:after {
-    left: 60px;
-  }
-}
-
-.notification-banner-anon-signup {
-  text-align: center;
-  width: 150px;
-}
-
-.anon-signup-subtitle {
-  font-weight: 100;
-  font-size: 1.1em;
-}
-
-.notification-banner-anon-benefit {
-  float: left;
-  width: 75%;
-  max-width: 700px;
-  padding: 10px ;
-}
-
-.anon-benefit-title {
-  
-}
-
-.anon-benefit-subtitle {
-  font-weight: 100;
-}
-
-/*
- * Extension & Bookmarklet
- */
-.notification-banner-left {
-  float: left;
-  padding: 10px 0 10px 40px;
-}
-
-.notification-banner-right {
-  float: right;
-  padding: 10px 27px 0 10px;
-}
-
-.dismiss-banner-notification {
-  @include button-sizing;
-  
-  font-size: 1em;
-  left: -3px;
-  position: absolute;
-  top: -3px;
-
-  .icon {
-      background-size: contain;
-      color: transparent;
-      display: block;
-      font: 0/0 a;
-      height: 7px;
-      width: 7px;
-  }
-
-}
-
-.video-radar-lining {
-  @include background(url('/images/notifications/radar.png') no-repeat center center transparent);
-  height: 100%;
-}
-
-.video-radar-title {
-  margin-bottom: 5px;
-}
-
-.video-radar-subtitle {
-  font-weight: 100;
-}
-
-/*
- * Chrome Extension
- */
-
-.get-extension-wrapper {
-  text-align: center;
-} 
-
-.get-extension {
-  @include button-primer();
-
-  display: inline-block;
-  font-size: 1.5em;
-  font-weight: 100;
-  margin-top: 3px;
-  text-decoration: none;
-}
- 
-/*
- * Bookmarklet
- */
- 
-.bookmarklet-drag-wrapper {
-  text-align: center;
-}
-
-.bookmarklet-drag-button {
-  @include button-sizing;
-
-  display: inline-block;
-  font-size: 1.2em;
-  margin-bottom: 5px;
-
-  .icon {
-    padding-left: $button-padding-left;
-  }
-}
-
-.bookmarklet-help-section {
-  width: 320px;
-  right: 10px;
-}
-
-.bookmarklet-help {
-  @include gradient-primer();
-  
-  box-shadow: 0px 0px 5px 0px black;
-  font-size: 1.3em;
-  width: 99%;
-
-  ol {
-    margin: 0;
-    padding: 10px 10px 10px 30px;
-
-    & > li {
-      margin-bottom: .5em;
-    }
-  }
-  
-  li > ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  
-}
-
-.bookmarklet-help-header {
-  padding: 10px 10px 0;
-}
-
-.faux-bookmarklet-button {
-  @include roundies(input);
-
-  border: 1px solid #ccc;
+@import "base";
+//------------------------------------------------------------------------------
+//  MODULE
+//------------------------------------------------------------------------------
+.notification_module {
+  color: $button-color;
   font-family: $font-family-display;
-  font-size: .9em;
-  padding: .3em 0.4em .35em;
+  font-weight: 500;
+  height: inherit; //if parent wrapper isn't set, set a height in the modifying class.
+  text-align: center;
+}
 
-  i {
-    background-image: url($icon-videocard-roll);
-    background-repeat: no-repeat;
-    background-position: center left;
-    font-style: normal;
-    padding-left: 1.2em;
+.notification_actions {
+  font-size: 1.3em;
+  left: 0;
+  padding: 0 5px;
+  position: absolute;
+  top: 0;
+}
+
+.notification_dismiss {
+  color: darken($shelby-blue,9%);
+  border-radius: 20px !important;
+  text-shadow: none;
+  vertical-align: top;
+  margin: 0.5em 0 0;  
+}
+
+.notification_label {
+  line-height: 2.6;
+}
+
+.notification_body {
+
+}
+
+.notification_message {
+  display: inline-block;
+
+}
+
+//------------------------------------------------------------------------------
+//  NOTIFICATIONS
+//------------------------------------------------------------------------------
+.notifications-banner-wrapper {
+
+}
+
+.notification-banner {
+  /*height is set by GenericBannerNotificationView */
+  padding: 5px;
+  position: relative;
+  width: 100%;  
+}
+
+//------------------------------------------------------------------------------
+//  BOOKMARKLET NOTIFICATION
+//------------------------------------------------------------------------------
+.bookmarklet-notification {
+  @include gradient-primer($shelby-blue);
+
+  .notification_label {
+    color: darken($shelby-blue,9%);
+  }
+}
+
+.bookmarklet-notification-radar-button {
+  @include button-sizing;
+
+  .icon {
+    padding-left: 1.3em;
   }
 }

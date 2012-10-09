@@ -12,7 +12,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _appProgressKey: "extension",
   
   events : {
-    "click .js-dismiss-extension-banner" : "_dismissExtensionBanner"
+    "click .js-dismiss" : "_dismissExtensionBanner"
   },
   
   _height: "70px",
