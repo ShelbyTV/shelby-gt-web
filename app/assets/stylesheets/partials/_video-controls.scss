@@ -79,7 +79,7 @@
 .video-player-volume {
 	float:right;
 
-	&.mute {
+	&.muted {
     .icon-volume {
       background-image: url($icon-player-sound-off);
     }

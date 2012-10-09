@@ -153,7 +153,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _onMutedChange: function(attr, muted){
-    muted ? this.$el.addClass('muted') : this.$el.removeClass('muted');
+    this.$('.js-videoplayer-mute').toggleClass('muted', muted);
   },
 
   _onVolumeChange: function(attr, volPct){

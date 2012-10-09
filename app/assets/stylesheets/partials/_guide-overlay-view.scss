@@ -83,12 +83,15 @@
   float: right;
   padding: button-padding(isolated-roll-header);
   margin: 4px 6px 4px 0;
+
+  &.button-active {
+    @include button(blue,$shelby-blue);
+  }
 }
 //------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
 #guide-header-roll-header-image {
-  background-image: url("http://2.bp.blogspot.com/-tZNMrc0u5L0/UGCC1KsK4GI/AAAAAAAACJk/YPj4DbglrcQ/s1600/fire.jpeg");
   height: 150px;
 }
 
@@ -122,11 +125,6 @@
   position: relative;
   width: inherit;
   z-index: 1;
-}
-
-
-.guide-header-button-highlighted {
-  @include button-primer($shelby-blue, dark,frame-command);
 }
 
 .guide-overlay-context-creator {

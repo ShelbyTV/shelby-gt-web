@@ -1,17 +1,23 @@
 <!-- For FB -->
 <meta property="fb:app_id" content="<%= Settings::Facebook.facebook_app_id %>" /> 
-
-<% if @frame or @roll %>
-	<meta property="og:locale" content="EN_us" />
-<% end %>
+<meta property="og:locale" content="EN_us" />
 
 <% if @frame and @video and @roll %>
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id'], "https") %>" /> 
+	<% if @video['source_url'] %>
+		<meta property="og:video:url" content="<%= @video['source_url'] %>" /> 
+		<meta property="og:video:secure_url" content="https://<%= @video['source_url'][7..-1] if @video['source_url'] %>" /> 
+	<% else %>
+		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id']) %>" /> 
+		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id'], 'https') %>" /> 		
+	<% end %>
 	<meta property="og:title" content="<%= @video['title'] %>" /> 
-	<meta property="og:description" content="<%= @video['description'] %>" />	
+	<% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
+		<meta property="og:description" content="<%= @frame['conversation']['messages'][0]['text'] %>" />	
+	<% else %>
+	  <meta property="og:description" content="<%= @video['description'] %>" />	
+	<% end %>
 	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 	
 <% elsif @roll and @user %>
@@ -28,8 +34,13 @@
   
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
-	<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
-	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id, "https") %>" /> 
+	<% if @video_source_url %>
+		<meta property="og:video:url" content="<%= @video_source_url %>" /> 
+		<meta property="og:video:secure_url" content="https://<%= @video_source_url[7..-1] if @video_source_url %>" />
+	<% else %>
+		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
+		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id, 'https') %>" /> 		
+	<% end %>
 	<meta property="og:title" content="<%= @video_title %>" /> 
 	<meta property="og:description" content="<%= @video_description %>" />	
 	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
