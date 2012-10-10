@@ -64,7 +64,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _updateQueueButton : function(itemQueued) {
     var buttonText = itemQueued ? 'Queued' : 'Queue';
-    this.$('.js-queue-command').toggleClass('queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
+    this.$('.js-queue-command').toggleClass('button_gray-light queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
   }
 
 });
