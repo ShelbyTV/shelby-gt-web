@@ -21,11 +21,11 @@
       </li>
     </ul>
   </div><!-- eo .xframe-menu -->
-  <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-explore-frame-thumbnail<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Explore" data-ga_action="Click thumbnail to play frame" data-ga_label="<%= videoTitle %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+  <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-play-explore-frame<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Explore" data-ga_action="Click thumbnail to play frame" data-ga_label="<%= videoTitle %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
     <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail" onload="$(this).parents('.explore-frame').first().removeClass('transparent');">
   </a>
 
-  <a href="#" onclick="return false;" class="explore-frame-link js-track-event" data-ga_category="Explore" data-ga_action="Click title to play frame" data-ga_label="<%= videoTitle %>">
+  <a href="#" onclick="return false;" class="explore-frame-link js-play-explore-frame js-track-event" data-ga_category="Explore" data-ga_action="Click title to play frame" data-ga_label="<%= videoTitle %>">
     <h3 class="explore-frame-title">
       <%= videoTitle %>
     </h3>
