@@ -12,7 +12,7 @@ libs.shelbyGT.RollCategoryItemView = libs.shelbyGT.ActiveHighlightListItemView.e
   className : 'list_item guide-item',
 
   template : function(obj){
-    return JST['roll-category-item'](obj);
+    return SHELBYJST['roll-category-item'](obj);
   },
 
   render : function(){

@@ -44,7 +44,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   }),
 
   template : function(obj){
-    return JST['load-more'](obj);
+    return SHELBYJST['load-more'](obj);
   },
 
   initialize : function(){

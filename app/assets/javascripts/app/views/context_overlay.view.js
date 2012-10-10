@@ -85,7 +85,7 @@
     },
 
     template : function(obj) {
-      return JST['frame'](obj);
+      return SHELBYJST['frame'](obj);
     }
 
   });

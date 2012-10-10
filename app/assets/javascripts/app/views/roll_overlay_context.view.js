@@ -8,7 +8,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   className : 'guide-header-wrapper clearfix',
 
   template : function(obj){
-    return JST['guide-header-lining'](obj);
+    return SHELBYJST['guide-header-lining'](obj);
   },
 
   initialize : function(){
@@ -26,7 +26,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     this.$el.html(this.template({
       roll : this.model
     }));
-    this.$('#js-guide-title').before(JST['iso-roll-buttons']());
+    this.$('#js-guide-title').before(SHELBYJST['iso-roll-buttons']());
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
