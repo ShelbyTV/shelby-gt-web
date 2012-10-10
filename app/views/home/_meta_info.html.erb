@@ -2,6 +2,12 @@
 <meta property="fb:app_id" content="<%= Settings::Facebook.facebook_app_id %>" /> 
 <meta property="og:locale" content="EN_us" />
 
+<% if (@frame and @video and @roll) or (@video_provider_name and @video_provider_id) %>
+  <!-- For Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site:id" content="<%= Settings::Twitter.shelby_twitter_user_id %>">
+<% end %>
+
 <% if @frame and @video and @roll %>
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
