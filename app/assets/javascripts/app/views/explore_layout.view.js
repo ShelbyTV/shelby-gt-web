@@ -7,7 +7,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
   _spinnerState : null,
 
   template : function(obj){
-      return JST['explore-layout'](obj);
+      return SHELBYJST['explore-layout'](obj);
   },
 
   initialize : function(){

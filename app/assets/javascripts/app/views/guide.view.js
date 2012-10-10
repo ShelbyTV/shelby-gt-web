@@ -7,7 +7,7 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
   el: '.js-main-layout .js-guide',
 
   template : function(obj){
-      return JST['guide'](obj);
+      return SHELBYJST['guide'](obj);
   },
 
   render : function(){

@@ -19,7 +19,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   template : function(obj){
-    return JST['explore-frame-item'](obj);
+    return SHELBYJST['explore-frame-item'](obj);
   },
 
   render : function(){

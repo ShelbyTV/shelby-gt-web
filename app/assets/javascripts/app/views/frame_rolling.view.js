@@ -21,7 +21,7 @@
     className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
 
     template : function(obj){
-      return JST['frame-rolling'](obj);
+      return SHELBYJST['frame-rolling'](obj);
     },
 
     initialize : function(){

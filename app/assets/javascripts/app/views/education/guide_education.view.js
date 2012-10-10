@@ -9,7 +9,7 @@
     },
 
     template : function(obj){
-      return JST['guide-education'](obj);
+      return SHELBYJST['guide-education'](obj);
     },
 
     className : 'guide-education', 

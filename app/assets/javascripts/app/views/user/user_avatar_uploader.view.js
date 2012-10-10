@@ -13,7 +13,7 @@
 libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
 
   template : function(obj){
-    return JST['user/avatar-uploader'](obj);
+    return SHELBYJST['user/avatar-uploader'](obj);
   },
   
 

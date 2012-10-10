@@ -19,11 +19,11 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _height: "40px",
   
   _chromeExtensionTemplate : function(obj){
-    return JST['notification-banners/chrome-extension'](obj);
+    return SHELBYJST['notification-banners/chrome-extension'](obj);
   },
   
   _bookmarketTemplate : function(obj){
-    return JST['notification-banners/bookmarklet'](obj);
+    return SHELBYJST['notification-banners/bookmarklet'](obj);
   },
   
   initialize : function(){

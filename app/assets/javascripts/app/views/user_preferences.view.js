@@ -21,7 +21,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   tagName : 'section',
 
   template : function(obj){
-    return JST['user-preferences'](obj);
+    return SHELBYJST['user-preferences'](obj);
   },
 
   render : function(){

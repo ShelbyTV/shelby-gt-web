@@ -17,7 +17,7 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
   _bannerType : 0,
   
   bannerElement : function(obj){
-    return JST['anon_banner']({bannerType: this._bannerType});
+    return SHELBYJST['anon_banner']({bannerType: this._bannerType});
   },
   
   /*

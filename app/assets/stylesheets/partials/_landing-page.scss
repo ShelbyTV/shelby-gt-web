@@ -1,5 +1,15 @@
 @import "compass/typography/links/hover-link";
+//------------------------------------------------------------------------------
+//  OVERRIDES
+//------------------------------------------------------------------------------
+html,
+body {
+  overflow: visible;
+}
 
+//------------------------------------------------------------------------------
+//  landing-page
+//------------------------------------------------------------------------------
 $landing-page-width: 920px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
@@ -83,10 +93,11 @@ $landing-page-shelf-background: #ccc;
 
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
+  padding: 0 1em;
 }
 
 .landing-shelf-lining {
-  width: $landing-page-width;
+  max-width: $landing-page-width;
   margin: 0 auto;
 }
 
@@ -240,6 +251,8 @@ $landing-page-shelf-background: #ccc;
 
 .landing-shelf-private .landing-shelf-lining {
   padding: 40px 0 50px;
+  position: relative;
+  z-index: 1;
 }
 
 .landing-form {
@@ -304,9 +317,9 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-footer-lining {
-  width: $landing-page-width;
+  max-width: $landing-page-width;
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding: 0 1em 50px;
 }
 
 .landing-footer .list_module {
@@ -320,6 +333,7 @@ $landing-page-shelf-background: #ccc;
 
   &.secondary {
     float: right;
+    width: auto;
   }
 }
 

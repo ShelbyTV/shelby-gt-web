@@ -7,7 +7,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['inline-roll-promo'](obj);
+    return SHELBYJST['inline-roll-promo'](obj);
   },
 
   //NOTE: expecting this.model to be a Backbone.Collection of rolls passed in to constructor

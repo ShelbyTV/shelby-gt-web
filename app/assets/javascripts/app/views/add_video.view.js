@@ -8,7 +8,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
   el : '#js-add-video-area',
 
   template : function(obj){
-    return JST['add-video-area'](obj);
+    return SHELBYJST['add-video-area'](obj);
   },
 
   initialize : function(){

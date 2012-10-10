@@ -12,7 +12,7 @@ libs.shelbyGT.UserAvatarPresenterView = Support.CompositeView.extend({
   _avatarSize: null,
   
   template : function(obj){
-    return JST['user/dynamic-avatar'](obj);
+    return SHELBYJST['user/dynamic-avatar'](obj);
   },
   
   // The option avatarSize may be used to specify a different avatar asset (when user has a Shelby avatar).

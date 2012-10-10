@@ -9,7 +9,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-      return JST['video-content-pane'](obj);
+      return SHELBYJST['video-content-pane'](obj);
   },
 
   render : function(){
