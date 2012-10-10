@@ -19,24 +19,24 @@
 
 
 <!-- new videocard -->
-<article id="<%= videoId %>" class="animate_module xframe xframe-list-item<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%>">
   <% if (!frameViewed) { %>
-    <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-      <h1 class="xframe-title" title="<%= videoTitle %>">
+    <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+      <h1 class="frame-title" title="<%= videoTitle %>">
        <%= videoTitle %>
       </h1>
     </a>
   <% } %>
 
-  <div class="xframe-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
-    <div class="xframe-body">
-      <div class="menu_module xframe-menu">
-        <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
+  <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
+    <div class="frame-body">
+      <div class="menu_module frame-menu">
+        <ul class="menu_list frame-command-menu frame-list" role="menubar">
           <li class="menu_item" role="menuitem">
-            <button class="xframe-command command-queue
+            <button class="button_primer frame-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
-                           <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued' : '' %>">
-              <i class="button_icon_left command-icon icon_videocard_queue">
+                           <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
+              <i class="button_icon_left icon_videocard_queue icon">
                 <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
                     (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
                 %>
@@ -44,51 +44,59 @@
             </button>
           </li>
           <li class="menu_item" role="menuitem">
-            <button class="xframe-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="button_icon_left command-icon icon_videocard_roll">
+            <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+              <i class="button_icon_left icon_videocard_roll icon">
                 Roll…
               </i>
             </button>
           </li>
           <li class="menu_item right command-sublist" aria-haspopup="true">
-            <button class="menu_sublist_anchor xframe-command command-more">
-              <i class="button_icon_right command-icon icon_carrot">
+            <button class="menu_sublist_anchor button_primer button_default frame-command command-more">
+              <i class="button_icon_right dropdown_icon icon">
                 More
               </i>
             </button>
-            <ul class="menu_sublist xframe-sublist" role="menu">
-              <li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-share js-share-frame">
+
+            <ul class="menu_sublist frame-sublist" role="menu">
+              <li class="menu_option frame-item" role="menuitem">
+                <button class="frame-command command-share js-share-frame">
                   <i class="button_icon_left command-icon icon_email">
                     Share Video...
                   </i>
                 </button>
               </li>
-							<li class="menu_option xframe-item" role="menuitem">
-                <button class="xframe-option command-link js-copy-link">
+							<li class="menu_option frame-item" role="menuitem">
+                <button class="frame-command command-link js-copy-link">
                   Get Shortlink
                 </button>
 								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
               </li>
+
               <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
+                <li class="menu_option frame-item" role="menuitem">
+                  <button class="frame-command command-remove js-remove-frame">
+                    Remove Video
+                  </button>
+                </li>
+              <% } else if (shelby.models.user.get('admin')) { %>
+              
                 <li class="menu_option xframe-item" role="menuitem">
                   <button class="xframe-option command-remove js-remove-frame">
-                    Remove Video
+                    ADMIN KLL VID
                   </button>
                 </li>
               <% } %>
             </ul>
           </li>
         </ul>
-      </div><!-- eo .xframe-menu -->
+      </div><!-- eo .frame-menu -->
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
-        <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
           <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
         </a>
       <% } %>
-        <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
-    </div><!-- eo .xframe-body -->
+    </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
          var creatorNickname = creator.get('nickname');
@@ -97,7 +105,7 @@
                                                                             frameIsOnHeartedRoll ||
                                                                             frameIsOnWatchLaterRoll);
     %>
-      <footer class="media_module xframe-footer clearfix">
+      <footer class="media_module frame-footer clearfix">
         <% if (!frameViewed) { %>
            <% if (clickableCreator) { %>
              <a href="#" onclick="return false;" class="js-creator-personal-roll">
@@ -138,18 +146,18 @@
               </p>
             <% } %>
 
-            <div class="xframe-subline">
-              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment xframe-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+            <div class="frame-subline">
+              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
                 <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
               </a>
             </div>
           <% } else { %>
-            <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-              <h1 class="xframe-title" title="<%= videoTitle %>">
+            <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+              <h1 class="frame-title" title="<%= videoTitle %>">
                <%= videoTitle %>
               </h1>
 
-              <a class="xframe-is-collapsed">
+              <a class="frame-is-collapsed">
                 Open
               </a>
 
@@ -161,24 +169,24 @@
         </div>
       </footer><!-- eo .media_module-->
     <% } else if (frameViewed){ %>
-      <footer class="media_module xframe-footer clearfix">
+      <footer class="media_module frame-footer clearfix">
         <div class="media_body">
-          <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-            <h1 class="xframe-title" title="<%= videoTitle %>">
+          <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+            <h1 class="frame-title" title="<%= videoTitle %>">
              <%= videoTitle %>
             </h1>
 
-            <a class="xframe-is-collapsed">
+            <a class="frame-is-collapsed">
               Open
             </a>
           </a>
         </div>
       </footer><!-- eo .media_module-->
     <% } %>
-  </div><!-- eo .xframe-body-wrapper -->
+  </div><!-- eo .frame-body-wrapper -->
   <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
-    <aside class="xframe-aside">
-      <p class="xframe-aside-text">
+    <aside class="frame-aside">
+      <p class="frame-aside-text">
         Also via:
 
         <% _(dupeFrames).each(function(frame, index) { %>

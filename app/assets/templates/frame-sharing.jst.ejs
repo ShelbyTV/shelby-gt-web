@@ -9,8 +9,8 @@
 
 <div class="overlay_header guide-overlay-head sharing-head">
   <div class="guide-overlay-head-lining">
-    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
-      <i class="button_icon_left icon_cancel cancel-icon">
+    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      <i class="button_icon_left icon_cancel icon">
         Cancel
       </i>
     </button>
@@ -23,11 +23,11 @@
 
 <div class="overlay_body guide-overlay-body conversation-body">
   <form class="form_module share-form clearfix">
-    <h1 class="xframe-title" title="<%= frameTitle %>">
+    <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle || '' %>
     </h1>
 
-    <div class="xframe-body-wrapper clearfix">
+    <div class="frame-body-wrapper clearfix">
       <%=
         JST['thumbnail-module']({
           thumbnail : frameThumbnail,
@@ -47,7 +47,7 @@
           })
         %>
       <% } %>
-    </div><!-- eo xframe-body-wrapper -->
+    </div><!-- eo frame-body-wrapper -->
     <div class="frame-sharing">
     </div>
   </form>
