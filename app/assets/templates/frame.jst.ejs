@@ -16,10 +16,11 @@
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var contextOverlay = options.contextOverlay %>
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
+<% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
 
 
 <!-- new videocard -->
-<article id="<%= videoId %>" class="animate_module xframe xframe-list-item<%= (frameViewed) ? ' xframe-collapsed' : ''%>">
+<article id="<%= videoId %>" class="animate_module xframe xframe-list-item<%= (frameViewed) ? ' xframe-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
       <h1 class="xframe-title" title="<%= videoTitle %>">
@@ -92,6 +93,7 @@
         <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
           <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
         </a>
+				<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
       <% } %>
         <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
     </div><!-- eo .xframe-body -->
