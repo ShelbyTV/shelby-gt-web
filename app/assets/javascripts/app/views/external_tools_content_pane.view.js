@@ -5,7 +5,7 @@ libs.shelbyGT.ExternalToolsContentPaneView = Support.CompositeView.extend({
   className: 'content_module external-tools',
 
   template : function(obj){
-      return JST['external-tools-content-pane'](obj);
+      return SHELBYJST['external-tools-content-pane'](obj);
   },
 
   render : function(){
