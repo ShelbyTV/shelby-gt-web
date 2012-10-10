@@ -57,6 +57,7 @@
     border: none;
     height: 43px;
     float: left;
+    padding: 0;
     width: 47px;
 
     i {
@@ -146,7 +147,7 @@
 
 .video-player-scrubber {
   background: #efefef;
-  border-radius: 50%;
+  border-radius: 8px;
   box-shadow: 1px 0px 2px 1px black;
   cursor: pointer;
   cursor: ew-resize;
@@ -158,12 +159,12 @@
 }
 
 .video-player-timeline {
-  color:#b2b2b2;
-  float:right;
-  font-size:13px;
-  font-weight:300;
-  line-height:3.25;
-  margin:0 15px;
+  color: #b2b2b2;
+  float: right;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 3.5;
+  margin: 0 15px;
 }
 
 //------------------------------------------------------------------------------
@@ -212,7 +213,7 @@
   .icon-next,
   .icon-prev {
     display: block;
-    height: 100%;
+    height: inherit;
   }
   ////////////////////////////////////////////////////////////////////////////
   //  compound, not nested
