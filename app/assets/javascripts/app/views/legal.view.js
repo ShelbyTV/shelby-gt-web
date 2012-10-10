@@ -1,7 +1,7 @@
 libs.shelbyGT.LegalView = Support.CompositeView.extend({
   
   template : function(obj){
-    return JST['legal'](obj);
+    return SHELBYJST['legal'](obj);
   },
 
   render : function(){

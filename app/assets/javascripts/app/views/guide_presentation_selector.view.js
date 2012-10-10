@@ -19,7 +19,7 @@
     /*el : '#js-guide-presentation-selector',*/
 
     template : function(obj){
-      return JST['guide-presentation-selector'](obj);
+      return SHELBYJST['guide-presentation-selector'](obj);
     },
 
     initialize : function(){

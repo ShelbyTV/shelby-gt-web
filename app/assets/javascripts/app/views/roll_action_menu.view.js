@@ -7,7 +7,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   el : '#js-roll-action-menu',
 
   template : function(obj){
-    return JST['roll-action-menu'](obj);
+    return SHELBYJST['roll-action-menu'](obj);
   },
 
   initialize : function(){

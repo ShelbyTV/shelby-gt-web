@@ -48,7 +48,7 @@
       }
       if (this.options.roll.isNew()) {
         // when creating a new roll there are some additional options to be displayed
-        this.$('.share-comment').before(JST['frame-rolling-options']({roll:this.options.roll}));
+        this.$('.share-comment').before(SHELBYJST['frame-rolling-options']({roll:this.options.roll}));
       }
     },
 
@@ -122,7 +122,7 @@
 
     onShareSuccess: function(){
       var self = this;
-      this.$('.share-comment').append(JST['shared-indicator']());
+      this.$('.share-comment').append(SHELBYJST['shared-indicator']());
       setTimeout(function(){
         self.options.frameRollingState.set('doShare', ShareActionState.complete);
       }, 200);

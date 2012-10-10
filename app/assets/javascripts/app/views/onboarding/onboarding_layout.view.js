@@ -7,7 +7,7 @@ libs.shelbyGT.OnboardingLayoutView = Support.CompositeView.extend({
   _spinnerState : null,
 
   template : function(obj){
-      return JST['onboarding/onboarding-layout'](obj);
+      return SHELBYJST['onboarding/onboarding-layout'](obj);
   },
 
   initialize : function(){

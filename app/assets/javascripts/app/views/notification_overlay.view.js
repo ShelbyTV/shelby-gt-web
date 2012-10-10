@@ -12,7 +12,7 @@
     _listView : null,
 
 		template : function(obj){
-			return JST['notification-overlay'](obj);
+			return SHELBYJST['notification-overlay'](obj);
 		},
 
     initialize : function(){
