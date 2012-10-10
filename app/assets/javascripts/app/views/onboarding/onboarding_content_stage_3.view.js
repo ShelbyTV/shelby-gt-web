@@ -37,6 +37,7 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
       var _prefs = _.clone(shelby.models.user.get('preferences'));
       _prefs['open_graph_posting'] = $('#onboarding-timeline-sharing').is(':checked') ? true : false;
       shelby.models.user.save({preferences: _prefs});
+      shelby.track('FB Timeline App Preference set to '+_prefs['open_graph_posting'],{userName: shelby.models.user.get('nickname')});
     }
   }
 

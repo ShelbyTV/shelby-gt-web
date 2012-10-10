@@ -77,6 +77,14 @@ _(shelby).extend({
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
           break;
+        case 'FB Timeline App Preference set to true':
+          _gaAction = "FB timeline app preference set"; _gaCategory = 'Onboarding'; _gaLabel = "Opt in";
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
+        case 'FB Timeline App Preference set to false':
+          _gaAction = "FB timeline app preference set"; _gaCategory = 'Onboarding'; _gaLabel = "Opt out";
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
         case 'completed onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
