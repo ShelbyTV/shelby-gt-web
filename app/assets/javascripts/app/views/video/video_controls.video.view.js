@@ -41,7 +41,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   template: function(obj){
-    return JST['video-controls'](obj);
+    return SHELBYJST['video-controls'](obj);
   },
 
   render: function(){

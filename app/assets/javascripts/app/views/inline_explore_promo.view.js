@@ -7,7 +7,7 @@ libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['inline-explore-promo'](obj);
+    return SHELBYJST['inline-explore-promo'](obj);
   },
 
   render : function(){

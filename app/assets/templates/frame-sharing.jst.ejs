@@ -29,7 +29,7 @@
 
     <div class="xframe-body-wrapper clearfix">
       <%=
-        JST['thumbnail-module']({
+        SHELBYJST['thumbnail-module']({
           thumbnail : frameThumbnail,
           title : frameTitle
         })
@@ -37,7 +37,7 @@
 
       <% if (!isGenius && message) { %>
         <%=
-          JST['media-module']({
+          SHELBYJST['media-module']({
               userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message),
               userNickname : message.get('nickname'),
               messageText  : message.get('text'),

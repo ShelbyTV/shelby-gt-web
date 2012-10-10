@@ -7,7 +7,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   className : 'roll-header clearfix',
 
   template : function(obj){
-    return JST['roll-header'](obj);
+    return SHELBYJST['roll-header'](obj);
   },
 
   initialize : function(){

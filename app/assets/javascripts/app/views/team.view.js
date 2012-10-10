@@ -4,7 +4,7 @@
   libs.shelbyGT.TeamView = ScrollingGuideView.extend({
     
     template : function(obj){
-      return JST['team'](obj);
+      return SHELBYJST['team'](obj);
     }
 
   });

@@ -7,7 +7,7 @@ libs.shelbyGT.FrameSharingInGuideView = libs.shelbyGT.GuideOverlayView.extend({
   className : libs.shelbyGT.GuideOverlayView.prototype.className + ' frame-sharing',
 
   template : function(obj){
-    return JST['frame-sharing'](obj);
+    return SHELBYJST['frame-sharing'](obj);
   },
 
   render : function(){

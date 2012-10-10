@@ -28,7 +28,7 @@
     className : 'rolling-form',
 
     template : function(obj){
-      return JST['rolling-form'](obj);
+      return SHELBYJST['rolling-form'](obj);
     },
   
     initialize : function(){

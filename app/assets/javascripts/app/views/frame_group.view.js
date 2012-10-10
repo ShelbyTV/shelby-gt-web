@@ -34,7 +34,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-      return JST['frame'](obj);
+      return SHELBYJST['frame'](obj);
     } catch(e){
       console.log(e.message, e.stack);
     }

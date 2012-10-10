@@ -52,7 +52,7 @@
     },
 
     template : function(obj) {
-      return JST['preroll-video-info'](obj);
+      return SHELBYJST['preroll-video-info'](obj);
     }
     
   });

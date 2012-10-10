@@ -20,7 +20,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['share'](obj);
+    return SHELBYJST['share'](obj);
   },
 
   initialize : function(){
