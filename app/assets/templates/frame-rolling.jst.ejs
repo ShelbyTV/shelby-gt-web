@@ -3,8 +3,8 @@
 <% var userNickname   = user.get('nickname') || 'your personal '%>
 <div class="overlay_header guide-overlay-head framerolling-head">
   <div class="guide-overlay-head-lining">
-    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
-      <i class="button_icon_left icon_cancel cancel-icon">
+    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+      <i class="button_icon_left icon_cancel icon">
         Cancel
       </i>
     </button>
@@ -20,11 +20,11 @@
 
 <div class="overlay_body guide-overlay-body framerolling-body">
   <form class="form_module">
-    <h1 class="xframe-title" title="<%= frameTitle %>">
+    <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle %> 
     </h1>
     
-    <div class="xframe-body-wrapper clearfix">
+    <div class="frame-body-wrapper clearfix">
       <%=
         SHELBYJST['thumbnail-module']({
           thumbnail : frameThumbnail,
@@ -34,7 +34,7 @@
       <div class="guide-overlay-main rolling-main">
         <!-- Form content from RollingFormView -->
       </div><!-- eo guide-overlay-main rolling-main -->
-    </div><!-- eo xframe-body-wrapper -->
+    </div><!-- eo frame-body-wrapper -->
      <!--<div class="rolling-submit">
       <button id="js-roll-it" class="roll-options-submit" type="submit" onclick="return false;" tabindex="0">
         Roll It!

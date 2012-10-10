@@ -9,6 +9,7 @@ libs.shelbyGT.DisplayState = {
   queue : 'queue',
   standardRoll : 'standardRoll',
   team : 'team',
+  tools: 'tools',
   userPreferences : 'userPreferences',
   watchLaterRoll : 'watchLaterRoll'
 };

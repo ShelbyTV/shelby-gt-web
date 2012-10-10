@@ -1,0 +1,143 @@
+@import "base";
+//------------------------------------------------------------------------------
+//  external tools pane
+//------------------------------------------------------------------------------
+.external-tools{
+  background-color: $external-bg;
+  left: 0;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+//------------------------------------------------------------------------------
+//  external; architectural
+//------------------------------------------------------------------------------
+.external-tools-lining {
+  font-size: 1.2em;
+  padding: 3em;
+  text-align: center;
+}
+
+.external-subsection {
+  margin: 2em 0;
+}
+
+//------------------------------------------------------------------------------
+//  general setup
+//------------------------------------------------------------------------------
+.external-header {
+  font-size: 2em;
+}
+
+.external-subheader {
+  font-size: 1.5em;
+}
+
+.external-lead {
+  font-family: $font-family-display;
+  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.4;
+  margin-top: 1em;
+}
+
+.external-block {
+  width: 450px;
+}
+
+.external-figure-wrapper {
+  position: absolute;
+  left: 350px;
+  right: 10px;
+}
+
+.external-figure {
+}
+
+.external-bookmarklet-button-wrapper {
+  background-color: darken($external-bg,3%);
+  margin: 1em 0;
+  overflow: hidden;
+  padding: 2.75em 1.5em 1.5em;
+}
+
+.external-bookmarklet-button {
+//  @include button-sizing;
+//  @include button-primer($shelby-blue, dark, wide);
+
+//  &:active,
+//  &:hover,
+//  &:link,
+//  &:visited {
+//    color: $button-color;
+//    text-decoration: none;
+//  }
+}
+
+//------------------------------------------------------------------------------
+//  extension specific
+//------------------------------------------------------------------------------
+.extension-chrome-button {
+
+}
+
+.chrome-icon {
+  background-image: url("/images/tools/chrome-icon.png");
+  padding-left: 1.6em;
+}
+
+//------------------------------------------------------------------------------
+//  bookmarklet specific
+//------------------------------------------------------------------------------
+.external-bookmarklet-button {
+  @include button-sizing;
+
+  cursor: move !important;
+  font-size: 1.1em;
+
+  .icon {
+    padding-left: 1.3em;
+  }
+}
+
+
+.external-bookmarklet-caption {
+  display: block;
+  margin: 0 auto;
+  padding: 1em 2em 0;
+  vertical-align: middle;
+}
+
+.external-bookmarklet-button-subline {
+  display: block;
+  line-height: 1.5;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.bookmarklet-figure {
+  margin-top: 1em;
+  max-width: 600px;
+  width: 100%;
+}
+
+.external-bookmarklet-instructions {
+  line-height: 1.4;
+  max-width: 285px;
+  margin: 1em auto;
+  text-align: left;
+
+  ol {
+    padding-left: .9em;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: .5em;
+  }
+}

@@ -1,5 +1,15 @@
 @import "compass/typography/links/hover-link";
+//------------------------------------------------------------------------------
+//  OVERRIDES
+//------------------------------------------------------------------------------
+html,
+body {
+  overflow: visible;
+}
 
+//------------------------------------------------------------------------------
+//  landing-page
+//------------------------------------------------------------------------------
 $landing-page-width: 920px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
@@ -7,12 +17,12 @@ $landing-page-footer-font-color: #EFEFEF;
 .shelby-landing {
   background-color: $landing-page-footer-background;
   overflow: auto;
-  
+
   /* adjust the header, don't want absolute position */
   .shelby-header {
     position: relative;
   }
-  
+
   /* this gets hidden in _guide-presentation-selector.scss for onboarding */
   .guide-nav-list {
     display: block;
@@ -22,17 +32,13 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * Login & Signup (used on landing page and anonymous banner)
  ********************************************************/
-
-
-.login-section, 
-.signup-section {
+.login-section {
   box-shadow: 0 0 20px 0 black;
   right: 10px;
   top: 28px;
 }
 
-.login-section-lining, 
-.signup-section-lining {
+.login-section-lining {
   @include fin;
 
   background: $nav-dropdown-bg;
@@ -41,36 +47,31 @@ $landing-page-footer-font-color: #EFEFEF;
   width: 300px;
 }
 
-.login-header, 
-.signup-header {
+.login-header {
   margin: 10px 10px 0;
 }
 
-.login-section hr, 
-.signup-section hr {
+.login-section hr {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
   margin-bottom: 0;
   margin-top: .5em;
 }
 
-.login-form, .login-social-section,
-.signup-form, .signup-social-section  {
+.login-form,
+.login-social-section {
   padding: 10px;
 }
 
-.login-social-section-header,
-.signup-social-section-header  {
+.login-social-section-header {
   margin-bottom: 5px;
 }
 
-.login-form .form_input
-.signup-form .form_input {
+.login-form .form_input {
   margin-bottom: .5em;
 }
 
-.login-submit,
-.signup-submit {
+.login-submit {
   @include button-sizing;
 
   margin-top: .5em;
@@ -79,7 +80,7 @@ $landing-page-footer-font-color: #EFEFEF;
 .login-forgot-password {
   padding-left: 2em;
 }
- 
+
 
 /********************************************************
  * All Shelves
@@ -89,13 +90,14 @@ $landing-page-shelf-background: #ccc;
 
 .landing-shelf {
   @include gradient-primer($landing-page-shelf-background);
-  
+
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
+  padding: 0 1em;
 }
 
 .landing-shelf-lining {
-  width: $landing-page-width;
+  max-width: $landing-page-width;
   margin: 0 auto;
 }
 
@@ -141,7 +143,7 @@ $landing-page-shelf-background: #ccc;
   float: left;
   padding: 30px 0 0 5px;
   width: $landing-page-width * (8/18);
-  
+
   .user-avatar {
     width: 48px;
     padding-right: 5px;
@@ -155,7 +157,7 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * _genius_email_share - Share Shelf
  ********************************************************/
- 
+
 /********************************************************
  * _rolling_share - Share Shelf
  ********************************************************/
@@ -171,7 +173,7 @@ $landing-page-shelf-background: #ccc;
   .user-avatar {
     float: left;
   }
-  
+
   .user-nickname {
     font-weight: 600;
   }
@@ -249,10 +251,12 @@ $landing-page-shelf-background: #ccc;
 
 .landing-shelf-private .landing-shelf-lining {
   padding: 40px 0 50px;
+  position: relative;
+  z-index: 1;
 }
 
 .landing-form {
-  
+
 }
 
 .landing-form-label {
@@ -265,17 +269,17 @@ $landing-page-shelf-background: #ccc;
 
 .landing-form-input {
   @include roundies(left);
-  
+
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   font-size: 2em;
   height: 45px;
   padding: .5em;
-}  
-  
+}
+
 .landing-form-submit {
   @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
   @include roundies(right);
-  
+
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   border-left: none;
   display: inline-block;
@@ -285,11 +289,11 @@ $landing-page-shelf-background: #ccc;
   height: 45px;
   padding: 1.1em 3em 1.2em;
   vertical-align: bottom;
-  
+
   &:hover {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
   }
-  
+
   &:active {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
   }
@@ -313,9 +317,9 @@ $landing-page-shelf-background: #ccc;
 }
 
 .landing-footer-lining {
-  width: $landing-page-width;
+  max-width: $landing-page-width;
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding: 0 1em 50px;
 }
 
 .landing-footer .list_module {
@@ -326,9 +330,10 @@ $landing-page-shelf-background: #ccc;
   float: left;
   padding-top: 30px;
   width: (100%/6);
-  
+
   &.secondary {
     float: right;
+    width: auto;
   }
 }
 

@@ -51,11 +51,9 @@
   }
 
   &:hover {
+    .explore-subline,
     .explore-header {
       text-decoration: underline;
-    }
-    .explore-subline {
-      text-decoration: none;
     }
   }
 }
@@ -68,7 +66,7 @@
   color: $explore-subline-color;
   font-size: .9em;
   letter-spacing: 1px;
-  margin: 0.5em 0;
+  margin: 0;
   text-transform: uppercase;
 }
 

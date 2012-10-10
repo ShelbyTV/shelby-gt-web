@@ -1,57 +1,35 @@
-<div class="bookmarklet-notification video-radar-lining clearfix">
-	<div class="notification-banner-left">
-		<h1 class="video-radar-title">
-			Video Radar
-		</h1>
-
-		<h2 class="video-radar-subtitle">
-			Add video to Shelby! <em>Queue</em> and <em>Roll</em> while you browse the web.
-		</h2>
-
-		<button class="js-dismiss-extension-banner button_primer button_gray-medium dismiss-banner-notification">
-			<i class="ir button_icon_left icon_cancel icon">
-				Close
-			</i>
+<div class="notification_module notification-banner bookmarklet-notification">
+	<div class="notification_actions">
+		<button class="button_primer button_blue-dark notification_button js-dismiss">
+			<!-- <i class="ir button_icon icon_cancel_blue icon"> -->
+				&times;
+			<!-- </i> -->
 		</button>
+		
+		<span class="notification_label js-dismiss">
+			No thanks
+		</span>
+	</div><!-- eo notification_action -->
+
+	<div class="notification_body">
+		<a class="button_primer faux_button button_gray-medium bookmarklet-notification-radar-button" href="javascript:(function(){window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//<%= shelby.config.webDomain %>/assets/shelbify.js';document.getElementsByTagName('head')[0].appendChild(_sbm);)();" title="Drag this to your Bookmarks Bar!">
+			<i class="button_icon_left icon_videocard_roll icon">
+				Video Radar
+			</i>
+		</a>  
+		<h1 class="notification_message">
+			&larr; Drag our bookmarklet into your Bookmarks Bar 
+			<span class="dropdown_module">
+				 <a href="#" onclick="return false;" class="js-tools dropdown_anchor bookmarklet-notification-radar-help" title="Click here for more information">
+					Need Help?
+				</a>
+
+				<section class="dropdown_section bookmarklet-help-section clearfix">
+		      <div class="dropdown_lining bookmarklet-help">
+						<%= SHELBYJST['bookmarklet-instructions']() %>
+		      </div>
+		    </section>
+			</span>
+		</h1>
 	</div>
-	<div class="notification-banner-right dropdown_module">
-
-		<div class="bookmarklet-drag-wrapper">
-			<a class="button_primer faux_button button_gray-medium bookmarklet-drag-button" href="javascript:window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//<%= shelby.config.webDomain %>/assets/shelbify.js';document.getElementsByTagName('head')[0].appendChild(_sbm);">
-				<i class="button_icon_left icon_videocard_roll icon">
-					Shelby Video
-				</i>
-			</a>
-
-			<h2 class="video-radar-subtitle">
-				Grab the bookmarklet!
-			</h2>
-		</div>
-
-		<section class="dropdown_section bookmarklet-help-section clearfix">
-			<div class="dropdown_lining bookmarklet-help">
-				<h3 class="bookmarklet-help-header">
-					How to:
-				</h3>
-				<ol>
-					<li>
-						Make sure your bookmarks bar is showing
-
-						<ul>
-							<li>
-								Click "view" then "show bookmarks bar"
-							</li>
-						</ul>
-					</li>
-					<li>
-						Drag the <span class="faux-bookmarklet-button"><i>Shelby Video</i></span> button above into your browser's bookmarks bar
-					</li>
-
-					<li>
-						Click that button when you see video anywhere on the web!
-					</li>
-				</ol>
-			</div>
-		</section>
-	</div>
-</div>
+</div><!-- eo bookmarklet-notification -->

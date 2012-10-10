@@ -47,12 +47,10 @@
 }
 
 .guide-overlay-cancel {
-  @include button-primer($x-primer-color, light, guide-close);
+//  @include button-primer($x-primer-color, light, guide-close);
+  @include button-sizing(cancel);
 
-  display: inline;
-  vertical-align: top;
-
-  .cancel-icon {
+  .icon {
     background-size: contain;
     color: transparent;
     display: block;
@@ -73,8 +71,8 @@
   .guide-header-title {
     @include ellipsis;
 
-    font-size: 1.4em;
-    line-height: 2.1;
+    font-size: 1.3em;
+    line-height: 2.3;
   }
 }
 
