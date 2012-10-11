@@ -33,6 +33,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     }));
     this.renderChild(new libs.shelbyGT.VideoControlsView({
       guide : shelby.models.guide,
+      guideOverlayModel : shelby.models.guideOverlay,
       playbackState : shelby.models.playbackState,
       userDesires : shelby.models.userDesires
     }));
