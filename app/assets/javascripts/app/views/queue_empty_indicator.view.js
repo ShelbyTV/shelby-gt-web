@@ -2,10 +2,9 @@ libs.shelbyGT.QueueEmptyIndicatorView = Support.CompositeView.extend({
   
   tagName : 'li',
 
-/*  events : {
-    "click .js-explore-link"     : "_goToExplore",
-    "click .js-preferences-link" : "_goToPreferences"
-  },*/
+  events : {
+    "click .js-goto-tools" : "_goToBrowserTools"
+  },
 
   template : function(obj){
     return SHELBYJST['queue-empty-indicator'](obj);
@@ -13,6 +12,10 @@ libs.shelbyGT.QueueEmptyIndicatorView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
+  },
+
+  _goToBrowserTools : function(){
+    shelby.router.navigate("tools", {trigger:true});
   }
 
 });
