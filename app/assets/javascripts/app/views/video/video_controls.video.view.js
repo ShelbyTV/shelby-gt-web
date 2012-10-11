@@ -15,8 +15,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-videoplayer-prev"       : "_prevVideo"
   },
 
-  el: '#video-controls',
-
   _currentDuration: 0,
 
   _shouldUpdateScrubHandle: true,
