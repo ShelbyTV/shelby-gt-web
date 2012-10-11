@@ -75,10 +75,6 @@ class HomeController < ApplicationController
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
-  def get_bookmarklet
-    render 'get_bookmarklet', :layout => 'blank'
-  end
-
   private
 
 
