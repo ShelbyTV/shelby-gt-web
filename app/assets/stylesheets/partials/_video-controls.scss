@@ -75,10 +75,11 @@
     font-size: 1.1em;
     font-style: normal;
     line-height: 3.5em;
+    &:hover {
+      color: #e2e3e3;
+    }
   }
-  &:hover {
-    color: #e2e3e3;
-  }
+  
   &:active {
     margin: 1px -1px -1px 1px;
   }
