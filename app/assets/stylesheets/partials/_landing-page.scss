@@ -340,7 +340,7 @@ $landing-page-shelf-background: #ccc;
 .landing-footer-content-header, .landing-footer-content-list li {
   color: $landing-page-footer-font-color;
   font-size: 1.3em;
-  font-family: ubuntu;
+  font-family: $font-family-display;
   font-weight: 300;
   line-height: 1.8;
 }
