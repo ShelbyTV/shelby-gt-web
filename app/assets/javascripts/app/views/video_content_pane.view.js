@@ -2,7 +2,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   tagName: 'section',
 
-  className: 'content_module videoplayer animate-easein',
+  className: 'content_module videoplayer js-videoplayer animate-easein',
 
   options : {
     userDesires : null
