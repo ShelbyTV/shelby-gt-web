@@ -26,6 +26,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/isolated_roll/:roll_id/frame/:frame_id' => 'frame#show_frame_in_isolated_roll'
   
   # ROLLS
+  get '/roll/:roll_id/:title' => 'roll#show'
   get '/roll/:roll_id' => 'roll#show'
   get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
   get '/isolated_roll/:roll_id' => 'roll#show_isolated_roll'
