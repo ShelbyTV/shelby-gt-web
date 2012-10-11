@@ -69,6 +69,23 @@
 ////////////////////////////////////////////////////////////////////////////
 //  player controls
 ////////////////////////////////////////////////////////////////////////////
+.video-player-roll {
+  i {
+    color: #b2b3b3;
+    font-weight: 800;
+    font-size: 1.1em;
+    font-style: normal;
+    line-height: 3.5em;
+    &:hover {
+      color: #e2e3e3;
+    }
+  }
+  
+  &:active {
+    margin: 1px -1px -1px 1px;
+  }
+}
+
 .video-player-play {
   &.pause {
     .icon-play {
@@ -121,11 +138,19 @@
 .video-player-progress {
   background: black;
   border-radius: $radius*2;
-  height: 8px;
-  left: 60px;
-  right: 250px;
-  margin: 18px 8px 0;
-  position: absolute;
+//<<<<<<< HEAD
+//  height: 8px;
+//  left: 60px;
+//  right: 250px;
+//  margin: 18px 8px 0;
+//  position: absolute;
+//=======
+  height:8px;
+  left:105px;
+  right:250px;
+  margin:18px 8px 0;
+  position:absolute;
+//>>>>>>> master
 }
 
 .video-player-progress-load,

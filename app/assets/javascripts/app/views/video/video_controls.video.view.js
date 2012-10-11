@@ -5,6 +5,7 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
+    "click .js-videoplayer-roll"       : "_requestFrameRollView",
     "click .js-videoplayer-playback"   : "_togglePlayback",
     "click .js-videoplayer-mute"       : "_toggleMute",
     "click .js-videoplayer-hd.hd-on"   : "_hdOff",
@@ -183,6 +184,13 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   // Handle user events on the player controls
   //--------------------------------------
 
+  _requestFrameRollView : function(){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+        this.options.guide.get('activeFrameModel'));
+    }
+  },
+  
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');
     if (activePlayerState) {
