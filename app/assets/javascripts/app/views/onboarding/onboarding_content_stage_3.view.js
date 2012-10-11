@@ -28,6 +28,8 @@ libs.shelbyGT.OnboardingContentStage3View = libs.shelbyGT.OnboardingContentStage
         var userToFollow = new libs.shelbyGT.ShelbyBaseModel();
         userToFollow.url = shelby.config.apiRoot + '/twitter/follow/shelby';
         userToFollow.save();
+        shelby.track('Follow Shelby', {userName: shelby.models.user.get('nickname')});
+        
       }
     }
   },
