@@ -2,57 +2,19 @@
   <div class="notification_actions dropdown_module">
     <button class="button_primer button_gray-medium notification_button dropdown_button">
       <i class="button_icon_right dropdown_icon icon">
-        Sign up
+        Log in
       </i>
     </button>
     <section class="dropdown_section signup-section">
       <div class="dropdown_lining signup-section-lining clearfix">
-
-        <form accept-charset="UTF-8" action="<%= shelby.config.signupFormUrl %>" method="post" class="form_module signup-form">
-          <fieldset class="">
-            <label for="name" class="form_label">Full Name</label>
-            <input id="name" name="name" placeholder="First and Last Name" class="form_input" />
-          </fieldset>
-          <fieldset class="">
-            <label for="nickname" class="form_label">Nickname</label>
-            <input id="nickname" name="nickname" placeholder="Your Shelby Username" class="form_input" />
-          </fieldset>
-          <fieldset class="">
-            <label for="primary_email" class="form_label">Email</label>
-            <input id="primary_email" name="primary_email" class="form_input" placeholder="email@address.com" type="email" />
-          </fieldset>
-          <fieldset class="">
-            <label for="password" class="form_label">Password</label>
-            <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
-          </fieldset>
-          <fieldset class="form_fieldset">
-            <input name="commit" type="submit" value="Sign Up" class="button_primer button_gray-medium signup-submit" />
-          </fieldset>
-        </form>
-
-        <hr class="signup-section-divider"/>
-
-        <div class="social_login login-social-section clearfix">
-          <h4 class="login-social-section-header">Sign Up with</h4>
-          <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter" href="<%= shelby.config.apiBase %>/auth/twitter" location="<%= shelby.config.apiBase %>/auth/twitter" popup-width="600" popup-height="700">
-            <i class="button_icon_left icon_share_twitter_on icon">
-              Twitter
-            </i>
-          </a>
-
-          <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook" href="<%= shelby.config.apiBase %>/auth/facebook" location="<%= shelby.config.apiBase %>/auth/facebook" popup-width="1000" popup-height="650">
-            <i class="button_icon_left icon_share_facebook_on icon">
-              Facebook
-            </i>
-          </a>
-        </div>
+        <%= SHELBYJST['signin-form']() %>
       </div><!-- eo signup-section-lining -->
     </section><!-- eo signup-section -->
   </div><!-- eo dropdown_module -->
 
   <div class="notification_body clearfix">
     <div class="notification_message">
-          <h1 class="anon-benefit-title">You need to Sign Up first!</h1>
+          <h1 class="anon-benefit-title">You need to Log in first!</h1>
       <% switch(bannerType){
          case libs.shelbyGT.AnonymousActions.QUEUE: %>
           <!-- <h1 class="anon-benefit-title">Don't miss a thing!</h1> -->
@@ -76,7 +38,7 @@
       <% break;
          case libs.shelbyGT.AnonymousActions.ME: %>
           <!-- <h1 class="anon-benefit-title">http://your-name.shelby.tv</h1> -->
-          <h2 class="anon-benefit-subtitle">Curate your own .tv channel.<br />It's like a blog, except you post video and don't have write so much. ;-]</h2>
+          <h2 class="anon-benefit-subtitle">Curate your own .tv channel. It's like a blog, except you post video and don't have write so much. ;-]</h2>
       <% break;
          default: %>
           <!-- <h1 class="anon-benefit-title">Get more from Shelby</h1> -->

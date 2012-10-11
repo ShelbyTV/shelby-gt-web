@@ -271,6 +271,7 @@ $bookmarklet-color: $shelby-blue;
   color: $text;
   left: 5px;
   top: 2em;
+
 }
 
 .signup-section-lining {
@@ -278,6 +279,7 @@ $bookmarklet-color: $shelby-blue;
 
   background: $nav-dropdown-bg;
   box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
+  font-size: .9em;
   margin-top: 1.5em;
   text-align: left;
   width: 300px;
@@ -286,6 +288,23 @@ $bookmarklet-color: $shelby-blue;
   &:after {
     right: auto;
     left: 10px;
+  }
+
+  .form_fieldset {
+    padding: 0 1em;
+  }
+
+  .login-submit {
+    @include button-sizing;
+  }
+
+  .login-social-section {
+    padding-bottom: 10px;
+  }
+
+  .login-forgot-password {
+    font-family: $font-family;
+    margin-left: 1em;
   }
 }
 
