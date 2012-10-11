@@ -47,8 +47,9 @@
 }
 
 .guide-overlay-cancel {
-//  @include button-primer($x-primer-color, light, guide-close);
   @include button-sizing(cancel);
+  padding:.5em;
+  vertical-align: top;
 
   .icon {
     background-size: contain;

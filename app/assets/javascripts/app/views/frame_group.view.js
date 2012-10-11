@@ -166,7 +166,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
       dataType: 'json',
       success: function(r){
-        var inputEl = $("<input type='text' value='"+r.result.short_link+"' class='xframe-option frame-shortlink' />");
+        var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
         buttonEl.replaceWith(inputEl);
         inputEl.click(function(){ inputEl.select(); });
         inputEl.select();
