@@ -11,6 +11,7 @@
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
   var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
+  var QueueEmptyIndicatorView = libs.shelbyGT.QueueEmptyIndicatorView;
 
   libs.shelbyGT.GuideContentView = Support.CompositeView.extend({
 
@@ -112,13 +113,13 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
-        case DisplayState.queue :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
               collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
+              emptyIndicatorViewProto : currentDisplayState == DisplayState.watchLaterRoll ? QueueEmptyIndicatorView : null,
               fetchParams : {
                 include_children : true
               },
@@ -177,7 +178,6 @@
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
-        case DisplayState.queue :
           this._currentRollView = this._listView;
           if (this._playingState == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
             // while we were away from this roll, we relied on the last displayed state of the roll
