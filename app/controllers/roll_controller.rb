@@ -17,7 +17,7 @@ class RollController < ApplicationController
       @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       
       # And render it
-      render '/home/landing'
+      render '/home/app'
     end
   end
   

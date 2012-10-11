@@ -120,8 +120,6 @@ a{
 	z-index:3;
 
 	&.hide-guide {
-	  @include transform( perspective(600) rotateY(90deg) );
-
 	  margin-left:-($guide-width);
 	}
 }

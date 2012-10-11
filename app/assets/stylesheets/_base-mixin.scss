@@ -449,6 +449,7 @@ $preferences-network : twitter !default;
 ////////////////////////////////////////////////////////////////////////////
     $color-names:
     blue       ,
+    blue-dark  ,
     default    ,
     gray       ,
     gray-light ,
@@ -463,6 +464,7 @@ $preferences-network : twitter !default;
 
     $color-values:
     #0590c4,
+    darken(#0590c4,10%),
     #eeeeee,
     #27292A,
     #a0a0a0,

@@ -8,7 +8,9 @@
 */
 libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
-  el: '.js-main-layout .content_lining',
+  tagName: 'section',
+
+  className: 'content_module videoplayer js-videoplayer animate-easein',
 
   options : {
     guide : null,         //injected at construction
@@ -51,6 +53,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     //XXX TODO probably want to kill this view 100%
     
     this.renderChild(new libs.shelbyGT.PrerollVideoInfoView({
+      el: this.$('#js-preroll-video-info-wrapper'),
       guide : shelby.models.guide,
       playbackState : shelby.models.playbackState
     }));
@@ -61,12 +64,14 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.VideoControlsView({
+      el: this.$('#video-controls'),
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay,
       playbackState : shelby.models.playbackState,
       userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.MiniVideoProgress({
+      el: this.$('#mini-video-progress'),
       playbackState : shelby.models.playbackState
     }));
   },
