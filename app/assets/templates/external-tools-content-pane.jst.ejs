@@ -8,32 +8,30 @@
     Want to <strong>Queue</strong> a video from someone's blog post? <br>
     Or <strong>Roll</strong> an interesting video you just found? We make it easy.
   </h2>
-<% var chrome; %>
-<% if(chrome){ %>
 
-  <div class="external-subsection">
-    <h2 class="external-subheader">
-      Shelby Radar
-    </h2>
-
-
+<% if(opts.displayExtension){ %>
+  <div class="external-subsection external-extension">
     <div class="external-bookmarklet-button-wrapper">
-      <a class="external-bookmarklet-button extension-chrome-button" href="<%= shelby.config.chromeExtensionWebStoreUrl %>" title="Click to add the Chrome Extension!">
-        <i class="button_icon chrome-icon">
+      <a class="button_primer faux_button button_gray-medium extension-chrome-button" href="https://chrome.google.com/webstore/detail/shelbytv-video-radar/ifdmhakojchpihfoebiihdjcphmmhcol" title="Drag me onto your bookmarks bar!">
+        <i class="button_icon_left icon">
           Chrome Extension
         </i>
       </a>
+      <div class="external-bookmarklet-instructions">
+        <h3 class="bookmarklet-help-header">
+          Shelby Video Radar
+        </h3>
+        <p class="extension-block">
+          Add the <strong>Shelby Video Radar</strong> to your Google Chrome toolbar to start <strong>Rolling</strong>, <strong>Queuing</strong>, and <strong>sharing videos</strong> from your favorite websites.
+        </p>
+      </div>
     </div>
-
-    <p class="external-block">
-      Click the button above to add <strong>Shelby Radar</strong> to your Google Chrome browser from the Chrome App Store.
-    </p>
   </div><!-- eo .external-subsection -->
 <% } %>
-  <div class="external-subsection">
+  <div class="external-subsection external-bookmarklet">
     <div class="external-bookmarklet-button-wrapper">
-      <a class="button_primer faux_button button_blue external-bookmarklet-button" href="javascript:(function(){window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);})();" title="Drag me onto your bookmarks bar!">
-        <i class="button_icon_left icon_videocard_roll_on icon">
+      <a class="button_primer faux_button button_gray-medium external-bookmarklet-button" href="javascript:(function(){window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);})();" title="Drag me onto your bookmarks bar!">
+        <i class="button_icon_left icon_videocard_roll icon">
           Video Radar
         </i>
       </a>

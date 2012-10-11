@@ -15,7 +15,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
     "click .js-dismiss" : "_dismissExtensionBanner",
     "click .js-tools"   : "_navigateTools"
   },
-  
+
   _height: "40px",
   
   _chromeExtensionTemplate : function(obj){

@@ -10,6 +10,7 @@
   right: 0;
   top: 0;
 }
+
 //------------------------------------------------------------------------------
 //  external; architectural
 //------------------------------------------------------------------------------
@@ -63,33 +64,31 @@
 }
 
 .external-bookmarklet-button {
-//  @include button-sizing;
-//  @include button-primer($shelby-blue, dark, wide);
-
-//  &:active,
-//  &:hover,
-//  &:link,
-//  &:visited {
-//    color: $button-color;
-//    text-decoration: none;
-//  }
 }
 
 //------------------------------------------------------------------------------
 //  extension specific
 //------------------------------------------------------------------------------
-.extension-chrome-button {
-
+.extension-block {
+  padding-left: 1em;
 }
 
-.chrome-icon {
-  background-image: url("/images/tools/chrome-icon.png");
-  padding-left: 1.6em;
+.extension-chrome-button {
+  @include button-sizing;
+
+  font-size: 1.1em;
+
+  .icon {  background-image: url("/images/tools/chrome-icon.png");
+    padding: .25em .25em .25em 2em;
+  }
 }
 
 //------------------------------------------------------------------------------
 //  bookmarklet specific
 //------------------------------------------------------------------------------
+.external-bookmarklet {
+}
+
 .external-bookmarklet-button {
   @include button-sizing;
 
