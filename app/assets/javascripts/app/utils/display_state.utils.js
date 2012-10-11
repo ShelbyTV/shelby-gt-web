@@ -6,7 +6,6 @@ libs.shelbyGT.DisplayState = {
   none : 'none',
   onboarding : 'onboarding',
   rollList : 'rollList',
-  queue : 'queue',
   standardRoll : 'standardRoll',
   team : 'team',
   userPreferences : 'userPreferences',
