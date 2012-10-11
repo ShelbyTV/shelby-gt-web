@@ -152,7 +152,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     self = this;
     this.model.getFirstFrame().saveToWatchLater();
     // immediately change the button state
-    this.$('.js-queue-frame').addClass('queued');
+    this.$('.js-queue-frame').addClass('queued button_gray-light');
     this.$('.js-queue-frame i').text('Queued');
     // start the transition which fades out the saved-indicator
   },
