@@ -35,8 +35,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   },
   
   bannerElement : function(){
-    if( Browser.isChrome() && false ){
-      // disabled until we have the extension in the chrome store
+    if( Browser.isChrome() ){
       this.$el.html(this._chromeExtensionTemplate());
     }
     else {
