@@ -3,7 +3,6 @@
 //  MODULE
 //------------------------------------------------------------------------------
 .notification_module {
-  color: $button-color;
   font-family: $font-family-display;
   font-weight: 500;
   height: inherit; //if parent wrapper isn't set, set a height in the modifying class.
@@ -47,26 +46,25 @@
   position: relative;
   width: 100%;
 }
+//------------------------------------------------------------------------------
+//  chrome extension notification
+//------------------------------------------------------------------------------
+$extension-color: #fff82b;
 
-//------------------------------------------------------------------------------
-//  BOOKMARKLET Notification
-//------------------------------------------------------------------------------
-.bookmarklet-notification {
-  @include gradient-primer($shelby-blue);
+.extension-notification {
+  @include gradient-primer($extension-color);
 
   .notification_button {
-    color: $shelby-blue;
-//      color: darken($shelby-blue,9%);
-    border-color: $shelby-blue;
+    color: $extension-color;
+    border-color: $extension-color;
     border-radius: 20px !important;
     text-shadow: none;
     vertical-align: top;
     margin: 0.5em 0.3em 0;
-
   }
 
   .notification_label {
-    color: darken($shelby-blue,15%);
+    color: darken($extension-color,15%);
   }
 
   .notification_message {
@@ -78,7 +76,78 @@
       &:link,
       &:hover,
       &:visited {
-        color: darken($shelby-blue,15%)
+        color: darken($extension-color,15%)
+      }
+    }
+  }
+}
+
+.extension-notification-radar-button {
+  @include button-sizing;
+
+  font-size: 1.1em;
+  margin-right: .5em;
+
+  .icon {
+    background-image: url('/images/tools/chrome-icon.png');
+    padding: .25em .25em .25em 2em;
+  }
+}
+
+.extension-notification-radar-help{
+  font-size: .7em;
+  margin-left: .7em;
+}
+
+.faux-bookmarklet-button {
+  @include roundies(input);
+
+  border: 1px solid #ccc;
+  font-family: $font-family-display;
+  font-size: .9em;
+  padding: .3em 0.4em .35em;
+
+  i {
+    background-image: url($icon-videocard-roll);
+    background-repeat: no-repeat;
+    background-position: center left;
+    font-style: normal;
+    padding-left: 1.2em;
+  }
+}
+//------------------------------------------------------------------------------
+//  BOOKMARKLET Notification
+//------------------------------------------------------------------------------
+$bookmarklet-color: $shelby-blue;
+
+.bookmarklet-notification {
+  @include gradient-primer($bookmarklet-color);
+
+  color: $button-color;
+
+  .notification_button {
+    color: $bookmarklet-color;
+    border-color: $bookmarklet-color;
+    border-radius: 20px !important;
+    text-shadow: none;
+    vertical-align: top;
+    margin: 0.5em 0.3em 0;
+  }
+
+  .notification_label {
+    color: darken($bookmarklet-color,15%);
+  }
+
+  .notification_message {
+    vertical-align: top;
+    line-height: 2;
+
+    a {
+      &:active,
+      &:link,
+      &:hover,
+      &:visited {
+        color: darken($bookmarklet-color,15%)
       }
     }
   }
