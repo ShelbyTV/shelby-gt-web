@@ -24,7 +24,7 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
   li {
     list-style-type: none;
     &:first-child {
-      .xframe {
+      .frame {
         border-top: none;
       }
     }
