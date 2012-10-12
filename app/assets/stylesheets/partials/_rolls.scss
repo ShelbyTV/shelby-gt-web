@@ -2,258 +2,49 @@
 
 ////////////////////////////////////////////////////////////////////////////
 //  TODO: comment this shit up.
-//				verify which classes are still being used.
+//        verify which classes are still being used.
 ////////////////////////////////////////////////////////////////////////////
 
 .roll-action-menu {
-	display: none;
-
-	//unsetting styles, should actually be written so that overriding is unneccessary.
-	.share-comment {
-		border-bottom: none;
-		border-top: none;
-		padding-bottom: 0;
-	}
-	.share-networks,
-	.share-submit {
-		border-top: none;
-	}
+  display: none;
 }
-
+////////////////////////////////////////////////////////////////////////////
+//  the roll menu is a list
+//  it houses the buttons that appear in the roll header
+////////////////////////////////////////////////////////////////////////////
 .roll-menu {
-	margin: 0;
-	padding: 11px 0 9px;
-	text-align: center;
+  margin: 0;
+  padding: 0;
 
-	li {
-		display: inline;
-		list-style-type: none;
-		margin: 0;		
-	}
-	.left {
-	  width: 47px;
-	}
-	.middle {
-	  width: 161px;
-	}
-	.right {
-	  width: 85px;
-	}
-}
-
-.rolls-add {
-	@include button-primer($shelby-green, dark);
-	
-	margin-top: 0;
-}
-
-.rolls-invite {
-	@extend .rolls-add;	
-}
-
-.rolls-share {
-	@extend .rolling-main-done;
-	margin-top: 0 !important;
-}
-
-.rolls-leave {
-	@include button-primer;
-	margin-top: 0;
-	text-shadow: none;
-}
-
-.rolls-edit{
-	@extend .rolls-leave;
-}
-
-.rolls-share-cancel {
-	@extend .rolls-leave;
-	margin-top: 0;
-}
-
-.rolls-back {
-	@include button-primer;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.roll-delete{
-	@include button-primer($shelby-red, dark);
-
-	display: none;
-	position: absolute;
-	right: 9px;
-	top: 22px;
-}
-
-/* ------ Roll Add Area */
-.add-video-area {
-	@include button-primer;
-
-	margin: 10px 10px 0px;
-	padding: 6px;
-	display: none;
-
-	input {
-		@include inputfont;
-		@include roundies(input);
-
-		border: 1px solid $inset;
-		height: 25px;
-		padding: 0 4px;
-		width: 87%;
-	}
-
-	.add-video {
-		@include button-primer;
-	
-		float: right;
-		height: 25px;
-		margin-top: 0;
-		padding: 4px;
-		width: 28px;
-	}
-	
-	.spinner {
-		left: auto;
-		margin-left: 0px;
-		margin-top: 0px;	
-		position: relative;
-	}
-}
-
-/*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
-
-.share-dialog {
-	padding:0;
-	display:none;
-	position:relative;
-	width:100%;
-	z-index:1;
-}
-
-.share-form {
-
-}
-
-.share-comment,
-.share-networks,
-.share-email-addresses {
-  padding: 5px 10px 10px;
-}
-
-.share-comment {
-  border: none;
-}
-
-.share-networks,
-.share-submit {
-	text-align: right;
-  border: none;
-}
-
-.share-networks {
-	float: left;
-	width: 50%;
-}
-
-.share-label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2;
-}
-
-.share-textarea, .share-email-addresses-input {
-	@include inputfont;
-	@include roundies(input);
-	@include opacity(0.8);
-
-	border: 1px solid $inset;
-	display: block;
-	padding: 5px;
-	width: 100%;
-
-  &:focus{
-    @include transition-property('opacity');
-    @include transition-duration(0.25s);
-    @include transition-timing-function(ease-in);
-    @include opacity(1);
+  & > li {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
   }
 }
-
-.share-networks-list {
-	margin: 0;
-	padding-left: 0;
+////////////////////////////////////////////////////////////////////////////
+//  all buttons should compound with this roll-menu-button
+////////////////////////////////////////////////////////////////////////////
+.roll-menu-button {
+  float: right;
+  margin: 4px 6px 4px 0;
+  padding: 0.5em 1em;
 }
+  ////////////////////////////////////////////////////////////////////////////
+  //  roll buttons
+  ////////////////////////////////////////////////////////////////////////////
+  .roll-menu-add {
 
-.share-networks-item {
-	float: left;
-	list-style-type:none;
-	margin-right: 10px;
+  }
+
+//  TODO: overlays need better partial abstraction
+//------------------------------------------------------------------------------
+//  guide overlay share…
+//------------------------------------------------------------------------------
+.share-submit {
+  text-align: right;
 }
 
 .share-submit-button {
-	font-size: 1.1em;
-}
-
-.share-comment-counter {
-	display: block;
-	font-size: 11px;
-	height: 22px;
-	line-height: 2;
-	float: right;
-}
-
-.networks-twitter,
-.networks-facebook {
-	@include share-networks-buttons;
-}
-
-.networks-twitter {
-	button {
-		@include background(
-			url($icon-share-twitter-off) no-repeat center center,
-			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
-		);
-
-	}
-	&.active {
-		button {
-			background-color: $twitter-blue;
-			@include background(
-				url($icon-share-twitter-on) no-repeat center center,
-				linear-gradient(top, adjust-lightness($twitter-blue, 20%),$twitter-blue)
-			);
-			border: 1px solid adjust-lightness($twitter-blue, -40%);
-		}
-	}
-}
-
-.networks-facebook {
-	button {
-		@include background(
-			url($icon-share-facebook-off) no-repeat center center,
-			linear-gradient(top, adjust-lightness($networks-unselected, 20%),$networks-unselected)
-		);
-
-	}
-	&.active {
-		button {
-			background-color: $facebook-blue;
-			@include background(
-				url($icon-share-facebook-on) no-repeat center center,
-				linear-gradient(top, adjust-lightness($facebook-blue, 20%),$facebook-blue)
-			);
-			border: 1px solid adjust-lightness($facebook-blue, -10%);
-		}
-	}
-}
-
-.share-submit {
-}
-
-.networks-twitter-button,
-.networks-facebook-button,
-.networks-tumblr-button {
-	@include notype;
+  font-size: 1.1em;
 }

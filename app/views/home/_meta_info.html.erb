@@ -1,27 +1,57 @@
-<% if @frame or @roll %>
-	<!-- For FB -->
-	<meta property="fb:app_id" content="<%= Settings::Facebook.facebook_app_id %>" /> 
-	<meta property="og:locale" content="EN_us" />
+<!-- For FB -->
+<meta property="fb:app_id" content="<%= Settings::Facebook.facebook_app_id %>" /> 
+<meta property="og:locale" content="EN_us" />
+
+<% if (@frame and @video and @roll) or (@video_provider_name and @video_provider_id) or (@roll and @user) %>
+	<!-- For Twitter -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site:id" content="<%= Settings::Twitter.shelby_twitter_user_id %>">
 <% end %>
 
-<% if @frame and @video %>
+<% if @frame and @video and @roll %>
+	<meta name="twitter:description" content="<%= @video['description'] %>">
+	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['title'].to_s %>">
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
-	<meta property="og:video:secure_url" content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id'], 'https') %>" /> 
+	<% if @video['source_url'] %>
+		<meta property="og:video:url" content="<%= @video['source_url'] %>" /> 
+		<meta property="og:video:secure_url" content="https://<%= @video['source_url'][7..-1] if @video['source_url'] %>" /> 
+	<% else %>
+		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id']) %>" /> 
+		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id'], 'https') %>" /> 		
+	<% end %>
 	<meta property="og:title" content="<%= @video['title'] %>" /> 
-	<meta property="og:description" content="<%= @video['description'] %>" />	
+	<% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
+		<meta property="og:description" content="<%= @frame['conversation']['messages'][0]['text'] %>" />
+	<% else %>
+		<meta property="og:description" content="<%= @video['description'] %>" />
+	<% end %>
 	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 	
-<% elsif @roll and @video %>
+<% elsif @roll and @user %>
 	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
-	<% user_roll_description = "#{user_roll_title} curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
+	<% user_roll_description = "#{user_roll_title} is curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
 	<meta property="og:type" 		content="shelbytv:roll" />
-	<meta property="og:url"			content="<%= Shelby::API.generate_roll_route(@roll['id']) %>" /> 
+	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv" /> 
 	<meta property="og:title" content="<%= user_roll_title %>" /> 
 	<meta property="og:description" content="<%= user_roll_description %>" />	
 	<meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
 	<meta name="description" content="<%= user_roll_description %>" />
+
+<% elsif @video_provider_name and @video_provider_id %>
+
+	<meta property="og:type" 		content="video" />
+	<meta property="og:url"			content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
+	<% if @video_source_url %>
+		<meta property="og:video:url" content="<%= @video_source_url %>" /> 
+		<meta property="og:video:secure_url" content="https://<%= @video_source_url[7..-1] if @video_source_url %>" />
+	<% else %>
+		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" /> 
+		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id, 'https') %>" /> 		
+	<% end %>
+	<meta property="og:title" content="<%= @video_title %>" /> 
+	<meta property="og:description" content="<%= @video_description %>" />	
+	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
 	
 <% else %>
 	<meta name="description" content="<%= Settings::Application.meta_description %>">

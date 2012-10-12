@@ -7,7 +7,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
   _spinnerState : null,
 
   template : function(obj){
-      return JST['explore-layout'](obj);
+      return SHELBYJST['explore-layout'](obj);
   },
 
   initialize : function(){
@@ -27,7 +27,7 @@ libs.shelbyGT.ExploreLayoutView = Support.CompositeView.extend({
       doCheck : libs.shelbyGT.SmartRefreshCheckType.key,
       doSmartRefresh : true,
       el : '.js-roll-category-list',
-      keyAttribute : 'category',
+      keyAttribute : 'category_title',
       listItemViewAdditionalParams : {
         activationStateModel : shelby.models.exploreGuide,
         exploreGuideModel : shelby.models.exploreGuide

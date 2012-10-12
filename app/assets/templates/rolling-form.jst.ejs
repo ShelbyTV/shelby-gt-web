@@ -1,6 +1,7 @@
 <%  
-  var creatorNickname = frame.get('creator').get('nickname')
-  var messageText = (creatorNickname) ? "&#x2794;@"+frame.get('creator').get('nickname') : '';
+  var creator = frame.get('creator');
+  var creatorNickname = creator ? frame.get('creator').get('nickname') : '';
+  var messageText = (creatorNickname) ? "&#x2794;@"+creatorNickname : '';
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
 
   if(messages.length > 0){
@@ -9,7 +10,7 @@
 %>
 
 <%=
-	JST['media-module']({
+	SHELBYJST['media-module']({
 		userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
 		userNickname : user.get('nickname') || '',
 		messageText  : messageText,

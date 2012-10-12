@@ -1,4 +1,5 @@
 //DOCS: http://www.collegehumor.com/moogaloop/api.php
+//example 404 video: http://localhost.shelby.tv:3000/roll/4f9009d9b415cc466a000466/frame/504cedb6d1041245b5003156
 libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 
   id: 'collegehumor-player-holder',

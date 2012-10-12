@@ -10,13 +10,13 @@ $active-list-item: $shelby-blue;
   .active-list-item {
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
-    .xframe-title,
-    .xframe-aside-text {
+    .frame-title,
+    .frame-aside-text {
       color: white;
     }
 
-    .xframe-aside-text a:link,
-    .xframe-aside-text a:visited {
+    .frame-aside-text a:link,
+    .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
   }
@@ -25,7 +25,7 @@ $active-list-item: $shelby-blue;
 //------------------------------------------------------------------------------
 //  frame natural state
 //------------------------------------------------------------------------------
-.xframe {
+.frame {
   padding: 1em;
 
   ////////////////////////////////////////////////////////////////////////////
@@ -35,19 +35,19 @@ $active-list-item: $shelby-blue;
   //  collapsed: indicationt that frame is openable.
   ////////////////////////////////////////////////////////////////////////////
   &:hover {
-    .xframe-is-collapsed,
+    .frame-is-collapsed,
     .menu_module {
       display: block;
     }
   }
 }
 
-.xframe-list-item {
+.frame-list-item {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
 }
 
-.xframe-header {
+.frame-header {
   &:active,
   &:hover,
   &:link,
@@ -57,22 +57,22 @@ $active-list-item: $shelby-blue;
   text-decoration:none;
 }
 
-.xframe-title {
+.frame-title {
   font-size: 1.3em;
   line-height: 1.45;
   margin-bottom: .35em;
 }
 
-.xframe-body-wrapper {
+.frame-body-wrapper {
   background-color: $videocard-footer-bg-color;
   box-shadow: $videocard-shadow;
   position: relative;
 }
 
-.xframe-body {
+.frame-body {
 }
 
-.xframe-thumbnail {
+.frame-thumbnail {
   height: 130px;
 
   &.missing-thumbnail {
@@ -81,7 +81,7 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.xframe-footer {
+.frame-footer {
   .no-faux-link {
     &:visited,
     &:link {
@@ -95,12 +95,12 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.xframe-subline {
+.frame-subline {
   margin-top: 1em;
   text-align: right;
 }
 
-.xframe-is-collapsed {
+.frame-is-collapsed {
   &:link,
   &:visited {
     text-decoration: none;
@@ -116,7 +116,7 @@ $active-list-item: $shelby-blue;
   opacity: .5;
 }
 
-.xframe-comment-link {
+.frame-comment-link {
   display: block;
   float: right;
   line-height: 1;
@@ -172,11 +172,13 @@ $active-list-item: $shelby-blue;
   }
 }
 
+
+
 //------------------------------------------------------------------------------
 //  frame command menu:
 //  frame menu appears on :hover of particular videocard
 //------------------------------------------------------------------------------
-.xframe-menu {
+.frame-menu {
   height: 0;
   left: 0;
   position: absolute;
@@ -185,7 +187,7 @@ $active-list-item: $shelby-blue;
   z-index: 1;
 }
 
-.xframe-command-menu {
+.frame-command-menu {
   height: inherit;
   left: inherit;
   list-style-type: none;
@@ -198,8 +200,8 @@ $active-list-item: $shelby-blue;
 //  styling of the command buttons,
 //  queue, roll, share, etc.
 ////////////////////////////////////////////////////////////////////////////
-.xframe-command {
-  @include button-primer($x-primer-color, light, menu);
+.frame-command {
+  @include button-sizing;
 
   margin-left: 10px;
   margin-top: 10px;
@@ -208,34 +210,44 @@ $active-list-item: $shelby-blue;
     //  dropdown sublist:
     //  children options of a spcific frame command (more button)
     ////////////////////////////////////////////////////////////////////////////
-    .xframe-sublist {
-      margin-top: 3px;
-    }
+    .frame-sublist {
+      margin-top: 1px;
+      box-shadow: $shadow;
 
-    .xframe-option {
-      background-color: #efefef;
-      border-bottom: none;
-      border-left: 1px solid $inset;
-      border-right: 1px solid $inset;
-      border-top: none;
-      padding: .75em 1em .75em;
-      text-align: left;
-      width: 100%;
+      .frame-command {
+        background-color: #efefef;
+        border-bottom: none;
+        border-left: 1px solid $inset;
+        border-right: 1px solid $inset;
+        border-top: none;
+        margin: 0;
+        padding: .75em 1em .75em;
+        text-align: left;
+        width: 100%;
 
-      &:hover {
-        background-color: adjust-lightness(#efefef,-5%);
+        &:hover {
+          background-color: adjust-lightness(#efefef,-5%);
+        }
       }
     }
 
-    .xframe-item {
+    .frame-shortlink {
+      display: block;
+      font-size: 1.1em;
+      height: 29px;
+      padding: 0.6em 0.9em 0.5em;
+      width: 100%;
+    }
+
+    .frame-item {
       &:first-child {
-        .xframe-option {
+        .frame-option {
           border-top: 1px solid $inset;
         }
       }
 
       &:last-child {
-        .xframe-option {
+        .frame-option {
           border-bottom: 1px solid $inset;
         }
       }
@@ -249,30 +261,24 @@ $active-list-item: $shelby-blue;
     }
 
 //------------------------------------------------------------------------------
-//  command-icon setup
-//------------------------------------------------------------------------------
-.command-icon {
-}
-
-//------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
   width: 71px;
 
-  .command-icon {
+  .icon {
     padding-left: $button-padding-left;
   }
 
   &.queued {
-    @include button-primer(darken($x-primer-color,20%));
+//    @include button-primer(darken($x-primer-color,20%));
 
     &:not(.remove-frame) {
-      @include button-primer(darken($x-primer-color,20%),light,queue-button,false);
-      cursor: auto;
+//      @include button-primer(darken($x-primer-color,20%),light,queue-button,false);
+//      cursor: auto;
     }
 
-    .command-icon {
+    .icon {
       background-image: none;
       padding: 0;
     }
@@ -280,43 +286,43 @@ $active-list-item: $shelby-blue;
 }
 
 .command-roll {
-  .command-icon {
+  .icon {
     padding-left: $button-padding-left;
   }
 }
 
 .command-more {
-  .command-icon {
-    padding-right: $button-padding-right;
-  }
+//  .command-icon {
+//    padding-right: $button-padding-right;
+//  }
 }
 
 .command-share {
-  .command-icon {
+  .icon {
     background-image: none;
   }
 }
 
 //------------------------------------------------------------------------------
 //  frame collapsed
-//  (nest styles inside of .xframe-collapsed{})
+//  (nest styles inside of .frame-collapsed{})
 //------------------------------------------------------------------------------
-.xframe-collapsed {
+.frame-collapsed {
   opacity: .5;
 
-  .xframe-title {
+  .frame-title {
     height: 40px;
     overflow: hidden;
   }
 
-  .xframe-thumbnail {
+  .frame-thumbnail {
     float: left;
     height: 80px;
     margin-right: 10px;
     width: 45%;
   }
 
-  .xframe-footer {
+  .frame-footer {
     overflow: hidden;
     zoom: 1;
   }
@@ -324,14 +330,52 @@ $active-list-item: $shelby-blue;
   &:hover {
     opacity: 1;
 
-    .xframe-body-wrapper {
+    .frame-body-wrapper {
       cursor: pointer;
     }
 
-    .xframe-menu {
+    .frame-menu {
       display: none;
     }
   }
+
+  /* unplayable and collapsed */  
+  &.xvideo-unplayable {
+
+    .xvideo-unplayable-thumbnail-overlay {
+      left: 40px;
+      top: 20px;
+    }
+
+    &:hover{
+      opacity: .5;
+    };
+  }
+}
+
+.xvideo-unplayable {
+  .xvideo-unplayable-thumbnail-overlay {
+    @include text-shadow(0px 0px 4px #000);
+    color: #efefef;
+    display: block;
+    font-size: 1.5em;
+    left: 130px;
+    line-height: 1;
+    position: absolute;
+    text-align: center;
+    top: 45px;
+  }
+  
+  .xframe-thumbnail {
+    @include filter(blur(3px) grayscale(1));
+  }
+  .xframe-menu {
+    display: none!important;
+  }
+}
+
+.xvideo-unplayable-thumbnail-overlay { 
+  display: none;
 }
 
 //---------------------------
@@ -340,13 +384,45 @@ $active-list-item: $shelby-blue;
 //  lists duplicates, 'also via:' stuff
 //---------------------------
 
-.xframe-aside {
+.frame-aside {
   margin: 8px 0px 0px 5px;
 }
 
-.xframe-aside-text {
+.frame-aside-text {
   color: #666;
   margin: 0;
   padding: 0;
 }
 
+//------------------------------------------------------------------------------
+//  isolate roll
+//  (nest styles inside of .isolated-roll{})
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .frame-subline {
+    display: none;
+  }
+
+  .xuser-data {
+    display: none;
+  }
+
+  .xuser-message {
+    margin: 0;
+  }
+
+  .xuser-data-timestamp {
+    padding: 0 0 5px 10px;
+  }
+
+  /* adjust the avatar in the roll header */
+  .guide .xuser-avatar {
+    border-right: 1px solid $outset;
+    margin: 0 10px 0 0;
+  }
+
+  /* hide the avatar on the frame */
+  .frame .xuser-avatar {
+    display: none;
+  }
+}

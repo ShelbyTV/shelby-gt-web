@@ -6,14 +6,27 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   className : 'explore-item',
+  
+  _spinnerView : null,
 
   template : function(obj){
-    return JST['explore-roll-item'](obj);
+    return SHELBYJST['explore-roll-item'](obj);
   },
 
   initialize : function(){
     shelby.models.guide.bind('change:displayState', this._onChangeDisplayState, this);
     shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
+    
+    // Explore view lazy loads the frames, so grab them if we need to
+    if(this.model.get('frames').length === 0){
+      var self = this;
+      this.model.fetch({
+        success: function(roll, response){
+          self._leaveChildren();
+          self.render();
+        }
+      });
+    }
   },
 
   _cleanup : function(){
@@ -31,6 +44,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
       this.$('.js-follow-unfollow').addClass('command-active');
     }
     this.appendChildInto(new libs.shelbyGT.ExploreFrameListView({model: this.model}), '.explore-roll');
+    
     return this;
   },
 

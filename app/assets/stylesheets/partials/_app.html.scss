@@ -77,21 +77,18 @@ a{
 	width: 100%;
 
 	&.explore-layout {
-		display: none;
-		z-index: 3;
+		display:none;
 	}
 }
 
 .content_lining {
-	float: right;
-	margin-left: -($guide-width);
 	height:100%;
-	width:100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .content_module {
 	height:100%;
-  margin-left: $guide-width;
   position: relative;	
 }
 
@@ -114,30 +111,14 @@ a{
 
 .guide-wrapper{
 	background-color: $guide-bg-color; //should technically be on .guide or something.
+	float: left;
 	height:100%;
-	overflow:hidden;
 	opacity: 1;
-	position:relative;
+	position: relative;
 	z-index:3;
 
 	&.hide-guide {
 	  margin-left:-($guide-width);
-	}
-}
-
-.content-body{
-	bottom:0;
-	overflow-x:hidden;
-	overflow-y:auto;
-	position:absolute;
-	top:42px;
-	width:100%;
-	z-index: -1;
-}
-
-.touch {
-	.content-body {
-		overflow: hidden;	
 	}
 }
 

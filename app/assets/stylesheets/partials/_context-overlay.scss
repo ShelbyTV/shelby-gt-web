@@ -17,21 +17,24 @@
   ////////////////////////////////////////////////////////////////////////////
   // frame restylings
   ////////////////////////////////////////////////////////////////////////////
-  .xframe {
+  .frame {
     background-color: $base;
     overflow: hidden; //hide that body-wrapper box-shadow!
     padding: 0;
   }
 
-  .xframe-title {
+  .frame-title {
     padding: 3px 5px 0;
   }
 
+  .frame-footer {
+    min-height: 51px;
+  }
   ////////////////////////////////////////////////////////////////////////////
   //  menu and sublist stuff
   ////////////////////////////////////////////////////////////////////////////
 
-  .xframe-menu {
+  .frame-menu {
     bottom: 28px;
     display: block;
     top: auto;
@@ -42,18 +45,19 @@
     }
   }
 
-  .xframe-sublist {
+  .frame-sublist {
+    box-shadow: none;
     display: block;
     margin: 0;
     width: auto;
   }
 
-  .xframe-command,
-  .xframe-option {
+  .frame-sublist .frame-command,
+  .frame-command {
     //let's "unstyle" this shit to look like a text link.
     border: none !important;
-    box-shadow: none;
-    background: transparent;
+    box-shadow: none !important;
+    background: transparent !important;
     color: #666;
     font-family: $font-family;
     font-weight: 300;
@@ -72,7 +76,7 @@
 //  queue, remove, shortlink, etc.
 //------------------------------------------------------------------------------
   .command-sublist { //override the background positioning
-    .command-icon {
+    .icon {
       background-position: center left;
 //      background-repeat: no-repeat; //not sure why this has to be called again.
       padding-left: $button-padding-left;
@@ -97,7 +101,7 @@
     }
 
     .command-share {
-      .command-icon {
+      .icon {
         &.icon_email {
           background-image: url($icon-email);
           padding-left: $button-padding-left + .2em;
@@ -108,5 +112,6 @@
   .xuser-message {
     overflow-y:auto;
     max-height: 150px;
+    min-height: .7em;
   }
 }//eo .context-overlay-lining

@@ -1,28 +1,29 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
-    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
-    "roll/:rollId/:title" : "displayRoll",
-    "roll/:rollId" : "displayRoll",
-    "rollFromFrame/:frameId" : "displayRollFromFrame",
-    "isolated_roll/:rollId" : "displayIsolatedRoll",
+    "isolated_roll/:rollId"                : "displayIsolatedRoll",
     "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
+    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
+    "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
+    "roll/:rollId/:title"                  : "displayRoll",
+    "roll/:rollId"                         : "displayRoll",
+    "rollFromFrame/:frameId"               : "displayRollFromFrame",
     "fb_genius/roll/:rollId" : "displayFacebookGeniusRoll",
     "fb_genius/roll/:rollId/frame/:frameId" : "displayFacebookGeniusRoll",
-    "user/:id/personal_roll" : "displayUserPersonalRoll",
-    "stream" : "displayDashboard",
-    "me" : "displayRollList",
-    "explore" : "displayExploreView",
-    "onboarding/:stage" : "displayOnboardingView",
-    "queue" : "displaySaves",
-    "saves" : "displaySaves",
-    "preferences" : "displayUserPreferences",
-    "help" : "displayHelp",
-    "team" : "displayTeam",
-    "legal" : "displayLegal",
-    "" : "displayDashboard",
-    "*url" : "doNothing"
+    "user/:id/personal_roll"               : "displayUserPersonalRoll",
+    "explore"                              : "displayExploreView",
+    "help"                                 : "displayHelp",
+    "legal"                                : "displayLegal",
+    "me"                                   : "displayRollList",
+    "onboarding/:stage"                    : "displayOnboardingView",
+    "preferences"                          : "displayUserPreferences",
+    "queue"                                : "displaySaves",
+    "saves"                                : "displaySaves",
+    "stream"                               : "displayDashboard",
+    "team"                                 : "displayTeam",
+    "tools"                                : "displayTools",
+    ""                                     : "displayDashboard",
+    "*url"                                 : "doNothing"
   },
 
   //---
@@ -304,6 +305,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.legal);
   },
+
+  displayTools : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
+  },
   
   doNothing : function(url){
     console.log('unhandled url', url);
@@ -327,7 +333,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   // param: options -- accepts the same options as the Backbone.Router.navigate() param options
   navigateToRoll : function (roll, options) {
     var rollTitle = roll.get('title');
-    this.navigate('roll/' + roll.id + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
+    var rollId = roll.id || roll.get('roll_id');
+    this.navigate('roll/' + rollId + (rollTitle ? '/' + libs.utils.String.toUrlSegment(rollTitle) : ''), options);
   },
 
   _activateFirstRollFrame : function(rollModel, response) {

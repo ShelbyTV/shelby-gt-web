@@ -12,17 +12,18 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _appProgressKey: "extension",
   
   events : {
-    "click .js-dismiss-extension-banner" : "_dismissExtensionBanner"
+    "click .js-dismiss" : "_dismissExtensionBanner",
+    "click .js-tools"   : "_navigateTools"
   },
-  
-  _height: "70px",
+
+  _height: "40px",
   
   _chromeExtensionTemplate : function(obj){
-    return JST['notification-banners/chrome-extension'](obj);
+    return SHELBYJST['notification-banners/chrome-extension'](obj);
   },
   
   _bookmarketTemplate : function(obj){
-    return JST['notification-banners/bookmarklet'](obj);
+    return SHELBYJST['notification-banners/bookmarklet'](obj);
   },
   
   initialize : function(){
@@ -34,8 +35,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   },
   
   bannerElement : function(){
-    if( Browser.isChrome() && false ){
-      // disabled until we have the extension in the chrome store
+    if( Browser.isChrome() ){
       this.$el.html(this._chromeExtensionTemplate());
     }
     else {
@@ -51,6 +51,10 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   _updateAppProgress : function(hasExtension){
     shelby.models.user.get('app_progress').set(this._appProgressKey, hasExtension);
     shelby.models.user.get('app_progress').saveMe();
-  }
+  },
   
+  _navigateTools : function(){
+    shelby.router.navigate('tools', {trigger:true});
+    shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
+  }
 });

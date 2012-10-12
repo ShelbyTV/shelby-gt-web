@@ -5,10 +5,10 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     "click .js-full-shelby-button" : "_goFullShelby"
   },
 
-  className : 'guide-header-lining clearfix',
+  className : 'guide-header-wrapper clearfix',
 
   template : function(obj){
-    return JST['guide-header-lining'](obj);
+    return SHELBYJST['guide-header-lining'](obj);
   },
 
   initialize : function(){
@@ -26,7 +26,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
     this.$el.html(this.template({
       roll : this.model
     }));
-    this.$('#js-guide-title').before(JST['iso-roll-buttons']());
+    this.$('#js-guide-title').before(SHELBYJST['iso-roll-buttons']());
 
     this._updateFullShelbyButton();
     this._updateFollowButton();
@@ -36,7 +36,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
  _followOrUnfollow : function() {
     var $thisButton = this.$('.js-follow-button');
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isFollow = $thisButton.toggleClass('guide-header-button-highlighted').hasClass('guide-header-button-highlighted');
+    var isFollow = $thisButton.toggleClass('button-active').hasClass('button-active');
     var wasFollow = !isFollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
@@ -74,7 +74,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
       this.$('.js-follow-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
-      this.$('.js-follow-button').toggleClass('guide-header-button-highlighted', !userFollowingRoll)
+      this.$('.js-follow-button').toggleClass('button-active', !userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
   },

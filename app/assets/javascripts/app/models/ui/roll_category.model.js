@@ -1,7 +1,7 @@
 libs.shelbyGT.RollCategoryModel = Backbone.RelationalModel.extend({
 
   defaults : {
-    category : null
+    category_title : null
   },
 
   relations : [

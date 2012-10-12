@@ -3,7 +3,7 @@ libs.shelbyGT.ExploreContentPaneView = Support.CompositeView.extend({
   el: '.js-explore-layout .content_lining',
 
   template : function(obj){
-      return JST['explore-content-pane'](obj);
+      return SHELBYJST['explore-content-pane'](obj);
   },
 
   initialize : function(){

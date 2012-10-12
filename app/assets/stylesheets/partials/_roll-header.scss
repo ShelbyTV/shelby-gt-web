@@ -3,10 +3,13 @@
 .roll-header {
   border-top: 1px solid $outset;
 	margin: 0;
-	padding: 12px 0 0;
-	position: relative;
-  text-align: center;
-	width: 100%;
+	padding: 0;
+}
+
+.roll-title {
+  font-size: 1.3em;
+  line-height: 2.3;
+  margin-left: 10px;
 }
 
 .current-roll-avatar  {

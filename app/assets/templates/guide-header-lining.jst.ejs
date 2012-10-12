@@ -1,6 +1,13 @@
-  <% var creatorNickname = roll.get('creator_nickname') %>
-  <% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+<% var creatorNickname = roll.get('creator_nickname') %>
+<% var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
 
+<% if( roll.get('header_image_file_name') ){ %>
+	<div class="image_module" id="guide-header-roll-header-image" style="background-image: url('<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>');">
+		<img src="<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>" class="visuallyhidden" />
+	</div>
+<% } %>
+
+<div class="guide-header-lining clearfix">
   <% if (creatorNickname) { %>
     <span class="image_module xuser-avatar guide-header-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
         <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
@@ -9,3 +16,4 @@
   <h2 id="js-guide-title" class="guide-header-title">
     <%= roll.get('title') || '' %>
   </h2>
+</div>

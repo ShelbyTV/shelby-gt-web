@@ -7,8 +7,8 @@
 
 <div class="overlay_header guide-overlay-head conversation-head">
   <div class="guide-overlay-head-lining">
-    <button class="guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
-      <i class="button_icon icon_cancel cancel-icon">
+    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
+      <i class="button_icon_left icon_cancel icon">
         Cancel
       </i>
     </button>
@@ -21,21 +21,21 @@
 
 <div class="overlay_body guide-overlay-body conversation-body">
   <form class="form_module new-comment">
-    <h1 class="xframe-title" title="<%= frameTitle %>">
+    <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle || '' %> 
     </h1>
     
-    <div class="xframe-body-wrapper clearfix">
+    <div class="frame-body-wrapper clearfix">
       <%=
-        JST['thumbnail-module']({
+        SHELBYJST['thumbnail-module']({
           thumbnail : frame.get('video').get('thumbnail_url') || '',
           title : frame.get('video').get('title') || ''
         })
       %>
 
       <%=
-        JST['frame-conversation-form']({user: user})
+        SHELBYJST['frame-conversation-form']({user: user})
       %>
-    </div>
+    </div><!-- eo frame-body-wrapper -->
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

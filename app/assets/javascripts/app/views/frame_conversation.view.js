@@ -18,7 +18,7 @@
     className : GuideOverlayView.prototype.className + ' conversation-overlay',
 
     template : function(obj){
-      return JST['frame-conversation'](obj);
+      return SHELBYJST['frame-conversation'](obj);
     },
 
     initialize : function(){

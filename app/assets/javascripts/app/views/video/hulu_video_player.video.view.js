@@ -127,21 +127,18 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 
 		var options = {};
 		switch(error) {
+		  case "NS_JS_004": // unable to load asset from server
 			case "NS_JS_008": // content deleted
-				break;
 			case "NS_JS_009": // content deleted
+			  this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.error.videoNotFound});
 				break;
-			case "NS_JS_007": // video not available in region
-				break;
-			case "NS_JS_001": // components failed to load 
-				break;
+			case "NS_JS_001": // components failed to load
 			case "NS_PL_003": // unable to load player
-				break;
-			case "NS_JS_004": // unable to load asset from server
-				break;
 			case "NS_JS_006": // geocheck failed
-				break;
+			case "NS_JS_007": // video not available in region
 			case "NS_JS_012": // timeout
+			default:
+			  this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.error.generic});
 				break;
 		}
 		

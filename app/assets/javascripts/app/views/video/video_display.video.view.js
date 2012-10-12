@@ -38,7 +38,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
       playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
     }, this);
 
-    //playback event tracking
+    //playback event handling & tracking
     libs.utils.VideoPlaybackEvents.initialize(this._playbackState, this.model, this._userDesires);
   },
 

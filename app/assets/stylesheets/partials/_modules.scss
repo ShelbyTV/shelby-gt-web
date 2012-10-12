@@ -1,10 +1,73 @@
+//------------------------------------------------------------------------------
+//  TODO: guide_module, guide structure should gets its own partial probz.
+//------------------------------------------------------------------------------
+.guide_module {
+  //boilerplate positioning.
+  //this class should probably be applied to its parent.
+  //it's sort of unnecessarily shiv'd in there.
+  height: inherit;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: inherit;
+}
+
+.guide_head {
+}
+
+.guide_body {
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  z-index: 0;
+}
+  ////////////////////////////////////////////////////////////////////////////
+  //  overrides
+  ////////////////////////////////////////////////////////////////////////////
+  .touch {
+    .guide_body {
+      overflow: hidden;
+    }
+  }
+
+//------------------------------------------------------------------------------
+//  guide-styles
+//------------------------------------------------------------------------------
+.guide-head {
+  box-shadow: $shadow;
+  position: relative;
+  z-index: 1;
+}
+
+.guide-head-menu {
+  float: right;
+}
+
+.guide-header {
+  overflow: hidden;
+}
+
+.guide-body {
+
+}
+
+.guide-body-menu {
+
+}
+
+.guide-body-content {
+
+}
+
 //---------------------------
 //  EXPERIMENTAL:
 //  should arbitrary button get a class that gives it its color?
 //  i.e.: <button class="form_submit submit-share shelby-blue">Submit</button>
 //---------------------------
-
-$list : blue, green, default;
+$list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
 @each $color in $list {
   .shelby-#{$color} {
     @include loopable-button-primer($color);
@@ -12,9 +75,8 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  TODO: fix this list shit 
+//  TODO: fix this list shit
 //---------------------------
-
 .list,
 .rolls-list,
 .form-rolls-list,
@@ -23,9 +85,9 @@ $list : blue, green, default;
   padding: 0;
 
   li {
-    list-style-type: none;  
+    list-style-type: none;
     &:first-child {
-      .xframe {
+      .frame {
         border-top: none;
       }
     }
@@ -33,7 +95,7 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  animation module 
+//  animation module
 //---------------------------
 
 .animate_module,
@@ -42,7 +104,7 @@ $list : blue, green, default;
 }
 
 //---------------------------
-//  media module, what up! 
+//  media module, what up!
 //  thanks to @stubbornella.
 //---------------------------
 
@@ -152,14 +214,14 @@ $list : blue, green, default;
 
 //---------------------------
 //  modular overlay framework
-//  
+//
 //    two main parts:
 //    header and body.
 //    this abstraction is a primer for
 //    the content separation.
 //
 //    *used for any overlay,
-//     that slides over the guide    
+//     that slides over the guide
 //---------------------------
 .overlay_header {
   height: $overlay_header_height;
@@ -179,6 +241,29 @@ $list : blue, green, default;
 //    inputs consistent throughout
 //    the entire app
 //------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  SHARED BY HORIZONTAL + VERTICAL FORMS
+////////////////////////////////////////////////////////////////////////////
+.form_submit {
+//  @include button-primer($shelby-blue, dark, wide);
+  @include button-sizing(wide);
+
+  .spinner {
+    left: auto;
+    margin-left: -4px;
+    margin-top: -2px;
+    position: relative;
+  }
+
+//  &:hover {
+//    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+//  }
+
+//  &:active {
+//    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+//  }
+}
+
 ////////////////////////////////////////////////////////////////////////////
 //  VERTICAL FORMS
 ////////////////////////////////////////////////////////////////////////////
@@ -234,7 +319,6 @@ $list : blue, green, default;
 .form_textarea {
 
 }
-
 ////////////////////////////////////////////////////////////////////////////
 //  HORIZONTAL FORMS
 //
@@ -254,16 +338,16 @@ $list : blue, green, default;
   }
 
   .form_label {
-
+    display: inline;
   }
 
   .form_label {
-
+    display: inline;
   }
 
   .form_input,
   .form_textarea {
-
+    display: inline;
   }
 
   .form_input {
@@ -273,29 +357,27 @@ $list : blue, green, default;
   .form_textarea {
 
   }
-}
 
-////////////////////////////////////////////////////////////////////////////
-//  SHARED BY HORIZONTAL + VERTICAL FORMS
-////////////////////////////////////////////////////////////////////////////
-.form_submit {
-  @include button-primer($shelby-blue, dark, wide);
+  .form_submit {
+    display: inline;
 
-  .spinner {
-    left: auto;
-    margin-left: -4px;
-    margin-top: -2px;   
-    position: relative;
-  }
+    .spinner {
+      left: auto;
+      margin-left: -4px;
+      margin-top: -2px;
+      position: relative;
+    }
 
-  &:hover {
-    @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
-  }
+//    &:hover {
+//      @include button-primer(adjust-lightness($shelby-blue,5%), dark, wide);
+//    }
 
-  &:active {
-    @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+//    &:active {
+//      @include button-primer(adjust-lightness($shelby-blue,-5%), dark, wide);
+//    }
   }
 }
+
 
 //---------------------------
 //  share form framework
@@ -331,7 +413,7 @@ $list : blue, green, default;
 //  dropdown framework
 //  used in header nav
 //
-//    contextless-abstraction, 
+//    contextless-abstraction,
 //    any/all hoverable dropdowns should
 //    use the the dropdown_module
 //
@@ -363,7 +445,7 @@ $list : blue, green, default;
 .dropdown_section {
   display: none;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
 }
 
 .dropdown_lining {
@@ -381,6 +463,31 @@ $list : blue, green, default;
 .social_login {
 }
 
+.social_login-facebook,
+.social_login-twitter {
+  @include button-sizing(social-login);
+
+  margin-right: .7em;
+  text-align: center;
+  width: 100px;
+
+  .icon {
+    background-size: contain;
+    -webkit-background-size: contain;
+    display: block;
+    margin-left: .4em;
+    padding: .5em 1.3em .5em 2.4em;
+  }
+}
+
+.social_login-facebook {
+
+}
+.social_login-twitter {
+
+}
+
+
 .social_login_twitter,
 .social_login_facebook {
   display: block;
@@ -388,7 +495,7 @@ $list : blue, green, default;
   padding: 0 3px 0 20px;
   text-align: center;
   text-decoration: none;
-  width: 100px; 
+  width: 100px;
 
   &:before {
     width: 36px;
@@ -402,7 +509,7 @@ $list : blue, green, default;
   @include x-logged-out-networks-buttons($twitter-blue);
 
   margin-right: 20px;
-  
+
   &:before{
     background-image: url($icon-share-twitter-on);
     background-position: 30% 50%;

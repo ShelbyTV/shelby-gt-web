@@ -60,6 +60,11 @@ end
 gem 'unicorn'
 
 
+#
+# ---------- Error Monitoring
+#
+gem 'exception_notification', :require => "exception_notifier"
+
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 

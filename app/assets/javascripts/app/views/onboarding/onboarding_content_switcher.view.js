@@ -21,7 +21,7 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
         return {
           model: new libs.shelbyGT.OnboardingStage1Model(),
           stage: 1
-        }
+        };
       }
     },
     '2' : {
@@ -29,8 +29,9 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
       opts:function(){
         return {
           model: new libs.shelbyGT.OnboardingStage2Model(),
+          rollCategories: shelby.models.onboardingRollCategories,
           stage: 2
-        }
+        };
       }
     },
     '3' : {

@@ -1,5 +1,6 @@
 <% var nickName = user.get('nickname'); %>
-<% var customTvUrl = nickName + ".shelby.tv"; %>
+<% var subdomain = user.has('personal_roll_subdomain') ? user.get('personal_roll_subdomain') : nickName; %>
+<% var customTvUrl = subdomain + ".shelby.tv"; %>
 <% var avatarUrl = libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>
 
 <div class="onboarding_layout_head onboarding-head clearfix">
@@ -8,7 +9,7 @@
   </h1>
   <div class="onboarding-next-step-wrapper">
     <button class="js-onboarding-next-step onboarding-next-step">
-      <i class="button_icon icon_onboarding_play player-play">Play</i>
+      <i class="button_icon_left icon_onboarding_play player-play">Play</i>
     </button>
     <span class="onboarding-next-step-counter">
       Start Watching
@@ -19,7 +20,7 @@
 <div class="onboarding_layout_body onboarding-body onboarding-stage-4">
   <div class="onboarding-block-container wide clearfix">
     <p>
-      Click <span class="onboarding-inline-button"><i class="button_icon icon_videocard_roll icon-roll">Roll…</i></span> to share video on
+      Click <span class="onboarding-inline-button"><i class="button_icon_left icon_videocard_roll icon-roll">Roll…</i></span> to share video on
     </p>
     <h2 class="onboarding-username-display">
       http://<%= customTvUrl %>

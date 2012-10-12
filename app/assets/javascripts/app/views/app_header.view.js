@@ -31,7 +31,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   ],
 
   template : function(obj){
-    return JST['app-header'](obj);
+    return SHELBYJST['app-header'](obj);
   },
 
   initialize : function(){

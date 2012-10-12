@@ -39,9 +39,9 @@
 	@include background( linear-gradient(top, adjust-lightness($video-player, 5%), $video-player) );
   @include roundies;
 
-  border:1px solid #202020;
-  height:45px;
-  margin:$defaultMargin;
+  border: 1px solid #202020;
+  height: 45px;
+  margin: $defaultMargin;
   padding: 0;
   position: relative;
 }
@@ -49,85 +49,108 @@
 //------------------------------------------------------------------------------
 //  video player buttons
 //------------------------------------------------------------------------------
-.video-player-play {
-  background-color: transparent;
-	background-image: url($icon-player-play);
-  background-position: center center;
-  background-repeat: no-repeat;
-  border:none;
-	height:43px;
-	float:left;
-	width:47px;
+  ////////////////////////////////////////////////////////////////////////////
+  //  player controls module
+  ////////////////////////////////////////////////////////////////////////////
+  .videoplayer_button {
+    background-color: transparent;
+    border: none;
+    height: 43px;
+    float: left;
+    padding: 0;
+    width: 47px;
 
-	&.pause {
-		background-image:	url($icon-player-pause);
+    i {
+      display: block;
+      height: inherit;
+    }
+  }
+
+////////////////////////////////////////////////////////////////////////////
+//  player controls
+////////////////////////////////////////////////////////////////////////////
+.video-player-roll {
+  i {
+    color: #b2b3b3;
+    font-weight: 800;
+    font-size: 1.1em;
+    font-style: normal;
+    line-height: 3.5em;
+    &:hover {
+      color: #e2e3e3;
+    }
+  }
+  
+  &:active {
+    margin: 1px -1px -1px 1px;
+  }
+}
+
+.video-player-play {
+  &.pause {
+    .icon-play {
+      background-image:	url($icon-player-pause);
+    }
   }
 }
 
 .video-player-volume {
-	@extend .video-player-play;
-	@include background(
-		url($icon-player-sound-on) center center no-repeat transparent
-	);
-
 	float:right;
 
-	&.mute {
-		@include background(
-			url($icon-player-sound-off) center center no-repeat transparent
-		);
+	&.muted {
+    .icon-volume {
+      background-image: url($icon-player-sound-off);
+    }
 	}
 }
 
 .video-player-fullscreen {
-	@extend .video-player-play;
-	@include background(
-		url($icon-player-fullscreen-enable) center center no-repeat transparent
-	);	
+  float: right;
 
-	float:right;
-	
-	&.cancel {
-	  @include background(
-  		url($icon-player-fullscreen-disable) center center no-repeat transparent
-  	);
+  &.cancel {
+    .icon-fullscreen {
+      background-image: url($icon-player-fullscreen-disable);
+    }
   }
-
 }
 
 .video-player-quality {
-	@extend .video-player-play;
-	@include background(
-		url($icon-player-hd-off) center center no-repeat transparent
-	);
+  float: right;
 
-	float:right;
+  &.hd-on {
+    .icon-hd {
+      background-image: url($icon-player-hd-on);
+    }
+  }
 
-	&.hd-on {
-		@include background(
-			url($icon-player-hd-on) center center no-repeat transparent
-		);
-	}
+  &.disable-video-quality {
+    .icon-hd {
+      background-image: url($icon-player-hd-off);
+      opacity: .7;
+    }
+  }
 }
 
-.disable-video-quality .video-player-quality {
-  @include background(
-		url($icon-player-hd-off) center center no-repeat transparent
-	);
-  opacity: .7;
-}
 
 ////////////////////////////////////////////////////////////////////////////
 //  video player progress bar components
 ////////////////////////////////////////////////////////////////////////////
 .video-player-progress {
-  background:black;
+  background: black;
   border-radius: $radius*2;
+//<<<<<<< HEAD
+//  height: 8px;
+//  left: 60px;
+//  right: 250px;
+//  margin: 18px 8px 0;
+//  position: absolute;
+//=======
   height:8px;
-  left:60px;
+  left:105px;
   right:250px;
   margin:18px 8px 0;
   position:absolute;
+//>>>>>>> master
 }
 
 .video-player-progress-load,
@@ -137,8 +160,8 @@
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
 
   border-radius: $radius*2;
-  height:8px;
-  width:0;
+  height: 8px;
+  width: 0;
 }
 
 .video-player-progress-elapsed {
@@ -148,69 +171,84 @@
 }
 
 .video-player-scrubber {
-  background:#efefef;
-  border-radius: 50%;
+  background: #efefef;
+  border-radius: 8px;
   box-shadow: 1px 0px 2px 1px black;
-  cursor:pointer;
-  cursor:ew-resize;
-  height:15px;
-  left:0;
-  margin:-11px;
-  position:absolute;
-  width:15px;
+  cursor: pointer;
+  cursor: ew-resize;
+  height: 15px;
+  left: 0;
+  margin: -11px;
+  position: absolute;
+  width: 15px;
 }
 
 .video-player-timeline {
-  color:#b2b2b2;
-  float:right;
-  font-size:13px;
-  font-weight:300;
-  line-height:3.25;
-  margin:0 15px;
+  color: #b2b2b2;
+  float: right;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 3.5;
+  margin: 0 15px;
 }
 
 //------------------------------------------------------------------------------
 //  video player navigational buttons,
 //  prev/next
 //------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  animation phases are unique to the rest of the app
+////////////////////////////////////////////////////////////////////////////
 .videoplayer_animate {
   	@include transition-property('opacity, margin-right');
   	@include transition-duration('.25s, .5s');
   	@include transition-timing-function('ease-out, ease-in-out');
   	@include transition-delay('0s, 0s');
 }
-
+////////////////////////////////////////////////////////////////////////////
+//  container, positions prev/next buttons
+////////////////////////////////////////////////////////////////////////////
 .video-player-nav-buttons-wrapper {
-  .video-player-prev {
-    @include background(
-      url('../images/assets/arrow_left.svg') center center no-repeat #444
-    );
+  height: 40px;
+  margin-top: -20px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 1;
+}
+////////////////////////////////////////////////////////////////////////////
+//  shared props between both prev/next
+//  thus module, hence underscore
+////////////////////////////////////////////////////////////////////////////
+.videoplayer_nav {
+  @include gradient-primer($video-player);
+  @include opacity(0.5);
 
-    left: $defaultMargin;
-    opacity: 1.0;
+  border: none;
+  border-radius: $radius;
+  height:40px;
+  padding: 0;
+  position:absolute;
+  width: 40px;
+  z-index: 2;
+
+  &:hover {
+    @include opacity(1.0);
   }
 
-  .video-player-next {
-    @include background(
-      url('../images/assets/arrow_right.svg') center center no-repeat #444
-    );
-
-  	margin-right: 0px;
-  	right: $defaultMargin*2;
+  .icon-next,
+  .icon-prev {
+    display: block;
+    height: inherit;
   }
-  
-  .video-player-prev, .video-player-next {
-	  @include opacity(0.5);
-	
-  	border-radius: $radius;
-  	height:40px;
-  	position:absolute;
-  	top: 45%;
-  	width: 40px;
-  	z-index: 2;
-  	
-  	&:hover {
-  	  @include opacity(1.0);
-  	}
+  ////////////////////////////////////////////////////////////////////////////
+  //  compound, not nested
+  ////////////////////////////////////////////////////////////////////////////
+  &.video-player-prev {
+    left: 20px;
+  }
+
+  &.video-player-next {
+    right: 20px;
   }
 }

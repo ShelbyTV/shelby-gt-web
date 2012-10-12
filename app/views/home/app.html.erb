@@ -10,8 +10,8 @@
     <%= render :partial => "/home/title_tag" %>
   </title>
 
-  <meta name="csrf-token" content="<%= @csrf_token %>">
-  <meta name="rhombus-auth" content="<%= @rhombus_token %>">
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+  <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,13 +32,13 @@
     </header>
 
     <div class="content_wrapper main-layout js-main-layout">
-      <section class="content_lining" role="main">
-        <!-- content filled in by VideoContentPaneView -->
-      </section><!-- eo .content_lining -->
-
       <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
         <!-- content filled in by GuideView -->
       </section><!-- eo .guide-wrapper -->
+
+      <section class="content_lining" role="main">
+        <!-- content filled in by children of MainLayoutView -->
+      </section><!-- eo .content_lining -->
     </div><!-- eo .content_wrapper.main-layout -->
 
     <div class="content_wrapper explore-layout js-explore-layout">
