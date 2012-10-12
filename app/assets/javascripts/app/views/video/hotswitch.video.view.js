@@ -23,9 +23,11 @@ libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
   
   events : {
     "click .hotswitch-ending-frame .js-roll-frame"    : "_requestEndingFrameRollView",
-    "click .hotswitch-starting-frame .js-roll-frame"    : "_requestStartingFrameRollView",
-    "click .hotswitch-ending-frame .js-share-frame"    : "_requestEndingFrameShareView",
-    "click .hotswitch-starting-frame .js-share-frame"    : "_requestStartingFrameShareView",
+    "click .hotswitch-starting-frame .js-roll-frame"  : "_requestStartingFrameRollView",
+    "click .hotswitch-ending-frame .js-share-frame"   : "_requestEndingFrameShareView",
+    "click .hotswitch-starting-frame .js-share-frame" : "_requestStartingFrameShareView",
+    "click .hotswitch-ending-frame .js-queue-frame:not(.queued)"    : "_queueEndingFrame",
+    "click .hotswitch-starting-frame .js-queue-frame:not(.queued)"  : "_queueStartingFrame"
   },
 
   initialize: function(opts){
@@ -48,15 +50,15 @@ libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
     if(this._playingFrameGroupCollection){
       this._endingFrame = this._currentFrame;
       this._startingFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
-      this.$el.find("#js-hotswitch-ending-frame").html(this.endingFrameTemplate({endingFrame: this._endingFrame}));
-      this.$el.find("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: this._startingFrame}));
+      this.$("#js-hotswitch-ending-frame").html(this.endingFrameTemplate({endingFrame: this._endingFrame, queuedVideosModel: this.options.queuedVideos}));
+      this.$("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: this._startingFrame, queuedVideosModel: this.options.queuedVideos}));
     }
   },
   
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
     this._currentFrame = activeFrameModel;
     this._startingFrame = activeFrameModel;
-    this.$el.find("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: activeFrameModel}));
+    this.$("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: activeFrameModel, queuedVideosModel: this.options.queuedVideos}));
   },
   
   _onPlayingFrameGroupCollectionChange : function(playingFrameGroupCollection){
@@ -81,5 +83,14 @@ libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame);
     }
   },
+  
+  _queueEndingFrame : function(el){ this._queueFrame(this._endingFrame, el); },
+  _queueStartingFrame : function(el){ this._queueFrame(this._endingFrame, el); },
+  _queueFrame : function(frame, el){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+      frame.saveToWatchLater();
+      $(el.currentTarget).toggleClass('button_gray-light queued js-queued').find('.js-command-icon').text('Queued');
+    }
+  }
   
 });

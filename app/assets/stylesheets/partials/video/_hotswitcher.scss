@@ -4,14 +4,9 @@
  * common layout positioning constants
  * ------------------------------------------------------------------------------
  */
-$video-ending-bottom: 70%;
-$video-ending-left: 60%;
-$video-ending-right: 1%;
-$video-ending-top: 5%;
-$video-starting-bottom: 15%;
-$video-starting-left: 1%;
-$video-starting-right: 63%;
-$video-starting-top: 60%;
+$video-bottom: 250px;
+$video-right: 225px;
+$video-controls-top: 65px;
 
 
 /* ------------------------------------------------------------------------------
@@ -38,29 +33,23 @@ $video-starting-top: 60%;
   .hotswitch-ending-frame {
     border: 1px solid red;
     
-    .frame-thumbnail {
-      @include animate();
-      bottom: $video-ending-bottom;
-      height: auto;
-      left: $video-ending-left;
-      position: absolute;
-      right: $video-ending-right;
-      top: $video-ending-top;
-    }
+    bottom: 0;
+    height: $video-bottom;
+    left: 0;
+    padding-bottom: $video-controls-top;
+    position: absolute;
+    right: $video-right;
   }
   
   .hotswitch-starting-frame {
     border: 1px solid blue;
     
-    .frame-thumbnail {
-      @include animate();
-      bottom: $video-starting-bottom;
-      height: auto;
-      left: $video-starting-left;
-      position: absolute;
-      right: $video-starting-right;
-      top: $video-starting-top;
-    }
+    bottom: 0;
+    width: $video-right;
+    padding-bottom: $video-controls-top;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -69,11 +58,6 @@ $video-starting-top: 60%;
  * ------------------------------------------------------------------------------
  */
 .videoplayer.hotswitch-enabled.hotswitch-video-ending .hotswitch-content-wrapper {
-  .hotswitch-ending-frame {
-    .frame-thumbnail {
-      //opacity: 0.0;
-    }
-  }
 }
  
 /* ------------------------------------------------------------------------------
@@ -81,11 +65,6 @@ $video-starting-top: 60%;
 * ------------------------------------------------------------------------------
 */
 .videoplayer.hotswitch-enabled.hotswitch-video-starting .hotswitch-content-wrapper {
-  .hotswitch-starting-frame {
-    .frame-thumbnail {
-      //opacity: 0.0;
-    }
-  }
 }
 
 
@@ -112,27 +91,18 @@ $video-starting-top: 60%;
       opacity: 0.0;
     }
   
+    .videoplayer-viewport {
+      bottom: $video-bottom;
+      position: absolute;
+      right: $video-right;
+    }
+    
     &.hotswitch-video-ending {
-      .videoplayer-viewport {
-        bottom: $video-ending-bottom;
-        left: $video-ending-left;
-        position: absolute;
-        right: $video-ending-right;
-        top: $video-ending-top;
-      }
+      
     }
   
     &.hotswitch-video-starting {
-      .videoplayer-viewport {
-        /* don't animate when moving across the hotswitcher */
-        @include transition(none);
-        
-        bottom: $video-starting-bottom;
-        left: $video-starting-left;
-        position: absolute;
-        right: $video-starting-right;
-        top: $video-starting-top;
-      }
+
     }
   }
   

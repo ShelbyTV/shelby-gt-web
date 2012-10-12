@@ -22,12 +22,10 @@
     height: 100%;
   }
 
-  #videoPlayerComponent {
+  #videoPlayerComponent, #adComponent {
     position: relative;
-  }
-
-  #adComponent {
-    position: relative;
+    height: auto;
+    width: auto;
   }
 
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
