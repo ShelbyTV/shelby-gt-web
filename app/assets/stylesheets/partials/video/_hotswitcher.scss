@@ -8,10 +8,10 @@ $video-ending-bottom: 70%;
 $video-ending-left: 60%;
 $video-ending-right: 1%;
 $video-ending-top: 5%;
-$video-starting-bottom: 5%;
+$video-starting-bottom: 15%;
 $video-starting-left: 1%;
-$video-starting-right: 60%;
-$video-starting-top: 70%;
+$video-starting-right: 63%;
+$video-starting-top: 60%;
 
 
 /* ------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ $video-starting-top: 70%;
  */
 .hotswitch-content-wrapper {
   background: yellow;
-  bottom: 2px;
+  bottom: 0;
   left: 0;
   opacity: 0.0;
   position: absolute;
@@ -89,23 +89,23 @@ $video-starting-top: 70%;
  * Video Player Adjustments
  * ------------------------------------------------------------------------------
  *
- * .videoplayer                 - holds everything related to video playback
- * .videoplayer-viewport        - the players themselves
- * .video-player-tools-wrapper  - holds the play button, scrubber, etc.
- * #mini-video-progress         - small progress indicator across bottom, shown during user-inactive
+ * .videoplayer                       - holds everything related to video playback
+ * .videoplayer-viewport              - the players themselves
+ * .video-player-tools-wrapper        - holds the play button, scrubber, etc.
+ * .video-player-nav-buttons-wrapper  - the previous / next buttons
+ * #mini-video-progress               - small progress indicator across bottom, shown during user-inactive
  *
  */
 .videoplayer {
   &.hotswitch-enabled {
     
-    .hotswitch-content-wrapper {
-      opacity: 1.0;
-    }
+    .hotswitch-content-wrapper,
     .video-player-tools-wrapper {
-      opacity: 0.0;
-    }
-    #mini-video-progress {
       opacity: 1.0;
+    }
+    .video-player-nav-buttons-wrapper,
+    #mini-video-progress {
+      opacity: 0.0;
     }
   
     &.hotswitch-video-ending {

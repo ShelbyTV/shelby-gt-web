@@ -95,7 +95,8 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
    HOTSWITCH_STATES : {
      videoEnding : 1,
      videoStarting : 2,
-     videoNominal : 3
+     videoNominal : 3,
+     videoPaused : 4
    },
   
   _onNewPlayerState: function(playbackState, newPlayerState){
@@ -103,6 +104,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     if( prevPlayerState ){
       prevPlayerState.unbind('change:currentTime', this._onCurrentTimeChange, this);
       prevPlayerState.unbind('change:duration', this._onDurationChange, this);
+      prevPlayerState.unbind('change:playbackStatus', this._onPlaybackStatusChange, this);
       
       //not hotswitching on initial video, so this is in here
       this._duration = null;
@@ -110,6 +112,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     }
     newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
     newPlayerState.bind('change:duration', this._onDurationChange, this);
+    newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
     
     //need to fake-fire some change events since they may not change when swapping players
     //discussion:  If player A has duration D and gets swapped out, then gets swapped back in (without changing videos) it
@@ -142,10 +145,23 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     }
   },
   
+  /* show the hotswitcher on pause */
+  _onPlaybackStatusChange: function(attr, status){
+    if( this._hotswitchState === this.HOTSWITCH_STATES.videoNominal && 
+        status === libs.shelbyGT.PlaybackStatus.paused){
+      this.trigger('hotswitchStateChangeRequest', this.HOTSWITCH_STATES.videoPaused);
+    } else 
+    if( this._hotswitchState === this.HOTSWITCH_STATES.videoPaused && 
+        status !== libs.shelbyGT.PlaybackStatus.paused){
+      this.trigger('hotswitchStateChangeRequest', this.HOTSWITCH_STATES.videoNominal);
+    }
+  },
+  
   _onHotswitchStateChangeRequest : function(newState) {
     this._hotswitchState = newState;
     switch (this._hotswitchState) {
       case this.HOTSWITCH_STATES.videoEnding:
+      case this.HOTSWITCH_STATES.videoPaused:
         this._hotswitchView.render();
         this.$el.addClass(this.HOTSWITCH_CSS.hotswitchEnabled)
                 .addClass(this.HOTSWITCH_CSS.videoEnding);
