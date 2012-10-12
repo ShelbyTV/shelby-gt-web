@@ -50,7 +50,9 @@
 
     <footer class="media_module xframe-footer clearfix">
       <div class="media_body">
-				<div class="fb-like" data-href="http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" data-width="325" data-show-faces="true"></div>
+				<iframe src="https://www.facebook.com/plugins/like.php?href=http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" scrolling="no" frameborder="0" style="border:none; width:325px; height:24px">
+				</iframe>
+				<!-- <div class="fb-like" data-href="http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" data-width="325" data-show-faces="true"></div> -->
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .xframe-body-wrapper -->
