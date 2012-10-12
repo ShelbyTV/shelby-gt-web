@@ -122,22 +122,6 @@ a{
 	}
 }
 
-.content-body{
-	bottom:0;
-	overflow-x:hidden;
-	overflow-y:auto;
-	position:absolute;
-	top:42px;
-	width:100%;
-	z-index: -1;
-}
-
-.touch {
-	.content-body {
-		overflow: hidden;	
-	}
-}
-
 .menu{	
 	box-shadow: $shadow;
 	overflow:hidden;

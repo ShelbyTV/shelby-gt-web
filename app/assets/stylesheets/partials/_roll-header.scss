@@ -3,61 +3,11 @@
 .roll-header {
   border-top: 1px solid $outset;
 	margin: 0;
-	padding: 12px 0 0;
-	position: relative;
-  text-align: center;
-	width: 100%;
-}
-
-.current-roll-avatar  {
-  float: left;
-	height: 35px;
-	margin: 0;
-	overflow: hidden;
 	padding: 0;
-	position: relative;
-	vertical-align: middle;
-	width: 35px;
-
-	img, span  {
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-	}
 }
 
-.title {
-}
-
-.current-roll-owner-nickname {
-  @include ellipsis();
-
-  color: #999;
-  font-size: 11px;
-  font-weight: 100;
-}
-
-.current-roll {
-  @include ellipsis();
-  
-	font-size: 1.2em;
-	line-height: 1.5;
-	width: 100%;
-
-  &.roll-name-single {
-    padding-top: .5em;
-  }
-}
-
-.roll-name-change {
-	display: none;
-	input {
-		margin: -4px 0 0 -4px;
-		padding: 2px;
-	}
-}
-
-.rolls-share {
-	@include button-primer($shelby-blue);
+.roll-title {
+  font-size: 1.3em;
+  line-height: 2.3;
+  margin-left: 10px;
 }
