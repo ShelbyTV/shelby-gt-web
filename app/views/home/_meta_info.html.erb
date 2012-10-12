@@ -10,7 +10,7 @@
 
 <% if @frame and @video and @roll %>
 	<meta name="twitter:description" content="<%= @video['description'] %>">
-	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['description'].to_s %>">
+	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['title'].to_s %>">
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" /> 
 	<% if @video['source_url'] %>
