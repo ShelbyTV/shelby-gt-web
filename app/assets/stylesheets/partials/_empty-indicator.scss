@@ -1,0 +1,57 @@
+@import "base";
+
+.empty-indicator-lining {
+  &.empty-stream {
+    .empty-indicator-block {
+      margin: 10px;
+    }
+  }
+
+  &.empty-queue {
+    .empty-indicator-subheader {
+      margin-bottom: 1em;
+    }
+
+    .empty-indicator-block {
+      margin-right: 170px;
+      margin-top: 0;
+    }
+  }
+}
+
+.empty-indicator-header {
+  margin: 10px;  
+}
+
+.empty-indicator-list {
+  border-bottom: 1px solid $outset;
+  border-top: 1px solid $inset;
+
+  li {
+    border-bottom: 1px solid $inset;
+    border-top: 1px solid $outset;
+  }
+}
+
+.empty-indicator-block {
+  font-size: 1.2em;
+}
+
+.empty-indicator-section {
+  padding: 10px;
+}
+
+.empty-indicator-within-shelby {
+  background-image: url('/images/assets/emptyqueue_card.png');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  min-height: 138px;
+}
+
+.empty-indicator-button {
+  @include button-sizing();
+
+  float: right;
+  font-size: 1.3em;
+  margin-right: 7px;
+}

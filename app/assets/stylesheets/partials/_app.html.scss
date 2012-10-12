@@ -82,15 +82,13 @@ a{
 }
 
 .content_lining {
-	float: right;
-	margin-left: -($guide-width);
 	height:100%;
-	width:100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .content_module {
 	height:100%;
-  margin-left: $guide-width;
   position: relative;	
 }
 
@@ -113,15 +111,13 @@ a{
 
 .guide-wrapper{
 	background-color: $guide-bg-color; //should technically be on .guide or something.
+	float: left;
 	height:100%;
-	overflow:hidden;
 	opacity: 1;
-	position:relative;
+	position: relative;
 	z-index:3;
 
 	&.hide-guide {
-	  @include transform( perspective(600) rotateY(90deg) );
-
 	  margin-left:-($guide-width);
 	}
 }

@@ -39,9 +39,9 @@
 	@include background( linear-gradient(top, adjust-lightness($video-player, 5%), $video-player) );
   @include roundies;
 
-  border:1px solid #202020;
-  height:45px;
-  margin:$defaultMargin;
+  border: 1px solid #202020;
+  height: 45px;
+  margin: $defaultMargin;
   padding: 0;
   position: relative;
 }
@@ -54,14 +54,15 @@
   ////////////////////////////////////////////////////////////////////////////
   .videoplayer_button {
     background-color: transparent;
-    border:none;
-    height:43px;
-    float:left;
-    width:47px;
+    border: none;
+    height: 43px;
+    float: left;
+    padding: 0;
+    width: 47px;
 
     i {
       display: block;
-      height: 100%;
+      height: inherit;
     }
   }
 
@@ -104,7 +105,7 @@
 }
 
 .video-player-fullscreen {
-  float:right;
+  float: right;
 
   &.cancel {
     .icon-fullscreen {
@@ -114,7 +115,7 @@
 }
 
 .video-player-quality {
-  float:right;
+  float: right;
 
   &.hd-on {
     .icon-hd {
@@ -135,13 +136,21 @@
 //  video player progress bar components
 ////////////////////////////////////////////////////////////////////////////
 .video-player-progress {
-  background:black;
+  background: black;
   border-radius: $radius*2;
+//<<<<<<< HEAD
+//  height: 8px;
+//  left: 60px;
+//  right: 250px;
+//  margin: 18px 8px 0;
+//  position: absolute;
+//=======
   height:8px;
   left:105px;
   right:250px;
   margin:18px 8px 0;
   position:absolute;
+//>>>>>>> master
 }
 
 .video-player-progress-load,
@@ -151,8 +160,8 @@
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
 
   border-radius: $radius*2;
-  height:8px;
-  width:0;
+  height: 8px;
+  width: 0;
 }
 
 .video-player-progress-elapsed {
@@ -162,25 +171,25 @@
 }
 
 .video-player-scrubber {
-  background:#efefef;
-  border-radius: 50%;
+  background: #efefef;
+  border-radius: 8px;
   box-shadow: 1px 0px 2px 1px black;
-  cursor:pointer;
-  cursor:ew-resize;
-  height:15px;
-  left:0;
-  margin:-11px;
-  position:absolute;
-  width:15px;
+  cursor: pointer;
+  cursor: ew-resize;
+  height: 15px;
+  left: 0;
+  margin: -11px;
+  position: absolute;
+  width: 15px;
 }
 
 .video-player-timeline {
-  color:#b2b2b2;
-  float:right;
-  font-size:13px;
-  font-weight:300;
-  line-height:3.25;
-  margin:0 15px;
+  color: #b2b2b2;
+  float: right;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 3.5;
+  margin: 0 15px;
 }
 
 //------------------------------------------------------------------------------
@@ -218,6 +227,7 @@
   border: none;
   border-radius: $radius;
   height:40px;
+  padding: 0;
   position:absolute;
   width: 40px;
   z-index: 2;
@@ -229,7 +239,7 @@
   .icon-next,
   .icon-prev {
     display: block;
-    height: 100%;
+    height: inherit;
   }
   ////////////////////////////////////////////////////////////////////////////
   //  compound, not nested

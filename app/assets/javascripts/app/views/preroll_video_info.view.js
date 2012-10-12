@@ -1,8 +1,6 @@
 ( function(){
 
   libs.shelbyGT.PrerollVideoInfoView = Support.CompositeView.extend({
-
-    el: '#js-preroll-video-info-wrapper',
     
     _playbackState: null,
     

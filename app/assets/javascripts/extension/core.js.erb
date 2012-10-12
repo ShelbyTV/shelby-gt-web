@@ -528,7 +528,7 @@ window.shelbyBookmarklet = {
                           shelbyJ(".select-roll-type").css("display", "none");
                           utilObject.htmlTemplate.rollingFormHtml(user.personalRoll, backboneFrame);
                           utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"), frameClass, videoId);
-                          shelbyJ(".cancel").on("click", function(event) {
+                          shelbyJ(".js-cancel").on("click", function(event) {
                               shelbyJ(".ext-elements #js-notifications").remove();
                               utilObject.styleGuideHide("roll-guide");
                           });
@@ -551,7 +551,7 @@ window.shelbyBookmarklet = {
                         backboneFrame.set("video", utilObject.shelbyCreateModel(frameInfo.video));
                         var commentHtml = SHELBYJST["frame-conversation"]({frame: backboneFrame, user: utilObject.shelbyCreateModel(utilObject.shelbyBkmkltUser)});
                         shelbyJ("#comment-guide-window").html(commentHtml);
-                        shelbyJ(".cancel").on("click", function(event) {
+                        shelbyJ(".js-cancel").on("click", function(event) {
                             utilObject.styleGuideHide("comment-guide");
                         });
                         shelbyJ(".back").on("click", function(event) {

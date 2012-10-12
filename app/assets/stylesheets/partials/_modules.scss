@@ -24,7 +24,7 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
   li {
     list-style-type: none;
     &:first-child {
-      .xframe {
+      .frame {
         border-top: none;
       }
     }
@@ -382,7 +382,7 @@ $list : blue, green, default, gray, gray-light, gray-medium, red, yellow;
 .dropdown_section {
   display: none;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
 }
 
 .dropdown_lining {

@@ -16,8 +16,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-videoplayer-prev"       : "_prevVideo"
   },
 
-  el: '#video-controls',
-
   _currentDuration: 0,
 
   _shouldUpdateScrubHandle: true,
@@ -260,12 +258,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
       $('.js-main-layout .js-guide').removeClass("hide-guide");
-      this.$el.find('.video-player-tools').removeClass("full-width");
-      this.$el.find('.video-player-next').removeClass("full-width");
     } else {
       $('.js-main-layout .js-guide').addClass("hide-guide");
-      this.$el.find('.video-player-tools').addClass("full-width");
-      this.$el.find('.video-player-next').addClass("full-width");
     }
   },
 
