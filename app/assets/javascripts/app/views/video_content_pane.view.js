@@ -55,7 +55,8 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     }));
     this._hotswitchView = new libs.shelbyGT.HotswitchView({
       el: this.$('#js-hotswitch-content-wrapper'),
-      guide : shelby.models.guide
+      guide : shelby.models.guide,
+      guideOverlayModel : shelby.models.guideOverlay
     });
     this.renderChild(this._hotswitchView);
     this.renderChild(new libs.shelbyGT.VideoDisplayView({

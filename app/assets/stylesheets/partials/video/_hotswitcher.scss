@@ -27,8 +27,8 @@ $video-starting-top: 60%;
  * ------------------------------------------------------------------------------
  */
 .hotswitch-content-wrapper {
-  background: yellow;
   bottom: 0;
+  color: #efefff;
   left: 0;
   opacity: 0.0;
   position: absolute;
@@ -36,6 +36,8 @@ $video-starting-top: 60%;
   top: 0;
   
   .hotswitch-ending-frame {
+    border: 1px solid red;
+    
     .frame-thumbnail {
       @include animate();
       bottom: $video-ending-bottom;
@@ -48,6 +50,8 @@ $video-starting-top: 60%;
   }
   
   .hotswitch-starting-frame {
+    border: 1px solid blue;
+    
     .frame-thumbnail {
       @include animate();
       bottom: $video-starting-bottom;
@@ -67,7 +71,7 @@ $video-starting-top: 60%;
 .videoplayer.hotswitch-enabled.hotswitch-video-ending .hotswitch-content-wrapper {
   .hotswitch-ending-frame {
     .frame-thumbnail {
-      opacity: 0.0;
+      //opacity: 0.0;
     }
   }
 }
@@ -79,7 +83,7 @@ $video-starting-top: 60%;
 .videoplayer.hotswitch-enabled.hotswitch-video-starting .hotswitch-content-wrapper {
   .hotswitch-starting-frame {
     .frame-thumbnail {
-      opacity: 0.0;
+      //opacity: 0.0;
     }
   }
 }

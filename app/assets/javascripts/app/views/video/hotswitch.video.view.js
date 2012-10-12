@@ -1,6 +1,9 @@
 /*
- * Hotswitch view simply display information.  
+ * Hotswitch view simplys display information and routes frame actions.
  * Maintaining hotswitch state is done by the parent, VideoContentPaneView.
+ *
+ * Terminology: "endingFrame" is currently playing or nearing its end on hotswitch initiation
+ *              "startingFrame" is up next, or currently playing if we've alread switched
  *
  * We do two things to present the correct information:
  *
@@ -17,6 +20,13 @@
 libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
 
   el: '#js-hotswitch-content-wrapper',
+  
+  events : {
+    "click .hotswitch-ending-frame .js-roll-frame"    : "_requestEndingFrameRollView",
+    "click .hotswitch-starting-frame .js-roll-frame"    : "_requestStartingFrameRollView",
+    "click .hotswitch-ending-frame .js-share-frame"    : "_requestEndingFrameShareView",
+    "click .hotswitch-starting-frame .js-share-frame"    : "_requestStartingFrameShareView",
+  },
 
   initialize: function(opts){
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
@@ -36,19 +46,40 @@ libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
     this.$el.html(this.template());
     
     if(this._playingFrameGroupCollection){
-      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
-      this.$el.find("#js-hotswitch-ending-frame").html(this.endingFrameTemplate({endingFrame: this._currentFrame}));
-      this.$el.find("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: nextFrame}));
+      this._endingFrame = this._currentFrame;
+      this._startingFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
+      this.$el.find("#js-hotswitch-ending-frame").html(this.endingFrameTemplate({endingFrame: this._endingFrame}));
+      this.$el.find("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: this._startingFrame}));
     }
   },
   
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
     this._currentFrame = activeFrameModel;
+    this._startingFrame = activeFrameModel;
     this.$el.find("#js-hotswitch-starting-frame").html(this.startingFrameTemplate({startingFrame: activeFrameModel}));
   },
   
   _onPlayingFrameGroupCollectionChange : function(playingFrameGroupCollection){
     this._playingFrameGroupCollection = playingFrameGroupCollection;
-  }
+  },
+  
+  /*************************************************************
+   * Button events
+   *************************************************************/
+  _requestEndingFrameRollView : function(){ this._requestFrameRollView(this._endingFrame); },
+  _requestStartingFrameRollView : function(){ this._requestFrameRollView(this._startingFrame); },
+  _requestFrameRollView : function(frame){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, frame);
+    }
+  },
+  
+  _requestEndingFrameShareView : function(){ this._requestFrameShareView(this._endingFrame); },
+  _requestStartingFrameShareView : function(){ this._requestFrameShareView(this._startingFrame); },
+  _requestFrameShareView: function(frame){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame);
+    }
+  },
   
 });

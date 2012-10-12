@@ -1,4 +1,15 @@
 <h2 class="video-title"><%= startingFrame.get('video').get('title') %></h2>
+<button class="button_primer button_default command-roll js-roll-frame js-track-event" data-ga_category="Hotswitch" data-ga_action="Click roll on starting frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <i class="button_icon_left icon_videocard_roll icon">
+    Roll…
+  </i>
+</button>
+<button class="command-share js-share-frame js-track-event" data-ga_category="Hotswitch" data-ga_action="Click share on starting frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <i class="button_icon_left icon icon_email">
+    Share Video…
+  </i>
+</button>
+
 <%= SHELBYJST['thumbnail-module']({
 	thumbnail: startingFrame.get('video').get('thumbnail_url'), 
 	title: startingFrame.get('video').get('title') }) %>
