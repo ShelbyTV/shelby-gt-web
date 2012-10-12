@@ -172,6 +172,8 @@ body.facebook-genius{
   #video-controls {
     position:relative;
     bottom: 15%;
+    .video-player-progress {left: 55px;}
+    .video-player-roll { display: none;}
   }
   
   // video player adjustments
