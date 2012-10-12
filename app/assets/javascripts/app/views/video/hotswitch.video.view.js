@@ -85,7 +85,7 @@ libs.shelbyGT.HotswitchView = Support.CompositeView.extend({
   },
   
   _queueEndingFrame : function(el){ this._queueFrame(this._endingFrame, el); },
-  _queueStartingFrame : function(el){ this._queueFrame(this._endingFrame, el); },
+  _queueStartingFrame : function(el){ this._queueFrame(this._startingFrame, el); },
   _queueFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
       frame.saveToWatchLater();
