@@ -22,105 +22,80 @@
 
 .roll-menu {
 	margin: 0;
-	padding: 11px 0 9px;
-	text-align: center;
+	padding: 0;
 
-	li {
+	& > li {
 		display: inline;
 		list-style-type: none;
-		margin: 0;		
-	}
-	.left {
-	  width: 47px;
-	}
-	.middle {
-	  width: 161px;
-	}
-	.right {
-	  width: 85px;
+		margin: 0;
 	}
 }
 
-.rolls-add {
-	@include button-primer($shelby-green, dark);
-	
-	margin-top: 0;
+.roll-menu-button {
+	float: right;
+	margin: 4px 6px 4px 0;
+	padding: 0.5em 1em;
 }
 
-.rolls-invite {
-	@extend .rolls-add;	
+.roll-menu-add {
+
 }
 
-.rolls-share {
-	@extend .rolling-main-done;
-	margin-top: 0 !important;
-}
+//.rolls-add {
+//	@include button-primer($shelby-green, dark);
 
-.rolls-leave {
-	@include button-primer;
-	margin-top: 0;
-	text-shadow: none;
-}
+//	margin-top: 0;
+//}
 
-.rolls-edit{
-	@extend .rolls-leave;
-}
+//.rolls-invite {
+//	@extend .rolls-add;
+//}
 
-.rolls-share-cancel {
-	@extend .rolls-leave;
-	margin-top: 0;
-}
+//.rolls-share {
+//	@extend .rolling-main-done;
+//	margin-top: 0 !important;
+//}
 
-.rolls-back {
-	@include button-primer;
-	padding-left: 0;
-	padding-right: 0;
-}
+//.rolls-leave {
+//	@include button-primer;
+//	margin-top: 0;
+//	text-shadow: none;
+//}
 
-.roll-delete{
-	@include button-primer($shelby-red, dark);
+//.rolls-edit{
+//	@extend .rolls-leave;
+//}
 
-	display: none;
-	position: absolute;
-	right: 9px;
-	top: 22px;
-}
+//.rolls-share-cancel {
+//	@extend .rolls-leave;
+//	margin-top: 0;
+//}
+
+//.rolls-back {
+//	@include button-primer;
+//	padding-left: 0;
+//	padding-right: 0;
+//}
+
+//.roll-delete{
+//	@include button-primer($shelby-red, dark);
+
+//	display: none;
+//	position: absolute;
+//	right: 9px;
+//	top: 22px;
+//}
 
 /* ------ Roll Add Area */
-.add-video-area {
-	@include button-primer;
+//.add-video-area {
+//	}
 
-	margin: 10px 10px 0px;
-	padding: 6px;
-	display: none;
+//	.add-video {
+//	}
 
-	input {
-		@include inputfont;
-		@include roundies(input);
-
-		border: 1px solid $inset;
-		height: 25px;
-		padding: 0 4px;
-		width: 87%;
-	}
-
-	.add-video {
-		@include button-primer;
-	
-		float: right;
-		height: 25px;
-		margin-top: 0;
-		padding: 4px;
-		width: 28px;
-	}
-	
-	.spinner {
-		left: auto;
-		margin-left: 0px;
-		margin-top: 0px;	
-		position: relative;
-	}
-}
+//	.spinner {
+// 	}
+//}
 
 /*----------------------------------------------------- Roll Sharing ----------------------------------------------------- */
 
