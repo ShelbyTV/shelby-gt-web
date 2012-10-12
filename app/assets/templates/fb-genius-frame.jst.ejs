@@ -1,6 +1,4 @@
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
-
+<% /* TODO: REMOVE THIS and MOVE TO template param obj*/  %>
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
 
@@ -9,52 +7,57 @@
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
+<% var creator = frame.get('creator') %>
+<% var isGenius = frame.has('roll') && frame.get('roll').get('genius') %>
+
 <% var contextOverlay = options.contextOverlay %>
 
+<% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
+
+
 <!-- new videocard -->
-<article id="<%= videoId %>" class="xframe">
-   <a href="#" onclick="return false;" class="xframe-header js-frame-activate">
-     <h1 class="xframe-title" title="<%= videoTitle %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
+   <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+     <h1 class="frame-title" title="<%= videoTitle %>">
       <%= videoTitle %>
      </h1>
    </a>
 
-  <div class="xframe-body-wrapper clearfix">
-    <div class="xframe-body">
-			<div class="menu_module xframe-menu">
-			        <ul class="menu_list xframe-command-menu xframe-list" role="menubar">
-				        <li class="menu_item right" role="menuitem">
-			            <button class="xframe-command command-post js-frame-send">
-			              <i class="button_icon command-icon icon_comment_reply">
-			                Send to friend
-			              </i>
-			            </button>
-			          </li>
-			          <li class="menu_item right" role="menuitem">
-			            <button class="xframe-command command-post js-frame-post">
-			              <i class="button_icon command-icon icon_videocard_roll">
-			                Post on wall
-			              </i>
-			            </button>
-			          </li>
-			        </ul>
-			      </div><!-- eo .xframe-menu -->
+  <div class="frame-body-wrapper clearfix">
+    <div class="frame-body">
+      <div class="menu_module frame-menu">
+        <ul class="menu_list frame-command-menu frame-list" role="menubar">
+	        <li class="menu_item right" role="menuitem">
+            <button class="button_primer frame-command command-post js-frame-send">
+              <i class="button_icon command-icon icon_comment_reply">
+                Send to friend
+              </i>
+            </button>
+          </li>
+          <li class="menu_item right" role="menuitem">
+            <button class="button_primer frame-command command-post js-frame-post">
+              <i class="button_icon command-icon icon_videocard_roll">
+                Post on wall
+              </i>
+            </button>
+          </li>
+        </ul>
+      </div><!-- eo .frame-menu -->
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
-        <a href="#" onclick="return false;" class="image_module xframe-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
           <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
         </a>
+				<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
       <% } %>
-        <!-- <div class="xframe-thumbnail xframe-thumbnail-missing"></div> -->
-    </div><!-- eo .xframe-body -->
+    </div><!-- eo .frame-body -->
 
-    <footer class="media_module xframe-footer clearfix">
-      <div class="media_body">
-				<iframe src="https://www.facebook.com/plugins/like.php?href=http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" scrolling="no" frameborder="0" style="border:none; width:325px; height:24px">
-				</iframe>
-				<!-- <div class="fb-like" data-href="http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" data-width="325" data-show-faces="true"></div> -->
-      </div>
-    </footer><!-- eo .media_module-->
-  </div><!-- eo .xframe-body-wrapper -->
+	  <footer class="media_module frame-footer clearfix">
+	    <div class="media_body">
+		<iframe src="https://www.facebook.com/plugins/like.php?href=http://shelby.tv/video/<%= frame.get('video').get('provider_name') %>/<%= frame.get('video').get('provider_id') %>" scrolling="no" frameborder="0" style="border:none; width:325px; height:24px">
+		</iframe>
+	    </div>
+	  </footer><!-- eo .media_module-->
+  </div><!-- eo .frame-body-wrapper -->
 </article>
 <!-- end new videocard -->
