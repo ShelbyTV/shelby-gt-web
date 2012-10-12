@@ -50,6 +50,11 @@
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
+    
+    _setPlayingFrameGroupCollection : function(pfgc){
+      this._playingFrameGroupCollection = pfgc;
+      Backbone.Events.trigger("change:playingFrameGroupCollection", pfgc);
+    },
 
     _onGuideModelChange : function(model){
       // only render a new content pane if relevant attribtues have been updated
@@ -173,7 +178,7 @@
             // to determine what frames to play
             // since we're displaying the dashboard again now, we need to play based on what is actually
             // displayed in the current dashboard view
-            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
           }
           break;
         case DisplayState.standardRoll :
@@ -184,7 +189,7 @@
             // to determine what frames to play
             // since we're displaying the roll again now, we need to play based on what is actually
             // displayed in the current roll view
-            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
           }
           break;
       }
@@ -241,11 +246,11 @@
       if (activeFrameModel) {
         if (!this._nowSkippingVideo) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
-            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.dashboard;
             this._playingRollId = null;
           } else {
-            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.roll;
             this._playingRollId = activeFrameModel.get('roll').id;
           }
@@ -254,6 +259,7 @@
         // group model that is playing - a reference to the one that we have in our collection
         // TODO: find some way to fix the inheritance and parent child view relationships so that
         // the context overlay view will just have this reference all the time
+        // OR -not perfect- but could use the global event defined above: change:playingFrameGroupCollection
         if (this._playingFrameGroupCollection) {
           var playingFrameGroup = this._playingFrameGroupCollection.find(function(frameGroup) {
             return frameGroup.get('frames').any(function(frame){
@@ -265,7 +271,7 @@
           }
         }
       } else {
-        this._playingFrameGroupCollection = null;
+        this._setPlayingFrameGroupCollection(null);
         this._playingState = libs.shelbyGT.PlayingState.none;
         this._playingRollId = null;
       }
@@ -284,12 +290,9 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
-      // if we can't find a playable frame in the direction we're looking,
+      // if we can't find a playable frame in the direction we're looking
       // we return to the beginning of the roll or stream
-      if (!nextFrame) {
-        nextFrame = this._playingFrameGroupCollection.at(0).getFirstFrame();
-      }
+      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip, true);
 
       this._nowSkippingVideo = true;
       this.model.set({activeFrameModel: nextFrame});

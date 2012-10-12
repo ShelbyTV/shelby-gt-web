@@ -102,13 +102,17 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     return this;
   },
 
-  getNextPlayableFrame : function(currentFrame, skip) {
+  getNextPlayableFrame : function(currentFrame, skip, returnFirstOnFail) {
+    returnFirstOnFail = typeof returnFirstOnFail !== 'undefined' ? returnFirstOnFail : false;
+    
     // look for a frame group that contains the currently playing frame
     var currentlyPlayingIndex = this._indexOfMatchingFrameGroup(currentFrame);
     if (currentlyPlayingIndex != -1) {
       var nextPlayableFrameGroup = this._findNextPlayableFrameGroup(currentlyPlayingIndex, skip);
       if (nextPlayableFrameGroup) {
         return nextPlayableFrameGroup.getFirstFrame();
+      } else if(returnFirstOnFail) {
+        return this.at(0).getFirstFrame();
       } else {
         return null;
       }

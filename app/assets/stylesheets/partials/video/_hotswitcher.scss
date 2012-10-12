@@ -1,0 +1,135 @@
+@import "base";
+
+/* ------------------------------------------------------------------------------
+ * common layout positioning constants
+ * ------------------------------------------------------------------------------
+ */
+$video-ending-bottom: 70%;
+$video-ending-left: 60%;
+$video-ending-right: 1%;
+$video-ending-top: 5%;
+$video-starting-bottom: 5%;
+$video-starting-left: 1%;
+$video-starting-right: 60%;
+$video-starting-top: 70%;
+
+
+/* ------------------------------------------------------------------------------
+ * Inactive user overrides
+ * ------------------------------------------------------------------------------
+ */
+.user-inactive {
+
+}
+
+/* ------------------------------------------------------------------------------
+ * Hotswitcher view - nominal
+ * ------------------------------------------------------------------------------
+ */
+.hotswitch-content-wrapper {
+  background: yellow;
+  bottom: 2px;
+  left: 0;
+  opacity: 0.0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  
+  .hotswitch-ending-frame {
+    .frame-thumbnail {
+      @include animate();
+      bottom: $video-ending-bottom;
+      height: auto;
+      left: $video-ending-left;
+      position: absolute;
+      right: $video-ending-right;
+      top: $video-ending-top;
+    }
+  }
+  
+  .hotswitch-starting-frame {
+    .frame-thumbnail {
+      @include animate();
+      bottom: $video-starting-bottom;
+      height: auto;
+      left: $video-starting-left;
+      position: absolute;
+      right: $video-starting-right;
+      top: $video-starting-top;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------------------
+ * Hotswitcher view - video ending
+ * ------------------------------------------------------------------------------
+ */
+.videoplayer.hotswitch-enabled.hotswitch-video-ending .hotswitch-content-wrapper {
+  .hotswitch-ending-frame {
+    .frame-thumbnail {
+      opacity: 0.0;
+    }
+  }
+}
+ 
+/* ------------------------------------------------------------------------------
+* Hotswitcher view - video starting
+* ------------------------------------------------------------------------------
+*/
+.videoplayer.hotswitch-enabled.hotswitch-video-starting .hotswitch-content-wrapper {
+  .hotswitch-starting-frame {
+    .frame-thumbnail {
+      opacity: 0.0;
+    }
+  }
+}
+
+
+/* ------------------------------------------------------------------------------
+ * Video Player Adjustments
+ * ------------------------------------------------------------------------------
+ *
+ * .videoplayer                 - holds everything related to video playback
+ * .videoplayer-viewport        - the players themselves
+ * .video-player-tools-wrapper  - holds the play button, scrubber, etc.
+ * #mini-video-progress         - small progress indicator across bottom, shown during user-inactive
+ *
+ */
+.videoplayer {
+  &.hotswitch-enabled {
+    
+    .hotswitch-content-wrapper {
+      opacity: 1.0;
+    }
+    .video-player-tools-wrapper {
+      opacity: 0.0;
+    }
+    #mini-video-progress {
+      opacity: 1.0;
+    }
+  
+    &.hotswitch-video-ending {
+      .videoplayer-viewport {
+        bottom: $video-ending-bottom;
+        left: $video-ending-left;
+        position: absolute;
+        right: $video-ending-right;
+        top: $video-ending-top;
+      }
+    }
+  
+    &.hotswitch-video-starting {
+      .videoplayer-viewport {
+        /* don't animate when moving across the hotswitcher */
+        @include transition(none);
+        
+        bottom: $video-starting-bottom;
+        left: $video-starting-left;
+        position: absolute;
+        right: $video-starting-right;
+        top: $video-starting-top;
+      }
+    }
+  }
+  
+}

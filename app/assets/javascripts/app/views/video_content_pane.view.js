@@ -48,16 +48,16 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       guideOverlayModel : shelby.models.guideOverlay,
       playbackState : shelby.models.playbackState
     }));
-    /* 
-    
-    //XXX TODO probably want to kill this view 100%
-    
     this.renderChild(new libs.shelbyGT.PrerollVideoInfoView({
       el: this.$('#js-preroll-video-info-wrapper'),
       guide : shelby.models.guide,
       playbackState : shelby.models.playbackState
     }));
-    */
+    this._hotswitchView = new libs.shelbyGT.HotswitchView({
+      el: this.$('#js-hotswitch-content-wrapper'),
+      guide : shelby.models.guide
+    });
+    this.renderChild(this._hotswitchView);
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,
       playbackState : shelby.models.playbackState,
@@ -133,16 +133,20 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
           this.trigger('hotswitchStateChangeRequest', this.HOTSWITCH_STATES.videoNominal);
         }
         break;
+      case this.HOTSWITCH_STATES.videoEnding:
+        // _onNewPlayerState will only bring our state machine to HOTSWITCH_STATES.videoStarting
+        // when the player itself actually changes
+        if(time < this.HIDE_HOTSWITCH_AT){
+          this.trigger('hotswitchStateChangeRequest', this.HOTSWITCH_STATES.videoStarting);
+        }
     }
-    //_onNewPlayerState will bring our state machine to HOTSWITCH_STATES.videoStarting
   },
   
   _onHotswitchStateChangeRequest : function(newState) {
     this._hotswitchState = newState;
     switch (this._hotswitchState) {
       case this.HOTSWITCH_STATES.videoEnding:
-        console.log("TODO: send 'last video' to the hotswitcher so it knows what to show in the 'last video area'");
-        //TODO: the hot switch will *always* show the current video in the "next video" area (even if it changes)
+        this._hotswitchView.render();
         this.$el.addClass(this.HOTSWITCH_CSS.hotswitchEnabled)
                 .addClass(this.HOTSWITCH_CSS.videoEnding);
         break;

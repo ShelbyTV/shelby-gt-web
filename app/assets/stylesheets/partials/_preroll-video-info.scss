@@ -6,6 +6,11 @@
   }
 }
 
+/* only show preroll when the hotswitch doesn't appear */
+.hotswitch-enabled .preroll-video-info-wrapper {
+  display: none;
+}
+
 .preroll-video-info-wrapper {
   left: 0;
   position: absolute;
