@@ -298,7 +298,7 @@ $active-list-item: $shelby-blue;
 }
 
 .command-share {
-  .command-icon {
+  .icon {
     background-image: none;
   }
 }
@@ -338,15 +338,15 @@ $active-list-item: $shelby-blue;
       display: none;
     }
   }
-  
+
   /* unplayable and collapsed */  
   &.xvideo-unplayable {
-    
+
     .xvideo-unplayable-thumbnail-overlay {
       left: 40px;
       top: 20px;
     }
-    
+
     &:hover{
       opacity: .5;
     };
