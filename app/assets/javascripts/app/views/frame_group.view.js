@@ -152,7 +152,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     self = this;
     this.model.getFirstFrame().saveToWatchLater();
     // immediately change the button state
-    this.$('.js-queue-frame').addClass('queued');
+    this.$('.js-queue-frame').addClass('queued button_gray-light');
     this.$('.js-queue-frame i').text('Queued');
     // start the transition which fades out the saved-indicator
   },
@@ -166,7 +166,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
       dataType: 'json',
       success: function(r){
-        var inputEl = $("<input type='text' value='"+r.result.short_link+"' class='xframe-option frame-shortlink' />");
+        var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
         buttonEl.replaceWith(inputEl);
         inputEl.click(function(){ inputEl.select(); });
         inputEl.select();

@@ -47,12 +47,11 @@
 }
 
 .guide-overlay-cancel {
-  @include button-primer($x-primer-color, light, guide-close);
-
-  display: inline;
+  @include button-sizing(cancel);
+  padding:.5em;
   vertical-align: top;
 
-  .cancel-icon {
+  .icon {
     background-size: contain;
     color: transparent;
     display: block;
@@ -73,8 +72,8 @@
   .guide-header-title {
     @include ellipsis;
 
-    font-size: 1.4em;
-    line-height: 2.1;
+    font-size: 1.3em;
+    line-height: 2.3;
   }
 }
 
@@ -114,17 +113,11 @@
 .guide-header-avatar {
   background-color: inherit;
   float: left;
-  margin: 10px;
+  margin-right: 10px;
 }
 
 .guide-header-title {
-  @include ellipsis();
-
-  font-weight: 500;
-  line-height: 3.0;
-  position: relative;
-  width: inherit;
-  z-index: 1;
+  margin-left: 10px;
 }
 
 .guide-overlay-context-creator {

@@ -32,12 +32,12 @@ $icons:
   star
   videocard_comment
   videocard_queue
-  videocard_roll;
+  videocard_roll
+  videocard_roll_on;
 
 //------------------------------------------------------------------------------
 //  ICON CLASS CONSTRUCTOR
 //------------------------------------------------------------------------------
-
 @each $icon in $icons {
   .icon_#{$icon} {
     @include icon-primer($icon);
@@ -47,6 +47,7 @@ $icons:
 //------------------------------------------------------------------------------
 //  button icon module
 //------------------------------------------------------------------------------
+.button_icon,
 .button_icon_center,
 .button_icon_left,
 .button_icon_right {
@@ -55,6 +56,7 @@ $icons:
   font-style: normal;
 }
 
+.button_icon,
 .button_icon_center {
   background-position: center center;
 }

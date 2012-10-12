@@ -24,20 +24,20 @@
 </head>
 
 <body class="shelby">
-	<div id="js-notification-banner-wrapper" class="notification-banner-wrapper"></div>
+	<section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div id="js-shelby-wrapper" class="shelby-wrapper">
     <header id="js-header" class="js-app-header shelby-header" role="banner">
       <!-- contents in AppHeaderView -->
     </header>
 
     <div class="content_wrapper main-layout js-main-layout">
-      <section class="content_lining" role="main">
-        <!-- content filled in by VideoContentPaneView -->
-      </section><!-- eo .content_lining -->
-
       <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
         <!-- content filled in by GuideView -->
       </section><!-- eo .guide-wrapper -->
+
+      <section class="content_lining" role="main">
+        <!-- content filled in by children of MainLayoutView -->
+      </section><!-- eo .content_lining -->
     </div><!-- eo .content_wrapper.main-layout -->
 
     <div class="content_wrapper explore-layout js-explore-layout">

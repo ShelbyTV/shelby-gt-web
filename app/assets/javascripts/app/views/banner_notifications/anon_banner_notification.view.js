@@ -12,7 +12,7 @@
  */
 libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotification.extend({
 
-  _height : "80px",
+  _height : "55px",
   
   _bannerType : 0,
   
