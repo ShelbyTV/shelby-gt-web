@@ -10,6 +10,12 @@
   </nav>
 	
 	<% if (shelby.models.guide.get('displayFBGeniusRoll')) { %>
+		<!-- 
+		<section id="facebook-genius-login">
+			<div class="fb-login-button" data-show-faces="false" data-width="250" data-max-rows="1"></div>
+		</section>
+		-->
+		
 		<section id="fb-header-search">
 			<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
 				<input name="search" type="text" id="js-email-input" class="roll-page-form-input" placeholder="what will you find next?" /><!--
@@ -18,6 +24,7 @@
 			</form>
 			<script>
 				$(function(){
+					
 					$('.genius-search-form').submit(function() {
 
 				    $('#js-genius-search-submit').prop('disabled', true);
