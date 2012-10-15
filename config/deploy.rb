@@ -52,6 +52,6 @@ end
 #############################################################
 
 set :stages, %w(production staging iso_roll)
-set :default_stage, 'production'
+set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 require 'capistrano-unicorn'
