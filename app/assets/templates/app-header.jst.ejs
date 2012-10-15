@@ -12,9 +12,8 @@
 	<% if (shelby.models.guide.get('displayFBGeniusRoll')) { %>
 		<section id="fb-header-search">
 			<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
-				<input name="search" type="text" id="js-email-input" class="roll-page-form-input" placeholder="WHAT WILL YOU FIND NEXT?" /><!--
-
-			  --><input type="submit" value="SEARCH" id="js-genius-search-submit" class="header-form-submit" />
+				<input name="search" type="text" id="js-email-input" class="roll-page-form-input" placeholder="what will you find next?" /><!--
+			  --><input type="submit" value="SEARCH" id="js-genius-search-submit" class="header-form-submit button_primer" />
 				<div id="genius-search-spinner" class="genius-search-spinner">
 			</form>
 			<script>
@@ -69,7 +68,7 @@
 								  });	
 								}
 							});
-							console.log('<%= shelby.config.apiRoot %>' + '/roll/genius');
+
 							// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
 							$.ajax({
 								type: 'POST',
@@ -78,17 +77,15 @@
 								success: function(data){
 								  if (data.status == 200){
 										var _rollUrl = '<%= shelby.config.fbAppUrl %>' + "/fb_genius/roll/" + data.result.id;
-					  			  if (window.cache){
-					  					var _searchHistory = window.cache.get('searchHistory');
-					  					_searchHistory[search] = _rollUrl;
-					  					cache.set('searchHistory', _searchHistory);
-					  				}
+					  			  if (!window.cache){
+											window.cache = kizzy('history');
+										}
+										var _searchHistory = window.cache.get('searchHistory');
+				  					_searchHistory[search] = _rollUrl;
+				  					cache.set('searchHistory', _searchHistory);
 					  				window.location.href = _rollUrl;
 									}
 									else{ alert("something went wrong."); }
-								},
-								complete: function(c){
-									console.log("complete",e);
 								}
 							}); 
 				    };
