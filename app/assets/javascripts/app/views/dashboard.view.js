@@ -15,6 +15,9 @@
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
       initFixedHead : true,
+      isIntervalComplete : function(displayedItems) {
+        return displayedItems != 0 && displayedItems % 20 == 0;
+      },
       fetchParams : {
         include_children : true
       },

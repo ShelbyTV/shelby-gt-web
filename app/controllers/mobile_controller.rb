@@ -11,6 +11,8 @@ class MobileController < ApplicationController
       @frames = @roll['frames']
       @roll.delete('frames')
       # great successes
+    else
+      redirect_to "/"
     end
   end
   

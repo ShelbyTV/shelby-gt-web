@@ -11,7 +11,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
   className : 'conversation-message clearfix',
 
   template : function(obj){
-    return JST['message'](obj);
+    return SHELBYJST['message'](obj);
   },
 
   render : function(showConversation){

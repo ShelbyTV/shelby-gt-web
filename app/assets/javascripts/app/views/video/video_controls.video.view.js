@@ -5,17 +5,16 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
-    "click .js-playback" : "_togglePlayback",
-    "click .js-mute" : "_toggleMute",
-    "click .video-player-quality.hd-on" : "_hdOff",
-    "click .video-player-quality.hd-off" : "_hdOn",
-    "click .video-player-progress": "_onScrubTrackClick",
-    "click .video-player-fullscreen" : "_toggleFullscreen",
-    "click .js-video-player-next" : "_nextVideo",
-    "click .js-video-player-prev" : "_prevVideo"
+    "click .js-videoplayer-roll"       : "_requestFrameRollView",
+    "click .js-videoplayer-playback"   : "_togglePlayback",
+    "click .js-videoplayer-mute"       : "_toggleMute",
+    "click .js-videoplayer-hd.hd-on"   : "_hdOff",
+    "click .js-videoplayer-hd.hd-off"  : "_hdOn",
+    "click .js-videoplayer-progress"   : "_onScrubTrackClick",
+    "click .js-videoplayer-fullscreen" : "_toggleFullscreen",
+    "click .js-videoplayer-next"       : "_nextVideo",
+    "click .js-videoplayer-prev"       : "_prevVideo"
   },
-
-  el: '#video-controls',
 
   _currentDuration: 0,
 
@@ -41,7 +40,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   template: function(obj){
-    return JST['video-controls'](obj);
+    return SHELBYJST['video-controls'](obj);
   },
 
   render: function(){
@@ -90,7 +89,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
     this.render();
 
-    //need to fake-fire some change events since they don't actually change when swapping players
+    //need to fake-fire some change events since they may not change when swapping players
+    //discussion:  If player A has duration D and gets swapped out, then gets swapped back in (without changing videos) it
+    // will still have duration D.  Thus no change will be fired and we need to fake-fire here.
+    this._onDurationChange('duration', newPlayerState.get('duration'));
     this._onMutedChange('muted', newPlayerState.get('muted'));
     this._onHdVideoChange('hdVideo', newPlayerState.get('hdVideo'));
     this._onSupportsMuteChange('supportsMute', newPlayerState.get('supportsMute'));
@@ -131,7 +133,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
         curTimeS = parseInt(curTime % 60, 10);
 
     this.$('.video-player-progress-elapsed').width(pct+"%");
-    this.$('.video-player-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
+    this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
   },
 
   _onBufferTimeChange: function(attr, bufferTime){
@@ -146,11 +148,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     durationM = parseInt(val / 60, 10 ) % 60,
     durationS = parseInt(val % 60, 10);
 
-    this.$('.video-player-timeline  span:last-child').text(prettyTime(durationH, durationM, durationS));
+    this.$('.js-videoplayer-timeline  span:last-child').text(prettyTime(durationH, durationM, durationS));
   },
 
   _onMutedChange: function(attr, muted){
-    muted ? this.$el.addClass('muted') : this.$el.removeClass('muted');
+    this.$('.js-videoplayer-mute').toggleClass('muted', muted);
   },
 
   _onVolumeChange: function(attr, volPct){
@@ -182,6 +184,13 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   // Handle user events on the player controls
   //--------------------------------------
 
+  _requestFrameRollView : function(){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+        this.options.guide.get('activeFrameModel'));
+    }
+  },
+  
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');
     if (activePlayerState) {
@@ -248,17 +257,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      $('.js-main-layout .js-guide').removeClass("hide-guide");
-      this.$el.find('.video-player-tools').removeClass("full-width");
-      this.$el.find('.video-player-next').removeClass("full-width");
-      $('.videoplayer').removeClass("full-width");
-      $('#fb-comments-holder').removeClass('hide-comment-holder');
+      $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      $('.js-main-layout .js-guide').addClass("hide-guide");
-      this.$el.find('.video-player-tools').addClass("full-width");
-      this.$el.find('.video-player-next').addClass("full-width");
-      $('.videoplayer').addClass("full-width");
-      $('#fb-comments-holder').addClass('hide-comment-holder');
+      $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
 

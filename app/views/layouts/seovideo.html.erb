@@ -4,6 +4,7 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
   <meta name="description" content="<%= @meta_description %>">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,7 +12,8 @@
   
   <meta name="viewport" content="width=device-width">
   <link rel="icon"type="image/png" href="/favicon.png">
-  <link rel="canonical" href="http://shelby.tv/video/<%= @provider_name %>/<%= @provider_id %>/<%= hyphenateString(@video_title) %>">
+  <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
+  <meta name="apple-itunes-app" content="app-id=556665733">
   <%= stylesheet_link_tag "seovideo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "seovideo" %>
@@ -25,7 +27,8 @@
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+      s.parentNode.insertBefore(g,s);}(document,'script'));
+			_gaq.push(['_trackEvent', "SEO Video", "Visit page"]);
     </script>
     <script>
       var _kmq = _kmq || [];

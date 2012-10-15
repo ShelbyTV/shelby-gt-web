@@ -3,8 +3,6 @@
 //
 
 libs.shelbyGT.MiniVideoProgress = Support.CompositeView.extend({
-
-  el: '#mini-video-progress',
   
   _currentDuration: 0,
   

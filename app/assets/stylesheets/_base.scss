@@ -30,8 +30,8 @@ $icon-overlay-you               : "#{$path}overlay_you#{$extension}";
 
 $icon-player-fullscreen-enable  : "#{$path}player_fullscreen_enable#{$extension}";
 $icon-player-fullscreen-disable : "#{$path}player_fullscreen_disable#{$extension}";
-$icon-player-hd-on              : "#{$path}player_hd_enabled#{$extension}";
-$icon-player-hd-off             : "#{$path}player_hd_disabled#{$extension}";
+$icon-player-hd-on              : "#{$path}player_hd_on#{$extension}";
+$icon-player-hd-off             : "#{$path}player_hd_off#{$extension}";
 $icon-player-play               : "#{$path}player_play#{$extension}";
 $icon-player-pause              : "#{$path}player_pause#{$extension}";
 $icon-player-sound-off          : "#{$path}player_sound_off#{$extension}";
@@ -126,6 +126,7 @@ $base          : #e2e2e2;
 $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
 $shadow        : 0 0 2px 0 rgba(0,0,0,.5);
+$shadow-text   : 0 1px 0 #333;
 $outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
@@ -186,6 +187,11 @@ $explore-subline-color              : adjust-lightness($explore-header-color,30%
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
 ////////////////////////////////////////////////////////////////////////////
+//  COLORS: external
+////////////////////////////////////////////////////////////////////////////
+$external-bg                        : #efefef;
+
+////////////////////////////////////////////////////////////////////////////
 //  COLORS: me
 ////////////////////////////////////////////////////////////////////////////
 $me-header-color                    : adjust-lightness($text, 10%);
@@ -214,6 +220,7 @@ $toggle-switch-gray                 : #fefefe;
 //  COLORS: shelby
 ////////////////////////////////////////////////////////////////////////////
 $shelby-blue                        : #0590c4;
+$shelby-default                     : #eeeeee;
 $shelby-gray                        : #27292A;
 $shelby-gray-light                  : #a0a0a0;
 $shelby-green                       : #428e3a;

@@ -1,24 +1,24 @@
 $animate-style : $animate-timing !default;
 
-@mixin animate($animate-style, $animate-property){
-	@if ($animate-style == ease-in-out) {
-		@include transition-property($animate-property);
-		@include transition-duration($animate-duration);
-//		@include transition-timing-function($animate-timing);
-		@include transition-delay($animate-delay);
-		@include transform(translateZ(0));
-	}
+@mixin animate($animate-style, $animate-property, $animate-duration){
+  @if ($animate-style == ease-in-out) {
+    @include transition-property($animate-property);
+    @include transition-duration($animate-duration);
+//    @include transition-timing-function($animate-timing);
+    @include transition-delay($animate-delay);
+    @include transform(translateZ(0));
+  }
 }
 
 $roundies-type : normal !default;
 
 @mixin roundies($roundies-type){
-	@if $roundies-type == normal {
-		border-radius: $radius;
-	}
-	@else if $roundies-type == input {
-		border-radius: $radius - 2;
-	}
+  @if $roundies-type == normal {
+    border-radius: $radius;
+  }
+  @else if $roundies-type == input {
+    border-radius: $radius - 2;
+  }
   @else if $roundies-type == header {
     border-radius: $radius $radius 0 0;
   }
@@ -36,20 +36,20 @@ $roundies-type : normal !default;
 @mixin notype{color: transparent;font: 0/0 a; overflow: hidden;text-shadow: none; white-space: nowrap;}
 
 @mixin basefont{
-	font:100 normal 62.5%/1.231 Arial,sans-serif;
+  font:100 normal 62.5%/1.231 Arial,sans-serif;
 }
 
 @mixin inputfont{
-	font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+  font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 @mixin buttonfont{
-	font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+  font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
 }
 
 $bg-color: $nav-dropdown-bg !default;
 @mixin fin($bg-color) {
-	&:after {
+  &:after {
     @include rotate(45deg);
 
     background: $bg-color;
@@ -65,156 +65,160 @@ $bg-color: $nav-dropdown-bg !default;
 
 @mixin bottom-fin($bg-color) {
   @include fin($bg-color);
-	&:after {
-	  top: auto;
+  &:after {
+    top: auto;
     bottom: -5px;
   }
 }
 
 @mixin font-primer($font-usage){
-		line-height: 1.231;
-		font-family: 'Ubuntu',Trebuchet MS,sans-serif;
+    line-height: 1.231;
+    font-family: 'Ubuntu',Trebuchet MS,sans-serif;
 
-	@if $font-usage == basefont {
-		font-size: 62.5%;
-		font-weight:100;
-	}
-	@else if $font-usage == inputfont {
-		font-size: 100%;
-		font-weight:300;
-	}
-	@else if $font-usage == buttonfont {
-		font-size: 100%;
-		font-weight:700;
-	}
+  @if $font-usage == basefont {
+    font-size: 62.5%;
+    font-weight:100;
+  }
+  @else if $font-usage == inputfont {
+    font-size: 100%;
+    font-weight:300;
+  }
+  @else if $font-usage == buttonfont {
+    font-size: 100%;
+    font-weight:700;
+  }
 }
 
 $bottom-color: #4e5354 !default;
 $bottom-color-adjust: 20% !default;
 
 @mixin gradient-primer($x-primer-color,$x-lightness-adjust-pct:5%){
-	background-color: $x-primer-color;
-	@include background(linear-gradient(top, adjust-lightness($x-primer-color,$x-lightness-adjust-pct), $x-primer-color));
+  background-color: $x-primer-color;
+  @include background(linear-gradient(top, adjust-lightness($x-primer-color,$x-lightness-adjust-pct), $x-primer-color));
 }
 
 $network-image : $icon-share-twitter-on !default;
 
 @mixin x-logged-out-networks-buttons($primer-color, $network-image){
-	background-color: $primer-color;
-	@include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
-	@include buttonfont;
-	@include text-shadow(0px -1px 0px #333);
+  background-color: $primer-color;
+  @include background(linear-gradient(top, adjust-lightness($primer-color,10%), $primer-color));
+  @include buttonfont;
+  @include text-shadow(0px -1px 0px #333);
 
-	border-radius: $button-radius;
-	box-shadow:inset 0px 1px 0px 0px $highlight;
-	color: $button-color;
-	font-size: 11px;
-	line-height: 2.5;
-	padding-left: 15px;
-	position: relative;
+  border-radius: $button-radius;
+  box-shadow:inset 0px 1px 0px 0px $highlight;
+  color: $button-color;
+  font-size: 11px;
+  line-height: 2.5;
+  padding-left: 15px;
+  position: relative;
 
-	@if $primer-color == $twitter-blue {//twitter blue is lighter, thus needing more darkening
-		border: 1px solid adjust-lightness($primer-color,-40%);
-	}
-	@else {
-		border: 1px solid adjust-lightness($primer-color,-20%);
-	}
+  @if $primer-color == $twitter-blue {//twitter blue is lighter, thus needing more darkening
+    border: 1px solid adjust-lightness($primer-color,-40%);
+  }
+  @else {
+    border: 1px solid adjust-lightness($primer-color,-20%);
+  }
 
-	&:before{
-		background-repeat: no-repeat;
-		bottom: 1px;
-		content: "\0020";
-		float: left;
-		left: 0;
-		position: absolute;
-		top: 1px;
-		width: 30px;
-	}
+  &:before{
+    background-repeat: no-repeat;
+    bottom: 1px;
+    content: "\0020";
+    float: left;
+    left: 0;
+    position: absolute;
+    top: 1px;
+    width: 30px;
+  }
 }
 
 $x-primer-color        : $button-default-color;
+//TODO: primer tone is now obsolete
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
 @mixin button-primer($x-primer-color, $primer-tone, $primer-button-context, $enable-pseudo-classes: true){
-	@include gradient-primer($x-primer-color);
+  @include gradient-primer($x-primer-color);
 
-	border: 1px solid adjust-lightness($x-primer-color, -10%);
-	border-radius: $button-radius;
-	box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%), //inner top highlight
-							inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%); //inner bottom shadow
-	font-family: $font-family-display;
-	//determine size in the actual class.
+  border: 1px solid adjust-lightness($x-primer-color, -10%);
+  border-radius: $button-radius;
+  box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color, 20%), //inner top highlight
+              inset 0 -1px 0 0 adjust-lightness($x-primer-color, -5%); //inner bottom shadow
+  font-family: $font-family-display;
+  //determine size in the actual class.
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 
-	@if $primer-button-context == frame-command {
-		padding-top: .8em;
-		padding-right: 1em;
-		padding-bottom: .75em;
-		padding-left: 1em;
-	} @elseif $primer-button-context == explore-rolls {
-		padding-top: .8em;
-		padding-bottom: .75em;
-		//------------------------------------------------------
-		//	follow/unfollow need to be the same size.
-		//	setting the WIDTH normalizes them,
-		//	rather than having the width delegated by the padding
-		//------------------------------------------------------
-		width: 100px;
-	} @elseif $primer-button-context == wide {
-		padding-top: .8em;
-		padding-right: 3em;
-		padding-bottom: .75em;
-		padding-left: 3em;
-	} @elseif $primer-button-context == guide-close {
-		padding: .6em;
-	} @else {//generic
-		padding-top: .8em;
-		padding-right: 1em;
-		padding-bottom: .75em;
-		padding-left: 1em;
-	}
+  @if $primer-button-context == frame-command {
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  } @elseif $primer-button-context == explore-rolls {
+    padding-top: .8em;
+    padding-bottom: .75em;
+    //------------------------------------------------------
+    //  follow/unfollow need to be the same size.
+    //  setting the WIDTH normalizes them,
+    //  rather than having the width delegated by the padding
+    //------------------------------------------------------
+    width: 100px;
+  } @elseif $primer-button-context == wide {
+    padding-top: .8em;
+    padding-right: 3em;
+    padding-bottom: .75em;
+    padding-left: 3em;
+  } @elseif $primer-button-context == guide-close {
+    padding: .6em;
+  } @else {//generic
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  }
 
-	@if $primer-tone == light {
-		//------------------------------------------------------
-		//	toggle LIGHT font and DARK font depending on button bg.
-		//------------------------------------------------------
-		color: $button-color-light;
-		font-weight: 500;
-	} @else {
-		color: $button-color;
-		font-weight: 700;
-		text-shadow: 0px 1px 0px #333;
-	}
+  @if $x-primer-color == $button-default-color {
+    //------------------------------------------------------
+    //  toggle LIGHT font and DARK font depending on button bg.
+    //------------------------------------------------------
+    color: $button-color-light;
+    font-weight: 500;
+  } @else {
+    color: $button-color;
+    font-weight: 700;
+    text-shadow: 0px -1px 0px #333;
+  }
 
-	@if $enable-pseudo-classes {
-		&:hover {
-			$x-primer-color-hover : lighten($x-primer-color, 5%);
+  @if $enable-pseudo-classes {
+    &:hover {
+      $x-primer-color-hover : lighten($x-primer-color, 5%);
 
-			@include gradient-primer($x-primer-color-hover);
+      @include gradient-primer($x-primer-color-hover);
 
-			border: 1px solid adjust-lightness($x-primer-color-hover, -10%);
-			border-radius: $button-radius;
-			box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-hover, 20%), //inner top highlight
-									inset 0 -1px 0 0 adjust-lightness($x-primer-color-hover, -5%); //inner bottom shadow
+      border: 1px solid adjust-lightness($x-primer-color-hover, -10%);
+      border-radius: $button-radius;
+      box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-hover, 20%), //inner top highlight
+                  inset 0 -1px 0 0 adjust-lightness($x-primer-color-hover, -5%); //inner bottom shadow
 
-			}
+      }
 
-		&:active {
-			$x-primer-color-active : darken($x-primer-color, 5%);
+    &:active {
+      $x-primer-color-active : darken($x-primer-color, 5%);
 
-			@include gradient-primer($x-primer-color-active);
+      @include gradient-primer($x-primer-color-active);
 
-			border: 1px solid adjust-lightness($x-primer-color-active, -10%);
-			border-radius: $button-radius;
-			box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-active, 20%), //inner top highlight
-									inset 0 -1px 0 0 adjust-lightness($x-primer-color-active, -5%); //inner bottom shadow
-		}
+      border: 1px solid adjust-lightness($x-primer-color-active, -10%);
+      border-radius: $button-radius;
+      box-shadow: inset 0 1px 0 0 adjust-lightness($x-primer-color-active, 20%), //inner top highlight
+                  inset 0 -1px 0 0 adjust-lightness($x-primer-color-active, -5%); //inner bottom shadow
+    }
 
-		&:focus {
-			border: 1px solid black;
-			outline: none;
-		}
-	}
+    &:focus {
+      border: 1px solid black;
+      outline: none;
+    }
+  }
 
 }//eo button-primer
 
@@ -233,114 +237,247 @@ $primer-button-context : generic !default;
 $preferences-network : twitter !default;
 
 @mixin preferences-networks($network){
-	@if $network == twitter {
-		@include background(url($icon-social-twitter) no-repeat center center $twitter-blue);
-		border:1px solid adjust-lightness($twitter-blue, -20%);
-	}
-	@else if $network == tumblr {
-		@include background(url($icon-social-tumblr) no-repeat center center $tumblr-blue);
-		border:1px solid adjust-lightness($tumblr-blue, -5%);
-	}
-	@else if $network == facebook {
-		@include background(url($icon-social-facebook) no-repeat center center $facebook-blue);
-		border:1px solid adjust-lightness($facebook-blue, -5%);
-	}
-		box-shadow:inset 0px 1px 0px 0px $highlight;
+  @if $network == twitter {
+    @include background(url($icon-social-twitter) no-repeat center center $twitter-blue);
+    border:1px solid adjust-lightness($twitter-blue, -20%);
+  }
+  @else if $network == tumblr {
+    @include background(url($icon-social-tumblr) no-repeat center center $tumblr-blue);
+    border:1px solid adjust-lightness($tumblr-blue, -5%);
+  }
+  @else if $network == facebook {
+    @include background(url($icon-social-facebook) no-repeat center center $facebook-blue);
+    border:1px solid adjust-lightness($facebook-blue, -5%);
+  }
+    box-shadow:inset 0px 1px 0px 0px $highlight;
 }
 
 @mixin x-networks-badge {
-	&:before {
-		@include roundies;
+  &:before {
+    @include roundies;
 
-		content: "\0020";
-		float:left;
-		height:24px;
-		left:0;
-		margin: 1px 5px 0 0;
-		top:0;
-		width:24px;
-	}
+    content: "\0020";
+    float:left;
+    height:24px;
+    left:0;
+    margin: 1px 5px 0 0;
+    top:0;
+    width:24px;
+  }
 }
 
 @mixin share-networks-buttons{
-	button {
-		@extend .notype;
-		@include roundies(input);
+  button {
+    @extend .notype;
+    @include roundies(input);
 
-		background-color: $networks-unselected;
-		border: 1px solid adjust-lightness($networks-unselected, -5%);
-		display: block;
-		height: 34px;
-		width: 34px;
-	}
+    background-color: $networks-unselected;
+    border: 1px solid adjust-lightness($networks-unselected, -5%);
+    display: block;
+    height: 34px;
+    width: 34px;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
-//  $icons, icon keywords are whitespace-delineated because Sass, scary right?
+//  icon class interpolator
 ////////////////////////////////////////////////////////////////////////////
-$icons: cancel
-        carrot
-        check
-        chevron_right
-        comment_reply
-        email
-        mark
-        avatar_large
-        missing_avatar
-        missing_thumbnail
-        settings
-        onboarding_facebook_add
-        onboarding_facebook_added
-        onboarding_tumblr_add
-        onboarding_tumblr_added
-        onboarding_twitter_add
-        onboarding_twitter_added
-        overlay_like
-        overlay_nowplaying
-        overlay_watchlater
-        overlay_you
-        player_fullscreen_enable
-        player_fullscreen_disable
-        player_hd_on
-        player_hd_off
-        player_play
-        player_pause
-        player_sound_off
-        player_sound_on
-        share_facebook_on
-        share_facebook_off
-        share_twitter_on
-        share_twitter_off
-        social_facebook
-        social_tumblr
-        social_twitter
-        switch_lock
-        switch_unlock
-        team_twitter
-        team_web
-        tweet_intents
-        user_logged_out
-        nav_stream
-        videocard_queue
-        videocard_comment
-        videocard_comment_off
-        videocard_comment_on
-        videocard_like_off
-        videocard_like_on
-        videocard_more
-        videocard_roll
-        videocard_roll_off
-        videocard_roll_on
-        videocard_share
-        videocard_share_off
-        videocard_share_on;
-
 @mixin icon-primer($icon) {
   background-image: url("#{$path}#{$icon}#{$extension}");
 }
 
+////////////////////////////////////////////////////////////////////////////
+//  "for now"
+//  specific padding mixins so you don't lose consistency
+////////////////////////////////////////////////////////////////////////////
+@function button-padding($usage) {
+  @if $usage == isolated-roll-header {
+    @return 0.5em 1em;
+  }
+}
+
+@mixin button-sizing($use: generic) {
+    @if $use == frame-command {
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  } @elseif $use == explore-rolls {
+    padding-top: .8em;
+    padding-bottom: .75em;
+    //------------------------------------------------------
+    //  follow/unfollow need to be the same size.
+    //  setting the WIDTH normalizes them,
+    //  rather than having the width delegated by the padding
+    //------------------------------------------------------
+    width: 100px;
+  } @elseif $use == wide {
+    padding-top: .8em;
+    padding-right: 3em;
+    padding-bottom: .75em;
+    padding-left: 3em;
+  } @elseif $use == guide-close {
+    padding: .6em;
+  } @elseif $use == social-login {
+    padding-top:.25em;
+    padding-bottom: .2em;
+  } @elseif $use == generic {//generic
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  }
+}
+//------------------------------------------------------------------------------
+//  $color-names and $color-values
+//  the indexes of each correspond.
+//  (Sass doesn't have multi-dimensional arrays or anything really cool,
+//  so we have to fake it by matching the indexes of two arrays.)
+//------------------------------------------------------------------------------
+@function name-to-value($name) {
+  ////////////////////////////////////////////////////////////////////////////
+  //  cool little look-up table technique lifted from D. Eppstein
+  //  https://groups.google.com/forum/#!msg/sass-lang/upr78cyrW1I/_5xLPA9yYjUJ
+  ////////////////////////////////////////////////////////////////////////////
+  @return nth($color-values, index($color-names, $name));
+}
+
+//------------------------------------------------------------------------------
+//  Button Primer
+//------------------------------------------------------------------------------
+@mixin button($name,$base) {
+  @include gradient-primer($base);
+
+  border: 1px solid if(lightness($base) < 50, $base, darken($base,20%));
+  box-shadow: inset 0 1px 0 0 lighten($base, 20%), //inner top hightlight
+              inset 0 -1px 0 0 darken($base, 5%);
+//    color: darken($base, 50%);
+  color: if(lightness($base) < 53, $button-color, $button-color-light);
+  font-weight: if(lightness($base) < 53, 700, 500);
+  text-shadow: if(lightness($base) < 53, $shadow-text, none);
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+      $base-hover: lighten($base, 5%);
+
+      @include gradient-primer($base-hover);
+
+      border: 1px solid darken($base-hover,10%);
+      box-shadow: inset 0 1px 0 0 lighten($base-hover, 20%), //inner top hightlight
+                  inset 0 -1px 0 0 darken($base-hover, 5%);
+  }
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):active {
+      $base-active: darken($base, 5%);
+
+      @include gradient-primer($base-active);
+
+      border: 1px solid darken($base-active, 50%);
+      box-shadow: inset 0 1px 0 0 lighten($base-active, 20%), //inner top hightlight
+                  inset 0 -1px 0 0 darken($base-active, 5%);
+  }
+
+  &[disabled],
+  &.disabled {
+      color: darken($base, 30%);
+  }
+
+  &:hover,
+  &:visited {
+    color: if(lightness($base) < 53, $button-color, $button-color-light);
+  }
+
+  &.disabled {
+     &:active,
+     &:hover,
+     &:link,
+     &:visited {
+      color: rgba(if(lightness($base) < 53, $button-color, $button-color-light),.4);
+      text-shadow: none;
+     }
+  }
+}
+
+.button_primer {
+  @include roundies(input);
+
+  font-family: $font-family-display;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+      cursor: pointer;
+  }
+
+  &.visuallydisabled,
+  &.disabled {
+      cursor: default;
+  }
+
+  &:not([disabled]):not(.disabled):not(.visuallydisabled):focus {
+      border: 1px solid black;
+      outline: none;
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+//  faux_button should be applied to
+//  elements that will be styled by .button_primer
+//  but are not <button> elements, i.e. <a> elements
+////////////////////////////////////////////////////////////////////////////
+.faux_button {
+    display: inline-block;
+
+    &:active,
+    &:hover,
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  REFERENCE TABLE
+//  ---------------------
+//  blue       : #0590c4;
+//  default    : #eeeeee;
+//  gray       : #27292A;
+//  gray-light : #a0a0a0;
+//  green      : #428e3a;
+//  purple     : #693a7b;
+//  red        : #cc1235;
+//  yellow     : #d5cd39;
+////////////////////////////////////////////////////////////////////////////
+    $color-names:
+    blue       ,
+    blue-dark  ,
+    default    ,
+    gray       ,
+    gray-light ,
+    gray-medium,
+    green      ,
+    purple     ,
+    red        ,
+    yellow     ,
+    twitter-blue,
+    facebook-blue,
+    tumblr-blue;
+
+    $color-values:
+    #0590c4,
+    darken(#0590c4,10%),
+    #eeeeee,
+    #27292A,
+    #a0a0a0,
+    #dddddd,
+    #428e3a,
+    #693a7b,
+    #cc1235,
+    #d5cd39,
+    #2CAAE1,
+    #013e80,
+    #2f445b;
+
 @import "compass/css3",
         "compass/typography/text/ellipsis",
         "compass/typography/lists/bullets",
-				"compass/typography/links/hover-link";
-
+        "compass/typography/links/hover-link";

@@ -21,7 +21,6 @@ class FrameController < ApplicationController
     end
     
     if user_signed_in? and @share_type != :genius
-      set_app_tokens_for_view
       render '/home/app'
     else
       
@@ -37,9 +36,18 @@ class FrameController < ApplicationController
       
       # And render it
       @mobile_os = detect_mobile_os
-      render (@mobile_os ? '/mobile/landing' : '/home/landing')
+      render @mobile_os ? '/mobile/landing' : '/home/landing'
+      
     end
   end
+  
+  # GET /isolated_roll/:roll_id/frame/:frame_id
+  # to allow linking to a frame within a subdomain'd iso roll
+  #  
+  def show_frame_in_isolated_roll
+    render '/home/app'
+  end
+  
   
   # GET /frame/:frame_id
   #

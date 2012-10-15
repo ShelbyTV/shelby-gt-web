@@ -1,3 +1,4 @@
+$landing-page-shelf-background:  #2e2e2e;
 /* non-programatic changes to app display */
 body.facebook-genius{
   // landing page //
@@ -80,11 +81,14 @@ body.facebook-genius{
   span.fb_edge_comment_widget iframe {
     width: 351px !important;
   }
+  
+  .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
+  display: none !important;}
   // ***** //
   
   // header //
   .shelby-logo{
-    margin-left: 135px;
+    width: 100%;
     .shelby-title {
     	background: url('/images/genius/logo.png') center 5px no-repeat transparent;
     	background-size: 100%;
@@ -168,6 +172,8 @@ body.facebook-genius{
   #video-controls {
     position:relative;
     bottom: 15%;
+    .video-player-progress {left: 55px;}
+    .video-player-roll { display: none;}
   }
   
   // video player adjustments
@@ -185,9 +191,14 @@ body.facebook-genius{
     /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
     #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 83%!important; }
   }
-  .full-width {
+  .hide-guide {
     .videoplayer-viewport{ height: 100%; }
     #video-controls { bottom: 0; width: 100%;}
+  }
+  
+  // guide header
+  .guide-header-title {
+    line-height: 1.931;
   }
   
 }
@@ -202,8 +213,17 @@ body.not_authorized {
 
 section.fb-genius {
   #landing-page-search-area{
-    margin-top: 316px;
-    margin-left: 63px;
+    width: 180px;
+    margin: 316px 580px 0px;
+    button {
+      @include button-primer($shelby-blue, dark);
+      zoom: 1.5;
+      width: 275px;
+      &a { 
+        text-decoration: none;
+        color: #fff;
+      }
+    }
   }
 
   #sharing-box {

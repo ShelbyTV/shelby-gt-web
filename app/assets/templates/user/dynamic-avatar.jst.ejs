@@ -1,9 +1,10 @@
 <div class="dynamic-avatar clearfix">
-	<% if( user.get('has_shelby_avatar') ){ %>
-		<img src="<%= shelbyAvatarUrl %>" class="shelby-avatar user-avatar">
-	<% } else { %>
-		<img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" class="external-avatar user-avatar">
-	<% } %>
-	<div class="progress-overlay"></div>
-	<div class="spinner-overlay"></div>
+  <% if( user.get('has_shelby_avatar') ){ %>
+    <img src="<%= shelbyAvatarUrl %>" class="shelby-avatar user-avatar">
+  <% } else { %>
+    <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" class="external-avatar user-avatar">
+  <% } %>
+  <div class="progress-overlay"></div>
+  <div class="progress-message"></div>
+  <div class="spinner-overlay"></div>
 </div>

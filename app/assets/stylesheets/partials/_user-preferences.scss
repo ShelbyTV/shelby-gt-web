@@ -3,46 +3,78 @@
 //  User Preferences Page
 //------------------------------------------------------------------------------
 .preferences{
-	font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .preferences-head {
-	border-bottom: 1px solid $inset;
-	font-size: 1.3em;
-	padding: $default-margin;
+  border-bottom: 1px solid $inset;
+  font-size: 1.3em;
+  padding: $default-margin;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 //  abstract: used in all .form_fieldsets
 ////////////////////////////////////////////////////////////////////////////
 .preferences-section {
-	border-top: 1px solid $outset;
-	border-bottom: 1px solid $inset;
+  border-top: 1px solid $outset;
+  border-bottom: 1px solid $inset;
 
-	margin: 0;
-	padding: $default-margin;
+  margin: 0;
+  padding: $default-margin;
 }
 
 .preferences-form {
-	.form_legend {
-		font-size: 1.2em;
-		margin-bottom: 1em;
-	}
+  .form_legend {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
 
-	.form_fieldset {
-		font-size: 1em;
-		font-weight: 500;
-	}
+  .form_fieldset {
+    font-size: 1em;
+    font-weight: 500;
+  }
 }
 
 .preferences-list {
-	.list_item {
-		margin-bottom: 1em;
-	}
+  .list_item {
+    margin-bottom: 1em;
+  }
 }
 
 .preferences-checkbox {
-	margin: .6em;
+  margin: .6em;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  .form_fieldset.preferences-section.tools-section
+////////////////////////////////////////////////////////////////////////////
+.tools-section {
+
+}
+
+.tools-section-button {
+//	@include button-primer($shelby-gray);
+	@include roundies(input);
+
+	background: transparent;
+	border: 1px solid $inset;
+	font-family: $font-family-display;
+	padding: 1em;
+	text-align: left;
+	width: 100%;
+
+	.tools-icon {
+		display: block;
+	}
+
+	&:hover {
+		background-color: lighten($base,3%);
+		border-color: lighten($inset,2%)
+	}
+	&:active {
+		background-color: darken($base, 10%);
+		border-color: darken($inset,15%);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -57,19 +89,19 @@
 }
 
 .avatar-section-viewport {
-	float: left;
-	width: 48px;
-	height: 48px;
+  float: left;
+  width: 48px;
+  height: 48px;
 
-	.dynamic-avatar {
-		border: 1px solid $avatar-outline;
-		width: inherit;
-		height: inherit;
-	}
+  .dynamic-avatar {
+    border: 1px solid $avatar-outline;
+    width: inherit;
+    height: inherit;
+  }
 
-	.user-avatar {
-		width: 100%;
-	}
+  .user-avatar {
+    width: 100%;
+  }
 }
 
 .avatar-section-input {
@@ -77,9 +109,9 @@
 }
 
 .avatar-section-input {
-	input[type=file] {
-		margin: 13px 0 0 10px;
-	}
+  input[type=file] {
+    margin: 13px 0 0 10px;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -90,13 +122,13 @@
 }
 
 .profile-actions {
-	margin-top: 10px;
-	text-align: right;
+  margin-top: 10px;
+  text-align: right;
 }
 
 .profile-action-cancel,
 .profile-action-save {
-	@include button-primer;
+  @include button-sizing;
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -107,12 +139,12 @@
 }
 
 .password-actions {
-	margin-top: 10px;
-	text-align: right;
+  margin-top: 10px;
+  text-align: right;
 }
 
 .password-action-save {
-	@include button-primer;
+  @include button-sizing;
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -123,60 +155,60 @@
 }
 
 .networks-username {
-	float:right;
-	line-height: 2.6;
-	margin: 0;
+  float:right;
+  line-height: 2.6;
+  margin: 0;
 }
 
 .preferences-networks-twitter,
 .preferences-networks-tumblr,
 .preferences-networks-facebook {
-	@include x-networks-badge;
+  @include x-networks-badge;
 
-	line-height: 2.4;
+  line-height: 2.4;
 }
 
 .preferences-networks-twitter{
-	&:before{
-		@include preferences-networks(twitter);
-		background-size:76%;
-	}
+  &:before{
+    @include preferences-networks(twitter);
+    background-size:76%;
+  }
 }
 
 .preferences-networks-facebook{
-	&:before{
-		@include preferences-networks(facebook);
-		background-size:28%;
-	}	
+  &:before{
+    @include preferences-networks(facebook);
+    background-size:28%;
+  }
 }
 
 .preferences-networks-tumblr{
-	&:before{
-		@include preferences-networks(tumblr);
-		background-size:36%;
-	}
+  &:before{
+    @include preferences-networks(tumblr);
+    background-size:36%;
+  }
 }
 
 .connected-network-options {
-	background-color: #eee;
-	margin: 0 0 0 27px;
-	padding: 5px;
+  background-color: #eee;
+  margin: 0 0 0 27px;
+  padding: 5px;
 
-	p {
-		line-height: 1.231;
-		margin: 0;
-	}
+  p {
+    line-height: 1.231;
+    margin: 0;
+  }
 }
 
 .connected-network-checkbox {
-	float: right;
+  float: right;
 }
 
 .connected-network {
-	@include button-primer($shelby-green, dark, wide);
+  @include button-primer($shelby-green, dark, wide);
 
-	float:right;
-	font-size: .8em;
+  float:right;
+  font-size: .8em;
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -187,5 +219,5 @@
 }
 
 .preferences-checkbox {
-	float: right;
+  float: right;
 }

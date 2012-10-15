@@ -12,13 +12,21 @@
   position: relative;
   height: 100%;
   width: 100%;
-  > *:not(#videoPlayerComponent, #adComponent) {
+  > * {
     position: absolute;
     top: 0; left: 0;
     width: inherit;
     height: inherit;
   }
-  
+
+  #videoPlayerComponent {
+    position: relative;
+  }
+
+  #adComponent {
+    position: relative;
+  }
+
   /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
   #ooyala-player-holder div,
   #ooyala-player-holder object { width: 100%!important; height: 100%!important; }

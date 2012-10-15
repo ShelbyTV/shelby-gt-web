@@ -1,4 +1,5 @@
 //DOCS: http://www.collegehumor.com/moogaloop/api.php
+//example 404 video: http://localhost.shelby.tv:3000/roll/4f9009d9b415cc466a000466/frame/504cedb6d1041245b5003156
 libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 
   id: 'collegehumor-player-holder',
@@ -49,6 +50,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
     Backbone.Events.unbind("collegehumor:setCurrentTime");
     Backbone.Events.unbind("collegehumor:setDuration");
   },
+  
   render: function(container, video){
     this._isActivePlayer = true;
 
@@ -67,13 +69,19 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
       this._bootstrapPlayer();
     }
 
-    //playVideo will be called by video display view
+    //playVideo will now be called by video display view
   },
 
   playVideo: function(video){
-    this._video = video;
+    //if we haven't been loaded, bootstrap will do everything
     if( this.playerState.get('playerLoaded') ){
-      this._player.load_video(this._video.get('provider_id'));
+      //since we have been loaded, need to make sure we only load_video if it's *different* from the current one (due to CH player bugginess)
+      if(this._video !== video){
+        this._video = video;
+        this._player.load_video(this._video.get('provider_id'));
+      } else {
+        this.play();
+      }
     }
   },
 

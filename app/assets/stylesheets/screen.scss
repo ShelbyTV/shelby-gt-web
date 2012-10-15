@@ -1,29 +1,29 @@
 @import "base";
 @import "base-mixin";
 
-@import 
-		"partials/fonts",
-		"partials/h5bp", 
-		"partials/modules",	
-		"partials/icons",
-		
-		"partials/app.html",
-		"partials/banner_notification",
-		"partials/app-header",
-		"partials/guide-presentation-selector",
-		"partials/guide-overlay-view",
+@import
+    "partials/fonts",
+    "partials/h5bp",
+    "partials/utilities",
+    "partials/modules",
+    "partials/icons",
 
-    "partials/landing-page",
+    "partials/app.html",
+    "partials/banner_notification",
+    "partials/app-header",
+    "partials/guide-presentation-selector",
+    "partials/guide-overlay-view",
 
-		"partials/explore",
-		"partials/onboarding",
+    "partials/explore",
+    "partials/onboarding",
     "partials/action",
 
     "partials/isolated-roll",
 
-    "partials/stream",
+    "partials/empty-indicator",
     "partials/frame",
     "partials/video-player",
+    "partials/external-tools",
     "partials/notifications",
 
     "partials/roll-header",
@@ -46,6 +46,7 @@
 
     "partials/avatar_uploading",
 
+    "partials/in-line-notification",
     "partials/load-more",
 
     "partials/context-overlay",

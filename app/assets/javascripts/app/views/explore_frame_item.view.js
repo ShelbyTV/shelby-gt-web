@@ -1,7 +1,7 @@
 libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
-    'click .js-explore-frame-thumbnail'       : '_displayVideo',
+    'click .js-play-explore-frame'            : '_displayVideo',
     'click .js-queue-command:not(.js-queued)' : '_queueVideo',
     'click .js-roll-command'                  : '_displayRollVideo'
   },
@@ -19,7 +19,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   template : function(obj){
-    return JST['explore-frame-item'](obj);
+    return SHELBYJST['explore-frame-item'](obj);
   },
 
   render : function(){
@@ -64,7 +64,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _updateQueueButton : function(itemQueued) {
     var buttonText = itemQueued ? 'Queued' : 'Queue';
-    this.$('.js-queue-command').toggleClass('queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
+    this.$('.js-queue-command').toggleClass('button_gray-light queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
   }
 
 });

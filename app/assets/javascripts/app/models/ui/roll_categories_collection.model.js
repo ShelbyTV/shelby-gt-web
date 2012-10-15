@@ -8,9 +8,20 @@ libs.shelbyGT.RollCategoriesCollectionModel = libs.shelbyGT.ShelbyBaseModel.exte
       collectionType : 'libs.shelbyGT.RollCategoriesCollection'
     }
   ],
-
+  
   url : function() {
-    return shelby.config.apiRoot + '/roll/explore';
+    return shelby.config.apiRoot + '/roll/featured' + this._queryParams();
+  },
+  
+  _queryParams : function(){
+    var queryParams = [];
+    if(this.get('segment')) queryParams.push('segment='+this.get('segment'));
+    
+    if(queryParams.length > 0) {
+      return "?"+queryParams.join("&");
+    } else {
+      return "";
+    }
   },
 
   parse : function(response) {

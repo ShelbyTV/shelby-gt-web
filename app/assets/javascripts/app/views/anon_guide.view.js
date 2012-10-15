@@ -4,7 +4,7 @@
     events : {},
 
     template : function(obj){
-      return JST['anon-guide'](obj);
+      return SHELBYJST['anon-guide'](obj);
     },
 
     initialize : function(){

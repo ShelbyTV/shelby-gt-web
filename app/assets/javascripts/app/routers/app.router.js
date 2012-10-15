@@ -38,7 +38,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 		shelby.models.notificationState = new libs.shelbyGT.notificationStateModel();
 		
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
-    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel();
+    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
+    shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
+    shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
+
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -68,6 +71,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           }
           shelby.models.rollFollowings.fetch();
           libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect();
+          shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
         }
