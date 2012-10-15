@@ -46,6 +46,19 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
+group :production do
+  gem "therubyracer"
+  gem "uglifier"
+end
+group :development do
+  gem 'capistrano-unicorn', :require => false
+end
+
+#
+# ----------- Web Server
+#
+gem 'unicorn'
 
 #
 # ---------- Error Monitoring

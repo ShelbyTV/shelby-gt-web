@@ -19,21 +19,39 @@ ssh_options[:forward_agent] = true
 
 
 #############################################################
-#	Passenger
+#	Bundler
 #############################################################
 
-namespace :deploy do
- task :start do ; end
- task :stop do ; end
- task :restart, :roles => :app, :except => { :no_release => true } do
-   run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
- end
+namespace :bundler do
+  task :symlink, :roles => :app do
+    shared_dir = File.join(shared_path, 'bundle')
+    release_dir = File.join(current_release, '.bundle')
+    run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
+  end
+
+  task :bundle_new_release, :roles => :app do
+    bundler.symlink
+    run "cd #{release_path} && bundle install --without test"
+  end
+
+  task :lock, :roles => :app do
+    run "cd #{current_release} && bundle lock;"
+  end
+
+  task :unlock, :roles => :app do
+    run "cd #{current_release} && bundle unlock;"
+  end
+end
+
+after "deploy:update_code" do
+ bundler.bundle_new_release
 end
 
 #############################################################
 #	Multistage Deploy via capistrano-ext
 #############################################################
 
-set :stages, %w(production iso_roll)
+set :stages, %w(production staging iso_roll)
 set :default_stage, 'production'
 require 'capistrano/ext/multistage'
+require 'capistrano-unicorn'
