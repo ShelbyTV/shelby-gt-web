@@ -1,0 +1,22 @@
+$roundies-type : normal !default;
+
+@mixin roundies($roundies-type){
+  @if $roundies-type == normal {
+    border-radius: $radius;
+  }
+  @else if $roundies-type == input {
+    border-radius: $radius - 2;
+  }
+  @else if $roundies-type == header {
+    border-radius: $radius $radius 0 0;
+  }
+  @else if $roundies-type == footer {
+    border-radius: 0 0 $radius $radius;
+  }
+  @else if $roundies-type == left {
+    border-radius: $radius 0 0 $radius;
+  }
+  @else if $roundies-type == right {
+    border-radius: 0 $radius $radius 0;
+  }
+}

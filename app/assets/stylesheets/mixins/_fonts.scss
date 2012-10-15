@@ -1,0 +1,11 @@
+@mixin basefont{
+  font:100 normal 62.5%/1.231 Arial,sans-serif;
+}
+
+@mixin inputfont{
+  font:300 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
+
+@mixin buttonfont{
+  font:700 normal 100%/1.231 'Ubuntu',Trebuchet MS,sans-serif;
+}
