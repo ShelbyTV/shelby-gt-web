@@ -1,0 +1,23 @@
+$bg-color: $nav-dropdown-bg !default;
+@mixin fin($bg-color) {
+  &:after {
+    @include rotate(45deg);
+
+    background: $bg-color;
+    content: "\0020";
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 24px;
+    top: -5px;
+    width: 10px;
+  }
+}
+
+@mixin bottom-fin($bg-color) {
+  @include fin($bg-color);
+  &:after {
+    top: auto;
+    bottom: -5px;
+  }
+}

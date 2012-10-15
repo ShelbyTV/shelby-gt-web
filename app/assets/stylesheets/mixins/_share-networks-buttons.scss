@@ -1,0 +1,12 @@
+@mixin share-networks-buttons{
+  button {
+    @extend .notype;
+    @include roundies(input);
+
+    background-color: $networks-unselected;
+    border: 1px solid adjust-lightness($networks-unselected, -5%);
+    display: block;
+    height: 34px;
+    width: 34px;
+  }
+}

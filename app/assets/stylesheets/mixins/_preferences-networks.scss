@@ -1,0 +1,17 @@
+$preferences-network : twitter !default;
+
+@mixin preferences-networks($network){
+  @if $network == twitter {
+    @include background(url($icon-social-twitter) no-repeat center center $twitter-blue);
+    border:1px solid adjust-lightness($twitter-blue, -20%);
+  }
+  @else if $network == tumblr {
+    @include background(url($icon-social-tumblr) no-repeat center center $tumblr-blue);
+    border:1px solid adjust-lightness($tumblr-blue, -5%);
+  }
+  @else if $network == facebook {
+    @include background(url($icon-social-facebook) no-repeat center center $facebook-blue);
+    border:1px solid adjust-lightness($facebook-blue, -5%);
+  }
+    box-shadow:inset 0px 1px 0px 0px $highlight;
+}
