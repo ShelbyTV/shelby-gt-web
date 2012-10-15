@@ -191,7 +191,7 @@ body.facebook-genius{
     /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
     #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 83%!important; }
   }
-  .full-width {
+  .hide-guide {
     .videoplayer-viewport{ height: 100%; }
     #video-controls { bottom: 0; width: 100%;}
   }
