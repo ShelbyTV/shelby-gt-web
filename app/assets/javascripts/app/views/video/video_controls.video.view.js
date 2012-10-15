@@ -257,9 +257,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      $('.js-main-layout .js-guide').removeClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      $('.js-main-layout .js-guide').addClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
 
