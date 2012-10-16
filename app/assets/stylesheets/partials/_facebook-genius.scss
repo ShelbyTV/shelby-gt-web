@@ -7,14 +7,19 @@ body.facebook-genius{
   .landing-shelf-header {
     text-align:center; 
     font-weight: 400;
+    font-size:2em;
   }
   .top-header { font-size: 2.0em; }
   h2.landing-shelf-subheader { 
     width: 80%;
     text-align: center;
     font-weight: 300;
+    margin:0px auto;
   }
-  .landing-shelf form{ margin-top: 20px; }
+  .landing-shelf form{ 
+    margin: 50px 90px 0px;
+    width: 920px;
+  }
   .landing-form-input {
     width: 65%;
     margin-right: 10px;
@@ -46,6 +51,7 @@ body.facebook-genius{
     .landing-shelf-lining { width: 85%; }
     .landing-shelf-header {
       margin-left: -50px;
+      font-size:2em;
     }
   }
   
