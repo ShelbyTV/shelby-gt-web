@@ -21,7 +21,7 @@ ssh_options[:forward_agent] = true
 #	Multistage Deploy via capistrano-ext
 #############################################################
 
-set :stages, %w(production staging iso_roll)
+set :stages, %w(staging production)
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 require 'capistrano-unicorn'
