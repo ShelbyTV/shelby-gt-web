@@ -19,6 +19,9 @@ $active-list-item: $shelby-blue;
     .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
+    .menu_module {
+      display: block;
+    }
   }
 }
 
