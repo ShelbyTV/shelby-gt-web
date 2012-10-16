@@ -1,4 +1,6 @@
 $landing-page-shelf-background:  #2e2e2e;
+$landing-page-shelf-background: #ccc;
+
 /* non-programatic changes to app display */
 body.facebook-genius{
   // landing page //
@@ -6,21 +8,22 @@ body.facebook-genius{
     text-align:center; 
     font-weight: 400;
   }
+  .top-header { font-size: 3.0em; }
   h2.landing-shelf-subheader { 
     width: 100%;
     text-align: center;
     font-weight: 300;
   }
+  .landing-shelf form{ margin-top: 20px; }
   .landing-form-input {
     width: 85%;
-    margin-top: 20px;
     @include roundies(input);
   }
   .landing-form-submit {
     @include button-primer(#3B5998);
     @include roundies(input);
-
-    border: 1px solid adjust-lightness($landing-page-shelf-background, -25%);
+    height: 45px;
+    border: 1px solid black;
   }
   
   #js-genius-search-submit {
@@ -58,6 +61,7 @@ body.facebook-genius{
 
   // lists on the shelf
   .landing-shelf {
+    @include gradient-primer($landing-page-shelf-background);
     ul {
       list-style-type: none;
       margin: 0;
@@ -218,7 +222,7 @@ body.connected {
   .fb-login-button { display: none; }
 }
 
-body.not_authorized { 
+body.not-authorized { 
   #searches-from-likes { display:none; }
 }
 
