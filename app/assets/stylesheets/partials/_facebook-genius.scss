@@ -225,7 +225,10 @@ body.connected {
 }
 
 body.not-authorized { 
-  #searches-from-likes { display:none; }
+  #searches-from-likes { 
+    display:none;
+    height: 260px;
+  }
 }
 
 section.fb-genius {
