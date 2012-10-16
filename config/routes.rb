@@ -1,8 +1,8 @@
 ShelbyGtWeb::Application.routes.draw do
 
   get '/genius' => 'genius#index'
-  get '/fb_genius' => 'home#facebook_genius_index'
-  post '/fb_genius' => 'home#facebook_genius_index'
+  get '/fb_genius' => 'facebook_genius#index'
+  post '/fb_genius' => 'facebook_genius#index'
   
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#search', :as => :mobile_search

@@ -33,7 +33,6 @@
 		// Event subscriptions
 		FB.Event.subscribe('auth.login',
 		    function(r) {
-						console.log(r);
 						doWhenLoggedIntoFB(FB);
 		    }
 		);
@@ -60,9 +59,7 @@
 		$('body').removeClass('not-authorized');
 		FB.api('/me?fields=id,name,likes.fields(name)', function(r){
 			for (var L in r.likes.data) {
-				if (L <= 10){
-					$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
-				}
+				$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
 			}
 		});
 		FB.api('/me', function(r){

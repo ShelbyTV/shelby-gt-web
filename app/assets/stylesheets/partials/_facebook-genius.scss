@@ -8,7 +8,7 @@ body.facebook-genius{
     text-align:center; 
     font-weight: 400;
   }
-  .top-header { font-size: 3.0em; }
+  .top-header { font-size: 2.0em; }
   h2.landing-shelf-subheader { 
     width: 100%;
     text-align: center;
@@ -67,6 +67,8 @@ body.facebook-genius{
       margin: 0;
       padding: 0;
       text-align: left;
+      height: 290px;
+      overflow-y: scroll;
     }
     li {
       &a {
