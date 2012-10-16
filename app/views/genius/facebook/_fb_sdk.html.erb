@@ -59,11 +59,13 @@
 		$('body').removeClass('not-authorized');
 		FB.api('/me?fields=id,name,likes.fields(name)', function(r){
 			for (var L in r.likes.data) {
-				$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
+				if (L <= 10){
+					$('ul#searches-from-likes').append('<li><a href="#">'+r.likes.data[L]['name']+'</a></li>');
+				}
 			}
 		});
 		FB.api('/me', function(r){
-			$('.login-area .landing-shelf-header').text("Hi "+r.first_name+"! See what video Shelby Genius finds from your likes and interests:");
+			$('.login-area .landing-shelf-header').text("Hi "+r.first_name+"! See what video Shelby Genius finds from things you like:");
 		});
 	};
 </script>

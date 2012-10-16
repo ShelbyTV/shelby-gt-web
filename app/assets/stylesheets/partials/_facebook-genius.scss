@@ -10,20 +10,21 @@ body.facebook-genius{
   }
   .top-header { font-size: 2.0em; }
   h2.landing-shelf-subheader { 
-    width: 100%;
+    width: 80%;
     text-align: center;
     font-weight: 300;
   }
   .landing-shelf form{ margin-top: 20px; }
   .landing-form-input {
-    width: 85%;
+    width: 65%;
+    margin-right: 10px;
     @include roundies(input);
   }
   .landing-form-submit {
     @include button-primer(#3B5998);
     @include roundies(input);
     height: 45px;
-    border: 1px solid black;
+    border: 1px solid #3B5998;
   }
   
   #js-genius-search-submit {
@@ -42,7 +43,10 @@ body.facebook-genius{
     width: 50%;
     height: 400px;
     border-right: 1pt solid adjust-lightness($landing-page-shelf-background, -15%);
-    .landing-shelf-lining { width: 75%; }
+    .landing-shelf-lining { width: 85%; }
+    .landing-shelf-header {
+      margin-left: -50px;
+    }
   }
   
   .previous-search-area {
@@ -67,8 +71,6 @@ body.facebook-genius{
       margin: 0;
       padding: 0;
       text-align: left;
-      height: 290px;
-      overflow-y: scroll;
     }
     li {
       &a {
@@ -227,7 +229,6 @@ body.connected {
 body.not-authorized { 
   #searches-from-likes { 
     display:none;
-    height: 260px;
   }
 }
 
