@@ -1,0 +1,26 @@
+//---------------------------
+//  media module, what up!
+//  thanks to @stubbornella.
+//---------------------------
+
+.media_module {
+  margin : $media-module-margin;
+  position : relative;
+}
+
+.media_body,
+.media_image {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media_image {
+  float: left;
+  margin-right: 10px;
+}
+
+.media_body {
+  p {
+    margin: 0 0 .5em 0;
+  }
+}

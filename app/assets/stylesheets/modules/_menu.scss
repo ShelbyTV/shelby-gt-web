@@ -1,0 +1,39 @@
+//---------------------------
+//  modular menu framework
+//  menu appears in the frame
+//---------------------------
+
+.menu_module {
+  display: none;
+}
+
+.menu_list,
+.menu_sublist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu_sublist {
+  display: none;
+  width: 106px;
+}
+
+.menu_item:hover {
+  .menu_sublist{
+    display: block;
+  }
+}
+
+.menu_item {
+  float: left;
+
+  &.right {
+    float: right;
+    //float LI to the right
+    text-align: right;
+    //child el (button) is display:inline by default,
+    //this is like a fake float right
+    //makes the sublist margin effective.
+  }
+}

@@ -1,0 +1,8 @@
+//---------------------------
+//  animation module
+//---------------------------
+
+.animate_module,
+.animate-easein {
+  @include animate;
+}

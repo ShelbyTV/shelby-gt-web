@@ -1,0 +1,19 @@
+//---------------------------
+//  TODO: fix this list shit
+//---------------------------
+.list,
+.rolls-list,
+.form-rolls-list,
+.existing-rolls-list > ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+    &:first-child {
+      .frame {
+        border-top: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@mixin font-primer($font-usage){
+    line-height: 1.231;
+    font-family: 'Ubuntu',Trebuchet MS,sans-serif;
+
+  @if $font-usage == basefont {
+    font-size: 62.5%;
+    font-weight:100;
+  }
+  @else if $font-usage == inputfont {
+    font-size: 100%;
+    font-weight:300;
+  }
+  @else if $font-usage == buttonfont {
+    font-size: 100%;
+    font-weight:700;
+  }
+}

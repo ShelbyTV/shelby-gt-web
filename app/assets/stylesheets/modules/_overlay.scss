@@ -1,0 +1,22 @@
+//---------------------------
+//  modular overlay framework
+//
+//    two main parts:
+//    header and body.
+//    this abstraction is a primer for
+//    the content separation.
+//
+//    *used for any overlay,
+//     that slides over the guide
+//---------------------------
+.overlay_header {
+  height: $overlay_header_height;
+}
+
+.overlay_body {
+  bottom: 0;
+  position: absolute;
+  overflow-y: auto;
+  top: $overlay_header_height;
+  width: 100%;
+}
