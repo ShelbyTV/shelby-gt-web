@@ -16,10 +16,6 @@ describe("FrameGroupView", function() {
     it("should create an <li> el", function() {
       expect(this.view.el.nodeName).toEqual("LI");
     });
-    
-    it("should create an el with class 'frame'", function() {
-      expect(this.view.$el).toHaveClass('frame');
-    });
   });
 
   xdescribe("Rendering", function() {
