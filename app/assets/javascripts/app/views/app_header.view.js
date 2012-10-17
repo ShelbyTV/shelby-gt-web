@@ -90,7 +90,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
   
   _showFBHome : function(){
-    document.location.href = shelby.config.fbAppUrl+'/fb_genius';
+    document.location.href = shelby.config.fbAppUrl+'/fb/genius';
   },
 
   _showUserPreferences : function(){

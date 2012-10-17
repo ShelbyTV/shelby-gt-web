@@ -281,7 +281,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
         picture: _frame.get('video').get('thumnail_url'),
         description: _frame.get('video').get('description'),
-        caption: ' a shelby genius video '
+        caption: ':: a shelby genius video ::'
       },
       function(response) {
         if (response && response.post_id) {
@@ -300,7 +300,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
       picture: _frame.get('video').get('thumnail_url'),
       description: _frame.get('video').get('description'),
-      caption: ' a shelby genius video '
+      caption: ':: a shelby genius video ::'
     });
   },
 

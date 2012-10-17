@@ -119,11 +119,11 @@ class HomeController < ApplicationController
     end
     
     def get_genius_roll_id_from_path(path)
-      return @roll_id[1] if @roll_id = /fb_genius\/roll\/(\w*)/i.match(path)
+      return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
     end
     
     def is_from_fb_genius_frame_share(path)
-      /fb_genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
+      /fb\/genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
     end
     
     def get_info_for_meta_tags(path)

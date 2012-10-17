@@ -45,15 +45,6 @@
 		*/
   };
 
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
-
 	var doWhenLoggedIntoFB = function(FB){
 		$('body').addClass('connected');
 		$('body').removeClass('not-authorized');
@@ -68,4 +59,13 @@
 			$('.login-area .landing-shelf-header').text("Hi "+r.first_name+"! See what video Shelby Genius finds from things you like:");
 		});
 	};
+	
+	// Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
 </script>
