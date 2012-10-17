@@ -294,6 +294,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   requestFBSendUI : function(e) {
     var _frame = this.model.get('frames').models[0];
+    console.log(_frame);
     FB.ui({
       method: 'send',
       name: _frame.get('video').get('title'),
