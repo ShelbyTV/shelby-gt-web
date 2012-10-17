@@ -7,7 +7,7 @@
 		
 		<div class="landing-shelf-share-content" style="padding-top:0px;">
 			<h1>
-				Your friend found this searching for "<%= URI.unescape(@roll['title'][8..-1]) %>"
+				Your friend found this searching for: <%= link_to "#{URI.unescape(@roll['title'][8..-1])}", "/fb_genius/roll/#{@roll['id']}", :class => "genius-roll-link" %>
 			</h1>
 			
 			<hr />
@@ -18,7 +18,7 @@
 		
 		<div id="landing-page-search-area">
 			<button class="cta">
-				<a href="/fb_genius">WHAT WILL YOU FIND?</a>
+				<a href="/fb_genius">What will you find?</a>
 			</button>	
 		</div>
 

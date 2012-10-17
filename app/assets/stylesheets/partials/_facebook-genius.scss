@@ -258,9 +258,12 @@ section.fb-genius {
     float: left; 
   }
 
-  .landing-shelf-lining { width: 1000px; }
+  .landing-shelf-lining { max-width: 1000px; }
   .landing-form-input { width: 85%; }
-
+  .genius-roll-link {
+    font-weight: 400;
+    color: blue;
+  }
 }
 
 body.loading {
