@@ -279,7 +279,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         method: 'feed',
         name: _frame.get('video').get('title'),
         link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
-        picture: _frame.get('video').get('thumnail_url'),
+        picture: _frame.get('video').get('thumbnail_url'),
         description: _frame.get('video').get('description'),
         caption: ':: a shelby genius video ::'
       },
@@ -294,12 +294,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   requestFBSendUI : function(e) {
     var _frame = this.model.get('frames').models[0];
-    console.log(_frame);
     FB.ui({
       method: 'send',
       name: _frame.get('video').get('title'),
       link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
-      picture: _frame.get('video').get('thumnail_url'),
+      picture: _frame.get('video').get('thumbnail_url'),
       description: _frame.get('video').get('description'),
       caption: ':: a shelby genius video ::'
     });
