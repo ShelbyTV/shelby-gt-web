@@ -12,5 +12,5 @@ role :app, "50.56.123.73"
 #############################################################
 
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
-set :branch, "unicorn-for-staging"
+set :branch, "staging"
 set :rails_env, "staging"
