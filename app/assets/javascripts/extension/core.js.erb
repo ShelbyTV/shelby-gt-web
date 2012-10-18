@@ -870,9 +870,9 @@ window.shelbyBookmarklet = {
                     shelbyJ(".shelby-notify").on("click", ".notify-cancel", function() {
                           shelbyJ('.shelby-notify').remove();
                     });
-                    // setTimeout(function() {
-                    //       shelbyJ('.shelby-notify').remove();
-                    //     }, 10000);
+                    setTimeout(function() {
+                          shelbyJ('.shelby-notify').remove();
+                        }, 10000);
                     },
 
                 notifyQueued: function() {
