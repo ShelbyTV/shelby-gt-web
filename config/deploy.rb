@@ -22,6 +22,5 @@ ssh_options[:forward_agent] = true
 #############################################################
 
 set :stages, %w(staging production)
-set :default_stage, 'staging'
+set :default_stage, 'production'
 require 'capistrano/ext/multistage'
-require 'capistrano-unicorn'
