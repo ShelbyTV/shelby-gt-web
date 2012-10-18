@@ -316,6 +316,9 @@
 .video-card-context,
 .embedded-controls {
   li {
+    font-size: 13px;
+    font-family: $font-family;
+
     &:first-child {
       border-radius: 5px 0 0 0;
 
@@ -378,6 +381,7 @@
 
 .queue-button,
 .roll-button {
+  background-color: transparent;
   padding-left: 1.3em;
 }
 
