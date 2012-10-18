@@ -32,6 +32,9 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
+      this.renderChild(new libs.shelbyGT.InviteFormView({
+        el: this.$('.js-invite-section-lining')
+      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -123,9 +126,8 @@
     },
     
     _adjustForAnonymousUser : function(){
-      //hide the settings
       this.$('.js-guide-settings').hide();
-      
+      this.$('.js-guide-invite').hide();
     }
 
   });

@@ -98,6 +98,19 @@
 }
 
 //---------------------------
+//  invite panel
+//---------------------------
+.invite-section-lining {
+  @include fin(#e2e2e2);
+
+  background-color: $base;
+  box-shadow: 0px 0px 5px 0px black;
+  margin-top: 5px;
+  text-align: left;
+  width: 300px;
+}
+
+//---------------------------
 //  settings panel
 //---------------------------
 
