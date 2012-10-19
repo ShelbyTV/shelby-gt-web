@@ -8,6 +8,9 @@ development:
 test:
   <<: *defaults
 
+staging:
+  <<: *defaults
+
 production: &production
   <<: *defaults
   

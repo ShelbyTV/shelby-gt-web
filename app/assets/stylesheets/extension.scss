@@ -36,6 +36,13 @@
           "bookmarklet-overwrite";
   
   font-size: 11px;
+
+  * {
+    background-image: none;
+    background-color: transparent;
+    font-size: 1em;
+    text-shadow: none;
+  }
   
   ul, ol {
     padding: 0;

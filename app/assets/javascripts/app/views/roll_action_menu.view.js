@@ -86,8 +86,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _updateJoinButton : function(){
-    console.log('update follow button?');
-
     var currentRollModel = this.model.get('currentRollModel');
     if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel)){
       this.$('.js-roll-add-leave-button').hide();
