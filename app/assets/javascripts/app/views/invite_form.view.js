@@ -21,7 +21,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
 
     this.model.save({
       to : this.$('.js-invite-email').val(),
-      body : this.$('.js-invite-message').text()
+      body : this.$('.js-invite-message').val()
     },{
       success : function(){
         self.$el.hide();

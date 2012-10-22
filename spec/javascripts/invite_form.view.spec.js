@@ -40,7 +40,8 @@ describe("InviteFormView", function() {
     });
 
     it ("Should render the invite message from the model", function() {
-      expect(this.view.$('textarea')).toHaveText(this.model.get('body'));
+      expect(this.view.$('textarea')).toHaveText('Here is some body text.');
+      expect(this.view.$('textarea')).toHaveValue('Here is some body text.');
     });
 
     it ("Should render the inviting user's name in the message subject", function() {
@@ -67,14 +68,33 @@ describe("InviteFormView", function() {
 
     describe("click .js-send-invite", function() {
 
-      it("should send the invite", function() {
-        var modelSaveStub = sinon.stub(this.model, 'save');
-        this.view.$('.js-send-invite').click();
-        expect(modelSaveStub).toHaveBeenCalledWith({
-          to: "newemail@address.com",
-          body: 'Here is some body text.'
+      describe("Send invite with correct form input", function() {
+
+        beforeEach(function() {
+          this.modelSaveStub = sinon.stub(this.model, 'save');
         });
-        modelSaveStub.restore();
+
+        afterEach(function() {
+          this.modelSaveStub.restore();
+        });
+
+        it("should send the invite", function() {
+          this.view.$('.js-send-invite').click();
+          expect(this.modelSaveStub).toHaveBeenCalledWith({
+            to: "newemail@address.com",
+            body: 'Here is some body text.'
+          });
+        });
+
+        it("should send the invite with custom message", function() {
+          this.view.$('.js-invite-message').val('The user typed this message.');
+          this.view.$('.js-send-invite').click();
+          expect(this.modelSaveStub).toHaveBeenCalledWith({
+            to: "newemail@address.com",
+            body: 'The user typed this message.'
+          });
+        });
+
       });
 
       beforeEach(function() {
