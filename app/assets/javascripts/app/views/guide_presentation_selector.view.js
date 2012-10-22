@@ -33,7 +33,7 @@
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
       this.renderChild(new libs.shelbyGT.InviteFormView({
-        el : this.$('.js-invite-section'),
+        el : this.$('.js-guide-invite'),
         model : new libs.shelbyGT.InviteModel(),
         user : shelby.models.user
       }));

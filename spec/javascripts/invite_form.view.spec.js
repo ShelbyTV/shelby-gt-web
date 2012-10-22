@@ -3,7 +3,7 @@ describe("InviteFormView", function() {
     shelby.config = {
       apiRoot : ''
     };
-    setFixtures('<div class="js-invite-section"></div>');
+    setFixtures('<div class="js-guide-invite"></div>');
     this.user = new Backbone.Model({
       name : 'Jan Novak'
     });
@@ -12,25 +12,26 @@ describe("InviteFormView", function() {
       body : 'Here is some body text.'
     });
     this.view = new libs.shelbyGT.InviteFormView({
-      el : '.js-invite-section',
+      el : '.js-guide-invite',
       model : this.model,
       user : this.user
     });
   });
 
   describe("Instantiation", function() {
-    it("should attach to the element with class 'js-invite-section'", function() {
-      expect(this.view.$el).toHaveClass('js-invite-section');
+    it("should attach to the element with class 'js-guide-invite'", function() {
+      expect(this.view.$el).toHaveClass('js-guide-invite');
     });
-  });
-
-  beforeEach(function() {
-      this.view.render();
   });
 
   describe("Rendering", function() {
 
+    beforeEach(function() {
+      this.view.render();
+    });
+
     it ("Should contain all the elements we need", function() {
+      expect(this.view.$el).toContain('.js-invite');
       expect(this.view.$el).toContain('form.form_module.invite-form');
       expect(this.view.$el).toContain('textarea');
       expect(this.view.$el).toContain('.js-send-invite');
@@ -63,12 +64,13 @@ describe("InviteFormView", function() {
   describe("Events", function() {
 
     beforeEach(function() {
+      this.view.render();
       this.view.$('.js-invite-email').val("newemail@address.com");
     });
 
     describe("click .js-send-invite", function() {
 
-      describe("Send invite with correct form input", function() {
+      describe("Pre send and send actions", function() {
 
         beforeEach(function() {
           this.modelSaveStub = sinon.stub(this.model, 'save');
@@ -95,36 +97,59 @@ describe("InviteFormView", function() {
           });
         });
 
-      });
+        it("should add a class to keep the drop down open", function() {
+          expect(this.view.$el).not.toHaveClass('dropdown_module--stay-open');
+          this.view.$('.js-send-invite').click();
+          expect(this.view.$el).toHaveClass('dropdown_module--stay-open');
+        });
 
-      beforeEach(function() {
-        this.fixture = this.ajaxFixtures.Invite.valid;
-        this.server = sinon.fakeServer.create();
-        this.server.respondWith(shelby.config.apiRoot + '/beta_invite', this.validResponse(this.fixture));
-        sinon.stub(Browser,'supportsCORS').returns(true);
-        this.view.$('.js-send-invite').click();
-      });
-
-      afterEach(function() {
-        this.server.restore();
-        Browser.supportsCORS.restore();
       });
 
       describe("on success", function() {
 
-        it("should hide the dialog", function() {
-          expect(this.view.$el).toBeVisible();
-          this.server.respond();
-          expect(this.view.$el).not.toBeVisible();
+        beforeEach(function() {
+          this.fixture = this.ajaxFixtures.Invite.valid;
+          this.server = sinon.fakeServer.create();
+          this.server.respondWith(shelby.config.apiRoot + '/beta_invite', this.validResponse(this.fixture));
+          sinon.stub(Browser,'supportsCORS').returns(true);
+          clock = sinon.useFakeTimers();
+          this.view.$('.js-send-invite').click();
         });
 
-        it("should clear the email field", function() {
-          expect(this.view.$('.js-invite-email')).toHaveValue("newemail@address.com");
+        afterEach(function() {
+          this.server.restore();
+          Browser.supportsCORS.restore();
+          clock.restore();
+        });
+
+        it("should replace invite form contents with success feedback", function() {
           this.server.respond();
-          expect(this.view.$('.js-invite-email')).toHaveValue("");
+          expect(this.view.$el).toContain('h3.invite-success');
+        });
+
+        describe("after timeout", function() {
+
+          it("should remove the class that keeps the dialog open", function() {
+            expect(this.view.$el).toHaveClass('dropdown_module--stay-open');
+            this.server.respond();
+            clock.tick(1500);
+            expect(this.view.$el).not.toHaveClass('dropdown_module--stay-open');
+          });
+
         });
 
       });
+    });
+
+    describe("mouseleave", function() {
+
+      it("should re-render", function() {
+        var renderSpy = sinon.spy(this.view, "render");
+        this.view.$el.mouseleave();
+        expect(renderSpy).toHaveBeenCalled();
+        renderSpy.restore();
+      });
+
     });
   });
 });

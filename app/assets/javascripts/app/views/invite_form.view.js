@@ -1,7 +1,8 @@
 libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
 
   events: {
-    "click .js-send-invite" : "_sendInvite"
+    "click .js-send-invite" : "_sendInvite",
+    "mouseleave" : "_onMouseLeave"
   },
 
   template : function(obj){
@@ -24,15 +25,27 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
 
     var self = this;
 
+    //hold the dropdown open until the ajax has finshed and we've given the user feedback on their action
+    this.$el.addClass('dropdown_module--stay-open');
+
     this.model.save({
       to : this.$('.js-invite-email').val(),
       body : this.$('.js-invite-message').val()
     },{
       success : function(){
-        self.$el.hide();
-        self.$('.js-invite-email').val("");
+        //show some feedback on the invite being successfully sent
+        self.$('.js-invite-form').html(SHELBYJST['invite-form-feedback']);
+        //after a short delay, allow the dropdown to close
+        setTimeout(function(){
+          self.$el.removeClass('dropdown_module--stay-open');
+        }, 1500);
       }
     });
+  },
+
+  _onMouseLeave : function(){
+    // re-render so we're ready to display the next time the drop down gets opened
+    this.render();
   }
 
 });
