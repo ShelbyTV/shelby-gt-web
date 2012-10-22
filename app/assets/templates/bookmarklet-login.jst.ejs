@@ -12,14 +12,14 @@
 </div><!-- eo .guide-overlay-head.rolling-header -->
 
 <div class="overlay_body guide-overlay-body rolling-body">
-	
+
 	<div class="login-explanation">
 		<p>Nice, you have Shelby Video Radar installed!</p>
 		<p>Just need you to login before we can detect video...</p>
 	</div>
-	
+
 	<hr />
-	
+
 	<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>?redir=<%= window.location.href %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
 		<fieldset class="">
 			<label for="username" class="form_label">Username</label>
@@ -33,17 +33,22 @@
 			<input name="commit" type="submit" value="Login" class="login-submit" />
 		</fieldset>
 	</form>
-	
-	<hr />
-	
-	<div class="clearfix">
-	  <a class="bookmarklet-login-twitter" target="_blank" href="<%=twitterDomain%>">
-	    Login with Twitter
-	  </a>
 
-	  <a class="bookmarklet-login-facebook" target="_blank" href="<%=facebookDomain%>">
-	    Login with Facebook
-	  </a>
-	</div>
-	
+	<hr />
+
+  <div class="clearfix" style="text-align: center;">
+    <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
+      href="<%= twitterDomain %>" location="<%= twitterDomain %>" popup-width="600" popup-height="700">
+      <i class="button_icon_left icon_share_twitter_on icon">
+        Twitter
+      </i>
+    </a>
+
+    <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook"
+      href="<%= facebookDomain %>" location="<%=facebookDomain %>" popup-width="1000" popup-height="650">
+      <i class="button_icon_left icon_share_facebook_on icon">
+        Facebook
+      </i>
+    </a>
+  </div>
 </div><!-- eo guide-overlay-body.rolling-body -->
