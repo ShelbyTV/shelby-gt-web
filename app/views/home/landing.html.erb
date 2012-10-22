@@ -118,7 +118,8 @@
       <% end %>
     <% end %>
     <%= render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => (!@share_type or !@video)} %>
-    <%= render :partial => "/home/shelf/private_beta" unless @share_type and @video %>
+    <%= render :partial => "/home/shelf/private_beta" unless (@share_type and @video) || @invite_id %>
+    <%= render :partial => "/home/shelf/invite" if @invite_id %>
     <% #------------ /Shelf Content --------------- %>
 
     <footer class="landing-footer">

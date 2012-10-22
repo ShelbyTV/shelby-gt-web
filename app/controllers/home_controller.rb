@@ -54,6 +54,16 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles invite landing page
+  #
+  # GET /invite/:invite_id
+  #
+  def invite
+    @invite_id = params[:invite_id]
+    render '/home/landing'
+  end
+
+  ##
   # Handles explore view when visited directly (allowing logged-out users to see it)
   #
   # GET /explore

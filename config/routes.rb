@@ -31,6 +31,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
   get '/isolated_roll/:roll_id' => 'roll#show_isolated_roll'
 
+  # INVITES
+  get '/invite/:invite_id' => "home#invite"
+
   # HOME
   get '/explore' => "home#explore"
   get '/signout' => "home#signout", :as => :signout
