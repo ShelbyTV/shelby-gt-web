@@ -1,0 +1,13 @@
+@mixin x-networks-badge {
+  &:before {
+    @include roundies;
+
+    content: "\0020";
+    float:left;
+    height:24px;
+    left:0;
+    margin: 1px 5px 0 0;
+    top:0;
+    width:24px;
+  }
+}

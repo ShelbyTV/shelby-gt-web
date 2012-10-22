@@ -19,6 +19,9 @@ $active-list-item: $shelby-blue;
     .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
+    .menu_module {
+      display: block;
+    }
   }
 }
 
@@ -231,6 +234,14 @@ $active-list-item: $shelby-blue;
       }
     }
 
+    .frame-shortlink {
+      display: block;
+      font-size: 1.1em;
+      height: 29px;
+      padding: 0.6em 0.9em 0.5em;
+      width: 100%;
+    }
+
     .frame-item {
       &:first-child {
         .frame-option {
@@ -290,7 +301,7 @@ $active-list-item: $shelby-blue;
 }
 
 .command-share {
-  .command-icon {
+  .icon {
     background-image: none;
   }
 }
@@ -330,15 +341,15 @@ $active-list-item: $shelby-blue;
       display: none;
     }
   }
-  
+
   /* unplayable and collapsed */  
   &.xvideo-unplayable {
-    
+
     .xvideo-unplayable-thumbnail-overlay {
       left: 40px;
       top: 20px;
     }
-    
+
     &:hover{
       opacity: .5;
     };

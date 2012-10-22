@@ -1,0 +1,28 @@
+//------------------------------------------------------------------------------
+//  modular list framework
+//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  GROUP_LIST_MODULE is a super list
+//  for when you have nested lists.
+//
+//  LIST_MODULE handles lists in the guide
+//  lists of rolls, frame, etc.
+//
+//  (right now they're both the same.)
+////////////////////////////////////////////////////////////////////////////
+.group_list_module,
+.list_module {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list_item {
+}
+
+.list_button {
+
+  &:hover {
+    background-color: $list-item-bg-hover;
+  }
+}

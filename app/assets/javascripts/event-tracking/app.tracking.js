@@ -85,6 +85,10 @@ _(shelby).extend({
           _gaAction = "FB timeline app preference set"; _gaCategory = 'Onboarding'; _gaLabel = "Opt out";
           _kmq.push(['record', action, {nickname: options.userName} ]);
           break;
+        case 'Follow Shelby':
+          _gaAction = "Follow @Shelby"; _gaCategory = 'Onboarding'; _gaLabel = options.userName;
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
         case 'completed onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);

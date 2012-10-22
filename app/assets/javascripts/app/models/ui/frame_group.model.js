@@ -48,7 +48,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
     //remove all bindings to this frame group - if some view has a problem with that,
     //that's bad modular development and needs to be fixed
     this.unbind();
-    frame.getFirstFrame().unbind('change:last_unplayable_at', this._handleVideoPlayability, this);
+    this.getFirstFrame() && this.getFirstFrame().unbind('change:last_unplayable_at', this._handleVideoPlayability, this);
     this.get('frames').each(function(frame){
       frame.destroy();
       //remove all bindings to this frame

@@ -66,7 +66,7 @@
     },
 
 		_doRoll : function(e){
-			e.preventDefault
+			e.preventDefault;
 
       if(!this._validate()){ return; }
 
@@ -134,7 +134,7 @@
           self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
             url : newFrame.shareUrl(),
             success : function(){
-              /* noop */
+              shelby.track('shared_frame',{destination: shareDests.join(", ")});
             }
           });
         }

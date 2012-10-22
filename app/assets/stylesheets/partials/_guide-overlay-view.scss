@@ -47,8 +47,9 @@
 }
 
 .guide-overlay-cancel {
-//  @include button-primer($x-primer-color, light, guide-close);
   @include button-sizing(cancel);
+  padding:.5em;
+  vertical-align: top;
 
   .icon {
     background-size: contain;
@@ -112,17 +113,11 @@
 .guide-header-avatar {
   background-color: inherit;
   float: left;
-  margin: 10px;
+  margin-right: 10px;
 }
 
 .guide-header-title {
-  @include ellipsis();
-
-  font-weight: 500;
-  line-height: 3.0;
-  position: relative;
-  width: inherit;
-  z-index: 1;
+  margin-left: 10px;
 }
 
 .guide-overlay-context-creator {

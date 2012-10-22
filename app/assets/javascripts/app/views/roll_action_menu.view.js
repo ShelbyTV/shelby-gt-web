@@ -58,18 +58,21 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _followOrUnfollowRoll : function() {
+
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
     
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
+
+    console.log('followorunfollow',shelby.models.rollFollowings.containsRoll(currentRollModel));
+
     var $thisButton = this.$('.js-roll-add-leave-button');
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
     var isUnfollow = $thisButton.toggleClass('rolls-leave').hasClass('rolls-leave');
     var wasUnfollow = !isUnfollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
-    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').addClass('js-busy');
-
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_gray-medium',isUnfollow).addClass('js-busy');
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
     // actually do what they want, which will very likely succeed
     var clearBusyFunction = function() {
@@ -94,7 +97,8 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$('.js-roll-add-leave-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
-      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave', userFollowingRoll)
+      console.log('current role model != me');
+      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave button_gray-medium', userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
     shelby.models.guide.trigger('reposition');

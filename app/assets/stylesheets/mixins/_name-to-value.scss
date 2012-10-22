@@ -1,0 +1,13 @@
+//------------------------------------------------------------------------------
+//  $color-names and $color-values
+//  the indexes of each correspond.
+//  (Sass doesn't have multi-dimensional arrays or anything really cool,
+//  so we have to fake it by matching the indexes of two arrays.)
+//------------------------------------------------------------------------------
+@function name-to-value($name) {
+  ////////////////////////////////////////////////////////////////////////////
+  //  cool little look-up table technique lifted from D. Eppstein
+  //  https://groups.google.com/forum/#!msg/sass-lang/upr78cyrW1I/_5xLPA9yYjUJ
+  ////////////////////////////////////////////////////////////////////////////
+  @return nth($color-values, index($color-names, $name));
+}

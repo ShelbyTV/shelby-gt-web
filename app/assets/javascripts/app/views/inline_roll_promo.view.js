@@ -20,7 +20,11 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
 
   _goToRoll : function(e){
     var rollId = $(e.currentTarget).data('roll_id');
-    shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id'), {trigger:true});
+    if (shelby.models.guide.get('displayIsolatedRoll')) {
+      window.top.location.href = shelby.config.appUrl + '/roll/' + rollId;
+    } else {
+      shelby.router.navigate('roll/' + rollId, {trigger:true});
+    }
     shelby.track('Click roll promo', {id:rollId});
   }
 

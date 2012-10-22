@@ -5,6 +5,7 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
+    "click .js-videoplayer-roll"       : "_requestFrameRollView",
     "click .js-videoplayer-playback"   : "_togglePlayback",
     "click .js-videoplayer-mute"       : "_toggleMute",
     "click .js-videoplayer-hd.hd-on"   : "_hdOff",
@@ -14,8 +15,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-videoplayer-next"       : "_nextVideo",
     "click .js-videoplayer-prev"       : "_prevVideo"
   },
-
-  el: '#video-controls',
 
   _currentDuration: 0,
 
@@ -185,6 +184,13 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   // Handle user events on the player controls
   //--------------------------------------
 
+  _requestFrameRollView : function(){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+        this.options.guide.get('activeFrameModel'));
+    }
+  },
+  
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');
     if (activePlayerState) {
@@ -252,12 +258,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
       $('.js-main-layout .js-guide').removeClass("hide-guide");
-      this.$el.find('.video-player-tools').removeClass("full-width");
-      this.$el.find('.video-player-next').removeClass("full-width");
     } else {
       $('.js-main-layout .js-guide').addClass("hide-guide");
-      this.$el.find('.video-player-tools').addClass("full-width");
-      this.$el.find('.video-player-next').addClass("full-width");
     }
   },
 

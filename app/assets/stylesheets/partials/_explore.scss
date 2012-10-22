@@ -265,10 +265,10 @@
 //  displays on hover per roll item in list
 ////////////////////////////////////////////////////////////////////////////
 .guide-link-unfollow {
-  @include button-primer($shelby-gray, dark);
+  @include button-sizing;
 
   display: none;
-  margin: .8em 3em;
+  margin: .8em 1em;
   position: absolute;
   right: 0;
   top: 0;

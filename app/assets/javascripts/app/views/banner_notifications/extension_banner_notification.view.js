@@ -15,7 +15,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
     "click .js-dismiss" : "_dismissExtensionBanner",
     "click .js-tools"   : "_navigateTools"
   },
-  
+
   _height: "40px",
   
   _chromeExtensionTemplate : function(obj){
@@ -35,8 +35,7 @@ libs.shelbyGT.ExtensionBannerNotification = libs.shelbyGT.GenericBannerNotificat
   },
   
   bannerElement : function(){
-    if( Browser.isChrome() && false ){
-      // disabled until we have the extension in the chrome store
+    if( Browser.isChrome() ){
       this.$el.html(this._chromeExtensionTemplate());
     }
     else {
