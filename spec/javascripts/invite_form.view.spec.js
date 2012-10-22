@@ -62,7 +62,7 @@ describe("InviteFormView", function() {
   describe("Events", function() {
 
     beforeEach(function() {
-      this.view.$('.js-invite-email').text("newemail@address.com");
+      this.view.$('.js-invite-email').val("newemail@address.com");
     });
 
     describe("click .js-send-invite", function() {
@@ -71,8 +71,8 @@ describe("InviteFormView", function() {
         var modelSaveStub = sinon.stub(this.model, 'save');
         this.view.$('.js-send-invite').click();
         expect(modelSaveStub).toHaveBeenCalledWith({
-          to: this.view.$('.js-invite-email').text(),
-          body: this.view.$('.js-invite-message').text()
+          to: "newemail@address.com",
+          body: 'Here is some body text.'
         });
         modelSaveStub.restore();
       });
@@ -99,9 +99,9 @@ describe("InviteFormView", function() {
         });
 
         it("should clear the email field", function() {
-          expect(this.view.$('.js-invite-email')).toHaveText("newemail@address.com");
+          expect(this.view.$('.js-invite-email')).toHaveValue("newemail@address.com");
           this.server.respond();
-          expect(this.view.$('.js-invite-email')).toHaveText("");
+          expect(this.view.$('.js-invite-email')).toHaveValue("");
         });
 
       });

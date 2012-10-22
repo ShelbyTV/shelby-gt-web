@@ -20,12 +20,12 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
     var self = this;
 
     this.model.save({
-      to : this.$('.js-invite-email').text(),
+      to : this.$('.js-invite-email').val(),
       body : this.$('.js-invite-message').text()
     },{
       success : function(){
         self.$el.hide();
-        self.$('.js-invite-email').text("");
+        self.$('.js-invite-email').val("");
       }
     });
   }
