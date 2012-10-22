@@ -13,6 +13,11 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
       invite : this.model,
       user : this.options.user
     }));
+    var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({
+      el : this.$('.js-invite-email')[0],
+      includeSources : ['email']
+    });
+    this.renderChild(recipientsAutocompleteView);
   },
 
   _sendInvite : function(){
