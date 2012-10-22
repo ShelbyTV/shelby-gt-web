@@ -33,7 +33,9 @@
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
       this.renderChild(new libs.shelbyGT.InviteFormView({
-        el: this.$('.js-invite-section-lining')
+        el : this.$('.js-invite-section'),
+        model : new libs.shelbyGT.InviteModel(),
+        user : shelby.models.user
       }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();

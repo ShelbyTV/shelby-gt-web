@@ -16,8 +16,14 @@ beforeEach(function() {
             }
           ]
       }
+    },
+
+    Invite: {
+      valid: { // response starts here
+        "status": 200,
+        "result": []
+      }
     }
-    
   };
 
 });
