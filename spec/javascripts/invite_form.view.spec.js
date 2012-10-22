@@ -80,7 +80,7 @@ describe("InviteFormView", function() {
       beforeEach(function() {
         this.fixture = this.ajaxFixtures.Invite.valid;
         this.server = sinon.fakeServer.create();
-        this.server.respondWith(shelby.config.apiRoot + '/invites', this.validResponse(this.fixture));
+        this.server.respondWith(shelby.config.apiRoot + '/beta_invite', this.validResponse(this.fixture));
         sinon.stub(Browser,'supportsCORS').returns(true);
         this.view.$('.js-send-invite').click();
       });

@@ -5,6 +5,6 @@ libs.shelbyGT.InviteModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
 
   url : function() {
-    return shelby.config.apiRoot + '/invites';
+    return shelby.config.apiRoot + '/beta_invite';
   }
 });
