@@ -120,13 +120,14 @@ $landing-page-shelf-background: #ddd;
   &.half {
     float: left;
     width: 50%;
-        &:first-child {
-          border-right: 1px solid $inset;
-        }
 
-        &:last-child {
-          border-left: 1px solid $outset;
-        }
+    &:first-child {
+      border-right: 1px solid $inset;
+    }
+
+    &:last-child {
+      border-left: 1px solid $outset;
+    }
   }
 }
 
@@ -275,6 +276,19 @@ $landing-page-shelf-background: #ddd;
   .form_submit {
     width: 100%;
   }
+
+  .form_label {
+    position: relative;
+  }
+
+  .form_error {
+    bottom: 0;
+    color: $shelby-red;
+    font-family: $font-family;
+    font-size: .8em;
+    position: absolute;
+    right: 0;
+  }
 }
 
 /********************************************************
@@ -319,36 +333,13 @@ $landing-page-shelf-background: #ddd;
     vertical-align: top;
   }
 
-  .form_input-wrapper {
-    @include roundies(input);
-    @include transition-property('border');
-    @include transition-duration(0.25s);
-    @include transition-timing-function(ease-in);
-
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid $inset;
-    display: inline-block;
-    padding: 0.33em 0.9em;
-    width: auto;
-
-    &.focused,
-    &:focus {
-      border-color: black;
-      outline: 0;
-    }
-  }
-
   .form_input {
-    border: none;
     font-size: 1em;
-    text-align: right;
-    padding-right: 0;
-    width: auto;
+    padding: .8em .5em;
+    width: 300px;
 
     &:focus {
       outline: 0;
-      border: 0;
     }
   }
 

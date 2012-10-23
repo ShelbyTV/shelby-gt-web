@@ -231,27 +231,11 @@
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-email-form').addClass('hidden');
-          $('#js-thankyou').removeClass('hidden');
+          // $('#js-email-form').addClass('hidden');
+          // $('#js-thankyou').removeClass('hidden');
+          console.log('success!');
         }, 'jsonp');
         return false;
-      });
-
-      // Imitation input:focus on wrapping span
-      var signmeupWrapper = $('#landing-signmeup-input-wrapper'),
-          signmeupInput = $('#landing-signmeup-input');
-
-      signmeupWrapper.on('focus', function(){
-        signmeupInput.focus();
-        $(this).addClass('focused');
-      }).on('blur', function(){
-        $(this).removeClass('focused');
-      });
-
-      signmeupInput.on('focus', function(){
-        $(this).parent().addClass('focused');
-      }).on('blur', function(){
-        signmeupWrapper.removeClass('focused');
       });
     });
   </script>
