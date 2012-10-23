@@ -1,8 +1,9 @@
 libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
 
   events: {
-    "click .js-send-invite" : "_sendInvite",
-    "mouseleave :has(.js-invite-feedback)" : "_onMouseLeave"
+    "click .js-send-invite"                : "_sendInvite",
+    "mouseleave"                           : "_onMouseLeave",
+    "mouseleave :has(.js-invite-feedback)" : "_onMouseLeaveAfterSuccess"
   },
 
   template : function(obj){
@@ -40,19 +41,46 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
         });
         //show some feedback on the invite being successfully sent
         self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']);
-        //after a short delay, allow the dropdown to close
-        setTimeout(function(){
-          self.$el.removeClass('dropdown_module--stay-open');
-          // if dropdown does close, re-render
-          if (self.$('.js-invite-section:visible').length == 0) {
-            self.render();
-          }
-        }, 1500);
+        self._closeDropDownAfterUserFeedbackDelay();
+      },
+      error : function(inviteModel, response){
+        //show some feedback on the invite failure
+        var responseJSON = $.parseJSON(response.responseText);
+        self._renderErrors(responseJSON.errors);
+        self._closeDropDownAfterUserFeedbackDelay();
       }
     });
   },
 
+  _closeDropDownAfterUserFeedbackDelay : function(){
+    var self = this;
+
+    //after a short delay, allow the dropdown to close
+    setTimeout(function(){
+      self.$el.removeClass('dropdown_module--stay-open');
+      // if dropdown does close
+      if (self.$('.js-invite-section:visible').length == 0) {
+        // re-render so we're ready to display the next time it gets opened
+        self.render();
+        // clear any error messages
+        self._renderErrors();
+      }
+    }, 1500);
+  },
+
+  _renderErrors : function(errors) {
+    this.$('.js-invite-email-error').toggle(errors && errors.beta_invite && errors.beta_invite.to_email_address ? true : false);
+  },
+
   _onMouseLeave : function(){
+    // if the drop down will be closed,
+    // clear error messages
+    if (!this.$el.hasClass('dropdown_module--stay-open')) {
+      this._renderErrors();
+    }
+  },
+
+  _onMouseLeaveAfterSuccess : function(){
     // if the drop down will be closed,
     // re-render so we're ready to display the next time it gets opened
     if (!this.$el.hasClass('dropdown_module--stay-open')) {
