@@ -10,6 +10,14 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
       return SHELBYJST['invite-form'](obj);
   },
 
+  initialize : function() {
+    this.options.user.bind('change:beta_invites_available', this._updateInvitesAvailable, this);
+  },
+
+  _cleanup : function(){
+    this.options.user.unbind('change:beta_invites_available', this._updateInvitesAvailable, this);
+  },
+
   render : function(){
     this._leaveChildren();
     this.$el.html(this.template({
@@ -24,6 +32,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
       });
       this.renderChild(recipientsAutocompleteView);
     } else {
+      this.$('.js-invites-remaining').hide();
       this.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
         feedback: 'Sorry, You Have No Invites Left',
         success: false
@@ -113,6 +122,15 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     // re-render so we're ready to display the next time it gets opened
     if (!this.$el.hasClass('dropdown_module--stay-open')) {
       this.render();
+    }
+  },
+
+  _updateInvitesAvailable : function(userModel, invitesAvailable) {
+    if (invitesAvailable) {
+      this.$('.js-invites-remaining').text(invitesAvailable);
+      this.$('.js-invites-remaining').show();
+    } else {
+      this.$('.js-invites-remaining').hide();
     }
   }
 
