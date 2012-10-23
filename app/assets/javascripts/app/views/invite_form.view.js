@@ -46,6 +46,8 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
       body : this.$('.js-invite-message').val()
     },{
       success : function(){
+        //decrement the number of invites available
+        self.options.user.set('beta_invites_available', self.options.user.get('beta_invites_available') - 1);
         //reset the email address and message to their defaults for the next invitation
         self.model.set({
           to : self.model.defaults['to'],
