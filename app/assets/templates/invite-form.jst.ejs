@@ -22,7 +22,7 @@
         <label class="form_label" for="invite-email">
           To <span class="form_error js-invite-email-error">Please enter a valid email address</span>
         </label>
-        <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" value="<%= invite.escape('to') %>" placeholder="email@address.com" />
+        <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" value="<%= invite.escape('to') %>" placeholder="email@address.com" autocomplete="off" />
       </fieldset>
 
       <fieldset class="form_fieldset">
