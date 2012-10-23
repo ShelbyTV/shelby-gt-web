@@ -2,7 +2,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
 
   events: {
     "click .js-send-invite" : "_sendInvite",
-    "mouseleave" : "_onMouseLeave"
+    "mouseleave :has(.js-invite-feedback)" : "_onMouseLeave"
   },
 
   template : function(obj){
@@ -33,19 +33,31 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
       body : this.$('.js-invite-message').val()
     },{
       success : function(){
+        //reset the email address and message to their defaults for the next invitation
+        self.model.set({
+          to : self.model.defaults['to'],
+          body : self.model.defaults['body']
+        });
         //show some feedback on the invite being successfully sent
-        self.$('.js-invite-form').html(SHELBYJST['invite-form-feedback']);
+        self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']);
         //after a short delay, allow the dropdown to close
         setTimeout(function(){
           self.$el.removeClass('dropdown_module--stay-open');
+          // if dropdown does close, re-render
+          if (self.$('.js-invite-section:visible').length == 0) {
+            self.render();
+          }
         }, 1500);
       }
     });
   },
 
   _onMouseLeave : function(){
-    // re-render so we're ready to display the next time the drop down gets opened
-    this.render();
+    // if the drop down will be closed,
+    // re-render so we're ready to display the next time it gets opened
+    if (!this.$el.hasClass('dropdown_module--stay-open')) {
+      this.render();
+    }
   }
 
 });
