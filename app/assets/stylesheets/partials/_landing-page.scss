@@ -284,6 +284,7 @@ $landing-page-shelf-background: #ddd;
   .form_error {
     bottom: 0;
     color: $shelby-red;
+    display: none;
     font-family: $font-family;
     font-size: .8em;
     position: absolute;
