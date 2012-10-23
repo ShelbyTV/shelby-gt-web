@@ -3,38 +3,44 @@
     Invite
   </i>
 </button>
-<section class="dropdown_section invite-section js-invite-section">
-  <div class="dropdown_lining invite-section-lining js-invite-section-lining clearfix">
-    <form class="form_module invite-form">
-      <div class="invite-form-header invite-subsection-lining">
-        <h3>
+<section class="dropdown_section js-invite-section">
+  <div class="dropdown_lining js-invite-section-lining clearfix">
+    <form class="form_module form_module--invite-form">
+      <div class="form_legend">
+        <h3 class="form_header">
           Shelby is in private beta
         </h3>
-        <p>
+        <p class="form_description">
           Invite a friend to join our commity
         </p>
       </div>
-      <div class="invite-form-body invite-subsection-lining js-invite-form">
-        <fieldset class="form_fieldset">
-          <label class="form_label" for="invite-email">
-            To
-          </label>
-          <span class="invite-form_email-error js-invite-email-error">Please enter a valid email address</span>
-          <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" value="<%= invite.escape('to') %>" placeholder="email@address.com" />
-          <label class="form_label" for="invite-subject">
-            Subject
-          </label>
-          <% var userDisplayName = user.get('name') || user.get('nickname') %>
-          <input id="invite-subject" class="form_input js-invite-subject" type="text" name="invite-subject" tabindex="0" value="<%= userDisplayName %> invites you to join Shelby.tv" disabled />
-          <label class="form_label" for="invite-message">
-            Message
-          </label>
-          <textarea class="form_textarea js-invite-message" name="invite-message" id="invite-message" tabindex="0"><%= invite.escape('body') %></textarea>
-          <button onclick="return false;" class="js-send-invite form_submit button_primer button_default" type="submit" tabindex="0">
-            Send Invite
-          </button>
-        </fieldset>
-      </div>
+
+      <hr class="hr-double" />
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="invite-email">
+          To <span class="form_error js-invite-email-error">Please enter a valid email address</span>
+        </label>
+        <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" value="<%= invite.escape('to') %>" placeholder="email@address.com" />
+      </fieldset>
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="invite-subject">
+          Subject
+        </label>
+        <% var userDisplayName = user.get('name') || user.get('nickname') %>
+        <input id="invite-subject" class="form_input js-invite-subject" type="text" name="invite-subject" tabindex="0" value="<%= userDisplayName %> invites you to join Shelby.tv" disabled />
+      </fieldset>
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="invite-message">
+          Message  <span class="form_error js-invite-message-error">&larr; You must include a message!</span>
+        </label>
+        <textarea class="form_textarea js-invite-message" name="invite-message" id="invite-message" tabindex="0"><%= invite.escape('body') %></textarea>
+      </fieldset>
+      <fieldset class="form_fieldset">
+        <button onclick="return false;" class="js-send-invite form_submit button_primer button_blue" type="submit" tabindex="0">
+          Send Invite
+        </button>
+      </fieldset>
     </form>
   </div>
 </section>

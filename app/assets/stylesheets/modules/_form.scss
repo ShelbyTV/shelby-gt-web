@@ -59,6 +59,10 @@
     outline: none;
     border: 1px solid adjust-lightness($inset, -50%);
   }
+
+  &[disabled] {
+    background-color: #eee;
+  }
 }
 
 .form_textarea_subline {

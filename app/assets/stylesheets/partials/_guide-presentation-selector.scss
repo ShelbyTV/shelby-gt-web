@@ -55,7 +55,7 @@
     color: #efefef;
   }
 
-//  in the event that this class is applied to 
+//  in the event that this class is applied to
 //  an <a>, rather than a <button>, we must
 //  treat these props:
   &:hover,
@@ -84,7 +84,7 @@
 .guide-now-playing {
   display: none;
   width: 100px;
-  
+
   .context-overlay-wrapper {
     display: none;
   }
@@ -97,36 +97,72 @@
   }
 }
 
-//---------------------------
-//  invite panel
-//---------------------------
+//------------------------------------------------------------------------------
+//  INVITE A USER SECTION
+//
+//------------------------------------------------------------------------------
+.dropdown_module--invite-user {
+  .dropdown_lining {
+    @include fin-left(#e2e2e2);
 
-.invite-section-lining {
-  @include fin(#e2e2e2);
-
-  background-color: $base;
-  box-shadow: 0px 0px 5px 0px black;
-  margin-top: 5px;
-  text-align: left;
-  width: 300px;
+    background-color: $base;
+    box-shadow: 0px 0px 5px 0px black;
+    margin-top: 5px;
+    min-height: 300px;
+    text-align: left;
+    width: 300px;
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+//  experimental hr divider
+////////////////////////////////////////////////////////////////////////////
+.hr-double {
+  background-color: $outset;
+  border-bottom: 1px solid $outset;
+  border-top: 1px solid $inset;
+  height: 0;
+  margin: 1em 0;
+  width: 100%;
 }
 
-.invite-subsection-lining {
-  padding: 0 0.9em;
-}
+//------------------------------------------------------------------------------
+//  INVITE A USER FORM
+//------------------------------------------------------------------------------
 
-.invite-form-header {
-  border-bottom: 1px solid $inset;
-  padding-top: 0.5em;
-}
+.form_module--invite-form {
+  .form_legend {
+    margin: 5px 10px;
+  }
 
-.invite-form-body {
-  border-top: 1px solid $outset;
-  padding-bottom: 0.5em;
-}
+  .form_header {
+    font-size: 1.4em;
+    margin-top: .5em;
+  }
 
-.invite-form_email-error {
-  display: none;
+  .form_description {
+    margin-top: .25em;
+  }
+
+  .form_fieldset {
+    font-size: .9em;
+    margin: 5px 10px;
+  }
+
+  .form_label {
+  }
+
+  .form_error {
+    color: $shelby-red;
+    display: none;
+    float: right;
+    font-family: $font-family;
+  }
+
+  .form_submit {
+    float: right;
+    font-size: 1.2em;
+    margin: 5px 0 15px;
+  }
 }
 
 //---------------------------
@@ -225,7 +261,7 @@ $settings-panel-bg : #555;
     margin-right: 5px;
     width: 33px;
   }
-  
+
   a {
     @include hover-link();
     color: $text;
@@ -244,14 +280,14 @@ $settings-panel-bg : #555;
 
 .guide-nowplaying {
   display: none;
-  
-  .now-playing-text { 
+
+  .now-playing-text {
     display: none;
     padding-right: 1em;
     text-align: right;
     width: 350px;
   }
-  
+
   &:hover {
     .now-playing-text {
       display: inline-block;
@@ -267,13 +303,13 @@ $settings-panel-bg : #555;
 	@include transition-duration(.2s);
 	@include transition-timing-function(linear);
 	@include transition-delay(0s);
-	
+
   display: block;
   max-width: 350px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
+
   &.paused {
     opacity: 0.4;
   }
@@ -285,7 +321,7 @@ $settings-panel-bg : #555;
 
 .nowplaying-section-lining {
   @include fin($base);
-  
+
   box-shadow: 0px 0px 5px 0px black;
   margin-top: 5px;
 }
