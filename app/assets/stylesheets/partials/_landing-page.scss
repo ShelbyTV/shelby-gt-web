@@ -234,6 +234,7 @@ $landing-page-shelf-background: #ddd;
     padding: 30px 0 0 5px;
     width: $landing-page-width * (8/18);
 
+
     .user-avatar {
       width: 48px;
       padding-right: 5px;
@@ -245,7 +246,6 @@ $landing-page-shelf-background: #ddd;
   float: left;
   width: $landing-page-width * (10/18);
 }
-
 
 .addthis_toolbox{
   background-color: transparent;
@@ -292,6 +292,7 @@ $landing-page-shelf-background: #ddd;
   }
 }
 
+
 /********************************************************
  * _banner
  ********************************************************/
@@ -317,7 +318,7 @@ $landing-page-shelf-background: #ddd;
 /********************************************************
  * _sign_me_up
  ********************************************************/
-.form_module_horz.landing-signmeup-form {
+.form_module_horz--signmeup-form {
   ////////////////////////////////////////////////////////////////////////////
   //  breaking rules.
   //  experiment with nesting.
@@ -353,8 +354,10 @@ $landing-page-shelf-background: #ddd;
 /********************************************************
  * _sign_me_up
  ********************************************************/
-.landing-signmeup {
-
+.landing-shelf--signmeup {
+  .landing-shelf__lining {
+    min-height: 87px;
+  }
 }
 
 .landing-signmeup-submit {
@@ -647,11 +650,11 @@ $landing-page-shelf-background: #ddd;
 }
 
 @media all and (max-width: 720px) {
-  .landing-signmeup {
+  .landing-shelf--signmeup {
     font-size: .8em;
   }
 
-  .landing-signmeup-form {
+  .form_module_horz--signmeup-form {
     .form_label {
       display: block;
     }

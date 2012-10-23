@@ -231,9 +231,8 @@
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          // $('#js-email-form').addClass('hidden');
-          // $('#js-thankyou').removeClass('hidden');
-          console.log('success!');
+          $('#js-email-form').addClass('hidden');
+          $('#js-thankyou').removeClass('hidden');
         }, 'jsonp');
         return false;
       });
