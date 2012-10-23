@@ -102,7 +102,7 @@ $landing-page-shelf-background: #ddd;
 
 .landing-shelf {
   background-color: $landing-page-shelf-background;
-  
+
   &:not(.flat){
     @include gradient-primer($landing-page-shelf-background, -10%,bottom);
   }
@@ -665,7 +665,14 @@ $landing-page-shelf-background: #ddd;
     }
   }
 
+  .landing-shelf {
+    padding: 0;
+  }
+
   .landing-shelf__lining {
+    border-left: none;
+    border-right: none;
+
     &.half {
       float: none;
       width: auto;
