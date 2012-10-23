@@ -117,13 +117,15 @@
       <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
       <% end %>
     <% end %>
-    <% #render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => (!@share_type or !@video)} %>
-    <% #render :partial => "/home/shelf/private_beta" unless (@share_type and @video) || @invite_id %>
+
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
-    <%= render :partial => "/home/shelf/banner", :locals => { :primary_shelf => (!@share_type or !@invite_id) } %>
-    <%= render :partial => "/home/shelf/sign_me_up", :locals => { :primary_shelf => (!@share_type or !@invite_id) } %>
-    <%= render :partial => "/home/shelf/call_to_action", :locals => { :primary_shelf => !@share_type } %>
+    <% if (!@share_type or !@video) and !@invite_id %>
+      <%= render :partial => "/home/shelf/banner" %>
+      <%= render :partial => "/home/shelf/sign_me_up" %>
+    <% end %>
+
+    <%= render :partial => "/home/shelf/call_to_action" %>
     <% #------------ /Shelf Content --------------- %>
 
     <footer class="landing-footer">
