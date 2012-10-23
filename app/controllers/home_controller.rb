@@ -59,8 +59,12 @@ class HomeController < ApplicationController
   # GET /invite/:invite_id
   #
   def invite
-    @invite_id = params[:invite_id]
-    render '/home/landing'
+    if user_signed_in?
+      redirect_to :action => :index
+    else
+      @invite_id = params[:invite_id]
+      render '/home/landing'
+    end
   end
 
   ##
