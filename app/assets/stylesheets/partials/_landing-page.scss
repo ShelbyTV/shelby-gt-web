@@ -96,27 +96,67 @@ $landing-page-shelf-background: #ccc;
   padding: 0 1em;
 }
 
-.landing-shelf-lining {
+.landing-shelf__lining {
   max-width: $landing-page-width;
   margin: 0 auto;
 }
 
-.landing-shelf-header {
+.landing-shelf__h1 {
   font-size: 2.3em;
   font-weight: 300;
   margin-bottom: 1em;
 }
 
-.landing-shelf-subheader {
+.landing-shelf__h1--subline {
+  display: block;
+  font-size: .8em;
+}
+
+.landing-shelf__h2 {
   font-family: $font-family-display;
   font-size: 1.75em;
   font-weight: 100;
   line-height: 1.4;
   margin-bottom: 1em;
-  width: 400px;
 }
 
-.landing-shelf-error {
+.landing-shelf__divider {
+  background-color: darken($inset,50%);
+  border: none;
+  height: 1px;
+  margin: 1em 0;
+}
+
+.landing-shelf__divider-legend {
+  font-size: .8em;
+  text-align: center;
+}
+
+.landing-shelf__button--facebook,
+.landing-shelf__button--twitter {
+  @include button-sizing;
+
+  display: block;
+  float: left;
+  margin: 0 1em 1em 0;
+  text-align: center;
+  width: 161px;
+
+  .icon {
+    display: block;
+    padding-left: 1em;
+  }
+}
+
+.landing-shelf__button--twitter {
+
+}
+
+.landing-shelf__button--facebook {
+
+}
+
+.landing-shelf__error {
   color: red;
   font-size: 1.5em;
 }
@@ -125,28 +165,56 @@ $landing-page-shelf-background: #ccc;
  * All Share Shelves
  ********************************************************/
 
-.landing-shelf-share {
+.landing-shelf--share {
   padding: 50px 0 20px;
+
+  .landing-shelf__content {
+    float: left;
+    padding: 30px 0 0 5px;
+    width: $landing-page-width * (8/18);
+
+    .user-avatar {
+      width: 48px;
+      padding-right: 5px;
+    }
+  }
 }
 
-.landing-shelf-video-embed {
+.landing-shelf__video-embed {
   float: left;
   width: $landing-page-width * (10/18);
 }
 
 
 .addthis_toolbox{
-  @include gradient-primer($landing-page-shelf-background);
+  background-color: transparent;
+  position: absolute;
 }
 
-.landing-shelf-share-content {
-  float: left;
-  padding: 30px 0 0 5px;
-  width: $landing-page-width * (8/18);
 
-  .user-avatar {
-    width: 48px;
-    padding-right: 5px;
+/********************************************************
+ * _invite - Invitation Form Shelf
+ ********************************************************/
+.landing-shelf--invite {
+  .landing-shelf__lining {
+    margin: 0 auto;
+    max-width: 350px;
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .landing-shelf__h1 {
+    line-height: 1.4;
+    font-weight: 500;
+  }
+}
+
+.landing-shelf_form--invite {
+  font-size: 1.4em;
+  text-align: left;
+
+  .form_submit {
+    width: 100%;
   }
 }
 
@@ -161,35 +229,38 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * _rolling_share - Share Shelf
  ********************************************************/
-.landing-shelf-rolling-share .landing-shelf-share-content {
-  padding-top: 0;
-}
+.landing-shelf--rolling-share {
+  .landing-shelf__content {
+    padding-top: 0;
+  }
 
-.landing-shelf-rolling-share .share-context {
-  font-face: ubuntu;
-  font-size: 1.4em;
-  padding-top: 10px;
-
-  .user-avatar {
-    float: left;
+  .share-context {
+    font-size: 1.4em;
   }
 
   .user-nickname {
-    font-weight: 600;
+    font-weight: bold;
   }
 }
+
 
 /********************************************************
  * _genius_ios_ad - Primary Shelf
  ********************************************************/
 
-.landing-shelf-genius .landing-shelf-lining {
-  background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
-  padding: 70px 0 30px;
-}
+.landing-shelf--genius {
+  .landing-shelf__lining {
+    background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
+    padding: 70px 0 30px;
+  }
 
-.landing-shelf-genius .genius-logo {
-  margin-top: -9px;
+  .landing-shelf__h2 {
+    width: 400px;
+  }
+
+  .genius-logo {
+    margin-top: -9px;
+  }
 }
 
 .landing-feature-header,
@@ -235,9 +306,11 @@ $landing-page-shelf-background: #ccc;
 /********************************************************
  * _video_graph_blog_post - Substitute Shelf
  ********************************************************/
-.landing-shelf-video-graph-blog .landing-shelf-lining {
-  background: url('/images/landing/graph.png') no-repeat 498px 55px transparent;
-  padding: 70px 0 30px;
+.landing-shelf-video-graph-blog {
+  .landing-shelf__lining {
+    background: url('/images/landing/graph.png') no-repeat 498px 55px transparent;
+    padding: 70px 0 30px;
+  }
 }
 
 
@@ -245,14 +318,31 @@ $landing-page-shelf-background: #ccc;
  * _private_beta - Primary Shelf
  ********************************************************/
 
-.landing-shelf-private {
+.landing-shelf--private {
   position: relative;
-}
 
-.landing-shelf-private .landing-shelf-lining {
-  padding: 40px 0 50px;
-  position: relative;
-  z-index: 1;
+  .landing-shelf__lining {
+    padding: 40px 0 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .landing-shelf__content {
+    width: 400px;
+  }
+
+  .landing-shelf__h2 {
+    width: 400px;
+  }
+
+  .browser-image {
+    background: url('/images/landing/browser.png') no-repeat left 20px transparent;
+    bottom: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 50%;
+  }
 }
 
 .landing-form {
@@ -297,15 +387,6 @@ $landing-page-shelf-background: #ccc;
   &:active {
     @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
   }
-}
-
-.landing-shelf-private .browser-image {
-  background: url('/images/landing/browser.png') no-repeat left 20px transparent;
-  bottom: 0;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  width: 50%;
 }
 
 /********************************************************

@@ -85,8 +85,8 @@
     </header>
 
     <% if @show_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="landing-shelf landing-shelf-error">
-        <div class="landing-shelf-lining">
+      <section class="landing-shelf landing-shelf__error">
+        <div class="landing-shelf__lining">
           <% if @show_error %>
             <p class="gate-signin-noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>

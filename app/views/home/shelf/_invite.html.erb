@@ -1,2 +1,62 @@
-<section class="landing-shelf landing-shelf-invite">
+<section class="landing-shelf landing-shelf--invite">
+  <div class="landing-shelf__lining">
+    <h1 class="landing-shelf__h1">
+      <%= 'Dan Spinosa' %>
+      <span class="landing-shelf__h1--subline">
+        invited you to join the Shelby community!
+      </span>
+    </h1>
+
+    <hr class="landing-shelf__divider" />
+
+    <form class="form_module landing-shelf_form--invite">
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-username">
+          Username
+        </label>
+
+        <input name="signup-username" id="signup-username" class="form_input" type="text" autofocus />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-password">
+          Password
+        </label>
+
+        <input name="signup-password" id="signup-password" class="form_input" type="password" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-email">
+          Email address
+        </label>
+
+        <input name="signup-email" id="signup-email" class="form_input" type="email" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input class="button_primer button_blue form_submit" type="submit" value="Sign me up!" />
+      </fieldset>
+
+      <hr class="landing-shelf__divider" />
+
+      <h3 class="landing-shelf__divider-legend">
+        You can also login with:
+      </h3>
+
+      <fieldset class="form_fieldset">
+        <a class="button_primer button_twitter-blue faux_button landing-shelf__button--twitter" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" target="_blank">
+          <i class="button_icon_left icon_social_twitter icon">
+            Twitter
+          </i>
+        </a>
+
+        <a class="button_primer button_facebook-blue faux_button landing-shelf__button--facebook" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" target="_blank">
+          <i class="button_icon_left icon_social_facebook icon">
+            Facebook
+          </i>
+        </a>
+      </fieldset>
+    </form>
+  </div>
 </section>
