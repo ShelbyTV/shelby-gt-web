@@ -33,16 +33,19 @@ describe("InviteFormView", function() {
     it ("Should contain all the elements we need", function() {
       expect(this.view.$el).toContain('.js-invite');
       expect(this.view.$el).toContain('form.form_module.invite-form');
-      expect(this.view.$el).toContain('textarea');
       expect(this.view.$el).toContain('.js-send-invite');
       expect(this.view.$el).toContain('.js-invite-email');
       expect(this.view.$el).toContain('.js-invite-subject');
       expect(this.view.$el).toContain('.js-invite-message');
     });
 
+    it ("Should render the email address from the model", function() {
+      expect(this.view.$('.js-invite-email')).toHaveValue('email@address.com');
+    });
+
     it ("Should render the invite message from the model", function() {
-      expect(this.view.$('textarea')).toHaveText('Here is some body text.');
-      expect(this.view.$('textarea')).toHaveValue('Here is some body text.');
+      expect(this.view.$('.js-invite-message')).toHaveText('Here is some body text.');
+      expect(this.view.$('.js-invite-message')).toHaveValue('Here is some body text.');
     });
 
     it ("Should render the inviting user's name in the message subject", function() {
@@ -136,6 +139,23 @@ describe("InviteFormView", function() {
             expect(this.view.$el).not.toHaveClass('dropdown_module--stay-open');
           });
 
+          it("should re-render if the dropdown is closed", function() {
+            var renderSpy = sinon.spy(this.view, "render");
+            this.view.$('.js-invite-section').hide();
+            this.server.respond();
+            clock.tick(1499);
+            expect(renderSpy).not.toHaveBeenCalled();
+            clock.tick(1);
+            expect(renderSpy).toHaveBeenCalled();
+          });
+
+          it("should not re-render if the dropdown is open", function() {
+            var renderSpy = sinon.spy(this.view, "render");
+            this.server.respond();
+            clock.tick(1500);
+            expect(renderSpy).not.toHaveBeenCalled();
+          });
+
         });
 
       });
@@ -143,10 +163,18 @@ describe("InviteFormView", function() {
 
     describe("mouseleave", function() {
 
-      it("should re-render", function() {
+      it("should re-render if dropdown will close", function() {
         var renderSpy = sinon.spy(this.view, "render");
         this.view.$el.mouseleave();
         expect(renderSpy).toHaveBeenCalled();
+        renderSpy.restore();
+      });
+
+      it("should not re-render if dropdown will not close", function() {
+        var renderSpy = sinon.spy(this.view, "render");
+        this.view.$el.addClass('dropdown_module--stay-open');
+        this.view.$el.mouseleave();
+        expect(renderSpy).not.toHaveBeenCalled();
         renderSpy.restore();
       });
 

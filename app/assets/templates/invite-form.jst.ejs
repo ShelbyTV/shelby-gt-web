@@ -19,7 +19,7 @@
           <label class="form_label" for="invite-email">
             To
           </label>
-          <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" placeholder="email@address.com" />
+          <input id="invite-email" class="form_input js-invite-email" type="email" name="invite-email" autofocus tabindex="0" value="<%= invite.escape('to') %>" placeholder="email@address.com" />
           <label class="form_label" for="invite-subject">
             Subject
           </label>
