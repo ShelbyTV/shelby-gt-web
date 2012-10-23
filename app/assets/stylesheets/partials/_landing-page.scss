@@ -120,13 +120,14 @@ $landing-page-shelf-background: #ddd;
   &.half {
     float: left;
     width: 50%;
-        &:first-child {
-          border-right: 1px solid $inset;
-        }
 
-        &:last-child {
-          border-left: 1px solid $outset;
-        }
+    &:first-child {
+      border-right: 1px solid $inset;
+    }
+
+    &:last-child {
+      border-left: 1px solid $outset;
+    }
   }
 }
 
@@ -274,6 +275,19 @@ $landing-page-shelf-background: #ddd;
 
   .form_submit {
     width: 100%;
+  }
+
+  .form_label {
+    position: relative;
+  }
+
+  .form_error {
+    bottom: 0;
+    color: $shelby-red;
+    font-family: $font-family;
+    font-size: .8em;
+    position: absolute;
+    right: 0;
   }
 }
 
