@@ -18,6 +18,11 @@ $landing-page-footer-font-color: #EFEFEF;
   background-color: $landing-page-footer-background;
   overflow: auto;
 
+  //TODO: determine why this override is necessary.
+  .shelby-wrapper {
+    position: relative;
+  }
+
   /* adjust the header, don't want absolute position */
   .shelby-header {
     position: relative;
@@ -32,13 +37,16 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * Login & Signup (used on landing page and anonymous banner)
  ********************************************************/
-.login-section {
+.login-section,
+.signup-section {
   box-shadow: 0 0 20px 0 black;
   right: 10px;
   top: 28px;
 }
 
-.login-section-lining {
+
+.login-section-lining,
+.signup-section-lining {
   @include fin;
 
   background: $nav-dropdown-bg;
@@ -47,11 +55,13 @@ $landing-page-footer-font-color: #EFEFEF;
   width: 300px;
 }
 
-.login-header {
+.login-header,
+.signup-header {
   margin: 10px 10px 0;
 }
 
-.login-section hr {
+.login-section hr,
+.signup-section hr {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
   margin-bottom: 0;
@@ -59,7 +69,9 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .login-form,
-.login-social-section {
+.login-social-section,
+.signup-form,
+.signup-social-section  {
   padding: 10px;
 }
 
@@ -71,8 +83,9 @@ $landing-page-footer-font-color: #EFEFEF;
   margin-bottom: .5em;
 }
 
-.login-submit {
-  @include button-sizing;
+.login-submit,
+.signup-submit {
+  @include button-primer();
 
   margin-top: .5em;
 }
@@ -85,11 +98,14 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * All Shelves
  ********************************************************/
-
-$landing-page-shelf-background: #ccc;
+$landing-page-shelf-background: #ddd;
 
 .landing-shelf {
-  @include gradient-primer($landing-page-shelf-background);
+  background-color: $landing-page-shelf-background;
+
+  &:not(.flat){
+    @include gradient-primer($landing-page-shelf-background, -10%,bottom);
+  }
 
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -99,6 +115,26 @@ $landing-page-shelf-background: #ccc;
 .landing-shelf__lining {
   max-width: $landing-page-width;
   margin: 0 auto;
+  max-width: $landing-page-width;
+
+  &.half {
+    float: left;
+    width: 50%;
+        &:first-child {
+          border-right: 1px solid $inset;
+        }
+
+        &:last-child {
+          border-left: 1px solid $outset;
+        }
+  }
+}
+
+.landing-shelf-header-extra {
+  font-size: 3em;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 1em;
 }
 
 .landing-shelf__h1 {
@@ -118,6 +154,19 @@ $landing-page-shelf-background: #ccc;
   font-weight: 100;
   line-height: 1.4;
   margin-bottom: 1em;
+
+  &.extra {
+    font-weight: 500;
+  }
+}
+
+.landing-shelf-block {
+  font-size: 1.1em;
+
+  &.display {
+    font-family: $font-family-display;
+    font-weight: 300;
+  }
 }
 
 .landing-shelf__divider {
@@ -161,10 +210,21 @@ $landing-page-shelf-background: #ccc;
   font-size: 1.5em;
 }
 
+.landing-button-large {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin: 25px 0 10px;
+  padding: 1.05em 1.35em;
+
+  &:link,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /********************************************************
  * All Share Shelves
  ********************************************************/
-
 .landing-shelf--share {
   padding: 50px 0 20px;
 
@@ -191,7 +251,6 @@ $landing-page-shelf-background: #ccc;
   position: absolute;
 }
 
-
 /********************************************************
  * _invite - Invitation Form Shelf
  ********************************************************/
@@ -216,6 +275,145 @@ $landing-page-shelf-background: #ccc;
   .form_submit {
     width: 100%;
   }
+}
+
+/********************************************************
+ * _banner
+ ********************************************************/
+.landing-banner {
+  text-align: center;
+}
+
+.landing-banner-lining {
+  max-width: none;
+  width: auto;
+}
+
+.landing-banner-header {
+  margin-top: 1em;
+}
+
+.landing-banner-figure {
+  padding: 0 1em;
+  max-width: 870px;
+  width: 100%;
+}
+
+/********************************************************
+ * _sign_me_up
+ ********************************************************/
+.form_module_horz.landing-signmeup-form {
+  ////////////////////////////////////////////////////////////////////////////
+  //  breaking rules.
+  //  experiment with nesting.
+  //  isolating .landing-signmeup-form by compounding the class
+  //  thus binding it to the form_module
+  ////////////////////////////////////////////////////////////////////////////
+  font-size: 1.8em;
+  margin: 1em;
+  text-align: center;
+
+  .form_label {
+    font-size: 1.5em;
+    line-height: 1.8;
+    vertical-align: top;
+  }
+
+  .form_input-wrapper {
+    @include roundies(input);
+    @include transition-property('border');
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in);
+
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid $inset;
+    display: inline-block;
+    padding: 0.33em 0.9em;
+    width: auto;
+
+    &.focused,
+    &:focus {
+      border-color: black;
+      outline: 0;
+    }
+  }
+
+  .form_input {
+    border: none;
+    font-size: 1em;
+    text-align: right;
+    padding-right: 0;
+    width: auto;
+
+    &:focus {
+      outline: 0;
+      border: 0;
+    }
+  }
+
+  .form_submit {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+/********************************************************
+ * _sign_me_up
+ ********************************************************/
+.landing-signmeup {
+
+}
+
+.landing-signmeup-submit {
+  font-size: .825em;
+  margin:1px 0 0;
+  vertical-align: top;
+}
+
+/********************************************************
+ * _call_to_action
+ ********************************************************/
+ $cta-height: 300px;
+
+.landing-cta {
+  text-align: center;
+  font-size: 1.3em;
+  height: $cta-height;
+}
+
+.landing-cta-header {
+  margin: 1.2em;
+}
+
+.cta-icon {
+  display: block;
+  height: 50px;
+}
+////////////////////////////////////////////////////////////////////////////
+//  landing-shelf__lining.half.landing-cta-genius
+////////////////////////////////////////////////////////////////////////////
+.landing-cta-genius {
+  height: inherit;
+
+  .appstore-button {
+    display: inline-block;
+    font-size: .9em;
+    float: none;
+  }
+}
+
+.icon-genius {
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  landing-shelf__lining.half.landing-cta-explore
+////////////////////////////////////////////////////////////////////////////
+.landing-cta-explore {
+  background-image: url("/images/landing/banner.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  height: inherit;
 }
 
 /********************************************************
@@ -313,7 +511,6 @@ $landing-page-shelf-background: #ccc;
   }
 }
 
-
 /********************************************************
  * _private_beta - Primary Shelf
  ********************************************************/
@@ -359,11 +556,19 @@ $landing-page-shelf-background: #ccc;
 
 .landing-form-input {
   @include roundies(left);
+  @include transition-property('border');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
 
   border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
   font-size: 2em;
   height: 45px;
   padding: .5em;
+
+  &:focus {
+    border: 1px solid black;
+    outline: none;
+  }
 }
 
 .landing-form-submit {
@@ -415,6 +620,8 @@ $landing-page-shelf-background: #ccc;
   &.secondary {
     float: right;
     width: auto;
+    //TODO: TEMPORARY HACK
+    overflow: hidden;
   }
 }
 
@@ -445,4 +652,42 @@ $landing-page-shelf-background: #ccc;
 
 .fb_edge_widget_with_comment {
   margin-bottom: 2px;
+}
+
+@media all and (max-width: 720px) {
+  .landing-signmeup {
+    font-size: .8em;
+  }
+
+  .landing-signmeup-form {
+    .form_label {
+      display: block;
+    }
+  }
+
+  .landing-shelf {
+    padding: 0;
+  }
+
+  .landing-shelf__lining {
+    border-left: none;
+    border-right: none;
+
+    &.half {
+      float: none;
+      width: auto;
+    }
+  }
+
+  .landing-cta {
+    height: auto;
+  }
+
+  .landing-cta-genius {
+    border-bottom: 1px solid $inset;
+  }
+
+  .landing-cta-explore {
+    border-top: 1px solid $outset;
+  }
 }
