@@ -1,7 +1,7 @@
-libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
+libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
 
   events: {
-    "click .js-send-invite"                : "_sendInvite",
+    "click .js-send-invite:not(.js-busy)"  : "_sendInvite",
     "mouseleave"                           : "_onMouseLeave",
     "mouseleave :has(.js-invite-feedback)" : "_onMouseLeaveAfterSuccess"
   },
@@ -11,20 +11,32 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
   },
 
   render : function(){
+    this._leaveChildren();
     this.$el.html(this.template({
       invite : this.model,
       user : this.options.user
     }));
-    var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({
-      el : this.$('.js-invite-email')[0],
-      includeSources : ['email']
-    });
-    this.renderChild(recipientsAutocompleteView);
+
+    if (this.options.user.get('beta_invites_available') != 0) {
+      var recipientsAutocompleteView = new libs.shelbyGT.EmailAddressAutocompleteView({
+        el : this.$('.js-invite-email')[0],
+        includeSources : ['email']
+      });
+      this.renderChild(recipientsAutocompleteView);
+    } else {
+      this.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
+        feedback: 'Sorry, You Have No Invites Left',
+        success: false
+      }));
+    }
   },
 
   _sendInvite : function(){
 
     var self = this;
+
+    //stop responding to clicks on the button until the ajax returns
+    this.$('.js-send-invite').addClass('js-busy');
 
     //hold the dropdown open until the ajax has finshed and we've given the user feedback on their action
     this.$el.addClass('dropdown_module--stay-open');
@@ -40,7 +52,10 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
           body : self.model.defaults['body']
         });
         //show some feedback on the invite being successfully sent
-        self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']);
+        self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
+          feedback: 'Invitation Sent',
+          success: true
+        }));
         self._closeDropDownAfterUserFeedbackDelay();
       },
       error : function(inviteModel, response){
@@ -48,6 +63,8 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
         var responseJSON = $.parseJSON(response.responseText);
         self._renderErrors(responseJSON.errors);
         self._closeDropDownAfterUserFeedbackDelay();
+        //reactivate the button
+        this.$('.js-send-invite').removeClass('js-busy');
       }
     });
   },
@@ -69,7 +86,16 @@ libs.shelbyGT.InviteFormView = Support.CompositeBehaviorView.extend({
   },
 
   _renderErrors : function(errors) {
-    this.$('.js-invite-email-error').toggle(errors && errors.beta_invite && errors.beta_invite.to_email_address ? true : false);
+    if (errors && errors.user && errors.user.beta_invites_available) {
+      self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
+        feedback: 'Sorry, You Have No Invites Left',
+        success: false
+      }));
+      this.options.user.set('beta_invites_available', 0);
+    } else {
+      // the ternary looks hacky but it's not because jQuery is using type detection to decide what to do with this parameter
+      this.$('.js-invite-email-error').toggle(errors && errors.beta_invite && errors.beta_invite.to_email_address ? true : false);
+    }
   },
 
   _onMouseLeave : function(){
