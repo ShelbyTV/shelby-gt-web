@@ -113,6 +113,23 @@
   }
 }
 
+.invite-count {
+  background-color: $shelby-blue;
+  border-radius: 10px;
+  color: $button-color;
+  display: block;
+  font-weight: 400;
+  height: 17px;
+  line-height: 1.5;
+  margin: 2px;
+  position: absolute;
+  right: 1px;
+  text-align: center;
+  text-shadow: $shadow-text;
+  top: -1px;
+  width: 17px;
+}
+
 .invite-feedback {
   margin: 125px 10px 10px;
   font-size: 1.4em;
