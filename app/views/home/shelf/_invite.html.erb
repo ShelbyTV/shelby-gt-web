@@ -11,7 +11,7 @@
         <label class="form_label" for="signup-name">
           Name <span class="form_error js-invite-name-error"></span>
         </label>
-        <input name="user[name]" id="signup-name" class="form_input" type="text" autofocus />
+        <input name="user[name]" id="signup-name" class="form_input" type="text" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
       </fieldset>
 
       <fieldset class="form_fieldset">
@@ -23,7 +23,7 @@
             <span class="form_error js-invite-username-error"></span>
           <% end %>
         </label>
-        <input name="user[nickname]" id="signup-username" class="form_input" type="text" />
+        <input name="user[nickname]" id="signup-username" class="form_input" type="text" value="<%= cookies[:_shelby_signup_username] %>" />
       </fieldset>
 
       <fieldset class="form_fieldset">
@@ -42,7 +42,7 @@
             <span class="form_error js-invite-email-error"></span>
           <% end %>
         </label>
-        <input name="user[primary_email]" id="signup-email" class="form_input" type="email" />
+        <input name="user[primary_email]" id="signup-email" class="form_input" type="email" value="<%= cookies[:_shelby_signup_email] %>" />
       </fieldset>
 
       <fieldset class="form_fieldset" hidden >
@@ -77,9 +77,12 @@
       $(document).ready(function(){
         $('.js-invite-form').on('submit', function(e){
           var hasErrors = false;
+          var signupName = $('#signup-name').val();
+          var signupUsername = $('#signup-username').val();
+          var signupEmail = $('#signup-email').val();
 
           // validate user full name
-          if(!$('#signup-name').val().length) {
+          if(!signupName.length) {
             $('.js-invite-name-error').text('Please enter your name').show();
             hasErrors = true;
           } else {
@@ -87,7 +90,7 @@
           }
 
           // validate username
-          if(!$('#signup-username').val().length) {
+          if(!signupUsername.length) {
             $('.js-invite-username-error').text('Please enter a username').show();
             hasErrors = true;
           } else {
@@ -103,8 +106,7 @@
           }
 
           // validate email
-          var email = $('#signup-email').val();
-          if(!email.length || email.search(shelby.config.user.email.validationRegex) == -1) {
+          if(!signupEmail.length || signupEmail.search(shelby.config.user.email.validationRegex) == -1) {
             $('.js-invite-email-error').text('Please enter a valid email.').show();
             hasErrors = true;
           } else {
@@ -113,6 +115,12 @@
 
           if (hasErrors) {
             e.preventDefault();
+          } else {
+            // save the user's input in a session cookie so we can re-render it if API redirects us back
+            // here with errors the user needs to fix
+            cookies.set('_shelby_signup_name', signupName);
+            cookies.set('_shelby_signup_username', signupUsername);
+            cookies.set('_shelby_signup_email', signupEmail);
           }
         });
       });
