@@ -9,26 +9,25 @@
 
     <hr class="landing-shelf__divider" />
 
-    <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite">
+    <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-name">
-          Name <span class="form_error js-invite-email-error">Please enter your name</span>
+          Name <span class="form_error js-invite-name-error">Please enter your name</span>
         </label>
         <input name="user[name]" id="signup-name" class="form_input" type="text" autofocus />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-username">
-          Username <span class="form_error js-invite-email-error">Please enter a username</span> 
+          Username <span class="form_error js-invite-username-error">Please enter a username</span>
         </label>
         <input name="user[nickname]" id="signup-username" class="form_input" type="text" />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-password">
-          Password <span class="form_error js-invite-email-error">Please enter a password/span>
+          Password <span class="form_error js-invite-password-error">Please enter a password/span>
         </label>
-
         <input name="user[password]" id="signup-password" class="form_input" type="password" />
       </fieldset>
 
@@ -36,7 +35,6 @@
         <label class="form_label" for="signup-email">
           Email address <span class="form_error js-invite-email-error">Please enter an email address</span>
         </label>
-
         <input name="user[primary_email]" id="signup-email" class="form_input" type="email" />
       </fieldset>
 
@@ -68,5 +66,49 @@
         </a>
       </fieldset>
     </form>
+    <script>
+      $(document).ready(function(){
+        $('.js-invite-form').on('submit', function(e){
+          var hasErrors = false;
+
+          // validate user full name
+          if(!$('#signup-name').val().length) {
+            $('.js-invite-name-error').text('Please enter your name').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-name-error').hide();
+          }
+
+          // validate username
+          if(!$('#signup-username').val().length) {
+            $('.js-invite-username-error').text('Please enter a username').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-username-error').hide();
+          }
+
+          // validate password
+          if($('#signup-password').val().length < shelby.config.user.password.minLength) {
+            $('.js-invite-password-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-password-error').hide();
+          }
+
+          // validate email
+          var email = $('#signup-email').val();
+          if(!email.length || email.search(shelby.config.user.email.validationRegex) == -1) {
+            $('.js-invite-email-error').text('Please enter a valid email.').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-email-error').hide();
+          }
+
+          if (hasErrors) {
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
   </div>
 </section>
