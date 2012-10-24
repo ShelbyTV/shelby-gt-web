@@ -32,7 +32,8 @@ class HomeController < ApplicationController
           # Consider errors and render landing page
           @auth_failure = params[:auth_failure] == '1'
           @auth_strategy = params[:auth_strategy]
-          @show_error = params[:access] == "nos"
+          @access_error = params[:access] == "nos"
+          @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
           
           get_info_for_meta_tags(params[:path])
