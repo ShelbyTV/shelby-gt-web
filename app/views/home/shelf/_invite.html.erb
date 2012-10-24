@@ -9,28 +9,38 @@
     <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-name">
-          Name <span class="form_error js-invite-name-error">Please enter your name</span>
+          Name <span class="form_error js-invite-name-error"></span>
         </label>
         <input name="user[name]" id="signup-name" class="form_input" type="text" autofocus />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-username">
-          Username <span class="form_error js-invite-username-error">Please enter a username</span>
+          Username
+          <% if @nickname_error %>
+            <span class="form_error js-invite-username-error" style="display: block;">Sorry, that username is already taken.</span>
+          <% else %>
+            <span class="form_error js-invite-username-error"></span>
+          <% end %>
         </label>
         <input name="user[nickname]" id="signup-username" class="form_input" type="text" />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-password">
-          Password <span class="form_error js-invite-password-error">Please enter a password/span>
+          Password <span class="form_error js-invite-password-error">/span>
         </label>
         <input name="user[password]" id="signup-password" class="form_input" type="password" />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="signup-email">
-          Email address <span class="form_error js-invite-email-error">Please enter an email address</span>
+          Email address
+          <% if @email_error %>
+            <span class="form_error js-invite-email-error" style="display: block;">Sorry, that email is already taken.</span>
+          <% else %>
+            <span class="form_error js-invite-email-error"></span>
+          <% end %>
         </label>
         <input name="user[primary_email]" id="signup-email" class="form_input" type="email" />
       </fieldset>

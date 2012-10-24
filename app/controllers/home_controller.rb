@@ -63,6 +63,10 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to :action => :index
     else
+      # Parse errors and render landing
+      @nickname_error = params[:nickname]
+      @email_error = params[:primary_email]
+
       @invite_id = params[:invite_id]
       render '/home/landing'
     end
