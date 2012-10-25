@@ -1,6 +1,6 @@
 <button class="dropdown_button nav-button js-invite">
   <i class="dropdown_icon">
-    Invites
+    Invite
     <span class="js-invites-remaining invite-count"><%= user.get('beta_invites_available') %></span>
   </i>
 </button>
@@ -9,10 +9,10 @@
     <form class="form_module form_module--invite-form">
       <div class="form_legend">
         <h3 class="form_h1">
-          Invite a friend to join Shelby
+          Help us grow the community
         </h3>
         <p class="form_description">
-          You have <%= _('invite').pluralize(user.get('beta_invites_available'), true) %> remaining
+          Invite <%= _('more friend').pluralize(user.get('beta_invites_available'), true) %>
         </p>
       </div>
 

@@ -39,7 +39,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     } else {
       this.$('.js-invites-remaining').hide();
       this.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
-        feedback: 'Sorry, You Have No Invites Left',
+        feedback: "Keep watching and rolling, and we'll get you some more invites...",
         success: false
       }));
     }
@@ -62,7 +62,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
       shelby.userInactivity.disableUserActivityDetection();
       if (!this.options.user.get('beta_invites_available')) {
         // if the user doesn't have any invites left, auto close after a bit
-        this._closeDropDownAfterUserFeedbackDelay(2000);
+        this._closeDropDownAfterUserFeedbackDelay(3000);
       }
     }
   },
@@ -88,7 +88,7 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
         self.options.user.set('beta_invites_available', self.options.user.get('beta_invites_available') - 1);
         //show some feedback on the invite being successfully sent
         self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
-          feedback: 'Invitation Sent',
+          feedback: 'Thanks for sending an invite!',
           success: true
         }));
         //reset the email address and message to their defaults for the next invitation
