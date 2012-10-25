@@ -131,7 +131,9 @@
       <%= render :partial => "/home/shelf/sign_me_up" %>
     <% end %>
 
-    <%= render :partial => "/home/shelf/call_to_action" %>
+    <% if !@invite_id %>
+      <%= render :partial => "/home/shelf/call_to_action" %>
+    <% end %>
     <% #------------ /Shelf Content --------------- %>
 
     <footer class="landing-footer">

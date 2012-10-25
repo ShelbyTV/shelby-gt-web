@@ -272,6 +272,7 @@ $landing-page-shelf-background: #ddd;
   background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid #555;
   border-top: none;
   color: #efefef;
 
@@ -300,6 +301,7 @@ $landing-page-shelf-background: #ddd;
 
   .form_submit {
     width: 100%;
+    margin-top: 1em;
   }
 
   .form_label {
