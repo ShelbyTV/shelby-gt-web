@@ -49,11 +49,21 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     // cancel any auto-close timeout
     clearTimeout(this._autoCloseTimeoutId);
     if (!this.$('.js-invite-section').toggle().is(':visible')) {
-      // if dropdown closed, re-render so we're ready to display next time it opens
+      // if dropdown closed
+      this.options.inviteViewState.set('open', false);
+      // re-render so we're ready to display next time it opens
       this.render();
-    } else if (!this.options.user.get('beta_invites_available')){
-      // if dropdown opened and the user doesn't have any invites left, auto close after a bit
-      this._closeDropDownAfterUserFeedbackDelay(2000);
+      // let screen elements fade out again
+      shelby.userInactivity.enableUserActivityDetection();
+    } else {
+      // if dropdown opened
+      this.options.inviteViewState.set('open', true);
+      // don't let screen elements fade out until dropdown is closed
+      shelby.userInactivity.disableUserActivityDetection();
+      if (!this.options.user.get('beta_invites_available')) {
+        // if the user doesn't have any invites left, auto close after a bit
+        this._closeDropDownAfterUserFeedbackDelay(2000);
+      }
     }
   },
 
@@ -111,8 +121,11 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     this._autoCloseTimeoutId =
       setTimeout(function(){
         self.$('.js-invite-section').hide();
+        self.options.inviteViewState.set('open', false);
         // re-render so we're ready to display the next time it gets opened
         self.render();
+        // let screen elements fade out again
+        shelby.userInactivity.enableUserActivityDetection();
       }, ms);
   },
 
@@ -140,6 +153,9 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
 
   _openDropdown : function() {
     this.$('.js-invite-section').show();
+    this.options.inviteViewState.set('open', true);
+    // don't let screen elements fade out until dropdown is closed
+    shelby.userInactivity.disableUserActivityDetection();
     if (!this.options.user.get('beta_invites_available')){
       // if the user doesn't have any invites left, auto close after a bit
       this._closeDropDownAfterUserFeedbackDelay(2000);
