@@ -346,6 +346,15 @@ $landing-page-shelf-background: #ddd;
     font-size: .7em;
     font-weight: 700;
     line-height: 1;
+
+    &:hover {
+      &:after {
+        content: "We've spared no expense!";
+        display: block;
+        font-size:  0.475em;
+        line-height: 6;
+      }
+    }
   }
 }
 
