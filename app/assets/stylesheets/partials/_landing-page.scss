@@ -10,7 +10,7 @@ body {
 //------------------------------------------------------------------------------
 //  landing-page
 //------------------------------------------------------------------------------
-$landing-page-width: 920px;
+$landing-page-width: 1000px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
 
@@ -103,9 +103,9 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf {
   background-color: $landing-page-shelf-background;
 
-  &:not(.flat){
+//  &:not(.flat){
     @include gradient-primer($landing-page-shelf-background, -10%,bottom);
-  }
+//  }
 
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -115,7 +115,6 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf__lining {
   max-width: $landing-page-width;
   margin: 0 auto;
-  max-width: $landing-page-width;
 
   &.half {
     float: left;
@@ -128,6 +127,11 @@ $landing-page-shelf-background: #ddd;
     &:last-child {
       border-left: 1px solid $outset;
     }
+  }
+
+  .half {
+    float: left;
+    width: 50%;
   }
 }
 
@@ -177,6 +181,14 @@ $landing-page-shelf-background: #ddd;
   margin: 1em 0;
 }
 
+.landing-shelf__divider--white {
+  background-color: $button-color;
+  border: none;
+  height: 1px;
+  margin: 1em 0;
+}
+
+
 .landing-shelf__divider-legend {
   font-size: .8em;
   text-align: center;
@@ -186,8 +198,7 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf__button--twitter {
   @include button-sizing;
 
-  display: block;
-  float: left;
+  display: inline-block;
   margin: 0 1em 1em 0;
   text-align: center;
   width: 161px;
@@ -256,11 +267,23 @@ $landing-page-shelf-background: #ddd;
  * _invite - Invitation Form Shelf
  ********************************************************/
 .landing-shelf--invite {
+  background-color: #444;
+  background-image: url('/images/landing/invite_landing.jpg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: none;
+  color: #efefef;
+
   .landing-shelf__lining {
-    margin: 0 auto;
-    max-width: 350px;
+//    margin: 0 auto;
+//    max-width: 350px;
     padding: 50px 0;
     text-align: center;
+
+    &.half {
+      border: none;
+    }
   }
 
   .landing-shelf__h1 {
@@ -273,13 +296,20 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf_form--invite {
   font-size: 1.4em;
   text-align: left;
+  width: 400px;
 
   .form_submit {
     width: 100%;
   }
 
   .form_label {
+    font-family: $font-family;
+    font-weight: bold;
     position: relative;
+  }
+
+  .form_input {
+    border-radius: 2px;
   }
 
   .form_error {
@@ -291,7 +321,32 @@ $landing-page-shelf-background: #ddd;
     position: absolute;
     right: 0;
   }
+
+  .form_fieldset--social-login {
+    text-align: center;
+  }
 }
+
+/********************************************************
+ * _invite - Invitation Welcome
+ ********************************************************/
+.landing-shelf__welcome {
+  margin-top: 50px;
+  font-size: 5.5em;
+  text-align: center;
+
+  .landing-shelf__h1 {
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .landing-shelf__h2 {
+    font-size: .7em;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
 
 
 /********************************************************
