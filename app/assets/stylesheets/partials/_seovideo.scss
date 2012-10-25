@@ -246,6 +246,7 @@ $landing-page-shelf-background: #ddd;
 .seovideo-messages-item {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
+	min-height: 60px;
 
 	&:last-child {
 		border-bottom: none;
