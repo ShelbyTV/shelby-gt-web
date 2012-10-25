@@ -66,6 +66,16 @@
   }
 }
 
+.form_input_uneditable,
+.form_textarea_uneditable {
+  background-color: transparent;
+  border: none;
+  &[disabled] {
+    background-color: transparent;
+    border: none;
+  }
+}
+
 .form_textarea_subline {
   margin: .25em 0 0;
   opacity: .5;
