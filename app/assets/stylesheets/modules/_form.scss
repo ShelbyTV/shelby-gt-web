@@ -45,7 +45,7 @@
 .form_input,
 .form_textarea {
   @include roundies(input);
-  @include transition-property('border');
+  @include transition-property('border,opacity');
   @include transition-duration(0.25s);
   @include transition-timing-function(ease-in);
 

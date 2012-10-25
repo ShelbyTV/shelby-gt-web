@@ -16,7 +16,7 @@
           <label class="form_label" for="signup-name">
             Full Name <span class="form_error js-invite-name-error"></span>
           </label>
-          <input name="user[name]" id="signup-name" class="form_input" type="text" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
+          <input name="user[name]" id="signup-name" class="form_input" placeholder="First and Last Name" type="text" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
         </fieldset>
 
         <fieldset class="form_fieldset">
@@ -28,14 +28,14 @@
               <span class="form_error js-invite-username-error"></span>
             <% end %>
           </label>
-          <input name="user[nickname]" id="signup-username" class="form_input" type="text" value="<%= cookies[:_shelby_signup_username] %>" />
+          <input name="user[nickname]" id="signup-username" class="form_input" placeholder="Your Shelby username" type="text" value="<%= cookies[:_shelby_signup_username] %>" />
         </fieldset>
 
         <fieldset class="form_fieldset">
           <label class="form_label" for="signup-password">
             Password <span class="form_error js-invite-password-error"></span>
           </label>
-          <input name="user[password]" id="signup-password" class="form_input" type="password" />
+          <input name="user[password]" id="signup-password" class="form_input" placeholder="•••••••••" type="password" />
         </fieldset>
 
         <fieldset class="form_fieldset">
@@ -47,7 +47,7 @@
               <span class="form_error js-invite-email-error"></span>
             <% end %>
           </label>
-          <input name="user[primary_email]" id="signup-email" class="form_input" type="email" value="<%= cookies[:_shelby_signup_email] %>" />
+          <input name="user[primary_email]" id="signup-email" class="form_input" placeholder="email@address.com" type="email" value="<%= cookies[:_shelby_signup_email] %>" />
         </fieldset>
 
         <fieldset class="form_fieldset" hidden >

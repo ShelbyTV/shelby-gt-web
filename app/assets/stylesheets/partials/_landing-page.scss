@@ -327,6 +327,11 @@ $landing-page-shelf-background: #ddd;
 
   .form_input {
     border-radius: 2px;
+    opacity: .9;
+
+    &:focus {
+      opacity: 1;
+    }
   }
 
   .form_error {
@@ -351,6 +356,7 @@ $landing-page-shelf-background: #ddd;
   margin-top: 50px;
   font-size: 5.5em;
   text-align: center;
+  text-shadow: $shadow-text;
 
   .landing-shelf__h1 {
     font-weight: 700;
