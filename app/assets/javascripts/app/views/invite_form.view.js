@@ -15,10 +15,12 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
 
   initialize : function() {
     this.options.user.bind('change:beta_invites_available', this._updateInvitesAvailable, this);
+    this.model.bind('invite:open', this._openDropdown, this);
   },
 
   _cleanup : function(){
     this.options.user.unbind('change:beta_invites_available', this._updateInvitesAvailable, this);
+    this.model.unbind('invite:open', this._openDropdown, this);
   },
 
   render : function(){
@@ -133,6 +135,14 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
       this.$('.js-invites-remaining').show();
     } else {
       this.$('.js-invites-remaining').hide();
+    }
+  },
+
+  _openDropdown : function() {
+    this.$('.js-invite-section').show();
+    if (!this.options.user.get('beta_invites_available')){
+      // if the user doesn't have any invites left, auto close after a bit
+      this._closeDropDownAfterUserFeedbackDelay(2000);
     }
   }
 
