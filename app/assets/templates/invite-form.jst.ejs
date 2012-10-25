@@ -30,7 +30,7 @@
           Subject
         </label>
         <% var userDisplayName = user.get('name') || user.get('nickname') %>
-        <input id="invite-subject" class="form_input js-invite-subject" type="text" name="invite-subject" tabindex="0" value="<%= userDisplayName %> invites you to join Shelby.tv" disabled />
+        <input id="invite-subject" class="form_input form_input_uneditable js-invite-subject" type="text" name="invite-subject" tabindex="0" value="<%= userDisplayName %> invites you to join Shelby.tv" disabled />
       </fieldset>
 
       <fieldset class="form_fieldset">
