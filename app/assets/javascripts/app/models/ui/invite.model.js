@@ -1,7 +1,7 @@
 libs.shelbyGT.InviteModel = libs.shelbyGT.ShelbyBaseModel.extend({
   defaults : {
     to : '',
-    body : "Check out Shelby.tv!  It's a simple new way to explore video."
+    body : "It's a simple way to discover new video, and share your taste at your own .tv site."
   },
 
   url : function() {
