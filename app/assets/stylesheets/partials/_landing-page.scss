@@ -98,6 +98,26 @@ $landing-page-footer-font-color: #EFEFEF;
 /********************************************************
  * All Shelves
  ********************************************************/
+  .half,
+  .half--left,
+  .half--right {
+    width: 50%;
+  }
+
+  .half {
+//    float: left;
+//    overflow: hidden;
+  }
+
+  .half--left {
+    float: left;
+  }
+
+  .half--right {
+    float: right;
+  }
+
+
 $landing-page-shelf-background: #ddd;
 
 .landing-shelf {
@@ -127,11 +147,6 @@ $landing-page-shelf-background: #ddd;
     &:last-child {
       border-left: 1px solid $outset;
     }
-  }
-
-  .half {
-    float: left;
-    width: 50%;
   }
 }
 

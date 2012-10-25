@@ -1,5 +1,15 @@
 <section class="landing-shelf landing-shelf--invite clearfix">
   <div class="landing-shelf__lining clearfix">
+
+    <div class="landing-shelf__lining landing-shelf__welcome half--right">
+      <h2 class="landing-shelf__h1">
+        Welcome
+      </h2>
+      <h3 class="landing-shelf__h2">
+        We've saved you a seat
+      </h3>
+    </div>
+
     <div class="half">
       <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
         <fieldset class="form_fieldset">
@@ -69,16 +79,6 @@
         </fieldset>
       </form>
     </div><!-- eo half -->
-
-    <div class="landing-shelf__lining landing-shelf__welcome half">
-      <h2 class="landing-shelf__h1">
-        Welcome
-      </h2>
-      <h3 class="landing-shelf__h2">
-        We've saved you a seat
-      </h3>
-    </div>
-  </div> <!-- eo half -->
 </section>
 
 <script>
