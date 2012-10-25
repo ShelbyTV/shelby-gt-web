@@ -32,7 +32,8 @@ class HomeController < ApplicationController
           # Consider errors and render landing page
           @auth_failure = params[:auth_failure] == '1'
           @auth_strategy = params[:auth_strategy]
-          @show_error = params[:access] == "nos"
+          @access_error = params[:access] == "nos"
+          @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
           
           get_info_for_meta_tags(params[:path])
@@ -50,6 +51,24 @@ class HomeController < ApplicationController
       format.any {
         head :not_found
       }
+    end
+  end
+
+  ##
+  # Handles invite landing page
+  #
+  # GET /invite/:invite_id
+  #
+  def invite
+    if user_signed_in?
+      redirect_to :action => :index
+    else
+      # Parse errors and render landing
+      @nickname_error = params[:nickname]
+      @email_error = params[:primary_email]
+
+      @invite_id = params[:invite_id]
+      render '/home/landing'
     end
   end
 

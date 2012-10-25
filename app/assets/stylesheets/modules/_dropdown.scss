@@ -19,6 +19,12 @@
       display: block;
     }
   }
+
+  &.dropdown_module--stay-open {
+    .dropdown_section {
+      display: block;
+    }
+  }
 }
 
 .dropdown_button {

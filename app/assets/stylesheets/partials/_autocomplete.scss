@@ -34,10 +34,10 @@
 	}
 
 	li.active {
-		background-color: $shelby-green;
+		background-color: $shelby-blue;
 
 		a {
-			color: adjust-lightness($shelby-green, 30%);
+			color: adjust-lightness($shelby-blue, 30%);
 
 			&:hover {
 				text-decoration: underline;

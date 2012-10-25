@@ -11,7 +11,7 @@
 //  non-normative
 //------------------------------------------------------------------------------
 .appstore-button {
-  @include button-primer($shelby-blue);
+  @include button-sizing(generic);
 
   clear: both;
   display: block;
@@ -35,17 +35,6 @@
     display: block;
     font-weight: 500;
     font-size: 1.6em;
-  }
-
-  &:active,
-  &:link {
-    text-decoration: none;
-  }
-
-  &:hover,
-  &:visited {
-    color: $button-color;
-    text-decoration: none;
   }
 
   &:hover {

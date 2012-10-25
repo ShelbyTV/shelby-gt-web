@@ -84,13 +84,19 @@
       </nav>
     </header>
 
-    <% if @show_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="landing-shelf landing-shelf-error">
-        <div class="landing-shelf-lining">
-          <% if @show_error %>
+    <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
+      <section class="landing-shelf landing-shelf__error">
+        <div class="landing-shelf__lining">
+          <% if @access_error %>
             <p class="gate-signin-noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>
               <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
+            </p>
+          <% end %>
+
+          <% if @invite_error %>
+            <p class="gate-signin-invalid-invite js-signin-error">
+              Sorry, that invite is no longer valid.
             </p>
           <% end %>
 
@@ -117,8 +123,15 @@
       <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
       <% end %>
     <% end %>
-    <%= render :partial => "/home/shelf/genius_ios_ad", :locals => { :primary_shelf => (!@share_type or !@video)} %>
-    <%= render :partial => "/home/shelf/private_beta" unless @share_type and @video %>
+
+    <%= render :partial => "/home/shelf/invite" if @invite_id %>
+
+    <% if (!@share_type or !@video) and !@invite_id %>
+      <%= render :partial => "/home/shelf/banner" %>
+      <%= render :partial => "/home/shelf/sign_me_up" %>
+    <% end %>
+
+    <%= render :partial => "/home/shelf/call_to_action" %>
     <% #------------ /Shelf Content --------------- %>
 
     <footer class="landing-footer">
@@ -161,56 +174,38 @@
               <li>
                 <div class="g-plusone" data-href="http://shelby.tv"></div>
               </li>
+            </ul>
           </li>
         </ul>
-
       </div>
     </footer>
-
-
   </div><!-- /shelby-wrapper -->
-
-  <!-- Email submit (used by many shelves) -->
-  <script>
-    $(document).ready(function(){
-      $('#js-email-form').on('submit', function(){
-        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-email-form').addClass('hidden');
-          $('#js-thankyou').removeClass('hidden');
-        }, 'jsonp');
-        return false;
-      });
-    });
-  </script>
 
   <!-- Facebook widget -->
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <!-- /facebook widget -->
 
-  <!-- Twitter widget -->
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!-- /Twitter widget -->
-
-  <!-- G +1 widget -->
   <script>
+    // Twitter widget -->
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+    // Facebook widget -->
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // G +1 widget -->
     (function() {
       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
       po.src = 'https://apis.google.com/js/plusone.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
-  </script>
-  <!-- /G +1 widget -->
 
-  <% if "production" == Rails.env %>
-    <!-- Track loading of landing page separate from loading of app -->
-    <script>
+    <% if "production" == Rails.env %>
+      //Track loading of landing page separate from loading of app -->
       var shortLink = $.getUrlParam('awesm');
       if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
       else { shortLink = "Direct"; }
@@ -218,8 +213,6 @@
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s);}(document,'script'));
-    </script>
-    <script>
       var _kmq = _kmq || [];
       var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
       function _kms(u){
@@ -238,8 +231,18 @@
       if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
       else { shortLink = null; }
       _kmq.push(['record', action, {shortLink: shortLink}]);
-    </script>
-  <% end %>
+    <% end %>
 
+    $(document).ready(function(){
+      // Email submit (used by many shelves) -->
+      $('#js-email-form').on('submit', function(){
+        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
+          $('#js-email-form').addClass('hidden');
+          $('#js-thankyou').removeClass('hidden');
+        }, 'jsonp');
+        return false;
+      });
+    });
+  </script>
 </body>
 </html>

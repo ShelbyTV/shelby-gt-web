@@ -1,0 +1,129 @@
+<section class="landing-shelf landing-shelf--invite">
+  <div class="landing-shelf__lining">
+    <h1 class="landing-shelf__h1">
+      You've been invited to join the Shelby community!
+    </h1>
+
+    <hr class="landing-shelf__divider" />
+
+    <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-name">
+          Name <span class="form_error js-invite-name-error"></span>
+        </label>
+        <input name="user[name]" id="signup-name" class="form_input" type="text" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-username">
+          Username
+          <% if @nickname_error %>
+            <span class="form_error js-invite-username-error" style="display: block;">Sorry, that username is already taken.</span>
+          <% else %>
+            <span class="form_error js-invite-username-error"></span>
+          <% end %>
+        </label>
+        <input name="user[nickname]" id="signup-username" class="form_input" type="text" value="<%= cookies[:_shelby_signup_username] %>" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-password">
+          Password <span class="form_error js-invite-password-error">/span>
+        </label>
+        <input name="user[password]" id="signup-password" class="form_input" type="password" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="signup-email">
+          Email address
+          <% if @email_error %>
+            <span class="form_error js-invite-email-error" style="display: block;">Sorry, that email is already taken.</span>
+          <% else %>
+            <span class="form_error js-invite-email-error"></span>
+          <% end %>
+        </label>
+        <input name="user[primary_email]" id="signup-email" class="form_input" type="email" value="<%= cookies[:_shelby_signup_email] %>" />
+      </fieldset>
+
+      <fieldset class="form_fieldset" hidden >
+        <input name="invite_id" id="signup-invite-id" type="hidden" value="<%= @invite_id %>" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input class="button_primer button_blue form_submit" type="submit" value="Sign me up!" />
+      </fieldset>
+
+      <hr class="landing-shelf__divider" />
+
+      <h3 class="landing-shelf__divider-legend">
+        You can also login with:
+      </h3>
+
+      <fieldset class="form_fieldset">
+        <a class="button_primer button_twitter-blue faux_button landing-shelf__button--twitter auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" popup-width="600" popup-height="700">
+          <i class="button_icon_left icon_social_twitter icon">
+            Twitter
+          </i>
+        </a>
+
+        <a class="button_primer button_facebook-blue faux_button landing-shelf__button--facebook auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" popup-width="1000" popup-height="650">
+          <i class="button_icon_left icon_social_facebook icon">
+            Facebook
+          </i>
+        </a>
+      </fieldset>
+    </form>
+    <script>
+      $(document).ready(function(){
+        $('.js-invite-form').on('submit', function(e){
+          var hasErrors = false;
+          var signupName = $('#signup-name').val();
+          var signupUsername = $('#signup-username').val();
+          var signupEmail = $('#signup-email').val();
+
+          // validate user full name
+          if(!signupName.length) {
+            $('.js-invite-name-error').text('Please enter your name').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-name-error').hide();
+          }
+
+          // validate username
+          if(!signupUsername.length) {
+            $('.js-invite-username-error').text('Please enter a username').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-username-error').hide();
+          }
+
+          // validate password
+          if($('#signup-password').val().length < shelby.config.user.password.minLength) {
+            $('.js-invite-password-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-password-error').hide();
+          }
+
+          // validate email
+          if(!signupEmail.length || signupEmail.search(shelby.config.user.email.validationRegex) == -1) {
+            $('.js-invite-email-error').text('Please enter a valid email.').show();
+            hasErrors = true;
+          } else {
+            $('.js-invite-email-error').hide();
+          }
+
+          if (hasErrors) {
+            e.preventDefault();
+          } else {
+            // save the user's input in a session cookie so we can re-render it if API redirects us back
+            // here with errors the user needs to fix
+            cookies.set('_shelby_signup_name', signupName);
+            cookies.set('_shelby_signup_username', signupUsername);
+            cookies.set('_shelby_signup_email', signupEmail);
+          }
+        });
+      });
+    </script>
+  </div>
+</section>
