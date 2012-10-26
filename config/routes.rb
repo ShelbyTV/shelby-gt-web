@@ -23,13 +23,16 @@ ShelbyGtWeb::Application.routes.draw do
   # FRAMES
   get '/frame/:frame_id' => 'frame#just_frame'
   get '/roll/:roll_id/frame/:frame_id' => 'frame#show'
-  get '/isolated_roll/:roll_id/frame/:frame_id' => 'frame#show_frame_in_isolated_roll'
+  get '/isolated-roll/:roll_id/frame/:frame_id' => 'frame#show_frame_in_isolated_roll'
   
   # ROLLS
   get '/roll/:roll_id/:title' => 'roll#show'
   get '/roll/:roll_id' => 'roll#show'
   get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
-  get '/isolated_roll/:roll_id' => 'roll#show_isolated_roll'
+  get '/isolated-roll/:roll_id' => 'roll#show_isolated_roll'
+
+  # INVITES
+  get '/invite/:invite_id' => "home#invite"
 
   # HOME
   get '/explore' => "home#explore"

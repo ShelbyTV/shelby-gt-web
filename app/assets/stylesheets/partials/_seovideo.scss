@@ -96,7 +96,6 @@ p {
 //------------------------------------------------------------------------------
 .seovideo-button {
 	@include button-primer($shelby-blue,dark,wide);
-        margin-left: 8px;
 
 	//TODO: fix this weird bug.
 	&:link,
@@ -117,35 +116,82 @@ p {
 }
 
 .seovideo-subhead{
-	margin: 1.7em auto 1em;
+  font-size: 10px;
+	margin: 0 auto 4em;
 	max-width: $seo-column-main;
+	position: relative;
 }
 
 .seovideo-subheader {
-	font-family: $font-family-display;
-	font-size: 1em;
-	font-weight: 300;
-	margin: 0;
+  font-family: $font-family-display;
+  font-size: 1.75em;
+  font-weight: 100;
+  line-height: 1;
 }
 
 .seovideo-signup {
-	float: right;
-	font-size: 1em;
-	margin-right: 260px;
+	font-size: 1.5em;
+	position: absolute;
+	width: $seo-column-right;
+	right: 0;
+	
+	h2 {
+	  font-size: 1em;
+	  margin-bottom: 2em;
+  }
 }
 
-.seovideo-signup-link {
-	color: #666;
+//------------------------------------------------------------------------------
+//  request an invite in the header of seo page
+//------------------------------------------------------------------------------
+$landing-page-shelf-background: #ddd;
 
-	&:link,
-	&:visited,
-	&:active {
-		color: #666;
-	}
+.landing-form-label {
+  display: block;
+  font-family: $font-family-display;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 2;
+}
 
-	&:hover {
-		color: #333;
-	}
+.landing-form-input {
+  @include roundies(left);
+  @include transition-property('border');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
+
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  font-size: 2em;
+  height: 45px;
+  padding: .5em;
+
+  &:focus {
+    border: 1px solid black;
+    outline: none;
+  }
+}
+
+.landing-form-submit {
+  @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
+  @include roundies(right);
+
+  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+  border-left: none;
+  display: inline-block;
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 400;
+  height: 45px;
+  padding: 1.1em 1em 1.2em;
+  vertical-align: bottom;
+
+  &:hover {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
+  }
+
+  &:active {
+    @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -200,6 +246,7 @@ p {
 .seovideo-messages-item {
 	border-top: 1px solid $outset;
 	border-bottom: 1px solid $inset;
+	min-height: 60px;
 
 	&:last-child {
 		border-bottom: none;
