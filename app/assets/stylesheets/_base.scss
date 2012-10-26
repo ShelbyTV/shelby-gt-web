@@ -1,7 +1,8 @@
 $extension: ".svg" !default;
 $path: "/images/assets/" !default;
 
-$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
+$logo-shelby                    : "#{$path}logo_type#{$extension}";
+//$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
 $icon-cancel                    : "#{$path}cancel.svg";
