@@ -11,7 +11,7 @@ describe("ExploreLayoutView", function() {
   });
 
   describe("Instantiation", function() {
-    it("should attach to the element with class 'main'", function() {
+    it("should attach to the element with class 'js-explore-layout'", function() {
       expect(this.view.$el).toHaveClass('js-explore-layout');
     });
   });

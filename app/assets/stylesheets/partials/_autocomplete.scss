@@ -2,10 +2,11 @@
 
 .autocomplete-menu {	
 	@include roundies(footer);
-
-	border-left: 1px solid $inset;
-	border-right: 1px solid $inset;
-	border-bottom: 1px solid $inset;
+	$autocomplete-border: darken($inset,40%);
+	border-left: 1px solid $autocomplete-border;
+	border-right: 1px solid $autocomplete-border;
+	border-bottom: 1px solid $autocomplete-border;
+	box-shadow: $shadow;
 	float: left;
 	font-size: 12px;
 	list-style: none;
@@ -18,26 +19,24 @@
 		background-color: #efefef;
 
 		a {
-			@include inputfont;
-
 			color: #888;
 			display: block;
-			font-weight: 100;
+			font-weight: normal;
 			padding: .5em;
 			text-decoration: none;
 		}
 
 		strong {
 			color: #333;
-			font-weight: 500;
+			font-weight: bold;
 		}
 	}
 
 	li.active {
-		background-color: $shelby-green;
+		background-color: $shelby-blue;
 
 		a {
-			color: adjust-lightness($shelby-green, 30%);
+			color: adjust-lightness($shelby-blue, 30%);
 
 			&:hover {
 				text-decoration: underline;
