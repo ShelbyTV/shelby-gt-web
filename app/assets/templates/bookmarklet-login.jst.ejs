@@ -12,23 +12,30 @@
 </div><!-- eo .guide-overlay-head.rolling-header -->
 
 <div class="overlay_body guide-overlay-body rolling-body">
-	<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>?redir=<%= window.location.href %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
-		<fieldset class="">
+	<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>?redir=<%= window.location.href %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+		<fieldset class="form_fieldset">
 			<label for="username" class="form_label">Username</label>
 			<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
 		</fieldset>
-		<fieldset class="">
+
+		<fieldset class="form_fieldset">
 			<label for="password" class="form_label">Password</label>
 			<input id="password" name="password" type="password" placeholder="•••••••" class="form_input" />
 		</fieldset>
+
 		<fieldset class="form_fieldset">
-			<input name="commit" type="submit" value="Login" class="login-submit" />
+			<input name="commit" type="submit" value="Login" class="button_primer button_blue form_submit" />
+      <a href="<%= shelby.config.apiBase + "/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
 		</fieldset>
 	</form>
 
-	<hr />
+  <hr class="hr--double" />
 
-  <div class="clearfix" style="text-align: center;">
+  <div class="form_fieldset form_fieldset--login-social clearfix">
+    <h4 class="form_legend">
+      Log in with
+    </h4>
+
     <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
       href="<%= twitterDomain %>" location="<%= twitterDomain %>" popup-width="600" popup-height="700">
       <i class="button_icon_left icon_share_twitter_on icon">

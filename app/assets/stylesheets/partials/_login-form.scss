@@ -1,0 +1,55 @@
+.form_module--request-form {
+  padding: 10px;
+}
+
+.form_module--login-form {
+  padding: 10px;
+  
+  .form_fieldset {
+    &:first-child {
+      margin-top: 0;
+    }
+
+  }
+
+  .form_label {
+
+  }
+
+  .form_input {
+    
+  }
+
+  .form_submit {
+
+  }
+}
+
+.form_fieldset--private {
+  font-family: $font-family;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 10px 5px;
+
+  .form_legend {
+    margin: 0;
+  }
+}
+
+.form_fieldset--login-social {
+ margin: 0;
+ padding: 10px;
+
+  .form_legend {
+    margin-bottom: 5px;
+  }
+}
+
+.form_fieldset--feedback {
+  padding:10px;
+  margin: 0;
+}
+
+.login-forgot-password {
+  padding-left: 2em;
+}

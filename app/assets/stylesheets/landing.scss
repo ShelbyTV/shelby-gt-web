@@ -3,18 +3,20 @@
 
 @import "compass/typography/links/hover-link";
 
-@import 
+@import
   "partials/fonts",
-  "partials/h5bp", 
-  "partials/modules", 
-  "partials/utilities", 
+  "partials/h5bp",
+  "partials/modules",
+  "partials/utilities",
   "partials/icons",
-  
+
   "partials/app.html",
   "partials/app-header",
   "partials/guide-presentation-selector",
   "partials/guide-overlay-view",
-  
+
+  "partials/login-form",
+
   "partials/landing-page",
-  
+
   "partials/h5bp-utilities";

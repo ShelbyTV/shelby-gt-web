@@ -5,17 +5,19 @@
 .ext-elements {
   /* We import these in here so we don't fuck up the surrounding page */
   @import "partials/fonts",
-          "partials/h5bp", 
+          "partials/h5bp",
           "partials/utilities",
           "partials/modules",
           "partials/icons",
-          
+
           "partials/app.html",
           "partials/app-header",
 
           "partials/guide-presentation-selector",
           "partials/guide-overlay-view",
           "partials/guide-overlay-controls",
+
+          "partials/login-form",
 
           "partials/roll-header",
 
@@ -27,14 +29,14 @@
           "partials/frame-rolling",
           "partials/frame-conversation",
 
-          "partials/rolls",	
+          "partials/rolls",
           "partials/share",
 
           "partials/notifications",
 
           "partials/h5bp-utilities",
           "bookmarklet-overwrite";
-  
+
   font-size: 11px;
 
   * {
@@ -43,16 +45,16 @@
     font-size: 1em;
     text-shadow: none;
   }
-  
+
   ul, ol {
     padding: 0;
   }
-  
+
   /* Color reset (b/c of Vimeo, at least) */
   input, textarea {
     background-color: #fff;
   }
-  
+
   h1, h2, h3, h4 {
     color: $text;
   }
@@ -90,7 +92,7 @@
           form {
             display: block;
           }
-            
+
 
 	  textarea, button, input {
 	  	font-size: 12px !important;
