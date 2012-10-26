@@ -12,14 +12,14 @@
 
     <div class="half">
       <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
-        <fieldset class="form_fieldset">
+        <fieldset class="form_fieldset js-invite-name">
           <label class="form_label" for="signup-name">
             Full Name <span class="form_error js-invite-name-error"></span>
           </label>
           <input name="user[name]" id="signup-name" class="form_input" placeholder="First and Last Name" type="text" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
         </fieldset>
 
-        <fieldset class="form_fieldset">
+        <fieldset class="form_fieldset js-invite-username">
           <label class="form_label" for="signup-username">
             Username
             <% if @nickname_error %>
@@ -31,14 +31,14 @@
           <input name="user[nickname]" id="signup-username" class="form_input" placeholder="Your Shelby username" type="text" value="<%= cookies[:_shelby_signup_username] %>" />
         </fieldset>
 
-        <fieldset class="form_fieldset">
+        <fieldset class="form_fieldset js-invite-password">
           <label class="form_label" for="signup-password">
             Password <span class="form_error js-invite-password-error"></span>
           </label>
           <input name="user[password]" id="signup-password" class="form_input" placeholder="•••••••••" type="password" />
         </fieldset>
 
-        <fieldset class="form_fieldset">
+        <fieldset class="form_fieldset js-invite-email">
           <label class="form_label" for="signup-email">
             Email address
             <% if @email_error %>
@@ -85,40 +85,45 @@
   $(document).ready(function(){
     $('.js-invite-form').on('submit', function(e){
       var hasErrors = false;
-      var signupName = $('#signup-name').val();
-      var signupUsername = $('#signup-username').val();
-      var signupEmail = $('#signup-email').val();
+      var signupName = $('#signup-name');
+      var signupUsername = $('#signup-username');
+      var signupEmail = $('#signup-email');
 
       // validate user full name
-      if(!signupName.length) {
-        $('.js-invite-name-error').text('Please enter your name').show();
+      if(!signupName.val().length) {
+        $('.js-invite-name').addClass('form_fieldset--error')
+                            .find('.form_error').text('Please enter your name');
         hasErrors = true;
       } else {
-        $('.js-invite-name-error').hide();
+        $('.js-invite-name').removeClass('form_fieldset--error');
       }
 
       // validate username
-      if(!signupUsername.length) {
-        $('.js-invite-username-error').text('Please enter a username').show();
+      if(!signupUsername.val().length) {
+        $('.js-invite-username').addClass('form_fieldset--error')
+                                .find('.form_error').text('Please enter a username');
         hasErrors = true;
       } else {
-        $('.js-invite-username-error').hide();
+        $('.js-invite-username').removeClass('form_fieldset--error');
       }
 
       // validate password
+      // var password
       if($('#signup-password').val().length < shelby.config.user.password.minLength) {
-        $('.js-invite-password-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
+        $('.js-invite-password').addClass('form_fieldset--error')
+                                .find('.form_error').text('Please must be at least ' + shelby.config.user.password.minLength + ' characters long');
         hasErrors = true;
       } else {
-        $('.js-invite-password-error').hide();
+        $('.js-invite-password').removeClass('form_fieldset--error');
       }
 
       // validate email
-      if(!signupEmail.length || signupEmail.search(shelby.config.user.email.validationRegex) == -1) {
-        $('.js-invite-email-error').text('Please enter a valid email.').show();
+      if(!signupEmail.val().length || signupEmail.val().search(shelby.config.user.email.validationRegex) == -1) {
+        $('.js-invite-email').addClass('form_fieldset--error')
+                             .find('.form_error').text('Please enter a valid email.');
         hasErrors = true;
       } else {
-        $('.js-invite-email-error').hide();
+        $('.js-invite-email').removeClass('form_fieldset--error');
       }
 
       if (hasErrors) {
@@ -129,6 +134,14 @@
         cookies.set('_shelby_signup_name', signupName);
         cookies.set('_shelby_signup_username', signupUsername);
         cookies.set('_shelby_signup_email', signupEmail);
+      }
+    }).find('.form_input').on('blur', function(){
+      $this = $(this);
+
+      if(!$this.val().length) {
+        $this.removeClass('filled');
+      } else {
+        $this.addClass('filled');
       }
     });
   });

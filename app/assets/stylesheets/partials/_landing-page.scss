@@ -287,7 +287,7 @@ $landing-page-shelf-background: #ddd;
   background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #333;
   border-top: none;
   color: #efefef;
 
@@ -327,21 +327,28 @@ $landing-page-shelf-background: #ddd;
 
   .form_input {
     border-radius: 2px;
-    opacity: .9;
+    background-color: rgba(239, 239, 239,.7);
 
+    &.filled,
     &:focus {
-      opacity: 1;
+      background-color: rgba(239, 239, 239,1);
+    }
+  }
+
+  .form_fieldset--error {
+    .form_error {
+      display: block;
     }
   }
 
   .form_error {
-    bottom: 0;
+    bottom: -1.8em;
     color: $shelby-red;
     display: none;
     font-family: $font-family;
     font-size: .8em;
     position: absolute;
-    right: 0;
+    right: .5em;
   }
 
   .form_fieldset--social-login {
@@ -353,6 +360,7 @@ $landing-page-shelf-background: #ddd;
  * _invite - Invitation Welcome
  ********************************************************/
 .landing-shelf__welcome {
+  color: white;
   margin-top: 50px;
   font-size: 5.5em;
   text-align: center;
