@@ -111,7 +111,7 @@
       // var password
       if($('#signup-password').val().length < shelby.config.user.password.minLength) {
         $('.js-invite-password').addClass('form_fieldset--error')
-                                .find('.form_error').text('Please must be at least ' + shelby.config.user.password.minLength + ' characters long');
+                                .find('.form_error').text('Password must be at least ' + shelby.config.user.password.minLength + ' characters long');
         hasErrors = true;
       } else {
         $('.js-invite-password').removeClass('form_fieldset--error');
