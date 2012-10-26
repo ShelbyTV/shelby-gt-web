@@ -131,9 +131,9 @@
       } else {
         // save the user's input in a session cookie so we can re-render it if API redirects us back
         // here with errors the user needs to fix
-        cookies.set('_shelby_signup_name', signupName);
-        cookies.set('_shelby_signup_username', signupUsername);
-        cookies.set('_shelby_signup_email', signupEmail);
+        cookies.set('_shelby_signup_name', signupName.val());
+        cookies.set('_shelby_signup_username', signupUsername.val());
+        cookies.set('_shelby_signup_email', signupEmail.val());
       }
     }).find('.form_input').on('blur', function(){
       $this = $(this);
