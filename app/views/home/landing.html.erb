@@ -41,6 +41,12 @@
 
             <section class="dropdown_section login-section">
               <div class="dropdown_lining login-section-lining clearfix">
+	
+								<div class="login-form clearfix">
+									<h4>Shelby.tv is invite-only right now.</h4>
+								</div>
+	
+								<hr />
 
                 <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
                   <fieldset class="">
@@ -60,7 +66,7 @@
                 <hr />
 
                 <div class="social_login login-social-section clearfix">
-                  <h4 class="login-social-section-header">Login with</h4>
+                  <h4 class="login-social-section-header">Members can also log in with</h4>
                   <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
                     href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
                     <i class="button_icon_left icon_share_twitter_on icon">
