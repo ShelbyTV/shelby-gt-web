@@ -147,12 +147,12 @@
     @include button-primer($shelby-gray);
   }
 
+  .login-explanation {
+    margin: 20px 0 0 10px;
+    font-size: 1.2em;
+  }
 }
 
-#login-guide-window .login-explanation {
-  margin: 20px 0 0 10px;
-  font-size: 1.2em;
-}
 
 .login-form {
   margin: 0 10px;
