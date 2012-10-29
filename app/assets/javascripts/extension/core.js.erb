@@ -558,7 +558,7 @@ window.shelbyBookmarklet = {
                             utilObject.styleGuideHide("comment-guide");
                         });
                         utilObject.shelbyDocElements['commentSubmit'] = shelbyJ(".new-comment-submit");
-                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".new-comment-input");
+                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".js-conversation-body .new-comment-input");
                         utilObject.htmlTemplate.setUpConversationWithId(conversationId, videoId);
                         utilObject.styleGuideShow("comment-guide");
                         utilObject.shelbyDocElements['commentSubmit'].off('click');
