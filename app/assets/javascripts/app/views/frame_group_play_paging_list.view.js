@@ -66,11 +66,13 @@
 
     //ListView overrides
     _intervalInsertViews : function() {
+      // TEMPORARILY PROMOING ONLY ROLLS TO SEE IF WE GET SOME JUICE FROME FRANKENSTORM
+
       //we'll just randomly choose to show a promo for the explore section or for a specific roll
-      if (this._nextPromoExplore) {
-        this._nextPromoExplore = false;
-        return new InlineExplorePromoView();
-      } else {
+      // if (this._nextPromoExplore) {
+      //   this._nextPromoExplore = false;
+      //   return new InlineExplorePromoView();
+      // } else {
         var promoRolls =
           shelby.models.promoRollCategories.get('roll_categories').reduce(function(memo, category){
             return memo.concat(category.get('rolls').models);
@@ -88,7 +90,7 @@
           //we don't have any rolls to promo, so promo explore instead
           return new InlineExplorePromoView();
         }
-      }
+      // }
     },
 
     _filterPromoRolls : function(roll) {
