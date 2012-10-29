@@ -311,6 +311,7 @@ window.shelbyBookmarklet = {
                                 success: function (response) {
                                   utilObject.queuedVideos = response.result;
                                   utilObject.sendVidsToShelby(foundVids);
+                                  utilObject.initialSearchDone = true;
                                 }
                               });
                           }
@@ -943,7 +944,7 @@ window.shelbyBookmarklet = {
                 shelbyJ("#" + guideName + "-window").removeClass("guide-show")
             },
 
-            foundVideo: null,
+            initialSearchDone: false,
 
             shelbify: function (radar) {
                 var possibleVideos = {
@@ -1006,12 +1007,18 @@ window.shelbyBookmarklet = {
                 //every 2 seconds re-run the search for videos (up to 5 times)
                 var searchesRan = 0;
                 var searchInterval = setInterval(function(){
-                  reRunVideoSearch();
-                  if(searchesRan++ == 5) clearInterval(searchInterval);
+                  if (utilObject.initialSearchDone) {
+                    reRunVideoSearch();
+                    if(searchesRan++ == 5) clearInterval(searchInterval);
+                  }
                 }, 2*1000);
 
                 // Also re-run the search after a click
-                shelbyJ("body").on("click", function() { reRunVideoSearch(); });
+                shelbyJ("body").on("click", function() {
+                  if (utilObject.initialSearchDone) {
+                    reRunVideoSearch();
+                  }
+                });
 
                 utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);
