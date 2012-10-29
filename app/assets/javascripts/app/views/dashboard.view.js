@@ -16,7 +16,7 @@
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
       initFixedHead : true,
       isIntervalComplete : function(displayedItems) {
-        return displayedItems != 0 && displayedItems % 20 == 0;
+        return displayedItems != 0 && displayedItems % 10 == 0;
       },
       fetchParams : {
         include_children : true

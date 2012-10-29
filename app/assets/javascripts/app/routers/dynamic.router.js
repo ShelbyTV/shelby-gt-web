@@ -1,8 +1,9 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "isolated_roll/:rollId"                : "displayIsolatedRoll",
-    "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
+    "send-invite"                          : "openInviteDisplayDashboard",
+    "isolated-roll/:rollId"                : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
     "roll/:rollId/:title"                  : "displayRoll",
@@ -35,6 +36,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
   //ROUTE HANDLERS
   //---
+
+  openInviteDisplayDashboard : function(params) {
+    this.displayDashboard(params, {openInvite: true});
+  },
 
   displayFrameInRollWithComments : function(rollId, frameId, params){
     this.displayFrameInRoll(rollId, frameId, params, {showCommentOverlay:true});
@@ -155,7 +160,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
-    this._setupTopLevelViews();
+    this._setupTopLevelViews(options);
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
@@ -425,7 +430,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      isIsolatedRoll : false
+      isIsolatedRoll : false,
+      openInvite : false
     }).value();
     
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
@@ -446,6 +452,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
     shelby.views.keyboardControls = shelby.views.keyboardControls ||
         new libs.shelbyGT.KeyboardControlsView();
+
+    if (options.openInvite) {
+      shelby.models.invite.trigger('invite:open');
+    }
   },
 
   _setupAnonUserViews : function(options){

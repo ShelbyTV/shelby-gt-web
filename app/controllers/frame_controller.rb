@@ -41,7 +41,7 @@ class FrameController < ApplicationController
     end
   end
   
-  # GET /isolated_roll/:roll_id/frame/:frame_id
+  # GET /isolated-roll/:roll_id/frame/:frame_id
   # to allow linking to a frame within a subdomain'd iso roll
   #  
   def show_frame_in_isolated_roll
