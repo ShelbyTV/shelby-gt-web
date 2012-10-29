@@ -5,8 +5,12 @@
 .notification_module {
   font-family: $font-family-display;
   font-weight: 500;
-  height: inherit; //if parent wrapper isn't set, set a height in the modifying class.
+  /*height is set by GenericBannerNotificationView */
+  height: inherit;
+  padding: 5px;
+  position: relative;
   text-align: center;
+  width: 100%;
   z-index: 4;
 }
 
@@ -34,6 +38,11 @@
 
 }
 
+.notification_option {
+  font-size: .7em;
+  margin-left: .7em;
+}
+
 //------------------------------------------------------------------------------
 //  NOTIFICATIONS
 //------------------------------------------------------------------------------
@@ -41,12 +50,6 @@
 
 }
 
-.notification-banner {
-  /*height is set by GenericBannerNotificationView */
-  padding: 5px;
-  position: relative;
-  width: 100%;
-}
 //------------------------------------------------------------------------------
 //  chrome extension notification
 //------------------------------------------------------------------------------
@@ -121,7 +124,7 @@ $extension-color: #fff82b;
 //------------------------------------------------------------------------------
 $bookmarklet-color: $shelby-blue;
 
-.bookmarklet-notification {
+.notification_module--bookmarklet {
   @include gradient-primer($bookmarklet-color);
 
   color: $button-color;
@@ -164,11 +167,6 @@ $bookmarklet-color: $shelby-blue;
   .icon {
     padding-left: 1.3em;
   }
-}
-
-.bookmarklet-notification-radar-help{
-  font-size: .7em;
-  margin-left: .7em;
 }
 
 .faux-bookmarklet-button {
@@ -233,7 +231,7 @@ $bookmarklet-color: $shelby-blue;
 //------------------------------------------------------------------------------
 //  ANON_BANNER Notification
 //------------------------------------------------------------------------------
-.anonymous-signup-notification {
+.notification_module--anonymous-signup {
   @include gradient-primer(#fff82b, 20%);
 
   .notification_actions {

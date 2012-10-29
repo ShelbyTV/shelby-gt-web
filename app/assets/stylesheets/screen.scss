@@ -1,62 +1,90 @@
+//------------------------------------------------------------------------------
+//  base: color variables, height & width constants
+//------------------------------------------------------------------------------
 @import "base";
+//------------------------------------------------------------------------------
+//  base-mixin: all mixins
+//------------------------------------------------------------------------------
 @import "base-mixin";
 
-@import 
-  "partials/fonts",
-  "partials/h5bp",
-  "partials/modules", 
-  "partials/utilities",
-  "partials/icons",
+//------------------------------------------------------------------------------
+//  boilerplate + normalization
+//------------------------------------------------------------------------------
+@import "partials/fonts";
+@import "partials/h5bp";
 
-  "partials/app.html",
-  "partials/banner_notification",
-  "partials/app-header",
-  "partials/guide-presentation-selector",
-  "partials/guide-overlay-view",
+//------------------------------------------------------------------------------
+//  app wide abstracts
+//------------------------------------------------------------------------------
+@import "partials/modules";
+@import "partials/utilities";
+@import "partials/icons";
+@import "partials/avatar_uploading";
+@import "partials/in-line-notification";
+@import "partials/load-more";
+@import "partials/autocomplete.scss";
+@import "partials/login-form";
 
-  "partials/landing-page",
-  "partials/login-form",
 
-  "partials/explore",
-  "partials/onboarding",
-  "partials/action",
-    "partials/empty-indicator",
+//------------------------------------------------------------------------------
+//  Shelby.tv App
+//------------------------------------------------------------------------------
+@import "partials/app.html";
+@import "partials/banner_notification";
+@import "partials/notifications";
+@import "partials/app-header";
+@import "partials/guide-presentation-selector";
+@import "partials/guide-overlay-view";
 
-  "partials/isolated-roll",
+@import "partials/landing-page";
 
-  "partials/frame",
-  "partials/video-player",
-  "partials/external-tools",
-  "partials/notifications",
+@import "partials/explore";
+@import "partials/onboarding";
+@import "partials/action";
+@import "partials/empty-indicator";
 
-  "partials/roll-header",
+@import "partials/frame";
+@import "partials/video-player";
+@import "partials/external-tools";
 
-  "partials/video-controls",
-  "partials/video-mini-progress",
+@import "partials/roll-header";
 
-  "partials/me-section",
-  "partials/rolls-list",
+//------------------------------------------------------------------------------
+//  videoplayer related
+//------------------------------------------------------------------------------
+@import "partials/video-controls";
+@import "partials/video-mini-progress";
+@import "partials/context-overlay";
+@import "partials/preroll-video-info";
+@import "partials/me-section";
+@import "partials/rolls-list";
 
-  "partials/frame-rolling",
-  "partials/rolling-form",
-  "partials/frame-conversation",
+//------------------------------------------------------------------------------
+//  rolling and sharing
+//------------------------------------------------------------------------------
+@import "partials/frame-rolling";
+@import "partials/rolling-form";
+@import "partials/frame-conversation";
+@import "partials/rolls";
+@import "partials/share";
 
-  "partials/rolls",
-  "partials/share",
+//------------------------------------------------------------------------------
+//  peripherals
+//------------------------------------------------------------------------------
+@import "partials/user-preferences";
+@import "partials/team";
 
-  "partials/user-preferences",
-  "partials/team",
+//------------------------------------------------------------------------------
+//  shelby genius page styles
+//------------------------------------------------------------------------------
+@import "partials/genius.scss";
 
-  "partials/avatar_uploading",
+//------------------------------------------------------------------------------
+//  isolated roll styles
+//------------------------------------------------------------------------------
+@import "partials/isolated-roll";
 
-  "partials/in-line-notification",
-  "partials/load-more",
-
-  "partials/context-overlay",
-  "partials/preroll-video-info",
-
-  "partials/genius.scss",
-
-  "partials/autocomplete.scss",
-
-  "partials/h5bp-utilities";
+//------------------------------------------------------------------------------
+//  non-semantic boilerplater helper classes
+//------------------------------------------------------------------------------
+@import "partials/h5bp-utilities";
