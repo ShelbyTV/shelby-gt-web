@@ -1,7 +1,17 @@
 //------------------------------------------------------------------------------
 //  experimental clearfix... fix.
 //------------------------------------------------------------------------------
+//  fixes theatlantic
+h1,h2,h3,h4,h5,h6 {
+  text-transform: none;
 
+}
+
+button {
+  height: auto;
+  text-transform: none;
+  text-shadow: none;
+}
 //  fixes uproxx.com
 .clearfix:not(.media_body) {
   overflow: visible;
@@ -47,6 +57,7 @@
   border: 1px solid #adadad;
   border-radius: 2px;
   box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
+  font-family: $font-family;
   color: #333;
   font-size: 11px;
   font-weight: 300;
