@@ -195,6 +195,10 @@
     
 }
 
+.guide-overlay-cancel {
+  height: auto;
+}
+
 //------------------------------------------------------------------------------
 //  BUTTONS
 //------------------------------------------------------------------------------
@@ -303,6 +307,7 @@
   padding: 0 !important;
   text-align: center !important;
   text-shadow: none !important;
+  text-transform: none !important;
   width: 100% !important;
 
   &.queued {
