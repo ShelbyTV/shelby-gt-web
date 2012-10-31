@@ -1,7 +1,15 @@
-.hr--double {
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
+.hr--double,
+.hr--double-rev {
   height: 0;
   margin: .5em 0 0 0;
   width: 100%;
+}
+
+.hr--double {
+  border-bottom: 1px solid $inset;
+  border-top: 1px solid $outset;
+}
+.hr--double-rev {
+  border-bottom: 1px solid $outset;
+  border-top: 1px solid $inset;
 }

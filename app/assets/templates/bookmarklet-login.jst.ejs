@@ -1,4 +1,4 @@
-<div class="overlay_header guide-overlay-head rolling-header">
+<div class="overlay_header guide-overlay-head">
   <div class="guide-overlay-head-lining">
     <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Bookermarklet" data-ga_action="Click cancel" data-ga_label="anonymous">
       <i class="button_icon_left icon_cancel icon">
@@ -9,13 +9,13 @@
       Login to Shelby
     </h2>
   </div><!-- eo .guide-overlay-head-lining -->
-</div><!-- eo .guide-overlay-head.rolling-header -->
+</div><!-- eo .guide-overlay-head -->
 
-<div class="overlay_body guide-overlay-body rolling-body">
+<div class="overlay_body guide-overlay-body">
 	<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>?redir=<%= window.location.href %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
 		<fieldset class="form_fieldset">
 			<label for="username" class="form_label">Username</label>
-			<input id="username" name="username" placeholder="Username or Email address" class="form_input" />
+			<input id="username" name="username" placeholder="Username or Email address" class="form_input" autofocus />
 		</fieldset>
 
 		<fieldset class="form_fieldset">
@@ -29,7 +29,7 @@
 		</fieldset>
 	</form>
 
-  <hr class="hr--double" />
+  <hr class="hr--double-rev" />
 
   <div class="form_fieldset form_fieldset--login-social clearfix">
     <h4 class="form_legend">
