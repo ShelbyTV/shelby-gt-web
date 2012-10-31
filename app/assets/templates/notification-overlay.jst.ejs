@@ -1,12 +1,12 @@
 <div id="js-notifications" class="notification_module notification_module--feedback <%= model.get('class') %>">
   <div class="notification_actions">
-    <button class="button_primer button_blue notification_button js-dismiss">
+    <button class="button_primer button_blue notification_button js-button js-confirm">
       &times;
     </button>
 
-    <span class="notification_label js-confirm">
+    <a href="#" onclick="return false;" title="Close" class="notification_label js-button js-confirm">
       Dismiss
-    </span>
+    </a>
   </div><!-- eo notification_actions -->
 
   <div class="notification_body">

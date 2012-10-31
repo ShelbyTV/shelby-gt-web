@@ -5,7 +5,7 @@
     el: '#js-notifications-wrapper',
 
     events: {
-      "click button"         : "_handleResponse",
+      "click .js-button"     : "_handleResponse",
       "click .js-roll-route" : "_handleRollRoute"
     },
 
