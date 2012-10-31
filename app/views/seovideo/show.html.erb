@@ -41,13 +41,17 @@
 
   <div class="seovideo-wrapper clearfix">
     <div class="seovideo-column-left">
-      <section class="seovideo-section seovideo-card">
-        <h3 class="seovideo-column-header">
+      <section class="seovideo-section seovideo-card" itemscope itemtype="http://schema.org/VideoObject">
+
+        <meta itemprop="thumbnailUrl" content="<%= @video_thumbnail_url %>" />
+
+        <h3 class="seovideo-column-header" itemprop="name">
           <%= @video_title %>
         </h3>
 
         <div class="seovideo-embed">
           <% if @video_provider_name == "youtube" %>
+            <meta itemprop="embedUrl" content="http://www.youtube.com/watch?v=<%= @video_provider_id %>" />
             <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
           <% else %>
             <%= raw @video_embed %>
@@ -57,11 +61,11 @@
         <div class="seovideo-details-wrapper"> 
         <div class="seovideo-details">
           <p>
-            Author: <%= @video_author %>
+            Author: <span itemprop="author"><%= @video_author %></span>
           </p>
  
-          <p>
-            Description: <%= @video_description %>
+          <p> 
+            Description: <span itemprop="description"><%= @video_description %></span>
           </p>
 
         </div><!-- eo seovideo-details -->

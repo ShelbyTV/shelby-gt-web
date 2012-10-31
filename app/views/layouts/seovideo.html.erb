@@ -13,6 +13,14 @@
   <meta name="viewport" content="width=device-width">
   <link rel="icon"type="image/png" href="/favicon.png">
   <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
+
+  <% if @video_thumbnail_url %>
+    <link rel="image_src" href="<%= @video_thumbnail_url %>">
+  <% end %>
+  <% if @video_provider_name == "youtube" %>
+    <link rel="video_src" href="http://www.youtube.com/v/<%= @video_provider_id %>">
+  <% end %>
+
   <meta name="apple-itunes-app" content="app-id=556665733">
   <%= stylesheet_link_tag "seovideo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
