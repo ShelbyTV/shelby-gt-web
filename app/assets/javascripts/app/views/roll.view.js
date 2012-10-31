@@ -25,7 +25,7 @@
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
       isIntervalComplete : function(displayedItems) {
-        return displayedItems != 0 && displayedItems % 30 == 0;
+        return displayedItems != 0 && displayedItems % 15 == 0;
       },
       listItemView : 'FrameGroupView',
       fetchParams : {
