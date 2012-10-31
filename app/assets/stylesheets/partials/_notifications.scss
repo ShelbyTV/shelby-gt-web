@@ -19,6 +19,8 @@
   top: 36px;
 }
 
+$bookmarklet-color: $shelby-blue;
+
 .notification_module--feedback {
   @include gradient-primer($shelby-blue);
   @include roundies(footer);

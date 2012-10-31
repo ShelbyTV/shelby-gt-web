@@ -3,28 +3,33 @@
 //------------------------------------------------------------------------------
 @import "base";
 //------------------------------------------------------------------------------
-//  base-mixin: all mixins
+//  base-mixin: mixins library
 //------------------------------------------------------------------------------
 @import "base-mixin";
 
 //------------------------------------------------------------------------------
 //  boilerplate + normalization
 //------------------------------------------------------------------------------
-@import "partials/fonts";
-@import "partials/h5bp";
+@import "boilerplate/fonts";
+@import "boilerplate/h5bp";
+
+//------------------------------------------------------------------------------
+//  MODULES
+//------------------------------------------------------------------------------
+@import "modules";
 
 //------------------------------------------------------------------------------
 //  app wide abstracts
 //------------------------------------------------------------------------------
-@import "partials/modules";
-@import "partials/utilities";
-@import "partials/icons";
-@import "partials/avatar_uploading";
-@import "partials/in-line-notification";
-@import "partials/load-more";
-@import "partials/autocomplete.scss";
-@import "partials/login-form";
+@import "abstracts";
 
+//------------------------------------------------------------------------------
+//  non-normative
+//------------------------------------------------------------------------------
+@import "partials/in-line-notification";
+@import "partials/empty-indicator";
+@import "partials/load-more";
+@import "partials/login-form";
 
 //------------------------------------------------------------------------------
 //  Shelby.tv App
@@ -38,10 +43,12 @@
 
 @import "partials/landing-page";
 
+////////////////////////////////////////////////////////////////////////////
+//  layout related
+////////////////////////////////////////////////////////////////////////////
 @import "partials/explore";
 @import "partials/onboarding";
 @import "partials/action";
-@import "partials/empty-indicator";
 
 @import "partials/frame";
 @import "partials/video-player";
@@ -87,4 +94,4 @@
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes
 //------------------------------------------------------------------------------
-@import "partials/h5bp-utilities";
+@import "boilerplate/h5bp-utilities";

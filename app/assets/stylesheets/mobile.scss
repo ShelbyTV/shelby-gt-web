@@ -1,13 +1,22 @@
-//		try to keep the list in ascending order of generic to specific styles 
-//		due to some weird inheritance shit partials/frame is compiled before partials/rolls-list
+//------------------------------------------------------------------------------
+//  base: color variables, height & width constants
+//------------------------------------------------------------------------------
 @import "base";
+//------------------------------------------------------------------------------
+//  base-mixin: mixins library
+//------------------------------------------------------------------------------
 @import "base-mixin";
 
+//------------------------------------------------------------------------------
+//  boilerplate + normalization
+//------------------------------------------------------------------------------
+@import "boilerplate/fonts";
+@import "boilerplate/h5bp";
+
+//------------------------------------------------------------------------------
+//  Mobile Search
+//------------------------------------------------------------------------------
 // xxxzxxx
 //"partials/jquery-mobile"
-
-@import 
-		"partials/fonts",
-		"partials/h5bp", 
-		"partials/mobile_search.scss"
+@import "partials/mobile_search.scs";
 

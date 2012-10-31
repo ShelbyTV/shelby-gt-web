@@ -1,0 +1,365 @@
+//------------------------------------------------------------------------------
+//  experimental clearfix... fix.
+//------------------------------------------------------------------------------
+//  fixes theatlantic
+h1,h2,h3,h4,h5,h6 {
+  text-transform: none;
+
+}
+
+button {
+  height: auto;
+  text-transform: none;
+  text-shadow: none;
+}
+//  fixes uproxx.com
+.clearfix:not(.media_body) {
+  overflow: visible;
+}
+
+//  fixes waywire.com
+.form_submit {
+  font-family: $font-family-display !important;
+}
+
+//------------------------------------------------------------------------------
+//  FRAME
+//------------------------------------------------------------------------------
+.all-frame-creator{
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 50px;
+  margin-left: 14px;
+  margin-bottom:5px;
+  margin-top: 5px;
+  width: 50px;
+
+}
+
+.frame-conversation-message-block {
+  font-size: 13px;
+}
+
+//------------------------------------------------------------------------------
+//  'Videos Found' NOTIFICATION
+//------------------------------------------------------------------------------
+.notifications-lining {
+  position: fixed;
+  z-index: 2147483647;
+}
+
+.shelby-notify {
+  background-color: #eee;
+  background-image: url('/images/assets/shelby_mark_dark.svg');
+  background-position: 11px 6px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  border: 1px solid #adadad;
+  border-radius: 2px;
+  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
+  font-family: $font-family;
+  color: #333;
+  font-size: 11px;
+  font-weight: 300;
+  height: 40px;
+  left: 30px;
+  line-height: 3.5em;
+  position: fixed;
+  top: 30px;
+  width: 160px;
+  z-index: 2147483646;
+
+  &.more {
+    width: 200px;
+  }
+}
+
+.notify-text {
+  margin-left: 52px;
+  text-align: center;
+}
+
+.notify-cancel {
+  @include button-primer($shelby-gray,dark);
+
+  border-radius: 20px;
+  left: -10px;
+  padding: .5em;
+  position: absolute;
+  top: -10px;
+
+  &:hover {
+    border-radius: 20px;
+  }
+
+  .cancel-icon {
+    background-size: contain;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    height: 7px;
+    width: 7px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Process completion Feedback
+//------------------------------------------------------------------------------
+.fadein-notify-window {
+  background-color: black;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 2147483647;
+  &.notified {
+    opacity: 0.85;
+  }
+  &.animate-fadein {
+    @include transition-property('opacity');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+}
+
+.overlay-notification {
+  color: #FFF;
+  font-size: 40px;
+  font-family: $font-family-display;
+  height:100px; 
+  line-height: 1;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.queue-notification {
+  background-image: url("/images/assets/chrome_queue_large.svg");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: 6%;
+  padding-top: 100px;
+}
+
+.rolled-notification {
+  .rolled-icon {
+    color: #fff;
+    font-size: 90px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  LOGIN
+//------------------------------------------------------------------------------
+#login-guide-window {
+  .shelby-login-cancel {
+    @include button-primer($shelby-gray);
+  }
+
+  .login-explanation {
+    margin: 20px 0 0 10px;
+    font-size: 1.2em;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  ROLLS
+//------------------------------------------------------------------------------
+.roll-options-submit {
+  text-align: center;
+}
+
+.label {
+  color: #DCDDDE;
+}
+
+//------------------------------------------------------------------------------
+//  GUIDE
+//------------------------------------------------------------------------------
+.guide-window {
+  -webkit-font-smoothing: antialiased; //hehe
+  background: #e2e2e2;
+  border-left: 1px solid black;
+  bottom: 0;
+  box-shadow: 0px 0px 25px 5px black;
+  font-size: 11px;
+  margin-right: -360px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 330px;
+  z-index: 2147483646; 
+  &.guide-show {
+    margin-right: 0;
+  }
+  &.guide-animate {
+    @include transition-property('margin-right');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+  &.guide-hide {
+    display: none;
+  }
+    
+}
+
+.guide-overlay-cancel {
+  height: auto;
+}
+
+//------------------------------------------------------------------------------
+//  BUTTONS
+//------------------------------------------------------------------------------
+.bookmarklet-video-tab {
+  height: 300px;
+  overflow: hidden;
+  position: absolute;
+  width: 85px;
+  z-index: 2147483646;
+}
+
+.embedded-buttons {
+  background-image: none;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
+  list-style-type: none;
+  margin: 2px 0 28px 100%;
+  padding: 0;
+  width: 80px;
+
+  li {
+    background-color: #EEE;
+    background-image: none;
+    border: none;
+    border-radius: 5px;
+    height: 31px;
+    list-style-type: none;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    .all-comment,
+    .all-roll,
+    .all-queue,
+    .all-creator {
+      &:hover {
+        background-color: darken(#eee, 15%) !important;
+      }
+    }
+
+    &:last-child {
+      button {
+        border-top: none;
+      }
+    }
+
+    button {
+      border: 1px solid #adadad;
+      border-right: 0;
+    }
+
+  }
+
+  .creator-list-item {
+    height: 60px;
+  }
+
+  &.buttons-animate{
+    @include transition-property('margin-left');
+    @include transition-duration(.5s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0s);
+  }
+
+  &.buttons-show {
+    margin-left: 6%;
+  }
+}
+
+.video-card-context,
+.embedded-controls {
+  li {
+    font-size: 13px;
+    font-family: $font-family;
+
+    &:first-child {
+      border-radius: 5px 0 0 0;
+
+      button {
+        border-radius: 5px 0 0 0;
+      }
+    }
+
+    &:last-child {
+      border-radius: 0 0 0 5px;
+
+      button {
+        border-radius: 0 0 0 5px;
+      }
+    }
+  }
+}
+
+.bookmarklet-button {
+  background: #EEE !important;
+  box-shadow: none !important;
+  color: #444 !important;
+  font-family: $font-family !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  height: 100% !important;
+  outline: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+  width: 100% !important;
+
+  &.queued {
+    background-color: darken(#eee,10%) !important;
+    cursor: default;
+
+    i {
+      padding-left: 15px;
+
+      &:before {
+        content: "Queued"
+      }
+
+      font-style: normal;
+    }
+  }
+}
+
+.comment-button-content {
+  &:before {
+    content: "Reply"
+  }
+  &.self {
+    &:before {
+      content: "Comment"
+    }
+  }
+  font-style: normal;
+}
+
+.queue-button,
+.roll-button {
+  background-color: transparent;
+  padding-left: 1.3em;
+}
+
+.queue-button {
+  &:before {
+    content: "Queue"
+  }
+}
+
+.roll-button {
+}
