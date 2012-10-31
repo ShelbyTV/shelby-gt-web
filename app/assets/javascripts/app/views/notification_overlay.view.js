@@ -31,13 +31,8 @@
     },
 
     _onVisiblityChange : function(model){
-      if (model.get('visible')){
-        this.$el.show();
-        this.$el.find('button').first().focus();
-      }
-      else {
-        this.$el.hide();
-      }
+      this.$el.toggleClass('hide',!model.get('visible'));
+      this.$el.find('js-confirm').first().focus();
     },
 
     _handleResponse : function(data){

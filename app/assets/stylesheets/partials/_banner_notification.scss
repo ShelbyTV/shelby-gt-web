@@ -5,8 +5,7 @@
 .notification_module {
   font-family: $font-family-display;
   font-weight: 500;
-  /*height is set by GenericBannerNotificationView */
-  height: inherit;
+  height: 40px;
   padding: 5px;
   position: relative;
   text-align: center;
@@ -27,6 +26,16 @@
 
 .notification_label {
   line-height: 2.6;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .notification_body {
@@ -34,8 +43,9 @@
 }
 
 .notification_message {
-  display: inline-block;
+  @include ellipsis;
 
+  display: inline-block;
 }
 
 .notification_option {
