@@ -55,7 +55,7 @@
 //------------------------------------------------------------------------------
 $extension-color: #fff82b;
 
-.extension-notification {
+.notification_module--extension {
   @include gradient-primer($extension-color);
 
   .notification_button {
