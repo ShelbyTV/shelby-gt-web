@@ -32,7 +32,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
-    shelby.models.inviteViewState = new libs.shelbyGT.InviteViewStateModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();

@@ -34,7 +34,6 @@
       this.$el.html(this.template({user:shelby.models.user}));
       this.renderChild(new libs.shelbyGT.InviteFormView({
         el : this.$('.js-guide-invite'),
-        inviteViewState : shelby.models.inviteViewState,
         model : shelby.models.invite,
         user : shelby.models.user
       }));
