@@ -43,6 +43,21 @@ button {
 //------------------------------------------------------------------------------
 //  'Videos Found' NOTIFICATION
 //------------------------------------------------------------------------------
+.notification-banner-wrapper {
+  display: block;
+  height: 50px;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2147483647;
+
+  &.hide {
+    height: 0;
+  }
+}
+
 .notifications-lining {
   position: fixed;
   z-index: 2147483647;
@@ -50,7 +65,7 @@ button {
 
 .shelby-notify {
   background-color: #eee;
-  background-image: url('/images/assets/shelby_mark_dark.svg');
+  background-image: url('/images/assets/logo_type.svg');
   background-position: 11px 6px;
   background-size: 40px;
   background-repeat: no-repeat;

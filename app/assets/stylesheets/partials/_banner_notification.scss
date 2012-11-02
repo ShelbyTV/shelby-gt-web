@@ -13,12 +13,20 @@
   z-index: 4;
 }
 
-.notification_actions {
+.notification_actions,
+.notification_actions--rev  {
   font-size: 1.3em;
-  left: 0;
   padding: 3px 5px;
   position: absolute;
   top: 0;
+}
+
+.notification_actions {
+  left: 0;
+}
+
+.notification_actions--rev {
+  right: 0;
 }
 
 .notification_button {
