@@ -178,10 +178,13 @@ window.shelbyBookmarklet = {
                         if (obj.height() < 100 && obj.width() < 100) {
                             continue;
                         }
+                        var video_id = this.getElementValue(found_elements[i], 'data-youtube-id');
                         videos_to_add.push({
                             embed: obj,
                             domain: "youtube.com",
-                            video_id: this.getElementValue(found_elements[i], 'data-youtube-id')
+                            provider: "youtube",
+                            video_id: video_id,
+                            known_url: this.composeKnownUrl("youtube.com", video_id)
                         });
                     } else {
                         var str = this.getElementValue(found_elements[i], 'flashvars') + '&amp;' + this.getElementValue(found_elements[i], 'src') + this.getElementValue(found_elements[i], 'data') + this.getElementValue(found_elements[i], 'name') + found_elements[i].innerHTML + found_elements[i].id;
