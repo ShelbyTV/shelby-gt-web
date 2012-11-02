@@ -13,6 +13,7 @@ test:
 
 staging:
   <<: *defaults
+  web_domain: 'staging.shelby.tv'
 
 production: &production
   <<: *defaults

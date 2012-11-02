@@ -1,0 +1,31 @@
+.appstore-button {
+  @include button-sizing(generic);
+
+  clear: both;
+  display: block;
+  float: left;
+  font-size: 1.5em;
+  margin: 25px 0 10px;
+  text-align: center;
+
+  i {
+    background-size: contain;
+    -webkit-background-size: contain;
+    display: block;
+    font-weight: 100;
+    -webkit-font-smoothing: auto;
+    margin-left: .7em;
+    margin-right: .7em;
+    padding-left: 3.2em;
+  }
+
+  span {
+    display: block;
+    font-weight: 500;
+    font-size: 1.6em;
+  }
+
+  &:hover {
+    box-shadow: 0 0 200px 4px white;
+  }
+}
