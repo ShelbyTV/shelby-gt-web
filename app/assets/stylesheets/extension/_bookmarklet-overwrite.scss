@@ -28,12 +28,13 @@ button {
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
-  height: 50px;
-  margin-left: 14px;
-  margin-bottom:5px;
-  margin-top: 5px;
-  width: 50px;
-
+  border-radius: 5px 0 0 0;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .frame-conversation-message-block {
@@ -237,9 +238,8 @@ button {
   background-image: none;
   border: none;
   border-radius: 5px 0 0 5px;
-  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
   list-style-type: none;
-  margin: 2px 0 28px 100%;
+  margin: 2px 0 25px 100%;
   padding: 0;
   width: 80px;
 
@@ -248,9 +248,10 @@ button {
     background-image: none;
     border: none;
     border-radius: 5px;
+    box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
     height: 31px;
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 5px;
     outline: none;
     padding: 0;
     position: relative;
@@ -296,29 +297,34 @@ button {
       button {
         border-radius: 5px 0 0 5px;
       }
+  }
+}
 
-    &:first-child {
+.video-card-context {
+  button,
+  li {
+    margin: 0;
+  }
+
+  li:first-child {
+    border-radius: 5px 0 0 0;
+
+    button {
       border-radius: 5px 0 0 0;
-
-      button {
-        border-radius: 5px 0 0 0;
-      }
     }
+  }
 
-    &:last-child {
+  li:last-child {
+    border-radius: 0 0 0 5px;
+
+    button {
       border-radius: 0 0 0 5px;
-
-      button {
-        border-radius: 0 0 0 5px;
-      }
     }
   }
 }
 
 .bookmarklet-button {
-//  background: #EEE !important;
   box-shadow: none !important;
-//  color: #444 !important;
   font-family: $font-family !important;
   font-size: 11px !important;
   font-weight: bold !important;
