@@ -12,7 +12,12 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
 
   //NOTE: expecting this.model to be a Backbone.Collection of rolls passed in to constructor
   render : function(){
-    this.$el.html(this.template({rolls:this.model}));
+    // var headerText = 'Discover even more great content';
+    var headerText = 'See video of the storm and donate to the Red Cross';
+    this.$el.html(this.template({
+      rolls : this.model,
+      headerText : headerText
+    }));
     this.model.each(function(roll){
       shelby.track('Show roll promo', {id:roll.id});
     });
