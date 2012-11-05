@@ -18,18 +18,38 @@
 }
 
 //------------------------------------------------------------------------------
+//  Modernizr.touch
+//------------------------------------------------------------------------------
+.touch {
+  .video-player-tools-wrapper {
+    font-size: 1.5em;
+  }
+  //TODO: turning off fading should not be controlled here but in the JS
+  .user-inactive {
+    .video-player-tools-wrapper,
+    .video-player-nav-buttons-wrapper {
+      .video-player-prev,
+      .video-player-next {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
 //  VIDEO PLAYER setup,
 //  video-player-tools-wrapper is purely for positioning.
 //------------------------------------------------------------------------------
 .video-player-tools-wrapper {
-  bottom:0;
-  height:65px;
-  left:0;
+  bottom: 0;
+  height: 5.2em;
+  left: 0;
   opacity: 1;
-  position:absolute;
-  width:100%;
+  position: absolute;
+  width: 100%;
   z-index: 2;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////
 //  actual video player controller
@@ -40,7 +60,7 @@
   @include roundies;
 
   border: 1px solid #202020;
-  height: 45px;
+  height: 4.1em;
   margin: $defaultMargin;
   padding: 0;
   position: relative;
@@ -55,10 +75,10 @@
   .videoplayer_button {
     background-color: transparent;
     border: none;
-    height: 43px;
+    height: 4em;
     float: left;
     padding: 0;
-    width: 47px;
+    width: 4.5em;
 
     i {
       display: block;
@@ -145,11 +165,12 @@
 //  margin: 18px 8px 0;
 //  position: absolute;
 //=======
-  height:8px;
-  left:105px;
-  right:250px;
-  margin:18px 8px 0;
-  position:absolute;
+  height: 8px;
+//  left:105px;
+//  right:250px;
+  margin: 1.8em  8px 0;
+  overflow: hidden;
+  position: relative;
 //>>>>>>> master
 }
 
