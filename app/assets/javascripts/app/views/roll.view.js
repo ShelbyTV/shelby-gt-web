@@ -12,9 +12,12 @@
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
       if (this.model.id == shelby.models.user.get('watch_later_roll_id')) {
         this.frameGroupCollection.bind('destroy', this._onQueueFrameGroupDestroyed, this);
-      }
-      //TEMPORARY - IF THE ROLL IS THE SANDY ROLL, INCREASE THE PROMO FREQUENCY
-      if (this.model.id == '5096790db415cc05a2006f5c') {
+        //if this is the queue don't show any promos
+        this.options.isIntervalComplete = function(displayedItems) {
+          return false;
+        };
+      } else if (this.model.id == '5096790db415cc05a2006f5c') {
+        //TEMPORARY - IF THE ROLL IS THE SANDY ROLL, INCREASE THE PROMO FREQUENCY
         this.options.isIntervalComplete = function(displayedItems) {
           return displayedItems != 0;
         };
