@@ -18,6 +18,7 @@
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
 <% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
 
+<% var framePermalink = 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
   <% if (!frameViewed) { %>
@@ -171,13 +172,19 @@
           <% if (user.isAnonymous()) { %>
             <ul class="menu_list menu_list--share-frame">
               <li class="menu_item">
-                <button class="button_primer button_twitter-blue menu_button--twitter js-share-to-twitter">
-                  Share on Twitter
-                </button>
+								<a href="https://twitter.com/intent/tweet?via=shelby&text=I%20watched%20this%20video%20on%20<%= frame.get('roll').get('subdomain') %>.shelby.tv&url=<%= framePermalink %>" class="twitter-share-button">
+	                <button class="button_primer button_default menu_button--twitter js-share-to-twitter">
+	                  <i class="button_icon_left icon_share_twitter_off icon">
+	                    Share on Twitter
+	                  </i>
+	                </button>
+								</a>
               </li>
               <li class="menu_item">
-                <button class="button_primer button_facebook-blue menu_button--facebook js-share-to-facebook">
-                  Share on Facebook
+                <button class="button_primer button_default menu_button--facebook js-share-to-facebook">
+                  <i class="button_icon_left icon_share_facebook_off icon">
+                    Share on Facebook
+                  </i>
                 </button>
               </li>
             </ul>

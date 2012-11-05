@@ -30,7 +30,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
     "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-share-to-twitter"            : "_shareToTwitter",
     "click .js-share-to-facebook"           : "_shareToFacebook"
   },
 
@@ -261,12 +260,24 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.$('.xuser-message-remainder').toggle();
   },
   
-  _shareToTwitter : function(){
-    console.log("share to twitter");
-  },
-  
-  _shareToFacebook : function(){
-    console.log("share to fb");    
+  _shareToFacebook : function(e){
+    var _id = $(e.currentTarget).parents('article').attr('id');
+    var _frame = this.model.getFirstFrame();
+    FB.ui(
+      {
+        method: 'feed',
+        name: _frame.get('video').get('title'),
+        link: _frame.getSubdomainPermalink(),
+        picture: _frame.get('video').get('thumbnail_url'),
+        description: _frame.get('video').get('description'),
+        caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
+      },
+      function(response) {
+        if (response && response.post_id) {
+          // TODO:we should record that this happened.
+        }
+      }
+    );
   },
 
   //ListItemView overrides
