@@ -456,6 +456,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (options.openInvite) {
       shelby.models.invite.trigger('invite:open');
     }
+
+    //if Modernizr exists AND determines user is on a touch-device, enable iScroll
+    if (Modernizr && Modernizr.touch) {
+      var iScrollWrapper = document.getElementById('guide');
+      var iScrollBody = new iScroll('js-guide-body');
+
+      iScrollWrapper.addEventListener("DOMSubtreeModified", function (e) {
+        iScrollBody.refresh();
+      }, false);
+    }
   },
 
   _setupAnonUserViews : function(options){
