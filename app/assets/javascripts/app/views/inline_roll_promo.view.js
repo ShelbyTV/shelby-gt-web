@@ -12,11 +12,21 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
 
   //NOTE: expecting this.model to be a Backbone.Collection of rolls passed in to constructor
   render : function(){
+    var displayedRoll = shelby.models.guide.get('currentRollModel');
+    var displayState = shelby.models.guide.get('displayState');
+    var onSandyRoll = displayState != libs.shelbyGT.DisplayState.dashboard && displayedRoll && displayedRoll.id == '5096790db415cc05a2006f5c';
     // var headerText = 'Discover even more great content';
-    var headerText = 'See video of the storm and donate to the Red Cross';
-    this.$el.html(this.template({
+    var headerText;
+    if (onSandyRoll) {
+      headerText = 'Support Sandy Victims';
+    } else {
+      headerText = 'See video of the storm and donate to the Red Cross';
+    }
+    this.$el.html(SHELBYJST[onSandyRoll ? 'inline-donate-promo' : 'inline-roll-promo']({
       rolls : this.model,
-      headerText : headerText
+      headerText : headerText,
+      promoText : 'Click to donate to the Red Cross.',
+      roll : this.model.at(0)
     }));
     this.model.each(function(roll){
       shelby.track('Show roll promo', {id:roll.id});

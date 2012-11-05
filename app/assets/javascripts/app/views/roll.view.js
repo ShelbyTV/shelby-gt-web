@@ -52,7 +52,9 @@
     // FrameGroupPlayPagingListView overrides
     _filterPromoRolls : function(roll) {
       //don't show a promo for the roll that you're currently looking at
-      return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
+      // return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
+      //TEMPRORARY ITS OK TO SHOW BECAUSE IT WILL BE A DONATE PROMO
+      return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
     }
 
   });
