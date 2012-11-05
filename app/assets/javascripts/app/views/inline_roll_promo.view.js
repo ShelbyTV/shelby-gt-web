@@ -3,7 +3,8 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
   tagName : 'li',
 
   events : {
-    "click .js-goto-roll" : "_goToRoll"
+    "click .js-goto-roll" : "_goToRoll",
+    "click .js-donate-link" : "_trackDonateClick",
   },
 
   template : function(obj){
@@ -28,9 +29,15 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
       promoText : 'Click to donate to the Red Cross.',
       roll : this.model.at(0)
     }));
-    this.model.each(function(roll){
-      shelby.track('Show roll promo', {id:roll.id});
-    });
+    if (!onSandyRoll) {
+      this.model.each(function(roll){
+        shelby.track('Show roll promo', {id:roll.id});
+      });
+    } else {
+      this.model.each(function(roll){
+        shelby.track('Show donate promo', {id:roll.id});
+      });
+    }
   },
 
   _goToRoll : function(e){
@@ -41,6 +48,11 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
       shelby.router.navigate('roll/' + rollId, {trigger:true});
     }
     shelby.track('Click roll promo', {id:rollId});
+  },
+
+  _trackDonateClick : function(){
+    var rollId = $(e.currentTarget).data('roll_id');
+    shelby.track('Click donate promo', {id:rollId});
   }
 
 });
