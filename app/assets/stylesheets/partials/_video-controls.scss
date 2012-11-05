@@ -24,16 +24,6 @@
   .video-player-tools-wrapper {
     font-size: 1.5em;
   }
-  //TODO: turning off fading should not be controlled here but in the JS
-  .user-inactive {
-    .video-player-tools-wrapper,
-    .video-player-nav-buttons-wrapper {
-      .video-player-prev,
-      .video-player-next {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 //------------------------------------------------------------------------------
