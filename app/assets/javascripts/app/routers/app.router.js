@@ -80,6 +80,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     }
     else {
       self.initAnonymous(url);
+      shelby.models.promoRollCategories.fetch();
     }
   },
 
