@@ -29,7 +29,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
-    "click .js-toggle-comment"              : "_toggleComment"
+    "click .js-toggle-comment"              : "_toggleComment",
+    "click .js-share-to-twitter"            : "_shareToTwitter",
+    "click .js-share-to-facebook"           : "_shareToFacebook"
   },
 
   template : function(obj){
@@ -257,6 +259,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return (i == 'more…') ? 'Hide' : 'more…';
     });
     this.$('.xuser-message-remainder').toggle();
+  },
+  
+  _shareToTwitter : function(){
+    console.log("share to twitter");
+  },
+  
+  _shareToFacebook : function(){
+    console.log("share to fb");    
   },
 
   //ListItemView overrides
