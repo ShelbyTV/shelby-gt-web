@@ -20,13 +20,22 @@
     </div>
 
     <div class="seovideo-subhead clearfix">
-      <a href="http://shelby.tv" title="Click to Join Shelby.tv!" class="seovideo-button seovideo-signup js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Signup Button" data-ga_label="<%= @video_title %>">
-        Click here now!
-      </a>
+			<div class="seovideo-signup">
+				<h2 class="seovideo-subheader">
+					Explore amazing collections of video on Shelby without logging in.
+				</h2>
+				<a href="http://shelby.tv/explore" title="Click to Explore Shelby.tv!" class="seovideo-button js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Explore Button" data-ga_label="<%= @video_title %>">
+					Explore Shelby
+				</a>
+			</div>
+			
 
       <h2 class="seovideo-subheader">
-        This video is brought to you by Shelby.tv. Use the free Shelby.tv website to discover all the amazing new videos your friends are sharing!
+				Shelby is a simple new way to enjoy video.
       </h2>
+
+			<%= render :partial => "/home/shelf/interest_email_form" %>
+			
     </div>
   </header>
 
@@ -156,4 +165,17 @@
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
+</script>
+
+<!-- Email Submit -->
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#js-email-form').on('submit', function(){
+    $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
+      $('#js-email-form').addClass('hidden');
+      $('#js-thankyou').removeClass('hidden');
+    }, 'jsonp');
+    return false;
+  });
+});
 </script>

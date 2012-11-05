@@ -178,10 +178,13 @@ window.shelbyBookmarklet = {
                         if (obj.height() < 100 && obj.width() < 100) {
                             continue;
                         }
+                        var video_id = this.getElementValue(found_elements[i], 'data-youtube-id');
                         videos_to_add.push({
                             embed: obj,
                             domain: "youtube.com",
-                            video_id: this.getElementValue(found_elements[i], 'data-youtube-id')
+                            provider: "youtube",
+                            video_id: video_id,
+                            known_url: this.composeKnownUrl("youtube.com", video_id)
                         });
                     } else {
                         var str = this.getElementValue(found_elements[i], 'flashvars') + '&amp;' + this.getElementValue(found_elements[i], 'src') + this.getElementValue(found_elements[i], 'data') + this.getElementValue(found_elements[i], 'name') + found_elements[i].innerHTML + found_elements[i].id;
@@ -311,6 +314,7 @@ window.shelbyBookmarklet = {
                                 success: function (response) {
                                   utilObject.queuedVideos = response.result;
                                   utilObject.sendVidsToShelby(foundVids);
+                                  utilObject.initialSearchDone = true;
                                 }
                               });
                           }
@@ -558,7 +562,7 @@ window.shelbyBookmarklet = {
                             utilObject.styleGuideHide("comment-guide");
                         });
                         utilObject.shelbyDocElements['commentSubmit'] = shelbyJ(".new-comment-submit");
-                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".new-comment-input");
+                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".js-conversation-body .new-comment-input");
                         utilObject.htmlTemplate.setUpConversationWithId(conversationId, videoId);
                         utilObject.styleGuideShow("comment-guide");
                         utilObject.shelbyDocElements['commentSubmit'].off('click');
@@ -943,7 +947,7 @@ window.shelbyBookmarklet = {
                 shelbyJ("#" + guideName + "-window").removeClass("guide-show")
             },
 
-            foundVideo: null,
+            initialSearchDone: false,
 
             shelbify: function (radar) {
                 var possibleVideos = {
@@ -1006,12 +1010,18 @@ window.shelbyBookmarklet = {
                 //every 2 seconds re-run the search for videos (up to 5 times)
                 var searchesRan = 0;
                 var searchInterval = setInterval(function(){
-                  reRunVideoSearch();
-                  if(searchesRan++ == 5) clearInterval(searchInterval);
+                  if (utilObject.initialSearchDone) {
+                    reRunVideoSearch();
+                    if(searchesRan++ == 5) clearInterval(searchInterval);
+                  }
                 }, 2*1000);
 
                 // Also re-run the search after a click
-                shelbyJ("body").on("click", function() { reRunVideoSearch(); });
+                shelbyJ("body").on("click", function() {
+                  if (utilObject.initialSearchDone) {
+                    reRunVideoSearch();
+                  }
+                });
 
                 utilObject.htmlTemplate.setUpGuide("roll-guide", shelbyGuideWidth, true);
                 utilObject.htmlTemplate.setUpGuide("comment-guide", shelbyGuideWidth, true);

@@ -29,7 +29,9 @@ libs.shelbyGT.MainContentWrapperView = Support.CompositeView.extend({
       this._toolsContentPaneView = new libs.shelbyGT.ExternalToolsContentPaneView();
       this.appendChild(this._toolsContentPaneView);
     } else {
-      shelby.userInactivity.enableUserActivityDetection();
+      if (guideModel.previous('displayState') == libs.shelbyGT.DisplayState.tools) {
+        shelby.userInactivity.enableUserActivityDetection();
+      }
       if (this._toolsContentPaneView) {
         this._toolsContentPaneView.leave();
         this._toolsContentPaneView = null;
