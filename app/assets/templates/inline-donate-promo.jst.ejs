@@ -7,7 +7,7 @@
       <ul class="list">
         <li class="in-line-promo-item">
             <div class="in-line-promo-item-lining clearfix">
-              <img class="in-line-promo-thumb" src="<%= roll.get('display_thumbnail_src') %>" />
+              <img class="in-line-promo-thumb" src="<%= roll.get('in_line_thumbnail_src') || roll.get('display_thumbnail_src') %>" />
               <h3 class="in-line-promo-title in-line-donate-title">
                 <%= promoText %>
               </h3>
