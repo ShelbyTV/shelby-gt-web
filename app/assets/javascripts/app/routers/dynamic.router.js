@@ -96,7 +96,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
   },
-  
+
   displayIsolatedRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
@@ -109,7 +109,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
     }
-      
+
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
   },
@@ -213,7 +213,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
         'sinceId' : options.data.since_id ? options.data.since_id : null,
       });
-      
+
       // filtering out faux users so as a team we can interact more easily
       //   with real users easily as they come in.
       if ($.getUrlParam("real") == 1){
@@ -227,7 +227,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           return model.get('frame').get('creator').get('gt_enabled') == true;
         });
       }
-      
+
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
       $.when(shelby.models.dashboard.fetch(fetchOptions)).always(function(response, callbackName, jqXHR){
@@ -299,7 +299,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
   },
-  
+
   doNothing : function(url){
     console.log('unhandled url', url);
   },
@@ -433,12 +433,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       isIsolatedRoll : false,
       openInvite : false
     }).value();
-    
+
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
-    shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification || 
+    shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
       new libs.shelbyGT.ExtensionBannerNotification();
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({
@@ -458,13 +458,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     //if Modernizr exists AND determines user is on a touch-device, enable iScroll
-    if (Modernizr && Modernizr.touch) {
-      var iScrollWrapper = document.getElementById('guide');
-      var iScrollBody = new iScroll('js-guide-body');
+    // if (Modernizr && Modernizr.touch) {
+    if (Modernizr) {
+      shelby.iScroll = {};
 
-      iScrollWrapper.addEventListener("DOMSubtreeModified", function (e) {
-        iScrollBody.refresh();
-      }, false);
+      if(!shelby.iScroll.el){
+        console.log('not iscroll');
+        shelby.iScroll.el = new iScroll('js-guide-body');
+        shelby.iScroll.wrapper = document.getElementById('guide');
+      }
+
+        shelby.iScroll.wrapper.addEventListener("DOMSubtreeModified",function(){
+          console.log('refresh!');
+          shelby.iScroll.el.refresh();
+        }, false);
     }
   },
 
@@ -472,17 +479,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //this view will not ever render if user is not anonymous
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
   },
-  
+
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
     this._setupTopLevelViews(topLevelViewsOptions);
-    
+
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
-    
+
     var rollModel;
     if (typeof(roll) === 'string') {
       // if roll is a string, its the id of the roll to display, so get or construct a model for that id
@@ -527,7 +534,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});
   },
-  
+
   _setupRollViewWithCallback : function(rollId, frameId, options, topLevelViewsOptions){
     var self = this;
     this._setupRollView(rollId, null, {
@@ -542,5 +549,5 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     }, topLevelViewsOptions);
   }
-  
+
 });
