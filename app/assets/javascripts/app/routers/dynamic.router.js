@@ -30,6 +30,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
   initialize : function(){
     shelby.routeHistory = [];
+    shelby.iScroll = {
+      el : null,
+      wrapper : null,
+      enabled : false
+    };
+
     this.bind("all", function(route){ shelby.routeHistory.push(route); });
   },
 
@@ -460,18 +466,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //if Modernizr exists AND determines user is on a touch-device, enable iScroll
     // if (Modernizr && Modernizr.touch) {
     if (Modernizr) {
-      shelby.iScroll = {};
-
-      if(!shelby.iScroll.el){
-        console.log('not iscroll');
+      if(!shelby.iScroll.enabled){
         shelby.iScroll.el = new iScroll('js-guide-body');
         shelby.iScroll.wrapper = document.getElementById('guide');
-      }
-
         shelby.iScroll.wrapper.addEventListener("DOMSubtreeModified",function(){
-          console.log('refresh!');
           shelby.iScroll.el.refresh();
         }, false);
+        shelby.iScroll.enabled = true;
+      }
     }
   },
 
