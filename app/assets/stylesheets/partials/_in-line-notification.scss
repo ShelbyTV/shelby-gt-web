@@ -3,6 +3,10 @@
 .in-line-promo {
   background-color: #D6D6D6;
   padding: 10px;
+
+  &.in-line-donate-promo {
+    padding: 0;
+  }
 }
 
 .in-line-promo-item {
@@ -87,4 +91,8 @@
 
 .in-line-donate-header {
   color: #333;
+}
+
+.in-line-donate-lining {
+  padding: 10px;
 }

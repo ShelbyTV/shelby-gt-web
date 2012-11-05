@@ -4,7 +4,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
 
   events : {
     "click .js-goto-roll" : "_goToRoll",
-    "click .js-donate-link" : "_trackDonateClick",
+    "click .js-donate-link" : "_trackDonateClick"
   },
 
   template : function(obj){
@@ -20,15 +20,29 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
     var headerText;
     if (onSandyRoll) {
       headerText = 'Support Sandy Victims';
-    } else {
+      this.$el.html(SHELBYJST['inline-donate-promo']({
+        headerText : headerText,
+        promoText : 'Click to donate to the Red Cross.',
+        roll : this.model.at(0)
+      }));
+    } else if (shelby.models.user.isAnonymous()) {
       headerText = 'See video of the storm and donate to the Red Cross';
+      this.$el.html(SHELBYJST['inline-sandy-promo']({
+        avatarSrc : '/images/onboarding/rolls/red_cross.jpg',
+        headerText : headerText,
+        promoText : 'sandy.shelby.tv',
+        roll : this.model.at(0)
+      }));
+    } else {
+      headerText = 'View our latest Hashtag Roll';
+      this.$el.html(SHELBYJST['inline-sandy-promo']({
+        avatarSrc : '/images/onboarding/rolls/franken.jpg',
+        headerText : headerText,
+        promoText : '#HurricaneSandy',
+        roll : this.model.at(0)
+      }));
     }
-    this.$el.html(SHELBYJST[onSandyRoll ? 'inline-donate-promo' : 'inline-roll-promo']({
-      rolls : this.model,
-      headerText : headerText,
-      promoText : 'Click to donate to the Red Cross.',
-      roll : this.model.at(0)
-    }));
+
     if (!onSandyRoll) {
       this.model.each(function(roll){
         shelby.track('Show roll promo', {id:roll.id});
