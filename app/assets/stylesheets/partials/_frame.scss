@@ -425,15 +425,28 @@ $share-frame-half-gutter: 2px;
     @include button-sizing(frame-command);
 
     width: 100%;
+
+    .icon {
+      background-size: 1.8em;
+      -webkit-background-size: 1.8em;
+    }
   }
 
   .menu_button--twitter {
+    padding-left: 0;
+
+    .icon {
+      padding-left: 2em;
+    }
   }
 
   .menu_button--facebook {
+    padding-left: 0;
+
+    .icon {
+      padding-left: 2em;
+    }
   }
-
-
 }
 
 
