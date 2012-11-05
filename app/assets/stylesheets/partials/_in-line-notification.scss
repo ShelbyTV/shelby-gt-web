@@ -64,3 +64,27 @@
   line-height: 2.3;
   margin-left: 0.55em;
 }
+
+.in-line-donate-link {
+  &:active,
+  &:link,
+  &:visited {
+    text-decoration: none;
+
+    .in-line-donate-title {
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    text-decoration: underline;
+
+    .in-line-donate-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.in-line-donate-header {
+  color: #333;
+}

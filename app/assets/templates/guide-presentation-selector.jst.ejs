@@ -47,8 +47,8 @@
           <div class="settings-userhandle">
             <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
   
-            <a href="http://<%= user.get('nickname') + '.shelby.tv' %>" target="_personalRoll">
-              <%= user.get('nickname') + '.shelby.tv' %>
+            <a href="http://<%= user.get('personal_roll_subdomain') + '.shelby.tv' %>" target="_personalRoll">
+              <%= user.get('personal_roll_subdomain') + '.shelby.tv' %>
             </a>
           </div>
   
