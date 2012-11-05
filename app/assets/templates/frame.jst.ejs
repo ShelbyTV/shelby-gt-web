@@ -18,8 +18,7 @@
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
 <% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
 
-
-<!-- new videocard -->
+<!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
@@ -168,7 +167,22 @@
               </div>
             </a>
           <% } %>
-        </div>
+
+          <% if (user.isAnonymous()) { %>
+            <ul class="menu_list menu_list--share-frame">
+              <li class="menu_item">
+                <button class="button_primer button_twitter-blue menu_button--twitter">
+                  Share on Twitter
+                </button>
+              </li>
+              <li class="menu_item">
+                <button class="button_primer button_facebook-blue menu_button--facebook">
+                  Share on Facebook
+                </button>
+              </li>
+            </ul>
+          <% } %>
+        </div><!-- eo .media_body -->
       </footer><!-- eo .media_module-->
     <% } else if (frameViewed){ %>
       <footer class="media_module frame-footer clearfix">
