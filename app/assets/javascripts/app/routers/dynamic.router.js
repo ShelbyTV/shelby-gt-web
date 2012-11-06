@@ -444,8 +444,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
-    shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
-      new libs.shelbyGT.ExtensionBannerNotification();
+
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({
           model : shelby.models.guide,
@@ -456,16 +455,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
-    shelby.views.keyboardControls = shelby.views.keyboardControls ||
-        new libs.shelbyGT.KeyboardControlsView();
+
+    if(!Browser.isIos()){
+      //irrelevant views for iOS devices.
+      shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
+        new libs.shelbyGT.ExtensionBannerNotification();
+
+      shelby.views.keyboardControls = shelby.views.keyboardControls ||
+          new libs.shelbyGT.KeyboardControlsView();
+    }
 
     if (options.openInvite) {
       shelby.models.invite.trigger('invite:open');
     }
 
+    if (Modernizr && Modernizr.touch) {
     //if Modernizr exists AND determines user is on a touch-device, enable iScroll
-    // if (Modernizr && Modernizr.touch) {
-    if (Modernizr) {
+
       if(!shelby.iScroll.enabled){
         shelby.iScroll.el = new iScroll('js-guide-body');
         shelby.iScroll.wrapper = document.getElementById('guide');
