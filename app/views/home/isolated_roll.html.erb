@@ -26,7 +26,8 @@
 
 <body>
   <iframe src="<%= Settings::Application.url %>/isolated-roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
-	<% if Rails.env == 'production' %>
+
+	<% if Rails.env == 'production' %>	
 	  <script>
 	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview'],['_setCustomVar',2, 'Visit to Subdomain', document.location.hostname]];
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
