@@ -144,7 +144,7 @@ $active-list-item: $shelby-blue;
 }
 
 //------------------------------------------------------------------------------
-//  frame creator block, 
+//  frame creator block,
 //  base: media obj.
 //------------------------------------------------------------------------------
 .xuser-data {
@@ -352,7 +352,7 @@ $active-list-item: $shelby-blue;
     }
   }
 
-  /* unplayable and collapsed */  
+  /* unplayable and collapsed */
   &.xvideo-unplayable {
 
     .xvideo-unplayable-thumbnail-overlay {
@@ -378,7 +378,7 @@ $active-list-item: $shelby-blue;
     text-align: center;
     top: 45px;
   }
-  
+
   .xframe-thumbnail {
     @include filter(blur(3px) grayscale(1));
   }
@@ -387,7 +387,7 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.xvideo-unplayable-thumbnail-overlay { 
+.xvideo-unplayable-thumbnail-overlay {
   display: none;
 }
 
