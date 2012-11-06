@@ -21,8 +21,12 @@
 //  Modernizr.touch
 //------------------------------------------------------------------------------
 .touch {
-  .video-player-tools-wrapper {
+  .video-player-controls-wrapper {
     font-size: 1.3em;
+  }
+
+  .videoplayer-progress {
+    margin-top: 1.8em;
   }
 
   .video-player-timeline {
@@ -94,7 +98,7 @@
       color: #e2e3e3;
     }
   }
-  
+
   &:active {
     margin: 1px -1px -1px 1px;
   }
@@ -149,28 +153,21 @@
 ////////////////////////////////////////////////////////////////////////////
 //  video player progress bar components
 ////////////////////////////////////////////////////////////////////////////
-.video-player-progress {
-  background: black;
-  border-radius: $radius*2;
-//<<<<<<< HEAD
-//  height: 8px;
-//  left: 60px;
-//  right: 250px;
-//  margin: 18px 8px 0;
-//  position: absolute;
-//=======
-  height: 8px;
-//  left:105px;
-//  right:250px;
-  margin: 1.8em  8px 0;
+.videoplayer-progress__wrapper {
+  height: 4em;
   overflow: hidden;
-  position: relative;
-//>>>>>>> master
 }
 
-.video-player-progress-load,
-.video-player-progress-elapsed {
+.videoplayer-progress {
+  background: black;
+  border-radius: $radius*2;
+  height: 8px;
+  margin: 1.5em 8px 0;
+  position: relative;
+}
 
+.videoplayer-progress__load,
+.videoplayer-progress__elapsed {
   background: $video-controls-progress-load;
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
 
@@ -179,13 +176,13 @@
   width: 0;
 }
 
-.video-player-progress-elapsed {
+.videoplayer-progress__elapsed {
   @include background($shelby-blue);
 
   margin-top:-8px;
 }
 
-.video-player-scrubber {
+.videoplayer-progress__scrubber {
   background: #efefef;
   border-radius: 8px;
   box-shadow: 1px 0px 2px 1px black;
@@ -224,9 +221,10 @@
 ////////////////////////////////////////////////////////////////////////////
 //  container, positions prev/next buttons
 ////////////////////////////////////////////////////////////////////////////
-.video-player-nav-buttons-wrapper {
-  height: 40px;
+.videoplayer-nav {
+  height: 4em;
   margin-top: -20px;
+  padding: 1em;
   position: absolute;
   top: 50%;
   width: 100%;
@@ -236,35 +234,34 @@
 //  shared props between both prev/next
 //  thus module, hence underscore
 ////////////////////////////////////////////////////////////////////////////
-.videoplayer_nav {
+.videoplayer-nav__btn {
   @include gradient-primer($video-player);
   @include opacity(0.5);
 
   border: none;
   border-radius: $radius;
-  height:40px;
+  height: 4em;
   padding: 0;
-  position:absolute;
-  width: 40px;
+  width: 4em;
   z-index: 2;
 
   &:hover {
     @include opacity(1.0);
   }
 
-  .icon-next,
-  .icon-prev {
+  .icon {
     display: block;
     height: inherit;
   }
+
   ////////////////////////////////////////////////////////////////////////////
   //  compound, not nested
   ////////////////////////////////////////////////////////////////////////////
-  &.video-player-prev {
-    left: 20px;
+  &.videoplayer-nav__btn--prev {
+
   }
 
-  &.video-player-next {
-    right: 20px;
+  &.videoplayer-nav__btn--next {
+    float: right;
   }
 }
