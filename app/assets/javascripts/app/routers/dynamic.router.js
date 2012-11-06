@@ -109,7 +109,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
     }
-      
+    
+    // Load Twitter and FB JS libraries if user not logged in.
+    if (shelby.models.user.isAnonymous()){
+      $('body').append(SHELBYJST['social-libs']());
+    }
+    
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
   },
