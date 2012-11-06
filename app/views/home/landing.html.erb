@@ -25,9 +25,15 @@
   <div class="shelby-wrapper">
     <header class="shelby-header clearfix" role="banner">
       <button class="shelby-logo js-home">
-        <h1 class="shelby-title ir">
-          Shelby.tv
-        </h1>
+        <% if Rails.env != "staging" %>
+          <h1 class="shelby-title ir">
+            Shelby.tv
+          </h1>
+        <% else %>
+          <h1 class="shelby-title-staging">
+            staging.shelby.tv
+          </h1>
+        <% end %>
       </button>
 
       <nav class="guide-presentation-selector">

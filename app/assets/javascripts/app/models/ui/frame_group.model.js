@@ -85,6 +85,13 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         discoveredUnplayableHoursAgo < this.RECONSIDER_PLAYABILITY_AFTER_H){
       this.set({video_unplayable:true, collapsed:true});
     }
+  },
+  
+  getSubdomainPermalink : function(){
+    var url;
+    var _firstFrame = this.getFirstFrame();
+    return _firstFrame.getSubdomainPermalink();
   }
+  
 
 });

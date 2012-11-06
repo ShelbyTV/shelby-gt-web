@@ -24,6 +24,7 @@
 </head>
 
 <body class="shelby">
+	<div id="fb-root"></div>
   <!-- notifications/alerts -->
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div id="js-notifications-wrapper" class="animate_module notifications-wrapper hide"></div>
@@ -58,29 +59,29 @@
     </div><!-- eo .content_wrapper.action-layout -->
 
   </div> <!-- eo ~application -->
-  <% if Rails.env == 'production' %>
-    <script>
-      var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-    <script>
-      var _kmq = _kmq || [];
-      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-    </script>
-  <% end %>
-
-  <%= javascript_include_tag "deferred" %>
+	<% if Rails.env == 'production' %>
+	  <script>
+	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+	  </script>
+		<script>
+		  var _kmq = _kmq || [];
+		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+		  function _kms(u){
+		    setTimeout(function(){
+		      var d = document, f = d.getElementsByTagName('script')[0],
+		      s = d.createElement('script');
+		      s.type = 'text/javascript'; s.async = true; s.src = u;
+		      f.parentNode.insertBefore(s, f);
+		    }, 1);
+		  }
+		  _kms('//i.kissmetrics.com/i.js');
+		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+		</script>
+	<% end %>
+	
+	<%= javascript_include_tag "deferred" %>
 </body>
 </html>

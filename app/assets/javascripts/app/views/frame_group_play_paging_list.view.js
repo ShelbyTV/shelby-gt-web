@@ -86,9 +86,11 @@
           this._nextPromoExplore = true;
           return new InlineRollPromoView({model:rollsCollection});
         } else {
-          this._nextPromoExplore = false;
+          //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
+          return [];
+          // this._nextPromoExplore = false;
           //we don't have any rolls to promo, so promo explore instead
-          return new InlineExplorePromoView();
+          // return new InlineExplorePromoView();
         }
       // }
     },

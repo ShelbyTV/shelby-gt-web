@@ -134,7 +134,7 @@ $active-list-item: $shelby-blue;
 }
 
 //------------------------------------------------------------------------------
-//  frame creator block, 
+//  frame creator block,
 //  base: media obj.
 //------------------------------------------------------------------------------
 .xuser-data {
@@ -342,7 +342,7 @@ $active-list-item: $shelby-blue;
     }
   }
 
-  /* unplayable and collapsed */  
+  /* unplayable and collapsed */
   &.xvideo-unplayable {
 
     .xvideo-unplayable-thumbnail-overlay {
@@ -368,7 +368,7 @@ $active-list-item: $shelby-blue;
     text-align: center;
     top: 45px;
   }
-  
+
   .xframe-thumbnail {
     @include filter(blur(3px) grayscale(1));
   }
@@ -377,7 +377,7 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.xvideo-unplayable-thumbnail-overlay { 
+.xvideo-unplayable-thumbnail-overlay {
   display: none;
 }
 
@@ -398,6 +398,55 @@ $active-list-item: $shelby-blue;
 }
 
 //------------------------------------------------------------------------------
+//  .menu_module--share-frame HAPPENS to be isolated roll specific,
+//  but isn't necessarily, or may not always be true
+//------------------------------------------------------------------------------
+$share-frame-half-gutter: 4px;
+
+.menu_list--share-frame {
+  .menu_item {
+    padding-top: 1em;
+    width: 50%;
+
+    &:first-child {
+      padding-right: $share-frame-half-gutter;
+
+    }
+
+    &:last-child {
+      padding-left: $share-frame-half-gutter;
+
+    }
+
+  }
+
+  .menu_button--twitter,
+  .menu_button--facebook {
+    padding: 0.6em .6em .6em 0.45em;
+    width: 100%;
+
+    .icon {
+      background-size: 1.8em;
+      -webkit-background-size: 1.8em;
+      display: block;
+      padding-left: 1.3em;
+      margin-left: .5em;
+    }
+  }
+
+  .menu_button--twitter {
+    .icon {
+    }
+  }
+
+  .menu_button--facebook {
+    .icon {
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
 //  isolate roll
 //  (nest styles inside of .isolated-roll{})
 //------------------------------------------------------------------------------
@@ -412,6 +461,7 @@ $active-list-item: $shelby-blue;
 
   .xuser-message {
     margin: 0;
+    min-height: 2em;
   }
 
   .xuser-data-timestamp {
