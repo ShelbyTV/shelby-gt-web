@@ -35,9 +35,9 @@
 
   background: rgba(0,0,0, 0.5);
   color: white;
-  margin:-25% $defaultMargin * 6;
+  margin: -25% 6em;
   opacity: 0.0;
-  padding: 20px;
+  padding: 2em;
 
   @include transition-property('opacity');
   @include transition-duration(1s);
