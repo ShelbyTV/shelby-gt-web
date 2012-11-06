@@ -3,7 +3,7 @@
     <a href="#" onclick="return false;" class="in-line-promo-link js-goto-roll" data-roll_id="<%= roll.id %>">
       view roll
     </a>
-    <img class="in-line-promo-thumb" src="<%= roll.get('display_thumbnail_src') %>" />
+    <img class="in-line-promo-thumb" src="<%= roll.get('in_line_thumbnail_src') || roll.get('display_thumbnail_src') %>" />
     <h3 class="in-line-promo-title">
       <%= roll.get('display_title') %>
     </h3>

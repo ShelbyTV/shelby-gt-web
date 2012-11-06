@@ -131,9 +131,24 @@
 }
 
 .invite-feedback {
-  margin: 125px 10px 10px;
+  margin: 80px 10px 10px;
   font-size: 1.4em;
   text-align: center;
+
+  &:not(.invite-feedback--success) {
+    .icon {
+      display: none;
+    }
+  }
+
+  .icon {
+    display: block;
+    height: 100px;
+  }
+}
+
+.invite-feedback--failure {
+  margin-top: 120px;
 }
 
 ////////////////////////////////////////////////////////////////////////////

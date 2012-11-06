@@ -10,7 +10,7 @@ body {
 //------------------------------------------------------------------------------
 //  landing-page
 //------------------------------------------------------------------------------
-$landing-page-width: 920px;
+$landing-page-width: 1000px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
 
@@ -39,7 +39,6 @@ $landing-page-footer-font-color: #EFEFEF;
  ********************************************************/
 .login-section,
 .signup-section {
-  box-shadow: 0 0 20px 0 black;
   right: 10px;
   top: 28px;
 }
@@ -50,7 +49,7 @@ $landing-page-footer-font-color: #EFEFEF;
   @include fin;
 
   background: $nav-dropdown-bg;
-  box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
+  box-shadow: 0 0 20px 0 black;
   text-align: left;
   width: 300px;
 }
@@ -68,44 +67,37 @@ $landing-page-footer-font-color: #EFEFEF;
   margin-top: .5em;
 }
 
-.login-form,
-.login-social-section,
-.signup-form,
-.signup-social-section  {
-  padding: 10px;
-}
-
-.login-social-section-header {
-  margin-bottom: 5px;
-}
-
-.login-form .form_input {
-  margin-bottom: .5em;
-}
-
-.login-submit,
-.signup-submit {
-  @include button-primer();
-
-  margin-top: .5em;
-}
-
-.login-forgot-password {
-  padding-left: 2em;
-}
-
-
 /********************************************************
  * All Shelves
  ********************************************************/
+  .half,
+  .half--left,
+  .half--right {
+    width: 50%;
+  }
+
+  .half {
+//    float: left;
+//    overflow: hidden;
+  }
+
+  .half--left {
+    float: left;
+  }
+
+  .half--right {
+    float: right;
+  }
+
+
 $landing-page-shelf-background: #ddd;
 
 .landing-shelf {
   background-color: $landing-page-shelf-background;
 
-  &:not(.flat){
+//  &:not(.flat){
     @include gradient-primer($landing-page-shelf-background, -10%,bottom);
-  }
+//  }
 
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
@@ -115,7 +107,6 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf__lining {
   max-width: $landing-page-width;
   margin: 0 auto;
-  max-width: $landing-page-width;
 
   &.half {
     float: left;
@@ -177,6 +168,14 @@ $landing-page-shelf-background: #ddd;
   margin: 1em 0;
 }
 
+.landing-shelf__divider--white {
+  background-color: $button-color;
+  border: none;
+  height: 1px;
+  margin: 1em 0;
+}
+
+
 .landing-shelf__divider-legend {
   font-size: .8em;
   text-align: center;
@@ -186,8 +185,7 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf__button--twitter {
   @include button-sizing;
 
-  display: block;
-  float: left;
+  display: inline-block;
   margin: 0 1em 1em 0;
   text-align: center;
   width: 161px;
@@ -256,11 +254,24 @@ $landing-page-shelf-background: #ddd;
  * _invite - Invitation Form Shelf
  ********************************************************/
 .landing-shelf--invite {
+  background-color: #444;
+  background-image: url('/images/landing/invite_landing.jpg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid #333;
+  border-top: none;
+  color: #efefef;
+
   .landing-shelf__lining {
-    margin: 0 auto;
-    max-width: 350px;
+//    margin: 0 auto;
+//    max-width: 350px;
     padding: 50px 0;
     text-align: center;
+
+    &.half {
+      border: none;
+    }
   }
 
   .landing-shelf__h1 {
@@ -273,25 +284,81 @@ $landing-page-shelf-background: #ddd;
 .landing-shelf_form--invite {
   font-size: 1.4em;
   text-align: left;
+  width: 400px;
 
   .form_submit {
     width: 100%;
+    margin-top: 1em;
   }
 
   .form_label {
+    font-family: $font-family;
+    font-weight: bold;
     position: relative;
   }
 
+  .form_input {
+    border-radius: 2px;
+    background-color: rgba(239, 239, 239,.7);
+
+    &.filled,
+    &:focus {
+      background-color: rgba(239, 239, 239,1);
+    }
+  }
+
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+    }
+  }
+
   .form_error {
-    bottom: 0;
+    bottom: -1.8em;
     color: $shelby-red;
     display: none;
     font-family: $font-family;
     font-size: .8em;
     position: absolute;
-    right: 0;
+    right: .5em;
+  }
+
+  .form_fieldset--social-login {
+    text-align: center;
   }
 }
+
+/********************************************************
+ * _invite - Invitation Welcome
+ ********************************************************/
+.landing-shelf__welcome {
+  color: white;
+  margin-top: 50px;
+  font-size: 5.5em;
+  text-align: center;
+  text-shadow: $shadow-text;
+
+  .landing-shelf__h1 {
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .landing-shelf__h2 {
+    font-size: .7em;
+    font-weight: 700;
+    line-height: 1;
+
+    &:hover {
+      &:after {
+        content: "We spared no expense!";
+        display: block;
+        font-size:  0.475em;
+        line-height: 6;
+      }
+    }
+  }
+}
+
 
 
 /********************************************************
@@ -578,7 +645,7 @@ $landing-page-shelf-background: #ddd;
   font-size: 1.3em;
   font-weight: 400;
   height: 45px;
-  padding: 1.1em 3em 1.2em;
+  padding: 1.1em 1em 1.2em;
   vertical-align: bottom;
 
   &:hover {

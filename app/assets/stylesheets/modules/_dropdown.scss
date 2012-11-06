@@ -27,15 +27,24 @@
   }
 }
 
+.dropdown_module--no-hover {
+  position: relative;
+
+  .dropdown_icon {
+    background-image: none;
+  }
+}
+
 .dropdown_button {
 }
-  .dropdown_icon {
-    background-image: url($icon-carrot);
-    background-repeat: no-repeat;
-    background-position: right center;
-    font-style: normal;
-    padding-right: 1em;
-  }
+
+.dropdown_icon {
+  background-image: url($icon-carrot);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-style: normal;
+  padding-right: 1em;
+}
 
 .dropdown_section {
   display: none;

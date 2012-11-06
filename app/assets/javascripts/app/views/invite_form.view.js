@@ -1,9 +1,12 @@
 libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
 
+  _autoCloseTimeoutId : null,
+
   events: {
-    "click .js-send-invite:not(.js-busy)"  : "_sendInvite",
-    "mouseleave"                           : "_onMouseLeave",
-    "mouseleave :has(.js-invite-feedback)" : "_onMouseLeaveAfterSuccess"
+    "click .js-invite"                     : "_toggleDropdown",
+    "change .js-invite-email"              : "_updateEmail",
+    "change .js-invite-message"            : "_updateMessage",
+    "click .js-send-invite:not(.js-busy)"  : "_sendInvite"
   },
 
   template : function(obj){
@@ -12,10 +15,12 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
 
   initialize : function() {
     this.options.user.bind('change:beta_invites_available', this._updateInvitesAvailable, this);
+    this.model.bind('invite:open', this._openDropdown, this);
   },
 
   _cleanup : function(){
     this.options.user.unbind('change:beta_invites_available', this._updateInvitesAvailable, this);
+    this.model.unbind('invite:open', this._openDropdown, this);
   },
 
   render : function(){
@@ -34,10 +39,38 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     } else {
       this.$('.js-invites-remaining').hide();
       this.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
-        feedback: 'Sorry, You Have No Invites Left',
+        feedback: "Keep watching and rolling, and we'll get you some more invites...",
         success: false
       }));
     }
+  },
+
+  _toggleDropdown : function() {
+    // cancel any auto-close timeout
+    clearTimeout(this._autoCloseTimeoutId);
+    if (!this.$('.js-invite-section').toggle().is(':visible')) {
+      // if dropdown closed
+      // re-render so we're ready to display next time it opens
+      this.render();
+      // let screen elements fade out again
+      shelby.userInactivity.enableUserActivityDetection();
+    } else {
+      // if dropdown opened
+      // don't let screen elements fade out until dropdown is closed
+      shelby.userInactivity.disableUserActivityDetection();
+      if (!this.options.user.get('beta_invites_available')) {
+        // if the user doesn't have any invites left, auto close after a bit
+        this._closeDropDownAfterUserFeedbackDelay(3000);
+      }
+    }
+  },
+
+  _updateEmail : function(e) {
+    this.model.set({to: $(e.currentTarget).val()});
+  },
+
+  _updateMessage : function(e) {
+    this.model.set({body: $(e.currentTarget).val()});
   },
 
   _sendInvite : function(){
@@ -47,53 +80,50 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     //stop responding to clicks on the button until the ajax returns
     this.$('.js-send-invite').addClass('js-busy');
 
-    //hold the dropdown open until the ajax has finshed and we've given the user feedback on their action
-    this.$el.addClass('dropdown_module--stay-open');
-
-    this.model.save({
-      to : this.$('.js-invite-email').val(),
-      body : this.$('.js-invite-message').val()
-    },{
+    this.model.save(null, {
       success : function(){
         //decrement the number of invites available
         self.options.user.set('beta_invites_available', self.options.user.get('beta_invites_available') - 1);
+        //show some feedback on the invite being successfully sent
+        self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
+          feedback: 'Thanks for sending an invite!',
+          success: true
+        }));
         //reset the email address and message to their defaults for the next invitation
         self.model.set({
           to : self.model.defaults['to'],
           body : self.model.defaults['body']
         });
-        //show some feedback on the invite being successfully sent
-        self.$('.js-invite-section-lining').html(SHELBYJST['invite-form-feedback']({
-          feedback: 'Invitation Sent',
-          success: true
-        }));
-        self._closeDropDownAfterUserFeedbackDelay();
+        self._closeDropDownAfterUserFeedbackDelay(1500);
       },
       error : function(inviteModel, response){
         //show some feedback on the invite failure
-        var responseJSON = $.parseJSON(response.responseText);
-        self._renderErrors(responseJSON.errors);
-        self._closeDropDownAfterUserFeedbackDelay();
+        var errors = $.parseJSON(response.responseText).errors;
+        self._renderErrors(errors);
         //reactivate the button
         this.$('.js-send-invite').removeClass('js-busy');
+        if (errors && errors.user && errors.user.beta_invites_available) {
+          self._closeDropDownAfterUserFeedbackDelay(1500);
+        }
       }
     });
   },
 
-  _closeDropDownAfterUserFeedbackDelay : function(){
+  _closeDropDownAfterUserFeedbackDelay : function(ms){
     var self = this;
 
-    //after a short delay, allow the dropdown to close
-    setTimeout(function(){
-      self.$el.removeClass('dropdown_module--stay-open');
-      // if dropdown does close
-      if (self.$('.js-invite-section:visible').length == 0) {
+    // cancel any previous auto-close timeout
+    clearTimeout(this._autoCloseTimeoutId);
+
+    //after a short delay, close the dropdown
+    this._autoCloseTimeoutId =
+      setTimeout(function(){
+        self.$('.js-invite-section').hide();
         // re-render so we're ready to display the next time it gets opened
         self.render();
-        // clear any error messages
-        self._renderErrors();
-      }
-    }, 1500);
+        // let screen elements fade out again
+        shelby.userInactivity.enableUserActivityDetection();
+      }, ms);
   },
 
   _renderErrors : function(errors) {
@@ -109,28 +139,22 @@ libs.shelbyGT.InviteFormView = Support.CompositeView.extend({
     }
   },
 
-  _onMouseLeave : function(){
-    // if the drop down will be closed,
-    // clear error messages
-    if (!this.$el.hasClass('dropdown_module--stay-open')) {
-      this._renderErrors();
-    }
-  },
-
-  _onMouseLeaveAfterSuccess : function(){
-    // if the drop down will be closed,
-    // re-render so we're ready to display the next time it gets opened
-    if (!this.$el.hasClass('dropdown_module--stay-open')) {
-      this.render();
-    }
-  },
-
   _updateInvitesAvailable : function(userModel, invitesAvailable) {
     if (invitesAvailable) {
       this.$('.js-invites-remaining').text(invitesAvailable);
       this.$('.js-invites-remaining').show();
     } else {
       this.$('.js-invites-remaining').hide();
+    }
+  },
+
+  _openDropdown : function() {
+    this.$('.js-invite-section').show();
+    // don't let screen elements fade out until dropdown is closed
+    shelby.userInactivity.disableUserActivityDetection();
+    if (!this.options.user.get('beta_invites_available')){
+      // if the user doesn't have any invites left, auto close after a bit
+      this._closeDropDownAfterUserFeedbackDelay(2000);
     }
   }
 

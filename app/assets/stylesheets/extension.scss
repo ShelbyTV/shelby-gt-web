@@ -1,40 +1,50 @@
+//------------------------------------------------------------------------------
+//  base: color variables, height & width constants
+//------------------------------------------------------------------------------
 @import "base";
+//------------------------------------------------------------------------------
+//  base-mixin: mixins library
+//------------------------------------------------------------------------------
 @import "base-mixin";
 
 /* A wrapper around all the elements the extension inserts */
 .ext-elements {
   /* We import these in here so we don't fuck up the surrounding page */
-  @import "partials/fonts",
-          "partials/h5bp", 
-          "partials/utilities",
-          "partials/modules",
-          "partials/icons",
-          
-          "partials/app.html",
-          "partials/app-header",
+  @import "boilerplate/fonts";
+  @import "boilerplate/h5bp";
 
-          "partials/guide-presentation-selector",
-          "partials/guide-overlay-view",
-          "partials/guide-overlay-controls",
+  @import "modules";
+  @import "abstracts";
 
-          "partials/roll-header",
+  @import "partials/app.html";
+  @import "partials/app-header";
 
-          "partials/frame",
-          "partials/rolling-form",
-          "partials/me-section",
-          "partials/rolls-list",
+  @import "partials/guide-presentation-selector";
+  @import "partials/guide-overlay-view";
+  @import "partials/guide-overlay-controls";
 
-          "partials/frame-rolling",
-          "partials/frame-conversation",
+  @import "partials/login-form";
 
-          "partials/rolls",	
-          "partials/share",
+  @import "partials/roll-header";
 
-          "partials/notifications",
+  @import "partials/frame";
+  @import "partials/rolling-form";
+  @import "partials/me-section";
+  @import "partials/rolls-list";
 
-          "partials/h5bp-utilities",
-          "bookmarklet-overwrite";
-  
+  @import "partials/frame-rolling";
+  @import "partials/frame-conversation";
+
+  @import "partials/rolls";
+  @import "partials/share";
+
+  @import "partials/banner_notification";
+  @import "partials/notifications";
+
+  @import "boilerplate/h5bp-utilities";
+
+  @import "extension/bookmarklet-overwrite";
+
   font-size: 11px;
 
   * {
@@ -43,16 +53,16 @@
     font-size: 1em;
     text-shadow: none;
   }
-  
+
   ul, ol {
     padding: 0;
   }
-  
+
   /* Color reset (b/c of Vimeo, at least) */
   input, textarea {
     background-color: #fff;
   }
-  
+
   h1, h2, h3, h4 {
     color: $text;
   }
@@ -90,7 +100,7 @@
           form {
             display: block;
           }
-            
+
 
 	  textarea, button, input {
 	  	font-size: 12px !important;

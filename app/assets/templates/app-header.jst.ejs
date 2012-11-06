@@ -1,7 +1,13 @@
   <button class="shelby-logo shelby-logo-no-link js-home">
-    <h1 class="shelby-title ir">
-      Shelby.tv
-    </h1>
+    <% if (shelby.config.environment != "staging") { %>
+      <h1 class="shelby-title ir">
+        Shelby.tv
+      </h1>
+    <% } else { %>
+      <h1 class="shelby-title-staging">
+        staging.shelby.tv
+      </h1>
+    <% } %>
   </button>
 
   <nav id="js-guide-presentation-selector" class="guide-presentation-selector">

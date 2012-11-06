@@ -104,6 +104,7 @@
       .icon {
         &.icon_email {
           background-image: url($icon-email);
+          background-size: 1.1em;
           padding-left: $button-padding-left + .2em;
         }
       }

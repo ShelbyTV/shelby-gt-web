@@ -5,17 +5,28 @@
 .notification_module {
   font-family: $font-family-display;
   font-weight: 500;
-  height: inherit; //if parent wrapper isn't set, set a height in the modifying class.
+  height: 40px;
+  padding: 5px;
+  position: relative;
   text-align: center;
+  width: 100%;
   z-index: 4;
 }
 
-.notification_actions {
+.notification_actions,
+.notification_actions--rev  {
   font-size: 1.3em;
-  left: 0;
   padding: 3px 5px;
   position: absolute;
   top: 0;
+}
+
+.notification_actions {
+  left: 0;
+}
+
+.notification_actions--rev {
+  right: 0;
 }
 
 .notification_button {
@@ -23,6 +34,16 @@
 
 .notification_label {
   line-height: 2.6;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .notification_body {
@@ -30,8 +51,14 @@
 }
 
 .notification_message {
-  display: inline-block;
+  @include ellipsis;
 
+  display: inline-block;
+}
+
+.notification_option {
+  font-size: .7em;
+  margin-left: .7em;
 }
 
 //------------------------------------------------------------------------------
@@ -41,18 +68,12 @@
 
 }
 
-.notification-banner {
-  /*height is set by GenericBannerNotificationView */
-  padding: 5px;
-  position: relative;
-  width: 100%;
-}
 //------------------------------------------------------------------------------
 //  chrome extension notification
 //------------------------------------------------------------------------------
 $extension-color: #fff82b;
 
-.extension-notification {
+.notification_module--extension {
   @include gradient-primer($extension-color);
 
   .notification_button {
@@ -121,7 +142,7 @@ $extension-color: #fff82b;
 //------------------------------------------------------------------------------
 $bookmarklet-color: $shelby-blue;
 
-.bookmarklet-notification {
+.notification_module--bookmarklet {
   @include gradient-primer($bookmarklet-color);
 
   color: $button-color;
@@ -164,11 +185,6 @@ $bookmarklet-color: $shelby-blue;
   .icon {
     padding-left: 1.3em;
   }
-}
-
-.bookmarklet-notification-radar-help{
-  font-size: .7em;
-  margin-left: .7em;
 }
 
 .faux-bookmarklet-button {
@@ -233,7 +249,7 @@ $bookmarklet-color: $shelby-blue;
 //------------------------------------------------------------------------------
 //  ANON_BANNER Notification
 //------------------------------------------------------------------------------
-.anonymous-signup-notification {
+.notification_module--anonymous-signup {
   @include gradient-primer(#fff82b, 20%);
 
   .notification_actions {
@@ -292,7 +308,7 @@ $bookmarklet-color: $shelby-blue;
   }
 
   .form_fieldset {
-    padding: 0 1em;
+
   }
 
   .login-submit {
