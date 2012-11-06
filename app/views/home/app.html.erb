@@ -24,11 +24,13 @@
 </head>
 
 <body class="shelby">
-  <!-- notifications/alerts -->
+  <div id="fb-root"></div>
+
+	<!-- notifications/alerts -->
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div id="js-notifications-wrapper" class="animate_module notifications-wrapper hide"></div>
   <!-- eo notifications/alerts -->
-
+	
   <div id="js-shelby-wrapper" class="shelby-wrapper">
     <header id="js-header" class="js-app-header shelby-header" role="banner">
       <!-- contents in AppHeaderView -->
@@ -58,6 +60,7 @@
     </div><!-- eo .content_wrapper.action-layout -->
 
   </div> <!-- eo ~application -->
+
   <% if Rails.env == 'production' %>
     <script>
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
