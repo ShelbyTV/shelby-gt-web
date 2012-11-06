@@ -263,21 +263,23 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _shareToFacebook : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
-    FB.ui(
-      {
-        method: 'feed',
-        name: _frame.get('video').get('title'),
-        link: _frame.getSubdomainPermalink(),
-        picture: _frame.get('video').get('thumbnail_url'),
-        description: _frame.get('video').get('description'),
-        caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
-      },
-      function(response) {
-        if (response && response.post_id) {
-          // TODO:we should record that this happened.
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          name: _frame.get('video').get('title'),
+          link: _frame.getSubdomainPermalink(),
+          picture: _frame.get('video').get('thumbnail_url'),
+          description: _frame.get('video').get('description'),
+          caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
         }
-      }
-    );
+      );      
+    }
   },
 
   //ListItemView overrides
