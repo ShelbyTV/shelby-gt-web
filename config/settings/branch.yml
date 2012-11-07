@@ -1,0 +1,11 @@
+defaults: &defaults
+  branch: "master"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

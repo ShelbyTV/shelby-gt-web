@@ -15,3 +15,11 @@ set :rails_env, "staging"
 set :unicorn_env, "staging"
 set :app_env,     "staging"
 require 'capistrano-unicorn'
+
+namespace :deploy do
+  task :write_branch_settings do
+    puts self[:deploy_to]
+  end
+end
+
+after "deploy:update_code", "deploy:write_branch_settings"
