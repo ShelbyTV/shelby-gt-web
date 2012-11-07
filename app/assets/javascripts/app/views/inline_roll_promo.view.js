@@ -27,19 +27,22 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
       }));
     } else if (shelby.models.user.isAnonymous()) {
       headerText = 'See video of the storm and donate to the Red Cross';
+      var roll = this.model.at(0);
+      var avatarSrc = roll.get('in_line_thumbnail_src') || roll.get('display_thumbnail_src');
       this.$el.html(SHELBYJST['inline-sandy-promo']({
-        avatarSrc : '/images/onboarding/rolls/red_cross.jpg',
+        avatarSrc : avatarSrc,
         headerText : headerText,
         promoText : 'sandy.shelby.tv',
-        roll : this.model.at(0)
+        roll : roll
       }));
     } else {
       headerText = 'View our latest Hashtag Roll';
+      var roll = this.model.at(0);
       this.$el.html(SHELBYJST['inline-sandy-promo']({
-        avatarSrc : '/images/onboarding/rolls/franken.jpg',
+        avatarSrc : 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/5096790db415cc05a2006f5b',
         headerText : headerText,
         promoText : '#HurricaneSandy',
-        roll : this.model.at(0)
+        roll : roll
       }));
     }
 
@@ -64,7 +67,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
     shelby.track('Click roll promo', {id:rollId});
   },
 
-  _trackDonateClick : function(){
+  _trackDonateClick : function(e){
     var rollId = $(e.currentTarget).data('roll_id');
     shelby.track('Click donate promo', {id:rollId});
   }
