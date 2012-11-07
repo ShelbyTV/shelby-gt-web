@@ -6,6 +6,14 @@
   .preroll-video-info-wrapper {
     font-size: 1.3em
   }
+
+  .preroll-video-info-wrapper {
+    font-size: .5em;
+  }
+  .preroll-video-info {
+    margin-left: 15em;
+    margin-right: 15em;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -59,19 +67,19 @@
   @include transition-delay(0s);
 
   .video-title {
-    font-size: 40px;
+    font-size: 4em;
     font-weight: bold;
   }
 
   .frame-creator {
-    font-size: 23px;
+    font-size: 2.3em;
     img {
       width: 48px;
     }
   }
 
   .frame-comment {
-    font-size: 30px;
+    font-size: 3em;
     margin: 25px 0 35px 0;
   }
   
