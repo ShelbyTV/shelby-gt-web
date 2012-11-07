@@ -67,7 +67,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
     shelby.track('Click roll promo', {id:rollId});
   },
 
-  _trackDonateClick : function(){
+  _trackDonateClick : function(e){
     var rollId = $(e.currentTarget).data('roll_id');
     shelby.track('Click donate promo', {id:rollId});
   }
