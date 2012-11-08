@@ -35,10 +35,17 @@
 }
 
 .shelby-title-staging {
+  @include ellipsis;
+
   color: $guide-presentation-button;
   font-size: 1em;
   height: 35px;
   line-height: 3.4;
   margin: 0 1px;
+  padding: 0 0.4em;
   width: 95px;
+
+  &:hover {
+    width: auto;
+  }
 }
