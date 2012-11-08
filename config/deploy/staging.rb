@@ -35,4 +35,4 @@ namespace :deploy do
   end
 end
 
-after "deploy:update_code", "deploy:write_branch_settings"
+before "deploy:assets:precompile", "deploy:write_branch_settings"
