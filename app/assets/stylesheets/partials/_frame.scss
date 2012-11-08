@@ -406,7 +406,7 @@ $share-frame-half-gutter: 4px;
 .menu_list--share-frame {
   .menu_item {
     padding-top: 1em;
-    width: 50%;
+    width: 33%;
 
     &:first-child {
       padding-right: $share-frame-half-gutter;
@@ -421,7 +421,8 @@ $share-frame-half-gutter: 4px;
   }
 
   .menu_button--twitter,
-  .menu_button--facebook {
+  .menu_button--facebook,
+  .menu_button--comment {
     padding: 0.6em .6em .6em 0.45em;
     width: 100%;
 

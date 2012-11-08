@@ -187,6 +187,13 @@
                   </i>
                 </button>
               </li>
+              <li class="menu_item">
+                <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+                  <i class="button_icon_left icon_videocard_comment icon">
+                    <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+                  </i>
+                </button>
+              </li>
             </ul>
           <% } %>
         </div><!-- eo .media_body -->
