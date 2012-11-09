@@ -460,14 +460,11 @@ $share-frame-half-gutter: 4px;
 
 
 //------------------------------------------------------------------------------
-//  isolate roll
+//  isolated roll
 //  (nest styles inside of .isolated-roll{})
 //------------------------------------------------------------------------------
 .isolated-roll {
-  .frame-subline {
-    display: none;
-  }
-
+  .frame-subline,
   .xuser-data {
     display: none;
   }

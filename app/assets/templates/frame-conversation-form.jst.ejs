@@ -14,9 +14,11 @@
       <div class="media_body">
         <textarea class="js-add-message-input new-comment-input" rows="2" autofocus tabindex="0"></textarea>
         <div class="js-frame-comment-error-message frame-comment-error-message"></div>
-        <button class="form_submit button_primer button_blue new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>" tabindex="0">
-          Comment <% if ( user.isAnonymous() ) { %> is anonymous <% } %>
-        </button>
+        <% if ( !user.isAnonymous() ) { %>
+          <button class="form_submit button_primer button_blue new-comment-submit js-new-comment-submit js-track-event" data-ga_category="Conversation" data-ga_action="Click submit comment" data-ga_label="<%= user.get('nickname') %>" tabindex="0">
+            Comment
+          </button>
+        <% } %>
       </div>
     </div><!-- eo .media_module-->
   </form>
