@@ -3,6 +3,27 @@ require 'shelby_api'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  #set Vanity (A/B testing) to use javascript to register participants, hopefully preventing robots from participating
+  Vanity.playground.use_js!
+  Vanity.playground.add_participant_path = Rails.application.routes.url_helpers.add_participant_path
+
+  #assign an identity for vanity (A/B testing)
+  use_vanity :vanity_id
+
+  def vanity_id
+    if (request.env['HTTP_USER_AGENT'] =~ /\b(Baidu|Gigabot|Googlebot|libwww-perl|lwp-trivial|msnbot|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg)\b/i)
+      #merge known web-bots to a single id to minimize skewing of test results
+      return Struct.new(:id).new("robot")
+    else
+      id = current_user_id
+      if id && id != "nil"
+        return Struct.new(:id).new(id.to_s)
+      else
+        return nil
+      end
+    end
+  end
+
   helper_method :csrf_token_from_cookie
 
   def render_error(code, message)
@@ -27,8 +48,12 @@ class ApplicationController < ActionController::Base
   # Simple helper to let us know if we expect that the user is signed in:
   #  the _shelby_gt_common cookie is being set/cleared on the api server
   def user_signed_in?
-    id = cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
+    id = current_user_id
     id ? id != "nil" : false
+  end
+
+  def current_user_id
+    cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
   end
   
   def csrf_token_from_cookie

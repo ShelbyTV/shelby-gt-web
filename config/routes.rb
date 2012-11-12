@@ -38,6 +38,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/explore' => "home#explore"
   get '/signout' => "home#signout", :as => :signout
 
+  # used by vanity (A/B testing) to register partcipants via javascript
+  match '/vanity/add_participant' => 'vanity#add_participant', :as => :add_participant
+
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
