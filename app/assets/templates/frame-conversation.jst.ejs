@@ -39,7 +39,11 @@
     </div><!-- eo frame-body-wrapper -->
 		<% if (shelby.models.user.isAnonymous()) { %>
 	    <div class="signin_module">
-	      <a class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link auth-popup" href="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" location="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" popup-width="450" popup-height="500">Sign up</a> to leave a comment.
+		    <section class="dropdown_section signup-section">
+		      <div class="dropdown_lining signup-section-lining clearfix"></div>
+				</section>
+		    	
+	      <a id="js-login-within-comments" class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link auth-popup" href="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" location="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" popup-width="450" popup-height="500">Sign up</a> to leave a comment.
 	    </div>
 		<% } %>
   </form>
