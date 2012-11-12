@@ -113,8 +113,9 @@
     
     _showLogin : function(){
       this.$el.find('.signup-section-lining').html(SHELBYJST['signin-form']());
-      $('.signup-section').css("left","10px");
-      $('.dropdown_section').show();
+      $('.signup-section').css("left","10px").css('top','38px');
+      $('.dropdown_section').toggle();
+      $('.form_fieldset.social_login.login-social-section, hr').hide();
     }
     
   });
