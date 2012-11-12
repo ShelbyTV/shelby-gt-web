@@ -5,6 +5,7 @@
   var PagingListView = libs.shelbyGT.PagingListView;
   var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
+  var InlineDonatePromoView = libs.shelbyGT.InlineDonatePromoView;
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
 
@@ -73,30 +74,46 @@
       //   this._nextPromoExplore = false;
       //   return new InlineExplorePromoView();
       // } else {
-        var promoRolls =
-          shelby.models.promoRollCategories.get('roll_categories').reduce(function(memo, category){
-            return memo.concat(category.get('rolls').models);
-          }, []);
-        //only consider rolls that have all the needed attribtues to render a promo
-        promoRolls = promoRolls.filter(this._filterPromoRolls, this);
-        if (promoRolls.length) {
-          var rollsCollection = new Backbone.Collection();
-          //select one of the promo rolls at random to display in the promo
-          rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
-          this._nextPromoExplore = true;
-          return new InlineRollPromoView({model:rollsCollection});
+        var donatePromoInfo = this._lookupDonatePromo();
+        if (donatePromoInfo) {
+        // render a donate promo if the current roll is set to do so
+          return new InlineDonatePromoView({
+            headerText : donatePromoInfo.headerText,
+            linkSrc : donatePromoInfo.linkSrc,
+            model : this.model,
+            promoText : donatePromoInfo.promoText
+          });
         } else {
-          //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
-          return [];
-          // this._nextPromoExplore = false;
-          //we don't have any rolls to promo, so promo explore instead
-          // return new InlineExplorePromoView();
+          // if there are no special settings for this roll, render a roll promo
+          var promoRolls =
+            shelby.models.promoRollCategories.get('roll_categories').reduce(function(memo, category){
+              return memo.concat(category.get('rolls').models);
+            }, []);
+          //only consider rolls that have all the needed attribtues to render a promo
+          promoRolls = promoRolls.filter(this._filterPromoRolls, this);
+          if (promoRolls.length) {
+            var rollsCollection = new Backbone.Collection();
+            //select one of the promo rolls at random to display in the promo
+            rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
+            this._nextPromoExplore = true;
+            return new InlineRollPromoView({model:rollsCollection});
+          } else {
+            //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
+            return [];
+            // this._nextPromoExplore = false;
+            //we don't have any rolls to promo, so promo explore instead
+            // return new InlineExplorePromoView();
+          }
         }
       // }
     },
 
     _filterPromoRolls : function(roll) {
       return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
+    },
+
+    _lookupDonatePromo : function() {
+      return null;
     }
 
   });

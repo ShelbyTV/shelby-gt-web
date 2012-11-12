@@ -64,6 +64,13 @@
       // return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
       //TEMPRORARY ITS OK TO SHOW BECAUSE IT WILL BE A DONATE PROMO
       return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
+    },
+
+    _lookupDonatePromo : function() {
+      self = this;
+      return _(shelby.config.donatePromos).find(function(promoInfo) {
+        return promoInfo.rollId == self.model.id;
+      });
     }
 
   });
