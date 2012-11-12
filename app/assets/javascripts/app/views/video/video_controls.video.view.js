@@ -271,10 +271,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
 
   _doRelativeSeek: function(pageX){
-    var scrubTrack = this.$('.videoplayer-progress');
+    var scrubTrack = this.$('.js-videoplayer-progress');
     var seekPct = ( (pageX - scrubTrack.offset().left) / scrubTrack.width() );
     seekPct = Math.min(Math.max(seekPct, 0.0), 1.0);
     this._userDesires.set({currentTimePct: seekPct});
+    console.log(this._userDesires.get('currentTimePct'));
   }
 
 });

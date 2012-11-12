@@ -32,6 +32,13 @@
   .video-player-timeline {
     line-height: 4.6em;
   }
+
+  .videoplayer-progress__scrubber {
+    border-radius: 5px;
+    height: 35px;
+    margin: -22px 0;
+    width: 19px;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -45,7 +52,7 @@
   opacity: 1;
   position: absolute;
   width: 100%;
-  z-index: 2;
+  z-index: 2000000;
 }
 
 
