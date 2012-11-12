@@ -1,31 +1,16 @@
 #############################################################
-#	Servers
+# Servers
 #############################################################
 
-role :web, "108.171.161.62"
-role :app, "108.171.161.62"
+role :web, "50.56.123.84"
+role :app, "50.56.123.84"
 
 #############################################################
-#	Git
+# Git
 #############################################################
 
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
 set :branch, "master"
-
-#############################################################
-# Passenger
-#############################################################
-
-namespace :passenger do
-  desc "Restart Application"
-  task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
-
-namespace :deploy do
-  desc "Restart passenger"
-  task :restart do
-    passenger.restart
-  end
-end
+set :rails_env, "production"
+set :unicorn_env, "production"
+set :app_env,     "production"
