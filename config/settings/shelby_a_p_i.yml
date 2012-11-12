@@ -9,7 +9,7 @@ defaults: &defaults
 development:
   <<: *defaults
   login_form_url: "https://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
-  popup_cohort_entrance_url: "http://localhost:4000/cohort_entrance/test"
+  popup_cohort_entrance_url: "http://localhost:4000/cohort_entrance/test/popup"
   
 test:
   <<: *defaults

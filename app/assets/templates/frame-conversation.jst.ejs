@@ -37,8 +37,10 @@
         SHELBYJST['frame-conversation-form']({user: user})
       %>
     </div><!-- eo frame-body-wrapper -->
-    <div class="signin_module">
-      <a class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link auth-popup" href="<%= shelby.config.popupCohortEntraceURL %>" location="<%= shelby.config.popupCohortEntraceURL %>" popup-width="450" popup-height="500">Sign up</a> to leave a comment.
-    </div>
+		<% if (shelby.models.user.isAnonymous()) { %>
+	    <div class="signin_module">
+	      <a class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link auth-popup" href="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" location="<%= shelby.config.popupCohortEntraceURL %>?return_url=<%= document.location.href %>" popup-width="450" popup-height="500">Sign up</a> to leave a comment.
+	    </div>
+		<% } %>
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->
