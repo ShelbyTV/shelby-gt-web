@@ -81,7 +81,8 @@
             headerText : donatePromoInfo.headerText,
             linkSrc : donatePromoInfo.linkSrc,
             model : this.model,
-            promoText : donatePromoInfo.promoText
+            promoText : donatePromoInfo.promoText,
+            thumbnailSrc : donatePromoInfo.thumbnailSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model)
           });
         } else {
           // if there are no special settings for this roll, render a roll promo

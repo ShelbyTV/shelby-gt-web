@@ -3,7 +3,8 @@ libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
   options : {
     headerText : 'Support a Great Cause',
     linkSrc : null,
-    promoText : 'Click to donate'
+    promoText : 'Click to donate',
+    thumbnailSrc : null
   },
 
   tagName : 'li',
@@ -24,7 +25,8 @@ libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
       headerText : this.options.headerText,
       linkSrc : this.options.linkSrc,
       promoText : this.options.promoText,
-      roll : this.model
+      roll : this.model,
+      thumbnailSrc : this.options.thumbnailSrc
     }));
     shelby.track('Show donate promo', {id:this.model.id});
   },
