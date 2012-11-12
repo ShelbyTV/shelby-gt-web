@@ -116,6 +116,7 @@
       $('.signup-section').css("left","10px").css('top','38px');
       $('.dropdown_section').toggle();
       $('.form_fieldset.social_login.login-social-section, hr').hide();
+      $('.conversation-body').scrollTop($('.conversation-body').scrollTop()+$('.signup-section').height());
     }
     
   });
