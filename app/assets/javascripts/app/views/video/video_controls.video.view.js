@@ -50,7 +50,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     }
 
     var self = this;
-    this.$('.videoplayer__scrubber').draggable({
+    this.$('.videoplayer-progress__scrubber').draggable({
       axis: 'x',
       containment: 'parent',
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
