@@ -6,7 +6,11 @@
  */
 libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
   
+  //no el b/c we are rendered by DiscussionRollRecipientsView via appendChildInto
+  
   initialize : function(){
+    //model is email address or bson id (as string)
+    
     if(this.model.indexOf("@") === -1){
       this._renderShelbyRecipient();
     } else {

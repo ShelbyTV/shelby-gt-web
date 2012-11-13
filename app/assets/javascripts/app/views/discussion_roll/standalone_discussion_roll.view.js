@@ -17,7 +17,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     
     this.renderChild(new libs.shelbyGT.DiscussionRollRecipientsView({model:this.model, viewer:this.options.viewer}));
     this.renderChild(new libs.shelbyGT.DiscussionRollConversationView({model:this.model}));
-    this.renderChild(new libs.shelbyGT.DiscussionRollReplyView({model:this.model}));
+    this.renderChild(new libs.shelbyGT.DiscussionRollReplyView({model:this.model, token:this.options.token}));
   },
   
   //XXX don't actualy want to do this in production
@@ -25,9 +25,9 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   //    and load a top-level layout view into it from the router
   //    MM will have input there
   _hackPrepareDOM : function(){
-    //TODO: get the DOM ready by hiding something, adding something
-    //in the future, may just change the layout of the overall page, this is fine for now
+    //TODO: should just display different layout for entire page; quick & dirty hack for now...
     $("#js-shelby-wrapper").empty();
+    $("#js-shelby-wrapper").css("color","white");
   }
   
 });

@@ -13,7 +13,7 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
     var discussionRoll = new libs.shelbyGT.DiscussionRollModel({id:discussionRollId, token:params.t});
     
     shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
-        new libs.shelbyGT.StandaloneDiscussionRollView({model:discussionRoll, viewer:params.u});
+        new libs.shelbyGT.StandaloneDiscussionRollView({model:discussionRoll, viewer:params.u, token:params.t});
         
     discussionRoll.fetch({
       error: function(a){
