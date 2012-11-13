@@ -13,14 +13,11 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
     var discussionRoll = new libs.shelbyGT.DiscussionRollModel({id:discussionRollId, token:params.t});
     
     shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
-        new libs.shelbyGT.StandaloneDiscussionRollView({discussionRoll:discussionRoll});
+        new libs.shelbyGT.StandaloneDiscussionRollView({model:discussionRoll, viewer:params.u});
         
-    //TODO: do i need any success/error handlers?  Or can this just be entirely handled by the BINDINGS of subviews?
     discussionRoll.fetch({
-      success: function(userModel, response) {
-        console.log("FETCHED discussion roll successfully. ", userModel, response);
-      },
       error: function(a){
+        //TODO: display error to user
         console.log("ERROR on fetch of discussion roll. ", a);
       }
     });
