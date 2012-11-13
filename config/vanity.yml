@@ -1,0 +1,4 @@
+development:
+  adapter: redis
+  connection: redis://localhost:6379/0
+  collecting: true

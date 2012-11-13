@@ -40,6 +40,8 @@ ShelbyGtWeb::Application.routes.draw do
 
   # used by vanity (A/B testing) to register partcipants via javascript
   match '/vanity/add_participant' => 'vanity#add_participant', :as => :add_participant
+  # the rest of the vanity routes don't need _path methods generated
+  match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
