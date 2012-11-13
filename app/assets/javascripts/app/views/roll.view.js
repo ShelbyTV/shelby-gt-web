@@ -16,8 +16,8 @@
         this.options.isIntervalComplete = function(displayedItems) {
           return false;
         };
-      } else if (this.model.id == '5096790db415cc05a2006f5c') {
-        //TEMPORARY - IF THE ROLL IS THE SANDY ROLL, INCREASE THE PROMO FREQUENCY
+      } else if (this._lookupDonatePromo()) {
+        //if the roll has a donate promo, increase the promo frequency
         this.options.isIntervalComplete = function(displayedItems) {
           return displayedItems != 0;
         };
