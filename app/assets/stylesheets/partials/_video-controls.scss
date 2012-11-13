@@ -18,18 +18,43 @@
 }
 
 //------------------------------------------------------------------------------
+//  Modernizr.touch
+//------------------------------------------------------------------------------
+.touch {
+  .video-player-controls-wrapper {
+    font-size: 1.3em;
+  }
+
+  .videoplayer-progress {
+    margin-top: 1.8em;
+  }
+
+  .video-player-timeline {
+    line-height: 4.6em;
+  }
+
+  .videoplayer-progress__scrubber {
+    border-radius: 5px;
+    height: 35px;
+    margin: -22px 0;
+    width: 19px;
+  }
+}
+
+//------------------------------------------------------------------------------
 //  VIDEO PLAYER setup,
 //  video-player-tools-wrapper is purely for positioning.
 //------------------------------------------------------------------------------
 .video-player-tools-wrapper {
-  bottom:0;
-  height:65px;
-  left:0;
+  bottom: 0;
+  height: 5.6em;
+  left: 0;
   opacity: 1;
-  position:absolute;
-  width:100%;
-  z-index: 2;
+  position: absolute;
+  width: 100%;
+  z-index: 2000000;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////
 //  actual video player controller
@@ -40,7 +65,7 @@
   @include roundies;
 
   border: 1px solid #202020;
-  height: 45px;
+  height: 4.1em;
   margin: $defaultMargin;
   padding: 0;
   position: relative;
@@ -55,10 +80,10 @@
   .videoplayer_button {
     background-color: transparent;
     border: none;
-    height: 43px;
+    height: 4em;
     float: left;
     padding: 0;
-    width: 47px;
+    width: 4.5em;
 
     i {
       display: block;
@@ -80,7 +105,7 @@
       color: #e2e3e3;
     }
   }
-  
+
   &:active {
     margin: 1px -1px -1px 1px;
   }
@@ -135,27 +160,22 @@
 ////////////////////////////////////////////////////////////////////////////
 //  video player progress bar components
 ////////////////////////////////////////////////////////////////////////////
-.video-player-progress {
-  background: black;
-  border-radius: $radius*2;
-//<<<<<<< HEAD
-//  height: 8px;
-//  left: 60px;
-//  right: 250px;
-//  margin: 18px 8px 0;
-//  position: absolute;
-//=======
-  height:8px;
-  left:105px;
-  right:250px;
-  margin:18px 8px 0;
-  position:absolute;
-//>>>>>>> master
+.videoplayer-progress__wrapper {
+  height: 4em;
+  overflow: hidden;
+  padding: 0 .5em;
 }
 
-.video-player-progress-load,
-.video-player-progress-elapsed {
+.videoplayer-progress {
+  background: black;
+  border-radius: $radius*2;
+  height: 8px;
+  margin: 1.5em 8px 0;
+  position: relative;
+}
 
+.videoplayer-progress__load,
+.videoplayer-progress__elapsed {
   background: $video-controls-progress-load;
   @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
 
@@ -164,13 +184,13 @@
   width: 0;
 }
 
-.video-player-progress-elapsed {
+.videoplayer-progress__elapsed {
   @include background($shelby-blue);
 
   margin-top:-8px;
 }
 
-.video-player-scrubber {
+.videoplayer-progress__scrubber {
   background: #efefef;
   border-radius: 8px;
   box-shadow: 1px 0px 2px 1px black;
@@ -186,10 +206,11 @@
 .video-player-timeline {
   color: #b2b2b2;
   float: right;
-  font-size: 1.2em;
+  font-size: 13px;
+  font-size: 0.8rem;
   font-weight: 300;
-  line-height: 3.5;
-  margin: 0 15px;
+  line-height: 3.6em;
+  margin: 0 1em;
 }
 
 //------------------------------------------------------------------------------
@@ -208,9 +229,10 @@
 ////////////////////////////////////////////////////////////////////////////
 //  container, positions prev/next buttons
 ////////////////////////////////////////////////////////////////////////////
-.video-player-nav-buttons-wrapper {
-  height: 40px;
+.videoplayer-nav {
+  height: 4em;
   margin-top: -20px;
+  padding: 1em;
   position: absolute;
   top: 50%;
   width: 100%;
@@ -220,35 +242,34 @@
 //  shared props between both prev/next
 //  thus module, hence underscore
 ////////////////////////////////////////////////////////////////////////////
-.videoplayer_nav {
+.videoplayer-nav__btn {
   @include gradient-primer($video-player);
   @include opacity(0.5);
 
   border: none;
   border-radius: $radius;
-  height:40px;
+  height: 4em;
   padding: 0;
-  position:absolute;
-  width: 40px;
+  width: 4em;
   z-index: 2;
 
   &:hover {
     @include opacity(1.0);
   }
 
-  .icon-next,
-  .icon-prev {
+  .icon {
     display: block;
     height: inherit;
   }
+
   ////////////////////////////////////////////////////////////////////////////
   //  compound, not nested
   ////////////////////////////////////////////////////////////////////////////
-  &.video-player-prev {
-    left: 20px;
+  &.videoplayer-nav__btn--prev {
+
   }
 
-  &.video-player-next {
-    right: 20px;
+  &.videoplayer-nav__btn--next {
+    float: right;
   }
 }

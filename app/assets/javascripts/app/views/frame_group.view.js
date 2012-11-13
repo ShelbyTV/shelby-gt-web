@@ -278,7 +278,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
             // TODO:we should record that this happened.
           }
         }
-      );      
+      );
     }
   },
 
