@@ -21,6 +21,9 @@ gem 'httparty'
 #
 gem 'youtube_it'
 
+# ---------- A/B Testing
+#
+gem 'vanity'
 
 #
 # -- Quiet Logging
