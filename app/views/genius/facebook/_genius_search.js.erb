@@ -25,14 +25,7 @@ $(function(){
 		var target = document.getElementById('genius-search-spinner');
 		var spinner = new Spinner(opts).spin(target);
 
-		var _label = 0;
-		setInterval(function(){
-		  _label += 1;
-		  var cycle = _label % 3;
-		  var val = 'finding.';
-		  val = cycle  == 0 ? val : cycle == 1 ? val+'..' : val + '...';
-		  $('#js-genius-search-submit').attr('value',val);
-		}, 200);
+	  $('#js-genius-search-submit').attr('value','finding');
     
 		var search = $('.genius-search-form').find('input').val();
     

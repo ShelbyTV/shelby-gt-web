@@ -8,6 +8,7 @@ body.facebook-genius{
     text-align:center; 
     font-weight: 400;
     font-size:2em;
+    padding: 2em;
   }
   .top-header { font-size: 2.0em; }
   h2.landing-shelf-subheader { 
@@ -17,11 +18,11 @@ body.facebook-genius{
     margin:0px auto;
   }
   .landing-shelf form{ 
-    margin: 50px 90px 0px;
-    width: 920px;
+    margin: 50px auto 30px;
+    width: 630px;
   }
   .landing-form-input {
-    width: 65%;
+    width: 489px;
     margin-right: 10px;
     @include roundies(input);
   }
@@ -145,7 +146,7 @@ body.facebook-genius{
       border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
       font-size: 1em;
       height: 22px;
-      padding: 6px 5px 5px;
+      padding: 4px 5px 5px;
     }
    .header-form-submit {
      border-radius: 0 2px 2px 0;
@@ -186,12 +187,13 @@ body.facebook-genius{
   button.command-post{ 
     width: 115px; 
     i {
-      padding-left: 1.3em;
+      padding-left: 1.6em;
+      background-size: contain;
     }
   }
   
   // prev/next buttons
-  .video-player-nav-buttons-wrapper{ display: none; }
+  .videoplayer-nav{ display: none; }
   
   // video controls
   #video-controls {
