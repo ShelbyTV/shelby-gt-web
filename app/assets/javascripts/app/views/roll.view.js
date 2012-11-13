@@ -16,8 +16,8 @@
         this.options.isIntervalComplete = function(displayedItems) {
           return false;
         };
-      } else if (this.model.id == '5096790db415cc05a2006f5c') {
-        //TEMPORARY - IF THE ROLL IS THE SANDY ROLL, INCREASE THE PROMO FREQUENCY
+      } else if (this._lookupDonatePromo()) {
+        //if the roll has a donate promo, increase the promo frequency
         this.options.isIntervalComplete = function(displayedItems) {
           return displayedItems != 0;
         };
@@ -64,6 +64,13 @@
       // return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
       //TEMPRORARY ITS OK TO SHOW BECAUSE IT WILL BE A DONATE PROMO
       return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
+    },
+
+    _lookupDonatePromo : function() {
+      self = this;
+      return _(shelby.config.donatePromos).find(function(promoInfo) {
+        return promoInfo.rollId == self.model.id;
+      });
     }
 
   });
