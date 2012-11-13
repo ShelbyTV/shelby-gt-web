@@ -14,7 +14,6 @@ set :branch, fetch(:branch, "staging")
 set :rails_env, "staging"
 set :unicorn_env, "staging"
 set :app_env,     "staging"
-require 'capistrano-unicorn'
 
 before "deploy:assets:precompile", "deploy:write_branch_settings"
 
