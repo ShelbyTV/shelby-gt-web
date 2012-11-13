@@ -86,7 +86,9 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _showHome : function(){
-    shelby.router.navigate('stream', {trigger:true});
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+      shelby.router.navigate('stream', {trigger:true});
+    }
   },
   
   _showFBHome : function(){

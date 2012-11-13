@@ -116,6 +116,8 @@ _(shelby).extend({
           break;
         case 'Click roll promo':
         case 'Show roll promo':
+        case 'Click donate promo':
+        case 'Show donate promo':
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = options.id;

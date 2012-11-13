@@ -45,7 +45,7 @@
 .form_input,
 .form_textarea {
   @include roundies(input);
-  @include transition-property('border');
+  @include transition-property('border,background');
   @include transition-duration(0.25s);
   @include transition-timing-function(ease-in);
 
@@ -58,6 +58,21 @@
   &:focus {
     outline: none;
     border: 1px solid adjust-lightness($inset, -50%);
+  }
+
+  &[disabled] {
+    background-color: #eee;
+    color: rgba(0,0,0,.4);
+  }
+}
+
+.form_input_uneditable,
+.form_textarea_uneditable {
+  background-color: transparent;
+  border: none;
+  &[disabled] {
+    background-color: transparent;
+    border: none;
   }
 }
 

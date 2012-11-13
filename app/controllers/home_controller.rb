@@ -38,7 +38,8 @@ class HomeController < ApplicationController
           # Consider errors and render landing page
           @auth_failure = params[:auth_failure] == '1'
           @auth_strategy = params[:auth_strategy]
-          @show_error = params[:access] == "nos"
+          @access_error = params[:access] == "nos"
+          @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
           
           get_info_for_meta_tags(params[:path])
@@ -56,6 +57,24 @@ class HomeController < ApplicationController
       format.any {
         head :not_found
       }
+    end
+  end
+
+  ##
+  # Handles invite landing page
+  #
+  # GET /invite/:invite_id
+  #
+  def invite
+    if user_signed_in?
+      redirect_to :action => :index
+    else
+      # Parse errors and render landing
+      @nickname_error = params[:nickname]
+      @email_error = params[:primary_email]
+
+      @invite_id = params[:invite_id]
+      render '/home/landing'
     end
   end
 
@@ -101,6 +120,7 @@ class HomeController < ApplicationController
           when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
           when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
           when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
+          when "yvynyl.tv" then "4fa2908088ba6b61770010af"
           when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
@@ -109,7 +129,7 @@ class HomeController < ApplicationController
               false
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
-              roll = Shelby::API.get_roll(request.subdomain)
+              roll = Shelby::API.get_roll_by_subdomain(request.subdomain)
               
               roll && roll['id']
             else

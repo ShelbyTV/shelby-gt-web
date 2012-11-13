@@ -21,7 +21,7 @@ describe("FrameConversationView", function() {
 
   beforeEach(function() {
     sinon.stub(this.view, 'render', function() {
-      this.$el.html('<div class="back"></div>');
+      this.$el.html('<div class="js-cancel"></div>');
       return this.el;
     });
     this.view.render();
@@ -33,13 +33,13 @@ describe("FrameConversationView", function() {
 
   describe("Events", function() {
 
-    describe("click .back:not(.js-busy)", function() {
+    describe("click .js-cancel:not(.js-busy)", function() {
       it("should update guide overlay state to hide guide overlays", function() {
         this.view.options.guideOverlayModel.set({
           activeGuideOverlayType : 'something',
           activeGuideOverlayFrame : 'something else'
         });
-        this.view.$('.back').click();
+        this.view.$('.js-cancel').click();
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayType')).toEqual(libs.shelbyGT.GuideOverlayType.none);
         expect(this.view.options.guideOverlayModel.get('activeGuideOverlayFrame')).toBeNull();
       });

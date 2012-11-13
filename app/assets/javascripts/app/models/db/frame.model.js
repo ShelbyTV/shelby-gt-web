@@ -113,6 +113,14 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   getVideoThumbnailUrl : function() {
     var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
     return url ? url : null;
+  },
+  
+  getSubdomainPermalink : function(){
+    var url;
+    if (this.has('roll') && this.get('roll').has('subdomain')){
+      url = this.get('roll').get('subdomain') + '.shelby.tv/' + this.id  ;
+    }
+    return url ? url : null;
   }
 
 });

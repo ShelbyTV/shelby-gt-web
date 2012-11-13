@@ -12,6 +12,11 @@ module Shelby
       r = get( "/roll/#{id}" ).parsed_response
       return r['status'] == 200 ? r['result'] : nil
     end
+
+    def self.get_roll_by_subdomain(subdomain)
+      r = get( "/roll" , :body => { :subdomain => subdomain }).parsed_response
+      return r['status'] == 200 ? r['result'][0] : nil
+    end
     
     def self.get_roll_with_frames(roll_id)
       r = get( "/roll/#{roll_id}/frames?include_children=true" ).parsed_response

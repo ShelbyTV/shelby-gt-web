@@ -86,8 +86,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _updateJoinButton : function(){
-    console.log('update follow button?');
-
     var currentRollModel = this.model.get('currentRollModel');
     if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel)){
       this.$('.js-roll-add-leave-button').hide();
@@ -99,7 +97,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$('.js-roll-add-leave-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
-      console.log('current role model != me');
       this.$('.js-roll-add-leave-button').toggleClass('rolls-leave button_gray-medium', userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }

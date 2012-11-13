@@ -12,7 +12,7 @@
 		<!-- AddThis Button END -->
 	</div>
 <% end %>
-<div class="landing-shelf-video-embed">
+<div class="landing-shelf__video-embed">
   <% if @video['provider_name'] == "youtube" %>
 		<iframe width="500" height="300" src="http://www.youtube.com/embed/<%= @video['provider_id'] %>?autoplay=0" frameborder="0" allowfullscreen></iframe>
   <% else %>

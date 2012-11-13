@@ -6,11 +6,16 @@
 
     envs : {
       production : 'production',
+      staging : 'staging',
       development : 'development'
     },
 
     isDevelopment : function(){
       return this.getEnvironment === this.envs.development;
+    },
+
+    isStaging : function(){
+      return this.getEnvironment === this.envs.staging;
     },
 
     isProduction : function(){

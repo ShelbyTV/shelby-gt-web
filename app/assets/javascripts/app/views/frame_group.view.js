@@ -31,7 +31,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
-    "click .js-toggle-comment"              : "_toggleComment"
+    "click .js-toggle-comment"              : "_toggleComment",
+    "click .js-share-to-facebook"           : "_shareToFacebook"
   },
 
   template : function(obj){
@@ -301,9 +302,31 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       picture: _frame.get('video').get('thumbnail_url'),
       description: _frame.get('video').get('description'),
       caption: ':: a shelby genius video ::'
-    });
+    });    
   },
-
+  
+  _shareToFacebook : function(e){
+    var _id = $(e.currentTarget).parents('article').attr('id');
+    var _frame = this.model.getFirstFrame();
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          name: _frame.get('video').get('title'),
+          link: _frame.getSubdomainPermalink(),
+          picture: _frame.get('video').get('thumbnail_url'),
+          description: _frame.get('video').get('description'),
+          caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
+        }
+      );
+    }
+  },
+  
   //ListItemView overrides
   isMyModel : function(model) {
     return this.model == model;

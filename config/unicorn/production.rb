@@ -15,7 +15,7 @@ user 'gt'
 working_directory app_path
 
 # Should be 'production' by default, otherwise use other env 
-rails_env = 'production'
+rails_env = ENV['RAILS_ENV'] || 'production'
 
 # Log everything to one file
 stderr_path "#{app_path}/log/unicorn.log"

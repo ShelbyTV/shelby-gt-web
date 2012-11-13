@@ -1,5 +1,5 @@
-<div class="animate_module video-player-tools-wrapper">
-  <menu class="animate_module video-player-tools">
+<div class="animate_module video-player-tools-wrapper clearfix">
+  <menu class="animate_module video-player-tools clearfix">
 		<button class="videoplayer_button video-player-roll js-videoplayer-roll js-track-event" data-ga_category="Player" data-ga_action="Click roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       <i class="">
         ✚ Roll
@@ -10,12 +10,6 @@
         Play
       </i>
     </button>
-
-    <div class="video-player-progress js-videoplayer-progress">
-      <div class="video-player-progress-load"></div>
-      <div class="video-player-progress-elapsed"></div>
-      <div class="video-player-scrubber"></div>
-    </div>
 
     <button class="videoplayer_button video-player-quality hd-off js-videoplayer-hd js-track-event" data-ga_category="Player" data-ga_action="Click hd" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       <i class="ir button_icon_center icon_player_hd_off icon-hd">
@@ -44,18 +38,26 @@
         0:00
       </span>
     </div>
+
+    <div class="videoplayer-progress__wrapper js-videoplayer-progress">
+      <div class="videoplayer-progress">
+        <div class="videoplayer-progress__load"></div>
+        <div class="videoplayer-progress__elapsed"></div>
+        <div class="videoplayer-progress__scrubber"></div>
+      </div>
+    </div>
   </menu>
 </div>
 
-<div class="animate_module video-player-nav-buttons-wrapper">
-  <button class="videoplayer_animate videoplayer_nav video-player-next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-    <i class="ir button_icon_center icon_arrow_right icon-next">
+<div class="animate_module videoplayer-nav">
+  <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <i class="ir button_icon_center icon_arrow_right icon">
       Next
     </i>
   </button>
 
-  <button class="videoplayer_animate videoplayer_nav video-player-prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-    <i class="ir button_icon_center icon_arrow_left icon-prev">
+  <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <i class="ir button_icon_center icon_arrow_left icon">
       Prev
     </i>
   </button>
