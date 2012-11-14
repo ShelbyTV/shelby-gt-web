@@ -65,6 +65,7 @@ end
 group :production, :staging do
   gem 'unicorn'
   gem 'kgio'
+  gem 'raindrops'
 end
 
 #
