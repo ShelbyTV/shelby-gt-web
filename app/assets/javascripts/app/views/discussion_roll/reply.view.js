@@ -48,11 +48,17 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     //post new message
     var msg = new libs.shelbyGT.DiscussionRollMessageModel({message:text, token:this.options.token, discussion_roll_id:this.model.id});
     msg.save(null, {
-      success:function(model, resp){
+      success:function(respModel, resp){
         msgInput.val('');
-        //NOTE: in the future, model may be a Frame, in which case we add that to self.model
-        //      but for now, model is a Conversation, which we just need to update in self.model
-        self.model.get('frames').first().get('conversation').set(model);
+        // respModel may have an array of Frames, in which case we add them to self.model
+        // otherwise it's a Conversation, which we just need to update in self.model
+        if( respModel.get('frames') ){
+          respModel.get('frames').forEach(function(f){
+            self.model.get('frames').add(f, {at:0});
+          });
+        } else {
+          self.model.get('frames').first().get('conversation').set(respModel);
+        }
       },
       error:function(){
         msgInput.addClass("error");

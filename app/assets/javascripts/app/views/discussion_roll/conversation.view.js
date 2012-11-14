@@ -16,22 +16,26 @@
     className: 'js-discussion-roll-conversation-list',
     
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
-      //model is a discussion roll (set in initialize), it holds a bunch of frames
+      //model is a discussion roll (set in initialize), it's a collection of frames
       collectionAttribute: 'frames',
       
       //which we render as...
       listItemView: 'DiscussionRollFrameView', //<-- we pass this view some additional info, see initialize()
       
-      //order them with the oldest on top (API sends newest first)
-      insert : {
-        position : 'prepend'
-      },
+      //and order with the oldest on top...
+      comparator: function(frame){ return frame.id; }
     }),
   
     initialize : function(){
       this.options.listItemViewAdditionalParams = { viewer: this.options.viewer };
       
       PagingListView.prototype.initialize.call(this);
+    },
+    
+    _doesResponseContainListCollection : function(response) {
+      console.log("_doesResponseContainListCollection resp:", response);
+      return response.result && $.isArray(response.result.frames);
+      
     }
   
   });

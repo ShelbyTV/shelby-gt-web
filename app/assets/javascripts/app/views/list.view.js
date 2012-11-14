@@ -22,6 +22,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   options : {
     collection : null,
     collectionAttribute : 'listCollection',
+    
+    /* TODO: need documentation on this... */
     comparator : null,
     
     /* TODO: need documentation on these two... */
