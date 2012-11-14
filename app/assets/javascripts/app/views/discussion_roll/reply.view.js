@@ -52,7 +52,7 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
         msgInput.val('');
         //NOTE: in the future, model may be a Frame, in which case we add that to self.model
         //      but for now, model is a Conversation, which we just need to update in self.model
-        self.model.get('frames').last().get('conversation').set(model);
+        self.model.get('frames').first().get('conversation').set(model);
       },
       error:function(){
         msgInput.addClass("error");

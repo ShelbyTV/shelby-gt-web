@@ -23,12 +23,22 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     collection : null,
     collectionAttribute : 'listCollection',
     comparator : null,
+    
+    /* TODO: need documentation on these two... */
     doDynamicRender : true,
     doStaticRender : false,
+    
+    /*
+      Where should new listItemViews be rendered?  
+      Valid options are 'append' (default), 'prepend', and 'before'.  
+      'before' behaves like 'append' but you must also include an element selector (which shoud only
+      match one element) that the child is appended just before.
+    */
     insert : {
       position : 'append',
       selector : null
     },
+    
     /*
       isIntervalComplete - a callback function that can be overriden to return true when client wants
       to insert special view items at certain points in the list, for example:
@@ -235,6 +245,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         switch (this.options.insert.position) {
           case 'append' :
             this.appendChild(childView);
+            return;
+          case 'prepend' :
+            this.prependChild(childView, false);
             return;
           case 'before' :
             if (this.options.insert.selector) {

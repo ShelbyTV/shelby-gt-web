@@ -7,45 +7,33 @@
  *    There is a "reply" view displayed below this
  *    Most regular shelby actions are not shown
  */
-libs.shelbyGT.DiscussionRollConversationView = Support.CompositeView.extend({
+(function(){
+  var PagingListView = libs.shelbyGT.PagingListView;
+   
+  libs.shelbyGT.DiscussionRollConversationView = PagingListView.extend({
   
-  el: '.js-discussion-roll-conversation',
-  
-  initialize : function(){
-    this.render();
-  },
-  
-  template : function(obj){
-    return SHELBYJST['discussion-roll/conversation'](obj);
-  },
-  
-  render : function(){
-    this.$el.html(this.template());
+    tagName: 'ol',
+    className: 'js-discussion-roll-conversation-list',
     
-    /* AN EXAMPLE, FOR REFERENCE:
-    this.$el.html(this.template());
-    this.renderChild(new libs.shelbyGT.SmartRefreshListView({
-      collectionAttribute : 'roll_categories',
-      doCheck : libs.shelbyGT.SmartRefreshCheckType.key,
-      doSmartRefresh : true,
-      el : '.js-roll-category-list',
-      keyAttribute : 'category_title',
-      listItemViewAdditionalParams : {
-        activationStateModel : shelby.models.exploreGuide,
-        exploreGuideModel : shelby.models.exploreGuide
+    options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
+      //model is a discussion roll (set in initialize), it holds a bunch of frames
+      collectionAttribute: 'frames',
+      
+      //which we render as...
+      listItemView: 'DiscussionRollFrameView', //<-- we pass this view some additional info, see initialize()
+      
+      //order them with the oldest on top (API sends newest first)
+      insert : {
+        position : 'prepend'
       },
-      listItemView : 'RollCategoryItemView',
-      model : shelby.models.exploreRollCategories
-    }));
-    this.renderChild(new libs.shelbyGT.ExploreContentPaneView({model:shelby.models.exploreGuide}));
-    this._spinnerState = new libs.shelbyGT.SpinnerStateModel();
-    this._spinnerView = new libs.shelbyGT.SpinnerView({
-      model : this._spinnerState,
-      el : '.js-guide-explore',
-      size : 'large-light'
-    });
-    this.renderChild(this._spinnerView);
-    */
-  }
+    }),
   
-});
+    initialize : function(){
+      this.options.listItemViewAdditionalParams = { viewer: this.options.viewer };
+      
+      PagingListView.prototype.initialize.call(this);
+    }
+  
+  });
+  
+}) ();

@@ -15,9 +15,13 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   render : function(){
     this.$el.html(this.template());
     
-    this.renderChild(new libs.shelbyGT.DiscussionRollRecipientsView({model:this.model, viewer:this.options.viewer}));
-    this.renderChild(new libs.shelbyGT.DiscussionRollConversationView({model:this.model}));
-    this.renderChild(new libs.shelbyGT.DiscussionRollReplyView({model:this.model, token:this.options.token}));
+    this.renderChild(     new libs.shelbyGT.DiscussionRollRecipientsView(
+      {model:this.model, viewer:this.options.viewer}));
+    this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(
+      {model:this.model, viewer:this.options.viewer}), 
+      ".js-discussion-roll-conversation-wrapper");
+    this.renderChild(     new libs.shelbyGT.DiscussionRollReplyView(
+      {model:this.model, token:this.options.token}));
   },
   
   //XXX don't actualy want to do this in production

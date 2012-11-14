@@ -1,0 +1,20 @@
+<% if(frame.get('video').get('provider_name') === "youtube" ){ %>
+	<iframe width="310" height="180"
+	src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
+	frameborder="0" allowfullscreen>
+	</iframe>
+<% } else { %>
+	<%= frame.get('video').get('embed_url') %>
+<% } %>
+
+
+<% if(frame.get('conversation') && frame.get('conversation').get('messages').size() > 0){ %>
+	<ol>
+		<% frame.get('conversation').get('messages').each( function(msg){ %>
+			<% var msgFromViewer = (msg.get('user_id') === viewer || msg.get('nickname') === viewer) %>
+			<li class="<%= msgFromViewer ? 'message-from-viewer' : null %>" >
+				<%= msg.get('text') %>
+			</li>
+		<% }) %>
+	</ol>
+<% } %>
