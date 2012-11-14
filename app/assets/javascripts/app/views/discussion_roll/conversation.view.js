@@ -25,11 +25,10 @@
       //and order with the oldest on top...
       comparator: function(frame){ return frame.id; },
       
-      //also need to tell PagingListView about our reversed order
+      //also need to tell PagingListView about our reversed order (and some other tweaks)
       pagingKeySortOrder: -1,
-      
-      //and allow it to pull in 10 at a time
       limit: 10,
+      loadMoreCopy: 'Load Older Messages...'
     }),
   
     initialize : function(){
