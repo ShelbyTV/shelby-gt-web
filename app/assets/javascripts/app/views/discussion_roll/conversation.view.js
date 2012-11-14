@@ -23,7 +23,13 @@
       listItemView: 'DiscussionRollFrameView', //<-- we pass this view some additional info, see initialize()
       
       //and order with the oldest on top...
-      comparator: function(frame){ return frame.id; }
+      comparator: function(frame){ return frame.id; },
+      
+      //also need to tell PagingListView about our reversed order
+      pagingKeySortOrder: -1,
+      
+      //and allow it to pull in 10 at a time
+      limit: 10,
     }),
   
     initialize : function(){
@@ -33,9 +39,7 @@
     },
     
     _doesResponseContainListCollection : function(response) {
-      console.log("_doesResponseContainListCollection resp:", response);
       return response.result && $.isArray(response.result.frames);
-      
     }
   
   });

@@ -3,6 +3,9 @@ libs.shelbyGT.PagingMethod = {
   key : 'key'
 };
 
+/* 
+ * TODO: this class, and the options individually, need documentation 
+ */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   
   _numItemsLoaded : 0,
