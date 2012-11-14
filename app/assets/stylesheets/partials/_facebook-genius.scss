@@ -15,7 +15,11 @@ body.facebook-genius{
     width: 80%;
     text-align: center;
     font-weight: 300;
+    font-size: 1.75em;
     margin:0px auto;
+  }
+  .landing-shelf-private .landing-shelf-subheader{
+    width: 740px;
   }
   .landing-shelf form{ 
     margin: 50px auto 30px;
@@ -54,6 +58,7 @@ body.facebook-genius{
       margin-left: -50px;
       font-size:2em;
     }
+    .landing-shelf-subheader { width: 80%; }
   }
   
   .previous-search-area {
@@ -68,6 +73,7 @@ body.facebook-genius{
     #recommended-searches{ 
       display: none;
     }
+    .landing-shelf-subheader { width: 80%; }
   }
 
   // lists on the shelf
