@@ -4,7 +4,7 @@ class DiscussionRollController < ApplicationController
   # Display a discussion roll (aka video conversation)
   #   AUTHENTICATION OPTIONAL
   #
-  # GET /discussion/roll/:roll_id
+  # GET /chat/:roll_id
   #
   #
   def show

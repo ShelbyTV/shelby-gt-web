@@ -3,7 +3,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   routes : {
     "static/*url" : "initStatic",
     "embedded/*url" : "initEmbedded",
-    "discussion/*url" : "initDiscussionRoll",
+    "chat/*url" : "initDiscussionRoll",
     "*url" : "initDynamic"
   },
 
@@ -22,8 +22,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   },
   
   initDiscussionRoll : function(url){
-    this._bootstrapRequiredAppModels();
-    
     //if logged-in AND desktop browser: full app view.  Otherwise: discussion-only, mobile first view.
     //XXX full app view is not yet implemented (but will resuse many of the views with somewhat different styling)
     if (false && shelby.userSignedIn() && !Browser.isMobile()){
@@ -31,6 +29,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     } else {
       //otherwise, showing the discussion-specific, mobile first view
       shelby.router = new libs.shelbyGT.StandaloneDiscussionRollRouter();
+      this._bootstrapRequiredAppModels();
       this._reroute();
     }
   },
