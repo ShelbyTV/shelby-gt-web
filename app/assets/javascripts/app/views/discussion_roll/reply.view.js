@@ -12,13 +12,26 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
   
   el: '.js-discussion-roll-reply',
   
+  /*
+   * Need to post new messages to the latest frame.
+   * Since PagingListView fucks with the collection we hold in model, we
+   * can't rely on that to provide us the latest frame.
+   * So we track it manually whenever there are updates via _updateLatestFrame.
+   * (didn't, but could also have done this with the masterCollection of PagingListView)
+   */
+  _latestFrame: null,
+  
   initialize : function(){
     this.model.on('change:id', this.render, this);
+    this.model.on('change', this._updateLatestFrame, this);
+    
+    this._updateLatestFrame();
     this.render();    
   },
   
   _cleanup : function(){
-    this.model.on('change:id', this.render, this);
+    this.model.on('change:id', this.render);
+    this.model.off('change', this._updateLatestFrame);
   },
   
   template : function(obj){
@@ -56,8 +69,9 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
           respModel.get('frames').forEach(function(f){
             self.model.get('frames').add(f, {at:0});
           });
+          self._updateLatestFrame();
         } else {
-          self.model.get('frames').first().get('conversation').set(respModel);
+          self._latestFrame.get('conversation').set(respModel);
         }
       },
       error:function(){
@@ -65,6 +79,12 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
         console.log('err', arguments);
       }
     });
+  },
+  
+  _updateLatestFrame: function(){
+    var f = this.model.get('frames').first();
+    if( typeof(f) === "undefined" ){ return; }
+    if( this._latestFrame === null || f.id > this._latestFrame.id ){ this._latestFrame = f; }
   }
   
 });
