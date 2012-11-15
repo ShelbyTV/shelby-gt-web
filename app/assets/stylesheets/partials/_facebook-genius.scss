@@ -4,7 +4,7 @@ $landing-page-shelf-background: #ccc;
 /* non-programatic changes to app display */
 body.facebook-genius{
   // landing page //
-  .landing-shelf__header {
+  .landing-shelf-header {
     text-align:center; 
     font-weight: 400;
     font-size:2em;
@@ -23,7 +23,7 @@ body.facebook-genius{
   }
   .landing-shelf form{ 
     margin: 50px auto 30px;
-    width: 630px;
+    width: 640px;
   }
   .landing-form-input {
     width: 489px;
@@ -55,7 +55,8 @@ body.facebook-genius{
     border-right: 1pt solid adjust-lightness($landing-page-shelf-background, -15%);
     .landing-shelf-lining { width: 85%; }
     .landing-shelf-header {
-      margin-left: -50px;
+      width: 130%;
+      margin-left: -10px;
       font-size:2em;
     }
     .landing-shelf-subheader { width: 80%; }
