@@ -5,15 +5,9 @@
 //  elements in the videoplayer and videoplayer navigational buttons
 //------------------------------------------------------------------------------
 .user-inactive {
-  .video-player-tools-wrapper {
+  .videoplayer-nav,
+  .videoplayer-tools__wrapper {
     opacity: 0;
-  }
-
-  .video-player-nav-buttons-wrapper {
-    .video-player-prev,
-    .video-player-next {
-      opacity: 0.0;
-    }
   }
 }
 
@@ -21,7 +15,7 @@
 //  Modernizr.touch
 //------------------------------------------------------------------------------
 .touch {
-  .video-player-controls-wrapper {
+  .videoplayer-controls__wrapper {
     font-size: 1.3em;
   }
 
@@ -45,7 +39,7 @@
 //  VIDEO PLAYER setup,
 //  video-player-tools-wrapper is purely for positioning.
 //------------------------------------------------------------------------------
-.video-player-tools-wrapper {
+.videoplayer-tools__wrapper {
   bottom: 0;
   height: 5.6em;
   left: 0;
@@ -59,7 +53,7 @@
 ////////////////////////////////////////////////////////////////////////////
 //  actual video player controller
 ////////////////////////////////////////////////////////////////////////////
-.video-player-tools {
+.videoplayer-tools {
 	background-color: $video-player;
 	@include background( linear-gradient(top, adjust-lightness($video-player, 5%), $video-player) );
   @include roundies;
