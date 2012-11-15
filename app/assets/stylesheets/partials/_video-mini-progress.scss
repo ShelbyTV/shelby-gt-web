@@ -1,5 +1,6 @@
 @import "base";
 
+.mini-videoplayer__wrapper,
 #mini-video-progress {
   bottom: 0;
   width: 100%;
@@ -14,12 +15,18 @@
 	@include transition-delay(0s);
 }
 
-.user-inactive #mini-video-progress {
-  opacity: 1.0;
-}
-
-.mini-video-player-progress {
+.mini-videoplayer {
   > div {
     border-radius: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Fade in when user is inactive
+//------------------------------------------------------------------------------
+.user-inactive {
+  .mini-videoplayer__wrapper,
+  #mini-video-progress {
+    opacity: 1.0;
   }
 }
