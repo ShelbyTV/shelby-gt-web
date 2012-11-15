@@ -63,7 +63,7 @@ libs.shelbyGT.RollOverlayContextView = Support.CompositeView.extend({
   },
 
   _updateFullShelbyButton : function() {
-    this.$('.js-full-shelby-button').text(shelby.models.user.get('anon') ? 'Shelby.tv' : 'Home');
+    this.$('.js-full-shelby-button').text(shelby.models.user.get('anon') ? 'Try Shelby.tv' : 'Home');
   },
 
   _updateFollowButton : function() {
