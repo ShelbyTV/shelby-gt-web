@@ -4,7 +4,7 @@ $landing-page-shelf-background: #ccc;
 /* non-programatic changes to app display */
 body.facebook-genius{
   // landing page //
-  .landing-shelf-header {
+  .landing-shelf__header {
     text-align:center; 
     font-weight: 400;
     font-size:2em;
@@ -249,7 +249,7 @@ body.not-authorized {
 section.fb-genius {
   #landing-page-search-area{
     width: 180px;
-    margin: 316px 580px 0px;
+    margin: 0px 580px 0px;
     button {
       @include button-primer($shelby-blue, dark);
       zoom: 1.5;
@@ -260,13 +260,20 @@ section.fb-genius {
       }
     }
   }
+  
+  .landing-shelf__video-embed {
+    width: 525px;
+  }
 
   #sharing-box {
     width: 65px;
     float: left; 
   }
 
-  .landing-shelf-lining { max-width: 1000px; }
+  .landing-shelf__lining { 
+    max-width: 1000px; 
+    padding: 25px 0px;
+  }
   .landing-form-input { width: 85%; }
   .genius-roll-link {
     font-weight: 400;
