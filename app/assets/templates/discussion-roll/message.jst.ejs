@@ -1,6 +1,6 @@
   <% var recipient = msg.get('nickname') %>
-  <% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(msg) %>
-<li class="discussion__item <%= msgFromViewer ? ' discussion__item--user' : null %> clearfix">
+  <% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(msg) %>
+<li class="discussion__item <%= msgFromViewer ? ' discussion__item--viewer' : null %> clearfix">
   <div class="media_module media_module--discussion">
     <div class="media_image">
       <img src="<%= recipientAvatar %>">
@@ -12,7 +12,9 @@
       </p>
 
       <p>
-        <%= msg.get('text') %>
+				<span class="discussion__text">
+					<%= msg.get('text') %>
+				</span>
       </p>
     </div><!-- eo media_body -->
   </div>
