@@ -1,3 +1,19 @@
-<li class="<%= msgFromViewer ? 'message-from-viewer' : null %> message-of-text" >
-	<%= msg.get('text') %>
+  <% var recipient = msg.get('nickname') %>
+  <% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(msg) %>
+<li class="discussion__item <%= msgFromViewer ? ' discussion__item--user' : null %> clearfix">
+  <div class="media_module media_module--discussion">
+    <div class="media_image">
+      <img src="<%= recipientAvatar %>">
+    </div><!-- eo media_image -->
+
+    <div class="media_body">
+      <p class="discussion__h4">
+        <%= recipient %>
+      </p>
+
+      <p>
+        <%= msg.get('text') %>
+      </p>
+    </div><!-- eo media_body -->
+  </div>
 </li>

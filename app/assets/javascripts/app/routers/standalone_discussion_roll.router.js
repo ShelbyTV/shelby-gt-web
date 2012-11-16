@@ -6,7 +6,7 @@
 libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
 
   routes : {
-    "chat/:discussionRollId"                          : "displayDiscussionRoll"
+    "chat/:discussionRollId" : "displayDiscussionRoll"
   },
   
   displayDiscussionRoll : function(discussionRollId, params){

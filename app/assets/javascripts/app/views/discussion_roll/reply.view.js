@@ -7,7 +7,7 @@
 libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
   
   events : {
-    "click .js-post-message"    : "_postMessage",
+    "click .js-post-message" : "_postMessage",
   },
   
   el: '.js-discussion-roll-reply',

@@ -1,9 +1,8 @@
 <% var msgFromViewer = (frame.get('creator_id') === viewer) %>
 <!-- NB: if frame was posted by non-shelby user, msgFromViewer will always be false (not the case for messages, below) -->
-<div class="<%= msgFromViewer ? 'message-from-viewer' : null %> message-of-video" >
+<div class="videocard <%= msgFromViewer ? 'message-from-viewer' : null %>">
 	<% if(frame.get('video').get('provider_name') === "youtube" ){ %>
-		<iframe width="310" height="180"
-		src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
+		<iframe class="videocard__video" src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
 		frameborder="0" allowfullscreen>
 		</iframe>
 	<% } else { %>
@@ -11,6 +10,6 @@
 	<% } %>
 </div>
 	
-<ol class="discussion-roll-conversation js-discussion-roll-conversation">
+<ol class="discussion__list discussion__list--messages js-discussion-roll-conversation">
 	<!-- messages filled in by different render so re-render doesn't destroy embed -->
 </ol>

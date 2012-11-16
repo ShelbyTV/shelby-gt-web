@@ -1,0 +1,213 @@
+//------------------------------------------------------------------------------
+//  NON NORMATIVE
+//------------------------------------------------------------------------------
+.shelby-wrapper--discussion {
+  background-color: $base;
+  position: relative;
+
+  .shelby-wrapper {
+    position: relative;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Shelby Chat/Discussion
+//------------------------------------------------------------------------------
+.discussion {
+  font-size: 1.3em;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  structure
+////////////////////////////////////////////////////////////////////////////
+.discussion__head {
+
+}
+
+.discussion__body {
+  margin-top: 1em;
+}
+
+.discussion__h1,
+.discussion__h2 {
+  font-family: $font-family-display;
+  font-weight: 400;
+}
+
+
+.discussion__h1 {
+  margin: 0;
+  font-size: 1.6em;
+  padding: 1em 0 0.5em;
+}
+
+.discussion__h2 {
+  font-size: 1.2em;
+}
+
+.discussion__h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.discussion__h4 {
+  font-weight: bold;
+}
+
+.discussion__subhead {
+  margin-top:0;
+}
+
+.discussion__list {
+  margin: 0;
+  padding: 0;
+
+  & > .discussion__item {
+    list-style-type: none;
+  }
+}
+
+//framework for each comment
+.media_module--discussion {
+  max-width: 440px;
+
+  .media_image {
+    width: 25px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .media_image--rev {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+
+  .media_body {
+
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+//  Recipients
+////////////////////////////////////////////////////////////////////////////
+.discussion-recipients {
+  padding-bottom: 1em;
+}
+
+.discussion__list--recipients {
+}
+
+.discussion__item--recipients {
+}
+//my initial inclination was to &.recipien... the below classes
+//but we can't predict that it'll always be coupled in that way.
+//keeping them adjacent to .discussion__item--recipients is fine
+.recipients--email {
+}
+
+.recipients--shelby {
+  span {
+    opacity: .5; //sorta hacky.
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Conversation
+////////////////////////////////////////////////////////////////////////////
+.discussion-conversation {
+
+}
+
+//main list in conversation
+.discussion__list--conversation {
+
+}
+
+.discussion__item--conversation {
+
+}
+
+
+//comments per video
+.discussion__list--messages {
+
+}
+
+.discussion__item--messages {
+
+}
+
+
+//------------------------------------------------------------------------------
+//  discussion videocard
+//------------------------------------------------------------------------------
+.videocard {
+
+  & > iframe,
+  & > embed,
+  & > object {
+    margin: 0;
+    height: 400px;
+    padding: 0;
+    width: 100%;
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  discussion reply section
+////////////////////////////////////////////////////////////////////////////
+.discussion-reply {
+  padding: 0 0 4em;
+  text-align: right;
+
+  .discussion__h2 {
+    float: left;
+    padding-left: 1em;
+  }
+}
+
+.discussion__form {
+  float: right;
+}
+
+.form_module--discussion-reply {
+  .form_fieldset {
+    float: right;
+    margin: 0;
+    width: 440px;
+  }
+
+  .form_textarea {
+    float: right;
+    font-size: 1em;
+    width: 400px;
+  }
+
+  .form_submit {
+    float: right;
+    margin-top: 1em;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  overrides pertaining to user
+//------------------------------------------------------------------------------
+.discussion__item--user {
+  text-align: right;
+
+  .media_module--discussion {
+    float:right;
+
+    .media_image {
+      float: right;
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  }
+}

@@ -7,7 +7,10 @@
 libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
   
   //no el b/c we are rendered by DiscussionRollRecipientsView via appendChildInto
-  
+  tagName: 'li',
+
+  className: 'discussion__item discussion__item--recipients',
+
   initialize : function(){
     //model is email address or bson id (as string)
     

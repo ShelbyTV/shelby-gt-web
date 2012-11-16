@@ -4,7 +4,7 @@
  */
 libs.shelbyGT.DiscussionRollFrameView = libs.shelbyGT.ListItemView.extend({
   
-  className : "discussion-roll-frame js-discussion-roll-frame",
+  className : "discussion__item discussion__item--conversation js-discussion-roll-frame",
   
   initialize : function(){
     this.model.get('conversation').on('change', this._renderMessages, this);

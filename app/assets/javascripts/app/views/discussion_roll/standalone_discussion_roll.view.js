@@ -31,7 +31,8 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   _hackPrepareDOM : function(){
     //TODO: should just display different layout for entire page; quick & dirty hack for now...
     $("#js-shelby-wrapper").empty();
-    $("#js-shelby-wrapper").css("color","white");
+    $('body').addClass('shelby-wrapper--discussion');
+    //ideally, the styles applied to 'shelby-wrapper--discussion' should be applied to like.. the body
   }
   
 });

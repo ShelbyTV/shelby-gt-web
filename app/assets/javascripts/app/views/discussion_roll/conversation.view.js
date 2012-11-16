@@ -13,7 +13,7 @@
   libs.shelbyGT.DiscussionRollConversationView = PagingListView.extend({
   
     tagName: 'ol',
-    className: 'js-discussion-roll-conversation-list',
+    className: 'discussion__list discussion__list--conversation js-discussion-roll-conversation-list',
     
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
       //model is a discussion roll (set in initialize), it's a collection of frames
