@@ -6,6 +6,10 @@ libs.shelbyGT.DiscussionRollFrameView = libs.shelbyGT.ListItemView.extend({
   
   className : "discussion__item discussion__item--conversation js-discussion-roll-frame",
   
+  options : _.extend({}, libs.shelbyGT.ListItemView.prototype.options, {
+    msBetweenTimestamps: 15*60*1000 //15 minutes
+  }),
+  
   initialize : function(){
     this.model.get('conversation').on('change', this._renderMessages, this);
   },
@@ -36,12 +40,27 @@ libs.shelbyGT.DiscussionRollFrameView = libs.shelbyGT.ListItemView.extend({
     convoEl = this.$el.find(".js-discussion-roll-conversation");
     convoEl.empty();
     
+    //loop vars
+    var msgFromViewer,
+    displayTimestamp,
+    lastMsg = null;
+    
     if(this.model.get('conversation') && this.model.get('conversation').get('messages').size() > 0){
       this.model.get('conversation').get('messages').each( function(msg){
-        var msgFromViewer = (msg.get('user_id') === viewer || msg.get('nickname') === viewer);
-        convoEl.append(self._messageTemplate({msgFromViewer:msgFromViewer, msg:msg}));
+        msgFromViewer = (msg.get('user_id') === viewer || msg.get('nickname') === viewer);
+        displayTimestamp = !lastMsg || self._msBetweenMessages(lastMsg, msg) > self.options.msBetweenTimestamps;
+        convoEl.append(self._messageTemplate({msg:msg, msgFromViewer:msgFromViewer, displayTimestamp:displayTimestamp}));
+        lastMsg = msg;
       });
     }
+  },
+  
+  _msBetweenMessages: function(msgA, msgB){
+    if(typeof(msgA) === "undefined" || typeof(msgB) === "undefined"){ return 0; }
+    if(!msgA || !msgB){ return 0; }
+    var t1 = libs.shelbyGT.viewHelpers.app.timestampFromMongoId(msgA.id),
+    t2 = libs.shelbyGT.viewHelpers.app.timestampFromMongoId(msgB.id);
+    return t2 - t1;
   }
   
 });
