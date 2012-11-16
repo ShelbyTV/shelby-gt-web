@@ -4,7 +4,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   el: '#js-shelby-wrapper',
   
   initialize : function(){
-    this._hackPrepareDOM();    
+    this._hackPrepareDOM();
     this.render();
   },
   

@@ -53,6 +53,9 @@ libs.shelbyGT.DiscussionRollFrameView = libs.shelbyGT.ListItemView.extend({
         lastMsg = msg;
       });
     }
+    
+    //scroll to bottom of conversation whenever messages are updated
+    setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
   },
   
   _msBetweenMessages: function(msgA, msgB){
