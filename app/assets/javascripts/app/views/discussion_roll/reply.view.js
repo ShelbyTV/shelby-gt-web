@@ -21,11 +21,16 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
    */
   _latestFrame: null,
   
+  // if the viewer is a real Shelby user, they will be stored here
+  _user: null,
+  
   initialize : function(){
     this.model.on('change:id', this.render, this);
     this.model.on('change', this._updateLatestFrame, this);
     
+    this._getViewerShelbyModel();
     this._updateLatestFrame();
+    
     this.render();    
   },
   
@@ -39,7 +44,7 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
   },
   
   render : function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({user:this._user}));
   },
   
   _postMessage : function(e){
@@ -85,6 +90,25 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     var f = this.model.get('frames').first();
     if( typeof(f) === "undefined" ){ return; }
     if( this._latestFrame === null || f.id > this._latestFrame.id ){ this._latestFrame = f; }
+  },
+  
+  //if the viewer is an actual shelby model, we want to show their avatar
+  _getViewerShelbyModel: function(){
+    var self = this;
+    
+    if(this.options.viewer.indexOf("@") === -1){    
+      this._user = new libs.shelbyGT.UserModel({id: this.options.viewer});
+      this._user.fetch({
+        success: function(userModel, resp){
+          self.render();
+          /*self.$el.html(SHELBYJST['discussion-roll/shelby-recipient']({shelbyUserInfo:{
+            nickname: userModel.get('nickname'),
+            name: userModel.get('name')
+            }}));*/
+        }
+      });
+    }
+    
   }
   
 });

@@ -37,7 +37,10 @@
 }
 
 .discussion__footer {
-  background-color: $base;
+  background-color: #eeeeee;
+  @include filter-gradient(#eeeeee, #cccccc, vertical);
+  @include background-image(linear-gradient(top,  #eeeeee 0%,#cccccc 100%));
+  
   box-shadow: 0px 0px 5px 0px black;
   bottom: 0px;
   left: 0;
@@ -229,7 +232,7 @@
 ////////////////////////////////////////////////////////////////////////////
 //  discussion reply section
 ////////////////////////////////////////////////////////////////////////////
-.discussion-reply {
+.discussion-reply {  
   text-align: right;
 
   .discussion__h2 {
