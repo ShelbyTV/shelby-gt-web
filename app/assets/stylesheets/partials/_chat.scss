@@ -153,8 +153,7 @@
 //  Recipients
 ////////////////////////////////////////////////////////////////////////////
 .discussion--recipients {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding: 0.5em 8px;
   
   .discussion__h2 {
     display: inline-block;
@@ -232,12 +231,13 @@
 ////////////////////////////////////////////////////////////////////////////
 //  discussion reply section
 ////////////////////////////////////////////////////////////////////////////
-.discussion-reply {  
+.discussion-reply {
   text-align: right;
 
   .discussion__h2 {
     float: left;
-    padding-left: 1em;
+    padding-left: 0.4em;
+    padding-top: 0.3em;
   }
 }
 
@@ -255,6 +255,7 @@
   .form_textarea {
     float: right;
     font-size: 1em;
+    height: 45px;
     width: 400px;
   }
 
@@ -286,4 +287,65 @@
       @include background-image(linear-gradient(top, #87bbfc 0%,#a0cdfe 82%,#b4ddfe 92%,#cde9fc 100%));
     }
   }
+}
+
+//------------------------------------------------------------------------------
+//  overrides for mobile devices
+//------------------------------------------------------------------------------
+@media only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px), only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
+    /* iPhone only ? */
+    
+    .discussion__body {
+      padding-bottom: 55px;
+    }
+    
+    .discussion__content {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: 100%;
+    }
+    
+    .discussion-reply { 
+      .discussion__h2 {
+        display: none;
+      }
+    }
+    
+    .discussion__form {
+      float: right;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+      width: 100%;
+      
+      .media_image--rev {
+        display: none;
+      }
+    }
+
+    .form_module--discussion-reply {
+      .form_fieldset {
+        float: right;
+        margin: 0;
+        padding: 0 8px;
+        width: 100%;
+      }
+
+      .form_textarea {
+        border-radius: 15px;
+        height: 30px;
+        left: 8px;
+        position: absolute;
+        right: 75px;
+        width: auto;
+      }
+
+      .form_submit {
+        border-radius: 15px;
+        float: right;
+        margin-top: 0;
+        padding: 0.5em 1em;
+      }
+    }
+    
 }
