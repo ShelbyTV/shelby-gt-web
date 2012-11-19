@@ -76,6 +76,12 @@
         this.$el.html(this.template({ queuedVideosModel : shelby.models.queuedVideos, frameGroup : this.model, frame : this.model.getFirstFrame(), options : this.options }));
         var videoTitle = this.model.getFirstFrame() && this.model.getFirstFrame().get('video') && this.model.getFirstFrame().get('video').get('title');
         $("#guide-nowplaying-label .video-title").text( videoTitle || 'Now Playing');
+        
+        // This hides the roll, queue links. For now this does the job but it stinky.
+        if (shelby.models.user.isAnonymous()) {
+          $(".nowplaying-section .frame-list").hide();
+        }
+        
         $("#js-guide-nowplaying").show();
       } else {
         this.$el.html('');

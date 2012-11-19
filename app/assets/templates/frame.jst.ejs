@@ -147,12 +147,14 @@
                 <% } %>
               </p>
             <% } %>
-
-            <div class="frame-subline">
-              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-              </a>
-            </div>
+						
+						<% if (!user.isAnonymous()) { %>
+	            <div class="frame-subline">
+	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+	                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+	              </a>
+	            </div>
+						<% } %>
           <% } else { %>
             <a href="#" onclick="return false;" class="frame-header js-frame-activate">
               <h1 class="frame-title" title="<%= videoTitle %>">
