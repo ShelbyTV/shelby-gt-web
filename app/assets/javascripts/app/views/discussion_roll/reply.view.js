@@ -98,6 +98,8 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
         } else {
           self._latestFrame.get('conversation').set(respModel);
         }
+        
+        setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
       error:function(){
         msgInput.addClass("error");

@@ -14,13 +14,6 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
     
     shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
         new libs.shelbyGT.StandaloneDiscussionRollView({model:discussionRoll, viewer:params.u, token:params.t});
-        
-    discussionRoll.fetch({
-      error: function(a){
-        //TODO: display error to user
-        console.log("ERROR on fetch of discussion roll. ", a);
-      }
-    });
   }
   
 });

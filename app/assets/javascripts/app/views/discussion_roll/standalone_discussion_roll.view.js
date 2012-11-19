@@ -6,6 +6,17 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   initialize : function(){
     this._hackPrepareDOM();
     this.render();
+    
+    //fetch the discussion roll
+    this.model.fetch({
+      success: function(model, resp){
+        setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
+      },
+      error: function(a){
+        //TODO: display error to user
+        console.log("ERROR on fetch of discussion roll. ", a);
+      }
+    });
   },
   
   template : function(obj){
