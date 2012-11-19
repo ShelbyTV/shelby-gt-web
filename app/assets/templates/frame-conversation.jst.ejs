@@ -42,8 +42,10 @@
 		    <section class="dropdown_section signup-section">
 		      <div class="dropdown_lining signup-section-lining clearfix"></div>
 				</section>
-
-	      <a id="js-login-within-comments" class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link signup-popup" href="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= document.referrer %>" location="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= document.referrer %>" popup-width="450" popup-height="525">Sign up</a> to leave a comment.
+				
+				<% return_url = document.referrer == "" ? document.location.href : document.referrer; %>
+				
+	      <a id="js-login-within-comments" class="signin_module__link" href="#">Log in</a> or <a class="signin_module__link signup-popup" href="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" location="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" popup-width="450" popup-height="525">Sign up</a> to leave a comment.
 	    </div>
 		<% } %>
   </form>

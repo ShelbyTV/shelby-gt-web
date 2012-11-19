@@ -31,6 +31,7 @@ $("a.signup-popup").live('click', function(e){
 		if (typeof $(this).attr('location') !== 'undefined'){
 			$(this).attr("href", $(this).attr('location'));
 		}
+		
     window.authPopup = window.open($(this).attr("href"), "authPopup", "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
     
     // ******************************************
@@ -49,6 +50,7 @@ $("a.signup-popup").live('click', function(e){
     }, 500);
     window.addEventListener("message", reloadPageFunction, false);
   	// ******************************************
-    
+   
+ 		e.stopPropagation(); return false; 
   }
 });
