@@ -46,8 +46,8 @@ $("a.signup-popup").live('click', function(e){
 		// communication cant start right away for some reason. 
 		// TODO: look into this.
     setTimeout(function(v){
-      window.authPopup.postMessage("opened", shelby.config.secureApiBase);
-    }, 500);
+      window.authPopup.postMessage("opened", shelby.config.secure.apiBase);
+    }, 1000);
     window.addEventListener("message", reloadPageFunction, false);
   	// ******************************************
    
