@@ -1,3 +1,7 @@
+<ul class="discussion__list discussion__video-attachments-list js-discussion-video-attachments">
+	<!-- DiscussionRollVideoAttachmentViews appended by DiscussionRollReplyView -->
+</ul>
+	
 <div class="discussion__form media_module media_module--discussion">
   <div class="media_image media_image--rev">
     <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
@@ -5,8 +9,8 @@
 
   <div class="media_body">
     <form class="form_module form_module--discussion-reply clearfix">
-      <fieldset class="form_fieldset">
-        <textarea rows=1 class="form_textarea js-message-text" placeholder="Tip: Paste a URL to add video."></textarea>
+      <fieldset class="form_fieldset">				
+        <textarea rows=1 class="form_textarea js-message-text"></textarea>
 
         <button class="button_primer button_blue form_submit js-post-message">
           Send
@@ -16,6 +20,7 @@
   </div><!-- eo media_body -->
 </div><!-- eo media_module -->
 
-<h3 class="discussion__h2">
-  Reply
-</h3>
+<button class="button_primer button_gray-medium discussion__add-video-attachment js-add-video-attachment">
+	<span class="full-text">Add Video</span>
+	<span class="short-text">+</span>
+</button>

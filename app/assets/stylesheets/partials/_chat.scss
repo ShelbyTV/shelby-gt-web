@@ -32,7 +32,7 @@
 
 .discussion__body {
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
   z-index: 1;
 }
 
@@ -149,6 +149,12 @@
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
   }
 }
+
+/* video selection replaces main view, styled using discussion__content */
+.discussion__select-video-attachment {
+
+}
+
 ////////////////////////////////////////////////////////////////////////////
 //  Recipients
 ////////////////////////////////////////////////////////////////////////////
@@ -233,12 +239,6 @@
 ////////////////////////////////////////////////////////////////////////////
 .discussion-reply {
   text-align: right;
-
-  .discussion__h2 {
-    float: left;
-    padding-left: 0.4em;
-    padding-top: 0.3em;
-  }
 }
 
 .discussion__form {
@@ -262,6 +262,38 @@
   .form_submit {
     float: right;
     margin-top: 1em;
+  }
+}
+
+.discussion__add-video-attachment {
+  float: left;
+  margin-left: 10px;
+  margin-top: 8px;
+  .full-text {
+    display: block;
+  }
+  .short-text {
+    display: none;
+  }
+}
+
+.discussion__video-attachments-list {
+  margin-right: 35px;
+}
+
+.discussion__video-attachment-item {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+  
+  .thumbnail {
+    width: 85px;
+  }
+  
+  .remove-button {
+    position: absolute;
+    right: -5px;
+    top: -5px;
   }
 }
 
@@ -289,9 +321,71 @@
   }
 }
 
-//------------------------------------------------------------------------------
-//  overrides for mobile devices
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////
+//  Select Video Attachment
+////////////////////////////////////////////////////////////////////////////
+.discussion__select-video-attachment {
+  .discussion__header {
+    padding-bottom: 10px;
+    
+    .cancel-button {
+      left: 7px;
+      position: absolute;
+      top: 7px;
+    }
+  }
+}
+
+.discussion__video-search-form {
+  margin: 0 10px;
+}
+
+.discussion__video-search-query {
+  float: left;
+  width: 420px;
+}
+
+.discussion__video-search-submit {
+  float: right;
+}
+
+.discussion__possible-video-attachment-content {
+  background-color: $videocard-footer-bg-color;
+  box-shadow: $videocard-shadow;
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+.discussion__possible-video-attachments-list {
+}
+
+.discussion__possible-video-attachment-item {
+  cursor: pointer;
+  margin-bottom: 20px;
+  
+  .visual-preview {
+    float: left;
+    padding: 5px;
+    width: 50%;
+    
+    img {
+      width: 100%;
+    }
+  }
+  
+  .textual-preview {
+    float: left;
+    max-height: 150px;
+    overflow: hidden;
+    padding: 5px;
+    width: 50%;
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  Mobile Devices
+////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px), only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
     /* iPhone only ? */
     
@@ -306,9 +400,7 @@
     }
     
     .discussion-reply { 
-      .discussion__h2 {
-        display: none;
-      }
+
     }
     
     .discussion__form {
@@ -334,7 +426,7 @@
       .form_textarea {
         border-radius: 15px;
         height: 30px;
-        left: 8px;
+        left: 50px;
         position: absolute;
         right: 75px;
         width: auto;
@@ -344,7 +436,20 @@
         border-radius: 15px;
         float: right;
         margin-top: 0;
-        padding: 0.5em 1em;
+        padding: 7px 12px;
+      }
+    }
+    
+    .discussion__add-video-attachment {
+      border-radius: 15px;
+      padding: 7px 12px;
+      position: absolute;
+
+      .full-text {
+        display: none;
+      }
+      .short-text {
+        display: block;
       }
     }
     

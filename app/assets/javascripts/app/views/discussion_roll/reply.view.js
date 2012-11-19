@@ -1,13 +1,21 @@
 /*
  * Gives the user the ability to reply to this discussion roll.
+ *
  * Since it's just a regular Roll with the most recent message shown at the bottom,
  * the user just replies to the most recent Frame (displayed via the DiscussionRollConversationView)
- * and only that Frame (ie not showing reply to conversation for older Frames)
+ * and only that Frame (ie not showing reply to conversation for older Frames)...
+ *
+ * But, when the reply includes a video (inline URL or out of band), the API returns a new array of
+ * Frames for the videos and the message will be appended to the conversation of the last one.
+ *
+ * Creates a SelectVideoAttachmentView for easy attachment of videos.  Acts as delegate to that view
+ * and receives the video selected.  Handles the attachment form there.
  */
 libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
   
   events : {
-    "click .js-post-message" : "_postMessage",
+    "click .js-post-message"            : "_postMessage",
+    "click .js-add-video-attachment"    : "_showVideoAttachmentView"
   },
   
   el: '.js-discussion-roll-reply',
@@ -31,7 +39,7 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     this._getViewerShelbyModel();
     this._updateLatestFrame();
     
-    this.render();    
+    this.render();
   },
   
   _cleanup : function(){
@@ -63,11 +71,23 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
       msgInput.removeClass("error");
     }
     
+    //video attachments
+    var videoUrls = new Array();
+    this.children.forEach(function(child){
+      videoUrls.push(child.options.url);
+    });
+    
     //post new message
-    var msg = new libs.shelbyGT.DiscussionRollMessageModel({message:text, token:this.options.token, discussion_roll_id:this.model.id});
+    var msg = new libs.shelbyGT.DiscussionRollMessageModel({
+      message: text, 
+      token: this.options.token, 
+      discussion_roll_id: this.model.id,
+      videos: videoUrls
+    });
     msg.save(null, {
       success:function(respModel, resp){
         msgInput.val('');
+        self._leaveChildren();
         // respModel may have an array of Frames, in which case we add them to self.model
         // otherwise it's a Conversation, which we just need to update in self.model
         if( respModel.get('frames') ){
@@ -101,14 +121,41 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
       this._user.fetch({
         success: function(userModel, resp){
           self.render();
-          /*self.$el.html(SHELBYJST['discussion-roll/shelby-recipient']({shelbyUserInfo:{
-            nickname: userModel.get('nickname'),
-            name: userModel.get('name')
-            }}));*/
         }
       });
     }
     
+  },
+  
+  _showVideoAttachmentView: function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    
+    // If a video is selected, it's sent to us via addVideoAttachment()
+    // DiscussionRollSelectVideoAttachmentView handles rendering, possibly selecting, hiding itself.
+    this._scrollTopWhenHidden = $("body").scrollTop();
+    $(".js-discussion").hide();
+    new libs.shelbyGT.DiscussionRollSelectVideoAttachmentView({delegate: this});
+  },
+  
+  videoAttachmentViewDidDisappear: function(){
+    $(".js-discussion").show();
+    $("body").scrollTop(this._scrollTopWhenHidden);
+  },
+  
+  /*
+   * delegate method for SelectVideoAttachmentView
+   * opts should = {
+   *  url: the url to send to the api
+   *  thumbnailUrl: - the url to a thumbnail to display
+   *  }
+   */
+  addVideoAttachment: function(opts){
+    this.appendChildInto(
+      new libs.shelbyGT.DiscussionRollVideoAttachmentView({
+        thumbnailUrl: opts.thumbnailUrl,
+        url: opts.url
+      }), ".js-discussion-video-attachments");
   }
   
 });
