@@ -21,6 +21,10 @@ gem 'httparty'
 #
 gem 'youtube_it'
 
+#
+# ---------- External Services
+#
+gem 'koala'
 
 #
 # -- Quiet Logging
@@ -60,6 +64,8 @@ end
 #
 group :production, :staging do
   gem 'unicorn'
+  gem 'kgio'
+  gem 'raindrops'
 end
 
 #

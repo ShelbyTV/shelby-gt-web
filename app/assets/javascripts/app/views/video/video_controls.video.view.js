@@ -50,9 +50,12 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     }
 
     var self = this;
-    this.$('.video-player-scrubber').draggable({axis: 'x', containment: 'parent',
+    this.$('.videoplayer-progress__scrubber').draggable({
+      axis: 'x',
+      containment: 'parent',
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
-      stop:  function(event, ui){ self._onScrubberDragStop(event, ui); } });
+      stop:  function(event, ui){ self._onScrubberDragStop(event, ui); }
+    });
   },
 
   //--------------------------------------
@@ -125,20 +128,20 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _onCurrentTimeChange: function(attr, curTime){
     var pct = (curTime / this._currentDuration) * 100;
     if( this._shouldUpdateScrubHandle ){
-      this.$('.video-player-scrubber').css('left',pct+"%");
+      this.$('.videoplayer-progress__scrubber').css('left',pct+"%");
     }
 
     var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
         curTimeS = parseInt(curTime % 60, 10);
 
-    this.$('.video-player-progress-elapsed').width(pct+"%");
+    this.$('.videoplayer-progress__elapsed').width(pct+"%");
     this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
   },
 
   _onBufferTimeChange: function(attr, bufferTime){
     var pct = (bufferTime / this._currentDuration) * 100;
-    this.$('.video-player-progress-load').width(pct+"%");
+    this.$('.videoplayer-progress__load').width(pct+"%");
   },
 
   _onDurationChange: function(attr, val){
@@ -190,7 +193,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
         this.options.guide.get('activeFrameModel'));
     }
   },
-  
+
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');
     if (activePlayerState) {
@@ -257,9 +260,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      $('.js-main-layout .js-guide').removeClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      $('.js-main-layout .js-guide').addClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
 
@@ -268,10 +271,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
 
   _doRelativeSeek: function(pageX){
-    var scrubTrack = this.$('.video-player-progress');
+    var scrubTrack = this.$('.js-videoplayer-progress');
     var seekPct = ( (pageX - scrubTrack.offset().left) / scrubTrack.width() );
     seekPct = Math.min(Math.max(seekPct, 0.0), 1.0);
     this._userDesires.set({currentTimePct: seekPct});
+    console.log(this._userDesires.get('currentTimePct'));
   }
 
 });

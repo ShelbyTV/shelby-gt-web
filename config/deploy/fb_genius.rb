@@ -1,16 +1,13 @@
 #############################################################
-# Servers
+#	Servers
 #############################################################
 
-role :web, "50.56.123.84"
-role :app, "50.56.123.84"
+role :web, "198.101.144.198"
+role :app, "198.101.144.198"
 
 #############################################################
-# Git
+#	Git
 #############################################################
 
 set :repository,  "git@github.com:ShelbyTV/shelby-gt-web.git"
-set :branch, "master"
-set :rails_env, "production"
-set :unicorn_env, "production"
-set :app_env,     "production"
+set :branch, "fb-genius"

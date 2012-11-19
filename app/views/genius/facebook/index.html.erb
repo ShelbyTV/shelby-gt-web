@@ -1,0 +1,95 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
+  <meta charset="utf-8">
+  <title>
+    <%= render :partial => "/home/title_tag" %>
+  </title>
+	
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="icon"type="image/png" href="/favicon.png">
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
+  <!-- <%= javascript_include_tag "shelby" %> -->
+</head>
+
+<body class="shelby facebook-genius shelby-landing">
+	<%= render :partial => "/genius/facebook/fb_sdk" %>
+	<div class="shelby-wrapper">
+		<header class="shelby-header clearfix" role="banner">
+			<button class="shelby-logo js-fb-home">
+				<h1 class="shelby-title ir">
+		      Shelby.tv
+		    </h1>
+		  </button>
+		</header>
+		
+		<%= render :partial => "/genius/facebook/genius_search" %>
+
+		<%= render :partial => "/genius/facebook/genius_history" %>
+		
+		<%= render :partial => "/genius/facebook/personalization" %>
+		
+		<footer class="landing-footer">
+			<div class="landing-footer-lining clearfix">
+
+				<ul class="landing-footer-lists list_module clearfix">
+					<li>
+						<h5 class="landing-footer-content-header">Shelby.tv</h5>
+						<ul class="landing-footer-content-list list_module">
+							<li><a href="mailto:contact@shelby.tv">Contact</a></li>
+							<li>Made in NYC</li>
+						</ul>
+					</li>
+					<li>
+						<h5 class="landing-footer-content-header">Community</h5>
+						<ul class="landing-footer-content-list list_module">
+							<li><a href="http://shelby.tv/blog" target="_info">Blog</a></li>
+							<li><a href="http://shelbydev.tumblr.com/" target="_info">Dev Blog</a></li>
+							<li><a href="http://twitter.com/shelby" target="_info">Twitter</a></li>
+							<li><a href="http://facebook.com/shelbytv" target="_info">Facebook</a></li>
+						</ul>
+					</li>
+					<li>
+						<h5 class="landing-footer-content-header">Legal</h5>
+						<ul class="landing-footer-content-list list_module">
+							<li><a href="http://shelby.tv/privacy.html" target="_info">Privacy</a></li>
+							<li><a href="http://shelby.tv/tou.html" target="_info">Terms</a></li>
+						</ul>
+					</li>
+
+					<li class="secondary">
+						<h5 class="landing-footer-content-header">Share the joy</h5>
+						<ul class="landing-footer-content-list secondary-landing-footer-content-list list_module">
+							<li>
+								<div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
+							</li>
+							<li>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shelby.tv" data-text="a simple new way to enjoy video" data-related="shelby">Tweet</a>
+							</li>
+							<li>
+								<div class="g-plusone" data-href="http://shelby.tv"></div>
+							</li>
+					</li>
+				</ul>
+
+			</div>
+		</footer>
+
+	</div><!-- /shelby-wrapper -->	
+	
+	<script>
+		<%= render :partial => "/genius/facebook/search_history", :formats => [:js] %>
+	</script>
+	
+	
+</body>
+</html>

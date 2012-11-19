@@ -4,6 +4,7 @@ shelby = {
     secureApiBase : '<%= "#{Settings::ShelbyAPI.secure_url}" %>',
     apiRoot : '<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>',
     appUrl : '<%= Settings::Application.url %>',
+    fbAppUrl: '<%= Settings::Application.fb_genius_url %>',
     loginFormUrl : '<%= Settings::ShelbyAPI.login_form_url %>',
     signupFormUrl : '<%= Settings::ShelbyAPI.signup_form_url %>',
     popupCohortEntraceURL : '<%= Settings::ShelbyAPI.popup_cohort_entrance_url %>',
@@ -12,7 +13,7 @@ shelby = {
     avatarUrlRoot : '<%= Settings::Application.avatar_url_root %>',
     rollImagesUrlRoot : '<%= Settings::Application.roll_images_url_root %>',
     environment : '<%= Rails.env %>',
-    
+    branch : '<%= Settings::Branch.branch %>',
     secure : {
       apiBase : '<%= "#{Settings::ShelbyAPI.secure_url}" %>',
       apiRoot : '<%= "#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}" %>',
