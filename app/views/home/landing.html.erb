@@ -133,6 +133,7 @@
       <% if @share_type == :genius %>     <%= render :partial => "/home/shelf/genius_email_share" %>
       <% elsif @share_type == :email %>   <%= render :partial => "/home/shelf/direct_email_share" %>
       <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
+			<% elsif @share_type == :fb_genius %>	<%= render :partial => "/home/shelf/fb_genius_share" %>
       <% end %>
     <% end %>
 

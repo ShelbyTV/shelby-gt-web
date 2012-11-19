@@ -28,7 +28,10 @@
       //also need to tell PagingListView about our reversed order (and some other tweaks)
       pagingKeySortOrder: -1,
       limit: 10,
-      loadMoreCopy: 'Load Older Messages...'
+      loadMoreCopy: 'Load Older Messages...',
+      insert : {
+        position : 'after'
+      }
     }),
   
     initialize : function(){

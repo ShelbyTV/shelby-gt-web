@@ -201,6 +201,13 @@
 //main list in conversation
 .discussion__list--conversation {
 
+  .load-more {
+    list-style-type: none;
+  }
+  
+  .load-more-button {
+    width: 200px;
+  }
 }
 
 .discussion__item--conversation {

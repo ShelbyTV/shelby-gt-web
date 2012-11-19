@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   #         logged in - js app
   #         iso rolls - static page with iframe of app
   #                     XXX want to move this out of here with smart routing in routes.rb
+  #         fb genius - renders js app w fb flavor
   #
   def index
 
@@ -23,6 +24,11 @@ class HomeController < ApplicationController
           
           @frame_id = get_frame_from_path(params[:path])
           render '/home/isolated_roll' and return
+        end
+        
+        #XXX FB GENIOUS ROLL
+        if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
+          render '/home/app' and return
         end
 
         if user_signed_in?
@@ -93,7 +99,7 @@ class HomeController < ApplicationController
 
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
-
+  
   private
 
 
@@ -130,6 +136,14 @@ class HomeController < ApplicationController
               false
             end
       end
+    end
+    
+    def get_genius_roll_id_from_path(path)
+      return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
+    end
+    
+    def is_from_fb_genius_frame_share(path)
+      /fb\/genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
     end
     
     def get_info_for_meta_tags(path)
