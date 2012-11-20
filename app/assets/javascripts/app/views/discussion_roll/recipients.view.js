@@ -22,6 +22,9 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
   render : function(){
     var self = this;
     
+    //page title built iteratively by this and subviews
+    document.title = "Shelby Chat with ";
+    
     this.$el.html(this.template());
     
     if(this.model.get('discussion_roll_participants')){ 

@@ -173,7 +173,7 @@
 .discussion__item--recipients {
   display: inline-block;
   &:not(:last-child){
-    span:after{
+    > span:after{
       content: ',';
       padding-right: 0.25em;
     }
