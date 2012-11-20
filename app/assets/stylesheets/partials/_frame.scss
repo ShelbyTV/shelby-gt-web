@@ -477,6 +477,9 @@ $share-frame-half-gutter: 4px;
   .xuser-data {
     display: none;
   }
+  .conversation-message .xuser-data {
+    display: block;
+  }
 
   .xuser-message {
     margin: 0;
