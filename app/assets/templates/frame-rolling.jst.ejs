@@ -3,22 +3,27 @@
 <% var userNickname   = user.get('nickname') || 'your personal '%>
 <div class="overlay_header guide-overlay-head framerolling-head">
   <div class="guide-overlay-head-lining">
-    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Roll" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
       <i class="button_icon_left icon_cancel icon">
         Cancel
       </i>
     </button>
-
+			
     <h2 class="guide-overlay-header">
-      Destination:
-      <span class="destination">
-        <%= userNickname + '.' %>shelby.tv
-      </span>
+      Roll To:
+			<span class="destination js-rolling-destination-display">
+				<%= userNickname + '.' %>shelby.tv
+			</span>
     </h2>
+
   </div><!-- eo guide-overlay-head-lining -->
 </div><!-- eo guide-overlay-head.framerolling-head -->
 
 <div class="overlay_body guide-overlay-body framerolling-body">
+	<div class="js-roll-selection">
+		<!-- content from RollingSelectionListView when applicable -->
+	</div>
+	
   <form class="form_module">
     <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle %> 

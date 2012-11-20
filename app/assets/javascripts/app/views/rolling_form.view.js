@@ -40,9 +40,7 @@
 		render : function(){
 			var self = this;
 			
-
       this.$el.html(this.template({
-                    roll:this._roll, 
                     frame:this._frame,
                     user: shelby.models.user,
                     rollOptions: {
@@ -63,6 +61,10 @@
         }
       });
       this.renderChild(this._shelbyAutocompleteView);
+    },
+    
+    setRoll: function(roll){
+      this._roll = roll;
     },
 
 		_doRoll : function(e){

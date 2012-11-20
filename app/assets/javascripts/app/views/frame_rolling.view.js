@@ -1,21 +1,24 @@
+/*
+ * Implements the rolling of a Frame onto a new Roll and optionally posting the rolled video to TWT/FB.
+ *
+ * Supports multiple rolls when enabled for the user.  Does not currently support roll creation.
+ *
+ */
 ( function(){
 
   // shorten names of included library prototypes
   var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
   var RollingCreateRollView = libs.shelbyGT.RollingCreateRollView;
   var RollingSelectionListView = libs.shelbyGT.RollingSelectionListView;
-  var ShareActionState = libs.shelbyGT.ShareActionState;
   
   libs.shelbyGT.FrameRollingView = GuideOverlayView.extend({
-
-    _frameRollingState : null,
-
-		_autoChoosePersonalRoll : true,
+    
+    // allow power users to choose from their various rolls
+    _multiRollEnabled : false,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
       "click .js-cancel"							: "_setGuideOverlayStateNone",  //cancel from Step 1/2
-			"click .back"										: "_backToRollSelection", //back from Step 2/2
-			"click .create-roll"						: "_createRoll"
+			"click .js-create-roll"						: "_createRoll" // NOT CURRENTLY IMPLEMENTED
     }),
 
     className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
@@ -25,7 +28,7 @@
     },
 
     initialize : function(){
-      this.model.set('destination', ['email','twitter','facebook']);
+      this._multiRollEnabled = shelby.models.user.hasAbility("multi_roll_roller");
     },
 
     _cleanup : function(){
@@ -34,30 +37,20 @@
     render : function(){
       this.$el.html(this.template({frame:this.model, user: shelby.models.user}));
 
-			if(this._autoChoosePersonalRoll && shelby.models.user.get('personal_roll')){
-				//skipping step 1.  Rendering Step 2 with user's personal roll.
-				this.selectRoll(shelby.models.user.get('personal_roll'));
-				//user can't go back to step 1 since it doesn't exist
-				// this.$(".guide-overlay-title .cancel").show();
-				// this.$(".guide-overlay-title .back").hide();
-			} 
-			else {
-				// render step 1: roll selection
-	      this._renderRollSelectionChild();
-			}
+			// select roll for power users
+      if(this._multiRollEnabled){
+        this._renderRollSelectionChild();
+      }
+      
+      // rolling details (personal roll as default)
+      this._renderRollingFormChild(shelby.models.user.get('personal_roll'));
 
       GuideOverlayView.prototype.render.call(this);
     },
 
-		//------------------------- STEP 1 ----------------------------
+		//------------------------- SELECT ROLL ----------------------------
 		
 		_renderRollSelectionChild: function(){
-			// this.$(".guide-overlay-title .cancel").show();
-			// this.$(".guide-overlay-title .back").hide();
-			
-			this.$('.select-roll-type').show();
-			
-			//create new roll button is part of our view
 			//existing Rolls
       this._rollsListView = new RollingSelectionListView(
         {
@@ -67,28 +60,18 @@
         }
       );
 
-      this.appendChildInto(this._rollsListView, '.js-existing-rolls-list');
-		},
-		
-		_removeRollSelectionChild: function(){
-			if(this._rollsListView){ this._rollsListView.leave(); }
-			//need to hide b/c create new roll is not part of the rolls list subview
-			this.$('.select-roll-type').hide();
+      this.renderChildInto(this._rollsListView, this.$el.find('.js-roll-selection'));
 		},
 		
 
-		//------------------------- STEP 2 ----------------------------
+		//------------------------- ROLLING DETAILS ----------------------------
 		
 		_renderRollingFormChild: function(roll){
-			// this.$(".guide-overlay-title .cancel").hide();
-			// this.$(".guide-overlay-title .back").show();
-			
-			this._rollingForm = new libs.shelbyGT.RollingFormView({
-				roll: roll,
-				frame: this.model,
-				frameRollingState: this._frameRollingState
-			});
-			this.appendChildInto(this._rollingForm, '.guide-overlay-main');
+      this._rollingForm = new libs.shelbyGT.RollingFormView({
+        roll: roll,
+        frame: this.model
+      });
+      this.appendChildInto(this._rollingForm, '.guide-overlay-main');
 		},
 		
 		_removeRollingFormChild: function(){
@@ -99,24 +82,20 @@
 		//------------------------- EVENTS ----------------------------
 		
 		// via click event on Create button
+		// NOT CURRENTLY IMPLEMENTED
 		_createRoll: function(){
-			this._removeRollSelectionChild();
-			this._renderRollingFormChild();
+      this._rollingForm.setRoll();
+      this.$el.find('.js-rolling-destination-display').html("New Roll");
 		},
 		
 		// via child view RollingSelectionListView via RollingSelectionListViewItem
+		// this may happen any number of times
 		selectRoll: function(roll){
-			this._removeRollSelectionChild();
-			this._renderRollingFormChild(roll);
-		},
-		
-		_backToRollSelection: function(){
-			this._removeRollingFormChild();
-			this._renderRollSelectionChild();
+			this._rollingForm.setRoll(roll);
+			this.$el.find('.js-rolling-destination-display').html(libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll));
 		},
 		
 		done : function(){
-			this._backToRollSelection();
 			this._setGuideOverlayStateNone();
 		}
 

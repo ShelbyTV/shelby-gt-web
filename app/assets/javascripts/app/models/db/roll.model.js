@@ -89,6 +89,27 @@
       } else {
         this.joinRoll();
       }
+    },
+    
+    isPostableBy: function(user){
+      //can't post to discussion rolls
+      if (this.get('roll_type') == libs.shelbyGT.RollModel.TYPES.user_discussion_roll){
+        return false;
+      }
+      
+      // user can post to their hearts
+      if (this.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted &&
+          this.get('creator_id') == user.id ){
+        return true;
+      }
+      
+      // anything user created or is collaborative
+      if (this.get('creator_id') == user.id || this.get('collaborative')) {
+        return true;
+      }
+
+      // otherwise, it's non-collaborative and I can't post
+      return false;
     }
 
   });
@@ -111,6 +132,8 @@
     global_public : 31,
     // User-created collaborative private rolls
     user_private : 50,
+    // User-created private conversations (aka Discussion Rolls)
+    user_discussion_roll : 51,
 
     genius : 70
   };
