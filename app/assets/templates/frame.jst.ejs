@@ -150,7 +150,7 @@
 						
 						<% if (!user.isAnonymous()) { %>
 	            <div class="frame-subline">
-	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
 	                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
 	              </a>
 	            </div>
@@ -191,7 +191,7 @@
               </button>
             </li>
             <li class="menu_item menu_item--right">
-              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>">
                 <i class="button_icon_left icon_videocard_comment icon">
                   <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
                 </i>
