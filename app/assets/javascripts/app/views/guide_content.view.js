@@ -6,6 +6,7 @@
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
+  var VideoSearchView = libs.shelbyGT.VideoSearchView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -128,6 +129,17 @@
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true
+          };
+          break;
+        case DisplayState.search :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : VideoSearchView,
+            collection : shelby.collections.videoSearch,
+            options : {
+              collapseViewedFrameGroups : false,
+              masterCollection : this._currentRollMasterCollection
+            }
           };
           break;
         case DisplayState.userPreferences :

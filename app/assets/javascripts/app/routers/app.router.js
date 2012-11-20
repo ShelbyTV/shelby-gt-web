@@ -43,6 +43,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
 
+    shelby.collections.videoSearch = new libs.shelbyGT.FramesCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();

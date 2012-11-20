@@ -49,7 +49,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   initialize : function(){
     var self = this;
-    this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    if (this.model) {
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
     this.$el.append(this.template());
@@ -57,7 +59,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _cleanup : function(){
-    this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    if (this.model) {
+      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    }
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
 
@@ -144,7 +148,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this._loadMoreEnabled = false;
   },
 
-  _addItem : function(item, collection, options){
+  _addItem : function(item, collection, options, noSmartRefresh){
     this._numItemsLoaded++;
     if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
       if (!this._lastKeyValue ||
@@ -153,7 +157,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         this._lastKeyValue = item.id;
       }
     }
-    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, collection, options);
+    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, collection, options, noSmartRefresh);
   },
 
   _loadMore : function(){
