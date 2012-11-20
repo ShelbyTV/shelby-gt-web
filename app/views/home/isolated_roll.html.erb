@@ -25,7 +25,7 @@
 </head>
 
 <body>
-  <iframe src="<%= Settings::Application.url %>/isolated-roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
+  <iframe id="shelby-roll" src="<%= Settings::Application.url %>/isolated-roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %>"></iframe>
 
 	<% if Rails.env == 'production' %>	
 	  <script>

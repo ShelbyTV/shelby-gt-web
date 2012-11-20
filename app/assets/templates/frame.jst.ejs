@@ -17,7 +17,7 @@
 <% var contextOverlay = options.contextOverlay %>
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
 <% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
-
+<% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
@@ -147,12 +147,14 @@
                 <% } %>
               </p>
             <% } %>
-
-            <div class="frame-subline">
-              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-              </a>
-            </div>
+						
+						<% if (!user.isAnonymous()) { %>
+	            <div class="frame-subline">
+	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-track-event js-video-activity-toggle-comment" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+	                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+	              </a>
+	            </div>
+						<% } %>
           <% } else { %>
             <a href="#" onclick="return false;" class="frame-header js-frame-activate">
               <h1 class="frame-title" title="<%= videoTitle %>">
@@ -168,28 +170,35 @@
               </div>
             </a>
           <% } %>
+        </div><!-- eo .media_body -->
 
-          <% if (user.isAnonymous()) { %>
-            <ul class="menu_list menu_list--share-frame">
-              <li class="menu_item">
-								<a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
-	                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frame.get('roll').get('title') %>">
-	                  <i class="button_icon_left icon_share_twitter icon">
-	                    Share on Twitter
-	                  </i>
-	                </button>
-								</a>
-              </li>
-              <li class="menu_item">
-                <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
-                  <i class="button_icon_left icon_share_facebook icon">
-                    Share on Facebook
+        <% if (user.isAnonymous()) { %>
+          <ul class="menu_list menu_list--share-frame">
+            <li class="menu_item">
+              <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
+                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frame.get('roll').get('title') %>">
+                  <i class="button_icon_left icon_share_twitter icon">
+                    Tweet
                   </i>
                 </button>
-              </li>
-            </ul>
-          <% } %>
-        </div><!-- eo .media_body -->
+              </a>
+            </li>
+            <li class="menu_item">
+              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+                <i class="button_icon_left icon_share_facebook icon">
+                  Share
+                </i>
+              </button>
+            </li>
+            <li class="menu_item menu_item--right">
+              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+                <i class="button_icon_left icon_videocard_comment icon">
+                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+                </i>
+              </button>
+            </li>
+          </ul>
+        <% } %>
       </footer><!-- eo .media_module-->
     <% } else if (frameViewed){ %>
       <footer class="media_module frame-footer clearfix">
