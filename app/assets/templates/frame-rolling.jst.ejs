@@ -2,7 +2,7 @@
 <% var frameThumbnail = frame.get('video').get('thumbnail_url') %>
 <% var userNickname   = user.get('nickname') || 'your personal '%>
 <div class="overlay_header guide-overlay-head framerolling-head">
-  <div class="guide-overlay-head-lining">
+  <div class="guide-overlay-head-lining js-guide-overlay-head-lining">
     <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Roll" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
       <i class="button_icon_left icon_cancel icon">
         Cancel
@@ -16,15 +16,19 @@
 			</span>
     </h2>
 
+		<a href="#" class="change-rolling-destination js-change-rolling-destination">
+			change
+		</a>
+
   </div><!-- eo guide-overlay-head-lining -->
 </div><!-- eo guide-overlay-head.framerolling-head -->
 
 <div class="overlay_body guide-overlay-body framerolling-body">
-	<div class="js-roll-selection">
+	<div class="roll-selection-wrapper js-roll-selection">
 		<!-- content from RollingSelectionListView when applicable -->
 	</div>
 	
-  <form class="form_module">
+  <form class="form_module rolling-form">
     <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle %> 
     </h1>

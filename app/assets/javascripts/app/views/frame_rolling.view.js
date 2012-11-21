@@ -17,8 +17,9 @@
     _multiRollEnabled : false,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel"							: "_setGuideOverlayStateNone",  //cancel from Step 1/2
-			"click .js-create-roll"						: "_createRoll" // NOT CURRENTLY IMPLEMENTED
+      "click .js-cancel"							        : "_setGuideOverlayStateNone",  //cancel from Step 1/2
+			"click .js-create-roll"						      : "_createRoll", // NOT CURRENTLY IMPLEMENTED
+			"click .js-change-rolling-destination"  : "_showRollSelectionChild"
     }),
 
     className : GuideOverlayView.prototype.className + ' js-rolling-frame rolling-frame',
@@ -40,6 +41,7 @@
 			// select roll for power users
       if(this._multiRollEnabled){
         this._renderRollSelectionChild();
+        this.$el.addClass('multi-roll-enabled');
       }
       
       // rolling details (personal roll as default)
@@ -60,9 +62,17 @@
         }
       );
 
-      this.renderChildInto(this._rollsListView, this.$el.find('.js-roll-selection'));
+      this.renderChildInto(this._rollsListView, this.$('.js-roll-selection'));
 		},
 		
+		_showRollSelectionChild: function(e){
+		  e.preventDefault();
+		  this.$el.addClass("show-roll-selection");
+		},
+		
+		_hideRollSelectionChild: function(){
+		  this.$el.removeClass("show-roll-selection");
+		},
 
 		//------------------------- ROLLING DETAILS ----------------------------
 		
@@ -93,6 +103,7 @@
 		selectRoll: function(roll){
 			this._rollingForm.setRoll(roll);
 			this.$el.find('.js-rolling-destination-display').html(libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll));
+			this._hideRollSelectionChild();
 		},
 		
 		done : function(){

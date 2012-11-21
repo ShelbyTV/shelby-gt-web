@@ -13,6 +13,8 @@
       simulateAddTrue : false
     }),
     
+    className: "rolls-list rolling__roll-selection-list",
+    
     initialize : function(){
       var self = this;
       this.options.listItemView = function(item, params){
