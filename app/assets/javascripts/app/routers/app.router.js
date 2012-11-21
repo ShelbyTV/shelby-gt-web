@@ -69,7 +69,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
-          if (url.indexOf('onboarding') == -1) {
+          // if the user is trying to view an isolated roll, don't show onboarding right now.
+          if (/isolated-roll/.test(url)){
+            self._reroute();
+          }
+          else if (url.indexOf('onboarding') == -1) {
             var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
             if (!userOnboardingProgress) {
               self.navigate('/onboarding/1', {trigger:true, replace:true});

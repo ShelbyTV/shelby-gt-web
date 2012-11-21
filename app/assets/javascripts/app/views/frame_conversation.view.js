@@ -12,7 +12,8 @@
       "click .js-cancel:not(.js-busy)" : "_setGuideOverlayStateNone",
       "click .js-new-comment-submit"   : "_addMessage",
       "click .js-message-reply"        : "_reply",
-      "click .js-load-video"           : "_loadVideo"
+      "click .js-load-video"           : "_loadVideo",
+      "click #js-login-within-comments": "_showLogin"
     }),
 
     className : GuideOverlayView.prototype.className + ' conversation-overlay',
@@ -108,6 +109,14 @@
     
     _loadVideo : function(){
       shelby.models.guide.set('activeFrameModel', this.model);
+    },
+    
+    _showLogin : function(){
+      this.$el.find('.signup-section-lining').html(SHELBYJST['signin-form']());
+      $('.signup-section').css("left","10px").css('top','38px');
+      $('.dropdown_section').toggle();
+      $('.form_fieldset.social_login.login-social-section, hr').hide();
+      $('.conversation-body').scrollTop($('.conversation-body').scrollTop()+$('.signup-section').height());
     }
     
   });

@@ -415,8 +415,13 @@ $share-frame-half-gutter: 4px;
 
 .menu_list--share-frame {
   .menu_item {
+    float: left;
     padding-top: 1em;
-    width: 50%;
+    width: auto;
+
+    &.menu_item--right {
+      float: right;
+    }
 
     &:first-child {
       padding-right: $share-frame-half-gutter;
@@ -427,20 +432,19 @@ $share-frame-half-gutter: 4px;
       padding-left: $share-frame-half-gutter;
 
     }
-
   }
 
   .menu_button--twitter,
-  .menu_button--facebook {
-    padding: 0.6em .6em .6em 0.45em;
+  .menu_button--facebook,
+  .menu_button--comment {
+    padding: 0.6em 0.8em .6em 0.25em;
     width: 100%;
 
     .icon {
       background-size: 1.8em;
       -webkit-background-size: 1.8em;
       display: block;
-      padding-left: 1.3em;
-      margin-left: .5em;
+      padding-left: 1.9em;
     }
   }
 
@@ -453,20 +457,28 @@ $share-frame-half-gutter: 4px;
     .icon {
     }
   }
+
+  .menu_button--comment {
+    padding-left: 0.9em;
+
+    .icon {
+      background-size: contain;
+      -webkit-background-size: contain;
+    }
+  }
 }
 
 
 //------------------------------------------------------------------------------
-//  isolate roll
+//  isolated roll
 //  (nest styles inside of .isolated-roll{})
 //------------------------------------------------------------------------------
 .isolated-roll {
-  .frame-subline {
-    display: none;
-  }
-
   .xuser-data {
     display: none;
+  }
+  .conversation-message .xuser-data {
+    display: block;
   }
 
   .xuser-message {
