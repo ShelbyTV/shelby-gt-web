@@ -26,6 +26,8 @@
     _currentRollMasterCollection : null,
     _currentRollView : null,
 
+    _videoSearchView : null,
+
     _playingFrameGroupCollection : null,
     _playingState : libs.shelbyGT.PlayingState.none,
     _playingRollId : null,
@@ -138,6 +140,9 @@
             collection : shelby.collections.videoSearch,
             options : {
               collapseViewedFrameGroups : false,
+              comparator : function(frameGroup) {
+                return frameGroup.get('frames').at(0).get('video').get('score');
+              },
               masterCollection : this._currentRollMasterCollection
             }
           };
@@ -199,6 +204,9 @@
             this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
           }
           break;
+        case DisplayState.search :
+          this._videoSearchView = this._listView;
+          break;
       }
 
       // cancel any other previous ajax requests' ability to hide the spinner
@@ -256,7 +264,12 @@
             this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
             this._playingState = libs.shelbyGT.PlayingState.dashboard;
             this._playingRollId = null;
+          } else if (guideModel.get('displayState') == DisplayState.search) {
+            this._playingFrameGroupCollection = this._videoSearchView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.search;
+            this._playingRollId = null;
           } else {
+            //we're playing some kind of roll
             this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
             this._playingState = libs.shelbyGT.PlayingState.roll;
             this._playingRollId = activeFrameModel.get('roll').id;

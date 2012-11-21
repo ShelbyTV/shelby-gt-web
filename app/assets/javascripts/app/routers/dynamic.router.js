@@ -15,6 +15,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "explore"                              : "displayExploreView",
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
+    "search"                               : "displaySearch",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -103,6 +104,64 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
+  },
+
+  displaySearch : function(params){
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+    shelby.models.guide.set({
+      displayState : libs.shelbyGT.DisplayState.search
+    });
+    if (params && params.query) {
+      //youtube search
+      ytQuery.query({
+        q : params.query,
+        "max-results" : "10",
+        "orderby" : "relevance"
+      }, function(response){
+        var youtubeSearchModel = new libs.shelbyGT.VideoSearchModel();
+        var videos = _(response).map(libs.shelbyGT.ytUtils.videoModelFromYtJson, libs.shelbyGT.ytUtils);
+        youtubeSearchModel.set('videos', videos);
+        youtubeSearchModel.assignScores();
+        var frames = youtubeSearchModel.getVideosWrappedInFrames();
+        shelby.collections.videoSearch.add(frames);
+        //if nothing is already playing, start playing the first video in the search results
+        if (!shelby.models.guide.get('activeFrameModel')) {
+          // don't want to activate the video if we've switched to explore view during the asynchronous load
+          if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+            var firstFrame = shelby.collections.videoSearch.first();
+            if (firstFrame) {
+              shelby.models.guide.set('activeFrameModel', firstFrame);
+            }
+          }
+        }
+      });
+      //vimeo search
+      var vimeoSearchModel = new libs.shelbyGT.VideoSearchModel();
+      vimeoSearchModel.fetch({
+        data : {
+          provider : 'vimeo',
+          q : params.query,
+          limit : 10
+        },
+        success : function(vimeoSearchModel, response) {
+          vimeoSearchModel.assignScores();
+          var frames = vimeoSearchModel.getVideosWrappedInFrames();
+          shelby.collections.videoSearch.add(frames);
+          //if nothing is already playing, start playing the first video in the search results
+          if (!shelby.models.guide.get('activeFrameModel')) {
+            // don't want to activate the video if we've switched to explore view during the asynchronous load
+            if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+              var firstFrame = shelby.collections.videoSearch.first();
+              if (firstFrame) {
+                shelby.models.guide.set('activeFrameModel', firstFrame);
+              }
+            }
+          }
+        }
+      });
+    }
   },
 
   displayIsolatedRoll : function(rollId, frameId, params){
