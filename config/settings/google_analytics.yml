@@ -1,5 +1,5 @@
 defaults: &defaults
-  shelby: "UA-21191360-6"
+  code: "UA-21191360-6"
 
 development:
   <<: *defaults
@@ -9,6 +9,7 @@ test:
 
 staging:
   <<: *defaults
+  code: "UA-21191360-8"
 
 production:
   <<: *defaults
