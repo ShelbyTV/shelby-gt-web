@@ -46,12 +46,13 @@
 }
 
 .rolling__roll-selection-item {
-  @include button-primer($shelby-gray-light);
+  @include button-primer($shelby-gray-medium);
   border-radius: 5px;
   margin-bottom: 5px;
   > a {
-    color: white;
+    color: $text;
     padding: 5px;
+    text-shadow: 0px 1px 0px white;
     
     &:hover {
       text-decoration: none;
