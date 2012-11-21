@@ -250,7 +250,7 @@
       var shortLink = $.getUrlParam('awesm');
       if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
       else { shortLink = "Direct"; }
-      var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.shelby %>'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s);}(document,'script'));

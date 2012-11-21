@@ -21,7 +21,7 @@ class HomeController < ApplicationController
         if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
           @roll = Shelby::API.get_roll(@isolated_roll_id)
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
-          
+          @analytics_account = get_account_analytics_info(@user) 
           @frame_id = get_frame_from_path(params[:path])
           render '/home/isolated_roll' and return
         end
@@ -161,6 +161,16 @@ class HomeController < ApplicationController
     def get_frame_from_path(path)
        frame_id = /(\w*)/.match(params[:path])
        frame_id[1] if frame_id and BSON::ObjectId.legal?(frame_id[1])
+    end
+    
+    def get_account_analytics_info(user)
+      abilities = user["additional_abilities"]
+      abilities.keep_if {|a| a[0..2] == "UA-"}
+      if ga_account = abilities.first
+        return ga_account
+      else
+        return Settings::GoogleAnalytics.shelby
+      end
     end
 
 end

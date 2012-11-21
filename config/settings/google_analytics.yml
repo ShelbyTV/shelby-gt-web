@@ -1,0 +1,14 @@
+defaults: &defaults
+  shelby: "UA-21191360-6"
+
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
