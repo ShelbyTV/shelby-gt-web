@@ -219,15 +219,18 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
 
-    <% if "production" == Rails.env %>
+    <% if ("production" == Rails.env or "staging" == Rails.env) %>
       //Track loading of landing page separate from loading of app -->
       var shortLink = $.getUrlParam('awesm');
       if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
       else { shortLink = "Direct"; }
-      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.shelby %>'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s);}(document,'script'));
+		<% end %>
+		
+		<% if Rails.env == 'production' %>
       var _kmq = _kmq || [];
       var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
       function _kms(u){

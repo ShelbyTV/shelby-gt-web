@@ -169,7 +169,7 @@ class HomeController < ApplicationController
       if ga_account = abilities.first
         return ga_account
       else
-        return Settings::GoogleAnalytics.shelby
+        return Settings::GoogleAnalytics.code
       end
     end
 

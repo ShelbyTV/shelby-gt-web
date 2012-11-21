@@ -60,13 +60,16 @@
 
   </div> <!-- eo ~application -->
 	
-	<% if Rails.env == 'production' %>
+	<% if (Rails.env == 'production' or Rails.env == 'staging') %>
 	  <script>
-	    var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.shelby %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+	    var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
 	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	    s.parentNode.insertBefore(g,s)}(document,'script'));
 	  </script>
+	<% end %>
+	
+	<% if Rails.env == 'production' %>
 		<script>
 		  var _kmq = _kmq || [];
 		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
