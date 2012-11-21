@@ -1,0 +1,15 @@
+defaults: &defaults
+  code: "UA-21191360-6"
+
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+  code: "UA-21191360-8"
+
+production:
+  <<: *defaults
