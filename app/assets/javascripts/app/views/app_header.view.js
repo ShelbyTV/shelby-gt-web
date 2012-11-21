@@ -17,7 +17,8 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
       "click .js-help"                           : "_showHelp",
       "click .js-team"                           : "_showTeam",
       "click .js-legal"                          : "_showLegal",
-      "click .js-home:not(.shelby-logo-no-link)" : "_showHome"
+      "click .js-home:not(.shelby-logo-no-link)" : "_showHome",
+      "click .js-fb-home"                        : "_showFBHome"
     });
 
     return events;
@@ -59,10 +60,13 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(){
-    if(this.options.guide.get('displayIsolatedRoll')) {
-        this.$el.hide();
-      } else {
-        this.$el.show();
+    if(this.options.guide.get('displayFBGeniusRoll')) {
+      this.$el.show();
+    }
+    else if ( this.options.guide.get('displayIsolatedRoll') ){
+      this.$el.hide();
+    } else {
+      this.$el.show();
     }
   },
 
@@ -85,6 +89,10 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
       shelby.router.navigate('stream', {trigger:true});
     }
+  },
+  
+  _showFBHome : function(){
+    document.location.href = shelby.config.fbAppUrl+'/fb/genius';
   },
 
   _showUserPreferences : function(){

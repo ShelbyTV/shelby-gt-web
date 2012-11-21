@@ -44,20 +44,20 @@ libs.shelbyGT.MiniVideoProgress = Support.CompositeView.extend({
 		pct = Math.max(Math.min(pct, 100), 0);
 		
 		if( this._shouldUpdateScrubHandle ){
-      this.$('.video-player-scrubber').css('left',pct+"%");
+      this.$('.videoplayer-progress__scrubber').css('left',pct+"%");
     }
     
 		var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
         curTimeS = parseInt(curTime % 60, 10);
 
-		this.$('.video-player-progress-elapsed').width(pct+"%");
-		this.$('.video-player-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
+		this.$('.videoplayer-progress__elapsed').width(pct+"%");
+		this.$('.videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
 	},
 	
 	_onBufferTimeChange: function(attr, bufferTime){
 		var pct = (bufferTime / this._currentDuration) * 100;
-		this.$('.video-player-progress-load').width(pct+"%");
+		this.$('.videoplayer-progress__load').width(pct+"%");
 	},
 	
 	_onDurationChange: function(attr, val){

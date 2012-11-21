@@ -72,3 +72,37 @@
   position: absolute;
   right: 0;
 }
+
+//------------------------------------------------------------------------------
+//  LOG IN or SIGN UP
+//------------------------------------------------------------------------------
+.signin_module {
+  margin-top: -66px;
+  z-index: 100;
+  position: relative;
+//  border: 1px solid red;
+  height: 66px;
+  background-color: rgba(100, 177, 218, 0.6);
+//  font-weight: bold;
+//  text-shadow: 1px 1px 0px white;
+  color: black;
+  padding-left: 80px;
+  font-size: 1.3em;
+  padding-top: 1.5em;
+
+  .signin_module__link {
+    &,
+    &:link,
+    &:visited {
+      color: darken($shelby-blue,5%);
+    }
+    &:hover {
+      color: $shelby-blue;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  isolated roll
+//  (nest styles inside of .isolated-roll{})
+//------------------------------------------------------------------------------

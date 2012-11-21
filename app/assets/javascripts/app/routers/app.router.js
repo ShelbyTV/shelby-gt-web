@@ -32,7 +32,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
-    shelby.models.inviteViewState = new libs.shelbyGT.InviteViewStateModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -56,7 +55,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
-          if (url.indexOf('onboarding') == -1) {
+          // if the user is trying to view an isolated roll, don't show onboarding right now.
+          if (/isolated-roll/.test(url)){
+            self._reroute();
+          }
+          else if (url.indexOf('onboarding') == -1) {
             var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
             if (!userOnboardingProgress) {
               self.navigate('/onboarding/1', {trigger:true, replace:true});
@@ -81,6 +84,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     }
     else {
       self.initAnonymous(url);
+      shelby.models.promoRollCategories.fetch();
     }
   },
 

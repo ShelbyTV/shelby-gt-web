@@ -104,6 +104,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
+    
   },
 
   _onFetchSuccess : function(model, response){
@@ -127,7 +128,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
           self._loadMore();
         }
       }, 250);
-    }
+    }    
   },
 
   _doesResponseContainListCollection : function(response) {
