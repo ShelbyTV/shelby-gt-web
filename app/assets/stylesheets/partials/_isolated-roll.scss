@@ -10,8 +10,63 @@
 /* non-programatic changes to app display */
 body.isolated-roll {
 
-  .content_wrapper {
-    margin-top: 0px;
-  }
+}
 
+//-------------------------
+// header bar
+//-------------------------
+
+.iso-roll-app-header {
+}
+
+.current-roll {
+  float: left;
+  width: $guide-width;
+}
+
+.selectable-rolls-list {
+  margin: 0;
+  padding: 0;
+}
+
+.selectable-roll-item {
+  display: block;
+  float: left;
+  list-style-type: none;
+}
+
+.iso-roll-nav-button {
+  @include ellipsis;
+  @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
+
+  border-radius: 15px;  
+  color: $guide-presentation-button;
+  display: block;
+  font-size: 1.4em;
+  font-weight: 500;
+  font-family: $font-family-display;
+  margin: 6px;
+  max-width: $guide-width * 0.75;
+  padding: 3px 10px;
+  text-decoration: none;
+  
+  &:hover {
+    @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,10%));
+    color: adjust-lightness($guide-presentation-button,20%);
+    text-decoration: none;
+  }
+}
+
+.active-item .iso-roll-nav-button, .active-item .iso-roll-nav-button:hover {
+  background: black;
+  color: #efefef;
+}
+
+.isoroll-header__follow-unfollow-button {
+  font-size: 1.2em;
+}
+
+.isoroll-header__full-shelby-button {
+  padding: 0.1em 1em;
+  width: 80px;
 }

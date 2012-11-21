@@ -100,10 +100,8 @@ a{
 }
 
 .user-inactive{
-	.main-layout{
-		.guide-wrapper{
-		  opacity: .4;
-		}
+	.shelby-header, .main-layout .guide-wrapper {
+	  opacity: .4;
 	}
 }
 

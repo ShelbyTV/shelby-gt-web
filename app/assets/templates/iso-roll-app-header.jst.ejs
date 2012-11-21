@@ -1,16 +1,13 @@
-<div class="current-roll">
-	<%= currentRoll.get('title') %>
-</div>
+<button class="button_primer button_gray-medium isolated-roll-button isoroll-header__full-shelby-button js-full-shelby-button">Powered by Shelby</button>
+<button class="button_primer button_gray-medium isolated-roll-button isoroll-header__follow-unfollow-button js-follow-button"></button>
 
-<button class="button_primer button_gray-medium isolated-roll-button js-full-shelby-button">Powered by Shelby</button>
-<button class="button_primer button_gray-medium isolated-roll-button js-follow-button"></button>
-
-<% if(associatedRolls && associatedRolls.length > 1){ %>
-	<ol class="selectable-rolls">
+<% if(associatedRolls){ %>
+	<ol class="selectable-rolls-list">
 		<% associatedRolls.forEach(function(roll){ %>
-			<li>
-				<a href="#" data-roll_id="<%= roll.id %>" class="js-change-iso-roll">
-				<%= roll.get('title') %>
+			<li class="selectable-roll-item <%= roll.id == currentRoll.id ? 'active-item' : '' %>">
+				<a class="iso-roll-nav-button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
+					<%= roll.get('subdomain') || roll.get('title') %>
+				</a>
 			</li>
 		<% }) %>
 	</ol>
