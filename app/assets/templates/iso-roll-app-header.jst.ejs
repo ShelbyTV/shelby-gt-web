@@ -1,0 +1,17 @@
+<div class="current-roll">
+	<%= currentRoll.get('title') %>
+</div>
+
+<button class="button_primer button_gray-medium isolated-roll-button js-full-shelby-button">Powered by Shelby</button>
+<button class="button_primer button_gray-medium isolated-roll-button js-follow-button"></button>
+
+<% if(associatedRolls && associatedRolls.length > 1){ %>
+	<ol class="selectable-rolls">
+		<% associatedRolls.forEach(function(roll){ %>
+			<li>
+				<a href="#" data-roll_id="<%= roll.id %>" class="js-change-iso-roll">
+				<%= roll.get('title') %>
+			</li>
+		<% }) %>
+	</ol>
+<% } %>

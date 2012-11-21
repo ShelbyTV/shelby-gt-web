@@ -1,0 +1,5 @@
+<% if( roll.get('header_image_file_name') ){ %>
+	<div class="image_module" id="guide-header-roll-header-image" style="background-image: url('<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>');">
+		<img src="<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>" class="visuallyhidden" />
+	</div>
+<% } %>
