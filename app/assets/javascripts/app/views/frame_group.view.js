@@ -41,7 +41,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
         return SHELBYJST['fb-genius-frame'](obj);
       }
-      else { 
+      else {
         return SHELBYJST['frame'](obj);
       }
     } catch(e){
@@ -302,7 +302,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       picture: _frame.get('video').get('thumbnail_url'),
       description: _frame.get('video').get('description'),
       caption: ':: a shelby genius video ::'
-    });    
+    });
   },
   
   _shareToFacebook : function(e){

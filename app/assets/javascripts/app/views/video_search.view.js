@@ -8,30 +8,83 @@
 
     className : FrameGroupPlayPagingListView.prototype.className + ' roll',
 
-    initialize : function(){
-      FrameGroupPlayPagingListView.prototype.initialize.call(this);
-      if (this._lookupDonatePromo()) {
-        //if the roll has a donate promo, increase the promo frequency
-        this.options.isIntervalComplete = function(displayedItems) {
-          return displayedItems != 0;
-        };
-      }
-    },
-
-    _cleanup : function(){
-      FrameGroupPlayPagingListView.prototype._cleanup.call(this);
-    },
-
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
-      collectionAttribute : 'frames',
-      isIntervalComplete : function(displayedItems) {
-        return displayedItems != 0 && displayedItems % 5 == 0;
-      },
       listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
       }
     }),
+
+    initialize : function(){
+      FrameGroupPlayPagingListView.prototype.initialize.call(this);
+      this.options.videoSearchModel.bind("search", this._doSearch, this);
+    },
+
+    _cleanup : function(){
+      FrameGroupPlayPagingListView.prototype._cleanup.call(this);
+      this.options.videoSearchModel.unbind("search", this._doSearch, this);
+    },
+
+    render : function(){
+      FrameGroupPlayPagingListView.prototype.render.call(this);
+      if (this.options.videoSearchModel.get('query')) {
+        shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false, replace: true});
+      }
+    },
+
+    _doSearch : function(){
+      if (this.options.videoSearchModel.get('query')) {
+        shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false});
+        this.collection.reset();
+        //youtube search
+        ytQuery.query({
+          q : this.options.videoSearchModel.get('query'),
+          "max-results" : "10",
+          "orderby" : "relevance"
+        }, function(response){
+          var youtubeSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
+          var videos = _(response).map(libs.shelbyGT.ytUtils.videoModelFromYtJson, libs.shelbyGT.ytUtils);
+          youtubeSearchModel.set('videos', videos);
+          youtubeSearchModel.assignScores();
+          var frames = youtubeSearchModel.getVideosWrappedInFrames();
+          shelby.collections.videoSearchResultFrames.add(frames);
+          //if nothing is already playing, start playing the first video in the search results
+          if (!shelby.models.guide.get('activeFrameModel')) {
+            // don't want to activate the video if we've switched to explore view during the asynchronous load
+            if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+              var firstFrame = shelby.collections.videoSearchResultFrames.first();
+              if (firstFrame) {
+                shelby.models.guide.set('activeFrameModel', firstFrame);
+              }
+            }
+          }
+        });
+        //vimeo search
+        var vimeoSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
+        vimeoSearchModel.fetch({
+          data : {
+            provider : 'vimeo',
+            q : this.options.videoSearchModel.get('query'),
+            limit : 10
+          },
+          success : function(vimeoSearchModel, response) {
+            vimeoSearchModel.assignScores();
+            var frames = vimeoSearchModel.getVideosWrappedInFrames();
+            shelby.collections.videoSearchResultFrames.add(frames);
+            //if nothing is already playing, start playing the first video in the search results
+            if (!shelby.models.guide.get('activeFrameModel')) {
+              // don't want to activate the video if we've switched to explore view during the asynchronous load
+              if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+                var firstFrame = shelby.collections.videoSearchResultFrames.first();
+                if (firstFrame) {
+                  shelby.models.guide.set('activeFrameModel', firstFrame);
+                }
+              }
+            }
+          }
+        });
+      }
+    },
 
     _doesResponseContainListCollection : function(response) {
       return response.result.frames;

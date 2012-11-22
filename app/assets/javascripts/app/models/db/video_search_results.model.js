@@ -1,4 +1,4 @@
-libs.shelbyGT.VideoSearchModel = libs.shelbyGT.ShelbyBaseModel.extend({
+libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   providerName : 'generic',
 

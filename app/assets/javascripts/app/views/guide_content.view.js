@@ -137,13 +137,14 @@
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : VideoSearchView,
-            collection : shelby.collections.videoSearch,
+            collection : shelby.collections.videoSearchResultFrames,
             options : {
               collapseViewedFrameGroups : false,
               comparator : function(frameGroup) {
                 return frameGroup.get('frames').at(0).get('video').get('score');
               },
-              masterCollection : this._currentRollMasterCollection
+              masterCollection : this._currentRollMasterCollection,
+              videoSearchModel : shelby.models.videoSearch
             }
           };
           break;

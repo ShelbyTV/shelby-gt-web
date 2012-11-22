@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
+  var SearchHeaderView = libs.shelbyGT.SearchHeaderView;
   var RollOverlayContextView = libs.shelbyGT.RollOverlayContextView;
 
   libs.shelbyGT.ItemHeaderView = Support.CompositeView.extend({
@@ -46,6 +47,9 @@
           case libs.shelbyGT.DisplayState.watchLaterRoll :
           case libs.shelbyGT.DisplayState.dashboard :
           case libs.shelbyGT.DisplayState.rollList :
+            break;
+          case libs.shelbyGT.DisplayState.search :
+            this.appendChild(new SearchHeaderView({}));
             break;
         }
       }
