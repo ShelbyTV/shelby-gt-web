@@ -37,28 +37,30 @@
         shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false});
         this.collection.reset();
         //youtube search
-        ytQuery.query({
-          q : this.options.videoSearchModel.get('query'),
-          "max-results" : "10",
-          "orderby" : "relevance"
-        }, function(response){
-          var youtubeSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
-          var videos = _(response).map(libs.shelbyGT.ytUtils.videoModelFromYtJson, libs.shelbyGT.ytUtils);
-          youtubeSearchModel.set('videos', videos);
-          youtubeSearchModel.assignScores();
-          var frames = youtubeSearchModel.getVideosWrappedInFrames();
-          shelby.collections.videoSearchResultFrames.add(frames);
-          //if nothing is already playing, start playing the first video in the search results
-          if (!shelby.models.guide.get('activeFrameModel')) {
-            // don't want to activate the video if we've switched to explore view during the asynchronous load
-            if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-              var firstFrame = shelby.collections.videoSearchResultFrames.first();
-              if (firstFrame) {
-                shelby.models.guide.set('activeFrameModel', firstFrame);
+        var youtubeSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
+        youtubeSearchModel.fetch({
+          data : {
+            provider : 'youtube',
+            q : this.options.videoSearchModel.get('query'),
+            limit : 10
+          },
+          success : function(youtubeSearchModel, response) {
+            youtubeSearchModel.assignScores();
+            var frames = youtubeSearchModel.getVideosWrappedInFrames();
+            shelby.collections.videoSearchResultFrames.add(frames);
+            //if nothing is already playing, start playing the first video in the search results
+            if (!shelby.models.guide.get('activeFrameModel')) {
+              // don't want to activate the video if we've switched to explore view during the asynchronous load
+              if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+                var firstFrame = shelby.collections.videoSearchResultFrames.first();
+                if (firstFrame) {
+                  shelby.models.guide.set('activeFrameModel', firstFrame);
+                }
               }
             }
           }
         });
+
         //vimeo search
         var vimeoSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
         vimeoSearchModel.fetch({
