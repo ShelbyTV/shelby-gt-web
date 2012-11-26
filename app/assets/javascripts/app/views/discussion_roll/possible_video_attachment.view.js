@@ -14,7 +14,7 @@ libs.shelbyGT.PossibleVideoAttachmentView = libs.shelbyGT.ListItemView.extend({
   
   tagName: 'li',
 
-  className: 'discussion__item discussion__possible-video-attachment-item clearfix',
+  className: 'discussion__item clearfix',
 
   initialize : function(){
     //model is raw YT result

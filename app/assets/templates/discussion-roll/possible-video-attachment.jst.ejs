@@ -1,7 +1,15 @@
-<div class="visual-preview js-add-video">
-	<img class="thumbnail" src="<%= thumbnail.url %>" />
-</div>
-<div class="textual-preview">
-	<h3 class="video-title"><%= title %></h3>
-	<p class="video-description"><%= description %>
-</div>
+<div class="media_module frame-body-wrapper clearfix">
+  <div class="media_image js-add-video">
+    <img class="thumbnail" src="<%= thumbnail.url %>" />
+  </div>
+
+  <div class="media_body">
+    <h3 class="discussion__h3">
+      <%= title %>
+    </h3>
+
+    <p class="discussion__text">
+      <%= description %>
+    </p>
+  </div>
+</div><!-- eo media_module -->

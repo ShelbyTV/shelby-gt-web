@@ -1,18 +1,19 @@
-<div class="discussion discussion__content discussion__select-video-attachment js-discussion-select-video-attachment">
+<div class="discussion discussion__content discussion__content--attachment js-discussion-select-video-attachment">
 	<header class="discussion__header">
 	  <h1 class="discussion__h1">
 	    Add Video to Chat
 	  </h1>
-		<button class="button_primer button_gray-medium cancel-button js-cancel">
+
+		<button class="button_primer button_gray-medium discussion__button--cancel js-cancel">
 			Cancel
 		</button>
 
 	  <div class="discussion__content">
-			<form class="form_module discussion__video-search-form clearfix">
+			<form class="form_module form_module--attachment-search clearfix">
 	      <fieldset class="form_fieldset">
-	        <input type="text" class="form_textarea discussion__video-search-query js-video-search-query" placeholder="Search For Video"></input>
+	        <input type="text" class="form_textarea js-video-search-query" placeholder="Search For Video"></input>
 
-	        <button class="button_primer button_blue form_submit discussion__video-search-submit js-do-search">
+	        <button class="button_primer button_blue form_submit js-do-search">
 	          Search
 	        </button>
 	      </fieldset>
@@ -20,6 +21,6 @@
 	  </div>
 	</header>
 
-  <section class="discussion__content discussion__possible-video-attachment-content js-attachment-content">
+  <section class="discussion__content discussion__content--attachment-results js-attachment-content">
   </section>
 </div>

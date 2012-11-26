@@ -40,7 +40,7 @@
   background-color: #eeeeee;
   @include filter-gradient(#eeeeee, #cccccc, vertical);
   @include background-image(linear-gradient(top,  #eeeeee 0%,#cccccc 100%));
-  
+
   box-shadow: 0px 0px 5px 0px black;
   bottom: 0px;
   left: 0;
@@ -68,7 +68,7 @@
   @include filter-gradient(#cb60b3, #de47ac, vertical);
   @include background-image(linear-gradient(top,  #cb60b3 0%,#ad1283 74%,#de47ac 99%));
 
-  
+
   box-shadow: 0px 0px 3px 0px black;
   color: white;
   text-shadow: 0px -1px 0px black;
@@ -109,6 +109,7 @@
   color: #999;
   font-size: 0.8em;
   font-weight: bold;
+  line-height: 2;
   text-align: center;
 }
 
@@ -133,20 +134,24 @@
   .media_body {
 
   }
-  
+
   .discussion__text {
     /* grey speech bubble via http://www.colorzilla.com/gradient-editor/ */
-    background-color: #dddddd;
-    @include filter-gradient(#dddddd, #efefef, vertical);
-    @include background-image(linear-gradient(top,  #dddddd 0%,#dcdcdc 81%,#efefef 100%));
-    
-    border-radius: 15px;
-    box-shadow: 0px 0px 3px 0px black;
+//    background-color: #dddddd;
+//    @include filter-gradient(#dddddd, #efefef, vertical);
+//    @include background-image(linear-gradient(top,  #dddddd 0%,#dcdcdc 81%,#efefef 100%));
+    @include gradient-primer(#ddd);
+    @include gradient-primer(#f2f0f0);
+
+    border-radius: .2em;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
     color: black;
     display: inline-block;
+    line-height: 1.4;
     margin: 0 0.1em 0.5em;
     padding: 5px 10px;
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    text-align: left;
   }
 }
 
@@ -160,7 +165,7 @@
 ////////////////////////////////////////////////////////////////////////////
 .discussion--recipients {
   padding: 0.5em 8px;
-  
+
   .discussion__h2 {
     display: inline-block;
   }
@@ -204,7 +209,7 @@
   .load-more {
     list-style-type: none;
   }
-  
+
   .load-more-button {
     width: 200px;
   }
@@ -272,39 +277,49 @@
   }
 }
 
-.discussion__add-video-attachment {
+////////////////////////////////////////////////////////////////////////////
+//  Attach Video List
+////////////////////////////////////////////////////////////////////////////
+.discussion__list--attachment {
+  margin-right: 35px;
+}
+
+.discussion__item--attachment {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+.discussion__item-thumbnail {
+  width: 85px;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Attachment UI buttons
+////////////////////////////////////////////////////////////////////////////
+.discussion__button--attachment {
+  @include button-sizing;
+
   float: left;
   margin-left: 10px;
   margin-top: 8px;
+
   .full-text {
     display: block;
   }
+
   .short-text {
     display: none;
   }
 }
 
-.discussion__video-attachments-list {
-  margin-right: 35px;
-}
-
-.discussion__video-attachment-item {
-  display: inline-block;
-  margin: 10px;
-  position: relative;
-  
-  .thumbnail {
-    width: 85px;
-  }
-  
-  .remove-button {
-    border-radius: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    position: absolute;
-    right: -10px;
-    top: -7px;    
-  }
+.discussion__button--remove {
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  right: -10px;
+  top: -7px;
 }
 
 //------------------------------------------------------------------------------
@@ -321,105 +336,126 @@
       margin-left: 10px;
       margin-right: 0;
     }
-    
+
     .discussion__text {
       /* blue speech bubble via http://www.colorzilla.com/gradient-editor/ */
-      background-color: #87bbfc;
-      @include filter-gradient(#87bbfc, #cde9fc, vertical);
-      @include background-image(linear-gradient(top, #87bbfc 0%,#a0cdfe 82%,#b4ddfe 92%,#cde9fc 100%));
+//      background-color: #87bbfc;
+//      @include filter-gradient(#87bbfc, #cde9fc, vertical);
+//      @include background-image(linear-gradient(top, #87bbfc 0%,#a0cdfe 82%,#b4ddfe 92%,#cde9fc 100%));
+      @include gradient-primer(lighten($shelby-blue,40%));
+
+      box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
     }
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////
-//  Select Video Attachment
+//  Search and Select Video Attachment UI
 ////////////////////////////////////////////////////////////////////////////
-.discussion__select-video-attachment {
+.discussion__content--attachment {
   .discussion__header {
     padding-bottom: 10px;
-    
-    .cancel-button {
-      left: 7px;
-      position: absolute;
-      top: 7px;
-    }
+
+  }
+
+  .discussion__button--cancel {
+    left: 7px;
+    position: absolute;
+    top: 7px;
   }
 }
 
-.discussion__video-search-form {
+//------------------------------------------------------------------------------
+//  Form for searching for new attachments
+//------------------------------------------------------------------------------
+.form_module--attachment-search {
   margin: 0 10px;
-}
 
-.discussion__video-search-query {
-  float: left;
-  width: 420px;
-}
-
-.discussion__video-search-submit {
-  float: right;
-}
-
-.discussion__possible-video-attachment-content {
-  background-color: $videocard-footer-bg-color;
-  box-shadow: $videocard-shadow;
-  padding-top: 100px;
-  padding-bottom: 20px;
-}
-
-.discussion__possible-video-attachments-list {
-}
-
-.discussion__possible-video-attachment-item {
-  cursor: pointer;
-  margin-bottom: 20px;
-  
-  .visual-preview {
+  .form_textarea {
     float: left;
-    padding: 5px;
-    width: 50%;
-    
-    img {
-      width: 100%;
+    width: 420px;
+  }
+
+  .form_submit {
+    float: right;
+  }
+}
+
+
+.discussion__content--attachment-results {
+  padding: 100px 0 20px;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  list of returned search results for possible attachments
+////////////////////////////////////////////////////////////////////////////
+.discussion__list--attachment-results {
+  ////////////////////////////////////////////////////////////////////////////
+  //  abstracted overrides
+  ////////////////////////////////////////////////////////////////////////////
+  .discussion__h3 {
+    font-weight: 500;
+    margin-top: .5em;
+  }
+
+  .discussion__item {
+  }
+
+  .discussion__text {
+    max-height: 130px;
+    overflow: hidden;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  //  media module framework
+  ////////////////////////////////////////////////////////////////////////////
+  .media_module {
+    cursor: pointer;
+    background-color: $videocard-footer-bg-color;
+
+    &:hover {
+      background-color: #fff;
+      box-shadow: 0 0 2px 0 $shelby-blue;
     }
   }
-  
-  .textual-preview {
-    float: left;
-    max-height: 150px;
-    overflow: hidden;
-    padding: 5px;
+
+  .media_image {
     width: 50%;
   }
-}
 
+  .media_body {
+    margin-right: 8px;
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////////
 //  Mobile Devices
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px), only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
     /* iPhone only ? */
-    
+
     .discussion__body {
       padding-bottom: 55px;
     }
-    
+
     .discussion__content {
       padding-left: 0;
       padding-right: 0;
       max-width: 100%;
     }
-    
-    .discussion-reply { 
+
+    .discussion-reply {
 
     }
-    
+
     .discussion__form {
       float: right;
       margin-left: 0;
       margin-right: 0;
       max-width: 100%;
       width: 100%;
-      
+
       .media_image--rev {
         display: none;
       }
@@ -449,7 +485,7 @@
         padding: 7px 12px;
       }
     }
-    
+
     .discussion__add-video-attachment {
       border-radius: 15px;
       padding: 7px 12px;
@@ -462,5 +498,5 @@
         display: block;
       }
     }
-    
+
 }

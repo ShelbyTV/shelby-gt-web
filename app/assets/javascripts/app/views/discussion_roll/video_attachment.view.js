@@ -7,7 +7,7 @@ libs.shelbyGT.DiscussionRollVideoAttachmentView = libs.shelbyGT.ListItemView.ext
     "click .js-remove"    : "_destroy"
   },
   
-  className: 'discussion__item discussion__video-attachment-item clearfix',
+  className: 'discussion__item discussion__item--attachment clearfix',
   
   //don't need an el, we get appended
   
@@ -27,6 +27,6 @@ libs.shelbyGT.DiscussionRollVideoAttachmentView = libs.shelbyGT.ListItemView.ext
   
   render: function(){
     this.$el.html(this.template({thumbnailUrl: this.options.thumbnailUrl}));
-  },
+  }
   
 });
