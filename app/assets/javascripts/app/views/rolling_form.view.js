@@ -126,28 +126,7 @@
       
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
-        var newFrame = new libs.shelbyGT.FrameModel();
-    		newFrame.save(
-    			{url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
-    			{url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames', 
-    			success: function(newFrame){
-    			  //rolling is done (don't need to wait for add message to complete)
-            self._rollingSuccess(roll, newFrame);
-            // Optional Sharing (happens in the background)
-            if (shareDests.length) {
-              self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
-                url : newFrame.shareUrl(),
-                success : function(){
-                  shelby.track('shared_frame',{destination: shareDests.join(", ")});
-                }
-              });
-            }
-    			},
-    			error: function(a,b,c){
-    				if (b.status == 404) { shelby.alert("404 error"); } 
-    				else { shelby.alert("sorry, something went wrong."); }
-    			}
-    		});
+        this._addViaUrl(message, roll, shareDests);
       }
       else {
         // elsere roll the frame
@@ -171,6 +150,32 @@
 			this.parent.done();
 			//N.B. This link is picked up by NotificationOverlayView for routing
 			shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="roll-route">Go to Roll</a></span> Video successfully rolled!');
+		},
+		
+		_addViaUrl : function(message, roll, shareDests) {
+		  var self = this;
+		  var newFrame = new libs.shelbyGT.FrameModel();
+  		newFrame.save(
+  			{url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
+  			{url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames', 
+  			success: function(newFrame){
+  			  //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+  			},
+  			error: function(a,b,c){
+  				if (b.status == 404) { shelby.alert("404 error"); } 
+  				else { shelby.alert("sorry, something went wrong."); }
+  			}
+  		});
 		}
 		
 	});
