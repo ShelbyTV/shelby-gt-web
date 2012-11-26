@@ -12,6 +12,7 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-search:not(.active-item)"   : "_goToSearch",
       "click .js-admin"                      : "_goToAdmin",
       "click .js-now-playing"                : "_nowPlaying"
     },
@@ -50,6 +51,12 @@
     _goToQueue : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
         shelby.router.navigate('queue', {trigger: true});
+      }
+    },
+
+    _goToSearch : function(){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.SEARCH) ){
+        shelby.router.navigate('search', {trigger: true});
       }
     },
     
@@ -116,6 +123,8 @@
         $setSelectedClassOn = this.$('.js-explore');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
+        $setSelectedClassOn = this.$('.js-search');
       }
 
       if ($setSelectedClassOn) {

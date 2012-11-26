@@ -6,6 +6,7 @@
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
+  var VideoSearchView = libs.shelbyGT.VideoSearchView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -24,6 +25,8 @@
 
     _currentRollMasterCollection : null,
     _currentRollView : null,
+
+    _videoSearchView : null,
 
     _playingFrameGroupCollection : null,
     _playingState : libs.shelbyGT.PlayingState.none,
@@ -130,6 +133,21 @@
             spinner : true
           };
           break;
+        case DisplayState.search :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : VideoSearchView,
+            collection : shelby.collections.videoSearchResultFrames,
+            options : {
+              collapseViewedFrameGroups : false,
+              comparator : function(frameGroup) {
+                return frameGroup.get('frames').at(0).get('video').get('score');
+              },
+              masterCollection : this._currentRollMasterCollection,
+              videoSearchModel : shelby.models.videoSearch
+            }
+          };
+          break;
         case DisplayState.userPreferences :
         case DisplayState.tools :
           displayParams = {
@@ -186,6 +204,9 @@
             // displayed in the current roll view
             this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
           }
+          break;
+        case DisplayState.search :
+          this._videoSearchView = this._listView;
           break;
       }
 
@@ -244,7 +265,12 @@
             this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
             this._playingState = libs.shelbyGT.PlayingState.dashboard;
             this._playingRollId = null;
+          } else if (guideModel.get('displayState') == DisplayState.search) {
+            this._playingFrameGroupCollection = this._videoSearchView.frameGroupCollection;
+            this._playingState = libs.shelbyGT.PlayingState.search;
+            this._playingRollId = null;
           } else {
+            //we're playing some kind of roll
             this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
             this._playingState = libs.shelbyGT.PlayingState.roll;
             this._playingRollId = activeFrameModel.get('roll').id;
