@@ -40,7 +40,7 @@
 //  video-player-tools-wrapper is purely for positioning.
 //------------------------------------------------------------------------------
 .videoplayer-tools__wrapper {
-  bottom: 0;
+  bottom: $persistent_video_info--height;
   height: 5.6em;
   left: 0;
   opacity: 1;

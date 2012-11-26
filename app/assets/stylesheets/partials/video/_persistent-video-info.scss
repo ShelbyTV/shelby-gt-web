@@ -1,0 +1,34 @@
+@import "base";
+
+$persistent_video_info--next-frame-width: 200px;
+
+/*
+ * Structure
+ */
+.persistent_video_info--content-wrapper { 
+  bottom: 0;
+  height: $persistent_video_info--height;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+/*
+ * Current Frame
+ */
+.persistent_video_info--current-frame {
+  background: red;
+  float: left;
+  padding-right: $persistent_video_info--next-frame-width;
+  width: 100%;
+}
+
+/*
+ * Next Frame
+ */
+.persistent_video_info--next-frame {
+  background: green;
+  position: absolute;
+  right: 0;
+  width: $persistent_video_info--next-frame-width;
+}

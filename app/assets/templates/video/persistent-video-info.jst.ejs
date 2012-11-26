@@ -1,0 +1,102 @@
+<% var currentCreator = currentFrame.get('creator') %>
+<% var currentCreatorNickname = currentCreator.get('nickname') %>
+<% var currentCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(currentCreator) %>
+<% var currentVideo = currentFrame.get('video') %>
+<% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+
+<% var nextCreator = nextFrame.get('creator') %>
+<% var nextCreatorNickname = nextCreator.get('nickname') %>
+<% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
+<% var nextVideo = nextFrame.get('video') %>
+<% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+
+
+<div class="persistent_video_info--current-frame">
+
+	<h2 class="video-title"><%= currentVideo.get('title') %></h2>
+	
+	<button class="button_primer button_default command-roll js-roll-frame js-track-event" 
+					data-ga_category="Persistent Video Info" 
+					data-ga_action="Click roll on current frame" 
+					data-ga_label="<%= shelby.models.user.get('nickname') %>">
+	  <i class="button_icon_left icon_videocard_roll icon">
+	    Roll…
+	  </i>
+	</button>
+
+	<button class="button_primer frame-command command-queue js-queue-frame
+	               <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued button_gray-light' : ' button_default' %>">
+	  <i class="button_icon_left icon_videocard_queue icon js-command-icon">
+	    <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
+	  </i>
+	</button>
+
+	<button class="command-share js-share-frame js-track-event" 
+					data-ga_category="Persistent Video Info" 
+					data-ga_action="Click share on current frame" 
+					data-ga_label="<%= shelby.models.user.get('nickname') %>">
+	  <i class="button_icon_left icon icon_email">
+	    Share Video…
+	  </i>
+	</button>
+
+	<span class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+		<img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+	</span>
+	shared by <%= currentCreatorNickname %>
+
+	<% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
+	  <p class="xuser-message">
+	    <%= currentMessages.models[0].escape('text') %>
+	  </p>
+	<% } %>
+</div>
+
+
+
+<div class="persistent_video_info--next-frame">
+	
+	<h3>up next</h3>
+	
+	<h2 class="video-title"><%= nextVideo.get('title') %></h2>
+
+	<%= SHELBYJST['thumbnail-module']({
+		thumbnail: nextVideo.get('thumbnail_url'), 
+		title: nextVideo.get('title') }) %>
+
+	<button class="button_primer button_default command-roll js-roll-frame js-track-event" 
+					data-ga_category="Persistent Video Info" 
+					data-ga_action="Click roll on next frame" 
+					data-ga_label="<%= shelby.models.user.get('nickname') %>">
+	  <i class="button_icon_left icon_videocard_roll icon">
+	    Roll…
+	  </i>
+	</button>
+
+	<button class="button_primer frame-command command-queue js-queue-frame
+	               <%= (queuedVideosModel.videoIsInQueue(nextVideo) ) ? ' queued button_gray-light' : ' button_default' %>">
+	  <i class="button_icon_left icon_videocard_queue icon js-command-icon">
+	    <%= (queuedVideosModel.videoIsInQueue(nextVideo)) ? 'Queued' : 'Queue' %>
+	  </i>
+	</button>
+
+	<button class="command-share js-share-frame js-track-event" 
+					data-ga_category="Persistent Video Info" 
+					data-ga_action="Click share on next frame" 
+					data-ga_label="<%= shelby.models.user.get('nickname') %>">
+	  <i class="button_icon_left icon icon_email">
+	    Share Video…
+	  </i>
+	</button>
+
+	<span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
+		<img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
+	</span>
+	shared by <%= nextCreatorNickname %>
+
+	<% if(nextMessages.models.length > 0 && nextCreator.get('id') == nextMessages.models[0].get('user_id')) { %>
+	  <p class="xuser-message">
+	    <%= nextMessages.models[0].escape('text') %>
+	  </p>
+	<% } %>
+</div>

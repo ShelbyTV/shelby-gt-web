@@ -9,7 +9,7 @@
 }
 
 .videoplayer-viewport {
-  bottom: 0;
+  bottom: $persistent_video_info--height;
   left: 0;
   position: absolute;
   right: 0;
