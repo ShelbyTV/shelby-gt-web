@@ -32,7 +32,7 @@
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
-      <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.search) { %>
+
         <div class="menu_module frame-menu">
           <ul class="menu_list frame-command-menu frame-list" role="menubar">
             <li class="menu_item" role="menuitem">
@@ -92,7 +92,7 @@
             </li>
           </ul>
         </div><!-- eo .frame-menu -->
-      <% } %>
+
       <% if (!contextOverlay) { %>
         <!-- TODO: should maybe use the thumbnail module JST -->
         <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">

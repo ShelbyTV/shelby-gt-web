@@ -72,7 +72,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     libs.utils.rhombus.sadd('frames_rolled', this.id);
     shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },
-
+  
   upvote : function(onSuccess) {
     var frameToUpvote = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
