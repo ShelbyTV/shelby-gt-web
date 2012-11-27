@@ -1,4 +1,9 @@
 //------------------------------------------------------------------------------
+//  Local Variables
+//------------------------------------------------------------------------------
+$conversation-avatar-width: 25px; //used in message_item and reply form
+
+//------------------------------------------------------------------------------
 //  NON NORMATIVE
 //------------------------------------------------------------------------------
 .shelby-wrapper--discussion {
@@ -114,50 +119,21 @@
 }
 
 //framework for each comment
-.media_module--discussion {
-  max-width: 440px;
+.discussion__item {
+  .media_module {
+//    max-width: 440px;
+  }
 
   .media_image {
-    width: 25px;
+    width: $conversation-avatar-width;
 
     img {
       width: 100%;
     }
   }
 
-  .media_image--rev {
-    float: right;
-    margin-left: 10px;
-    margin-right: 0;
-  }
-
   .media_body {
-
   }
-
-  .discussion__text {
-    /* grey speech bubble via http://www.colorzilla.com/gradient-editor/ */
-//    background-color: #dddddd;
-//    @include filter-gradient(#dddddd, #efefef, vertical);
-//    @include background-image(linear-gradient(top,  #dddddd 0%,#dcdcdc 81%,#efefef 100%));
-    @include gradient-primer(#ddd);
-    @include gradient-primer(#f2f0f0);
-
-    border-radius: .2em;
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
-    color: black;
-    display: inline-block;
-    line-height: 1.4;
-    margin: 0 0.1em 0.5em;
-    padding: 5px 10px;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
-    text-align: left;
-  }
-}
-
-/* video selection replaces main view, styled using discussion__content */
-.discussion__select-video-attachment {
-
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -222,7 +198,21 @@
 
 //comments per video
 .discussion__list--messages {
+  .media_body {
+    max-width: 400px;
+  }
 
+  .discussion__text {
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    color: black;
+    display: inline-block;
+    line-height: 1.4;
+    margin: 0 0.1em 0.5em;
+    padding: 5px 10px;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    text-align: left;
+  }
 }
 
 .discussion__item--messages {
@@ -250,14 +240,24 @@
 //  discussion reply section
 ////////////////////////////////////////////////////////////////////////////
 .discussion-reply {
+  position: relative;
   text-align: right;
 }
 
-.discussion__form {
+.discussion__form-wrapper {
   float: right;
+  width: 440px;
+
+  .media_image {
+    width: $conversation-avatar-width;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
-.form_module--discussion-reply {
+.discussion__form--discussion-reply {
   .form_fieldset {
     float: right;
     margin: 0;
@@ -308,7 +308,7 @@
     display: block;
   }
 
-  .short-text {
+  .icon {
     display: none;
   }
 }
@@ -322,30 +322,37 @@
   top: -7px;
 }
 
+
+//------------------------------------------------------------------------------
+//  overrides pertaining to user (ie respondents to message)
+//------------------------------------------------------------------------------
+.discussion__item--user{
+  .discussion__text {
+    @include gradient-primer(#ddd);
+    @include gradient-primer(#f2f0f0);
+  }
+}
+
 //------------------------------------------------------------------------------
 //  overrides pertaining to viewer (ie poster of message == viewer of page)
 //------------------------------------------------------------------------------
 .discussion__item--viewer {
   text-align: right;
 
-  .media_module--discussion {
+  .media_module {
     float:right;
 
-    .media_image {
-      float: right;
-      margin-left: 10px;
-      margin-right: 0;
-    }
+//    .media_image {
+//      float: right;
+//      margin-left: 10px;
+//      margin-right: 0;
+//    }
+  }
 
-    .discussion__text {
-      /* blue speech bubble via http://www.colorzilla.com/gradient-editor/ */
-//      background-color: #87bbfc;
-//      @include filter-gradient(#87bbfc, #cde9fc, vertical);
-//      @include background-image(linear-gradient(top, #87bbfc 0%,#a0cdfe 82%,#b4ddfe 92%,#cde9fc 100%));
-      @include gradient-primer(lighten($shelby-blue,40%));
+  .discussion__text {
+    @include gradient-primer(lighten($shelby-blue,40%));
 
-      box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
-    }
+    box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
   }
 }
 
@@ -403,8 +410,6 @@
   }
 
   .discussion__text {
-    max-height: 130px;
-    overflow: hidden;
   }
 
   ////////////////////////////////////////////////////////////////////////////
@@ -426,6 +431,8 @@
 
   .media_body {
     margin-right: 8px;
+    max-height: 155px;
+    overflow: hidden;
   }
 }
 
@@ -433,70 +440,85 @@
 //  Mobile Devices
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px), only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
-    /* iPhone only ? */
+  /* iPhone only ? */
 
-    .discussion__body {
-      padding-bottom: 55px;
+  //structural
+  .discussion__body {
+    padding-bottom: 55px;
+  }
+
+  .discussion__content {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  //  reply UI
+  ////////////////////////////////////////////////////////////////////////////
+  .discussion-reply {
+
+  }
+
+  //media-module reply wrapper, reply lives in media_body
+  .discussion__form-wrapper {
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    width: 100%;
+
+    .media_image {
+      display: none;
     }
+  }
 
-    .discussion__content {
-      padding-left: 0;
-      padding-right: 0;
-      max-width: 100%;
-    }
-
-    .discussion-reply {
-
-    }
-
-    .discussion__form {
+  //actual reply form
+  .discussion__form--discussion-reply {
+    .form_fieldset {
       float: right;
-      margin-left: 0;
-      margin-right: 0;
-      max-width: 100%;
+      margin: 0;
+      padding: 0 8px;
       width: 100%;
-
-      .media_image--rev {
-        display: none;
-      }
     }
 
-    .form_module--discussion-reply {
-      .form_fieldset {
-        float: right;
-        margin: 0;
-        padding: 0 8px;
-        width: 100%;
-      }
-
-      .form_textarea {
-        border-radius: 15px;
-        height: 30px;
-        left: 50px;
-        position: absolute;
-        right: 75px;
-        width: auto;
-      }
-
-      .form_submit {
-        border-radius: 15px;
-        float: right;
-        margin-top: 0;
-        padding: 7px 12px;
-      }
-    }
-
-    .discussion__add-video-attachment {
+    .form_textarea {
       border-radius: 15px;
-      padding: 7px 12px;
+      height: 30px;
+      left: 50px;
       position: absolute;
-
-      .full-text {
-        display: none;
-      }
-      .short-text {
-        display: block;
-      }
+      right: 75px;
+      width: auto;
     }
 
+    .form_submit {
+      border-radius: 15px;
+      float: right;
+      margin-top: 0;
+      padding: 7px 12px;
+    }
+  }
+
+  //button to add attachments
+  .discussion__button--attachment {
+    border-radius: 15px;
+    padding: 7px 12px;
+    position: absolute;
+
+    .full-text {
+      display: none;
+    }
+    .icon {
+      padding-left: .5em;
+      display: block;
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  //  search results
+  ////////////////////////////////////////////////////////////////////////////
+  .discussion__list--attachment-results {
+    .media_image {
+      width: 33%;
+    }
+  }
 }
