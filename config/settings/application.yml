@@ -3,7 +3,7 @@ defaults: &defaults
   domain: "shelby.tv"
   secure_url: "https://shelby.tv"
   mobile_url: "http://m.shelby.tv"
-  fb_genius_url: "http://shelby.tv/fb/genius"
+  fb_genius_url: "//shelby.tv/fb/genius"
   ios_app_url: "http://itunes.apple.com/us/app/shelby-genius/id556665733"
   avatar_url_root: "//s3.amazonaws.com/shelby-gt-user-avatars"
   roll_images_url_root: "//s3.amazonaws.com/shelby-gt-roll-images"
