@@ -19,6 +19,10 @@ libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
     } else {
       this._renderEmailRecipient();
     }
+    
+    if(this.options.overflow){
+      this.$el.addClass("discussion__item--recipients-overflow");
+    }
   },
 
   _renderEmailRecipient : function(){

@@ -147,7 +147,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__list--recipients {
-  display: inline-block;
+  display: inline;
 }
 
 .discussion__item--recipients {
@@ -159,6 +159,36 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     }
   };
 }
+
+.discussion__list--recipients-toggle-show-all {
+  display: none;
+}
+
+.discussion__item--recipients-overflow {
+  display: none;
+}
+
+.discussion__list--recipients-toggle-show-all .less {
+  display: none;
+}
+
+.discussion--recipients.show-all-recipients {
+  .discussion__item--recipients-overflow {
+    display: inline-block;
+  }
+  
+  .discussion__list--recipients-toggle-show-all {
+    .less {
+      display: inline;
+    }
+    .more {
+      display: none;
+    }
+  }
+}
+
+
+
 //my initial inclination was to &.recipien... the below classes
 //but we can't predict that it'll always be coupled in that way.
 //keeping them adjacent to .discussion__item--recipients is fine
