@@ -69,7 +69,8 @@ libs.shelbyGT.DiscussionRollSelectVideoAttachmentView = Support.CompositeView.ex
           listItemViewAdditionalParams : { delegate: self }
           
         }), '.js-attachment-content' );
-
+        
+        self.$(".js-video-search-query").blur();
       });
   },
   
