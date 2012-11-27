@@ -25,7 +25,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
   
   template : function(obj) { 
-    return SHELBYJST['video/persistent-video-info'](obj);
+    try {
+      return SHELBYJST['video/persistent-video-info'](obj);
+    } catch(e){
+      console.log(e.message, e.stack, obj);
+    }
   },
   
   render : function() {

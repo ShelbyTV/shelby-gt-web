@@ -1,11 +1,11 @@
 <% var currentCreator = currentFrame.get('creator') %>
-<% var currentCreatorNickname = currentCreator.get('nickname') %>
+<% var currentCreatorNickname = currentCreator ? currentCreator.get('nickname') : null %>
 <% var currentCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(currentCreator) %>
 <% var currentVideo = currentFrame.get('video') %>
 <% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 
 <% var nextCreator = nextFrame.get('creator') %>
-<% var nextCreatorNickname = nextCreator.get('nickname') %>
+<% var nextCreatorNickname = nextCreator ? nextCreator.get('nickname') : null %>
 <% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
 <% var nextVideo = nextFrame.get('video') %>
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
