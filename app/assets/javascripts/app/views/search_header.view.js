@@ -10,13 +10,20 @@ libs.shelbyGT.SearchHeaderView = Support.CompositeView.extend({
     return SHELBYJST['search-header'](obj);
   },
 
+  initialize : function(){
+    shelby.models.videoSearch.bind("change:query", this.render, this);
+  },
+
+  _cleanup : function(){
+    shelby.models.videoSearch.unbind("change:query", this.render, this);
+  },
+
   render : function(){
     this.$el.html(this.template({search : shelby.models.videoSearch}));
   },
 
   _onSearchSubmit : function() {
     var query = this.$('#js-video-search-query-input').val();
-    console.log('query',query);
     shelby.models.videoSearch.set('query', query);
     shelby.models.videoSearch.trigger('search');
     return false;

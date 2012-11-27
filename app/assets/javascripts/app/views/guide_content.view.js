@@ -143,6 +143,7 @@
               comparator : function(frameGroup) {
                 return frameGroup.get('frames').at(0).get('video').get('score');
               },
+              doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
               videoSearchModel : shelby.models.videoSearch
             }
