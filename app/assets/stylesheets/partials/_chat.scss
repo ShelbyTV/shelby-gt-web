@@ -368,6 +368,11 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 
   .discussion__button--cancel {
+    .icon {
+      display: none;
+      padding-left: .5em;
+    }
+
     left: 21px;
     position: absolute;
     top: -29px;
@@ -515,10 +520,36 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   ////////////////////////////////////////////////////////////////////////////
   //  search for video
   ////////////////////////////////////////////////////////////////////////////
+  .form_module--attachment-search {
+    text-align: center;
+
+    .form_input,
+    .form_textarea {
+      display: inline;
+      float: none;
+      width: 275px;
+    }
+
+    .form_submit {
+      display: inline;
+      float: none;
+      padding: 0.7em 1.7em 0.8em;
+    }
+  }
+
   .discussion__content--attachment {
     .discussion__button--cancel {
+      .icon {
+        display: inline-block;
+      }
+
+      .full-text {
+        display: none;
+      }
+
       left: 8px;
     }
+
     .discussion__list--attachment-results {
       .media_image {
         width: 33%;
