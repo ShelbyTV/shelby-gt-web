@@ -501,3 +501,11 @@ $share-frame-half-gutter: 4px;
     display: none;
   }
 }
+
+//------------------------------------------------------------------------------
+//  frame via search (not a "real" frame, really just a video)
+//  (nest styles inside of .via-search{})
+//------------------------------------------------------------------------------
+.via-search {
+  .command-sublist { display: none; }
+}

@@ -102,6 +102,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
   
   watched : function(startTime, endTime, onSuccess) {
+    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
     if(startTime && endTime){

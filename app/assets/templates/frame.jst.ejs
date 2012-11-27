@@ -12,6 +12,7 @@
 <% var creator = frame.get('creator') %>
 <% var frameHasRoll = frame.has('roll') %>
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
+<% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
@@ -21,7 +22,7 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = frameHasRoll ? 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id : null %>
 <!-- videocard -->
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
       <h1 class="frame-title" title="<%= videoTitle %>">
@@ -32,7 +33,6 @@
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
-
         <div class="menu_module frame-menu">
           <ul class="menu_list frame-command-menu frame-list" role="menubar">
             <li class="menu_item" role="menuitem">
