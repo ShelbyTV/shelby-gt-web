@@ -439,11 +439,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 ////////////////////////////////////////////////////////////////////////////
-//  Mobile Devices
+//  Touch-enabled Devices, via Modernizr
 ////////////////////////////////////////////////////////////////////////////
-@media only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px), only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
-  /* iPhone only ? */
-
+.touch {
   //structural
   .discussion__body {
     padding-bottom: 55px;
@@ -452,7 +450,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .discussion__content {
     padding-left: 0;
     padding-right: 0;
-    max-width: 100%;
   }
   ////////////////////////////////////////////////////////////////////////////
   //  reply UI
@@ -526,6 +523,16 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
       .media_image {
         width: 33%;
       }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .videocard {
+    & > iframe,
+    & > embed,
+    & > object {
+      height: 250px;
     }
   }
 }
