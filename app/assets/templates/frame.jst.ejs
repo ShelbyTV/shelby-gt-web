@@ -18,7 +18,7 @@
 <% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
 <% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
-<% var framePermalink = 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
+<% var framePermalink = frame.has('roll') && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
   <% if (!frameViewed) { %>

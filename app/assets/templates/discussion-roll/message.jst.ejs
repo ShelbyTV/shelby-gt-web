@@ -1,0 +1,27 @@
+<% if(displayTimestamp){ %>
+	<li class="discussion__item discussion__timestamp clearfix">
+		<%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(msg.id).format("dddd, mmm dd, h:MM TT") %>
+	</li>
+<% } %>
+
+  <% var recipient = msg.get('nickname') %>
+  <% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(msg) %>
+<li class="discussion__item<%= msgFromViewer ? ' discussion__item--viewer' : ' discussion__item--user' %> clearfix">
+  <div class="media_module">
+    <div class="media_image<%= msgFromViewer ? ' media_image--rev' : null %>">
+      <img src="<%= recipientAvatar %>">
+    </div><!-- eo media_image -->
+
+    <div class="media_body">
+      <p class="discussion__h4">
+        <%= recipient %>
+      </p>
+
+      <p>
+				<span class="discussion__text">
+					<%= msg.get('text') %>
+				</span>
+      </p>
+    </div><!-- eo media_body -->
+  </div>
+</li>
