@@ -111,6 +111,8 @@
     global_public : 31,
     // User-created collaborative private rolls
     user_private : 50,
+    // User-created private conversations (aka Discussion Rolls)
+    user_discussion_roll : 51,
 
     genius : 70
   };
