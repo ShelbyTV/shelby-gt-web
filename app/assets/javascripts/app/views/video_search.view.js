@@ -85,6 +85,31 @@
             }
           }
         });
+        
+        //dailymotion search
+        var dailymotionSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
+        dailymotionSearchModel.fetch({
+          data : {
+            provider : 'dailymotion',
+            q : this.options.videoSearchModel.get('query'),
+            limit : 10
+          },
+          success : function(dailymotionSearchModel, response) {
+            dailymotionSearchModel.assignScores();
+            var frames = dailymotionSearchModel.getVideosWrappedInFrames();
+            shelby.collections.videoSearchResultFrames.add(frames);
+            //if nothing is already playing, start playing the first video in the search results
+            if (!shelby.models.guide.get('activeFrameModel')) {
+              // don't want to activate the video if we've switched to explore view during the asynchronous load
+              if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+                var firstFrame = shelby.collections.videoSearchResultFrames.first();
+                if (firstFrame) {
+                  shelby.models.guide.set('activeFrameModel', firstFrame);
+                }
+              }
+            }
+          }
+        });
       }
     },
 
