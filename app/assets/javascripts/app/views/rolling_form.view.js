@@ -126,6 +126,7 @@
       
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
+        var newFrame = new libs.shelbyGT.FrameModel();
         this._addViaUrl(message, roll, shareDests);
       }
       else {
