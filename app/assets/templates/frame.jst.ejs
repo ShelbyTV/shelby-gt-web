@@ -14,9 +14,8 @@
 
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
-<% var contextOverlay = options.contextOverlay %>
-<% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
-<% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
+<% var frameViewed = frameGroup.get('collapsed') %>
+<% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = frame.has('roll') && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
 <!-- videocard -->
@@ -91,14 +90,14 @@
           </li>
         </ul>
       </div><!-- eo .frame-menu -->
-      <% if (!contextOverlay) { %>
-        <!-- TODO: should maybe use the thumbnail module JST -->
-        <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-          <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
-        </a>
-				<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
-      <% } %>
-    </div><!-- eo .frame-body -->
+
+     	<!-- TODO: should maybe use the thumbnail module JST -->
+     	<a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+       	<img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+    	</a>
+			<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+
+    	</div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
          var creatorNickname = creator.get('nickname');
@@ -216,7 +215,7 @@
       </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
-  <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
+  <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
     <aside class="frame-aside">
       <p class="frame-aside-text">
         Also via:
@@ -229,6 +228,6 @@
         <% }); %>
       </p>
     </aside>
-  <% } /* end of !contextOverlay */ %>
+  <% } %>
 </article>
 <!-- end new videocard -->

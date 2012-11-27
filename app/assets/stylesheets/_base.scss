@@ -204,7 +204,7 @@ $me-header-color                    : adjust-lightness($text, 10%);
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
   //  faux-tint is an opacity of .7, makes the color 'lighter',
-  //  used on .frame-comment-link and .context-overlay .frame-command/-option
+  //  used on .frame-comment-link
 $videocard-faux-tint                : .7;
 
 ////////////////////////////////////////////////////////////////////////////

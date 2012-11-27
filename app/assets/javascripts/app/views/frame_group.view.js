@@ -12,8 +12,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      guideOverlayModel : null,
-      contextOverlay : false
+      guideOverlayModel : null
   }),
 
   events : {
@@ -102,13 +101,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFramesToDisplay();
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
         frame : this.model.get('frames').at(0),
         options : this.options,
-        dupeFrames : dupeFrames
+        dupeFrames : this.model.getDuplicateFramesToDisplay()
       }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);

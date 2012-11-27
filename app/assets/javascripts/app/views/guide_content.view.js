@@ -255,21 +255,6 @@
             this._playingRollId = activeFrameModel.get('roll').id;
           }
         }
-        // HACK: we need some way for the context overlay to be holding the exact same frame
-        // group model that is playing - a reference to the one that we have in our collection
-        // TODO: find some way to fix the inheritance and parent child view relationships so that
-        // the context overlay view will just have this reference all the time
-        // OR -not perfect- but could use the global event defined above: change:playingFrameGroupCollection
-        if (this._playingFrameGroupCollection) {
-          var playingFrameGroup = this._playingFrameGroupCollection.find(function(frameGroup) {
-            return frameGroup.get('frames').any(function(frame){
-              return frame.get('video').id == activeFrameModel.get('video').id;
-            });
-          });
-          if (playingFrameGroup) {
-            shelby.models.contextOverlayState.set('playingFrameGroup', playingFrameGroup);
-          }
-        }
       } else {
         this._setPlayingFrameGroupCollection(null);
         this._playingState = libs.shelbyGT.PlayingState.none;

@@ -27,7 +27,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
-    shelby.models.contextOverlayState = new libs.shelbyGT.ContextOverlayStateModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
