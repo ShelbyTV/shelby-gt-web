@@ -3,6 +3,9 @@ libs.shelbyGT.PagingMethod = {
   key : 'key'
 };
 
+/* 
+ * TODO: this class, and the options individually, need documentation 
+ */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   
   _numItemsLoaded : 0,
@@ -38,6 +41,12 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
+    /* 
+      Change the copy shown in the load more button with this attribute.
+      To change the element itself: override template() and be sure to retain
+      the class .js-load-more for events to work.
+    */
+    loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
@@ -89,7 +98,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _onItemsLoaded : function(rollModel, items){
     this.$('.js-load-more').removeClass('js-loading').show();
-    this.$('.js-load-more-button').html('Load more');
+    this.$('.js-load-more-button').html(this.options.loadMoreCopy);
     if (this.options.emptyIndicatorViewProto) {
       if (this._numItemsLoaded == 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
