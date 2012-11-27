@@ -525,20 +525,24 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 
     .form_input,
     .form_textarea {
-      display: inline;
-      float: none;
-      width: 275px;
+      left: 8px;
+      position: absolute;
+      right: 90px;
+      width: auto;
     }
 
     .form_submit {
       display: inline;
-      float: none;
-      padding: 0.7em 1.7em 0.8em;
+      float: right;
+      padding: 0.7em 1.0em 0.8em;
     }
   }
 
   .discussion__content--attachment {
     .discussion__button--cancel {
+      height: 21px;
+      left: 8px;
+      
       .icon {
         display: inline-block;
       }
@@ -546,8 +550,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
       .full-text {
         display: none;
       }
-
-      left: 8px;
     }
 
     .discussion__list--attachment-results {
