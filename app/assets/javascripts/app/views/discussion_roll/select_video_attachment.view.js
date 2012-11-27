@@ -30,8 +30,6 @@ libs.shelbyGT.DiscussionRollSelectVideoAttachmentView = Support.CompositeView.ex
     this.$el.append(this.template({}));
     //our element should be what we rendered, not the holder we appended into
     this.$el = this.$el.find(".js-discussion-select-video-attachment");
-    
-    this.$el.find(".js-video-search-query").focus();
   },
   
   _destroy: function(){
