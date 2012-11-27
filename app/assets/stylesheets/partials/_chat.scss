@@ -69,10 +69,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 
 
 .discussion__h1 {
-  background-color: #cb60b3;
-  @include filter-gradient(#cb60b3, #de47ac, vertical);
-  @include background-image(linear-gradient(top,  #cb60b3 0%,#ad1283 74%,#de47ac 99%));
-
+  background-color: #35c4fa;
+  @include filter-gradient(#35c4fa, #0593ca, vertical);
+  @include background-image(linear-gradient(top,  #35c4fa 0%,#06a1db 56%,#0593ca 100%));
 
   box-shadow: 0px 0px 3px 0px black;
   color: white;
@@ -362,13 +361,16 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 .discussion__content--attachment {
   .discussion__header {
     padding-bottom: 10px;
-
+    
+    .discussion__content {
+      position: relative;
+    }
   }
 
   .discussion__button--cancel {
-    left: 7px;
+    left: 21px;
     position: absolute;
-    top: 7px;
+    top: -29px;
   }
 }
 
@@ -376,7 +378,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //  Form for searching for new attachments
 //------------------------------------------------------------------------------
 .form_module--attachment-search {
-  margin: 0 10px;
+  margin: 0 8px;
 
   .form_textarea {
     float: left;
@@ -514,11 +516,16 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 
   ////////////////////////////////////////////////////////////////////////////
-  //  search results
+  //  search for video
   ////////////////////////////////////////////////////////////////////////////
-  .discussion__list--attachment-results {
-    .media_image {
-      width: 33%;
+  .discussion__content--attachment {
+    .discussion__button--cancel {
+      left: 8px;
+    }
+    .discussion__list--attachment-results {
+      .media_image {
+        width: 33%;
+      }
     }
   }
 }
