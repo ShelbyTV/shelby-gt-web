@@ -1,6 +1,5 @@
 /*
  * Shows the header image, when available.
- * Maintains the current header image when roll is changed if there is no new header image.
  *
  * If you're looking for the full app width header (which supports multi roll selection) 
  * see IsoRollAppHeaderView rendered via dynamic.router.js
