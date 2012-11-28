@@ -105,15 +105,16 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _commentCurrentFrame : function(el){
-
+    this._commentFrame(this._currentFrame, el);
   },
 
   _commentNextFrame : function(el){
-
+    this._commentFrame(this._nextFrame, el);
   },
 
   _commentFrame : function(frame, el){
     //comment frame func
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation, frame);
   }
 
 });
