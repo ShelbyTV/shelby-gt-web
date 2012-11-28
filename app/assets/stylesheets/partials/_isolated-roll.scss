@@ -66,12 +66,16 @@ body.isolated-roll {
   color: #efefef;
 }
 
-.isoroll-header__follow-unfollow-button {
+.isoroll-header__follow-unfollow-button,
+.isoroll-header__full-shelby-button {
   font-size: 1.2em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  .light {
+    font-weight: 100;
+  }
 }
 
 .isoroll-header__full-shelby-button {
-  font-size: 1.2em;
-  padding: 0.4em .1em;
-  width: 125px;
+  width: 135px;  
 }
