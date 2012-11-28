@@ -251,6 +251,8 @@ $bookmarklet-color: $shelby-blue;
 //------------------------------------------------------------------------------
 .notification_module--anonymous-signup {
   @include gradient-primer(#fff82b, 20%);
+  
+  height: auto;
 
   .notification_actions {
     margin: .5em .25em;
