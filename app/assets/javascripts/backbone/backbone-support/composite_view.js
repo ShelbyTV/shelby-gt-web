@@ -47,7 +47,9 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
       view.$el.hide();
     }
     this.$el.prepend(view.el);
-    view.$el[showFn]();
+    if (showFn){
+      view.$el[showFn]();
+    }
   },
 
   appendChildInto: function(view, selector) {

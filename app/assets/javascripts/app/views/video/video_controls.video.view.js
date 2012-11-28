@@ -31,12 +31,16 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     if( this._playbackState.get('activePlayerState') !== null ) {
       this._onNewPlayerState(this._playbackState, this._playbackState.get('activePlayerState'));
     }
+
+    shelby.models.guide.bind('change:playingState', this.render, this);
   },
 
   _cleanup: function() {
     this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
 
     this.model.unbind('change:activePlayerState', this._onNewPlayerState, this);
+
+    shelby.models.guide.unbind('change:playingState', this.render, this);
   },
 
   template: function(obj){
@@ -44,7 +48,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({
+      playingState : shelby.models.guide.get('playingState')
+    }));
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }

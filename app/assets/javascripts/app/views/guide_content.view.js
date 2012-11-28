@@ -29,7 +29,6 @@
     _videoSearchView : null,
 
     _playingFrameGroupCollection : null,
-    _playingState : libs.shelbyGT.PlayingState.none,
     _playingRollId : null,
 
     _nowSkippingVideo : false,
@@ -143,6 +142,7 @@
               comparator : function(frameGroup) {
                 return frameGroup.get('frames').at(0).get('video').get('score');
               },
+              doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
               videoSearchModel : shelby.models.videoSearch
             }
@@ -186,7 +186,7 @@
       switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
-          if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
+          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.dashboard) {
             // while we were away from the dashboard, we relied on the last displayed state of the dashboard
             // to determine what frames to play
             // since we're displaying the dashboard again now, we need to play based on what is actually
@@ -197,7 +197,7 @@
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
           this._currentRollView = this._listView;
-          if (this._playingState == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
+          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
             // while we were away from this roll, we relied on the last displayed state of the roll
             // to determine what frames to play
             // since we're displaying the roll again now, we need to play based on what is actually
@@ -263,16 +263,16 @@
         if (!this._nowSkippingVideo) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
             this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
-            this._playingState = libs.shelbyGT.PlayingState.dashboard;
+            guideModel.set('playingState', libs.shelbyGT.PlayingState.dashboard);
             this._playingRollId = null;
           } else if (guideModel.get('displayState') == DisplayState.search) {
             this._playingFrameGroupCollection = this._videoSearchView.frameGroupCollection;
-            this._playingState = libs.shelbyGT.PlayingState.search;
+            guideModel.set('playingState', libs.shelbyGT.PlayingState.search);
             this._playingRollId = null;
           } else {
             //we're playing some kind of roll
             this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
-            this._playingState = libs.shelbyGT.PlayingState.roll;
+            guideModel.set('playingState', libs.shelbyGT.PlayingState.roll);
             this._playingRollId = activeFrameModel.get('roll').id;
           }
         }
@@ -292,7 +292,7 @@
         }
       } else {
         this._playingFrameGroupCollection = null;
-        this._playingState = libs.shelbyGT.PlayingState.none;
+        guideModel.set('playingState', libs.shelbyGT.PlayingState.none);
         this._playingRollId = null;
       }
     },

@@ -1,0 +1,601 @@
+//------------------------------------------------------------------------------
+//  Local Variables
+//------------------------------------------------------------------------------
+$conversation-avatar-width: 25px; //used in message_item and reply form
+
+//------------------------------------------------------------------------------
+//  NON NORMATIVE
+//------------------------------------------------------------------------------
+.shelby-wrapper--discussion {
+  background-color: $base;
+  position: relative;
+
+  .shelby-wrapper {
+    position: relative;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Shelby Chat/Discussion
+//------------------------------------------------------------------------------
+.discussion {
+  font-size: 1.3em;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  structure
+////////////////////////////////////////////////////////////////////////////
+.discussion__header {
+  background-color: $base;
+  box-shadow: 0px 0px 5px 0px black;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.discussion__body {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  z-index: 1;
+}
+
+.discussion__footer {
+  background-color: #eeeeee;
+  @include filter-gradient(#eeeeee, #cccccc, vertical);
+  @include background-image(linear-gradient(top,  #eeeeee 0%,#cccccc 100%));
+
+  box-shadow: 0px 0px 5px 0px black;
+  bottom: 0px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+}
+
+/* anything that should be fixed width, centered */
+.discussion__content {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 1em;
+}
+
+.discussion__h1,
+.discussion__h2 {
+  font-family: $font-family-display;
+  font-weight: 400;
+}
+
+
+.discussion__h1 {
+  background-color: #35c4fa;
+  @include filter-gradient(#35c4fa, #0593ca, vertical);
+  @include background-image(linear-gradient(top,  #35c4fa 0%,#06a1db 56%,#0593ca 100%));
+
+  box-shadow: 0px 0px 3px 0px black;
+  color: white;
+  text-shadow: 0px -1px 0px black;
+  margin: 0;
+  font-size: 1.7em;
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+.discussion__h2 {
+  font-size: 1.2em;
+}
+
+.discussion__h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.discussion__h4 {
+  font-weight: bold;
+}
+
+.discussion__subhead {
+  margin-top:0;
+}
+
+.discussion__list {
+  margin: 0;
+  padding: 0;
+
+  & > .discussion__item {
+    list-style-type: none;
+  }
+}
+
+.discussion__timestamp {
+  color: #999;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 2;
+  text-align: center;
+}
+
+//framework for each comment
+.discussion__item {
+  .media_module {
+//    max-width: 440px;
+  }
+
+  .media_image {
+    width: $conversation-avatar-width;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .media_body {
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Recipients
+////////////////////////////////////////////////////////////////////////////
+.discussion--recipients {
+  padding: 0.5em 8px;
+
+  .discussion__h2 {
+    display: inline-block;
+  }
+}
+
+.discussion__list--recipients {
+  display: inline;
+}
+
+.discussion__item--recipients {
+  display: inline-block;
+  &:not(:last-child){
+    > span:after{
+      content: ',';
+      padding-right: 0.25em;
+    }
+  };
+}
+
+.discussion__list--recipients-toggle-show-all {
+  display: none;
+}
+
+.discussion__item--recipients-overflow {
+  display: none;
+}
+
+.discussion__list--recipients-toggle-show-all .less {
+  display: none;
+}
+
+.discussion--recipients.show-all-recipients {
+  .discussion__item--recipients-overflow {
+    display: inline-block;
+  }
+  
+  .discussion__list--recipients-toggle-show-all {
+    .less {
+      display: inline;
+    }
+    .more {
+      display: none;
+    }
+  }
+}
+
+
+
+//my initial inclination was to &.recipien... the below classes
+//but we can't predict that it'll always be coupled in that way.
+//keeping them adjacent to .discussion__item--recipients is fine
+.recipients--email {
+}
+
+.recipients--shelby {
+  span {
+    opacity: .5; //sorta hacky.
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Conversation
+////////////////////////////////////////////////////////////////////////////
+.discussion-conversation {
+
+}
+
+//main list in conversation
+.discussion__list--conversation {
+
+  .load-more {
+    list-style-type: none;
+  }
+
+  .load-more-button {
+    width: 200px;
+  }
+}
+
+.discussion__item--conversation {
+
+}
+
+
+//comments per video
+.discussion__list--messages {
+  .media_body {
+    max-width: 400px;
+  }
+
+  .discussion__text {
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    color: black;
+    display: inline-block;
+    line-height: 1.4;
+    margin: 0 0.1em 0.5em;
+    padding: 5px 10px;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    text-align: left;
+  }
+}
+
+.discussion__item--messages {
+
+}
+
+
+//------------------------------------------------------------------------------
+//  discussion videocard
+//------------------------------------------------------------------------------
+.videocard {
+
+  & > iframe,
+  & > embed,
+  & > object {
+    margin: 0;
+    height: 400px;
+    padding: 0;
+    width: 100%;
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  discussion reply section
+////////////////////////////////////////////////////////////////////////////
+.discussion-reply {
+  position: relative;
+  text-align: right;
+}
+
+.discussion__form-wrapper {
+  float: right;
+  width: 440px;
+
+  .media_image {
+    width: $conversation-avatar-width;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.discussion__form--discussion-reply {
+  .form_fieldset {
+    float: right;
+    margin: 0;
+    width: 440px;
+  }
+
+  .form_textarea {
+    float: right;
+    font-size: 1em;
+    height: 45px;
+    width: 400px;
+  }
+
+  .form_submit {
+    float: right;
+    margin-top: 1em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Attach Video List
+////////////////////////////////////////////////////////////////////////////
+.discussion__list--attachment {
+  margin-right: 35px;
+}
+
+.discussion__item--attachment {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+.discussion__item-thumbnail {
+  width: 85px;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Attachment UI buttons
+////////////////////////////////////////////////////////////////////////////
+.discussion__button--attachment {
+  @include button-sizing;
+
+  float: left;
+  margin-left: 10px;
+  margin-top: 8px;
+
+  .full-text {
+    display: block;
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
+.discussion__button--remove {
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  right: -10px;
+  top: -7px;
+}
+
+
+//------------------------------------------------------------------------------
+//  overrides pertaining to user (ie respondents to message)
+//------------------------------------------------------------------------------
+.discussion__item--user{
+  .discussion__text {
+    @include gradient-primer(#ddd);
+    @include gradient-primer(#f2f0f0);
+  }
+}
+
+//------------------------------------------------------------------------------
+//  overrides pertaining to viewer (ie poster of message == viewer of page)
+//------------------------------------------------------------------------------
+.discussion__item--viewer {
+  text-align: right;
+
+  .media_module {
+    float:right;
+
+//    .media_image {
+//      float: right;
+//      margin-left: 10px;
+//      margin-right: 0;
+//    }
+  }
+
+  .discussion__text {
+    @include gradient-primer(lighten($shelby-blue,40%));
+
+    box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Search and Select Video Attachment UI
+////////////////////////////////////////////////////////////////////////////
+.discussion__content--attachment {
+  .discussion__header {
+    padding-bottom: 10px;
+    
+    .discussion__content {
+      position: relative;
+    }
+  }
+
+  .discussion__button--cancel {
+    .icon {
+      display: none;
+      padding-left: .5em;
+    }
+
+    left: 21px;
+    position: absolute;
+    top: -29px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Form for searching for new attachments
+//------------------------------------------------------------------------------
+.form_module--attachment-search {
+  margin: 0 8px;
+
+  .form_textarea {
+    float: left;
+    width: 420px;
+  }
+
+  .form_submit {
+    float: right;
+  }
+}
+
+
+.discussion__content--attachment-results {
+  padding: 100px 0 20px;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  list of returned search results for possible attachments
+////////////////////////////////////////////////////////////////////////////
+.discussion__list--attachment-results {
+  ////////////////////////////////////////////////////////////////////////////
+  //  abstracted overrides
+  ////////////////////////////////////////////////////////////////////////////
+  .discussion__h3 {
+    font-weight: 500;
+    margin-top: .5em;
+  }
+
+  .discussion__item {
+  }
+
+  .discussion__text {
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  //  media module framework
+  ////////////////////////////////////////////////////////////////////////////
+  .media_module {
+    cursor: pointer;
+    background-color: $videocard-footer-bg-color;
+
+    &:hover {
+      background-color: #fff;
+      box-shadow: 0 0 2px 0 $shelby-blue;
+    }
+  }
+
+  .media_image {
+    width: 50%;
+  }
+
+  .media_body {
+    margin-right: 8px;
+    max-height: 155px;
+    overflow: hidden;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Touch-enabled Devices, via Modernizr
+////////////////////////////////////////////////////////////////////////////
+.touch {
+  //structural
+  .discussion__body {
+    padding-bottom: 55px;
+  }
+
+  .discussion__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  //  reply UI
+  ////////////////////////////////////////////////////////////////////////////
+  .discussion-reply {
+
+  }
+
+  //media-module reply wrapper, reply lives in media_body
+  .discussion__form-wrapper {
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    width: 100%;
+
+    .media_image {
+      display: none;
+    }
+  }
+
+  //actual reply form
+  .discussion__form--discussion-reply {
+    .form_fieldset {
+      float: right;
+      margin: 0;
+      padding: 0 8px;
+      width: 100%;
+    }
+
+    .form_textarea {
+      border-radius: 15px;
+      height: 30px;
+      left: 50px;
+      position: absolute;
+      right: 75px;
+      width: auto;
+    }
+
+    .form_submit {
+      border-radius: 15px;
+      float: right;
+      margin-top: 0;
+      padding: 7px 12px;
+    }
+  }
+
+  //button to add attachments
+  .discussion__button--attachment {
+    border-radius: 15px;
+    padding: 7px 12px;
+    position: absolute;
+
+    .full-text {
+      display: none;
+    }
+    .icon {
+      padding-left: .5em;
+      display: block;
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  //  search for video
+  ////////////////////////////////////////////////////////////////////////////
+  .form_module--attachment-search {
+    text-align: center;
+
+    .form_input,
+    .form_textarea {
+      left: 8px;
+      position: absolute;
+      right: 90px;
+      width: auto;
+    }
+
+    .form_submit {
+      display: inline;
+      float: right;
+      padding: 0.7em 1.0em 0.8em;
+    }
+  }
+
+  .discussion__content--attachment {
+    .discussion__button--cancel {
+      height: 21px;
+      left: 8px;
+      
+      .icon {
+        display: inline-block;
+      }
+
+      .full-text {
+        display: none;
+      }
+    }
+
+    .discussion__list--attachment-results {
+      .media_image {
+        width: 33%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .videocard {
+    & > iframe,
+    & > embed,
+    & > object {
+      height: 250px;
+    }
+  }
+}
