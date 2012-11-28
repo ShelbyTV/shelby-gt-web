@@ -34,6 +34,10 @@
 
       return ShelbyBaseModel.prototype.sync.call(this, method, model, options);
     },
+    
+    updateUrl : function(){
+      return shelby.config.apiRoot + '/roll/' + this.id;
+    },
 
     joinRoll : function(onSuccess, onError) {
       var rollToJoin = new libs.shelbyGT.RollModel();
