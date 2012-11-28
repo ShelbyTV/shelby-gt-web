@@ -1,0 +1,14 @@
+<button class="button_primer button_gray-medium isolated-roll-button isoroll-header__full-shelby-button js-full-shelby-button">Powered by Shelby</button>
+<button class="button_primer button_gray-medium isolated-roll-button isoroll-header__follow-unfollow-button js-follow-button"></button>
+
+<% if(associatedRolls){ %>
+	<ol class="selectable-rolls-list">
+		<% associatedRolls.forEach(function(roll){ %>
+			<li class="selectable-roll-item <%= roll.id == currentRoll.id ? 'active-item' : '' %>">
+				<a class="iso-roll-nav-button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
+					<%= roll.get('title') %>
+				</a>
+			</li>
+		<% }) %>
+	</ol>
+<% } %>

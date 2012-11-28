@@ -35,7 +35,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/legal.view.js
 //= require ./views/roll_action_menu.view.js
 //= require ./views/roll_header.view.js
-//= require ./views/roll_overlay_context.view.js
+//= require ./views/iso_roll_header.view.js
 //= require ./views/item_header.view.js
 //= require ./views/autocomplete.view.js
 //= require ./views/email_address_autocomplete.view.js

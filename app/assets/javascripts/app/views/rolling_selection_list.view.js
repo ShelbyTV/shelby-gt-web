@@ -13,6 +13,8 @@
       simulateAddTrue : false
     }),
     
+    className: "rolls-list rolling__roll-selection-list",
+    
     initialize : function(){
       var self = this;
       this.options.listItemView = function(item, params){
@@ -21,18 +23,8 @@
       ListView.prototype.initialize.call(this);
     },
 
-    _filter : function(item) {
-      // i can post to my hearts
-      if (item.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted){
-        return true;
-      }
-      // anything I created or is collaborative, I can post to
-      if (item.get('creator_id') == shelby.models.user.id || item.get('collaborative')) {
-        return true;
-      }
-
-      // otherwise, it's non-collaborative and I can't post
-      return false;
+    _filter : function(roll) {
+      return roll.isPostableBy(shelby.models.user);
     },
 
     _cleanup : function(){

@@ -1,7 +1,8 @@
 libs.shelbyGT.GuideView = Support.CompositeView.extend({
 
   // initial height is set in _guide-overlay-view.scss #guide-header-roll-header-image
-  HEADER_IMAGE_MAX_HEIGHT : 150,
+  // not currently using scroll-adjusted header image size, so MAX==MIN
+  HEADER_IMAGE_MAX_HEIGHT : 50,
   HEADER_IMAGE_MIN_HEIGHT : 50,
 
   el: '.js-main-layout .js-guide',
