@@ -4,6 +4,7 @@
 	window.disqus_developer = (shelby.config.environment == "production") ? 0 : 1; // developer mode is on
 	window.disqus_identifier = frame.id;
 	window.disqus_url = "http://shelby.tv/frame/"+frame.id;
+	window.disqus_title = "Shelby.tv | "+frame.get('video').get('title');
 	(function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = 'http://shelbytv.disqus.com/embed.js';

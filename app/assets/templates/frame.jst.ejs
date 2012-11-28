@@ -19,6 +19,7 @@
 <% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = frame.has('roll') && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
+
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
   <% if (!frameViewed) { %>
@@ -191,7 +192,7 @@
               </button>
             </li>
             <li class="menu_item menu_item--right">
-              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>">
+              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>" data-disqus-identifier="<%= frame.id %>">
                 <i class="button_icon_left icon_videocard_comment icon">
                   <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
                 </i>

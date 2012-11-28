@@ -40,7 +40,6 @@
     </div><!-- eo frame-body-wrapper -->
 		<% if (shelby.models.user.isAnonymous()) { %>
 			<div id="disqus_thread"></div>
-			<% console.log("frame: ", frame.id); %>
 			<%= SHELBYJST['disqus']({frame: frame}) %>
 			
 	    <div class="signin_module" style="display:none;">

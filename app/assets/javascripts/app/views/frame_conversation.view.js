@@ -54,8 +54,7 @@
         }
       });
       this.renderChild(this._shelbyAutocompleteView);
-
-      console.log("test in view.js");
+      
       GuideOverlayView.prototype.render.call(this);
     },
     
