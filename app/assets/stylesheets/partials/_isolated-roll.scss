@@ -17,6 +17,8 @@ body.isolated-roll {
 //-------------------------
 
 .iso-roll-app-header {
+  max-height: 36px;
+  overflow: hidden;
 }
 
 .current-roll {
