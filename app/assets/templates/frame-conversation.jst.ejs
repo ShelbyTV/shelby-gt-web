@@ -32,13 +32,18 @@
           title : frame.get('video').get('title') || ''
         })
       %>
-
-      <%=
-        SHELBYJST['frame-conversation-form']({user: user})
-      %>
+			<% if (!shelby.models.user.isAnonymous()) { %>
+	      <%=
+	        SHELBYJST['frame-conversation-form']({user: user})
+	      %>
+			<% } %>
     </div><!-- eo frame-body-wrapper -->
 		<% if (shelby.models.user.isAnonymous()) { %>
-	    <div class="signin_module">
+			<div id="disqus_thread"></div>
+			<% console.log("test"); %>
+			<%= SHELBYJST['disqus']({frame: frame}) %>
+			
+	    <div class="signin_module" style="display:none;">
 		    <section class="dropdown_section signup-section">
 		      <div class="dropdown_lining signup-section-lining clearfix"></div>
 				</section>
