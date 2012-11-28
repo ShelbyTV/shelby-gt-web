@@ -1,22 +1,13 @@
-<% if (typeof DISQUS == 'undefined') { %>
-	<% 
-		var disqus_developer = (shelby.config.environment == "production") ? 0 : 1; // developer mode is on
-		var disqus_identifier = frame.id;
-		var disqus_url = "http://shelby.tv/frame/"+frame.id;
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = 'http://shelbytv.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	%>
-<% } else { %>
-	<%
-		DISQUS.reset({
-		  reload: true,
-		  config: function () {  
-		    this.page.identifier = frame.id;  
-		    this.page.url = "http://shelby.tv/frame/"+frame.id;
-		  }
-		});
-	%>
-<% } %>
+<% 
+	window.DISQUS = null;
+	$('#disqus-script').remove();
+	window.disqus_developer = (shelby.config.environment == "production") ? 0 : 1; // developer mode is on
+	window.disqus_identifier = frame.id;
+	window.disqus_url = "http://shelby.tv/frame/"+frame.id;
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://shelbytv.disqus.com/embed.js';
+			dsq.id = 'disqus-script';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+%>
