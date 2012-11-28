@@ -26,11 +26,11 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
     // if user can change the roll header image
     if(this.model.get('creator_id') == shelby.models.user.id){
       this.$(".js-guide-header-roll-header-uploader").show();
-      
+
       //set the upload progress, spinner elements used when uploading
       this.options.progressEl = this.$(".progress-overlay");
       this.options.spinnerEl = this.$(".spinner-overlay");
-      
+
       this._initUploader();
     }
 
@@ -39,7 +39,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
 
   _onRollChange : function(rollModel) {
     var _changedAttrs = _(rollModel.changedAttributes());
-    if (_changedAttrs.has('header_image_file_name') && rollModel.get('header_image_file_name')) {
+    if (_changedAttrs.has('header_image_file_name') || _changedAttrs.has('title') || _changedAttrs.has('frame_count')) {
       this.render();
     }
   },
