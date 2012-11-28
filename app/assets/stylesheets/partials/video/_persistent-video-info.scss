@@ -11,9 +11,9 @@ $persistent_video_info--next-frame-width: 200px;
   margin: 0;
   padding: 0;
 
-  & > li {
+  & > .persistent_video_info__item {
     list-style-type: none;
-    display: inline;
+    display: inline-block;
   }
 }
 
@@ -34,9 +34,9 @@ $persistent_video_info--next-frame-width: 200px;
 
 .persistent_video_info__h4 {
   font-family: $font-family;
+  font-size: 1em;
   font-weight: bold;
 }
-
 
 /*
  * Structure
@@ -55,7 +55,7 @@ $persistent_video_info--next-frame-width: 200px;
  */
 .persistent_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
-  box-shadow: 0 0 9px 0 rgb(0, 0, 0);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.8);
   height: inherit;
   margin: 0;
   position: relative;
@@ -68,6 +68,19 @@ $persistent_video_info--next-frame-width: 200px;
 //current frame structure
 .persistent_video_info__body {
   margin: 0 12px;
+  font-size: 1.2em;
+
+  //if there ends up being more than one instance of .persistent_video_info__body
+  //then it may be worth it to abstract the styles; extend this media_body style
+  //to the one that needs it:
+  //ie. .persistent_video_info__body--A
+  //    .persistent_video_info__body--B
+  //if only one instance uses this media body style, then apply it to the respective
+  //modifying class. basically we're forking styles when we need to limit needless
+  //style calculations on the browser's part.
+  .media_body {
+    max-width: 40em;
+  }
 }
 
 .persistent_video_info__foot {
@@ -98,6 +111,8 @@ $persistent_video_info--next-frame-width: 200px;
     font-weight: 300;
 
     .icon {
+      background-size: contain;
+      -webkit-background-size: contain;
       display: block;
     }
   }
@@ -110,17 +125,19 @@ $persistent_video_info--next-frame-width: 200px;
 
   .persistent_video_info__button--queue {
     .icon {
-      background-size: .8em;
-      -webkit-background-size: .8em;
       padding-left: 1.4em;
     }
   }
 
   .persistent_video_info__button--share {
     .icon {
-      background-size: 1.1em;
-      -webkit-background-size: 1.1em;
       padding-left: 2em;
+    }
+  }
+
+  .persistent_video_info__button--comment {
+    .icon {
+      padding-left: 1.4em;
     }
   }
 }

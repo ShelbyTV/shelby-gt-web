@@ -10,7 +10,6 @@
 <% var nextVideo = nextFrame.get('video') %>
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 
-
 <div class="media_image--rev persistent_video_info__next-frame">
   <h3 class="persistent_video_info__h2">
     Up Next
@@ -23,6 +22,7 @@
   <h2 class="persistent_video_info__h3">
     <%= nextVideo.get('title') %>
   </h2>
+
   <div hidden>
     <button class="js-roll-frame js-track-event"
             data-ga_category="Persistent Video Info"
@@ -67,27 +67,28 @@
     <%= currentVideo.get('title') %>
   </h2>
 
-  <div class="persistent_video_info__body">
-    <span class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+  <div class="media_module persistent_video_info__body">
+    <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
       <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-    </span>
+    </div>
+    <div class="media_body">
+      <h3 class="persistent_video_info__h4">
+        shared by <%= currentCreatorNickname %>
+      </h3>
 
-    <h3 class="persistent_video_info__h4">
-      shared by <%= currentCreatorNickname %>
-    </h3>
-
-    <% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
-      <p>
-        <%= currentMessages.models[0].escape('text') %>
-      </p>
-    <% } %>
+      <% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
+        <p> 
+          <%= currentMessages.models[0].escape('text') %>
+        </p>
+      <% } %>
+    </div><!-- eo .media_body -->
   </div><!-- eo .persistent_video_info__body -->
 
   <div class="persistent_video_info__foot">
     <hr class="hr--double" />
 
     <ul class="persistent_video_info__list persistent_video_info__list--actions">
-      <li class="persistent_video_info__item">
+      <li class="persistent_video_info__item clearfix">
         <button class="persistent_video_info__button persistent_video_info__button--roll js-roll-frame js-track-event"
                 data-ga_category="Persistent Video Info"
                 data-ga_action="Click roll on current frame"
@@ -98,7 +99,7 @@
         </button>
       </li>
 
-      <li class="persistent_video_info__item">
+      <li class="persistent_video_info__item clearfix">
         <button class="persistent_video_info__button persistent_video_info__button--queue js-queue-frame
                        <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued' : '' %>">
           <i class="button_icon_left icon_videocard_queue icon js-command-icon">
@@ -107,13 +108,24 @@
         </button>
       </li>
 
-      <li class="persistent_video_info__item">
+      <li class="persistent_video_info__item clearfix">
         <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
                 data-ga_category="Persistent Video Info"
                 data-ga_action="Click share on current frame"
                 data-ga_label="<%= shelby.models.user.get('nickname') %>">
           <i class="button_icon_left icon icon_email">
             Share Video…
+          </i>
+        </button>
+      </li>
+
+      <li class="persistent_video_info__item clearfix">
+        <button class="persistent_video_info__button persistent_video_info__button--comment js-comment-frame js-track-event"
+                data-ga_category="Persistent Video Info"
+                data-ga_action="Click comment on current frame"
+                data-ga_label="<%= shelby.models.user.get('nickname') %>">
+          <i class="button_icon_left icon_videocard_comment icon">
+            <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
           </i>
         </button>
       </li>

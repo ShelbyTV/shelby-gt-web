@@ -38,7 +38,7 @@
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
               <i class="button_icon_left icon_videocard_queue icon">
                 <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
+                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
                 %>
               </i>
             </button>
@@ -65,11 +65,11 @@
                   </i>
                 </button>
               </li>
-							<li class="menu_option frame-item" role="menuitem">
+              <li class="menu_option frame-item" role="menuitem">
                 <button class="frame-command command-link js-copy-link">
                   Get Shortlink
                 </button>
-								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
+                <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
               </li>
 
               <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
@@ -79,7 +79,7 @@
                   </button>
                 </li>
               <% } else if (shelby.models.user.get('admin')) { %>
-              
+
                 <li class="menu_option xframe-item" role="menuitem">
                   <button class="frame-command command-remove js-remove-frame">
                     ADMIN KLL VID
@@ -91,13 +91,13 @@
         </ul>
       </div><!-- eo .frame-menu -->
 
-     	<!-- TODO: should maybe use the thumbnail module JST -->
-     	<a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-       	<img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
-    	</a>
-			<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+      </a>
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
 
-    	</div><!-- eo .frame-body -->
+      </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
          var creatorNickname = creator.get('nickname');
@@ -146,14 +146,14 @@
                 <% } %>
               </p>
             <% } %>
-						
-						<% if (!user.isAnonymous()) { %>
-	            <div class="frame-subline">
-	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-	                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-	              </a>
-	            </div>
-						<% } %>
+
+            <% if (!user.isAnonymous()) { %>
+              <div class="frame-subline">
+                <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+                </a>
+              </div>
+            <% } %>
           <% } else { %>
             <a href="#" onclick="return false;" class="frame-header js-frame-activate">
               <h1 class="frame-title" title="<%= videoTitle %>">

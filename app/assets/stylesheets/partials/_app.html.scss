@@ -109,11 +109,12 @@ a{
 
 .guide-wrapper{
 	background-color: $guide-bg-color; //should technically be on .guide or something.
+	border-right: 1px solid #ccc;
 	float: left;
 	height:100%;
 	opacity: 1;
 	position: relative;
-	z-index:3;
+	z-index: 3;
 
 	&.hide-guide {
 	  margin-left:-($guide-width);
@@ -122,15 +123,14 @@ a{
 
 .menu{	
 	box-shadow: $shadow;
-	overflow:hidden;
-	position:relative;
+	overflow: hidden;
+	position: relative;
 }
 
 .spinner{
-	left:50%;
-	margin-left:-24px;
-	margin-top:100px;
-	position:absolute;
-	z-index:0;
+	left: 50%;
+	margin-left: -24px;
+	margin-top: 100px;
+	position: absolute;
+	z-index: 0;
 }
-

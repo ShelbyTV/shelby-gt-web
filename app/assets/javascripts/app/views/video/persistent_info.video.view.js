@@ -11,7 +11,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-share-frame"                : "_requestCurrentFrameShareView",
     "click .persistent_video_info__next-frame     .js-share-frame"                : "_requestNextFrameShareView",
     "click .persistent_video_info__current-frame  .js-queue-frame:not(.queued)"   : "_queueCurrentFrame",
-    "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame"
+    "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
+    "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
+    "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame"
   },
 
   initialize: function(opts){
@@ -100,6 +102,18 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       frame.saveToWatchLater();
       $(el.currentTarget).toggleClass('button_gray-light queued js-queued').find('.js-command-icon').text('Queued');
     }
+  },
+
+  _commentCurrentFrame : function(el){
+
+  },
+
+  _commentNextFrame : function(el){
+
+  },
+
+  _commentFrame : function(frame, el){
+    //comment frame func
   }
 
 });
