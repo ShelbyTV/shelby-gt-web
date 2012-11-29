@@ -124,7 +124,7 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 .persistent_video_info__foot {
   bottom: 0;
-  margin: 0 0 1em .5em;
+  margin: 0 0 1em 0.5em;
   position: absolute;
   width: 100%;
 
@@ -143,8 +143,6 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 
   .persistent_video_info__button {
-    @include button-sizing;
-
     background: none;
     border: none;
     box-shadow: none;
@@ -152,6 +150,7 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     font-family: $font-family-display;
     font-size: 1em;
     font-weight: 300;
+    padding: 0.75em 1em 0.8em;
 
     &:hover {
       text-decoration: underline;
