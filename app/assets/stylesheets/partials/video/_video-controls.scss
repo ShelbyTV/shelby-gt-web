@@ -1,16 +1,4 @@
 @import "base";
-
-//------------------------------------------------------------------------------
-//  user-inactive controls show/hide triggers for various
-//  elements in the videoplayer and videoplayer navigational buttons
-//------------------------------------------------------------------------------
-.user-inactive {
-  .videoplayer-nav,
-  .videoplayer-tools__wrapper {
-    opacity: 0;
-  }
-}
-
 //------------------------------------------------------------------------------
 //  Modernizr.touch
 //------------------------------------------------------------------------------

@@ -20,13 +20,3 @@
     border-radius: 0;
   }
 }
-
-//------------------------------------------------------------------------------
-//  Fade in when user is inactive
-//------------------------------------------------------------------------------
-.user-inactive {
-  .mini-videoplayer__wrapper,
-  #mini-video-progress {
-    opacity: 1.0;
-  }
-}

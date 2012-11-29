@@ -100,12 +100,6 @@ a{
 	background: $base-bg-color;
 }
 
-.user-inactive{
-	.shelby-header, .main-layout .guide-wrapper {
-	  opacity: .4;
-	}
-}
-
 .guide-wrapper{
 	background-color: $guide-bg-color; //should technically be on .guide or something.
 	border-right: 1px solid #ccc;

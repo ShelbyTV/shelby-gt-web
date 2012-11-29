@@ -1,0 +1,40 @@
+//------------------------------------------------------------------------------
+// User Inactivity Overrides, should be nested or compounded.
+//------------------------------------------------------------------------------
+.user-inactive{
+  .persistent_video_info,
+  .shelby-header, 
+  .main-layout .guide-wrapper {
+    opacity: .4;
+  }
+
+  .guide-toggle.hide, 
+  .guide-toggle.hide:hover {
+    @include transition-delay(0s);
+      
+    width: 112px;
+    
+    .copy {
+      @include opacity(1.0);
+      @include transition-delay(.2s);
+    }
+  }
+
+  .guide-toggle.show {
+    border: none;
+    box-shadow:none;
+    right: -35px;
+  }
+
+  //elements in the videoplayer and videoplayer navigational buttons
+  .videoplayer-nav,
+  .videoplayer-tools__wrapper {
+    opacity: 0;
+  }
+
+  //Fade in when user is inactive
+  .mini-videoplayer__wrapper,
+  #mini-video-progress {
+    opacity: 1.0;
+  }
+}
