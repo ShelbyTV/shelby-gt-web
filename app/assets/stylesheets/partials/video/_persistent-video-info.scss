@@ -124,7 +124,7 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 .persistent_video_info__foot {
   bottom: 0;
-  margin-bottom: 1em;
+  margin: 0 0 1em .5em;
   position: absolute;
   width: 100%;
 
@@ -136,7 +136,7 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 //list of actions for current frame
 .persistent_video_info__list--actions {
-  font-size: 1.4em;
+  font-size: 1.2em;
 
   .persistent_video_info__item {
 
@@ -211,5 +211,17 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .frame-thumbnail {
     height: 80px;
     opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .persistent_video_info__foot {
+    margin-left: 10px;
+  }
+  .persistent_video_info__list--actions {
+    .persistent_video_info__button {
+      padding-left: .5em;
+      padding-right: .5em;
+    }
   }
 }
