@@ -114,10 +114,6 @@ a{
 	opacity: 1;
 	position: relative;
 	z-index: 3;
-
-	&.hide-guide {
-	  margin-left:-($guide-width);
-	}
 }
 
 .menu{	

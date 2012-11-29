@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------------
+// Hide Guide Overrides, should be nested or compounded.
+//------------------------------------------------------------------------------
+.hide-guide {
+	&.guide-wrapper{
+	  margin-left:-($guide-width);
+	}
+	
+  .persistent_video_info {
+    bottom: -100%;
+  }
+
+  .videoplayer-viewport {
+    bottom: 0;
+  }
+
+  .videoplayer-tools__wrapper {
+  	bottom: 0;
+  }
+}
+
