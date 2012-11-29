@@ -38,6 +38,12 @@ $persistent_video_info--next-frame-width: 200px;
   font-weight: bold;
 }
 
+.persistent_video_info__h4--light {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: normal;
+}
+
 /*
  * Structure
  */
@@ -60,15 +66,30 @@ $persistent_video_info--next-frame-width: 200px;
   margin: 0;
   position: relative;
 
-  .persistent_video_info__h1 {
-    margin: 10px 12px;
+  // .persistent_video_info__h1 {
+  //   margin: 10px 12px;
+  // }
+
+  //xuser-* carried over from the frame.jst
+  .xuser-data {
+    margin-bottom: .5em;
+  }
+
+  .xuser-avatar {
+    height: 3.5em;
+    width: 3.5em;
   }
 }
 
 //current frame structure
+.persistent_video_info__lining {
+  margin: 13px 15px;
+  
+}
+
 .persistent_video_info__body {
-  margin: 0 12px;
   font-size: 1.2em;
+  margin: 10px 0;
 
   //if there ends up being more than one instance of .persistent_video_info__body
   //then it may be worth it to abstract the styles; extend this media_body style
@@ -88,6 +109,10 @@ $persistent_video_info--next-frame-width: 200px;
   margin-bottom: 1em;
   position: absolute;
   width: 100%;
+
+  .hr {
+    margin-bottom: 1em;
+  }
 }
 
 

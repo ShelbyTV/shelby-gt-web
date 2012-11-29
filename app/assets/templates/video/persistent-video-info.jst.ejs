@@ -52,6 +52,7 @@
     <span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
       <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
     </span>
+
     shared by <%= nextCreatorNickname %>
 
     <% if(nextMessages.models.length > 0 && nextCreator.get('id') == nextMessages.models[0].get('user_id')) { %>
@@ -63,29 +64,31 @@
 </div><!-- eo .persistent_video_info__next-frame -->
 
 <div class="media_body persistent_video_info__current-frame">
-  <h2 class="persistent_video_info__h1">
-    <%= currentVideo.get('title') %>
-  </h2>
+  <div class="persistent_video_info__lining">
+    <h2 class="persistent_video_info__h1">
+      <%= currentVideo.get('title') %>
+    </h2>
 
-  <div class="media_module persistent_video_info__body">
-    <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-      <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-    </div>
-    <div class="media_body">
-      <h3 class="persistent_video_info__h4">
-        shared by <%= currentCreatorNickname %>
-      </h3>
+    <div class="media_module persistent_video_info__body">
+      <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+        <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+      </div>
+      <div class="media_body">
+        <h3 class="xuser-data persistent_video_info__h4--light">
+          shared by <strong><%= currentCreatorNickname %></strong>
+        </h3>
 
-      <% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
-        <p> 
-          <%= currentMessages.models[0].escape('text') %>
-        </p>
-      <% } %>
-    </div><!-- eo .media_body -->
-  </div><!-- eo .persistent_video_info__body -->
+        <% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
+          <p> 
+            <%= currentMessages.models[0].escape('text') %>
+          </p>
+        <% } %>
+      </div><!-- eo .media_body -->
+    </div><!-- eo .persistent_video_info__body -->
+  </div><!-- eo .persistent_video_info_lining -->
 
   <div class="persistent_video_info__foot">
-    <hr class="hr--double" />
+    <hr class="hr hr--double" />
 
     <ul class="persistent_video_info__list persistent_video_info__list--actions">
       <li class="persistent_video_info__item clearfix">
