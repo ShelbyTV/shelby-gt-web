@@ -116,7 +116,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     
     // have FB parse any like tags on page so they render correctly
     if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-
+    
+    // when frame is loaded, get number of disqus comments
+    if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
 
   _expand: function(){

@@ -47,6 +47,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/message.view.js
 //= require ./views/queue_empty_indicator.view.js
 //= require ./browser.js
+//= require ./utils/disqus.js
 //= require ./models/db/user.model.js
 //
 //shelby backbone app - all other assets

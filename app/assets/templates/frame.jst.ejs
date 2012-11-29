@@ -193,10 +193,8 @@
             </li>
             <li class="menu_item menu_item--right">
               <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>" data-disqus-identifier="<%= frame.id %>">
-                <i class="button_icon_left icon_videocard_comment icon">
-                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-                </i>
-              </button>
+								<a href="#disqus_thread" data-disqus-identifier="<%= frame.id %>" class="button_icon_left icon_videocard_comment icon">Leave a comment</a>
+							</button>
             </li>
           </ul>
         <% } %>
