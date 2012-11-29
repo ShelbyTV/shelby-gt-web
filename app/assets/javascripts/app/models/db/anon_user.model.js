@@ -1,6 +1,7 @@
 libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
   defaults : function(){
     return {
+      additional_abilities : [],
       anon : true,
       app_progress : new libs.shelbyGT.AppProgressModel(),
       authentications : [],

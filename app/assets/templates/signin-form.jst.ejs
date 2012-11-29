@@ -1,46 +1,54 @@
-<div class="form_fieldset social_login login-social-section clearfix">
-	<h4>Shelby is invite-only right now.</h4>
-	<h4 class="js-show-request-invite">Not a member?  <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a></h4>
+<div class="js-show-request-invite form_fieldset form_fieldset--private clearfix">
+  <p class="form_legend">
+    Not a member? <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a>
+  </p>
 </div>
 
 <div class="js-request-invite clearfix hidden">
-	<form id="js-email-form" class="form_module login-form js-track-submit" data-ga_action="Request invite">
-		<fieldset class="">
-	    <label for="email" class="form_label">I want to try Shelby</label>
-			<input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
-	  </fieldset>
-		<fieldset class="">
-			<input id="js-email-submit" class="button_primer button_blue landing-button-large landing-signmeup-submit" type="submit" value="Request an invite!" />
-		</fieldset>
-	</form>
-	<div id="js-thankyou" class="form_fieldset hidden">
-	  <span class="form_label">
-	    Thanks, we'll email you!
-	  </span>
-	</div>
+  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
+    <fieldset class="">
+      <label for="email" class="form_label">Email</label>
+      <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <input id="js-email-submit" class="button_primer button_blue form_submit" type="submit" value="Request an invite!" />
+    </fieldset>
+  </form>
+
+  <div id="js-thankyou" class="form_fieldset form_fieldset--feedback hidden">
+    <span class="form_label">
+      Thanks, we'll email you!
+    </span>
+  </div>
 </div>
 
 <hr />
 
-<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
-  <fieldset class="">
+<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+  <fieldset class="form_fieldset">
     <label for="username" class="form_label">Username</label>
     <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
   </fieldset>
-  <fieldset class="">
+
+  <fieldset class="form_fieldset">
     <label for="password" class="form_label">Password</label>
   <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
   </fieldset>
-  <fieldset class="">
-    <input name="commit" type="submit" value="Log In" class="button_primer button_gray-medium login-submit" />
+
+  <fieldset class="form_fieldset">
+    <input name="commit" type="submit" value="Log In" class="button_primer button_gray-medium form_submit" />
     <a href="<%= shelby.config.apiBase + "/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
   </fieldset>
 </form>
 
-<hr />
+<hr class="hr--double" />
 
-<div class="form_fieldset social_login login-social-section clearfix">
-  <h4 class="login-social-section-header">Members can also log in with</h4>
+<div class="form_fieldset form_fieldset--login-social clearfix">
+  <h4 class="form_legend">
+    Log in with
+  </h4>
+
   <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
     href="<%= shelby.config.apiBase + "/auth/twitter" %>" location="<%= shelby.config.apiBase + "/auth/twitter" %>" popup-width="600" popup-height="700">
     <i class="button_icon_left icon_share_twitter_on icon">

@@ -3,6 +3,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   routes : {
     "static/*url" : "initStatic",
     "embedded/*url" : "initEmbedded",
+    "chat/*url" : "initDiscussionRoll",
     "*url" : "initDynamic"
   },
 
@@ -19,11 +20,26 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     //init embed router
     this._reroute();
   },
+  
+  initDiscussionRoll : function(url){
+    //if logged-in AND desktop browser: full app view.  Otherwise: discussion-only, mobile first view.
+    //XXX full app view is not yet implemented (but will resuse many of the views with somewhat different styling)
+    if (false && shelby.userSignedIn() && !Browser.isMobile()){
+      this.initDynamic(url);
+    } else {
+      //otherwise, showing the discussion-specific, mobile first view
+      shelby.router = new libs.shelbyGT.StandaloneDiscussionRollRouter();
+      this._bootstrapRequiredAppModels();
+      this._reroute();
+    }
+  },
 
   initDynamic : function(url){
     shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
-    shelby.models.user = new libs.shelbyGT.UserModel();
+    
+    this._bootstrapRequiredAppModels();
+    
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
@@ -34,8 +50,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
-		
-		shelby.models.notificationState = new libs.shelbyGT.notificationStateModel();
 		
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
@@ -103,6 +117,12 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   _reroute : function(url, prefix){
     Backbone.history.stop();
     Backbone.history.start({pushState:true});
+  },
+  
+  // models common to Dynamic and DiscussionRoll
+  _bootstrapRequiredAppModels : function() {
+    shelby.models.user = new libs.shelbyGT.UserModel();
+    shelby.models.notificationState = new libs.shelbyGT.notificationStateModel();
   }
 
 });
