@@ -3,6 +3,7 @@
  *  Local variables
  */
 $persistent_video_info--next-frame-width: 200px;
+$persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 /*
  * Abstracts
@@ -57,7 +58,7 @@ $persistent_video_info--next-frame-width: 200px;
 
   &:before {
     background-color: transparent;
-    box-shadow: 0 0 4px 0px rgba(0,0,0,.4);
+    box-shadow: $persistent_video_info__shadow;
     content: "\0020";
     display: block;
     height: inherit;
@@ -65,6 +66,7 @@ $persistent_video_info--next-frame-width: 200px;
     position: absolute;
     top: 0;
     width: 1px;
+    z-index: 1;
   }
 }
 
@@ -73,7 +75,7 @@ $persistent_video_info--next-frame-width: 200px;
  */
 .persistent_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,.6);
+  box-shadow: $persistent_video_info__shadow;
   height: inherit;
   margin: 0;
   position: relative;
