@@ -44,9 +44,9 @@ $persistent_video_info--next-frame-width: 200px;
   font-weight: normal;
 }
 
-/*
- * Structure
- */
+//------------------------------------------------------------------------------
+// Structure, Beginning of Feature
+//------------------------------------------------------------------------------
 .persistent_video_info {
   bottom: 0;
   height: $persistent_video_info--height;
@@ -54,6 +54,18 @@ $persistent_video_info--next-frame-width: 200px;
   margin: 0;
   position: absolute;
   right: 0;
+
+  &:before {
+    background-color: transparent;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,.4);
+    content: "\0020";
+    display: block;
+    height: inherit;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
 }
 
 /*
@@ -61,14 +73,16 @@ $persistent_video_info--next-frame-width: 200px;
  */
 .persistent_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,.8);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.6);
   height: inherit;
   margin: 0;
   position: relative;
 
-  // .persistent_video_info__h1 {
-  //   margin: 10px 12px;
-  // }
+  .persistent_video_info__h1 {
+    @include ellipsis;
+
+    margin: 0 0 1em;
+  }
 
   //xuser-* carried over from the frame.jst
   .xuser-data {
@@ -89,7 +103,7 @@ $persistent_video_info--next-frame-width: 200px;
 
 .persistent_video_info__body {
   font-size: 1.2em;
-  margin: 10px 0;
+  margin: 0 0 10px;
 
   //if there ends up being more than one instance of .persistent_video_info__body
   //then it may be worth it to abstract the styles; extend this media_body style
@@ -101,6 +115,7 @@ $persistent_video_info--next-frame-width: 200px;
   //style calculations on the browser's part.
   .media_body {
     max-width: 40em;
+    max-height: 6em;
   }
 }
 
@@ -134,6 +149,10 @@ $persistent_video_info--next-frame-width: 200px;
     font-family: $font-family-display;
     font-size: 1em;
     font-weight: 300;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     .icon {
       background-size: contain;
