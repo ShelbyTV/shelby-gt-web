@@ -1,6 +1,6 @@
 /*
  * Only routes for the standalone discussion roll.  The integrated view (for a logged-in user) is only shown when the user is
- * logged in and viewing from a full desktop browser.  That is handled through the DynamicRouter.
+ * logged in and viewing from a full desktop browser.  That is handled through the DynamicRouter. (and doesn't exist yet)
  *
  */
 libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({

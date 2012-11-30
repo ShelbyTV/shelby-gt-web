@@ -32,6 +32,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     this.renderChild(     new libs.shelbyGT.DiscussionRollRecipientsView(opts));
     this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(opts), 
       ".js-discussion-roll-conversation-wrapper");
+    this.renderChild(     new libs.shelbyGT.DiscussionRollsManagerView(opts));
     this.renderChild(     new libs.shelbyGT.DiscussionRollReplyView(opts));
   }
   
