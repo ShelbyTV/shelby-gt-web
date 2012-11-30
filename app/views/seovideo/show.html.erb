@@ -20,138 +20,146 @@
     </div>
 
     <div class="seovideo-subhead clearfix">
-			<div class="seovideo-signup">
-				<h2 class="seovideo-subheader">
-					Explore amazing collections of video on Shelby without logging in.
-				</h2>
-				<a href="http://shelby.tv/explore" title="Click to Explore Shelby.tv!" class="seovideo-button js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Explore Button" data-ga_label="<%= @video_title %>">
-					Explore Shelby
-				</a>
-			</div>
-			
+      <div class="seovideo-signup">
+        <h2 class="seovideo-subheader">
+          Explore amazing collections of video on Shelby without logging in.
+        </h2>
+        <a href="http://shelby.tv/explore" title="Click to Explore Shelby.tv!" class="seovideo-button js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Explore Button" data-ga_label="<%= @video_title %>">
+          Explore Shelby
+        </a>
+      </div>
+      
 
       <h2 class="seovideo-subheader">
-				Shelby is a simple new way to enjoy video.
+        Shelby is a simple new way to enjoy video.
       </h2>
 
-			<%= render :partial => "/home/shelf/interest_email_form" %>
-			
+      <%= render :partial => "/home/shelf/interest_email_form" %>
+      
     </div>
   </header>
 
-  <div class="seovideo-wrapper clearfix">
-    <div class="seovideo-column-left">
-      <section class="seovideo-section seovideo-card">
-        <h3 class="seovideo-column-header">
+  <div class="seovideo__wrapper">
+    <article role="main" class="seovideo">
+      <div class="seovideo__main">
+        <h2 class="seovideo__h2">
           <%= @video_title %>
-        </h3>
-
-        <div class="seovideo-embed">
-          <% if @video_provider_name == "youtube" %>
-            <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
-          <% else %>
-            <%= raw @video_embed %>
-          <% end %>
-        </div>
-
-        <div class="seovideo-details-wrapper"> 
-        <div class="seovideo-details">
-          <p>
-            Author: <%= @video_author %>
-          </p>
- 
-          <p>
-            Description: <%= @video_description %>
-          </p>
-
-        </div><!-- eo seovideo-details -->
-        </div>
-        <div class="seovideo-social">
-          <div class="seovideo-social-button clearfix">
-            <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+        </h2>
+        <div class="seovideo__video_wrapper">
+          <div class="seovideo__video">
+            <% if @video_provider_name == "youtube" %>
+              <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
+            <% else %>
+              <%= raw @video_embed %>
+            <% end %>          
           </div>
-          <div class="seovideo-social-button clearfix">
-            <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
-          </div>
-          <div class="seovideo-social-button clearfix">
-            <div class="g-plusone-wrapper clearfix">
-              <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
-            </div>
-          </div>
-        </div>
-      </section><!-- eo seovideo-card -->
-    </div><!-- eo seovideo-column-left -->
 
-    <div class="seovideo-column-right">
-      <% if !@video_related_videos.empty? %>
-        <div class="seovideo-relatedvideos">
-          <h3 class="seovideo-column-header">
-            Related Videos
-          </h3>
-          <ul class="list_module seovideo-related-list">
-            <% @video_related_videos.each do |related_video| %>
-              <li class="list_item seovideo-related-item seovideo-relatedvideo">
-                <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>" class="seovideo-relatedvideo-link js-track-event" title="<%= related_video["title"] %>" data-ga_category="SEO Video" data-ga_action="Click on Related Video" data-ga_label="<%= @video_title %>">
-                  <img src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
+          <div class="seovideo__video_details">
+            <p>
+              Author: <%= @video_author %>
+            </p>
+   
+            <p>
+              Description: <%= @video_description %>
+            </p>
+          </div><!-- eo .seovideo-details -->
 
-                  <p class="seovideo-relatedvideo-title">
-                    <%= related_video["title"] %>
-                  </p>
-                </a>
+          <div class="seovideo__social" hidden>
+            <ul class="seovideo__list">
+              <li class="seovideo__item seovideo__item--social_button clearfix">
+                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
               </li>
+
+              <li class="seovideo__item seovideo__item--social_button clearfix">
+                <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
+              </li>
+
+              <li class="seovideo__item seovideo__item--social_button clearfix">
+                <div class="g-plusone-wrapper clearfix">
+                  <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
+                </div>
+              </li>
+            </ul>
+          </div><!-- eo .seovideo__video_social -->
+        </div><!-- eo .seovideo__video_wrapper -->     
+      </div><!-- eo .seovideo__main -->
+
+      <aside class="seovideo__aside">
+        <% if !@video_related_videos.empty? %>
+          <div class="seovideo__aside_lining">
+            <h3 class="seovideo__h3">
+              Related Video
+            </h3>
+
+            <ul class="seovideo__list seovideo__list--aside">
+              <% @video_related_videos.each do |related_video| %>
+                <li class="seovideo__item">
+                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>" 
+                    class="seovideo-relatedvideo-link js-track-event" title="<%= related_video["title"] %>" 
+                    data-ga_category="SEO Video" 
+                    data-ga_action="Click on Related Video" 
+                    data-ga_label="<%= @video_title %>">
+                      <img src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
+
+                      <h4 class="seovideo__h4">
+                        <%= related_video["title"] %>
+                      </h4>
+                   </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </aside><!-- eo .seovideo__aside -->
+
+      <div class="seovideo__messages">
+        <% if @messages %>
+          <% if @messages[:shelby].length > 0 %>
+            <h3 class="seovideo-column-header">
+            Shelby Rolls
+            </h3>
+            <ul class="list_module seovideo-messages-list">
+            <% @messages[:shelby].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
             <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </div><!-- eo seovideo-column-right -->
+            </ul>
+          <% end %>
+          <% if @messages[:facebook].length > 0 %>
+            <h3 class="seovideo-column-header">
+            Facebook Shares
+            </h3>
+            <ul class="list_module seovideo-messages-list">
+            <% @messages[:facebook].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+          <% if @messages[:twitter].length > 0 %>
+            <h3 class="seovideo-column-header">
+            Twitter Tweets
+            </h3>
+            <ul class="list_module seovideo-messages-list">
+            <% @messages[:twitter].each do |message| %>
+              <%= render :partial => "twitter_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+          <% if @messages[:tumblr].length > 0 %>
+            <h3 class="seovideo-column-header">
+            Tumblr Posts
+            </h3>
+            <ul class="list_module seovideo-messages-list">
+            <% @messages[:tumblr].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div><!-- eo .seovideo__messages -->
+    </article><!-- eo .seovideo -->
+  </div>
+</div><!-- eo .content-wrapper -->
 
-    <div class="seovideo-messages clearfix">
-      <% if @messages %>
-        <% if @messages[:shelby].length > 0 %>
-          <h3 class="seovideo-column-header">
-          Shelby Rolls
-          </h3>
-          <ul class="list_module seovideo-messages-list">
-          <% @messages[:shelby].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-        <% if @messages[:facebook].length > 0 %>
-          <h3 class="seovideo-column-header">
-          Facebook Shares
-          </h3>
-          <ul class="list_module seovideo-messages-list">
-          <% @messages[:facebook].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-        <% if @messages[:twitter].length > 0 %>
-          <h3 class="seovideo-column-header">
-          Twitter Tweets
-          </h3>
-          <ul class="list_module seovideo-messages-list">
-          <% @messages[:twitter].each do |message| %>
-            <%= render :partial => "twitter_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-        <% if @messages[:tumblr].length > 0 %>
-          <h3 class="seovideo-column-header">
-          Tumblr Posts
-          </h3>
-          <ul class="list_module seovideo-messages-list">
-          <% @messages[:tumblr].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-      <% end %>
-    </div><!-- eo seovideo-messages -->
-  </div><!-- eo seovideo-wrapper -->
-
-</div><!-- eo content-wrapper -->	
 <!-- TWITTER INTENTS -->
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
