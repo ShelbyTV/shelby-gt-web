@@ -84,7 +84,7 @@
 							// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
 							$.ajax({
 								type: 'POST',
-								url: 'http://api.shelby.tv/v1/roll/genius',
+								url: '//api.shelby.tv/v1/roll/genius',
 								data: {'search': search, 'urls': JSON.stringify(urls)},
 								success: function(data){
 								  if (data.status == 200){

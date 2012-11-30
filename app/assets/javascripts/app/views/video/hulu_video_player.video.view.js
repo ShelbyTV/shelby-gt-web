@@ -224,7 +224,7 @@ libs.shelbyGT.HuluVideoPlayerView = Support.CompositeView.extend({
 		
 		// write to tail of body, where script will be downloaded and run
 		var tag = document.createElement('script');
-		tag.src = "http://config.hulu.com/js/hulu_global.js?guid=0B1CEA04-DCCB-40cf-AD0E-5222EF66D519&partner=ShelbyTV&wmode=transparent&height=100%&width=100%";
+		tag.src = "//config.hulu.com/js/hulu_global.js?guid=0B1CEA04-DCCB-40cf-AD0E-5222EF66D519&partner=ShelbyTV&wmode=transparent&height=100%&width=100%";
 		tag.id = "NS_GUID_JS";
 		document.body.appendChild(tag);
 

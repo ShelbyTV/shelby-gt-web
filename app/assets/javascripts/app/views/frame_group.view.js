@@ -176,7 +176,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
-      url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
+      url: '//api.shelby.tv/v1/frame/'+frameId+'/short_link',
       dataType: 'json',
       success: function(r){
         var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
@@ -279,7 +279,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       {
         method: 'feed',
         name: _frame.get('video').get('title'),
-        link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+        link: '//apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
         picture: _frame.get('video').get('thumbnail_url'),
         description: _frame.get('video').get('description'),
         caption: ':: a shelby genius video ::'
@@ -298,7 +298,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     FB.ui({
       method: 'send',
       name: _frame.get('video').get('title'),
-      link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+      link: '//apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
       picture: _frame.get('video').get('thumbnail_url'),
       description: _frame.get('video').get('description'),
       caption: ':: a shelby genius video ::'

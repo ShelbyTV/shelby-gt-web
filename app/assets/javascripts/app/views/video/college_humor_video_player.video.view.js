@@ -184,7 +184,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
   },
 
   _bootstrapPlayer: function(){
-    var url = "http://www.collegehumor.com/moogaloop/moogaloop.swf?use_node_id=true&fullscreen=0&clip_id="+this._video.get('provider_id');
+    var url = "//www.collegehumor.com/moogaloop/moogaloop.swf?use_node_id=true&fullscreen=0&clip_id="+this._video.get('provider_id');
     swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" });
   }
 

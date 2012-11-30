@@ -186,7 +186,7 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_bootstrapPlayer: function(){
-		var url = "http://www.dailymotion.com/swf/"+this._video.get('provider_id')+"&enableApi=1&autoPlay="+(this._playbackState.get('autoplayOnVideoDisplay') ? "1" : "0")+"&chromeless=1&playerapiid="+this.id;
+		var url = "//www.dailymotion.com/swf/"+this._video.get('provider_id')+"&enableApi=1&autoPlay="+(this._playbackState.get('autoplayOnVideoDisplay') ? "1" : "0")+"&chromeless=1&playerapiid="+this.id;
 		swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" }, { id: this.id });
 	}
 });

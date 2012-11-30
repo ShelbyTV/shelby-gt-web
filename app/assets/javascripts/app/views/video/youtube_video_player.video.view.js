@@ -248,7 +248,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	
 	_bootstrapPlayer: function(){	
 		var tag = document.createElement('script');
-		tag.src = "http://www.youtube.com/player_api";
+		tag.src = "//www.youtube.com/player_api";
 		var firstScriptTag = document.getElementsByTagName('script')[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		//NB: when the player is ready, it calls the global function onYouTubePlayerAPIReady() - below

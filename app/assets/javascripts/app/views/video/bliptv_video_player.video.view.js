@@ -125,7 +125,7 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 	_updateViaMetadata: function(){
 		var self = this;
 
-		var metadataUrl = "http://blip.tv/players/episode/"+this._video.get('provider_id')+"?skin=json&version=2&callback=?";
+		var metadataUrl = "//blip.tv/players/episode/"+this._video.get('provider_id')+"?skin=json&version=2&callback=?";
 		$.getJSON(metadataUrl, function(d){
 			try{ 
 				self.playerState.set({duration:d[0].Post.media.duration});
@@ -185,7 +185,7 @@ libs.shelbyGT.BlipTvVideoPlayerView = Support.CompositeView.extend({
 		var self = this;
 
 		//1) embed the player
-		var url = 'http://blip.tv/play/'+this._video.get('provider_id')+'?enablejs=true&autostart='+this._playbackState.get('autoplayOnVideoDisplay')+'&showsharebutton=false&showfsbutton=false&chromeless=true&preferredRole=Blip%20HD%20720';
+		var url = '//blip.tv/play/'+this._video.get('provider_id')+'?enablejs=true&autostart='+this._playbackState.get('autoplayOnVideoDisplay')+'&showsharebutton=false&showfsbutton=false&chromeless=true&preferredRole=Blip%20HD%20720';
 
 		this._embedId = 'blip-player';
 

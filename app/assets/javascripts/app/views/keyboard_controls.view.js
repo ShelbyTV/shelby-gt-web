@@ -68,7 +68,7 @@
           if (shelby.models.guide.get('activeFrameModel')){
             var _frameId = shelby.models.guide.get('activeFrameModel').id;
             $.ajax({
-              url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
+              url: '//api.shelby.tv/v1/frame/'+_frameId+'/short_link',
               dataType: 'json',
               success: function(r){ shelby.alert(r.result.short_link); }
             });

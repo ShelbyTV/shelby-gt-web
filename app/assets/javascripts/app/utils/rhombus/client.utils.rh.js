@@ -7,7 +7,7 @@
     _disabled : false,
 
     _env_api_root_map : {
-      "production" : 'http://api.rhombus.shelby.tv',
+      "production" : '//api.rhombus.shelby.tv',
       "staging" : 'http://localhost.shelby.tv:3010',
       "development" : 'http://localhost.shelby.tv:3010'
     },

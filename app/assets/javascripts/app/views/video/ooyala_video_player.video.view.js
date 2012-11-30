@@ -178,7 +178,7 @@ libs.shelbyGT.OoyalaVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_bootstrapPlayer: function(){
-		var src = "http://www.ooyala.com/player.js?playerContainerId="+this.id+"&callback=receiveOoyalaEvent&playerId=ooyalaPlayer&wmode=transparent&embedCode="+this._video.get('provider_id')+"&version=2&autoplay="+(this._playbackState.get('autoplayOnVideoDisplay') ? "1" : "0");
+		var src = "//www.ooyala.com/player.js?playerContainerId="+this.id+"&callback=receiveOoyalaEvent&playerId=ooyalaPlayer&wmode=transparent&embedCode="+this._video.get('provider_id')+"&version=2&autoplay="+(this._playbackState.get('autoplayOnVideoDisplay') ? "1" : "0");
 
 		//write to head, where script will be downloaded and run
 		var tag = document.createElement('script');

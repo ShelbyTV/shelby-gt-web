@@ -190,7 +190,7 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 	},
 	
 	_bootstrapPlayer: function(){
-		var src = "http://player.ooyala.com/player.js?externalId=espn:"+this._video.get('provider_id')+"&callback=window.receiveEspnEvent&debug=false&hasModuleParams=1&pcode=1kNG061cgaoolOncv54OAO1ceO-I&playerBrandingId=a28f1994885a41098953d166c34cf81c&targetReplaceId="+this.id+"&wmode=opaque&autoplay="+(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0); 
+		var src = "//player.ooyala.com/player.js?externalId=espn:"+this._video.get('provider_id')+"&callback=window.receiveEspnEvent&debug=false&hasModuleParams=1&pcode=1kNG061cgaoolOncv54OAO1ceO-I&playerBrandingId=a28f1994885a41098953d166c34cf81c&targetReplaceId="+this.id+"&wmode=opaque&autoplay="+(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0); 
 		//write to head, where script will be downloaded and run
 		var tag = document.createElement('script');
 		tag.src = src;

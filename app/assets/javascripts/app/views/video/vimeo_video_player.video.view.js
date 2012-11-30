@@ -197,7 +197,7 @@ libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
     var attributes = {};
 
     swfobject.embedSWF(
-      "http://vimeo.com/moogaloop.swf",
+      "//vimeo.com/moogaloop.swf",
       this.id,
       "100%", "100%",
       "9.0.0","expressInstall.swf",
