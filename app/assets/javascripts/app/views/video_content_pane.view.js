@@ -43,6 +43,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay,
       queuedVideos : shelby.models.queuedVideos,
+      userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,

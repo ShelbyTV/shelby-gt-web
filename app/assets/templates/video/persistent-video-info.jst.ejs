@@ -11,18 +11,23 @@
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 
 <div class="media_image--rev persistent_video_info__next-frame">
-  <h3 class="persistent_video_info__h2">
-    Up Next
-  </h3>
+  <a class="persistent_video_info__anchor js-track-event js-up-next"
+            data-ga_category="Persistent Video Info"
+            data-ga_action="Click roll on next frame"
+            data-ga_label="<%= shelby.models.user.get('nickname') %>">
 
-  <%= SHELBYJST['thumbnail-module']({
-    thumbnail: nextVideo.get('thumbnail_url'),
-    title: nextVideo.get('title') }) %>
+    <h3 class="persistent_video_info__h2">
+      Up Next
+    </h3>
 
-  <h2 class="persistent_video_info__h3">
-    <%= nextVideo.get('title') %>
-  </h2>
+    <%= SHELBYJST['thumbnail-module']({
+      thumbnail: nextVideo.get('thumbnail_url'),
+      title: nextVideo.get('title') }) %>
 
+    <h2 class="persistent_video_info__h3">
+      <%= nextVideo.get('title') %>
+    </h2>
+  </a>
   <div hidden>
     <button class="js-roll-frame js-track-event"
             data-ga_category="Persistent Video Info"
@@ -87,9 +92,9 @@
     </div><!-- eo .persistent_video_info__body -->
   </div><!-- eo .persistent_video_info_lining -->
 
-  <hr class="hr hr--double" />
-
   <div class="persistent_video_info__foot">
+    <hr class="hr hr--double" />
+
     <ul class="persistent_video_info__list persistent_video_info__list--actions">
       <li class="persistent_video_info__item clearfix">
         <button class="persistent_video_info__button persistent_video_info__button--roll js-roll-frame js-track-event"

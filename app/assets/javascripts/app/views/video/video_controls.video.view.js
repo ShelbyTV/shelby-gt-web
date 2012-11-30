@@ -21,6 +21,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _shouldUpdateScrubHandle: true,
 
   initialize: function(opts){
+    console.log('vc opts',opts);
     this._playbackState = opts.playbackState;
     this._userDesires = opts.userDesires;
 

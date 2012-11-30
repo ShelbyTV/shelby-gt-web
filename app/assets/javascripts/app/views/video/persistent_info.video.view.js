@@ -13,10 +13,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-queue-frame:not(.queued)"   : "_queueCurrentFrame",
     "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
-    "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame"
+    "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
+    "click .js-up-next"                                                           : "_activate"
   },
 
   initialize: function(opts){
+    this._userDesires = opts.userDesires;
+
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     Backbone.Events.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
   },
@@ -44,7 +47,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrame: this._currentFrame,
         nextFrame: this._nextFrame,
         queuedVideosModel: this.options.queuedVideos
-        }));
+      }));
     }
   },
 
@@ -115,6 +118,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _commentFrame : function(frame, el){
     //comment frame func
     this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation, frame);
+  },
+
+  _activate : function(){
+    this._userDesires.set('changeVideo', 1);
+    this._userDesires.unset('changeVideo');
   }
 
 });
