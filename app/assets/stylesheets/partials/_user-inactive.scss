@@ -2,10 +2,13 @@
 // User Inactivity Overrides, should be nested or compounded.
 //------------------------------------------------------------------------------
 .user-inactive{
-  .persistent_video_info,
   .shelby-header, 
   .main-layout .guide-wrapper {
     opacity: .4;
+  }
+
+  .persistent_video_info {
+    opacity: 0;
   }
 
   .guide-toggle.hide, 

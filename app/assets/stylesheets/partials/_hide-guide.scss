@@ -6,16 +6,24 @@
 	  margin-left:-($guide-width);
 	}
 	
-  .persistent_video_info {
-    bottom: -100%;
-  }
+  // .persistent_video_info__wrapper {
+  //   background-color: rgba(239, 239, 239, 0);
+  // }
+
+  // .persistent_video_info {
+  //   max-width: 900px;
+  // }
 
   .videoplayer-viewport {
     bottom: 0;
   }
 
-  .videoplayer-tools__wrapper {
-  	bottom: 0;
-  }
+  // .videoplayer-tools__wrapper {
+  //  bottom: 0;
+  // }
+
+  // .videoplayer-tools {
+  //   max-width: 900px;
+  // }
 }
 
