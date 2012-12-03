@@ -112,7 +112,7 @@ p {
 }
 
 .seovideo {
-  width: 640px;
+  max-width: 640px;
   margin: 2em auto;
 }
 
@@ -124,7 +124,12 @@ p {
 //  seovideo video
 //------------------------------------------------------------------------------
 .seovideo__video {
+  & > iframe,
+  & > embed,
+  & > object {
+    max-width: 100%;
 
+  }
 }
 
 .seovideo__video_details {
@@ -521,9 +526,9 @@ $landing-page-shelf-background: #ddd;
 
   .seovideo-subhead {
     text-align: center;
-          margin: 1.7em 0em 0em 0em;
-                padding: 0em 1em 0em 1em;
-          max-width: $seo-column-left;
+    margin: 1.7em 0em 0em 0em;
+    padding: 0em 1em 0em 1em;
+    max-width: $seo-column-left;
   }
 
   .seovideo-subheader {
@@ -559,9 +564,7 @@ $landing-page-shelf-background: #ddd;
 //  this makes vertical height of video more reasonable/proportional
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-width : 470px) {
-  .seovideo-embed {
-    padding: 0px;
-
+  .seovideo__video {
     & > iframe,
     & > embed,
     & > object {
@@ -569,5 +572,43 @@ $landing-page-shelf-background: #ddd;
     }
   }
 }
+////////////////////////////////////////////////////////////////////////////
+//  this makes wide sceens more approachable
+////////////////////////////////////////////////////////////////////////////
+@media only screen and (min-width : 1200px) {
+  .seovideo {
+    max-width: 980px;
+  }
 
+  .seovideo__main {
+    float: left;
+    margin-right: 20px;
+    width: 640px;
+  }
 
+  .seovideo__aside {
+    margin: 1px;
+    float: right;
+    width: 318px;
+  }
+
+  .seovideo__list--aside {
+    .seovideo__item {
+      float: none;
+      margin: 20px 2px;
+      width: auto;
+
+      &:nth-child(2n+1) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .seovideo__messages {
+    max-width: 640px;
+  }
+}

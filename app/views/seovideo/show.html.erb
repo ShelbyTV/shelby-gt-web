@@ -65,14 +65,14 @@
         </div><!-- eo .seovideo__video_wrapper -->
       </div><!-- eo .seovideo__main -->
 
-      <aside class="seovideo__aside">
+      <aside class="seovideo__aside clearfix">
         <% if !@video_related_videos.empty? %>
           <div class="seovideo__aside_lining">
             <h3 class="seovideo__h3">
               Related Video
             </h3>
 
-            <ul class="seovideo__list seovideo__list--aside">
+            <ul class="seovideo__list seovideo__list--aside clearfix">
               <% @video_related_videos.each do |related_video| %>
                 <li class="seovideo__item">
                   <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
