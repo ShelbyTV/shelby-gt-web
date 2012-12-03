@@ -1,0 +1,15 @@
+.nav-search-form-text {
+  background-color: #FFF;
+  border-radius: 15px;
+  display: inline-block;
+  margin-top: 4px;
+
+  input {
+    &,
+    &:focus {
+      border: none;
+      background: transparent;
+      padding: .25em .7em;
+    }
+  }
+}

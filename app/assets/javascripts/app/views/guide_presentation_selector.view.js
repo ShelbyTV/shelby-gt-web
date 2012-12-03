@@ -12,7 +12,6 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-explore:not(.active-item)"  : "_explore",
-      "click .js-search:not(.active-item)"   : "_goToSearch",
       "click .js-admin"                      : "_goToAdmin",
       "click .js-now-playing"                : "_nowPlaying"
     },
@@ -38,6 +37,9 @@
         model : shelby.models.invite,
         user : shelby.models.user
       }));
+      this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
+        el : this.$('.js-guide-search')
+      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -51,12 +53,6 @@
     _goToQueue : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
         shelby.router.navigate('queue', {trigger: true});
-      }
-    },
-
-    _goToSearch : function(){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.SEARCH) ){
-        shelby.router.navigate('search', {trigger: true});
       }
     },
     
