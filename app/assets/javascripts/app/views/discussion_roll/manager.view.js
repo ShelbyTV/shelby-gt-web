@@ -34,11 +34,10 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
     this.$el.html(this.template());
     
     if(this._discussionRolls){
-      console.log("rendered, _discussionRolls is", this._discussionRolls);
-      
-      this._discussionRolls.forEach(function(r){
+      this._discussionRolls.toArray().reverse().forEach(function(r){
         self.appendChildInto(
           new libs.shelbyGT.DiscussionRollsNavRollView({
+            currentRoll:self.model,
             model:r,
             token:self.options.token,
             viewer:self.options.viewer }), 

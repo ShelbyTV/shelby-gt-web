@@ -172,7 +172,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   display: none;
 }
 
-.discussion--recipients.show-all-recipients {
+.discussion--recipients .show-all-recipients {
   .discussion__item--recipients-overflow {
     display: inline-block;
   }
@@ -480,5 +480,41 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     & > object {
       height: 250px;
     }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  navigations of all shelby chats
+////////////////////////////////////////////////////////////////////////////
+
+//outter wrapper, to be placed in STRUCTURE above, creating the gutter effect
+.discussion__lgutter {
+  
+}
+
+//inner wrapper of the whole nav thing
+.discussions-manager {
+  
+}
+
+// the list of all chats
+.discussion__list--discussions-nav {
+  
+}
+
+// individual chat in that list
+.discussion__item--discussion-roll {
+  border: 1px solid black;
+  margin: .5em 0;
+  padding: .5em;
+  &:hover, &.discussion__item--current-discussion-roll {
+    background: white;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .discussion__h2 {
+    display: none;
   }
 }

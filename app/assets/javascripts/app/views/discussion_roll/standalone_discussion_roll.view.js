@@ -14,7 +14,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
         setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
       error: function(a){
-        $(".js-discussion-roll-conversation-list").html("<h1>Something went wrong :(</h1><h1>Try reloading...</h1>")
+        $(".js-discussion-roll-conversation-list").html("<h1>Something went wrong :(</h1><h1>Try reloading...</h1>");
       }
     });
 
@@ -29,7 +29,8 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     
     var opts = {model:this.model, viewer:this.options.viewer, token:this.options.token};
     
-    this.renderChild(     new libs.shelbyGT.DiscussionRollRecipientsView(opts));
+    this.renderChildInto( new libs.shelbyGT.DiscussionRollRecipientsView(_.extend({updatePageTitle:true}, opts)),
+      this.$(".js-discussion-roll-recipients"));
     this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(opts), 
       ".js-discussion-roll-conversation-wrapper");
     this.renderChild(     new libs.shelbyGT.DiscussionRollsManagerView(opts));

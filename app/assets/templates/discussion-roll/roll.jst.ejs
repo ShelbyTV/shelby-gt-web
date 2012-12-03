@@ -1,3 +1,5 @@
 <a href="/chat/<%= roll.id %>?u=<%= viewer %>&t=<%= roll.get('token') %>">
-	<%= roll.get('title') %>
+	<div class="discussion--recipients js-discussion-roll-recipients">
+		<!-- content filled in by DiscussionRollRecipientsView -->
+	</div>
 </a>

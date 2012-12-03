@@ -4,14 +4,16 @@
  */
 libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
 
-  //when we have more than OVERFLOW_AT recipients, show a "more" link instead of the full list initially
-  OVERFLOW_AT: 2,
+  options : _.extend({}, Support.CompositeView.prototype.options, {
+    //when we have more than overflowAt recipients, show a "more" link instead of the full list initially
+    overflowAt: 2,
+    //the recipients for the current page will update the page title
+    updatePageTitle: false,
+  }),
 
   events: {
     "click .js-discussion-roll-recipients-toggle-show-all"  : "_toggleShowAllRecipients"
   },
-  
-  el: '.js-discussion-roll-recipients',
   
   initialize : function(){
     this.model.on('change:discussion_roll_participants', this.render, this);
@@ -29,8 +31,10 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
   render : function(){
     var self = this;
     
-    //page title built iteratively by this and subviews
-    document.title = "Shelby Chat with ";
+    if(this.options.updatePageTitle){
+      //page title built iteratively by this and subviews
+      document.title = "Shelby Chat with ";
+    }
     
     this.$el.html(this.template());
     
@@ -41,13 +45,17 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
         //show who this is TO (don't include the current viewer in that list)
         if( self.options.viewer !== p ){
           self.appendChildInto(
-            new libs.shelbyGT.DiscussionRollRecipientView({model:p, discussionRoll:self.model, overflow:(i>=self.OVERFLOW_AT)}),
-            '.js-discussion-roll-recipients-list' );
+            new libs.shelbyGT.DiscussionRollRecipientView({
+                  model:p, 
+                  discussionRoll:self.model, 
+                  overflow:(i>=self.options.overflowAt), 
+                  updatePageTitle:self.options.updatePageTitle}),
+            self.$('.js-discussion-roll-recipients-list') );
           i++;
         }
       });
       
-      if(i>=this.OVERFLOW_AT){
+      if(i>=this.options.overflowAt){
         this.$('.js-discussion-roll-recipients-toggle-show-all').show();
       }
     }

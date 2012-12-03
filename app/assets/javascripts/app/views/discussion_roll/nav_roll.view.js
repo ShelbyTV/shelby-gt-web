@@ -18,6 +18,18 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
   
   render : function(){
     this.$el.html(this.template({roll:this.model, viewer:this.options.viewer}));
+    
+    if( this.model.id===this.options.currentRoll.id ){
+      this.$el.addClass("discussion__item--current-discussion-roll");
+    }
+    
+    //re-using the recipients view
+    this.renderChildInto(new libs.shelbyGT.DiscussionRollRecipientsView({
+                          model:this.model, 
+                          viewer:this.options.viewer, 
+                          token:this.model.get('token'), 
+                          overflowAt:10}), 
+                        this.$(".js-discussion-roll-recipients"));
   }
   
 });
