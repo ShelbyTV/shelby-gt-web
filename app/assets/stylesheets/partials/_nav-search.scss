@@ -4,12 +4,16 @@
   display: inline-block;
   margin-top: 4px;
 
+  &.icon {
+    background-position: .35em center;
+  }
+
   input {
     &,
     &:focus {
       border: none;
       background: transparent;
-      padding: .25em .7em;
+      padding: .25em .7em .25em 1.7em;
     }
   }
 }

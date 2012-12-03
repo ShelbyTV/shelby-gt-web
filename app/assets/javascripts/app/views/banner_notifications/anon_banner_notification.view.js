@@ -25,7 +25,7 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
    * Otherwise, render nothing and return false.
    */
   userIsAbleTo : function(action){
-    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT && action != libs.shelbyGT.AnonymousActions.SEARCH){
+    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT){
       this._bannerType = action;
       this.render();
       return false;
@@ -42,6 +42,5 @@ libs.shelbyGT.AnonymousActions = {
   ROLL : 3,
   FOLLOW : 4,
   COMMENT : 5,
-  ME : 6,
-  SEARCH : 7
+  ME : 6
 };
