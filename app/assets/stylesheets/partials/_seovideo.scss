@@ -39,7 +39,7 @@ body{
 a {
   @include unstyled-link;
 
-  &:hover, 
+  &:hover,
   &:visited,
   &:active{
     color: inherit;
@@ -61,6 +61,30 @@ p {
   .seovideo__item {
 
   }
+}
+
+.seovideo__h2 {
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 400;
+  margin: 0 0 0.25em;
+}
+
+.seovideo__h3 {
+  color: #666;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.seovideo__thumbnail {
+  display: block;
+  background-color: #000;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 130px;
 }
 //------------------------------------------------------------------------------
 //  seovideo architecture
@@ -88,7 +112,8 @@ p {
 }
 
 .seovideo {
-
+  width: 640px;
+  margin: 2em auto;
 }
 
 .seovideo__main {
@@ -103,19 +128,19 @@ p {
 }
 
 .seovideo__video_details {
+  padding: 1.0em 1.5em;
 
   p {
 
   }
 }
 
-.seovideo__social {
-  .seovideo__list {
+.seovideo__list--social {
+  margin-top: 1em;
 
-  }
-
-  .seovideo__item--social_button {
-
+  .seovideo__item {
+    display: inline-block;
+    vertical-align: top;
   }
 }
 
@@ -124,7 +149,10 @@ p {
 //------------------------------------------------------------------------------
 
 .seovideo__aside {
-
+  .seovideo__h3 {
+    margin: 2em 0 1em;
+    line-height: 1.5;
+  }
 }
 
 .seovideo__aside_lining {
@@ -134,7 +162,53 @@ p {
 .seovideo__list--aside {
 
   .seovideo__item {
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    width: 50%;
 
+    &:nth-child(2n+1) {
+      padding-right: 5px;
+    }
+    &:nth-child(2n) {
+      padding-left: 5px;
+    }
+  }
+
+  .seovideo__h4 {
+    margin: 0;
+    font-weight: normal;
+  }
+}
+// the related video design requires some complex css.
+// that's why we're creating this "related_video" block.
+.related_video {
+
+}
+
+.related_video__main {
+
+}
+
+.related_video__footer {
+  height: 65px;
+  display: table;
+  width: 100%;
+}
+
+.related_video__footer-lining {
+  display: table-cell;
+  margin: 0 auto;
+  padding: 1em;
+  vertical-align: middle;
+  width: 100%;
+
+  .seovideo__h4 {
+    padding-right: 1.5em;
+
+    &.icon {
+      background-size: 1em;
+    }
   }
 }
 
@@ -214,7 +288,7 @@ p {
   position: absolute;
   width: $seo-column-right;
   right: 0;
-  
+
   h2 {
     font-size: 1em;
     margin-bottom: 2em;
@@ -428,7 +502,7 @@ $landing-page-shelf-background: #ddd;
 //  media query,
 //  when window is NARROWER than 850px
 //------------------------------------------------------------------------------
-@media only screen and (max-width : 850px) {  
+@media only screen and (max-width : 850px) {
   .seovideo-column-right {
     clear: both;
     float: none;

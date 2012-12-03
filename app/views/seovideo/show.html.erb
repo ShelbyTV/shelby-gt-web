@@ -18,25 +18,6 @@
       </a>
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
-
-    <div class="seovideo-subhead clearfix">
-      <div class="seovideo-signup">
-        <h2 class="seovideo-subheader">
-          Explore amazing collections of video on Shelby without logging in.
-        </h2>
-        <a href="http://shelby.tv/explore" title="Click to Explore Shelby.tv!" class="seovideo-button js-track-event" data-ga_category="SEO Video" data-ga_action="Click on Explore Button" data-ga_label="<%= @video_title %>">
-          Explore Shelby
-        </a>
-      </div>
-      
-
-      <h2 class="seovideo-subheader">
-        Shelby is a simple new way to enjoy video.
-      </h2>
-
-      <%= render :partial => "/home/shelf/interest_email_form" %>
-      
-    </div>
   </header>
 
   <div class="seovideo__wrapper">
@@ -45,43 +26,43 @@
         <h2 class="seovideo__h2">
           <%= @video_title %>
         </h2>
-        <div class="seovideo__video_wrapper">
+        <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="seovideo__video">
             <% if @video_provider_name == "youtube" %>
               <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
             <% else %>
               <%= raw @video_embed %>
-            <% end %>          
+            <% end %>
           </div>
 
           <div class="seovideo__video_details">
-            <p>
-              Author: <%= @video_author %>
-            </p>
-   
-            <p>
-              Description: <%= @video_description %>
-            </p>
-          </div><!-- eo .seovideo-details -->
+            <h3 class="seovideo__h3">
+              <%= @video_author %>
+            </h3>
 
-          <div class="seovideo__social" hidden>
-            <ul class="seovideo__list">
-              <li class="seovideo__item seovideo__item--social_button clearfix">
+            <p>
+              <%= @video_description %>
+            </p>
+
+            <ul class="seovideo__list seovideo__list--social">
+              <li class="seovideo__item">
                 <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
               </li>
 
-              <li class="seovideo__item seovideo__item--social_button clearfix">
+              <li class="seovideo__item">
                 <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
               </li>
 
-              <li class="seovideo__item seovideo__item--social_button clearfix">
+              <li class="seovideo__item">
                 <div class="g-plusone-wrapper clearfix">
                   <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
                 </div>
               </li>
-            </ul>
-          </div><!-- eo .seovideo__video_social -->
-        </div><!-- eo .seovideo__video_wrapper -->     
+            </ul><!-- eo .seovideo__list--social -->
+
+          </div><!-- eo .seovideo-details -->
+
+        </div><!-- eo .seovideo__video_wrapper -->
       </div><!-- eo .seovideo__main -->
 
       <aside class="seovideo__aside">
@@ -94,16 +75,26 @@
             <ul class="seovideo__list seovideo__list--aside">
               <% @video_related_videos.each do |related_video| %>
                 <li class="seovideo__item">
-                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>" 
-                    class="seovideo-relatedvideo-link js-track-event" title="<%= related_video["title"] %>" 
-                    data-ga_category="SEO Video" 
-                    data-ga_action="Click on Related Video" 
+                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
+                    class="seovideo__link js-track-event" title="<%= related_video["title"] %>"
+                    data-ga_category="SEO Video"
+                    data-ga_action="Click on Related Video"
                     data-ga_label="<%= @video_title %>">
-                      <img src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
+                    <div class="related_video frame-body-wrapper clearfix">
+                      <div class="related_video__main">
+                        <span role="img" class="seovideo__thumbnail" style="background-image: url(<%= related_video["thumbnail_url"] %>);">
+                          <img class="visuallyhidden" src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
+                        </span>
+                      </div><!-- eo related_video__main -->
 
-                      <h4 class="seovideo__h4">
-                        <%= related_video["title"] %>
-                      </h4>
+                      <div class="related_video__footer">
+                        <div class="related_video__footer-lining">
+                          <h4 class="seovideo__h4 button_icon_right icon_chevron icon">
+                            <%= related_video["title"] %>
+                          </h4>
+                        </div><!-- eo related_vido__footer-lining -->
+                      </div><!-- eo related_video__footer -->
+                    </div><!-- eo .related_video -->
                    </a>
                 </li>
               <% end %>
