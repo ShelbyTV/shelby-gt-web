@@ -66,6 +66,11 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     self.get('autocomplete')[key] = _.union(self.get('autocomplete')[key], entriesArray);
   },
   
+  hasAbility: function(ability){
+    return this.get('additional_abilities') &&
+      _.contains(this.get('additional_abilities'), ability);
+  },
+  
   isAnonymous : function(){
     return this.get('anon');
   }

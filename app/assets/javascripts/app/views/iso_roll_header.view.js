@@ -1,50 +1,67 @@
 /*
-* Manages the async uploading of a user avatar, updating the user model on success.
-*
-* Works well in conjunction with UserAvatarPresenter.
-*
-* OPTIONS
-*  spinnerEl: into which this view will render a spinner during upload
-*  progressEl: will adjust it's width to represent percentage of upload complete
-*
-* (see libs.shelbyGT.UserPreferencesView for a working example)
-*/
+ * Shows the header image, when available.
+ *
+ * If you're looking for the full app width header (which supports multi roll selection) 
+ * see IsoRollAppHeaderView rendered via dynamic.router.js
+ */
+libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
 
-libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
+  className : 'guide-header-wrapper clearfix',
 
   template : function(obj){
-    return SHELBYJST['user/avatar-uploader'](obj);
+    return SHELBYJST['iso-roll-header'](obj);
   },
-  
 
   initialize : function(){
-    this.model = shelby.models.user;
+    this.model.bind('change', this._onRollChange, this);
   },
 
   _cleanup : function(){
+    this.model.unbind('change', this._onRollChange, this);
   },
-  
+
   render : function(){
-    this.$el.html(this.template({ user: this.model }));
-    
-    this._initUploader();
+    this.$el.html(this.template({roll : this.model}));
+
+    // if user can change the roll header image
+    if(this.model.get('creator_id') == shelby.models.user.id){
+      this.$(".js-guide-header-roll-header-uploader").show();
+
+      //set the upload progress, spinner elements used when uploading
+      this.options.progressEl = this.$(".progress-overlay");
+      this.options.spinnerEl = this.$(".spinner-overlay");
+
+      this._initUploader();
+    }
+
+    shelby.models.guide.trigger('reposition');
+  },
+
+  _onRollChange : function(rollModel) {
+    var _changedAttrs = _(rollModel.changedAttributes());
+    if (_changedAttrs.has('header_image_file_name') || _changedAttrs.has('title') || _changedAttrs.has('frame_count')) {
+      this.render();
+    }
   },
   
   /*****************
-   * Image Uploading
+   * Roll Header Image Uploading
    *
-   * This was copied almost *exactly* for iso_roll_header.view.js (which allows uploading of header image)
+   * This was copied almost *exactly* from user_avatar_uploader.view.js
+   * Changes are noted in comments
    * If we need to use this again elsewhere, it's time to DRY it up and abstract it.
    *****************/
   _initUploader: function(){
     var self = this;
-
+    
     this.$el.fileupload({
       xhrFields: { withCredentials: true },
       dataType: 'json',
       type: 'put',
       
-      url: self.model.url(),
+      // Roll model doesn't have url() defined, it's dynamic in sync()
+      // So I added a static updateUrl() (which is different from User model)
+      url: self.model.updateUrl(),
       
       done: function (e, data) {
         self._hideSpinner();
@@ -52,12 +69,14 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         self._clearProgress();
         
         if(data.result.status == 200){
-          //avatar_updated_at does come back with result, but this will work just as well
-          self.model.set({avatar_updated_at:Date.now(), has_shelby_avatar:true});
-          shelby.track( 'avatar_upload_success', { userName: shelby.models.user.get('nickname') });
+          // This is also different from User code, but a bit more generic and would probably work over there too.
+          self.model.set(data.result.result);
+          self.render();
+
+          shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         } else {
           shelby.alert("Sorry, that upload failed.");
-          shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
+          shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
       error: function(){
@@ -65,7 +84,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         self._hideProgressMessage();
         self._clearProgress();
         shelby.alert("Sorry, that upload failed.");
-        shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
+        shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
         self._showSpinner();
@@ -115,5 +134,6 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
   _hideProgressMessage : function(){
     $(this.options.progressMessageEl).text('');
   }
+  
 
 });

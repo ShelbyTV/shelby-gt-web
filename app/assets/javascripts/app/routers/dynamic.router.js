@@ -128,6 +128,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
+    
+    shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
+      new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
     if (frameId){
       this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});

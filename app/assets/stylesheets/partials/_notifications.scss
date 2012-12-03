@@ -1,69 +1,105 @@
 @import "base";
 
 ////////////////////////////////////////////////////////////////////////////
-// 	TODO: ONE WORD CLASS NAMES ARE TOO VAGUE,
-//				NEED TO FIX THIS EVENTUALLY
+//  TODO: ONE WORD CLASS NAMES ARE TOO VAGUE,
+//        NEED TO FIX THIS EVENTUALLY
 //
-//	TODO: ONLY CLASSES IN THE MODULES PARTIAL GET UNDERSCORES
-//				UNDERSCORES DENOTE UTILITY CLASSES THAT AREN'T READILY EDITABLE
+//  TODO: ONLY CLASSES IN THE MODULES PARTIAL GET UNDERSCORES
+//        UNDERSCORES DENOTE UTILITY CLASSES THAT AREN'T READILY EDITABLE
 ////////////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------------------
 //  Notifications architecture
-//	(setup, shared between any/all alerts and notifications)
+//  (setup, shared between any/all alerts and notifications)
 //------------------------------------------------------------------------------
 .notifications-wrapper {
-	display: none;
+//  display: none;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  top: 36px;
+  z-index: 4;
+
+  &.hide {
+    height: 0px;
+  }
 }
 
-.notifications {
-	@include roundies(input);
+$bookmarklet-color: $shelby-blue;
 
-	background-color: $base;
-	box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
-	padding:0px;
-	left: 50%;
-	margin-left: -166px;
-	position: absolute;
-	width: 332px;
-	z-index: 5;
+.notification_module--feedback {
+  @include gradient-primer($shelby-blue);
+  @include roundies(footer);
 
-	.message {
-		font-size: 1.4em;
-		font-weight: 300;
-		line-height:1.5;
-	}
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
+  color: #efefef;
+  padding: 3px 5px;
+  margin: 0 auto;
+  position: relative;
+  max-width: 600px;
+  z-index: 5;
 
-	.message-link {
-		font-size:.8em;
-		font-weight:bold;
-		line-height: 2;
-	}
+  .notification_actions {
+
+  }
+
+  .notification_button {
+    color: $bookmarklet-color;
+    border-color: $bookmarklet-color;
+    border-radius: 20px !important;
+    text-shadow: none;
+    vertical-align: top;
+    margin: 0.5em 0.3em 0;
+  }
+
+  .notification_label {
+    color: darken($bookmarklet-color,15%);
+  }
+
+  .notification_message {
+    font-size: 1.5em;
+    line-height: 2.1;
+    vertical-align: top;
+    width: 100%;
+
+    a {
+      &:active,
+      &:link,
+      &:hover,
+      &:visited {
+        color: darken($bookmarklet-color,15%)
+      }
+    }
+  }
+
+  .notification_option {
+    margin-right: .7em;
+  }
 }//eo notifications
 
 .button-wrapper {
-	margin: 2em;
-	text-align: center;
+  margin: 2em;
+  text-align: center;
 
-	.one_button {
-		.notification-cancel {
-			display: none;
-		}
-	}
+  .one_button {
+    .notification-cancel {
+      display: none;
+    }
+  }
 
-	.two_button {
-	}
+  .two_button {
+  }
 
-	.notification-confirm,
-	.notification-cancel {
-		font-size: 1.3em;
-		width: 6.7em;
-	}
+  .notification-confirm,
+  .notification-cancel {
+    font-size: 1.3em;
+    width: 6.7em;
+  }
 
-	button.disabled { display: none; }
-	button.red      { @include button-primer($shelby-red,dark); }
-	button.blue     { @include button-primer($shelby-blue,dark); }
-	button.grey     { @include button-primer; }
+  button.disabled { display: none; }
+  button.red      { @include button-primer($shelby-red,dark); }
+  button.blue     { @include button-primer($shelby-blue,dark); }
+  button.grey     { @include button-primer; }
 }//eo button-wrapper
 
 
@@ -72,42 +108,13 @@
 //------------------------------------------------------------------------------
 
 .default {
-	top: 50%;
-	margin-top: -75px;
-
-	.message {
-		overflow: hidden;
-		text-align: center;
-		margin: 1em 1em 0;
-	}
 }
 
 //------------------------------------------------------------------------------
 // Specifically the "Rolled to username/personal roll" message
 //------------------------------------------------------------------------------
 .info {
-	top: 20px;
-
-	.message {
-		@include ellipsis;
-
-		margin: 1.2em 5em 1.2em 1em;
-	}
-
-	.message-link {
-		float: right;
-	}
-
-	.button-wrapper {
-		margin: 1em 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
-
-	button.notification-confirm {
-		float: right;
-		margin-right: 1em;
-		width: auto;
-	}
+  .message-link {
+    float: right;
+  }
 }//eo info

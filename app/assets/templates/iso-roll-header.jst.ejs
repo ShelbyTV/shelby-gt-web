@@ -1,0 +1,19 @@
+<!-- using frame_count to determine if frame has been fetched or not -->
+<% if(roll.has('frame_count')){ %>
+	<div class="image_module" id="guide-header-roll-header-image" style="background-image: url('<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>');">
+		<img src="<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>" class="visuallyhidden" />
+		<% if(roll.get('roll_type') !== libs.shelbyGT.RollModel.TYPES.special_public_real_user &&
+    			roll.get('roll_type') !== libs.shelbyGT.RollModel.TYPES.special_public_upgraded){ %>
+			<h2 class="guide-header-roll-header-title">
+				<%= libs.shelbyGT.viewHelpers.roll.titleWithPath(roll) %>
+			</h2>
+		<% } %>
+		<div class="progress-overlay"></div>
+	</div>
+<% } %>
+
+<div class="guide-header-roll-header-uploader js-guide-header-roll-header-uploader">
+	Change your .TV Banner...
+	<input id="fileupload" type="file" name="header_image" accept="image/*">
+	<div class="spinner-overlay"></div>
+</div>

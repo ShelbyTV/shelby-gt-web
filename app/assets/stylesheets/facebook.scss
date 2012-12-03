@@ -4,9 +4,10 @@
 @import "compass/typography/links/hover-link";
 
 @import 
-		"partials/fonts",
-		"partials/h5bp", 
-		"partials/modules",	
+		"base-mixin",
+		"boilerplate/fonts",
+		"boilerplate/h5bp",
+		"modules",	
 		
 		"partials/app.html",
 		"partials/app-header",
@@ -16,4 +17,4 @@
 		"partials/landing-page",
 		"partials/facebook-genius",
 		
-		"partials/h5bp-utilities";
+		"boilerplate/h5bp-utilities";

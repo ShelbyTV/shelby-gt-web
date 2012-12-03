@@ -1,0 +1,7 @@
+@each $name in $color-names {
+  .button_#{$name} {
+    $base: name-to-value($name);
+    //take the color-name and look up the corresponding color-value
+    @include button($name,$base);
+  }//eo .button_#{$name}
+}

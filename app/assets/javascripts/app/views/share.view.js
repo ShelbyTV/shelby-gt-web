@@ -193,8 +193,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _handleShareSuccess : function(chainedUrls){
     if (chainedUrls.length) {
+      // console.log('this.model',this.model);
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
+      // console.log('else this.model',this.model);
       this._clearTextArea();
       this._components.spinner && this._hideSpinner();
       this.onShareSuccess();
@@ -211,10 +213,12 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   onShareSuccess : function(){
+    shelby.alert('Your message has been sent!')
     // subclasses may optionally override to perform custom handling on share success, but
     // should always call the superclass's implementation as part of theirs if they have
     // a share button
     if (this._components.shareButton) {
+      console.log('onShareSuccess!');
       this.$('.js-submit-share').removeClass('js-sharing');
     }
   },

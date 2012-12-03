@@ -1,28 +1,27 @@
 <div class="bookmarklet-video-tab-<%=videoId%> bookmarklet-video-tab">
   <ul id="control-on-page-<%= videoId %>" class="embedded-buttons embedded-controls found-video-<%= videoId %> buttons-animate clearfix" type="toolbar">
     <li class="queue-list-item">
-      <button class="bookmarklet-button all-queue button-<%= videoId %>" data-videoId="<%= videoId %>" type="button">
-        <i class="button_icon_left icon_videocard_queue queue-button"> </i>
+      <button class="button_primer button_gray-seven bookmarklet-button js-queue button-<%= videoId %>" data-videoId="<%= videoId %>">
+        <i class="button_icon_left icon_videocard_queue_on icon--queue">
+        </i>
       </button>
     </li>
     <li class="roll-list-item">
-      <button class="bookmarklet-button all-roll button-<%= videoId %>" data-videoId="<%= videoId %>" type="button"> 
-        <i class="button_icon_left icon_videocard_roll roll-button"> Roll... </i>
+      <button class="button_primer button_gray-seven bookmarklet-button js-roll button-<%= videoId %>" data-videoId="<%= videoId %>">
+        <i class="button_icon_left icon_videocard_roll_on icon--roll"> Roll... </i>
       </button>
     </li>
   </ul>
 
   <ul class="embedded-buttons video-card-context clearfix video-context-<%=videoId%> buttons-animate" id="context-on-page-<%=videoId%>" data-videoId="<%=videoId%>">
       <li class="frame-avatar-listitem-<%=videoId%> creator-list-item">
-        <button class="bookmarklet-button all-creator button-<%=videoId%>" data-videoId="<%=videoId%>" type="button">
+        <button class="button_primer button_gray-seven bookmarklet-button js-creator button-<%=videoId%>" data-videoId="<%=videoId%>" type="button">
         </button>
       </li>
       <li class="comment-list-item">
-          <button class="bookmarklet-button all-comment button-<%=videoId%>" data-videoId="<%=videoId%>" type="button">
-            <i class="comment-button-content"> </i>
-          </button>
+        <button class="button_primer button_gray-seven bookmarklet-button js-comment button-<%=videoId%>" data-videoId="<%=videoId%>" type="button">
+          <i class="comment-button-content"> </i>
+        </button>
       </li>
   </ul>
-
 </div>
-

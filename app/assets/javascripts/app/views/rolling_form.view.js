@@ -7,7 +7,7 @@
 *
 */
 ( function(){
-	
+
   var BackboneCollectionUtils       = libs.utils.BackboneCollectionUtils;
   var MessageModel                  = libs.shelbyGT.MessageModel;
   var RollFollowingsConfig          = shelby.config.db.rollFollowings;
@@ -16,21 +16,21 @@
   var ShareActionState              = libs.shelbyGT.ShareActionState;
   var ShareActionStateModel         = libs.shelbyGT.ShareActionStateModel;
   var ShelbyAutocompleteView        = libs.shelbyGT.ShelbyAutocompleteView;
-	
+
 	libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
-		
+
 		events : {
 			"click #js-roll-it"					: '_doRoll',
 			"focus #new-roll-name" 		  : '_clearErrors',
 			"focus #js-rolling-message"	: '_clearErrors'
     },
-  
+
     className : 'rolling-form',
 
     template : function(obj){
       return SHELBYJST['rolling-form'](obj);
     },
-  
+
     initialize : function(){
       this._frameRollingState = new ShareActionStateModel();
       this._roll = this.options.roll;
@@ -39,18 +39,17 @@
 
 		render : function(){
 			var self = this;
-			
 
       this.$el.html(this.template({
-                    roll:this._roll, 
-                    frame:this._frame,
-                    user: shelby.models.user,
-                    rollOptions: {
-                      pathForDisplay:RollViewHelpers.pathForDisplay(this._roll), 
-                      titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll), 
-                      urlForRoll:RollViewHelpers.urlForRoll(this._roll)
+                      roll:this._roll,
+                      frame:this._frame,
+                      user: shelby.models.user,
+                      rollOptions: {
+                        pathForDisplay:RollViewHelpers.pathForDisplay(this._roll),
+                        titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll),
+                        urlForRoll:RollViewHelpers.urlForRoll(this._roll)
+                      }
                     }
-                  }
                 ));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
@@ -64,6 +63,10 @@
       });
       this.renderChild(this._shelbyAutocompleteView);
     },
+    
+    setRoll: function(roll){
+      this._roll = roll;
+    },
 
 		_doRoll : function(e){
 			e.preventDefault;
@@ -75,7 +78,7 @@
 				this._createRollRerollFrameAndShare();
 			}
 		},
-		
+
 		_validate : function(){
       validates = true;
 
@@ -87,21 +90,21 @@
 
       return validates;
 		},
-		
+
 		_clearErrors : function(){
 			// this.$('#new-roll-name').removeClass('error');
 			this.$('#js-rolling-message').removeClass('error');
 		},
-		
+
 		// create new roll, then proceed like normal
 		_createRollRerollFrameAndShare : function(){
 			var self = this;
-			
+
 			var roll = new RollModel({
 				'title' : this.$("#new-roll-name").val(),
 				'public': true,
 				'collaborative': false});
-			
+
 			roll.save(null, {
         success : function(newRoll){
 					// add new roll to rolls collection, correctly sorted
@@ -116,7 +119,7 @@
 					self._rerollFrameAndShare(newRoll);
         }});
 		},
-		
+
 		_rerollFrameAndShare : function(roll){
 			var self = this;
 			var message = this.$("#js-rolling-message").val();
@@ -146,11 +149,11 @@
         });        
       }
 		},
-		
+
 		_rollingSuccess : function(roll, newFrame){
 			this.parent.done();
 			//N.B. This link is picked up by NotificationOverlayView for routing
-			shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="roll-route">Go to Roll</a></span> Video successfully rolled!');
+      shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="notification_option js-roll-route">Go to Roll</a></span> Video successfully rolled!');
 		},
 		
 		_addViaUrl : function(message, roll, shareDests) {
@@ -178,7 +181,7 @@
   			}
   		});
 		}
-		
+
 	});
-	
+
 }) ();
