@@ -561,7 +561,7 @@ $landing-page-shelf-background: #ddd;
   }
 }
 ////////////////////////////////////////////////////////////////////////////
-//  this makes vertical height of video more reasonable/proportional
+//  narrow screens
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-width : 470px) {
   .seovideo__video {
@@ -571,9 +571,33 @@ $landing-page-shelf-background: #ddd;
       height: 200px;
     }
   }
+
+  .seovideo__aside {
+    margin: 1em;
+  }
+
+  .seovideo__list--aside {
+    .seovideo__item {
+      float: none;
+      margin: 20px 2px;
+      width: auto;
+
+      &:first-child {
+        margin-top: 1px;
+      }
+
+      &:nth-child(2n+1) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 0;
+      }
+    }
+  }
 }
 ////////////////////////////////////////////////////////////////////////////
-//  this makes wide sceens more approachable
+//  for wide screens
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (min-width : 1200px) {
   .seovideo {
@@ -590,6 +614,11 @@ $landing-page-shelf-background: #ddd;
     margin: 1px;
     float: right;
     width: 318px;
+
+    .seovideo__h3 {
+      margin-bottom: 0.25em;
+      margin-top: 0.2em;
+    }
   }
 
   .seovideo__list--aside {
@@ -597,6 +626,10 @@ $landing-page-shelf-background: #ddd;
       float: none;
       margin: 20px 2px;
       width: auto;
+
+      &:first-child {
+        margin-top: 1px;
+      }
 
       &:nth-child(2n+1) {
         padding-right: 0;
