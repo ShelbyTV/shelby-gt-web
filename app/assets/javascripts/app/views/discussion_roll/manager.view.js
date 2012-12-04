@@ -4,6 +4,10 @@
  */
 libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   
+  events : {
+    "click .discussion__item--current-discussion-roll" : "_disappear"
+  },
+  
   el: '#js-discussions-manager',
   
   // Colleciton of all the DiscussionRolls we have access to
@@ -44,6 +48,13 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
           '.js-dicussion-rolls-nav' );
       });
     }
+  },
+  
+  _disappear : function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    
+    this.options.delegate.discussionRollsManagerViewShouldDisappear();
   }
   
 });

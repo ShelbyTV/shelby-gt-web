@@ -1,5 +1,9 @@
-<div class="discussion discussion__content js-discussion">
+<div class="discussion discussion__content discussion--main js-discussion">
 	<header class="discussion__header">
+		<div class="discussion__content">
+			<button class="button_primer button_blue-dark discussion__button--nav js-nav">All Chats</button>
+		</div>
+		
 	  <h1 class="discussion__h1">
 	    Shelby Chat
 	  </h1>
@@ -10,13 +14,6 @@
 			</div>
 	  </div>
 	</header>
-
-	<!-- TODO: just putting this here to get things working, needs to move for correct styling/function of ux -->
-	<section class="discussion__lgutter" style="padding-top: 100px">
-		<div class="discussions-manager" id="js-discussions-manager">
-			<!-- content filled in by DiscussionRollsManagerView -->
-		</div>
-	</section>
 	
   <section class="discussion__body frame-body-wrapper">
     <div class="discussion-conversation js-discussion-roll-conversation-wrapper">
@@ -29,4 +26,10 @@
       <!-- content filled in by DiscussionRollReplyView -->
     </div>
 	</footer>
+</div>
+
+<div class="discussion discussion__content discussion__content--manager">
+	<div class="" id="js-discussions-manager">
+		<!-- content filled in by DiscussionRollsManagerView -->
+	</div>
 </div>

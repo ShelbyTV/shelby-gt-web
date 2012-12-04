@@ -1,5 +1,9 @@
 libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   
+  events : {
+    "click .js-nav" : "_showDiscussionRollsManagerView",
+  },
+  
   el: '#js-shelby-wrapper',
   
   initialize : function(){
@@ -33,8 +37,22 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
       this.$(".js-discussion-roll-recipients"));
     this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(opts), 
       ".js-discussion-roll-conversation-wrapper");
-    this.renderChild(     new libs.shelbyGT.DiscussionRollsManagerView(opts));
+    this.renderChild(     new libs.shelbyGT.DiscussionRollsManagerView(_.extend({delegate:this}, opts)));
     this.renderChild(     new libs.shelbyGT.DiscussionRollReplyView(opts));
-  }
+  },
+  
+  _showDiscussionRollsManagerView: function(e){
+    e.stopPropagation();
+    
+    this._scrollTopWhenHidden = $("body").scrollTop();
+    $(".js-discussion").addClass('discussions-manager-shown');
+    $('.discussion__content--manager').show();
+  },
+  
+  discussionRollsManagerViewShouldDisappear: function(){
+    $('.discussion__content--manager').hide();
+    $(".js-discussion").removeClass('discussions-manager-shown');
+    $("body").scrollTop(this._scrollTopWhenHidden);
+  },
   
 });
