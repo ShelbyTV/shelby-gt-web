@@ -1,13 +1,17 @@
-<a href="#" class="js-track-event" data-ga_category="Rolling" data-ga_action="click add to roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-  <div class="roll-selection-item-lining clearfix">      
-    <h2 class="roll-selection-item-title">
-			<span class="path"><%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/</span><%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
+<a href="#" class="roll_selection__link js-track-event" data-ga_category="Rolling" data-ga_action="click add to roll" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <div class="roll_selection__item_lining clearfix">
+    <h2 class="roll_selection__h2">
+			<span class="path">
+				<%= libs.shelbyGT.viewHelpers.roll.pathForDisplay(roll) %>/
+			</span>
+
+			<%= libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll) %>
     </h2>
 
 		<% if(libs.shelbyGT.viewHelpers.roll.urlForRoll(roll)) { %>
-	    <h3 class="roll-selection-item-url">
+	    <h3 class="roll_selection__h3">
 				<%= libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %>
 	    </h3>
 		<% } %>
-  </div>
-</a>
+  </div><!-- eo .roll_selection__item_lining -->
+</a><!-- eo .roll_selection__link -->
