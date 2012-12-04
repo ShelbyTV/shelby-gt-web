@@ -172,7 +172,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   display: none;
 }
 
-.discussion--recipients.show-all-recipients {
+.discussion--recipients .show-all-recipients {
   .discussion__item--recipients-overflow {
     display: inline-block;
   }
@@ -204,6 +204,16 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 //  Conversation
 ////////////////////////////////////////////////////////////////////////////
+
+.discussion--main {
+  &.discussions-manager-shown {
+    display: none;
+  }
+  &.discussion-attachment-shown {
+    display: none;
+  }
+}
+
 .discussion-conversation {
 
 }
@@ -388,7 +398,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 //  Search and Select Video Attachment UI
 ////////////////////////////////////////////////////////////////////////////
-.discussion__content--attachment {
+.discussion--attachment {
   .discussion__header {
     padding-bottom: 10px;
     
@@ -403,9 +413,10 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
       padding-left: .5em;
     }
 
-    left: 21px;
+    left: 8px;
+    padding: .5em;
     position: absolute;
-    top: -29px;
+    top: 3px;
   }
 }
 
@@ -480,5 +491,48 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     & > object {
       height: 250px;
     }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Manager: navigations of all shelby chats
+////////////////////////////////////////////////////////////////////////////
+
+.discussion__button--nav {
+  font-size: 2em;
+  line-height: 0.8;
+  padding: .2em;
+  position: absolute;
+  top: 2px;
+}
+
+.discussion__content--manager {
+  display: none;
+}
+
+.discussion__list--discussions-nav {
+  padding: 35px 0;
+}
+
+.discussion__item--discussion-roll {
+  background-color: white;
+  background-image: url($icon-chevron-right);
+  background-repeat: no-repeat;
+  background-position: 98% 52%; 
+  border: 1px solid black;
+  border-top: none;
+  font-size: 1.3em;
+  min-height: 75px;
+  padding: .5em;
+  
+  &:hover, &.discussion__item--current-discussion-roll {
+    background-color: #f5f6f7;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .discussion__h2 {
+    display: none;
   }
 }
