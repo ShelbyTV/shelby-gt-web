@@ -10,6 +10,10 @@
   .persistent_video_info {
     opacity: 0.4;
   }
+  
+  .hide-guide .persistent_video_info {
+    opacity: 0.0;
+  }
 
   .guide-toggle.hide, 
   .guide-toggle.hide:hover {
