@@ -14,7 +14,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
-    "click .js-up-next"                                                           : "_activate"
+    "click .js-next-video"                                                        : "_skipToNextVideo"
   },
 
   initialize: function(opts){
@@ -120,7 +120,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation, frame);
   },
 
-  _activate : function(){
+  _skipToNextVideo : function(){
     this._userDesires.set('changeVideo', 1);
     this._userDesires.unset('changeVideo');
   }
