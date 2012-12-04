@@ -103,43 +103,43 @@
         <% end %>
       </aside><!-- eo .seovideo__aside -->
 
-      <div class="seovideo__messages">
+      <div class="seovideo__messages clearfix">
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
-            <h3 class="seovideo-column-header">
+            <h3 class="seovideo__h3">
             Shelby Rolls
             </h3>
-            <ul class="list_module seovideo-messages-list">
+            <ul class="seovideo__list">
             <% @messages[:shelby].each do |message| %>
               <%= render :partial => "generic_message", :locals => { :message => message } %>
             <% end %>
             </ul>
           <% end %>
           <% if @messages[:facebook].length > 0 %>
-            <h3 class="seovideo-column-header">
+            <h3 class="seovideo__h3">
             Facebook Shares
             </h3>
-            <ul class="list_module seovideo-messages-list">
+            <ul class="seovideo__list">
             <% @messages[:facebook].each do |message| %>
               <%= render :partial => "generic_message", :locals => { :message => message } %>
             <% end %>
             </ul>
           <% end %>
           <% if @messages[:twitter].length > 0 %>
-            <h3 class="seovideo-column-header">
+            <h3 class="seovideo__h3">
             Twitter Tweets
             </h3>
-            <ul class="list_module seovideo-messages-list">
+            <ul class="seovideo__list">
             <% @messages[:twitter].each do |message| %>
               <%= render :partial => "twitter_message", :locals => { :message => message } %>
             <% end %>
             </ul>
           <% end %>
           <% if @messages[:tumblr].length > 0 %>
-            <h3 class="seovideo-column-header">
+            <h3 class="seovideo__h3">
             Tumblr Posts
             </h3>
-            <ul class="list_module seovideo-messages-list">
+            <ul class="seovideo__list">
             <% @messages[:tumblr].each do |message| %>
               <%= render :partial => "generic_message", :locals => { :message => message } %>
             <% end %>

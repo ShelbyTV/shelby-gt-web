@@ -9,7 +9,7 @@ $seo-column-right: 200px;
 //  non-normative
 ////////////////////////////////////////////////////////////////////////////
 .xuser-data-timestamp {
-  font-size: .8em;
+  font-size: 0.8em;
   line-height: 1.9;
 }
 
@@ -28,7 +28,8 @@ html,body{
 }
 
 body{
-  background-color:#f8f8f8;
+  // background-color:#f8f8f8;
+  background-color:#dddddd;
   bottom:0;
   color: $font-color;
   font-family: $font-family;
@@ -220,252 +221,28 @@ p {
 //------------------------------------------------------------------------------
 //  seovideo related
 //------------------------------------------------------------------------------
+//messages section
 .seovideo__messages {
+  padding: 0 2em 2em;
 
-}
+  .seovideo__h3 {
+    margin-top: 2em;
+  }
 
+  .seovideo__list {
+    border-bottom: 1px solid $outset;
+    border-top: 1px solid $inset;
+  }
 
-
-////////////////////////////////////////////////////////////////////////////
-//  column setup
-////////////////////////////////////////////////////////////////////////////
-.seovideo-column-left {
-  float: left;
-  padding: 0px;
-  max-width: $seo-column-left;
-  width: 100%;
-}
-
-.seovideo-column-right {
-  float: right;
-  max-width: $seo-column-right;
-}
-
-.seovideo-column-header {
-  font-family: $font-family-display;
-  font-size: 1em;
-  font-weight: 400;
-  line-height: 2.231;
-  margin: 0;
-}
-
-
-//------------------------------------------------------------------------------
-//  abstracts
-//------------------------------------------------------------------------------
-.seovideo-button {
-  @include button-primer($shelby-blue,dark,wide);
-
-  //TODO: fix this weird bug.
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: $button-color !important;
+  .seovideo__item {
+    border-bottom: 1px solid $inset;
+    border-top: 1px solid $outset;
   }
 }
 
-//------------------------------------------------------------------------------
-//  seovideo head
-//  header.seohead wraps the header bar AND the tagline/CTA button.
-//  div.shelby-header == header.shelby-header from the main app.
-//------------------------------------------------------------------------------
-.seovideo-head {
-
-}
-
-.seovideo-subhead{
-  font-size: 10px;
-  margin: 0 auto 4em;
-  max-width: $seo-column-main;
-  position: relative;
-}
-
-.seovideo-subheader {
-  font-family: $font-family-display;
-  font-size: 1.75em;
-  font-weight: 100;
-  line-height: 1;
-}
-
-.seovideo-signup {
-  font-size: 1.5em;
-  position: absolute;
-  width: $seo-column-right;
-  right: 0;
-
-  h2 {
-    font-size: 1em;
-    margin-bottom: 2em;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  request an invite in the header of seo page
-//------------------------------------------------------------------------------
-$landing-page-shelf-background: #ddd;
-
-.landing-form-label {
-  display: block;
-  font-family: $font-family-display;
-  font-size: 1.5em;
-  font-weight: 300;
-  line-height: 2;
-}
-
-.landing-form-input {
-  @include roundies(left);
-  @include transition-property('border');
-  @include transition-duration(0.25s);
-  @include transition-timing-function(ease-in);
-
-  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
-  font-size: 2em;
-  height: 45px;
-  padding: .5em;
-
-  &:focus {
-    border: 1px solid black;
-    outline: none;
-  }
-}
-
-.landing-form-submit {
-  @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
-  @include roundies(right);
-
-  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
-  border-left: none;
-  display: inline-block;
-  font-family: $font-family-display;
-  font-size: 1.3em;
-  font-weight: 400;
-  height: 45px;
-  padding: 1.1em 1em 1.2em;
-  vertical-align: bottom;
-
-  &:hover {
-    @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
-  }
-
-  &:active {
-    @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
-  }
-}
-
-//------------------------------------------------------------------------------
-//  seovideo card
-//------------------------------------------------------------------------------
-.seovideo-card {
-
-}
-
-//------------------------------------------------------------------------------
-//  seovideo embedding module
-//------------------------------------------------------------------------------
-.seovideo-embed {
-  padding: 0px;
-
-  & > iframe,
-  & > embed,
-  & > object {
-    height: 365px;
-    position: relative;
-    width: 100%;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  seovideo details
-//------------------------------------------------------------------------------
-.seovideo-details-wrapper {
-        float: left;
-        width: 100%;
-}
-
-.seovideo-details {
-  margin: 8px 83px 8px 8px;
-        float: left;
-}
-
-//------------------------------------------------------------------------------
-//  seovideo messages
-//------------------------------------------------------------------------------
-.seovideo-messages {
-  clear: left;
-  max-width: $seo-column-left;
-  margin-top: 1em;
-}
-
-.seovideo-messages-list {
-  border-top: 1px solid $inset;
-  margin-right: 125px;
-}
-
-.seovideo-messages-item {
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
-  min-height: 60px;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &:hover {
-    .seovideo-command-menu {
-      opacity: 1;
-    }
-  }
-}
-
-.seovideo-command-menu {
-  opacity: .4;
-}
-////////////////////////////////////////////////////////////////////////////
-//  .media_module.seovideo-messages-block
-////////////////////////////////////////////////////////////////////////////
-.seovideo-messages-block {
-
-}
-
-//------------------------------------------------------------------------------
-//  seovideo related videos
-//------------------------------------------------------------------------------
-.seovideo-relatedvideos {
-
-}
-
-.seovideo-relatedvideo-header {
-
-}
-
-.seovideo-relatedvideo {
-  margin: 0px 0px 10px 0px;
-
-  img {
-    width: 100%;
-  }
-}
-
-.seovideo-relatedvideo-link {
-  display: block;
-  max-width: $seo-column-right;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.seovideo-relatedvideo-title {
-  margin: 4px 0px 0px 0px;
-  max-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.seovideo-message {
-  margin: 10px 10px 10px 10px;
+//individual messages
+.seovideo__message {
+  min-height: 2.6em;
 }
 
 //------------------------------------------------------------------------------
@@ -503,63 +280,6 @@ $landing-page-shelf-background: #ddd;
          height: 25px;
 }
 
-//------------------------------------------------------------------------------
-//  media query,
-//  when window is NARROWER than 850px
-//------------------------------------------------------------------------------
-@media only screen and (max-width : 850px) {
-  .seovideo-column-right {
-    clear: both;
-    float: none;
-          max-width: $seo-column-left;
-    width: auto;
-                margin-left: 8px;
-  }
-
-        .seovideo-messages {
-                margin-left: 8px;
-        }
-
-        .seovideo-genius-ad {
-                display: none;
-        }
-
-  .seovideo-subhead {
-    text-align: center;
-    margin: 1.7em 0em 0em 0em;
-    padding: 0em 1em 0em 1em;
-    max-width: $seo-column-left;
-  }
-
-  .seovideo-subheader {
-          max-width: $seo-column-left;
-    margin-top: 1em;
-  }
-
-  .seovideo-signup {
-    float: none;
-    margin: 0;
-  }
-
-  .seovideo-card {
-    .seovideo-column-header {
-      padding: 8px 8px 0;
-    }
-  }
-
-  .seovideo-relatedvideo {
-    float: left;
-    width: 33.3333%;
-  }
-
-  .seovideo-relatedvideo-link {
-    margin-right: 5px;
-  }
-
-  .seovideo-messages-list {
-    margin: 8px;
-  }
-}
 ////////////////////////////////////////////////////////////////////////////
 //  narrow screens
 ////////////////////////////////////////////////////////////////////////////
@@ -593,6 +313,16 @@ $landing-page-shelf-background: #ddd;
       &:nth-child(2n) {
         padding-left: 0;
       }
+    }
+  }
+
+  .seovideo__messages {
+    .seovideo__h3 {
+      margin-top: 0;
+    }
+
+    .seovideo__list {
+      margin-bottom: 2em;
     }
   }
 }
