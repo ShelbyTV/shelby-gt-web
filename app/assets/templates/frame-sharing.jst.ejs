@@ -7,21 +7,20 @@
 <% var conversation   = frame.get('conversation') %>
 <% var message        = conversation ? conversation.get('messages').at(0) : null %>
 
-<div class="overlay_header guide-overlay-head sharing-head">
-  <div class="guide-overlay-head-lining">
-    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+<div class="sharing-head">
+  <div class="discussion__h1">
+    <button class="button_primer button_gray-medium guide-overlay-cancel share-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
       <i class="button_icon_left icon_cancel icon">
         Cancel
       </i>
     </button>
 
-    <h2 class="guide-overlay-header">
-      Share this video with friends
-    </h2>
+    New Shelby Chat
+
   </div><!-- eo guide-overlay-head-lining -->
 </div><!-- eo guide-overlay-head.sharing-head -->
 
-<div class="overlay_body guide-overlay-body conversation-body">
+<div class="overlay_body guide-overlay-body conversation-body share-overlay-body">
   <form class="form_module share-form clearfix">
     <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle || '' %>
@@ -35,18 +34,6 @@
         })
       %>
 
-      <% if (!isGenius && message) { %>
-        <%=
-          SHELBYJST['media-module']({
-              userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(message),
-              userNickname : message.get('nickname'),
-              messageText  : message.get('text'),
-              timestamp    : frame.get('created_at'),
-              action       : 'sharing',
-              subline      : false
-          })
-        %>
-      <% } %>
     </div><!-- eo frame-body-wrapper -->
     <div class="frame-sharing">
     </div>
