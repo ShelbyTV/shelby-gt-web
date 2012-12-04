@@ -256,7 +256,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
       this.$(".video-player-fullscreen").removeClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      this.$(".video-player-fullscreen").addgClass("cancel");
+      this.$(".video-player-fullscreen").addClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
