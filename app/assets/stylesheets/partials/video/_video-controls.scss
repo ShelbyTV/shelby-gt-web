@@ -182,18 +182,7 @@
   	@include transition-timing-function('ease-out, ease-in-out');
   	@include transition-delay('0s, 0s');
 }
-////////////////////////////////////////////////////////////////////////////
-//  container, positions prev/next buttons
-////////////////////////////////////////////////////////////////////////////
-.videoplayer-nav {
-  height: 4em;
-  margin-top: -20px;
-  padding: 1em;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  z-index: 1;
-}
+
 ////////////////////////////////////////////////////////////////////////////
 //  shared props between both prev/next
 //  thus module, hence underscore
@@ -201,11 +190,14 @@
 .videoplayer-nav__btn {
   @include gradient-primer($video-player);
   @include opacity(0.5);
-
+  
   border: none;
   border-radius: $radius;
   height: 4em;
+  margin-top: -145px;
   padding: 0;
+  position: absolute;
+  top: 50%;
   width: 4em;
   z-index: 2;
 
@@ -222,10 +214,10 @@
   //  compound, not nested
   ////////////////////////////////////////////////////////////////////////////
   &.videoplayer-nav__btn--prev {
-
+    left: $defaultMargin;
   }
 
   &.videoplayer-nav__btn--next {
-    float: right;
+    right: $defaultMargin;
   }
 }

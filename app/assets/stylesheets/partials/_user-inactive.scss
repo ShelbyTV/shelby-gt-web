@@ -8,7 +8,7 @@
   }
 
   .persistent_video_info {
-    opacity: 0;
+    opacity: 0.4;
   }
 
   .guide-toggle.hide, 
@@ -30,7 +30,7 @@
   }
 
   //elements in the videoplayer and videoplayer navigational buttons
-  .videoplayer-nav,
+  .videoplayer-nav__btn,
   .videoplayer-tools__wrapper {
     opacity: 0;
   }
