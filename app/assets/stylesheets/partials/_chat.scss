@@ -499,9 +499,11 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 
 .discussion__button--nav {
-  padding: .5em;
+  font-size: 2em;
+  line-height: 0.8;
+  padding: .2em;
   position: absolute;
-  top: 3px;
+  top: 2px;
 }
 
 .discussion__content--manager {
