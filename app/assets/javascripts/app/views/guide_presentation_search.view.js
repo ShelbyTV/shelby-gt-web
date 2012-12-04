@@ -22,7 +22,11 @@
     },
 
     _onSearchSubmit : function() {
-      shelby.router.navigate('search?query=' + encodeURIComponent(this.$('.js-nav-search-form-text').val()), {trigger: true});
+      var query = _.str.clean(this.$('.js-nav-search-form-text').val());
+      if (query) {
+        shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
+        this.$('.js-nav-search-form-text').val('');
+      }
       return false;
     },
 

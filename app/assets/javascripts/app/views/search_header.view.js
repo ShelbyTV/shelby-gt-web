@@ -23,9 +23,11 @@ libs.shelbyGT.SearchHeaderView = Support.CompositeView.extend({
   },
 
   _onSearchSubmit : function() {
-    var query = this.$('#js-video-search-query-input').val();
-    shelby.models.videoSearch.set('query', query);
-    shelby.models.videoSearch.trigger('search');
+    var query = _.str.clean(this.$('#js-video-search-query-input').val());
+    if (query) {
+      shelby.models.videoSearch.set('query', query);
+      shelby.models.videoSearch.trigger('search');
+    }
     return false;
   }
 
