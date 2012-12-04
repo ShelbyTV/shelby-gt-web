@@ -223,7 +223,7 @@ p {
 //------------------------------------------------------------------------------
 //messages section
 .seovideo__messages {
-  padding: 0 2em 2em;
+  padding: 0 0 2em;
 
   .seovideo__h3 {
     margin-top: 2em;
@@ -243,6 +243,10 @@ p {
 //individual messages
 .seovideo__message {
   min-height: 2.6em;
+
+  .seovideo__block {
+    margin-right: 80px;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -317,6 +321,8 @@ p {
   }
 
   .seovideo__messages {
+    padding: 0 1em;
+
     .seovideo__h3 {
       margin-top: 0;
     }
