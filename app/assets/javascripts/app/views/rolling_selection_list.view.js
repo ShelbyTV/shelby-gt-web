@@ -12,9 +12,9 @@
       collectionAttribute : 'rolls',
       simulateAddTrue : false
     }),
-    
-    className: "rolls-list rolling__roll-selection-list",
-    
+
+    className: "rolls-list roll_selection__list",
+
     initialize : function(){
       var self = this;
       this.options.listItemView = function(item, params){
