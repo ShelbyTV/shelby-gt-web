@@ -32,7 +32,14 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
       video.id = idString;
       return new libs.shelbyGT.FrameModel({
         id : video.id,
-        video : video
+        video : video,
+        conversation : {
+          messages : [
+            {
+              text : video.get('description')
+            }
+          ]
+        }
       });
     });
   }

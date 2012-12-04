@@ -1,5 +1,4 @@
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
