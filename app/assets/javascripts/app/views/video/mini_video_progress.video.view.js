@@ -36,6 +36,13 @@ libs.shelbyGT.MiniVideoProgress = Support.CompositeView.extend({
 		newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
 		newPlayerState.bind('change:bufferTime', this._onBufferTimeChange, this);
 		newPlayerState.bind('change:duration', this._onDurationChange, this);
+		
+		//need to fake-fire some change events since they may not change when swapping players
+    //discussion:  If player A has duration D and gets swapped out, then gets swapped back in (without changing videos) it
+    // will still have duration D.  Thus no change will be fired and we need to fake-fire here.
+    this._onDurationChange('duration', newPlayerState.get('duration'));
+    this._onCurrentTimeChange('currentTime', 0);
+    this._onBufferTimeChange('bufferTime', 0);
 	},
 	
 	_onCurrentTimeChange: function(attr, curTime){
@@ -57,6 +64,7 @@ libs.shelbyGT.MiniVideoProgress = Support.CompositeView.extend({
 	
 	_onBufferTimeChange: function(attr, bufferTime){
 		var pct = (bufferTime / this._currentDuration) * 100;
+		if(isNaN(pct)){ pct = 0; }
 		this.$('.videoplayer-progress__load').width(pct+"%");
 	},
 	
