@@ -83,7 +83,7 @@ private
     # TODO: need to guarantee ordering by rec score
     @video_related_ids.each do |rec|
 
-      break if @video_related_videos.length >= 3
+      break if @video_related_videos.length >= 4
       
       begin
         url = "#{@@video_api_base}/#{rec["recommended_video_id"]}"
