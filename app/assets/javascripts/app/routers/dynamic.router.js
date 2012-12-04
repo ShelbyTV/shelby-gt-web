@@ -126,6 +126,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
+    
+    //hide the guide initially for iso rolls
+    shelby.models.userDesires.set({guideShown: false});
   },
   
   displayFacebookGeniusRoll : function(rollId, frameId, params){

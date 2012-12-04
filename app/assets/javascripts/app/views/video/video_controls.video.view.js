@@ -56,6 +56,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
       stop:  function(event, ui){ self._onScrubberDragStop(event, ui); }
     });
+    
+    //make sure guide icon is in correct state initially
+    this._guideVisibilityChange('guideShown', this._userDesires.get('guideShown'));
   },
 
   //--------------------------------------
