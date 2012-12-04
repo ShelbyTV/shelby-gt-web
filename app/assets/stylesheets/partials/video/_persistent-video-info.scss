@@ -274,4 +274,8 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       padding-right: .5em;
     }
   }
+  
+  .persistent_video_info__next-frame {
+    width: $persistent_video_info--next-frame-width * .75;
+  }
 }
