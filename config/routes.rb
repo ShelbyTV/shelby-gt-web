@@ -43,6 +43,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # HOME
   get '/explore' => "home#explore"
+  get '/search' => "home#search"
   get '/signout' => "home#signout", :as => :signout
 
   # Everything else falls through to home#index

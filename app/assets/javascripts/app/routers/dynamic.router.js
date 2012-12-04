@@ -15,6 +15,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "explore"                              : "displayExploreView",
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
+    "search"                               : "displaySearch",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -103,6 +104,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
+  },
+
+  displaySearch : function(params){
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+    var query = params && params.query
+    if (query) {
+      shelby.models.videoSearch.set('query', params.query);
+    }
+    shelby.models.guide.set({
+      displayState : libs.shelbyGT.DisplayState.search
+    });
+    if (query) {
+      shelby.models.videoSearch.trigger('search');
+    }
   },
 
   displayIsolatedRoll : function(rollId, frameId, params){

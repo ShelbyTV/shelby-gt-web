@@ -47,6 +47,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
+    shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -56,6 +57,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
 
+    shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -96,18 +98,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       });
     }
     else {
-      self.initAnonymous(url);
+      shelby.models.user = new libs.shelbyGT.AnonUserModel();
+      this._reroute();
+      shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
     }
-  },
-
-  initAnonymous : function(url){
-    // init anon user -> nav to featured roll or url specified roll
-    shelby.models.user = new libs.shelbyGT.AnonUserModel();
-    this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
-    this._reroute();
-    
-    shelby.track('identify', {nickname: 'anonymous'});
   },
 
   //---

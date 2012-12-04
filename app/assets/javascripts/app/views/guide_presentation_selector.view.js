@@ -36,6 +36,9 @@
         model : shelby.models.invite,
         user : shelby.models.user
       }));
+      this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
+        el : this.$('.js-guide-search')
+      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -92,6 +95,8 @@
         $setSelectedClassOn = this.$('.js-explore');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
+        $setSelectedClassOn = this.$('.js-search');
       }
 
       if ($setSelectedClassOn) {

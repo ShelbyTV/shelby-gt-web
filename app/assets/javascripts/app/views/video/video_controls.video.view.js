@@ -44,7 +44,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({}));
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }

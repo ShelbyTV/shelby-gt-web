@@ -1,5 +1,4 @@
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
@@ -10,17 +9,19 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
-<% var isGenius = frame.has('roll') && frame.get('roll').get('genius') %>
+<% var frameHasRoll = frame.has('roll') %>
+<% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
+<% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var frameViewed = frameGroup.get('collapsed') %>
 <% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
-<% var framePermalink = frame.has('roll') && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
+<% var framePermalink = frameHasRoll && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
 
 <!-- videocard -->
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
       <h1 class="frame-title" title="<%= videoTitle %>">
@@ -74,11 +75,11 @@
               </li>
 
               <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
-                <li class="menu_option frame-item" role="menuitem">
-                  <button class="frame-command command-remove js-remove-frame">
-										<%= shelby.models.user.get('admin') ? "ADMIN KILL VID" : "Remove Video" %>
-                  </button>
-                </li>
+                  <li class="menu_option frame-item" role="menuitem">
+                    <button class="frame-command command-remove js-remove-frame">
+                      <%= shelby.models.user.get('admin') ? "ADMIN KILL VID" : "Remove Video" %>
+                    </button>
+                  </li>
               <% } %>
             </ul>
           </li>
@@ -169,7 +170,7 @@
           <ul class="menu_list menu_list--share-frame">
             <li class="menu_item">
               <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
-                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frame.get('roll').get('title') %>">
+                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
                   <i class="button_icon_left icon_share_twitter icon">
                     Tweet
                   </i>
@@ -177,14 +178,14 @@
               </a>
             </li>
             <li class="menu_item">
-              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
                 <i class="button_icon_left icon_share_facebook icon">
                   Share
                 </i>
               </button>
             </li>
             <li class="menu_item menu_item--right">
-              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>" data-disqus-identifier="<%= frame.id %>">
+              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>" data-disqus-identifier="<%= frame.id %>">
 								<a href="#disqus_thread" data-disqus-identifier="<%= frame.id %>" class="button_icon_left icon_videocard_comment icon">Leave a comment</a>
 							</button>
             </li>
