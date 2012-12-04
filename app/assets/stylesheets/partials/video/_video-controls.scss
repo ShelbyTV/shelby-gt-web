@@ -85,16 +85,6 @@
 	}
 }
 
-.video-player-fullscreen {
-  float: right;
-
-  &.cancel {
-    .icon-fullscreen {
-      background-image: url($icon-player-fullscreen-disable);
-    }
-  }
-}
-
 .video-player-quality {
   float: right;
 
@@ -167,6 +157,40 @@
   font-weight: 300;
   line-height: 3.6em;
   margin: 0 1em;
+}
+
+//------------------------------------------------------------------------------
+//  hide/show guide button
+//------------------------------------------------------------------------------
+.video-player-fullscreen {
+  @include gradient-primer($video-player);
+  @include opacity(0.5);
+  
+  border: none;
+  border-radius: $radius;
+  height: 4em;
+  left: $defaultMargin;
+  margin-top: -90px;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  width: 4em;
+  z-index: 2;
+
+  &:hover {
+    @include opacity(1.0);
+  }
+
+  .icon-fullscreen {
+    display: block;
+    height: inherit;
+  }
+
+  &.cancel {
+    .icon-fullscreen {
+      background-image: url($icon-player-fullscreen-disable);
+    }
+  }
 }
 
 //------------------------------------------------------------------------------

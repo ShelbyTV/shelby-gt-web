@@ -17,12 +17,6 @@
       </i>
     </button>
 
-    <button class="videoplayer_button video-player-fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
-      <i class="ir button_icon_center icon_player_fullscreen_enable icon-fullscreen">
-        Fullscreen
-      </i>
-    </button>
-
     <button class="videoplayer_button video-player-volume unmute js-videoplayer-mute js-track-event" data-ga_category="Player" data-ga_action="Click mute" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       <i class="ir button_icon_center icon_player_sound_on icon-volume">
         Volume
@@ -60,4 +54,10 @@
 	<i class="ir button_icon_center icon_arrow_left icon">
 		Prev
 	</i>
+</button>
+
+<button class="videoplayer_animate video-player-fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
+  <i class="ir button_icon_center icon_player_fullscreen_enable icon-fullscreen">
+    Fullscreen
+  </i>
 </button>
