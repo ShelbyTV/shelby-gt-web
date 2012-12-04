@@ -1,18 +1,17 @@
-<li class="list_item seovideo-messages-item">
-  <blockquote class="media_module seovideo-messages-block">
+<li class="seovideo__item">
+  <blockquote class="media_module seovideo__message">
     <span class="image_module xuser-avatar media_image" style="background-image: url(<%= message["user_image_url"] %>);" role="img">
       <img src="<%= message["user_image_url"] %>" class="visuallyhidden" title="<%= message["nickname"] %>" alt="<%= message["nickname"] %>">
     </span>
 
     <div class="media_body">
-      <p class="xuser-data">
-        <span class="xuser-data-timestamp">
-          <%= message["created_at"] %>
-        </span>
+      <span class="xuser-data-timestamp media_img--rev">
+        <%= message["created_at"] %>
+      </span>
 
+      <p class="media_body seovideo__block">
         <%= message["text"] %>
       </p>
-
     </div>
-  </blockquote><!-- eo .media_module-->
+  </blockquote><!-- eo .seovideo__message -->
 </li>
