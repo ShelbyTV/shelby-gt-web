@@ -22,7 +22,7 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var numVideos = videos.length;
     
     videos.each(function(video, index){
-      video.set('score', index / (numVideos - 1));
+      video.set('score', index);
     });
   },
 

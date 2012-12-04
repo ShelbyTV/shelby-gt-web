@@ -139,8 +139,31 @@
             collection : shelby.collections.videoSearchResultFrames,
             options : {
               collapseViewedFrameGroups : false,
-              comparator : function(frameGroup) {
-                return frameGroup.get('frames').at(0).get('video').get('score');
+              comparator : function(frameGroup1, frameGroup2) {
+                var video1 = frameGroup1.get('frames').at(0).get('video');
+                var score1 = video1.get('score');
+                var video2 = frameGroup2.get('frames').at(0).get('video');
+                var score2 = video2.get('score');
+                if (score1 < score2) {
+                  return -1;
+                } else if (score1 > score2) {
+                  return 1;
+                } else {
+                  // we want to expliciltly and deterministically break ties in sort order
+                  // BECAUSE backbone can sometimes change the order of a collection without notifying you when 3+ items tie on the
+                  // comparator
+
+                  // we'll just use the provider name for now, so the interleaving of provider videos will be the same every time
+                  var videoProvider1 = video1.get('provider_name');
+                  var videoProvider2 = video2.get('provider_name');
+                  if (videoProvider1 > videoProvider2) {
+                    return -1;
+                  } else if (videoProvider1 < videoProvider2) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                }
               },
               doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
