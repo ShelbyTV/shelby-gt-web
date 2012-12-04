@@ -99,18 +99,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       });
     }
     else {
-      self.initAnonymous(url);
+      shelby.models.user = new libs.shelbyGT.AnonUserModel();
+      this._reroute();
+      shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
     }
-  },
-
-  initAnonymous : function(url){
-    // init anon user -> nav to featured roll or url specified roll
-    shelby.models.user = new libs.shelbyGT.AnonUserModel();
-    this.navigate(url ? '/'+url : '/roll/'+_(shelby.models.user.getRollFollowings()).first().id, {trigger:false});
-    this._reroute();
-    
-    shelby.track('identify', {nickname: 'anonymous'});
   },
 
   //---
