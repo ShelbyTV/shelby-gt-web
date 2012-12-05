@@ -4,7 +4,7 @@ window.shelbyBookmarklet = {
     shelbyProviders: [{
         "provider": "blip",
         "domain": "blip.tv",
-        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"],
+        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/", "\\\/players\\\/xplayer\\\?id=([\\\w-]*)"],
         "url_regex": "([0-9]+)"
     }, {
         "provider": "brightcove",
@@ -86,7 +86,7 @@ window.shelbyBookmarklet = {
                 var known_url = "";
                 switch (domain) {
                 case 'blip.tv':
-                    known_url = document.location.href;
+                    known_url = "http://blip.tv/episode/" + video_id;
                     break;
                 case 'youtube.com':
                     known_url = "http://www.youtube.com/watch?v=" + video_id;
