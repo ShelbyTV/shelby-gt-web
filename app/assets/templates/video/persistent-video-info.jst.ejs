@@ -55,9 +55,13 @@
         </i>
       </button>
 
-      <span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
-        <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
-      </span>
+      <% if (!nextFrame.get('isSearchResultFrame')) { %>
+        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
+          <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
+        </span>
+      <% } else { %>
+        <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+      <% } %>
 
       <% if (!nextFrame.get('isSearchResultFrame')) { %>
         shared by <%= nextCreatorNickname %>
@@ -80,9 +84,13 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-          <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-        </div>
+        <% if (!currentFrame.get('isSearchResultFrame')) { %>
+          <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+            <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+          </div>
+        <% } else { %>
+          <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+        <% } %>
         <div class="media_body">
           <h3 class="xuser-data persistent_video_info__h4--light">
             <% if (!currentFrame.get('isSearchResultFrame')) { %>
