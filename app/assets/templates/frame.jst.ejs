@@ -18,7 +18,7 @@
 <% var frameViewed = frameGroup.get('collapsed') %>
 <% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
-<% var framePermalink = frameHasRoll && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
+<% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
