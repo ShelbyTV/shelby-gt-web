@@ -23,7 +23,7 @@ libs.shelbyGT.SearchHeaderView = Support.CompositeView.extend({
   },
 
   _onSearchSubmit : function() {
-    var query = _.str.clean(this.$('#js-video-search-query-input').val());
+    var query = _(this.$('#js-video-search-query-input').val()).clean();
     if (query) {
       shelby.models.videoSearch.set('query', query);
       shelby.models.videoSearch.trigger('search');

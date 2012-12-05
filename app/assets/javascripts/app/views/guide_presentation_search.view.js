@@ -22,7 +22,7 @@
     },
 
     _onSearchSubmit : function() {
-      var query = _.str.clean(this.$('.js-nav-search-form-text').val());
+      var query = _(this.$('.js-nav-search-form-text').val()).clean();
       if (query) {
         shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
         this.$('.js-nav-search-form-text').val('');

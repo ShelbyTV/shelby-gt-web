@@ -61,7 +61,7 @@
 
       shared by <%= nextCreatorNickname %>
 
-      <% if(nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) { %>
+      <% if((nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) || nextFrame.get('isSearchResultFrame')) { %>
         <p class="xuser-message">
           <%= nextMessages.models[0].escape('text') %>
         </p>
@@ -81,10 +81,14 @@
         </div>
         <div class="media_body">
           <h3 class="xuser-data persistent_video_info__h4--light">
-            shared by <strong><%= currentCreatorNickname %></strong>
+            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+              shared by <strong><%= currentCreatorNickname %></strong>
+            <% } else { %>
+              found on <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+            <% } %>
           </h3>
 
-          <% if(currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
+          <% if((currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame')) { %>
             <p>
               <%= currentMessages.models[0].escape('text') %>
             </p>
