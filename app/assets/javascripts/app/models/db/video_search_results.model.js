@@ -29,7 +29,10 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
   getVideosWrappedInFrames : function() {
     return this.get('videos').map(function(video) {
       var idString = video.get('provider_name') + ":" + video.get('provider_id');
-      video.set('id', idString);
+      video.set({
+        id : idString,
+        isSearchResultVideo : true
+      });
       return new libs.shelbyGT.FrameModel({
         id : video.id,
         video : video,

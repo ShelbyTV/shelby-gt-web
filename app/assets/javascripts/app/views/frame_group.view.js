@@ -68,11 +68,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (!this.model) return false;
-    var frameVideo = this.model.getFirstFrame().get('video');
-    if (frameVideo.id == video.id){
+    var frame = this.model.getFirstFrame();
+    var frameVideo = frame.get('video');
+    if (frameVideo.id == video.id ||
+        (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
-      this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
+      this.$('.js-queue-frame').toggleClass('queued button_gray-light', !removeVideo);
       this.$('.js-queue-frame i').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },

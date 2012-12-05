@@ -52,21 +52,21 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
     
-    if (shelby.models.guide.get('displayState') === "search") {
+    if (this.get('isSearchResultFrame')) {
       var _newFrame = new libs.shelbyGT.FrameModel();
       var _wl_roll = shelby.models.user.get('watch_later_roll');
       var _message = "added to shelby via a video search";
       _newFrame.save(
-  			{url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
-  			{url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames', 
-  			success: function(newFrame){
+        {url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
+        {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
+        success: function(newFrame){
           // we only want to update the set of queued videos if the ajax call succeeds,
           // that's the only way that the Queued state of a video will persist across navigation
           // around the app
-          shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
+          shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
           if (onSuccess) onSuccess();
-  			}
-  		});
+        }
+      });
       
     }
     else {
