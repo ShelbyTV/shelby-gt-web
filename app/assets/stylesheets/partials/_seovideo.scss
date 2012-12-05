@@ -186,6 +186,39 @@ p {
     font-weight: normal;
   }
 }
+
+.seovideo__item--advertisement {
+  $related_video__height: 195px;
+
+  .seovideo__thumbnail {
+    height: $related_video__height;
+  }
+
+  .seovideo__h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+  }
+
+  .related_video__footer {
+    color: #efefef;
+    height: $related_video__height;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+  }
+
+  .related_video__footer-lining {
+    margin-right: 10px;
+
+    & > .icon {
+      padding-right: 2em;
+      -webkit-background-size: 1em;
+      background-size: 1em;
+    }
+  }
+}
 // the related video design requires some complex css.
 // that's why we're creating this "related_video" block.
 .related_video {
