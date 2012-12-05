@@ -29,7 +29,7 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
   getVideosWrappedInFrames : function() {
     return this.get('videos').map(function(video) {
       var idString = video.get('provider_name') + ":" + video.get('provider_id');
-      video.id = idString;
+      video.set('id', idString);
       return new libs.shelbyGT.FrameModel({
         id : video.id,
         video : video,
@@ -39,7 +39,8 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
               text : video.get('description')
             }
           ]
-        }
+        },
+        isSearchResultFrame : true
       });
     });
   }

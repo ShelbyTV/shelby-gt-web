@@ -61,7 +61,7 @@
 
       shared by <%= nextCreatorNickname %>
 
-      <% if(nextMessages.models.length > 0 && nextCreator.get('id') == nextMessages.models[0].get('user_id')) { %>
+      <% if(nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) { %>
         <p class="xuser-message">
           <%= nextMessages.models[0].escape('text') %>
         </p>
@@ -84,7 +84,7 @@
             shared by <strong><%= currentCreatorNickname %></strong>
           </h3>
 
-          <% if(currentMessages.models.length > 0 && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
+          <% if(currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) { %>
             <p>
               <%= currentMessages.models[0].escape('text') %>
             </p>
@@ -117,27 +117,29 @@
           </button>
         </li>
 
-        <li class="persistent_video_info__item clearfix">
-          <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
-                  data-ga_category="Persistent Video Info"
-                  data-ga_action="Click share on current frame"
-                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="button_icon_left icon icon_email">
-              Email Share…
-            </i>
-          </button>
-        </li>
+        <% if (!currentFrame.get('isSearchResultFrame')) { %>
+          <li class="persistent_video_info__item clearfix">
+            <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
+                    data-ga_category="Persistent Video Info"
+                    data-ga_action="Click share on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="button_icon_left icon icon_email">
+                Email Share…
+              </i>
+            </button>
+          </li>
 
-        <li class="persistent_video_info__item clearfix">
-          <button class="persistent_video_info__button persistent_video_info__button--comment js-comment-frame js-track-event"
-                  data-ga_category="Persistent Video Info"
-                  data-ga_action="Click comment on current frame"
-                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="button_icon_left icon_videocard_comment icon">
-              <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
-            </i>
-          </button>
-        </li>
+          <li class="persistent_video_info__item clearfix">
+            <button class="persistent_video_info__button persistent_video_info__button--comment js-comment-frame js-track-event"
+                    data-ga_category="Persistent Video Info"
+                    data-ga_action="Click comment on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="button_icon_left icon_videocard_comment icon">
+                <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
+              </i>
+            </button>
+          </li>
+        <% } %>
       </ul>
     </div><!-- eo .persistent_video_info__foot -->
   </div><!-- eo .persistent_video_info__current-frame -->
