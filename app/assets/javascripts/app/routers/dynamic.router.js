@@ -128,7 +128,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
     
     //hide the guide initially for iso rolls
-    shelby.models.userDesires.set({guideShown: false});
+    if(shelby.routeHistory.length === 0){
+      shelby.models.userDesires.set({guideShown: false});
+    }
   },
   
   displayFacebookGeniusRoll : function(rollId, frameId, params){
