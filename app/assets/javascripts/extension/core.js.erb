@@ -4,7 +4,7 @@ window.shelbyBookmarklet = {
     shelbyProviders: [{
         "provider": "blip",
         "domain": "blip.tv",
-        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/"],
+        "regex": ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/", "\\\/players\\\/xplayer\\\?id=([\\\w-]*)"],
         "url_regex": "([0-9]+)"
     }, {
         "provider": "brightcove",
@@ -47,11 +47,11 @@ window.shelbyBookmarklet = {
         "domain": "youtube.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
         "regex": ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
-    }, /*{
+    }, {
         "provider": "bloomberg",
         "domain": "bloomberg.com",
         "regex": ["embedCode=(\\w*)"]
-    },*/ {
+    }, {
       "provider": "espn",
         "domain": "espn.com,espn.go.com",
         "regex": ["espn%3A([0-9]+)&"]
@@ -86,7 +86,7 @@ window.shelbyBookmarklet = {
                 var known_url = "";
                 switch (domain) {
                 case 'blip.tv':
-                    known_url = document.location.href;
+                    known_url = "http://blip.tv/episode/" + video_id;
                     break;
                 case 'youtube.com':
                     known_url = "http://www.youtube.com/watch?v=" + video_id;
@@ -118,8 +118,8 @@ window.shelbyBookmarklet = {
                     break;
                 case 'bloomberg.com':
                     //HACK (For now).
-                    // so using the page location for now
-                    known_url = document.location.href;
+                    // so using the page location + the provider id
+                    known_url = document.location.href + "?bloomberg_ooyala_id="+ video_id;
                     break;
                 case "espn.com,espn.go.com":
                     known_url = "http://espn.go.com/video/clip?id=" + video_id;
