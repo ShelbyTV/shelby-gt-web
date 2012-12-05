@@ -59,7 +59,11 @@
         <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
       </span>
 
-      shared by <%= nextCreatorNickname %>
+      <% if (!nextFrame.get('isSearchResultFrame')) { %>
+        shared by <%= nextCreatorNickname %>
+      <% } else { %>
+        found on <strong><%= _(nextVideo.get('provider_name')).capitalize() %></strong>
+      <% } %>
 
       <% if((nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) || nextFrame.get('isSearchResultFrame')) { %>
         <p class="xuser-message">
