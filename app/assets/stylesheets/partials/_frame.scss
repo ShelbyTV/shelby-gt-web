@@ -204,6 +204,14 @@ $active-list-item: $shelby-blue;
   position: inherit;
   top: inherit;
   width: inherit;
+
+  .menu_item {
+    &.right {
+      .frame-command {
+        margin: 10px 10px 0 0;
+      }
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -231,7 +239,7 @@ $active-list-item: $shelby-blue;
         border-right: 1px solid $inset;
         border-top: none;
         margin: 0;
-        padding: .75em 1em .75em;
+        padding: .75em 1em .8em;
         text-align: left;
         width: 100%;
 
@@ -249,26 +257,26 @@ $active-list-item: $shelby-blue;
       width: 100%;
     }
 
-    .frame-item {
-      &:first-child {
-        .frame-option {
-          border-top: 1px solid $inset;
-        }
-      }
+    // .frame-item {
+    //   &:first-child {
+    //     .frame-option {
+    //       border-top: 1px solid $inset;
+    //     }
+    //   }
 
-      &:last-child {
-        .frame-option {
-          border-bottom: 1px solid $inset;
-        }
-      }
-    }
+    //   &:last-child {
+    //     .frame-option {
+    //       border-bottom: 1px solid $inset;
+    //     }
+    //   }
+    // }
 
-    .command-sublist {
-      padding-right: 10px;
+    // .command-sublist {
+    //   padding-right: 10px;
 
-      .command-icon {
-      }
-    }
+    //   .command-icon {
+    //   }
+    // }
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
@@ -309,10 +317,20 @@ $active-list-item: $shelby-blue;
 
 .command-share {
   .icon {
-    background-image: none;
+    // background-image: none;
+    -webkit-background-size: contain;
+    background-size: contain;
+    padding-left: 1.8em;
   }
 }
 
+.command-remove {
+  .icon {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+}
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .frame-collapsed{})
@@ -367,6 +385,7 @@ $active-list-item: $shelby-blue;
 .xvideo-unplayable {
   .xvideo-unplayable-thumbnail-overlay {
     @include text-shadow(0px 0px 4px #000);
+
     color: #efefef;
     display: block;
     font-size: 1.5em;
@@ -380,6 +399,7 @@ $active-list-item: $shelby-blue;
   .xframe-thumbnail {
     @include filter(blur(3px) grayscale(1));
   }
+
   .xframe-menu {
     display: none!important;
   }
