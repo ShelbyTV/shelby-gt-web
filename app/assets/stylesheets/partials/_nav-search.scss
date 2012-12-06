@@ -1,5 +1,5 @@
 .nav-search-form-text {
-  @include transition-property('background-color');
+  @include transition-property('background-color, width');
   @include transition-duration(0.25s);
   @include transition-timing-function(ease-in);
 
@@ -7,9 +7,11 @@
   border-radius: 15px;
   display: inline-block;
   margin-top: 4px;
+  width: 150px;
 
   &.focused {
     background-color: #FFF;
+    width: 220px;
   }
 
   &.icon {
