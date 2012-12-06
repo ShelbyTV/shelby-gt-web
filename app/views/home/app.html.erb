@@ -56,7 +56,8 @@
 	    </div><!-- eo .content_wrapper.onboarding-layout -->
 
 	    <div class="content_wrapper action-layout js-action-layout">
-	      <section class="content_lining">
+	      <section class="content_lining js-content_lining">
+					<!-- children appended in by GuideOverlayManager -->
 	      </section>
 	    </div><!-- eo .content_wrapper.action-layout -->
 	
@@ -65,7 +66,6 @@
 		<% end %>
 
   </div> <!-- eo ~application -->
-	
 	<% if (Rails.env == 'production' or Rails.env == 'staging') %>
 	  <script>
 	    var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];

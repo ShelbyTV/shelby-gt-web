@@ -72,7 +72,6 @@
 			e.preventDefault;
 
       if(!this._validate()){ return; }
-
 			if(this._roll){
 				this._rerollFrameAndShare(this._roll);
 			}	else {
@@ -127,28 +126,60 @@
 			var shareDests = [];
       if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
       if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
-
-      // re roll the frame
-      this._frame.reRoll(roll, message, function(newFrame){
-        //rolling is done (don't need to wait for add message to complete)
-        self._rollingSuccess(roll, newFrame);
-        // Optional Sharing (happens in the background)
-        if (shareDests.length) {
-          self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
-            url : newFrame.shareUrl(),
-            success : function(){
-              shelby.track('shared_frame',{destination: shareDests.join(", ")});
-            }
-          });
-        }
-      });
-
+      
+      // if we are in a search result, add to roll via url
+      if (shelby.models.guide.get('displayState') === "search") {
+        var newFrame = new libs.shelbyGT.FrameModel();
+        this._addViaUrl(message, roll, shareDests);
+      }
+      else {
+        // elsere roll the frame
+        this._frame.reRoll(roll, message, function(newFrame){
+          //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+        });        
+      }
 		},
 
 		_rollingSuccess : function(roll, newFrame){
 			this.parent.done();
 			//N.B. This link is picked up by NotificationOverlayView for routing
-			shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="notification_option js-roll-route">Go to Roll</a></span> Video successfully rolled!');
+      shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="notification_option js-roll-route">Go to Roll</a></span> Video successfully rolled!');
+		},
+		
+		_addViaUrl : function(message, roll, shareDests) {
+		  var self = this;
+		  var newFrame = new libs.shelbyGT.FrameModel();
+  		newFrame.save(
+  			{url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
+  			{url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames', 
+  			success: function(newFrame){
+  			  //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+  			},
+  			error: function(a,b,c){
+  				if (b.status == 404) { shelby.alert("404 error"); } 
+  				else { shelby.alert("sorry, something went wrong."); }
+  			}
+  		});
 		}
 
 	});

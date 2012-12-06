@@ -44,7 +44,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({}));
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }
@@ -56,6 +56,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
       stop:  function(event, ui){ self._onScrubberDragStop(event, ui); }
     });
+    
+    //make sure guide icon is in correct state initially
+    this._guideVisibilityChange('guideShown', this._userDesires.get('guideShown'));
   },
 
   //--------------------------------------
@@ -232,14 +235,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _toggleFullscreen: function(){
-    var guideShown = this._userDesires.get('guideShown');
-    if( guideShown ){
-      this._userDesires.set({guideShown: false});
-      this.$(".video-player-fullscreen").addClass("cancel");
-    } else {
-      this._userDesires.set({guideShown: true});
-      this.$(".video-player-fullscreen").removeClass("cancel");
-    }
+    this._userDesires.set({guideShown: !this._userDesires.get('guideShown')});
   },
 
   _nextVideo: function(){
@@ -260,8 +256,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
+      this.$(".video-player-fullscreen").removeClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
+      this.$(".video-player-fullscreen").addClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },

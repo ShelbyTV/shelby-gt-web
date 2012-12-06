@@ -1,0 +1,281 @@
+@import "base";
+/*
+ *  Local variables
+ */
+$persistent_video_info--next-frame-width: 200px;
+$persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
+
+/*
+ * Abstracts
+ */
+.persistent_video_info__list {
+  margin: 0;
+  padding: 0;
+
+  & > .persistent_video_info__item {
+    list-style-type: none;
+    display: inline-block;
+  }
+}
+
+.persistent_video_info__h1 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.persistent_video_info__h2 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.persistent_video_info__h3 {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.persistent_video_info__h4 {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.persistent_video_info__h4--light {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.persistent_video_info__anchor {
+  &,
+  &:link {
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Structure, Beginning of Feature
+//------------------------------------------------------------------------------
+.persistent_video_info__wrapper {
+  // background-color: rgba(239, 239, 239, 1);
+  bottom: 0;
+  height: $persistent_video_info--height;
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+
+  &:before {
+    background-color: transparent;
+    box-shadow: $persistent_video_info__shadow;
+    content: "\0020";
+    display: block;
+    height: inherit;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 1;
+  }
+}
+
+.persistent_video_info {
+  display: block;
+  height: inherit;
+  // margin: 0 auto;
+  // max-width: 2000px;
+}
+/*
+ * Current Frame
+ */
+.persistent_video_info__current-frame { //structured by media_module
+  background: $guide-bg-color;
+  box-shadow: $persistent_video_info__shadow;
+  height: inherit;
+  margin: 0;
+  position: relative;
+
+  .persistent_video_info__h1 {
+    @include ellipsis;
+
+    margin: 0 0 1em;
+  }
+
+  //xuser-* carried over from the frame.jst
+  .xuser-data {
+    margin-bottom: .5em;
+  }
+
+  .xuser-avatar {
+    height: 3.5em;
+    width: 3.5em;
+  }
+}
+
+//current frame structure
+.persistent_video_info__lining {
+  margin: 13px 15px;
+  
+}
+
+.persistent_video_info__body {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+
+  //if there ends up being more than one instance of .persistent_video_info__body
+  //then it may be worth it to abstract the styles; extend this media_body style
+  //to the one that needs it:
+  //ie. .persistent_video_info__body--A
+  //    .persistent_video_info__body--B
+  //if only one instance uses this media body style, then apply it to the respective
+  //modifying class. basically we're forking styles when we need to limit needless
+  //style calculations on the browser's part.
+  .media_body {
+    max-width: 40em;
+    max-height: 6em;
+  }
+}
+
+.persistent_video_info__foot {
+  bottom: 0;
+  margin: 0 0 1em;
+  position: absolute;
+  width: 100%;
+
+  .hr {
+    margin-bottom: 1em;
+  }
+}
+
+
+//list of actions for current frame
+.persistent_video_info__list--actions {
+  font-size: 1.2em;
+  padding-left: 10px;
+
+  .persistent_video_info__item {
+
+  }
+
+  .persistent_video_info__button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: $button-color-light;
+    font-family: $font-family-display;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0.75em 1em 0.8em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      background-size: contain;
+      -webkit-background-size: contain;
+      display: block;
+    }
+  }
+
+  .persistent_video_info__button--roll {
+    .icon {
+      padding-left: 1.4em;
+    }
+  }
+
+  .persistent_video_info__button--queue {
+    .icon {
+      padding-left: 1.3em;
+    }
+  }
+
+  .persistent_video_info__button--share {
+    .icon {
+      padding-left: 1.8em;
+    }
+  }
+
+  .persistent_video_info__button--comment {
+    .icon {
+      padding-left: 1.5em;
+    }
+  }
+}
+
+
+/*
+ * Next Frame
+ */
+.persistent_video_info__next-frame { //structured by media_module
+  background-color: lighten($guide-bg-color,5%);
+  height: inherit;
+  margin: 0;
+  width: $persistent_video_info--next-frame-width;
+
+  &:hover {
+    background-color: lighten($guide-bg-color,8%);
+
+    .frame-thumbnail {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    background-color: $guide-bg-color;
+  }
+
+  .persistent_video_info__h2 {
+    margin: 10px 12px;
+  }
+
+  .persistent_video_info__h3 {
+    margin: 10px 12px;
+  }
+
+  .persistent_video_info__anchor {
+    display: block;
+    height: inherit;
+
+    &,
+    &:link {
+      color: lighten($text, 25%);
+    }
+
+    &:active {
+      color: lighten($text, 10%);
+    }
+
+    &:hover {
+      color: $text;
+      text-decoration: none;
+    }
+  }
+  //non-normative
+  .frame-thumbnail {
+    height: 80px;
+    opacity: 0.75;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .persistent_video_info__list--actions {
+    font-size: 1.1em;
+
+    .persistent_video_info__button {
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+  }
+  
+  .persistent_video_info__next-frame {
+    width: $persistent_video_info--next-frame-width * .75;
+  }
+}

@@ -2,7 +2,7 @@
 
 .mini-videoplayer__wrapper,
 #mini-video-progress {
-  bottom: 0;
+  bottom: $persistent_video_info--height;
   width: 100%;
   position: absolute;
   height: 2px;
@@ -13,20 +13,17 @@
 	@include transition-duration(.3s);
 	@include transition-timing-function(ease-in-out);
 	@include transition-delay(0s);
+	
+	.videoplayer-progress__load,
+  .videoplayer-progress__elapsed {
+    height: 3px;
+  }
 }
 
 .mini-videoplayer {
   > div {
     border-radius: 0;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Fade in when user is inactive
-//------------------------------------------------------------------------------
-.user-inactive {
-  .mini-videoplayer__wrapper,
-  #mini-video-progress {
-    opacity: 1.0;
+    margin: 0;
+    position: absolute;
   }
 }

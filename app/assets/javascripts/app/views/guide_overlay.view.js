@@ -2,10 +2,10 @@
 libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
   
   events : {
-    "webkitTransitionEnd"  : "_onSlideComplete",
-    "transitionend"        : "_onSlideComplete",
-    "MSTransitionEnd"      : "_onSlideComplete",
-    "oTransitionEnd"       : "_onSlideComplete"
+    "webkitTransitionEnd"  : "_onTransitionEnd",
+    "transitionend"        : "_onTransitionEnd",
+    "MSTransitionEnd"      : "_onTransitionEnd",
+    "oTransitionEnd"       : "_onTransitionEnd"
   },
 
   className : 'animate_module guide-overlay',
@@ -22,7 +22,8 @@ libs.shelbyGT.GuideOverlayView = Support.CompositeView.extend({
     this.options.guideOverlayModel.clearAllGuideOverlays();
   },
 
-  _onSlideComplete: function(){
+  //this is called when any transition ends, not just the hiding slide transition
+  _onTransitionEnd: function(){
     if (!this.$el.hasClass('showing')) {
       this.leave();
       if (this.parent.children.value().length == 0) {

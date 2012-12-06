@@ -88,6 +88,15 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles search view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /search
+  #
+  def search
+    render '/home/app'
+  end
+
+  ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
