@@ -22,6 +22,11 @@ gem 'httparty'
 gem 'youtube_it'
 
 #
+# ---------- A/B Testing
+#
+gem 'split', :require => 'split/dashboard'
+
+#
 # ---------- External Services
 #
 gem 'koala'

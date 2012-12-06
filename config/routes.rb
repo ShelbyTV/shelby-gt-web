@@ -45,6 +45,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/explore' => "home#explore"
   get '/signout' => "home#signout", :as => :signout
 
+  # we may want to mess around with the Split dashboard in development
+  mount Split::Dashboard, :at => 'split' if Rails.env.development?
+
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
