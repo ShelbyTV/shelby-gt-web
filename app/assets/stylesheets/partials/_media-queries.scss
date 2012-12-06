@@ -31,6 +31,32 @@
     }
   }
 
+  .frame-command {
+    margin: .75em 0 0 .75em;
+    padding: .55em .8em .6em;
+  }
+
+  .frame-command-menu {
+    .menu_item {
+      &.right {
+        .frame-command {
+          margin: .75em .75em 0 0;
+        }
+      }
+    }
+  }
+
+  .frame-subsection {
+    .frame-command-wrapper {
+      margin:-9px 0 0;
+    }
+
+    .frame-command {
+      margin: 0;
+      padding: .55em .8em .6em 0;
+    }
+  }
+
   .frame-collapsed {
     .frame-thumbnail {
       height: 70px;

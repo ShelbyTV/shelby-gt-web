@@ -221,7 +221,7 @@ $active-list-item: $shelby-blue;
   .menu_item {
     &.right {
       .frame-command {
-        margin: 10px 10px 0 0;
+        margin: 1em 1em 0 0;
       }
     }
   }
@@ -234,8 +234,8 @@ $active-list-item: $shelby-blue;
 .frame-command {
   @include button-sizing;
 
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 1em;
+  margin-top: 1em;
 }
     ////////////////////////////////////////////////////////////////////////////
     //  dropdown sublist:
@@ -279,27 +279,6 @@ $active-list-item: $shelby-blue;
       }
     }
 
-    // .frame-item {
-    //   &:first-child {
-    //     .frame-option {
-    //       border-top: 1px solid $inset;
-    //     }
-    //   }
-
-    //   &:last-child {
-    //     .frame-option {
-    //       border-bottom: 1px solid $inset;
-    //     }
-    //   }
-    // }
-
-    // .command-sublist {
-    //   padding-right: 10px;
-
-    //   .command-icon {
-    //   }
-    // }
-
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
@@ -311,11 +290,7 @@ $active-list-item: $shelby-blue;
   }
 
   &.queued {
-//    @include button-primer(darken($x-primer-color,20%));
-
     &:not(.remove-frame) {
-//      @include button-primer(darken($x-primer-color,20%),light,queue-button,false);
-//      cursor: auto;
     }
 
     .icon {
@@ -332,14 +307,10 @@ $active-list-item: $shelby-blue;
 }
 
 .command-more {
-//  .command-icon {
-//    padding-right: $button-padding-right;
-//  }
 }
 
 .command-share {
   .icon {
-    // background-image: none;
     -webkit-background-size: contain;
     background-size: contain;
     padding-left: 1.8em;
