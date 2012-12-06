@@ -16,7 +16,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   renderChild: function(view, childIndex) {
     view.render();
     if (typeof(childIndex) !== 'undefined'){
-      this.children.splice(childIndex, 0, view);
+      this.children.value().splice(childIndex, 0, view);
     } else {
       this.children.push(view);
     }
@@ -81,7 +81,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
 
   _removeChild: function(view) {
     var index = this.children.indexOf(view);
-    this.children.splice(index, 1);
+    this.children.value().splice(index, 1);
   },
 
   delegateEvents : function(recursive) {
