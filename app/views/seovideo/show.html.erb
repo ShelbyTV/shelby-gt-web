@@ -135,6 +135,8 @@
         <% end %>
       </aside><!-- eo .seovideo__aside -->
 
+			<div id="disqus_thread" class="frame-body-wrapper"></div>
+
       <div class="seovideo__messages clearfix">
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
@@ -203,6 +205,22 @@
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
+</script>
+
+<!-- DISQUS -->
+<script type="text/javascript">
+	var disqus_developer = ("<%= Rails.env %>" == "production") ? 0 : 1; // developer mode is on
+	var disqus_identifier = "<%= @video_provider_name %>:<%= @video_provider_id %>";
+	var disqus_title = "Shelby.tv | <%= @video_title %>";
+	
+	var disqus_shortname = 'shelbytv';
+	
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://'+disqus_shortname+'.disqus.com/embed.js';
+			dsq.id = 'disqus-script';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
 </script>
 
 <!-- Email Submit -->
