@@ -19,9 +19,6 @@ $active-list-item: $shelby-blue;
     .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
-    .menu_module {
-      display: block;
-    }
   }
 }
 
@@ -39,7 +36,7 @@ $active-list-item: $shelby-blue;
 //  frame natural state
 //------------------------------------------------------------------------------
 .frame {
-  padding: 1em;
+  padding: 1em 0.5em 0.5em 0.5em;
 
   ////////////////////////////////////////////////////////////////////////////
   //  on HOVER, toggle:
@@ -321,7 +318,8 @@ $active-list-item: $shelby-blue;
 //  (nest styles inside of .frame-collapsed{})
 //------------------------------------------------------------------------------
 .frame-collapsed {
-  opacity: .5;
+  opacity: 0.5;
+  padding: 0.5em;
 
   .frame-title {
     height: 40px;
@@ -466,11 +464,11 @@ $share-frame-half-gutter: 4px;
       -webkit-background-size: contain;
     }
   }
-  
+
   .menu_button--comment a {
     text-decoration: none;
   }
-  
+
 }
 
 
