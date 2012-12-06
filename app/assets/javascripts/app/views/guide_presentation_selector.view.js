@@ -11,7 +11,7 @@
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
-      "click .js-explore:not(.active-item)"  : "_explore",
+      "click .js-explore:not(.active-item)"  : "_goToExplore",
       "click .js-admin"                      : "_goToAdmin"
     },
 
@@ -46,18 +46,21 @@
     _goToStream : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
         shelby.router.navigate('stream', {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
 
     _goToQueue : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
         shelby.router.navigate('queue', {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
     
     _goToMe : function(){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate('me', {trigger:true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
     
@@ -65,8 +68,9 @@
       document.location = "http://api.shelby.tv/admin/new_users";
     },
     
-    _explore : function(){
+    _goToExplore : function(){
       shelby.router.navigate('explore', {trigger:true});
+      shelby.models.userDesires.set({guideShown: true});
     },
 
     _onGuideModelChanged : function(model){
