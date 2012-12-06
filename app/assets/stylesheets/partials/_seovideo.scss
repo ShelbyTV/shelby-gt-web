@@ -185,6 +185,14 @@ p {
     margin: 0;
     font-weight: normal;
   }
+
+  .seovideo__link {
+    &:hover {
+      .related_video {
+        background-color: #fff;
+      }
+    }
+  }
 }
 
 .seovideo__item--advertisement {
@@ -408,14 +416,6 @@ p {
 
       &:nth-child(2n) {
         padding-left: 0;
-      }
-    }
-
-    .seovideo__link {
-      &:hover {
-        .related_video {
-          background-color: #fff;
-        }
       }
     }
   }
