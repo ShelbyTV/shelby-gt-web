@@ -22,6 +22,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-frame-post"                  : "requestFBPostUI",
+    "click .js-frame-send"                  : "requestFBSendUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-remove-frame"                : "_removeFrame",
@@ -35,9 +37,15 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-      return SHELBYJST['frame'](obj);
+      // show different frame if coming from fb-genius app
+      if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
+        return SHELBYJST['fb-genius-frame'](obj);
+      }
+      else { 
+        return SHELBYJST['frame'](obj);
+      }
     } catch(e){
-      console.log(e.message, e.stack);
+      console.log(e.message, e.stack, obj);
     }
   },
 
@@ -105,6 +113,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
+    
+    // have FB parse any like tags on page so they render correctly
+    if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
+
   },
 
   _expand: function(){
@@ -260,6 +272,39 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.$('.xuser-message-remainder').toggle();
   },
   
+  requestFBPostUI : function(e){
+    var _id = $(e.currentTarget).parents('article').attr('id');
+    var _frame = this.model.get('frames').models[0];
+    FB.ui(
+      {
+        method: 'feed',
+        name: _frame.get('video').get('title'),
+        link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+        picture: _frame.get('video').get('thumbnail_url'),
+        description: _frame.get('video').get('description'),
+        caption: ':: a shelby genius video ::'
+      },
+      function(response) {
+        if (response && response.post_id) {
+          // TODO:we should record that this happened.
+        }
+      }
+    );
+
+  },
+  
+  requestFBSendUI : function(e) {
+    var _frame = this.model.get('frames').models[0];
+    FB.ui({
+      method: 'send',
+      name: _frame.get('video').get('title'),
+      link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
+      picture: _frame.get('video').get('thumbnail_url'),
+      description: _frame.get('video').get('description'),
+      caption: ':: a shelby genius video ::'
+    });    
+  },
+  
   _shareToFacebook : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
@@ -281,7 +326,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       );
     }
   },
-
+  
   //ListItemView overrides
   isMyModel : function(model) {
     return this.model == model;

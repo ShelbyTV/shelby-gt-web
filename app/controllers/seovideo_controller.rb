@@ -6,7 +6,7 @@ require 'iconv'
 class SeovideoController < ApplicationController
 
   helper_method :hyphenateString
-  
+
   @@video_api_base = "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}/video"
 
   #
@@ -23,14 +23,14 @@ class SeovideoController < ApplicationController
 
     begin
       # sets all other @video_ variables relevant to primary video
-      getVideo(@video_provider_name, @video_provider_id) 
+      getVideo(@video_provider_name, @video_provider_id)
     rescue Exception => e
       # if the primary video isn't available, means we can't really show a great page. return 404 for now...
       return render_error(404, e.message)
     end
 
     # we'll return a page regardless of how successful the rest of these are
-    getRecommendedVideos()    
+    getRecommendedVideos()
     getConversations()
     splitConversationMessagesByNetwork()
     setMetaDescription()
@@ -54,7 +54,7 @@ private
     rescue
       raise "Exception while gathering video information."
     end
-    
+
     raise "Received no response from API." unless video_response
     raise "Received bad response code from API." unless (video_response.code == "200")
     raise "Received incomplete response from API." unless video_response.body
@@ -84,7 +84,7 @@ private
     @video_related_ids.each do |rec|
 
       break if @video_related_videos.length >= 3
-      
+
       begin
         url = "#{@@video_api_base}/#{rec["recommended_video_id"]}"
         response = Net::HTTP.get_response(URI.parse(url))
@@ -93,7 +93,7 @@ private
         next if !response.body
         next if !(decoded = ActiveSupport::JSON.decode(response.body))
         next if !(result = decoded["result"])
-   
+
         @video_related_videos.push(result)
 
       rescue
@@ -111,7 +111,7 @@ private
       url = "#{@@video_api_base}/#{@video_id}/conversations"
 
       response = Net::HTTP.get_response(URI.parse(url))
-    
+
       return if !response
       return if response.code != "200"
       return if !response.body
@@ -158,14 +158,14 @@ private
     # default description in case first message has issues... can't use double-quotes anywhere, since it's going in a meta tag
     if @video_description
       @meta_description = @video_description.gsub /"/, "'"
-    else 
+    else
       @meta_description = Settings::Application.meta_description
     end
 
-    return if !@conversations 
-    return if !@conversations.first 
+    return if !@conversations
+    return if !@conversations.first
     return if !@conversations.first["messages"]
-    return if !@conversations.first["messages"].first 
+    return if !@conversations.first["messages"].first
     return if !@conversations.first["messages"].first["text"]
 
     message = @conversations.first["messages"].first
@@ -174,7 +174,7 @@ private
     # can't use double-quotes in a meta tag; need to make sure we're using valid UTF-8
     ic = Iconv.new("UTF-8//IGNORE", "UTF-8")
     text = ic.iconv(message["text"] + " ")[0..-2].gsub /"/, "'"
- 
+
     if message["origin_network"] and message["origin_network"] == "twitter"
       nickname = "@#{nickname}"
     end
@@ -188,10 +188,10 @@ private
 
     begin
       duration = durationString.to_i
-    
+
       if duration < 60
         return sprintf('0:%02d', duration)
-      elsif duration < 3600 
+      elsif duration < 3600
         return sprintf('%d:%02d', duration / 60, duration % 60)
       elsif duration < (3600 * 24)
         return sprintf('%d:%02d:%02d', duration / 3600, duration / 60, duration % 60)

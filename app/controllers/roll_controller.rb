@@ -30,4 +30,9 @@ class RollController < ApplicationController
     render '/home/app'
   end
   
+  def show_fb_genius_roll
+    @genius_roll_id = params[:roll_id]
+    render '/home/app'
+  end
+  
 end

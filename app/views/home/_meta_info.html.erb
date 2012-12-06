@@ -30,13 +30,12 @@
 	
 <% elsif @roll and @user %>
 	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
-	<% user_roll_description = "#{user_roll_title} is curated #{@user ? "by #{@user['name']}" : ""} on Shelby.tv" %>
 	<meta property="og:type" 		content="shelbytv:roll" />
 	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv" /> 
 	<meta property="og:title" content="<%= user_roll_title %>" /> 
-	<meta property="og:description" content="<%= user_roll_description %>" />	
+	<meta property="og:description" content="<%= page_title_for_roll(@roll, @user) %>" />	
 	<meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
-	<meta name="description" content="<%= user_roll_description %>" />
+	<meta name="description" content="<%= page_title_for_roll(@roll, @user) %>" />
 
 <% elsif @video_provider_name and @video_provider_id %>
 

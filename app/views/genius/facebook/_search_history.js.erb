@@ -1,0 +1,37 @@
+$(document).ready(function(event){
+		// using local store to save search history. 
+		// the idea is we aren't re-creating genius rolls here
+		window.cache = kizzy('history');
+		window.searchHistory = window.cache.get('searchHistory');
+				
+		if (searchHistory){
+		  var _t = 0;
+			// DISPLAY SEACH HISTORY //
+			for (var term in searchHistory) {
+				var link = searchHistory[term];
+				if (_t <= 10){ // limit the length of the search history shown
+          $("#search-history-list").prepend('<li id="'+term+'" class="js-track-event" data-ga_category="FB Genius" data-ga_action="Clicked previous search term" data-ga_label="'+term+'"><a href='+link+'>'+term+'</a></li>');          
+        }
+        _t += 1;
+			}
+		}
+		else{			
+			// create some history
+			cache.set('searchHistory', {});
+			$('.previous-search-area .landing-shelf-header').text("Popular searches on Shelby Genius:");
+			$('#recommended-searches').show();
+		}
+		
+		// if no search history is present, show recommended searches
+		if (Object.keys(window.searchHistory).length === 0) {
+		  $('.previous-search-area .landing-shelf-header').text("Popular searches on Shelby Genius:");
+			$('#recommended-searches').show();
+		}
+		
+		// REMOVE SEARCH HISTORY //
+		$('.remove-search-term').on('click',function(){
+			delete searchHistory[$(this).parent().attr('id')];
+			cache.set('searchHistory', searchHistory);
+			$(this).parent().remove();
+		});
+});

@@ -26,6 +26,11 @@ gem 'youtube_it'
 gem 'vanity'
 
 #
+# ---------- External Services
+#
+gem 'koala'
+
+#
 # -- Quiet Logging
 #
 gem 'quiet_assets', :group => :development
@@ -63,6 +68,8 @@ end
 #
 group :production, :staging do
   gem 'unicorn'
+  gem 'kgio'
+  gem 'raindrops'
 end
 
 #

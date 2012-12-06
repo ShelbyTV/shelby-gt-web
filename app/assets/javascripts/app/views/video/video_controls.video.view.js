@@ -260,9 +260,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      $('.js-main-layout .js-guide').removeClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      $('.js-main-layout .js-guide').addClass("hide-guide");
+      $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
 
@@ -275,7 +275,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     var seekPct = ( (pageX - scrubTrack.offset().left) / scrubTrack.width() );
     seekPct = Math.min(Math.max(seekPct, 0.0), 1.0);
     this._userDesires.set({currentTimePct: seekPct});
-    console.log(this._userDesires.get('currentTimePct'));
   }
 
 });

@@ -30,4 +30,8 @@ module ApplicationHelper
     end
   end
   
+  def page_title_for_roll(roll, user=nil)
+    "#{roll['subdomain']} tv #{user ? "| curated by #{user['name']}" : ''} | powered by Shelby"
+  end
+  
 end

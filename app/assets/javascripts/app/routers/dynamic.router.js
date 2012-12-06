@@ -9,6 +9,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title"                  : "displayRoll",
     "roll/:rollId"                         : "displayRoll",
     "rollFromFrame/:frameId"               : "displayRollFromFrame",
+    "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
+    "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
     "user/:id/personal_roll"               : "displayUserPersonalRoll",
     "explore"                              : "displayExploreView",
     "help"                                 : "displayHelp",
@@ -109,6 +111,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
+    
+    shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
+      new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
     if (frameId){
       this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
@@ -121,6 +126,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
+  },
+  
+  displayFacebookGeniusRoll : function(rollId, frameId, params){
+    // Adjust *how* a few details are displayed via CSS
+    $('body').addClass('facebook-genius');
+    // Adjust *what* is displayed
+    var options = {updateRollTitle:false};
+
+    if (frameId){
+      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
+    } else {
+      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
+    }
+    
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -137,7 +156,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-
+  
   displayUserPersonalRoll : function(userId, params){
     var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
@@ -440,10 +459,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
+      isFBGeniusRoll : false,
       openInvite : false
     }).value();
 
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
+    shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//

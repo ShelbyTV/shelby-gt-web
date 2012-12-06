@@ -1,7 +1,17 @@
 //------------------------------------------------------------------------------
 //  experimental clearfix... fix.
 //------------------------------------------------------------------------------
+//  fixes theatlantic
+h1,h2,h3,h4,h5,h6 {
+  text-transform: none;
 
+}
+
+button {
+  height: auto;
+  text-transform: none;
+  text-shadow: none;
+}
 //  fixes uproxx.com
 .clearfix:not(.media_body) {
   overflow: visible;
@@ -18,12 +28,13 @@
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
-  height: 50px;
-  margin-left: 14px;
-  margin-bottom:5px;
-  margin-top: 5px;
-  width: 50px;
-
+  border-radius: 5px 0 0 0;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .frame-conversation-message-block {
@@ -33,34 +44,47 @@
 //------------------------------------------------------------------------------
 //  'Videos Found' NOTIFICATION
 //------------------------------------------------------------------------------
+.notification-banner-wrapper {
+  display: block;
+  font-size: 10px;//reseting font size. bah.
+  height: 50px;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2147483647;
+
+  &.hide {
+    height: 0;
+  }
+
+  .notification_actions--rev {
+    padding-right: 10px;
+  }
+
+  .notification_body {
+    font-size: 1.4em;
+  }
+
+  .notification_message {
+    color: $button-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .notifications-lining {
   position: fixed;
   z-index: 2147483647;
 }
 
-.shelby-notify {
-  background-color: #eee;
-  background-image: url('/images/assets/shelby_mark_dark.svg');
-  background-position: 11px 6px;
-  background-size: 40px;
+.bookmarklet-logo {
+  background-image: url('/images/assets/logo_type.svg');
+  background-position: center left;
   background-repeat: no-repeat;
-  border: 1px solid #adadad;
-  border-radius: 2px;
-  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
-  color: #333;
-  font-size: 11px;
-  font-weight: 300;
-  height: 40px;
-  left: 30px;
-  line-height: 3.5em;
-  position: fixed;
-  top: 30px;
-  width: 160px;
-  z-index: 2147483646;
-
-  &.more {
-    width: 200px;
-  }
 }
 
 .notify-text {
@@ -147,55 +171,9 @@
     @include button-primer($shelby-gray);
   }
 
-}
-
-#login-guide-window .login-explanation {
-  margin: 20px 0 0 10px;
-  font-size: 1.2em;
-}
-
-.login-form {
-  margin: 0 10px;
-}
-
-.login-submit {
-  @include button-primer();
-  
-  margin-top: .5em;
-}
-
-.bookmarklet-login-twitter,  
-.bookmarklet-login-facebook {
-  border-radius: 3px;
-  display: block;
-  float: left;
-  font: 0/0 a;
-  height: 40px;
-  margin: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: none;
-  width: 200px;
-}
-
-.bookmarklet-login-twitter, a.bookmarklet-login-twitter {
-  @include x-logged-out-networks-buttons($twitter-blue);
-  line-height: 3.5;
-  margin-top: 10px;
-  &:before {
-    background-image: url($icon-share-twitter-on);
-    background-position: center center;
-    background-size: 97%;
-  }
-}
-
-.bookmarklet-login-facebook, a.bookmarklet-login-facebook {
-  @include x-logged-out-networks-buttons($facebook-blue);
-  line-height: 3.5;
-  &:before {
-    background-image: url($icon-share-facebook-on);
-    background-position: 1px 3px;
-    background-size: 95%;
+  .login-explanation {
+    margin: 20px 0 0 10px;
+    font-size: 1.2em;
   }
 }
 
@@ -241,6 +219,10 @@
     
 }
 
+.guide-overlay-cancel {
+  height: auto;
+}
+
 //------------------------------------------------------------------------------
 //  BUTTONS
 //------------------------------------------------------------------------------
@@ -256,9 +238,8 @@
   background-image: none;
   border: none;
   border-radius: 5px 0 0 5px;
-  box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
   list-style-type: none;
-  margin: 2px 0 28px 100%;
+  margin: 2px 0 25px 100%;
   padding: 0;
   width: 80px;
 
@@ -267,31 +248,23 @@
     background-image: none;
     border: none;
     border-radius: 5px;
+    box-shadow: -1px 1px 6px -1px rgba(0, 0, 0, 0.3);
     height: 31px;
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 5px;
     outline: none;
     padding: 0;
     position: relative;
     width: 100%;
 
-    .all-comment,
-    .all-roll,
-    .all-queue,
-    .all-creator {
-      &:hover {
-        background-color: darken(#eee, 15%) !important;
-      }
-    }
-
     &:last-child {
       button {
-        border-top: none;
+//        border-top: none;
       }
     }
 
     button {
-      border: 1px solid #adadad;
+//      border: 1px solid #adadad;
       border-right: 0;
     }
 
@@ -319,28 +292,39 @@
     font-size: 13px;
     font-family: $font-family;
 
-    &:first-child {
+      border-radius: 5px 0 0 5px;
+
+      button {
+        border-radius: 5px 0 0 5px;
+      }
+  }
+}
+
+.video-card-context {
+  button,
+  li {
+    margin: 0;
+  }
+
+  li:first-child {
+    border-radius: 5px 0 0 0;
+
+    button {
       border-radius: 5px 0 0 0;
-
-      button {
-        border-radius: 5px 0 0 0;
-      }
     }
+  }
 
-    &:last-child {
+  li:last-child {
+    border-radius: 0 0 0 5px;
+
+    button {
       border-radius: 0 0 0 5px;
-
-      button {
-        border-radius: 0 0 0 5px;
-      }
     }
   }
 }
 
 .bookmarklet-button {
-  background: #EEE !important;
   box-shadow: none !important;
-  color: #444 !important;
   font-family: $font-family !important;
   font-size: 11px !important;
   font-weight: bold !important;
@@ -349,13 +333,14 @@
   padding: 0 !important;
   text-align: center !important;
   text-shadow: none !important;
+  text-transform: none !important;
   width: 100% !important;
 
   &.queued {
     background-color: darken(#eee,10%) !important;
     cursor: default;
 
-    i {
+    .icon {
       padding-left: 15px;
 
       &:before {
@@ -379,17 +364,17 @@
   font-style: normal;
 }
 
-.queue-button,
-.roll-button {
+.icon--queue,
+.icon--roll {
   background-color: transparent;
   padding-left: 1.3em;
 }
 
-.queue-button {
+.icon--queue {
   &:before {
     content: "Queue"
   }
 }
 
-.roll-button {
+.icon--roll {
 }

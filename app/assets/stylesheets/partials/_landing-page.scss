@@ -67,33 +67,6 @@ $landing-page-footer-font-color: #EFEFEF;
   margin-top: .5em;
 }
 
-.login-form,
-.login-social-section,
-.signup-form,
-.signup-social-section  {
-  padding: 10px;
-}
-
-.login-social-section-header {
-  margin-bottom: 5px;
-}
-
-.login-form .form_input {
-  margin-bottom: .5em;
-}
-
-.login-submit,
-.signup-submit {
-  @include button-primer();
-
-  margin-top: .5em;
-}
-
-.login-forgot-password {
-  padding-left: 2em;
-}
-
-
 /********************************************************
  * All Shelves
  ********************************************************/

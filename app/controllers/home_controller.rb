@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   #         logged in - js app
   #         iso rolls - static page with iframe of app
   #                     XXX want to move this out of here with smart routing in routes.rb
+  #         fb genius - renders js app w fb flavor
   #
   def index
 
@@ -20,9 +21,14 @@ class HomeController < ApplicationController
         if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
           @roll = Shelby::API.get_roll(@isolated_roll_id)
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
-          
+          @analytics_account = get_account_analytics_info(@user) 
           @frame_id = get_frame_from_path(params[:path])
           render '/home/isolated_roll' and return
+        end
+        
+        #XXX FB GENIOUS ROLL
+        if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
+          render '/home/app' and return
         end
 
         if user_signed_in?
@@ -93,7 +99,7 @@ class HomeController < ApplicationController
 
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
-
+  
   private
 
 
@@ -132,6 +138,14 @@ class HomeController < ApplicationController
       end
     end
     
+    def get_genius_roll_id_from_path(path)
+      return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
+    end
+    
+    def is_from_fb_genius_frame_share(path)
+      /fb\/genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
+    end
+    
     def get_info_for_meta_tags(path)
       if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
         # the url is a frame
@@ -147,6 +161,16 @@ class HomeController < ApplicationController
     def get_frame_from_path(path)
        frame_id = /(\w*)/.match(params[:path])
        frame_id[1] if frame_id and BSON::ObjectId.legal?(frame_id[1])
+    end
+    
+    def get_account_analytics_info(user)
+      abilities = user["additional_abilities"]
+      abilities.keep_if {|a| a[0..2] == "UA-"}
+      if ga_account = abilities.first
+        return ga_account
+      else
+        return Settings::GoogleAnalytics.code
+      end
     end
 
 end

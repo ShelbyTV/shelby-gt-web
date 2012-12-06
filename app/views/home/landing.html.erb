@@ -47,32 +47,58 @@
 
             <section class="dropdown_section login-section">
               <div class="dropdown_lining login-section-lining clearfix">
-	
-								<div class="login-form clearfix">
-									<h4>Shelby.tv is invite-only right now.</h4>
-								</div>
-	
-								<hr />
 
-                <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module login-form js-track-submit" data-ga_action="Email login">
-                  <fieldset class="">
+                <div class="js-show-request-invite form_fieldset form_fieldset--private clearfix">
+                  <p class="form_legend">
+                    Not a member? <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a>
+                  </p>
+                </div>
+
+                <div class="js-request-invite clearfix hidden">
+                  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
+                    <fieldset class="">
+                      <label for="email" class="form_label">Email</label>
+                      <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
+                    </fieldset>
+
+                    <fieldset class="form_fieldset">
+                      <input id="js-email-submit" class="button_primer button_blue form_submit" type="submit" value="Request an invite!" />
+                    </fieldset>
+                  </form>
+
+                  <div id="js-thankyou" class="form_fieldset form_fieldset--feedback hidden">
+                    <span class="form_label">
+                      Thanks, we'll email you!
+                    </span>
+                  </div>
+                </div>
+
+								<hr class="hr--double" />
+
+                <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+                  <fieldset class="form_fieldset">
                     <label for="username" class="form_label">Username</label>
                     <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
                   </fieldset>
-                  <fieldset class="">
+
+                  <fieldset class="form_fieldset">
                     <label for="password" class="form_label">Password</label>
                   <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
                   </fieldset>
+
                   <fieldset class="form_fieldset">
-                    <input name="commit" type="submit" value="Login" class="button_primer button_gray-medium login-submit" />
+                    <input name="commit" type="submit" value="Login" class="button_primer button_gray-medium form_submit" />
                     <a href="<%= "#{Settings::ShelbyAPI.url}/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
                   </fieldset>
                 </form>
 
-                <hr />
+                <hr class="hr--double" />
 
-                <div class="social_login login-social-section clearfix">
-                  <h4 class="login-social-section-header">Members can also log in with</h4>
+                <div class="form_fieldset form_fieldset--login-social clearfix">
+                  <h4 class="form_legend">
+                    Log in with
+                  </h4>
+
                   <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
                     href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
                     <i class="button_icon_left icon_share_twitter_on icon">
@@ -133,6 +159,7 @@
       <% if @share_type == :genius %>     <%= render :partial => "/home/shelf/genius_email_share" %>
       <% elsif @share_type == :email %>   <%= render :partial => "/home/shelf/direct_email_share" %>
       <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
+			<% elsif @share_type == :fb_genius %>	<%= render :partial => "/home/shelf/fb_genius_share" %>
       <% end %>
     <% end %>
 
@@ -218,15 +245,18 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
 
-    <% if "production" == Rails.env %>
+    <% if ("production" == Rails.env or "staging" == Rails.env) %>
       //Track loading of landing page separate from loading of app -->
       var shortLink = $.getUrlParam('awesm');
       if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
       else { shortLink = "Direct"; }
-      var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s);}(document,'script'));
+		<% end %>
+		
+		<% if Rails.env == 'production' %>
       var _kmq = _kmq || [];
       var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
       function _kms(u){

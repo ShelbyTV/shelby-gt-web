@@ -103,7 +103,12 @@ libs.shelbyGT.viewHelpers.roll = {
   },
   
   guideHeaderImageURL : function(roll){
-    return  shelby.config.rollImagesUrlRoot+'/header/'+roll.id+'/guide_wide/'+roll.get('header_image_file_name');
+    if(roll.has('header_image_file_name')){
+      return  shelby.config.rollImagesUrlRoot+'/header/'+roll.id+'/guide_wide/'+roll.get('header_image_file_name');
+    } else {
+      //consistently index 5 default images, sequentially named (ie: 0.jpg, 1.jpg, 2.jpg...)
+      return '/images/assets/roll_headers/'+parseInt(roll.id, 16)%5+'.jpg';
+    }
   }
   
 };

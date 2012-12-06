@@ -3,6 +3,7 @@ defaults: &defaults
   domain: "shelby.tv"
   secure_url: "https://shelby.tv"
   mobile_url: "http://m.shelby.tv"
+  fb_genius_url: "//shelby.tv"
   ios_app_url: "http://itunes.apple.com/us/app/shelby-genius/id556665733"
   avatar_url_root: "//s3.amazonaws.com/shelby-gt-user-avatars"
   roll_images_url_root: "//s3.amazonaws.com/shelby-gt-roll-images"
@@ -14,6 +15,7 @@ development:
   <<: *defaults
   url: "http://localhost.shelby.tv:3000"
   mobile_url: "http://m.localhost.shelby.tv:3000"
+  fb_genius_url: "http://localhost.shelby.tv:3000"
   #enable this if you're using a local API
   #avatar_url_root: "http://s3.amazonaws.com/dev-shelby-gt-user-avatars"
   #mobile_url: "http://192.168.1.6:3000/m"
