@@ -25,6 +25,7 @@
       var query = _(this.$('.js-nav-search-form-text').val()).clean();
       if (query) {
         shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
         this.$('.js-nav-search-form-text').val('');
       }
       return false;
