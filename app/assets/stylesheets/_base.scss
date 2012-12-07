@@ -16,6 +16,7 @@ $icon-avatar-large              : "#{$path}avatar.png";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
+$icon-search                    : "#{$path}search#{$extension}";
 
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
 $icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
@@ -116,6 +117,7 @@ $margin              : 0.5em;
 $media-module-margin : 8px;
 $header-height       : $unit * 3.5;
 $guide-width         : $unit * 37;
+$persistent_video_info--height : 200px;
 
 //------------------------------------------------------------------------------
 //  COLORS
@@ -203,7 +205,7 @@ $me-header-color                    : adjust-lightness($text, 10%);
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
   //  faux-tint is an opacity of .7, makes the color 'lighter',
-  //  used on .frame-comment-link and .context-overlay .frame-command/-option
+  //  used on .frame-comment-link
 $videocard-faux-tint                : .7;
 
 ////////////////////////////////////////////////////////////////////////////

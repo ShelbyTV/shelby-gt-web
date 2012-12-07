@@ -12,8 +12,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      guideOverlayModel : null,
-      contextOverlay : false
+      guideOverlayModel : null
   }),
 
   events : {
@@ -41,7 +40,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
         return SHELBYJST['fb-genius-frame'](obj);
       }
-      else { 
+      else {
         return SHELBYJST['frame'](obj);
       }
     } catch(e){
@@ -69,11 +68,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (!this.model) return false;
-    var frameVideo = this.model.getFirstFrame().get('video');
-    if (frameVideo.id == video.id){
+    var frame = this.model.getFirstFrame();
+    var frameVideo = frame.get('video');
+    if (frameVideo.id == video.id ||
+        (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
-      this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
+      this.$('.js-queue-frame').toggleClass('queued button_gray-light', !removeVideo);
       this.$('.js-queue-frame i').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },
@@ -102,13 +103,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
     
     if (this.model.get('frames').length){
-      var dupeFrames = this.options.contextOverlay ? [] : this.model.getDuplicateFramesToDisplay();
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
         frame : this.model.get('frames').at(0),
         options : this.options,
-        dupeFrames : dupeFrames
+        dupeFrames : this.model.getDuplicateFramesToDisplay()
       }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
@@ -116,7 +116,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     
     // have FB parse any like tags on page so they render correctly
     if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-
+    
+    // when frame is loaded, get number of disqus comments
+    if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
 
   _expand: function(){
@@ -302,7 +304,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       picture: _frame.get('video').get('thumbnail_url'),
       description: _frame.get('video').get('description'),
       caption: ':: a shelby genius video ::'
-    });    
+    });
   },
   
   _shareToFacebook : function(e){

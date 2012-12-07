@@ -14,8 +14,8 @@ libs.shelbyGT.MainContentWrapperView = Support.CompositeView.extend({
 
   render : function(){
     this.appendChild(new libs.shelbyGT.VideoContentPaneView({
-      model : this.model,
-      userDesires : shelby.models.userDesires
+      guide : shelby.models.guide,
+      playbackState : shelby.models.playbackState
     }));
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.tools) {
       this._toolsContentPaneView = new libs.shelbyGT.ExternalToolsContentPaneView();

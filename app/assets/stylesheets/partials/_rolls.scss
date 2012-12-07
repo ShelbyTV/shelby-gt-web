@@ -41,6 +41,18 @@
 //------------------------------------------------------------------------------
 //  guide overlay share…
 //------------------------------------------------------------------------------
+.share-overlay-body {
+  border-top: none;
+  padding-top: 0;
+}
+
+.share-overlay-cancel {
+  padding: 0.3em;
+  position: absolute;
+  left: 7px;
+  top: 7px;
+}
+
 .share-submit {
   text-align: right;
 }

@@ -1,5 +1,4 @@
 <% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var comment; if(messages.models && messages.models.length > 0){ comment = messages.models[0].get('text') } %>
 
 <% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
@@ -10,17 +9,19 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 
 <% var creator = frame.get('creator') %>
-<% var isGenius = frame.has('roll') && frame.get('roll').get('genius') %>
+<% var frameHasRoll = frame.has('roll') %>
+<% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
+<% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
-<% var contextOverlay = options.contextOverlay %>
-<% var frameViewed = !contextOverlay && frameGroup.get('collapsed') %>
-<% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
+<% var frameViewed = frameGroup.get('collapsed') %>
+<% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
-<% var framePermalink = frame.has('roll') && 'http://' + frame.get('roll').get('subdomain') + '.shelby.tv/' + frame.id %>
+<% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
+
 <!-- videocard -->
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
       <h1 class="frame-title" title="<%= videoTitle %>">
@@ -39,7 +40,7 @@
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
               <i class="button_icon_left icon_videocard_queue icon">
                 <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue' 
+                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
                 %>
               </i>
             </button>
@@ -62,43 +63,36 @@
               <li class="menu_option frame-item" role="menuitem">
                 <button class="frame-command command-share js-share-frame">
                   <i class="button_icon_left icon icon_email">
-                    Share Video...
+                    Email Share…
                   </i>
                 </button>
               </li>
-							<li class="menu_option frame-item" role="menuitem">
+              <li class="menu_option frame-item" role="menuitem">
                 <button class="frame-command command-link js-copy-link">
                   Get Shortlink
                 </button>
-								<!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
+                <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
               </li>
 
               <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
-                <li class="menu_option frame-item" role="menuitem">
-                  <button class="frame-command command-remove js-remove-frame">
-                    Remove Video
-                  </button>
-                </li>
-              <% } else if (shelby.models.user.get('admin')) { %>
-              
-                <li class="menu_option xframe-item" role="menuitem">
-                  <button class="frame-command command-remove js-remove-frame">
-                    ADMIN KLL VID
-                  </button>
-                </li>
+                  <li class="menu_option frame-item" role="menuitem">
+                    <button class="frame-command command-remove js-remove-frame">
+                      <%= shelby.models.user.get('admin') ? "ADMIN KILL VID" : "Remove Video" %>
+                    </button>
+                  </li>
               <% } %>
             </ul>
           </li>
         </ul>
       </div><!-- eo .frame-menu -->
-      <% if (!contextOverlay) { %>
-        <!-- TODO: should maybe use the thumbnail module JST -->
-        <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-          <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
-        </a>
-				<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
-      <% } %>
-    </div><!-- eo .frame-body -->
+
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+      </a>
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+
+      </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
          var creatorNickname = creator.get('nickname');
@@ -147,14 +141,14 @@
                 <% } %>
               </p>
             <% } %>
-						
-						<% if (!user.isAnonymous()) { %>
-	            <div class="frame-subline">
-	              <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-	                <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-	              </a>
-	            </div>
-						<% } %>
+
+            <% if (!user.isAnonymous()) { %>
+              <div class="frame-subline">
+                <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+                </a>
+              </div>
+            <% } %>
           <% } else { %>
             <a href="#" onclick="return false;" class="frame-header js-frame-activate">
               <h1 class="frame-title" title="<%= videoTitle %>">
@@ -176,7 +170,7 @@
           <ul class="menu_list menu_list--share-frame">
             <li class="menu_item">
               <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
-                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frame.get('roll').get('title') %>">
+                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
                   <i class="button_icon_left icon_share_twitter icon">
                     Tweet
                   </i>
@@ -184,18 +178,16 @@
               </a>
             </li>
             <li class="menu_item">
-              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frame.get('roll').get('title') %>">
+              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
                 <i class="button_icon_left icon_share_facebook icon">
                   Share
                 </i>
               </button>
             </li>
             <li class="menu_item menu_item--right">
-              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frame.get('roll').get('title') %>">
-                <i class="button_icon_left icon_videocard_comment icon">
-                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-                </i>
-              </button>
+              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>" data-disqus-identifier="<%= frame.id %>">
+								<a href="#disqus_thread" data-disqus-identifier="<%= frame.id %>" class="button_icon_left icon_videocard_comment icon">Leave a comment</a>
+							</button>
             </li>
           </ul>
         <% } %>
@@ -216,7 +208,7 @@
       </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
-  <% if (!contextOverlay && !frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
+  <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
     <aside class="frame-aside">
       <p class="frame-aside-text">
         Also via:
@@ -229,6 +221,6 @@
         <% }); %>
       </p>
     </aside>
-  <% } /* end of !contextOverlay */ %>
+  <% } %>
 </article>
 <!-- end new videocard -->

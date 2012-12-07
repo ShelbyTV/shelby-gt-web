@@ -70,27 +70,10 @@
   }
 }
 
-.user-inactive .guide-toggle.hide, .guide-toggle.hide:hover {
-  @include transition-delay(0s);
-    
-  width: 112px;
-  
-  .copy {
-    @include opacity(1.0);
-    @include transition-delay(.2s);
-  }
-}
-
 .guide-toggle.hide:hover {
   @include transition-duration(.1s);
   .copy {
     @include transition-duration(.1s);
     @include transition-delay(.1s);
   }
-}
-
-.user-inactive .guide-toggle.show {
-  border: none;
-  box-shadow:none;
-  right: -35px;
 }

@@ -1,47 +1,11 @@
 @import "base";
-
-//------------------------------------------------------------------------------
-//  user-inactive controls show/hide triggers for various
-//  elements in the videoplayer and videoplayer navigational buttons
-//------------------------------------------------------------------------------
-.user-inactive {
-  .videoplayer-nav,
-  .videoplayer-tools__wrapper {
-    opacity: 0;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Modernizr.touch
-//------------------------------------------------------------------------------
-.touch {
-  .videoplayer-controls__wrapper {
-    font-size: 1.3em;
-  }
-
-  .videoplayer-progress {
-    margin-top: 1.8em;
-  }
-
-  .video-player-timeline {
-    line-height: 4.6em;
-  }
-
-  .videoplayer-progress__scrubber {
-    border-radius: 5px;
-    height: 35px;
-    margin: -22px 0;
-    width: 19px;
-  }
-}
-
 //------------------------------------------------------------------------------
 //  VIDEO PLAYER setup,
 //  video-player-tools-wrapper is purely for positioning.
 //------------------------------------------------------------------------------
 .videoplayer-tools__wrapper {
-  bottom: 0;
-  height: 5.6em;
+  bottom: $persistent_video_info--height;
+  height: 5.2em;
   left: 0;
   opacity: 1;
   position: absolute;
@@ -56,11 +20,9 @@
 .videoplayer-tools {
 	background-color: $video-player;
 	@include background( linear-gradient(top, adjust-lightness($video-player, 5%), $video-player) );
-  @include roundies;
 
-  border: 1px solid #202020;
+  // border: 1px solid #202020;
   height: 4.1em;
-  margin: $defaultMargin;
   padding: 0;
   position: relative;
 }
@@ -121,16 +83,6 @@
       background-image: url($icon-player-sound-off);
     }
 	}
-}
-
-.video-player-fullscreen {
-  float: right;
-
-  &.cancel {
-    .icon-fullscreen {
-      background-image: url($icon-player-fullscreen-disable);
-    }
-  }
 }
 
 .video-player-quality {
@@ -208,6 +160,40 @@
 }
 
 //------------------------------------------------------------------------------
+//  hide/show guide button
+//------------------------------------------------------------------------------
+.video-player-fullscreen {
+  @include gradient-primer($video-player);
+  @include opacity(0.5);
+  
+  border: none;
+  border-radius: $radius;
+  height: 4em;
+  left: $defaultMargin;
+  margin-top: -90px;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  width: 4em;
+  z-index: 2;
+
+  &:hover {
+    @include opacity(1.0);
+  }
+
+  .icon-fullscreen {
+    display: block;
+    height: inherit;
+  }
+
+  &.cancel {
+    .icon-fullscreen {
+      background-image: url($icon-player-fullscreen-disable);
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
 //  video player navigational buttons,
 //  prev/next
 //------------------------------------------------------------------------------
@@ -220,18 +206,7 @@
   	@include transition-timing-function('ease-out, ease-in-out');
   	@include transition-delay('0s, 0s');
 }
-////////////////////////////////////////////////////////////////////////////
-//  container, positions prev/next buttons
-////////////////////////////////////////////////////////////////////////////
-.videoplayer-nav {
-  height: 4em;
-  margin-top: -20px;
-  padding: 1em;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  z-index: 1;
-}
+
 ////////////////////////////////////////////////////////////////////////////
 //  shared props between both prev/next
 //  thus module, hence underscore
@@ -239,11 +214,14 @@
 .videoplayer-nav__btn {
   @include gradient-primer($video-player);
   @include opacity(0.5);
-
+  
   border: none;
   border-radius: $radius;
   height: 4em;
+  margin-top: -145px;
   padding: 0;
+  position: absolute;
+  top: 50%;
   width: 4em;
   z-index: 2;
 
@@ -260,10 +238,10 @@
   //  compound, not nested
   ////////////////////////////////////////////////////////////////////////////
   &.videoplayer-nav__btn--prev {
-
+    left: $defaultMargin;
   }
 
   &.videoplayer-nav__btn--next {
-    float: right;
+    right: $defaultMargin;
   }
 }

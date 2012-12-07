@@ -10,9 +10,7 @@
 <% var creator = frame.get('creator') %>
 <% var isGenius = frame.has('roll') && frame.get('roll').get('genius') %>
 
-<% var contextOverlay = options.contextOverlay %>
-
-<% var videoUnplayable = !contextOverlay && frameGroup.get('video_unplayable') %>
+<% var videoUnplayable = frameGroup.get('video_unplayable') %>
 
 
 <!-- new videocard -->
@@ -43,13 +41,11 @@
           </li>
         </ul>
       </div><!-- eo .frame-menu -->
-      <% if (!contextOverlay) { %>
-        <!-- TODO: should maybe use the thumbnail module JST -->
-        <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-          <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
-        </a>
-				<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
-      <% } %>
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+      </a>
+		<div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
     </div><!-- eo .frame-body -->
 
 	  <footer class="media_module frame-footer clearfix">
