@@ -133,18 +133,18 @@
           </button>
         </li>
 
-        <% if (!currentFrame.get('isSearchResultFrame')) { %>
-          <li class="persistent_video_info__item clearfix">
-            <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
-                    data-ga_category="Persistent Video Info"
-                    data-ga_action="Click share on current frame"
-                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="button_icon_left icon icon_email">
-                Email Share…
-              </i>
-            </button>
-          </li>
+        <li class="persistent_video_info__item clearfix">
+          <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
+                  data-ga_category="Persistent Video Info"
+                  data-ga_action="Click share on current frame"
+                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            <i class="button_icon_left icon icon_email">
+              Email Share…
+            </i>
+          </button>
+        </li>
 
+				<% if (!currentFrame.get('isSearchResultFrame')) { %>
           <li class="persistent_video_info__item clearfix">
             <button class="persistent_video_info__button persistent_video_info__button--comment js-comment-frame js-track-event"
                     data-ga_category="Persistent Video Info"

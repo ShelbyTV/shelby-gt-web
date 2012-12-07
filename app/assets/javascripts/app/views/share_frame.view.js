@@ -36,14 +36,22 @@
       this._components.spinner && this._showSpinner();
       
       //adjust the model for what the POST discussion_roll route expects
-      this.model.set({
-        frame_id: this.options.frame.id,
+      var modelAttrs = {
         participants: this.$('.js-share-email-addresses').val(),
         message: this.model.get('text'),
         destination: null,
         text: null,
         addresses: null
-        });
+        };
+      //routes needs frame_id, video_id, or video_source_url
+      if( this.options.frame.hasBsonId() ){
+        modelAttrs['frame_id'] = this.options.frame.id;
+      } else if( this.options.frame.get('video').hasBsonId() ) {
+        modelAttrs['video_id'] = this.options.frame.get('video').id;
+      } else {
+        modelAttrs['video_source_url'] = this.options.frame.get('video').get('source_url');
+      }
+      this.model.set(modelAttrs);
       
       //save adjusted model to discussion_roll route
       this.model.save(null, {

@@ -49,6 +49,15 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
   triggerTransientChange : function(attribute, value) {
     this.set(attribute, value);
     this.set(attribute, null);
+  },
+  
+  hasBsonId: function(){
+    //should be a 24 character
+    if(this.id.length !== 24){ return false; }
+    //hexadecimal
+    var idAsInt = parseInt(this.id, 16);
+    //starting with timestamp
+    return idAsInt > 4000000000000000000000000;
   }
 
 });
