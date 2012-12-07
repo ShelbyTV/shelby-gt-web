@@ -98,7 +98,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       });
     }
     else {
+      //setup for a user who is not signed in
       shelby.models.user = new libs.shelbyGT.AnonUserModel();
+      // when the DOM is ready load the social libraries that we use for logged out users to interact with
+      // twitter and facebook
+      $(document).ready(function(){
+        $('body').append(SHELBYJST['social-libs']());
+      });
+
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
