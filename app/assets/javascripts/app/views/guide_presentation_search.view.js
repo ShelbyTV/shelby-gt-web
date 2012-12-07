@@ -27,6 +27,12 @@
         shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
         this.$('.js-nav-search-form-text').val('');
+        // event tracking
+        shelby.trackEx({
+          gaCategory : 'search',
+          gaAction : query.toLowerCase(),
+          gaLabel : shelby.models.user.get('nickname')
+        });
       }
       return false;
     },
