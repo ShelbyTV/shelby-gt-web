@@ -79,11 +79,15 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestCurrentFrameShareView : function(){
-    this._requestFrameShareView(this._currentFrame);
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this._requestFrameShareView(this._currentFrame);
+    }
   },
 
   _requestNextFrameShareView : function(){
-    this._requestFrameShareView(this._nextFrame);
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this._requestFrameShareView(this._nextFrame);
+    }
   },
 
   _requestFrameShareView: function(frame){
