@@ -46,5 +46,10 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
+  <script>
+    try {
+          _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_text_size', '<%= @seo_ad_text_size %>']);
+    } catch(e) {}
+  </script>
 </body>
 </html>
