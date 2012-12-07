@@ -55,7 +55,7 @@
 
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
-              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_default' %> frame-command command-remove js-remove-frame">
+              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> frame-command command-remove js-remove-frame">
                 <i class="button_icon icon_cancel_on icon">&nbsp;</i>
               </button>
             </li>
