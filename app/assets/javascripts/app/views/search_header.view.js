@@ -27,6 +27,12 @@ libs.shelbyGT.SearchHeaderView = Support.CompositeView.extend({
     if (query) {
       shelby.models.videoSearch.set('query', query);
       shelby.models.videoSearch.trigger('search');
+      // event tracking
+      shelby.trackEx({
+        gaCategory : 'search',
+        gaAction : query.toLowerCase(),
+        gaLabel : shelby.models.user.get('nickname')
+      });
     }
     return false;
   }

@@ -130,5 +130,20 @@ _(shelby).extend({
       _gaq.push(['_trackEvent', _gaCategory, _gaAction, _gaLabel]);
     } catch(e){}
 
+  },
+
+  trackEx : function(options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      providers : ['ga']
+    }).value();
+
+    if (_(options.providers).contains('ga') && options.gaCategory) {
+      try {
+        _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+      } catch(e) {
+        $.noop();
+      }
+    }
   }
 });
