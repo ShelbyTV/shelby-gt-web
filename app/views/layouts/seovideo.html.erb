@@ -52,7 +52,7 @@
           _gaq.push(['_trackEvent', 'ab-testing', '<%= experiment.name %>', '<%= group %>']);
         <% end %>
       <% end %>
-    } catch {}
+    } catch(e) {}
   </script>
 </body>
 </html>
