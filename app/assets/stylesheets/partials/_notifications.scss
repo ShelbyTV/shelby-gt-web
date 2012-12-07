@@ -15,9 +15,12 @@
 .notifications-wrapper {
 //  display: none;
   height: 50px;
+  left: 50%;
+  margin-left: -300px;
   overflow: hidden;
   position: relative;
   top: 36px;
+  width: 600px;
   z-index: 4;
 
   &.hide {

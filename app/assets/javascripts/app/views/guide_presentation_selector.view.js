@@ -11,9 +11,8 @@
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
-      "click .js-explore:not(.active-item)"  : "_explore",
-      "click .js-admin"                      : "_goToAdmin",
-      "click .js-now-playing"                : "_nowPlaying"
+      "click .js-explore:not(.active-item)"  : "_goToExplore",
+      "click .js-admin"                      : "_goToAdmin"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -37,6 +36,9 @@
         model : shelby.models.invite,
         user : shelby.models.user
       }));
+      this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
+        el : this.$('.js-guide-search')
+      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -44,18 +46,21 @@
     _goToStream : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
         shelby.router.navigate('stream', {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
 
     _goToQueue : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
         shelby.router.navigate('queue', {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
     
     _goToMe : function(){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate('me', {trigger:true});
+        shelby.models.userDesires.set({guideShown: true});
       }
     },
     
@@ -63,31 +68,9 @@
       document.location = "http://api.shelby.tv/admin/new_users";
     },
     
-    _explore : function(){
+    _goToExplore : function(){
       shelby.router.navigate('explore', {trigger:true});
-    },
-    
-    _nowPlaying : function(){
-      var origin = this.model.get('activeFrameModel'),
-          originHasRoll = origin.has('roll'),
-          userDesires = shelby.models.userDesires,
-          guideVisibility = userDesires.get('guideShown'),
-          playingState = shelby.models.guide.get('playingState');
-
-      if (!guideVisibility) {
-        userDesires.set('guideShown', true);
-      }
-
-      if (playingState == libs.shelbyGT.PlayingState.dashboard || !originHasRoll) {
-        //if video has no roll, or it's playingstate is 'dashboard', go to stream
-        shelby.router.navigate('stream', {trigger:true});
-      }
-      else if( originHasRoll ) {
-        //otherwise go to roll
-        var frameId = origin.id,
-            rollId = origin.get('roll').id;
-        shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger:true});
-      }
+      shelby.models.userDesires.set({guideShown: true});
     },
 
     _onGuideModelChanged : function(model){
@@ -116,6 +99,8 @@
         $setSelectedClassOn = this.$('.js-explore');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
+        $setSelectedClassOn = this.$('.js-search');
       }
 
       if ($setSelectedClassOn) {

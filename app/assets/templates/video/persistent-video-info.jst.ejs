@@ -1,0 +1,162 @@
+<% var currentCreator = currentFrame.get('creator') %>
+<% var currentCreatorNickname = currentCreator ? currentCreator.get('nickname') : null %>
+<% var currentCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(currentCreator) %>
+<% var currentVideo = currentFrame.get('video') %>
+<% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+
+<% var nextCreator = nextFrame.get('creator') %>
+<% var nextCreatorNickname = nextCreator ? nextCreator.get('nickname') : null %>
+<% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
+<% var nextVideo = nextFrame.get('video') %>
+<% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+
+<div class="persistent_video_info animate_module">
+  <div class="media_image--rev persistent_video_info__next-frame">
+    <a class="persistent_video_info__anchor js-track-event js-next-video"
+              data-ga_category="Persistent Video Info"
+              data-ga_action="Click on next frame"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+
+      <h3 class="persistent_video_info__h2">
+        Up Next
+      </h3>
+
+      <%= SHELBYJST['thumbnail-module']({
+        thumbnail: nextVideo.get('thumbnail_url'),
+        title: nextVideo.get('title') }) %>
+
+      <h2 class="persistent_video_info__h3">
+        <%= nextVideo.get('title') %>
+      </h2>
+    </a>
+    <div hidden>
+      <button class="js-roll-frame js-track-event"
+              data-ga_category="Persistent Video Info"
+              data-ga_action="Click roll on next frame"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+        <i class="button_icon_left icon_videocard_roll icon">
+          Roll…
+        </i>
+      </button>
+
+      <button class="js-queue-frame
+                     <%= (queuedVideosModel.videoIsInQueue(nextVideo) ) ? ' queued' : '' %>">
+        <i class="button_icon_left icon_videocard_queue icon js-command-icon">
+          <%= (queuedVideosModel.videoIsInQueue(nextVideo)) ? 'Queued' : 'Queue' %>
+        </i>
+      </button>
+
+      <button class="command-share js-share-frame js-track-event"
+              data-ga_category="Persistent Video Info"
+              data-ga_action="Click share on next frame"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+        <i class="button_icon_left icon icon_email">
+          Email Share…
+        </i>
+      </button>
+
+      <% if (!nextFrame.get('isSearchResultFrame')) { %>
+        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
+          <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
+        </span>
+      <% } else { %>
+        <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+      <% } %>
+
+      <% if (!nextFrame.get('isSearchResultFrame')) { %>
+        shared by <%= nextCreatorNickname %>
+      <% } else { %>
+        found on <strong><%= _(nextVideo.get('provider_name')).capitalize() %></strong>
+      <% } %>
+
+      <% if((nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) || nextFrame.get('isSearchResultFrame')) { %>
+        <p class="xuser-message">
+          <%= nextMessages.models[0].escape('text') %>
+        </p>
+      <% } %>
+    </div><!-- eo div hidden -->
+  </div><!-- eo .persistent_video_info__next-frame -->
+
+  <div class="media_body persistent_video_info__current-frame">
+    <div class="persistent_video_info__lining">
+      <h2 class="persistent_video_info__h1">
+        <%= currentVideo.get('title') %>
+      </h2>
+
+      <div class="media_module persistent_video_info__body">
+        <% if (!currentFrame.get('isSearchResultFrame')) { %>
+          <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+            <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+          </div>
+        <% } else { %>
+          <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+        <% } %>
+        <div class="media_body">
+          <h3 class="xuser-data persistent_video_info__h4--light">
+            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+              shared by <strong><%= currentCreatorNickname %></strong>
+            <% } else { %>
+              found on <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+            <% } %>
+          </h3>
+
+          <% if((currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame')) { %>
+            <p>
+              <%= currentMessages.models[0].escape('text') %>
+            </p>
+          <% } %>
+        </div><!-- eo .media_body -->
+      </div><!-- eo .persistent_video_info__body -->
+    </div><!-- eo .persistent_video_info_lining -->
+
+    <div class="persistent_video_info__foot">
+      <hr class="hr hr--double" />
+
+      <ul class="persistent_video_info__list persistent_video_info__list--actions">
+        <li class="persistent_video_info__item clearfix">
+          <button class="persistent_video_info__button persistent_video_info__button--roll js-roll-frame js-track-event"
+                  data-ga_category="Persistent Video Info"
+                  data-ga_action="Click roll on current frame"
+                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            <i class="button_icon_left icon_videocard_roll icon">
+              Roll…
+            </i>
+          </button>
+        </li>
+
+        <li class="persistent_video_info__item clearfix">
+          <button class="persistent_video_info__button persistent_video_info__button--queue js-queue-frame
+                         <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued' : '' %>">
+            <i class="button_icon_left icon_videocard_queue icon js-command-icon">
+              <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
+            </i>
+          </button>
+        </li>
+
+        <% if (!currentFrame.get('isSearchResultFrame')) { %>
+          <li class="persistent_video_info__item clearfix">
+            <button class="persistent_video_info__button persistent_video_info__button--share js-share-frame js-track-event"
+                    data-ga_category="Persistent Video Info"
+                    data-ga_action="Click share on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="button_icon_left icon icon_email">
+                Email Share…
+              </i>
+            </button>
+          </li>
+
+          <li class="persistent_video_info__item clearfix">
+            <button class="persistent_video_info__button persistent_video_info__button--comment js-comment-frame js-track-event"
+                    data-ga_category="Persistent Video Info"
+                    data-ga_action="Click comment on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="button_icon_left icon_videocard_comment icon">
+                <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
+              </i>
+            </button>
+          </li>
+        <% } %>
+      </ul>
+    </div><!-- eo .persistent_video_info__foot -->
+  </div><!-- eo .persistent_video_info__current-frame -->
+</div><!-- eo .persistent_video_info -->

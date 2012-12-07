@@ -1,3 +1,11 @@
+/*
+* Render and manage the video views:
+* - near the end of a video, set up and display the hot switcher
+* - into the start of a video, bring down the hot switcher and go full screen video
+*
+* This view does not handle the video itself, playback, or any user actions.
+*
+*/
 libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   tagName: 'section',
@@ -5,7 +13,14 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
   className: 'content_module videoplayer js-videoplayer animate-easein',
 
   options : {
-    userDesires : null
+    guide : null,         //injected at construction
+    playbackState : null, //injected
+  },
+  
+  initialize: function(opts){
+  },
+  
+  _cleanup : function(){
   },
 
   template : function(obj){
@@ -18,16 +33,17 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.notificationOverlayView({
       model : shelby.models.notificationState
     }));
-    this.renderChild(new libs.shelbyGT.ContextOverlayView({
-      contextOverlayState : shelby.models.contextOverlayState,
+    // this.renderChild(new libs.shelbyGT.PrerollVideoInfoView({
+    //   el: this.$('#js-preroll-video-info-wrapper'),
+    //   guide : shelby.models.guide,
+    //   playbackState : shelby.models.playbackState
+    // }));
+    this.renderChild(new libs.shelbyGT.PersistentVideoInfoView({
+      el: this.$('#js-persistent-video-info-wrapper'),
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay,
-      playbackState : shelby.models.playbackState
-    }));
-    this.renderChild(new libs.shelbyGT.PrerollVideoInfoView({
-      el: this.$('#js-preroll-video-info-wrapper'),
-      guide : shelby.models.guide,
-      playbackState : shelby.models.playbackState
+      queuedVideos : shelby.models.queuedVideos,
+      userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,

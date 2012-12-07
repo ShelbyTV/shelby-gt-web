@@ -40,6 +40,7 @@
 @import "partials/app-header";
 @import "partials/guide-presentation-selector";
 @import "partials/guide-overlay-view";
+@import "partials/nav-search";
 
 @import "partials/landing-page";
 
@@ -51,17 +52,19 @@
 @import "partials/action";
 
 @import "partials/frame";
-@import "partials/video-player";
 @import "partials/external-tools";
 
 @import "partials/roll-header";
+@import "partials/search-header";
 
 //------------------------------------------------------------------------------
 //  videoplayer related
 //------------------------------------------------------------------------------
-@import "partials/video-controls";
-@import "partials/video-mini-progress";
-@import "partials/context-overlay";
+@import "partials/video/video-player";
+@import "partials/video/persistent-video-info";
+@import "partials/video/video-controls";
+@import "partials/video/video-mini-progress";
+// @import "partials/context-overlay";
 @import "partials/preroll-video-info";
 @import "partials/me-section";
 @import "partials/rolls-list";
@@ -100,6 +103,13 @@
 // Facebook Genius App styles
 //------------------------------------------------------------------------------
 @import "partials/facebook-genius";
+
+//------------------------------------------------------------------------------
+//  Overridesg
+//------------------------------------------------------------------------------
+@import "partials/hide-guide";
+@import "partials/user-inactive";
+@import "partials/touch";
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes

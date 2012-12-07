@@ -106,3 +106,8 @@
 //  isolated roll
 //  (nest styles inside of .isolated-roll{})
 //------------------------------------------------------------------------------
+.isolated-roll { 
+  #disqus_thread {
+    margin-top: 15px;
+  }
+}

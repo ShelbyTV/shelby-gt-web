@@ -6,6 +6,7 @@
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
+  var VideoSearchView = libs.shelbyGT.VideoSearchView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -25,8 +26,10 @@
     _currentRollMasterCollection : null,
     _currentRollView : null,
 
+    _videoSearchView : null,
+
     _playingFrameGroupCollection : null,
-    _playingState : libs.shelbyGT.PlayingState.none,
+    _playingState : null,
     _playingRollId : null,
 
     _nowSkippingVideo : false,
@@ -49,6 +52,11 @@
       this.model.unbind('reposition', this._onReposition, this);
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
+    },
+    
+    _setPlayingFrameGroupCollection : function(pfgc){
+      this._playingFrameGroupCollection = pfgc;
+      Backbone.Events.trigger("change:playingFrameGroupCollection", pfgc);
     },
 
     _onGuideModelChange : function(model){
@@ -130,6 +138,45 @@
             spinner : true
           };
           break;
+        case DisplayState.search :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : VideoSearchView,
+            collection : shelby.collections.videoSearchResultFrames,
+            options : {
+              collapseViewedFrameGroups : false,
+              comparator : function(frameGroup1, frameGroup2) {
+                var video1 = frameGroup1.get('frames').at(0).get('video');
+                var score1 = video1.get('score');
+                var video2 = frameGroup2.get('frames').at(0).get('video');
+                var score2 = video2.get('score');
+                if (score1 < score2) {
+                  return -1;
+                } else if (score1 > score2) {
+                  return 1;
+                } else {
+                  // we want to expliciltly and deterministically break ties in sort order
+                  // BECAUSE backbone can sometimes change the order of a collection without notifying you when 3+ items tie on the
+                  // comparator
+
+                  // we'll just use the provider name for now, so the interleaving of provider videos will be the same every time
+                  var videoProvider1 = video1.get('provider_name');
+                  var videoProvider2 = video2.get('provider_name');
+                  if (videoProvider1 > videoProvider2) {
+                    return -1;
+                  } else if (videoProvider1 < videoProvider2) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                }
+              },
+              doStaticRender : true,
+              masterCollection : this._currentRollMasterCollection,
+              videoSearchModel : shelby.models.videoSearch
+            }
+          };
+          break;
         case DisplayState.userPreferences :
         case DisplayState.tools :
           displayParams = {
@@ -168,24 +215,27 @@
       switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
-          if (this._playingState == libs.shelbyGT.PlayingState.dashboard) {
+          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.dashboard) {
             // while we were away from the dashboard, we relied on the last displayed state of the dashboard
             // to determine what frames to play
             // since we're displaying the dashboard again now, we need to play based on what is actually
             // displayed in the current dashboard view
-            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
           }
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
           this._currentRollView = this._listView;
-          if (this._playingState == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
+          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
             // while we were away from this roll, we relied on the last displayed state of the roll
             // to determine what frames to play
             // since we're displaying the roll again now, we need to play based on what is actually
             // displayed in the current roll view
-            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
           }
+          break;
+        case DisplayState.search :
+          this._videoSearchView = this._listView;
           break;
       }
 
@@ -241,31 +291,22 @@
       if (activeFrameModel) {
         if (!this._nowSkippingVideo) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
-            this._playingFrameGroupCollection = this._dashboardView.frameGroupCollection;
+            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.dashboard;
             this._playingRollId = null;
+          } else if (guideModel.get('displayState') == DisplayState.search) {
+            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
+            this._playingState = libs.shelbyGT.PlayingState.search;
+            this._playingRollId = null;
           } else {
-            this._playingFrameGroupCollection = this._currentRollView.frameGroupCollection;
+            //we're playing some kind of roll
+            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.roll;
             this._playingRollId = activeFrameModel.get('roll').id;
           }
         }
-        // HACK: we need some way for the context overlay to be holding the exact same frame
-        // group model that is playing - a reference to the one that we have in our collection
-        // TODO: find some way to fix the inheritance and parent child view relationships so that
-        // the context overlay view will just have this reference all the time
-        if (this._playingFrameGroupCollection) {
-          var playingFrameGroup = this._playingFrameGroupCollection.find(function(frameGroup) {
-            return frameGroup.get('frames').any(function(frame){
-              return frame.get('video').id == activeFrameModel.get('video').id;
-            });
-          });
-          if (playingFrameGroup) {
-            shelby.models.contextOverlayState.set('playingFrameGroup', playingFrameGroup);
-          }
-        }
       } else {
-        this._playingFrameGroupCollection = null;
+        this._setPlayingFrameGroupCollection(null);
         this._playingState = libs.shelbyGT.PlayingState.none;
         this._playingRollId = null;
       }
@@ -284,12 +325,9 @@
     // appropriately changes the next video (in dashboard or a roll)
     _skipVideo : function(skip){
 
-      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip);
-      // if we can't find a playable frame in the direction we're looking,
+      // if we can't find a playable frame in the direction we're looking
       // we return to the beginning of the roll or stream
-      if (!nextFrame) {
-        nextFrame = this._playingFrameGroupCollection.at(0).getFirstFrame();
-      }
+      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip, true);
 
       this._nowSkippingVideo = true;
       this.model.set({activeFrameModel: nextFrame});

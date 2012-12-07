@@ -28,7 +28,9 @@ libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
   _renderEmailRecipient : function(){
     this.$el.html(SHELBYJST['discussion-roll/email-recipient']({emailAddress:this.model}));
     
-    document.title += " "+this.model+", ";
+    if(this.options.updatePageTitle){
+      document.title += " "+this.model+", ";
+    }
   },
   
   _renderShelbyRecipient : function(){
@@ -37,7 +39,9 @@ libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
     
     if(userInfo){
       this.$el.html(SHELBYJST['discussion-roll/shelby-recipient']({shelbyUserInfo:userInfo}));
-      document.title += " "+userInfo.nickname+",";
+      if(this.options.updatePageTitle){
+        document.title += " "+userInfo.nickname+",";
+      }
     } else {
       this._user = new libs.shelbyGT.UserModel({id: this.model});
       this._user.fetch({
@@ -46,7 +50,9 @@ libs.shelbyGT.DiscussionRollRecipientView = Support.CompositeView.extend({
             nickname: userModel.get('nickname'),
             name: userModel.get('name')
             }}));
-          document.title += " "+userModel.get('nickname')+",";
+          if(self.options.updatePageTitle){
+            document.title += " "+userModel.get('nickname')+",";
+          }
         }
       });
     }

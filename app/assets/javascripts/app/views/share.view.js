@@ -149,7 +149,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _share : function(){
     var self = this;
-
+    
     if(!this._validateShare()) {
       this.$('.js-share-textarea, .js-share-email-addresses').addClass('error');
       this.onValidationFail();

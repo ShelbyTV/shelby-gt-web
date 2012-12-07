@@ -54,7 +54,7 @@
         }
       });
       this.renderChild(this._shelbyAutocompleteView);
-
+      
       GuideOverlayView.prototype.render.call(this);
     },
     

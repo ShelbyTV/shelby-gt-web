@@ -136,12 +136,12 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     // If a video is selected, it's sent to us via addVideoAttachment()
     // DiscussionRollSelectVideoAttachmentView handles rendering, possibly selecting, hiding itself.
     this._scrollTopWhenHidden = $("body").scrollTop();
-    $(".js-discussion").hide();
+    $(".js-discussion").addClass('discussion-attachment-shown');
     new libs.shelbyGT.DiscussionRollSelectVideoAttachmentView({delegate: this});
   },
   
   videoAttachmentViewDidDisappear: function(){
-    $(".js-discussion").show();
+    $(".js-discussion").removeClass('discussion-attachment-shown');
     $("body").scrollTop(this._scrollTopWhenHidden);
   },
   
