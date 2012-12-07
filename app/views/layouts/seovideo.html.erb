@@ -29,11 +29,6 @@
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s);}(document,'script'));
 			_gaq.push(['_trackEvent', "SEO Video", "Visit page"]);
-      <% Split::Experiment.all.each do |experiment| %>
-        <% if group = ab_user[experiment.name] %>
-          _gaq.push(['_trackEvent', 'ab-testing', '<%= experiment.name %>', '<%= group %>']);
-        <% end %>
-      <% end %>
     </script>
     <script>
       var _kmq = _kmq || [];
@@ -50,5 +45,14 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
+  <script>
+    try {
+      <% Split::Experiment.all.each do |experiment| %>
+        <% if group = ab_user[experiment.name] %>
+          _gaq.push(['_trackEvent', 'ab-testing', '<%= experiment.name %>', '<%= group %>']);
+        <% end %>
+      <% end %>
+    } catch {}
+  </script>
 </body>
 </html>
