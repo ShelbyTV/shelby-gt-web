@@ -20,6 +20,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/paging_list.view.js
 //= require ./views/inline_explore_promo.view.js
 //= require ./views/inline_roll_promo.view.js
+//= require ./views/inline_donate_promo.view.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/dashboard.view.js
@@ -27,6 +28,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/me_list.view.js
 //= require ./views/roll_list.view.js
 //= require ./views/roll.view.js
+//= require ./views/video_search.view.js
 //= require ./views/user_preferences.view.js
 //= require ./views/scrolling_guide.view.js
 //= require ./views/help.view.js
@@ -34,7 +36,8 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/legal.view.js
 //= require ./views/roll_action_menu.view.js
 //= require ./views/roll_header.view.js
-//= require ./views/roll_overlay_context.view.js
+//= require ./views/search_header.view.js
+//= require ./views/iso_roll_header.view.js
 //= require ./views/item_header.view.js
 //= require ./views/autocomplete.view.js
 //= require ./views/email_address_autocomplete.view.js
@@ -44,7 +47,9 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/banner_notifications/generic_banner_notification.view.js
 //= require ./views/share.view.js
 //= require ./views/message.view.js
+//= require ./views/queue_empty_indicator.view.js
 //= require ./browser.js
+//= require ./utils/disqus.js
 //= require ./models/db/user.model.js
 //
 //shelby backbone app - all other assets

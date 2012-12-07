@@ -13,13 +13,12 @@ class RollController < ApplicationController
       
       # Get all pertinent info from the API (we need all of this no matter what)
       @roll_only = true
-      @roll = Shelby::API.get_roll(params[:roll_id])
-      @frame = Shelby::API.get_first_frame_on_roll(params[:roll_id])
-      @video = Shelby::API.get_video(@frame['video_id']) if @frame
+      roll_id = params[:roll_id]
+      @roll = BSON::ObjectId.legal?(roll_id) ? Shelby::API.get_roll(roll_id) : nil
       @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       
       # And render it
-      render '/home/landing'
+      render '/home/app'
     end
   end
   
@@ -28,6 +27,11 @@ class RollController < ApplicationController
   end
   
   def show_isolated_roll
+    render '/home/app'
+  end
+  
+  def show_fb_genius_roll
+    @genius_roll_id = params[:roll_id]
     render '/home/app'
   end
   

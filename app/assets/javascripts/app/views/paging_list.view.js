@@ -3,6 +3,9 @@ libs.shelbyGT.PagingMethod = {
   key : 'key'
 };
 
+/* 
+ * TODO: this class, and the options individually, need documentation 
+ */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   
   _numItemsLoaded : 0,
@@ -38,18 +41,26 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
+    /* 
+      Change the copy shown in the load more button with this attribute.
+      To change the element itself: override template() and be sure to retain
+      the class .js-load-more for events to work.
+    */
+    loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
   }),
 
   template : function(obj){
-    return JST['load-more'](obj);
+    return SHELBYJST['load-more'](obj);
   },
 
   initialize : function(){
     var self = this;
-    this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    if (this.model) {
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
     this.$el.append(this.template());
@@ -57,8 +68,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _cleanup : function(){
-    this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    $('#js-guide-body').unbind('scroll');
+    if (this.model) {
+      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    }
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
 
@@ -86,7 +98,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _onItemsLoaded : function(rollModel, items){
     this.$('.js-load-more').removeClass('js-loading').show();
-    this.$('.js-load-more-button').html('Load more');
+    this.$('.js-load-more-button').html(this.options.loadMoreCopy);
     if (this.options.emptyIndicatorViewProto) {
       if (this._numItemsLoaded == 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
@@ -105,6 +117,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
+    
   },
 
   _onFetchSuccess : function(model, response){
@@ -128,7 +141,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
           self._loadMore();
         }
       }, 250);
-    }
+    }    
   },
 
   _doesResponseContainListCollection : function(response) {
@@ -144,7 +157,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this._loadMoreEnabled = false;
   },
 
-  _addItem : function(item, collection, options){
+  _addItem : function(item, collection, options, noSmartRefresh){
     this._numItemsLoaded++;
     if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
       if (!this._lastKeyValue ||
@@ -153,7 +166,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         this._lastKeyValue = item.id;
       }
     }
-    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, collection, options);
+    libs.shelbyGT.SmartRefreshListView.prototype._addItem.call(this, item, collection, options, noSmartRefresh);
   },
 
   _loadMore : function(){

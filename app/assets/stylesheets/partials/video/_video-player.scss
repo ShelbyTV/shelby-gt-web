@@ -1,0 +1,34 @@
+@import "base";
+ 
+.videoplayer{
+	background: #000;
+}
+
+.videoplayer.full-width {
+  margin-left:0px;
+}
+
+.videoplayer-viewport {
+  bottom: $persistent_video_info--height;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  > * {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #videoPlayerComponent, #adComponent {
+    position: relative;
+    height: auto;
+    width: auto;
+  }
+
+  /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
+  #ooyala-player-holder div,
+  #ooyala-player-holder object { width: 100%!important; height: 100%!important; }
+}

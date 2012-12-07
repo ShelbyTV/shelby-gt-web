@@ -16,10 +16,6 @@ describe("FrameGroupView", function() {
     it("should create an <li> el", function() {
       expect(this.view.el.nodeName).toEqual("LI");
     });
-    
-    it("should create an el with class 'frame'", function() {
-      expect(this.view.$el).toHaveClass('frame');
-    });
   });
 
   xdescribe("Rendering", function() {
@@ -52,6 +48,9 @@ describe("FrameGroupView", function() {
     
     describe("Guide overlays", function() {
       beforeEach(function() {
+        shelby.views = {
+          anonBanner : new libs.shelbyGT.AnonBannerNotificationView()
+        };
         this.switchStub = sinon.stub(this.guideOverlayModel, 'switchOrHideOverlay');
       });
       
@@ -59,28 +58,43 @@ describe("FrameGroupView", function() {
         this.switchStub.restore();
       });
 
-      describe("click .js-video-activity-toggle", function() {
-        it("should update guide overlay state using proper parameters to request conversation view", function() {
-          expect(this.view.$el).toContain('.js-video-activity-toggle');
-          this.view.$('.js-video-activity-toggle').click();
-          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.conversation, this.frameGroupModel.get('frames').at(0));
-        });
-      });
+      describe("User logged in", function() {
 
-      describe("click .js-roll-frame", function() {
-        it("should update guide overlay state using proper parameters to request rolling view", function() {
-          expect(this.view.$el).toContain('.js-roll-frame');
-          this.view.$('.js-roll-frame').click();
-          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.rolling, this.frameGroupModel.get('frames').at(0));
+        beforeEach(function() {
+          this.userIsAbleStub = sinon.stub(shelby.views.anonBanner, 'userIsAbleTo').returns(true);
         });
-      });
 
-      describe("click .js-share-frame", function() {
-        it("should update guide overlay state using proper parameters to request share view", function() {
-          expect(this.view.$el).toContain('.js-share-frame');
-          this.view.$('.js-share-frame').click();
-          expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.share, this.frameGroupModel.get('frames').at(0));
+        afterEach(function() {
+          this.userIsAbleStub.restore();
         });
+
+        describe("click .js-video-activity-toggle", function() {
+          it("should update guide overlay state using proper parameters to request conversation view", function() {
+            expect(this.view.$el).toContain('.js-video-activity-toggle');
+            this.view.$('.js-video-activity-toggle').click();
+            expect(this.userIsAbleStub).toHaveBeenCalledWithExactly(libs.shelbyGT.AnonymousActions.COMMENT);
+            expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.conversation, this.frameGroupModel.get('frames').at(0));
+          });
+        });
+
+        describe("click .js-roll-frame", function() {
+          it("should update guide overlay state using proper parameters to request rolling view", function() {
+            expect(this.view.$el).toContain('.js-roll-frame');
+            this.view.$('.js-roll-frame').click();
+            expect(this.userIsAbleStub).toHaveBeenCalledWithExactly(libs.shelbyGT.AnonymousActions.ROLL);
+            expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.rolling, this.frameGroupModel.get('frames').at(0));
+          });
+        });
+
+        describe("click .js-share-frame", function() {
+          it("should update guide overlay state using proper parameters to request share view", function() {
+            expect(this.view.$el).toContain('.js-share-frame');
+            this.view.$('.js-share-frame').click();
+            expect(this.userIsAbleStub).toHaveBeenCalledWithExactly(libs.shelbyGT.AnonymousActions.COMMENT);
+            expect(this.switchStub).toHaveBeenCalledWithExactly(libs.shelbyGT.GuideOverlayType.share, this.frameGroupModel.get('frames').at(0));
+          });
+        });
+
       });
     });
   });

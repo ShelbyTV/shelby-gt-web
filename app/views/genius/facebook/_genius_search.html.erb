@@ -1,0 +1,20 @@
+<section class="landing-shelf landing-shelf-private">
+	<div class="landing-shelf-lining">
+		<h1 class="landing-shelf-header top-header">
+			<img src="/images/landing/geniuslogo.png" class="genius-logo" alt="Shelby Genius" /><span style="font-weight:400;vertical-align: middle;"> , where video finds you.</span>
+		</h1>
+	
+		<h2 class="landing-shelf-subheader">
+			Discover videos from YouTube, Vimeo, Hulu, ESPN and DailyMotion using recommendations from Shelby’s community of video curators.
+		</h2>
+	
+		<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
+			<input name="search" type="text" id="js-email-input" class="landing-form-input" placeholder="What will you find?" />
+			<input type="submit" value="GO" id="js-genius-search-submit" class="landing-form-submit" />
+			<div id="genius-search-spinner" class="genius-search-spinner">
+		</form>
+		
+	</div>
+</section>
+
+<%= javascript_tag render :partial => "/genius/facebook/genius_search", :formats => [:js] %>

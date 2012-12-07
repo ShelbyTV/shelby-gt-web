@@ -21,6 +21,10 @@ gem 'httparty'
 #
 gem 'youtube_it'
 
+#
+# ---------- External Services
+#
+gem 'koala'
 
 #
 # -- Quiet Logging
@@ -46,6 +50,23 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
+group :production, :staging do
+  gem "therubyracer"
+  gem "uglifier"
+end
+group :development do
+  gem 'capistrano-unicorn', :require => false
+end
+
+#
+# ----------- Web Server
+#
+group :production, :staging do
+  gem 'unicorn'
+  gem 'kgio'
+  gem 'raindrops'
+end
 
 #
 # ---------- Error Monitoring

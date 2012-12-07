@@ -16,15 +16,14 @@
     },
 
     _scrollToTop : function(){
-      //$('#js-guide-wrapper').scrollTo(0);
       this._scrollGuideWrapperTo(0);
     },
 
     _scrollToElement : function(e){
       e.preventDefault();
       var options = {
-        duration : 200, 
-        axis : 'y', 
+        duration : 200,
+        axis : 'y',
         offset : { top : -10 }
       };
       this._scrollGuideWrapperTo($(e.currentTarget.hash.replace('#','.')), options);

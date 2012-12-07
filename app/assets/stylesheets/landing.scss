@@ -1,20 +1,50 @@
+//------------------------------------------------------------------------------
+//  base: color variables, height & width constants
+//------------------------------------------------------------------------------
 @import "base";
+//------------------------------------------------------------------------------
+//  base-mixin: mixins library
+//------------------------------------------------------------------------------
 @import "base-mixin";
 
-@import "compass/typography/links/hover-link";
+//------------------------------------------------------------------------------
+//  boilerplate + normalization
+//------------------------------------------------------------------------------
+@import "boilerplate/fonts";
+@import "boilerplate/h5bp";
 
-@import 
-		"partials/fonts",
-		"partials/h5bp", 
-		"partials/utilities",	
-		"partials/modules",	
-		"partials/icons",
-		
-		"partials/app.html",
-		"partials/app-header",
-		"partials/guide-presentation-selector",
-		"partials/guide-overlay-view",
-		
-		"partials/landing-page",
-		
-		"partials/h5bp-utilities";
+//------------------------------------------------------------------------------
+//  MODULES
+//------------------------------------------------------------------------------
+@import "modules";
+
+//------------------------------------------------------------------------------
+//  app wide abstracts
+//------------------------------------------------------------------------------
+@import "abstracts";
+
+//------------------------------------------------------------------------------
+//  non-normative
+//------------------------------------------------------------------------------
+@import "partials/login-form";
+
+//------------------------------------------------------------------------------
+//  Shelby.tv App
+//------------------------------------------------------------------------------
+@import "partials/app.html";
+@import "partials/app-header";
+@import "partials/guide-presentation-selector";
+@import "partials/guide-overlay-view";
+
+//------------------------------------------------------------------------------
+//  Landing Page Styles
+//------------------------------------------------------------------------------
+@import "partials/landing-page";
+
+//------------------------------------------------------------------------------
+// Facebook Genius App styles
+//------------------------------------------------------------------------------
+@import "partials/facebook-genius";
+
+@import "boilerplate/h5bp-utilities";
+@import "compass/typography/links/hover-link";

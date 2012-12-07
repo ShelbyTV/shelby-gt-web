@@ -1,7 +1,8 @@
 $extension: ".svg" !default;
 $path: "/images/assets/" !default;
 
-$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
+$logo-shelby                    : "#{$path}logo_type#{$extension}";
+//$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
 $logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
 
 $icon-cancel                    : "#{$path}cancel.svg";
@@ -15,6 +16,7 @@ $icon-avatar-large              : "#{$path}avatar.png";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-settings                  : "#{$path}settings#{$extension}";
+$icon-search                    : "#{$path}search#{$extension}";
 
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
 $icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
@@ -115,6 +117,7 @@ $margin              : 0.5em;
 $media-module-margin : 8px;
 $header-height       : $unit * 3.5;
 $guide-width         : $unit * 37;
+$persistent_video_info--height : 200px;
 
 //------------------------------------------------------------------------------
 //  COLORS
@@ -126,6 +129,7 @@ $base          : #e2e2e2;
 $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
 $shadow        : 0 0 2px 0 rgba(0,0,0,.5);
+$shadow-text   : 0px 1px 0px #333;
 $outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
@@ -186,6 +190,11 @@ $explore-subline-color              : adjust-lightness($explore-header-color,30%
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
 
 ////////////////////////////////////////////////////////////////////////////
+//  COLORS: external
+////////////////////////////////////////////////////////////////////////////
+$external-bg                        : #efefef;
+
+////////////////////////////////////////////////////////////////////////////
 //  COLORS: me
 ////////////////////////////////////////////////////////////////////////////
 $me-header-color                    : adjust-lightness($text, 10%);
@@ -196,7 +205,7 @@ $me-header-color                    : adjust-lightness($text, 10%);
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
   //  faux-tint is an opacity of .7, makes the color 'lighter',
-  //  used on .frame-comment-link and .context-overlay .frame-command/-option
+  //  used on .frame-comment-link
 $videocard-faux-tint                : .7;
 
 ////////////////////////////////////////////////////////////////////////////
@@ -214,8 +223,10 @@ $toggle-switch-gray                 : #fefefe;
 //  COLORS: shelby
 ////////////////////////////////////////////////////////////////////////////
 $shelby-blue                        : #0590c4;
+$shelby-default                     : #eeeeee;
 $shelby-gray                        : #27292A;
 $shelby-gray-light                  : #a0a0a0;
+$shelby-gray-medium                 : #dddddd;
 $shelby-green                       : #428e3a;
 $shelby-purple                      : #693a7b;
 $shelby-red                         : #cc1235;

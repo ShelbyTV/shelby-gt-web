@@ -3,13 +3,18 @@ defaults: &defaults
   secure_url: "https://api.shelby.tv"
   login_form_url: "https://api.shelby.tv/authentications/login"
   signup_form_url: "https://api.shelby.tv/user/sign_in"
+  popup_cohort_entrance_url: "https://api.shelby.tv/cohort_entrance/dottv/popup"
   version: "/v1"
 
 development:
   <<: *defaults
   login_form_url: "https://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
-
+  popup_cohort_entrance_url: "https://api.shelby.tv/cohort_entrance/dottv/popup"
+  
 test:
+  <<: *defaults
+
+staging:
   <<: *defaults
 
 production:

@@ -1,10 +1,10 @@
 <%
   var authed_providers = [];
-	if (shelby.models.user.get('authentications') != null){
-	  shelby.models.user.get('authentications').forEach(function(auth){
-	    authed_providers.push(auth.provider);
-	  });		
-	}
+  if (shelby.models.user.get('authentications') != null){
+    shelby.models.user.get('authentications').forEach(function(auth){
+      authed_providers.push(auth.provider);
+    });
+  }
 %>
 
 <div class="onboarding_layout_head onboarding-head clearfix">
@@ -56,17 +56,27 @@
               Shelby will pull the videos off your<br> <span><%= network %></span> feed.
             <% } %>
           </p>
+          <% if (network == 'twitter' && disabled){ %>
+            <div class="twitter-follow-shelby onboarding-network-additional-options clearfix">
+              <input id="onboarding-follow-shelby" class="form_checkbox connected-network-checkbox js-onboarding-follow-shelby" name="onboarding-follow-shelby" type="checkbox" checked >
+              <label for="onboarding-follow-shelby" class="form_label">
+                Follow @Shelby on Twitter
+              </label>
+            </div>
+          <% } %>
+          <% if (network == 'facebook' && disabled){ %>
+            <div class="facebook-timeline-opt-in onboarding-network-additional-options clearfix">
+              <input id="onboarding-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" checked >
+              <label for="preferences-timeline-sharing" class="form_label">
+                Facebook Timeline Sharing
+              </label>
+              <p class="timeline-sharing-description">
+                I want to share <b><%= shelby.models.user.get('nickname') %>.shelby.tv</b> and videos I watch on Shelby with my friends on my Facebook Timeline
+              </p>
+            </div>
+          <% } %>
         </div>
       </li>
     <% }); %>
   </ul>
-	<div class="facebook-timeline-opt-in clearfix">
-		<input id="onboarding-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" checked >
-		<label for="preferences-timeline-sharing" class="form_label">
-			Facebook Timeline Sharing
-		</label>
-		<p class="timeline-sharing-description">
-			I want to share <b><%= shelby.models.user.get('nickname') %>.shelby.tv</b> and videos I discover on Shelby with my friends on my Facebook Timeline
-		</p>
-	</div>
 </div><!-- eo onboarding_layout_body -->

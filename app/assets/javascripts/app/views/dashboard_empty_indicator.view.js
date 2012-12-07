@@ -8,7 +8,7 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['dashboard-empty-indicator'](obj);
+    return SHELBYJST['dashboard-empty-indicator'](obj);
   },
 
   render : function(){

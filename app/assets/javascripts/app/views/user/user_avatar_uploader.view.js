@@ -13,7 +13,7 @@
 libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
 
   template : function(obj){
-    return JST['user/avatar-uploader'](obj);
+    return SHELBYJST['user/avatar-uploader'](obj);
   },
   
 
@@ -30,6 +30,12 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
     this._initUploader();
   },
   
+  /*****************
+   * Image Uploading
+   *
+   * This was copied almost *exactly* for iso_roll_header.view.js (which allows uploading of header image)
+   * If we need to use this again elsewhere, it's time to DRY it up and abstract it.
+   *****************/
   _initUploader: function(){
     var self = this;
 

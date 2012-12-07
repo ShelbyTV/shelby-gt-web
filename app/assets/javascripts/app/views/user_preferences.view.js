@@ -5,9 +5,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   _securityResponseFadeTimeout : null,
 
   events: {
-    "click .js-user-save:not(.js-busy)"         :  "_submitContactInfo",
+    "click .js-user-save:not(.js-busy)"         : "_submitContactInfo",
     "click .js-user-password-save:not(.js-busy)": "_submitPassword",
     "click .js-user-cancel"                     : "_cancel",
+    "click .js-tools"                           : "_showTools",
     "change #preferences-email-updates"         : "_toggleEmailUpdates",
     "change #preferences-email-comments"        : "_toggleCommentEmails",
     "change #preferences-email-rerolls"         : "_toggleRerollEmails",
@@ -20,7 +21,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   tagName : 'section',
 
   template : function(obj){
-    return JST['user-preferences'](obj);
+    return SHELBYJST['user-preferences'](obj);
   },
 
   render : function(){
@@ -166,6 +167,12 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _toggleTimelineSharing: function(){
     this._toggleCheckboxSelection('open_graph_posting', '#preferences-timeline-sharing');
+  },
+
+  _showTools: function(e){
+    e.preventDefault();
+    shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
+    shelby.router.navigate('tools', {trigger:true});
   },
 
   // the future

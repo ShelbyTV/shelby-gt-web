@@ -2,7 +2,11 @@
 
 .in-line-promo {
   background-color: #D6D6D6;
-  padding: 10px;
+  padding: 5px 10px;
+
+  &.in-line-donate-promo {
+    padding: 0;
+  }
 }
 
 .in-line-promo-item {
@@ -19,11 +23,11 @@
 
 .in-line-promo-header {
   font-size: 1.17em;
-  line-height: 2.4;
+  margin-bottom: 10px;
 }
 
 .in-line-promo-button {
-  @include button-primer($shelby-blue, dark);
+  @include button-sizing;
   
   float: right;
 }
@@ -63,4 +67,32 @@
   font-size: 1.17em;
   line-height: 2.3;
   margin-left: 0.55em;
+}
+
+.in-line-donate-link {
+  &:active,
+  &:link,
+  &:visited {
+    text-decoration: none;
+
+    .in-line-donate-title {
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    text-decoration: underline;
+
+    .in-line-donate-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.in-line-donate-header {
+  color: #333;
+}
+
+.in-line-donate-lining {
+  padding: 5px 10px;
 }

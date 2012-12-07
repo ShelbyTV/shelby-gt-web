@@ -1,12 +1,12 @@
 <div class="in-line-promo xframe-list-item clearfix">
   <h3 class="in-line-promo-header">
-    Discover even more great content
+    <%= headerText %>
   </h3>
   <ul class="list">
     <%
       rolls.each(function(roll){
     %>
-        <%= JST['inline-roll-promo-item']({"roll":roll}) %>
+        <%= SHELBYJST['inline-roll-promo-item']({"roll":roll}) %>
     <%
       });
     %>

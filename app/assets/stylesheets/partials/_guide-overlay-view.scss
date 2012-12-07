@@ -12,7 +12,7 @@
 }
 
 .guide-overlay.showing {
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 //------------------------------------------------------------------------------
@@ -47,12 +47,11 @@
 }
 
 .guide-overlay-cancel {
-  @include button-primer($x-primer-color, light, guide-close);
-
-  display: inline;
+  @include button-sizing(cancel);
+  padding:.5em;
   vertical-align: top;
-  
-  .cancel-icon {
+
+  .icon {
     background-size: contain;
     color: transparent;
     display: block;
@@ -63,8 +62,72 @@
 }
 
 //------------------------------------------------------------------------------
+//  ISOLATED ROLL OVERRIDES
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .guide-header-lining {
+    border: none;
+  }
+
+  .guide-header-title {
+    @include ellipsis;
+
+    font-size: 1.3em;
+    line-height: 2.3;
+  }
+}
+
+/* iso-roll button */
+.isolated-roll-button {
+  float: right;
+  padding: button-padding(isolated-roll-header);
+  margin: 4px 6px 4px 0;
+
+  &.button-active {
+    @include button(blue,$shelby-blue);
+  }
+}
+//------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
+#guide-header-roll-header-image {
+  height: 50px;
+  position: relative;
+  
+  .guide-header-roll-header-title {
+    bottom: $defaultMargin / 2;
+    color: #efefef;
+    left: $defaultMargin;
+    position: absolute;
+    text-shadow: 0px 0px 5px black;
+  }
+  
+  .progress-overlay {
+    background: black;
+    height: 100%;
+    opacity: 0.75;
+    position: absolute;
+    top: 0;
+    width: 0;
+  }
+}
+
+.guide-header-roll-header-uploader {
+  display: none;
+  padding: $defaultMargin;
+  position: relative;
+  
+  .spinner-overlay {
+    right: $defaultMargin;
+    position: absolute;
+    top: $defaultMargin / 2;
+    
+    .spinner {
+      margin-top: 0;
+      width: 30px;
+    }
+  }
+}
 
 .guide-header-lining,
 .xguide-overlay-context {
@@ -72,58 +135,24 @@
   border-bottom: 1px solid $inset;
   border-top: 1px solid $outset;
   box-shadow: $videocard-shadow;
-//  height: 100px;
-//  overflow: hidden;
   position: relative;
-
-//  &.guide-overlay-missing-thumbnail {
-//    background-image: url($icon-missing-thumbnail);
-//    background-size: 20%;
-//  }
 }
 
 .guide-overlay-context-overview {
   bottom: 0;
   padding-bottom: 10px;
-  position: absolute;  
+  position: absolute;
   width: 100%;
 }
 
 .guide-header-avatar {
   background-color: inherit;
   float: left;
-  margin: 10px;
+  margin-right: 10px;
 }
 
 .guide-header-title {
-  @include ellipsis();
-
-//  color: #ccc;
-  font-weight: 500;
-  line-height: 3.0;
-  position: relative;
-  width: inherit;
-  z-index: 1;
-}
-
-.isolated-roll .guide-header-title {
-  text-shadow: 0px 1px #eee;
-}
-
-/* iso-roll button */
-.guide-header-button {
-  @include button-primer($shelby-gray-light, dark, frame-command);
-  
-  float: right;
-  margin: 10px;
-}
-
-.guide-follow-button {
-  margin-right: 0;
-}
-
-.guide-header-button-highlighted {
-  @include button-primer($shelby-blue, dark,frame-command);
+  margin-left: 10px;
 }
 
 .guide-overlay-context-creator {

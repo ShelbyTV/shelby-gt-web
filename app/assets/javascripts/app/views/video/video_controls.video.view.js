@@ -5,6 +5,7 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
+    "click .js-videoplayer-roll"       : "_requestFrameRollView",
     "click .js-videoplayer-playback"   : "_togglePlayback",
     "click .js-videoplayer-mute"       : "_toggleMute",
     "click .js-videoplayer-hd.hd-on"   : "_hdOff",
@@ -14,8 +15,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-videoplayer-next"       : "_nextVideo",
     "click .js-videoplayer-prev"       : "_prevVideo"
   },
-
-  el: '#video-controls',
 
   _currentDuration: 0,
 
@@ -41,19 +40,25 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   template: function(obj){
-    return JST['video-controls'](obj);
+    return SHELBYJST['video-controls'](obj);
   },
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({}));
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }
 
     var self = this;
-    this.$('.video-player-scrubber').draggable({axis: 'x', containment: 'parent',
+    this.$('.videoplayer-progress__scrubber').draggable({
+      axis: 'x',
+      containment: 'parent',
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
-      stop:  function(event, ui){ self._onScrubberDragStop(event, ui); } });
+      stop:  function(event, ui){ self._onScrubberDragStop(event, ui); }
+    });
+    
+    //make sure guide icon is in correct state initially
+    this._guideVisibilityChange('guideShown', this._userDesires.get('guideShown'));
   },
 
   //--------------------------------------
@@ -126,20 +131,20 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _onCurrentTimeChange: function(attr, curTime){
     var pct = (curTime / this._currentDuration) * 100;
     if( this._shouldUpdateScrubHandle ){
-      this.$('.video-player-scrubber').css('left',pct+"%");
+      this.$('.videoplayer-progress__scrubber').css('left',pct+"%");
     }
 
     var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
         curTimeS = parseInt(curTime % 60, 10);
 
-    this.$('.video-player-progress-elapsed').width(pct+"%");
+    this.$('.videoplayer-progress__elapsed').width(pct+"%");
     this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
   },
 
   _onBufferTimeChange: function(attr, bufferTime){
     var pct = (bufferTime / this._currentDuration) * 100;
-    this.$('.video-player-progress-load').width(pct+"%");
+    this.$('.videoplayer-progress__load').width(pct+"%");
   },
 
   _onDurationChange: function(attr, val){
@@ -153,7 +158,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _onMutedChange: function(attr, muted){
-    muted ? this.$el.addClass('muted') : this.$el.removeClass('muted');
+    this.$('.js-videoplayer-mute').toggleClass('muted', muted);
   },
 
   _onVolumeChange: function(attr, volPct){
@@ -184,6 +189,13 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
   // Handle user events on the player controls
   //--------------------------------------
+
+  _requestFrameRollView : function(){
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
+        this.options.guide.get('activeFrameModel'));
+    }
+  },
 
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');
@@ -223,14 +235,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _toggleFullscreen: function(){
-    var guideShown = this._userDesires.get('guideShown');
-    if( guideShown ){
-      this._userDesires.set({guideShown: false});
-      this.$(".video-player-fullscreen").addClass("cancel");
-    } else {
-      this._userDesires.set({guideShown: true});
-      this.$(".video-player-fullscreen").removeClass("cancel");
-    }
+    this._userDesires.set({guideShown: !this._userDesires.get('guideShown')});
   },
 
   _nextVideo: function(){
@@ -251,13 +256,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      $('.js-main-layout .js-guide').removeClass("hide-guide");
-      this.$el.find('.video-player-tools').removeClass("full-width");
-      this.$el.find('.video-player-next').removeClass("full-width");
+      this.$(".video-player-fullscreen").removeClass("cancel");
+      $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      $('.js-main-layout .js-guide').addClass("hide-guide");
-      this.$el.find('.video-player-tools').addClass("full-width");
-      this.$el.find('.video-player-next').addClass("full-width");
+      this.$(".video-player-fullscreen").addClass("cancel");
+      $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },
 
@@ -266,7 +269,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
 
   _doRelativeSeek: function(pageX){
-    var scrubTrack = this.$('.video-player-progress');
+    var scrubTrack = this.$('.js-videoplayer-progress');
     var seekPct = ( (pageX - scrubTrack.offset().left) / scrubTrack.width() );
     seekPct = Math.min(Math.max(seekPct, 0.0), 1.0);
     this._userDesires.set({currentTimePct: seekPct});

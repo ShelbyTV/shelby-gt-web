@@ -24,6 +24,7 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 		//listen to private events
 		Backbone.Events.bind("dailymotion:playerReady", function(id) { self._playerReady(id); });
 		Backbone.Events.bind("dailymotion:onStateChange", function(s) { self._onStateChange(s); });
+		Backbone.Events.bind("dailymotion:onError", function(e) { self._onError(e); });
 		Backbone.Events.bind("dailymotion:onVideoProgress", function(p) { self._onVideoProgress(p); });
 		Backbone.Events.bind("dailymotion:onVideoMetadata", function(m) { self._onVideoMetadata(m); });
 	},
@@ -45,6 +46,7 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 	_cleanup: function(){
 		Backbone.Events.unbind("dailymotion:playerReady");
 		Backbone.Events.unbind("dailymotion:onStateChange");
+		Backbone.Events.unbind("dailymotion:onError");
 		Backbone.Events.unbind("dailymotion:onVideoProgress");
 		Backbone.Events.unbind("dailymotion:onVideoMetadata");
 	},
@@ -152,7 +154,21 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 				//bit bucket
 				break;
 		}
-	},	
+	},
+	
+	_onError: function(err){
+	  switch(err) {
+	    case 'stream_not_found':
+	    case 'stream_rejected':
+	      this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.error.videoNotFound});
+	      break;
+	    case 'stream_error':
+	    case 'internal_error':
+	    default:
+	      this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.error.generic});
+	      break;
+    }
+	},
 
 	_playerReady: function(playerId){
 		//DailyMotion replaces the div backbone is holding with it's own, so we need to update this view
@@ -160,6 +176,7 @@ libs.shelbyGT.DailyMotionVideoPlayerView = Support.CompositeView.extend({
 		
 		this._player = $("#"+playerId)[0];	
 		this._player.addEventListener("onStateChange", "function(s){ Backbone.Events.trigger('dailymotion:onStateChange', s) }");
+		this._player.addEventListener("onError", "function(s){ Backbone.Events.trigger('dailymotion:onError', e) }");
 		this._player.addEventListener("onVideoProgress", "function(p){ Backbone.Events.trigger('dailymotion:onVideoProgress', p) }");
 		this._player.addEventListener("onVideoMetadata", "function(m){ Backbone.Events.trigger('dailymotion:onVideoMetadata', m) }");
 		

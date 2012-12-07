@@ -1,3 +1,4 @@
+//example non-embedable video: http://localhost.shelby.tv:3000/roll/4f900cf5b415cc466a0005bb/frame/5069fa5f9a725b0c1d01564b?awesm=shl.by_n0x
 libs.shelbyGT.VimeoVideoPlayerView = Support.CompositeView.extend({
 
   id: 'vimeo-player-holder',

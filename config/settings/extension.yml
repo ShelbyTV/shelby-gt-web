@@ -11,6 +11,10 @@ test:
   <<: *defaults
   web_domain: 'localhost.shelby.tv:3000'
 
+staging:
+  <<: *defaults
+  web_domain: 'staging.shelby.tv'
+
 production: &production
   <<: *defaults
 

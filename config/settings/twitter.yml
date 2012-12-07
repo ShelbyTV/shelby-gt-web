@@ -1,0 +1,14 @@
+defaults: &defaults
+  shelby_twitter_user_id: "250202787"
+  
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

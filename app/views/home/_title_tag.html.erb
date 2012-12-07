@@ -1,8 +1,8 @@
 <% if @frame and @video %>
 	<%= @video['title'] %> on shelby.tv
-	
+
 <% elsif @roll %>
-	<%= @roll['subdomain'] %>.shelby.tv, a curated roll by <%= "#{@user ? "by #{@user['name']}" : ""}" %> on Shelby.tv
+	<%= page_title_for_roll(@roll, @user) %>
 	
 <% else %>
 	<%= Settings::Application.title %>

@@ -34,7 +34,7 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 		Backbone.Events.bind("espn:onApiReady", function(playerId) { self._onApiReady(playerId); });
 		Backbone.Events.bind("espn:setCurrentTime", function(p) { self._setCurrentTime(p); });
 		Backbone.Events.bind("espn:setDuration", function(d) { self._setDuration(d); });
-		Backbone.Events.bind("espn:stateChanged", function(p) { self._stateChanged(p); });
+		Backbone.Events.bind("espn:stateChanged", function(s, e) { self._stateChanged(s, e); });
 	},
 	
 	//NB: overriding leave b/c we don't usually tear down
@@ -151,7 +151,7 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 
 	//states passed by ooyala are [playing, paused, buffering, stopped] and i send [adStarted, adCompleted] 
 	//which we get from a different, specific callback
-	_stateChanged: function(state){
+	_stateChanged: function(state, errorCode){
 
 		switch(state){
 			case 'playing':
@@ -170,6 +170,9 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 			case 'adCompleted':
 			  // ooyala fires "playComplete" which is handled by _onFinish above to signal end of video
 				break;
+			case 'error':
+			  this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.error.generic});
+			  break;
 		}
 	},
 	
@@ -208,7 +211,7 @@ function receiveEspnEvent(playerId, eventName, params){
 			Backbone.Events.trigger("espn:onApiReady", playerId);
 			break;
 		case 'stateChanged':
-			Backbone.Events.trigger("espn:stateChanged", params.state);
+			Backbone.Events.trigger("espn:stateChanged", params.state, params.errorCode);
 			break;
 		case 'adStarted':
 			Backbone.Events.trigger("espn:stateChanged", 'adStarted');

@@ -3,6 +3,18 @@
 		Preferences
 	</h1>
 	<form class="form_module preferences-form">
+		<fieldset class="form_fieldset preferences-section tools-section">
+			<h2 class="form_legend">
+				Tools
+			</h2>
+
+			<button class="tools-section-button js-tools">
+				<i class="button_icon_right icon_chevron tools-icon">
+				 <%= (Browser.isChrome()) ? 'Chrome Extension & ' : '' %>Bookmarklet
+				</i>
+			</button>
+		</fieldset>
+
 		<fieldset class="form_fieldset preferences-section avatar-section">
 			<h2 class="form_legend">
 				Avatar
@@ -38,10 +50,10 @@
 			</ul>
 			<fieldset class="profile-actions">
 				<span id="response-message" class="js-response-message profile-response"></span>
-				<button class="js-user-cancel profile-action-cancel" type="button">
+				<button class="button_primer button_gray-medium js-user-cancel profile-action-cancel" type="button">
 					Cancel
 				</button>
-				<button class="js-user-save profile-action-save" type="button">
+				<button class="button_primer button_gray-medium js-user-save profile-action-save" type="button">
 					Save
 				</button>
 			</fieldset>
@@ -68,7 +80,7 @@
 				</ul>
 				<fieldset class="password-actions">
 					<span id="security-response-message" class="js-security-response-message profile-response"></span>
-					<button class="js-user-password-save password-action-save" type="button">
+					<button class="button_primer button_gray-medium js-user-password-save password-action-save" type="button">
 						Change Password
 					</button>
 				</fieldset>

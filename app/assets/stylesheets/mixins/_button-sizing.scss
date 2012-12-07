@@ -1,0 +1,32 @@
+@mixin button-sizing($use: generic) {
+    @if $use == frame-command {
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  } @elseif $use == explore-rolls {
+    padding-top: .8em;
+    padding-bottom: .75em;
+    //------------------------------------------------------
+    //  follow/unfollow need to be the same size.
+    //  setting the WIDTH normalizes them,
+    //  rather than having the width delegated by the padding
+    //------------------------------------------------------
+    width: 100px;
+  } @elseif $use == wide {
+    padding-top: .8em;
+    padding-right: 3em;
+    padding-bottom: .75em;
+    padding-left: 3em;
+  } @elseif $use == guide-close {
+    padding: .6em;
+  } @elseif $use == social-login {
+    padding-top:.25em;
+    padding-bottom: .2em;
+  } @elseif $use == generic {//generic
+    padding-top: .8em;
+    padding-right: 1em;
+    padding-bottom: .75em;
+    padding-left: 1em;
+  }
+}

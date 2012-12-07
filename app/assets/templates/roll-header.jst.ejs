@@ -1,17 +1,3 @@
-<% 
-  var rollTitle = libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '',
-      userCanEditTitle = (shelby.models.user.get('personal_roll_id') == roll.id) && roll.has('subdomain');
-%>
-
-<div class="title">
-  <h2 class="current-roll">
-    <span class="roll-title-text">
-      <%= rollTitle %>
-    </span>
-    <% if(userCanEditTitle) { %>
-      <span id="js-roll-name-change" class="roll-name-change">
-        <input value="<%= rollTitle %>" size="15"/>
-      </span>
-    <% } %>
-  </h2>
-</div>
+<h2 class="roll-title">
+  <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '' %>
+</h2>

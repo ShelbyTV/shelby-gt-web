@@ -1,26 +1,31 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
+    "send-invite"                          : "openInviteDisplayDashboard",
+    "isolated-roll/:rollId"                : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
-    "roll/:rollId/frame/:frameId" : "displayFrameInRoll",
-    "roll/:rollId/:title" : "displayRoll",
-    "roll/:rollId" : "displayRoll",
-    "rollFromFrame/:frameId" : "displayRollFromFrame",
-    "isolated_roll/:rollId" : "displayIsolatedRoll",
-    "isolated_roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
-    "user/:id/personal_roll" : "displayUserPersonalRoll",
-    "stream" : "displayDashboard",
-    "me" : "displayRollList",
-    "explore" : "displayExploreView",
-    "onboarding/:stage" : "displayOnboardingView",
-    "queue" : "displaySaves",
-    "saves" : "displaySaves",
-    "preferences" : "displayUserPreferences",
-    "help" : "displayHelp",
-    "team" : "displayTeam",
-    "legal" : "displayLegal",
-    "" : "displayDashboard",
-    "*url" : "doNothing"
+    "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
+    "roll/:rollId/:title"                  : "displayRoll",
+    "roll/:rollId"                         : "displayRoll",
+    "rollFromFrame/:frameId"               : "displayRollFromFrame",
+    "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
+    "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
+    "user/:id/personal_roll"               : "displayUserPersonalRoll",
+    "explore"                              : "displayExploreView",
+    "help"                                 : "displayHelp",
+    "legal"                                : "displayLegal",
+    "search"                               : "displaySearch",
+    "me"                                   : "displayRollList",
+    "onboarding/:stage"                    : "displayOnboardingView",
+    "preferences"                          : "displayUserPreferences",
+    "queue"                                : "displaySaves",
+    "saves"                                : "displaySaves",
+    "stream"                               : "displayDashboard",
+    "team"                                 : "displayTeam",
+    "tools"                                : "displayTools",
+    ""                                     : "displayDashboard",
+    "*url"                                 : "doNothing"
   },
 
   //---
@@ -28,12 +33,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
   initialize : function(){
     shelby.routeHistory = [];
+    shelby.iScroll = {
+      el : null,
+      wrapper : null,
+      enabled : false
+    };
+
     this.bind("all", function(route){ shelby.routeHistory.push(route); });
   },
 
   //---
   //ROUTE HANDLERS
   //---
+
+  openInviteDisplayDashboard : function(params) {
+    this.displayDashboard(params, {openInvite: true});
+  },
 
   displayFrameInRollWithComments : function(rollId, frameId, params){
     this.displayFrameInRoll(rollId, frameId, params, {showCommentOverlay:true});
@@ -90,22 +105,63 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
   },
-  
+
+  displaySearch : function(params){
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+    var query = params && params.query
+    if (query) {
+      shelby.models.videoSearch.set('query', params.query);
+    }
+    shelby.models.guide.set({
+      displayState : libs.shelbyGT.DisplayState.search
+    });
+    if (query) {
+      shelby.models.videoSearch.trigger('search');
+    }
+  },
+
   displayIsolatedRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
 
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
+    
+    shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
+      new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
     if (frameId){
       this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
     }
-      
+    // Load Twitter and FB JS libraries if user not logged in.
+    if (shelby.models.user.isAnonymous()){
+      $('body').append(SHELBYJST['social-libs']());
+    }
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
+    
+    //hide the guide initially for iso rolls
+    if(shelby.routeHistory.length === 0){
+      shelby.models.userDesires.set({guideShown: false});
+    }
+  },
+  
+  displayFacebookGeniusRoll : function(rollId, frameId, params){
+    // Adjust *how* a few details are displayed via CSS
+    $('body').addClass('facebook-genius');
+    // Adjust *what* is displayed
+    var options = {updateRollTitle:false};
+
+    if (frameId){
+      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
+    } else {
+      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
+    }
+    
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -122,7 +178,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-
+  
   displayUserPersonalRoll : function(userId, params){
     var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
@@ -154,7 +210,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
-    this._setupTopLevelViews();
+    this._setupTopLevelViews(options);
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
@@ -207,7 +263,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
         'sinceId' : options.data.since_id ? options.data.since_id : null,
       });
-      
+
       // filtering out faux users so as a team we can interact more easily
       //   with real users easily as they come in.
       if ($.getUrlParam("real") == 1){
@@ -221,7 +277,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           return model.get('frame').get('creator').get('gt_enabled') == true;
         });
       }
-      
+
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
       $.when(shelby.models.dashboard.fetch(fetchOptions)).always(function(response, callbackName, jqXHR){
@@ -288,7 +344,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.legal);
   },
-  
+
+  displayTools : function(){
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
+  },
+
   doNothing : function(url){
     console.log('unhandled url', url);
   },
@@ -419,15 +480,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupTopLevelViews : function(options){
     // default options
     options = _.chain({}).extend(options).defaults({
-      isIsolatedRoll : false
+      isIsolatedRoll : false,
+      isFBGeniusRoll : false,
+      openInvite : false
     }).value();
-    
+
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
+    shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//
-    shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification || 
-      new libs.shelbyGT.ExtensionBannerNotification();
+
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({
           model : shelby.models.guide,
@@ -438,25 +501,49 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
-    shelby.views.keyboardControls = shelby.views.keyboardControls ||
-        new libs.shelbyGT.KeyboardControlsView();
+
+    if(!Browser.isIos()){
+      //irrelevant views for iOS devices.
+      shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
+        new libs.shelbyGT.ExtensionBannerNotification();
+
+      shelby.views.keyboardControls = shelby.views.keyboardControls ||
+          new libs.shelbyGT.KeyboardControlsView();
+    }
+
+    if (options.openInvite) {
+      shelby.models.invite.trigger('invite:open');
+    }
+
+    if (Modernizr && Modernizr.touch) {
+    //if Modernizr exists AND determines user is on a touch-device, enable iScroll
+
+      if(!shelby.iScroll.enabled){
+        shelby.iScroll.el = new iScroll('js-guide-body');
+        shelby.iScroll.wrapper = document.getElementById('guide');
+        shelby.iScroll.wrapper.addEventListener("DOMSubtreeModified",function(){
+          shelby.iScroll.el.refresh();
+        }, false);
+        shelby.iScroll.enabled = true;
+      }
+    }
   },
 
   _setupAnonUserViews : function(options){
     //this view will not ever render if user is not anonymous
     shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
   },
-  
+
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
     this._setupTopLevelViews(topLevelViewsOptions);
-    
+
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
-    
+
     var rollModel;
     if (typeof(roll) === 'string') {
       // if roll is a string, its the id of the roll to display, so get or construct a model for that id
@@ -501,7 +588,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});
   },
-  
+
   _setupRollViewWithCallback : function(rollId, frameId, options, topLevelViewsOptions){
     var self = this;
     this._setupRollView(rollId, null, {
@@ -516,5 +603,5 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     }, topLevelViewsOptions);
   }
-  
+
 });

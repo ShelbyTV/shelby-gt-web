@@ -1,15 +1,81 @@
-@import "base",
+@import
+    "base",
     "base-mixin",
-		"compass",
-		"compass/css3",
-		"compass/css3/border-radius",
-		"compass/css3/box-shadow";
+
+    "compass",
+    "compass/css3",
+    "compass/css3/border-radius",
+    "compass/css3/box-shadow";
 
 /* non-programatic changes to app display */
 body.isolated-roll {
-  
-  .content_wrapper {
-    margin-top: 0px;
-  }
 
+}
+
+//-------------------------
+// header bar
+//-------------------------
+
+.iso-roll-app-header {
+  max-height: 36px;
+  overflow: hidden;
+}
+
+.current-roll {
+  float: left;
+  width: $guide-width;
+}
+
+.selectable-rolls-list {
+  margin: 0;
+  padding: 0;
+}
+
+.selectable-roll-item {
+  display: block;
+  float: left;
+  list-style-type: none;
+}
+
+.iso-roll-nav-button {
+  @include ellipsis;
+  @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
+
+  border-radius: 3px;  
+  color: $guide-presentation-button;
+  display: block;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: $font-family-display;
+  margin: 6px;
+  max-width: $guide-width * 0.75;
+  min-width: $guide-width / 4;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  
+  &:hover {
+    @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,10%));
+    color: adjust-lightness($guide-presentation-button,20%);
+    text-decoration: none;
+  }
+}
+
+.active-item .iso-roll-nav-button, .active-item .iso-roll-nav-button:hover {
+  background: black;
+  color: #efefef;
+}
+
+.isoroll-header__follow-unfollow-button,
+.isoroll-header__full-shelby-button {
+  font-size: 1.2em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  .light {
+    font-weight: 100;
+  }
+}
+
+.isoroll-header__full-shelby-button {
+  width: 135px;  
 }

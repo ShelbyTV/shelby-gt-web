@@ -7,7 +7,7 @@
 *
 */
 ( function(){
-	
+
   var BackboneCollectionUtils       = libs.utils.BackboneCollectionUtils;
   var MessageModel                  = libs.shelbyGT.MessageModel;
   var RollFollowingsConfig          = shelby.config.db.rollFollowings;
@@ -16,21 +16,21 @@
   var ShareActionState              = libs.shelbyGT.ShareActionState;
   var ShareActionStateModel         = libs.shelbyGT.ShareActionStateModel;
   var ShelbyAutocompleteView        = libs.shelbyGT.ShelbyAutocompleteView;
-	
+
 	libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
-		
+
 		events : {
 			"click #js-roll-it"					: '_doRoll',
 			"focus #new-roll-name" 		  : '_clearErrors',
 			"focus #js-rolling-message"	: '_clearErrors'
     },
-  
+
     className : 'rolling-form',
 
     template : function(obj){
-      return JST['rolling-form'](obj);
+      return SHELBYJST['rolling-form'](obj);
     },
-  
+
     initialize : function(){
       this._frameRollingState = new ShareActionStateModel();
       this._roll = this.options.roll;
@@ -39,18 +39,17 @@
 
 		render : function(){
 			var self = this;
-			
 
       this.$el.html(this.template({
-                    roll:this._roll, 
-                    frame:this._frame,
-                    user: shelby.models.user,
-                    rollOptions: {
-                      pathForDisplay:RollViewHelpers.pathForDisplay(this._roll), 
-                      titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll), 
-                      urlForRoll:RollViewHelpers.urlForRoll(this._roll)
+                      roll:this._roll,
+                      frame:this._frame,
+                      user: shelby.models.user,
+                      rollOptions: {
+                        pathForDisplay:RollViewHelpers.pathForDisplay(this._roll),
+                        titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll),
+                        urlForRoll:RollViewHelpers.urlForRoll(this._roll)
+                      }
                     }
-                  }
                 ));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
@@ -64,19 +63,22 @@
       });
       this.renderChild(this._shelbyAutocompleteView);
     },
+    
+    setRoll: function(roll){
+      this._roll = roll;
+    },
 
 		_doRoll : function(e){
-			e.preventDefault
+			e.preventDefault;
 
       if(!this._validate()){ return; }
-
 			if(this._roll){
 				this._rerollFrameAndShare(this._roll);
 			}	else {
 				this._createRollRerollFrameAndShare();
 			}
 		},
-		
+
 		_validate : function(){
       validates = true;
 
@@ -88,21 +90,21 @@
 
       return validates;
 		},
-		
+
 		_clearErrors : function(){
 			// this.$('#new-roll-name').removeClass('error');
 			this.$('#js-rolling-message').removeClass('error');
 		},
-		
+
 		// create new roll, then proceed like normal
 		_createRollRerollFrameAndShare : function(){
 			var self = this;
-			
+
 			var roll = new RollModel({
 				'title' : this.$("#new-roll-name").val(),
 				'public': true,
 				'collaborative': false});
-			
+
 			roll.save(null, {
         success : function(newRoll){
 					// add new roll to rolls collection, correctly sorted
@@ -117,37 +119,69 @@
 					self._rerollFrameAndShare(newRoll);
         }});
 		},
-		
+
 		_rerollFrameAndShare : function(roll){
 			var self = this;
 			var message = this.$("#js-rolling-message").val();
 			var shareDests = [];
       if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
       if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
-
-      // re roll the frame
-      this._frame.reRoll(roll, message, function(newFrame){
-        //rolling is done (don't need to wait for add message to complete)
-        self._rollingSuccess(roll, newFrame);
-        // Optional Sharing (happens in the background)
-        if (shareDests.length) {
-          self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
-            url : newFrame.shareUrl(),
-            success : function(){
-              /* noop */
-            }
-          });
-        }
-      });
-		
+      
+      // if we are in a search result, add to roll via url
+      if (shelby.models.guide.get('displayState') === "search") {
+        var newFrame = new libs.shelbyGT.FrameModel();
+        this._addViaUrl(message, roll, shareDests);
+      }
+      else {
+        // elsere roll the frame
+        this._frame.reRoll(roll, message, function(newFrame){
+          //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+        });        
+      }
 		},
-		
+
 		_rollingSuccess : function(roll, newFrame){
 			this.parent.done();
 			//N.B. This link is picked up by NotificationOverlayView for routing
-			shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="roll-route">Go to Roll</a></span> Video successfully rolled!');
-		}
+      shelby.success('<span class="message-link"><a href="#" data-roll_id="'+roll.id+'" class="notification_option js-roll-route">Go to Roll</a></span> Video successfully rolled!');
+		},
 		
+		_addViaUrl : function(message, roll, shareDests) {
+		  var self = this;
+		  var newFrame = new libs.shelbyGT.FrameModel();
+  		newFrame.save(
+  			{url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
+  			{url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames', 
+  			success: function(newFrame){
+  			  //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+  			},
+  			error: function(a,b,c){
+  				if (b.status == 404) { shelby.alert("404 error"); } 
+  				else { shelby.alert("sorry, something went wrong."); }
+  			}
+  		});
+		}
+
 	});
-	
+
 }) ();

@@ -77,6 +77,18 @@ _(shelby).extend({
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
           break;
+        case 'FB Timeline App Preference set to true':
+          _gaAction = "FB timeline app preference set"; _gaCategory = 'Onboarding'; _gaLabel = "Opt in";
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
+        case 'FB Timeline App Preference set to false':
+          _gaAction = "FB timeline app preference set"; _gaCategory = 'Onboarding'; _gaLabel = "Opt out";
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
+        case 'Follow Shelby':
+          _gaAction = "Follow @Shelby"; _gaCategory = 'Onboarding'; _gaLabel = options.userName;
+          _kmq.push(['record', action, {nickname: options.userName} ]);
+          break;
         case 'completed onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
           _kmq.push(['record', action, {nickname: options.userName} ]);
@@ -104,6 +116,8 @@ _(shelby).extend({
           break;
         case 'Click roll promo':
         case 'Show roll promo':
+        case 'Click donate promo':
+        case 'Show donate promo':
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = options.id;

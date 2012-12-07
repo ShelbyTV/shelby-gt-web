@@ -4,10 +4,10 @@ libs.shelbyGT.RollingSelectionItemView = libs.shelbyGT.ListItemView.extend({
     "click" : "_selectRoll"
   },
 
-  className : 'roll-selection-item clearfix',
+  className : 'roll_selection__item clearfix',
 
   template : function(obj){
-    return JST['roll-selection-item'](obj);
+    return SHELBYJST['roll-selection-item'](obj);
   },
 
   render : function(){

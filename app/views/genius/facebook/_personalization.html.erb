@@ -1,0 +1,14 @@
+<section class="landing-shelf landing-shelf-private login-area">
+	<div class="landing-shelf-lining">
+		<h1 class="landing-shelf-header"></h1>
+
+		<h2 class="landing-shelf-subheader">
+			<div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="2" data-scope="user_groups,user_likes,user_interests,friends_likes"></div>
+			<ul id="searches-from-likes"></ul>
+		</h2>
+
+	</div>
+</section>
+<script>
+	<%= render :partial => "/genius/facebook/personalization", :formats => [:js] %>
+</script>

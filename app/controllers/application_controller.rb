@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   # Mobile detection
   def is_mobile?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
   end
   
   def detect_mobile_os

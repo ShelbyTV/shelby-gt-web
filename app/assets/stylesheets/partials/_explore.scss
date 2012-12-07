@@ -51,11 +51,9 @@
   }
 
   &:hover {
+    .explore-subline,
     .explore-header {
       text-decoration: underline;
-    }
-    .explore-subline {
-      text-decoration: none;
     }
   }
 }
@@ -68,7 +66,7 @@
   color: $explore-subline-color;
   font-size: .9em;
   letter-spacing: 1px;
-  margin: 0.5em 0;
+  margin: 0;
   text-transform: uppercase;
 }
 
@@ -80,7 +78,7 @@
 }
 
 .explore-command {
-  @include button-primer($x-primer-color, $primer-tone, explore-rolls);
+  @include button-sizing(explore-rolls);
 
   float:right;
   margin: 0 .25em 0 .75em;
@@ -88,7 +86,7 @@
   &.command-active {
     //state for the follow/unfollow button,
     //if other modes/states arise this classname probably won't cut it
-    @include button-primer($shelby-blue, dark, explore-rolls);
+    @include button(blue,$shelby-blue);
   }
 }
 
@@ -267,10 +265,10 @@
 //  displays on hover per roll item in list
 ////////////////////////////////////////////////////////////////////////////
 .guide-link-unfollow {
-  @include button-primer($shelby-gray, dark);
+  @include button-sizing;
 
   display: none;
-  margin: .8em 3em;
+  margin: .8em 1em;
   position: absolute;
   right: 0;
   top: 0;

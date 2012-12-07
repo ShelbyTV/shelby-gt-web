@@ -1,0 +1,287 @@
+$landing-page-shelf-background:  #2e2e2e;
+$landing-page-shelf-background: #ccc;
+
+/* non-programatic changes to app display */
+body.facebook-genius{
+  // landing page //
+  .landing-shelf-header {
+    text-align:center; 
+    font-weight: 400;
+    font-size:2em;
+    padding: 2em;
+  }
+  .top-header { font-size: 2.0em; }
+  h2.landing-shelf-subheader { 
+    width: 80%;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.75em;
+    margin:0px auto;
+  }
+  .landing-shelf-private .landing-shelf-subheader{
+    width: 740px;
+  }
+  .landing-shelf form{ 
+    margin: 50px auto 30px;
+    width: 640px;
+  }
+  .landing-form-input {
+    width: 489px;
+    margin-right: 10px;
+    @include roundies(input);
+  }
+  .landing-form-submit {
+    @include button-primer(#3B5998);
+    @include roundies(input);
+    height: 45px;
+    border: 1px solid #3B5998;
+  }
+  
+  #js-genius-search-submit {
+    width: 128px;
+  }
+  
+  .genius-search-spinner{
+  	height: 30px;
+  	width: 30px;
+  	margin: 0 auto;
+  }
+  
+  .login-area {
+    float: left;
+    text-align: left;
+    width: 50%;
+    height: 400px;
+    border-right: 1pt solid adjust-lightness($landing-page-shelf-background, -15%);
+    .landing-shelf-lining { width: 85%; }
+    .landing-shelf-header {
+      width: 130%;
+      margin-left: -10px;
+      font-size:2em;
+    }
+    .landing-shelf-subheader { width: 80%; }
+  }
+  
+  .previous-search-area {
+    float: right;
+    width: 50%;
+    height: 400px;    
+    .landing-shelf-lining { width: 75%; }
+    .landing-shelf-header { text-align:left; }
+    .landing-shelf-subheader{
+      text-align: left;
+    }
+    #recommended-searches{ 
+      display: none;
+    }
+    .landing-shelf-subheader { width: 80%; }
+  }
+
+  // lists on the shelf
+  .landing-shelf {
+    @include gradient-primer($landing-page-shelf-background);
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+    li {
+      a {
+        text-decoration: none;
+        color: $font-color;
+        display: block;
+        width: 400px;
+      }
+
+      a:hover {
+        width: 100%;
+        font-weight: 300;
+        background: #f6f6f6;
+      }
+    }
+  }
+  // ***** //
+  
+  .media_body, .media_image {
+    overflow: visible;
+  }
+  // customize fb iframes
+  .fb_edge_widget_with_comment span.fb_edge_comment_widget {
+    top: -145px !important;
+    left: -10px !important;
+  }
+  span.fb_edge_comment_widget iframe {
+    width: 351px !important;
+  }
+  
+  .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
+  display: none !important;}
+  // ***** //
+  
+  // header //
+  .shelby-logo{
+    width: 100px;
+    margin: 0 45%;
+    .shelby-title {
+    	background: url('/images/genius/logo.png') center 5px no-repeat transparent;
+    	background-size: 100%;
+    	height: 35px;
+    	margin: 0 auto;
+    	width: 95px;
+    } 
+  }  
+  .guide-presentation-selector {
+    display:none;
+  }
+  
+  /*
+  #facebook-genius-login {
+    position:fixed;
+    right: 10px;
+    padding-top: 7px;    
+  }
+  */
+  
+  #fb-header-search {
+    position:fixed;
+    right: 10px;
+    padding-top: 7px;
+    
+    .roll-page-form-input {
+      border-radius: 2px 0 0 2px;
+      border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+      font-size: 1em;
+      height: 22px;
+      padding: 4px 5px 5px;
+    }
+   .header-form-submit {
+     border-radius: 0 2px 2px 0;
+
+     border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
+     border-left: none;
+     display: inline-block;
+     font-family: $font-family-display;
+     font-size: 1em;
+     font-weight: 400;
+     height: 20px;
+     padding: 5px 2px 15px;
+     vertical-align: middle;
+     width: 78px;
+   }
+  }
+  
+  // end header
+  
+  #fb-comments-holder{
+    position: relative;
+    bottom: 15%;
+    height: 33%;
+    overflow-y: scroll;
+    background-color: white;
+    
+    &.hide-comment-holder { margin-top: 300px; }
+  }
+  .fb-comments { background-color: white;}
+  .fb-comments, .fb-comments * {
+      width:100% !important;
+      height: 100%;
+      bottom:0;
+  }
+  
+  // post button
+  .menu_item.right { margin-right: 10px; }
+  button.command-post{ 
+    width: 115px; 
+    i {
+      padding-left: 1.6em;
+      background-size: contain;
+    }
+  }
+  
+  // prev/next buttons
+  .videoplayer-nav__btn{ display: none; }
+  
+  // video controls
+  #video-controls {
+    position:relative;
+    bottom: 15%;
+    .video-player-progress {left: 55px;}
+    .video-player-roll { display: none;}
+  }
+  
+  // video player adjustments
+  .videoplayer-viewport {
+    position: relative;
+    height: 83%;
+    width: 100%;
+    > * {
+      position: absolute;
+      top: 0; left: 0;
+      width: inherit;
+      height: inherit;
+    }
+
+    /* ooyala doesn't let you set % sizes when embedding, so we need to override here */
+    #ooyala-player-holder div, #ooyala-player-holder object { width: 100%!important; height: 83%!important; }
+  }
+  .hide-guide {
+    .videoplayer-viewport{ height: 100%; }
+    #video-controls { bottom: 0; width: 100%;}
+  }
+  
+  // guide header
+  .guide-header-title {
+    line-height: 1.931;
+  }
+  
+}
+
+body.connected {
+  .fb-login-button { display: none; }
+}
+
+body.not-authorized { 
+  #searches-from-likes { 
+    display:none;
+  }
+}
+
+section.fb-genius {
+  #landing-page-search-area{
+    width: 180px;
+    margin: 0px 580px 0px;
+    button {
+      @include button-primer($shelby-blue, dark);
+      zoom: 1.5;
+      width: 275px;
+      a { 
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+  
+  .landing-shelf__video-embed {
+    width: 525px;
+  }
+
+  #sharing-box {
+    width: 65px;
+    float: left; 
+  }
+
+  .landing-shelf__lining { 
+    max-width: 1000px; 
+    padding: 25px 0px;
+  }
+  .landing-form-input { width: 85%; }
+  .genius-roll-link {
+    font-weight: 400;
+    color: blue;
+  }
+}
+
+body.loading {
+  cursor: progress;
+}

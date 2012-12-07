@@ -1,5 +1,6 @@
 libs.shelbyGT.PlayingState = {
   dashboard : 'dashboard',
   none : 'none',
-  roll : 'roll'
+  roll : 'roll',
+  search : 'search'
 };

@@ -16,7 +16,9 @@ libs.shelbyGT.Ajax = {
   validAnonUrlStubs : [
     shelby.config.apiRoot+'/user/',
     shelby.config.apiRoot+'/roll/',
-    '/short_link'
+    shelby.config.apiRoot+'/POST/gt_interest',
+    '/short_link',
+    shelby.config.apiRoot+'/video/search',
   ],
   
   isAnonUrlValid : function(opts){

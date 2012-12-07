@@ -12,12 +12,12 @@
  */
 libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotification.extend({
 
-  _height : "80px",
+  _height : "55px",
   
   _bannerType : 0,
   
   bannerElement : function(obj){
-    return JST['anon_banner']({bannerType: this._bannerType});
+    return SHELBYJST['anon_banner']({bannerType: this._bannerType});
   },
   
   /*
@@ -25,7 +25,7 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
    * Otherwise, render nothing and return false.
    */
   userIsAbleTo : function(action){
-    if( shelby.models.user.isAnonymous() ){
+    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT){
       this._bannerType = action;
       this.render();
       return false;

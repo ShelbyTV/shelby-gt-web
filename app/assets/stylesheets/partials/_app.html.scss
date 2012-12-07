@@ -7,8 +7,6 @@
 //  you should see styling 
 //  on natural elements 
 //---------------------------
-
-
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Ubuntu', Trebuchet MS, sans-serif;
 	font-weight:500;
@@ -48,6 +46,7 @@ a{
 
 }
 
+
 //---------------------------
 //  shelby! containing wrappers, etc
 //---------------------------
@@ -82,15 +81,13 @@ a{
 }
 
 .content_lining {
-	float: right;
-	margin-left: -($guide-width);
 	height:100%;
-	width:100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .content_module {
 	height:100%;
-  margin-left: $guide-width;
   position: relative;	
 }
 
@@ -103,54 +100,26 @@ a{
 	background: $base-bg-color;
 }
 
-.user-inactive{
-	.main-layout{
-		.guide-wrapper{
-		  opacity: .4;
-		}
-	}
-}
-
 .guide-wrapper{
 	background-color: $guide-bg-color; //should technically be on .guide or something.
+	border-right: 1px solid #ccc;
+	float: left;
 	height:100%;
-	overflow:hidden;
 	opacity: 1;
-	position:relative;
-	z-index:3;
-
-	&.hide-guide {
-	  margin-left:-($guide-width);
-	}
-}
-
-.content-body{
-	bottom:0;
-	overflow-x:hidden;
-	overflow-y:auto;
-	position:absolute;
-	top:42px;
-	width:100%;
-	z-index: -1;
-}
-
-.touch {
-	.content-body {
-		overflow: hidden;	
-	}
+	position: relative;
+	z-index: 3;
 }
 
 .menu{	
 	box-shadow: $shadow;
-	overflow:hidden;
-	position:relative;
+	overflow: hidden;
+	position: relative;
 }
 
 .spinner{
-	left:50%;
-	margin-left:-24px;
-	margin-top:100px;
-	position:absolute;
-	z-index:0;
+	left: 50%;
+	margin-left: -24px;
+	margin-top: 100px;
+	position: absolute;
+	z-index: 0;
 }
-

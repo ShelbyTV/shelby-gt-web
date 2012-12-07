@@ -51,17 +51,37 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var self = this;
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
-    frameToReroll.save(null, {
-      global : false, // we don't care if the ajax call fails
-      url : url,
-      success : function(frameModel, response){
-        // we only want to update the set of queued videos if the ajax call succeeds,
-        // that's the only way that the Queued state of a video will persist across navigation
-        // around the app
-        shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
-        if (onSuccess) onSuccess();
-      }
-    });
+    
+    if (this.get('isSearchResultFrame')) {
+      var _newFrame = new libs.shelbyGT.FrameModel();
+      var _wl_roll = shelby.models.user.get('watch_later_roll');
+      var _message = "added to shelby via a video search";
+      _newFrame.save(
+        {url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
+        {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
+        success: function(newFrame){
+          // we only want to update the set of queued videos if the ajax call succeeds,
+          // that's the only way that the Queued state of a video will persist across navigation
+          // around the app
+          shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
+          if (onSuccess) onSuccess();
+        }
+      });
+      
+    }
+    else {
+      frameToReroll.save(null, {
+        global : false, // we don't care if the ajax call fails
+        url : url,
+        success : function(frameModel, response){
+          // we only want to update the set of queued videos if the ajax call succeeds,
+          // that's the only way that the Queued state of a video will persist across navigation
+          // around the app
+          shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
+          if (onSuccess) onSuccess();
+        }
+      });
+    }
     shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
   },
 
@@ -72,7 +92,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     libs.utils.rhombus.sadd('frames_rolled', this.id);
     shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },
-
+  
   upvote : function(onSuccess) {
     var frameToUpvote = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
@@ -82,6 +102,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
   
   watched : function(startTime, endTime, onSuccess) {
+    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
     if(startTime && endTime){
@@ -112,6 +133,14 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   getVideoThumbnailUrl : function() {
     var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
+    return url ? url : null;
+  },
+  
+  getSubdomainPermalink : function(){
+    var url;
+    if (this.has('roll') && this.get('roll').has('subdomain')){
+      url = this.get('roll').get('subdomain') + '.shelby.tv/' + this.id  ;
+    }
     return url ? url : null;
   }
 

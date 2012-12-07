@@ -5,7 +5,9 @@ require File.expand_path('../boot', __FILE__)
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
+require "sprockets"
 require "sprockets/railtie"
+require "sprockets/jst_processor"
 require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -61,5 +63,16 @@ module ShelbyGtWeb
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Create our own namespace for compiled JSTs
+    # Bookmarklet may load on pages that already have JST in the global js namespace so we need to prevent conflict
+    class ShelbyJstProcessor < Sprockets::JstProcessor
+      def prepare
+        @namespace = 'this.SHELBYJST'
+      end
+    end
+
+    Sprockets::register_engine '.jst', ShelbyJstProcessor
+
   end
 end

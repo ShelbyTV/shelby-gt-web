@@ -16,7 +16,7 @@
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
+
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
@@ -24,46 +24,58 @@
 </head>
 
 <body class="shelby">
-	<div id="js-notification-banner-wrapper" class="notification-banner-wrapper"></div>
+	<div id="fb-root"></div>
+	<%= render :partial => "/genius/facebook/fb_sdk" if @genius_roll_id %>
+	<section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div id="js-shelby-wrapper" class="shelby-wrapper">
-    <header id="js-header" class="js-app-header shelby-header" role="banner">
-      <!-- contents in AppHeaderView -->
-    </header>
 
-    <div class="content_wrapper main-layout js-main-layout">
-      <section class="content_lining" role="main">
-        <!-- content filled in by VideoContentPaneView -->
-      </section><!-- eo .content_lining -->
+		<% unless @empty_shelby_wrapper %>
+	    <header id="js-header" class="animate_module js-app-header shelby-header js-inactivity-preemption" role="banner">
+	      <!-- contents in AppHeaderView -->
+	    </header>
+			<header id="js-iso-roll-header" class="animate_module js-app-header shelby-header iso-roll-app-header js-inactivity-preemption" role="banner">
+	      <!-- contents in IsoRollAppHeaderView -->
+	    </header>
 
-      <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
-        <!-- content filled in by GuideView -->
-      </section><!-- eo .guide-wrapper -->
-    </div><!-- eo .content_wrapper.main-layout -->
+	    <div class="content_wrapper main-layout js-main-layout">
+	      <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
+	        <!-- content filled in by GuideView -->
+	      </section><!-- eo .guide-wrapper -->
 
-    <div class="content_wrapper explore-layout js-explore-layout">
-      <!-- content filled in by ExploreLayoutView -->
-    </div><!-- eo .content_wrapper.explore-layout -->
+	      <section class="content_lining" role="main">
+	        <!-- content filled in by children of MainLayoutView -->
+	      </section><!-- eo .content_lining -->
+	    </div><!-- eo .content_wrapper.main-layout -->
 
-    <div class="content_wrapper explore-layout js-onboarding-layout">
-      <!-- content filled in by OnboardingLayoutView -->
-    </div><!-- eo .content_wrapper.onboarding-layout -->
+	    <div class="content_wrapper explore-layout js-explore-layout">
+	      <!-- content filled in by ExploreLayoutView -->
+	    </div><!-- eo .content_wrapper.explore-layout -->
 
-    <div class="content_wrapper action-layout js-action-layout">
-      <section class="content_lining">
-      </section>
-    </div><!-- eo .content_wrapper.action-layout -->
+	    <div class="content_wrapper explore-layout js-onboarding-layout">
+	      <!-- content filled in by OnboardingLayoutView -->
+	    </div><!-- eo .content_wrapper.onboarding-layout -->
 
-		<!-- Need this at the base level so it's always in the DOM -->
-		<div id="js-notifications-wrapper" class="notifications-wrapper"></div>
+	    <div class="content_wrapper action-layout js-action-layout">
+	      <section class="content_lining js-content_lining">
+					<!-- children appended in by GuideOverlayManager -->
+	      </section>
+	    </div><!-- eo .content_wrapper.action-layout -->
+	
+			<!-- Need this at the base level so it's always in the DOM -->
+			<div id="js-notifications-wrapper" class="notifications-wrapper hide animate_module"></div>
+		<% end %>
 
   </div> <!-- eo ~application -->
-	<% if Rails.env == 'production' %>
+	<% if (Rails.env == 'production' or Rails.env == 'staging') %>
 	  <script>
-	    var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+	    var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
 	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	    s.parentNode.insertBefore(g,s)}(document,'script'));
 	  </script>
+	<% end %>
+	
+	<% if Rails.env == 'production' %>
 		<script>
 		  var _kmq = _kmq || [];
 		  var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';

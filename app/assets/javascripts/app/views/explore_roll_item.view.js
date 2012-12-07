@@ -10,7 +10,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   _spinnerView : null,
 
   template : function(obj){
-    return JST['explore-roll-item'](obj);
+    return SHELBYJST['explore-roll-item'](obj);
   },
 
   initialize : function(){

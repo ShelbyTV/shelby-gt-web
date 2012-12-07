@@ -1,0 +1,48 @@
+<% var userNickname = shelby.models.user.get('nickname') %>
+<div class="external-tools-lining clearfix">
+  <h1 class="external-header">
+    Add video to <strong><%= (userNickname) ? userNickname + '.shelby.tv' :  'your account' %></strong>
+  </h1>
+
+  <h2 class="external-lead">
+    Want to <strong>Queue</strong> a video from someone's blog post? <br>
+    Or <strong>Roll</strong> an interesting video you just found? We make it easy.
+  </h2>
+
+<% if(opts.displayExtension){ %>
+  <div class="external-subsection external-extension">
+    <div class="external-bookmarklet-button-wrapper">
+      <a class="button_primer faux_button button_gray-medium extension-chrome-button" href="https://chrome.google.com/webstore/detail/shelbytv-video-radar/ifdmhakojchpihfoebiihdjcphmmhcol" title="Drag me onto your bookmarks bar!">
+        <i class="button_icon_left icon">
+          Chrome Extension
+        </i>
+      </a>
+      <div class="external-bookmarklet-instructions">
+        <h3 class="bookmarklet-help-header">
+          Shelby Video Radar
+        </h3>
+        <p class="extension-block">
+          Add the <strong>Shelby Video Radar</strong> to your Google Chrome toolbar to start <strong>Rolling</strong>, <strong>Queuing</strong>, and <strong>sharing videos</strong> from your favorite websites.
+        </p>
+      </div>
+    </div>
+  </div><!-- eo .external-subsection -->
+<% } %>
+  <div class="external-subsection external-bookmarklet">
+    <div class="external-bookmarklet-button-wrapper">
+      <a class="button_primer faux_button button_gray-medium external-bookmarklet-button" href="javascript:(function(){window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='//shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);})();" title="Drag me onto your bookmarks bar!">
+        <i class="button_icon_left icon_videocard_roll icon">
+          <span style="display:none">+</span>Shelby Video
+        </i>
+      </a>
+      <p class="external-block external-bookmarklet-caption">
+        <span class="external-bookmarklet-button-subline">
+          (Click and Drag to your Bookmarks Bar)
+        </span>
+      </p>
+      <div class="external-bookmarklet-instructions">
+        <%= SHELBYJST['bookmarklet-instructions']() %>
+      </div>
+    </div>
+  </div><!-- eo .external-subsection -->
+</div><!-- eo .external-tools-lining -->

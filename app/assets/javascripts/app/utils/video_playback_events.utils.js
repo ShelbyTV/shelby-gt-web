@@ -83,6 +83,21 @@
         this._currentFrame.watched();
         this.trackWatchedCompleteEvent();
       }
+      
+      // marking videos as unplayable on specific player errors
+      if( status === libs.shelbyGT.PlaybackStatus.error.videoNotFound ||
+          status === libs.shelbyGT.PlaybackStatus.error.videoNotEmbeddable ){
+        if(this._currentFrame.get('video')){
+          this._currentFrame.get('video').markUnplayable();
+          shelby.success("Skipped unplayable video: "+this._currentFrame.get('video').get('title'));
+        }
+        Backbone.Events.trigger('playback:next');
+      }
+      // just skip on generic player errors
+      if( status === libs.shelbyGT.PlaybackStatus.error.generic ){
+        shelby.success("Skipped video due to playback problems.");
+        Backbone.Events.trigger('playback:next');
+      }
     },
     
     // don't want seeking to look like tons of watching

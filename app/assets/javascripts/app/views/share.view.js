@@ -20,7 +20,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return JST['share'](obj);
+    return SHELBYJST['share'](obj);
   },
 
   initialize : function(){
@@ -129,10 +129,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       var $emailAddressesInput = this.$('.js-share-email-addresses');
       var emailAddresses = $emailAddressesInput.val();
       $emailAddressesInput.val(_(emailAddresses.split(',')).compact().join(','));
-      if (this.$('.js-share-email-addresses:invalid').length > 0) {
-        $emailAddressesInput.addClass('error');
-        shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
-        return false;
+      //:invalid pseudo-element only supported as of IE 10
+      if ((BrowserDetect.browser != 'Explorer' || BrowserDetect.version >= 10)) {
+        if (this.$('.js-share-email-addresses:invalid').length > 0) {
+          $emailAddressesInput.addClass('error');
+          shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
+          return false;
+        }
       }
     }
     
@@ -146,7 +149,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _share : function(){
     var self = this;
-
+    
     if(!this._validateShare()) {
       this.$('.js-share-textarea, .js-share-email-addresses').addClass('error');
       this.onValidationFail();
@@ -190,8 +193,10 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
 
   _handleShareSuccess : function(chainedUrls){
     if (chainedUrls.length) {
+      // console.log('this.model',this.model);
       this.model.save(null, this._getSaveOpts(chainedUrls));
     } else {
+      // console.log('else this.model',this.model);
       this._clearTextArea();
       this._components.spinner && this._hideSpinner();
       this.onShareSuccess();
@@ -208,10 +213,12 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   onShareSuccess : function(){
+    shelby.alert('Your message has been sent!')
     // subclasses may optionally override to perform custom handling on share success, but
     // should always call the superclass's implementation as part of theirs if they have
     // a share button
     if (this._components.shareButton) {
+      console.log('onShareSuccess!');
       this.$('.js-submit-share').removeClass('js-sharing');
     }
   },

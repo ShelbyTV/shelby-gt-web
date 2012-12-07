@@ -1,0 +1,61 @@
+//---------------------------
+//  dropdown framework
+//  used in header nav
+//
+//    contextless-abstraction,
+//    any/all hoverable dropdowns should
+//    use the the dropdown_module
+//
+//    1. dropdown_button and dropdown_section are siblings
+//    2. dropdown_icon is the child icon of dropdown_button,
+//       indicates that button is a dropdown
+//---------------------------
+
+.dropdown_module {
+  position: relative;
+
+  &:hover {
+    .dropdown_section {
+      display: block;
+    }
+  }
+
+  &.dropdown_module--stay-open {
+    .dropdown_section {
+      display: block;
+    }
+  }
+}
+
+.dropdown_module--no-hover {
+  position: relative;
+
+  .dropdown_icon {
+    background-image: none;
+  }
+}
+
+.dropdown_button {
+}
+
+.dropdown_icon {
+  background-image: url($icon-carrot);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-style: normal;
+  padding-right: 1em;
+}
+
+.dropdown_section {
+  display: none;
+  position: absolute;
+  z-index: 5;
+}
+
+.dropdown_lining {
+  position: relative;
+  //DO NOT SET AN MARGIN/PADDING OFFSET HERE.
+  //Offsets are stylistic and relative to a particlar context
+  //i.e. class="dropdown_lining nowplaying-section-lining",
+  //.nowplaying-section-lining applies offset.
+}
