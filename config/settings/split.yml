@@ -1,0 +1,18 @@
+defaults: &defaults
+  enabled: false
+  redis_string: "localhost:6379"
+
+development:
+  <<: *defaults
+  enabled: true
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  enabled: true
+  redis_string: "108.166.56.26:6379"
