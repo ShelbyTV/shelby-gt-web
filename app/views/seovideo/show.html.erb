@@ -212,9 +212,9 @@
 	var disqus_developer = ("<%= Rails.env %>" == "production") ? 0 : 1; // developer mode is on
 	var disqus_identifier = "<%= @video_provider_name %>:<%= @video_provider_id %>";
 	var disqus_title = "Shelby.tv | <%= @video_title %>";
-	
+
 	var disqus_shortname = 'shelbytv';
-	
+
 	(function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = 'http://'+disqus_shortname+'.disqus.com/embed.js';
