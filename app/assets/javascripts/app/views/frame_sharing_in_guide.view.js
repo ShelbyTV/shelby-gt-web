@@ -17,11 +17,17 @@ libs.shelbyGT.FrameSharingInGuideView = libs.shelbyGT.GuideOverlayView.extend({
     var shareFrameView = new libs.shelbyGT.ShareFrameView({
       model : new libs.shelbyGT.ShareModel(),
       guideOverlayModel : this.options.guideOverlayModel,
-      frame : this.model
+      frame : this.model,
+      onShareSuccess : this.onShareSuccess
     });
     this.appendChildInto(shareFrameView, '.frame-sharing');
 
     libs.shelbyGT.GuideOverlayView.prototype.render.call(this);
+  },
+  
+  onShareSuccess: function(discussionRoll, raw){
+    var href = shelby.config.appUrl+'/chat/'+discussionRoll.id+'?u='+shelby.models.user.id+'&t='+discussionRoll.get('token');
+    shelby.success('Message Sent! <span class="message-link"><a href="'+href+'" class="js-open-popup">Open Conversation</a></span>');
   }
 
 });

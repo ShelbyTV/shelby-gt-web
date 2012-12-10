@@ -213,7 +213,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   onShareSuccess : function(){
-    shelby.alert('Your message has been sent!')
     // subclasses may optionally override to perform custom handling on share success, but
     // should always call the superclass's implementation as part of theirs if they have
     // a share button

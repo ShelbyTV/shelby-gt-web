@@ -56,10 +56,11 @@
       //save adjusted model to discussion_roll route
       this.model.save(null, {
         url: shelby.config.apiRoot + '/discussion_roll',
-        success: function(){
+        success: function(model, resp){
           self._clearTextArea();
           self._components.spinner && self._hideSpinner();
           self.onShareSuccess();
+          self.options.onShareSuccess && self.options.onShareSuccess(model, resp);
         },
         error: function(){
           self._handleShareError();
