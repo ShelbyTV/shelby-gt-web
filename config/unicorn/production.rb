@@ -1,5 +1,3 @@
-require 'vanity'
-
 # Set your full path to application.
 app_path = "/home/gt/web/current"
 
