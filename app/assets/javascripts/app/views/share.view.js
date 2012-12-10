@@ -128,7 +128,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if(this._components.emailAddresses){
       var $emailAddressesInput = this.$('.js-share-email-addresses');
       var emailAddresses = $emailAddressesInput.val();
-      $emailAddressesInput.val(_(emailAddresses.split(',')).compact().join(','));
+      $emailAddressesInput.val(_(emailAddresses.split(/[,;]/)).compact().join(','));
       //:invalid pseudo-element only supported as of IE 10
       if ((BrowserDetect.browser != 'Explorer' || BrowserDetect.version >= 10)) {
         if (this.$('.js-share-email-addresses:invalid').length > 0) {

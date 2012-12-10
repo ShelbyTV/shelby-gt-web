@@ -1,14 +1,14 @@
   <!-- form element wrapper is in outside of this JST -->
   <fieldset class="form_fieldset">
     <label class="form_label" for="email-recipients">
-      Recipients
+      To
     </label>
-    <input id="email-recipients" class="form_input js-share-email-addresses" type="email" multiple="true" name="email-recipients" autofocus tabindex="0" placeholder="email@address.com, other@address.com, etc…" />
+    <textarea id="email-recipients" class="form_input js-share-email-addresses" pattern="(\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+[,\s;]*)*" name="email-recipients" autofocus tabindex="0" rows="2" placeholder="friend@gmail.com, pal@shcool.edu, etc…" ></textarea>
 
     <label class="form_label" for="email-message">
       Message
     </label>
-    <textarea class="form_textarea js-share-textarea" name="email-message" id="email-message" tabindex="0"></textarea>
+    <textarea class="form_textarea js-share-textarea" rows="4" name="email-message" id="email-message" tabindex="0"></textarea>
     <!-- <p id="js-share-comment-counter" class="form_textarea_subline">140</p> -->
   </fieldset>
 
