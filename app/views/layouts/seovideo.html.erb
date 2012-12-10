@@ -22,6 +22,7 @@
 
 	<%= yield %>	
 
+  <%= vanity_js %>
   <% if Rails.env == 'production' %>
     <script>
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
@@ -45,5 +46,13 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
+  <script>
+    try {
+      _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_text_size', '<%= @seo_ad_text_size %>']);
+    } catch(e) {}
+    try {
+      _kmq.push(['set', {'seo_ad_text_size': '<%= @seo_ad_text_size %>'}]);
+    } catch(e) {}
+  </script>
 </body>
 </html>
