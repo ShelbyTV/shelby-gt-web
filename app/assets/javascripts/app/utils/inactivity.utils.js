@@ -13,7 +13,7 @@ $.extend(shelby.userInactivity, {
 
   _lastUserActivity: Date.now(),
   _userActive: true,
-  _userInactivityTime: 2 * 1000,
+  _userInactivityTime: 1.5 * 1000,
   _userInactivityBootLeniency: 7 * 1000,
   _userActivityDetectionEnabled: true,
   _numActivityDetectionDisablers: 0,

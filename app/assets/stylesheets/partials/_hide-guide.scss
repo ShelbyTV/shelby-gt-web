@@ -5,10 +5,15 @@
 	&.guide-wrapper{
 	  margin-left:-($guide-width);
 	}
-	
-  // .persistent_video_info__wrapper {
-  //   background-color: rgba(239, 239, 239, 0);
-  // }
+
+  .videoplayer-tools__wrapper,
+  .persistent_video_info__wrapper {
+    // background-color: rgba(239, 239, 239, 0);
+    // bottom: -100%;
+    opacity: 0.9;
+    left: 10%;
+    right: 10%;
+  }
 
   // .persistent_video_info {
   //   max-width: 900px;
@@ -17,15 +22,14 @@
   .videoplayer-viewport {
     bottom: 0;
   }
-  
+
   .mini-videoplayer__wrapper,
   #mini-video-progress {
     bottom: 0;
   }
-
-  // .videoplayer-tools__wrapper {
-  //  bottom: 0;
-  // }
+  .videoplayer-tools__wrapper {
+   // bottom: 0;
+  }
 
   // .videoplayer-tools {
   //   max-width: 900px;

@@ -19,9 +19,6 @@ $active-list-item: $shelby-blue;
     .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
-    .menu_module {
-      display: block;
-    }
   }
 }
 
@@ -39,7 +36,7 @@ $active-list-item: $shelby-blue;
 //  frame natural state
 //------------------------------------------------------------------------------
 .frame {
-  padding: 1em;
+  padding: 1em 0.5em 0.5em 0.5em;
 
   ////////////////////////////////////////////////////////////////////////////
   //  on HOVER, toggle:
@@ -108,9 +105,23 @@ $active-list-item: $shelby-blue;
   }
 }
 
+.frame-subsection,
 .frame-subline {
   margin-top: 1em;
   text-align: right;
+}
+
+
+.frame-subsection {
+  .frame-command-wrapper {
+    margin: -2px 0 0;
+    position: absolute;
+    left: 0;
+
+    &.icon {
+      padding-left: 1.4em;
+    }
+  }
 }
 
 .frame-is-collapsed {
@@ -135,7 +146,6 @@ $active-list-item: $shelby-blue;
   line-height: 1;
   opacity: $videocard-faux-tint;
   padding-left: $button-padding-left;
-  padding-bottom: 1px;
   text-decoration: none;
 
   &:hover {
@@ -207,6 +217,14 @@ $active-list-item: $shelby-blue;
   position: inherit;
   top: inherit;
   width: inherit;
+
+  .menu_item {
+    &.right {
+      .frame-command {
+        margin: 1em 1em 0 0;
+      }
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -216,8 +234,8 @@ $active-list-item: $shelby-blue;
 .frame-command {
   @include button-sizing;
 
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 1em;
+  margin-top: 1em;
 }
     ////////////////////////////////////////////////////////////////////////////
     //  dropdown sublist:
@@ -234,7 +252,7 @@ $active-list-item: $shelby-blue;
         border-right: 1px solid $inset;
         border-top: none;
         margin: 0;
-        padding: .75em 1em .75em;
+        padding: .75em 1em .8em;
         text-align: left;
         width: 100%;
 
@@ -245,31 +263,19 @@ $active-list-item: $shelby-blue;
     }
 
     .frame-shortlink {
-      display: block;
+      @include roundies(input);
+
+      display: inline;
       font-size: 1.1em;
-      height: 29px;
-      padding: 0.6em 0.9em 0.5em;
-      width: 100%;
-    }
+      height: 1.4em;
+      padding: 0.3em;
+      width: 115px;
+      background: transparent;
+      border: 1px solid #aaa;
 
-    .frame-item {
-      &:first-child {
-        .frame-option {
-          border-top: 1px solid $inset;
-        }
-      }
-
-      &:last-child {
-        .frame-option {
-          border-bottom: 1px solid $inset;
-        }
-      }
-    }
-
-    .command-sublist {
-      padding-right: 10px;
-
-      .command-icon {
+      &:focus {
+        outline: none;
+        border: 1px solid black;
       }
     }
 
@@ -284,11 +290,7 @@ $active-list-item: $shelby-blue;
   }
 
   &.queued {
-//    @include button-primer(darken($x-primer-color,20%));
-
     &:not(.remove-frame) {
-//      @include button-primer(darken($x-primer-color,20%),light,queue-button,false);
-//      cursor: auto;
     }
 
     .icon {
@@ -305,23 +307,45 @@ $active-list-item: $shelby-blue;
 }
 
 .command-more {
-//  .command-icon {
-//    padding-right: $button-padding-right;
-//  }
 }
 
 .command-share {
   .icon {
-    background-image: none;
+    -webkit-background-size: contain;
+    background-size: contain;
+    padding-left: 1.8em;
   }
 }
 
+.command-remove {
+  .icon {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+.command-link {
+  background: transparent;
+  border: none;
+  color: #666;
+  display: inline;
+  margin: 0;
+  opacity: 0.7;
+  padding: 0;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .frame-collapsed{})
 //------------------------------------------------------------------------------
 .frame-collapsed {
-  opacity: .5;
+  opacity: 0.5;
+  padding: 0.5em;
 
   .frame-title {
     height: 40px;
@@ -369,6 +393,7 @@ $active-list-item: $shelby-blue;
 .xvideo-unplayable {
   .xvideo-unplayable-thumbnail-overlay {
     @include text-shadow(0px 0px 4px #000);
+
     color: #efefef;
     display: block;
     font-size: 1.5em;
@@ -382,6 +407,7 @@ $active-list-item: $shelby-blue;
   .xframe-thumbnail {
     @include filter(blur(3px) grayscale(1));
   }
+
   .xframe-menu {
     display: none!important;
   }
@@ -466,11 +492,11 @@ $share-frame-half-gutter: 4px;
       -webkit-background-size: contain;
     }
   }
-  
+
   .menu_button--comment a {
     text-decoration: none;
   }
-  
+
 }
 
 

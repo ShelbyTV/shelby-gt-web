@@ -52,36 +52,21 @@
               </i>
             </button>
           </li>
-          <li class="menu_item right command-sublist" aria-haspopup="true">
-            <button class="menu_sublist_anchor button_primer button_default frame-command command-more">
-              <i class="button_icon_right dropdown_icon icon">
-                More
+
+          <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
+            <li class="menu_item right" role="menuitem">
+              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> frame-command command-remove js-remove-frame">
+                <i class="button_icon icon_cancel_on icon">&nbsp;</i>
+              </button>
+            </li>
+          <% } %>
+
+          <li class="menu_item right" role="menuitem">
+            <button class="button_primer button_default frame-command command-share js-share-frame">
+              <i class="button_icon_left icon icon_email">
+                Email…
               </i>
             </button>
-
-            <ul class="menu_sublist frame-sublist" role="menu">
-              <li class="menu_option frame-item" role="menuitem">
-                <button class="frame-command command-share js-share-frame">
-                  <i class="button_icon_left icon icon_email">
-                    Email Share…
-                  </i>
-                </button>
-              </li>
-              <li class="menu_option frame-item" role="menuitem">
-                <button class="frame-command command-link js-copy-link">
-                  Get Shortlink
-                </button>
-                <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
-              </li>
-
-              <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
-                  <li class="menu_option frame-item" role="menuitem">
-                    <button class="frame-command command-remove js-remove-frame">
-                      <%= shelby.models.user.get('admin') ? "ADMIN KILL VID" : "Remove Video" %>
-                    </button>
-                  </li>
-              <% } %>
-            </ul>
           </li>
         </ul>
       </div><!-- eo .frame-menu -->
@@ -143,10 +128,23 @@
             <% } %>
 
             <% if (!user.isAnonymous()) { %>
-              <div class="frame-subline">
-                <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-                  <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-                </a>
+              <div class="frame-subsection">
+                <ul class="menu_list">
+                  <li class="menu_item" role="menuitem">
+                    <div class="frame-command-wrapper button_icon_left icon_shortlink icon">
+                      <button class="frame-command command-link js-copy-link">
+                        Get Shortlink
+                      </button>
+                    </div>
+                    <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
+                  </li>
+
+                  <li class="menu_item right" role="menuitem">
+                    <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
+                      <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
+                    </a>
+                  </li>
+                </ul><!-- eo .menu_list -->
               </div>
             <% } %>
           <% } else { %>
