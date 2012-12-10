@@ -2,7 +2,7 @@
 	oAuth via popup window
 **/
 $("a.auth-popup, button.js-oauth-popup").live('click', function(e){
- 	if( Browser.supportsAuthPopup() && !Browser.isIframe()){
+ 	if( Browser.supportsAuthPopup()){
 		var width = $(this).attr('popup-width');
 		var height = $(this).attr('popup-height');
 		var left = (screen.width/2)-(width/2);
@@ -15,10 +15,6 @@ $("a.auth-popup, button.js-oauth-popup").live('click', function(e){
     window.open($(this).attr("href"), "authPopup", "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
 		
 		e.stopPropagation(); return false;
-	}
-	else if (Browser.isIframe()){
-	  alert("opening: ", $(this).attr("href"));
-	  document.location.href = $(this).attr("href");
 	}
 });
 
