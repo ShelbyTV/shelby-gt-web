@@ -1,12 +1,10 @@
 require 'shelby_api'
-require 'vanity'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
   #set Vanity (A/B testing) to use javascript to register participants, hopefully preventing robots from participating
   Vanity.playground.use_js!
-  Vanity.playground.add_participant_path = Rails.application.routes.url_helpers.add_participant_path
 
   #assign an identity for vanity (A/B testing)
   use_vanity :vanity_id
