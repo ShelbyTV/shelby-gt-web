@@ -78,11 +78,11 @@
         if (donatePromoInfo) {
         // render a donate promo if the current roll is set to do so
           return new InlineDonatePromoView({
-            headerText : donatePromoInfo.headerText,
-            linkSrc : donatePromoInfo.linkSrc,
-            model : this.model,
-            promoText : donatePromoInfo.promoText,
-            thumbnailSrc : donatePromoInfo.thumbnailSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model)
+            model: this.model,
+            promoAvatarSrc : donatePromoInfo.promoAvatarSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model),
+            promoLinkSrc : donatePromoInfo.promoLinkSrc,
+            promoMessage : donatePromoInfo.promoMessage,
+            promoTitle : donatePromoInfo.promoTitle
           });
         } else {
           // if there are no special settings for this roll, render a roll promo
