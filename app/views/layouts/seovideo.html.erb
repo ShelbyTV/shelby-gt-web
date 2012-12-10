@@ -50,6 +50,9 @@
     try {
       _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_text_size', '<%= @seo_ad_text_size %>']);
     } catch(e) {}
+    try {
+      _kmq.push(['set', {'seo_ad_text_size': '<%= @seo_ad_text_size %>'}]);
+    } catch(e) {}
   </script>
 </body>
 </html>
