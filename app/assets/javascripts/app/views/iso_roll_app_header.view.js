@@ -72,6 +72,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
     e.preventDefault();
     var selectedRollId = $(e.currentTarget).data('roll_id');
     shelby.router.navigate('/isolated-roll/'+selectedRollId, {trigger:true});
+    shelby.models.userDesires.set({guideShown: true});
   },
   
   _onFollowOrUnfollow : function() {

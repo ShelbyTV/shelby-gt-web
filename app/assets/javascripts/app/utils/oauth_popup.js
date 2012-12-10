@@ -2,7 +2,7 @@
 	oAuth via popup window
 **/
 $("a.auth-popup, button.js-oauth-popup").live('click', function(e){
- 	if( Browser.supportsAuthPopup() ){
+ 	if( Browser.supportsAuthPopup() && !Browser.isIframe()){
 		var width = $(this).attr('popup-width');
 		var height = $(this).attr('popup-height');
 		var left = (screen.width/2)-(width/2);

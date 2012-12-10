@@ -1,3 +1,4 @@
+
 //------------------------------------------------------------------------------
 //  base: color variables, height & width constants
 //------------------------------------------------------------------------------
@@ -105,11 +106,12 @@
 @import "partials/facebook-genius";
 
 //------------------------------------------------------------------------------
-//  Overridesg
+//  Overrides
 //------------------------------------------------------------------------------
 @import "partials/hide-guide";
 @import "partials/user-inactive";
 @import "partials/touch";
+@import "partials/media-queries";
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes
