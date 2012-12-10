@@ -16,6 +16,10 @@ $("a.auth-popup, button.js-oauth-popup").live('click', function(e){
 		
 		e.stopPropagation(); return false;
 	}
+	else if (Browser.isIframe()){
+	  alert("opening: ", $(this).attr("href"));
+	  document.location.href = $(this).attr("href");
+	}
 });
 
 /**
