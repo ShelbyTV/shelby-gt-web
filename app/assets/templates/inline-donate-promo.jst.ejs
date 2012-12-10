@@ -1,19 +1,29 @@
-<div class="in-line-promo in-line-donate-promo xframe-list-item clearfix">
-  <a href="<%= linkSrc %>" target="_blank" class="in-line-donate-link js-donate-link" data-roll_id="<%= roll.id %>">
-    <div class="in-line-donate-lining">
-      <h3 class="in-line-promo-header in-line-donate-header">
-        <%= headerText %>
-      </h3>
-      <ul class="list">
-        <li class="in-line-promo-item">
-            <div class="in-line-promo-item-lining clearfix">
-              <img class="in-line-promo-thumb" src="<%= thumbnailSrc %>" />
-              <h3 class="in-line-promo-title in-line-donate-title">
-                <%= promoText %>
-              </h3>
-            </div>
-        </li>
-      </ul>
-    </div>
+<section class="frame-list-item frame frame--inline-promo">
+  <a class="frame-header" href="<%= linkSrc || '#' %>" onclick="return false;" title="<%= headerText %>">
+    <div class="frame-body-wrapper clearfix">
+      <div class="frame-body">
+        <%=
+          SHELBYJST['thumbnail-module']({
+            thumbnail : avatarSrc,
+            title : headerText
+          })
+        %>
+      </div><!-- eo frame-body -->
+
+      <div class="button_icon_right icon_chevron icon media_module frame-footer clearfix">
+        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= avatarSrc %>);" role="img">
+          <img src="<%= avatarSrc %>" class="visuallyhidden" title="<%= 'username' %>" alt="<%= 'username' %>">
+        </span>
+
+        <div class="media_body">
+          <p class="xuser-data">
+            <%= 'username' %>
+          </p>
+          <p class="xuser-message">
+            <%= headerText %>
+          </p>
+        </div><!-- eo media_body -->
+      </div><!-- eo frame-footer -->
+    </div><!-- eo frame-body-wrapper -->
   </a>
-</div>
+</section>
