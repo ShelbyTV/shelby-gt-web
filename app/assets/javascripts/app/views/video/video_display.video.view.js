@@ -33,6 +33,10 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:volume', this._changeVolume, this);
     this._userDesires.bind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
+    
+    // HACK FOR SHELBY CHANNELS
+    this._userDesires.bind('change:changeChannel', this._changeChannel, this);
+    
 
     _.each(this._playerViews, function(playerView){
       playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
