@@ -1,5 +1,10 @@
   <!-- form element wrapper is in outside of this JST -->
   <fieldset class="form_fieldset">
+		<label class="form_label frame-sharing__from-label js-from-label">
+      From
+    </label>
+		<input class="form_input form_input_uneditable frame-sharing__from-input js-from-input" disabled value="<%= shelby.models.user.get('primary_email') %>"></input>
+	
     <label class="form_label frame-sharing__to-label js-to-label" for="email-recipients">
       To
     </label>
