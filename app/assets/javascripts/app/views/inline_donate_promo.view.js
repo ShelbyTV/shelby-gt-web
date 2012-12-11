@@ -4,6 +4,7 @@ libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
     promoAvatarSrc : null,
     promoLinkSrc : '#',
     promoMessage : 'Click to Donate',
+    promoThumbnailSrc : null,
     promoTitle : 'Support a Great Cause'
   },
 
@@ -25,6 +26,7 @@ libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
       promoAvatarSrc: this.options.promoAvatarSrc,
       promoLinkSrc : this.options.promoLinkSrc,
       promoMessage: this.options.promoMessage,
+      promoThumbnailSrc: this.options.promoThumbnailSrc,
       promoTitle: this.options.promoTitle,
       roll: this.model
     }));

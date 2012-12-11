@@ -4,6 +4,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
     promoAvatarSrc : null,
     promoLinkSrc : '#',
     promoMessage : 'Check out more great video on this roll',
+    promoThumbnailSrc : null,
     promoTitle : null
   },
 

@@ -82,7 +82,8 @@
             promoAvatarSrc : donatePromoInfo.promoAvatarSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model),
             promoLinkSrc : donatePromoInfo.promoLinkSrc,
             promoMessage : donatePromoInfo.promoMessage,
-            promoTitle : donatePromoInfo.promoTitle
+            promoTitle : donatePromoInfo.promoTitle,
+            promoThumbnailSrc : donatePromoInfo.promoThumbnailSrc
           });
         } else {
           // if there are no special settings for this roll, render a roll promo
