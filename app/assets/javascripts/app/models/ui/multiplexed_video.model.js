@@ -4,5 +4,6 @@ libs.shelbyGT.MultiplexedVideoModel = Backbone.Model.extend({
     // the default channel on start
     channel : ''
   }
+  
 
 });

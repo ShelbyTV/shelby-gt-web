@@ -185,9 +185,6 @@
             collection : shelby.collections.multiplexedVideoFrames,
             options : {
               collapseViewedFrameGroups : false,
-              comparator : function(f1, f2) {
-                return (f1.id > f2.id ? 1 : -1);
-              },
               doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
               multiplexedVideoModel : shelby.models.multiplexedVideo
