@@ -35,6 +35,9 @@ class SeovideoController < ApplicationController
     splitConversationMessagesByNetwork()
     setMetaDescription()
 
+    # seo_ad_text_size A/B test
+    @seo_ad_text_size = ab_test :seo_ad_text_size
+
     respond_to do |format|
       format.html { render }
       format.any { head :not_found }

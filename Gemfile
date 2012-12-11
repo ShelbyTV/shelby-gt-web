@@ -21,6 +21,10 @@ gem 'httparty'
 #
 gem 'youtube_it'
 
+# ---------- A/B Testing
+#
+gem 'vanity'
+
 #
 # ---------- External Services
 #

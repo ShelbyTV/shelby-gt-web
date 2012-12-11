@@ -1,0 +1,12 @@
+development:
+  adapter: redis
+  connection: redis://localhost:6379/0
+  collecting: true
+
+staging:
+  collecting: false
+
+production:
+  adapter: redis
+  connection: redis://108.166.56.26:6379/0
+  collecting: true
