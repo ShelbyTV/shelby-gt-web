@@ -160,5 +160,24 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     if( this._curView !== playerState.get('playerView') ){
       playerState.get('playerView').leave();
     }
+  },
+
+  _changeChannel : function(attr, dir) {
+    //console.log("up/down", dir);
+    var _currCh = shelby.models.multiplexedVideo.get('channel');
+    var _chArray = _.keys(shelby.config.multiplexedVideoRolls);
+    
+    var _currChIndex = _.indexOf(_chArray, _currCh);
+    var _nextChIndex;
+    if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }
+    else if (_currChIndex == (_chArray.length - 1)  && dir == 1){ _nextChIndex = 0; }
+    else { _nextChIndex = _currChIndex + dir; }
+    
+    var _nextCh = _chArray[_nextChIndex];
+    
+    if (_nextCh != null || typeof _nextCh != "undefined"){
+      shelby.models.multiplexedVideo.set('channel', _nextCh);
+      shelby.router.navigate("ch/"+_nextCh, {trigger: true, replace: true});
+    }
   }
 });
