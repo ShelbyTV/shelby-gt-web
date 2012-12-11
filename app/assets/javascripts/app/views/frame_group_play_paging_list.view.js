@@ -93,11 +93,14 @@
           //only consider rolls that have all the needed attribtues to render a promo
           promoRolls = promoRolls.filter(this._filterPromoRolls, this);
           if (promoRolls.length) {
-            var rollsCollection = new Backbone.Collection();
             //select one of the promo rolls at random to display in the promo
-            rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
+            var rollToPromo = promoRolls[Math.floor(Math.random() * (promoRolls.length))];
             this._nextPromoExplore = true;
-            return new InlineRollPromoView({model:rollsCollection});
+            return new InlineRollPromoView({
+              model: rollToPromo,
+              promoAvatarSrc: rollToPromo.get('in_line_thumbnail_src') || rollToPromo.get('display_thumbnail_src'),
+              promoTitle: rollToPromo.get('display_title')
+            });
           } else {
             //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
             return [];
