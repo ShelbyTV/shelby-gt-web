@@ -124,6 +124,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
   
   displayChannel : function(params){
+    // Adjust *how* a few details are displayed via CSS
+    $('body').addClass('shelby-channels');
+    
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();

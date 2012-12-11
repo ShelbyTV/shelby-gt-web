@@ -251,6 +251,9 @@
         case DisplayState.search :
           this._videoSearchView = this._listView;
           break;
+        case DisplayState.channel :
+          this._videoSearchView = this._listView;
+          break;
       }
 
       // cancel any other previous ajax requests' ability to hide the spinner
@@ -311,6 +314,10 @@
           } else if (guideModel.get('displayState') == DisplayState.search) {
             this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.search;
+            this._playingRollId = null;
+          } else if (guideModel.get('displayState') == DisplayState.channel) {
+            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
+            this._playingState = libs.shelbyGT.PlayingState.channel;
             this._playingRollId = null;
           } else {
             //we're playing some kind of roll

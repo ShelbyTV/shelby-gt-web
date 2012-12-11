@@ -16,7 +16,6 @@
     }),
 
     initialize : function(){
-      console.log("MultiplexedVideoView", this);
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
       this.options.multiplexedVideoModel.bind("channel", this._changeChannel, this);
     },
@@ -53,7 +52,7 @@
               shelby.collections.multiplexedVideoFrames.add(model.get('frames').models).sort();
               //if nothing is already playing, start playing the first video in the search results
               self._check += 1;
-              if (self._check == (rollIds.length-1)) {
+              if (self._check == (rollIds.length)) {
                 // don't want to activate the video if we've switched to explore view during the asynchronous load
                 if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
                   var firstFrame = shelby.collections.multiplexedVideoFrames.first();
