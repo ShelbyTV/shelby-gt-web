@@ -10,7 +10,7 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   
   el: '#js-discussions-manager',
   
-  // Colleciton of all the DiscussionRolls we have access to
+  // Collection of all the DiscussionRolls we have access to
   _discussionRolls : null,
   
   initialize : function(){
