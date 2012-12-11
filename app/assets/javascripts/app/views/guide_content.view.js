@@ -7,6 +7,7 @@
   var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
+  var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -174,6 +175,22 @@
               doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
               videoSearchModel : shelby.models.videoSearch
+            }
+          };
+          break;
+        case DisplayState.channel :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : MultiplexedVideoView,
+            collection : shelby.collections.multiplexedVideoFrames,
+            options : {
+              collapseViewedFrameGroups : false,
+              comparator : function(f1, f2) {
+                return (f1.id > f2.id ? 1 : -1);
+              },
+              doStaticRender : true,
+              masterCollection : this._currentRollMasterCollection,
+              multiplexedVideoModel : shelby.models.multiplexedVideo
             }
           };
           break;
