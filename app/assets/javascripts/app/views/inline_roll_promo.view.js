@@ -33,7 +33,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
   },
 
   _goToRoll : function(e){
-    var rollId = $(e.currentTarget).data('roll_id');
+    var rollId = $(e.currentTarget).data('roll-id');
     if (shelby.models.guide.get('displayIsolatedRoll')) {
       window.top.location.href = shelby.config.appUrl + '/roll/' + rollId;
     } else {
