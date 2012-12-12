@@ -18,7 +18,7 @@ libs.shelbyGT.Ajax = {
     shelby.config.apiRoot+'/roll/',
     shelby.config.apiRoot+'/POST/gt_interest',
     '/short_link',
-    shelby.config.apiRoot+'/video/search',
+    shelby.config.apiRoot+'/video/search'
   ],
   
   isAnonUrlValid : function(opts){

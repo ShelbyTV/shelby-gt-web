@@ -95,6 +95,10 @@ class HomeController < ApplicationController
   def search
     render '/home/app'
   end
+  
+  def channel
+    render '/home/app'
+  end
 
   ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
