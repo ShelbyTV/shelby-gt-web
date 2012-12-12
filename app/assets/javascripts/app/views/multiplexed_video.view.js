@@ -28,7 +28,7 @@
     render : function(){
       FrameGroupPlayPagingListView.prototype.render.call(this);
       if (this.options.multiplexedVideoModel.get('channel')) {
-        shelby.router.navigate('ch/' + this.options.multiplexedVideoModel.get('channel'), {trigger: false, replace: true});
+        shelby.router.navigate('channel/' + this.options.multiplexedVideoModel.get('channel'), {trigger: false, replace: true});
       }
     },
 

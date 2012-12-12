@@ -34,7 +34,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
     
-    // HACK FOR SHELBY CHANNELS
+    // FOR SHELBY CHANNELS
     this._userDesires.bind('change:changeChannel', this._changeChannel, this);
     
 
@@ -98,7 +98,14 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
       //when not bootstrapping/autplaying, this is the only way video is set & played
       this._curView.playVideo(video);
     }
-
+    
+    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) { 
+      // SHOW Video Footer whenever a video changes.
+      $('body').removeClass('user-inactive');
+      setTimeout(function(){ $('body').addClass('user-inactive'); }, 6000);
+    }
+    
+    
   },
 
   //--------------------------------------
@@ -163,7 +170,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
   },
 
   _changeChannel : function(attr, dir) {
-    //console.log("up/down", dir);
+    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) { return; }
     var _currCh = shelby.models.multiplexedVideo.get('channel');
     var _chArray = _.keys(shelby.config.multiplexedVideoRolls);
     
@@ -177,7 +184,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     
     if (_nextCh != null || typeof _nextCh != "undefined"){
       shelby.models.multiplexedVideo.set('channel', _nextCh);
-      shelby.router.navigate("ch/"+_nextCh, {trigger: true, replace: true});
+      shelby.router.navigate("channel/"+_nextCh, {trigger: true, replace: true});
     }
   }
 });

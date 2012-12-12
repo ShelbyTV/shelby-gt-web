@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
-    "ch/:ch"                               : "displayChannel",
+    "channel/:channel"                     : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -111,7 +111,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    var query = params && params.query
+    var query = params && params.query;
     if (query) {
       shelby.models.videoSearch.set('query', params.query);
     }
@@ -123,14 +123,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
   
-  displayChannel : function(params){
+  displayChannel : function(channel){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('shelby-channels');
     
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    var channel = params;
     if (channel) {
       shelby.models.multiplexedVideo.set('channel', channel);
     }
@@ -278,7 +277,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
-        'sinceId' : options.data.since_id ? options.data.since_id : null,
+        'sinceId' : options.data.since_id ? options.data.since_id : null
       });
 
       // filtering out faux users so as a team we can interact more easily
@@ -578,7 +577,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){
-        rollModel.unbind('change:title'),
+        rollModel.unbind('change:title');
         this.navigateToRoll(rollModel,{trigger:false,replace:true});
       }, this);
     }
