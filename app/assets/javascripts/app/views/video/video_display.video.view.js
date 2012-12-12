@@ -100,7 +100,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     }
     
     if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) { 
-      // SHOW Video Footer whenever a video changes.
+      // HACK to show Video Footer whenever a video changes.
       $('body').removeClass('user-inactive');
       setTimeout(function(){ $('body').addClass('user-inactive'); }, 6000);
     }
