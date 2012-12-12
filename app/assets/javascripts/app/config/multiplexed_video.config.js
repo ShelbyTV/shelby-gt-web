@@ -1,8 +1,8 @@
 shelby.config.multiplexedVideoRolls = {
   // espn, redbull, kicktv
   play: ["4fbe42069a725b686300004a","4fb413bb9a725b650900195a","4f95db0388ba6b6125004073"],
-  // reuters, nytimesvideo, wsj, ytpolitics, cbnewsonline
-  inform: ["4f95622b9a725b72e700106b","50522466b415cc5b81002080", "4fa8542c88ba6b669b000bcd", "4fa05c799a725b020a000a5e", "50c8ecefb415cc0f4c007f21"], 
+  // reuters, nytimesvideo, wsj, ytpolitics
+  inform: ["4f95622b9a725b72e700106b","50522466b415cc5b81002080", "4fa8542c88ba6b669b000bcd", "4fa05c799a725b020a000a5e" ], 
   // laughingsquid, dailywhat, chow, onion, snl shorts, harto, buzzfeed
   giggle: ["4fc637879a725b755d001f77","4fa28d849a725b79c9000228","50072ee988ba6b796b00e4fd", "4fc532169a725b2999000354", "4fbd2d24d10412081e00042e","4f902316b415cc466a0009dd","4f9577c488ba6b15ec0084c7"], 
   // minute physics, khan acad., pbs , brainpicker, tedtalksvideo, neiltyson, crash course
