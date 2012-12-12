@@ -164,7 +164,7 @@
           <% } %>
         </div><!-- eo .media_body -->
 
-        <% if (user.isAnonymous()) { %>
+        <% if (user.isAnonymous() && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
           <ul class="menu_list menu_list--share-frame">
             <li class="menu_item">
               <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">

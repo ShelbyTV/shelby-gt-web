@@ -1,6 +1,6 @@
 shelby.config.multiplexedVideoRolls = {
   // espn, redbull, kicktv
-  sport: ["4fbe42069a725b686300004a","4fb413bb9a725b650900195a","4f95db0388ba6b6125004073"],
+  play: ["4fbe42069a725b686300004a","4fb413bb9a725b650900195a","4f95db0388ba6b6125004073"],
   // reuters, nytimesvideo, wsj, ytpolitics
   inform: ["4f95622b9a725b72e700106b","50522466b415cc5b81002080", "4fa8542c88ba6b669b000bcd", "4fa05c799a725b020a000a5e"], 
   // laughingsquid, dailywhat, chow, onion, snl shorts, harto

@@ -96,6 +96,11 @@ class HomeController < ApplicationController
     render '/home/app'
   end
   
+  ##
+  # Handles channel view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /channel/:name
+  #  
   def channel
     render '/home/app'
   end
