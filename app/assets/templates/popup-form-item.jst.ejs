@@ -1,34 +1,83 @@
-<div class="js-popup-form-item">
+<div class="frame-body-wrapper js-popup-form-item">
   <fieldset class="form_fieldset form_fieldset--annotation">
     <h3 class="guide-overlay__h3">
       Popup #
     </h3>
 
-    <ul class="list list--fourths">
-      <li>
-        <label class="form_label" for="hours">
-          Hour
-        </label>
-        <input id="hours" class="form_number" type="number" value="00" /> :
-      </li><!--
+    <label for="preset" class="form_label form_legend">
+      Style
+    </label>
 
-      --><li>
-        <label class="form_label" for="minutes">
-          Minute
-        </label>
-        <input id="minutes" class="form_number" type="number" value="00" /> :
-      </li><!--
+    <select class="form_select">
+      <option class="form_option">Meme</option>
+      <option class="form_option">Basic</option>
+      <option class="form_option">Sticky Note</option>
+    </select>
 
-      --><li>
-        <label class="form_label" for="seconds">
-          Second
-        </label>
-        <input id="seconds" class="form_number" type="number" value="00" />
-      </li>
-    </ul>
+    <fieldset class="form_fieldset">
+      <h4 class="form_legend">
+        Start
+      </h4>
+
+      <hr class="hr--double" />
+
+      <ul class="list list--fifths">
+        <li>
+          <label class="form_label" for="start-hours">
+            Hour
+          </label>
+          <input id="start-hours" class="form_number" type="number" value="00"  min="0" max="12" /> :
+        </li><!--
+
+        --><li>
+          <label class="form_label" for="start-minutes">
+            Minute
+          </label>
+          <input id="start-minutes" class="form_number" type="number" value="00" min="0" max="60" /> :
+        </li><!--
+
+        --><li>
+          <label class="form_label" for="start-seconds">
+            Second
+          </label>
+          <input id="start-seconds" class="form_number" type="number" value="00" min="0" max="60"/>
+        </li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <h4 class="form_legend">
+        End
+      </h4>
+
+      <hr class="hr--double" />
+
+      <ul class="list list--fifths">
+        <li>
+          <label class="form_label" for="end-hours">
+            Hour
+          </label>
+          <input id="end-hours" class="form_number" type="number" value="00"  min="0" max="12" /> :
+        </li><!--
+
+        --><li>
+          <label class="form_label" for="end-minutes">
+            Minute
+          </label>
+          <input id="end-minutes" class="form_number" type="number" value="00" min="0" max="60" /> :
+        </li><!--
+
+        --><li>
+          <label class="form_label" for="end-seconds">
+            Second
+          </label>
+          <input id="end-seconds" class="form_number" type="number" value="00" min="0" max="60"/>
+        </li>
+      </ul>
+    </fieldset>
   </fieldset>
   <fieldset class="form_fieldset--annotation">
-    <label class="form_label">
+    <label class="form_label form_legend">
       Message
     </label>
 

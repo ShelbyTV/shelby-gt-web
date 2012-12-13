@@ -1,4 +1,5 @@
 .guide-overlay--event-manager {
+  //abstract overrides
   .guide-overlay-head {
 
   }
@@ -7,11 +8,19 @@
     padding: 1.5em 8px;
   }
 
+  .form_legend {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
 
   //annotation item
   .form_fieldset--annotation {
-    background-color: rgba(0,0,0,0.07);
     padding: 10px;
+
+    .list {
+      padding: 10px;
+    }
 
     .form_number {
       font-size: 1.3em;
