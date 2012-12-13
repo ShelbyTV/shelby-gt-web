@@ -15,13 +15,15 @@ libs.shelbyGT.PlaybackEventListItemView = libs.shelbyGT.ListItemView.extend({
       eventEndTime: libs.utils.Time.StoHMS(this.model.get('end_time')),
       index : this.options.index
     }));
+    this.$('.js-theme-select option').filter('[value=' + this.model.get('theme') + ']').attr('selected', 'selected');
   },
 
   saveFormDataToModel: function() {
     this.model.set({
       end_time : libs.utils.Time.HMStoS(+this.$('#end-hours-' + this.options.index).val(), +this.$('#end-minutes-' + this.options.index).val(), +this.$('#end-seconds-' + this.options.index).val()),
       html : this.$('.js-event-html').val(),
-      start_time : libs.utils.Time.HMStoS(+this.$('#start-hours-' + this.options.index).val(), +this.$('#start-minutes-' + this.options.index).val(), +this.$('#start-seconds-' + this.options.index).val())
+      start_time : libs.utils.Time.HMStoS(+this.$('#start-hours-' + this.options.index).val(), +this.$('#start-minutes-' + this.options.index).val(), +this.$('#start-seconds-' + this.options.index).val()),
+      theme : this.$('.js-theme-select').val()
     });
   }
 
