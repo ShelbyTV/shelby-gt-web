@@ -22,7 +22,11 @@
 
 <!-- videocard -->
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
-  <a href="#" class="js-event-manager button_primer button_purple faux_button frame-annotations">⚑</a>
+  <% if( creator === user ) { %>
+    <a href="#" class="js-event-manager frame-annotations" title="Add Annotations!">
+      <i class="button_icon_left icon_paperclip_on icon ir">Annotations</i>
+    </a>
+  <% } %>
 
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">

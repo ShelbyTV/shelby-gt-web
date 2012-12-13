@@ -19,6 +19,19 @@ $active-list-item: $shelby-blue;
     .frame-aside-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
     }
+
+    .frame-annotations {
+      .icon {
+        background-image: url('/images/assets/paperclip.svg');
+      }
+
+      &:hover {
+        &:before {
+          background-color: #31a0ca;
+          color: white;
+        }
+      }
+    }
   }
 }
 
@@ -70,8 +83,32 @@ $active-list-item: $shelby-blue;
 .frame-annotations {
   font-size: 1.4em;
   position: absolute;
-  padding: 0em 0.44em;
+  padding: 0;
   right: 5px;
+
+  .icon {
+    -webkit-background-size: contain;
+    background-size: contain;
+    display: block;
+    height: 22px;
+    padding-left: 1.2em;
+    width: 22px;
+  }
+
+  &:hover {
+    &:before {
+      background-color: #e2e2e2;
+      color: black;
+      content: "Annotations";
+      display: block;
+      font-size: 11px;
+      line-height: 1.8;
+      padding: 0.2em 0.25em 0.2em 1em;
+      position: absolute;
+      right: 19px;
+      text-decoration: none;
+    }
+  }
 }
 
 .frame-title {
