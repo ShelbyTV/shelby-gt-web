@@ -14,6 +14,7 @@ var shelby = shelby || {};
 // global namespace for this app
 //---------------------------------------------------------
 _(shelby).extend({
+  controllers : {},
   models : {},
   views : {},
   collections : {},
