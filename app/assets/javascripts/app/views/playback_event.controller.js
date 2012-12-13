@@ -35,6 +35,8 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
   },
 
   _onCurrentTimeChange: function(attr, curTime){
+    var self = this;
+
     var frame = this.options.guideModel.get('activeFrameModel');
     if (frame) {
       var eventsToEnter = frame.get('events').filter(function(event){
@@ -42,12 +44,14 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
       });
       _(eventsToEnter).each(function(event){
         event.set('entered', true);
+        self.model.trigger('enter', event);
       });
       var eventsToExit = frame.get('events').filter(function(event){
         return event.get('endTime') <= curTime && event.get('entered');
       });
       _(eventsToExit).each(function(event){
         event.set('entered', false);
+        self.model.trigger('exit', event);
       });
       console.log("Events entered", eventsToEnter);
       console.log("Events exited", eventsToExit);

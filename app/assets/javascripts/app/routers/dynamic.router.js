@@ -490,6 +490,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     shelby.controllers.playbackEventController = shelby.controllers.playbackEventController ||
         new libs.shelbyGT.PlaybackEventController({
+          model: shelby.models.playbackEventControllerModel,
           guideModel: shelby.models.guide,
           playbackState: shelby.models.playbackState
         });
