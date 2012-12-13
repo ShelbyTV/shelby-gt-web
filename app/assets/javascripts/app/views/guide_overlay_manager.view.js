@@ -13,7 +13,7 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
 
   _onGuideOverlayChange : function(guideOverlayModel) {
     var guideOverlayView;
-    
+
     //whether we're removing overlays or opening a new one, all
     //current overlays should be hidden
     this.children.each(function(child) {
@@ -43,6 +43,11 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
           roll : personalRoll
         });
         break;
+      case libs.shelbyGT.GuideOverlayType.events:
+        guideOverlayView = new libs.shelbyGT.EventManagerView({
+          model : guideOverlayModel.get('activeGuideOverlayFrame'),
+          guideOverlayModel : this.model
+        });
     }
 
     guideOverlayView.render();
