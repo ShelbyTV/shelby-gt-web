@@ -11,7 +11,8 @@
 
   libs.shelbyGT.EventManagerView = GuideOverlayView.extend({
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel"                      : "_setGuideOverlayStateNone"  //cancel from Step 1/2
+      "click .js-cancel"        : "_setGuideOverlayStateNone",
+      "click .js-add-new-popup" : "_addNewPopup"
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay--event-manager js-event-manager-ui',
@@ -30,6 +31,13 @@
       this.$el.html(this.template({frame:this.model, user:shelby.models.user}));
 
       GuideOverlayView.prototype.render.call(this);
+    },
+
+    _addNewPopup : function(e){
+      e.preventDefault();
+
+      console.log('add pop up');
+
     }
   });
 
