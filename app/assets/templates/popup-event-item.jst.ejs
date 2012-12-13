@@ -26,21 +26,21 @@
           <label class="form_label" for="start-hours-<%= index %>">
             Hour
           </label>
-          <input id="start-hours-<%= index %>" class="form_number" type="number" value="00"  min="0" max="12" /> :
+          <input id="start-hours-<%= index %>" class="form_number" type="number" value="<%= eventStartTime.hours %>"  min="0" max="12" /> :
         </li><!--
 
         --><li>
           <label class="form_label" for="start-minutes-<%= index %>">
             Minute
           </label>
-          <input id="start-minutes-<%= index %>" class="form_number" type="number" value="00" min="0" max="60" /> :
+          <input id="start-minutes-<%= index %>" class="form_number" type="number" value="<%= eventStartTime.minutes %>" min="0" max="60" /> :
         </li><!--
 
         --><li>
           <label class="form_label" for="start-seconds-<%= index %>">
             Second
           </label>
-          <input id="start-seconds-<%= index %>" class="form_number" type="number" value="00" min="0" max="60"/>
+          <input id="start-seconds-<%= index %>" class="form_number" type="number" value="<%= eventStartTime.seconds %>" min="0" max="60"/>
         </li>
       </ul>
     </fieldset>
@@ -57,21 +57,21 @@
           <label class="form_label" for="end-hours-<%= index %>">
             Hour
           </label>
-          <input id="end-hours-<%= index %>" class="form_number" type="number" value="00"  min="0" max="12" /> :
+          <input id="end-hours-<%= index %>" class="form_number" type="number" value="<%= eventEndTime.hours %>"  min="0" max="12" /> :
         </li><!--
 
         --><li>
           <label class="form_label" for="end-minutes-<%= index %>">
             Minute
           </label>
-          <input id="end-minutes-<%= index %>" class="form_number" type="number" value="00" min="0" max="60" /> :
+          <input id="end-minutes-<%= index %>" class="form_number" type="number" value="<%= eventEndTime.minutes %>" min="0" max="60" /> :
         </li><!--
 
         --><li>
           <label class="form_label" for="end-seconds-<%= index %>">
             Second
           </label>
-          <input id="end-seconds-<%= index %>" class="form_number" type="number" value="00" min="0" max="60"/>
+          <input id="end-seconds-<%= index %>" class="form_number" type="number" value="<%= eventEndTime.seconds %>" min="0" max="60"/>
         </li>
       </ul>
     </fieldset>
@@ -81,6 +81,6 @@
       Message
     </label>
 
-    <textarea class="form_textarea js-event-html"></textarea>
+    <textarea class="form_textarea js-event-html"><%= event.get('html') %></textarea>
   </fieldset>
 </div><!-- eo js-popup-form-item -->
