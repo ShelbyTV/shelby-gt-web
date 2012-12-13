@@ -17,8 +17,10 @@ libs.shelbyGT.PlaybackEventListView = libs.shelbyGT.ListView.extend({
                 model : playbackEvent,
                 index : index
               }));
+              break;
             default :
               return null;
+              break;
           }
       }
     });

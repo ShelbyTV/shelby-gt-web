@@ -64,7 +64,7 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
         self.model.trigger('enter', event);
       });
       var eventsToExit = frame.get('events').filter(function(event){
-        return event.get('end_time') <= curTime && event.get('entered');
+        return (event.get('end_time') <= curTime || event.get('start_time') > curTime) && event.get('entered');
       });
       _(eventsToExit).each(function(event){
         event.set('entered', false);
