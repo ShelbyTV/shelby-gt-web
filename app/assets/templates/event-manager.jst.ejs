@@ -21,9 +21,9 @@
       Popups
     </h3>
 
-    <%= SHELBYJST['popup-form-item']({}) %>
+    <!-- List of events created dynamically by PlaybackEventListView -->
 
-    <fieldset class="form_fieldset form_fieldset--add-row">
+    <fieldset class="form_fieldset form_fieldset--add-row js-add-new-popup-fieldset">
       <a href="#" class="guide-overlay__button js-add-new-popup">
         <i class="button_icon_left icon_videocard_roll icon">
           Add Popup
@@ -33,7 +33,7 @@
 
     <fieldset class="form_fieldset form_fieldset--submit">
       <a href="#" class="form_cancel js-cancel-annotation">Cancel</a>
-      <input type="submit" class="button_primer button_blue form_submit" value="Save" />
+      <input type="submit" class="button_primer button_blue form_submit js-save-button" value="Save" />
     </fieldset>
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

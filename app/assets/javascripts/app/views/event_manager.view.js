@@ -8,11 +8,17 @@
 
   // shorten names of included library prototypes
   var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
+  var PlaybackEventListView = libs.shelbyGT.PlaybackEventListView;
+  var PlaybackEventModel = libs.shelbyGT.PlaybackEventModel;
 
   libs.shelbyGT.EventManagerView = GuideOverlayView.extend({
+
+    _playbackEventListView : null,
+
     events : _.extend({}, GuideOverlayView.prototype.events, {
       "click .js-cancel"        : "_setGuideOverlayStateNone",
-      "click .js-add-new-popup" : "_addNewPopup"
+      "click .js-add-new-popup" : "_addNewPopup",
+      "click .js-save-button"   : "_onClickSaveButton"
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay--event-manager js-event-manager-ui',
@@ -29,15 +35,26 @@
 
     render : function(){
       this.$el.html(this.template({frame:this.model, user:shelby.models.user}));
+      this._playbackEventListView = new PlaybackEventListView({
+        model: this.model
+      });
+      this.insertChildBefore(this._playbackEventListView, '.js-add-new-popup-fieldset');
 
       GuideOverlayView.prototype.render.call(this);
     },
 
     _addNewPopup : function(e){
       e.preventDefault();
+      var newPopupEvent = new PlaybackEventModel({});
+      this.model.get('events').add(newPopupEvent);
+    },
 
-      console.log('add pop up');
-
+    _onClickSaveButton : function(e) {
+      e.preventDefault();
+      _(this._playbackEventListView._listItemViews).each(function(view){
+        view.saveFormDataToModel();
+      });
+      this._setGuideOverlayStateNone();
     }
   });
 

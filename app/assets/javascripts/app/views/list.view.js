@@ -209,7 +209,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   internalAddOne : function(item, collection, options){
     var self = this;
-    var childView = this._constructListItemView(item);
+    var childView;
+
+    if (options && _(options).has('index')) {
+      childView = this._constructListItemView(item, options.index);
+    } else {
+      childView = this._constructListItemView(item, this._listItemViews.length);
+    }
 
     //special handling if the item was not added to the end of the collection
     if (options && _(options).has('index') && options.index != this._listItemViews.length) {
@@ -303,10 +309,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
   },
 
-  _constructListItemView : function(item){
+  _constructListItemView : function(item, index){
     var params = _(this.options).result('listItemViewAdditionalParams');
     if (typeof this.options.listItemView === 'function'){
-      return this.options.listItemView(item, params);
+      return this.options.listItemView(item, params, index);
     } else {
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }

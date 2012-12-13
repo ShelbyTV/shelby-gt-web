@@ -4,7 +4,7 @@ libs.shelbyGT.PlaybackEventsCollection = Backbone.Collection.extend({
 
   initialize : function(models, options) {
     this.comparator = function(playbackEvent) {
-      return playbackEvent.get('startTime');
+      return playbackEvent.get('start_time');
     };
   }
   
