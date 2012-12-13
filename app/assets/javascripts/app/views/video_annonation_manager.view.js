@@ -23,7 +23,9 @@ libs.shelbyGT.VideoAnnotationManagerView = Support.CompositeView.extend({
 
   _onEventExited : function(event) {
     var viewToLeave = this._annotationViews[event.cid];
-    viewToLeave.leave();
+    if (viewToLeave) {
+      viewToLeave.leave();
+    }
   }
 
 

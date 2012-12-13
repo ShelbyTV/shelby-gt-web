@@ -10,6 +10,7 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
     if( this.options.playbackState.get('activePlayerState') !== null ) {
       this._onNewPlayerState(this.options.playbackState, this.options.playbackState.get('activePlayerState'));
     }
+    this.options.guideModel.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
   },
 
   _cleanup: function() {
@@ -17,6 +18,7 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
     if( this.options.playbackState.get('activePlayerState') !== null ) {
       this._onNewPlayerState(this.options.playbackState.get('activePlayerState'), null);
     }
+    this.options.guideModel.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
   },
 
   //--------------------------------------
@@ -31,6 +33,21 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
 
     if (newPlayerState) {
       newPlayerState.bind('change:currentTime', this._onCurrentTimeChange, this);
+    }
+  },
+
+  _onActiveFrameModelChange: function(guideModel, activeFrameModel) {
+    // since we're changing to a new frame, all entered events on the old frame should be exited
+    var self = this;
+    var lastFrame = guideModel.previous('activeFrameModel');
+    if (lastFrame) {
+      var eventsToExit = lastFrame.get('events').filter(function(event){
+        return event.get('entered');
+      });
+      _(eventsToExit).each(function(event){
+        event.set('entered', false);
+        self.model.trigger('exit', event);
+      });
     }
   },
 
