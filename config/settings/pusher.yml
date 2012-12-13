@@ -1,0 +1,14 @@
+defaults: &defaults
+  key: '40e125deaf258e5429d5'
+  
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
