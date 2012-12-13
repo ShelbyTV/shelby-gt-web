@@ -17,27 +17,15 @@
 
 <div class="overlay_body guide-overlay-body">
   <form class="form_module">
-    <h3>
+    <h3 class="guide-overlay__h3">
       Popups
     </h3>
 
-    <fieldset class="form_fieldset">
-      <label for="hours">
-        Hour
-      </label>
+    <%= SHELBYJST['popup-form-item']({}) %>
 
-      <input id="hours" class="form_text" type="number" value="00" />
-
-      <label for="minutes">
-        Minute
-      </label>
-
-      <input id="minutes" class="form_text" type="number" value="00" />
-
-      <label for="seconds">
-        Second
-      </label>
-      <input id="seconds" class="form_text" type="number" value="00" />
+    <fieldset class="form_fieldset form_fieldset--submit">
+      <a href="#" class="form_cancel js-cancel-annotation">Cancel</a>
+      <input type="submit" class="button_primer button_blue form_submit" value="Save" />
     </fieldset>
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

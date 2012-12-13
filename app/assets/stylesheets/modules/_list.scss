@@ -17,3 +17,32 @@
     }
   }
 }
+
+.list--halves {
+  li {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.list--thirds {
+  li {
+    display: inline-block;
+    width: 33.33333%;
+  }
+}
+
+.list--fourths {
+  li {
+    display: inline-block;
+    width: 25%;
+  }
+}
+
+
+.list--fifths {
+  li {
+    display: inline-block;
+    width: 20%;
+  }
+}

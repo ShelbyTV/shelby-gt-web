@@ -1,9 +1,33 @@
-.guide-overlay--event-manger {
+.guide-overlay--event-manager {
   .guide-overlay-head {
 
   }
 
   .guide-overlay-body {
     padding: 1.5em 8px;
+  }
+
+  .form_fieldset--annotation {
+    background-color: rgba(0,0,0,0.07);
+    padding: 10px;
+
+    .form_number {
+      font-size: 1.3em;
+      width: 75%;
+      display: inline;
+    }
+  }
+
+  .form_fieldset--submit {
+    font-size: 1.2em;
+    text-align: right;
+  }
+  //form_cancel is non-normative, but should it be normative?
+  .form_cancel {
+    padding-right: 0.75em;
+  }
+
+  .form_submit {
+    @include button-sizing;
   }
 }

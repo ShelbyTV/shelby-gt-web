@@ -42,6 +42,7 @@
   line-height: 1.75;
 }
 
+.form_number,
 .form_input,
 .form_textarea {
   @include roundies(input);
@@ -107,6 +108,7 @@
 
   }
 
+  .form_number,
   .form_label {
     display: inline;
   }

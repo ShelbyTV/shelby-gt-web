@@ -31,6 +31,22 @@
   border-top: 1px solid $outset;
 }
 
+.guide-overlay__h1 {
+
+}
+
+.guide-overlay__h2 {
+
+}
+
+.guide-overlay__h3 {
+  margin: 0 0 1em;
+}
+
+.guide-overlay__h4 {
+
+}
+
 //------------------------------------------------------------------------------
 //  normative contents
 //------------------------------------------------------------------------------
@@ -93,7 +109,7 @@
 #guide-header-roll-header-image {
   height: 50px;
   position: relative;
-  
+
   .guide-header-roll-header-title {
     bottom: $defaultMargin / 2;
     color: #efefef;
@@ -101,7 +117,7 @@
     position: absolute;
     text-shadow: 0px 0px 5px black;
   }
-  
+
   .progress-overlay {
     background: black;
     height: 100%;
@@ -116,12 +132,12 @@
   display: none;
   padding: $defaultMargin;
   position: relative;
-  
+
   .spinner-overlay {
     right: $defaultMargin;
     position: absolute;
     top: $defaultMargin / 2;
-    
+
     .spinner {
       margin-top: 0;
       width: 30px;
