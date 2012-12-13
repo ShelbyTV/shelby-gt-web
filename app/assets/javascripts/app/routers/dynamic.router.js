@@ -488,6 +488,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupAnonUserViews(options);
     //--------------------------------------//
 
+    shelby.controllers.playbackEventController = shelby.controllers.playbackEventController ||
+        new libs.shelbyGT.PlaybackEventController({
+          guideModel: shelby.models.guide,
+          playbackState: shelby.models.playbackState
+        });
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
         new libs.shelbyGT.LayoutSwitcherView({
           model : shelby.models.guide,
