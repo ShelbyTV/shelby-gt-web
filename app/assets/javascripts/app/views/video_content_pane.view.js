@@ -61,6 +61,10 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       el: this.$('#mini-video-progress'),
       playbackState : shelby.models.playbackState
     }));
+    this.renderChild(new libs.shelbyGT.VideoAnnotationManagerView({
+      el: this.$('.js-annotation-wrapper'),
+      model: shelby.models.playbackEventControllerModel
+    }));
   }
 
 });

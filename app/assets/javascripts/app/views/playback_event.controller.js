@@ -53,8 +53,6 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
         event.set('entered', false);
         self.model.trigger('exit', event);
       });
-      console.log("Events entered", eventsToEnter);
-      console.log("Events exited", eventsToExit);
     }
   }
 
