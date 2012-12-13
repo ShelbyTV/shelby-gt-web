@@ -26,3 +26,35 @@
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1px;
 }
+
+.annotation--basic {
+  background-color: $videocard-footer-bg-color;
+  box-shadow: $videocard-shadow;
+  font-size: 1.2em;
+  max-width: 420px;
+  padding: 10px;
+  position: relative;
+}
+
+.annotation--sticky {
+  @include gradient-primer($shelby-blue);
+
+  border-radius: 4px;
+  border-color: darken($shelby-blue, 5%);
+  box-shadow: 2px 2px 4px 0 black;
+  display: table;
+  color: #efefef;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 0 0 1px black;
+
+  p {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    min-height: 75px;
+    max-width: 500px;
+  }
+}
