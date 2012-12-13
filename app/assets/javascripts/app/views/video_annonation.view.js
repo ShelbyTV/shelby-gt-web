@@ -2,7 +2,7 @@ libs.shelbyGT.VideoAnnotationView = Support.CompositeView.extend({
 
   tagName: 'div',
 
-  className: 'annotation frame-body-wrapper',
+  className: 'annotation',
 
   template : function(obj){
     return SHELBYJST['video-annotation'](obj);
