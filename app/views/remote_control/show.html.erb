@@ -1,0 +1,43 @@
+<div id="video-search">
+	<div id="search-form">
+		<input type="search" name="query" id="query" value="" /><!-- 
+			--><button class="search-form-submit">search &rarr;</button>
+		<script>
+			$(document).ready(function(){
+				$('.search-form-submit').on('click', function(){
+					var q = $('input#query').val();
+					$.getJSON('http://api.shelby.tv/v1/video/search?provider=youtube&q='+q, function(r){
+						if (r.status == 200){
+							$("#search-result-list").empty();
+							r = r.result;
+							var _videos = r.videos;
+							for (var i in _videos) {
+								var vid = _videos[i];
+			          $("#search-result-list").append('<li class="video list_button" data-url="'+vid.source_url+'"><img src="'+vid.thumbnail_url+'"/>'+vid.title+'</li>');          
+							}
+							$('li.video').on('click', function(e){
+								$.ajax({
+						      url: "<%= @url %>",
+						      type: "PUT",
+						      data: {command: "play", data: e.currentTarget.dataset.url},
+						      success: function(r){ console.log('clicked play: ', r); }
+						    });
+							});
+							
+						}
+						else { alert("something went wrong searching for those videos. wowzer."); }
+					});
+				});				
+			});
+		</script>
+	</div>
+	<div id="search-results">
+		<ul id="search-result-list" class="list_module"></ul>
+	</div>
+</div>
+
+<div id="controls">
+ <%= render :partial => "/remote_control/dpad" %>
+</div>
+
+<%= javascript_tag render :partial => "/remote_control/api_remote_comm", :locals => { :channel => @channel, :url => @url }, :formats => [:js] %>

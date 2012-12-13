@@ -1,0 +1,36 @@
+@import "base";
+#header{
+	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%));
+	border-bottom: 1px solid $header-outline;
+
+	//NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 3;  /* need to keep this in front of the preroll-video-info */
+}
+
+.shelby-logo {
+	background: transparent;
+	border: none;
+	display: block;
+	float: left;
+	padding: 0;
+
+	&.shelby-logo-no-link {
+		cursor: auto;
+	}
+}
+
+.shelby-title {
+	background: url($logo-shelby) 6px 7px no-repeat transparent;
+	height: 35px;
+	margin: 0 1px;
+	width: 95px;
+}
+
+.content{
+  padding-top: 35px;
+}

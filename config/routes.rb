@@ -40,6 +40,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   # INVITES
   get '/invite/:invite_id' => "home#invite"
+  
+  # REMOTE CONTROL
+  get '/r/:id' => "remote_control#show"
 
   # HOME
   get '/explore' => "home#explore"

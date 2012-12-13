@@ -1,0 +1,28 @@
+#video-search{
+  
+  #search-form {
+    width: 90%;
+    margin: 10px auto;
+    #query {
+      width: 75%;
+    }
+    .search-form-submit {
+      width: 20%;
+    }
+  }
+  
+  #search-results {
+    #search-result-list{
+      margin: 5px auto;
+      width: 100%;
+    }
+    li.video{
+      height: 80px;
+      line-height: 80px;
+      img { 
+        height: 80px;
+        padding: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+$(document).ready(function(){
+
+  $('#controls .up').on('click', function(){
+    $.ajax({
+      url: "<%= url %>",
+      type: "PUT",
+      data: {command: "up", data: ""},
+      success: function(r){ console.log('clicked up: ', r); }
+    });    
+  });
+
+  $('#controls .down').on('click', function(){
+    $.ajax({
+      url: "<%= url %>",
+      type: "PUT",
+      data: {command: "down", data: ""},
+      success: function(r){ console.log('clicked down: ', r); }
+    });    
+  });
+
+  $('#controls .left').on('click', function(){
+    $.ajax({
+      url: "<%= url %>",
+      type: "PUT",
+      data: {command: "left", data: ""},
+      success: function(r){ console.log('clicked left: ', r); }
+    });    
+  });
+
+  $('#controls .right').on('click', function(){
+    $.ajax({
+      url: "<%= url %>",
+      type: "PUT",
+      data: {command: "right", data: ""},
+      success: function(r){ console.log('clicked right: ', r); }
+    });    
+  });
+
+  $('#controls .enter').on('click', function(){
+    $.ajax({
+      url: "<%= url %>",
+      type: "PUT",
+      data: {command: "enter", data: ""},
+      success: function(r){ console.log('clicked enter: ', r); }
+    });    
+  });
+  
+  
+});
