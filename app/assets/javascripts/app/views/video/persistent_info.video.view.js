@@ -19,14 +19,17 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   initialize: function(opts){
     this._userDesires = opts.userDesires;
-
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     Backbone.Events.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    this.options.playbackEventControllerModel.bind('enter:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventEntered, this);
+    this.options.playbackEventControllerModel.bind('exit:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventExited, this);
   },
 
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     Backbone.Events.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    this.options.playbackEventControllerModel.unbind('enter:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventEntered, this);
+    this.options.playbackEventControllerModel.unbind('exit:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventExited, this);
   },
 
   template : function(obj) {
@@ -127,6 +130,14 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _skipToNextVideo : function(){
     this._userDesires.set('changeVideo', 1);
     this._userDesires.unset('changeVideo');
+  },
+
+  _onConcertInfoEventEntered : function(event){
+    console.log(event.get('event_type') + 'entered');
+  },
+
+  _onConcertInfoEventExited : function(event){
+    console.log(event.get('event_type') + 'exited');
   }
 
 });

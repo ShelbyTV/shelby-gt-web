@@ -1,5 +1,7 @@
 libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
 
+  _recurringEventIntervals : {},
+
   options: {
     guideModel: null,
     playbackState : null
@@ -38,17 +40,31 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
 
   _onActiveFrameModelChange: function(guideModel, activeFrameModel) {
     // since we're changing to a new frame, all entered events on the old frame should be exited
+    // as well as recurring events, in case they need to change back to some default state
     var self = this;
     var lastFrame = guideModel.previous('activeFrameModel');
     if (lastFrame) {
       var eventsToExit = lastFrame.get('events').filter(function(event){
-        return event.get('entered');
+        return event.get('entered') || event.get('recurring');
       });
       _(eventsToExit).each(function(event){
         event.set('entered', false);
-        self.model.trigger('exit', event);
+        self.model.trigger('exit:' + event.get('event_type'), event);
+        //clear the interval for any recurring events
+        if (event.get('recurring')) {
+          clearInterval(self._recurringEventIntervals[event.cid]);
+        }
       });
     }
+
+    // setup intervals for triggering any recurring events on the new frame
+    activeFrameModel.get('events').chain().filter(function(event){
+      return event.get('recurring');
+    }).each(function(event){
+      self._recurringEventIntervals[event.cid] = setInterval(function(){
+        self.model.trigger('enter:' + event.get('event_type'), event);
+      }, event.get('recur_interval'));
+    });
   },
 
   _onCurrentTimeChange: function(attr, curTime){
@@ -57,18 +73,18 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
     var frame = this.options.guideModel.get('activeFrameModel');
     if (frame) {
       var eventsToEnter = frame.get('events').filter(function(event){
-        return event.get('start_time') <= curTime && event.get('end_time') > curTime && !event.get('entered');
+        return event.get('start_time') <= curTime && event.get('end_time') > curTime && !event.get('entered') && !event.get('recurring');
       });
       _(eventsToEnter).each(function(event){
         event.set('entered', true);
-        self.model.trigger('enter', event);
+        self.model.trigger('enter:' + event.get('event_type'), event);
       });
       var eventsToExit = frame.get('events').filter(function(event){
-        return (event.get('end_time') <= curTime || event.get('start_time') > curTime) && event.get('entered');
+        return (event.get('end_time') <= curTime || event.get('start_time') > curTime) && event.get('entered') && !event.get('recurring');
       });
       _(eventsToExit).each(function(event){
         event.set('entered', false);
-        self.model.trigger('exit', event);
+        self.model.trigger('exit:' + event.get('event_type'), event);
       });
     }
   }
