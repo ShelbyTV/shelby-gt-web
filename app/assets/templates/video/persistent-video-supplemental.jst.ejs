@@ -1,11 +1,13 @@
+<% var event = eventModel.attributes %>
+
 <div class="media_image--rev persistent_video_info__next-frame">
-  <img src="http://s3.evcdn.com/images/block250/I0-001/000/215/118-5.jpg_/iamx-18.jpg" style="width: 100%;" />
+  <img src="<%= 'http://s3.evcdn.com/images/block250/I0-001/000/215/118-5.jpg_/iamx-18.jpg' %>" />
 </div><!-- eo .persistent_video_info__next-frame -->
 
 <div class="media_body persistent_video_info__current-frame">
   <div class="persistent_video_info__lining">
     <h3 class="persistent_video_info__h1">
-      IAMX <span>on Tour</span>
+      <%= 'IAMX' %> <span>on Tour</span>
     </h3>
 
     <div class="media_module persistent_video_info__body">
@@ -13,13 +15,13 @@
         <div class="calendar frame-body-wrapper">
           <div class="calendar__head">
             <span class="calendar__month">
-              DEC
+              <abbr title="<%= 'December' %>"><%= 'DEC' %></abbr>
             </span>
           </div>
 
           <div class="calendar__body">
             <span class="calendar__number">
-              99
+              <%= '9' %>
             </span>
           </div>
         </div>
@@ -27,16 +29,18 @@
 
       <div class="media_body">
         <p>
-          <strong>Chicago, IL</strong> — Blue Bottle Stadium
+          <strong><%= event.city_name %>, <%= 'IL' %></strong> — <%= event.venue_name %>
         </p>
 
         <p>
-          Fri, December 9, 2013
+          <%= 'Fri' %>, <%= 'December' %> <%= '9' %>, <%= '2013' %>
         </p>
 
-        <p>
-          $25-50
-        </p>
+        <% if(event.price) { %>
+          <p>
+            $<%= event.price %>
+          </p>
+        <% } %>
       </div><!-- eo .media_body -->
     </div><!-- eo .persistent_video_info__body -->
   </div><!-- eo .persistent_video_info_lining -->

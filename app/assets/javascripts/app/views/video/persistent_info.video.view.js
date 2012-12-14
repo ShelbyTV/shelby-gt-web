@@ -25,7 +25,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this._userDesires = opts.userDesires;
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     Backbone.Events.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
-    this.options.playbackEventControllerModel.bind('enter:recurring' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onStartConcertInfoEvents, this);
+    this.options.playbackEventControllerModel.bind('enter:recurring:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onStartConcertInfoEvents, this);
     this.options.playbackEventControllerModel.bind('enter:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventEntered, this);
     this.options.playbackEventControllerModel.bind('exit:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventExited, this);
   },
@@ -33,7 +33,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     Backbone.Events.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
-    this.options.playbackEventControllerModel.unbind('enter:recurring' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onStartConcertInfoEvents, this);
+    this.options.playbackEventControllerModel.unbind('enter:recurring:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onStartConcertInfoEvents, this);
     this.options.playbackEventControllerModel.unbind('enter:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventEntered, this);
     this.options.playbackEventControllerModel.unbind('exit:' + libs.shelbyGT.PlaybackEventModelTypes.concertInfo, this._onConcertInfoEventExited, this);
   },
@@ -59,8 +59,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         nextFrame: this._nextFrame,
         queuedVideosModel: this.options.queuedVideos
       }));
-      this._supplementalInfoView = new libs.shelbyGT.PersistentInfoSupplementalView();
-      this.appendChild(this._supplementalInfoView);
     }
   },
 
@@ -143,19 +141,34 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _onStartConcertInfoEvents : function(event) {
-    shelby.collections.eventfulEventCollection.reset([{
-
+    shelby.collections.eventfulEventCollection.reset([
+    {
+      city_name : 'New York City',
+      venue_name : 'CBGB',
+      price : '$100'
+    },{
+      city_name : 'Augusta',
+      venue_name : 'Augustorama'
     }
     ]);
   },
 
   _onConcertInfoEventEntered : function(event){
-    this._currentConcertInfoIndex = ++this._currentConcertInfoIndex % shelby.collections.eventfulEventsCollection.length;
-    var concertInfo = shelby.collections.eventfulEventsCollection.at(this_currentConcertInfoIndex);
+    var concertInfo = shelby.collections.eventfulEventCollection.at(this._currentConcertInfoIndex);
+    this._currentConcertInfoIndex = ++this._currentConcertInfoIndex % shelby.collections.eventfulEventCollection.length;
     if (concertInfo) {
+      if (!this._supplementalInfoView) {
+        this._supplementalInfoView = new libs.shelbyGT.PersistentInfoSupplementalView();
+        this._supplementalInfoView.model = concertInfo;
+        this.appendChild(this._supplementalInfoView);
+      } else {
+        this._supplementalInfoView.model = concertInfo;
+        this._supplementalInfoView.render();
+      }
       this.$('.js-standard-video-info').hide();
       this.$('.js-supplemental-video-info').show();
-      this._supplementalInfoView.render();
+
+
     }
   },
 

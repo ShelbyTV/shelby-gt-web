@@ -9,7 +9,7 @@ libs.shelbyGT.PersistentInfoSupplementalView = Support.CompositeView.extend({
   },
 
   render : function() {
-    this.$el.html(this.template({}));
+    this.$el.html(this.template({eventModel: this.model}));
   }
 
 });
