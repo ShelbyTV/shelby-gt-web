@@ -57,10 +57,13 @@ libs.shelbyGT.PlaybackEventController = Backbone.View.extend({
       });
     }
 
-    // setup intervals for triggering any recurring events on the new frame
+    // handling for recurring events on the new frame
     activeFrameModel.get('events').chain().filter(function(event){
       return event.get('recurring');
     }).each(function(event){
+      //send a one time event for any setup needed by subsequent recurrences of recurring event
+      self.model.trigger('enter:recurring:' + event.get('event_type'), event);
+      // setup intervals for triggering any recurring events on the new frame
       self._recurringEventIntervals[event.cid] = setInterval(function(){
         self.model.trigger('enter:' + event.get('event_type'), event);
       }, event.get('recur_interval'));

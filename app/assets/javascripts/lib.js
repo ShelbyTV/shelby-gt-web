@@ -8,5 +8,7 @@
 //= require_tree ./jquery-plugins
 //swf
 //= require swfobject.js
+//Eventful API
+//= require_tree ./eventful
 //shelby app
 //= require ./app
