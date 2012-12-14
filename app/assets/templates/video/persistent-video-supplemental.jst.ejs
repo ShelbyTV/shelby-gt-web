@@ -1,5 +1,5 @@
 <% var event = eventModel.attributes %>
-
+<% var performer = ($.isArray(event.performers.performer) ? event.performers.performer[0] : event.performers.performer[0] %>
 <div class="media_image--rev persistent_video_info__next-frame">
   <img src="<%= 'http://s3.evcdn.com/images/block250/I0-001/000/215/118-5.jpg_/iamx-18.jpg' %>" />
 </div><!-- eo .persistent_video_info__next-frame -->
@@ -7,7 +7,7 @@
 <div class="media_body persistent_video_info__current-frame">
   <div class="persistent_video_info__lining">
     <h3 class="persistent_video_info__h1">
-      <%= 'IAMX' %> <span>on Tour</span>
+      <%= performer.name %> <span>on Tour</span>
     </h3>
 
     <div class="media_module persistent_video_info__body">
@@ -15,7 +15,7 @@
         <div class="calendar frame-body-wrapper">
           <div class="calendar__head">
             <span class="calendar__month">
-              <abbr title="<%= 'December' %>"><%= 'DEC' %></abbr>
+              <%= 'x' %>
             </span>
           </div>
 
@@ -29,7 +29,7 @@
 
       <div class="media_body">
         <p>
-          <strong><%= event.city_name %>, <%= 'IL' %></strong> — <%= event.venue_name %>
+          <strong><%= event.city_name %>, <%= (event.country_abbr2 != 'US') ? event.country_abbr2 : event.region_abbr %></strong> — <%= event.venue_name %>
         </p>
 
         <p>
@@ -38,7 +38,7 @@
 
         <% if(event.price) { %>
           <p>
-            $<%= event.price %>
+            <%= event.price %>
           </p>
         <% } %>
       </div><!-- eo .media_body -->
