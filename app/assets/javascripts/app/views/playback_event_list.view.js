@@ -17,14 +17,17 @@ libs.shelbyGT.PlaybackEventListView = libs.shelbyGT.ListView.extend({
                 model : playbackEvent,
                 index : index
               }));
-              break;
             default :
               return null;
-              break;
           }
       }
     });
     libs.shelbyGT.ListView.prototype.initialize.call(this);
+  },
+
+  _filter : function(event) {
+    var eventType = event.get('event_type');
+    return eventType && eventType == libs.shelbyGT.PlaybackEventModelTypes.popup;
   }
 
 });
