@@ -47,18 +47,21 @@
             <%= event.price %>
           </p>
         <% } %>
+
+        <div class="persistent_video_info__footer">
+          <% if (links && links.length) { %>
+            <ul class="list list--stacked">
+              <% for (var i = 0; i < 3; i++) { %>
+                <li>
+                  <a href="<%= links[i].url %>" target="_blank">
+                    <%= links[i].description %>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          <% } %>
+        </div>
       </div><!-- eo .media_body -->
-
-      <div class="persistent_video_info__footer">
-        <% if (links && links.length) {
-          for (var i = 0; i < links.length; i++) { %>
-
-          <a href="<%= links[i].url %>"><%= links[i].description %></a>
-
-         <%
-          }
-        } %>
-      </div>
     </div><!-- eo .persistent_video_info__body -->
   </div><!-- eo .persistent_video_info_lining -->
 </div><!-- eo .persistent_video_info__current-frame -->
