@@ -1,13 +1,19 @@
 <% var event = eventModel.attributes %>
-<% var performer = ($.isArray(event.performers.performer) ? event.performers.performer[0] : event.performers.performer[0] %>
+<% var performer = event.performers && ($.isArray(event.performers) ? event.performers.performer[0] : event.performers.performer) %>
+<% var thumbnail = event.image && event.image.medium && event.image.medium.url %>
+<% var links = event.links && ($.isArray(event.links) ? event.links.link : [event.links.link]) %>
+<% var date = new Date(event.start_time) %>
+
+<% if (thumbnail) { %>
 <div class="media_image--rev persistent_video_info__next-frame">
-  <img src="<%= 'http://s3.evcdn.com/images/block250/I0-001/000/215/118-5.jpg_/iamx-18.jpg' %>" />
+  <img src="<%= thumbnail %>" />
 </div><!-- eo .persistent_video_info__next-frame -->
+<% } %>
 
 <div class="media_body persistent_video_info__current-frame">
   <div class="persistent_video_info__lining">
     <h3 class="persistent_video_info__h1">
-      <%= performer.name %> <span>on Tour</span>
+      <%= (performer) ? performer.name : 'Artist' %> <span>on Tour</span>
     </h3>
 
     <div class="media_module persistent_video_info__body">
@@ -15,13 +21,13 @@
         <div class="calendar frame-body-wrapper">
           <div class="calendar__head">
             <span class="calendar__month">
-              <%= 'x' %>
+              <%= date.format('mmm') %>
             </span>
           </div>
 
           <div class="calendar__body">
             <span class="calendar__number">
-              <%= '9' %>
+              <%= date.format('d') %>
             </span>
           </div>
         </div>
@@ -33,7 +39,7 @@
         </p>
 
         <p>
-          <%= 'Fri' %>, <%= 'December' %> <%= '9' %>, <%= '2013' %>
+          <%= date.format('ddd') %>, <%= date.format('mmmm') %> <%= date.format('d') %>, <%= date.format('yyyy') %>
         </p>
 
         <% if(event.price) { %>
@@ -42,6 +48,17 @@
           </p>
         <% } %>
       </div><!-- eo .media_body -->
+
+      <div class="persistent_video_info__footer">
+        <% if (links && links.length) {
+          for (var i = 0; i < links.length; i++) { %>
+
+          <a href="<%= links[i].url %>"><%= links[i].description %></a>
+
+         <%
+          }
+        } %>
+      </div>
     </div><!-- eo .persistent_video_info__body -->
   </div><!-- eo .persistent_video_info_lining -->
 </div><!-- eo .persistent_video_info__current-frame -->
