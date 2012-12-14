@@ -6,7 +6,7 @@
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">
       <h3 class="persistent_video_info__h1">
-        IAMX <span>on Tour</span>
+        <%= 'IAMX' %> <span>on Tour</span>
       </h3>
 
       <div class="media_module persistent_video_info__body">
@@ -14,13 +14,13 @@
           <div class="calendar frame-body-wrapper">
             <div class="calendar__head">
               <span class="calendar__month">
-                DEC
+                <abbr title="<%= 'December' %>"><%= 'DEC' %></abbr>
               </span>
             </div>
 
             <div class="calendar__body">
               <span class="calendar__number">
-                99
+                <%= '9' %>
               </span>
             </div>
           </div>
@@ -28,16 +28,18 @@
 
         <div class="media_body">
           <p>
-            <strong>Chicago, IL</strong> — Blue Bottle Stadium
+            <strong><%= 'Chicago' %>, <%= 'IL' %></strong> — <%= 'Blue Bottle Stadium' %>
           </p>
 
           <p>
-            Fri, December 9, 2013
+            <%= 'Fri' %>, <%= 'December' %> <%= '9' %>, <%= '2013' %>
           </p>
 
-          <p>
-            $25-50
-          </p>
+          <% if(price) { %>
+            <p>
+              $<%= price %>
+            </p>
+          <% } %>
         </div><!-- eo .media_body -->
       </div><!-- eo .persistent_video_info__body -->
     </div><!-- eo .persistent_video_info_lining -->
