@@ -1,0 +1,38 @@
+.calendar {
+  margin: 2px;
+  text-align: center;
+  width: 50px;
+}
+
+//------------------------------------------------------------------------------
+//  Structure
+
+.calendar__head {
+  background-color: rgba(204, 18, 53, .8);
+}
+
+.calendar__body {
+  background-color: #fff;
+}
+
+//------------------------------------------------------------------------------
+//  Abstracts
+
+.calendar__month {
+  color: #fff;
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar__number {
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0.15em 0.3em;
+}
