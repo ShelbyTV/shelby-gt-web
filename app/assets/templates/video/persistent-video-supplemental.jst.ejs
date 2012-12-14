@@ -1,7 +1,7 @@
 <% var event = eventModel.attributes %>
-<% var performer = event.performers && ($.isArray(event.performers) ? event.performers.performer[0] : event.performers.performer) %>
+<% var performer = event.performers && ($.isArray(event.performers.performer) ? event.performers.performer[0] : event.performers.performer) %>
 <% var thumbnail = event.image && event.image.medium && event.image.medium.url %>
-<% var links = event.links && ($.isArray(event.links) ? event.links.link : [event.links.link]) %>
+<% var links = event.links && ($.isArray(event.links.link) ? event.links.link : [event.links.link]) %>
 <% var date = new Date(event.start_time) %>
 
 <% if (thumbnail) { %>
