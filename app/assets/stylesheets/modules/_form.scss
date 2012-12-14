@@ -42,7 +42,6 @@
   line-height: 1.75;
 }
 
-.form_number,
 .form_input,
 .form_textarea {
   @include roundies(input);
@@ -63,6 +62,29 @@
 
   &[disabled] {
     background-color: #eee;
+    color: rgba(0,0,0,.4);
+  }
+}
+
+.form_number {
+  @include roundies(input);
+  @include transition-property('border,background');
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
+
+  background-color: transparent;
+  border: 1px solid transparent; 
+  display: block;
+  font-size: 1.2em;
+  padding: .5em;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border: 1px solid adjust-lightness($inset, -50%);
+  }
+
+  &[disabled] {
     color: rgba(0,0,0,.4);
   }
 }
