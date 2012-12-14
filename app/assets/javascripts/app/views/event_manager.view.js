@@ -16,9 +16,10 @@
     _playbackEventListView : null,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel"        : "_setGuideOverlayStateNone",
-      "click .js-add-new-popup" : "_addNewPopup",
-      "click .js-save-button"   : "_onClickSaveButton"
+      "click .js-cancel"            : "_setGuideOverlayStateNone",
+      "click .js-cancel-annotation" : "_closeView",
+      "click .js-add-new-popup"     : "_addNewPopup",
+      "click .js-save-button"       : "_onClickSaveButton"
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay--event-manager js-event-manager-ui',
@@ -54,6 +55,11 @@
       _(this._playbackEventListView._listItemViews).each(function(view){
         view.saveFormDataToModel();
       });
+      this._setGuideOverlayStateNone();
+    },
+
+    _closeView : function(e) {
+      e.preventDefault();
       this._setGuideOverlayStateNone();
     }
   });
