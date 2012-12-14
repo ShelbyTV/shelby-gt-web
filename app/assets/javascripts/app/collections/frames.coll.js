@@ -4,7 +4,7 @@ libs.shelbyGT.FramesCollection = Backbone.Collection.extend({
   
   comparator : function(frame) {
     // dont compare if result is from search frame
-    if (frame.get('isSearchResultFrame') !== true){
+    if (true){//frame.get('isSearchResultFrame') !== true){
       var ts = new Date( parseInt( frame.id.toString().substring(0,8), 16 ));
       return -ts;
     }

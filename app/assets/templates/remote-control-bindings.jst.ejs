@@ -61,12 +61,14 @@ $.post(shelby.config.apiRoot+'/remote_control', function(r){
         var _newPlaybackStatus = (activePlayerState.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
         shelby.models.userDesires.triggerTransientChange('playbackStatus', _newPlaybackStatus);
       }
+			
+			// When paused, show video footer
+			$('body').hasClass('user-inactive') ? $('body').removeClass('user-inactive') : $('body').addClass('user-inactive');
     });
 		
 		channel.bind('play', function(data){
 	    console.log('command received: play', data);
 			var video = data;
-
 			for (var key in video) {
 				video[key] = decodeURIComponent(video[key]);
 			}
@@ -101,6 +103,7 @@ $.post(shelby.config.apiRoot+'/remote_control', function(r){
 	
 			shelby.collections.multiplexedVideoFrames.add(newFrameFromVideo, {index: currentIndex+i});
 			shelby.collections.multiplexedVideoFrames.sort();
+			shelby.models.userDesires.set('changeVideo',1)
 		});
   }
 });

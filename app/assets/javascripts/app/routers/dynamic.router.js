@@ -131,7 +131,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if (typeof channel !== 'undefined') {
       shelby.models.multiplexedVideo.set('channel', channel);
-      $('.guide-nav-item').last().text(_nextCh);
     }
     else {
       $('body').append(SHELBYJST['channels-home']());
@@ -147,6 +146,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (channel) {
       shelby.models.multiplexedVideo.trigger('channel');
     }
+    shelby.models.userDesires.set('guideShown',false)
   },
 
   displayIsolatedRoll : function(rollId, frameId, params){

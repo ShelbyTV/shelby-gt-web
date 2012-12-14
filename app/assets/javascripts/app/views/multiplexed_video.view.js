@@ -30,16 +30,15 @@
       if (this.options.multiplexedVideoModel.get('channel')) {
         shelby.router.navigate('channel/' + this.options.multiplexedVideoModel.get('channel'), {trigger: false, replace: true});
       }
-      $(document).ready(function(){
-        $('body').append(SHELBYJST['remote-control-bindings']());
-      });
+
+      $('body').append(SHELBYJST['remote-control-bindings']());
       
     },
 
     _changeChannel : function(){
       if (this.options.multiplexedVideoModel.get('channel')) {
         // set guide nav header text
-        //$('.guide-nav-item .js-search .current-channel').text(shelby.models.multiplexedVideoModel.get('channel'));
+        $('li.js-admin').text(shelby.models.multiplexedVideo.get('channel'));
 
         this.collection.reset();
 

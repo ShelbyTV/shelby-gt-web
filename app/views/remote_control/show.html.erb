@@ -1,14 +1,14 @@
 <div id="video-search">
 	<div id="search-form">
-		<input type="search" name="query" id="query" value="" /><!-- 
-			--><button class="search-form-submit">search &rarr;</button>
+		<input type="text" name="query" id="query" placeholder="search, click, play" value="" /><!-- 
+			--><button class="search-form-submit"></button>
 		<script>
 			$(document).ready(function(){
 				var truncate = function(text, cutoff, delimiter) {
 					return (text.length > cutoff) ? text.slice(0, cutoff) + delimiter : text;
 				};
 				
-				$('.search-form-submit').on('click', function(){
+				var handleQuery = function(){
 					var q = $('input#query').val();
 					$.getJSON('http://api.shelby.tv/v1/video/search?provider=youtube&q='+q, function(r){
 						if (r.status == 200){
@@ -46,7 +46,17 @@
 						}
 						else { alert("something went wrong searching for those videos. wowzer."); }
 					});
-				});				
+					
+				};
+				
+				$('.search-form-submit').on('click', function(){
+					handleQuery();
+				});
+				$('#query').on('keyup', function(event){
+					if (event.keyCode == 13) {
+						handleQuery();
+					}
+				});
 			});
 		</script>
 	</div>
