@@ -1,41 +1,61 @@
 <%
 
 var pusher = new Pusher(shelby.config.pusher_key);
-console.log("PUSHER>BINDINGS");
+
 // get remote control code
 $.post(shelby.config.apiRoot+'/remote_control', function(r){
   if (r.status == 200){
-    // print url
-    console.log("[SHELBY] Remote Control URL : ", r.result.url);
-    
+		// clear app header nav items
     $('.guide-nav-item').empty();
-    $('.guide-nav-item').first().text(r.result.url);
-    $('.guide-nav-item').css('color', 'white').css('margin-top','10px');
+		// print remote control url in footer of channel home
+    $('#shelby-remote-url').text(r.result.url);
+		$('.guide-nav-item').first().text(r.result.url);
+		$('.guide-nav-item').css('color','white').css('margin-top','10px');
+		
     // subscribe to correct channel
     var channel = pusher.subscribe('remote-'+r.result.code);
     
+		var adjustChannel = function(type, dir){
+			if (window.SHELBY_CHANNEL_HOME == true){
+				var channel;
+        // UP
+        if (type == "changeChannel" && dir == 1){ channel = "entertain"; }
+        // DOWN
+        else if (type == "changeChannel" && dir == -1){  channel = "teach"; }
+        // RIGHT
+        else if (type == "changeVideo" && dir == 1){ channel = "laugh"; }
+        // LEFT
+        else if (type == "changeVideo" && dir == -1){  channel = "inspire"; }
+				
+				window.SHELBY_CHANNEL_HOME = false;
+				shelby.router.navigate("channel/"+channel, {trigger: true, replace: true});
+        $('body .channel-background').remove();
+			}
+			else{
+				shelby.models.userDesires.triggerTransientChange(type, dir);
+			}
+		};
+
     channel.bind('up', function(data) {
-      console.log('command received: up', data);
-      shelby.models.userDesires.triggerTransientChange('changeChannel', 1);
+      adjustChannel('changeChannel', 1)
     });
 		
     channel.bind('down', function(data) {
-      console.log('command received: down', data);
-      shelby.models.userDesires.triggerTransientChange('changeChannel', -1);
+      adjustChannel('changeChannel', -1);
     });
 		
     channel.bind('left', function(data) {
-      console.log('command received: left', data);
-      shelby.models.userDesires.triggerTransientChange('changeVideo', -1);
+      adjustChannel('changeVideo', -1);
     });
 
     channel.bind('right', function(data) {
-      console.log('command received: right', data);
-      shelby.models.userDesires.triggerTransientChange('changeVideo', 1);
+      adjustChannel('changeVideo', 1);
     });
 
     channel.bind('enter', function(data) {
-      console.log('command received: enter', data);
+			window.SHELBY_CHANNEL_HOME = false;
+			// TODO: change userInactive class to show video footer
+
       var activePlayerState = shelby.models.playbackState.get('activePlayerState');
       if (activePlayerState) {
         var _newPlaybackStatus = (activePlayerState.get('playbackStatus')===libs.shelbyGT.PlaybackStatus.playing) ? libs.shelbyGT.PlaybackStatus.paused : libs.shelbyGT.PlaybackStatus.playing;
@@ -54,8 +74,16 @@ $.post(shelby.config.apiRoot+'/remote_control', function(r){
 			var currentIndex = shelby.collections.multiplexedVideoFrames.indexOf(shelby.models.guide.get('activeFrameModel'))
 			var currentFrameId = shelby.models.guide.get('activeFrameModel').id;
 			var idString = currentFrameId.charCodeAt(currentFrameId.length - 1);
-			idString = String.fromCharCode(idString + 1);
-			var newFrameId = currentFrameId.slice(0,currentFrameId.length-1) + idString;
+			var newChar, newFrameId;
+			var i = 1;
+			do {
+				i += 1;
+				idString += 1;
+				newChar = String.fromCharCode(idString);
+				newFrameId = currentFrameId.slice(0,currentFrameId.length-1) + newChar;
+				console.log("new id...", newFrameId);
+			} while (typeof shelby.collections.multiplexedVideoFrames.get(newFrameId) !== "undefined")
+			
 			var newFrameFromVideo = new libs.shelbyGT.FrameModel({
 	        id : newFrameId,//video.provider_name+":"+video.provider_id,
 	        video : video,
@@ -71,7 +99,7 @@ $.post(shelby.config.apiRoot+'/remote_control', function(r){
 			
 			console.log("newFrameFromVideo: ", newFrameFromVideo);
 	
-			shelby.collections.multiplexedVideoFrames.add(newFrameFromVideo, {index: currentIndex+1});
+			shelby.collections.multiplexedVideoFrames.add(newFrameFromVideo, {index: currentIndex+i});
 			shelby.collections.multiplexedVideoFrames.sort();
 		});
   }

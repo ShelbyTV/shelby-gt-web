@@ -1,4 +1,4 @@
-(function(){
+(function(channels){
 
   libs.shelbyGT.KeyboardControlsView = Backbone.View.extend({
 
@@ -92,9 +92,18 @@
       }
     },
     
-    initialize : function(){
-      this._setupKeyboardBindings();
-      this._disableSpacebarScrolling();
+    initialize : function(channels){
+      if (typeof channels !== 'undefined' && channels === true) {
+        // hack to know global state, mainly for remote-control-bindings
+        window.SHELBY_CHANNEL_HOME = true;
+        this._setupChannelCoverKeyboardBindings();
+        this._disableSpacebarScrolling();        
+      }
+      else {
+        window.SHELBY_CHANNEL_HOME = false;
+        this._setupKeyboardBindings();
+        this._disableSpacebarScrolling();        
+      }
     },
   
     _disableSpacebarScrolling : function(){
@@ -129,6 +138,38 @@
         }
         return false;
       });
+    },
+    
+    _setupChannelCoverKeyboardBindings : function() {
+      var self = this;
+      $(document).on('keyup', function(event){
+        if(shelby.models.userDesires.get('typing')) return false;
+        var actionData = self._getActionData(event.keyCode);
+        var channel;
+        if(!actionData) return false;
+        // UP
+        if (actionData.attr == "changeChannel" && actionData.val == 1){ 
+          channel = "entertain";
+        }
+        // DOWN
+        else if (actionData.attr == "changeChannel" && actionData.val == -1){ 
+          channel = "teach";          
+        }
+        // RIGHT
+        else if (actionData.attr == "changeVideo" && actionData.val == 1){ 
+          channel = "laugh";
+        }
+        // LEFT
+        else if (actionData.attr == "changeVideo" && actionData.val == -1){ 
+          channel = "inspire";
+        }
+        
+        $(document).unbind('keyup');
+      	shelby.views.keyboardControls = new libs.shelbyGT.KeyboardControlsView(false);
+        shelby.router.navigate("channel/"+channel, {trigger: true, replace: true});
+        $('body .channel-background').remove();
+        return false;
+      });      
     },
 
     _getActionData : function(keyCode){

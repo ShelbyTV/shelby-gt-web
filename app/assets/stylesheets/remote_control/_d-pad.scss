@@ -5,9 +5,52 @@
   text-align: center;
   height: 80px;
 }
-.dir-button{
-  float: left;
-  width: 20%;
-  background-color: #E2E2E2;
-  padding: 30px 0;
+
+.remote-container {
+	height: 50%;
+	width: 102%;
+	left:0%;
+	overflow:hidden;
+	background-color:#cfd5d9;
+	position:fixed;
+	bottom:0px;
+	padding: 15px 0 0 0;
+}
+
+.remote-controls {
+	width: 100%;
+  height: 33.33%;
+	overflow:hidden;
+	position:absolute; 
+	margin-top:0%; 
+	margin-left:0%;
+	&.bottom { top: 66.66% }
+	&.middle { top: 33.33% }
+	&.top { top: 0 }
+}
+
+.remote-pane{
+  width: 32.751%;
+  height:100%; 
+	float: left;	
+	overflow:hidden;
+	border: 1px solid black;
+}
+
+.button {
+	width:100%;
+	height:100%;
+  position: relative;
+  &.up { background:url($path+'remote-up.svg') no-repeat center center; }
+  &.down { background:url($path+"remote-down.svg") no-repeat center center; }
+  &.left { background:url($path+"remote-left.svg") no-repeat center center; }
+  &.right { background:url($path+"remote-right.svg") no-repeat center center; }
+  &.enter {
+    top:50%; 
+    height:100%;
+    position:relative; 
+    color:white;
+    font-weight:500;
+    font-size:22px;
+  }
 }

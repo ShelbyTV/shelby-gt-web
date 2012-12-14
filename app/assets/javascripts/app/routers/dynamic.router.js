@@ -17,6 +17,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
     "channel/:channel"                     : "displayChannel",
+    "channel"                              : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -127,13 +128,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayChannel : function(channel){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('shelby-channels');
-    
+
+    if (typeof channel !== 'undefined') {
+      shelby.models.multiplexedVideo.set('channel', channel);
+      $('.guide-nav-item').last().text(_nextCh);
+    }
+    else {
+      $('body').append(SHELBYJST['channels-home']());
+    }
+
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    if (channel) {
-      shelby.models.multiplexedVideo.set('channel', channel);
-    }
+    
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.channel
     });
