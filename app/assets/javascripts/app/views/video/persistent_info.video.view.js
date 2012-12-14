@@ -148,7 +148,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       app_key : 'fs6tqWdGP5Cn5zvP',
       q : event.get('concert_query') || this._currentFrame.get('video').get('title'),
       page_size : 25,
-      sort_order : 'date',
       include : "links, price"
     };
 
