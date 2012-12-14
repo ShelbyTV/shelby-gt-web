@@ -11,6 +11,7 @@ libs.shelbyGT.PopupEventThemes = {
 
 libs.shelbyGT.PlaybackEventModel = libs.shelbyGT.ShelbyBaseModel.extend({
   defaults : {
+    concert_query : null,
     end_time : 0,
     event_type: libs.shelbyGT.PlaybackEventModelTypes.popup,
     html : '',

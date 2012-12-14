@@ -141,16 +141,31 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _onStartConcertInfoEvents : function(event) {
-    shelby.collections.eventfulEventCollection.reset([
-    {
-      city_name : 'New York City',
-      venue_name : 'CBGB',
-      price : '$100'
-    },{
-      city_name : 'Augusta',
-      venue_name : 'Augustorama'
-    }
-    ]);
+    // look up concert info for the current frame
+    var self = this;
+
+    var oArgs = {
+      app_key : 'fs6tqWdGP5Cn5zvP',
+      q : event.get('concert_query') || this._currentFrame.get('video').get('title'),
+      page_size : 25,
+      include : "links, price"
+    };
+
+    shelby.collections.eventfulEventCollection.reset([]);
+    this._currentConcertInfoIndex = 0;
+    EVDB.API.call("/events/search", oArgs, function(oData){
+      var eventResult;
+      if (oData.events) {
+        eventResult = oData.events.event ;
+        if (!$.isArray(eventResult)) {
+          eventResult = [eventResult];
+        }
+      } else {
+        eventResult = [];
+      }
+      shelby.collections.eventfulEventCollection.reset(eventResult);
+      self._currentConcertInfoIndex = 0;
+    });
   },
 
   _onConcertInfoEventEntered : function(event){
@@ -167,8 +182,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       }
       this.$('.js-standard-video-info').hide();
       this.$('.js-supplemental-video-info').show();
-
-
     }
   },
 

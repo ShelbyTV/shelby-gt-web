@@ -5,7 +5,7 @@ EventfulEventModel = Backbone.Model.extend({
     performers : [{
       name : 'Prince'
     }],
-    price : '$25.00',
+    price : null,
     start_time : '2013-04-11 20:00:00',
     venue_name : 'The Creamery'
   }
