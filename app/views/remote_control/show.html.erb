@@ -4,6 +4,10 @@
 			--><button class="search-form-submit">search &rarr;</button>
 		<script>
 			$(document).ready(function(){
+				var truncate = function(text, cutoff, delimiter) {
+					return (text.length > cutoff) ? text.slice(0, cutoff) + delimiter : text;
+				};
+				
 				$('.search-form-submit').on('click', function(){
 					var q = $('input#query').val();
 					$.getJSON('http://api.shelby.tv/v1/video/search?provider=youtube&q='+q, function(r){
@@ -13,15 +17,30 @@
 							var _videos = r.videos;
 							for (var i in _videos) {
 								var vid = _videos[i];
-			          $("#search-result-list").append('<li class="video list_button" data-url="'+vid.source_url+'"><img src="'+vid.thumbnail_url+'"/>'+vid.title+'</li>');          
+								for (var key in vid) {
+									vid[key] = encodeURIComponent(vid[key]);
+								}
+			          $("#search-result-list").append('<li class="video list_button" data-title="'+vid.title+'" data-description="'+vid.description+'" data-provider_name="'+vid.provider_name+'" data-thumbnail_url="'+vid.thumbnail_url+'" data-source_url="'+vid.source_url+'" data-embed_url="'+vid.embed_url+'" data-provider_id="'+vid.provider_id+'" data-source_url="'+vid.source_url+'" data-embed_url="'+vid.embed_url+'"><img src="'+decodeURIComponent(vid.thumbnail_url)+'"/>'+truncate(decodeURIComponent(vid.title),40,'...')+'</li>');          
 							}
 							$('li.video').on('click', function(e){
+								var t = e.currentTarget.dataset;
+								var v = {
+									title: t.title,
+									description: t.description,
+									provider_name: t.provider_name,
+									provider_id: t.provider_id,
+									thumbnail_url: t.thumbnail_url,
+									source_url: t.source_url,
+									embed_url: t.embed_url
+								};
+								console.log("clicked vid: ", v);
 								$.ajax({
 						      url: "<%= @url %>",
 						      type: "PUT",
-						      data: {command: "play", data: e.currentTarget.dataset.url},
+						      data: {command: "play", data: v},
 						      success: function(r){ console.log('clicked play: ', r); }
 						    });
+
 							});
 							
 						}

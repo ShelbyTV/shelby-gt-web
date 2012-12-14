@@ -31,7 +31,7 @@
         shelby.router.navigate('channel/' + this.options.multiplexedVideoModel.get('channel'), {trigger: false, replace: true});
       }
       $(document).ready(function(){
-        $('body').append(SHELBYJST['pusher-bindings']());
+        $('body').append(SHELBYJST['remote-control-bindings']());
       });
       
     },
