@@ -10,7 +10,7 @@
 <% var nextVideo = nextFrame.get('video') %>
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 
-<div class="persistent_video_info animate_module">
+<div class="persistent_video_info animate_module js-standard-video-info">
   <div class="media_image--rev persistent_video_info__next-frame">
     <a class="persistent_video_info__anchor js-track-event js-next-video"
               data-ga_category="Persistent Video Info"

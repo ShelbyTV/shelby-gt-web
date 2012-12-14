@@ -5,6 +5,8 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
+  _supplementalInfoView : null,
+
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
@@ -46,11 +48,15 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
 
     if(this._currentFrame && this._nextFrame){
+      this._leaveChildren();
+      this._supplementalInfoView = null;
       this.$el.html(this.template({
         currentFrame: this._currentFrame,
         nextFrame: this._nextFrame,
         queuedVideosModel: this.options.queuedVideos
       }));
+      this._supplementalInfoView = new libs.shelbyGT.PersistentInfoSupplementalView();
+      this.appendChild(this._supplementalInfoView);
     }
   },
 
@@ -133,11 +139,14 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _onConcertInfoEventEntered : function(event){
-    console.log(event.get('event_type') + 'entered');
+    this.$('.js-standard-video-info').hide();
+    this.$('.js-supplemental-video-info').show();
+    this._supplementalInfoView.render();
   },
 
   _onConcertInfoEventExited : function(event){
-    console.log(event.get('event_type') + 'exited');
+    this.$('.js-supplemental-video-info').hide();
+    this.$('.js-standard-video-info').show();
   }
 
 });
