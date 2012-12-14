@@ -51,7 +51,7 @@
         <div class="persistent_video_info__footer">
           <% if (links && links.length) { %>
             <ul class="list list--stacked">
-              <% for (var i = 0; i < 3; i++) { %>
+              <% for (var i = 0; i < 3 && i < links.length; i++) { %>
                 <li>
                   <a href="<%= links[i].url %>" target="_blank">
                     <%= links[i].description %>
