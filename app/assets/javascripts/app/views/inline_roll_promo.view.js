@@ -27,6 +27,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
       promoLinkSrc : this.options.promoLinkSrc,
       promoMessage: this.options.promoMessage,
       promoTitle: this.options.promoTitle,
+      promoThumbnailSrc: this.options.promoThumbnailSrc,
       roll: this.model
     }));
 
