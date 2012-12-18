@@ -78,11 +78,12 @@
         if (donatePromoInfo) {
         // render a donate promo if the current roll is set to do so
           return new InlineDonatePromoView({
-            headerText : donatePromoInfo.headerText,
-            linkSrc : donatePromoInfo.linkSrc,
-            model : this.model,
-            promoText : donatePromoInfo.promoText,
-            thumbnailSrc : donatePromoInfo.thumbnailSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model)
+            model: this.model,
+            promoAvatarSrc : donatePromoInfo.promoAvatarSrc || libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(this.model),
+            promoLinkSrc : donatePromoInfo.promoLinkSrc,
+            promoMessage : donatePromoInfo.promoMessage,
+            promoTitle : donatePromoInfo.promoTitle,
+            promoThumbnailSrc : donatePromoInfo.promoThumbnailSrc
           });
         } else {
           // if there are no special settings for this roll, render a roll promo
@@ -93,11 +94,16 @@
           //only consider rolls that have all the needed attribtues to render a promo
           promoRolls = promoRolls.filter(this._filterPromoRolls, this);
           if (promoRolls.length) {
-            var rollsCollection = new Backbone.Collection();
             //select one of the promo rolls at random to display in the promo
-            rollsCollection.add(promoRolls[Math.floor(Math.random() * (promoRolls.length))]);
+            var rollToPromo = promoRolls[Math.floor(Math.random() * (promoRolls.length))];
             this._nextPromoExplore = true;
-            return new InlineRollPromoView({model:rollsCollection});
+            return new InlineRollPromoView({
+              model: rollToPromo,
+              promoAvatarSrc: rollToPromo.get('in_line_avatar_src') || rollToPromo.get('display_thumbnail_src'),
+              promoMessage: rollToPromo.get('in_line_promo_message') || 'Check out more great video on this roll',
+              promoTitle: rollToPromo.get('in_line_promo_title') || rollToPromo.get('display_title'),
+              promoThumbnailSrc: rollToPromo.get('in_line_thumbnail_src') || rollToPromo.get('display_thumbnail_src')
+            });
           } else {
             //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
             return [];
