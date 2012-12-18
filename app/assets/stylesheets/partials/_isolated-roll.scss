@@ -111,13 +111,18 @@
   }
 
   /* hide the avatar on the frame */
-  .frame:not(.frame--inline-promo) {
-    .xuser-data {
-      display: none;
+  .frame {
+    &:not(.frame--inline-promo) {
+      .xuser-data {
+        display: none;
+      }
+
+      .xuser-avatar {
+        display: none;
+      }
     }
 
-    .xuser-avatar {
-      display: none;
+    &.frame--inline-promo {
     }
   }
 }
