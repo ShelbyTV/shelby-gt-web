@@ -100,7 +100,8 @@
             return new InlineRollPromoView({
               model: rollToPromo,
               promoAvatarSrc: rollToPromo.get('in_line_avatar_src') || rollToPromo.get('display_thumbnail_src'),
-              promoTitle: rollToPromo.get('display_title'),
+              promoMessage: rollToPromo.get('in_line_promo_message') || 'Check out more great video on this roll',
+              promoTitle: rollToPromo.get('in_line_promo_title') || rollToPromo.get('display_title'),
               promoThumbnailSrc: rollToPromo.get('in_line_thumbnail_src') || rollToPromo.get('display_thumbnail_src')
             });
           } else {
