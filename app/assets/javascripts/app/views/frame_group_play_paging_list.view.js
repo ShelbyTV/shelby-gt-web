@@ -99,8 +99,9 @@
             this._nextPromoExplore = true;
             return new InlineRollPromoView({
               model: rollToPromo,
-              promoAvatarSrc: rollToPromo.get('in_line_thumbnail_src') || rollToPromo.get('display_thumbnail_src'),
-              promoTitle: rollToPromo.get('display_title')
+              promoAvatarSrc: rollToPromo.get('in_line_avatar_src') || rollToPromo.get('display_thumbnail_src'),
+              promoTitle: rollToPromo.get('display_title'),
+              promoThumbnailSrc: rollToPromo.get('in_line_thumbnail_src') || rollToPromo.get('display_thumbnail_src')
             });
           } else {
             //TEMPORARILY PROMO NOTHING IF WE HAVE NO ROLLS TO PROMO
