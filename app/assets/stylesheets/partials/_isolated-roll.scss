@@ -41,7 +41,7 @@ body.isolated-roll {
   @include ellipsis;
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
 
-  border-radius: 3px;  
+  border-radius: 3px;
   color: $guide-presentation-button;
   display: block;
   font-size: 1.2em;
@@ -53,7 +53,7 @@ body.isolated-roll {
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
-  
+
   &:hover {
     @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,10%));
     color: adjust-lightness($guide-presentation-button,20%);
@@ -77,5 +77,5 @@ body.isolated-roll {
 }
 
 .isoroll-header__full-shelby-button {
-  width: 135px;  
+  width: 145px;
 }
