@@ -452,6 +452,12 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .discussion__h3 {
     font-weight: 500;
     margin-top: .5em;
+    margin-bottom: 0;
+  }
+  
+  .discussion__button {
+    margin: 0.5em 0;
+    padding: 0.5em;
   }
 
   .discussion__item {
@@ -464,7 +470,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   //  media module framework
   ////////////////////////////////////////////////////////////////////////////
   .media_module {
-    cursor: pointer;
     background-color: $videocard-footer-bg-color;
 
     &:hover {
@@ -474,12 +479,28 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 
   .media_image {
-    width: 50%;
+    position: relative;
+    width: 60%;
+    
+    .icon-play {
+      background-size: 100%;
+      cursor: pointer;
+      position: absolute;
+      top: 35%;
+      left: 42%;
+      width: 50px;
+      height: 60px;
+    }
+  }
+  
+  .discussion__video-preview {
+    height: 220px;
+    width: 100%;
   }
 
   .media_body {
     margin-right: 8px;
-    max-height: 155px;
+    max-height: 200px;
     overflow: hidden;
   }
 }

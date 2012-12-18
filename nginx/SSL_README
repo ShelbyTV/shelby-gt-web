@@ -1,0 +1,12 @@
+To upgrade SSL (as of 12/12/12)
+
+0) [optional] generate a new CSR w/ new private key and save them in here
+1) Sign in to symantec.com and request a new certificate w/ the CSR in here
+2) Once issued (takes a day or so) get the PKCS #7 formatted cert and save in here (.p7b)
+3) Convert that to a .pem (this site does it nicely: https://www.sslshopper.com/ssl-converter.html) and save in here
+4) Deploy the PEM to our server at /etc/nginx/certificates/shelby.tv.pem
+		* If you generated a new CSR with a new key in step 0, make sure you deploy the new shelby.tv.key as well
+5) Restart nginx (via upstart `sudo service nginx restart`)
+6) check SSL is working w/ new cert (visit https://shelby.tv and examine the cert w/ your browser)
+7) update shelby-chef-repo w/ the new .pem (and new .key if applicable)
+		* need to put the certs in two places right now  1) /certificates and 2) /cookbooks/shelby/files/default

@@ -128,7 +128,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     if(this._components.emailAddresses){
       var $emailAddressesInput = this.$('.js-share-email-addresses');
       var emailAddresses = $emailAddressesInput.val();
-      $emailAddressesInput.val(_(emailAddresses.split(',')).compact().join(','));
+      $emailAddressesInput.val(_(emailAddresses.split(/[,;]/)).compact().join(','));
       //:invalid pseudo-element only supported as of IE 10
       if ((BrowserDetect.browser != 'Explorer' || BrowserDetect.version >= 10)) {
         if (this.$('.js-share-email-addresses:invalid').length > 0) {
@@ -213,7 +213,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
   },
 
   onShareSuccess : function(){
-    shelby.alert('Your message has been sent!')
     // subclasses may optionally override to perform custom handling on share success, but
     // should always call the superclass's implementation as part of theirs if they have
     // a share button

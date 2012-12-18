@@ -46,7 +46,8 @@ libs.shelbyGT.DiscussionRollSelectVideoAttachmentView = Support.CompositeView.ex
     ytQuery.query({
       "q" : this.$el.find(".js-video-search-query").val(),
       "max-results" : "30",
-      "orderby" : "relevance"},
+      "orderby" : "relevance",
+      "format" : "5"},
       function(res){
         self.$el.find(".js-possible-video-attachments-list").remove();
         

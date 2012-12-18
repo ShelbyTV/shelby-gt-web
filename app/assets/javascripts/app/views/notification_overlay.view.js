@@ -6,7 +6,8 @@
 
     events: {
       "click .js-button"     : "_handleResponse",
-      "click .js-roll-route" : "_handleRollRoute"
+      "click .js-roll-route" : "_handleRollRoute",
+      "click .js-open-popup" : "_handlePopupLink"
     },
 
     _listView : null,
@@ -50,6 +51,11 @@
       e.preventDefault();
       shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id'), {trigger:true,replace:true});
       this.model.set({visible: false, response: null});
+    },
+    
+    _handlePopupLink : function(e){
+      e.preventDefault();
+      window.open(e.currentTarget.href, "_shelbyChat");
     }
 
   });

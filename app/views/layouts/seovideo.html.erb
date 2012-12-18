@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>shelby.tv | <%= @video_title %></title>
-  
+
   <meta name="viewport" content="width=device-width">
   <link rel="icon"type="image/png" href="/favicon.png">
   <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
@@ -20,7 +20,7 @@
 </head>
 <body class="">
 
-	<%= yield %>	
+	<%= yield %>
 
   <%= vanity_js %>
   <% if Rails.env == 'production' %>
@@ -48,10 +48,10 @@
   <% end %>
   <script>
     try {
-      _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_text_size', '<%= @seo_ad_text_size %>']);
+      _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_videocard', '<%= @seo_ad_videocard %>']);
     } catch(e) {}
     try {
-      _kmq.push(['set', {'seo_ad_text_size': '<%= @seo_ad_text_size %>'}]);
+      _kmq.push(['set', {'seo_ad_videocard': '<%= @seo_ad_videocard %>'}]);
     } catch(e) {}
   </script>
 </body>

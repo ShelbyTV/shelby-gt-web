@@ -74,7 +74,7 @@
 
             <ul class="seovideo__list seovideo__list--aside clearfix">
               <!-- Video Plug -->
-              <li class="seovideo__item seovideo__item--advertisement seo__item--advertisement-<%= @seo_ad_text_size %>">
+              <li class="seovideo__item seovideo__item--advertisement seo__item--advertisement-<%= @seo_ad_videocard %>">
                 <a href="http://holidays.shelby.tv/?utm_campaign=seo"
                   class="seovideo__link js-track-event" title="Shelby.tv #Holidays"
                   data-ga_category="SEO Video"
@@ -82,7 +82,7 @@
                   data-ga_label="#Holidays">
                   <div class="related_video frame-body-wrapper clearfix">
                     <div class="related_video__main">
-                      <span role="img" class="seovideo__thumbnail" style="background-image: url('/images/seovideo/seo_holiday_4.jpg');">
+                      <span role="img" class="seovideo__thumbnail">
                         <img class="visuallyhidden" src="/images/seovideo/seo_holiday_4.jpg" alt="Shelby #holidays Roll" title="Click to watch the #holidays Roll!" />
                       </span>
                     </div><!-- eo related_video__main -->
@@ -91,11 +91,12 @@
                       <div class="related_video__footer-lining">
                         <div class="button_icon_right icon_chevron_white icon">
                           <h4 class="seovideo__h4">
-                            Holiday TV
-                          </h4>
-                          <p>
-                            Shelby presents the web's <br />
+                            Holiday TV <br class="br--obvious"/> presenting the web's
                             latest <strong>#holiday</strong> videos
+                          </h4>
+
+                          <p class="seovideo__subline">
+                            Powered by Shelby.tv
                           </p>
                         </div>
                       </div><!-- eo related_vido__footer-lining -->

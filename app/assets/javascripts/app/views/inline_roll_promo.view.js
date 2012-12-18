@@ -4,6 +4,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
     promoAvatarSrc : null,
     promoLinkSrc : '#',
     promoMessage : 'Check out more great video on this roll',
+    promoThumbnailSrc : null,
     promoTitle : null
   },
 
@@ -33,7 +34,7 @@ libs.shelbyGT.InlineRollPromoView = Support.CompositeView.extend({
   },
 
   _goToRoll : function(e){
-    var rollId = $(e.currentTarget).data('roll_id');
+    var rollId = $(e.currentTarget).data('roll-id');
     if (shelby.models.guide.get('displayIsolatedRoll')) {
       window.top.location.href = shelby.config.appUrl + '/roll/' + rollId;
     } else {
