@@ -48,6 +48,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     */
     loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
+    
+    /* TODO: needs documentation */
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
   }),

@@ -21,20 +21,35 @@
     className : FrameGroupPlayPagingListView.prototype.className + ' roll fresh-play-enabled',
 
     initialize : function(){
+      // need to set the comparator on this.model b/c the "first" item in there is used to start playing videos...
+      this.model.get('frames').comparator = this.options.comparator;
+
+      // the "new" frames kee their score
+      // the old frames get score adjusted
+      //    but score stays within the max + min of what was loaded so we don't fuck with what's currently rendered
       
-      console.log("*** FreshPlayRollView initializing... ***");
+      // group 1: the stuff we want to stay at the top
+      // group 2: the rest of the stuff we loaded initially
+      // group 3: the first "load more"
+      // group 4: the next "load more"
+      // etc...
+      // each group of frames gets random scores that are always smaller than what we've already loaded
       
-      //options.comparator affects ListView (at very top of inheritance stack)
-      //TODO: set comparator in options, below
-                
+      //Math.seedrandom(Math.round((new Date()).getTime()/(1000*60*60*24*7))) // 7 should be configurable as "consistencyTimeFrame"
+      //then use Math.random()
+      
+      // Intercepting parse() and adjusting scores before anybody sees them, so our comparator just works
+      // TODO: do this for real and use a seeded math random (and all the algo from above)
+      this.model.parse = function (response) {
+        console.log("successfully intercepted the parse", response.result, this.get('frames').length);
+        // this refers to our model, not the view
+        // Proof Of Concept
+        response.result.frames[2].score = 100;
+        return response.result;
+      };
+      
                 
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
-      if (this._lookupDonatePromo()) {
-        //if the roll has a donate promo, increase the promo frequency
-        this.options.isIntervalComplete = function(displayedItems) {
-          return displayedItems != 0;
-        };
-      }
     },
 
     _cleanup : function(){
@@ -43,38 +58,35 @@
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'frames',
-      freshPlayEnabled : true,
       collapseViewedFrameGroups : false,  //don't collapse on a .tv
       emptyIndicatorViewProto : null,     //used on watch later roll
+      
+      //XXX temporarily turning off roll promos
       isIntervalComplete : function(displayedItems) {
-        return displayedItems != 0 && displayedItems % 5 == 0;
+        return false;
       },
       listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
       },
-      firstFetchLimit : shelby.config.pageLoadSizes.freshPlayRoll,
-      limit : shelby.config.pageLoadSizes.freshPlayRoll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
+      firstFetchLimit : shelby.config.pageLoadSizes.roll,
+      limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
+      
+      // FreshPlay config
+      freshPlayEnabled : true,
+      //just ordering based on score, which is changed ?WHERE? (elsewhere)
+      comparator : function(m){ 
+        //this comparator is used in the collection (where model is a Frame) 
+        //and in the display collection (where model is a FrameGroup) so we gotta do this... ugh...
+        return (typeof(m.getFirstFrame) === "function" ? m.getFirstFrame().get('score') : m.get('score'));
+      },
+      
     }),
 
     _doesResponseContainListCollection : function(response) {
       return response.result.frames;
     },
 
-    // FrameGroupPlayPagingListView overrides
-    _filterPromoRolls : function(roll) {
-      //don't show a promo for the roll that you're currently looking at
-      // return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
-      //TEMPRORARY ITS OK TO SHOW BECAUSE IT WILL BE A DONATE PROMO
-      return (roll.has('id') && roll.has('display_title') && roll.has('display_thumbnail_src'));
-    },
-
-    _lookupDonatePromo : function() {
-      self = this;
-      return _(shelby.config.donatePromos).find(function(promoInfo) {
-        return promoInfo.rollId == self.model.id;
-      });
-    }
 
   });
 
