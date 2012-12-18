@@ -1,3 +1,9 @@
+/*
+ * DiscusisonRoll creating/updating.
+ *
+ * If child view (FrameSharingRollChooserView) is shown and has a previous discusison roll chosen,
+ * we post a new message to that roll.  Otherwise we create a new roll.
+ */
 ( function(){
 
   // shorten names of included library prototypes
@@ -15,6 +21,16 @@
       messageCounter: false,
       shareButtonCopy: "Send"
     }),
+    
+    render : function(){
+      libs.shelbyGT.ShareView.prototype.render.call(this);
+      
+      //easily choose from previous discussion rolls
+      var discussionRollChooser = new libs.shelbyGT.FrameSharingRollChooserView({
+        input: this.$("#email-recipients")
+      });
+      this.renderChildInto(discussionRollChooser, this.$(".discussion-roll-chooser-wrapper"));
+    },
     
     _share : function(){
       var self = this;
@@ -53,13 +69,22 @@
       }
       this.model.set(modelAttrs);
       
+      var url = shelby.config.apiRoot + '/discussion_roll';
+      
+      // post new message to previous discussion roll, if chosen
+      var selectedRollId = this.$("#js-discussion-roll-chooser option:selected").val();
+      if(typeof(selectedRollId) !== "undefined" && selectedRollId !== "false"){ 
+        url += '/'+selectedRollId+'/messages';
+        var token = this.$("#js-discussion-roll-chooser option:selected").data('token');
+      }
+      
       //save adjusted model to discussion_roll route
       this.model.save(null, {
-        url: shelby.config.apiRoot + '/discussion_roll',
-        success: function(){
+        url: url,
+        success: function(model, resp){
           self._clearTextArea();
           self._components.spinner && self._hideSpinner();
-          self.onShareSuccess();
+          self.onShareSuccess(model, resp, selectedRollId, token);
         },
         error: function(){
           self._handleShareError();
@@ -68,7 +93,7 @@
       return false;
     },
     
-    onShareSuccess: function(){
+    onShareSuccess: function(model, resp, selectedRollId, token){
       libs.shelbyGT.ShareView.prototype.onShareSuccess.call(this);
       
       shelby.track( 'shared_frame',
@@ -78,6 +103,17 @@
                   });
             
       this.options.guideOverlayModel.clearAllGuideOverlays();
+      
+      // two different ways to access the conversation based on if we posted to create or create_message
+      if(typeof(selectedRollId) === "undefined" || selectedRollId === "false"){
+        //if this was a new conversation, model is a discussionRoll; get roll id and token from there
+        selectedRollId = model.id;
+        token = model.get('token');
+      }
+      
+      //show success with link to discussion roll
+      var href = shelby.config.appUrl+'/chat/'+selectedRollId+'?u='+shelby.models.user.id+'&t='+token;
+      shelby.success('Message Sent! <span class="message-link"><a href="'+href+'" class="js-open-popup">Open Conversation</a></span>');
     }
     
   });

@@ -1,6 +1,6 @@
 var ytQuery = {
   _validStandardFeeds :['top_rated', 'top_favorites', 'most_viewed', 'most_shared', 'most_popular', 'most_recent', 'most_discussed', 'most_responded', 'recently_featured', 'on_the_web'],
-  _validParams : ['q', 'max-results', 'start-index', 'standard_feed', 'caption', '3d', 'category', 'duration', 'hd', 'lang', 'license', 'location', 'orderby', 'time'],
+  _validParams : ['q', 'max-results', 'start-index', 'standard_feed', 'caption', '3d', 'category', 'duration', 'hd', 'lang', 'license', 'location', 'orderby', 'time', 'format'],
   _baseUrls : {
     "default" : "//gdata.youtube.com/feeds/api/videos",
     "standard_feed" : "//gdata.youtube.com/feeds/api/standardfeeds/"

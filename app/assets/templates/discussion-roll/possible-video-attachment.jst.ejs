@@ -1,6 +1,7 @@
-<div class="media_module frame-body-wrapper js-add-video clearfix">
-  <div class="media_image">
+<div class="media_module frame-body-wrapper clearfix">
+  <div class="media_image js-preview-video">
     <img class="thumbnail" src="<%= thumbnail.url %>" />
+		<i class="ir button_icon_center icon_player_play icon-play">preview</i>
   </div>
 
   <div class="media_body">
@@ -8,6 +9,10 @@
       <%= title %>
     </h3>
 
+		<button class="discussion__button button_primer button_blue js-add-video">
+			Add This Video
+		</button>
+		
     <p class="discussion__text">
       <%= description %>
     </p>

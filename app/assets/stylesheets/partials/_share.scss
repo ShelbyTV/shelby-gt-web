@@ -15,3 +15,18 @@
 .frame-share-header{
 	//extended by .video-card-header;
 }
+
+.frame-sharing__to-label {
+  float: left;
+  margin-right: 0.5em;
+}
+
+.frame-sharing__roll-selection {
+  max-width: 200px;
+}
+
+.frame-sharing__roll-selection,
+.frame-sharing__to-label,
+.frame-sharing__message-label {
+  margin-top: 1em;
+}

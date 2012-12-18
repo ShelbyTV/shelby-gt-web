@@ -44,8 +44,8 @@
       multiTerm : false,
       multiTermMethod : 'list', //supported options: list, paragraph
       multiTermPosition : 'caret', //supported options: tail, caret
-      separator : /,\s*/,
-      separatorReplacement : ","
+      separator : /[,;\s]+/,
+      separatorReplacement : ", "
     },
 
     events : function() {
