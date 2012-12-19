@@ -65,7 +65,8 @@
       firstFetchLimit : shelby.config.pageLoadSizes.roll,
       limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
       
-      // for how many days should the reandom reorder stay consistent
+      /************************** Fresh Play Options **************************/
+      // for how many days should the random reorder stay consistent
       reorderingConsistencyDays : 1,
       
       // Keep frames created less then newFramesMaxAgeDays days as "new"
@@ -73,10 +74,11 @@
       // Always have this many "new" Frames at the top of the roll
       newFramesMinCount : 1,
       
-      // ordering based on score, which is changed by fresh play algo, using the options above
+      // simply ordering based on score, which is changed by fresh play algo, using the options above
       comparator : function(m){ 
         //this comparator is used in the collection (where model is a Frame) 
         //and in the display collection (where model is a FrameGroup) so we gotta do this... ugh...
+        //oh, and it's asc by default, which is a pain in the ass to correctly change everywhere...
         return 1-(typeof(m.getFirstFrame) === "function" ? m.getFirstFrame().get('score') : m.get('score'));
       },
       
@@ -86,6 +88,9 @@
       //seeding random number generator with a unique seed every X days
       Math.seedrandom('ds'+Math.round(Date.now()/(1000*60*60*24*this.options.reorderingConsistencyDays)));
       
+      /* Algorithm private parameters.
+       * All options that can be changed have been exposed via view's this.options hash.
+       */
       var fpParams = {
         /* Store a seed between runs for consistency (in case Math.seededRandom() gets called elsewhere)
          */
@@ -95,7 +100,7 @@
          * such that when the next group comes through parse, we can give that group lower scores
          * and keep them all below the already displayed groups.
          *
-         * It would be jarring if the newly loaded group was interleaved with the currently displayed frames.
+         * It would be jarring if the newly loaded group was interleaved with the already displayed frames.
          */
         groupHighScore: 1000000,
         groupLowScore:   999900,
@@ -106,7 +111,7 @@
         lastFrameId: null,
         lastFrameScore: null,
         
-        /* Keep Frames newer than this.options.maxAgeNewFrames days old as "new" Frames.
+        /* Consider Frames newer than this.options.maxAgeNewFrames days old as "new" Frames.
          * And make sure we always have at least newFramesMinCount "new" Frames.
          */
         newFramesCount: 0,
@@ -122,7 +127,7 @@
         
         // give all the frames a score in [groupLowScore, groupHighScore)
         // remember: Math.seededRandom() returns a random double in [0, 1)
-        // also need to give the overlap-frame the same score (see fpParams discussion)
+        // also need to give the overlap-frame the same score as before (see fpParams discussion)
         var scoreRange = fpParams.groupHighScore - fpParams.groupLowScore,
         newScore;
         _.each(response.result.frames, function(frameJson){

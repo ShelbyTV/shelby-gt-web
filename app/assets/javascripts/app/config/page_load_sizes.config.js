@@ -1,4 +1,4 @@
 shelby.config.pageLoadSizes = {
-	roll: 20,
-	dashboard: 20
+	roll: 50,
+	dashboard: 50
 };
