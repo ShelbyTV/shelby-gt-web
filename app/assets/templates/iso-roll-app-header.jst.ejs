@@ -6,7 +6,7 @@
 		<% associatedRolls.forEach(function(roll){ %>
 			<li class="selectable-roll-item <%= roll.id == currentRoll.id ? 'active-item' : '' %>">
 				<a class="iso-roll-nav-button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
-					<%= roll.get('title') %>
+					<%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
 				</a>
 			</li>
 		<% }) %>

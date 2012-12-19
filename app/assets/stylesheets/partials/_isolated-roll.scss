@@ -19,6 +19,7 @@ body.isolated-roll {
 .iso-roll-app-header {
   max-height: 36px;
   overflow: hidden;
+  border-bottom: none;
 }
 
 .current-roll {
@@ -47,10 +48,11 @@ body.isolated-roll {
   font-size: 1.2em;
   font-weight: 500;
   font-family: $font-family-display;
-  margin: 6px;
+  margin: 5px 6px 0px;
   max-width: $guide-width * 0.75;
   min-width: $guide-width / 4;
-  padding: 5px 10px;
+  height: 35px;
+  padding: 9px 10px;
   text-align: center;
   text-decoration: none;
 

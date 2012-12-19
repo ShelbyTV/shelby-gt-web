@@ -23,7 +23,7 @@ class HomeController < ApplicationController
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
-          session[:hostname] = request.host
+          @hostname = request.host
           render '/home/isolated_roll' and return
         end
 

@@ -27,7 +27,6 @@ class RollController < ApplicationController
   end
 
   def show_isolated_roll
-    Rails.logger.info "========== #{session[:hostname]}"
     render '/home/app'
   end
 
