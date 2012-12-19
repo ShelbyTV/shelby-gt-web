@@ -65,16 +65,16 @@
       firstFetchLimit : shelby.config.pageLoadSizes.roll,
       limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
       
-      /************************** Fresh Play Options **************************/
+      /************************** Fresh Play Public Options **************************/
       // for how many days should the random reorder stay consistent
       reorderingConsistencyDays : 1,
-      
       // Keep frames created less then newFramesMaxAgeDays days as "new"
       newFramesMaxAgeDays : 5,
       // Always have this many "new" Frames at the top of the roll
       newFramesMinCount : 1,
       
-      // simply ordering based on score, which is changed by fresh play algo, using the options above
+      /************************** Fresh Play Private **************************/
+      // simply ordering based on score, which is changed by fresh play algo in _engageReScoring(), using the options above
       comparator : function(m){ 
         //this comparator is used in the collection (where model is a Frame) 
         //and in the display collection (where model is a FrameGroup) so we gotta do this... ugh...
