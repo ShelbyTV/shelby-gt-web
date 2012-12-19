@@ -9,11 +9,11 @@
   <title>
     <%= render :partial => "/home/title_tag" %>
   </title>
-	
+
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
+
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "landing", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
@@ -31,13 +31,13 @@
 		    </h1>
 		  </button>
 		</header>
-		
+
 		<%= render :partial => "/genius/facebook/genius_search" %>
 
 		<%= render :partial => "/genius/facebook/genius_history" %>
-		
+
 		<%= render :partial => "/genius/facebook/personalization" %>
-		
+
 		<footer class="landing-footer">
 			<div class="landing-footer-lining clearfix">
 
@@ -52,7 +52,7 @@
 					<li>
 						<h5 class="landing-footer-content-header">Community</h5>
 						<ul class="landing-footer-content-list list_module">
-							<li><a href="http://shelby.tv/blog" target="_info">Blog</a></li>
+							<li><a href="/blog" target="_info">Blog</a></li>
 							<li><a href="http://shelbydev.tumblr.com/" target="_info">Dev Blog</a></li>
 							<li><a href="http://twitter.com/shelby" target="_info">Twitter</a></li>
 							<li><a href="http://facebook.com/shelbytv" target="_info">Facebook</a></li>
@@ -61,8 +61,8 @@
 					<li>
 						<h5 class="landing-footer-content-header">Legal</h5>
 						<ul class="landing-footer-content-list list_module">
-							<li><a href="http://shelby.tv/privacy.html" target="_info">Privacy</a></li>
-							<li><a href="http://shelby.tv/tou.html" target="_info">Terms</a></li>
+							<li><a href="/privacy.html" target="_info">Privacy</a></li>
+							<li><a href="/tou.html" target="_info">Terms</a></li>
 						</ul>
 					</li>
 
@@ -84,12 +84,12 @@
 			</div>
 		</footer>
 
-	</div><!-- /shelby-wrapper -->	
-	
+	</div><!-- /shelby-wrapper -->
+
 	<script>
 		<%= render :partial => "/genius/facebook/search_history", :formats => [:js] %>
 	</script>
-	
-	
+
+
 </body>
 </html>
