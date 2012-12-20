@@ -5,6 +5,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   className : 'list',
 
   /*
+    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
+    to the list and render when this.options.isIntervalComplete returns true
+
+    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
+    if this.options.intervalInsertViewProto is null
+    */
+  _intervalInsertViews : null,
+  
+
+  /*
     The source data for the list view can come from either a standard Backbone collection
     or a collection (created by a Relation) that is an attribute of a Relational model
 
@@ -105,6 +115,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     if (this.options.comparator) {
       this._displayCollection.comparator = this.options.comparator;
     }
+    
+    if(this.model){
+      this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    }
 
     this._displayCollection.bind('add', this.internalAddOne, this);
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
@@ -124,6 +138,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       }
     }
+    
+    if(this.model){
+      this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    }
+    
     this._displayCollection.unbind('add', this.internalAddOne, this);
     this._displayCollection.unbind('remove', this.internalRemoveOne, this);
     this._displayCollection.unbind('reset', this.internalReset, this);
@@ -311,14 +330,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
   },
-
-  /*
-    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
-    to the list and render when this.options.isIntervalComplete returns true
-
-    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
-    if this.options.intervalInsertViewProto is null
-    */
-  _intervalInsertViews : null
+  
+  _onFetchComplete : function(){
+    //TODO: something useful
+  }
 
 });
