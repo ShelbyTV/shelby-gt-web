@@ -267,6 +267,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
    */
   _insertIntervalViewsForGroup: function(){
     if(this.options.insertIntervalViewsIncrementally){ return; }
+    
     //check for promo insertion from end of last group to end of this group
     for(var i = this._insertedIntervalsUpToIndex; i < this._listItemViews.length; ++i){
       if(this.options.isIntervalComplete(i+1)){
