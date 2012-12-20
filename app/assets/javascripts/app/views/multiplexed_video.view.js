@@ -17,6 +17,9 @@
 
     initialize : function(){
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
+
+      // TODO: bind change:channel to call _changeChannel
+
       this.options.multiplexedVideoModel.bind("channel", this._changeChannel, this);
     },
 
@@ -62,7 +65,7 @@
                 }
               }
             }
-          });          
+          });
         });
       }
     },
@@ -70,6 +73,8 @@
     _doesResponseContainListCollection : function(response) {
       return response.result.frames;
     },
+
+    // TODO: take a look at this when promos are work for lists that are not sorted by natural order.
 
     // FrameGroupPlayPagingListView overrides
     _filterPromoRolls : function(roll) {

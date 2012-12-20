@@ -111,7 +111,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    
+
     var query = params && params.query;
     if (query) {
       shelby.models.videoSearch.set('query', params.query);
@@ -123,20 +123,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.videoSearch.trigger('search');
     }
   },
-  
+
   displayChannel : function(channel){
-    // Adjust *how* a few details are displayed via CSS
-    $('body').addClass('shelby-channels');
-    
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    if (channel) {
-      shelby.models.multiplexedVideo.set('channel', channel);
-    }
+
+    shelby.models.multiplexedVideo.set('channel', channel);
+
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.channel
     });
+
+    // TODO not nescessary to do this here... move this into handler where change is bound
     if (channel) {
       shelby.models.multiplexedVideo.trigger('channel');
     }
@@ -148,7 +147,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
-    
+
     shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
       new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
@@ -160,13 +159,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
-    
+
     //hide the guide initially for iso rolls
     if(shelby.routeHistory.length === 0){
       shelby.models.userDesires.set({guideShown: false});
     }
   },
-  
+
   displayFacebookGeniusRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('facebook-genius');
@@ -178,7 +177,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
     }
-    
+
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -195,7 +194,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-  
+
   displayUserPersonalRoll : function(userId, params){
     var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});

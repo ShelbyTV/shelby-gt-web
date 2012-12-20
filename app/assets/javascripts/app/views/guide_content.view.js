@@ -28,6 +28,7 @@
     _currentRollView : null,
 
     _videoSearchView : null,
+    _multiplexedVideoView : null,
 
     _playingFrameGroupCollection : null,
     _playingState : null,
@@ -54,7 +55,7 @@
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
-    
+
     _setPlayingFrameGroupCollection : function(pfgc){
       this._playingFrameGroupCollection = pfgc;
       Backbone.Events.trigger("change:playingFrameGroupCollection", pfgc);
@@ -252,14 +253,14 @@
           this._videoSearchView = this._listView;
           break;
         case DisplayState.channel :
-          this._videoSearchView = this._listView;
+          this._multiplexedVideoView = this._listView;
           break;
       }
 
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();
-      
+
       //remove any current guide overlay views
       shelby.models.guideOverlay.clearAllGuideOverlays();
 
@@ -316,7 +317,7 @@
             this._playingState = libs.shelbyGT.PlayingState.search;
             this._playingRollId = null;
           } else if (guideModel.get('displayState') == DisplayState.channel) {
-            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
+            this._setPlayingFrameGroupCollection(this._multiplexedVideoView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.channel;
             this._playingRollId = null;
           } else {
