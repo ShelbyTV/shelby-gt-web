@@ -73,7 +73,7 @@
       
       // post new message to previous discussion roll, if chosen
       var selectedRollId = this.$("#js-discussion-roll-chooser option:selected").val();
-      if(selectedRollId !== "false"){ 
+      if(typeof(selectedRollId) !== "undefined" && selectedRollId !== "false"){ 
         url += '/'+selectedRollId+'/messages';
         var token = this.$("#js-discussion-roll-chooser option:selected").data('token');
       }
@@ -105,7 +105,7 @@
       this.options.guideOverlayModel.clearAllGuideOverlays();
       
       // two different ways to access the conversation based on if we posted to create or create_message
-      if(selectedRollId === "false"){
+      if(typeof(selectedRollId) === "undefined" || selectedRollId === "false"){
         //if this was a new conversation, model is a discussionRoll; get roll id and token from there
         selectedRollId = model.id;
         token = model.get('token');

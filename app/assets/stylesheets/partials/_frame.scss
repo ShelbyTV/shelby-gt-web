@@ -36,20 +36,10 @@ $active-list-item: $shelby-blue;
 }
 
 //------------------------------------------------------------------------------
-//  Modernizr.touch
-//------------------------------------------------------------------------------
-// .touch {
-//   .frame-body-wrapper {
-//     box-shadow: none;
-//     border: 1px solid rgba(0,0,0,.2);
-//   }
-// }
-
-//------------------------------------------------------------------------------
 //  frame natural state
 //------------------------------------------------------------------------------
 .frame {
-  padding: 1em 0.5em 0.5em 0.5em;
+  padding: 0.8em;
 
   ////////////////////////////////////////////////////////////////////////////
   //  on HOVER, toggle:
@@ -203,6 +193,7 @@ $active-list-item: $shelby-blue;
 //------------------------------------------------------------------------------
 .xuser-data {
   @include ellipsis();
+
   color: adjust-lightness($text, 20%);
 }
 
@@ -389,7 +380,7 @@ $active-list-item: $shelby-blue;
 //------------------------------------------------------------------------------
 .frame-collapsed {
   opacity: 0.5;
-  padding: 0.5em;
+  padding: 0.8em;
 
   .frame-title {
     height: 40px;
@@ -541,40 +532,6 @@ $share-frame-half-gutter: 4px;
     text-decoration: none;
   }
 
-}
-
-
-//------------------------------------------------------------------------------
-//  isolated roll
-//  (nest styles inside of .isolated-roll{})
-//------------------------------------------------------------------------------
-.isolated-roll {
-  .xuser-data {
-    display: none;
-  }
-  .conversation-message .xuser-data {
-    display: block;
-  }
-
-  .xuser-message {
-    margin: 0;
-    min-height: 2em;
-  }
-
-  .xuser-data-timestamp {
-    padding: 0 0 5px 10px;
-  }
-
-  /* adjust the avatar in the roll header */
-  .guide .xuser-avatar {
-    border-right: 1px solid $outset;
-    margin: 0 10px 0 0;
-  }
-
-  /* hide the avatar on the frame */
-  .frame .xuser-avatar {
-    display: none;
-  }
 }
 
 //------------------------------------------------------------------------------

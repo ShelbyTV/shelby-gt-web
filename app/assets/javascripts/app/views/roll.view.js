@@ -19,7 +19,7 @@
       } else if (this._lookupDonatePromo()) {
         //if the roll has a donate promo, increase the promo frequency
         this.options.isIntervalComplete = function(displayedItems) {
-          return displayedItems != 0;
+          return displayedItems != 0 && displayedItems % 4 == 0;
         };
       }
     },
