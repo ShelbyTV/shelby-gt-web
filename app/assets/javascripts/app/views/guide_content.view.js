@@ -7,6 +7,7 @@
   var MeListView = libs.shelbyGT.MeListView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
+  var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -177,6 +178,19 @@
             }
           };
           break;
+        case DisplayState.channel :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : MultiplexedVideoView,
+            collection : shelby.collections.multiplexedVideoFrames,
+            options : {
+              collapseViewedFrameGroups : false,
+              doStaticRender : true,
+              masterCollection : this._currentRollMasterCollection,
+              multiplexedVideoModel : shelby.models.multiplexedVideo
+            }
+          };
+          break;
         case DisplayState.userPreferences :
         case DisplayState.tools :
           displayParams = {
@@ -235,6 +249,9 @@
           }
           break;
         case DisplayState.search :
+          this._videoSearchView = this._listView;
+          break;
+        case DisplayState.channel :
           this._videoSearchView = this._listView;
           break;
       }
@@ -297,6 +314,10 @@
           } else if (guideModel.get('displayState') == DisplayState.search) {
             this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
             this._playingState = libs.shelbyGT.PlayingState.search;
+            this._playingRollId = null;
+          } else if (guideModel.get('displayState') == DisplayState.channel) {
+            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
+            this._playingState = libs.shelbyGT.PlayingState.channel;
             this._playingRollId = null;
           } else {
             //we're playing some kind of roll
