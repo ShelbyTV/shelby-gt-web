@@ -1,7 +1,8 @@
 development:
   adapter: redis
   connection: redis://localhost:6379/0
-  collecting: true
+  # collecting off by default so that development environments aren't required to have redis installed
+  collecting: false
 
 staging:
   collecting: false

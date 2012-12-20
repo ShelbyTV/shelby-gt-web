@@ -7,10 +7,6 @@
     "compass/css3/border-radius",
     "compass/css3/box-shadow";
 
-/* non-programatic changes to app display */
-body.isolated-roll {
-
-}
 
 //-------------------------
 // header bar
@@ -41,7 +37,7 @@ body.isolated-roll {
   @include ellipsis;
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
 
-  border-radius: 3px;  
+  border-radius: 3px;
   color: $guide-presentation-button;
   display: block;
   font-size: 1.2em;
@@ -53,7 +49,7 @@ body.isolated-roll {
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
-  
+
   &:hover {
     @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,10%));
     color: adjust-lightness($guide-presentation-button,20%);
@@ -61,9 +57,12 @@ body.isolated-roll {
   }
 }
 
-.active-item .iso-roll-nav-button, .active-item .iso-roll-nav-button:hover {
-  background: black;
-  color: #efefef;
+.active-item {
+  .iso-roll-nav-button,
+  .iso-roll-nav-button:hover {
+    background: black;
+    color: #efefef;
+  }
 }
 
 .isoroll-header__follow-unfollow-button,
@@ -71,11 +70,59 @@ body.isolated-roll {
   font-size: 1.2em;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
+
   .light {
     font-weight: 100;
   }
 }
 
 .isoroll-header__full-shelby-button {
-  width: 135px;  
+  width: 135px;
+}
+
+/* non-programatic changes to app display */
+//------------------------------------------------------------------------------
+//  FROM _FRAME.SCSS:
+//  isolated roll
+//  (nest styles inside of .isolated-roll{})
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .conversation-message {
+    .xuser-data {
+      display: block;
+    }
+  }
+
+  .xuser-message {
+    margin: 0;
+    min-height: 2em;
+  }
+
+  .xuser-data-timestamp {
+    padding: 0 0 5px 10px;
+  }
+
+  /* adjust the avatar in the roll header */
+  .guide {
+    .xuser-avatar {
+      border-right: 1px solid $outset;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  /* hide the avatar on the frame */
+  .frame {
+    &:not(.frame--inline-promo) {
+      .xuser-data {
+        display: none;
+      }
+
+      .xuser-avatar {
+        display: none;
+      }
+    }
+
+    &.frame--inline-promo {
+    }
+  }
 }
