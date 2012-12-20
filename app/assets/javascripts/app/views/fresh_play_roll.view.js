@@ -54,10 +54,12 @@
       collapseViewedFrameGroups : false,  //don't collapse on a .tv
       emptyIndicatorViewProto : null,     //used on watch later roll
       
-      //XXX temporarily turning off roll promos
       isIntervalComplete : function(displayedItems) {
-        return false;
+        return displayedItems % 5 === 0;
       },
+      // we use a comparator and insert our item views at random places, not natural ordering, so...
+      insertIntervalViewsIncrementally : false,
+      
       listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
