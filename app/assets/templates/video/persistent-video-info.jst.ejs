@@ -79,6 +79,11 @@
 
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">
+	
+			<% if(currentFrame.get('isFreshPlayNew')){ %>
+				<div class="persistent_video_info__sash">new</div>
+			<% } %>
+	
       <h2 class="persistent_video_info__h1">
         <%= currentVideo.get('title') %>
       </h2>

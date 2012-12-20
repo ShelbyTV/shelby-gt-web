@@ -212,6 +212,22 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 }
 
+// FreshPlay "new" frame
+.persistent_video_info__sash {
+  @include rotate(45deg);
+  
+  background: red;
+  box-shadow: 0 0 3px 0 #333;
+  color: white;
+  font-size: 1.3em;
+  font-weight: 600;
+  position: absolute;
+  right: -20px;
+  text-align: center;
+  text-shadow: -1px -1px 0px #A00;
+  top: 10px;
+  width: 80px;
+}
 
 /*
  * Next Frame

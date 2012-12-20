@@ -71,7 +71,7 @@
       // for how many days should the random reorder stay consistent
       reorderingConsistencyDays : 1,
       // Keep frames created less then newFramesMaxAgeDays days as "new"
-      newFramesMaxAgeDays : 5,
+      newFramesMaxAgeDays : 1,
       // Always have this many "new" Frames at the top of the roll
       newFramesMinCount : 1,
       
