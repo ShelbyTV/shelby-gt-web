@@ -1,20 +1,18 @@
+<% var roll = shelby.models.guide.get('activeFrameModel').get('roll') %>
+<% var rollCreator = shelby.models.guide.get('activeFrameModel').get('creator') %>
+
 <div class="notification_module notification_module--anonymous-signup">
-  <div class="notification_actions dropdown_module">
-    <button class="button_primer button_gray-medium notification_button dropdown_button">
-      <i class="button_icon_right dropdown_icon icon">
-        Log in
+  <div class="notification_actions js-learn-more">
+    <button class="button_primer button_gray-medium notification_button">
+      <i class="button_icon_right">
+        Learn more
       </i>
     </button>
-    <section class="dropdown_section signup-section">
-      <div class="dropdown_lining signup-section-lining clearfix">
-        <%= SHELBYJST['signin-form']() %>
-      </div><!-- eo signup-section-lining -->
-    </section><!-- eo signup-section -->
   </div><!-- eo dropdown_module -->
 
   <div class="notification_body clearfix">
     <div class="notification_message">
-          <h1 class="anon-benefit-title">You need to log in first!</h1>
+          <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby to curate his .TV!</h1>
       <% switch(bannerType){
          case libs.shelbyGT.AnonymousActions.QUEUE: %>
           <!-- <h1 class="anon-benefit-title">Don't miss a thing!</h1> -->

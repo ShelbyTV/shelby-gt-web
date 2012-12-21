@@ -13,13 +13,17 @@
 libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotification.extend({
 
   _height : "55px",
-  
+
   _bannerType : 0,
-  
+
+  events : {
+    "click .js-learn-more"          : "_onFullShelby"
+  },
+
   bannerElement : function(obj){
     return SHELBYJST['anon_banner']({bannerType: this._bannerType});
   },
-  
+
   /*
    * If user is anonymous, display the appropriate banner and return false.
    * Otherwise, render nothing and return false.
@@ -32,8 +36,12 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
     } else {
       return true;
     }
+  },
+
+  _onFullShelby : function(){
+    window.top.location.href = shelby.config.appUrl;
   }
-  
+
 });
 
 libs.shelbyGT.AnonymousActions = {
