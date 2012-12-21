@@ -17,6 +17,7 @@
     },
 
     _post : function(cmd, args){
+      if (libs.utils.environment.isDevelopment()) return false;
 			if (!shelby.userSignedIn()) return false;
       if (this._disabled) return false;
 
@@ -59,7 +60,7 @@
           },
           error : function(){
             self._disabled = true;
-            console.log("couldn't contact local rhombus API .. disabling rhombus", arguments);
+            //console.log("couldn't contact rhombus API .. disabling rhombus", arguments);
           },
           success : function(){
             //do nothing
