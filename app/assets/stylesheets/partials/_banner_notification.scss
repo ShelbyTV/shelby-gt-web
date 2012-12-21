@@ -267,12 +267,12 @@ $bookmarklet-color: $shelby-blue;
 
   .notification_body {
     color: $text;
-    margin: 3px 105px;
+    margin: 3px 110px;
   }
 
   .notification_message {
    float: left;
-    font-size: 1.5em;
+    font-size: 1.35em;
     text-align: left;
   }
 
@@ -280,6 +280,16 @@ $bookmarklet-color: $shelby-blue;
   .social_login-facebook {
     font-size: .85em;
     margin-top: .5em;
+  }
+
+  .js-close-banner {
+    float: right;
+    margin-top: -3.75em;
+    margin-right: 0.5em;
+    padding: 1em;
+    .icon {
+      padding: 1.0em;
+    }
   }
 }//eo anonymous-signup-notification
 

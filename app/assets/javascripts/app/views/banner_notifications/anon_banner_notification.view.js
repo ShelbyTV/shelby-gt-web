@@ -40,7 +40,7 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
   },
 
   _closeBanner : function(){
-    //
+    this.unRender();
   },
 
   _goToShelby : function(){
