@@ -22,7 +22,6 @@
 
 	<%= yield %>
 
-  <%= vanity_js %>
   <% if Rails.env == 'production' %>
     <script>
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
@@ -46,13 +45,16 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
+  <%= vanity_js %>
   <script>
-    try {
-      _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_videocard', '<%= @seo_ad_videocard %>']);
-    } catch(e) {}
-    try {
-      _kmq.push(['set', {'seo_ad_videocard': '<%= @seo_ad_videocard %>'}]);
-    } catch(e) {}
+    <% vanity_experiments_each do |name, alternative| %>
+      try {
+        _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+      } catch(e) {}
+      try {
+        _kmq.push(['set', {'<%= name %>': '<%= alternative.value %>'}]);
+      } catch(e) {}
+    <% end %>
   </script>
 </body>
 </html>
