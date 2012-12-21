@@ -27,3 +27,17 @@
     margin-bottom: 0.25em;
   }
 }
+
+.frame--explore-promo {
+  padding: 0.8em;
+
+  .explore-promo__button {
+    @include button-sizing;
+
+    float: right;
+  }
+
+  .explore-promo__h1 {
+    line-height: 2.3;
+  }
+}
