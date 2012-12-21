@@ -17,7 +17,8 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
   _bannerType : 0,
 
   events : {
-    "click .js-learn-more"          : "_onFullShelby"
+    "click .js-close-banner"        : "_closeBanner",
+    "click .js-learn-more"          : "_goToShelby"
   },
 
   bannerElement : function(obj){
@@ -38,7 +39,11 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
     }
   },
 
-  _onFullShelby : function(){
+  _closeBanner : function(){
+    //
+  },
+
+  _goToShelby : function(){
     window.top.location.href = shelby.config.appUrl;
   }
 
