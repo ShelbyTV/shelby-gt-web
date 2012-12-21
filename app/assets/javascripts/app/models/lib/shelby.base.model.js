@@ -41,6 +41,20 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
     return Backbone.sync(method, model, options);
   },
   
+  // supporting the following additional events (in addition to those of Backbone)
+  messages : {
+    fetchComplete : "fetch:complete",
+  },
+  
+  fetch : function(options){
+    var self = this;
+    var jqXHR = Backbone.Model.prototype.fetch.call(this, options);
+    jqXHR.success(function(resp){
+      self.trigger(self.messages.fetchComplete);
+    });
+    return jqXHR;
+  },
+  
   /*  method: triggerTransientChange
       description: Conveniece method to set model attribute, in the process executing all change handlers bound and
         scoped to that attribute, then reset the attribute to null. Allows a stateful approach to sending
