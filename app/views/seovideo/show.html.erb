@@ -16,6 +16,13 @@
           Shelby.tv
         </h1>
       </a>
+      <% if @seo_search_position == :nav %>
+        <form action="/search" id="js-search-form" class="search-form">
+          <span class="button_icon icon_search icon search-form-text js-search-form-text-wrapper">
+            <input name="query" type="text" required placeholder="Search" class="js-search-form-text" id="js-search-form-text" />
+          </span>
+        </form>
+      <% end %>
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
   </header>
@@ -233,6 +240,15 @@ $(document).ready(function(){
       $('#js-thankyou').removeClass('hidden');
     }, 'jsonp');
     return false;
+  });
+
+  $('#js-search-form').on('submit', function(e){
+    // form handles its own submission, so don't stop propagation
+    // but also want to track the search as an event in ga
+    var searchQuery = $(e.currentTarget).find("#js-search-form-text").val().toLowerCase();
+    try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
+    } catch(e) {}
   });
 });
 </script>
