@@ -17,34 +17,36 @@
         </h1>
       </a>
       <% if @seo_search_position == :nav %>
-        <form action="/search" id="js-search-form" class="search-form">
-          <span class="button_icon icon_search icon search-form-text js-search-form-text-wrapper">
-            <input name="query" type="text" required placeholder="Search" class="js-search-form-text" id="js-search-form-text" />
+        <form action="/search" id="js-seovideo-search-form" class="nav-search-form">
+          <span class="button_icon icon_search icon nav-search-form-text js-seovideo-search-form-text-wrapper">
+            <input name="query" type="text" required placeholder="Search" class="js-seovideo-search-form-text" id="js-seovideo-search-form-text" />
           </span>
         </form>
       <% end %>
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <div class="seovideo__banner_wrapper">
-      <div class="media_module seovideo__banner clearfix">
-        <form id="js-seovideo-search-form" class="form_module form_module_horz form_module--search">
-          <div class="media_image media_image--rev">
-            <button class="button_primer button_blue form_submit">
-              Search
-            </button>
-          </div>
+    <% if @seo_search_position == :banner %>
+      <div class="seovideo__banner_wrapper">
+        <div class="media_module seovideo__banner clearfix">
+          <form action="/search" id="js-seovideo-search-form" class="form_module form_module_horz form_module--search">
+            <div class="media_image media_image--rev">
+              <button class="button_primer button_blue form_submit">
+                Search
+              </button>
+            </div>
 
-          <div class="media_body">
-            <label for="seovideo-search-input" class="form_label visuallyhidden">
-              Search:
-            </label>
+            <div class="media_body">
+              <label for="js-seovideo-search-form-text" class="form_label visuallyhidden">
+                Search:
+              </label>
 
-            <input required id="seovideo-search-input" name="seovideo-search-input" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
-          </div>
-        </form>
-      </div>
-    </div><!-- eo seovideo__banner_wrapper -->
+              <input required id="js-seovideo-search-form-text" name="query" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+            </div>
+          </form>
+        </div>
+      </div><!-- eo seovideo__banner_wrapper -->
+    <% end %>
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
@@ -262,10 +264,10 @@ $(document).ready(function(){
     return false;
   });
 
-  $('#js-search-form').on('submit', function(e){
+  $('#js-seovideo-search-form').on('submit', function(e){
     // form handles its own submission, so don't stop propagation
     // but also want to track the search as an event in ga
-    var searchQuery = $(e.currentTarget).find("#js-search-form-text").val().toLowerCase();
+    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val().toLowerCase();
     try {
         _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
     } catch(e) {}
