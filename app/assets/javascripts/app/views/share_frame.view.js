@@ -32,6 +32,11 @@
       this.renderChildInto(discussionRollChooser, this.$(".discussion-roll-chooser-wrapper"));
     },
     
+    shouldValidateEmail : function(){
+      //only validate when email input is visible
+      return this.$("#email-recipients:visible").length === 1;
+    },
+    
     _share : function(){
       var self = this;
 
