@@ -241,8 +241,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var self = this;
     var childView = this._constructListItemView(item);
 
-    //special handling if the item was not added to the end of the collection
-    if (options && _(options).has('index') && options.index != this._listItemViews.length) {
+    // Special handling if the item was not simply appended
+    if (options && _(options).has('index')){
       this._listItemViews.splice(options.index, 0, childView);
       // adjusting for size of _intervalViews b/c DOM has views from both _intervalViews and _listItemViews
       this.insertChildAt(childView, options.index+this._intervalViews.length);
