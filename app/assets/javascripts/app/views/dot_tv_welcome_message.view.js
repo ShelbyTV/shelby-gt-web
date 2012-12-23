@@ -16,7 +16,7 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
   },
 
   _hideWelcomeMessage : function(){
-    // hide me
+    this.$el.addClass('hidden');
   }
 
 });
