@@ -593,6 +593,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
+
+    // show dot-tv-welcome-message
+    if (topLevelViewsOptions.isIsolatedRoll){
+      shelby.views.dotTVWelcome = shelby.views.dotTVWelcome ||
+          new libs.shelbyGT.dotTVWelcome({ model : rollModel });
+      shelby.views.dotTVWelcome.render();
+    }
+
+
+
     var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});

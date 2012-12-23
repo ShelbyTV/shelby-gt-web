@@ -61,6 +61,7 @@ group :production, :staging do
 end
 group :development do
   gem 'capistrano-unicorn', :require => false
+  gem 'thin'
 end
 
 #
