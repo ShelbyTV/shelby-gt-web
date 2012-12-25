@@ -19,7 +19,7 @@
       <% if @seo_search_position == :nav %>
         <form action="/search" id="js-seovideo-search-form" class="nav-search-form">
           <span class="button_icon icon_search icon nav-search-form-text js-seovideo-search-form-text-wrapper">
-            <input name="query" type="text" required placeholder="Search" class="js-seovideo-search-form-text" id="js-seovideo-search-form-text" />
+            <input name="query" type="text" required placeholder="Search" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
           </span>
         </form>
       <% end %>
@@ -271,6 +271,14 @@ $(document).ready(function(){
     try {
         _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
     } catch(e) {}
+  });
+
+  $('.js-seovideo-search-form-text.js-seovideo-search-form-text--nav').on('focus', function(e){
+    $('.nav-search-form-text').addClass('focused');
+  });
+
+  $('.js-seovideo-search-form-text.js-seovideo-search-form-text--nav').on('blur', function(e){
+    $('.nav-search-form-text').removeClass('focused');
   });
 });
 </script>
