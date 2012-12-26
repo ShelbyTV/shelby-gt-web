@@ -144,11 +144,13 @@ p {
   font-size: 1.4em;
 
   .form_input {
+    display: block;
     width: 100%;
   }
 
   .form_submit {
-    padding: 0.7em 2em;
+    display: block;
+    padding: 0.71em 2em;
   }
 }
 
