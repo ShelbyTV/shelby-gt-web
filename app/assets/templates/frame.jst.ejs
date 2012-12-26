@@ -115,8 +115,8 @@
               <% } %>
             </p>
 
-            <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-              <p class="xuser-message">
+            <p class="xuser-message">
+              <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
                 <% var comment = messages.models[0].escape('text') %>
                 <% if (comment.length > 256) { %>
                   <%= comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%= comment.slice(256) %></span>
@@ -124,8 +124,8 @@
                 <% } else { %>
                   <%= comment %>
                 <% } %>
-              </p>
-            <% } %>
+              <% } %>
+            </p>
 
             <% if (!user.isAnonymous()) { %>
               <div class="frame-subsection">
