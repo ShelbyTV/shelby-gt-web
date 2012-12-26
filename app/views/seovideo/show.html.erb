@@ -19,7 +19,11 @@
       <% if @seo_search_position == :nav %>
         <form action="/search" id="js-seovideo-search-form" class="nav-search-form">
           <span class="button_icon icon_search icon nav-search-form-text js-seovideo-search-form-text-wrapper">
-            <input name="query" type="text" placeholder="Search" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
+            <% if @search_query %>
+              <input name="query" type="text" placeholder="Search" value="<%= @search_query%>" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
+            <% else %>
+              <input name="query" type="text" placeholder="Search" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
+            <% end %>
           </span>
         </form>
       <% end %>
@@ -41,7 +45,11 @@
                 Search:
               </label>
 
-              <input id="js-seovideo-search-form-text" name="query" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+              <% if @search_query %>
+                <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+              <% else %>
+                <input id="js-seovideo-search-form-text" name="query" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+              <% end %>
             </div>
           </form>
         </div>
