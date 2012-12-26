@@ -38,13 +38,21 @@
 	    </header>
 
 	    <div class="content_wrapper main-layout js-main-layout">
-	      <section class="js-inactivity-preemption js-guide animate_module sidebar_module guide-wrapper clearfix" role="sidebar">
+	      <section class="js-inactivity-preemption js-guide sidebar_module guide-wrapper hide-guide clearfix" role="sidebar">
 	        <!-- content filled in by GuideView -->
 	      </section><!-- eo .guide-wrapper -->
+
+        <section class="user-info-lining js-user-info-lining">
+          <!-- content filled in by UserProfileInfoView -->
+        </section><!-- eo .user-info-lining -->
 
 	      <section class="content_lining" role="main">
 	        <!-- content filled in by children of MainLayoutView -->
 	      </section><!-- eo .content_lining -->
+
+        <section class="user-channel-guide-lining js-user-channel-guide-lining">
+          <!-- content filled in by UserChannelGuideView -->
+        </section><!-- eo .user-channel-guide-lining -->
 	    </div><!-- eo .content_wrapper.main-layout -->
 
 	    <div class="content_wrapper explore-layout js-explore-layout">
@@ -60,7 +68,7 @@
 					<!-- children appended in by GuideOverlayManager -->
 	      </section>
 	    </div><!-- eo .content_wrapper.action-layout -->
-	
+
 			<!-- Need this at the base level so it's always in the DOM -->
 			<div id="js-notifications-wrapper" class="notifications-wrapper hide animate_module"></div>
 		<% end %>
@@ -74,7 +82,7 @@
 	    s.parentNode.insertBefore(g,s)}(document,'script'));
 	  </script>
 	<% end %>
-	
+
 	<% if Rails.env == 'production' %>
 		<script>
 		  var _kmq = _kmq || [];
@@ -91,7 +99,7 @@
 		  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 		</script>
 	<% end %>
-	
+
 	<%= javascript_include_tag "deferred" %>
 </body>
 </html>

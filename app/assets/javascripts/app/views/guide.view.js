@@ -11,6 +11,14 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
       return SHELBYJST['guide'](obj);
   },
 
+  initialize : function(){
+    this.model.bind("change:displayState", this._onChangeDisplayState, this);
+  },
+
+  _cleanup : function(){
+    this.model.unbind("change:displayState", this._onChangeDisplayState, this);
+  },
+
   render : function(){
     var self = this;
 
@@ -53,6 +61,10 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
         shelby.models.guide.trigger('reposition');
       }
     }
+  },
+
+  _onChangeDisplayState : function(guideModel, displayState) {
+    this.$el.toggleClass('hide-guide', displayState == libs.shelbyGT.DisplayState.userProfile);
   }
 
 });

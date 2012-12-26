@@ -25,6 +25,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "team"                                 : "displayTeam",
     "tools"                                : "displayTools",
     ""                                     : "displayDashboard",
+    ":userName"                            : "displayUserProfile",
     "*url"                                 : "doNothing"
   },
 
@@ -128,7 +129,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // Adjust *what* is displayed
     var options = {updateRollTitle:false};
-    
+
     shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
       new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
@@ -140,13 +141,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
-    
+
     //hide the guide initially for iso rolls
     if(shelby.routeHistory.length === 0){
       shelby.models.userDesires.set({guideShown: false});
     }
   },
-  
+
   displayFacebookGeniusRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('facebook-genius');
@@ -158,7 +159,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
     }
-    
+
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -175,7 +176,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-  
+
   displayUserPersonalRoll : function(userId, params){
     var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
@@ -345,6 +346,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayTools : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
+  },
+
+  displayUserProfile : function(userName, params) {
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.userProfile);
+    shelby.models.userForProfile.set('nickname', userName);
+    shelby.models.userForProfile.fetch();
   },
 
   doNothing : function(url){

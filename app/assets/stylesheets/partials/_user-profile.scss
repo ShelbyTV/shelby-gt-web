@@ -1,0 +1,28 @@
+@import "base";
+
+.user-info-lining {
+  background-color: $base;
+  display: none;
+  float: left;
+  height: 50%;
+  position: relative;
+  width: 50%;
+}
+
+.user-info-lining, .user-channel-guide-lining {
+  display: none;
+}
+
+/* Overrides when showing user profile */
+
+.show-user-profile {
+
+  .content_lining {
+    height:50%;
+  }
+
+  .user-info-lining, .user-channel-guide-lining {
+    display: block;
+  }
+
+}

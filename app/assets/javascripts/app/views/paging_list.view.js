@@ -3,11 +3,11 @@ libs.shelbyGT.PagingMethod = {
   key : 'key'
 };
 
-/* 
- * TODO: this class, and the options individually, need documentation 
+/*
+ * TODO: this class, and the options individually, need documentation
  */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
-  
+
   _numItemsLoaded : 0,
 
   _numItemsRequested : 0,
@@ -41,7 +41,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
-    /* 
+    /*
       Change the copy shown in the load more button with this attribute.
       To change the element itself: override template() and be sure to retain
       the class .js-load-more for events to work.
@@ -117,7 +117,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
-    
+
   },
 
   _onFetchSuccess : function(model, response){
@@ -141,7 +141,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
           self._loadMore();
         }
       }, 250);
-    }    
+    }
   },
 
   _doesResponseContainListCollection : function(response) {

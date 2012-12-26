@@ -53,7 +53,7 @@
       shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
       Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
     },
-    
+
     _setPlayingFrameGroupCollection : function(pfgc){
       this._playingFrameGroupCollection = pfgc;
       Backbone.Events.trigger("change:playingFrameGroupCollection", pfgc);
@@ -68,10 +68,12 @@
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore
-        && model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore &&
+          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
+          model.get('displayState') != libs.shelbyGT.DisplayState.userProfile) {
         this._updateChild(model);
       }
+      $('.js-guide').addClass('animate_module');
     },
 
     _updateChild : function(guideModel) {
@@ -242,7 +244,7 @@
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();
-      
+
       //remove any current guide overlay views
       shelby.models.guideOverlay.clearAllGuideOverlays();
 
