@@ -26,3 +26,27 @@
   }
 
 }
+
+.user-channel {
+  width : 3000px;
+}
+
+.user-channel__wrapper {
+  overflow-x : auto;
+}
+
+.user-channel__title {
+  float : left;
+  width: 150px;
+}
+
+.user-channel__item {
+  float: left;
+  width: 300px;
+
+  &:hover {
+    .explore-frame-menu {
+      display: block;
+    }
+  }
+}

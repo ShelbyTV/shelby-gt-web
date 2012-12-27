@@ -1,5 +1,7 @@
 libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
+  _channelListView : null,
+
   events : {
   },
 
@@ -15,20 +17,29 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   render : function(){
+    var self = this;
+
     this.$el.html(this.template({roll : this.model}));
-    this.appendChild(new libs.shelbyGT.RollView({
+    this._channelListView = new libs.shelbyGT.RollView({
       collapseViewedFrameGroups : false,
       fetchParams : {
         include_children : true
       },
+      noMoreResultsViewProto : null,
       firstFetchLimit : 5,
       infinite : false,
+      isIntervalComplete : function() {
+        return false;
+      },
       limit : 6,
+      listItemView : 'UserChannelFrameItemView',
       model : this.model
-    }));
+    });
+    this.appendChildInto(this._channelListView, '.js-user-channel');
     this.model.fetch({
       success: function(rollModel, resp){
-        console.log("fetched channel roll frames", arguments);
+        var newWidth = self._channelListView._displayCollection.length * 300 + 150;
+        self.$('.js-user-channel').width(newWidth + 'px');
       }
     });
     return libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
