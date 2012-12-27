@@ -6,13 +6,13 @@
         <%= user.get('name') %>
       </div>
       <div class="user-profile-info-services__shelby">
-        <a href="http://<%= user.get('personal_roll_subdomain') %>.shelby.tv"><%= user.get('personal_roll_subdomain') %>.shelby.tv</a>
+        <a href="http://<%= user.get('personal_roll_subdomain') || user.get('nickname') %>.shelby.tv"><%= user.get('personal_roll_subdomain') || user.get('nickname') %>.shelby.tv</a>
       </div>
       <ul class="list_module user-profile-info-services__external">
         <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
         <% if (typeof tw !== 'undefined'){ %>
           <li class="list_item clearfix">
-            <a src="http://twitter.com/<%= tw.nickname %>" target="_blank">
+            <a href="http://twitter.com/<%= tw.nickname %>" target="_blank">
               <button class="button_primer button_twitter-blue twitter">
                 <i class="button_icon_right icon_social_twitter icon">
                  twitter
@@ -24,7 +24,7 @@
         <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
         <% if (typeof fb !== 'undefined'){ %>
           <li class="list_item clearfix">
-            <a src="http://facebook.com/<%= fb.nickname %>" target="_blank">
+            <a href="http://facebook.com/<%= fb.nickname %>" target="_blank">
               <button class="button_primer button_facebook-blue facebook">
                 <i class="button_icon_right icon_social_facebook icon">
                   facebook
@@ -36,7 +36,7 @@
         <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
         <% if (typeof tu !== 'undefined'){ %>
           <li class="list_item clearfix">
-            <a src="http://<%= tu.id %>.tumblr.com">
+            <a href="http://<%= tu.uid %>.tumblr.com" target="_blank">
               <button class="button_primer button_tumblr-blue tumblr" target="_blank">
                 <i class="button_icon_right icon_social_tumblr icon">
                   tumblr
