@@ -1,22 +1,34 @@
 libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
 
   events : {
-    "click .js-start-playing"         : "_hideWelcomeMessage"
+    "click .js-start-playing"         : "_startPlaying"
   },
 
-  el : '#dot-tv-welcome-message',
+  el : '#js-shelby-wrapper',
 
   template : function(obj){
-    console.log("dotTVWelcome");
     return SHELBYJST['dot-tv-welcome-message'](obj);
   },
 
-  render : function(){
-    this.$el.html(this.template({user:this.model}));
+  initialize : function(){
+    this.model.bind('change', this.render, this);
   },
 
-  _hideWelcomeMessage : function(){
-    this.$el.addClass('hidden');
+  cleanup : function(){
+    this.model.unbind('change', this.render, this);
+  },
+
+  render : function(){
+    this.$el.append(this.template({roll:this.model}));
+    // if we dont want the video to auto play...
+    shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+  },
+
+  _startPlaying : function(){
+    $('#dot-tv-welcome-message').addClass('hidden');
+    // now play the video and reset autoplay to true.
+    shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+    shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
   }
 
 });

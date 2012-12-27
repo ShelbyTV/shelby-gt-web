@@ -594,13 +594,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       fetchOptions.success = options.onRollFetch;
     }
 
-    // show dot-tv-welcome-message
-    if (topLevelViewsOptions.isIsolatedRoll){
+    // show dot-tv-welcome-message if on an isolated roll
+    if (topLevelViewsOptions.isIsolatedRoll && Browser.isIframe()){
       shelby.views.dotTVWelcome = shelby.views.dotTVWelcome ||
           new libs.shelbyGT.dotTVWelcome({ model : rollModel });
-      shelby.views.dotTVWelcome.render();
     }
-
 
 
     var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
