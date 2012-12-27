@@ -1,3 +1,36 @@
 <% if (!user.isNew()) { %>
-  Hello <%= user.get('name') %>
+  <div class="user-profile-info-wrapper">
+    <div class="user-profile-info-person">
+      <img class="user-profile-info__avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user, libs.shelbyGT.UserAvatarSizes.large) %>"/>
+      <div class="user-profile-info__name">
+        <%= user.get('name') %>
+      </div>
+      <div class="user-profile-info-services__shelby">
+        <a href="http://<%= user.get('personal_roll_subdomain') %>.shelby.tv"><%= user.get('personal_roll_subdomain') %>.shelby.tv</a>
+      </div>
+      <ul class="list_module user-profile-info-services__external">
+        <li class="list_item clearfix">
+          <button class="button_primer button_twitter-blue twitter">
+            <i class="button_icon_right icon_social_twitter icon">
+              twitter
+            </i>
+          </button>
+        </li>
+        <li class="list_item clearfix">
+          <button class="button_primer button_facebook-blue facebook">
+            <i class="button_icon_right icon_social_facebook icon">
+              facebook
+            </i>
+          </button>
+        </li>
+        <li class="list_item clearfix">
+          <button class="button_primer button_tumblr-blue tumblr">
+            <i class="button_icon_right icon_social_tumblr icon">
+              tumblr
+            </i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 <% } %>
