@@ -25,6 +25,10 @@ gem 'youtube_it'
 #
 gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "experiment-each"
 
+# ---------- Other utils
+#
+gem 'addressable' # for URI parsing
+
 #
 # ---------- External Services
 #
