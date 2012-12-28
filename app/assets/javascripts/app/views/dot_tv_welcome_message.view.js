@@ -1,10 +1,10 @@
 libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
 
   events : {
-    "click .js-start-playing"         : "_startPlaying"
+    "click .js-start-playing" : "_startPlaying"
   },
 
-  el : '#js-shelby-wrapper',
+  el : '.js-isolated-roll-welcome',
 
   template : function(obj){
     return SHELBYJST['dot-tv-welcome-message'](obj);
@@ -19,7 +19,7 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.append(this.template({roll:this.model}));
+    this.$el.html(this.template({roll:this.model}));
     // if we dont want the video to auto play...
     shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
   },
@@ -30,5 +30,4 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
     shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
     shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
   }
-
 });

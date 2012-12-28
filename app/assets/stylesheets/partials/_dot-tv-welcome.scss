@@ -1,49 +1,70 @@
-@import "base";
 //------------------------------------------------------------------------------
 //  welcome message shown on .tv's
 //------------------------------------------------------------------------------
-#dot-tv-welcome-message {
-  background: $guide-bg-color;
-  box-shadow: 0 0 4px 0 rgba(0,0,0,.4);
-  position: relative;
-  margin-top: 20%;
-  width: 500px;
-  height: 200px;
-  padding: 20px 0;
 
-  font-size: 1.2em;
-  text-align: center;
+//abstracts (els)
 
-  h1 {
-    margin-top: 5px;
-  }
-
-  .roll-header-image {
-    margin: -20px auto 0;
-    width: 100%;
-
-    img { width: 100%; }
-  }
-}
-
-.welcome-sub-message {
-  margin-top: 10px;
-
-  img {
-    float: left;
-    margin-right: 10px;
-  }
-}
-
-.dot-tv-welcome__button--play {
+.welcome-message__h1 {
+  color: $button-color;
+  bottom: 0;
+  font-size: 1.4em;
+  left: 0;
+  padding: 4px 6px;
   position: absolute;
-  bottom: 20px;
-  left: 190px;
-  padding: 10px;
+  width: 100%;
+  text-shadow: 0 0 4px black;
+}
+
+.welcome-message__h2 {
   font-size: 1.1em;
+  line-height: 1.7;
+}
+
+.welcome-message__subline {
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+
+.welcome-message__button {
+  font-size: 1.3em;
+  padding: 0.5em 1.9em;
 
   i {
-    padding-right: 20px;
     background-size: contain;
+    padding-right: 20px;
+  }
+}
+
+.welcome-message__banner {
+
+}
+
+//positioning wrapper
+.welcome-message__wrapper {
+  height: 100%;
+}
+
+//root
+.welcome-message {
+  font-size: 1.2em;
+  left: 50%;
+  margin-left: -191px;
+  padding: 6px;
+  position: relative;
+  top: 20%;
+  width: 382px;
+}
+
+//structure
+.welcome-message__head {
+  position: relative;
+  margin: 0 0 3px;
+}
+
+.welcome-message__body {
+  padding: 6px 5px 3px 6px;
+
+  .welcome-message__button {
+    margin: 0 0 1px;//fixes overflow:hidden; ugliness
   }
 }
