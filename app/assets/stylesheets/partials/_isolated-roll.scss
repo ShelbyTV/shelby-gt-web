@@ -1,50 +1,44 @@
-@import
-    "base",
-    "base-mixin",
-
-    "compass",
-    "compass/css3",
-    "compass/css3/border-radius",
-    "compass/css3/box-shadow";
-
-
 //-------------------------
 // header bar
 //-------------------------
 
-.iso-roll-app-header {
+.isoroll__header {
   max-height: 36px;
   overflow: hidden;
   border-bottom: none;
 }
+
 
 .current-roll {
   float: left;
   width: $guide-width;
 }
 
-.selectable-rolls-list {
+//main nav list
+.isoroll-nav__list {
   margin: 0;
   padding: 0;
 }
 
-.selectable-roll-item {
+.isoroll-nav__item {
   display: block;
   float: left;
   list-style-type: none;
+
+  &.secondary {
+    float: right;
+  }
 }
 
-.iso-roll-nav-button {
+.isoroll-nav__button {
   @include ellipsis;
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
 
-  border-radius: 3px;
   color: $guide-presentation-button;
   display: block;
   font-size: 1.2em;
   font-weight: 500;
   font-family: $font-family-display;
-  margin: 5px 6px 0px;
   max-width: $guide-width * 0.75;
   min-width: $guide-width / 4;
   height: 35px;
@@ -60,16 +54,18 @@
 }
 
 .active-item {
-  .iso-roll-nav-button,
-  .iso-roll-nav-button:hover {
+  .isoroll-nav__button,
+  .isoroll-nav__button:hover {
     background: black;
     color: #efefef;
   }
 }
 
-.isoroll-header__follow-unfollow-button,
-.isoroll-header__full-shelby-button {
+//secondary nav buttons
+.isoroll-nav__button--unfollow,
+.isoroll-nav__button--shelby {
   font-size: 1.2em;
+  margin: 5px 5px 5px 0;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 
@@ -78,7 +74,8 @@
   }
 }
 
-.isoroll-header__full-shelby-button {
+
+.isoroll-header--shelby {
   width: 145px;
 }
 
