@@ -49,7 +49,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       var video_id,
           frame,
           dashboard_entry;
-      
+
       if (model instanceof libs.shelbyGT.DashboardEntryModel) {
         if (!model.get('frame') || !model.get('frame').get('video')){
           return false;
@@ -71,20 +71,20 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       } else {
         continue;
       }
-  
+
       var dupe = false;
-  
+
       for (var j = 0; j < this.length && !dupe; j++) {
          if (this.at(j).getFirstFrame().get('video').id == video_id) {
             this.at(j).add(frame, dashboard_entry, options);
             dupe = true;
          }
       }
-  
+
       if (!dupe) {
         var frameGroup = new libs.shelbyGT.FrameGroupModel();
         frameGroup.add(frame, dashboard_entry, options);
-  
+
         if (this._collapseViewedFrameGroups) {
            var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
              return entry.id == frame.get('video').id;
@@ -94,7 +94,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
              frameGroup.set({ collapsed : true }, options);
            }
         }
-  
+
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
       }
     }
@@ -104,7 +104,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   getNextPlayableFrame : function(currentFrame, skip, returnFirstOnFail) {
     returnFirstOnFail = typeof returnFirstOnFail !== 'undefined' ? returnFirstOnFail : false;
-    
+
     // look for a frame group that contains the currently playing frame
     var currentlyPlayingIndex = this._indexOfMatchingFrameGroup(currentFrame);
     if (currentlyPlayingIndex != -1) {
@@ -112,10 +112,12 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       if (nextPlayableFrameGroup) {
         return nextPlayableFrameGroup.getFirstFrame();
       } else if(returnFirstOnFail) {
-        return this.at(0).getFirstFrame();
+        return this.length ? this.at(0).getFirstFrame() : null;
       } else {
         return null;
       }
+    } else if (returnFirstOnFail) {
+      return this.length ? this.at(0).getFirstFrame() : null;
     } else {
       return null;
     }
