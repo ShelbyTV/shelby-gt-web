@@ -61,6 +61,22 @@
   }
 }
 
+.isoroll-nav__avatar {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  display: inline-block;
+  height: 2em;
+  overflow: hidden;
+  width: 2em;
+  vertical-align: middle;
+
+  img {
+    width: 100%;
+  }
+}
+
 //secondary nav buttons
 .isoroll-nav__button--unfollow,
 .isoroll-nav__button--shelby {

@@ -1,13 +1,17 @@
-
 <% if(associatedRolls){ %>
-	<ol class="isoroll-nav__list">
-		<% associatedRolls.forEach(function(roll){ %>
-			<li class="isoroll-nav__item<%= roll.id == currentRoll.id ? ' active-item' : '' %>">
-				<a class="isoroll-nav__button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
-					<%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
-				</a>
-			</li>
-		<% }) %>
+  <ol class="isoroll-nav__list">
+    <% associatedRolls.forEach(function(roll){ %>
+      <li class="isoroll-nav__item<%= roll.id == currentRoll.id ? ' active-item' : '' %>">
+
+        <a class="isoroll-nav__button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
+
+        <span class="isoroll-nav__avatar" style="background-image:url(<%= roll.get('thumbnail_url') %>);">
+          <img src="<%= roll.get('thumbnail_url') %>" title="" alt=""/>
+        </span>
+          <%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
+        </a>
+      </li>
+    <% }) %>
 
     <li class="isoroll-nav__item secondary">
       <button class="button_primer button_gray-seven isoroll-nav__button--shelby js-full-shelby-button">reserve your own .tv</button>
@@ -16,5 +20,5 @@
     <li class="isoroll-nav__item secondary">
       <button class="button_primer button_gray-seven isoroll-nav__button--unfollow js-follow-button">&nbsp;</button>
     </li>
-	</ol>
+  </ol>
 <% } %>
