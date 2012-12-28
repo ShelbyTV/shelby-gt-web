@@ -30,7 +30,10 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
     }));
     //TODO: this is like not being used right now but probably will be.
     // this.renderChild(new libs.shelbyGT.addVideoView({model:this.model}));
-    this.renderChild(new libs.shelbyGT.GuideContentView({model:this.model}));
+    this.renderChild(new libs.shelbyGT.GuideContentView({
+      model : this.model,
+      playlistManager : shelby.models.playlistManager
+    }));
 
     // enable iso-roll dynamically adjusting header image
     if( this.model.get('displayIsolatedRoll') ){

@@ -506,6 +506,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
+    shelby.views.playlistManager = shelby.views.playlistManager ||
+        new libs.shelbyGT.PlaylistManagerView({
+          guideModel : shelby.models.guide,
+          model : shelby.models.playlistManager
+        });
 
     if(!Browser.isIos()){
       //irrelevant views for iOS devices.
