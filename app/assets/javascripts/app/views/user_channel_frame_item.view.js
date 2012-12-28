@@ -34,9 +34,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _displayVideo : function() {
-    // TODO:: update so that the video plays within the channel guide
-    // shelby.models.routingState.set('forceFramePlay', true);
-    // shelby.router.navigate('roll/' + this.options.roll.id + '/frame/' + this.model.id, {trigger:true});
+    shelby.models.guide.set('activeFrameModel', this._frame);
   },
 
   _queueVideo : function() {

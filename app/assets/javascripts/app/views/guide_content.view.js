@@ -277,25 +277,29 @@
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (activeFrameModel) {
         if (!this.options.playlistManager.get('nowSkippingVideo')) {
-          if (guideModel.get('displayState') == DisplayState.dashboard) {
-            this.options.playlistManager.set({
-              playingFrameGroupCollection : this._dashboardView.frameGroupCollection,
-              playingState : libs.shelbyGT.PlayingState.dashboard,
-              playingRollId : null
-            });
-          } else if (guideModel.get('displayState') == DisplayState.search) {
-            this.options.playlistManager.set({
-              playingFrameGroupCollection : this._videoSearchView.frameGroupCollection,
-              playingState : libs.shelbyGT.PlayingState.search,
-              playingRollId : null
-            });
-          } else {
-            //we're playing some kind of roll
-            this.options.playlistManager.set({
-              playingFrameGroupCollection : this._currentRollView.frameGroupCollection,
-              playingState : libs.shelbyGT.PlayingState.roll,
-              playingRollId : activeFrameModel.get('roll').id
-            });
+          switch (guideModel.get('displayState')) {
+            case DisplayState.dashboard :
+              this.options.playlistManager.set({
+                playingFrameGroupCollection : this._dashboardView.frameGroupCollection,
+                playingState : libs.shelbyGT.PlayingState.dashboard,
+                playingRollId : null
+              });
+              break;
+            case DisplayState.search :
+              this.options.playlistManager.set({
+                playingFrameGroupCollection : this._videoSearchView.frameGroupCollection,
+                playingState : libs.shelbyGT.PlayingState.search,
+                playingRollId : null
+              });
+              break;
+            case DisplayState.standardRoll :
+            case DisplayState.watchLaterRoll :
+              this.options.playlistManager.set({
+                playingFrameGroupCollection : this._currentRollView.frameGroupCollection,
+                playingState : libs.shelbyGT.PlayingState.roll,
+                playingRollId : activeFrameModel.get('roll').id
+              });
+              break;
           }
         }
       } else {

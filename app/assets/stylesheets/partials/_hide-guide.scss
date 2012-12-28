@@ -36,3 +36,8 @@
   // }
 }
 
+.hide-guide--user-profile {
+  &.guide-wrapper{
+    margin-left:-($guide-width);
+  }
+}
