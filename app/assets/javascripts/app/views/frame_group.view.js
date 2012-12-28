@@ -131,7 +131,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _activate : function(){
     if (this.model.get('collapsed')) {
       this._expand();
-      return;
+      return false;
     }
     shelby.models.guide.set('activeFrameModel', this.model.getFirstFrame());
   },
