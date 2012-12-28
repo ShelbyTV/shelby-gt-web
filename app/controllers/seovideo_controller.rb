@@ -35,8 +35,21 @@ class SeovideoController < ApplicationController
     splitConversationMessagesByNetwork()
     setMetaDescription()
 
-    # seo_ad_videocard A/B test
+    # A/B tests
     @seo_ad_videocard = ab_test :seo_ad_videocard
+    @seo_search_position = ab_test :seo_search_position
+    @seo_search_prepopulate = ab_test :seo_search_prepopulate
+
+    if @seo_search_prepopulate
+      # if the referrer is google search, parse the search query out of its url
+      if http_referer = request.env["HTTP_REFERER"]
+        referer_uri = URI(http_referer)
+        if referer_uri.host == 'google.com'
+          query = Rack::Utils.parse_query referer_uri.query
+          @search_query = query["q"]
+        end
+      end
+    end
 
     respond_to do |format|
       format.html { render }
