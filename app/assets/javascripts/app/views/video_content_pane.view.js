@@ -14,12 +14,12 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   options : {
     guide : null,         //injected at construction
-    playbackState : null, //injected
+    playbackState : null //injected
   },
-  
+
   initialize: function(opts){
   },
-  
+
   _cleanup : function(){
   },
 
@@ -29,7 +29,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    
+
     this.renderChild(new libs.shelbyGT.notificationOverlayView({
       model : shelby.models.notificationState
     }));
@@ -42,6 +42,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       el: this.$('#js-persistent-video-info-wrapper'),
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay,
+      playlistManager : shelby.models.playlistManager,
       queuedVideos : shelby.models.queuedVideos,
       userDesires : shelby.models.userDesires
     }));
