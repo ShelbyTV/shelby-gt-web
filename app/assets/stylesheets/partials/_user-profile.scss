@@ -13,6 +13,12 @@
   display: none;
 }
 
+.user-channel-guide-lining {
+  height: 50%;
+  overflow-y: auto;
+  background-color: $base;
+}
+
 /* Overrides when showing user profile */
 
 .show-user-profile {
@@ -27,12 +33,19 @@
 
 }
 
+//------------------------------------------------------------------------------
+//  user channel section specific
+//------------------------------------------------------------------------------
+
 .user-channel {
   width : 3000px;
+  // TODO when load more is not broken, show it
+  .load-more { display: none !important;}
 }
 
 .user-channel__wrapper {
   overflow-x : auto;
+  margin: 10px;
 }
 
 .user-channel__title {
@@ -47,6 +60,72 @@
   &:hover {
     .explore-frame-menu {
       display: block;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  user profile section specific
+//------------------------------------------------------------------------------
+.user-profile-info-person{
+  position: absolute;
+  padding: 10px;
+  height: 50%;
+  width: 100%;
+  top: 100px;
+
+  .user-profile-info__avatar {
+    width: 200px;
+    float:left;
+    margin-right: 10px;
+  }
+  .user-profile-info__name{
+    font-family: $font-family-display;
+    font-size: 4em;
+    font-weight: 400;
+    text-align: left;
+  }
+  .user-profile-info-services__shelby {
+    font-family: $font-family-display;
+    font-size: 3em;
+    font-weight: 400;
+    margin-top: 5px;
+    a {text-decoration: none;}
+  }
+}
+
+.user-profile-info-services__external {
+  margin-top: 25px;
+  font-family: $font-family;
+  font-weight: 100;
+  li {
+    float: left;
+    margin-right: 20px;
+    .twitter {
+      padding: 5px 20px;
+      font-size: 1.25em;
+      i {
+        background-size: contain;
+        padding-right: 30px;
+      }
+    }
+
+    .facebook {
+      padding: 5px 20px;
+      font-size: 1.25em;
+      i {
+        background-size: contain;
+        padding-right: 20px;
+      }
+    }
+
+    .tumblr {
+      padding: 5px 20px;
+      font-size: 1.25em;
+      i {
+        background-size: contain;
+        padding-right: 20px;
+      }
     }
   }
 }

@@ -1,3 +1,51 @@
 <% if (!user.isNew()) { %>
-  Hello <%= user.get('name') %>
+  <div class="user-profile-info-wrapper">
+    <div class="user-profile-info-person">
+      <img class="user-profile-info__avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user, libs.shelbyGT.UserAvatarSizes.large) %>"/>
+      <div class="user-profile-info__name">
+        <%= user.get('name') %>
+      </div>
+      <div class="user-profile-info-services__shelby">
+        <a href="http://<%= user.get('personal_roll_subdomain') || user.get('nickname') %>.shelby.tv"><%= user.get('personal_roll_subdomain') || user.get('nickname') %>.shelby.tv</a>
+      </div>
+      <ul class="list_module user-profile-info-services__external">
+        <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
+        <% if (typeof tw !== 'undefined'){ %>
+          <li class="list_item clearfix">
+            <a href="http://twitter.com/<%= tw.nickname %>" target="_blank">
+              <button class="button_primer button_twitter-blue twitter">
+                <i class="button_icon_right icon_social_twitter icon">
+                 twitter
+                </i>
+              </button>
+            </a>
+          </li>
+        <% } %>
+        <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
+        <% if (typeof fb !== 'undefined'){ %>
+          <li class="list_item clearfix">
+            <a href="http://facebook.com/<%= fb.nickname %>" target="_blank">
+              <button class="button_primer button_facebook-blue facebook">
+                <i class="button_icon_right icon_social_facebook icon">
+                  facebook
+                </i>
+              </button>
+            </a>
+          </li>
+        <% } %>
+        <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
+        <% if (typeof tu !== 'undefined'){ %>
+          <li class="list_item clearfix">
+            <a href="http://<%= tu.uid %>.tumblr.com" target="_blank">
+              <button class="button_primer button_tumblr-blue tumblr" target="_blank">
+                <i class="button_icon_right icon_social_tumblr icon">
+                  tumblr
+                </i>
+              </button>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
 <% } %>
