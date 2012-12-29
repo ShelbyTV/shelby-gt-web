@@ -480,3 +480,20 @@ $share-frame-half-gutter: 4px;
 .via-search {
   .command-sublist { display: none; }
 }
+
+//------------------------------------------------------------------------------
+//  FreshPlay "new" frames
+//------------------------------------------------------------------------------
+.frame.fresh-play-new {
+  overflow: hidden;
+}
+
+.frame.fresh-play-new .sash {
+  @include rotate(45deg);
+  @include sash-primer();
+  
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
+}

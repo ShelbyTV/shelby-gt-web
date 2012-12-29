@@ -202,6 +202,16 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 }
 
+// FreshPlay "new" frame
+.persistent_video_info__sash {
+  @include rotate(45deg);
+  @include sash-primer();
+  
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
+}
 
 /*
  * Next Frame
