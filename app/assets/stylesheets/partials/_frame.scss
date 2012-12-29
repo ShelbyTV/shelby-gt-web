@@ -507,16 +507,10 @@ $share-frame-half-gutter: 4px;
 
 .frame.fresh-play-new .sash {
   @include rotate(45deg);
+  @include sash-primer();
   
-  background: red;
-  box-shadow: 0 0 3px 0 #333;
-  color: white;
-  font-size: 1.3em;
-  font-weight: 600;
   position: absolute;
-  right: -20px;
-  text-align: center;
-  text-shadow: -1px -1px 0px #A00;
+  right: -25px;
   top: 10px;
-  width: 80px;
+  width: 90px;
 }
