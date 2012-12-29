@@ -57,7 +57,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _onPlayingFrameGroupCollectionChange : function(playlistManagerModel, playingFrameGroupCollection){
-    console.log('we changed the playing frame group collection');
     this._playingFrameGroupCollection = playingFrameGroupCollection;
     this.render();
   },
