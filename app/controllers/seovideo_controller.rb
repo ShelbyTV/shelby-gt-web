@@ -44,7 +44,7 @@ class SeovideoController < ApplicationController
       # if the referrer is google search, parse the search query out of its url
       if http_referer = request.env["HTTP_REFERER"]
         referer_uri = Addressable::URI.parse(http_referer)
-        if referer_uri.host.end_with? 'google.com'
+        if referer_uri.host and referer_uri.host.end_with? 'google.com'
           if query_values = referer_uri.query_values
             @search_query = query_values["q"]
           end
