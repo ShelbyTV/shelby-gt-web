@@ -16,45 +16,32 @@
           Shelby.tv
         </h1>
       </a>
-      <% if @seo_search_position == :nav %>
-        <form action="/search" id="js-seovideo-search-form" class="nav-search-form">
-          <span class="button_icon icon_search icon nav-search-form-text js-seovideo-search-form-text-wrapper">
-            <% if @search_query %>
-              <input name="query" type="text" placeholder="Search" value="<%= @search_query%>" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
-            <% else %>
-              <input name="query" type="text" placeholder="Search" class="js-seovideo-search-form-text js-seovideo-search-form-text--nav" id="js-seovideo-search-form-text" />
-            <% end %>
-          </span>
-        </form>
-      <% end %>
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <% if @seo_search_position == :banner %>
-      <div class="seovideo__banner_wrapper">
-        <div class="media_module seovideo__banner clearfix">
-          <form action="/search" id="js-seovideo-search-form" class="form_module form_module_horz form_module--search">
-            <div class="media_image media_image--rev">
-              <button class="button_primer button_blue form_submit">
-                Search
-              </button>
-            </div>
+    <div class="seovideo__banner_wrapper">
+      <div class="media_module seovideo__banner clearfix">
+        <form action="/search" id="js-seovideo-search-form" class="form_module form_module_horz form_module--search">
+          <div class="media_image media_image--rev">
+            <button class="button_primer button_blue form_submit">
+              Search
+            </button>
+          </div>
 
-            <div class="media_body">
-              <label for="js-seovideo-search-form-text" class="form_label visuallyhidden">
-                Search:
-              </label>
+          <div class="media_body">
+            <label for="js-seovideo-search-form-text" class="form_label visuallyhidden">
+              Search:
+            </label>
 
-              <% if @search_query %>
-                <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
-              <% else %>
-                <input id="js-seovideo-search-form-text" name="query" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
-              <% end %>
-            </div>
-          </form>
-        </div>
-      </div><!-- eo seovideo__banner_wrapper -->
-    <% end %>
+            <% if @search_query %>
+              <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+            <% else %>
+              <input id="js-seovideo-search-form-text" name="query" autofocus="autofocus" type="text" class="form_input" placeholder="Search Youtube, Vimeo, and DailyMotion" />
+            <% end %>
+          </div>
+        </form>
+      </div>
+    </div><!-- eo seovideo__banner_wrapper -->
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
@@ -283,14 +270,6 @@ $(document).ready(function(){
           _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
       } catch(e) {}
     }
-  });
-
-  $('.js-seovideo-search-form-text.js-seovideo-search-form-text--nav').on('focus', function(e){
-    $('.nav-search-form-text').addClass('focused');
-  });
-
-  $('.js-seovideo-search-form-text.js-seovideo-search-form-text--nav').on('blur', function(e){
-    $('.nav-search-form-text').removeClass('focused');
   });
 });
 </script>
