@@ -6,11 +6,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'currentRollModel',
-      activeClassName : 'active-list-item'
+      activationStateProperty : 'activeFrameModel'
   }),
 
-  className : 'list_item guide-item',
+  className : 'list_item user-channel-item',
 
   template : function(obj){
     return SHELBYJST['user-channel-item'](obj);
@@ -33,8 +32,12 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       },
       limit : 6,
       listItemView : 'UserChannelFrameItemView',
+      listItemViewAdditionalParams : {
+        activationStateModel : shelby.models.guide
+      },
       model : this.model
     });
+    _(this._channelListView.options.listItemViewAdditionalParams).extend({playingRollFrameGroupCollection : this._channelListView._displayCollection});
     this.appendChildInto(this._channelListView, '.js-user-channel');
     this.model.fetch({
       success: function(rollModel, resp){
@@ -46,8 +49,9 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   // override ActiveHighlightListItemView abstract method
-  doActivateThisItem : function(exploreGuideModel){
-    return false;
+  doActivateThisItem : function(guideModel){
+    var activeFrameModel = guideModel.get('activeFrameModel');
+    return activeFrameModel && activeFrameModel.has('roll') && this.model.id == activeFrameModel.get('roll').id;
   }
 
 });

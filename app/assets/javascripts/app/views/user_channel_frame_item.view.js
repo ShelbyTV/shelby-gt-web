@@ -1,4 +1,4 @@
-libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ListItemView.extend({
+libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _frame : null,
 
@@ -8,17 +8,23 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ListItemView.extend({
     'click .js-roll-command'                  : '_displayRollVideo'
   },
 
+  options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
+      activationStateProperty : 'activeFrameModel'
+  }),
+
   className : 'user-channel__item',
 
   initialize : function() {
     this._frame = this.model.getFirstFrame();
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
+    return libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
     shelby.models.queuedVideos.unbind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.unbind('remove:queued_videos', this._onQueuedVideosRemove, this);
+    return libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
   template : function(obj){
@@ -35,6 +41,11 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _displayVideo : function() {
     shelby.models.guide.set('activeFrameModel', this._frame);
+    shelby.models.playlistManager.set({
+      playingFrameGroupCollection : this.options.playingRollFrameGroupCollection,
+      playingState : libs.shelbyGT.PlayingState.roll,
+      playingRollId : this._frame.get('roll').id
+    });
   },
 
   _queueVideo : function() {
@@ -67,6 +78,12 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ListItemView.extend({
   _updateQueueButton : function(itemQueued) {
     var buttonText = itemQueued ? 'Queued' : 'Queue';
     this.$('.js-queue-command').toggleClass('button_gray-light queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
+  },
+
+  // override ActiveHighlightListItemView abstract method
+  doActivateThisItem : function(guideModel){
+    var activeFrameModel = guideModel.get('activeFrameModel');
+    return activeFrameModel && this._frame.id == activeFrameModel.id;
   }
 
 });

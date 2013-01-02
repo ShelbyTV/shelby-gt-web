@@ -48,7 +48,7 @@
     },
 
     _loadMoreWhenLastItemActive : function(){
-      if (this._loadMoreEnabled) {
+      if (this._loadMoreEnabled && this.options.infinite) {
         var activeFrameModel = shelby.models.guide.get('activeFrameModel');
         if (activeFrameModel) {
           // if we're playing the final playable frame group in the list, load some more if they are available
