@@ -37,7 +37,6 @@ class SeovideoController < ApplicationController
 
     # A/B tests
     @seo_ad_videocard = ab_test :seo_ad_videocard
-    @seo_search_position = ab_test :seo_search_position
     @seo_search_prepopulate = ab_test :seo_search_prepopulate
 
     if @seo_search_prepopulate
