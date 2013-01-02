@@ -46,6 +46,7 @@
 //positioning wrapper
 .welcome-message__wrapper {
   height: 100%;
+  top: 0;
 }
 
 //root
@@ -53,6 +54,7 @@
   font-size: 1.2em;
   left: 50%;
   margin-left: -220px;
+  min-height: 36px;
   padding: 6px;
   position: relative;
   top: 25%;
