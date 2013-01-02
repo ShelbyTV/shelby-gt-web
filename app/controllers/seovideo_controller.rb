@@ -51,7 +51,6 @@ class SeovideoController < ApplicationController
             http_referer = 'http://' + http_referer
           end
         end
-        Rails.logger.info 'QPARSE: ' + http_referer
         referer_uri = Addressable::URI.parse(http_referer)
         if referer_host = referer_uri.host
           if referer_host.start_with?('http://google.') || referer_host.include?('.google.')
@@ -62,8 +61,6 @@ class SeovideoController < ApplicationController
         end
       end
     end
-
-    Rails.logger.info 'QPARSE: ' + @search_query.inspect
 
     respond_to do |format|
       format.html { render }
