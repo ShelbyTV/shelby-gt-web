@@ -52,9 +52,11 @@ class SeovideoController < ApplicationController
           end
         end
         referer_uri = Addressable::URI.parse(http_referer)
-        if referer_uri.host and referer_uri.host.end_with? 'google.com'
-          if query_values = referer_uri.query_values
-            @search_query = query_values["q"]
+        if referer_host = referer_uri.host
+          if referer_host.start_with?('http://google.') || referer_host.include?('.google.')
+            if query_values = referer_uri.query_values
+              @search_query = query_values["q"]
+            end
           end
         end
       end
