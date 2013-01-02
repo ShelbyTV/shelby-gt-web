@@ -12,7 +12,10 @@
   padding: 4px 6px;
   position: absolute;
   width: 100%;
-  text-shadow: 0 0 4px black;
+  text-shadow: 0 0 2px black,
+               0 0 4px black,
+               0 0 7px black,
+               0 0 9px black;
 }
 
 .welcome-message__h2 {

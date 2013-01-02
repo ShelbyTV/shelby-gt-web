@@ -1,14 +1,16 @@
 <% if(associatedRolls){ %>
   <ol class="isoroll-nav__list">
-    <% associatedRolls.forEach(function(roll){ %>
-      <li class="isoroll-nav__item<%= roll.id == currentRoll.id ? ' active-item' : '' %>">
+    <% associatedRolls.forEach(function(roll,index){ %>
+      <li class="isoroll-nav__item<%= (index == 0) ? ' isoroll-nav__item--parent' : ' isoroll-nav__item--child' %><%= roll.id == currentRoll.id ? ' isoroll-nav__item--active' : '' %>">
 
         <a class="isoroll-nav__button js-change-iso-roll" data-roll_id="<%= roll.id %>" href="#">
+          <span class="isoroll-nav__avatar" style="background-image:url(<%= roll.get('thumbnail_url') %>);">
+            <img src="<%= roll.get('thumbnail_url') %>" title="" alt="" class="visuallyhidden" />
+          </span>
 
-        <span class="isoroll-nav__avatar" style="background-image:url(<%= roll.get('thumbnail_url') %>);">
-          <img src="<%= roll.get('thumbnail_url') %>" title="" alt=""/>
-        </span>
-          <%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
+          <span class="isoroll-nav__title">
+            <%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
+          </span>
         </a>
       </li>
     <% }) %>

@@ -20,29 +20,68 @@
   padding: 0;
 }
 
+//------------------------------------------------------------------------------
+//  Root nav list item (rolls list)
+//------------------------------------------------------------------------------
 .isoroll-nav__item {
   display: block;
   float: left;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 
   &.secondary {
     float: right;
   }
 }
+  //------------------------------------------------------------------------------
+  //  Main Parent Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--parent {
+    padding: 0;
+
+    .isoroll-nav__button {
+      background: black;
+    }
+
+    .isoroll-nav__title {
+    }
+  }
+
+  //------------------------------------------------------------------------------
+  //  Child Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--child {
+    .isoroll-nav__avatar {
+      display: none;
+    }
+  }
+
+  //------------------------------------------------------------------------------
+  //  Currently Active Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--active {
+    .isoroll-nav__button,
+    .isoroll-nav__button:hover {
+      @include gradient-primer(#222);
+      color: #efefef;
+    }
+  }
 
 .isoroll-nav__button {
   @include ellipsis;
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
 
+  border-right: 1px solid #444;
   color: $guide-presentation-button;
   display: block;
   font-size: 1.2em;
   font-weight: 500;
   font-family: $font-family-display;
+  margin: 0;
   max-width: $guide-width * 0.75;
   min-width: $guide-width / 4;
   height: 35px;
-  padding: 9px 10px;
   text-align: center;
   text-decoration: none;
 
@@ -51,15 +90,17 @@
     color: adjust-lightness($guide-presentation-button,20%);
     text-decoration: none;
   }
-}
 
-.active-item {
-  .isoroll-nav__button,
-  .isoroll-nav__button:hover {
-    background: black;
-    color: #efefef;
+  &:active {
+    @include gradient-primer(#111);
   }
 }
+
+.isoroll-nav__title {
+  display: inline-block;
+  margin: 10px 10px 8px;
+}
+
 
 .isoroll-nav__avatar {
   background-repeat: no-repeat;
@@ -67,9 +108,10 @@
   -webkit-background-size: cover;
   background-size: cover;
   display: inline-block;
-  height: 2em;
+  float: left;
+  height: 100%;
   overflow: hidden;
-  width: 2em;
+  width: 3em;
   vertical-align: middle;
 
   img {
@@ -94,6 +136,7 @@
 .isoroll-header--shelby {
   width: 145px;
 }
+
 
 /* non-programatic changes to app display */
 //------------------------------------------------------------------------------
