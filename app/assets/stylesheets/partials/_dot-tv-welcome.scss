@@ -40,7 +40,7 @@
 }
 
 .welcome-message__banner {
-
+  width: 100%;
 }
 
 //positioning wrapper
@@ -52,11 +52,11 @@
 .welcome-message {
   font-size: 1.2em;
   left: 50%;
-  margin-left: -191px;
+  margin-left: -220px;
   padding: 6px;
   position: relative;
   top: 25%;
-  width: 382px;
+  width: 440px;
 }
 
 //structure
