@@ -94,7 +94,7 @@
   height: 50px;
   position: relative;
   //quick fix to de-uglify fredwilson.tv
-  background-size: 100%;
+  background-size: $guide-width;
 
   .guide-header-roll-header-title {
     bottom: $defaultMargin / 2;
