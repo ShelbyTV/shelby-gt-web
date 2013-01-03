@@ -5,6 +5,8 @@
 //abstracts (els)
 
 .welcome-message__h1 {
+  @include ellipsis;
+
   color: $button-color;
   bottom: 0;
   font-size: 1.4em;
