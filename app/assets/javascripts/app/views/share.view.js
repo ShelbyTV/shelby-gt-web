@@ -124,8 +124,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this._toggleSharingByNetwork('facebook');
   },
 
+  //override this in your subclass to later validation behavior
+  shouldValidateEmail : function(){
+    return true;
+  },
+
   _validateShare : function(){
-    if(this._components.emailAddresses){
+    if(this._components.emailAddresses && this.shouldValidateEmail()){
       var $emailAddressesInput = this.$('.js-share-email-addresses');
       //clean up email addresses
       var emailAddresses = $emailAddressesInput.val();
