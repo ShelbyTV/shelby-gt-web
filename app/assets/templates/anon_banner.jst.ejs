@@ -1,40 +1,44 @@
+<% var roll = shelby.models.guide.get('activeFrameModel').get('roll') %>
+<% var rollCreator = shelby.models.guide.get('activeFrameModel').get('creator') %>
+
 <div class="notification_module notification_module--anonymous-signup">
-  <div class="notification_actions dropdown_module">
-    <button class="button_primer button_gray-medium notification_button dropdown_button">
-      <i class="button_icon_right dropdown_icon icon">
-        Log in
+  <div class="notification_actions js-learn-more">
+    <button class="button_primer button_gray-medium notification_button">
+      <i class="button_icon_right">
+        Learn more
       </i>
     </button>
+
     <section class="dropdown_section signup-section">
       <div class="dropdown_lining signup-section-lining clearfix">
-        <%= SHELBYJST['signin-form']() %>
+        <%= SHELBYJST['signin-form']({inAnonBanner: true}) %>
       </div><!-- eo signup-section-lining -->
     </section><!-- eo signup-section -->
   </div><!-- eo dropdown_module -->
 
   <div class="notification_body clearfix">
     <div class="notification_message">
-          <h1 class="anon-benefit-title">You need to log in first!</h1>
+          <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby.tv to curate these videos here at <%= shelby.config.hostName %></h1>
       <% switch(bannerType){
          case libs.shelbyGT.AnonymousActions.QUEUE: %>
           <!-- <h1 class="anon-benefit-title">Don't miss a thing!</h1> -->
-          <h2 class="anon-benefit-subtitle">As a member, you can queue the videos that interest you and watch them whenever you'd like.</h2>
+          <h2 class="anon-benefit-subtitle">As a member of Shelby.tv, you can queue the videos that interest you and watch them whenever you'd like.</h2>
       <% break;
          case libs.shelbyGT.AnonymousActions.STREAM: %>
           <!-- <h1 class="anon-benefit-title">Instant On</h1> -->
-          <h2 class="anon-benefit-subtitle">As a member, your stream is a fresh source of videos that you care about.  It can also include the videos shared by your Twitter, Facebook, and Tumblr friends!</h2>
+          <h2 class="anon-benefit-subtitle">As a member of Shelby.tv, your stream is a fresh source of videos that you care about.  It can also include the videos shared by your Twitter, Facebook, and Tumblr friends!</h2>
       <% break;
          case libs.shelbyGT.AnonymousActions.ROLL: %>
           <!-- <h1 class="anon-benefit-title">Create a .tv channel</h1> -->
-          <h2 class="anon-benefit-subtitle">Our community curates really interesting channels of video.  As a member, you +Roll and curate a channel to call your own.</h2>
+          <h2 class="anon-benefit-subtitle">The Shelby.tv community curates really interesting channels of video.  As a member, you +Roll and curate a channel to call your own.</h2>
       <% break;
          case libs.shelbyGT.AnonymousActions.FOLLOW: %>
           <!-- <h1 class="anon-benefit-title">You choose what's on</h1> -->
-          <h2 class="anon-benefit-subtitle">Discover interesting videos that you might miss on other sites.  The Shelby community of Rolls has something for everybody.</h2>
+          <h2 class="anon-benefit-subtitle">Discover interesting videos that you might miss on other sites.  The Shelby.tv community of Rolls has something for everybody.</h2>
       <% break;
          case libs.shelbyGT.AnonymousActions.COMMENT: %>
           <!-- <h1 class="anon-benefit-title">Engage</h1> -->
-          <h2 class="anon-benefit-subtitle">Take part in lively discussions outside the traditional walls of video sites.  Sign up now to become a member of the thoughtful Shelby community.</h2>
+          <h2 class="anon-benefit-subtitle">Take part in lively discussions outside the traditional walls of video sites.  Sign up now to become a member of the thoughtful Shelby.tv community.</h2>
       <% break;
          case libs.shelbyGT.AnonymousActions.ME: %>
           <!-- <h1 class="anon-benefit-title">http://your-name.shelby.tv</h1> -->
@@ -46,4 +50,10 @@
       <% } %>
     </div><!-- eo notification_message -->
   </div><!-- eo notification_body -->
+
+  <button class="button_primer button_gray-medium js-close-banner">
+    <i class="button_icon_center icon_cancel icon">
+      &nbsp;
+    </i>
+  </button>
 </div>

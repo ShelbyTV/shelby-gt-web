@@ -6,7 +6,6 @@ libs.shelbyGT.GuideModel = Backbone.Model.extend({
     displayIsolatedRoll         : false,
     displayState                : libs.shelbyGT.DisplayState.none,
     onboardingStage             : null,
-    playingFramesCollection     : null,
     sinceId                     : null
   }
 

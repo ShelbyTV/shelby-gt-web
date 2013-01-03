@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/ShelbyTV/vanity.git
+  revision: 7b6aa9db878a7b8c93ecca41a82393426d829f8b
+  branch: experiment-each
+  specs:
+    vanity (1.8.0)
+      redis (~> 2.0)
+      redis-namespace (~> 1.0.0)
+
+GIT
   remote: git://github.com/pivotal/jasmine-gem.git
   revision: 73ea302cb663a6aef00b9a08222c75662f0f117c
   specs:
@@ -75,9 +84,11 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    daemons (1.1.9)
     diff-lcs (1.1.3)
     ejs (1.1.1)
     erubis (2.7.0)
+    eventmachine (1.0.0)
     exception_notification (2.5.2)
       actionmailer (>= 3.0.4)
     execjs (1.4.0)
@@ -205,6 +216,10 @@ GEM
     subexec (0.2.2)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -218,9 +233,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    vanity (1.8.0)
-      redis (~> 2.0)
-      redis-namespace (~> 1.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     youtube_it (2.1.7)
@@ -237,6 +249,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bson
   bson_ext
   capistrano
@@ -264,8 +277,9 @@ DEPENDENCIES
   settingslogic
   sinon-rails
   therubyracer
+  thin
   uglifier
   unicorn
-  vanity
+  vanity!
   youtube_it
   yui-compressor

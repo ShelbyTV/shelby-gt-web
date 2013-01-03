@@ -1,4 +1,3 @@
-@import "base";
 //------------------------------------------------------------------------------
 //  frame currently playing styles
 //  nest styles inside of .active-list-item
@@ -166,6 +165,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xuser-message {
+  min-height: 0.8em;
 }
 
 .xuser-message-remainder {

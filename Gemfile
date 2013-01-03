@@ -23,7 +23,11 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity'
+gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "experiment-each"
+
+# ---------- Other utils
+#
+gem 'addressable' # for URI parsing
 
 #
 # ---------- External Services
@@ -61,6 +65,7 @@ group :production, :staging do
 end
 group :development do
   gem 'capistrano-unicorn', :require => false
+  gem 'thin'
 end
 
 #

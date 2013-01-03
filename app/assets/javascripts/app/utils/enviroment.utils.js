@@ -11,15 +11,15 @@
     },
 
     isDevelopment : function(){
-      return this.getEnvironment === this.envs.development;
+      return this.getEnvironment() === this.envs.development;
     },
 
     isStaging : function(){
-      return this.getEnvironment === this.envs.staging;
+      return this.getEnvironment() === this.envs.staging;
     },
 
     isProduction : function(){
-      return this.getEnvironment === this.envs.production;
+      return this.getEnvironment() === this.envs.production;
     },
 
     getEnvironment : function(){
