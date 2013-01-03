@@ -145,5 +145,12 @@ _(shelby).extend({
         $.noop();
       }
     }
+    if (_(options.providers).contains('kmq') && options.kmqName) {
+      try {
+        _kmq.push(['record', options.kmqName, _({}).extend(options.kmqProperties)]);
+      } catch(e) {
+        $.noop();
+      }
+    }
   }
 });
