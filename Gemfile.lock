@@ -249,6 +249,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bson
   bson_ext
   capistrano
