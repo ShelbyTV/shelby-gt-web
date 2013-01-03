@@ -326,6 +326,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (watchLaterRoll) {
       this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), null, {
         updateRollTitle: false
+      }, {
+        isIsolatedRoll : false
       });
     } else {
       shelby.alert("Sorry, you don't have a saves roll.");
@@ -544,14 +546,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
-    this._setupTopLevelViews(topLevelViewsOptions);
-
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
+
+    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
+      isIsolatedRoll: false
+    }).value();
+
+    this._setupTopLevelViews(topLevelViewsOptions);
 
     var rollModel;
     if (typeof(roll) === 'string') {
