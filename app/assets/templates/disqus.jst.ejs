@@ -1,6 +1,16 @@
-<% 
+<% console.log("frame: ", frame) %>
+<%
 	window.DISQUS = null;
 	$('#disqus-script').remove();
+	if (frame.get('creator').get('nickname') == "henry"){
+		window.disqus_shortname = "henrytv";
+	}
+	else if (frame.get('creator').get('nickname') == "fredwilson"){
+		window.disqus_shortname = "fredwilsontv";
+	}
+	else if (frame.get('creator').get('nickname') == "reece"){
+		window.disqus_shortname = "reecepachecotv";
+	}
 	window.disqus_developer = (shelby.config.environment == "production") ? 0 : 1; // developer mode is on
 	window.disqus_identifier = frame.id;
 	window.disqus_url = "http://shelby.tv/frame/"+frame.id;
