@@ -28,7 +28,8 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
   _filter : function(roll) {
     var rollListFilterSatisfied = true;
     if (this.options.rollListFilterType == libs.shelbyGT.RollListFilterType.following) {
-      rollListFilterSatisfied = roll.get('creator_id') != shelby.models.user.id;
+      rollListFilterSatisfied = roll.get('creator_id') != shelby.models.user.id &&
+        roll.get('roll_type') != libs.shelbyGT.RollModel.TYPES.user_discussion_roll;
     } else if (this.options.rollListFilterType == libs.shelbyGT.RollListFilterType.me) {
       rollListFilterSatisfied = roll.get('creator_id') == shelby.models.user.id &&
         roll.get('roll_type') != libs.shelbyGT.RollModel.TYPES.user_discussion_roll;

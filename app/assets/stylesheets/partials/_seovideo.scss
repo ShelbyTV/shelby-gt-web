@@ -124,6 +124,32 @@ p {
 }
 
 //------------------------------------------------------------------------------
+//  seovideo banner
+//------------------------------------------------------------------------------
+.seovideo__banner_wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.seovideo__banner {
+  margin: 2em 0;
+}
+
+.form_module--search {
+  font-size: 1.4em;
+
+  .form_input {
+    display: block;
+    width: 100%;
+  }
+
+  .form_submit {
+    display: block;
+    padding: 0.71em 2em;
+  }
+}
+
+//------------------------------------------------------------------------------
 //  seovideo video
 //------------------------------------------------------------------------------
 .seovideo__video {
@@ -515,5 +541,31 @@ p {
 
   .seovideo__thumbnail {
     background-image: url('/images/seovideo/seo_holiday_3.jpg');
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO prepopulate
+//
+//  ab_test("seo_search_prepopulat", true, false) do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+
+.seovideo__banner_wrapper--true {
+  //if search input is prepopulated with search term that brought user to page
+  margin-top: 22px;
+  padding: 18px 22px 1px;
+
+  .seovideo__h2 {
+    text-align: center;
+    font-family: $font-family-display;
+    font-size: 1.8em;
+    font-weight: 300;
+  }
+}
+
+.seovideo__banner_wrapper--false {
+  .seovideo__h2 {
+    display: none;
   }
 }

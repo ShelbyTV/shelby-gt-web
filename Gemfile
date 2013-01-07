@@ -23,7 +23,11 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity'
+gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "experiment-each"
+
+# ---------- Other utils
+#
+gem 'addressable' # for URI parsing
 
 #
 # ---------- External Services

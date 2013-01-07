@@ -21,12 +21,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this._userDesires = opts.userDesires;
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-    Backbone.Events.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    this.options.playlistManager.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
   },
 
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
-    Backbone.Events.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    this.options.playlistManager.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
   },
 
   template : function(obj) {
@@ -56,7 +56,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this.render();
   },
 
-  _onPlayingFrameGroupCollectionChange : function(playingFrameGroupCollection){
+  _onPlayingFrameGroupCollectionChange : function(playlistManagerModel, playingFrameGroupCollection){
     this._playingFrameGroupCollection = playingFrameGroupCollection;
     this.render();
   },

@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/ShelbyTV/vanity.git
+  revision: 1ee57c8c244b71526ad5ac7dd077479060f3ba63
+  branch: experiment-each
+  specs:
+    vanity (1.8.0)
+      redis (~> 2.0)
+      redis-namespace (~> 1.0.0)
+
+GIT
   remote: git://github.com/pivotal/jasmine-gem.git
   revision: 73ea302cb663a6aef00b9a08222c75662f0f117c
   specs:
@@ -218,9 +227,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    vanity (1.8.0)
-      redis (~> 2.0)
-      redis-namespace (~> 1.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     youtube_it (2.1.7)
@@ -237,6 +243,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bson
   bson_ext
   capistrano
@@ -266,6 +273,6 @@ DEPENDENCIES
   therubyracer
   uglifier
   unicorn
-  vanity
+  vanity!
   youtube_it
   yui-compressor

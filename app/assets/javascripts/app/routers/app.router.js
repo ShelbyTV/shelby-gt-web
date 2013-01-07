@@ -41,6 +41,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     this._bootstrapRequiredAppModels();
 
     shelby.models.guide = new libs.shelbyGT.GuideModel();
+    shelby.models.playlistManager = new libs.shelbyGT.PlaylistManagerModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();

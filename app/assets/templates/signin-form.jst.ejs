@@ -5,7 +5,7 @@
 </div>
 
 <div class="js-request-invite clearfix hidden">
-  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
+  <form id="js-email-form" class="form_module form_module--request-form js-track-submit<%= inAnonBanner ? ' js-in-anon-banner' : '' %>" data-ga_action="Request invite">
     <fieldset class="">
       <label for="email" class="form_label">Email</label>
       <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
@@ -66,10 +66,24 @@
 
 <script>
   $(document).ready(function(){
-    $('#js-email-form').on('submit', function(){
+    var emailForm = $('#js-email-form');
+    emailForm.on('submit', function(){
       $.get('<%= shelby.config.apiRoot %>/POST/gt_interest', $(this).serialize(), function(data) {
         $('#js-email-form').addClass('hidden');
         $('#js-thankyou').removeClass('hidden');
+        var emailAddress = $('#js-email-input').val();
+        if (emailForm.hasClass('js-in-anon-banner')) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : 'anonymous banner',
+            gaAction : 'signup',
+            gaLabel : emailAddress,
+            kmqName : 'signup',
+            kmqProperties : {
+              email : emailAddress
+            }
+          })
+        }
       }, 'jsonp');
       return false;
     });

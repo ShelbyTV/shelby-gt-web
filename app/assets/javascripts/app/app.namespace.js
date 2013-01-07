@@ -8,7 +8,9 @@ libs = {
   utils : {}
 };
 
-var shelby = shelby || {};
+if (typeof(shelby) == 'undefined') {
+  shelby = {};
+}
 
 //---------------------------------------------------------
 // global namespace for this app
@@ -24,11 +26,11 @@ _(shelby).extend({
     var _pieces = _cookie.split(',');
     return _pieces[0].split("=").length == 2 ? _pieces[0].split("=")[1] !== "nil" ? true : false : false;
   },
-  
+
   signOut: function(){
     document.location.href = "/signout";
   },
-  
+
   // shelby.alert mimicks js native alert functionality.
   // optional: add a callback function to execute after alert is dismissed
   alert: function(message, callback){
@@ -63,7 +65,7 @@ _(shelby).extend({
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
     });
-    
+
     button_one_options = $.extend({visible: true}, button_one_opts);
     button_two_options = $.extend({visible: true}, button_two_opts);
     shelby.models.notificationState.set({ 'message': message,
