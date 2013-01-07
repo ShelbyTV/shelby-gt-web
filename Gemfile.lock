@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ShelbyTV/vanity.git
-  revision: 7b6aa9db878a7b8c93ecca41a82393426d829f8b
+  revision: 1ee57c8c244b71526ad5ac7dd077479060f3ba63
   branch: experiment-each
   specs:
     vanity (1.8.0)

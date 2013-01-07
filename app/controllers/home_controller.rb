@@ -93,10 +93,11 @@ class HomeController < ApplicationController
   # GET /search
   #
   def search
-    unless user_signed_in?
-      # A/B test - only for anonymous users
-      @search_landing_banner_appear = ab_test :search_landing_banner_appear
-    end
+    # TODO: uncomment when we have html and js to implement the test variants
+    # unless user_signed_in?
+    #   # A/B test - only for anonymous users
+    #   @search_landing_banner_appear = ab_test :search_landing_banner_appear
+    # end
 
     render '/home/app'
   end
