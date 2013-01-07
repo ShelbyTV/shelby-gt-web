@@ -20,6 +20,7 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({roll:this.model}));
+    this.$el.show();
     // if we dont want the video to auto play...
     shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
   },
