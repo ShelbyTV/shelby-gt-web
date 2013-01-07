@@ -1,7 +1,7 @@
-<% console.log("frame: ", frame) %>
 <%
 	window.DISQUS = null;
 	$('#disqus-script').remove();
+	// loading 'special' disqus forums for some people
 	if (frame.get('creator').get('nickname') == "henry"){
 		window.disqus_shortname = "henrytv";
 	}
