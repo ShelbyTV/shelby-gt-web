@@ -384,13 +384,18 @@ $landing-page-shelf-background: #ddd;
   text-align: center;
 
   .landing_shelf__lining {
-    margin: 6em auto 10em;
+    margin: 7.5em auto 9em;
     max-width: 600px;
   }
 
   .landing_shelf__h1 {
-
+    margin-bottom: 0.5em;
   }
+
+  .landing_shelf__h2 {
+    font-weight: 500;
+  }
+
   //banner form
   .form_module {
     font-size: 1.8em;
