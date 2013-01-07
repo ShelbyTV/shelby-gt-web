@@ -47,7 +47,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       this.$el.html(this.template({
         currentFrame: this._currentFrame,
         nextFrame: this._nextFrame,
-        queuedVideosModel: this.options.queuedVideos
+        queuedVideosModel: this.options.queuedVideos,
+        user: shelby.models.user
       }));
     }
   },
