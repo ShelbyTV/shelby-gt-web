@@ -44,7 +44,10 @@
 
 //positioning wrapper
 .welcome-message__wrapper {
-  height: 100%;
+  bottom: 200px;
+  display: none;
+  height: auto;
+  position: absolute;
   top: 0;
 }
 
@@ -55,13 +58,14 @@
   margin-left: -220px;
   min-height: 36px;
   padding: 6px;
-  position: relative;
+  position: absolute;
   top: 35%;
   width: 440px;
 }
 
 //structure
 .welcome-message__head {
+  height: 58px;
   margin: 0 0 4px;
   overflow: hidden;
   position: relative;
