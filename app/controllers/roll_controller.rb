@@ -32,6 +32,8 @@ class RollController < ApplicationController
     render '/home/app'
   end
 
+end
+
   private
 
     def get_roll_and_roll_creator_by_roll_id
