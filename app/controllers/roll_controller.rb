@@ -10,7 +10,6 @@ class RollController < ApplicationController
     if user_signed_in?
       render '/home/app'
     else
-
       # Get all pertinent info from the API (we need all of this no matter what)
       @roll_only = true
       roll_id = params[:roll_id]
@@ -23,10 +22,14 @@ class RollController < ApplicationController
   end
 
   def show_personal_roll
+    user_id = params[:user_id]
+    @user = Shelby::API.get_user(user_id) if user_id
+    @roll = Shelby::API.get_roll(@user['personal_roll_id']) if @user
     render '/home/app'
   end
 
   def show_isolated_roll
+    get_roll_and_roll_creator_by_roll_id
     render '/home/app'
   end
 
@@ -35,4 +38,16 @@ class RollController < ApplicationController
     render '/home/app'
   end
 
+<<<<<<< HEAD
 end
+=======
+  private
+
+    def get_roll_and_roll_creator_by_roll_id
+      roll_id = params[:roll_id]
+      @roll = BSON::ObjectId.legal?(roll_id) ? Shelby::API.get_roll(roll_id) : nil
+      @user = Shelby::API.get_user(@roll['creator_id']) if @roll
+    end
+
+end
+>>>>>>> master
