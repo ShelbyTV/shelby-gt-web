@@ -19,9 +19,13 @@
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--<% if(@seo_search_prepopulate) %>true frame-body-wrapper<% else %>false<% end %>">
+    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
       <h2 class="seovideo__h2">
-        See more videos that match your search from<br /> YouTube, Vimeo, and Dailymotion:
+        <% if @seo_search_messaging == :sell_providers  %>
+          See more video that matches your search from<br /> YouTube, Vimeo, and Dailymotion:
+        <% else %>
+          Watch more on Shelby.tv, the only video search that plays your results instead of showing you text.
+        <% end  %>
       </h2>
 
       <div class="media_module seovideo__banner clearfix">
@@ -40,7 +44,7 @@
             <% if @search_query %>
               <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" type="text" class="form_input" />
             <% else %>
-              <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input"  autofocus="autofocus" <% if (!@seo_search_prepopulate) %>placeholder="Search Youtube, Vimeo, and DailyMotion"<% end %> />
+              <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input" autofocus="autofocus" />
             <% end %>
           </div>
         </form>

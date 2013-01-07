@@ -1,11 +1,20 @@
 <section class="landing_shelf landing_shelf--banner">
   <div class="landing_shelf__lining">
     <h1 class="landing_shelf__h1 landing_shelf__h1--extra">
-      If it's not Shelby, it's friggin' crap!
+      <% if @seo_search_messaging == :sell_video  %>
+        Video search. Zero clicks.
+      <% else %>
+        Video. From everywhere.
+      <% end  %>
     </h1>
 
     <h2 class="landing_shelf__h2">
-      If this is a subline, it's not friggin' crap!
+      <% if @seo_search_messaging == :sell_video  %>
+        Use the only video search that plays your results<br />
+        instead of showing you text.
+      <% else %>
+        Search for video from YouTube, Vimeo, and Dailymotion.
+      <% end  %>
     </h2>
 
     <form class="form_module js-search-form" action="/search">
