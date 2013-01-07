@@ -136,6 +136,7 @@ class HomeController < ApplicationController
           when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
           when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
           when "yvynyl.tv" then "4fa2908088ba6b61770010af"
+          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105" # requested via NF.tv, added 01/07/13
           when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
