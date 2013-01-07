@@ -388,6 +388,13 @@ $landing-page-shelf-background: #ddd;
     max-width: 600px;
   }
 
+  .landing_shelf__h1,
+  .landing_shelf__h2 {
+    text-shadow: 0 0 20px black,
+                 0 0 10px black;
+  }
+
+
   .landing_shelf__h1 {
     margin-bottom: 0.5em;
   }
@@ -444,7 +451,7 @@ $landing-page-shelf-background: #ddd;
   //  isolating .landing-signmeup-form by compounding the class
   //  thus binding it to the form_module
   ////////////////////////////////////////////////////////////////////////////
-  font-size: 1.8em;
+  font-size: 1.6em;
   margin: 1em;
   text-align: center;
 
@@ -457,7 +464,7 @@ $landing-page-shelf-background: #ddd;
   .form_input {
     font-size: 1em;
     padding: .8em .5em;
-    width: 55%;
+    width: 40%;
 
     &:focus {
       outline: 0;
