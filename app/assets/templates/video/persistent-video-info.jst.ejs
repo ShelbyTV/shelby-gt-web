@@ -118,18 +118,18 @@
                   data-ga_category="Persistent Video Info"
                   data-ga_action="Click roll on current frame"
                   data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="button_icon_left icon_videocard_roll icon">
-              Roll…
+            <i class="icon icon--videocard_roll">
             </i>
+              Roll…
           </button>
         </li>
 
         <li class="persistent_video_info__item clearfix">
           <button class="persistent_video_info__button persistent_video_info__button--queue js-queue-frame
                          <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued' : '' %>">
-            <i class="button_icon_left icon_videocard_queue icon js-command-icon">
-              <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
+            <i class="icon icon--videocard_queue js-command-icon">
             </i>
+              <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
           </button>
         </li>
 
@@ -138,9 +138,9 @@
                   data-ga_category="Persistent Video Info"
                   data-ga_action="Click share on current frame"
                   data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="button_icon_left icon icon_email">
-              Email Share…
+            <i class="icon icon--email">
             </i>
+              Email Share…
           </button>
         </li>
 
@@ -150,9 +150,9 @@
                     data-ga_category="Persistent Video Info"
                     data-ga_action="Click comment on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="button_icon_left icon_videocard_comment icon">
-                <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
+              <i class="icon icon--videocard_coment">
               </i>
+                <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
             </button>
           </li>
         <% } %>
