@@ -46,15 +46,18 @@
     </script>
   <% end %>
   <%= vanity_js %>
-  <script>
-    <% vanity_experiments_each do |name, alternative| %>
-      try {
-        _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
-      } catch(e) {}
-      try {
-        _kmq.push(['set', {'<%= name %>': '<%= alternative.value %>'}]);
-      } catch(e) {}
-    <% end %>
-  </script>
+  <% experiments = vanity_experiments %>
+  <% unless experiments.nil? %>
+    <script>
+      <% experiments.each do |name, alternative| %>
+        try {
+          _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+        } catch(e) {}
+        try {
+          _kmq.push(['set', {'<%= name %>': '<%= alternative.value %>'}]);
+        } catch(e) {}
+      <% end %>
+    </script>
+  <% end %>
 </body>
 </html>
