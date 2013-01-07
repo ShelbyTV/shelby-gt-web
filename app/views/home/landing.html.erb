@@ -258,6 +258,19 @@
         }, 'jsonp');
         return false;
       });
+
+      $('.js-search-form').on('submit', function(e){
+        // form handles its own submission, so don't stop propagation
+        // but also want to track the search as an event in ga
+        var searchQuery = $(e.currentTarget).find("#query").val().toLowerCase();
+        if (!searchQuery) {
+          e.preventDefault();
+        } else {
+          try {
+          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery]);
+          } catch(e) {}
+        }
+      });
     });
   </script>
 </body>
