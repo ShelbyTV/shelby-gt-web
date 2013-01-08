@@ -1,6 +1,6 @@
 <div class="welcome-message frame-body-wrapper">
-  <div class="welcome-message__head">
-    <img class="welcome-message__banner" src="<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>"/>
+  <div class="image_module welcome-message__head" style="background-image: url('<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>');">
+    <img class="visuallyhidden welcome-message__banner" src="<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(roll) %>"/>
 
     <h1 class="welcome-message__h1">Welcome to <%= shelby.config.hostName || libs.shelbyGT.viewHelpers.roll.urlForRoll(roll) %></h1>
   </div><!-- eo .welcome-message__head -->
