@@ -268,14 +268,13 @@ $(document).ready(function(){
   });
 
   $('#js-seovideo-search-form').on('submit', function(e){
-    // form handles its own submission, so don't stop propagation
-    // but also want to track the search as an event in ga
-    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val().toLowerCase();
-    if (!searchQuery) {
-      e.preventDefault();
-    } else {
+    e.preventDefault();
+
+    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val();
+    if (searchQuery) {
+      window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
       try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
+          _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery.toLowerCase()]);
       } catch(e) {}
     }
   });

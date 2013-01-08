@@ -259,14 +259,13 @@
       });
 
       $('.js-search-form').on('submit', function(e){
-        // form handles its own submission, so don't stop propagation
-        // but also want to track the search as an event in ga
-        var searchQuery = $(e.currentTarget).find("#query").val().toLowerCase();
-        if (!searchQuery) {
-          e.preventDefault();
-        } else {
+        e.preventDefault();
+
+        var searchQuery = $(e.currentTarget).find("#query").val();
+        if (searchQuery) {
+          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
           try {
-          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery]);
+          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
           } catch(e) {}
         }
       });
