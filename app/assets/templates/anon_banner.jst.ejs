@@ -19,7 +19,7 @@
   <div class="notification_body clearfix">
     <div class="notification_message">
           <% if (shelby.models.guide.get('displayIsolatedRoll') && rollCreator) { %>
-            <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby.tv to curate these videos<% if (shelby.config.hostname) { %> here at <%= shelby.config.hostName %><% } %></h1>
+            <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby.tv to curate these videos<% if (shelby.config.hostName) { %> here at <%= shelby.config.hostName %><% } %></h1>
           <% } else { %>
             <h1 class="anon-benefit-title">You need to log in first!</h1>
           <% }  %>
