@@ -605,8 +605,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       fetchOptions.success = options.onRollFetch;
     }
 
-    console.log('--------------------------------',topLevelViewsOptions);
-
     // show dot-tv-welcome-message if on an isolated roll
     if (topLevelViewsOptions.isIsolatedRoll){
 
