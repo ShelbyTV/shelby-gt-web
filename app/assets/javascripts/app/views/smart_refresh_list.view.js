@@ -13,11 +13,20 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   _fixedHeadIndex : 0,
 
   options : _.extend({}, libs.shelbyGT.ListView.prototype.options, {
-    binarySearchOffset : 0,
-    doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
     doSmartRefresh : false,
+    
+    /* TODO: needs documentation */
+    binarySearchOffset : 0,
+    /* TODO: needs documentation */
+    doCheck : libs.shelbyGT.SmartRefreshCheckType.tail,
+    
+    /* TODO: needs documentation */
     initFixedHead : false,
+    
+    /* TODO: needs documentation */
     keyAttribute : 'id',
+    
+    /* TODO: needs documentation */
     sortOrder : 1, // 1 for ascending, -1 for descending
     sortAttribute : 'id'
   }),

@@ -124,18 +124,25 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     this._toggleSharingByNetwork('facebook');
   },
 
+  //override this in your subclass to later validation behavior
+  shouldValidateEmail : function(){
+    return true;
+  },
+
   _validateShare : function(){
-    if(this._components.emailAddresses){
+    if(this._components.emailAddresses && this.shouldValidateEmail()){
       var $emailAddressesInput = this.$('.js-share-email-addresses');
+      //clean up email addresses
       var emailAddresses = $emailAddressesInput.val();
-      $emailAddressesInput.val(_(emailAddresses.split(/[,;]/)).compact().join(','));
-      //:invalid pseudo-element only supported as of IE 10
-      if ((BrowserDetect.browser != 'Explorer' || BrowserDetect.version >= 10)) {
-        if (this.$('.js-share-email-addresses:invalid').length > 0) {
-          $emailAddressesInput.addClass('error');
-          shelby.alert("Please enter comma-seperated email addresses.  (ex: joe@gmail.com, president@whitehouse.gov)");
-          return false;
-        }
+      $emailAddressesInput.val(_(emailAddresses.split(/[,;]/)).compact().join(', '));
+      //test for validity
+      var regex = new RegExp($emailAddressesInput.attr("pattern"))
+      var emailValid = regex.test($emailAddressesInput.val());
+      //mark invalid
+      if (!emailValid) {
+        $emailAddressesInput.addClass('error');
+        shelby.alert("Please enter comma-seperated email addresses.");
+        return false;
       }
     }
     

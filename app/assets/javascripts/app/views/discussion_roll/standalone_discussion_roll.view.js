@@ -1,7 +1,7 @@
 libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   
   events : {
-    "click .js-nav" : "_showDiscussionRollsManagerView",
+    "click .js-nav" : "showDiscussionRollsManagerView",
   },
   
   el: '#js-shelby-wrapper',
@@ -13,7 +13,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     this.render();
     
     //fetch the discussion roll, which all my children are watching
-    this.model.fetch({
+    this.model && this.model.fetch({
       success: function(model, resp){
         setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
@@ -33,16 +33,23 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     
     var opts = {model:this.model, viewer:this.options.viewer, token:this.options.token};
     
-    this.renderChildInto( new libs.shelbyGT.DiscussionRollRecipientsView(_.extend({updatePageTitle:true}, opts)),
-      this.$(".js-discussion-roll-recipients"));
-    this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(opts), 
-      ".js-discussion-roll-conversation-wrapper");
-    this.renderChild(     new libs.shelbyGT.DiscussionRollsManagerView(_.extend({delegate:this}, opts)));
-    this.renderChild(     new libs.shelbyGT.DiscussionRollReplyView(opts));
+    if(this.options.viewer){
+      //manager only needs viewr
+      this.renderChild(new libs.shelbyGT.DiscussionRollsManagerView(_.extend({delegate:this}, opts)));
+      
+      //recipients, conversation, reply require a discusison roll (ie.this.model) and token
+      if(this.model && this.options.token){
+        this.renderChildInto( new libs.shelbyGT.DiscussionRollRecipientsView(_.extend({updatePageTitle:true}, opts)),
+          this.$(".js-discussion-roll-recipients"));
+        this.appendChildInto( new libs.shelbyGT.DiscussionRollConversationView(opts), 
+          ".js-discussion-roll-conversation-wrapper");
+        this.renderChild(     new libs.shelbyGT.DiscussionRollReplyView(opts));
+      }
+    }
   },
   
-  _showDiscussionRollsManagerView: function(e){
-    e.stopPropagation();
+  showDiscussionRollsManagerView: function(e){
+    e && e.stopPropagation();
     
     this._scrollTopWhenHidden = $("body").scrollTop();
     $(".js-discussion").addClass('discussions-manager-shown');

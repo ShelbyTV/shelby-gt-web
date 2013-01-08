@@ -32,11 +32,15 @@
       this.renderChildInto(discussionRollChooser, this.$(".discussion-roll-chooser-wrapper"));
     },
     
+    shouldValidateEmail : function(){
+      //only validate when email input is visible
+      return this.$("#email-recipients:visible").length === 1;
+    },
+    
     _share : function(){
       var self = this;
 
       if(!this._validateShare()) {
-        this.$('.js-share-textarea, .js-share-email-addresses').addClass('error');
         this.onValidationFail();
         return false;
       }

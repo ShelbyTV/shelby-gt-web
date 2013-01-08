@@ -34,7 +34,6 @@ $active-list-item: $shelby-blue;
   //  collapsed: indicationt that frame is openable.
   ////////////////////////////////////////////////////////////////////////////
   &:hover {
-    .frame-is-collapsed,
     .menu_module {
       display: block;
     }
@@ -111,22 +110,6 @@ $active-list-item: $shelby-blue;
       padding-left: 1.4em;
     }
   }
-}
-
-.frame-is-collapsed {
-  &:link,
-  &:visited {
-    text-decoration: none;
-  }
-
-  &:active,
-  &:hover {
-    text-decoration: underline;
-  }
-
-  display:none;
-  float: right;
-  opacity: .5;
 }
 
 .frame-comment-link {
@@ -496,4 +479,21 @@ $share-frame-half-gutter: 4px;
 //------------------------------------------------------------------------------
 .via-search {
   .command-sublist { display: none; }
+}
+
+//------------------------------------------------------------------------------
+//  FreshPlay "new" frames
+//------------------------------------------------------------------------------
+.frame.fresh-play-new {
+  overflow: hidden;
+}
+
+.frame.fresh-play-new .sash {
+  @include rotate(45deg);
+  @include sash-primer();
+  
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
 }
