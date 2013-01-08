@@ -38,7 +38,7 @@
 	      %>
 			<% } %>
     </div><!-- eo frame-body-wrapper -->
-		<% if (shelby.config.hostName) { %>
+		<% if (shelby.config.hostName && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
 			<div id="disqus_thread"></div>
 			<%= SHELBYJST['disqus']({frame: frame}) %>
 		<% } %>

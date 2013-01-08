@@ -7,6 +7,7 @@ libs.shelbyGT.DisplayState = {
   onboarding : 'onboarding',
   rollList : 'rollList',
   search : 'search',
+  channel : 'channel',
   standardRoll : 'standardRoll',
   team : 'team',
   tools: 'tools',

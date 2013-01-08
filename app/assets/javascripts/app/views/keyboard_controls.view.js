@@ -59,6 +59,20 @@
         val : -1,
         is_transient : true
       },
+      // up
+      38 : {
+        model : 'userDesires',
+        attr : 'changeChannel',
+        val : 1,
+        is_transient : true
+      },
+      // down
+      40 : {
+        model : 'userDesires',
+        attr : 'changeChannel',
+        val : -1,
+        is_transient : true
+      },
       
       // (l)ink
       76 : {
