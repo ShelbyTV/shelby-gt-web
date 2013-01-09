@@ -55,9 +55,15 @@ class SeovideoController < ApplicationController
       if referer_host = referer_uri.host
         if referer_host.start_with?('google.') || referer_host.include?('.google.')
           if query_values = referer_uri.query_values
-            @search_query = query_values["q"]
-            # change any characters that can't be encoded in UTF-8 into ?'s
-            @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
+            if @search_query = query_values["q"]
+              if search_query_encoding = query_values["ie"]
+                # re-encode the search query as UTF-8 so ActiveSupport doesn't choke on it
+                @search_query.encode!('utf-8', search_query_encoding, :invalid => :replace, :undef => :replace, :replace => '?')
+              else
+                # change any characters that can't be encoded in UTF-8 into ?'s
+                @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
+              end
+            end
           end
         end
       end
