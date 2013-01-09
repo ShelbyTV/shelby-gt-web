@@ -181,6 +181,9 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     }
 
     .icon {
+      &:hover {
+        text-decoration: none;
+      }
       // background-size: contain;
       // -webkit-background-size: contain;
       // display: block;
