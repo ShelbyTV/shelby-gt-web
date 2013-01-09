@@ -163,55 +163,25 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   padding-left: 10px;
 
   .persistent_video_info__item {
-
   }
 
   .persistent_video_info__button {
-    background: none;
-    border: none;
-    box-shadow: none;
-    color: $button-color-light;
-    font-family: $font-family-display;
-    font-size: 1em;
-    font-weight: 300;
-    padding: 0.75em 1em 0.8em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    .icon {
-      &:hover {
-        text-decoration: none;
-      }
-      // background-size: contain;
-      // -webkit-background-size: contain;
-      // display: block;
-    }
   }
 
   .persistent_video_info__button--roll {
-    .icon {
-      // padding-left: 1.4em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--queue {
-    .icon {
-      padding-left: 1.3em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--share {
-    .icon {
-      padding-left: 1.8em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--comment {
-    .icon {
-      padding-left: 1.5em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 }
 
