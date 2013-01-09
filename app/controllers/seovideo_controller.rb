@@ -53,12 +53,19 @@ class SeovideoController < ApplicationController
       end
       referer_uri = Addressable::URI.parse(http_referer)
       if referer_host = referer_uri.host
-        if referer_host.start_with?('google.') || referer_host.include?('.google.')
+        if referer_host.start_with?('http://google.') || referer_host.start_with?('google.') || referer_host.include?('.google.')
           if query_values = referer_uri.query_values
+            # its a google url so grab the search query
             if @search_query = query_values["q"]
+              # check if the google url specified an encoding for the search query and if so decode it accordingly
               if search_query_encoding = query_values["ie"]
-                # re-encode the search query as UTF-8 so ActiveSupport doesn't choke on it
-                @search_query.encode!('utf-8', search_query_encoding, :invalid => :replace, :undef => :replace, :replace => '?')
+                if encoding_obj = Encoding.list.find {|enc| enc.name.casecmp(search_query_encoding) == 0 }
+                  # re-encode the search query as UTF-8 so ActiveSupport doesn't choke on it
+                  @search_query.encode!('utf-8', encoding_obj, :invalid => :replace, :undef => :replace, :replace => '?')
+                else
+                  # change any characters that can't be encoded in UTF-8 into ?'s
+                  @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
+                end
               else
                 # change any characters that can't be encoded in UTF-8 into ?'s
                 @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
