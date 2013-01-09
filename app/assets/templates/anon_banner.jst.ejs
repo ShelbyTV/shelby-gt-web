@@ -1,5 +1,5 @@
-<% var roll = shelby.models.guide.get('activeFrameModel').get('roll') %>
-<% var rollCreator = shelby.models.guide.get('activeFrameModel').get('creator') %>
+<% var activeFrameModel = shelby.models.guide.get('activeFrameModel') %>
+<% var rollCreator = activeFrameModel && activeFrameModel.get('creator') %>
 
 <div class="notification_module notification_module--anonymous-signup">
   <div class="notification_actions js-learn-more">
@@ -18,7 +18,11 @@
 
   <div class="notification_body clearfix">
     <div class="notification_message">
-          <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby.tv to curate these videos here at <%= shelby.config.hostName %></h1>
+          <% if (shelby.models.guide.get('displayIsolatedRoll') && rollCreator) { %>
+            <h1 class="anon-benefit-title"><%= rollCreator.get('name') %> is using Shelby.tv to curate these videos<% if (shelby.config.hostName) { %> here at <%= shelby.config.hostName %><% } %></h1>
+          <% } else { %>
+            <h1 class="anon-benefit-title">You need to log in first!</h1>
+          <% }  %>
       <% switch(bannerType){
          case libs.shelbyGT.AnonymousActions.QUEUE: %>
           <!-- <h1 class="anon-benefit-title">Don't miss a thing!</h1> -->

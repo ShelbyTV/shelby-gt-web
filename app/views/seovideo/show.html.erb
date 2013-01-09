@@ -203,7 +203,10 @@
 
             <ul class="seovideo__list">
             <% @messages[:twitter].each do |message| %>
-              <%= render :partial => "twitter_message", :locals => { :message => message } %>
+              <% begin %>
+                <%= render :partial => "twitter_message", :locals => { :message => message } %>
+              <% rescue #just ignore it if we can't render it %>
+              <% end  %>
             <% end %>
             </ul>
           <% end %>

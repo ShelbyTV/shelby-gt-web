@@ -40,7 +40,8 @@ class SeovideoController < ApplicationController
     @seo_search_messaging = ab_test :seo_search_messaging
 
     # if the referrer is google search, parse the search query out of its url
-    if http_referer = request.env["HTTP_REFERER"]
+    http_referer = request.env["HTTP_REFERER"]
+    if http_referer && http_referer.length > 0
       # the parser doesn't know it's an http url without the protocol, so ensure
       # that it starts with http://
       unless http_referer.start_with? 'http://'

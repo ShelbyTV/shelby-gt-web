@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.11'
 
 # Needed to decode the gt api server cookie
 gem 'bson_ext'
