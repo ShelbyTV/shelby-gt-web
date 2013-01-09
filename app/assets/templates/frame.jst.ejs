@@ -40,9 +40,12 @@
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
               <i class="icon_primer icon--videocard_queue">
               </i>
+
+              <span class="label">
                 <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
                     (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
                 %>
+              </span>
             </button>
           </li>
           <li class="menu_item" role="menuitem">

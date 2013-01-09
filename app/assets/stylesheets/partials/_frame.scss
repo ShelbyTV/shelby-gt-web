@@ -103,6 +103,7 @@ $active-list-item: $shelby-blue;
 
 .frame-subsection {
   .frame-command-wrapper {
+    color: #777;
     margin: -2px 0 0;
     position: absolute;
     left: 0;
@@ -287,19 +288,15 @@ $active-list-item: $shelby-blue;
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
+  padding-left: 0.7em;
   width: 71px;
-
-  .icon {
-    padding-left: $button-padding-left;
-  }
 
   &.queued {
     &:not(.remove-frame) {
     }
 
-    .icon {
-      background-image: none;
-      padding: 0;
+    .icon--videocard_queue {
+      display: none;
     }
   }
 }

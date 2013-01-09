@@ -43,7 +43,10 @@
                      <%= (queuedVideosModel.videoIsInQueue(nextVideo) ) ? ' queued' : '' %>">
         <i class="icon_primer icon--videocard_queue js-command-icon">
         </i>
+
+        <span class="label">
           <%= (queuedVideosModel.videoIsInQueue(nextVideo)) ? 'Queued' : 'Queue' %>
+        </span>
       </button>
 
       <button class="button_primer button_default command-share js-share-frame js-track-event"
