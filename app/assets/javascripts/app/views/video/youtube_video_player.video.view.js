@@ -1,17 +1,17 @@
 libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 
 	id: 'youtube-player-holder',
-	
+
 	_video: null,
 	_player: null,
-	
+
 	_playbackState: null,
-	
+
 	playerState: null,
-		
+
 	initialize: function(opts){
 		this._playbackState = opts.playbackState;
-		
+
 		this.playerState = new libs.shelbyGT.PlayerStateModel({
 		  playerView: this,
 			supportsChromeless: true,
@@ -19,27 +19,27 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			supportsVolume: true,
 			supportsVideoQuality: true,
 			});
-		
+
 		//listen for the echo of events from YouTube (b/c it calls a global method)
 		Backbone.Events.bind("youtube:playerAPIReady", this._onPlayerAPIReady, this);
 	},
-	
+
 	//NB: overriding leave b/c we don't usually tear down
 	leave: function(){
 		//NB: If we decide to tear this down (ie. on low power devices) will need to do some more work in here and call super's leave()
-		
+
 		this.pause();
 		this.$el.hide();
 		this.$el.css('z-index', '-1');
 		this.playerState.set({visible:false});
-		
+
 		this._playheadTrackingOff();
 	},
-	
+
 	_cleanup: function(){
 		Backbone.Events.unbind("youtube:playerAPIReady", this._onPlayerAPIReady, this);
 	},
-	
+
 	render: function(container, video){
 		if( !this.playerState.get('playerLoaded') ){
 		  this._video = video;
@@ -51,23 +51,23 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			this.playerState.set({visible:true});
 			//playVideo will be called by video display view
 		}
-		
+
 		this._playheadTrackingOn();
 	},
-	
-	playVideo: function(video){	  
+
+	playVideo: function(video){
 		if( this.playerState.get('playerLoaded') ){
 			if( this._video === video ){
 				this.play();
 			} else {
 				//load up new video
-				
+
 				//video id, start time, quality (https://developers.google.com/youtube/js_api_reference#loadVideoById)
 				// default: YouTube selects the appropriate playback quality. (https://developers.google.com/youtube/js_api_reference#Playback_quality)
 				this._player.loadVideoById(video.get('provider_id'), 0, this._videoQuality);
 			}
 		}
-		
+
 		this._video = video;
 	},
 
@@ -79,29 +79,29 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 
 	pause: function(){
 		if( this._player ){
-			this._player.pauseVideo(); 
+			this._player.pauseVideo();
 		}
 	},
-	
+
 	//expects pct to be [0.0, 1.0]
 	seekByPct: function(pct){
 		if( this._player ){ this._player.seekTo( (pct * this._player.getDuration()), true); }
 	},
-	
+
 	mute: function(){
 		if( this._player ){
 			this._player.mute();
 			this.playerState.set({muted: true});
 		}
 	},
-	
+
 	unMute: function(){
 		if( this._player ){
 			this._player.unMute();
 			this.playerState.set({muted: false});
 		}
 	},
-	
+
 	//expects pct to be [0.0, 1.0]
 	setVolume: function(pct){
 		if( this._player ){
@@ -109,7 +109,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			this.playerState.set({volume: pct});
 		}
 	},
-	
+
 	setVideoQuality: function(hd){
 	  //see https://developers.google.com/youtube/js_api_reference#Playback_quality
 	  this._videoQuality = (hd ? 'default' : 'large');
@@ -117,41 +117,41 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	    this._player.setPlaybackQuality(this._videoQuality);
 	  }
 	},
-	
+
 	//---------------------------------------------------
 	// Private
 	//---------------------------------------------------
-	
+
 	_updateDuration: function(){
 		if( this._player ){	this.playerState.set({duration:this._player.getDuration()}); }
 	},
-	
+
 	_playheadTrackingInterval: null,
-	
+
 	_playheadTrackingOn: function(){
 		var self = this;
-		
+
 		if( this._playheadTrackingInterval === null ){
 			this._playheadTrackingInterval = setInterval(function(){
 				if(self._player){ self.playerState.set({currentTime:self._player.getCurrentTime()}); }
 			}, 250);
 		}
 	},
-	
+
 	_playheadTrackingOff: function(){
 		if( this._playheadTrackingInterval !== null ){
 			clearInterval(this._playheadTrackingInterval);
 			this._playheadTrackingInterval = null;
 		}
 	},
-	
+
 	//---------------------------------------------------
 	// Internal events
 	//---------------------------------------------------
-	
+
 	_onStateChange: function(event){
 		this._updateDuration();
-		
+
 		switch(event.data) {
 			case 0: //YT.PlayerState.ENDED:
 				this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.ended});
@@ -174,7 +174,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 				//bit bucket
 		}
 	},
-	
+
 	_onPlaybackQualityChange: function(event){
 	  switch(event.data) {
 	    case 'small':
@@ -186,7 +186,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 	      this.playerState.set({hdVideo:true});
 	  }
 	},
-	
+
 	_onError: function(event){
 		switch(event.data) {
 			case 2: // error code is broadcast when a request contains an invalid parameter
@@ -204,28 +204,28 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 				break;
 		}
 	},
-	
+
 	_onPlayerReady: function(e){
 		//YT replaces the div backbone is holding with it's own, so we need to update this view
 		//could use e.target.a but that's not documented, so I'm trying to be future-proof
 		this.setElement($('#'+this.id));
-		
+
 		this._player = e.target;
-		
+
 		this.$el.css('z-index', '1');
 		this.playerState.set({playerLoaded: true});
 		this.playerState.set({visible:true});
-		
+
 		//TODO: set volume via this._playbackState.get('desiredVolume')
 	},
-	
+
 	_onPlayerAPIReady: function(){
 		var self = this;
-		
+
 		var unreadyPlayer = new YT.Player(this.id, {
 			width: '100%',
 			height: '100%',
-			playerVars: { 
+			playerVars: {
 				'rel': 0,
 				'controls': 0,
 				'disablekb': 1, //disable YouTubes keyboard controls (and keep ours)
@@ -245,8 +245,8 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 				}
 		});
 	},
-	
-	_bootstrapPlayer: function(){	
+
+	_bootstrapPlayer: function(){
 		var tag = document.createElement('script');
 		tag.src = "http://www.youtube.com/player_api";
 		var firstScriptTag = document.getElementsByTagName('script')[0];
