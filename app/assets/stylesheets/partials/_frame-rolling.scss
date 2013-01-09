@@ -1,30 +1,48 @@
 //------------------------------------------------------------------------------
-//  guide overlay, frame rolling
+//  ABSTRACTS in _overlay.scss
+
 //------------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////
-//  architectural
-////////////////////////////////////////////////////////////////////////////
-.framerolling-head {
-  .guide-overlay-header {
-    line-height: 1.35;
+//  ROOT
+
+.guide-overlay--frame-rolling {
+}
+
+//------------------------------------------------------------------------------
+//  HEAD
+
+.guide-overlay__head--frame-rolling {
+  .guide-over__title--inline {
+
   }
 
   .destination {
-    font-size: 1.1em;
     font-weight: 400;
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .destination-modifier {
+
   }
 }
 
-.framerolling-body {
-  padding: 1.5em 8px;
+//------------------------------------------------------------------------------
+//  HEAD
+
+.guide-overlay__body--frame-rolling {
+  padding:1.5em 8px;
+
+  .form_textarea {
+    font-size: 1em;
+  }
+
 }
 
-.change-rolling-destination {
-  display: none;
-}
 
 //------------------------------------------------------------------------------
 //  abstracts
+//
+//  TODO: may not belong in this partial.
 //------------------------------------------------------------------------------
 .roll_selection__h1 {
 
