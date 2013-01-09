@@ -12,16 +12,17 @@ libs.shelbyGT.Ajax = {
         break;
     }
   },
-  
+
   validAnonUrlStubs : [
     shelby.config.apiRoot+'/user/',
     shelby.config.apiRoot+'/roll/',
     shelby.config.apiRoot+'/POST/gt_interest',
     '/short_link',
+    '/watched',
     shelby.config.apiRoot+'/video/search',
     shelby.config.apiRoot+'/js_err'
   ],
-  
+
   isAnonUrlValid : function(opts){
     var valid = false;
     this.validAnonUrlStubs.forEach(function(stub){
