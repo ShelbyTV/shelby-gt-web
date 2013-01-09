@@ -21,7 +21,7 @@
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
 <!-- videocard -->
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
       <h1 class="frame-title" title="<%= videoTitle %>">
@@ -156,10 +156,6 @@
                <%= videoTitle %>
               </h1>
 
-              <a class="frame-is-collapsed">
-                Open
-              </a>
-
               <div class="xuser-data">
                 shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
               </div>
@@ -200,10 +196,6 @@
             <h1 class="frame-title" title="<%= videoTitle %>">
              <%= videoTitle %>
             </h1>
-
-            <a class="frame-is-collapsed">
-              Open
-            </a>
           </a>
         </div>
       </footer><!-- eo .media_module-->
@@ -223,5 +215,10 @@
       </p>
     </aside>
   <% } %>
+
+	<% if(frame.get('isFreshPlayNew')){ %>
+		<div class="sash">New</div>
+	<% } %>
+
 </article>
 <!-- end new videocard -->

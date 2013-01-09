@@ -32,8 +32,11 @@ $(document).ready(function(){
   */
   /* not on splash page, could be logged in or not */
   //TODO: the 'non-logged-in-user' functionality needs to built out
+
+  //don't decode the fragment in the Backbone.queryparams plugin because backbone 0.9.1 already does it
+  Backbone.Router.decodeFragment = false;
   shelby.router = new libs.shelbyGT.AppRouter();
   Backbone.history.start({ pushState:true });
-  
+
   shelby.userInactivity.init();
 });

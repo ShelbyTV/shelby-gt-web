@@ -5,6 +5,7 @@
 <% var frameTitle = frame.get('video').get('title') || '' %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 
+
 <div class="guide-overlay__head guide-overlay__head--conversation">
   <h2 class="guide-overlay__title--inline">
     Add a new comment within Shelby.tv
@@ -30,25 +31,15 @@
           title : frame.get('video').get('title') || ''
         })
       %>
-			<% if (!shelby.models.user.isAnonymous()) { %>
+			<% if (!shelby.models.user.isAnonymous() && !shelby.config.hostName) { %>
 	      <%=
 	        SHELBYJST['frame-conversation-form']({user: user})
 	      %>
 			<% } %>
     </div><!-- eo frame-body-wrapper -->
-		<% if (shelby.models.user.isAnonymous()) { %>
+		<% if (shelby.config.hostName) { %>
 			<div id="disqus_thread"></div>
 			<%= SHELBYJST['disqus']({frame: frame}) %>
-
-	    <div class="signin_module" style="display:none;">
-		    <section class="dropdown_section signup-section">
-		      <div class="dropdown_lining signup-section-lining clearfix"></div>
-				</section>
-
-				<% return_url = document.referrer == "" ? document.location.href : document.referrer; %>
-
-	      <a id="js-login-within-comments" href="#" class="signin_module__link js-track-event" data-ga_category="Frame" data-ga_action="Click login in comments" data-ga_label="<%= frame.get('roll').get('title') %>">Log in</a> or <a class="signin_module__link signup-popup js-track-event" data-ga_category="Frame" data-ga_action="Click signup in comments" data-ga_label="<%= frame.get('roll').get('title') %>" href="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" location="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" popup-width="450" popup-height="525">Sign up</a> to leave a comment.
-	    </div>
 		<% } %>
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

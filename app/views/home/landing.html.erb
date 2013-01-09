@@ -48,33 +48,6 @@
             <section class="dropdown_section login-section">
               <div class="dropdown_lining login-section-lining clearfix">
 
-                <div class="js-show-request-invite form_fieldset form_fieldset--private clearfix">
-                  <p class="form_legend">
-                    Not a member? <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a>
-                  </p>
-                </div>
-
-                <div class="js-request-invite clearfix hidden">
-                  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
-                    <fieldset class="">
-                      <label for="email" class="form_label">Email</label>
-                      <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
-                    </fieldset>
-
-                    <fieldset class="form_fieldset">
-                      <input id="js-email-submit" class="button_primer button_blue form_submit" type="submit" value="Request an invite!" />
-                    </fieldset>
-                  </form>
-
-                  <div id="js-thankyou" class="form_fieldset form_fieldset--feedback hidden">
-                    <span class="form_label">
-                      Thanks, we'll email you!
-                    </span>
-                  </div>
-                </div>
-
-								<hr class="hr--double" />
-
                 <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
                   <fieldset class="form_fieldset">
                     <label for="username" class="form_label">Username</label>
@@ -167,7 +140,6 @@
 
     <% if (!@share_type or !@video) and !@invite_id %>
       <%= render :partial => "/home/shelf/banner" %>
-      <%= render :partial => "/home/shelf/sign_me_up" %>
     <% end %>
 
     <% if !@invite_id %>
@@ -177,7 +149,6 @@
 
     <footer class="landing-footer">
       <div class="landing-footer-lining clearfix">
-
         <ul class="landing-footer-lists list_module clearfix">
           <li>
             <h5 class="landing-footer-content-header">Shelby.tv</h5>
@@ -285,6 +256,18 @@
           $('#js-thankyou').removeClass('hidden');
         }, 'jsonp');
         return false;
+      });
+
+      $('.js-search-form').on('submit', function(e){
+        e.preventDefault();
+
+        var searchQuery = $(e.currentTarget).find("#query").val();
+        if (searchQuery) {
+          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
+          try {
+          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
+          } catch(e) {}
+        }
       });
     });
   </script>

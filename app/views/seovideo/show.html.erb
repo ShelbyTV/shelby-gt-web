@@ -19,9 +19,13 @@
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--<% if(@seo_search_prepopulate) %>true frame-body-wrapper<% else %>false<% end %>">
+    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
       <h2 class="seovideo__h2">
-        See more videos that match your search from<br /> YouTube, Vimeo, and Dailymotion:
+        <% if @seo_search_messaging == :sell_providers  %>
+          See more video that matches your search from<br /> YouTube, Vimeo, and Dailymotion:
+        <% else %>
+          Watch more on Shelby.tv, the only video search that plays your results instead of showing you text.
+        <% end  %>
       </h2>
 
       <div class="media_module seovideo__banner clearfix">
@@ -40,7 +44,7 @@
             <% if @search_query %>
               <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" type="text" class="form_input" />
             <% else %>
-              <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input"  autofocus="autofocus" <% if (!@seo_search_prepopulate) %>placeholder="Search Youtube, Vimeo, and DailyMotion"<% end %> />
+              <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input" autofocus="autofocus" />
             <% end %>
           </div>
         </form>
@@ -199,7 +203,10 @@
 
             <ul class="seovideo__list">
             <% @messages[:twitter].each do |message| %>
-              <%= render :partial => "twitter_message", :locals => { :message => message } %>
+              <% begin %>
+                <%= render :partial => "twitter_message", :locals => { :message => message } %>
+              <% rescue #just ignore it if we can't render it %>
+              <% end  %>
             <% end %>
             </ul>
           <% end %>
@@ -264,14 +271,13 @@ $(document).ready(function(){
   });
 
   $('#js-seovideo-search-form').on('submit', function(e){
-    // form handles its own submission, so don't stop propagation
-    // but also want to track the search as an event in ga
-    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val().toLowerCase();
-    if (!searchQuery) {
-      e.preventDefault();
-    } else {
+    e.preventDefault();
+
+    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val();
+    if (searchQuery) {
+      window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
       try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery]);
+          _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery.toLowerCase()]);
       } catch(e) {}
     }
   });

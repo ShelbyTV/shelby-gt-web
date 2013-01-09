@@ -2,19 +2,26 @@
   <div class="landing-shelf__lining half landing-cta-genius">
     <h2 class="landing-shelf-subheader extra landing-cta-header">
       <i class="button_icon_center icon_landing_genius cta-icon icon-genius"></i>
-      Shelby Genius
+      <label for="js-email-input" class="form_label">
+		    Sign up for Shelby
+		  </label>
     </h2>
 
     <p class="landing-shelf-block display">
-      Search for anything and Genius finds videos from <br>
-      YouTube, Vimeo, and DailyMotion. Click to learn more.
+      Curate your own .TV channel with video<br/>
+			from YouTube, Vimeo, DailyMotion and more...
     </p>
 
-    <a class="button_primer faux_button button_gray-medium appstore-button clearfix js-track-event" data-ga_action="Click App Store" href="http://itunes.apple.com/us/app/shelby-genius/id556665733" title="Shelby Genius App available on the App Store">
-      <i class="button_icon_left icon_iphone_dark iphone-icon">
-        Available on the <span>App Store</span>
-      </i>
-    </a>
+    <form id="js-email-form" class="form_module_horz form_module_horz--signmeup-form js-track-submit" data-ga_action="Submit interest email">
+		  <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" />
+		  <input id="js-email-submit" class="button_primer button_blue landing-button-large landing-signmeup-submit" type="submit" value="Sign Up!" />
+		</form>
+		<div id="js-thankyou" class="form_module_horz form_module_horz--signmeup-form hidden">
+		  <span class="form_label">
+		    Thanks, we'll email you!
+		  </span>
+		</div>
+
   </div>
 
   <div class="landing-shelf__lining half landing-cta-explore">

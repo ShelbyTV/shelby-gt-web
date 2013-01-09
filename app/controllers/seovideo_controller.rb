@@ -37,26 +37,27 @@ class SeovideoController < ApplicationController
 
     # A/B tests
     @seo_ad_videocard = ab_test :seo_ad_videocard
-    @seo_search_prepopulate = ab_test :seo_search_prepopulate
+    @seo_search_messaging = ab_test :seo_search_messaging
 
-    if @seo_search_prepopulate
-      # if the referrer is google search, parse the search query out of its url
-      if http_referer = request.env["HTTP_REFERER"]
-        # the parser doesn't know it's an http url without the protocol, so ensure
-        # that it starts with http://
-        unless http_referer.start_with? 'http://'
-          if http_referer.start_with? 'https://'
-            http_referer.slice! 4
-          else
-            http_referer = 'http://' + http_referer
-          end
+    # if the referrer is google search, parse the search query out of its url
+    http_referer = request.env["HTTP_REFERER"]
+    if http_referer && http_referer.length > 0
+      # the parser doesn't know it's an http url without the protocol, so ensure
+      # that it starts with http://
+      unless http_referer.start_with? 'http://'
+        if http_referer.start_with? 'https://'
+          http_referer.slice! 4
+        else
+          http_referer = 'http://' + http_referer
         end
-        referer_uri = Addressable::URI.parse(http_referer)
-        if referer_host = referer_uri.host
-          if referer_host.start_with?('http://google.') || referer_host.include?('.google.')
-            if query_values = referer_uri.query_values
-              @search_query = query_values["q"]
-            end
+      end
+      referer_uri = Addressable::URI.parse(http_referer)
+      if referer_host = referer_uri.host
+        if referer_host.start_with?('google.') || referer_host.include?('.google.')
+          if query_values = referer_uri.query_values
+            @search_query = query_values["q"]
+            # change any characters that can't be encoded in UTF-8 into ?'s
+            @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
           end
         end
       end

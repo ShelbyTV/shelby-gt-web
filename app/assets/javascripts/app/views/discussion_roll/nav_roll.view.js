@@ -19,7 +19,7 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
   render : function(){
     this.$el.html(this.template({roll:this.model, viewer:this.options.viewer}));
     
-    if( this.model.id===this.options.currentRoll.id ){
+    if( this.options.currentRoll && this.model.id===this.options.currentRoll.id ){
       this.$el.addClass("discussion__item--current-discussion-roll");
     }
     
