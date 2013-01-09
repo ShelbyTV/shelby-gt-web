@@ -81,7 +81,7 @@
         roll: roll,
         frame: this.model
       });
-      this.appendChildInto(this._rollingForm, '.guide-overlay-main');
+      this.appendChildInto(this._rollingForm, '.js-guide-overlay-main');
 		},
 
 		_removeRollingFormChild: function(){

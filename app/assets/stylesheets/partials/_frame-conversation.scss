@@ -74,15 +74,15 @@
 //  LOG IN or SIGN UP
 //------------------------------------------------------------------------------
 .signin_module {
-  margin-top: -66px;
-  z-index: 100;
-  position: relative;
-  height: 66px;
   background-color: rgba(100, 177, 218, 0.6);
   color: black;
-  padding-left: 80px;
+  height: 66px;
   font-size: 1.3em;
+  margin-top: -66px;
+  padding-left: 80px;
   padding-top: 1.5em;
+  position: relative;
+  z-index: 100;
 
   .signin_module__link {
     &,
