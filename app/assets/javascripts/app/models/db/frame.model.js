@@ -105,7 +105,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
-    if(startTime && endTime){
+    if(typeof startTime != "undefined" && typeof endTime != "undefined"){
       url += '?start_time='+startTime+'&end_time='+endTime;
     }
     frameWatched.save(null, {url:url, success:onSuccess});
