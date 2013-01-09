@@ -20,7 +20,7 @@ libs.shelbyGT.Ajax = {
     '/short_link',
     '/watched',
     shelby.config.apiRoot+'/video/search',
-    shelby.config.apiRoot+'/js_err',
+    shelby.config.apiRoot+'/js_err'
   ],
 
   isAnonUrlValid : function(opts){
