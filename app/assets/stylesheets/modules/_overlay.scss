@@ -9,10 +9,12 @@
 //    *used for any overlay,
 //     that slides over the guide
 //---------------------------
+.guide-overlay__head,
 .overlay_header {
   height: $overlay_header_height;
 }
 
+.guide-overlay__body,
 .overlay_body {
   bottom: 0;
   position: absolute;

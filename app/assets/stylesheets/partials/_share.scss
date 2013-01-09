@@ -1,32 +1,73 @@
-@import "base";
-
-.frame-share{
-//	extended by .rolling-frame;
-	@include background(hsla(0,0,0,0.8));
-
-	height:100%;
-	top:40px;
+//  ROOT
+.guide-overlay--frame-sharing {
 }
 
-.frame-share-content{
-	height:inherit;
+//  HEAD
+.guide-overlay__head--frame-sharing {
+  //non-normal: .discussion__h1 is applied to the head.
+  //provides BG color and font color.
+
+  .guide-overlay__button {
+    font-size: 0.9em;
+    left: 0;
+    margin: 1.2em;
+    padding: 0.4em 0.55em 0.4em 0.5em;
+    position: absolute;
+    top: 0;
+
+    .icon--cancel {
+      vertical-align: -1px;
+    }
+  }
 }
 
-.frame-share-header{
-	//extended by .video-card-header;
+  .guide-overlay__title {
+    line-height: 2;
+  }
+
+
+//  BODY
+.guide-overlay__body--frame-sharing {
+  padding:1.5em 8px;
+
+  .form_module {
+
+  }
+
+  .frame-sharing {
+
+  }
 }
+
+//  BELOW IS NON-NORMATIVE
+
+// .frame-share{
+// 	@include background(hsla(0,0,0,0.8));
+
+// 	height:100%;
+// 	top:40px;
+// }
+
+// .frame-share-content{
+// 	height:inherit;
+// }
+
+// .frame-share-header{
+// 	//extended by .video-card-header;
+// }
 
 .frame-sharing__to-label {
   float: left;
   margin-right: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .frame-sharing__roll-selection {
   max-width: 200px;
 }
 
-.frame-sharing__roll-selection,
-.frame-sharing__to-label,
-.frame-sharing__message-label {
-  margin-top: 1em;
-}
+// .frame-sharing__roll-selection,
+// .frame-sharing__to-label,
+// .frame-sharing__message-label {
+//   margin-top: 1em;
+// }
