@@ -138,7 +138,13 @@
                     </div>
                     <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
                   </li>
-
+                  <% if (frame.get('creator') == user) { %>
+                    <li class="menu_item" style="float: left;margin-left: 150px;">
+                      <div class="view-counts">
+                        <%=  frame.get('view_count') %>/<%=  video.get('view_count') %>
+                      </div>
+                    </li>
+                  <% } %>
                   <li class="menu_item right" role="menuitem">
                     <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
                       <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
