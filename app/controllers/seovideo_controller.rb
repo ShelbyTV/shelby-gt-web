@@ -51,7 +51,15 @@ class SeovideoController < ApplicationController
           http_referer = 'http://' + http_referer
         end
       end
-      referer_uri = Addressable::URI.parse(http_referer)
+
+      begin
+        referer_uri = Addressable::URI.parse(http_referer)
+      rescue Exception => e
+        #don't want to blow up on uri parsing errors, but log them so we have some way of tracking them
+        Rails.logger.info "SEO Page Parse Referer URI Failed (ignoring): #{e}"
+        return
+      end
+
       if referer_host = referer_uri.host
         if referer_host.start_with?('http://google.') || referer_host.start_with?('google.') || referer_host.include?('.google.')
           if query_values = referer_uri.query_values
