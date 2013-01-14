@@ -1,15 +1,15 @@
 <div class="notification__wrapper">
-  <div class="js-notifications notification notification--feedback <%= model.get('class') %>">
+  <div class="js-notifications notification notification--blue <%= model.get('class') %>">
     <div class="notification__head">
-      <a href="#" onclick="return false;" title="Close" class="notification__link icon_primer icon--cancel js-button js-confirm">
-        Dismiss
-      </a>
+      <p class="notification__block">
+        <%= model.get("message") %>
+      </p>
     </div><!-- eo notification__head -->
 
     <div class="notification__body">
-      <div class="notification__message">
-        <%= model.get("message") %>
-      </div>
+      <a href="#" onclick="return false;" title="Close" class="notification__button--close faux_button icon_primer icon--cancel js-button js-confirm">
+        Dismiss
+      </a>
     </div><!-- eo notification__body -->
   </div><!-- eo notification -->
 </div><!-- eo notification__wrapper -->

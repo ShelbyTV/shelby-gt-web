@@ -33,7 +33,7 @@
 
     _onVisiblityChange : function(model){
       this.$el.toggleClass('hide',!model.get('visible'));
-      this.$el.find('.js-confirm').first().focus();
+      this.$el.find('js-confirm').first().focus();
     },
 
     _handleResponse : function(data){
