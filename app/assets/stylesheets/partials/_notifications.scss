@@ -1,123 +1,104 @@
-@import "base";
+//------------------------------------------------------------------------------
+// NOTIFICATIONS Block
+//------------------------------------------------------------------------------
+.notifications {
 
-////////////////////////////////////////////////////////////////////////////
-//  TODO: ONE WORD CLASS NAMES ARE TOO VAGUE,
-//        NEED TO FIX THIS EVENTUALLY
-//
-//  TODO: ONLY CLASSES IN THE MODULES PARTIAL GET UNDERSCORES
-//        UNDERSCORES DENOTE UTILITY CLASSES THAT AREN'T READILY EDITABLE
-////////////////////////////////////////////////////////////////////////////
+}
 
 //------------------------------------------------------------------------------
-//  Notifications architecture
-//  (setup, shared between any/all alerts and notifications)
+// Single NOTIFICATION Block
 //------------------------------------------------------------------------------
-.notifications-wrapper {
-//  display: none;
-  height: 50px;
+
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+
+.notification__wrapper {
   left: 50%;
   margin-left: -300px;
-  overflow: hidden;
-  position: relative;
+  position: absolute;
   top: 36px;
   width: 600px;
   z-index: 4;
 
   &.hide {
-    height: 0px;
+    height: 0;
   }
 }
 
-$bookmarklet-color: $shelby-blue;
+.notification {
+  font-size: 1.3em;
+  padding: 1em;
 
-.notification_module--feedback {
+}
+
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+
+.notification__button {
+
+}
+
+.notification__link {
+
+}
+
+.notification__message {
+
+}
+
+//------------------------------------------------------------------------------
+//  Head
+//------------------------------------------------------------------------------
+
+.notification__head {
+
+}
+
+
+//------------------------------------------------------------------------------
+//  Body
+//------------------------------------------------------------------------------
+
+.notification__body {
+
+}
+
+
+//------------------------------------------------------------------------------
+//  Modifiers
+//------------------------------------------------------------------------------
+
+.notification--feedback {
   @include gradient-primer($shelby-blue);
   @include roundies(footer);
 
-  box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
-  color: #efefef;
-  padding: 3px 5px;
-  margin: 0 auto;
-  position: relative;
-  max-width: 600px;
-  z-index: 5;
+  //  Elements
 
-  .notification_actions {
+  .notification__button {
 
   }
 
-  .notification_button {
-    color: $bookmarklet-color;
-    border-color: $bookmarklet-color;
-    border-radius: 20px !important;
-    text-shadow: none;
-    vertical-align: top;
-    margin: 0.5em 0.3em 0;
+  .notification__link {
+
   }
 
-  .notification_label {
-    color: darken($bookmarklet-color,15%);
+  .notification__message {
+
   }
 
-  .notification_message {
-    font-size: 1.5em;
-    line-height: 2.1;
-    vertical-align: top;
-    width: 100%;
+  //  Head
 
-    a {
-      &:active,
-      &:link,
-      &:hover,
-      &:visited {
-        color: darken($bookmarklet-color,15%)
-      }
-    }
+  .notification__head {
+
   }
 
-  .notification_option {
-    margin-right: .7em;
-  }
-}//eo notifications
 
-.button-wrapper {
-  margin: 2em;
-  text-align: center;
+  //  Body
 
-  .one_button {
-    .notification-cancel {
-      display: none;
-    }
+  .notification__body {
+
   }
 
-  .two_button {
-  }
-
-  .notification-confirm,
-  .notification-cancel {
-    font-size: 1.3em;
-    width: 6.7em;
-  }
-
-  button.disabled { display: none; }
-  button.red      { @include button-primer($shelby-red,dark); }
-  button.blue     { @include button-primer($shelby-blue,dark); }
-  button.grey     { @include button-primer; }
-}//eo button-wrapper
-
-
-//------------------------------------------------------------------------------
-//  Specifically Shelby.alert()
-//------------------------------------------------------------------------------
-
-.default {
 }
-
-//------------------------------------------------------------------------------
-// Specifically the "Rolled to username/personal roll" message
-//------------------------------------------------------------------------------
-.info {
-  .message-link {
-    float: right;
-  }
-}//eo info

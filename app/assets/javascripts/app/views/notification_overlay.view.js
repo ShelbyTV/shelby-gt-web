@@ -33,7 +33,7 @@
 
     _onVisiblityChange : function(model){
       this.$el.toggleClass('hide',!model.get('visible'));
-      this.$el.find('js-confirm').first().focus();
+      this.$el.find('.js-confirm').first().focus();
     },
 
     _handleResponse : function(data){
@@ -52,7 +52,7 @@
       shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id'), {trigger:true,replace:true});
       this.model.set({visible: false, response: null});
     },
-    
+
     _handlePopupLink : function(e){
       e.preventDefault();
       window.open(e.currentTarget.href, "_shelbyChat");
