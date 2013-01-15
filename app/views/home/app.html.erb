@@ -32,7 +32,6 @@
       <% experiments.each do |name, alternative| %>
         shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
       <% end %>
-      console.log(shelby.abTests);
     </script>
   <% end %>
   <%= javascript_include_tag "shelby" %>
