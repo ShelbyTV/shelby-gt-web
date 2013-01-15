@@ -173,19 +173,19 @@
           <% if(user.isAnonymous()) { %>
             <li class="persistent_video_info__item clearfix">
               <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                  <i class="button_icon_center icon_share_facebook icon">
-                    &nbsp;
-                  </i>
-                </button>
+                <i class="button_icon_center icon_share_facebook icon">
+                  &nbsp;
+                </i>
+              </button>
             </li>
             <li class="persistent_video_info__item clearfix">
               <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= currentFramePermalink %>">
-                  <button class="button_primer button_default persistent_video_info__button--twitter js-share-to-twitter js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="button_icon_center icon_share_twitter icon">
-                      &nbsp;
-                    </i>
-                  </button>
-                </a>
+                <button class="button_primer button_default persistent_video_info__button--twitter js-share-to-twitter js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                  <i class="button_icon_center icon_share_twitter icon">
+                    &nbsp;
+                  </i>
+                </button>
+              </a>
             </li>
           <% } %>
         <% } %>
