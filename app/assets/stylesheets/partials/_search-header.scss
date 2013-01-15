@@ -1,6 +1,11 @@
 .video-search-form {
   padding: 5px 10px;
   position: relative;
+
+  .form_label {
+    font-size: 1.45em;
+    margin-bottom: 0.2em;
+  }
 }
 
 .video-search-button {
