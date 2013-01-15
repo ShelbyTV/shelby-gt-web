@@ -155,6 +155,9 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .hr {
     margin-bottom: 1em;
   }
+
+  &.left { text-align: left; }
+  &.right { text-align: right; }
 }
 
 
@@ -219,7 +222,7 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 .persistent_video_info__sash {
   @include rotate(45deg);
   @include sash-primer();
-  
+
   position: absolute;
   right: -25px;
   top: 10px;
