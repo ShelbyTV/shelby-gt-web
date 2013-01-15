@@ -1,12 +1,5 @@
 //------------------------------------------------------------------------------
-// NOTIFICATIONS Block
-//------------------------------------------------------------------------------
-.notifications {
-
-}
-
-//------------------------------------------------------------------------------
-// Single NOTIFICATION Block
+// NOTIFICATION Block
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -14,21 +7,27 @@
 //------------------------------------------------------------------------------
 
 .notification__wrapper {
+  height: 200px;
   left: 50%;
   margin-left: -300px;
+  overflow: hidden;
   position: absolute;
   top: 36px;
   width: 600px;
   z-index: 4;
 
   &.hide {
-    display: none;
+    height: 0;
   }
 }
 
 .notification {
-  box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
+  @include roundies(footer);
+
+  background-color: $base;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
   font-size: 1.3em;
+  margin: 0 10px 10px;
   padding: 1em;
 }
 
@@ -40,26 +39,32 @@
 
 }
 
-.notification__button--close {
-  font-family: $font-family-display;
-  font-weight: 400;
+.notification__button--primary {
+  padding: 0.7em 1em 0.8em;
+
+  .icon--cancel {
+    &:before {
+      vertical-align: -0.1em;
+    }
+  }
+}
+
+.notification__button--secondary {
+  background: none;
+  border: none;
+  font-family: $font-family;
+  padding: 0.7em 1em 0.8em 0.5em;
 
   &,
   &:visited {
-    color: darken($shelby-blue, 15%);
+    color: lighten($text, 20%);
   }
 
   &:hover {
-    color: darken($shelby-blue, 15%);
     text-decoration: underline;
   }
 
   &:active {
-    color: darken($shelby-blue, 25%);
-  }
-
-  &:before {
-    vertical-align: -0.1em;
   }
 }
 
@@ -68,7 +73,6 @@
 }
 
 .notification__block {
-  color: rgb(239, 239, 239);
   font-size: 1.1em;
   font-family: $font-family-display;
   font-weight: 400;
@@ -97,36 +101,141 @@
 //------------------------------------------------------------------------------
 //  Modifiers
 //------------------------------------------------------------------------------
+/*
+    below styles pertain to specific alert UI
+*/
 
-.notification--blue {
-  @include gradient-primer($shelby-blue);
-  @include roundies(footer);
+//------------------------------------------------------------------------------
+//  UI style for shelby.alert();
 
+.notification--alert {
   //  Elements
-
   .notification__button {
+  }
 
+  .notification__button--primary {
+    .icon--cancel {
+      &:before {
+      }
+    }
+  }
+
+  .notification__button--secondary {
+    &,
+    &:visited,
+    &:hover {
+    }
+
+    &:hover {
+    }
+
+    &:active {
+    }
   }
 
   .notification__link {
-
   }
 
   .notification__block {
-
   }
 
   //  Head
-
   .notification__head {
-
   }
 
 
   //  Body
-
   .notification__body {
+  }
 
+}
+
+//------------------------------------------------------------------------------
+//  UI style for shelby.confirm();
+
+.notification--confirm {
+  //  Elements
+  .notification__button {
+  }
+
+  .notification__button--primary {
+    .icon--cancel {
+      &:before {
+      }
+    }
+  }
+
+  .notification__button--secondary {
+    &,
+    &:visited,
+    &:hover {
+    }
+
+    &:hover {
+    }
+
+    &:active {
+    }
+  }
+
+  .notification__link {
+  }
+
+  .notification__block {
+  }
+
+  //  Head
+  .notification__head {
+  }
+
+
+  //  Body
+  .notification__body {
+  }
+
+}
+
+//------------------------------------------------------------------------------
+//  UI style for shelby.success();
+
+.notification--success {
+  //  Elements
+  .notification__button {
+  }
+
+  .notification__button--primary {
+    .icon--cancel {
+      &:before {
+      }
+    }
+  }
+
+  .notification__button--secondary {
+    &,
+    &:visited,
+    &:hover {
+    }
+
+    &:hover {
+    }
+
+    &:active {
+    }
+  }
+
+  .notification__link {
+  }
+
+  .notification__block {
+  }
+
+  //  Head
+  .notification__head {
+  }
+
+
+  //  Body
+  .notification__body {
   }
 
 }

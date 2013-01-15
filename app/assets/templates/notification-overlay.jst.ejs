@@ -1,15 +1,24 @@
-<div class="notification__wrapper">
-  <div class="js-notifications notification notification--blue <%= model.get('class') %>">
-    <div class="notification__head">
-      <p class="notification__block">
-        <%= model.get("message") %>
-      </p>
-    </div><!-- eo notification__head -->
+<% var primary = model.get('primary') %>
+<% var secondary = model.get('secondary') %>
 
-    <div class="notification__body">
-      <a href="#" onclick="return false;" title="Close" class="notification__button--close faux_button icon_primer icon--cancel js-button js-confirm">
-        Dismiss
-      </a>
-    </div><!-- eo notification__body -->
-  </div><!-- eo notification -->
-</div><!-- eo notification__wrapper -->
+<div class="js-notifications notification <%= model.get('class') %>">
+  <div class="notification__head">
+    <p class="notification__block">
+      <%= model.get("message") %>
+    </p>
+  </div><!-- eo notification__head -->
+
+  <div class="notification__body">
+    <% if (primary.title) { %>
+      <button class="button_primer button_blue notification__button--primary faux_button js-primary">
+        <%= primary.title %>
+      </button>
+    <% } %>
+
+    <% if (secondary.title) { %>
+      <button class="notification__button--secondary faux_button js-secondary">
+        <%= secondary.title %>
+      </button>
+    <% } %>
+  </div><!-- eo notification__body -->
+</div><!-- eo notification -->

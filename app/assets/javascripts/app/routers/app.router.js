@@ -1,11 +1,11 @@
 libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   routes : {
-    "static/*url" : "initStatic",
+    "static/*url"   : "initStatic",
     "embedded/*url" : "initEmbedded",
-    "chat/*url" : "initDiscussionRoll",
-    "chat"      : "initDiscussionRoll",
-    "*url" : "initDynamic"
+    "chat/*url"     : "initDiscussionRoll",
+    "chat"          : "initDiscussionRoll",
+    "*url"          : "initDynamic"
   },
 
   //---
