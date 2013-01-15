@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', :git => 'git://github.com/ShelbyTV/rails.git', :branch => 'rescue-invalid-encodings'
 
 # Needed to decode the gt api server cookie
 gem 'bson_ext'
@@ -65,6 +65,7 @@ group :production, :staging do
 end
 group :development do
   gem 'capistrano-unicorn', :require => false
+  gem 'thin'
 end
 
 #

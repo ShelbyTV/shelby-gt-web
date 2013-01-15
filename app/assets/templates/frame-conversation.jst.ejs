@@ -14,7 +14,7 @@
     </button>
 
     <h2 class="guide-overlay-header">
-      Add a new comment within Shelby.tv
+      Add a new comment
     </h2>
   </div><!-- eo guide-overlay-head-lining -->
 </div><!-- eo guide-overlay-head.conversation-head -->
@@ -22,9 +22,9 @@
 <div class="overlay_body guide-overlay-body conversation-body js-conversation-body">
   <form class="form_module new-comment">
     <h1 class="frame-title" title="<%= frameTitle %>">
-      <%= frameTitle || '' %> 
+      <%= frameTitle || '' %>
     </h1>
-    
+
     <div class="frame-body-wrapper clearfix">
       <%=
         SHELBYJST['thumbnail-module']({
@@ -32,25 +32,15 @@
           title : frame.get('video').get('title') || ''
         })
       %>
-			<% if (!shelby.models.user.isAnonymous()) { %>
+			<% if (!shelby.models.user.isAnonymous() && !shelby.config.hostName) { %>
 	      <%=
 	        SHELBYJST['frame-conversation-form']({user: user})
 	      %>
 			<% } %>
     </div><!-- eo frame-body-wrapper -->
-		<% if (shelby.models.user.isAnonymous() && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
+		<% if (shelby.config.hostName && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
 			<div id="disqus_thread"></div>
 			<%= SHELBYJST['disqus']({frame: frame}) %>
-			
-	    <div class="signin_module" style="display:none;">
-		    <section class="dropdown_section signup-section">
-		      <div class="dropdown_lining signup-section-lining clearfix"></div>
-				</section>
-				
-				<% return_url = document.referrer == "" ? document.location.href : document.referrer; %>
-				
-	      <a id="js-login-within-comments" href="#" class="signin_module__link js-track-event" data-ga_category="Frame" data-ga_action="Click login in comments" data-ga_label="<%= frame.get('roll').get('title') %>">Log in</a> or <a class="signin_module__link signup-popup js-track-event" data-ga_category="Frame" data-ga_action="Click signup in comments" data-ga_label="<%= frame.get('roll').get('title') %>" href="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" location="<%= shelby.config.popupCohortEntraceURL %>?source=comment&roll=<%= frame.get('roll').get('title') %>&return_url=<%= return_url %>" popup-width="450" popup-height="525">Sign up</a> to leave a comment.
-	    </div>
 		<% } %>
   </form>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

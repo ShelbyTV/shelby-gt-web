@@ -14,6 +14,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
+    "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo"
   },
 
@@ -46,7 +47,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       this.$el.html(this.template({
         currentFrame: this._currentFrame,
         nextFrame: this._nextFrame,
-        queuedVideosModel: this.options.queuedVideos
+        queuedVideosModel: this.options.queuedVideos,
+        user: shelby.models.user
       }));
     }
   },
@@ -127,6 +129,27 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _skipToNextVideo : function(){
     this._userDesires.set('changeVideo', 1);
     this._userDesires.unset('changeVideo');
+  },
+
+  _shareCurrentToFacebook : function(e){
+    var _frame = this._currentFrame;
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          name: _frame.get('video').get('title'),
+          link: _frame.getSubdomainPermalink(),
+          picture: _frame.get('video').get('thumbnail_url'),
+          description: _frame.get('video').get('description'),
+          caption: 'a video from '+ shelby.config.hostName
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
+        }
+      );
+    }
   }
 
 });

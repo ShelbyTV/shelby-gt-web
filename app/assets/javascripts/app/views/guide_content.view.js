@@ -5,6 +5,7 @@
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
+  var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
   var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
@@ -107,19 +108,29 @@
           };
           break;
         case DisplayState.standardRoll :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : FreshPlayRollView,
+            model : this.model.get('currentRollModel'),
+            options : {
+              masterCollection : this._currentRollMasterCollection
+            },
+            spinner : true
+          };
+          break;
         case DisplayState.watchLaterRoll :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
-              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
+              collapseViewedFrameGroups : true,
               emptyIndicatorViewProto : currentDisplayState == DisplayState.watchLaterRoll ? QueueEmptyIndicatorView : null,
               fetchParams : {
                 include_children : true
               },
               firstFetchLimit : shelby.config.pageLoadSizes.roll,
-              limit : shelby.config.pageLoadSizes.roll + 1,
+              limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true

@@ -37,25 +37,47 @@ class SeovideoController < ApplicationController
 
     # A/B tests
     @seo_ad_videocard = ab_test :seo_ad_videocard
-    @seo_search_prepopulate = ab_test :seo_search_prepopulate
+    @seo_search_messaging = ab_test :seo_search_messaging
 
-    if @seo_search_prepopulate
-      # if the referrer is google search, parse the search query out of its url
-      if http_referer = request.env["HTTP_REFERER"]
-        # the parser doesn't know it's an http url without the protocol, so ensure
-        # that it starts with http://
-        unless http_referer.start_with? 'http://'
-          if http_referer.start_with? 'https://'
-            http_referer.slice! 4
-          else
-            http_referer = 'http://' + http_referer
-          end
+    # if the referrer is google search, parse the search query out of its url
+    http_referer = request.env["HTTP_REFERER"]
+    Rails.logger.info "SEO DEBUG: raw http referer: #{http_referer}"
+    if http_referer && http_referer.length > 0
+      # the parser doesn't know it's an http url without the protocol, so ensure
+      # that it starts with http://
+      unless http_referer.start_with? 'http://'
+        if http_referer.start_with? 'https://'
+          http_referer.slice! 4
+        else
+          http_referer = 'http://' + http_referer
         end
+      end
+
+      Rails.logger.info "SEO DEBUG: corrected http referer: #{http_referer}"
+
+      begin
         referer_uri = Addressable::URI.parse(http_referer)
-        if referer_host = referer_uri.host
-          if referer_host.start_with?('http://google.') || referer_host.include?('.google.')
-            if query_values = referer_uri.query_values
-              @search_query = query_values["q"]
+      rescue Exception => e
+        #don't want to blow up on uri parsing errors, but log them so we have some way of tracking them
+        Rails.logger.info "SEO Page Parse Referer URI Failed (ignoring): #{e}"
+        return
+      end
+
+      if referer_host = referer_uri.host
+        Rails.logger.info "SEO DEBUG: referer host: #{referer_host}"
+        if referer_host.start_with?('http://google.') || referer_host.start_with?('google.') || referer_host.include?('.google.')
+          if query_values = referer_uri.query_values
+            Rails.logger.info "SEO DEBUG: query values: #{query_values}"
+            # its a google url so grab the search query
+            if @search_query = query_values["q"]
+              # check if the google url specified an encoding for the search query and if so decode it accordingly
+              Rails.logger.info "SEO DEBUG: query values after looking up query: #{query_values}"
+              if search_query_encoding = query_values["ie"]
+                if encoding_obj = Encoding.list.find {|enc| enc.name.casecmp(search_query_encoding) == 0 }
+                  # re-encode the search query as UTF-8, respecting the input encoding that was passed to google
+                  @search_query.encode!('utf-8', encoding_obj, :invalid => :replace, :undef => :replace, :replace => '?')
+                end
+              end
             end
           end
         end

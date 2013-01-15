@@ -23,6 +23,7 @@ class HomeController < ApplicationController
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
+          @hostname = request.host
           render '/home/isolated_roll' and return
         end
 
@@ -47,6 +48,9 @@ class HomeController < ApplicationController
           if @mobile_os
             render '/mobile/search', :layout => 'mobile'
           else
+            # A/B test
+            @seo_search_messaging = ab_test :seo_search_messaging
+
             render '/home/landing'
           end
 
@@ -69,6 +73,9 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to :action => :index
     else
+      # A/B test
+      @seo_search_messaging = ab_test :seo_search_messaging
+
       # Parse errors and render landing
       @nickname_error = params[:nickname]
       @email_error = params[:primary_email]

@@ -1,8 +1,32 @@
-<section class="landing-shelf landing-banner">
-	<div class="landing-shelf__lining landing-banner-lining">
-		<h1 class="landing-shelf-header-extra landing-banner-header">
-			Express yourself <strong>with video</strong>
-		</h1>
-		<img class="landing-banner-figure" src="/images/landing/landing_screen.png" title="Shelby.tv Web App" alt="Screenshot of Shelby.tv Web App" />
-	</div>
+<section class="landing_shelf landing_shelf--banner">
+  <div class="landing_shelf__lining">
+    <h1 class="landing_shelf__h1 landing_shelf__h1--extra">
+      <% if @seo_search_messaging == :sell_video  %>
+        Video search. Zero clicks.
+      <% else %>
+        Video. From everywhere.
+      <% end  %>
+    </h1>
+
+    <h2 class="landing_shelf__h2">
+      <% if @seo_search_messaging == :sell_video  %>
+        Use the only video search that plays your results<br />
+        instead of showing you text.
+      <% else %>
+        Search for video from YouTube, Vimeo, and Dailymotion.
+      <% end  %>
+    </h2>
+
+    <form class="form_module js-search-form" action="/search">
+      <div class="media_module">
+        <div class="media_image media_image--rev">
+          <input type="submit" class="button_primer button_default form_submit" value="Search" />
+        </div><!-- eo media_image -->
+
+        <div class="media_body">
+          <input type="text" class="form_input" name="query" id="query" min="1" autofocus />
+        </div><!-- media_body -->
+      </div><!-- media_module -->
+    </form>
+  </div>
 </section>
