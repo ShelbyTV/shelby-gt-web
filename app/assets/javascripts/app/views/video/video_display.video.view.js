@@ -53,7 +53,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.unbind('change:mute', this._changeMute, this);
     this._userDesires.unbind('change:volume', this._changeVolume, this);
-    this._userDesires.unvind('change:hdVideo', this._changeVideoQuality, this);
+    this._userDesires.unbind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
 
     _.each(this._playerViews, function(playerView){
