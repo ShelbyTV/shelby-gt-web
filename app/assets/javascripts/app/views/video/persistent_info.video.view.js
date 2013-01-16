@@ -111,7 +111,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _queueFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
       frame.saveToWatchLater();
-      $(el.currentTarget).toggleClass('queued js-queued').find('.js-command-icon').text('Queued');
+      $(el.currentTarget).toggleClass('queued js-queued').text('Queued');
     }
   },
 

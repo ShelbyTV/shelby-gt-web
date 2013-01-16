@@ -4,13 +4,17 @@
       From
     </label>
 		<input class="form_input form_input_uneditable frame-sharing__from-input js-from-input" disabled value="<%= shelby.models.user.get('primary_email') %>"></input>
-	
+	</fieldset>
+
+  <fieldset class="form_fieldset">
     <label class="form_label frame-sharing__to-label js-to-label" for="email-recipients">
       To
     </label>
 		<div class="discussion-roll-chooser-wrapper"></div>
-    <textarea id="email-recipients" class="form_input js-share-email-addresses" pattern="(\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+[,\s;]*)+" name="email-recipients" autofocus tabindex="0" rows="2" placeholder="good_friend@gmail.com, bossman@company.com, etc... (not limited to Shelby users!)" ></textarea>
+    <textarea id="email-recipients" class="form_input js-share-email-addresses" pattern="(\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+[,\s;]*)*" name="email-recipients" autofocus tabindex="0" rows="2" placeholder="good_friend@gmail.com, bossman@company.com, etc... (not limited to Shelby users!)" ></textarea>
+  </fieldset>
 
+  <fieldset class="form_fieldset">
     <label class="frame-sharing__message-label form_label" for="email-message">
       Message
     </label>

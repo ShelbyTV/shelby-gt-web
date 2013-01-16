@@ -102,6 +102,8 @@ $active-list-item: $shelby-blue;
 
 .frame-subsection {
   .frame-command-wrapper {
+    color: #777;
+    bottom: 0;
     margin: -2px 0 0;
     position: absolute;
     left: 0;
@@ -122,6 +124,10 @@ $active-list-item: $shelby-blue;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:before {
+    vertical-align: -0.1em;
   }
 }
 
@@ -206,10 +212,19 @@ $active-list-item: $shelby-blue;
 //  queue, roll, share, etc.
 ////////////////////////////////////////////////////////////////////////////
 .frame-command {
-  @include button-sizing;
+  @include button-sizing(frame-command);
 
   margin-left: 1em;
   margin-top: 1em;
+
+  //specifying each button individually,
+  //not sure if applying this vertical align to the .icon_primer
+  //is a good idea yet.
+  .icon--videocard_roll,
+  .icon--videocard_queue,
+  .icon--email {
+    vertical-align: -0.1em;
+  }
 }
     ////////////////////////////////////////////////////////////////////////////
     //  dropdown sublist:
@@ -257,19 +272,15 @@ $active-list-item: $shelby-blue;
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
+  padding-left: 0.7em;
   width: 71px;
-
-  .icon {
-    padding-left: $button-padding-left;
-  }
 
   &.queued {
     &:not(.remove-frame) {
     }
 
-    .icon {
-      background-image: none;
-      padding: 0;
+    .icon--videocard_queue {
+      display: none;
     }
   }
 }
@@ -292,10 +303,8 @@ $active-list-item: $shelby-blue;
 }
 
 .command-remove {
-  .icon {
-    display: inline-block;
-    height: 1em;
-    width: 1em;
+  .icon--cancel {
+    vertical-align: -0.1em;
   }
 }
 
@@ -491,7 +500,7 @@ $share-frame-half-gutter: 4px;
 .frame.fresh-play-new .sash {
   @include rotate(45deg);
   @include sash-primer();
-  
+
   position: absolute;
   right: -25px;
   top: 10px;
