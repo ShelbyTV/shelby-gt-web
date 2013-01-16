@@ -118,7 +118,7 @@
       </div><!-- eo .persistent_video_info__body -->
     </div><!-- eo .persistent_video_info_lining -->
 
-    <div class="persistent_video_info__foot <%= shelby.abTests ? shelby.abTests.dotTvFooterButtonPositions : "" %>">
+    <div class="persistent_video_info__foot <%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.dotTvFooterButtonPositions : "" %>">
       <hr class="hr hr--double" />
 
       <ul class="persistent_video_info__list persistent_video_info__list--actions">

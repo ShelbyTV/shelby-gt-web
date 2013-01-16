@@ -24,7 +24,7 @@ class RollController < ApplicationController
 
   def show_isolated_roll
     get_roll_and_roll_creator_by_roll_id
-    @dot_tv_footer_button_positions = ab_test :dot_tv_footer_button_positions
+    @dot_tv_footer_button_positions = ab_test :dot_tv_footer_button_positions unless user_signed_in?
     render '/home/app'
   end
 
