@@ -23,7 +23,7 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "experiment-each"
+gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "vanity-experiments-helper"
 
 # ---------- Other utils
 #
