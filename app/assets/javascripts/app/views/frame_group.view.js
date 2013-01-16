@@ -5,11 +5,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _grewForFrameRolling : false,
 
   _frameRollingView : null,
-  
+
   _conversationView : null,
 
   _frameSharingInGuideView : null,
-  
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null
@@ -75,7 +75,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
       this.$('.js-queue-frame').toggleClass('queued button_gray-light', !removeVideo);
-      this.$('.js-queue-frame i').text(!removeVideo ? 'Queued' : 'Add to Queue');
+      this.$('.js-queue-frame .label').text(!removeVideo ? 'Queued' : 'Add to Queue');
     }
   },
 
@@ -89,7 +89,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     var groupFirstFrame = model.getFirstFrame();
     groupFirstFrame[action]('change', this.render, this);
-    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);   
+    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
     model.get('frames')[action]('change', this.render, this);
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
@@ -101,7 +101,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   render : function(){
     var self = this;
     this._leaveChildren();
-    
+
     if (this.model.get('frames').length){
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
@@ -113,10 +113,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
-    
+
     // have FB parse any like tags on page so they render correctly
     if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-    
+
     // when frame is loaded, get number of disqus comments
     if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
@@ -146,14 +146,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return false;
     }
   },
-  
+
   requestFrameShareView: function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
         this.model.getFirstFrame());
     }
   },
-  
+
   requestFrameRollView : function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
@@ -163,19 +163,19 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _onClickQueue : function(){
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
-    
+
     self = this;
     this.model.getFirstFrame().saveToWatchLater();
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued button_gray-light');
-    this.$('.js-queue-frame i').text('Queued');
+    this.$('.js-queue-frame .label').text('Queued');
     // start the transition which fades out the saved-indicator
   },
-  
+
   _copyFrameLink : function(e){
     var buttonEl = $(e.currentTarget);
     buttonEl.text("[fetching...]");
-    
+
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
@@ -216,7 +216,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       });
     }
   },
-  
+
   _requestConversationView : function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
@@ -229,7 +229,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
-    
+
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
@@ -243,7 +243,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
-    
+
     if (this.model.getFirstFrame().isOnRoll(shelby.models.user.get('heart_roll_id')) ||
         this.model.getFirstFrame().isOnRoll(shelby.models.user.get('watch_later_roll_id'))) {
       // if the frame is on the heart or queue roll we actually want to go to the roll
@@ -254,7 +254,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       shelby.router.navigateToRoll(this.model.getFirstFrame().get('roll'), {trigger:true});
     }
   },
-  
+
   _goToRollById : function(e){
     shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
     return false;
@@ -267,13 +267,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _toggleComment : function(e){
     e.preventDefault();
-    
+
     $(e.currentTarget).text(function(e,i){
       return (i == 'more…') ? 'Hide' : 'more…';
     });
     this.$('.xuser-message-remainder').toggle();
   },
-  
+
   requestFBPostUI : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.get('frames').models[0];
@@ -294,7 +294,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     );
 
   },
-  
+
   requestFBSendUI : function(e) {
     var _frame = this.model.get('frames').models[0];
     FB.ui({
@@ -306,7 +306,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       caption: ':: a shelby genius video ::'
     });
   },
-  
+
   _shareToFacebook : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
@@ -328,7 +328,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       );
     }
   },
-  
+
   //ListItemView overrides
   isMyModel : function(model) {
     return this.model == model;

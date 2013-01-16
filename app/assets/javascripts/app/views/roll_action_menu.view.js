@@ -60,7 +60,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   _followOrUnfollowRoll : function() {
 
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
-    
+
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
 

@@ -5,9 +5,8 @@
     el: '#js-notifications-wrapper',
 
     events: {
-      "click .js-button"     : "_handleResponse",
-      "click .js-roll-route" : "_handleRollRoute",
-      "click .js-open-popup" : "_handlePopupLink"
+      "click .js-primary"    : "_handlePrimary",
+      "click .js-secondary"  : "_handleSecondary"
     },
 
     _listView : null,
@@ -18,7 +17,7 @@
 
     initialize : function(){
       this.model.bind('change:visible', this._onVisiblityChange, this);
-      this.model.bind('change:message change:class change:number_of_buttons change:button_one change:button_two', this.render, this);
+      this.model.bind('change:message change:class change:response change:confirm change:cancel', this.render, this);
       this.render();
     },
 
@@ -28,34 +27,59 @@
 
     _cleanup : function() {
       this.model.unbind('change:visible', this._onVisiblityChange, this);
-      this.model.unbind('change:message change:class change:number_of_buttons change:button_one change:button_two', this.render, this);
+      this.model.unbind('change:message change:class change:response change:confirm change:cancel', this.render, this);
     },
 
     _onVisiblityChange : function(model){
       this.$el.toggleClass('hide',!model.get('visible'));
-      this.$el.find('js-confirm').first().focus();
+      this.$el.find('.js-primary').first().focus();
     },
 
-    _handleResponse : function(data){
-      if ($(data.target).hasClass('js-confirm')) {
-        this.model.set('response', 1);
+    _handlePrimary : function(data){
+      var primary = this.model.get('primary');
+
+      if(primary.title && primary.route) { //if it doesn't say "Dismiss, then we're doing something special"
+        this._determineRoute(primary.route);
       }
-      else if ($(data.target).hasClass('js-cancel')) {
-        this.model.set('response', 0);
+
+      this.model.set('response', 1);
+      this._resetDefaults();
+      return false;
+    },
+
+    _handleSecondary : function(data){
+      var secondary = this.model.get('secondary');
+      if(secondary.title && secondary.route) { //if it doesn't say "No thanks", then we're doing something special
+        this._determineRoute(secondary.route);
       }
+
+      this.model.set('response', 0);
+      this._resetDefaults();
+      return false;
+    },
+
+    _resetDefaults : function(){
       this.model.set('visible',false);
       this.model.set('response',null);
     },
 
-    _handleRollRoute : function(e){
-      e.preventDefault();
-      shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id'), {trigger:true,replace:true});
+    _determineRoute : function(data) {
+      if(data.indexOf('http://') != -1) {
+        //if http:// is present in string, then it's a popup
+        this._handlePopupLink(data);
+      } else {
+        //if http:// is NOT present in string, then its a roll ID
+        this._handleRollRoute(data);
+      }
+    },
+
+    _handleRollRoute : function(rollId){
+      shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
       this.model.set({visible: false, response: null});
     },
-    
-    _handlePopupLink : function(e){
-      e.preventDefault();
-      window.open(e.currentTarget.href, "_shelbyChat");
+
+    _handlePopupLink : function(href){
+      window.open(href, "_shelbyChat");
     }
 
   });
