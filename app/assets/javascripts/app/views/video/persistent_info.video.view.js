@@ -23,11 +23,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
   },
 
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    shelby.collections.videoSearchResultFrames.unbind('add', this.render, this);
   },
 
   template : function(obj) {
