@@ -25,7 +25,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-send"                  : "requestFBSendUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
-    "click .js-remove-frame"                : "_removeFrame",
+    "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
@@ -191,6 +191,28 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         shelby.error("Shortlinks are currently unavailable.");
       }
     });
+  },
+
+  _onClickRemoveFrame : function(){
+    this._removeFrame();
+
+    // shelby.dialog(
+    //   {
+    //     message: 'Are you sure you want to <strong>remove</strong> this video?',
+    //     button_primary : {
+    //       title: 'Remove Video'
+    //     },
+    //     button_secondary : {
+    //       title: 'Cancel!'
+    //     }
+    //   },
+    //   function(e){
+    //     if(e == 1) {
+    //       // console.log('remove!');
+    //       // this._removeFrame();
+    //     }
+    //   }
+    // );
   },
 
   _removeFrame : function(){
