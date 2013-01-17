@@ -331,6 +331,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _shareToFacebook : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
+    var _caption;
+    if (_frame.has('roll')) {
+      _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+    }
+    else {
+      _caption = 'a video found with Shelby Video Search';
+    }
     if (typeof FB != "undefined"){
       FB.ui(
         {
@@ -339,7 +346,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           link: _frame.getSubdomainPermalink(),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
-          caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
+          caption: _caption
         },
         function(response) {
           if (response && response.post_id) {

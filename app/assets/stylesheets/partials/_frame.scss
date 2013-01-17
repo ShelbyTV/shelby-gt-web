@@ -493,6 +493,12 @@ $share-frame-half-gutter: 4px;
 //------------------------------------------------------------------------------
 .via-search {
   .command-sublist { display: none; }
+
+  ul.menu_list--share-frame{
+    .menu_item {
+      padding-top: 0;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
