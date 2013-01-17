@@ -34,8 +34,9 @@
 
     _doSearch : function(){
       var self = this;
+      var searchQuery = this.options.videoSearchModel.get('query');
 
-      if (this.options.videoSearchModel.get('query')) {
+      if (searchQuery) {
         shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false});
         this.collection.reset();
         //youtube search
@@ -43,7 +44,7 @@
         youtubeSearchModel.fetch({
           data : {
             provider : 'youtube',
-            q : this.options.videoSearchModel.get('query'),
+            q : searchQuery,
             limit : 10
           },
           success : function(youtubeSearchModel, response) {
@@ -56,11 +57,13 @@
         vimeoSearchModel.fetch({
           data : {
             provider : 'vimeo',
-            q : this.options.videoSearchModel.get('query'),
+            q : searchQuery,
             limit : 10
           },
           success : function(vimeoSearchModel, response) {
-            self._handleSearchResults(vimeoSearchModel);
+            //the extra parameters are to get bad Vimeo search results away from the
+            //top of the list
+            self._handleSearchResults(vimeoSearchModel, true, searchQuery);
           }
         });
 
@@ -69,7 +72,7 @@
         dailymotionSearchModel.fetch({
           data : {
             provider : 'dailymotion',
-            q : this.options.videoSearchModel.get('query'),
+            q : searchQuery,
             limit : 10
           },
           success : function(dailymotionSearchModel, response) {
@@ -79,20 +82,17 @@
       }
     },
 
-    _handleSearchResults : function(searchModel) {
-      searchModel.assignScores();
+    _handleSearchResults : function(searchModel, doPrioritizeTitles, query) {
+      if (doPrioritizeTitles) {
+        searchModel.assignScoresPrioritizeTitleMatch(query);
+      } else {
+        searchModel.assignScores();
+      }
+
       var frames = searchModel.getVideosWrappedInFrames();
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-      if (!activeFrameModel) {
-        //if we're going to play the first frame, artificially drop its score
-        //this is so it can't be displaced from the top of the list when more frames arrive from
-        //other API calls
-        var firstFrame = frames[0];
-        if (firstFrame) {
-          firstFrame.get('video').set('score', -1);
-        }
-      } else {
-        //if we're already playing one of the frames, also drop its score so it will appear at the top
+      if (activeFrameModel) {
+        //if we're already playing one of the frames, drop its score so it will appear at the top
         var playingFrame = _(frames).find(function(frame){
           return frame.get('video').id == activeFrameModel.id;
         });
@@ -105,8 +105,10 @@
       if (!activeFrameModel) {
         // don't want to activate the video if we've switched to explore view during the asynchronous load
         if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-          var firstFrame = shelby.collections.videoSearchResultFrames.first();
+          var firstFrameGroup = this.frameGroupCollection.first();
+          var firstFrame = firstFrameGroup && firstFrameGroup.getFirstFrame();
           if (firstFrame) {
+            firstFrame.get('video').set('score', -1);
             shelby.models.guide.set('activeFrameModel', firstFrame);
           }
         }
