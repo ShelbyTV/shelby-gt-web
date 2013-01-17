@@ -58,13 +58,11 @@ body {
   }
 }
 
-
 .login-section,
 .signup-section {
   right: 10px;
   top: 28px;
 }
-
 
 .login-section-lining,
 .signup-section-lining {
@@ -103,7 +101,7 @@ body {
 
 .shelf__lining {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: $landing-page-width;
 }
 
 //------------------------------------------------------------------------------
