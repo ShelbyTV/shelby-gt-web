@@ -117,15 +117,17 @@
 
       //show success with link to discussion roll
       var href = shelby.config.appUrl+'/chat/'+selectedRollId+'?u='+shelby.models.user.id+'&t='+token;
-      shelby.success({
+      shelby.alert({
         message: 'Message Sent!',
-        secondary: {
-          title: 'Open Conversation',
-          route : href
+        button_secondary: {
+          title: 'Open Conversation'
+          }
+        },
+        function(e){ if(e == 0) {
+          window.open(href, "_shelbyChat");
         }
-      });
-    }
-
+      );
+    },
   });
 
 } ) ();

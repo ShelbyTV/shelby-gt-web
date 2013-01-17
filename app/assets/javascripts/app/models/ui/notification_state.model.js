@@ -1,19 +1,17 @@
 libs.shelbyGT.notificationStateModel = Backbone.Model.extend({
 
   defaults : {
-    'class'    : 'notification--alert',
-    'message'  : null,
-    'primary'  : {
-      'title' : 'Dismiss',
-      'route' : false
+    'class' : 'notification--dialog',
+    'message' : null,
+    'button_primary' : {
+      'title' : 'Dismiss'
+    },
+    'button_secondary' : {
+      'title' : null
     },
     'response' : null,
-    'secondary': {
-      'title' : false,
-      'route' : false
-    },
-    'timeout'  : 5000,
-    'visible'  : false
+    'timeout' : 9000,
+    'visible' : false
   }
 
 });
