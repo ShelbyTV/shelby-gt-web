@@ -87,6 +87,7 @@
                                                                             frameIsOnWatchLaterRoll);
     %>
       <footer class="media_module frame-footer clearfix">
+
         <% if (!frameViewed) { %>
            <% if (clickableCreator) { %>
              <a href="#" onclick="return false;" class="js-creator-personal-roll">
@@ -160,10 +161,30 @@
           <% } %>
         </div><!-- eo .media_body -->
 
+        <% if (isViaSearch) { %>
+          <ul class="menu_list menu_list--share-frame">
+            <li class="menu_item">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= framePermalink %>">
+                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+                  <i class="button_icon_left icon_share_twitter icon">
+                    Tweet
+                  </i>
+                </button>
+              </a>
+            </li>
+            <li class="menu_item">
+              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+                <i class="button_icon_left icon_share_facebook icon">
+                  Share
+                </i>
+              </button>
+            </li>
+          </ul>
+        <% } %>
         <% if (user.isAnonymous()) { %>
           <ul class="menu_list menu_list--share-frame">
             <li class="menu_item">
-              <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= framePermalink %>">
                 <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
                   <i class="button_icon_left icon_share_twitter icon">
                     Tweet
@@ -196,6 +217,27 @@
           </a>
         </div>
       </footer><!-- eo .media_module-->
+    <% } else if (user.isAnonymous()) { %>
+      <footer class="media_module frame-footer clearfix">
+        <ul class="menu_list menu_list--share-frame">
+            <li class="menu_item">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= framePermalink %>">
+                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+                  <i class="button_icon_left icon_share_twitter icon">
+                    Tweet
+                  </i>
+                </button>
+              </a>
+            </li>
+            <li class="menu_item">
+              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+                <i class="button_icon_left icon_share_facebook icon">
+                  Share
+                </i>
+              </button>
+            </li>
+          </ul>
+      </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
   <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
