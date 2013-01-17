@@ -194,25 +194,24 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onClickRemoveFrame : function(){
-    this._removeFrame();
+    var self = this;
 
-    // shelby.dialog(
-    //   {
-    //     message: 'Are you sure you want to <strong>remove</strong> this video?',
-    //     button_primary : {
-    //       title: 'Remove Video'
-    //     },
-    //     button_secondary : {
-    //       title: 'Cancel!'
-    //     }
-    //   },
-    //   function(e){
-    //     if(e == 1) {
-    //       // console.log('remove!');
-    //       // this._removeFrame();
-    //     }
-    //   }
-    // );
+    shelby.dialog(
+      {
+        message: 'Are you sure you want to <strong>remove</strong> this video?',
+        button_primary : {
+          title: 'Remove Video'
+        },
+        button_secondary : {
+          title: 'Cancel!'
+        }
+      },
+      function(e){
+        if(e == 1) {
+          self._removeFrame();
+        }
+      }
+    );
   },
 
   _removeFrame : function(){
