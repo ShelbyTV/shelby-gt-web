@@ -97,18 +97,19 @@
 
 }
 
-
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //  Modifiers
 //------------------------------------------------------------------------------
 /*
-    below styles pertain to specific alert UI
+    below styles pertain to specific dialog UI
 */
 
 //------------------------------------------------------------------------------
-//  UI style for shelby.alert();
+//  UI style for shelby.dialog();
 
-.notification--alert {
+.notification--dialog {
   //  Elements
   .notification__button {
   }
@@ -151,7 +152,7 @@
 }
 
 //------------------------------------------------------------------------------
-//  UI style for shelby.confirm();
+//  UI style for shelby.alert();
 
 .notification--confirm {
   //  Elements
@@ -187,52 +188,6 @@
   //  Head
   .notification__head {
   }
-
-
-  //  Body
-  .notification__body {
-  }
-
-}
-
-//------------------------------------------------------------------------------
-//  UI style for shelby.success();
-
-.notification--success {
-  //  Elements
-  .notification__button {
-  }
-
-  .notification__button--primary {
-    .icon--cancel {
-      &:before {
-      }
-    }
-  }
-
-  .notification__button--secondary {
-    &,
-    &:visited,
-    &:hover {
-    }
-
-    &:hover {
-    }
-
-    &:active {
-    }
-  }
-
-  .notification__link {
-  }
-
-  .notification__block {
-  }
-
-  //  Head
-  .notification__head {
-  }
-
 
   //  Body
   .notification__body {

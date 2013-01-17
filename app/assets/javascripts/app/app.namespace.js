@@ -31,31 +31,44 @@ _(shelby).extend({
     document.location.href = "/signout";
   },
 
-  // shelby.alert mimicks js native alert functionality.
-  // optional: add a callback function to execute after alert is dismissed
-  alert: function(opts, callback){
+  // shelby.dialog(options, callback);
+  //   - prompts the user with one, or two buttons depending on the context
+  //   - does not auto-dismiss
+  //   - callback receives notificationState.result
+  //     button_primary == 1
+  //     button_secondary == 0
+
+  dialog: function(notificationOpts, callback){
+    opts = _.extend(shelby.models.notificationState.defaults, {
+      'class'    : 'notification--dialog',
+      'visible'  : true
+    }, notificationOpts);
+
+    shelby.models.notificationState.set(opts);
+
+    shelby.models.notificationState.bind('change:response', function(r){
+      if (callback) { callback( r.get('response') ); }
+      r.unbind('change:response');
+    });
+  },
+
+  // shelby.alert(options, callback);
+  //  - Same as above.
+  //  - AUTO DISMISSES AFTER 9 seconds
+
+  alert: function(alertOpts, callback){
     opts = _.extend(shelby.models.notificationState.defaults, {
       'class'    : 'notification--alert',
       'visible'  : true
-    }, opts);
+    }, alertOpts);
+
+    shelby.models.notificationState.set(opts);
 
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
     });
 
-    shelby.models.notificationState.set(opts);
-  },
-
-  // shelby.success is designed to show a non-intrusive success message
-  // will self-dismiss if not X'd by user
-  success: function(opts){
-    opts = _.extend(shelby.models.notificationState.defaults, {
-      'class'    : 'notification--success',
-      'visible'  : true
-    }, opts);
-
-    shelby.models.notificationState.set(opts);
     //ghetto auto-hide
     setTimeout(function(){
       shelby.models.notificationState.set({visible: false});

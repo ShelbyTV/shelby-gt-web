@@ -153,13 +153,17 @@
     _rollingSuccess : function(roll, newFrame){
       this.parent.done();
       //N.B. This link is picked up by NotificationOverlayView for routing
-      shelby.success({
+      shelby.alert({
         message: 'Video successfully rolled!',
-        secondary: {
-          title: 'Go to Roll',
-          route: roll.id
+        button_secondary: {
+          title: 'Go to Roll'
+          }
+        },
+        function(e){
+          var rollId = newFrame.get('roll_id');
+          shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
         }
-      });
+      );
     },
 
     _addViaUrl : function(message, roll, shareDests) {

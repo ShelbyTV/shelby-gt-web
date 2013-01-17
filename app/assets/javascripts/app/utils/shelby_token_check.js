@@ -18,15 +18,14 @@ _(shelby).extend({
           if (r.status == 200 && !r.result.token_valid){
             shelby.alert({
               message: "In order to provide a great experience we need you to re-authenticate with facebook. Don't worry, you'll be re-directed back to Shelby. Yay!",
-              primary: {
-                title: 'Re-authenticate Facebook',
-                route: _fbAuth
+              button_primary: {
+                title: 'Re-authenticate Facebook'
                 },
-              secondary: {
+              button_secondary: {
                 title: 'No thanks'
                 }
               },
-              function(){ document.location.href = _fbAuth; }
+              function(e){ if(e == 1) { document.location.href = _fbAuth; } }
             );
         }
       })
