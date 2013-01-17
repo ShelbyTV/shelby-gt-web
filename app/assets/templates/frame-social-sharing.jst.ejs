@@ -1,0 +1,26 @@
+<ul class="menu_list menu_list--share-frame">
+  <li class="menu_item">
+    <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
+      <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+        <i class="icon_primer icon--social_twitter">
+        </i>
+          Tweet
+      </button>
+    </a>
+  </li>
+  <li class="menu_item">
+    <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+      <i class="icon_primer  icon--social_facebook">
+      </i>
+        Share
+    </button>
+  </li>
+
+  <% if (!isViaSearch) { %>
+    <li class="menu_item menu_item--right">
+      <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>" data-disqus-identifier="<%= frame.id %>">
+        <a href="#disqus_thread" data-disqus-identifier="<%= frame.id %>" class="button_icon_left icon_videocard_comment icon">Leave a comment</a>
+      </button>
+    </li>
+  <% } %>
+</ul>
