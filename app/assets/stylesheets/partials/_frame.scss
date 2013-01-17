@@ -91,6 +91,11 @@ $active-list-item: $shelby-blue;
       text-decoration: underline;
     }
   }
+  
+  .hr--double {
+    border-top-color: #D9D4D4;
+    border-bottom-color: #FCFAFA;
+  }
 }
 
 .frame-subsection,
@@ -103,10 +108,7 @@ $active-list-item: $shelby-blue;
 .frame-subsection {
   .frame-command-wrapper {
     color: #777;
-    bottom: 0;
-    margin: -2px 0 0;
-    position: absolute;
-    left: 0;
+    padding-right: 1em;
 
     &.icon {
       padding-left: 1.4em;
@@ -257,6 +259,7 @@ $active-list-item: $shelby-blue;
       display: inline;
       font-size: 1.1em;
       height: 1.4em;
+      margin: -2px 0;
       padding: 0.3em;
       width: 115px;
       background: transparent;
@@ -308,7 +311,8 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.command-link {
+.command-link,
+.command-share {
   background: transparent;
   border: none;
   color: #666;
@@ -322,6 +326,7 @@ $active-list-item: $shelby-blue;
     text-decoration: underline;
   }
 }
+
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .frame-collapsed{})

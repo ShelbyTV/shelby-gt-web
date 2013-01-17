@@ -159,17 +159,6 @@
         </li>
 
 				<% if (!currentFrame.get('isSearchResultFrame')) { %>
-          <li class="persistent_video_info__item clearfix">
-            <button class="button_primer button_default persistent_video_info__button--comment js-comment-frame js-track-event"
-                    data-ga_category="Persistent Video Info"
-                    data-ga_action="Click comment on current frame"
-                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon--videocard_comment">
-              </i>
-                <%= (currentMessages.length <= 1) ? 'Leave a comment' : 'Comments (' + currentMessages.length + ')' %>
-            </button>
-          </li>
-
           <% if(user.isAnonymous()) { %>
             <li class="persistent_video_info__item clearfix">
               <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
