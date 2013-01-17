@@ -1,0 +1,32 @@
+<div class="shelf shelf--search clearfix">
+  <div class="shelf__lining">
+    <h2 class="shelf__h1">
+      <% if @seo_search_messaging == :sell_video  %>
+        Video search. Zero clicks.
+      <% else %>
+        Video. From everywhere.
+      <% end  %>
+    </h2>
+
+    <p class="shelf__block">
+      <% if @seo_search_messaging == :sell_video  %>
+        Use the only video search that plays your results<br />
+        instead of showing you text.
+      <% else %>
+        Search for video from YouTube, Vimeo, and Dailymotion.
+      <% end  %>
+    </p>
+
+    <form class="form_module shelf__form js-search-form" action="/search">
+      <div class="media_module">
+        <div class="media_image media_image--rev">
+          <input type="submit" class="button_primer button_blue form_submit" value="Search" />
+        </div><!-- eo media_image -->
+
+        <div class="media_body">
+          <input type="text" class="form_input" name="query" id="query" autofocus tabindex="0" />
+        </div><!-- media_body -->
+      </div><!-- media_module -->
+    </form>
+  </div><!-- eo shelf__lining -->
+</div><!-- eo shelf -->

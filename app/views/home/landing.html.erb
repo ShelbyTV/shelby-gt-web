@@ -21,9 +21,9 @@
   </script>
 </head>
 
-<body class="shelby shelby-landing">
-  <div class="shelby-wrapper">
-    <header class="shelby-header clearfix" role="banner">
+<body class="shelby shelby--landing">
+  <div class="shelby__wrapper">
+    <header class="shelby__header clearfix" role="banner">
       <button class="shelby-logo js-home">
         <% if Rails.env != "staging" %>
           <h1 class="shelby-title ir">
@@ -139,56 +139,66 @@
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
     <% if (!@share_type or !@video) and !@invite_id %>
-      <%= render :partial => "/home/shelf/banner" %>
+      <%= render :partial => "/home/shelf/search" %>
     <% end %>
 
-    <% if !@invite_id %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
-    <% end %>
+      <%= render :partial => "/home/shelf/community" %>
+      <%= render :partial => "/home/shelf/sign_up" %>
+      <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/about" %>
     <% #------------ /Shelf Content --------------- %>
 
-    <footer class="landing-footer">
-      <div class="landing-footer-lining clearfix">
-        <ul class="landing-footer-lists list_module clearfix">
-          <li>
-            <h5 class="landing-footer-content-header">Shelby.tv</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="mailto:contact@shelby.tv">Contact</a></li>
-              <li>Made in NYC</li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Community</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/blog" target="_info">Blog</a></li>
-              <li><a href="http://shelbydev.tumblr.com/" target="_info">Dev Blog</a></li>
-              <li><a href="http://twitter.com/shelby" target="_info">Twitter</a></li>
-              <li><a href="http://facebook.com/shelbytv" target="_info">Facebook</a></li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Legal</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/privacy.html" target="_info">Privacy</a></li>
-              <li><a href="/tou.html" target="_info">Terms</a></li>
-            </ul>
-          </li>
+    <footer class="shelf shelf--footer">
+      <div class="shelf__lining clearfix">
+        <nav>
+          <ul class="shelf__list--inline clearfix">
+            <li>
+              <a href="http://shelby.tv" class="shelf__link" title="Home">
+                Shelby.tv
+              </a>
+            </li>
 
-          <li class="secondary">
-            <h5 class="landing-footer-content-header">Share the joy</h5>
-            <ul class="landing-footer-content-list secondary-landing-footer-content-list list_module">
-              <li>
-                <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
-              </li>
-              <li>
-                <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
-              </li>
-              <li>
-                <div class="g-plusone" data-href="http://shelby.tv"></div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            <li>
+              Made in NYC
+            </li>
+
+            <li>
+              <a href="http://shelby.tv" class="shelf__link" title="Have a problem? Just ask!">
+                Help
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv" class="shelf__link" title="Learn more about us">
+                About
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv/blog" class="shelf__link" title="">
+                Blog
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv" class="shelf__link" title="Want to work with us?">
+                We're hiring!
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv" class="shelf__link" title="Legal …stuff">
+                Terms
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:contact@shelby.tv" class="shelf__link" title="Report a bug or just tell us what you think!">
+                Feedback
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   </div><!-- /shelby-wrapper -->
