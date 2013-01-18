@@ -136,16 +136,22 @@
           </button>
         </li>
 
+        <!-- ab test -->
         <li class="persistent_video_info__item clearfix">
           <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
               data-ga_action="Click queue on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon--videocard_queue js-command-icon">
+            <i class="icon icon--<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %> js-command-icon">
             </i>
-              <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
+              <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'star') { %>
+                    Like
+              <% } else { %>
+                <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
+              <% } %>
           </button>
         </li>
+        <!-- /ab test -->
 
         <!--
         <li class="persistent_video_info__item clearfix">

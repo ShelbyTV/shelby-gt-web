@@ -41,20 +41,27 @@
                 Roll…
             </button>
           </li>
+
+          <!-- ab test -->
           <li class="menu_item" role="menuitem">
             <button class="button_primer frame-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
-              <i class="icon_primer icon--videocard_queue">
+              <i class="icon_primer icon--<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %>">
               </i>
 
               <span class="label">
-                <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
-                %>
+                <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'star') { %>
+                  Like
+                <% } else { %>
+                  <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                      (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
+                  %>
+                <% } %>
               </span>
             </button>
           </li>
+          <!-- /ab test -->
 
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
@@ -135,7 +142,7 @@
             </a>
           <% } %>
         </div><!-- eo .media_body -->
-        
+
         <% if (!user.isAnonymous() && !frameViewed) { %>
           <hr class="hr--double" />
           <div class="frame-subsection clearfix">
