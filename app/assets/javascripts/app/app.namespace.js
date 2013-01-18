@@ -37,8 +37,9 @@ _(shelby).extend({
   //   - callback receives notificationState.result
   //     button_primary == 1
   //     button_secondary == 0
-
   dialog: function(notificationOpts, callback){
+    if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
+    
     opts = _.extend(shelby.models.notificationState.defaults, {
       'class'    : 'notification--dialog',
       'visible'  : true
@@ -55,23 +56,28 @@ _(shelby).extend({
   // shelby.alert(options, callback);
   //  - Same as above.
   //  - AUTO DISMISSES AFTER 9 seconds
-
   alert: function(alertOpts, callback){
+    if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
+    
     opts = _.extend(shelby.models.notificationState.defaults, {
       'class'    : 'notification--alert',
       'visible'  : true
     }, alertOpts);
 
     shelby.models.notificationState.set(opts);
-
+    
+    //auto-hide
+    var notificationTimer = 
+    this._notificationTimer = setTimeout(function(){
+      shelby.models.notificationState.set({visible: false});
+    }, opts.timeout || 9000);
+    
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
+      clearTimeout(notificationTimer);
     });
-
-    //ghetto auto-hide
-    setTimeout(function(){
-      shelby.models.notificationState.set({visible: false});
-    }, opts.timeout || 9000);
-  }
+  },
+  
+  _notificationTimer: null
 });
