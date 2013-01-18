@@ -206,8 +206,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           title: 'Cancel!'
         }
       },
-      function(e){
-        if(e == 1) {
+      function(returnValue){
+        if(returnValue == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
           self._removeFrame();
         }
       }

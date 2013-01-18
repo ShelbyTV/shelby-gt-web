@@ -159,10 +159,10 @@
           title: 'Go to Roll'
           }
         },
-        function(e){
+        function(returnVal){
           var rollId = newFrame.get('roll_id');
 
-          if(e == 0) {
+          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
             shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
           }
         }
