@@ -156,7 +156,7 @@ body {
   font-family: $font-family-display;
   font-weight: 400;
   line-height: 1.5;
-  margin: 1.3em 0 2.2em;
+  margin: 1.5em 0 2em;
 }
 
 .shelf__list--inline,
@@ -271,11 +271,12 @@ body {
   }
 
   .shelf__list {
+    margin: 0 0 5em;
   }
 
   .shelf__item {
     float: left;
-    width: 33.333333%
+    width: 33.333333%;
   }
 }
 
@@ -294,14 +295,25 @@ body {
   .shelf__list {
   }
 
-  .shelf__item {
-    float: left;
-    width: 14.2857%;
+  //list of sources
+  .shelf__list--sources {
+    background-image: url('/images/landing/logos.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: conain;
+    background-size: contain;
+    height: 3.9em;
+    margin-bottom: 10em;
 
-    div {
-      background-color: red;
-      height: 100px;
+    .shelf__item {
+      float: left;
+      width: 14.2857%;
     }
+  }
+
+  .shelf__image {
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -310,6 +322,13 @@ body {
 //------------------------------------------------------------------------------
 .shelf--about {
   background-color: #444;
+  background-image: url('/images/landing/team.jpg');
+  background-position: top center;
+  background-repeat: repeat-x;
+  background-size: contain;
+  margin-top: -9em;
+  position: relative;
+  z-index: 1;
 
   //----- Block -----------------------------------------
   .shelf__lining {
@@ -317,6 +336,18 @@ body {
 
   //----- Elements -----------------------------------------
   .shelf__h2 {
+  }
+
+  .shelf__block {
+    &:before {
+      content: "[>]";
+      display: block;
+      left: 0;
+      margin: 2em;
+      position: absolute;
+      top: 0;
+
+    }
   }
 
   .shelf__list {

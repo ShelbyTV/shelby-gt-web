@@ -10,21 +10,21 @@
           {
             'title'       => "NerdFitness",
             'location'    => "nerdfitness.shelby.tv",
-            'description' => "Singer/rapper Baby Kaely teams up with @iamwill for a tribute to lives lost in the Newtown Massacre. http://t.co/9ZkSCu8Y",
-            'url'         => "http://nerdfitness.shelby.tv",
+            'description' => "Spend a few minutes watching motivational fitness and you'll feel like climbing Everest.",
+            'url'         => "http://nerdfitness.tv",
             'thumbnail'   => "/images/landing/nerdfitness.jpg"
           },
           {
             'title'       => "Reece",
             'location'    => "reece.shelby.tv",
-            'description' => "Singer/rapper Baby Kaely teams up with @iamwill for a tribute to lives lost in the Newtown Massacre. http://t.co/9ZkSCu8Y",
+            'description' => "An energenic entrepreneur in Tech with a taste for extreme sports. Co-founder of Shelby.tv",
             'url'         => "http://reece.shelby.tv",
             'thumbnail'   => "/images/landing/reece.jpg"
           },
           {
             'title'       => "Nature is Rad",
-            'location'    => "natureisrad.shelby.tv",
-            'description' => "Singer/rapper Baby Kaely teams up with @iamwill for a tribute to lives lost in the Newtown Massacre. http://t.co/9ZkSCu8Y",
+            'location'    => "shelby.tv",
+            'description' => "Experience what it's like to handfeed a dragonfly or watch prairie dogs eating carrots!",
             'url'         => "http://shelby.tv/roll/4fdf3d27b415cc69340008f8/Nature-is-rad",
             'thumbnail'   => "/images/landing/nature_2.jpg"
           }
@@ -34,7 +34,7 @@
       <% frames.each do |frame| %>
         <li class="shelf__item">
           <article class="frame shelf__frame">
-            <a href="<%= frame["url"] %>" class="shelf__link" title="watch username's roll">
+            <a href="<%= frame["url"] %>" class="shelf__link" title="Click to watch!">
               <div class="frame-body-wrapper">
                 <div class="image_module frame-thumbnail" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
                   <img class="visuallyhidden" src="<%= frame["thumbnail"] %>" title="<%= frame["thumbnail"] %>" alt="<%= frame["thumbnail"] %> thumbnail">
