@@ -2,7 +2,7 @@
 //  local vars
 //------------------------------------------------------------------------------
 $landing-page-shelf-background: #ddd;
-$landing-page-width: 1000px;
+$landing-page-width: 1050px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
 
@@ -17,21 +17,42 @@ body {
 //----- Non-normative Elements -----------------------------------------
 .shelf__frame {
   font-size: 1.3em;
+  font-family: $font-family;
+  font-weight: normal;
 
   .shelf__link {
+    &:active {
+      .frame-body-wrapper {
+        box-shadow: 0 0 2px 0 black;
+      }
+    }
+
     &,
+    &:hover,
     &:visited {
       text-decoration: none;
     }
+
     &:hover {
       .frame-body-wrapper {
         background-color: #fff;
+      }
+      .xuser-data {
+        text-decoration: underline;
       }
     }
 
     .xuser-data {
       color: $text;
+      font-family: $font-family;
+      font-weight: bold;
       margin-bottom: 1em;
+
+      span {
+        font-weight: normal;
+        font-size: .9em;
+        opacity: .5;
+      }
     }
   }
 }
@@ -176,6 +197,11 @@ body {
 .shelf--signup,
 .shelf--search {
   background-color: #444;
+  background-image: url('/images/landing/invite_landing.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
 
   //----- Block -----------------------------------------
   .shelf__lining {
@@ -201,6 +227,33 @@ body {
   //----- Non-normativeElements -----------------------------------------
   .media_image {
     overflow: visible;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  Signup, extended by .shelf--search above
+//------------------------------------------------------------------------------
+.shelf--signup{
+  background-image: url('/images/landing/network.jpg');
+
+  //----- Block -----------------------------------------
+  .shelf__lining {
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h1 {
+
+  }
+
+  .shelf__block {
+  }
+
+  .shelf__form {
+  }
+
+  //----- Non-normativeElements -----------------------------------------
+  .media_image {
   }
 }
 
