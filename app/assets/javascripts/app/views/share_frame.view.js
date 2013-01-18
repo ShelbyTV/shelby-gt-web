@@ -124,8 +124,8 @@
             title: 'Open Conversation'
           }
         },
-        function(e){
-          if(e == 0) {
+        function(returnVal){
+          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
             window.open(href, "_shelbyChat");
           }
         }

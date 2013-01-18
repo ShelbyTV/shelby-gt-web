@@ -36,13 +36,13 @@
     },
 
     _handlePrimary : function(data){
-      this.model.set('response', 1);
+      this.model.set('response', 'primary');
       this._doDismiss();
       return false;
     },
 
     _handleSecondary : function(data){
-      this.model.set('response', 0);
+      this.model.set('response', 'secondary');
       this._doDismiss();
       return false;
     },

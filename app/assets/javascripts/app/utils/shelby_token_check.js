@@ -25,13 +25,17 @@ _(shelby).extend({
                 title: 'No thanks'
                 }
               },
-              function(e){ if(e == 1) { document.location.href = _fbAuth; } }
+              function(returnVal){
+                if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
+                  document.location.href = _fbAuth;
+                }
+              }
             );
-        }
-      })
-      .error(function(r){
-        console.log("error checking fb credentials");
-      });
+          }
+        })
+        .error(function(r){
+          console.log("error checking fb credentials");
+        });
     }
   }
 });
