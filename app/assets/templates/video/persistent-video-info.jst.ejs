@@ -144,7 +144,7 @@
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon--<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %> js-command-icon">
             </i>
-              <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'star') { %>
+              <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'heart') { %>
                     Like
               <% } else { %>
                 <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>

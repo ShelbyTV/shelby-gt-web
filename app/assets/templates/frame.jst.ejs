@@ -51,7 +51,7 @@
               </i>
 
               <span class="label">
-                <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'star') { %>
+                <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'heart') { %>
                   Like
                 <% } else { %>
                   <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
