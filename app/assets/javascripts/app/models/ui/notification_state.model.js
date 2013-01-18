@@ -12,9 +12,9 @@ libs.shelbyGT.notificationStateModel = Backbone.Model.extend({
     'response' : null,
     'timeout' : 9000,
     'visible' : false
-  },
-
-  ReturnValueButtonPrimary : 'primary',
-  ReturnValueButtonSecondary : 'secondary'
-
+  }
 });
+
+
+libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary = 'primary';
+libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary = 'secondary';
