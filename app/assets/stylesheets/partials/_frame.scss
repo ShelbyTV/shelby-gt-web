@@ -91,7 +91,7 @@ $active-list-item: $shelby-blue;
       text-decoration: underline;
     }
   }
-  
+
   .hr--double {
     border-top-color: #D9D4D4;
     border-bottom-color: #FCFAFA;
@@ -450,6 +450,7 @@ $share-frame-half-gutter: 4px;
 
   .menu_button--twitter,
   .menu_button--facebook,
+  .menu_button--email,
   .menu_button--comment {
     padding: 0.6em 0.8em .6em 0.25em;
     width: 100%;
@@ -469,6 +470,12 @@ $share-frame-half-gutter: 4px;
 
   .menu_button--facebook {
     .icon {
+    }
+  }
+
+  .menu_button--email {
+    i {
+      padding: 0 0.3em;
     }
   }
 

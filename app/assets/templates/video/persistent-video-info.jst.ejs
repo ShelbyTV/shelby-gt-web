@@ -147,6 +147,7 @@
           </button>
         </li>
 
+        <!--
         <li class="persistent_video_info__item clearfix">
           <button class="button_primer button_default persistent_video_info__button--share js-share-frame js-track-event"
                   data-ga_category="Persistent Video Info"
@@ -157,8 +158,18 @@
               Email…
           </button>
         </li>
+      -->
 
         <% if(user.isAnonymous()) { %>
+          <li class="persistent_video_info__item clearfix">
+            <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= currentFramePermalink %>?utm_campaign=email-share">
+              <button class="button_primer button_default persistent_video_info__button--share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame via email link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                <i class="icon_primer  icon--email">
+                  Email
+                </i>
+              </button>
+            </a>
+          </li>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
               <i class="button_icon_center icon_share_facebook icon">
