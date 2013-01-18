@@ -161,7 +161,10 @@
         },
         function(e){
           var rollId = newFrame.get('roll_id');
-          shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
+
+          if(e == 0) {
+            shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
+          }
         }
       );
     },
