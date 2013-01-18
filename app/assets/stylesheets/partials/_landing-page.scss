@@ -312,7 +312,12 @@ body {
 //------------------------------------------------------------------------------
 //  MediaQueries
 //------------------------------------------------------------------------------
-@media screen and (max-width: 850px) {
+
+//  - BREAKPOINTS ARE NOT MANDATORY
+//  - BREAKPOINTS ARE BASED ON NEEDS OF THE CONTENT
+//  - BREAKPOINTS SHOULD NEVER ACCOMODATE SPECIFIC DEVICES
+
+@media screen and (max-width: 850px) { //Based on shelf--community content
   .shelf__item {
     float: none;
   }
@@ -324,7 +329,7 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) { //Based on shelf--community content
   .shelf--community {
     .shelf__item {
       width: auto;
