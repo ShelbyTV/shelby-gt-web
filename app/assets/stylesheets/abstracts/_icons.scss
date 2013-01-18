@@ -97,11 +97,11 @@ $icons:
 
 @font-face {
   font-family: 'icomoon';
-  src:url('../fonts/icomoon13712/fonts/icomoon.eot');
-  src:url('../fonts/icomoon13712/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/icomoon13712/fonts/icomoon.svg#icomoon') format('svg'),
-      url('../fonts/icomoon13712/fonts/icomoon.woff') format('woff'),
-      url('../fonts/icomoon13712/fonts/icomoon.ttf') format('truetype');
+  src:url('../fonts/icomoon37937/fonts/icomoon.eot');
+  src:url('../fonts/icomoon37937/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon37937/fonts/icomoon.svg#icomoon') format('svg'),
+      url('../fonts/icomoon37937/fonts/icomoon.woff') format('woff'),
+      url('../fonts/icomoon37937/fonts/icomoon.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -126,9 +126,6 @@ $icons:
   font-weight: normal;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-}
-.icon--whole:before {
-  content: "\e000";
 }
 .icon--type:before {
   content: "\e001";
@@ -207,4 +204,7 @@ $icons:
 }
 .icon--videocard_queue:before {
   content: "\e01a";
+}
+.icon--whole:before {
+  content: "\e000";
 }

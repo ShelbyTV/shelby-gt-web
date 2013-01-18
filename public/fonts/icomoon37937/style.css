@@ -25,16 +25,13 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"]:before {
 */
-.icon-whole:before, .icon-type:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-player_pause:before, .icon-videocard_roll:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-videocard_comment:before, .icon-star:before, .icon-heart:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-comment_reply:before, .icon-email:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-carrot:before, .icon-chevron:before, .icon-cancel:before, .icon-search:before, .icon-player_sound_on:before, .icon-avatar:before, .icon-player_play:before, .icon-player_sound_off:before, .icon-mark:before, .icon-videocard_queue:before {
+.icon-type:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-player_pause:before, .icon-videocard_roll:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-videocard_comment:before, .icon-star:before, .icon-heart:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-comment_reply:before, .icon-email:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-carrot:before, .icon-chevron:before, .icon-cancel:before, .icon-search:before, .icon-player_sound_on:before, .icon-avatar:before, .icon-player_play:before, .icon-player_sound_off:before, .icon-mark:before, .icon-videocard_queue:before, .icon-whole:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
-}
-.icon-whole:before {
-	content: "\e000";
 }
 .icon-type:before {
 	content: "\e001";
@@ -113,4 +110,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-videocard_queue:before {
 	content: "\e01a";
+}
+.icon-whole:before {
+	content: "\e000";
 }
