@@ -150,6 +150,73 @@ body {
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
+//  Invite
+//------------------------------------------------------------------------------
+.shelf--invite {
+  background-color: #444;
+  background-image: url('/images/landing/invite_landing.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: $button-color;
+  font-size: 1.5em;
+
+  //----- Block -----------------------------------------
+  .shelf__lining {}
+
+  .shelf__head,
+  .shelf__body {
+    float: right;
+    width: 50%;
+  }
+
+  .shelf__head {
+    font-size: 4em;
+    padding-top: 2em;
+    text-align: center;
+  }
+
+  .shelf__body {
+    padding: 3em;
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2--invite {
+    color: $button-color;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+
+  .shelf__h3 {
+    font-size: 0.7em;
+  }
+
+  .shelf__lining {}
+
+  .shelf__button {
+    @include button-sizing;
+
+    .icon_primer {
+      &:before {
+        vertical-align: -0.1em;
+      }
+    }
+  }
+  //----- Non-normative -----------------------------------------
+  .form_label {
+  }
+
+  .form_input {
+    background-color: rgba(239,239,239,0.7);
+
+    &:focus {
+      background-color: rgba(239,239,239,1);
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
 //  Search + Signup
 //------------------------------------------------------------------------------
 .shelf--signup,
@@ -194,6 +261,7 @@ body {
 //------------------------------------------------------------------------------
 .shelf--signup{
   background-image: url('/images/landing/network.jpg');
+  // background-image: url('/images/landing/network.jpg');
 
   //----- Block -----------------------------------------
   .shelf__lining {
@@ -255,12 +323,12 @@ body {
 
   //list of sources
   .shelf__list--sources {
-    background-image: url('/images/landing/logos.png');
+    background-image: url('/images/landing/device.png');
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: conain;
     background-size: contain;
-    height: 3.9em;
+    height: 23em;
     margin-bottom: 5em;
 
     .shelf__item {
@@ -273,15 +341,22 @@ body {
   }
 
   //non-normative
-  .shelby_mark {
+  .shelby_logo {
     background-image: url('/images/landing/tv.png');
     background-repeat: no-repeat;
     background-position: center top;
     text-align: center;
 
+    &:before,
+    &:after {
+      font-size: 10em;
+    }
+
     &:before {
-      color: $shelby-red;
-      font-size: 20em;
+    }
+
+    &:after {
+      color: $text;
     }
   }
 
