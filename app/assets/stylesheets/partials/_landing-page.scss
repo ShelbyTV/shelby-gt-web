@@ -400,13 +400,21 @@ body {
       display: block;
       font-size: 3em;
       left: 0;
-      margin: 0.7em;
+      margin: 1.1em 0.5em;
       position: absolute;
       top: 0;
     }
   }
 
+  .shelf__block--cta {
+    font-size: 1.7em;
+  }
+
   .shelf__list {
+  }
+
+  .shelf__link {
+    color: $button-color;
   }
 
   .shelf__item {
@@ -503,7 +511,9 @@ body {
     &:hover {
       .frame-body-wrapper {
         background-color: #fff;
+        box-shadow: 0 0 2px 0 $shelby-blue;
       }
+
       .xuser-data {
         text-decoration: underline;
       }
