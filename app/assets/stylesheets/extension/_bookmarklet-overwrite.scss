@@ -1,6 +1,10 @@
 //------------------------------------------------------------------------------
 //  experimental clearfix... fix.
 //------------------------------------------------------------------------------
+.clearfix:not(.media_body) {
+  overflow: visible;
+}
+
 //  fixes theatlantic
 h1,h2,h3,h4,h5,h6 {
   text-transform: none;
@@ -11,10 +15,6 @@ button {
   height: auto;
   text-transform: none;
   text-shadow: none;
-}
-//  fixes uproxx.com
-.clearfix:not(.media_body) {
-  overflow: visible;
 }
 
 //  fixes waywire.com
@@ -142,7 +142,7 @@ button {
   color: #FFF;
   font-size: 40px;
   font-family: $font-family-display;
-  height:100px; 
+  height:100px;
   line-height: 1;
   text-align: center;
   margin-top: 200px;
@@ -203,7 +203,7 @@ button {
   right: 0px;
   top: 0px;
   width: 330px;
-  z-index: 2147483646; 
+  z-index: 2147483646;
   &.guide-show {
     margin-right: 0;
   }
@@ -216,7 +216,7 @@ button {
   &.guide-hide {
     display: none;
   }
-    
+
 }
 
 .guide-overlay-cancel {
@@ -344,7 +344,8 @@ button {
       padding-left: 15px;
 
       &:before {
-        content: "Queued"
+        content: "Queued";
+        font-family: "Ubuntu", Trebuchet MS, sans-serif;
       }
 
       font-style: normal;
@@ -354,11 +355,15 @@ button {
 
 .comment-button-content {
   &:before {
-    content: "Reply"
+    content: "Reply";
+    font-family: "Ubuntu", Trebuchet MS, sans-serif;
+    font-weight: bold;
   }
   &.self {
     &:before {
-      content: "Comment"
+      content: "Comment";
+      font-family: "Ubuntu", Trebuchet MS, sans-serif;
+      font-weight: bold;
     }
   }
   font-style: normal;
@@ -372,9 +377,23 @@ button {
 
 .icon--queue {
   &:before {
-    content: "Queue"
+    content: "Queue";
+    font-family: "Ubuntu", Trebuchet MS, sans-serif;
+    font-weight: bold;
   }
 }
 
 .icon--roll {
+}
+
+.icon--cancel {
+  background-image: url('/images/assets/cancel.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  height: 1em;
+  width: 1em;
+  &:before {
+    display: none;
+  }
 }
