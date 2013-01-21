@@ -8,7 +8,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
 
   tagName : 'li',
 
-  className : 'conversation-message clearfix',
+  className : 'conversation__item clearfix',
 
   template : function(obj){
     return SHELBYJST['message'](obj);
@@ -22,7 +22,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
     e.preventDefault();
     var userId = $(e.currentTarget).data('user-id');
     shelby.router.navigate('user/' + userId + '/personal_roll', {trigger:true});
-    
+
     this.parent.hide();
   }
 

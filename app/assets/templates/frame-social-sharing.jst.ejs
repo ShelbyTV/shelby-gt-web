@@ -1,0 +1,27 @@
+<ul class="menu_list menu_list--share-frame">
+  <li class="menu_item">
+    <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
+      <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+        <i class="icon_primer icon--social_twitter">
+        </i>
+          Tweet
+      </button>
+    </a>
+  </li>
+  <li class="menu_item">
+    <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+      <i class="icon_primer  icon--social_facebook">
+      </i>
+        Share
+    </button>
+  </li>
+  <li class="menu_item">
+    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= framePermalink %>?utm_campaign=email-share">
+      <button class="button_primer button_default menu_button--email js-track-event" data-ga_category="Frame" data-ga_action="Share frame via email link" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
+        <i class="icon_primer  icon--email">
+          Email
+        </i>
+      </button>
+    </a>
+  </li>
+</ul>

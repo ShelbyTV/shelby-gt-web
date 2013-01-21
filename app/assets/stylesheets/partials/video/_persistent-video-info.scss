@@ -155,6 +155,10 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .hr {
     margin-bottom: 1em;
   }
+
+  // AB TEST classes to test position of buttons in footer
+  &.left { text-align: left; }
+  &.right { text-align: right; }
 }
 
 
@@ -164,42 +168,27 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   padding-left: 10px;
 
   .persistent_video_info__item {
-
   }
 
   .button_primer {
     padding: 0.75em 1em 0.8em;
     margin-right: 0.25em;
-
-    .icon {
-      background-size: contain;
-      -webkit-background-size: contain;
-      display: block;
-    }
   }
 
   .persistent_video_info__button--roll {
-    .icon {
-      padding-left: 1.4em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--queue {
-    .icon {
-      padding-left: 1.3em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--share {
-    .icon {
-      padding-left: 1.8em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
 
   .persistent_video_info__button--comment {
-    .icon {
-      padding-left: 1.5em;
-    }
+    padding: 0.75em 1em 0.8em;
   }
   .persistent_video_info__button--twitter {
     .icon {
@@ -213,13 +202,20 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       padding-left: 0.8em;
     }
   }
+
+  .persistent_video_info__button--email {
+    .icon {
+      background-size: 1.8em;
+      padding-left: 0.8em;
+    }
+  }
 }
 
 // FreshPlay "new" frame
 .persistent_video_info__sash {
   @include rotate(45deg);
   @include sash-primer();
-  
+
   position: absolute;
   right: -25px;
   top: 10px;

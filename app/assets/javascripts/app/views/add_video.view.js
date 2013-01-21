@@ -41,7 +41,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
       this.$el.hide();
     }
   },
-  
+
   _updateHeaderView : function(guideModel, currentRollModel) {
     // hide add video area if roll is collaboritive or if user is creator
     if ((currentRollModel.get('creator_id') === shelby.models.user.id) || currentRollModel.get('collaborative')) {
@@ -59,7 +59,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
   _hideSpinner : function(){
     this.spinner.hide();
   },
-  
+
 
   _addVideoViaURL : function(){
     this._showSpinner();
@@ -107,7 +107,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
   },
 
   _addVideoError: function(message){
-    shelby.alert(_.escape(message));
+    shelby.alert({message: _.escape(message)});
   },
 
   _onEnterInInputArea : function(event){

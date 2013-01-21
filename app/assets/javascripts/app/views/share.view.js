@@ -141,22 +141,22 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       //mark invalid
       if (!emailValid) {
         $emailAddressesInput.addClass('error');
-        shelby.alert("Please enter comma-seperated email addresses.");
+        shelby.alert({message: "Please enter comma-seperated email addresses."});
         return false;
       }
     }
-    
+
     if(this._components.networkToggles && this.model.get('destination').length == 0){
-      shelby.alert("Please choose a network to share on.");
+      shelby.alert({message: "Please choose a network to share on."});
       return false;
     }
-    
+
     return true;
   },
 
   _share : function(){
     var self = this;
-    
+
     if(!this._validateShare()) {
       this.$('.js-share-textarea, .js-share-email-addresses').addClass('error');
       this.onValidationFail();
@@ -179,7 +179,7 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       this.model.set('addresses', this.$('.js-share-email-addresses').val());
       this.model.set('destination', ['email']);
     }
-        
+
     this.model.save(null, this._getSaveOpts(urls));
     return false;
   },

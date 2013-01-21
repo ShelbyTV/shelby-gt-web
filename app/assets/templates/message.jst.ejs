@@ -39,7 +39,7 @@
       <%= messageJSON.text %>
     </p>
     <div class="frame-subline">
-      <a class="frame-link conversation-message-reply js-message-reply js-track-event" href="#" data-ga_category="Message" data-ga_action="Click reply" data-ga_label="<%= user.get('nickname') %>" data-reply_to="<%= messageJSON.nickname %>">
+      <a class="icon_primer icon--comment_reply conversation__reply js-message-reply js-track-event" href="#" data-ga_category="Message" data-ga_action="Click reply" data-ga_label="<%= user.get('nickname') %>" data-reply_to="<%= messageJSON.nickname %>">
         Reply
       </a>
     </div>

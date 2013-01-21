@@ -1,123 +1,196 @@
-@import "base";
-
-////////////////////////////////////////////////////////////////////////////
-//  TODO: ONE WORD CLASS NAMES ARE TOO VAGUE,
-//        NEED TO FIX THIS EVENTUALLY
-//
-//  TODO: ONLY CLASSES IN THE MODULES PARTIAL GET UNDERSCORES
-//        UNDERSCORES DENOTE UTILITY CLASSES THAT AREN'T READILY EDITABLE
-////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
+// NOTIFICATION Block
+//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-//  Notifications architecture
-//  (setup, shared between any/all alerts and notifications)
+//  Block
 //------------------------------------------------------------------------------
-.notifications-wrapper {
-//  display: none;
-  height: 50px;
+
+.notification__wrapper {
+  height: 200px;
   left: 50%;
   margin-left: -300px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   top: 36px;
   width: 600px;
   z-index: 4;
 
   &.hide {
-    height: 0px;
+    height: 0;
   }
 }
 
-$bookmarklet-color: $shelby-blue;
-
-.notification_module--feedback {
-  @include gradient-primer($shelby-blue);
+.notification {
   @include roundies(footer);
 
-  box-shadow: 0 0 10px 2px rgba(0,0,0,.5);
-  color: #efefef;
-  padding: 3px 5px;
-  margin: 0 auto;
-  position: relative;
-  max-width: 600px;
-  z-index: 5;
+  background-color: $base;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
+  font-size: 1.3em;
+  margin: 0 10px 10px;
+  padding: 1em;
+}
 
-  .notification_actions {
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
 
+.notification__button {
+
+}
+
+.notification__button--primary {
+  padding: 0.7em 1em 0.8em;
+
+  .icon--cancel {
+    &:before {
+      vertical-align: -0.1em;
+    }
+  }
+}
+
+.notification__button--secondary {
+  background: none;
+  border: none;
+  font-family: $font-family;
+  padding: 0.7em 1em 0.8em 0.5em;
+
+  &,
+  &:visited {
+    color: lighten($text, 20%);
   }
 
-  .notification_button {
-    color: $bookmarklet-color;
-    border-color: $bookmarklet-color;
-    border-radius: 20px !important;
-    text-shadow: none;
-    vertical-align: top;
-    margin: 0.5em 0.3em 0;
+  &:hover {
+    text-decoration: underline;
   }
 
-  .notification_label {
-    color: darken($bookmarklet-color,15%);
+  &:active {
+  }
+}
+
+.notification__link {
+
+}
+
+.notification__block {
+  font-size: 1.1em;
+  font-family: $font-family-display;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 1em;
+}
+
+//------------------------------------------------------------------------------
+//  Head
+//------------------------------------------------------------------------------
+
+.notification__head {
+
+}
+
+
+//------------------------------------------------------------------------------
+//  Body
+//------------------------------------------------------------------------------
+
+.notification__body {
+
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//  Modifiers
+//------------------------------------------------------------------------------
+/*
+    below styles pertain to specific dialog UI
+*/
+
+//------------------------------------------------------------------------------
+//  UI style for shelby.dialog();
+
+.notification--dialog {
+  //  Elements
+  .notification__button {
   }
 
-  .notification_message {
-    font-size: 1.5em;
-    line-height: 2.1;
-    vertical-align: top;
-    width: 100%;
-
-    a {
-      &:active,
-      &:link,
-      &:hover,
-      &:visited {
-        color: darken($bookmarklet-color,15%)
+  .notification__button--primary {
+    .icon--cancel {
+      &:before {
       }
     }
   }
 
-  .notification_option {
-    margin-right: .7em;
-  }
-}//eo notifications
+  .notification__button--secondary {
+    &,
+    &:visited,
+    &:hover {
+    }
 
-.button-wrapper {
-  margin: 2em;
-  text-align: center;
+    &:hover {
+    }
 
-  .one_button {
-    .notification-cancel {
-      display: none;
+    &:active {
     }
   }
 
-  .two_button {
+  .notification__link {
   }
 
-  .notification-confirm,
-  .notification-cancel {
-    font-size: 1.3em;
-    width: 6.7em;
+  .notification__block {
   }
 
-  button.disabled { display: none; }
-  button.red      { @include button-primer($shelby-red,dark); }
-  button.blue     { @include button-primer($shelby-blue,dark); }
-  button.grey     { @include button-primer; }
-}//eo button-wrapper
+  //  Head
+  .notification__head {
+  }
 
 
-//------------------------------------------------------------------------------
-//  Specifically Shelby.alert()
-//------------------------------------------------------------------------------
+  //  Body
+  .notification__body {
+  }
 
-.default {
 }
 
 //------------------------------------------------------------------------------
-// Specifically the "Rolled to username/personal roll" message
-//------------------------------------------------------------------------------
-.info {
-  .message-link {
-    float: right;
+//  UI style for shelby.alert();
+
+.notification--confirm {
+  //  Elements
+  .notification__button {
   }
-}//eo info
+
+  .notification__button--primary {
+    .icon--cancel {
+      &:before {
+      }
+    }
+  }
+
+  .notification__button--secondary {
+    &,
+    &:visited,
+    &:hover {
+    }
+
+    &:hover {
+    }
+
+    &:active {
+    }
+  }
+
+  .notification__link {
+  }
+
+  .notification__block {
+  }
+
+  //  Head
+  .notification__head {
+  }
+
+  //  Body
+  .notification__body {
+  }
+
+}
