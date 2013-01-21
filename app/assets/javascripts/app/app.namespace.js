@@ -39,7 +39,7 @@ _(shelby).extend({
   //     button_secondary == 0
   dialog: function(notificationOpts, callback){
     if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
-    
+
     opts = _.extend(shelby.models.notificationState.defaults, {
       'class'    : 'notification--dialog',
       'visible'  : true
@@ -58,26 +58,25 @@ _(shelby).extend({
   //  - AUTO DISMISSES AFTER 9 seconds
   alert: function(alertOpts, callback){
     if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
-    
+
     opts = _.extend(shelby.models.notificationState.defaults, {
       'class'    : 'notification--alert',
       'visible'  : true
     }, alertOpts);
 
     shelby.models.notificationState.set(opts);
-    
+
     //auto-hide
-    var notificationTimer = 
     this._notificationTimer = setTimeout(function(){
       shelby.models.notificationState.set({visible: false});
     }, opts.timeout || 9000);
-    
+
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
       clearTimeout(notificationTimer);
     });
   },
-  
+
   _notificationTimer: null
 });
