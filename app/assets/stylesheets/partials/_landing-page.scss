@@ -214,6 +214,13 @@ body {
       background-color: rgba(239,239,239,1);
     }
   }
+
+  .form_submit {
+    @include button-sizing;
+
+    margin-top: 1em;
+    width: 100%;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -312,6 +319,7 @@ body {
 .shelf--network {
   //----- Block -----------------------------------------
   .shelf__lining {
+    margin-bottom: 1em;
   }
 
   //----- Elements -----------------------------------------
