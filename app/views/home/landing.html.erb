@@ -128,24 +128,17 @@
     <% end %>
 
     <% #------------ Shelf Content --------------- %>
-    <% if @video %>
-      <% if @share_type == :genius %>     <%= render :partial => "/home/shelf/genius_email_share" %>
-      <% elsif @share_type == :email %>   <%= render :partial => "/home/shelf/direct_email_share" %>
-      <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
-			<% elsif @share_type == :fb_genius %>	<%= render :partial => "/home/shelf/fb_genius_share" %>
-      <% end %>
-    <% end %>
 
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
-    <% if (!@share_type or !@video) and !@invite_id %>
+    <% if (!@share_type) and !@invite_id %>
       <%= render :partial => "/home/shelf/search" %>
-    <% end %>
-
       <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/sign_up" %>
       <%= render :partial => "/home/shelf/network" %>
+    <% end %>
       <%= render :partial => "/home/shelf/about" %>
+
     <% #------------ /Shelf Content --------------- %>
 
     <footer class="shelf shelf--footer">

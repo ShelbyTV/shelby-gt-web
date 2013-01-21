@@ -2,7 +2,7 @@
 //  local vars
 //------------------------------------------------------------------------------
 $landing-page-shelf-background: #ddd;
-$landing-page-width: 1050px;
+$landing-page-width: 1080px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
 
@@ -13,55 +13,13 @@ html,
 body {
   overflow: visible;
 }
-
-//----- Non-normative Elements -----------------------------------------
-.shelf__frame {
-  font-size: 1.3em;
-  font-family: $font-family;
-  font-weight: normal;
-
-  .shelf__link {
-    &:active {
-      .frame-body-wrapper {
-        box-shadow: 0 0 2px 0 black;
-      }
-    }
-
-    &,
-    &:hover,
-    &:visited {
-      text-decoration: none;
-    }
-
-    &:hover {
-      .frame-body-wrapper {
-        background-color: #fff;
-      }
-      .xuser-data {
-        text-decoration: underline;
-      }
-    }
-
-    .xuser-data {
-      color: $text;
-      font-family: $font-family;
-      font-weight: bold;
-      margin-bottom: 1em;
-
-      span {
-        font-weight: normal;
-        font-size: .9em;
-        opacity: .5;
-      }
-    }
-  }
-}
-
 //----- Override App Base Styles -----------------------------------------
 
 .shelby--landing {
   background-color: $landing-page-footer-background;
+  height: auto;
   overflow: auto;
+  position: relative;
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
@@ -303,7 +261,7 @@ body {
     -webkit-background-size: conain;
     background-size: contain;
     height: 3.9em;
-    margin-bottom: 10em;
+    margin-bottom: 5em;
 
     .shelf__item {
       float: left;
@@ -312,9 +270,21 @@ body {
   }
 
   .shelf__image {
-    display: block;
-    margin: 0 auto;
   }
+
+  //non-normative
+  .shelby_mark {
+    background-image: url('/images/landing/tv.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    text-align: center;
+
+    &:before {
+      color: $shelby-red;
+      font-size: 20em;
+    }
+  }
+
 }
 
 //------------------------------------------------------------------------------
@@ -326,7 +296,6 @@ body {
   background-position: top center;
   background-repeat: repeat-x;
   background-size: contain;
-  margin-top: -9em;
   position: relative;
   text-align: center;
   z-index: 1;
@@ -340,14 +309,17 @@ body {
   }
 
   .shelf__block {
+    margin: 1.5em auto;
+    max-width: 630px;
+
     &:before {
-      content: "[>]";
+      color: rgb(255, 255, 51);
       display: block;
+      font-size: 3em;
       left: 0;
-      margin: 2em;
+      margin: 0.7em;
       position: absolute;
       top: 0;
-
     }
   }
 
@@ -421,3 +393,51 @@ body {
     }
   }
 }
+
+//----- Non-normative Elements -----------------------------------------
+.frame--shelf {
+  font-size: 1.3em;
+  font-family: $font-family;
+  font-weight: normal;
+
+  .media_module {
+    margin: 1em;
+  }
+
+  .shelf__link {
+    &:active {
+      .frame-body-wrapper {
+        box-shadow: 0 0 2px 0 black;
+      }
+    }
+
+    &,
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover {
+      .frame-body-wrapper {
+        background-color: #fff;
+      }
+      .xuser-data {
+        text-decoration: underline;
+      }
+    }
+
+    .xuser-data {
+      color: $text;
+      font-family: $font-family;
+      font-weight: bold;
+      margin-bottom: 1em;
+
+      span {
+        font-weight: normal;
+        font-size: 0.9em;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
