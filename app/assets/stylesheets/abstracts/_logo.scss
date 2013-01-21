@@ -1,0 +1,40 @@
+//Shelby Logo
+.shelby_logo {
+  font-size: 1em;
+  height: 3em;
+  line-height: 1;
+  padding: 0.3em 0 0 0.25em;
+  text-align: left;
+  width: 12em;
+
+  //settings shared between both logo and mark
+  &:before,
+  &:after {
+    float: left;
+  }
+
+  //mark
+  &:before {
+    content: "\e01c";
+    color: #6cbc45;
+    font-size: 1.1em;
+    line-height: 1;
+    margin-top: 0.1em;
+  }
+
+  //logo
+  &:after {
+    content: "\e018";
+    color: $button-color;
+  }
+}
+
+.shelby_mark {
+  background-image: url('/images/landing/tv.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  &:before {
+    font-size: 20em;
+  }
+}
