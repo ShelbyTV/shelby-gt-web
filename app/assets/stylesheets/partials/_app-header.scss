@@ -1,60 +1,29 @@
 .shelby-header {
-	@include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%));
+  @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%));
 
-	border-bottom: 1px solid $header-outline;
+  border-bottom: 1px solid $header-outline;
 
-	//NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
-	z-index: 3;  /* need to keep this in front of the preroll-video-info */
+  //NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 3;  /* need to keep this in front of the preroll-video-info */
 }
 
 .shelby-logo {
-	background: transparent;
-	border: none;
-	display: block;
-	float: left;
-	padding: 0;
+  background: transparent;
+  border: none;
+  display: block;
+  float: left;
+  font-size: 1.5em;
+  padding: 0;
 
-	&.shelby-logo-no-link {
-		cursor: auto;
-	}
+  .shelby_logo {
+    padding: 5px 12px 0 6px;
+  }
 }
-
-.shelby-title {
-  font-size: 2.3em;
-  height: 35px;
-  line-height: 1;
-  padding: 0.3em 0 0 0.25em;
-  text-align: left;
-  width: 120px;
-
-  //settings shared between both logo and mark
-  &:before,
-  &:after {
-    float: left;
-  }
-
-  //mark
-  &:before {
-    content: "\e019";
-    color: #6cbc45;
-    font-size: 1.1em;
-    line-height: 1;
-    margin-top: 2px;
-  }
-
-  //logo
-  &:after {
-    content: "\e001";
-    color: $button-color;
-  }
-
-}
-
 
 .shelby-title-staging {
   @include ellipsis;

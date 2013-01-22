@@ -1,0 +1,131 @@
+@font-face {
+	font-family: 'Shelby';
+	src:url('fonts/Shelby.eot');
+	src:url('fonts/Shelby.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Shelby.svg#Shelby') format('svg'),
+		url('fonts/Shelby.woff') format('woff'),
+		url('fonts/Shelby.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'Shelby';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-whole:before, .icon-type:before, .icon-mark:before, .icon-videocard_roll:before, .icon-videocard_queue:before, .icon-videocard_comment:before, .icon-star:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-search:before, .icon-player_sound_on:before, .icon-player_sound_off:before, .icon-player_play:before, .icon-player_pause:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-heart:before, .icon-HD:before, .icon-email:before, .icon-comment_reply:before, .icon-chevron:before, .icon-carrot:before, .icon-cancel:before, .icon-avatar:before, .icon-arrow_up:before, .icon-arrow_right:before, .icon-arrow_left:before, .icon-arrow_down:before {
+	font-family: 'Shelby';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-whole:before {
+	content: "\e000";
+}
+.icon-type:before {
+	content: "\e001";
+}
+.icon-mark:before {
+	content: "\e002";
+}
+.icon-videocard_roll:before {
+	content: "\e003";
+}
+.icon-videocard_queue:before {
+	content: "\e004";
+}
+.icon-videocard_comment:before {
+	content: "\e005";
+}
+.icon-star:before {
+	content: "\e006";
+}
+.icon-social_twitter:before {
+	content: "\e007";
+}
+.icon-social_tumblr:before {
+	content: "\e008";
+}
+.icon-social_facebook:before {
+	content: "\e009";
+}
+.icon-shortlink:before {
+	content: "\e00a";
+}
+.icon-search:before {
+	content: "\e00b";
+}
+.icon-player_sound_on:before {
+	content: "\e00c";
+}
+.icon-player_sound_off:before {
+	content: "\e00d";
+}
+.icon-player_play:before {
+	content: "\e00e";
+}
+.icon-player_pause:before {
+	content: "\e00f";
+}
+.icon-player_fullscreen_enable:before {
+	content: "\e010";
+}
+.icon-player_fullscreen_disable:before {
+	content: "\e011";
+}
+.icon-missing_thumb:before {
+	content: "\e012";
+}
+.icon-iphone:before {
+	content: "\e013";
+}
+.icon-heart:before {
+	content: "\e014";
+}
+.icon-HD:before {
+	content: "\e015";
+}
+.icon-email:before {
+	content: "\e016";
+}
+.icon-comment_reply:before {
+	content: "\e017";
+}
+.icon-chevron:before {
+	content: "\e018";
+}
+.icon-carrot:before {
+	content: "\e019";
+}
+.icon-cancel:before {
+	content: "\e01a";
+}
+.icon-avatar:before {
+	content: "\e01b";
+}
+.icon-arrow_up:before {
+	content: "\e01c";
+}
+.icon-arrow_right:before {
+	content: "\e01d";
+}
+.icon-arrow_left:before {
+	content: "\e01e";
+}
+.icon-arrow_down:before {
+	content: "\e01f";
+}
