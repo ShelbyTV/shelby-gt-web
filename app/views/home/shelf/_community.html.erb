@@ -4,6 +4,12 @@
       Start watching .TV now.
     </h3>
 
+    <p class="shelf__block">
+      Click to watch out active members of our community
+    </p>
+
+    <hr class="shelf__hr" />
+
     <ul class="list shelf__list clearfix">
       <%
         frames = [
@@ -36,7 +42,7 @@
           <article class="frame frame--shelf">
             <a href="<%= frame["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" title="Click to watch!">
               <div class="frame-body-wrapper clearfix">
-                <div class="image_module frame-thumbnail" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
+                <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
                   <img class="visuallyhidden" src="<%= frame["thumbnail"] %>" title="<%= frame["thumbnail"] %>" alt="<%= frame["thumbnail"] %> thumbnail">
                 </div><!-- eo .frame-thumbnail -->
 
