@@ -33,7 +33,11 @@ window.onload = function() {
 			'icon-chevron' : '&#xe018;',
 			'icon-carrot' : '&#xe019;',
 			'icon-cancel' : '&#xe01a;',
-			'icon-avatar' : '&#xe01b;'
+			'icon-avatar' : '&#xe01b;',
+			'icon-arrow_up' : '&#xe01c;',
+			'icon-arrow_right' : '&#xe01d;',
+			'icon-arrow_left' : '&#xe01e;',
+			'icon-arrow_down' : '&#xe01f;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

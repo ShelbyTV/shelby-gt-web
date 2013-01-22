@@ -1,64 +1,49 @@
-<div class="animate_module videoplayer-tools__wrapper clearfix">
-  <menu class="animate_module videoplayer-tools clearfix">
-		<button hidden class="videoplayer_button video-player-roll js-videoplayer-roll js-track-event" data-ga_category="Player" data-ga_action="Click roll" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      <i class="icon-">
-      </i>
-      <Roll
+<div class="animate_module video_controls__wrapper clearfix">
+  <div class="video_controls clearfix">
+    <button class="video_controls__button video_controls__button--play js-videoplayer-playback js-track-event">
+      <i class="icon-player_play"></i>
+      <i class="icon-player_pause"></i>
+      <span class="visuallyhidden">Play</span>
     </button>
 
-    <button class="videoplayer_button video-player-play pause js-videoplayer-playback js-track-event" data-ga_category="Player" data-ga_action="Click play/pause" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      <i class="ir button_icon_center icon_player_play icon-play">
-        Play
-      </i>
+    <button class="video_controls__button video_controls__button--quality js-videoplayer-hd js-track-event">
+      <i class="icon-HD"></i>
+      <span class="visuallyhidden">HD</span>
     </button>
 
-    <button class="videoplayer_button video-player-quality hd-off js-videoplayer-hd js-track-event" data-ga_category="Player" data-ga_action="Click hd" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      <i class="ir button_icon_center icon_player_hd_off icon-hd">
-        HD
-      </i>
+    <button class="video_controls__button video_controls__button--volume unmute js-videoplayer-mute js-track-event">
+      <i class="icon-player_sound_on"></i>
+      <i class="icon-player_sound_off"></i>
+      <span class="visuallyhidden">Volume</span>
     </button>
 
-    <button class="videoplayer_button video-player-volume unmute js-videoplayer-mute js-track-event" data-ga_category="Player" data-ga_action="Click mute" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      <i class="ir button_icon_center icon_player_sound_on icon-volume">
-        Volume
-      </i>
-    </button>
-
-    <div class="video-player-timeline js-videoplayer-timeline">
-      <span>
-        0:00
-      </span>
-      /
-      <span>
-        0:00
-      </span>
+    <div class="video_controls__time js-videoplayer-timeline">
+      <span>0:00</span> / <span>0:00</span>
     </div>
 
-    <div class="videoplayer-progress__wrapper js-videoplayer-progress">
-      <div class="videoplayer-progress">
-        <div class="videoplayer-progress__load"></div>
-        <div class="videoplayer-progress__elapsed"></div>
-        <div class="videoplayer-progress__scrubber"></div>
+    <div class="video_progress__wrapper js-videoplayer-progress">
+      <div class="video_progress">
+        <div class="video_progress__load"></div>
+        <div class="video_progress__elapsed"></div>
+        <div class="video_progress__scrubber"></div>
       </div>
     </div>
-  </menu>
-</div>
+  </div><!-- eo video_controls -->
+</div><!-- eo video_conrtols__wrapper -->
 
 
 <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Next Video">
-	<i class="ir button_icon_center icon_arrow_right icon">
-		Next
-	</i>
+	<i class="icon-arrow_right"></i>
+  <span class="visuallyhidden">Next</span>
 </button>
 
 <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Previous Video">
-	<i class="ir button_icon_center icon_arrow_left icon">
-		Prev
-	</i>
+	<i class="icon-arrow_left"></i>
+	<span class="visuallyhidden">Prev</span>
 </button>
 
-<button class="videoplayer_animate video-player-fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
-  <i class="ir button_icon_center icon_player_fullscreen_enable icon-fullscreen">
-    Fullscreen
-  </i>
+<button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
+  <i class="icon-player_fullscreen_enable"></i>
+  <i class="icon-player_fullscreen_disable"></i>
+  <span class="visuallyhidden">Fullscreen</span>
 </button>
