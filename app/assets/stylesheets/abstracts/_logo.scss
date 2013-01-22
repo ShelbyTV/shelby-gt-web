@@ -1,0 +1,27 @@
+/*
+  This is exactly how you should use the logo:
+
+  <h1 class="shelby_logo">
+    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+  </h1>
+
+  All spans must be inline!
+*/
+
+.shelby_logo {
+  line-height: 1;
+
+  .icon-mark {
+    color: #6cbc45;
+  }
+
+  .icon-type {
+    color: $button-color;
+  }
+}
+
+.shelby_logo--inverted {
+  .icon-type {
+    color: $text;
+  }
+}
