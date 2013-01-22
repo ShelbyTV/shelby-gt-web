@@ -1,7 +1,15 @@
 /*
   This is exactly how you should use the logo:
 
+  Regular, for dark backgrounds:
+
   <h1 class="shelby_logo">
+    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+  </h1>
+
+  Inverted, for light backgrounds:
+
+  <h1 class="shelby_logo shelby_logo--inverted">
     <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
   </h1>
 
