@@ -17,7 +17,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
       "click .js-help"                           : "_showHelp",
       "click .js-team"                           : "_showTeam",
       "click .js-legal"                          : "_showLegal",
-      "click .js-home:not(.shelby-logo-no-link)" : "_showHome",
+      "click .js-home:not(.visuallydisabled)"    : "_showHome",
       "click .js-fb-home"                        : "_showFBHome"
     });
 
@@ -76,7 +76,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
 
   _updateHomeLinkState : function(){
     var isOnboarding = this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.onboarding;
-    this.$('.js-home').toggleClass('shelby-logo-no-link', isOnboarding);
+    this.$('.js-home').toggleClass('visuallydisabled', isOnboarding);
   },
 
   _closeMenus : function(){
@@ -90,7 +90,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
       shelby.router.navigate('stream', {trigger:true});
     }
   },
-  
+
   _showFBHome : function(){
     document.location.href = shelby.config.fbAppUrl+'/fb/genius';
   },
