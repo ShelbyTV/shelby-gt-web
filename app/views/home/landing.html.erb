@@ -55,7 +55,7 @@
 
                   <fieldset class="form_fieldset">
                     <label for="password" class="form_label">Password</label>
-                  <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+                    <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
                   </fieldset>
 
                   <fieldset class="form_fieldset">
@@ -85,7 +85,6 @@
                     </i>
                   </a>
                 </div>
-
               </div>
             </section>
 
@@ -95,8 +94,8 @@
     </header>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="landing-shelf landing-shelf__error">
-        <div class="landing-shelf__lining">
+      <section class="shelf shelf--error">
+        <div class="shelf__lining">
           <% if @access_error %>
             <p class="gate-signin-noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>
