@@ -1,4 +1,11 @@
-@import "compass/typography/links/hover-link";
+//------------------------------------------------------------------------------
+//  local vars
+//------------------------------------------------------------------------------
+$landing-page-shelf-background: #ddd;
+$landing-page-width: 1080px;
+$landing-page-footer-background: #161818;
+$landing-page-footer-font-color: #EFEFEF;
+
 //------------------------------------------------------------------------------
 //  OVERRIDES
 //------------------------------------------------------------------------------
@@ -6,25 +13,21 @@ html,
 body {
   overflow: visible;
 }
+//----- Override App Base Styles -----------------------------------------
 
-//------------------------------------------------------------------------------
-//  landing-page
-//------------------------------------------------------------------------------
-$landing-page-width: 1000px;
-$landing-page-footer-background: #161818;
-$landing-page-footer-font-color: #EFEFEF;
-
-.shelby-landing {
+.shelby--landing {
   background-color: $landing-page-footer-background;
+  height: auto;
   overflow: auto;
+  position: relative;
 
   //TODO: determine why this override is necessary.
-  .shelby-wrapper {
+  .shelby__wrapper {
     position: relative;
   }
 
   /* adjust the header, don't want absolute position */
-  .shelby-header {
+  .shelby__header {
     position: relative;
   }
 
@@ -34,15 +37,11 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-/********************************************************
- * Login & Signup (used on landing page and anonymous banner)
- ********************************************************/
 .login-section,
 .signup-section {
   right: 10px;
   top: 28px;
 }
-
 
 .login-section-lining,
 .signup-section-lining {
@@ -67,747 +66,524 @@ $landing-page-footer-font-color: #EFEFEF;
   margin-top: .5em;
 }
 
-/********************************************************
- * All Shelves
- ********************************************************/
-  .half,
-  .half--left,
-  .half--right {
-    width: 50%;
-  }
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
 
-  .half {
-//    float: left;
-//    overflow: hidden;
-  }
-
-  .half--left {
-    float: left;
-  }
-
-  .half--right {
-    float: right;
-  }
-
-
-$landing-page-shelf-background: #ddd;
-
-.landing_shelf,
-.landing-shelf {
+.shelf {
   background-color: $landing-page-shelf-background;
-
-//  &:not(.flat){
-    @include gradient-primer($landing-page-shelf-background, -10%,bottom);
-//  }
-
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
-  padding: 0 1em;
 }
 
-.landing_shelf__lining,
-.landing-shelf__lining {
-  max-width: $landing-page-width;
+.shelf__lining {
   margin: 0 auto;
-
-  &.half {
-    float: left;
-    width: 50%;
-
-    &:first-child {
-      border-right: 1px solid $inset;
-    }
-
-    &:last-child {
-      border-left: 1px solid $outset;
-    }
-  }
+  max-width: $landing-page-width;
 }
 
-.landing_shelf__h1,
-.landing-shelf__h1 {
-  font-size: 2.3em;
-  font-weight: 300;
-  margin-bottom: 1em;
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+.shelf__hr {
+  border-bottom: 1px solid $inset;
+  margin: 2em 0;
+  max-width: $landing-page-width;
+  padding: 0;
+  width: 100%;
 }
 
-.landing_shelf__h1--extra,
-.landing-shelf-header-extra {
-  font-size: 3em;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 1em;
-}
-
-.landing_shelf__h1--subline,
-.landing-shelf__h1--subline {
-  display: block;
-  font-size: .8em;
-}
-
-.landing_shelf__h2,
-.landing-shelf__h2 {
-  font-family: $font-family-display;
-  font-size: 1.75em;
+.shelf__h1 {
+  font-size: 5em;
   font-weight: 100;
-  line-height: 1.4;
-  margin-bottom: 1em;
-
-  &.extra {
-    font-weight: 500;
-  }
 }
 
-.landing_shelf__block,
-.landing-shelf-block {
-  font-size: 1.1em;
-
-  &.display {
-    font-family: $font-family-display;
-    font-weight: 300;
-  }
-}
-
-.landing_shelf__divider,
-.landing-shelf__divider {
-  background-color: darken($inset,50%);
-  border: none;
-  height: 1px;
-  margin: 1em 0;
-}
-
-.landing_shelf__divider--white,
-.landing-shelf__divider--white {
-  background-color: $button-color;
-  border: none;
-  height: 1px;
-  margin: 1em 0;
-}
-
-.landing_shelf__divider-legend,
-.landing-shelf__divider-legend {
-  font-size: .8em;
+.shelf__h2 {
+  color: darken($inset,25%);
+  font-size: 3em;
+  font-weight: 300;
+  padding: 1em;
+  margin: 0;
   text-align: center;
 }
 
-.landing-shelf__button--facebook,
-.landing-shelf__button--twitter {
-  @include button-sizing;
-
-  display: inline-block;
-  margin: 0 1em 1em 0;
-  text-align: center;
-  width: 161px;
-
-  .icon {
-    display: block;
-    padding-left: 1em;
-  }
+.shelf__h3 {
 }
 
-.landing-shelf__button--twitter {
-
+.shelf__h4 {
+  font-weight: 400;
 }
 
-.landing-shelf__button--facebook {
-
-}
-
-.landing-shelf__error {
-  color: red;
+.shelf__block {
+  color: $button-color;
   font-size: 1.5em;
+  font-family: $font-family-display;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 1.5em 0 2em;
 }
 
-.landing-button-large {
-  font-size: 1.3em;
-  font-weight: 700;
-  margin: 25px 0 10px;
-  padding: 1.05em 1.35em;
+.shelf__list--inline,
+.shelf__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-  &:link,
-  &:hover {
+.shelf__list--inline {
+  & > li {
+    display: inline-block;
+  }
+}
+
+.shelf__link {
+  &,
+  &:active,
+  &:visited {
     text-decoration: none;
   }
-}
 
-/********************************************************
- * All Share Shelves
- ********************************************************/
-.landing-shelf--share {
-  padding: 50px 0 20px;
-
-  .landing-shelf__content {
-    float: left;
-    padding: 30px 0 0 5px;
-    width: $landing-page-width * (8/18);
-
-
-    .user-avatar {
-      width: 48px;
-      padding-right: 5px;
-    }
+  &:hover {
+    text-decoration: underline;
   }
 }
 
-.landing-shelf__video-embed {
-  float: left;
-  width: $landing-page-width * (10/18);
-}
 
-.addthis_toolbox{
-  background-color: transparent;
-  position: absolute;
-}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//  Modifiers
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-/********************************************************
- * _invite - Invitation Form Shelf
- ********************************************************/
-.landing-shelf--invite {
+//------------------------------------------------------------------------------
+//  Invite
+//------------------------------------------------------------------------------
+.shelf--invite {
   background-color: #444;
   background-image: url('/images/landing/invite_landing.jpg');
-  background-position: top left;
+  background-position: center center;
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
   background-size: cover;
-  border-bottom: 1px solid #333;
-  border-top: none;
-  color: #efefef;
+  color: $button-color;
+  font-size: 1.5em;
 
-  .landing-shelf__lining {
-//    margin: 0 auto;
-//    max-width: 350px;
-    padding: 50px 0;
+  //----- Block -----------------------------------------
+  .shelf__lining {}
+
+  .shelf__head,
+  .shelf__body {
+    float: right;
+    width: 50%;
+  }
+
+  .shelf__head {
+    font-size: 4em;
+    padding-top: 2em;
     text-align: center;
+  }
 
-    &.half {
-      border: none;
+  .shelf__body {
+    padding: 3em;
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2--invite {
+    color: $button-color;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+
+  .shelf__h3 {
+    font-size: 0.7em;
+  }
+
+  .shelf__lining {}
+
+  .shelf__button {
+    @include button-sizing;
+
+    .icon_primer {
+      &:before {
+        vertical-align: -0.1em;
+      }
     }
   }
-
-  .landing-shelf__h1 {
-    font-size: 1.5em;
-    line-height: 1.4;
-    font-weight: 500;
-  }
-}
-
-.landing-shelf_form--invite {
-  font-size: 1.4em;
-  text-align: left;
-  width: 400px;
-
-  .form_submit {
-    width: 100%;
-    margin-top: 1em;
-  }
-
+  //----- Non-normative -----------------------------------------
   .form_label {
-    font-family: $font-family;
-    font-weight: bold;
-    position: relative;
   }
 
   .form_input {
-    border-radius: 2px;
-    background-color: rgba(239, 239, 239,.7);
+    background-color: rgba(239,239,239,0.7);
 
-    &.filled,
     &:focus {
-      background-color: rgba(239, 239, 239,1);
+      background-color: rgba(239,239,239,1);
     }
   }
 
-  .form_fieldset--error {
-    .form_error {
-      display: block;
-    }
-  }
+  .form_submit {
+    @include button-sizing;
 
-  .form_error {
-    bottom: -1.8em;
-    color: $shelby-red;
-    display: none;
-    font-family: $font-family;
-    font-size: .8em;
-    position: absolute;
-    right: .5em;
-  }
-
-  .form_fieldset--social-login {
-    text-align: center;
+    margin-top: 1em;
+    width: 100%;
   }
 }
 
-/********************************************************
- * _invite - Invitation Welcome
- ********************************************************/
-.landing-shelf__welcome {
-  color: white;
-  margin-top: 50px;
-  font-size: 5.5em;
-  text-align: center;
-  text-shadow: $shadow-text;
+//------------------------------------------------------------------------------
+//  Search + Signup
+//------------------------------------------------------------------------------
+.shelf--signup,
+.shelf--search {
+  background-color: #444;
+  background-image: url('/images/landing/invite_landing.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
 
-  .landing-shelf__h1 {
-    font-weight: 700;
-    margin: 0;
+  //----- Block -----------------------------------------
+  .shelf__lining {
+    color: $button-color;
+    padding: 7em 0 9em;
+    text-align: center;
   }
 
-  .landing-shelf__h2 {
-    font-size: .7em;
-    font-weight: 700;
-    line-height: 1;
+  //----- Elements -----------------------------------------
+  .shelf__h1 {
+
+  }
+
+  .shelf__block {
+  }
+
+  .shelf__form {
+    font-size: 1.6em;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  //----- Non-normativeElements -----------------------------------------
+  .media_image {
+    overflow: visible;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  Signup, extended by .shelf--search above
+//------------------------------------------------------------------------------
+.shelf--signup{
+  background-image: url('/images/landing/network.jpg');
+  // background-image: url('/images/landing/network.jpg');
+
+  //----- Block -----------------------------------------
+  .shelf__lining {
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h1 {
+
+  }
+
+  .shelf__block {
+  }
+
+  .shelf__form {
+  }
+
+  //----- Non-normativeElements -----------------------------------------
+  .media_image {
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  Community
+//------------------------------------------------------------------------------
+.shelf--community {
+  //----- Block -----------------------------------------
+  .shelf__lining {
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2 {
+  }
+
+  .shelf__block {
+    color: darken($inset,25%);
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .shelf__list {
+    margin: 0 0 5em;
+  }
+
+  .shelf__item {
+    float: left;
+    width: 33.333333%;
+  }
+
+  // NON-NORMATIVE
+  .icon-player_play {
+    &:before {
+      border-radius: 92px;
+      background-color: black;
+      color: white;
+      font-size: 2.6em;
+      height: 71px;
+      line-height: 2.1;
+      left: 50%;
+      margin-left: -36px;
+      opacity: 0.5;
+      padding-left: 5px;
+      position: absolute;
+      text-align: center;
+      top: 14%;
+      width: 71px;
+    }
+
+    &:hover:before {
+      opacity: 0.8;
+    }
+
+    &:active:before {
+      opacity: 1;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Network
+//------------------------------------------------------------------------------
+.shelf--network {
+  //----- Block -----------------------------------------
+  .shelf__lining {
+    margin-bottom: 1em;
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2 {
+  }
+
+  .shelf__list {
+  }
+
+  //list of sources
+  .shelf__list--sources {
+    background-image: url('/images/landing/device.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: conain;
+    background-size: contain;
+    height: 23em;
+    margin-bottom: 5em;
+
+    .shelf__item {
+      float: left;
+      width: 14.2857%;
+    }
+  }
+
+  .shelf__image {
+  }
+}
+
+//------------------------------------------------------------------------------
+//  About
+//------------------------------------------------------------------------------
+.shelf--about {
+  background-color: #444;
+  background-image: url('/images/landing/team.jpg');
+  background-position: top center;
+  background-repeat: repeat-x;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+
+  //----- Block -----------------------------------------
+  .shelf__lining {
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2 {
+  }
+
+  .shelf__block {
+    margin: 1.5em auto;
+    max-width: 630px;
+  }
+  .shelf__block--cta {
+    font-size: 1.7em;
+  }
+
+  .shelf__list {
+  }
+
+  .shelf__link {
+    color: $button-color;
+  }
+
+  .shelf__item {
+    float: left;
+    width: 14.2857%;
+
+    div {
+      background-color: red;
+      height: 100px;
+    }
+  }
+
+  //  NON-NORMATIVE
+
+  .icon-mark {
+    &:before {
+      color: rgb(255, 255, 51);
+      display: block;
+      font-size: 3em;
+      left: 0;
+      margin: 1.1em 0.5em;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  Footer
+//------------------------------------------------------------------------------
+.shelf--footer {
+  background-color: #fff;
+
+  //----- Block -----------------------------------------
+  .shelf__lining {
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    max-width: none;
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  //----- Elements -----------------------------------------
+  .shelf__h2 {
+  }
+
+  .shelf__list--inline {
+    & > li {
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .shelf__list--footer {
+    float: left;
+  }
+
+  .shelf__list--social {
+    float: right;
+    padding-top: 0.5em;
+  }
+
+  .shelf__item {
+  }
+
+  .shelf__link {
+    font-weight: bold;
+    display: block;
+    padding: 1em;
+  }
+
+  // NON-NORMATIVE
+  .fb_edge_widget_with_comment {
+    margin-right: 1em;
+  }
+}
+//------------------------------------------------------------------------------
+//  MediaQueries
+//------------------------------------------------------------------------------
+
+//  - BREAKPOINTS ARE NOT MANDATORY
+//  - BREAKPOINTS ARE BASED ON NEEDS OF THE CONTENT
+//  - BREAKPOINTS SHOULD NEVER ACCOMODATE SPECIFIC DEVICES
+@media screen and (max-width: 1050px) { //Based on shelf--footer content
+  .shelf--footer {
+    .shelf__list--inline {
+      display: block;
+      float: none;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) { //Based on shelf--community content
+  .shelf__item {
+    float: none;
+  }
+
+  .shelf--community {
+    .shelf__item {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) { //Based on shelf--community content
+  .shelf--community {
+    .shelf__item {
+      width: auto;
+    }
+  }
+}
+
+//----- Non-normative Elements -----------------------------------------
+.frame--shelf {
+  font-size: 1.3em;
+  font-family: $font-family;
+  font-weight: normal;
+
+  .media_module {
+    margin: 1em;
+  }
+
+  .shelf__link {
+    &:active {
+      .frame-body-wrapper {
+        box-shadow: 0 0 2px 0 black;
+      }
+    }
+
+    &,
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
 
     &:hover {
-      &:after {
-        content: "We spared no expense!";
-        display: block;
-        font-size:  0.475em;
-        line-height: 6;
+      .frame-body-wrapper {
+        background-color: #fff;
+        box-shadow: 0 0 2px 0 $shelby-blue;
+      }
+
+      .xuser-data {
+        text-decoration: underline;
+      }
+    }
+
+    .xuser-data {
+      color: $text;
+      font-family: $font-family;
+      font-weight: bold;
+      margin-bottom: 1em;
+
+      span {
+        font-weight: normal;
+        font-size: 0.9em;
+        opacity: 0.5;
       }
     }
   }
 }
 
-
-
-/********************************************************
- * _banner
- ********************************************************/
-.landing_shelf--banner {
-  background-image: url('/images/landing/invite_landing.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  background-size: cover;
-  border-top-color: #333;
-  color: $button-color;
-  text-align: center;
-
-  .landing_shelf__lining {
-    margin: 7.5em auto 9em;
-    max-width: 600px;
-  }
-
-  .landing_shelf__h1,
-  .landing_shelf__h2 {
-    text-shadow: 0 0 20px black,
-                 0 0 10px black;
-  }
-
-
-  .landing_shelf__h1 {
-    margin-bottom: 0.5em;
-  }
-
-  .landing_shelf__h2 {
-    font-weight: 500;
-  }
-
-  //banner form
-  .form_module {
-    font-size: 1.8em;
-  }
-
-  .form_input {
-  }
-
-  .form_submit {
-    margin: 1px;
-    padding: 0.7em 2em 0.7em;
-  }
-
-  .media_image {
-    overflow: visibile;
-  }
-}
-
-
-.landing-banner {
-  text-align: center;
-}
-
-.landing-banner-lining {
-  max-width: none;
-  width: auto;
-}
-
-.landing-banner-header {
-  margin-top: 1em;
-}
-
-.landing-banner-figure {
-  padding: 0 1em;
-  max-width: 870px;
-  width: 100%;
-}
-
-/********************************************************
- * _sign_me_up
- ********************************************************/
-.form_module_horz--signmeup-form {
-  ////////////////////////////////////////////////////////////////////////////
-  //  breaking rules.
-  //  experiment with nesting.
-  //  isolating .landing-signmeup-form by compounding the class
-  //  thus binding it to the form_module
-  ////////////////////////////////////////////////////////////////////////////
-  font-size: 1.6em;
-  margin: 1.2em;
-  text-align: center;
-
-  .form_label {
-    font-size: 1.5em;
-    line-height: 1.8;
-    vertical-align: top;
-  }
-
-  .form_input {
-    font-size: 1em;
-    padding: .8em .5em;
-    width: 40%;
-
-    &:focus {
-      outline: 0;
-    }
-  }
-
-  .form_submit {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-}
-
-/********************************************************
- * _sign_me_up
- ********************************************************/
-.landing-shelf--signmeup {
-  .landing-shelf__lining {
-    min-height: 87px;
-  }
-}
-
-.landing-signmeup-submit {
-  font-size: .825em;
-  margin:1px 0 0;
-  vertical-align: top;
-}
-
-/********************************************************
- * _call_to_action
- ********************************************************/
- $cta-height: 300px;
-
-.landing-cta {
-  text-align: center;
-  font-size: 1.3em;
-  height: $cta-height;
-}
-
-.landing-cta-header {
-  margin: 1.2em;
-}
-
-.cta-icon {
-  display: block;
-  height: 50px;
-}
-////////////////////////////////////////////////////////////////////////////
-//  landing-shelf__lining.half.landing-cta-genius
-////////////////////////////////////////////////////////////////////////////
-.landing-cta-genius {
-  height: inherit;
-
-  .appstore-button {
-    display: inline-block;
-    font-size: .9em;
-    float: none;
-  }
-}
-
-.icon-genius {
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  landing-shelf__lining.half.landing-cta-explore
-////////////////////////////////////////////////////////////////////////////
-.landing-cta-explore {
-  background-image: url("/images/landing/banner.png");
-  background-position: left top;
-  background-repeat: no-repeat;
-  height: inherit;
-}
-
-/********************************************************
- * _direct_email_share - Share Shelf
- ********************************************************/
-
-/********************************************************
- * _genius_email_share - Share Shelf
- ********************************************************/
-
-/********************************************************
- * _rolling_share - Share Shelf
- ********************************************************/
-.landing-shelf--rolling-share {
-  .landing-shelf__content {
-    padding-top: 0;
-  }
-
-  .share-context {
-    font-size: 1.4em;
-  }
-
-  .user-nickname {
-    font-weight: bold;
-  }
-}
-
-
-/********************************************************
- * _genius_ios_ad - Primary Shelf
- ********************************************************/
-
-.landing-shelf--genius {
-  .landing-shelf__lining {
-    background: url('/images/landing/iphone.png') no-repeat right bottom transparent;
-    padding: 70px 0 30px;
-  }
-
-  .landing-shelf__h2 {
-    width: 400px;
-  }
-
-  .genius-logo {
-    margin-top: -9px;
-  }
-}
-
-.landing-feature-header,
-.landing-appstore-header {
-  clear: both;
-  font-family: $font-family-display;
-  font-size: 1.3em;
-  font-weight: 300;
-  margin: 10px 0;
-}
-////////////////////////////////////////////////////////////////////////////
-//  list of press sources
-////////////////////////////////////////////////////////////////////////////
-.landing-feature-header {
-  margin-top: 30px;
-}
-
-.landing-feature-list {
-
-}
-
-.landing-feature-item {
-  display: inline;
-}
-
-.landing-feature-link {
-  display: inherit;
-  margin-right: 1.5em;
-}
-
-.landing-feature-techcrunch {
-  img {
-    width: 50px;
-  }
-}
-
-.landing-feature-guardian {
-  img {
-    margin-top: 4px;
-  }
-}
-
-/********************************************************
- * _video_graph_blog_post - Substitute Shelf
- ********************************************************/
-.landing-shelf-video-graph-blog {
-  .landing-shelf__lining {
-    background: url('/images/landing/graph.png') no-repeat 498px 55px transparent;
-    padding: 70px 0 30px;
-  }
-}
-
-/********************************************************
- * _private_beta - Primary Shelf
- ********************************************************/
-
-.landing-shelf--private {
-  position: relative;
-
-  .landing-shelf__lining {
-    padding: 40px 0 50px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .landing-shelf__content {
-    width: 400px;
-  }
-
-  .landing-shelf__h2 {
-    width: 400px;
-  }
-
-  .browser-image {
-    background: url('/images/landing/browser.png') no-repeat left 20px transparent;
-    bottom: 0;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    width: 50%;
-  }
-}
-
-.landing-form {
-
-}
-
-.landing-form-label {
-  display: block;
-  font-family: $font-family-display;
-  font-size: 1.5em;
-  font-weight: 300;
-  line-height: 2;
-}
-
-.landing-form-input {
-  @include roundies(left);
-  @include transition-property('border');
-  @include transition-duration(0.25s);
-  @include transition-timing-function(ease-in);
-
-  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
-  font-size: 2em;
-  height: 45px;
-  padding: .5em;
-
-  &:focus {
-    border: 1px solid black;
-    outline: none;
-  }
-}
-
-.landing-form-submit {
-  @include gradient-primer(adjust-lightness($landing-page-shelf-background, 5%));
-  @include roundies(right);
-
-  border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
-  border-left: none;
-  display: inline-block;
-  font-family: $font-family-display;
-  font-size: 1.3em;
-  font-weight: 400;
-  height: 45px;
-  padding: 1.1em 1em 1.2em;
-  vertical-align: bottom;
-
-  &:hover {
-    @include gradient-primer(adjust-lightness($landing-page-shelf-background, 10%));
-  }
-
-  &:active {
-    @include gradient-primer(adjust-lightness($landing-page-shelf-background, -5%));
-  }
-}
-
-/********************************************************
- * Footer
- ********************************************************/
-.landing-footer {
-  @include gradient-primer($landing-page-footer-background);
-}
-
-.landing-footer-lining {
-  max-width: $landing-page-width;
-  margin: 0 auto;
-  padding: 0 1em 50px;
-}
-
-.landing-footer .list_module {
-  padding: 0;
-}
-
-.landing-footer-lists > li {
-  float: left;
-  padding-top: 30px;
-  width: (100%/6);
-
-  &.secondary {
-    float: right;
-    width: auto;
-    //TODO: TEMPORARY HACK
-    overflow: hidden;
-  }
-}
-
-.landing-footer-content-header, .landing-footer-content-list li {
-  color: $landing-page-footer-font-color;
-  font-size: 1.3em;
-  font-family: $font-family-display;
-  font-weight: 300;
-  line-height: 1.8;
-}
-
-.landing-footer-content-header {
-  margin-bottom: 15px;
-}
-
-.landing-footer-content-list > li, .landing-footer-content-list a {
-  color: $landing-page-footer-font-color;
-  font-weight: 100;
-}
-
-.landing-footer-content-list a {
-  @include hover-link();
-}
-
-/********************************************************
- * Social Media
- ********************************************************/
-
-.fb_edge_widget_with_comment {
-  margin-bottom: 2px;
-}
-
-@media all and (max-width: 720px) {
-  .landing-shelf--signmeup {
-    font-size: .8em;
-  }
-
-  .form_module_horz--signmeup-form {
-    .form_label {
-      display: block;
-    }
-  }
-
-  .landing-shelf {
-    padding: 0;
-  }
-
-  .landing-shelf__lining {
-    border-left: none;
-    border-right: none;
-
-    &.half {
-      float: none;
-      width: auto;
-    }
-  }
-
-  .landing-cta {
-    height: auto;
-  }
-
-  .landing-cta-genius {
-    border-bottom: 1px solid $inset;
-  }
-
-  .landing-cta-explore {
-    border-top: 1px solid $outset;
-  }
-}
