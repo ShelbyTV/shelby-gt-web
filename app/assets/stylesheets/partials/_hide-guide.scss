@@ -31,6 +31,15 @@
    // bottom: 0;
   }
 
+  .videoplayer-nav__btn--fullscreen {
+    .icon-player_fullscreen_enable {
+      display: none;
+    }
+
+    .icon-player_fullscreen_disable {
+      display: block;
+    }
+  }
   // .videoplayer-tools {
   //   max-width: 900px;
   // }

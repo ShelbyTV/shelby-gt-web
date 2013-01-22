@@ -2,7 +2,7 @@
 // User Inactivity Overrides, should be nested or compounded.
 //------------------------------------------------------------------------------
 .user-inactive{
-  .shelby-header, 
+  .shelby-header,
   .main-layout .guide-wrapper {
     opacity: .4;
   }
@@ -10,17 +10,17 @@
   .persistent_video_info {
     opacity: 0.4;
   }
-  
+
   .hide-guide .persistent_video_info {
     opacity: 0.0;
   }
 
-  .guide-toggle.hide, 
+  .guide-toggle.hide,
   .guide-toggle.hide:hover {
     @include transition-delay(0s);
-      
+
     width: 112px;
-    
+
     .copy {
       @include opacity(1.0);
       @include transition-delay(.2s);
@@ -35,8 +35,7 @@
 
   //elements in the videoplayer and videoplayer navigational buttons
   .videoplayer-nav__btn,
-  .video-player-fullscreen,
-  .videoplayer-tools__wrapper {
+  .video_controls__wrapper {
     opacity: 0;
   }
 

@@ -81,6 +81,11 @@ body {
 .shelf__lining {
   margin: 0 auto;
   max-width: $landing-page-width;
+
+  //NON-Normative
+  .form_input {
+    height: 2.4em;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -155,6 +160,32 @@ body {
 //  Modifiers
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+//  Invite
+//------------------------------------------------------------------------------
+.shelf--error {
+  color: $shelby-red;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+
+  //----- Block -----------------------------------------
+  .shelf__lining {
+  }
+
+  //----- Elements --------------------------------------
+  .shelf__block {
+
+  }
+
+  //----- Modifiers --------------------------------------
+  .shelf__block--error {}
+
+  .shelf__block--noaccess {}
+
+  .shelf__block--invalid-invite {}
+}
 
 //------------------------------------------------------------------------------
 //  Invite
@@ -375,8 +406,6 @@ body {
     background-image: url('/images/landing/device.png');
     background-position: center center;
     background-repeat: no-repeat;
-    -webkit-background-size: conain;
-    background-size: contain;
     height: 23em;
     margin-bottom: 5em;
 
@@ -415,9 +444,6 @@ body {
     margin: 1.5em auto;
     max-width: 630px;
   }
-  .shelf__block--cta {
-    font-size: 1.7em;
-  }
 
   .shelf__list {
   }
@@ -429,22 +455,17 @@ body {
   .shelf__item {
     float: left;
     width: 14.2857%;
-
-    div {
-      background-color: red;
-      height: 100px;
-    }
   }
 
   //  NON-NORMATIVE
 
   .icon-mark {
     &:before {
-      color: rgb(255, 255, 51);
+      color: #6cbc45;
       display: block;
       font-size: 3em;
       left: 0;
-      margin: 1.1em 0.5em;
+      margin: 0.6em 0.5em;
       position: absolute;
       top: 0;
     }
@@ -514,6 +535,13 @@ body {
     .shelf__list--inline {
       display: block;
       float: none;
+    }
+  }
+
+  .shelf--network {
+    .shelf__list--sources {
+      -webkit-background-size: contain;
+      background-size: contain;
     }
   }
 }
