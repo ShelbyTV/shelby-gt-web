@@ -256,10 +256,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      this.$(".videoplayer-nav__button--fullscreen").removeClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      this.$(".videoplayer-nav__button--fullscreen").addClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },

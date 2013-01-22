@@ -48,20 +48,20 @@
 .video_controls__button--play {
   &.video_controls__button--pause {
     .icon-player_play {
-      display: inline;
+      display: none;
     }
 
     .icon-player_pause {
-      display: none;
+      display: inline;
     }
   }
 
   .icon-player_play {
-    display: none;
+    display: inline;
   }
 
   .icon-player_pause {
-    display: inline;
+    display: none;
   }
 }
 
