@@ -1,8 +1,6 @@
 .shelby-header {
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%));
-
   border-bottom: 1px solid $header-outline;
-
   //NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
   left: 0;
   position: absolute;

@@ -238,7 +238,7 @@ body {
   //----- Block -----------------------------------------
   .shelf__lining {
     color: $button-color;
-    padding: 4em 0 5em;
+    padding: 7em 0 9em;
     text-align: center;
   }
 
@@ -347,27 +347,6 @@ body {
 
   .shelf__image {
   }
-
-  //non-normative
-  .shelby_logo {
-    background-image: url('/images/landing/tv.png');
-    background-repeat: no-repeat;
-    background-position: center top;
-    text-align: center;
-
-    &:before,
-    &:after {
-      font-size: 10em;
-    }
-
-    &:before {
-    }
-
-    &:after {
-      color: $text;
-    }
-  }
-
 }
 
 //------------------------------------------------------------------------------
@@ -394,18 +373,7 @@ body {
   .shelf__block {
     margin: 1.5em auto;
     max-width: 630px;
-
-    &:before {
-      color: rgb(255, 255, 51);
-      display: block;
-      font-size: 3em;
-      left: 0;
-      margin: 1.1em 0.5em;
-      position: absolute;
-      top: 0;
-    }
   }
-
   .shelf__block--cta {
     font-size: 1.7em;
   }
@@ -424,6 +392,20 @@ body {
     div {
       background-color: red;
       height: 100px;
+    }
+  }
+
+  //  NON-NORMATIVE
+
+  .icon-mark {
+    &:before {
+      color: rgb(255, 255, 51);
+      display: block;
+      font-size: 3em;
+      left: 0;
+      margin: 1.1em 0.5em;
+      position: absolute;
+      top: 0;
     }
   }
 }
