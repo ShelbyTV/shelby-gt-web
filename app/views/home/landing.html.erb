@@ -97,27 +97,27 @@
       <section class="shelf shelf--error">
         <div class="shelf__lining">
           <% if @access_error %>
-            <p class="gate-signin-noaccess js-signin-error">
+            <p class="shelf__block shelf__block--noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>
               <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
             </p>
           <% end %>
 
           <% if @invite_error %>
-            <p class="gate-signin-invalid-invite js-signin-error">
+            <p class="shelf__block shelf__block--invalid-invite js-signin-error">
               Sorry, that invite is no longer valid.  Please <a href="mailto:contact+invite@shelby.tv">contact us</a> if you have questions.
             </p>
           <% end %>
 
           <% if @auth_failure %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
               <br/>Please try again.
             </p>
           <% end %>
 
           <% if (flash[:error] == "401") %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               Session expired, please log in again!
             </p>
           <% end %>
