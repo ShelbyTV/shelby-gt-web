@@ -5,15 +5,15 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
-    "click .js-videoplayer-roll"       : "_requestFrameRollView",
-    "click .js-videoplayer-playback"   : "_togglePlayback",
-    "click .js-videoplayer-mute"       : "_toggleMute",
-    "click .js-videoplayer-hd.hd-on"   : "_hdOff",
-    "click .js-videoplayer-hd.hd-off"  : "_hdOn",
-    "click .js-videoplayer-progress"   : "_onScrubTrackClick",
-    "click .js-videoplayer-fullscreen" : "_toggleFullscreen",
-    "click .js-videoplayer-next"       : "_nextVideo",
-    "click .js-videoplayer-prev"       : "_prevVideo"
+    "click .js-videoplayer-roll"                              : "_requestFrameRollView",
+    "click .js-videoplayer-playback"                          : "_togglePlayback",
+    "click .js-videoplayer-mute"                              : "_toggleMute",
+    "click .js-videoplayer-hd.video_controls__button--hd-on"  : "_hdOff",
+    "click .js-videoplayer-hd.video_controls__button--hd-off" : "_hdOn",
+    "click .js-videoplayer-progress"                          : "_onScrubTrackClick",
+    "click .js-videoplayer-fullscreen"                        : "_toggleFullscreen",
+    "click .js-videoplayer-next"                              : "_nextVideo",
+    "click .js-videoplayer-prev"                              : "_prevVideo"
   },
 
   _currentDuration: 0,
@@ -50,13 +50,13 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     }
 
     var self = this;
-    this.$('.videoplayer-progress__scrubber').draggable({
+    this.$('.video_progress__scrubber').draggable({
       axis: 'x',
       containment: 'parent',
       start: function(event, ui){ self._onScrubberDragStart(event, ui); },
       stop:  function(event, ui){ self._onScrubberDragStop(event, ui); }
     });
-    
+
     //make sure guide icon is in correct state initially
     this._guideVisibilityChange('guideShown', this._userDesires.get('guideShown'));
   },
@@ -110,11 +110,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
         this.$el.removeClass('js-playing').addClass('js-paused');
-        this.$('.video-player-play').removeClass('pause');
+        this.$('.video_controls__button--play').removeClass('video_controls__button--pause');
         break;
       case libs.shelbyGT.PlaybackStatus.playing:
         this.$el.removeClass('js-paused').addClass('js-playing');
-        this.$('.video-player-play').addClass('pause');
+        this.$('.video_controls__button--play').addClass('video_controls__button--pause');
         // special case: if the explore view is showing and we switch to playing, we don't actually want to
         //  play behind the obscuring explore view, so immediately pause
         //  case where this definitely happens: ESPN Ooyala switching from buffering to playing states
@@ -131,20 +131,20 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _onCurrentTimeChange: function(attr, curTime){
     var pct = (curTime / this._currentDuration) * 100;
     if( this._shouldUpdateScrubHandle ){
-      this.$('.videoplayer-progress__scrubber').css('left',pct+"%");
+      this.$('.video_progress__scrubber').css('left',pct+"%");
     }
 
     var curTimeH = parseInt(curTime / (60*60), 10 ) % 60,
         curTimeM = parseInt(curTime / 60, 10 ) % 60,
         curTimeS = parseInt(curTime % 60, 10);
 
-    this.$('.videoplayer-progress__elapsed').width(pct+"%");
+    this.$('.video_progress__elapsed').width(pct+"%");
     this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
   },
 
   _onBufferTimeChange: function(attr, bufferTime){
     var pct = (bufferTime / this._currentDuration) * 100;
-    this.$('.videoplayer-progress__load').width(pct+"%");
+    this.$('.video_progress__load').width(pct+"%");
   },
 
   _onDurationChange: function(attr, val){
@@ -158,7 +158,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _onMutedChange: function(attr, muted){
-    this.$('.js-videoplayer-mute').toggleClass('muted', muted);
+    this.$('.js-videoplayer-mute').toggleClass('video_controls__button--muted', muted);
   },
 
   _onVolumeChange: function(attr, volPct){
@@ -168,9 +168,9 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _onHdVideoChange: function(attr, hd){
     if(hd){
-      this.$('.video-player-quality').addClass('hd-on').removeClass('hd-off');
+      this.$('.video_controls__button--quality').addClass('video_controls__button--hd-on').removeClass('video_controls__button--hd-off');
     } else {
-      this.$('.video-player-quality').removeClass('hd-on').addClass('hd-off');
+      this.$('.video_controls__button--quality').removeClass('video_controls__button--hd-on').addClass('video_controls__button--hd-off');
     }
   },
 
@@ -256,10 +256,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _guideVisibilityChange: function(attr, guideShown){
     if( guideShown ){
-      this.$(".video-player-fullscreen").removeClass("cancel");
+      this.$(".videoplayer-nav__button--fullscreen").removeClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').removeClass("hide-guide");
     } else {
-      this.$(".video-player-fullscreen").addClass("cancel");
+      this.$(".videoplayer-nav__button--fullscreen").addClass("cancel");
       $('.js-main-layout, .js-main-layout .js-guide').addClass("hide-guide");
     }
   },

@@ -369,13 +369,13 @@ button {
   font-style: normal;
 }
 
-.icon--queue,
-.icon--roll {
+.icon-queue,
+.icon-roll {
   background-color: transparent;
   padding-left: 1.3em;
 }
 
-.icon--queue {
+.icon-queue {
   &:before {
     content: "Queue";
     font-family: "Ubuntu", Trebuchet MS, sans-serif;
@@ -383,10 +383,10 @@ button {
   }
 }
 
-.icon--roll {
+.icon-roll {
 }
 
-.icon--cancel {
+.icon-cancel {
   background-image: url('/images/assets/cancel.svg');
   background-repeat: no-repeat;
   background-position: center center;
