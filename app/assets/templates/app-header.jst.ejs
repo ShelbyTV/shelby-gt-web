@@ -1,7 +1,7 @@
-  <button class="shelby-logo shelby-logo-no-link js-home <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'shelby-logo-no-link js-home' %>">
+  <button class="button_primer shelby-logo <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'visuallydisabled js-home' %>">
     <% if (shelby.config.environment != "staging") { %>
-      <h1 class="shelby-title icon_primer">
-        <span class="ir">Shelby.tv</span>
+      <h1 class="shelby_logo">
+		    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
       </h1>
     <% } else { %>
       <h1 class="shelby-title-staging">
