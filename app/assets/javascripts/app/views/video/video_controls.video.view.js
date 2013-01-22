@@ -239,13 +239,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   _nextVideo: function(){
-    console.log('next');
     this._userDesires.set('changeVideo', 1);
     this._userDesires.unset('changeVideo');
   },
 
   _prevVideo: function(){
-    console.log('prev');
     this._userDesires.set('changeVideo', -1);
     this._userDesires.unset('changeVideo');
   },
