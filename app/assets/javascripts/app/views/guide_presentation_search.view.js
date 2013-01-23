@@ -6,7 +6,7 @@
   */
 
   libs.shelbyGT.GuidePresentationSearchView = Support.CompositeView.extend({
-    
+
     events : {
       "submit #js-nav-search-form"     : "_onSearchSubmit",
       "focus .js-nav-search-form-text" : "_onFocusTextInput",
