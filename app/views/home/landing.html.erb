@@ -94,7 +94,7 @@
     </header>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="shelf shelf--error">
+      <section class="shelf shelf--error clearfix">
         <div class="shelf__lining">
           <% if @access_error %>
             <p class="shelf__block shelf__block--noaccess js-signin-error">

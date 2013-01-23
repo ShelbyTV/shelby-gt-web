@@ -74,7 +74,7 @@ _(shelby).extend({
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
-      clearTimeout(notificationTimer);
+      clearTimeout(this._notificationTimer);
     });
   },
 
