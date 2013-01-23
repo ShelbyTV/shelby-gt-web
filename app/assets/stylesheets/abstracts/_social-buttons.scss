@@ -1,0 +1,52 @@
+/*
+  Usually used for "Login with Twitter" kind of stuff.
+
+  TWITTER, FACEBOOK:
+
+<a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+   class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+   data-ga_action="Login with Twitter"
+   data-popup_height="700"
+   data-popup_width="600">
+  <i class="icon-social_twitter"></i>
+  Twitter
+</a>
+
+<a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+   class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+   data-ga_action="Login with Facebook"
+   data-popup_height="650"
+   data-popup_width="1000">
+  <i class="icon-social_facebook"></i>
+  Facebook
+</a>
+
+*/
+.button_primer--twitter,
+.button_primer--facebook {
+  min-width: 125px;
+  margin: 0;
+  padding: 0.8em 0.4em 0.8em 1.5em;
+  position: relative;
+  text-align: center;
+
+  i {
+    font-size: 1.5em;
+    left: 0;
+    margin: 0.35em;
+    position: absolute;
+    top: 0;
+  }
+}
+
+
+.button_primer--twitter {
+  & > i {
+    margin-left: 0.4em;
+  }
+}
+
+.button_primer--facebok {
+  & > i {
+  }
+}

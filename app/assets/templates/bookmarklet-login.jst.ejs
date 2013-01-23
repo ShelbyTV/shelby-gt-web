@@ -36,18 +36,22 @@
       Log in with
     </h4>
 
-    <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
-      href="<%= twitterDomain %>" location="<%= twitterDomain %>" popup-width="600" popup-height="700">
-      <i class="button_icon_left icon_share_twitter_on icon">
-        Twitter
-      </i>
+    <a href="<%= twitterDomain %>"
+       class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+       data-ga_action="Login with Twitter"
+       data-popup_height="700"
+       data-popup_width="600">
+      <i class="icon-social_twitter"></i>
+      Twitter
     </a>
 
-    <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook"
-      href="<%= facebookDomain %>" location="<%=facebookDomain %>" popup-width="1000" popup-height="650">
-      <i class="button_icon_left icon_share_facebook_on icon">
-        Facebook
-      </i>
+    <a href="<%= facebookDomain %>"
+       class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+       data-ga_action="Login with Facebook"
+       data-popup_height="650"
+       data-popup_width="1000">
+      <i class="icon-social_facebook"></i>
+      Facebook
     </a>
   </div>
 </div><!-- eo guide-overlay-body.rolling-body -->

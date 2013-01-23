@@ -65,16 +65,22 @@
         </h3>
 
         <fieldset class="form_fieldset form_fieldset--social-login">
-          <a class="button_primer button_twitter-blue faux_button shelf__button twitter auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" popup-width="600" popup-height="700">
-            <i class="icon_primer icon--social_twitter">
-            </i>
-              Twitter
+          <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+             class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+             data-ga_action="Login with Twitter"
+             data-popup_height="700"
+             data-popup_width="600">
+            <i class="icon-social_twitter"></i>
+            Twitter
           </a>
 
-          <a class="button_primer button_facebook-blue faux_button shelf__button facebook auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" popup-width="1000" popup-height="650">
-            <i class="icon_primer icon--social_facebook">
-            </i>
-              Facebook
+          <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+             class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+             data-ga_action="Login with Facebook"
+             data-popup_height="650"
+             data-popup_width="1000">
+            <i class="icon-social_facebook"></i>
+            Facebook
           </a>
         </fieldset>
       </form>
