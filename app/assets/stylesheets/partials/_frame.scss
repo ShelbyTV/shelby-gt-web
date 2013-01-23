@@ -222,9 +222,9 @@ $active-list-item: $shelby-blue;
   //specifying each button individually,
   //not sure if applying this vertical align to the .icon_primer
   //is a good idea yet.
-  .icon--videocard_roll,
-  .icon--videocard_queue,
-  .icon--email {
+  .icon-videocard_roll,
+  .icon-videocard_queue,
+  .icon-email {
     vertical-align: -0.1em;
   }
 }
@@ -282,7 +282,7 @@ $active-list-item: $shelby-blue;
     &:not(.remove-frame) {
     }
 
-    .icon--videocard_queue {
+    .icon-videocard_queue {
       display: none;
     }
   }
@@ -306,7 +306,7 @@ $active-list-item: $shelby-blue;
 }
 
 .command-remove {
-  .icon--cancel {
+  .icon-cancel {
     vertical-align: -0.1em;
   }
 }
