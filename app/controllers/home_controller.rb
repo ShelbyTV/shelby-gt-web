@@ -106,6 +106,18 @@ class HomeController < ApplicationController
     #   @search_landing_banner_appear = ab_test :search_landing_banner_appear
     # end
 
+    # A/B test
+    @search_promote_repeat = ab_test :search_promote_repeat
+    @heart_queue_comparison = ab_test :heart_queue_comparison
+    render '/home/app'
+  end
+
+  ##
+  # Handles channel view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /channel/:name
+  #
+  def channel
     render '/home/app'
   end
 

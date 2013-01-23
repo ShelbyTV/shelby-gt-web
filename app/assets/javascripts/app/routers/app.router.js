@@ -1,11 +1,11 @@
 libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   routes : {
-    "static/*url" : "initStatic",
+    "static/*url"   : "initStatic",
     "embedded/*url" : "initEmbedded",
-    "chat/*url" : "initDiscussionRoll",
-    "chat"      : "initDiscussionRoll",
-    "*url" : "initDynamic"
+    "chat/*url"     : "initDiscussionRoll",
+    "chat"          : "initDiscussionRoll",
+    "*url"          : "initDynamic"
   },
 
   //---
@@ -50,6 +50,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
+    shelby.models.multiplexedVideo = new libs.shelbyGT.MultiplexedVideoModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -60,6 +61,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
+    shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.MultiplexedVideoCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();

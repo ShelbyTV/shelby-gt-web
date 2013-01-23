@@ -1,8 +1,8 @@
 @mixin button-sizing($use: generic) {
     @if $use == frame-command {
-    padding-top: .8em;
+    padding-bottom: .8em;
     padding-right: 1em;
-    padding-bottom: .75em;
+    padding-top: .8em;
     padding-left: 1em;
   } @elseif $use == explore-rolls {
     padding-top: .8em;

@@ -84,6 +84,9 @@
 
 .form_input {
 //  margin-bottom: 1em;
+  &:-moz-placeholder {
+    color: lighten($text,20%);
+  }
 }
 
 .form_textarea {

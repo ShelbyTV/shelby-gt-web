@@ -89,13 +89,13 @@
           status === libs.shelbyGT.PlaybackStatus.error.videoNotEmbeddable ){
         if(this._currentFrame.get('video')){
           this._currentFrame.get('video').markUnplayable();
-          shelby.success("Skipped unplayable video: "+this._currentFrame.get('video').get('title'));
+          shelby.alert({message: "Skipped unplayable video: "+this._currentFrame.get('video').get('title')});
         }
         Backbone.Events.trigger('playback:next');
       }
       // just skip on generic player errors
       if( status === libs.shelbyGT.PlaybackStatus.error.generic ){
-        shelby.success("Skipped video due to playback problems.");
+        shelby.alert({message: "Skipped video due to playback problems."});
         Backbone.Events.trigger('playback:next');
       }
     },

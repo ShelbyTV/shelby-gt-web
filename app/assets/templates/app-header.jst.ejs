@@ -1,7 +1,7 @@
-  <button class="shelby-logo shelby-logo-no-link js-home <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'shelby-logo-no-link js-home' %>">
+  <button class="button_primer shelby-logo <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'visuallydisabled js-home' %>">
     <% if (shelby.config.environment != "staging") { %>
-      <h1 class="shelby-title ir">
-        Shelby.tv
+      <h1 class="shelby_logo">
+		    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
       </h1>
     <% } else { %>
       <h1 class="shelby-title-staging">
@@ -13,14 +13,14 @@
   <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
     <!-- content filled in by GuidePresentationSelectorView -->
   </nav>
-	
+
 	<% if (shelby.models.guide.get('displayFBGeniusRoll')) { %>
-		<!-- 
+		<!--
 		<section id="facebook-genius-login">
 			<div class="fb-login-button" data-show-faces="false" data-width="250" data-max-rows="1"></div>
 		</section>
 		-->
-		
+
 		<section id="fb-header-search">
 			<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
 				<input name="search" type="text" id="js-email-input" class="roll-page-form-input" placeholder="what will you find next?" /><!--
@@ -29,7 +29,7 @@
 			</form>
 			<script>
 				$(function(){
-					
+
 					$('.genius-search-form').submit(function() {
 
 				    $('#js-genius-search-submit').prop('disabled', true);
@@ -58,7 +58,7 @@
 						$('#js-genius-search-submit').attr('value','');
 
 						var search = $('.genius-search-form').find('input').val();
-						
+
 						var params = {
 					    "q" : search,
 				    	"max-results" : "50",
@@ -77,7 +77,7 @@
 									      urls.push(l.href);
 											}
 								  	}
-								  });	
+								  });
 								}
 							});
 
@@ -99,12 +99,12 @@
 									}
 									else{ alert("something went wrong."); }
 								}
-							}); 
+							});
 				    };
 
 
 				    // Call ytQuery.query, passing params and your callback
-				    ytQuery.query(params, cb); 
+				    ytQuery.query(params, cb);
 
 					  return false;
 					});

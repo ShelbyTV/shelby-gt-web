@@ -34,6 +34,10 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.bind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.bind('change:guideShown', this._guideVisibilityChange, this);
 
+    // FOR SHELBY CHANNELS
+    this._userDesires.bind('change:changeChannel', this._changeChannel, this);
+
+
     _.each(this._playerViews, function(playerView){
       playerView.playerState.bind("change:playerLoaded", this._preventPlayerBootstrapGlitch, this);
     }, this);
@@ -49,7 +53,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     this._userDesires.unbind('change:currentTimePct', this._seekByPct, this);
     this._userDesires.unbind('change:mute', this._changeMute, this);
     this._userDesires.unbind('change:volume', this._changeVolume, this);
-    this._userDesires.unvind('change:hdVideo', this._changeVideoQuality, this);
+    this._userDesires.unbind('change:hdVideo', this._changeVideoQuality, this);
     this._userDesires.unbind('change:guideShown', this._guideVisibilityChange, this);
 
     _.each(this._playerViews, function(playerView){
@@ -64,7 +68,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     //find next player view
     var video = frame.get('video');
     var view = this._playerViews[video.get('provider_name')];
-    
+
     // set up fb comment area (if fb sdk is loaded)
     if (typeof FB !== "undefined"){
       $('#fb-comments-holder').empty();
@@ -94,6 +98,13 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
       //when not bootstrapping/autplaying, this is the only way video is set & played
       this._curView.playVideo(video);
     }
+
+    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
+      // HACK to show Video Footer whenever a video changes.
+      shelby.userInactivity.disableUserActivityDetection();
+      setTimeout(function(){ shelby.userInactivity.enableUserActivityDetection(); }, 6000);
+    }
+
 
   },
 
@@ -155,6 +166,25 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
   _preventPlayerBootstrapGlitch: function(playerState, val){
     if( this._curView !== playerState.get('playerView') ){
       playerState.get('playerView').leave();
+    }
+  },
+
+  _changeChannel : function(attr, dir) {
+    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) { return; }
+    var _currCh = shelby.models.multiplexedVideo.get('channel');
+    var _chArray = _.keys(shelby.config.multiplexedVideoRolls);
+
+    var _currChIndex = _.indexOf(_chArray, _currCh);
+    var _nextChIndex;
+    if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }
+    else if (_currChIndex == (_chArray.length - 1)  && dir == 1){ _nextChIndex = 0; }
+    else { _nextChIndex = _currChIndex + dir; }
+
+    var _nextCh = _chArray[_nextChIndex];
+
+    if (_nextCh != null || typeof _nextCh != "undefined"){
+      shelby.models.multiplexedVideo.set('channel', _nextCh);
+      shelby.router.navigate("channel/"+_nextCh, {trigger: true, replace: true});
     }
   }
 });

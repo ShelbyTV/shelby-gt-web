@@ -1,17 +1,17 @@
-<section class="landing-shelf landing-shelf--invite clearfix">
-  <div class="landing-shelf__lining clearfix">
-
-    <div class="landing-shelf__lining landing-shelf__welcome half--right">
-      <h2 class="landing-shelf__h1">
+<div class="shelf shelf--invite clearfix">
+  <div class="shelf__lining">
+    <div class="shelf__head">
+      <h3 class="shelf__h2--invite">
         Welcome
-      </h2>
-      <h3 class="landing-shelf__h2">
-        We saved you a seat
       </h3>
-    </div>
 
-    <div class="half">
-      <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module landing-shelf_form--invite js-invite-form">
+      <h4 class="shelf__h3">
+        We saved you a seat
+      </h4>
+    </div><!-- eo shelf__head -->
+
+    <div class="shelf__body">
+      <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module js-invite-form">
         <fieldset class="form_fieldset js-invite-name">
           <label class="form_label" for="signup-name">
             Full Name <span class="form_error js-invite-name-error"></span>
@@ -65,21 +65,22 @@
         </h3>
 
         <fieldset class="form_fieldset form_fieldset--social-login">
-          <a class="button_primer button_twitter-blue faux_button landing-shelf__button--twitter auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" popup-width="600" popup-height="700">
-            <i class="button_icon_left icon_social_twitter icon">
-              Twitter
+          <a class="button_primer button_twitter-blue faux_button shelf__button twitter auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter?invite_id=#{@invite_id}" %>" popup-width="600" popup-height="700">
+            <i class="icon_primer icon--social_twitter">
             </i>
+              Twitter
           </a>
 
-          <a class="button_primer button_facebook-blue faux_button landing-shelf__button--facebook auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" popup-width="1000" popup-height="650">
-            <i class="button_icon_left icon_social_facebook icon">
-              Facebook
+          <a class="button_primer button_facebook-blue faux_button shelf__button facebook auth-popup" href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook?invite_id=#{@invite_id}" %>" popup-width="1000" popup-height="650">
+            <i class="icon_primer icon--social_facebook">
             </i>
+              Facebook
           </a>
         </fieldset>
       </form>
-    </div><!-- eo half -->
-</section>
+    </div><!-- eo shelf__body -->
+  </div><!-- eo shelf__lining -->
+</div><!-- eo shelf -->
 
 <script>
   $(document).ready(function(){

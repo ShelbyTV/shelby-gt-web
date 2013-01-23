@@ -1,4 +1,7 @@
 <form id="js-video-search-form" class="video-search-form">
+  <% if (shelby.abTests.searchPromoteRepeat && shelby.abTests.searchPromoteRepeat == "do") { %>
+    <label for="js-video-search-query-input" class="form_label">While you're watching, search for more video:</label>
+  <% } %>
   <input type="submit" class="button_primer button_blue media_image--rev video-search-button js-video-search-button" value="Search" />
   <div class="media_body">
     <div>

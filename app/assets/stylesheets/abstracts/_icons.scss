@@ -12,6 +12,7 @@ $icons:
   chevron_white
   comment_reply
   email
+  heart
   iphone
   iphone_dark
   landing_explore
@@ -78,4 +79,14 @@ $icons:
 
 .button_icon_right {
   background-position: center right;
+}
+
+.icon {
+  vertical-align: -0.1em;
+
+  &:before {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

@@ -35,39 +35,42 @@
       <div class="menu_module frame-menu">
         <ul class="menu_list frame-command-menu frame-list" role="menubar">
           <li class="menu_item" role="menuitem">
+            <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+              <i class="icon-videocard_roll">
+              </i>
+                Roll…
+            </button>
+          </li>
+
+          <!-- ab test -->
+          <li class="menu_item" role="menuitem">
             <button class="button_primer frame-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
-              <i class="button_icon_left icon_videocard_queue icon">
-                <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                    (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
-                %>
+              <i class="icon-<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %>">
               </i>
+
+              <span class="label">
+                <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'heart') { %>
+                  Like
+                <% } else { %>
+                  <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                      (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
+                  %>
+                <% } %>
+              </span>
             </button>
           </li>
-          <li class="menu_item" role="menuitem">
-            <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="button_icon_left icon_videocard_roll icon">
-                Roll…
-              </i>
-            </button>
-          </li>
+          <!-- /ab test -->
 
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
               <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> frame-command command-remove js-remove-frame">
-                <i class="button_icon icon_cancel_on icon">&nbsp;</i>
+                <i class="icon-cancel"></i>
               </button>
             </li>
           <% } %>
 
-          <li class="menu_item right" role="menuitem">
-            <button class="button_primer button_default frame-command command-share js-share-frame">
-              <i class="button_icon_left icon icon_email">
-                Email…
-              </i>
-            </button>
-          </li>
         </ul>
       </div><!-- eo .frame-menu -->
 
@@ -87,6 +90,7 @@
                                                                             frameIsOnWatchLaterRoll);
     %>
       <footer class="media_module frame-footer clearfix">
+
         <% if (!frameViewed) { %>
            <% if (clickableCreator) { %>
              <a href="#" onclick="return false;" class="js-creator-personal-roll">
@@ -127,32 +131,6 @@
               <% } %>
             </p>
 
-            <% if (!user.isAnonymous()) { %>
-              <div class="frame-subsection">
-                <ul class="menu_list">
-                  <li class="menu_item" role="menuitem">
-                    <div class="frame-command-wrapper button_icon_left icon_shortlink icon">
-                      <button class="frame-command command-link js-copy-link">
-                        Get Shortlink
-                      </button>
-                    </div>
-                    <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
-                  </li>
-                  <% if (frame.get('creator') == user) { %>
-                    <li class="menu_item" style="float: left;margin-left: 150px;">
-                      <div class="view-counts">
-                        <%=  frame.get('view_count') %>f/<%=  video.get('view_count') %>v
-                      </div>
-                    </li>
-                  <% } %>
-                  <li class="menu_item right" role="menuitem">
-                    <a href="#" onclick="return false;" class="button_icon_left icon_videocard_comment frame-comment-link js-video-activity-toggle js-video-activity-toggle-comment js-track-event" data-ga_category="Frame" data-ga_action="Click show conversation" data-ga_label="<%= userNickname %>">
-                      <%= (messages.length <= 1) ? 'Leave a comment' : 'Comments (' + messages.length + ')' %>
-                    </a>
-                  </li>
-                </ul><!-- eo .menu_list -->
-              </div>
-            <% } %>
           <% } else { %>
             <a href="#" onclick="return false;" class="frame-header js-frame-activate">
               <h1 class="frame-title" title="<%= videoTitle %>">
@@ -166,29 +144,40 @@
           <% } %>
         </div><!-- eo .media_body -->
 
-        <% if (user.isAnonymous()) { %>
+        <% if (!user.isAnonymous() && !frameViewed) { %>
+          <hr class="hr--double" />
+          <div class="frame-subsection clearfix">
+            <ul class="menu_list">
+              <li class="menu_item" role="menuitem">
+                <div class="frame-command-wrapper icon-shortlink">
+                  <button class="frame-command command-link js-copy-link">
+                    Get Shortlink
+                  </button>
+                </div>
+                <!-- This button is changed into an input element by frame_group.view.js#_copyFrameLink -->
+              </li>
+
+              <li class="menu_item" role="menuitem">
+                <div class="frame-command-wrapper icon-email">
+                  <button class="frame-command command-share js-share-frame">
+                    Email…
+                  </button>
+                </div>
+              </li>
+
+              <li class="menu_item" style="float: left;margin-left: 150px;">
+                <div class="view-counts">
+                  <%=  frame.get('view_count') %>f/<%=  video.get('view_count') %>v
+                </div>
+              </li>
+
+            </ul><!-- eo .menu_list -->
+          </div>
+        <% } %>
+
+        <% if (user.isAnonymous() && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
           <ul class="menu_list menu_list--share-frame">
-            <li class="menu_item">
-              <a href="https://twitter.com/intent/tweet?text=Watch%20this%20video&url=<%= framePermalink %>">
-                <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
-                  <i class="button_icon_left icon_share_twitter icon">
-                    Tweet
-                  </i>
-                </button>
-              </a>
-            </li>
-            <li class="menu_item">
-              <button class="button_primer button_default menu_button--facebook js-share-to-facebook js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>">
-                <i class="button_icon_left icon_share_facebook icon">
-                  Share
-                </i>
-              </button>
-            </li>
-            <li class="menu_item menu_item--right">
-              <button class="button_primer button_default menu_button--comment js-video-activity-toggle-comment js-video-activity-toggle js-track-event" data-ga_category="Frame" data-ga_action="Click comment on frame as anonymous user" data-ga_label="<%= frameHasRoll ? frame.get('roll').get('title') : 'Search' %>" data-disqus-identifier="<%= frame.id %>">
-								<a href="#disqus_thread" data-disqus-identifier="<%= frame.id %>" class="button_icon_left icon_videocard_comment icon">Leave a comment</a>
-							</button>
-            </li>
+            <%= SHELBYJST['frame-social-sharing']({isViaSearch: isViaSearch, framePermalink: framePermalink, frameHasRoll: frameHasRoll, frame: frame}) %>
           </ul>
         <% } %>
       </footer><!-- eo .media_module-->
@@ -202,6 +191,10 @@
           </a>
         </div>
       </footer><!-- eo .media_module-->
+    <% } else if (isViaSearch && userIsAnonymous) { %>
+      <footer class="media_module frame-footer clearfix">
+        <%= SHELBYJST['frame-social-sharing']({isViaSearch: isViaSearch, framePermalink: framePermalink, frameHasRoll: frameHasRoll, frame: frame}) %>
+      </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
   <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>

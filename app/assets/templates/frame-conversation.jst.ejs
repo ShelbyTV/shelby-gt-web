@@ -5,21 +5,20 @@
 <% var frameTitle = frame.get('video').get('title') || '' %>
 <% var thumbnailText = (creator ? "posted by " + creator.get('nickname') : "video thumbnail") %>
 
-<div class="overlay_header guide-overlay-head conversation-head">
-  <div class="guide-overlay-head-lining">
-    <button class="button_primer button_gray-medium guide-overlay-cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= user.get('nickname') %>">
-      <i class="button_icon_left icon_cancel icon">
-        Cancel
-      </i>
-    </button>
 
-    <h2 class="guide-overlay-header">
-      Add a new comment
-    </h2>
-  </div><!-- eo guide-overlay-head-lining -->
+<div class="guide-overlay__head guide-overlay__head--conversation">
+  <h2 class="guide-overlay__title--inline">
+    Add a new comment within Shelby.tv
+  </h2>
+
+  <button class="button_primer button_gray-medium guide-overlay__button--cancel js-cancel js-track-event" data-ga_category="Conversation" data-ga_action="Click cancel" data-ga_label="<%= creatorNickname %>">
+    <i class="icon-cancel"></i>
+
+    <span class="visuallyhidden">Cancel</span>
+  </button>
 </div><!-- eo guide-overlay-head.conversation-head -->
 
-<div class="overlay_body guide-overlay-body conversation-body js-conversation-body">
+<div class="guide-overlay__body guide-overlay__body--conversation js-conversation-body">
   <form class="form_module new-comment">
     <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle || '' %>
@@ -38,7 +37,7 @@
 	      %>
 			<% } %>
     </div><!-- eo frame-body-wrapper -->
-		<% if (shelby.config.hostName) { %>
+		<% if (shelby.config.hostName && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
 			<div id="disqus_thread"></div>
 			<%= SHELBYJST['disqus']({frame: frame}) %>
 		<% } %>

@@ -51,13 +51,28 @@ class SeovideoController < ApplicationController
           http_referer = 'http://' + http_referer
         end
       end
-      referer_uri = Addressable::URI.parse(http_referer)
+
+      begin
+        referer_uri = Addressable::URI.parse(http_referer)
+      rescue Exception => e
+        #don't want to blow up on uri parsing errors, but log them so we have some way of tracking them
+        Rails.logger.info "SEO Page Parse Referer URI Failed (ignoring): #{e}"
+        return
+      end
+
       if referer_host = referer_uri.host
-        if referer_host.start_with?('google.') || referer_host.include?('.google.')
+        if referer_host.start_with?('http://google.') || referer_host.start_with?('google.') || referer_host.include?('.google.')
           if query_values = referer_uri.query_values
-            @search_query = query_values["q"]
-            # change any characters that can't be encoded in UTF-8 into ?'s
-            @search_query.encode!('utf-8', 'binary', :invalid => :replace, :undef => :replace, :replace => '?')
+            # its a google url so grab the search query
+            if @search_query = query_values["q"]
+              # check if the google url specified an encoding for the search query and if so decode it accordingly
+              if search_query_encoding = query_values["ie"]
+                if encoding_obj = Encoding.list.find {|enc| enc.name.casecmp(search_query_encoding) == 0 }
+                  # re-encode the search query as UTF-8, respecting the input encoding that was passed to google
+                  @search_query.encode!('utf-8', encoding_obj, :invalid => :replace, :undef => :replace, :replace => '?')
+                end
+              end
+            end
           end
         end
       end
