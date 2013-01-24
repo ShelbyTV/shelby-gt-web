@@ -102,6 +102,9 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
           self._latestFrame.get('conversation').set(respModel);
         }
         
+        //keep the roll in sync, since it doesn't come back
+        self.model.set({content_updated_at: new Date()});
+        
         setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
       error:function(){

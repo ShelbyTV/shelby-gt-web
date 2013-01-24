@@ -54,6 +54,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     this._scrollTopWhenHidden = $("body").scrollTop();
     $(".js-discussion").addClass('discussions-manager-shown');
     $('.discussion__content--manager').show();
+    $("body").scrollTop(0);
   },
   
   discussionRollsManagerViewShouldDisappear: function(){

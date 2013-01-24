@@ -1,6 +1,8 @@
 /*
  * Displays the list of recipients (via children views) whom this discussion roll is with.
  * Does not display the viewing user b/c it's shown as a TO: field.
+ *
+ * Also displays the time this discussion was last updated.
  */
 libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
 
@@ -17,11 +19,13 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
   
   initialize : function(){
     this.model.on('change:discussion_roll_participants', this.render, this);
+    this.model.on('change:content_updated_at', this.render, this);
     this.render();
   },
   
   _cleanup : function(){
-    this.model.on('change:discussion_roll_participants', this.render, this);
+    this.model.off('change:discussion_roll_participants', this.render);
+    this.model.off('change:content_updated_at', this.render);
   },
   
   template : function(obj){
@@ -36,7 +40,7 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
       document.title = "Shelby Mail with ";
     }
     
-    this.$el.html(this.template());
+    this.$el.html(this.template({discussionRoll: this.model}));
     
     if(this.model.get('discussion_roll_participants')){
       var i = 0;

@@ -9,3 +9,9 @@
 	<span class="more">more...</span>
 	<span class="less">[less]</span>
 </a>
+
+<% if(discussionRoll.has("content_updated_at")){ %>
+  <span class="discussion__item--content-updated-at">
+    <%= libs.shelbyGT.viewHelpers.app.summaryDate(new Date(discussionRoll.get("content_updated_at"))) %>
+  </span>
+<% } %>
