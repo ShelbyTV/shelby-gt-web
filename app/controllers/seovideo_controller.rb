@@ -36,7 +36,6 @@ class SeovideoController < ApplicationController
     setMetaDescription()
 
     # A/B tests
-    @seo_ad_videocard = ab_test :seo_ad_videocard
     @seo_search_messaging = ab_test :seo_search_messaging
 
     # if the referrer is google search, parse the search query out of its url
