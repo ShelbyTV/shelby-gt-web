@@ -20,14 +20,13 @@
     var shelbyTrackingCategory = "<%= shelby_tracking_category_for(@share_type) %>";
   </script>
 </head>
-
-<body class="shelby shelby-landing">
-  <div class="shelby-wrapper">
-    <header class="shelby-header clearfix" role="banner">
-      <button class="shelby-logo js-home">
+<body class="shelby shelby--landing">
+  <div class="shelby__wrapper">
+    <header class="shelby__header clearfix" role="banner">
+      <button class="button_primer shelby-logo js-home">
         <% if Rails.env != "staging" %>
-          <h1 class="shelby-title icon_primer">
-            <span class="ir">Shelby.tv</span>
+          <h1 class="shelby_logo">
+            <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
           </h1>
         <% else %>
           <h1 class="shelby-title-staging">
@@ -56,7 +55,7 @@
 
                   <fieldset class="form_fieldset">
                     <label for="password" class="form_label">Password</label>
-                  <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+                    <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
                   </fieldset>
 
                   <fieldset class="form_fieldset">
@@ -72,21 +71,24 @@
                     Log in with
                   </h4>
 
-                  <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
-                    href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
-                    <i class="button_icon_left icon_share_twitter_on icon">
-                      Twitter
-                    </i>
+                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+                     class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+                     data-ga_action="Login with Twitter"
+                     data-popup_height="700"
+                     data-popup_width="600">
+                    <i class="icon-social_twitter"></i>
+                    Twitter
                   </a>
 
-                  <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook"
-                    href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" popup-width="1000" popup-height="650">
-                    <i class="button_icon_left icon_share_facebook_on icon">
-                      Facebook
-                    </i>
+                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+                     class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+                     data-ga_action="Login with Facebook"
+                     data-popup_height="650"
+                     data-popup_width="1000">
+                    <i class="icon-social_facebook"></i>
+                    Facebook
                   </a>
                 </div>
-
               </div>
             </section>
 
@@ -96,30 +98,30 @@
     </header>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="landing-shelf landing-shelf__error">
-        <div class="landing-shelf__lining">
+      <section class="shelf shelf--error clearfix">
+        <div class="shelf__lining">
           <% if @access_error %>
-            <p class="gate-signin-noaccess js-signin-error">
+            <p class="shelf__block shelf__block--noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>
               <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
             </p>
           <% end %>
 
           <% if @invite_error %>
-            <p class="gate-signin-invalid-invite js-signin-error">
+            <p class="shelf__block shelf__block--invalid-invite js-signin-error">
               Sorry, that invite is no longer valid.  Please <a href="mailto:contact+invite@shelby.tv">contact us</a> if you have questions.
             </p>
           <% end %>
 
           <% if @auth_failure %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
               <br/>Please try again.
             </p>
           <% end %>
 
           <% if (flash[:error] == "401") %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               Session expired, please log in again!
             </p>
           <% end %>
@@ -128,67 +130,72 @@
     <% end %>
 
     <% #------------ Shelf Content --------------- %>
-    <% if @video %>
-      <% if @share_type == :genius %>     <%= render :partial => "/home/shelf/genius_email_share" %>
-      <% elsif @share_type == :email %>   <%= render :partial => "/home/shelf/direct_email_share" %>
-      <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
-			<% elsif @share_type == :fb_genius %>	<%= render :partial => "/home/shelf/fb_genius_share" %>
-      <% end %>
-    <% end %>
 
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
-    <% if (!@share_type or !@video) and !@invite_id %>
-      <%= render :partial => "/home/shelf/banner" %>
+    <% if (!@share_type) and !@invite_id %>
+      <%= render :partial => "/home/shelf/search" %>
+      <%= render :partial => "/home/shelf/community" %>
+      <%= render :partial => "/home/shelf/sign_up" %>
+      <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/about" %>
     <% end %>
 
-    <% if !@invite_id %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
-    <% end %>
     <% #------------ /Shelf Content --------------- %>
 
-    <footer class="landing-footer">
-      <div class="landing-footer-lining clearfix">
-        <ul class="landing-footer-lists list_module clearfix">
-          <li>
-            <h5 class="landing-footer-content-header">Shelby.tv</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="mailto:contact@shelby.tv">Contact</a></li>
-              <li>Made in NYC</li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Community</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/blog" target="_info">Blog</a></li>
-              <li><a href="http://shelbydev.tumblr.com/" target="_info">Dev Blog</a></li>
-              <li><a href="http://twitter.com/shelby" target="_info">Twitter</a></li>
-              <li><a href="http://facebook.com/shelbytv" target="_info">Facebook</a></li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Legal</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/privacy.html" target="_info">Privacy</a></li>
-              <li><a href="/tou.html" target="_info">Terms</a></li>
-            </ul>
-          </li>
+    <footer class="shelf shelf--footer clearfix">
+      <div class="shelf__lining clearfix">
+        <nav>
+          <ul class="shelf__list--inline shelf__list--footer clearfix">
+            <li>
+              <a href="http://shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Homepage" title="Home">
+                Shelby.tv
+              </a>
+            </li>
 
-          <li class="secondary">
-            <h5 class="landing-footer-content-header">Share the joy</h5>
-            <ul class="landing-footer-content-list secondary-landing-footer-content-list list_module">
-              <li>
-                <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
-              </li>
-              <li>
-                <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
-              </li>
-              <li>
-                <div class="g-plusone" data-href="http://shelby.tv"></div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            <li>
+              <a href="http://nytm.org/made" class="shelf__link js-track-event" data-ga_action="Click Made in NYC" title="Proudly Made in New York City">
+                Made in NYC
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv/blog" class="shelf__link js-track-event" data-ga_action="Click Blog" title="">
+                Blog
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv/blog/hiring" class="shelf__link js-track-event" data-ga_action="Click Hiring Page" title="Want to work with us?">
+                We're hiring!
+              </a>
+            </li>
+
+            <li>
+              <a href="tou.html" class="shelf__link js-track-event" data-ga_action="Click Terms" title="Legal …stuff">
+                Terms
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:feedback@shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Report Issue" title="Report a bug or just tell us what you think!">
+                Report an issue
+              </a>
+            </li>
+          </ul>
+
+         <ul class="shelf__list--inline shelf__list--social">
+            <li>
+              <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
+            </li>
+            <li>
+              <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
+            </li>
+            <li>
+              <div class="g-plusone" data-href="http://shelby.tv"></div>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   </div><!-- /shelby-wrapper -->

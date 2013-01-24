@@ -36,7 +36,7 @@
         <ul class="menu_list frame-command-menu frame-list" role="menubar">
           <li class="menu_item" role="menuitem">
             <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="icon_primer icon--videocard_roll">
+              <i class="icon-videocard_roll">
               </i>
                 Roll…
             </button>
@@ -47,7 +47,7 @@
             <button class="button_primer frame-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
                            <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
-              <i class="icon_primer icon--<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %>">
+              <i class="icon-<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %>">
               </i>
 
               <span class="label">
@@ -66,7 +66,7 @@
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
               <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> frame-command command-remove js-remove-frame">
-                <i class="icon_primer icon--cancel"></i>
+                <i class="icon-cancel"></i>
               </button>
             </li>
           <% } %>
@@ -148,7 +148,7 @@
           <div class="frame-subsection clearfix">
             <ul class="menu_list">
               <li class="menu_item" role="menuitem">
-                <div class="frame-command-wrapper icon_primer icon--shortlink">
+                <div class="frame-command-wrapper icon-shortlink">
                   <button class="frame-command command-link js-copy-link">
                     Get Shortlink
                   </button>
@@ -157,7 +157,7 @@
               </li>
 
               <li class="menu_item" role="menuitem">
-                <div class="frame-command-wrapper icon_primer icon--email">
+                <div class="frame-command-wrapper icon-email">
                   <button class="frame-command command-share js-share-frame">
                     Email…
                   </button>
