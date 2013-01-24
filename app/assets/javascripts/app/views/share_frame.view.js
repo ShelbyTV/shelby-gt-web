@@ -1,8 +1,7 @@
 /*
  * DiscusisonRoll creating/updating.
  *
- * If child view (FrameSharingRollChooserView) is shown and has a previous discusison roll chosen,
- * we post a new message to that roll.  Otherwise we create a new roll.
+ * Backend will intelligently continue previous conversation when all recipients match.
  */
 ( function(){
 
@@ -21,16 +20,6 @@
       messageCounter: false,
       shareButtonCopy: "Send"
     }),
-
-    render : function(){
-      libs.shelbyGT.ShareView.prototype.render.call(this);
-
-      //easily choose from previous discussion rolls
-      var discussionRollChooser = new libs.shelbyGT.FrameSharingRollChooserView({
-        input: this.$("#email-recipients")
-      });
-      this.renderChildInto(discussionRollChooser, this.$(".discussion-roll-chooser-wrapper"));
-    },
 
     shouldValidateEmail : function(){
       //only validate when email input is visible
