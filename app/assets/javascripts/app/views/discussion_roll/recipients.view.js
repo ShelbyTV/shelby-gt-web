@@ -42,8 +42,8 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
       var i = 0;
       
       this.model.get('discussion_roll_participants').forEach(function(p){ 
-        //show who this is TO (don't include the current viewer in that list)
-        if( self.options.viewer !== p ){
+        //show who this is TO (don't include the current viewer in that list unless they're the only participant)
+        if( self.options.viewer !== p || self.model.get('discussion_roll_participants').length == 1 ){
           self.appendChildInto(
             new libs.shelbyGT.DiscussionRollRecipientView({
                   model:p, 
