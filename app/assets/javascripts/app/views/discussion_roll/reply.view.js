@@ -61,33 +61,36 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     e.stopPropagation();
     e.preventDefault();
     
-    //video attachments
-    var videoUrls = new Array();
-    this.children.forEach(function(child){
-      videoUrls.push(child.options.url);
-    });
-    
     //error checking on input
     var msgInput = this.$el.find('.js-message-text'),
     text = msgInput.val();
-    if((typeof(text) !== "string" || text.length < 1) && videoUrls.length == 0){
+    if(typeof(text) !== "string" || text.length < 1){
       msgInput.addClass("error");
       return;
     } else {
       msgInput.removeClass("error");
     }
     
-    //post new message
-    var msg = new libs.shelbyGT.DiscussionRollMessageModel({
+    //post new message to server
+    this._syncNewMessage(text, null);
+  },
+  
+  _syncNewMessage: function(text, videoUrls){
+    if(!text && !videoUrls){ return; }
+    
+    var 
+    self = this,
+    msgInput = this.$el.find('.js-message-text'),
+    msg = new libs.shelbyGT.DiscussionRollMessageModel({
       message: text, 
       token: this.options.token, 
       discussion_roll_id: this.model.id,
       videos: videoUrls
     });
+    
     msg.save(null, {
       success:function(respModel, resp){
         msgInput.val('');
-        self._leaveChildren();
         // respModel may have an array of Frames, in which case we add them to self.model
         // otherwise it's a Conversation, which we just need to update in self.model
         if( respModel.get('frames') ){
@@ -146,18 +149,16 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
   },
   
   /*
-   * delegate method for SelectVideoAttachmentView
+   * delegate method for SelectVideoAttachmentView.
+   * Immediately causes the video to be posted to the conversation.
    * opts should = {
    *  url: the url to send to the api
    *  thumbnailUrl: - the url to a thumbnail to display
    *  }
    */
   addVideoAttachment: function(opts){
-    this.appendChildInto(
-      new libs.shelbyGT.DiscussionRollVideoAttachmentView({
-        thumbnailUrl: opts.thumbnailUrl,
-        url: opts.url
-      }), ".js-discussion-video-attachments");
+    if(!opts.url){ return; }
+    this._syncNewMessage(null, [opts.url]);
   }
   
 });

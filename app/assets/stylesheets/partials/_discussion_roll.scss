@@ -317,22 +317,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  Attach Video List
-////////////////////////////////////////////////////////////////////////////
-.discussion__list--attachment {
-  margin-right: 35px;
-}
-
-.discussion__item--attachment {
-  display: inline-block;
-  margin: 10px;
-  position: relative;
-}
-
-.discussion__item-thumbnail {
-  width: 85px;
-}
 
 ////////////////////////////////////////////////////////////////////////////
 //  Attachment UI buttons
@@ -351,15 +335,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .icon {
     display: none;
   }
-}
-
-.discussion__button--remove {
-  border-radius: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-  position: absolute;
-  right: -10px;
-  top: -7px;
 }
 
 
