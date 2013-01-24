@@ -32,6 +32,8 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
   },
 
   render: function(){
+    this.$el.removeAttr('hidden');
+
     if(this._currentRoll){
       this.$el.html(this.template({
         currentRoll: this._currentRoll,
