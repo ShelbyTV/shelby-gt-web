@@ -9,6 +9,14 @@
 		<%= frame.get('video').get('embed_url') %>
 	<% } %>
 </div>
+<div class="video-supplementary-info media_module">
+  <div class="video-supplementary-info__video-title discussion__h2"><%= frame.get('video').escape('title') %></div>
+  <div class="video-supplementary-info__by-line">
+    <span class="discussion__h4"><%= frame.get('creator').escape('nickname') %></span> 
+    <spanc class="discussion__timestamp"><%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %></span>
+  </div>
+  <!-- future lightweight actions would be posted here too (ie. who watched this?  who liked it?  who hated it?) -->
+</div>
 	
 <ol class="discussion__list discussion__list--messages js-discussion-roll-conversation">
 	<!-- messages filled in by different render so re-render doesn't destroy embed -->
