@@ -14,9 +14,20 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   _discussionRolls : null,
   
   initialize : function(){
-    var self = this;
+    this.model.on('change:content_updated_at', this._fetchRolls, this);
     
-    var rollsCollection = new libs.shelbyGT.RollsCollectionModel();
+    this._fetchRolls();
+  },
+  
+  _cleanup: function(){
+    this.model.off('change:content_updated_at', this._fetchRolls);
+  },
+  
+  _fetchRolls: function(){
+    var 
+    self = this,
+    rollsCollection = new libs.shelbyGT.RollsCollectionModel();
+    
     rollsCollection.fetch({
       url: shelby.config.apiRoot + '/discussion_roll',
       data: {token: this.options.token},

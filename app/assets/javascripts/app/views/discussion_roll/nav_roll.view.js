@@ -21,7 +21,9 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
     
     if( this.options.currentRoll && this.model.id===this.options.currentRoll.id ){
       // they're different models; we want to be in sync with the same one used by the convo view
+      this.options.currentRoll.set({content_updated_at: this.model.get('content_updated_at')});
       this.model = this.options.currentRoll;
+      
       //and mark ourselves as current
       this.$el.addClass("discussion__item--current-discussion-roll");
     }
