@@ -196,8 +196,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .recipients--shelby {
-  span {
-    opacity: .5; //sorta hacky.
+  /* never showing the supplementray-info for now */
+  span.supplementary-info {
+    display: none;
   }
 }
 

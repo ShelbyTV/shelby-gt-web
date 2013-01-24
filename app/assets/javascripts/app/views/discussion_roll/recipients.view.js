@@ -6,7 +6,7 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
 
   options : _.extend({}, Support.CompositeView.prototype.options, {
     //when we have more than overflowAt recipients, show a "more" link instead of the full list initially
-    overflowAt: 2,
+    overflowAt: 4,
     //the recipients for the current page will update the page title
     updatePageTitle: false,
   }),
