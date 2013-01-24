@@ -12,7 +12,7 @@
 <div class="video-supplementary-info media_module">
   <div class="video-supplementary-info__video-title discussion__h2"><%= frame.get('video').escape('title') %></div>
   <div class="video-supplementary-info__by-line">
-    <span class="discussion__h4"><%= frame.escape('creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %></span> 
+    <span class="discussion__h4"><%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %></span> 
     <spanc class="discussion__timestamp"><%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %></span>
   </div>
   <!-- future lightweight actions would be posted here too (ie. who watched this?  who liked it?  who hated it?) -->
