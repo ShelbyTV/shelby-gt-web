@@ -73,7 +73,6 @@
         val : -1,
         is_transient : true
       },
-      
       // (l)ink
       76 : {
         model : 'userDesires',
@@ -84,28 +83,28 @@
             $.ajax({
               url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
               dataType: 'json',
-              success: function(r){ shelby.alert(r.result.short_link); }
+              success: function(r){ shelby.alert({message: r.result.short_link}); }
             });
           }
         },
         is_transient : true
       }
     },
-    
+
     initialize : function(channels){
       if (typeof channels !== 'undefined' && channels === true) {
         // hack to know global state, mainly for remote-control-bindings
         window.SHELBY_CHANNEL_HOME = true;
         this._setupChannelCoverKeyboardBindings();
-        this._disableSpacebarScrolling();        
+        this._disableSpacebarScrolling();
       }
       else {
         window.SHELBY_CHANNEL_HOME = false;
         this._setupKeyboardBindings();
-        this._disableSpacebarScrolling();        
+        this._disableSpacebarScrolling();
       }
     },
-  
+
     _disableSpacebarScrolling : function(){
       var self = this;
       $(document).on('keydown', function(e){
@@ -124,7 +123,7 @@
     _onTypeableBlur : function(){
       shelby.models.userDesires.set('typing', false);
     },
-    
+
     _setupKeyboardBindings : function(){
       var self = this;
       $(document).on('keyup', function(event){
@@ -139,7 +138,7 @@
         return false;
       });
     },
-    
+
     _setupChannelCoverKeyboardBindings : function() {
       var self = this;
       $(document).on('keyup', function(event){
@@ -148,28 +147,28 @@
         var channel;
         if(!actionData) return false;
         // UP
-        if (actionData.attr == "changeChannel" && actionData.val == 1){ 
+        if (actionData.attr == "changeChannel" && actionData.val == 1){
           channel = "entertain";
         }
         // DOWN
-        else if (actionData.attr == "changeChannel" && actionData.val == -1){ 
-          channel = "teach";          
+        else if (actionData.attr == "changeChannel" && actionData.val == -1){
+          channel = "teach";
         }
         // RIGHT
-        else if (actionData.attr == "changeVideo" && actionData.val == 1){ 
+        else if (actionData.attr == "changeVideo" && actionData.val == 1){
           channel = "laugh";
         }
         // LEFT
-        else if (actionData.attr == "changeVideo" && actionData.val == -1){ 
+        else if (actionData.attr == "changeVideo" && actionData.val == -1){
           channel = "inspire";
         }
-        
+
         $(document).unbind('keyup');
       	shelby.views.keyboardControls = new libs.shelbyGT.KeyboardControlsView(false);
         shelby.router.navigate("channel/"+channel, {trigger: true, replace: true});
         $('body .channel-background').remove();
         return false;
-      });      
+      });
     },
 
     _getActionData : function(keyCode){

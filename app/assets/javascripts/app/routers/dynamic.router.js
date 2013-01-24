@@ -3,7 +3,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   routes : {
     "send-invite"                          : "openInviteDisplayDashboard",
     "isolated-roll/:rollId"                : "displayIsolatedRoll",
-    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRollwithFrame",
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
     "roll/:rollId/:title"                  : "displayRoll",
@@ -112,7 +112,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    
+
     var query = params && params.query;
     if (query) {
       shelby.models.videoSearch.set('query', params.query);
@@ -124,7 +124,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.videoSearch.trigger('search');
     }
   },
-  
+
   displayChannel : function(channel){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('shelby-channels');
@@ -139,7 +139,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    
+
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.channel
     });
@@ -149,31 +149,57 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.userDesires.set('guideShown',false)
   },
 
-  displayIsolatedRoll : function(rollId, frameId, params){
+  displayIsolatedRoll : function(rollId, params){
+    this._prepIsolatedRoll({rollId: rollId, params: params});
+  },
+
+  displayIsolatedRollwithFrame : function(rollId, frameId, params) {
+    this._prepIsolatedRoll({rollId: rollId, frameId: frameId, params: params});
+  },
+
+  _prepIsolatedRoll : function(opts) {
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
 
-    // Adjust *what* is displayed
-    var options = {updateRollTitle:false};
-    
+    // save current referrer host name in shelby config
+    if (opts.params && opts.params.src){ shelby.config.hostName = opts.params.src; }
+
     shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
       new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
-    if (frameId){
-      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
-    } else {
-      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
-    }
+    var options = {updateRollTitle:false};
+    var topLevelViewsOptions = {isIsolatedRoll : true, hostName: shelby.config.hostName};
 
+    if (opts.frameId){
+      this.displayFrameInRoll(opts.rollId, opts.frameId, opts.params, options, topLevelViewsOptions);
+    }
+    else {
+      this.displayRoll(opts.rollId, null, null, options, topLevelViewsOptions);
+    }
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
-    
+
     //hide the guide initially for iso rolls
     if(shelby.routeHistory.length === 0){
       shelby.models.userDesires.set({guideShown: false});
     }
   },
-  
+
+  displayChannel : function(channel){
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+
+    shelby.models.multiplexedVideo.set('channel', channel);
+
+    shelby.models.guide.set({
+      displayState : libs.shelbyGT.DisplayState.channel
+    });
+
+    // TODO move this into handler where change is bound
+    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
+  },
+
   displayFacebookGeniusRoll : function(rollId, frameId, params){
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('facebook-genius');
@@ -185,7 +211,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
     }
-    
+
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -202,7 +228,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-  
+
   displayUserPersonalRoll : function(userId, params){
     var self = this;
     var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
@@ -342,9 +368,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (watchLaterRoll) {
       this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), null, {
         updateRollTitle: false
+      }, {
+        isIsolatedRoll : false
       });
     } else {
-      shelby.alert("Sorry, you don't have a saves roll.");
+      shelby.alert({message: "Could not roll view to your Queue"});
       this.navigate('', {trigger:true, replace:true});
     }
   },
@@ -464,7 +492,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       } else {
         // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-        shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
+        shelby.alert({message: "Sorry, the video you were looking for doesn't exist in this roll."});
         this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
     } else {
@@ -495,7 +523,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         shelby.models.guide.set('activeFrameModel', entry.get('frame'));
       } else {
         // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-        shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+        shelby.alert({message: "Sorry, the entry you were looking for doesn't exist in your stream."});
         this.navigate("/", {trigger:true, replace:true});
       }
     }
@@ -510,6 +538,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }).value();
 
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
+    shelby.models.guide.set('hostName', options.hostName);
     shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
@@ -525,6 +554,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         new libs.shelbyGT.GuideOverlayManagerView({model:shelby.models.guideOverlay, el:'.js-action-layout'});
     shelby.views.guideSpinner =  shelby.views.guideSpinner ||
         new libs.shelbyGT.SpinnerView({el:'#guide', size:'large-light'});
+    shelby.views.playlistManager = shelby.views.playlistManager ||
+        new libs.shelbyGT.PlaylistManagerView({
+          guideModel : shelby.models.guide,
+          model : shelby.models.playlistManager
+        });
 
     if(!Browser.isIos()){
       //irrelevant views for iOS devices.
@@ -559,14 +593,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
-    this._setupTopLevelViews(topLevelViewsOptions);
-
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
+
+    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
+      isIsolatedRoll: false
+    }).value();
+
+    this._setupTopLevelViews(topLevelViewsOptions);
 
     var rollModel;
     if (typeof(roll) === 'string') {
@@ -608,6 +646,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
+
+    // show dot-tv-welcome-message if on an isolated roll
+    if (topLevelViewsOptions.isIsolatedRoll){
+
+      shelby.views.dotTVWelcome = shelby.views.dotTVWelcome ||
+          new libs.shelbyGT.dotTVWelcome({ model : rollModel });
+    }
+
+
     var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});

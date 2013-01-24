@@ -1,4 +1,3 @@
-@import "base";
 //------------------------------------------------------------------------------
 //  frame currently playing styles
 //  nest styles inside of .active-list-item
@@ -23,20 +22,10 @@ $active-list-item: $shelby-blue;
 }
 
 //------------------------------------------------------------------------------
-//  Modernizr.touch
-//------------------------------------------------------------------------------
-// .touch {
-//   .frame-body-wrapper {
-//     box-shadow: none;
-//     border: 1px solid rgba(0,0,0,.2);
-//   }
-// }
-
-//------------------------------------------------------------------------------
 //  frame natural state
 //------------------------------------------------------------------------------
 .frame {
-  padding: 1em 0.5em 0.5em 0.5em;
+  padding: 0.8em;
 
   ////////////////////////////////////////////////////////////////////////////
   //  on HOVER, toggle:
@@ -45,7 +34,6 @@ $active-list-item: $shelby-blue;
   //  collapsed: indicationt that frame is openable.
   ////////////////////////////////////////////////////////////////////////////
   &:hover {
-    .frame-is-collapsed,
     .menu_module {
       display: block;
     }
@@ -103,6 +91,11 @@ $active-list-item: $shelby-blue;
       text-decoration: underline;
     }
   }
+
+  .hr--double {
+    border-top-color: #D9D4D4;
+    border-bottom-color: #FCFAFA;
+  }
 }
 
 .frame-subsection,
@@ -114,30 +107,13 @@ $active-list-item: $shelby-blue;
 
 .frame-subsection {
   .frame-command-wrapper {
-    margin: -2px 0 0;
-    position: absolute;
-    left: 0;
+    color: #777;
+    padding-right: 1em;
 
     &.icon {
       padding-left: 1.4em;
     }
   }
-}
-
-.frame-is-collapsed {
-  &:link,
-  &:visited {
-    text-decoration: none;
-  }
-
-  &:active,
-  &:hover {
-    text-decoration: underline;
-  }
-
-  display:none;
-  float: right;
-  opacity: .5;
 }
 
 .frame-comment-link {
@@ -151,6 +127,10 @@ $active-list-item: $shelby-blue;
   &:hover {
     text-decoration: underline;
   }
+
+  &:before {
+    vertical-align: -0.1em;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -159,6 +139,7 @@ $active-list-item: $shelby-blue;
 //------------------------------------------------------------------------------
 .xuser-data {
   @include ellipsis();
+
   color: adjust-lightness($text, 20%);
 }
 
@@ -175,6 +156,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xuser-message {
+  min-height: 0.8em;
 }
 
 .xuser-message-remainder {
@@ -232,10 +214,19 @@ $active-list-item: $shelby-blue;
 //  queue, roll, share, etc.
 ////////////////////////////////////////////////////////////////////////////
 .frame-command {
-  @include button-sizing;
+  @include button-sizing(frame-command);
 
   margin-left: 1em;
   margin-top: 1em;
+
+  //specifying each button individually,
+  //not sure if applying this vertical align to the .icon_primer
+  //is a good idea yet.
+  .icon-videocard_roll,
+  .icon-videocard_queue,
+  .icon-email {
+    vertical-align: -0.1em;
+  }
 }
     ////////////////////////////////////////////////////////////////////////////
     //  dropdown sublist:
@@ -268,6 +259,7 @@ $active-list-item: $shelby-blue;
       display: inline;
       font-size: 1.1em;
       height: 1.4em;
+      margin: -2px 0;
       padding: 0.3em;
       width: 115px;
       background: transparent;
@@ -283,19 +275,15 @@ $active-list-item: $shelby-blue;
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
+  padding-left: 0.7em;
   width: 71px;
-
-  .icon {
-    padding-left: $button-padding-left;
-  }
 
   &.queued {
     &:not(.remove-frame) {
     }
 
-    .icon {
-      background-image: none;
-      padding: 0;
+    .icon-videocard_queue {
+      display: none;
     }
   }
 }
@@ -318,14 +306,13 @@ $active-list-item: $shelby-blue;
 }
 
 .command-remove {
-  .icon {
-    display: inline-block;
-    height: 1em;
-    width: 1em;
+  .icon-cancel {
+    vertical-align: -0.1em;
   }
 }
 
-.command-link {
+.command-link,
+.command-share {
   background: transparent;
   border: none;
   color: #666;
@@ -339,13 +326,14 @@ $active-list-item: $shelby-blue;
     text-decoration: underline;
   }
 }
+
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .frame-collapsed{})
 //------------------------------------------------------------------------------
 .frame-collapsed {
   opacity: 0.5;
-  padding: 0.5em;
+  padding: 0.8em;
 
   .frame-title {
     height: 40px;
@@ -443,7 +431,7 @@ $share-frame-half-gutter: 4px;
   .menu_item {
     float: left;
     padding-top: 1em;
-    width: auto;
+    width: 33%;
 
     &.menu_item--right {
       float: right;
@@ -462,6 +450,7 @@ $share-frame-half-gutter: 4px;
 
   .menu_button--twitter,
   .menu_button--facebook,
+  .menu_button--email,
   .menu_button--comment {
     padding: 0.6em 0.8em .6em 0.25em;
     width: 100%;
@@ -484,6 +473,12 @@ $share-frame-half-gutter: 4px;
     }
   }
 
+  .menu_button--email {
+    i {
+      padding: 0 0.3em;
+    }
+  }
+
   .menu_button--comment {
     padding-left: 0.9em;
 
@@ -499,44 +494,33 @@ $share-frame-half-gutter: 4px;
 
 }
 
-
-//------------------------------------------------------------------------------
-//  isolated roll
-//  (nest styles inside of .isolated-roll{})
-//------------------------------------------------------------------------------
-.isolated-roll {
-  .xuser-data {
-    display: none;
-  }
-  .conversation-message .xuser-data {
-    display: block;
-  }
-
-  .xuser-message {
-    margin: 0;
-    min-height: 2em;
-  }
-
-  .xuser-data-timestamp {
-    padding: 0 0 5px 10px;
-  }
-
-  /* adjust the avatar in the roll header */
-  .guide .xuser-avatar {
-    border-right: 1px solid $outset;
-    margin: 0 10px 0 0;
-  }
-
-  /* hide the avatar on the frame */
-  .frame .xuser-avatar {
-    display: none;
-  }
-}
-
 //------------------------------------------------------------------------------
 //  frame via search (not a "real" frame, really just a video)
 //  (nest styles inside of .via-search{})
 //------------------------------------------------------------------------------
 .via-search {
   .command-sublist { display: none; }
+
+  ul.menu_list--share-frame{
+    .menu_item {
+      padding-top: 0;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  FreshPlay "new" frames
+//------------------------------------------------------------------------------
+.frame.fresh-play-new {
+  overflow: hidden;
+}
+
+.frame.fresh-play-new .sash {
+  @include rotate(45deg);
+  @include sash-primer();
+
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
 }

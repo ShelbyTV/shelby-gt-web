@@ -5,6 +5,7 @@
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
+  var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
   var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
@@ -28,19 +29,12 @@
     _currentRollView : null,
 
     _videoSearchView : null,
-
-    _playingFrameGroupCollection : null,
-    _playingState : null,
-    _playingRollId : null,
-
-    _nowSkippingVideo : false,
+    _multiplexedVideoView : null,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.bind('reposition', this._onReposition, this);
-      shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
-      Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
       this._dashboardMasterCollection = new Backbone.Collection();
       if (shelby.models.dashboard) {
         this._dashboardMasterCollection.reset(shelby.models.dashboard.get('dashboard_entries').models);
@@ -51,13 +45,6 @@
       this.model.unbind('change', this._onGuideModelChange, this);
       this.model.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       this.model.unbind('reposition', this._onReposition, this);
-      shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
-      Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
-    },
-    
-    _setPlayingFrameGroupCollection : function(pfgc){
-      this._playingFrameGroupCollection = pfgc;
-      Backbone.Events.trigger("change:playingFrameGroupCollection", pfgc);
     },
 
     _onGuideModelChange : function(model){
@@ -121,19 +108,29 @@
           };
           break;
         case DisplayState.standardRoll :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : FreshPlayRollView,
+            model : this.model.get('currentRollModel'),
+            options : {
+              masterCollection : this._currentRollMasterCollection
+            },
+            spinner : true
+          };
+          break;
         case DisplayState.watchLaterRoll :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
-              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
+              collapseViewedFrameGroups : true,
               emptyIndicatorViewProto : currentDisplayState == DisplayState.watchLaterRoll ? QueueEmptyIndicatorView : null,
               fetchParams : {
                 include_children : true
               },
               firstFetchLimit : shelby.config.pageLoadSizes.roll,
-              limit : shelby.config.pageLoadSizes.roll + 1,
+              limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true
@@ -229,37 +226,37 @@
       switch (currentDisplayState) {
         case DisplayState.dashboard :
           this._dashboardView = this._listView;
-          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.dashboard) {
+          if (this.options.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.dashboard) {
             // while we were away from the dashboard, we relied on the last displayed state of the dashboard
             // to determine what frames to play
             // since we're displaying the dashboard again now, we need to play based on what is actually
             // displayed in the current dashboard view
-            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
+            this.options.playlistManager.set('playingFrameGroupCollection', this._dashboardView.frameGroupCollection);
           }
           break;
         case DisplayState.standardRoll :
         case DisplayState.watchLaterRoll :
           this._currentRollView = this._listView;
-          if (guideModel.get('playingState') == libs.shelbyGT.PlayingState.roll && this._playingRollId == this._currentRollView.model.id) {
+          if (this.options.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.roll && this.options.playlistManager.get('playingRollId') == this._currentRollView.model.id) {
             // while we were away from this roll, we relied on the last displayed state of the roll
             // to determine what frames to play
             // since we're displaying the roll again now, we need to play based on what is actually
             // displayed in the current roll view
-            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
+            this.options.playlistManager.set('playingFrameGroupCollection', this._currentRollView.frameGroupCollection);
           }
           break;
         case DisplayState.search :
           this._videoSearchView = this._listView;
           break;
         case DisplayState.channel :
-          this._videoSearchView = this._listView;
+          this._multiplexedVideoView = this._listView;
           break;
       }
 
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();
-      
+
       //remove any current guide overlay views
       shelby.models.guideOverlay.clearAllGuideOverlays();
 
@@ -306,53 +303,41 @@
 
     _onActiveFrameModelChange : function(guideModel, activeFrameModel){
       if (activeFrameModel) {
-        if (!this._nowSkippingVideo) {
+        if (!this.options.playlistManager.get('nowSkippingVideo')) {
           if (guideModel.get('displayState') == DisplayState.dashboard) {
-            this._setPlayingFrameGroupCollection(this._dashboardView.frameGroupCollection);
-            this._playingState = libs.shelbyGT.PlayingState.dashboard;
-            this._playingRollId = null;
+            this.options.playlistManager.set({
+              playingFrameGroupCollection : this._dashboardView.frameGroupCollection,
+              playingState : libs.shelbyGT.PlayingState.dashboard,
+              playingRollId : null
+            });
           } else if (guideModel.get('displayState') == DisplayState.search) {
-            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
-            this._playingState = libs.shelbyGT.PlayingState.search;
-            this._playingRollId = null;
+            this.options.playlistManager.set({
+              playingFrameGroupCollection : this._videoSearchView.frameGroupCollection,
+              playingState : libs.shelbyGT.PlayingState.search,
+              playingRollId : null
+            });
           } else if (guideModel.get('displayState') == DisplayState.channel) {
-            this._setPlayingFrameGroupCollection(this._videoSearchView.frameGroupCollection);
-            this._playingState = libs.shelbyGT.PlayingState.channel;
-            this._playingRollId = null;
+            this.options.playlistManager.set({
+              playingFrameGroupCollection : this._multiplexedVideoView.frameGroupCollection,
+              playingState : libs.shelbyGT.PlayingState.channel,
+              playingRollId : null
+            });
           } else {
             //we're playing some kind of roll
-            this._setPlayingFrameGroupCollection(this._currentRollView.frameGroupCollection);
-            this._playingState = libs.shelbyGT.PlayingState.roll;
-            this._playingRollId = activeFrameModel.get('roll').id;
+            this.options.playlistManager.set({
+              playingFrameGroupCollection : this._currentRollView.frameGroupCollection,
+              playingState : libs.shelbyGT.PlayingState.roll,
+              playingRollId : activeFrameModel.get('roll').id
+            });
           }
         }
       } else {
-        this._setPlayingFrameGroupCollection(null);
-        this._playingState = libs.shelbyGT.PlayingState.none;
-        this._playingRollId = null;
+        this.options.playlistManager.set({
+          playingFrameGroupCollection : null,
+          playingState : libs.shelbyGT.PlayingState.none,
+          playingRollId : null
+        });
       }
-    },
-
-    _onChangeVideo : function(userDesiresModel, videoChangeValue){
-      if (userDesiresModel.has('changeVideo')) {
-        this._skipVideo(videoChangeValue);
-      }
-    },
-
-    _onPlaybackNext : function(){
-      this._skipVideo(1);
-    },
-
-    // appropriately changes the next video (in dashboard or a roll)
-    _skipVideo : function(skip){
-
-      // if we can't find a playable frame in the direction we're looking
-      // we return to the beginning of the roll or stream
-      var nextFrame = this._playingFrameGroupCollection.getNextPlayableFrame(this.model.get('activeFrameModel'), skip, true);
-
-      this._nowSkippingVideo = true;
-      this.model.set({activeFrameModel: nextFrame});
-      this._nowSkippingVideo = false;
     }
 
   });

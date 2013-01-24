@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>shelby.tv | <%= @video_title %></title>
-  
+
   <meta name="viewport" content="width=device-width">
   <link rel="icon"type="image/png" href="/favicon.png">
   <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
@@ -20,9 +20,8 @@
 </head>
 <body class="">
 
-	<%= yield %>	
+	<%= yield %>
 
-  <%= vanity_js %>
   <% if Rails.env == 'production' %>
     <script>
       var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
@@ -46,13 +45,19 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
-  <script>
-    try {
-      _gaq.push(['_trackEvent', 'ab-testing', 'seo_ad_text_size', '<%= @seo_ad_text_size %>']);
-    } catch(e) {}
-    try {
-      _kmq.push(['set', {'seo_ad_text_size': '<%= @seo_ad_text_size %>'}]);
-    } catch(e) {}
-  </script>
+  <%= vanity_js %>
+  <% experiments = vanity_experiments %>
+  <% unless experiments.nil? %>
+    <script>
+      <% experiments.each do |name, alternative| %>
+        try {
+          _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+        } catch(e) {}
+        try {
+          _kmq.push(['set', {'<%= name %>': '<%= alternative.value %>'}]);
+        } catch(e) {}
+      <% end %>
+    </script>
+  <% end %>
 </body>
 </html>

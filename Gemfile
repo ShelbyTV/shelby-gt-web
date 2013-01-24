@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', :git => 'git://github.com/ShelbyTV/rails.git', :branch => 'rescue-invalid-encodings'
 
 # Needed to decode the gt api server cookie
 gem 'bson_ext'
@@ -23,7 +23,11 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity'
+gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "vanity-experiments-helper"
+
+# ---------- Other utils
+#
+gem 'addressable' # for URI parsing
 
 #
 # ---------- External Services
@@ -61,6 +65,7 @@ group :production, :staging do
 end
 group :development do
   gem 'capistrano-unicorn', :require => false
+  gem 'thin'
 end
 
 #

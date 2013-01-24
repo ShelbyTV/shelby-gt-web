@@ -1,10 +1,11 @@
 libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   routes : {
-    "static/*url" : "initStatic",
+    "static/*url"   : "initStatic",
     "embedded/*url" : "initEmbedded",
-    "chat/*url" : "initDiscussionRoll",
-    "*url" : "initDynamic"
+    "chat/*url"     : "initDiscussionRoll",
+    "chat"          : "initDiscussionRoll",
+    "*url"          : "initDynamic"
   },
 
   //---
@@ -20,7 +21,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     //init embed router
     this._reroute();
   },
-  
+
   initDiscussionRoll : function(url){
     //if logged-in AND desktop browser: full app view.  Otherwise: discussion-only, mobile first view.
     //XXX full app view is not yet implemented (but will resuse many of the views with somewhat different styling)
@@ -37,10 +38,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   initDynamic : function(url){
     shelby.router = new libs.shelbyGT.DynamicRouter();
     shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
-    
+
     this._bootstrapRequiredAppModels();
-    
+
     shelby.models.guide = new libs.shelbyGT.GuideModel();
+    shelby.models.playlistManager = new libs.shelbyGT.PlaylistManagerModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
@@ -52,14 +54,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
-		
+
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
-    shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.FramesCollection();
+    shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.MultiplexedVideoCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -67,8 +69,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     libs.utils.rhombus.activity.init_activity();
 
     var self = this;
-    
-    
+
+
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
@@ -122,7 +124,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     Backbone.history.stop();
     Backbone.history.start({pushState:true});
   },
-  
+
   // models common to Dynamic and DiscussionRoll
   _bootstrapRequiredAppModels : function() {
     shelby.models.user = new libs.shelbyGT.UserModel();

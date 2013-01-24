@@ -8,7 +8,9 @@ libs = {
   utils : {}
 };
 
-var shelby = shelby || {};
+if (typeof(shelby) == 'undefined') {
+  shelby = {};
+}
 
 //---------------------------------------------------------
 // global namespace for this app
@@ -24,53 +26,57 @@ _(shelby).extend({
     var _pieces = _cookie.split(',');
     return _pieces[0].split("=").length == 2 ? _pieces[0].split("=")[1] !== "nil" ? true : false : false;
   },
-  
+
   signOut: function(){
     document.location.href = "/signout";
   },
-  
-  // shelby.alert mimicks js native alert functionality.
-  // optional: add a callback function to execute after alert is dismissed
-  alert: function(message, callback){
+
+  // shelby.dialog(options, callback);
+  //   - prompts the user with one, or two buttons depending on the context
+  //   - does not auto-dismiss
+  //   - callback receives notificationState.result
+  //     button_primary == 1
+  //     button_secondary == 0
+  dialog: function(notificationOpts, callback){
+    if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
+
+    opts = _.extend(shelby.models.notificationState.defaults, {
+      'class'    : 'notification--dialog',
+      'visible'  : true
+    }, notificationOpts);
+
+    shelby.models.notificationState.set(opts);
+
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
     });
-    shelby.models.notificationState.set({ 'message': message,
-                                          'visible': true,
-                                          'button_one' : {visible: true, text: "Ok", color: 'blue'},
-                                          'number_of_buttons': 'one'});
   },
 
-	// shelby.success is designed to show a non-intrusive success message
-	// will self-dismiss if not X'd by user
-	success: function(message, timeoutMs){
-    shelby.models.notificationState.set({ 'class': 'info',
-																					'message': message,
-                                          'visible': true,
-                                          'button_one' : {visible: true, text: "Ok", color: 'grey'},
-                                          'number_of_buttons': 'one'});
-		//ghetto auto-hide
-		setTimeout(function(){
-				shelby.models.notificationState.set({visible: false});
-			}, timeoutMs || 9000);
-	},
+  // shelby.alert(options, callback);
+  //  - Same as above.
+  //  - AUTO DISMISSES AFTER 9 seconds
+  alert: function(alertOpts, callback){
+    if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
 
-  // shelby.alert mimicks js native confirm functionality.
-  // optional: add a callback function to execute after confirm choice is executed
-  confirm: function(message, button_one_opts, button_two_opts, callback){
+    opts = _.extend(shelby.models.notificationState.defaults, {
+      'class'    : 'notification--alert',
+      'visible'  : true
+    }, alertOpts);
+
+    shelby.models.notificationState.set(opts);
+
+    //auto-hide
+    this._notificationTimer = setTimeout(function(){
+      shelby.models.notificationState.set({visible: false});
+    }, opts.timeout || 9000);
+
     shelby.models.notificationState.bind('change:response', function(r){
       if (callback) { callback( r.get('response') ); }
       r.unbind('change:response');
+      clearTimeout(this._notificationTimer);
     });
-    
-    button_one_options = $.extend({visible: true}, button_one_opts);
-    button_two_options = $.extend({visible: true}, button_two_opts);
-    shelby.models.notificationState.set({ 'message': message,
-                                          'number_of_buttons': 'two',
-                                          'button_one' : button_one_options,
-                                          'button_two' : button_two_options,
-                                          'visible': true});
-  }
+  },
 
+  _notificationTimer: null
 });

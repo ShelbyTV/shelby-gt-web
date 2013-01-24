@@ -1,0 +1,29 @@
+<section class="frame-list-item frame frame--inline-promo">
+  <a class="frame-header js-promo-link" target="_blank" href="<%= promoLinkSrc %>" title="<%= promoTitle %>" data-roll-id="<%= roll.id %>">
+    <div class="clearfix">
+      <div class="frame-body">
+        <%=
+          SHELBYJST['thumbnail-module']({
+            thumbnail : promoThumbnailSrc,
+            title : promoTitle
+          })
+        %>
+      </div><!-- eo frame-body -->
+
+      <div class="button_icon_right icon_chevron icon media_module frame-footer clearfix">
+        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= promoAvatarSrc %>);" role="img">
+          <img src="<%= promoAvatarSrc %>" class="visuallyhidden" title="<%= 'username' %>" alt="<%= 'username' %>">
+        </span>
+
+        <div class="media_body">
+          <p class="xuser-data">
+            <%= promoTitle %>
+          </p>
+          <p class="xuser-message">
+            <%= promoMessage %>
+          </p>
+        </div><!-- eo media_body -->
+      </div><!-- eo frame-footer -->
+    </div><!-- eo frame-body-wrapper -->
+  </a>
+</section>

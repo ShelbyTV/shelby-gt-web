@@ -1,20 +1,21 @@
 libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
 
   options : {
-    headerText : 'Support a Great Cause',
-    linkSrc : null,
-    promoText : 'Click to donate',
-    thumbnailSrc : null
+    promoAvatarSrc : null,
+    promoLinkSrc : '#',
+    promoMessage : 'Click to Donate',
+    promoThumbnailSrc : null,
+    promoTitle : 'Support a Great Cause'
   },
 
   tagName : 'li',
 
   events : {
-    "click .js-donate-link" : "_trackDonateClick"
+    "click .js-promo-link" : "_trackDonateClick"
   },
 
   template : function(obj){
-    return SHELBYJST['inline-donate-promo'](obj);
+    return SHELBYJST['inline-promo-full'](obj);
   },
 
   //NOTE: expecting this.model to be a roll
@@ -22,17 +23,18 @@ libs.shelbyGT.InlineDonatePromoView = Support.CompositeView.extend({
     // headerText = 'Support Sandy Victims';
     // promoText : 'Click to donate to the Red Cross.',
     this.$el.html(this.template({
-      headerText : this.options.headerText,
-      linkSrc : this.options.linkSrc,
-      promoText : this.options.promoText,
-      roll : this.model,
-      thumbnailSrc : this.options.thumbnailSrc
+      promoAvatarSrc: this.options.promoAvatarSrc,
+      promoLinkSrc : this.options.promoLinkSrc,
+      promoMessage: this.options.promoMessage,
+      promoThumbnailSrc: this.options.promoThumbnailSrc,
+      promoTitle: this.options.promoTitle,
+      roll: this.model
     }));
     shelby.track('Show donate promo', {id:this.model.id});
   },
 
   _trackDonateClick : function(e){
-    var rollId = $(e.currentTarget).data('roll_id');
+    var rollId = $(e.currentTarget).data('roll-id');
     shelby.track('Click donate promo', {id:rollId});
   }
 

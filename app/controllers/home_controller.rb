@@ -21,11 +21,12 @@ class HomeController < ApplicationController
         if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
           @roll = Shelby::API.get_roll(@isolated_roll_id)
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
-          @analytics_account = get_account_analytics_info(@user) 
+          @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
+          @hostname = request.host
           render '/home/isolated_roll' and return
         end
-        
+
         #XXX FB GENIOUS ROLL
         if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
           render '/home/app' and return
@@ -41,12 +42,15 @@ class HomeController < ApplicationController
           @access_error = params[:access] == "nos"
           @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
-          
+
           get_info_for_meta_tags(params[:path])
-          
+
           if @mobile_os
             render '/mobile/search', :layout => 'mobile'
           else
+            # A/B test
+            @seo_search_messaging = ab_test :seo_search_messaging
+
             render '/home/landing'
           end
 
@@ -69,6 +73,9 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to :action => :index
     else
+      # A/B test
+      @seo_search_messaging = ab_test :seo_search_messaging
+
       # Parse errors and render landing
       @nickname_error = params[:nickname]
       @email_error = params[:primary_email]
@@ -93,14 +100,23 @@ class HomeController < ApplicationController
   # GET /search
   #
   def search
+    # TODO: uncomment when we have html and js to implement the test variants
+    # unless user_signed_in?
+    #   # A/B test - only for anonymous users
+    #   @search_landing_banner_appear = ab_test :search_landing_banner_appear
+    # end
+
+    # A/B test
+    @search_promote_repeat = ab_test :search_promote_repeat
+    @heart_queue_comparison = ab_test :heart_queue_comparison
     render '/home/app'
   end
-  
+
   ##
   # Handles channel view when visited directly (allowing logged-out users to see it)
   #
   # GET /channel/:name
-  #  
+  #
   def channel
     render '/home/app'
   end
@@ -117,7 +133,7 @@ class HomeController < ApplicationController
 
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
-  
+
   private
 
 
@@ -139,6 +155,7 @@ class HomeController < ApplicationController
           when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
           when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
           when "yvynyl.tv" then "4fa2908088ba6b61770010af"
+          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105" # requested via NF.tv, added 01/07/13
           when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
@@ -148,22 +165,22 @@ class HomeController < ApplicationController
             elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
               # for shelby.tv domain, try to find a roll assigned to the given subdomain
               roll = Shelby::API.get_roll_by_subdomain(request.subdomain)
-              
+
               roll && roll['id']
             else
               false
             end
       end
     end
-    
+
     def get_genius_roll_id_from_path(path)
       return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
     end
-    
+
     def is_from_fb_genius_frame_share(path)
       /fb\/genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
     end
-    
+
     def get_info_for_meta_tags(path)
       if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
         # the url is a frame
@@ -175,12 +192,12 @@ class HomeController < ApplicationController
         @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       end
     end
-    
+
     def get_frame_from_path(path)
        frame_id = /(\w*)/.match(params[:path])
        frame_id[1] if frame_id and BSON::ObjectId.legal?(frame_id[1])
     end
-    
+
     def get_account_analytics_info(user)
       abilities = user["additional_abilities"]
       abilities.keep_if {|a| a[0..2] == "UA-"}

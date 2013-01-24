@@ -5,7 +5,7 @@
 </div>
 
 <div class="js-request-invite clearfix hidden">
-  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
+  <form id="js-email-form" class="form_module form_module--request-form js-track-submit<%= inAnonBanner ? ' js-in-anon-banner' : '' %>" data-ga_action="Request invite">
     <fieldset class="">
       <label for="email" class="form_label">Email</label>
       <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
@@ -49,27 +49,45 @@
     Log in with
   </h4>
 
-  <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
-    href="<%= shelby.config.apiBase + "/auth/twitter" %>" location="<%= shelby.config.apiBase + "/auth/twitter" %>" popup-width="600" popup-height="700">
-    <i class="button_icon_left icon_share_twitter_on icon">
-      Twitter
-    </i>
+  <a href="<%= shelby.config.apiBase + "/auth/twitter" %>"
+     class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+     data-ga_action="Login with Twitter"
+     data-popup_height="700"
+     data-popup_width="600">
+    <i class="icon-social_twitter"></i>
+    Twitter
   </a>
 
-  <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook"
-    href="<%= shelby.config.apiBase + "/auth/facebook" %>" location="<%= shelby.config.apiBase + "/auth/facebook" %>" popup-width="1000" popup-height="650">
-    <i class="button_icon_left icon_share_facebook_on icon">
-      Facebook
-    </i>
+  <a href="<%= shelby.config.apiBase + "/auth/facebook" %>"
+     class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+     data-ga_action="Login with Facebook"
+     data-popup_height="650"
+     data-popup_width="1000">
+    <i class="icon-social_facebook"></i>
+    Facebook
   </a>
 </div>
 
 <script>
   $(document).ready(function(){
-    $('#js-email-form').on('submit', function(){
+    var emailForm = $('#js-email-form');
+    emailForm.on('submit', function(){
       $.get('<%= shelby.config.apiRoot %>/POST/gt_interest', $(this).serialize(), function(data) {
         $('#js-email-form').addClass('hidden');
         $('#js-thankyou').removeClass('hidden');
+        var emailAddress = $('#js-email-input').val();
+        if (emailForm.hasClass('js-in-anon-banner')) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : 'anonymous banner',
+            gaAction : 'signup',
+            gaLabel : emailAddress,
+            kmqName : 'signup',
+            kmqProperties : {
+              email : emailAddress
+            }
+          })
+        }
       }, 'jsonp');
       return false;
     });

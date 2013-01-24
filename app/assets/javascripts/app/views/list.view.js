@@ -5,6 +5,21 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   className : 'list',
 
   /*
+    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
+    to the list and render when this.options.isIntervalComplete returns true
+
+    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
+    if this.options.intervalInsertViewProto is null
+    */
+  _intervalInsertViews : null,
+
+  /*
+    When !insertIntervalViewsIncrementally we insert promos in one shot, each time a new group of list views is added.
+    Keeping track of what we've covered so we don't insert promos where they've already been inserted.
+  */
+  _insertedIntervalsUpToIndex: 0,
+
+  /*
     The source data for the list view can come from either a standard Backbone collection
     or a collection (created by a Relation) that is an attribute of a Relational model
 
@@ -57,6 +72,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     */
     intervalInsertViewProto : null,
     /*
+     * If your item views are not rendered in natural order, make this false.
+     * It indicates we need to insert interval views for the group of item views as a whole, not individually.
+     */
+    insertIntervalViewsIncrementally : true,
+    
+    /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
         1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
@@ -105,6 +126,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     if (this.options.comparator) {
       this._displayCollection.comparator = this.options.comparator;
     }
+    
+    if(this.model){
+      this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    }
 
     this._displayCollection.bind('add', this.internalAddOne, this);
     this._displayCollection.bind('remove', this.internalRemoveOne, this);
@@ -124,6 +149,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       }
     }
+    
+    if(this.model){
+      this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    }
+    
     this._displayCollection.unbind('add', this.internalAddOne, this);
     this._displayCollection.unbind('remove', this.internalRemoveOne, this);
     this._displayCollection.unbind('reset', this.internalReset, this);
@@ -211,10 +241,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var self = this;
     var childView = this._constructListItemView(item);
 
-    //special handling if the item was not added to the end of the collection
-    if (options && _(options).has('index') && options.index != this._listItemViews.length) {
+    // Special handling if the item was not simply appended
+    if (options && _(options).has('index')){
       this._listItemViews.splice(options.index, 0, childView);
-      this.insertChildAt(childView, options.index);
+      // adjusting for size of _intervalViews b/c DOM has views from both _intervalViews and _listItemViews
+      this.insertChildAt(childView, options.index+this._intervalViews.length);
     } else {
       //store a reference to all list item child views so they can be removed/left without
       //removing any other child views
@@ -222,24 +253,49 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._insertChildView(childView);
     }
 
-    var intervalViews = [];
-    //check if the client-defined interval for adding a special list item has elapsed, and if so add the view
-    if (this.options.intervalInsertViewProto) {
-      if (this.options.isIntervalComplete(this._listItemViews.length)) {
-        intervalViews = [new this.options.intervalInsertViewProto()];
+    // If item views are simply appended in natural order, we can simply append our interval view when appropriate
+    if(this.options.insertIntervalViewsIncrementally && this.options.isIntervalComplete(this._listItemViews.length)){
+      this._insertIntervalViews(null);
+    }
+  },
+  
+  /*
+   * When our item views are not simply appended in natural order, we can't simply append the interval views.
+   *
+   * We need to insert interval views for the group of item views as a whole, not individually.  So, when the model
+   * has finished fetching and adding/rendering, we do a sweep and insert interval views at that time.
+   */
+  _insertIntervalViewsForGroup: function(){
+    if(this.options.insertIntervalViewsIncrementally){ return; }
+    
+    //check for promo insertion from end of last group to end of this group
+    for(var i = this._insertedIntervalsUpToIndex; i < this._listItemViews.length; ++i){
+      if(this.options.isIntervalComplete(i+1)){
+        // adjusting for size of _intervalViews b/c DOM has views from both _intervalViews and _listItemViews
+        this._insertIntervalViews(i+1+this._intervalViews.length);
       }
+    }
+    this._insertedIntervalsUpToIndex = this._listItemViews.length;
+  },
+  
+  _insertIntervalViews: function(loc){
+    var intervalViews = [];
+    if (this.options.intervalInsertViewProto) {
+      intervalViews = [new this.options.intervalInsertViewProto()];
     } else if (this._intervalInsertViews) {
-      if (this.options.isIntervalComplete(this._listItemViews.length)) {
-        intervalViews = this._intervalInsertViews();
-        if (!_(intervalViews).isArray()) {
-          intervalViews = [intervalViews];
-        }
+      intervalViews = this._intervalInsertViews();
+      if (!_(intervalViews).isArray()) {
+        intervalViews = [intervalViews];
       }
     }
     _(intervalViews).each(function(intervalView) {
-      self._intervalViews.push(intervalView);
-      self._insertChildView(intervalView);
-    });
+      this._intervalViews.push(intervalView);
+      if(typeof(loc) === "number"){
+        this.insertChildAt(intervalView, loc++);
+      } else {
+        this._insertChildView(intervalView);
+      }
+    }, this);
   },
 
   _insertChildView: function(childView) {
@@ -311,14 +367,9 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
   },
-
-  /*
-    intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
-    to the list and render when this.options.isIntervalComplete returns true
-
-    this option is mutually exclusive with the intervalInsertViewProto option, that is, it will only be used
-    if this.options.intervalInsertViewProto is null
-    */
-  _intervalInsertViews : null
+  
+  _onFetchComplete : function(){
+    this._insertIntervalViewsForGroup();
+  }
 
 });

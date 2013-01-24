@@ -1,19 +1,52 @@
-//---------------------------
-//  modular overlay framework
-//
-//    two main parts:
-//    header and body.
-//    this abstraction is a primer for
-//    the content separation.
-//
-//    *used for any overlay,
-//     that slides over the guide
-//---------------------------
-.overlay_header {
-  height: $overlay_header_height;
+//------------------------------------------------------------------------------
+//  ABSTRACTS
+//  currently used on any overlay
+
+.guide-overlay__button--cancel {
+  font-size: 0.9em;
+  left: 0;
+  margin: 1.2em;
+  padding: 0.4em 0.55em 0.4em 0.5em;
+  position: absolute;
+  top: 0;
+
+  .icon-cancel {
+    vertical-align: -1px;
+  }
 }
 
-.overlay_body {
+.guide-overlay__title {
+    line-height: 2;
+}
+
+//------------------------------------------------------------------------------
+//  HEAD
+
+.guide-overlay__head {
+  height: $overlay_header_height;
+  border-bottom: 1px solid $inset;
+}
+
+.guide-overlay__title--inline {
+  display: inline;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 3.4;
+  padding-left: 0.25em;
+
+  & + .guide-overlay__button--cancel {
+    float: left;
+    left: auto;
+    position: relative;
+    top: auto;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  BODY
+
+.guide-overlay__body {
+  border-top: 1px solid $outset;
   bottom: 0;
   position: absolute;
   overflow-y: auto;

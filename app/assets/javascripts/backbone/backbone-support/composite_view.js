@@ -36,9 +36,13 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   },
 
   insertChildAt : function(view, childIndex) {
-    var insertBeforeThis = this.children.value()[childIndex].el;
-    this.renderChild(view, childIndex);
-    this.$(insertBeforeThis).before(view.el);
+    if(childIndex === this.children.value().length){
+      this.appendChild(view);
+    } else {
+      var insertBeforeThisView = this.children.value()[childIndex];
+      this.renderChild(view, childIndex);
+      this.$(insertBeforeThisView.el).before(view.el);
+    }
   },
 
   prependChild : function(view, showFn){

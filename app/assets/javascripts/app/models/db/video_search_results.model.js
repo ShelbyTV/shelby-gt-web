@@ -17,12 +17,41 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   //evenly distribute the items along a number line of scores from 0 to 1
   assignScores : function() {
-    var self = this;
-    var videos = this.get('videos');
-    var numVideos = videos.length;
-    
-    videos.each(function(video, index){
+    this.get('videos').each(function(video, index){
       video.set('score', index);
+    });
+  },
+
+  //same as assignScores, except pushes videos whose titles contain none of the words
+  //in the query further down in the sort order
+  //this is used to deprioritize Vimeo videos that come up when words in the query
+  //matched largely irrelevant stuff in the video description
+  assignScoresPrioritizeTitleMatch : function(query) {
+    var queryTerms = query.replace(/\s+/ig,' ').split(' ');
+    var nextIndexToFill = 0;
+
+    this.get('videos').each(function(video, index){
+      var titleContainsQueryTerm = false;
+      var title = video.get('title');
+      var i = 0;
+
+      //check if the video's title contains any of the words in the query
+      while (!titleContainsQueryTerm && i < queryTerms.length) {
+        if (new RegExp(queryTerms[i], "i").test(title)) {
+          titleContainsQueryTerm = true;
+        }
+        i++;
+      }
+      if (titleContainsQueryTerm) {
+        video.set('score', nextIndexToFill);
+        //keep track of where we're supposed to be interleaving the next good video,
+        //otherwise even good videos would get pushed one slot further down every time
+        //we found an irrelevant video
+        nextIndexToFill++;
+      } else {
+        //if no match in the title, push this video to the bottom of the list
+        video.set('score', 100000 + index);
+      }
     });
   },
 

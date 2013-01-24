@@ -1,4 +1,3 @@
-@import "base";
 //------------------------------------------------------------------------------
 //  explore section
 //------------------------------------------------------------------------------
@@ -21,7 +20,8 @@
 }
 
 .explore-rolls {
-
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 .explore-item {
@@ -114,7 +114,7 @@
 	@include transition-duration(.5s);
 	@include transition-timing-function(linear);
 	@include transition-delay(0s);
-	
+
   display: block;
   height: 200px;
   margin: 10px;
@@ -124,7 +124,7 @@
   &.transparent {
     opacity: 0.0;
   }
-  
+
   &:hover {
     .menu_module {
       display: block;

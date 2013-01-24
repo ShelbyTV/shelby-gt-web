@@ -1,98 +1,43 @@
-@import "base";
+// Inline Roll Promos
 
-.in-line-promo {
-  background-color: #D6D6D6;
-  padding: 5px 10px;
-
-  &.in-line-donate-promo {
-    padding: 0;
-  }
-}
-
-.in-line-promo-item {
-  &:last-child {
-    .in-line-promo-item-lining {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.in-line-promo-item-lining {
-  margin: 2px 0 10px;
-}
-
-.in-line-promo-header {
-  font-size: 1.17em;
-  margin-bottom: 10px;
-}
-
-.in-line-promo-button {
-  @include button-sizing;
-  
-  float: right;
-}
-
-.in-line-promo-link {
-  float: right;
-  font-size: 1.17em;
-  line-height: 2.3;
-
-  &:active,
-  &:link,
-  &:visited {
-    color: #555;
-    text-decoration: none;
-  }
+.frame--inline-promo {
+  background-color: #fff;
 
   &:hover {
-    color: #555;
-    text-decoration: underline;
-  }
-}
-
-.in-line-promo-thumb,
-.in-line-promo-title {
-  float: left;
-}
-
-.in-line-promo-thumb {
-  border: 1px solid #ADADAD;
-  height: 30px;
-}
-
-.in-line-promo-title {
-  @include ellipsis;
-
-  color: #555;
-  font-size: 1.17em;
-  line-height: 2.3;
-  margin-left: 0.55em;
-}
-
-.in-line-donate-link {
-  &:active,
-  &:link,
-  &:visited {
-    text-decoration: none;
-
-    .in-line-donate-title {
-      text-decoration: none;
+    .frame-body-wrapper {
+      background-color: #fff;
+      cursor: pointer;
     }
   }
 
-  &:hover {
-    text-decoration: underline;
+  .frame-footer {
+    margin-top: 1.5em;
+    margin-left: 0.5em;
+  }
 
-    .in-line-donate-title {
-      text-decoration: underline;
-    }
+  .icon {
+    //chevron
+    background-size: 1.5em;
+    margin-right: 0.5em;
+    padding-right: 2em;
+  }
+
+  .xuser-message,
+  .xuser-data {
+    margin-bottom: 0.25em;
   }
 }
 
-.in-line-donate-header {
-  color: #333;
-}
+.frame--explore-promo {
+  padding: 0.8em;
 
-.in-line-donate-lining {
-  padding: 5px 10px;
+  .explore-promo__button {
+    @include button-sizing;
+
+    float: right;
+  }
+
+  .explore-promo__h1 {
+    line-height: 2.3;
+  }
 }

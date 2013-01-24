@@ -4,7 +4,7 @@
  * Handles switching between multiple rolls on supported accounts.
  */
 libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
-  
+
   events : {
     "click .js-change-iso-roll"             : "_onChangeRoll",
     "click .js-follow-button:not(.js-busy)" : "_onFollowOrUnfollow",
@@ -16,41 +16,41 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
   _currentRoll: null,
 
   el: '#js-iso-roll-header',
-  
+
   template: function(obj){
       return SHELBYJST['iso-roll-app-header'](obj);
   },
-  
+
   initialize: function(){
     this.options.guide.on('change:currentRollModel', this._onNewCurrentRollModel, this);
     this.options.rollFollowings.on('change:initialized', this._onRollFollowingsInitialized, this);
   },
-  
+
   _cleanup: function(){
     this.options.guide.off('change:currentRollModel', this._onChangeCurrentRollModel);
     this.options.rollFollowings.off('change:initialized', this._onRollFollowingsInitialized, this);
   },
-  
+
   render: function(){
     if(this._currentRoll){
       this.$el.html(this.template({
         currentRoll: this._currentRoll,
         associatedRolls: this._associatedRolls
       }));
-      
+
       this._updateFollowButton();
     }
   },
-  
+
   _onNewCurrentRollModel: function(guideModel, currentRollModel){
     currentRollModel.on('change', this._onChangeCurrentRollModel, this);
     this._currentRoll = currentRollModel;
     this.render();
   },
-  
+
   _onChangeCurrentRollModel: function(){
     var self = this;
-    
+
     this._currentRoll = this.options.guide.get('currentRollModel');
 
     if( !this._associatedRolls ){
@@ -67,14 +67,14 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
       this.render();
     }
   },
-  
+
   _onChangeRoll: function(e){
     e.preventDefault();
     var selectedRollId = $(e.currentTarget).data('roll_id');
     shelby.router.navigate('/isolated-roll/'+selectedRollId, {trigger:true});
     shelby.models.userDesires.set({guideShown: true});
   },
-  
+
   _onFollowOrUnfollow : function() {
      var $thisButton = this.$('.js-follow-button');
      // immediately toggle the button - if the ajax fails, we'll update the next time we render
@@ -116,11 +116,11 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
          .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
      }
    },
-   
+
    _onRollFollowingsInitialized : function(rollFollowingsModel, initialized) {
      if (initialized) {
        this._updateFollowButton();
      }
    }
-  
+
 });

@@ -1,81 +1,186 @@
-@import
-    "base",
-    "base-mixin",
-
-    "compass",
-    "compass/css3",
-    "compass/css3/border-radius",
-    "compass/css3/box-shadow";
-
-/* non-programatic changes to app display */
-body.isolated-roll {
-
-}
-
 //-------------------------
 // header bar
 //-------------------------
 
-.iso-roll-app-header {
+.isoroll__header {
   max-height: 36px;
   overflow: hidden;
+  border-bottom: none;
 }
+
 
 .current-roll {
   float: left;
   width: $guide-width;
 }
 
-.selectable-rolls-list {
+//main nav list
+.isoroll-nav__list {
   margin: 0;
   padding: 0;
 }
 
-.selectable-roll-item {
+//------------------------------------------------------------------------------
+//  Root nav list item (rolls list)
+//------------------------------------------------------------------------------
+.isoroll-nav__item {
   display: block;
   float: left;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
-}
 
-.iso-roll-nav-button {
+  &.secondary {
+    float: right;
+  }
+}
+  //------------------------------------------------------------------------------
+  //  Main Parent Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--parent {
+    padding: 0;
+
+    .isoroll-nav__button {
+      background: black;
+    }
+
+    .isoroll-nav__title {
+    }
+  }
+
+  //------------------------------------------------------------------------------
+  //  Child Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--child {
+    .isoroll-nav__avatar {
+      display: none;
+    }
+  }
+
+  //------------------------------------------------------------------------------
+  //  Currently Active Roll Overrides
+  //------------------------------------------------------------------------------
+  .isoroll-nav__item--active {
+    .isoroll-nav__button,
+    .isoroll-nav__button:hover {
+      @include gradient-primer(#222);
+      color: #efefef;
+    }
+  }
+
+.isoroll-nav__button {
   @include ellipsis;
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,5%));
 
-  border-radius: 3px;  
+  border-right: 1px solid #444;
   color: $guide-presentation-button;
   display: block;
   font-size: 1.2em;
   font-weight: 500;
   font-family: $font-family-display;
-  margin: 6px;
+  margin: 0;
   max-width: $guide-width * 0.75;
   min-width: $guide-width / 4;
-  padding: 5px 10px;
+  height: 35px;
   text-align: center;
   text-decoration: none;
-  
+
   &:hover {
     @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,10%));
     color: adjust-lightness($guide-presentation-button,20%);
     text-decoration: none;
   }
+
+  &:active {
+    @include gradient-primer(#111);
+  }
 }
 
-.active-item .iso-roll-nav-button, .active-item .iso-roll-nav-button:hover {
-  background: black;
-  color: #efefef;
+.isoroll-nav__title {
+  display: inline-block;
+  margin: 10px 10px 8px;
 }
 
-.isoroll-header__follow-unfollow-button,
-.isoroll-header__full-shelby-button {
+
+.isoroll-nav__avatar {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  width: 3em;
+  vertical-align: middle;
+
+  img {
+    width: 100%;
+  }
+}
+
+//secondary nav buttons
+.isoroll-nav__button--unfollow,
+.isoroll-nav__button--shelby {
   font-size: 1.2em;
+  margin: 5px 5px 5px 0;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
+
   .light {
     font-weight: 100;
   }
 }
 
-.isoroll-header__full-shelby-button {
-  width: 135px;  
+
+.isoroll-header--shelby {
+  width: 145px;
+}
+
+
+/* non-programatic changes to app display */
+//------------------------------------------------------------------------------
+//  FROM _FRAME.SCSS:
+//  isolated roll
+//  (nest styles inside of .isolated-roll{})
+//------------------------------------------------------------------------------
+.isolated-roll {
+  .conversation-message {
+    .xuser-data {
+      display: block;
+    }
+  }
+
+  .xuser-message {
+    margin: 0;
+    min-height: 2em;
+  }
+
+  .xuser-data-timestamp {
+    padding: 0 0 5px 10px;
+  }
+
+  /* adjust the avatar in the roll header */
+  .guide {
+    .xuser-avatar {
+      border-right: 1px solid $outset;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  /* hide the avatar on the frame */
+  .frame {
+    &:not(.frame--inline-promo) {
+      .xuser-data {
+        display: none;
+      }
+
+      .xuser-avatar {
+        display: none;
+      }
+    }
+
+    &.frame--inline-promo {
+    }
+  }
 }

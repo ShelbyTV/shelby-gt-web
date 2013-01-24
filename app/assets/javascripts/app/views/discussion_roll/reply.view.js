@@ -61,21 +61,21 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     e.stopPropagation();
     e.preventDefault();
     
-    //error checking on input
-    var msgInput = this.$el.find('.js-message-text'),
-    text = msgInput.val();
-    if(typeof(text) !== "string" || text.length < 1){
-      msgInput.addClass("error");
-      return;
-    } else {
-      msgInput.removeClass("error");
-    }
-    
     //video attachments
     var videoUrls = new Array();
     this.children.forEach(function(child){
       videoUrls.push(child.options.url);
     });
+    
+    //error checking on input
+    var msgInput = this.$el.find('.js-message-text'),
+    text = msgInput.val();
+    if((typeof(text) !== "string" || text.length < 1) && videoUrls.length == 0){
+      msgInput.addClass("error");
+      return;
+    } else {
+      msgInput.removeClass("error");
+    }
     
     //post new message
     var msg = new libs.shelbyGT.DiscussionRollMessageModel({

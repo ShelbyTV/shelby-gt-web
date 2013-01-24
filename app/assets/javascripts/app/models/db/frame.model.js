@@ -42,7 +42,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   url : function() {
     return shelby.config.apiRoot + '/frame/' + this.id;
   },
-  
+
   shareUrl : function(){
     return shelby.config.apiRoot + '/frame/' + this.id + '/share';
   },
@@ -51,7 +51,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var self = this;
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
-    
+
     if (this.get('isSearchResultFrame')) {
       var _newFrame = new libs.shelbyGT.FrameModel();
       var _wl_roll = shelby.models.user.get('watch_later_roll');
@@ -67,7 +67,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
           if (onSuccess) onSuccess();
         }
       });
-      
+
     }
     else {
       frameToReroll.save(null, {
@@ -92,7 +92,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     libs.utils.rhombus.sadd('frames_rolled', this.id);
     shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },
-  
+
   upvote : function(onSuccess) {
     var frameToUpvote = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
@@ -100,13 +100,13 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     libs.utils.rhombus.sadd('frames_upvoted', this.id);
     shelby.track( 'heart_video', { id: this.id, userName: shelby.models.user.get('nickname') });
   },
-  
+
   watched : function(startTime, endTime, onSuccess) {
     if (this.get('isSearchResultFrame') == true) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
-    if(startTime && endTime){
-      url += '?startTime='+startTime+'&endTime='+endTime;
+    if(typeof startTime != "undefined" && typeof endTime != "undefined"){
+      url += '?start_time='+startTime+'&end_time='+endTime;
     }
     frameWatched.save(null, {url:url, success:onSuccess});
   },
@@ -135,7 +135,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var url = this.has('video') && this.get('video').has('thumbnail_url') && this.get('video').get('thumbnail_url');
     return url ? url : null;
   },
-  
+
   getSubdomainPermalink : function(){
     var url;
     if (this.has('roll') && this.get('roll').has('subdomain')){

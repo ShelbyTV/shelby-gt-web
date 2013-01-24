@@ -1,4 +1,4 @@
-require 'uri'
+require 'addressable/uri'
 require 'net/http'
 require 'shelby_api'
 require 'iconv'
@@ -35,8 +35,48 @@ class SeovideoController < ApplicationController
     splitConversationMessagesByNetwork()
     setMetaDescription()
 
-    # seo_ad_text_size A/B test
-    @seo_ad_text_size = ab_test :seo_ad_text_size
+    # A/B tests
+    @seo_ad_videocard = ab_test :seo_ad_videocard
+    @seo_search_messaging = ab_test :seo_search_messaging
+
+    # if the referrer is google search, parse the search query out of its url
+    http_referer = request.env["HTTP_REFERER"]
+    if http_referer && http_referer.length > 0
+      # the parser doesn't know it's an http url without the protocol, so ensure
+      # that it starts with http://
+      unless http_referer.start_with? 'http://'
+        if http_referer.start_with? 'https://'
+          http_referer.slice! 4
+        else
+          http_referer = 'http://' + http_referer
+        end
+      end
+
+      begin
+        referer_uri = Addressable::URI.parse(http_referer)
+      rescue Exception => e
+        #don't want to blow up on uri parsing errors, but log them so we have some way of tracking them
+        Rails.logger.info "SEO Page Parse Referer URI Failed (ignoring): #{e}"
+        return
+      end
+
+      if referer_host = referer_uri.host
+        if referer_host.start_with?('http://google.') || referer_host.start_with?('google.') || referer_host.include?('.google.')
+          if query_values = referer_uri.query_values
+            # its a google url so grab the search query
+            if @search_query = query_values["q"]
+              # check if the google url specified an encoding for the search query and if so decode it accordingly
+              if search_query_encoding = query_values["ie"]
+                if encoding_obj = Encoding.list.find {|enc| enc.name.casecmp(search_query_encoding) == 0 }
+                  # re-encode the search query as UTF-8, respecting the input encoding that was passed to google
+                  @search_query.encode!('utf-8', encoding_obj, :invalid => :replace, :undef => :replace, :replace => '?')
+                end
+              end
+            end
+          end
+        end
+      end
+    end
 
     respond_to do |format|
       format.html { render }

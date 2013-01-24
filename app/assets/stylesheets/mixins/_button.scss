@@ -9,7 +9,7 @@
               inset 0 -1px 0 0 darken($base, 5%);
 //    color: darken($base, 50%);
   color: if(lightness($base) < 53, $button-color, $button-color-light);
-  font-weight: if(lightness($base) < 53, 700, 500);
+  font-weight: if(lightness($base) < 53, 500, 500);
   text-shadow: if(lightness($base) < 53, $shadow-text, none);
 
   &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
@@ -81,6 +81,7 @@
 //  elements that will be styled by .button_primer
 //  but are not <button> elements, i.e. <a> elements
 ////////////////////////////////////////////////////////////////////////////
+a.button_primer,
 .faux_button {
     display: inline-block;
 
