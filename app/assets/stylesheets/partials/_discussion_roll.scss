@@ -36,7 +36,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__body {
-  padding-top: 80px;
+  padding-top: 120px;
   padding-bottom: 120px;
   z-index: 1;
 }
@@ -223,11 +223,15 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 .discussion__list--conversation {
 
   .load-more {
+    position: absolute;
+    top: 75px;
     list-style-type: none;
+    width: 100%;
   }
 
   .load-more-button {
     width: 200px;
+    margin: 0 auto;
   }
 }
 
