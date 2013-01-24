@@ -12,9 +12,9 @@
   <header class="seovideo-head clearfix" role="banner">
     <div class="shelby-header clearfix">
       <a href="http://shelby.tv" class="shelby-logo">
-        <h1 class="shelby-title ir">
-          Shelby.tv
-        </h1>
+        <div class="shelby_logo">
+          <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+        </div>
       </a>
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
@@ -53,11 +53,12 @@
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
-    <article role="main" class="seovideo">
+    <article role="main" class="seovideo <%= "seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
-        <h2 class="seovideo__h2">
+        <h1 class="seovideo__h2">
           <%= @video_title %>
-        </h2>
+        </h1>
+
         <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="seovideo__video">
             <% if @video_provider_name == "youtube" %>
@@ -97,8 +98,8 @@
         </div><!-- eo .seovideo__video_wrapper -->
       </div><!-- eo .seovideo__main -->
 
-      <aside class="seovideo__aside clearfix">
-        <% if !@video_related_videos.empty? %>
+      <% if !@video_related_videos.empty? %>
+        <aside class="seovideo__aside clearfix">
           <div class="seovideo__aside_lining">
             <h3 class="seovideo__h3">
               Related Video
@@ -132,8 +133,8 @@
               <% end %>
             </ul>
           </div>
-        <% end %>
-      </aside><!-- eo .seovideo__aside -->
+        </aside><!-- eo .seovideo__aside -->
+      <% end %>
 
 			<div id="disqus_thread" class="frame-body-wrapper"></div>
 
@@ -195,20 +196,18 @@
 <!-- TWITTER INTENTS -->
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
-<!-- TWITTER -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script>
+  //TWITTER
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-<!-- GOOGLE PLUS -->
-<script type="text/javascript">
+  //GOOGLE PLUS
   (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
-</script>
 
-<!-- DISQUS -->
-<script type="text/javascript">
+  //DISQUS
 	var disqus_developer = ("<%= Rails.env %>" == "production") ? 0 : 1; // developer mode is on
 	var disqus_identifier = "<%= @video_provider_name %>:<%= @video_provider_id %>";
 	var disqus_title = "Shelby.tv | <%= @video_title %>";
@@ -221,29 +220,19 @@
 			dsq.id = 'disqus-script';
 	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 	})();
-</script>
 
-<!-- Email Submit -->
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#js-email-form').on('submit', function(){
-    $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-      $('#js-email-form').addClass('hidden');
-      $('#js-thankyou').removeClass('hidden');
-    }, 'jsonp');
-    return false;
+  //search
+  $(document).ready(function(){
+    $('#js-seovideo-search-form').on('submit', function(e){
+      e.preventDefault();
+
+      var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val();
+      if (searchQuery) {
+        window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
+        try {
+            _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery.toLowerCase()]);
+        } catch(e) {}
+      }
+    });
   });
-
-  $('#js-seovideo-search-form').on('submit', function(e){
-    e.preventDefault();
-
-    var searchQuery = $(e.currentTarget).find("#js-seovideo-search-form-text").val();
-    if (searchQuery) {
-      window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
-      try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery.toLowerCase()]);
-      } catch(e) {}
-    }
-  });
-});
 </script>
