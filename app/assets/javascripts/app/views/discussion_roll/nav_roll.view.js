@@ -1,5 +1,5 @@
 /*
- * Displays an invidividual selectable discussion roll so you can get to your other chats.
+ * Displays an invidividual selectable discussion roll so you can get to your other discussion rolls.
  *
  */
 libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({

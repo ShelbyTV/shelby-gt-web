@@ -33,7 +33,7 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
     
     if(this.options.updatePageTitle){
       //page title built iteratively by this and subviews
-      document.title = "Shelby Chat with ";
+      document.title = "Shelby Mail with ";
     }
     
     this.$el.html(this.template());

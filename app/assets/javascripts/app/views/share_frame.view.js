@@ -116,7 +116,7 @@
       }
 
       //show success with link to discussion roll
-      var href = shelby.config.appUrl+'/chat/'+selectedRollId+'?u='+shelby.models.user.id+'&t='+token;
+      var href = shelby.config.appUrl+'/mail/'+selectedRollId+'?u='+shelby.models.user.id+'&t='+token;
       shelby.alert(
         {
           message: 'Message Sent!',
@@ -126,7 +126,7 @@
         },
         function(returnVal){
           if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
-            window.open(href, "_shelbyChat");
+            window.open(href, "_shelbyMail");
           }
         }
       );
