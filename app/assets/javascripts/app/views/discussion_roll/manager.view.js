@@ -14,13 +14,13 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   _discussionRolls : null,
   
   initialize : function(){
-    this.model.on('change:content_updated_at', this._fetchRolls, this);
+    if(this.model){ this.model.on('change:content_updated_at', this._fetchRolls, this); }
     
     this._fetchRolls();
   },
   
   _cleanup: function(){
-    this.model.off('change:content_updated_at', this._fetchRolls);
+    if(this.model){ this.model.off('change:content_updated_at', this._fetchRolls); }
   },
   
   _fetchRolls: function(){
