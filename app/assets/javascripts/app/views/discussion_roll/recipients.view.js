@@ -55,7 +55,8 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
         }
       });
       
-      if(i>=this.options.overflowAt){
+      if(i>this.options.overflowAt){
+        //gt but ne b/c we skip viewer (above)
         this.$('.js-discussion-roll-recipients-toggle-show-all').show();
       }
     }
