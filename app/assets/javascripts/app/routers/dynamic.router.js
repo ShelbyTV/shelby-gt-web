@@ -125,8 +125,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayChannel : function(channel){
-    // Adjust *how* a few details are displayed via CSS
+displayChannel : function(channel){
+    shelby.models.userDesires.set('guideShown',false);
+
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+
     $('body').addClass('shelby-channels');
 
     if (typeof channel !== 'undefined') {
@@ -136,17 +141,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       $('body').append(SHELBYJST['channels-home']());
     }
 
-    this._fetchViewedVideos();
-    this._fetchQueuedVideos();
-    this._setupTopLevelViews();
-
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.channel
     });
-    if (channel) {
-      shelby.models.multiplexedVideo.trigger('channel');
-    }
-    shelby.models.userDesires.set('guideShown',false)
+
+    // TODO move this into handler where change is bound
+    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
   },
 
   displayIsolatedRoll : function(rollId, params){
@@ -183,21 +183,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if(shelby.routeHistory.length === 0){
       shelby.models.userDesires.set({guideShown: false});
     }
-  },
-
-  displayChannel : function(channel){
-    this._fetchViewedVideos();
-    this._fetchQueuedVideos();
-    this._setupTopLevelViews();
-
-    shelby.models.multiplexedVideo.set('channel', channel);
-
-    shelby.models.guide.set({
-      displayState : libs.shelbyGT.DisplayState.channel
-    });
-
-    // TODO move this into handler where change is bound
-    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){

@@ -148,15 +148,15 @@
         if(!actionData) return false;
         // UP
         if (actionData.attr == "changeChannel" && actionData.val == 1){
-          channel = "entertain";
+          channel = "play";
         }
         // DOWN
         else if (actionData.attr == "changeChannel" && actionData.val == -1){
-          channel = "teach";
+          channel = "inform";
         }
         // RIGHT
         else if (actionData.attr == "changeVideo" && actionData.val == 1){
-          channel = "laugh";
+          channel = "giggle";
         }
         // LEFT
         else if (actionData.attr == "changeVideo" && actionData.val == -1){
