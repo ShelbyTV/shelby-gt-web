@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
+  <meta charset="utf-8">
+  <title>
+    <%= render :partial => "/home/title_tag" %>
+  </title>
+
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="icon"type="image/png" href="/favicon.png">
+  <%= stylesheet_link_tag "shelby-demo", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+
+  <%= javascript_include_tag "shelby-demo" %>
+</head>
+
+<body class="shelby">
+  <div id="fb-root"></div>
+  <div id="tv-screen" class="shelby-demo-wrapper">
+
+    <div class="inside-screen">
+      <div class="explanation">
+        Turn any website with video into a .TV!
+      </div>
+      <form action="search" method="get" accept-charset="utf-8">
+        <input type="text" name="query" value="http://www.reddit.com/r/youtubehaiku/" placeholder=""><!--
+        --><input class="submit" type="submit" value=" ▶ ">
+      </form>
+    </div>
+
+  </div> <!-- eo ~application -->
+  <% if (Rails.env == 'production' or Rails.env == 'staging') %>
+    <script>
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  <% end %>
+</body>
+</html>

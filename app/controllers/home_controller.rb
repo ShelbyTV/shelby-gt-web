@@ -122,6 +122,15 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles "make the web" (allowing logged-out users to see it)
+  #
+  # GET /get.tv/:url
+  #
+  def demo
+    render '/home/demo'
+  end
+
+  ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #
