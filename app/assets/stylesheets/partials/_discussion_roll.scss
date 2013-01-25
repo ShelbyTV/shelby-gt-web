@@ -516,7 +516,8 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__list--discussions-nav {
-  padding: 35px 0;
+  box-shadow: 0px 0px 7px 0px #667;
+  margin: 35px 0;
 }
 
 .discussion__item--discussion-roll {
