@@ -169,7 +169,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.userDesires.set({guideShown: false});
 
     if (typeof channel == "undefined") {
-      console.log("empty channel");
       channel = "giggle";
     }
 
