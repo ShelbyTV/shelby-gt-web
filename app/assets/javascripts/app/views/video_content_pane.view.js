@@ -46,6 +46,17 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       queuedVideos : shelby.models.queuedVideos,
       userDesires : shelby.models.userDesires
     }));
+
+    // CHANNEL HEADER
+    this.renderChild(new libs.shelbyGT.ChannelInfoView({
+      el: this.$('#js-channel-info-wrapper'),
+      guide : shelby.models.guide,
+      guideOverlayModel : shelby.models.guideOverlay,
+      userDesires : shelby.models.userDesires,
+      channel : shelby.models.multiplexedVideo
+    }));
+    ////-------------------------------------------////
+
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,
       playbackState : shelby.models.playbackState,

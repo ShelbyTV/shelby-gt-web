@@ -1,0 +1,31 @@
+@import "base";
+/*
+ *  Local variables
+ */
+$persistent_video_info__height: 180px;
+$persistent_video_info--next-frame-width: 180px;
+$persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
+
+.channel_info__wrapper {
+  width: 900px;
+  top: 0px;
+  height: 180px;
+  left: 50%;
+  margin: 0 -450px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1000;
+  background: $guide-bg-color;
+  &:before {
+    background-color: transparent;
+    box-shadow: $persistent_video_info__shadow;
+    content: "\0020";
+    display: block;
+    height: inherit;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 1;
+  }
+}
