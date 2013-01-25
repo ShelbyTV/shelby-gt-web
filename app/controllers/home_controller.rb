@@ -45,14 +45,14 @@ class HomeController < ApplicationController
 
           get_info_for_meta_tags(params[:path])
 
-          if @mobile_os
-            render '/mobile/search', :layout => 'mobile'
-          else
+          # if @mobile_os
+          #   render '/mobile/search', :layout => 'mobile'
+          # else
             # A/B test
             @seo_search_messaging = ab_test :seo_search_messaging
 
             render '/home/landing'
-          end
+          # end
 
         end
       }

@@ -20,7 +20,7 @@
     var shelbyTrackingCategory = "<%= shelby_tracking_category_for(@share_type) %>";
   </script>
 </head>
-<body class="shelby shelby--landing">
+<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
     <header class="shelby__header clearfix" role="banner">
       <button class="button_primer shelby-logo js-home">
