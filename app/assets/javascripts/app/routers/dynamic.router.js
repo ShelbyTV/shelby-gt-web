@@ -165,6 +165,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
 
+    shelby.models.userDesires.set({guideShown: false});
     shelby.models.multiplexedVideo.set('channel', channel);
 
     shelby.models.guide.set({

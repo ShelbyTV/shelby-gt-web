@@ -37,11 +37,7 @@
 
     _changeChannel : function(){
       if (this.options.multiplexedVideoModel.get('channel')) {
-        // set guide nav header text
-        //$('.guide-nav-item .js-search .current-channel').text(shelby.models.multiplexedVideoModel.get('channel'));
-
         this.collection.reset();
-
         var rollIds = shelby.config.multiplexedVideoRolls[this.options.multiplexedVideoModel.get('channel')];
         var rollModel;
         var self = this;

@@ -15,6 +15,10 @@
     opacity: 0.0;
   }
 
+  .channel_info__wrapper {
+    opacity: 0;
+  }
+
   .guide-toggle.hide,
   .guide-toggle.hide:hover {
     @include transition-delay(0s);
@@ -44,4 +48,5 @@
   #mini-video-progress {
     opacity: 1.0;
   }
+
 }

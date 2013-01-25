@@ -6,11 +6,12 @@
 libs.shelbyGT.ChannelInfoView = Support.CompositeView.extend({
 
   events : {
-    //"click .js-next-channel"      : "_skipToNextChannel",
-    //"click .js-prev-channel"      : "_skipToPreviousChannel"
+    "click .js-up-channel"      : "_skipToNextChannel",
+    "click .js-down-channel"    : "_skipToPreviousChannel"
   },
 
   initialize: function(opts){
+    this._userDesires = this.options.userDesires;
     this.options.guide.bind('change:displayState', this._onDisplayStateChange, this);
     this.options.channel.bind('change:channel', this._onChannelChange, this);
     this._currentChannel = null;
@@ -37,21 +38,22 @@ libs.shelbyGT.ChannelInfoView = Support.CompositeView.extend({
   },
 
   _onDisplayStateChange : function(model, state){
-    if (state == "channel"){
-      this.render();
-    }
+    if (state == "channel"){ this.render(); }
   },
 
   _onChannelChange : function(model, state){
     this._currentChannel = state;
+    this.render();
   },
 
   _skipToNextChannel : function(){
     console.log("NEXT CHANNEL");
+    this._userDesires.triggerTransientChange('changeChannel', 1);
   },
 
   _skipToPreviousChannel : function(){
     console.log("PREV CHANNEL");
+    this._userDesires.triggerTransientChange('changeChannel', -1);
   }
 
 });
