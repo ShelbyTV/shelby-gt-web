@@ -170,6 +170,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if (typeof channel == "undefined") {
       channel = "giggle";
+      shelby.router.navigate("channel/"+channel, {trigger: true, replace: true});
     }
 
     shelby.models.multiplexedVideo.set('channel', channel);
