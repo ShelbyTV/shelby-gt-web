@@ -26,7 +26,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //  structure
 ////////////////////////////////////////////////////////////////////////////
 .discussion__header {
-  background-color: $base;
+  background-color: white;
   box-shadow: 0px 0px 5px 0px black;
   left: 0;
   position: fixed;
@@ -140,10 +140,10 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 .discussion--recipients {
   padding: 0.5em 8px;
+}
 
-  .discussion__h2 {
-    display: inline-block;
-  }
+.discussion__list--recipients-to-label {
+  color: #666;
 }
 
 .discussion__list--recipients {
@@ -504,11 +504,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 
 .discussion__button--nav {
-  font-size: 2em;
-  line-height: 0.8;
-  padding: .2em;
+  line-height: 1.5;
   position: absolute;
-  top: 2px;
+  top: 5px;
 }
 
 .discussion__content--manager {
@@ -563,7 +561,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     margin-right: 2em;
   }
   
-  .discussion__h2 {
+  .discussion__list--recipients-to-label {
     display: none;
   }
   
