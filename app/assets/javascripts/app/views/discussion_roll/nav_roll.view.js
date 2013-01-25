@@ -35,6 +35,10 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
                           token:this.model.get('token'), 
                           overflowAt:10}), 
                         this.$(".js-discussion-roll-recipients"));
+                        
+    //subtitle is the last message from the last conversation
+    this.renderChildInto(new libs.shelbyGT.DiscussionRollLastMessageView({model:this.model}), 
+                        this.$(".js-discussion-roll-last-message"));
   }
   
 });
