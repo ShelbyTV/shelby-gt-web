@@ -51,7 +51,6 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.ChannelInfoView({
       el: this.$('#js-channel-info-wrapper'),
       guide : shelby.models.guide,
-      guideOverlayModel : shelby.models.guideOverlay,
       userDesires : shelby.models.userDesires,
       channel : shelby.models.multiplexedVideo
     }));

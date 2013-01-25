@@ -7,6 +7,7 @@ $channel_info__width: 200px;
 $channel_info__shadow: 0 0 2px 0 rgba(0,0,0,.4);
 
 .channel_info__wrapper {
+  display: none;
   width: $channel_info__width;
   height: $channel_info__height;
   top: 0px;

@@ -33,6 +33,7 @@
       if (this.options.multiplexedVideoModel.get('channel')) {
         shelby.router.navigate('channel/' + this.options.multiplexedVideoModel.get('channel'), {trigger: false, replace: true});
       }
+      $('.channel_info__wrapper').show();
     },
 
     _changeChannel : function(){

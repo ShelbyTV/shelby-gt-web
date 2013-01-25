@@ -172,7 +172,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       displayState : libs.shelbyGT.DisplayState.channel
     });
 
-    // TODO move this into handler where change is bound
     if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
   },
 

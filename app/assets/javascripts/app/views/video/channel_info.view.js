@@ -39,6 +39,7 @@ libs.shelbyGT.ChannelInfoView = Support.CompositeView.extend({
 
   _onDisplayStateChange : function(model, state){
     if (state == "channel"){ this.render(); }
+    else { this.$el.hide(); }
   },
 
   _onChannelChange : function(model, state){
@@ -47,12 +48,10 @@ libs.shelbyGT.ChannelInfoView = Support.CompositeView.extend({
   },
 
   _skipToNextChannel : function(){
-    console.log("NEXT CHANNEL");
     this._userDesires.triggerTransientChange('changeChannel', 1);
   },
 
   _skipToPreviousChannel : function(){
-    console.log("PREV CHANNEL");
     this._userDesires.triggerTransientChange('changeChannel', -1);
   }
 
