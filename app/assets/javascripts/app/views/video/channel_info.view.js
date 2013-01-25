@@ -35,6 +35,7 @@ libs.shelbyGT.ChannelInfoView = Support.CompositeView.extend({
       nextChannel: this._nextChannel,
       prevChannel: this._prevChannel
     }));
+    this.$el.show();
   },
 
   _onDisplayStateChange : function(model, state){

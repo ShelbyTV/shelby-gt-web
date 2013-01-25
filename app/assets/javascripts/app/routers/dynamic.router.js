@@ -17,6 +17,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
     "channel/:channel"                     : "displayChannel",
+    "channel"                              : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -166,13 +167,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
 
     shelby.models.userDesires.set({guideShown: false});
+
+    if (typeof channel == "undefined") {
+      console.log("empty channel");
+      channel = "giggle";
+    }
+
     shelby.models.multiplexedVideo.set('channel', channel);
+    shelby.models.multiplexedVideo.trigger('channel');
 
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.channel
     });
-
-    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){
