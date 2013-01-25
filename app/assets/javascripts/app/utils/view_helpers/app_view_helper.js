@@ -36,16 +36,30 @@ libs.shelbyGT.viewHelpers.app = {
 
   // return a concise and accurate date (ie. 2:48 PM (if it's today), Yesterday, Monday (if within a week), or actual date like 1/11/13)
   summaryDate: function(date){
-    var diff = (((new Date()).getTime() - date.getTime()) / 1000),
-    day_diff = Math.floor(diff / 86400);
-
-    if ( isNaN(day_diff) ){ return; }
-
-    return false ||
-      day_diff < 1 && date.format("h:MM TT") ||
-      day_diff == 1 && "Yesterday" ||
-      day_diff < 7 && date.format("dddd") ||
-      day_diff >= 7 && date.format("m/d/yy");
+    if(!date.getDOY){ return; }
+    
+    var now = new Date();
+    if(now.getYear() === date.getYear()){
+      var dayDiff = now.getDOY() - date.getDOY();
+      if(dayDiff == 0){
+        return date.format("h:MM TT");
+      }
+      if(dayDiff == 1){
+        return "Yesterday";
+      }
+      if(dayDiff < 7){
+        return date.format("dddd");
+      }
+    }
+    
+    // > 7 days ago
+    return date.format("m/d/yy");
   }
 
+};
+
+// Return the Day Of Year
+Date.prototype.getDOY = function() {
+  var onejan = new Date(this.getFullYear(),0,1);
+  return Math.ceil((this - onejan) / 86400000);
 };

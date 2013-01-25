@@ -545,7 +545,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   
   .discussion__list--recipients {
     display: inline-block;
-    max-width: 450px;
+    max-width: 420px;
   }
   
   .discussion__item--recipients {
@@ -569,6 +569,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .discussion__item--summary {
     color: #aaa;
     font-size: 0.75em;
-    padding: 5px 100px 10px 10px;
+    padding: 5px 60px 10px 10px;
   }
 }
