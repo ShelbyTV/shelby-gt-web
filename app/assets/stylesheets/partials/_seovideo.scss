@@ -142,14 +142,9 @@ p {
 .form_module--search {
   font-size: 1.4em;
 
-  .form_input {
-    display: block;
-    width: 100%;
-  }
-
-  .form_submit {
-    display: block;
-    padding: 0.71em 2em;
+  .button_primer {
+    margin-left: 8px;
+    padding: 0em 2em;
   }
 }
 

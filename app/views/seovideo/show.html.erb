@@ -29,23 +29,27 @@
       </h2>
 
       <div class="media_module seovideo__banner clearfix">
-        <form action="/search" id="js-seovideo-search-form" class="form_module form_module_horz form_module--search">
-          <div class="media_image media_image--rev">
-            <button class="button_primer button_blue form_submit" tabindex="0" <% if (@search_query)%>autofocus="autofocus"<% end %>>
-              Search
-            </button>
-          </div>
-
-          <div class="media_body">
+        <form action="/search" id="js-seovideo-search-form" class="form_module form_module--search">
+          <fieldset class="search_module">
             <label for="js-seovideo-search-form-text" class="form_label visuallyhidden">
-              Search:
+              Search Shelby.tv:
             </label>
 
-            <% if @search_query %>
-              <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" type="text" class="form_input" />
-            <% else %>
-              <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input" autofocus="autofocus" />
-            <% end %>
+            <button class="button_primer button_blue search_module__submit" tabindex="0" <% if (@search_query)%>autofocus="autofocus"<% end %>>
+              Search
+            </button>
+
+            <span class="search_module__input_wrapper">
+              <% if @search_query %>
+                <input id="js-seovideo-search-form-text" name="query" value="<%= @search_query%>" type="text" class="form_input search_module__input" />
+              <% else %>
+                <input id="js-seovideo-search-form-text" name="query" type="text" class="form_input search_module__input" autofocus="autofocus" />
+              <% end %>
+            </span>
+          </fieldset><!-- eo search_module -->
+
+          <div class="media_body">
+
           </div>
         </form>
       </div>
