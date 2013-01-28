@@ -81,11 +81,6 @@ body {
 .shelf__lining {
   margin: 0 auto;
   max-width: $landing-page-width;
-
-  //NON-Normative
-  .form_input {
-    height: 2.4em;
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -295,9 +290,14 @@ body {
     max-width: 600px;
   }
 
-  //----- Non-normativeElements -----------------------------------------
-  .media_image {
-    overflow: visible;
+  //----- Non-normative Elements -----------------------------------------
+  .search_module {
+    font-size: 1.1em;
+  }
+
+  .button_primer {
+    padding: 0 2em;
+    margin-left: 1em;
   }
 }
 
@@ -325,8 +325,6 @@ body {
   }
 
   //----- Non-normativeElements -----------------------------------------
-  .media_image {
-  }
 }
 
 

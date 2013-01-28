@@ -7,3 +7,28 @@
 .search_module {
 
 }
+
+.search_module__submit,
+.search_module__input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.search_module__submit,
+.search_module__input_wrapper {
+  height: 3.25em;
+}
+
+.search_module__submit {
+  float: right;
+}
+
+.search_module__input_wrapper {
+  display: block;
+  overflow: hidden;
+}
+
+.search_module__input {
+  height: inherit;
+  width: 100%;
+}
