@@ -9,16 +9,12 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  OVERRIDES
 //------------------------------------------------------------------------------
-html,
-body {
-  overflow: visible;
-}
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--landing {
   background-color: $landing-page-footer-background;
   height: auto;
-  overflow: auto;
+  overflow: visible;
   position: relative;
 
   //TODO: determine why this override is necessary.
