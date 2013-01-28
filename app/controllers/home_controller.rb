@@ -42,6 +42,7 @@ class HomeController < ApplicationController
           @access_error = params[:access] == "nos"
           @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
+          @is_mobile = is_mobile?
 
           get_info_for_meta_tags(params[:path])
 

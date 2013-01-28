@@ -10,15 +10,18 @@
 			<% end %>
 		<% else %>
 			 <li><h3 class="ui-li-heading">sorry, we didn't find anything, try again.</h3></li>
-		<% end %> 
+		<% end %>
 	</ul>
 </div>
 
 <script>
-	$('#mobile-roll-title').text("The <%= @roll['title'].titlecase %> Roll");
-	$(document).bind('pageinit', function(){
-		$(window).bind('orientationchange', function(event){
-			$('body').toggleClass('landscape');
-		});		
+	$(function(){
+		var title = "<%= @roll['title'].titlecase %>";
+		$('#mobile-roll-title').text("Results: " + title.split(':')[1]);
+		$(document).bind('pageinit', function(){
+			$(window).bind('orientationchange', function(event){
+				$('body').toggleClass('landscape');
+			});
+		});
 	});
 </script>

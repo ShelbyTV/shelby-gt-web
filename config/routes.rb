@@ -1,6 +1,4 @@
 ShelbyGtWeb::Application.routes.draw do
-  get '/mobile/search' => 'mobile#search', :as => :mobile_search
-
   get '/genius' => 'genius#index'
   get '/fb/genius' => 'facebook_genius#index'
   post '/fb/genius' => 'facebook_genius#index'
