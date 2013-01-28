@@ -2,8 +2,12 @@
   oAuth via popup window
 **/
 $(function(){
-  $('.js-authorize').on('click',function(e){
-  // $(".js-authorize").live('click', function(e){ //weird: .on("click") should work...
+  $('body').on('click','.js-authorize',function(e){
+
+    if($(this).hasClass('disabled')) {
+      return false;
+    }
+
     if( Browser.supportsAuthPopup() ){
       var width = $(this).data('popup_width'),
           height = $(this).data('popup_height'),
