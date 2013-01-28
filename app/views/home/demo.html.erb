@@ -20,24 +20,44 @@
   <%= stylesheet_link_tag "shelby-demo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
 
-  <%= javascript_include_tag "shelby-demo" %>
+  <%= javascript_include_tag "demo" %>
 </head>
 
 <body class="shelby">
   <div id="fb-root"></div>
-  <div id="tv-screen" class="shelby-demo-wrapper">
-
+  <div id="banner-wrapper" class="hidden">
+    <div id="banner-inner">
+      Welcome. To heaven. On a stick.
+    </div>
+  </div>
+  <iframe src="<%= Settings::Application.url %>/search" class="hidden"></iframe>
+  <div id="static-wrapper">
     <div class="inside-screen">
       <div class="explanation">
         Turn any website with video into a .TV!
       </div>
-      <form action="search" method="get" accept-charset="utf-8">
-        <input type="text" name="query" value="http://www.reddit.com/r/youtubehaiku/" placeholder=""><!--
+      <form id="js-submission-form">
+        <input type="text" class="js-website-to-submit" value="http://www.reddit.com/r/youtubehaiku/" placeholder=""><!--
         --><input class="submit" type="submit" value=" ▶ ">
       </form>
+      <script>
+        $(document).ready(function(){
+          $('#js-submission-form').submit(function(){
+            var _query = $('.js-website-to-submit').val();
+            var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
+            $('iframe').attr('src', _newSrc);
+            setTimeout(function(){
+              $('iframe').removeClass('hidden').addClass('with-banner');
+              $('#static-wrapper').addClass('hidden');
+              $('#banner-wrapper').removeClass('hidden');
+            }, 1500);
+            return false;
+          });
+        });
+      </script>
     </div>
+  </div> <!-- eo ~static-wrapper -->
 
-  </div> <!-- eo ~application -->
   <% if (Rails.env == 'production' or Rails.env == 'staging') %>
     <script>
       var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
