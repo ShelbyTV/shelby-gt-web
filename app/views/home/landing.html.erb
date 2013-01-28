@@ -256,9 +256,6 @@
     <% end %>
 
     $(document).ready(function(){
-      if( Browser.isMobile && !Browser.isIpad()) {
-        $('.guide-presentation-selector').hide();
-      }
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
