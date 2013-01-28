@@ -1,30 +1,28 @@
-//-------------------------
-// header bar
-//-------------------------
-
+//------------------------------------------------------------------------------
+// BLOCK -- header bar
+//------------------------------------------------------------------------------
 .isoroll__header {
-  max-height: 36px;
+  height: $app-header__height;
   overflow: hidden;
   border-bottom: none;
 }
+    .current-roll {
+      float: left;
+      width: $guide-width;
+    }
 
-
-.current-roll {
-  float: left;
-  width: $guide-width;
-}
-
-//main nav list
+//------------------------------------------------------------------------------
+//  ELEMENTS
+//------------------------------------------------------------------------------
 .isoroll-nav__list {
+  height: inherit;
   margin: 0;
   padding: 0;
 }
 
-//------------------------------------------------------------------------------
-//  Root nav list item (rolls list)
-//------------------------------------------------------------------------------
 .isoroll-nav__item {
-  display: block;
+  display: inline-block;
+  height: inherit;
   float: left;
   margin: 0;
   padding: 0;
@@ -34,39 +32,35 @@
     float: right;
   }
 }
-  //------------------------------------------------------------------------------
-  //  Main Parent Roll Overrides
-  //------------------------------------------------------------------------------
-  .isoroll-nav__item--parent {
-    padding: 0;
+    //------------------------------------------------------------------------------
+    //  MODIFIERS of isoroll-nav__item
+    //------------------------------------------------------------------------------
+    .isoroll-nav__item--parent { //First Roll (Parent of all mulit-rolls)
+      padding: 0;
 
-    .isoroll-nav__button {
-      background: black;
+      .isoroll-nav__button {
+        background: black;
+      }
+
+      .isoroll-nav__title {
+      }
     }
 
-    .isoroll-nav__title {
-    }
-  }
 
-  //------------------------------------------------------------------------------
-  //  Child Roll Overrides
-  //------------------------------------------------------------------------------
-  .isoroll-nav__item--child {
-    .isoroll-nav__avatar {
-      display: none;
+    .isoroll-nav__item--child { //Subsequent Rolls (belonging to Parent account)
+      .isoroll-nav__avatar {
+        display: none;
+      }
     }
-  }
 
-  //------------------------------------------------------------------------------
-  //  Currently Active Roll Overrides
-  //------------------------------------------------------------------------------
-  .isoroll-nav__item--active {
-    .isoroll-nav__button,
-    .isoroll-nav__button:hover {
-      @include gradient-primer(#222);
-      color: #efefef;
+
+    .isoroll-nav__item--active { //Currently Active Roll -- The one the user is watching
+      .isoroll-nav__button,
+      .isoroll-nav__button:hover {
+        @include gradient-primer(#222);
+        color: #efefef;
+      }
     }
-  }
 
 .isoroll-nav__button {
   @include ellipsis;
@@ -81,7 +75,7 @@
   margin: 0;
   max-width: $guide-width * 0.75;
   min-width: $guide-width / 4;
-  height: 35px;
+  height: inherit;
   text-align: center;
   text-decoration: none;
 
@@ -95,10 +89,27 @@
     @include gradient-primer(#111);
   }
 }
+    //------------------------------------------------------------------------------
+    //  MODIFIERS of isoroll-nav__button
+    //------------------------------------------------------------------------------
+    //secondary nav buttons
+    //aligned right, look different from multi-roll menu
+    .isoroll-nav__button--unfollow,
+    .isoroll-nav__button--shelby {
+      font-size: 1.2em;
+      margin: 5px 5px 5px 0;
+      padding-top: 0.4em;
+      padding-bottom: 0.4em;
+
+      .light {
+        font-weight: 100;
+      }
+    }
 
 .isoroll-nav__title {
   display: inline-block;
-  margin: 10px 10px 8px;
+  height: inherit;
+  margin: 1em 1em 0;
 }
 
 
@@ -109,26 +120,13 @@
   background-size: cover;
   display: inline-block;
   float: left;
-  height: 100%;
+  height: inherit;
   overflow: hidden;
   width: 3em;
   vertical-align: middle;
 
   img {
     width: 100%;
-  }
-}
-
-//secondary nav buttons
-.isoroll-nav__button--unfollow,
-.isoroll-nav__button--shelby {
-  font-size: 1.2em;
-  margin: 5px 5px 5px 0;
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-
-  .light {
-    font-weight: 100;
   }
 }
 

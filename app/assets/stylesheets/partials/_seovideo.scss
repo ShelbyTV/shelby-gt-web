@@ -100,6 +100,10 @@ p {
 
 .shelby-header {
   position: relative;
+
+  .shelby_logo {
+    font-size: 1.5em;
+  }
 }
 
 .seovideo-wrapper {
@@ -138,14 +142,9 @@ p {
 .form_module--search {
   font-size: 1.4em;
 
-  .form_input {
-    display: block;
-    width: 100%;
-  }
-
-  .form_submit {
-    display: block;
-    padding: 0.71em 2em;
+  .button_primer {
+    margin-left: 8px;
+    padding: 0em 2em;
   }
 }
 
@@ -377,6 +376,7 @@ p {
     }
   }
 }
+
 ////////////////////////////////////////////////////////////////////////////
 //  for wide screens
 ////////////////////////////////////////////////////////////////////////////
@@ -568,4 +568,13 @@ p {
   .seovideo__h2 {
     display: none;
   }
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  BLOCK MODIFIER
+//  WHEN THERES NO RELATED VIDEOS
+////////////////////////////////////////////////////////////////////////////
+.seovideo--light {
+  max-width: $seo-column-left;
 }

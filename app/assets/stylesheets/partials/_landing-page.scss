@@ -66,6 +66,18 @@ body {
   margin-top: .5em;
 }
 
+.shelby--mobile {
+  font-size: 50%;
+
+  .shelf--community {
+    .icon-player_play {
+      &:before {
+        font-size: 3.2em;
+      }
+    }
+  }
+}
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -81,11 +93,6 @@ body {
 .shelf__lining {
   margin: 0 auto;
   max-width: $landing-page-width;
-
-  //NON-Normative
-  .form_input {
-    height: 2.4em;
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -283,7 +290,6 @@ body {
 
   //----- Elements -----------------------------------------
   .shelf__h1 {
-
   }
 
   .shelf__block {
@@ -295,9 +301,14 @@ body {
     max-width: 600px;
   }
 
-  //----- Non-normativeElements -----------------------------------------
-  .media_image {
-    overflow: visible;
+  //----- Non-normative Elements -----------------------------------------
+  .search_module {
+    font-size: 1.1em;
+  }
+
+  .button_primer {
+    padding: 0 2em;
+    margin-left: 1em;
   }
 }
 
@@ -325,8 +336,6 @@ body {
   }
 
   //----- Non-normativeElements -----------------------------------------
-  .media_image {
-  }
 }
 
 
@@ -532,6 +541,7 @@ body {
 //  - BREAKPOINTS ARE BASED ON NEEDS OF THE CONTENT
 //  - BREAKPOINTS SHOULD NEVER ACCOMODATE SPECIFIC DEVICES
 @media screen and (max-width: 1050px) { //Based on shelf--footer content
+  //----- Modifiers ----------------------------------------------------------
   .shelf--footer {
     .shelf__list--inline {
       display: block;
@@ -543,29 +553,82 @@ body {
     .shelf__list--sources {
       -webkit-background-size: contain;
       background-size: contain;
+      height: 0;
+      padding: 20% 0 0;
     }
   }
 }
 
 @media screen and (max-width: 850px) { //Based on shelf--community content
+  //----- Block ----------------------------------------------------------
+
+  //.blocks
+
+  //----- Elements ----------------------------------------------------------
+
   .shelf__item {
     float: none;
   }
+
+  //----- Modifiers ----------------------------------------------------------
 
   .shelf--community {
     .shelf__item {
       width: 50%;
     }
   }
-}
 
-@media screen and (max-width: 600px) { //Based on shelf--community content
-  .shelf--community {
-    .shelf__item {
-      width: auto;
+  .shelf--about {
+    .shelf__block {
+      &:before {
+        display: none;
+      }
     }
   }
 }
+
+@media screen and (max-width: 600px) { //Based on shelf--community content
+  //----- Block ----------------------------------------------------------
+  .shelf {
+    .shelf__lining {
+      padding: 2em;
+    }
+
+    .shelf__h1 {
+      font-size: 3em;
+    }
+
+    .shelf__h2 {
+      font-size: 2.5em;
+      padding: 0;
+    }
+  }
+
+  //----- Modifiers ----------------------------------------------------------
+  .shelf--community {
+    .shelf__item {
+      float: none;
+      width: auto;
+    }
+  }
+
+  .shelf--signup {
+    .shelf__block {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .shelf__list--social {
+    & > li {
+      display: list-item;
+    }
+
+  }
+}
+
+// END OF MEDIA QUERIES
 
 //----- Non-normative Elements -----------------------------------------
 .frame--shelf {
