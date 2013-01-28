@@ -509,6 +509,13 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   top: 5px;
 }
 
+.discussion__button--nav-far-right {
+  line-height: 1.5;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
 .discussion__content--manager {
   display: none;
 }
@@ -570,4 +577,35 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     font-size: 0.75em;
     padding: 5px 60px 10px 10px;
   }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Explanation: some informative copy and images
+////////////////////////////////////////////////////////////////////////////
+
+.discussion__explanation {
+  background: white;
+  box-shadow: 0px 0px 7px 2px #333;
+  display: none;
+  position: fixed;
+  top: 50px;
+  border: 2px solid $shelby-blue;
+  border-radius: $radius;
+  padding: 1em 2em 0;
+  width: 575px;
+}
+
+.discussion__explanation--dismiss {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.discussion__footnote {
+  color: #ccd;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+  text-align: center;
+  margin: 3em 0 .5em;
 }

@@ -5,7 +5,9 @@
 libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   
   events : {
-    "click .discussion__item--current-discussion-roll" : "_disappear"
+    "click .discussion__item--current-discussion-roll"  : "_disappear",
+    "click .discussion__explanation--present"           : "_showExplanation",
+    "click .discussion__explanation--dismiss"           : "_dimissExplanation"
   },
   
   el: '#js-discussions-manager',
@@ -58,6 +60,11 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
             viewer:self.options.viewer }), 
           '.js-dicussion-rolls-nav' );
       });
+      if(this._discussionRolls.length === 0){
+        this._showExplanation();
+        this.$('.discussion__explanation--dismiss').hide();
+        this.$('.discussion__explanation--present').hide();
+      }
     }
   },
   
@@ -66,6 +73,14 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
     e.preventDefault();
     
     this.options.delegate.discussionRollsManagerViewShouldDisappear();
+  },
+  
+  _showExplanation: function(){
+    this.$(".discussion__explanation").show();
+  },
+  
+  _dimissExplanation: function(){
+    this.$(".discussion__explanation").hide();
   }
   
 });
