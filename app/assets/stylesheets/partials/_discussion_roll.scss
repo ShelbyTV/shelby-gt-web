@@ -16,7 +16,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 //------------------------------------------------------------------------------
-//  Shelby Chat/Discussion
+//  Shelby Discussion Rolls
 //------------------------------------------------------------------------------
 .discussion {
   font-size: 1.3em;
@@ -26,7 +26,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //  structure
 ////////////////////////////////////////////////////////////////////////////
 .discussion__header {
-  background-color: $base;
+  background-color: white;
   box-shadow: 0px 0px 5px 0px black;
   left: 0;
   position: fixed;
@@ -36,7 +36,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__body {
-  padding-top: 80px;
+  padding-top: 120px;
   padding-bottom: 120px;
   z-index: 1;
 }
@@ -140,10 +140,10 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 .discussion--recipients {
   padding: 0.5em 8px;
+}
 
-  .discussion__h2 {
-    display: inline-block;
-  }
+.discussion__list--recipients-to-label {
+  color: #666;
 }
 
 .discussion__list--recipients {
@@ -187,6 +187,10 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 }
 
+//only shown in manager's nav view (below)
+.discussion__item--content-updated-at {
+  display: none;
+}
 
 
 //my initial inclination was to &.recipien... the below classes
@@ -196,8 +200,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .recipients--shelby {
-  span {
-    opacity: .5; //sorta hacky.
+  /* never showing the supplementray-info for now */
+  span.supplementary-info {
+    display: none;
   }
 }
 
@@ -222,11 +227,15 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 .discussion__list--conversation {
 
   .load-more {
+    position: absolute;
+    top: 75px;
     list-style-type: none;
+    width: 100%;
   }
 
   .load-more-button {
     width: 200px;
+    margin: 0 auto;
   }
 }
 
@@ -316,22 +325,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  Attach Video List
-////////////////////////////////////////////////////////////////////////////
-.discussion__list--attachment {
-  margin-right: 35px;
-}
-
-.discussion__item--attachment {
-  display: inline-block;
-  margin: 10px;
-  position: relative;
-}
-
-.discussion__item-thumbnail {
-  width: 85px;
-}
 
 ////////////////////////////////////////////////////////////////////////////
 //  Attachment UI buttons
@@ -350,15 +343,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .icon {
     display: none;
   }
-}
-
-.discussion__button--remove {
-  border-radius: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-  position: absolute;
-  right: -10px;
-  top: -7px;
 }
 
 
@@ -516,15 +500,20 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 ////////////////////////////////////////////////////////////////////////////
-//  Manager: navigations of all shelby chats
+//  Manager: navigations of all shelby discussion rolls
 ////////////////////////////////////////////////////////////////////////////
 
 .discussion__button--nav {
-  font-size: 2em;
-  line-height: 0.8;
-  padding: .2em;
+  line-height: 1.5;
   position: absolute;
-  top: 2px;
+  top: 5px;
+}
+
+.discussion__button--nav-far-right {
+  line-height: 1.5;
+  position: absolute;
+  top: 5px;
+  right: 20px;
 }
 
 .discussion__content--manager {
@@ -532,7 +521,8 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__list--discussions-nav {
-  padding: 35px 0;
+  box-shadow: 0px 0px 7px 0px #667;
+  margin: 35px 0;
 }
 
 .discussion__item--discussion-roll {
@@ -543,17 +533,79 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   border: 1px solid black;
   border-top: none;
   font-size: 1.3em;
-  min-height: 75px;
-  padding: .5em;
   
   &:hover, &.discussion__item--current-discussion-roll {
-    background-color: #f5f6f7;
+    background-color: #f0f1ff;
   }
   
-  a {
+  > a {
+    display: block;
     text-decoration: none;
+    min-height: 75px;
+    padding: 0 0.5em;
   }
-  .discussion__h2 {
+  
+  .discussion--recipients {
+    padding: 10px 10px 0;
+  }
+  
+  .discussion__list--recipients {
+    display: inline-block;
+    max-width: 420px;
+  }
+  
+  .discussion__item--recipients {
+    font-weight: 600;
+  }
+  
+  .discussion__item--content-updated-at {
+    color: $shelby-blue;
+    display: block;
+    float: right;
+    font-weight: 600;
+    font-size: 0.75em;
+    line-height: 1.6em;
+    margin-right: 2em;
+  }
+  
+  .discussion__list--recipients-to-label {
     display: none;
   }
+  
+  .discussion__item--summary {
+    color: #aaa;
+    font-size: 0.75em;
+    padding: 5px 60px 10px 10px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  Explanation: some informative copy and images
+////////////////////////////////////////////////////////////////////////////
+
+.discussion__explanation {
+  background: white;
+  box-shadow: 0px 0px 7px 2px #333;
+  display: none;
+  position: fixed;
+  top: 50px;
+  border: 2px solid $shelby-blue;
+  border-radius: $radius;
+  padding: 1em 2em 0;
+  width: 575px;
+}
+
+.discussion__explanation--dismiss {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.discussion__footnote {
+  color: #ccd;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+  text-align: center;
+  margin: 3em 0 .5em;
 }

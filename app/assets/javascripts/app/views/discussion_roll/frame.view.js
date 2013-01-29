@@ -47,8 +47,9 @@ libs.shelbyGT.DiscussionRollFrameView = libs.shelbyGT.ListItemView.extend({
     
     if(this.model.get('conversation') && this.model.get('conversation').get('messages').size() > 0){
       this.model.get('conversation').get('messages').each( function(msg){
+        if(!msg.has('text')){ return; }
         msgFromViewer = (msg.get('user_id') === viewer || msg.get('nickname') === viewer);
-        displayTimestamp = !lastMsg || self._msBetweenMessages(lastMsg, msg) > self.options.msBetweenTimestamps;
+        displayTimestamp = lastMsg && self._msBetweenMessages(lastMsg, msg) > self.options.msBetweenTimestamps;
         convoEl.append(self._messageTemplate({msg:msg, msgFromViewer:msgFromViewer, displayTimestamp:displayTimestamp}));
         lastMsg = msg;
       });

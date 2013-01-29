@@ -1,7 +1,0 @@
-<select id="js-discussion-roll-chooser" class="frame-sharing__roll-selection">
-	<option selected="selected" class="js-new-chat-option" value="false">create new group…</option>
-	<option value="false" disabled>⤹ or choose an existing chat ⤵</option>
-	<% discussionRolls.chain().reverse().each(function(roll){ %>
-		<option value="<%= roll.id %>" data-token="<%= roll.get('token') %>" ><%= roll.get('title') %></option>
-	<% }) %>
-</select>
