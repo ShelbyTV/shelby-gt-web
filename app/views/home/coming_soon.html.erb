@@ -36,15 +36,19 @@
 
   <div id="static-wrapper">
     <div class="inside-screen">
-      <div class="explanation">
-        Turn any website with video into a .TV!
-      </div>
+      <h1>
+        Full screen video. Instant on. Everywhere.
+      </h1>
+      <h2>
+        Turn any webpage with video into a Shelby experience.
+      </h2>
       <form id="js-submission-form">
-        <input type="text" class="js-website-to-submit" value="http://www.reddit.com/r/youtubehaiku/" placeholder=""><!--
+        <input type="text" class="js-website-to-submit" value="http://www.reddit.com/r/videos" placeholder=""><!--
         --><input class="submit" type="submit" value=" ▶ ">
       </form>
       <script>
         $(document).ready(function(){
+          $('input').select();
           $('#js-submission-form').submit(function(){
             var _query = $('.js-website-to-submit').val();
             var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
