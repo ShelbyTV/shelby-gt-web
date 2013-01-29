@@ -45,7 +45,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/search' => "home#search"
   get '/channel/:channel' => "home#channel"
 
-  get '/iwantmy.tv' => "home#demo"
+  get '/comingsoon' => "home#coming_soon"
 
   get '/signout' => "home#signout", :as => :signout
 

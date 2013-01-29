@@ -127,10 +127,10 @@ class HomeController < ApplicationController
   ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
-  # GET /get.tv/:url
+  # GET /comingsoon/:url
   #
-  def demo
-    render '/home/demo'
+  def coming_soon
+    render '/home/coming_soon'
   end
 
   ##
