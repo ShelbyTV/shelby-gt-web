@@ -18,10 +18,9 @@
   $(function(){
     var title = "<%= @roll['title'].titlecase %>";
     var url = $.getUrlParams();
-    console.log('url', url);
     var leader = "Results: ";
-    if (url == 'src') {
-      title = ':' + $.getUrlParam('src');
+    if (url == 'q') {
+      title = ':' + $.getUrlParam('q');
       leader = '';
     }
     $('#mobile-roll-title').text(leader + title.split(':')[1]);
