@@ -1,26 +1,20 @@
-@import "base";
+.video_progress--mini__wrapper {
+  @include transition-property('opacity');
+  @include transition-duration(.3s);
+  @include transition-timing-function(ease-in-out);
+  @include transition-delay(0s);
 
-.mini-videoplayer__wrapper,
-#mini-video-progress {
-  bottom: $persistent_video_info--height;
+  bottom: 0;
   width: 100%;
   position: absolute;
   height: 2px;
   z-index: 1;
   opacity: 0.0;
-  
-  @include transition-property('opacity');
-	@include transition-duration(.3s);
-	@include transition-timing-function(ease-in-out);
-	@include transition-delay(0s);
-	
-	.videoplayer-progress__load,
-  .videoplayer-progress__elapsed {
-    height: 3px;
-  }
 }
 
-.mini-videoplayer {
+.video_progress--mini {
+  margin: 0;
+
   > div {
     border-radius: 0;
     margin: 0;
