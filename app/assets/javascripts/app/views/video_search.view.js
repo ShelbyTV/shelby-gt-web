@@ -30,12 +30,14 @@
       if (this.options.videoSearchModel.get('query')) {
         shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false, replace: true});
       }
+      this.oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
+      shelby.views.guideSpinner.setModel(this.oneTimeSpinnerState);
     },
 
     _doSearch : function(){
       var self = this;
       var searchQuery = this.options.videoSearchModel.get('query');
-
+      this.oneTimeSpinnerState.set('show', true);
       if (searchQuery) {
         shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false});
         this.collection.reset();
@@ -128,6 +130,7 @@
           if (firstFrame) {
             firstFrame.get('video').set('score', -1);
             shelby.models.guide.set('activeFrameModel', firstFrame);
+            this.oneTimeSpinnerState.set('show', false);
           }
         }
       }
