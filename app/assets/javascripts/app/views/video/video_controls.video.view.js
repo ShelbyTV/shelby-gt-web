@@ -20,6 +20,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   _shouldUpdateScrubHandle: true,
 
+  opts : {
+    touchEnabled : Modernizr.touch
+  },
+
   initialize: function(opts){
     this._playbackState = opts.playbackState;
     this._userDesires = opts.userDesires;
@@ -44,7 +48,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({}));
+    this.$el.html(this.template({opts: this.opts}));
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }
