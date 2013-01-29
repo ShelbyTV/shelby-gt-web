@@ -1,13 +1,13 @@
 .shelby-header {
   @include gradient-primer(adjust-lightness($guide-presentation-tab-bg-selected,2%));
+
   border-bottom: 1px solid $header-outline;
-  //NOT SURE HOW I FEEL ABOUT THIS position: absolute; business YET
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
   width: 100%;
-  z-index: 3;  /* need to keep this in front of the preroll-video-info */
+  z-index: 3;  // need to keep this in front of the preroll-video-info
 }
 
 .shelby-logo {
@@ -28,7 +28,7 @@
 
   color: $guide-presentation-button;
   font-size: 1em;
-  height: 35px;
+  height: $app-header__height;
   line-height: 2.4;
   margin: 0 1px;
   padding: 0 0.4em;

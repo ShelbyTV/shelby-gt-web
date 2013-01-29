@@ -36,7 +36,6 @@ class SeovideoController < ApplicationController
     setMetaDescription()
 
     # A/B tests
-    @seo_ad_videocard = ab_test :seo_ad_videocard
     @seo_search_messaging = ab_test :seo_search_messaging
 
     # if the referrer is google search, parse the search query out of its url
@@ -126,7 +125,7 @@ private
     # TODO: need to guarantee ordering by rec score
     @video_related_ids.each do |rec|
 
-      break if @video_related_videos.length >= 3
+      break if @video_related_videos.length >= 4
 
       begin
         url = "#{@@video_api_base}/#{rec["recommended_video_id"]}"

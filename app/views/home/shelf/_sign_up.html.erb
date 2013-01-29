@@ -9,16 +9,14 @@
       In the future, everyone gets their own channel. Start curating yours now.
     </p>
 
-    <form id="js-email-form" class="form_module shelf__form js-search-form" data-ga_action="Submit interest email">
-      <div class="media_module">
-        <div class="media_image media_image--rev">
-          <input type="submit" class="button_primer button_default form_submit" value="Sign Up" />
-        </div><!-- eo media_image -->
+    <form id="js-email-form" class="form_module shelf__form js-track-submit" data-ga_action="Submit interest email">
+      <fieldset class="search_module">
+        <input type="submit" class="button_primer button_default search_module__submit" value="Sign Up" />
 
-        <div class="media_body">
-          <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" tabindex="0" />
-        </div><!-- media_body -->
-      </div><!-- media_module -->
+        <span class="search_module__input_wrapper">
+          <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" />
+        </span>
+      </fieldset><!-- eo search_module -->
     </form>
   </div><!-- eo shelf__lining -->
 </div><!-- eo shelf -->

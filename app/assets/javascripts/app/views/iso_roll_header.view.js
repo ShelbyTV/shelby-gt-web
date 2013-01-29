@@ -21,6 +21,8 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
   },
 
   render : function(){
+    this.$el.removeAttr('hidden');
+
     this.$el.html(this.template({roll : this.model}));
 
     // if user can change the roll header image
