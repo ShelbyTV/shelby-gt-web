@@ -39,6 +39,24 @@
       if (searchQuery) {
         shelby.router.navigate('search?query=' + encodeURIComponent(this.options.videoSearchModel.get('query')), {trigger: false});
         this.collection.reset();
+
+
+        // this block will return any videos found on a given webpage
+        // scraping that page for a, iframe, object and embed tags for urls
+        if (/http/g.test(searchQuery)){
+          var webSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
+          webSearchModel.fetch({
+            data : {
+              provider : 'web',
+              q : searchQuery
+            },
+            success : function(webSearchModel, response) {
+              self._handleSearchResults(webSearchModel);
+            }
+          });
+        return;
+        }
+
         //youtube search
         var youtubeSearchModel = new libs.shelbyGT.VideoSearchResultsModel();
         youtubeSearchModel.fetch({
