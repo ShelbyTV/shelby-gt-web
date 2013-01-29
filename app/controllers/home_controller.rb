@@ -24,6 +24,8 @@ class HomeController < ApplicationController
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
           @hostname = request.host
+          @is_mobile = is_mobile?
+
           render '/home/isolated_roll' and return
         end
 
@@ -42,17 +44,18 @@ class HomeController < ApplicationController
           @access_error = params[:access] == "nos"
           @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
+          @is_mobile = is_mobile?
 
           get_info_for_meta_tags(params[:path])
 
-          if @mobile_os
-            render '/mobile/search', :layout => 'mobile'
-          else
+          # if @mobile_os
+          #   render '/mobile/search', :layout => 'mobile'
+          # else
             # A/B test
             @seo_search_messaging = ab_test :seo_search_messaging
 
             render '/home/landing'
-          end
+          # end
 
         end
       }

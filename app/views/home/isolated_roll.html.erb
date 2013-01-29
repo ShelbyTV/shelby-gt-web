@@ -25,7 +25,11 @@
 </head>
 
 <body>
-  <iframe id="shelby-roll" src="<%= Settings::Application.url %>/isolated-roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %><%= @hostname ? "?src=#{@hostname}" : "" %>"></iframe>
+  <% if @is_mobile %>
+    <iframe id="shelby-roll" src="<%= Settings::Application.mobile_url %>/roll/<%= @isolated_roll_id %><%= @hostname ? "?q=#{@hostname}" : "" %>"></iframe>
+   <% else %>
+    <iframe id="shelby-roll" src="<%= Settings::Application.url %>/isolated-roll/<%= @isolated_roll_id %><%= @frame_id ? '/frame/'+@frame_id : '' %><%= @hostname ? "?src=#{@hostname}" : "" %>"></iframe>
+  <% end %>
 
 	<% if (Rails.env == 'production' or Rails.env == 'staging') %>
 	  <script>

@@ -1,5 +1,4 @@
 ShelbyGtWeb::Application.routes.draw do
-
   get '/genius' => 'genius#index'
   get '/fb/genius' => 'facebook_genius#index'
   post '/fb/genius' => 'facebook_genius#index'

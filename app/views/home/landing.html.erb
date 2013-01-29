@@ -4,14 +4,13 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
-  <%= render :partial => "/home/meta_info" %>
   <meta charset="utf-8">
-  <title>
-    <%= render :partial => "/home/title_tag" %>
-  </title>
 
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
   <meta name="viewport" content="width=device-width">
-  <link rel="icon"type="image/png" href="/favicon.png">
+
   <%= stylesheet_link_tag "landing", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "common", "landing" %>
@@ -20,7 +19,7 @@
     var shelbyTrackingCategory = "Landing Page";
   </script>
 </head>
-<body class="shelby shelby--landing">
+<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
     <header class="shelby__header clearfix" role="banner">
       <button class="button_primer shelby-logo js-home">
@@ -267,10 +266,56 @@
 
       $('.js-search-form').on('submit', function(e){
         e.preventDefault();
-
         var searchQuery = $(e.currentTarget).find("#query").val();
+
         if (searchQuery) {
-          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
+          if("<%= @is_mobile %>" !== "") {
+            var params = {
+              "q" : searchQuery,
+              "max-results" : "50",
+              "orderby" : "relevance"
+            };
+
+              // Create a callback
+              var cb = function(res){
+              // Create array of returned YouTube video URLs
+              var urls = new Array();
+              if (typeof res !== 'undefined'){
+                res.forEach(function(r){
+                  if (r.link != undefined) {
+                    r.link.forEach(function(l){
+                      if(l.rel != undefined && l.rel == "alternate") {
+                        if(l.href != undefined) {
+                          urls.push(l.href);
+                        }
+                      }
+                    });
+                  }
+                });
+              }
+
+              if (urls.length !== 0) {
+                // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
+                $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
+                  if (data.status == 200){
+                    var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
+                    window.location.href = _rollUrl;
+                  }
+                  else { alert("Something went wrong, please try again."); }
+                });
+              }
+              else { //if no URLs:
+                $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
+              }
+            };
+
+            // Call ytQuery.query, passing params and your callback
+            ytQuery.query(params, cb);
+
+          } else {
+            window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
+          }
+
           try {
           _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
           } catch(e) {}

@@ -9,18 +9,18 @@
 			an amazing new way to find video!
     <% end %>
 	</p>
-	
+
 	<div id="app-button">
 		<% if @mobile_os == :ios %>
 			<div>
 				<a class="js-ios-app" href="<%= Settings::Application.ios_app_url %>">
-					<%= image_tag '/images/genius/CTA.png' %>			
-				</a>				
+					<%= image_tag '/images/genius/CTA.png' %>
+				</a>
 			</div>
 			<div id="mobile-web-app-link">
 				<a class="js-mobile-web-app-ios" href="<%= Settings::Application.mobile_url %>">
 					or try the web app
-				</a>				
+				</a>
 			</div>
 		<% else %>
 			<a class="js-mobile-web-app" data-role="button" data-mini="true" data-inline="true" href="<%= Settings::Application.mobile_url %>">
@@ -28,7 +28,7 @@
 			</a>
 		<% end %>
 	</div>
-	
+
 </div>
 <script>
 	$(document).ready(function(){
@@ -40,6 +40,6 @@
 		});
 		$('a.js-mobile-web-app-generic').click(function(){
 			_kmq.push(['record', "Click Mobile Web App on non-iOS Mobile Landing Page"]);
-		});		
+		});
 	});
 </script>
