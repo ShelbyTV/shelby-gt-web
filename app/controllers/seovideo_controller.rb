@@ -20,6 +20,8 @@ class SeovideoController < ApplicationController
     # route guarantees provider_name and provider_id will exist
     @video_provider_name = params.delete(:provider_name)
     @video_provider_id = params.delete(:provider_id)
+    @is_mobile = is_mobile?
+
 
     begin
       # sets all other @video_ variables relevant to primary video
