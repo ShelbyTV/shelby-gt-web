@@ -24,6 +24,8 @@ class HomeController < ApplicationController
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
           @hostname = request.host
+          @is_mobile = is_mobile?
+
           render '/home/isolated_roll' and return
         end
 
