@@ -75,7 +75,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
       this.$('.js-queue-frame').toggleClass('queued button_gray-light', !removeVideo);
-      this.$('.js-queue-frame .label').text(!removeVideo ? 'Queued' : 'Add to Queue');
+      this.$('.js-queue-frame .label').text(!removeVideo ? 'Liked' : 'Like');
+      this.$('.js-queue-frame i').toggleClass('icon-heart--red', !removeVideo);
     }
   },
 
@@ -168,8 +169,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.model.getFirstFrame().saveToWatchLater();
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued button_gray-light');
-    this.$('.js-queue-frame .label').text('Queued');
-    // start the transition which fades out the saved-indicator
+    this.$('.js-queue-frame .label').text('Liked');
+    this.$('.js-queue-frame i').addClass('icon-heart--red');
   },
 
   _copyFrameLink : function(e){

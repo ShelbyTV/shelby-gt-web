@@ -5,12 +5,14 @@
 <% var currentFramePermalink = libs.shelbyGT.viewHelpers.frame.permalink(currentFrame) %>
 <% var currentFrameHasRoll = currentFrame.has('roll') %>
 <% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+<% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
 
 <% var nextCreator = nextFrame.get('creator') %>
 <% var nextCreatorNickname = nextCreator ? nextCreator.get('nickname') : null %>
 <% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
 <% var nextVideo = nextFrame.get('video') %>
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
+<% var nextVideoIsInQueue = queuedVideosModel.videoIsInQueue(nextVideo) %>
 
 <div class="persistent_video_info animate_module">
   <div class="media_image--rev persistent_video_info__next-frame">
@@ -41,7 +43,7 @@
           Roll…
       </button>
 
-      <button class="js-queue-frame <%= (queuedVideosModel.videoIsInQueue(nextVideo) ) ? ' queued' : '' %> js-track-event"
+      <button class="js-queue-frame <%= nextVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
               data-ga_action="Click queue on next frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
@@ -49,7 +51,7 @@
         </i>
 
         <span class="label">
-          <%= (queuedVideosModel.videoIsInQueue(nextVideo)) ? 'Queued' : 'Queue' %>
+          <%= (nextVideoIsInQueue) ? 'Liked' : 'Like' %>
         </span>
       </button>
 
@@ -138,17 +140,15 @@
 
         <!-- ab test -->
         <li class="persistent_video_info__item clearfix">
-          <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= (queuedVideosModel.videoIsInQueue(currentVideo) ) ? ' queued' : '' %> js-track-event"
+          <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
               data-ga_action="Click queue on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %> js-command-icon">
+            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
             </i>
-              <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'heart') { %>
-                    Like
-              <% } else { %>
-                <%= (queuedVideosModel.videoIsInQueue(currentVideo)) ? 'Queued' : 'Queue' %>
-              <% } %>
+            <span class="label">
+              <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
+            </span>
           </button>
         </li>
         <!-- /ab test -->

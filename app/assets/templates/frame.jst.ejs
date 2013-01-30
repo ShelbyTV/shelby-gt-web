@@ -7,6 +7,8 @@
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
+<% var videoUnplayable = frameGroup.get('video_unplayable') %>
+<% var videoIsInQueue = queuedVideosModel.videoIsInQueue(video) %>
 
 <% var creator = frame.get('creator') %>
 <% var frameHasRoll = frame.has('roll') %>
@@ -16,7 +18,6 @@
 <% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
 <% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var frameViewed = frameGroup.get('collapsed') %>
-<% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
@@ -46,18 +47,16 @@
           <li class="menu_item" role="menuitem">
             <button class="button_primer frame-command command-queue
                            <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
-                           <%= (queuedVideosModel.videoIsInQueue(video) ) ? ' queued button_gray-light' : ' button_default' %>">
-              <i class="icon-<%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.heartQueueComparison : "videocard_queue" %>">
-              </i>
-
+                           <%= (videoIsInQueue ) ? ' queued button_gray-light' : ' button_default' %>">
+              <% if (shelby.models.guide.get('displayState')!=='watchLaterRoll') { %>
+                <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
+                </i>
+              <% } %>
               <span class="label">
-                <% if (shelby.models.user.isAnonymous() && shelby.abTests && shelby.abTests.heartQueueComparison == 'heart') { %>
-                  Like
-                <% } else { %>
-                  <%= (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                      (queuedVideosModel.videoIsInQueue(video) ) ? 'Queued' : 'Queue'
+                  <%=
+                    (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
+                      (videoIsInQueue ) ? 'Liked' : 'Like'
                   %>
-                <% } %>
               </span>
             </button>
           </li>
