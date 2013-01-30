@@ -11,6 +11,7 @@
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
+      "click .js-mail"                       : "_goToMail",
       "click .js-explore:not(.active-item)"  : "_goToExplore",
       "click .js-admin"                      : "_goToAdmin"
     },
@@ -61,6 +62,12 @@
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate('me', {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
+      }
+    },
+    
+    _goToMail : function(){
+      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.MAIL) ){
+        window.open("/mail", "_shelbyMail");
       }
     },
     

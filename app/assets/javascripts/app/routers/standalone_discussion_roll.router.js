@@ -6,18 +6,18 @@
 libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
 
   routes : {
-    "chat/:discussionRollId"  : "_displayDiscussionRoll",
-    "chat"                    : "_displayDiscussionRollsManager"
+    "mail/:discussionRollId"  : "_displayDiscussionRoll",
+    "mail"                    : "_displayDiscussionRollsManager"
   },
   
   _displayDiscussionRoll : function(discussionRollId, params){
-    // handle the "/chat/" route
+    // handle the "/mail/" route
     if(typeof(discussionRollId) === "undefined" || discussionRollId.length === 0){ 
       this._displayDiscussionRollsManager();
       return;
     }
     
-    // handle the "/chat/:discussionRollId"
+    // handle the "/mail/:discussionRollId"
     var discussionRoll = new libs.shelbyGT.DiscussionRollModel({id:discussionRollId, token:params.t});
     
     shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
@@ -25,7 +25,7 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
   },
   
   /*
-   * Want to show the manager which lets a signed-in user view all their chats.
+   * Want to show the manager which lets a signed-in user view all their discussionRolls.
    * Need some info about the signed in user tho.
    */
   _displayDiscussionRollsManager : function(){

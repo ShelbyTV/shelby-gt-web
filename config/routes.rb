@@ -35,7 +35,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/isolated-roll/:roll_id' => 'roll#show_isolated_roll'
 
   # DISCUSSION ROLLS
-  get '/chat/:roll_id' => 'discussion_roll#show'
+  get '/mail/:roll_id' => 'discussion_roll#show'
 
   # INVITES
   get '/invite/:invite_id' => "home#invite"
