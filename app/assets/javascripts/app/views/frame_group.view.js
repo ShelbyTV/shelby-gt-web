@@ -166,7 +166,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
 
     self = this;
-    this.model.getFirstFrame().saveToWatchLater();
+    this.model.getFirstFrame().like();
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');

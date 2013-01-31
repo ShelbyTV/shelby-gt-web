@@ -37,7 +37,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _queueVideo : function() {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      this.model.saveToWatchLater();
+      this.model.like();
       this._updateQueueButton(true);
     }
   },

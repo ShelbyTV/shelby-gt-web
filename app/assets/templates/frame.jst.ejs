@@ -45,9 +45,8 @@
             </li>
           <% } %>
 
-          <!-- ab test -->
           <li class="menu_item" role="menuitem">
-            <% if (!frameIsOnWatchLaterRoll) { %>
+            <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
               <button class="button_primer button_default frame-command command-queue js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_default' %>">
                 <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
@@ -64,7 +63,6 @@
               </button>
             <% } %>
           </li>
-          <!-- /ab test -->
 
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
