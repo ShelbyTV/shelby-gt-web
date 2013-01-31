@@ -28,8 +28,15 @@ window.__shelbyTurbo = {
       // help the returned JS can directly update the elements on the page
       this._tagVideoEmbeds(allVideoEmbeds);
       
+      $.each(allVideoEmbeds, function(i, embed){
+        embed.el = null; //don't try to unnecessarily serialize an element
+        $.ajax({
+          url: "<%= Settings::Application.protocol_matching_url %>/turbo_embellish",
+          data: embed 
+        });
+      });
       
-      console.log("[turbo] video embeds found + tagged:", allVideoEmbeds);
+      
       //TODO: ship them off for processing w/ username (this.nick)
       //      server needs to look to see if nick has rolled these videos, if so
       //      A) server returns some JS that directly modifies our host page
@@ -119,7 +126,7 @@ window.__shelbyTurbo = {
     var tag = "T-"+Date.now()+"-";
     $.each(allVideoEmbeds, function(i, embed){
       $(embed.el).attr('shelby-turbo-tag', tag+i);
-      embed['shelby-turbo-tag'] = tag+i;
+      embed.shelbyTurboTag = tag+i;
     });
   },
   

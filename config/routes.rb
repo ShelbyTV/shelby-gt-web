@@ -45,6 +45,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/search' => "home#search"
   get '/channel/:channel' => "home#channel"
   get '/signout' => "home#signout", :as => :signout
+  
+  # TURBO EMBED
+  get '/turbo_embellish' => 'turbo_embed#embellish'
 
   # used by vanity (A/B testing) to register partcipants via javascript
   match '/vanity/add_participant' => 'vanity#add_participant', :as => :add_participant
