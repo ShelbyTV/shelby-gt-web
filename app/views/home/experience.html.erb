@@ -45,7 +45,7 @@
         <div class="social">
           <div class="twitter"></div>
           <div class="facebook"></div>
-          <div class="google"></div>
+          <div id="google-plus-one" class="google"></div>
         </div>
       </div>
     </div>
@@ -68,11 +68,11 @@
           <div class="twitter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>
           </div>
-          <div class="facebook">
-            <div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like"></div>
-          </div>
           <div class="google">
             <div class="g-plusone" data-size="medium"></div>
+          </div>
+          <div class="facebook">
+            <div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like" data-href="http://shelby.tv/experience"></div>
           </div>
         </div>
       </div>
@@ -100,12 +100,6 @@
 
         var _queryDomain = _query.slice(7).split('/')[0];
         $('#site-url').text(_queryDomain);
-
-        // update social //
-
-        //FB.XFBML.parse();
-        //
-        //gapi.plusone.render('.google');
 
         // update iframe to fetch query //
         var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
@@ -149,14 +143,20 @@
             _newUrl = document.location.href+'?q='+_queryDomain;
           }
 
+          // update twitter share
           $('.social .twitter').append('<a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-url="'+ _newUrl+'" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>');
           twttr.widgets.load();
-
-          $('.social .facebook').append('<iframe src="http://www.facebook.com/plugins/like.php?href='+_newUrl+'&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;margin-top: -24px;" allowTransparency="true"></iframe>');
+          // update fb like
+          $('.social .facebook').append('<div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like" data-href="http://shelby.tv/experience"></div>');
+          FB.XFBML.parse();
+          // update goog +1
+          gapi.plusone.render('google-plus-one',{"size": "medium"});
         }, 6000);
 
-        // update progress of festch //
-        var _i = 0, progressStates = ["pulling","mixing","buffering"];
+        // update progress of fetch //
+        var _i = 0, progressStates = ["herding goats",
+                                      "attaching video to them",
+                                      "delivering goats via satellite"];
         var progressTimer = setInterval(function(){
           if (_i < 3){
             $('input:text').val(progressStates[_i]+'...');

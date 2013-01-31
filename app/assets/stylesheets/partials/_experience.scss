@@ -101,6 +101,12 @@ iframe.shelby {
       top: 35px;
       left: 212px;
     }
+
+    .facebook {
+      margin-right: 10px;
+      margin-left: 0px;
+      margin-top: 1px;
+    }
   }
 }
 
@@ -120,11 +126,13 @@ iframe.shelby {
   .twitter {
     float: right;
     margin-left: 10px;
+    margin-top: 1px;
   }
 
   .google {
-    float: right;
-    margin-right: -30px;
+    float: right !important;
+    margin-right: -30px !important;
+    margin-top: 1px !important;
   }
 }
 
