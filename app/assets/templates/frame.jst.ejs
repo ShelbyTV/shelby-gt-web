@@ -35,13 +35,15 @@
     <div class="frame-body">
       <div class="menu_module frame-menu">
         <ul class="menu_list frame-command-menu frame-list" role="menubar">
-          <li class="menu_item" role="menuitem">
-            <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-              <i class="icon-videocard_roll">
-              </i>
-                Roll…
-            </button>
-          </li>
+          <% if (!user.isAnonymous()) { %>
+            <li class="menu_item" role="menuitem">
+              <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+                <i class="icon-videocard_roll">
+                </i>
+                  Roll…
+              </button>
+            </li>
+          <% } %>
 
           <!-- ab test -->
           <li class="menu_item" role="menuitem">

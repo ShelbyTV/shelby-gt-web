@@ -34,14 +34,16 @@
       </h2>
     </a>
     <div hidden>
-      <button class="button_primer button_blue js-roll-frame js-track-event"
-              data-ga_category="Persistent Video Info"
-              data-ga_action="Click roll on next frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
-        <i class="icon-videocard_roll">
-        </i>
-          Roll…
-      </button>
+      <% if (!user.isAnonymous()) { %>
+        <button class="button_primer button_blue js-roll-frame js-track-event"
+                data-ga_category="Persistent Video Info"
+                data-ga_action="Click roll on next frame"
+                data-ga_label="<%= shelby.models.user.get('nickname') %>">
+          <i class="icon-videocard_roll">
+          </i>
+            Roll…
+        </button>
+      <% } %>
 
       <button class="js-queue-frame <%= nextVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
@@ -126,19 +128,21 @@
     <div class="persistent_video_info__foot <%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.dotTvFooterButtonPositions : "" %>">
       <hr class="hr hr--double" />
 
-      <ul class="persistent_video_info__list persistent_video_info__list--actions">
-        <li class="persistent_video_info__item clearfix">
-          <button class="button_primer button_blue persistent_video_info__button--roll js-roll-frame js-track-event"
-                  data-ga_category="Persistent Video Info"
-                  data-ga_action="Click roll on current frame"
-                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-videocard_roll">
-            </i>
-              Roll…
-          </button>
-        </li>
 
-        <!-- ab test -->
+      <ul class="persistent_video_info__list persistent_video_info__list--actions">
+        <% if (!user.isAnonymous()) { %>
+          <li class="persistent_video_info__item clearfix">
+            <button class="button_primer button_blue persistent_video_info__button--roll js-roll-frame js-track-event"
+                    data-ga_category="Persistent Video Info"
+                    data-ga_action="Click roll on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="icon icon-videocard_roll">
+              </i>
+                Roll…
+            </button>
+          </li>
+        <% } %>
+
         <li class="persistent_video_info__item clearfix">
           <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
@@ -151,9 +155,8 @@
             </span>
           </button>
         </li>
-        <!-- /ab test -->
 
-        <% if (!shelby.models.user.isAnonymous()) { %>
+        <% if (!user.isAnonymous()) { %>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_default persistent_video_info__button--share js-share-frame js-track-event"
                     data-ga_category="Persistent Video Info"
