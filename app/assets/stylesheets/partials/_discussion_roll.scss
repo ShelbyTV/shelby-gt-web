@@ -1,8 +1,19 @@
 //------------------------------------------------------------------------------
 //  Local Variables
 //------------------------------------------------------------------------------
-$conversation-avatar-width: 25px; //used in message_item and reply form
+$conversation-avatar-width: 45px; //used in message_item and reply form
+$main-column-width: 45em;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.list--inline {
+  & > li {
+    display: inline-block;
+  }
+}
 //------------------------------------------------------------------------------
 //  NON NORMATIVE
 //------------------------------------------------------------------------------
@@ -16,51 +27,74 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 //------------------------------------------------------------------------------
-//  Shelby Discussion Rolls
+//  BLOCK: discussion Shelby Discussion Rolls
 //------------------------------------------------------------------------------
 .discussion {
   font-size: 1.3em;
+  margin: 0 auto 2em;
+
+  &.discussions-manager-shown {
+    display: none;
+  }
+
+  &.discussion-attachment-shown {
+    display: none;
+  }
+
+  /////// NON-NORMATIVE OVERRIDES /////////////////////////////////////////////
+  .load-more {
+    width: 100%;
+    position: absolute;
+    top: -45px;
+  }
+
+  .load-more-button {
+    padding: 0.6em 2em;
+    width: auto;
+  }
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  structure
-////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
+//  Discussion Framework
+//------------------------------------------------------------------------------
 .discussion__header {
-  background-color: white;
-  box-shadow: 0px 0px 5px 0px black;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
+  .shelby_logo {
+    font-size: 2.6em;
+    margin-top: 0.2em;
+    text-align: center;
+  }
+}
+
+.discussion__nav {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+
+  a {
+    color: $shelby-green;
+  }
 }
 
 .discussion__body {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 60px;
+  padding-bottom: 10px;
   z-index: 1;
 }
 
 .discussion__footer {
-  background-color: #eeeeee;
-  @include filter-gradient(#eeeeee, #cccccc, vertical);
-  @include background-image(linear-gradient(top,  #eeeeee 0%,#cccccc 100%));
-
-  box-shadow: 0px 0px 5px 0px black;
-  bottom: 0px;
-  left: 0;
-  position: fixed;
-  right: 0;
-  z-index: 2;
 }
 
 /* anything that should be fixed width, centered */
 .discussion__content {
   margin: 0 auto;
-  max-width: 600px;
-  padding: 0 1em;
+  max-width: $main-column-width;
 }
 
+  .discussion__content--main {
+    margin-top: 4em;
+  }
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
 .discussion__h1,
 .discussion__h2 {
   font-family: $font-family-display;
@@ -69,13 +103,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 
 
 .discussion__h1 {
-  background-color: #35c4fa;
-  @include filter-gradient(#35c4fa, #0593ca, vertical);
-  @include background-image(linear-gradient(top,  #35c4fa 0%,#06a1db 56%,#0593ca 100%));
-
-  box-shadow: 0px 0px 3px 0px black;
   color: white;
-  text-shadow: 0px -1px 0px black;
   margin: 0;
   font-size: 1.7em;
   padding: 0.2em 0;
@@ -101,12 +129,15 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 }
 
 .discussion__list {
-  margin: 0;
-  padding: 0;
+  position: relative;
 
   & > .discussion__item {
-    list-style-type: none;
+    display: block;
   }
+}
+
+.discussion__button {
+
 }
 
 .discussion__timestamp {
@@ -117,8 +148,57 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   text-align: center;
 }
 
+//------------------------------------------------------------------------------
+//  Recipients Block
+//------------------------------------------------------------------------------
+.recipients {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+//------------------------------------------------------------------------------
+//  Recipients Elements
+//------------------------------------------------------------------------------
+.recipients__h1 {
+  font-family: $font-family;
+  font-weight: normal;
+  margin-bottom: 0.5em;
+}
+
+.recipients__list_wrapper {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.recipients__list {
+  display: inline;
+}
+
+.recipients__item {
+  &:after {
+    content: ", ";
+  }
+
+  &:last-child {
+    &:after {
+      content: none;
+    }
+  }
+}
+
+  .recipients__item--overflow {
+    display: none;
+  }
+
+
 //framework for each comment
 .discussion__item {
+  .discussion__item_lining {
+    border-radius: 5px;
+    padding: 10px;
+  }
+
   .media_module {
 //    max-width: 440px;
   }
@@ -134,6 +214,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .media_body {
   }
 }
+
 
 ////////////////////////////////////////////////////////////////////////////
 //  Recipients
@@ -176,7 +257,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .discussion__item--recipients-overflow {
     display: inline-block;
   }
-  
+
   .discussion__list--recipients-toggle-show-all {
     .less {
       display: inline;
@@ -211,12 +292,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 ////////////////////////////////////////////////////////////////////////////
 
 .discussion--main {
-  &.discussions-manager-shown {
-    display: none;
-  }
-  &.discussion-attachment-shown {
-    display: none;
-  }
 }
 
 .discussion-conversation {
@@ -226,40 +301,38 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //main list in conversation
 .discussion__list--conversation {
 
-  .load-more {
-    position: absolute;
-    top: 75px;
-    list-style-type: none;
-    width: 100%;
-  }
-
-  .load-more-button {
-    width: 200px;
-    margin: 0 auto;
-  }
 }
 
 .discussion__item--conversation {
+  border-radius: 5px;
 
+  .discussion__item_lining {
+    margin: 8px 0;
+  }
 }
 
 
 //comments per video
 .discussion__list--messages {
   .media_body {
-    max-width: 400px;
+    // max-width: 400px;
   }
 
   .discussion__text {
-    border-radius: 15px;
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
-    color: black;
+    // border-radius: 15px;
+    // box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+    color: $text;
     display: inline-block;
     line-height: 1.4;
-    margin: 0 0.1em 0.5em;
-    padding: 5px 10px;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
-    text-align: left;
+    // margin: 0 0.1em 0.5em;
+    // padding: 5px 10px;
+    // text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    // text-align: left;
+  }
+
+  .xuser-data-timestamp {
+    font-weight: normal;
+    font-size: 0.85em;
   }
 }
 
@@ -271,7 +344,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //------------------------------------------------------------------------------
 //  discussion videocard
 //------------------------------------------------------------------------------
-.videocard {
+.video {
 
   & > iframe,
   & > embed,
@@ -288,41 +361,48 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 //  discussion reply section
 ////////////////////////////////////////////////////////////////////////////
 .discussion-reply {
+  border-radius: 5px;
+  background-color: white;
   position: relative;
-  text-align: right;
+
+  .discussion__block {
+
+  }
 }
 
 .discussion__form-wrapper {
-  float: right;
-  width: 440px;
-
   .media_image {
     width: $conversation-avatar-width;
 
     img {
-      width: 100%;
+      width: 100% 10px;
     }
   }
 }
 
 .discussion__form--discussion-reply {
   .form_fieldset {
-    float: right;
     margin: 0;
-    width: 440px;
   }
 
   .form_textarea {
     float: right;
     font-size: 1em;
-    height: 45px;
-    width: 400px;
+    height: $conversation-avatar-width;
+    width: 100%;
   }
 
   .form_submit {
     float: right;
-    margin-top: 1em;
+    margin-left: 8px;
   }
+
+  .discussion__block {
+    font-size: .9em;
+    margin: 1em 0;
+    opacity: .7;
+  }
+
 }
 
 
@@ -347,23 +427,25 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 
 
 //------------------------------------------------------------------------------
-//  overrides pertaining to user (ie respondents to message)
+//  overrides pertaining to audience (ie respondants)
 //------------------------------------------------------------------------------
 .discussion__item--user{
   .discussion__text {
-    @include gradient-primer(#ddd);
-    @include gradient-primer(#f2f0f0);
   }
 }
 
 //------------------------------------------------------------------------------
-//  overrides pertaining to viewer (ie poster of message == viewer of page)
+//  overrides pertaining to viewer (ie user)
 //------------------------------------------------------------------------------
 .discussion__item--viewer {
-  text-align: right;
+  .discussion__item_lining {
+    background-color: white;
+  }
+  // border: 1px solid #333;
+  // text-align: right;
 
   .media_module {
-    float:right;
+    // float:right;
 
 //    .media_image {
 //      float: right;
@@ -373,9 +455,9 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 
   .discussion__text {
-    @include gradient-primer(lighten($shelby-blue,40%));
+    // @include gradient-primer(lighten($shelby-blue,40%));
 
-    box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
+    // box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
   }
 }
 
@@ -385,7 +467,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 .discussion--attachment {
   .discussion__header {
     padding-bottom: 10px;
-    
+
     .discussion__content {
       position: relative;
     }
@@ -438,7 +520,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     margin-top: .5em;
     margin-bottom: 0;
   }
-  
+
   .discussion__button {
     margin: 0.5em 0;
     padding: 0.5em;
@@ -465,7 +547,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   .media_image {
     position: relative;
     width: 60%;
-    
+
     .icon-play {
       background-size: 100%;
       cursor: pointer;
@@ -476,7 +558,7 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
       height: 60px;
     }
   }
-  
+
   .discussion__video-preview {
     height: 220px;
     width: 100%;
@@ -489,13 +571,35 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   }
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 45em) {
   .videocard {
     & > iframe,
     & > embed,
     & > object {
       height: 250px;
     }
+  }
+
+  .discussion__header {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .discussion__footer {
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .discussion-reply {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 auto;
   }
 }
 
@@ -505,7 +609,6 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
 
 .discussion__button--nav {
   line-height: 1.5;
-  position: absolute;
   top: 5px;
 }
 
@@ -529,35 +632,35 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
   background-color: white;
   background-image: url($icon-chevron-right);
   background-repeat: no-repeat;
-  background-position: 98% 52%; 
+  background-position: 98% 52%;
   border: 1px solid black;
   border-top: none;
   font-size: 1.3em;
-  
+
   &:hover, &.discussion__item--current-discussion-roll {
     background-color: #f0f1ff;
   }
-  
+
   > a {
     display: block;
     text-decoration: none;
     min-height: 75px;
     padding: 0 0.5em;
   }
-  
+
   .discussion--recipients {
     padding: 10px 10px 0;
   }
-  
+
   .discussion__list--recipients {
     display: inline-block;
     max-width: 420px;
   }
-  
+
   .discussion__item--recipients {
     font-weight: 600;
   }
-  
+
   .discussion__item--content-updated-at {
     color: $shelby-blue;
     display: block;
@@ -567,11 +670,11 @@ $conversation-avatar-width: 25px; //used in message_item and reply form
     line-height: 1.6em;
     margin-right: 2em;
   }
-  
+
   .discussion__list--recipients-to-label {
     display: none;
   }
-  
+
   .discussion__item--summary {
     color: #aaa;
     font-size: 0.75em;

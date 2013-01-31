@@ -1,20 +1,26 @@
-<% if(displayTimestamp){ %>
-	<li class="discussion__item discussion__timestamp clearfix">
-		<%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(msg.id).format("dddd, mmm dd, h:MM TT") %>
-	</li>
-<% } %>
-
+<% console.log(msg) %>
   <% var recipient = msg.get('nickname') %>
   <% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(msg) %>
+
+<% if(false && displayTimestamp){ %>
+  <li class="discussion__item discussion__timestamp clearfix">
+    <%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(msg.id).format("dddd, mmm dd, h:MM TT") %>
+  </li>
+<% } %>
+
 <li class="discussion__item<%= msgFromViewer ? ' discussion__item--viewer' : ' discussion__item--user' %> clearfix">
-  <div class="media_module">
-    <div class="media_image<%= msgFromViewer ? ' media_image--rev' : null %>">
+  <div class="discussion__item_lining media_module frame-body-wrapper">
+    <div class="media_image">
       <img src="<%= recipientAvatar %>">
     </div><!-- eo media_image -->
 
     <div class="media_body">
       <p class="discussion__h4">
         <%= recipient %>
+
+        <span class="xuser-data-timestamp">
+          <%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(msg.id).format("dddd, mmm dd, h:MM TT") %>
+        </span>
       </p>
 
       <p>
@@ -23,5 +29,5 @@
 				</span>
       </p>
     </div><!-- eo media_body -->
-  </div>
+  </div><!-- discussion_item__lining -->
 </li>

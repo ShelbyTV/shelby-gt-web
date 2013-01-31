@@ -1,23 +1,39 @@
 <% var msgFromViewer = (frame.get('creator_id') === viewer) %>
 <!-- NB: if frame was posted by non-shelby user, msgFromViewer will always be false (not the case for messages, below) -->
-<div class="videocard <%= msgFromViewer ? 'message-from-viewer' : null %>">
-	<% if(frame.get('video').get('provider_name') === "youtube" ){ %>
-		<iframe class="videocard__video" src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
-		frameborder="0" allowfullscreen>
-		</iframe>
-	<% } else { %>
-		<%= frame.get('video').get('embed_url') %>
-	<% } %>
-</div>
-<div class="video-supplementary-info media_module">
-  <div class="video-supplementary-info__video-title discussion__h2"><%= frame.get('video').escape('title') %></div>
-  <div class="video-supplementary-info__by-line">
-    <span class="discussion__h4"><%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %></span> 
-    <spanc class="discussion__timestamp"><%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %></span>
-  </div>
-  <!-- future lightweight actions would be posted here too (ie. who watched this?  who liked it?  who hated it?) -->
-</div>
-	
-<ol class="discussion__list discussion__list--messages js-discussion-roll-conversation">
-	<!-- messages filled in by different render so re-render doesn't destroy embed -->
-</ol>
+<% console.log(frame) %>
+<li class="discussion__item <%= msgFromViewer ? ' discussion__item--viewer' : ' discussion__item--user' %> clearfix">
+  <div class="discussion__item_lining media_module frame-body-wrapper">
+    <div class="media_image">
+      <img src="<%= 'recipientAvatar' %>">
+    </div><!-- eo media_image -->
+
+    <div class="media_body">
+      <p class="discussion__h4">
+        <%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %>
+        <span class="xuser-data-timestamp">
+          <%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %>
+        </span>
+      </p>
+
+      <p>
+        <span class="discussion__text">
+          <%= "msg.escape('text')" %>
+        </span>
+      </p>
+
+      <div class="video">
+        <% if(frame.get('video').get('provider_name') === "youtube" ){ %>
+          <iframe class="videocard__video" src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
+          frameborder="0" allowfullscreen>
+          </iframe>
+        <% } else { %>
+          <%= frame.get('video').get('embed_url') %>
+        <% } %>
+      </div>
+    </div><!-- eo media_body -->
+  </div><!-- eo discussion__item_lining -->
+
+  <ol class="list discussion__list js-discussion-roll-conversation">
+    <!-- messages filled in by different render so re-render doesn't destroy embed -->
+  </ol>
+</li>
