@@ -1,11 +1,13 @@
 <!-- ShelbyTurbo -->
-<script type="text/javascript"> 
+<script type="text/javascript">
   var _stq = _stq || [];
-  _stq.push(['set', 'nick', 'TODO: Replace With Your Shelby Username']);
+  // currently we're only using userId; you can safely ignore userNick
+  _stq.push(['set', 'userNick', 'MAYBE: Replace With Your Shelby User Nickname']);
+  _stq.push(['set', 'userId', 'TODO: Replace With Your Shelby User ID']);
   (function(d,t){
-    var st = document.createElement(t); st.type = "text/javascript"; st.async = true;
-    st.src = "<%= Settings::Application.protocol_matching_url %>/assets/turbo-embed/turbo.js";
-    var s = document.getElementsByTagName(t)[0]; s.parentNode.insertBefore(st, s);
+    var st = d.createElement(t); st.type = "text/javascript"; st.async = true;
+    st.src = "<%= Settings::Application.protocol_matching_url %>/assets/turbo.js";
+    var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(st, s);
   })(document,'script');
 </script>
 <!-- end ShelbyTurbo -->

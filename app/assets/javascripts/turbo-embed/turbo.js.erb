@@ -10,10 +10,10 @@ window.__shelbyTurbo = {
   //local copy of no-conflict jQuery
   $:null,
   
-  /* The associated Shelby username for enhancing video embeds found on our host page.
+  /* The associated Shelby user's id for enhancing video embeds found on our host page.
    * We expect this to be set via _stq before initialization.
    */
-  nick:null,
+  userId:null,
   
   // single entry point called by the Kick Off jQuery loader at bottom of this file
   init: function(jq){
@@ -23,29 +23,19 @@ window.__shelbyTurbo = {
   },
   
   _processPage: function(){
+    var self = this;
+    
     var allVideoEmbeds = this._scrapePageForVideoEmbeds();
     if(allVideoEmbeds){
-      // help the returned JS can directly update the elements on the page
+      // help the returned JS directly update the elements on the page
       this._tagVideoEmbeds(allVideoEmbeds);
-      
-      $.each(allVideoEmbeds, function(i, embed){
-        embed.el = null; //don't try to unnecessarily serialize an element
-        $.ajax({
-          url: "<%= Settings::Application.protocol_matching_url %>/turbo_embellish",
-          data: embed 
-        });
+      //send each to server, let its returned JS run and update the page
+      $.each(allVideoEmbeds, function(i, embedData){
+        var reqData = embedData;
+        delete reqData.el;
+        reqData.userId = self.userId;
+        $.get("<%= Settings::Application.protocol_matching_url %>/turbo_embellish", reqData);
       });
-      
-      
-      //TODO: ship them off for processing w/ username (this.nick)
-      //      server needs to look to see if nick has rolled these videos, if so
-      //      A) server returns some JS that directly modifies our host page
-      //      B) server returns some data that we use to modify our host page
-      // ?? which server ??
-      // => i think i like A, a LOT more (need to tag our elements so returned JS can reference them)
-      // 
-      // maybe we should send request to FRONT END, which would proxy to back end to find out what it needs
-      // then the front end can return the JS that updates this page (that's what the front end does best!)
     }
   },
   
