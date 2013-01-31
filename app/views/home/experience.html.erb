@@ -24,33 +24,30 @@
 </head>
 
 <body class="shelby">
-  <!-- social libs -->
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=305135322927840";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
-  <!-- end social libs -->
   <div id="fb-root"></div>
+
   <div id="video-static">
     <video autoplay loop="true" height="100%" width="100%">
       <source src="/looping_static_2.webm" type="video/webm">
       <source src="/looping_static_2.mp4" type="video/mp4">
     </video>
   </div>
+
   <div id="banner-wrapper" class="hidden">
     <div id="banner-inner">
-      Welcome. To heaven. On a stick.
+      <div id="message">
+        You're watching <span id="site-url"></span> at Shelby.tv, where cats and dogs live together
+      </div>
+      <div id="like-share">
+        <div class="message">
+          Like this? Tell someone:
+        </div>
+        <div class="social">
+          <div class="twitter"></div>
+          <div class="facebook"></div>
+          <div class="google"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -67,7 +64,7 @@
           <input type="text" class="website" value="<%= @url %>" placeholder=""><!--
           --><input class="submit" type="submit" value="launch">
         </form>
-        <div id="social">
+        <div class="social">
           <div class="twitter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>
           </div>
@@ -91,18 +88,30 @@
       $('input:text').select();
 
       $('#js-submission-form').submit(function(){
+        // get url to fetch //
         var _query = $('.website').val();
 
+        // message whats happening //
         $('input').blur().addClass('working');
         $('input:text').val('loading...').addClass('with-spinner');
 
-        if (_query.slice(0,7) !== "http://"){
-          _query = "http://" + _query;
-        }
+        // clean  house //
+        if (_query.slice(0,7) !== "http://"){ _query = "http://" + _query; }
 
+        var _queryDomain = _query.slice(7).split('/')[0];
+        $('#site-url').text(_queryDomain);
+
+        // update social //
+
+        //FB.XFBML.parse();
+        //
+        //gapi.plusone.render('.google');
+
+        // update iframe to fetch query //
         var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
         $('iframe.shelby').attr('src', _newSrc);
 
+        // add spinner
         var opts = {
           lines: 13, // The number of lines to draw
           length: 6, // The length of each line
@@ -124,14 +133,29 @@
         var spinner = new Spinner(opts).spin();
         $(spinner.el).insertBefore(target);
 
-
+        // prepare ui to change //
         setTimeout(function(){
           $('iframe.shelby').height($('iframe.shelby').height()-40);
           $('iframe.shelby').removeClass('hidden').addClass('with-banner');
-          $('#video-static').addClass('hidden');
+          $('#video-static').remove();
+          $('#static-wrapper').remove();
           $('#banner-wrapper').removeClass('hidden');
+          // new social buttons
+          var _newUrl;
+          if (document.location.href.split("?").length > 1) {
+            _newUrl = document.location.href;
+          }
+          else {
+            _newUrl = document.location.href+'?q='+_queryDomain;
+          }
+
+          $('.social .twitter').append('<a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-url="'+ _newUrl+'" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>');
+          twttr.widgets.load();
+
+          $('.social .facebook').append('<iframe src="http://www.facebook.com/plugins/like.php?href='+_newUrl+'&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;margin-top: -24px;" allowTransparency="true"></iframe>');
         }, 6000);
 
+        // update progress of festch //
         var _i = 0, progressStates = ["pulling","mixing","buffering"];
         var progressTimer = setInterval(function(){
           if (_i < 3){
@@ -145,6 +169,24 @@
       });
     });
   </script>
+
+  <!-- social libs -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=305135322927840";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  <!-- end social libs -->
 
   <% if (Rails.env == 'production' or Rails.env == 'staging') %>
     <script>

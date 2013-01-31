@@ -55,7 +55,7 @@ iframe.shelby {
     top: 25%;
     text-align: center;
     background-color: #111;
-    opacity: 0.9;
+    opacity: 0.95;
     border-radius: 5px;
     padding-top: 50px;
     margin-left: -475px;
@@ -102,29 +102,29 @@ iframe.shelby {
       left: 212px;
     }
   }
+}
 
-  #social {
-    position: absolute;
+.social {
+  position: absolute;
+  float: right;
+  bottom: 10px;
+  right: -10px;
+  width: 300px;
+  height: 30px;
+
+  .facebook {
     float: right;
-    bottom: 10px;
-    right: -10px;
-    width: 300px;
-    height: 30px;
+    margin-left: 10px;
+  }
 
-    .facebook {
-      float: right;
-      margin-left: 10px;
-    }
+  .twitter {
+    float: right;
+    margin-left: 10px;
+  }
 
-    .twitter {
-      float: right;
-      margin-left: 10px;
-    }
-
-    .google {
-      float: right;
-      margin-right: -30px;
-    }
+  .google {
+    float: right;
+    margin-right: -30px;
   }
 }
 
@@ -134,12 +134,29 @@ iframe.shelby {
   position: absolute;
   left: 0;
   right: 0;
-  background: -webkit-linear-gradient(top, #292b2c, #35383a);
+  background-color: #6fbf47;
   color: white;
-  font-size: 1.25em;
-  text-transform: uppercase;
+  font-size: 1.2em;
 
   #banner-inner{
-    margin:10px;
+    margin:8px;
+    font-family: $font-family-display;
+    font-size: 0.9em;
+    font-weight: 300;
+    color: #222;
+
+    #message {
+      float:left;
+    }
+    #like-share {
+      height: $banner-height;
+      width: 530px;
+      position: absolute;
+      right: 0;
+
+      .message {
+        float:left;
+      }
+    }
   }
 }
