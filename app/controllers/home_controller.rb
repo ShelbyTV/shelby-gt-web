@@ -127,10 +127,14 @@ class HomeController < ApplicationController
   ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
-  # GET /comingsoon/:url
+  # GET /experience/:url
   #
-  def coming_soon
-    render '/home/coming_soon'
+  def experience
+    urls = ["http://www.reddit.com/r/videos",
+            "http://www.reddit.com/domain/hulu.com",
+            "http://laughingsquid.com"]
+    @url = params[:q] ? params[:q] : urls[rand(urls.length)]
+    render '/home/experience'
   end
 
   ##
