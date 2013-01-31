@@ -24,16 +24,22 @@ window.__shelbyTurbo = {
   
   _processPage: function(){
     var allVideoEmbeds = this._scrapePageForVideoEmbeds();
-    console.log("[turbo] video embeds found on page:", allVideoEmbeds);
-    //TODO: ship them off for processing w/ username (this.nick)
-    //      server needs to look to see if nick has rolled these videos, if so
-    //      A) server returns some JS that directly modifies our host page
-    //      B) server returns some data that we use to modify our host page
-    // ?? which server ??
-    // => i think i like A, a LOT more (need to tag our elements so returned JS can reference them)
-    // 
-    // maybe we should send request to FRONT END, which would proxy to back end to find out what it needs
-    // then the front end can return the JS that updates this page (that's what the front end does best!)
+    if(allVideoEmbeds){
+      // help the returned JS can directly update the elements on the page
+      this._tagVideoEmbeds(allVideoEmbeds);
+      
+      
+      console.log("[turbo] video embeds found + tagged:", allVideoEmbeds);
+      //TODO: ship them off for processing w/ username (this.nick)
+      //      server needs to look to see if nick has rolled these videos, if so
+      //      A) server returns some JS that directly modifies our host page
+      //      B) server returns some data that we use to modify our host page
+      // ?? which server ??
+      // => i think i like A, a LOT more (need to tag our elements so returned JS can reference them)
+      // 
+      // maybe we should send request to FRONT END, which would proxy to back end to find out what it needs
+      // then the front end can return the JS that updates this page (that's what the front end does best!)
+    }
   },
   
   /* --------------------------- Command Queue --------------------------- */
@@ -64,7 +70,7 @@ window.__shelbyTurbo = {
     }
   },
   
-  /* --------------------------- Search For Video --------------------------- */
+  /* --------------------------- Page Processing --------------------------- */
   
   // returns an array with metadata on all known video embeds
   // ex: [{el: DOMNode, providerName: 'youtube', providerDomain: 'youtube.com', videoId: 'O4GEk-NjRNo'}]
@@ -101,6 +107,20 @@ window.__shelbyTurbo = {
     });
     
     return videoEmbeds;
+  },
+  
+  /*
+   * Sets attribute shelby-turbo-tag with some UNIQUE_TAG value on each video embed element on the page.
+   * Saves this paring (shelby-turbo-tag = UNIQUE_TAG) for each object in the given video embeds array.
+   *
+   * This allows the returned JS to update the page directly via $("[shelby-turbo-tag=UNIQUE_TAG]")
+   */
+  _tagVideoEmbeds: function(allVideoEmbeds){
+    var tag = "T-"+Date.now()+"-";
+    $.each(allVideoEmbeds, function(i, embed){
+      $(embed.el).attr('shelby-turbo-tag', tag+i);
+      embed['shelby-turbo-tag'] = tag+i;
+    });
   },
   
   /* --------------------------- Constants --------------------------- */
