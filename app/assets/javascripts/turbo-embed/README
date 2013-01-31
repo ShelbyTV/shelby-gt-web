@@ -2,33 +2,9 @@ Turbo-Embed (named "turbo" b/c it works asynchronously and has lag like a turboc
 
 designed for avc.com with the intention of being broadly applicable
 
-1) Embed turbo-bootstrap.js on your page
+1) Embed turbo-bootstrap.js on a host page
 2) You're done!  The embed will find previously rolled videos on your page and enhance them
 
-Shelby Embed Player
-
-(for avc.com)
-
-
-1) JS tag integrates into current workflow
-  - set-it-and-forget-it style JS tag added to body of template (both avc.com and individual pages)
-    - * use the state of the art for JS includes w/o adversely affecting performance *
-    - the JS would need to reference username:fredwilson
-    - for each shelby-supported video embedded on that page, query our API to see if it's posted to fredwilson.public_roll
-      - A) if it was rolled, replace that embed with our embed (focused on that single video; see #2)
-        and/or
-      - B) enhance the embed (promoting their roll on Shelby; see #3)
-          - seems like a good option if A is too much work for the given time
-      
-2) Replace original embed (with Shelby embed)
-  - probably want to embed the entire shelby app 
-    - with some UI adjustments for size
-    - with minor UX adjustments since we're in-page
-  - this embed could also be embedded manually, without the JS from #1
-    
-3) Enhance original embed (linking to Shelby)
-  - add some stuff around the embed already in the page, instead of replacing it with our player
-  - this added stuff would promote fredwilson.shelby.tv (or fredwilson.tv)
-    - shows other available videos
-    - marketing like "playback all his video, like TV"
-    - could also promote emailing the video (via Shelby Mail)
+NB: This is *not* a Shelby player embed.  Once one is developed, turbo cold be used to replace
+the youtube player embed with a shelby plyaer embed.  But until then, we're just promoting 
+the host page's user's other videos, rolls, etc.
