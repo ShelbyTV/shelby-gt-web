@@ -45,20 +45,22 @@
 
           <!-- ab test -->
           <li class="menu_item" role="menuitem">
-            <button class="button_primer frame-command command-queue
-                           <%= shelby.models.guide.get('displayState')==='watchLaterRoll' ? 'remove-frame js-remove-frame ' : 'js-queue-frame '%>
-                           <%= (videoIsInQueue ) ? ' queued button_gray-light' : ' button_default' %>">
-              <% if (shelby.models.guide.get('displayState')!=='watchLaterRoll') { %>
+            <% if (!frameIsOnWatchLaterRoll) { %>
+              <button class="button_primer button_default frame-command command-queue js-queue-frame
+                             <%= (videoIsInQueue) ? ' queued' : ' button_default' %>">
                 <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
                 </i>
-              <% } %>
-              <span class="label">
-                  <%=
-                    (shelby.models.guide.get('displayState')==='watchLaterRoll') ? 'Remove' :
-                      (videoIsInQueue ) ? 'Liked' : 'Like'
-                  %>
-              </span>
-            </button>
+                <span class="label">
+                    <%= (videoIsInQueue ) ? 'Liked' : 'Like' %>
+                </span>
+              </button>
+            <% } else { %>
+              <button class="button_primer button_default frame-command command-queue js-queue-frame remove-frame js-remove-frame queued">
+                <span class="label">
+                  Remove
+                </span>
+              </button>
+            <% } %>
           </li>
           <!-- /ab test -->
 

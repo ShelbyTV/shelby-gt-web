@@ -24,12 +24,16 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
     shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
+    shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
     shelby.collections.videoSearchResultFrames.unbind('add', this.render, this);
+    shelby.models.queuedVideos.unbind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.unbind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   template : function(obj) {
@@ -63,6 +67,28 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _onPlayingFrameGroupCollectionChange : function(playlistManagerModel, playingFrameGroupCollection){
     this._playingFrameGroupCollection = playingFrameGroupCollection;
     this.render();
+  },
+
+  _onQueuedVideosAdd : function(video){
+    this._onAddRemoveQueuedVideo(video);
+  },
+
+  _onQueuedVideosRemove : function(video){
+    this._onAddRemoveQueuedVideo(video, true);
+  },
+
+  _onAddRemoveQueuedVideo : function(video, removeVideo) {
+    if (this._currentFrame) {
+      var frameVideo = this._currentFrame.get('video');
+      if (frameVideo.id == video.id ||
+          (this._currentFrame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+        // this video is the one being added/removed
+        // in case it got updated from somewhere else like the explore view, update my button
+        var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
+        $button.toggleClass('queued', !removeVideo).find('.label').text(!removeVideo ? 'Liked' : 'Like');
+        $button.find('i').toggleClass('icon-heart--red', !removeVideo);
+      }
+    }
   },
 
   /*************************************************************
