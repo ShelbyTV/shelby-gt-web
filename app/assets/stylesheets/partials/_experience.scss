@@ -230,3 +230,38 @@ iframe.shelby {
   }
 }
 
+
+    .animation {
+        left: 50%;
+        right: 50%;
+        height: 4px;
+        top: 50%;
+
+      -webkit-animation: turn-off .5s;
+      -moz-animation: turn-off .5s;
+      -o-animation: turn-off .5s;
+      animation: turn-off .5s;
+    }
+
+    @-webkit-keyframes turn-off {
+      0% {
+        left: 0;
+        right: 0;
+        height: 100%;
+        top: 0;
+      }
+
+      50% {
+        left: 0;
+        right: 0;
+        height: 4px;
+        top: 50%;
+      }
+
+      100% {
+        left: 50%;
+        right: 50%;
+        height: 4px;
+        top: 50%;
+      }
+    }
