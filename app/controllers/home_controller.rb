@@ -125,6 +125,19 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles "make the web" (allowing logged-out users to see it)
+  #
+  # GET /experience/:url
+  #
+  def experience
+    urls = ["http://www.reddit.com/r/videos",
+            "http://www.reddit.com/domain/hulu.com",
+            "http://laughingsquid.com"]
+    @url = params[:q] ? params[:q] : urls[rand(urls.length)]
+    render '/home/experience'
+  end
+
+  ##
   # GT API Server sets the appropriate cookie to let us know the user is signed out
   #  in case something went wrong somewhere over the wire, it is not being set here.
   #

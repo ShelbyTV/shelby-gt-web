@@ -44,6 +44,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/explore' => "home#explore"
   get '/search' => "home#search"
   get '/channel/:channel' => "home#channel"
+
+  get '/experience' => "home#experience"
+
   get '/signout' => "home#signout", :as => :signout
 
   # used by vanity (A/B testing) to register partcipants via javascript

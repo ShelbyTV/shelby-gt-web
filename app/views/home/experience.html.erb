@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
+  <meta charset="utf-8">
+  <title>
+    <%= render :partial => "/home/title_tag" %>
+  </title>
+
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="icon"type="image/png" href="/favicon.png">
+  <%= stylesheet_link_tag "experience", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <script src="http://fgnass.github.com/spin.js/dist/spin.min.js" async></script>
+  <%= javascript_include_tag "experience" %>
+</head>
+
+<body class="shelby shelby--experience">
+  <div id="fb-root"></div>
+
+  <div id="video-static">
+    <video autoplay loop="true" height="100%">
+      <source src="/looping_static_2.webm" type="video/webm">
+      <source src="/looping_static_2.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="banner-wrapper" class="hidden">
+      <div id="banner-inner">
+      <h3 id="message">
+        You're watching <span id="site-url"></span> at Shelby.tv, where cats and dogs live together
+      </h3>
+      <div id="like-share">
+        <div class="message">
+          Like this? Tell someone:
+        </div>
+        <div class="social">
+          <div class="twitter"></div>
+          <div class="facebook"></div>
+          <div id="google-plus-one" class="google"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="static-wrapper">
+    <a href="http://shelby.tv" title="To the Mother Ship">
+      <div class="shelby_logo">
+        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+      </div>
+    </a>
+
+    <div id="static-dampener">
+      <div id="content">
+        <h1>
+          Turn any webpage with video into a TV experience.
+        </h1>
+        <h2>
+          Full screen video. Continuous playback.
+        </h2>
+        <form id="js-submission-form" class="search_module">
+          <input class="search_module__submit button_primer button_green submit js-submit" type="submit" value="Launch">
+          <span class="search_module__input_wrapper"><input type="text" class="search_module__input website" value="<%= @url %>" placeholder=""></span>
+        </form>
+        <div class="social">
+          <div class="twitter">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>
+          </div>
+          <div class="google">
+            <div class="g-plusone" data-size="medium"></div>
+          </div>
+          <div class="facebook">
+            <div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like" data-href="http://shelby.tv/experience"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- eo ~static-wrapper -->
+  <iframe class="shelby hidden" src></iframe>
+
+  <script>
+    $(document).ready(function(){
+      $('iframe.shelby').attr('src',"<%= Settings::Application.url %>/search");
+
+      $('input:text').select();
+
+      $('#js-submission-form').submit(function(){
+        $('.js-submit').css('opacity','.5');
+        // get url to fetch //
+        var _query = $('.website').val();
+
+        // message whats happening //
+        $('input').blur().addClass('working');
+        $('input:text').val('loading...').addClass('with-spinner');
+
+        // clean  house //
+        if (_query.slice(0,7) !== "http://"){ _query = "http://" + _query; }
+
+        var _queryDomain = _query.slice(7).split('/')[0];
+        $('#site-url').text(_queryDomain);
+
+        // update iframe to fetch query //
+        var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
+        $('iframe.shelby').attr('src', _newSrc);
+
+        // add spinner
+        var opts = {
+          lines: 13, // The number of lines to draw
+          length: 6, // The length of each line
+          width: 4, // The line thickness
+          radius: 10, // The radius of the inner circle
+          corners: 1, // Corner roundness (0..1)
+          rotate: 0, // The rotation offset
+          color: '#999', // #rgb or #rrggbb
+          speed: 1, // Rounds per second
+          trail: 60, // Afterglow percentage
+          shadow: false, // Whether to render a shadow
+          hwaccel: false, // Whether to use hardware acceleration
+          className: 'spinner', // The CSS class to assign to the spinner
+          zIndex: 2e9, // The z-index (defaults to 2000000000)
+          top: 'auto', // Top position relative to parent in px
+          left: 'auto' // Left position relative to parent in px
+        };
+        var target = $('.website')[0];
+        var spinner = new Spinner(opts).spin();
+        $(spinner.el).insertBefore(target);
+
+        // prepare ui to change //
+        setTimeout(function(){
+          $('iframe.shelby').css('height',$('body').height()-40);
+          $('iframe.shelby').removeClass('hidden').addClass('with-banner');
+          $('#video-static').remove();
+          $('#static-wrapper').remove();
+          $('#banner-wrapper').removeClass('hidden');
+          // new social buttons
+          var _newUrl;
+          if (document.location.href.split("?").length > 1) {
+            _newUrl = document.location.href;
+          }
+          else {
+            _newUrl = document.location.href+'?q='+_queryDomain;
+          }
+
+          // update twitter share
+          $('.social .twitter').append('<a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-url="'+ _newUrl+'" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>');
+          twttr.widgets.load();
+          // update fb like
+          $('.social .facebook').append('<div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like" data-href="http://shelby.tv/experience"></div>');
+          FB.XFBML.parse();
+          // update goog +1
+          gapi.plusone.render('google-plus-one',{"size": "medium"});
+
+        }, 6000);
+
+        // update progress of fetch //
+        var _i = 0, progressStates = ["herding goats",
+                                      "attaching video to them",
+                                      "delivering goats via satellite"];
+        var progressTimer = setInterval(function(){
+          if (_i < 3){
+            $('input:text').val(progressStates[_i]+'...');
+            _i+=1;
+          }
+          else { clearInterval(progressTimer); }
+        }, 1750);
+
+
+        return false;
+      });
+    });
+  </script>
+
+  <!-- social libs -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=305135322927840";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  <!-- end social libs -->
+
+  <% if (Rails.env == 'production' or Rails.env == 'staging') %>
+    <script>
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  <% end %>
+</body>
+</html>
