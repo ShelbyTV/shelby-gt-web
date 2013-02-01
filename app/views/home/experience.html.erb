@@ -23,21 +23,21 @@
   <%= javascript_include_tag "experience" %>
 </head>
 
-<body class="shelby">
+<body class="shelby shelby--experience">
   <div id="fb-root"></div>
 
   <div id="video-static">
-    <video autoplay loop="true" height="100%" width="100%">
+    <video autoplay loop="true" height="100%">
       <source src="/looping_static_2.webm" type="video/webm">
       <source src="/looping_static_2.mp4" type="video/mp4">
     </video>
   </div>
 
   <div id="banner-wrapper" class="hidden">
-    <div id="banner-inner">
-      <div id="message">
+      <div id="banner-inner">
+      <h3 id="message">
         You're watching <span id="site-url"></span> at Shelby.tv, where cats and dogs live together
-      </div>
+      </h3>
       <div id="like-share">
         <div class="message">
           Like this? Tell someone:
@@ -52,6 +52,12 @@
   </div>
 
   <div id="static-wrapper">
+    <a href="http://shelby.tv" title="To the Mother Ship">
+      <div class="shelby_logo">
+        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+      </div>
+    </a>
+
     <div id="static-dampener">
       <div id="content">
         <h1>
@@ -60,9 +66,9 @@
         <h2>
           Full screen video. Continuous playback.
         </h2>
-        <form id="js-submission-form">
-          <input type="text" class="website" value="<%= @url %>" placeholder=""><!--
-          --><input class="submit" type="submit" value="launch">
+        <form id="js-submission-form" class="search_module">
+          <input class="search_module__submit button_primer button_green submit js-submit" type="submit" value="Launch">
+          <span class="search_module__input_wrapper"><input type="text" class="search_module__input website" value="<%= @url %>" placeholder=""></span>
         </form>
         <div class="social">
           <div class="twitter">
@@ -78,7 +84,6 @@
       </div>
     </div>
   </div> <!-- eo ~static-wrapper -->
-
   <iframe class="shelby hidden" src></iframe>
 
   <script>
@@ -88,6 +93,7 @@
       $('input:text').select();
 
       $('#js-submission-form').submit(function(){
+        $('.js-submit').css('opacity','.5');
         // get url to fetch //
         var _query = $('.website').val();
 
@@ -129,7 +135,7 @@
 
         // prepare ui to change //
         setTimeout(function(){
-          $('iframe.shelby').height($('iframe.shelby').height()-40);
+          $('iframe.shelby').css('height',$('body').height()-40);
           $('iframe.shelby').removeClass('hidden').addClass('with-banner');
           $('#video-static').remove();
           $('#static-wrapper').remove();
@@ -151,6 +157,7 @@
           FB.XFBML.parse();
           // update goog +1
           gapi.plusone.render('google-plus-one',{"size": "medium"});
+
         }, 6000);
 
         // update progress of fetch //
@@ -164,6 +171,7 @@
           }
           else { clearInterval(progressTimer); }
         }, 1750);
+
 
         return false;
       });

@@ -1,8 +1,23 @@
 $banner-height : 40px;
 
+.shelby--experience {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+
+  .shelby_logo {
+    font-size: 3em;
+    margin: 32px 38px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
 iframe.shelby {
   width: 100%;
-  height: 100%;
   border: none;
   position: absolute;
   top: 0;
@@ -16,8 +31,22 @@ iframe.shelby {
   display: none;
 }
 
-#video {
+#video-static {
+  left: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
   width: 100%;
+
+  video {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+#video {
   height: 100%;
   border: none;
   position: absolute;
@@ -28,6 +57,7 @@ iframe.shelby {
 #static-wrapper {
   //background-image: url("http://line25.com/wp-content/uploads/2012/404/demo/images/static.gif");
   //background-repeat: repeat;
+  background-color: rgba(0,0,0,0.76);
   width: 100%;
   height: 100%;
   border: none;
@@ -35,6 +65,7 @@ iframe.shelby {
   top: 0;
   left: 0;
 }
+
 
 #static-dampener{
   position: absolute;
@@ -54,37 +85,42 @@ iframe.shelby {
     left: 50%;
     top: 25%;
     text-align: center;
-    background-color: #111;
     opacity: 0.95;
     border-radius: 5px;
     padding-top: 50px;
     margin-left: -475px;
 
-    &h1 {
+    h1 {
+      font-family: $font-family-display;
       color: white;
       text-shadow: 0px 0px 40px #999;
       margin: 10px 0px;
     }
 
-    &h2 {
+    h2 {
+      font-family: $font-family-display;
+      font-weight: 300;
       color: #e2e2e2;
+      margin-bottom: 1.2em;
       text-shadow: 0px 0px 20px #999;
     }
 
     form {
       margin-top: 50px;
+      margin: 0 auto;
+      width: 700px;
     }
 
     input {
       height: 50px;
-      width: 460px;
       font-size: 25px;
       font-weight: bold;
     }
 
     input.submit {
-      width: 100px;
-      margin: 10px 0px 10px 15px;
+      margin-left: 0.4em;
+      padding: 0 1em;
+      width: auto;
     }
 
     .working {
@@ -98,8 +134,8 @@ iframe.shelby {
     }
 
     .spinner {
-      top: 35px;
-      left: 212px;
+      top: 25px;
+      left: 25px;
     }
 
     .facebook {
@@ -111,27 +147,26 @@ iframe.shelby {
 }
 
 .social {
-  position: absolute;
-  float: right;
-  bottom: 10px;
-  right: -10px;
-  width: 300px;
-  height: 30px;
+  text-align: center;
+  margin: 2em auto;
 
   .facebook {
-    float: right;
+    float: none;
+    display: inline-block;
     margin-left: 10px;
+    vertical-align: 4px;
   }
 
   .twitter {
-    float: right;
+    float: none;
+    display: inline-block;
     margin-left: 10px;
     margin-top: 1px;
   }
 
   .google {
-    float: right !important;
-    margin-right: -35px !important;
+    display: inline-block !important;
+    float: none !important;
     margin-top: 1px !important;
   }
 }
@@ -142,7 +177,7 @@ iframe.shelby {
   position: absolute;
   left: 0;
   right: 0;
-  background-color: #6fbf47;
+  background-color: rgb(88, 173, 46);
   color: white;
   font-size: 1.2em;
 
@@ -151,20 +186,46 @@ iframe.shelby {
     font-family: $font-family-display;
     font-size: 0.9em;
     font-weight: 300;
-    color: #222;
+    color: $button-color;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.6);
+
+    #site-url {
+      font-weight: bold;
+    }
 
     #message {
+      margin: 0 0 0 2px;
+      font-weight: 300;
+      line-height: 1.1;
       float:left;
     }
+
     #like-share {
       height: $banner-height;
       width: 460px;
+      line-height: 1.3;
       position: absolute;
       right: 0;
 
       .message {
+        margin: 0;
         float:left;
+      }
+      .social {
+        margin: 0;
+
+        .twitter,
+        .facebook,
+        .google {
+          float: left;
+          display: block;
+          width: 77px;
+        }
+        .facebook {
+          margin-top: 1px;
+        }
       }
     }
   }
 }
+
