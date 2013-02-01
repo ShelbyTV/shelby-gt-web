@@ -414,7 +414,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-      if (activeFrameModel) {
+      // for compatibility reasons, we only show youtube videos on mobile
+      if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').get('provider_name') == 'youtube')) {
         var activeFrameModelRoll = activeFrameModel.get('roll');
         if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
           //if the previous active frame was on the current roll, just play it
@@ -424,10 +425,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
 
       //if we weren't already playing something from the current roll, activate the roll's first frame
-      var firstFrame = rollModel.get('frames').first();
-      if (firstFrame) {
-        shelby.models.guide.set('activeFrameModel', firstFrame);
-      }
+      shelby.models.playlistManager.trigger('playlist:start');
     }
   },
 
