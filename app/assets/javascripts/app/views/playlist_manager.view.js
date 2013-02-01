@@ -3,11 +3,13 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
   initialize : function(){
     shelby.models.userDesires.bind('change:changeVideo', this._onChangeVideo, this);
     Backbone.Events.bind('playback:next', this._onPlaybackNext, this);
+    this.model.bind('playlist:start', this._onPlaylistStart, this);
   },
 
   _cleanup : function() {
     shelby.models.userDesires.unbind('change:changeVideo', this._onChangeVideo, this);
     Backbone.Events.unbind('playback:next', this._onPlaybackNext, this);
+    this.model.unbind('playlist:start', this._onPlaylistStart, this);
   },
 
   _setPlayingFrameGroupCollection : function(pfgc){
@@ -22,6 +24,16 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
 
   _onPlaybackNext : function(){
     this._skipVideo(1);
+  },
+
+  _onPlaylistStart : function(){
+    var preparedPlaylistCollection = this.model.get('preparedPlaylistCollection');
+    if (preparedPlaylistCollection) {
+      var firstFrameGroup = preparedPlaylistCollection.first();
+      if (firstFrameGroup) {
+        shelby.models.guide.set('activeFrameModel', firstFrameGroup.getFirstFrame());
+      }
+    }
   },
 
   // appropriately changes the next video (in dashboard or a roll)

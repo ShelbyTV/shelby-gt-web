@@ -3,11 +3,11 @@ libs.shelbyGT.PagingMethod = {
   key : 'key'
 };
 
-/* 
- * TODO: this class, and the options individually, need documentation 
+/*
+ * TODO: this class, and the options individually, need documentation
  */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
-  
+
   _numItemsLoaded : 0,
 
   _numItemsRequested : 0,
@@ -41,14 +41,14 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
-    /* 
+    /*
       Change the copy shown in the load more button with this attribute.
       To change the element itself: override template() and be sure to retain
       the class .js-load-more for events to work.
     */
     loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
-    
+
     /* TODO: needs documentation */
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
@@ -61,10 +61,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
-    
+
     //See bottom of file for declaration and discussion
     this.appendChild(new libs.shelbyGT.PagingLoadMoreView());
-    
+
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
   },
 
@@ -118,7 +118,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
-    
+
   },
 
   _onFetchSuccess : function(model, response){
@@ -142,7 +142,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
           self._loadMore();
         }
       }, 250);
-    }    
+    }
   },
 
   _doesResponseContainListCollection : function(response) {
@@ -214,13 +214,13 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
  * load more element.  But that doesn't work when we are inserting with an index.
  */
 libs.shelbyGT.PagingLoadMoreView = Support.CompositeView.extend({
-  
+
   template : function(obj){
     return SHELBYJST['load-more'](obj);
   },
-  
+
   render : function(){
     this.$el.html( this.template() );
   }
-  
+
 });
