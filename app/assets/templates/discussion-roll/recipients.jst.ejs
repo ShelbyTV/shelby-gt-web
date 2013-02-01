@@ -9,7 +9,7 @@
 </a>
 
 <% if(discussionRoll.has("content_updated_at")){ %>
-  <span class="discussion__item--content-updated-at">
+  <span class="xuser-data-timestamp">
     <%= libs.shelbyGT.viewHelpers.app.summaryDate(new Date(discussionRoll.get("content_updated_at"))) %>
   </span>
 <% } %>

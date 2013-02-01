@@ -55,17 +55,20 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
 
   showDiscussionRollsManagerView: function(e){
     e && e.stopPropagation();
+    console.log(e, 'this was clicked', this, this.$el);
 
-    this._scrollTopWhenHidden = $("body").scrollTop();
-    $(".js-discussion").addClass('discussions-manager-shown');
-    $('.discussion__content--manager').show();
-    $("body").scrollTop(0);
+    $('.js-discussion-main').toggleClass('hidden',true);
+    $('.js-discussion-menu').toggleClass('hidden',false);
+    // this._scrollTopWhenHidden = $("body").scrollTop();
+    // $(".js-discussion").addClass('discussions-manager-shown');
+    // $('.discussion__content--menu').show();
+    // $("body").scrollTop(0);
   },
 
   discussionRollsManagerViewShouldDisappear: function(){
-    $('.discussion__content--manager').hide();
-    $(".js-discussion").removeClass('discussions-manager-shown');
-    $("body").scrollTop(this._scrollTopWhenHidden);
+    // $('.discussion__content--menu').hide();
+    // $(".js-discussion").removeClass('discussions-manager-shown');
+    // $("body").scrollTop(this._scrollTopWhenHidden);
   },
 
   //show single recipient in nav title, or should group in supplementary TO area
@@ -104,14 +107,14 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
       var user = new libs.shelbyGT.UserModel({id: idOrEmail});
       user.fetch({
         success: function(userModel, resp){
-          self.$('.js-nav-title').text(userModel.get('nickname'));
+          self.$('.js-discussion-roll-recipients').html('<ul class="list recipients__list><li class="recipients__item">'+userModel.get('nickname')+ '</li></ul>');
         }
       });
     } else {
       this.$('.js-nav-title').text(idOrEmail);
     }
 
-    this.$(".js-discussion-roll-recipients").hide();
+    // this.$(".js-discussion-roll-recipients").hide();
   }
 
 });
