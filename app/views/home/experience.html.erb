@@ -27,7 +27,7 @@
   <div id="fb-root"></div>
 
   <div id="video-static">
-    <video autoplay loop="true" height="100%">
+    <video id="video" autoplay loop="true" height="100%">
       <source src="/looping_static_2.webm" type="video/webm">
       <source src="/looping_static_2.mp4" type="video/mp4">
     </video>
@@ -96,6 +96,7 @@
       $('#js-submission-form').submit(function(){
         $('.js-submit').css('opacity','.5');
         // get url to fetch //
+
         var _query = $('.website').val();
 
         // message whats happening //
@@ -159,19 +160,22 @@
           // update goog +1
           gapi.plusone.render('google-plus-one',{"size": "medium"});
 
-        }, 6000);
+        }, 7000);
 
         // update progress of fetch //
         var _i = 0, progressStates = ["herding goats",
                                       "attaching video to them",
                                       "delivering goats via satellite"];
         var progressTimer = setInterval(function(){
-          if (_i < 3){
+          if (_i <= 2){
             $('input:text').val(progressStates[_i]+'...');
             _i+=1;
           }
-          else { clearInterval(progressTimer); }
-        }, 1750);
+          else {
+            clearInterval(progressTimer);
+          }
+
+        }, 1500);
 
 
         return false;
