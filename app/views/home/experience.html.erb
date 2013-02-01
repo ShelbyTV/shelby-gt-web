@@ -84,11 +84,12 @@
       </div>
     </div>
   </div> <!-- eo ~static-wrapper -->
+
   <iframe class="shelby hidden" src></iframe>
 
   <script>
     $(document).ready(function(){
-      $('iframe.shelby').attr('src',"<%= Settings::Application.url %>/search");
+      //$('iframe.shelby').attr('src',"<%= Settings::Application.url %>/search");
 
       $('input:text').select();
 
