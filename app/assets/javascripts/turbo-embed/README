@@ -1,10 +1,38 @@
-Turbo-Embed (named "turbo" b/c it works asynchronously and has lag like a turbocharger)
+=== Turbo-Embed ===
+
+(named "turbo" b/c it works asynchronously and has lag like a turbocharger)
 
 designed for avc.com with the intention of being broadly applicable
 
-1) Embed turbo-bootstrap.js on a host page
-2) You're done!  The embed will find previously rolled videos on your page and enhance them
-
 NB: This is *not* a Shelby player embed.  Once one is developed, turbo cold be used to replace
-the youtube player embed with a shelby plyaer embed.  But until then, we're just promoting 
-the host page's user's other videos, rolls, etc.
+  the youtube player embed with a shelby player embed.  But until then, we're just promoting 
+  the host page's user's other videos, rolls, etc.
+FYI: The actual Shelby player embed should be called Supercharger-Embed (or Super-Embed).  This is 
+  called turbo b/c it has lag like a turbocharger.  An actual embed would be in the host page, 
+  delivering it's value immediately, like a supercharger.
+
+
+
+== Host Pages ==
+
+1) Embed turbo-bootstrap.js on a host page / blog template
+2) Fill in the required parameters (currently: user id)
+#) You're done!  The embed will find previously rolled videos on your page and enhance them
+
+
+
+== Front End Development ==
+
+1) app/javascripts/turbo.js is the first thing loaded onto the host page by our snippet
+    - this JS includes a few things for support: underscore, turbo JSTs
+    - also loads and executes our actual workhorse:
+2) app/javascripts/turbo-embed/turbo.js.erb
+    - does the parsing of the page 
+    - for each embed found, fires a requests to the front end:
+3) app/controllers/turbo_embed_controller.rb
+    - receives one request per embed on the page
+    - we could do anything, but right now we're checking to see if that video was rolled by the given
+      user and if so, rendering some embellishments:
+4) app/views/turbo_embed/embellish.js.erb
+    - makes use of the templates *already loaded* on the host page (via step #1, above)
+    - adds adornments to the embed element (which it finds via a unique tag added by turbo.js in step #2)
