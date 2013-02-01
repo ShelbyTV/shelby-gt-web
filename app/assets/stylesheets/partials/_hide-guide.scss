@@ -23,14 +23,14 @@
     bottom: 0;
   }
 
-  .mini-videoplayer__wrapper,
-  #mini-video-progress {
+  .video_progress--mini__wrapper {
     bottom: 0;
   }
   .videoplayer-tools__wrapper {
    // bottom: 0;
   }
 
+  .video_controls__button--fullscreen,
   .videoplayer-nav__btn--fullscreen {
     .icon-player_fullscreen_enable {
       display: none;
