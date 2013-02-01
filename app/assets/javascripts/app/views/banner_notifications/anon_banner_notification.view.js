@@ -55,5 +55,6 @@ libs.shelbyGT.AnonymousActions = {
   ROLL : 3,
   FOLLOW : 4,
   COMMENT : 5,
-  ME : 6
+  ME : 6,
+  MAIL : 7
 };

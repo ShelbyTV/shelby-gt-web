@@ -56,8 +56,8 @@
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore
-        && model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore &&
+          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
         this._updateChild(model);
       }
     },
@@ -222,6 +222,7 @@
       _(childViewOptions).extend(displayParams.options);
 
       this._listView = new displayParams.viewProto(childViewOptions);
+      shelby.models.playlistManager.set('preparedPlaylistCollection', this._listView._displayCollection);
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
