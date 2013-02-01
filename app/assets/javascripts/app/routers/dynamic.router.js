@@ -20,7 +20,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
-    "queue"                                : "displaySaves",
+    "likes"                                : "displaySaves",
     "saves"                                : "displaySaves",
     "stream"                               : "displayDashboard",
     "team"                                 : "displayTeam",

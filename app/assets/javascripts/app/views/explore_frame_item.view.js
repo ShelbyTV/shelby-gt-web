@@ -37,7 +37,7 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
 
   _queueVideo : function() {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      this.model.saveToWatchLater();
+      this.model.like();
       this._updateQueueButton(true);
     }
   },
@@ -63,8 +63,10 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _updateQueueButton : function(itemQueued) {
-    var buttonText = itemQueued ? 'Queued' : 'Queue';
-    this.$('.js-queue-command').toggleClass('button_gray-light queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
+    var buttonText = itemQueued ? 'Liked' : 'Like';
+    var $button = this.$('.js-queue-command');
+    $button.toggleClass('queued js-queued', itemQueued).find('.label').text(buttonText);
+    $button.find('.js-command-icon').toggleClass('icon-heart--red', itemQueued);
   }
 
 });

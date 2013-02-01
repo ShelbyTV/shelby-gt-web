@@ -6,7 +6,7 @@
   */
 
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
-    
+
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
@@ -42,7 +42,7 @@
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
-    
+
     _goToStream : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
         shelby.router.navigate('stream', {trigger: true});
@@ -52,22 +52,22 @@
 
     _goToQueue : function(e){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-        shelby.router.navigate('queue', {trigger: true});
+        shelby.router.navigate('likes', {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
       }
     },
-    
+
     _goToMe : function(){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate('me', {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
       }
     },
-    
+
     _goToAdmin : function(){
       document.location = "http://api.shelby.tv/admin/new_users";
     },
-    
+
     _goToExplore : function(){
       shelby.router.navigate('explore', {trigger:true});
       shelby.models.userDesires.set({guideShown: true});
@@ -111,7 +111,7 @@
     _clearSelected : function(){
       this.$('.js-content-selector button').removeClass('active-item');
     },
-    
+
     _adjustForAnonymousUser : function(){
       this.$('.js-guide-settings').hide();
       this.$('.js-guide-invite').hide();
