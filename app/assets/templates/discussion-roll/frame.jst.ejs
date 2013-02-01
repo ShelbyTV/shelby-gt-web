@@ -1,6 +1,5 @@
 <% var msgFromViewer = (frame.get('creator_id') === viewer) %>
 <!-- NB: if frame was posted by non-shelby user, msgFromViewer will always be false (not the case for messages, below) -->
-<% console.log(frame) %>
 <li class="discussion__item <%= msgFromViewer ? ' discussion__item--viewer' : ' discussion__item--user' %> clearfix">
   <div class="discussion__item_lining media_module frame-body-wrapper">
     <div class="media_image">
@@ -17,20 +16,19 @@
 
       <p>
         <span class="discussion__text">
-          <%= "msg.escape('text')" %>
+          <%= (msg) ? msg.escape('text') : '' %>
         </span>
       </p>
-
-      <div class="video">
-        <% if(frame.get('video').get('provider_name') === "youtube" ){ %>
-          <iframe class="videocard__video" src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
-          frameborder="0" allowfullscreen>
-          </iframe>
-        <% } else { %>
-          <%= frame.get('video').get('embed_url') %>
-        <% } %>
-      </div>
     </div><!-- eo media_body -->
+
+    <div class="video">
+      <% if(frame.get('video').get('provider_name') === "youtube" ){ %>
+        <iframe class="videocard__video" src="http://www.youtube.com/embed/<%= frame.get('video').get('provider_id') %>"
+        frameborder="0" allowfullscreen></iframe>
+      <% } else { %>
+        <%= frame.get('video').get('embed_url') %>
+      <% } %>
+    </div>
   </div><!-- eo discussion__item_lining -->
 
   <ol class="list discussion__list js-discussion-roll-conversation">

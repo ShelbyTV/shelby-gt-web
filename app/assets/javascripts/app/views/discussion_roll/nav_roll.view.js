@@ -25,7 +25,7 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
       this.model = this.options.currentRoll;
 
       //and mark ourselves as current
-      this.$el.addClass("discussion__item--current-discussion-roll");
+      this.$el.addClass("discussion__item--current js-discussion__item--current");
     }
 
     //re-using the recipients view

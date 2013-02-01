@@ -58,6 +58,11 @@ $main-column-width: 45em;
 //  Discussion Framework
 //------------------------------------------------------------------------------
 .discussion__header {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
   .shelby_logo {
     font-size: 2.6em;
     margin-top: 0.2em;
@@ -95,6 +100,7 @@ $main-column-width: 45em;
   }
 
   .discussion__content--menu {
+    font-size: 1.3em;
     margin-top: 4em;
   }
 //------------------------------------------------------------------------------
@@ -142,8 +148,16 @@ $main-column-width: 45em;
 }
 
 .discussion__button {
-
 }
+  .discussion__button--share {
+    padding: 0.5em 0.7em;
+    font-size: 0.9em;
+
+  }
+
+  .discussion__button--cancel {
+    float: left;
+  }
 
 .discussion__timestamp {
   color: #999;
@@ -215,6 +229,7 @@ $main-column-width: 45em;
 
   .media_image {
     width: $conversation-avatar-width;
+    margin-bottom: 10px;
 
     img {
       width: 100%;
@@ -408,8 +423,8 @@ $main-column-width: 45em;
   }
 
   .discussion__block {
-    font-size: .9em;
-    margin: 1em 0;
+    font-size: 0.9em;
+    margin: 0.4em 0;
     opacity: .7;
   }
 
@@ -419,6 +434,7 @@ $main-column-width: 45em;
 ////////////////////////////////////////////////////////////////////////////
 //  Attachment UI buttons
 ////////////////////////////////////////////////////////////////////////////
+
 .discussion__button--attachment {
   @include button-sizing;
 
@@ -474,6 +490,99 @@ $main-column-width: 45em;
 ////////////////////////////////////////////////////////////////////////////
 //  Search and Select Video Attachment UI
 ////////////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------------------
+//  Attachment Block
+//------------------------------------------------------------------------------
+.attachment {
+  left: 0;
+  position: absolute;
+  top: 4.4em;
+  width: 100%;
+}
+
+//------------------------------------------------------------------------------
+//  Attachment Elements
+//------------------------------------------------------------------------------
+.attachment__lining {
+  font-size: 1.3em;
+  margin: 0 auto;
+  max-width: $main-column-width;
+  padding: 1em;
+
+  .discussion__button--cancel {
+    left: 0;
+    margin: 0.7em 1em;
+    padding: 0.5em 0.4em 0.4em 0.6em;
+    position: absolute;
+    top: 0;
+  }
+
+  .search_module__input_wrapper {
+    // margin-left: 0.5em;
+  }
+
+  .search_module__submit {
+    margin-left: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+
+.attachment__head {
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
+//  Attachment Result
+//------------------------------------------------------------------------------
+.attachment_result {
+  margin-left: 0;
+  margin-right: 0;
+
+  .frame-thumbnail {
+    height: 220px;
+
+    &:before {
+      top: 30%;
+    }
+  }
+
+  .discussion__video-preview {
+    height: 220px;
+    width: 100%;
+  }
+
+  .media_body {
+    margin-right: 8px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  .media_image {
+    position: relative;
+    width: 60%;
+  }
+
+  .discussion__h3 {
+    font-weight: 500;
+    margin-top: .5em;
+    margin-bottom: 0;
+  }
+
+  .discussion__button {
+    margin: 1.5em 0;
+    padding: 0.5em;
+  }
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: 0 0 2px 0 $shelby-green;
+  }
+}
+
+
+
 .discussion--attachment {
   .discussion__header {
     padding-bottom: 10px;
@@ -521,65 +630,65 @@ $main-column-width: 45em;
 ////////////////////////////////////////////////////////////////////////////
 //  list of returned search results for possible attachments
 ////////////////////////////////////////////////////////////////////////////
-.discussion__list--attachment-results {
-  ////////////////////////////////////////////////////////////////////////////
-  //  abstracted overrides
-  ////////////////////////////////////////////////////////////////////////////
-  .discussion__h3 {
-    font-weight: 500;
-    margin-top: .5em;
-    margin-bottom: 0;
-  }
+// .discussion__list--attachment-results {
+//   ////////////////////////////////////////////////////////////////////////////
+//   //  abstracted overrides
+//   ////////////////////////////////////////////////////////////////////////////
+//   .discussion__h3 {
+//     font-weight: 500;
+//     margin-top: .5em;
+//     margin-bottom: 0;
+//   }
 
-  .discussion__button {
-    margin: 0.5em 0;
-    padding: 0.5em;
-  }
+//   .discussion__button {
+//     margin: 0.5em 0;
+//     padding: 0.5em;
+//   }
 
-  .discussion__item {
-  }
+//   .discussion__item {
+//   }
 
-  .discussion__text {
-  }
+//   .discussion__text {
+//   }
 
-  ////////////////////////////////////////////////////////////////////////////
-  //  media module framework
-  ////////////////////////////////////////////////////////////////////////////
-  .media_module {
-    background-color: $videocard-footer-bg-color;
+//   ////////////////////////////////////////////////////////////////////////////
+//   //  media module framework
+//   ////////////////////////////////////////////////////////////////////////////
+//   .media_module {
+//     background-color: $videocard-footer-bg-color;
 
-    &:hover {
-      background-color: #fff;
-      box-shadow: 0 0 2px 0 $shelby-blue;
-    }
-  }
+//     &:hover {
+//       background-color: #fff;
+//       box-shadow: 0 0 2px 0 $shelby-blue;
+//     }
+//   }
 
-  .media_image {
-    position: relative;
-    width: 60%;
+//   .media_image {
+//     position: relative;
+//     width: 60%;
 
-    .icon-play {
-      background-size: 100%;
-      cursor: pointer;
-      position: absolute;
-      top: 35%;
-      left: 42%;
-      width: 50px;
-      height: 60px;
-    }
-  }
+//     .icon-play {
+//       background-size: 100%;
+//       cursor: pointer;
+//       position: absolute;
+//       top: 35%;
+//       left: 42%;
+//       width: 50px;
+//       height: 60px;
+//     }
+//   }
 
-  .discussion__video-preview {
-    height: 220px;
-    width: 100%;
-  }
+//   .discussion__video-preview {
+//     height: 220px;
+//     width: 100%;
+//   }
 
-  .media_body {
-    margin-right: 8px;
-    max-height: 200px;
-    overflow: hidden;
-  }
-}
+//   .media_body {
+//     margin-right: 8px;
+//     max-height: 200px;
+//     overflow: hidden;
+//   }
+// }
 
 @media all and (max-width: 45em) {
   .videocard {
@@ -590,20 +699,20 @@ $main-column-width: 45em;
     }
   }
 
-  .discussion__header {
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
 
   .discussion__body {
     margin-bottom: 8em;
   }
 
   .discussion__content--main {
-    padding: 1em;
     margin-bottom: 0;
+  }
+
+  .discussion__item--conversation {
+    .discussion__item_lining {
+      margin: 1px;
+      border-radius: 0;
+    }
   }
 
   .discussion__footer {
@@ -619,7 +728,11 @@ $main-column-width: 45em;
     border-radius: 0;
     box-shadow: none;
     margin: 0 auto;
+    max-width: 43em;
   }
+    .discussion__form--discussion-reply {
+      // font-size: 0.8em;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -706,6 +819,13 @@ $main-column-width: 45em;
 .explanation {
   display: none;
   padding: 1em;
+  text-align: center;
+
+  .discussion__h2 {
+
+  }
+
+
 }
 
 

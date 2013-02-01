@@ -1,29 +1,32 @@
-<div class="discussion discussion__content discussion--attachment js-discussion-select-video-attachment">
-	<header class="discussion__header">
-		<div class="discussion__content">
-			<button class="button_primer button_blue-dark discussion__button--cancel js-cancel">
-				<span class="button_icon_center icon_cancel icon">&nbsp;</span>
-				<span class="full-text">Cancel</span>
+
+<div class="attachment js-discussion-select-video-attachment">
+	<div class="attachment__lining frame-body-wrapper">
+		<div class="attachment__head">
+			<button class="button_primer button_default discussion__button--cancel js-cancel">
+				<i class="icon-cancel"></i>
+				<span class="ir">Cancel</span>
 			</button>
-		</div>
-		
-	  <h1 class="discussion__h1">
-	    Add Video
-	  </h1>
 
-	  <div class="discussion__content">
-			<form class="form_module form_module--attachment-search clearfix">
-	      <fieldset class="form_fieldset">
-	        <input type="text" class="form_textarea js-video-search-query" placeholder="Search For Video"></input>
+			<h3 class="discussion__h3">
+				Add Video
+			</h3>
+		</div><!-- eo discussion__head -->
 
-	        <button class="button_primer button_blue form_submit js-do-search">
-	          Search
-	        </button>
-	      </fieldset>
-	    </form>
-	  </div>
-	</header>
+		<div class="attachment__body">
+			<form class="form_module">
+				<fieldset class="form_fieldset search_module">
+					<button class="button_primer button_green search_module__submit js-do-search">
+						Search
+					</button>
 
-  <section class="discussion__content discussion__content--attachment-results js-attachment-content">
-  </section>
-</div>
+					<span class="search_module__input_wrapper">
+						<input type="text" class="form_input 	search_module__input js-video-search-query" />
+					</span>
+				</fieldset>
+			</form>
+
+		  <section class="attachment__list_wrapper js-attachment-content">
+		  </section>
+		</div><!-- eo discussion__body -->
+	</div><!-- eo attachment__lining -->
+</div><!-- eo attachment -->

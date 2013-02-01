@@ -66,6 +66,8 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
   },
 
   discussionRollsManagerViewShouldDisappear: function(){
+    $('.js-discussion-main').toggleClass('hidden',false);
+    $('.js-discussion-menu').toggleClass('hidden',true);
     // $('.discussion__content--menu').hide();
     // $(".js-discussion").removeClass('discussions-manager-shown');
     // $("body").scrollTop(this._scrollTopWhenHidden);
@@ -114,7 +116,7 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
       this.$('.js-nav-title').text(idOrEmail);
     }
 
-    // this.$(".js-discussion-roll-recipients").hide();
+    this.$(".js-nav-title").hide();
   }
 
 });

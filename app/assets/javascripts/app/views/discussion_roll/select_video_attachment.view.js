@@ -63,7 +63,7 @@ libs.shelbyGT.DiscussionRollSelectVideoAttachmentView = Support.CompositeView.ex
           collection: ytVideosCol,
 
           tagName: 'ol',
-          className: 'discussion__list discussion__list--attachment-results js-possible-video-attachments-list',
+          className: 'list discussion__list discussion__list--attachment-results js-possible-video-attachments-list',
           doStaticRender : true,
 
           listItemView: 'PossibleVideoAttachmentView',

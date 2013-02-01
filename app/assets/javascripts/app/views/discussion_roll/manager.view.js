@@ -5,9 +5,9 @@
 libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
 
   events : {
-    "click .dicussion_menu__item--current-discussion-roll"  : "_disappear",
-    "click .js-about"           : "_showExplanation",
-    "click .explanation__dismiss"           : "_dimissExplanation"
+    "click .js-discussion__item--current"  : "_disappear",
+    "click .js-about"                      : "_showExplanation",
+    "click .js-about-cancel"               : "_dimissExplanation"
   },
 
   el: '#js-discussions-manager',
@@ -75,11 +75,13 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
     this.options.delegate.discussionRollsManagerViewShouldDisappear();
   },
 
-  _showExplanation: function(){
+  _showExplanation: function(e){
+    $('.js-about').hide();
     this.$(".js-about-content").show();
   },
 
   _dimissExplanation: function(){
+    $('.js-about').show();
     this.$(".js-about-content").hide();
   }
 
