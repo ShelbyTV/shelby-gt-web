@@ -24,7 +24,7 @@ class TurboEmbedController < ApplicationController
     @user = Shelby::API.get_user(params[:userId])
     @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
     
-    render :nothing => true unless @user and @roll
+    render :nothing => true and return unless @user and @roll
     
     @embed_attr_key = "shelby-turbo-tag"
     @embed_attr_val = params[:shelbyTurboTag]

@@ -1,9 +1,8 @@
 <!-- ShelbyTurbo -->
 <script type="text/javascript">
   var _stq = _stq || [];
-  // currently we're only using userId; you can safely ignore userNick
-  _stq.push(['set', 'userNick', 'MAYBE: Replace With Your Shelby User Nickname']);
-  _stq.push(['set', 'userId', 'TODO: Replace With Your Shelby User ID']);
+  _stq.push(['set', 'userNick', '<%= currentUser.id.to_s %>']);
+  _stq.push(['set', 'userId', '<%= currentUser.nickname %>']);
   (function(d,t){
     var st = d.createElement(t); st.type = "text/javascript"; st.async = true;
     st.src = "<%= Settings::Application.protocol_matching_url %>/assets/turbo.js";

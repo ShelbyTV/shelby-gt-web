@@ -32,7 +32,7 @@ window.__shelbyTurbo = {
       //send each to server, let its returned JS run and update the page
       $.each(allVideoEmbeds, function(i, embedData){
         var reqData = embedData;
-        delete reqData.el;
+        delete reqData.$el;
         reqData.userId = self.userId;
         $.get("<%= Settings::Application.protocol_matching_url %>/turbo_embellish", reqData);
       });
@@ -87,7 +87,7 @@ window.__shelbyTurbo = {
           $.each(embedProvider.embedSrcRegex, function(o, srcRegExp){
             if(match = srcRegExp.exec(embed.src)){
               videoEmbeds.push({
-                el: embed,
+                $el: $(embed),
                 providerName: embedProvider.providerName,
                 providerDomain: embedProvider.providerDomain,
                 videoId: match[1] // the srcRegExp captures only the video ID
@@ -115,8 +115,8 @@ window.__shelbyTurbo = {
   _tagVideoEmbeds: function(allVideoEmbeds){
     var tag = "T-"+Date.now()+"-";
     $.each(allVideoEmbeds, function(i, embed){
-      $(embed.el).attr('shelby-turbo-tag', tag+i);
       embed.shelbyTurboTag = tag+i;
+      embed.$el.attr('shelby-turbo-tag', embed.shelbyTurboTag);
     });
   },
   
@@ -153,11 +153,16 @@ window.__shelbyTurbo = {
   
 };
 
-
 /* 
  * Kick Off 
  *
- * Start everything in motion by loading jQuery (if necessary) and passing it to __shelbyTubo.init(jq)
- * for jQuery loading, see http://benalman.com/projects/run-jquery-code-bookmarklet/ 
+ * 1) Start everything in motion by passing our jQuery to __shelbyTubo.init
  */
-(function(e,a,g,h,f,c,b,d){if(!(f=e.jQuery)||g>f.fn.jquery||h(f)){c=a.createElement("script");c.type="text/javascript";c.src="http://ajax.googleapis.com/ajax/libs/jquery/"+g+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!(d=this.readyState)||d=="loaded"||d=="complete")){h((f=e.jQuery).noConflict(1),b=1);f(c).remove();}};a.documentElement.childNodes[0].appendChild(c);}})(window,document,"1.7.1",function($,L){ window.__shelbyTurbo.init($); });
+(function($){
+  window.__shelbyTurbo.init($);
+})($);
+
+// 2) restore any jQuery possibly on the page
+window.__shelbyJQuery = $.noConflict();
+
+// 3) DEBT: ideally we would wrap everything in a closure w/ underscore, and then call noConflict() on that, too

@@ -1,15 +1,16 @@
 //This is loaded by our small embed snippet on a host page.
 //That snippet looks something like the contents of ./turbo-embed/turbo-bootstrap.html.erb
 
-//Support
+// Support
+//= require jquery
 //= require ./backbone/underscore.js
 
 // App
 //= require ./app/app.config.js
 //= require ./app/app.namespace.js
 
-// Turbo Templates
-//= require ../templates/turbo/embed_footer.js
+// Turbo - Templates
+//= require_tree ../templates/turbo
 
-// Turbo Workhourse
+// Turbo - Workhourse
 //= require ./turbo-embed/turbo.js.erb
