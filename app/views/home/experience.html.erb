@@ -160,21 +160,16 @@
           // update goog +1
           gapi.plusone.render('google-plus-one',{"size": "medium"});
 
-        }, 6000);
+        }, 7000);
 
         // update progress of fetch //
         var _i = 0, progressStates = ["herding goats",
                                       "attaching video to them",
                                       "delivering goats via satellite"];
         var progressTimer = setInterval(function(){
-          if (_i < 3){
+          if (_i <= 2){
             $('input:text').val(progressStates[_i]+'...');
             _i+=1;
-
-            if(_i == 3){
-              $('video')[0].pause();
-              $('#video-static').addClass('animation');
-            }
           }
           else {
             clearInterval(progressTimer);
