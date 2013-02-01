@@ -108,6 +108,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
             shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
           }
         });
+      } else {
+        // just for appearances sake (so that all instances of this video get their like button flipped to a red heart),
+        // add the video to the local collection tracking which videos the user has liked, even though we didn't make
+        // any actual updates on the backend
+        shelby.models.queuedVideos.get('queued_videos').add(this.get('video'));
       }
       // different tracking for like action on search frames
       shelby.track( 'liked on search', { frameId: this.id, userName: shelby.models.user.get('nickname') });
