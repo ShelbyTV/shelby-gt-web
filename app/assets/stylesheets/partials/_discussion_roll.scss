@@ -80,7 +80,7 @@ $main-column-width: 45em;
 }
 
 .discussion__body {
-  padding-top: 60px;
+  padding-top: 30px;
   padding-bottom: 10px;
   z-index: 1;
 }
@@ -93,7 +93,6 @@ $main-column-width: 45em;
   margin: 0 auto;
   max-width: $main-column-width;
 }
-
   .discussion__content--main {
     margin-top: 4em;
     margin-bottom: 2em;
@@ -154,6 +153,11 @@ $main-column-width: 45em;
 
 .discussion__button {
 }
+  .discussion__button--nav {
+    line-height: 1.5;
+    top: 5px;
+  }
+
   .discussion__button--share {
     padding: 0.5em 0.7em;
     font-size: 0.9em;
@@ -161,7 +165,11 @@ $main-column-width: 45em;
   }
 
   .discussion__button--cancel {
-    float: left;
+    left: 0;
+    margin: 0.7em 1em;
+    padding: 0.5em 0.4em 0.4em 0.6em;
+    position: absolute;
+    top: 0;
   }
 
 .discussion__timestamp {
@@ -306,43 +314,31 @@ $main-column-width: 45em;
     }
   }
 
+  .discussion__item--recipients {
+    display: inline-block;
+    &:not(:last-child){
+      > span:after{
+        content: ',';
+        padding-right: 0.25em;
+      }
+    }
+  }
 
-////////////////////////////////////////////////////////////////////////////
-//  Recipients
-////////////////////////////////////////////////////////////////////////////
-.discussion--recipients {
-  padding: 0.5em 8px;
-}
-
-.discussion__list--recipients-to-label {
-  color: #666;
-}
+  .discussion__item--recipients-overflow {
+    display: none;
+  }
 
 .discussion__list--recipients {
   display: inline;
 }
 
-.discussion__item--recipients {
-  display: inline-block;
-  &:not(:last-child){
-    > span:after{
-      content: ',';
-      padding-right: 0.25em;
-    }
-  };
-}
+  .discussion__list--recipients-toggle-show-all {
+    display: none;
+  }
 
-.discussion__list--recipients-toggle-show-all {
-  display: none;
-}
-
-.discussion__item--recipients-overflow {
-  display: none;
-}
-
-.discussion__list--recipients-toggle-show-all .less {
-  display: none;
-}
+  .discussion__list--recipients-toggle-show-all .less {
+    display: none;
+  }
 
 .discussion--recipients .show-all-recipients {
   .discussion__item--recipients-overflow {
@@ -359,15 +355,6 @@ $main-column-width: 45em;
   }
 }
 
-//only shown in manager's nav view (below)
-// .discussion__item--content-updated-at {
-//   display: none;
-// }
-
-
-//my initial inclination was to &.recipien... the below classes
-//but we can't predict that it'll always be coupled in that way.
-//keeping them adjacent to .discussion__item--recipients is fine
 .recipients--email {
 }
 
@@ -377,53 +364,6 @@ $main-column-width: 45em;
     display: none;
   }
 }
-
-////////////////////////////////////////////////////////////////////////////
-//  Conversation
-////////////////////////////////////////////////////////////////////////////
-
-.discussion--main {
-}
-
-.discussion-conversation {
-
-}
-
-//main list in conversation
-.discussion__list--conversation {
-
-}
-
-
-
-//comments per video
-.discussion__list--messages {
-  .media_body {
-    // max-width: 400px;
-  }
-
-  .discussion__text {
-    // border-radius: 15px;
-    // box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
-    color: $text;
-    display: inline-block;
-    line-height: 1.4;
-    // margin: 0 0.1em 0.5em;
-    // padding: 5px 10px;
-    // text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
-    // text-align: left;
-  }
-
-  .xuser-data-timestamp {
-    font-weight: normal;
-    font-size: 0.85em;
-  }
-}
-
-.discussion__item--messages {
-
-}
-
 
 //------------------------------------------------------------------------------
 //  discussion videocard
@@ -454,71 +394,42 @@ $main-column-width: 45em;
   }
 }
 
-.discussion__form-wrapper {
-  .media_image {
-    width: $conversation-avatar-width;
+.discussion__form {
+}
+  .discussion__form-wrapper {
+    .media_image {
+      width: $conversation-avatar-width;
 
-    img {
-      width: 100% 10px;
+      img {
+        width: 100% 10px;
+      }
     }
   }
-}
 
-.discussion__form--discussion-reply {
-  .form_fieldset {
-    margin: 0;
+  .discussion__form--discussion-reply {
+    .form_fieldset {
+      margin: 0;
+    }
+
+    .form_textarea {
+      float: right;
+      font-size: 1em;
+      height: $conversation-avatar-width;
+      width: 100%;
+    }
+
+    .form_submit {
+      float: right;
+      margin-left: 8px;
+    }
+
+    .discussion__block {
+      font-size: 0.9em;
+      margin: 0.4em 0;
+      opacity: .7;
+    }
   }
 
-  .form_textarea {
-    float: right;
-    font-size: 1em;
-    height: $conversation-avatar-width;
-    width: 100%;
-  }
-
-  .form_submit {
-    float: right;
-    margin-left: 8px;
-  }
-
-  .discussion__block {
-    font-size: 0.9em;
-    margin: 0.4em 0;
-    opacity: .7;
-  }
-
-}
-
-
-////////////////////////////////////////////////////////////////////////////
-//  Attachment UI buttons
-////////////////////////////////////////////////////////////////////////////
-
-.discussion__button--attachment {
-  @include button-sizing;
-
-  float: left;
-  margin-left: 10px;
-  margin-top: 8px;
-
-  .full-text {
-    display: block;
-  }
-
-  .icon {
-    display: none;
-  }
-}
-
-
-
-//------------------------------------------------------------------------------
-//  overrides pertaining to viewer (ie user)
-//------------------------------------------------------------------------------
-
-////////////////////////////////////////////////////////////////////////////
-//  Search and Select Video Attachment UI
-////////////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------------------
 //  Attachment Block
@@ -542,11 +453,6 @@ $main-column-width: 45em;
   padding: 1em;
 
   .discussion__button--cancel {
-    left: 0;
-    margin: 0.7em 1em;
-    padding: 0.5em 0.4em 0.4em 0.6em;
-    position: absolute;
-    top: 0;
   }
 
   .search_module__input_wrapper {
@@ -613,114 +519,6 @@ $main-column-width: 45em;
 }
 
 
-
-.discussion--attachment {
-  .discussion__header {
-    padding-bottom: 10px;
-
-    .discussion__content {
-      position: relative;
-    }
-  }
-
-  .discussion__button--cancel {
-    .icon {
-      display: none;
-      padding-left: .5em;
-    }
-
-    left: 8px;
-    padding: .5em;
-    position: absolute;
-    top: 3px;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Form for searching for new attachments
-//------------------------------------------------------------------------------
-.form_module--attachment-search {
-  margin: 0 8px;
-
-  .form_textarea {
-    float: left;
-    width: 420px;
-  }
-
-  .form_submit {
-    float: right;
-  }
-}
-
-
-.discussion__content--attachment-results {
-  padding: 100px 0 20px;
-}
-
-
-////////////////////////////////////////////////////////////////////////////
-//  list of returned search results for possible attachments
-////////////////////////////////////////////////////////////////////////////
-// .discussion__list--attachment-results {
-//   ////////////////////////////////////////////////////////////////////////////
-//   //  abstracted overrides
-//   ////////////////////////////////////////////////////////////////////////////
-//   .discussion__h3 {
-//     font-weight: 500;
-//     margin-top: .5em;
-//     margin-bottom: 0;
-//   }
-
-//   .discussion__button {
-//     margin: 0.5em 0;
-//     padding: 0.5em;
-//   }
-
-//   .discussion__item {
-//   }
-
-//   .discussion__text {
-//   }
-
-//   ////////////////////////////////////////////////////////////////////////////
-//   //  media module framework
-//   ////////////////////////////////////////////////////////////////////////////
-//   .media_module {
-//     background-color: $videocard-footer-bg-color;
-
-//     &:hover {
-//       background-color: #fff;
-//       box-shadow: 0 0 2px 0 $shelby-blue;
-//     }
-//   }
-
-//   .media_image {
-//     position: relative;
-//     width: 60%;
-
-//     .icon-play {
-//       background-size: 100%;
-//       cursor: pointer;
-//       position: absolute;
-//       top: 35%;
-//       left: 42%;
-//       width: 50px;
-//       height: 60px;
-//     }
-//   }
-
-//   .discussion__video-preview {
-//     height: 220px;
-//     width: 100%;
-//   }
-
-//   .media_body {
-//     margin-right: 8px;
-//     max-height: 200px;
-//     overflow: hidden;
-//   }
-// }
-
 @media all and (max-width: 45em) {
   .videocard {
     & > iframe,
@@ -764,25 +562,7 @@ $main-column-width: 45em;
     }
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  Manager: navigations of all shelby discussion rolls
-////////////////////////////////////////////////////////////////////////////
 
-.discussion__button--nav {
-  line-height: 1.5;
-  top: 5px;
-}
-
-.discussion__button--nav-far-right {
-  line-height: 1.5;
-  position: absolute;
-  top: 5px;
-  right: 20px;
-}
-
-.discussion__content--manager {
-  display: none;
-}
 
 //------------------------------------------------------------------------------
 //  Main Menu
@@ -794,6 +574,7 @@ $main-column-width: 45em;
 
 .discussion_menu__item {
   border-radius: 5px;
+  margin-bottom: 1em;
   padding: 10px;
 
   .recipients__list {
@@ -852,85 +633,6 @@ $main-column-width: 45em;
   .discussion__h2 {
 
   }
-
-
-}
-
-
-.discussion__item--discussion-roll {
-  background-color: white;
-  background-image: url($icon-chevron-right);
-  background-repeat: no-repeat;
-  background-position: 98% 52%;
-  border: 1px solid black;
-  border-top: none;
-  font-size: 1.3em;
-
-  &:hover, &.discussion__item--current-discussion-roll {
-    background-color: #f0f1ff;
-  }
-
-  > a {
-    display: block;
-    text-decoration: none;
-    min-height: 75px;
-    padding: 0 0.5em;
-  }
-
-  .discussion--recipients {
-    padding: 10px 10px 0;
-  }
-
-  .discussion__list--recipients {
-    display: inline-block;
-    max-width: 420px;
-  }
-
-  .discussion__item--recipients {
-    font-weight: 600;
-  }
-
-  .discussion__item--content-updated-at {
-    color: $shelby-blue;
-    display: block;
-    float: right;
-    font-weight: 600;
-    font-size: 0.75em;
-    line-height: 1.6em;
-    margin-right: 2em;
-  }
-
-  .discussion__list--recipients-to-label {
-    display: none;
-  }
-
-  .discussion__item--summary {
-    color: #aaa;
-    font-size: 0.75em;
-    padding: 5px 60px 10px 10px;
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  Explanation: some informative copy and images
-////////////////////////////////////////////////////////////////////////////
-
-.discussion__explanation {
-  background: white;
-  box-shadow: 0px 0px 7px 2px #333;
-  display: none;
-  position: fixed;
-  top: 50px;
-  border: 2px solid $shelby-blue;
-  border-radius: $radius;
-  padding: 1em 2em 0;
-  width: 575px;
-}
-
-.discussion__explanation--dismiss {
-  position: absolute;
-  top: 5px;
-  right: 5px;
 }
 
 .discussion__footnote {

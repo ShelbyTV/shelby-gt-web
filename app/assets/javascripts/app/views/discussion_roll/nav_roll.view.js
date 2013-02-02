@@ -7,7 +7,7 @@ libs.shelbyGT.DiscussionRollsNavRollView = Support.CompositeView.extend({
   //no el b/c we are rendered by DiscussionRollsManagerView via appendChildInto
   tagName: 'li',
 
-  className: 'discussion__item clearfix',
+  className: 'clearfix',
 
   initialize : function(){
   },
