@@ -103,6 +103,11 @@ $main-column-width: 45em;
     font-size: 1.3em;
     margin-top: 4em;
   }
+
+  .discussion__content--search-results {
+    font-size: 1.3em;
+    margin-top: 10px;
+  }
 //------------------------------------------------------------------------------
 //  Elements
 //------------------------------------------------------------------------------
@@ -143,7 +148,7 @@ $main-column-width: 45em;
   position: relative;
 
   & > .discussion__item {
-    display: block;
+    display: list-item;
   }
 }
 
@@ -216,15 +221,17 @@ $main-column-width: 45em;
   }
 
 
-//framework for each comment
+//comment element---------------------------------------------------------------
+//each video starts are new LI, consecutive comments are grouped under LI until
+//a new video is created.
+//discussion__item is a lining that defines the comment/frame
 .discussion__item {
-  .discussion__item_lining {
-    border-radius: 5px;
-    padding: 10px;
-  }
+  border-radius: 5px;
+  padding: 10px;
 
   .media_module {
-//    max-width: 440px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .media_image {
@@ -239,6 +246,65 @@ $main-column-width: 45em;
   .media_body {
   }
 }
+  //modifiers-------------------------------------------------------------------
+  //conversation = li, holds convo chunked by frame
+  .discussion__item--conversation {
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+  }
+
+  //comment by anyone, default
+  .discussion__item--user  {
+  }
+
+  //comment by "you", the viewer
+  .discussion__item--viewer {
+    background-color: white;
+  }
+
+  //comment that holds video
+  .discussion__item--frame {
+    .media_image {
+      margin-right: 6px;
+      width: 25px;
+    }
+
+    .media_body {
+      p {
+        margin-top: 0.2em;
+      }
+    }
+  }
+
+  .discussion__item--search-result {
+    padding: 0;
+
+    .media_image {
+      margin-bottom: 0;
+    }
+  }
+
+  .discussion__item--insert-video {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    opacity: 0.8;
+    text-align: center;
+
+    .discussion__h5 {
+      margin-top: 0.75em;
+    }
+
+    &:active {
+      color: #222;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -328,13 +394,6 @@ $main-column-width: 45em;
 
 }
 
-.discussion__item--conversation {
-  border-radius: 5px;
-
-  .discussion__item_lining {
-    margin: 8px 0;
-  }
-}
 
 
 //comments per video
@@ -452,40 +511,10 @@ $main-column-width: 45em;
 }
 
 
-//------------------------------------------------------------------------------
-//  overrides pertaining to audience (ie respondants)
-//------------------------------------------------------------------------------
-.discussion__item--user{
-  .discussion__text {
-  }
-}
 
 //------------------------------------------------------------------------------
 //  overrides pertaining to viewer (ie user)
 //------------------------------------------------------------------------------
-.discussion__item--viewer {
-  .discussion__item_lining {
-    background-color: white;
-  }
-  // border: 1px solid #333;
-  // text-align: right;
-
-  .media_module {
-    // float:right;
-
-//    .media_image {
-//      float: right;
-//      margin-left: 10px;
-//      margin-right: 0;
-//    }
-  }
-
-  .discussion__text {
-    // @include gradient-primer(lighten($shelby-blue,40%));
-
-    // box-shadow: 0px 0px 3px 0px darken($shelby-blue,15%);
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////////
 //  Search and Select Video Attachment UI
@@ -505,6 +534,8 @@ $main-column-width: 45em;
 //  Attachment Elements
 //------------------------------------------------------------------------------
 .attachment__lining {
+  @include roundies(footer);
+
   font-size: 1.3em;
   margin: 0 auto;
   max-width: $main-column-width;
@@ -535,9 +566,9 @@ $main-column-width: 45em;
 }
 
 //------------------------------------------------------------------------------
-//  Attachment Result
+//  Search Result
 //------------------------------------------------------------------------------
-.attachment_result {
+.search_result {
   margin-left: 0;
   margin-right: 0;
 
@@ -709,10 +740,8 @@ $main-column-width: 45em;
   }
 
   .discussion__item--conversation {
-    .discussion__item_lining {
-      margin: 1px;
-      border-radius: 0;
-    }
+    margin: 1px;
+    border-radius: 0;
   }
 
   .discussion__footer {
@@ -728,7 +757,7 @@ $main-column-width: 45em;
     border-radius: 0;
     box-shadow: none;
     margin: 0 auto;
-    max-width: 43em;
+    max-width: 45em;
   }
     .discussion__form--discussion-reply {
       // font-size: 0.8em;
@@ -765,7 +794,6 @@ $main-column-width: 45em;
 
 .discussion_menu__item {
   border-radius: 5px;
-  margin: 0 0 1em;
   padding: 10px;
 
   .recipients__list {

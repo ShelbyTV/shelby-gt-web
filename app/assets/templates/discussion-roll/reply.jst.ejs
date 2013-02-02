@@ -1,19 +1,25 @@
-<form class="form_module discussion__form--discussion-reply clearfix">
-  <div class="media_module discussion__form-wrapper">
-    <div class="media_image">
-      <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
-    </div><!-- eo media_image -->
+<a href="#" class="js-search-video">
+  <div class="discussion__item discussion__item--insert-video frame-body-wrapper">
+    <p class="discussion__h5">
+      <%= (Browser.isMobile()) ? 'Press ' : 'Click ' %>here to insert video
+    </p>
+  </div><!-- eo discussion__item--insert-video -->
+</a>
 
-    <button class="button_primer button_green form_submit js-post-message">Reply</button>
+<div class="discussion__content discussion-reply frame-body-wrapper clearfix">
+  <form class="form_module discussion__form--discussion-reply clearfix">
+    <div class="media_module discussion__form-wrapper">
+      <div class="media_image">
+        <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
+      </div><!-- eo media_image -->
 
-    <div class="media_body">
+      <button class="button_primer button_green form_submit js-post-message">Reply</button>
+
+      <div class="media_body">
         <fieldset class="form_fieldset">
           <textarea rows="1" class="form_textarea js-message-text"></textarea>
         </fieldset>
-
-      <p class="discussion__block">
-        Hint: Copy & Paste a link to a video or use <a href="#" class="js-add-video-attachment">Shelby Chat</a>
-      </p>
-    </div><!-- eo media_body -->
-  </div><!-- eo media_module -->
-</form>
+      </div><!-- eo media_body -->
+    </div><!-- eo media_module -->
+  </form>
+</div><!-- eo discussion-reply -->

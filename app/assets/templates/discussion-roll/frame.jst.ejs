@@ -1,9 +1,12 @@
 <% var msgFromViewer = (frame.get('creator_id') === viewer) %>
+<% var msg = frame.get('conversation').get('messages').at(0) %>
+<% var recipientAvatar = libs.shelbyGT.viewHelpers.user.avatarUrlForMessage(msg) %>
+
 <!-- NB: if frame was posted by non-shelby user, msgFromViewer will always be false (not the case for messages, below) -->
-<li class="discussion__item <%= msgFromViewer ? ' discussion__item--viewer' : ' discussion__item--user' %> clearfix">
-  <div class="discussion__item_lining media_module frame-body-wrapper">
+<li class="clearfix">
+  <div class="discussion__item discussion__item--frame media_module frame-body-wrapper">
     <div class="media_image">
-      <img src="<%= 'recipientAvatar' %>">
+      <img src="<%= recipientAvatar %>">
     </div><!-- eo media_image -->
 
     <div class="media_body">
@@ -11,12 +14,6 @@
         <%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %>
         <span class="xuser-data-timestamp">
           <%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %>
-        </span>
-      </p>
-
-      <p>
-        <span class="discussion__text">
-          <%= "(msg) ? msg.escape('text') : ''" %>
         </span>
       </p>
     </div><!-- eo media_body -->
@@ -29,7 +26,7 @@
         <%= frame.get('video').get('embed_url') %>
       <% } %>
     </div>
-  </div><!-- eo discussion__item_lining -->
+  </div><!-- eo discussion__item -->
 
   <ol class="list discussion__list js-discussion-roll-conversation">
     <!-- messages filled in by different render so re-render doesn't destroy embed -->
