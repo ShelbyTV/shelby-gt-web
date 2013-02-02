@@ -95,5 +95,6 @@ $(document).ready(function(){
 
   $('#learn-more-wrapper #learn-more-icon').on('click', function(){
     $("#learn-more").toggle();
+    $('input:text').select();
   });
 });
