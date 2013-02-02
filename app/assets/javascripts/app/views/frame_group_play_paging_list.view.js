@@ -3,7 +3,6 @@
   // shorten names of included library prototypes
   var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
-  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
   var InlineDonatePromoView = libs.shelbyGT.InlineDonatePromoView;
 
@@ -15,6 +14,9 @@
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
       collapseViewedFrameGroups : true,
+      filter : function(frame) {
+          return frame.get('video').get('provider_name') == 'youtube';
+      },
       infinite : true,
       listItemViewAdditionalParams : function() {
         return {activationStateModel:shelby.models.guide, guideOverlayModel:shelby.models.guideOverlay};
@@ -28,6 +30,9 @@
         new libs.shelbyGT.FrameGroupsCollection([], {
           collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
         });
+      if (Browser.isMobile()) {
+        this._filter = this.options.filter;
+      }
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
     },
