@@ -16,6 +16,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'roll',
       relatedModel : 'libs.shelbyGT.RollModel'
+    },{
+      type : Backbone.HasMany,
+      key : 'upvoters',
+      relatedModel : 'libs.shelbyGT.UserModel',
+      collectionType : 'libs.shelbyGT.UserCollection'
     }
   ],
 

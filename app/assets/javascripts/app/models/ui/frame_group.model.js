@@ -3,7 +3,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
   // Do we treat this video as playable or not? See _handleVideoPlayability
   CONSIDER_PERMANENTLY_UNPLAYABLE_H : 48,
   RECONSIDER_PLAYABILITY_AFTER_H : 1,
-  
+
   defaults: {
     "frames" : null,
     "primaryDashboardEntry" : null,
@@ -14,7 +14,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
   add: function (frame, dashboard_entry, options) {
 
      options || (options = {});
- 
+
      if (!frame.get('id')) {
         return;
      }
@@ -27,7 +27,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
      if (this.get('frames').length == 0) {
         this.get('frames').add(frame, options);
         this.set( { primaryDashboardEntry : dashboard_entry } , options);
-        
+
         //dynamically collapse and mark videos as unplayable
         frame.get('video').bind('change:last_unplayable_at', this._handleVideoPlayability, this);
         this._handleVideoPlayability(frame.get('video'));
@@ -69,7 +69,7 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
       return frame.has('roll') && (!firstFramesRoll || firstFramesRoll.id != frame.get('roll').id);
     }).uniq(false, function(frame){return frame.get('roll').id;}).compact().value();
   },
-  
+
   /* If a video has no record of playback failure, treat as playable.
    * If a video has been unplayable for CONSIDER_PERMANENTLY_UNPLAYABLE hours, treat as unplayable.
    * If a video was detected unplayable more than RECONSIDER_PLAYABILITY_AFTER_H hours ago, treat as playable.
@@ -80,18 +80,35 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
     var lastUnplayable = new Date(lastUnplayableAtRaw || video.get('last_unplayable_at'));  // new Date(null) returns epoch
     var unplayableForHours = (lastUnplayable - firstUnplayable) / (1000*60*60);       // 0 for good videos
     var discoveredUnplayableHoursAgo = (new Date() - lastUnplayable) / (1000*60*60);  // very big for good videos
-    
-    if( unplayableForHours > this.CONSIDER_PERMANENTLY_UNPLAYABLE_H || 
+
+    if( unplayableForHours > this.CONSIDER_PERMANENTLY_UNPLAYABLE_H ||
         discoveredUnplayableHoursAgo < this.RECONSIDER_PLAYABILITY_AFTER_H){
       this.set({video_unplayable:true, collapsed:true});
     }
   },
-  
+
   getSubdomainPermalink : function(){
     var url;
     var _firstFrame = this.getFirstFrame();
     return _firstFrame.getSubdomainPermalink();
+  },
+
+  getCombinedLikeInfo : function() {
+    var result = {
+      likers : new libs.shelbyGT.UserCollection(),
+      totalLikes : 0
+    };
+    var frames = this.get('frames');
+
+    if (frames) {
+      frames.reduce(function(memo, frame) {
+        memo.likers.add(frame.get('upvoters').models);
+        memo.totalLikes += frame.get('like_count');
+        return memo;
+      }, result);
+    }
+
+    return result;
   }
-  
 
 });

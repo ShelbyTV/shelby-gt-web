@@ -190,9 +190,27 @@
       </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
+  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
+    <ul class="list frame-likes-avatars <%= !likers.length ? ' no-liker-avatars' : ''%>">
+      <% _(likers).each(function(user) { %>
+        <li>
+          <img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>" />
+        </li>
+      <% });%>
+    </ul>
+    <% if (remainingLikes) { %>
+      <span class="frame-likes-count frame-external-subline-text">
+        <% if (likers.length) { %>
+          +<%= remainingLikes %>
+        <% } else { %>
+          <%= _('like').pluralize(remainingLikes, true) %>
+        <% } %>
+      </span>
+    <% } %>
+  </div>
   <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
-    <aside class="frame-aside">
-      <p class="frame-aside-text">
+    <div class="frame-external-subline">
+      <p class="frame-external-subline-text">
         Also via:
 
         <% _(dupeFrames).each(function(frame, index) { %>
@@ -202,7 +220,7 @@
           </a>
         <% }); %>
       </p>
-    </aside>
+    </div>
   <% } %>
 
 	<% if(frame.get('isFreshPlayNew')){ %>

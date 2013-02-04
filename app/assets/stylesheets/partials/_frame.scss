@@ -10,13 +10,19 @@ $active-list-item: $shelby-blue;
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
     .frame-title,
-    .frame-aside-text {
+    .frame-external-subline-text {
       color: white;
     }
 
-    .frame-aside-text a:link,
-    .frame-aside-text a:visited {
+    .frame-external-subline-text a:link,
+    .frame-external-subline-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
+    }
+
+    .frame-likes.icon-heart--red {
+      &:before {
+        color: #156B86;
+      }
     }
   }
 }
@@ -411,14 +417,51 @@ $active-list-item: $shelby-blue;
 //  lists duplicates, 'also via:' stuff
 //---------------------------
 
-.frame-aside {
+.frame-external-subline {
   margin: 8px 0px 0px 5px;
 }
 
-.frame-aside-text {
+.frame-external-subline-text {
   color: #666;
   margin: 0;
   padding: 0;
+}
+
+//---------------------------
+//  likes: like information below the videocard
+//---------------------------
+
+.frame-likes {
+  height: 2.3em;
+  overflow: hidden;
+}
+
+.frame-likes--hide {
+  height: 0em;
+}
+
+.frame-likes-avatars {
+  display: inline;
+  margin: 0 0.5em;
+
+  li {
+    display: inline;
+
+    & + li {
+      margin-left: 0.3em;
+    }
+  }
+
+  &.no-liker-avatars {
+    & + .frame-likes-count {
+      margin-left: 0.5em;
+    }
+  }
+}
+
+.frame-likes-avatar {
+  height: 26px;
+  width: 26px;
 }
 
 //------------------------------------------------------------------------------

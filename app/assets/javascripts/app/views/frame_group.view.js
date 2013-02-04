@@ -104,12 +104,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
 
     if (this.model.get('frames').length){
+      var likeInfo = this.model.getCombinedLikeInfo();
+      var likersToDisplay = likeInfo.likers.models.slice(0, 9);
+      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length;
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
         frame : this.model.get('frames').at(0),
+        likers : likersToDisplay,
         options : this.options,
-        dupeFrames : this.model.getDuplicateFramesToDisplay()
+        dupeFrames : this.model.getDuplicateFramesToDisplay(),
+        remainingLikes : remainingLikes,
+        totalLikes : likeInfo.totalLikes
       }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);

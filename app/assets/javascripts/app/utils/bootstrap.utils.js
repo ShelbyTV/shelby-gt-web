@@ -2,7 +2,6 @@ var Bootstrap = {
   initDashboard : function(){
     DataUtils.getDashboardJson(function(data){
       window.Dashboard = new libs.shelbyGT.DashboardModel(data);
-      console.log('dashboard', window.Dashboard);
     });
   },
   initRoll : function(){
@@ -39,13 +38,10 @@ var Bootstrap = {
   },
   addMessageToActiveFrame : function(msg){
     var frame = shelby.models.guide.get('activeFrameModel');
-    var msg = new libs.shelbyGT.MessageModel({text:msg, conversation_id:frame.get('conversation').id});    
-    msg.save(null, {
+    var message = new libs.shelbyGT.MessageModel({text:msg, conversation_id:frame.get('conversation').id});
+    message.save(null, {
       success:function(conversation){
-        frame.set('conversation', conversation)
-      },
-      error:function(){
-        console.log('err', arguments);
+        frame.set('conversation', conversation);
       }
     });
   }
