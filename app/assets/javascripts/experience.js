@@ -2,16 +2,21 @@
 //= require 'common/spin'
 
 $(document).ready(function(){
-  //$('iframe.shelby').attr('src',"<%= Settings::Application.url %>/search");
 
+  // reseting text input
   $('input:text').select();
   $('input:text').focusin(function(){
     $(this).attr('placeholder','').css('background-color','white');
-    console.log("selected");
   });
 
+  // show/hide learn more section on hover
   $('#learn-more-wrapper #learn-more-icon').hover(function(){
-    $("#learn-more").toggle();
+    $("#learn-more").show();
+    $('input:text').select();
+    shelby.track('Learn More', 'Show');
+  }, function(){
+    $("#learn-more").hide();
     $('input:text').select();
   });
+
 });
