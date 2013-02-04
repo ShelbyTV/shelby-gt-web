@@ -80,7 +80,7 @@ iframe.shelby {
     height: 300px;
     width: 950px;
     left: 50%;
-    top: 25%;
+    top: 20%;
     text-align: center;
     opacity: 0.95;
     border-radius: 5px;
@@ -146,7 +146,7 @@ iframe.shelby {
 
 .social {
   text-align: center;
-  margin: 2em auto;
+  margin: 1.5em auto;
 
   .facebook {
     float: none;
@@ -171,7 +171,7 @@ iframe.shelby {
 
 #learn-more-wrapper {
   text-align: center;
-  margin: 2em auto;
+  margin: 1.5em auto;
 
   #learn-more-icon {
     background-image: url('/images/question.png');
@@ -190,6 +190,7 @@ iframe.shelby {
     width: 700px;
     margin: 20px auto;
     text-align: justify;
+    font-size: 0.95em;
   }
 }
 
