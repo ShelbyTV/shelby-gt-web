@@ -1,4 +1,5 @@
 //= require jquery
+//= require 'common/spin'
 
 $(document).ready(function(){
   //$('iframe.shelby').attr('src',"<%= Settings::Application.url %>/search");
@@ -93,8 +94,11 @@ $(document).ready(function(){
     return false;
   });
 
-  $('#learn-more-wrapper #learn-more-icon').on('click', function(){
-    $("#learn-more").toggle();
+  $('#learn-more-wrapper #learn-more-icon').hover(function(){
+    $("#learn-more").show();
+    $('input:text').select();
+  }, function(){
+    $("#learn-more").hide();
     $('input:text').select();
   });
 });
