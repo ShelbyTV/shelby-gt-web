@@ -20,14 +20,21 @@ libs.shelbyGT.ExploreContentPaneView = Support.CompositeView.extend({
 
   _onRollCategoryChange : function(exploreGuideModel, displayedRollCategory) {
     this._leaveChildren();
-    this.appendChildInto(new libs.shelbyGT.ListView({
+    var exploreRollsListView = new libs.shelbyGT.ListView({
       className: 'explore-list explore-rolls',
       collectionAttribute : 'rolls',
       doStaticRender : true,
       listItemView : 'ExploreRollItemView',
       model : displayedRollCategory,
       tagName : 'ol'
-    }), '.js-explore-body');
+    });
+    //don't show Vimeo roll if we're on mobile until we support the Vimeo HTML5 Player
+    if (Browser.isMobile()) {
+      exploreRollsListView.updateFilter(function(roll) {
+        return roll.id != '4f900cf5b415cc466a0005bb';
+      });
+    }
+    this.appendChildInto(exploreRollsListView, '.js-explore-body');
     //reset scroll position to the top
     this.$('.js-content-module-explore').scrollTop(0);
   }
