@@ -3,6 +3,8 @@ require 'shelby_api'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  after_filter :set_access_control_headers
+  
   #set Vanity (A/B testing) to use javascript to register participants, hopefully preventing robots from participating
   Vanity.playground.use_js!
 
@@ -71,5 +73,14 @@ class ApplicationController < ActionController::Base
     
     h
   end
+  
+  private
+  
+    # Allowing simple GET requests cross-origin
+    # This is not CORS
+    def set_access_control_headers
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Request-Method'] = 'GET'
+    end
   
 end
