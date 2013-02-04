@@ -112,6 +112,7 @@
     if (_queryDomain.slice(0,7) == "youtube") {
       $('input:text').val('').attr('placeholder','YouTube page support coming soon').css('background-color','#cc1235');
       $('.js-submit').css('opacity','1');
+      $('input:text').blur();
       return false;
     }
 
