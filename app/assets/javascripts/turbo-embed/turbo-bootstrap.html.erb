@@ -1,0 +1,12 @@
+<!-- ShelbyTurbo -->
+<script type="text/javascript">
+  var _stq = _stq || [];
+  _stq.push(['set', 'userNick', '<%= currentUser.id.to_s %>']);
+  _stq.push(['set', 'userId', '<%= currentUser.nickname %>']);
+  (function(d,t){
+    var st = d.createElement(t); st.type = "text/javascript"; st.async = true;
+    st.src = "<%= Settings::Application.protocol_matching_url %>/assets/turbo.js";
+    var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(st, s);
+  })(document,'script');
+</script>
+<!-- end ShelbyTurbo -->

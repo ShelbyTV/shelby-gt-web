@@ -1,5 +1,23 @@
 <div class="animate_module video_controls__wrapper clearfix">
   <div class="video_controls clearfix">
+    <% if (opts.touchEnabled) { %>
+      <button class="videoplayer_animate video_controls__button video_controls__button--next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Next Video">
+        <i class="icon-arrow_right"></i>
+        <span class="visuallyhidden">Next</span>
+      </button>
+
+      <button class="videoplayer_animate video_controls__button video_controls__button--prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Previous Video">
+        <i class="icon-arrow_left"></i>
+        <span class="visuallyhidden">Prev</span>
+      </button>
+
+      <button class="videoplayer_animate video_controls__button video_controls__button--fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
+        <i class="icon-player_fullscreen_enable"></i>
+        <i class="icon-player_fullscreen_disable"></i>
+        <span class="visuallyhidden">Fullscreen</span>
+      </button>
+    <% } %>
+
     <button class="video_controls__button video_controls__button--play js-videoplayer-playback js-track-event">
       <i class="icon-player_play"></i>
       <i class="icon-player_pause"></i>
@@ -31,19 +49,20 @@
   </div><!-- eo video_controls -->
 </div><!-- eo video_conrtols__wrapper -->
 
+<% if (!opts.touchEnabled) { %>
+  <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Next Video">
+    <i class="icon-arrow_right"></i>
+    <span class="visuallyhidden">Next</span>
+  </button>
 
-<button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--next js-videoplayer-next js-track-event" data-ga_category="Player" data-ga_action="Click next video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Next Video">
-	<i class="icon-arrow_right"></i>
-  <span class="visuallyhidden">Next</span>
-</button>
+  <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Previous Video">
+    <i class="icon-arrow_left"></i>
+    <span class="visuallyhidden">Prev</span>
+  </button>
 
-<button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--prev js-videoplayer-prev js-track-event" data-ga_category="Player" data-ga_action="Click prev video" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Previous Video">
-	<i class="icon-arrow_left"></i>
-	<span class="visuallyhidden">Prev</span>
-</button>
-
-<button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
-  <i class="icon-player_fullscreen_enable"></i>
-  <i class="icon-player_fullscreen_disable"></i>
-  <span class="visuallyhidden">Fullscreen</span>
-</button>
+  <button class="videoplayer_animate videoplayer-nav__btn videoplayer-nav__btn--fullscreen js-videoplayer-fullscreen js-track-event" data-ga_category="Player" data-ga_action="Click fullscreen" data-ga_label='<%= shelby.models.user.get('nickname') %>' title="Hide / Show Guide">
+    <i class="icon-player_fullscreen_enable"></i>
+    <i class="icon-player_fullscreen_disable"></i>
+    <span class="visuallyhidden">Fullscreen</span>
+  </button>
+<% } %>

@@ -1,5 +1,6 @@
 defaults: &defaults
   url: "http://shelby.tv"
+  protocol_matching_url: "//shelby.tv"
   domain: "shelby.tv"
   secure_url: "https://shelby.tv"
   mobile_url: "http://m.shelby.tv"
@@ -14,6 +15,7 @@ defaults: &defaults
 development:
   <<: *defaults
   url: "http://localhost.shelby.tv:3000"
+  protocol_matching_url: "//localhost.shelby.tv:3000"
   mobile_url: "http://m.localhost.shelby.tv:3000"
   fb_genius_url: "http://localhost.shelby.tv:3000"
   #enable this if you're using a local API

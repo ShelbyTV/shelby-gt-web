@@ -24,6 +24,8 @@ class HomeController < ApplicationController
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
           @hostname = request.host
+          @is_mobile = is_mobile?
+
           render '/home/isolated_roll' and return
         end
 
@@ -42,17 +44,18 @@ class HomeController < ApplicationController
           @access_error = params[:access] == "nos"
           @invite_error = params[:invite] == "invalid"
           @mobile_os = detect_mobile_os
+          @is_mobile = is_mobile?
 
           get_info_for_meta_tags(params[:path])
 
-          if @mobile_os
-            render '/mobile/search', :layout => 'mobile'
-          else
+          # if @mobile_os
+          #   render '/mobile/search', :layout => 'mobile'
+          # else
             # A/B test
             @seo_search_messaging = ab_test :seo_search_messaging
 
             render '/home/landing'
-          end
+          # end
 
         end
       }
@@ -108,7 +111,6 @@ class HomeController < ApplicationController
 
     # A/B test
     @search_promote_repeat = ab_test :search_promote_repeat
-    @heart_queue_comparison = ab_test :heart_queue_comparison
     render '/home/app'
   end
 
@@ -119,6 +121,19 @@ class HomeController < ApplicationController
   #
   def channel
     render '/home/app'
+  end
+
+  ##
+  # Handles "make the web" (allowing logged-out users to see it)
+  #
+  # GET /experience/:url
+  #
+  def experience
+    urls = ["http://www.reddit.com/r/videos",
+            "http://www.reddit.com/domain/hulu.com",
+            "http://laughingsquid.com"]
+    @url = params[:q] ? params[:q] : urls[rand(urls.length)]
+    render '/home/experience'
   end
 
   ##

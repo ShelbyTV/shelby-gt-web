@@ -11,19 +11,19 @@
     font-size: 1.3em;
   }
 
-  .videoplayer-progress {
-    margin-top: 1.8em;
+  .video_progress {
+    margin-top: 1.9em;
   }
 
-  .video-player-timeline {
-    line-height: 4.6em;
+  .video_controls__time {
+    font-size: 1.05rem;
   }
 
-  .videoplayer-progress__scrubber {
-    border-radius: 5px;
+  .video_progress__scrubber {
+    border-radius: 2px;
     height: 35px;
     margin: -22px 0;
-    width: 19px;
+    width: 20px;
   }
 
 //------------------------------------------------------------------------------
@@ -148,7 +148,7 @@
     .discussion__button--cancel {
       height: 21px;
       left: 8px;
-      
+
       .icon {
         display: inline-block;
       }
@@ -162,6 +162,27 @@
       .media_image {
         width: 33%;
       }
+    }
+  }
+
+  //// Hide-guide for touch ///////////////////////////////////////////////////
+  .hide-guide {
+    .video_controls__wrapper {
+      left: 0;
+      right: 0;
+    }
+
+    .videoplayer-viewport {
+      bottom: 5.6em;
+    }
+
+    .video_controls__wrapper {
+      bottom: 0;
+    }
+
+    .persistent_video_info__wrapper {
+      bottom: -$persistent_video_info__height;
+
     }
   }
 }

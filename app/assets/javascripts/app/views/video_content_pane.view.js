@@ -33,11 +33,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.notificationOverlayView({
       model : shelby.models.notificationState
     }));
-    // this.renderChild(new libs.shelbyGT.PrerollVideoInfoView({
-    //   el: this.$('#js-preroll-video-info-wrapper'),
-    //   guide : shelby.models.guide,
-    //   playbackState : shelby.models.playbackState
-    // }));
+
     this.renderChild(new libs.shelbyGT.PersistentVideoInfoView({
       el: this.$('#js-persistent-video-info-wrapper'),
       guide : shelby.models.guide,
@@ -52,14 +48,14 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.VideoControlsView({
-      el: this.$('#video-controls'),
+      el: this.$('#js-video-controls'),
       guide : shelby.models.guide,
       guideOverlayModel : shelby.models.guideOverlay,
       playbackState : shelby.models.playbackState,
       userDesires : shelby.models.userDesires
     }));
     this.renderChild(new libs.shelbyGT.MiniVideoProgress({
-      el: this.$('#mini-video-progress'),
+      el: this.$('#js-mini-video-progress'),
       playbackState : shelby.models.playbackState
     }));
   }

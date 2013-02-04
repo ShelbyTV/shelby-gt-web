@@ -1,10 +1,30 @@
-@import "base";
+//OVERRIDE TO FIX ICOMOON SETTINGS:
+[data-icon]:before {content: none;}
+
+//----- Block -------------------------------------
+
+//----- Elements ----------------------------------
+
+//----- Non-Normative Modifiers -------------------
+.ui-header {
+  .shelby_logo {
+    text-align: left;
+    font-size: 2.4em;
+    line-height: 1;
+    margin: 0.3em 0.3em 0.1em;
+  }
+
+  #mobile-roll-title {
+    font-weight: 400;
+    padding-left: 1em;
+  }
+}
 
 .mobile-search{
   background-color: #E2E2E2;
   // override jquery mobile default background color
   .ui-page.ui-body-b { background-image: none;}
-  
+
   .mobile-search-form{
     margin: 10px auto;
     text-align: center;
@@ -25,7 +45,7 @@
     }
     h1 { line-height: 40px; }
   }
-  
+
   .mobile-logo {
       @include background(
     		url('../images/genius/landing_logo.svg') no-repeat left center transparent
@@ -34,9 +54,9 @@
       height: 35px;
       margin-left: 5px;
     }
-    
+
   #search-history { margin: 10px auto; }
-  
+
   #mobile-video-player {
       display:none;
       position:fixed;
@@ -87,7 +107,7 @@
 
   .content.video-playing {
     #mobile-frames { margin-top: 45%; }
-  } 
+  }
 
   #mobile-frame-context {
     position: fixed;
@@ -103,7 +123,7 @@
       background-color: lightblue;
       font-weight: bold;
     }
-    
+
     #user-and-comment{
       padding-top: 3px;
       height: 72px;
@@ -116,14 +136,14 @@
       #comment {
         position: relative;
         left: 5px;
-      }      
+      }
     }
     .ui-btn {
       width: 50%;
       margin: 39px auto;
-    }    
+    }
   }
-  
+
   #explanation {
     text-align:center;
     padding-top: 4px;
@@ -131,27 +151,27 @@
     font-size: 15px;
   	font-weight:200;
     color: #333333;
-    
+
     #what-is-this{
       margin-top: 0px;
       text-align:center;
       line-height: 1.3;
     }
-    
+
     .find-what {
       font-weight:300;
       font-size: 16px;
     }
-    
+
     #app-button {
       margin-top: -8px;
       img { height: 35px;}
     }
-    
+
     .js-mobile-web-app, #mobile-web-app-link {
       display: none;
     }
-    
+
   }
 
 }
@@ -162,34 +182,34 @@
     height: 100%;
     top:0;
   }
-  #header { 
+  #header {
     display: none;
   }
 }
 
 
 /* ----------------
- TODO: move into different file 
+ TODO: move into different file
  ------------------ */
 
 .mobile-landing {
   background-color: #E2E2E2;
   // override jquery mobile default background color
   .ui-page.ui-body-b { background-image: none;}
-  
+
   .mobile-landing-header {
     text-align:center;
     height: 40px;
     padding: 0px;
-    border-bottom: 2px solid #111111;    
+    border-bottom: 2px solid #111111;
   }
-    
+
   .mobile-logo {
     padding-top: 4px;
     margin: 1px auto;
     height: 35px;
   }
-  
+
   #mobile-video-player {
     display:none;
     width: 100%;
@@ -203,11 +223,11 @@
       height: 100%;
     }
   }
-  
+
   #mobile-video-player.android {
     height:250px;
   }
-  
+
   #mobile-frame-context {
     width: 100%;
     .email { height: 40px;}
@@ -224,22 +244,22 @@
       line-height: 1;
     	font-weight:300;
     	margin-bottom: 4px;
-    	
+
       #friend-found-this { font-size: 15px; margin: 10px auto;}
       #search-term{ font-size: 20px; }
     }
-    
+
     #direct-email-share-info {
       font-size: 13px;
       margin: 5px;
       font-weight:bold;
     }
-    
+
     #rolling-share-info {
       font-size: 12px;
       max-height: 85px;
       padding: 0 5px;
-      
+
       #social-context{
         padding: 3px 0px;
         min-height:42px;
@@ -254,7 +274,7 @@
       }
     }
   }
-  
+
   #explanation {
     background-color: #E2E2E2;
     text-align:center;
@@ -264,27 +284,27 @@
     font-size: 15px;
   	font-weight:200;
     color: #333333;
-    
+
     #what-is-this{
       margin-top: 0px;
       text-align:center;
       line-height: 1.3;
     }
-    
+
     .find-what {
       font-weight:300;
       font-size: 16px;
     }
-    
+
     #app-button {
       margin-top: -8px;
       img { height: 35px;}
     }
-    
+
     #mobile-web-app-link {
       margin: 10px;
     	font-weight:200;
       color: #333333;
     }
-  }  
+  }
 }

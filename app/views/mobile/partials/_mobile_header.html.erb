@@ -1,16 +1,7 @@
-<% if @share_type == nil %>
-	<h1 class="mobile-logo ir js-track-event" data-ga_category="Mobile" data-ga_action="Clicked logo"></h1>
-	<% unless request.url[0..-2] == Settings::Application.mobile_url %>
-		<a href="<%= Settings::Application.url %>/" data-icon="search" data-mini="true" class="ui-btn-right  js-track-event" data-ga_category="Mobile" data-ga_action="Clicked back to search" data-ajax="false">search</a>
-		<div id="mobile-roll-title" data-role="header" data-theme="b"></div>
-	<% end %>
-	
-<% elsif @share_type == :genius %>
-  <div class="mobile-landing-header" id="header" data-role="header" data-position="fixed">
-				<%= image_tag '/images/genius/logo.png', :class=>"mobile-logo ir js-track-event", 'data-ga_category'=>"Mobile", "data-ga_action"=>"Clicked logo" %>
-	</div>
-<% else %>
-	<div class="mobile-landing-header" id="header" data-role="header" data-position="fixed">
-				<%= image_tag '/images/assets/shelby_logo.png', :class=>"mobile-logo js-track-event", 'data-ga_category'=>"Mobile", "data-ga_action"=>"Clicked logo" %>
-	</div>	
+<h1 class="shelby_logo">
+  <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+</h1>
+<% unless request.url[0..-2] == Settings::Application.mobile_url %>
+  <a href="<%= Settings::Application.url %>/" data-icon="home" data-mini="true" class="ui-btn-right  js-track-event" data-ga_category="Mobile" data-ga_action="Clicked back to search" data-ajax="false">Home</a>
+  <div id="mobile-roll-title" data-role="header" data-theme="c"></div>
 <% end %>

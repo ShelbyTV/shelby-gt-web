@@ -33,7 +33,7 @@
 			$('form .ui-submit .ui-btn-text').html('&nbsp;');
 
 			var search = $('#mobile-search-input').val();
-			
+
 			var params = {
                     	  "q" : search,
                     	  "max-results" : "50",
@@ -53,11 +53,11 @@
 							    	urls.push(l.href);
 							  	}
 					  		}
-				  		});	
+				  		});
 						}
-					});					
+					});
 				}
-				
+
 				if (urls.length !== 0) {
 					// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
 					$.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': search, 'urls': JSON.stringify(urls)}, function(data){
@@ -71,7 +71,7 @@
 							window.location = _rollUrl;
 						}
 						else { alert("something went wrong."); }
-					});	
+					});
 				}
 				else {
 					$('.mobile-search-submit').prop('enabled', true);
@@ -79,9 +79,9 @@
 					$('#mobile-search-input').val('').attr('placeholder','sorry, nothing turned up');
 				}
    		};
-							
+
      	// Call ytQuery.query, passing params and your callback
-     	ytQuery.query(params, cb); 
+     	ytQuery.query(params, cb);
 
 			// Record what just happened w GA/KM
 			try{

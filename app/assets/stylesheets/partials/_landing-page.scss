@@ -9,16 +9,12 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  OVERRIDES
 //------------------------------------------------------------------------------
-html,
-body {
-  overflow: visible;
-}
 //----- Override App Base Styles -----------------------------------------
-
+//----- Modifiers --------------------------------------------------------
 .shelby--landing {
   background-color: $landing-page-footer-background;
   height: auto;
-  overflow: auto;
+  overflow: visible;
   position: relative;
 
   //TODO: determine why this override is necessary.
@@ -37,6 +33,41 @@ body {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+//  DISCLAIMER (N.B.):
+
+/*  There's a difference between .shelby--mobile and the media-queries at the
+    bottom of this partial.
+
+    Please use discretion when adding/removing styles from either.
+*/
+///////////////////////////////////////////////////////////////////////////////
+.shelby--mobile {
+  font-size: 50%;
+
+  .shelf--community {
+    .icon-player_play {
+      &:before {
+        font-size: 3.2em;
+      }
+    }
+  }
+
+  .shelf--signup,
+  .shelf--search {
+    .shelf__form {
+      font-size: inherit;
+    }
+  }
+
+  .shelf--community {
+    .shelf__list {
+      margin: 0 0 1em;
+    }
+  }
+}
+
+//----- Non-normative Overrides --------------------------------------------------------
 .login-section,
 .signup-section {
   right: 10px;
@@ -65,6 +96,7 @@ body {
   margin-bottom: 0;
   margin-top: .5em;
 }
+
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -278,7 +310,6 @@ body {
 
   //----- Elements -----------------------------------------
   .shelf__h1 {
-
   }
 
   .shelf__block {
@@ -530,6 +561,7 @@ body {
 //  - BREAKPOINTS ARE BASED ON NEEDS OF THE CONTENT
 //  - BREAKPOINTS SHOULD NEVER ACCOMODATE SPECIFIC DEVICES
 @media screen and (max-width: 1050px) { //Based on shelf--footer content
+  //----- Modifiers ----------------------------------------------------------
   .shelf--footer {
     .shelf__list--inline {
       display: block;
@@ -541,29 +573,100 @@ body {
     .shelf__list--sources {
       -webkit-background-size: contain;
       background-size: contain;
+      height: 0;
+      padding: 15% 0 0;
     }
   }
 }
 
 @media screen and (max-width: 850px) { //Based on shelf--community content
+  //----- Block ----------------------------------------------------------
+
+  //.blocks
+
+  //----- Elements ----------------------------------------------------------
+
   .shelf__item {
     float: none;
   }
+
+  //----- Modifiers ----------------------------------------------------------
 
   .shelf--community {
     .shelf__item {
       width: 50%;
     }
   }
-}
 
-@media screen and (max-width: 600px) { //Based on shelf--community content
-  .shelf--community {
-    .shelf__item {
-      width: auto;
+  .shelf--network {
+    .shelf__list--sources {
+      padding: 25% 0 0;
+    }
+  }
+
+  .shelf--about {
+    .shelf__block {
+      &:before {
+        display: none;
+      }
     }
   }
 }
+
+@media screen and (max-width: 600px) { //Based on shelf--community content
+  //----- Block ----------------------------------------------------------
+  .shelf {
+    .shelf__lining {
+      padding: 2em;
+    }
+
+    .shelf__h1 {
+      font-size: 3em;
+    }
+
+    .shelf__h2 {
+      font-size: 2.5em;
+      padding: 0;
+    }
+  }
+
+  //----- Modifiers ----------------------------------------------------------
+  .shelf--community {
+    .shelf__item {
+      float: none;
+      width: auto;
+    }
+  }
+
+  .shelf--signup {
+    .shelf__block {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .shelf--network {
+    .shelf__list--sources {
+      margin-bottom: 1em;
+    }
+  }
+
+  .shelf--footer {
+    .shelf__list--social {
+      & > li {
+        display: list-item;
+        margin: 1em;
+      }
+    }
+  }
+  //------ Non-normative Elements --------------------------------------
+  .frame--shelf {
+    padding: 0.8em 0;
+  }
+}
+
+// END OF MEDIA QUERIES ////////////////////////////////////////////////
 
 //----- Non-normative Elements -----------------------------------------
 .frame--shelf {

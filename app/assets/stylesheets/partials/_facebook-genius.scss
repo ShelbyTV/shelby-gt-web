@@ -5,13 +5,13 @@ $landing-page-shelf-background: #ccc;
 body.facebook-genius{
   // landing page //
   .landing-shelf-header {
-    text-align:center; 
+    text-align:center;
     font-weight: 400;
     font-size:2em;
     padding: 2em;
   }
   .top-header { font-size: 2.0em; }
-  h2.landing-shelf-subheader { 
+  h2.landing-shelf-subheader {
     width: 80%;
     text-align: center;
     font-weight: 300;
@@ -21,7 +21,7 @@ body.facebook-genius{
   .landing-shelf-private .landing-shelf-subheader{
     width: 740px;
   }
-  .landing-shelf form{ 
+  .landing-shelf form{
     margin: 50px auto 30px;
     width: 640px;
   }
@@ -36,17 +36,17 @@ body.facebook-genius{
     height: 45px;
     border: 1px solid #3B5998;
   }
-  
+
   #js-genius-search-submit {
     width: 128px;
   }
-  
+
   .genius-search-spinner{
   	height: 30px;
   	width: 30px;
   	margin: 0 auto;
   }
-  
+
   .login-area {
     float: left;
     text-align: left;
@@ -61,17 +61,17 @@ body.facebook-genius{
     }
     .landing-shelf-subheader { width: 80%; }
   }
-  
+
   .previous-search-area {
     float: right;
     width: 50%;
-    height: 400px;    
+    height: 400px;
     .landing-shelf-lining { width: 75%; }
     .landing-shelf-header { text-align:left; }
     .landing-shelf-subheader{
       text-align: left;
     }
-    #recommended-searches{ 
+    #recommended-searches{
       display: none;
     }
     .landing-shelf-subheader { width: 80%; }
@@ -102,7 +102,7 @@ body.facebook-genius{
     }
   }
   // ***** //
-  
+
   .media_body, .media_image {
     overflow: visible;
   }
@@ -114,11 +114,11 @@ body.facebook-genius{
   span.fb_edge_comment_widget iframe {
     width: 351px !important;
   }
-  
+
   .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
   display: none !important;}
   // ***** //
-  
+
   // header //
   .shelby-logo{
     width: 100px;
@@ -129,25 +129,25 @@ body.facebook-genius{
     	height: 35px;
     	margin: 0 auto;
     	width: 95px;
-    } 
-  }  
+    }
+  }
   .guide-presentation-selector {
     display:none;
   }
-  
+
   /*
   #facebook-genius-login {
     position:fixed;
     right: 10px;
-    padding-top: 7px;    
+    padding-top: 7px;
   }
   */
-  
+
   #fb-header-search {
     position:fixed;
     right: 10px;
     padding-top: 7px;
-    
+
     .roll-page-form-input {
       border-radius: 2px 0 0 2px;
       border: 1px solid adjust-lightness($landing-page-shelf-background, -15%);
@@ -170,16 +170,16 @@ body.facebook-genius{
      width: 78px;
    }
   }
-  
+
   // end header
-  
+
   #fb-comments-holder{
     position: relative;
     bottom: 15%;
     height: 33%;
     overflow-y: scroll;
     background-color: white;
-    
+
     &.hide-comment-holder { margin-top: 300px; }
   }
   .fb-comments { background-color: white;}
@@ -188,28 +188,28 @@ body.facebook-genius{
       height: 100%;
       bottom:0;
   }
-  
+
   // post button
   .menu_item.right { margin-right: 10px; }
-  button.command-post{ 
-    width: 115px; 
+  button.command-post{
+    width: 115px;
     i {
       padding-left: 1.6em;
       background-size: contain;
     }
   }
-  
+
   // prev/next buttons
   .videoplayer-nav__btn{ display: none; }
-  
+
   // video controls
-  #video-controls {
+  .videoplayer-controls__wrapper {
     position:relative;
     bottom: 15%;
     .video-player-progress {left: 55px;}
     .video-player-roll { display: none;}
   }
-  
+
   // video player adjustments
   .videoplayer-viewport {
     position: relative;
@@ -227,22 +227,22 @@ body.facebook-genius{
   }
   .hide-guide {
     .videoplayer-viewport{ height: 100%; }
-    #video-controls { bottom: 0; width: 100%;}
+    .videoplayer-controls__wrapper { bottom: 0; width: 100%;}
   }
-  
+
   // guide header
   .guide-header-title {
     line-height: 1.931;
   }
-  
+
 }
 
 body.connected {
   .fb-login-button { display: none; }
 }
 
-body.not-authorized { 
-  #searches-from-likes { 
+body.not-authorized {
+  #searches-from-likes {
     display:none;
   }
 }
@@ -255,24 +255,24 @@ section.fb-genius {
       @include button-primer($shelby-blue, dark);
       zoom: 1.5;
       width: 275px;
-      a { 
+      a {
         text-decoration: none;
         color: #fff;
       }
     }
   }
-  
+
   .landing-shelf__video-embed {
     width: 525px;
   }
 
   #sharing-box {
     width: 65px;
-    float: left; 
+    float: left;
   }
 
-  .landing-shelf__lining { 
-    max-width: 1000px; 
+  .landing-shelf__lining {
+    max-width: 1000px;
     padding: 25px 0px;
   }
   .landing-form-input { width: 85%; }
