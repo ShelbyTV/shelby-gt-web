@@ -8,7 +8,7 @@
   <% if (!shelby.models.user.isAnonymous()) { %>
     <li class="guide-nav-item">
       <button class="nav-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-        Queue
+        Likes
       </button>
     </li>
   <% } %>
@@ -25,7 +25,14 @@
         Me
       </button>
     </li>
+    
+    <li class="guide-nav-item js-guide-mail">
+      <button class="nav-button js-mail">
+        Mail
+      </button>
+    </li>
   <% } %>
+  
 
   <li class="dropdown_module--no-hover dropdown_module--invite-user guide-nav-item js-guide-invite">
     <!-- Content filled in by InviteFormView -->

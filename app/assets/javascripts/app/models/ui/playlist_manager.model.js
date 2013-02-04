@@ -4,7 +4,8 @@ libs.shelbyGT.PlaylistManagerModel = Backbone.Model.extend({
     nowSkippingVideo : false,
     playingFrameGroupCollection : null,
     playingRollId : null,
-    playingState : libs.shelbyGT.PlayingState.none
+    playingState : libs.shelbyGT.PlayingState.none,
+    preparedPlaylistCollection  : null
   }
 
 });

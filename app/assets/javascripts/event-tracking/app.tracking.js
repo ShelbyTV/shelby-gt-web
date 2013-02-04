@@ -52,7 +52,15 @@ _(shelby).extend({
           break;
         case 'add_to_queue':
           _gaAction = 'queued'; _gaCategory = 'Frame';
-          _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
+          _kmq.push(['record', action, {'frame': options.frameId}]);
+          break;
+        case 'liked':
+          _gaAction = 'liked'; _gaCategory = 'Frame';
+          _kmq.push(['record', action, {'frame': options.frameId}]);
+          break;
+        case 'liked on search':
+          _gaAction = 'liked' ; _gaCategory = 'search';
+          _kmq.push(['record', action, {'frame': options.frameId}]);
           break;
         case 'watched':
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
