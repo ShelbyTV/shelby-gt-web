@@ -14,8 +14,8 @@
 
     options : _.extend({}, libs.shelbyGT.PagingListView.prototype.options, {
       collapseViewedFrameGroups : true,
-      filter : function(frame) {
-          return frame.get('video').get('provider_name') == 'youtube';
+      mobileVideoFilter : function(frame) {
+          return frame.get('video').canPlayMobile();
       },
       infinite : true,
       listItemViewAdditionalParams : function() {
@@ -31,7 +31,7 @@
           collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
         });
       if (Browser.isMobile()) {
-        this._filter = this.options.filter;
+        this._filter = this.options.mobileVideoFilter;
       }
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
