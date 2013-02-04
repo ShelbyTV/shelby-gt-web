@@ -37,7 +37,7 @@
   <div id="banner-wrapper" class="hidden">
       <div id="banner-inner">
       <h3 id="message">
-        You're watching <span id="site-url"></span> at Shelby.tv, where cats and dogs live together
+        You're watching <span id="site-url"></span> at Shelby.tv
       </h3>
       <div id="like-share">
         <div class="message">
@@ -85,11 +85,7 @@
         <div id="learn-more-wrapper">
           <div id="learn-more-icon"></div>
           <div id="learn-more">
-            Continuous playback, a caring community, and an unparalled viewing experience make Shelby.tv the best place to enjoy video on the web.<br>
-            <br>
             Get a taste for what Shelby has to offer by creating a TV channel of the video from that URL in the form above. We will pull any video we find there that is embedded from YouTube, Vimeo, DailyMotion, Blip.tv, College Humor, or Hulu. <br>
-            <br>
-            Currently YouTube webpages won't render here (google renders video on pages dynamicaly) but go hunting elsewhere, there's amazing video out there! <br>
             <br>
             Enjoy!
           </div>
@@ -99,6 +95,103 @@
   </div> <!-- eo ~static-wrapper -->
 
   <iframe class="shelby hidden" src></iframe>
+
+  <script>
+  $('#js-submission-form').submit(function(){
+    $('.js-submit').css('opacity','.5');
+    // get url to fetch //
+
+    var _query = $('.website').val();
+
+    // clean  house //
+    if (_query.slice(0,7) !== "http://"){ _query = "http://" + _query; }
+
+    var _queryDomain = _query.slice(7).split('/')[0];
+    $('#site-url').text(_queryDomain);
+
+    if (_queryDomain.slice(0,7) == "youtube") {
+      $('input:text').val('').attr('placeholder','YouTube page support coming soon').css('background-color','#cc1235');
+      $('.js-submit').css('opacity','1');
+      $('input:text').blur();
+      return false;
+    }
+
+    // message whats happening //
+    $('input').blur().addClass('working');
+    $('input:text').val('loading...').addClass('with-spinner');
+
+    // update iframe to fetch query //
+    var _newSrc = '<%= Settings::Application.url %>/search?query='+_query;
+    $('iframe.shelby').attr('src', _newSrc);
+
+    // add spinner
+    var opts = {
+      lines: 13, // The number of lines to draw
+      length: 6, // The length of each line
+      width: 4, // The line thickness
+      radius: 10, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      color: '#999', // #rgb or #rrggbb
+      speed: 1, // Rounds per second
+      trail: 60, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+      className: 'spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      top: 'auto', // Top position relative to parent in px
+      left: 'auto' // Left position relative to parent in px
+    };
+    var target = $('.website')[0];
+    var spinner = new Spinner(opts).spin();
+    $(spinner.el).insertBefore(target);
+
+    // prepare ui to change //
+    setTimeout(function(){
+      $('iframe.shelby').css('height',$('body').height()-40);
+      $('iframe.shelby').removeClass('hidden').addClass('with-banner');
+      $('#video-static').remove();
+      $('#static-wrapper').remove();
+      $('#banner-wrapper').removeClass('hidden');
+      // new social buttons
+      var _newUrl;
+      if (document.location.href.split("?").length > 1) {
+        _newUrl = document.location.href;
+      }
+      else {
+        _newUrl = document.location.href+'?q='+_queryDomain;
+      }
+
+      // update twitter share
+      $('.social .twitter').append('<a href="https://twitter.com/share" class="twitter-share-button" data-related="shelby" data-url="'+ _newUrl+'" data-lang="en" data-size="small" data-count="horizontal" data-text="Turn any website into a TV experience">Tweet</a>');
+      twttr.widgets.load();
+      // update fb like
+      $('.social .facebook').append('<div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-colorscheme="light" data-action="like" data-href="http://shelby.tv/experience"></div>');
+      FB.XFBML.parse();
+      // update goog +1
+      gapi.plusone.render('google-plus-one', {"size": "medium"});
+
+    }, 7000);
+
+    // update progress of fetch //
+    var _i = 0, progressStates = ["herding goats",
+                                  "attaching video to them",
+                                  "delivering goats via satellite"];
+    var progressTimer = setInterval(function(){
+      if (_i <= 2){
+        $('input:text').val(progressStates[_i]+'...');
+        _i+=1;
+      }
+      else {
+        clearInterval(progressTimer);
+      }
+
+    }, 1500);
+
+
+    return false;
+  });
+  </script>
 
   <script>
     // social
