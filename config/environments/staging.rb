@@ -47,7 +47,7 @@ ShelbyGtWeb::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "//staging.shelby.tv"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile = %w(common.js deferred.js landing.js seovideo.js shelby.js shelbify.js extension/includes.js mobile.js turbo.js experience.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css)
