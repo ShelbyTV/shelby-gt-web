@@ -19,6 +19,7 @@ $main-column-width: 45em;
 //------------------------------------------------------------------------------
 .shelby-wrapper--discussion {
   background-color: $base;
+  overflow: visible;
   position: relative;
 
   .shelby-wrapper {
@@ -45,7 +46,7 @@ $main-column-width: 45em;
   .load-more {
     width: 100%;
     position: absolute;
-    top: -45px;
+    top: -37px;
   }
 
   .load-more-button {
@@ -213,20 +214,26 @@ $main-column-width: 45em;
 }
 
 .recipients__item {
-  &:after {
-    content: ", ";
+  padding-right: 0.5em;
+
+  .primary-info {
+    &:after {
+      content: ", ";
+    }
   }
 
   &:last-child {
-    &:after {
-      content: none;
+    .primary-info {
+      &:after {
+        content: none;
+      }
     }
   }
-}
 
-  .recipients__item--overflow {
+  &.recipients__item--overflow {
     display: none;
   }
+}
 
 
 //comment element---------------------------------------------------------------
@@ -314,15 +321,6 @@ $main-column-width: 45em;
     }
   }
 
-  .discussion__item--recipients {
-    display: inline-block;
-    &:not(:last-child){
-      > span:after{
-        content: ',';
-        padding-right: 0.25em;
-      }
-    }
-  }
 
   .discussion__item--recipients-overflow {
     display: none;
@@ -340,8 +338,8 @@ $main-column-width: 45em;
     display: none;
   }
 
-.discussion--recipients .show-all-recipients {
-  .discussion__item--recipients-overflow {
+.show-all-recipients {
+  .recipients__item--overflow {
     display: inline-block;
   }
 
