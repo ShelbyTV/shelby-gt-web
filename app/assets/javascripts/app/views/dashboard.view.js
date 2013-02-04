@@ -14,8 +14,8 @@
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
-      filter : function(dbEntry) {
-          return dbEntry.get('frame').get('video').get('provider_name') == 'youtube';
+      mobileVideoFilter : function(dbEntry) {
+          return dbEntry.get('frame').get('video').canPlayMobile();
       },
       initFixedHead : true,
       isIntervalComplete : function(displayedItems) {

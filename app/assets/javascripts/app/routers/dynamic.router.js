@@ -415,7 +415,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       // for compatibility reasons, we only show youtube videos on mobile
-      if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').get('provider_name') == 'youtube')) {
+      if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').canPlayMobile())) {
         var activeFrameModelRoll = activeFrameModel.get('roll');
         if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
           //if the previous active frame was on the current roll, just play it
@@ -434,7 +434,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var frame = rollModel.get('frames').get(frameId);
       // for compatibility reasons, we only show youtube videos on mobile
-      if (frame && (!Browser.isMobile() || frame.get('video').get('provider_name') == 'youtube')) {
+      if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
         var activeFrameModel = shelby.models.guide.get('activeFrameModel');
         if (shelby.models.routingState.get('forceFramePlay')) {
           // if we want to be sure the frame starts playing, we need to take special action if the
@@ -486,7 +486,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var entry = dashboardModel.get('dashboard_entries').get(entryId);
       // for compatibility reasons, we only show youtube videos on mobile
-      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').get('provider_name') == 'youtube')) {
+      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
         shelby.models.guide.set('activeFrameModel', entry.get('frame'));
       } else {
         // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
