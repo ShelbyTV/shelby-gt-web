@@ -418,7 +418,7 @@ $active-list-item: $shelby-blue;
 //---------------------------
 
 .frame-external-subline {
-  margin: 8px 0px 0px 5px;
+  margin: 0.8em 0 0 5px;
 }
 
 .frame-external-subline-text {
@@ -434,6 +434,13 @@ $active-list-item: $shelby-blue;
 .frame-likes {
   height: 2.3em;
   overflow: hidden;
+
+  &.icon-heart {
+    &:before {
+      float: left;
+      line-height: 2.3em;
+    }
+  }
 }
 
 .frame-likes--hide {
@@ -441,8 +448,8 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-avatars {
-  display: inline;
-  margin: 0 0.5em;
+  float: left;
+  margin: 0 0.6em;
 
   li {
     display: inline;
@@ -457,6 +464,11 @@ $active-list-item: $shelby-blue;
       margin-left: 0.5em;
     }
   }
+}
+
+.frame-likes-count {
+  float: left;
+  line-height: 2.3em;
 }
 
 .frame-likes-avatar {
