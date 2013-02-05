@@ -28,7 +28,7 @@ class TurboEmbedController < ApplicationController
     
     #XXX TODO: FIXME
     #only rendering if roll is reece's while we test
-    #render :nothing => true and return unless @user['nickname'] == "reece"
+    render :nothing => true and return unless @user['nickname'] == "reece"
     
     @embed_attr_key = "shelby-turbo-tag"
     @embed_attr_val = params[:shelbyTurboTag]
