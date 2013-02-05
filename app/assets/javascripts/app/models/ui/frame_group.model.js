@@ -102,8 +102,10 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
 
     if (frames) {
       frames.reduce(function(memo, frame) {
-        memo.likers = memo.likers.concat(frame.get('upvoters'));
-        memo.totalLikes += frame.get('like_count');
+        if (frame.has('upvoters')) {
+          memo.likers = memo.likers.concat(frame.get('upvoters'));
+        }
+        memo.totalLikes += frame.get('like_count') || 0;
         return memo;
       }, result);
     }
