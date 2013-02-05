@@ -48,4 +48,24 @@
   .preroll-video-info {
     margin: 15em 15em 0;
   }
-}
+
+//------------------------------------------------------------------------------
+//  Persistent video Info
+
+  .hide-guide {
+    .videoplayer-viewport {
+      bottom: 5em;
+    }
+
+    .video_controls__wrapper {
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .persistent_video_info__wrapper {
+      bottom: -($persistent_video_info--height);
+    }
+  }
+
+}//eo .touch
