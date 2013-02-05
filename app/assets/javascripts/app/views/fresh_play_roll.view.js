@@ -40,7 +40,9 @@
       this.model.get('frames').comparator = this.options.comparator;
 
       // make the magic happen (in conjuction w/ the comparator from options)
-      this._engageReScoring();
+      if(this.options.freshPlayEnabled){
+        this._engageReScoring();
+      }
                 
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
     },
@@ -68,6 +70,8 @@
       limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
       
       /************************** Fresh Play Public Options **************************/
+      // when disabled we do nothing (not even showing "new")
+      freshPlayEnabled : false,
       // for how many days should the random reorder stay consistent
       reorderingConsistencyDays : 1,
       // Keep frames created less then newFramesMaxAgeDays days as "new"

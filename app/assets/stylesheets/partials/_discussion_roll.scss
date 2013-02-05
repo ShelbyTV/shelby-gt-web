@@ -629,11 +629,15 @@ $main-column-width: 45em;
 //------------------------------------------------------------------------------
 .explanation {
   display: none;
-  padding: 3em 4em;
+  padding: 2em 4em;
   text-align: center;
 
   .discussion__h2 {
 
+  }
+
+  .discussion__img {
+    max-width: 100%;
   }
 }
 

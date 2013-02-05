@@ -1,1 +1,7 @@
-<img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>" />
+<% if (user.has('personal_roll_subdomain')) { %>
+  <a class="frame-likes-link js-track-event" href="http://<%= user.get('personal_roll_subdomain') %>.shelby.tv" target="_blank" data-ga_category="Frame" data-ga_action="click liker" data-ga_label="<%= user.get('personal_roll_subdomain') %>">
+<% } %>
+  <img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>" />
+<% if (user.has('personal_roll_subdomain')) { %>
+  </a>
+<% } %>
