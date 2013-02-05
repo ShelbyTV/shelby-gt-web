@@ -82,4 +82,59 @@
       font-size: 1.2em;
     }
   }
-}
+
+
+}//eo media-query///////////////////////////////////////////////////////////////
+
+//  Screens that < 1100px wide.
+@media screen and (max-width: 650px) {
+
+  //touch interfaces with narrow viewports
+  .touch {
+
+    //------------------------------------------------------------------------------
+    //  Shelby Chat
+
+    //shrink "Search" button
+    .search_module__submit {
+      padding: 0.5em;
+    }
+
+    //tighten spacing of conversations
+    .discussion__menu_item {
+      border-radius: 0;
+      margin-bottom: 5px;
+    }
+
+    .discussion {
+      //remove roundedness of items
+      .frame-body-wrapper {
+        border-radius: 0;
+      }
+    }
+
+    //tighten spacing within conversation
+    .discussion__item {
+      margin: 0;
+    }
+
+    .discussion__form--discussion-reply {
+      //shrink Insert Video button
+      .discussion__item--insert-video {
+        margin: 0.15em;
+      }
+
+      //hiding the avatar
+      .media_image {
+        display: none;
+      }
+
+      //shrinking the "Reply" button
+      .form_submit {
+        padding: 0.5em;
+      }
+    }
+
+  }// eo touch
+
+}//eo media-query///////////////////////////////////////////////////////////////
