@@ -2,10 +2,18 @@ libs.shelbyGT.UserCollection = Backbone.Collection.extend({
 
   model: libs.shelbyGT.UserModel,
 
-  // method:url - generates a url which can be used to load or reload data
-  //  for models in the collection
-  url: function(models) {
-    return shelby.config.apiRoot + '/user' + ( models ? '?ids=' + _.pluck( models, 'id' ).join(',') : '' );
+  // method fetchUserInfo: fetch the publicly available information for a set of users, passed in as an array of user id strings
+  fetchUserInfo: function(ids) {
+    this.fetch({
+      url : shelby.config.apiRoot + '/user',
+      data : {
+        ids : ids.join(",")
+      }
+    });
+  },
+
+  parse : function(response) {
+    return response.result;
   }
 
 });

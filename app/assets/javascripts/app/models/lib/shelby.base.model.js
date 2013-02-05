@@ -3,7 +3,7 @@
 libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
   // extract the JSON from the "result" property of a Shelby API response
   parse : function (response) {
-    return response.result;
+    return _(response).has('result') ? response.result : response;
   },
 
   methodMap : {

@@ -95,14 +95,14 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
 
   getCombinedLikeInfo : function() {
     var result = {
-      likers : new libs.shelbyGT.UserCollection(),
+      likers : [],
       totalLikes : 0
     };
     var frames = this.get('frames');
 
     if (frames) {
       frames.reduce(function(memo, frame) {
-        memo.likers.add(frame.get('upvoters').models);
+        memo.likers = memo.likers.concat(frame.get('upvoters'));
         memo.totalLikes += frame.get('like_count');
         return memo;
       }, result);

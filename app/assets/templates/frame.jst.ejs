@@ -191,12 +191,7 @@
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
   <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
-    <ul class="list frame-likes-avatars <%= !likers.length ? ' no-liker-avatars' : ''%>">
-      <% _(likers).each(function(user) { %>
-        <li>
-          <img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>" />
-        </li>
-      <% });%>
+    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
     </ul>
     <% if (remainingLikes) { %>
       <span class="frame-likes-count frame-external-subline-text">

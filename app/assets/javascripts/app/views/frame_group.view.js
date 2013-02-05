@@ -105,7 +105,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     if (this.model.get('frames').length){
       var likeInfo = this.model.getCombinedLikeInfo();
-      var likersToDisplay = likeInfo.likers.models.slice(0, 9);
+      var likersCollection = new libs.shelbyGT.UserCollection();
+      var likersToDisplay = likeInfo.likers.slice(0, 9);
+      if (likersToDisplay.length) {
+        // load the avatar information for the likers, so we'll have it as soon as possible
+        likersCollection.fetchUserInfo(likersToDisplay);
+      }
+
       var remainingLikes = likeInfo.totalLikes - likersToDisplay.length;
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
@@ -117,6 +123,17 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         remainingLikes : remainingLikes,
         totalLikes : likeInfo.totalLikes
       }));
+
+      if (likersToDisplay.length) {
+        // render the likers' avatars, now if they've already arrived, or via event handling
+        // later if the ajax hasn't returned yet
+        this.renderChild(new libs.shelbyGT.ListView({
+          collection : likersCollection,
+          doStaticRender : true,
+          el : this.$('.js-liker-avatars-list'),
+          listItemView : 'LikerAvatarItemView'
+        }));
+      }
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
