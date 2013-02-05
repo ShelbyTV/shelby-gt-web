@@ -13,3 +13,8 @@
 //  @import in rendered/compiled CSS is known to have minimal performance drawbacks.
 
 //  TODO: figure out a better technique for when performance becomes more important.
+
+
+[class*="icon-"]:before {
+  vertical-align: -0.075em;
+}

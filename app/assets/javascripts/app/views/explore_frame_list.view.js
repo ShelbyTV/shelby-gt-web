@@ -35,7 +35,8 @@ libs.shelbyGT.ExploreFrameListView = libs.shelbyGT.ListView.extend({
   },
 
   _filter : function(frame) {
-    return frame.has('video') && frame.get('video').get('thumbnail_url');
+    var video = frame.get('video');
+    return video && video.get('thumbnail_url') && (!Browser.isMobile() || video.canPlayMobile());
   }
 
 });

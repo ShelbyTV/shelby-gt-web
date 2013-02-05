@@ -76,7 +76,7 @@ var Browser = {
 	  // this.isIframe() used to be included in this, currently removed it for signup popup functionality
 		return !(this.isBoxee() || this.isMobile());
 	},
-	
+
   _corsSupport: null,
 
   supportsCORS: function(){

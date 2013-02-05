@@ -1,8 +1,19 @@
-/*
 (function($){
   var embedEl = $("[<%= @embed_attr_key %>=<%= @embed_attr_val %>]");
-  //NB: CSS NOT INCLUDED
-  var embedFooter = SHELBYJST['turbo/embed_footer']({embedEl: embedEl});
-  embedEl.after(embedFooter);
+  
+  //embed an iFrame
+  var $embedFooterIframe = $(SHELBYJST['turbo/iframe']({width:embedEl.width(), height:40}));
+  embedEl.after($embedFooterIframe);
+
+  //content for the iframe
+  var embedFooter = SHELBYJST['turbo/embed_footer']({stylesheetLink: '<%= stylesheet_link_tag "screen", :media => "screen" %>',
+                                                     embedEl: embedEl, 
+                                                     embedElWidth: embedEl.width(),
+                                                     userNickname: "<%= @user['nickname'] %>",
+                                                     rollLinkURL: "http://<%= @roll['subdomain'] ? @roll['subdomain'] : @user['nickname'] %>.shelby.tv",
+                                                     rollLinkText: "<%= @roll['subdomain'] ? @roll['subdomain'] : @user['nickname'] %>.shelby.tv"});
+
+  //render content in iframe
+  $embedFooterIframe[0].contentWindow.contents = embedFooter;
+  $embedFooterIframe[0].src = 'javascript:window["contents"]';
 })(window.__shelbyJQuery);
-*/

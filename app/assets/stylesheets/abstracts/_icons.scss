@@ -82,7 +82,7 @@ $icons:
 }
 
 .icon {
-  vertical-align: -0.1em;
+  // vertical-align: -0.1em;
 
   &:before {
     &:hover {
@@ -92,5 +92,7 @@ $icons:
 }
 
 .icon-heart--red {
-  color: #EE4C4C;
+  &:before {
+    color: #EE4C4C;
+  }
 }

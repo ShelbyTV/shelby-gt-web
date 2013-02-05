@@ -190,9 +190,22 @@
       </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
+  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
+    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
+    </ul>
+    <% if (remainingLikes) { %>
+      <span class="frame-likes-count frame-external-subline-text">
+        <% if (likers.length) { %>
+          +<%= remainingLikes %>
+        <% } else { %>
+          <%= _('like').pluralize(remainingLikes, true) %>
+        <% } %>
+      </span>
+    <% } %>
+  </div>
   <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
-    <aside class="frame-aside">
-      <p class="frame-aside-text">
+    <div class="frame-external-subline">
+      <p class="frame-external-subline-text">
         Also via:
 
         <% _(dupeFrames).each(function(frame, index) { %>
@@ -202,7 +215,7 @@
           </a>
         <% }); %>
       </p>
-    </aside>
+    </div>
   <% } %>
 
 	<% if(frame.get('isFreshPlayNew')){ %>

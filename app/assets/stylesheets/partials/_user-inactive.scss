@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------------
 // User Inactivity Overrides, should be nested or compounded.
 //------------------------------------------------------------------------------
-.user-inactive{
-  .shelby-header,
+.user-inactive {
+  .js-app-header,
   .main-layout .guide-wrapper {
     opacity: .4;
   }

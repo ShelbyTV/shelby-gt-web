@@ -4,6 +4,10 @@
 
 //  Screens that < 1100px wide.
 @media screen and (max-width: 1100px) {
+  //icon normalization, compensates for small typeface proportions
+  [class*="icon-"]:before {
+    vertical-align: -0.1em;
+  }
   //////////////////////////////////////////////////////////////////////////////
   //  Guide
   //////////////////////////////////////////////////////////////////////////////
@@ -21,7 +25,7 @@
   }
 
   .frame-footer {
-    margin: 5px;
+    margin: 5px 5px 2px;
 
     .xuser-avatar {
       // display: inline-block;
@@ -47,9 +51,7 @@
   }
 
   .frame-subsection {
-    .frame-command-wrapper {
-      margin:-9px 0 0;
-    }
+    margin-top: 0.25em;
 
     .frame-command {
       margin: 0;

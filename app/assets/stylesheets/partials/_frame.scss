@@ -10,13 +10,19 @@ $active-list-item: $shelby-blue;
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
     .frame-title,
-    .frame-aside-text {
+    .frame-external-subline-text {
       color: white;
     }
 
-    .frame-aside-text a:link,
-    .frame-aside-text a:visited {
+    .frame-external-subline-text a:link,
+    .frame-external-subline-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
+    }
+
+    .frame-likes.icon-heart--red {
+      &:before {
+        color: #156B86;
+      }
     }
   }
 }
@@ -100,7 +106,7 @@ $active-list-item: $shelby-blue;
 
 .frame-subsection,
 .frame-subline {
-  margin-top: 1em;
+  margin-top: 0.5em;
   text-align: right;
 }
 
@@ -126,10 +132,6 @@ $active-list-item: $shelby-blue;
 
   &:hover {
     text-decoration: underline;
-  }
-
-  &:before {
-    vertical-align: -0.1em;
   }
 }
 
@@ -218,15 +220,6 @@ $active-list-item: $shelby-blue;
 
   margin-left: 1em;
   margin-top: 1em;
-
-  //specifying each button individually,
-  //not sure if applying this vertical align to the .icon_primer
-  //is a good idea yet.
-  .icon-videocard_roll,
-  .icon-videocard_queue,
-  .icon-email {
-    vertical-align: -0.1em;
-  }
 }
     ////////////////////////////////////////////////////////////////////////////
     //  dropdown sublist:
@@ -307,7 +300,7 @@ $active-list-item: $shelby-blue;
 
 .command-remove {
   .icon-cancel {
-    vertical-align: -0.1em;
+    // vertical-align: -0.1em;
   }
 }
 
@@ -411,14 +404,67 @@ $active-list-item: $shelby-blue;
 //  lists duplicates, 'also via:' stuff
 //---------------------------
 
-.frame-aside {
-  margin: 8px 0px 0px 5px;
+.frame-external-subline {
+  margin: 0.8em 0 0 5px;
 }
 
-.frame-aside-text {
+.frame-external-subline-text {
   color: #666;
   margin: 0;
   padding: 0;
+}
+
+//---------------------------
+//  likes: like information below the videocard
+//---------------------------
+
+.frame-likes {
+  height: 2.3em;
+  overflow: hidden;
+
+  &.icon-heart {
+    &:before {
+      float: left;
+      line-height: 2.3em;
+    }
+  }
+}
+
+.frame-likes--hide {
+  height: 0em;
+}
+
+.frame-likes-avatars {
+  float: left;
+
+  &.list {
+    margin: 0 0.6em;
+  }
+
+  &.no-liker-avatars {
+    & + .frame-likes-count {
+      margin-left: 0.5em;
+    }
+  }
+
+  li {
+    display: inline;
+
+    & + li {
+      margin-left: 0.3em;
+    }
+  }
+
+}
+
+.frame-likes-count {
+  float: left;
+  line-height: 2.3em;
+}
+
+.frame-likes-avatar {
+  height: 26px;
+  width: 26px;
 }
 
 //------------------------------------------------------------------------------
