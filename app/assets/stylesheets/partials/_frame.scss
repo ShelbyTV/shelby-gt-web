@@ -449,7 +449,16 @@ $active-list-item: $shelby-blue;
 
 .frame-likes-avatars {
   float: left;
-  margin: 0 0.6em;
+
+  &.list {
+    margin: 0 0.6em;
+  }
+
+  &.no-liker-avatars {
+    & + .frame-likes-count {
+      margin-left: 0.5em;
+    }
+  }
 
   li {
     display: inline;
@@ -459,11 +468,6 @@ $active-list-item: $shelby-blue;
     }
   }
 
-  &.no-liker-avatars {
-    & + .frame-likes-count {
-      margin-left: 0.5em;
-    }
-  }
 }
 
 .frame-likes-count {
