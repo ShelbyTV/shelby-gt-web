@@ -76,6 +76,19 @@ var __shelbyTurbo = {
     match = null,
     videoEmbeds = [],
     possibleVideoEmbeds = this.$('iframe, embed, video');
+    
+    /* HACK 
+     * jQuery isn't locating elements correctly on some pages
+     * Still not sure why.
+     * But using the DOM to get them directly does work.
+     */
+    var iframes = document.getElementsByTagName('iframe');
+    var embeds = document.getElementsByTagName('embed');
+    var videos = document.getElementsByTagName('video');
+    iframes = Array.prototype.slice.call(iframes);
+    embeds = Array.prototype.slice.call(embeds);
+    videos = Array.prototype.slice.call(videos);
+    possibleVideoEmbeds = this.$(iframes.concat(embeds).concat(videos));
 
     //for each embed, check src attribute to find known video embed
     possibleVideoEmbeds.each(function(n, embed){
