@@ -55,22 +55,13 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
 
   showDiscussionRollsManagerView: function(e){
     e && e.stopPropagation();
-    console.log(e, 'this was clicked', this, this.$el);
-
     $('.js-discussion-main').toggleClass('hidden',true);
     $('.js-discussion-menu').toggleClass('hidden',false);
-    // this._scrollTopWhenHidden = $("body").scrollTop();
-    // $(".js-discussion").addClass('discussions-manager-shown');
-    // $('.discussion__content--menu').show();
-    // $("body").scrollTop(0);
   },
 
   discussionRollsManagerViewShouldDisappear: function(){
     $('.js-discussion-main').toggleClass('hidden',false);
     $('.js-discussion-menu').toggleClass('hidden',true);
-    // $('.discussion__content--menu').hide();
-    // $(".js-discussion").removeClass('discussions-manager-shown');
-    // $("body").scrollTop(this._scrollTopWhenHidden);
   },
 
   //show single recipient in nav title, or should group in supplementary TO area
