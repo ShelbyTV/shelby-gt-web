@@ -1,8 +1,10 @@
-<a href="/mail/<%= roll.id %>?u=<%= viewer %>&t=<%= roll.get('token') %>">
-	<div class="discussion--recipients js-discussion-roll-recipients">
-		<!-- content filled in by DiscussionRollRecipientsView -->
-	</div>
-	<div class="discussion--last-message js-discussion-roll-last-message">
-	  <!-- content filled in by DiscussionRollRecipientsView -->
-	</div>
+<a class="discussion__link" href="/mail/<%= roll.id %>?u=<%= viewer %>&t=<%= roll.get('token') %>">
+  <div class="discussion_menu__item frame-body-wrapper clearfix">
+  	<div class="discussion_menu__head js-discussion-roll-recipients">
+  		<!-- content filled in by DiscussionRollRecipientsView -->
+  	</div>
+  	<div class="discussion_menu__body js-discussion-roll-last-message">
+  	  <!-- content filled in by DiscussionRollRecipientsView -->
+  	</div>
+  </div>
 </a>
