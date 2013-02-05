@@ -112,9 +112,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
 
-    var query = params && params.query;
+    var query = params && (params.query || params.q);
     if (query) {
-      shelby.models.videoSearch.set('query', params.query);
+      shelby.models.videoSearch.set('query', (params.query || params.q));
     }
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.search
