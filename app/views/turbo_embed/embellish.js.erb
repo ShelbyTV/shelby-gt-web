@@ -25,7 +25,9 @@
                                                      embedElWidth: embedEl.width(),
                                                      userNickname: "<%= @user['nickname'] %>",
                                                      rollLinkURL: "http://<%= @roll['subdomain'] ? @roll['subdomain'] : @user['nickname'] %>.shelby.tv",
-                                                     rollLinkText: "<%= @roll['subdomain'] ? @roll['subdomain'] : @user['nickname'] %>.shelby.tv"});
+                                                     rollLinkText: "<%= @roll['subdomain'] ? @roll['subdomain'] : @user['nickname'] %>.shelby.tv",
+                                                     gaQueryParams: "utm_medium=embed&utm_campaign=embellish-footer&utm_source=<%= @user['nickname'] %>"
+                                                     });
 
   //render content in iframe
   $embedFooterIframe[0].contentWindow.contents = embedFooter;
