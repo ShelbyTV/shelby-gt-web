@@ -131,7 +131,15 @@ class HomeController < ApplicationController
   def experience
     urls = ["http://www.reddit.com/r/videos",
             "http://www.reddit.com/domain/hulu.com",
-            "http://laughingsquid.com"]
+            "http://laughingsquid.com",
+            "http://vimeo.com/channels/documentaryfilm",
+            "http://vimeo.com/channels/7588",
+            "http://vimeo.com/channels/worldhd",
+            "http://mashable.com/2012/07/12/funny-youtube-videos-reddit/",
+            "http://youtube-global.blogspot.com/",
+            "http://periodicvideos.blogspot.com/",
+            "http://youtube-trends.blogspot.com/"
+          ]
     @url = params[:q] ? params[:q] : urls[rand(urls.length)]
     render '/home/experience'
   end
