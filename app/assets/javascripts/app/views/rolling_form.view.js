@@ -161,7 +161,6 @@
         },
         function(returnVal){
           var rollId = newFrame.get('roll_id');
-          console.log(returnVal, libs.shelbyGT.notificationStateModel, rollId);
 
           if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
             shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});

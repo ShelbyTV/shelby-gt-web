@@ -224,7 +224,6 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
     // should always call the superclass's implementation as part of theirs if they have
     // a share button
     if (this._components.shareButton) {
-      console.log('onShareSuccess!');
       this.$('.js-submit-share').removeClass('js-sharing');
     }
   },

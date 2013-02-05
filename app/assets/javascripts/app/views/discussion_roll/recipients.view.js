@@ -69,7 +69,6 @@ libs.shelbyGT.DiscussionRollRecipientsView = Support.CompositeView.extend({
 
   _toggleShowAllRecipients: function(e){
     e.preventDefault();
-    console.log(this.$el);
     this.$el.toggleClass("show-all-recipients");
   }
 
