@@ -138,6 +138,10 @@ $main-column-width: 45em;
 
 .discussion__h4 {
   font-weight: bold;
+
+  .xuser-data-timestamp {
+    font-weight: normal;
+  }
 }
 
 .discussion__subhead {
@@ -625,7 +629,7 @@ $main-column-width: 45em;
 //------------------------------------------------------------------------------
 .explanation {
   display: none;
-  padding: 1em;
+  padding: 3em 4em;
   text-align: center;
 
   .discussion__h2 {
