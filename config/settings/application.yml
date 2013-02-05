@@ -27,6 +27,7 @@ test:
 
 staging:
   <<: *defaults
+  protocol_matching_url: "//staging.shelby.tv"
 
 production:
   <<: *defaults
