@@ -114,12 +114,13 @@
       var frames = searchModel.getVideosWrappedInFrames();
 
       if (this.options.emptyIndicatorViewProto) {
-        if (frames.length === 0) {
+        if (frames.length === 0 && !this._emptyIndicatorView) {
           this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
           this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
           $('.spinner').hide();
         } else if (frames.length && this._emptyIndicatorView) {
           this._emptyIndicatorView.leave();
+          this._emptyIndicatorView = null;
         }
       }
 
