@@ -20,27 +20,14 @@ class FrameController < ApplicationController
     else @share_type = :rolling
     end
 
-    if user_signed_in? and @share_type != :genius
-      render '/home/app'
+    # Get all pertinent info from the API
+    @roll = Shelby::API.get_roll(params[:roll_id])
+    @frame = Shelby::API.get_frame(params[:frame_id], true)
+    if @frame
+      @video = Shelby::API.get_video(@frame['video_id'])
+      redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
     else
-
-      # Get all pertinent info from the API
-      @roll = Shelby::API.get_roll(params[:roll_id])
-      @frame = Shelby::API.get_frame(params[:frame_id], true)
-      @video = Shelby::API.get_video(@frame['video_id']) if @frame
-      if @share_type == :rolling and @frame
-        @user = Shelby::API.get_user(@frame['creator_id'])
-      else
-        @user = Shelby::API.get_user(params[:utm_source])
-      end
-
-      # A/B test
-      @seo_search_messaging = ab_test :seo_search_messaging
-
-      # And render it
-      @mobile_os = detect_mobile_os
-      render @mobile_os ? '/mobile/landing' : '/home/landing'
-
+      render '/home/app'
     end
   end
 
