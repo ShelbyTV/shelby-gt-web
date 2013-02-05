@@ -1,7 +1,7 @@
 @mixin sash-primer() {
 //  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAGElEQVQIW2O0ty//zwAEHJwCIIqBEV0AAFukBC0orjxyAAAAAElFTkSuQmCC);
 //  box-shadow: 0 0 3px 1px rgba(0,0,0,0.8), inset 0px 0 4px rgba(255,255,255,0.5);
-  background: #6cbc45;
+  background: $shelby-green;
   box-shadow: 0 0 2px 0px rgba(0,0,0,0.8),inset 0px 0 4px rgba(255,255,255,0.3);
   color: white;
   font-size: 1.3em;
