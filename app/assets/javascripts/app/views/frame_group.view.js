@@ -106,10 +106,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (this.model.get('frames').length){
       var likeInfo = this.model.getCombinedLikeInfo();
       var likersCollection = new libs.shelbyGT.UserCollection();
-      var likersToDisplay = likeInfo.likers.slice(0, 9);
+      var likersToDisplay = likeInfo.likers.models.slice(0, 9);
       if (likersToDisplay.length) {
-        // load the avatar information for the likers, so we'll have it as soon as possible
-        likersCollection.fetchUserInfo(likersToDisplay);
+        likersCollection.add(likersToDisplay);
       }
 
       var remainingLikes = likeInfo.totalLikes - likersToDisplay.length;

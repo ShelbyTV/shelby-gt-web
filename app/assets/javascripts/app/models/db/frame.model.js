@@ -19,6 +19,29 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
 
+  initialize : function() {
+    // change the upvoters from an array of id strings to an array of user models with those ids
+    // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
+    var upvotersModels = [];
+    if (this.has('upvoters')) {
+      upvotersModels = _(this.get('upvoters')).map(function(upvoterId){
+        var existingUser = Backbone.Relational.store.find(libs.shelbyGT.UserModel, upvoterId);
+        if (existingUser) {
+          // if we already have a model in the global store for this user, use it
+          return existingUser;
+        } else {
+          // otherwise, create a new, empty one with the proper id and make a request to the
+          // server to load the user info
+          var userModel = new libs.shelbyGT.UserModel({id: upvoterId});
+          userModel.fetch();
+          return userModel;
+        }
+      });
+    }
+    var upvotersCollection = new Backbone.Collection(upvotersModels);
+    this.set('upvoters', upvotersCollection);
+  },
+
   sync : function(method, model, options) {
     if (!options.url) {
       var url = shelby.config.apiRoot;
