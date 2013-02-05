@@ -130,6 +130,11 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
       }, result);
     }
 
+    // upvotes from the previous implementation may cause the likes number to be too low
+    if (result.totalLikes < result.likers.length) {
+      result.totalLikes = result.likers.length;
+    }
+
     return result;
   }
 
