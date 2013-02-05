@@ -110,7 +110,7 @@
     var _queryDomain = _query.slice(7).split('/')[0];
     $('#site-url').text(_queryDomain);
 
-    if (/youtube/.test(_queryDomain)) {
+    if (/youtube.com/.test(_queryDomain)) {
       $('input:text').val('').attr('placeholder','YouTube page support coming soon').css('background-color','#cc1235');
       $('.js-submit').css('opacity','1');
       $('input:text').blur();
