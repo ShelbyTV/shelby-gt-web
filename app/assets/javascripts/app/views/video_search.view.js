@@ -2,6 +2,7 @@
 
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
+  var SearchEmptyIndicatorView = libs.shelbyGT.SearchEmptyIndicatorView;
   var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
 
   libs.shelbyGT.VideoSearchView = FrameGroupPlayPagingListView.extend({
@@ -10,6 +11,7 @@
 
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       listItemView : 'FrameGroupView',
+      emptyIndicatorViewProto : SearchEmptyIndicatorView,
       fetchParams : {
         include_children : true
       }
@@ -110,6 +112,17 @@
       }
 
       var frames = searchModel.getVideosWrappedInFrames();
+
+      if (this.options.emptyIndicatorViewProto) {
+        if (frames.length === 0) {
+          this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+          this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+          $('.spinner').hide();
+        } else if (frames.length && this._emptyIndicatorView) {
+          this._emptyIndicatorView.leave();
+        }
+      }
+
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       if (activeFrameModel) {
         //if we're already playing one of the frames, drop its score so it will appear at the top
