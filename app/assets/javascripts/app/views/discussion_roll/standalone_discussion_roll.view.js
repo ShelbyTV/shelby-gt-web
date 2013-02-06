@@ -16,6 +16,9 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
 
     //fetch the discussion roll, which all my children are watching
     this.model && this.model.fetch({
+      data: {
+        limit: 3 // needs to match firstFetchLimit in DiscussionRollConversationView
+        },
       success: function(model, resp){
         setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
