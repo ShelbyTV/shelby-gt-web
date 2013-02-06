@@ -20,26 +20,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   ],
 
   initialize : function() {
-    // change the upvoters from an array of id strings to an array of user models with those ids
-    // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
-    var upvotersModels = [];
-    if (this.has('upvoters')) {
-      upvotersModels = _(this.get('upvoters')).map(function(upvoterId){
-        var existingUser = Backbone.Relational.store.find(libs.shelbyGT.UserModel, upvoterId);
-        if (existingUser) {
-          // if we already have a model in the global store for this user, use it
-          return existingUser;
-        } else {
-          // otherwise, create a new, empty one with the proper id and make a request to the
-          // server to load the user info
-          var userModel = new libs.shelbyGT.UserModel({id: upvoterId});
-          userModel.fetch();
-          return userModel;
-        }
-      });
-    }
-    var upvotersCollection = new Backbone.Collection(upvotersModels);
-    this.set('upvoters', upvotersCollection);
+    this.set('upvoters', this.convertUpvoterIdsToUserCollection());
   },
 
   sync : function(method, model, options) {
@@ -212,6 +193,42 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       url = this.get('roll').get('subdomain') + '.shelby.tv/' + this.id  ;
     }
     return url ? url : null;
+  },
+
+  convertUpvoterIdsToUserCollection : function(){
+    // change the upvoters from an array of id strings to a collection of user models with those ids
+    // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
+
+    var upvotersCollection;
+
+    if (this.has('upvoters')) {
+      var upvoters = this.get('upvoters');
+      // don't do anything if the upvoters attribute is already a collection
+      if ($.isArray(upvoters)) {
+        var upvotersModels = _(upvoters).map(function(upvoterId){
+          // if we already have a model in the global store for this user, use it
+          var userModel = Backbone.Relational.store.find(libs.shelbyGT.UserModel, upvoterId);
+          if (!userModel) {
+            // otherwise, create a new, empty user model with the proper id
+            userModel = new libs.shelbyGT.UserModel({id: upvoterId});
+          }
+          if (!userModel.has('has_shelby_avatar') || !userModel.has('personal_roll_subdomain')) {
+            // if the user model doesn't contain the info we need to render the liker info,
+            // make a request to the server to load/refresh it
+            userModel.fetch();
+          }
+          return userModel;
+        });
+        upvotersCollection = new Backbone.Collection(upvotersModels);
+      } else {
+        upvotersCollection = upvoters;
+      }
+    } else {
+      // if there was no upvoters attribute, just add one with an empty collection
+      upvotersCollection = new Backbone.Collection();
+    }
+
+    return upvotersCollection;
   }
 
 });

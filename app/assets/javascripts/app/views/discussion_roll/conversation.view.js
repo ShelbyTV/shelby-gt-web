@@ -27,7 +27,8 @@
 
       //also need to tell PagingListView about our reversed order (and some other tweaks)
       pagingKeySortOrder: -1,
-      limit: 10,
+      limit: 6,
+      firstFetchLimit: 3, //needs to match the limit set on the model in StandaloneDiscussionRollView
       loadMoreCopy: 'Load Older Messages...',
       insert : {
         position : 'after'

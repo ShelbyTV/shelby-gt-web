@@ -59,6 +59,12 @@ $main-column-width: 45em;
 //  Discussion Framework
 //------------------------------------------------------------------------------
 .discussion__header {
+  //mobile animates the opacity, see _media-querires.scss
+  @include transition-property('opacity');
+  @include transition-duration(0.5s);
+  @include transition-timing-function(ease-in);
+  @include transition-delay(0s);
+  
   left: 0;
   position: fixed;
   top: 0;
