@@ -459,6 +459,8 @@ $active-list-item: $shelby-blue;
 
 .frame-likes-count {
   float: left;
+  font-family: $font-family-display;
+  font-weight: 600;
   line-height: 2.3em;
 }
 
