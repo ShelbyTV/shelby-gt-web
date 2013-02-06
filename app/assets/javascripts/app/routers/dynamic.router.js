@@ -156,7 +156,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     //hide the guide initially for iso rolls
     if(shelby.routeHistory.length === 0){
-      shelby.models.userDesires.set({guideShown: false});
+      shelby.models.userDesires.set({guideShown: true});
     }
   },
 
