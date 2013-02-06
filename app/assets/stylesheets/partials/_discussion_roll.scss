@@ -80,6 +80,7 @@ $main-column-width: 45em;
 .discussion__nav {
   font-weight: bold;
   margin-bottom: 0.5em;
+  padding: 0 0.5em;
 
   a {
     color: $shelby-green;
@@ -504,6 +505,7 @@ $main-column-width: 45em;
     max-height: 200px;
     overflow: hidden;
   }
+
   .media_image {
     position: relative;
     width: 60%;
@@ -516,7 +518,7 @@ $main-column-width: 45em;
   }
 
   .discussion__button {
-    margin: 1.5em 0;
+    margin: 1.5em 0 0;
     padding: 0.5em;
   }
 
@@ -525,52 +527,6 @@ $main-column-width: 45em;
     box-shadow: 0 0 2px 0 $shelby-green;
   }
 }
-
-
-@media all and (max-width: 45em) {
-  .videocard {
-    & > iframe,
-    & > embed,
-    & > object {
-      height: 250px;
-    }
-  }
-
-
-  .discussion__body {
-    margin-bottom: 8em;
-  }
-
-  .discussion__content--main {
-    margin-bottom: 0;
-  }
-
-  .discussion__item--conversation {
-    margin: 1px;
-    border-radius: 0;
-  }
-
-  .discussion__footer {
-    background-color: white;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-  }
-
-  .discussion-reply {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0 auto;
-    max-width: 45em;
-  }
-    .discussion__form--discussion-reply {
-      // font-size: 0.8em;
-    }
-}
-
-
 
 //------------------------------------------------------------------------------
 //  Main Menu
@@ -654,4 +610,40 @@ $main-column-width: 45em;
   font-size: 11px;
   text-align: center;
   margin: 3em 0 .5em;
+}
+
+
+@media all and (max-width: 45em) {
+  // .discussion__body {
+  //   margin-bottom: 8em;
+  // }
+
+  // .discussion__content--main {
+  //   margin-bottom: 0;
+  // }
+
+  // .discussion__item--conversation {
+  //   margin: 1px;
+  //   border-radius: 0;
+  // }
+
+  // .discussion__footer {
+  //   background-color: white;
+  //   bottom: 0;
+  //   left: 0;
+  //   position: fixed;
+  //   width: 100%;
+  // }
+
+  // .discussion-reply {
+  //   border: none;
+  //   border-radius: 0;
+  //   box-shadow: none;
+  //   margin: 0 auto;
+  //   max-width: 45em;
+  // }
+
+  // .discussion__form--discussion-reply {
+  //   // font-size: 0.8em;
+  // }
 }

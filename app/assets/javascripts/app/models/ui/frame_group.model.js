@@ -102,29 +102,10 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
 
     if (frames) {
       frames.reduce(function(memo, frame) {
-        if (frame.has('upvoters')) {
-          var upvoters = frame.get('upvoters');
-          if ($.isArray(upvoters)) {
-            // don't know why, but for some reason the upvoters have sometimes not been converted to a collection
-            // of user models at this point - if not, then do it now
-            var upvotersModels = _(upvoters).map(function(upvoterId){
-              var existingUser = Backbone.Relational.store.find(libs.shelbyGT.UserModel, upvoterId);
-                if (existingUser) {
-                  // if we already have a model in the global store for this user, use it
-                  return existingUser;
-                } else {
-                  // otherwise, create a new, empty one with the proper id and make a request to the
-                  // server to load the user info
-                  var userModel = new libs.shelbyGT.UserModel({id: upvoterId});
-                  userModel.fetch();
-                  return userModel;
-                }
-            });
-            memo.likers.add(upvotersModels);
-          } else {
-            memo.likers.add(upvoters.models);
-          }
-        }
+
+        // don't know why, but for some reason the upvoters have sometimes not been converted to a collection
+        // of user models at this point - if not, then do it now
+        memo.likers.add(frame.convertUpvoterIdsToUserCollection().models);
         memo.totalLikes += frame.get('like_count') || 0;
         return memo;
       }, result);
