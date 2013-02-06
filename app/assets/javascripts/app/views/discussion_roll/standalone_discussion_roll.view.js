@@ -20,7 +20,14 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
         limit: 3 // needs to match firstFetchLimit in DiscussionRollConversationView
         },
       success: function(model, resp){
-        setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
+        setTimeout(function(){ $("body").scrollTop(10000000000); }, 200);
+        
+        //on mobile, hide the header after the user has scrolled
+        setTimeout(function(){
+          $(document).one("scroll", function(e){
+            $('.js-shelby-header').addClass("user-did-scroll");
+          });
+        }, 2000);
       },
       error: function(a){
         $(".js-discussion-roll-conversation-list").html("<h1>Something went wrong :(</h1><h1>Try reloading...</h1>");

@@ -95,6 +95,11 @@
     //------------------------------------------------------------------------------
     //  Shelby Chat
 
+    // hide header after user scrolls
+    .discussion__header.user-did-scroll {
+      opacity: 0;
+    }
+
     //shrink "Search" button
     .search_module__submit {
       padding: 0.5em;
