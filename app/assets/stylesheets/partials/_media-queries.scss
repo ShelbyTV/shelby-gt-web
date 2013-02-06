@@ -2,7 +2,7 @@
 //  Overrides
 //------------------------------------------------------------------------------
 
-//  Screens that < 1100px wide.
+//  Screens that LESS THAN 1100px wide.
 @media screen and (max-width: 1100px) {
   //icon normalization, compensates for small typeface proportions
   [class*="icon-"]:before {
@@ -86,14 +86,69 @@
 
 }//eo media-query///////////////////////////////////////////////////////////////
 
-//  Screens that < 1100px wide.
-@media screen and (max-width: 650px) {
+//  Screens that LESS THAN 600px wide.
+@media screen and (max-width: 600px) {
+  //----------------------------------------------------------------------------
+  //  Shelby Mail
+
+  .video {
+    & > iframe,
+    & > embed,
+    & > object {
+      height: 220px;
+    }
+  }
+
+  .search_result {
+    //short results thumbs and video embeds
+    .discussion__video-preview,
+    .frame-thumbnail {
+      height: 145px;
+    }
+  }
+
+  .discussion__body {
+    margin-bottom: 8em;
+  }
+
+  .discussion__content--main {
+    margin-bottom: 0;
+  }
+
+  .discussion__item--conversation {
+    margin: 1px;
+    border-radius: 0;
+  }
+
+  .discussion__footer {
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .discussion-reply {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 auto;
+    max-width: 45em;
+  }
+
+  .discussion__form--discussion-reply {
+    // font-size: 0.8em;
+  }
 
   //touch interfaces with narrow viewports
   .touch {
-
     //------------------------------------------------------------------------------
-    //  Shelby Chat
+    //  Shelby Mail
+
+    .discussion__body {
+      margin-bottom: 5em;
+    }
+
 
     //shrink "Search" button
     .search_module__submit {
@@ -118,12 +173,17 @@
       margin: 0;
     }
 
-    .discussion__form--discussion-reply {
-      //shrink Insert Video button
-      .discussion__item--insert-video {
-        margin: 0.15em;
-      }
+    //shrink Insert Video button
+    .discussion__item--insert-video {
+      margin: 0em;
+      padding: 0;
 
+      .discussion__h5 {
+        margin: 0.5em;
+      }
+    }
+
+    .discussion__form--discussion-reply {
       //hiding the avatar
       .media_image {
         display: none;
