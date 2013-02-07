@@ -40,6 +40,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
         return SHELBYJST['fb-genius-frame'](obj);
       }
+      else if (obj.frameGroup.get('collapsed')) {
+        return SHELBYJST['frame-collapsed'](obj);
+      }
       else {
         return SHELBYJST['frame'](obj);
       }
