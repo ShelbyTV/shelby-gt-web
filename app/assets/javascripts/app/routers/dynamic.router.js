@@ -12,7 +12,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
     "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
     "user/:id/personal_roll"               : "displayUserPersonalRoll",
-    "explore"                              : "displayExploreView",
+    "explore"                              : "displayRandomChannel",
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
@@ -160,19 +160,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayChannel : function(channel){
-    this._fetchViewedVideos();
-    this._fetchQueuedVideos();
-    this._setupTopLevelViews();
+  displayRandomChannel : function(params) {
+    this.displayChannel('500849cdb415cc2f1800025d', params);
+  },
 
-    shelby.models.multiplexedVideo.set('channel', channel);
-
-    shelby.models.guide.set({
-      displayState : libs.shelbyGT.DisplayState.channel
-    });
-
-    // TODO move this into handler where change is bound
-    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
+  displayChannel : function(channel, params){
+    this.displayDashboard(params, {channel: channel});
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){
@@ -271,11 +264,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
 
       },
+      channel : null,
       data: {
           include_children : true
       },
       displayInGuide : true
     }).value();
+
+    if (options.channel) {
+      // if we're loading another user's dashboard or 'channel', use the user/id/dashboard api route
+      shelby.models.dashboard.set('channel', options.channel);
+    } else {
+      shelby.models.dashboard.unset('channel');
+    }
 
     var fetchOptions = {data: options.data};
     fetchOptions.data.limit = shelby.config.pageLoadSizes.dashboard;
@@ -284,24 +285,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
     if (options.displayInGuide) {
+      var displayState = options.channel ? libs.shelbyGT.DisplayState.channel : libs.shelbyGT.DisplayState.dashboard;
+
       shelby.models.guide.set({
-        'displayState' : libs.shelbyGT.DisplayState.dashboard,
+        'displayState' : displayState,
         'sinceId' : options.data.since_id ? options.data.since_id : null
       });
-
-      // filtering out faux users so as a team we can interact more easily
-      //   with real users easily as they come in.
-      if ($.getUrlParam("real") == 1){
-        shelby.views.guide._listView.updateFilter(function(model){
-          return model.get('frame').get('creator').get('faux') != 1;
-        });
-      }
-      // filtering out non-gt_enabled users
-      if ($.getUrlParam("gt") == 1){
-        shelby.views.guide._listView.updateFilter(function(model){
-          return model.get('frame').get('creator').get('gt_enabled') == true;
-        });
-      }
 
       var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
       shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
@@ -329,8 +318,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (shelby.models.exploreRollCategories.get('roll_categories').isEmpty()) {
       shelby.models.exploreGuide.trigger('showSpinner');
     }
-    $.when(libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect())
-      .always(function(){shelby.models.exploreGuide.trigger('hideSpinner');});
   },
 
   displayOnboardingView : function(stage){
@@ -404,95 +391,75 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _activateFirstRollFrame : function(rollModel, response) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      shelby.models.playlistManager.trigger('playlist:start');
-    }
+    shelby.models.playlistManager.trigger('playlist:start');
   },
 
   _checkPlayRollFrame : function(rollModel, response) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-      // for compatibility reasons, we only show youtube videos on mobile
-      if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').canPlayMobile())) {
-        var activeFrameModelRoll = activeFrameModel.get('roll');
-        if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
-          //if the previous active frame was on the current roll, just play it
-          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
-          return;
-        }
+    var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+    // for compatibility reasons, we only show youtube videos on mobile
+    if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').canPlayMobile())) {
+      var activeFrameModelRoll = activeFrameModel.get('roll');
+      if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
+        //if the previous active frame was on the current roll, just play it
+        shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+        return;
       }
-
-      //if we weren't already playing something from the current roll, activate the roll's first frame
-      shelby.models.playlistManager.trigger('playlist:start');
     }
+
+    //if we weren't already playing something from the current roll, activate the roll's first frame
+    shelby.models.playlistManager.trigger('playlist:start');
   },
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var frame = rollModel.get('frames').get(frameId);
-      // for compatibility reasons, we only show youtube videos on mobile
-      if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
-        var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-        if (shelby.models.routingState.get('forceFramePlay')) {
-          // if we want to be sure the frame starts playing, we need to take special action if the
-          // requested frame is already active, because it may be paused
-          if (activeFrameModel && activeFrameModel.id == frame.id) {
-            //if the previous active frame was the frame we want to play, play it
-            shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
-          } else {
-            shelby.models.guide.set('activeFrameModel', frame);
-          }
+    var frame = rollModel.get('frames').get(frameId);
+    // for compatibility reasons, we only show youtube videos on mobile
+    if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
+      var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+      if (shelby.models.routingState.get('forceFramePlay')) {
+        // if we want to be sure the frame starts playing, we need to take special action if the
+        // requested frame is already active, because it may be paused
+        if (activeFrameModel && activeFrameModel.id == frame.id) {
+          //if the previous active frame was the frame we want to play, play it
+          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
         } else {
-          // under normal circumstances we can just set the frame to active because we are not
-          // specifically concerned with whether it will play or not, just that it will be
-          // selected and displayed
           shelby.models.guide.set('activeFrameModel', frame);
         }
-        if (showCommentOverlay) {
-          shelby.models.guideOverlay.set({
-            activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
-            activeGuideOverlayFrame : frame
-          });
-        }
-        if (shelby.models.routingState.get('forceFramePlay')) {
-          // responded to the forceFramePlay state, so reset it
-          shelby.models.routingState.unset('forceFramePlay');
-        }
       } else {
-        // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-        shelby.alert({message: "Sorry, the video you were looking for doesn't exist in this roll."});
-        this.navigateToRoll(rollModel, {trigger:true, replace:true});
+        // under normal circumstances we can just set the frame to active because we are not
+        // specifically concerned with whether it will play or not, just that it will be
+        // selected and displayed
+        shelby.models.guide.set('activeFrameModel', frame);
       }
-    } else {
+      if (showCommentOverlay) {
+        shelby.models.guideOverlay.set({
+          activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
+          activeGuideOverlayFrame : frame
+        });
+      }
       if (shelby.models.routingState.get('forceFramePlay')) {
         // responded to the forceFramePlay state, so reset it
         shelby.models.routingState.unset('forceFramePlay');
       }
+    } else {
+      // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
+      shelby.alert({message: "Sorry, the video you were looking for doesn't exist in this roll."});
+      this.navigateToRoll(rollModel, {trigger:true, replace:true});
     }
   },
 
   _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      shelby.models.playlistManager.trigger('playlist:start');
-    }
+    shelby.models.playlistManager.trigger('playlist:start');
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var entry = dashboardModel.get('dashboard_entries').get(entryId);
-      // for compatibility reasons, we only show youtube videos on mobile
-      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
-        shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-      } else {
-        // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-        shelby.alert({message: "Sorry, the entry you were looking for doesn't exist in your stream."});
-        this.navigate("/", {trigger:true, replace:true});
-      }
+    var entry = dashboardModel.get('dashboard_entries').get(entryId);
+    // for compatibility reasons, we only show youtube videos on mobile
+    if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
+      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
+    } else {
+      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+      shelby.alert({message: "Sorry, the entry you were looking for doesn't exist in your stream."});
+      this.navigate("/", {trigger:true, replace:true});
     }
   },
 

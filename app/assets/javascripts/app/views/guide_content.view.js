@@ -8,7 +8,6 @@
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
-  var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -25,11 +24,13 @@
     _dashboardMasterCollection : null,
     _dashboardView : null,
 
+    _currentChannelMasterCollection : null,
+    _currentChannelView : null,
+
     _currentRollMasterCollection : null,
     _currentRollView : null,
 
     _videoSearchView : null,
-    _multiplexedVideoView : null,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -56,8 +57,7 @@
           !_changedAttrs.has('displayIsolatedRoll')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
         this._updateChild(model);
       }
     },
@@ -82,18 +82,28 @@
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
+        case DisplayState.channel :
+          var doSmartRefresh;
+          var masterCollection;
+          if (currentDisplayState == DisplayState.dashboard) {
+            doSmartRefresh = !this._dashboardMasterCollection.isEmpty();
+            masterCollection = this._dashboardMasterCollection;
+          } else {
+            doSmartRefresh = false;
+            masterCollection = this._currentChannelMasterCollection = new Backbone.Collection();
+          }
           displayParams = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
-              doSmartRefresh : !this._dashboardMasterCollection.isEmpty(),
+              doSmartRefresh : doSmartRefresh,
               doStaticRender : true,
               fetchParams : {
                 include_children : true
               },
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
-              masterCollection : this._dashboardMasterCollection
+              masterCollection : masterCollection
             },
             spinner : true
           };
@@ -175,19 +185,6 @@
             }
           };
           break;
-        case DisplayState.channel :
-          this._currentRollMasterCollection = new Backbone.Collection();
-          displayParams = {
-            viewProto : MultiplexedVideoView,
-            collection : shelby.collections.multiplexedVideoFrames,
-            options : {
-              collapseViewedFrameGroups : false,
-              doStaticRender : true,
-              masterCollection : this._currentRollMasterCollection,
-              multiplexedVideoModel : shelby.models.multiplexedVideo
-            }
-          };
-          break;
         case DisplayState.userPreferences :
         case DisplayState.tools :
           displayParams = {
@@ -246,11 +243,18 @@
             this.options.playlistManager.set('playingFrameGroupCollection', this._currentRollView.frameGroupCollection);
           }
           break;
+        case DisplayState.channel :
+          this._currentChannelView = this._listView;
+          if (this.options.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.channel && this.options.playlistManager.get('playingChannelId') == this._currentChannelView.model.get('channel')) {
+            // while we were away from this channel, we relied on the last displayed state of the channel
+            // to determine what frames to play
+            // since we're displaying the channel again now, we need to play based on what is actually
+            // displayed in the current channel view
+            this.options.playlistManager.set('playingFrameGroupCollection', this._currentChannelView.frameGroupCollection);
+          }
+          break;
         case DisplayState.search :
           this._videoSearchView = this._listView;
-          break;
-        case DisplayState.channel :
-          this._multiplexedVideoView = this._listView;
           break;
       }
 
@@ -309,26 +313,30 @@
             this.options.playlistManager.set({
               playingFrameGroupCollection : this._dashboardView.frameGroupCollection,
               playingState : libs.shelbyGT.PlayingState.dashboard,
-              playingRollId : null
+              playingRollId : null,
+              playingChannelId : null
             });
           } else if (guideModel.get('displayState') == DisplayState.search) {
             this.options.playlistManager.set({
               playingFrameGroupCollection : this._videoSearchView.frameGroupCollection,
               playingState : libs.shelbyGT.PlayingState.search,
-              playingRollId : null
+              playingRollId : null,
+              playingChannelId : null
             });
           } else if (guideModel.get('displayState') == DisplayState.channel) {
             this.options.playlistManager.set({
-              playingFrameGroupCollection : this._multiplexedVideoView.frameGroupCollection,
+              playingFrameGroupCollection : this._currentChannelView.frameGroupCollection,
               playingState : libs.shelbyGT.PlayingState.channel,
-              playingRollId : null
+              playingRollId : null,
+              playingChannelId : shelby.models.dashboard.get('channel')
             });
           } else {
             //we're playing some kind of roll
             this.options.playlistManager.set({
               playingFrameGroupCollection : this._currentRollView.frameGroupCollection,
               playingState : libs.shelbyGT.PlayingState.roll,
-              playingRollId : activeFrameModel.get('roll').id
+              playingRollId : activeFrameModel.get('roll').id,
+              playingChannelId : null
             });
           }
         }
@@ -336,7 +344,8 @@
         this.options.playlistManager.set({
           playingFrameGroupCollection : null,
           playingState : libs.shelbyGT.PlayingState.none,
-          playingRollId : null
+          playingRollId : null,
+          playingChannelId : null
         });
       }
     }

@@ -102,7 +102,7 @@
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.explore) {
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-explore');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');

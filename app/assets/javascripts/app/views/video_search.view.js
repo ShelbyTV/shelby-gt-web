@@ -3,7 +3,6 @@
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SearchEmptyIndicatorView = libs.shelbyGT.SearchEmptyIndicatorView;
-  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
 
   libs.shelbyGT.VideoSearchView = FrameGroupPlayPagingListView.extend({
 
@@ -137,15 +136,12 @@
       shelby.collections.videoSearchResultFrames.add(frames);
       //if nothing is already playing, start playing the first video in the search results
       if (!activeFrameModel) {
-        // don't want to activate the video if we've switched to explore view during the asynchronous load
-        if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-          var firstFrameGroup = this.frameGroupCollection.first();
-          var firstFrame = firstFrameGroup && firstFrameGroup.getFirstFrame();
-          if (firstFrame) {
-            firstFrame.get('video').set('score', -1);
-            shelby.models.guide.set('activeFrameModel', firstFrame);
-            this.oneTimeSpinnerState.set('show', false);
-          }
+        var firstFrameGroup = this.frameGroupCollection.first();
+        var firstFrame = firstFrameGroup && firstFrameGroup.getFirstFrame();
+        if (firstFrame) {
+          firstFrame.get('video').set('score', -1);
+          shelby.models.guide.set('activeFrameModel', firstFrame);
+          this.oneTimeSpinnerState.set('show', false);
         }
       }
     },

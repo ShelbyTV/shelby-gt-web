@@ -1,6 +1,5 @@
 libs.shelbyGT.DisplayState = {
   dashboard : 'dashboard',
-  explore : 'explore',
   help : 'help',
   legal : 'legal',
   none : 'none',
