@@ -54,7 +54,8 @@
       if (!_changedAttrs.has('displayState') &&
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
-          !_changedAttrs.has('displayIsolatedRoll')) {
+          !_changedAttrs.has('displayIsolatedRoll') &&
+          !_changedAttrs.has('currentChannelId')) {
         return;
       }
       if (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {

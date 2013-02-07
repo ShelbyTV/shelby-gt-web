@@ -286,9 +286,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if (options.displayInGuide) {
       var displayState = options.channel ? libs.shelbyGT.DisplayState.channel : libs.shelbyGT.DisplayState.dashboard;
+      var channel = options.channel;
 
       shelby.models.guide.set({
         'displayState' : displayState,
+        'currentChannelId' : channel,
         'sinceId' : options.data.since_id ? options.data.since_id : null
       });
 
