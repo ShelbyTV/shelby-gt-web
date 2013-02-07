@@ -25,13 +25,11 @@
 <!-- videocard -->
 
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
-  <% if (!frameViewed) { %>
-    <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-      <h1 class="frame-title" title="<%= videoTitle %>">
-       <%= videoTitle %>
-      </h1>
-    </a>
-  <% } %>
+  <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="<%= videoTitle %>">
+     <%= videoTitle %>
+    </h1>
+  </a>
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
@@ -107,29 +105,29 @@
 
           <div class="media_body">
             <% if (!fauxUserOrigin) { %>
-                <span class="xuser-data-timestamp">
-                   <%= frame.get('created_at') %>
-                </span>
+              <span class="xuser-data-timestamp">
+                 <%= frame.get('created_at') %>
+              </span>
 
-                <p class="xuser-data">
-                  <% if (clickableCreator) { %>
-                    shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+              <p class="xuser-data">
+                <% if (clickableCreator) { %>
+                  shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+                <% } else { %>
+                  shared by <%= creatorNickname %>
+                <% } %>
+              </p>
+
+              <p class="xuser-message">
+                <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+                  <% var comment = messages.models[0].get('text') %>
+                  <% if (comment.length > 256) { %>
+                    <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
+                    <a class="js-toggle-comment" href="#">more…</a>
                   <% } else { %>
-                    shared by <%= creatorNickname %>
+                    <%- comment %>
                   <% } %>
-                </p>
-
-                <p class="xuser-message">
-                  <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-                    <% var comment = messages.models[0].get('text') %>
-                    <% if (comment.length > 256) { %>
-                      <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
-                      <a class="js-toggle-comment" href="#">more…</a>
-                    <% } else { %>
-                      <%- comment %>
-                    <% } %>
-                  <% } %>
-                </p>
+                <% } %>
+              </p>
             <% } else { %>
                 <p class="xuser-message--faux">
                   <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
