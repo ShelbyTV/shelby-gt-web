@@ -21,7 +21,9 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
+<% var fauxUserOrigin = (creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
 <!-- videocard -->
+
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
   <% if (!frameViewed) { %>
     <a href="#" onclick="return false;" class="frame-header js-frame-activate">
@@ -91,58 +93,70 @@
                                                                             frameIsOnWatchLaterRoll);
     %>
       <footer class="media_module frame-footer clearfix">
-
         <% if (!frameViewed) { %>
-           <% if (clickableCreator) { %>
-             <a href="#" onclick="return false;" class="js-creator-personal-roll">
+             <% if (clickableCreator) { %>
+               <a href="#" onclick="return false;" class="js-creator-personal-roll">
+                 <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+                   <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+                 </span>
+               </a>
+             <% } else { %>
                <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                  <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
                </span>
-             </a>
-           <% } else { %>
-             <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-               <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-             </span>
-           <% } %>
-        <% } %>
-
-        <div class="media_body">
-          <% if (!frameViewed) { %>
-            <span class="xuser-data-timestamp">
-               <%= frame.get('created_at') %>
-            </span>
-
-            <p class="xuser-data">
-              <% if (clickableCreator) { %>
-                shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
-              <% } else { %>
-                shared by <%= creatorNickname %>
-              <% } %>
-            </p>
-
-            <p class="xuser-message">
-              <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-                <% var comment = messages.models[0].get('text') %>
-                <% if (comment.length > 256) { %>
-                  <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
-                  <a class="js-toggle-comment" href="#">more…</a>
-                <% } else { %>
-                  <%- comment %>
-                <% } %>
-              <% } %>
-            </p>
-          <% } else { %>
-            <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-              <h1 class="frame-title" title="<%= videoTitle %>">
-               <%= videoTitle %>
-              </h1>
-
-              <div class="xuser-data">
-                shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
-              </div>
-            </a>
+             <% } %>
           <% } %>
-        </div><!-- eo .media_body -->
+
+          <div class="media_body">
+            <% if (!fauxUserOrigin) { %>
+              <% if (!frameViewed) { %>
+                <span class="xuser-data-timestamp">
+                   <%= frame.get('created_at') %>
+                </span>
+
+                <p class="xuser-data">
+                  <% if (clickableCreator) { %>
+                    shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+                  <% } else { %>
+                    shared by <%= creatorNickname %>
+                  <% } %>
+                </p>
+
+                <p class="xuser-message">
+                  <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+                    <% var comment = messages.models[0].get('text') %>
+                    <% if (comment.length > 256) { %>
+                      <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
+                      <a class="js-toggle-comment" href="#">more…</a>
+                    <% } else { %>
+                      <%- comment %>
+                    <% } %>
+                  <% } %>
+                </p>
+              <% } else { %>
+                <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+                  <h1 class="frame-title" title="<%= videoTitle %>">
+                   <%= videoTitle %>
+                  </h1>
+
+                  <div class="xuser-data">
+                    shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
+                  </div>
+                </a>
+              <% } %>
+            <% } else { %>
+              <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
+
+              <p class="xuser-message--faux">
+                Shared by <%= creatorNickname %> on <span style="text-transform: capitalize;"><%= fauxUserOrigin %></span>
+
+                <% if (clickableCreator) { %>
+                  <br />
+                  <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">Click here to see all…</a>
+                <% } %>
+              </p>
+            <% } %>
+          </div><!-- eo .media_body -->
 
         <% if (!user.isAnonymous() && !frameViewed) { %>
           <hr class="hr--double" />
