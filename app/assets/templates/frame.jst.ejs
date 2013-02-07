@@ -192,33 +192,8 @@
       </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
-  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
-    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
-    </ul>
-    <% if (remainingLikes) { %>
-      <span class="frame-likes-count frame-external-subline-text">
-        <% if (likers.length) { %>
-          +<%= remainingLikes %>
-        <% } else { %>
-          <%= _('like').pluralize(remainingLikes, true) %>
-        <% } %>
-      </span>
-    <% } %>
-  </div>
-  <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
-    <div class="frame-external-subline">
-      <p class="frame-external-subline-text">
-        Also via:
 
-        <% _(dupeFrames).each(function(frame, index) { %>
-          <%= index == 0 ? '' : ', ' %>
-          <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
-          <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(frame.get('roll')) %>
-          </a>
-        <% }); %>
-      </p>
-    </div>
-  <% } %>
+  <%= SHELBYJST['frame-aside'](obj) %>
 
 	<% if(frame.get('isFreshPlayNew')){ %>
 		<div class="sash">New</div>
