@@ -58,7 +58,7 @@
 				</button>
 			</fieldset>
 		</fieldset><!-- /Your Profile -->
-		
+
 		<fieldset class="form_fieldset preferences-section password-section">
 			<h2 class="form_legend">
 				Change Password
@@ -86,7 +86,7 @@
 				</fieldset>
 			</fieldset>
 		</fieldset><!-- /Password -->
-		
+
 		<fieldset class="form_fieldset preferences-section networks-section">
 			<h2 class="form_legend">
 				Connect
@@ -99,7 +99,7 @@
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
 						<p class="networks-username"></p>
-						<button class="connected-network js-oauth-popup" type="button" popup-width="600" popup-height="700" location="<%= shelby.config.apiBase %>/auth/twitter">Connect</button>
+						<a class="connected-network faux_button js-authorize" type="button" data-popup_width="600" data-popup_height="700" href="<%= shelby.config.apiBase %>/auth/twitter">Connect</a>
 					<% } %>
 					<h2 class="preferences-networks-twitter form_label">Twitter</h2>
 				</li>
@@ -110,7 +110,7 @@
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
 						<p class="networks-username"></p>
-						<button class="connected-network js-oauth-popup" type="button" popup-width="900" popup-height="400" location="<%= shelby.config.apiBase %>/auth/tumblr">Connect</button>
+						<a class="connected-network faux_button js-authorize" type="button" data-popup_width="900" data-popup_height="400" href="<%= shelby.config.apiBase %>/auth/tumblr">Connect</a>
 					<% } %>
 					<h2 class="preferences-networks-tumblr form_label">Tumblr</h2>
 				</li>
@@ -121,7 +121,7 @@
 						<!-- <button type="button">Disconnect</button> -->
 					<% } else { %>
 						<p class="networks-username"></p>
-						<button class="connected-network js-oauth-popup" type="button" popup-width="1000" popup-height="650" location="<%= shelby.config.apiBase %>/auth/facebook">Connect</button>
+						<a class="connected-network faux_button js-authorize" type="button" data-popup_width="1000" data-popup_height="650" href="<%= shelby.config.apiBase %>/auth/facebook">Connect</a>
 					<% } %>
 					<h2 class="preferences-networks-facebook form_label">Facebook</h2>
 					<% if (typeof fb !== 'undefined'){ %>
@@ -138,7 +138,7 @@
 				</li>
 			</ul>
 		</fieldset><!-- /Connect -->
-		
+
 		<fieldset class="form_fieldset preferences-section notifications-section">
 			<h2 class="form_legend">
 				Email Notifications
@@ -170,5 +170,5 @@
 				</li>
 			</ul>
 		</fieldset><!-- /Email Notifications -->
-	</form>	
+	</form>
 <!-- </section> -->
