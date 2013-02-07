@@ -145,16 +145,34 @@
                 </a>
               <% } %>
             <% } else { %>
-              <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-
+              <% if (frameViewed) { %>
+              <h1 class="frame-title" title="<%= videoTitle %>">
+               <%= videoTitle %>
+              </h1>
+              <% } %>
               <p class="xuser-message--faux">
-                Shared by <%= creatorNickname %> on <span style="text-transform: capitalize;"><%= fauxUserOrigin %></span>
+                <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
+                <span class="see-all">Shared by </span><%= creatorNickname %> on <span style="text-transform: capitalize;"><%= fauxUserOrigin %></span>
 
                 <% if (clickableCreator) { %>
                   <br />
                   <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">Click here to see all…</a>
                 <% } %>
               </p>
+
+              <% if (!clickableCreator) { %>
+                <p class="xuser-message">
+                  <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+                    <% var comment = messages.models[0].get('text') %>
+                    <% if (comment.length > 256) { %>
+                      <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
+                      <a class="js-toggle-comment" href="#">more…</a>
+                    <% } else { %>
+                      <%- comment %>
+                    <% } %>
+                  <% } %>
+                </p>
+              <% } %>
             <% } %>
           </div><!-- eo .media_body -->
 

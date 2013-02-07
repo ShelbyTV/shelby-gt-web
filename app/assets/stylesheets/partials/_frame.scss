@@ -185,9 +185,9 @@ $active-list-item: $shelby-blue;
 .frame-footer {
   .social-icon {
     float: right;
-    font-size: 2.7em;
+    font-size: 1.4em;
     line-height: 1.2;
-    margin-bottom: 6px;
+    // margin-bottom: 6px;
   }
 }
 
@@ -372,6 +372,8 @@ $active-list-item: $shelby-blue;
   }
 
   .xuser-message--faux {
+    margin-bottom: 0;
+
     .see-all {
       display: none;
     }
