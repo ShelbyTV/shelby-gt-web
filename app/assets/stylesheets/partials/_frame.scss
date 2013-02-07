@@ -445,7 +445,7 @@ $active-list-item: $shelby-blue;
 
   &.icon-heart {
     &:before {
-      float: left;
+      display: inline;
       line-height: 2.3em;
     }
   }
@@ -456,15 +456,15 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-avatars {
-  float: left;
+  display: inline;
 
   &.list {
-    margin: 0 0.6em;
+    margin: 0 0.22em 0 0.4em;
   }
 
   &.no-liker-avatars {
     & + .frame-likes-count {
-      margin-left: 0.5em;
+      margin-left: 0.22em;
     }
   }
 
@@ -479,7 +479,7 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-count {
-  float: left;
+  display: inline;
   font-family: $font-family-display;
   font-weight: 600;
   line-height: 2.3em;
