@@ -20,20 +20,20 @@
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-  <% experiments = vanity_experiments %>
-  <% unless experiments.nil? %>
-    <script>
-      if (typeof(shelby) == 'undefined') {
-        shelby = {};
-      }
-      if (typeof(shelby.abTests) == 'undefined') {
-        shelby.abTests = {};
-      }
-      <% experiments.each do |name, alternative| %>
-        shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
-      <% end %>
-    </script>
-  <% end %>
+  <script>
+    if (typeof(shelby) == 'undefined') {
+      shelby = {};
+    }
+    if (typeof(shelby.abTests) == 'undefined') {
+      shelby.abTests = {};
+    }
+    <% experiments = vanity_experiments %>
+    <% unless experiments.nil? %>
+    <% experiments.each do |name, alternative| %>
+      shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
+    <% end %>
+    <% end %>
+  </script>
   <%= javascript_include_tag "shelby" %>
 </head>
 
