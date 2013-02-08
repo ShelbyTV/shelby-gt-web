@@ -170,10 +170,22 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
   },
 
   _changeChannel : function(attr, dir) {
-    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) { return; }
-    var _currCh = shelby.models.multiplexedVideo.get('channel');
-    var _chArray = _.keys(shelby.config.multiplexedVideoRolls);
+    if (!dir){ return; }
+    var _currCh;
+    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
+      // if we're showing a channel in the guide, that channel is either being played
+      // or waiting to be played as soon as the channel data finishes downloading,
+      // so that's the channel that we want to move up or down from
+      _currCh = shelby.models.guide.get('currentChannelId');
+    } else if (shelby.models.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.channel) {
+      // if there's no channel shown in the guide, we may still be playing a channel
+      // if so, move up or down from that channel
+      _currCh = shelby.models.playlistManager.get('playingChannelId');
+    } else {
+      return;
+    }
 
+    var _chArray = _.keys(shelby.config.channels);
     var _currChIndex = _.indexOf(_chArray, _currCh);
     var _nextChIndex;
     if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }
@@ -182,8 +194,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
     var _nextCh = _chArray[_nextChIndex];
 
-    if (_nextCh != null || typeof _nextCh != "undefined"){
-      shelby.models.multiplexedVideo.set('channel', _nextCh);
+    if (_nextCh){
       shelby.router.navigate("channel/"+_nextCh, {trigger: true, replace: true});
     }
   }

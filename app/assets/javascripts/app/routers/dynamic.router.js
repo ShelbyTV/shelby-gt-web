@@ -161,7 +161,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRandomChannel : function(params) {
-    this.displayChannel('500849cdb415cc2f1800025d', params);
+    var channelKeys = _.keys(shelby.config.channels);
+    var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
+    this.displayChannel(randomChannelKey, params);
   },
 
   displayChannel : function(channel, params){
@@ -246,8 +248,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch = null;
-    if (!shelby.models.guide.get('activeFrameModel')) {
-      // if nothing is already playing, start playing the first frame in the dashboard on load
+    var displayingChannel = options && options.channel;
+    if (displayingChannel || !shelby.models.guide.get('activeFrameModel')) {
+      // if nothing is already playing, or if we're switching to a channel
+      // start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }
     var self = this;
