@@ -144,6 +144,30 @@
   width: 100%;
 }
 
+//---------------------------
+//  explore panel
+//---------------------------
+
+.explore-section-lining {
+  @include fin-left($base);
+
+  background-color: $base;
+  box-shadow: 0px 0px 5px 0px black;
+  text-align: left;
+  width: 170px;
+}
+
+.explore-section-channel {
+  &:hover{
+    background-color: $shelby-green;
+    cursor: pointer;
+  }
+}
+
+.explore-section-channel--active {
+  background-color: #b9b9b9;
+}
+
 //------------------------------------------------------------------------------
 //  INVITE A USER FORM
 //------------------------------------------------------------------------------

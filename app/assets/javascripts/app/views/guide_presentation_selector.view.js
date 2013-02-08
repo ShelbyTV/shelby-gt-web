@@ -12,7 +12,6 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-mail"                       : "_goToMail",
-      "click .js-explore:not(.active-item)"  : "_goToExplore",
       "click .js-admin"                      : "_goToAdmin"
     },
 
@@ -32,6 +31,11 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
+      this.renderChild(new libs.shelbyGT.ExploreDropdownView({
+        el : this.$('.js-guide-explore'),
+        model : shelby.models.guide,
+        playlistManagerModel : shelby.models.playlistManager
+      }));
       this.renderChild(new libs.shelbyGT.InviteFormView({
         el : this.$('.js-guide-invite'),
         model : shelby.models.invite,
@@ -73,11 +77,6 @@
 
     _goToAdmin : function(){
       document.location = "http://api.shelby.tv/admin/new_users";
-    },
-
-    _goToExplore : function(){
-      shelby.router.navigate('explore', {trigger:true});
-      shelby.models.userDesires.set({guideShown: true});
     },
 
     _onGuideModelChanged : function(model){
