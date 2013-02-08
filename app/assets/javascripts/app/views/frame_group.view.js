@@ -216,7 +216,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
-      dataType: 'json',
+      dataType: 'jsonp',
       success: function(r){
         var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
         buttonEl.replaceWith(inputEl);
@@ -225,7 +225,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       },
       error: function(){
         buttonEl.text("Link Unavailable");
-        shelby.error("Shortlinks are currently unavailable.");
+        shelby.alert({message:"Shortlinks are currently unavailable."});
       }
     });
   },
