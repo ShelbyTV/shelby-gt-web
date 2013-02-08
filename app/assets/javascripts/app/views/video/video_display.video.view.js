@@ -171,19 +171,8 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
   _changeChannel : function(attr, dir) {
     if (!dir){ return; }
-    var _currCh;
-    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-      // if we're showing a channel in the guide, that channel is either being played
-      // or waiting to be played as soon as the channel data finishes downloading,
-      // so that's the channel that we want to move up or down from
-      _currCh = shelby.models.guide.get('currentChannelId');
-    } else if (shelby.models.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.channel) {
-      // if there's no channel shown in the guide, we may still be playing a channel
-      // if so, move up or down from that channel
-      _currCh = shelby.models.playlistManager.get('playingChannelId');
-    } else {
-      return;
-    }
+    var _currCh = libs.utils.channels.getCurrentChannel();
+    if (!_currCh){ return; }
 
     var _chArray = _.keys(shelby.config.channels);
     var _currChIndex = _.indexOf(_chArray, _currCh);
