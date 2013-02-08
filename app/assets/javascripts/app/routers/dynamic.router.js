@@ -167,7 +167,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayChannel : function(channel, params){
-    this.displayDashboard(params, {channel: channel});
+    if (_(shelby.config.channels).has(channel)) {
+      this.displayDashboard(params, {channel: channel});
+    } else {
+      // if the requested channel doesn't exist, just go to the first channel
+      this.navigate('channel/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+    }
+
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){
