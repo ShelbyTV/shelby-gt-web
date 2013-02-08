@@ -33,7 +33,10 @@ class TurboEmbedController < ApplicationController
     @roll['frames'].each do |frame|
       @video = frame['video']
       if @video and @video['provider_name'] == params[:providerName] and @video['provider_id'] == params[:videoId]
-        render and return
+        respond_to do |format|
+          format.js { render and return }
+          format.any { render :nothing => true and return }
+        end
       end
     end
     
