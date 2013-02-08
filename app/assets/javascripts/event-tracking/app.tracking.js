@@ -120,7 +120,7 @@ _(shelby).extend({
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = 'explore';
-          _kmq.push(['record', action, {label: 'explore'}]);
+          //_kmq.push(['record', action, {label: 'explore'}]);
           break;
         case 'Click roll promo':
         case 'Show roll promo':
@@ -129,7 +129,7 @@ _(shelby).extend({
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = options.id;
-          _kmq.push(['record', action, {roll: options.id}]);
+          //_kmq.push(['record', action, {roll: options.id}]);
           break;
         default:
           _gaAction = 'unknown';
