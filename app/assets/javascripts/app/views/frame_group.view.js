@@ -114,11 +114,22 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         likersCollection.add(likersToDisplay);
       }
 
-      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length;
+      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length,
+          frame = this.model.get('frames').at(0),
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+
+          //N.B. template({}) receives Models.
+          //i.e. frame, video, user, creator, messages, etc.
+          //so, JST should only .get() object vals from models
+
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
-        frame : this.model.get('frames').at(0),
+        frame : frame,
+        video : frame.get('video'),
+        user : shelby.models.user,
+        creator : frame.get('creator'),
+        messages : messages,
         likers : likersToDisplay,
         options : this.options,
         dupeFrames : this.model.getDuplicateFramesToDisplay(),
