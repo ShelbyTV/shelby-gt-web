@@ -36,7 +36,7 @@ $(document).ready(function(){
   //don't decode the fragment in the Backbone.queryparams plugin because backbone 0.9.1 already does it
   Backbone.Router.decodeFragment = false;
   shelby.router = new libs.shelbyGT.AppRouter();
-  Backbone.history.start({ pushState:true });
+  Backbone.history.start({ pushState:true, root:'/hash_app' });
 
   shelby.userInactivity.init();
 });

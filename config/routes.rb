@@ -41,6 +41,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/invite/:invite_id' => "home#invite"
 
   # HOME
+  get '/hash_app' => 'home#hash_app'
   get '/explore' => "home#explore"
   get '/search' => "home#search"
   get '/channel/:channel' => "home#channel"
