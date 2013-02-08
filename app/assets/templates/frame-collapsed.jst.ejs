@@ -1,15 +1,11 @@
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
 
-<% var video = frame.get('video') %>
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
 <% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var videoIsInQueue = queuedVideosModel.videoIsInQueue(video) %>
 
-<% var creator = frame.get('creator') %>
 <% var frameHasRoll = frame.has('roll') %>
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
@@ -19,7 +15,7 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var fauxUserOrigin = (creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
+<% var fauxUserOrigin = (creator && creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
 <!-- collapsed videocard -->
 
 <article id="<%= videoId %>" class="animate_module frame frame-list-item frame-collapsed<%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
