@@ -184,7 +184,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     var _nextCh = _chArray[_nextChIndex];
 
     if (_nextCh){
-      shelby.router.navigate("channel/"+_nextCh, {trigger: true, replace: true});
+      shelby.router.navigate("explore/"+_nextCh, {trigger: true, replace: true});
     }
   }
 });
