@@ -3,6 +3,7 @@
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
   var SearchHeaderView = libs.shelbyGT.SearchHeaderView;
+  var ChannelHeaderView = libs.shelbyGT.ChannelHeaderView;
   var IsoRollHeaderView = libs.shelbyGT.IsoRollHeaderView;
 
   libs.shelbyGT.ItemHeaderView = Support.CompositeView.extend({
@@ -52,6 +53,8 @@
           case libs.shelbyGT.DisplayState.search :
             this.appendChild(new SearchHeaderView({}));
             break;
+          case libs.shelbyGT.DisplayState.channel :
+            this.appendChild(new ChannelHeaderView({model: this.model}));
         }
       }
     }

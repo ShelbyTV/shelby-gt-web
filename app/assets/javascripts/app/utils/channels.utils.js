@@ -14,6 +14,11 @@ libs.utils.channels = {
       // otherwise, there is no current channel
       return null;
     }
+  },
+
+  getChannelName : function(channelId){
+    var channel = shelby.config.channels[channelId];
+    return channel['title'];
   }
 
 };
