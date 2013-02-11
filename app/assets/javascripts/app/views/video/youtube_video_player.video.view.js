@@ -227,7 +227,7 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 			height: '100%',
 			playerVars: {
 				'rel': 0,
-				'controls': 0,
+				'controls': (Browser.isMobile() ? 1 : 0), //we don't should shelby controls when mobile
 				'disablekb': 1, //disable YouTubes keyboard controls (and keep ours)
 				'enablejsapi': 1,
 				'wmode': 'transparent',
