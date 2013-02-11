@@ -70,12 +70,14 @@
       limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
       
       /************************** Fresh Play Public Options **************************/
-      // when disabled we do nothing (not even showing "new")
-      freshPlayEnabled : false,
+      // when disabled we do nothing (not even tagging videos as "new")
+      freshPlayEnabled : true,
+      // should we randomize order of "old" videos?
+      freshPlayShouldReorder : false,
       // for how many days should the random reorder stay consistent
       reorderingConsistencyDays : 1,
       // Keep frames created less then newFramesMaxAgeDays days as "new"
-      newFramesMaxAgeDays : 1,
+      newFramesMaxAgeDays : 7,
       // Always have this many "new" Frames at the top of the roll
       newFramesMinCount : 1,
       
@@ -98,6 +100,10 @@
        * All options that can be changed have been exposed via view's this.options hash.
        */
       var fpParams = {
+        /* Don't adjust score if we're not re-ordering
+         */
+        shouldReorder: this.options.freshPlayShouldReorder,
+        
         /* Store a seed between runs for consistency (in case Math.seededRandom() gets called elsewhere)
          */
         seed: null,
@@ -140,11 +146,16 @@
           // "new" frame handling
           if(fpParams.newFramesCount < fpParams.newFramesMinCount ||
             libs.shelbyGT.viewHelpers.app.timestampFromMongoId(frameJson.id) > fpParams.newFramesMinAge){
-              frameJson.score = fpParams.newFramesLastScore--;
+              if(fpParams.shouldReorder){ 
+                frameJson.score = fpParams.newFramesLastScore--; 
+              }
               frameJson.isFreshPlayNew = true;
               fpParams.newFramesCount++;
               return;
           }
+          
+          // don't have to touch "old" frames if we're not re-ordering anything
+          if(!fpParams.shouldReorder){ return; }
           
           // "old" frame handling
           if(frameJson.id == fpParams.lastFrameId){

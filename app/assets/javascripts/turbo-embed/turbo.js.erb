@@ -34,7 +34,10 @@ var __shelbyTurbo = {
         var reqData = embedData;
         delete reqData.$el;
         reqData.userId = self.userId;
-        self.$.get("<%= Settings::Application.protocol_matching_url %>/turbo_embellish", reqData);
+        self.$.get("<%= Settings::Application.protocol_matching_url %>/turbo_embellish",
+                    reqData,
+                    null,
+                    "script");
       });
     }
   },

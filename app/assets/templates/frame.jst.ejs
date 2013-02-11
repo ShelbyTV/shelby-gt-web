@@ -1,16 +1,11 @@
-<% /* TODO: REMOVE THIS and MOVE TO template param obj*/ var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection() %>
-
-<% var user = shelby.models.user %>
 <% var userNickname = user.get('nickname') %>
 
-<% var video = frame.get('video') %>
 <% var videoId = frame.get('id') %>
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
 <% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var videoIsInQueue = queuedVideosModel.videoIsInQueue(video) %>
 
-<% var creator = frame.get('creator') %>
 <% var frameHasRoll = frame.has('roll') %>
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
@@ -21,15 +16,15 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
+<% var fauxUserOrigin = (creator && creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
 <!-- videocard -->
+
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
-  <% if (!frameViewed) { %>
-    <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-      <h1 class="frame-title" title="<%= videoTitle %>">
-       <%= videoTitle %>
-      </h1>
-    </a>
-  <% } %>
+  <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="<%= videoTitle %>">
+     <%= videoTitle %>
+    </h1>
+  </a>
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
@@ -91,60 +86,69 @@
                                                                             frameIsOnWatchLaterRoll);
     %>
       <footer class="media_module frame-footer clearfix">
-
-        <% if (!frameViewed) { %>
-           <% if (clickableCreator) { %>
-             <a href="#" onclick="return false;" class="js-creator-personal-roll">
-               <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-                 <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-               </span>
-             </a>
-           <% } else { %>
+         <% if (clickableCreator) { %>
+           <a href="#" onclick="return false;" class="js-creator-personal-roll">
              <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
-           <% } %>
-        <% } %>
+           </a>
+         <% } else { %>
+           <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
+           </span>
+         <% } %>
 
-        <div class="media_body">
-          <% if (!frameViewed) { %>
-            <span class="xuser-data-timestamp">
-               <%= frame.get('created_at') %>
-            </span>
+          <div class="media_body">
+            <% if (!fauxUserOrigin) { %>
+              <span class="xuser-data-timestamp">
+                 <%= frame.get('created_at') %>
+              </span>
 
-            <p class="xuser-data">
-              <% if (clickableCreator) { %>
-                shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
-              <% } else { %>
-                shared by <%= creatorNickname %>
-              <% } %>
-            </p>
-
-            <p class="xuser-message">
-              <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-                <% var comment = messages.models[0].get('text') %>
-                <% if (comment.length > 256) { %>
-                  <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
-                  <a class="js-toggle-comment" href="#">more…</a>
+              <p class="xuser-data">
+                <% if (clickableCreator) { %>
+                  shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
                 <% } else { %>
-                  <%- comment %>
+                  shared by <%= creatorNickname %>
                 <% } %>
+              </p>
+
+              <p class="xuser-message">
+                <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+                  <% var comment = messages.models[0].get('text') %>
+                  <% if (comment.length > 256) { %>
+                    <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
+                    <a class="js-toggle-comment" href="#">more…</a>
+                  <% } else { %>
+                    <%- comment %>
+                  <% } %>
+                <% } %>
+              </p>
+            <% } else { %>
+                <p class="xuser-data xuser-message--faux">
+                  <% if (clickableCreator) { %><a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;"><% } %>
+                    <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
+                    <span class="see-all">Shared by </span><%= creatorNickname %> on <span class="capitalize"><%= fauxUserOrigin %></span>
+                  <% if (clickableCreator) { %><br />Click here to see all…</a><% } %>
+                </p>
+
+              <% if (!clickableCreator) { %>
+                <p class="xuser-message">
+                  <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
+                    <% var comment = messages.models[0].get('text') %>
+                    <% if (comment.length > 256) { %>
+                      <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
+                      <a class="js-toggle-comment" href="#">more…</a>
+                    <% } else { %>
+                      <%- comment %>
+                    <% } %>
+                  <% } %>
+                </p>
               <% } %>
-            </p>
-          <% } else { %>
-            <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-              <h1 class="frame-title" title="<%= videoTitle %>">
-               <%= videoTitle %>
-              </h1>
 
-              <div class="xuser-data">
-                shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
-              </div>
-            </a>
-          <% } %>
-        </div><!-- eo .media_body -->
+              <% } %>
+          </div><!-- eo .media_body -->
 
-        <% if (!user.isAnonymous() && !frameViewed) { %>
+        <% if (!user.isAnonymous()) { %>
           <hr class="hr--double" />
           <div class="frame-subsection clearfix">
             <ul class="menu_list">
@@ -174,49 +178,14 @@
           </ul>
         <% } %>
       </footer><!-- eo .media_module-->
-    <% } else if (frameViewed){ %>
-      <footer class="media_module frame-footer clearfix">
-        <div class="media_body">
-          <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-            <h1 class="frame-title" title="<%= videoTitle %>">
-             <%= videoTitle %>
-            </h1>
-          </a>
-        </div>
-      </footer><!-- eo .media_module-->
     <% } else if (isViaSearch && userIsAnonymous) { %>
       <footer class="media_module frame-footer clearfix">
         <%= SHELBYJST['frame-social-sharing']({isViaSearch: isViaSearch, framePermalink: framePermalink, frameHasRoll: frameHasRoll, frame: frame}) %>
       </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
-  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
-    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
-    </ul>
-    <% if (remainingLikes) { %>
-      <span class="frame-likes-count frame-external-subline-text">
-        <% if (likers.length) { %>
-          +<%= remainingLikes %>
-        <% } else { %>
-          <%= _('like').pluralize(remainingLikes, true) %>
-        <% } %>
-      </span>
-    <% } %>
-  </div>
-  <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
-    <div class="frame-external-subline">
-      <p class="frame-external-subline-text">
-        Also via:
 
-        <% _(dupeFrames).each(function(frame, index) { %>
-          <%= index == 0 ? '' : ', ' %>
-          <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
-          <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(frame.get('roll')) %>
-          </a>
-        <% }); %>
-      </p>
-    </div>
-  <% } %>
+  <%= SHELBYJST['frame-aside'](obj) %>
 
 	<% if(frame.get('isFreshPlayNew')){ %>
 		<div class="sash">New</div>

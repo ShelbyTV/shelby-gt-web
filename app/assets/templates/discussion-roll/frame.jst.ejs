@@ -11,10 +11,8 @@
 
     <div class="media_body">
       <p class="discussion__h4">
-        <%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %>
-        <span class="xuser-data-timestamp">
-          <%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("dddd, mmm dd, h:MM TT") %>
-        </span>
+        <span class="overflow--ellipsis"><%= frame.escape('anonymous_creator_nickname') || frame.get('creator') && frame.get('creator').escape('nickname') %></span>
+        <span class="xuser-data-timestamp"><%= libs.shelbyGT.viewHelpers.app.dateFromMongoId(frame.id).format("ddd, mmm d, h:MM TT") %></span>
       </p>
     </div><!-- eo media_body -->
 

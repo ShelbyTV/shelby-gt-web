@@ -2,6 +2,12 @@ require 'shelby_api'
 
 class HomeController < ApplicationController
 
+  # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
+  # Need to load the app in that case and let routing take place like normal on the hash fragment
+  def hash_app
+    render '/home/app'
+  end
+
   ##
   # Handles logged out - static landing page
   #         logged in - js app

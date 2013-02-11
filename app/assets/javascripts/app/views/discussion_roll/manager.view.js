@@ -62,8 +62,6 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
       });
       if(this._discussionRolls.length === 0){
         this._showExplanation();
-        this.$('.explanation__dismiss').hide();
-        this.$('.explanation__present').hide();
       }
     }
   },
@@ -78,6 +76,7 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
   _showExplanation: function(e){
     $('.js-about').hide();
     this.$(".js-about-content").show();
+    return false;
   },
 
   _dimissExplanation: function(){

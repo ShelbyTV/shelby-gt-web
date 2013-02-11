@@ -82,11 +82,14 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     self = this,
     msgInput = this.$el.find('.js-message-text'),
     msg = new libs.shelbyGT.DiscussionRollMessageModel({
-      message: text,
       token: this.options.token,
       discussion_roll_id: this.model.id,
       videos: videoUrls
     });
+    //IE will send "null" if we simply include {message:null} in the payload
+    if(text !== null){
+      msg.set({message: text});
+    }
 
     msg.save(null, {
       success:function(respModel, resp){

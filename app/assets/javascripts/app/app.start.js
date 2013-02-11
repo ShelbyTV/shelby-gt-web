@@ -36,7 +36,13 @@ $(document).ready(function(){
   //don't decode the fragment in the Backbone.queryparams plugin because backbone 0.9.1 already does it
   Backbone.Router.decodeFragment = false;
   shelby.router = new libs.shelbyGT.AppRouter();
-  Backbone.history.start({ pushState:true });
+  //if the browser doesn't support push state, user a different root url
+  //for the route that handles such browsers
+  var historyOptions = {pushState: true};
+  if (!Browser.hasPushState()) {
+    historyOptions.root = '/hash_app';
+  }
+  Backbone.history.start(historyOptions);
 
   shelby.userInactivity.init();
 });
