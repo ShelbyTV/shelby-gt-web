@@ -27,7 +27,7 @@ libs.shelbyGT.ExploreDropdownView = Support.CompositeView.extend({
 
   _onClickChannel : function(e) {
     shelby.router.navigate(
-      "channel/" + $(e.currentTarget).data('channel'),
+      "explore/" + $(e.currentTarget).data('channel'),
       {trigger:true}
     );
   },

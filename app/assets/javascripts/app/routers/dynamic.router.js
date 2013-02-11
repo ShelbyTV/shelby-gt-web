@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
-    "channel/:channel"                     : "displayChannel",
+    "explore/:channel"                     : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -171,7 +171,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channel/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+      this.navigate('explore/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
 
   },
