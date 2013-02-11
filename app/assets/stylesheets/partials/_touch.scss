@@ -6,24 +6,8 @@
     overflow: hidden;
   }
 
-  .videoplayer-tools__wrapper,
   .videoplayer-controls__wrapper {
-    font-size: 1.3em;
-  }
-
-  .video_progress {
-    margin-top: 1.9em;
-  }
-
-  .video_controls__time {
-    font-size: 1.05rem;
-  }
-
-  .video_progress__scrubber {
-    border-radius: 2px;
-    height: 35px;
-    margin: -22px 0;
-    width: 20px;
+    display: none;
   }
 
   //------------------------------------------------------------------------------
