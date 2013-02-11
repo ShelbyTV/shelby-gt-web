@@ -11,13 +11,11 @@ var DataUtils = {
   setRollJson : function(){
    this._getData('/roll/2.json', function(data){
      window.rollJson = data;
-     console.log('done');
    });
   },
   setDashboardJson : function(){
     this._getData('/dashboard.json', function(data){
       window.dbJson = data;
-      console.log('done');
     });
   },
   getRollJson : function(cb){

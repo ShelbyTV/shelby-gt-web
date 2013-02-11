@@ -34,7 +34,6 @@ libs.shelbyGT.ExploreDropdownView = Support.CompositeView.extend({
 
   _onGuideModelChanged : function(guideModel) {
     var _changedAttrs = _(guideModel.changedAttributes());
-    console.log('guidechanged', _changedAttrs);
     if (!_changedAttrs.has('displayState') &&
         !_changedAttrs.has('currentChannelId')) {
       return;
@@ -44,7 +43,6 @@ libs.shelbyGT.ExploreDropdownView = Support.CompositeView.extend({
 
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
-    console.log('playlistchanged', _changedAttrs);
     if (!_changedAttrs.has('playingState') &&
         !_changedAttrs.has('playingChannelId')) {
       return;

@@ -8,11 +8,10 @@ libs.shelbyGT.ChannelHeaderView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind('change', this._onChannelChange, this);
-    console.log('temp: ', this.model);
   },
 
   _cleanup : function(){
-    this.channel.unbind('change', this._onChannelChange, this);
+    this.model.unbind('change', this._onChannelChange, this);
   },
 
   render : function(){
