@@ -131,7 +131,7 @@
     },
 
     _getActionData : function(keyCode){
-      var actionDataRaw = _.clone(this._keyCodeActionMap[event.keyCode]);
+      var actionDataRaw = _.clone(this._keyCodeActionMap[keyCode]);
       if(!actionDataRaw) return false;
       actionDataRaw.val = (typeof actionDataRaw.val === 'function') ? actionDataRaw.val() : actionDataRaw.val;
       return actionDataRaw;
