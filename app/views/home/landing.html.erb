@@ -133,9 +133,9 @@
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
     <% if (!@share_type) and !@invite_id %>
-      <%= render :partial => "/home/shelf/search" %>
-      <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/sign_up" %>
+      <%= render :partial => "/home/shelf/community" %>
+      <%= render :partial => "/home/shelf/search" %>
       <%= render :partial => "/home/shelf/network" %>
       <%= render :partial => "/home/shelf/about" %>
     <% end %>
