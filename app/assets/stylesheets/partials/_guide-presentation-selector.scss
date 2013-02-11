@@ -174,21 +174,21 @@
   }
 
   &:hover{
-    background-color: #74C042;
-    color: #FFF;
+    background-color: #b9b9b9;
     cursor: pointer;
 
     &:first-child {
-      @include fin-left(#74C042, 29px);
+      @include fin-left(#b9b9b9, 29px);
     }
   }
 }
 
 .explore-section-channel--active {
-  background-color: #b9b9b9;
+  background-color: #74C042;
+  color: #FFF;
 
   &:first-child {
-    @include fin-left(#b9b9b9, 29px);
+    @include fin-left(#74C042, 29px);
   }
 }
 
