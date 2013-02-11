@@ -149,23 +149,47 @@
 //---------------------------
 
 .explore-section-lining {
-  @include fin-left($base);
-
   background-color: $base;
   box-shadow: 0px 0px 5px 0px black;
+  margin-top: 5px;
   text-align: left;
-  width: 170px;
+  width: 165px;
 }
 
 .explore-section-channel {
+  color: #666;
+  font-family: $font-family-display;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 3.335em;
+  line-height: 3.335em;
+  padding: 0 .6em;
+
+  &:first-child {
+    @include fin-left($base, 29px);
+  }
+
+  & + .explore-section-channel {
+    border-top: solid #adadad 1px;
+  }
+
   &:hover{
-    background-color: $shelby-green;
+    background-color: #74C042;
+    color: #FFF;
     cursor: pointer;
+
+    &:first-child {
+      @include fin-left(#74C042, 29px);
+    }
   }
 }
 
 .explore-section-channel--active {
   background-color: #b9b9b9;
+
+  &:first-child {
+    @include fin-left(#b9b9b9, 29px);
+  }
 }
 
 //------------------------------------------------------------------------------
