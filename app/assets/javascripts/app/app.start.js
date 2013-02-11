@@ -44,5 +44,7 @@ $(document).ready(function(){
   }
   Backbone.history.start(historyOptions);
 
-  shelby.userInactivity.init();
+  if(!Browser.isMobile()){
+    shelby.userInactivity.init();
+  }
 });
