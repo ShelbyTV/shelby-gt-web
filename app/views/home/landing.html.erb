@@ -262,6 +262,13 @@
     <% end %>
 
     $(document).ready(function(){
+      //fanciness on focussing searching in header
+      $('.js-nav-search-form-text').focus(function(){
+        $(this).parent().toggleClass('focused',true);
+      }).blur(function(){
+        $(this).parent().toggleClass('focused',false);
+      });
+
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
