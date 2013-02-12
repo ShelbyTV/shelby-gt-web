@@ -552,6 +552,32 @@ p {
 //
 ////////////////////////////////////////////////////////////////////////////
 
+// .seovideo__banner_wrapper--true {
+//   //if search input is prepopulated with search term that brought user to page
+//   margin-top: 22px;
+//   padding: 18px 22px 1px;
+
+//   .seovideo__h2 {
+//     text-align: center;
+//     font-family: $font-family-display;
+//     font-size: 1.8em;
+//     font-weight: 300;
+//   }
+// }
+
+// .seovideo__banner_wrapper--false {
+//   .seovideo__h2 {
+//     display: none;
+//   }
+// }
+
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO search form label
+//
+//  ab_test("seo_search_label", true, false) do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+
 .seovideo__banner_wrapper--true {
   //if search input is prepopulated with search term that brought user to page
   margin-top: 22px;
@@ -566,9 +592,8 @@ p {
 }
 
 .seovideo__banner_wrapper--false {
-  .seovideo__h2 {
-    display: none;
-  }
+  margin-top: 22px;
+  padding: 1px 22px 1px;
 }
 
 

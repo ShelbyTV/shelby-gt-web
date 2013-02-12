@@ -19,12 +19,13 @@
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
-      <h2 class="seovideo__h2">
-        <% if @seo_search_label == :show_label %>
-          Test
-        <% end %>
-      </h2>
+    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--<%= @seo_search_label == :show_label ? 'true' : 'false' %> frame-body-wrapper">
+      <% if @seo_search_label == :show_label %>
+        <h2 class="seovideo__h2">
+          See more video that matches your search from <br/>
+          YouTube, Vimeo, and Dailymotion:
+        </h2>
+      <% end %>
 
       <div class="media_module seovideo__banner clearfix">
         <form action="/search" class="js-search-form form_module form_module--search">
@@ -55,7 +56,7 @@
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
-    <article role="main" class="seovideo <%= "seovideo--light" if @video_related_videos.empty? %>">
+    <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
         <h1 class="seovideo__h2">
           <%= @video_title %>
