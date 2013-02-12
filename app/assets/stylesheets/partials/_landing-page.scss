@@ -356,10 +356,26 @@ $landing-page-footer-font-color: #EFEFEF;
 
   }
 
+  .shelf__h2 {
+    color: #efefef;
+    font-size: 1.4em;
+    padding: 1em 1em 0.3em;
+    width: 100%;
+  }
+
   .shelf__block {
+    font-family: $font-family-display;
+    font-weight: 400;
   }
 
   .shelf__form {
+    height: 100px;
+    position: relative;
+
+    .shelf__block {
+      font-size: inherit;
+      margin: 0;
+    }
   }
 
   //----- Non-normativeElements -----------------------------------------

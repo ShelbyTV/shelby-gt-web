@@ -95,7 +95,7 @@
           <li class="guide-nav-item secondary-item guide-search">
             <form id="js-nav-search-form" class="nav-search-form" action="/search">
               <span class="button_icon icon_search icon nav-search-form-text js-nav-search-form-text-wrapper">
-                <input name="query" type="text" placeholder="Search" class="js-nav-search-form-text" id="js-nav-search-form-text" tabindex="0"/>
+                <input name="query" type="text" placeholder="Search the Videoverse" class="js-nav-search-form-text" id="js-nav-search-form-text" tabindex="0"/>
               </span>
             </form>
           </li>
@@ -142,7 +142,6 @@
     <% if (!@share_type) and !@invite_id %>
       <%= render :partial => "/home/shelf/sign_up" %>
       <%= render :partial => "/home/shelf/community" %>
-      <%= render :partial => "/home/shelf/search" %>
       <%= render :partial => "/home/shelf/network" %>
       <%= render :partial => "/home/shelf/about" %>
     <% end %>
@@ -272,8 +271,8 @@
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-email-form').addClass('hidden');
-          $('#js-thankyou').removeClass('hidden');
+          $('#js-email-form-submit').addClass('hidden');
+          $('#js-email-form-feedback').removeClass('hidden');
         }, 'jsonp');
         return false;
       });
