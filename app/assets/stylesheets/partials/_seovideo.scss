@@ -594,6 +594,10 @@ p {
 .seovideo__banner_wrapper--false {
   margin-top: 22px;
   padding: 1px 22px 1px;
+
+  .seovideo__h2 {
+    display: none;//fail safe
+  }
 }
 
 
