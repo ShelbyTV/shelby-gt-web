@@ -179,7 +179,16 @@ $active-list-item: $shelby-blue;
   }
 }
 
-
+//------------------------------------------------------------------------------
+//  faux users have special frames
+//------------------------------------------------------------------------------
+.frame-footer {
+  .social-icon {
+    float: right;
+    font-size: 1.4em;
+    line-height: 1;
+  }
+}
 
 //------------------------------------------------------------------------------
 //  frame command menu:
@@ -221,48 +230,48 @@ $active-list-item: $shelby-blue;
   margin-left: 1em;
   margin-top: 1em;
 }
-    ////////////////////////////////////////////////////////////////////////////
-    //  dropdown sublist:
-    //  children options of a spcific frame command (more button)
-    ////////////////////////////////////////////////////////////////////////////
-    .frame-sublist {
-      margin-top: 1px;
-      box-shadow: $shadow;
+    // ////////////////////////////////////////////////////////////////////////////
+    // //  dropdown sublist:
+    // //  children options of a spcific frame command (more button)
+    // ////////////////////////////////////////////////////////////////////////////
+    // .frame-sublist {
+    //   margin-top: 1px;
+    //   box-shadow: $shadow;
 
-      .frame-command {
-        background-color: #efefef;
-        border-bottom: none;
-        border-left: 1px solid $inset;
-        border-right: 1px solid $inset;
-        border-top: none;
-        margin: 0;
-        padding: .75em 1em .8em;
-        text-align: left;
-        width: 100%;
+    //   .frame-command {
+    //     background-color: #efefef;
+    //     border-bottom: none;
+    //     border-left: 1px solid $inset;
+    //     border-right: 1px solid $inset;
+    //     border-top: none;
+    //     margin: 0;
+    //     padding: .75em 1em .8em;
+    //     text-align: left;
+    //     width: 100%;
 
-        &:hover {
-          background-color: adjust-lightness(#efefef,-5%);
-        }
-      }
-    }
+    //     &:hover {
+    //       background-color: adjust-lightness(#efefef,-5%);
+    //     }
+    //   }
+    // }
 
-    .frame-shortlink {
-      @include roundies(input);
+    // .frame-shortlink {
+    //   @include roundies(input);
 
-      display: inline;
-      font-size: 1.1em;
-      height: 1.4em;
-      margin: -2px 0;
-      padding: 0.3em;
-      width: 115px;
-      background: transparent;
-      border: 1px solid #aaa;
+    //   display: inline;
+    //   font-size: 1.1em;
+    //   height: 1.4em;
+    //   margin: -2px 0;
+    //   padding: 0.3em;
+    //   width: 115px;
+    //   background: transparent;
+    //   border: 1px solid #aaa;
 
-      &:focus {
-        outline: none;
-        border: 1px solid black;
-      }
-    }
+    //   &:focus {
+    //     outline: none;
+    //     border: 1px solid black;
+    //   }
+    // }
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
@@ -343,6 +352,10 @@ $active-list-item: $shelby-blue;
   .frame-footer {
     overflow: hidden;
     zoom: 1;
+
+    .social-icon {
+      font-size: 1.4em;
+    }
   }
 
   &:hover {
@@ -357,6 +370,13 @@ $active-list-item: $shelby-blue;
     }
   }
 
+  .xuser-message--faux {
+    margin-bottom: 0;
+
+    .see-all {
+      display: none;
+    }
+  }
   /* unplayable and collapsed */
   &.xvideo-unplayable {
 
@@ -424,26 +444,26 @@ $active-list-item: $shelby-blue;
 
   &.icon-heart {
     &:before {
-      float: left;
+      display: inline;
       line-height: 2.3em;
     }
   }
 }
 
 .frame-likes--hide {
-  height: 0em;
+  display: none;
 }
 
 .frame-likes-avatars {
-  float: left;
+  display: inline;
 
   &.list {
-    margin: 0 0.6em;
+    margin: 0 0.22em 0 0.4em;
   }
 
   &.no-liker-avatars {
     & + .frame-likes-count {
-      margin-left: 0.5em;
+      margin-left: 0.22em;
     }
   }
 
@@ -458,7 +478,7 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-count {
-  float: left;
+  display: inline;
   font-family: $font-family-display;
   font-weight: 600;
   line-height: 2.3em;

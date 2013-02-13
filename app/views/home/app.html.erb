@@ -112,9 +112,6 @@
         try {
           _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
         } catch(e) {}
-        try {
-          _kmq.push(['set', {'<%= name %>': '<%= alternative.value %>'}]);
-        } catch(e) {}
       <% end %>
     </script>
   <% end %>

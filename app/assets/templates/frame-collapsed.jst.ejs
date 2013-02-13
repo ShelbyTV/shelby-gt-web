@@ -1,0 +1,105 @@
+<% var userNickname = user.get('nickname') %>
+
+<% var videoId = frame.get('id') %>
+<% var videoTitle = video.get('title') %>
+<% var videoThumbnail = video.get('thumbnail_url') %>
+<% var videoUnplayable = frameGroup.get('video_unplayable') %>
+<% var videoIsInQueue = queuedVideosModel.videoIsInQueue(video) %>
+
+<% var frameHasRoll = frame.has('roll') %>
+<% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
+<% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
+
+<% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
+<% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
+<% var userIsAnonymous = user.isAnonymous() %>
+<% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
+
+<% var fauxUserOrigin = (creator && creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
+<!-- collapsed videocard -->
+
+<article id="<%= videoId %>" class="animate_module frame frame-list-item frame-collapsed<%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
+
+  <div class="frame-body-wrapper clearfix js-frame-activate">
+    <div class="frame-body">
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+      </a>
+
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+    </div><!-- eo .frame-body -->
+
+  <% if (!isGenius && creator) {
+       var creatorNickname = creator.get('nickname');
+       var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
+       var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
+                                                                          frameIsOnHeartedRoll ||
+                                                                          frameIsOnWatchLaterRoll);
+    }
+  %>
+    <footer class="media_module frame-footer clearfix">
+      <div class="media_body">
+        <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+          <h1 class="frame-title" title="<%= videoTitle %>">
+           <%= videoTitle %>
+          </h1>
+
+          <% if (!fauxUserOrigin) { %>
+            <div class="xuser-data">
+              shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
+            </div>
+          <% } else { %>
+            <p class="xuser-data xuser-message--faux">
+              <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
+              <span class="see-all">Shared by </span><%= creatorNickname %> on <span class="capitalize"><%= fauxUserOrigin %></span>
+
+              <% if (clickableCreator) { %>
+                <br />
+                <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">Click here to see all…</a>
+              <% } %>
+            </p>
+          <% } %>
+        </a>
+      </div>
+    </footer><!-- eo .media_module-->
+  </div><!-- eo .frame-body-wrapper -->
+
+  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
+    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
+      <!-- Filled in by the LikerAvatar..somethingsomething -->
+    </ul>
+
+    <% if (remainingLikes) { %>
+      <span class="frame-likes-count frame-external-subline-text">
+        <% if (likers.length) { %>
+          +<%= remainingLikes %>
+        <% } else { %>
+          <%= _('like').pluralize(remainingLikes, true) %>
+        <% } %>
+      </span>
+    <% } %>
+
+  </div><!-- eo frame-likes -->
+
+  <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
+    <div class="frame-external-subline">
+      <p class="frame-external-subline-text">
+        Also via:
+
+        <% _(dupeFrames).each(function(frame, index) { %>
+          <%= index == 0 ? '' : ', ' %>
+          <a href="#" data-roll_id="<%= frame.get('roll').id %>" data-frame_id="<%= frame.id %>" class="js-go-to-frame-and-roll-by-id">
+          <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(frame.get('roll')) %>
+          </a>
+        <% }); %>
+      </p>
+    </div>
+  <% } %>
+
+	<% if(frame.get('isFreshPlayNew')){ %>
+		<div class="sash">New</div>
+	<% } %>
+
+</article>
+<!-- end collapsed videocard -->

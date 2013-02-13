@@ -1,4 +1,4 @@
-if( !Browser.isIos() && typeof(shelby.userInactivity) === "undefined" ) shelby.userInactivity = {};
+if(typeof(shelby.userInactivity) === "undefined" ) shelby.userInactivity = {};
 
 $.extend(shelby.userInactivity, {
 

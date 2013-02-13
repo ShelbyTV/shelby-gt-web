@@ -40,6 +40,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
         return SHELBYJST['fb-genius-frame'](obj);
       }
+      else if (obj.frameGroup.get('collapsed')) {
+        return SHELBYJST['frame-collapsed'](obj);
+      }
       else {
         return SHELBYJST['frame'](obj);
       }
@@ -111,11 +114,22 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         likersCollection.add(likersToDisplay);
       }
 
-      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length;
+      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length,
+          frame = this.model.get('frames').at(0),
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+
+          //N.B. template({}) receives Models.
+          //i.e. frame, video, user, creator, messages, etc.
+          //so, JST should only .get() object vals from models
+
       this.$el.html(this.template({
         queuedVideosModel : shelby.models.queuedVideos,
         frameGroup : this.model,
-        frame : this.model.get('frames').at(0),
+        frame : frame,
+        video : frame.get('video'),
+        user : shelby.models.user,
+        creator : frame.get('creator'),
+        messages : messages,
         likers : likersToDisplay,
         options : this.options,
         dupeFrames : this.model.getDuplicateFramesToDisplay(),
@@ -202,7 +216,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
-      dataType: 'json',
+      dataType: 'jsonp',
       success: function(r){
         var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
         buttonEl.replaceWith(inputEl);
@@ -211,7 +225,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       },
       error: function(){
         buttonEl.text("Link Unavailable");
-        shelby.error("Shortlinks are currently unavailable.");
+        shelby.alert({message:"Shortlinks are currently unavailable."});
       }
     });
   },

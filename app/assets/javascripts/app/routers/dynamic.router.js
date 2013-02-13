@@ -408,7 +408,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _checkPlayRollFrame : function(rollModel, response) {
     var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-    // for compatibility reasons, we only show youtube videos on mobile
+    // for compatibility reasons, we only show videos from certain providers on mobile
     if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').canPlayMobile())) {
       var activeFrameModelRoll = activeFrameModel.get('roll');
       if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
@@ -424,7 +424,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
     var frame = rollModel.get('frames').get(frameId);
-    // for compatibility reasons, we only show youtube videos on mobile
+    // for compatibility reasons, we only show videos from certain providers on mobile
     if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
       if (shelby.models.routingState.get('forceFramePlay')) {
@@ -465,7 +465,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
     var entry = dashboardModel.get('dashboard_entries').get(entryId);
-    // for compatibility reasons, we only show youtube videos on mobile
+    // for compatibility reasons, we only show videos from certain providers on mobile
     if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
       shelby.models.guide.set('activeFrameModel', entry.get('frame'));
     } else {

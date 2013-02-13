@@ -6,36 +6,16 @@
     overflow: hidden;
   }
 
-  .videoplayer-tools__wrapper,
-  .videoplayer-controls__wrapper {
-    font-size: 1.3em;
-  }
-
-  .video_progress {
-    margin-top: 1.9em;
-  }
-
-  .video_controls__time {
-    font-size: 1.05rem;
-  }
-
-  .video_progress__scrubber {
-    border-radius: 2px;
-    height: 35px;
-    margin: -22px 0;
-    width: 20px;
-  }
-
-//------------------------------------------------------------------------------
-//  Frame
+  //------------------------------------------------------------------------------
+  //  Frame
 
   .frame-body-wrapper {
     box-shadow: none;
     border: 1px solid rgba(0,0,0,.2);
   }
 
-//------------------------------------------------------------------------------
-//  Preroll video info
+  //------------------------------------------------------------------------------
+  //  Preroll video info
 
   .preroll-video-info-wrapper {
     font-size: 1.3em
@@ -48,19 +28,24 @@
   .preroll-video-info {
     margin: 15em 15em 0;
   }
+  
+  //------------------------------------------------------------------------------
+  //  Player controls
+  
+  .videoplayer-controls__wrapper {
+    display: none;
+  }
+  
+  .video_progress--mini__wrapper {
+    z-index: 2;
+  }
 
-//------------------------------------------------------------------------------
-//  Persistent video Info
+  //------------------------------------------------------------------------------
+  //  Persistent video Info
 
   .hide-guide {
     .videoplayer-viewport {
       bottom: 5em;
-    }
-
-    .video_controls__wrapper {
-      bottom: 0;
-      left: 0;
-      right: 0;
     }
 
     .persistent_video_info__wrapper {

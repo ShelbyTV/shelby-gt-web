@@ -2,6 +2,12 @@ require 'shelby_api'
 
 class HomeController < ApplicationController
 
+  # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
+  # Need to load the app in that case and let routing take place like normal on the hash fragment
+  def hash_app
+    render '/home/app'
+  end
+
   ##
   # Handles logged out - static landing page
   #         logged in - js app
@@ -174,12 +180,10 @@ class HomeController < ApplicationController
           when "nowplaying.shelby.tv" then "4fcd0ca888ba6b07e30001d7"
           when "reecepacheco.tv" then "4f900d56b415cc6614056681"
           when "syria.shelby.tv" then "4fccffc188ba6b7a82000b92"
-          when "tedtalks.tv" then "4fbaa51d1c1cf44b9d002f58"
           when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
-          when "wallstreetjournal.tv" then "4fa8542c88ba6b669b000bcd"
           when "yvynyl.tv" then "4fa2908088ba6b61770010af"
-          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105" # requested via NF.tv, added 01/07/13
-          when "localhost.hipstersounds.tv" then "4fa03429b415cc18bf0007b2"
+          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105"    # requested via NF.tv, added 01/07/13
+          when "missouriquiltco.tv" then "51190f1eb415cc77f308eb22" # requested via Al Doan, added 02/10/13
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else

@@ -16,8 +16,18 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
 
     //fetch the discussion roll, which all my children are watching
     this.model && this.model.fetch({
+      data: {
+        limit: 3 // needs to match firstFetchLimit in DiscussionRollConversationView
+        },
       success: function(model, resp){
-        setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
+        setTimeout(function(){ $("body").scrollTop(10000000000); }, 200);
+        
+        //on mobile, hide the header after the user has scrolled
+        setTimeout(function(){
+          $(document).one("scroll", function(e){
+            $('.js-shelby-header').addClass("user-did-scroll");
+          });
+        }, 2000);
       },
       error: function(a){
         $(".js-discussion-roll-conversation-list").html("<h1>Something went wrong :(</h1><h1>Try reloading...</h1>");
@@ -69,45 +79,10 @@ libs.shelbyGT.StandaloneDiscussionRollView = Support.CompositeView.extend({
     var self = this;
 
     if(this.options.viewer && this.model && this.model.has('discussion_roll_participants')){
-
-      switch(this.model.get('discussion_roll_participants').length){
-        case 1:
-          //viewer is only participant in conversation
-          this._setTitleFor(this.options.viewer);
-          break;
-        case 2:
-          //conversation is with the other participant that isn't viewer
-          this._setTitleFor(_.find(this.model.get('discussion_roll_participants'), function(p){ return p !== self.options.viewer; } ));
-          break;
-        default:
-          //group conversation, shown in supplementar TO element
-          this.renderChildInto( new libs.shelbyGT.DiscussionRollRecipientsView(
-                                  _.extend({updatePageTitle:true},
-                                  {model:this.model, viewer:this.options.viewer, token:this.options.token})),
-                                this.$(".js-discussion-roll-recipients"));
-          this.$('.js-nav-title').text('Participants');
-      }
-
+      this.renderChildInto(new libs.shelbyGT.DiscussionRollRecipientsView(
+        _.extend({updatePageTitle:true}, {model:this.model, viewer:this.options.viewer, token:this.options.token})),
+        this.$(".js-discussion-roll-recipients"));
     }
-  },
-
-  //set the nav title for a non-group conversation
-  _setTitleFor: function(idOrEmail){
-    var self = this;
-
-    if(idOrEmail.indexOf("@") === -1){
-      //need to fetch user's info and set it in title
-      var user = new libs.shelbyGT.UserModel({id: idOrEmail});
-      user.fetch({
-        success: function(userModel, resp){
-          self.$('.js-discussion-roll-recipients').html('<ul class="list recipients__list><li class="recipients__item">'+userModel.get('nickname')+ '</li></ul>');
-        }
-      });
-    } else {
-      this.$('.js-nav-title').text(idOrEmail);
-    }
-
-    this.$(".js-nav-title").hide();
   }
 
 });
