@@ -19,14 +19,13 @@
       <!-- TODO: copy Login button from new Landing page stuff -->
     </div>
 
-    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
-      <h2 class="seovideo__h2">
-        <% if @seo_search_messaging == :sell_providers  %>
-          See more video that matches your search from<br /> YouTube, Vimeo, and Dailymotion:
-        <% else %>
-          Watch more on Shelby.tv, the only video search that plays your results instead of showing you text.
-        <% end  %>
-      </h2>
+    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--<%= @seo_search_label == :show_label ? 'true' : 'false' %> frame-body-wrapper">
+      <% if @seo_search_label == :show_label %>
+        <h2 class="seovideo__h2">
+          See more video that matches your search from <br/>
+          YouTube, Vimeo, and Dailymotion:
+        </h2>
+      <% end %>
 
       <div class="media_module seovideo__banner clearfix">
         <form action="/search" class="js-search-form form_module form_module--search">
@@ -57,7 +56,7 @@
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
-    <article role="main" class="seovideo <%= "seovideo--light" if @video_related_videos.empty? %>">
+    <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
         <h1 class="seovideo__h2">
           <%= @video_title %>
@@ -106,7 +105,7 @@
         <aside class="seovideo__aside clearfix">
           <div class="seovideo__aside_lining">
             <h3 class="seovideo__h3">
-              Related Video
+              Related Videos
             </h3>
 
             <ul class="seovideo__list seovideo__list--aside clearfix">
@@ -140,8 +139,6 @@
         </aside><!-- eo .seovideo__aside -->
       <% end %>
 
-			<div id="disqus_thread" class="frame-body-wrapper"></div>
-
       <div class="seovideo__messages clearfix">
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
@@ -158,7 +155,7 @@
 
           <% if @messages[:facebook].length > 0 %>
             <h3 class="seovideo__h3">
-            Facebook Shares
+              Reactions on Facebook
             </h3>
 
             <ul class="seovideo__list">
@@ -170,7 +167,7 @@
 
           <% if @messages[:twitter].length > 0 %>
             <h3 class="seovideo__h3">
-            Twitter Tweets
+              Reactions on Twitter
             </h3>
 
             <ul class="seovideo__list">
@@ -182,7 +179,7 @@
 
           <% if @messages[:tumblr].length > 0 %>
             <h3 class="seovideo__h3">
-            Tumblr Posts
+              Reactions on Tumblr
             </h3>
 
             <ul class="seovideo__list">
@@ -210,20 +207,6 @@
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
-
-  //DISQUS
-	var disqus_developer = ("<%= Rails.env %>" == "production") ? 0 : 1; // developer mode is on
-	var disqus_identifier = "<%= @video_provider_name %>:<%= @video_provider_id %>";
-	var disqus_title = "Shelby.tv | <%= @video_title %>";
-
-	var disqus_shortname = 'shelbytv';
-
-	(function() {
-	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	    dsq.src = 'http://'+disqus_shortname+'.disqus.com/embed.js';
-			dsq.id = 'disqus-script';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
 
   //search
   $(document).ready(function(){
