@@ -33,6 +33,9 @@
 
       // if (Browser.isMobile()) {
       var flashVersion = swfobject.getFlashPlayerVersion();
+
+      console.log(this.model.get('preferences'));
+
       if ( flashVersion.major == 0 ) {
         this._filter = this.options.mobileVideoFilter;
 
@@ -49,6 +52,7 @@
             window.open('http://get.adobe.com/flashplayer/','_blank');
           } else {
             console.log('dismiss this alert forever');
+            // cookies.set('no_flash',true,expiredays);
           }
         });
       }
