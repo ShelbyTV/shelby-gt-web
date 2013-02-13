@@ -47,17 +47,12 @@
 
           <% if (!fauxUserOrigin) { %>
             <div class="xuser-data">
-              shared by <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
+              <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
             </div>
           <% } else { %>
             <p class="xuser-data xuser-message--faux">
               <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-              <span class="see-all">Shared by </span><%= creatorNickname %> on <span class="capitalize"><%= fauxUserOrigin %></span>
-
-              <% if (clickableCreator) { %>
-                <br />
-                <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">Click here to see all…</a>
-              <% } %>
+              <%= creatorNickname %> via <span class="capitalize"><%= fauxUserOrigin %></span>
             </p>
           <% } %>
         </a>

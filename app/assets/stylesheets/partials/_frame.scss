@@ -183,6 +183,14 @@ $active-list-item: $shelby-blue;
 //  faux users have special frames
 //------------------------------------------------------------------------------
 .frame-footer {
+  .media_body {
+    min-height: 3.3em;
+  }
+
+  .xuser-message--faux {
+    margin-top: 0.7em;
+  }
+
   .social-icon {
     float: right;
     font-size: 1.4em;

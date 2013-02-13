@@ -34,15 +34,17 @@
 */
 
 .social-icon {
+  opacity: .5;
+
   &.icon-social_twitter {
-    color: $twitter-blue;
+    // color: $twitter-blue;
   }
 
   &.icon-social_tumblr {
-    color: $tumblr-blue;
+    // color: $tumblr-blue;
   }
 
   &.icon-social_facebook {
-    color: $facebook-blue;
+    // color: $facebook-blue;
   }
 }
