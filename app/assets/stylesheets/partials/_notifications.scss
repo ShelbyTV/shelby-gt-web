@@ -73,11 +73,6 @@
 }
 
 .notification__block {
-  font-size: 1.1em;
-  font-family: $font-family-display;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0 0 1em;
 }
 
 //------------------------------------------------------------------------------
@@ -85,7 +80,13 @@
 //------------------------------------------------------------------------------
 
 .notification__head {
-
+  p {
+    font-size: 1.1em;
+    font-family: $font-family-display;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 1em;
+  }
 }
 
 

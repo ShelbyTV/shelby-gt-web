@@ -56,7 +56,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
           self.model.set({avatar_updated_at:Date.now(), has_shelby_avatar:true});
           shelby.track( 'avatar_upload_success', { userName: shelby.models.user.get('nickname') });
         } else {
-          shelby.alert({message: "Sorry, that upload failed."});
+          shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
           shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
@@ -64,7 +64,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        shelby.alert({message: "Sorry, that upload failed."});
+        shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
         shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {

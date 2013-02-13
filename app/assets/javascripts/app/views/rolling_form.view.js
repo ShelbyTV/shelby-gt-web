@@ -83,7 +83,7 @@
       validates = true;
 
       if( this.$("#js-rolling-message").val().length < 1 ){
-        shelby.alert({message: "Please enter a comment"});
+        shelby.alert({message: "<p>Please enter a comment</p>"});
         this.$('#js-rolling-message').addClass('error');
         validates = false;
       }
@@ -154,7 +154,7 @@
       this.parent.done();
       //N.B. This link is picked up by NotificationOverlayView for routing
       shelby.alert({
-        message: 'Video successfully rolled!',
+        message: '<p>Video successfully rolled!</p>',
         button_secondary: {
           title: 'Go to Roll'
           }
@@ -189,8 +189,8 @@
           }
         },
         error: function(a,b,c){
-          if (b.status == 404) { shelby.alert({message: "404 error"}); }
-          else { shelby.alert({message: "sorry, something went wrong."}); }
+          if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
+          else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
         }
       });
     }

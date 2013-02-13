@@ -30,9 +30,29 @@
         new libs.shelbyGT.FrameGroupsCollection([], {
           collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
         });
-      if (Browser.isMobile()) {
+
+      // if (Browser.isMobile()) {
+      var flashVersion = swfobject.getFlashPlayerVersion();
+      if ( flashVersion.major == 0 ) {
         this._filter = this.options.mobileVideoFilter;
+
+        shelby.dialog({
+          message: SHELBYJST['alert_no-flash'](),
+          button_primary : {
+            title: 'Install Flash Now'
+          },
+          button_secondary : {
+            title: 'No thanks'
+          }
+        },function(returnVal){
+          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
+            window.open('http://get.adobe.com/flashplayer/','_blank');
+          } else {
+            console.log('dismiss this alert forever');
+          }
+        });
       }
+
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
     },
