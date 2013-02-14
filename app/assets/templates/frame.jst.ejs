@@ -112,15 +112,13 @@
                 <% } %>
               </p>
 
-              <p class="xuser-message">
-                <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-                  <% var comment = messages.models[0].get('text') %>
-                  <% if (comment.length > 256) { %>
-                    <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
-                    <a class="js-toggle-comment" href="#">more…</a>
-                  <% } else { %>
-                    <%= libs.utils.String.linkifySafeWithClickTracking(comment, {gaAction: 'Click on link in comment'}) %>
-                  <% } %>
+              <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
+              <% var comment = hasComment && messages.models[0].get('text') %>
+              <% var commentOverflow = comment && comment.length > 265 %>
+
+              <p class="xuser-message<%= commentOverflow ? ' line-clamp' : '' %>">
+                <% if(hasComment) { %>
+                  <%= libs.utils.String.linkifySafeWithClickTracking(comment, {gaAction: 'Click on link in comment'}) %>
                 <% } %>
               </p>
             <% } else { %>
