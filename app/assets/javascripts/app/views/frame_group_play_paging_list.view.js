@@ -33,28 +33,8 @@
 
       // if (Browser.isMobile()) {
       var flashVersion = swfobject.getFlashPlayerVersion();
-
-      console.log(this.model.get('preferences'));
-
       if ( flashVersion.major == 0 ) {
         this._filter = this.options.mobileVideoFilter;
-
-        shelby.dialog({
-          message: SHELBYJST['alert_no-flash'](),
-          button_primary : {
-            title: 'Install Flash Now'
-          },
-          button_secondary : {
-            title: 'No thanks'
-          }
-        },function(returnVal){
-          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
-            window.open('http://get.adobe.com/flashplayer/','_blank');
-          } else {
-            console.log('dismiss this alert forever');
-            // cookies.set('no_flash',true,expiredays);
-          }
-        });
       }
 
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
