@@ -41,6 +41,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/invite/:invite_id' => "home#invite"
 
   # HOME
+  get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
   get '/explore' => "home#explore"
   get '/search' => "home#search"
@@ -49,7 +50,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/experience' => "home#experience"
 
   get '/signout' => "home#signout", :as => :signout
-  
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
 
