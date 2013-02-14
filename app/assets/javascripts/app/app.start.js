@@ -47,30 +47,4 @@ $(document).ready(function(){
   if(!Browser.isMobile()){
     shelby.userInactivity.init();
   }
-
-  var flashVersion = swfobject.getFlashPlayerVersion();
-  console.log('app.start',flashVersion);
-  if ( flashVersion.major == 0 ) {
-  console.log('flash is non-existent');
-    if(cookies.get('flash_declined') != "true") {
-  console.log('flash_declined is not set to true');
-      shelby.dialog({
-        message: SHELBYJST['alert_no-flash'](),
-        button_primary : {
-          title: 'Install Flash Now'
-        },
-        button_secondary : {
-          title: 'No thanks'
-        }
-      },function(returnVal){
-        if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
-          window.open('http://get.adobe.com/flashplayer/','_blank');
-        } else {
-          console.log('dismiss this alert "forever"');
-          cookies.set('flash_declined','true',90);
-        }
-      });
-    }
-  }
-
 });
