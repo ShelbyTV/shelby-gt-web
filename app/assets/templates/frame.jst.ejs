@@ -119,7 +119,7 @@
                     <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
                     <a class="js-toggle-comment" href="#">more…</a>
                   <% } else { %>
-                    <%- comment %>
+                    <%= libs.utils.String.linkifySafeWithClickTracking(comment, {gaAction: 'Click on link in comment'}) %>
                   <% } %>
                 <% } %>
               </p>
