@@ -15,7 +15,8 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var fauxUserOrigin = (creator && creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
+<% var isFauxUser = creator && creator.get('faux') !== 1 %>
+<% var fauxUserOrigin = isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <!-- collapsed videocard -->
 
 <article id="<%= videoId %>" class="animate_module frame frame-list-item frame-collapsed<%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
