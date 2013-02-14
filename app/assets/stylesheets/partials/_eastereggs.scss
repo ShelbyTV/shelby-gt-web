@@ -1,0 +1,13 @@
+.shelby_logo {
+  .icon-mark {
+    background-image:url(/images/eastereggs/tines.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 21px;
+    width: 17px;
+
+    &:before {
+      content: "";
+    }
+  }
+}
