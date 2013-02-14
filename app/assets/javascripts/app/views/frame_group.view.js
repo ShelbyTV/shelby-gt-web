@@ -324,12 +324,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleComment : function(e){
-    e.preventDefault();
-
-    $(e.currentTarget).text(function(e,i){
-      return (i == 'more…') ? 'Hide' : 'more…';
-    });
-    this.$('.xuser-message-remainder').toggle();
+    $(e.currentTarget).toggleClass('line-clamp--open');
   },
 
   requestFBPostUI : function(e){

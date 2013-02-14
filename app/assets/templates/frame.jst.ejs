@@ -116,7 +116,7 @@
               <% var comment = hasComment && messages.models[0].get('text') %>
               <% var commentOverflow = comment && comment.length > 265 %>
 
-              <p class="xuser-message<%= commentOverflow ? ' line-clamp' : '' %>">
+              <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
                 <% if(hasComment) { %>
                   <%= libs.utils.String.linkifySafeWithClickTracking(comment, {gaAction: 'Click on link in comment'}) %>
                 <% } %>
