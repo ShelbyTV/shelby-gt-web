@@ -74,6 +74,16 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles team page
+  #
+  # GET /team
+  #
+  def team
+    @team = :true
+    render '/home/landing'
+  end
+
+  ##
   # Handles invite landing page
   #
   # GET /invite/:invite_id
