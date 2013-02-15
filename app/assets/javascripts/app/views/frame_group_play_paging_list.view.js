@@ -30,9 +30,13 @@
         new libs.shelbyGT.FrameGroupsCollection([], {
           collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
         });
-      if (Browser.isMobile()) {
+
+      // if (Browser.isMobile()) {
+      var flashVersion = swfobject.getFlashPlayerVersion();
+      if ( flashVersion.major == 0 ) {
         this._filter = this.options.mobileVideoFilter;
       }
+
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
       PagingListView.prototype.initialize.call(this);
     },

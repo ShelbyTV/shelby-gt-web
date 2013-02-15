@@ -37,6 +37,25 @@ _(shelby).extend({
   //   - callback receives notificationState.result
   //     button_primary == 1
   //     button_secondary == 0
+
+
+  //  EXAMPLE OPTS:
+  // notificationOpts = {
+  //   message: "In order to provide a great experience we need you to re-authenticate with facebook. Don't worry, you'll be re-directed back to Shelby. Yay!",
+  //   button_primary: {
+  //     title: 'Re-authenticate Facebook'
+  //   },
+  //   button_secondary: {
+  //     title: 'No thanks'
+  //   }
+  // }
+
+  //  EXAMPLE CALLBACK:
+  //  function(returnVal){
+  //    if (returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
+  //       self._doSomething();
+  //    }
+  //  }
   dialog: function(notificationOpts, callback){
     if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
 

@@ -77,7 +77,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
 
           shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         } else {
-          shelby.alert({message: "Sorry, that upload failed."});
+          shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
           shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
@@ -85,7 +85,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        shelby.alert({message: "Sorry, that upload failed."});
+        shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
         shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
