@@ -184,6 +184,7 @@ class HomeController < ApplicationController
           when "yvynyl.tv" then "4fa2908088ba6b61770010af"
           when "nextlevelguy.tv" then "50d4f19ab415cc3807015105"    # requested via NF.tv, added 01/07/13
           when "missouriquiltco.tv" then "51190f1eb415cc77f308eb22" # requested via Al Doan, added 02/10/13
+          when "mobilona.tv" then "511a6296b415cc12d0057dcf"        # requested by Julie, added 2/14/13 -ds
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else
