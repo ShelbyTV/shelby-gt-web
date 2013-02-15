@@ -324,12 +324,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleComment : function(e){
-    e.preventDefault();
-
-    $(e.currentTarget).text(function(e,i){
-      return (i == 'more…') ? 'Hide' : 'more…';
-    });
-    this.$('.xuser-message-remainder').toggle();
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
   },
 
   requestFBPostUI : function(e){

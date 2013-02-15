@@ -82,7 +82,10 @@
 
       <% if((nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) || nextFrame.get('isSearchResultFrame')) { %>
         <p class="xuser-message">
-          <%= nextMessages.models[0].escape('text') %>
+          <%=
+            libs.utils.String.linkifySafeWithClickTracking(nextMessages.models[0].get('text'),
+              {gaCategory: 'Persistent Video Info', gaAction: 'Click on link in comment'})
+          %>
         </p>
       <% } %>
     </div><!-- eo div hidden -->
@@ -118,7 +121,10 @@
 
           <% if((currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame')) { %>
             <p>
-              <%= currentMessages.models[0].escape('text') %>
+              <%=
+                libs.utils.String.linkifySafeWithClickTracking(currentMessages.models[0].get('text'),
+                  {gaCategory: 'Persistent Video Info', gaAction: 'Click on link in comment'})
+              %>
             </p>
           <% } %>
         </div><!-- eo .media_body -->
