@@ -446,8 +446,17 @@ $landing-page-footer-font-color: #EFEFEF;
   .shelf__lining {
     margin-bottom: 1em;
   }
+    .shelf__lining--banner {
+      background-image: url('/images/team/MAIN.jpg');
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center center;
+      height: 360px;
+    }
 
   //----- Elements -----------------------------------------
+
   .shelf__h2 {
   }
 
@@ -459,11 +468,42 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   .frame--shelf {
+    .xuser-data {
+      font-size: 1em;
+      font-weight: bold;
+      font-family: $font-family;
+      margin-bottom: 1em;
+    }
+
     .xuser-message {
       min-height: 4em;
     }
+
+    .frame-subline {
+      margin-bottom: 0;
+    }
+
+    a {
+      &,
+      &:visited {
+        text-decoration: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .left {
+      float: left;
+    }
   }
 
+  .icon-email,
+  .icon-social_twitter {
+    display: inline-block;
+    width: 1.5em;
+  }
 }
 
 //------------------------------------------------------------------------------
