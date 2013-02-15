@@ -8,7 +8,7 @@ libs.shelbyGT.Ajax = {
         document.location = "/signout?error=401";
         break;
       case 403:
-        shelby.alert({message: "You are not authorized to do that"});
+        shelby.alert({message: "<p>You are not authorized to do that</p>"});
         break;
     }
   },
