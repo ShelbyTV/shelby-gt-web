@@ -235,7 +235,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     shelby.dialog(
       {
-        message: 'Are you sure you want to <strong>remove</strong> this video?',
+        message: '<p>Are you sure you want to <strong>remove</strong> this video?</p>',
         button_primary : {
           title: 'Remove Video'
         },

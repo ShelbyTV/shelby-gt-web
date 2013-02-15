@@ -141,13 +141,13 @@ libs.shelbyGT.ShareView = Support.CompositeView.extend({
       //mark invalid
       if (!emailValid) {
         $emailAddressesInput.addClass('error');
-        shelby.alert({message: "Please enter comma-seperated email addresses."});
+        shelby.alert({message: "<p>Please enter comma-seperated email addresses.</p>"});
         return false;
       }
     }
 
     if(this._components.networkToggles && this.model.get('destination').length == 0){
-      shelby.alert({message: "Please choose a network to share on."});
+      shelby.alert({message: "<p>Please choose a network to share on.</p>"});
       return false;
     }
 

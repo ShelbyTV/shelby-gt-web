@@ -347,7 +347,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         isIsolatedRoll : false
       });
     } else {
-      shelby.alert({message: "Could not roll view to your Queue"});
+      shelby.alert({message: "<p>Could not roll view to your Queue</p>"});
       this.navigate('', {trigger:true, replace:true});
     }
   },
@@ -463,7 +463,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       } else {
         // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-        shelby.alert({message: "Sorry, the video you were looking for doesn't exist in this roll."});
+        shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist in this roll.</p>"});
         this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
     } else {
@@ -490,7 +490,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         shelby.models.guide.set('activeFrameModel', entry.get('frame'));
       } else {
         // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-        shelby.alert({message: "Sorry, the entry you were looking for doesn't exist in your stream."});
+        shelby.alert({message: "<p>Sorry, the entry you were looking for doesn't exist in your stream.</p>"});
         this.navigate("/", {trigger:true, replace:true});
       }
     }
