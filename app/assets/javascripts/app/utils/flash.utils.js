@@ -1,7 +1,7 @@
 libs.utils.flash = {
   detectFlash : function() {
     var flashVersion = swfobject.getFlashPlayerVersion();
-    if ( flashVersion.major == 0 ) {
+    if ( flashVersion.major == 0 && !Browser.isIpad() ) {
       if(cookies.get('flash_declined') != "true") {
         shelby.dialog({
           message: SHELBYJST['alert_no-flash'](),
