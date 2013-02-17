@@ -95,7 +95,7 @@
       }
       // just skip on generic player errors
       if( status === libs.shelbyGT.PlaybackStatus.error.generic ){
-        shelby.alert({message: "Skipped video due to playback problems."});
+        shelby.alert({message: "<p>Skipped video due to playback problems.</p>"});
         Backbone.Events.trigger('playback:next');
       }
     },
