@@ -10,6 +10,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     "click .js-user-cancel"                     : "_cancel",
     "click .js-tools"                           : "_showTools",
     "change #preferences-email-updates"         : "_toggleEmailUpdates",
+    "change #preferences-email-likes"           : "_toggleLikeEmails",
     "change #preferences-email-comments"        : "_toggleCommentEmails",
     "change #preferences-email-rerolls"         : "_toggleRerollEmails",
     "change #preferences-email-joinrolls"       : "_toggleJoinrollEmails",
@@ -106,7 +107,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     // to save the password to the backend (using HTTPS)
     var userClone = new libs.shelbyGT.UserModel(info);
     userClone.useSecureUrl = true;
-        
+
     userClone.save(null, {
       success: function(model, resp){
         self._updateSecurityResponse("password updated!");
@@ -151,6 +152,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _toggleEmailUpdates: function(){
     this._toggleCheckboxSelection('email_updates', '#preferences-email-updates');
+  },
+
+  _toggleLikeEmails: function(){
+    this._toggleCheckboxSelection('like_notifications', '#preferences-email-likes');
   },
 
   _toggleCommentEmails: function(){
