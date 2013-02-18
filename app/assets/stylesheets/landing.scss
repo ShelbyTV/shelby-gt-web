@@ -60,5 +60,16 @@
 //------------------------------------------------------------------------------
 @import "partials/facebook-genius";
 
+//------------------------------------------------------------------------------
+//  Overrides
+//------------------------------------------------------------------------------
+@import "partials/lt-ie9";
+
+@import "partials/media-queries";
+@import "partials/eastereggs";
+
+//------------------------------------------------------------------------------
+//  non-semantic boilerplater helper classes
+//------------------------------------------------------------------------------
 @import "boilerplate/h5bp-utilities";
 @import "compass/typography/links/hover-link";
