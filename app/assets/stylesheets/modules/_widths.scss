@@ -4,4 +4,45 @@
     https://raw.github.com/csswizardry/inuit.css/master/inuit.css/generic/_widths.scss
 */
 //------------------------------------------------------------------------------
-.one-third         { width:33.333%; }
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Sizes in human readable format. These are used in conjunction with other
+ * objects and abstractions found in inuit.css, most commonly the grid system
+ * and faux flexbox.
+ *
+ * We have a mixin to generate our widths and their breakpoint-specific
+ * variations.
+ */
+    .one-whole         { width:100%; }
+
+
+    /**
+    * Halves
+    */
+    .two-quarters,
+    .one-half          { width:50%; }
+
+
+    /**
+    * Thirds
+    */
+    .one-third         { width:33.333%; }
+    .two-thirds        { width:66.666%; }
+
+
+    /**
+    * Quarters
+    */
+    .one-quarter       { width:25%; }
+    .three-quarters    { width:75%; }
+
+
+    /**
+    * Fifths
+    */
+    .one-fifth         { width:20%; }
+    .two-fifths        { width:40%; }
+    .three-fifths      { width:60%; }
+    .four-fifths       { width:80%; }
