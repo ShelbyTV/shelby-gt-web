@@ -136,7 +136,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _queueFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like();
+      frame.like({likeOrigin: 'Persistent Video Info'});
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
       $target.find('i').addClass('icon-heart--red');

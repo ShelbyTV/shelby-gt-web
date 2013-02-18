@@ -47,7 +47,7 @@
 
       <button class="js-queue-frame <%= nextVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
-              data-ga_action="Click queue on next frame"
+              data-ga_action="Click like on next frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
         <i class="icon-videocard_queue js-command-icon">
         </i>
@@ -152,7 +152,7 @@
         <li class="persistent_video_info__item clearfix">
           <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="Persistent Video Info"
-              data-ga_action="Click queue on current frame"
+              data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
             </i>
