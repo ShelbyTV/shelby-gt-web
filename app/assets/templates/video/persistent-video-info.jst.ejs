@@ -14,6 +14,9 @@
 <% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 <% var nextVideoIsInQueue = queuedVideosModel.videoIsInQueue(nextVideo) %>
 
+<% var isFauxUser = currentCreator && currentCreator.get('faux') !== 1 %>
+<% var fauxUserOrigin = isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
+
 <div class="persistent_video_info animate_module">
   <div class="media_image--rev persistent_video_info__next-frame">
     <a class="persistent_video_info__anchor js-track-event js-next-video"
@@ -33,62 +36,6 @@
         <%= nextVideo.get('title') %>
       </h2>
     </a>
-    <div hidden>
-      <% if (!user.isAnonymous()) { %>
-        <button class="button_primer button_blue js-roll-frame js-track-event"
-                data-ga_category="Persistent Video Info"
-                data-ga_action="Click roll on next frame"
-                data-ga_label="<%= shelby.models.user.get('nickname') %>">
-          <i class="icon-videocard_roll">
-          </i>
-            Roll…
-        </button>
-      <% } %>
-
-      <button class="js-queue-frame <%= nextVideoIsInQueue ? ' queued' : '' %> js-track-event"
-              data-ga_category="Persistent Video Info"
-              data-ga_action="Click like on next frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
-        <i class="icon-videocard_queue js-command-icon">
-        </i>
-
-        <span class="label">
-          <%= (nextVideoIsInQueue) ? 'Liked' : 'Like' %>
-        </span>
-      </button>
-
-      <button class="button_primer button_default command-share js-share-frame js-track-event"
-              data-ga_category="Persistent Video Info"
-              data-ga_action="Click share on next frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
-        <i class="icon-email">
-        </i>
-          Email…
-      </button>
-
-      <% if (!nextFrame.get('isSearchResultFrame')) { %>
-        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= nextCreatorAvatar %>);" role="img">
-          <img src="<%= nextCreatorAvatar %>" class="visuallyhidden" title="<%= nextCreatorNickname %>" alt="<%= nextCreatorNickname %>">
-        </span>
-      <% } else { %>
-        <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
-      <% } %>
-
-      <% if (!nextFrame.get('isSearchResultFrame')) { %>
-        shared by <%= nextCreatorNickname %>
-      <% } else { %>
-        found on <strong><%= _(nextVideo.get('provider_name')).capitalize() %></strong>
-      <% } %>
-
-      <% if((nextMessages.models.length > 0 && nextCreator && nextCreator.get('id') == nextMessages.models[0].get('user_id')) || nextFrame.get('isSearchResultFrame')) { %>
-        <p class="xuser-message">
-          <%=
-            libs.utils.String.linkifySafeWithClickTracking(nextMessages.models[0].get('text'),
-              {gaCategory: 'Persistent Video Info', gaAction: 'Click on link in comment'})
-          %>
-        </p>
-      <% } %>
-    </div><!-- eo div hidden -->
   </div><!-- eo .persistent_video_info__next-frame -->
 
   <div class="media_body persistent_video_info__current-frame">
@@ -113,9 +60,13 @@
         <div class="media_body">
           <h3 class="xuser-data persistent_video_info__h4--light">
             <% if (!currentFrame.get('isSearchResultFrame')) { %>
-              shared by <strong><%= currentCreatorNickname %></strong>
+              <strong><%= currentCreatorNickname %></strong>
             <% } else { %>
-              found on <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+              <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+            <% } %>
+
+            <% if (fauxUserOrigin) { %>
+              via <span class="capitalize"><%= fauxUserOrigin %></span>
             <% } %>
           </h3>
 
