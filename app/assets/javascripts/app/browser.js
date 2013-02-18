@@ -15,6 +15,11 @@ var Browser = {
     else {return false;}
   },
 
+  isFirefox: function(){
+    if (BrowserDetect.browser === "Firefox"){ return true; }
+    else {return false;}
+  },
+
   isIos: function(){
     if (navigator.platform.match(/^(iPad|iPod|iPhone)$/)){ return true; }
     else{ return false; }

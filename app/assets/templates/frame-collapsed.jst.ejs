@@ -17,9 +17,11 @@
 
 <% var isFauxUser = creator && creator.get('faux') !== 1 %>
 <% var fauxUserOrigin = isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+
+<% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
 
-<article id="<%= videoId %>" class="animate_module frame frame-list-item frame-collapsed<%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item frame-collapsed<%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
 
   <div class="frame-body-wrapper clearfix js-frame-activate">
     <div class="frame-body">

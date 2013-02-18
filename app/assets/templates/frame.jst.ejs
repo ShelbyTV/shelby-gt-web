@@ -18,9 +18,11 @@
 
 <% var isFauxUser = creator && creator.get('faux') !== 1 %>
 <% var fauxUserOrigin = isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+
+<% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
 
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
   <a href="#" onclick="return false;" class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= videoTitle %>">
      <%= videoTitle %>
@@ -75,7 +77,7 @@
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
         <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
       </a>
-      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>
 
       </div><!-- eo .frame-body -->
 
