@@ -93,7 +93,12 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   --saveToWatchLater currently deprecated as its functionality is subsumed under the next method, like()--
   */
 
-  like : function() {
+  like : function(options) {
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      likeOrigin : 'Frame'
+    }).value();
+
     if (this.get('isSearchResultFrame')) {
       // in the current state of things it doesn't make any sense for a logged out user to "like" a search result
       if (!shelby.models.user.isAnonymous()) {
@@ -120,8 +125,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       }
       // different tracking for like action on search frames
       shelby.track( 'liked on search', { frameId: this.id, userName: shelby.models.user.get('nickname') });
-    }
-    else {
+    } else {
       this.save(null, {
         global : false, // we don't care if the ajax call fails
         url : shelby.config.apiRoot + '/frame/' + this.id + '/like',
@@ -132,7 +136,15 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
           shelby.models.queuedVideos.get('queued_videos').add(frameModel.get('video'));
         }
       });
-      shelby.track( 'liked', { frameId: this.id, userName: shelby.models.user.get('nickname') });
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : options.likeOrigin,
+        gaAction : 'liked',
+        gaLabel : shelby.models.user.get('nickname'),
+        kmqProperties : {
+          frame : this.id
+        }
+      });
     }
   },
 

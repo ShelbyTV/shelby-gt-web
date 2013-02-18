@@ -153,9 +153,10 @@ _(shelby).extend({
         $.noop();
       }
     }
-    if (_(options.providers).contains('kmq') && options.kmqName) {
+    var kmqName = options.kmqName || options.gaAction;
+    if (_(options.providers).contains('kmq') && kmqName) {
       try {
-        _kmq.push(['record', options.kmqName, _({}).extend(options.kmqProperties)]);
+        _kmq.push(['record', kmqName, _({}).extend(options.kmqProperties)]);
       } catch(e) {
         $.noop();
       }
