@@ -23,7 +23,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "likes"                                : "displaySaves",
     "saves"                                : "displaySaves",
     "stream"                               : "displayDashboard",
-    "team"                                 : "displayTeam",
     "tools"                                : "displayTools",
     ""                                     : "displayDashboard",
     "*url"                                 : "doNothing"
@@ -360,11 +359,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayHelp : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.help);
-  },
-
-  displayTeam : function(){
-    this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.team);
   },
 
   displayLegal : function(){

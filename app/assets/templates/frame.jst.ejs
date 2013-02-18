@@ -16,10 +16,13 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var fauxUserOrigin = (creator && creator.get('faux') !== 1) ? false : (frameHasRoll ? frame.get('roll').get('origin_network') : false) %>
+<% var isFauxUser = creator && creator.get('faux') !== 1 %>
+<% var fauxUserOrigin = isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+
+<% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
 
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
   <a href="#" onclick="return false;" class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= videoTitle %>">
      <%= videoTitle %>
@@ -74,7 +77,7 @@
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
         <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
       </a>
-      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>
 
       </div><!-- eo .frame-body -->
 
@@ -106,29 +109,29 @@
 
               <p class="xuser-data">
                 <% if (clickableCreator) { %>
-                  shared by <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+                  <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
                 <% } else { %>
-                  shared by <%= creatorNickname %>
+                  <%= creatorNickname %>
                 <% } %>
               </p>
 
-              <p class="xuser-message">
-                <% if(messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id')) { %>
-                  <% var comment = messages.models[0].get('text') %>
-                  <% if (comment.length > 256) { %>
-                    <%- comment.slice(0,256) %><span class="xuser-message-remainder" style="display: none"><%- comment.slice(256) %></span>
-                    <a class="js-toggle-comment" href="#">more…</a>
-                  <% } else { %>
-                    <%- comment %>
-                  <% } %>
+              <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
+              <% var comment = hasComment && messages.models[0].get('text') %>
+              <% var commentOverflow = comment && comment.length > 265 %>
+
+              <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
+                <% if(hasComment) { %>
+                  <%= libs.utils.String.linkifySafeWithClickTracking(comment, {gaAction: 'Click on link in comment'}) %>
                 <% } %>
               </p>
             <% } else { %>
                 <p class="xuser-data xuser-message--faux">
-                  <% if (clickableCreator) { %><a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;"><% } %>
+                  <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">
                     <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-                    <span class="see-all">Shared by </span><%= creatorNickname %> on <span class="capitalize"><%= fauxUserOrigin %></span>
-                  <% if (clickableCreator) { %><br />Click here to see all…</a><% } %>
+                    <% if (clickableCreator) { %><strong><%= creatorNickname %></strong>
+                    <% } else { %><%= creatorNickname %><% } %></a>
+
+                  via <span class="capitalize"><%= fauxUserOrigin %></span>
                 </p>
 
               <% if (!clickableCreator) { %>

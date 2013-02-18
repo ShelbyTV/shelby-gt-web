@@ -123,18 +123,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           //so, JST should only .get() object vals from models
 
       this.$el.html(this.template({
+        creator           : frame.get('creator'),
+        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
+        frameGroup        : this.model,
+        frame             : frame,
+        likers            : likersToDisplay,
+        messages          : messages,
         queuedVideosModel : shelby.models.queuedVideos,
-        frameGroup : this.model,
-        frame : frame,
-        video : frame.get('video'),
-        user : shelby.models.user,
-        creator : frame.get('creator'),
-        messages : messages,
-        likers : likersToDisplay,
-        options : this.options,
-        dupeFrames : this.model.getDuplicateFramesToDisplay(),
-        remainingLikes : remainingLikes,
-        totalLikes : likeInfo.totalLikes
+        options           : this.options,
+        remainingLikes    : remainingLikes,
+        totalLikes        : likeInfo.totalLikes,
+        user              : shelby.models.user,
+        video             : frame.get('video')
       }));
 
       if (likersToDisplay.length) {
@@ -324,12 +324,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleComment : function(e){
-    e.preventDefault();
-
-    $(e.currentTarget).text(function(e,i){
-      return (i == 'more…') ? 'Hide' : 'more…';
-    });
-    this.$('.xuser-message-remainder').toggle();
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
   },
 
   requestFBPostUI : function(e){
