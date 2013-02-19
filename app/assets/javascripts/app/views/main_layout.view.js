@@ -29,7 +29,7 @@ libs.shelbyGT.MainLayoutView = Support.CompositeView.extend({
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
-    this.$el.toggleClass('show-user-profile', displayState == libs.shelbyGT.DisplayState.userProfile);
+    this.$el.toggleClass('show-user-profile hide-pvi', displayState == libs.shelbyGT.DisplayState.dotTv);
   }
 
 });

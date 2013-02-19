@@ -20,12 +20,16 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   initialize: function(opts){
     this._userDesires = opts.userDesires;
+    this._currentFrame = this.options.guide.get('activeFrameModel');
+    this._playingFrameGroupCollection = this.options.playlistManager.get('playingFrameGroupCollection');
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
     shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
+
+    this.render();
   },
 
   _cleanup : function() {

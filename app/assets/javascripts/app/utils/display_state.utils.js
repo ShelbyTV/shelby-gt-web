@@ -12,6 +12,6 @@ libs.shelbyGT.DisplayState = {
   team : 'team',
   tools: 'tools',
   userPreferences : 'userPreferences',
-  userProfile : 'userProfile',
+  dotTv : 'dotTv',
   watchLaterRoll : 'watchLaterRoll'
 };

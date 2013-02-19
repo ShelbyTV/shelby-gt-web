@@ -80,10 +80,6 @@ group :production, :staging do
   gem 'raindrops'
 end
 
-group :test, :development do
-  gem 'thin'
-end
-
 #
 # ---------- Error Monitoring
 #
