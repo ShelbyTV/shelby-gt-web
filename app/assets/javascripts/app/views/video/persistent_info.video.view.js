@@ -5,6 +5,8 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
+  className : 'animate_module media_module persistent_video_info__wrapper js-inactivity-preemption',
+
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",

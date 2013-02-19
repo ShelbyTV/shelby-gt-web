@@ -13,12 +13,12 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
 
   initialize : function(){
     this.model.bind('change', this.render, this);
-    this.model.bind('change:id', this._getUserChannels, this);
+    this.model.bind('change:id nickname', this._getUserChannels, this);
   },
 
   _cleanup : function(){
    this.model.unbind('change', this.render, this);
-   this.model.unbind('change:id', this._getUserChannels, this);
+   this.model.unbind('change:id nickname', this._getUserChannels, this);
   },
 
   render : function(){
@@ -39,17 +39,14 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
     }
   },
 
-  _getUserChannels : function(user, id) {
-    if (id) {
+  _getUserChannels : function(user) {
+    if (!user.isNew()) {
       var previousRolls = this.options.userChannelsCollectionModel.get('rolls');
       if (previousRolls) {
         previousRolls.reset();
       }
       this.options.userChannelsCollectionModel.fetch({
-        url: shelby.config.apiRoot + '/roll/' + user.get('personal_roll_id') + '/associated',
-        success: function(rollsCollection, resp){
-          console.log('associated rolls fetched', arguments);
-        }
+        url: shelby.config.apiRoot + '/roll/' + user.get('personal_roll_id') + '/associated'
       });
     }
   }
