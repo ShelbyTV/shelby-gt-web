@@ -123,18 +123,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           //so, JST should only .get() object vals from models
 
       this.$el.html(this.template({
+        creator           : frame.get('creator'),
+        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
+        frameGroup        : this.model,
+        frame             : frame,
+        likers            : likersToDisplay,
+        messages          : messages,
         queuedVideosModel : shelby.models.queuedVideos,
-        frameGroup : this.model,
-        frame : frame,
-        video : frame.get('video'),
-        user : shelby.models.user,
-        creator : frame.get('creator'),
-        messages : messages,
-        likers : likersToDisplay,
-        options : this.options,
-        dupeFrames : this.model.getDuplicateFramesToDisplay(),
-        remainingLikes : remainingLikes,
-        totalLikes : likeInfo.totalLikes
+        options           : this.options,
+        remainingLikes    : remainingLikes,
+        totalLikes        : likeInfo.totalLikes,
+        user              : shelby.models.user,
+        video             : frame.get('video')
       }));
 
       if (likersToDisplay.length) {

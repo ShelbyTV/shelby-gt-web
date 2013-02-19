@@ -279,10 +279,10 @@
         return false;
       });
 
-      $('.js-search-form').on('submit', function(e){
+      $('.js-search-form, #js-nav-search-form').on('submit', function(e){
         e.preventDefault();
-        var searchQuery = $(e.currentTarget).find("#query").val();
-
+        var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
+        console.log(searchQuery);
         if (searchQuery) {
           if("<%= @is_mobile %>" !== "") {
             var params = {
