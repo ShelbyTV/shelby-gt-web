@@ -5,8 +5,10 @@
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
   var MeListView = libs.shelbyGT.MeListView;
+  var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
+  var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -27,6 +29,7 @@
     _currentRollView : null,
 
     _videoSearchView : null,
+    _multiplexedVideoView : null,
 
     initialize : function(){
       this.model.bind('change', this._onGuideModelChange, this);
@@ -107,19 +110,29 @@
           };
           break;
         case DisplayState.standardRoll :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : FreshPlayRollView,
+            model : this.model.get('currentRollModel'),
+            options : {
+              masterCollection : this._currentRollMasterCollection
+            },
+            spinner : true
+          };
+          break;
         case DisplayState.watchLaterRoll :
           this._currentRollMasterCollection = new Backbone.Collection();
           displayParams = {
             viewProto : RollView,
             model : this.model.get('currentRollModel'),
             options : {
-              collapseViewedFrameGroups : currentDisplayState != DisplayState.standardRoll,
+              collapseViewedFrameGroups : true,
               emptyIndicatorViewProto : currentDisplayState == DisplayState.watchLaterRoll ? QueueEmptyIndicatorView : null,
               fetchParams : {
                 include_children : true
               },
               firstFetchLimit : shelby.config.pageLoadSizes.roll,
-              limit : shelby.config.pageLoadSizes.roll + 1,
+              limit : shelby.config.pageLoadSizes.roll + 1, // +1 b/c fetch is inclusive of frame_id sent to skip
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true
@@ -164,6 +177,19 @@
             }
           };
           break;
+        case DisplayState.channel :
+          this._currentRollMasterCollection = new Backbone.Collection();
+          displayParams = {
+            viewProto : MultiplexedVideoView,
+            collection : shelby.collections.multiplexedVideoFrames,
+            options : {
+              collapseViewedFrameGroups : false,
+              doStaticRender : true,
+              masterCollection : this._currentRollMasterCollection,
+              multiplexedVideoModel : shelby.models.multiplexedVideo
+            }
+          };
+          break;
         case DisplayState.userPreferences :
         case DisplayState.tools :
           displayParams = {
@@ -198,6 +224,7 @@
       _(childViewOptions).extend(displayParams.options);
 
       this._listView = new displayParams.viewProto(childViewOptions);
+      shelby.models.playlistManager.set('preparedPlaylistCollection', this._listView._displayCollection);
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
@@ -223,6 +250,9 @@
           break;
         case DisplayState.search :
           this._videoSearchView = this._listView;
+          break;
+        case DisplayState.channel :
+          this._multiplexedVideoView = this._listView;
           break;
       }
 
@@ -289,6 +319,13 @@
               this.options.playlistManager.set({
                 playingFrameGroupCollection : this._videoSearchView.frameGroupCollection,
                 playingState : libs.shelbyGT.PlayingState.search,
+                playingRollId : null
+              });
+              break;
+            case DisplayState.channel :
+              this.options.playlistManager.set({
+                playingFrameGroupCollection : this._multiplexedVideoView.frameGroupCollection,
+                playingState : libs.shelbyGT.PlayingState.channel,
                 playingRollId : null
               });
               break;

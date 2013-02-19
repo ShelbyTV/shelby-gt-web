@@ -6,7 +6,7 @@
 	  margin-left:-($guide-width);
 	}
 
-  .videoplayer-tools__wrapper,
+  .video_controls__wrapper,
   .persistent_video_info__wrapper {
     // background-color: rgba(239, 239, 239, 0);
     // bottom: -100%;
@@ -23,14 +23,23 @@
     bottom: 0;
   }
 
-  .mini-videoplayer__wrapper,
-  #mini-video-progress {
+  .video_progress--mini__wrapper {
     bottom: 0;
   }
   .videoplayer-tools__wrapper {
    // bottom: 0;
   }
 
+  .video_controls__button--fullscreen,
+  .videoplayer-nav__btn--fullscreen {
+    .icon-player_fullscreen_enable {
+      display: none;
+    }
+
+    .icon-player_fullscreen_disable {
+      display: block;
+    }
+  }
   // .videoplayer-tools {
   //   max-width: 900px;
   // }

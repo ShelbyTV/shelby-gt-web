@@ -35,18 +35,22 @@
       <%
         var connected_network, disabled = '';
         if( _.include(authed_providers, network) ){
-          connected_network = 'onboarding-connected-network';
-          disabled = 'disabled';
+          connected_network = 'onboarding-connected-network ';
+          disabled = ' disabled ';
         }
       %>
 
       <li class="onboarding-network-item js-onboarding-network-item">
         <div class="onboarding-network-item-lining clearfix">
-          <button <%= disabled %> class="<%= connected_network %> js-oauth-popup onboarding-network-button onboarding-network-<%= network %>" type="button" popup-width="600" popup-height="700" location="http://api.shelby.tv/auth/<%= network %>">
+          <a class="<%= connected_network %><%= disabled %>js-authorize js-track-event onboarding-network-button onboarding-network-<%= network %>"
+            data-popup_width="1000"
+            data-popup_height="650"
+            href="http://api.shelby.tv/auth/<%= network %>"
+            data-ga_action="Connect with <%= network %>">
             <i class="ir onboarding-icon">
               <%= network %>
             </i>
-          </button>
+          </a>
           <p class="onboarding-network-description">
             <% if (connected_network) { %>
               We're already pulling in all the<br/>

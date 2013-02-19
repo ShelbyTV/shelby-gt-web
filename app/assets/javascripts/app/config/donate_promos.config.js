@@ -1,12 +1,4 @@
 shelby.config.donatePromos = [
-	{
-    rollId : '5096790db415cc05a2006f5c',
-    promoAvatarSrc : '/images/promo/redcross_avatar.jpg',
-    promoLinkSrc : 'http://www.redcross.org/charitable-donations',
-    promoMessage : 'Click to donate to the Red Cross.',
-    promoTitle : 'Support Sandy Victims',
-    promoThumbnailSrc : '/images/promo/redcross_thumbnail.jpg'
-  },
   {
     rollId : '4fe2425b9a725b08ec00ade8',
     promoAvatarSrc : '/images/promo/charitywater_avatar.jpg',

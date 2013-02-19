@@ -1,0 +1,92 @@
+<div class="shelf shelf--community clearfix">
+  <div class="shelf__lining">
+    <h3 class="shelf__h2">
+      Click to watch active members from our community
+    </h3>
+
+    <hr class="shelf__hr" />
+
+    <ul class="list shelf__list clearfix">
+      <%
+        frames = [
+          # {
+          #   'title'       => "Shortformblog",
+          #   'location'    => "shortformblog.shelby.tv",
+          #   'description' => "A collection of sometimes funny, sometimes educational, always entertaining video curated by the folks at ShortformBlog.",
+          #   'url'         => "http://shortformblog.shelby.tv",
+          #   'thumbnail'   => "/images/landing/shortformblog.jpg"
+          # },
+          {
+            'title'       => "Learn About Your World",
+            'location'    => "spinosa.shelby.tv",
+            'description' => "Ever wonder why Congress sucks or why things are cute? Watch this channel and learn about your world.",
+            'url'         => "http://spinosa.shelby.tv",
+            'thumbnail'   => "/images/landing/spinosa.jpg"
+          },
+          {
+            'title'       => "Chris",
+            'location'    => "chris.shelby.tv",
+            'description' => "Video from every corner of the internet. Discover the educational, funny or strange, this channel has it all.",
+            'url'         => "http://chris.shelby.tv",
+            'thumbnail'   => "/images/landing/chris.jpg",
+          },
+          {
+            'title'       => "FredWilson.tv",
+            'location'    => "fredwilson.tv",
+            'description' => "Entrepreneurship, startups, and venture capital through the lens of venture capitalist Fred Wilson.",
+            'url'         => "http://fredwilson.tv",
+            'thumbnail'   => "/images/landing/fredwilson.jpg"
+          },
+          {
+            'title'       => "NerdFitness",
+            'location'    => "nerdfitness.shelby.tv",
+            'description' => "Level up your life watching motivational, fitness, and gaming video and you'll feel like rescuing a princess!",
+            'url'         => "http://nerdfitness.tv",
+            'thumbnail'   => "/images/landing/nerdfitness.jpg"
+          },
+          {
+            'title'       => "Nature is Rad",
+            'location'    => "shelby.tv",
+            'description' => "Experience the marvels of nature, both large and small: dogs and cats living together, mass hysteria!",
+            'url'         => "http://shelby.tv/roll/4fdf3d27b415cc69340008f8/Nature-is-rad",
+            'thumbnail'   => "/images/landing/nature_2.jpg"
+          },
+          {
+            'title'       => "Reece",
+            'location'    => "reece.shelby.tv",
+            'description' => "An energenic entrepreneur with a taste for action video so intense it's gone plaid. Co-founder, Shelby.tv",
+            'url'         => "http://reece.shelby.tv",
+            'thumbnail'   => "/images/landing/reece.jpg"
+          }
+        ]
+      %>
+
+      <% frames.each do |frame| %>
+        <li class="shelf__item">
+          <article class="frame frame--shelf">
+            <a href="<%= frame["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" data-ga_label="<%= frame['title'] %>" title="Click to watch!">
+              <div class="frame-body-wrapper clearfix">
+                <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
+                  <img class="visuallyhidden" src="<%= frame["thumbnail"] %>" title="<%= frame["thumbnail"] %>" alt="<%= frame["thumbnail"] %> thumbnail">
+                </div><!-- eo .frame-thumbnail -->
+
+                <div class="media_module frame-footer clearfix">
+                  <div class="media_body">
+                    <h3 class="xuser-data">
+                      <span class="xuser-data-timestamp"><%= frame["location"] %></span>
+                      <%= frame["title"] %>
+                    </h3>
+
+                    <p class="xuser-message">
+                      <%= frame["description"] %>
+                    </p>
+                  </div><!-- eo .media_body -->
+                </div>
+              </div><!-- eo .frame-body-wrapper -->
+            </a>
+          </article>
+        </li>
+      <% end %>
+    </ul>
+  </div><!-- eo shelf__lining -->
+</div><!-- eo shelf -->

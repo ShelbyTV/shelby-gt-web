@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <%= stylesheetLink %>
+  </head>
+  
+  <body style="background: none;">
+
+    <div class="clearfix"
+         style="background-color: #EEEEEE;
+                border: 1px solid #ADADAD;
+                font-family: 'Ubuntu',Trebuchet MS,sans-serif;
+                font-size: 12px;
+                line-height: 1.5;
+                padding: 10px; 
+                width: 100%;">
+                
+      <div style="float: left; 
+                  font-weight: 400;">
+        More videos from <%= userNickname %> at
+        <a href="<%= rollLinkURL %>?<%= gaQueryParams %>" target="_<%= userNickname %>"><%= rollLinkText %></a>
+      </div>
+      <div style="float: right;
+                  color: #666;">
+        <a href="http://shelby.tv?<%= gaQueryParams %>" target="_shelby" style="text-decoration: none;">
+          <img src="//shelby.tv/favicon.png" style="width:17px;" />
+          Shelby
+        </a>
+      </div>
+    </div>
+  
+  </body>
+
+</html>

@@ -5,11 +5,13 @@
     </button>
   </li>
 
-  <li class="guide-nav-item">
-    <button class="nav-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      Queue 
-    </button>
-  </li>
+  <% if (!shelby.models.user.isAnonymous()) { %>
+    <li class="guide-nav-item">
+      <button class="nav-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+        Likes
+      </button>
+    </li>
+  <% } %>
 
   <li class="guide-nav-item">
     <button class="nav-button js-explore">
@@ -17,11 +19,20 @@
     </button>
   </li>
 
-  <li class="guide-nav-item js-guide-me">
-    <button class="nav-button js-me">
-      Me
-    </button>
-  </li>
+  <% if (!shelby.models.user.isAnonymous()) { %>
+    <li class="guide-nav-item js-guide-me">
+      <button class="nav-button js-me">
+        Me
+      </button>
+    </li>
+    
+    <li class="guide-nav-item js-guide-mail">
+      <button class="nav-button js-mail">
+        Mail
+      </button>
+    </li>
+  <% } %>
+  
 
   <li class="dropdown_module--no-hover dropdown_module--invite-user guide-nav-item js-guide-invite">
     <!-- Content filled in by InviteFormView -->
@@ -43,45 +54,45 @@
     </button>
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining settings-section-lining clearfix">
-        <div class="settings-user clearfix"> 
+        <div class="settings-user clearfix">
           <div class="settings-userhandle">
             <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
-  
+
             <a href="http://<%= user.get('personal_roll_subdomain') + '.shelby.tv' %>" target="_personalRoll">
               <%= user.get('personal_roll_subdomain') + '.shelby.tv' %>
             </a>
           </div>
-  
+
           <button class="guide-settings-button settings-preferences js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             Edit Preferences
           </button>
         </div><!-- eo settings-user-section -->
-  
+
         <ul class="settings-list clearfix">
           <li class="settings-item">
             <a class="settings-button" href="http://twitter.com/shelby" target="_blank">
               Twitter
             </a>
           </li>
-  
+
           <li class="settings-item">
             <a class="settings-button" href="http://facebook.com/shelbytv" target="_blank">
               Facebook
             </a>
           </li>
-  
+
           <li class="settings-item">
             <a class="settings-button" href="http://shelby.tv/blog" target="_blank">
               Blog
             </a>
           </li>
-  
+
           <li class="settings-item right">
             <button class="settings-button js-signout js-track-event" data-ga_category="Header" data-ga_action="Logout" data-ga_label="<%= shelby.models.user.get('nickname') %>">
               Sign Out
             </button>
           </li>
-  
+
           <li class="settings-item right">
             <button class="settings-button js-legal">
               Privacy

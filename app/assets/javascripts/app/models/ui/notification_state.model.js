@@ -1,13 +1,20 @@
 libs.shelbyGT.notificationStateModel = Backbone.Model.extend({
 
   defaults : {
-		'visible' : false,
-		'class' : 'default',
+    'class' : 'notification--dialog',
     'message' : null,
-		'response' : null,
-		'button_one' : {visible: true, text: "Ok", color: "blue"},
-		'button_two' : {visible: false, text: "Cancel", color: "grey"},
-		'number_of_buttons' : 'one'
+    'button_primary' : {
+      'title' : 'Dismiss'
+    },
+    'button_secondary' : {
+      'title' : null
+    },
+    'response' : null,
+    'timeout' : 9000,
+    'visible' : false
   }
-
 });
+
+
+libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary = 'primary';
+libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary = 'secondary';

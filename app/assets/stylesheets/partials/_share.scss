@@ -1,32 +1,44 @@
-@import "base";
+//------------------------------------------------------------------------------
+//  ABSTRACTS in _overlay.scss
 
-.frame-share{
-//	extended by .rolling-frame;
-	@include background(hsla(0,0,0,0.8));
+//------------------------------------------------------------------------------
+//  ROOT
 
-	height:100%;
-	top:40px;
+.guide-overlay--frame-sharing {
 }
 
-.frame-share-content{
-	height:inherit;
+//------------------------------------------------------------------------------
+//  HEAD
+
+.guide-overlay__head--frame-sharing {
+  //non-normal: .discussion__h1 is applied to the head.
+  //provides BG color and font color.
 }
 
-.frame-share-header{
-	//extended by .video-card-header;
+  .guide-overlay__title {
+    line-height: 2.7;
+    text-align: center;
+  }
+
+//------------------------------------------------------------------------------
+//  BODY
+
+.guide-overlay__body--frame-sharing {
+  padding:1.5em 8px;
+
+  .form_module {
+
+  }
+
+  .frame-sharing {
+
+  }
 }
+
+//  BELOW IS NON-NORMATIVE
 
 .frame-sharing__to-label {
   float: left;
   margin-right: 0.5em;
-}
-
-.frame-sharing__roll-selection {
-  max-width: 200px;
-}
-
-.frame-sharing__roll-selection,
-.frame-sharing__to-label,
-.frame-sharing__message-label {
-  margin-top: 1em;
+  margin-bottom: 0.5em;
 }

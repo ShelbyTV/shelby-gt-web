@@ -48,13 +48,11 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     */
     loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
+
+    /* TODO: needs documentation */
     pagingMethod : libs.shelbyGT.PagingMethod.key,
     pagingKeySortOrder : 1 // 1 for ascending, -1 for descending
   }),
-
-  template : function(obj){
-    return SHELBYJST['load-more'](obj);
-  },
 
   initialize : function(){
     var self = this;
@@ -63,7 +61,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
-    this.$el.append(this.template());
+
+    //See bottom of file for declaration and discussion
+    this.appendChild(new libs.shelbyGT.PagingLoadMoreView());
+
     libs.shelbyGT.SmartRefreshListView.prototype.initialize.call(this);
   },
 
@@ -200,6 +201,26 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     if (isInView && this._loadMoreEnabled) {
       this._loadMore();
     }
+  }
+
+});
+
+
+/* Use a proper view so our children array represents the true state of the DOM.
+ * If "load more" is just a shadow element (ie. has no backing view) our normal JS algorithms
+ * can't take it into account.
+ *
+ * ListView child view appending uses the "insert" option to append just before the
+ * load more element.  But that doesn't work when we are inserting with an index.
+ */
+libs.shelbyGT.PagingLoadMoreView = Support.CompositeView.extend({
+
+  template : function(obj){
+    return SHELBYJST['load-more'](obj);
+  },
+
+  render : function(){
+    this.$el.html( this.template() );
   }
 
 });

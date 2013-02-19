@@ -1,10 +1,11 @@
 libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
   routes : {
-    "static/*url" : "initStatic",
+    "static/*url"   : "initStatic",
     "embedded/*url" : "initEmbedded",
-    "chat/*url" : "initDiscussionRoll",
-    "*url" : "initDynamic"
+    "mail/*url"     : "initDiscussionRoll",
+    "mail"          : "initDiscussionRoll",
+    "*url"          : "initDynamic"
   },
 
   //---
@@ -50,6 +51,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
     shelby.models.userForProfile = new libs.shelbyGT.UserModel();
+    shelby.models.multiplexedVideo = new libs.shelbyGT.MultiplexedVideoModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -61,6 +63,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.userChannels = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
+    shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.MultiplexedVideoCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -97,6 +100,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
+          libs.utils.flash.detectFlash();
         }
       });
     }
@@ -112,6 +116,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
+      libs.utils.flash.detectFlash();
     }
   },
 

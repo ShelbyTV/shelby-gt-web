@@ -60,11 +60,9 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   _followOrUnfollowRoll : function() {
 
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
-    
+
     var self = this;
     var currentRollModel = this.model.get('currentRollModel');
-
-    console.log('followorunfollow',shelby.models.rollFollowings.containsRoll(currentRollModel));
 
     var $thisButton = this.$('.js-roll-add-leave-button');
     // immediately toggle the button - if the ajax fails, we'll update the next time we render

@@ -1,26 +1,25 @@
-<ul class="discussion__list discussion__list--attachment js-discussion-video-attachments">
-	<!-- DiscussionRollVideoAttachmentViews appended by DiscussionRollReplyView -->
-</ul>
-	
-<div class="media_module discussion__form-wrapper">
-  <div class="media_image media_image--rev">
-    <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
-  </div><!-- eo media_image -->
+<a href="#" class="js-search-video">
+  <div class="discussion__item discussion__item--insert-video frame-body-wrapper">
+    <p class="discussion__h5">
+      <%= (Modernizr.touch) ? 'Tap' : 'Click' %> here to insert video
+    </p>
+  </div><!-- eo discussion__item--insert-video -->
+</a>
 
-  <div class="media_body">
-    <form class="form_module discussion__form--discussion-reply clearfix">
-      <fieldset class="form_fieldset">				
-        <textarea rows="1" class="form_textarea js-message-text"></textarea>
+<div class="discussion__content discussion-reply frame-body-wrapper clearfix">
+  <form class="form_module discussion__form--discussion-reply clearfix">
+    <div class="media_module discussion__form-wrapper clearfix">
+      <div class="media_image">
+        <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
+      </div><!-- eo media_image -->
 
-        <button class="button_primer button_blue form_submit js-post-message">
-          Send
-        </button>
-      </fieldset>
-    </form>
-  </div><!-- eo media_body -->
-</div><!-- eo media_module -->
+      <button class="button_primer button_green form_submit js-post-message">Reply</button>
 
-<button class="button_primer button_gray-medium discussion__button--attachment js-add-video-attachment">
-	<span class="button_icon_center icon_videocard_roll icon">&nbsp;</span>
-  <span class="full-text">Add Video</span>
-</button>
+      <div class="media_body">
+        <fieldset class="form_fieldset">
+          <textarea rows="1" class="form_textarea js-message-text"></textarea>
+        </fieldset>
+      </div><!-- eo media_body -->
+    </div><!-- eo media_module -->
+  </form>
+</div><!-- eo discussion-reply -->

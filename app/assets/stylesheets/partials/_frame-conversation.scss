@@ -1,94 +1,88 @@
-@import "base";
+//------------------------------------------------------------------------------
+//  ABSTRACTS in _overlay.scss
 
-.conversation-head {
+//------------------------------------------------------------------------------
+//  ROOT
+
+.guide-overlay--conversation {
+}
+
+//------------------------------------------------------------------------------
+//  HEAD
+
+.guide-overlay__head--conversation {
+  .guide-overlay__title {
+
+  }
+
+  .guide-overlay__button {
+
+  }
+}
+
+//------------------------------------------------------------------------------
+//  BODY
+
+//  below: avoiding unnecessary nesting...
+
+.guide-overlay__body--conversation {
+  padding:1.5em 8px;
+
+  //submit button for comment submission
+  .form_submit {
+    float: right;
+    font-size: 1.1em;
+    margin-top: 16px;
+    position: absolute;
+    right: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  CONVERSATION
+
+.conversation {
 
 }
 
-.conversation-body {
-  padding: 1.5em 8px;
-}
-
-.conversation-wrapper {
-}
-
-.conversation,
-.frame-conversation {
-  @include no-bullets();
-
+.conversation__list {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.conversation-message {
+.conversation__item {
   border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
 }
 
-.conversation-message-reply {
-  background: {
-    color: transparent;
-    image: url($icon-comment-reply);
-    repeat: no-repeat;
-    position: left center;
-    size: 22%;
-  }
-
+.conversation__reply {
   text-decoration: none;
-  padding-left: .95em;
+
+  &:before {
+    // vertical-align: -0.1em;
+  }
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-.new-comment-input {
-  @include roundies(input);
-  
-  border: 1px solid adjust-lightness($inset, -10%);
-  font-size: 1em;
-  height: 50px;
-  left: 68px;
-  line-height: 1.4;
-  padding: 4px 5px;
-  width: 100%;
-
-  &:focus{
-    @include transition-property('border');
-    @include transition-duration(0.25s);
-    @include transition-timing-function(ease-in);
-    border-color: black;
-    color: black;
-    outline: none;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  submit button subclasses share_submit
-//------------------------------------------------------------------------------
-.new-comment-submit {
-  float: right;
-  font-size: 1.1em;
-  margin-top: 16px;
-  position: absolute;
-  right: 0;
-}
+//  TODO: GIVE THIS LOGIN ITS OWN PARTIAL.
 
 //------------------------------------------------------------------------------
 //  LOG IN or SIGN UP
 //------------------------------------------------------------------------------
 .signin_module {
-  margin-top: -66px;
-  z-index: 100;
-  position: relative;
-//  border: 1px solid red;
-  height: 66px;
   background-color: rgba(100, 177, 218, 0.6);
-//  font-weight: bold;
-//  text-shadow: 1px 1px 0px white;
   color: black;
-  padding-left: 80px;
+  height: 66px;
   font-size: 1.3em;
+  margin-top: -66px;
+  padding-left: 80px;
   padding-top: 1.5em;
+  position: relative;
+  z-index: 100;
 
   .signin_module__link {
     &,
@@ -106,7 +100,7 @@
 //  isolated roll
 //  (nest styles inside of .isolated-roll{})
 //------------------------------------------------------------------------------
-.isolated-roll { 
+.isolated-roll {
   #disqus_thread {
     margin-top: 15px;
   }

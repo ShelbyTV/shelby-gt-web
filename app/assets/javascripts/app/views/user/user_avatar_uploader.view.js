@@ -15,7 +15,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
   template : function(obj){
     return SHELBYJST['user/avatar-uploader'](obj);
   },
-  
+
 
   initialize : function(){
     this.model = shelby.models.user;
@@ -23,13 +23,13 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
 
   _cleanup : function(){
   },
-  
+
   render : function(){
     this.$el.html(this.template({ user: this.model }));
-    
+
     this._initUploader();
   },
-  
+
   /*****************
    * Image Uploading
    *
@@ -43,20 +43,20 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
       xhrFields: { withCredentials: true },
       dataType: 'json',
       type: 'put',
-      
+
       url: self.model.url(),
-      
+
       done: function (e, data) {
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        
+
         if(data.result.status == 200){
           //avatar_updated_at does come back with result, but this will work just as well
           self.model.set({avatar_updated_at:Date.now(), has_shelby_avatar:true});
           shelby.track( 'avatar_upload_success', { userName: shelby.models.user.get('nickname') });
         } else {
-          shelby.alert("Sorry, that upload failed.");
+          shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
           shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
@@ -64,7 +64,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        shelby.alert("Sorry, that upload failed.");
+        shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
         shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
@@ -78,19 +78,19 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
       }
     });
   },
-  
+
   _updateProgress: function(pct){
     if(this.options.progressEl){
       $(this.options.progressEl).css('width', pct+'%');
     }
   },
-  
+
   _clearProgress: function(){
     if(this.options.progressEl){
       $(this.options.progressEl).css('width', '0');
     }
   },
-  
+
   _showSpinner: function(){
     if( this.options.spinnerEl && !this._spinner ){
       this._spinner = new libs.shelbyGT.SpinnerView({
@@ -100,7 +100,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
       });
       this.renderChild(this._spinner);
     }
-    
+
     if(this._spinner) this._spinner.show();
   },
 
@@ -111,7 +111,7 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
   _showProgressMessage : function(){
     $(this.options.progressMessageEl).text('Uploading...');
   },
-  
+
   _hideProgressMessage : function(){
     $(this.options.progressMessageEl).text('');
   }

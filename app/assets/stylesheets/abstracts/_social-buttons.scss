@@ -1,0 +1,48 @@
+/*
+  Need a social icon stamped somewhere? Somehow?
+
+  Examples:
+
+  <i class="social-icon icon-social__twitter"></i>
+
+  <i class="social-icon icon-social__tumblr"></i>
+
+  <i class="social-icon icon-social__facebook"></i>
+
+  Sizing and positioning should be set in a class for the partial
+  that you've applied this to..
+
+  e.g. HTML
+
+    <div class="frame-footer">
+      ...
+      <div class="media_body">
+        <i class="social-icon icon-social__twitter"></i>
+        ...
+      </div><!-- eo media_body -->
+    </div><!-- eo frame-footer -->
+
+  e.q. SCSS
+
+    .frame-footer {
+      .social-icon {
+        font-size: 2em;
+        margin: 1px;
+        …
+      }
+    }
+*/
+
+.social-icon {
+  &.icon-social__twitter {
+    color: $twitter-blue;
+  }
+
+  &.icon-social__tumblr {
+    color: $tumblr-blue;
+  }
+
+  &.icon-social__facebook {
+    color: $facebook-blue;
+  }
+}

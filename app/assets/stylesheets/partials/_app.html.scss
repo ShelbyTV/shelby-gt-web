@@ -3,46 +3,43 @@
 //---------------------------
 //  boilerplate stuff
 //
-//	this is the only time 
-//  you should see styling 
-//  on natural elements 
+//  this is the only time
+//  you should see styling
+//  on natural elements
 //---------------------------
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Ubuntu', Trebuchet MS, sans-serif;
-	font-weight:500;
-	line-height:1.231;
-	margin:0;
-}
-
-html,body{
-	height:100%;
-	margin:0;
-	overflow:hidden;
-	padding:0;
-	width:100%;
+  font-family: 'Ubuntu', Trebuchet MS, sans-serif;
+  font-weight:500;
+  line-height:1.231;
+  margin:0;
 }
 
 body{
-	@include basefont;
+  @include basefont;
 
-	background-color: #000;
-	bottom:0;
-	color: $text;
-	left:0;
-	position:absolute;
-	right:0;
-	top:0;
-	-webkit-font-smoothing: antialiased;
+  background-color: #000;
+  bottom:0;
+  color: $text;
+  left:0;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  right:0;
+  top:0;
+  width:100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 a{
-	color: adjust-lightness($text, 20%);
-	
-	&:hover, 
-	&:visited,
-	&:active{
-		color: adjust-lightness($text, 20%);
-	}
+  color: lighten($text, 20%);
+
+  &:hover,
+  &:visited,
+  &:active{
+    color: lighten($text, 20%);
+  }
 
 }
 
@@ -53,73 +50,73 @@ a{
 
 .shelby-wrapper{
   @include transition-property('top');
-	@include transition-duration(.25s);
-	@include transition-timing-function(ease-out);
-	@include transition-delay(0s);
+  @include transition-duration(.25s);
+  @include transition-timing-function(ease-out);
+  @include transition-delay(0s);
 
-	bottom:0;
-	left:0;
-	position:absolute;
-	right:0;
-	top:0;
+  bottom:0;
+  left:0;
+  position:absolute;
+  right:0;
+  top:0;
 }
 
 .content_wrapper {
-	bottom: 0;
-	font-size: 1.1em;
-	line-height:1.5;
-	left: 0;
-	margin-top: $header-height + 1;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
+  bottom: 0;
+  font-size: 1.1em;
+  line-height:1.5;
+  left: 0;
+  margin-top: $app-header__height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
 
-	&.explore-layout {
-		display:none;
-	}
+  &.explore-layout {
+    display:none;
+  }
 }
 
 .content_lining {
-	height:100%;
-	overflow: hidden;
-	position: relative;
+  height:100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .content_module {
-	height:100%;
-  position: relative;	
+  height:100%;
+  position: relative;
 }
 
 .sidebar_module {
-	width: $guide-width;
+  width: $guide-width;
 }
 
 .main-layout,
 .explore-layout {
-	background: $base-bg-color;
+  background: $base-bg-color;
 }
 
 .guide-wrapper{
-	background-color: $guide-bg-color; //should technically be on .guide or something.
-	border-right: 1px solid #ccc;
-	float: left;
-	height:100%;
-	opacity: 1;
-	position: relative;
-	z-index: 3;
+  background-color: $guide-bg-color; //should technically be on .guide or something.
+  border-right: 1px solid #ccc;
+  float: left;
+  height:100%;
+  opacity: 1;
+  position: relative;
+  z-index: 3;
 }
 
-.menu{	
-	box-shadow: $shadow;
-	overflow: hidden;
-	position: relative;
+.menu{
+  box-shadow: $shadow;
+  overflow: hidden;
+  position: relative;
 }
 
 .spinner{
-	left: 50%;
-	margin-left: -24px;
-	margin-top: 100px;
-	position: absolute;
-	z-index: 0;
+  left: 50%;
+  margin-left: -24px;
+  margin-top: 100px;
+  position: absolute;
+  z-index: 0;
 }

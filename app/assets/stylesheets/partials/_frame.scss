@@ -10,13 +10,19 @@ $active-list-item: $shelby-blue;
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
     .frame-title,
-    .frame-aside-text {
+    .frame-external-subline-text {
       color: white;
     }
 
-    .frame-aside-text a:link,
-    .frame-aside-text a:visited {
+    .frame-external-subline-text a:link,
+    .frame-external-subline-text a:visited {
       color: adjust-lightness($active-list-item, 50%);
+    }
+
+    .frame-likes.icon-heart--red {
+      &:before {
+        color: #156B86;
+      }
     }
   }
 }
@@ -34,7 +40,6 @@ $active-list-item: $shelby-blue;
   //  collapsed: indicationt that frame is openable.
   ////////////////////////////////////////////////////////////////////////////
   &:hover {
-    .frame-is-collapsed,
     .menu_module {
       display: block;
     }
@@ -92,41 +97,29 @@ $active-list-item: $shelby-blue;
       text-decoration: underline;
     }
   }
+
+  .hr--double {
+    border-top-color: #D9D4D4;
+    border-bottom-color: #FCFAFA;
+  }
 }
 
 .frame-subsection,
 .frame-subline {
-  margin-top: 1em;
+  margin-top: 0.5em;
   text-align: right;
 }
 
 
 .frame-subsection {
   .frame-command-wrapper {
-    margin: -2px 0 0;
-    position: absolute;
-    left: 0;
+    color: #777;
+    padding-right: 1em;
 
     &.icon {
       padding-left: 1.4em;
     }
   }
-}
-
-.frame-is-collapsed {
-  &:link,
-  &:visited {
-    text-decoration: none;
-  }
-
-  &:active,
-  &:hover {
-    text-decoration: underline;
-  }
-
-  display:none;
-  float: right;
-  opacity: .5;
 }
 
 .frame-comment-link {
@@ -186,7 +179,24 @@ $active-list-item: $shelby-blue;
   }
 }
 
+//------------------------------------------------------------------------------
+//  faux users have special frames
+//------------------------------------------------------------------------------
+.frame-footer {
+  .media_body {
+    min-height: 3.3em;
+  }
 
+  .xuser-message--faux {
+    margin-top: 0.7em;
+  }
+
+  .social-icon {
+    float: right;
+    font-size: 1.4em;
+    line-height: 1;
+  }
+}
 
 //------------------------------------------------------------------------------
 //  frame command menu:
@@ -223,70 +233,67 @@ $active-list-item: $shelby-blue;
 //  queue, roll, share, etc.
 ////////////////////////////////////////////////////////////////////////////
 .frame-command {
-  @include button-sizing;
+  @include button-sizing(frame-command);
 
   margin-left: 1em;
   margin-top: 1em;
 }
-    ////////////////////////////////////////////////////////////////////////////
-    //  dropdown sublist:
-    //  children options of a spcific frame command (more button)
-    ////////////////////////////////////////////////////////////////////////////
-    .frame-sublist {
-      margin-top: 1px;
-      box-shadow: $shadow;
+    // ////////////////////////////////////////////////////////////////////////////
+    // //  dropdown sublist:
+    // //  children options of a spcific frame command (more button)
+    // ////////////////////////////////////////////////////////////////////////////
+    // .frame-sublist {
+    //   margin-top: 1px;
+    //   box-shadow: $shadow;
 
-      .frame-command {
-        background-color: #efefef;
-        border-bottom: none;
-        border-left: 1px solid $inset;
-        border-right: 1px solid $inset;
-        border-top: none;
-        margin: 0;
-        padding: .75em 1em .8em;
-        text-align: left;
-        width: 100%;
+    //   .frame-command {
+    //     background-color: #efefef;
+    //     border-bottom: none;
+    //     border-left: 1px solid $inset;
+    //     border-right: 1px solid $inset;
+    //     border-top: none;
+    //     margin: 0;
+    //     padding: .75em 1em .8em;
+    //     text-align: left;
+    //     width: 100%;
 
-        &:hover {
-          background-color: adjust-lightness(#efefef,-5%);
-        }
-      }
-    }
+    //     &:hover {
+    //       background-color: adjust-lightness(#efefef,-5%);
+    //     }
+    //   }
+    // }
 
-    .frame-shortlink {
-      @include roundies(input);
+    // .frame-shortlink {
+    //   @include roundies(input);
 
-      display: inline;
-      font-size: 1.1em;
-      height: 1.4em;
-      padding: 0.3em;
-      width: 115px;
-      background: transparent;
-      border: 1px solid #aaa;
+    //   display: inline;
+    //   font-size: 1.1em;
+    //   height: 1.4em;
+    //   margin: -2px 0;
+    //   padding: 0.3em;
+    //   width: 115px;
+    //   background: transparent;
+    //   border: 1px solid #aaa;
 
-      &:focus {
-        outline: none;
-        border: 1px solid black;
-      }
-    }
+    //   &:focus {
+    //     outline: none;
+    //     border: 1px solid black;
+    //   }
+    // }
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
 .command-queue {
+  padding-left: 0.7em;
   width: 71px;
-
-  .icon {
-    padding-left: $button-padding-left;
-  }
 
   &.queued {
     &:not(.remove-frame) {
     }
 
-    .icon {
-      background-image: none;
-      padding: 0;
+    .icon-videocard_queue {
+      display: none;
     }
   }
 }
@@ -309,14 +316,13 @@ $active-list-item: $shelby-blue;
 }
 
 .command-remove {
-  .icon {
-    display: inline-block;
-    height: 1em;
-    width: 1em;
+  .icon-cancel {
+    // vertical-align: -0.1em;
   }
 }
 
-.command-link {
+.command-link,
+.command-share {
   background: transparent;
   border: none;
   color: #666;
@@ -330,6 +336,7 @@ $active-list-item: $shelby-blue;
     text-decoration: underline;
   }
 }
+
 //------------------------------------------------------------------------------
 //  frame collapsed
 //  (nest styles inside of .frame-collapsed{})
@@ -353,6 +360,10 @@ $active-list-item: $shelby-blue;
   .frame-footer {
     overflow: hidden;
     zoom: 1;
+
+    .social-icon {
+      font-size: 1.4em;
+    }
   }
 
   &:hover {
@@ -367,12 +378,20 @@ $active-list-item: $shelby-blue;
     }
   }
 
+  .xuser-message--faux {
+    margin-bottom: 0;
+
+    .see-all {
+      display: none;
+    }
+  }
   /* unplayable and collapsed */
   &.xvideo-unplayable {
 
     .xvideo-unplayable-thumbnail-overlay {
-      left: 40px;
-      top: 20px;
+      width: 45%;
+      height: 79px;
+      padding-top: 19px;
     }
 
     &:hover{
@@ -383,16 +402,20 @@ $active-list-item: $shelby-blue;
 
 .xvideo-unplayable {
   .xvideo-unplayable-thumbnail-overlay {
-    @include text-shadow(0px 0px 4px #000);
-
-    color: #efefef;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #EFEFEF;
     display: block;
+    font-family: ubuntu;
     font-size: 1.5em;
-    left: 130px;
+    font-weight: 500;
+    height: 130px;
     line-height: 1;
+    padding-top: 45px;
     position: absolute;
     text-align: center;
-    top: 45px;
+    text-shadow: 0px 0px 4px black;
+    top: 0;
+    width: 100%;
   }
 
   .xframe-thumbnail {
@@ -414,14 +437,73 @@ $active-list-item: $shelby-blue;
 //  lists duplicates, 'also via:' stuff
 //---------------------------
 
-.frame-aside {
-  margin: 8px 0px 0px 5px;
+.frame-external-subline {
+  margin: 0.8em 0 0 5px;
 }
 
-.frame-aside-text {
+.frame-external-subline-text {
   color: #666;
   margin: 0;
   padding: 0;
+}
+
+//---------------------------
+//  likes: like information below the videocard
+//---------------------------
+
+.frame-likes {
+  height: 2.3em;
+  overflow: hidden;
+
+  &.icon-heart {
+    &:before {
+      display: inline;
+      line-height: 2.3em;
+    }
+  }
+}
+
+.frame-likes--hide {
+  display: none;
+}
+
+.frame-likes-avatars {
+  display: inline;
+
+  &.list {
+    margin: 0 0.22em 0 0.4em;
+  }
+
+  &.no-liker-avatars {
+    & + .frame-likes-count {
+      margin-left: 0.22em;
+    }
+  }
+
+  li {
+    display: inline;
+
+    & + li {
+      margin-left: 0.3em;
+    }
+  }
+
+}
+
+.frame-likes-count {
+  display: inline;
+  font-family: $font-family-display;
+  font-weight: 600;
+  line-height: 2.3em;
+}
+
+.frame-likes-link {
+  display: inline-block;
+}
+
+.frame-likes-avatar {
+  height: 26px;
+  width: 26px;
 }
 
 //------------------------------------------------------------------------------
@@ -434,7 +516,7 @@ $share-frame-half-gutter: 4px;
   .menu_item {
     float: left;
     padding-top: 1em;
-    width: auto;
+    width: 33%;
 
     &.menu_item--right {
       float: right;
@@ -453,6 +535,7 @@ $share-frame-half-gutter: 4px;
 
   .menu_button--twitter,
   .menu_button--facebook,
+  .menu_button--email,
   .menu_button--comment {
     padding: 0.6em 0.8em .6em 0.25em;
     width: 100%;
@@ -472,6 +555,12 @@ $share-frame-half-gutter: 4px;
 
   .menu_button--facebook {
     .icon {
+    }
+  }
+
+  .menu_button--email {
+    i {
+      padding: 0 0.3em;
     }
   }
 
@@ -496,4 +585,27 @@ $share-frame-half-gutter: 4px;
 //------------------------------------------------------------------------------
 .via-search {
   .command-sublist { display: none; }
+
+  ul.menu_list--share-frame{
+    .menu_item {
+      padding-top: 0;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  FreshPlay "new" frames
+//------------------------------------------------------------------------------
+.frame.fresh-play-new {
+  overflow: hidden;
+}
+
+.frame.fresh-play-new .sash {
+  @include rotate(45deg);
+  @include sash-primer();
+
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
 }

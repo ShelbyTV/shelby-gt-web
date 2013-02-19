@@ -1,4 +1,3 @@
-
 //------------------------------------------------------------------------------
 //  base: color variables, height & width constants
 //------------------------------------------------------------------------------
@@ -12,6 +11,7 @@
 //  boilerplate + normalization
 //------------------------------------------------------------------------------
 @import "boilerplate/fonts";
+@import "boilerplate/icon-font";
 @import "boilerplate/h5bp";
 
 //------------------------------------------------------------------------------
@@ -66,7 +66,6 @@
 @import "partials/video/persistent-video-info";
 @import "partials/video/video-controls";
 @import "partials/video/video-mini-progress";
-// @import "partials/context-overlay";
 @import "partials/preroll-video-info";
 @import "partials/me-section";
 @import "partials/rolls-list";
@@ -95,11 +94,12 @@
 //  isolated roll styles
 //------------------------------------------------------------------------------
 @import "partials/isolated-roll";
+@import "partials/dot-tv-welcome";
 
 //------------------------------------------------------------------------------
-//  Shelby chat
+//  Shelby discussion rolls
 //------------------------------------------------------------------------------
-@import "partials/chat";
+@import "partials/discussion_roll";
 
 //------------------------------------------------------------------------------
 // Facebook Genius App styles
@@ -112,7 +112,13 @@
 @import "partials/hide-guide";
 @import "partials/user-inactive";
 @import "partials/touch";
+
+@import "partials/lt-ie9";
+
 @import "partials/media-queries";
+
+// REMOVE PREVIOUS EASTEREGGS IN PARTIAL BEFORE UNCOMMENTING:
+// @import "partials/eastereggs";
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes

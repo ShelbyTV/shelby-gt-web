@@ -6,6 +6,10 @@ libs.shelbyGT.VideoModel = libs.shelbyGT.ShelbyBaseModel.extend({
     this.save({}, {
       url : shelby.config.apiRoot + '/video/'+this.id+'/unplayable'
     });
+  },
+
+  canPlayMobile : function(){
+    return _(shelby.config.video.mobileSupportedProviders).contains(this.get('provider_name'));
   }
-  
+
 });

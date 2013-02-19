@@ -8,22 +8,24 @@ libs.shelbyGT.Ajax = {
         document.location = "/signout?error=401";
         break;
       case 403:
-        shelby.alert("You are not authorized to do that");
+        shelby.alert({message: "<p>You are not authorized to do that</p>"});
         break;
     }
   },
-  
+
   validAnonUrlStubs : [
-    shelby.config.apiRoot+'/user/',
+    shelby.config.apiRoot+'/user',
     shelby.config.apiRoot+'/roll/',
+    shelby.config.apiRoot+'/frame/',
     shelby.config.apiRoot+'/POST/gt_interest',
     '/short_link',
+    '/watched',
     shelby.config.apiRoot+'/video/search',
+    shelby.config.apiRoot+'/js_err'
   ],
-  
+
   isAnonUrlValid : function(opts){
     var valid = false;
-    if (opts.type != 'GET') return valid;
     this.validAnonUrlStubs.forEach(function(stub){
       //for each of the valid stubs
       if (opts.url.indexOf(stub)!==-1){

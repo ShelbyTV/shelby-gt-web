@@ -4,30 +4,28 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
-  <%= render :partial => "/home/meta_info" %>
   <meta charset="utf-8">
-  <title>
-    <%= render :partial => "/home/title_tag" %>
-  </title>
 
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
   <meta name="viewport" content="width=device-width">
-  <link rel="icon"type="image/png" href="/favicon.png">
+
   <%= stylesheet_link_tag "landing", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "common", "landing" %>
 
   <script>
-    var shelbyTrackingCategory = "<%= shelby_tracking_category_for(@share_type) %>";
+    var shelbyTrackingCategory = "Landing Page";
   </script>
 </head>
-
-<body class="shelby shelby-landing">
-  <div class="shelby-wrapper">
-    <header class="shelby-header clearfix" role="banner">
-      <button class="shelby-logo js-home">
+<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
+  <div class="shelby__wrapper">
+    <header class="shelby__header clearfix" role="banner">
+      <button class="button_primer shelby-logo js-home">
         <% if Rails.env != "staging" %>
-          <h1 class="shelby-title ir">
-            Shelby.tv
+          <h1 class="shelby_logo">
+            <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
           </h1>
         <% else %>
           <h1 class="shelby-title-staging">
@@ -48,33 +46,6 @@
             <section class="dropdown_section login-section">
               <div class="dropdown_lining login-section-lining clearfix">
 
-                <div class="js-show-request-invite form_fieldset form_fieldset--private clearfix">
-                  <p class="form_legend">
-                    Not a member? <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a>
-                  </p>
-                </div>
-
-                <div class="js-request-invite clearfix hidden">
-                  <form id="js-email-form" class="form_module form_module--request-form js-track-submit" data-ga_action="Request invite">
-                    <fieldset class="">
-                      <label for="email" class="form_label">Email</label>
-                      <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
-                    </fieldset>
-
-                    <fieldset class="form_fieldset">
-                      <input id="js-email-submit" class="button_primer button_blue form_submit" type="submit" value="Request an invite!" />
-                    </fieldset>
-                  </form>
-
-                  <div id="js-thankyou" class="form_fieldset form_fieldset--feedback hidden">
-                    <span class="form_label">
-                      Thanks, we'll email you!
-                    </span>
-                  </div>
-                </div>
-
-								<hr class="hr--double" />
-
                 <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
                   <fieldset class="form_fieldset">
                     <label for="username" class="form_label">Username</label>
@@ -83,7 +54,7 @@
 
                   <fieldset class="form_fieldset">
                     <label for="password" class="form_label">Password</label>
-                  <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+                    <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
                   </fieldset>
 
                   <fieldset class="form_fieldset">
@@ -99,54 +70,64 @@
                     Log in with
                   </h4>
 
-                  <a class="button_primer faux_button button_twitter-blue social_login-twitter js-track-event auth-popup" data-ga_action="Login with Twitter"
-                    href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>" popup-width="600" popup-height="700">
-                    <i class="button_icon_left icon_share_twitter_on icon">
-                      Twitter
-                    </i>
+                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+                     class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+                     data-ga_action="Login with Twitter"
+                     data-popup_height="700"
+                     data-popup_width="600">
+                    <i class="icon-social_twitter"></i>
+                    Twitter
                   </a>
 
-                  <a class="button_primer faux_button button_facebook-blue social_login-facebook js-track-event auth-popup" data-ga_action="Login with Facebook"
-                    href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" location="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>" popup-width="1000" popup-height="650">
-                    <i class="button_icon_left icon_share_facebook_on icon">
-                      Facebook
-                    </i>
+                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+                     class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+                     data-ga_action="Login with Facebook"
+                     data-popup_height="650"
+                     data-popup_width="1000">
+                    <i class="icon-social_facebook"></i>
+                    Facebook
                   </a>
                 </div>
-
               </div>
             </section>
+          </li><!-- eo login button/dropdown -->
 
+          <li class="guide-nav-item secondary-item guide-search">
+            <form id="js-nav-search-form" class="nav-search-form" action="/search">
+              <span class="button_icon icon_search icon nav-search-form-text js-nav-search-form-text-wrapper">
+                <input name="query" type="text" placeholder="Search the Videoverse" class="js-nav-search-form-text" id="js-nav-search-form-text" tabindex="0"/>
+              </span>
+            </form>
           </li>
         </ul>
       </nav>
     </header>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="landing-shelf landing-shelf__error">
-        <div class="landing-shelf__lining">
+      <section class="shelf shelf--error clearfix">
+        <div class="shelf__lining">
           <% if @access_error %>
-            <p class="gate-signin-noaccess js-signin-error">
+            <p class="shelf__block shelf__block--noaccess js-signin-error">
               Sorry, you do not have access to the beta…<br>
               <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
             </p>
           <% end %>
 
           <% if @invite_error %>
-            <p class="gate-signin-invalid-invite js-signin-error">
+            <p class="shelf__block shelf__block--invalid-invite js-signin-error">
               Sorry, that invite is no longer valid.  Please <a href="mailto:contact+invite@shelby.tv">contact us</a> if you have questions.
             </p>
           <% end %>
 
           <% if @auth_failure %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
               <br/>Please try again.
             </p>
           <% end %>
 
           <% if (flash[:error] == "401") %>
-            <p class="gate-signin-error js-signin-error">
+            <p class="shelf__block shelf__block--error js-signin-error">
               Session expired, please log in again!
             </p>
           <% end %>
@@ -155,69 +136,73 @@
     <% end %>
 
     <% #------------ Shelf Content --------------- %>
-    <% if @video %>
-      <% if @share_type == :genius %>     <%= render :partial => "/home/shelf/genius_email_share" %>
-      <% elsif @share_type == :email %>   <%= render :partial => "/home/shelf/direct_email_share" %>
-      <% elsif @share_type == :rolling %> <%= render :partial => "/home/shelf/rolling_share" %>
-			<% elsif @share_type == :fb_genius %>	<%= render :partial => "/home/shelf/fb_genius_share" %>
-      <% end %>
-    <% end %>
 
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
-    <% if (!@share_type or !@video) and !@invite_id %>
-      <%= render :partial => "/home/shelf/banner" %>
-      <%= render :partial => "/home/shelf/sign_me_up" %>
+    <%= render :partial => "/home/shelf/team" if @team %>
+
+    <% if (!@share_type) and !@invite_id and !@team %>
+      <%= render :partial => "/home/shelf/sign_up" %>
+      <%= render :partial => "/home/shelf/community" %>
+      <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/about" %>
     <% end %>
 
-    <% if !@invite_id %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
-    <% end %>
     <% #------------ /Shelf Content --------------- %>
 
-    <footer class="landing-footer">
-      <div class="landing-footer-lining clearfix">
+    <footer class="shelf shelf--footer clearfix">
+      <div class="shelf__lining clearfix">
+        <nav>
+          <ul class="shelf__list--inline shelf__list--footer clearfix">
+            <li>
+              <a href="http://shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Homepage" title="Home">
+                Shelby.tv
+              </a>
+            </li>
 
-        <ul class="landing-footer-lists list_module clearfix">
-          <li>
-            <h5 class="landing-footer-content-header">Shelby.tv</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="mailto:contact@shelby.tv">Contact</a></li>
-              <li>Made in NYC</li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Community</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/blog" target="_info">Blog</a></li>
-              <li><a href="http://shelbydev.tumblr.com/" target="_info">Dev Blog</a></li>
-              <li><a href="http://twitter.com/shelby" target="_info">Twitter</a></li>
-              <li><a href="http://facebook.com/shelbytv" target="_info">Facebook</a></li>
-            </ul>
-          </li>
-          <li>
-            <h5 class="landing-footer-content-header">Legal</h5>
-            <ul class="landing-footer-content-list list_module">
-              <li><a href="/privacy.html" target="_info">Privacy</a></li>
-              <li><a href="/tou.html" target="_info">Terms</a></li>
-            </ul>
-          </li>
+            <li>
+              <a href="http://nytm.org/made" class="shelf__link js-track-event" data-ga_action="Click Made in NYC" title="Proudly Made in New York City">
+                Made in NYC
+              </a>
+            </li>
 
-          <li class="secondary">
-            <h5 class="landing-footer-content-header">Share the joy</h5>
-            <ul class="landing-footer-content-list secondary-landing-footer-content-list list_module">
-              <li>
-                <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
-              </li>
-              <li>
-                <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
-              </li>
-              <li>
-                <div class="g-plusone" data-href="http://shelby.tv"></div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            <li>
+              <a href="http://shelby.tv/blog" class="shelf__link js-track-event" data-ga_action="Click Blog" title="">
+                Blog
+              </a>
+            </li>
+
+            <li>
+              <a href="http://shelby.tv/blog/hiring" class="shelf__link js-track-event" data-ga_action="Click Hiring Page" title="Want to work with us?">
+                We're hiring!
+              </a>
+            </li>
+
+            <li>
+              <a href="tou.html" class="shelf__link js-track-event" data-ga_action="Click Terms" title="Legal …stuff">
+                Terms
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:feedback@shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Report Issue" title="Report a bug or just tell us what you think!">
+                Report an issue
+              </a>
+            </li>
+          </ul>
+
+         <ul class="shelf__list--inline shelf__list--social">
+            <li>
+              <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
+            </li>
+            <li>
+              <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
+            </li>
+            <li>
+              <div class="g-plusone" data-href="http://shelby.tv"></div>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   </div><!-- /shelby-wrapper -->
@@ -278,13 +263,78 @@
     <% end %>
 
     $(document).ready(function(){
+      //fanciness on focussing searching in header
+      $('.js-nav-search-form-text').focus(function(){
+        $(this).parent().toggleClass('focused',true);
+      }).blur(function(){
+        $(this).parent().toggleClass('focused',false);
+      });
+
       // Email submit (used by many shelves) -->
       $('#js-email-form').on('submit', function(){
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-email-form').addClass('hidden');
-          $('#js-thankyou').removeClass('hidden');
+          $('#js-email-form-submit').addClass('hidden');
+          $('#js-email-form-feedback').removeClass('hidden');
         }, 'jsonp');
         return false;
+      });
+
+      $('.js-search-form, #js-nav-search-form').on('submit', function(e){
+        e.preventDefault();
+        var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
+        console.log(searchQuery);
+        if (searchQuery) {
+          if("<%= @is_mobile %>" !== "") {
+            var params = {
+              "q" : searchQuery,
+              "max-results" : "50",
+              "orderby" : "relevance"
+            };
+
+              // Create a callback
+              var cb = function(res){
+              // Create array of returned YouTube video URLs
+              var urls = new Array();
+              if (typeof res !== 'undefined'){
+                res.forEach(function(r){
+                  if (r.link != undefined) {
+                    r.link.forEach(function(l){
+                      if(l.rel != undefined && l.rel == "alternate") {
+                        if(l.href != undefined) {
+                          urls.push(l.href);
+                        }
+                      }
+                    });
+                  }
+                });
+              }
+
+              if (urls.length !== 0) {
+                // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
+                $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
+                  if (data.status == 200){
+                    var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
+                    window.location.href = _rollUrl;
+                  }
+                  else { alert("Something went wrong, please try again."); }
+                });
+              }
+              else { //if no URLs:
+                $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
+              }
+            };
+
+            // Call ytQuery.query, passing params and your callback
+            ytQuery.query(params, cb);
+
+          } else {
+            window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
+          }
+
+          try {
+          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
+          } catch(e) {}
+        }
       });
     });
   </script>

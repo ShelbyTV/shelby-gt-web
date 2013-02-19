@@ -52,18 +52,26 @@ _(shelby).extend({
           break;
         case 'add_to_queue':
           _gaAction = 'queued'; _gaCategory = 'Frame';
-          _kmq.push(['record', action, {'frame': options.frameId, 'roll': options.rollId}]);
+          _kmq.push(['record', action, {'frame': options.frameId}]);
+          break;
+        case 'liked':
+          _gaAction = 'liked'; _gaCategory = 'Frame';
+          _kmq.push(['record', action, {'frame': options.frameId}]);
+          break;
+        case 'liked on search':
+          _gaAction = 'liked' ; _gaCategory = 'search';
+          _kmq.push(['record', action, {'frame': options.frameId}]);
           break;
         case 'watched':
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
           _gaAction = 'watched'; _gaCategory = 'Frame';
-          _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
+          //_kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
           // extra watch event tracking to capture frame and roll popularity
           _gaq.push(['_trackEvent', "Watched", options.rollId, options.frameId]);
           break;
         case 'watched in full':
           _gaAction = 'watched in full'; _gaCategory = 'Frame';
-          _kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
+          //_kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
           break;
         case 'started onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
@@ -112,7 +120,7 @@ _(shelby).extend({
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = 'explore';
-          _kmq.push(['record', action, {label: 'explore'}]);
+          //_kmq.push(['record', action, {label: 'explore'}]);
           break;
         case 'Click roll promo':
         case 'Show roll promo':
@@ -121,7 +129,7 @@ _(shelby).extend({
           _gaCategory = 'Promo';
           _gaAction = action;
           _gaLabel = options.id;
-          _kmq.push(['record', action, {roll: options.id}]);
+          //_kmq.push(['record', action, {roll: options.id}]);
           break;
         default:
           _gaAction = 'unknown';
@@ -141,6 +149,14 @@ _(shelby).extend({
     if (_(options.providers).contains('ga') && options.gaCategory) {
       try {
         _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+      } catch(e) {
+        $.noop();
+      }
+    }
+    var kmqName = options.kmqName || options.gaAction;
+    if (_(options.providers).contains('kmq') && kmqName) {
+      try {
+        _kmq.push(['record', kmqName, _({}).extend(options.kmqProperties)]);
       } catch(e) {
         $.noop();
       }

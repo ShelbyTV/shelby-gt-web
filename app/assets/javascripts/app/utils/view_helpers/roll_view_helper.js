@@ -33,7 +33,7 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(libs.shelbyGT.viewHelpers.roll.isFaux(roll)){
       // faux rolls will only have frames from one network
       if(roll.get('origin_network') && roll.get('creator_nickname')){
-        rollName = libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network')) + " Shares";
+        rollName = libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network'));
       }
       else {
         return roll.get('title');
@@ -43,7 +43,7 @@ libs.shelbyGT.viewHelpers.roll = {
       return roll.get('title');
     }
     if (options.creatorNickname && options.creatorNickname != shelby.models.user.get('nickname')) {
-      return options.creatorNickname + "'s " + rollName;
+      return "Shared by " + options.creatorNickname + " on " + rollName;
     } else {
       return rollName;
     }
@@ -79,7 +79,7 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(libs.shelbyGT.viewHelpers.roll.isFaux(roll)){
       // faux rolls will only have frames from one network
       if(roll.get('origin_network') && roll.get('creator_nickname')){
-        return roll.get('creator_nickname') + "'s " + libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network')) + " Shares";
+        return "Shared by " + roll.get('creator_nickname') + " on " + libs.shelbyGT.viewHelpers.roll.capitalizeFirstLetter(roll.get('origin_network'));
       }
       else {
         return roll.get('title');
@@ -101,7 +101,7 @@ libs.shelbyGT.viewHelpers.roll = {
     (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll);
   },
-  
+
   guideHeaderImageURL : function(roll){
     if(roll.has('header_image_file_name')){
       return  shelby.config.rollImagesUrlRoot+'/header/'+roll.id+'/guide_wide/'+roll.get('header_image_file_name');
@@ -110,5 +110,5 @@ libs.shelbyGT.viewHelpers.roll = {
       return '/images/assets/roll_headers/'+parseInt(roll.id, 16)%5+'.jpg';
     }
   }
-  
+
 };

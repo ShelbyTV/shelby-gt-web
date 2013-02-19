@@ -5,18 +5,23 @@
 <article id="<%= videoId %>" class="explore-frame clearfix transparent">
   <div class="menu_module frame-menu">
     <ul class="menu_list frame-command-menu xframe-list" role="menubar">
+      <% if (!shelby.models.user.isAnonymous()) { %>
+        <li class="menu_item" role="menuitem">
+          <button class="button_primer button_default frame-command command-roll js-roll-command js-track-event" data-ga_category="Explore" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
+            <i class="button_primer icon-videocard_roll">
+            </i>
+              Roll…
+          </button>
+        </li>
+      <% } %>
       <li class="menu_item" role="menuitem">
         <button class="button_primer button_default frame-command command-queue js-queue-command js-track-event" data-ga_category="Explore" data-ga_action="Click to queue frame" data-ga_label="<%= videoTitle %>">
-          <i class="button_icon_left icon_videocard_queue icon js-command-icon">
-            Queue
+          <i class="icon-heart js-command-icon">
           </i>
-        </button>
-      </li>
-      <li class="menu_item" role="menuitem">
-        <button class="button_primer button_default frame-command command-roll js-roll-command js-track-event" data-ga_category="Explore" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
-          <i class="button_icon_left icon_videocard_roll icon">
-            Roll…
-          </i>
+
+          <span class="label">
+            Like
+          </span>
         </button>
       </li>
     </ul>

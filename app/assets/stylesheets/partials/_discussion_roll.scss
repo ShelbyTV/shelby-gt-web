@@ -1,0 +1,649 @@
+//------------------------------------------------------------------------------
+//  Local Variables
+//------------------------------------------------------------------------------
+$conversation-avatar-width: 45px; //used in message_item and reply form
+$main-column-width: 45em;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list--inline {
+  & > li {
+    display: inline-block;
+  }
+}
+//------------------------------------------------------------------------------
+//  NON NORMATIVE
+//------------------------------------------------------------------------------
+.shelby-wrapper--discussion {
+  background-color: $base;
+  overflow: visible;
+  position: relative;
+
+  .shelby-wrapper {
+    position: relative;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  BLOCK: discussion Shelby Discussion Rolls
+//------------------------------------------------------------------------------
+.discussion {
+  font-size: 1.3em;
+  margin: 0 auto 2em;
+
+  &.discussions-manager-shown {
+    display: none;
+  }
+
+  &.discussion-attachment-shown {
+    display: none;
+  }
+
+  /////// NON-NORMATIVE OVERRIDES /////////////////////////////////////////////
+  .load-more {
+    width: 100%;
+    position: absolute;
+    top: -37px;
+  }
+
+  .load-more-button {
+    padding: 0.6em 2em;
+    width: auto;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Discussion Framework
+//------------------------------------------------------------------------------
+.discussion__header {
+  //mobile animates the opacity, see _media-querires.scss
+  @include transition-property('opacity');
+  @include transition-duration(0.5s);
+  @include transition-timing-function(ease-in);
+  @include transition-delay(0s);
+
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .shelby_logo {
+    font-size: 2.6em;
+    margin-top: 0.2em;
+    text-align: center;
+  }
+}
+
+.discussion__nav {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  padding: 0 0.5em;
+
+  a {
+    color: $shelby-green;
+  }
+}
+
+.discussion__body {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  z-index: 1;
+}
+
+.discussion__footer {
+}
+
+/* anything that should be fixed width, centered */
+.discussion__content {
+  margin: 0 auto;
+  max-width: $main-column-width;
+}
+  .discussion__content--main {
+    margin-top: 4em;
+    margin-bottom: 2em;
+  }
+
+  .discussion__content--menu {
+    font-size: 1.3em;
+    margin-top: 4em;
+  }
+
+  .discussion__content--search-results {
+    font-size: 1.3em;
+    margin-top: 10px;
+  }
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+.discussion__h1,
+.discussion__h2 {
+  font-family: $font-family-display;
+  font-weight: 400;
+}
+
+
+.discussion__h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.7em;
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+.discussion__h2 {
+  font-size: 1.2em;
+}
+
+.discussion__h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.discussion__h4 {
+  font-weight: bold;
+
+  .xuser-data-timestamp {
+    font-weight: normal;
+  }
+}
+
+.discussion__subhead {
+  margin-top:0;
+}
+
+.discussion__list {
+  position: relative;
+
+  & > .discussion__item {
+    display: list-item;
+  }
+}
+
+.discussion__button {
+}
+  .discussion__button--nav {
+    line-height: 1.5;
+    top: 5px;
+  }
+
+  .discussion__button--share {
+    padding: 0.5em 0.7em;
+    font-size: 0.9em;
+
+  }
+
+  .discussion__button--cancel {
+    left: 0;
+    margin: 0.7em 1em;
+    padding: 0.5em 0.4em 0.4em 0.6em;
+    position: absolute;
+    top: 0;
+  }
+
+.discussion__timestamp {
+  color: #999;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 2;
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
+//  Recipients Block
+//------------------------------------------------------------------------------
+.recipients {
+  border-radius: 5px;
+  padding: 10px;
+
+  ///// NON-NORMATIVE OVERRIDES ////////////////////////////////////////////////
+  .xuser-data-timestamp {
+    display: none;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  Recipients Elements
+//------------------------------------------------------------------------------
+.recipients__h1 {
+  font-family: $font-family;
+  font-weight: normal;
+  margin-bottom: 0.5em;
+}
+
+.recipients__list_wrapper {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.recipients__list {
+  display: inline;
+}
+
+.recipients__item {
+  padding-right: 0.5em;
+
+  .primary-info {
+    &:after {
+      content: ", ";
+    }
+  }
+
+  &:last-child {
+    .primary-info {
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  &.recipients__item--overflow {
+    display: none;
+  }
+}
+
+
+//comment element---------------------------------------------------------------
+//each video starts are new LI, consecutive comments are grouped under LI until
+//a new video is created.
+//discussion__item is a lining that defines the comment/frame
+.discussion__item {
+  border-radius: 5px;
+  padding: 10px;
+
+  .media_module {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .media_image {
+    width: $conversation-avatar-width;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .media_body {
+  }
+}
+  //modifiers-------------------------------------------------------------------
+  //conversation = li, holds convo chunked by frame
+  .discussion__item--conversation {
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+  }
+
+  //comment by anyone, default
+  .discussion__item--user  {
+  }
+
+  //comment by "you", the viewer
+  .discussion__item--viewer {
+    background-color: white;
+  }
+
+  //comment that holds video
+  .discussion__item--frame {
+    .media_image {
+      margin-right: 6px;
+      width: 25px;
+    }
+
+    .media_body {
+      p {
+        margin-top: 0.2em;
+      }
+    }
+  }
+
+  .discussion__item--search-result {
+    padding: 0;
+
+    .media_image {
+      margin-bottom: 0;
+    }
+  }
+
+  .discussion__item--insert-video {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    opacity: 0.8;
+    text-align: center;
+
+    .discussion__h5 {
+      margin-top: 0.75em;
+    }
+
+    &:active {
+      color: #222;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+
+  .discussion__item--recipients-overflow {
+    display: none;
+  }
+
+.discussion__list--recipients {
+  display: inline;
+}
+
+  .discussion__list--recipients-toggle-show-all {
+    display: none;
+  }
+
+  .discussion__list--recipients-toggle-show-all .less {
+    display: none;
+  }
+
+.show-all-recipients {
+  .recipients__item--overflow {
+    display: inline-block;
+  }
+
+  .discussion__list--recipients-toggle-show-all {
+    .less {
+      display: inline;
+    }
+    .more {
+      display: none;
+    }
+  }
+}
+
+.recipients--email {
+}
+
+.recipients--shelby {
+  /* never showing the supplementray-info for now */
+  span.supplementary-info {
+    display: none;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  discussion videocard
+//------------------------------------------------------------------------------
+.video {
+
+  & > iframe,
+  & > embed,
+  & > object {
+    margin: 0;
+    height: 400px;
+    padding: 0;
+    width: 100%;
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  discussion reply section
+////////////////////////////////////////////////////////////////////////////
+.discussion-reply {
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
+
+  .discussion__block {
+
+  }
+}
+
+.discussion__form {
+}
+  .discussion__form-wrapper {
+    .media_image {
+      width: $conversation-avatar-width;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .discussion__form--discussion-reply {
+    .form_fieldset {
+      margin: 0;
+    }
+
+    .form_textarea {
+      float: right;
+      font-size: 1em;
+      height: $conversation-avatar-width;
+      width: 100%;
+    }
+
+    .form_submit {
+      float: right;
+      margin-left: 8px;
+    }
+
+    .discussion__block {
+      font-size: 0.9em;
+      margin: 0.4em 0;
+      opacity: .7;
+    }
+  }
+
+
+//------------------------------------------------------------------------------
+//  Attachment Block
+//------------------------------------------------------------------------------
+.attachment {
+  left: 0;
+  position: absolute;
+  top: 4.4em;
+  width: 100%;
+}
+
+//------------------------------------------------------------------------------
+//  Attachment Elements
+//------------------------------------------------------------------------------
+.attachment__lining {
+  @include roundies(footer);
+
+  font-size: 1.3em;
+  margin: 0 auto;
+  max-width: $main-column-width;
+  padding: 1em;
+
+  .discussion__button--cancel {
+  }
+
+  .search_module__input_wrapper {
+    // margin-left: 0.5em;
+  }
+
+  .search_module__submit {
+    margin-left: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+
+.attachment__head {
+  text-align: center;
+}
+
+//------------------------------------------------------------------------------
+//  Search Result
+//------------------------------------------------------------------------------
+.search_result {
+  margin-left: 0;
+  margin-right: 0;
+
+  .frame-thumbnail {
+    height: 220px;
+
+    &:before {
+      top: 30%;
+    }
+  }
+
+  .discussion__video-preview {
+    height: 220px;
+    width: 100%;
+  }
+
+  .media_body {
+    margin-right: 8px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .media_image {
+    position: relative;
+    width: 60%;
+  }
+
+  .discussion__h3 {
+    font-weight: 500;
+    margin-top: .5em;
+    margin-bottom: 0;
+  }
+
+  .discussion__button {
+    margin: 1.5em 0 0;
+    padding: 0.5em;
+  }
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: 0 0 2px 0 $shelby-green;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Main Menu
+//------------------------------------------------------------------------------
+.discussion_menu__list {
+  // box-shadow: 0px 0px 7px 0px #667;
+  margin: 35px 0;
+}
+
+.discussion_menu__item {
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding: 10px;
+
+  .recipients__list {
+    font-weight: bold;
+  }
+  ////  NON-NORMATIVE OVERRIDE /////////////////////////////////////////////////
+
+  .xuser-data-timestamp {
+    color: rgb(66, 142, 58);
+    font-size: 0.8em;
+    opacity: 1;
+  }
+}
+
+.discussion__link {
+  text-decoration: none;
+
+  &:hover {
+    .frame-body-wrapper {
+      background-color: white;
+      box-shadow: 0 0 3px 0 black;
+    }
+
+    .discussion_menu__head {
+      text-decoration: underline;
+    }
+    .discussion_menu__body {
+      text-decoration: none;
+    }
+  }
+
+  &:visited,
+  .discussion_menu__head,
+  .discussion_menu__body {
+    text-decoration: none;
+  }
+}
+
+.discussion_menu__head {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0 0 1em;
+}
+
+.discussion_menu__body {
+}
+
+//------------------------------------------------------------------------------
+//  About Shelby Mail
+//------------------------------------------------------------------------------
+.explanation {
+  display: none;
+  padding: 2em 4em;
+  text-align: center;
+
+  .discussion__h2 {
+
+  }
+
+  .discussion__img {
+    max-width: 100%;
+  }
+}
+
+.discussion__footnote {
+  color: #ccd;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+  text-align: center;
+  margin: 3em 0 .5em;
+}
+
+
+@media all and (max-width: 45em) {
+  // .discussion__body {
+  //   margin-bottom: 8em;
+  // }
+
+  // .discussion__content--main {
+  //   margin-bottom: 0;
+  // }
+
+  // .discussion__item--conversation {
+  //   margin: 1px;
+  //   border-radius: 0;
+  // }
+
+  // .discussion__footer {
+  //   background-color: white;
+  //   bottom: 0;
+  //   left: 0;
+  //   position: fixed;
+  //   width: 100%;
+  // }
+
+  // .discussion-reply {
+  //   border: none;
+  //   border-radius: 0;
+  //   box-shadow: none;
+  //   margin: 0 auto;
+  //   max-width: 45em;
+  // }
+
+  // .discussion__form--discussion-reply {
+  //   // font-size: 0.8em;
+  // }
+}

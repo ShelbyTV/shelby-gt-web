@@ -1,0 +1,131 @@
+<div class="shelf shelf--team clearfix">
+  <div class="shelf__lining--banner">
+
+  </div>
+
+  <div class="shelf__lining">
+    <h3 class="shelf__h2">
+      Our Team
+    </h3>
+
+    <hr class="shelf__hr" />
+<%
+  team = [
+    {
+      'name' => 'Reece Pacheco',
+      'description' => 'Attacking TV via web video + startups. Love surf, snow, and foreign lands. Native Cape Codder. Immigrant\'s son. Fat kid at heart. Humanist.',
+      'image' => '/images/team/reece.jpg',
+      'url' => 'reece.shelby.tv',
+      'email' => 'r@shelby.tv',
+      'twitter' => 'reece',
+      'title' => 'Cofounder, CEO'
+    },
+    {
+      'name' => 'Dan Spinosa',
+      'description' => '"My instinct was to win, eliminate anyone who is in competition, destroy my enemy, and move on without any kind of hesitation at all."',
+      'image' => '/images/team/dan_2.jpg',
+      'url' => 'danspinosa.tv',
+      'email' => 'dan@shelby.tv',
+      'twitter' => 'spinosa',
+      'title' => 'Cofounder, CTO'
+    },
+    {
+      'name' => 'Henry Sztul',
+      'description' => "Physicist, Entrepreneur, Dad. Builder of things.",
+      'image' => '/images/team/henry.jpg',
+      'url' => 'henry.shelby.tv',
+      'email' => 'h@shelby.tv',
+      'twitter' => 'sztul',
+      'title' => 'Scientist'
+    },
+    {
+      'name' => 'Chris Kurdziel',
+      'description' => 'Chris like memes, mountains, metal, Mars and alotta alliteration.',
+      'image' => '/images/team/chris.jpg',
+      'url' => 'chris.shelby.tv',
+      'email' => 'c@shelby.tv',
+      'twitter' => 'ckurdziel',
+      'title' => 'Product Manager'
+    },
+    {
+      'name' => 'Joshua Samberg ',
+      'description' => "Finds your futuristic world strange/frightening.  Knows 2 things: 1) Code should be written the right way. 2) No such thing as a bad joke.",
+      'image' => '/images/team/josh.jpg',
+      'url' => 'iceberg901.shelby.tv',
+      'email' => 'josh@shelby.tv',
+      'twitter' => nil,
+      'title' => 'Hair/Software Engineer'
+    },
+    {
+      'name' => 'Vincent Iadevaia',
+      'description' => 'Vincent likes comic books, videos of giant robots, and awesome movie trailers.',
+      'image' => '/images/team/vincent.jpg',
+      'url' => 'vondoom.shelby.tv',
+      'email' => 'v@shelby.tv',
+      'twitter' => 'vondoom',
+      'title' => 'Product Designer'
+    },
+    {
+      'name' => 'Michael Matyus ',
+      'description' => "Front-end Engineer who sacrifices sleep for reading and collecting old books. The beard stays.",
+      'image' => '/images/team/michael.jpg',
+      'url' => 'matyus.shelby.tv',
+      'email' => 'michael@shelby.tv',
+      'twitter' => 'mmatyus',
+      'title' => 'DOM Wizard'
+    },
+    {
+      'name' => 'Arthur Sabintsev ',
+      'description' => "iOS Engineer. Former Experimental Nuclear Physicist",
+      'image' => '/images/team/arthur.jpg',
+      'url' => 'arthur.shelby.tv',
+      'email' => 'a@shelby.tv',
+      'twitter' => 'ArtSabintsev',
+      'title' => 'iOS Cosmonaut'
+    },
+    {
+      'name' => 'Keren Pinkas',
+      'description' => "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
+      'image' => '/images/team/keren.jpg',
+      'url' => 'keren.shelby.tv',
+      'email' => 'keren@shelby.tv',
+      'twitter' => 'kepsolution',
+      'title' => 'iOS Developer'
+    },
+  ]
+%>
+    <ul class="list shelf__list clearfix">
+      <% team.each do |member| %>
+        <li class="shelf__item one-third">
+          <article class="frame frame--shelf">
+            <div class="frame-body-wrapper clearfix">
+              <div class="image_module frame-thumbnail" style="background-image: url('<%= member["image"] %>');" role="img">
+                <img class="visuallyhidden" src="<%= member["image"] %>" title="<%= member["image"] %>" alt="<%= member["image"] %> thumbnail">
+              </div><!-- eo .frame-thumbnail -->
+
+              <div class="media_module frame-footer clearfix">
+                <div class="media_body">
+                  <span class="xuser-data-timestamp"><%= member["title"] %></span>
+                  <h3 class="xuser-data">
+                    <%= member["name"] %>
+                  </h3>
+
+                  <p class="xuser-message">
+                    <%= member["description"] %>
+                  </p>
+
+                  <p class="frame-subline">
+                    <a class="left" target="_blank" href="http://<%= member["url"] %>"><%= member["url"] %></a>
+                    <% if member["twitter"] %><a target="_blank" href="http://twitter.com/<%= member["twitter"] %>"><i class="icon-social_twitter"></i></a><% end %>
+                    <a href="mailto:<%= member["email"] %>"><i class="icon-email"></i></a>
+                  </p>
+
+                </div><!-- eo .media_body -->
+              </div>
+            </div><!-- eo .frame-body-wrapper -->
+          </article>
+        </li>
+      <% end %>
+    </ul>
+  </div><!-- eo shelf__lining -->
+</div><!-- eo shelf -->

@@ -13,27 +13,40 @@
 libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotification.extend({
 
   _height : "55px",
-  
+
   _bannerType : 0,
-  
+
+  events : {
+    "click .js-close-banner"        : "_closeBanner",
+    "click .js-learn-more"          : "_goToShelby"
+  },
+
   bannerElement : function(obj){
     return SHELBYJST['anon_banner']({bannerType: this._bannerType});
   },
-  
+
   /*
    * If user is anonymous, display the appropriate banner and return false.
    * Otherwise, render nothing and return false.
    */
   userIsAbleTo : function(action){
-    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT){
+    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT && action != libs.shelbyGT.AnonymousActions.QUEUE){
       this._bannerType = action;
       this.render();
       return false;
     } else {
       return true;
     }
+  },
+
+  _closeBanner : function(){
+    this.unRender();
+  },
+
+  _goToShelby : function(){
+    window.top.location.href = shelby.config.appUrl;
   }
-  
+
 });
 
 libs.shelbyGT.AnonymousActions = {
@@ -42,5 +55,6 @@ libs.shelbyGT.AnonymousActions = {
   ROLL : 3,
   FOLLOW : 4,
   COMMENT : 5,
-  ME : 6
+  ME : 6,
+  MAIL : 7
 };

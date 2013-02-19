@@ -5,11 +5,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _grewForFrameRolling : false,
 
   _frameRollingView : null,
-  
+
   _conversationView : null,
 
   _frameSharingInGuideView : null,
-  
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null
@@ -25,7 +25,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-send"                  : "requestFBSendUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
-    "click .js-remove-frame"                : "_removeFrame",
+    "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
@@ -39,6 +39,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // show different frame if coming from fb-genius app
       if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
         return SHELBYJST['fb-genius-frame'](obj);
+      }
+      else if (obj.frameGroup.get('collapsed')) {
+        return SHELBYJST['frame-collapsed'](obj);
       }
       else {
         return SHELBYJST['frame'](obj);
@@ -74,8 +77,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
       // this video is the one being added/removed
       // in case it got updated from somewhere else like the explore view, update my button
-      this.$('.js-queue-frame').toggleClass('queued button_gray-light', !removeVideo);
-      this.$('.js-queue-frame i').text(!removeVideo ? 'Queued' : 'Add to Queue');
+      this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
+      this.$('.js-queue-frame .label').text(!removeVideo ? 'Liked' : 'Like');
+      this.$('.js-queue-frame i').toggleClass('icon-heart--red', !removeVideo);
     }
   },
 
@@ -89,7 +93,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     var groupFirstFrame = model.getFirstFrame();
     groupFirstFrame[action]('change', this.render, this);
-    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);   
+    groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
     model.get('frames')[action]('change', this.render, this);
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
@@ -101,22 +105,55 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   render : function(){
     var self = this;
     this._leaveChildren();
-    
+
     if (this.model.get('frames').length){
+      var likeInfo = this.model.getCombinedLikeInfo();
+      var likersCollection = new libs.shelbyGT.UserCollection();
+      var likersToDisplay = likeInfo.likers.models.slice(0, 9);
+      if (likersToDisplay.length) {
+        likersCollection.add(likersToDisplay);
+      }
+
+      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length,
+          frame = this.model.get('frames').at(0),
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+
+          //N.B. template({}) receives Models.
+          //i.e. frame, video, user, creator, messages, etc.
+          //so, JST should only .get() object vals from models
+
       this.$el.html(this.template({
+        creator           : frame.get('creator'),
+        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
+        frameGroup        : this.model,
+        frame             : frame,
+        likers            : likersToDisplay,
+        messages          : messages,
         queuedVideosModel : shelby.models.queuedVideos,
-        frameGroup : this.model,
-        frame : this.model.get('frames').at(0),
-        options : this.options,
-        dupeFrames : this.model.getDuplicateFramesToDisplay()
+        options           : this.options,
+        remainingLikes    : remainingLikes,
+        totalLikes        : likeInfo.totalLikes,
+        user              : shelby.models.user,
+        video             : frame.get('video')
       }));
+
+      if (likersToDisplay.length) {
+        // render the likers' avatars, now if they've already arrived, or via event handling
+        // later if the ajax hasn't returned yet
+        this.renderChild(new libs.shelbyGT.ListView({
+          collection : likersCollection,
+          doStaticRender : true,
+          el : this.$('.js-liker-avatars-list'),
+          listItemView : 'LikerAvatarItemView'
+        }));
+      }
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
-    
+
     // have FB parse any like tags on page so they render correctly
     if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-    
+
     // when frame is loaded, get number of disqus comments
     if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
@@ -131,7 +168,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _activate : function(){
     if (this.model.get('collapsed')) {
       this._expand();
-      return;
+      return false;
     }
     shelby.models.guide.set('activeFrameModel', this.model.getFirstFrame());
   },
@@ -146,14 +183,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       return false;
     }
   },
-  
+
   requestFrameShareView: function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
         this.model.getFirstFrame());
     }
   },
-  
+
   requestFrameRollView : function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
@@ -163,23 +200,23 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _onClickQueue : function(){
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
-    
+
     self = this;
-    this.model.getFirstFrame().saveToWatchLater();
+    this.model.getFirstFrame().like();
     // immediately change the button state
-    this.$('.js-queue-frame').addClass('queued button_gray-light');
-    this.$('.js-queue-frame i').text('Queued');
-    // start the transition which fades out the saved-indicator
+    this.$('.js-queue-frame').addClass('queued');
+    this.$('.js-queue-frame .label').text('Liked');
+    this.$('.js-queue-frame i').addClass('icon-heart--red');
   },
-  
+
   _copyFrameLink : function(e){
     var buttonEl = $(e.currentTarget);
     buttonEl.text("[fetching...]");
-    
+
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
-      dataType: 'json',
+      dataType: 'jsonp',
       success: function(r){
         var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
         buttonEl.replaceWith(inputEl);
@@ -188,9 +225,30 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       },
       error: function(){
         buttonEl.text("Link Unavailable");
-        shelby.error("Shortlinks are currently unavailable.");
+        shelby.alert({message:"Shortlinks are currently unavailable."});
       }
     });
+  },
+
+  _onClickRemoveFrame : function(){
+    var self = this;
+
+    shelby.dialog(
+      {
+        message: '<p>Are you sure you want to <strong>remove</strong> this video?</p>',
+        button_primary : {
+          title: 'Remove Video'
+        },
+        button_secondary : {
+          title: 'Cancel!'
+        }
+      },
+      function(returnValue){
+        if(returnValue == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
+          self._removeFrame();
+        }
+      }
+    );
   },
 
   _removeFrame : function(){
@@ -216,7 +274,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       });
     }
   },
-  
+
   _requestConversationView : function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
       this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
@@ -229,7 +287,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
-    
+
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
@@ -243,7 +301,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return;
     }
-    
+
     if (this.model.getFirstFrame().isOnRoll(shelby.models.user.get('heart_roll_id')) ||
         this.model.getFirstFrame().isOnRoll(shelby.models.user.get('watch_later_roll_id'))) {
       // if the frame is on the heart or queue roll we actually want to go to the roll
@@ -254,7 +312,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       shelby.router.navigateToRoll(this.model.getFirstFrame().get('roll'), {trigger:true});
     }
   },
-  
+
   _goToRollById : function(e){
     shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
     return false;
@@ -266,14 +324,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleComment : function(e){
-    e.preventDefault();
-    
-    $(e.currentTarget).text(function(e,i){
-      return (i == 'more…') ? 'Hide' : 'more…';
-    });
-    this.$('.xuser-message-remainder').toggle();
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
   },
-  
+
   requestFBPostUI : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.get('frames').models[0];
@@ -294,7 +351,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     );
 
   },
-  
+
   requestFBSendUI : function(e) {
     var _frame = this.model.get('frames').models[0];
     FB.ui({
@@ -306,10 +363,17 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       caption: ':: a shelby genius video ::'
     });
   },
-  
+
   _shareToFacebook : function(e){
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
+    var _caption;
+    if (_frame.has('roll')) {
+      _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+    }
+    else {
+      _caption = 'a video found with Shelby Video Search';
+    }
     if (typeof FB != "undefined"){
       FB.ui(
         {
@@ -318,7 +382,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           link: _frame.getSubdomainPermalink(),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
-          caption: 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv'
+          caption: _caption
         },
         function(response) {
           if (response && response.post_id) {
@@ -328,7 +392,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       );
     }
   },
-  
+
   //ListItemView overrides
   isMyModel : function(model) {
     return this.model == model;

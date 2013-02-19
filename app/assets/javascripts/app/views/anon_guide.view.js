@@ -8,7 +8,6 @@
     },
 
     initialize : function(){
-      console.log('hizzle');
       this.render();
     },
 

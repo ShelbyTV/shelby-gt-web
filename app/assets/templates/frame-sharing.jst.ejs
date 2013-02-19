@@ -7,20 +7,19 @@
 <% var conversation   = frame.get('conversation') %>
 <% var message        = conversation ? conversation.get('messages').at(0) : null %>
 
-<div class="sharing-head">
-  <div class="discussion__h1">
-    <button class="button_primer button_gray-medium guide-overlay-cancel share-overlay-cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
-      <i class="button_icon_left icon_cancel icon">
-        Cancel
-      </i>
-    </button>
+<div class="guide-overlay__head guide-overlay__head--frame-sharing">
+        <h1 class="guide-overlay__title">
+    Email to Friends
+  </h1>
 
-    New Shelby Chat
+  <button class="button_primer button_gray-medium guide-overlay__button--cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+    <i class="icon-cancel"></i>
 
-  </div><!-- eo guide-overlay-head-lining -->
-</div><!-- eo guide-overlay-head.sharing-head -->
+    <span class="visuallyhidden">Cancel</span>
+  </button>
+</div><!-- eo guide-overlay__head -->
 
-<div class="overlay_body guide-overlay-body conversation-body share-overlay-body">
+<div class="guide-overlay__body guide-overlay__body--frame-sharing">
   <form class="form_module share-form clearfix">
     <h1 class="frame-title" title="<%= frameTitle %>">
       <%= frameTitle || '' %>
@@ -36,6 +35,7 @@
 
     </div><!-- eo frame-body-wrapper -->
     <div class="frame-sharing">
+
     </div>
   </form>
 </div><!-- eo over_body guide-overlay-body conversation-body -->

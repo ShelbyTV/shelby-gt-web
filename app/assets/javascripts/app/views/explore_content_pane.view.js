@@ -20,14 +20,16 @@ libs.shelbyGT.ExploreContentPaneView = Support.CompositeView.extend({
 
   _onRollCategoryChange : function(exploreGuideModel, displayedRollCategory) {
     this._leaveChildren();
-    this.appendChildInto(new libs.shelbyGT.ListView({
+    var exploreRollsListView = new libs.shelbyGT.ListView({
       className: 'explore-list explore-rolls',
       collectionAttribute : 'rolls',
       doStaticRender : true,
       listItemView : 'ExploreRollItemView',
       model : displayedRollCategory,
       tagName : 'ol'
-    }), '.js-explore-body');
+    });
+
+    this.appendChildInto(exploreRollsListView, '.js-explore-body');
     //reset scroll position to the top
     this.$('.js-content-module-explore').scrollTop(0);
   }

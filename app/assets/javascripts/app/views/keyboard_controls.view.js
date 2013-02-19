@@ -59,7 +59,20 @@
         val : -1,
         is_transient : true
       },
-      
+      // up
+      38 : {
+        model : 'userDesires',
+        attr : 'changeChannel',
+        val : 1,
+        is_transient : true
+      },
+      // down
+      40 : {
+        model : 'userDesires',
+        attr : 'changeChannel',
+        val : -1,
+        is_transient : true
+      },
       // (l)ink
       76 : {
         model : 'userDesires',
@@ -70,19 +83,24 @@
             $.ajax({
               url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
               dataType: 'json',
-              success: function(r){ shelby.alert(r.result.short_link); }
+              success: function(r){ shelby.dialog({
+                message: '<p>Shortlink</p><p>'+r.result.short_link+'</p>',
+                button_primary: {
+                  title: "Done"
+                }
+              }); }
             });
           }
         },
         is_transient : true
       }
     },
-    
+
     initialize : function(){
       this._setupKeyboardBindings();
       this._disableSpacebarScrolling();
     },
-  
+
     _disableSpacebarScrolling : function(){
       var self = this;
       $(document).on('keydown', function(e){
@@ -101,7 +119,7 @@
     _onTypeableBlur : function(){
       shelby.models.userDesires.set('typing', false);
     },
-    
+
     _setupKeyboardBindings : function(){
       var self = this;
       $(document).on('keyup', function(event){
@@ -118,7 +136,7 @@
     },
 
     _getActionData : function(keyCode){
-      var actionDataRaw = _.clone(this._keyCodeActionMap[event.keyCode]);
+      var actionDataRaw = _.clone(this._keyCodeActionMap[keyCode]);
       if(!actionDataRaw) return false;
       actionDataRaw.val = (typeof actionDataRaw.val === 'function') ? actionDataRaw.val() : actionDataRaw.val;
       return actionDataRaw;

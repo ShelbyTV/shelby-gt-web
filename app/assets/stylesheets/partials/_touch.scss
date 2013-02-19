@@ -6,36 +6,16 @@
     overflow: hidden;
   }
 
-  .videoplayer-tools__wrapper,
-  .videoplayer-controls__wrapper {
-    font-size: 1.3em;
-  }
-
-  .videoplayer-progress {
-    margin-top: 1.8em;
-  }
-
-  .video-player-timeline {
-    line-height: 4.6em;
-  }
-
-  .videoplayer-progress__scrubber {
-    border-radius: 5px;
-    height: 35px;
-    margin: -22px 0;
-    width: 19px;
-  }
-
-//------------------------------------------------------------------------------
-//  Frame
+  //------------------------------------------------------------------------------
+  //  Frame
 
   .frame-body-wrapper {
     box-shadow: none;
     border: 1px solid rgba(0,0,0,.2);
   }
 
-//------------------------------------------------------------------------------
-//  Preroll video info
+  //------------------------------------------------------------------------------
+  //  Preroll video info
 
   .preroll-video-info-wrapper {
     font-size: 1.3em
@@ -48,120 +28,29 @@
   .preroll-video-info {
     margin: 15em 15em 0;
   }
-
-
-//------------------------------------------------------------------------------
-//  Shelby Chat
-
-  //structural
-  .discussion__body {
-    padding-bottom: 55px;
+  
+  //------------------------------------------------------------------------------
+  //  Player controls
+  
+  .videoplayer-controls__wrapper {
+    display: none;
+  }
+  
+  .video_progress--mini__wrapper {
+    z-index: 2;
   }
 
-  .discussion__content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  ////////////////////////////////////////////////////////////////////////////
-  //  reply UI
-  ////////////////////////////////////////////////////////////////////////////
-  .discussion-reply {
+  //------------------------------------------------------------------------------
+  //  Persistent video Info
 
-  }
+  .hide-guide {
+    .videoplayer-viewport {
+      bottom: 5em;
+    }
 
-  //media-module reply wrapper, reply lives in media_body
-  .discussion__form-wrapper {
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-    width: 100%;
-
-    .media_image {
-      display: none;
+    .persistent_video_info__wrapper {
+      bottom: -($persistent_video_info--height);
     }
   }
 
-  //actual reply form
-  .discussion__form--discussion-reply {
-    .form_fieldset {
-      float: right;
-      margin: 0;
-      padding: 0 8px;
-      width: 100%;
-    }
-
-    .form_textarea {
-      border-radius: 15px;
-      height: 30px;
-      left: 50px;
-      position: absolute;
-      right: 75px;
-      width: auto;
-    }
-
-    .form_submit {
-      border-radius: 15px;
-      float: right;
-      margin-top: 0;
-      padding: 7px 12px;
-    }
-  }
-
-  //button to add attachments
-  .discussion__button--attachment {
-    border-radius: 15px;
-    padding: 7px 12px;
-    position: absolute;
-
-    .full-text {
-      display: none;
-    }
-    .icon {
-      padding-left: .5em;
-      display: block;
-    }
-  }
-
-  ////////////////////////////////////////////////////////////////////////////
-  //  search for video
-  ////////////////////////////////////////////////////////////////////////////
-  .form_module--attachment-search {
-    text-align: center;
-
-    .form_input,
-    .form_textarea {
-      left: 8px;
-      position: absolute;
-      right: 90px;
-      width: auto;
-    }
-
-    .form_submit {
-      display: inline;
-      float: right;
-      padding: 0.7em 1.0em 0.8em;
-    }
-  }
-
-  .discussion__content--attachment {
-    .discussion__button--cancel {
-      height: 21px;
-      left: 8px;
-      
-      .icon {
-        display: inline-block;
-      }
-
-      .full-text {
-        display: none;
-      }
-    }
-
-    .discussion__list--attachment-results {
-      .media_image {
-        width: 33%;
-      }
-    }
-  }
-}
+}//eo .touch

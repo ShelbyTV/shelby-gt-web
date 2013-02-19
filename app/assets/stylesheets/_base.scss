@@ -1,3 +1,9 @@
+//------------------------------------------------------------------------------
+//  Constants
+//------------------------------------------------------------------------------
+$app-header__height : 38px;
+$app-background-color : #e2e2e2;
+
 $extension: ".svg" !default;
 $path: "/images/assets/" !default;
 
@@ -129,7 +135,7 @@ $base          : #e2e2e2;
 $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
 $shadow        : 0 0 2px 0 rgba(0,0,0,.3);
-$shadow-text   : 0px 1px 0px #333;
+$shadow-text   : 0px -1px 0px rgba(0,0,0,.6);
 $outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);

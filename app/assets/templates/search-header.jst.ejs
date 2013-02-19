@@ -1,8 +1,13 @@
 <form id="js-video-search-form" class="video-search-form">
-  <input type="submit" class="button_primer button_blue media_image--rev video-search-button js-video-search-button" value="Search" />
-  <div class="media_body">
-    <div>
-      <input autofocus="autofocus" name="search" type="text" class="form_input video-search-text-input" id="js-video-search-query-input" placeholder="Find More Video" value="<%= search.escape('query') %>" />
-    </div>
-  </div>
+  <% if (shelby.abTests.searchPromoteRepeat && shelby.abTests.searchPromoteRepeat == "do") { %>
+    <label for="js-video-search-query-input" class="form_label">While you're watching, search for more video:</label>
+  <% } %>
+
+  <fieldset class="form_fieldset search_module">
+    <input type="submit" class="button_primer button_blue search_module__submit js-video-search-button" value="Search" />
+
+    <span class="search_module__input_wrapper">
+      <input autofocus="autofocus" name="search" type="text" class="form_input search_module__input" id="js-video-search-query-input" placeholder="Find More Video" value="<%= search.escape('query') %>" />
+    </span>
+  </fieldset><!-- eo search_module -->
 </form>

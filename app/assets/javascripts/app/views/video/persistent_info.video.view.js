@@ -14,6 +14,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
+    "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo"
   },
 
@@ -22,11 +23,17 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
+    shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   _cleanup : function() {
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.unbind("change:playingFrameGroupCollection", this._onPlayingFrameGroupCollectionChange, this);
+    shelby.collections.videoSearchResultFrames.unbind('add', this.render, this);
+    shelby.models.queuedVideos.unbind('add:queued_videos', this._onQueuedVideosAdd, this);
+    shelby.models.queuedVideos.unbind('remove:queued_videos', this._onQueuedVideosRemove, this);
   },
 
   template : function(obj) {
@@ -44,9 +51,10 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     if(this._currentFrame && this._nextFrame){
       this.$el.html(this.template({
-        currentFrame: this._currentFrame,
-        nextFrame: this._nextFrame,
-        queuedVideosModel: this.options.queuedVideos
+        currentFrame      : this._currentFrame,
+        nextFrame         : this._nextFrame,
+        queuedVideosModel : this.options.queuedVideos,
+        user              : shelby.models.user
       }));
     }
   },
@@ -59,6 +67,28 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _onPlayingFrameGroupCollectionChange : function(playlistManagerModel, playingFrameGroupCollection){
     this._playingFrameGroupCollection = playingFrameGroupCollection;
     this.render();
+  },
+
+  _onQueuedVideosAdd : function(video){
+    this._onAddRemoveQueuedVideo(video);
+  },
+
+  _onQueuedVideosRemove : function(video){
+    this._onAddRemoveQueuedVideo(video, true);
+  },
+
+  _onAddRemoveQueuedVideo : function(video, removeVideo) {
+    if (this._currentFrame) {
+      var frameVideo = this._currentFrame.get('video');
+      if (frameVideo.id == video.id ||
+          (this._currentFrame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+        // this video is the one being added/removed
+        // in case it got updated from somewhere else like the explore view, update my button
+        var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
+        $button.toggleClass('queued', !removeVideo).find('.label').text(!removeVideo ? 'Liked' : 'Like');
+        $button.find('i').toggleClass('icon-heart--red', !removeVideo);
+      }
+    }
   },
 
   /*************************************************************
@@ -106,8 +136,10 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _queueFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.saveToWatchLater();
-      $(el.currentTarget).toggleClass('queued js-queued').find('.js-command-icon').text('Queued');
+      frame.like({likeOrigin: 'Persistent Video Info'});
+      var $target = $(el.currentTarget);
+      $target.toggleClass('queued js-queued').find('.label').text('Liked');
+      $target.find('i').addClass('icon-heart--red');
     }
   },
 
@@ -127,6 +159,27 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _skipToNextVideo : function(){
     this._userDesires.set('changeVideo', 1);
     this._userDesires.unset('changeVideo');
+  },
+
+  _shareCurrentToFacebook : function(e){
+    var _frame = this._currentFrame;
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          name: _frame.get('video').get('title'),
+          link: _frame.getSubdomainPermalink(),
+          picture: _frame.get('video').get('thumbnail_url'),
+          description: _frame.get('video').get('description'),
+          caption: 'a video from '+ shelby.config.hostName
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
+        }
+      );
+    }
   }
 
 });

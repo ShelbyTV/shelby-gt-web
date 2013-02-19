@@ -1,0 +1,92 @@
+//------------------------------------------------------------------------------
+//  welcome message shown on .tv's
+//------------------------------------------------------------------------------
+
+//abstracts (els)
+
+.welcome-message__h1 {
+  @include ellipsis;
+
+  color: $button-color;
+  bottom: 0;
+  font-size: 1.4em;
+  left: 0;
+  padding: 4px 6px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.welcome-message__h2 {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin: 0 0 2px;
+}
+
+.welcome-message__subline {
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+.welcome-message__button {
+  font-size: 1.3em;
+  padding: 0.5em 1.9em;
+
+  i {
+    background-size: contain;
+    padding-right: 20px;
+  }
+}
+
+.welcome-message__banner {
+  width: 100%;
+}
+
+//positioning wrapper
+.welcome-message__wrapper {
+  bottom: 200px;
+  display: none;
+  height: auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+//root
+.welcome-message {
+  font-size: 1.2em;
+  left: 50%;
+  margin-left: -220px;
+  min-height: 36px;
+  padding: 6px;
+  position: absolute;
+  top: 45%;
+  width: 440px;
+}
+
+//structure
+.welcome-message__head {
+  height: 58px;
+  margin: 0 0 4px;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    bottom: -1px;
+    content: "\0020";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    box-shadow: 1px 1px 70px 25px black;
+  }
+}
+
+.welcome-message__body {
+  padding: 6px 5px 3px 6px;
+
+  .welcome-message__button {
+    margin: 1px;//fixes overflow:hidden; ugliness
+  }
+}

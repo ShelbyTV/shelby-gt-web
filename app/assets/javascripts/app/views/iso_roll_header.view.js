@@ -1,7 +1,7 @@
 /*
  * Shows the header image, when available.
  *
- * If you're looking for the full app width header (which supports multi roll selection) 
+ * If you're looking for the full app width header (which supports multi roll selection)
  * see IsoRollAppHeaderView rendered via dynamic.router.js
  */
 libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
@@ -21,6 +21,8 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
   },
 
   render : function(){
+    this.$el.removeAttr('hidden');
+
     this.$el.html(this.template({roll : this.model}));
 
     // if user can change the roll header image
@@ -43,7 +45,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
       this.render();
     }
   },
-  
+
   /*****************
    * Roll Header Image Uploading
    *
@@ -53,21 +55,21 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
    *****************/
   _initUploader: function(){
     var self = this;
-    
+
     this.$el.fileupload({
       xhrFields: { withCredentials: true },
       dataType: 'json',
       type: 'put',
-      
+
       // Roll model doesn't have url() defined, it's dynamic in sync()
       // So I added a static updateUrl() (which is different from User model)
       url: self.model.updateUrl(),
-      
+
       done: function (e, data) {
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        
+
         if(data.result.status == 200){
           // This is also different from User code, but a bit more generic and would probably work over there too.
           self.model.set(data.result.result);
@@ -75,7 +77,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
 
           shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         } else {
-          shelby.alert("Sorry, that upload failed.");
+          shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
           shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
         }
       },
@@ -83,7 +85,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
         self._hideSpinner();
         self._hideProgressMessage();
         self._clearProgress();
-        shelby.alert("Sorry, that upload failed.");
+        shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
         shelby.track( 'roll_header_image_upload_fail', { userName: shelby.models.user.get('nickname') });
       },
       change: function (e, data) {
@@ -97,19 +99,19 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
       }
     });
   },
-  
+
   _updateProgress: function(pct){
     if(this.options.progressEl){
       $(this.options.progressEl).css('width', pct+'%');
     }
   },
-  
+
   _clearProgress: function(){
     if(this.options.progressEl){
       $(this.options.progressEl).css('width', '0');
     }
   },
-  
+
   _showSpinner: function(){
     if( this.options.spinnerEl && !this._spinner ){
       this._spinner = new libs.shelbyGT.SpinnerView({
@@ -119,7 +121,7 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
       });
       this.renderChild(this._spinner);
     }
-    
+
     if(this._spinner) this._spinner.show();
   },
 
@@ -130,10 +132,10 @@ libs.shelbyGT.IsoRollHeaderView = Support.CompositeView.extend({
   _showProgressMessage : function(){
     $(this.options.progressMessageEl).text('Uploading...');
   },
-  
+
   _hideProgressMessage : function(){
     $(this.options.progressMessageEl).text('');
   }
-  
+
 
 });

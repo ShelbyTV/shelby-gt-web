@@ -1,0 +1,44 @@
+//------------------------------------------------------------------------------
+//  Text-level classes for small type tweaks
+//------------------------------------------------------------------------------
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+//multi-line ellipsis magic
+.line-clamp {
+  position: relative;
+  height: 4em;
+
+  &:after {
+    background-color: $videocard-footer-bg-color;
+    box-shadow: 0 0 2px 0 #f2f0f0;
+    bottom: -7px;
+    color: $shelby-blue;
+    content: "More...";
+    margin: 0;
+    padding: 0.3em 1em;
+    position: absolute;
+    right: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &:after {
+      text-decoration: underline;
+    }
+  }
+}
+
+.line-clamp--open {
+  @extend .line-clamp;
+
+  height: auto;
+
+  &:after {
+    content: "Hide";
+  }
+}

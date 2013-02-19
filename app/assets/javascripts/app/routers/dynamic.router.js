@@ -3,7 +3,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   routes : {
     "send-invite"                          : "openInviteDisplayDashboard",
     "isolated-roll/:rollId"                : "displayIsolatedRoll",
-    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRollwithFrame",
     "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
     "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
     "roll/:rollId/:title"                  : "displayRoll",
@@ -16,13 +16,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
+    "channel/:channel"                     : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
-    "queue"                                : "displaySaves",
+    "likes"                                : "displaySaves",
     "saves"                                : "displaySaves",
     "stream"                               : "displayDashboard",
-    "team"                                 : "displayTeam",
     "tools"                                : "displayTools",
     ""                                     : "displayDashboard",
     ":userName"                            : "displayUserProfile",
@@ -111,9 +111,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
-    var query = params && params.query
+
+    var query = params && (params.query || params.q);
     if (query) {
-      shelby.models.videoSearch.set('query', params.query);
+      shelby.models.videoSearch.set('query', (params.query || params.q));
     }
     shelby.models.guide.set({
       displayState : libs.shelbyGT.DisplayState.search
@@ -123,29 +124,55 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayIsolatedRoll : function(rollId, frameId, params){
+  displayIsolatedRoll : function(rollId, params){
+    this._prepIsolatedRoll({rollId: rollId, params: params});
+  },
+
+  displayIsolatedRollwithFrame : function(rollId, frameId, params) {
+    this._prepIsolatedRoll({rollId: rollId, frameId: frameId, params: params});
+  },
+
+  _prepIsolatedRoll : function(opts) {
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
 
-    // Adjust *what* is displayed
-    var options = {updateRollTitle:false};
+    // save current referrer host name in shelby config
+    if (opts.params && opts.params.src){ shelby.config.hostName = opts.params.src; }
 
     shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
       new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
 
-    if (frameId){
-      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true});
-    } else {
-      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true});
-    }
+    var options = {updateRollTitle:false};
+    var topLevelViewsOptions = {isIsolatedRoll : true, hostName: shelby.config.hostName};
 
+    if (opts.frameId){
+      this.displayFrameInRoll(opts.rollId, opts.frameId, opts.params, options, topLevelViewsOptions);
+    }
+    else {
+      this.displayRoll(opts.rollId, null, null, options, topLevelViewsOptions);
+    }
     // N.B. We are hiding Frame's tool bar and conversation via CSS.
     // Doing so programatically seemed overly involved and complex when a few CSS rules would do
 
-    //hide the guide initially for iso rolls
+    //show the guide initially for iso rolls
     if(shelby.routeHistory.length === 0){
-      shelby.models.userDesires.set({guideShown: false});
+      shelby.models.userDesires.set({guideShown: true});
     }
+  },
+
+  displayChannel : function(channel){
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+
+    shelby.models.multiplexedVideo.set('channel', channel);
+
+    shelby.models.guide.set({
+      displayState : libs.shelbyGT.DisplayState.channel
+    });
+
+    // TODO move this into handler where change is bound
+    if (channel) { shelby.models.multiplexedVideo.trigger('channel'); }
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){
@@ -259,7 +286,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (options.displayInGuide) {
       shelby.models.guide.set({
         'displayState' : libs.shelbyGT.DisplayState.dashboard,
-        'sinceId' : options.data.since_id ? options.data.since_id : null,
+        'sinceId' : options.data.since_id ? options.data.since_id : null
       });
 
       // filtering out faux users so as a team we can interact more easily
@@ -316,9 +343,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (watchLaterRoll) {
       this.displayRoll(watchLaterRoll.id, watchLaterRoll.get('title'), null, {
         updateRollTitle: false
+      }, {
+        isIsolatedRoll : false
       });
     } else {
-      shelby.alert("Sorry, you don't have a saves roll.");
+      shelby.alert({message: "<p>Could not roll view to your Queue</p>"});
       this.navigate('', {trigger:true, replace:true});
     }
   },
@@ -331,11 +360,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayHelp : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.help);
-  },
-
-  displayTeam : function(){
-    this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.team);
   },
 
   displayLegal : function(){
@@ -384,10 +408,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _activateFirstRollFrame : function(rollModel, response) {
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var firstFrame = rollModel.get('frames').first();
-      if (firstFrame) {
-        shelby.models.guide.set('activeFrameModel', firstFrame);
-      }
+      shelby.models.playlistManager.trigger('playlist:start');
     }
   },
 
@@ -395,7 +416,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-      if (activeFrameModel) {
+      // for compatibility reasons, we only show videos from certain providers on mobile
+      if (activeFrameModel && (!Browser.isMobile() || activeFrameModel.get('video').canPlayMobile())) {
         var activeFrameModelRoll = activeFrameModel.get('roll');
         if (activeFrameModelRoll && activeFrameModelRoll.id == rollModel.id) {
           //if the previous active frame was on the current roll, just play it
@@ -405,18 +427,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
 
       //if we weren't already playing something from the current roll, activate the roll's first frame
-      var firstFrame = rollModel.get('frames').first();
-      if (firstFrame) {
-        shelby.models.guide.set('activeFrameModel', firstFrame);
-      }
+      shelby.models.playlistManager.trigger('playlist:start');
     }
   },
 
   _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var frame;
-      if (frame = rollModel.get('frames').get(frameId)) {
+      var frame = rollModel.get('frames').get(frameId);
+      // for compatibility reasons, we only show videos from certain providers on mobile
+      if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
         var activeFrameModel = shelby.models.guide.get('activeFrameModel');
         if (shelby.models.routingState.get('forceFramePlay')) {
           // if we want to be sure the frame starts playing, we need to take special action if the
@@ -445,7 +465,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       } else {
         // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-        shelby.alert("Sorry, the video you were looking for doesn't exist in this roll.");
+        shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist in this roll.</p>"});
         this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
     } else {
@@ -459,24 +479,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _activateFirstDashboardVideoFrame : function(dashboardModel, response) {
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var firstDashboardEntry = dashboardModel.get('dashboard_entries').find(function(entry){
-        return entry.get('frame') && entry.get('frame').get('video');
-      });
-      if (firstDashboardEntry) {
-        shelby.models.guide.set('activeFrameModel', firstDashboardEntry.get('frame'));
-      }
+      shelby.models.playlistManager.trigger('playlist:start');
     }
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
     // don't want to activate the video if we've switched to explore view during the asynchronous load
     if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var entry;
-      if (entry = dashboardModel.get('dashboard_entries').get(entryId)) {
+      var entry = dashboardModel.get('dashboard_entries').get(entryId);
+      // for compatibility reasons, we only show videos from certain providers on mobile
+      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
         shelby.models.guide.set('activeFrameModel', entry.get('frame'));
       } else {
         // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-        shelby.alert("Sorry, the entry you were looking for doesn't exist in your stream.");
+        shelby.alert({message: "<p>Sorry, the entry you were looking for doesn't exist in your stream.</p>"});
         this.navigate("/", {trigger:true, replace:true});
       }
     }
@@ -491,6 +507,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }).value();
 
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
+    shelby.models.guide.set('hostName', options.hostName);
     shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
@@ -545,14 +562,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
-    this._setupTopLevelViews(topLevelViewsOptions);
-
     // default options
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: false,
       onRollFetch: null,
       data: null
     }).value();
+
+    topLevelViewsOptions = _.chain({}).extend(topLevelViewsOptions).defaults({
+      isIsolatedRoll: false
+    }).value();
+
+    this._setupTopLevelViews(topLevelViewsOptions);
 
     var rollModel;
     if (typeof(roll) === 'string') {
@@ -571,7 +592,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
       // correct the roll title in the url if it changes (especially on first load of the roll)
       rollModel.bind('change:title', function(){
-        rollModel.unbind('change:title'),
+        rollModel.unbind('change:title');
         this.navigateToRoll(rollModel,{trigger:false,replace:true});
       }, this);
     }
@@ -594,6 +615,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (typeof(options.onRollFetch) === 'function') {
       fetchOptions.success = options.onRollFetch;
     }
+
+    // show dot-tv-welcome-message if on an isolated roll
+    if (topLevelViewsOptions.isIsolatedRoll){
+
+      shelby.views.dotTVWelcome = shelby.views.dotTVWelcome ||
+          new libs.shelbyGT.dotTVWelcome({ model : rollModel });
+    }
+
+
     var oneTimeSpinnerState = new libs.shelbyGT.SpinnerStateModel();
     shelby.views.guideSpinner.setModel(oneTimeSpinnerState);
     $.when(rollModel.fetch(fetchOptions)).always(function(){oneTimeSpinnerState.set('show', false);});

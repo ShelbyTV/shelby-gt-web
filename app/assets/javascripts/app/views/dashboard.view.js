@@ -14,6 +14,9 @@
       doCheck : SmartRefreshCheckType.headAndTail,
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
+      mobileVideoFilter : function(dbEntry) {
+          return dbEntry.get('frame').get('video').canPlayMobile();
+      },
       initFixedHead : true,
       isIntervalComplete : function(displayedItems) {
         return displayedItems != 0 && displayedItems % 5 == 0;
@@ -44,10 +47,6 @@
         }
       });
       FrameGroupPlayPagingListView.prototype.initialize.call(this);
-    },
-
-    _filter : function(item){
-      return item;
     },
 
     _doesResponseContainListCollection : function(response) {

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', "3.2.12"
+# json is a dependency of rails, want to make sure we are secure with at least 1.7.7
+gem 'json', "~> 1.7.7"
 
 # Needed to decode the gt api server cookie
 gem 'bson_ext'
@@ -23,7 +25,7 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "experiment-each"
+gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "vanity-experiments-helper"
 
 # ---------- Other utils
 #
@@ -47,6 +49,7 @@ group :assets do
   gem 'compass-rails', '~> 1.0.3'
   gem 'ejs'
   gem 'yui-compressor'
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails'
@@ -65,6 +68,7 @@ group :production, :staging do
 end
 group :development do
   gem 'capistrano-unicorn', :require => false
+  gem 'thin'
 end
 
 #

@@ -12,14 +12,14 @@
  * and receives the video selected.  Handles the attachment form there.
  */
 libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
-  
+
   events : {
-    "click .js-post-message"            : "_postMessage",
-    "click .js-add-video-attachment"    : "_showVideoAttachmentView"
+    "click .js-post-message" : "_postMessage",
+    "click .js-search-video" : "_showVideoSearchView"
   },
-  
+
   el: '.js-discussion-roll-reply',
-  
+
   /*
    * Need to post new messages to the latest frame.
    * Since PagingListView fucks with the collection we hold in model, we
@@ -28,39 +28,39 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
    * (didn't, but could also have done this with the masterCollection of PagingListView)
    */
   _latestFrame: null,
-  
+
   // if the viewer is a real Shelby user, they will be stored here
   _user: null,
-  
+
   initialize : function(){
     this.model.on('change:id', this.render, this);
     this.model.on('change', this._updateLatestFrame, this);
-    
+
     this._getViewerShelbyModel();
     this._updateLatestFrame();
-    
+
     this.render();
   },
-  
+
   _cleanup : function(){
     this.model.on('change:id', this.render);
     this.model.off('change', this._updateLatestFrame);
   },
-  
+
   template : function(obj){
     return SHELBYJST['discussion-roll/reply'](obj);
   },
-  
+
   render : function(){
     this.$el.html(this.template({user:this._user}));
   },
-  
+
   _postMessage : function(e){
     var self = this;
-    
+
     e.stopPropagation();
     e.preventDefault();
-    
+
     //error checking on input
     var msgInput = this.$el.find('.js-message-text'),
     text = msgInput.val();
@@ -70,24 +70,30 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
     } else {
       msgInput.removeClass("error");
     }
-    
-    //video attachments
-    var videoUrls = new Array();
-    this.children.forEach(function(child){
-      videoUrls.push(child.options.url);
-    });
-    
-    //post new message
-    var msg = new libs.shelbyGT.DiscussionRollMessageModel({
-      message: text, 
-      token: this.options.token, 
+
+    //post new message to server
+    this._syncNewMessage(text, null);
+  },
+
+  _syncNewMessage: function(text, videoUrls){
+    if(!text && !videoUrls){ return; }
+
+    var
+    self = this,
+    msgInput = this.$el.find('.js-message-text'),
+    msg = new libs.shelbyGT.DiscussionRollMessageModel({
+      token: this.options.token,
       discussion_roll_id: this.model.id,
       videos: videoUrls
     });
+    //IE will send "null" if we simply include {message:null} in the payload
+    if(text !== null){
+      msg.set({message: text});
+    }
+
     msg.save(null, {
       success:function(respModel, resp){
         msgInput.val('');
-        self._leaveChildren();
         // respModel may have an array of Frames, in which case we add them to self.model
         // otherwise it's a Conversation, which we just need to update in self.model
         if( respModel.get('frames') ){
@@ -98,7 +104,10 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
         } else {
           self._latestFrame.get('conversation').set(respModel);
         }
-        
+
+        //keep the roll in sync, since it doesn't come back
+        self.model.set({content_updated_at: new Date()});
+
         setTimeout(function(){ $("body").scrollTop(10000000000); }, 100);
       },
       error:function(){
@@ -107,18 +116,18 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
       }
     });
   },
-  
+
   _updateLatestFrame: function(){
     var f = this.model.get('frames').first();
     if( typeof(f) === "undefined" ){ return; }
     if( this._latestFrame === null || f.id > this._latestFrame.id ){ this._latestFrame = f; }
   },
-  
+
   //if the viewer is an actual shelby model, we want to show their avatar
   _getViewerShelbyModel: function(){
     var self = this;
-    
-    if(this.options.viewer.indexOf("@") === -1){    
+
+    if(this.options.viewer.indexOf("@") === -1){
       this._user = new libs.shelbyGT.UserModel({id: this.options.viewer});
       this._user.fetch({
         success: function(userModel, resp){
@@ -126,40 +135,37 @@ libs.shelbyGT.DiscussionRollReplyView = Support.CompositeView.extend({
         }
       });
     }
-    
+
   },
-  
-  _showVideoAttachmentView: function(e){
+
+  _showVideoSearchView: function(e){
     e.stopPropagation();
     e.preventDefault();
-    
+
     // If a video is selected, it's sent to us via addVideoAttachment()
     // DiscussionRollSelectVideoAttachmentView handles rendering, possibly selecting, hiding itself.
     this._scrollTopWhenHidden = $("body").scrollTop();
-    $(".js-discussion").addClass('discussion-attachment-shown');
+    $(".js-discussion-main").toggleClass('hidden',true);
     new libs.shelbyGT.DiscussionRollSelectVideoAttachmentView({delegate: this});
   },
-  
+
   videoAttachmentViewDidDisappear: function(){
-    $(".js-discussion").removeClass('discussion-attachment-shown');
+    $(".js-discussion-main").toggleClass('hidden',false);
     $("body").scrollTop(this._scrollTopWhenHidden);
   },
-  
+
   /*
-   * delegate method for SelectVideoAttachmentView
+   * delegate method for SelectVideoAttachmentView.
+   * Immediately causes the video to be posted to the conversation.
    * opts should = {
    *  url: the url to send to the api
    *  thumbnailUrl: - the url to a thumbnail to display
    *  }
    */
   addVideoAttachment: function(opts){
-    this.appendChildInto(
-      new libs.shelbyGT.DiscussionRollVideoAttachmentView({
-        thumbnailUrl: opts.thumbnailUrl,
-        url: opts.url
-      }), ".js-discussion-video-attachments");
+    if(!opts.url){ return; }
+    this._syncNewMessage(null, [opts.url]);
   }
-  
+
 });
-  
-  
+

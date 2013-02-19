@@ -23,12 +23,14 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/inline_donate_promo.view.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
+//= require ./views/search_empty_indicator.view.js
 //= require ./views/dashboard.view.js
 //= require ./views/guide_overlay.view.js
 //= require ./views/me_list.view.js
 //= require ./views/roll_list.view.js
 //= require ./views/roll.view.js
 //= require ./views/video_search.view.js
+//= require ./views/multiplexed_video.view.js
 //= require ./views/user_preferences.view.js
 //= require ./views/scrolling_guide.view.js
 //= require ./views/help.view.js

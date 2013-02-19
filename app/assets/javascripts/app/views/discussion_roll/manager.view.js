@@ -3,20 +3,33 @@
  *
  */
 libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
-  
+
   events : {
-    "click .discussion__item--current-discussion-roll" : "_disappear"
+    "click .js-discussion__item--current"  : "_disappear",
+    "click .js-about"                      : "_showExplanation",
+    "click .js-about-cancel"               : "_dimissExplanation"
   },
-  
+
   el: '#js-discussions-manager',
-  
+
   // Collection of all the DiscussionRolls we have access to
   _discussionRolls : null,
-  
+
   initialize : function(){
-    var self = this;
-    
-    var rollsCollection = new libs.shelbyGT.RollsCollectionModel();
+    if(this.model){ this.model.on('change:content_updated_at', this._fetchRolls, this); }
+
+    this._fetchRolls();
+  },
+
+  _cleanup: function(){
+    if(this.model){ this.model.off('change:content_updated_at', this._fetchRolls); }
+  },
+
+  _fetchRolls: function(){
+    var
+    self = this,
+    rollsCollection = new libs.shelbyGT.RollsCollectionModel();
+
     rollsCollection.fetch({
       url: shelby.config.apiRoot + '/discussion_roll',
       data: {token: this.options.token},
@@ -27,16 +40,16 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
       }
     });
   },
-  
+
   template : function(obj){
     return SHELBYJST['discussion-roll/manager'](obj);
   },
-  
+
   render : function(){
     var self = this;
-    
+
     this.$el.html(this.template());
-    
+
     if(this._discussionRolls){
       this._discussionRolls.toArray().reverse().forEach(function(r){
         self.appendChildInto(
@@ -44,18 +57,32 @@ libs.shelbyGT.DiscussionRollsManagerView = Support.CompositeView.extend({
             currentRoll:self.model,
             model:r,
             token:self.options.token,
-            viewer:self.options.viewer }), 
+            viewer:self.options.viewer }),
           '.js-dicussion-rolls-nav' );
       });
+      if(this._discussionRolls.length === 0){
+        this._showExplanation();
+      }
     }
   },
-  
+
   _disappear : function(e){
     e.stopPropagation();
     e.preventDefault();
-    
+
     this.options.delegate.discussionRollsManagerViewShouldDisappear();
+  },
+
+  _showExplanation: function(e){
+    $('.js-about').hide();
+    this.$(".js-about-content").show();
+    return false;
+  },
+
+  _dimissExplanation: function(){
+    $('.js-about').show();
+    this.$(".js-about-content").hide();
   }
-  
+
 });
 

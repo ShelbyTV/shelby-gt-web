@@ -1,17 +1,22 @@
-<div id="js-notifications" class="media_module notification_module notification_module--feedback <%= model.get('class') %>">
-  <div class="media_image notification_actions">
-    <button class="button_primer button_blue notification_button js-button js-confirm">
-      &times;
-    </button>
+<% var primary = model.get('button_primary') %>
+<% var secondary = model.get('button_secondary') %>
 
-    <a href="#" onclick="return false;" title="Close" class="notification_label js-button js-confirm">
-      Dismiss
-    </a>
-  </div><!-- eo notification_actions -->
+<div class="js-notifications notification <%= model.get('class') %>">
+  <div class="notification__head">
+    <%= model.get("message") %>
+  </div><!-- eo notification__head -->
 
-  <div class="media_body notification_body">
-    <h1 class="notification_message">
-      <%= model.get("message") %>
-    </h1>
-  </div><!-- eo notification_body -->
-</div>
+  <div class="notification__body">
+    <% if (primary.title) { %>
+      <button class="button_primer button_blue notification__button--primary faux_button js-primary">
+        <%= primary.title %>
+      </button>
+    <% } %>
+
+    <% if (secondary.title) { %>
+      <button class="notification__button--secondary faux_button js-secondary">
+        <%= secondary.title %>
+      </button>
+    <% } %>
+  </div><!-- eo notification__body -->
+</div><!-- eo notification -->

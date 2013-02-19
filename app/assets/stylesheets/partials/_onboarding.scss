@@ -36,7 +36,7 @@ $onboarding-head-height: 125px;
 }
 
 //------------------------------
-//  onboard architectural priming 
+//  onboard architectural priming
 //------------------------------
 .onboarding-content-pane  {
   background: adjust-lightness($base, 5%);
@@ -111,7 +111,7 @@ $onboarding-head-height: 125px;
 
 //------------------------------------------------------------------------------
 //  onboarding 'next step'
-//------------------------------------------------------------------------------ 
+//------------------------------------------------------------------------------
 .onboarding-next-step-wrapper {
   font-size: 1.2em;
   margin: 38px 20px 0;
@@ -178,9 +178,9 @@ $onboarding-head-height: 125px;
   text-align: left;
 
   //------------------------------
-  //  TODO: 
+  //  TODO:
   //  dynamic-avatar needs refactoring
-  //  for now this is a hacky override 
+  //  for now this is a hacky override
   //------------------------------
 
   .form_label.no-subline {
@@ -220,7 +220,7 @@ $onboarding-head-height: 125px;
 }
 
   //------------------------------
-  //  avatar upload module 
+  //  avatar upload module
   //------------------------------
   .onboarding-form-avatar {
     position: relative;
@@ -366,7 +366,7 @@ $onboarding-head-height: 125px;
 
   &:active:not(.followed) {
     @include gradient-primer(darken($base,25%),25%);
-  
+
     border: 1px solid darken($base,15%);
   }
 
@@ -486,10 +486,12 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-network-button {
+  &.disabled,
   &.onboarding-connected-network {
     @include button-primer($shelby-gray-light);
   }
 
+  display: block;
   width: 100%;
 }
 
@@ -516,7 +518,7 @@ $onboarding-head-height: 125px;
 .onboarding-icon {
   background-repeat: no-repeat;
   background-position: center center;
-  display: block;  
+  display: block;
   height: 105px;
 }
 
