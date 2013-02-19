@@ -8,10 +8,10 @@ class RollController < ApplicationController
   def show
 
     if user_signed_in?
-      render '/home/app'
+      render '/home/app', :layout => 'home'
     else
       get_roll_and_roll_creator_by_roll_id
-      render '/home/app'
+      render '/home/app', :layout => 'home'
     end
   end
 
@@ -19,18 +19,22 @@ class RollController < ApplicationController
     user_id = params[:user_id]
     @user = Shelby::API.get_user(user_id) if user_id
     @roll = Shelby::API.get_roll(@user['personal_roll_id']) if @user
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   def show_isolated_roll
     get_roll_and_roll_creator_by_roll_id
     @dot_tv_footer_button_positions = ab_test :dot_tv_footer_button_positions unless user_signed_in?
-    render '/home/app'
+    if true
+      render '/home/dot_tv', :layout => 'home'
+    else
+      render '/home/app', :layout => 'home'
+    end
   end
 
   def show_fb_genius_roll
     @genius_roll_id = params[:roll_id]
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   private

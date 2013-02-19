@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
   # Need to load the app in that case and let routing take place like normal on the hash fragment
   def hash_app
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   ##
@@ -37,11 +37,11 @@ class HomeController < ApplicationController
 
         #XXX FB GENIOUS ROLL
         if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
-          render '/home/app' and return
+          render '/home/app', :layout => 'home' and return
         end
 
         if user_signed_in?
-          render '/home/app'
+          render '/home/app', :layout => 'home'
 
         else
           # Consider errors and render landing page
@@ -110,7 +110,7 @@ class HomeController < ApplicationController
   # GET /explore
   #
   def explore
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   ##
@@ -127,7 +127,7 @@ class HomeController < ApplicationController
 
     # A/B test
     @search_promote_repeat = ab_test :search_promote_repeat
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   ##
@@ -136,7 +136,7 @@ class HomeController < ApplicationController
   # GET /channel/:name
   #
   def channel
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
   ##

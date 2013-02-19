@@ -27,7 +27,7 @@ class FrameController < ApplicationController
       @video = Shelby::API.get_video(@frame['video_id'])
       redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
     else
-      render '/home/app'
+      render '/home/app', :layout => 'home'
     end
   end
 
@@ -35,7 +35,7 @@ class FrameController < ApplicationController
   # to allow linking to a frame within a subdomain'd iso roll
   #
   def show_frame_in_isolated_roll
-    render '/home/app'
+    render '/home/app', :layout => 'home'
   end
 
 
