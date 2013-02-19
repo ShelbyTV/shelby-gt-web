@@ -102,7 +102,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
    _onSubscribe: function(){
      var href = "/subscribe-via-email/roll/"+this._currentRoll.id+"?roll_title="+this._currentRoll.get('title')+"&curator="+this._currentRoll.get('creator_nickname'),
      width = 700,
-     height = 472,
+     height = 500,
      left = (screen.width/2)-(width/2),
      top = (screen.height/2)-(height/2);
      window.open(href,

@@ -31,14 +31,19 @@
         </h2>
 
         <p class="shelf__block">
-          Receive occasional updates when <%= @curator_name %> has new video.
+          Receive updates when <%= @curator_name %> has new video...
         </p>
 
-        <form id="js-subscribe-form" class="form_module shelf__form js-track-submit" data-ga_action="Subscribe via email" data-ga_label="roll_id:<%= @roll_id %>">
+        <form id="js-subscribe-form" class="form_module shelf__form shelf__form-tall js-track-submit" data-ga_action="Subscribe via email" data-ga_label="roll_id:<%= @roll_id %>">
           <fieldset id="js-email-form-submit" class="search_module">
-            <input type="hidden" name="priority_code" value="subscribe_to_roll:<%= @roll_id %>" />
-            <input type="submit" class="button_primer button_default search_module__submit" value="Subscribe" />
 
+            <div class="search_module__input_wrapper">
+              <input type="radio" name="frequency" value="every_video"> Every Video
+              <span style="width: 2em; display: inline-block;"></span>
+              <input type="radio" name="frequency" value="weekly"> Weekly Summary
+            </div>
+
+            <input type="submit" class="button_primer button_default search_module__submit" value="Subscribe" />
             <span class="search_module__input_wrapper">
               <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" autofocus/>
             </span>
@@ -64,8 +69,8 @@
   </div><!-- /shelby-wrapper -->
 
   <script>
+    var _kmq = _kmq || [];
 		<% if Rails.env == 'production' %>
-      var _kmq = _kmq || [];
       var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
       function _kms(u){
         setTimeout(function(){
@@ -89,7 +94,12 @@
 
       // Subscribe via email submit
       $('#js-subscribe-form').on('submit', function(){
-        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
+        var data = {
+          priority_code: "subscribe_to_roll:"+$(this).find('input[name=frequency]:checked').val()+":<%= @roll_id %>",
+          email: $(this).find("input[name=email]").val()
+          }
+        
+        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', data, function(data) {
           $('#js-email-form-submit').addClass('hidden');
           $('#js-email-form-feedback').removeClass('hidden');
           _kmq.push(['record', "Submit email on subscribe via email page", {}]);
