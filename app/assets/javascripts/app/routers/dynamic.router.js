@@ -375,6 +375,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayUserProfile : function(userName, params) {
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
+    shelby.models.userForProfile.unset('id');
     shelby.models.userForProfile.set('nickname', userName);
     shelby.models.userForProfile.fetch();
   },

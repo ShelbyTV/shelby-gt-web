@@ -61,14 +61,13 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       if (displayState != libs.shelbyGT.DisplayState.dotTv) {
         if (!this._persistentVideoInfoView) {
           this._persistentVideoInfoView = new libs.shelbyGT.PersistentVideoInfoView({
-            el: this.$('#js-persistent-video-info-wrapper'),
             guide : shelby.models.guide,
             guideOverlayModel : shelby.models.guideOverlay,
             playlistManager : shelby.models.playlistManager,
             queuedVideos : shelby.models.queuedVideos,
             userDesires : shelby.models.userDesires
           });
-          this.renderChild(this._persistentVideoInfoView);
+          this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');
         }
       } else if (this._persistentVideoInfoView) {
         this._persistentVideoInfoView.leave();
