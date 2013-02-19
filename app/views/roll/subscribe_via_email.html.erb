@@ -31,7 +31,7 @@
         </h2>
 
         <p class="shelf__block">
-          Receive updates when <%= @curator_name %> has new video...
+          Receive updates when <strong><%= @curator_name %></strong> adds new video to “<%= @roll_title == @curator_name ? "#{@roll_title} tv" : @roll_title %>”
         </p>
 
         <form id="js-subscribe-form" class="form_module shelf__form shelf__form-tall js-track-submit" data-ga_action="Subscribe via email" data-ga_label="roll_id:<%= @roll_id %>">
