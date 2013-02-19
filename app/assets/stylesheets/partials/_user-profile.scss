@@ -1,13 +1,33 @@
-@import "base";
-
-.user-info-lining {
+//------------------------------------------------------------------------------
+//  User Info Panel
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.user_info {
   background-color: $base;
-  display: none;
+  height: 100%;
   float: left;
-  height: 50%;
-  position: relative;
-  width: 50%;
+  width: $guide-width;
+
+  // NON-NORMATIVE OVERRIDES
+  .user_card {
+    margin: 0 8px 8px 0;
+  }
 }
+
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+
+
+
+// .user-info-lining {
+//   display: none;
+//   height: 50%;
+//   position: relative;
+//   width: 50%;
+// }
 
 .user-info-lining, .user-channel-guide-lining {
   display: none;
@@ -64,68 +84,3 @@
   }
 }
 
-//------------------------------------------------------------------------------
-//  user profile section specific
-//------------------------------------------------------------------------------
-.user-profile-info-person{
-  position: absolute;
-  padding: 10px;
-  height: 50%;
-  width: 100%;
-  top: 100px;
-
-  .user-profile-info__avatar {
-    width: 200px;
-    float:left;
-    margin-right: 10px;
-  }
-  .user-profile-info__name{
-    font-family: $font-family-display;
-    font-size: 4em;
-    font-weight: 400;
-    text-align: left;
-  }
-  .user-profile-info-services__shelby {
-    font-family: $font-family-display;
-    font-size: 3em;
-    font-weight: 400;
-    margin-top: 5px;
-    a {text-decoration: none;}
-  }
-}
-
-.user-profile-info-services__external {
-  margin-top: 25px;
-  font-family: $font-family;
-  font-weight: 100;
-  li {
-    float: left;
-    margin-right: 20px;
-    .twitter {
-      padding: 5px 20px;
-      font-size: 1.25em;
-      i {
-        background-size: contain;
-        padding-right: 30px;
-      }
-    }
-
-    .facebook {
-      padding: 5px 20px;
-      font-size: 1.25em;
-      i {
-        background-size: contain;
-        padding-right: 20px;
-      }
-    }
-
-    .tumblr {
-      padding: 5px 20px;
-      font-size: 1.25em;
-      i {
-        background-size: contain;
-        padding-right: 20px;
-      }
-    }
-  }
-}

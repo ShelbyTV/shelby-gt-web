@@ -13,7 +13,7 @@ libs.shelbyGT.MainLayoutView = Support.CompositeView.extend({
   render : function(){
     this.renderChild(new libs.shelbyGT.GuideView({model:this.model}));
     this.renderChild(new libs.shelbyGT.UserProfileInfoView({
-      el: '.js-user-info-lining',
+      el: '.js-user-info',
       guideModel: shelby.models.guide,
       model: shelby.models.userForProfile
     }));
