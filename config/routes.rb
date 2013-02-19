@@ -33,6 +33,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
   get '/fb/genius/roll/:roll_id' => 'roll#show_fb_genius_roll', :as => :fb_genius_roll
   get '/isolated-roll/:roll_id' => 'roll#show_isolated_roll'
+  get '/subscribe-via-email/roll/:roll_id' => 'roll#subscribe_via_email'
 
   # DISCUSSION ROLLS
   get '/mail/:roll_id' => 'discussion_roll#show'

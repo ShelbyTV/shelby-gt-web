@@ -376,6 +376,10 @@ $landing-page-footer-font-color: #EFEFEF;
       font-size: inherit;
       margin: 0;
     }
+    
+    &.shelf__form-tall {
+      height: 8em;
+    }
   }
 
   //----- Non-normativeElements -----------------------------------------
