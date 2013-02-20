@@ -47,6 +47,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/explore' => "home#explore"
   get '/search' => "home#search"
   get '/channel/:channel' => "home#channel"
+  get '/frequently_asked_questions' => "home#faq"
 
   get '/experience' => "home#experience"
 
