@@ -148,6 +148,12 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .shelf__h3 {
+  color: darken($inset,25%);
+  font-size: 2.5em;
+  font-weight: 400;
+  padding-top: 1em;
+  margin: 0.5em 0.5em 0.5em 0em;
+  text-align: left;
 }
 
 .shelf__h4 {
@@ -176,7 +182,8 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-.shelf__link {
+.shelf__link,
+.shelf__link-light {
   &,
   &:active,
   &:visited {
@@ -185,6 +192,12 @@ $landing-page-footer-font-color: #EFEFEF;
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.shelf__link-light {
+  &, &:hover, &:visited {
+    color: white;
   }
 }
 
@@ -605,6 +618,20 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
+//------------------------------------------------------------------------------
+//  FAQ
+//------------------------------------------------------------------------------
+.shelf--faq {
+  .shelf__list {
+    max-width: 800px;
+  }
+  
+  .shelf__list .shelf__list > li {
+    font-size: 1.75em;
+    list-style-type: circle;
+    margin: 0 0 0.5em 2em;
+  }
+}
 
 //------------------------------------------------------------------------------
 //  Footer

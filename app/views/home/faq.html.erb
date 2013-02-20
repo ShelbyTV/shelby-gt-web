@@ -21,7 +21,7 @@
 <body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
     <header class="shelby__header clearfix" role="banner">
-      <button class="button_primer shelby-logo js-home">
+      <a href="/" class="button_primer shelby-logo">
         <% if Rails.env != "staging" %>
           <h1 class="shelby_logo">
             <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
@@ -31,7 +31,7 @@
             <%= Settings::Branch.branch %>
           </h1>
         <% end %>
-      </button>
+      </a>
 
       <nav class="guide-presentation-selector">
         <ul class="guide-nav-list clearfix">
@@ -215,7 +215,7 @@
       _kms('//i.kissmetrics.com/i.js');
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
-      var action = "Visit landing page";
+      var action = "Visit "+shelbyTrackingCategory;
       var shortLink = $.getUrlParam('awesm');
       if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
       else { shortLink = null; }
@@ -292,7 +292,7 @@
           }
 
           try {
-          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
+          _gaq.push(['_trackEvent', shelbyTrackingCategory, 'search', searchQuery.toLowerCase()]);
           } catch(e) {}
         }
       });
