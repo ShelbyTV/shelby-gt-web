@@ -1,0 +1,41 @@
+/*
+    Global DotTV Overrides
+*/
+
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.shelby--dot-tv {
+  overflow: visible;
+
+  .shelby-header {
+    display: none;
+  }
+
+  .content_wrapper,
+  .shelby-wrapper {
+    bottom: auto;
+    left: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .main-layout {
+    height: 500px;
+  }
+
+  .content_wrapper {
+    margin-top: 0;
+    position: relative;
+  }
+
+  .videoplayer__wrapper {
+    background-color: $base;
+    padding: 10px;
+  }
+
+  .videoplayer-viewport {
+    bottom: 0;
+  }
+}

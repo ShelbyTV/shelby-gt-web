@@ -32,7 +32,7 @@
 }
 
 //------------------------------------------------------------------------------
-//  Panel (Extends Media module)
+//  Panel extends: .media_module.panel
 //------------------------------------------------------------------------------
 .panel {
   padding: 1em;
@@ -47,3 +47,7 @@
   .panel__button {
     @include button-sizing;
   }
+
+.panel--left {
+  margin-left: 0;
+}

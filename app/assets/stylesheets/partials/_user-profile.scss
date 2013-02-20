@@ -20,47 +20,19 @@
 //  Elements
 //------------------------------------------------------------------------------
 
-
-
-// .user-info-lining {
-//   display: none;
-//   height: 50%;
-//   position: relative;
-//   width: 50%;
-// }
-
-.user-info-lining, .user-channel-guide-lining {
-  display: none;
-}
-
-.user-channel-guide-lining {
-  height: 50%;
-  overflow-y: auto;
-  background-color: $base;
-}
-
-/* Overrides when showing user profile */
-
-.show-user-profile {
-
-  .content_lining {
-    height:50%;
-  }
-
-  .user-info-lining, .user-channel-guide-lining {
-    display: block;
-  }
-
-}
-
 //------------------------------------------------------------------------------
 //  user channel section specific
 //------------------------------------------------------------------------------
+.user-channel-guide {
+  background-color: $base;
+}
 
 .user-channel {
   width : 3000px;
   // TODO when load more is not broken, show it
-  .load-more { display: none !important;}
+  .load-more {
+    display: none !important;
+  }
 }
 
 .user-channel__wrapper {

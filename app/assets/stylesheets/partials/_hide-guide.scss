@@ -2,6 +2,7 @@
 // Hide Guide Overrides, should be nested or compounded.
 //------------------------------------------------------------------------------
 .hide-guide {
+  .user_info,
 	&.guide-wrapper{
 	  margin-left:-($guide-width);
 	}

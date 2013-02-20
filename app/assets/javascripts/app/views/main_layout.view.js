@@ -18,7 +18,7 @@ libs.shelbyGT.MainLayoutView = Support.CompositeView.extend({
       model: shelby.models.userForProfile
     }));
     this.renderChild(new libs.shelbyGT.UserChannelGuideView({
-      el: '.js-user-channel-guide-lining',
+      el: '.js-user-channel-guide',
       guideModel: shelby.models.guide,
       model: shelby.models.userForProfile,
       userChannelsCollectionModel: shelby.models.userChannels
