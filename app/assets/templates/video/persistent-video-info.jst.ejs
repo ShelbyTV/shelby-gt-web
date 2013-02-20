@@ -7,36 +7,33 @@
 <% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 <% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
 
-<% var nextCreator = nextFrame.get('creator') %>
-<% var nextCreatorNickname = nextCreator ? nextCreator.get('nickname') : null %>
-<% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
 <% var nextVideo = nextFrame.get('video') %>
-<% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var nextVideoIsInQueue = queuedVideosModel.videoIsInQueue(nextVideo) %>
 
 <% var isFauxUser = currentCreator && currentCreator.get('faux') !== 1 %>
 <% var fauxUserOrigin = isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 
 <div class="persistent_video_info animate_module">
-  <div class="media_image--rev persistent_video_info__next-frame">
-    <a class="persistent_video_info__anchor js-track-event js-next-video"
-              data-ga_category="Persistent Video Info"
-              data-ga_action="Click on next frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <% if (showNextFrame) { %>
+    <div class="media_image--rev persistent_video_info__next-frame">
+      <a class="persistent_video_info__anchor js-track-event js-next-video"
+                data-ga_category="Persistent Video Info"
+                data-ga_action="Click on next frame"
+                data-ga_label="<%= shelby.models.user.get('nickname') %>">
 
-      <h3 class="persistent_video_info__h2">
-        Up Next
-      </h3>
+        <h3 class="persistent_video_info__h2">
+          Up Next
+        </h3>
 
-      <%= SHELBYJST['thumbnail-module']({
-        thumbnail: nextVideo.get('thumbnail_url'),
-        title: nextVideo.get('title') }) %>
+        <%= SHELBYJST['thumbnail-module']({
+          thumbnail: nextVideo.get('thumbnail_url'),
+          title: nextVideo.get('title') }) %>
 
-      <h2 class="persistent_video_info__h3">
-        <%= nextVideo.get('title') %>
-      </h2>
-    </a>
-  </div><!-- eo .persistent_video_info__next-frame -->
+        <h2 class="persistent_video_info__h3">
+          <%= nextVideo.get('title') %>
+        </h2>
+      </a>
+    </div><!-- eo .persistent_video_info__next-frame -->
+  <% } %>
 
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">

@@ -5,8 +5,6 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
-  className : 'animate_module media_module persistent_video_info__wrapper js-inactivity-preemption',
-
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
@@ -20,8 +18,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .js-next-video"                                                        : "_skipToNextVideo"
   },
 
-  initialize: function(opts){
-    this._userDesires = opts.userDesires;
+  initialize: function(){
     this._currentFrame = this.options.guide.get('activeFrameModel');
     this._playingFrameGroupCollection = this.options.playlistManager.get('playingFrameGroupCollection');
 
@@ -60,6 +57,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrame      : this._currentFrame,
         nextFrame         : this._nextFrame,
         queuedVideosModel : this.options.queuedVideos,
+        showNextFrame     : this.options.showNextFrame,
         user              : shelby.models.user
       }));
     }
@@ -163,8 +161,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _skipToNextVideo : function(){
-    this._userDesires.set('changeVideo', 1);
-    this._userDesires.unset('changeVideo');
+    this.options.userDesires.set('changeVideo', 1);
+    this.options.userDesires.unset('changeVideo');
   },
 
   _shareCurrentToFacebook : function(e){

@@ -1,8 +1,5 @@
 libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
-  events: {
-  },
-
   template : function(obj){
     return SHELBYJST['user-profile-info'](obj);
   },
@@ -22,7 +19,20 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({user:this.model.get('currentUser')}));
+    var currentUser = this.model.get('currentUser');
+    this._leaveChildren();
+    this.$el.html(this.template({user: currentUser}));
+    if (currentUser && !currentUser.isNew()) {
+      this.appendChild(new libs.shelbyGT.PersistentVideoInfoView({
+        className : 'animate_module media_module js-inactivity-preemption user_profile_persistent_video_info__wrapper',
+        guide : shelby.models.guide,
+        guideOverlayModel : shelby.models.guideOverlay,
+        playlistManager : shelby.models.playlistManager,
+        queuedVideos : shelby.models.queuedVideos,
+        showNextFrame : false,
+        userDesires : shelby.models.userDesires
+      }));
+    }
   },
 
   _onCurrentUserChange : function(userProfileModel, currentUser) {

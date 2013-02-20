@@ -61,10 +61,12 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       if (displayState != libs.shelbyGT.DisplayState.dotTv) {
         if (!this._persistentVideoInfoView) {
           this._persistentVideoInfoView = new libs.shelbyGT.PersistentVideoInfoView({
+            className : 'animate_module media_module js-inactivity-preemption persistent_video_info__wrapper',
             guide : shelby.models.guide,
             guideOverlayModel : shelby.models.guideOverlay,
             playlistManager : shelby.models.playlistManager,
             queuedVideos : shelby.models.queuedVideos,
+            showNextFrame : true,
             userDesires : shelby.models.userDesires
           });
           this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');

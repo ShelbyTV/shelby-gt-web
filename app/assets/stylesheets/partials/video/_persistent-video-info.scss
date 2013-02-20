@@ -62,7 +62,8 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 //------------------------------------------------------------------------------
 // Structure, Beginning of Feature
 //------------------------------------------------------------------------------
-.persistent_video_info__wrapper {
+.persistent_video_info__wrapper,
+.user_profile_persistent_video_info__wrapper {
   // background-color: rgba(239, 239, 239, 1);
   bottom: 0;
   height: $persistent_video_info__height;
