@@ -69,25 +69,12 @@
   </div><!-- /shelby-wrapper -->
 
   <script>
-    var _kmq = _kmq || [];
+    var _gaq = _gaq || [];
 		<% if Rails.env == 'production' %>
-      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-
-      var action = "Visit subscribe via email page";
-      var shortLink = $.getUrlParam('awesm');
-      if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
-      else { shortLink = null; }
-      _kmq.push(['record', action, {shortLink: shortLink}]);
+      var _gaq = [['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s);}(document,'script'));
     <% end %>
 
     $(document).ready(function(){
@@ -102,7 +89,7 @@
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', data, function(data) {
           $('#js-email-form-submit').addClass('hidden');
           $('#js-email-form-feedback').removeClass('hidden');
-          _kmq.push(['record', "Submit email on subscribe via email page", {}]);
+          _gaq.push(['_trackEvent', "Header", "subscribe-via-email-submit", "<%= @current_user_label %>"]);
           setTimeout(function(){ window.close(); }, 5000);
         }, 'jsonp');
         return false;

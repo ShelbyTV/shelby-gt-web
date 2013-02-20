@@ -108,6 +108,13 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
      window.open(href,
         "subscribePopup", 
         "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
+
+     shelby.trackEx({
+       providers : ['ga'],
+       gaCategory : 'Header',
+       gaAction : 'subscribe-via-email-click',
+       gaLabel : shelby.models.user.get('nickname')});
+     return false;
    },
 
    _onFullShelby : function() {

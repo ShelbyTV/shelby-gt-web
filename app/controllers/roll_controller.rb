@@ -37,6 +37,7 @@ class RollController < ApplicationController
     @roll_id = params[:roll_id]
     @roll_title = params[:roll_title]
     @curator_name = params[:curator]
+    @current_user_label = user_signed_in? ? current_user_id : "anonymous"
   end
 
   private
