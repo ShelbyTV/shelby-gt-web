@@ -125,7 +125,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    this._prepIsolatedRoll({rollId: rollId, params: params});
+    if (true) {
+      this._setupUserProfileView({
+        rollId : rollId,
+        params : params
+      })
+    } else {
+      this._prepIsolatedRoll({rollId: rollId, params: params});
+    }
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
@@ -373,11 +380,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayUserProfile : function(userName, params) {
-    this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
-    shelby.models.userForProfile.unset('id');
-    shelby.models.userForProfile.set('nickname', userName);
-    shelby.models.userForProfile.fetch();
+    this._setupUserProfileView({
+      params : params,
+      userName : userName
+    });
   },
 
   doNothing : function(url){
@@ -643,6 +649,60 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       }
     }, topLevelViewsOptions);
+  },
+
+  _setupUserProfileView : function(options){
+    var self = this;
+
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
+    if (options.userName) {
+      // if the route parameters included the user name we have everything we need to proceed
+      // and fetch that user's info
+      this._getUserByNicknameThenAssociatedRolls(options.userName);
+    } else {
+      // if the route params only included a roll id (for an isolated roll), we need
+      // to get the nickname of the user who created that roll
+      var followedRoll = Backbone.Relational.store.find(libs.shelbyGT.RollModel, options.rollId);
+      var isolatedRollModel = followedRoll || new libs.shelbyGT.RollModel({id:options.rollId});
+      if (isolatedRollModel.has('creator_nickname')) {
+        // if we already have the roll info, we can just get the creator nickname and load
+        // the user info based on that
+        this._getUserByNicknameThenAssociatedRolls(isolatedRollModel.get('creator_nickname'));
+      } else {
+        // if we don't have the roll info, fetch the roll and then use the creator nickname from
+        // the fetched data to fetch the info for that creating user
+        isolatedRollModel.fetch({success : function(rollModel, response){
+          self._getUserByNicknameThenAssociatedRolls(rollModel.get('creator_nickname'));
+        }});
+      }
+    }
+  },
+
+  _getUserByNicknameThenAssociatedRolls : function(nickname){
+    var userForProfile = shelby.models.userProfile.get('currentUser');
+    if (!userForProfile || userForProfile.get('nickname') != nickname) {
+      userForProfile = new libs.shelbyGT.UserModel({nickname: nickname});
+      shelby.models.userProfile.set('currentUser', userForProfile);
+      // we're completely switching users so we need to get rid of the old users
+      // rolls in preparation for getting the new user's
+      shelby.models.userChannels.get('rolls').reset();
+    }
+    if (userForProfile.isNew()) {
+      // if we don't have the user info yet, we need to fetch it, then use the user's personal roll id
+      // to fetch their asoociated rolls
+      userForProfile.fetch({success: function(userModel, response){
+        shelby.models.userChannels.fetch({
+          url: shelby.config.apiRoot + '/roll/' + userModel.get('personal_roll_id') + '/associated'
+        });
+      }});
+    } else {
+      // if we already have the user info, we know their personal roll id, so just fetch their
+      // associated rolls immediately
+      shelby.models.userChannels.fetch({
+          url: shelby.config.apiRoot + '/roll/' + userForProfile.get('personal_roll_id') + '/associated'
+      });
+    }
   }
 
 });

@@ -15,12 +15,12 @@ libs.shelbyGT.MainLayoutView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.UserProfileInfoView({
       el: '.js-user-info',
       guideModel: shelby.models.guide,
-      model: shelby.models.userForProfile
+      model: shelby.models.userProfile
     }));
     this.renderChild(new libs.shelbyGT.UserChannelGuideView({
       el: '.js-user-channel-guide',
       guideModel: shelby.models.guide,
-      model: shelby.models.userForProfile,
+      model: shelby.models.userProfile,
       userChannelsCollectionModel: shelby.models.userChannels
     }));
     this.renderChild(new libs.shelbyGT.MainContentWrapperView({

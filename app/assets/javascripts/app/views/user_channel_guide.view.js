@@ -4,31 +4,33 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
     userChannelsCollectionModel : null
   },
 
-  events: {
-  },
-
   template : function(obj){
     return SHELBYJST['user-channel-guide'](obj);
   },
 
   initialize : function(){
-    this.model.bind('change', this.render, this);
-    this.model.bind('change:id nickname', this._getUserChannels, this);
+    this.model.bind('change:currentUser', this._onCurrentUserChange, this);
+    if (this.model.has('currentUser')) {
+      this.model.get('currentUser').bind('change:id nickname', this.render, this);
+    }
   },
 
   _cleanup : function(){
-   this.model.unbind('change', this.render, this);
-   this.model.unbind('change:id nickname', this._getUserChannels, this);
+    this.model.unbind('change:currentUser', this._onCurrentUserChange, this);
+    if (this.model.has('currentUser')) {
+      this.model.get('currentUser').unbind('change', this.render, this);
+    }
   },
 
   render : function(){
     this._leaveChildren();
-    this.$el.html(this.template({user:this.model}));
+    this.$el.html(this.template({user:this.model.get('currentUser')}));
 
-    if (!this.model.isNew()) {
-      this.renderChild(new libs.shelbyGT.SmartRefreshListView({
+    var currentUser = this.model.get('currentUser');
+    if (currentUser && !currentUser.isNew()) {
+      this.renderChild(new libs.shelbyGT.ListView({
         collectionAttribute : 'rolls',
-        doSmartRefresh : true,
+        doStaticRender : true,
         el : '.js-user-channel-list',
         listItemViewAdditionalParams : {
           activationStateModel : shelby.models.guide
@@ -39,15 +41,14 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
     }
   },
 
-  _getUserChannels : function(user) {
-    if (!user.isNew()) {
-      var previousRolls = this.options.userChannelsCollectionModel.get('rolls');
-      if (previousRolls) {
-        previousRolls.reset();
-      }
-      this.options.userChannelsCollectionModel.fetch({
-        url: shelby.config.apiRoot + '/roll/' + user.get('personal_roll_id') + '/associated'
-      });
+  _onCurrentUserChange : function(userProfileModel, currentUser) {
+    this.render();
+    if (currentUser) {
+      currentUser.bind('change', this.render, this);
+    }
+    var previousUser = userProfileModel.previous('currentUser');
+    if (previousUser) {
+      previousUser.unbind('change', this.render, this);
     }
   }
 

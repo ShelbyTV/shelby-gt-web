@@ -1,4 +1,4 @@
-<% if (!user.isNew()) { %>
+<% if (user && !user.isNew()) { %>
   <ul class="list_module js-user-channel-list">
       <!-- content filled in by child ListView -->
   </ul>
