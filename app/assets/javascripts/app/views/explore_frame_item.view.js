@@ -6,8 +6,6 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
     'click .js-roll-command'                  : '_displayRollVideo'
   },
 
-  className : 'explore-roll-item',
-
   initialize : function() {
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);

@@ -33,7 +33,9 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       limit : 6,
       listItemView : 'UserChannelFrameItemView',
       listItemViewAdditionalParams : {
-        activationStateModel : shelby.models.guide
+        activationStateModel : shelby.models.guide,
+        activationStateProperty : 'activeFrameModel',
+        className : 'user-channel__item'
       },
       model : this.model
     });

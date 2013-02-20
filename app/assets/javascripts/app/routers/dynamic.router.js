@@ -129,7 +129,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this._setupUserProfileView({
         rollId : rollId,
         params : params
-      })
+      });
     } else {
       this._prepIsolatedRoll({rollId: rollId, params: params});
     }
@@ -654,6 +654,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _setupUserProfileView : function(options){
     var self = this;
 
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
     if (options.userName) {

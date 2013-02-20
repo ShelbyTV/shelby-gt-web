@@ -8,12 +8,6 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
     'click .js-roll-command'                  : '_displayRollVideo'
   },
 
-  options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
-  }),
-
-  className : 'user-channel__item',
-
   initialize : function() {
     this._frame = this.model.getFirstFrame();
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
@@ -50,7 +44,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
 
   _queueVideo : function() {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      this._frame.saveToWatchLater();
+      this._frame.like();
       this._updateQueueButton(true);
     }
   },
@@ -76,8 +70,10 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   _updateQueueButton : function(itemQueued) {
-    var buttonText = itemQueued ? 'Queued' : 'Queue';
-    this.$('.js-queue-command').toggleClass('button_gray-light queued js-queued', itemQueued).find('.js-command-icon').text(buttonText);
+    var buttonText = itemQueued ? 'Liked' : 'Like';
+    var $button = this.$('.js-queue-command');
+    $button.toggleClass('queued js-queued', itemQueued).find('.label').text(buttonText);
+    $button.find('.js-command-icon').toggleClass('icon-heart--red', itemQueued);
   },
 
   // override ActiveHighlightListItemView abstract method
