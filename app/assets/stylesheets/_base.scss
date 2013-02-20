@@ -4,27 +4,30 @@
 $app-header__height : 38px;
 $app-background-color : #e2e2e2;
 
+//------------------------------------------------------------------------------
+//  ICONS, these aren't worth taking the time to update right now.
+//------------------------------------------------------------------------------
 $extension: ".svg" !default;
 $path: "/images/assets/" !default;
 
-      $icon-carrot                    : "#{$path}carrot#{$extension}";
-      $icon-chevron-right             : "#{$path}chevron#{$extension}";
-      $icon-missing-avatar            : "#{$path}missing_avatar.png";
-      $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
-      $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
-      $icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
-      $icon-onboarding-tumblr-add     : "#{$path}onboarding_tumblr_add#{$extension}";
-      $icon-onboarding-tumblr-added   : "#{$path}onboarding_tumblr_added#{$extension}";
-      $icon-onboarding-twitter-add    : "#{$path}onboarding_twitter_add#{$extension}";
-      $icon-onboarding-twitter-added  : "#{$path}onboarding_twitter_added#{$extension}";
-      $icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
-      $icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
-      $icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
-      $icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
-      $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
-      $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
-      $icon-social-twitter            : "#{$path}social_twitter#{$extension}";
-      $icon-videocard-roll            : "#{$path}videocard_roll#{$extension}";
+$icon-carrot                    : "#{$path}carrot#{$extension}";
+$icon-chevron-right             : "#{$path}chevron#{$extension}";
+$icon-missing-avatar            : "#{$path}missing_avatar.png";
+$icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
+$icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
+$icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
+$icon-onboarding-tumblr-add     : "#{$path}onboarding_tumblr_add#{$extension}";
+$icon-onboarding-tumblr-added   : "#{$path}onboarding_tumblr_added#{$extension}";
+$icon-onboarding-twitter-add    : "#{$path}onboarding_twitter_add#{$extension}";
+$icon-onboarding-twitter-added  : "#{$path}onboarding_twitter_added#{$extension}";
+$icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
+$icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
+$icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
+$icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
+$icon-social-facebook           : "#{$path}social_facebook#{$extension}";
+$icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
+$icon-social-twitter            : "#{$path}social_twitter#{$extension}";
+$icon-videocard-roll            : "#{$path}videocard_roll#{$extension}";
 
 //------------------------------------------------------------------------------
 //  ANIMATION VALUES
@@ -45,11 +48,6 @@ $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-size           : 100%;
 $size                : $font-size !default;
-
-//------------------------------------------------------------------------------
-//  BUTTON SETUP
-$button-padding-left: 1.3em;
-$button-padding-right: .95em;
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -82,7 +80,6 @@ $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
 $shadow        : 0 0 2px 0 rgba(0,0,0,.3);
 $shadow-text   : 0px -1px 0px rgba(0,0,0,.6);
-$outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
 
@@ -93,11 +90,6 @@ $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text + #333;
 
-
-////////////////////////////////////////////////////////////////////////////
-//  COLORS: app header
-////////////////////////////////////////////////////////////////////////////
-$header-outline                     : #202020;
 
 ////////////////////////////////////////////////////////////////////////////
 //  COLORS: guide
@@ -118,8 +110,7 @@ $nav-dropdown-bg                    : $base;
 ////////////////////////////////////////////////////////////////////////////
 //  COLORS: list_module
 ////////////////////////////////////////////////////////////////////////////
-$list-module-spacing                : 1em;
-$list-module-bg                     : #e2e2e2;
+$list-module-bg                     : $base;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
@@ -156,8 +147,6 @@ $me-header-color                    : adjust-lightness($text, 10%);
 ////////////////////////////////////////////////////////////////////////////
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
-  //  faux-tint is an opacity of .7, makes the color 'lighter',
-  //  used on .frame-comment-link
 $videocard-faux-tint                : .7;
 
 ////////////////////////////////////////////////////////////////////////////

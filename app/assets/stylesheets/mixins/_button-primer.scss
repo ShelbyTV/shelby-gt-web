@@ -3,7 +3,7 @@ $x-primer-color        : $button-default-color;
 $primer-tone           : light !default;
 $primer-button-context : generic !default;
 
-@mixin button-primer($x-primer-color, $primer-tone, $primer-button-context, $enable-pseudo-classes: true){
+@mixin button-primer($x-primer-color: $button-default-color, $primer-tone: light, $primer-button-context: frame-command, $enable-pseudo-classes: true){
   @include gradient-primer($x-primer-color);
 
   border: 1px solid adjust-lightness($x-primer-color, -10%);
