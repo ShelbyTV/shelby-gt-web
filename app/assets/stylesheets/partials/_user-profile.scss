@@ -1,6 +1,13 @@
 //------------------------------------------------------------------------------
 //  User Info Panel
 //------------------------------------------------------------------------------
+//N.B. hacky shit; hide upon render because we're
+//      dumping this straight into the DOM regardless of whether we need it.
+//      .shelby--dot-tv overrides these to reveal.
+.user_info,
+.user-channel-guide {
+  display: none;
+}
 //------------------------------------------------------------------------------
 //  Block
 //------------------------------------------------------------------------------

@@ -8,6 +8,11 @@
 .shelby--dot-tv {
   overflow: visible;
 
+  .user_info,
+  .user-channel-guide {
+    display: block;
+  }
+
   .shelby-header {
     display: none;
   }
