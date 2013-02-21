@@ -76,16 +76,6 @@
   }
 }
 
-/* iso-roll button */
-.isolated-roll-button {
-  float: right;
-  padding: button-padding(isolated-roll-header);
-  margin: 4px 6px 4px 0;
-
-  &.button-active {
-    @include button(blue,$shelby-blue);
-  }
-}
 //------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
