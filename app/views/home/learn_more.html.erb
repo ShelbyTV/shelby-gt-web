@@ -15,7 +15,7 @@
   <%= javascript_include_tag "common", "landing" %>
 
   <script>
-    var shelbyTrackingCategory = "FAQ Page";
+    var shelbyTrackingCategory = "Learn More Page";
   </script>
 </head>
 <body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
@@ -25,7 +25,7 @@
 
     <% #------------ Shelf Content --------------- %>
 
-    <%= render :partial => "/home/shelf/faq" %>
+    <%= render :partial => "/home/content_shelf/learn_more" %>
     
     <%= render :partial => "/home/shelf/about" %>
 

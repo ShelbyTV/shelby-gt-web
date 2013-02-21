@@ -312,7 +312,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Search + Signup
 //------------------------------------------------------------------------------
-.shelf--faq-banner,
+.shelf--learn-more-banner,
 .shelf--signup,
 .shelf--search {
   background-color: #444;
@@ -357,7 +357,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
-.shelf--faq-banner,
+.shelf--learn-more-banner,
 .shelf--signup{
   background-image: url('/images/landing/network.jpg');
   // background-image: url('/images/landing/network.jpg');
@@ -621,7 +621,7 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 //------------------------------------------------------------------------------
-//  FAQ
+//  Learn More
 //------------------------------------------------------------------------------
 .shelf--learn-more-teaser {
   text-align: center;
@@ -637,13 +637,13 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-.shelf--faq-banner {
+.shelf--learn-more-banner {
   .shelf__lining {
     padding: 4em 0 3em;
   }
 }
 
-.shelf--faq {
+.shelf--learn-more {
   a {
     color: inherit;
     text-decoration: underline;
@@ -663,15 +663,15 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-.shelf__list--faq {
+.shelf__list--learn-more {
   margin: 0 auto 5em;
   max-width: 56em;
   padding: 1em 2em;
 
-  .shelf__list--faq-entry {
+  .shelf__list--learn-more-entry {
     margin-bottom: 4em;
 
-    .shelf__list--faq-definition {
+    .shelf__list--learn-more-definition {
       font-size: 1.4em;
       line-height: 1.5;
       margin: 0 0 0.5em 0em;

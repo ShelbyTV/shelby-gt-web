@@ -140,7 +140,7 @@ class HomeController < ApplicationController
   end
   
   # Static page of information
-  def faq
+  def learn_more
   end
 
   ##
