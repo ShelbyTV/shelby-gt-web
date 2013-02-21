@@ -649,11 +649,10 @@ $landing-page-footer-font-color: #EFEFEF;
   max-width: 56em;
   padding: 1em 2em;
 
-  .shelf__list {
-    padding-left: 0;
+  .shelf__list--faq-entry {
     margin-bottom: 4em;
 
-    & > li {
+    .shelf__list--faq-definition {
       font-size: 1.4em;
       line-height: 1.5;
       margin: 0 0 0.5em 0em;
