@@ -94,7 +94,6 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _checkUpdateFollowButton : function() {
-    console.log('_checkUpdateFollowButton');
     var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
     this.$('.js-follow-unfollow').toggleClass('button_blue', !userFollowingRoll).toggleClass('button_gray-medium', userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
   }
