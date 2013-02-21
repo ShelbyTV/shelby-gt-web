@@ -17,7 +17,6 @@
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////
 //  onboarding_layout:
 //  setup for the fixed header situation
@@ -121,12 +120,7 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-next-step {
-  @include button-primer($shelby-blue);
-
-//  font-size: 1.1em;
-
   &.deselected {
-    @include button-primer;
   }
 
   .player-play {
@@ -455,10 +449,7 @@ $onboarding-head-height: 125px;
 }
 
 .onboarding-stage-2-next-step {
-  @include button-primer;
-
   &.onboarding-next-step-highlight {
-    @include button-primer($shelby-blue, dark);
   }
 }
 
@@ -485,14 +476,17 @@ $onboarding-head-height: 125px;
   vertical-align: top;
 }
 
+
 .onboarding-network-button {
+  display: block;
+  font-size: 3em;
+  padding: 0.5em;
+  width: 100%;
+
   &.disabled,
   &.onboarding-connected-network {
-    @include button-primer($shelby-gray-light);
+//     @include button-primer($shelby-gray-light);
   }
-
-  display: block;
-  width: 100%;
 }
 
 .onboarding-network-lining {
@@ -607,10 +601,7 @@ $onboarding-head-height: 125px;
 //  this is the 'roll' button in the messaging
 ////////////////////////////////////////////////////////////////////////////
 .onboarding-inline-button {
-  @include button-primer($x-primer-color, $primer-tone, $primer-button-context, false);
-
-  display: inline-block;
-  font-size: .7em;
+  font-size: .8em;
   margin: 0 .25em;
 
   .icon-roll {

@@ -13,7 +13,7 @@
   </h1>
 
   <div class="onboarding-next-step-wrapper">
-    <button class="js-onboarding-next-step onboarding-next-step">
+    <button class="js-onboarding-next-step button_primer button_blue button_standard onboarding-next-step">
       Next
     </button>
     <span class="onboarding-next-step-counter">
@@ -42,14 +42,13 @@
 
       <li class="onboarding-network-item js-onboarding-network-item">
         <div class="onboarding-network-item-lining clearfix">
-          <a class="<%= connected_network %><%= disabled %>js-authorize js-track-event onboarding-network-button onboarding-network-<%= network %>"
+          <a class="button_primer<%= (disabled) ? ' button_gray-light disabled' : ' button_'+network+'-blue' %> onboarding-network-button js-authorize js-track-event"
             data-popup_width="1000"
             data-popup_height="650"
             href="http://api.shelby.tv/auth/<%= network %>"
             data-ga_action="Connect with <%= network %>">
-            <i class="ir onboarding-icon">
-              <%= network %>
-            </i>
+            <i class="icon-social_<%= network %>"></i>
+            <span class="visuallyhidden"><%= network %></span>
           </a>
           <p class="onboarding-network-description">
             <% if (connected_network) { %>
