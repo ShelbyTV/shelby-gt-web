@@ -485,7 +485,6 @@ $onboarding-head-height: 125px;
 
   &.disabled,
   &.onboarding-connected-network {
-//     @include button-primer($shelby-gray-light);
   }
 }
 
@@ -509,71 +508,6 @@ $onboarding-head-height: 125px;
 ////////////////////////////////////////////////////////////////////////////
 //  network button icon class structure
 ////////////////////////////////////////////////////////////////////////////
-.onboarding-icon {
-  background-repeat: no-repeat;
-  background-position: center center;
-  display: block;
-  height: 105px;
-}
-
-.onboarding-network-twitter {
-  @include button-primer($twitter-blue);
-
-  &:hover {
-    &:not([disabled]) {
-      @include button-primer(adjust-lightness($twitter-blue, 5%));
-    }
-  }
-  &.onboarding-connected-network {
-    .onboarding-icon {
-      background-image: url($icon-onboarding-twitter-added);
-    }
-  }
-  .onboarding-icon {
-    background-image: url($icon-onboarding-twitter-add);
-  }
-}
-
-.onboarding-network-facebook {
-  @include button-primer($facebook-blue);
-
-  &:hover {
-    &:not([disabled]) {
-      @include button-primer(adjust-lightness($facebook-blue, 5%));
-    }
-  }
-
-  &.onboarding-connected-network {
-    .onboarding-icon {
-      background-image: url($icon-onboarding-facebook-added);
-    }
-  }
-
-  .onboarding-icon {
-    background-image: url($icon-onboarding-facebook-add);
-  }
-}
-
-.onboarding-network-tumblr {
-  @include button-primer($tumblr-blue);
-
-  &:hover {
-    &:not([disabled]) {
-      @include button-primer(adjust-lightness($tumblr-blue, 5%));
-    }
-  }
-
-  &.onboarding-connected-network {
-    .onboarding-icon {
-      background-image: url($icon-onboarding-tumblr-added);
-    }
-  }
-
-  .onboarding-icon {
-    background-image: url($icon-onboarding-tumblr-add);
-  }
-}
-
 .onboarding-network-additional-options {
   background-color: #E2E2E2;
   margin-top: 2.5em;
