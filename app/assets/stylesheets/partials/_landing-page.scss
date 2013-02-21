@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 //  local vars
 //------------------------------------------------------------------------------
-$landing-page-shelf-background: #ddd;
+$landing-page-shelf-background: #f8f8f8;
 $landing-page-width: 1080px;
 $landing-page-footer-background: #161818;
 $landing-page-footer-font-color: #EFEFEF;
@@ -126,7 +126,6 @@ $landing-page-footer-font-color: #EFEFEF;
 //  Elements
 //------------------------------------------------------------------------------
 .shelf__hr {
-  border-bottom: 1px solid $inset;
   margin: 0 0 2em 0;
   max-width: $landing-page-width;
   padding: 0;
@@ -134,15 +133,15 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .shelf__h1 {
-  font-size: 5em;
+  font-size: 4em;
   font-weight: 100;
 }
 
 .shelf__h2 {
-  color: darken($inset,25%);
-  font-size: 3em;
+  color: #666;
+  font-size: 2.4em;
   font-weight: 300;
-  padding: 1em;
+  padding: 1.2em 0 0.7em;
   margin: 0;
   text-align: center;
 }
@@ -311,7 +310,7 @@ $landing-page-footer-font-color: #EFEFEF;
   //----- Block -----------------------------------------
   .shelf__lining {
     color: $button-color;
-    padding: 7em 0 9em;
+    padding: 4em 0 4em;
     text-align: center;
   }
 
@@ -344,11 +343,12 @@ $landing-page-footer-font-color: #EFEFEF;
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
 .shelf--signup{
-  background-image: url('/images/landing/network.jpg');
+  background-image: url('/images/landing/header.jpg');
   // background-image: url('/images/landing/network.jpg');
 
   //----- Block -----------------------------------------
   .shelf__lining {
+    text-shadow: $shadow-text;
   }
 
   //----- Elements -----------------------------------------
@@ -376,7 +376,7 @@ $landing-page-footer-font-color: #EFEFEF;
       font-size: inherit;
       margin: 0;
     }
-    
+
     &.shelf__form-tall {
       height: 8em;
     }
@@ -421,7 +421,7 @@ $landing-page-footer-font-color: #EFEFEF;
       color: white;
       font-size: 2.6em;
       height: 71px;
-      line-height: 2.1;
+      line-height: 2.5;
       left: 50%;
       margin-left: -36px;
       opacity: 0.5;
@@ -473,10 +473,9 @@ $landing-page-footer-font-color: #EFEFEF;
 
   .frame--shelf {
     .xuser-data {
-      font-size: 1em;
       font-weight: bold;
       font-family: $font-family;
-      margin-bottom: 1em;
+      margin-bottom: 0.6em;
     }
 
     .xuser-data-timestamp {
@@ -484,6 +483,8 @@ $landing-page-footer-font-color: #EFEFEF;
     }
 
     .xuser-message {
+      font-size: 1.1em;
+      line-height: 1.4;
       min-height: 4em;
     }
 
@@ -610,7 +611,8 @@ $landing-page-footer-font-color: #EFEFEF;
 //  Footer
 //------------------------------------------------------------------------------
 .shelf--footer {
-  background-color: #fff;
+  background-color: #ededed;
+  border: 1px solid #ddd;
 
   //----- Block -----------------------------------------
   .shelf__lining {
@@ -773,7 +775,7 @@ $landing-page-footer-font-color: #EFEFEF;
 
 //----- Non-normative Elements -----------------------------------------
 .frame--shelf {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-family: $font-family;
   font-weight: normal;
 
@@ -817,6 +819,11 @@ $landing-page-footer-font-color: #EFEFEF;
         font-size: 0.9em;
         opacity: 0.5;
       }
+    }
+
+    .xuser-message {
+      font-size: 1.1em;
+      line-height: 1.4;
     }
   }
 }
