@@ -630,6 +630,11 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .shelf--faq {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   .shelf__lining {
     &:first-child {
       padding-top: 5em;
