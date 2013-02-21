@@ -679,6 +679,23 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
+.shelf__list--reserve-username {
+  
+  .shelf__list--learn-more-entry {
+    margin-bottom: 0;
+  }
+  
+  .shelf__form--learn-more {
+    font-size: 1.5em;
+    margin: 0.8em 0 1.5em;
+  
+    .button_primer {
+      margin: 0 0 0 1em;
+      padding: 0 2em;
+    }
+  }
+}
+
 //------------------------------------------------------------------------------
 //  Footer
 //------------------------------------------------------------------------------
