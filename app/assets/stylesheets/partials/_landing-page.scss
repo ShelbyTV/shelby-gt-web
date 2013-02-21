@@ -621,15 +621,15 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 //------------------------------------------------------------------------------
-//  Learn More
+//  Learn More Shelf CTA
 //------------------------------------------------------------------------------
 .shelf--learn-more-teaser {
   text-align: center;
-  
+
   .shelf__lining {
     padding-bottom: 5.5em;
   }
-  
+
   a {
     font-size: 3em;
     margin-top: 1em;
@@ -637,7 +637,16 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
+//------------------------------------------------------------------------------
+//  Learn More Page
+//------------------------------------------------------------------------------
+
 .shelf--learn-more-banner {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   .shelf__lining {
     padding: 4em 0 3em;
   }
