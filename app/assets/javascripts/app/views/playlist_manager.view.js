@@ -12,10 +12,6 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
     this.model.unbind('playlist:start', this._onPlaylistStart, this);
   },
 
-  _setPlayingFrameGroupCollection : function(pfgc){
-    this.model.set('playingFrameGroupCollection', pfgc);
-  },
-
   _onChangeVideo : function(userDesiresModel, videoChangeValue){
     if (userDesiresModel.has('changeVideo')) {
       this._skipVideo(videoChangeValue);
@@ -27,9 +23,9 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
   },
 
   _onPlaylistStart : function(){
-    var preparedPlaylistCollection = this.model.get('preparedPlaylistCollection');
-    if (preparedPlaylistCollection) {
-      var firstFrameGroup = preparedPlaylistCollection.first();
+    var playlistFrameGroupCollection = this.model.get('playlistFrameGroupCollection');
+    if (playlistFrameGroupCollection) {
+      var firstFrameGroup = playlistFrameGroupCollection.first();
       if (firstFrameGroup) {
         shelby.models.guide.set('activeFrameModel', firstFrameGroup.getFirstFrame());
       }
@@ -41,7 +37,7 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
 
     // if we can't find a playable frame in the direction we're looking
     // we return to the beginning of the roll or stream
-    var nextFrame = this.model.get('playingFrameGroupCollection').getNextPlayableFrame(this.options.guideModel.get('activeFrameModel'), skip, true);
+    var nextFrame = this.model.get('playlistFrameGroupCollection').getNextPlayableFrame(this.options.guideModel.get('activeFrameModel'), skip, true);
 
     this.model.set('nowSkippingVideo', true);
     this.options.guideModel.set({activeFrameModel: nextFrame});
