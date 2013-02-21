@@ -1,13 +1,41 @@
-@mixin x-networks-badge {
+@mixin networks-badge {
   &:before {
     @include roundies;
 
-    content: "\0020";
+    color: #efefef;
     float:left;
     height:24px;
     left:0;
+    line-height: 1.9;
     margin: 1px 5px 0 0;
+    text-align: center;
+    text-shadow: $shadow-text;
     top:0;
     width:24px;
+  }
+}
+
+.badge {
+  @include networks-badge;
+}
+
+.badge--facebook {
+  &:before {
+    background-color: $facebook-blue;
+    border: 1px solid darken($facebook-blue, 5%);
+  }
+}
+
+.badge--twitter {
+  &:before {
+    background-color: $twitter-blue;
+    border: 1px solid darken($twitter-blue, 5%);
+  }
+}
+
+.badge--tumblr {
+  &:before {
+    background-color: $tumblr-blue;
+    border: 1px solid darken($tumblr-blue, 5%);
   }
 }

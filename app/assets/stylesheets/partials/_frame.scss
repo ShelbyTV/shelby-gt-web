@@ -121,20 +121,7 @@ $active-list-item: $shelby-blue;
     }
   }
 }
-
-.frame-comment-link {
-  display: block;
-  float: right;
-  line-height: 1;
-  opacity: $videocard-faux-tint;
-  padding-left: $button-padding-left;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
+å
 //------------------------------------------------------------------------------
 //  frame creator block,
 //  base: media obj.
@@ -300,7 +287,7 @@ $active-list-item: $shelby-blue;
 
 .command-roll {
   .icon {
-    padding-left: $button-padding-left;
+    padding-left: 1.3em;
   }
 }
 

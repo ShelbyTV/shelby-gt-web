@@ -4,81 +4,30 @@
 $app-header__height : 38px;
 $app-background-color : #e2e2e2;
 
+//------------------------------------------------------------------------------
+//  ICONS, these aren't worth taking the time to update right now.
+//------------------------------------------------------------------------------
 $extension: ".svg" !default;
 $path: "/images/assets/" !default;
 
-$logo-shelby                    : "#{$path}logo_type#{$extension}";
-//$logo-shelby                    : "#{$path}shelby_logo#{$extension}";
-$logo-shelby-mark               : "#{$path}shelby_mark#{$extension}";
-
-$icon-cancel                    : "#{$path}cancel.svg";
 $icon-carrot                    : "#{$path}carrot#{$extension}";
-$icon-check                     : "#{$path}check#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
-$icon-comment-reply             : "#{$path}comment_reply#{$extension}";
-$icon-email                     : "#{$path}email.svg";
-$icon-mark                      : "#{$path}mark#{$extension}";
-$icon-avatar-large              : "#{$path}avatar.png";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
-$icon-settings                  : "#{$path}settings#{$extension}";
-$icon-search                    : "#{$path}search#{$extension}";
-
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
 $icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
 $icon-onboarding-tumblr-add     : "#{$path}onboarding_tumblr_add#{$extension}";
 $icon-onboarding-tumblr-added   : "#{$path}onboarding_tumblr_added#{$extension}";
 $icon-onboarding-twitter-add    : "#{$path}onboarding_twitter_add#{$extension}";
 $icon-onboarding-twitter-added  : "#{$path}onboarding_twitter_added#{$extension}";
-
-$icon-overlay-like              : "#{$path}overlay_like#{$extension}";
-$icon-overlay-nowplaying        : "#{$path}overlay_nowplaying#{$extension}";
-$icon-overlay-watchlater        : "#{$path}overlay_watchlater#{$extension}";
-$icon-overlay-you               : "#{$path}overlay_you#{$extension}";
-
-$icon-player-fullscreen-enable  : "#{$path}player_fullscreen_enable#{$extension}";
-$icon-player-fullscreen-disable : "#{$path}player_fullscreen_disable#{$extension}";
-$icon-player-hd-on              : "#{$path}player_hd_on#{$extension}";
-$icon-player-hd-off             : "#{$path}player_hd_off#{$extension}";
-$icon-player-play               : "#{$path}player_play#{$extension}";
-$icon-player-pause              : "#{$path}player_pause#{$extension}";
-$icon-player-sound-off          : "#{$path}player_sound_off#{$extension}";
-$icon-player-sound-on           : "#{$path}player_sound_on#{$extension}";
-
 $icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
 $icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
 $icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
 $icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
-
 $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
 $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
 $icon-social-twitter            : "#{$path}social_twitter#{$extension}";
-
-$icon-switch-lock               : "#{$path}slider_lock#{$extension}";
-$icon-switch-unlock             : "#{$path}slider_unlock#{$extension}";
-
-$icon-team-twitter              : "#{$path}team_twitter#{$extension}";
-$icon-team-web                  : "#{$path}team_web#{$extension}";
-
-$icon-tweet-intents             : "/images/twitter/tweet-intents-sprite.png";
-
-$icon-user-logged-out           : "#{$path}user_loggedout#{$extension}";
-
-$icon-nav-stream                : "#{$path}nav_stream#{$extension}";
-
-$icon-videocard-queue           : "#{$path}videocard_queue#{$extension}";
-$icon-videocard-comment         : "#{$path}videocard_comment#{$extension}";
-$icon-videocard-comment-off     : "#{$path}videocard_comment_off#{$extension}";
-$icon-videocard-comment-on      : "#{$path}videocard_comment_on#{$extension}";
-$icon-videocard-like-off        : "#{$path}videocard_like_off#{$extension}";
-$icon-videocard-like-on         : "#{$path}videocard_like_on#{$extension}";
-$icon-videocard-more            : "#{$path}videocard_more#{$extension}";
 $icon-videocard-roll            : "#{$path}videocard_roll#{$extension}";
-$icon-videocard-roll-off        : "#{$path}videocard_roll_off#{$extension}";
-$icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
-$icon-videocard-share           : "#{$path}videocard_share#{$extension}";
-$icon-videocard-share-off       : "#{$path}videocard_share_off#{$extension}";
-$icon-videocard-share-on        : "#{$path}videocard_share_on#{$extension}";
 
 //------------------------------------------------------------------------------
 //  ANIMATION VALUES
@@ -99,11 +48,6 @@ $font-family         : Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
 $font-size           : 100%;
 $size                : $font-size !default;
-
-//------------------------------------------------------------------------------
-//  BUTTON SETUP
-$button-padding-left: 1.3em;
-$button-padding-right: .95em;
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -128,34 +72,19 @@ $persistent_video_info--height : 180px;
 //------------------------------------------------------------------------------
 //  COLORS
 //------------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: base
-////////////////////////////////////////////////////////////////////////////
 $base          : #e2e2e2;
 $base-bg-color : #000;
 $highlight     : rgba(255,255,255,.3) !default;
 $shadow        : 0 0 2px 0 rgba(0,0,0,.3);
 $shadow-text   : 0px -1px 0px rgba(0,0,0,.6);
-$outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: fonts
-////////////////////////////////////////////////////////////////////////////
 $text               : #333;
 $button-color       : #efefef;
 $button-color-light : $text + #333;
-
-
-////////////////////////////////////////////////////////////////////////////
-//  COLORS: app header
-////////////////////////////////////////////////////////////////////////////
-$header-outline                     : #202020;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: guide
-////////////////////////////////////////////////////////////////////////////
 $guide-bg-color                     : $base;
 $guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
@@ -163,71 +92,33 @@ $guide-presentation-button-active   : adjust-lightness($guide-presentation-butto
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #242627;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: nav
-////////////////////////////////////////////////////////////////////////////
 $nav-dropdown-bg                    : $base;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: list_module
-////////////////////////////////////////////////////////////////////////////
-$list-module-spacing                : 1em;
-$list-module-bg                     : #e2e2e2;
+$list-module-bg                     : $base;
 $list-item-bg                       : adjust-lightness($list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
 $list-item-border                   : adjust-lightness($list-module-bg, -10%);
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: overlay
-////////////////////////////////////////////////////////////////////////////
 $overlay_header_height              : 46px;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: thumbnail_module
-////////////////////////////////////////////////////////////////////////////
 $thumbnail_default_bg               : adjust-lightness($base, -1%);
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: explore
-////////////////////////////////////////////////////////////////////////////
 $explore-header-color               : #333;
 $explore-subline-color              : adjust-lightness($explore-header-color,30%);
 $explore-frame-title                : adjust-lightness($explore-header-color,10%);
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: external
-////////////////////////////////////////////////////////////////////////////
 $external-bg                        : #efefef;
-
-////////////////////////////////////////////////////////////////////////////
-//  COLORS: me
-////////////////////////////////////////////////////////////////////////////
-$me-header-color                    : adjust-lightness($text, 10%);
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: videocard
-////////////////////////////////////////////////////////////////////////////
 $videocard-footer-bg-color          : #f2f0f0;
 $videocard-shadow                   : $shadow;
-  //  faux-tint is an opacity of .7, makes the color 'lighter',
-  //  used on .frame-comment-link
 $videocard-faux-tint                : .7;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: videoplayer
-////////////////////////////////////////////////////////////////////////////
 $video-controls-progress-load       : #303030;
 $video-player                       : #0e0e0e;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: preferences
-////////////////////////////////////////////////////////////////////////////
 $toggle-switch-gray                 : #fefefe;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: shelby
-////////////////////////////////////////////////////////////////////////////
 $shelby-blue                        : #0590c4;
 $shelby-default                     : #eeeeee;
 $shelby-gray                        : #27292A;
@@ -239,21 +130,12 @@ $shelby-red                         : #cc1235;
 $shelby-yellow                      : #d5cd39;
 $primer-color                       : $shelby-gray !default;
 $education-yellow                   : #f9f15c;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: social media
-////////////////////////////////////////////////////////////////////////////
 $facebook-blue                      : #013e80;
 $twitter-blue                       : #2CAAE1;
 $tumblr-blue                        : #2f445b;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: buttons
-////////////////////////////////////////////////////////////////////////////
 $button-default-color               : #eee;
 $networks-unselected                : #474747;
-
-////////////////////////////////////////////////////////////////////////////
 //  COLORS: avatar
-////////////////////////////////////////////////////////////////////////////
 $avatar-outline                     : darken($base,5%);

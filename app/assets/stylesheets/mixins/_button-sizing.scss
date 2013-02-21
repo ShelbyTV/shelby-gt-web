@@ -30,3 +30,27 @@
     padding-left: 1em;
   }
 }
+
+.button_standard {
+    @include button-sizing;
+}
+
+.button_command {
+    @include button-sizing(frame-command);
+}
+
+.button_explore {
+    @include button-sizing(explore-rolls);
+}
+
+.button_wide {
+    @include button-sizing(wide);
+}
+
+.button_icon-only {
+    @include button-sizing(guide-close);
+}
+
+.button_social-login {
+    @include button-sizing(social-login);
+}

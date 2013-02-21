@@ -53,7 +53,6 @@
 }
 
 .tools-section-button {
-//	@include button-primer($shelby-gray);
 	@include roundies(input);
 
 	background: transparent;
@@ -160,32 +159,9 @@
   margin: 0;
 }
 
-.preferences-networks-twitter,
-.preferences-networks-tumblr,
-.preferences-networks-facebook {
-  @include x-networks-badge;
-
-  line-height: 2.4;
-}
-
-.preferences-networks-twitter{
-  &:before{
-    @include preferences-networks(twitter);
-    background-size:76%;
-  }
-}
-
-.preferences-networks-facebook{
-  &:before{
-    @include preferences-networks(facebook);
-    background-size:28%;
-  }
-}
-
-.preferences-networks-tumblr{
-  &:before{
-    @include preferences-networks(tumblr);
-    background-size:36%;
+.preferences-networks {
+  .badge {
+    line-height: 2.4;
   }
 }
 
@@ -205,8 +181,6 @@
 }
 
 .connected-network {
-  @include button-primer($shelby-green, dark, wide);
-
   float:right;
   font-size: .8em;
 }

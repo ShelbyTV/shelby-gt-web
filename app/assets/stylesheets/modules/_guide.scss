@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-//  TODO: guide_module, guide structure should gets its own partial probz.
+//  guide_module
 //------------------------------------------------------------------------------
 .guide_module {
   //boilerplate positioning.
@@ -12,10 +12,13 @@
   width: inherit;
 }
 
-.guide_head {
+.guide__head {
+  box-shadow: $shadow;
+  position: relative;
+  z-index: 1;
 }
 
-.guide_body {
+.guide__body {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -24,26 +27,15 @@
   width: 100%;
   z-index: 0;
 }
-  // ////////////////////////////////////////////////////////////////////////////
-  // //  overrides
-  // ////////////////////////////////////////////////////////////////////////////
-  // .touch {
-  // }
 
 //------------------------------------------------------------------------------
 //  guide-styles
 //------------------------------------------------------------------------------
-.guide-head {
-  box-shadow: $shadow;
-  position: relative;
-  z-index: 1;
-}
-
-.guide-head-menu {
+.guide__menu {
   float: right;
 }
 
-.guide-header {
+.guide__header {
   overflow: hidden;
 }
 

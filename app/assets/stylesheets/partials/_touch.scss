@@ -2,7 +2,7 @@
 //  Modernizr.touch
 //------------------------------------------------------------------------------
 .touch {
-  .guide_body {
+  .guide__body {
     overflow: hidden;
   }
 
@@ -28,14 +28,14 @@
   .preroll-video-info {
     margin: 15em 15em 0;
   }
-  
+
   //------------------------------------------------------------------------------
   //  Player controls
-  
+
   .videoplayer-controls__wrapper {
     display: none;
   }
-  
+
   .video_progress--mini__wrapper {
     z-index: 2;
   }

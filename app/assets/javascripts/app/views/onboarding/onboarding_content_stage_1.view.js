@@ -3,16 +3,16 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   /*
    * Set stuff on the user model and hit save
    * Checkboxes as you're typing ..?
-   * email type 
+   * email type
    * pwd type
    * fix copy
    */
 
   events : {
     "keyup #js-onboarding-username-input" : "_onUsernameInputKeyup",
-    "keyup #js-onboarding-pwd-input" : "_onPwdInputKeyup",
-    "keyup #js-onboarding-email-input" : "_onEmailInputKeyup",
-    "click .js-onboarding-next-step" : "_onNextStepClick"
+    "keyup #js-onboarding-pwd-input"      : "_onPwdInputKeyup",
+    "keyup #js-onboarding-email-input"    : "_onEmailInputKeyup",
+    "click .js-onboarding-next-step"      : "_onNextStepClick"
   },
 
   initialize : function(){
@@ -32,7 +32,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
       avatarSize: libs.shelbyGT.UserAvatarSizes.large
     });
     this.renderChild(this._userAvatar);
-    
+
     this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
       el: this.$('.js-user-avatar-uploader')[0],
       progressEl: this.$('.dynamic-avatar .progress-overlay')[0],
