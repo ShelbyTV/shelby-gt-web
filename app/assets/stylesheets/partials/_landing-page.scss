@@ -623,6 +623,20 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  FAQ
 //------------------------------------------------------------------------------
+.shelf--learn-more-teaser {
+  text-align: center;
+  
+  .shelf__lining {
+    padding-bottom: 7em;
+  }
+  
+  a {
+    font-size: 3em;
+    margin-top: 0.5em;
+    padding: 0.5em 1.5em;
+  }
+}
+
 .shelf--faq-banner {
   .shelf__lining {
     padding: 4em 0 3em;
