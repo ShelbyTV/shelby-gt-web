@@ -6,7 +6,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   className : 'explore-item',
-  
+
   _spinnerView : null,
 
   template : function(obj){
@@ -16,7 +16,7 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   initialize : function(){
     shelby.models.guide.bind('change:displayState', this._onChangeDisplayState, this);
     shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
-    
+
     // Explore view lazy loads the frames, so grab them if we need to
     if(this.model.get('frames').length === 0){
       var self = this;
@@ -41,10 +41,10 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
       userFollowingRoll : userFollowingRoll
     }));
     if (!userFollowingRoll) {
-      this.$('.js-follow-unfollow').addClass('command-active');
+      this.$('.js-follow-unfollow').addClass('button_blue').removeClass('button_gray-medium');
     }
     this.appendChildInto(new libs.shelbyGT.ExploreFrameListView({model: this.model}), '.explore-roll');
-    
+
     return this;
   },
 
@@ -55,12 +55,12 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
 
   _followOrUnfollow : function(){
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.FOLLOW) ){ return; }
-    
+
     var self = this;
     var $thisButton = this.$('.js-follow-unfollow');
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isCommandActive = $thisButton.toggleClass('command-active').hasClass('command-active');
+    var isCommandActive = $thisButton.toggleClass('button_blue').toggleClass('button_gray-medium').hasClass('button_blue');
     var wasCommandActive = !isCommandActive;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
@@ -94,8 +94,9 @@ libs.shelbyGT.ExploreRollItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _checkUpdateFollowButton : function() {
+    console.log('_checkUpdateFollowButton');
     var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this.model);
-    this.$('.js-follow-unfollow').toggleClass('command-active', !userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
+    this.$('.js-follow-unfollow').toggleClass('button_blue', !userFollowingRoll).toggleClass('button_gray-medium', userFollowingRoll).text(userFollowingRoll ? 'Unfollow' : 'Follow');
   }
 
 });
