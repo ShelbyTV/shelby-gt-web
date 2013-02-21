@@ -13,7 +13,7 @@ $list : blue,
         yellow;
 
 @each $color in $list {
-  .shelby-#{$color} {
-    @include loopable-button-primer($color);
+  .xx-shelby-#{$color} {
+//     @include loopable-button-primer($color);
   }
 }

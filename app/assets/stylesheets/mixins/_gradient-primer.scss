@@ -1,7 +1,4 @@
-$bottom-color: #4e5354 !default;
-$bottom-color-adjust: 20% !default;
-
-@mixin gradient-primer($x-primer-color,$x-lightness-adjust-pct:5%,$direction: top){
-  background-color: $x-primer-color;
-  @include background(linear-gradient($direction, adjust-lightness($x-primer-color,$x-lightness-adjust-pct), $x-primer-color));
+@mixin gradient-primer($color: $button-default-color, $adjust: 5%, $direction: top){
+  background-color: $color;
+  @include background(linear-gradient($direction, adjust-lightness($color,$adjust), $color));
 }
