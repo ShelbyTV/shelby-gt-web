@@ -1,0 +1,34 @@
+/*
+    Prepend a badge,
+    styles an <el class="badge badge--[facebook|tumblr|twitter] icon-social_*"></el>
+
+    i.e. Preferences panel:
+
+    <h2 class="badge badge--facebook icon-social_facebook preferences-networks-facebook form_label">Facebook</h2>
+
+*/
+
+.badge {
+  @include networks-badge;
+}
+
+.badge--facebook {
+  &:before {
+    background-color: $facebook-blue;
+    border: 1px solid darken($facebook-blue, 5%);
+  }
+}
+
+.badge--tumblr {
+  &:before {
+    background-color: $tumblr-blue;
+    border: 1px solid darken($tumblr-blue, 5%);
+  }
+}
+
+.badge--twitter {
+  &:before {
+    background-color: $twitter-blue;
+    border: 1px solid darken($twitter-blue, 5%);
+  }
+}
