@@ -35,7 +35,8 @@
           activationStateModel : shelby.models.guide,
           guideOverlayModel : shelby.models.guideOverlay,
           playlistFrameGroupCollection : parentListView.frameGroupCollection,
-          playlistManagerModel : shelby.models.playlistManager
+          playlistManagerModel : shelby.models.playlistManager,
+          playlistType : this.playlistType
         };
       },
       noMoreResultsViewProto : InlineExplorePromoView,
