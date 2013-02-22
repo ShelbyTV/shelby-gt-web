@@ -78,8 +78,12 @@
       // if nothing's currently playing,
       // register our frame group collection as the current playlist so we can start playing from it if desired
       // REMEMBER: we don't do this if something is already playing, because in shelby,
-      // once a playlist is playing, we don't switch until the user actively decides to play something new
+      // once a playlist is playing, we don't switch until the user actively decides to play something new,
       var isAnythingPlaying = shelby.models.guide.get('activeFrameModel');
+      // UNLESS: we override this by setting shelby.models.routingState.forceFramePlay to true
+      // doing so means that for as long as this property is true, any playlist that is loaded
+      // will automatically become the currently playing playlist
+      var forceFramePlay = shelby.models.routingState.get('forceFramePlay');
       // if we're playing a roll or the dashboard, and we remove its view from the screen, we rely on
       // a leftover reference to its playlist to continue choosing what to play
       // the contents of that playlist can get out of date, so if we bring up that roll or dashboard's view again
@@ -91,7 +95,7 @@
         shelby.models.playlistManager.get('playlistRollId') == this.model.id;
       var reloadingCurrentPlaylist = returningToDashboard || returningToRoll;
 
-      if (!isAnythingPlaying || reloadingCurrentPlaylist) {
+      if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist) {
         this._registerPlaylist();
       }
 
