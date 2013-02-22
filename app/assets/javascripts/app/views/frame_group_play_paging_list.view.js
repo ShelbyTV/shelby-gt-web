@@ -96,12 +96,12 @@
       var reloadingCurrentPlaylist = returningToDashboard || returningToRoll;
 
       if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist) {
-        this._registerPlaylist();
+        this.registerPlaylist();
       }
 
     },
 
-    _registerPlaylist : function() {
+    registerPlaylist : function() {
       shelby.models.playlistManager.set({
         playlistFrameGroupCollection : this.frameGroupCollection,
         playlistType : this.options.playlistType,

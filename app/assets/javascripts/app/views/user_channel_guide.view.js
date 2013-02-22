@@ -33,7 +33,8 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
         doStaticRender : true,
         el : '.js-user-channel-list',
         listItemViewAdditionalParams : {
-          activationStateModel : shelby.models.guide
+          activationStateModel : shelby.models.guide,
+          userProfileModel : this.model
         },
         listItemView : 'UserChannelItemView',
         model : this.options.userChannelsCollectionModel
