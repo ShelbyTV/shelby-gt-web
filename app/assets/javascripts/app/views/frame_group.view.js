@@ -1,18 +1,12 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
-  _conversationDisplayed : false,
-
-  _grewForFrameRolling : false,
-
-  _frameRollingView : null,
-
-  _conversationView : null,
-
-  _frameSharingInGuideView : null,
-
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      guideOverlayModel : null
+      guideOverlayModel : null,
+      // playlistXxx options MUST be supplied by the parent list view
+      playlistFrameGroupCollection : null, // the playlist collection that this view's frame model belongs to
+      playlistManagerModel : null, // the app-wide model used to interact with the PlaylistManager
+      playlistType : null // the type of playlist that this view's frame model is on: dashboard, roll, etc
   }),
 
   events : {
@@ -170,7 +164,16 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return false;
     }
-    shelby.models.guide.set('activeFrameModel', this.model.getFirstFrame());
+
+    var frame = this.model.getFirstFrame();
+    // activate the current frame
+    shelby.models.guide.set('activeFrameModel', frame);
+    // register the playlist this frame is on as the current playlist with the playlist manager
+    this.options.playlistManagerModel.set({
+      playlistFrameGroupCollection : this.options.playlistFrameGroupCollection,
+      playlistType : this.options.playlistType,
+      playlistRollId : this.options.playlistType == libs.shelbyGT.PlaylistType.roll ? frame.get('roll').id : null
+    });
   },
 
   // override ActiveHighlightListItemView abstract method
