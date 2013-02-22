@@ -11,7 +11,7 @@
 
       <div class="media_body">
         <p class="xuser-data">
-          <a href="http://<%= user.get('personal_roll_subdomain') || user.get('nickname') %>.shelby.tv"><strong><%= user.get('personal_roll_subdomain') || user.get('nickname') %></strong></a>
+          <strong><%= user.get('personal_roll_subdomain') || user.get('nickname') %></strong>
         </p>
 
         <p class="xuser-message">
@@ -71,5 +71,5 @@
   </div><!-- eo media_module -->
 
 <% } else { %>
-  Spinna'
+  <span class="busy busy--large_light busy--fill"></span>
 <% } %>
