@@ -127,10 +127,20 @@
       if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
       if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 
+      // parsing message to see if a hashtag is there
+      if (/(\#\w*)/.test(message)) {
+        var _hashtag = /\#(\w*)/.exec(message);
+        if (_hashtag[1] === "amazing"){
+          console.log("HAS HASHTAG! " + _hashtag[1]);
+          // add video to another special roll
+        }
+      }
+
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
-        var newFrame = new libs.shelbyGT.FrameModel();
-        this._addViaUrl(message, roll, shareDests);
+        console.log("ROLLED");
+        //var newFrame = new libs.shelbyGT.FrameModel();
+        //this._addViaUrl(message, roll, shareDests);
       }
       else {
         // elsere roll the frame
