@@ -2,6 +2,16 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
 
   _frame : null,
 
+  options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
+      activationStateProperty : 'activeFrameModel',
+      className : 'user-channel__item',
+      guideOverlayModel : null,
+      // playlistXxx options MUST be supplied by the parent list view
+      playlistFrameGroupCollection : null, // the playlist collection that this view's frame model belongs to
+      playlistManagerModel : null, // the app-wide model used to interact with the PlaylistManager
+      playlistType : null // the type of playlist that this view's frame model is on: dashboard, roll, etc
+  }),
+
   events : {
     'click .js-play-explore-frame'            : '_displayVideo',
     'click .js-queue-command:not(.js-queued)' : '_queueVideo',
@@ -34,11 +44,13 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   _displayVideo : function() {
+    // activate the current frame
     shelby.models.guide.set('activeFrameModel', this._frame);
-    shelby.models.playlistManager.set({
-      playingFrameGroupCollection : this.options.playingRollFrameGroupCollection,
-      playingState : libs.shelbyGT.PlayingState.roll,
-      playingRollId : this._frame.get('roll').id
+    // register the playlist this frame is on as the current playlist with the playlist manager
+    this.options.playlistManagerModel.set({
+      playlistFrameGroupCollection : this.options.playlistFrameGroupCollection,
+      playlistType : this.options.playlistType,
+      playlistRollId : this.options.playlistType == libs.shelbyGT.PlaylistType.roll ? this._frame.get('roll').id : null
     });
   },
 

@@ -32,14 +32,8 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       },
       limit : 6,
       listItemView : 'UserChannelFrameItemView',
-      listItemViewAdditionalParams : {
-        activationStateModel : shelby.models.guide,
-        activationStateProperty : 'activeFrameModel',
-        className : 'user-channel__item'
-      },
       model : this.model
     });
-    _(this._channelListView.options.listItemViewAdditionalParams).extend({playingRollFrameGroupCollection : this._channelListView._displayCollection});
     this.appendChildInto(this._channelListView, '.js-user-channel');
     this.model.fetch({
       success: function(rollModel, resp){
