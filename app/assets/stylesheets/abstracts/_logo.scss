@@ -16,20 +16,44 @@
   All spans must be inline!
 */
 
+$shelby-mark-color: #6cbc45;
+
 .shelby_logo {
   line-height: 1;
 
   .icon-mark {
-    color: #6cbc45;
+    color: $shelby-mark-color;
   }
 
   .icon-type {
     color: $button-color;
   }
+
 }
 
-.shelby_logo--inverted {
-  .icon-type {
-    color: $text;
+  .shelby_logo--inverted {
+    .icon-type {
+      color: $text;
+    }
   }
-}
+
+  .shelby_logo--plain {
+    vertical-align: 1px;
+
+    .icon-mark {
+      font-size: 1.9em;
+      margin-right: 1px;
+      margin-right: 0.05rem;
+      vertical-align: -0.375em;
+    }
+
+    .icon-type {
+      &:before {
+        content: "Shelby.tv";
+        font-family: $font-family-display;
+        font-size: .8em;
+      }
+    }
+  }
+
+
