@@ -20,7 +20,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   initialize: function(){
     this._currentFrame = this.options.guide.get('activeFrameModel');
-    this._playingFrameGroupCollection = this.options.playlistManager.get('playingFrameGroupCollection');
+    this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
