@@ -1,0 +1,101 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
+
+  <script>
+    var shelbyTrackingCategory = "Landing Page";
+  </script>
+</head>
+<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
+  <div class="shelby__wrapper">
+
+    <% #------------ Subscribe --------------- %>
+
+    <div class="shelf shelf--signup">
+      <div class="shelf__lining">
+        <h2 class="shelf__h1">
+          <%= @roll_title %>, via email.
+        </h2>
+
+        <p class="shelf__block">
+          Receive updates when <strong><%= @curator_name %></strong> adds new video to “<%= @roll_title == @curator_name ? "#{@roll_title} tv" : @roll_title %>”
+        </p>
+
+        <form id="js-subscribe-form" class="form_module shelf__form shelf__form-tall js-track-submit" data-ga_action="Subscribe via email" data-ga_label="roll_id:<%= @roll_id %>">
+          <fieldset id="js-email-form-submit" class="search_module">
+
+            <div class="search_module__input_wrapper">
+              <input type="radio" name="frequency" value="every_video"> Every Video
+              <span style="width: 2em; display: inline-block;"></span>
+              <input type="radio" name="frequency" value="weekly"> Weekly Summary
+            </div>
+
+            <input type="submit" class="button_primer button_default search_module__submit" value="Subscribe" />
+            <span class="search_module__input_wrapper">
+              <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" autofocus/>
+            </span>
+          </fieldset><!-- eo search_module -->
+
+          <fieldset id="js-email-form-feedback" class="hidden">
+            <h6 class="shelf__h2">
+              Thanks, we'll keep you posted!
+            </h6>
+          </fieldset>
+        </form>
+        
+        <p class="shelf__block">
+          Worry free guarantee:<br/>
+          No spam.  Simple unsubscribe.
+        </p>
+        
+      </div><!-- eo shelf__lining -->
+    </div><!-- eo shelf -->
+
+    <% #------------ /Subscribe --------------- %>
+
+  </div><!-- /shelby-wrapper -->
+
+  <script>
+    var _gaq = _gaq || [];
+		<% if Rails.env == 'production' %>
+      var _gaq = [['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s);}(document,'script'));
+    <% end %>
+
+    $(document).ready(function(){
+
+      // Subscribe via email submit
+      $('#js-subscribe-form').on('submit', function(){
+        var data = {
+          priority_code: "subscribe_to_roll:"+$(this).find('input[name=frequency]:checked').val()+":<%= @roll_id %>",
+          email: $(this).find("input[name=email]").val()
+          }
+        
+        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', data, function(data) {
+          $('#js-email-form-submit').addClass('hidden');
+          $('#js-email-form-feedback').removeClass('hidden');
+          _gaq.push(['_trackEvent', "Header", "subscribe-via-email-submit", "<%= @current_user_label %>"]);
+          setTimeout(function(){ window.close(); }, 5000);
+        }, 'jsonp');
+        return false;
+      });
+
+    });
+  </script>
+</body>
+</html>

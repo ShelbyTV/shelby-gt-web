@@ -186,7 +186,12 @@ libs.shelbyGT.VimeoHTML5VideoPlayerView = Support.CompositeView.extend({
 
   _bootstrapPlayer: function(){    
     var self = this,
-    src = this._playerDomain+'/video/'+this._video.get('provider_id')+'?player_id='+this._playerId+'&title=0&byline=0&portrait=0&autoplay=1&api=1';
+    src = this._playerDomain+'/video/' +
+          this._video.get('provider_id') +
+          '?player_id='+this._playerId +
+          '&autoplay='+(this._playbackState.get('autoplayOnVideoDisplay') ? 1 : 0) +
+          '&title=0&byline=0&portrait=0' +
+          '&api=1';
     
     if(this._$iFrame){ //need to re-load untile we have a loadVideo API call
       this.pause();

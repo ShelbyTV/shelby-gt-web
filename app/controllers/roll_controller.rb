@@ -32,6 +32,13 @@ class RollController < ApplicationController
     @genius_roll_id = params[:roll_id]
     render '/home/app'
   end
+  
+  def subscribe_via_email
+    @roll_id = params[:roll_id]
+    @roll_title = params[:roll_title]
+    @curator_name = params[:curator]
+    @current_user_label = user_signed_in? ? current_user_id : "anonymous"
+  end
 
   private
 
