@@ -7,6 +7,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
 
   events : {
     "click .js-change-iso-roll"             : "_onChangeRoll",
+    "click .js-subscribe-button"            : "_onSubscribe",
     "click .js-follow-button:not(.js-busy)" : "_onFollowOrUnfollow",
     "click .js-full-shelby-button"          : "_onFullShelby"
   },
@@ -96,6 +97,24 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
      } else {
        this._currentRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
      }
+   },
+   
+   _onSubscribe: function(){
+     var href = "/subscribe-via-email/roll/"+this._currentRoll.id+"?roll_title="+this._currentRoll.get('title')+"&curator="+this._currentRoll.get('creator_nickname'),
+     width = 700,
+     height = 500,
+     left = (screen.width/2)-(width/2),
+     top = (screen.height/2)-(height/2);
+     window.open(href,
+        "subscribePopup", 
+        "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
+
+     shelby.trackEx({
+       providers : ['ga'],
+       gaCategory : 'Header',
+       gaAction : 'subscribe-via-email-click',
+       gaLabel : shelby.models.user.get('nickname')});
+     return false;
    },
 
    _onFullShelby : function() {

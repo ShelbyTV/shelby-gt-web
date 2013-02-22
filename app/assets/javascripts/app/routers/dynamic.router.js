@@ -89,11 +89,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       defaultOnRollFetch = this._checkPlayRollFrame;
     }
 
-    if (shelby.models.routingState.get('forceFramePlay')) {
-      // responded to the forceFramePlay state, so reset it
-      shelby.models.routingState.unset('forceFramePlay');
-    }
-
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
@@ -105,6 +100,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
+
+    if (shelby.models.routingState.get('forceFramePlay')) {
+      // responded to the forceFramePlay state, so reset it
+      shelby.models.routingState.unset('forceFramePlay');
+    }
   },
 
   displaySearch : function(params){

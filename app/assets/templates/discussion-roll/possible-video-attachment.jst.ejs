@@ -1,6 +1,6 @@
 <div class="search_result media_module frame-body-wrapper clearfix">
   <div class="media_image js-preview-video">
-    <div class="image_module frame-thumbnail frame-thumbnail--playable icon-player_play js-load-video <%= (!thumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= thumbnail.url %>');" role="img">
+    <div class="image_module frame-thumbnail frame-thumbnail--playable icon-player_play <%= (!thumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= thumbnail.url %>');" role="img">
       <img class="visuallyhidden" src="<%= thumbnail.url %>" title="<%= title %>" alt="<%= title %> thumbnail">
     </div>
   </div>
