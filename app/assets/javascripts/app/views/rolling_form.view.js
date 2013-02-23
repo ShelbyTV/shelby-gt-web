@@ -199,17 +199,14 @@
 
     _checkForAndRollToHashtag : function(message){
       // parsing message to see if a hashtag is there
-      if (/(\#\w*)/.test(message)) {
-        var _hashtag = /\#(\w*)/.exec(message);
-        if (_hashtag[1] === "amazing") {
-          console.log("HAS HASHTAG! " + _hashtag[1]);
-          // add video to another special roll, user.nickname = amazing
-          var hashtagRoll = new libs.shelbyGT.RollModel({id: '5127bdd7b415cc78c7000007'});
-          this._frame.reRoll(hashtagRoll, message, function(newFrame){
-            //rolling is done (don't need to wait for add message to complete)
-            console.log("rolled to #amazing: ", newFrame);
-          });
-        }
+      var _hashtag;
+      if ((_hashtag = /\#(\w*)/.exec(message)) && _hashtag[1] === "amazing") {
+        // add video to another special roll owned by user.nickname = amazing, roll title = "#amazing"
+        var hashtagRoll = new libs.shelbyGT.RollModel({id: '5127bdd7b415cc78c7000007'});
+        this._frame.reRoll(hashtagRoll, message, function(newFrame){
+          //rolling is done (don't need to wait for add message to complete)
+          console.log("rolled to #amazing: ", newFrame);
+        });
       }
     }
 
