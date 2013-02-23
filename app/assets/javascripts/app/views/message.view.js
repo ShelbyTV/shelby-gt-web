@@ -1,7 +1,5 @@
 libs.shelbyGT.MessageView = Support.CompositeView.extend({
 
-  _conversationDisplayed : false,
-
   events : {
     "click .js-user-personal-roll" : "_goToUserPersonalRoll"
   },
