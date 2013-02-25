@@ -35,7 +35,10 @@
   }
 
   .main-layout {
+    box-shadow: $shadow;
+    // box-shadow: 0 0 9px 0px rgba(0,0,0,.5);
     height: 500px;
+    z-index: 1;
   }
   //eo hack layout panels
 
@@ -66,10 +69,15 @@
     }
 
     .videoplayer {
-      height: 470px;
+      height: 460px;
     }
 
     .videoplayer-viewport {
       bottom: 0;
+    }
+
+    //gross hack
+    .shelf__list--social {
+      display: none;
     }
 }

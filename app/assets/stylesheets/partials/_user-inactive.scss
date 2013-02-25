@@ -7,8 +7,10 @@
     opacity: .4;
   }
 
-  .persistent_video_info {
-    opacity: 0.4;
+  .persistent_video_info__wrapper { //targeting the wrapper hack for user-profile shit
+    .persistent_video_info {
+      opacity: 0.4;
+    }
   }
 
   .hide-guide .persistent_video_info {

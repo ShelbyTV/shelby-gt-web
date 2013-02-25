@@ -31,11 +31,17 @@
 //  user channel section specific
 //------------------------------------------------------------------------------
 .user-channel-guide {
-  background-color: $base;
+  background-color: $base-frame;
+  box-shadow: $shadow;
 }
 
 .user-channel {
   width : 3000px;
+
+  .list {
+    margin-top: 3.2em;
+  }
+
   // TODO when load more is not broken, show it
   .load-more {
     display: none !important;
@@ -48,8 +54,11 @@
 }
 
 .user-channel__title {
-  float : left;
-  width: 150px;
+  left: 0;
+  margin: 1.6em;
+  position: absolute;
+  top: 0;
+  z-index: 1;
 }
 
 .user-channel__item {
