@@ -71,8 +71,13 @@
   }
 
   &:not([disabled]):not(.disabled):not(.visuallydisabled):focus {
-      border: 1px solid black;
+      border: 1px solid rgba(0,0,0,1);
+      box-shadow: 0 0 0 1px rgba(0,0,0,1);
       outline: none;
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.8);
+      }
   }
 }
 
