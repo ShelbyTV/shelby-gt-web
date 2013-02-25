@@ -44,7 +44,8 @@
 
 //positioning wrapper
 .welcome-message__wrapper {
-  bottom: 200px;
+  background-color: rgba(0,0,0,0.75);
+  bottom: 0;
   display: none;
   height: auto;
   position: absolute;
@@ -85,6 +86,10 @@
 
 .welcome-message__body {
   padding: 6px 5px 3px 6px;
+
+  .media_image {
+    padding: 1px;
+  }
 
   .welcome-message__button {
     margin: 1px;//fixes overflow:hidden; ugliness
