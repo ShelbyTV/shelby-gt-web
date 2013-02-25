@@ -3,6 +3,7 @@
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
+  var PlaylistType = libs.shelbyGT.PlaylistType;
 
   libs.shelbyGT.RollView = FrameGroupPlayPagingListView.extend({
 
@@ -39,7 +40,8 @@
       listItemView : 'FrameGroupView',
       fetchParams : {
         include_children : true
-      }
+      },
+      playlistType : PlaylistType.roll
     }),
 
     _onQueueFrameGroupDestroyed : function(frameGroupModel, frameGroupsCollection, options) {
@@ -58,7 +60,6 @@
       return response.result.frames;
     },
 
-    // FrameGroupPlayPagingListView overrides
     _filterPromoRolls : function(roll) {
       //don't show a promo for the roll that you're currently looking at
       // return (roll.has('id') && roll.id != this.model.id && roll.has('display_title') && roll.has('display_thumbnail_src'));
