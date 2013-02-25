@@ -17,10 +17,19 @@
     display: none;
   }
 
-  .content_wrapper,
+
+  //hack layout panels
+  .action-layout {
+    margin-top: 0;
+    position: fixed;
+  }
+
+  .main-layout,
+  .user-channel-guide,
   .shelby-wrapper {
     bottom: auto;
     left: auto;
+    margin-top: 0;
     position: relative;
     right: auto;
     top: auto;
@@ -29,15 +38,12 @@
   .main-layout {
     height: 500px;
   }
+  //eo hack layout panels
 
-  .content_wrapper {
-    margin-top: 0;
-    position: relative;
-  }
 
   .videoplayer__wrapper {
     background-color: $base;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
   }
 
   .videoplayer__badge {
