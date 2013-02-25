@@ -59,11 +59,13 @@
   </div><!-- eo user_card -->
 
   <div class="panel panel--left media_module frame-body-wrapper clearfix">
-    <div class="media_image media_image--rev">
-      <button class="button_primer button_green panel__button">
-        Follow
-      </button>
-    </div>
+    <% if (!shelby.models.user.isAnonymous()) { %>
+      <div class="media_image media_image--rev">
+        <button class="button_primer button_green panel__button js-follow-button">
+          &nbsp;
+        </button>
+      </div>
+    <% } %>
 
     <div class="panel__h1 media_body js-youre-watching">
       You're watching: <%= frame && frame.has('roll') ? frame.get('roll').get('title') : '' %>
